@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Fájlok és mappák biztonsági mentése Windowsról Azure-ba az Azure Backuppal a Resource Manager-alapú üzemi modell segítségével | Microsoft Azure"
-   description="Megtudhatja, hogyan készíthet biztonsági másolatot a Windows Server-adatokról egy tároló létrehozásával, a Recovery Services-ügynök telepítésével és a fájlok és mappák biztonsági másolatának az Azure-ba való elkészítésével."
+   pageTitle="Learn to back up files and folders from Windows to Azure with Azure Backup using the Resource Manager deployment model | Microsoft Azure"
+   description="Learn how to backup Windows Server data by creating a vault, installing the Recovery Services agent, and backing up your files and folders to Azure."
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="markgalioto"
+   manager="cfreeman"
    editor=""
-   keywords="biztonsági mentés menete; biztonsági mentési útmutató"/>
+   keywords="how to backup; how to back up"/>
 
 <tags
    ms.service="backup"
@@ -14,201 +14,202 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="06/27/2016"
-   ms.author="jimpark;"/>
+   ms.date="09/27/2016"
+   ms.author="markgal;"/>
 
-# Áttekintés: Fájlok és mappák biztonsági mentése az Azure Backuppal a Resource Manager-alapú üzemi modell segítségével
 
-Ez a cikk leírja, hogyan készíthet biztonsági másolatot a Windows Server (vagy Windows-ügyfél) fájljairól és mappáiról az Azure-ba az Azure Backuppal a Resource Manager használatával. Ez az oktatóanyag végigvezeti az alapokon. Ha el szeretné kezdeni az Azure Backup használatát, jó helyen van.
+# First look: back up files and folders with Azure Backup using the Resource Manager deployment model
 
-Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekintést](backup-introduction-to-azure-backup.md).
+This article explains how to back up your Windows Server (or Windows client) files and folders to Azure with Azure Backup using Resource Manager. It's a tutorial intended to walk you through the basics. If you want to get started using Azure Backup, you're in the right place.
 
-A fájlok és mappák az Azure-ba való biztonsági mentéséhez ezeket a tevékenységeket kell elvégezni:
+If you want to know more about Azure Backup, read this [overview](backup-introduction-to-azure-backup.md).
 
-![1. lépés ](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure-előfizetés beszerzése (ha még nem rendelkezik ilyennel).<br>
-![2. lépés](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services-tároló létrehozása.<br>
-![3. lépés](./media/backup-try-azure-backup-in-10-mins/step-3.png) A szükséges fájlok letöltése.<br>
-![4. lépés](./media/backup-try-azure-backup-in-10-mins/step-4.png) A Recovery Services-ügynök telepítése és regisztrálása.<br>
-![5. lépés](./media/backup-try-azure-backup-in-10-mins/step-5.png) Biztonsági másolat készítése a fájlokról és mappákról.
+Backing up files and folders to Azure requires these activities:
 
-![Windows rendszerű gép biztonsági mentése az Azure Backuppal](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+![Step 1](./media/backup-try-azure-backup-in-10-mins/step-1.png) Get an Azure subscription (if you don't already have one).<br>
+![Step 2](./media/backup-try-azure-backup-in-10-mins/step-2.png) Create a Recovery Services vault.<br>
+![Step 3](./media/backup-try-azure-backup-in-10-mins/step-3.png) Download the necessary files.<br>
+![Step 4](./media/backup-try-azure-backup-in-10-mins/step-4.png) Install and register the Recovery Services agent.<br>
+![Step 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) Back up your files and folders.
 
-## 1. lépés: Azure-előfizetés beszerzése
+![How to back up your Windows machine with Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
-Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amellyel bármely Azure-szolgáltatást elérhet.
+## Step 1: Get an Azure subscription
 
-## 2. lépés: Recovery Services-tároló létrehozása
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/) that lets you access any Azure service.
 
-A fájlok és mappák biztonsági mentéséhez létre kell hoznia egy Recovery Services-tárolót abban a régióban, ahol az adatokat tárolni szeretné. Emellett a tároló replikálásának módját is meg kell határoznia.
+## Step 2: Create a Recovery Services vault
 
-### Recovery Services-tároló létrehozása
+To back up your files and folders, you need to create a Recovery Services vault in the region where you want to store the data. You also need to determine how you want your storage replicated.
 
-1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetésével.
+### To create a Recovery Services vault
 
-2. A központi menüben kattintson a **Tallózás** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
+1. If you haven't already done so, sign in to the [Azure Portal](https://portal.azure.com/) using your Azure subscription.
 
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-try-azure-backup-in-10-mins/browse-to-rs-vaults.png) <br/>
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services** and click **Recovery Services vaults**.
 
-3. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
+    ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/browse-to-rs-vaults.png) <br/>
 
-    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
+3. On the **Recovery Services vaults** menu, click **Add**.
 
-    Megnyílik a Recovery Services-tároló panelje, a rendszer pedig egy **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** megadását kéri.
+    ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    ![Recovery Services-tároló létrehozása – 5. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-attributes.png)
+    The Recovery Services vault blade opens, prompting you to provide a **Name**, **Subscription**, **Resource group**, and **Location**.
 
-4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához.
+    ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/rs-vault-attributes.png)
 
-5. Kattintson az **Előfizetés** elemre az elérhető előfizetések listájának megtekintéséhez.
+4. For **Name**, enter a friendly name to identify the vault.
 
-6. Kattintson az **Erőforráscsoport** elemre az elérhető erőforráscsoportok listájának megtekintéséhez, vagy kattintson az **Új** elemre egy új erőforráscsoport létrehozásához.
+5. Click **Subscription** to see the available list of subscriptions.
 
-7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. Ez a választás határozza meg a földrajzi régiót, ahová az adatok biztonsági másolata el lesz küldve.
+6. Click **Resource group** to see the available list of Resource groups, or click **New** to create a new Resource group.
 
-8. Kattintson a **Létrehozás** gombra.
+7. Click **Location** to select the geographic region for the vault. This choice determines the geographic region where your backup data is sent.
 
-    Ha nem látja a tárolót a listában a művelet befejezése után, kattintson a **Frissítés** gombra. Amikor a lista frissül, kattintson a tároló nevére.
+8. Click **Create**.
 
-### A tárhely-redundancia meghatározása
-Amikor először hoz létre Recovery Services-tárolót, meghatározza a tároló replikálásának módját.
+    If you don't see your vault listed after it has been completed, click **Refresh**. When the list refreshes, click the name of the vault.
 
-1. Kattintson az új tárolóra az irányítópult megnyitásához.
+### To determine storage redundancy
+When you first create a Recovery Services vault you determine how storage is replicated.
 
-2. A **Beállítások** panelen, amely a tároló irányítópultjával automatikusan megnyílik, kattintson a **Biztonsági mentési infrastruktúra** elemre.
+1. Click on the new vault to open the dashboard.
 
-3. A Biztonsági mentési infrastruktúra panelen kattintson a **Biztonsági mentési konfiguráció** elemre a **Tárolóreplikáció típusa** megtekintéséhez.
+2. In the **Settings** blade, which opens automatically with your vault dashboard, click **Backup Infrastructure**.
 
-    ![Recovery Services-tároló létrehozása – 5. lépés](./media/backup-try-azure-backup-in-10-mins/backup-infrastructure.png)
+3. In the Backup Infrastructure blade, click **Backup Configuration** to view the **Storage replication type**.
 
-4. Válassza ki a megfelelő tárolóreplikációs beállítást a tárolóhoz.
+    ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/backup-infrastructure.png)
 
-    ![A Recovery Services-tárolók listája](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+4. Choose the appropriate storage replication option for your vault.
 
-    Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a georedundáns tárolás használatát. Ha az Azure-t nem elsődleges biztonsági mentési tároló végpontjaként használja, akkor válassza a helyileg redundáns tárolást, amely csökkenti az adatok az Azure-ban való tárolásának költségeit. A [georedundáns](../storage/storage-redundancy.md#geo-redundant-storage) és a [helyileg redundáns](../storage/storage-redundancy.md#locally-redundant-storage) tárolási lehetőségekről többet olvashat ebben az [áttekintésben](../storage/storage-redundancy.md).
+    ![List of recovery services vaults](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-Most, hogy létrehozott egy tárolót, előkészíti az infrastruktúrát a fájlok és mappák biztonsági mentéséhez. Ehhez letölti a Microsoft Azure Recovery Services-ügynököt és a tároló hitelesítő adatait.
+    By default, your vault has geo-redundant storage. If you are using Azure as a primary backup storage endpoint, continue using geo-redundant storage. If you are using Azure as a non-primary backup storage endpoint, then choose locally redundant storage, which will reduce the cost of storing data in Azure. Read more about [geo-redundant](../storage/storage-redundancy.md#geo-redundant-storage) and [locally redundant](../storage/storage-redundancy.md#locally-redundant-storage) storage options in this [overview](../storage/storage-redundancy.md).
 
-## 3. lépés – Fájlok letöltése
+Now that you've created a vault, you prepare your infrastructure to back up files and folders by downloading the Microsoft Azure Recovery Services agent and vault credentials.
 
-1. A Recovery Services-tároló irányítópultján kattintson a **Beállítások** elemre.
+## Step 3 - Download files
 
-    ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
+1. Click **Settings** on the Recovery Services vault dashboard.
 
-2. Kattintson az **Első lépések > Biztonsági mentés** elemre a Beállítások panelen.
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
 
-    ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/getting-started-backup.png)
+2. Click **Getting Started > Backup** on the Settings blade.
 
-3. Kattintson **A biztonsági mentés célja** elemre a Biztonsági mentés panelen.
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/getting-started-backup.png)
 
-    ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/backup-goal.png)
+3. Click **Backup goal** on the Backup blade.
 
-4. A Hol futnak az alkalmazások és szolgáltatások? menüből válassza a **Helyszíni** lehetőséget.
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/backup-goal.png)
 
-5. A Miről szeretne biztonsági másolatot készíteni? menüben válassza a **Fájlok és mappák** lehetőséget, és kattintson az **OK** gombra.
+4. Select **On-premises** from the Where is your workload running? menu.
 
-### A Recovery Services-ügynök letöltése
+5. Select **Files and folders** from the What do you want to backup? menu, and click **OK**.
 
-1. **Az infrastruktúra előkészítése** panelen kattintson **A Windows Server vagy a Windows ügyfél ügynökének letöltése** elemre.
+### Download the Recovery Services agent
 
-    ![infrastruktúra előkészítése](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-short.png)
+1. Click **Download Agent for Windows Server or Windows Client** in the **Prepare infrastructure** blade.
 
-2. Kattintson a **Mentés** gombra a letöltési előugró menüben. Alapértelmezés szerint az **MARSagentinstaller.exe** fájlt a rendszer a Downloads mappába menti.
+    ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-short.png)
 
-### A tároló hitelesítő adatainak letöltése
+2. Click **Save** in the download pop-up. By default, the **MARSagentinstaller.exe** file is saved to your Downloads folder.
 
-1. Kattintson a **Letöltés > Mentés** gombra Az infrastruktúra előkészítése panelen.
+### Download vault credentials
 
-    ![infrastruktúra előkészítése](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
+1. Click **Download > Save** on the Prepare infrastructure blade.
 
-## 4. lépés – Az ügynök telepítése és regisztrálása
+    ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
->[AZURE.NOTE] A biztonsági mentés Azure Portalon keresztüli engedélyezése hamarosan elérhető lesz. Jelenleg a Microsoft Azure Recovery Services-ügynökkel a helyszínen készít biztonsági másolatokról a fájlokról és mappákról.
+## Step 4 -Install and register the agent
 
-1. Keresse meg és kattintson duplán az **MARSagentinstaller.exe** fájlra a Downloads mappában (vagy más mentési helyen).
+>[AZURE.NOTE] Enabling backup through the Azure portal is coming soon. At this time, you use the Microsoft Azure Recovery Services Agent on-premises to back up your files and folders.
 
-2. Végezze el a Microsoft Azure Recovery Services ügynök telepítővarázslójának lépéseit. A varázsló lépéseinek elvégzéséhez a következőket kell tennie:
+1. Locate and double click the **MARSagentinstaller.exe** from the Downloads folder (or other saved location).
 
-    - Válasszon egy helyet a telepítés és a gyorsítótár mappája számára.
-    - Adja meg a proxykiszolgáló információit, ha proxykiszolgálóval csatlakozik az internethez.
-    - Adja meg a felhasználónevének és jelszavának részleteit, ha hitelesített proxyt használ.
-    - Adja meg a tároló letöltött hitelesítő adatait.
-    - Mentse a titkosítási jelszót egy biztonságos helyen.
+2. Complete the Microsoft Azure Recovery Services Agent Setup Wizard. To complete the wizard, you need to:
 
-    >[AZURE.NOTE] Ha elveszíti vagy elfelejti a jelszót, a Microsoft nem tud segíteni az adatok biztonsági másolatának visszaállításában. Mentse a fájlt egy biztonságos helyen. Erre szükség van a biztonsági másolat visszaállításához.
+    - Choose a location for the installation and cache folder.
+    - Provide your proxy server info if you use a proxy server to connect to the internet.
+    - Provide your user name and password details if you use an authenticated proxy.
+    - Provide the downloaded vault credentials
+    - Save the encryption passphrase in a secure location.
 
-Az ügynök most telepítve van, és a gépe regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
+    >[AZURE.NOTE] If you lose or forget the passphrase, Microsoft cannot help recover the backup data. Please save the file in a secure location. It is required to restore a backup.
 
-## 5. lépés: Biztonsági másolat készítése a fájlokról és mappákról
+The agent is now installed and your machine is registered to the vault. You're ready to configure and schedule your backup.
 
-A kezdeti biztonsági mentésbe két fő feladat tartozik:
+## Step 5: Back up your files and folders
 
-- A biztonsági mentés ütemezése
-- A fájlok és mappák biztonsági mentése első alkalommal
+The initial backup includes two key tasks:
 
-A kezdeti biztonsági mentés végrehajtásához a Microsoft Azure Recovery Services-ügynököt használja.
+- Schedule the backup
+- Back up files and folders for the first time
 
-### A biztonsági mentés ütemezése
+To complete the initial backup, you use the Microsoft Azure Recovery Services agent.
 
-1. Nyissa meg a Microsoft Azure Recovery Services-ügynököt. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
+### To schedule the backup
 
-    ![Az Azure Recovery Services-ügynök indítása](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
+1. Open the Microsoft Azure Recovery Services agent. You can find it by searching your machine for **Microsoft Azure Backup**.
 
-2. A Recovery Services-ügynökben kattintson a **Biztonsági mentés ütemezése** gombra.
+    ![Launch the Azure Recovery Services agent](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-    ![Windows Server biztonsági mentés ütemezése](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
+2. In the Recovery Services agent, click **Schedule Backup**.
 
-3. A Biztonsági mentés ütemezése varázsló Első lépések oldalán kattintson a **Tovább** gombra.
+    ![Schedule a Windows Server backup](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-4. Az Elemek kijelölése biztonsági mentéshez oldalon kattintson az **Elemek hozzáadása** lehetőségre.
+3. On the Getting started page of the Schedule Backup Wizard, click **Next**.
 
-5. Jelölje ki azokat a fájlokat és mappákat, amelyekről biztonsági másolatot szeretne készíteni, majd kattintson az **OK** gombra.
+4. On the Select Items to Backup page, click **Add Items**.
 
-6. Kattintson a **Tovább** gombra.
+5. Select the files and folders that you want to back up, and then click **Okay**.
 
-7. A **Biztonsági mentés ütemezésének megadása** lapon határozza meg a **biztonsági mentés ütemezését**, és kattintson a **Tovább** gombra.
+6. Click **Next**.
 
-    Napi (legfeljebb napi háromszori) vagy heti biztonsági mentéseket ütemezhet.
+7. On the **Specify Backup Schedule** page, specify the **backup schedule** and click **Next**.
 
-    ![Windows Server biztonsági mentés elemei](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule-close.png)
+    You can schedule daily (at a maximum rate of three times per day) or weekly backups.
 
-    >[AZURE.NOTE] A biztonsági mentés ütemezésének meghatározásával kapcsolatos további információért tekintse meg a [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md) (Az Azure Backup használata a szalagos infrastruktúra lecseréléséhez) című cikket.
+    ![Items for Windows Server Backup](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule-close.png)
 
-8. A **Megőrzési házirend kiválasztása** oldalon válassza ki a biztonsági másolat **megőrzési házirendjét**.
+    >[AZURE.NOTE] For more information about how to specify the backup schedule, see the article [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md).
 
-    A megőrzési házirend határozza meg a biztonsági másolat tárolásának időtartamát. Ahelyett, hogy mindegyik biztonsági mentési ponthoz „lapos házirendet” határozna meg, különböző megőrzési házirendeket határozhat meg a biztonsági másolat készítésének ideje alapján. Igényei szerint módosíthatja a napi, heti, havi és évi megőrzési házirendeket.
+8. On the **Select Retention Policy** page, select the **Retention Policy** for the backup copy.
 
-9. A Kezdeti biztonsági mentés típusának kiválasztása oldalon válassza ki a kezdeti biztonsági mentés típusát. Hagyja bejelölve az **Automatikusan a hálózaton keresztül** beállítást, majd kattintson a **Tovább** gombra.
+    The retention policy specifies the duration for which the backup will be stored. Rather than just specifying a “flat policy” for all backup points, you can specify different retention policies based on when the backup occurs. You can modify the daily, weekly, monthly, and yearly retention policies to meet your needs.
 
-    Automatikusan készíthet biztonsági másolatot a hálózaton keresztül, vagy offline készíthet biztonsági másolatot. Ezen cikk többi része az automatikus biztonsági mentés folyamatát írja le. Ha offline biztonsági mentést szeretne végezni, további információért tekintse meg az [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) (Offline biztonsági mentési munkafolyamat az Azure Backupban) című cikket.
+9. On the Choose Initial Backup Type page, choose the initial backup type. Leave the option **Automatically over the network** selected, and then click **Next**.
 
-10. A Jóváhagyás lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
+    You can back up automatically over the network, or you can back up offline. The remainder of this article describes the process for backing up automatically. If you prefer to do an offline backup, review the article [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) for additional information.
 
-11. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
+10. On the Confirmation page, review the information, and then click **Finish**.
 
-### A fájlok és mappák biztonsági mentése első alkalommal
+11. After the wizard finishes creating the backup schedule, click **Close**.
 
-1. A Recovery Services-ügynökben kattintson a **Biztonsági mentés** gombra a hálózaton keresztüli kezdeti összehangolás befejezéséhez.
+### To back up files and folders for the first time
 
-    ![Windows Server biztonsági másolat készítése](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
+1. In the Recovery Services agent, click **Back Up Now** to complete the initial seeding over the network.
 
-2. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután kattintson a **Biztonsági mentés** gombra.
+    ![Windows Server backup now](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. A varázsló bezárásához kattintson a **Bezárás** gombra. Ha ezt a biztonsági mentési folyamat befejezése előtt teszi, a varázsló továbbra is fut a háttérben.
+2. On the Confirmation page, review the settings that the Back Up Now Wizard will use to back up the machine. Then click **Back Up**.
 
-A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot jelenik meg a biztonsági mentési konzolon.
+3. Click **Close** to close the wizard. If you do this before the backup process finishes, the wizard continues to run in the background.
 
-![IR befejezve](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
+After the initial backup is completed, the **Job completed** status appears in the Backup console.
 
-## Kérdései vannak?
-Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
+![IR complete](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## Következő lépések
-- További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-configure-vault.md).
-- Most, hogy biztonsági másolatot készített a fájlokról és mappákról, [kezelheti a tárlókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
-- Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).
+## Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
 
+## Next steps
+- Get more details about [backing up Windows machines](backup-configure-vault.md).
+- Now that you've backed up your files and folders, you can [manage your vaults and servers](backup-azure-manage-windows-server.md).
+- If you need to restore a backup, use this article to [restore files to a Windows machine](backup-azure-restore-windows-server.md).
 
 
-<!--HONumber=sep16_HO1-->
+
+<!--HONumber=Sep16_HO4-->
 
 

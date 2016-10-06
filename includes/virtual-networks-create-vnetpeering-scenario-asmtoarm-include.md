@@ -1,10 +1,10 @@
-## Társhálózati viszony kialakítása RM-alapú és klasszikus üzemi modellre épülő virtuális hálózatok között
+## Peering virtual networks from RM to classic
 
-Ebben a forgatókönyvben társviszonyt fog létesíteni két virtuális hálózat, a **VNET1** és a **VNET2** között, amelyek közül az első az Azure Resource Manager-alapú üzemi modellre, a másik a klasszikus üzemi modellre épül.
+In this scenario, you will create a peering between two VNets, namely **VNET1** and **VNET2** belonging to Azure Resource Manager deployment model and classic deployment model respectively.
 
-> [AZURE.NOTE] A virtuális hálózatoknak ugyanabba az előfizetésbe kell tartozniuk.
+> [AZURE.NOTE] The virtual networks must be in the same subscription.
 
-![asm–arm üzembe helyezési forgatókönyv](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)
+![asm to arm deployment scenario](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)
 
 
 <!--HONumber=Sep16_HO4-->

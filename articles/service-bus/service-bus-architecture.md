@@ -32,7 +32,7 @@ A skálázási egységre egy Service Bus-névtér lesz leképezve. A skálázás
 
 - **Egy átjárótároló.** Az átjárótároló a skálázási egységben definiált összes entitás adatait tartalmazza. Az átjáró tároló az SQL Azure-adatbázisban jön létre.
 
-- **Több üzenetküldési tároló.** Az üzenetküldési tárolók a skálázási egységben definiált összes üzenetsor, témakör és előfizetés üzeneteit tartalmazzák. Emellett az előfizetések összes adata is megtalálható bennük. Ha a [particionált üzenetküldési entitások](service-bus-partitioning.md) engedélyezve vannak, az üzenetsor vagy témakör egyetlen üzenetküldési tárolóra lesz leképezve. Az előfizetések ugyanabban az üzenetküldési tárolóban vannak, mint a szülő témakörük. A Service Bus [Prémium szintű üzenetkezelés](service-bus-premium-messaging.md) kivételével az üzenetküldési tárolók az SQL Azure-adatbázisokban vannak.
+- **Több üzenetküldési tároló.** Az üzenetküldési tárolók a skálázási egységben definiált összes üzenetsor, témakör és előfizetés üzeneteit tartalmazzák. Emellett az előfizetések összes adata is megtalálható bennük. Ha a [particionált üzenetküldési entitások](../service-bus-messaging/service-bus-partitioning.md) engedélyezve vannak, az üzenetsor vagy témakör egyetlen üzenetküldési tárolóra lesz leképezve. Az előfizetések ugyanabban az üzenetküldési tárolóban vannak, mint a szülő témakörük. A Service Bus [Prémium szintű üzenetkezelés](../service-bus-messaging/service-bus-premium-messaging.md) kivételével az üzenetküldési tárolók az SQL Azure-adatbázisokban vannak.
 
 ## Tárolók
 
@@ -56,9 +56,9 @@ Ha a továbbítási kapcsolat létrejött, az ügyfelek üzeneteket válthatnak 
 
 Most, hogy elolvasta a Service Bus architektúrájának áttekintését, a kezdéshez kövesse a alábbi hivatkozásokat:
 
-- [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](service-bus-messaging-overview.md)
+- [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](../service-bus-messaging/service-bus-messaging-overview.md)
 - [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
-- [Üzenetsor-kezelési megoldás a Service Bus által kezelt üzenetsorokkal](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
+- [Üzenetsor-kezelési megoldás a Service Bus által kezelt üzenetsorokkal](../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 
 

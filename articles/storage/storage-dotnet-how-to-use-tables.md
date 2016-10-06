@@ -479,6 +479,6 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

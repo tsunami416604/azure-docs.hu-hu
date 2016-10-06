@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Adatok betöltése az SQL Data Warehouse-ba bcp segítségével | Microsoft Azure"
-   description="Megismerheti a bcp-t és az adatraktározási forgatókönyvekben való használatát."
+   pageTitle="Use bcp to load data into SQL Data Warehouse | Microsoft Azure"
+   description="Learn what bcp is and how to use it for data warehousing scenarios."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -17,7 +17,8 @@
    ms.author="mausher;barbkess;sonyama"/>
 
 
-# Adatok betöltése bcp-vel
+
+# Load data with bcp
 
 > [AZURE.SELECTOR]
 - [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
@@ -25,39 +26,39 @@
 - [BCP](sql-data-warehouse-load-with-bcp.md)
 
 
-A **[bcp][]** egy tömeges betöltésre szolgáló parancssori eszköz, amellyel adatokat másolhat az SQL Server, az adatfájlok és az SQL Data Warehouse között. A bcp segítségével nagy mennyiségű sort importálhat az SQL Data Warehouse tábláiba, vagy adatokat exportálhat az SQL Server tábláiból adatfájlokba. Ha nem a queryout kapcsolóval használja, a bcp-hez nem szükséges a Transact-SQL ismerete.
+**[bcp][]** is a command-line bulk load utility that allows you to copy data between SQL Server, data files, and SQL Data Warehouse. Use bcp to import large numbers of rows into SQL Data Warehouse tables or to export data from SQL Server tables into data files. Except when used with the queryout option, bcp requires no knowledge of Transact-SQL.
 
-A bcp egyszerű módot biztosít a kisebb adatkészletek áthelyezésére az SQL Data Warehouse-adatbázisokba, illetve onnan máshová. A betöltésre/kinyerésre ajánlott adatok pontos mennyisége az Azure-adatközponthoz csatlakozó hálózati kapcsolattól függ.  Általában a dimenziótáblák könnyen betölthetők és kinyerhetők, ennek ellenére a bcp nem ajánlott nagy adatmennyiségek betöltéséhez vagy kinyeréséhez.  Nagy adatkötetek betöltéséhez és kinyeréséhez a PolyBase az ajánlott eszköz, mert hatékonyabban használja az SQL Data Warehouse nagymértékben párhuzamos feldolgozási architektúráját.
+bcp is a quick and easy way to move smaller data sets into and out of a SQL Data Warehouse database. The exact amount of data that is recommended to load/extract via bcp will depend on you network connection to the Azure data center.  Generally, dimension tables can be loaded and extracted readily with bcp, however, bcp is not recommended for loading or extracting large volumes of data.  Polybase is the recommended tool for loading and extracting large volumes of data as it does a better job leveraging the massively parallel processing architecture of SQL Data Warehouse.
 
-A bcp-vel a következőket teheti:
+With bcp you can:
 
-- Egy egyszerű parancssori segédprogrammal adatokat tölthet be az SQL Data Warehouse-ba.
-- Egy egyszerű parancssori segédprogrammal adatokat nyerhet ki az SQL Data Warehouse-ból.
+- Use a simple command-line utility to load data into SQL Data Warehouse.
+- Use a simple command-line utility to extract data from SQL Data Warehouse.
 
-Ez az oktatóanyag a következőket mutatja be:
+This tutorial will show you how to:
 
-- Adatok importálása egy táblába a bcp in paranccsal
-- Adatok exportálása egy táblából a bcp out paranccsal
+- Import data into a table using the bcp in command
+- Export data from a table uisng the bcp out command
 
 >[AZURE.VIDEO loading-data-into-azure-sql-data-warehouse-with-bcp]
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+To step through this tutorial, you need:
 
-- Egy SQL Data Warehouse-adatbázis
-- Telepített bcp parancssori segédprogram
-- Telepített SQLCMD parancssori segédprogram
+- A SQL Data Warehouse database
+- The bcp command line utility installed
+- The SQLCMD command line utility installed
 
->[AZURE.NOTE] A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][].
+>[AZURE.NOTE] You can download the bcp and sqlcmd utilities from the [Microsoft Download Center][].
 
-## Adatok importálása az SQL Data Warehouse-ba
+## Import data into SQL Data Warehouse
 
-Ebben az oktatóanyagban létrehoz egy táblát az Azure SQL Data Warehouse-ban, és adatokat importál a táblába.
+In this tutorial, you will create a table in Azure SQL Data Warehouse and import data into the table.
 
-### 1. lépés: Tábla létrehozása az Azure SQL Data Warehouse-ban
+### Step 1: Create a table in Azure SQL Data Warehouse
 
-Egy parancssorban az sqlcmd paranccsal futtassa a következő lekérdezést. Ezzel egy táblát hoz létre a példányán:
+From a command prompt, use sqlcmd to run the following query to create a table on your instance:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -75,11 +76,11 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][] vagy [CREATE TABLE szintaxis][].
+>[AZURE.NOTE] See [Table Overview][] or [CREATE TABLE syntax][] for more information about creating a table on SQL Data Warehouse and the  options available in the WITH clause.
 
-### 2. lépés: Forrásadatfájlok létrehozása
+### Step 2: Create a source data file
 
-Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt).
+Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -96,22 +97,22 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 20150101,1,3
 ```
 
-> [AZURE.NOTE] Fontos észben tartani, hogy a bcp.exe nem támogatja az UTF-8 kódolást. A bcp.exe használatakor használjon ASCII fájlokat vagy UTF-16 kódolást.
+> [AZURE.NOTE] It is important to remember that bcp.exe does not support the UTF-8 file encoding. Please use ASCII files or UTF-16 encoded files when using bcp.exe.
 
-### 3. lépés: Csatlakozás és az adatok importálása
-A bcp és az alábbi parancs segítségével csatlakozhat és importálhatja az adatokat. Az értékeket szükség szerint cserélje le:
+### Step 3: Connect and import the data
+Using bcp, you can connect and import the data using the following command replacing the values as appropriate:
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Az adatok betöltésének ellenőrzéséhez futtassa az alábbi lekérdezést az sqlcmd segítségével:
+You can verify the data was loaded by running the following query using sqlcmd:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Az alábbi eredményeket fogja kapni:
+This should return the following results:
 
 DateId |CalendarQuarter |FiscalQuarter
 ----------- |--------------- |-------------
@@ -128,11 +129,11 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### 4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
+### Step 4: Create Statistics on your newly loaded data
 
-Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
+Azure SQL Data Warehouse does not yet support auto create or auto update statistics. In order to get the best performance from your queries, it's important that statistics be created on all columns of all tables after the first load or any substantial changes occur in the data. For a detailed explanation of statistics, see the [Statistics][] topic in the Develop group of topics. Below is a quick example of how to create statistics on the tabled loaded in this example
 
-Hajtsa végre az alábbi CREATE STATISTICS utasításokat egy sqlcmd parancssorból:
+Execute the following CREATE STATISTICS statements from a sqlcmd prompt:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -142,17 +143,17 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## Adatok exportálása az SQL Data Warehouse-ból
-Ebben az oktatóanyagban létrehoz egy adatfájlt egy SQL Data Warehouse-táblából. A fenti létrehozott adatokat exportáljuk egy új, DimDate2_export.txt adatfájlba.
+## Export data from SQL Data Warehouse
+In this tutorial, you will create a data file from a table in SQL Data Warehouse. We will export the data we created above to a new data file called DimDate2_export.txt.
 
-### 1. lépés: Az adatok exportálása
+### Step 1: Export the data
 
-A bcp segédprogram és az alábbi parancs segítségével csatlakozhat és exportálhatja az adatokat. Az értékeket szükség szerint cserélje le:
+Using the bcp utility, you can connect and export data using the following command replacing the values as appropriate:
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A fájl adatainak az alábbi szöveggel kell egyezniük:
+You can verify the data was exported correctly by opening the new file. The data in the file should match the text below:
 
 ```
 20150301,1,3
@@ -169,30 +170,30 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 20150101,1,3
 ```
 
->[AZURE.NOTE] Az elosztott rendszerek jellemzői miatt előfordulhat, hogy az adatok sorrendje nem egyforma a különböző SQL Data Warehouse-adatbázisokban. Másik lehetőségként használhatja a bcp **queryout** függvényét, amellyel a teljes táblázat helyett egy lekérdezéssel kinyert tartalom írható.
+>[AZURE.NOTE] Due to the nature of distributed systems, the data order may not be the same across SQL Data Warehouse databases. Another option is to use the **queryout** function of bcp to write a query extract rather than export the entire table.
 
-## Következő lépések
-A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][].
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
+## Next steps
+For an overview of loading, see [Load data into SQL Data Warehouse][].
+For more development tips, see [SQL Data Warehouse development overview][].
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Adatok betöltése az SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
-[Táblák áttekintése]: ./sql-data-warehouse-tables-overview.md
-[Statisztika]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE szintaxis]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft letöltőközpontból]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

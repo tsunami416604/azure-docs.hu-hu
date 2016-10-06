@@ -1,6 +1,6 @@
-> [AZURE.TIP] **Azure Blob Storage-erőforrások kezelése a Microsoft Azure Storage Explorer használatával**
+> [AZURE.TIP] **Manage Azure Blob Storage resources with Microsoft Azure Storage Explorer**
 > 
-> A Microsoft Azure Storage Explorer segítségével [kezelheti az Azure Blob Storage-erőforrásokat](../articles/vs-azure-tools-storage-explorer-blobs.md), például vizuálisan hozhat létre, olvashat, frissíthet és törölhet blobtárolókat és blobokat, valamint kezelheti a blobtárolókhoz és blobokhoz való hozzáférést.
+> Microsoft Azure Storage Explorer enables you to [manage Azure Blob Storage resources](../articles/vs-azure-tools-storage-explorer-blobs.md), including the ability to visually create, read, update, and delete blob containers and blobs, as well as manage access to your blobs containers and blobs.
 
 <!--HONumber=Sep16_HO4-->
 

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Az Azure Redis Cache használata a Node.js környezettel | Microsoft Azure"
-    description="Bevezetés az Azure Redis Cache használatába a Node.js és a node_redis alkalmazásával."
+    pageTitle="How to use Azure Redis Cache with Node.js | Microsoft Azure"
+    description="Get started with Azure Redis Cache using Node.js and node_redis."
     services="redis-cache"
     documentationCenter=""
     authors="steved0x"
@@ -16,7 +16,8 @@
     ms.date="08/16/2016"
     ms.author="sdanie"/>
 
-# Az Azure Redis Cache használata a Node.js környezettel
+
+# How to use Azure Redis Cache with Node.js
 
 > [AZURE.SELECTOR]
 - [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
@@ -25,30 +26,30 @@
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
 
-Az Azure Redis Cache hozzáférést biztosít egy biztonságos, dedikált Redis Cache gyorsítótárhoz, amelyet a Microsoft felügyel. A gyorsítótár a Microsoft Azure összes alkalmazásából elérhető.
+Azure Redis Cache gives you access to a secure, dedicated Redis cache, managed by Microsoft. Your cache is accessible from any application within Microsoft Azure.
 
-Ez a témakör segítséget nyújt az első lépések megtételében az Azure Redis Cache használatakor Node.js környezetben. Egy másik példa az Azure Redis Cache használatára Node.js környezetben: [Node.js-csevegőalkalmazás létrehozása a Socket.IO segítségével egy Azure-webhelyen](../app-service-web/web-sites-nodejs-chat-app-socketio.md).
+This topic shows you how to get started with Azure Redis Cache using Node.js. For another example of using Azure Redis Cache with Node.js, see [Build a Node.js Chat Application with Socket.IO on an Azure Website](../app-service-web/web-sites-nodejs-chat-app-socketio.md).
 
 
-## Előfeltételek
+## Prerequisites
 
-Telepítse a [node_redis](https://github.com/mranney/node_redis) ügyfelet:
+Install [node_redis](https://github.com/mranney/node_redis):
 
     npm install redis
 
-Ez az oktatóanyag a [node_redis](https://github.com/mranney/node_redis) ügyfelet használja. Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](http://redis.io/clients#nodejs) felsoroló weblapon.
+This tutorial uses [node_redis](https://github.com/mranney/node_redis). For examples of using other Node.js clients, see the individual documentation for the Node.js clients listed at [Node.js Redis clients](http://redis.io/clients#nodejs).
 
-## Redis Cache gyorsítótár létrehozása az Azure-ban
+## Create a Redis cache on Azure
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## Állomásnév és hívóbetűk lekérése
+## Retrieve the host name and access keys
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## Biztonságos csatlakozás a gyorsítótárhoz SSL használatával
+## Connect to the cache securely using SSL
 
-A [node_redis](https://github.com/mranney/node_redis) legújabb buildjei támogatást nyújtanak az Azure Redis Cache-hez SSL használatával való kapcsolódáshoz. Az alábbi példa bemutatja, hogyan csatlakozhat az Azure Redis Cache-hez a 6380-as SSL-végpont használatával. A `<name>` helyére a gyorsítótár nevét, a `<key>` helyére pedig az előző, [Állomásnév és hívóbetűk lekérése](#retrieve-the-host-name-and-access-keys) című szakaszban ismertetett elsődleges vagy másodlagos kulcsot írja be.
+The latest builds of [node_redis](https://github.com/mranney/node_redis) provide support for connecting to Azure Redis Cache using SSL. The following example shows how to connect to Azure Redis Cache using the SSL endpoint of 6380. Replace `<name>` with the name of your cache and `<key>` with either your primary or secondary key as described in the previous [Retrieve the host name and access keys](#retrieve-the-host-name-and-access-keys) section.
 
      var redis = require("redis");
     
@@ -56,9 +57,9 @@ A [node_redis](https://github.com/mranney/node_redis) legújabb buildjei támoga
     var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
 
 
-## Elemek hozzáadása és lekérése a gyorsítótárból
+## Add something to the cache and retrieve it
 
-Az alábbi példa bemutatja, hogyan csatlakozhat egy Azure Redis Cache-példányhoz, valamint hogyan menthet egy elemet a gyorsítótárban, majd kérheti le azt onnan. További példák a Redis használatára a [node_redis](https://github.com/mranney/node_redis) ügyféllel: [http://redis.js.org/](http://redis.js.org/).
+The following example shows you how to connect to an Azure Redis Cache instance, and store and retrieve an item from the cache. For more examples of using Redis with the [node_redis](https://github.com/mranney/node_redis) client, see [http://redis.js.org/](http://redis.js.org/).
 
      var redis = require("redis");
     
@@ -73,22 +74,22 @@ Az alábbi példa bemutatja, hogyan csatlakozhat egy Azure Redis Cache-példány
             console.log(reply);
         });
 
-Kimenet:
+Output:
 
     OK
     value
 
 
-## Következő lépések
+## Next steps
 
-- [Engedélyezze a gyorsítótár-diagnosztikát,](cache-how-to-monitor.md#enable-cache-diagnostics) hogy [megfigyelhesse](cache-how-to-monitor.md) a gyorsítótár állapotát.
-- Olvassa el a hivatalos [Redis dokumentációt](http://redis.io/documentation).
-
-
+- [Enable cache diagnostics](cache-how-to-monitor.md#enable-cache-diagnostics) so you can [monitor](cache-how-to-monitor.md) the health of your cache.
+- Read the official [Redis documentation](http://redis.io/documentation).
 
 
 
 
-<!--HONumber=sep16_HO1-->
+
+
+<!--HONumber=Sep16_HO4-->
 
 

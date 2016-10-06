@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Machine Learning-mintakísérletek másolása | Microsoft Azure"
-    description="Ebből a cikkből megtudhatja, hogyan használhatja a Machine Learning-mintakísérleteket új kísérletek létrehozására a Cortana Intelligence Gallery és a Microsoft Azure Machine Learning alkalmazásával."
+    pageTitle="Copy machine learning sample experiments | Microsoft Azure"
+    description="Learn how to use sample machine learning experiments to create new experiments with Cortana Intelligence Gallery and Microsoft Azure Machine Learning."
     services="machine-learning"
     documentationCenter=""
     authors="cjgronlund"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -16,60 +16,61 @@
     ms.date="08/17/2016"
     ms.author="cgronlun;chhavib;olgali"/>
 
-# Új Machine Learning-kísérletek létrehozása mintakísérletek másolásával
-Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) mintakísérleteivel. A minták segítségével felépítheti saját Machine Learning-megoldását.
 
-A katalógusban szereplő mintakísérleteket a Microsoft Azure Machine Learning csapata készítette, illetve a Machine Learning közösség osztotta meg. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
+# Copy sample experiments to create new machine learning experiments
+Learn how to start with sample experiments from [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) instead of creating machine learning experiments from scratch. You can use the samples to build your own machine learning solution.
 
-A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezdőknek](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) sorozat következő 3 perces videóját: [Copy other people's work to do data science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) (Mások munkájának felhasználása adatelemzéshez).
+In the gallery are sample experiments by the Microsoft Azure Machine Learning team as well as samples shared by the Machine Learning community. You also can ask questions or post comments about experiments.
+
+To see how to use the gallery, watch the 3-minute video [Copy other people's work to do data science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) from the series [Data Science for Beginners](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Másolni kívánt kísérlet keresése a Cortana Intelligence Galleryben
+## Find an experiment to copy in Cortana Intelligence Gallery
 
-Az elérhető kísérletek megtekintéséhez a [Gallery](http://gallery.cortanaintelligence.com/) megnyitása után kattintson az **Experiments** (Kísérletek) fülre az oldal tetején.
+To see what experiments are available, go to the [Gallery](http://gallery.cortanaintelligence.com/) and click **Experiments** at the top of the page.
 
-### A legújabb vagy a legnépszerűbb kísérletek megkeresése
+### Find the newest or most popular experiments
 
-Ezen az oldalon megtekintheti a **Recently added** (Újonnan hozzáadott) kísérleteket, illetve lefelé görgetve a **What's popular** (Népszerű) kísérleteket vagy a legújabb **Popular Microsoft experiments** (Népszerű Microsoft kísérletek) kísérletek között böngészhet.
+On this page, you can see **Recently added** experiments, or scroll down to look at **What's popular** or the latest **Popular Microsoft experiments**.
 
-### Adott követelményeknek megfelelő kísérletek keresése
+### Look for an experiment that meets specific requirements
 
-Az összes kísérlet tallózásához:
+To browse all experiments:
 
-1. Kattintson az **Összes tallózása** fülre az oldal tetején.
-2. A **Pontosítás** fül alatt válassza ki a **Kísérlet** fület a Katalógusban található összes kísérlet megtekintéséhez.
-3. A követelményeknek megfelelő kísérletek keresése különféle módokon történhet:
-    * **Válasszon ki szűrőket a bal oldalon.** A PCA-alapú anomáliaészlelő algoritmusokat használó kísérletek böngészéséhez válassza az **Experiment** (Kísérlet) fület a **Categories** (Kategóriák) alatt és a **PCA-Based Anomaly Detection** (PCA alapú anomáliaészlelés) lehetőséget az **Algorithms Used** (Használt algoritmusok) alatt. (Ha nem látja a keresett algoritmust, kattintson a **Show all** (Összes megjelenítése) lehetőségre a lista alján.)<br></br>
+1. Click **Browse all** at the top of the page.
+2. Under **Refine by**, select **Experiment** to see all the experiments in the Gallery.
+3. You can find experiments that meet your requirements a couple different ways:
+    * **Select filters on the left.** For example, to browse experiments that use a PCA-based anomaly detection algorithm, select **Experiment** under **Categories**, and **PCA-Based Anomaly Detection** under **Algorithms Used**. (If you don't see that algorithm, click **Show all** at the bottom of the list.)<br></br>
       ![](./media/machine-learning-sample-experiments/refine-the-view.png)
-    *  **Használja a keresőmezőt.** Ha például a Microsoft által közzétett, kétosztályos támogató vektorgép-algoritmust használó, számjegyfelismeréssel kapcsolatos kísérleteket szeretne keresni, a keresőmezőbe írja be a „digit recognition” (számjegyfelismerés) kifejezést. Ezt követően válassza ki az **Experiment** (Kísérlet), a **Microsoft content only** (Kizárólag Microsoft tartalom) és a **Two-Class Support Vector Machine** (Kétosztályos támogató vektorgép) szűrőt:
+    *  **Use the search box.** For example, to find experiments contributed by Microsoft related to digit recognition that use a two-class support vector machine algorithm, enter "digit recognition" in the search box. Then, select the filters **Experiment**, **Microsoft content only**, and **Two-Class Support Vector Machine**:
       ![](./media/machine-learning-sample-experiments/search-for-experiments.png) 
-4. Kattintson a kísérletre, ha többet szeretne megtudni róla.
-5. A kísérlet futtatásához és/vagy módosításához kattintson a **Megnyitás a Studióban** fülre a kísérlet oldalán.
+4. Click an experiment to learn more about it.
+5. To run and/or modify the experiment, click **Open in Studio** on the experiment's page.
 
-    > [AZURE.NOTE] Egy kísérlet megnyitásához a Machine Learning Studióban be kell jelentkeznie a Microsoft-fiók hitelesítő adatait használva. Ha még nem rendelkezik Machine Learning munkaterülettel, egy ingyenes próba munkaterület jön létre. [Az Azure Machine Learning ingyenes próbaverziójának tartalma](https://azure.microsoft.com/pricing/details/machine-learning/)
+    > [AZURE.NOTE] To open an experiment in Machine Learning Studio, you need to sign in with your Microsoft account credentials. If you don’t have a Machine Learning workspace yet, a free trial workspace is created. [Learn what’s included in the Machine Learning free trial](https://azure.microsoft.com/pricing/details/machine-learning/)
 
     ![](./media/machine-learning-sample-experiments/example-experiment.png) 
 
 
-## Sablon használata a Machine Learning Studióban
+## Use a template in Machine Learning Studio
 
-A Galleryben található egyik sablont mintaként használva új kísérletet hozhat létre a Machine Learning Studióban.
+You also can create a new experiment in Machine Learning Studio using a Gallery sample as a template.
 
-1. Jelentkezzen be a [Studióba](https://studio.azureml.net) a Microsoft-fiók hitelesítő adatait használva, és kattintson az **Új** fülre egy új kísérlet létrehozásához.
-2. Tallózzon a sablonok között, és kattintson rá az egyikre.
+1. Sign in with your Microsoft account credentials to the [Studio](https://studio.azureml.net), and then click **New** to create a new experiment.
+2. Browse through the sample content and click one.
 
-A mintakísérletet példaként használva új kísérlet jön létre a munkaterületén.
+A new experiment is created in your workspace using the sample experiment as a template.
 
-## Következő lépések
-- [Adatok előkészítése](machine-learning-data-science-import-data.md)
-- [Próbálja meg az R nyelv használatát a kísérlet során](machine-learning-r-quickstart.md)
-- [Tekintse át az R nyelven íródott mintakísérleteket](machine-learning-r-csharp-web-service-examples.md)
-- [Webszolgáltatási API létrehozása](machine-learning-publish-a-machine-learning-web-service.md)
-- [Használatra kész alkalmazások tallózása](https://datamarket.azure.com/browse?query=machine+learning)
+## Next steps
+- [Prepare your data](machine-learning-data-science-import-data.md)
+- [Try using R in your experiment](machine-learning-r-quickstart.md)
+- [Review sample R experiments](machine-learning-r-csharp-web-service-examples.md)
+- [Create a web service API](machine-learning-publish-a-machine-learning-web-service.md)
+- [Browse ready-to-use applications](https://datamarket.azure.com/browse?query=machine+learning)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

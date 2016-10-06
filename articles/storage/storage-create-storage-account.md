@@ -162,6 +162,6 @@ További információ: [Azure Virtual Machines – dokumentáció](http://azure.
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

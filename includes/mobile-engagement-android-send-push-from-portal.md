@@ -1,54 +1,54 @@
-###A GCM API-kulcshoz való hozzáférés biztosítása a Mobile Engagement számára
+###Grant Mobile Engagement access to your GCM API Key
 
-Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítéseket küldjön az Ön nevében, hozzáférést kell biztosítania számára az API-kulcshoz. Ezt a kulcs konfigurálásával, valamint annak a Mobile Engagement portálon történő megadásával teheti meg.
+To allow Mobile Engagement to send push notifications on your behalf, you need to grant it access to your API Key. This is done by configuring and entering your key into the Mobile Engagement portal.
 
-1. A klasszikus Azure portálon győződjön meg arról, hogy be van lépve a projekthez használt alkalmazásba, majd kattintson a lap alján található **Engage** (Aktiválás) gombra:
+1. From your Azure Classic Portal, ensure you're in the app we're using for this project, and then click the **Engage** button at the bottom:
 
     ![](./media/mobile-engagement-android-send-push/engage-button.png)
 
-2. Ezután kattintson a **Beállítások** -> **Natív leküldés** elemre a GCM-kulcs megadásához:
+2. Then click the **Settings** -> **Native Push** section to enter your GCM Key:
 
     ![](./media/mobile-engagement-android-send-push/engagement-portal.png)
 
-3. Kattintson az **API-kulcs** melletti **Szerkesztés** ikonra a **GCM-beállítások** szakaszban, ahogy az ábra is mutatja:
+3. Click the **Edit** icon in front of **API Key** in the **GCM Settings** section as shown below:
 
     ![](./media/mobile-engagement-android-send-push/native-push-settings.png)
 
-4. A felugró ablakban illessze be az előzőleg beszerzett GCM-kiszolgálókulcsot, majd kattintson az **OK** gombra.
+4. In the pop-up, paste the GCM Server Key you obtained before and then click **Ok**.
 
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-##<a id="send"></a>Értesítés küldése az alkalmazásnak
+##<a id="send"></a>Send a notification to your app
 
-Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elküld egy leküldéses értesítést az alkalmazásnak.
+We will now create a simple push notification campaign that sends a push notification to our app.
 
-1. Lépjen a Mobile Engagement portál **REACH** (ELÉRÉS) lapjára.
+1. Navigate to the **REACH** tab in your Mobile Engagement portal.
 
-2. Kattintson a **New announcement** (Új értesítés) elemre a leküldéses értesítési kampány létrehozásához.
+2. Click **New announcement** to create your push notification campaign.
 
     ![](./media/mobile-engagement-android-send-push/new-announcement.png)
 
-3. Állítsa be a kampány első mezőjét a következő lépésekkel:
+3. Set up the first field of your campaign through the following steps:
 
     ![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
 
-    a. Nevezze el a kampányt.
+    a. Name your campaign.
 
-    b. A Kézbesítési típust (**Delivery type**) állítsa *System notification -> Simple* (Rendszerértesítés -> Egyszerű) lehetőségre. Ez egy egyszerű Android leküldéses értesítési típus, amely egy címet és egy rövid szöveges sort tartalmaz.
+    b. Select the **Delivery type** as *System notification -> Simple*: This is the simple Android push notification type that features a title and a small line of text.
 
-    c. A **Delivey time** (Kézbesítés időpontja) beállítást állítsa *Any time* (Bármikor) értékre. Így az alkalmazás akkor is megkapja az értesítéseket, ha nincs elindítva.
+    c. Select **Delivery time** as *Any time* to allow the app to receive a notification whether the app is started or not.
 
-    d. Az értesítés szövegéhez adja meg a címet (**Title**), amely a leküldéses üzenetben félkövérrel szedve jelenik majd meg.
+    d. In the notification text type the **Title** which will be in bold in the push.
 
-    e. Ezután írja be az üzenetét a **Message** (Üzenet) mezőbe
+    e. Then type your **Message**
 
-4. Görgessen lefelé, és a **Content** (Tartalom) szakaszban válassza a **Notification only** (Csak értesítés) lehetőséget.
+4. Scroll down, and in the **Content** section, select **Notification only**.
 
     ![](./media/mobile-engagement-android-send-push/campaign-content.png)
 
-5. Ezzel beállította a lehető legegyszerűbb kampányt. Görgessen újra le, és kattintson a **Create** (Létrehozás) gombra a kampány mentéséhez.
+5. You're done setting the most basic campaign possible. Now scroll down again and click the **Create** button to save your campaign.
 
-6. Utolsó lépés: Kattintson az **Activate** (Aktiválás) lehetőségre a kampány aktiválásához és a leküldéses értesítések küldésének megkezdéséhez.
+6. Last step: click **Activate** to activate your campaign to send push notifications.
 
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
 

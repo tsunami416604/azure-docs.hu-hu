@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Mi az az Azure Machine Learning? | Microsoft Azure"
-    description="Ismerteti a felhőalapú Machine Learning alapvető fogalmait, az alkalmazási területeket, valamint a Machine Learning kifejezéseit."
-    keywords="mi az a machine learning,machine learning-kifejezések,prediktív,mi az a prediktív elemzés,üzembe helyezés"
+    pageTitle="What is Machine Learning on Azure?| Microsoft Azure"
+    description="Explains basic concepts of machine learning in the cloud, describes what you can use it for, and defines machine learning terms."
+    keywords="what is machine learning,machine learning terms,predictive,what is predictive analytics,operationalize"
     services="machine-learning"
     documentationCenter=""
     authors="cjgronlund"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -18,108 +18,109 @@
     ms.author="cgronlun;tedway;olgali"/>
 
 
-# Bevezetés a felhőalapú Machine Learning használatába
 
-## Mit jelent a gépi tanulás funkció?
+# Introduction to machine learning in the cloud
 
-A Machine Learning olyan adatelemzési módszer, amelynek segítségével a számítógépek a meglévő adatokból tanulva jövőbeni viselkedéseket, kimeneteket és trendeket jelezhetnek előre.  
+## What is machine learning?
 
-A gépi tanulás által biztosított előrejelzéseket felhasználva aztán intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárlói felületeknél alkalmazzák, a gépi tanulás képes a korábban megvásárolt cikkek alapján olyan termékeket ajánlani, amelyek esetleg szintén érdekelhetik Önt. A Machine Learning a bankkártya minden lehúzásakor összeveti az adott tranzakciót az adatbázisban található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a Machine Learning segít eldönteni, hogy a feladat el lett-e végezve.
+Machine learning is a technique of data science that helps computers learn from existing data in order to forecast future behaviors, outcomes, and trends.  
 
-Az [Adatelemzés kezdőknek](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) videósorozat rövid áttekintést ad ezekről a témákról. Az Adatelemzés kezdőknek sorozat szakzsargon vagy matematikai kifejezések használata nélkül ismerteti meg a Machine Learning használatával, és vezeti végig egy egyszerű prediktív modellen.
+These forecasts or predictions from machine learning can make apps and devices smarter. When you shop online, machine learning helps recommend other products you might like based on what you've purchased. When your credit card is swiped, machine learning compares the transaction to a database of transactions and helps detect fraud. When your robot vacuum cleaner vacuums a room, machine learning helps it decide whether the job is done.
 
-## Mi a Microsoft Azure-felhő Machine Learning funkciója?
+For a brief overview, try the video series [Data Science for Beginners](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). Without using jargon or math, Data Science for Beginners introduces machine learning and steps you through a simple predictive model.
 
-Az Azure Machine Learning funkciókban gazdag felhőalapú prediktív elemzési szolgáltatás, amelynek segítségével elemzési megoldásként használható prediktív modelleket hozhat létre és helyezhet üzembe. Ha Machine Learning-kísérletek futtatására vagy megoldások felépítésére az Azure-felhőt használja, nincs szükség drága hardverek vagy infrastruktúra beszerzésére.
+## What is Machine Learning in the Microsoft Azure cloud?
 
-![Mit jelent a gépi tanulás funkció? A prediktív elemzés működésbe léptetésének alapvető munkafolyamata az Azure Machine Learning szolgáltatásban.](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
+Azure Machine Learning is a powerful cloud-based predictive analytics service that makes it possible to quickly create and deploy predictive models as analytics solutions. When you use the Azure cloud to run machine learning experiments or build solutions, you don't have to buy expensive hardware or infrastructure.
 
-Az Azure Machine Learning nem csupán eszközöket biztosít a modellek prediktív elemzéséhez, de teljes körűen felügyelt szolgáltatást is nyújt, amelynek segítségével felhasználásra kész webszolgáltatásként üzembe helyezheti prediktív modelljeit. Az Azure Machine Learning eszközeivel ezenfelül teljes prediktív elemzési megoldásokat hozhat létre a felhőben is, amelyeket könnyedén tesztelhet, működésbe léptethet, és felügyelhet.
+![What is machine learning? Basic workflow to operationalize predictive analytics on Azure Machine Learning.](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
+
+Azure Machine Learning not only provides tools to model predictive analytics, but also provides a fully managed service you can use to deploy your predictive models as ready-to-consume web services. Azure Machine Learning provides tools for creating complete predictive analytics solutions in the cloud: Quickly create, test, operationalize, and manage predictive models.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Mi az a prediktív elemzés?
+## What is predictive analytics?
 
-A prediktív elemzések különböző matematikai képleteket, úgynevezett algoritmusokat használnak a korábbi és a jelenlegi adatok elemzéséhez, amelyekből a jövőbeni események előrejelzéséhez mintázatokat vagy trendeket állítanak elő.
+Predictive analytics uses various math formulas called algorithms that analyze historical or current data for patterns or trends in order to forecast future events.
 
-Az Azure Machine Learning a prediktív elemzések végrehajtásának különösen hatékony módja: használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modellek létrehozására használhatja internetkapcsolattal rendelkező számítógépeken, és a prediktív elemzési megoldást gyorsan üzembe helyezheti. Ha gyorsan szeretne eredményt elérni, kezdje a munkát a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) használatra kész példáival és megoldásaival.
+Azure Machine Learning is a particularly powerful way to do predictive analytics: You can work from a ready-to-use library of algorithms, use the algorithms to create models on an internet-connected PC, and deploy your predictive solution quickly. To get results quickly, start with ready-to-use examples and solutions in the [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/).
 
-## Teljes gépi tanulási megoldások létrehozása a felhőben
+## Build complete machine learning solutions in the cloud
 
-Az Azure Machine Learning szolgáltatásban minden megtalálható, amire szüksége lehet a prediktív elemzési megoldások létrehozásához a felhőben: nagy méretű algoritmustár, létrehozási modelleket tartalmazó stúdió, a modellek webszolgáltatásként való üzembe helyezését megkönnyítő funkciók és még számos hasznos lehetőség.
+Azure Machine Learning has everything you need to create predictive analytics solutions in the cloud, from a large algorithm library, to a studio for building models, to an easy way to deploy your model as a web service.
 
-### Machine Learning Studio: Prediktív modellek létrehozása
+### Machine Learning Studio: Create predictive models
 
-Húzással és modulok csatlakoztatásával gyorsan létrehozhat prediktív modelleket a [Machine Learning Studióban](machine-learning-what-is-ml-studio.md). Egyszerűen kísérletezhet a különböző kombinációkkal, amelyeket ráadásul [ingyenesen próbálhat ki](https://studio.azureml.net/?selectAccess=true&o=2).
+In [Machine Learning Studio](machine-learning-what-is-ml-studio.md), you can quickly create predictive models by dragging, dropping, and connecting modules. It's easy to experiment with different combinations, and you [try it out for free](https://studio.azureml.net/?selectAccess=true&o=2).
 
-![A prediktív elemzés bemutatása: prediktív elemzési kísérlet bemutatása az Azure Machine Learning Studióban](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
+![What is predictive analytics: Example of a predictive analytics experiment in Azure Machine Learning Studio](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
-* A [Cortana Intelligence Galleryben](machine-learning-gallery-how-to-use-contribute-publish.md) mások által kifejlesztett elemzési megoldásokat próbálhat ki, vagy létrehozhatja a sajátját. A közösség szívesen segít választ találni kísérletekkel kapcsolatos kérdéseire vagy megjegyzéseire. A kísérletekre mutató hivatkozásait különféle közösségi hálózatokon (például LinkedInen vagy Twitteren) is megoszthatja.
-* A Machine Learning Studióban olyan [Machine Learning-algoritmusok és -modulok](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) gazdag tára áll rendelkezésre, amelyek jelentősen felgyorsítják a prediktív modell létrehozását. Mintakísérletek, R- és Python-csomagok, valamint olyan kategóriavezető Microsoft-algoritmusok közül választhat, mint az Xbox és a Bing. A Studio moduljait saját [R-](machine-learning-r-quickstart.md) és [Python-](machine-learning-execute-python-scripts.md)parancsprogramjaival bővítheti ki.
-
-
-    ![Kipróbálhatja mások prediktív kísérleteit, vagy feltöltheti sajátjait az Azure Cortana Intelligence Gallerybe.](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
-
-### Prediktív elemzési megoldások működésbe léptetése: Webszolgáltatások vásárlása vagy saját megoldások közzététele
-
-* A [Microsoft Azure Piactéren](https://datamarket.azure.com/browse?query=machine+learning) használatra kész webszolgáltatásokat vásárolhat például a következő területeken: javaslatok, szövegelemzések, anomáliadetektálás.
-
-* Hozza működésbe prediktív elemzési modelljeit:
-    * [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
-    * [A modellek betanítása és újratanítása API-k segítségével](machine-learning-retrain-models-programmatically.md)
-    * [Webszolgáltatás-végpontok kezelése](machine-learning-create-endpoint.md)
-    * [Webszolgáltatások skálázása](machine-learning-scaling-endpoints.md)
-    * [Webszolgáltatások felhasználása](machine-learning-consume-web-services.md)
-
-## A Machine Learning legfontosabb kifejezései és fogalmai
-
-A Machine Learning kifejezéseinek jelentése nem mindig egyértelmű. Segítségül az alábbiakban ismertetjük a legfontosabb kifejezések meghatározását. Az ezek alatt található megjegyzés rovatban kérdezhet rá olyan további kifejezésekre, amelyek meghatározására kíváncsi.
-
-### Az adatok feltárása, deskriptív elemzés és prediktív elemzés
-
-Az **adatok feltárásának** azt a folyamatot nevezzük, amikor egy nagy és általában nem strukturált adathalmaz adatait összegyűjtve megkeressük a részletesebb elemzéshez felhasználható általános jellemzőket. Az **adatbányászat** kifejezés az adatfeltárás automatizált formájára utal.
-
-**Deskriptív elemzésnek nevezzük**, amikor az adathalmaz elemzésével azt szeretnénk megkapni, hogy pontosan mi történt az adatokkal. Az üzleti elemzések nagy része (például az értékesítési jelentések, webes metrikák és közösségihálózat-elemzések) deskriptív elemzésnek számít.
-
-**Prediktív elemzésnek** azt a folyamatot nevezzük, amikor előzményadatok vagy aktuális adatok alapján modelleket hozunk létre, amelyek segítségével előre lehet jelezni valamilyen jövőbeli eredményt.
+* In [Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md), you can try analytics solutions authored by others or contribute your own. Post questions or comments about experiments to the community, or share links to experiments via social networks such as LinkedIn and Twitter.
+* Use a large library of [Machine Learning algorithms and modules](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) in Machine Learning Studio to jump-start your predictive models. Choose from sample experiments, R and Python packages, and best-in-class algorithms from Microsoft businesses like Xbox and Bing. Extend Studio modules with your own custom [R](machine-learning-r-quickstart.md) and [Python](machine-learning-execute-python-scripts.md) scripts.
 
 
-### Felügyelt és nem felügyelt tanítás
- A **felügyelt tanítással** képzett algoritmusokat címkézett adatokkal, azaz a kívánt válaszokat példázó adatokkal tanítják. A rosszindulatú bankkártyahasználatot azonosító modellt például már ismert rosszindulatú és érvényes terhelések címkézett adatpontjait tartalmazó adatkészletből kell betanítani. A gépi tanulás általában felügyelt módon történik.
+    ![Try predictive experiments or contribute your own in Azure Cortana Intelligence Gallery](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 
- A **nem felügyelt tanítást** címkéket nem tartalmazó adatokon alkalmazzák, és a folyamat célja, hogy megtalálja az adathalmazon belüli összefüggéseket. Ez akkor hasznos, ha például vásárlói körében hasonló vásárlási szokásokat követő csoportokat szeretne felállítani.
+### Operationalize predictive analytics solutions: Purchase web services or publish your own
 
-### A modellek betanítása és kiértékelése
-A gépi tanulási modell a megválaszolandó kérdések vagy az előre jelezni kívánt eredmények absztrakciója. A modellek tanítását és kiértékelését meglévő adatok alapján lehet elvégezni.
+* Purchase ready-to-consume web services from [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning), such as Recommendations, Text Analytics, and Anomaly Detection.
 
-#### Betanítási adatok
-A modellek adatokból történő betanításakor használhat egy már ismert adatkészletet, majd a legpontosabb válaszok érdekében az adatjellemzők alapján módosíthatja a modellt. Az Azure Machine Learning szolgáltatásban egy, a tanítási adatokat feldolgozó algoritmusmodul, illetve funkcionális modulok, például pontozási modulok szükségek a modell létrehozásához.
+* Operationalize your predictive analytics models:
+    * [Deploy web services](machine-learning-publish-a-machine-learning-web-service.md)
+    * [Train and retrain models through APIs](machine-learning-retrain-models-programmatically.md)
+    * [Manage web service endpoints](machine-learning-create-endpoint.md)
+    * [Scale web services](machine-learning-scaling-endpoints.md)
+    * [Consume web services](machine-learning-consume-web-services.md)
 
-Felügyelt tanítás során, például a csalásészlelő modell tanítása esetén egy tranzakciókat tartalmazó halmazt fog használni, amelyben minden tranzakciónál meg van jelölve, hogy az csalási célú vagy érvényes. Az adathalmazt ilyenkor véletlenszerűen fel kell darabolni: az egyik rész a modell betanítására, a másik a modell kiértékelésére való.
+## Key machine learning terms and concepts
 
-#### Az adatok kiértékelése
-Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével értékelje ki a modellt. Ilyenkor olyan adatokat kell használni, amelyeknél tisztában van az eredményekkel, mivel így állapítható meg, hogy milyen pontosságú előrejelzésre képes a modell.
+Machine learning terms can be confusing. Here are definitions of key terms to help you. Use comments following to tell us about any other term you'd like defined.
 
-## A gépi tanulás tárgykörében gyakran használt egyéb kifejezések
+### Data exploration, descriptive analytics, and predictive analytics
 
-* **algoritmus**: A szabályok olyan önálló készlete, amely adatfeldolgozás, matematikai műveletek vagy automatikus indoklás alkalmazásával segít a problémák megoldásában.
-* **anomáliaészlelés**: Olyan modell, amely képes a szokatlan események vagy értékek megjelölésére, és így segíti a problémák észlelését. A rosszindulatú bankkártyahasználat észlelése során például a rendszer szokatlan vásárlásokat keres.
-* **kategorizált adatok**: különböző kategóriákba sorolt, és különféle csoportokra osztható adatok. Egy gépjárműveket tartalmazó kategorizált adathalmazban például meg van adva a gyártás éve, a márka, a típus és az ár.
-* **besorolás**: az adatpontok kategóriákba sorolására használható modell, amely egy kategóriacsoportokkal már ellátott adathalmazt vesz alapul.
-* **jellemzőkiemelés**: az a folyamat, amikor bizonyos jellemzőket kinyerünk vagy kiválasztunk egy adathalmazból az adathalmaz és az eredmények minőségének javítása érdekében. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. További információk: [Feature selection and engineering in Azure Machine Learning](machine-learning-feature-selection-and-engineering.md) (Jellemzőkiválasztás és -kiemelés az Azure Machine Learngingben).
-* **modul**: A Machine Learning Studio-modell funkcionális része, például az Enter Data (Adatbevitel) modul, amely kis adatkészletek bevitelét és szerkesztését teszi lehetővé. A Machine Learning Studióban az algoritmusok is a modulok egyik típusának számítanak.
-* **modell**: Egy Machine Learning-kísérlet eredményeként létrejövő felügyelt tanítási modell, amely betanítási adatokból, algoritmusmodulból és különböző funkcionális modulokból (például a Score Model (Modell pontozása) modul) áll.
-* **numerikus adatok**: mérésekként (folytonos adatok) vagy megszámlált értékekként (diszkrét adatok) értelmezhető adatok. A numerikus adatokat *kvantitatív adatoknak* is nevezzük.
-* **particionálás**: az a folyamat, amikor az adatokat mintákra osztjuk. További információk: [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) (Particionálás és minták létrehozása).
-* **előrejelzés**: a gépi tanulási modellek által előrejelzett értékeket előrejelzéseknek nevezzük. Az „előrejelzett pontszám” kifejezés is előfordulhat. Az előrejelzett pontszámok azonban nem a modellek végső kimenetei. A modell értékelése a pontszám alapján történik.
-* **regresszió**: Olyan modell, amely a különböző értékek előrejelzését független változók alapján végzi el, például egy autó árát annak gyártási éve és márkája alapján becsüli meg.
-* **pontszám**: betanított besorolási vagy regressziós modell által, a Machine Learning Studio [Score Model](https://msdn.microsoft.com/library/azure/dn905995.aspx) (Modell pontozása) modulja segítségével generált előre jelzett érték. A besorolási modell az előre jelzett érték valószínűségét jelző pontszámot is visszaad. Ha a modell már alkalmas pontszámok generálására, ellenőrizze a modell pontosságát az [Evaluate Model](https://msdn.microsoft.com/library/azure/dn905915.aspx) (Modell kiértékelése) modul segítségével.
-* **minta**: az adathalmaz olyan része, amely az adathalmaz egészére vonatkozóan is reprezentatívnak tekinthető. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
+**Data exploration** is the process of gathering information about a large and often unstructured data set in order to find characteristics for focused analysis. **Data mining** refers to automated data exploration.
+
+**Descriptive analytics** is the process of analyzing a data set in order to summarize what happened. The vast majority of business analytics - such as sales reports, web metrics, and social networks analysis - are descriptive.
+
+**Predictive analytics** is the process of building models from historical or current data in order to forecast future outcomes.
 
 
+### Supervised and unsupervised learning
+ **Supervised learning** algorithms are trained with labeled data - in other words, data comprised of examples of the answers wanted. For instance, a model that identifies fraudulent credit card use would be trained from a data set with labeled data points of known fraudulent and valid charges. Most machine learning is supervised.
 
-## Következő lépések
-A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](machine-learning-create-experiment.md) vagy [bővíthető mintáinkat](machine-learning-sample-experiments.md).  
+ **Unsupervised learning** is used on data with no labels, and the goal is to find relationships in the data. For instance, you might want to find groupings of customer demographics with similar buying habits.
+
+### Model training and evaluation
+A machine learning model is an abstraction of the question you are trying to answer or the outcome you want to predict. Models are trained and evaluated from existing data.
+
+#### Training data
+When you train a model from data, you use a known data set and make adjustments to the model based on the data characteristics to get the most accurate answer. In Azure Machine Learning, a model is built from an algorithm module that processes training data and functional modules, such as a scoring module.
+
+In supervised learning, if you're training a fraud detection model, you use a set of transactions that are labeled as either fraudulent or valid. You split your data set randomly, and use part to train the model and part to test or evaluate the model.
+
+#### Evaluation data
+Once you have a trained model, evaluate the model using the remaining test data. You use data you already know the outcomes for, so that you can tell whether your model predicts accurately.
+
+## Other common machine learning terms
+
+* **algorithm**: A self-contained set of rules used to solve problems through data processing, math, or automated reasoning.
+* **anomaly detection**: A model that flags unusual events or values and helps you discover problems. For example, credit card fraud detection looks for unusual purchases.
+* **categorical data**: Data that is organized by categories and that can be divided into groups. For example a categorical data set for autos could specify year, make, model, and price.
+* **classification**: A model for organizing data points into categories based on a data set for which category groupings are already known.
+* **feature engineering**: The process of extracting or selecting features related to a data set in order to enhance the data set and improve outcomes. For instance, airfare data could be enhanced by days of the week and holidays. See [Feature selection and engineering in Azure Machine Learning](machine-learning-feature-selection-and-engineering.md).
+* **module**: A functional part in a Machine Learning Studio model, such as the Enter Data module that enables entering and editing small data sets. An algorithm is also a type of module in Machine Learning Studio.
+* **model**: A supervised learning model is the product of a machine learning experiment comprised of training data, an algorithm module, and functional modules, such as a Score Model module.
+* **numerical data**: Data that has meaning as measurements (continuous data) or counts (discrete data). Also referred to as *quantitative data*.
+* **partition**: The method by which you divide data into samples. See [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) for more information.
+* **prediction**: A prediction is a forecast of a value or values from a machine learning model. You might also see the term "predicted score." However, predicted scores are not the final output of a model. An evaluation of the model follows the score.
+* **regression**: A model for predicting a value based on independent variables, such as predicting the price of a car based on its year and make.
+* **score**: A predicted value generated from a trained classification or regression model, using the [Score Model module](https://msdn.microsoft.com/library/azure/dn905995.aspx) in Machine Learning Studio. Classification models also return a score for the probability of the predicted value. Once you've generated scores from a model, you can evaluate the model's accuracy using the [Evaluate Model module](https://msdn.microsoft.com/library/azure/dn905915.aspx).
+* **sample**: A part of a data set intended to be representative of the whole. Samples can be selected randomly or based on specific features of the data set.
+
+
+
+## Next steps
+You can learn the basics of predictive analytics and machine learning using a [step-by-step tutorial](machine-learning-create-experiment.md) and by [building on samples](machine-learning-sample-experiments.md).  
 
 
 <!-- Module References -->
@@ -127,6 +128,6 @@ A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használj
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

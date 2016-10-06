@@ -1,7 +1,11 @@
-When you create a virtual network gateway, you need to specify the gateway SKU that you want to use. When you select a higher gateway SKU, more CPUs and network bandwidth are allocated to the gateway, and as a result, the gateway can support higher network throughput to the virtual network.
+Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Ha egy átjáró magasabb szintű termékváltozatát választja, a rendszer több processzort és hálózati sávszélességet foglal le a számára, ezért az átjáró nagyobb hálózati átviteli sebesség támogatására képes a virtuális hálózaton.
 
-VPN Gateway can use the following SKUs:
+A VPN Gateway a következő termékváltozatok használatára képes:
 
 - Basic
 - Standard
 - HighPerformance
+
+<!--HONumber=Sep16_HO4-->
+
+

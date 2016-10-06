@@ -35,13 +35,15 @@ Az SDK egy olyan absztrakciós réteget biztosít, amelynek segítségével kül
 
 ### Üzenetek
 
-Ha úgy képzeljük el, hogy a modulok egymásnak küldözgetnek üzeneteket, könnyen megragadható az átjáró működése mögött rejlő elv, azonban ez nem pontosan így történik. A modulok egy üzenetbusz segítségével kommunikálnak egymással: üzeneteket tesznek közzé a buszon, az pedig elküldi az üzeneteket a buszhoz csatlakoztatott összes modulnak.
+Ha úgy képzeljük el, hogy a modulok egymásnak küldözgetnek üzeneteket, könnyen megragadható az átjáró működése mögött rejlő elv, azonban ez nem pontosan így történik. A modulok egy közvetítő segítségével kommunikálnak egymással: üzeneteket tesznek közzé a közvetítőn (busz, közzététel és előfizetés vagy bármely más üzenetkezelési minta), majd hagyják, hogy a közvetítő továbbítsa az üzenetet a hozzá csatlakoztatott moduloknak.
 
-A modulok a **MessageBus_Publish** függvény használatával teszik közzé az üzeneteket az üzenetbuszon. Az üzenetbusz az üzeneteket az egyes moduloknak a visszahívási függvény használatával továbbítja. Az üzenetek kulcs/érték tulajdonságokból és tartalmakból állnak, amelyek memóriablokként vannak továbbítva.
+A modulok a **Broker_Publish** függvény használatával teszik közzé az üzeneteket a közvetítőn. A közvetítő egy visszahívási függvény használatával továbbítja az üzeneteket az egyes moduloknak. Az üzenetek kulcs/érték tulajdonságokból és tartalmakból állnak, amelyek memóriablokként vannak továbbítva.
 
 ![][3]
 
-Mindegyik modul saját feladata az üzenetek szűrése, mivel az üzenetbusz közzétételi mechanizmusa mindegyik üzenetet továbbítja az összes csatlakoztatott modulnak. Az egyes moduloknak azonban csak a nekik szánt üzenetekkel kell foglalkozniuk. Az üzenetek szűrése hozza voltaképp létre az üzenetfolyamatot. Az egyes modulok általában az üzenettulajdonságok használatával szűrik ki a fogadott üzenetek közül azokat, amelyeket fel kell dolgozniuk.
+### Üzenettovábbítás és -szűrés
+
+Az üzeneteket kétféle módon lehet a megfelelő modulokhoz irányítani. Átadható egy hivatkozáskészlet a közvetítő számára, hogy megismerje az egyes modulok forrását és fogadóját, vagy a modul szűrheti az üzenet tulajdonságait. Az egyes moduloknak azonban csak akkor kell foglalkozniuk egy üzenettel, ha azt nekik szánták. A hivatkozások és az üzenetszűrés hozza létre végeredményben az üzenetfolyamatot.
 
 ## Hello World mintaarchitektúra
 
@@ -52,11 +54,11 @@ A Hello World minta az előző szakaszban leírt fogalmakat mutatja be. A Hello 
 
 ![][4]
 
-Az előző szakaszban foglaltak szerint a Hello World modul nem közvetlenül továbbítja öt másodpercenként az üzeneteket a naplózó modulnak. Ehelyett az üzenetbuszon teszi közzé öt másodpercenként az üzenetet.
+Az előző szakaszban foglaltak szerint a Hello World modul nem közvetlenül továbbítja öt másodpercenként az üzeneteket a naplózó modulnak. Ehelyett a közvetítőn teszi közzé öt másodpercenként az üzenetet.
 
-A naplózó modul az üzenetbuszról fogadja az üzeneteket, és megvizsgálja azok tulajdonságait egy szűrővel. Ha a naplózó modul azt állapítja meg, hogy fel kell dolgoznia egy adott üzenetet, az üzenet tartalmát egy fájlba írja.
+A naplózó modul fogadja az üzenetet a közvetítőtől, foglalkozik vele, és az üzenet tartalmát egy fájlba írja.
 
-A naplózó modul kizárólag fogadja az üzeneteket az üzenetbuszról, soha nem tesz közzé új üzeneteket a buszon.
+A naplózó modul kizárólag fogadja az üzeneteket a közvetítőtől, soha nem tesz közzé új üzeneteket a közvetítőn.
 
 ![][5]
 

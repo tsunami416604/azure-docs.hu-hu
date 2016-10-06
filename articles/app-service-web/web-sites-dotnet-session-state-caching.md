@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Munkamenet-állapot az Azure Redis Cache-ben, az Azure App Service szolgáltatásban" 
-    description="További tudnivalók az Azure Cache Service használatáról az ASP.NET munkamenet-állapotának gyorsítótárazásához." 
+    pageTitle="Session state with Azure Redis cache in Azure App Service" 
+    description="Learn how to use the Azure Cache Service to support ASP.NET session state caching." 
     services="app-service\web" 
     documentationCenter=".net" 
     authors="Rick-Anderson" 
@@ -17,33 +17,34 @@
     ms.author="riande"/>
 
 
-# Munkamenet-állapot az Azure Redis Cache-ben, az Azure App Service szolgáltatásban
+
+# Session state with Azure Redis cache in Azure App Service
 
 
-Ez a témakör leírja, hogyan használható az Azure Redis Cache szolgáltatás a munkamenet-állapotokhoz.
+This topic explains how to use the Azure Redis Cache Service for session state.
 
-Ha az ASP.NET webalkalmazás munkamenet-állapotot használ, be kell állítania egy külső állapotszolgáltatót (a Redis Cache Service vagy az SQL Server munkamenetállapot-szolgáltatóját). Ha munkamenet-állapotot használ, de nem használ külső szolgáltatót, a szolgáltatás a webalkalmazás egyetlen példányára lesz korlátozva. A legegyszerűbben és leggyorsabban engedélyezhető megoldás a Redis Cache Service.
+If your ASP.NET web app uses session state, you will need to configure an external session state provider (either the Redis Cache Service or a SQL Server session state provider). If you use session state, and don't use an external provider, you will be limited to one instance of your web app. The Redis Cache Service is the fastest and simplest to enable.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
-##<a id="createcache"></a>A gyorsítótár létrehozása
-Kövesse [ezt az útmutatót](../cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) a gyorsítótár létrehozásához.
+##<a id="createcache"></a>Create the Cache
+Follow [these directions](../cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) to create the cache.
 
-##<a id="configureproject"></a>A RedisSessionStateProvider NuGet csomagjának hozzáadása a webalkalmazáshoz
-Telepítse a NuGet `RedisSessionStateProvider` csomagot.  A következő paranccsal végezzen telepítést a csomagkezelő konzolról (**Eszközök** > **NuGet-csomagkezelő** > **Csomagkezelő konzol**):
+##<a id="configureproject"></a>Add the RedisSessionStateProvider NuGet package to your web app
+Install the NuGet `RedisSessionStateProvider` package.  Use the following command to install from the package manager console (**Tools** > **NuGet Package Manager** > **Package Manager Console**):
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
   
-Az **Eszközök** > **NuGet-csomagkezelő** > **Megoldás NuGet csomagjainak kezelése** menüből való telepítéshez keressen a következő kifejezésre: `RedisSessionStateProvider`.
+To install from **Tools** > **NuGet Package Manager** > **Manage NugGet Packages for Solution**, search for `RedisSessionStateProvider`.
 
-További információk: [NuGet RedisSessionStateProvider oldal](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/ ) és [A gyorsítótárügyfél konfigurálása](../cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
+For more information see the [NuGet RedisSessionStateProvider page](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/ ) and [Configure the cache client](../cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
 
-##<a id="configurewebconfig"></a>A Web.Config fájl módosítása
-A NuGet csomag szerelvényhivatkozások a gyorsítótárhoz való létrehozása mellett csonkbejegyzéseket ad a *web.config* fájlhoz. 
+##<a id="configurewebconfig"></a>Modify the Web.Config File
+In addition to making assembly references for Cache, the NuGet package adds stub entries in the *web.config* file. 
 
-1. Nyissa meg a *web.config* fájlt, és keresse meg a **sessionState** elemet.
+1. Open the *web.config* and find the the **sessionState** element.
 
-1. Adja meg a `host`, az `accessKey`, és a `port` értékét (az SSL-port legyen 6380), és állítsa az `SSL` tulajdonságot `true` értékűre. Ezek az értékek a gyorsítótárpéldány [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) paneljéről szerezhetők be. További információ: [Csatlakozás a gyorsítótárhoz](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Vegye figyelembe, hogy a nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. További információk a nem SSL port engedélyezésével kapcsolatban: [Configure a cache in Azure Redis Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx) (Gyorsítótár konfigurálása az Azure Redis Cache-ben) témakör, [Access Ports](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) (Hozzáférési portok) című szakasz. A következő kódban láthatók a *web.config* fájlon eszközölt módosítások, vagyis a *port*, a *host*, az accessKey*, és az *ssl* változásai.
+1. Enter the values for `host`, `accessKey`, `port` (the SSL port should be 6380), and set `SSL` to `true`. These values can be obtained from the [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) blade for your cache instance. For more information, see [Connect to the cache](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Note that the non-SSL port is disabled by default for new caches. For more information about enabling the non-SSL port, see the [Access Ports](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) section in the [Configure a cache in Azure Redis Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx) topic. The following markup shows the changes to the *web.config* file, specifically the changes to *port*, *host*, accessKey*, and *ssl*.
 
           <system.web>;
             <customErrors mode="Off" />;
@@ -74,30 +75,30 @@ A NuGet csomag szerelvényhivatkozások a gyorsítótárhoz való létrehozása 
           </system.web>;
 
 
-##<a id="usesessionobject"></a> A munkamenet-objektum használata a kódban
-A végső lépés a munkamenet-objektum használatának megkezdése az ASP.NET-kódban. Objektumokat a **Session.Add** metódussal adhat a munkamenet-állapothoz. Ez a metódus kulcs-érték párokat használ az elemek tárolására a munkamenetállapot-gyorsítótárban.
+##<a id="usesessionobject"></a> Use the Session Object in Code
+The final step is to begin using the Session object in your ASP.NET code. You add objects to session state by using the **Session.Add** method. This method uses key-value pairs to store items in the session state cache.
 
     string strValue = "yourvalue";
     Session.Add("yourkey", strValue);
 
-A következő kód lekéri ezt az értéket a munkamenet-állapotból.
+The following code retrieves this value from session state.
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)objValue; 
 
-A webalkalmazáson belüli objektumok gyorsítótárazásához ezenkívül használhatja a Redis Cache-t is. További információk: [MVC movie app with Azure Redis Cache in 15 minutes](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/) (MVC filmalkalmazás 15 perc alatt az Azure Redis Cache segítségével).
-További részletek az ASP.NET-munkamenetállapot használatával kapcsolatban: [ASP.NET Session State Overview (Az ASP.NET-munkamenetállapot áttekintése)][] .
+You can also use the Redis Cache to cache objects in your web app. For more info, see [MVC movie app with Azure Redis Cache in 15 minutes](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
+For more details about how to use ASP.NET session state, see [ASP.NET Session State Overview][].
 
->[AZURE.NOTE] Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
-## A változások
-* Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714)
+## What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
-  *Szerző: [Rick Anderson](https://twitter.com/RickAndMSFT)*
+  *By [Rick Anderson](https://twitter.com/RickAndMSFT)*
   
-  [legfrissebb telepítve]: http://www.windowsazure.com/downloads/?sdk=net  
-  [ASP.NET Session State Overview (Az ASP.NET-munkamenetállapot áttekintése)]: http://msdn.microsoft.com/library/ms178581.aspx
+  [installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+  [ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
   [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
   [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
@@ -111,6 +112,6 @@ További részletek az ASP.NET-munkamenetállapot használatával kapcsolatban: 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

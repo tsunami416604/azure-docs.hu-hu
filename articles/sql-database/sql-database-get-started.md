@@ -1,7 +1,7 @@
 <properties
-    pageTitle="Oktatóanyag az SQL Database használatához: SQL-adatbázis létrehozása | Microsoft Azure"
-    description="Megtudhatja, hogyan kell SQL Database-alapú logikai kiszolgálót és a hozzá tartozó tűzfalszabályt beállítani, valamint SQL Database-adatbázist létrehozni és mintaadatokat betölteni. Megtanulhatja az ügyféleszközökhöz való kapcsolódás, továbbá a felhasználók és az adatbázishoz tartozó tűzfalszabály konfigurálásának módját is."
-    keywords="oktatóanyag az SQL Database használatához, SQL-adatbázis létrehozása"
+    pageTitle="SQL Database tutorial: Create a SQL database | Microsoft Azure"
+    description="Learn how to set up a SQL Database logical server, server firewall rule, SQL database, and sample data. Also, learn how to connect with client tools, configure users, and set up a database firewall rule."
+    keywords="sql database tutorial, create a sql database"
     services="sql-database"
     documentationCenter=""
     authors="CarlRabeler"
@@ -19,126 +19,127 @@
     ms.author="carlrab"/>
 
 
-# Oktatóanyag az SQL Database használatához: SQL Database-adatbázis létrehozása pillanatok alatt az Azure Portalon
+
+# SQL Database tutorial: Create a SQL database in minutes by using the Azure portal
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-get-started.md)
-- [C##](sql-database-get-started-csharp.md)
+- [Azure portal](sql-database-get-started.md)
+- [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-Ez az oktatóanyag bemutatja, hogyan hozhatja létre a következőket az Azure Portal használatával:
+In this tutorial, you learn how to use the Azure portal to:
 
-- Azure SQL Database-adatbázis létrehozása mintaadatokkal.
-- Kiszolgálószintű tűzfalszabály egyetlen IP-cím vagy IP-címek tartománya számára.
+- Create an Azure SQL database with sample data.
+- Create a server-level firewall rule for a single IP address or for a range of IP addresses.
 
-Ugyanezen feladatokat [C#](sql-database-get-started-csharp.md) nyelven vagy a [PowerShell](sql-database-get-started-powershell.md) segítségével is végrehajthatja.
+You can perform these same tasks by using either [C#](sql-database-get-started-csharp.md) or [PowerShell](sql-database-get-started-powershell.md).
 
 [AZURE.INCLUDE [Login](../../includes/azure-getting-started-portal-login.md)]
 
 <a name="create-logical-server-bk"></a>
 
-## Az első SQL Database-adatbázis létrehozása 
+## Create your first Azure SQL database 
 
-1. Ha jelenleg nem csatlakozik, jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Kattintson az **Új**, majd az **Adatok + tárolás** elemre, és keresse meg az **SQL Database** elemet.
+1. If you're not currently connected, connect to the [Azure portal](http://portal.azure.com).
+2. Click **New**, click **Data + Storage**, and then locate **SQL Database**.
 
-    ![Új SQL Database-adatbázis – 1](./media/sql-database-get-started/sql-database-new-database-1.png)
+    ![New sql database 1](./media/sql-database-get-started/sql-database-new-database-1.png)
 
-3. Kattintson az **SQL Database** elemre az SQL Database panel megnyitásához. A panel tartalma az előfizetések és a meglévő objektumok (pl. meglévő kiszolgálók) számától függően eltérő lehet.
+3. Click **SQL Database** to open the SQL Database blade. The content on this blade varies depending on the number of your subscriptions and your existing objects (such as existing servers).
 
-    ![Új SQL Database-adatbázis – 2](./media/sql-database-get-started/sql-database-new-database-2.png)
+    ![New sql database 2](./media/sql-database-get-started/sql-database-new-database-2.png)
 
-4. Az **Adatbázis neve** szövegbeviteli mezőben adjon nevet az első adatbázisának – pl. „my-database” (saját adatbázis). Zöld pipa jelzi, hogy érvényes nevet adott meg.
+4. In the **Database name** text box, provide a name for your first database - such as "my-database". A green check mark indicates that you have provided a valid name.
 
-    ![Új SQL Database-adatbázis – 3](./media/sql-database-get-started/sql-database-new-database-3.png)
+    ![New sql database 3](./media/sql-database-get-started/sql-database-new-database-3.png)
 
-5. Ha több előfizetéssel rendelkezik, válasszon egyet.
-6. Az **Erőforráscsoport** területen kattintson az **Új létrehozása** elemre, majd adjon nevet az első erőforráscsoportjának – pl. „my-resource-group” (saját erőforráscsoport). Zöld pipa jelzi, hogy érvényes nevet adott meg.
+5. If you have multiple subscriptions, select a subscription.
+6. Under **Resource group**, click **Create new** and provide a name for your first resource group - such as "my-resource-group". A green check mark indicates that you have provided a valid name.
 
-    ![Új SQL Database-adatbázis – 4](./media/sql-database-get-started/sql-database-new-database-4.png)
+    ![New sql database 4](./media/sql-database-get-started/sql-database-new-database-4.png)
 
-7. A **Forrás kiválasztása** területen kattintson a **Minta** elemre, majd a **Minta kiválasztása** területen kattintson az **AdventureWorksLT [V12]** elemre.
+7. Under **Select source**, click **Sample** and then under **Select sample** click **AdventureWorksLT [V12]**.
 
-    ![Új SQL Database-adatbázis – 5](./media/sql-database-get-started/sql-database-new-database-5.png)
+    ![New sql database 5](./media/sql-database-get-started/sql-database-new-database-5.png)
 
-8. A **Kiszolgáló** területen kattintson a **Kötelező beállítások konfigurálása** elemre.
+8. Under **Server**, click **Configure required settings**.
 
-    ![Új SQL Database-adatbázis – 6](./media/sql-database-get-started/sql-database-new-database-6.png)
+    ![New sql database 6](./media/sql-database-get-started/sql-database-new-database-6.png)
 
-9. A Kiszolgáló panelen kattintson az **Új kiszolgáló létrehozása** elemre. Az Azure SQL Database-adatbázisok egy kiszolgálóobjektumban jönnek létre, amely lehet új vagy meglévő kiszolgáló.
+9. On the Server blade, click **Create a new server**. An Azure SQL database is created within a server object, which can be either a new server or an existing server.
 
-    ![Új SQL Database-adatbázis – 7](./media/sql-database-get-started/sql-database-new-database-7.png)
+    ![New sql database 7](./media/sql-database-get-started/sql-database-new-database-7.png)
 
-10. Tekintse át az **Új kiszolgáló** panelt, hogy megismerje, milyen adatokat kell megadnia az új kiszolgálóhoz.
+10. Review the **New server** blade to understand the information you need to provide for your new server.
 
-    ![Új SQL Database-adatbázis – 8](./media/sql-database-get-started/sql-database-new-database-8.png)
+    ![New sql database 8](./media/sql-database-get-started/sql-database-new-database-8.png)
 
-11. A **Kiszolgáló neve** szövegbeviteli mezőben adjon nevet az első kiszolgálójának – pl. „my-new-server-object” (új saját kiszolgálóobjektum). Zöld pipa jelzi, hogy érvényes nevet adott meg.
+11. In the **Server name** text box, provide a name for your first server - such as "my-new-server-object". A green check mark indicates that you have provided a valid name.
 
-    ![Új SQL Database-adatbázis – 9](./media/sql-database-get-started/sql-database-new-database-9.png)
+    ![New sql database 9](./media/sql-database-get-started/sql-database-new-database-9.png)
  
-12. A **Kiszolgáló rendszergazdájának felhasználóneve** területen adjon meg egy felhasználónevet a kiszolgálóhoz tartozó rendszergazdai bejelentkezéshez, pl. „my-admin-account” (saját rendszergazdai fiók). Az ilyen bejelentkezést kiszolgálószintű bejelentkezésnek nevezik. Zöld pipa jelzi, hogy érvényes nevet adott meg.
+12. Under **Server admin login**, provide a user name for the administrator login for this server - such as "my-admin-account". This login is known as the server principal login. A green check mark indicates that you have provided a valid name.
 
-    ![Új SQL Database-adatbázis – 10](./media/sql-database-get-started/sql-database-new-database-10.png)
+    ![New sql database 10](./media/sql-database-get-started/sql-database-new-database-10.png)
 
-13. A **Jelszó** és a **Jelszó megerősítése** területen adjon meg egy jelszót a kiszolgálószintű bejelentkezési fiókhoz – pl. „p@ssw0rd1”. Zöld pipa jelzi, hogy érvényes jelszót adott meg.
+13. Under **Password** and **Confirm password**, provide a password for the server principal login account - such as "p@ssw0rd1". A green check mark indicates that you have provided a valid password.
 
-    ![Új SQL Database-adatbázis – 11](./media/sql-database-get-started/sql-database-new-database-11.png)
+    ![New sql database 11](./media/sql-database-get-started/sql-database-new-database-11.png)
  
-14. A **Hely** területen válasszon a tartózkodási helyének megfelelő adatközpontot – pl. „Kelet-Ausztrália”.
+14. Under **Location**, select a data center appropriate to your location - such as "Australia East".
 
-    ![Új SQL Database-adatbázis – 12](./media/sql-database-get-started/sql-database-new-database-12.png)
+    ![New sql database 12](./media/sql-database-get-started/sql-database-new-database-12.png)
 
-15. Vegye figyelembe, hogy a **12-es verziójú kiszolgáló létrehozása (legújabb frissítés) területen csak az Azure SQL-kiszolgáló aktuális verziójának létrehozására van lehetősége.
+15. Under **Create V12 server (Latest update), notice that you only have the option to create a current version of Azure SQL server.
 
-    ![Új SQL Database-adatbázis – 13](./media/sql-database-get-started/sql-database-new-database-13.png)
+    ![New sql database 13](./media/sql-database-get-started/sql-database-new-database-13.png)
 
-16. Vegye figyelembe, hogy alapértelmezés szerint az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzet be van jelölve, és itt nem módosítható. Ez egy speciális beállítás. Ezt a beállítást a kiszolgálóobjektumhoz tartozó kiszolgálói tűzfal beállításaiban módosíthatja, bár ez a legtöbb esetben nem szükséges.
+16. Notice that, by default, the checkbox for **Allow azure services to access server** is selected and cannot be changed here. This is an advanced option. You can change this setting in the server firewall settings for this server object, although for most scenarios this is not necessary.
 
-    ![Új SQL Database-adatbázis – 14](./media/sql-database-get-started/sql-database-new-database-14.png)
+    ![New sql database 14](./media/sql-database-get-started/sql-database-new-database-14.png)
 
-17. Az Új kiszolgáló panelen tekintse át választásait, majd kattintson a **Kiválasztás** elemre az új kiszolgáló kiválasztásához az új adatbázis számára.
+17. On the New server blade, review your selections and then click **Select** to select this new server for your new database.
 
-    ![Új SQL Database-adatbázis – 15](./media/sql-database-get-started/sql-database-new-database-15.png)
+    ![New sql database 15](./media/sql-database-get-started/sql-database-new-database-15.png)
 
-18. Az SQL Database panel **Tarifacsomag** területén kattintson az**S2 Standard**, majd a **Basic** elemre a legkevésbé költséges tarifacsomag kiválasztásához az első adatbázisa számára. Később bármikor módosíthatja a tarifacsomagot.
+18. On the SQL Database blade, under **Pricing tier**, click **S2 Standard** and then click **Basic** to choose the least expensive pricing tier for your first database. You can always change the pricing tier later.
 
-    ![Új SQL Database-adatbázis – 16](./media/sql-database-get-started/sql-database-new-database-16.png)
+    ![New sql database 16](./media/sql-database-get-started/sql-database-new-database-16.png)
 
-19. Az SQL Database panelen tekintse át választásait, majd kattintson a **Létrehozás** elemre az első kiszolgálója és adatbázisa létrehozásához. Megtörténik a megadott értékek hitelesítése, és megkezdődik az üzembe helyezés.
+19. On the SQL Database blade, review your selections and then click **Create** to create your first server and database. The values that you provided are validated and deployment starts.
 
-    ![Új SQL Database-adatbázis – 17](./media/sql-database-get-started/sql-database-new-database-17.png)
+    ![New sql database 17](./media/sql-database-get-started/sql-database-new-database-17.png)
 
-20. A portál eszköztárán kattintson az **Értesítések** elemre az üzembe helyezés állapotának ellenőrzéséhez.
+20. On the portal toolbar, click the **Notifications** items to check the status of your deployment.
 
-    ![Új SQL Database-adatbázis – 18](./media/sql-database-get-started/sql-database-new-database-18.png)
+    ![New sql database 18](./media/sql-database-get-started/sql-database-new-database-18.png)
 
->[AZURE.IMPORTANT]Ha az üzembe helyezés befejeződött, a rendszer létrehozza az új Azure SQL-kiszolgálót és -adatbázist az Azure-ban. Addig nem csatlakozhat az új kiszolgálóhoz vagy adatbázishoz az SQL Server-eszközökkel, amíg létre nem hoz egy tűzfalszabályt a kiszolgálóhoz, amely megnyitja az SQL Database-tűzfalat az Azure-on kívülről származó kapcsolatok esetén.
+>[AZURE.IMPORTANT]When deployment completes, your new Azure SQL server and database are created in Azure. You will not be able to connect to your new server or database using SQL Server tools until you create a server firewall rule to open the SQL Database firewall to connections from outside of Azure.
 
 [AZURE.INCLUDE [Create server firewall rule](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
-## Következő lépések
-Miután áttanulmányozta az SQL Database oktatóanyagát, és létrehozott egy adatbázist mintaadatokkal, feltárhatja az adatokat a megszokott eszközökkel.
+## Next steps
+Now that you've completed this SQL Database tutorial and created a database with some sample data, you're ready to explore by using your favorite tools.
 
-- Ha jártas a Transact-SQL és az SQL Server Management Studio (SSMS) használatában, olvassa el a [Connect and query a SQL database with SSMS](sql-database-connect-query-ssms.md) (SQL-adatbázishoz való kapcsolódás és lekérdezés az SSMS használatával) című cikket.
+- If you're familiar with Transact-SQL and SQL Server Management Studio (SSMS), learn how to [Connect and query a SQL database with SSMS](sql-database-connect-query-ssms.md).
 
-- Ha munkája során az Excelt használja, olvassa el a [Connect to a SQL database in Azure with Excel](sql-database-connect-excel.md) (SQL-adatbázishoz való kapcsolódás az Azure-ban az Excellel) című cikket.
+- If you know Excel, learn how to [Connect to a SQL database in Azure with Excel](sql-database-connect-excel.md).
 
-- Ha készen áll a kódolás elkezdésére, válasszon programozási nyelvet a [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md) (Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez) című cikk alapján.
+- If you're ready to start coding, choose your programming language at [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md).
 
-- Ha át szeretné helyezni helyszíni SQL Server-adatbázisait az Azure-ba, olvassa el a [Migrating a database to SQL Database](sql-database-cloud-migrate.md) (Adatbázis áttelepítése az SQL Database-be) című cikket.
+- If you want to move your on-premises SQL Server databases to Azure, see [Migrating a database to SQL Database](sql-database-cloud-migrate.md) to learn more.
 
-- Ha a BCP parancssori eszköz használatával szeretne adatokat betölteni egy CSV-fájlból egy új táblába, olvassa el a [Loading data into SQL Database from a CSV file using BCP](sql-database-load-from-csv-with-bcp.md) (Adatok betöltése az SQL Database-be CSV-fájlból a BCP használatával) című cikket.
+- If you want to load some data into a new table from a CSV file by using the BCP command-line tool, see [Loading data into SQL Database from a CSV file using BCP](sql-database-load-from-csv-with-bcp.md).
 
-- Ha további információkat szeretne megtudni az Azure SQL Database biztonságával kapcsolatban, olvassa el a [Getting started with security](sql-database-get-started-security.md) (Ismerkedés az adatbázis-biztonsággal) című cikket.
-
-
-## További források
-
-[Mi az SQL Database?](sql-database-technical-overview.md)
+- If you want to start exploring Azure SQL Database security, see [Getting started with security](sql-database-get-started-security.md)
 
 
+## Additional resources
 
-<!---HONumber=sep12_HO2-->
+[What is SQL Database?](sql-database-technical-overview.md)
+
+
+
+<!--HONumber=Sep16_HO4-->
 
 

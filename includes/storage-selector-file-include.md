@@ -3,7 +3,6 @@
 - [Java](../articles/storage/storage-java-how-to-use-file-storage.md)
 - [Python](../articles/storage/storage-python-how-to-use-file-storage.md)
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

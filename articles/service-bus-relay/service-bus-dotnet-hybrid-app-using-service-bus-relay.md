@@ -1,246 +1,204 @@
 <properties
-	pageTitle="Hybrid on-premises/cloud application (.NET) | Microsoft Azure"
-	description="Learn how to create a .NET on-premises/cloud hybrid application using the Azure Service Bus relay."
-	services="service-bus-relay"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Azure"
+    description="Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure Service Bus Relay használatával."
+    services="service-bus-relay"
+    documentationCenter=".net"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="service-bus-relay"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="09/16/2016"
-	ms.author="sethm"/>
+    ms.service="service-bus-relay"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="hero-article"
+    ms.date="09/16/2016"
+    ms.author="sethm"/>
 
-# .NET on-premises/cloud hybrid application using Azure Service Bus Relay
 
-## Introduction
+# Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus Relay használatával
 
-This article describes how to build a hybrid cloud application with Microsoft Azure and Visual Studio. The tutorial assumes you have no prior experience using Azure. In less than
-30 minutes, you will have an application that uses multiple Azure resources up and running in the cloud.
+## Introduction (Bevezetés)
 
-You will learn:
+Ez a cikk azt ismerteti, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
--   How to create or adapt an existing web service for consumption by a
-    web solution.
--   How to use the Azure Service Bus Relay service to share data between
-    an Azure application and a web service hosted elsewhere.
+Az oktatóanyagban érintett témák köre:
+
+-   Meglévő webszolgáltatás létrehozása vagy alakítása a használathoz egy webes megoldással.
+-   Az Azure Service Bus Relay szolgáltatás használata az Azure-alkalmazások és a máshol tárolt webszolgáltatások közötti adatmegosztásra.
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## How the Service Bus relay helps with hybrid solutions
+## Hogyan segít a Service Bus Relay a hibrid megoldások terén?
 
-Business solutions are typically composed of a combination of custom
-code written to tackle new and unique business requirements and existing
-functionality provided by solutions and systems that are already in
-place.
+Az üzleti megoldások általában egyéni kódok kombinációjából állnak, amelyeket az új és egyedi üzleti követelmények és már meglévő megoldások és rendszerek által szolgáltatott létező funkciók kezeléséhez írtak.
 
-Solution architects are starting to use the cloud for easier handling of
-scale requirements and lower operational costs. In doing so, they find
-that existing service assets they'd like to leverage as building blocks
-for their solutions are inside the corporate firewall and out of easy
-reach for access by the cloud solution. Many internal services are not
-built or hosted in a way that they can be easily exposed at the
-corporate network edge.
+A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
-The Service Bus relay is designed for the use-case of taking existing
-Windows Communication Foundation (WCF) web services and making those
-services securely accessible to solutions that reside outside the
-corporate perimeter without requiring intrusive changes to the corporate
-network infrastructure. Such Service Bus relay services are still hosted
-inside their existing environment, but they delegate listening for
-incoming sessions and requests to the cloud-hosted Service Bus. Service Bus also protects those services from unauthorized access by using [Shared Access Signature](../service-bus/service-bus-sas-overview.md) (SAS) authentication.
+A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
-## Solution scenario
+## A megoldás forgatókönyve
 
-In this tutorial, you will create an ASP.NET website that enables you to see a list of products on the product inventory page.
+Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
 
 ![][0]
 
-The tutorial assumes that you have product information in an existing
-on-premises system, and uses the Service Bus relay to reach into that
-system. This is simulated by a web service that runs in a simple
-console application and is backed by an in-memory set of products. You
-will be able to run this console application on your own computer and
-deploy the web role into Azure. By doing so, you will see how
-the web role running in the Azure datacenter will indeed call
-into your computer, even though your computer will almost certainly
-reside behind at least one firewall and a network address translation
-(NAT) layer.
+Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy a Service Bus Relay közvetítőn keresztül éri el ezt a rendszert. Ezt egy olyan webszolgáltatás szimulálja, amely egyszerű konzolalkalmazásként fut, és a termékek memóriában szereplő készletére épül. Ezt a konzolalkalmazást a saját számítógépén futtathatja, és a webes szerepkört az Azure-ban telepítheti. Így láthatja, hogy az Azure adatközpontjában futó webes szerepkör valójában a számítógéphez intéz hívást, bár a számítógép szinte biztosan legalább egy tűzfal és egy hálózati címfordítási (NAT-) réteg mögött található.
 
-The following is a screen shot of the start page of the completed web application.
+A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja.
 
 ![][1]
 
-## Set up the development environment
+## A fejlesztési környezet kialakítása
 
-Before you can begin developing Azure applications, get the tools and set up your development environment.
+Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
-1.  Install the Azure SDK for .NET from the [Get Tools and SDK][] page.
+1.  Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése][] oldalról.
 
-2. 	Click **Install the SDK** for the version of Visual Studio you are using. The steps in this tutorial use Visual Studio 2015.
+2.  Kattintson a használt Visual Studio-verzió **Az SDK telepítése** lehetőségére. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
 
-4.  When prompted to run or save the installer, click **Run**.
+4.  A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 
-5.  In the **Web Platform Installer**, click **Install** and proceed with the installation.
+5.  A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
 
-6.  Once the installation is complete, you will have everything
-    necessary to start to develop the app. The SDK includes tools that let you
-    easily develop Azure applications in Visual Studio. If you
-    do not have Visual Studio installed, the SDK also installs the free
-    Visual Studio Express.
+6.  A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
-## Create a namespace
+## Névtér létrehozása
 
-To begin using Service Bus features in Azure, you must first create a service namespace. A namespace provides a scoping container for addressing Service Bus resources within your application.
+A Service Bus-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## Create an on-premises server
+## Helyszíni kiszolgáló létrehozása
 
-First, you will build a (mock) on-premises product catalog system. It
-will be fairly simple; you can see this as representing an actual
-on-premises product catalog system with a complete service surface that
-we're trying to integrate.
+Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
 
-This project is a Visual Studio console application, and uses the [Azure Service Bus NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) to include the Service Bus libraries and configuration settings.
+Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
 
-### Create the project
+### A projekt létrehozása
 
-1.  Using administrator privileges, start Microsoft Visual
-    Studio. To start Visual Studio with administrator privileges, right-click the **Visual Studio** program icon, and then click **Run as administrator**.
+1.  Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 
-2.  In Visual Studio, on the **File** menu, click **New**, and then
-    click **Project**.
+2.  A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 
-3.  From **Installed Templates**, under **Visual C#**, click **Console
-    Application**. In the **Name** box, type the name
-    **ProductsServer**:
+3.  Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Console Application** (Konzolalkalmazás) elemre. A **Name** (Név) mezőbe írja be a **ProductsServer** nevet:
 
     ![][11]
 
-4.  Click **OK** to create the **ProductsServer** project.
+4.  A **ProductsServer** projekt létrehozásához kattintson az **OK** gombra.
 
-7.  If you have already installed the NuGet package manager for Visual Studio, skip to the next step. Otherwise, visit [NuGet][] and click [Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Follow the prompts to install the NuGet package manager, then re-start Visual Studio.
+7.  Ha már telepítette a NuGet-csomagkezelőt a Visual Studióhoz, hagyja ki a következő lépést. Ellenkező esetben látogasson el a [NuGet][] oldalára, és kattintson az [Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) (NuGet telepítése) parancsra. Kövesse a NuGet-csomagkezelő telepítésének utasításait, majd indítsa újra a Visual Studiót.
 
-7.  In Solution Explorer, right-click the **ProductsServer** project, then click
-    **Manage NuGet Packages**.
+7.  A Megoldáskezelőben kattintson a jobb gombbal a **ProductsServer** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
 
-8.  Click the **Browse** tab, then search for `Microsoft Azure Service Bus`. Click **Install**, and accept the terms of use.
+8.  Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
 
     ![][13]
 
-    Note that the required client assemblies are now referenced.
+    Vegye figyelembe, hogy a szükséges ügyfélszerelvények most már hivatkozottak.
 
-9.  Add a new class for your product contract. In Solution Explorer,
-    right-click the **ProductsServer** project and click **Add**, and then click
-    **Class**.
+9.  Adjon egy új osztályt a termékszerződéshez. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsServer** projektre, és kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) lehetőségre.
 
-10. In the **Name** box, type the name **ProductsContract.cs**. Then
-    click **Add**.
+10. A **Name** (Név) mezőbe írja be a **ProductsContract.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
-11. In **ProductsContract.cs**, replace the namespace definition with the following code, which defines the contract for the service.
+11. A **ProductsContract.cs** fájlban cserélje le a névtér definícióját a következő kódra, amely meghatározza a szolgáltatás szerződését.
 
-	```
-	namespace ProductsServer
-	{
-	    using System.Collections.Generic;
-	    using System.Runtime.Serialization;
-	    using System.ServiceModel;
-	
-	    // Define the data contract for the service
-	    [DataContract]
-	    // Declare the serializable properties.
-	    public class ProductData
-	    {
-	        [DataMember]
-	        public string Id { get; set; }
-	        [DataMember]
-	        public string Name { get; set; }
-	        [DataMember]
-	        public string Quantity { get; set; }
-	    }
-	
-	    // Define the service contract.
-	    [ServiceContract]
-	    interface IProducts
-	    {
-	        [OperationContract]
-	        IList<ProductData> GetProducts();
-	
-	    }
-	
-	    interface IProductsChannel : IProducts, IClientChannel
-	    {
-	    }
-	}
-	```
+    ```
+    namespace ProductsServer
+    {
+        using System.Collections.Generic;
+        using System.Runtime.Serialization;
+        using System.ServiceModel;
+    
+        // Define the data contract for the service
+        [DataContract]
+        // Declare the serializable properties.
+        public class ProductData
+        {
+            [DataMember]
+            public string Id { get; set; }
+            [DataMember]
+            public string Name { get; set; }
+            [DataMember]
+            public string Quantity { get; set; }
+        }
+    
+        // Define the service contract.
+        [ServiceContract]
+        interface IProducts
+        {
+            [OperationContract]
+            IList<ProductData> GetProducts();
+    
+        }
+    
+        interface IProductsChannel : IProducts, IClientChannel
+        {
+        }
+    }
+    ```
 
-12. In Program.cs, replace the namespace definition with the following
-    code, which adds the profile service and the host for it.
+12. A ProductsContract.cs fájlban cserélje le a névtér definícióját a következő kódra, amely hozzáadja a profilszolgáltatást és annak állomását.
 
-	```
-	namespace ProductsServer
-	{
-	    using System;
-	    using System.Linq;
-	    using System.Collections.Generic;
-	    using System.ServiceModel;
-	
-	    // Implement the IProducts interface.
-	    class ProductsService : IProducts
-	    {
-	
-	        // Populate array of products for display on website
-	        ProductData[] products =
-	            new []
-	                {
-	                    new ProductData{ Id = "1", Name = "Rock",
-	                                     Quantity = "1"},
-	                    new ProductData{ Id = "2", Name = "Paper",
-	                                     Quantity = "3"},
-	                    new ProductData{ Id = "3", Name = "Scissors",
-	                                     Quantity = "5"},
-	                    new ProductData{ Id = "4", Name = "Well",
-	                                     Quantity = "2500"},
-	                };
-	
-	        // Display a message in the service console application
-	        // when the list of products is retrieved.
-	        public IList<ProductData> GetProducts()
-	        {
-	            Console.WriteLine("GetProducts called.");
-	            return products;
-	        }
-	
-	    }
-	
-	    class Program
-	    {
-	        // Define the Main() function in the service application.
-	        static void Main(string[] args)
-	        {
-	            var sh = new ServiceHost(typeof(ProductsService));
-	            sh.Open();
-	
-	            Console.WriteLine("Press ENTER to close");
-	            Console.ReadLine();
-	
-	            sh.Close();
-	        }
-	    }
-	}
-	```
+    ```
+    namespace ProductsServer
+    {
+        using System;
+        using System.Linq;
+        using System.Collections.Generic;
+        using System.ServiceModel;
+    
+        // Implement the IProducts interface.
+        class ProductsService : IProducts
+        {
+    
+            // Populate array of products for display on website
+            ProductData[] products =
+                new []
+                    {
+                        new ProductData{ Id = "1", Name = "Rock",
+                                         Quantity = "1"},
+                        new ProductData{ Id = "2", Name = "Paper",
+                                         Quantity = "3"},
+                        new ProductData{ Id = "3", Name = "Scissors",
+                                         Quantity = "5"},
+                        new ProductData{ Id = "4", Name = "Well",
+                                         Quantity = "2500"},
+                    };
+    
+            // Display a message in the service console application
+            // when the list of products is retrieved.
+            public IList<ProductData> GetProducts()
+            {
+                Console.WriteLine("GetProducts called.");
+                return products;
+            }
+    
+        }
+    
+        class Program
+        {
+            // Define the Main() function in the service application.
+            static void Main(string[] args)
+            {
+                var sh = new ServiceHost(typeof(ProductsService));
+                sh.Open();
+    
+                Console.WriteLine("Press ENTER to close");
+                Console.ReadLine();
+    
+                sh.Close();
+            }
+        }
+    }
+    ```
 
-13. In Solution Explorer, double-click the **App.config** file to open it in the Visual Studio editor. At the bottom of the **&lt;system.ServiceModel&gt;** element (but still within &lt;system.ServiceModel&gt;), add the following XML code. Be sure to replace *yourServiceNamespace* with the name of your namespace, and *yourKey* with the SAS key you retrieved earlier from the portal:
+13. A Megoldáskezelőben kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához. A **&lt;system.ServiceModel&gt;** elem alján (de még mindig a &lt;system.ServiceModel&gt; elemen belül) írja be a következő XML-kódot. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját névterét adja meg, és a *yourKey* helyett pedig a portálról korábban lekért SAS-kulcsot.
 
     ```
     <system.serviceModel>
-	...
+    ...
       <services>
          <service name="ProductsServer.ProductsService">
            <endpoint address="sb://yourServiceNamespace.servicebus.windows.net/products" binding="netTcpRelayBinding" contract="ProductsServer.IProducts" behaviorConfiguration="products"/>
@@ -259,297 +217,292 @@ This project is a Visual Studio console application, and uses the [Azure Service
       </behaviors>
     </system.serviceModel>
     ```
-14. Still in App.config, in the **&lt;appSettings&gt;** element, replace the connection string value with the connection string you previously obtained from the portal. 
+14. Még mindig az App.config fájlban, az **&lt;appSettings&gt;** elemben cserélje le a kapcsolati karakterlánc értékét a korábban a portálról beszerzett kapcsolati karakterláncére. 
 
-	```
-	<appSettings>
-   	<!-- Service Bus specific app settings for messaging connections -->
-   	<add key="Microsoft.ServiceBus.ConnectionString"
-	       value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
-	</appSettings>
-	```
+    ```
+    <appSettings>
+    <!-- Service Bus specific app settings for messaging connections -->
+    <add key="Microsoft.ServiceBus.ConnectionString"
+           value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
+    </appSettings>
+    ```
 
-14. Press **Ctrl+Shift+B** or from the **Build** menu, click **Build Solution** to build the application and verify the accuracy of your work so far.
+14. Nyomja le a **Ctrl+Shift+B** billentyűkombinációt, vagy a **Build** (Fordítás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre, és ellenőrizze az eddigi munkája pontosságát.
 
-## Create an ASP.NET application
+## ASP.NET-alkalmazás létrehozása
 
-In this section you will build a simple ASP.NET application that displays data retrieved from your product service.
+Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely megjeleníti a termékszolgáltatásból lekért adatokat.
 
-### Create the project
+### A projekt létrehozása
 
-1.  Ensure that Visual Studio is running with administrator privileges.
+1.  Ellenőrizze, hogy a Visual Studio rendszergazdai jogosultságokkal fut-e.
 
-2.  In Visual Studio, on the **File** menu, click **New**, and then
-    click **Project**.
+2.  A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, maja kattintson a **Project** (Projekt) elemre.
 
-3.  From **Installed Templates**, under **Visual C#**, click **ASP.NET Web Application**. Name the project **ProductsPortal**. Then click **OK**.
+3.  Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre. Adja a projektnek a **ProductsPortal** nevet. Ezután kattintson az **OK** gombra.
 
     ![][15]
 
-4.  From the **Select a template** list, click **MVC**. 
+4.  A **Select a template** (Sablon kiválasztása) listában kattintson az **MVC** elemre. 
 
-6.  Check the box for **Host in the cloud**.
+6.  Jelölje be a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget.
 
     ![][16]
 
-5. Click the **Change Authentication** button. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**. For this tutorial, you're deploying an app that doesn't need a user login.
+5. Kattintson a **Change Authentication** (Hitelesítés módosítása) gombra. A **Change Authentication** (Hitelesítés módosítása) párbeszédpanelen kattintson a **No Authentication** (Nincs hitelesítés) elemre, majd az **OK** gombra. Ebben az oktatóanyaghoz egy olyan alkalmazást hoz létre, amelyhez nincs szükség felhasználói bejelentkezésre.
 
-	![][18]
+    ![][18]
 
-6. 	In the **Microsoft Azure** section of the **New ASP.NET Project** dialog box, make sure that **Host in the cloud** is selected and that **App Service** is selected in the drop-down list.
+6.  A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel **Microsoft Azure** szakaszában győződjön meg arról hogy a **Host in the cloud** (Üzemeltetés a felhőben) lehetőség be van jelölve, és a legördülő listából ki van választva az **App Service** lehetőség.
 
-	![][19]
+    ![][19]
 
-7. Click **OK**. 
+7. Kattintson az **OK** gombra. 
 
-8. Now you must configure Azure resources for a new web app. Follow all the steps in the section [Configure Azure resources for a new web app](../app-service-web/web-sites-dotnet-get-started.md#configure-azure-resources-for-a-new-web-app). Then, return to this tutorial and proceed to the next step.
+8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse az [Azure-erőforrások konfigurálása az új webalkalmazáshoz](../app-service-web/web-sites-dotnet-get-started.md#configure-azure-resources-for-a-new-web-app) című szakasz összes lépését. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 
-5.  In Solution Explorer, right-click **Models** and then click **Add**,
-    then click **Class**. In the **Name** box, type the name
-    **Product.cs**. Then click **Add**.
+5.  A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be a **Product.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     ![][17]
 
-### Modify the web application
+### A webalkalmazás módosítása
 
-1.  In the Product.cs file in Visual Studio, replace the existing namespace definition with the following code.
+1.  A Visual Studióban a Product.cs fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
-	```
-	// Declare properties for the products inventory.
- 	namespace ProductsWeb.Models
-	{
-    	public class Product
-    	{
-    	    public string Id { get; set; }
-    	    public string Name { get; set; }
-    	    public string Quantity { get; set; }
-    	}
-	}
-	```
+    ```
+    // Declare properties for the products inventory.
+    namespace ProductsWeb.Models
+    {
+        public class Product
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
+            public string Quantity { get; set; }
+        }
+    }
+    ```
 
-2.  In Solution Explorer, expand the **Controllers** folder, then double-click the **HomeController.cs** file to open it in Visual Studio.
+2.  A Megoldáskezelőben bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **HomeController.cs** fájlra, hogy megnyissa a Visual Studióban.
 
-3. In **HomeController.cs**, replace the existing namespace definition with the following code.
+3. A **HomeController.cs** fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
-	```
-	namespace ProductsWeb.Controllers
-	{
-	    using System.Collections.Generic;
-	    using System.Web.Mvc;
-	    using Models;
-	
-	    public class HomeController : Controller
-	    {
-	        // Return a view of the products inventory.
-	        public ActionResult Index(string Identifier, string ProductName)
-	        {
-	            var products = new List<Product>
-	                {new Product {Id = Identifier, Name = ProductName}};
-	            return View(products);
-	        }
-	     }
-	}
-	```
+    ```
+    namespace ProductsWeb.Controllers
+    {
+        using System.Collections.Generic;
+        using System.Web.Mvc;
+        using Models;
+    
+        public class HomeController : Controller
+        {
+            // Return a view of the products inventory.
+            public ActionResult Index(string Identifier, string ProductName)
+            {
+                var products = new List<Product>
+                    {new Product {Id = Identifier, Name = ProductName}};
+                return View(products);
+            }
+         }
+    }
+    ```
 
-3.  In Solution Explorer, expand the Views\Shared folder, then double-click **_Layout.cshtml** to open it in the Visual Studio editor.
+3.  A Megoldáskezelőben bontsa ki a Views\Shared (Nézetek\Megosztott) mappát, majd kattintson duplán a **_Layout.cshtml** fájlra, hogy megnyissa a Visual Studio szerkesztőjében.
 
-5.  Change all occurrences of **My ASP.NET Application** to **LITWARE's Products**.
+5.  Módosítsa a **My ASP.NET Application** (Saját ASP.NET-alkalmazás) minden előfordulását **LITWARE's Products** (LITWARE-termékek) értékre.
 
-6. Remove the **Home**, **About**, and **Contact** links. In the following example, delete the highlighted code.
+6. Távolítsa el a **Home** (Kezdőlap), **About** (Névjegy) és **Contact** (Kapcsolatfelvétel) hivatkozásokat. A következő példában törölje a kiemelt kódot.
 
-	![][41]
+    ![][41]
 
-7.  In Solution Explorer, expand the Views\Home folder, then double-click **Index.cshtml** to open it in the Visual Studio editor.
-    Replace the entire contents of the file with the following code.
+7.  A Megoldáskezelőben bontsa ki a Views\Home (Nézetek\Kezdőlap) mappát, majd kattintson duplán az **Index.cshtml** fájlra, hogy megnyissa a Visual Studio szerkesztőjében.
+    Cserélje le a fájl teljes tartalmát a következő kódra.
 
-	```
-	@model IEnumerable<ProductsWeb.Models.Product>
-	
-	@{
-	 		ViewBag.Title = "Index";
-	}
-	
-	<h2>Prod Inventory</h2>
-	
-	<table>
-	  		<tr>
-	      		<th>
-	          		@Html.DisplayNameFor(model => model.Name)
-	      		</th>
-	              <th></th>
-	      		<th>
-	          		@Html.DisplayNameFor(model => model.Quantity)
-	      		</th>
-	  		</tr>
-	
-	@foreach (var item in Model) {
-	  		<tr>
-	      		<td>
-	          		@Html.DisplayFor(modelItem => item.Name)
-	      		</td>
-	      		<td>
-	          		@Html.DisplayFor(modelItem => item.Quantity)
-	      		</td>
-	  		</tr>
-	}
-	
-	</table>
-	```
+    ```
+    @model IEnumerable<ProductsWeb.Models.Product>
+    
+    @{
+            ViewBag.Title = "Index";
+    }
+    
+    <h2>Prod Inventory</h2>
+    
+    <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                  <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+            </tr>
+    
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+            </tr>
+    }
+    
+    </table>
+    ```
 
-9.  To verify the accuracy of your work so far, you can press **Ctrl+Shift+B** to build the project.
+9.  Az eddigi munkája pontosságának ellenőrzéséhez lenyomhatja a **Ctrl+Shift+B** billentyűkombinációt a projekt létrehozásához.
 
 
-### Run the app locally
+### Az alkalmazás futtatása helyben
 
-Run the application to verify that it works.
+Futtassa az alkalmazást a működése ellenőrzéséhez.
 
-1.  Ensure that **ProductsPortal** is the active project. Right-click
-    the project name in Solution Explorer and select **Set As
-    Startup Project**.
-2.  In Visual Studio, press F5.
-3.  Your application should appear, running in a browser.
+1.  Győződjön meg arról, hogy a **ProductsPortal** az aktív projekt. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd válassza a **Set As Startup Project** (Beállítás indítási projektként) lehetőséget.
+2.  Nyomja le az F5 billentyűt a Visual Studióban.
+3.  Az alkalmazásának meg kell jelennie egy böngészőben.
 
     ![][21]
 
-## Put the pieces together
+## Az egyes alkotórészek összeállítása teljes egésszé
 
-The next step is to hook up the on-premises products server with the ASP.NET application.
+A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalmazáshoz csatlakoztassuk.
 
-1.  If it is not already open, in Visual Studio re-open the **ProductsPortal** project you created in the [Create an ASP.NET application](#create-an-aspnet-application) section.
+1.  Ha még nincs megnyitva, a Visual Studióban nyissa meg ismét az [ASP.NET-alkalmazás létrehozása](#create-an-aspnet-application) című szakaszban létrehozott **ProductsPortal** projektet.
 
-2.  Similar to the step in the "Create an On-Premises Server" section, add the NuGet package to the project references. In Solution Explorer, right-click the **ProductsPortal** project, then click **Manage NuGet Packages**.
+2.  A „Helyszíni kiszolgáló létrehozása” című szakaszhoz hasonlóan adja a NuGet-csomagot a projekt referenciáihoz. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőségre.
 
-3.  Search for "Service Bus" and select the **Microsoft Azure Service Bus** item. Then complete the installation and close this dialog box.
+3.  Keressen a „Service Bus” kifejezésre, és válassza ki az **Microsoft Azure Service Bus** elemet. Ezután fejezze be a telepítést, és zárja be a párbeszédpanelt.
 
-4.  In Solution Explorer, right-click the **ProductsPortal** project, then click **Add**, then **Existing Item**.
+4.  A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson az **Add** (Hozzáadás), azután pedig az**Existing Item** (Létező elem) lehetőségre.
 
-5.  Navigate to the **ProductsContract.cs** file from the **ProductsServer** console project. Click to highlight ProductsContract.cs. Click the down arrow next to **Add**, then click **Add as Link**.
+5.  Keresse meg a **ProductsContract.cs** fájlt a **ProductsServer** konzolprojektben. Kattintással jelölje ki a ProductsContract.cs fájlt. Kattintson a lefelé mutató nyílra az **Add** (Hozzáadás) elem mellett, majd kattintson az **Add as Link** (Hozzáadás hivatkozásként) parancsra.
 
-	![][24]
+    ![][24]
 
-6.  Now open the **HomeController.cs** file in the Visual Studio editor and replace the namespace definition with the following code. Be sure to replace *yourServiceNamespace* with the name of your service namespace, and *yourKey* with your SAS key. This will enable the client to call the on-premises service, returning the result of the call.
+6.  Ezután nyissa meg a **HomeController.cs** fájlt a Visual Studio szerkesztőjében, és a névtér definícióját cserélje az alábbi kódra. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját szolgáltatásnévterét adja meg, és a *yourKey* helyett pedig a saját SAS-kulcsát. Így teheti lehetővé, hogy az ügyfél helyszíni szolgáltatásokat hívjon meg, és vissza tudja adni a hívás eredményeit.
 
-	```
-	namespace ProductsWeb.Controllers
-	{
-	    using System.Linq;
-	    using System.ServiceModel;
-	    using System.Web.Mvc;
-	    using Microsoft.ServiceBus;
-	    using Models;
-	    using ProductsServer;
-	
-	    public class HomeController : Controller
-	    {
-	        // Declare the channel factory.
-	        static ChannelFactory<IProductsChannel> channelFactory;
-	
-	        static HomeController()
-	        {
-	            // Create shared access signature token credentials for authentication.
-	            channelFactory = new ChannelFactory<IProductsChannel>(new NetTcpRelayBinding(),
-	                "sb://yourServiceNamespace.servicebus.windows.net/products");
-	            channelFactory.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior {
-	                TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(
-	                    "RootManageSharedAccessKey", "yourKey") });
-	        }
-	
-	        public ActionResult Index()
-	        {
-	            using (IProductsChannel channel = channelFactory.CreateChannel())
-	            {
-	                // Return a view of the products inventory.
-	                return this.View(from prod in channel.GetProducts()
-	                                 select
-	                                     new Product { Id = prod.Id, Name = prod.Name,
-	                                         Quantity = prod.Quantity });
-	            }
-	        }
-	    }
-	}
-	```
+    ```
+    namespace ProductsWeb.Controllers
+    {
+        using System.Linq;
+        using System.ServiceModel;
+        using System.Web.Mvc;
+        using Microsoft.ServiceBus;
+        using Models;
+        using ProductsServer;
+    
+        public class HomeController : Controller
+        {
+            // Declare the channel factory.
+            static ChannelFactory<IProductsChannel> channelFactory;
+    
+            static HomeController()
+            {
+                // Create shared access signature token credentials for authentication.
+                channelFactory = new ChannelFactory<IProductsChannel>(new NetTcpRelayBinding(),
+                    "sb://yourServiceNamespace.servicebus.windows.net/products");
+                channelFactory.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior {
+                    TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(
+                        "RootManageSharedAccessKey", "yourKey") });
+            }
+    
+            public ActionResult Index()
+            {
+                using (IProductsChannel channel = channelFactory.CreateChannel())
+                {
+                    // Return a view of the products inventory.
+                    return this.View(from prod in channel.GetProducts()
+                                     select
+                                         new Product { Id = prod.Id, Name = prod.Name,
+                                             Quantity = prod.Quantity });
+                }
+            }
+        }
+    }
+    ```
 
-7.  In Solution Explorer, right-click the **ProductsPortal** solution (make sure to right-click the solution, not the project). Click **Add**, then click **Existing Project**.
+7.  A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** megoldásra (ügyeljen arra, hogy a jobb gombbal a megoldásra, és ne a projektre kattintson). Kattintson az **Add** (Hozzáadás), majd az **Existing Project** (Meglévő projekt) elemre.
 
-8.  Navigate to the **ProductsServer** project, then double-click the **ProductsServer.csproj** solution file to add it.
+8.  Keresse meg a **ProductsServer** projektet, és kattintson duplán a **ProductsServer.csproj** megoldásfájlra annak hozzáadásához.
 
-9.  **ProductsServer** must be running in order to display the data on **ProductsPortal**. In Solution Explorer, right-click the **ProductsPortal** solution and click **Properties**. The **Property Pages** dialog box is displayed.
+9.  A **ProductsPortal** portálra vonatkozó adatok csak akkor jeleníthetők meg, ha közben fut a **ProductsServer**. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** megoldásra, majd kattintson a **Properties** (Tulajdonságok) lehetőségre. Megnyílik a **Property Pages** (Tulajdonságlapok) párbeszédpanel.
 
-10. On the left side, click **Startup Project**. On the right side, click **Multiple startup projects**. Ensure that **ProductsServer** and **ProductsPortal** appear, in that order, with **Start** set as the action for both.
+10. A bal oldalon kattintson a **Startup Project** (Kezdőprojekt) elemre. A jobb oldalon kattintson a **Multiple startup projects** (Több kezdőprojekt elemre). Győződjön meg arról, hogy a **ProductsServer** és a **ProductsPortal** is megjelenik (ebben a sorrendben), és mindkettőhöz a **Start** (Indítás) művelet legyen beállítva.
 
       ![][25]
 
-11. Still in the **Properties** dialog box, click **Project Dependencies** on the left side.
+11. Még mindig a **Properties** (Tulajdonságok) párbeszédpanelen maradva kattintson a **Project Dependencies** (Projektfüggőségek) elemre a bal oldalon.
 
-12. In the **Projects** list, click **ProductsServer**. Ensure that **ProductsPortal** is **not** selected.
+12. A **Projects** (Projektek) listában kattintson a **ProductsServer** elemre. Győződjön meg arról, hogy a **ProductsPortal** **nincs** kijelölve.
 
-14. In the **Projects** list, click **ProductsPortal**. Ensure that **ProductsServer** is selected. 
+14. A **Projects** (Projektek) listában kattintson a **ProductsPortal** elemre. Győződjön meg arról, hogy a **ProductsServer** ki van jelölve. 
 
     ![][26]
 
-15. Click **OK** in the **Property Pages** dialog box.
+15. A **Property Pages** (Tulajdonságlapok) párbeszédpanelen kattintson az **OK** gombra.
 
-## Run the project locally
+## A projekt helyi futtatása
 
-To test the application locally, in Visual Studio press **F5**. The on-premises server (**ProductsServer**) should start first, then the **ProductsPortal** application should start in a browser window. This time, you will see that the product inventory lists data retrieved from the product service on-premises system.
+Az alkalmazás helyi teszteléséhez nyomja le az **F5** billentyűt a Visual Studióban. Először a helyszíni kiszolgálónak (**ProductsServer**) kell elindulnia, és ezt követően kell megnyílnia a **ProductsPortal** alkalmazásnak egy böngészőablakban. Ezúttal a termék helyszíni rendszeréből származó adatokat fog látni a termékleltárban.
 
 ![][10]
 
-Press **Refresh** on the **ProductsPortal** page. Each time you refresh the page, you'll see the server app display a message when `GetProducts()` from **ProductsServer** is called.
+A **ProductsPortal** oldalon kattintson a **Frissítés** parancsra. Valahányszor frissíti az oldalt, a kiszolgáló alkalmazása megjelenít egy üzenetet, amikor a **ProductsServer** `GetProducts()` funkcióját meghívják.
 
-Close both applications before proceeding to the next step.
+Zárja be mindkét alkalmazást, mielőtt a következő lépéssel folytatná.
 
-## Deploy the ProductsPortal project to an Azure web app
+## A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
 
-The next step is to convert the **ProductsPortal** frontend to an Azure web app. First, deploy the **ProductsPortal** project, following all the steps in the section [Deploy the web project to the Azure web app](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-the-azure-web-app). After deployment is complete, return to this tutorial and proceed to the next step.
+A következő lépés a **ProductsPortal** előtérkiszolgáló Azure-webalkalmazássá történő átalakítása. Először is telepítse a **ProductsPortal** projektet [A webes projekt telepítése az Azure-webalkalmazásban](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-the-azure-web-app) című szakaszban leírtak szerint. A telepítés befejezése után térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 
-> [AZURE.NOTE] You may see an error message in the browser window when the **ProductsPortal** web project is automatically launched after the deployment. This is expected, and occurs because the **ProductsServer** application isn't running yet.
+> [AZURE.NOTE] Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.
 
-Copy the URL of the deployed web app, as you will need the URL in the next step. You can also obtain this URL from the Azure App Service Activity window in Visual Studio:
+Másolja ki a telepített webalkalmazás URL-címét, mert szükség lesz rá a következő lépésben. Az URL-cím a Visual Studio Azure App Service-tevékenység ablakában is elérhető:
 
 ![][9] 
 
-### Set ProductsPortal as web app
+### A ProductsPortal beállítása webalkalmazásként
 
-Before running the application in the cloud, you must ensure that **ProductsPortal** is launched from within Visual Studio as a web app.
+Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a **ProductsPortal** webalkalmazásként indult el a Visual Studióban.
 
-1. In Visual Studio, right-click the **ProjectsPortal** project and then click **Properties**.
+1. A Visual Studióban kattintson a jobb gombbal a **ProjectsPortal** projektre, majd kattintson a **Properties** (Tulajdonságok) lehetőségre.
 
-3. In the left-hand column, click **Web**.
+3. A bal oldali oszlopban kattintson a **Web** elemre.
 
-5. In the **Start Action** section, click the **Start URL** button, and in the text box enter the URL for your previously deployed web app; for example, `http://productsportal1234567890.azurewebsites.net/`.
+5. A **Start Action** (Művelet indítása) részen kattintson az **Start URL** (URL-cím indítása) gombra, majd írja be a szövegmezőbe a korábban telepített webalkalmazás URL-címét (például: `http://productsportal1234567890.azurewebsites.net/`).
 
-	![][27]
+    ![][27]
 
-6. From the **File** menu in Visual Studio, click **Save All**.
+6. A Visual Studio **File** (Fájl) menüjében kattintson az **Save All** (Összes mentése) parancsra.
 
-7. From the Build menu in Visual Studio, click **Rebuild Solution**.
+7. A Visual Studio Build (Fordítás) menüjében kattintson a **Rebuild Solution** (Megoldás újrafordítása) parancsra.
 
-## Run the application
+## Az alkalmazás futtatása
 
-2.  Press F5 to build and run the application. The on-premises server (the **ProductsServer** console application) should start first, then the **ProductsPortal** application should start in a browser window, as shown in the following screen shot. Notice again that the product inventory lists data retrieved from the product service on-premises system, and displays that data in the web app. Check the URL to make sure that **ProductsPortal** is running in the cloud, as an Azure web app. 
+2.  Nyomja le az F5 billentyűt az alkalmazás fordításához és futtatásához. Először a helyszíni kiszolgálónak (**ProductsServer** konzolalkalmazás) kell elindulnia, ezt követően indul el a **ProductsPortal** alkalmazás a böngészőablakban a képernyőképen is látható módon. Figyelje meg, hogy a termék helyszíni rendszeréből származó adatokat láthat a termékleltárban, és ezek az adatok a webalkalmazásban jelennek meg. Ellenőrizze az URL-címet, és győződjön meg arról, hogy a **ProductsPortal** Azure-webalkalmazás fut a felhőben. 
 
     ![][1]
 
-	> [AZURE.IMPORTANT] The **ProductsServer** console application must be running and able to serve the data to the **ProductsPortal** application. If the browser displays an error, wait a few more seconds for **ProductsServer** to load and display the following message. Then press **Refresh** in the browser.
+    > [AZURE.IMPORTANT] A **ProductsServer** konzolalkalmazásnak futnia kell, és képesnek kell lennie biztosítani az adatokat a **ProductsPortal** alkalmazás számára. Ha a böngészőben egy hibaüzenet jelenik meg, várjon néhány másodpercet, amíg a **ProductsServer** betöltődik, és megjeleníti a következő üzenetet. Ezután kattintson a **Frissítés** gombra a böngészőben.
 
-	![][37]
+    ![][37]
 
-3. Back in the browser, press **Refresh** on the **ProductsPortal** page. Each time you refresh the page, you'll see the server app display a message when `GetProducts()` from **ProductsServer** is called.
+3. A **ProductsPortal** böngészőoldalán kattintson a **Frissítés** gombra. Valahányszor frissíti az oldalt, a kiszolgáló alkalmazása megjelenít egy üzenetet, amikor a **ProductsServer** `GetProducts()` funkcióját meghívják.
 
-	![][38]
+    ![][38]
 
-## Next steps  
+## Következő lépések  
 
-To learn more about Service Bus, see the following resources:  
+A Service Busról a következő forrásanyagokban találhat további információkat:  
 
 * [Azure Service Bus][sbwacom]  
-* [How to Use Service Bus Queues][sbwacomqhowto]  
+* [A Service Bus-üzenetsorok használata][sbwacomqhowto]  
 
 
   [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
   [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-  [Get Tools and SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
+  [Eszközök és az SDK beszerzése]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
@@ -577,4 +530,10 @@ To learn more about Service Bus, see the following resources:
 
   [sbwacom]: /documentation/services/service-bus/  
   [sbwacomqhowto]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+
+
+
+
+<!--HONumber=Sep16_HO4-->
+
 

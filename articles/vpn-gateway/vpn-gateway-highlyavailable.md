@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Overview of Highly Available configurations with Azure VPN Gateways | Microsoft Azure"
-   description="This article provides an overview of highly available configuration options using Azure VPN Gateways."
+   pageTitle="A magas rendelkezésre állású konfigurációk és az Azure-alapú VPN-átjárók együttműködésének áttekintése | Microsoft Azure"
+   description="Ez a cikk áttekintést nyújt a magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával."
    services="vpn-gateway"
    documentationCenter="na"
    authors="yushwang"
@@ -17,79 +17,86 @@
    ms.date="09/24/2016"
    ms.author="yushwang"/>
 
-# Highly Available Cross-Premises and VNet-to-VNet Connectivity
 
-This article provides an overview of Highly Available configuration options for your cross-premises and VNet-to-VNet connectivity using Azure VPN gateways.
+# Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
 
-## <a name = "activestandby"></a>About Azure VPN gateway redundancy
+Ez a cikk áttekintést nyújt a létesítmények közötti és a virtuális hálózatok közötti kapcsolatokra vonatkozó magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
 
-Every Azure VPN gateway consists of two instances in an active-standby configuration. For any planned maintenance or unplanned disruption that happens to the active instance, the standby instance would take over (failover) automatically, and resume the S2S VPN or VNet-to-VNet connections. The switch over will cause a brief interruption. For planned maintenance, the connectivity should be restored within 10 to 15 seconds. For unplanned issues, the connection recovery will be longer, about 1 minute to 1 and a half minutes in the worst case. For P2S VPN client connections to the gateway, the P2S connections will be disconnected and the users will need to reconnect from the client machines.
+## <a name = "activestandby"></a>Tudnivalók az Azure-alapú VPN-átjárók redundanciájáról
 
-![Active-Standby](./media/vpn-gateway-highlyavailable/active-standby.png)
+Minden egyes Azure-alapú VPN-átjáró két példányból áll, amelyek aktív-készenléti konfigurációban vannak. Az aktív példányt érintő bármilyen tervezett karbantartás vagy nem tervezett kimaradás esetén a készenléti példány automatikusan átveszi az aktív szerepét (feladatátvétel), és fenntartja az S2S VPN- vagy a virtuális hálózatok közötti kapcsolatokat. Az átvétel rövid megszakítással jár. Tervezett karbantartás esetén a kapcsolatnak 10-15 másodpercen belül vissza kell állnia. Nem tervezett problémák esetén a kapcsolat helyreállítása hosszabb időt, kb. egy, vagy legrosszabb esetben másfél percet vehet igénybe. A P2S VPN-ügyfél és az átjáró közötti kapcsolatok esetében a P2S-kapcsolatok megszakadnak, és az ügyfeleknek ismét csatlakozniuk kell az ügyfélgépekről.
 
-## Highly Available Cross-Premises Connectivity
+![Aktív-készenléti](./media/vpn-gateway-highlyavailable/active-standby.png)
 
-To provide better availability for your cross premises connections, there are a couple of options available:
+## Létesítmények közötti magas rendelkezésre állású kapcsolatok
 
-- Multiple on-premises VPN devices
-- Active-active Azure VPN gateway
-- Combination of both
+Van néhány lehetőség, amellyel jobb rendelkezésre állás biztosítható a létesítmények közötti kapcsolat számára:
 
-### <a name = "activeactiveonprem"></a>Multiple on-premises VPN devices
+- Több helyszíni VPN-eszköz
+- Aktív-aktív Azure-alapú VPN-átjáró
+- A kettő kombinációja
 
-You can use multiple VPN devices from your on-premises network to connect to your Azure VPN gateway, as shown in the following diagram:
+### <a name = "activeactiveonprem"></a>Több helyszíni VPN-eszköz
 
-![Multiple On-Premises VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
+Az alábbi ábrán látható módon több VPN-eszközt is használhat a helyszíni hálózatából az Azure-alapú VPN-átjáróhoz való csatlakozásra:
 
-This configuration provides multiple active tunnels from the same Azure VPN gateway to your on-premises devices in the same location. There are some requirements and constraints:
+![Több helyszíni VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
 
-1. You need to create multiple S2S VPN connections from your VPN devices to Azure. When you connect multiple VPN devices from the same on-premises network to Azure, you need to create one local network gateway for each VPN device, and one connection from your Azure VPN gateway to the local network gateway.
+Ez a konfiguráció több aktív alagutat biztosít ugyanabból az Azure-alapú VPN-átjáróból az azonos helyen lévő helyszíni eszközeihez. Van néhány követelmény és megkötés:
 
-2. The local network gateways corresponding to your VPN devices must have unique public IP addresses in the "GatewayIpAddress" property.
+1. Több S2S VPN-kapcsolatot kell létesítenie a VPN-eszközök és az Azure között. Ha ugyanabból a helyszíni hálózatból csatlakoztat több VPN-eszközt az Azure-hoz, minden egyes VPN-eszközhöz létre kell hoznia egy helyi hálózati átjárót és egy kapcsolatot az Azure-alapú VPN-átjáró és a helyi hálózati átjáró között.
 
-3. BGP is required for this configuration. Each local network gateway representing a VPN device must have a unique BGP peer IP address specified in the "BgpPeerIpAddress" property.
+2. A VPN-eszközöknek megfelelő helyi hálózati átjáróknak egyedi nyilvános IP-címmel kell rendelkezniük a GatewayIpAddress tulajdonságban.
 
-4. The AddressPrefix property field in each local network gateway must not overlap. You should specify the "BgpPeerIpAddress" in /32 CIDR format in the AddressPrefix field, for example, 10.200.200.254/32.
+3. Ehhez a konfigurációhoz BGP szükséges. A VPN-eszközöknek megfelelő összes helyi hálózati átjáróhoz meg kell adnia egy egyedi BGP társ IP-címet a BgpPeerIpAddress tulajdonságban.
 
-5. You should use BGP to advertise the same prefixes of the same on-premises network prefixes to your Azure VPN gateway, and the traffic will be forwarded through these tunnels simultaneously.
+4. Az egyes helyi hálózati átjárók AddressPrefix tulajdonságmezői nem lehetnek egymással átfedésben. A BgpPeerIpAddress tulajdonságot /32 CIDR formátumban kell megadnia az AddressPrefix mezőben, például így: 10.200.200.254/32.
 
-6. Each connection is counted against the maximum number of tunnels for your Azure VPN gateway, 10 for Basic and Standard SKUs, and 30 for HighPerformance SKU. 
+5. Az azonos helyszíni hálózatok előtagjait BGP használatával kell meghirdetnie az Azure-alapú VPN-átjárónak, hogy a forgalom továbbítása egyszerre történjen ezeken az alagutakon keresztül.
 
-In this configuration, the Azure VPN gateway is still in active-standby mode, so the same failover behavior and brief interruption will still happen as described [above](#activestandby). But this setup guards against failures or interruptions on your on-premises network and VPN devices.
+6. Minden kapcsolat beleszámít az Azure-alapú VPN-átjáró alagútjainak maximális számába: 10 az alapszintű és standard, illetve 30 a HighPerformance termékváltozat esetében. 
+
+Ebben a konfigurációban az Azure-alapú VPN-átjáró továbbra is aktív-készenléti állapotban van, ezért a feladatátvétel és a rövid megszakítás továbbra is bekövetkezik a [fent](#activestandby) leírtak szerint. Ez a beállítás viszont védelmet nyújt a hibák vagy megszakítások ellen a helyszíni hálózat és a VPN-eszközök esetében.
  
-### Active-active Azure VPN gateway
+### Aktív-aktív Azure-alapú VPN-átjáró
 
-You can now create an Azure VPN gateway in an active-active configuration, where both instances of the gateway VMs will establish S2S VPN tunnels to your on-premises VPN device, as shown the following diagram:
+Most már létrehozhat egy Azure-alapú VPN-átjárót egy aktív-aktív konfigurációban, amelyben az átjáró virtuális gépeinek mindkét példánya S2S VPN-alagutakat létesít a helyszíni VPN-eszközökkel az alábbi ábrán látható módon:
 
-![Active-Active](./media/vpn-gateway-highlyavailable/active-active.png)
+![Aktív-aktív](./media/vpn-gateway-highlyavailable/active-active.png)
 
-In this configuration, each Azure gateway instance will have a unique public IP address, and each will establish an IPsec/IKE S2S VPN tunnel to your on-premises VPN device specified in your local network gateway and connection. Note that both VPN tunnels are actually part of the same connection. You will still need to configure your on-premises VPN device to accept or establish two S2S VPN tunnels to those two Azure VPN gateway public IP addresses.
+Ebben a konfigurációban minden egyes Azure-átjárópéldány egyedi nyilvános IP-címmel rendelkezik, és mindegyik IPsec/IKE S2S VPN-alagutat létesít a helyi hálózati átjáróban és kapcsolatban meghatározott helyszíni VPN-eszközzel. Vegye figyelembe, hogy valójában mindkét VPN-alagút azonos kapcsolat része. Továbbra is konfigurálnia kell a helyszíni VPN-eszközt, hogy elfogadjon vagy létesítsen két S2S VPN-alagutat a két Azure-alapú VPN-átjáró nyilvános IP-címéhez.
 
-Because the Azure gateway instances are in active-active configuration, the traffic from your Azure virtual network to your on-premises network will be routed through both tunnels simultaneously, even if your on-premises VPN device may favor one tunnel over the other. Note though the same TCP or UDP flow will always traverse the same tunnel or path, unless a maintenance event happens on one of the instances.
+Mivel az Azure-átjárópéldányok konfigurációja aktív-aktív, az Azure virtuális hálózat és a helyszíni hálózat közötti forgalom továbbítása még akkor is egyszerre történik a két alagúton, ha a helyszíni VPN-eszköz előnyben részesíti az egyik alagutat a másikhoz képest. Vegye figyelembe, hogy a TCP- vagy UDP-folyamat mindig ugyanazon az alagúton vagy útvonalon halad keresztül, hacsak egy karbantartási esemény nem történik az egyik példányon.
 
-When a planned maintenance or unplanned event happens to one gateway instance, the IPsec tunnel from that instance to your on-premises VPN device will be disconnected. The corresponding routes on your VPN devices should be removed or withdrawn automatically so that the traffic will be switched over to the other active IPsec tunnel. On the Azure side, the switch over will happen automatically from the affected instance to the active instance.
+Ha az egyik átjárópéldány esetében tervezett karbantartás vagy nem tervezett esemény következik be, az adott példány és a helyszíni VPN-eszköz közötti IPsec-alagút megszakad. A VPN-eszköz megfelelő útvonalait a rendszer automatikusan eltávolítja vagy visszavonja, hogy a forgalom a másik aktív IPsec-alagútra kerüljön át. Az Azure részéről az érintett példányról az aktív példányra való átállás automatikusan megtörténik.
 
-### Dual-redundancy: active-active VPN gateways for both Azure and on-premises networks
+### Kettős redundancia: aktív-aktív VPN-átjárók az Azure és a helyszíni hálózatok számára egyaránt
 
-The most reliable option is to combine the active-active gateways on both your network and Azure, as shown in the diagram below.
+A legbiztosabb megoldás, ha kombinálja a hálózat és az Azure aktív-aktív átjáróit az alábbi ábrán látható módon.
 
-![Dual Redundancy](./media/vpn-gateway-highlyavailable/dual-redundancy.png)
+![Kettős redundancia](./media/vpn-gateway-highlyavailable/dual-redundancy.png)
 
-Here you create and setup the Azure VPN gateway in an active-active configuration, and create two local network gateways and two connections for your two on-premises VPN devices as described above. The result is a full mesh connectivity of 4 IPsec tunnels between your Azure virtual network and your on-premises network.
+Itt létrehozhatja és beállíthatja az Azure-alapú VPN-átjáró aktív-aktív konfigurációját, továbbá létrehozhat két helyi hálózati átjárót és két kapcsolatot a két helyszíni VPN-eszköz számára a fent leírt módon. Az eredmény 4 IPsec-alagút szoros hálókapcsolata az Azure virtuális hálózat és a helyszíni hálózat között.
 
-All gateways and tunnels are active from the Azure side, so the traffic will be spread among all 4 tunnels simultaneously, although each TCP or UDP flow will again follow the same tunnel or path from the Azure side. Even though by spreading the traffic, you may see slightly better throughput over the IPsec tunnels, the primary goal of this configuration is for high availability. And due to the statistical nature of the spreading, it is difficult to provide the measurement on how different application traffic conditions will affect the aggregate throughput.
+Az Azure oldaláról minden átjáró és alagút aktív, így a forgalom egyszerre oszlik el mind a 4 alagút között, bár az egyes TCP- és UDP-folyamatok ismét ugyanazt az alagutat vagy útvonalat követik az Azure oldaláról. A forgalom elosztása ellenére valamennyivel jobb átviteli sebességet tapasztalhat az IPsec-alagutak esetében, de ennek a konfigurációnak a magas rendelkezésre állás az elsődleges célja. Az elosztás statisztikai jellege miatt nehéz felmérni, hogy a különböző alkalmazások adatforgalmának körülményei milyen hatással lesznek az összesített átviteli sebességre.
 
-This topology will require two local network gateways and two connections to support the pair of on-premises VPN devices, and BGP is required to allow the two connections to the same on-premises network. These requirements are the same as the [above](#activeactiveonprem). 
+Ez a topológia két helyi hálózati átjárót és két kapcsolatot igényel a helyszíni VPN-eszközpár támogatásához, a két kapcsolat azonos helyszíni hálózathoz való csatlakozásának engedélyezéséhez pedig BGP szükséges. Ezek a követelmények megegyeznek a [fentiekkel](#activeactiveonprem). 
 
-## Highly Available VNet-to-VNet Connectivity through Azure VPN Gateways
+## Magas rendelkezésre állású virtuális hálózatok közötti kapcsolatok az Azure VPN Gateway-átjárókon keresztül
 
-The same active-active configuration can also apply to Azure VNet-to-VNet connections. You can create active-active VPN gateways for both virtual networks, and connect them together to form the same full mesh connectivity of 4 tunnels between the two VNets, as shown in the diagram below:
+Ugyanez az aktív-aktív konfiguráció az Azure virtuális hálózatok közötti kapcsolatokra is alkalmazható. Mindkét virtuális hálózat számára létrehozhat VPN-átjárókat, és az összekapcsolásukkal ugyanolyan 4 alagutas szoros hálókapcsolódást érhet el a két virtuális hálózat között, mint amilyen az alábbi ábrán látható:
 
-![VNet-to-VNet](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![Virtuális hálózatok közötti kapcsolat](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
-This ensures there are always a pair of tunnels between the two virtual networks for any planned maintenance events, providing even better availability. Even though the same topology for cross-premises connectivity requires two connections, the VNet-to-VNet topology shown above will need only one connection for each gateway. Additionally, BGP is optional unless transit routing over the VNet-to-VNet connection is required.
+Ez biztosítja, hogy bármilyen tervezett karbantartási esemény esetében legyen két alagút a két virtuális hálózat között, ami még jobb rendelkezésre állást eredményez. Bár az azonos topológia a létesítmények közötti kapcsolatok esetében két kapcsolatot igényel, a fent bemutatott virtuális hálózatok közötti topológiához az egyes átjárókhoz csak egy kapcsolat szükséges. Emellett a BGP használata nem kötelező, kivéve, ha a virtuális hálózatok közötti kapcsolat esetében átmenő útválasztásra van szükség.
 
 
-## Next steps
+## Következő lépések
 
-See [Configuring Active-Active VPN Gateways for Cross-Premises and VNet-to-VNet Connections](http://go.microsoft.com/fwlink/?LinkId=828726) for steps to configure active-active cross-premises and VNet-to-VNet connections.
+A létesítmények közötti és a virtuális hálózatok közötti aktív-aktív kapcsolatok konfigurálásának lépéseit lásd: [Aktív-aktív VPN Gateway-átjárók konfigurálása létesítmények közötti és virtuális hálózatok közötti kapcsolatokhoz](http://go.microsoft.com/fwlink/?LinkId=828726).
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
 
 
@@ -65,7 +65,7 @@ Az egyes előfizetésekhez vagy erőforráscsoportokhoz külön-külön biztons�
 
 9. A **Security Policy** (Biztonsági szabályzat) panelen kattintson az **On** (Bekapcsolás) lehetőségre azoknál a biztonsági javaslatoknál, amelyeket az előfizetésnél használni kíván. Az alábbi képernyőképen látható beállításokhoz hasonló beállítások megtekintéséhez kattintson a **Prevention policy** (Megelőzési szabályzat) elemre:
 
-    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig4-ga.png)
+    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
 Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 
@@ -78,8 +78,9 @@ Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 | Network security groups (Hálózati biztonsági csoportok) | [Hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) konfigurálását ajánlja a be- és kimenő adatforgalom vezérlésére a nyilvános végpontokkal rendelkező virtuális gépek esetében. Az alhálózatra beállított hálózati biztonsági csoportokat az összes virtuális géphez tartozó hálózati adapter örökli, kivéve, ha Ön más beállítást ad meg. A hálózati biztonsági csoportok konfigurálásának figyelése mellett ez a szabályzat a bejövő biztonsági szabályokat is ellenőrzi, és azonosítja azokat a szabályokat, amelyek engedélyezik a bejövő forgalmat. |
 | Web application firewall (Webalkalmazási tűzfal) | Webalkalmazási tűzfal kiépítését javasolja a virtuális gépeken, ha az alábbiak valamelyike teljesül:</br></br>A rendszer [példányszintű nyilvános IP](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP)-címet használ, és a kapcsolódó hálózati biztonsági csoportra vonatkozó bejövő biztonsági szabályok a 80/443-as port elérésének engedélyezésére vannak konfigurálva.</br></br>A rendszer elosztott terhelésű IP-címet használ, és a kapcsolódó terheléselosztás és a hálózati címfordításra (NAT) vonatkozó bejövő szabályok a 80/443-as port elérésének engedélyezésére vannak konfigurálva. (A további információkat az [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Az Azure Resource Manager támogatása a terheléselosztó számára)) című rész tartalmazza. |
 | Next generation firewall (Új generációs tűzfal) | Az Azure-ba épített hálózati biztonsági csoportokon túlra is kiterjesztheti a hálózati védelmet. A Security Center felderíti az üzemelő példányokat, amelyekhez új generációs tűzfal használata javasolt, és engedélyezi a virtuális berendezés kiépítését. |
-| SQL auditing (SQL-naplózás) | Javasolja, hogy a megfelelés, a jobb észlelés és a támadások hatékonyabb kivizsgálása érdekében engedélyezze az Azure Database-hozzáférések naplózását. |
+| SQL-naplózás és fenyegetésészlelés | Javasolja, hogy a megfelelés, a jobb fenyegetésészlelés és a támadások hatékonyabb kivizsgálásához engedélyezze az Azure Database-hozzáférések naplózását. |
 | SQL transparent data encryption (SQL transzparens adattitkosítás) | Javasolja, hogy engedélyezze az inaktív adatok titkosítását az Azure SQL Database számára, valamint az azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra vonatkozóan. Így hiába jutnak be illetéktelen személyek a rendszerbe, az adatokat nem fogják tudni olvasni. |
+| Sebezhetőségi felmérés | Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
 
 Miután minden beállítást konfigurált, kattintson a javaslatokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **OK** gombjára, majd az eredeti beállításokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **Save** (Mentés) gombjára.
 
@@ -109,6 +110,6 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

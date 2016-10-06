@@ -1,10 +1,10 @@
 <properties
-   pageTitle="A Data Lake Store Java SDK használata alkalmazások fejlesztéséhez | Azure"
-   description="Az Azure Data Lake Store Java SDK használata alkalmazások fejlesztéséhez"
+   pageTitle="Use Data Lake Store Java SDK to develop applications | Azure"
+   description="Use Azure Data Lake Store Java SDK to develop applications"
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,13 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/18/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
-# Az Azure Data Lake Store használatának első lépései a Java használatával
+
+# Get started with Azure Data Lake Store using Java
 
 > [AZURE.SELECTOR]
-- [Portál](data-lake-store-get-started-portal.md)
+- [Portal](data-lake-store-get-started-portal.md)
 - [PowerShell](data-lake-store-get-started-powershell.md)
 - [.NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -27,54 +28,53 @@
 - [Azure CLI](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake-fiókot az Azure Data Lake Store Java SDK használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
+Learn how to use the Azure Data Lake Store Java SDK to create an Azure Data Lake account and perform basic operations such as create folders, upload and download data files, delete your account, etc. For more information about Data Lake, see [Azure Data Lake Store](data-lake-store-overview.md).
 
 ## Azure Data Lake Store Java SDK
 
-Az alábbi hivatkozások megadják a Data Lake Store-hoz készült Java SDK letöltési helyét és a Java SDK referenciáit. A jelen oktatóanyaghoz nem szükséges az SDK letöltése és a referenciadokumentum követése. A hivatkozások csak tájékoztató céllal szerepelnek itt.
+Following links provide you the download location for the Java SDK for Data Lake Store and the Java SDK reference. For this tutorial, you do not need to download the SDK or follow the reference document. These links are for your information only.
 
-* A Data Lake Store-hoz készült Java SDK forráskódja elérhető a [GitHubon](https://github.com/Azure/azure-sdk-for-java).
-* A Data Lake Store-hoz készült Java SDK dokumentációja a következő címen érhető el: [https://azure.github.io/azure-sdk-for-java/](https://azure.github.io/azure-sdk-for-java/).
+* The source code for the Java SDK for Data Lake Store is available on [GitHub](https://github.com/Azure/azure-sdk-for-java).
+* Java SDK Reference for Data Lake Store is available at [https://azure.github.io/azure-sdk-for-java/](https://azure.github.io/azure-sdk-for-java/).
 
-## Előfeltételek
+## Prerequisites
 
-* Java fejlesztői készlet (JDK) 8 (a Java 1.8-as verzióját használja).
-* IntelliJ vagy egyéb megfelelő Java fejlesztőkörnyezet. Nem kötelező, de ajánlott. Az alábbi utasítások az IntelliJ-t használják.
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure-előfizetés engedélyezése** a Data Lake Store nyilvános előzetes verziójához. Lásd az [utasításokat](data-lake-store-get-started-portal.md#signup).
-* **Egy Azure Active Directory-alkalmazás létrehozása**. Az Azure Active Directory használatával történő hitelesítésnek két módja van – **interaktív** és **nem interaktív**. A hitelesítés kívánt módjának megfelelően eltérő előfeltételek érvényesek.
-    * **Interaktív hitelesítés** – Az Azure Active Directoryban létre kell hoznia egy **natív ügyfélalkalmazást**. Miután létrehozta az alkalmazást, kérje le az alkalmazáshoz kapcsolódó alábbi értékeket.
-        - Az **ügyfél-azonosító** és az **átirányítási URI** lekérése az alkalmazáshoz
-        - Delegált engedélyek beállítása
+* Java Development Kit (JDK) 8 (using Java version 1.8).
+* IntelliJ or another suitable Java development environment. This is optional but recommended. The instructions below use IntelliJ.
+* **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+* **Create an Azure Active Directory Application**. There are two ways you can authenticate using Azure Active Directory - **interactive** and **non-interactive**. There are different prerequisites based on how you want to authenticate.
+    * **For interactive authentication** - In Azure Active Directory, you must create a **Native Client application**. Once you have created the application, retrieve the following values related to the application.
+        - Get **client ID** and **redirect URI** for the application
+        - Set delegated permissions
 
-    * **Nem interaktív hitelesítés** (a cikk ezt használja) – Az Azure Active Directoryban létre kell hoznia egy **webalkalmazást**. Miután létrehozta az alkalmazást, kérje le az alkalmazáshoz kapcsolódó alábbi értékeket.
-        - Az **ügyfél-azonosító**, az **ügyfél titkos kulcsa** és az **átirányítási URI** lekérése az alkalmazáshoz
-        - Delegált engedélyek beállítása
-        - Rendelje hozzá az Azure Active Directory-alkalmazást egy szerepkörhöz. A szerepkör lehet annak a hatókörnek a szintjén, amelyen engedélyt kíván biztosítani az Azure Active Directory-alkalmazásnak. Az alkalmazás például hozzárendelhető az előfizetés szintjén vagy egy erőforráscsoport szintjén is.
+    * **For non-interactive authentication** (used in this article) - In Azure Active Directory, you must create a **Web application**. Once you have created the application, retrieve the following values related to the application.
+        - Get **client ID**, **client secret**, and **redirect URI** for the application
+        - Set delegated permissions
+        - Assign the Azure Active Directory application to a role. The role can be at the level of the scope at which you want to give permission to the Azure Active Directory application. For example, you can assign the application at the subscription level or at the level of a resource group.
 
-    Az értékek lekérésére, az engedélyek beállítására és a szerepkörök hozzárendelésére vonatkozó utasítások: [Create Active Directory application and service principal using portal](../resource-group-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával).
+    See [Create Active Directory application and service principal using portal](../resource-group-create-service-principal-portal.md) for instructions on how to retrieve these values, set the permissions, and assign roles.
 
-## Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
+## How do I authenticate using Azure Active Directory?
 
-Az alábbi kódrészlet a **nem interaktív** hitelesítéshez biztosít kódot, amely során az alkalmazás maga biztosítja saját hitelesítő adatait.
+The code snippet below provides code for **non-interactive** authentication, where the application provides its own credentials.
 
-Ahhoz, hogy az oktatóanyag működjön, engedélyeznie kell az alkalmazásnak, hogy erőforrásokat hozzon létre az Azure-ban. **Határozottan ajánlott**, hogy a jelen oktatóanyagban csak közreműködői jogosultságokat adjon az alkalmazásnak egy új, nem használt és üres erőforráscsoporthoz az Azure-előfizetésben.
+You need to give your application permission to create resources in Azure for this tutorial to work. It is **highly recommended** that you only give this application Contributor permissions to a new, unused, and empty resource group in your Azure subscription for the purposes of this tutorial.
 
-## Java-alkalmazás létrehozása
+## Create a Java application
 
-1. Nyissa meg az IntelliJ-t, és hozzon létre egy Java-projektet a **Parancssori alkalmazás** sablon használatával. Fejezze be a varázslót a projekt létrehozásához.
+1. Open IntelliJ and create a new Java project using the **Command Line App** template. Complete the wizard to create the project.
 
-2. Nyissa meg a **File** (Fájl)  ->  **Project Structure** (Projektstruktúra)  ->  **Modules** (Modulok) (a Project Settings (Projektbeállítások) alatt) -> **Dependencies** (Függőségek)  ->  **+** -> **Library** (Könyvtár)  -> **From Maven** (A Mavenből) elemet.
+2. Open **File** -> **Project Structure** -> **Modules** (under Project Settings) -> **Dependencies** -> **+** -> **Library** -> **From Maven**.
 
-3. Keressen rá a következő Maven-csomagokra, és adja hozzá őket a projektjéhez:
+3. Search for the following Maven packages and add them your project:
 
     * com.microsoft.azure:azure-mgmt-datalake-store:1.0.0-beta1.2
     * com.microsoft.azure:azure-mgmt-datalake-store-uploader:1.0.0-beta1.2
     * com.microsoft.azure:azure-client-authentication:1.0.0-beta2
 
-4. A bal oldali ablaktáblában lépjen az **src**, **main**, **java**, **\<csomag neve>** elemre, majd nyissa meg a **Main.java** fájlt, és cserélje le a meglévő kódblokkot az alábbi kódra. Továbbá adja meg a kódrészletben kiemelt paraméterek (például **localFolderPath**, **DATA-LAKE-STORE-NAME**, **RESOURCE-GROUP-NAME**) értékeit, és cserélje le a **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** és **SUBSCRIPTION-ID** helyőrzőt az előfizetésére és az ahhoz tartozó Azure Active Directoryra vonatkozó adatokkal. További információk ezen adatok megtalálásáról: [az Azure útmutatója egyszerű szolgáltatások létrehozásához](../resource-group-authenticate-service-principal.md).
+4. From the left pane, navigate to **src**, **main**, **java**, **\<package name>**, and then open **Main.java** and replace the existing code block with the following code. Also, provide the values for parameters called out in the code snippet, such as **localFolderPath**, **DATA-LAKE-STORE-NAME**, **RESOURCE-GROUP-NAME** and replace placeholders for **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID**, and **SUBSCRIPTION-ID** with information about your subscription and its Azure Active Directory. For information on how to find this information, see [the Azure guide to creating service principals](../resource-group-authenticate-service-principal.md).
 
-    A kód létrehozza a Data Lake Store-fiókot, a fájlokat a tárolóban, összefűzi és letölti a fájlokat, és végül törli a fiókot.
+    This code goes through the process of creating a Data Lake Store account, creating files in the store, concatenating files, downloading a file, and finally deleting the account.
 
         package com.company;
 
@@ -272,16 +272,16 @@ Ahhoz, hogy az oktatóanyag működjön, engedélyeznie kell az alkalmazásnak, 
         }
 
 
-6. Futtassa az alkalmazást. Kövesse az utasításokat az alkalmazás futtatásához és befejezéséhez.
+6. Run the application. Follow the prompts to run and complete the application.
 
-## További lépések
+## Next steps
 
-- [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
-- [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-- [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
+- [Use Azure Data Lake Analytics with Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+- [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

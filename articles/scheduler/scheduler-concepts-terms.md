@@ -3,8 +3,8 @@
  description="Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája, beleértve a feladatokat és a feladatgyűjteményeket.  Egy ütemezett feladat átfogó példáját mutatja be."
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,7 +13,7 @@
  ms.devlang="dotnet"
  ms.topic="get-started-article"
  ms.date="08/18/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
 
 # A Scheduler alapfogalmai, entitáshierarchiája és terminológiája

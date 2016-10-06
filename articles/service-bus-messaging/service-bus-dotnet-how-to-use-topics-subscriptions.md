@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Use Service Bus topics with .NET | Microsoft Azure"
-    description="Learn how to use Service Bus topics and subscriptions with .NET in Azure. Code samples are written for .NET applications."
+    pageTitle="A Service Bus-üzenettémakörök használata a .NET keretrendszerrel | Microsoft Azure"
+    description="Megismerheti a Service Bus-üzenettémakörök és előfizetések a .NET-keretrendszerrel való használatát az Azure-ban. A kódminták .NET-alkalmazásokhoz íródtak."
     services="service-bus-messaging"
     documentationCenter=".net"
     authors="sethmanheim"
@@ -16,46 +16,44 @@
     ms.date="09/16/2016"
     ms.author="sethm"/>
 
-# How to use Service Bus topics and subscriptions
+
+# A Service Bus-üzenettémakörök és -előfizetések használata
 
 [AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-This article describes how to use Service Bus topics and subscriptions. The samples are written in C# and use the .NET APIs. The scenarios covered include creating topics and subscriptions, creating subscription filters, sending messages to a topic, receiving messages from a subscription, and deleting topics and subscriptions. For more information about topics and subscriptions, see the [Next steps](#next-steps) section.
+Ez a cikk a Service Bus-üzenettémakörök és -előfizetések használatát ismerteti. A kódminták C# nyelven íródtak, és a .NET API-kat használják. Az ismertetett forgatókönyvek között megtalálható az üzenettémák és előfizetések létrehozása, az előfizetés-szűrők létrehozása, az üzenetek küldése egy üzenettémakörbe, az üzenetek fogadása egy előfizetésből, valamint az üzenettémák és előfizetések törlése. Az üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 [AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-## Configure the application to use Service Bus
+## Az alkalmazás konfigurálása a Service Bus használatára
 
-When you create an application that uses Service Bus, you must add a reference to the Service Bus assembly and include the corresponding namespaces. The easiest way to do this is to download the appropriate [NuGet](https://www.nuget.org) package.
+Amikor egy Service Bust használó alkalmazást hoz létre, fel kell vennie egy, a Service Bus-összeállításra mutató hivatkozást, és bele kell foglalnia a megfelelő névtereket. Ennek legegyszerűbb módja a megfelelő [NuGet](https://www.nuget.org)-csomag letöltése.
 
-## Get the Service Bus NuGet package
+## A Service Bus NuGet-csomag beszerzése
 
-The [Service Bus NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus) is the easiest way to get the Service Bus API and to configure your application with all the necessary Service Bus dependencies. To install the Service Bus NuGet package in your project, do the following:
+A Service Bus API beszerzésének, valamint az alkalmazások az összes szükséges Service Bus-függőséggel való konfigurálásának legegyszerűbb módja a [Service Bus NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.ServiceBus) telepítése. A Service Bus NuGet-csomagnak a projektben való telepítéséhez tegye a következőket:
 
-1.  In Solution Explorer, right-click **References**, then click
-    **Manage NuGet Packages**.
-2.  Search for "Service Bus" and select the **Microsoft Azure
-    Service Bus** item. Click **Install** to complete the installation,
-    then close the following dialog box:
+1.  A Megoldáskezelőben kattintson a jobb gombbal a **Hivatkozások** elemre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+2.  Keressen a „Service Bus” kifejezésre, és válassza ki az **Microsoft Azure Service Bus** elemet. Kattintson az **Install** (Telepítés) gombra a telepítés befejezéséhez, majd zárja be a következő párbeszédpanelt:
 
     ![][7]
 
-You are now ready to write code for Service Bus.
+Készen áll arra, hogy kódot írjon a Service Bushoz.
 
-## Create a Service Bus connection string
+## Service Bus kapcsolati karakterlánc létrehozása
 
-Service Bus uses a connection string to store endpoints and credentials. You can put your connection string in a configuration file, rather than hard-coding it:
+A Service Bus egy kapcsolati karakterláncot használ a végpontok és a hitelesítő adatok tárolásához. A következő esetekben érdemes lehet a kapcsolati karakterláncot egy konfigurációs fájlban elhelyezni a rögzített megadás helyett:
 
-- When using Azure services, it is recommended that you store your connection string using the Azure service configuration system (.csdef and .cscfg files).
-- When using Azure websites or Azure Virtual Machines, it is recommended that you store your connection string using the .NET configuration system (for example, the Web.config file).
+- Az Azure-szolgáltatások használata esetén ajánlott a kapcsolati karakterláncot az Azure szolgáltatás konfigurációs rendszerével tárolni (.csdef és .cscfg fájlokban).
+- Azure-webhelyek vagy Azure virtuális gépek használata esetén ajánlott a kapcsolati karakterláncot a. NET konfigurációs rendszerével tárolni (például a Web.config fájlban).
 
-In both cases, you can retrieve your connection string using the `CloudConfigurationManager.GetSetting` method, as shown later in this article.
+Mindkét esetben a(z) `CloudConfigurationManager.GetSetting` metódussal kérheti le a kapcsolati karakterláncot, amint az a cikk későbbi részében látható lesz.
 
-### Configure your connection string
+### A kapcsolati karakterlánc konfigurálása
 
-The service configuration mechanism enables you to dynamically change configuration settings from the [Azure portal][] without redeploying your application. For example, add a `Setting` label to your service definition (**.csdef**) file, as shown in the next example.
+A szolgáltatás konfigurációs mechanizmusa lehetővé teszi a konfigurációs beállítások dinamikus módosítását az [Azure Portal][] az alkalmazás újbóli telepítése nélkül. Hozzáadhat például egy `Setting` címkét a szolgáltatás definíciós (**.csdef**) fájljához a következő példában látható módon.
 
 ```
 <ServiceDefinition name="Azure1">
@@ -69,7 +67,7 @@ The service configuration mechanism enables you to dynamically change configurat
 </ServiceDefinition>
 ```
 
-You then specify values in the service configuration (.cscfg) file.
+Ezután értékeket határozhat meg a szolgáltatás konfigurációs (.cscfg) fájljában.
 
 ```
 <ServiceConfiguration serviceName="Azure1">
@@ -84,11 +82,11 @@ You then specify values in the service configuration (.cscfg) file.
 </ServiceConfiguration>
 ```
 
-Use the Shared Access Signature (SAS) key name and key values retrieved from the portal as described previously.
+Használja a portálról lekért közös hozzáférésű jogosultságkód (SAS-) kulcs nevét és a kulcs értékeit az előzőekben leírtak szerint.
 
-### Configure your connection string when using Azure websites or Azure Virtual Machines
+### A kapcsolati karakterlánc konfigurálása Azure-webhelyek vagy Azure virtuális gépek használatakor
 
-When using websites or Virtual Machines, it is recommended that you use the .NET configuration system (for example, Web.config). You store the connection string using the `<appSettings>` element.
+Webhelyek vagy virtuális gépek használata esetén ajánlott a. NET konfigurációs rendszerét használni (például a Web.config fájlt). A kapcsolati karakterláncot a(z) `<appSettings>` elem használatával tárolhatja.
 
 ```
 <configuration>
@@ -99,21 +97,19 @@ When using websites or Virtual Machines, it is recommended that you use the .NET
 </configuration>
 ```
 
-Use the SAS name and key values that you retrieved from the [Azure portal][], as described previously.
+Használja az [Azure Portal][] lekért SAS-nevet és -kulcsértékeit az előzőekben leírtak szerint.
 
-## Create a topic
+## Üzenettémakör létrehozása
 
-You can perform management operations for Service Bus topics and subscriptions using the [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) class. This class provides methods to create, enumerate, and delete topics.
+A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával kezelési műveleteket hajthat végre a Service Bus-üzenettémakörökön és előfizetéseken. Ez az osztály metódusokat biztosít az üzenettémakörök létrehozásához, enumerálásához és törléséhez.
 
-The following example constructs a `NamespaceManager` object using the Azure `CloudConfigurationManager` class
-with a connection string consisting of the base address of a Service Bus namespace and the appropriate
-SAS credentials with permissions to manage it. This connection string is of the following form:
+A következő példa egy `NamespaceManager` objektumot állít össze az Azure `CloudConfigurationManager` osztály használatával egy olyan kapcsolati karakterlánccal, amely egy Service Bus-névtér alapszintű címéből és a megfelelő SAS hitelesítő adatokból áll, és rendelkezik a kezeléséhez szükséges engedélyekkel. Ez a kapcsolati karakterlánc a következő formátumot követi:
 
 ```
 Endpoint=sb://<yourNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<yourKey>
 ```
 
-Use the following example, given the configuration settings in the previous section.
+Használja a következő példát az előző szakaszban megadott konfigurációs beállításokkal.
 
 ```
 // Create the topic if it does not exist already.
@@ -129,7 +125,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-There are overloads of the [CreateTopic](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) method that enable you to set properties of the topic; for example, to set the default time-to-live (TTL) value to be applied to messages sent to the topic. These settings are applied by using the [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) class. The following example shows how to create a topic named **TestTopic** with a maximum size of 5 GB and a default message TTL of 1 minute.
+A [CreateTopic](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) metódus túlterhelésekkel rendelkezik, amelyek lehetővé teszik a témakör tulajdonságainak hangolását (például a témakörbe küldött üzenetek alapértelmezett élettartam (TTL) értékének meghatározását). Ezek a beállítások a [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) használatával alkalmazhatók. A következő példa bemutatja, hogyan hozható létre egy **TestTopic** nevű üzenettémakör 5 GB maximális mérettel és 1 perces alapértelmezett üzenet-élettartammal.
 
 ```
 // Configure Topic Settings.
@@ -150,16 +146,15 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE] You can use the [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) method on [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) objects to check whether a topic with a specified name already exists within a namespace.
+> [AZURE.NOTE] A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) objektumokon alkalmazhatja a [ZopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) metódust annak ellenőrzéséhez, hogy már létezik-e egy adott nevű témakörben.
 
-## Create a subscription
+## Előfizetés létrehozása
 
-You can also create topic subscriptions using the [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) class. Subscriptions are named and can have an optional filter that
-restricts the set of messages passed to the subscription's virtual queue.
+A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával is létrehozhat üzenettémakör-előfizetéseket. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
 
-### Create a subscription with the default (MatchAll) filter
+### Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 
-If no filter is specified when a new subscription is created, the **MatchAll** filter is the default filter that is used. When you use the **MatchAll** filter, all messages published to the topic are placed in the subscription's virtual queue. The following example creates a subscription named "AllMessages" and uses the default **MatchAll** filter.
+Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, akkor a **MatchAll** szűrő az alapértelmezett használandó szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példa egy „AllMessages” nevű előfizetést hoz létre, és az alapértelmezett **MatchAll** szűrőt használja.
 
 ```
 string connectionString =
@@ -174,13 +169,13 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 }
 ```
 
-### Create subscriptions with filters
+### Előfizetések létrehozása szűrőkkel
 
-You can also set up filters that enable you to specify which messages sent to a topic should appear within a specific topic subscription.
+Beállíthat szűrőket, amelyek lehetővé teszik annak meghatározását, hogy mely üzenetek jelenjenek meg egy adott üzenettémakör-előfizetésben.
 
-The most flexible type of filter supported by subscriptions is the [SqlFilter][] class, which implements a subset of SQL92. SQL filters operate on the properties of the messages that are published to the topic. For more information about the expressions that can be used with a SQL filter, see the [SqlFilter.SqlExpression][] syntax.
+Az előfizetések által támogatott legrugalmasabb típusú szűrő az [SqlFilter][] osztály, amely az SQL92 egy részhalmazát valósítja meg. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkért lásd az [SqlFilter.SqlExpression][] szintaxisát.
 
-The following example creates a subscription named **HighMessages** with a [SqlFilter][] object that only selects messages that have a custom **MessageNumber** property greater than 3.
+A következő példa egy **HighMessages** nevű előfizetést hoz létre egy [SqlFilter][] objektummal, amely csak azokat az üzeneteket választja ki, amelyek egyéni **MessageNumber** tulajdonságának értéke nagyobb, mint 3.
 
 ```
 // Create a "HighMessages" filtered subscription.
@@ -192,7 +187,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-Similarly, the following example creates a subscription named **LowMessages** with a [SqlFilter][] that only selects messages that have a **MessageNumber** property less than or equal to 3.
+A következő példa hasonlóképpen egy **LowMessages** nevű előfizetést hoz létre egy [SqlFilter][] objektummal, amely csak azokat az üzeneteket választja ki, amelyek egyéni **MessageNumber** tulajdonságának értéke kisebb vagy egyenlő, mint 3.
 
 ```
 // Create a "LowMessages" filtered subscription.
@@ -204,13 +199,13 @@ namespaceManager.CreateSubscription("TestTopic",
    lowMessagesFilter);
 ```
 
-Now when a message is sent to `TestTopic`, it is always delivered to receivers subscribed to the **AllMessages** topic subscription, and selectively delivered to receivers subscribed to the **HighMessages** and **LowMessages** topic subscriptions (depending on the message content).
+Ekkor, ha a(z) `TestTopic` egy üzenetet kap, a rendszer mindig kézbesíti az üzenetet az **AllMessages** üzenettémakör-előfizetésre feliratkozott címzetteknek, és szelektív módon kézbesíti a **HighMessages** és a **LowMessages** üzenettémakör-előfizető címzetteknek (az üzenet tartalmától függően).
 
-## Send messages to a topic
+## Üzenetek küldése egy üzenettémakörbe
 
-To send a message to a Service Bus topic, your application creates a [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object using the connection string.
+Az alkalmazás a kapcsolati karakterlánc használatával létrehoz egy [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) objektumot egy Service Bus-témakörbe való üzenetküldéshez.
 
-The following code demonstrates how to create a [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object for the **TestTopic** topic created earlier using the [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API call.
+A következő kód bemutatja, hogyan hozható létre egy [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) objektum a [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API-hívással korábban létrehozott **TestTopic** üzenettémakörhöz.
 
 ```
 string connectionString =
@@ -222,10 +217,9 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-Messages sent to Service Bus topics are instances of the [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) class. [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) objects have a set of
-standard properties (such as [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) and [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), a dictionary that is used to hold custom application-specific properties, and a body of arbitrary application data. An application can set the body of the message by passing any serializable object to the constructor of the [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) object, and the appropriate **DataContractSerializer** is then used to serialize the object. Alternatively, a **System.IO.Stream** can be provided.
+A Service Bus-üzenettémakörbe küldött üzenetek a [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) osztály példányai. A [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) objektumok egy szabványos tulajdonságkészlettel (például a [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) és a [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), az egyéni alkalmazásspecifikus tulajdonságokat tároló könyvtárral, valamint egy tetszőleges alkalmazásadatokból álló törzzsel rendelkeznek. Az alkalmazás beállíthatja az üzenet törzsét egy bármilyen szerializálható objektumnak a [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) objektum konstruktorának való átadásával, ezután a megfelelő **DataContractSerializer** osztály szerializálja az objektumot. Másik lehetőségként biztosítható egy **System.IO.Stream**.
 
-The following example demonstrates how to send five test messages to the **TestTopic** [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) object obtained in the previous code example. Note that the [MessageNumber](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) property value of each message varies depending on the iteration of the loop (this determines which subscriptions receive it).
+A következő példa bemutatja, hogyan küldhető öt tesztüzenet az előző példakódban beszerzett **TestTopic** [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) objektumba. Vegye figyelembe, hogy az egyes üzenetek [MessageNumber](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) tulajdonságának értéke a ciklus ismétléseinek számától függően változik (ez határozza meg, hogy melyik előfizetések fogják megkapni).
 
 ```
 for (int i=0; i<5; i++)
@@ -241,19 +235,17 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus topics support a maximum message size of 256 KB in the [Standard tier](service-bus-premium-messaging.md) and 1 MB in the [Premium tier](service-bus-premium-messaging.md). The header, which includes the standard and custom application properties, can have a maximum size of 64 KB. There is no limit on the number of messages held in a topic but there is a cap on the total size of the messages held by a topic. This topic size is defined at creation time, with an upper limit of 5 GB. If partitioning is enabled, the upper limit is higher. For more information, see [Partitioned messaging entities](service-bus-partitioning.md).
+A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. Ha a particionálás engedélyezve van, a felső korlát magasabb. További információkért lásd: [Particionált üzenetküldési entitások](service-bus-partitioning.md).
 
-## How to receive messages from a subscription
+## Üzenetek fogadása egy előfizetésből
 
-The recommended way to receive messages from a subscription is to use a [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) object. [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) objects can work in two different modes: [*ReceiveAndDelete* and *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx).
+Az üzenetek előfizetésből való fogadásához egy [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) objektum használata ajánlott. A [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) objektumok két különböző módban tudnak működni: [*ReceiveAndDelete* és *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx).
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot operation; that is, when Service Bus receives a read request for a message in a subscription, it marks the message as being consumed and returns it to the application. **ReceiveAndDelete** mode is the simplest model and works best for scenarios in which an application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus has marked the message as consumed, when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+A **ReceiveAndDelete** mód használatakor a fogadás egy egylépéses művelet – vagyis amikor a Service Bus egy olvasási kérést kap egy előfizetésben lévő üzenetre vonatkozóan, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. A **ReceiveAndDelete** mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel ekkor a Service Bus már feldolgozottként jelölte meg az üzenetet, az alkalmazás újraindításakor és az üzenetek feldolgozásának megkezdésekor ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
 
-In **PeekLock** mode (which is the default mode), the receive process becomes a two-stage operation, which makes it possible to support applications that cannot tolerate missing messages. When Service Bus receives a request,
-it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by calling [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) on the received message. When Service Bus sees the **Complete** call, it marks the message as being consumed and removes it from the subscription.
+**PeekLock** módban (amely az alapértelmezett mód) a fogadás kétszakaszos művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), végrehajtja a fogadási folyamat második a [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) meghívásával a fogadott üzenethez. Amikor a Service Bus látja a **Complete** hívást, feldolgozottként jelöli meg az üzenetet, és eltávolítja az előfizetésből.
 
-The following example demonstrates how messages can be received and processed using the default **PeekLock** mode. To specify a different [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) value, you can use another overload for [CreateFromConnectionString](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.createfromconnectionstring.aspx). This example uses the [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) callback to process messages as they arrive
-into the **HighMessages** subscription.
+A következő példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek az alapértelmezett **PeekLock** mód használatával. Egy másik [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) érték meghatározásához a [CreateFromConnectionString](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.createfromconnectionstring.aspx) egy másik túlterhelését használhatja. Ez a példa az [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) visszahívást használja az üzenetek feldolgozásához, amikor megérkeznek a **HighMessages** előfizetésbe.
 
 ```
 string connectionString =
@@ -290,51 +282,54 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-This example configures the [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) callback using an [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) object. [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) is set to **false** to enable manual control of when to call [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) on the received message. [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) is set to 1 minute, which causes the client to wait for up to one minute before terminating the auto-renewal feature and the client makes a new call to check for messages. This property value reduces the number of times the client makes chargeable calls that do not retrieve messages.
+A példa egy [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) objektum használatával konfigurálja az [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) visszahívást. Az [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) **hamis** értékre van állítva, így manuálisan vezérelhető, hogy mikor legyen meghívva a [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) metódus a fogadott üzenethez. Az [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) 1 percre van beállítva, aminek következtében az ügyfél legfeljebb egy percet vár, mielőtt leállítja az automatikus megújítási szolgáltatást, és új hívást indít az üzenetek ellenőrzése érdekében. Ez a tulajdonságérték csökkenti azon alkalmak számát, amikor az ügyfél olyan felszámítható hívásokat kezdeményez, amelyek nem kérnek le üzeneteket.
 
-## How to handle application crashes and unreadable messages
+## Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 
-Service Bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiving application is unable to process the message for some reason, then it can call the [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) method on the received message (instead
-of the [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) method). This causes Service Bus to unlock the message within the subscription and make it available to be received again, either by the same consuming application or by another consuming application.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tud feldolgozni egy üzenetet, akkor meghívhatja az [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) metódust a fogadott üzenethez (a [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) metódus helyett). Ennek hatására a Service Bus feloldja az üzenet zárolását az előfizetésen belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
 
-There is also a time-out associated with a message locked within the subscription, and if the application fails to process the message before the lock time-out expires (for example, if the application crashes), then Service Bus unlocks the message automatically and makes it available to be received again.
+Emellett egy időtúllépés van hozzárendelve az előfizetésben lévő üzenetekhez, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási idő lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását, és lehetővé teszi az újbóli fogadását.
 
-In the event that the application crashes after processing the message but before the [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) request is issued, the message will be redelivered to the application when it restarts. This is often called *At Least Once processing*; that is, each message is processed at least once but in certain situations the same message may be
-redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the
-[MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) property of the message, which remains constant across delivery attempts.
+Ha az alkalmazás az üzenet feldolgozása után, de a [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) kérés kiadása előtt omlik össze, az üzenet újból kézbesítve lesz az alkalmazásnak, amikor újraindul. Ezt a módszert gyakran *Legalább egyszeri feldolgozásnak* nevezik. Ez azt jelenti, hogy minden üzenet legalább egyszer fel lesz dolgozva, de bizonyos helyzetekben előfordulhat ugyanazon üzenet újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
 
-## Delete topics and subscriptions
+## Témakörök és előfizetések törlése
 
-The following example demonstrates how to delete the topic **TestTopic** from the **HowToSample** service namespace.
+A következő példa bemutatja, hogy hogyan törölhető a **TestTopic** témakör a **HowToSample** szolgáltatásnévtérből.
 
 ```
 // Delete Topic.
 namespaceManager.DeleteTopic("TestTopic");
 ```
 
-Deleting a topic also deletes any subscriptions that are registered with the topic. Subscriptions can also be deleted independently. The following code demonstrates how to delete a subscription named **HighMessages** from the **TestTopic** topic.
+Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. A következő kód bemutatja, hogyan törölhető a **HighMessages** nevű előfizetés a **TestTopic** témakörből.
 
 ```
 namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 ```
 
-## Next steps
+## Következő lépések
 
-Now that you've learned the basics of Service Bus topics and subscriptions, follow these links to learn more.
+Most, hogy megismerte a Service Bus-témakörök és -előfizetések alapjait, az alábbi hivatkozásokból tudhat meg többet.
 
--   [Queues, topics, and subscriptions][].
--   [Topic filters sample][]
--   API reference for [SqlFilter][].
--   Build a working application that sends and receives messages to and from a Service Bus queue: [Service Bus brokered messaging .NET tutorial][].
--   Service Bus samples: Download from [Azure samples][] or see the [overview](../service-bus/service-bus-samples.md).
+-   [Queues, topics, and subscriptions][] (Üzenetsorok, témakörök és előfizetések).
+-   [Topic filters sample (Témakörszűrők – minta)][]
+-   Az [SqlFilter][] API-referenciája.
+-   A [Service Bus brokered messaging .NET tutorial][] (A Service Bus által felügyelt üzenettovábbítás .NET oktatóanyaga) segítségével összeállíthat egy működő alkalmazást, amely üzeneteket küld egy Service Bus-üzenetsorba, illetve üzeneteket fogad belőle.
+-   Service Bus-minták: Letöltés az [Azure-minták][] közül vagy [áttekintés](../service-bus/service-bus-samples.md).
 
-  [Azure portal]: https://portal.azure.com
+  [Azure Portal]: https://portal.azure.com
 
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
   [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-  [Topic filters sample]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
+  [Topic filters sample (Témakörszűrők – minta)]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Service Bus brokered messaging .NET tutorial]: service-bus-brokered-tutorial-dotnet.md
-  [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+  [Azure-minták]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

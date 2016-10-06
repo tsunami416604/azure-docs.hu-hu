@@ -63,28 +63,24 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
 
     ![][3]
 
-6. **XCode 7** esetén – a `libxml2.tbd` fájlt adja hozzá a `libxml2.dylib` helyett.
-
-7. Lépjen vissza az Azure Portalra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot.
+6. Lépjen vissza az Azure Portalra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot.
 
     ![][4]
 
-8. Adja hozzá a következő kódsort az **AppDelegate.m** fájlhoz.
+7. Adja hozzá a következő kódsort az **AppDelegate.m** fájlhoz.
 
         #import "EngagementAgent.h"
 
-9. Illessze be a kapcsolati karakterláncot a `didFinishLaunchingWithOptions` delegáltba.
+8. Illessze be a kapcsolati karakterláncot a `didFinishLaunchingWithOptions` delegáltba.
 
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
-            [...]
-            //[EngagementAgent setTestLogEnabled:YES];
-   
+            [...]   
             [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
             [...]
         }
 
-10. `setTestLogEnabled` egy választható utasítás, amely engedélyezi az SDK-naplókat a problémák azonosításához. 
+9. `setTestLogEnabled` egy választható utasítás, amely engedélyezi az SDK-naplókat a problémák azonosításához. 
 
 ##<a id="monitor"></a>Valós idejű figyelés engedélyezése
 
@@ -124,6 +120,7 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 1. Az **AppDeletegate.m** fájlban importálja az Engagement Reach modulját.
 
         #import "AEReachModule.h"
+        #import <UserNotifications/UserNotifications.h>
 
 2. Az `application:didFinishLaunchingWithOptions` módszerben hozzon létre egy Reach modult, és adja át azt az Engagement meglévő inicializációs sorának:
 
@@ -138,12 +135,19 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 1. Adja a következő sort az `application:didFinishLaunchingWithOptions` módszerhez:
 
-        if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
+        if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+        {
+            if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
+            {
+                [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+            }else
+            {
+                [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
+            }
             [application registerForRemoteNotifications];
         }
-        else {
-
+        else
+        {
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
@@ -184,6 +188,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

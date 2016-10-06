@@ -1,9 +1,8 @@
->[AZURE.NOTE (Az Azure Machine Learning ingyenes kipróbálása)]
+>[AZURE.NOTE (Try Azure Machine Learning for free)]
 >
->Nincs szükség bankkártyára vagy Azure-előfizetésre. <a href="https://studio.azureml.net/?selectAccess=true&o=2" target="_blank">**Első lépések >**</a>
+>No credit card or Azure subscription needed. <a href="https://studio.azureml.net/?selectAccess=true&o=2" target="_blank">**Get started now >**</a>
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,40 +1,39 @@
-## Mi az a Table szolgáltatás?
+## What is the Table Service
 
-Az Azure Table Storage szolgáltatás nagy mennyiségű strukturált adatok tárolására alkalmas. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőből és azon kívülről érkező hitelesített hívásokat fogadja. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. A Table szolgáltatás leggyakoribb felhasználási módjai:
+The Azure Table storage service stores large amounts of structured data. The service is a NoSQL datastore which accepts authenticated calls from inside and outside the Azure cloud. Azure tables are ideal for storing structured, non-relational data. Common uses of the Table service include:
 
--   Több TB-nyi, webes méretű alkalmazások kiszolgálására alkalmas strukturált adat tárolása
--   Olyan adatkészletek tárolása, amelyekhez nincs szükség bonyolult illesztésekre, külső kulcsokra vagy tárolt eljárásokra, és a gyors hozzáférés érdekében denormalizálhatók
--   Adatok gyors lekérdezése fürtözött indexszel
--   Adathozzáférés az OData protokoll és a LINQ-lekérdezések WCF Data Service .NET-kódtárakkal való használatával
+-   Storing TBs of structured data capable of serving web scale applications
+-   Storing datasets that don't require complex joins, foreign keys, or stored procedures and can be denormalized for fast access
+-   Quickly querying data using a clustered index
+-   Accessing data using the OData protocol and LINQ queries with WCF Data Service .NET Libraries
 
-A Table szolgáltatás hatalmas strukturált, nem relációs adatkészletek tárolására és lekérdezésére alkalmas, a táblák pedig az igény növekedésével együtt nőnek.
+You can use the Table service to store and query huge sets of structured, non-relational data, and your tables will scale as demand increases.
 
-## A Table szolgáltatással kapcsolatos fogalmak
+## Table Service Concepts
 
-A Table szolgáltatás az alábbi összetevőkből áll:
+The Table service contains the following components:
 
 ![Table1][Table1]
 
--   **URL-címformátum:** A kód egy fiók tábláira hivatkozik az alábbi címformátummal:   
+-   **URL format:** Code addresses tables in an account using this address format:   
     http://`<storage account>`.table.core.windows.net/`<table>`  
       
-    Az Azure-táblákat közvetlenül is elérheti, ha a fenti címet használja az OData protokollal. További információk az [OData.org][] webhelyen találhatók
+    You can address Azure tables directly using this address with the OData protocol. For more information, see [OData.org][]
 
--   **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+-   **Storage Account:** All access to Azure Storage is done through a storage account. See [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md) for details about storage account capacity.
 
--   **Tábla:** A tábla az entitások gyűjteményét tartalmazza. A táblák nem kényszerítenek sémát az entitásokra, ami azt jelenti, hogy egyetlen tábla különböző tulajdonságkészletekkel rendelkező entitásokat is tartalmazhat. A tárfiókok által tárolható táblák számát csak a tárfiókok kapacitási határa korlátozza.
+-   **Table**: A table is a collection of entities. Tables don't enforce a schema on entities, which means a single table can contain entities that have different sets of properties. The number of tables that a storage account can contain is limited only by the storage account capacity limit.
 
--   **Entitás:** Az entitás egy adatbázissorhoz hasonló tulajdonságkészlet. Egy entitás legfeljebb 1 MB méretű lehet.
+-   **Entity**: An entity is a set of properties, similar to a database row. An entity can be up to 1MB in size.
 
--   **Tulajdonságok:** A tulajdonság egy név-érték pár. Minden entitás legfeljebb 252 tulajdonságot tartalmazhat adattárolás céljából. Minden entitás 3 rendszertulajdonsággal rendelkezik, amelyek egy partíciókulcsot, egy sorkulcsot és egy időbélyegzőt adnak meg. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, illetve szűrhatók be/frissíthetők atomi műveletek során. Egy entitás sorkulcsa a partíción belüli azonosítója.
+-   **Properties**: A property is a name-value pair. Each entity can include up to 252 properties to store data. Each entity also has 3 system properties that specify a partition key, a row key, and a timestamp. Entities with the same partition key can be queried more quickly, and inserted/updated in atomic operations. An entity's row key is its unique identifier within a partition.
 
-A táblák és tulajdonságok elnevezésével kapcsolatos további információkért lásd: [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx) (A Table szolgáltatás adatmodelljének ismertetése).
+For details about naming tables and properties, see [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
   
   [Table1]: ./media/storage-table-concepts-include/table1.png
   [OData.org]: http://www.odata.org/
 
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

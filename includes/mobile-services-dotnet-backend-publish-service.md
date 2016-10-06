@@ -1,7 +1,7 @@
 
-1. A Visual Studióban kattintson a jobb egérgombbal a projektre, majd a **Publish (Közzététel)** > **Microsoft Azure Mobile Services** lehetőségre. A Visual Studio helyett [használhatja a Gitet is](../articles/mobile-services/mobile-services-dotnet-backend-store-code-source-control.md).
+1. In Visual Studio, right-click the project, click **Publish** > **Microsoft Azure Mobile Services**. Instead of using Visual Studio, [you may also use Git](../articles/mobile-services/mobile-services-dotnet-backend-store-code-source-control.md).
 
-2. Jelentkezzen be Azure hitelesítő adataival, és válassza ki a szolgáltatását az **Existing Mobile Services** (Létező mobilalkalmazások) listából. A Visual Studio közvetlenül az Azure-ból tölti le a közzétételi beállításokat. Végül kattintson a **Publish** (Közzététel) gombra.
+2. Sign in with Azure credentials and select your service from **Existing Mobile Services**. Visual Studio downloads your publish settings directly from Azure. Finally, click **Publish**.
 
 
 <!--HONumber=Sep16_HO4-->

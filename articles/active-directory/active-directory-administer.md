@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Az Azure AD-címtár felügyelete | Microsoft Azure"
-    description="Ismerteti az Azure AD-bérlő fogalmát, valamint az Azure kezelését az Azure Active Directory felületén keresztül"
+    pageTitle="Administer your Azure AD directory | Microsoft Azure"
+    description="Explains what an Azure AD tenant is, and how to manage Azure through Azure Active Directory"
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
@@ -17,133 +17,134 @@
     ms.date="07/13/2016"
     ms.author="markvi"/>
 
-# Az Azure AD-címtár felügyelete
 
-## Mi az az Azure AD-bérlő?
+# Administer your Azure AD directory
 
-Fizikai munkahelyek esetében a bérlő egy épületet elfoglaló csoportot vagy vállalatot takar. A szervezet például rendelkezhet saját irodával egy épületben. Lehetséges, hogy ez az épület több más szervezet épületével egy utcában van. A szervezet ilyenkor az adott épület bérlőjének tekinthető. Az épület a szervezet birtokában van, biztonságot nyújt, és garantálja a biztonságos üzletmenethez szükséges körülményeket. Az utcában található egyéb üzleti szervezetektől is elkülönül. Így biztosítható, hogy a szervezet és annak vagyontárgyai más szervezetekével ne keveredjenek.
+## What is an Azure AD tenant?
 
-Felhőalapú munkahelyek esetén a bérlő olyan ügyfelet vagy szervezetet jelent, amely a felhőszolgáltatás adott példányát birtokolja és kezeli. A Microsoft Azure által biztosított identitásplatformok esetében a bérlő egyszerűen az Azure Active Directory (Azure AD) olyan dedikált példányának tekinthető, amelyet a szervezet megkap és a tulajdonában áll, amikor regisztrál egy Microsoft felhőszolgáltatásra, például az Azure-ra vagy az Office 365-re.
+In the physical workplace, the word tenant can be defined as a group or company that occupies a building. For instance, your organization may own office space in a building. This building may be on a street with several other organizations. Your organization would be considered a tenant of that building. This building is an asset of your organization and provides security and ensures that you can conduct business safely. It also is separated from the other businesses on your street. This ensures that your organization and the assets therein are isolated from other organizations.
 
-Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-címtártól. Ahogy a vállalat irodaépülete is egy vállalatspecifikus biztonsági vagyontárgynak tekinthető, az Azure AD-címtár is egy, kizárólag az adott szervezet általi használatra kialakított biztonságos eszköz. Az Azure AD architektúrájával megakadályozható az ügyfél- és identitásadatok keveredése. Ez azt jelenti, hogy az adott Azure AD-címtár felhasználói és rendszergazdái véletlenül vagy kártételi szándékkal nem férhetnek hozzá más címtárak adataihoz.
+In the cloud-enabled workplace, a tenant can be defined as a client or organization that owns and manages a specific instance of that cloud service. With the identity platform provided by Microsoft Azure, a tenant is simply a dedicated instance of Azure Active Directory (Azure AD) that your organization receives and owns when it signs up for a Microsoft cloud service such as Azure or Office 365.
 
-![Az Azure Active-címtár kezelése][1]
+Each Azure AD directory is distinct and separate from other Azure AD directories. Just like a corporate office building is a secure asset specific to only your organization, an Azure AD directory was also designed to be a secure asset for use by only your organization. The Azure AD architecture isolates customer data and identity information from co-mingling. This means that users and administrators of one Azure AD directory cannot accidentally or maliciously access data in another directory.
 
-## Hogyan juthatok Azure AD-címtárhoz?
+![Manage Azure Active Directory][1]
 
-Az Azure AD alapvető fontosságú címtár- és identitáskezelési funkciókat biztosít a Microsoft olyan felhőszolgáltatásai számára, mint például a következők:
+## How can I get an Azure AD directory?
+
+Azure AD provides the core directory and identity management capabilities behind most of Microsoft’s cloud services, including:
 
 - Azure
 - Microsoft Office 365
 - Microsoft Dynamics CRM Online
 - Microsoft Intune
 
-Azure AD-címtárhoz úgy juthat, ha regisztrál bármelyik fenti Microsoft felhőszolgáltatásra. Szükség szerint több címtárat is létrehozhat. Az első címtárat fenntarthatja például éles címtárként, majd létrehozhat egy másik címtárat is tesztelési vagy előkészítési céllal.
+You will get an Azure AD directory when you sign up for any of these Microsoft cloud services. You can create additional directories as needed. For example, you might maintain your first directory as a production directory and then create another directory for testing or staging.
 
 > [AZURE.NOTE]
-> Miután regisztrált az első szolgáltatásra, javasoljuk, hogy a további Microsoft felhőszolgáltatásokra történő regisztrációkor ugyanazt a szervezetéhez tartozó rendszergazdai fiókot használja.
+> After you sign up for your first service, we recommend that you use the same administrator account associated with your organization when you sign up for other Microsoft cloud services.
 
-Amikor első alkalommal regisztrál Microsoft felhőszolgáltatásra, a rendszer felkéri a szervezet alapadatainak és internetes tartománynév-regisztrációs adatainak megadására. Ezek az információk az adott szervezet új Azure AD-címtárpéldányának létrehozásához szükségesek. Ha több Microsoft felhőszolgáltatásra fizet elő, a bejelentkezési kísérletek hitelesítésére a rendszer ugyanazt a címtárat használja.
+The first time you sign up for a Microsoft cloud service, you are prompted to provide details about your organization and your organization’s Internet domain name registration. This information is then used to create a new Azure AD directory instance for your organization. That same directory is used to authenticate sign in attempts when you subscribe to multiple Microsoft cloud services.
 
-A további szolgáltatások teljes mértékben kihasználják a meglévő felhasználói fiókok, házirendek, beállítások vagy az Ön által konfigurált helyszíni címtár-integráció adta lehetőségeket a szervezet helyszíni identitás-infrastruktúrája és az Azure AD közötti kommunikáció hatékonyabbá tételéhez.
+The additional services fully leverage any existing user accounts, policies, settings or on-premises directory integration you configure to help improve efficiency between your organization’s identity infrastructure on-premises and Azure AD.
 
-Ha például eredetileg egy Microsoft Intune-előfizetésre iratkozott fel, és végrehajtotta a helyszíni Active Directory és a saját Azure AD-címtárának további integrálásához szükséges lépéseket címtár-szinkronizálási és/vagy bejelentkezési kiszolgálók üzembe helyezésével, olyan további Microsoft felhőszolgáltatásokra iratkozhat fel, mint például az Office 365, amely szintén a Microsoft Intune esetében már alkalmazott címtár-integrációs lehetőségeket használja ki.
+For example, if you originally signed up for a Microsoft Intune subscription and completed the steps necessary to further integrate your on-premises Active Directory with your Azure AD directory by deploying directory synchronization and/or single sign-on servers, you can sign up for another Microsoft cloud service such as Office 365 which can also leverage the same directory integration benefits you now use with Microsoft Intune.
 
-További információk a helyszíni címtár Azure AD-integrációjáról: [Directory integration](active-directory-aadconnect.md)(Címtár-integráció).
+For more information about integrating your on-premises directory with Azure AD, see [Directory integration](active-directory-aadconnect.md).
 
-### Új Azure-előfizetés társítása Azure AD-címtárhoz
+### Associate an Azure AD directory with a new Azure subscription
 
-Új Azure-előfizetést társíthat ugyanahhoz a címtárhoz, amely egy meglévő Office 365- vagy Microsoft Intune-előfizetés bejelentkezésének hitelesítését végzi. Jelentkezzen be az Azure felügyeleti portálra munkahelyi vagy iskolai fiókjával. A felügyeleti portál által megjelenített üzenetben az szerepel, hogy az adott fiókhoz nem található előfizetés. Ahhoz, hogy a címtárat kezelni tudja a portálon, válassza a **Sign Up For Azure** (Feliratkozás az Azure szolgáltatásra) lehetőséget. További információk: [Manage the directory for your Office 365 subscription in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure) (Office 365-előfizetéshez tartozó címtár kezelése az Azure-ban).
+You can associate a new Azure subscription with the same directory that authenticates sign in for an existing Office 365 or Microsoft Intune subscription. Sign in to the Azure Management Portal using your work or school account. The Management Portal returns a message that it was unable to find any subscriptions for that account. Select **Sign Up For Azure**, and your directory will be available for administration within the portal. For more information, see [Manage the directory for your Office 365 subscription in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure).
 
-Videó az Azure AD használatával kapcsolatban gyakran felmerülő kérdésekről: [Azure Active Directory - Common Sign-up, sign-in and usage questions](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions) (Azure Active Directory – Gyakori kérdések a feliratkozásról, a bejelentkezésről és a használatról).
+For a video about common usage questions for Azure AD, see [Azure Active Directory - Common Sign-up, sign-in and usage questions](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions).
 
-### Azure AD-címtár létrehozása szervezeti feliratkozással egy Microsoft felhőszolgáltatásra
+### Create an Azure AD directory by signing up for a Microsoft cloud service as an organization
 
-Ha még nem rendelkezik előfizetéssel egyetlen Microsoft felhőszolgáltatáshoz sem, a feliratkozáshoz használja az alábbi hivatkozások egyikét. Amikor először iratkozik fel egy ilyen szolgáltatásra, az Azure AD-címtár automatikusan létrejön.
+If you don’t yet have a subscription to a Microsoft cloud service, use one of the links below to sign up. The act of signing up for your first service will create an Azure AD directory automatically.
 
 - [Microsoft Azure](https://account.windowsazure.com/organization)
 - [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 - [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### Azure által kiosztott alapértelmezett címtár kezelése
+### Manage an Azure-provisioned Default directory
 
-A címtár az Azure szolgáltatásra történő feliratkozással együtt, automatikusan létrejön, és az előfizetése ehhez a címtárhoz lesz társítva. Ha azonban még 2013 októbere előtt iratkozott fel az Azure szolgáltatásra, a címtár nem jött létre automatikusan. Ebben az esetben előfordulhat, hogy az Azure „visszatöltötte” a fiókját úgy, hogy kiosztott hozzá egy alapértelmezett címtárat. Az előfizetése innentől ehhez az alapértelmezett címtárhoz van társítva.
+Today, a directory is automatically created when you sign up for Azure and your subscription is associated with that directory. But if you originally signed up for Azure before October 2013, a directory was not automatically created. In that case, Azure may have “backfilled” for your account by provisioning a Default directory for it. Your subscription was then associated with that Default directory.
 
-A címtárak visszatöltésére 2013 októberében, az Azure biztonsági modell átfogó fejlesztésének részeként került sor. Ennek segítségével az összes Azure-ügyfél számára biztosíthatók szervezetiidentitás-szolgáltatások, és arról is gondoskodik, hogy az összes Azure-erőforrás hozzáférése címtárfelhasználói szinten történjen meg. Címtár nélkül az Azure rendszer nem használható. Ezért a 2013. július 7. előtt feliratkozott, címtárral nem rendelkező felhasználóknak létre kell hozniuk egyet. Amennyiben már hozott létre címtárat, előfizetése ehhez a címtárhoz van társítva.
+Backfilling of directories was done in October 2013 as part of an overall improvement to the security model for Azure. It helps offer organizational identity features to all Azure customers and ensures that all Azure resources are accessed in the context of a user in directory. You cannot use Azure without a directory. To achieve that, any user who was signed up prior to July 7, 2013 but did not have a directory had to have one created. If you had already created a directory, then your subscription was associated with that directory.
 
-Az Azure AD használata ingyenes. A címtár egy ingyenes erőforrás. A Prémium szintű Azure Active Directory licencelése külön történik, és olyan további szolgáltatásokat biztosít, mint például a vállalati arculat hozzáadása és az önkiszolgáló jelszó-visszaállítás.
+There are no costs for using Azure AD. The directory is a free resource. There is an additional Azure Active Directory Premium tier that is licensed separately and provides additional features such as company branding and self-service password reset.
 
-A címtár megjelenített nevének módosításához kattintson a portálon a címtárra, majd a **Konfigurálás** lehetőségre. Ahogy a jelen témakör későbbi részében olvasható, új címtárat is felvehet, illetve törölheti azt, amelyikre már nincs szüksége. Ha az előfizetést másik címárhoz szeretné társítani, a bal oldali navigációs ablaktáblán kattintson a **Settings** (Beállítások) elemre, majd a **Subscriptions** (Előfizetések) oldal alján kattintson az **Edit Directory** (Címtár szerkesztése) gombra. Egyéni tartományt is létrehozhat az alapértelmezett *.onmicrosoft.com tartomány helyett egy regisztrált DNS-név használatával, amely a SharePoint Online-hoz hasonló szolgáltatások esetében célravezetőbb megoldás lehet.
+To change the display name of your directory, click the directory in the portal and click **Configure**. As explained later in this topic, you can add a new directory or delete a directory that you no longer need. To associate your subscription with a different directory, click the **Settings** extension in the left navigation, and at the bottom of the **Subscriptions** page, click **Edit Directory**. You can also create a custom domain using a DNS name that you have registered instead of the default *.onmicrosoft.com domain, which may be preferable with a service such as SharePoint Online.
 
-## Hogyan történik a címtáradatok kezelése?
+## How can I manage directory data
 
-Egy vagy több Microsoft felhőszolgáltatás-előfizetés rendszergazdájaként a szervezet címtáradatainak kezeléséhez az Azure felügyeleti portált, a Microsoft Intune fiókportált vagy az Office 365 felügyeleti központját használhatja. Az Azure AD-ban tárolt adatok kezelését megkönnyíti a [Windows PowerShellhez készült Microsoft Azure Active Directory-modul](https://msdn.microsoft.com/library/azure/jj151815.aspx) parancsmagok letöltése és futtatása.
+As an administrator of one or more Microsoft cloud service subscriptions, you can either use the Azure Management Portal, the Microsoft Intune account portal, or the Office 365 Admin Center to manage your organizations directory data. You can also download and run [Microsoft Azure Active Directory Module for Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) cmdlets to help you manage data stored in Azure AD.
 
-E portálok (vagy parancsmagok) a következőket teszik lehetővé:
+From either of these portals (or cmdlets), you can:
 
-- Felhasználói és csoportfiókok létrehozása és kezelése
-- A szervezet által előfizetett, kapcsolódó felhőszolgáltatás(ok) kezelése
-- Helyszíni integráció beállítása a címtárszolgáltatással
+- Create and manage user and group accounts
+- Manage related cloud service(s) your organization subscribes to
+- Set up on-premises integration with your directory service
 
-Az Azure felügyeleti portál, az Office 365 felügyeleti központ, a Microsoft Intune fiókportál és az Azure AD-parancsmagok mind egyetlen, a szervezet címtárához társított megosztott Azure AD-példányba írnak és onnan olvasnak, az alábbi ábrán látható módon. Így a portálok (vagy parancsmagok) a címtáradatok bekérésére vagy módosítására használt kezelőfelületként működnek.
+The Azure Management Portal, Office 365 Admin Center, Microsoft Intune account portal and the Azure AD cmdlets all read from and write to a single shared instance of Azure AD that is associated with your organization’s directory, as shown in the following illustration. In this way, portals (or cmdlets) act as a front-end interface that pull in and/or modify your directory data.
 
 ![][2]
 
-A felhasználók és csoportok kezelését ezek az Azure AD platformra épülő fiókportálok és a hozzájuk társított Azure AD PowerShell-parancsmagok végzik.
+These account portals and the associated Azure AD PowerShell cmdlets used to manage users and groups are built on top of the Azure AD platform.
 
-Ha valamelyik portál (vagy parancsmag) használatával módosítja a szervezeti adatokat, miközben be van jelentkezve az egyik szolgáltatásba, az adott szolgáltatásba történő legközelebbi bejelentkezés alkalmával a változás más portálokon is megjelenik, mivel adatmegosztás áll fenn az előfizetett Microsoft felhőszolgáltatások között.
-Ha például egy felhasználó bejelentkezésének blokkolására az Office 365 felügyeleti központját használta, ezzel az adott felhasználó bármely másik, a szervezete által aktuálisan előfizetett szolgáltatásra történő bejelentkezését is blokkolja. Ha a Microsoft Intune fiókportálon próbálja blokkolni ugyanennek a felhasználónak a fiókját, azt fogja tapasztalni, hogy a felhasználó már blokkolva van.
+When you make a change to your organizations data using any of the portals (or cmdlets) while signed in under the context of one of these services, the change will also be shown in the other portals the next time you sign-in under the context of that service because this data is shared across the Microsoft cloud services you are subscribed to.
+For example, if you used the Office 365 Admin Center to block a user from signing in, that action will block the user from signing in to any other service that your organization is currently subscribed to. If you were to pull up that same user’s account under the context of the Microsoft Intune account portal you will see that the user is blocked.
 
-## Hogyan vehetek fel és kezelhetek több címtárat?
+## How can I add and manage multiple directories?
 
-Azure AD-címtárat az Azure felügyeleti portálon vehet fel. Válassza az **Active Directory** elemet a bal oldali panelen, majd kattintson az **OK** gombra.
+You can add an Azure AD directory in the Azure Management Portal. Select the **Active Directory** extension on the left and click **Add**.
 
-Az egyes címtárakat teljesen független erőforrásként kezelheti: mindegyikük társüzemű, minden funkcióval ellátott és logikailag független a többi, Ön által kezelt címtártól, nincs közöttük szülő-gyermek típusú kapcsolat. Ez a függetlenség az erőforrás, a felügyelet és a szinkronizálás függetlenségét is jelenti.
+You can manage each directory as a fully independent resource: each directory is a peer, fully-featured, and logically independent of other directories that you manage; there is no parent-child relationship between directories. This independence between directories includes resource independence, administrative independence, and synchronization independence.
 
-- **Erőforrás-függetlenség**. Ha erőforrást hoz létre vagy töröl egy címtárban, az nem érinti a többi címtárban található erőforrásokat, a külső felhasználókra vonatkozó részleges kivétellel (lásd lent). Ha egy címtárat egy „contoso.com” egyedi tartománnyal használja, azt egyetlen másik címtárral sem használhatja.
-- **Felügyeleti függetlenség**.  Ha a „Contoso” címtár nem rendszergazda felhasználója létrehoz egy „Teszt” nevű tesztelési címtárat, majd
-    - a címtár-szinkronizálási eszköz egyetlen AD-erdővel történő szinkronizáláshoz.
-    - A „Contoso” címtár rendszergazdájának nem lesznek közvetlen rendszergazdai jogosultságai a „Teszt” címtáron, kivéve, ha annak a rendszergazdája kifejezetten megadja számára ezeket a jogokat. A „Contoso” rendszergazdái képesek a „Teszt” címtár hozzáférésének szabályozására a címtárat létrehozó felhasználói fiók felügyeleti joga révén.
+- **Resource independence**. If you create or delete a resource in one directory, it has no impact on any resource in another directory, with the partial exception of external users, described below. If you use a custom domain 'contoso.com' with one directory, it cannot be used with any other directory.
+- **Administrative independence**.  If a non-administrative user of directory 'Contoso', creates a test directory 'Test' then:
+    - The directory sync tool, to synchronize data with a single AD forest.
+    - The administrators of directory 'Contoso' have no direct administrative privileges to directory 'Test' unless an administrator of 'Test' specifically grants them these privileges. Administrators of 'Contoso' can control access to directory 'Test' by virtue of their control of the user account which created 'Test.'
 
-    Ha pedig egy címtárban módosítja (hozzáadja vagy eltávolítja) a felhasználó rendszergazdai szerepkörét, ez a változtatás nem érinti az adott felhasználó más címtárakra vonatkozó rendszergazdai szerepkörét.
+    And if you change (add or remove) an administrator role for a user in one directory, the change does not affect any administrator role that user may have in another directory.
 
 
-- **Szinkronizálási függetlenség**. Az egyes Azure AD-k egymástól függetlenül konfigurálhatók a következők egyetlen példányából származó adatok szinkronizálásához:
-    - a címtár-szinkronizálási eszköz egyetlen AD-erdővel történő szinkronizáláshoz;
-    - a Forefront Identity Manager Azure Active Directory-összekötője egy vagy több helyszíni erdővel és/vagy nem AD-alapú adatforrással történő adatszinkronizáláshoz.
+- **Synchronization independence**. You can configure each Azure AD independently to get data synchronized from a single instance of either:
+    - The directory sync tool, to synchronize data with a single AD forest
+    - The Azure Active Directory Connector for Forefront Identity Manager, to synchronize data with one or more on-premises forests, and/or non-AD data sources.
 
-Vegye figyelembe azt is, hogy a többi Azure-erőforrástól eltérően az Ön címtárai nem egy Azure-előfizetés alsóbb szintű erőforrásai. Így az Azure-előfizetés megszüntetését vagy lejártát követően továbbra is hozzáférhet a címtár adataihoz az Azure AD PowerShell, az Azure Graph API vagy egyéb felületek, például az Office 365 felügyeleti központja használatával. A címtárhoz másik előfizetést is rendelhet.
+Also note that unlike other Azure resources, your directories are not child resources of an Azure subscription. So if you cancel or allow your Azure subscription to expire, you can still access your directory data using Azure AD PowerShell, the Azure Graph API, or other interfaces such as the Office 365 Admin Center. You can also associate another subscription with the directory.
 
-## Hogyan törölhetek egy Azure AD-címtárat?
-Az Azure AD-címtárakat egy globális rendszergazda törölheti a portálról. Egy címtár törlésekor az abban található összes erőforrás is törlődik, ezért a törlés előtt győződjön meg arról, hogy nincs szüksége az adott címtárra.
-
-> [AZURE.NOTE]
-> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
-
-### Azure AD-címtár törléséhez szükséges feltételek
-
-Egy Azure AD-címtár törléséhez bizonyos feltételeknek kell teljesülniük. Ezzel csökken annak a kockázata, hogy az adott címtár törlése kedvezőtlen hatással legyen egyes felhasználókra vagy alkalmazásokra, például a felhasználói bejelentkezésre az Office 365 felületére vagy az Azure-erőforrások hozzáférhetőségére. Ha például egy előfizetéshez tartozó címtárat akaratlanul töröltek, a felhasználók azt követően nem férhetnek hozzá az adott előfizetéshez tartozó Azure-erőforrásokhoz.
-
-A rendszer a következő feltételek teljesülését ellenőrzi:
-
-- Kizárólag egyetlen felhasználó, a globális rendszergazda törölheti a címtárat. A címtár törlése előtt az összes többi felhasználót törölni kell. Helyszíni felhasználó-szinkronizáláskor a művelet befejezését követően a szinkronizálást ki kell kapcsolni, a felhasználókat pedig törölni kell a felhőcímtárból a felügyeleti portál vagy Microsoft PowerShell Azure-moduljának használatával. Nincs szükség csoportok vagy névjegyek (például az Office 365 felügyeleti központjából felvett névjegyek) törlésére.
-- A címtárban nem lehetnek alkalmazások. A címtár törlése előtt az összes alkalmazást törölni kell.
-- Törölni kell minden, a címtárhoz társított Microsoft Online Services-előfizetést, például a Microsoft Azure-t, az Office 365-öt vagy a Prémium szintű Azure AD-t. Ha például az alapértelmezett címtár az Azure-ban lett létrehozva, nem törölheti azt mindaddig, amíg Azure-előfizetésének hitelesítése továbbra is ezen a címtáron alapul. Akkor sem törölhet egy címtárat, ha felhasználói előfizetés társul hozzá. Az előfizetés másik címtárhoz történő társításához jelentkezzen be az Azure felügyeleti portálra, majd a bal oldali navigációs ablaktáblán kattintson a **Settings**(Beállítások) lehetőségre. Ezt követően kattintson az **Subscriptions** (Előfizetések) oldal alján található **Edit Directory** (Címtár szerkesztése) elemre. További információk az Azure-előfizetésekről: [How Azure subscriptions are associated with Azure AD?](active-directory-how-subscriptions-associated-directory.md) (Hogyan kapcsolódnak az Azure-előfizetések az Azure AD-hoz?)
+## How can I delete an Azure AD directory?
+A global administrator can delete an Azure AD directory from the portal. When a directory is deleted, all resources contained in the directory are also deleted; so you should be sure you don’t need the directory before you delete it.
 
 > [AZURE.NOTE]
-> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
+> If the user is signed in with a work or school account, the user must not be attempting to delete his or her home directory. For example, if the user is signed in as joe@contoso.onmicrosoft.com, that user cannot delete the directory that has contoso.onmicrosoft.com as its default domain.
 
-- A címtárhoz nem kapcsolhatók Multi-Factor Authentication-szolgáltatók.
+### Conditions that must be met to delete an Azure AD directory
+
+Azure AD requires that certain conditions are met to delete a directory. This reduces risk that deletion of a directory would negatively impact users or applications, such as the ability of users to sign in to Office 365 or access resources in Azure. For example, if a directory for a subscription became unintentionally deleted, then users could not access the Azure resources for that subscription.
+
+The following conditions are checked:
+
+- The only user in the directory is the global administrator who will delete the directory. Any other users must be deleted before the directory can be deleted. If users are synchronized from on-premises, then sync will need to be turned off, and the users must be deleted in the cloud directory by using the Management Portal or the Azure module for Windows PowerShell. There is no requirement to delete groups or contacts, such as contacts added from the Office 365 Admin Center.
+- There can be no applications in the directory. Any applications must be deleted before the directory can be deleted.
+- There can be no subscriptions for any Microsoft Online Services such as Microsoft Azure, Office 365, or Azure AD Premium associated with the directory. For example, if a default directory was created for you in Azure, you cannot delete this directory if your Azure subscription still relies on this directory for authentication. Similarly, you cannot delete a directory if another user has associated a subscription with it. To associate your subscription with a different directory, sign in to the Azure Management Portal and click **Settings** in the left navigation. Then on the bottom of the **Subscriptions** page, click **Edit Directory**. For more information about Azure subscriptions, see [How Azure subscriptions are associated with Azure AD](active-directory-how-subscriptions-associated-directory.md).
+
+> [AZURE.NOTE]
+> If the user is signed in with a work or school account, the user must not be attempting to delete his or her home directory. For example, if the user is signed in as joe@contoso.onmicrosoft.com, that user cannot delete the directory that has contoso.onmicrosoft.com as its default domain.
+
+- No Multi-Factor Authentication providers can be linked to the directory.
 
 
-## További források
+## Additional Resources
 
-- [Azure AD fórum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-- [Azure Multi-Factor Authentication fórum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/azure)
-- [Regisztráció az Azure-ba szervezetként](sign-up-organization.md)
-- [Az Azure AD kezelése Windows PowerShell használatával](https://msdn.microsoft.com/library/azure/jj151815.aspx)
-- [Rendszergazdai szerepkörök hozzárendelése az Azure AD-ben](active-directory-assign-admin-roles.md)
+- [Azure AD Forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
+- [Azure Multi-Factor Authentication Forum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
+- [Stackoverflow](http://stackoverflow.com/questions/tagged/azure)
+- [Sign up for Azure as an organization](sign-up-organization.md)
+- [Manage Azure AD using Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+- [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-administer/aad_portals.png
@@ -151,6 +152,6 @@ A rendszer a következő feltételek teljesülését ellenőrzi:
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

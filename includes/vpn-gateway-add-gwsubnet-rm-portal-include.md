@@ -1,14 +1,14 @@
-1. Keresse meg a portálon azt a virtuális hálózatot, amelyhez csatlakoztatni kíván egy átjárót.
+1. In the portal, navigate to the virtual network to which you want to connect a gateway.
 
-2. A virtuális hálózat paneljének **Beállítások** részén az **Alhálózatok** elemre kattintva bontsa ki az Alhálózatok panelt.
+2. In the **Settings** section of your VNet blade, click **Subnets** to expand the Subnets blade.
 
-3. Az **Alhálózatok** panel tetején kattintson a **+Átjáróalhálózat** elemre. Ekkor megnyílik az **Alhálózat hozzáadása** panel. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata.
+3. On the **Subnets** blade, click **+Gateway subnet** at the top. This will open the **Add subnet** blade. The **Name** for your subnet will automatically be filled in with the value 'GatewaySubnet'. This value is required in order for Azure to recognize the subnet as the gateway subnet.
 
-    ![Az átjáró alhálózatának hozzáadása](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet250.png)
+    ![Add the gateway subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet250.png)
 
-4. Ha szükséges, módosíthatja a címtartomány CIDR-blokkját. Az ajánlott CIDR-blokk megerősítéséhez tekintse át a konfigurációra vonatkozó egyedi követelményeket.
+4. You can change the address range CIDR block if necessary. Check the specific requirements for your configuration to confirm the recommended CIDR block.
 
-5. A panel alján található **OK** gombra kattintva hozza létre az alhálózatot.
+5. Click **OK** at the bottom of the blade to create the subnet.
 
 
 

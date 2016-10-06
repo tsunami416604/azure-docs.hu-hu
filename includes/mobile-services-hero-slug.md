@@ -1,5 +1,5 @@
 
->[AZURE.TIP] Ebben a témakörben látható, hogyan ismerhető meg leggyorsabban a Mobile Services. Az itt található információk azoknak a felhasználóknak hasznosak, akik még nem ismerik ezt az Azure-funkciót. Ha már ismeri a Mobile Services funkcióit, vagy részletesebb információkat keres, válasszon egy témakört a bal oldali navigációs sávon, vagy tekintse meg az ide tartozó hivatkozásokat a [Next steps](#next-steps) (További lépések) oldalon.
+>[AZURE.TIP] This topic shows you how to get started with Mobile Services as quickly as possible. It is designed for customers new to this Azure feature. If you are already familiar with Mobile Services or are looking for more in-depth information, please select a topic from the left-navigation or see the relevant links in [Next steps](#next-steps).
 
 <!--HONumber=Sep16_HO4-->
 

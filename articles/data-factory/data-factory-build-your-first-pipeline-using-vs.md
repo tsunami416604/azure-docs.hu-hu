@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhatja létre első Azure data factoryját a Micro
 3. A számítógépre a következőket kell telepíteni: 
     - Visual Studio 2013 vagy Visual Studio 2015
     - Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-    - Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következőképpen is frissítheti: A menüben kattintson a **Tools** -> **Extensions and Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** ->  **Update** (Eszközök > Bővítmények és frissítések > Online > Visual Studio-gyűjtemény > Microsoft Azure Data Factory-eszközök a Visual Studióhoz > Frissítések) elemre. 
+    - Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések követésével is frissítheti: A menüben kattintson az **Eszközök** -> **Bővítmények és frissítések** -> **Online** -> **Visual Studio-katalógus** -> **Microsoft Azure Data Factory-eszközök a Visual Studióhoz** -> **Frissítés** elemre. 
  
 Most hozzunk létre egy Azure data factoryt a Visual Studióval. 
 
@@ -50,9 +50,11 @@ Most hozzunk létre egy Azure data factoryt a Visual Studióval.
     ![Megoldáskezelő](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ## Társított szolgáltatások létrehozása
-A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Ilyen például a másolási tevékenység, amely adatokat másol a forrásadattárból a céladattárba, és a HDInsight Hive tevékenység, amely egy Hive-parancsprogramot futtat az bemeneti adatok átalakításához. A data factory nevét és beállításait később, a Data Factory-megoldás közzétételekor kell megadni.
+A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Ilyen például a másolási tevékenység, amely adatokat másol a forrásadattárból a céladattárba, és a HDInsight Hive tevékenység, amely egy Hive-parancsprogramot futtat az bemeneti adatok átalakításához. A másolási tevékenység által támogatott forrásokért és fogadókért tekintse meg a [támogatott adattárak](data-factory-data-movement-activities.md##supported-data-stores-and-formats) című részt. A Data Factory által támogatott számítási szolgáltatások listájáért tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című részt. 
 
-Ebben a lépésben az Azure Storage-fiókját és egy igény szerinti Azure HDInsight-fürtöt társít a data factoryjához. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. a HDInsight társított szolgáltatás pedig a folyamat tevékenységében meghatározott Hive-parancsfájlt futtatja. Határozza meg, hogy melyik adattárat/számítási szolgáltatásokat használja a forgatókönyvben, és társítsa ezeket a szolgáltatásokat a data factoryhoz úgy, hogy társított szolgáltatásokat hoz létre.  
+Ebben a lépésben az Azure Storage-fiókját és egy igény szerinti Azure HDInsight-fürtöt társít az adat-előállítóhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. a HDInsight társított szolgáltatás pedig a folyamat tevékenységében meghatározott Hive-parancsfájlt futtatja. Határozza meg, hogy melyik adattárat/számítási szolgáltatásokat használja a forgatókönyvben, és társítsa ezeket a szolgáltatásokat a data factoryhoz úgy, hogy társított szolgáltatásokat hoz létre.  
+
+A data factory nevét és beállításait később, a Data Factory-megoldás közzétételekor kell megadni.
 
 #### Azure Storage társított szolgáltatás létrehozása
 Ebben a lépésben társítja az Azure Storage-fiókot a data factoryjához. A jelen oktatóanyag esetében ugyanazt az Azure Storage-fiókot fogja használni a bemeneti/kimeneti adatok és a HQL-parancsfájl tárolásához. 
@@ -506,6 +508,6 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,37 +1,37 @@
-**Ha az alábbi két feltétel igaz**, az Azure megállapítja, hogy az alkalmazása a Pythont használja:
+Azure will determine that your application uses Python **if both of these conditions are true**:
 
-- a requirements.txt fájl a gyökérmappában
-- bármely .py fájl a gyökérmappában VAGY egy runtime.txt fájl, amely a Pythont adja meg
+- requirements.txt file in the root folder
+- any .py file in the root folder OR a runtime.txt that specifies python
 
-Ebben az esetben egy Python-specifikus üzembe helyezési parancsfájllal elvégzi a fájlok szabványos szinkronizálását, valamint egyéb Python-műveleteket, többek között:
+When that's the case, it will use a Python specific deployment script, which performs the standard synchronization of files, as well as additional Python operations such as:
 
-- A virtuális környezet automatikus felügyeletét
-- A requirements.txt fájlban felsorolt csomagok pippel történő telepítését
-- A megfelelő web.config létrehozását a kiválasztott Python-verzió alapján.
-- A statikus fájlok összegyűjtését a Django-alkalmazások számára
+- Automatic management of virtual environment
+- Installation of packages listed in requirements.txt using pip
+- Creation of the appropriate web.config based on the selected Python version.
+- Collect static files for Django applications
 
-Az alapértelmezett üzembe helyezés lépéseinek bizonyos aspektusait a parancsfájl testreszabása nélkül is vezérelheti.
+You can control certain aspects of the default deployment steps without having to customize the script.
 
-A Pythonnal kapcsolatos összes lépés kihagyásához hozza létre ezt az üres fájlt:
+If you want to skip all Python specific deployment steps, you can create this empty file:
 
     \.skipPythonDeployment
 
-Ha ki szeretné hagyni a Django-alkalmazáshoz a statikus fájlok összegyűjtését, használja ezt:
+If you want to skip collection of static files for your Django application:
 
     \.skipDjango 
 
-Ha az üzembe helyezést még nagyobb mértékben szeretné irányítani, akkor a következő fájlok létrehozásával felülírhatja az alapértelmezett üzembe helyezési parancsfájlt:
+For more control over deployment, you can override the default deployment script by creating the following files:
 
     \.deployment
     \deploy.cmd
 
-A fájlokat az [Azure parancssori felületén][] hozhatja létre.  Futtassa a következő parancsot a projektmappából:
+You can use the [Azure command-line interface][] to create the files.  Use this command from your project folder:
 
     azure site deploymentscript --python
 
-Ha ezek a fájlok nem léteznek, az Azure létrehoz, majd futtat egy ideiglenes üzembe helyezési parancsfájlt.  Ez megegyezik azzal, amelyet a fenti paranccsal hozhat létre.
+When these files don't exist, Azure creates a temporary deployment script and runs it.  It is identical to the one you create with the command above.
 
-[Azure parancssori felületén]: http://azure.microsoft.com/downloads/
+[Azure command-line interface]: http://azure.microsoft.com/downloads/
 
 
 <!--HONumber=Sep16_HO4-->

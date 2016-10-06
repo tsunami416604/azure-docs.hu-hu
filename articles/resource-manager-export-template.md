@@ -106,6 +106,8 @@ A probléma bemutatása érdekében módosítsa az erőforráscsoportot, és adj
 
 Habár minden telepítés csak az erőforráscsoporton végzett módosításokat jeleníti meg, bármikor exportálhat egy olyan sablont, amely megmutatja a teljes erőforráscsoport attribútumait.  
 
+> [AZURE.NOTE] Több mint 200 erőforrással rendelkező erőforráscsoport esetében nem exportálhat sablont.
+
 1. Az egyes erőforráscsoportok sablonjának megtekintéséhez válassza az **Automation-szkript** lehetőséget.
 
       ![erőforráscsoportok exportálása](./media/resource-manager-export-template/export-resource-group.png)

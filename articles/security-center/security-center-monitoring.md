@@ -13,8 +13,9 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
+
 
 #Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a dokumentum segítséget nyújt az Azure Security Center által nyújtott figyelési funkcióknak a szabályzatoknak való megfelelés ellenőrzésére történő használatába.
@@ -29,7 +30,7 @@ A javaslatok alkalmazásával kapcsolatban további információkat talál a kö
 
 A **Resources security health** (Erőforrások biztonsági állapota) csempén is nyomon követheti erőforrásainak biztonsági állapotát. Az alábbi példában több olyan magas és közepes súlyosságú probléma látható, amely intézkedést követel meg. A bekapcsolt biztonsági szabályzatok hatással vannak a megfigyelt vezérlőtípusokra.
 
-![Erőforrások állapota](./media/security-center-monitoring/security-center-monitoring-fig1-ga.png)
+![Erőforrások állapota](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
 
 Ha a Security Center biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](../virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
 
@@ -51,7 +52,7 @@ Ebben a szakaszban tekintheti meg az adatgyűjtésre beállított virtuális gé
 
 
 ####Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)
-Ebben a szakaszban az Azure Security Center által megfigyelt egyes virtuális gépekre vonatkozó javaslatok szerepelnek. Ahogy az alábbi képen is látható, az első oszlopban maga a javaslat látható, a másodikban azoknak a virtuális gépeknek a száma, amelyekre érvényes a javaslat, a harmadikban pedig a probléma súlyossága.
+Ebben a szakaszban az Azure Security Center által megfigyelt egyes [virtuális gépekre vonatkozó javaslatok](security-center-virtual-machine-recommendations.md) szerepelnek. Ahogy az alábbi képen is látható, az első oszlopban maga a javaslat látható, a másodikban azoknak a virtuális gépeknek a száma, amelyekre érvényes a javaslat, a harmadikban pedig a probléma súlyossága.
 
 ![Virtuális gépekre vonatkozó javaslatok](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
 
@@ -116,7 +117,7 @@ A **Resources security health** (Erőforrások biztonsági állapota) panel **Ne
 
 A virtuális gépek erőforrás-állapotára vonatkozó információkhoz hasonlóan a panel felső részén a problémák összefoglaló listája látható, alább pedig a megfigyelt hálózatok listája.
 
-A hálózati állapotot részletező listában megtekintheti a potenciális biztonsági problémákat, valamint az ezekre vonatkozó javaslatokat. Problémát jelenthetnek például a következők:
+A hálózati állapotot részletező listában megtekintheti a potenciális biztonsági problémákat, valamint az ezekre vonatkozó [javaslatokat](security-center-network-recommendations.md). Problémát jelenthetnek például a következők:
 
 - Nincs telepítve új generációs tűzfal (NGFW)
 - Az alhálózatokon nincsenek bekapcsolva a hálózati biztonsági csoportok (NSG-k)
@@ -160,8 +161,8 @@ A topológia e nézetében az első szinten vannak a [virtuális hálózatok](..
 
 A panel alsó részén a virtuális gépre vonatkozó javaslatok láthatók, a fentiekben leírtakhoz hasonlóan. A javaslatra kattintva további információkat tekinthet meg, illetve alkalmazhatók a szükséges biztonsági rendszabályok/konfigurációk.
 
-###SQL-erőforrások figyelése
-A **Resources security health** (Erőforrások biztonsági állapota) csempe **SQL** csempéjére kattintva megnyithatja az SQL panelt, amelyen megtekintheti a problémákkal (például a naplózás vagy a transzparens adattitkosítás kikapcsolása) kapcsolatos javaslatokat. Ezenfelül általános javaslatokat is talál itt az adatbázis állapotára vonatkozóan.
+###Adatok figyelése
+A **Resources security health** (Erőforrások biztonsági állapota) csempe **Data** (Adatok) csempéjére kattintva megnyithatja az **SQL** panelt, amelyen megtekintheti a problémákkal (például a naplózás vagy a transzparens adattitkosítás kikapcsolása) kapcsolatos javaslatokat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan.
 
 ![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
 
@@ -202,12 +203,12 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center figyelési funk
 
 - [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.
 - [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-- [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
+- [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 - [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 - [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

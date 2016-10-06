@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/16/2016"
+   ms.date="09/21/2016"
    ms.author="edmaca"/>
+
 
 # Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
 
@@ -23,8 +24,6 @@
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure PowerShellt Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok elküldéséhez Data Lake Analytics-fiókokba. További információk a Data Lake Analyticsről: [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md).
 
 Az oktatóanyag során elkészít egy feladatot, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, kattintson a szakasz tetején található fülekre.
-
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
 
 ##Előfeltételek
 
@@ -125,7 +124,8 @@ Az alábbi PowerShell-parancsfájl bemutatja, hogyan kérheti le a Data Lake Ana
 
     $resourceGroupName = "<ResourceGroupName>"
     $dataLakeAnalyticsName = "<DataLakeAnalyticsAccountName>"
-    $dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticName).Properties.DefaultDataLakeAccount
+    $dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticsName).Properties.DefaultDataLakeAccount
+    echo $dataLakeStoreName
 
 >[AZURE.NOTE] Az Azure Portal felhasználói felületet biztosít a mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Útmutatásért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account).
 
@@ -177,13 +177,10 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
         $dataLakeAnalyticsName = "<DataLakeAnalyticsAccountName>"
         $usqlScript = "c:\tutorials\data-lake-analytics\copyFile.usql"
         
-        Submit-AzureRmDataLakeAnalyticsJob -Name "convertTSVtoCSV" -AccountName $dataLakeAnalyticsName –ScriptPath $usqlScript 
-                        
-        While (($t = Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId).State -ne "Ended"){
-            Write-Host "Job status: "$t.State"..."
-            Start-Sleep -seconds 5
-        }
-        
+        $job = Submit-AzureRmDataLakeAnalyticsJob -Name "convertTSVtoCSV" -AccountName $dataLakeAnalyticsName –ScriptPath $usqlScript 
+
+        Wait-AdlJob -Account $dataLakeAnalyticsName -JobId $job.JobId
+
         Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
     A parancsfájlban a U-SQL-parancsfájl helye: c:\tutorials\data-lake-analytics\copyFile.usql. Frissítse a fájl elérési útját ennek megfelelően.
@@ -212,6 +209,6 @@ A feladat befejezése után az alábbi parancsmagok segítségével listázhatja
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

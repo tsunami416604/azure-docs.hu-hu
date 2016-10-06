@@ -1,11 +1,11 @@
-Az Azure Backup szolgáltatás két típusú tárolóval rendelkezik – a Backup-tárolóval és a Recovery Services-tárolóval. A Backup-tároló vált elsőként elérhetővé. Utána következett a Recovery Services-tároló a kibővített, Resource Managerrel történő üzembe helyezések támogatása érdekében. A Microsoft a Resource Managerrel történő üzembe helyezés használatát javasolja, ha nem kifejezetten Klasszikus üzembe helyezésre van szükség.
+The Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault. The Backup vault came first. Then the Recovery Services vault came along to support the expanded Resource Manager deployments. Microsoft recommends using Resource Manager deployments unless you specifically require a Classic deployment.
 
-| **Környezet** | **Portál** | **Tároló** |
+| **Deployment** | **Portal** | **Vault** |
 |-----------|------|-----|
-|Klasszikus|[Klasszikus](https://manage.windowsazure.com)|Biztonsági mentés|
+|Classic|[Classic](https://manage.windowsazure.com)|Backup|
 |Resource Manager|[Azure](https://portal.azure.com)|Recovery Services|
 
-> [AZURE.NOTE] A Backup-tárolók nem tudják megvédeni a Resource Manager által üzembe helyezett megoldásokat. A klasszikus módon üzembe helyezett kiszolgálók és virtuális gépek védelmére Recovery Services-tárolót használhat.  
+> [AZURE.NOTE] Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically-deployed servers and VMs.  
 
 
 <!--HONumber=Sep16_HO4-->

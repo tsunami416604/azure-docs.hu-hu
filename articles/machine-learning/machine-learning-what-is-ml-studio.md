@@ -1,11 +1,11 @@
 <properties 
-    pageTitle="Mi az Azure Machine Learning Studio? | Microsoft Azure"
-    description="Az Azure ML Studio áttekintése. Az Azure ML Studio olyan, egérrel kezelhető eszköz, amellyel egy használatra kész algoritmus- és modultárból gyorsan felépíthetők a modellek."
+    pageTitle="What is Azure Machine Learning Studio? | Microsoft Azure"
+    description="Overview of Azure ML Studio, a drag-and-drop tool for quickly building models from a ready-to-use library of algorithms and modules."
     keywords="azure machine learning,azure ml, ml studio"
     services="machine-learning"
     documentationCenter=""
     authors="garyericson"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -14,99 +14,100 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/10/2016"
+    ms.date="09/09/2016"
     ms.author="garye"/>
 
-# Mi az Azure Machine Learning Studio?
 
-A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
+# What is Azure Machine Learning Studio?
 
-A Machine Learning Studio találkozási pontot biztosít az adatelemzés, a prediktív elemzés, a felhőerőforrások és az Ön adatai számára.
+Microsoft Azure Machine Learning Studio is a collaborative, drag-and-drop tool you can use to build, test, and deploy predictive analytics solutions on your data. Machine Learning Studio publishes models as web services that can easily be consumed by custom apps or BI tools such as Excel.
+
+Machine Learning Studio is where data science, predictive analytics, cloud resources, and your data meet.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## A Machine Learning Studio interaktív munkaterülete
+## The Machine Learning Studio interactive workspace
 
-A prediktív elemzési modellek létrehozásához általában egy vagy több forrásból származó adatokat veszünk alapul, különböző adatkezelési és statisztikai függvények felhasználásával átalakítjuk őket, majd eredményhalmazt hozunk létre. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
+To develop a predictive analysis model, you typically use data from one or more sources, transform and analyze that data through various data manipulation and statistical functions, and generate a set of results. Developing a model like this is an iterative process. As you modify the various functions and their parameters, your results converge until you are satisfied that you have a trained, effective model.
 
-Az **Azure Machine Learning Studio** interaktív, grafikus munkaterületet nyújt, amelyen könnyedén létrehozhatók, tesztelhetők és fejleszthetők a prediktív elemzési modellek. Az ***adathalmazokat*** és elemzési ***modulokat*** egy interaktív ***vászonra*** húzhatja, és összekapcsolhatja őket a Machine Learning Studio eszközben ***futtatható*** ***kísérletekké***. A modell felépítésének fejlesztéséhez ***szerkesztheti*** a kísérletet, szükség esetén ***mentheti*** egy másolatát, majd újrafuttathatja. Amikor készen áll, a ***tanítási kísérletet*** átalakíthatja ***prediktív kísérletté***, majd ***közzéteheti*** ***webszolgáltatásként***, hogy mások is hozzáférjenek.
+**Azure Machine Learning Studio** gives you an interactive, visual workspace to easily build, test, and iterate on a predictive analysis model. You drag-and-drop ***datasets*** and analysis ***modules*** onto an interactive canvas, connecting them together to form an ***experiment***, which you run in Machine Learning Studio. To iterate on your model design, you edit the experiment, save a copy if desired, and run it again. When you're ready, you can convert your ***training experiment*** to a ***predictive experiment***, and then publish it as a ***web service*** so that your model can be accessed by others.
 
->[AZURE.TIP] Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](machine-learning-studio-overview-diagram.md) című cikket.
+>[AZURE.TIP] To download and print a diagram that gives an overview of the capabilities of Machine Learning Studio, see [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md).
 
-A prediktív elemzési modell összeállításához nincs szükség programozásra, csupán az adathalmazok és a modulok grafikus összekapcsolására.
+There is no programming required, just visually connecting datasets and modules to construct your predictive analysis model.
 
-![Az Azure ML Studio diagramja: kísérletek létrehozása, adatok beolvasása számos forrásból, pontozott adatok és modellek írása.][ml-studio-overview]
+![Azure ML Studio diagram: Create experiments, read data for many sources, write scored data, write models.][ml-studio-overview]
 
-## A Machine Learning Studio használatának első lépései
+## Get started with Machine Learning Studio
 
-Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
+When you first enter [Machine Learning Studio](https://studio.azureml.net) you see the **Home** page. From here you can view documentation, videos, webinars, and find other valuable resources.
 
-Felül három fül látható: a **Kezdőlap** (az először megjelenő lap), a **Studio** és a **Katalógus**.
+There are three tabs across the top: **Home** (where you start), **Studio**, and **Gallery**.
 
 ### Studio
 
-Kattintson a **Studio** lapra, és a rendszer felkéri a Microsoft-fiókjával, illetve a munkahelyi vagy iskolai fiókjával történő bejelentkezésre. Miután bejelentkezett, bal oldalon az alábbi lapokat fogja látni:
+Click the **Studio** tab and you'll be asked to sign in using your Microsoft account, or your work or school account. Once signed in, you'll see the following tabs on the left:
 
-- **PROJEKTEK** – Az egyes projekteket alkotó kísérletek, adatkészletek, jegyzetek és egyéb erőforrások gyűjteményei
-- **KÍSÉRLETEK** – A létrehozott, futtatott és vázlatként mentett kísérletek
-- **WEBSZOLGÁLTATÁSOK** – A kísérletekből üzembe helyezett webszolgáltatások
-- **NOTEBOOKOK** – A létrehozott Jupyter notebookok
-- **ADATHALMAZOK** – A Studióba feltöltött adathalmazok
-- **BETANÍTOTT MODELLEK** – A kísérletek során betanított és a Studio eszközbe mentett kísérletek
-- **BEÁLLÍTÁSOK** – A fiók és az erőforrások konfigurálására szolgáló beállítások gyűjteménye
+- **PROJECTS** - Collections of experiments, datasets, notebooks, and other resources representing a single project
+- **EXPERIMENTS** - Experiments that have been created, run, and saved as drafts
+- **WEB SERVICES** - Web services that you have deployed from your experiments
+- **NOTEBOOKS** - Jupyter notebooks that you have created
+- **DATASETS** - Datasets that you have uploaded into Studio
+- **TRAINED MODELS** - Models that you have trained in experiments and saved in Studio
+- **SETTINGS** - A collection of settings that you can use to configure your account and resources.
 
-### Katalógus
+### Gallery
 
-Kattintson a **Katalógus** lapra, és megnyílik a Cortana Intelligence Gallery. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
+Click the **Gallery** tab and you'll be taken to the Cortana Intelligence Gallery. The Gallery is a place where a community of data scientists and developers can share solutions created using components of the Cortana Intelligence Suite.
 
-Erről további információkat a [Megoldások megosztása és felfedezése a Cortana Intelligence Galleryben](machine-learning-gallery-how-to-use-contribute-publish.md) című cikkben talál.
+For more information about the Gallery, see [Share and discover solutions in the Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-## A kísérletek összetevői
+## Components of an experiment
 
-A kísérletek adathalmazokból állnak, amelyek adatokat szolgáltatnak az elemzési modulok számára; az elemzési modulok pedig összekapcsolódva prediktív elemzési modellt alkotnak. Az érvényes kísérletek a következő jellemzőkkel rendelkeznek:
+An experiment consists of datasets that provide data to analytical modules, which you connect together to construct a predictive analysis model. Specifically, a valid experiment has these characteristics:
 
-- A kísérlet tartalmaz legalább egy adathalmazt és egy modult
-- Az adathalmazok csak a modulokhoz csatlakoztathatók
-- A modulok csatlakoztathatók adathalmazokhoz és más modulokhoz is
-- A modulok összes bemeneti portjának rendelkeznie kell valamilyen kapcsolattal az adatfolyamhoz
-- Minden modul összes szükséges paraméterét meg kell adni
+- The experiment has at least one dataset and one module
+- Datasets may be connected only to modules
+- Modules may be connected to either datasets or other modules
+- All input ports for modules must have some connection to the data flow
+- All required parameters for each module must be set
 
-A kísérleteket létrehozhatja nulláról, vagy egy meglévő mintakísérletet sablonként használva További információért tekintse meg az [Új kísérletek létrehozása a mintakísérletek használatával](machine-learning-sample-experiments.md) című cikket.
+You can create an experiment from scratch, or you can use an existing sample experiment as a template. For more information, see [Use sample experiments to create new experiments](machine-learning-sample-experiments.md).
 
-Egy egyszerű kísérlet létrehozására láthat példát az [Egyszerű kísérlet létrehozása az Azure Machine Learning Studio eszközben](machine-learning-create-experiment.md) című cikkben.
+For an example of creating a simple experiment, see [Create a simple experiment in Azure Machine Learning Studio](machine-learning-create-experiment.md).
 
-A prediktív elemzési megoldások létrehozásának részletesebb leírásáért tekintse meg a [Prediktív megoldás kifejlesztése az Azure Machine Learning segítségével](machine-learning-walkthrough-develop-predictive-solution.md) című cikket.
+For a more complete walkthrough of creating a predictive analytics solution, see [Develop a predictive solution with Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
-### Adathalmazok
+### Datasets
 
-Az adathalmaz olyan adatokból áll, amelyeket feltöltöttek a Machine Learning Studio eszközben, hogy fel lehessen őket használni a modellezési folyamatban. A Machine Learning Studio tartalmaz néhány mintaadathalmazt, amelyekkel kísérletezhet, és szükség esetén további adathalmazokat is feltölthet. Néhány példa a mintaadathalmazokra:
+A dataset is data that has been uploaded to Machine Learning Studio so that it can be used in the modeling process. A number of sample datasets are included with Machine Learning Studio for you to experiment with, and you can upload more datasets as you need them. Here are some examples of included datasets:
 
-- **Különböző autók fogyasztási adatai** – Hengerszám, lóerő stb. alapján azonosított autók üzemanyag-fogyasztási adatai.
-- **Mellrákkal kapcsolatos adatok** – Mellrák-diagnosztikai adatok.
-- **Erdőtüzek adatai** – Az Északkelet-Portugáliában előfordult erdőtüzek kiterjedése.
+- **MPG data for various automobiles** - Miles per gallon (MPG) values for automobiles identified by number of cylinders, horsepower, etc.
+- **Breast cancer data** - Breast cancer diagnosis data.
+- **Forest fires data** - Forest fire sizes in northeast Portugal.
 
-A kísérlet létrehozása során a vászon bal oldalán megjelenő adathalmazlistából választhat.
+As you build an experiment you can choose from the list of datasets available to the left of the canvas.
 
-A Machine Learning Studio mintaadathalmazainak listájáért tekintse meg a [Mintaadatkészletek használata az Azure Machine Learning Studio eszközben](machine-learning-use-sample-datasets.md) című cikket.
+For a list of sample datasets included in Machine Learning Studio, see [Use the sample data sets in Azure Machine Learning Studio](machine-learning-use-sample-datasets.md).
 
-### Modulok
+### Modules
 
-A modulok az adatokon végezhető algoritmusok. A Machine Learning Studio számos modult tartalmaz, amelyek az adatbeviteli függvényektől a betanítási, pontozási és ellenőrzési folyamatokig terjednek. Néhány példa a mellékelt modulokra:
+A module is an algorithm that you can perform on your data. Machine Learning Studio has a number of modules ranging from data ingress functions to training, scoring, and validation processes. Here are some examples of included modules:
 
-- [Convert to ARFF][convert-to-arff] (Átalakítás ARFF-formátumba) – Szerializált .NET-adathalmazok átalakítása attribútum-relációs fájlformátumra (ARFF).
-- [Compute Elementary Statistics][elementary-statistics] (Alapvető statisztikai számítások) – Alapvető statisztikai számítások, például átlag, szórás stb. kiszámítása.
-- [Linear Regression][linear-regression] (Lineáris regresszió) – Online, grádiens módszeren alapuló lineáris regressziós modell létrehozása.
-- [Score Model][score-model] (Pontszámmodell) – Betanított osztályozási vagy regressziós modell pontozása.
+- [Convert to ARFF][convert-to-arff] - Converts a .NET serialized dataset to Attribute-Relation File Format (ARFF).
+- [Compute Elementary Statistics][elementary-statistics] - Calculates elementary statistics such as mean, standard deviation, etc.
+- [Linear Regression][linear-regression] - Creates an online gradient descent-based linear regression model.
+- [Score Model][score-model] - Scores a trained classification or regression model.
 
-A kísérlet létrehozása során a vászon bal oldalán megjelenő modullistából választhat.  
+As you build an experiment you can choose from the list of modules available to the left of the canvas.  
 
-A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a **Tulajdonságok** panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen.
+A module may have a set of parameters that you can use to configure the module's internal algorithms. When you select a module on the canvas, the module's parameters are displayed in the **Properties** pane to the right of the canvas. You can modify the parameters in that pane to tune your model.
 
-A rendelkezésre álló gépi tanulási algoritmusok hatalmas katalógusában való eligazodást segíti az [Algoritmusok kiválasztása a Microsoft Azure Machine Learning szolgáltatáshoz](machine-learning-algorithm-choice.md) című fejezet.
+For some help navigating through the large library of machine learning algorithms available, see [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 
-## A prediktív elemzési webszolgáltatások telepítése
+## Deploying a predictive analytics web service
 
-Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning Studio eszközből üzembe helyezheti webszolgáltatásként. A folyamattal kapcsolatos további információkért tekintse meg az [Azure Machine Learning webszolgáltatás üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md) című cikket.
+Once your predictive analytics model is ready, you can deploy it as a web service right from Machine Learning Studio. For more details on this process, see [Deploy an Azure Machine Learning web service](machine-learning-publish-a-machine-learning-web-service.md).
 
 [ml-studio-overview]:./media/machine-learning-what-is-ml-studio/azure-ml-studio-diagram.jpg
 
@@ -118,6 +119,6 @@ Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning S
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Ismerkedés az Azure Mobile Services for Android alkalmazásokkal (JavaScript háttérrendszer)"
-    description="Ez az oktatóanyag segítséget nyújt az Azure Mobile Services for Android-fejlesztések első lépéseiben (JavaScript háttérrendszerrel)."
+    pageTitle="Get Started with Azure Mobile Services for Android apps (JavaScript backend)"
+    description="Follow this tutorial to get started using Azure Mobile Services for Android development (JavaScript backend)."
     services="mobile-services"
     documentationCenter="android"
     authors="RickSaling"
@@ -16,90 +16,91 @@
     ms.date="07/21/2016"
     ms.author="ricksal"/>
 
-# Ismerkedés a Mobile Services for Android rendszerrel (JavaScript háttérrendszer)
+
+# Get started with Mobile Services for Android  (JavaScript backend)
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> A témakör megfelelő Mobile Apps-verziójáért lásd: [Create an Android app in Azure Mobile Apps](../app-service-mobile/app-service-mobile-android-get-started.md) (Android-alkalmazás létrehozása az Azure Mobile Apps szolgáltatásban).
+> For the equivalent Mobile Apps version of this topic, see [Create an Android app in Azure Mobile Apps](../app-service-mobile/app-service-mobile-android-get-started.md).
 
-Az oktatóanyag bemutatja, hogyan adhat felhőalapú háttérszolgáltatást Android-alkalmazásokhoz az Azure Mobile Services használatával. Az oktatóprogram során létrehoz egy új mobilszolgáltatást, valamint egy egyszerű **Teendőlista** alkalmazást, amely az alkalmazásadatokat az új mobilszolgáltatásban tárolja.
+This tutorial shows you how to add a cloud-based backend service to an Android app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple **To do list** app that stores app data in the new mobile service.
 
 > [AZURE.VIDEO mobile-get-started-android]
 
-A kész alkalmazásról az alábbiakban látható egy képernyőkép:
+A screenshot from the completed app is below:
 
 ![](./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png)
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóprogram elvégzéséhez szükség lesz az [Android Developer Tools](https://developer.android.com/sdk/index.html) eszközökre, amelyek az Android Studio integrált fejlesztőkörnyezetet és a legújabb Android platformot foglalják magukban. Android 4.2 vagy újabb verzió szükséges.
+Completing this tutorial requires the [Android Developer Tools](https://developer.android.com/sdk/index.html), which includes the Android Studio integrated development environment, and the latest Android platform. Android 4.2 or a later version is required.
 
-A letöltött gyorsútmutató-projekt tartalmazza az Azure Mobile Services SDK for Android csomagot.
+The downloaded quickstart project contains the Azure Mobile Services SDK for Android.
 
-> [AZURE.IMPORTANT] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28).
+> [AZURE.IMPORTANT] To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28).
 
 
-## Új mobilszolgáltatás létrehozása
+## Create a new mobile service
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
-## Új Android-alkalmazás létrehozása
+## Create a new Android app
 
-Miután létrehozta a mobilszolgáltatást, a klasszikus Azure portálon található egyszerű gyorsútmutatóval létrehozhat egy új alkalmazást, vagy módosíthat egy meglévő alkalmazást a mobilszolgáltatáshoz való csatlakozáshoz.
+Once you have created your mobile service, you can follow an easy quickstart in the Azure classic portal to either create a new app or modify an existing app to connect to your mobile service.
 
-Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új Android-alkalmazást hoz létre.
+In this section you will create a new Android app that is connected to your mobile service.
 
-1.  A klasszikus Azure portálon kattintson a **Mobile Services** lehetőségre, majd az imént létrehozott mobilszolgáltatásra.
+1.  In the Azure classic portal, click **Mobile Services**, and then click the mobile service that you just created.
 
-2. A gyorsindítási lap **Platform kiválasztása** részében kattintson az **Android** lehetőségre, és bontsa ki az **Új Android-alkalmazás létrehozása** részt.
+2. In the quickstart tab, click **Android** under **Choose platform** and expand **Create a new Android app**.
 
     ![](./media/mobile-services-android-get-started/mobile-portal-quickstart-android1.png)
 
-    Ez megjeleníti a mobilszolgáltatáshoz csatlakozó új Android-alkalmazás létrehozásának három egyszerű lépését.
+    This displays the three easy steps to create an Android app connected to your mobile service.
 
     ![](./media/mobile-services-android-get-started/mobile-quickstart-steps-android-AS.png)
 
-3. Ha még nem tette, töltse le és telepítse az [Android Developer Tools](https://go.microsoft.com/fwLink/p/?LinkID=280125) eszközöket a helyi számítógépén vagy virtuális gépén.
+3. If you haven't already done so, download and install the [Android Developer Tools](https://go.microsoft.com/fwLink/p/?LinkID=280125) on your local computer or virtual machine.
 
-4. Kattintson a **TodoItem tábla létrehozása** lehetőségre az alkalmazásadatok tárolására szolgáló tábla létrehozásához.
+4. Click **Create TodoItem table** to create a table to store app data.
 
 
-5. Most töltse le az alkalmazást a **Letöltés** gomb lenyomásával.
+5. Now download your app by pressing the **Download** button.
 
-## Az Android-alkalmazás futtatása
+## Run your Android app
 
 [AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
 
-## <a name="next-steps"> </a>Következő lépések
-Most, hogy végzett a gyorsútmutatóval, ismerje meg, hogyan hajthat végre további fontos feladatokat a Mobile Services szolgáltatásban:
+## <a name="next-steps"> </a>Next Steps
+Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services:
 
-* [Bevezetés az adatok használatába]
-  <br/>További információk az adatok tárolásáról és lekérdezéséről a Mobile Services használatával.
+* [Get started with data]
+  <br/>Learn more about storing and querying data using Mobile Services.
 
-* [Bevezetés a hitelesítés használatába]
-  <br/>Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+* [Get started with authentication]
+  <br/>Learn how to authenticate users of your app with an identity provider.
 
-* [Bevezetés a leküldéses értesítések használatába]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
+* [Get started with push notifications]
+  <br/>Learn how to send a very basic push notification to your app.
 
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 
 <!-- URLs. -->
-[Első lépések (Eclipse)]: mobile-services-android-get-started-ec.md
-[Bevezetés az adatok használatába]: mobile-services-android-get-started-data.md
-[Bevezetés a hitelesítés használatába]: mobile-services-android-get-started-users.md
-[Bevezetés a leküldéses értesítések használatába]: mobile-services-javascript-backend-android-get-started-push.md
+[Get started (Eclipse)]: mobile-services-android-get-started-ec.md
+[Get started with data]: mobile-services-android-get-started-data.md
+[Get started with authentication]: mobile-services-android-get-started-users.md
+[Get started with push notifications]: mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

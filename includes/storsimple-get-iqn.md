@@ -1,14 +1,14 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### Windows Server-gazdagép IQN nevének lekérése
+#### To get the IQN of a Windows host
 
-1. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Kattintson a **Start** > **Felügyeleti eszközök** > **iSCSI-kezdeményező** lehetőségre.
+1. Start the Microsoft iSCSI initiator on your Windows host. Click **Start** > **Administrative Tools** > **iSCSI initiator**.
 
-2. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Konfiguráció** lapon jelölje ki, majd másolja a **Kezdeményező neve** mezőben lévő karakterláncot.
+2. In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
  
-    ![iSCSI-kezdeményező tulajdonságai](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
+    ![iSCSI initiator properties](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 
-3. Mentse ezt a karakterláncot.
+3. Save this string.
 
 
 <!--HONumber=Sep16_HO4-->

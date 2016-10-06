@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Az Operations Management Suite (OMS) architektúrája | Microsoft Azure"
-   description="A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.  Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
+   pageTitle="Operations Management Suite (OMS) architecture | Microsoft Azure"
+   description="Microsoft Operations Management Suite (OMS) is Microsoft's cloud-based IT management solution that helps you manage and protect your on-premises and cloud infrastructure.  This article identifies the different services included in OMS and provides links to their detailed content."
    services="operations-management-suite"
    documentationCenter=""
    authors="bwren"
@@ -16,74 +16,74 @@
    ms.author="bwren" />
 
 
-# OMS-architektúra
+# OMS architecture
 
-Az [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) felhőalapú szolgáltatások gyűjteménye a helyszíni és a felhőalapú környezet kezeléséhez.  Ez a cikk az OMS különböző helyszíni és felhőalapú összetevőit és az összetevők magas szintű felhőszámítási architektúráját ismerteti.  További részleteket az egyes szolgáltatásokhoz tartozó dokumentáció tartalmaz.
+[Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) is a collection of cloud-based services for managing your on-premises and cloud environments.  This article describes the different on-premises and cloud components of OMS and their high level cloud computing architecture.  You can refer to the documentation for each service for further details.
 
 ## Log Analytics
 
-A [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) által gyűjtött minden adat az OMS-tárházba kerül, amelyet az Azure üzemeltet.  A csatlakoztatott források által előállított adatokat a rendszer az OMS-tárházba gyűjti.  Jelenleg háromféle csatlakoztatott forrás támogatott.
+All data collected by [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) is stored in the OMS repository which is hosted in Azure.  Connected Sources generate data collected into the OMS repository.  There are currently three types of connected sources supported.
 
-- Közvetlenül az OMS-hez csatlakoztatott [Windows](../log-analytics/log-analytics-windows-agents.md) vagy [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerű számítógépre telepített ügynök.
-- A [Log Analytics-hez csatlakoztatott](../log-analytics/log-analytics-om-agents.md) System Center Operations Manager (SCOM) felügyeleti csoport.  Az SCOM-ügynökök továbbra is a felügyeleti kiszolgálókkal kommunikálnak, amelyek az eseményeket és a teljesítményadatokat a Log Analytics-nek továbbítják.
-- [Azure-tárfiók,](../log-analytics/log-analytics-azure-storage.md) amely [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)-adatokat gyűjt feldolgozói szerepkörből, webes szerepkörből vagy virtuális gépről az Azure-ban.
+- An agent installed on a [Windows](../log-analytics/log-analytics-windows-agents.md) or [Linux](../log-analytics/log-analytics-linux-agents.md) computer connected directly to OMS.
+- A System Center Operations Manager (SCOM) management group [connected to Log Analytics](../log-analytics/log-analytics-om-agents.md) .  SCOM agents continue to communicate with management servers which forward events and performance data to Log Analytics.
+- An [Azure storage account](../log-analytics/log-analytics-azure-storage.md) that collects [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) data from a worker role, web role, or virtual machine in Azure.
 
-A Log Analytics által a csatakoztatott forrásokból gyűjtött adatokat, többek között az eseménynaplókat és teljesítményszámlálókat az adatforrások határozzák meg.  A megoldások funkciókkal bővítik az OMS-t, és könnyen hozzáadhatók a munkaterülethez az [OMS megoldástárából](../log-analytics/log-analytics-add-solutions.md).  Egyes megoldások közvetlen kapcsolatot igényelhetnek az SCOM-ügynöktől a Log Analytics szolgáltatáshoz, míg másokhoz szükség lehet további ügynök telepítésére.
+Data sources define the data that Log Analytics collects from connected sources including event logs and performance counters.  Solutions add functionality to OMS and can easily be added to your workspace from the [OMS Solutions Gallery](../log-analytics/log-analytics-add-solutions.md).  Some solutions may require a direct connection to Log Analytics from SCOM agents while others may require an additional agent to be installed.
 
-A Log Analytics olyan webalapú portállal rendelkezik, amelyet OMS-erőforrások kezelésére, OMS-megoldások hozzáadására és konfigurálására, valamint az OMS-tárház adatainak megtekintésére és elemzésére használhat.
+Log Analytics has a web-based portal that you can use to manage OMS resources, add and configure OMS solutions, and view and analyze data in the OMS repository.
 
-![A Log Analytics magas szintű architektúrája](media/operations-management-suite-architecture/log-analytics.png)
+![Log Analytics high level architecture](media/operations-management-suite-architecture/log-analytics.png)
 
 
 ## Azure Automation
 
-Az [Azure Automation runbookjainak](http://azure.microsoft.com/documentation/services/automation) végrehajtása az Azure-felhőben történik, és képes hozzáférni az Azure-ban, más felhőszolgáltatásokban lévő vagy a nyilvános internetről elérhető erőforrásokhoz.  A helyi adatközpont helyszíni gépeit is kijelölheti [hibrid runbook-feldolgozó](../automation/automation-hybrid-runbook-worker.md) használatával, hogy a runbookok elérhessenek helyi erőforrásokat.
+[Azure Automation runbooks](http://azure.microsoft.com/documentation/services/automation) are executed in the Azure cloud and can access resources that are in Azure, in other cloud services, or accessible from the public Internet.  You can also designate on-premises machines in your local data center using [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) so that runbooks can access local resources.
 
-Az Azure Automationben tárolt [DSC-konfigurációk](../automation/automation-dsc-overview.md) azonnal alkalmazhatók az Azure virtuális gépekre.  Egyéb fizikai és virtuális gépek az Azure Automation DSC lekérési kiszolgálóról kérhetnek konfigurációkat.
+[DSC configurations](../automation/automation-dsc-overview.md) stored in Azure Automation can be directly applied to Azure virtual machines.  Other physical and virtual machines can request configurations from the Azure Automation DSC pull server.
 
-Az Azure Automation olyan OMS-megoldással rendelkezik, amely statisztikákat jelenít meg, valamint hivatkozásokat az Azure-portál indításához bármely művelethez.
+Azure Automation has an OMS solution that displays statistics and links to launch the Azure portal for any operations.
 
-![Az Azure Automation magas szintű architektúrája](media/operations-management-suite-architecture/automation.png)
+![Azure Automation high level architecture](media/operations-management-suite-architecture/automation.png)
 
 ## Azure Backup
 
-Az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) védett adatainak tárolása egy meghatározott földrajzi régióban elhelyezkedő biztonságimásolat-tárolóban történik.  Az adatok ugyanazon a régión belül replikálódnak, és a tároló típusától függően a nagyobb redundancia érdekében egy másik régióban is replikálódhatnak.
+Protected data in [Azure Backup](http://azure.microsoft.com/documentation/services/backup) is stored in a backup vault located in a particular geographic region.  The data is replicated within the same region and, depending on the type of vault, may also be replicated to another region for further redundancy.
 
-Az Azure Backup három alapvető alkalmazási helyzetben használható.
+Azure Backup has three fundamental scenarios.
 
-- Windows rendszerű gép Azure Backup-ügynökkel.  Ez lehetővé teszik bármely Windows-kiszolgáló fájljainak és mappáinak biztonsági mentését közvetlenül az Azure-beli biztonsági mentési tárba.  
-- System Center Data Protection Manager (DPM) vagy Microsoft Azure Backup Server. Ez lehetővé teszi a DPM vagy a Microsoft Azure Backup Server használatát az alkalmazások, például az SQL és a SharePoint munkaterhelései mellett fájlok és mappák biztonsági másolatának elkészítésére helyi tárba, majd ezek replikálását az Azure-beli biztonsági mentési tárba.
-- Azure Virtual Machine Extensions.  Lehetővé teszi az Azure-beli virtuális gépek biztonsági másolatának elkészítését az Azure-beli biztonsági mentési tárba.
+- Windows machine with Azure Backup agent.  This allows you to backup files and folders from any Windows server or client directly to your Azure backup vault.  
+- System Center Data Protection Manager (DPM) or Microsoft Azure Backup Server. This allows you to leverage DPM or Microsoft Azure Backup Server to backup files and folders in addition to application workloads such as SQL and SharePoint to local storage and then replicate to your Azure backup vault.
+- Azure Virtual Machine Extensions.  This allows you to backup Azure virtual machines to your Azure backup vault.
 
-Az Azure Backup olyan OMS-megoldással rendelkezik, amely statisztikákat jelenít meg, valamint hivatkozásokat az Azure-portál indításához bármely művelethez.
+Azure Backup has an OMS solution that displays statistics and links to launch the Azure portal for any operations.
 
-![Az Azure Backup magas szintű architektúrája](media/operations-management-suite-architecture/backup.png)
+![Azure Backup high level architecture](media/operations-management-suite-architecture/backup.png)
 
 ## Azure Site Recovery
 
-Az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) koordinálja a virtuális gépek és a fizikai kiszolgálók replikálását, feladatátvételét és feladat-visszavételét. A replikációs adatok cseréje a Hyper-V-gazdagépek, a VMware-hipervizorok és az elsődleges és a másodlagos adatközpontokban elhelyezkedő fizikai kiszolgáló között, vagy az adatközpont és az Azure Storage között történik.  A Site Recovery a metaadatokat meghatározott földrajzi Azure-régióban elhelyezkedő tárolókban tárolja. A Site Recovery szolgáltatás nem tárol replikált adatokat.
+[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) orchestrates replication, failover, and failback of virtual machines and physical servers. Replication data is exchanged between Hyper-V hosts, VMware hypervisors, and physical servers in primary and secondary datacenters, or between the datacenter and Azure storage.  Site Recovery stores metadata in vaults located in a particular geographic Azure region. No replicated data is stored by the Site Recovery service.
 
-Az Azure Site Recovery három alapvető replikációs helyzetben használható.
+Azure Site Recovery has three fundamental replication scenarios.
 
-**Hyper-V virtuális gépek replikálása**
-- Ha a Hyper-V virtuális gépek felügyelete VMM-felhőkben történik, replikálást végezhet másodlagos adatközpontba vagy az Azure Storage-ba.  A replikálás az Azure-ba biztonságos internetkapcsolaton keresztül történik.  A replikálás a másodlagos adatközpontba a helyi hálózaton keresztül történik.
-- Ha a Hyper-V virtuális gépet nem a VMM felügyeli, csak az Azure Storage-ba végezhet replikálást.  A replikálás az Azure-ba biztonságos internetkapcsolaton keresztül történik.
+**Replication of Hyper-V virtual machines**
+- If Hyper-V virtual machines are managed in VMM clouds, you can replicate to a secondary data center or to Azure storage.  Replication to Azure is over a secure internet connection.  Replication to a secondary datacenter is over the LAN.
+- If Hyper-V virtual machines aren’t managed by VMM, you can replicate to Azure storage only.  Replication to Azure is over a secure internet connection.
  
-**VMWare virtuális gépek replikálása**
-- A VMware virtuális gépeket VMware-t futtató másodlagos adatközpontba vagy az Azure Storage-ba replikálhatja.  A replikálás az Azure-ba történhet helyek közötti VPN-en, illetve Azure ExpressRoute-on keresztül vagy biztonságos internetkapcsolaton át. A másodlagos adatközpontba a replikálás az InMage Scout adatcsatornáján keresztül történik.
+**Replication of VMWare virtual machines**
+- You can replicate VMware virtual machines to a secondary datacenter running VMware or to Azure storage.  Replication to Azure can occur over a site-to-site VPN or Azure ExpressRoute or over a secure Internet connection. Replication to a secondary datacenter occurs over the InMage Scout data channel.
  
-**A fizikai Windows- és Linux-kiszolgálók replikálása** 
-- A fizikai kiszolgálókat replikálhatja másodlagos adatközpontokba vagy az Azure Storage-ba. A replikálás az Azure-ba történhet helyek közötti VPN-en, illetve Azure ExpressRoute-on keresztül vagy biztonságos internetkapcsolaton át. A másodlagos adatközpontba a replikálás az InMage Scout adatcsatornáján keresztül történik.  Az Azure Site Recovery olyan OMS-megoldással rendelkezik, amely megjelenít néhány statisztikát, de az Azure portált kell használnia minden művelethez.
+**Replication of physical Windows and Linux servers** 
+- You can replicate physical servers to a secondary datacenter or to Azure storage. Replication to Azure can occur over a site-to-site VPN or Azure ExpressRoute or over a secure Internet connection. Replication to a secondary datacenter occurs over the InMage Scout data channel.  Azure Site Recovery has an OMS solution that displays some statistics, but you must use the Azure portal for any operations.
 
-![Az Azure Site Recovery magas szintű architektúrája](media/operations-management-suite-architecture/site-recovery.png)
+![Azure Site Recovery high level architecture](media/operations-management-suite-architecture/site-recovery.png)
 
 
-## Következő lépések
+## Next steps
 
-- További tudnivalók a [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) szolgáltatásról.
-- További tudnivalók az [Azure Automation](https://azure.microsoft.com/documentation/services/automation) szolgáltatásról.
-- További tudnivalók az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) szolgáltatásról.
-- További tudnivalók az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) szolgáltatásról.
+- Learn about [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics).
+- Learn about [Azure Automation](https://azure.microsoft.com/documentation/services/automation).
+- Learn about [Azure Backup](http://azure.microsoft.com/documentation/services/backup).
+- Learn about [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery).
 
 
 

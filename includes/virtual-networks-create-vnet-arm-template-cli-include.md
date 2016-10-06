@@ -1,21 +1,21 @@
-## Az ARM-sablon üzembe helyezése az Azure CLI-vel
+## Deploy the ARM template by using the Azure CLI
 
-A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövesse az alábbi lépéseket.
+To deploy the ARM template you downloaded by using Azure CLI, follow the steps below.
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
-2. Az **`azure config mode`** parancs futtatásával váltson Resource Manager módra a lent látható módon.
+1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) and follow the instructions up to the point where you select your Azure account and subscription.
+2. Run the **`azure config mode`** command to switch to Resource Manager mode, as shown below.
 
         azure config mode arm
 
-    A fenti parancs várható kimenete:
+    Here is the expected output for the command above:
 
         info:    New mode is arm
 
-3. Szükség esetén az **`azure group create`** futtatásával hozzon létre egy új erőforráscsoportot a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
+3. If necessary, run the **`azure group create`** to create a new resource group, as shown below. Notice the output of the command. The list shown after the output explains the parameters used. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md).
 
         azure group create -n TestRG -l centralus
 
-    A fenti parancs várható kimenete:
+    Here is the expected output for the command above:
 
         info:    Executing command group create
         + Getting resource group TestRG
@@ -29,14 +29,14 @@ A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövess
         data:
         info:    group create command OK
 
-    - **-n (vagy --name)**. Az új erőforráscsoport neve. A mi esetünkben *TestRG*.
-    - **-l (vagy --location)**. Az Azure-régió, ahol az új erőforráscsoport létrejön. A mi esetünkben *centralus*.
+    - **-n (or --name)**. Name for the new resource group. For our scenario, *TestRG*.
+    - **-l (or --location)**. Azure region where the new resource group will be created. For our scenario, *centralus*.
 
-4. Futtassa az **`azure group deployment create`** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új VNetet. A kimenet után látható lista ismerteti a használt paramétereket.
+4. Run the **`azure group deployment create`** cmdlet to deploy the new VNet by using the template and parameter files you downloaded and modified above. The list shown after the output explains the parameters used.
 
         azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
-    A fenti parancs várható kimenete:
+    Here is the expected output for the command above:
 
         info:    Executing command group deployment create
         + Initializing template configurations and parameters
@@ -61,15 +61,15 @@ A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövess
         data:    subnet2Name    String  BackEnd
         info:    group deployment create command OK
 
-    - **-g (vagy --resource-group)**. Az erőforráscsoport neve, amelyben az új VNet létrejön.
-    - **-f (vagy --template-file)**. Az ARM-sablonfájl elérési útja.
-    - **-e (vagy --parameters-file)**. Az ARM-paraméterfájl elérési útja.
+    - **-g (or --resource-group)**. Name of the resource group the new VNet will be created in.
+    - **-f (or --template-file)**. Path to your ARM template file.
+    - **-e (or --parameters-file)**. Path to your ARM parameters file.
 
-5. Futtassa a **`azure network vnet show`** parancsot az új vnet tulajdonságainak megtekintéséhez a lent látható módon.
+5. Run the **`azure network vnet show`** command to view the properties of the new vnet, as shown below.
 
         azure network vnet show -g TestRG -n TestVNet
 
-    A fenti parancs várható kimenete:
+    Here is the expected output for the command above:
 
         info:    Executing command network vnet show
         + Looking up virtual network "TestVNet"

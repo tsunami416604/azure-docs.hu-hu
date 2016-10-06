@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Get started with Service Bus queues | Microsoft Azure"
-    description="How to write a C# console application for Service Bus messaging"
+    pageTitle="Bevezetés a Service Bus által kezelt üzenetsorok használatába | Microsoft Azure"
+    description="C# konzolalkalmazás létrehozása Service Bus üzenetkezelés számára"
     services="service-bus-messaging"
     documentationCenter=".net"
     authors="jtaubensee"
@@ -16,67 +16,68 @@
     ms.date="08/23/2016"
     ms.author="jotaub;sethm"/>
 
-# Get started with Service Bus Queues
+
+# Bevezetés a Service Bus által kezelt üzenetsorok használatába
 
 [AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-## What will be accomplished
+## Az oktatóanyag célja
 
-In this tutorial, we will complete the following:
+A jelen oktatóanyagban a következő műveleteket fogjuk végrehajtani:
 
-1. Create a Service Bus namespace, using the Azure portal.
+1. Service Bus-névtér létrehozása az Azure Portal használatával.
 
-2. Create a Service Bus Messaging queue, using the Azure portal.
+2. Service Bus-üzenetsor létrehozása az Azure Portal használatával.
 
-3. Write a console application to send a message.
+3. Konzolalkalmazás írása üzenetküldési céllal.
 
-4. Write a console application to receive messages.
+4. Konzolalkalmazás írása üzenetfogadási céllal.
 
-## Prerequisites
+## Előfeltételek
 
-1. [Visual Studio 2013 or Visual Studio 2015](http://www.visualstudio.com). The examples in this tutorial use Visual Studio 2015.
+1. [Visual Studio 2013 vagy Visual Studio 2015](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2015-öt használják.
 
-2. An Azure subscription.
+2. Azure-előfizetés.
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## 1. Create a namespace using the Azure portal
+## 1. Névtér létrehozása az Azure Portal használatával
 
-If you already have a Service Bus namespace created, jump to the [Create a queue using the Azure portal](#2-create-a-queue-using-the-azure-portal) section.
+Ha a Service Bus-névteret már létrehozta, ugorjon az [Üzenetsor létrehozása az Azure Portal használatával](#2-create-a-queue-using-the-azure-portal) szakaszra.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## 2. Create a queue using the Azure portal
+## 2. Üzenetsor létrehozása az Azure Portal használatával
 
-If you already have a Service Bus queue created, jump to the [Send messages to the queue](#3-send-messages-to-the-queue) section.
+Ha a Service Bus-üzenetsort már létrehozta, ugorjon az [Üzenetek küldése az üzenetsorba](#3-send-messages-to-the-queue) szakaszra.
 
 [AZURE.INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## 3. Send messages to the queue
+## 3. Üzenetek küldése az üzenetsorba
 
-To send messages to the queue, we will write a C# console application using Visual Studio.
+A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzenetsorba való küldéséhez.
 
-### Create a console application
+### Konzolalkalmazás létrehozása
 
-1. Launch Visual Studio and create a new Console application.
+1. Indítsa el a Visual Studiót, majd hozzon létre egy új konzolalkalmazást.
 
-### Add the Service Bus NuGet package
+### A Service Bus NuGet-csomag hozzáadása
 
-1. Right-click the newly created project and select **Manage NuGet Packages**.
+1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
 
-2. Click the **Browse** tab, then search for “Microsoft Azure Service Bus” and select the **Microsoft Azure Service Bus** item. Click **Install** to complete the installation, then close this dialog box.
+2. Kattintson a **Browse** (Tallózás) fülre, és keressen a „Microsoft Azure Service Bus” kifejezésre, majd válassza ki a **Microsoft Azure Service Bus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
-    ![Select a NuGet package][nuget-pkg]
+    ![NuGet-csomag kiválasztása][nuget-pkg]
 
-### Write some code to send a message to the queue
+### Írjon egy kódrészletet egy üzenet küldéséhez az üzenetsorba
 
-1. Add the following using statement to the top of the Program.cs file.
+1. Adja hozzá az alábbi using utasítást a Program.cs fájl elejéhez.
 
     ```
     using Microsoft.ServiceBus.Messaging;
     ```
     
-2. Add the following code to the `Main` method, set the **connectionString** variable as the connection string that was obtained when creating the namespace, and set **queueName** as the queue name that used when creating the queue.
+2. Vegye fel az alábbi kódot a `Main` metódusba, a **connectionString** változó legyen a névtér létrehozásakor beszerzett kapcsolati karakterlánc, a **queueName** pedig legyen az üzenetsor létrehozásakor használt üzenetsornév.
 
     ```
     var connectionString = "<Your connection string>";
@@ -87,7 +88,7 @@ To send messages to the queue, we will write a C# console application using Visu
     client.Send(message);
     ```
 
-    Here is what your Program.cs should look like.
+    A Program.cs fájlnak így kell kinéznie.
 
     ```
     using System;
@@ -111,21 +112,21 @@ To send messages to the queue, we will write a C# console application using Visu
     }
     ```
   
-3. Run the program, and check the Azure portal. Click the name of your queue in the namespace **Overview** blade. Notice that the **Active message count** value should now be 1.
+3. Futtassa a programot, majd ellenőrizze azt az Azure Portalon. A névtér **Áttekintés** paneljén kattintson az üzenetsor nevére. Vegye figyelembe, hogy az **Aktív üzenetek száma** értékének ekkor 1-nek kell lennie.
     
-      ![Message count][queue-message]
+      ![Üzenetek száma][queue-message]
     
-## 4. Receive messages from the queue
+## 4. Üzenet fogadása az üzenetsorból
 
-1. Create a new console application and add a reference to the Service Bus NuGet package, similar to the previous sending application.
+1. Hozzon létre egy új konzolalkalmazást, majd vegyen fel egy hivatkozást a Service Bus NuGet-csomagjára, hasonlóan az előző küldési alkalmazáshoz.
 
-2. Add the following `using` statement to the top of the Program.cs file.
+2. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
   
     ```
     using Microsoft.ServiceBus.Messaging;
     ```
   
-3. Add the following code to the `Main` method, set the **connectionString** variable as the connection string that was obtained when creating the namespace, and set **queueName** as the queue name that you used when creating the queue.
+3. Vegye fel az alábbi kódot a `Main` metódusba, a **connectionString** változó legyen a névtér létrehozásakor beszerzett kapcsolati karakterlánc, a **queueName** pedig legyen az üzenetsor létrehozásakor használt üzenetsornév.
 
     ```
     var connectionString = "";
@@ -142,7 +143,7 @@ To send messages to the queue, we will write a C# console application using Visu
     Console.ReadLine();
     ```
 
-	Here is what your Program.cs file should look like:
+    A Program.cs fájlnak így kell kinéznie:
 
     ```
     using System;
@@ -171,15 +172,15 @@ To send messages to the queue, we will write a C# console application using Visu
     }
     ```
   
-4. Run the program, and check the portal. Notice that the **Queue Length** value should now be 0.
+4. Futtassa a programot, majd ellenőrizze azt a portálon. Vegye figyelembe, hogy a **Várólista hossza** értékének ekkor 0-nak kell lennie.
 
-    ![Queue length][queue-message-receive]
+    ![Várólista hossza][queue-message-receive]
   
-Congratulations! You have now created a queue, sent a message, and received a message.
+Gratulálunk! Ezzel létrehozott egy üzenetsort, illetve küldött és fogadott is üzenetet.
 
-## Next steps
+## Következő lépések
 
-Check out our [GitHub repository with samples](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) that demonstrate some of the more advanced features of Azure Service Bus messaging.
+Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure-Samples/azure-servicebus-messaging-samples), amelyek az Azure Service Bus üzenetkezelési szolgáltatásának speciális funkcióit mutatják be.
 
 <!--Image references-->
 
@@ -191,3 +192,8 @@ Check out our [GitHub repository with samples](https://github.com/Azure-Samples/
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
+
+
+<!--HONumber=Sep16_HO4-->
+
+

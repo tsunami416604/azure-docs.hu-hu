@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Igény szerinti tartalomtovábbítás Java használatával | Microsoft Azure" 
-    description="Leírja, hogyan végezhet el az Azure Media Services használatával olyan gyakori műveleteket, mint az erőforrások kódolása, titkosítása és továbbítása." 
+    pageTitle="Get started with delivering content on demand using Java | Microsoft Azure" 
+    description="Describes how to use Azure Media Services to perform common tasks including encoding, encrypting, and streaming resources." 
     services="media-services" 
     documentationCenter="java" 
     authors="rmcmurray" 
@@ -16,30 +16,31 @@
     ms.date="08/17/2016"   
     ms.author="robmcm"/>
 
-# Igény szerinti tartalomtovábbítás Java használatával
+
+# Get started with delivering content on demand using Java
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-##Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
+##Setting Up an Azure Account for Media Services
 
-Egy Media Services-fiók létrehozásához használja a klasszikus Azure portált. További információ: [Media Services-fiók létrehozása](media-services-create-account.md) Miután a klasszikus Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
+To set up your Media Services account, use the Azure Classic Portal. See the topic [How to Create a Media Services Account](media-services-create-account.md). After creating your account in the Azure Classic Portal, you are ready to set up your computer for Media Services development.
 
-##A Media Services-fejlesztés előkészítése
+##Setting up for Media Services development
 
-Ez a szakasz a Javához készült Media Services SDK használatával végzett Media Services-fejlesztés általános előfeltételeit tartalmazza.
+This section contains general prerequisites for Media Services development using the Media Services SDK for Java.
 
-###Előfeltételek
+###Prerequisites
 
--   Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. További információ: [Media Services-fiók létrehozása](media-services-create-account.md)
--   A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][] lehet telepíteni.
+-   A Media Services account in a new or existing Azure subscription. See the topic [How to Create a Media Services Account](media-services-create-account.md).
+-   The Azure Libraries for Java, which you can install from the [Azure Java Developer Center][].
 
-##Útmutató: A Media Services használata Javával
+##How to: Use Media Services with Java
 
-A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
+The following code shows how to create an asset, upload a media file to the asset, run a job with a task to transform the asset, and create a locator to stream your video.
 
-A kód használatához először létre kell hoznia egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-create-account.md)
+You need to set up a Media Services account before using this code. For information about setting up an account, see [How to Create a Media Services Account](media-services-create-account.md).
 
-A „clientId” és „clientSecret” változó helyére helyettesítse be a saját értékeit. A kód egy helyileg tárolt fájlt is használ. Meg kell adnia a saját használandó fájlját.
+Substitute your values for the 'clientId' and 'clientSecret' variables. The code also relies on a locally stored file. You'll need to provide your own file to use.
     
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -255,29 +256,29 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
     }
 
 
-##Media Services képzési tervek
+##Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Visszajelzés küldése
+##Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-##További források
+##Additional Resources
 
-A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][].
+For Media Services Javadoc documentation, see [Azure Libraries for Java documentation][].
 
 <!-- URLs. -->
 
-  [Azure Java fejlesztői központból]: http://azure.microsoft.com/develop/java/
-  [Java-dokumentáció az Azure-könyvtárakban]: http://dl.windowsazure.com/javadoc/
-  [Media Services ügyféloldali fejlesztés]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+  [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+  [Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+  [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
  
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

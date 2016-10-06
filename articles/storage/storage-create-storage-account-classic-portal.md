@@ -180,6 +180,6 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

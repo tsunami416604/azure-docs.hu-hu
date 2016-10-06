@@ -1,9 +1,9 @@
 <properties
-    pageTitle="Bevezetés az Azure App Service Mobile Apps szolgáltatásnak a Xamarin.iOS-alkalmazásokkal való használatába| Microsoft Azure"
-    description="Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin.iOS-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást."
+    pageTitle="Get started with Azure App Service Mobile Apps for Xamarin.iOS apps | Microsoft Azure"
+    description="Follow this tutorial to get started with using Mobile Apps for Xamarin.iOS development."
     services="app-service\mobile"
     documentationCenter="xamarin"
-    authors="wesmc7777"
+    authors="adrianhall"
     manager="dwrede"
     editor=""/>
 
@@ -13,82 +13,83 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="08/04/2016"
-    ms.author="normesta"/>
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
 
-#Xamarin.iOS-alkalmazás létrehozása
+
+#Create a Xamarin.iOS app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-##Áttekintés
+##Overview
 
-Ez az cikk azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatást a Xamarin.iOS-mobilalkalmazásokhoz egy Azure-alapú mobil-háttéralkalmazás segítségével.  Létre fog hozni egy új mobil-háttéralkalmazást, illetve egy olyan egyszerű _Teendőlista_ Xamarin.iOS-alkalmazást, amely az alkalmazásadatokat az Azure-ban tárolja.
+This tutorial shows you how to add a cloud-based backend service to a Xamarin.iOS mobile app by using an Azure mobile app backend.  You will create both a new mobile app backend and a simple _Todo list_ Xamarin.iOS app that stores app data in Azure.
 
-Az oktatóanyag végrehajtása feltétele az Azure App Service Mobile Apps szolgáltatásának használatát ismertető többi Xamarin.iOS-oktatóanyag elérésének.
+Completing this tutorial is a prerequisite for all other Xamarin.iOS tutorials about using the Mobile Apps feature in Azure App Service.
 
-##Előfeltételek
+##Prerequisites
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+To complete this tutorial, you need the following:
 
-* Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* An active Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free mobile apps that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése).
+* Visual Studio with Xamarin. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) for instructions.
 
-* Mac számítógép 7.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. Lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) és [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (Beállítás, telepítés és ellenőrzés Macintosh-felhasználók számára) (MSDN).
+* A Mac with Xcode v7.0 or later and Xamarin Studio Community installed. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) and [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 
->[AZURE.NOTE] Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban – kötelezettségek és a bankkártyaadatok megadása nélkül.
+>[AZURE.NOTE] If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile). There, you can immediately create a short-lived starter mobile app in App Service—no credit card required, and no commitments.
 
-## Új Azure Mobile Apps-háttéralkalmazás létrehozása
+## Create a new Azure Mobile App backend
 
-Új Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
+Follow these steps to create a new Mobile App backend.
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## Kiszolgálóprojekt konfigurálása
+## Configure the server project
 
-Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ügyfélalkalmazásai használni tudnak. A következő lépésben le kell töltenie egy kiszolgálóprojektet egy egyszerű „Teendőlista” háttéralkalmazáshoz, és közzé kell tennie az Azure-ban.
+You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, you will download a server project for a simple "todo list" backend and publish it to Azure.
 
-Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás használatára az alábbi lépésekkel.
+Follow the steps below to configure the server project to use either the Node.js or .NET backend.
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## A Xamarin.iOS-alkalmazás letöltése és futtatása
+## Download and run the Xamarin.iOS app
 
-1. Nyissa meg az [Azure Portal] egy böngészőablakban.
+1. Open the [Azure portal] in a browser window.
 
-2. A Mobile Apps beállítási paneljén kattintson az **Első lépések** > **Xamarin.iOS** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
+2. On the settings blade for your Mobile App, click **Get Started** > **Xamarin.iOS**. Under step 3, click  **Create a new app** if it's not already selected.  Next click the **Download** button.
 
-    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    This downloads a project that contains a client application that is connected to your mobile app. Save the compressed project file to your local computer, and make a note of where you save it.
 
-3. Bontsa ki a letöltött projektet, és nyissa meg a Xamarin Studio (vagy a Visual Studio) alkalmazást.
+3. Extract the project that you downloaded, and then open it in Xamarin Studio (or Visual Studio).
 
     ![][9]
 
     ![][8]
 
-4. Készítse el a projekt buildjét az F5 billentyűt lenyomásával, és indítsa el az alkalmazást az iPhone-emulátoron.
+4. Press the F5 key to build the project and start the app in the iPhone emulator.
 
-5. Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás_, majd kattintson a **+** gombra.
+5. In the app, type meaningful text, such as _Learn Xamarin_, and then click the **+** button.
 
     ![][10]
 
-    Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+    This sends a POST request to the new mobile app backend hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data is displayed in the list.
 
->[AZURE.NOTE]A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a QSTodoService.cs C# fájlban tekintheti meg.
+>[AZURE.NOTE]You can review the code that accesses your mobile app backend to query and insert data in the QSTodoService.cs C# file.
 
-##Következő lépések
+##Next steps
 
-* [Hitelesítés hozzáadása az alkalmazáshoz ](app-service-mobile-xamarin-ios-get-started-users.md)
-  <br/>Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
+* [Add authentication to your app ](app-service-mobile-xamarin-ios-get-started-users.md)
+  <br/>Learn how to authenticate users of your app by using an identity provider.
 
-* [Leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-ios-get-started-push.md)
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
+* [Add push notifications to your app](app-service-mobile-xamarin-ios-get-started-push.md)
+  <br/>Learn how to send a very basic push notification to your app.
 
 <!-- Anchors. -->
-[Bevezetés a mobil-háttéralkalmazások használatába]:#getting-started
-[Új mobil-háttéralkalmazás létrehozása]:#create-new-service
-[Következő lépések]:#next-steps
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
+[Next Steps]:#next-steps
 
 
 
@@ -99,10 +100,10 @@ Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás 
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

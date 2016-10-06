@@ -118,6 +118,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="mobile-chrome"
     ms.devlang="JavaScript"
     ms.topic="hero-article"
-    ms.date="07/22/2016"
+    ms.date="10/03/2016"
     ms.author="wesmc"/>
 
 
@@ -476,8 +476,8 @@ Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, o
 [crypto-js kódtárat]: http://code.google.com/p/crypto-js/
 [A GCM használata Chrome-alkalmazásokkal]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure Notification Hubs – Felhasználók értesítése]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[Azure Notification Hubs – Legfrissebb hírek]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[Azure Notification Hubs – Felhasználók értesítése]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Azure Notification Hubs – Legfrissebb hírek]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 
 

@@ -1,5 +1,5 @@
 > [AZURE.SELECTOR]
-- [Univerzális Windows](../articles/mobile-engagement/mobile-engagement-windows-store-dotnet-get-started.md)
+- [Universal Windows](../articles/mobile-engagement/mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](../articles/mobile-engagement/mobile-engagement-windows-phone-get-started.md)
 - [iOS | Obj C](../articles/mobile-engagement/mobile-engagement-ios-get-started.md)
 - [iOS | Swift](../articles/mobile-engagement/mobile-engagement-ios-swift-get-started.md)

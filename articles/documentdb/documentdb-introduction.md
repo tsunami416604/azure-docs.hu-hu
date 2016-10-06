@@ -1,7 +1,7 @@
 <properties 
-    pageTitle="A DocumentDB, egy JSON-adatbázis bemutatása | Microsoft Azure" 
-    description="Ismerje meg a DocumentDB-t, amely egy NoSQL-alapú JSON-adatbázis. Ez a dokumentum-adatbázis a big data, a rugalmas méretezhetőség és a magas rendelkezésre állás jegyében készült." 
-    keywords="json-adatbázis, dokumentum-adatbázis"
+    pageTitle="Introduction to DocumentDB, a JSON database | Microsoft Azure" 
+    description="Learn about Azure DocumentDB, a NoSQL JSON database. This document database is built for big data, elastic scalability, and high availability." 
+    keywords="json database, document database"
     services="documentdb" 
     authors="mimig1" 
     manager="jhubbard" 
@@ -14,100 +14,96 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="07/01/2016" 
+    ms.date="09/13/2016" 
     ms.author="mimig"/>
 
-# A DocumentDB, egy NoSQL-alapú JSON-adatbázis bemutatása
 
-Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltatás, amely a gyors és kiszámítható teljesítmény, a magas rendelkezésre állás, az automatikus méretezhetőség, a globális terjesztés és a könnyű fejlesztés jegyében készült. A rugalmas adatmodell, az egységes sebesség és rövid késleltetés, valamint a gazdag lekérdezési képességek nagyszerű megoldássá teszik a webes, játék-, IoT- és számos egyéb alkalmazás esetében, amelyek zökkenőmentes méretezést igényelnek.
+# Introduction to DocumentDB: A NoSQL JSON Database
 
-Az alábbi három lépést követve gyorsan megismerheti ezt a JSON-adatbázist működés közben: 
+##What is DocumentDB?
 
-1. Tekintse meg a kétperces [Mi a DocumentDB?](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/) című videót, amely a DocumentDB használatának előnyeit mutatja be.
-2. Tekintse meg a háromperces [DocumentDB létrehozása az Azure-on](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) című videót, amely kiemeli a DocumentDB-vel kapcsolatos első lépéseket az Azure-portál használatával.
-3. Tekintse meg a [Tesztlekérdezéseket](http://www.documentdb.com/sql/demo), amelyek segítségével különböző tevékenységeken keresztül ismerheti meg a DocumentDB gazdag lekérdezési funkcióit. Ezután lépjen a Próbakörnyezet lapra, ahol futtathatja saját, egyéni SQL-lekérdezéseit, valamint kísérletezhet a DocumentDB-vel.
+DocumentDB is a fully managed NoSQL database service built for fast and predictable performance, high availability, elastic scaling, global distribution, and ease of development. As a schema-free NoSQL database, DocumentDB provides rich and familiar SQL query capabilities with consistent low latencies on JSON data - ensuring that 99% of your reads are served under 10 milliseconds and 99% of your writes are served under 15 milliseconds. These unique benefits make DocumentDB a great fit for web, mobile, gaming, and IoT, and many other applications that need seamless scale and global replication.
 
-Ezt követően térjen vissza a cikkhez, amelyben a dolgok mélyére ásva az alábbi kérdésekre kaphat választ:  
+## How can I learn about DocumentDB? 
 
--   [Mi a DocumentDB, és milyen értéket nyújt a modern alkalmazások esetében?](#what-is-azure-documentdb)
--   [Hogyan történik az adatok kezelése a DocumentDB-ben, és hogyan férhetek hozzájuk?](#data-management)
--   [Hogyan fejleszthetek alkalmazásokat a DocumentDB használatával?](#develop)
--   [Mik a DocumentDB-alkalmazás összeállításának következő lépései?](#next-steps)  
+A quick way to learn about DocumentDB and see it in action is to follow these three steps: 
 
-## Mi az Azure DocumentDB?  
+1. Watch the two minute [What is DocumentDB?](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/) video, which introduces the benefits of using DocumentDB.
+2. Watch the three minute [Create DocumentDB on Azure](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) video, which highlights how to get started with DocumentDB by using the Azure Portal.
+3. Visit the [Query Playground](http://www.documentdb.com/sql/demo), where you can walk through different activities to learn about the rich querying functionality available in DocumentDB. Then, head over to the Sandbox tab and run your own custom SQL queries and experiment with DocumentDB.
 
-A modern alkalmazások rendkívül nagy mennyiségű adatot állítanak elő és hasznának fel, továbbá gyorsan is reagálnak ezekre. Ezek az alkalmazások nagyon gyorsan fejlődnek, és ezáltal a mögöttes adatséma is. Erre reagálva a fejlesztők egyre gyakrabban választanak sémamentes NoSQL dokumentum-adatbázisokat, mivel ezek egyszerű, gyors és méretezhető megoldást biztosítanak az adatok tárolásához és feldolgozásához, miközben megőrzik az alkalmazás-adatmodellek és a strukturálatlan adatcsatornák gyors ismétlésének képességét. A sémamentes adatbázisok közül sok azonban nem teszi lehetővé az összetett lekérdezéseket és a tranzakciós feldolgozást, ami megnehezíti a speciális adatkezelést. Itt jön a képbe a DocumentDB. A Microsoft arra tervezte a DocumentDB-t, hogy megfeleljen a napjaink alkalmazásai által támasztott adatkezelési követelményeknek.
+Then, return to this article, where we'll dig in deeper.  
 
-A DocumentDB egy valódi sémamentes NoSQL-adatbázis, amelyet modern mobil-, webes, játék- és IoT-alkalmazásokhoz terveztek. A DocumentDB biztosítja, hogy az olvasási feladatok 99%-a 10 ezredmásodpercen belül, az írási feladatok 99%-a pedig 15 ezredmásodpercen belül ki legyen szolgálva. Emellett biztosítja a séma rugalmasságát, valamint az adatbázis méretének igény szerinti növelését, illetve csökkentését is. Nem feltételez vagy igényel semmilyen sémát a JSON-dokumentumok esetében, amelyeket indexel. Alapértelmezés szerint automatikusan indexeli az adatbázisban szereplő összes dokumentumot, és nem vár vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását. A DocumentDB összetett, eseti lekérdezéseket tesz lehetővé az SQL-nyelv használatával, támogatja a jól meghatározott konzisztenciaszinteket, továbbá a JavaScript nyelvvel integrált, többdokumentumos tranzakció-feldolgozást kínál a tárolt eljárások, eseményindítók és felhasználói függvények megszokott programozási modelljének használatával. 
+## What capabilities and key features does DocumentDB offer?  
 
-JSON-adatbázisként a DocumentDB natív módon támogatja a JSON-dokumentumokat, lehetővé téve az alkalmazássémák egyszerű ismétlését, valamint a kulcsérték, dokumentum és táblázatos adatmodelleket igénylő alkalmazások támogatását. A DocumentDB támogatja a JSON és a JavaScript mindenre kiterjedő jelenlétét, kiküszöbölve ezáltal az alkalmazás által meghatározott objektumok és az adatbázis-séma közötti eltéréseket. A JavaScript szoros integrációja továbbá lehetővé teszi a fejlesztők számára az alkalmazáslogika hatékony és közvetlen végrehajtását – mindezt az adatbázis motorján belül az adatbázis-tranzakció során. 
+Azure DocumentDB offers the following key capabilities and benefits:
 
-Az Azure DocumentDB az alábbi főbb képességeket és előnyöket kínálja:
+-   **Elastically scalable throughput and storage:** Easily scale up or scale down your DocumentDB JSON database to meet your application needs. Your data is stored on solid state disks (SSD) for low predictable latencies. DocumentDB supports containers for storing JSON data called collections that can scale to virtually unlimited storage sizes and provisioned throughput. You can elastically scale DocumentDB with predictable performance seamlessly as your application grows. 
 
--   **Rugalmasan méretezhető átviteli sebesség és tárterület:** Könnyedén növelheti vagy csökkentheti a DocumentDB JSON-adatbázisának méretét az alkalmazás igényeinek megfelelően. Az adatok tárolása tartós állapotú meghajtón (SSD) történik az alacsony, előre jelezhető késés érdekében. A DocumentDB támogatja a gyűjteményeknek nevezett, JSON-adatok tárolására szolgáló tárolókat, amelyek szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak. Ahogy az alkalmazás növekszik, kiszámítható teljesítmény mellett, rugalmasan és zökkenőmentesen méretezheti a DocumentDB-t. 
+-   **Multi-region replication:** DocumentDB transparently replicates your data to all regions you've associated with your DocumentDB account, enabling you to develop applications that require global access to data while providing tradeoffs between consistency, availability and performance, all with corresponding guarantees. DocumentDB provides transparent regional failover with multi-homing APIs, and the ability to elastically scale throughput and storage across the globe. Learn more in [Distribute data globally with DocumentDB](documentdb-distribute-data-globally.md).
 
--   **Többrégiós replikáció:** A DocumentDB transzparensen replikálja az Ön adatait a DocumentDB-fiókjához társított összes régióba, lehetővé téve a globális adathozzáférést igénylő alkalmazások fejlesztését, és kompromisszumot kínál a konzisztencia, a rendelkezésre állás és a teljesítmény között, a megfelelő garanciákkal. A DocumentDB transzparens regionális feladatátvételt biztosít a többkiszolgálós API-k segítségével, valamint világszerte rugalmasan méretezhető teljesítményt és tárolókapacitást nyújt. További információ: [Distribute data globally with DocumentDB](documentdb-distribute-data-globally.md) (Globális adatterjesztés a DocumentDB-vel).
+-   **Ad hoc queries with familiar SQL syntax:** Store heterogeneous JSON documents within DocumentDB and query these documents through a familiar SQL syntax. DocumentDB utilizes a highly concurrent, lock free, log structured indexing technology to automatically index all document content. This enables rich real-time queries without the need to specify schema hints, secondary indexes, or views. Learn more in [Query DocumentDB](documentdb-sql-query.md). 
 
--   **Eseti lekérdezések a megszokott SQL-szintaxissal:** Heterogén JSON-dokumentumokat tárolhat a DocumentDB-ben, és a már ismerős SQL-szintaxis használatával kérdezheti le ezeket. A DocumentDB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a dokumentumok teljes tartalmának indexeléséhez. Ez részletes, valós idejű lekérdezéseket tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [A DocumentDB lekérdezése](documentdb-sql-query.md). 
+-   **JavaScript execution within the database:** Express application logic as stored procedures, triggers, and user defined functions (UDFs) using standard JavaScript. This allows your application logic to operate over data without worrying about the mismatch between the application and the database schema. DocumentDB provides full transactional execution of JavaScript application logic directly inside the database engine. The deep integration of JavaScript enables the execution of INSERT, REPLACE, DELETE, and SELECT operations from within a JavaScript program as an isolated transaction. Learn more in [DocumentDB server-side programming](documentdb-programming.md).
 
--   **JavaScript végrehajtása az adatbázison belül:** Az alkalmazáslogikát tárolt eljárások, eseményindítók és a felhasználó által megadott függvények formájában is kifejezheti a standard JavaScript használatával. Ez lehetővé teszi, hogy az alkalmazáslogika anélkül használja az adatokat, hogy az alkalmazás és az adatbázis-séma közötti eltérések miatt kellene aggódni. A DocumentDB a JavaScript-alkalmazáslogika teljes tranzakciós végrehajtását biztosítja közvetlenül az adatbázis motorjában. A JavaScript szoros integrációja lehetővé teszi az INSERT, REPLACE, DELETE és SELECT műveletek elkülönített tranzakcióként történő végrehajtását a JavaScript-programból. További információk: [DocumentDB kiszolgálóoldali programozása](documentdb-programming.md).
+-   **Tunable consistency levels:** Select from four well defined consistency levels to achieve optimal trade-off between consistency and performance. For queries and read operations, DocumentDB offers four distinct consistency levels: strong, bounded-staleness, session, and eventual. These granular, well-defined consistency levels allow you to make sound trade-offs between consistency, availability, and latency. Learn more in [Using consistency levels to maximize availability and performance in DocumentDB](documentdb-consistency-levels.md).
 
--   **Aprólékosan beállítható konzisztenciaszintek:** Négy jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében a DocumentDB négy különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a DocumentDB-ben konzisztenciaszintek használatával](documentdb-consistency-levels.md).
+-   **Fully managed:** Eliminate the need to manage database and machine resources. As a fully-managed Microsoft Azure service, you do not need to manage virtual machines, deploy and configure software, manage scaling, or deal with complex data-tier upgrades. Every database is automatically backed up and protected against regional failures. You can easily add a DocumentDB account and provision capacity as you need it, allowing you to focus on your application instead of operating and managing your database. 
 
--   **Teljes körűen felügyelt:** Nincs szükség az adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként nincs szükség virtuális gépek kezelésére, szoftverek telepítésére és konfigurálására, a méretezés kezelésére vagy az összetett adatrétegek frissítésére. Minden adatbázisról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Könnyedén elvégezheti egy DocumentDB-fiók hozzáadását és a kapacitás szükség szerinti kiosztását, ami lehetővé teszi, hogy az adatbázis üzemeltetése és kezelése helyett az alkalmazásra összpontosítson. 
+-   **Open by design:** Get started quickly by using existing skills and tools. Programming against DocumentDB is simple, approachable, and does not require you to adopt new tools or adhere to custom extensions to JSON or JavaScript. You can access all of the database functionality including CRUD, query, and JavaScript processing over a simple RESTful HTTP interface. DocumentDB embraces existing formats, languages, and standards while offering high value database capabilities on top of them.
 
--   **Nyílt kialakítás:** Hamar munkához láthat a meglévő ismeretei és eszközei használatával. A DocumentDB programozása könnyű, elérhető és nem igényli új eszközök megismerését vagy egyéni kiterjesztések használatát a JSON és a JavaScript formátumhoz. Egy egyszerű RESTful HTTP-felületen keresztül érheti el az adatbázis összes funkcióját, mint a CRUD, a lekérdezés és a JavaScript-feldolgozás. A DocumentDB támogatja a meglévő formátumokat, nyelveket és standardokat, miközben értékes adatbázis-képességeket is kínál.
+-   **Automatic indexing:** By default, DocumentDB [automatically indexes](documentdb-indexing.md) all the documents in the database and does not expect or require any schema or creation of secondary indices. Don't want to index everything? Don't worry, you can [opt out of paths in your JSON files](documentdb-indexing-policies.md) too.
 
-A DocumentDB használatával rugalmas adatkészleteket tárolhat, amelyek lekérdezési és tranzakciós feldolgozást igényelnek. Az alkalmazás-forgatókönyvek közé tartozhatnak az interaktív webes, mobil- és játékalkalmazások felhasználói adatai, továbbá az IoT-eszközök által létrehozott JSON-adatok tárolása, lekérése és feldolgozása. Egy adatbázis bármennyi JSON-dokumentumot képes tárolni, mivel a DocumentDB kiválóan alkalmazható az interneten hatalmas méretekben futtatható alkalmazások esetében.
+##<a name="data-management"></a>How does DocumentDB manage data?
 
-##<a name="data-management"></a>Az Azure DocumentDB erőforrásai
-Az Azure DocumentDB jól meghatározott adatbázis-erőforrások használatával kezeli az adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB egy egyszerű HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 
+Azure DocumentDB manages JSON data through well-defined database resources. These resources are replicated for high availability and are uniquely addressable by their logical URI. DocumentDB offers a simple HTTP based RESTful programming model for all resources. 
 
-A DocumentDB-adatbázis fiók egy egyedi névtér, amely hozzáférést biztosít az Azure DocumentDB-hez. Ahhoz, hogy létrehozhasson egy adatbázis-fiókot, Azure-előfizetéssel kell rendelkeznie, amely számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. 
+The DocumentDB database account is a unique namespace that gives you access to Azure DocumentDB. Before you can create a database account, you must have an Azure subscription, which gives you access to a variety of Azure services. 
 
-A DocumentDB összes erőforrásának modellezése és tárolása JSON-dokumentumként történik. Az erőforrások elemekként és csatornákként vannak kezelve. Az elemek metaadatokat tartalmazó JSON-dokumentumok, a csatornák pedig elemek gyűjteményei. Az elemkészletek a megfelelő csatornákban találhatók.
+All resources within DocumentDB are modeled and stored as JSON documents. Resources are managed as items, which are JSON documents containing metadata, and as feeds which are collections of items. Sets of items are contained within their respective feeds.
 
-Az alábbi képen láthatók a DocumentDB erőforrásainak kapcsolatai:
+The image below shows the relationships between the DocumentDB resources:
 
-![A DocumentDB, egy NoSQL-alapú JSON-adatbázis erőforrásainak hierarchikus kapcsolatai.][1] 
+![The hierarchical relationship between resources in DocumentDB, a NoSQL JSON database][1] 
 
-Egy adatbázis-fiók adatbázis-készletekből áll, amelyek mindegyike több gyűjteményt tartalmaz. A gyűjtemények tárolt eljárásokat, eseményindítókat, felhasználó által megadott függvényeket, dokumentumokat és kapcsolódó mellékleteket tartalmazhatnak. Egy adatbázisnak továbbá felhasználói is vannak, amelyek mindegyike rendelkezik egy engedélykészlettel a különféle egyéb gyűjtemények, tárolt eljárások, eseményindítók, felhasználó által megadott függvények, dokumentumok és mellékletek eléréséhez. Amíg az adatbázisok, felhasználók és gyűjtemények rendszer által meghatározott, jól ismert sémákkal rendelkező erőforrások, addig a dokumentumok, tárolt eljárások, eseményindítók, felhasználó által megadott függvények és mellékletek tetszőleges, felhasználó által megadott JSON-tartalmak lehetnek.  
+A database account consists of a set of databases, each containing multiple collections, each of which can contain stored procedures, triggers, UDFs, documents, and related attachments. A database also has associated users, each with a set of permissions to access various other collections, stored procedures, triggers, UDFs, documents, or attachments. While databases, users, permissions, and collections are system-defined resources with well-known schemas - documents, stored procedures, triggers, UDFs, and attachments contain arbitrary, user defined JSON content.  
 
-##<a name="develop"></a> Fejlesztés az Azure DocumentDB használatával
-Az Azure DocumentDB egy REST API-n keresztül tesz elérhetővé erőforrásokat, amelyet bármilyen, HTTP/HTTPS-kérelem indítására képes nyelv meghívhat. Ezenfelül a DocumentDB számos népszerű nyelvhez biztosít programozási könyvtárakat. Ezek a könyvtárak sok szempontból leegyszerűsítik az Azure DocumentDB használatát, mivel számos alfolyamatot kezelnek (például címek gyorsítótárazása, kivételek kezelése, automatikus újrapróbálkozások stb.). Jelenleg a következő nyelvekhez és platformokhoz érhetők el könyvtárak:  
+##<a name="develop"></a> How can I develop apps with DocumentDB?
 
-Letöltés | Dokumentáció
+Azure DocumentDB exposes resources through a REST API that can be called by any language capable of making HTTP/HTTPS requests. Additionally, DocumentDB offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure DocumentDB by handling details such as address caching, exception management, automatic retries and so forth. Libraries are currently available for the following languages and platforms:  
+
+Download | Documentation
 --- | ---
-[.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) | [.NET kódtár](https://msdn.microsoft.com/library/azure/dn948556.aspx)
-[Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) | [Node.js kódtár](http://azure.github.io/azure-documentdb-node/)
-[Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) | [Java kódtár](http://azure.github.io/azure-documentdb-java/)
-[JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) | [JavaScript kódtár](http://azure.github.io/azure-documentdb-js/)
-n/a | [Kiszolgálóoldali JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/)
-[Python SDK](https://pypi.python.org/pypi/pydocumentdb) | [Python kódtár](http://azure.github.io/azure-documentdb-python/)
+[.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) | [.NET library](https://msdn.microsoft.com/library/azure/dn948556.aspx)
+[Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) | [Node.js library](http://azure.github.io/azure-documentdb-node/)
+[Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) | [Java library](http://azure.github.io/azure-documentdb-java/)
+[JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) | [JavaScript library](http://azure.github.io/azure-documentdb-js/)
+n/a | [Server-side JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/)
+[Python SDK](https://pypi.python.org/pypi/pydocumentdb) | [Python library](http://azure.github.io/azure-documentdb-python/)
 
-Az alapvető létrehozási, olvasási, frissítési és törlési műveletek mellett a DocumentDB egy részletes SQL-lekérdezési felületet is biztosít JSON-dokumentumok és kiszolgálóoldali támogatás lekéréséhez a JavaScript-alkalmazáslogika tranzakciós végrehajtásához. A lekérdezés és parancsfájl végrehajtására szolgáló felületek az összes platform könyvtárán, illetve a REST API-kon keresztül is elérhetők. 
+Beyond basic create, read, update, and delete operations, DocumentDB provides a rich SQL query interface for retrieving JSON documents and server side support for transactional execution of JavaScript application logic. The query and script execution interfaces are available through all platform libraries as well as the REST APIs. 
 
-### SQL-lekérdezés
-Az Azure DocumentDB a JavaScript típusrendszerből eredő SQL-nyelv, valamint a relációs, hierarchikus és térbeli lekérdezéseket támogató kifejezések használatával támogatja a dokumentumok lekérdezését. A DocumentDB lekérdezési nyelv a JSON-dokumentumok lekérdezésének egyszerű, mégis erőteljes felülete. A nyelv támogatja az ANSI SQL-szintaxis egy alkészletét, valamint biztosítja a JavaScript-objektumok, tömbök, objektumkonstrukciók és függvényhívások szoros integrációját. A DocumentDB a fejlesztőtől származó explicit séma vagy indexelési mutatók nélkül biztosítja a lekérdezési modelljét.
+### SQL query
+Azure DocumentDB supports querying documents using a SQL language, which is rooted in the JavaScript type system, and expressions with support for relational, hierarchical, and spatial queries. The DocumentDB query language is a simple yet powerful interface to query JSON documents. The language supports a subset of ANSI SQL grammar and adds deep integration of JavaScript object, arrays, object construction, and function invocation. DocumentDB provides its query model without any explicit schema or indexing hints from the developer.
 
-A felhasználó által megadott függvények regisztrálhatók a DocumentDB-ben, és az SQL-lekérdezés részeként hivatkozhatók, így a szintaxis kiterjeszthető az egyéni alkalmazáslogika támogatása érdekében. Ezen felhasználó által megadott függvények JavaScript programokként vannak megírva, futtatásuk pedig az adatbázisban történik. 
+User Defined Functions (UDFs) can be registered with DocumentDB and referenced as part of a SQL query, thereby extending the grammar to support custom application logic. These UDFs are written as JavaScript programs and executed within the database. 
 
-A .NET-fejlesztők számára a DocumentDB egy LINQ-lekérdezést is kínál a [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) részeként. 
+For .NET developers, DocumentDB also offers a LINQ query provider as part of the [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx). 
 
-### Tranzakciók és a JavaScript futtatása
-A DocumentDB lehetővé teszi az alkalmazáslogikák teljes mértékben JavaScriptben írt, elnevezett programokként történő megírását. Ezeket a programokat a rendszer regisztrálja egy gyűjteményben, és adatbázis-műveleteket adhatnak ki az adott gyűjteményben lévő dokumentumokon. A JavaScript regisztrálható eseményindítóként, tárolt eljárásként vagy felhasználó által megadott függvényként való futtatásra. Az eseményindítók és tárolt eljárások létrehozhatnak, olvashatnak, frissíthetnek és törölhetnek dokumentumokat, míg a felhasználó által megadott függvények futtatása lekérdezés végrehajtási logikájának részeként történik, a gyűjteményhez történő írási hozzáférés nélkül.
+### Transactions and JavaScript execution
+DocumentDB allows you to write application logic as named programs written entirely in JavaScript. These programs are registered for a collection and can issue database operations on the documents within a given collection. JavaScript can be registered for execution as a trigger, stored procedure or user defined function. Triggers and stored procedures can create, read, update, and delete documents whereas user defined functions execute as part of the query execution logic without write access to the collection.
 
-A JavaScript DocumentDB-ben való futtatásának modellezése a relációs adatbázis-rendszerek által támogatott alapelvek alapján történik, ahol a JavaScript a Transact-SQL modern helyettesítője. Minden JavaScript-logika futtatása egy környezeti ACID-tranzakción belül történik pillanatkép-elkülönítéssel. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad.
+JavaScript execution within DocumentDB is modeled after the concepts supported by relational database systems, with JavaScript as a modern replacement for Transact-SQL. All JavaScript logic is executed within an ambient ACID transaction with snapshot isolation. During the course of its execution, if the JavaScript throws an exception, then the entire transaction is aborted.
 
-## Következő lépések
-Amennyiben már rendelkezik Azure-fiókkal, egy [DocumentDB adatbázis-fiók létrehozásával](https://portal.azure.com/#gallery/Microsoft.DocumentDB) elkezdheti a DocumentDB használatát az [Azure-portálon](documentdb-create-account.md).
+## Next steps
+Already have an Azure account? Then you can get started with DocumentDB in the [Azure Portal](https://portal.azure.com/#gallery/Microsoft.DocumentDB) by [creating a DocumentDB database account](documentdb-create-account.md).
 
-Ha nem rendelkezik Azure-fiókkal, a következőket teheti:
+Don't have an Azure account? You can:
 
-- Regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/), amely 30 napot és egy 200 dolláros keretet biztosít az összes Azure-szolgáltatás kipróbálására. 
-- Ha MSDN-előfizetéssel rendelkezik, akkor [havi 150 dollár ingyenes Azure-kreditre](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jogosult, amit bármelyik Azure-szolgáltatáshoz felhasználhat. 
+- Sign up for an [Azure free trial](https://azure.microsoft.com/free/), which gives you 30 days and $200 to try all the Azure services. 
+- If you have an MSDN subscription, you are eligible for [$150 in free Azure credits per month](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) to use on any Azure service. 
 
-Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket](https://azure.microsoft.com/documentation/learning-paths/documentdb/), és azon belül az összes elérhető képzési erőforrást. 
+Then, when you're ready to learn more, visit our [learning path](https://azure.microsoft.com/documentation/learning-paths/documentdb/) to navigate all the learning resources available to you. 
 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
@@ -115,6 +111,6 @@ Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket]
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

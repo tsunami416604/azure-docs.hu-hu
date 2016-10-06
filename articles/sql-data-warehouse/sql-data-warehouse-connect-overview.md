@@ -1,6 +1,6 @@
 <properties
    pageTitle="Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Azure"
-   description="Az Azure SQL Data Warehouse-hoz való csatlakozás áttekintése"
+   description="Az Azure SQL Data Warehouse kiszolgálónevének és kapcsolati karakterláncának lekérdezése"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -13,33 +13,58 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/27/2016"
+   ms.date="09/26/2016"
    ms.author="sonyama;barbkess"/>
+
 
 # Csatlakozás az Azure SQL Data Warehouse-hoz
 
-> [AZURE.SELECTOR]
-- [Áttekintés](sql-data-warehouse-connect-overview.md)
-- [Authentication](sql-data-warehouse-authentication.md)
-- [Illesztőprogramok](sql-data-warehouse-connection-strings.md)
+Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Warehouse-hoz.
 
-Az Azure SQL Data Warehouse-hoz való csatlakozás áttekintése. 
+## A kiszolgálónév lekérdezése
 
-## A kapcsolati karakterlánc felderítése a portálon
-
-Az SQL Data Warehouse egy Azure SQL-kiszolgálóhoz van társítva. A csatlakozáshoz szükség van a kiszolgáló teljes nevére.  Például: **myserver**.database.windows.net.
-
-A teljes kiszolgálónév lekérdezése:
+Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában sample.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portal][].
-2. Kattintson az **SQL-adatbázisok** elemre, majd kattintson arra az adatbázisra, amelyhez csatlakozni kíván. Ebben a példában az AdventureWorksDW mintaadatbázist használjuk.
-3. Keresse meg a teljes kiszolgálónevet.
+2. Kattintson az **SQL-adatbázisok** elemre 
+3. Kattintson arra az adatbázisra, amelyhez csatlakozni kíván.
+4. Keresse meg a teljes kiszolgálónevet.
 
     ![Teljes kiszolgálónév][1]
 
+## Támogatott illesztők és kapcsolati karakterláncok
+
+Az Azure SQL Data Warehouse a következőket támogatja: [ADO.NET][], [ODBC][], [PHP][] és [JDBC][]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
+
+> [AZURE.NOTE] Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
+
+### Minta ADO.NET kapcsolati karakterlánc
+
+```C#
+Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+```
+
+### Minta ODBC kapcsolati karakterlánc
+
+```C#
+Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
+```
+
+### Minta PHP kapcsolati karakterlánc
+
+```PHP
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+```
+
+### Minta JDBC kapcsolati karakterlánc
+
+```Java
+jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+```
+
 ## Kapcsolati beállítások
 
-Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket nem lehet felülírni.
+Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
 | Adatbázis-beállítások       | Érték                        |
 | :--------------------- | :--------------------------- |
@@ -48,19 +73,19 @@ Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és a
 | [DATEFORMAT][]         | hné                          |
 | [DATEFIRST][]          | 7                            |
 
-## Kapcsolatok és lekérdezések figyelése
-
-Ha a kapcsolat és a munkamenet létrejött, elkezdhet lekérdezéseket írni és küldeni az SQL Data Warehouse felé.  További információk a munkamenetek és lekérdezések figyeléséről: [Monitor your workload using DMVs][] (A számítási feladat figyelése DMV-k segítségével).
-
 ## Következő lépések
 
-További információ az adatraktár lekérdezéséről a Visual Studio vagy egyéb alkalmazások használatával: [Query with Visual Studio][] (Lekérdezés a Visual Studióval). 
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Query with Visual Studio][]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][] (Hitelesítés az Azure SQL Warehouse-szal).
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
+[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
+[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
+[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
+[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
 [ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
 [QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
 [DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
@@ -76,6 +101,6 @@ További információ az adatraktár lekérdezéséről a Visual Studio vagy egy
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Set up your development environment on Mac OS X | Microsoft Azure"
-   description="Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you will be ready to build applications on Mac OS X."
+   pageTitle="A fejlesztési környezet beállítása Mac OS X-en | Microsoft Azure"
+   description="Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására."
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,92 +16,99 @@
    ms.date="09/25/2016"
    ms.author="seanmck"/>
 
-# Set up your development environment on Mac OS X
+
+# A fejlesztési környezet beállítása Mac OS X-en
 
 > [AZURE.SELECTOR]
 -[ Windows](service-fabric-get-started.md)
 - [Linux](service-fabric-get-started-linux.md)
 - [OSX](service-fabric-get-started-mac.md)
 
-You can build Service Fabric applications to run on Linux clusters using Mac OS X. This article covers how to set up your Mac for development.
+Linux-fürtökön futó Service Fabric-alkalmazásokat hozhat létre a Mac OS X-en. Ez a cikk bemutatja, hogyan állíthatja be Mac gépét a fejlesztéshez.
 
-## Prerequisites
+## Előfeltételek
 
-Service Fabric does not run natively on OS X. To run a local Service Fabric cluster, we provide a pre-configured Ubuntu virtual machine using Vagrant and VirtualBox. Before you get started, you need:
+A Service Fabric nem fut natív módon az OS X-en. A helyi Service Fabric-fürt futtatásához egy Vagrant és VirtualBox alkalmazásokat használó, előre konfigurált Ubuntu-virtuális gépet biztosítunk. A kezdés előtt a következőkre lesz szüksége:
 
-- [Vagrant (v1.8.4 or later)](http://wwww.vagrantup.com/downloads)
+- [Vagrant (1.8.4-es vagy újabb verzió)](http://wwww.vagrantup.com/downloads)
 - [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
-## Create the local VM
+## A helyi virtuális gép létrehozása
 
-To create the local VM containing a 5-node Service Fabric cluster, do the following:
+Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehozásához tegye a következőket:
 
-1. Clone the Vagrantfile repo
+1. Klónozza a Vagrantfile-adattárat
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
 
-2. Navigate to the local clone of the repo
+2. Navigáljon az adattár helyi klónjához
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
 
-3. (Optional) Modify the default VM settings
+3. (Nem kötelező) Módosítsa a virtuális gép alapértelmezett beállításait
 
-    By default, the local VM is configured as follows:
+    Alapértelmezés szerint a helyi virtuális gép konfigurációja a következő:
 
-    - 3 GB of memory allocated
-    - Private host network configured at IP 192.168.50.50 enabling passthrough of traffic from the Mac host
+    - 3 GB lefoglalt memória
+    - A 192.168.50.50 IP-címre konfigurált privát gazdagép-hálózat, amely átengedi a Mac-gazdagépről érkező forgalmat
 
-    You can change either of these settings or add other configuration to the VM in the Vagrantfile. See the [Vagrant documentation](http://www.vagrantup.com/docs) for the full list of configuration options.
+    A Vagrantfile-lal bármelyik beállítást módosíthatja és egyéb konfigurációkat adhat a virtuális géphez. A konfigurációs beállítások teljes listájáért tekintse meg a [Vagrant dokumentációját](http://www.vagrantup.com/docs).
 
-4. Create the VM
+4. Virtuális gép létrehozása
 
     ```bash
     vagrant up
     ```
 
-    This step downloads the preconfigured VM image, boot it locally, and then set up a local Service Fabric cluster in it. You should expect it to take a few minutes. If setup completes successfully, you will see a message in the output indicating that the cluster is starting up.
+    Ebben a lépésben megtörténik az előre konfigurált virtuálisgép-rendszerkép letöltése, helyi indítása, és végül egy helyi Service Fabric-fürt beállítása. Ez eltarthat néhány percig. Ha a beállítás sikeresen megtörtént, a kimenetben megjelenik egy üzenet, amely jelzi, hogy a fürt indítása folyamatban van.
 
-    ![Cluster setup starting following VM provisioning][cluster-setup-script]
+    ![A fürt beállításának megkezdése a virtuális gép kiépítése után][cluster-setup-script]
 
-5. Test that the cluster has been set up correctly by navigating to Service Fabric Explorer at http://192.168.50.50:19080/Explorer (assuming you kept the default private network IP).
+5. Keresse fel a Service Fabric Explorert a http://192.168.50.50:19080/Explorer címen (feltéve, hogy megtartotta az alapértelmezett magánhálózati IP-címet) a fürt megfelelő beállításának teszteléséhez.
 
-    ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
+    ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
 
 
-## Install the Service Fabric plugin for Eclipse Neon (optional)
+## Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése (nem kötelező)
 
-Service Fabric provides a plugin for the Eclipse Neon IDE that can simplify the process of building and deploying Java services.
+A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely leegyszerűsítheti a Java-szolgáltatások létrehozásának és üzembe helyezésének folyamatát.
 
-1. In Eclipse, ensure that you have Buildship version 1.0.17 or later installed. You can check the versions of installed components by choosing **Help > Installation Details**. You can update Buildship using the instructions [here][buildship-update].
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Help > Installation Details** (Súgó > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. Az [itt][buildship-update] található utasítások alapján frissítheti a Buildshipet.
 
-2. To install the Service Fabric plugin, choose **Help > Install New Software...**
+2. A Service Fabric beépülő modul telepítéséhez válassza a **Help > Install New Software...** (Súgó > Új szoftver telepítése) lehetőséget.
 
-3. In the "Work with" textbox, enter: http://dl.windowsazure.com/eclipse/servicefabric.
+3. A Work with (Használat) szövegbeviteli mezőbe írja be a következőt: http://dl.windowsazure.com/eclipse/servicefabric.
 
-4. Click Add.
+4. Kattintson az Add (Hozzáadás) parancsra.
 
-    ![Eclipse Neon plugin for Service Fabric][sf-eclipse-plugin-install]
+    ![Eclipse Neon beépülő modul a Service Fabrichez][sf-eclipse-plugin-install]
 
-5. Choose the Service Fabric plugin and click next.
+5. Válassza ki a Service Fabric beépülő modult, majd kattintson a Next (Tovább) gombra.
 
-6. Proceed through the installation and accept the end-user license agreement.
+6. Folytassa a telepítést, és fogadja el a végfelhasználói licencszerződést.
 
-## Next steps
+## Következő lépések
 
-- [Create your first Service Fabric application for Linux](service-fabric-create-your-first-linux-application-with-java.md)
+- [Az első Service Fabric-alkalmazás létrehozása Linuxra](service-fabric-create-your-first-linux-application-with-java.md)
 
 <!-- Links -->
 
-- [Create a Service Fabric cluster in the Azure portal](service-fabric-cluster-creation-via-portal.md)
-- [Create a Service Fabric cluster using the Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-- [Understand the Service Fabric application model](service-fabric-application-model.md)
+- [Service Fabric-fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)
+- [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md)
+- [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png
 [sfx-mac]: ./media/service-fabric-get-started-mac/sfx-mac.png
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

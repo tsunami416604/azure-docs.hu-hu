@@ -1,7 +1,7 @@
 <properties
    pageTitle="Eseményfeldolgozó függvény létrehozása | Microsoft Azure"
    description="Használja az Azure Functions szolgáltatást olyan C# függvény létrehozására, amely egy eseményidőzítő alapján fut."
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="06/05/2016"
+   ms.date="09/25/2016"
    ms.author="glenga"/>
    
 
@@ -45,7 +45,7 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
     ![Időzítő által aktivált új függvény létrehozása](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
 
-5. Az **Azure Storage-üzenetsor kimeneténél** kattintson a **Storage account connection** (Tárfiók kapcsolata) melletti **kiválasztási** lehetőségre, válassza ki a meglévő tárfiókot vagy hozzon létre egy újat, és kattintson a **Save** (Mentés) gombra. 
+5. Az **Azure Storage-üzenetsor kimeneténél** kattintson egy meglévő **Tárfiók kapcsolata** elemre, vagy hozzon létre egy újat, és kattintson a **Mentés** parancsra. 
 
     ![Időzítő által aktivált új függvény létrehozása](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
 

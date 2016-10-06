@@ -111,9 +111,9 @@ Az alkalmazások összekapcsolása mindig is részét képezte a teljes megoldá
 
 Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat követve olvashat további információkat.
 
-- A [Service Bus-üzenetsorok](service-bus-dotnet-get-started-with-queues.md) használata
-- A [Service Bus-témakörök](service-bus-dotnet-how-to-use-topics-subscriptions.md) használata
-- A [Service Bus-továbbító](service-bus-dotnet-how-to-use-relay.md) használata
+- A [Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) használata
+- A [Service Bus-témakörök](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md) használata
+- A [Service Bus-továbbító](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) használata
 - [Service Bus-példák](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png

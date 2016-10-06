@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Virtuális hálózat létrehozása az ARM eszközben PowerShell használatával | Microsoft Azure"
-   description="Ismerje meg, hogyan hozhat létre virtuális hálózatot az ARM eszközben a PowerShell használatával | Resource Manager."
+   pageTitle="Create a virtual network using PowerShell in ARM | Microsoft Azure"
+   description="Learn how to create a virtual network using PowerShell in ARM | Resource Manager."
    services="virtual-network"
    documentationCenter=""
    authors="jimdial"
@@ -17,13 +17,14 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
-# Virtuális hálózat létrehozása a PowerShell használatával
+
+# Create a virtual network by using PowerShell
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] Ez a dokumentum azt írja le, hogy Resource Manager üzemi modellel hogyan hozhatók létre virtuális hálózatok. A [virtuális hálózat létrehozása a klasszikus üzembe helyezési modellel](virtual-networks-create-vnet-classic-netcfg-ps.md) is lehetséges.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This document covers creating a VNet by using the Resource Manager deployment model. You can also [create a virtual network in the classic deployment model](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -34,6 +35,6 @@
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-ps-include](../../includes/virtual-networks-create-vnet-arm-ps-include.md)]
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

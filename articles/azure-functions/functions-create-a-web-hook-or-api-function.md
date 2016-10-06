@@ -43,7 +43,7 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
     ![Új GitHub-webhook függvény létrehozása](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook.png) 
 
-4. A **Develop** (Fejlesztés) lapon tekintse meg a például szolgáló express.js függvényt a **Code** (Kód) ablakban. Ez a függvény GitHub-kérelmet fogad egy problémához fűzött megjegyzés webhookjától, naplózza a probléma szövegét, és a következőképpen kinéző választ küld a webhooknak: `New GitHub comment: <Your issue comment text>`.
+4. A **Fejlesztés** lapon tekintse meg a például szolgáló express.js függvényt a **Kód** ablakban. Ez a függvény GitHub-kérelmet fogad egy problémához fűzött megjegyzés webhookjától, naplózza a probléma szövegét, és a következőképpen kinéző választ küld a webhooknak: `New GitHub comment: <Your issue comment text>`.
 
 
     ![Új GitHub-webhook függvény létrehozása](./media/functions-create-a-web-hook-or-api-function/functions-new-webhook-in-portal.png) 

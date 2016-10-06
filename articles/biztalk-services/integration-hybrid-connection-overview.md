@@ -1,6 +1,6 @@
 <properties
-    pageTitle="A hibrid kapcsolatok áttekintése | Microsoft Azure"
-    description="Ez a cikk a hibrid kapcsolatokat, a biztonságot, a TCP-portokat és a támogatott konfigurációkat ismerteti. MABS, WABS."
+    pageTitle="Hybrid Connections overview | Microsoft Azure"
+    description="Learn about Hybrid Connections, security, TCP ports, and supported configurations. MABS, WABS."
     services="biztalk-services"
     documentationCenter=""
     authors="MandiOhlinger"
@@ -17,92 +17,93 @@
     ms.author="mandia"/>
 
 
-# Hibrid kapcsolatok áttekintése
-A hibrid kapcsolatok bemutatása a támogatott konfigurációkat és a szükséges TCP-portokat sorolja fel.
+
+# Hybrid Connections overview
+Introduction to Hybrid Connections, lists the supported configurations, and lists the required TCP ports.
 
 
-## Mi a hibrid kapcsolat
+## What is a hybrid connection
 
-A hibrid kapcsolatok az Azure BizTalk Services egyik funkciója. A hibrid kapcsolatokkal könnyen és kényelmesen csatlakozhatja az Azure App Service Web Apps (korábban Websites) szolgáltatását és az Azure App Service Mobile Apps (korábban Mobile Services) szolgáltatását a tűzfal mögött található helyszíni erőforrásokhoz.
+Hybrid Connections are a feature of Azure BizTalk Services. Hybrid Connections provide an easy and convenient way to connect the Web Apps feature in Azure App Service (formerly Websites) and the Mobile Apps feature in Azure App Service (formerly Mobile Services) to on-premises resources behind your firewall.
 
-![Hibrid kapcsolatok][HCImage]
+![Hybrid Connections][HCImage]
 
-A hibrid kapcsolatok előnyei például a következők:
+Hybrid Connections benefits include:
 
-- A Web Apps és a Mobile Apps biztonságosan érheti el a meglévő helyszíni adatokat és szolgáltatásokat.
-- Több Web Apps- vagy Mobile Apps-alkalmazás osztozhat egy hibrid kapcsolaton egy helyszíni erőforrás eléréséhez.
-- Minimális számú TCP-portra van szükség a hálózat eléréséhez.
-- A hibrid kapcsolatokat használó alkalmazások csak a hibrid kapcsolaton keresztül közzétett adott helyszíni erőforrást érik el.
-- Bármely, statikus TCP-portot használó helyszíni erőforráshoz, például SQL Serverhez, MySQL-hez, HTTP Web API-khoz, mobilszolgáltatásokhoz és a legtöbb egyéni webszolgáltatáshoz csatlakozhat.
+- Web Apps and Mobile Apps can access existing on-premises data and services securely.
+- Multiple Web Apps or Mobile Apps can share a Hybrid Connection to access an on-premises resource.
+- Minimal TCP ports are required to access your network.
+- Applications using Hybrid Connections access only the specific on-premises resource that is published through the Hybrid Connection.
+- Can connect to any on-premises resource that uses a static TCP port, such as SQL Server, MySQL, HTTP Web APIs, and most custom Web Services.
 
-    > [AZURE.NOTE] A dinamikus portokat használó TCP-alapú szolgáltatások (például az FTP passzív mód vagy a kiterjesztett paszív mód) jelenleg nem támogatottak. Az LDAP sem támogatott. Az LDAP statikus TCP-portot használ, de UDP-t is használhat. Ennek következtében nem támogatott.
+    > [AZURE.NOTE] TCP-based services that use dynamic ports (such as FTP Passive Mode or Extended Passive Mode) are currently not supported. LDAP is also not supported. LDAP uses a static TCP port but it could also use UDP. As a result, it is not supported.
 
-- A Web Apps (.NET, PHP, Java, Python, Node.js) és a Mobile Apps (Node.js, .NET) által támogatott összes keretrendszerrel használható.
-- A Web Apps és a Mobile Apps pontosan ugyanúgy éri el a helyszíni erőforrásokat, mintha a web- vagy mobilalkalmazás a helyi hálózaton lenne. A helyszínen használt kapcsolati karakterlánc például az Azure-ban is használható.
-
-
-A hibrid kapcsolatokkal a vállalati rendszergazdáknak vezérelhetik és elemezhetik is a hibrid alkalmazások által elért vállalati erőforrásokat, beleértve a következőket:
-
-- A rendszergazdák csoportházirend-beállításokkal engedélyezhetik a hibrid kapcsolatokat a hálózaton, és a hibrid alkalmazások által elérhető erőforrásokat jelölhetnek ki.
-- A vállalati hálózaton az esemény- és vizsgálati naplók nyújtanak betekintést a hibrid kapcsolatok által elért erőforrásokba.
+- Can be used with all frameworks supported by Web Apps (.NET, PHP, Java, Python, Node.js) and Mobile Apps (Node.js, .NET).
+- Web Apps and Mobile Apps can access on-premises resources in exactly the same way as if the Web or Mobile App is located on your local network. For example, the same connection string used on-premises can also be used on Azure.
 
 
-## Példaforgatókönyvek
+Hybrid Connections also provide enterprise administrators with control and visibility into the corporate resources accessed by hybrid applications, including:
 
-A hibrid kapcsolatok a keretrendszerek és alkalmazások következő kombinációit támogatják:
-
-- .NET-keretrendszer hozzáférése az SQL Serverhez
-- .NET-keretrendszer hozzáférése HTTP/HTTPS-szolgáltatásokhoz WebClienttel
-- PHP hozzáférése az SQL Serverhez, MySQL-hez
-- Java hozzáférése az SQL Serverhez, MySQL-hez és Oracle-höz
-- Java hozzáférése HTTP/HTTPS-szolgáltatásokhoz
-
-Amikor hibrid kapcsolatokkal éri el a helyszíni SQL Servert, vegye figyelembe a következőket:
-
-- Az SQL Express elnevezett példányait statikus portok használatára kell konfigurálni. Alapértelmezés szerint az SQL Express elnevezett példányai dinamikus portokat használnak.
-- Az SQL Express alapértelmezett példányai statikus portot használnak, de engedélyezni kell a TCP protokollt. Alapértelmezés szerint a TCP nem engedélyezett.
-- Fürtszolgáltatási vagy rendelkezésre állási csoportok használatakor a `MultiSubnetFailover=true` mód jelenleg nem támogatott.
-- Az `ApplicationIntent=ReadOnly` jelenleg nem támogatott.
-- SQL-hitelesítésre lehet szükség az Azure-alkalmazás és a helyszíni SQL-kiszolgáló által támogatott végpontok közötti hitelesítési módszerként.
+- Using Group Policy settings, administrators can allow Hybrid Connections on the network and also designate resources that can be accessed by hybrid applications.
+- Event and audit logs on the corporate network provide visibility into the resources accessed by Hybrid Connections.
 
 
-## Biztonság és portok
+## Example scenarios
 
-A hibrid kapcsolatok közös hozzáférésű jogosultságkódon (SAS) alapuló hitelesítést használnak az Azure-alkalmazások és a helyszíni hibridkapcsolat-kezelő és a hibrid kapcsolatok közötti kapcsolatok védelméhez. A rendszer külön kapcsolati kulcsokat hoz létre az alkalmazás és a helyszíni hibridkapcsolat-kezelő számára. Ezek a kapcsolati kulcsok egymástól függetlenül frissíthetők és visszavonhatók.
+Hybrid Connections support the following framework and application combinations:
 
-A hibrid kapcsolatok a kulcsok zökkenőmentes és biztonságos elosztását biztosítják az alkalmazások és a helyszíni hibridkapcsolat-kezelő számára.
+- .NET framework access to SQL Server
+- .NET framework access to HTTP/HTTPS services with WebClient
+- PHP access to SQL Server, MySQL
+- Java access to SQL Server, MySQL and Oracle
+- Java access to HTTP/HTTPS services
 
-Lásd: [Create and Manage Hybrid Connections](integration-hybrid-connection-create-manage.md) (Hibrid kapcsolatok létrehozása és felügyelete).
+When using Hybrid Connections to access on-premises SQL Server, consider the following:
 
-*Az alkalmazások hitelesítése a hibrid kapcsolatoktól elkülönítve történik*. Bármilyen megfelelő hitelesítési módszer használható. A hitelesítési módszer az Azure-felhőben és a helyszíni összetevőkben támogatott végpontok közötti hitelesítési módszerektől függ. Az Azure-alkalmazás például egy helyszíni SQL Servert ér el. Ebben a forgatókönyvben az SQL-hitelesítés lehet a végpontok között támogatott hitelesítési módszer.
+- SQL Express Named Instances must be configured to use static ports. By default, SQL Express named instances use dynamic ports.
+- SQL Express Default Instances use a static port, but TCP must be enabled. By default, TCP is not enabled.
+- When using Clustering or Availability Groups, the `MultiSubnetFailover=true` mode is currently not supported.
+- The `ApplicationIntent=ReadOnly` is currently not supported.
+- SQL Authentication may be required as the end-to-end authorization method supported by the Azure application and the on-premises SQL server.
 
-#### TCP-portok
-A hibrid kapcsolatokhoz csak kimenő TCP- vagy HTTP-kapcsolatra van szükség a magánhálózaton. Nem kell tűzfalportokat nyitnia, és nem kell módosítania a hálózatperem konfigurációját ahhoz, hogy bemenő kapcsolatot engedélyezzen a hálózat felé.
 
-A hibrid kapcsolatok a következő TCP-portokat használják:
+## Security and ports
 
-Port | Miért szükséges
+Hybrid Connections use Shared Access Signature (SAS) authorization to secure the connections from the Azure applications and the on-premises Hybrid Connection Manager to the Hybrid Connection. Separate connection keys are created for the application and the on-premises Hybrid Connection Manager. These connection keys can be rolled over and revoked independently.
+
+Hybrid Connections provide for seamless and secure distribution of the keys to the applications and the on-premises Hybrid Connection Manager.
+
+See [Create and Manage Hybrid Connections](integration-hybrid-connection-create-manage.md).
+
+*Application authorization is separate from the Hybrid Connection*. Any appropriate authorization method can be used. The authorization method depends on the end-to-end authorization methods supported across the Azure cloud and the on-premises components. For example, your Azure application accesses an on-premises SQL Server. In this scenario, SQL Authorization may be the authorization method that is supported end-to-end.
+
+#### TCP ports
+Hybrid Connections require only outbound TCP or HTTP connectivity from your private network. You do not need to open any firewall ports or change your network perimeter configuration to allow any inbound connectivity into your network.
+
+The following TCP ports are used by Hybrid Connections:
+
+Port | Why you need it
 --- | ---
-9350 - 9354 | Ezek a portok adatátvitelre szolgálnak. A Service Bus Relay kezelője teszteli a 9350-es portot a TCP-kapcsolat rendelkezésre állásának meghatározásához. Ha elérhető, akkor feltételezi, hogy a 9352-es port is elérhető. Az adatforgalom a 9352-es porton halad át. <br/><br/>Engedélyezze a kimenő kapcsolatokat ezeken a portokon.
-5671 | Amikor a 9352-es portot használja az adatforgalomhoz, az 5671-es port szolgál vezérlőcsatornaként. <br/><br/>Engedélyezze a kimenő kapcsolatokat ezen a porton.
-80, 443 | Ezek a portok szolgálnak az Azure felé irányuló egyes adatkérések kezdeményezésére. Ezenkívül, ha a 9352-es és az 5671-es port nem használható, *akkor* a 80-as és a 443-as port az adatátvitelhez és a vezérlőcsatornához használt tartalékport.<br/><br/>Engedélyezze a kimenő kapcsolatokat ezeken a portokon. <br/><br/>**Megjegyezés**: nem ajánlott ezeket tartalékportokként használni más TCP-portok helyett. Adatcsatornák esetén a natív TCP helyett a HTTP/WebSocket protokoll használható. Ez kisebb teljesítményt eredményezhet.
+9350 - 9354 | These ports are used for data transmission. The Service Bus relay manager probes port 9350 to determine if TCP connectivity is available. If it is available, then it assumes that port 9352 is also available. Data traffic goes over port 9352. <br/><br/>Allow outbound connections to these ports.
+5671 | When port 9352 is used for data traffic, port 5671 is used as the control channel. <br/><br/>Allow outbound connections to this port.
+80, 443 | These ports are used for some data requests to Azure. Also, if ports 9352 and 5671 are not usable, *then* ports 80 and 443 are the fallback ports used for data transmission and the control channel.<br/><br/>Allow outbound connections to these ports. <br/><br/>**Note** It is not recommended to use these as the fallback ports in place of the other TCP ports. The HTTP/WebSocket is used as the protocol instead of native TCP for data channels. It could result in lower performance.
 
 
 
-## Következő lépések
+## Next steps
 
-[Create and Manage Hybrid Connections (Hibrid kapcsolatok létrehozása és felügyelete)](integration-hybrid-connection-create-manage.md)<br/>
-[Azure-webhely csatlakoztatása helyszíni erőforráshoz](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Csatlakozás helyszíni SQL Serverhez Azure-webalkalmazásból](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
-[Az Azure Mobile Services és hibrid kapcsolatok](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)
+[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
+[Connect an Azure website to an on-premises resource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
+[Connect to on-premises SQL Server from an Azure web app](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
+[Azure Mobile Services and Hybrid Connections](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)
 
 
-## Lásd még:
+## See Also
 
-[REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](http://msdn.microsoft.com/library/azure/dn232347.aspx)
-[BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
-[BizTalk-szolgáltatás létrehozása az Azure Portallal](biztalk-provision-services.md)<br/>
-[BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+[REST API for Managing BizTalk Services on Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)
+[BizTalk Services: Editions Chart](biztalk-editions-feature-chart.md)<br/>
+[Create a BizTalk Service using Azure portal](biztalk-provision-services.md)<br/>
+[BizTalk Services: Dashboard, Monitor and Scale tabs](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
@@ -111,6 +112,6 @@ Port | Miért szükséges
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

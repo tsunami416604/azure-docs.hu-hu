@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Ajánlat létrehozása az Azure Stackben | Microsoft Azure"
-    description="Szolgáltatás-rendszergazdaként megtudhatja, hogyan hozhat létre ajánlatot bérlői számára az Azure Stackben."
+    pageTitle="Create an offer in Azure Stack | Microsoft Azure"
+    description="As a service administrator, learn how to create an offer for your tenants in Azure Stack."
     services="azure-stack"
     documentationCenter=""
     authors="ErikjeMS"
@@ -13,55 +13,50 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/25/2016"
+    ms.date="09/26/2016"
     ms.author="erikje"/>
 
 
-# Ajánlat létrehozása az Azure Stackben
+# Create an offer in Azure Stack
 
-Az [ajánlatok](azure-stack-key-features.md#services-plans-offers-and-subscriptions) egy vagy több csomag olyan csoportjai, amelyet szolgáltatók nyújtanak a bérlőknek megvásárlásra (előfizetésre). Ebben a példában egy ajánlatot fog létrehozni, amely tartalmazza az utolsó lépésben [létrehozott csomagot](azure-stack-create-plan.md). Ez lehetőséget biztosít az ajánlat előfizetőinek a virtuális gépek létrehozására.
+[Offers](azure-stack-key-features.md#services-plans-offers-and-subscriptions) are groups of one or more plans that providers present to tenants to purchase or subscribe to. This document shows you how to create an offer that includes the [plan that you created](azure-stack-create-plan.md) in the last step. This offer gives subscribers the ability to provision virtual machines.
 
-1.  [Jelentkezzen be](azure-stack-connect-azure-stack.md#log-in-as-a-service-administrator) a portálra szolgáltatás-rendszergazdaként.
-    ![](media/azure-stack-create-offer/image1.png)
+1.  [Sign in](azure-stack-connect-azure-stack.md#log-in-as-a-service-administrator) to the portal as a service administrator and then click **New** > **Tenant Offers + Plans** > **Offer**.
+    ![](media/azure-stack-create-offer/image01.png)
 
-2.  Kattintson az **Új** lehetőségre.
+2.  In the **New Offer** blade, fill in **Display Name** and **Resource Name**, and then select a new or existing **Resource Group**. The Display Name is the offer's friendly name. Only the admin can see the Resource Name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
 
-3.  Kattintson a **Bérlői ajánlatok és csomagok**, majd az **Ajánlat** elemre.
-    ![](media/azure-stack-create-offer/image2.png)
+    ![](media/azure-stack-create-offer/image01a.png)
 
-4.  Az **Új ajánlat** panelen hajtsa végre a következőket:
+3.  Click **Base plans** and, in the **Plan** blade, select the plans you want to include in the offer, and then click **Select**. Click **Create** to create the offer.
 
-    1.  Töltse ki a **Megjelenítendő név** és **Erőforrás neve** mezőt. A megjelenítendő név az ajánlat rövid neve. Kizárólag a rendszergazda láthatja az erőforrás nevét. Ezt a nevet használják a rendszergazdák az ajánlattal mint Azure Resource Manager-erőforrással végzett műveletekhez.
+    ![](media/azure-stack-create-offer/image02.png)
+    
+4. Click **Offers** and then click the offer you just created.
 
-    2.  Válasszon ki egy új vagy egy létező **erőforráscsoportot**.
+    ![](media/azure-stack-create-offer/image03.png)
 
-        ![](media/azure-stack-create-offer/image3.png)
 
-5.  Kattintson az **Alapcsomagok** elemre, majd a **Csomag** panelen válassza ki azokat a csomagokat, amelyeket bele szeretne foglalni az ajánlatba, végül kattintson a **Kiválasztás** elemre. Az ajánlat létrehozásához kattintson a **Létrehozás** parancsra.
+5.  Click **Change State**, and then click **Public**.
+  
+    ![](media/azure-stack-create-offer/image04.png)
 
-    ![](media/azure-stack-create-offer/image4.png)
+Offers must be made public for tenants to get the full view when subscribing. Offers can be:
 
-6.  Kattintson az **Állapot módosítása**, majd a **Nyilvános** elemre.
-A csomagokat és ajánlatokat nyilvánossá kell tenni a bérlők számára, hogy az előfizetés során láthassák a rendelkezésükre álló lehetőségeket. Ha a csomag magánjellegű, de az ajánlat nyilvános, a bérlők hozzáférhetnek az ajánlathoz, de nem látják a csomag részleteit. A csomagok és ajánlatok típusa a következő lehet:
+- **Public**: Visible to tenants.
 
-    -   **Nyilvános:** Látható a bérlők számára.
+- **Private**: Only visible to the service administrators. Useful while drafting the plan or offer, or if the service administrator wants to approve every subscription.
 
-    -   **Magánjellegű:** Kizárólag a szolgáltatás-rendszergazdák számára látható. Csomag vagy ajánlat tervezése közben lehet hasznos, vagy ha a szolgáltatás-rendszergazda szeretne egyenként jóváhagyni minden előfizetést.
+- **Decommissioned**: Closed to new subscribers. The service administrator can use decommissioned to prevent future subscriptions, but leave current subscribers untouched.
 
-    -   **Leszerelve:** Új előfizetők már nem választhatják. A szolgáltatás-rendszergazda használhatja a leszerelve beállítást akkor, ha meg szeretné akadályozni az új előfizetések létrejöttét, de meg szeretné hagyni az aktuális előfizetőket.
+Changes to the offer are not immediately visible to the tenant. To see the changes, you might have to logout/login to see the new subscription in the “Subscription picker” when creating resources/resource groups.
 
-    ![](media/azure-stack-create-offer/image6.png)
+## Next steps
 
-A csomagon vagy ajánlaton végzett módosítások nem láthatók azonnal a bérlők számára. A módosítások megtekintéséhez az előfizetés állapotának InSync-nek kell lennie, majd a bérlőnek frissítenie kell a portált, vagy kijelentkeznie, és újból bejelentkeznie.
-
-Egy kiegészítő előfizetés létrehozása és az állapot InSync értékre állítása után is előfordulhat, hogy ki kell jelentkeznie, majd újból be kell jelentkeznie az új előfizetések megtekintéséhez az „Előfizetésválasztóban” új erőforrások vagy erőforráscsoportok létrehozásakor.
-
-## Következő lépések
-
-[Előfizetés egy ajánlatra, majd egy virtuális gép létrehozása](azure-stack-subscribe-plan-provision-vm.md)
+[Subscribe to an offer and then provision a VM](azure-stack-subscribe-plan-provision-vm.md)
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

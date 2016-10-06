@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Az Azure Stack POC üzembe helyezése | Microsoft Azure"
-    description="Ebből a cikkből megtudhatja, hogyan készítheti elő az Azure Stack POC-t, és hogyan futtathatja a PowerShell-parancsfájlt az Azure Stack POC üzembe helyezéséhez."
+    pageTitle="Deploy Azure Stack POC | Microsoft Azure"
+    description="Learn how to prepare the Azure Stack POC and run the PowerShell script to deploy Azure Stack POC."
     services="azure-stack"
     documentationCenter=""
     authors="ErikjeMS"
@@ -13,184 +13,132 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/29/2016"
+    ms.date="09/27/2016"
     ms.author="erikje"/>
 
 
-# Az Azure Stack POC üzembe helyezése
-Az Azure Stack POC üzembe helyezéséhez először [elő kell készítenie az üzembe helyezési gépet](#prepare-the-deployment-machine), majd [futtatnia kell a PowerShell telepítési parancsfájlt](#run-the-powershell-deployment-script).
+# Deploy Azure Stack POC
+To deploy the Azure Stack POC, you first need to [prepare the deployment machine](#prepare-the-deployment-machine) and then [run the PowerShell deployment script](#run-the-powershell-deployment-script).
 
-## Az üzembe helyezési gép előkészítése
+## Download and extract Microsoft Azure Stack POC TP2
 
-1. Győződjön meg arról, hogy kapcsolódni tud fizikailag az üzembe helyezési géphez, vagy rendelkezik fizikai konzolhozzáféréssel (például KVM-mel). Szüksége lesz ilyen hozzáférésre azután, hogy a 9. lépésben újraindítja az üzembe helyezési gépet.
- 
-2. Győződjön meg arról, hogy az üzembe helyezési gép megfelel a [minimális követelményeknek](azure-stack-deploy.md). Használhatja a [Deployment Checker for Azure Stack Technical Preview 1](https://gallery.technet.microsoft.com/Deployment-Checker-for-76d824e1) szolgáltatást a követelmények megerősítéséhez.
+Before you start, make sure that you at least 85 GB of space.
 
-3.  [Töltse le](http://aka.ms/ReqOSforAzureStack) és telepítse a Windows Server 2016 Datacenter Edition Technical Preview 4 hu-HU verzióját (Teljes verzió).
+1. The download of Azure Stack POC TP2 is comprised of a zip file containing the following 12 files, totaling ~20GB:
+    - 1 MicrosoftAzureStackPOC.EXE
+    - 11 MicrosoftAzureStackPOC-N.BIN (where N is 1-11)
+2. Extract these files into a single folder on your computer.
+3. Right-Click on the MicrosoftAzureStackPOC.EXE > Run as an administrator.
+4. Review the License Agreement screen and information of the Self-Extractor Wizard and then click **Next**.
+5. Review the Privacy Statement screen and information of the Self-Extractor Wizard and then click **Next**.
+6. Select the Destination for the files to be extracted, click **Next**.
+    - The default is: <drive letter>:\<current folder>\Microsoft Azure Stack POC
+7. Review the Destination location screen and information of the Self-Extractor Wizard, and then **click** Extract.
+8. Extraction will take some time, because it is extracting: CloudBuilder.vhdx (~44.5GB) and ThirdPartyLicenses.rtf files.
 
-4.  [Töltse le](https://azure.microsoft.com/overview/azure-stack/try/?v=try) az Azure Stack POC üzembe helyezési csomagot a C meghajtó egyik mappájába, (például c:\\AzureStack).
+## Prepare the deployment machine
 
-5.  Futtassa a **Microsoft Azure Stack POC.exe** fájlt.
+1. Make sure that you can physically connect to the deployment machine, or have physical console access (such as KVM). You will need such access after you reboot the deployment machine in step 9.
 
-    Ez létrehozza a \\Microsoft Azure Stack POC\\ mappát, amely a következő elemeket tartalmazza:
+2. Make sure the deployment machine meets the [minimum requirements](azure-stack-deploy.md). You can use the [Deployment Checker for Azure Stack Technical Preview 2](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm your requirements.
 
-    -   DeployAzureStack.ps1: Azure Stack POC telepítési PowerShell-parancsfájl
+3. Log in as the Local Administrator to your POC machine.
 
-    -   MicrosoftAzureStackPOC.vhdx: Azure Stack adatcsomag
+4. Copy the CloudBuilder.vhdx file to C:\CloudBuilder.vhdx.
 
-    -   SQLServer2014.vhdx: SQL Server VHD
+    > [AZURE.NOTE] If you choose not to use the recommended script to prepare your POC host computer (steps 5 – step 7), do not enter any license key at the activation page. Included is a trial version of Windows Server 2016 image and entering license key will result in expiration warning messages
 
-    -   WindowsServer2012R2DatacenterEval.vhd
+5. Download these support files from [Github](https://aka.ms/azurestackdeploytools).
 
-    -   WindowsServer2016Datacenter.vhdx: Windows Server 2016 Datacenter VHD (3124262 KB)
+    - PrepareBootFromVHD.ps1
+    - unattend.xml
+    - unattend_NoKVM.xml 
 
-    > [AZURE.IMPORTANT] Legalább 128 GB szabad területre van szükség a fizikai rendszerindítási köteten.
+6. Open an elevated PowerShell console and change the directory to where you copied the files.
 
-6. Másolja át a WindowsServer2016Datacenter.vhdx fájlt a C:\ meghajtóra, és nevezze át MicrosoftAzureStackPOCBoot.vhdx-re.
+7. Run the PrepareBootFromVHD.ps1 script. This and the unattend files are available with the other support scripts provided along with this build.
+    There are five parameters for this PowerShell script:
+    - CloudBuilderDiskPath (required) – path to the CloudBuilder.vhdx on the HOST.
+    - DriverPath (optional) – allows you to add additional drivers for the host in the virtual HD.
+    - ApplyUnattend (optional) – switch parameter, if specified, the configuration of the OS is automated, and the user will be prompted for the AdminPassword to configure at boot (requires provided accompanying file unattend_NoKVM.xml).
+    If you do not use this parameter, the generic unattend.xml file is used without further customization. You will need KVM to complete customization after it reboots.
+    - AdminPassword (optional) – only used when the ApplyUnattend parameter is set, requires a minimum of 6 characters.
+    - VHDLanguage (optional) – specifies the VHD language, defaulted to “en-US”.
+    The script is documented and contains example usage, though the most common usage is:
+    
+        `.\PrepareBootFromVHD.ps1 -CloudBuilderDiskPath C:\CloudBuilder.vhdx -ApplyUnattend`
+    
+        If you run this exact command, you will be prompted to enter the AdminPassword.
 
-7. A Fájlkezelőben kattintson jobb gombbal a MicrosoftAzureStackPOCBoot.vhdx elemre, majd kattintson a **Csatlakoztatás** lehetőségre.
+8. When the script is complete you will be asked to confirm reboot. If there are other users logged in, this command will fail. If this happens, run the following command: `Restart-Computer -force` 
 
-8. Nyisson meg rendszergazdaként egy parancssori ablakot, és futtassa az alábbi bcdboot parancsot. Ez a parancs létrehoz egy kétrendszeres környezetet. Ettől kezdve a fenti rendszerindítási beállítással indítsa el a gépet.
+9. The HOST will reboot into the OS of the CloudBuilder.vhdx, where the remainder of the deployment steps will take place.
 
-        bcdboot <mounted drive letter>:\windows
+> [AZURE.IMPORTANT] Azure Stack requires access to the Internet, either directly or through a transparent proxy. The TP2 POC deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script below.
 
-9. Indítsa újra a gépet. Automatikusan futtatni fogja a Windows telepítőt, amint a VHD rendszer elkészül. Ezt követően fizikailag kapcsolódnia kell az üzembe helyezési géphez, vagy fizikai konzolhozzáféréssel kell rendelkeznie a következő lépések teljesítéséhez.
+## Run the PowerShell deployment script
 
-10. Ha a BIOS rendszer tartalmaz ilyen beállítást, úgy konfigurálja, hogy a helyi időt használja az UTC idő helyett.
+1. Log in as the Local Administrator to your POC machine. Use the credentials specified in the previous steps.
 
-11. Ha a rendszer kéri, adja meg az ország, a nyelv, a billentyűzet beállításait vagy az egyéb beállításokat. Ha a telepítő kéri a termékkulcsot, itt találhatja meg: [Rendszerkövetelmények és telepítési információk](https://technet.microsoft.com/library/mt126134.aspx).
+2. Open an elevated PowerShell console.
 
-12. Ha a rendszer kéri, állítsa be a rendszergazdai fiók jelszavát, és jelentkezzen be azzal a fióknévvel és jelszóval.
+3. In PowerShell, run this command: `cd C:\CloudDeployment\Configuration`
 
-13. Ha nem rendelkezik DHCP-kiszolgálóval, az újraindítás és a bejelentkezés után hozza létre a statikus konfigurációt a hálózati adaptereken.
+4. Run the deploy command: `.\InstallAzureStackPOC.ps1`
 
-14. Engedélyezze a Távoli asztali kapcsolatokat. Ehhez lépjen a **Rendszer tulajdonságai** menübe, és válassza a **Bejövő távoli kapcsolatok engedélyezése** lehetőséget.
+5. At the **Enter the password** prompt, enter a password and then confirm it. This is the password to all the virtual machines. Be sure to record it.
 
-15. Jelentkezzen be egy rendszergazdai engedélyekkel rendelkező helyi fiókkal.
+6. Enter the credentials for your Azure Active Directory account. This user must be the Global Admin in the directory tenant.
 
-16. Ellenőrizze, hogy az Azure Stack POC adataihoz rendelkezésre álló **pontosan** négy meghajtó:
-  - Látható-e a Lemezkezelőben
-  - Nincs-e használatban
-  - Online, nem lefoglalt állapotúként jelenik-e meg
+7. The deployment process will take a couple of hours, during which one automated system reboot will occur. If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin. If the deployment fails, you can try to [rerun it](azure-stack-rerun-deploy.md).
 
-17. Győződjön meg arról, hogy a gazdagép nem csatlakozik tartományhoz.
+### Deployment script examples
 
-18. Az Internet Explorerrel ellenőrizze a hálózati kapcsolatot az Azure.com webhelyhez.
+If your AAD Identity is only associated with ONE AAD Directory:
 
-> [AZURE.IMPORTANT] A TP1 POC üzembe helyezése pontosan négy meghajtót támogat a tárolási szolgáltatásokhoz, és csak egy hálózati adaptert a hálózatkezeléshez.
->
-> - **A tároláshoz** használjon eszközkezelőt vagy WMI-t a többi meghajtó letiltására (a lemezek lemezkezelővel történő offline állapotba helyezése nem elegendő).
->
-> - **A hálózatnál**, ha több hálózati adapterrel rendelkezik, győződjön meg róla, hogy csak egy van engedélyezve (és a többi le van tiltva), mielőtt futtatja az alábbi üzembe helyezési parancsfájlt.
->
-> Ha a fent meghatározott VHD-rendszerindítási lépéseket használta, szüksége lesz ezekre a frissítésekre a VHD-ből való indítás után, mielőtt elindítaná az üzembe helyezési parancsfájlt.
+    cd C:\CloudDeployment\Configuration
+    $adminpass = ConvertTo-SecureString "<LOCAL ADMIN PASSWORD>" -AsPlainText -Force
+    $aadpass = ConvertTo-SecureString "<AAD GLOBAL ADMIN ACCOUNT PASSWORD>" -AsPlainText -Force
+    $aadcred = New-Object System.Management.Automation.PSCredential ("<AAD GLOBAL ADMIN ACCOUNT>", $aadpass)
+    .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass -AADAdminCredential $aadcred
 
-## A PowerShell üzembe helyezési parancsfájl futtatása
+If your AAD Identity is associated with GREATER THAN ONE AAD Directory:
 
-1. Helyezze át az alábbi üzembe helyezési fájlokat a D:\Microsoft Azure Stack POC\ mappából a C:\Microsoft Azure Stack POC mappába\.
-    - DeployAzureStack.ps1
-    - MicrosoftAzureStackPOC.vhdx
-    - SQLServer14.vhdx
-    - WindowsServer2012R2DatacenterEval.vhd
-    - WindowsServer2016Datacenter.vhdx
+    cd C:\CloudDeployment\Configuration
+    $adminpass = ConvertTo-SecureString "<LOCAL ADMIN PASSWORD>" -AsPlainText -Force
+    $aadpass = ConvertTo-SecureString "<AAD GLOBAL ADMIN ACCOUNT PASSWORD>" -AsPlainText -Force
+    $aadcred = New-Object System.Management.Automation.PSCredential "<AAD GLOBAL ADMIN ACCOUNT> example: user@AADDirName.onmicrosoft.com>", $aadpass)
+    .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass -AADAdminCredential $aadcred -AADDirectoryTenantName "<SPECIFIC AAD DIRECTORY example: AADDirName.onmicrosoft.com>"
 
-2.  Nyissa meg a PowerShellt rendszergazdaként.
+If your environment DOES NOT have DHCP enabled, you will need to include the following ADDITIONAL parameters to one of the options above (example usage provided):
 
-3.  A PowerShellben nyissa meg az Azure Stack mappát (\\Microsoft Azure Stack POC\\, ha az alapértelmezést használta).
+    .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass -AADAdminCredential $aadcred
+    -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1
 
-4.  Futtassa az üzembe helyezési parancsot:
 
-        .\DeployAzureStack.ps1 –Verbose
+### InstallAzureStackPOC.ps1 optional parameters
 
-    Kínában használja helyette az alábbi parancsot:
+| Parameter | Required/Optional | Description |
+| --------- | ----------------- | ----------- |
+| AADAdminCredential | Optional | Sets the Azure Active Directory user name and password. These Azure credentials can be either an Org ID or a Microsoft Account. To use Microsoft Account credentials, do not include this parameter in the cmdlet, thus prompting the Azure Authentication popup during deployment (this will create the authentication and refresh tokens used during deployment). |
+| AADDirectoryTenantName | Required | Sets the tenant directory. Use this parameter to specify a specific directory where the AAD account has permissions to manage multiple directories. Full Name of an AAD Directory Tenant in the format of <directoryName>.onmicrosoft.com. |
+| AdminPassword | Required | Sets the local administrator account and all other user accounts on all the virtual machines that will be created as part of POC deployment. This must match the current local administrator password on the host. |
+| AzureEnvironment | Optional | Select the Azure Environment with which you want to register this Azure Stack deployment. Options include *Public Azure*, *Azure - China*, *Azure - US Government*. |
+| EnvironmentDNS | Optional | A DNS server is created as part of the Azure Stack deployment. To allow computers inside of the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server will forward unknown name resolution requests to this server. |
+| NatIPv4Address | Required for DHCP NAT support | Sets a static IP address for the NAT VM. Only use this parameter if the DHCP can’t assign a valid IP address to access the Internet. |
+| NatIPv4DefaultGateway | Required for DHCP NAT support | Sets the default gateway used with the static IP address for the NAT VM. Only use this parameter if the DHCP can’t assign a valid IP address to access the Internet.  |
+| NatIPv4Subnet | Required for DHCP NAT support | IP Subnet prefix used for DHCP over NAT support. Only use this parameter if the DHCP can’t assign a valid IP address to access the Internet.  |
+| NatSubnetPrefix | Required for DHCP NAT support | IP Subnet prefix to be used for DHCP over NAT support. Only use this parameter if the DHCP can’t assign a valid IP address to access the Internet. |
+| PublicVLan | Optional | Sets the VLAN ID. Only use this parameter if the host and NATVM must configure VLAN ID to access the physical network (and Internet). For example, `.\InstallAzureStackPOC.ps1 –Verbose –PublicVLan 305` |
+| Rerun | Optional | Use this flag to re-run deployment.  All previous input will be used. Re-entering data previously provided is not supported because several unique values are generated and used for deployment. |
+| TimeServer | Optional | Use this parameter if you need to specify a specific time server. |
 
-        .\DeployAzureStack.ps1 –Verbose -UseAADChina $true
+## Next steps
 
-    Megkezdődik az üzembe helyezés, és az Azure Stack POC tartománynév azurestack.local tartománnyal lesz kódolva.
+[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
 
-5.  A **Enter the password for the built-in administrator** (Jelszó beírása beépített rendszergazdához) kérésnél írjon be egy jelszót, majd erősítse meg. Ez lesz az összes virtuális gép jelszava. Ne felejtse el feljegyezni ezt a szolgáltatás-rendszergazdai jelszót.
 
-6.  A **Please login to your Azure account in the pop-up Azure authentication page** (Kérjük, jelentkezzen be az Azure-fiókjába az előugró Azure hitelesítési oldalon) kérdésnél nyomjon meg egy billentyűt a Microsoft Azure bejelentkezési párbeszédpanelének megnyitásához.
 
-7.  Adja meg az Azure Active Directory-fiók hitelesítő adatait. A felhasználónak globális rendszergazdának kell lennie a címtárbérlőben
-
-8.  A PowerShellbe visszatérve a fiókválasztás megerősítési kérésénél írja be az *y* karaktert. Ez létrehoz két felhasználót és három alkalmazást az Azure Stack számára abban a címtárbérlőben: egy rendszergazdai felhasználót az Azure Stackhez, egy bérlő felhasználót a TiP tesztekhez, valamint egy-egy alkalmazást a Portal, az API és a Monitoring erőforrás-szolgáltatókhoz. Emellett a telepítő Azure PowerShell, XPlat CLI és Visual Studio jóváhagyásokat is hozzáad a címtárbérlőhöz.
-
-9.  A **Microsoft Azure Stack POC is ready to deploy. Continue?** (Microsoft Azure Stack POC készen áll a telepítésre. Folytatja?) kérdésnél írja be az *y* karaktert.
-
-10.  Az üzembe helyezési folyamat néhány órát fog igénybe venni, amelynek során a rendszer többször is automatikusan újra fog indulni. Ha az üzembe helyezés közben bejelentkezik, a rendszer automatikusan el fog indítani egy PowerShell-ablakot, ami ki fogja jelezni a telepítés állapotát. A PowerShell-ablak az üzembe helyezés befejezésével bezárul.
-
-11. Az Azure Stack POC gépen jelentkezzen be AzureStack\administrator felhasználóként, nyissa meg a **Kiszolgálókezelőt**, majd kapcsolja ki az **Internet Explorer – Fokozott biztonsági beállításokat** a rendszergazdák és a felhasználók számára.
-
-Ha az üzembe helyezés idő- vagy dátumhibával hiúsul meg, konfigurálja a BIOS rendszert, hogy a helyi időt használja az UTC helyett. Ezt követően telepítse újra.
-
-Ha a parancsfájl futtatása sikertelen, indítsa újra a parancsfájlt. Ha a hiba továbbra is fennáll, törölje le és indítsa újra.
-
-A parancsfájl naplóját a POC gazdagépen találhatja: `C:\ProgramData\microsoft\azurestack`.
-
-### A DeployAzureStack.ps1 opcionális paraméterei
-
-**AADCredential** (PSCredential) – Beállítja az Azure Active Directory felhasználónevet és jelszót. Ha ez a paraméter nincs megadva, a parancsfájl kérni fogja a felhasználónevet és a jelszót.
-
-**AADTenant** (karakterlánc) – Beállítja a bérlőcímtárat. Ezt a paramétert egy adott címtár megadására használhatja, ha az AAD-fiók engedéllyel rendelkezik több címtár kezelésére. Ha ez a paraméter nincs megadva, a parancsfájl kérni fogja a címtárat.
-
-**AdminPassword** (SecureString) – Beállítja az alapértelmezett rendszergazdai jelszót. Ha ez a paraméter nincs megadva, a parancsfájl kérni fogja a jelszót.
-
-**Force** (Kapcsoló) – Beállítja, hogy a parancsmag megerősítések nélkül fusson.
-
-**NATVMStaticGateway** (Karakterlánc) – Beállítja a statikus IP-címben használt alapértelmezett átjárót a NATVM számára. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez. Ha használja ezt a paramétert, akkor a NATVMStaticIP paramétert is használnia kell.
-Például: `.\DeployAzureStack.ps1 –Verbose -NATVMStaticIP 10.10.10.10/24 – NATVMStaticGateway 10.10.10.1`
-
-**NATVMStaticIP** (karakterlánc) – Beállít egy további statikus IP-címet a NATVM számára. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.
-Például: `.\DeployAzureStack.ps1 –Verbose -NATVMStaticIP 10.10.10.10/24`
-
-**NoAutoReboot** (Kapcsoló) – Beállítja, hogy a parancsfájl automatikus újraindítások nélkül fusson.
-
-**ProxyServer** (Karakterlánc) – Beállítja a proxyadatokat. Csak akkor használja ezt a paramétert, ha a környezetének proxyt kell használnia az internet eléréséhez. A hitelesítő adatokat igénylő proxykiszolgálók nem támogatottak.
-Például: `.\DeployAzureStack.ps1 -Verbose -ProxyServer 172.11.1.1:8080`
-
-**PublicVLan** (Karakterlánc) – Beállítja a VLAN-azonosítót. Csak akkor használja ezt a paramétert, ha a gazdagépnek és a NATVM-nek VLAN-azonosítót kell beállítania a fizikai hálózat (és az internet) eléréséhez.
-Például: `.\DeployAzureStack.ps1 –Verbose –PublicVLan 305`
-
-**TIPServiceAdminCredential** (PSCredential) – Beállítja egy meglévő szolgáltatás-rendszergazdai Azure Active Directory-fiók hitelesítő adatait. Ezt a fiókot a TiP (Éles környezetben végzett tesztelés) használja. Ha ez a paraméter nincs megadva, automatikusan létrejön egy fiók.
-
-**TIPTenantAdminCredential** (PSCredential) – Beállítja egy meglévő bérlői rendszergazdai Azure Active Directory-fiók hitelesítő adatait. Ezt a fiókot a TiP (Éles környezetben végzett tesztelés) használja. Ha ez a paraméter nincs megadva, automatikusan létrejön egy fiók.
-
-**UseAADChina**(Boolean) – Állítsa ezt a Boolean paramétert $true értékre, ha Azure China-val (Mooncake) kívánja üzembe helyezni a Microsoft Azure Stack POC-t.
-
-## Az automatikus TiP tesztek kikapcsolása (nem kötelező)
-
-A Microsoft Azure Stack Technical Preview 1 ellenőrző teszteket tartalmaz, amelyeket a rendszer az üzembe helyezési folyamat során, és ismétlődő napi ütemezés szerint használ. Ezek az Azure Stack bérlő által végzett műveleteket szimulálják, és Test-in-POC (TiP) felhasználói fiókokat hoznak létre az Azure Active Directoryban a tesztek futtatásához. Sikeres üzembe helyezést követően ki lehet kapcsolni ezeket a TiP teszteket. 
-
-**Az automatikus TiP tesztek kikapcsolása**
-
-  - A ClientVM gépen futtassa a következő parancsmagot:
-
-  `Disable-ScheduledTask -TaskName AzureStackSystemvalidationTask`
-
-**A teszteredmények megtekintése**
-
-  - A ClientVM gépen futtassa a következő parancsmagot:
-
-  `Get-AzureStackTiPTestsResult`
-
-
-
-## A Microsoft Azure Stack POC telemetriájának kikapcsolása (nem kötelező)
-
-
-A Microsoft Azure Stack POC üzembe helyezése előtt kikapcsolhatja a Microsoft Azure Stack telemetriáját a gépen, amelyről az üzembe helyezést végzik. A funkció egyetlen gépen való kikapcsolásával kapcsolatban tekintse meg a következőt: [http://windows.microsoft.com/en-us/windows-10/feedback-diagnostics-privacy-faq](http://windows.microsoft.com/en-us/windows-10/feedback-diagnostics-privacy-faq), és módosítsa a **Diagnosztikai és a használati adatok** beállítást **Alapszintűre**.
-
-
-
-A Microsoft Azure Stack POC üzembe helyezése után kikapcsolhatja a telemetriát azokon virtuális gépeken, amelyeket csatlakoztak az Azure Stack tartományhoz. Az ezeken a virtuális gépeken érvényes csoportházirend létrehozásával és a telemetriai beállítások kezelésével kapcsolatban tekintse meg a következőt: [https://technet.microsoft.com/library/mt577208(v=vs.85).aspx\#BKMK\_UTC](https://technet.microsoft.com/library/mt577208%28v=vs.85%29.aspx#BKMK_UTC), és válassza ki a **0** vagy az **1** értéket a **Telemetria engedélyezése** csoportházirendnél. Két virtuális gép (bgpvm és natvm) nem csatlakozik az Azure Stack-tartományhoz. Ha a két virtuális gép visszajelzési és diagnosztikai beállításait külön-külön kívánja megadni, tekintse át a következőt: [http://windows.microsoft.com/en-us/windows-10/feedback-diagnostics-privacy-faq](http://windows.microsoft.com/en-us/windows-10/feedback-diagnostics-privacy-faq).
-
-## Következő lépések
-
-[Csatlakozás az Azure Stackhez](azure-stack-connect-azure-stack.md)
-
-
-
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

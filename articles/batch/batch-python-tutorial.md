@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="na"
     ms.workload="big-compute"
-    ms.date="09/08/2016"
+    ms.date="09/27/2016"
     ms.author="marsma"/>
 
 
@@ -46,9 +46,33 @@ A Python-oktatóprogram [kódmintája][github_article_samples] a GitHubon lévő
 
 ### Python-környezet
 
-A *python_tutorial_client.py* minta parancsfájl helyi munkaállomáson való futtatásához a **2.7-es** vagy **3.3–3.5-ös** verzióval kompatibilis **Python-fordítóra** lesz szüksége. A parancsfájl Linux és Windows rendszeren is tesztelve lett.
+A *python_tutorial_client.py* minta parancsfájl helyi munkaállomáson való futtatásához a **2.7-es** vagy a **3.3-as vagy újabb** verzióval kompatibilis **Python-fordítóra** lesz szüksége. A parancsfájl Linux és Windows rendszeren is tesztelve lett.
 
-Az **Azure Batch** és az **Azure Storage** Python-csomagokat is telepítenie kell. Ezt az itt található **pip** és a *requirements.txt* fájllal teheti meg:
+### titkosítási függőségek
+
+Telepítenie kell az `azure-batch` és az `azure-storage` Python-csomagokhoz szükséges [titkosítási][crypto] könyvtár függőségeit. Hajtsa végre az alábbiak közül a platformjának megfelelő műveleteket, vagy további információkért tekintse meg a [titkosítás telepítésével][crypto_install] kapcsolatos részleteket:
+
+* Ubuntu
+
+    `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
+
+* CentOS
+
+    `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
+
+* SLES/OpenSUSE
+
+    `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
+
+* Windows
+
+    `pip install cryptography`
+
+>[AZURE.NOTE] Ha Python 3.3-as vagy újabb verziója számára Linux rendszeren, a Python-függőségekhez használja a python3-beli megfelelőket. Például az Ubuntu rendszeren: `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
+
+### Azure-csomagok
+
+Ezután telepítse az **Azure Batch** és az **Azure Storage** Python-csomagot. Ezt az itt található **pip** és a *requirements.txt* fájllal teheti meg:
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -58,8 +82,8 @@ Adja ki a következő **pip** parancsot a Batch- és Storage-csomagok telepíté
 
 Az [azure-batch][pypi_batch] és [azure-storage][pypi_storage] Python-csomagot manuálisan is telepítheti:
 
-`pip install azure-batch==0.30.0rc4`<br/>
-`pip install azure-storage==0.30.0`
+`pip install azure-batch`<br/>
+`pip install azure-storage`
 
 > [AZURE.TIP] Lehet, hogy a `sudo` előtagot kell hozzáadnia a parancsokhoz, ha megfelelő jogosultságokkal nem rendelkező fiókot használ. Például: `sudo pip install -r requirements.txt`. További információ a Python-csomagok telepítésével kapcsolatban: [Installing Packages][pypi_install] (Csomagok telepítése) a readthedocs.io webhelyen.
 
@@ -271,7 +295,7 @@ Ezután a számítási csomópontok készlete jön létre a Batch-fiókban a `cr
 
 ```python
 def create_pool(batch_service_client, pool_id,
-                resource_files, distro, version):
+                resource_files, publisher, offer, sku):
     """
     Creates a pool of compute nodes with the specified OS settings.
 
@@ -280,10 +304,9 @@ def create_pool(batch_service_client, pool_id,
     :param str pool_id: An ID for the new pool.
     :param list resource_files: A collection of resource files for the pool's
     start task.
-    :param str distro: The Linux distribution that should be installed on the
-    compute nodes, e.g. 'Ubuntu' or 'CentOS'.
-    :param str version: The version of the operating system for the compute
-    nodes, e.g. '15' or '14.04'.
+    :param str publisher: Marketplace image publisher
+    :param str offer: Marketplace image offer
+    :param str sku: Marketplace image sku
     """
     print('Creating pool [{}]...'.format(pool_id))
 
@@ -299,24 +322,32 @@ def create_pool(batch_service_client, pool_id,
         # Copy the python_tutorial_task.py script to the "shared" directory
         # that all tasks that run on the node have access to.
         'cp -r $AZ_BATCH_TASK_WORKING_DIR/* $AZ_BATCH_NODE_SHARED_DIR',
-        # Install pip and then the azure-storage module so that the task
-        # script can access Azure Blob storage
+        # Install pip and the dependencies for cryptography
         'apt-get update',
         'apt-get -y install python-pip',
+        'apt-get -y install build-essential libssl-dev libffi-dev python-dev',
+        # Install the azure-storage module so that the task script can access
+        # Azure Blob storage
         'pip install azure-storage']
 
-    # Get the virtual machine configuration for the desired distro and version.
+    # Get the node agent SKU and image reference for the virtual machine
+    # configuration.
     # For more information about the virtual machine configuration, see:
     # https://azure.microsoft.com/documentation/articles/batch-linux-nodes/
-    vm_config = get_vm_config_for_distro(batch_service_client, distro, version)
+    sku_to_use, image_ref_to_use = \
+        common.helpers.select_latest_verified_vm_image_with_node_agent_sku(
+            batch_service_client, publisher, offer, sku)
 
     new_pool = batch.models.PoolAddParameter(
         id=pool_id,
-        virtual_machine_configuration=vm_config,
+        virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+            image_reference=image_ref_to_use,
+            node_agent_sku_id=sku_to_use),
         vm_size=_POOL_VM_SIZE,
         target_dedicated=_POOL_NODE_COUNT,
         start_task=batch.models.StartTask(
-            command_line=wrap_commands_in_shell('linux', task_commands),
+            command_line=
+            common.helpers.wrap_commands_in_shell('linux', task_commands),
             run_elevated=True,
             wait_for_success=True,
             resource_files=resource_files),
@@ -327,7 +358,6 @@ def create_pool(batch_service_client, pool_id,
     except batchmodels.batch_error.BatchErrorException as err:
         print_batch_exception(err)
         raise
-}
 ```
 
 Készlet létrehozásakor egy [PoolAddParameter][py_pooladdparam] paramétert ad meg, amely a készlet több tulajdonságát meghatározza:
@@ -336,7 +366,7 @@ Készlet létrehozásakor egy [PoolAddParameter][py_pooladdparam] paramétert ad
 
 - **Számítási csomópontok száma** (*target_dedicated* – kötelező)<p/>Ez a tulajdonság azt határozza meg, hogy hány virtuális gépet kell üzembe helyezni a készletben. Fontos megjegyezni, hogy az összes Batch-fiók alapértelmezett **kvótával** rendelkezik, amely korlátozza a **magok** (és így a számítási csomópontok) számát a Batch-fiókokban. Az alapértelmezett kvótákat és a [kvóták növelésével](batch-quota-limit.md#increase-a-quota) (például a Batch-fiókban lévő magok maximális számának növelésével) kapcsolatos útmutatásokat [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai) című témakörben találja. Ha azt kérdezi magától, hogy „Miért nem ér el a készletem X-nél több csomópontot?”, akkor a magkvóta lehet ennek az oka.
 
-- Csomópontok **operációs rendszere** (*virtual_machine_configuration* **vagy** *cloud_service_configuration* – kötelező)<p/>A *python_tutorial_client.py* fájlban létrehozzuk a Linux-csomópontok készletét a `get_vm_config_for_distro` segédfüggvénnyel beszerzett [VirtualMachineConfiguration][py_vm_config] osztállyal. Ez a segédfüggvény a [list_node_agent_skus][py_list_skus] használatával szerez be és választ ki rendszerképet az [Azure Virtual Machines-piactér][vm_marketplace] kompatibilis rendszerképeinek listájából. Helyette megadhat egy [CloudServiceConfiguration][py_cs_config] osztályt, és létrehozhatja a Windows-csomópontok készletét a Cloud Servicesből. A két konfigurációval kapcsolatos további információ: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok létrehozása Azure Batch-készletekben).
+- Csomópontok **operációs rendszere** (*virtual_machine_configuration* **vagy** *cloud_service_configuration* – kötelező)<p/>A *python_tutorial_client.py* fájlban létrehozzuk a Linux-csomópontok készletét a [VirtualMachineConfiguration][py_vm_config] osztállyal. A `common.helpers` `select_latest_verified_vm_image_with_node_agent_sku` függvénye leegyszerűsíti az [Azure Virtual Machines-piactér][vm_marketplace] rendszerképeinek használatát. További információ a piactérről származó rendszerképek használatával kapcsolatban: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok létrehozása Azure Batch-készletekben).
 
 - **Számítási csomópontok mérete** (*vm_size* – kötelező)<p/>Mivel Linux-csomópontokat határozunk meg a [VirtualMachineConfiguration][py_vm_config] számára, megadunk egy virtuális gép méretet (`STANDARD_A1` ebben a mintában) a [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Virtuális gépek méretei az Azure-ban) szakaszban. Lásd ismét: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linux számítási csomópontok létrehozása Azure Batch-készletekben).
 
@@ -575,7 +605,9 @@ if query_yes_no('Delete pool?') == 'yes':
 
 Amikor a *python_tutorial_client.py* parancsfájlt az oktatóanyag [kódmintájából][github_article_samples] futtatja, a konzol kimenete a következőképpen fog kinézni. Szünet következik be a `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` részen a készlet számítási csomópontjainak létrehozása, elindítása és a készlet indítási tevékenységében található parancsok futtatása során. Az [Azure Portal][azure_portal] használatával figyelheti meg a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy a [Microsoft Azure Storage Explorer][storage_explorer] használatával tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
 
-A jellemző végrehajtási idő **körülbelül 5–7 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást.
+>[AZURE.TIP] Futtassa a *python_tutorial_client.py* szkriptet az `azure-batch-samples/Python/Batch/article_samples` könyvtárból. A `common.helpers` modul importálásához relatív elérési utat használ, ezért ha nem ebből a könyvtárból futtatja a szkriptet, előfordulhat, hogy megjelenik a következő hibaüzenet: `ImportError: No module named 'common'`.
+
+A jellemző végrehajtási idő **körülbelül 5–7 perc**, ha az alapértelmezett konfigurációban futtatja a mintát.
 
 ```
 Sample start: 2016-05-20 22:47:10
@@ -620,6 +652,8 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 [azure_portal]: https://portal.azure.com
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
+[crypto]: https://cryptography.io/en/latest/
+[crypto_install]: https://cryptography.io/en/latest/installation/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
 [github_topnwords]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords

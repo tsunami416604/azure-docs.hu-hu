@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Útmutató a Security Center tervezéséhez és működtetéséhez | Microsoft Azure "
+   pageTitle="Útmutató a Security Center tervezéséhez és működtetéséhez | Microsoft Azure"
    description="Ez a dokumentum segít az Azure Security Center bevezetése előtti tervezésben, valamint megismerteti a napi műveletekhez tartozó szempontokkal."
    services="security-center"
    documentationCenter="na"
@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
 
 
@@ -224,7 +224,7 @@ A Security Center riasztásait a következő szakaszokban használhatja:
 - **Felmérés**: az első vizsgálat végrehajtása a gyanús tevékenységgel kapcsolatos további információk összegyűjtéséhez.
 - **Diagnosztizálás**: a hibaelhárítási lépések végrehajtása a probléma megoldásához szükséges technikai eljárás lefolytatásához.
 
-A biztonsági riasztásokban mindig talál olyan információkat, amelyek segítségével jobban megismerheti a támadás természetét. A riasztás ezenfelül lehetséges kockázatcsökkentési megoldásokat is tartalmaz.  Egyes riasztásokban további információkra, vagy az Azure-ban található más forrásokra mutató hivatkozások is helyet kaptak. Az így kapott információk alapján további vizsgálatokat indíthat, és megkezdheti a kockázatcsökkentést.
+A biztonsági riasztásokban mindig talál olyan információkat, amelyek segítségével jobban megismerheti a támadás természetét. A riasztás ezenfelül lehetséges kockázatcsökkentési megoldásokat is tartalmaz. Egyes riasztásokban további információkra, vagy az Azure-ban található más forrásokra mutató hivatkozások is helyet kaptak. Az így kapott információk alapján további vizsgálatokat indíthat, és megkezdheti a kockázatcsökkentést.
 
 A következő példában gyanús RDP-tevékenységre figyelmeztető üzenetet láthat:
 
@@ -232,7 +232,9 @@ A következő példában gyanús RDP-tevékenységre figyelmeztető üzenetet l�
 
 Ahogy látja, ezen a panelen a támadás idejére, a forrás állomásnevére és a megcélzott virtuális gépre vonatkozó adatokat, illetve a javasolt következő lépésre vonatkozó információkat talál. Előfordulhat, hogy a támadás forrására vonatkozó információk nem szerepelnek a panelen. Ezzel kapcsolatban további információkat talál a [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Hiányzó forrásadatok az Azure Security Center riasztásaiban) című cikkben.
 
-> [AZURE.NOTE] A [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Az Azure Security Center és a Microsoft Operations Management Suite használata az incidensmegoldáshoz) videóban megtekinthet néhány példát, amelynek alapján pontosabb képet kaphat arról, hogyan használhatja a Security Centert az egyes szakaszokban.
+A [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Az Azure Security Center és a Microsoft Operations Management Suite használata az incidensmegoldáshoz) videóban megtekinthet néhány példát, amelynek alapján pontosabb képet kaphat arról, hogyan használhatja a Security Centert az egyes szakaszokban.
+
+> [AZURE.NOTE] Ha további részletek szeretne megtudni arról, hogy miként lehetnek a segítségére a Security Center képességei az incidensmegoldási folyamat során, olvassa el [Az Azure Security Center használata incidensek megoldásához](security-center-incident-response.md) című cikket. 
 
 ## Lásd még:
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -245,6 +247,6 @@ Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Sec
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

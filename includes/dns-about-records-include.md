@@ -2,7 +2,9 @@
 
 Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
 
-Az Azure DNS minden gyakori DNS-rekord típust támogat, beleértve a következőket: A, AAAA, CNAME, MX, NS, SOA, SRV és TXT. A SOA típusú rekordhalmazok automatikusan jönnek létre az egyes zónákkal együtt. Külön nem hozhatók létre. Ügyeljen arra, hogy az SPF-rekordokat TXT típusú rekordok használatával kell létrehozni. További információkat [ezen az oldalon](http://tools.ietf.org/html/rfc7208#section-3.1) talál.
+Az Azure DNS minden gyakori DNS-rekord típust támogat, beleértve a következőket: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe:
+- A SOA típusú rekordhalmazok automatikusan jönnek létre az egyes zónákkal együtt, külön nem hozhatók létre.
+- Az SPF-rekordokat TXT típusú rekordok használatával kell létrehozni. További információkat [ezen az oldalon](http://tools.ietf.org/html/rfc7208#section-3.1) talál.
 
 Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A „teljes” tartománynév (FQDN) tartalmazza a zóna nevét, a „relatív” név azonban nem. Például: a „www” relatív rekordnév a „contoso.com” zónában a www.contoso.com teljes tartománynevet adja ki.
 
@@ -30,6 +32,6 @@ Helyettesítő rekordhalmazok létrehozásához használja a következő rekordh
 CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egyidejűleg egy CNAME-rekordhalmazt és egy A-rekordot is a „www” relatív névvel. Mivel a zóna felső pontja (név = @) mindig tartalmazza a zóna létrehozásakor létrejött NS és SOA típusú rekordhalmazokat, a zóna felső pontján nem hozhat létre CNAME-rekordhalmazokat. Ezek a korlátozások a DNS-szabványokból erednek, és nem az Azure DNS korlátozásai.
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

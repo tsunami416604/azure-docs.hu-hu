@@ -2,27 +2,27 @@
 <!--author=SharS last changed: 9/15/15-->
 
 
-#### Manuális biztonsági mentés létrehozása
+#### To create a manual backup
 
-1. Az **Eszközök** lapon kattintson a **Biztonsági mentési házirendek** fülre. Ezen a lapon táblázatos formában látható az összes biztonsági mentési házirend, beleértve az arra a kötetre vonatkozó házirendet, amelyről a biztonsági mentést el szeretné készíteni.
+1. On the **Devices** page, go to the **Backup Policies** tab. This tab lists all the backup policies in a tabular format, including the policy for the volume that you want to back up.
 
-2. A kívánt házirend kiválasztásához az adott sorban bárhova kattinthat, az első oszlopot kivéve. Kattintson a lap alján található **Mentés készítése** gombra. A bővített gomb a biztonsági mentési lehetőségeket tartalmazza: helyi pillanatfelvétel és felhőbeli pillanatfelvétel. 
+2. Select the policy by clicking anywhere in the corresponding row except for the first column. At the bottom of the page, click **Take backup**. The button will expand to show the backup options: local snapshot and cloud snapshot. 
 
-3. Ha kiválasztotta az egyik lehetőséget, a rendszer megerősítést kér. Kattintson az **Igen** gombra. 
+3. When you choose either of these options, you will be prompted for confirmation. Click **Yes**. 
 
-    ![Manuális biztonsági mentés létrehozása](./media/storsimple-create-manual-backup/HCS_CreateManualBackup1-include.png)
+    ![Create manual backup](./media/storsimple-create-manual-backup/HCS_CreateManualBackup1-include.png)
  
-    Ezzel egy pillanatképet létrehozó feladatot indít el. A feladat sikeres létrejöttét a lap alján megjelenő értesítés jelzi.
+    This will start a job to create a snapshot. You will see a notification at the bottom of the page after the job is successfully created.
 
-4. A feladat figyeléséhez kattintson (a lap alján) az értesítési területen található **Feladat megtekintése** gombra. 
+4. To monitor the job, click **View Job** in the notification area (at the bottom of the page). 
 
-    ![Manuális biztonsági mentés figyelése](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
+    ![Monitor the manual backup](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
 
-5. Ha a biztonsági mentési feladat befejeződött, nyissa meg a **Biztonságimásolat-katalógus** lapot.
+5. After the backup job is finished, go to the **Backup catalog** tab.
 
-6. Állítsa be a szűrőket úgy, hogy a megfelelő eszköz, biztonsági mentési házirend és időtartomány jelenjen meg. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) a szűrők beállítását követően.
+6. Set the filter selections to the appropriate device, backup policy, and time range. Click the check icon ![check icon](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) after setting the filters.
 
-  Ezután a biztonsági mentés megjelenik a katalógusban szereplő biztonságimentés-készletek listájában.
+  The backup should appear in the list of backup sets that is displayed in the catalog.
 
 
 <!--HONumber=Sep16_HO4-->

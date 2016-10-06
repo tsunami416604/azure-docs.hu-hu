@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Ismerkedés a Mobile Services Xamarin-alapú iOS-alkalmazásokkal való használatával | Microsoft Azure"
-    description="Ez az oktatóanyag a Xamarinhoz készült Azure Mobile Services iOS-fejlesztések első lépéseihez nyújt segítséget."
+    pageTitle="Get Started with Mobile Services for Xamarin iOS apps | Microsoft Azure"
+    description="Follow this tutorial to get started using Azure Mobile Services for Xamarin iOS development."
     services="mobile-services"
     documentationCenter="xamarin"
     authors="conceptdev"
@@ -16,94 +16,95 @@
     ms.date="07/21/2016"
     ms.author="craig.dunn@xamarin.com"/>
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
+
+# <a name="getting-started"> </a>Get started with Mobile Services
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> A témakör megfelelő Mobile Apps-verziójáért lásd: [Create a Xamarin.iOS App](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md) (Xamarin.iOS-alkalmazás létrehozása).
+> For the equivalent Mobile Apps version of this topic, see [Create a Xamarin.iOS App](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md).
 
-Az oktatóanyag bemutatja, hogyan adhat felhőalapú háttérszolgáltatást Xamarin.iOS-alkalmazásokhoz az Azure Mobile Services használatával. Az oktatóprogram során létrehoz egy új mobilszolgáltatást, valamint egy egyszerű *Teendőlista* alkalmazást, amely az alkalmazásadatokat az új mobilszolgáltatásban tárolja.
+This tutorial shows you how to add a cloud-based backend service to a Xamarin.iOS app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple *To do list* app that stores app data in the new mobile service.
 
-Ha inkább a videót tekintené meg, az alábbi klip ugyanazokat a lépéseket tartalmazza, mint az oktatóanyag.
+If you prefer to watch a video, the clip below follows the same steps as this tutorial.
 
-Videó: „Getting Started with Xamarin and Azure Mobile Services” (A Xamarin és az Azure Mobile Services használatának első lépései) Craig Dunn-nal, a Xamarin fejlesztői szakértőjével (hossz: 10:05 perc)
+Video: "Getting Started with Xamarin and Azure Mobile Services" with Craig Dunn, developer evangelist for Xamarin  (duration: 10:05 min)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
 
-A kész alkalmazásról az alábbiakban látható egy képernyőkép:
+A screenshot from the completed app is below:
 
 ![][0]
 
-Az oktatóprogram elvégzéséhez Xcode és OS X-hez készült Xamarin Studio vagy Windowson futó Visual Studio szükséges egy hálózathoz csatlakozó Mac géppel. A teljes telepítési útmutatás itt található: [Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése). 
+Completing this tutorial requires XCode and Xamarin Studio for OS X or Visual Studio on Windows with a networked Mac. Complete installation instructions are on [Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
 
-> [AZURE.IMPORTANT] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, regisztráljon az Azure-próbaverzióra, és a hozzá kapott akár 10 ingyenes mobilszolgáltatást a próbaidőszak után is használhatja. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.IMPORTANT] To complete this tutorial, you need an Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free mobile services that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="create-new-service"> </a>Új mobilszolgáltatás létrehozása
+## <a name="create-new-service"> </a>Create a new mobile service
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
-## Új Xamarin.iOS-alkalmazás létrehozása
+## Create a new Xamarin.iOS app
 
-Miután létrehozta a mobilszolgáltatást, a klasszikus Azure portálon található egyszerű gyors üzembe helyezés szolgáltatással létrehozhat egy új alkalmazást, vagy módosíthat egy meglévő alkalmazást a mobilszolgáltatáshoz való csatlakozáshoz.
+Once you have created your mobile service, you can follow an easy quickstart in the Azure classic portal to either create a new app or modify an existing app to connect to your mobile service.
 
-Ebben a szakaszban egy, a mobilszolgáltatásához kapcsolódó új Xamarin.iOS-alkalmazást hoz létre.
+In this section you will create a new Xamarin.iOS app that is connected to your mobile service.
 
-1.  A [klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
+1.  In the [Azure classic portal], click **Mobile Services**, and then click the mobile service that you just created.
 
-2. A gyors üzembe helyezés lap **Choose platform** (Platform kiválasztása) részében kattintson a **Xamarin.iOS** elemre, és bontsa ki a **Create a new Xamarin.iOS app** (Új Xamarin.iOS-alkalmazás létrehozása) részt.
+2. In the quickstart tab, click **Xamarin.iOS** under **Choose platform** and expand **Create a new Xamarin.iOS app**.
 
     ![][6]
 
-    Ez megjeleníti a mobilszolgáltatáshoz kapcsolódó új Xamarin.iOS-alkalmazás létrehozásának három egyszerű lépését.
+    This displays the three easy steps to create a Xamarin.iOS app connected to your mobile service.
 
     ![][7]
 
-3. Ha még nem tette, töltse le és telepítse az Xcode-ot (a legújabb, az Xcode 6.0-s vagy újabb verzió javasolt) és a [Xamarin Studio].
+3. If you haven't already done so, download and install Xcode (we recommend the latest version, Xcode 6.0, or newer) and [Xamarin Studio].
 
-4. Kattintson a **Create TodoItems table** (TodoItem tábla létrehozása) elemre az alkalmazásadatok tárolására szolgáló tábla létrehozásához.
+4. Click **Create TodoItems table** to create a table to store app data.
 
-5. A **Download and run app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
+5. Under **Download and run app**, click **Download**.
 
-    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz, és hivatkozik az Azure Mobile Services Xamarin.iOS-összetevőjére. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    This downloads the project for the sample _To do list_ application that is connected to your mobile service and references the Azure Mobile Services component for Xamarin.iOS. Save the compressed project file to your local computer, and make a note of where you saved it.
 
-## Az új Xamarin.iOS-alkalmazás futtatása
+## Run your new Xamarin.iOS app
 
-Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futtatásából áll.
+The final stage of this tutorial is to build and run your new app.
 
-1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, tömörítse ki a fájlokat a számítógépre, és nyissa meg a **XamarinTodoQuickStart.iOS.sln** megoldásfájlt a Xamarin Studióban vagy a Visual Studióban.
+1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the **XamarinTodoQuickStart.iOS.sln** solution file using Xamarin Studio or Visual Studio.
 
     ![][8]
 
     ![][9]
 
-2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás elindításához az iPhone-emulátorban, amely ebben a projektben az alapértelmezés.
+2. Press the **Run** button to build the project and start the app in the iPhone emulator, which is the default for this project.
 
-3. Az alkalmazásban írjon be egy jelentéssel bíró szöveget, például _Az oktatóanyag befejezése_, majd kattintson a plusz (**+**) ikonra.
+3. In the app, type meaningful text, such as _Complete the tutorial_ and then click the plus (**+**) icon.
 
     ![][10]
 
-    Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
+    This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
 
-    > [AZURE.NOTE] A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a TodoService.cs C# fájlban.
+    > [AZURE.NOTE] You can review the code that accesses your mobile service to query and insert data, which is found in the TodoService.cs C# file.
 
-4. A [klasszikus Azure portál] visszatérve kattintson a **Data** (Adatok) fülre, majd a **TodoItems** táblára.
+4. Back in the [Azure classic portal], click the **Data** tab and then click the **TodoItems** table.
 
     ![][11]
 
-    Így tallózással kiválaszthatja az alkalmazás által a táblába beszúrt adatokat.
+    This lets you browse the data inserted by the app into the table.
 
     ![][12]
 
 
-## Következő lépések
-Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
+## Next Steps
+Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services:
 
-* [Bevezetés az offline adatszinkronizálás használatába] Megismerheti, hogy a gyors üzembe helyezés hogyan teszi gyorsabban kezelhetővé és robusztusabbá alkalmazását az offline adatszinkronizálás segítségével.
+* [Get started with offline data sync] Learn how the quickstart uses offline data sync to make the app responsive and robust.
 
-* [Bevezetés a hitelesítés használatába] Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+* [Get started with authentication] Learn how to authenticate users of your app with an identity provider.
 
-* [Bevezetés a leküldéses értesítések használatába] Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+* [Get started with push notifications] Learn how to send a very basic push notification to your app.
 
 
 
@@ -111,10 +112,10 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[A Mobile Services használatának első lépései]:#getting-started
-[Új mobilszolgáltatás létrehozása]:#create-new-service
-[A mobilszolgáltatás-példány meghatározása]:#define-mobile-service-instance
-[Következő lépések]:#next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
@@ -128,17 +129,17 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 <!-- URLs. -->
-[Bevezetés az offline adatszinkronizálás használatába]: mobile-services-xamarin-ios-get-started-offline-data.md
-[Bevezetés a hitelesítés használatába]: partner-xamarin-mobile-services-ios-get-started-users.md
-[Bevezetés a leküldéses értesítések használatába]: partner-xamarin-mobile-services-ios-get-started-push.md
+[Get started with offline data sync]: mobile-services-xamarin-ios-get-started-offline-data.md
+[Get started with authentication]: partner-xamarin-mobile-services-ios-get-started-users.md
+[Get started with push notifications]: partner-xamarin-mobile-services-ios-get-started-push.md
 
 [Xamarin Studio]: http://xamarin.com/download
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-[klasszikus Azure portál]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

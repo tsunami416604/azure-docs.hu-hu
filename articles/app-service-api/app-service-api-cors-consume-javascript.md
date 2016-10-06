@@ -1,6 +1,6 @@
 <properties
-    pageTitle="CORS-támogatás az App Service platformon | Microsoft Azure"
-    description="Megtudhatja, hogyan használhatja a CORS-támogatást az Azure App Service platformon."
+    pageTitle="CORS support in App Service | Microsoft Azure"
+    description="Learn how to use CORS support in Azure Azure App Service."
     services="app-service\api"
     documentationCenter=".net"
     authors="tdykstra"
@@ -16,49 +16,50 @@
     ms.date="08/27/2016"
     ms.author="rachelap"/>
 
-# API-alkalmazások felhasználása JavaScriptből a CORS használatával
 
-Az App Service beépített támogatást nyújt a [Cross Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) szolgáltatáshoz, amely lehetővé teszi, hogy a JavaScript-ügyfelek tartományok között hívjanak meg az API-alkalmazások által nyújtott API-kat. Az App Service segítségével úgy állíthatja be a saját API-ja CORS-elérését, hogy nem kell az API-ba kódot írnia.
+# Consume an API app from JavaScript using CORS
 
-Ez a cikk két részből áll:
+App Service offers built-in support for [Cross Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), which enables JavaScript clients to make cross-domain calls to APIs that are hosted in API apps. App Service lets you configure CORS access to your API without writing any code in your API.
 
-* [A CORS konfigurálásának módja](#corsconfig) című rész általánosságban ismerteti, hogyan kell a CORS szolgáltatást konfigurálni tetszőleges API-alkalmazáshoz, webalkalmazáshoz vagy mobilalkalmazáshoz. Ez a rész minden, az App Service által támogatott keretrendszerre alkalmazható, beleértve a .NET, a Node.js és a Java keretrendszert. 
+This article contains two sections:
 
-* A [.NET-bevezető oktatóanyagok folytatása](#tutorialstart) résztől kezdve a cikk oktató funkciót tölt be, és [az első API-alkalmazásokba való bevezető oktatóanyag](app-service-api-dotnet-get-started.md) tartalmára építve mutatja be a CORS-támogatást. 
+* The [How to configure CORS](#corsconfig) section explains in general how to configure CORS for any API app, web app, or mobile app. It applies equally to all frameworks that are supported by App Service, including .NET, Node.js, and Java. 
 
-## <a id="corsconfig"></a> A CORS konfigurálása az Azure App Service platformon
+* Starting with the [Continuing the .NET getting-started tutorials](#tutorialstart) section, the article is a tutorial that demonstrates CORS support by building on what you did in [the first API Apps getting started tutorial](app-service-api-dotnet-get-started.md). 
 
-A CORS szolgáltatást konfigurálhatja az Azure Portalon vagy az [Azure Resource Manager](../resource-group-overview.md) eszközeinek használatával.
+## <a id="corsconfig"></a> How to configure CORS in Azure App Service
 
-#### A CORS konfigurálása az Azure portálon
+You can configure CORS in the Azure portal or by using [Azure Resource Manager](../resource-group-overview.md) tools.
 
-8. Nyissa meg böngészőben az [Azure Portalt](https://portal.azure.com/).
+#### Configure CORS in the Azure portal
 
-2. Kattintson az **App Services** lehetőségre, majd kattintson az API-alkalmazás nevére.
+8. In a browser go to the [Azure portal](https://portal.azure.com/).
 
-    ![API-alkalmazás kiválasztása a portálon](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
+2. Click **App Services**, and then click the name of your API app.
 
-10. A **Settings** (Beállítások) panelen (az **API app** (API-alkalmazás) paneltől jobbra) keresse meg az **API** szakaszt, majd kattintson a **CORS** lehetőségre.
+    ![Select API app in portal](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 
-    ![Válassza a CORS lehetőséget a Beállítások panelen](./media/app-service-api-cors-consume-javascript/clicksettings.png)
+10. In the **Settings** blade that opens to the right of the **API app** blade, find the **API** section, and then click **CORS**.
 
-11. A szövegmezőbe írja be azokat az URL-címeket, amelyekről engedélyezni szeretné a JavaScript-hívásokat.
+    ![Select CORS in Settings blade](./media/app-service-api-cors-consume-javascript/clicksettings.png)
 
-
-    Ha például a JavaScript-alkalmazását egy todolistangular nevű webalkalmazásra telepítette, írja be a "https://todolistangular.azurewebsites.net" címet. Ha csillagot (*) ír be, azzal beállíthatja, hogy minden eredettartományból elfogadja a hívásokat.
+11. In the text box enter the URL or URLs that you want to allow JavaScript calls to come from.
 
 
-13. Kattintson a **Save** (Mentés) gombra.
+    For example, if you deployed your JavaScript application to a web app named todolistangular, enter "https://todolistangular.azurewebsites.net". As an alternative, you can enter an asterisk (*) to specify that all origin domains are accepted.
 
-    ![Kattintson a Save (Mentés) gombra.](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
-    A **Save** (Mentés) gombra való kattintás után az API-alkalmazás fogadni fogja a megadott URL-címekről jövő hívásokat.
+13. Click **Save**.
 
-#### A CORS konfigurálása az Azure Resource Manager eszközeinek használatával
+    ![Click Save](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
-A CORS szolgáltatást úgy is beállíthatja egy API-alkalmazáshoz, hogy [Azure Resource Manager-sablonokat](../resource-group-authoring-templates.md) használ a parancssori eszközökben, például az  [Azure PowerShell](../powershell-install-configure.md) vagy az [Azure CLI](../xplat-cli-install.md) felületen. 
+    After you click **Save**, the API app will accept JavaScript calls from the specified URLs.
 
-Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely beállítja a CORS tulajdonságot, nyissa meg az oktatóanyag példaalkalmazását, amely a tárházban az [azuredeploy.json fájl](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Keresse meg a sablonban az a részt, amely az alábbi példára hasonlít:
+#### Configure CORS by using Azure Resource Manager tools
+
+You can also configure CORS for an API app by using [Azure Resource Manager templates](../resource-group-authoring-templates.md) in command line tools such as [Azure PowerShell](../powershell-install-configure.md) and the [Azure CLI](../xplat-cli-install.md). 
+
+For an example of an Azure Resource Manager template that sets the CORS property, open the [azuredeploy.json file in the repository for this tutorial's sample application](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Find the section of the template that looks like the following example:
 
         "cors": {
             "allowedOrigins": [
@@ -66,17 +67,17 @@ Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely be�
             ]
         }
 
-## <a id="tutorialstart"></a> A .NET-bevezető oktatóanyag folytatása
+## <a id="tutorialstart"></a> Continuing the .NET getting-started tutorial
 
-Ha az API-alkalmazásokhoz készült Node.js vagy Java-bevezető sorozatot követi, akkor elvégezte a bevezetősorozatot. Ugorjon a [További lépések](#next-steps) című részre, ahol tanácsokat találhat az API-alkalmazások bővebb megismeréséhez.
+If you are following the Node.js or Java getting-started series for API apps, you have completed the getting started series. Skip to the [Next steps](#next-steps) section to find suggestions for further learning about API Apps.
 
-A cikk hátralévő része a .NET-bevezető sorozat folytatása, és feltételezi, hogy Ön sikeresen elvégezte [az első oktatóanyagot](app-service-api-dotnet-get-started.md).
+The remainder of this article is a continuation of the .NET getting-started series and assumes that you successfully completed [the first tutorial](app-service-api-dotnet-get-started.md).
 
-## A ToDoListAngular projekt telepítése új webalkalmazásra
+## Deploy the ToDoListAngular project to a new web app
 
-[Az első oktatóprogramban](app-service-api-dotnet-get-started.md) létrehozott egy középső rétegbeli API-alkalmazást és egy adatrétegbeli API-alkalmazást. Ebben az oktatóanyagban egy egyoldalas webalkalmazást (SPA) fogunk létrehozni, amely a középső rétegbeli API-alkalmazást hívja meg. Az SPA működéséhez engedélyeznie kell a CORS szolgáltatást a középső rétegbeli API-alkalmazásra. 
+In [the first tutorial](app-service-api-dotnet-get-started.md), you created a middle tier API app and a data tier API app. In this tutorial you create a single-page application (SPA) web app that calls the middle tier API app. For the SPA to work you have to enable CORS on the middle tier API app. 
 
-A [ToDoList példaalkalmazásban](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list) a ToDoListAngular projekt egy olyan, az AngularJS ügyfelet bemutató példaprogram, amely a középső rétegbeli ToDoListAPI webes API projektet hívja meg. Az *app/scripts/todoListSvc.js* fájlban lévő JavaScript-kód az AngularJS HTTP-szolgáltató használatával hívja meg az API-t. 
+In the [ToDoList sample application](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list), the ToDoListAngular project is a simple AngularJS client that calls the middle tier ToDoListAPI Web API project. The JavaScript code in the *app/scripts/todoListSvc.js* file calls the API by using the AngularJS HTTP provider. 
 
         angular.module('todoApp')
         .factory('todoListSvc', ['$http', function ($http) {
@@ -97,54 +98,54 @@ A [ToDoList példaalkalmazásban](https://github.com/Azure-Samples/app-service-a
             };
         }]);
 
-### Új webalkalmazás létrehozása a ToDoListAngular projekthez
+### Create a new web app for the ToDoListAngular project
 
-Az új App Service-webalkalmazások létrehozása és a hozzájuk tartozó projekt telepítése hasonló módon történik, mint az [API-alkalmazások létrehozása és telepítése, amit a sorozat első oktatóanyaga ismertetett](app-service-api-dotnet-get-started.md#createapiapp). Az egyetlen különbség, hogy az alkalmazás típusa **webalkalmazás**, nem pedig **API-alkalmazás**.  A párbeszédpanelek képernyőképeit az alábbi módon érheti el: 
+The procedure to create a new App Service web app and deploy a project to it is similar to what you saw for [creating and deploying an API app in the first tutorial in this series](app-service-api-dotnet-get-started.md#createapiapp). The only difference is that the app type is **Web App** instead of **API App**.  For screen shots of the dialogs, see 
 
-1. A **Solution Explorer** (Megoldáskezelő) területén kattintson a jobb gombbal a ToDoListAngular projektre, majd kattintson a **Publish** (Közzététel) elemre.
+1. In **Solution Explorer**, right-click the ToDoListAngular project, and then click **Publish**.
 
-3.  A **Publish Web** (Weboldal közzététele) varázsló **Profile** (Profile) lapján kattintson a **Microsoft Azure App Service** lehetőségre.
+3.  In the **Profile** tab of the **Publish Web** wizard, click **Microsoft Azure App Service**.
 
-5. Az **App Service** párbeszédpanelen kattintson a **New** (Új) gombra.
+5. In the **App Service** dialog box, click **New**.
 
-3. A **Create App Service** (App Service létrehozása) párbeszédpanel **Hosting** (Üzemeltetés) lapján írjon be egy olyan nevet a **Web App Name** (Webalkalmazás neve) mezőbe, amely egyedi az *azurewebsites.net* tartományban. 
+3. In the **Hosting** tab of the **Create App Service** dialog box, enter a **Web App Name** that is unique in the *azurewebsites.net* domain. 
 
-5. Válassza ki a használni kívánt Azure **előfizetést**.
+5. Choose the Azure **Subscription** you want to work with.
 
-6. A **Resource Group** (Erőforráscsoport) legördülő listában válassza a korábban létrehozott erőforráscsoportot.
+6. In the **Resource Group** drop-down list, choose the same resource group you created earlier.
 
-4. Az **App Service Plan** (App Service-csomag) legördülő listában válassza a korábban létrehozott csomagot. 
+4. In the **App Service Plan** drop-down list, choose the same plan you created earlier. 
 
-7. Kattintson a **Létrehozás** gombra.
+7. Click **Create**.
 
-    A Visual Studio létrehozza a webalkalmazást és a hozzá tartozó közzétételi profilt, majd megjeleníti a **Publish Web** (Weboldal közzététele) varázsló **Connection** (Kapcsolat) lépését.
+    Visual Studio creates the web app, creates a publish profile for it, and displays the **Connection** step of the **Publish Web** wizard.
 
-    Még ne kattintson a **Publish** (Közzététel) elemre. A következő szakaszban beállíthatja, hogy a webalkalmazás az App Service platformon futó, középső rétegbeli API-alkalmazást hívja. 
+    Don't click **Publish** yet. In the following section, you configure the new web app to call the middle tier API app that is running in App Service. 
 
-### A középső réteg URL-címének beállítása a webalkalmazás beállításaiban
+### Set the middle tier URL in web app settings
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/), majd keresse meg a ToDoListAngular projekt (kezelőfelület) üzemeltetésére létrehozott webalkalmazáshoz tartozó **Web App** (Webalkalmazás) panelt.
+1. Go to the [Azure portal](https://portal.azure.com/), and then navigate to the **Web App** blade for the web app that you created to host the TodoListAngular (front end) project.
 
-2. Kattintson a **Settings > Application Settings** (Beállítások > Alkalmazásbeállítások) lehetőségre.
+2. Click **Settings > Application Settings**.
 
-3. Az **App settings** (Alkalmazás beállításai) szakaszban adja meg a következő kulcs-érték párt:
+3. In the **App settings** section, add the following key and value:
 
-  	|Kulcs|Érték|Példa
+  	|Key|Value|Example
   	|---|---|---|
-  	|toDoListAPIURL|https://{a középső réteg API-alkalmazásának neve}.azurewebsites.net|https://todolistapi0121.azurewebsites.NET|
+  	|toDoListAPIURL|https://{your middle tier API app name}.azurewebsites.net|https://todolistapi0121.azurewebsites.net|
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Click **Save**.
 
-    Amikor a kód lefut az Azure-ban, a rendszer ezzel az értékkel írja felül a *Web.config* fájlban található localhost URL-címet. 
+    When the code runs in Azure, this value overrides the localhost URL that is in the *Web.config* file. 
 
-    A beállítás értékét lekérdező kód az *index.cshtml* fájlban található:
+    The code that gets the setting value is in *index.cshtml*:
 
         <script type="text/javascript">
             var apiEndpoint = "@System.Configuration.ConfigurationManager.AppSettings["toDoListAPIURL"]";
         </script>
         <script src="app/scripts/todoListSvc.js"></script>
 
-    A *todoListSvc.js* fájlban lévő kód a következő beállítást használja:
+    The code in *todoListSvc.js* uses the setting:
 
         return {
             getItems : function(){
@@ -167,69 +168,69 @@ Az új App Service-webalkalmazások létrehozása és a hozzájuk tartozó proje
             }
         };
 
-### A ToDoListAngular webes projekt telepítése az új webalkalmazásra
+### Deploy the ToDoListAngular web project to the new web app
 
-*  A Visual Studio **Publish Web** (Webes közzététel) varázslójának **Connection** (Kapcsolat) lépésénél kattintson a **Publish** (Közzététel) elemre.
+*  In Visual Studio, in the **Connection** step of the **Publish Web** wizard, click **Publish**.
 
-    A Visual Studio telepíti a ToDoListAPI projektet az új webalkalmazásba, és egy böngészőablakban megnyitja a webalkalmazás URL-címét. 
+    Visual Studio deploys the ToDoListAngular project to the new web app and opens a browser to the URL of the web app. 
 
-### Az alkalmazás tesztelése a CORS engedélyezése nélkül 
+### Test the application without CORS enabled 
 
-2. A böngésző Fejlesztői eszközök funkciójával nyissa meg a Konzol ablakot.
+2. In your browser Developer Tools, open the Console window.
 
-3. Az AngularJS felhasználói felületet megjelenítő böngészőablakban kattintson a **To Do List** (Tennivalók) hivatkozásra.
+3. In the browser window that displays the AngularJS UI, click the **To Do List** link.
 
-    A JavaScript-kód megpróbálja meghívni a középső rétegbeli API-alkalmazást, de a hívás sikertelen lesz, mivel a kezelőfelület egy másik tartományban fut, mint a háttéralkalmazás. A böngésző Fejlesztői eszközök funkciójával elérhető konzolablak hibaüzenetet jelenít meg az eltérő eredetről.
+    The JavaScript code tries to call the middle tier API app, but the call fails because the front end is running in a different domain than the back end. The browser's Developer Tools Console window shows a cross-origin error message.
 
-    ![Hibaüzenet az eltérő eredetről](./media/app-service-api-cors-consume-javascript/consoleaccessdenied.png)
+    ![Cross-origin error message](./media/app-service-api-cors-consume-javascript/consoleaccessdenied.png)
 
-## A CORS konfigurálása középső rétegbeli API-alkalmazáshoz
+## Configure CORS for the middle tier API app
 
-Ebben a szakaszban a középső rétegbeli ToDoListAPI API-alkalmazás CORS beállítását konfiguráljuk az Azure-ban. Ez a beállítás lehetővé teszi, hogy a középső rétegbeli API-alkalmazás JavaScript-hívásokat fogadjon abból a webalkalmazásból, amelyet a ToDoListAngular projekthez létrehozott.
+In this section, you configure the CORS setting in Azure for the middle tier ToDoListAPI API app. This setting will allow the middle tier API app to receive JavaScript calls from the web app that you created for the ToDoListAngular project.
 
-8. Nyissa meg böngészőben az [Azure Portalt](https://portal.azure.com/).
+8. In a browser, go to the [Azure portal](https://portal.azure.com/).
 
-2. Kattintson az **App Services** (Alkalmazásszolgáltatások) lehetőségre, majd a ToDoListAPI (középső réteg) API-alkalmazásra.
+2. Click **App Services**, and then click the ToDoListAPI (middle tier) API app.
 
-    ![API-alkalmazás kiválasztása a portálon](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
+    ![Select API app in portal](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 
-10. A **Settings** (Beállítások) panelen (az **API app** (API-alkalmazás) paneltől jobbra) keresse meg az **API** szakaszt, majd kattintson a **CORS** lehetőségre.
+10. In the **Settings** blade that opens to the right of the **API app** blade, find the **API** section, and then click **CORS**.
 
-    ![A CORS kiválasztása a portálon](./media/app-service-api-cors-consume-javascript/clicksettings.png)
+    ![Select CORS in portal](./media/app-service-api-cors-consume-javascript/clicksettings.png)
 
-12. A szövegmezőbe írja be a ToDoListAngular (kezelőfelület) webalkalmazás URL-címét. Ha például a ToDoListAngular projektet egy todolistangular0121 nevű webalkalmazáshoz telepítette, engedélyezze a hívásokat a következő URL-címről: `https://todolistangular0121.azurewebsites.net`.
+12. In the text box, enter the URL for the ToDoListAngular (front end) web app. For example, if you deployed the ToDoListAngular project to a web app named todolistangular0121, allow calls from the URL `https://todolistangular0121.azurewebsites.net`.
 
-    Ha csillagot (*) ír be, azzal beállíthatja, hogy minden eredettartományból elfogadja a hívásokat.
+    As an alternative, you can enter an asterisk (*) to specify that all origin domains are accepted.
 
-13. Kattintson a **Save** (Mentés) gombra.
+13. Click **Save**.
 
-    ![Kattintson a Save (Mentés) gombra.](./media/app-service-api-cors-consume-javascript/corsinportal.png)
+    ![Click Save](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
-    A **Save** (Mentés) gombra való kattintás után az API-alkalmazás fogadni fogja a megadott URL-címről jövő hívásokat. Ezen a képernyőképen a ToDoListAPI0223 API-alkalmazás fogja fogadni a ToDoListAngular webalkalmazásból jövő JavaScript-ügyfélhívásokat.
+    After you click **Save**, the API app will accept JavaScript calls from the specified URL. In this screen shot, the ToDoListAPI0223 API app will accept JavaScript client calls from the ToDoListAngular web app.
 
-### Az alkalmazás tesztelése a CORS engedélyezése mellett
+### Test the application with CORS enabled
 
-* Nyissa meg egy böngészőben a webalkalmazás HTTPS URL-címét. 
+* Open a browser to the HTTPS URL of the web app. 
 
-    Ezúttal az alkalmazás lehetővé teszi tennivalók megtekintését, hozzáadását, szerkesztését és törlését. 
+    This time the application lets you view, add, edit, and delete to-do items. 
 
-    ![A példaalkalmazás To Do List oldala](./media/app-service-api-cors-consume-javascript/corssuccess.png)
+    ![To Do List page of sample app](./media/app-service-api-cors-consume-javascript/corssuccess.png)
 
-## Az App Service CORS és a webes API CORS összehasonlítása
+## App Service CORS versus Web API CORS
 
-Web API-projektekben a [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet-csomag telepítésével állíthatja be, hogy milyen tartományokból fogadja az API a JavaScript-hívásokat.
+In a Web API project, you can install the [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet package to specify in code which domains your API will accept JavaScript calls from.
  
-A Web API CORS-támogatása rugalmasabb, mint az App Service CORS-támogatása. Például a kódban a különböző műveletekhez különböző elfogadott származási helyeket adhat meg, míg az App Service CORS esetében az API-alkalmazás összes függvényéhez csupán az elfogadott tartományok egyetlen halmazát állíthatja be.
+Web API CORS support is more flexible than App Service CORS support. For example, in code you can specify different accepted origins for different action methods, while for App Service CORS you specify one set of accepted origins for all of an API app's methods.
 
-> [AZURE.NOTE] Egy API-alkalmazásban ne használja a Web API CORS-t és az App Service CORS-t is. Az App Service CORS szolgáltatása elsőbbséget élvez, így a Web API CORS szolgáltatásának nem lesz hatása. Ha például az App Service-ben egyetlen eredettartományt engedélyez, a Web API-kódban pedig az összes tartományt engedélyezi, akkor az Azure API-alkalmazás csak az Azure-ban megadott tartományból fogja a hívásokat fogadni.
+> [AZURE.NOTE] Don't try to use both Web API CORS and App Service CORS in one API app. App Service CORS will take precedence and Web API CORS will have no effect. For example, if you enable one origin domain in App Service, and enable all origin domains in your Web API code, your Azure API app will only accept calls from the domain you specified in Azure.
 
-### A CORS engedélyezése Web API-kódban
+### How to enable CORS in Web API code
 
-A Web API CORS-támogatásának engedélyezése az alábbi lépésekkel foglalható össze. További információ: [Enabling Cross-Origin Requests in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api) (Az eltérő eredetű kérések engedélyezése az ASP.NET Web API 2-ben).
+The following steps summarize the process for enabling Web API CORS support. For more information, see [Enabling Cross-Origin Requests in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
 
-1. Egy Web API-projektben telepítse a [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet-csomagot.
+1. In a Web API project, install the [Microsoft.AspNet.WebApi.Cors](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Cors/) NuGet package.
 
-1. Adja hozzá a `config.EnableCors()` kódsort a **WebApiConfig** osztály **Register** metódusához az alábbi példában látható módon. 
+1. Include a `config.EnableCors()` line of code in the **Register** method of the **WebApiConfig** class, as in the following example. 
 
         public static class WebApiConfig
         {
@@ -251,7 +252,7 @@ A Web API CORS-támogatásának engedélyezése az alábbi lépésekkel foglalha
             }
         }
 
-1. A Web API-vezérlőben helyezzen el egy `using` utasítást a `System.Web.Http.Cors` névtérhez, és adja hozzá az `EnableCors` attribútumot a vezérlő osztályhoz vagy az egyes műveletmetódusokhoz. A következő példában a CORS-támogatás a teljes vezérlőre vonatkozik.
+1. In your Web API controller, add a `using` statement for the `System.Web.Http.Cors` namespace, and add the `EnableCors` attribute to the controller class or to individual action methods. In the following example, CORS support applies to the entire controller.
 
         namespace ToDoListAPI.Controllers 
         {
@@ -259,33 +260,33 @@ A Web API CORS-támogatásának engedélyezése az alábbi lépésekkel foglalha
             [EnableCors(origins:"https://todolistangular0121.azurewebsites.net", headers:"accept,content-type,origin,x-my-header", methods: "get,post")]
             public class ToDoListController : ApiController
  
-## Az Azure API Management használata API-alkalmazásokkal
+## Using Azure API Management with API Apps
 
-Ha az Azure API Management szolgáltatást egy API-alkalmazással használja, az API-alkalmazás helyett az API Management szolgáltatásban konfigurálja a CORS támogatást. További információkért lásd a következőket:
+If you use Azure API Management with an API app, configure CORS in API Management instead of in the API app. For more information, see the following resources:
 
-* [Az Azure API Management áttekintése (videó: a CORS rész 12:10-nél kezdődik)](https://azure.microsoft.com/documentation/videos/azure-api-management-overview/)
-* [Az API Management tartományközi házirendjei](https://msdn.microsoft.com/library/azure/dn894084.aspx#CORS)
+* [Azure API Management Overview (video: CORS starts at 12:10)](https://azure.microsoft.com/documentation/videos/azure-api-management-overview/)
+* [API Management cross domain policies](https://msdn.microsoft.com/library/azure/dn894084.aspx#CORS)
  
-## Hibaelhárítás
+## Troubleshooting
 
-Ha az oktatóanyag lépéseinek elvégzése közben hibákba ütközne, olvassa el az alábbi hibaelhárítási tippeket:
+In case you run into a problem while going through this tutorial, here are some troubleshooting ideas.
 
-* Ellenőrizze, hogy az [Azure SDK for .NET for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) legfrissebb verzióját használja-e.
+* Make sure that you're using the latest version of the [Azure SDK for .NET for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003).
 
-* Győződjön meg arról, hogy `https`-t írt be a CORS beállításba, valamint arról, hogy `https`-t használ a webalkalmazás kezelőfelületének futtatásához.
+* Make sure that you entered `https` in the CORS setting, and make sure that you're using `https` to run the front-end web app.
 
-* Győződjön meg arról, hogy a CORS beállítást a középső rétegbeli API-alkalmazásba, és nem a kezelőfelületbe helyezte el.
+* Make sure that you entered the CORS setting in the middle tier API app, not in the front-end web app.
 
-* Ha az alkalmazás kódjában és az Azure App Service platformon is konfigurálja a CORS-támogatást, akkor ne feledje, hogy az App Service CORS-beállítása felülírja az alkalmazás kódjában lévő beállítást. 
+* If you're configuring CORS in both application code and Azure App Service, note that the App Service CORS setting will override whatever you're doing in application code. 
 
-A Visual Studio hibaelhárítást egyszerűsítő szolgáltatásairól a [Troubleshooting Azure App Service apps in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md) (Azure App Service-alkalmazások hibáinak elhárítása Visual Studióban) című szakaszban olvashat bővebben.
+To learn more about Visual Studio features that simplify troubleshooting, see [Troubleshooting Azure App Service apps in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md).
 
-## Következő lépések 
+## Next steps 
 
-Ebből a cikkből megtudhatta, hogyan engedélyezheti az App Service CORS-támogatását úgy, hogy az ügyfélbeli JavaScript-kód meghívhasson egy másik tartományban lévő API-t. Az API-alkalmazások részletesebb megismeréséhez olvassa el az [App Service-hitelesítésbe való bevezetést](../app-service/app-service-authentication-overview.md), majd nyissa meg az [API-alkalmazásokban való felhasználóhitelesítést](app-service-api-dotnet-user-principal-auth.md) bemutató oktatóanyagot.
+In this article, you saw how to enable App Service CORS support so that client JavaScript code can call an API in a different domain. To learn more about API apps, read the [introduction to authentication in App Service](../app-service/app-service-authentication-overview.md), and then go to the [user authentication for API apps](app-service-api-dotnet-user-principal-auth.md) tutorial.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

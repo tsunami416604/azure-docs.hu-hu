@@ -1,35 +1,35 @@
-## Az ARM-sablon letöltése és megismerése
+## Download and understand the ARM template
 
-A GitHubból letöltheti a meglévő ARM-sablont, amellyel létrehozhat egy VNetet két alhálózattal, végrehajthatja a kívánt módosításokat, és újra felhasználhatja. Ehhez kövesse az alábbi lépéseket.
+You can download the existing ARM template for creating a VNet and two subnets from github, make any changes you might want, and reuse it. To do so, follow the steps below.
 
-1. Nyissa meg a [mintasablon lapot](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
-2. Kattintson az **azuredeploy.json**, majd a **RAW** elemre.
-3. Mentse a fájlt egy helyi mappába a számítógépén.
-4. Ha már ismeri az ARM-sablonokat, akkor ugorjon a 7. lépéshez.
-5. Nyissa meg az előbb mentett fájlt, és nézze meg az 5. sorban a **parameters** (paraméterek) alatt látható tartalmakat. Az ARM-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
+1. Navigate to [the sample template page](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+2. Click **azuredeploy.json**, and then click **RAW**.
+3. Save the file to a a local folder on your computer.
+4. If you are familiar with ARM templates, skip to step 7.
+5. Open the file you just saved and look at the contents under **parameters** in line 5. ARM template parameters provide a placeholder for values that can be filled out during deployment.
 
-    | Paraméter | Leírás |
+    | Parameter | Description |
     |---|---|
-    | **location** | Az Azure-régió, ahol a VNet létrejön |
-    | **vnetName** | Az új VNet neve |
-    | **addressPrefix** | A VNet címtere CIDR-formátumban |
-    | **subnet1Name** | Az első VNet neve |
-    | **subnet1Prefix** | Az első alhálózat CIDR-blokkja |
-    | **subnet2Name** | A második VNet neve |
-    | **subnet2Prefix** | A második alhálózat CIDR-blokkja |
+    | **location** | Azure region where the VNet will be created |
+    | **vnetName** | Name for the new VNet |
+    | **addressPrefix** | Address space for the VNet, in CIDR format |
+    | **subnet1Name** | Name for the first VNet |
+    | **subnet1Prefix** | CIDR block for the first subnet |
+    | **subnet2Name** | Name for the second VNet |
+    | **subnet2Prefix** | CIDR block for the second subnet |
 
-    >[AZURE.IMPORTANT] A GitHubban fenntartott ARM-sablonok idővel módosulhatnak. Ne feledje el ellenőrizni a sablont, mielőtt használja.
+    >[AZURE.IMPORTANT] ARM templates maintained in github can change over time. Make sure you check the template before using it.
     
-6. Ellenőrizze a **resources** (erőforrások) alatt látható tartalmat, és figyelje meg a következőket:
+6. Check the content under **resources** and notice the following:
 
-    - **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a **Microsoft.Network/virtualNetworks**, ami egy VNetet jelöl.
-    - **Név** Az erőforrás neve. Figyelje meg a **[parameters('vnetName')]** használatát, amely azt jelzi, hogy a nevet a felhasználó vagy egy paraméterfájl adja meg az üzembe helyezés során bemenetként.
-    - **properties**. Az erőforrás tulajdonságainak listája. Ez a sablon a címteret és az alhálózati tulajdonságokat használja a VNet létrehozása során.
+    - **type**. Type of resource being created by the template. In this case, **Microsoft.Network/virtualNetworks**, which represent a VNet.
+    - **name**. Name for the resource. Notice the use of **[parameters('vnetName')]**, which means the name will provided as input by the user or a parameter file during deployment.
+    - **properties**. List of properties for the resource. This template uses the address space and subnet properties during VNet creation.
 
-7. Lépjen vissza a [mintasablon lapra](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
-8. Kattintson az **azuredeploy-paremeters.json**, majd a **RAW** elemre.
-9. Mentse a fájlt egy helyi mappába a számítógépén.
-10. Nyissa meg az előbb mentett fájlt, és módosítsa a paraméterek értékeit. Az alábbi értékek használatával helyezze üzembe a forgatókönyvünkben leírt VNetet.
+7. Navigate back to [the sample template page](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+8. Click **azuredeploy-paremeters.json**, and then click **RAW**.
+9. Save the file to a a local folder on your computer.
+10. Open the file you just saved and edit the values for the parameters. Use the values below to deploy the VNet described in our scenario.
 
         {
           "location": {
@@ -55,7 +55,7 @@ A GitHubból letöltheti a meglévő ARM-sablont, amellyel létrehozhat egy VNet
           }
         }
 
-11. Mentse a fájlt.
+11. Save the file.
   
 
 <!--HONumber=Sep16_HO4-->

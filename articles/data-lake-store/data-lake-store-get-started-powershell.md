@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Bevezetés a Data Lake Store használatába | Azure"
-   description="Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure PowerShell használatával"
+   pageTitle="Get started with Data Lake Store | Azure"
+   description="Use Azure PowerShell to create a Data Lake Store account and perform basic operations"
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,13 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/07/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
-# Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
+
+# Get started with Azure Data Lake Store using Azure PowerShell
 
 > [AZURE.SELECTOR]
-- [Portál](data-lake-store-get-started-portal.md)
+- [Portal](data-lake-store-get-started-portal.md)
 - [PowerShell](data-lake-store-get-started-powershell.md)
 - [.NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -27,23 +28,22 @@
 - [Azure CLI](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure PowerShell használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
+Learn how to use Azure PowerShell to create an Azure Data Lake Store account and perform basic operations such as create folders, upload and download data files, delete your account, etc. For more information about Data Lake Store, see [Overview of Data Lake Store](data-lake-store-overview.md).
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
+Before you begin this tutorial, you must have the following:
 
-- **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- **Az Azure-előfizetés engedélyezése** a Data Lake Store nyilvános előzetes verziójához. Lásd az [utasításokat](data-lake-store-get-started-portal.md#signup).
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 
 
-##Az Azure PowerShell 1.0-s vagy újabb verziójának telepítése
+##Install Azure PowerShell 1.0 or greater
 
-Tekintse meg a [Using Azure PowerShell with Azure Storage](../powershell-azure-resource-manager.md#prerequisites) (Az Azure PowerShell és az Azure Resource Manager együttes használata) című cikk Előfeltételek szakaszát.
+See the Prerequisite section of [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md#prerequisites).
 
-## Azure Data Lake Store-fiók létrehozása
+## Create an Azure Data Lake Store account
 
-1. Nyisson meg egy új Windows PowerShell ablakot, és adja meg az alábbi kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Store-szolgáltató regisztrálásához. Győződjön meg arról, hogy az előfizetés rendszergazdájaként/tulajdonosaként jelentkezik be, amikor a rendszer erre kéri:
+1. From your desktop, open a new Windows PowerShell window, and enter the following snippet to log in to your Azure account, set the subscription, and register the Data Lake Store provider. When prompted to log in, make sure you log in as one of the subscription admininistrators/owner:
 
         # Log in to your Azure account
         Login-AzureRmAccount
@@ -58,91 +58,91 @@ Tekintse meg a [Using Azure PowerShell with Azure Storage](../powershell-azure-r
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 
-2. Az Azure Data Lake Store-fiókok egy Azure-erőforráscsoporthoz vannak társítva. Először hozzon létre egy Azure-erőforráscsoportot.
+2. An Azure Data Lake Store account is associated with an Azure Resource Group. Start by creating an Azure Resource Group.
 
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    ![Azure-erőforráscsoport létrehozása](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Create an Azure Resource Group")
+    ![Create an Azure Resource Group](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Create an Azure Resource Group")
 
-2. Hozzon létre egy Azure Data Lake Store-fiókot. A megadott név csak kisbetűket és számokat tartalmazhat.
+2. Create an Azure Data Lake Store account. The name you specify must only contain lowercase letters and numbers.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    ![Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Create an Azure Data Lake Store account")
+    ![Create an Azure Data Lake Store account](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Create an Azure Data Lake Store account")
 
-3. Ellenőrizze, hogy a fiók létrehozása sikeres volt-e.
+3. Verify that the account is successfully created.
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-    A kimenet értéke **True** (Igaz) kell, hogy legyen.
+    The output for this should be **True**.
 
-## Könyvtárstruktúrák létrehozása az Azure Data Lake Store-ban
+## Create directory structures in your Azure Data Lake Store
 
-Az Azure Data Lake Store-fiókjában könyvtárakat hozhat létre az adatok kezelésére és tárolására.
+You can create directories under your Azure Data Lake Store account to manage and store data.
 
-1. Adjon meg egy gyökérkönyvtárat.
+1. Specify a root directory.
 
         $myrootdir = "/"
 
-2. Hozzon létre egy új könyvtárat **mynewdirectory** néven a megadott gyökérkönyvtárban.
+2. Create a new directory called **mynewdirectory** under the specified root.
 
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/mynewdirectory
 
-3. Ellenőrizze, hogy az új könyvtár létrehozása sikeres volt-e.
+3. Verify that the new directory is successfully created.
 
         Get-AzureRmDataLakeStoreChildItem -AccountName $dataLakeStoreName -Path $myrootdir
 
-    A következőhöz hasonló kimenetnek kell megjelennie:
+    It should show an output like the following:
 
-    ![A könyvtár ellenőrzése](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Verify Directory")
+    ![Verify Directory](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Verify Directory")
 
 
-## Fájlok feltöltése az Azure Data Lake Store-ba
+## Upload data to your Azure Data Lake Store
 
-Az adatait feltöltheti közvetlenül a Data Lake Store-ba gyökérszinten, vagy a fiókon belül létrehozott könyvtárba. Az alábbi részletek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott könyvtárba (**mynewdirectory**).
+You can upload your data to Data Lake Store directly at the root level or to a directory that you created within the account. The snippets below demonstrate how to upload some sample data to the directory (**mynewdirectory**) you created in the previous section.
 
-Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).\.
+If you are looking for some sample data to upload, you can get the **Ambulance Data** folder from the [Azure Data Lake Git Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Download the file and store it in a local directory on your computer, such as  C:\sampledata\.
 
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
-## A Data Lake Store-ban lévő adatok átnevezése, letöltése és törlése
+## Rename, download, and delete data from your Data Lake Store
 
-Fájlok átnevezéséhez használja a következő parancsot:
+To rename a file, use the following command:
 
     Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
-Fájlok letöltéséhez használja a következő parancsot:
+To download a file, use the following command:
 
     Export-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
 
-Fájlok törléséhez használja a következő parancsot:
+To delete a file, use the following command:
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
-Ha a rendszer rákérdez, írja be az **Y** karaktert az elem törléséhez. Ha több fájlt kíván törölni, megadhatja az összes elérési utat, vesszővel elválasztva.
+When prompted, enter **Y** to delete the item. If you have more than one file to delete, you can provide all the paths separated by comma.
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
-## Az Azure Data Lake Store-fiók törlése
+## Delete your Azure Data Lake Store account
 
-Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
+Use the following command to delete your Data Lake Store account.
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
-Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
+When prompted, enter **Y** to delete the account.
 
 
-## Következő lépések
+## Next steps
 
-- [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
-- [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-- [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
+- [Use Azure Data Lake Analytics with Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+- [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Webalkalmazások létrehozása a Djangóval az Azure-ban"
-    description="A Python webalkalmazás az Azure App Service Web Apps szolgáltatásban történő futtatását bemutató oktatóanyag."
+    pageTitle="Creating web apps with Django in Azure"
+    description="A tutorial that introduces you to running a Python web app in Azure App Service Web Apps."
     services="app-service\web"
     documentationCenter="python"
     tags="python"
@@ -18,55 +18,56 @@
     ms.author="huvalo"/>
 
 
-# Webalkalmazások létrehozása a Djangóval az Azure-ban
 
-Ez az oktatóanyag a Python futtatásának első lépéseit mutatja be az [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) felületén. A Web Apps korlátozott ingyenes üzemeltetést és gyors üzembe helyezést kínál, ráadásul a Python alkalmazást is használhatja! Az alkalmazása növekedésével átválthat fizetős üzemeltetésre, valamint integrálhatja alkalmazásába az összes többi Azure-szolgáltatást is.
+# Creating web apps with Django in Azure
 
-A Django webes keretrendszer használatával fog létrehozni egy alkalmazást (lásd az oktatóanyag alternatív verzióit a [Flask](web-sites-python-create-deploy-flask-app.md) és a [Bottle](web-sites-python-create-deploy-bottle-app.md) használatával). Létre fog hozni egy webalkalmazást az Azure Piactérről, be fogja állítani a Git üzemelő példányt, majd helyileg fogja klónozni a tárházat. Ezt követően helyileg fogja futtatni az alkalmazást, módosításokat fog elvégezni rajta, majd véglegesíteni fogja őket, és el fogja küldeni az Azure-ba. Ez az oktatóanyag ennek a folyamatnak a Windows vagy Mac/Linux operációs rendszeren történő végrehajtását mutatja be.
+This tutorial describes how to get started running Python on [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Web Apps provides limited free hosting and rapid deployment, and you can use Python! As your app grows, you can switch to paid hosting, and you can also integrate with all of the other Azure services.
+
+You will create an application using the Django web framework (see alternate versions of this tutorial for [Flask](web-sites-python-create-deploy-flask-app.md) and [Bottle](web-sites-python-create-deploy-bottle-app.md)). You will create the web app from the Azure Marketplace, set up Git deployment, and clone the repository locally. Then you will run the application locally, make changes, commit and push them to Azure. The tutorial shows how to do this from Windows or Mac/Linux.
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE] Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
 
-## Előfeltételek
+## Prerequisites
 
-- Windows, Mac vagy Linux
-- Python 2.7 vagy 3.4
-- setuptools, pip, virtualenv (csak Python 2.7)
+- Windows, Mac or Linux
+- Python 2.7 or 3.4
+- setuptools, pip, virtualenv (Python 2.7 only)
 - Git
-- [Python Tools for Visual Studio][] (PTVS) – Megjegyzés: nem kötelező
+- [Python Tools for Visual Studio][] (PTVS) - Note: this is optional
 
-**Megjegyzés:** A TFS-közzététel a Python-projektek esetében jelenleg nem támogatott.
+**Note**: TFS publishing is currently not supported for Python projects.
 
 ### Windows
 
-Ha még nem telepítette a Python 2.7-es vagy 3.4-es (32 bites) verzióját, javasoljuk a [Python 2.7-hez készült Azure SDK] vagy a [Python 3.4-hez készült Azure SDK] Webplatform-telepítővel történő telepítését. Ezzel többek között a következőket telepíti: a Python 32 bites verziója, setuptools, pip, virtualenv (a Python 32 bites verziója van telepítve az Azure-gazdagépeken). Alternatív megoldásként a Python eszközt a [python.org] webhelyről is beszerezheti.
+If you don't already have Python 2.7 or 3.4 installed (32-bit), we recommend installing [Azure SDK for Python 2.7] or [Azure SDK for Python 3.4] using Web Platform Installer. This installs the 32-bit version of Python, setuptools, pip, virtualenv, etc (32-bit Python is what's installed on the Azure host machines). Alternatively, you can get Python from [python.org].
 
-A Git esetében a [Git for Windows] vagy a [GitHub for Windows] használatát javasoljuk. Visual Studio használata esetén használhatja a beépített Git-támogatást.
+For Git, we recommend [Git for Windows] or [GitHub for Windows]. If you use Visual Studio, you can use the integrated Git support.
 
-Szintén javasoljuk a [Python Tools 2.2 for Visual Studio] telepítését. Ez ugyan nem kötelező, de ha rendelkezik az ingyenes Visual Studio Community 2013 vagy Visual Studio Express 2013 for Web alkalmazásokat is magában foglaló [Visual Studio] szoftverrel, a nagyszerű Python IDE előnyeit is élvezheti.
+We also recommend installing [Python Tools 2.2 for Visual Studio]. This is optional, but if you have [Visual Studio], including the free Visual Studio Community 2013 or Visual Studio Express 2013 for Web, then this will give you a great Python IDE.
 
 ### Mac/Linux
 
-A Python és a Git alkalmazásoknak már telepítve kell lenniük, de győződjön meg arról, hogy a Python verziószáma 2.7-es vagy 3.4-es.
+You should have Python and Git already installed, but make sure you have either Python 2.7 or 3.4.
 
 
-## Webalkalmazás létrehozása a portálon
+## Web App Creation on Portal
 
-Saját alkalmazása létrehozásának első lépése egy webalkalmazás létrehozása az [Azure portálon](https://portal.azure.com).
+The first step in creating your app is to create the web app via the [Azure Portal](https://portal.azure.com).
 
-1. Jelentkezzen be az Azure portálra, majd kattintson a bal alsó sarokban található **NEW** (ÚJ) gombra.
-3. A keresőmezőbe írja be a „python” kifejezést.
-4. A keresési eredmények közül válassza ki a **Django** elemet (amelyet a PTVS tett közzé), majd kattintson a **Create** (Létrehozás) gombra.
-5. Konfigurálja az új Django-alkalmazást, például új App Service-csomag és egy ahhoz tartozó új erőforráscsoport létrehozásával. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-6. Konfigurálja az újonnan létrehozott webalkalmazáshoz tartozó Git-közzétételt a [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben) részben megadott utasítások szerint.
+1. Log into the Azure Portal and click the **NEW** button in the bottom left corner.
+3. In the search box, type "python".
+4. In the search results, select **Django** (published by PTVS), then click **Create**.
+5. Configure the new Django app, such as creating a new App Service plan and a new resource group for it. Then, click **Create**.
+6. Configure Git publishing for your newly created web app by following the instructions at [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md).
 
-## Az alkalmazás áttekintése
+## Application Overview
 
-### A Git-tárház tartalma
+### Git repository contents
 
-Az alábbiakban áttekintjük a kiindulási Git-tárházban található fájlokat. A következő szakaszban ezek klónozását fogjuk elvégezni.
+Here's an overview of the files you'll find in the initial Git repository, which we'll clone in the next section.
 
     \app\__init__.py
     \app\forms.py
@@ -87,437 +88,437 @@ Az alábbiakban áttekintjük a kiindulási Git-tárházban található fájloka
     \DjangoWebProject\urls.py
     \DjangoWebProject\wsgi.py
 
-Az alkalmazás fő forrásai. 3 oldalból (index, névjegy, kapcsolat) áll egy fő elrendezéssel. Példák statikus tartalomra és parancsfájlokra: bootstrap, jquery, modernizr és respond.
+Main sources for the application. Consists of 3 pages (index, about, contact) with a master layout. Static content and scripts include bootstrap, jquery, modernizr and respond.
 
     \manage.py
 
-A helyi felügyelet és a fejlesztési kiszolgáló támogatása. Válassza ezt a lehetőséget például az alkalmazás helyi futtatásához vagy az adatbázis szinkronizálásához.
+Local management and development server support. Use this to run the application locally, synchronize the database, etc.
 
     \db.sqlite3
 
-Az alapértelmezett adatbázis. Tartalmazza az alkalmazás futtatásához szükséges táblákat, de nem tartalmaz felhasználókat (felhasználó az adatbázis szinkronizálásával hozható létre).
+Default database. Includes the necessary tables for the application to run, but does not contain any users (synchronize the database to create a user).
 
     \DjangoWebProject.pyproj
     \DjangoWebProject.sln
 
-A [Python Tools for Visual Studio] alkalmazással használható projektfájlok.
+Project files for use with [Python Tools for Visual Studio].
 
     \ptvs_virtualenv_proxy.py
 
-IIS-proxy a virtuális környezetekhez, valamint távoli hibaelhárítási támogatás a PTVS-hez.
+IIS proxy for virtual environments and PTVS remote debugging support.
 
     \requirements.txt
 
-Az alkalmazás számára szükséges külső csomagok. A telepítési parancsfájl elvégzi az ebben a fájlban felsorolt csomagok telepítését.
+External packages needed by this application. The deployment script will pip install the packages listed in this file.
 
     \web.2.7.config
     \web.3.4.config
 
-IIS-konfigurációs fájlok. A telepítési parancsfájl a megfelelő web.x.y.config fájlt fogja használni, és web.config fájlként fogja azt másolni.
+IIS configuration files. The deployment script will use the appropriate web.x.y.config and copy it as web.config.
 
-### Opcionális fájlok – A telepítés testre szabása
+### Optional files - Customizing deployment
 
 [AZURE.INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
-### Opcionális fájlok – Python-futtatókörnyezet
+### Optional files - Python runtime
 
 [AZURE.INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
-### További fájlok a kiszolgálón
+### Additional files on server
 
-Egyes fájlok megtalálhatóak ugyan a kiszolgálón, de nem lettek felvéve a Git-tárházba. Ezeket a telepítési parancsfájl hozza létre.
+Some files exist on the server but are not added to the git repository. These are created by the deployment script.
 
     \web.config
 
-IIS-konfigurációs fájl. Minden telepítéshez a web.x.y.config fájlból jön létre.
+IIS configuration file. Created from web.x.y.config on every deployment.
 
     \env\
 
-Python virtuális környezet. A telepítés során jön létre, ha a webalkalmazáson még nem található kompatibilis virtuális környezet. Megtörténik a requirements.txt fájlban felsorolt csomagok telepítése, a korábban már telepített csomagokat azonban a pip már nem telepíti újra.
+Python virtual environment. Created during deployment if a compatible virtual environment doesn't already exist on the web app. Packages listed in requirements.txt are pip installed, but pip will skip installation if the packages are already installed.
 
-A következő három szakaszban a webalkalmazások fejlesztéséről talál információkat, három különböző környezetben:
+The next 3 sections describe how to proceed with the web app development under 3 different environments:
 
-- Windows, Python Tools for Visual Studio alkalmazással
-- Windows, parancssorral
-- Mac/Linux, parancssorral
+- Windows, with Python Tools for Visual Studio
+- Windows, with command line
+- Mac/Linux, with command line
 
 
-## Webalkalmazás-fejlesztés – Windows – Python Tools for Visual Studio
+## Web app development - Windows - Python Tools for Visual Studio
 
-### A tárház klónozása
+### Clone the repository
 
-Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
+First, clone the repository using the URL provided on the Azure Portal. For more information, see [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md).
 
-Nyissa meg a tárház gyökérkönyvtárában található megoldásfájlt (.sln).
+Open the solution file (.sln) that is included in the root of the repository.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-solution-django.png)
 
-### Virtuális környezet létrehozása
+### Create virtual environment
 
-Most helyi telepítéshez tartozó virtuális környezetet hozunk létre. Kattintson a jobb gombbal a **Python Environments** (Python-környezetek) elemre, majd válassza az **Add Virtual Environment...** (Virtuális környezet hozzáadása...) lehetőséget.
+Now we'll create a virtual environment for local development. Right-click on **Python Environments** select **Add Virtual Environment...**.
 
-- Győződjön meg arról, hogy a környezet neve a következő: `env`.
+- Make sure the name of the environment is `env`.
 
-- Válassza ki az alapszintű értelmezőt. Győződjön meg arról, hogy a Python ugyanazon verzióját használja, mint ami a webalkalmazás esetében ki lett választva (ez az információ az Azure portálon lévő webalkalmazásának runtime.txt fájljában vagy az **Application Settings** (Alkalmazásbeállítások) panelen található meg).
+- Select the base interpreter. Make sure to use the same version of Python that is selected for your web app (in runtime.txt or the **Application Settings** blade of your web app in the Azure Portal).
 
-- Győződjön meg arról, hogy a csomagok letöltése és telepítése be van jelölve.
+- Make sure the option to download and install packages is checked.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-add-virtual-env-27.png)
 
-Kattintson a ** Create** (Létrehozás) gombra. Ezzel létrejön a virtuális környezet, valamint települnek a requirements.txt fájlban található függőségek.
+Click **Create**. This will create the virtual environment, and install dependencies listed in requirements.txt.
 
-### Felügyelő létrehozása
+### Create a superuser
 
-Az alkalmazáshoz tartozó adatbázishoz nincs megadva felügyelő. Az alkalmazás bejelentkezési funkciójának vagy a Django felügyeleti felületének használatához (ha úgy dönt, hogy engedélyezi) felügyelőt kell létrehozni.
+The database included with the application does not have any superuser defined. In order to use the sign-in functionality in the application, or the Django admin interface (if you decide to enable it), you'll need to create a superuser.
 
-A projektmappa parancssorából futtassa a következő parancsot:
+Run this from the command-line from your project folder:
 
     env\scripts\python manage.py createsuperuser
 
-Kövesse a megjelenő utasításokat a felhasználónév és a jelszó beállításához és egyéb műveletekhez.
+Follow the prompts to set the user name, password, etc.
 
-### Futtatás fejlesztési kiszolgálóval
+### Run using development server
 
-A hibakeresés elindításához nyomja le az F5 billentyűt, a webböngészőjében. Ekkor automatikusan a helyileg futtatott lap nyílik meg.
+Press F5 to start debugging, and your web browser will open automatically to the page running locally.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-Többek között töréspontokat állíthat be a forrásokban, vagy használhatja a figyelőablakokat. A különböző funkciókról további információkat [a Python Tools for Visual Studio dokumentációjában] talál.
+You can set breakpoints in the sources, use the watch windows, etc. See the [Python Tools for Visual Studio Documentation] for more information on the various features.
 
-### Módosítások végrehajtása
+### Make changes
 
-Most kísérletezhet azzal, hogy módosításokat hajt végre az alkalmazásforrásokon és/vagy -sablonokon.
+Now you can experiment by making changes to the application sources and/or templates.
 
-A módosítások tesztelését követően véglegesítse azokat a Git-tárházba:
+After you've tested your changes, commit them to the Git repository:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-commit-django.png)
 
-### További csomagok telepítése
+### Install more packages
 
-Az alkalmazása a Python és a Django eszközön kívüli függőségekkel is rendelkezhet.
+Your application may have dependencies beyond Python and Django.
 
-A pip használatával további csomagokat is telepíthet. Csomag telepítéséhez kattintson a jobb gombbal a virtuális környezetre, majd válassza az **Install Python Package** (Python-csomag telepítése) lehetőséget.
+You can install additional packages using pip. To install a package, right-click on the virtual environment and select **Install Python Package**.
 
-Például az Azure Storage, Service Bus és további Azure-szolgáltatásokhoz hozzáférést biztosító, Pythonhoz készült Azure SDK telepítéséhez adja meg az `azure` karakterláncot:
+For example, to install the Azure SDK for Python, which gives you access to Azure storage, service bus and other Azure services, enter `azure`:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-install-package-dialog.png)
 
-Kattintson a jobb gombbal a virtuális környezetre, majd a requirements.txt fájl frissítéséhez válassza a **Generate requirements.txt** (requirements.txt fájl létrehozása) lehetőséget.
+Right-click on the virtual environment and select **Generate requirements.txt** to update requirements.txt.
 
-Ezt követően véglegesítse a requirements.txt fájl módosításait a Git-tárházban.
+Then, commit the changes to requirements.txt to the Git repository.
 
-### Üzembe helyezés az Azure-ban
+### Deploy to Azure
 
-Az üzembe helyezés indításához kattintson a **Sync** (Szinkronizálás) vagy a **Push** (Leküldés) lehetőségre. A szinkronizálás lekérési és leküldési funkcióval is rendelkezik.
+To trigger a deployment, click on **Sync** or **Push**. Sync does both a push and a pull.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-git-push.png)
 
-Az első üzembe helyezés hosszabb időt vesz igénybe, mivel ennek során megtörténik többek között a virtuális környezet létrehozása és a csomagok telepítése is.
+The first deployment will take some time, as it will create a virtual environment, install packages, etc.
 
-A Visual Studio nem jeleníti meg az üzembe helyezés állapotát. A kimenet áttekintéséhez lásd: [Hibaelhárítás – Üzembe helyezés](#troubleshooting-deployment).
+Visual Studio doesn't show the progress of the deployment. If you'd like to review the output, see the section on [Troubleshooting - Deployment](#troubleshooting-deployment).
 
-A módosítások megtekintéséhez lépjen az Azure URL-címére.
+Browse to the Azure URL to view your changes.
 
 
-## Webalkalmazás-fejlesztés – Windows – parancssor
+## Web app development - Windows - command line
 
-### A tárház klónozása
+### Clone the repository
 
-Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
+First, clone the repository using the URL provided on the Azure Portal, and add the Azure repository as a remote. For more information, see [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
-### Virtuális környezet létrehozása
+### Create virtual environment
 
-Fejlesztői célra létre fogunk hozni egy új virtuális környezetet (ezt ne vegye fel a tárházba). A Python virtuális környezetei nem helyezhetőek át, így az alkalmazáson dolgozó összes fejlesztő helyileg hozza létre a sajátját.
+We'll create a new virtual environment for development purposes (do not add it to the repository). Virtual environments in Python are not relocatable, so every developer working on the application will create their own locally.
 
-Győződjön meg arról, hogy a Python ugyanazon verzióját használja, mint ami a webalkalmazás esetében ki lett választva (ez az információ az Azure portálon lévő webalkalmazásának runtime.txt fájljában vagy az Application Settings (Alkalmazásbeállítások) panelen található meg).
+Make sure to use the same version of Python that is selected for your web app (in runtime.txt or the Application Settings blade of your web app in the Azure Portal).
 
-Python 2.7 esetén:
+For Python 2.7:
 
     c:\python27\python.exe -m virtualenv env
 
-Python 3.4 esetén:
+For Python 3.4:
 
     c:\python34\python.exe -m venv env
 
-Telepítse az alkalmazáshoz esetlegesen szükséges külső csomagokat. A csomagok virtuális környezetben történő telepítéséhez a tárház gyökérkönyvtárában található requirements.txt fájlt használhatja:
+Install any external packages required by your application. You can use the requirements.txt file at the root of the repository to install the packages in your virtual environment:
 
     env\scripts\pip install -r requirements.txt
 
-### Felügyelő létrehozása
+### Create a superuser
 
-Az alkalmazáshoz tartozó adatbázishoz nincs megadva felügyelő. Az alkalmazás bejelentkezési funkciójának vagy a Django felügyeleti felületének használatához (ha úgy dönt, hogy engedélyezi) felügyelőt kell létrehozni.
+The database included with the application does not have any superuser defined. In order to use the sign-in functionality in the application, or the Django admin interface (if you decide to enable it), you'll need to create a superuser.
 
-A projektmappa parancssorából futtassa a következő parancsot:
+Run this from the command-line from your project folder:
 
     env\scripts\python manage.py createsuperuser
 
-Kövesse a megjelenő utasításokat a felhasználónév és a jelszó beállításához és egyéb műveletekhez.
+Follow the prompts to set the user name, password, etc.
 
-### Futtatás fejlesztési kiszolgálóval
+### Run using development server
 
-A következő paranccsal indíthatja el az alkalmazást egy fejlesztési kiszolgáló alatt:
+You can launch the application under a development server with the following command:
 
     env\scripts\python manage.py runserver
 
-A konzolon megjelenik az URL-cím és az a port, amelyen a kiszolgáló figyel:
+The console will display the URL and port the server listens to:
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-run-local-django.png)
 
-Ezt követően nyissa meg a webböngészőjében ezt az URL-címet.
+Then, open your web browser to that URL.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-### Módosítások végrehajtása
+### Make changes
 
-Most kísérletezhet azzal, hogy módosításokat hajt végre az alkalmazásforrásokon és/vagy -sablonokon.
+Now you can experiment by making changes to the application sources and/or templates.
 
-A módosítások tesztelését követően véglegesítse azokat a Git-tárházba:
+After you've tested your changes, commit them to the Git repository:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
 
-### További csomagok telepítése
+### Install more packages
 
-Az alkalmazása a Python és a Django eszközön kívüli függőségekkel is rendelkezhet.
+Your application may have dependencies beyond Python and Django.
 
-A pip használatával további csomagokat is telepíthet. Például az Azure Storage, Service Bus és további Azure-szolgáltatásokhoz hozzáférést biztosító, Pythonhoz készült Azure SDK telepítéséhez írja be a következőt:
+You can install additional packages using pip. For example, to install the Azure SDK for Python, which gives you access to Azure storage, service bus and other Azure services, type:
 
     env\scripts\pip install azure
 
-Győződjön meg arról, hogy frissítette a requirements.txt fájlt:
+Make sure to update requirements.txt:
 
     env\scripts\pip freeze > requirements.txt
 
-Véglegesítse a módosításokat:
+Commit the changes:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Üzembe helyezés az Azure-ban
+### Deploy to Azure
 
-Az üzembe helyezés indításához küldje le a módosításokat az Azure-ba:
+To trigger a deployment, push the changes to Azure:
 
     git push azure master
 
-Itt megtekinthető a telepítési parancsfájl kimenete, amely tartalmazza a virtuális környezet létrehozását, a csomagok telepítését és a web.config fájl létrehozását.
+You will see the output of the deployment script, including virtual environment creation, installation of packages, creation of web.config.
 
-A módosítások megtekintéséhez lépjen az Azure URL-címére.
+Browse to the Azure URL to view your changes.
 
 
-## Webalkalmazás-fejlesztés – Mac/Linux – parancssor
+## Web app development - Mac/Linux - command line
 
-### A tárház klónozása
+### Clone the repository
 
-Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
+First, clone the repository using the URL provided on the Azure Portal, and add the Azure repository as a remote. For more information, see [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
-### Virtuális környezet létrehozása
+### Create virtual environment
 
-Fejlesztői célra létre fogunk hozni egy új virtuális környezetet (ezt ne vegye fel a tárházba). A Python virtuális környezetei nem helyezhetőek át, így az alkalmazáson dolgozó összes fejlesztő helyileg hozza létre a sajátját.
+We'll create a new virtual environment for development purposes (do not add it to the repository). Virtual environments in Python are not relocatable, so every developer working on the application will create their own locally.
 
-Győződjön meg arról, hogy a Python ugyanazon verzióját használja, mint ami a webalkalmazás esetében ki lett választva (ez az információ az Azure portálon lévő webalkalmazásának runtime.txt fájljában vagy az Application Settings (Alkalmazásbeállítások) panelen található meg).
+Make sure to use the same version of Python that is selected for your web app (in runtime.txt or the Application Settings blade of your web app in the Azure Portal).
 
-Python 2.7 esetén:
+For Python 2.7:
 
     python -m virtualenv env
 
-Python 3.4 esetén:
+For Python 3.4:
 
     python -m venv env
 
-vagy
+or
 
     pyvenv env
 
-Telepítse az alkalmazáshoz esetlegesen szükséges külső csomagokat. A csomagok virtuális környezetben történő telepítéséhez a tárház gyökérkönyvtárában található requirements.txt fájlt használhatja:
+Install any external packages required by your application. You can use the requirements.txt file at the root of the repository to install the packages in your virtual environment:
 
     env/bin/pip install -r requirements.txt
 
-### Felügyelő létrehozása
+### Create a superuser
 
-Az alkalmazáshoz tartozó adatbázishoz nincs megadva felügyelő. Az alkalmazás bejelentkezési funkciójának vagy a Django felügyeleti felületének használatához (ha úgy dönt, hogy engedélyezi) felügyelőt kell létrehozni.
+The database included with the application does not have any superuser defined. In order to use the sign-in functionality in the application, or the Django admin interface (if you decide to enable it), you'll need to create a superuser.
 
-A projektmappa parancssorából futtassa a következő parancsot:
+Run this from the command-line from your project folder:
 
     env/bin/python manage.py createsuperuser
 
-Kövesse a megjelenő utasításokat a felhasználónév és a jelszó beállításához és egyéb műveletekhez.
+Follow the prompts to set the user name, password, etc.
 
-### Futtatás fejlesztési kiszolgálóval
+### Run using development server
 
-A következő paranccsal indíthatja el az alkalmazást egy fejlesztési kiszolgáló alatt:
+You can launch the application under a development server with the following command:
 
     env/bin/python manage.py runserver
 
-A konzolon megjelenik az URL-cím és az a port, amelyen a kiszolgáló figyel:
+The console will display the URL and port the server listens to:
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-run-local-django.png)
 
-Ezt követően nyissa meg a webböngészőjében ezt az URL-címet.
+Then, open your web browser to that URL.
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-browser-django.png)
 
-### Módosítások végrehajtása
+### Make changes
 
-Most kísérletezhet azzal, hogy módosításokat hajt végre az alkalmazásforrásokon és/vagy -sablonokon.
+Now you can experiment by making changes to the application sources and/or templates.
 
-A módosítások tesztelését követően véglegesítse azokat a Git-tárházba:
+After you've tested your changes, commit them to the Git repository:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
 
-### További csomagok telepítése
+### Install more packages
 
-Az alkalmazása a Python és a Django eszközön kívüli függőségekkel is rendelkezhet.
+Your application may have dependencies beyond Python and Django.
 
-A pip használatával további csomagokat is telepíthet. Például az Azure Storage, Service Bus és további Azure-szolgáltatásokhoz hozzáférést biztosító, Pythonhoz készült Azure SDK telepítéséhez írja be a következőt:
+You can install additional packages using pip. For example, to install the Azure SDK for Python, which gives you access to Azure storage, service bus and other Azure services, type:
 
     env/bin/pip install azure
 
-Győződjön meg arról, hogy frissítette a requirements.txt fájlt:
+Make sure to update requirements.txt:
 
     env/bin/pip freeze > requirements.txt
 
-Véglegesítse a módosításokat:
+Commit the changes:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### Üzembe helyezés az Azure-ban
+### Deploy to Azure
 
-Az üzembe helyezés indításához küldje le a módosításokat az Azure-ba:
+To trigger a deployment, push the changes to Azure:
 
     git push azure master
 
-Itt megtekinthető a telepítési parancsfájl kimenete, amely tartalmazza a virtuális környezet létrehozását, a csomagok telepítését és a web.config fájl létrehozását.
+You will see the output of the deployment script, including virtual environment creation, installation of packages, creation of web.config.
 
-A módosítások megtekintéséhez lépjen az Azure URL-címére.
+Browse to the Azure URL to view your changes.
 
 
-## Hibaelhárítás – Csomagok telepítése
+## Troubleshooting - Package Installation
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
 
-## Hibaelhárítás – Virtuális környezet
+## Troubleshooting - Virtual Environment
 
 [AZURE.INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
 
-## Hibaelhárítás – Statikus fájlok
+## Troubleshooting - Static Files
 
-A Django statikus fájlokat gyűjt. Ez azt jelenti, hogy az összes statikus fájlt eredeti helyükről egyetlen mappába másolja. A jelen alkalmazás esetében a másolás helye: `/static`.
+Django has the concept of collecting static files. This takes all the static files from their original location and copies them to a single folder. For this application, they are copied to `/static`.
 
-Ez azért történik, mert a statikus fájlok különböző Django-alkalmazásokból származhatnak. A Django felügyeleti felületeiről származó statikus fájlok például a virtuális környezetben, egy Django-könyvtár almappájában találhatóak. A jelen alkalmazásban megadott statikus fájlok itt találhatóak: `/app/static`. Ahogy egyre több Django-alkalmazást használ, egyre több helyen lesznek statikus fájlok.
+This is done because static files may come from different Django 'apps'. For example, the static files from the Django admin interfaces are located in a Django library subfolder in the virtual environment. Static files defined by this application are located in `/app/static`. As you use more Django 'apps', you'll have static files located in multiple places.
 
-Az alkalmazás hibakeresési módban történő futtatásakor az alkalmazás az eredeti helyükről szolgálja ki a statikus fájlokat.
+When running the application in debug mode, the application serves the static files from their original location.
 
-Az alkalmazás kiadási módban történő futtatásakor az alkalmazás **nem** szolgálja ki a statikus fájlokat. A fájlok kiszolgálása a webkiszolgáló feladata. A jelen alkalmazás esetében az IIS a következő helyről szolgálja ki a statikus fájlokat: `/static`.
+When running the application in release mode, the application does **not** serve the static files. It is the responsibility of the web server to serve the files. For this application, IIS will serve the static files from `/static`.
 
-A statikus fájlok összegyűjtése automatikusan történik az üzembe helyezési parancsfájl futtatása során, az előzőleg összegyűjtött fájlok törlésével. Ez azt jelenti, hogy a fájlok összegyűjtése minden üzembe helyezés során megtörténik, ami lelassítja kissé a folyamatot, ugyanakkor biztosítja, hogy a potenciális biztonsági kockázatot jelentő elavult fájlok ne legyen elérhetőek.
+The collection of static files is done automatically as part of the deployment script, clearing previously collected files. This means the collection occurs on every deployment, slowing down deployment a bit, but it ensures that obsolete files won't be available, avoiding a potential security issue.
 
-Ha ki szeretné hagyni a Django-alkalmazáshoz a statikus fájlok összegyűjtését, használja ezt:
+If you want to skip collection of static files for your Django application:
 
     \.skipDjango
 
-Ezt követően manuálisan kell elvégeznie a gyűjtést a helyi gépen:
+Then you'll need to do the collection manually on your local machine:
 
     env\scripts\python manage.py collectstatic
 
-Ezután távolítsa el a `\static` mappát a `.gitignore` elemből, és vegye fel azt a Git-tárházba.
+Then remove the `\static` folder from `.gitignore` and add it to the Git repository.
 
 
-## Hibaelhárítás – Beállítások
+## Troubleshooting - Settings
 
-Az alkalmazás számos beállítása módosítható a következő helyen: `DjangoWebProject/settings.py`.
+Various settings for the application can be changed in `DjangoWebProject/settings.py`.
 
-A hibakeresési mód a fejlesztők kényelme érdekében engedélyezve van. Ez szerencsés módon azzal is jár, hogy helyi futtatáskor anélkül tekintheti meg a képeket és az egyéb statikus tartalmakat, hogy a statikus fájlokat össze kellene gyűjtenie.
+For developer convenience, debug mode is enabled. One nice side effect of that is you'll be able to see images and other static content when running locally, without having to collect static files.
 
-A hibakeresési mód letiltása:
+To disable debug mode:
 
     DEBUG = False
 
-Ha a hibakeresés le van tiltva, az `ALLOWED_HOSTS` értékét módosítani kell úgy, hogy tartalmazza az Azure-gazdagép nevét. Példa:
+When debug is disabled, the value for `ALLOWED_HOSTS` needs to be updated to include the Azure host name. For example:
 
     ALLOWED_HOSTS = (
         'pythonapp.azurewebsites.net',
     )
 
-vagy az engedélyezéshez:
+or to enable any:
 
     ALLOWED_HOSTS = (
         '*',
     )
 
-A gyakorlatban lehetséges, hogy olyan összetettebb műveleteket is végre kíván hajtani, mint a hibakeresési és a kiadási mód közötti váltás, illetve a gazdagépnév beszerzése.
+In practice, you may want to do something more complex to deal with switching between debug and release mode, and getting the host name.
 
-A környezeti változókat az Azure portál **CONFIGURE** (KONFIGURÁLÁS) lapjának **app settings** (alkalmazásbeállítások) szakaszában állíthatja be.  Ez olyan értékek beállításakor lehet hasznos, amelyeket esetleg nem kíván megjeleníteni a forrásokban (például kapcsolati karakterláncok, jelszavak stb.), illetve amelyeket az Azure és a helyi gép esetében eltérően kíván megadni. A `settings.py` elemben az `os.getenv` használatával kérdezhetők le a környezeti változók.
-
-
-## Adatbázis használata
-
-Az alkalmazásban egy sqlite-adatbázis található. Fejlesztési célra ez egy kényelmes és hasznos alapértelmezett adatbázis, mivel nem igényel szinte semmilyen beállítást. Az adatbázis a projektmappa db.sqlite3 fájljában található.
-
-Az Azure a Django-alkalmazásokból könnyen használható adatbázis-szolgáltatásokat kínál. Az [SQL Database] és a [MySQL] Django-alkalmazásból történő használatához kapcsolódó oktatóanyagokban szerepelnek az adatbázis-szolgáltatás létrehozásához és az adatbázis beállításainak `DjangoWebProject/settings.py` elemben történő módosításához szükséges lépések, valamint a telepítéshez szükséges könyvtárak.
-
-Természetesen ha Ön szeretné kezelni a saját adatbázis-kiszolgálóit, az Azure platformon futó Windows vagy Linux rendszerű virtuális gépek használatával megteheti azt.
+You can set environment variables through the Azure portal **CONFIGURE** page, in the **app settings** section.  This can be useful for setting values that you may not want to appear in the sources (connection strings, passwords, etc), or that you want to set differently between Azure and your local machine. In `settings.py`, you can query the environment variables using `os.getenv`.
 
 
-## A Django felügyeleti felülete
+## Using a Database
 
-Amikor hozzákezd a modelljei felépítéséhez, fel fogja tölteni az adatbázist adatokkal. A Django felügyeleti felületének használatával egyszerűen, interaktív módon vehet fel és szerkeszthet tartalmakat.
+The database that is included with the application is a sqlite database. This is a convenient and useful default database to use for development, as it requires almost no setup. The database is stored in the db.sqlite3 file in the project folder.
 
-A felügyeleti felülethez tartozó kód az alkalmazásforrásokban megjegyzésként szerepel, de mivel egyértelműen meg van jelölve, könnyen engedélyezheti azt (keressen rá az „admin” kifejezésre).
+Azure provides database services which are easy to use from a Django application. Tutorials for using [SQL Database] and [MySQL] from a Django application show the steps necessary to create the database service, change the database settings in `DjangoWebProject/settings.py`, and the libraries required to install.
 
-Miután engedélyezte, szinkronizálja az adatbázist, futtassa az alkalmazást, majd lépjen a következő helyre: `/admin`.
-
-
-## Következő lépések
-
-Az alábbi hivatkozásokat követve tudhat meg többet a Django és a Python Tools for Visual Studio alkalmazásokról:
-
-- [A Django dokumentációja]
-- [a Python Tools for Visual Studio dokumentációjában]
-
-Információk az SQL Database és a MySQL használatáról:
-
-- [Django and MySQL on Azure with Python Tools for Visual Studio (Django és MySQL az Azure-ban, Python Tools for Visual Studio alkalmazással)]
-- [Django and SQL Database on Azure with Python Tools for Visual Studio (Django és SQL Database az Azure-ban, Python Tools for Visual Studio alkalmazással)]
-
-További információ: [Python fejlesztői központ](/develop/python/).
+Of course, if you prefer to manage your own database servers, you can do so using Windows or Linux virtual machines running on Azure.
 
 
-## A változások
-* Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714)
+## Django Admin Interface
+
+Once you start building your models, you'll want to populate the database with some data. An easy way to do add and edit content interactively is to use the Django administration interface.
+
+The code for the admin interface is commented out in the application sources, but it's clearly marked so you can easily enable it (search for 'admin').
+
+After it's enabled, synchronize the database, run the application and navigate to `/admin`.
+
+
+## Next Steps
+
+Follow these links to learn more about Django and Python Tools for Visual Studio:
+
+- [Django Documentation]
+- [Python Tools for Visual Studio Documentation]
+
+For information on using SQL Database and MySQL:
+
+- [Django and MySQL on Azure with Python Tools for Visual Studio]
+- [Django and SQL Database on Azure with Python Tools for Visual Studio]
+
+For more information, see the [Python Developer Center](/develop/python/).
+
+
+## What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
 <!--Link references-->
-[Django and MySQL on Azure with Python Tools for Visual Studio (Django és MySQL az Azure-ban, Python Tools for Visual Studio alkalmazással)]: web-sites-python-ptvs-django-mysql.md
-[Django and SQL Database on Azure with Python Tools for Visual Studio (Django és SQL Database az Azure-ban, Python Tools for Visual Studio alkalmazással)]: web-sites-python-ptvs-django-sql.md
+[Django and MySQL on Azure with Python Tools for Visual Studio]: web-sites-python-ptvs-django-mysql.md
+[Django and SQL Database on Azure with Python Tools for Visual Studio]: web-sites-python-ptvs-django-sql.md
 [SQL Database]: web-sites-python-ptvs-django-sql.md
 [MySQL]: web-sites-python-ptvs-django-mysql.md
 
 <!--External Link references-->
-[Python 2.7-hez készült Azure SDK]: http://go.microsoft.com/fwlink/?linkid=254281
-[Python 3.4-hez készült Azure SDK]: http://go.microsoft.com/fwlink/?linkid=516990
+[Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
+[Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?linkid=516990
 [python.org]: http://www.python.org/
 [Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[a Python Tools for Visual Studio dokumentációjában]: http://aka.ms/ptvsdocs
-[A Django dokumentációja]: https://www.djangoproject.com/
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Django Documentation]: https://www.djangoproject.com/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
-A nem SSL port engedélyezéséhez [tallózzon](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) a gyorsítótárhoz az [Azure Portalon](https://portal.azure.com), és kattintson a **Beállítások > Speciális beállítások** elemre. Kattintson a **Nem** lehetőségre a **Hozzáférés engedélyezése csak SSL-en keresztül** beállításnál a **Speciális beállítások panelen**, majd kattintson a **Mentés** gombra.
+To enable the non-SSL port, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal](https://portal.azure.com) and click **Settings > Advanced settings**. Click **No** for **Allow access only via SSL** on the **Advanced settings blade** and then click **Save**.
 
-![A Redis Cache-gyorsítótár beállításai](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
+![Redis cache settings](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 
 
 

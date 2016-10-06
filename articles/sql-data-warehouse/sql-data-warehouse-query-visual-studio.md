@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Az Azure SQL Data Warehouse lekérdezése (Visual Studio) | Microsoft Azure"
-   description="Az SQL Data Warehouse lekérdezése a Visual Studióval."
+   pageTitle="Query Azure SQL Data Warehouse (Visual Studio) | Microsoft Azure"
+   description="Query SQL Data Warehouse with Visual Studio."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,7 +16,8 @@
    ms.date="06/16/2016"
    ms.author="sonyama;barbkess"/>
 
-# Az Azure SQL Data Warehouse lekérdezése (Visual Studio)
+
+# Query Azure SQL Data Warehouse (Visual Studio)
 
 > [AZURE.SELECTOR]
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
@@ -24,79 +25,79 @@
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 - [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
-A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL Data Warehouse-t. Ez a módszer a Visual Studio SQL Server Data Tools (SSDT) bővítményét használja. 
+Use Visual Studio to query Azure SQL Data Warehouse in just a few minutes. This method uses the SQL Server Data Tools (SSDT) extension in Visual Studio. 
 
-## Előfeltételek
+## Prerequisites
 
-Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
+To use this tutorial, you need:
 
-+ Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][] című cikkben találja.
-+ SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [Installing Visual Studio and SSDT][] című cikkben olvashat bővebben.
-+ Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
++ An existing SQL data warehouse. To create one, see [Create a SQL Data Warehouse][].
++ SSDT for Visual Studio. If you have Visual Studio, you probably already have this. For installation instructions and options, see [Installing Visual Studio and SSDT][].
++ The fully qualified SQL server name. To find this, see [Connect to SQL Data Warehouse][].
 
-## 1. Csatlakozás az SQL Data Warehouse-hoz
+## 1. Connect to your SQL Data Warehouse
 
-1. Nyissa meg a Visual Studio 2013-at vagy 2015-öt.
-2. Nyissa meg az SQL Server Object Explorert. Ehhez válassza a következőket: **View** (Nézet)  > **SQL Server Object Explorer**.
+1. Open Visual Studio 2013 or 2015.
+2. Open SQL Server Object Explorer. To do this, select **View** > **SQL Server Object Explorer**.
 
     ![SQL Server Object Explorer][1]
 
-3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
+3. Click the **Add SQL Server** icon.
 
-    ![SQL Server hozzáadása][2]
+    ![Add SQL Server][2]
 
-4. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.
+4. Fill in the fields in the Connect to Server window.
 
-    ![Csatlakozás kiszolgálóhoz][3]
+    ![Connect to Server][3]
 
-    - **Kiszolgálónév**. Adja meg a korábban azonosított **kiszolgálónevet**.
-    - **Hitelesítés**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
-    - **Felhasználónév** és **Jelszó**. Amennyiben az SQL Server-hitelesítést választotta, adja meg felhasználónevét és jelszavát.
-    - Kattintson a **Csatlakozás** gombra.
+    - **Server name**. Enter the **server name** previously identified.
+    - **Authentication**. Select **SQL Server Authentication** or **Active Directory Integrated Authentication**.
+    - **User Name** and **Password**. Enter user name and password if SQL Server Authentication was selected above.
+    - Click **Connect**.
 
-5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
+5. To explore, expand your Azure SQL server. You can view the databases associated with the server. Expand AdventureWorksDW to see the tables in your sample database.
 
-    ![Az AdventureWorksDW áttekintése][4]
+    ![Explore AdventureWorksDW][4]
 
-## 2. Mintalekérdezés futtatása
+## 2. Run a sample query
 
-Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekérdezést.
+Now that a connection has been established to your database, let's write a query.
 
-1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
+1. Right-click your database in SQL Server Object Explorer.
 
-2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
+2. Select **New Query**. A new query window opens.
 
-    ![Új lekérdezés][5]
+    ![New query][5]
 
-3. Másolja be ezt a TSQL-lekérdezést a lekérdezési ablakba:
+3. Copy this TSQL query into the query window:
 
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
 
-4. Futtassa a lekérdezést. Ehhez kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL`+`SHIFT`+`E`.
+4. Run the query. To do this, click the green arrow or use the following shortcut: `CTRL`+`SHIFT`+`E`.
 
-    ![A lekérdezés futtatása][6]
+    ![Run query][6]
 
-5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
+5. Look at the query results. In this example, the FactInternetSales table has 60398 rows.
 
-    ![Lekérdezés eredményei][7]
+    ![Query results][7]
 
-## Következő lépések
+## Next steps
 
-Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, próbálja [megjeleníteni az adatokat a PowerBI használatával][].
+Now that you can connect and query, try [visualizing the data with PowerBI][].
 
-A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg az [Authenticate to SQL Data Warehouse][] (Hitelesítés az SQL Data Warehouse-ban) című cikket.
+To configure your environment for Azure Active Directory authentication, see [Authenticate to SQL Data Warehouse][].
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 [Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
 [Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[megjeleníteni az adatokat a PowerBI használatával]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -110,6 +111,6 @@ A környezet Azure Active Directory-hitelesítésre történő konfigurálásáv
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

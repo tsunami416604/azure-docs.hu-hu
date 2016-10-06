@@ -1,7 +1,7 @@
 <properties
-    pageTitle="A Xamarinhoz készült Mobile Services bemutatása | Microsoft Azure"
+    pageTitle="Get Started with Mobile Services for Xamarin.Android | Microsoft Azure"
     writer="craigd"
-    description="Ismerje meg, hogyan használható az Azure Mobile Services a Xamarin.Android-alkalmazásával."
+    description="Learn how to use Azure Mobile Services with your Xamarin.Android app."
     documentationCenter="xamarin"
     authors="lindydonna"
     manager="dwrede"
@@ -17,105 +17,106 @@
     ms.date="07/21/2016"
     ms.author="donnam"/>
 
-# <a name="getting-started"></a>A Mobile Services használatának első lépései
+
+# <a name="getting-started"></a>Get started with Mobile Services
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> A témakör megfelelő Mobile Apps-verziójáért lásd: [Create a Xamarin.Android App](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md) (Xamarin.Android-alkalmazás létrehozása).
+> For the equivalent Mobile Apps version of this topic, see [Create a Xamarin.Android App](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md).
 
-Az oktatóanyag bemutatja, hogyan adhat felhőalapú háttérszolgáltatást Xamarin.Android-alkalmazásokhoz az Azure Mobile Services használatával. Az oktatóprogram során létrehoz egy új mobilszolgáltatást, valamint egy egyszerű *Teendőlista* alkalmazást, amely az alkalmazásadatokat az új mobilszolgáltatásban tárolja.
+This tutorial shows you how to add a cloud-based backend service to a Xamarin.Android app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple *To do list* app that stores app data in the new mobile service.
 
-Ha inkább a videót tekintené meg, az alábbi klip ugyanazokat a lépéseket tartalmazza, mint az oktatóanyag.
+If you prefer to watch a video, the clip below follows the same steps on this tutorial.
 
-Videó: „Getting Started with Xamarin and Azure Mobile Services” (A Xamarin és az Azure Mobile Services használatának első lépései) Craig Dunn-nal, a Xamarin fejlesztői szakértőjével (hossz: 10:05 perc)
+Video: "Getting Started with Xamarin and Azure Mobile Services" with Craig Dunn, developer evangelist for Xamarin  (duration: 10:05 min)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
 
-A kész alkalmazásról az alábbiakban látható egy képernyőkép:
+A screenshot from the completed app is below:
 
 ![][0]
 
-Az oktatóprogram elvégzéséhez Xcode és OS X-hez készült Xamarin Studio vagy Windowson futó Visual Studio szükséges egy hálózathoz csatlakozó Mac géppel. A teljes telepítési útmutatás itt található: [Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése). 
+Completing this tutorial requires XCode and Xamarin Studio for OS X or Visual Studio on Windows with a networked Mac. Complete installation instructions are on [Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
 
-A letöltött gyorsútmutató-projekt tartalmazza az Azure Mobile Services Xamarin.Androidhoz készült összetevőjét. Ez a projekt az Android 4.2-es és újabb verzióit célozza, de a Mobile Services SDK-hoz csak az Android 2.2-es és újabb verziói szükségesek.
+The downloaded quickstart project contains the Azure Mobile services component for Xamarin.Android. While this project targets Android 4.2 or a later version, the Mobile Services SDK requires only Android 2.2 or a later version.
 
-> [AZURE.IMPORTANT] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, regisztráljon az Azure-próbaverzióra, és a hozzá kapott akár 10 ingyenes mobilszolgáltatást a próbaidőszak után is használhatja. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5).
+> [AZURE.IMPORTANT] To complete this tutorial, you need an Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free mobile services that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5).
 
-## <a name="create-new-service"> </a>Új mobilszolgáltatás létrehozása
+## <a name="create-new-service"> </a>Create a new mobile service
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
-## Új Xamarin.Android-alkalmazás létrehozása
+## Create a new Xamarin.Android app
 
-Miután létrehozta a mobilszolgáltatást, a klasszikus Azure portálon található egyszerű gyors üzembe helyezés szolgáltatással létrehozhat egy új alkalmazást, vagy módosíthat egy meglévő alkalmazást a mobilszolgáltatáshoz való csatlakozáshoz.
+Once you have created your mobile service, you can follow an easy quickstart in the Azure classic portal to either create a new app or modify an existing app to connect to your mobile service.
 
-Ebben a szakaszban egy, a mobilszolgáltatásához kapcsolódó új Xamarin.Android-alkalmazást hoz létre.
+In this section you will create a new Xamarin.Android app that is connected to your mobile service.
 
-1.  A [klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
+1.  In the [Azure classic portal], click **Mobile Services**, and then click the mobile service that you just created.
 
-2. A gyors üzembe helyezés lap **Choose platform** (Platform kiválasztása) részében kattintson a **Xamarin.Android** elemre, és bontsa ki a **Create a new Xamarin.Android app** (Új Xamarin.Android-alkalmazás létrehozása) részt.
+2. In the quickstart tab, click **Xamarin.Android** under **Choose platform** and expand **Create a new Android app**.
 
     ![][6]
 
-    Ez megjeleníti a mobilszolgáltatáshoz kapcsolódó új Xamarin.Android-alkalmazás létrehozásának három egyszerű lépését.
+    This displays the three easy steps to create a Xamarin.Android app connected to your mobile service.
 
     ![][7]
 
-3. Kattintson a **Create TodoItem table** (TodoItem tábla létrehozása) elemre az alkalmazásadatok tárolására szolgáló tábla létrehozásához.
+3. Click **Create TodoItem table** to create a table to store app data.
 
-4. A **Download and run app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
+4. Under **Download and run app**, click **Download**.
 
-    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
+    This downloads the project for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
 
-## Az Android-alkalmazás futtatása
+## Run your Android app
 
-Az oktatóanyag utolsó szakasza az új alkalmazás felépítéséből és futtatásából áll.
+The final stage of this tutorial is to build and run your new app.
 
-1. Keresse meg a helyet, ahová a tömörített projektfájlokat mentette, és tömörítse ki a fájlokat a számítógépre.
+1. Browse to the location where you saved the compressed project files and expand the files on your computer.
 
-2. A Xamarin Studióban vagy a Visual Studióban kattintson a **File** (Fájl), majd az **Open** (Megnyitás) gombra, keresse meg a kitömörített mintafájlokat, majd válassza ki és nyissa meg a **XamarinTodoQuickStart.Android.sln** fájlt.
+2. In Xamarin Studio or Visual Studio, click **File** then **Open**, navigate to the uncompressed sample files, and select **XamarinTodoQuickStart.Android.sln** to open it.
 
-3. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás elindításához. A rendszer megkéri, hogy válasszon egy emulátort vagy egy csatlakoztatott USB-eszközt.
+3. Press the **Run** button to build the project and start the app. You will be asked to select an emulator or a connected USB device.
 
-    > [AZURE.NOTE] A projekt az Android-emulátorban való futtatásához meg kell határoznia legalább egy Android virtuális eszközt (AVD). Ezeket az eszközöket az AVD Manager alkalmazással hozhatja létre és kezelheti.
+    > [AZURE.NOTE] To be able to run the project in the Android emulator, you must define at least one Android Virtual Device (AVD). Use the AVD Manager to create and manage these devices.
 
-4. Az alkalmazásban írjon be egy jelentéssel bíró szöveget, például _Az oktatóanyag befejezése_, majd kattintson az **Add** (Hozzáadás) gombra.
+4. In the app, type meaningful text, such as _Complete the tutorial_, and then click **Add**.
 
     ![][10]
 
-    Ez egy POST kérést küld az Azure-ban futtatott új mobilszolgáltatásnak. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A mobilszolgáltatás visszaadja a táblában tárolt elemeket, amelyek egy listában jelennek meg.
+    This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
 
     > [AZURE.NOTE]
-    > A mobilszolgáltatáshoz az adatok lekérdezése és beszúrása céljából hozzáférő kódot át is tekintheti a ToDoActivity.cs C# fájlban.
+    > You can review the code that accesses your mobile service to query and insert data, which is found in the ToDoActivity.cs C# file.
 
-6. A [klasszikus Azure portál] visszatérve kattintson a **Data** (Adatok) fülre, majd a **TodoItems** táblára.
+6. Back in the [Azure classic portal], click the **Data** tab and then click the **TodoItems** table.
 
     ![][11]
 
-    Így tallózással kiválaszthatja az alkalmazás által a táblába beszúrt adatokat.
+    This lets you browse the data inserted by the app into the table.
 
     ![][12]
 
-## <a name="next-steps"> </a>Következő lépések
-Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
+## <a name="next-steps"> </a>Next Steps
+Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services:
 
-* [Bevezetés az offline adatszinkronizálás használatába] Megismerheti, hogy a gyors üzembe helyezés hogyan teszi gyorsabban kezelhetővé és robusztusabbá alkalmazását az offline adatszinkronizálás segítségével.
+* [Get started with offline data sync] Learn how the quickstart uses offline data sync to make the app responsive and robust.
 
-* [Bevezetés a hitelesítés használatába] Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+* [Get started with authentication] Learn how to authenticate users of your app with an identity provider.
 
-* [Bevezetés a leküldéses értesítések használatába] Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+* [Get started with push notifications] Learn how to send a very basic push notification to your app.
 
 
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[A Mobile Services használatának első lépései]:#getting-started
-[Új mobilszolgáltatás létrehozása]:#create-new-service
-[A mobilszolgáltatás-példány meghatározása]:#define-mobile-service-instance
-[Következő lépések]:#next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
@@ -134,17 +135,17 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 
 
 <!-- URLs. -->
-[Bevezetés az adatok használatába]: /develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Bevezetés az offline adatszinkronizálás használatába]: mobile-services-xamarin-android-get-started-offline-data.md
-[Bevezetés a hitelesítés használatába]: /develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Bevezetés a leküldéses értesítések használatába]: /develop/mobile/tutorials/get-started-with-push-xamarin-android
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-android
+[Get started with offline data sync]: mobile-services-xamarin-android-get-started-offline-data.md
+[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-xamarin-android
+[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-xamarin-android
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Azure]: http://azure.microsoft.com/
-[klasszikus Azure portál]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

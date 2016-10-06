@@ -112,8 +112,7 @@ IP-alhálózat|Hálózati maszk|IP-címtartomány
 2. A Telepítési mappa kijelölése képernyőn győződjön meg arról, hogy megfelelő mappát választott ki, és kattintson a Tovább gombra.
 3. A telepítés befejezése után kattintson a Befejezés gombra.  Ez elindítja a konfigurációs varázslót.
 4. A konfigurációs varázsló üdvözlőoldalán jelölje be **A hitelesítéskonfiguráló varázsló használatának kihagyása** jelölőnégyzetet, és kattintson a **Tovább** gombra.  Ez bezárja a varázslót, majd elindítja a kiszolgálót.
-![Felhő](./media/multi-factor-authentication-get-started-server/skip2.png)
-
+    ![Felhő](./media/multi-factor-authentication-get-started-server/skip2.png)
 5. Azon az oldalon, ahonnan letöltötte a kiszolgálót, kattintson az **Aktiváló hitelesítő adatok előállítása** gombra.  Másolja ezt az információt az Azure MFA-kiszolgálón a megfelelő mezőkbe, majd kattintson az **Aktiválás** lehetőségre.
 
 

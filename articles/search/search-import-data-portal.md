@@ -35,7 +35,7 @@ A DocumentDB adatbázisból vett mintaadatokkal kipróbálhatja ezt a munkafolya
 
 ## Az Adatok importálása varázsló által támogatott adatforrások
 
-Az indexelés automatizálása és az eszközök a következő adatforrások számára érhetők el: 
+Az Adatok importálása varázsló az alábbi adatforrások használatát támogatja: 
 
 - Azure SQL Database
 - Az SQL Server relációs adatai egy Azure virtuális gépen
@@ -123,6 +123,6 @@ Az alábbi hivatkozások további információkat nyújtanak az indexelőkről:
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

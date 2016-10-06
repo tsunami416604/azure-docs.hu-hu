@@ -28,7 +28,7 @@ A következő szakaszok útmutatást nyújtanak a kérdések megválaszolásáho
 
 ## Mit próbálok biztonságossá tenni?
 
-Annak érdekében, hogy megállapítsuk a megfelelő többtényezős hitelesítési megoldást, először meg kell válaszolnunk a kérdést, hogy mit szeretne biztonságossá tenni egy második hitelesítési módszerrel.  Egy alkalmazást az Azure-ban?  Vagy például egy távelérésű rendszert?  Azzal, hogy megállapítjuk, mit szeretnénk biztonságossá tenni, megkapjuk a választ a kérdésre, hol kell engedélyeznünk a többtényezős hitelesítést.  
+Annak érdekében, hogy megállapítsuk a megfelelő többtényezős hitelesítési megoldást, először meg kell válaszolnunk a kérdést, hogy mit szeretne biztonságossá tenni egy második hitelesítési módszerrel.  Egy alkalmazást az Azure-ban?  Vagy például egy távelérésű rendszert?  Azzal, hogy megállapítjuk, mit szeretnénk biztonságossá tenni, megkapjuk a választ arra a kérdésre, hogy hol kell engedélyeznünk a többtényezős hitelesítést.  
 
 
 Mit próbál biztonságossá tenni?| Multi-Factor Authentication a felhőben|Multi-Factor Authentication-kiszolgáló
@@ -43,7 +43,7 @@ Távelérés, például VPN vagy RDG| |* |
 
 ## Hol tárolja a rendszer a felhasználókat?
 
-Ezután attól függően, hogy a rendszer hol tárolja a felhasználókat, megtalálhatjuk a megfelelő megoldást, legyen az többtényezős hitelesítés a felhőben vagy a helyszínen az MFA-kiszolgálóval.
+Ezután attól függően, hogy a rendszer hol tárolja a felhasználókat, megtalálhatjuk a megfelelő megoldást, legyen az többtényezős hitelesítés a felhőben, vagy a helyszínen az MFA-kiszolgálóval.
 
 
 
@@ -90,6 +90,6 @@ Most, hogy eldöntöttük, hogy a felhőalapú többtényezős hitelesítést va
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

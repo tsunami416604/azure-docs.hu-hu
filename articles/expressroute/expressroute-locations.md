@@ -32,7 +32,7 @@ Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, 
 |---|---|---|
 |**Észak-Amerika**|USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, Közép-Kanada, Kelet-Kanada|Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Szilícium-völgy, Washington, D.C., Montréal+, Québec város+, Toronto|
 |**Dél-Amerika**|Dél-Brazília|Sao Paulo|
-|**Európa**|Észak-Európa, Nyugat-Európa, Egyesült Királyság nyugati része, Egyesült Királyság déli része|Amszterdam, Dublin, London, Newport (Wales)+, Párizs|
+|**Európa**|Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része|Amszterdam, Dublin, London, Newport (Wales)+, Párizs|
 |**Ázsia**|Kelet-Ázsia, Délkelet-Ázsia|Hongkong, Szingapúr|
 |**Japán**|Nyugat-Japán, Kelet-Japán|Oszaka, Tokió|
 |**Ausztrália**|Délkelet-Ausztrália, Kelet-Ausztrália|Melbourne, Sydney|
@@ -44,7 +44,7 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 |**Geopolitikai régió**|**Azure-régiók**|**ExpressRoute-helyek**|
 |---|---|---|---|
-|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas, New York, Washington, D.C.|
+|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas, New York, Washington|
 |**Kína**|Észak-Kína, Kelet-Kína|Peking, Sanghaj|
 |**Németország**|Közép-Németország, Kelet-Németország|Berlin+, Frankfurt|
 

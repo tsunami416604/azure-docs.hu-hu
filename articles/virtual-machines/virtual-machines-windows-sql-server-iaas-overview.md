@@ -14,7 +14,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="vm-windows-sql-server"
     ms.workload="infrastructure-services"
-    ms.date="08/29/2016"
+    ms.date="09/21/2016"
     ms.author="jroth"/>
 
 
@@ -39,10 +39,13 @@ Ha egyéb számítási feladatokat, például egy vállalati alkalmazást telep�
 
 Ha úgy döntött, hogy az Azure virtuális gépeken kívánja futtatni az SQL Servert, el kell döntenie, hogy egy virtuálisgép-rendszerképet használ-e, amely magában foglalja az SQL Server licencelési költségeit. A másik lehetőség egy saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetnie. A következő két szakasz ezeket a lehetőségeket ismerteti.
 
-## 1. lehetőség: SQL virtuális gép üzembe helyezése (percalapú licencelés)
-A következő táblázat a virtuálisgép-katalógus elérhető SQL Server-rendszerképeit foglalja össze. Kattintson bármelyik hivatkozásra egy új SQL virtuális gép létrehozásának megkezdéséhez az Ön által választott verzióval, kiadással és operációs rendszerrel. Minden rendszerkép magában foglalja az [SQL Server licencelési költségeit](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
+## Új SQL virtuális gép létrehozása
+Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez. Attól függően, hogy milyen rendszerképet választott ki, fizetheti percalapon az SQL Server licencelési költségeit, vagy használhatja a saját licencét (BYOL).
 
-Részletes útmutatásért lásd a [Provision a SQL Server virtual machine in the Azure Portal](virtual-machines-windows-portal-sql-server-provision.md) (SQL Server rendszerű virtuális gép létrehozása az Azure Portalon) című oktatóanyagot. Emellett tekintse át az [Performance best practices for SQL Server VMs](virtual-machines-windows-sql-performance.md) (Az SQL Server virtuális gépek teljesítményével kapcsolatos ajánlott eljárások) című cikket, amely leírja, hogyan válassza ki a kiépítés során a megfelelő gépméretet és egyéb lehetőségeket.
+A folyamat részletes útmutatója az [SQL Server rendszerű virtuális gép létrehozása az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md) című oktatóanyagban található. Emellett tekintse át az [Performance best practices for SQL Server VMs](virtual-machines-windows-sql-performance.md) (Az SQL Server virtuális gépek teljesítményével kapcsolatos ajánlott eljárások) című cikket, amely leírja, hogyan válassza ki a kiépítés során a megfelelő gépméretet és egyéb lehetőségeket.
+
+## 1. lehetőség: SQL virtuális gép létrehozása percalapú licenceléssel
+A következő táblázat a virtuálisgép-katalógus elérhető SQL Server-rendszerképeit foglalja össze. Kattintson bármelyik hivatkozásra egy új SQL virtuális gép létrehozásának megkezdéséhez az Ön által választott verzióval, kiadással és operációs rendszerrel.
 
 |Verzió|Operációs rendszer|Kiadás|
 |---|---|---|
@@ -55,12 +58,8 @@ Részletes útmutatásért lásd a [Provision a SQL Server virtual machine in th
 |**SQL 2008 R2 SP3**|Windows Server 2008 R2|[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2)|
 |**SQL 2008 R2 SP3**|Windows Server 2012|[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2012)|
 
-## 2. lehetőség: SQL virtuális gép üzembe helyezése (BYOL)
-A másik lehetőség egy saját licenc használata (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálban a rendszerképnevek **{BYOL}** előtagot kapnak.
-
-> [AZURE.IMPORTANT] A BYOL VM-rendszerképek használatához nagyvállalati szerződéssel kell rendelkeznie: [Az Azure frissítési garancián keresztüli licenchordozhatósági programja](https://azure.microsoft.com/pricing/license-mobility/). Továbbá szüksége van egy érvényes licencre is az SQL Server kívánt verziójához/kiadásához. [Meg kell adnia a Microsoftnak a szükséges BYOL-információkat](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) a virtuális gép kiépítésétől számított **10** napon belül.
-
-A [kiépítési útmutatóban](virtual-machines-windows-portal-sql-server-provision.md) foglaltak itt is érvényesek, de a következő **BYOL** rendszerkép-lehetőségek egyikét kell használnia. Emellett tekintse át az [Performance best practices for SQL Server VMs](virtual-machines-windows-sql-performance.md) (Az SQL Server virtuális gépek teljesítményével kapcsolatos ajánlott eljárások) című cikket, amely leírja, hogyan válassza ki a kiépítés során a megfelelő gépméretet és egyéb lehetőségeket.
+## 2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
+Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálon ezek a rendszerképnevek **{BYOL}** előtagot kapnak.
 
 |Verzió|Operációs rendszer|Kiadás|
 |---|---|---|
@@ -68,8 +67,10 @@ A [kiépítési útmutatóban](virtual-machines-windows-portal-sql-server-provis
 |**SQL Server 2014 SP1**|Windows Server 2012 R2|[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1StandardWindowsServer2012R2)|
 |**SQL Server 2012 SP2**|Windows Server 2012 R2|[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3StandardWindowsServer2012R2)|
 
+> [AZURE.IMPORTANT] A BYOL VM-rendszerképek használatához nagyvállalati szerződéssel kell rendelkeznie: [Az Azure frissítési garancián keresztüli licenchordozhatósági programja](https://azure.microsoft.com/pricing/license-mobility/). Továbbá szüksége van egy érvényes licencre is az SQL Server kívánt verziójához/kiadásához. [Meg kell adnia a Microsoftnak a szükséges BYOL-információkat](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) a virtuális gép kiépítésétől számított **10** napon belül.
+
 ## Az SQL virtuális gép felügyelete
-Az SQL Server virtuális gép kiépítése után több választható felügyeleti feladatot is végrehajthat. Bizonyos szempontokból az SQL Server konfigurálását és felügyeletét pontosan ugyanúgy kell elvégeznie, ahogy helyszíni környezetben tenné. Néhány feladat azonban csak az Azure-ra érvényes. A következő szakaszok kiemelnek néhány ilyen területet, és további információkra mutató hivatkozásokat is tartalmaznak.
+Az SQL Server virtuális gép kiépítése után több választható felügyeleti feladatot is végrehajthat. Bizonyos szempontokból az SQL Server konfigurálását és felügyeletét pontosan ugyanúgy kell elvégeznie, ahogy egy helyszíni SQL Server-példánnyal tenné. Néhány feladat azonban csak az Azure-ra érvényes. A következő szakaszok kiemelnek néhány ilyen területet, és további információkra mutató hivatkozásokat is tartalmaznak.
 
 ### Adatok áttelepítése
 
@@ -97,6 +98,6 @@ További kérdései vannak? Először tekintse át [Az SQL Server használatána
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

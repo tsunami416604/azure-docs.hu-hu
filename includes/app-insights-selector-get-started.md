@@ -3,7 +3,7 @@
 - [Java](../articles/application-insights/app-insights-java-get-started.md)
 - [Node.js](../articles/application-insights/app-insights-nodejs.md)
 - [JavaScript](../articles/application-insights/app-insights-javascript.md)
-- [Egyéb](../articles/application-insights/app-insights-platforms.md)
+- [Other](../articles/application-insights/app-insights-platforms.md)
 
 
 <!--HONumber=Sep16_HO4-->

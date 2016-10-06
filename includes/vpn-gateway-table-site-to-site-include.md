@@ -1,14 +1,14 @@
-|  | **Klasszikus üzembe helyezés**  | **Resource Managerrel végzett üzembe helyezés** |
+|  | **Classic Deployment**  | **Resource Manager Deployment** |
 |----------------------------------------|--------------|----------------------|
-| **Klasszikus portál**                     |[Cikk*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) |  Nem támogatott |
-| **Azure Portal**                       | Támogatott**              | [Cikk](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
-| **PowerShell**               |[Cikk+](..articles/vpn-gateway/vpn-gateway-multi-site.md)          | [Cikk](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
+| **Classic Portal**                     |[Article*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) |  Not Supported |
+| **Azure Portal**                       | Supported**              | [Article](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
+| **PowerShell**               |[Article+](..articles/vpn-gateway/vpn-gateway-multi-site.md)          | [Article](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
 
-A (*) azt jelzi, hogy a klasszikus portál csak egy S2S VPN-kapcsolat létrehozását támogatja.
+(*) denotes that the classic portal can only support creating one S2S VPN connection.
 
-A (**) azt jelzi, hogy az Azure Portalra vonatkozó átfogó forgatókönyv még nem érhető el.
+(**) denotes that an end-to-end scenario is not yet available for the Azure portal.
 
-A (+) azt jelzi, hogy ez a cikk többhelyes kapcsolatokhoz íródott.
+(+) denotes that this article is written for multi-site connections.
 
 
 

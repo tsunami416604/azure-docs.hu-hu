@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-windows"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="07/21/2016"
+    ms.date="10/03/2016"
     ms.author="wesmc"/>
 
 
@@ -268,8 +268,8 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 <!-- URLs. -->
 
-[A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 [bejelentéskatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [csempekatalógussal]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx

@@ -32,7 +32,7 @@ A virtuális hálózatok közötti társviszony-létesítés követelményei és
 - A társviszonyba állítandó két virtuális hálózatnak ugyanabba az Azure-régióba kell tartoznia.
 - A társviszonyba állítandó két virtuális hálózat IP-címtere nem fedheti át egymást.
 - A virtuális hálózati társviszony két virtuális hálózat között jön létre, nem származik belőle tranzitív kapcsolat. Vagyis ha például az A virtuális hálózatot társviszonyba állítják B virtuális hálózattal, és a B hálózatot társviszonyba állítják a C virtuális hálózattal, az nem eredményezi azt, hogy társviszony jön létre az A virtuális hálózat és a C virtuális hálózat között.
-- Eltérő előfizetésekbe tartozó virtuális hálózatok között is kialakítható társviszony, amennyiben mindkét előfizetésben egy erre jogosult felhasználó engedélyezi a társviszonyt.
+- Társviszony két különböző előfizetésben található két virtuális hálózat között létesíthető, ha a társviszony-létesítést mindkét előfizetés esetén engedélyezi egy rendszergazdai engedéllyel rendelkező felhasználó, és az előfizetések ugyanahhoz az Active Directory-bérlőhöz vannak társítva. 
 - Egy a Resource Manager modellre épülő virtuális hálózatok összekapcsolható egy ugyanilyen modellre épülő virtuális hálózattal, illetve egy a klasszikus üzembe helyezési modellre épülő virtuális hálózattal. Két, a klasszikus üzembe helyezési modellt használó virtuális hálózat azonban nem hozható egymással társviszonyba.
 - A virtuális társhálózatokba tartozó gépek kommunikációjára ugyan nem vonatkoznak sávszélesség-korlátozások, a virtuális gépek méretén alapuló sávszélességhatár azonban érvényben marad.
 
@@ -91,6 +91,6 @@ Az előzetes verzió idején ingyen lehet virtuális társhálózati viszonyt ki
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

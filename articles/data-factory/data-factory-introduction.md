@@ -14,49 +14,53 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article" 
-    ms.date="09/08/2016" 
+    ms.date="09/22/2016" 
     ms.author="spelluru"/>
 
 
 # Az Azure Data Factory, egy adatintegrációs felhőalapú szolgáltatás ismertetése
 
 ## Mi az az Azure Data Factory? 
-A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Egy gyártóüzemhez hasonlóan, amely berendezések működtetésével átalakítja a nyersanyagokat késztermékekké, a Data Factory a nyers adatokat összegyűjtő meglévő szolgáltatásokat hangolja össze az adatok azonnal felhasználható információkká történő átalakítására. 
+A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok **továbbítása** és **átalakítása**. A Data Factoryval olyan adatintegrációs megoldásokat hozhat létre, amelyek különféle adattárakból származó adatokkal is képesek dolgozni, és amelyekkel az adatok átalakíthatók/feldolgozhatók, az eredmények pedig az adattárakban közzétehetők. 
 
-A Data Factory a helyszíni és felhőbeli adatforrások, valamint a szolgáltatottszoftver-megoldások esetén is felhasználható az adatok fogadására, előkészítésére, átalakítására, elemzésére és közzétételére. A Data Factory segítségével a szolgáltatásokat felügyelt adatfolyamatokká állíthatja össze, és átalakíthatja az adatokat például az [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) és az [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) segítségével a Big Data-számítási igények kielégítéséhez, vagy az [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) használatával az elemzési megoldások működtetéséhez. Az egyszerű, táblázatos figyelési nézeten túlmutatva a Data Factory látványos vizualizációival gyorsan megjeleníthetők a folyamatok közötti leszármaztatások és függőségek. Egyetlen egyesített nézetben figyelheti az adatfolyamatokat, így könnyen kiszűrheti a problémákat, és beállíthatja a figyelési riasztásokat.
+A Data Factoryval az adatok továbbítására és átalakítására szolgáló adatfolyamatokat hozhat létre, majd ütemezés szerint futtathatja a folyamatot (óránként, napi, heti stb. gyakorisággal). Ezenkívül látványos vizualizációkkal jelenítheti meg az adatfolyamatok közötti leszármaztatási és függőségi kapcsolatokat, valamint egyetlen, egységesített nézetben figyelheti az összes folyamatot, így egyszerűen kiszűrheti a problémákat és beállíthatja a figyelési riasztásokat.
 
-![Ábra: Data Factory áttekintése, adatintegrációs szolgáltatás](./media/data-factory-introduction/what-is-azure-data-factory.png)
+![Ábra: A Data Factory áttekintése, adatintegrációs szolgáltatás](./media/data-factory-introduction/what-is-azure-data-factory.png)
+**1. ábra.** Különböző adatforrásokból származó adatokkal is dolgozhat, előkészítheti, átalakíthatja, elemezheti azokat, és azonnal felhasználható adatokat tehet közzé.
 
-**1. ábra** Számos különböző helyszíni adatforrásból gyűjtheti össze az adatokat, ezeket betöltheti, előkészítheti, átalakíthatja és elemezheti, majd használatra kész adatokat tehet közzé.
+## Folyamatok és tevékenységek
+A Data Factory-megoldásokkal egy vagy több **adatfolyamatot** is létrehozhat. A folyamatok a tevékenységek logikus csoportosításai. A használatukkal a tevékenységek egységgé csoportosíthatók, amelyben együttesen hajtanak végre egy feladatot. 
 
-A Data Factoryt bármikor igénybe veheti, amikor különböző típusú és méretű adatokat kell összegyűjtenie, átalakítania és közzétennie a hatékonyabb elemzések érdekében – mindezt kiszámítható ütemezéssel. A Data Factory segítségével magas rendelkezésre állású adatfolyam-folyamatok készíthetők különféle esetekben és iparágakban, az elemzési folyamatok iránti igények kielégítése érdekében. Az online viszonteladók személyre szabott [termékajánlatokat](data-factory-product-reco-usecase.md) készíthetnek a szolgáltatással az ügyfelek böngészési szokásai alapján. A játékfejlesztők felmérhetik [marketingkampányaik hatékonyságát](data-factory-customer-profiling-usecase.md). Az [Ügyfél-esettanulmányok](data-factory-customer-case-studies.md) áttekintésével közvetlenül az ügyfeleinktől tudhatja meg, hogyan és miért használják a Data Factoryt. 
+A **tevékenységek** határozzák meg az adatokon végrehajtandó műveleteket. A másolási tevékenység használatával például az egyik adattárból a másikba másolhatja az adatokat. Hasonlóképpen, egy Hive-tevékenység használatával Hive-lekérdezést futtathat egy Azure HDInsight-fürtön az adatok átalakításához és elemzéséhez. A Data Factory két típusú tevékenységet támogat: az adattovábbítási tevékenységeket és az adatátalakítási tevékenységeket. 
+  
+## Adattovábbítási tevékenységek 
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-> [AZURE.VIDEO azure-data-factory-overview]
+További részletekért tekintse meg az [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket. 
 
-## Fő fogalmak
+## Adatátalakítási tevékenységek
+[AZURE.INCLUDE [data-factory-transformation-activities](../../includes/data-factory-transformation-activities.md)]
 
+További részletekért tekintse meg az [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) című cikket.
+
+Ha olyan adattárból/adattárba szeretne adatokat továbbítani, amely nem támogatja a másolási tevékenységet, vagy saját logika szerint szeretne adatátalakítást végezni, hozzon létre egy **egyéni .NET-tevékenységet**. További információ az egyéni tevékenységek létrehozásával és használatával kapcsolatban: [Egyéni tevékenységek használata Azure Data Factory-folyamatban](data-factory-use-custom-activities.md).
+
+## Társított szolgáltatások
+A társított szolgáltatások meghatározzák azokat az információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel (pl.: Azure Storage, helyszíni SQL Server, Azure HDInsight). A társított szolgáltatásokat két célból használjuk a Data Factoryban:
+
+- Egy **adattár**, többek között például egy helyszíni SQL Server, Oracle-adatbázis, fájlmegosztás vagy egy Azure Blob Storage-fiók jelölésére. A támogatott adattárak listája az [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című részben található. 
+- Olyan **számítási erőforrás** jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. A támogatott számítási környezetek listája az [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) című szakaszban található. 
+
+## Adatkészletek 
+A társított szolgáltatások adattárakat társítanak az Azure Data Factoryhoz. Az adatkészletek az adattárakon belüli adatstruktúrákat jelölik. Az Azure Storage társított szolgáltatása például kapcsolódási információkat szolgáltat a Data Factory számára az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a folyamat beolvassa az adatokat. Hasonlóképpen, az Azure SQL társított szolgáltatása kapcsolódási adatokat szolgáltat az Azure SQL Database számára, az Azure SQL-adatkészlet pedig az adatokat tartalmazó táblát határozza meg.   
+
+## Data Factory-entitások közötti kapcsolatok
 A Data Factory néhány főbb entitásának együttes használatával meghatározhatók a bemeneti és kimeneti adatok, a feldolgozási események, valamint a kívánt adatfeldolgozási folyamat végrehajtásához szükséges ütemezés és erőforrások.
 
-![Ábra: Data Factory áttekintése, felhőalapú adatintegrációs szolgáltatás – fő fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Ábra: A Data Factory áttekintése, felhőalapú adatintegrációs szolgáltatás – főbb fogalmak](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+**2. ábra.** Az adatkészlet, a tevékenység, a folyamat és a társított szolgáltatás közötti kapcsolatok
 
-**2. ábra** Az adatkészlet, a tevékenység, a folyamat és a társított szolgáltatás közötti kapcsolatok
-
-### Folyamatok
-A [folyamatok](data-factory-create-pipelines.md) a tevékenységek logikus csoportosításai. A használatukkal a tevékenységek egységgé csoportosíthatók, amelyben együttesen hajtanak végre egy feladatot. Átalakítási tevékenységek sorozatára lehet például szükség a naplófájlok adatainak megtisztításához. Ez a sorozat összetett ütemezéssel és függőségekkel rendelkezhet, amelyeket elő kell készíteni és automatizálni kell. Az összes ilyen tevékenység csoportosítható egyetlen „CleanLogFiles” elnevezésű folyamatba. A „CleanLogFiles” folyamat ezután egyetlen egységként üzembe helyezhető, ütemezhető vagy törölhető ahelyett, hogy minden egyes tevékenységet külön-külön kellene kezelni.
-
-### Tevékenységek
-A tevékenységek meghatározzák az adatokon végrehajtandó műveleteket. Minden tevékenység nulla vagy több [adatkészletet](data-factory-create-datasets.md) fogad bemenetként, és egy vagy több adatkészletet állít elő kimenetként. A tevékenység a vezénylés egysége az Azure Data Factoryban. A [Másolási tevékenység](data-factory-data-movement-activities.md) használatával például vezényelheti az adatok egyik adatkészletből a másikba történő másolását. Egy [Hive-tevékenység](data-factory-data-transformation-activities.md) használatával hasonlóképpen Hive-lekérdezést futtathat egy Azure HDInsight-fürtön az adatok átalakításához és elemzéséhez. Az Azure Data Factory az adatátalakítási, -elemzési és -továbbítási tevékenységek széles skáláját kínálja. 
-
-### Adathalmazok
-Az [adatkészletek](data-factory-create-datasets.md) elnevezett hivatkozások/mutatók azokra az adatokra, amelyeket a tevékenység bemeneteként vagy kimeneteként kíván használni. Az adatkészletek adatszerkezeteket határoznak meg a különböző adattárakban, többek között a táblákban, fájlokban, mappákban és dokumentumokban.
-
-### Társított szolgáltatások
-A társított szolgáltatások meghatározzák azokat az információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. A társított szolgáltatásokat két célból használjuk a Data Factoryban:
-
-- Egy adattár, többek között például egy helyszíni SQL Server, Oracle DB, fájlmegosztás vagy egy Azure Blob Storage-fiók jelölésére. Mint már említettük, az adathalmazok a Data Factoryhoz a társított szolgáltatásokkal csatlakoztatott adattárakon belüli adatszerkezeteket jelölik.
-- Olyan számítási erőforrás jelölésére, amelyen végrehajtható a tevékenység. A „HDInsightHive-tevékenység” végrehajtása például egy HDInsight Hadoop-fürtön történik.
-
-Az adatbázis, a tevékenység, a folyamat és a társított szolgáltatás négy egyszerű fogalmának ismeretében készen áll a szolgáltatás használatának megkezdésére. [Létrehozhatja első folyamatát](data-factory-build-your-first-pipeline.md), vagy üzembe helyezhet egy előre elkészített mintát a [Data Factory-mintákat](data-factory-samples.md) ismertető cikk utasításai alapján. 
+A társított szolgáltatás, az adatkészlet, a tevékenység, és a folyamat négy egyszerű fogalmának ismeretében készen áll a szolgáltatás használatának megkezdésére. Most [létrehozhatja első folyamatát](data-factory-build-your-first-pipeline.md). 
 
 ## Támogatott régiók
 Jelenleg az **USA nyugati régiójában**, az **USA keleti régiójában** és az **észak-európai** régióban hozhat létre data factoryt. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében. 
@@ -79,6 +83,6 @@ Oktatóanyag | Leírás
 [Adatfolyamat kiépítése egy helyszíni és egy felhőalapú adattár közötti adatáthelyezéshez adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md) | Ebben az oktatóanyagban olyan folyamattal rendelkező data factoryt épít ki, amely egy **helyszíni** SQL Server-adatbázisból Azure-blobba **helyez át adatokat**. A bemutató részeként telepíti és konfigurálja az adatkezelési átjárót a gépen. 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Tartalmak továbbítása igény szerint a .NET használatával | Azure"
-    description="Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével."
+    pageTitle="Get started with delivering content on demand using .NET | Azure"
+    description="This tutorial walks you through the steps of implementing an on demand content delivery application with Azure Media Services using .NET."
     services="media-services"
     documentationCenter=""
     authors="Juliako"
@@ -17,119 +17,120 @@
     ms.author="juliako"/>
 
 
-# Tartalmak továbbítása igény szerint a .NET SDK használatával
+
+# Get started with delivering content on demand using .NET SDK
 
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
 >[AZURE.NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F). 
+> To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](/pricing/free-trial/?WT.mc_id=A261C142F). 
  
-##Áttekintés 
+##Overview 
 
-Ez az útmutató lépésről lépésre bemutatja, hogyan valósíthat meg egy Video-on-Demand (VoD) tartalomtovábbító alkalmazást a .NET-keretrendszerhez készült Azure Media Services (AMS) SDK segítségével.
+This tutorial walks you through the steps of implementing a Video-on-Demand (VoD) content delivery application using Azure Media Services (AMS) SDK for .NET.
 
 
-Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media Services-fejlesztéshez szükséges leggyakoribb programozási objektumokat és feladatokat. Az oktatóprogram elvégzése után képes lesz adatfolyamot továbbítani vagy fokozatosan letölteni egy saját maga által feltöltött, kódolt és letöltött példa médiafájlt.
+The tutorial introduces the basic Media Services workflow and the most common programming objects and tasks required for Media Services development. At the completion of the tutorial, you will be able to stream or progressively download a sample media file that you uploaded, encoded, and downloaded.
 
-## Ismertetett témák
+## What you'll learn
 
-Az útmutató a következő feladatok elvégzését mutatja be:
+The tutorial show how to accomplish the following tasks:
 
-1.  Egy Media Services-fiók létrehozása (a klasszikus Azure portál használatával).
-2.  A streamvégpont konfigurálása (a portál használatával).
-3.  Egy Visual Studio-projekt létrehozása és konfigurálása.
-5.  A Media Services-fiókhoz való csatlakozás.
-6.  Egy új adategység létrehozása és egy videofájl feltöltése.
-7.  A forrásfájl kódolása egy adaptív sávszélességű MP4-fájlsorozattá.
-8.  Az adatkészlet közzététele, valamint az adatfolyam-továbbításhoz és progresszív letöltéshez szükséges URL-címek lekérése.
-9.  Tesztelje a tartalom lejátszhatóságát.
+1.  Create a Media Services account (using the Azure Classic Portal).
+2.  Configure streaming endpoint (using the portal).
+3.  Create and configure a Visual Studio project.
+5.  Connect to the Media Services account.
+6.  Create a new asset and upload a video file.
+7.  Encode the source file into a set of adaptive bitrate MP4 files.
+8.  Publish the asset and get URLs for streaming and progressive download.
+9.  Test by playing your content.
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóanyag elvégzésének a következők a feltételei.
+The following are required to complete the tutorial.
 
-- Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. 
+- To complete this tutorial, you need an Azure account. 
     
-    Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a jóváírásokat el is használta, továbbra is megtarthatja a fiókot és használhatja az ingyenes szolgáltatásokat és lehetőségeket, mint például a Web Apps szolgáltatást az Azure App Service alatt.
-- Operációs rendszerek: Windows 8 vagy újabb, Windows 2008 R2, Windows 7.
-- A .NET-keretrendszer 4.0-s vagy újabb verziója.
-- Visual Studio 2010 SP1 (Professional, Premium, Ultimate vagy Express) vagy későbbi verzió.
+    If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](/pricing/free-trial/?WT.mc_id=A261C142F). You get credits that can be used to try out paid Azure services. Even after the credits are used up, you can keep the account and use free Azure services and features, such as the Web Apps feature in Azure App Service.
+- Operating Systems: Windows 8 or later, Windows 2008 R2, Windows 7.
+- .NET Framework 4.0 or later
+- Visual Studio 2010 SP1 (Professional, Premium, Ultimate, or Express) or later versions.
 
 
-##Minta letöltése
+##Download sample
 
-Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
+Get and run a sample from [here](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
-##Media Services-fiók létrehozása a portál használatával
+##Create a Media Services account using the portal
 
-1. A klasszikus Azure portálon kattintson az **Új** > **Media Services** > **Gyors létrehozás** lehetőségre.
+1. In the Azure Classic Portal, click **New**, click **Media Service**, and then click **Quick Create**.
 
-    ![Media Services-fiók gyors létrehozása](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
+    ![Media Services Quick Create](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
 
-2. A **NAME** (NÉV) mezőbe írja be az új fiók nevét. A Media Services-fiók nevének 3–24 karakter hosszúságúnak kell lennie, és csak kisbetűket és számokat tartalmazhat, szóközök nélkül.
+2. In **NAME**, enter the name of the new account. A Media Services account name is all lower-case numbers or letters with no spaces, and is 3 - 24 characters in length.
 
-3. A **RÉGIÓ** részben válassza ki azt a földrajzi régiót, amelyben tárolni fogja a Media Services-fiókhoz tartozó metaadat-bejegyzéseket. A legördülő listában kizárólag az elérhető Media Services-régiók jelennek meg.
+3. In **REGION**, select the geographic region that will be used to store the metadata records for your Media Services account. Only the available Media Services regions appear in the drop-down list.
 
-4. A **STORAGE ACCOUNT** (TÁRFIÓK) mezőben válasszon ki egy tárfiókot, amely a Media Services-fiókhoz tartozó médiatartalmak blobtárolását biztosítja. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy új tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre.
+4. In **STORAGE ACCOUNT**, select a storage account to provide blob storage of the media content from your Media Services account. You can select an existing storage account in the same geographic region as your Media Services account, or you can create a new storage account. A new storage account is created in the same region.
 
-5. Ha egy új tárfiókot hozott létre, a **NEW STORAGE ACCOUNT NAME** (ÚJ TÁRFIÓK NEVE) mezőben adjon meg egy nevet a tárfióknak. A tárfiókok elnevezési szabályai ugyanazok, mint a Media Services-fiókok esetében.
+5. If you created a new storage account, in **NEW STORAGE ACCOUNT NAME**, enter a name for the storage account. The rules for storage account names are the same as for Media Services accounts.
 
-6. Az űrlap alsó részén kattintson a **Gyors létrehozás** elemre.
+6. Click **Quick Create** at the bottom of the form.
 
-A folyamat állapotát az ablak alsó részén található üzenetterületen követheti nyomon.
+You can monitor the status of the process in the message area at the bottom of the window.
 
-A fiók sikeres létrejöttekor az állapot **Aktívra** változik.
+Once your account is successfully created, the status changes to **Active**.
 
-Az oldal alján megjelenik a **MANAGE KEYS** (KULCSOK KEZELÉSE) gomb. Ha erre a gombra kattint, egy párbeszédpanelen megjelenik a Media Services-fiók neve, valamint az elsődleges és másodlagos kulcsok. A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fiók nevére és az elsődleges kulcs adataira.
+At the bottom of the page, the **MANAGE KEYS** button appears. When you click this button, a dialog with the Media Services account name and the primary and secondary keys is displayed. You will need the account name and the primary key information to programmatically access the Media Services account.
 
-![Media Services oldal](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+![Media Services Page](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
-A fiók nevére való dupla kattintáskor alapértelmezés szerint megjelenik a **Gyorsindítás** oldal. Ezen az oldalon elvégezhet néhány olyan felügyeleti feladatot, amelyek a portál más oldalain is elérhetők. Például feltölthet videofájlokat erről az oldalról, vagy a CONTENT (TARTALOM) oldalról is.
+When you double-click on the account name, the **Quickstart** page is displayed by default. This page enables you to do some management tasks that are also available on other pages of the portal. For example, you can upload a video file from this page or do it from the CONTENT page.
 
-##A streamvégpont konfigurálása a portál használatával
+##Configure streaming endpoint using the portal
 
-Az Azure Media Services használatának egyik leggyakoribb forgatókönyve az adaptív sávszélességű streamelés továbbítása az ügyfelek részére. Az adaptív sávszélességű streameléskor az ügyfél magasabb vagy alacsonyabb sávszélességű adatfolyam-továbbításra válthat a videó lejátszása közben, az aktuális hálózati sávszélességhez, CPU-használathoz és egyéb tényezőkhöz igazodva. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, és HDS (csak Adobe PrimeTime/Access licenctulajdonosok esetében).
+When working with Azure Media Services, one of the most common scenarios is delivering adaptive bitrate streaming to your clients. With adaptive bitrate streaming, the client can switch to a higher or lower bitrate stream as the video is displayed based on the current network bandwidth, CPU utilization, and other factors. Media Services supports the following adaptive bitrate streaming technologies: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, and HDS (for Adobe PrimeTime/Access licensees only).
 
-A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű, MP4- vagy Smooth Streaming-kódolású tartalmak továbbítását a Media Services által támogatott formátumokban (MPEG DASH, HLS, Smooth Streaming, HDS) anélkül, hogy a tartalmakat újra kellene csomagolni ezekbe az adatfolyam-továbbítási formátumokba.
+Media Services provides dynamic packaging which allows you to deliver your adaptive bitrate MP4 or Smooth Streaming encoded content in streaming formats supported by Media Services (MPEG DASH, HLS, Smooth Streaming, HDS) without you having to re-package into these streaming formats.
 
-A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
+To take advantage of dynamic packaging, you need to do the following:
 
-- Kódolja a mezzanine (forrás) fájlt egy adaptív sávszélességű MP4- vagy Smooth Streaming-fájlsorozattá (az átkódolás lépéseit később mutatja be ez az oktatóanyag).
-- Helyezzen legalább egy adategységet arra az **adatfolyam-továbbítási végpontra**, amelyről a tartalmat továbbítani tervezi.
+- Encode or transcode your mezzanine (source) file into a set of adaptive bitrate MP4 files or adaptive bitrate Smooth Streaming files (the encoding steps are demonstrated later in this tutorial),
+- Get at least one streaming unit for the **streaming endpoint** from which you plan to delivery your content.
 
-A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie utánuk, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
+With dynamic packaging, you only need to store and pay for the files in single storage format, and Media Services will build and serve the appropriate response based on requests from a client.
 
-A folyamatos átvitelhez fenntartott egységek számának módosításához tegye a következőt:
+To change the number of streaming reserved units, do the following:
 
-1. A [portálon](https://manage.windowsazure.com/) kattintson a **Media Services** elemre. Ezután kattintson a médiaszolgáltatás nevére.
+1. In the [portal](https://manage.windowsazure.com/), click **Media Services**. Then, click the name of the media service.
 
-2. Válassza ki az STREAMING ENDPOINTS (STREAMVÉGPONTOK) oldalt. Ezután kattintson a módosítani kívánt streamvégpontra.
+2. Select the STREAMING ENDPOINTS page. Then, click on the streaming endpoint that you want to modify.
 
-3. Az adatfolyam-továbbítási egységek számának megadásához kattintson a SCALE (MÉRET) lapra, majd állítsa be a kívánt értéket a **reserved capacity** (Fenntartott kapacitás) csúszkán.
+3. To specify the number of streaming units, click the SCALE tab, and then move the **reserved capacity** slider.
 
-    ![Méretezés oldal](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
+    ![Scale page](./media/media-services-dotnet-get-started/media-services-origin-scale.png)
 
-4. A módosítások mentéséhez kattintson a **SAVE** (MENTÉS) gombra.
+4. Press **SAVE** to save your changes.
 
-Az új egységek lefoglalásának teljesítése körülbelül 20 percet vesz igénybe.
+The allocation of any new units takes around 20 minutes to complete.
 
->[AZURE.NOTE] Jelenleg ha bármely pozitív számú adategységről vált nullára, az akár egy órára letilthatja az adatfolyam-továbbítást.
+>[AZURE.NOTE] Currently, going from any positive value of streaming units back to none can disable streaming for up to an hour.
 >
-> Az ár kiszámításakor a 24 órás periódus során felhasznált legmagasabb számú egység a mérvadó. További információk a díjszabásról: [A Media Services díjszabása](http://go.microsoft.com/fwlink/?LinkId=275107)
+> The highest number of units specified for the 24-hour period is used in calculating the cost. For information about pricing details, see [Media Services pricing details](http://go.microsoft.com/fwlink/?LinkId=275107).
 
 
 
-##Egy Visual Studio-projekt létrehozása és konfigurálása
+##Create and configure a Visual Studio project
 
-1. Hozzon létre egy új C#-konzolalkalmazást a Visual Studio 2013, Visual Studio 2012 vagy Visual Studio 2010 SP1 használatával. Adja meg a **nevét**, a **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
+1. Create a new C# Console Application in Visual Studio 2013, Visual Studio 2012, or Visual Studio 2010 SP1. Enter the **Name**, **Location**, and **Solution name**, and then click **OK**.
 
-2. A [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) Nuget-csomag használatával telepítse az **Azure Media Services .NET SDK-bővítményeket**.  A Media Services .NET SDK-bővítmények között olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és megkönnyítik a Media Services használatával történő fejlesztést. Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
+2. Use the  [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) Nuget package to install **Azure Media Services .NET SDK Extensions**.  The Media Services .NET SDK Extensions is a set of extension methods and helper functions that will simplify your code and make it easier to develop with Media Services. Installing this package, also installs **Media Services .NET SDK** and adds all other required dependencies.
 
-3. Adjon hozzá egy, a System.Configuration szerelvényre mutató hivatkozást. Ez a szerelvény tartalmazza a **System.Configuration.ConfigurationManager** osztályt, amely a konfigurációs fájlok, például az App.config eléréséhez használatos.
+3. Add a reference to System.Configuration assembly. This assembly contains the **System.Configuration.ConfigurationManager** class that is used to access configuration files, for example, App.config.
 
-4. Nyissa meg az App.config fájlt (ha nem lett alapértelmezés szerint hozzáadva a projekthez, akkor adja hozzá), és adjon hozzá a fájlhoz egy *appSettings* szakaszt. Adja meg az Azure Media Services-fiókjához tartozó név és fiókkulcs értékeket, a következő példában bemutatott módon. A fiókhoz tartozó név és fiókkulcs információk megtekintéséhez nyissa meg a klasszikus Azure portált, válassza a Media Services-fiókját, majd kattintson a **MANAGE KEYS** (KULCSOK KEZELÉSE) gombra.
+4. Open the App.config file (add the file to your project if it was not added by default) and add an *appSettings* section to the file. Set the values for your Azure Media Services account name and account key, as shown in the following example. To obtain the account name and key information, open the Azure Classic Portal, select your media services account, and then click the **MANAGE KEYS** button.
 
         <configuration>
         ...
@@ -140,7 +141,7 @@ Az új egységek lefoglalásának teljesítése körülbelül 20 percet vesz ig�
           
         </configuration>
 
-5. Írja felül a meglévő **használati** nyilatkozatokat a Program.cs fájl elején a következő kóddal.
+5. Overwrite the existing **using** statements at the beginning of the Program.cs file with the following code.
 
         using System;
         using System.Collections.Generic;
@@ -153,15 +154,15 @@ Az új egységek lefoglalásának teljesítése körülbelül 20 percet vesz ig�
         using Microsoft.WindowsAzure.MediaServices.Client;
         
 
-6. Hozzon létre egy új mappát a projekteket tartalmazó könyvtárban, és másoljon bele egy .mp4- vagy .wmv-fájlt, amelyet szeretne kódolni vagy fokozatosan letölteni. Ebben a példában a „C:\VideoFiles” elérési utat használjuk.
+6. Create a new folder under the projects directory and copy an .mp4 or .wmv file that you want to encode and stream or progressively download. In this example, the "C:\VideoFiles" path is used.
 
-##Csatlakozás a Media Services-fiókhoz
+##Connect to the Media Services account
 
-A .NET-keretrendszerű Media Services-szolgáltatások használatakor a **CloudMediaContext** osztályt kell használnia a legtöbb Media Services-programozási feladathoz – ilyenek például a Media Services-fiókhoz való csatlakozás, továbbá az adategységek, adategységfájlok, feladatok, hozzáférési házirendek, keresők és egyebek létrehozása, frissítése, elérése és törlése.
+When using Media Services with .NET, you must use the **CloudMediaContext** class for most Media Services programming tasks: connecting to Media Services account; creating, updating, accessing, and deleting the following objects: assets, asset files, jobs, access policies, locators, etc.
 
-Írja felül az alapértelmezett Program osztályt a következő kóddal. A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információk a Media Services szolgáltatásokhoz való csatlakozásról: [Csatlakozás a Media Services szolgáltatásokhoz a .NET-keretrendszerhez készült Media Services SDK használatával](http://msdn.microsoft.com/library/azure/jj129571.aspx)
+Overwrite the default Program class with the following code. The code demonstrates how to read the connection values from the App.config file and how to create the **CloudMediaContext** object in order to connect to Media Services. For more information about connecting to Media Services, see [Connecting to Media Services with the Media Services SDK for .NET](http://msdn.microsoft.com/library/azure/jj129571.aspx).
 
-A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során később lesznek meghatározva.
+The **Main** function calls methods that will be defined further in this section.
 
     class Program
     {
@@ -210,25 +211,25 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
             }
         }
 
-##Új adategység létrehozása és videofájl feltöltése
+##Create a new asset and upload a video file
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **Adategység** entitás tartalmazhat videót, hangot, képeket, miniatűröket, szövegsávokat és feliratfájlokat (valamint mindezen fájlok metaadatait).  A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és adatfolyam-továbbítás céljából. Az adategységben található fájlokat **adategység-fájloknak** nevezzük.
+In Media Services, you upload (or ingest) your digital files into an asset. The **Asset** entity can contain video, audio, images, thumbnail collections, text tracks, and closed caption files (and the metadata about these files.)  Once the files are uploaded, your content is stored securely in the cloud for further processing and streaming. The files in the asset are called **Asset Files**.
 
-Az alábbiakban meghatározott **UploadFile** módszer a **CreateFromFile** módszert hívja meg (amely a .NET SDK-bővítmények között van meghatározva). A **CreateFromFile** létrehoz egy új adategységet, amelybe a megadott forrásfájl fel lesz töltve.
+The **UploadFile** method defined below calls **CreateFromFile** (defined in .NET SDK Extensions). **CreateFromFile** creates a new asset into which the specified source file is uploaded.
 
-A **CreateFromFile** módszer számára az **AssetCreationOptions** alapján határozhatja meg, hogy az alábbi adategység-létrehozási lehetőségek közül melyiket használja:
+The **CreateFromFile** method takes **AssetCreationOptions** which lets you specify one of the following asset creation options:
 
-- **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
-Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
-- **StorageEncrypted** – Ezen lehetőség használatakor a tiszta tartalom helyileg, 256 bites Advanced Encryption Standard (AES) titkosítással lesz titkosítva, és így kerül feltöltésre az Azure Storage tárolóba, ahol titkosítva lesz tárolva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
-- **CommonEncryptionProtected** – Használja ezt a lehetőséget, ha olyan tartalmat tölt fel, amely már korábban titkosítva és védve lett általános titkosítás vagy a PlayReady DRM által (például egy PlayReady DRM titkosítással védett Smooth Streaming-fájlt).
-- **EnvelopeEncryptionProtected** – Használja ezt a lehetőséget, ha AES által titkosított HLS tartalmakat tölt fel. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
+- **None** - No encryption is used. This is the default value. Note that when using this option, your content is not protected in transit or at rest in storage.
+If you plan to deliver an MP4 using progressive download, use this option.
+- **StorageEncrypted** - Use this option to encrypt your clear content locally using Advanced Encryption Standard (AES)-256 bit encryption, which then uploads it to Azure Storage where it is stored encrypted at rest. Assets protected with Storage Encryption are automatically unencrypted and placed in an encrypted file system prior to encoding, and optionally re-encrypted prior to uploading back as a new output asset. The primary use case for Storage Encryption is when you want to secure your high-quality input media files with strong encryption at rest on disk.
+- **CommonEncryptionProtected** - Use this option if you are uploading content that has already been encrypted and protected with Common Encryption or PlayReady DRM (for example, Smooth Streaming protected with PlayReady DRM).
+- **EnvelopeEncryptionProtected** – Use this option if you are uploading HLS encrypted with AES. Note that the files must have been encoded and encrypted by Transform Manager.
 
-A **CreateFromFile** módszer használatával egy visszahívást is megadhat, amely visszajelzést ad a fájl feltöltési folyamatáról.
+The **CreateFromFile** method also lets you specify a callback in order to report the upload progress of the file.
 
-A következő példában az adategység lehetőségei közt a **Nincs** választ adtuk meg.
+In the following example, we specify **None** for the asset options.
 
-Adja hozzá a Program osztályhoz a következő módszert.
+Add the following method to the Program class.
 
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
@@ -246,23 +247,23 @@ Adja hozzá a Program osztályhoz a következő módszert.
     }
 
 
-##Forrásfájl kódolása adaptív sávszélességű MP4-fájlsorozattá
+##Encode the source file into a set of adaptive bitrate MP4 files
 
-Miután az adategységek bevitele a Media Services szolgáltatásba megtörtént, a médiatartalmak többek között kódolhatók, transzmultiplexálás végezhető rajtuk vagy vízjelezhetők, mielőtt továbbítva lennének az ügyfelek felé. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük. Minden egyes feladat több részműveletből áll, ezek végzik el a valódi munkát az adategységfájlon.
+After ingesting assets into Media Services, media can be encoded, transmuxed, watermarked, and so on, before it is delivered to clients. These activities are scheduled and run against multiple background role instances to ensure high performance and availability. These activities are called Jobs, and each Job is comprised of atomic Tasks that do the actual work on the Asset file.
 
-Mint azt korábban már említettük, az Azure Media Services használatának egyik leggyakoribb forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services az adaptív sávszélességű MP4-fájlokat a következő formátumokba tudja dinamikusan csomagolni: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (csak Adobe PrimeTime/Access licenctulajdonosok esetében).
+As was mentioned earlier, when working with Azure Media Services, one of the most common scenarios is delivering adaptive bitrate streaming to your clients. Media Services can dynamically package a set of adaptive bitrate MP4 files into one of the following formats: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, and HDS (for Adobe PrimeTime/Access licensees only).
 
-A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
+To take advantage of dynamic packaging, you need to do the following:
 
-- Kódolja a mezzanine forrásfájlt egy adaptív sávszélességű MP4- vagy Smooth Streaming-fájlsorozattá.  
-- Helyezzen legalább egy adategységet arra a streamvégpontra, amelyről a tartalmat továbbítani tervezi.
+- Encode or transcode your mezzanine (source) file into a set of adaptive bitrate MP4 files or adaptive bitrate Smooth Streaming files.  
+- Get at least one streaming unit for the streaming endpoint from which you plan to delivery your content.
 
-A következő kód bemutatja, hogyan küldhet el egy kódolási feladatot. A feladat egyetlen műveletet tartalmaz, amely azért felel, hogy a mezzazine-fájlt egy adaptív sávszélességű MP4-fájlsorozattá kódolódjon át a **Media Encoder Standard** használatával. A kód elküldi a feladatot, és vár, amíg az befejeződik.
+The following code shows how to submit an encoding job. The job contains one task that specifies to transcode the mezzanine file into a set of adaptive bitrate MP4s using **Media Encoder Standard**. The code submits the job and waits until it is completed.
 
-Ha a feladat befejeződött, lehetővé válik az adategység továbbítása vagy az átkódolás során létrejött MP4-fájlok progresszív letöltése.
-Megjegyzés: az MP4-fájlok progresszív letöltéséhez nem szükséges, hogy nullánál több adatfolyam-továbbítási egységgel rendelkezzen.
+Once the job is completed, you would be able to stream your asset or progressively download MP4 files that were created as a result of transcoding.
+Note that you do not need to have more than 0 streaming units in order to progressively download MP4 files.
 
-Adja hozzá a Program osztályhoz a következő módszert.
+Add the following method to the Program class.
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
     {
@@ -298,34 +299,34 @@ Adja hozzá a Program osztályhoz a következő módszert.
         return outputAsset;
     }
 
-##Adatkészlet közzététele és az adatfolyam-továbbításhoz és progresszív letöltéshez szükséges URL-címek lekérése
+##Publish the asset and get URLs for streaming and progressive download
 
-Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez.
+To stream or download an asset, you first need to "publish" it by creating a locator. Locators provide access to files contained in the asset. Media Services supports two types of locators: OnDemandOrigin locators, used to stream media (for example, MPEG DASH, HLS, or Smooth Streaming) and Access Signature (SAS) locators, used to download media files.
 
-A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használt URL-címeket.
+After you create the locators, you can build the URLs that are used to stream or download your files.
 
 
-Egy Smooth Streaming URL-címnek a következő formátumban kell lennie:
+A streaming URL for Smooth Streaming has the following format:
 
      {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-Egy HLS-továbbítási URL-címnek a következő formátumban kell lennie:
+A streaming URL for HLS has the following format:
 
      {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-Egy MPEG DASH-továbbítási URL-címnek a következő formátumban kell lennie:
+A streaming URL for MPEG DASH has the following format:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-Egy fájlok letöltéséhez használt SAS URL-címnek a következő formátumban kell lennie:
+A SAS URL used to download files has the following format:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-A Media Services .NET SDK-bővítmények olyan kényelmes segédmódszereket biztosítanak, amelyek formázott URL-címeket adnak meg a közzétett adategységekhez.
+Media Services .NET SDK extensions provide convenient helper methods that return formatted URLs for the published asset.
 
-A következő kód .NET SDK-bővítmények használatával hoz létre keresőket és kér le adatfolyam-továbbítási és progresszív letöltési URL-címeket. A kód azt is bemutatja, hogyan tölthetők le fájlok egy helyi mappába.
+The following code uses .NET SDK Extensions to create locators and to get streaming and progressive download URLs. The code also shows how to download files to a local folder.
 
-Adja hozzá a Program osztályhoz a következő módszert.
+Add the following method to the Program class.
 
     static public void PublishAssetGetURLs(IAsset asset)
     {
@@ -392,11 +393,11 @@ Adja hozzá a Program osztályhoz a következő módszert.
         Console.WriteLine("Output asset files available at '{0}'.", Path.GetFullPath(outputFolder));
     }
 
-##A tartalom lejátszhatóságának tesztelése  
+##Test by playing your content  
 
-Az előző szakaszban meghatározott program futtatásakor a konzolablakban a következőkhöz hasonló URL-címek jelennek meg:
+Once you run the program defined in the previous section, the URLs similar to the following will be displayed in the console window.
 
-Adaptív adatfolyam-továbbítási URL-címek:
+Adaptive streaming URLs:
 
 Smooth Streaming
 
@@ -410,7 +411,7 @@ MPEG DASH
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
-Fokozatos letöltési URL-címek (audió és videó).
+Progressive download URLs (audio and video).
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -429,34 +430,34 @@ Fokozatos letöltési URL-címek (audió és videó).
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-A videótovábbításhoz használja az [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszót.
+To stream you video, use [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-A progresszív letöltés teszteléséhez másoljon egy URL-címet a böngészőjébe (például az Internet Explorerbe, Chrome-ba vagy Safariba).
+To test progressive download, paste a URL into a browser (for example, Internet Explorer, Chrome, or Safari).
 
 
-##Következő lépések: Media Services képzési tervek
+##Next Steps: Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Visszajelzés küldése
+##Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-### Valami mást keres?
+### Looking for something else?
 
-Ha ebben a témakörben nem azt találta, amire számított, valami hiányzik, vagy bármilyen más módon hiányérzete maradt, mondja el nekünk véleményét az alábbi Disqus-beszélgetés segítségével.
+If this topic didn't contain what you were expecting, is missing something, or in some other way didn't meet your needs, please provide us with you feedback using the Disqus thread below.
 
 
 <!-- Anchors. -->
 
 
 <!-- URLs. -->
-  [Webplatform-telepítő]: http://go.microsoft.com/fwlink/?linkid=255386
-  [Portál]: http://manage.windowsazure.com/
+  [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
+  [Portal]: http://manage.windowsazure.com/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

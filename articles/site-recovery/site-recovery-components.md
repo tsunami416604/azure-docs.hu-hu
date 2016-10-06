@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Hogy működik a Site Recovery? | Microsoft Azure"
-    description="Ebben a cikkben a Site Recovery architektúráját mutatjuk be."
+    pageTitle="How does Site Recovery work? | Microsoft Azure"
+    description="This article provides an overview of Site Recovery architecture"
     services="site-recovery"
     documentationCenter=""
     authors="rayne-wiselman"
@@ -16,250 +16,251 @@
     ms.date="07/12/2016"
     ms.author="raynew"/>
 
-# Hogy működik az Azure Site Recovery?
 
-A cikkből megismerheti az Azure Site Recovery szolgáltatás mögöttes architektúráját, valamint a szolgáltatás működéséért felelős összetevőket. 
+# How does Azure Site Recovery work?
 
-Megjegyzéseit vagy kérdéseit a cikk alján, vagy az [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti fel.
+Read this article to understand the underlying architecture of the Azure Site Recovery service and the components that make it work. 
 
+Post any comments or questions at the bottom of this article, or on the [Azure Recovery Services Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-## Áttekintés
 
-A legtöbb vállalatnál szükség van üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak az alkalmazások, a számítási feladatok és az adatok üzemben maradni a tervezett és nem tervezett leállások során, illetve, hogy hogyan lehet minél gyorsabban visszaállni a normál működésre. Fontos, hogy a BCDR stratégia gondoskodjon a vállalati adatok biztonságáról és helyreállíthatóságáról, és lehetővé tegye, hogy a számítási feladatok még vészhelyzet esetén se álljanak le. 
+## Overview
 
-Az Azure Site Recovery szolgáltatása a helyszíni fizikai kiszolgálóknak és virtuális gépeknek az Azure-felhőbe vagy egy másodlagos adatközpontba történő replikálásával segít a stratégia kidolgozásában. Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat. További információkat a [Mi a Site Recovery?](site-recovery-overview.md) című cikkben talál.
+Organizations need a BCDR strategy that determines how apps, workloads, and data stay running and available during planned and unplanned downtime, and recover to normal working conditions as soon as possible. Your BCDR strategy should keep business data safe and recoverable, and ensure that workloads remain continuously available when disaster occurs. 
 
-## A Site Recovery szolgáltatás az Azure Portalon
+Site Recovery is an Azure service that contributes to your BCDR strategy by orchestrating replication of on-premises physical servers and virtual machines to the cloud (Azure) or to a secondary datacenter. When outages occur in your primary location, you fail over to the secondary location to keep apps and workloads available. You fail back to your primary location when it returns to normal operations. Learn more in [What is Site Recovery?](site-recovery-overview.md)
 
-Az Azure két különböző [üzemi modellt](../resource-manager-deployment-model.md) kínál az erőforrások létrehozásához és használatához: az Azure Resource Manager-modellt és a klasszikus szolgáltatásfelügyeleti modellt. Az Azure-ban két különböző portál érhető el: a [klasszikus Azure portál](https://manage.windowsazure.com/), amely a klasszikus üzembe helyezési modellt, és az [Azure Portal](https://portal.azure.com), amely mindkét modellt támogatja.
+## Site Recovery in the Azure portal
 
-A Site Recovery a klasszikus portálon és az Azure Portalon egyaránt elérhető. A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatásfelügyeleti modellel támogatható. Az Azure Portalon a klasszikus modell vagy az erőforrásmodell üzembe helyezései támogathatók. [Itt olvashat bővebben](site-recovery-overview.md#site-recovery-in-the-azure-portal) az Azure Portal használatával végzett üzembe helyezésről.
+Azure has two different [deployment models](../resource-manager-deployment-model.md) for creating and working with resources: the Azure Resource Manager model and the classic services management model. Azure also has two portals – the [Azure classic portal](https://manage.windowsazure.com/) that supports the classic deployment model, and the [Azure portal](https://portal.azure.com) with support for both deployment models.
 
-A jelen cikkben foglalt információk egyaránt érvényesek a klasszikus portálon és az Azure Portal webhelyen végzett üzembe helyezésekre. Az esetleges eltéréseket jelezzük.
+Site Recovery is available in both the classic portal and the Azure portal. In the Azure classic portal you can support Site Recovery with the classic services management model. In the Azure portal you can support the classic model or Resource Model deployments. [Read more](site-recovery-overview.md#site-recovery-in-the-azure-portal) about deploying with the Azure portal.
 
-## Üzembe helyezési forgatókönyvek
+The information in this article applies to both classic and Azure portal deployments. Differences are noted where applicable.
 
-A Site Recovery számos forgatókönyv esetében használható replikációra:
+## Deployment scenarios
 
-- **VMware virtuális gépek replikálása**: a helyszíni VMware virtuális gépeket az Azure-ba vagy egy másodlagos adatközpontba replikálhatja.
-- - **Fizikai gépek replikálása**: a windowsos vagy linuxos fizikai gépeket az Azure-ba vagy egy másodlagos adatközpontba replikálhatja. A fizikai gépek replikálásának folyamata szinte teljesen megegyezik a VMware virtuális gépek replikálásának folyamatával.
-- **Hyper-V virtuális gépek replikálása (VMM nélkül)**: a nem a VMM által felügyelt Hyper-V virtuális gépeket az Azure-ba replikálhatja.
-- **System Center VMM-felhőkben működő Hyper-V virtuális gépek replikálása**: a helyszíni Hyper-V-gazdakiszolgálókon működő Hyper-V virtuális gépeket az Azure-ba vagy egy másodlagos adatközpontba replikálhatja. A replikálást végrehajthatja standard Hyper-V-replika vagy SAN-replikáció használatával.
-- **Virtuális gépek**: a Site Recovery az [Azure-beli IaaS típusú virtuális gépek](site-recovery-migrate-azure-to-azure.md) régiók közötti áttelepítésére, illetve [AWS Windows-példányok](site-recovery-migrate-aws-to-azure.md) Azure-beli IaaS típusú virtuális gépekre való áttelepítésére is használható. A szolgáltatás jelenleg csupán az áttelepítést támogatja, ami azt jelenti, hogy a virtuális gépeken elvégezhető a feladatátvétel, de a feladat-visszavétel nem.
+Site Recovery can be deployed to orchestrate replication in a number of scenarios:
 
-A Site Recovery a fent megnevezett típusú virtuális gépeken és fizikai kiszolgálókon futó legtöbb alkalmazást is képes replikálni. A támogatott alkalmazások teljes körű összefoglalóját megtalálja a [Milyen számítási feladatokat tud védeni az Azure Site Recovery?](site-recovery-workload.md) című cikkben.
+- **Replicate VMware virtual machines**: You can replicate on-premises VMware virtual machines to Azure or to a secondary datacenter.
+- - **Replicate physical machines**: You can replicate physical machines running Windows or Linux to Azure or to a secondary datacenter. The process for replicating physical machines is almost the same as the process for replicating VMware VMs
+- **Replicate Hyper-V VMs (without VMM)**: You can replicate Hyper-V VMs that aren't managed by VMM to Azure.
+- **Replicate Hyper-V VMs managed in System Center VMM clouds**: You can replicate on-premises Hyper-V virtual machines running on Hyper-V host servers in VMM clouds to Azure or to a secondary datacenter. You can replicate using standard Hyper-V Replica or using SAN replication.
+- **Migrate VMs**: You can use Site Recovery to [migrate Azure IaaS VMs](site-recovery-migrate-azure-to-azure.md) between regions, or to [migrate AWS Windows instances](site-recovery-migrate-aws-to-azure.md) to Azure IaaS VMs. Currently only migration is supported which means you can fail over these VMs but you can't fail them back.
 
+Site Recovery can replicate most apps running on these VMs and physical servers. You can get a full summary of the supported apps in [What workloads can Azure Site Recovery protect?](site-recovery-workload.md)
 
-## Replikálás az Azure-ba: VMware virtuális gépek és fizikai Windows-/Linux-kiszolgálók
 
-A VMware virtuális gépek többféleképpen is replikálhatók a Site Recovery használatával.
+## Replicate to Azure: VMware virtual machines or physical Windows/Linux servers
 
-- **Az Azure Portal használatával**: ha a Site Recovery üzembe helyezését az Azure Portal webhelyen hajtja végre, a virtuális gépek feladatait a klasszikus szolgáltatásfelügyeleti tárnak vagy a Resource Managernek adhatja át. A VMware virtuális gépeknek az Azure Portalon történő replikálása számos előnnyel jár, ilyen például a klasszikus tárba vagy a Resource Manager-tárba végzett replikálás lehetősége az Azure-ban. [További információk](site-recovery-vmware-to-azure.md).
-- **A klasszikus portál használatával**: a Site Recovery a klasszikus portálon egy továbbfejlesztett architektúra alkalmazásával helyezhető üzembe. Ezt kell használni a klasszikus portálon működő összes új üzembe helyezésnél. Ennél az üzembe helyezésnél a virtuális gépek feladatai csak az Azure-beli klasszikus tárnak adhatók át, a Resource Manager-tárnak nem. [További információk](site-recovery-vmware-to-azure-classic.md). Ezenkívül rendelkezésre áll egy [korábbi architektúra](site-recovery-vmware-to-azure-classic-legacy.md) is a VMware-replikáció beállításához a klasszikus portálon. Ez nem alkalmazható az új üzembe helyezésekhez.  Ha már végrehajtotta az üzembe helyezést a korábbi architektúra használatával, [olvassa el, hogyan telepítheti át](site-recovery-vmware-to-azure-classic-legacy.md#migrate-to-the-enhanced-deployment) a továbbfejlesztett architektúrára.
+There are couple of ways to replicate VMware VMs with Site Recovery.
 
+- **Using the Azure portal**-When you deploy Site Recovery in the Azure portal you can fail over VMs to classic service manager storage or to Resource Manager. Replicating VMware VMs in the Azure portal brings a number of advantages, including the ability to replicate to classic or Resource Manager storage in Azure. [Learn more](site-recovery-vmware-to-azure.md).
+- **Using the classic portal**-You can deploy Site Recovery in the classic portal using an enhanced experience. This should be used for all new deployments in the classic portal. In this deployment you can only fail over VMs to classic storage in Azure and not to Resource Manager storage. [Learn more](site-recovery-vmware-to-azure-classic.md). There is also a [legacy experience](site-recovery-vmware-to-azure-classic-legacy.md) for setting up VMware replication in the classic portal. This shouldn't be used for new deployments.  If you've already deployed using the legacy experience [learn about migrating](site-recovery-vmware-to-azure-classic-legacy.md#migrate-to-the-enhanced-deployment) to the enhanced deployment.
 
 
-A Site Recovery üzembe helyezési architekturális követelményei a VMware virtuális gépeknek/fizikai kiszolgálóknak az Azure Portal webhelyen vagy a (továbbfejlesztett) klasszikus Azure portálon végzett replikálására vonatkozóan hasonlóak, van azonban néhány eltérés:
 
-- Ha az Azure Portal webhelyen végzi az üzembe helyezést, a replikálást végrehajthatja a Resource Manager-alapú tárba, és használhatja a Resource Manager-hálózatokat az Azure virtuális gépek csatlakoztatásához a feladatátvételt követően.
-- Ha az Azure Portalon végzi az üzembe helyezést, az LRS- és a GRS-tár egyaránt támogatott. A klasszikus portálon a GRS-t kell használni.
-- Az üzembe helyezési folyamat egyszerűbb és nagyobb mértékben felhasználóbarát az Azure Portal webhelyen.
+The architectural requirements for deploying Site Recovery to replicate VMware VMs/physical servers in the Azure portal or the Azure classic portal (enhanced) are similar, with a couple of differences:
 
+- If you deploy in the Azure portal you can replicate to Resource Manager-based storage and use Resource Manager networks for connecting the Azure VMs after failover.
+- When you deploy in the Azure portal both LRS and GRS storage is supported. In the classic portal GRS is required.
+- The deployment process is simplified and more user-friendly in the Azure portal.
 
-A következőkre lesz szüksége:
 
-- **Azure-fiók**: szüksége lesz egy Microsoft Azure-fiókra.
-- **Azure Storage**: a replikált adatok tárolásához Azure Storage-tárfiókra lesz szüksége. Használhat klasszikus fiókot vagy Resource Manager-tárfiókot. A fiók lehet LRS vagy GRS, amikor az Azure Portal webhelyen végzi az üzembe helyezést. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre. 
-- **Azure-hálózat**: szüksége lesz egy Azure virtuális hálózatra, amelyhez a létrehozott Azure virtuális gépek csatlakoznak, amikor a rendszer létrehozza azokat feladatátvétel esetén. Az Azure Portalon ezek lehetnek a klasszikus szolgáltatásfelügyeleti modellben vagy a Resource Manager-modellben létrehozott hálózatok.
-- **Helyszíni konfigurációs kiszolgáló**: szüksége lesz egy helyszíni Windows Server 2012 R2 rendszerű gépre, amely a konfigurációs kiszolgálót és a Site Recovery egyéb összetevőit futtatja. Ha VMware virtuális gépeket replikál, ennek egy magas rendelkezésre állású VMware virtuális gépnek kell lennie. Ha fizikai kiszolgálókat kíván replikálni, a gép lehet fizikai. A Site Recovery következő összetevői lesznek telepítve a gépre:
-    - **Konfigurációs kiszolgáló**: a helyszíni környezet és az Azure közötti kommunikáció koordinálását, valamint az adatreplikáció és -helyreállítás kezelését végzi.
-    - **Folyamatkiszolgáló**: replikációs átjáróként üzemel. Ez az összetevő fogadja a védett forrásgépek adatait, gyorsítótárazás, tömörítés és titkosítás segítségével optimalizálja őket, majd továbbítja az adatokat az Azure Storage-nak. Ezenfelül kezeli a mobilitási szolgáltatás leküldéses telepítését a védett gépekre, és elvégzi a WMware virtuális gépek automatikus felderítését. Az üzemelő példány bővülésével további, önálló és dedikált folyamatkiszolgálókat helyezhet üzembe, amelyek segítségével képes lesz a megnövekedett replikációs forgalom kezelésére is.
-    - **Fő célkiszolgáló**: az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat. 
-- **Replikálandó VMware virtuális gépek vagy fizikai kiszolgálók**: az Azure-ba replikálni kívánt gépeken telepíteni kell a mobilitási szolgáltatás összetevőt. A szolgáltatás észleli a gépen végbemenő adatírásokat, és továbbítja őket a folyamatkiszolgálónak. Az összetevő manuálisan is telepíthető, de azt is beállíthatja, hogy a folyamatkiszolgáló automatikusan, leküldéses módszerrel telepítse, amikor engedélyezi az adott gép replikálását.
-- **vSPhere-gazdagépek/vCenter-kiszolgáló**: szüksége lesz egy vagy több vSPhere-gazdakiszolgálóra, amelyeken a VMware virtuális gépek futnak. Javasoljuk, hogy a gazdagépek kezelésére helyezzen üzembe egy vCenter-kiszolgálót is.
-- **Feladat-visszavétel**: a következőkre lesz szüksége:
-    - **A fizikai gépek közötti feladat-visszavétel nem támogatott**: ez azt jelenti, hogy ha a fizikai kiszolgálók feladatait átadja az Azure-nak, akkor a feladat-visszavétel célja VMware virtuális gép lehet. Fizikai kiszolgáló nem használható a feladat-visszavételhez. A feladat-visszavételhez egy Azure virtuális gépre lesz szüksége, és ha a konfigurációs kiszolgálót nem VMware virtuális gépként helyezte üzembe, akkor egy különálló fő célkiszolgálót kell beállítania VMware virtuális gépként. Ez azért szükséges, mert a fő célkiszolgáló együttműködik és kapcsolatba lép a VMware-tárral a lemezeknek a VMware virtuális gépre történő visszaállításához.
-    - - **Ideiglenes folyamatkiszolgáló az Azure-ban**: ha feladatátvételt követően szeretné visszaadni a feladatokat az Azure-ból, be kell állítania egy folyamatkiszolgálóként üzemelő Azure virtuális gépet, amely kezeli az Azure-ból való replikációt. Ez a virtuális gép a feladatok visszaadását követően törölhető.
-    - **VPN-kapcsolat**: a feladat-visszavételhez szüksége lesz egy VPN-kapcsolatra (vagy Azure ExpressRoute-ra), amelyet a helyszíni hely Azure-hálózatában kell beállítania.
-    - **Önálló helyszíni fő célkiszolgáló**: a helyszíni fő célkiszolgáló kezeli a feladat-visszavételt. A fő célkiszolgálót alapértelmezés szerint a felügyeleti kiszolgálóra kell telepíteni, de nagyobb mértékű forgalom feladat-visszavétele esetén érdemes ebből a célból egy önálló helyszíni fő célkiszolgálót is létrehozni.
+Here's what you'll need:
 
-**Általános architektúra**
+- **Azure account**: You'll need a Microsoft Azure account.
+- **Azure storage**: You'll need an Azure storage account to store replicated data. You can use a classic account or a Resource Manager storage account. The account can be LRS or GRS when you deploy in the Azure portal. Replicated data is stored in Azure storage and Azure VMs are spun up when failover occurs. 
+- **Azure network**: You'll need an Azure virtual network that Azure VMs will connect to when they're created at failover. In the Azure portal they can be networks created in the classic service manager model or in the Resource Manager model.
+- **On-premises configuration server**: You'll need an on-premises Windows Server 2012 R2 machine that runs the configuration server and other Site Recovery components. If you're replicating VMware VMs this should be a highly available VMware VM. If you want to replicate physical servers the machine can be physical. These Site Recovery components will be installed on the machine:
+    - **Configuration server**: Coordinates communication between your on-premises environment and Azure, and manages data replication and recovery.
+    - **Process server**: Acts as a replication gateway. It receives replication data from protected source machines, optimizes it with caching, compression, and encryption, and sends the data to Azure storage. It also handles push installation of the Mobility service to protected machines, and performs automatic discovery of VMware VMs. As your deployment grows you can add additional separate dedicated process servers to handle increasing volumes of replication traffic.
+    - **Master target server**: Handles replication data during failback from Azure. 
+- **VMware VMs or physical servers to replicate**: Each machine that you want to replicate to Azure will need the Mobility service component installed. This service captures data writes on the machine and forwards them to the process server. This component can be installed manually, or can be pushed and installed automatically by the process server when you enable replication for a machine.
+- **vSPhere hosts/vCenter server**: You'll need one or more vSphere host servers running VMware VMs. We recommend that you deploy a vCenter server to manage those hosts.
+- **Failback**:  Here's what you need:
+    - **Physical-to-physical failback isn't supported**: This means that if you fail over physical servers to Azure and then want to fail back, you must fail back to a VMware VM. You can't fail back to a physical server. You'll need an Azure VM to fail back to, and if you didn't deploy the configuration server as a VMware VM you'll need to set up a separate master target server as a VMware VM. This is needed because the master target server interacts and attaches to VMware storage to restore the disks to a VMware VM.
+    - - **Temporary process server in Azure**: If you want to fail back from Azure after failover you'll need to set up an Azure VM configured as a process server, to handle replication from Azure. You can delete this VM after failback finishes.
+    - **VPN connection**: For failback you'll need a VPN connection (or Azure ExpressRoute) set up from the Azure network to the on-premises site.
+    - **Separate on-premises master target server**: The on-premises master target server handles failback. The master target server is installed by default on the management server, but if you're failing back larger volumes of traffic you should set up a separate on-premises master target server for this purpose.
 
-![Továbbfejlesztett](./media/site-recovery-components/arch-enhanced.png)
+**General architecture**
 
-**Üzembe helyezési összetevők**
+![Enhanced](./media/site-recovery-components/arch-enhanced.png)
 
-![Továbbfejlesztett](./media/site-recovery-components/arch-enhanced2.png)
+**Deployment components**
 
-**Feladat-visszavétel**
+![Enhanced](./media/site-recovery-components/arch-enhanced2.png)
 
-![Továbbfejlesztett feladat-visszavétel](./media/site-recovery-components/enhanced-failback.png)
+**Failback**
 
+![Enhanced failback](./media/site-recovery-components/enhanced-failback.png)
 
-- [További információk](site-recovery-vmware-to-azure.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
-- [További információk](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) a továbbfejlesztett üzembe helyezés követelményeiről a klasszikus portál esetében.
-- [További információk](site-recovery-failback-azure-to-vmware.md) a feladat-visszavételről az Azure Portal webhelyen.
-- [További információk](site-recovery-failback-azure-to-vmware-clas- [Learn more](site-recovery-failback-azure-to-vmware-classic.md) about failback in the Auzre portal.sic.md) a feladat-visszavételről a klasszikus portálon.
 
-## Replikálás az Azure-ba: a VMM által nem felügyelt Hyper-V virtuális gépek
+- [Learn more](site-recovery-vmware-to-azure.md#azure-prerequisites) about requirements for Azure portal deployment.
+- [Learn more](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) about enhanced deployment requirements in the classic portal.
+- [Learn more](site-recovery-failback-azure-to-vmware.md) about failback in the Auzre portal.
+- [Learn more](site-recovery-failback-azure-to-vmware-clas- [Learn more](site-recovery-failback-azure-to-vmware-classic.md) about failback in the Auzre portal.sic.md) about failback in the classic portal.
 
-A System Center VMM által nem felügyelt Hyper-V virtuális gépeket a következőképpen replikálhatja az Azure-ba a Site Recovery használatával:
+## Replicate to Azure: Hyper-V VMs not managed by VMM
 
-- **Az Azure Portal használatával**: ha a Site Recovery üzembe helyezését az Azure Portalon hajtja végre, a virtuális gépek feladatait a klasszikus tárnak vagy a Resource Managernek adhatja át. [További információk](site-recovery-hyper-v-site-to-azure.md).
-- **A hagyományos portál használatával**: a Site Recovery üzembe helyezését a klasszikus portálon hajthatja végre. Ennél az üzembe helyezésnél a virtuális gépek feladatai csak az Azure-beli klasszikus tárnak adhatók át, a Resource Manager-tárnak nem. [További információk](site-recovery-hyper-v-site-to-azure-classic.md).
+You can replicate Hyper-V VMs that aren't managed by System Center VMM to Azure with Site Recovery as follows:
 
-A két üzembe helyezés architektúrája hasonló, van azonban néhány eltérés:
+- **Using the Azure portal**-When you deploy Site Recovery in the Azure portal you can fail over VMs to classic storage or to Resource Manager. [Learn more](site-recovery-hyper-v-site-to-azure.md).
+- **Using the classic portal**-You can deploy Site Recovery in the classic portal. In this deployment you can only fail over VMs to classic storage in Azure and not to Resource Manager storage. [Learn more](site-recovery-hyper-v-site-to-azure-classic.md).
 
-- Ha az Azure Portalon végzi az üzembe helyezést, a replikálást végrehajthatja a Resource Manager-tárba, és használhatja a Resource Manager-hálózatokat az Azure virtuális gépek csatlakoztatásához a feladatátvételt követően.
-- Az üzembe helyezési folyamat egyszerűbb és nagyobb mértékben felhasználóbarát az Azure Portal webhelyen.
+The architecture for both deployments is similar, except that:
 
-A következőkre lesz szüksége:
+- If you deploy in the Azure portal you can replicate to Resource Manager storage and use Resource Manager networks for connecting the Azure VMs after failover.
+- The deployment process is simplified and more user-friendly in the Azure portal.
 
-- **Azure-fiók**: szüksége lesz egy Microsoft Azure-fiókra.
-- **Azure Storage**: a replikált adatok tárolásához Azure Storage-tárfiókra lesz szüksége. Az Azure Portalon használhat klasszikus fiókot vagy Resource Manager-tárfiókot. A klasszikus portálon csak klasszikus fiók használható. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre.
-- **Azure-hálózat**: szüksége lesz egy Azure-hálózatra, amelyhez a létrehozott Azure virtuális gépek csatlakoznak, amikor a rendszer létrehozza azokat a feladatátvételt követően. 
-- **Hyper-V-gazdagép**: szüksége lesz egy vagy több Windows Server 2012 R2 rendszerű Hyper-V-gazdakiszolgálóra. A Site Recovery üzembe helyezése közben a következőt telepíti: 
-- **Hyper-V virtuális gépek**: egy vagy több virtuális gépre lesz szüksége a Hyper-V-gazdakiszolgálón. Az Azure Site Recovery Provider és az Azure Recovery Services ügynök a Hyper-V-kiszolgálón a Site Recovery üzembe helyezése során. A Provider az interneten keresztül koordinálja és valósítja meg a Site Recovery szolgáltatással történő replikációt. Az ügynök a HTTPS-protokollal (a 443-as porton) végzi az adatok replikálását. A Provider és az Agent kommunikációja biztonságos, titkosított csatornákon történik. Ezenfelül az Azure-tárfiókba replikált adatok is titkosítást kapnak.
+Here's what you'll need:
 
-**Általános architektúra**
+- **Azure account**: You'll need a Microsoft Azure account.
+- **Azure storage**: You'll need an Azure storage account to store replicated data. In the Azure portal you can use a classic account or a Resource Manager storage account. In the classic portal you can use a classic account only. Replicated data is stored in Azure storage and Azure VMs are created when failover occurs.
+- **Azure network**: You'll need an Azure network that Azure VMs will connect to when they're created after failover. 
+- **Hyper-v host**: You'll need one or more Windows Server 2012 R2 Hyper-V host server. During Site Recovery deployment you'll install the 
+- **Hyper-V VMs**: You'll need one or more VMs on the Hyper-V host server. Azure Site Recovery Provider and the Azure Recovery Services agent on the Hyper-V host during Site Recovery deployment. The Provider coordinates and orchestrates replication with the Site Recovery service over the internet. The agent handles data replication data over HTTPS 443. Communications from both the Provider and the agent are secure and encrypted. Replicated data in Azure storage is also encrypted.
 
-![Replikálás Hyper-V-helyről az Azure-ba](./media/site-recovery-components/arch-onprem-azure-hypervsite.png)
+**General architecture**
 
+![Hyper-V site to Azure](./media/site-recovery-components/arch-onprem-azure-hypervsite.png)
 
-- [További információk](site-recovery-hyper-v-site-to-azure.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
-- [További információk](site-recovery-hyper-v-site-to-azure-classic.md#azure-prerequisites) a klasszikus portálon végzett üzembe helyezésre vonatkozó követelményekről.
 
+- [Learn more](site-recovery-hyper-v-site-to-azure.md#azure-prerequisites) about requirements for Azure portal deployment.
+- [Learn more](site-recovery-hyper-v-site-to-azure-classic.md#azure-prerequisites) about requirements for classic portal deployment.
 
 
-## Replikálás az Azure-ba: a VMM által felügyelt Hyper-V virtuális gépek
 
-A VMM-felhőkben lévő Hyper-V virtuális gépeket a következőképpen replikálhatja az Azure-ba a Site Recovery használatával:
+## Replicate to Azure: Hyper-V VMs managed by VMM
 
-- **Az Azure Portal használatával**: ha a Site Recovery üzembe helyezését az Azure Portalon hajtja végre, a virtuális gépek feladatait a klasszikus tárnak vagy a Resource Managernek adhatja át. [További információk](site-recovery-vmm-to-azure.md).
-- **A hagyományos portál használatával**: a Site Recovery üzembe helyezését a klasszikus portálon hajthatja végre. Ennél az üzembe helyezésnél a virtuális gépek feladatai csak az Azure-beli klasszikus tárnak adhatók át, a Resource Manager-tárnak nem. [További információk](site-recovery-vmm-to-azure-classic.md).
+You can replicate Hyper-V VMs in VMM clouds to Azure with Site Recovery as follows:
 
-A két üzembe helyezés architektúrája hasonló, van azonban néhány eltérés:
+- **Using the Azure portal**-When you deploy Site Recovery in the Azure portal you can fail over VMs to classic storage or to Resource Manager. [Learn more](site-recovery-vmm-to-azure.md).
+- **Using the classic portal**-You can deploy Site Recovery in the classic portal. In this deployment you can only fail over VMs to classic storage in Azure and not to Resource Manager storage. [Learn more](site-recovery-vmm-to-azure-classic.md).
 
-- Ha az Azure Portal webhelyen végzi az üzembe helyezést, a replikálást végrehajthatja a Resource Manager-alapú tárba, és használhatja a Resource Manager-hálózatokat az Azure virtuális gépek csatlakoztatásához a feladatátvételt követően.
-- Az üzembe helyezési folyamat egyszerűbb és nagyobb mértékben felhasználóbarát az Azure Portal webhelyen.
+The architecture for both deployments is similar, except that:
 
+- If you deploy in the Azure portal you can replicate to Resource Manager-based storage and use Resource Manager networks for connecting the Azure VMs after failover.
+- The deployment process is simplified and more user-friendly in the Azure portal.
 
-A következőkre lesz szüksége:
 
-- **Azure-fiók**: szüksége lesz egy Microsoft Azure-fiókra.
-- **Azure Storage**: a replikált adatok tárolásához Azure Storage-tárfiókra lesz szüksége. Az Azure Portalon használhat klasszikus fiókot vagy Resource Manager-tárfiókot. A klasszikus portálon csak klasszikus fiók használható. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre.
-- **Azure-hálózat**: be kell állítania a hálózatleképzést ahhoz, hogy az Azure virtuális gépek a megfelelő hálózatokhoz csatlakozzanak, amikor a rendszer létrehozza azokat a feladatátvételt követően. 
-- **VMM-kiszolgáló**: szüksége lesz a System Center 2012 R2 rendszeren futó egy vagy több helyszíni VMM-kiszolgálóra, és be kell állítania egy vagy több magánfelhőt. Ha az Azure Portalon végzi az üzembe helyezést, logikai és virtuálisgép-hálózatokat kell beállítania, hogy konfigurálhassa a hálózatleképezést. Ez a klasszikus portálon nem kötelező.  Egy virtuálisgép-hálózatot össze kell kötnie egy felhőhöz társított logikai hálózattal.
-- **Hyper-V-gazdagép**: a VMM-felhőben szüksége lesz egy vagy több Windows Server 2012 R2 rendszerű Hyper-V gazdakiszolgálóra.
-- **Hyper-V virtuális gépek**: egy vagy több virtuális gépre lesz szüksége a Hyper-V-gazdakiszolgálón.
+Here's what you'll need:
 
-**Általános architektúra**
+- **Azure account**: You'll need a Microsoft Azure account.
+- **Azure storage**: You'll need an Azure storage account to store replicated data. In the Azure portal you can use a classic account or a Resource Manager storage account. In the classic portal you can use a classic account only. Replicated data is stored in Azure storage and Azure VMs are created when failover occurs.
+- **Azure network**: You'll need to set up network mapping so that Azure VMs are connected to appropriate networks when they're created after failover. 
+- **VMM server**: You'll need one or more on-premises VMM servers running on System Center 2012 R2 and set up with one or more private clouds. If you're deploying in the Azure portal you'll need logical and VM networks set up so you can configure network mapping. In the classic portal this is optional.  A VM network should be linked to a logical network that's associated with the cloud.
+- **Hyper-v host**: You'll need one or more Windows Server 2012 R2 Hyper-V host servers in the VMM cloud.
+- **Hyper-V VMs**: You'll need one or more VMs on the Hyper-V host server.
 
-![VMM-replikáció Azure-ba](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
+**General architecture**
 
-- [További információk](site-recovery-vmm-to-azure.md#azure-requirements) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
-- [További információk](site-recovery-vmm-to-azure-classic.md#before-you-start) a klasszikus portálon végzett üzembe helyezésre vonatkozó követelményekről.
+![VMM to Azure](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
+- [Learn more](site-recovery-vmm-to-azure.md#azure-requirements) about requirements for Azure portal deployment.
+- [Learn more](site-recovery-vmm-to-azure-classic.md#before-you-start) about requirements for classic portal deployment.
 
 
 
-## Replikálás másodlagos helyre: VMware virtuális gépek vagy fizikai kiszolgálók 
 
-Ha VMware virtuális gépeket vagy fizikai kiszolgálókat szeretne egy másodlagos helyre replikálni, töltse le az Azure Site Recovery-előfizetés részét képező InMage Scout segédprogramot. A segédprogram az Azure Portalról vagy a klasszikus Azure portálról tölthető le. 
+## Replicate to a secondary site: VMware virtual machines or physical servers 
 
-Állítsa be mindkét oldalon az összetevőkiszolgálókat (konfigurációs, folyamat- és fő célkiszolgáló), majd telepítse a replikálni kívánt gépekre a Unified Agent ügynököt. A kezdeti replikációt követően a gépeken futó ügynök továbbítja a változásreplikálási adatokat a folyamatkiszolgálónak. A folyamatkiszolgáló optimalizálást követően átadja az adatokat a másodlagos helyen működő fő célkiszolgálónak. A replikációs folyamatot a konfigurációs kiszolgáló kezeli.
+To replicate VMware VMs or physical servers to a secondary site as download InMage Scout that's included in the Azure Site Recovery subscription. It can be downloaded from the Azure portal or from the Azure classic portal. 
 
-A következőkre lesz szüksége:
+You set up the component servers in each site (configuration, process, master target), and install the Unified Agent on machines that you want to replicate. After initial replication the agent on each machine sends delta replication changes to the process server. The process server optimizes the data and transfers it to the master target server on the secondary site. The configuration server manages the replication process.
 
-**Azure-fiók**: ennél az üzembe helyezési forgatókönyvnél az InMage Scout segédprogramot kell használnia. Ennek beszerzéséhez Azure-előfizetésre lesz szüksége. A Site Recovery-tároló létrehozását követően az üzemelő példány beállításához töltse le az InMage Scout segédprogramot, és telepítse hozzá a legújabb frissítéseket.
-**Folyamatkiszolgáló (elsődleges hely)**: állítsa be a folyamatkiszolgáló összetevőt az elsődleges helyen. Ez végzi az adatok gyorsítótárazását, tömörítését és optimalizálását. Ezenfelül ez az összetevő kezeli a Unified Agent ügynöknek a védeni kívánt gépekre történő leküldéses telepítését. 
-**VMware ESX/ESXi- és vCenter-kiszolgáló (elsődleges hely)**: ha VMware virtuális gépeknek szeretne védelmet nyújtani, szüksége lesz egy EXS/ESXi-hipervizorra, illetve a hipervizorokat felügyelő VMware vCenter-kiszolgálóra (utóbbi válaszható).
-- **Virtuális gépek/fizikai kiszolgálók (elsődleges hely)**: a védelemmel ellátni kívánt VMware virtuális gépeken, illetve a windowsos/linuxos fizikai kiszolgálókon telepítenie kell a Unified Agent ügynököt. Ezenfelül telepítse a Unified Agent ügynököt a fő célkiszolgálóként üzemelő gépekre is. Ez az ügynök valósítja meg az összetevők közötti kommunikációt. 
-- - **Konfigurációs kiszolgáló (másodlagos hely)**: a konfigurációs kiszolgáló az az összetevő, amelyet elsőként telepíteni kell a másodlagos helyre az üzemelő példánynak a felügyeleti weblapon vagy a vContinuum-konzolban való felügyelete, konfigurálása és figyelése céljából. Az üzemelő példány csupán egyetlen konfigurációs kiszolgálót tartalmaz. Ezt a Windows Server 2012 R2-es verziójával futó gépre kell telepíteni.
-- **vContinuum-kiszolgáló (másodlagos hely)**: telepítse ugyanarra a helyre (a másodlagos helyre), mint a konfigurációs kiszolgálót. Ez az összetevő elérhetővé tesz egy konzolt, amelyről felügyelheti és figyelheti a védett környezetet. Alapértelmezés szerint a vContinuum-kiszolgáló az első fő célkiszolgáló. Erre is telepíteni kell a Unified Agent ügynököt.
-- **Fő célkiszolgáló (másodlagos hely)**: a fő célkiszolgáló tárolja a replikált adatokat. Ez fogadja a folyamatkiszolgáló által küldött adatokat, létrehozza a replika gépet a másodlagos helyen, és tárolja az adatmegőrzési pontokat. Az, hogy hány fő célkiszolgálóra van szükség, attól függ, hogy hány gépnek kíván védelmet biztosítani. Ha szeretne feladat-visszavételt végrehajtani az elsődleges helyre, ott is üzemelnie kell egy fő célkiszolgálónak. 
+Here's what you need:
 
-**Általános architektúra**
+**Azure account**: You deploy this scenario using InMage Scout. To obtain it you'll need an Azure subscription. After you create a Site Recovery vault you download InMage Scout and install the latest updates to set up the deployment.
+**Process server (primary site)**: Set up the process server component in your primary site to handle caching, compression, and data optimization. It also handles push installation of the Unified Agent to machines you want to protect. 
+**VMware ESX/ESXi and vCenter server (primary site)**: If you're protecting VMware VMs you'll need a VMware EXS/ESXi hypervisor and optionally a VMware vCenter server to manage hypervisors.
+- **VMs/physical servers (primary site)**: VMware VMs or Windows/Linux physical servers you want to protect will need the Unified Agent installed. The Unified Agent is also installed on the machines acting as the master target server. The agent acts as a communication provider between all of the components. 
+- - **Configuration server (secondary site)**: The configuration server is the first component you install, and it's installed on the secondary site to manage, configure, and monitor your deployment, either using the management website or the vContinuum console. There's only a single configuration server in a deployment and it must be installed on a machine running Windows Server 2012 R2.
+- **vContinuum server (secondary site)**: It's installed in the same location (secondary site) as the configuration server. It provides a console for managing and monitoring your protected environment. In a default installation the vContinuum server is the first master target server and has the Unified Agent installed.
+- **Master target server (secondary site)**: The master target server holds replicated data. It receives data from the process server, creates a replica machine in the secondary site, and holds the data retention points. The number of master target servers you need depends on the number of machines you're protecting. If you want to fail back to the primary site you'll need a master target server there too. 
 
-![VMware és VMware közötti replikáció](./media/site-recovery-components/vmware-to-vmware.png)
+**General architecture**
 
+![VMware to VMware](./media/site-recovery-components/vmware-to-vmware.png)
 
-## Replikálás másodlagos helyre: a VMM által felügyelt Hyper-V virtuális gépek
 
+## Replicate to a secondary site: Hyper-V VMs managed by VMM
 
-A System Center VMM által felügyelt Hyper-V virtuális gépeket a következőképpen replikálhatja egy másodlagos adatközpontba a Site Recovery használatával:
 
-- **Az Azure Portal használatával**: amikor a Site Recovery üzembe helyezését az Azure Portalon végzi. [További információk](site-recovery-hyper-v-site-to-azure.md).
-- **A hagyományos portál használatával**: a Site Recovery üzembe helyezését a klasszikus portálon hajthatja végre. [További információk](site-recovery-hyper-v-site-to-azure-classic.md).
+You can replicate Hyper-V VMs that are managed by System Center VMM to a secondary datacenter with Site Recovery as follows:
 
-A két üzembe helyezés architektúrája hasonló, van azonban néhány eltérés:
+- **Using the Azure portal**-When you deploy Site Recovery in the Azure portal. [Learn more](site-recovery-hyper-v-site-to-azure.md).
+- **Using the classic portal**-You can deploy Site Recovery in the classic portal. [Learn more](site-recovery-hyper-v-site-to-azure-classic.md).
 
-- Ha az Azure Portalon végzi az üzembe helyezést, be kell állítania a hálózatleképezést. Ez a klasszikus portálon nem kötelező.
-- Az üzembe helyezési folyamat egyszerűbb és nagyobb mértékben felhasználóbarát az Azure Portal webhelyen.
-- - Ha a klasszikus Azure portálon végzi az üzembe helyezést, [tárolóleképezés](site-recovery-storage-mapping.md) is elérhető.
+The architecture for both deployments is similar, except that:
 
-A következőkre lesz szüksége:
+- If you deploy in the Azure portal you must set up network mapping. this is optional in the classic portal.
+- The deployment process is simplified and more user-friendly in the Azure portal.
+- - If you deploy in the Azure classic portal [storage mapping](site-recovery-storage-mapping.md) is available.
 
-- **Azure-fiók**: szüksége lesz egy Microsoft Azure-fiókra.
-- **VMM-kiszolgáló**: javasoljuk, hogy mind az elsődleges helyen, mind a másodlagos helyen hozzon létre egy VMM-kiszolgálót, és ezek tartalmazzanak legalább egy VMM-magánfelhőt. A kiszolgálón a System Center 2012 SP1-es vagy újabb verziója fusson, és telepítse rá a legújabb frissítéseket is. A kiszolgálón álljon rendelkezésre internetkapcsolat. A felhőkön állítsa be a Hyper-V-kapacitásprofilt. Telepítse az Azure Site Recovery Providert a VMM-kiszolgálóra. A Provider az interneten keresztül koordinálja és valósítja meg a Site Recovery szolgáltatással történő replikációt. A Provider és az Azure közötti kommunikáció biztonságos, titkosított csatornákon történik.
-- **Hyper-V-kiszolgáló**: a Hyper-V-kiszolgálóknak az elsődleges és másodlagos VMM-felhőkben kell elhelyezkedniük. A gazdakiszolgálókon a Windows Server 2012-es vagy újabb verziója fusson, és telepítse rájuk a legújabb frissítéseket is. A kiszolgálókon álljon rendelkezésre internetkapcsolat. Az adatoknak az elsődleges és másodlagos Hyper-V gazdakiszolgálók közötti replikálását a rendszer LAN-on vagy VPN-en keresztül, Kerberos- vagy tanúsítványalapú hitelesítés használata mellett végzi.  
-- **Védett gépek**: a forrás Hyper-V gazdakiszolgálókon legalább egy védeni kívánt virtuális gépnek kell futnia.
+Here's what you'll need:
 
-**Általános architektúra**
+- **Azure account**: You'll need a Microsoft Azure account.
+- **VMM server**: We recommend a VMM server in the primary site and one in the secondary site, each containing at least one VMM private cloud. The server should be running at least System Center 2012 SP1 with latest updates, and connected to the internet. Clouds should have the Hyper-V capability profile set. You'll install the Azure Site Recovery Provider on the VMM server. The Provider coordinates and orchestrates replication with the Site Recovery service over the internet. Communications between the Provider and Azure are secure and encrypted.
+- **Hyper-V server**: Hyper-V host servers should be located in the primary and secondary VMM clouds. The host servers should be running at least Windows Server 2012 with the latest updates installed, and connected to the internet. Data is replicated between the primary and secondary Hyper-V host servers over the LAN or VPN using Kerberos or certificate authentication.  
+- **Protected machines**: The source Hyper-V host server should have at least one VM that you want to protect.
 
-![Két helyszíni hely közötti replikálás](./media/site-recovery-components/arch-onprem-onprem.png)
+**General architecture**
 
+![On-premises to on-premises](./media/site-recovery-components/arch-onprem-onprem.png)
 
-- [További információk](site-recovery-vmm-to-vmm.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
-- - [További információk](site-recovery-vmm-to-vmm-classic.md#before-you-start) a klasszikus Azure portálon végzett üzembe helyezésre vonatkozó követelményekről.
 
+- [Learn more](site-recovery-vmm-to-vmm.md#azure-prerequisites) about deployment requirements in the Azure portal.
+- - [Learn more](site-recovery-vmm-to-vmm-classic.md#before-you-start) about deployment requirements in the Azure classic portal.
 
 
 
-## Replikálás másodlagos helyre SAN-replikációval: a VMM által felügyelt Hyper-V virtuális gépek
 
-A VMM-felhőkben felügyelt Hyper-V virtuális gépeket a klasszikus Azure portál használatával replikálhatja a SAN-replikációt alkalmazó másodlagos helyre. Ez a forgatókönyv jelenleg nem támogatott az új Azure Portalon. 
+## Replicate to a secondary site with SAN replication: Hyper-V VMs managed by VMM
 
-E forgatókönyv esetében a Site Recovery üzembe helyezése során telepítse az Azure Site Recovery Providert a VMM-kiszolgálókra. A Provider az interneten keresztül koordinálja és valósítja meg a Site Recovery szolgáltatással történő replikációt. A rendszer SAN-szinkronreplikálás használatával replikálja az adatokat az elsődleges és másodlagos tárolótömbök között.
+You can replicate Hyper-V VMs managed in VMM clouds to a secondary site using SAN replication using the Azure classic portal. This scenario isn't currently supported in the new Azure portal. 
 
-A következőkre lesz szüksége:
+In this scenario during Site Recovery deployment you'll install the Azure Site Recovery Provider on VMM servers. The Provider coordinates and orchestrates replication with the Site Recovery service over the internet. Data is replicated between the primary and secondary storage arrays using synchronous SAN replication.
 
-**Azure-fiók**: szüksége lesz egy Azure-előfizetésre.
-- **SAN-tömb**: rendelkeznie kell egy, a VMM-kiszolgáló által felügyelt, [támogatott SAN-tömbbel](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx). Ez a SAN közös hálózati infrastruktúrán osztozik egy másik, a másodlagos helyen található SAN-tömbbel.
-- **VMM-kiszolgáló**: javasoljuk, hogy mind az elsődleges helyen, mind a másodlagos helyen hozzon létre egy VMM-kiszolgálót, és ezek tartalmazzanak legalább egy VMM-magánfelhőt. A kiszolgálón a System Center 2012 SP1-es vagy újabb verziója fusson, és telepítse rá a legújabb frissítéseket is. A kiszolgálón álljon rendelkezésre internetkapcsolat. A felhőkön állítsa be a Hyper-V-kapacitásprofilt.
-- **Hyper-V-kiszolgáló**: a Hyper-V-kiszolgálóknak az elsődleges és másodlagos VMM-felhőkben kell elhelyezkedniük. A gazdakiszolgálókon a Windows Server 2012-es vagy újabb verziója fusson, és telepítse rájuk a legújabb frissítéseket is. A kiszolgálókon álljon rendelkezésre internetkapcsolat.
-- **Védett gépek**: a forrás Hyper-V gazdakiszolgálókon legalább egy védeni kívánt virtuális gépnek kell futnia.
+Here's what you'll need:
 
-**SAN-replikáció architektúrája**
+**Azure account**: You'll need an Azure subscription
+- **SAN array**: A [supported SAN array](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx) managed by the primary VMM server. The SAN shares a network infrastructure with another SAN array in the secondary site.
+- **VMM server**: We recommend a VMM server in the primary site and one in the secondary site, each containing at least one VMM private cloud. The server should be running at least System Center 2012 SP1 with latest updates, and connected to the internet. Clouds should have the Hyper-V capability profile set.
+- **Hyper-V server**: Hyper-V host servers located in the primary and secondary VMM clouds. The host servers should be running at least Windows Server 2012 with the latest updates installed, and connected to the internet.
+- **Protected machines**: The source Hyper-V host server should have at least one VM that you want to protect.
 
-![SAN-replikáció](./media/site-recovery-components/arch-onprem-onprem-san.png)
+**SAN replication architecture**
 
-[Itt megismerheti](site-recovery-vmm-san.md#before-you-start) az üzembe helyezés feltételeit.
-### Helyszíni követelmények
+![SAN replication](./media/site-recovery-components/arch-onprem-onprem-san.png)
 
+[Learn more](site-recovery-vmm-san.md#before-you-start) about deployment requirements.
+### On-premises
 
 
-## A Hyper-V védelem életciklusa
 
-Ez a munkafolyamat bemutatja a Hyper-V virtuális gépek védelmének, replikálásának és feladatátadásának lépéseit. 
+## Hyper-V protection lifecycle
 
-1. **Védelem engedélyezése**: állítsa be a Site Recovery-tárolót, adja meg a VMM-felhő vagy a Hyper-V-hely replikációs beállításait, majd engedélyezze a virtuális gépek védelmét. A szolgáltatás elindít egy **Védelem engedélyezése** nevű feladatot, amely a **Feladatok** lapon követhető nyomon. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, majd meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően létrehozza az Azure-ba történő replikációt. A **Védelem engedélyezése** nevű feladat ezenfelül meghívja a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódust is, amely teljes körű virtuálisgép-replikációt indít el.
-2. **Kezdeti replikáció**: a rendszer pillanatképet készít a virtuális gépről, majd egyesével elvégzi a virtuális merevlemezek replikálását, és átmásolja ezeket az Azure-ba vagy a másodlagos adatközpontba. Az ehhez a művelethez szükséges időtartam a virtuális gép méretétől, a hálózati sávszélességtől, illetve a kezdeti replikáció módjától függ. Ha a lemezen változások történnek, amíg a kezdeti replikáció folyamatban van, a Hyper-V Replica Replication Tracker eszköz Hyper-V replikálási naplók (.hrl-fájlok) formájában jelentést készít a változásokról. A naplók ugyanabba a mappába kerülnek, mint a lemezek. Minden lemezhez tartozik egy .hrl-fájl, amelyet a rendszer továbbít a másodlagos tárterületre. Ne feledje, hogy a pillanatkép- és a naplófájlok a kezdeti replikáció futása közben is lemezerőforrásokat használnak. A kezdeti replikáció befejezését követően a rendszer törli a virtuális gépről készült pillanatképet, és szinkronizálja, illetve egyesíti a naplóban rögzített változásokat.
-3. **Védelem véglegesítése**: A kezdeti replikáció befejezését követően elindul a **Védelem véglegesítése** feladat, amely beállítja a hálózati és a replikációt követő egyéb beállításokat, így védelmet nyújt a virtuális gépnek. Ha az Azure-ba végez replikálást, előfordulhat, hogy módosítania kell a virtuális gép beállításait, hogy az feladatátvételt tudjon végezni. Ezen a ponton érdemes lehet feladatátvételi tesztet futtatni, amellyel ellenőrizheti, hogy minden megfelelően működik-e.
-4. **Replikáció**: a kezdeti replikációt követően a replikációs beállításoknak megfelelően elindul a változások szinkronizálása. 
-    - **Sikertelen replikáció**: ha nem sikerül a változások replikálása, és a teljes replikáció túl sok sávszélességet vagy időt venne igénybe, a rendszer újraszinkronizálást végez. Ha például a .hrl-fájlok mérete eléri a lemezkapacitás 50%-át, a rendszer kijelöli a virtuális gépet újraszinkronizálásra. Az újraszinkronizálás kiszámítja a forrás és a cél virtuális gépek ellenőrzőösszegeit, és ezek alapján csak a változásokat továbbítja, így segít csökkenti az adatmennyiséget. Az újraszinkronizálás befejezését követően folytatódik a változásreplikálás. Alapértelmezés szerint a rendszer automatikusan munkaidőn kívüli időpontra ütemezi az újraszinkronizálást, de manuálisan is elvégezhető a virtuális gép újraszinkronizálása.
-    - **Replikációs hiba**: ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálkozik. Ha helyrehozhatatlan hiba, például hitelesítési vagy engedélyezési hiba lép fel, illetve, ha a replikagép érvénytelen állapotban van, a rendszer nem próbálkozik újra. Ha helyrehozható hiba, például hálózati hiba vagy alacsony lemezterülettel/memóriával kapcsolatos hiba lép fel, a rendszer újrapróbálkozik, és folyamatosan növeli a próbálkozások közötti időintervallumot (1, 2, 4, 8, 10, majd 30 perc).
-4. **Tervezett/nem tervezett feladatátvételek**: igény szerint futtathat tervezett/nem tervezett feladatátvételeket. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés. A replikaként létrehozott virtuális gépeket a rendszer függőben lévő állapotba helyezi. A feladatátvétel befejezéséhez véglegesíteni kell ezeket, kivéve, ha SAN-replikálást végez, amely automatikusan elvégzi a véglegesítést. Ha felállt az elsődleges hely, a rendszer elvégzi a feladatátvételt. Ha az Azure-ba végzett replikálást, a fordított replikáció automatikusan megtörténik. Ellenkező esetben indítsa el manuálisan a fordított replikációt.
+This workflow shows the process for protecting, replicating, and failing over Hyper-V virtual machines. 
+
+1. **Enable protection**: You set up the Site Recovery vault, configure replication settings for a VMM cloud or Hyper-V site, and enable protection for VMs. A job called **Enable Protection** is initiated and can be monitored in the **Jobs** tab. The job checks that the machine complies with prerequisites and then invokes the [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) method which sets up replication to Azure with the settings you've configured. The **Enable protection** job also invokes the [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) method to initialize a full VM replication.
+2. **Initial replication**: A virtual machine snapshot is taken and virtual hard disks are replicated one by one until they're all copied to Azure or to the secondary datacenter. The time needed to complete this depends on the VM size, network bandwidth, and the initial replication method. If disk changes occur while initial replication is in progress the Hyper-V Replica Replication Tracker tracks those changes as Hyper-V Replication Logs (.hrl) that are located in the same folder as the disks. Each disk has an associated .hrl file that will be sent to secondary storage. Note that the snapshot and log files consume disk resources while initial replication is in progress. When the initial replication finishes the VM snapshot is deleted and the delta disk changes in the log are synchronized and merged.
+3. **Finalize protection**: After initial replication finishes the **Finalize protection** job configures network and other post-replication settings so that the virtual machine is protected. If you're replicating to Azure you might need to tweak the settings for the virtual machine so that it's ready for failover. At this point you can run a test failover to check everything is working as expected.
+4. **Replication**: After the initial replication delta synchronization begins, in accordance with replication settings. 
+    - **Replication failure**: If delta replication fails, and a full replication would be costly in terms of bandwidth or time, then resynchronization occurs. For example if the .hrl files reach 50% of the disk size then the VM will be marked for resynchronization. Resynchronization minimizes the amount of data sent by computing checksums of the source and target virtual machines and sending only the delta. After resynchronization finishes delta replication will resume. By default resynchronization is scheduled to run automatically outside office hours, but you can resynchronize a virtual machine manually.
+    - **Replication error**: If a replication error occurs there's a built-in retry. If it's a non-recoverable error such as an authentication or authorization error, or a replica machine is in an invalid state,  then no retry will be attempted. If it's a recoverable error such as a network error, or low disk space/memory, then a retry occurs with increasing intervals between retries (1, 2, 4, 8, 10, and then every 30 minutes).
+4. **Planned/unplanned failovers**: You can run planned or unplanned failovers as needed. If you run a planned failover then source VMs are shut down to ensure no data loss. After replica VMs are created they're placed in a commit pending state. You need to commit them to complete the failover, unless you're replicating with SAN in which case commit is automatic. After the primary site is up and running failback can occur. If you've replicated to Azure reverse replication is automatic. Otherwise you kick off reverse replication manually.
  
 
-![munkafolyamat](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
+![workflow](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
 
-## Következő lépések
+## Next steps
 
-[Felkészülés az üzembe helyezésre](site-recovery-best-practices.md)
+[Prepare for deployment](site-recovery-best-practices.md)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

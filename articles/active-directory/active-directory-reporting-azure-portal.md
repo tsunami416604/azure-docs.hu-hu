@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/12/2016"
+   ms.date="09/25/2016"
    ms.author="markvi"/>
 
 
@@ -27,7 +27,7 @@ A jelentéskészítés két fő területe:
 
 - **Bejelentkezési tevékenységek** – A felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információk
 
-- **Rendszertevékenységek** – A felhasználó- és csoportfelügyelet, valamint a felügyelt alkalmazások és a címtártevékenységek naplózási információi
+- **Naplók** – Rendszertevékenység információk a felhasználó- és csoportfelügyeletre, valamint a felügyelt alkalmazásokra és a címtártevékenységekre vonatkozóan
 
 A keresett adatok hatókörétől függően a jelentésekhez úgy férhet hozzá, ha a **Felhasználók és csoportok** vagy a **Vállalati alkalmazások** elemre kattint az [Azure Portal](https://portal.azure.com) szolgáltatáslistájában.
 
@@ -120,7 +120,7 @@ Ezzel a keresési módszerrel konkrét **felhasználókra**, **csoportokra** vag
 
 ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/84.png "Reporting")
 
-## Rendszertevékenységek
+## Naplók
 
 Az Azure Active Directory naplói a rendszertevékenységek rekordjait tartalmazzák megfelelőségi célokból.
 

@@ -3,7 +3,7 @@
     description="Megismerkedhet a vállalati arculat hozzáadásának mikéntjével az Azure bejelentkezési és hozzáférési oldalán"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="curtand"
     manager="femila"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/13/2016"
-    ms.author="MarkVi"/>
+    ms.date="09/22/2016"
+    ms.author="curtand"/>
 
 
 # Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
@@ -30,7 +30,7 @@ Ez a témakör a bejelentkezési oldal és a hozzáférési panel testreszabás�
 
 > [AZURE.NOTE]
 >
-- A vállalati arculatot hozzáadó szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
+- A vállalati arculatot hozzáadó szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására, vagy Office 365-felhasználó. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
 - Az Azure Active Directory Prémium és Alapszintű kiadásai az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure Active Directory Prémium és Alapszintű kiadásai jelenleg nem támogatottak Kínában a 21Vianet által működtetett Microsoft Azure szolgáltatásban. További információkért lépjen velünk kapcsolatba az [Azure Active Directory fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
@@ -223,6 +223,6 @@ A bejelentkezési oldal háttérszíne | A bejelentkezési oldal háttérszíne 
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
