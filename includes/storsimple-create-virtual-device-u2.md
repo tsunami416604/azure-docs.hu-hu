@@ -1,37 +1,37 @@
-#### Virtuális eszköz létrehozása
+#### To create a virtual device
 
-1.  Az Azure Portalon lépjen a **StorSimple Manager** szolgáltatáshoz.
+1.  In the Azure portal, go to the **StorSimple Manager** service.
 
-2. Lépjen az **Eszközök** oldalra. Kattintson az **Eszközök** oldal alján található **Virtuális eszköz létrehozása** lehetőségre.
+2. Go to the **Devices** page. Click **Create virtual device** at the bottom of the **Devices** page.
 
-3. A **Virtuális eszköz létrehozása párbeszédpanelen** adja meg a következő részleteket.
+3. In the **Create Virtual Device dialog box**, specify the following details.
 
-     ![StorSimple virtuális eszköz létrehozása](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
+     ![StorSimple create virtual device](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
 
-    1. **Név** – A virtuális eszköz egyedi neve.
+    1. **Name** – A unique name for your virtual device.
 
 
-    2. **Modell** – Válassza ki a virtuális eszköz modelljét. Ez a mező csak akkor jelenik meg, ha a 2. frissítést vagy újabb verziót futtat. Egy 8010-es eszközmodell 30 TB Standard szintű, míg egy 8020-as modell 64 TB Premium Storage tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es
-    3.   modellt adja meg. A 8020-as modellel magas teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.
+    2. **Model** - Choose the model of the virtual device. This field is presented only if you are running Update 2 or later. An 8010 device model offers 30 TB of Standard Storage whereas 8020 has 64 TB of Premium Storage. Specify 8010
+    3.  to deploy item level retrieval  scenarios from backups. Select 8020 to deploy high performance, low latency workloads or used as a secondary device for disaster recovery.
      
-    4. **Verzió** – Válassza ki a virtuális eszköz verzióját. Ha a 8020-as modellt választja, akkor a Verzió mező nem jelenik meg a felhasználó számára. Ez a lehetőség akkor hiányzik, ha a szolgáltatáshoz regisztrált összes fizikai eszköz az 1. frissítést (vagy a rendszer újabb verzióját) futtatja. A mező csak akkor jelenik meg, ha a szolgáltatáshoz regisztrált az 1. frissítés előtti verziót és az 1. frissítést futtató fizikai eszközöket is. Mivel a virtuális eszköz verziója határozza meg, hogy melyik fizikai eszköz használható feladatátvételhez vagy klónozáshoz, fontos, hogy a virtuális eszköz megfelelő verzióját hozza létre. A következők szerint válasszon:
+    4. **Version** - Choose the version of the virtual device. If an 8020 device model is selected, then the version field will not be presented to the user. This option is absent if all the physical devices registered with this service are running Update 1 (or later). This field is presented only if you have a mix of pre-Update 1 and Update 1 physical devices registered with the same service. Given the version of the virtual device will determine which physical device you can failover or clone from, it is important that you create an appropriate version of the virtual device. Select:
 
-       - Válassza a 0.3-as frissítést futtató verziót, ha 0.3-as vagy korábbi verziójú fizikai eszközről hajt végre feladatátvételt vagy DR műveletet. 
-       - Válassza az 1. frissítést futtató verziót, ha 1. vagy újabb verziójú fizikai eszközről hajt végre feladatátvételt vagy klónozást. 
+       - Version Update 0.3 if you will fail over or DR from a physical device running Update 0.3 or earlier. 
+       - Version Update 1 if you will fail over or clone from a physical device running Update 1 (or later). 
        
     
-    5. **Virtuális hálózat** – Adja meg a virtuális eszközzel használni kívánt virtuális hálózatot. Ha Premium Storage tárolást használ (2. frissítés vagy újabb), olyan virtuális hálózatot válasszon, amelyet a Premium szintű Storage-fiók támogat. A nem támogatott virtuális hálózatok szürkén jelennek meg a legördülő listában. Ha nem támogatott virtuális hálózatot választ ki, a rendszer figyelmezteti. 
+    5. **Virtual Network** – Specify a virtual network that you want to use with this virtual device. If using Premium Storage (Update 2 or later), you must select a virtual network that is supported with the Premium Storage account. The unsupported virtual networks will be grayed out in the dropdown list. You will be warned if you select an unsupported virtual network. 
 
-    5. **Tárfiók a virtuális eszköz létrehozásához** – Válassza ki, hogy melyik tárfiókban kívánja tárolni a virtuális eszköz rendszerképét a kiépítés alatt. Ennek a tárfióknak ugyanabban a régióban kell lennie, ahol a virtuális eszköz és a virtuális hálózat is található. A tárfiókot sem fizikai, sem virtuális eszköz nem használhatja adattároláshoz. Alapértelmezés szerint erre a célra létrejön egy új tárfiók. Ha azonban tudja, hogy már van egy tárfiókja, amely alkalmas erre a célra, kiválaszthatja a listából. Ha létrehoz egy prémium szintű virtuális eszközt, a legördülő lista csak a Premium Storage-fiókokat jeleníti meg. 
+    5. **Storage Account for Virtual Device Creation** – Select a storage account to hold the image of the virtual device during provisioning. This storage account should be in the same region as the virtual device and virtual network. It should not be used for data storage by either the physical or the virtual device. By default, a new storage account will be created for this purpose. However, if you know that you already have a storage account that is suitable for this use, you can select it from the list. If creating a premium virtual device, the dropdown list will only display Premium Storage accounts. 
 
-        >[AZURE.NOTE] A virtuális eszköz csak az Azure-tárfiókokkal működik. Az egyéb felhőszolgáltatók, mint például az Amazon, a HP és az OpenStack (amelyek fizikai eszközön támogatottak), a StorSimple virtuális eszközön nem támogatottak.
+        >[AZURE.NOTE] The virtual device can only work with the Azure storage accounts. Other cloud service providers such as Amazon, HP, and OpenStack (that are supported for the physical device) are not supported for the StorSimple virtual device.
     
-    1. Ha tudomásul vette, hogy a virtuális eszközön lévő adatokat egy Microsoft-adatközpont tárolja, kattintson a pipára. Amikor csak fizikai eszközt használ, a titkosítási kulcs az eszközön található, ezért a Microsoft nem tudja feloldani a titkosítást. 
+    1. Click the check mark to indicate that you understand that the data stored on the virtual device will be hosted in a Microsoft datacenter. When you use only a physical device, your encryption key is kept with your device; therefore, Microsoft cannot decrypt it. 
      
-        Amikor virtuális eszközt használ, a titkosítási és a visszafejtési kulcs tárolása is a Microsoft Azure-ban történik. További információkért tekintse meg a [virtuális eszközök használatára vonatkozó biztonsági szempontokat](storsimple-security/#storsimple-virtual-device-security).
-    2. A virtuális eszköz létrehozásához kattintson a pipa ikonra. Az eszköz kiépítése körülbelül 30 percet vesz igénybe.
+        When you use a virtual device, both the encryption key and the decryption key are stored in Microsoft Azure. For more information, see [security considerations for using a virtual device](storsimple-security/#storsimple-virtual-device-security).
+    2. Click the check icon to create the virtual device. The device may take around 30 minutes to be provisioned.
 
-    ![StorSimple-virtuáliseszköz létrehozási fázisa](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
+    ![StorSimple virtual device creating stage](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
 
     
 

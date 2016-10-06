@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create your first Service Fabric application on Linux using Java | Microsoft Azure"
-   description="Create and deploy a Service Fabric application using Java"
+   pageTitle="Az első Service Fabric-alkalmazás létrehozása Linux rendszeren Java használatával | Microsoft Azure"
+   description="Service Fabric-alkalmazás létrehozása és telepítése Java használatával"
    services="service-fabric"
    documentationCenter="java"
    authors="seanmck"
@@ -13,115 +13,117 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/28/2016"
+   ms.date="09/25/2016"
    ms.author="seanmck"/>
 
 
-# Create your first Azure Service Fabric application
+# Az első Service Fabric-alkalmazás létrehozása Linux rendszeren Java használatával
 
-> [AZURE.SELECTOR]
-- [C Sharp](service-fabric-create-your-first-application-in-visual-studio.md)
-- [Java](service-fabric-create-your-first-linux-application-with-java.md)
+A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .NET és a Java használatával egyaránt. A jelen oktatóanyagban áttekintjük, hogyan hozhat létre alkalmazásokat a Linux rendszerre, valamint szolgáltatásokat a Java használatával.
 
-Service Fabric provides SDKs for building services on Linux in both .NET Core and Java. In this tutorial, we will look at how to create an application for Linux and build a service using Java.
+## Előfeltételek
 
-## Prerequisites
+Mielőtt elkezdené, győződjön meg arról, hogy [beállította a Linux-fejlesztőkörnyezetet](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy beépített Linux-környezetet egy virtuális gépen a Vagrant használatával](service-fabric-get-started-mac.md).
 
-Before you get started, make sure that you have [set up your Linux development environment](service-fabric-get-started-linux.md). If you are using Mac OS X, you can [set up a Linux one-box environment in a virtual machine using Vagrant](service-fabric-get-started-mac.md).
+## Az alkalmazás létrehozása
 
-## Create the application
+A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A Linux Service Fabric SDK tartalmaz egy [Yeoman](http://yeoman.io/)-generátort, amely megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező új alkalmazást a Yeoman használatával.
 
-A Service Fabric application can contain one or more services, each with a specific role in delivering the application's functionality. The Service Fabric SDK for Linux includes a [Yeoman](http://yeoman.io/) generator that makes it easy to create your first service and to add more later. Let's use Yeoman to create a new application with a single service.
+1. Írja be a terminálba a következőt: **yo azuresfjava**.
 
-1. In a terminal, type **yo azuresfjava**.
+2. Adjon nevet az alkalmazásnak.
 
-2. Name your application.
+3. Válassza ki az első szolgáltatása típusát, majd nevezze el. A jelen oktatóanyag esetén egy Reliable aktorszolgáltatást fogunk választani.
 
-3. Choose the type of your first service and name it. For the purposes of this tutorial, we will choose a Reliable Actor Service.
+  ![Javához készült Service Fabric Yeoman-generátor][sf-yeoman]
 
-  ![Service Fabric Yeoman generator for Java][sf-yeoman]
+>[AZURE.NOTE] További tudnivalók a beállításokról: [Service Fabric programming model overview](service-fabric-choose-framework.md) (A Service Fabric programozási modell áttekintése).
 
->[AZURE.NOTE] For more information about the options, see [Service Fabric programming model overview](service-fabric-choose-framework.md).
+## Az alkalmazás létrehozása
 
-## Build the application
-
-The Service Fabric Yeoman templates include a build script for [Gradle](https://gradle.org/), which you can use to build the app from the terminal.
+A Service Fabric Yeoman-sablonok tartalmaznak egy [Gradle](https://gradle.org/) felépítési szkriptet, amelyet felhasználhat az alkalmazás terminálból történő létrehozásához.
 
   ```bash
   gradle
   ```
 
-## Deploy the application
+## Az alkalmazás központi telepítése
 
-Once the application is built, you can deploy it to the local cluster using the Azure CLI.
+Az alkalmazást a létrehozása után az Azure parancssori felülettel telepítheti a helyi fürtben.
 
-1. Connect to the local Service Fabric cluster.
+1. Csatlakozzon a helyi Service Fabric-fürthöz.
 
     ```bash
     azuresfcli servicefabric cluster connect
     ```
 
-2. Use the install script provided in the template to copy the application package to the cluster's image store, register the application type, and create an instance of the application.
+2. Használja a sablonban megadott telepítési szkriptet az alkalmazáscsomag a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
     ```bash
     cd myapp
     ./install.sh
     ```
 
-3. Open a browser and navigate to Service Fabric Explorer at http://localhost:19080/Explorer (replace localhost with the private IP of the VM if using Vagrant on Mac OS X).
+3. Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a következő címen: http://localhost:19080/Explorer (a Vagrant Mac OS X rendszeren való használata esetében a localhost helyett használja a virtuális gép magánhálózati IP-címét).
 
-4. Expand the Applications node and note that there is now an entry for your application type and another for the first instance of that type.
+4. Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
 
-## Start the test client and perform a failover
+## Tesztügyfél elindítása és feladatátvétel végrehajtása
 
-Actor projects do not do anything on their own. They require another service or client to send them messages. The actor template includes a simple test script that you can use to interact with the actor service.
+Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást vagy alkalmazást igényelnek, amely üzeneteket küld a számukra. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.
 
-1. Run the script using the watch utility to see the output of the actor service.
+1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
 
-2. In Service Fabric Explorer, locate node hosting the primary replica for the actor service. In the screenshot below, it is node 3.
+2. Keresse meg az aktorszolgáltatás elsődleges replikáját futtató csomópontot a Service Fabric Explorerben. Az alábbi képernyőképen ez a 3. csomópont.
 
-    ![Finding the primary replica in Service Fabric Explorer][sfx-primary]
+    ![Az elsődleges replika megkeresése a Service Fabric Explorerben][sfx-primary]
 
-3. Click the node you found in the previous step, then select **Deactivate (restart)** from the Actions menu. This will restart one of the five nodes in your local cluster and force a failover to one of the secondary replicas running on another node. As you do this, pay attention to the output from the test client and note that the counter continues to increment despite the failover.
+3. Kattintson az előző lépésben megtalált csomópontra, majd válassza a **Inaktiválás (újraindítás)** elemet a Műveletek menüből. Ezzel újraindítja a helyi fürt öt csomópontjának egyikét, és feladatátvételt kényszerít ki egy másik csomóponton futó másodlagos replikára. Eközben figyelje meg a tesztügyfél kimenetét, amelyből láthatja, hogy a számláló a feladatátvétel ellenére továbbra is növekszik.
 
-## Build and deploy an application with the Eclipse Neon plugin
+## Alkalmazás létrehozása és központi telepítése az Eclipse Neon beépülő modul használatával
 
-If you installed the Service Plugin for Eclipse Neon, you can use it to create, build, and deploy Service Fabric applications built with Java.
+Amennyiben telepítette az Eclipse Neon szolgáltatási beépülő modult, a segítségével létrehozhat, felépíthet és telepíthet Java használatával készült Service Fabric-alkalmazásokat.
 
-### Create the application
+### Az alkalmazás létrehozása
 
-The Service Fabric plugin is available through Eclipse extensibility.
+A Service Fabric beépülő modul az Eclipse bővítményeként érhető el.
 
-1. In Eclipse, choose **File > Other > Service Fabric**. You see a set of options, including Actors and Containers.
+1. Az Eclipse-ben válassza a **File > Other > Service Fabric** (Fájl > Egyéb > Service Fabric) elemet. Több beállítás jelenik meg, köztük az Actors (Aktorok) és a Containers (Tárolók).
 
-    ![Service Fabric templates in Eclipse][sf-eclipse-templates]
+    ![Service Fabric-sablonok az Eclipse-ben][sf-eclipse-templates]
 
-2. In this case, choose Stateless Service.
+2. Ebben az esetben válassza a Stateless Service (Állapotmentes szolgáltatás) elemet.
 
-3. You are asked to confirm the use of the Service Fabric perspective, which optimizes Eclipse for use with Service Fabric projects. Choose 'Yes'.
+3. Meg kell erősítenie a Service Fabric-perspektíva használatát, amely a Service Fabric-projektekkel való használatra optimalizálja az Eclipse-t. Válassza a Yes (Igen) lehetőséget.
 
-### Deploy the application
+### Az alkalmazás központi telepítése
 
-The Service Fabric templates include a set of Gradle tasks for building and deploying applications, which you can trigger through Eclipse.
+A Service Fabric-sablonok tartalmaznak egy Gradle-feladatkészletet az alkalmazások létrehozásához és telepítéséhez, amelyeket az Eclipse-en keresztül aktiválhat.
 
-1. Choose **Run > Run Configurations**.
+1. Válassza a **Run > Run Configurations** (Futtatás > Konfigurációk futtatása) elemet.
 
-2. Expand **Gradle Project** and choose **ServiceFabricDeployer**.
+2. Bontsa ki a **Gradle Project** (Gradle-projekt) elemet, és válassza a **ServiceFabricDeployer** elemet.
 
-3. Click **Run**.
+3. Kattintson a **Run** (Futtatás) parancsra.
 
-Your app will build and deploy within a few moments. You can monitor its status from Service Fabric Explorer.
+Néhány másodpercen belül megtörténik az alkalmazás létrehozása és telepítése. Az állapotát megfigyelheti a Service Fabric Explorerből.
 
-## Next steps
+## Következő lépések
 
-- [Learn more about Reliable Actors](service-fabric-reliable-actors-introduction.md)
+- [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

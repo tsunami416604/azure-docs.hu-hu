@@ -30,7 +30,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 
-        > [AZURE.NOTE] Az [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) tartalmazza a virtuális hálózatok közötti társviszonyok kezeléséhez szükséges PowerShell-parancsmagot.
+> [AZURE.NOTE] Az [Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) tartalmazza a virtuális hálózatok közötti társviszonyok kezeléséhez szükséges PowerShell-parancsmagot.
 
 2. Virtuális objektumok olvasása:
 
@@ -48,7 +48,8 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         Etag            : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName   : vnet101
         VirtualNetworkName  : vnet1
-        ProvisioningState       : Succeeded
+        PeeringState        : Initiated
+        ProvisioningState   : Succeeded
         RemoteVirtualNetwork    : {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
                                         }
@@ -70,7 +71,8 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         Etag            : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName   : vnet101
         VirtualNetworkName  : vnet2
-        ProvisioningState       : Succeeded
+        PeeringState        : Connected
+        ProvisioningState   : Succeeded
         RemoteVirtualNetwork    : {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1"
                                         }
@@ -92,7 +94,8 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         Etag            : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName   : vnet101
         VirtualNetworkName  : vnet1
-        ProvisioningState       : Succeeded
+        PeeringState        : Connected
+        ProvisioningState   : Succeeded
         RemoteVirtualNetwork    : {
                                              "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
                                         }
@@ -125,6 +128,7 @@ Az alábbi lépésekkel hozhat létre virtuális hálózatok közötti társvisz
         Etag            : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName   : vnet101
         VirtualNetworkName  : vnet1
+        PeeringState        : Connected
         ProvisioningState   : Succeeded
         RemoteVirtualNetwork    : {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
@@ -237,6 +241,6 @@ Az alábbi lépésekkel hozhat létre társviszonyt egy klasszikus virtuális h�
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -5,7 +5,7 @@
     services="active-directory"
     documentationCenter=""
     authors="andkjell"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -14,10 +14,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/14/2016"
+    ms.date="09/30/2016"
     ms.author="andkjell;billmath"/>
 
+
 # Helyszíni identitások integrálása az Azure Active Directoryval
+
 Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a témakör végigvezeti a tervezéshez, üzembe helyezéshez és működtetéshez szükséges lépéseken. Az anyag a jelen témakörhöz kapcsolódó hivatkozások gyűjteményét is tartalmazza.
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
@@ -165,6 +167,6 @@ Az Ignite 2015 bemutatója a helyszíni címtárak felhőbe történő kiterjesz
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

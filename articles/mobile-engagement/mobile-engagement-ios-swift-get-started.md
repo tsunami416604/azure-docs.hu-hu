@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával"
+    pageTitle="Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával | Microsoft Azure"
     description="Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
     services="mobile-engagement"
-    documentationCenter="ios"
+    documentationCenter="mobile"
     authors="piyushjo"
-    manager="dwrede"
+    manager="erikre"
     editor="" />
 
 <tags
@@ -13,8 +13,9 @@
     ms.tgt_pltfrm="mobile-ios"
     ms.devlang="swift"
     ms.topic="hero-article"
-    ms.date="08/19/2016"
+    ms.date="09/20/2016"
     ms.author="piyushjo" />
+
 
 # Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával
 
@@ -25,11 +26,11 @@ Ebben az oktatóanyagban létrehoz egy üres iOS-alkalmazást, amely alapszintű
 
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-+ XCode 6 vagy XCode 7, amely a MAC App Store áruházából telepíthető
++ XCode 8, amely a MAC App Store áruházából telepíthető
 + a [Mobile Engagement iOS SDK]
 + Leküldéses értesítési tanúsítvány (.p12), amelyet az Apple fejlesztési központjában szerezhet be
 
-> [AZURE.NOTE] Ez az oktatóanyag a Swift 2.0-s verzióját használja. 
+> [AZURE.NOTE] Ez az oktatóanyag a Swift 3.0-s verzióját használja. 
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkalmazásokkal kapcsolatos Mobile Engagement-oktatóanyag elvégzéséhez.
 
@@ -61,17 +62,15 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
 
     ![][2]
 
-5. Nyissa meg a `Build Phases` lapot, majd a `Link Binary With Libraries` menüben adja hozzá a keretrendszereket az alábbiakban láthatók szerint. **MEGJEGYZÉS** Hozzá kell adnia a következőket: `CoreLocation, CFNetwork, CoreTelephony, and SystemConfiguration`:
+5. Nyissa meg a `Build Phases` lapot, majd a `Link Binary With Libraries` menüben adja hozzá a keretrendszereket az alábbiakban láthatók szerint:
 
     ![][3]
 
-6. **XCode 7** esetén – a `libxml2.tbd` fájlt adja hozzá a `libxml2.dylib` helyett.
-
-7. Hozzon létre egy áthidalási fejlécet, hogy használni tudja az SDK Objective C API-jait; ehhez válassza a File (Fájl) > New (Új) > File (Fájl) > iOS > Source (Forrás) > Header File (Fejlécfájl) elemet.
+8. Hozzon létre egy áthidalási fejlécet, hogy használni tudja az SDK Objective C API-jait; ehhez válassza a File (Fájl) > New (Új) > File (Fájl) > iOS > Source (Forrás) > Header File (Fejlécfájl) elemet.
 
     ![][4]
 
-8. Szerkessze az áthidalási fejlécfájlt a Mobile Engagement Objective-C kódjának a Swift-kód számára történő közzétételéhez, ehhez adja hozzá az alábbi importálásokat:
+9. Szerkessze az áthidalási fejlécfájlt a Mobile Engagement Objective-C kódjának a Swift-kód számára történő közzétételéhez, ehhez adja hozzá az alábbi importálásokat:
 
         /* Mobile Engagement Agent */
         #import "AEModule.h"
@@ -80,19 +79,20 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
         #import "EngagementAgent.h"
         #import "EngagementTableViewController.h"
         #import "EngagementViewController.h"
+        #import "AEUserNotificationHandler.h"
         #import "AEIdfaProvider.h"
 
-9. A Build Settings (Létrehozási beállítások) részen ellenőrizze, hogy a Swift Compiler - Code Generation (Swift fordítóprogram – kódlétrehozás) alatt az Objective-C Bridging Header (Objective-C áthidalási fejléc) létrehozási beállításai erre a fejlécre mutató útvonalat tartalmaznak. Példa az útvonalra: **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (az útvonaltól függően)**
+10. A Build Settings (Létrehozási beállítások) részen ellenőrizze, hogy a Swift Compiler - Code Generation (Swift fordítóprogram – kódlétrehozás) alatt az Objective-C Bridging Header (Objective-C áthidalási fejléc) létrehozási beállításai erre a fejlécre mutató útvonalat tartalmaznak. Példa az útvonalra: **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (az útvonaltól függően)**
 
     ![][6]
 
-10. Lépjen vissza az Azure Portalra az alkalmazás *Connection Info* (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot
+11. Lépjen vissza az Azure Portalra az alkalmazás *Connection Info* (Kapcsolati adatok) lapjáról, és másolja a kapcsolati karakterláncot
 
     ![][5]
 
-11. Illessze be a kapcsolati karakterláncot a `didFinishLaunchingWithOptions` delegáltba
+12. Illessze be a kapcsolati karakterláncot a `didFinishLaunchingWithOptions` delegáltba
 
-        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
         {
             [...]
                 EngagementAgent.init("Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}")
@@ -156,8 +156,9 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 1. A `didFinishLaunchingWithOptions` módszerben hozzon létre egy Reach modult, és adja át azt az Engagement meglévő inicializációs sorának:
 
-        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-            let reach = AEReachModule.moduleWithNotificationIcon(UIImage(named:"icon.png")) as! AEReachModule
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool 
+        {
+            let reach = AEReachModule.module(withNotificationIcon: UIImage(named:"icon.png")) as! AEReachModule
             EngagementAgent.init("Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}", modulesArray:[reach])
             [...]
             return true
@@ -166,29 +167,32 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 ###APNS leküldéses értesítések fogadásának engedélyezése az alkalmazásban
 1. Adja a következő sort az `didFinishLaunchingWithOptions` módszerhez:
 
-        /* Ask user to receive push notifications */
         if #available(iOS 8.0, *)
         {
-           let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
-           application.registerUserNotificationSettings(settings)
-           application.registerForRemoteNotifications()
+            if #available(iOS 10.0, *)
+            {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in }
+            }else
+            {
+                let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                application.registerUserNotificationSettings(settings)
+            }
+            application.registerForRemoteNotifications()
         }
         else
         {
-           application.registerForRemoteNotificationTypes([UIRemoteNotificationType.Alert, UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound])
+            application.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
         }
 
 2. Adja hozzá a `didRegisterForRemoteNotificationsWithDeviceToken` módszert az alábbiak szerint:
 
-        func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
-        {
+        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
             EngagementAgent.shared().registerDeviceToken(deviceToken)
         }
 
 3. Adja hozzá a `didReceiveRemoteNotification:fetchCompletionHandler:` módszert az alábbiak szerint:
 
-        func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-        {
+        func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
             EngagementAgent.shared().applicationDidReceiveRemoteNotification(userInfo, fetchCompletionHandler:completionHandler)
         }
 
@@ -207,6 +211,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

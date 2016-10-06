@@ -1,10 +1,10 @@
-## Társviszony létesítése azonos előfizetésben található virtuális hálózatok között
+## Peering VNets in the same subscription
 
-Ebben a forgatókönyvben társviszonyt fog létesíteni két, ugyanazon előfizetéshez tartozó virtuális hálózat, a **VNet1** és a **VNet2** között. 
+In this scenario you will create a peering between two VNets named **VNet1** and **VNet2** belonging to the same subscription. 
 
-![Alapszintű forgatókönyv](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
+![Basic scenario](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
 
-A virtuális hálózatok közötti társviszony teljes körű kapcsolatot hoz létre a társított virtuális hálózatok teljes címtere között.    
+VNet peering will allow full connectivity between the entire address space of peered virtual networks.    
 
 <!--HONumber=Sep16_HO4-->
 

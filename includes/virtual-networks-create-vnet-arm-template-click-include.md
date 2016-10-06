@@ -1,31 +1,31 @@
-## Az ARM-sablon üzembe helyezése kattintással végrehajtható üzembe helyezéssel
+## Deploy the ARM template by using click to deploy
 
-Felhasználhatja a Microsoft által fenntartott és a közösség számára elérhető GitHub-tárakba feltöltött, előre meghatározott ARM-sablonokat. Ezeket a sablonokat közvetlenül a GitHubból is üzembe helyezheti, vagy letöltheti és az igényeihez szabhatja őket. Az alábbi lépések végrehajtásával üzembe helyezhet egy két Vnettel rendelkező sablont.
+You can reuse pre-defined ARM templates upload to a github repository maintained by Microsoft and open to the community. THese templates can be deployed straight out of github, or downloaded and modified to fit your needs. To deploy a template that creates a VNet with two subnets, follow the steps below.
 
-1. Egy böngészőből keresse fel a [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) címet.
-2. Görgessen le a sablonok listáján, és kattintson a **101-vnet-two-subnets** elemre. Ellenőrizze a **README.md** fájlt a lent látható módon.
+1. From a browser, navigate to [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
+2. Scroll down the list of templates, and click **101-vnet-two-subnets**. Check the **README.md** file, as shown below.
 
-    ![A README.md fájl a GitHubban](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
+    ![READEME.md file in github](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
-3. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre. Szükség esetén adja meg az Azure bejelentkezési hitelesítő adatait. 
-4. A **Parameters** (Paraméterek) panelen adja meg az értékeket, amelyekkel az új VNetet szeretné létrehozni, majd kattintson az **OK** gombra. Az alábbi ábrán a mi forgatókönyvünk értékei láthatók.
+3. Click **Deploy to Azure**. If necessary, enter your Azure login credentials. 
+4. In the **Parameters** blade, enter the values you want to use to create your new VNet, and then click **OK**. The figure below shows the values for our scenario.
 
-    ![Az ARM-sablon paraméterei](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
+    ![ARM template parameters](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
 
-4. Kattintson az **Erőforráscsoport** elemre, majd válassza ki az erőforráscsoportot, amelyhez a VNetet hozzá kívánja adni, vagy az **Új létrehozása** elemre kattintva adja hozzá a VNetet egy új erőforráscsoporthoz. Az alábbi ábrán a **TestRG** nevű új erőforráscsoport erőforráscsoport-beállításai láthatóak.
+4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**.
 
-    ![Erőforráscsoport](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
+    ![Resource group](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
 
-5. Szükség esetén módosítsa a VNethez tartozó **Előfizetés** és **Hely** beállításokat.
-6. Ha nem szeretné, hogy a VNet csempe megjelenjen a **Kezdőpulton**, tiltsa le **A kezdőpulton rögzít** lehetőséget.
-5. Kattintson a **Legal terms** (Jogi feltételek) elemre, olvassa el a feltételeket, majd az elfogadásukhoz kattintson a **Buy** (Vásárlás) gombra. 
-6. A VNet létrehozásához kattintson a **Create** (Létrehozás) gombra.
+5. If necessary, change the **Subscription** and **Location** settings for your VNet.
+6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**.
+5. Click **Leagl terms**, read the terms, and click **Buy** to agree. 
+6. Click **Create** to create the VNet.
 
-    ![Üzembe helyezési csempe küldése a betekintő portálban](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
+    ![Submitting deployment tile in preview portal](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-7. Az üzembe helyezés után kattintson a **TestVNet** > **All settings** (Minden beállítás) > **Subnets** (Alhálózatok) elemre a lent látható módon, és tekintse meg az alhálózat tulajdonságait.
+7. Once the deployment is done, click **TestVNet** > **All settings** > **Subnets** to see the subnet properties, as shown below.
 
-    ![VNet létrehozása a betekintő portálon](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
+    ![Create VNet in preview portal](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
 <!--HONumber=Sep16_HO4-->
 

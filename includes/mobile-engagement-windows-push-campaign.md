@@ -1,36 +1,35 @@
-Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elküld egy leküldéses értesítést az alkalmazásnak.
+We will now create a simple push notification campaign that sends a push notification to our app.
 
-1. Lépjen a Mobile Engagement portál **REACH** (ELÉRÉS) lapjára.
+1. Navigate to the **REACH** tab in your Mobile Engagement portal.
 
-2. Kattintson a **New announcement** (Új értesítés) elemre a leküldéses értesítési kampány létrehozásához.
+2. Click **New announcement** to create your push notification campaign.
 
     ![](./media/mobile-engagement-windows-push-campaign/new-announcement.png)
 
-3. Állítsa be a kampány első mezőjét a következő lépésekkel:
+3. Set up the first field of your campaign through the following steps:
 
     ![](./media/mobile-engagement-windows-push-campaign/campaign-first-params.png)
 
-    a. Adja meg a kampány nevét a **Name** mezőben.
+    a. Provide a **Name** for your campaign.
 
-    b. A **Delivery time** (Küldési időpont) mezőben válassza az *Any time* (Bármikor) lehetőséget.
+    b. Select **Delivery time** as *Any time*.
 
-    d. Az értesítés szövegéhez adja meg a címet a **Title** (Cím) mezőben, amely a leküldéses üzenetben félkövérrel szedve jelenik majd meg.
+    d. In the notification text - type the **Title** which will be in bold in the push.
 
-    e. Ezután írja be az üzenetét a **Message** (Üzenet) mezőbe
+    e. Then type your **Message**
 
-4. Görgessen lefelé, és a **Content** (Tartalom) szakaszban válassza a **Notification only** (Csak értesítés) lehetőséget.
+4. Scroll down, and in the **Content** section, select **Notification only**.
 
     ![](./media/mobile-engagement-windows-push-campaign/campaign-content.png)
 
-5. Ezzel beállította a lehető legegyszerűbb kampányt. Görgessen ismét lefelé, és kattintson a **Create** (Létrehozás) gombra a kampány mentéséhez.
+5. You're done setting the most basic campaign possible. Now scroll down again and click the **Create** button to save your campaign.
 
-6. Utolsó lépés: Kattintson az **Activate** (Aktiválás) lehetőségre, hogy aktiválja a kampányt és megkezdje a leküldéses értesítések küldését.
+6. Last step: Click **Activate** to activate your campaign and to send push notifications.
 
     ![](./media/mobile-engagement-windows-push-campaign/campaign-activate.png)
 
  
 
-
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

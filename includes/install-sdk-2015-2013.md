@@ -1,10 +1,10 @@
-## <a name="setupdevenv"></a>A fejlesztési környezet kialakítása
+## <a name="setupdevenv"></a>Set up the development environment
 
-Először is állítsa be a fejlesztési környezetet az [Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) vagy az [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322) telepítésével.
+To start, set up your development environment by installing the [Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) or the [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322).
 
-Ha nincs telepítve a Visual Studio alkalmazás, a Visual Studio 2015 hivatkozásának használatával telepítheti az SDK-val együtt.
+If you don't have Visual Studio installed, use the link for Visual Studio 2015, and Visual Studio will be installed along with the SDK.
 
->[AZURE.NOTE] Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
+>[AZURE.NOTE] Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
 
 
 <!--HONumber=Sep16_HO4-->

@@ -39,6 +39,11 @@ Ebben a példában a „@” rekordhalmaznevet használjuk az MX-rekord zóna fe
 
     azure network dns record-set add-record myresourcegroup  contoso.com  "test-ns" NS -d "ns1.contoso.com"
 
+#### Egyetlen rekordot tartalmazó PTR típusú rekordhalmaz létrehozása  
+Ebben az esetben a „my-arpa-zone.com” az IP-címtartományt képviselő ARPA-zónát jelöli.  A zóna minden PTR típusú rekordhalmaza az IP-címtartomány egyik IP-címének felel meg.    
+
+    azure network dns record-set add-record myresourcegroup my-arpa-zone.com "10" PTR -P "myservice.contoso.com"   
+
 #### Egyetlen rekordot tartalmazó SRV típusú rekordhalmaz létrehozása
 
 Ha a zóna gyökerénél hoz létre SRV típusú rekordot, a „_service” és „_protocol” elemeket megadhatja a rekord nevében. A „@”-t nem szükséges belefoglalni a rekord nevébe.
@@ -55,6 +60,6 @@ Ha a zóna gyökerénél hoz létre SRV típusú rekordot, a „_service” és 
     azure network dns record-set add-record myresourcegroup contoso.com "test-txt" TXT -x "this is a TXT record"
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

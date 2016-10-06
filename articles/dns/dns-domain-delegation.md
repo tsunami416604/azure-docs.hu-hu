@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Tartomány delegálása az Azure DNS-be | Microsoft Azure"
-   description="Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit."
+   pageTitle="Delegate your domain to Azure DNS | Microsoft Azure"
+   description="Understand how to change domain delegation and use Azure DNS name servers to provide domain hosting."
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""/>
 
@@ -14,76 +14,77 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/30/2016"
-   ms.author="cherylmc"/>
-
-
-# Tartomány delegálása az Azure DNS-be
-
-Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Egy tartomány DNS-lekérdezései csak akkor érik el az Azure DNS-t, ha a tartomány delegálva van az Azure DNS-be a szülőtartományból. Ne feledje: nem az Azure DNS a tartományregisztráló. Ez a cikk ismerteti a tartománydelegálás működését és a tartományok Azure DNS-be való delegálását.
+   ms.author="sewhee"/>
 
 
 
+# Delegate a domain to Azure DNS
 
-## A DNS-delegálás működése
-
-### Tartományok és zónák
-
-A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „**.**”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”.  És így tovább. A DNS-hierarchia tartományait különálló DNS-zónák üzemeltetik. A zónák globálisan fel vannak osztva, és a világ különböző pontjain található DNS-névkiszolgálók üzemeltetik őket.
-
-**DNS-zóna**
-
-A tartományok egyedi nevek a tartománynévrendszerben, például „contoso.com”. Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A „contoso.com” tartomány például számos DNS-rekordot tartalmazhat, például „mail.contoso.com” (levelezési kiszolgálóhoz) és „www.contoso.com” (webhelyhez).
-
-**Tartományregisztráló**
-
-A tartományregisztráló egy olyan cég, amely internetes tartományneveket biztosít. Ezek a cégek ellenőrzik, hogy a használni kívánt internetes tartomány elérhető-e, és ők engedélyezik azok megvásárlását. A tartománynév regisztrálása után Ön lesz annak a jogos tulajdonosa. Ha már van internetes tartománya, az aktuális tartományregisztrálóval delegálhat az Azure DNS-be.
-
->[AZURE.NOTE] További információt a tartománynevek tulajdonosairól, illetve a tartományok vásárlásáról az [Internet domain management in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx) (Internetes tartományok kezelése az Azure AD-ben) című cikkben talál.
-
-### Feloldás és delegálás
-
-Kétféle DNS-kiszolgáló létezik:
-
-- A _mérvadó_ DNS-kiszolgáló üzemelteti a DNS-zónákat. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
-- A _rekurzív_ DNS-kiszolgáló nem üzemeltet DNS-zónákat. Minden DNS-lekérdezést megválaszol a mérvadó DNS-kiszolgálók adatait összegyűjtve.
-
->[AZURE.NOTE] Az Azure DNS mérvadó DNS szolgáltatást nyújt.  Rekurzív DNS szolgáltatást nem biztosít.
-
-> Az Azure felhőszolgáltatásai és virtuális gépei automatikusan egy rekurzív DNS szolgáltatás használatára vannak konfigurálva, amelyet az Azure infrastruktúra külön biztosít.  Információ ezen DNS-beállítások módosításáról: [Névfeloldás az Azure-ban](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
-
-A számítógépes vagy mobileszköz-kompatibilis DNS-ügyfelek általában egy rekurzív DNS-kiszolgálóval végeztetik el az ügyfélalkalmazások számára szükséges DNS-lekérdezéseket.
-
-Amikor egy rekurzív DNS-kiszolgáló egy DNS-rekordra (például „www.contoso.com”) vonatkozó lekérdezést kap, először meg kell keresnie a „contoso.com” tartomány zónáját üzemeltető névkiszolgálót. Ehhez a gyökér-névkiszolgálótól kiindulva megkeresi a „com” zónát üzemeltető névkiszolgálókat. Ezután lekérdezi a „com” névkiszolgálóktól a „contoso.com” zónát üzemeltető névkiszolgálókat.  Végül lekérdezi ezektől a névkiszolgálóktól a „www.contoso.com” címet.  
-
-Ez a művelet a DNS-név feloldása. Szigorúan fogalmazva a DNS-feloldás más lépéseket is tartalmaz, például a CNAME-rekordok követését, de ez nem fontos a DNS-delegálás megértéséhez.
-
-Hogyan „mutat rá” egy szülőzóna a gyermekzóna névkiszolgálóira? Ezt egy speciális DNS-rekorddal, az úgynevezett névkiszolgálói rekorddal hajtja végre. Például a gyökérzóna tartalmazza a „com” névkiszolgálói rekordjait, és megjeleníti a „com” zóna névkiszolgálóit. A „com” zóna pedig tartalmazza a „contoso.com” névkiszolgálói rekordjait, amelyek a „contoso.com” zóna névkiszolgálóit mutatják. Egy szülőzónán belüli gyermekzóna névkiszolgálói rekordjainak beállítását nevezzük tartománydelegálásnak.
+Azure DNS allows you to host a DNS zone and manage the DNS records for a domain in Azure. In order for DNS queries for a domain to reach Azure DNS, the domain has to be delegated to Azure DNS from the parent domain. Keep in mind Azure DNS is not the domain registrar. This article explains how domain delegation works and how to delegate domains to Azure DNS.
 
 
-![DNS-névkiszolgáló](./media/dns-domain-delegation/image1.png)
-
-A delegálások a névkiszolgálói rekordok két példányával rendelkeznek: egy a gyermekzónára mutató szülőzónában, egy pedig magában a gyermekzónában található. A „contoso.com” zóna a „com” névkiszolgálói rekordjai mellett a „contoso.com” névkiszolgálói rekordjait is tartalmazza. Ezek az úgynevezett mérvadó névkiszolgálói rekordok, és a gyermekzóna tetején találhatók.
 
 
-## Tartomány delegálása az Azure DNS-be
+## How DNS delegation works
 
-Miután létrehozta a DNS-zónáját az Azure DNS-ben, a szülőzónában be kell állítania a névkiszolgálói rekordokat, hogy az Azure DNS legyen a zóna mérvadó névfeloldási forrása. A tartományregisztrálótól vásárolt tartományokhoz a regisztráló felajánlja, hogy beállítja ezeket a névkiszolgálói rekordokat.
+### Domains and zones
 
->[AZURE.NOTE] Nem kell ahhoz tartománnyal rendelkeznie, hogy azzal a tartománynévvel létrehozzon egy DNS-zónát az Azure DNS-ben. Azonban a tartományregisztrálóval az Azure DNS-be való delegáláshoz már meg kell vásárolnia a tartományt.
+The Domain Name System is a hierarchy of domains. The hierarchy starts from the ‘root’ domain, whose name is simply ‘**.**’.  Below this come top-level domains, such as ‘com’, ‘net’, ‘org’, ‘uk’ or ‘jp’.  Below these are second-level domains, such as ‘org.uk’ or ‘co.jp’.  And so on. The domains in the DNS hierarchy are hosted using separate DNS zones. These zones are globally distributed, hosted by DNS name servers around the world.
 
-Tegyük fel például, hogy megvette a „contoso.com” tartományt, és létrehozott egy „contoso.com” nevű zónát az Azure DNS-ben. A tartomány tulajdonosaként a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálóinak címeit (azaz a névkiszolgálói rekordokat). A regisztráló ezeket a névkiszolgálói rekordokat a szülőtartományban, ebben az esetben a „.com” tartományban tárolja. A világ különböző pontjain található ügyfelek ekkor az Azure DNS-beli tartományához lesznek irányítva, amikor megpróbálják feloldani a „contoso.com” DNS-rekordjait.
+**DNS zone**
 
-### A névkiszolgálók neveinek megkeresése
+A domain is a unique name in the Domain Name System, for example ‘contoso.com’. A DNS zone is used to host the DNS records for a particular domain. For example, the domain ‘contoso.com’ may contain a number of DNS records such as ‘mail.contoso.com’ (for a mail server) and ‘www.contoso.com’ (for a website).
 
-Mielőtt DNS-zónáját az Azure DNS-be delegálhatná, meg kell tudnia a zóna névkiszolgálóinak neveit. Minden zóna létrehozásakor az Azure DNS egy névkiszolgálói készletből választ ki egyet.
+**Domain registrar**
 
-A zónájához rendelt névkiszolgálókat legegyszerűbben az Azure-portálon tekintheti meg.  Ebben a példában a „contoso.net” zónához az alábbi névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org”, és „ns4-01.azure-dns.info”:
+A domain registrar is a company who can provide Internet domain names. They will verify if the Internet domain you want to use is available and allow you to purchase it. Once the domain name is registered, you will be the legal owner for the domain name. If you already have an Internet domain, you will use the current domain registrar to delegate to Azure DNS.
 
- ![DNS-névkiszolgáló](./media/dns-domain-delegation/viewzonens500.png)
+>[AZURE.NOTE] To find out more information on who owns a given domain name, or for information on how to buy a domain, see [Internet domain management in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx).
 
-Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekordjait, amelyek a zónához rendelt névkiszolgálókat tartalmazzák.  A névkiszolgálók neveit az Azure PowerShellen vagy az Azure parancssori felületén keresztül is megtekintheti ezeknek a rekordoknak a lekérésével.
+### Resolution and delegation
 
-Az Azure PowerShell-lel az alábbi módon kérheti le a mérvadó névkiszolgálói rekordokat. Vegye figyelembe, hogy a „@” nevű rekord a zóna tetején található rekordokra vonatkozik. 
+There are two types of DNS servers:
+
+- An _authoritative_ DNS server hosts DNS zones. It answers DNS queries for records in those zones only.
+- A _recursive_ DNS server does not host DNS zones. It answers all DNS queries by calling authoritative DNS servers to gather the data it needs.
+
+>[AZURE.NOTE] Azure DNS provides an authoritative DNS service.  It does not provide a recursive DNS service.
+
+> Cloud Services and VMs in Azure are automatically configured to use a recursive DNS services that is provided separately as part of Azure's infrastructure.  For information on how to change these DNS settings, please see [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+
+DNS clients in PCs or mobile devices typically call a recursive DNS server to perform any DNS queries the client applications need.
+
+When a recursive DNS server receives a query for a DNS record such as ‘www.contoso.com’, it first needs to find the name server hosting the zone for the ‘contoso.com’ domain. To do this, it starts at the root name servers, and from there finds the name servers hosting the ‘com’ zone. It then queries the ‘com’ name servers to find the name servers hosting the ‘contoso.com’ zone.  Finally, it is able to query these name servers for ‘www.contoso.com’.
+
+This is called resolving the DNS name. Strictly speaking, DNS resolution includes additional steps such as following CNAMEs, but that’s not important to understanding how DNS delegation works.
+
+How does a parent zone ‘point’ to the name servers for a child zone? It does this using a special type of DNS record called an NS record (NS stands for ‘name server’). For example, the root zone contains NS records for 'com' and shows the name servers for the ‘com’ zone. In turn, the ‘com’ zone contains NS records for ‘contoso.com’, which shows the name servers for the ‘contoso.com’ zone. Setting up the NS records for a child zone in a parent zone is called delegating the domain.
+
+
+![Dns-nameserver](./media/dns-domain-delegation/image1.png)
+
+Each delegation actually has two copies of the NS records; one in the parent zone pointing to the child, and another in the child zone itself. The ‘contoso.com’ zone contains the NS records for ‘contoso.com’ (in addition to the NS records in ‘com’). These are called authoritative NS records and they sit at the apex of the child zone.
+
+
+## Delegating a domain to Azure DNS
+
+Once you create your DNS zone in Azure DNS, you need to set up NS records in the parent zone to make Azure DNS the authoritative source for name resolution for your zone. For domains purchased from a registrar, your registrar will offer the option to set up these NS records.
+
+>[AZURE.NOTE] You do not have to own a domain in order to create a DNS zone with that domain name in Azure DNS. However, you do need to own the domain to set up the delegation to Azure DNS with the registrar.
+
+For example, suppose you purchase the domain ‘contoso.com’ and create a zone with the name ‘contoso.com’ in Azure DNS. As the owner of the domain, your registrar will offer you the option to configure the name server addresses (that is, the NS records) for your domain. The registrar will store these NS records in the parent domain, in this case ‘.com’. Clients around the world will then be directed to your domain in Azure DNS zone when trying to resolve DNS records in ‘contoso.com’.
+
+### Finding the name server names
+
+Before you can delegate your DNS zone to Azure DNS, you first need to know the name server names for your zone. Azure DNS allocates name servers from a pool each time a zone is created.
+
+The easiest way to see the name servers assigned to your zone is via the Azure portal.  In this example, the zone ‘contoso.net’ has been assigned name servers ‘ns1-01.azure-dns.com’, ‘ns2-01.azure-dns.net’, ‘ns3-01.azure-dns.org’, and ‘ns4-01.azure-dns.info’:
+
+ ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
+
+Azure DNS automatically creates authoritative NS records in your zone containing the assigned name servers.  To see the name server names via Azure PowerShell or Azure CLI, you simply need to retrieve these records.
+
+Using Azure PowerShell, the authoritative NS records can be retrieved as follows. Note that the record name “@” is used to refer to records at the apex of the zone.
 
     PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
     PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
@@ -98,7 +99,7 @@ Az Azure PowerShell-lel az alábbi módon kérheti le a mérvadó névkiszolgál
                         ns4-01.azure-dns.info}
     Tags              : {}
 
-Az Azure platformfüggetlen parancssori felületével is lekérheti a mérvadó névkiszolgálói rekordokat, így felfedezheti a zónájához rendelt névkiszolgálókat:
+You can also use the cross-platform Azure CLI to retrieve the authoritative NS records and hence discover the name servers assigned to your zone:
 
     C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
     info:    Executing command network dns record-set show
@@ -116,19 +117,19 @@ Az Azure platformfüggetlen parancssori felületével is lekérheti a mérvadó 
     data:
     info:    network dns record-set show command OK
 
-### Delegálás beállítása
+### To set up delegation
 
-Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a névkiszolgálói rekordokat, és cserélje le őket az Azure DNS által létrehozottakra.
+Each registrar has their own DNS management tools to change the name server records for a domain. In the registrar’s DNS management page, edit the NS records and replace the NS records with the ones Azure DNS created.
 
-Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott névkiszolgálói neveket kell használnia.  Mindig használja mind a 4 névkiszolgálói nevet, a tartomány nevétől függetlenül.  A tartománydelegáláshoz nem szükséges, hogy a névkiszolgálói név ugyanazt a legfelső szintű tartományt használja, mint az Ön tartománya.
+When delegating a domain to Azure DNS, you must use the name server names provided by Azure DNS.  You should always use all 4 name server names, regardless of the name of your domain.  Domain delegation does not require the name server name to use the same top-level domain as your domain.
 
-Ne használjon „összetartó rekordokat” az Azure DNS névkiszolgálói IP-címeire való rámutatáshoz, mert ezek az IP-címek megváltozhatnak a jövőben. A saját zónájában történő, névkiszolgálói neveket használó delegálásokat – más néven „személyes névkiszolgálókat” – az Azure DNS jelenleg nem támogatja.
+You should not use 'glue records' to point to the Azure DNS name server IP addresses, since these IP addresses may change in future. Delegations using name server names in your own zone, sometimes called 'vanity name servers', are not currently supported in Azure DNS.
 
-### A névfeloldás működésének ellenőrzése
+### To verify name resolution is working
 
-A delegálás befejezése után ellenőrizheti, hogy a névfeloldás működik-e. Ezt például az „nslookup” vagy egy hasonló eszköz segítségével teheti meg, amely lekérdezi a zónája SOA típusú rekordját (amely szintén automatikusan létrejön a zóna létrehozásakor).
+After completing the delegation, you can verify that name resolution is working by using a tool such as ‘nslookup’ to query the SOA record for your zone (which is also automatically created when the zone is created).
 
-Vegye figyelembe, hogy nem kell megadnia az Azure DNS névkiszolgálóit, mivel a hagyományos DNS-feloldási folyamat automatikusan megtalálja a névkiszolgálókat, ha a delegálást helyesen végezte el.
+Note that you do not have to specify the Azure DNS name servers, since the normal DNS resolution process will find the name servers automatically if the delegation has been set up correctly.
 
     nslookup –type=SOA contoso.com
 
@@ -144,46 +145,46 @@ Vegye figyelembe, hogy nem kell megadnia az Azure DNS névkiszolgálóit, mivel 
     expire = 604800 (7 days)
     default TTL = 300 (5 mins)
 
-## Altartományok delegálása az Azure DNS-ben
+## Delegating sub-domains in Azure DNS
 
-Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartomány Azure DNS-beli delegálásával. Tegyük fel például, hogy a „contoso.com” Azure DNS-beli beállítása és delegálása után szeretne egy különálló gyermekzónát is létrehozni, „partners.contoso.com” néven. 
+If you want to set up a separate child zone, you can delegate a sub-domain in Azure DNS. For example, having set up and delegated ‘contoso.com’ in Azure DNS, suppose you would like to set up a separate child zone, ‘partners.contoso.com’.
 
-Az altartományok létrehozása a hagyományos delegáláshoz hasonló módon működik. Az egyetlen különbség az, hogy a 3. lépésben a névkiszolgálói rekordokat a „contoso.com” szülőzónában kell létrehozni az Azure DNS-ben, és nem a tartományregisztráló állítja be őket.
-
-
-1. Hozza létre a „partners.contoso.com” gyermekzónát az Azure DNS-ben.
-2. Keresse meg a mérvadó névkiszolgálói rekordokat a gyermekzónában, így megtalálja a gyermekzónát az Azure DNS-ben üzemeltető névkiszolgálókat.
-3. A gyermekzónára mutató szülőzónában delegálja a gyermekzónát a névkiszolgálói rekordok konfigurálásával.
+Setting up a sub-domain follows a similar process as a normal delegation. The only difference is that in step 3 the NS records must be created in the parent zone ‘contoso.com’ in Azure DNS, rather than being set up via a domain registrar.
 
 
-### Altartomány delegálása
+1. Create the child zone ‘partners.contoso.com’ in Azure DNS.
+2. Look up the authoritative NS records in the child zone to obtain the name servers hosting the child zone in Azure DNS.
+3. Delegate the child zone by configuring NS records in the parent zone pointing to the child zone.
 
-Az alábbi PowerShell-példa bemutatja ennek működését. Ugyanezek a lépések az Azure-portálon vagy az Azure platformfüggetlen parancssori felületén keresztül is végrehajthatók.
 
-#### 1. lépés A szülő- és gyermekzónák létrehozása
+### To delegate a sub-domain
 
-Először is létre kell hozni a szülő- és a gyermekzónákat. Ezek azonos vagy eltérő erőforráscsoportokban is lehetnek.
+The following PowerShell example demonstrates how this works. The same steps can be executed via the Azure Portal, or via the cross-platform Azure CLI.
+
+#### Step 1. Create the parent and child zones
+
+First, we create the parent and child zones. These can be in same resource group or different resource groups.
 
     $parent = New-AzureRmDnsZone -Name contoso.com -ResourceGroupName RG1
     $child = New-AzureRmDnsZone -Name partners.contoso.com -ResourceGroupName RG1
 
-#### 2. lépés A névkiszolgálói rekordok lékérése
+#### Step 2. Retrieve NS records
 
-Ezután le kell kérni a mérvadó névkiszolgálói rekordokat a gyermekzónából (lásd a következő példát).  Ebben találhatók a gyermekzónához rendelt névkiszolgálók. 
+Next, we retrieve the authoritative NS records from child zone as shown in the next example.  This contains the name servers assigned to the child zone.
 
     $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-#### 3. lépés A gyermekzóna delegálása
+#### Step 3. Delegate the child zone
 
-A delegálás befejezéséhez hozzon létre egy megfelelő névkiszolgálói rekordhalmazt a szülőzónában. Vegye figyelembe, hogy a szülőzóna rekordhalmazának neve megegyezik a gyermekzóna nevével, amely ebben az esetben „partners”.
+Create corresponding NS record set in the parent zone to complete the delegation. Note that the record set name in the parent zone matches the child zone name, in this case "partners".
 
     $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
     $parent_ns_recordset.Records = $child_ns_recordset.Records
     Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 
-### A névfeloldás működésének ellenőrzése
+### To verify name resolution is working
 
-A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy minden helyesen van-e beállítva.
+You can verify that everything is set up correctly by looking up the SOA record of the child zone.
 
     nslookup –type=SOA partners.contoso.com
 
@@ -199,15 +200,15 @@ A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy m
         expire = 604800 (7 days)
         default TTL = 300 (5 mins)
 
-## Következő lépések
+## Next steps
 
-[DNS-zónák kezelése](dns-operations-dnszones.md)
+[Manage DNS zones](dns-operations-dnszones.md)
 
-[DNS-rekordok kezelése](dns-operations-recordsets.md)
-
-
+[Manage DNS records](dns-operations-recordsets.md)
 
 
-<!--HONumber=sep16_HO1-->
+
+
+<!--HONumber=Sep16_HO4-->
 
 

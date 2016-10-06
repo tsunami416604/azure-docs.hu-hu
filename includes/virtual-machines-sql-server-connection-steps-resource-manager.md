@@ -1,36 +1,36 @@
-### DNS-címke konfigurálása a nyilvános IP-címhez
+### Configure a DNS Label for the public IP address
 
-Ha az internetről szeretne csatlakozni az SQL Server adatbázismotorhoz, először konfiguráljon egy DNS-címkét a nyilvános IP-címhez.
+To connect to the SQL Server Database Engine from the Internet, first configure a DNS Label for your public IP address.
 
-> [AZURE.NOTE] Nincs szükség DNS-címkére, ha csak az adott virtuális hálózaton belül vagy csak helyben szeretne csatlakozni az SQL Server-példányhoz.
+> [AZURE.NOTE] DNS Labels are not required if you plan to only connect to the SQL Server instance within the same Virtual Network or only locally.
 
-DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet a portálon. Jelölje ki az SQL Server rendszerű virtuális gépet a tulajdonságai megjelenítéséhez.
+To create a DNS Label, first select **Virtual machines** in the portal. Select your SQL Server VM to bring up its properties.
 
-1. A virtuális gép panelén válassza ki a **nyilvános IP-címét**.
+1. In the virtual machine blade, select your **Public IP address.**
 
-    ![nyilvános IP-cím](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
+    ![public ip address](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
-2. A Nyilvános IP-cím tulajdonságai között bontsa ki a **Konfiguráció** elemet.
+2. In the properties for your Public IP address, expand **Configuration**.
 
-3. Adjon meg egy DNS-címkenevet. Ez a név egy A rekord, amelynek használatával név szerint csatlakozhat az SQL Server rendszerű virtuális géphez az IP-cím megadásával való közvetlen csatlakozás helyett.
+3. Enter a DNS Label name. This name is an A Record that can be used to connect to your SQL Server VM by name instead of by IP Address directly.
 
-4. Kattintson a **Mentés** gombra.
+4. Click the **Save** button.
 
-    ![dns-címke](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
+    ![dns label](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
-### Csatlakozás az adatbázismotorhoz egy másik számítógépről
+### Connect to the Database Engine from another computer
 
-1. Nyissa meg az SQL Server Management Studio (SSMS) alkalmazást egy internethez csatlakozó számítógépen.
+1. On a computer connected to the internet, open SQL Server Management Studio (SSMS).
 
-2. A **Kapcsolódás a kiszolgálóhoz** vagy a ** Kapcsolódás az adatbázismotorhoz** párbeszédpanelen szerkessze a **Kiszolgáló neve** értéket. Adja meg a virtuális gép (az előző feladat során meghatározott) teljes DNS-nevét.
+2. In the **Connect to Server** or **Connect to Database Engine** dialog box, edit the **Server name** value. Enter the full DNS name of the virtual machine (determined in the previous task).
 
-3. A **Hitelesítés** mezőben válassza az **SQL Server-hitelesítés** lehetőséget.
+3. In the **Authentication** box, select **SQL Server Authentication**.
 
-5. A **Bejelentkezés** szövegmezőbe írjon be egy érvényes SQL-bejelentkezési nevet.
+5. In the **Login** box, type the name of a valid SQL login.
 
-6. A **Jelszó** szövegmezőbe írja be a bejelentkezési jelszót.
+6. In the **Password** box, type the password of the login.
 
-7. Kattintson a **Connect** (Csatlakozás) gombra.
+7. Click **Connect**.
 
     ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 

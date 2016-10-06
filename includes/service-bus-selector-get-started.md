@@ -1,4 +1,4 @@
-> [AZURE.SELECTOR-LIST (Küldő | Fogadó)]
+> [AZURE.SELECTOR-LIST (Sender | Receiver)]
 - [(C# | C#)](../articles/event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - [(C# | Java)](../articles/event-hubs/event-hubs-csharp-ephjava-getstarted.md)
 - [(C# | Apache Storm)](../articles/event-hubs/event-hubs-csharp-storm-getstarted.md)

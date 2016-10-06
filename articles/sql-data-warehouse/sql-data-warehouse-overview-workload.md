@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Adatraktár-számítási feladat"
-   description="Az SQL Data Warehouse rugalmassága lehetővé teszi, hogy növelje, csökkentse vagy szüneteltesse a számítási teljesítményt az adattárházegységek (DWU-k) csúszkájával. Ez a cikk az adatraktárak mérőszámait ismerteti, és azt, hogy azok milyen kapcsolatban vannak a DWU-kkal. "
+   pageTitle="Data warehouse workload"
+   description="SQL Data Warehouse's elasticity lets you grow, shrink, or pause compute power by using a sliding scale of data warehouse units (DWUs). This article explains the data warehouse metrics and how they relate to DWUs. "
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
@@ -17,55 +17,56 @@
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
-# Adatraktár-számítási feladat
-Az adatraktár-számítási feladat minden olyan műveletre utal, amelyet egy adatraktárral végeznek. Az adatraktár-számítási feladat magában foglalja az adatok betöltését az adatraktárba, az elemzések végrehajtását, a jelentések készítését az adatraktárról, az adatraktárban lévő adatok kezelését és az adatok adatraktárból történő exportálását. Az összetevők terjedelme és mélysége gyakran arányos az adatraktár érettségi szintjével.
+
+# Data warehouse workload
+A data warehouse workload refers to all of the operations that transpire against a data warehouse. The data warehouse workload encompasses the entire process of loading data into the warehouse, performing analysis and reporting on the data warehouse, managing data in the data warehouse, and exporting data from the data warehouse. The depth and breadth of these components are often commensurate with the maturity level of the data warehouse.
 
 
-## Most ismerkedik az adatraktározással?
-Az adatraktár egy vagy több adatforrásból betöltött adatok gyűjteménye, amelyet üzletiintelligencia-feladatok elvégzésére, például jelentéskészítésre és adatelemzésre használnak.
+## New to data warehousing?
+A data warehouse is a collection of data that is loaded from one or more data sources and is used to perform business intelligence tasks such as reporting and data analysis.
 
-Az adatraktárakat olyan lekérdezések jellemzik, amelyek nagy mennyiségű sort és nagy adattartományokat vizsgálnak át, és viszonylag nagy terjedelmű, elemzéshez és jelentéskészítéshez használt eredményt adhatnak vissza. Az adatraktárakra emellett a viszonylag nagy mennyiségű adatbetöltés és a kis mennyiségű tranzakciószintű beszúrás/frissítés/törlés a jellemző.
+Data warehouses are characterized by queries that scan larger numbers of rows, large ranges of data and may return relatively large results for the purposes of analysis and reporting. Data warehouses are also characterized by relatively large data loads versus small transaction-level inserts/updates/deletes.
 
-- Egy adatraktár teljesítménye akkor a legjobb, ha az adatokat oly módon tárolják, ami optimalizálja a nagy mennyiségű sort vagy nagyobb adattartományokat átvizsgáló lekérdezéseket. Ez a vizsgálati típus akkor működik a legjobban, ha a rendszer az adatokat sorok helyett oszlopokban tárolja, és a sorokra keres rá.
+- A data warehouse performs best when the data is stored in a way that optimizes queries that need to scan large numbers of rows or large ranges of data. This type of scanning works best when the data is stored and searched by columns, instead of by rows.
 
->[AZURE.NOTE] A memórián belüli, oszlopos tárolást alkalmazó oszlopcentrikus index jelentés- és elemzési lekérdezések esetén akár 10x nagyobb szintű tömörítésre és 100x nagyobb lekérdezési teljesítményre képes, mint a hagyományos bináris fák. Az adatraktárakban az oszlopcentrikus indexeket tekintjük standardnak a nagyméretű adatok tárolásánál és vizsgálatánál.
+>[AZURE.NOTE] The in-memory columnstore index, which uses column storage, provides up to 10x compression gains and 100x query performance gains over traditional binary trees for reporting and analytics queries. We consider columnstore indexes as the standard for storing and scanning large data in a data warehouse.
 
-- Az adatraktáraknak követelményei különböznek az online tranzakció-feldolgozásra (OLTP) optimalizált rendszerekétől. Az OLTP rendszerek számos beszúrási, frissítési és törlési művelettel rendelkeznek. Ezek a műveletek adott sorokra keresnek rá a táblában. A tábla átvizsgálása akkor a legeredményesebb, ha az adatokat soronként tárolják. Az adatok rendezését és gyors keresését egy bináris fának, vagy bináris fa keresésnek nevezett oszd meg és uralkodj megközelítés biztosítja.
+- A data warehouse has different requirements than a system that optimizes for online transaction processing (OLTP). The OLTP system has many insert, update, and delete operations. These operations seek to specific rows in the table. Table seeks perform best when the data is stored in a row-by-row manner. The data can be sorted and quickly searched with a divide and conquer approach called a binary tree or btree search.
 
 
-## Az adatok betöltése
-Az adatbetöltés jelenős részét teszi ki az adatraktár-számítási feladatoknak. A vállalkozások általában rendelkeznek egy forgalmas OLTP rendszerrel, amely a nap folyamán követi az üzleti tranzakciók által előidézett változásokat. Rendszeres időközönként, gyakran éjszaka, a karbantartási időszak alatt a rendszer áthelyezi vagy átmásolja a tranzakciókat az adatraktárba. Amint az adatok átkerültek az adatraktárba, az elemzők elvégezhetik az elemzést, és üzleti döntéseket hozhatnak az adatok alapján.
+## Data loading
+Data loading is a big part of the data warehouse workload. Businesses usually have a busy OLTP system that tracks changes throughout the day when customers are generating business transactions. Periodically, often at night during a maintenance window, the transactions are moved or copied to the data warehouse. Once the data is in the data warehouse, analysts can perform analysis and make business decisions on the data.
 
-- A betöltési folyamatot hagyományosan ETL-nek nevezik, ami az Extract, Transform és Load (kinyerés, átalakítás és betöltés) rövidítése. Az adatokat általában át kell alakítani, hogy konzisztensek legyenek az adatraktár többi adatával. Korábban a vállalkozások dedikált ETL-kiszolgálókat használtak az átalakításokhoz. A nagymértékben párhuzamos feldolgozás gyorsaságának köszönhetően most már első lépésként betöltheti az adatokat az SQL Data Warehouse szolgáltatásba, majd végrehajthatja az átalakításokat. A folyamat neve ETL (Extract, Load, and Transform – kinyerés, betöltés és átalakítás). Egyre inkább ez válik új szabvánnyá az adatraktár-számítási feladatoknál.
+- Traditionally, the process of loading is called ETL for Extract, Transform, and Load. Data usually needs to be transformed so it is consistent with other data in the data warehouse. Previously, businesses used dedicated ETL servers to perform the transformations. Now, with such fast massively parallel processing you can load data into SQL Data Warehouse first, and then perform the transformations. This process is called Extract, Load, and Transform (ELT), and is becoming a new standard for the data warehouse workload.
 
-> [AZURE.NOTE] Az SQL Server 2016 használatával már valós időben is elemezheti az OLTP-táblákat. Ez nem teszi szükségtelenné az adatok tárolását és elemzését az adatraktárban, viszont lehetővé teszi a valós idejű elemzést.
+> [AZURE.NOTE] With SQL Server 2016, you can now perform analytics in real-time on an OLTP table. This does not replace the need for a data warehouse to store and analyze data, but it does provide a way to perform analysis in real-time.
 
-### Jelentés- és elemzéslekérdezések
-A jelentés- és elemzési lekérdezéseket a kicsi, közepes és nagy kategóriákba sorolják, esetenként a feltételek száma, de legtöbbször az időtartam alapján. A legtöbb adatraktárban vegyes számítási feladatok futnak, amelyet gyorsan és lassan futó lekérdezések alkotnak. Minden esetben fontos meghatározni ezt a keveréket, és annak gyakoriságát (óránként, naponta, hónap végén, negyedév végén stb.). Fontos megérteni, hogy a vegyes lekérdezésekből álló számítási feladatok és a párhuzamosság együtt megfelelő kapacitástervezést igényelnek.
+### Reporting and analysis queries
+Reporting and analysis queries are often categorized into small, medium and large based on a number of criteria, but usually it is based on time. In most data warehouses, there is a mixed workload of fast-running versus long-running queries. In each case, it is important to determine this mix and to determine its frequency (hourly, daily, month-end, quarter-end, and so on). It is important to understand that the mixed query workload, coupled with concurrency, lead to proper capacity planning for a data warehouse.
 
-- A kapacitástervezés vegyes lekérdezésekből álló számítási feladatok esetén összetett feladat lehet, főleg ha az adatraktár kapacitásának bővítéséhez hosszú átfutási időre van szükség. Az SQL Data Warehouse szolgáltatásban a kapacitástervezés nem olyan sürgős, mivel a számítási teljesítmény bármikor növelhető vagy csökkenthető, a tárolási és számítási teljesítményt pedig egymástól függetlenül lehet méretezni.
+- Capacity planning can be a complex task for a mixed query workload, especially when you need a long lead time to add capacity to the data warehouse. SQL Data Warehouse removes the urgency of capacity planning since you can grow and shrink compute capacity at any time, and since storage and compute capacity are independently sized.
 
-### Adatkezelés
-Az adatkezelés fontos, különösen akkor, ha előre lehet tudni, hogy hamarosan el fog fogyni a szabad lemezterület. Az adatraktárak az adatokat általában értelmezhető tartományokra osztják, amelyeket a rendszer partíciókként tárol a táblákban. Az SQL Server szolgáltatáson alapuló termékek lehetővé teszik a partíciók táblák közötti áthelyezését. Ez a partícióváltás lehetővé teszi, hogy a régebbi adatokat át lehessen helyezni egy kevésbé költséges tárhelyre, és az online tárhelyen a legfrissebb adatok legyenek elérhetők.
+### Data management
+Managing data is important, especially when you know you might run out of disk space in the near future. Data warehouses usually divide the data into meaningful ranges, which are stored as partitions in a table. All SQL Server-based products let you move partitions in and out of the table. This partition switching lets you move older data to less expensive storage and keep the latest data available on online storage.
 
-- Az oszlopcentrikus indexek támogatják a particionált táblákat. Az oszlopcentrikus indexek esetében a particionált táblákat adatkezelésre és archiválásra használják. A soronként tárolt tábláknál a partícióknak a lekérdezési teljesítményben van nagyobb szerepük.  
+- Columnstore indexes support partitioned tables. For columnstore indexes, partitioned tables are used for data management and archival. For tables stored row-by-row, partitions have a larger role in query performance.  
 
-- A PolyBase fontos szerepet játszik az adatkezelésben. A PolyBase használatával archiválhatja a régebbi adatokat a Hadoopba vagy az Azure Blob Storage szolgáltatásba.  Ez sok lehetőséget biztosít, mivel az adatokat továbbra is el lehet érni az interneten.  Az adatok lekérése a Hadoopból több időt vehet igénybe, de a hosszabb lekérési időt ellensúlyozhatja a tárolási költség.
+- PolyBase plays an important role in managing data. Using PolyBase, you have the option to archive older data to Hadoop or Azure blob storage.  This provides lots of options since the data is still online.  It might take longer to retrieve data from Hadoop, but the tradeoff of retrieval time might outweigh the storage cost.
 
-### Az adatok exportálása
-Az adatok jelentéskészítés és elemzés számára történő elérhetővé tételének egyik módja az, hogy adatokat küldenek az adatraktárból a jelentések és elemzések futtatására szolgáló kiszolgálóknak. Ezeket a kiszolgálókat hívják adatpiacnak. Például a jelentési adatokat előre fel lehet dolgozni, majd exportálni lehet az adatraktárból számos kiszolgálóra világszerte, hogy az ügyfelek és az elemzők széles köre el tudja érni őket.
+### Exporting data
+One way to make data available for reports and analysis is to send data from the data warehouse to servers dedicated for running reports and analysis. These servers are called data marts. For example, you could pre-process report data and then export it from the data warehouse to many servers around the world, to make it broadly available for customers and analysts.
 
-- A jelentések létrehozásához az írásvédett jelentéskészítő kiszolgálókra minden éjszaka fel lehet tölteni egy pillanatképet a napi adatokról. Ez nagyobb sávszélességet biztosít az ügyfelek számára, miközben csökkenti az adatraktár számítási erőforrásigényét. Biztonsági szempontjából az adatpiacok lehetővé teszik az adatraktárhoz hozzáférő felhasználók számának csökkentését.
-- Az elemzéshez ki lehet építeni az adatraktáron egy elemzési adatkockát, és le lehet futtatni az elemzést az adatraktáron, vagy előre fel lehet dolgozni az adatokat és exportálni lehet őket az elemzési kiszolgálóra további elemzés céljából.
+- For generating reports, each night you could populate read-only reporting servers with a snapshot of the daily data. This gives higher bandwidth for customers while lowering the compute resource needs on the data warehouse. From a security aspect, data marts allow you to reduce the number of users who have access to the data warehouse.
+- For analytics, you can either build an analysis cube on the data warehouse and run analysis against the data warehouse, or pre-process data and export it to the analysis server for further analytics.
 
-## Következő lépések
-Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról, ismerje meg, hogyan hozhat létre gyorsan egy [SQL Data Warehouse létrehozása][] és hogyan [mintaadatokat tölthet be][].
+## Next steps
+Now that you know a bit about SQL Data Warehouse, learn how to quickly [create a SQL Data Warehouse][] and [load sample data][].
 
 <!--Image references-->
 
 <!--Article references-->
-[mintaadatokat tölthet be]: ./sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse létrehozása]: ./sql-data-warehouse-get-started-provision.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
@@ -73,6 +74,6 @@ Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

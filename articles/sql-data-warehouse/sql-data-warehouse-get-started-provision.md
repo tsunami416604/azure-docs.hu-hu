@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Data Warehouse létrehozása az Azure Portalon | Microsoft Azure"
-   description="Tudnivalók Azure SQL Data Warehouse létrehozásáról az Azure Portalon"
+   pageTitle="Create a SQL Data Warehouse in the Azure portal | Microsoft Azure"
+   description="Learn how to create an Azure SQL Data Warehouse in the Azure portal"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
@@ -17,79 +17,80 @@
    ms.date="08/25/2016"
    ms.author="barbkess;lodipalm;sonyama"/>
 
-# Azure SQL Data Warehouse létrehozása
+
+# Create an Azure SQL Data Warehouse
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-get-started-provision.md)
+- [Azure portal](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-Ebben az oktatóanyagban az Azure Portalon létrehoz egy SQL Data Warehouse-t, amely egy AdventureWorksDW mintaadatbázist tartalmaz.
+This tutorial uses the Azure portal to create a SQL Data Warehouse that contains an AdventureWorksDW sample database.
 
 
-## Előfeltételek
+## Prerequisites
 
-A kezdéshez a következők szükségesek:
+To get started, you need:
 
-- **Azure-fiók**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-fiók létrehozása][] vagy [Havi Azure-kredit a Visual Studio-előfizetőknek][].
-- **Azure SQL-kiszolgáló**: További információ: [Create an Azure SQL Database logical server with the Azure Portal][].
+- **Azure account**: Visit [Azure Free Trial][] or [MSDN Azure Credits][] to create an account.
+- **Azure SQL server**:  See [Create an Azure SQL Database logical server with the Azure portal][] for more details.
 
-> [AZURE.NOTE] Egy SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti.  További információ: [SQL Data Warehouse díjszabása][].
+> [AZURE.NOTE] Creating a SQL Data Warehouse might result in a new billable service.  See [SQL Data Warehouse pricing][] for more details.
 
-## SQL Data Warehouse létrehozása
+## Create a SQL Data Warehouse
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. Kattintson a **+ Új** > **Adatok + tárolás** > **SQL Data Warehouse** lehetőségre.
+2. Click **+ New** > **Data + Storage** > **SQL Data Warehouse**.
 
-    ![Létrehozás](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
+    ![Create](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 
-3. Az **SQL Data Warehouse** panelen adja meg a szükséges információkat, majd kattintson a „Létrehozás” gombra az adatraktár létrehozásához.
+3. In the **SQL Data Warehouse** blade, fill in the information needed, then press 'Create' to create.
 
-    ![Adatbázis létrehozása](./media/sql-data-warehouse-get-started-provision/create-database.png)
+    ![Create database](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-    - **Kiszolgáló**: Javasoljuk, hogy először válassza ki a kiszolgálót.  
+    - **Server**: We recommend you select your server first.  
 
-    - **Adatbázis neve**: Az SQL Data Warehouse-ra való hivatkozáshoz használt név.  Ennek a kiszolgálón egyedinek kell lennie.
+    - **Database name**: The name that is used to reference the SQL Data Warehouse.  It must be unique to the server.
     
-    - **Teljesítmény**: Javasoljuk, hogy kiindulásként 400 [DWU-t][DWU] adjon meg. A csúszka jobbra-balra mozgatásával állíthatja az adatraktár teljesítményét, vagy skálázhatja azt vertikálisan le vagy fel a létrehozást követően.  A DWU egységekkel kapcsolatos további információkért tekintse meg [skálázással](./sql-data-warehouse-manage-compute-overview.md) kapcsolatos dokumentációnkat vagy [díjszabási oldalunkat][SQL Data Warehouse díjszabása]. 
+    - **Performance**: We recommend starting with 400 [DWUs][DWU]. You can move the slider to the left or right to adjust the performance of your data warehouse, or scale up or down after creation.  To learn more about DWUs, see our documentation on [scaling](./sql-data-warehouse-manage-compute-overview.md) or our [pricing page][SQL Data Warehouse pricing]. 
 
-    - **Előfizetés**: Válassza ki az [előfizetést], amelyikre az adott SQL Data Warehouse díjai számlázva lesznek.
+    - **Subscription**: Select the [subscription] that this SQL Data Warehouse will bill to.
 
-    - **Erőforráscsoport**: Az [erőforráscsoportok][Erőforráscsoportok] olyan tárolók, amelyek segítségével Azure-erőforrások gyűjteményét kezelheti. További információk az [erőforráscsoportokról](../resource-group-overview.md).
+    - **Resource group**: [Resource groups][Resource group] are containers designed to help you manage a collection of Azure resources. Learn more about [resource groups](../resource-group-overview.md).
 
-    - **Forrás kiválasztása**: Kattintson a **Forrás kiválasztása** > **Minta** lehetőségre. Az Azure automatikusan feltölti a **Minta kiválasztása** beállítást az AdventureWorksDW elemmel.
+    - **Select source**: Click **Select source** > **Sample**. Azure automatically populates the **Select sample** option with AdventureWorksDW.
 
-> [AZURE.NOTE] Az SQL Data Warehouse alapértelmezett rendezése az SQL_Latin1_General_CP1_CI_AS. Ha másik rendezésre van szüksége, a [T-SQL][] használatával hozhatja létre az adatbázist másik rendezéssel.
+> [AZURE.NOTE] The default collation for a SQL Data Warehouse is SQL_Latin1_General_CP1_CI_AS. If a different collation is needed, [T-SQL][] can be used to create the database with a different collation.
 
-4. Kattintson a **Létrehozás** gombra az SQL Data Warehouse létrehozásához.
+4. Click **Create** to create your SQL Data Warehouse.
 
-5. Várjon néhány percet. Amikor az adatraktár elkészült, a rendszer visszalépteti az [Azure Portal](https://portal.azure.com). Az SQL Data Warehouse az irányítópulton található meg az SQL Database adatbázisok listájában vagy a létrehozásához használt erőforráscsoportban. 
+5. Wait for a few minutes. When your data warehouse is ready, you should be returned to the [Azure portal](https://portal.azure.com). You can find your SQL Data Warehouse on your dashboard, listed under your SQL Databases, or in the resource group that you used to create it. 
 
-    ![portál nézet](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
+    ![portal view](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
 [AZURE.INCLUDE [SQL Database create server](../../includes/sql-database-create-new-server-firewall-portal.md)] 
 
-## Következő lépések
+## Next steps
 
-Miután létrehozta az SQL Data Warehouse-t, készen áll a [Csatlakozásra](./sql-data-warehouse-connect-overview.md) és lekérdezések indítására.
+Now that you have created a SQL Data Warehouse, you are ready to [Connect](./sql-data-warehouse-connect-overview.md) and begin querying.
 
-Adatok az SQL Data Warehouse-ba való betöltésével kapcsolatban lásd a [betöltést áttekintő](./sql-data-warehouse-overview-load.md) cikket.
+To load data into SQL Data Warehouse, see the [loading overview](./sql-data-warehouse-overview-load.md).
 
-Ha egy meglévő adatbázist szeretne áttelepíteni az SQL Data Warehouse-ba, tekintse meg az [áttelepítés áttekintését](./sql-data-warehouse-overview-migrate.md), vagy használja az [áttelepítő segédprogramot](./sql-data-warehouse-migrate-migration-utility.md).
+If you are trying to migrate an existing database to SQL Data Warehouse, see the [Migration overview](./sql-data-warehouse-overview-migrate.md) or use [Migration Utility](./sql-data-warehouse-migrate-migration-utility.md).
 
-Tűzfalszabályok is a Transact-SQL segítségével konfigurálhatók. További információ: [sp_set_firewall_rule][] és [sp_set_database_firewall_rule][].
+Firewall rules can also be configured using Transact-SQL. For more information, see [sp_set_firewall_rule][] and [sp_set_database_firewall_rule][].
 
-Érdemes megtekinteni az [Ajánlott eljárások][] is.
+It's also a great idea to look at the [Best practices][].
 
 <!--Article references-->
-[Create an Azure SQL Database logical server with the Azure Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
-[Azure SQL Database logikai kiszolgáló létrehozása a PowerShell használatával]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
-[erőforráscsoportok]: ../resource-group-template-deploy-portal.md
-[Ajánlott eljárások]: sql-data-warehouse-best-practices.md
+[Create an Azure SQL Database logical server with the Azure portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[resource groups]: ../resource-group-template-deploy-portal.md
+[Best practices]: sql-data-warehouse-best-practices.md
 [DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[előfizetést]: ../azure-glossary-cloud-terminology.md#subscription
-[erőforráscsoport]: ../azure-glossary-cloud-terminology.md#resource-group
+[subscription]: ../azure-glossary-cloud-terminology.md#subscription
+[resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 [T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
  
 <!--MSDN references-->
@@ -97,13 +98,13 @@ Tűzfalszabályok is a Transact-SQL segítségével konfigurálhatók. További 
 [sp_set_database_firewall_rule]: https://msdn.microsoft.com/library/dn270010.aspx
 
 <!--Other Web references-->
-[SQL Data Warehouse díjszabása]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-[Ingyenes Azure-fiók létrehozása]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
-[Havi Azure-kredit a Visual Studio-előfizetőknek]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+[SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+[Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
+[MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

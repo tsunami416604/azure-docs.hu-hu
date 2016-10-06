@@ -1,16 +1,16 @@
-A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)egy osztályt biztosít a konfigurációs fájlokból származó kapcsolati karakterláncok elemzéséhez. A [CloudConfigurationManager osztály](https://msdn.microsoft.com/library/azure/mt634650.aspx) konfigurációs beállításokat elemez, függetlenül attól, hogy az ügyfélalkalmazás az asztalon, egy mobileszközön, egy Azure virtuális gépen vagy egy Azure-felhőszolgáltatásban fut-e.
+The [Microsoft Azure Configuration Manager Library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) provides a class for parsing a connection string from a configuration file. The [CloudConfigurationManager class](https://msdn.microsoft.com/library/azure/mt634650.aspx) parses configuration settings regardless of whether the client application is running on the desktop, on a mobile device, in an Azure virtual machine, or in an Azure cloud service.
 
-Adja a következő `using` utasítást az osztályhoz, ha a CloudConfigurationManager csomagra kíván hivatkozni:
+To reference the CloudConfigurationManager package, add the following `using` statement to your class:
 
     using Microsoft.Azure;  //Namespace for CloudConfigurationManager
 
-A következő példa bemutatja, hogyan kérhető le egy kapcsolati karakterlánc egy konfigurációs fájlból:
+Here's an example that shows how to use retrieve a connection string from a configuration file:
 
     // Parse the connection string and return a reference to the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-Az Azure Configuration Manager használata nem kötelező. Használhat egy API-t is, például a .NET-keretrendszer [ConfigurationManager osztályát](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
+Using Azure Configuration Manager is optional. You can also use an API such as the .NET Framework's [ConfigurationManager class](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
 
 
 <!--HONumber=Sep16_HO4-->

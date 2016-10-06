@@ -1,50 +1,50 @@
-## Eseményközpont létrehozása
+## Create an Event Hub
 
-1. Jelentkezzen be az [Azure Portal][], és kattintson az **Új** gombra a képernyő bal felső részén.
+1. Log on to the [Azure portal][], and click **New** at the top left of the screen.
 
-2. Kattintson az **Adatok + analitika**, majd az **Event Hubs** elemre.
+2. Click **Data + Analytics**, then click **Event Hubs**.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 
-3. A **Névtér létrehozása** panelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+3. In the **Create namespace** blade, enter a namespace name. The system immediately checks to see if the name is available.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub1.png)
 
-4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic vagy Standard). Valamint válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. 
+4. After making sure the namespace name is available, choose the pricing tier (Basic or Standard). Also, choose an Azure subscription, resource group, and location in which to create the resource. 
 
-2. A névtér létrehozásához kattintson a **Létrehozás** parancsra.
+2. Click **Create** to create the namespace.
 
-6. Az Event Hubs névtérlistájában kattintson az újonnan létrehozott névtérre.      
+6. In the Event Hubs namespace list, click the newly-created namespace.      
 
     ![](./media/event-hubs-create-event-hub/create-event-hub2.png)
 
-7. A névtér panelen kattintson az **Event Hubs** elemre.
+7. In the namespace blade, click **Event Hubs**.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub3.png)
 
-8. A panel tetején kattintson az **Eseményközpont felvétele** parancsra.
+8. At the top of the blade, click **Add Event Hub**.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub4.png)
 
-3. Adjon egy nevet az Eseményközpontnak, majd kattintson a **Létrehozás** parancsra.
+3. Type a name for your Event Hub, then click **Create**.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub5.png)
 
-4. Az eseményközpontok listájában kattintson az újonnan létrehozott eseményközpont nevére. 
+4. In the list of Event Hubs, click the newly created Event Hub name. 
 
     ![](./media/event-hubs-create-event-hub/create-event-hub6.png)
 
-5. Térjen vissza a névtér panelre (nem az adott eseményközpont panelére), kattintson a **Megosztott elérési házirendek**, majd a **RootManageSharedAccessKey** elemre.
+5. Back in the namespace blade (not the specific Event Hub blade), click **Shared access policies**, and then click **RootManageSharedAccessKey**.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub7.png)
 
-5. Kattintson a másolás gombra, hogy a **RootManageSharedAccessKey** kapcsolati karakterláncot a vágólapra másolja. Mentse el ezt a kapcsolati karakterláncot a jelen oktatóprogramban való későbbi használat céljából.
+5. Click the copy button to copy the **RootManageSharedAccessKey** connection string to the clipboard. Save this connection string to use later in the tutorial.
 
     ![](./media/event-hubs-create-event-hub/create-event-hub8.png)
 
-Létrejött az Eseményközpont, és most már rendelkezik az események küldéséhez és fogadásához szükséges kapcsolati karakterlánccal.
+Your Event Hub is now created, and you have the connection strings you need to send and receive events.
 
-[Azure Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 <!--HONumber=Sep16_HO4-->
 

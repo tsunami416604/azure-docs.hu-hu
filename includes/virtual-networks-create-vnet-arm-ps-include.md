@@ -1,13 +1,13 @@
-## VNet létrehozása a PowerShell használatával
-Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
+## How to create a VNet using PowerShell
+To create a VNet by using PowerShell, follow the steps below.
 
-1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
     
-2. Szükség esetén hozzon létre egy új erőforráscsoportot a lent látható módon. A forgatókönyvünk esetében hozzon létre egy új erőforráscsoportot *TestRG* néven. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
+2. If necessary, create a new resource group, as shown below. For our scenario, create a resource group named *TestRG*. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md).
 
         New-AzureRmResourceGroup -Name TestRG -Location centralus
 
-    Várt kimenet:
+    Expected output:
     
         ResourceGroupName : TestRG
         Location          : centralus
@@ -15,12 +15,12 @@ Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
         Tags              :
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG   
 
-3. Hozzon létre egy új *TestBNet* nevű VNetet a lent látható módon.
+3. Create a new VNet named *TestVNet*, as shown below.
 
         New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
             -AddressPrefix 192.168.0.0/16 -Location centralus   
         
-    Várt kimenet:
+    Expected output:
 
         Name                : TestVNet
         ResourceGroupName   : TestRG
@@ -38,18 +38,18 @@ Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
         Subnets                 : []
         VirtualNetworkPeerings  : []
 
-4. A virtuális hálózat objektumot tárolja az alább látható módon egy változóban.
+4. Store the virtual network object in a variable, as shown below.
 
         $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
     
-    >[AZURE.TIP] A 3. és 4. lépést kombinálhatja a **$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** futtatásával.
+    >[AZURE.TIP] You can combine steps 3 and 4 by running **$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus**.
 
-5. Adjon hozzá egy alhálózatot az új VNet változóhoz az alább látható módon.
+5. Add a subnet to the new VNet variable, as shown below.
 
         Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
             -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
         
-    Várt kimenet:
+    Expected output:
 
         Name                : TestVNet
         ResourceGroupName   : TestRG
@@ -72,16 +72,16 @@ Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
                                 ]
         VirtualNetworkPeerings  : []
 
-6. A fenti 5. lépést ismételje meg minden létrehozni kívánt alhálózat esetében. Az alábbi parancs létrehozza a *BackEnd* alhálózatot a forgatókönyvünkhöz.
+6. Repeat step 5 above for each subnet you want to create. The command below creates the *BackEnd* subnet for our scenario.
 
         Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
             -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
 
-7. Ugyan létrehoz alhálózatokat, azok jelenleg csak a VNet lekéréséhez a 4. lépésben használt helyi változóban léteznek. A módosítások Azure-ban való mentéséhez futtassa az alább látható módon a **Set-AzureRmVirtualNetwork** parancsmagot.
+7. Although you create subnets, they currently only exist in the local variable used to retrieve the VNet you create in step 4 above. To save the changes to Azure, run the **Set-AzureRmVirtualNetwork** cmdlet, as shown below.
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet 
         
-    Várt kimenet:
+    Expected output:
 
         Name                : TestVNet
         ResourceGroupName   : TestRG
@@ -119,7 +119,6 @@ Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
         VirtualNetworkPeerings : []
 
 
-
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

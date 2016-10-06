@@ -136,7 +136,7 @@ A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![F
 Most hozzáadunk egy **Start-AzureRmVM** tevékenységet egy virtuális gép elindítására.  Kiválaszthatja az Azure-előfizetésében lévő bármelyik virtuális gépet, és most szoftveresen rögzítjük ezt a nevet a parancsmagba.
 
 1. A Könyvtár vezérlőben írja be a keresési szövegmezőbe a következőt: **Start-AzureRm**.
-2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza a **Csatlakozás az Azure szolgáltatáshoz** alá.
+2. Adja hozzá a **Start-AzureRmVM** elemet a vászonhoz, és húzza az **Előfizetés azonosítójának megadása** alá.
 3. Vigye a kurzort a **Előfizetés azonosítójának megadása** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör.  Kattintson a körre, és húzza a nyilat a **Start-AzureRmVM** elemre. 
 4.  Jelölje ki a **Start-AzureRmVM** elemet.  A **Start-AzureRmVM** készleteinek megtekintéséhez kattintson a **Paraméterek**, majd a **Paraméterkészlet** lehetőségre.  Válassza ki a **ResourceGroupNameParameterSetName** paraméterkészletet. Figyelje meg, hogy a **ResourceGroupName** és a **Name** mellett felkiáltójel van.  Ez azt jelzi, hogy ezek kötelező paraméterek.  Azt is észreveheti, hogy mindkét helyen szöveges értéket kell megadni.
 5.  Válassza ki a **Name** paramétert.  Válassza ki a **PowerShell-kifejezés** elemet az **Adatforrás** területen, majd írja be a forgatókönyvvel elindított virtuális gép nevét idézőjelek között.  Kattintson az **OK** gombra.<br>![Start-AzureRmVM nevének paraméteres értéke](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
@@ -219,6 +219,6 @@ Most úgy fogjuk módosítani a forgatókönyvet, hogy csak akkor próbálja meg
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Az Azure Virtual Network (VNet) áttekintése"
-   description="Információk az Azure virtuális hálózatokról (VNetekről)."
+   pageTitle="Azure Virtual Network (VNet) Overview"
+   description="Learn about virtual networks (VNets) in Azure."
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,88 +15,89 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-# A Virtual Network áttekintése
 
-Az Azure virtuális hálózat (VNet) a saját, felhőben található hálózatának megfelelője.  A hálózat az előfizetésre kijelölt Azure-felhő logikai elkülönítése. A hálózaton belül teljes mértékben irányíthatja az IP-címblokkokat, a DNS-beállításokat, a biztonsági házirendeket és az útválasztási táblázatokat. A VNetet emellett tovább oszthatja alhálózatokra, valamint Azure IaaS virtuális gépeket (VM-ek) és/vagy [felhőszolgáltatásokat (PaaS szerepkörpéldányok)](../cloud-services/cloud-services-choose-me.md) indíthat. A virtuális hálózatot ezen felül a helyszíni hálózathoz is csatlakoztathatja az Azure-ban elérhető [kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-cross-premises-options.md) egyikével. Lényegében kiterjesztheti a hálózatot az Azure-ra, az IP-címblokkok teljes körű irányítása és a vállalati méretű Azure által nyújtott előnyök mellett.
+# Virtual Network Overview
 
-A VNetek jobb megértése érdekében tekintse meg az alábbi ábrát, amely egy egyszerűsített helyszíni hálózatot mutat be.
+An Azure virtual network (VNet) is a representation of your own network in the cloud.  It is a logical isolation of the Azure cloud dedicated to your subscription. You can fully control the IP address blocks, DNS settings, security policies, and route tables within this network. You can also further segment your VNet into subnets and launch Azure IaaS virtual machines (VMs) and/or [Cloud services (PaaS role instances)](../cloud-services/cloud-services-choose-me.md). Additionally, you can connect the virtual network to your on-premises network using one of the [connectivity options](../vpn-gateway/vpn-gateway-cross-premises-options.md) available in Azure. In essence, you can expand your network to Azure, with complete control on IP address blocks with the benefit of enterprise scale Azure provides.
 
-![Helyszíni hálózat](./media/virtual-networks-overview/figure01.png)
+To better understand VNets, take a look at the figure below, which shows a simplified on-premises network.
 
-A fenti ábrán egy helyszíni hálózat látható, ami egy útválasztón keresztül csatlakozik a nyilvános internethez. Egy tűzfal is látható az útválasztó és szegélyhálózat (DMZ) között, amely egy DNS-kiszolgálót és egy webkiszolgáló farmot is üzemeltet. A webkiszolgáló farm a belső alhálózat erőforrásait fogyasztja, a terheléselosztását pedig egy internettel érintkező hardveres terheléselosztó hajtja végre. A belső alhálózat Active Directory-tartományvezérlő kiszolgálókat, adatbázis-kiszolgálókat és alkalmazáskiszolgálókat üzemeltet, és egy másik tűzfal választja el a szegélyhálózattól (DMZ-től).
+![On-premises network](./media/virtual-networks-overview/figure01.png)
 
-Ugyanezt a hálózatot az Azure-ban is lehet üzemeltetni a lenti ábrán látható módon.
+The figure above shows an on-premises network connected to the public Internet through a router. You can also see a firewall between the router and a DMZ hosting a DNS server and a web server farm. The web server farm is load balanced using a hardware load balancer that is exposed to the Internet, and consumes resources from the internal subnet. The internal subnet is separated from the DMZ by another firewall, and hosts Active Directory Domain Controller servers, database servers, and application servers.
 
-![Azure virtuális hálózat](./media/virtual-networks-overview/figure02.png)
+The same network can be hosted in Azure as shown in the figure below.
 
-Figyelje meg, hogy az Azure infrastruktúra felveszi az útválasztó szerepkörét, és ezzel konfigurálás igénye nélkül engedélyezi a hozzáférést a VNet számára a nyilvános internethez. A tűzfalakat az alhálózatokra külön-külön alkalmazott hálózati biztonsági csoportokkal (NSG-k) lehet helyettesíteni. A fizikai terheléselosztókat az internetkapcsolattal rendelkező belső terheléselosztók helyettesítik az Azure-ban.
+![Azure virtual network](./media/virtual-networks-overview/figure02.png)
 
->[AZURE.NOTE] Az Azure-ban két üzembe helyezési mód létezik: a klasszikus (más néven szolgáltatásfelügyelet) és az Azure Resource Manager (ARM). A hagyományos VNeteket hozzá lehet adni egy affinitáscsoporthoz, vagy regionális VNetként is létre lehet hozni. Ha talál egy VNetet az egyik affinitáscsoportban, ajánlott [áttelepíteni egy regionális VNetre](virtual-networks-migrate-to-regional-vnet.md).
+Notice how the Azure infrastructure takes on the role of the router, allowing access from your VNet to the public Internet without the need of any configuration. Firewalls can be substituted by Network Security Groups (NSGs) applied to each individual subnet. And physical load balancers are substituted by internet facing and internal load balancers in Azure.
 
-## A Virtual Network előnyei
+>[AZURE.NOTE] There are two deployment modes in Azure: classic (also known as Service Management) and Azure Resource Manager (ARM). Classic VNets could be added to an affinity group, or created as a regional VNet. If you have a VNet in an affinity group, it is recommended to [migrate it to a regional VNet](virtual-networks-migrate-to-regional-vnet.md).
 
-- **Elkülönítés**. A VNetek teljesen elkülönülnek egymástól. Ez lehetővé teszi, hogy különálló hálózatokat hozzon létre a fejlesztés, a tesztelés és a termelés számára, amelyek ugyanazokat a CIDR címblokkokat használják.
+## Virtual Network Benefits
 
-- **Hozzáférés a nyilvános internethez**. Egy VNet minden IaaS virtuális gépe és PaaS szerepkörpéldánya alapértelmezés szerint hozzáférhet a nyilvános internethez. A hozzáférést hálózati biztonsági csoportokkal (NSG-k) lehet irányítani.
+- **Isolation**. VNets are completely isolated from one another. That allows you to create disjoint networks for development, testing, and production that use the same CIDR address blocks.
 
-- **Hozzáférés a virtuális gépekhez a VNeten belül**. A PaaS szerepkörpéldányokat és IaaS virtuális gépeket el lehet indítani ugyanabban a virtuális hálózatban, és privát IP-címek használatával képesek csatlakozni egymáshoz, akkor is, ha külön alhálózatokon vannak, anélkül, hogy átjárót kellene konfigurálni vagy nyilvános IP-címeket kellene használni.
+- **Access to the public Internet**. All IaaS VMs and PaaS role instances in a VNet can access the public Internet by default. You can control access by using Network Security Groups (NSGs).
 
-- **Névfeloldás**. Az Azure belső névfeloldást biztosít a VNetben üzembe helyezett IaaS virtuális gépek és PaaS szerepkörpéldányok számára. Saját DNS-kiszolgálókat is üzembe helyezhet, és konfigurálhatja a VNetet a használatukra.
+- **Access to VMs within the VNet**. PaaS role instances and IaaS VMs can be launched in the same virtual network and they can connect to each other using private IP addresses even if they are in different subnets without the need to configure a gateway or use public IP addresses.
 
-- **Biztonság**. A VNeten belül a virtuális gépekre és PaaS szerepkörpéldányokra érkező, illetve onnan kifelé irányuló forgalmat hálózati biztonsági csoportok használatával lehet irányítani.
+- **Name resolution**. Azure provides internal name resolution for IaaS VMs and PaaS role instances deployed in your VNet. You can also deploy your own DNS servers and configure the VNet to use them.
 
-- **Kapcsolatok**. A VNetek csatlakozhatnak egymáshoz, és akár a helyszíni adatközponthoz is, egy helyek közötti VPN- vagy ExpressRoute kapcsolattal. Ha többet szeretne megtudni a VPN-átjárókról:[About VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) (Információk a VPN-átjárókról). Ha többet szeretne megtudni az ExpressRoute-ról:[ExpressRoute technical overview](../expressroute/expressroute-introduction.md) (ExpressRoute műszaki áttekintés).
+- **Security**. Traffic entering and exiting the virtual machines and PaaS role instances in a VNet can be controlled using Network Security groups.
 
-    >[AZURE.NOTE] Győződjön meg arról, hogy létrehoz egy VNetet, mielőtt IaaS virtuális gépet, vagy PaaS szerepkörpéldányt helyezne üzembe az Azure környezetben. Az ARM alapú virtuális gépeknek szüksége van egy VNetre, és ha nem ad meg egy meglévő VNetet, az Azure létrehoz egy alapértelmezett VNetet, amelynek a CIDR címblokkja ütközhet a helyszíni hálózattal. Így a VNetet nem lehet majd csatlakoztatni a helyszíni hálózathoz.
+- **Connectivity**. VNets can be connected to each other, and even to your on-premises datacenter, by using a site-to-site VPN connection, or ExpressRoute connection. To learn more about VPN gateways, visit [About VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). To learn more about ExpressRoute, visit [ExpressRoute technical overview](../expressroute/expressroute-introduction.md).
 
-## Alhálózatok
+    >[AZURE.NOTE] Make sure you create a VNet before deploying any IaaS VMs or PaaS role instances to your Azure environment. ARM based VMs require a VNet, and if you do not specify an existing VNet, Azure creates a default VNet that might have a CIDR address block clash with your on-premises network. Making it impossible for you to connect your VNet to your on-premises network.
 
-Az alhálózat egy IP-címtartomány a VNeten belül. A VNetet a szervezés és a biztonság érdekében több alhálózatra lehet osztani. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Egy alhálózathoz útválasztási táblázatokat és NSG-ket is lehet konfigurálni.
+## Subnets
 
-## IP-címek
+Subnet is a range of IP addresses in the VNet, you can divide a VNet into multiple subnets for organization and security. VMs and PaaS role instances deployed to subnets (same or different) within a VNet can communicate with each other without any extra configuration. You can also configure route tables and NSGs to a subnet.
 
-
-Az Azure-ban az erőforrásokhoz rendelt IP-címeknek két típusa van: *nyilvános* és *privát*. A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache/) és az [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) szolgáltatásokkal. A privát IP-címek lehetővé teszik az erőforrások közti kommunikációt egy virtuális hálózatban, az egymáshoz VPN-en keresztül csatlakozó erőforrásokkal együtt, internetről elérhető IP-címek használata nélkül.
-
-Ha többet szeretne megtudni az Azure-ban használt IP-címekről: [IP addresses in virtual network](virtual-network-ip-addresses-overview-arm.md) (IP-címek a virtuális hálózatban)
-
-## Azure Load Balancer terheléselosztók
-
-Egy virtuális hálózatban a virtuális gépek és a felhőszolgáltatások is kommunikálhatnak az internettel az Azure Load Balancer terheléselosztók segítségével. A belső hálózatra irányuló üzleti alkalmazások terheléselosztása csak belső terheléselosztó használatával lehetséges.
-
-- **Külső terheléselosztó**. A nyilvános internetről hozzáférhető IaaS virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat külső terheléselosztót.
-
-- **Belső terheléselosztó**. A VNeten található más szolgáltatásokkal hozzáférhető IaaS virtuális gépeknél és PaaS szerepkörpéldányoknál a magas rendelkezésre állás biztosításához használhat belső terheléselosztót.
-
-Ha többet szeretne megtudni a terheléselosztásról az Azure-ban: [Load balancer overview](../load-balancer/load-balancer-overview.md) (A Load Balancer áttekintése).
-
-## Hálózati biztonsági csoport (NSG)
-
-Létrehozhat NSG-ket a hálózati adapterek (NIC-k), virtuális gépek és alhálózatok bejövő és kimenő hozzáférésének irányítására. Minden NSG tartalmaz egy vagy több szabályt, amelyek az IP-forráscím, a forrásport, az IP-célcím és a célport alapján megadják, hogy a forgalom jóvá van hagyva, vagy el van utasítva. Ha többet szeretne megtudni az NSG-kről: [Mi az a hálózati biztonsági csoport (NSG)](virtual-networks-nsg.md).
-
-## Virtuális készülékek
-
-A virtuális készülék valójában egy másik virtuális gép a VNetben, amely egy szoftveralapú készülékfunkciót futtat, például tűzfalat, WAN-optimalizálást vagy behatolásérzékelést. Az Azure-ban létrehozhat egy útvonalat, hogy a VNet forgalmát átirányítsa egy virtuális készülékre a készülék képességeinek használatához.
-
-Például az NSG-ket lehet használni arra, hogy biztosítsák a VNet biztonságát. Az NSG-k azonban csak 4. rétegbeli hozzáférés-vezérlési listát (ACL) biztosítanak a bejövő és kimenő csomagoknak. Ha 7. rétegbeli biztonsági modellt szeretne alkalmazni, tűzfalat kell használnia.
-
-A virtuális készülékek a [felhasználó által megadott útvonalaktól és az IP-továbbítástól](virtual-networks-udr-overview.md) függenek.
-
-## Korlátok
-Az előfizetés által engedélyezett virtuális hálózatok száma korlátozott, további információért olvassa el az [Azure Networking limits](../azure-subscription-service-limits.md#networking-limits) (Azure hálózatkezelés korlátok) szakaszt.
-
-## Díjszabás
-A Virtual Networks az Azure-ban ingyenesen használható. A VNetben belül indított számítási példányokért az [Azure virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/) szerinti standard díjat kell fizetni. A VNetben használt[VPN-átjárókért](https://azure.microsoft.com/pricing/details/vpn-gateway/) és [Nyilvános IP-címekért] (https://azure.microsoft.com/pricing/details/ip-addresses/) szintén a standard díjat kell fizetni.
-
-## Következő lépések
-
-- [Hozzon létre egy VNetet](virtual-networks-create-vnet-arm-pportal.md) és az alhálózatokat.
-- [Hozzon létre egy virtuális gépet a VNeten belül](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
-- Olvassa el az [NSG-k](virtual-networks-nsg.md) ismertetését.
-- Tekintse meg a [felhasználó által megadott útvonalakról és az IP-továbbításról](virtual-networks-udr-overview.md) szóló leírást.
+## IP addresses
 
 
+There are two types of IP addresses assigned to resources in Azure: *public* and *private*. Public IP Addresses allow Azure resources to communicate with Internet and other Azure public-facing services like [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Private IP Addresses allows communication between resources in a virtual network, along with those connected through a VPN, without using an Internet-routable IP addresses.
 
-<!--HONumber=sep16_HO1-->
+To learn more about IP addresses in Azure, visit [IP addresses in virtual network](virtual-network-ip-addresses-overview-arm.md)
+
+## Azure load balancers
+
+Virtual machines and cloud services in a Virtual network can be exposed to Internet using Azure Load balancers. Line of Business applications that are internal facing only can be load balanced using Internal load balancer.
+
+- **External load balancer**. You can use an external load balancer to provide high availability for IaaS VMs and PaaS role instances accessed from the public Internet.
+
+- **Internal load balancer**. You can use an internal load balancer to provide high availability for IaaS VMs and PaaS role instances accessed from other services in your VNet.
+
+To learn more about load balancing in Azure, visit [Load balancer overview](../load-balancer/load-balancer-overview.md).
+
+## Network Security Group (NSG)
+
+You can create NSGs to control inbound and outbound access to network interfaces (NICs), VMs, and subnets. Each NSG contains one or more rules specifying whether or not traffic is approved or denied based on source IP address, source port, destination IP address, and destination port. To learn more about NSGs, visit [What is a Network Security Group](virtual-networks-nsg.md).
+
+## Virtual appliances
+
+A virtual appliance is just another VM in your VNet that runs a software based appliance function, such as firewall, WAN optimization, or intrusion detection. You can create a route in Azure to route your VNet traffic through a virtual appliance to use its capabilities.
+
+For instance, NSGs can be used to provide security on your VNet. However, NSGs provide layer 4 Access Control List (ACL) to incoming and outgoing packets. If you want to use a layer 7 security model, you need to use a firewall appliance.
+
+Virtual appliances depend on [user defined routes and IP forwarding](virtual-networks-udr-overview.md).
+
+## Limits
+There are limits on the number of Virtual Networks allowed in a subscription, please refer to [Azure Networking limits](../azure-subscription-service-limits.md#networking-limits) for more information.
+
+## Pricing
+There is no extra cost for using Virtual Networks in Azure. The compute instances launched within the Vnet will be charged the standard rates as described in [Azure VM Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/). The [VPN Gateways](https://azure.microsoft.com/pricing/details/vpn-gateway/) and [Public IP Addresses] (https://azure.microsoft.com/pricing/details/ip-addresses/) used in the VNet will also be charged standard rates.
+
+## Next steps
+
+- [Create a VNet](virtual-networks-create-vnet-arm-pportal.md) and subnets.
+- [Create a VM in a VNet](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Learn about [NSGs](virtual-networks-nsg.md).
+- Learn about [user defined routes and IP forwarding](virtual-networks-udr-overview.md).
+
+
+
+<!--HONumber=Sep16_HO4-->
 
 

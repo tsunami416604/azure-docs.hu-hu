@@ -1,28 +1,28 @@
-## A megoldás megvalósítása
+## Provision the solution
 
-1.  Jelentkezzen be az [azureiotsuite.com][lnk-azureiotsuite] címre az Azure-fiókja hitelesítő adataival, majd kattintson a **+** elemre egy új megoldás létrehozásához.
+1.  Log on to [azureiotsuite.com][lnk-azureiotsuite] using your Azure account credentials, and click **+** to create a new solution.
 
-2.  Kattintson a **Kiválasztás** elemre a **Távoli figyelés** csempén.
+2.  Click **Select** on the **Remote monitoring** tile.
 
-3.  Adja meg a **Megoldásnevet** az előre konfigurált távoli figyelési megoldáshoz.
+3.  Enter a **Solution name** for your remote monitoring preconfigured solution.
 
-4.  Válassza ki a megoldás kiépítéséhez használni kívánt **Régiót** és **Előfizetést**.
+4.  Select the **Region** and **Subscription** you want to use to provision the solution.
 
-5.  Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ennek futtatása általában több percig tart.
+5.  Click **Create Solution** to begin the provisioning process. This typically takes several minutes to run.
 
-### Várjon, amíg a kiépítési folyamat befejeződik
+### Wait for the provisioning process to complete
 
-1. Kattintson a megoldás **Kiépítési** állapotát jelző csempére.
+1. Click on the tile for your solution with **Provisioning** status.
  
-2. Megtekintheti a **Kiépítési állapotokat**, miközben az Azure-szolgáltatások telepítése megtörténik az Azure-előfizetésben.
+2. Notice the **Provisioning states** as Azure services are deployed in your Azure subscription.
 
-3. A kiépítés befejezése után az állapot **Kész** értékre változik.
+3. Once provisioning completes, the status changes to **Ready**.
 
-4. Kattintson a csempére, és a jobb oldali panelen láthatja a megoldás részleteit.
+4. Click on the tile and you'll see the details of your solution in the right-hand pane.
 
-> [AZURE.NOTE] Ha problémái vannak az előre konfigurált megoldás telepítésekor, tekintse meg az [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions] és a [GYIK][lnk-faq] fejezetet. Ha a problémák továbbra is fennállnak, hozzon létre egy szolgáltatásjegyet a [portálon][lnk-portal].
+> [AZURE.NOTE] If you are encountering issues deploying the pre-configured solution, take a look at [Permissions on the azureiotsuite.com site][lnk-permissions] and the [FAQ][lnk-faq]. If the issues persist, please create a service ticket on the [portal][lnk-portal].
 
-Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/321918-azure-iot) elküldheti a szolgáltatásokkal kapcsolatos javaslatait.
+Are there details you'd expect to see that aren't listed for your solution? Give us feature suggestions on [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md

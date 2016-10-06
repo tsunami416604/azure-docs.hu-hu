@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Belső terheléselosztóval (ILB) rendelkező Application Gateway létrehozása és konfigurálása az Azure Resource Manager használatával | Microsoft Azure"
-   description="Ez az oldal utasításokat tartalmaz egy belső terheléselosztóval (ILB) rendelkező Azure Application Gateway létrehozásához, konfigurálásához, indításához és törléséhez az Azure Resource Manager számára"
+   pageTitle="Create and configure an application gateway with an internal load balancer (ILB) by using Azure Resource Manager | Microsoft Azure"
+   description="This page provides instructions to create, configure, start, and delete an Azure application gateway with internal load balancer (ILB) for Azure Resource Manager"
    documentationCenter="na"
    services="application-gateway"
    authors="georgewallace"
@@ -16,184 +16,185 @@
    ms.author="gwallace"/>
 
 
-# Belső terheléselosztóval (ILB) rendelkező Application Gateway létrehozása az Azure Resource Manager használatával
+
+# Create an application gateway with an internal load balancer (ILB) by using Azure Resource Manager
 
 > [AZURE.SELECTOR]
-- [Klasszikus Azure-lépések](application-gateway-ilb.md)
-- [Resource Manager PowerShell-lépések](application-gateway-ilb-arm.md)
+- [Azure classic steps](application-gateway-ilb.md)
+- [Resource Manager PowerShell steps](application-gateway-ilb-arm.md)
 
-Az Azure Application Gateway konfigurálható egy internetre irányuló virtuális IP-címhez vagy egy internettel nem érintkező belső végponthoz, más néven egy belső terheléselosztó (ILB) végponthoz. Az átjáró ILB-vel történő konfigurálása a belső üzletági alkalmazásoknál hasznos, amelyek nem érintkeznek az internettel. Emellett a többrétegű alkalmazások szolgáltatásai és rétegei számára is hasznos, amelyek egy internettel nem érintkező biztonsági korláton belül vannak, de attól még igényelik az időszeleteléses terheléselosztást, a munkamenet tartós használatát vagy a Secure Sockets Layer (SSL) lezárását.
+Azure Application Gateway can be configured with an Internet-facing VIP or with an internal endpoint that is not exposed to the Internet, also known as an internal load balancer (ILB) endpoint. Configuring the gateway with an ILB is useful for internal line-of-business applications that are not exposed to the Internet. It's also useful for services and tiers within a multi-tier application that sit in a security boundary that is not exposed to the Internet but still require round-robin load distribution, session stickiness, or Secure Sockets Layer (SSL) termination.
 
-Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konfigurálásának lépéseit.
+This article walks you through the steps to configure an application gateway with an ILB.
 
-## Előkészületek
+## Before you begin
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Létre kell hozni egy virtuális hálózatot és alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
-3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
+1. Install the latest version of the Azure PowerShell cmdlets by using the Web Platform Installer. You can download and install the latest version from the **Windows PowerShell** section of the [Downloads page](https://azure.microsoft.com/downloads/).
+2. You create a virtual network and a subnet for Application Gateway. Make sure that no virtual machines or cloud deployments are using the subnet. Application Gateway must be by itself in a virtual network subnet.
+3. The servers that you configure to use the application gateway must exist or have their endpoints created either in the virtual network or with a public IP/VIP assigned.
 
-## Mire van szükség egy Application Gateway létrehozásához?
-
-
-- **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek listája. A lenti listán szereplő IP-címeknek a virtuális hálózathoz kell tartozniuk, egy Application Gateway számára fenntartott másik alhálózatban, vagy nyilvános/virtuális IP-címnek kell lenniük.
-- **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
-- **Előtérbeli port:** Az Application Gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-- **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, kis- és a nagybetűk megkülönböztetésével) és az SSL tanúsítványnévvel rendelkezik.
-- **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
+## What is required to create an application gateway?
 
 
-
-## Application Gateway létrehozása
-
-A klasszikus Azure és az Azure Resource Manager használata abban tér el egymástól, hogy más sorrendben kell létrehoznia az Application Gateway-t és a konfigurálást igénylő elemeket.
-A Resource Managerrel az Application Gateway összes alkotóelemét külön kell konfigurálni, és csak utána kell őket összeállítani az Application Gateway-erőforrás létrehozásához.
-
-
-A következő lépések szükségesek egy Application Gateway létrehozásához:
-
-1. Erőforráscsoport létrehozása a Resource Managerhez
-2. Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
-3. Hozzon létre egy Application Gateway konfigurációs objektumot
-4. Application Gateway erőforrás létrehozása
+- **Back-end server pool:** The list of IP addresses of the back-end servers. The IP addresses listed should either belong to the virtual network but in a different subnet for the application gateway or should be a public IP/VIP.
+- **Back-end server pool settings:** Every pool has settings like port, protocol, and cookie-based affinity. These settings are tied to a pool and are applied to all servers within the pool.
+- **Front-end port:** This port is the public port that is opened on the application gateway. Traffic hits this port, and then gets redirected to one of the back-end servers.
+- **Listener:** The listener has a front-end port, a protocol (Http or Https, these are case-sensitive), and the SSL certificate name (if configuring SSL offload).
+- **Rule:** The rule binds the listener and the back-end server pool and defines which back-end server pool the traffic should be directed to when it hits a particular listener. Currently, only the *basic* rule is supported. The *basic* rule is round-robin load distribution.
 
 
-## Erőforráscsoport létrehozása a Resource Managerhez
 
-Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../powershell-azure-resource-manager.md).
+## Create an application gateway
 
-### 1. lépés
+The difference between using Azure Classic and Azure Resource Manager is the order in which you create the application gateway and the items that need to be configured.
+With Resource Manager, all items that make an application gateway is configured individually and then put together to create the application gateway resource.
+
+
+Here are the steps that are needed to create an application gateway:
+
+1. Create a resource group for Resource Manager
+2. Create a virtual network and a subnet for the application gateway
+3. Create an application gateway configuration object
+4. Create an application gateway resource
+
+
+## Create a resource group for Resource Manager
+
+Make sure that you switch PowerShell mode to use the Azure Resource Manager cmdlets. More info is available at [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md).
+
+### Step 1
 
     Login-AzureRmAccount
 
-### 2. lépés
+### Step 2
 
-Keresse meg a fiókot az előfizetésekben.
+Check the subscriptions for the account.
 
     Get-AzureRmSubscription
 
-A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.<BR>
+You are prompted to authenticate with your credentials.<BR>
 
-### 3. lépés
+### Step 3
 
-Válassza ki, hogy melyik Azure előfizetést fogja használni. <BR>
+Choose which of your Azure subscriptions to use. <BR>
 
 
     Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
-### 4. lépés
+### Step 4
 
-Hozzon létre egy új erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
+Create a new resource group (skip this step if you're using an existing resource group).
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
+Azure Resource Manager requires that all resource groups specify a location. This is used as the default location for resources in that resource group. Make sure that all commands to create an application gateway uses the same resource group.
 
-A fenti példában létrehoztunk egy „appgw-rg” nevű erőforráscsoportot, amelynek az USA nyugati régiója, West US” a helye.
+In the example above, we created a resource group called "appgw-rg" and location "West US".
 
-## Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
+## Create a virtual network and a subnet for the application gateway
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a Resource Manager használatával:
+The following example shows how to create a virtual network by using Resource Manager:
 
-### 1. lépés
+### Step 1
 
     $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-Ez hozzárendeli a 10.0.0.0/24 címtartományt a virtuális hálózat létrehozásához használni kívánt egyik alhálózati változóhoz.
+This assigns the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
 
-### 2. lépés
+### Step 2
 
     $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 
-Ez létrehoz egy „appgwvnet” nevű virtuális hálózatot az „appgw-rg” erőforráscsoportban az USA nyugati régiója számára, amely a 10.0.0.0/16 előtagot használja a 10.0.0.0/24 alhálózattal.
+This creates a virtual network named "appgwvnet" in resource group "appgw-rg" for the West US region using the prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
 
-### 3. lépés
+### Step 3
 
     $subnet = $vnet.subnets[0]
 
-Ez hozzárendeli az alhálózat objektumot a $subnet változóhoz a következő lépésekre.
+This assigns the subnet object to variable $subnet for the next steps.
 
-## Hozzon létre egy Application Gateway konfigurációs objektumot
+## Create an application gateway configuration object
 
-### 1. lépés
+### Step 1
 
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-Ez létrehoz egy „gatewayIP01” nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
+This creates an application gateway IP configuration named "gatewayIP01". When Application Gateway starts, it picks up an IP address from the subnet configured and route network traffic to the IP addresses in the back-end IP pool. Keep in mind that each instance takes one IP address.
 
 
-### 2. lépés
+### Step 2
 
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-Ez a „pool01” nevű háttérbeli IP-címkészletet konfigurálja az alábbi IP-címekkel: „134.170.185.46, 134.170.188.221,134.170.185.50”. Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. A fenti IP-címeket később lecseréli a saját alkalmazása IP-cím végpontjaira.
+This configures the back-end IP address pool named "pool01" with IP addresses "134.170.185.46, 134.170.188.221,134.170.185.50". Those are the IP addresses that receive the network traffic that comes from the front-end IP endpoint. You replace the IP addresses above to add your own application IP address endpoints.
 
-### 3. lépés
+### Step 3
 
     $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 
-Ez a „poolsetting01” nevű Application Gateway beállítást konfigurálja a háttérkészlet elosztott terhelésű hálózati forgalmához.
+This configures application gateway setting "poolsetting01" for the load balanced network traffic in the back-end pool.
 
-### 4. lépés
+### Step 4
 
     $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
-Ez a „frontendport01” nevű előtérbeli IP-portot konfigurálja az ILB-hez.
+This configures the front-end IP port named "frontendport01" for the ILB.
 
-### 5. lépés
+### Step 5
 
     $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 
-Ez létrehozza a „fipconfig01” nevű előtérbeli IP-konfigurációt, és hozzárendeli a jelenlegi virtuális hálózat alhálózatának egyik privát IP-címéhez.
+This creates the front-end IP configuration called "fipconfig01" and associates it with a private IP from the current virtual network subnet.
 
-### 6. lépés
+### Step 6
 
     $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
-Ez létrehozza a „listener01” nevű figyelőt, és társítja az előtérbeli portot az előtérbeli IP-konfigurációhoz.
+This creates the listener called "listener01" and associates the front-end port to the front-end IP configuration.
 
-### 7. lépés
+### Step 7
 
     $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-Ez létrehozza a „rule01” nevű terheléselosztási útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja.
+This creates the load balancer routing rule called "rule01" that configures the load balancer behavior.
 
-### 8. lépés
+### Step 8
 
     $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-Ez konfigurálja az Application Gateway példányméretét.
+This configures the instance size of the application gateway.
 
->[AZURE.NOTE]  Az *InstanceCount* alapértelmezett értéke 2, a maximális értéke pedig 10. A *GatewaySize* alapértelmezett értéke Közepes. A Standard_Small, Standard_Medium és a Standard_Large lehetőségek közül választhat.
+>[AZURE.NOTE]  The default value for *InstanceCount* is 2, with a maximum value of 10. The default value for *GatewaySize* is Medium. You can choose between Standard_Small, Standard_Medium, and Standard_Large.
 
-## Application Gateway létrehozása a New-AzureApplicationGateway használatával
+## Create an application gateway by using New-AzureApplicationGateway
 
-Létrehoz egy Application Gateway-t a fenti lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
+Creates an application gateway with all configuration items from the steps above. In this example, the application gateway is called "appgwtest".
 
 
     $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 
-Ez létrehoz egy Application Gateway-t a fenti lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
+This creates an application gateway with all configuration items from the steps above. In the example, the application gateway is called "appgwtest".
 
 
-## Application Gateway törlése
+## Delete an application gateway
 
-Egy Application Gateway törléséhez az alábbi lépéseket kell sorrendben végrehajtania:
+To delete an application gateway, you'll need to do the following in order:
 
-1. Állítsa le az átjárót a **Stop-AzureRmApplicationGateway** parancsmaggal.
-2. Távolítsa el az átjárót a **Remove-AzureRmApplicationGateway** parancsmaggal.
-3. A **Get-AzureApplicationGateway** parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
+1. Use the **Stop-AzureRmApplicationGateway** cmdlet to stop the gateway.
+2. Use the **Remove-AzureRmApplicationGateway** cmdlet to remove the gateway.
+3. Verify that the gateway has been removed by using the **Get-AzureApplicationGateway** cmdlet.
 
 
-### 1. lépés
+### Step 1
 
-Társítsa az Application Gateway objektumot a „$getgw” változóhoz.
+Get the application gateway object and associate it to a variable "$getgw".
 
     $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-### 2. lépés
+### Step 2
 
-Állítsa le az Application Gateway-t a **Stop-AzureRmApplicationGateway** parancsmaggal. Ez a minta a **Stop-AzureRmApplicationGateway** parancsmag első sorát mutatja, amelyet a kimenet követ.
+Use **Stop-AzureRmApplicationGateway** to stop the application gateway. This sample shows the **Stop-AzureRmApplicationGateway** cmdlet on the first line, followed by the output.
 
     PS C:\> Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
 
@@ -203,7 +204,7 @@ Társítsa az Application Gateway objektumot a „$getgw” változóhoz.
     ----       ----------------     ------------                             ----
     Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a **Remove-AzureRmApplicationGateway** parancsmaggal.
+Once the application gateway is in a stopped state, use the **Remove-AzureRmApplicationGateway** cmdlet to remove the service.
 
 
     PS C:\> Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
@@ -214,10 +215,10 @@ Amint az Application Gateway leállított állapotba kerül, távolítsa el a sz
     ----       ----------------     ------------                             ----
     Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 
->[AZURE.NOTE] A **-force** kapcsolóval le lehet tiltani az eltávolítás jóváhagyása üzenetet.
+>[AZURE.NOTE] The **-force** switch can be used to suppress the remove confirmation message.
 
 
-A szolgáltatás eltávolításának ellenőrzéséhez használhatja a **Get-AzureRmApplicationGateway** parancsmagot. Ez a lépés nem kötelező.
+To verify that the service has been removed, you can use the **Get-AzureRmApplicationGateway** cmdlet. This step is not required.
 
 
     PS C:\>Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
@@ -227,19 +228,19 @@ A szolgáltatás eltávolításának ellenőrzéséhez használhatja a **Get-Azu
     Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
     .....
 
-## Következő lépések
+## Next steps
 
-Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
+If you want to configure SSL offload, see [Configure an application gateway for SSL offload](application-gateway-ssl.md).
 
-Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
+If you want to configure an application gateway to use with an ILB, see [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md).
 
-Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
+If you want more information about load balancing options in general, see:
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

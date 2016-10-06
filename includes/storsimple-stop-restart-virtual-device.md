@@ -1,18 +1,18 @@
-#### Virtuális eszköz leállítása és indítása
-Egy virtuális eszköz leállításához kattintson a nevére, majd kattintson a **Leállítás** elemre. A virtuális eszköz leállítása közben az eszköz állapota **Leállítás folyamatban**. A virtuális eszköz leállítás utáni állapota **Leállítva**.
+#### To stop and start a virtual device
+To stop a virtual device, click its name, and then click **Shutdown**. While the virtual device is shutting down, its status is **Stopping**. After the virtual device is stopped, its status is **Stopped**.
 
-Virtuális eszközt az alábbi parancsmagok segítségével állíthatja le és indíthatja újra.
+Use the following cmdlets to stop and start a virtual device.
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
     
-#### Virtuális eszköz újraindítása
+#### To restart a virtual device
 
-Ha egy virtuális eszközt futás közben szeretne újraindítani, kattintson a nevére, majd az **Újraindítás** lehetőségre. A virtuális eszköz újraindítása közben az eszköz állapota **Újraindítás folyamatban**. Ha a virtuális eszköz használatra kész, az eszköz állapota **Fut**.
+When a virtual device is running and you want to restart it, click its name, and then click **Restart**. While the virtual device is restarting, its status is **Restarting**. When the virtual device is ready for you to use, its status is **Running**.
 
-Az alábbi parancsmag segítségével indítsa újra a virtuális eszközt.
+Use the following cmdlet to restart a virtual device.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 

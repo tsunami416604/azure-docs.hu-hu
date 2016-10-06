@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Node.js – Első lépések útmutató | Microsoft Azure"
-    description="Megtudhatja, hogyan lehet létrehozni egy egyszerű Node.js webalkalmazást, és hogyan telepítheti azt egy Azure-felhőszolgáltatásban."
+    pageTitle="Node.js Getting Started Guide | Microsoft Azure"
+    description="Learn how to create a simple Node.js web application and deploy it to an Azure cloud service."
     services="cloud-services"
     documentationCenter="nodejs"
     authors="rmcmurray"
@@ -16,67 +16,68 @@
     ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
-# Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
+
+# Build and deploy a Node.js application to an Azure Cloud Service
 
 > [AZURE.SELECTOR]
 - [Node.js](cloud-services-nodejs-develop-deploy-app.md)
 - [.NET](cloud-services-dotnet-get-started.md)
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy egyszerű, Azure-felhőszolgáltatásban futó Node.js alkalmazást. A Cloud Services a méretezhető felhőalapú alkalmazások építőeleme az Azure-ban. Lehetővé teszik az alkalmazás előtér- és háttér-összetevőinek elkülönítését, valamint egymástól független kezelését és kibővítését.  A Cloud Services egy robusztus, dedikált virtuális gépet biztosít az egyes szerepkörök megbízható üzemeltetéséhez.
+This tutorial shows how to create a simple Node.js application running in an Azure Cloud Service. Cloud Services are the building blocks of scalable cloud applications in Azure. They allow the separation and independent management and scale-out of front-end and back-end components of your application.  Cloud Services provide a robust dedicated virtual machine for hosting each role reliably.
 
-További információk a Cloud Servicesről, valamint annak összevetése az Azure Websites és a Virtual Machines szolgáltatással: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése].
+For more information on Cloud Services, and how they compare to Azure Websites and Virtual machines, see [Azure Websites, Cloud Services and Virtual Machines comparison].
 
->[AZURE.TIP] Egyszerű webhelyet szeretne készíteni? Ha csak egy egyszerű webhely előterét kívánja futtatni, fontolja meg egy [egyszerűsített webalkalmazás használatát]. Könnyedén frissíthet Cloud Service szolgáltatásra, ha a webalkalmazás növekszik és a követelmények változnak.
+>[AZURE.TIP] Looking to build a simple website? If your scenario involves just a simple website front-end, consider [using a lightweight web app]. You can easily upgrade to a Cloud Service as your web app grows and your requirements change.
 
-Az oktatóanyag utasításait követve egy webes szerepkörben lévő egyszerű webalkalmazást fog létrehozni. A Compute Emulator használatával fogja elvégezni az alkalmazás helyi tesztelését, majd PowerShell parancssori eszközökkel a telepítését.
+By following this tutorial, you will build a simple web application hosted inside a web role. You will use the compute emulator to test your application locally, then deploy it using PowerShell command-line tools.
 
-Az alkalmazás egy egyszerű „hello world” alkalmazás:
+The application is a simple "hello world" application:
 
-![A webböngészőben megjelenő „Hello World” weboldal][A web browser displaying the Hello World web page]
+![A web browser displaying the Hello World web page][A web browser displaying the Hello World web page]
 
-## Előfeltételek
+## Prerequisites
 
-> [AZURE.NOTE] A jelen oktatóanyagban szereplő Azure PowerShell használatához Windows rendszer szükséges.
+> [AZURE.NOTE] This tutorial uses Azure PowerShell, which requires Windows.
 
-- Telepítse és konfigurálja az [Azure PowerShell] eszközt.
-- Az [Azure SDK for .NET 2.7] letöltése és telepítése. A telepítőben válassza a következőket:
+- Install and configure [Azure Powershell].
+- Download and install the [Azure SDK for .NET 2.7]. In the install setup, select:
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
 
-## Azure Cloud Service-projektet létrehozása
+## Create an Azure Cloud Service project
 
-Hajtsa végre az alábbi feladatokat egy új Azure Cloud Service-projekt létrehozásához alapszintű Node.js szerkezettel:
+Perform the following tasks to create a new Azure Cloud Service project, along with basic Node.js scaffolding:
 
-1. Futtassa a **Windows PowerShell** eszközt rendszergazdaként: a **Start menüben** vagy a **Kezdőképernyőn** keressen a **Windows PowerShell** kifejezésre.
+1. Run **Windows PowerShell** as Administrator; from the **Start Menu** or **Start Screen**, search for **Windows PowerShell**.
 
-2. A [PowerShell összekapcsolása] az előfizetéssel.
+2. [Connect PowerShell] to your subscription.
 
-3. A projekt létrehozásához adja meg a következő PowerShell-parancsmagot:
+3. Enter the following PowerShell cmdlet to create to create the project:
 
         New-AzureServiceProject helloworld
 
-    ![A New-AzureService helloworld parancs eredménye][The result of the New-AzureService helloworld command]
+    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
-    A **New-AzureServiceProject** parancsmag létrehoz egy alapszintű struktúrát egy Node.js-alkalmazás közzétételéhez egy Cloud Service szolgáltatásban. Az Azure-ban való közzétételhez szükséges konfigurációs fájlokat tartalmaz. A parancsmag emellett a munkakönyvtárat a szolgáltatás könyvtárára módosítja.
+    The **New-AzureServiceProject** cmdlet generates a basic structure for publishing a Node.js application to a Cloud Service. It contains configuration files necessary for publishing to Azure. The cmdlet also changes your working directory to the directory for the service.
 
-    A parancsmag a következő fájlokat hozza létre:
+    The cmdlet creates the following files:
 
-    -   **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** és **ServiceDefinition.csdef**: az alkalmazás közzétételéhez szükséges Azure-specifikus fájlok. További információkért lásd: [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés].
+    -   **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** and **ServiceDefinition.csdef**: Azure-specific files necessary for publishing your application. For more information, see [Overview of Creating a Hosted Service for Azure].
 
-    -   **deploymentSettings.json**: Az Azure PowerShell telepítési parancsmagok által használt helyi beállításokat tárolja.
+    -   **deploymentSettings.json**: Stores local settings that are used by the Azure PowerShell deployment cmdlets.
 
-4.  Új webes szerepkör hozzáadásához adja meg az alábbi parancsot:
+4.  Enter the following command to add a new web role:
 
         Add-AzureNodeWebRole
 
-    ![Az Add-AzureNodeWebRole parancs kimenete][The output of the Add-AzureNodeWebRole command]
+    ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
-    Az **Add-AzureNodeWebRole** parancsmag létrehoz egy alapszintű Node.js-alkalmazást. Továbbá a **.csfg**- és **.csdef**-fájlok módosításával konfigurációs bejegyzéseket ad hozzá az új szerepkörhöz.
+    The **Add-AzureNodeWebRole** cmdlet creates a basic Node.js application. It also modifies the **.csfg** and **.csdef** files to add configuration entries for the new role.
 
-    > [AZURE.NOTE] Ha nem ad meg egy nevet a szerepkörhöz, alapértelmezett név lesz használva. Az első parancsmag paraméterként megadhat egy nevet: `Add-AzureNodeWebRole MyRole`
+    > [AZURE.NOTE] If you do not specify a role name, a default name is used. You can provide a name as the first cmdlet parameter: `Add-AzureNodeWebRole MyRole`
 
-A Node.js-alkalmazás a **server.js**-fájlban van meghatározva, amely a webes szerepkör könyvtárában található (alapértelmezés szerint **WebRole1**). A kód itt látható:
+The Node.js app is defined in the file **server.js**, located in the directory for the web role (**WebRole1** by default). Here is the code:
 
     var http = require('http');
     var port = process.env.port || 1337;
@@ -85,121 +86,121 @@ A Node.js-alkalmazás a **server.js**-fájlban van meghatározva, amely a webes 
         res.end('Hello World\n');
     }).listen(port);
 
-Ez a kód lényegében megegyezik a [nodejs.org] webhelyen található „Hello World” példával, azt leszámítva, hogy a felhőkörnyezet által hozzárendelt portszámot használja.
+This code is essentially the same as the "Hello World" sample on the [nodejs.org] website, except it uses the port number assigned by the cloud environment.
 
-## Az alkalmazás központi telepítése az Azure-ban
+## Deploy the application to Azure
 
     [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-### Az Azure közzétételi beállítások letöltése
+### Download the Azure publishing settings
 
-Az alkalmazás közzétételéhez az Azure-ban először le kell töltenie a közzétételi beállításokat az Azure-előfizetéséhez.
+To deploy your application to Azure, you must first download the publishing settings for your Azure subscription.
 
-1.  Futtassa a következő Azure PowerShell-parancsmagot:
+1.  Run the following Azure PowerShell cmdlet:
 
         Get-AzurePublishSettingsFile
 
-    Ezáltal a böngészője megnyitja a közzétételi beállítások letöltése oldalt. A rendszer arra kérheti, hogy jelentkezzen be egy Microsoft-fiókkal. Ebben az esetben használja az Azure-előfizetéséhez társított fiókot.
+    This will use your browser to navigate to the publish settings download page. You may be prompted to log in with a Microsoft Account. If so, use the account associated with your Azure subscription.
 
-    Mentse a letöltött profilt egy olyan fájlhelyre, amelyhez könnyen hozzáfér.
+    Save the downloaded profile to a file location you can easily access.
 
-2.  Futtassa a következő parancsmagot a letöltött közzétételi profil importálásához:
+2.  Run following cmdlet to import the publishing profile you downloaded:
 
         Import-AzurePublishSettingsFile [path to file]
 
 
-    > [AZURE.NOTE] A közzétételi beállítások importálása után érdemes törölni a letöltött .publishSettings-fájlt, ugyanis olyan információkat tartalmaz, amelyekkel mások hozzáférhetnek a fiókjához.
+    > [AZURE.NOTE] After importing the publish settings, consider deleting the downloaded .publishSettings file, because it contains information that could allow someone to access your account.
 
-### Az alkalmazás közzététele
+### Publish the application
 
-A közzétételhez futtassa a következő parancsokat:
+To publish, run the following commands:
 
     $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
     Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
-- A **-ServiceName** megadja a központi telepítés nevét. Ennek egyedi névnek kell lennie, máskülönben a közzétételi folyamat meghiúsul. A **Get-Date** parancs hozzátold egy dátum/idő karakterláncot, amely egyedivé teheti a nevet.
+- **-ServiceName** specifies the name for the deployment. This must be a unique name, otherwise the publish process will fail. The **Get-Date** command tacks on a date/time string that should make the name unique.
 
-- A **-Location** megadja az adatközpontot, amelyben az alkalmazás üzemel. Az elérhető adatközpontok listájáért használja a **Get-AzureLocation** parancsmagot.
+- **-Location** specifies the datacenter that the application will be hosted in. To see a list of available datacenters, use the **Get-AzureLocation** cmdlet.
 
-- A **-Launch** megnyit egy ablakot a böngészőben, majd az üzemeltetett szolgáltatásokra lép a telepítés befejezése után.
+- **-Launch** opens a browser window and navigates to the hosted service after deployment has completed.
 
-Miután a közzététel sikeresen megtörtént, a következőhöz hasonló válasz jelenik meg:
+After publishing succeeds, you will see a response similar to the following:
 
-![A Publish-AzureService parancs kimenete][The output of the Publish-AzureService command]
+![The output of the Publish-AzureService command][The output of the Publish-AzureService command]
 
 > [AZURE.NOTE]
-> Az első közzététel alkalmával több percet is igénybe vehet, mire az alkalmazás települ, és elérhetővé válik.
+> It can take several minutes for the application to deploy and become available when first published.
 
-A telepítés befejezése után megnyílik egy ablak a böngészőben, amely megjeleníti a felhőszolgáltatást.
+Once the deployment has completed, a browser window will open and navigate to the cloud service.
 
-![A „hello world” oldalt megjelenítő böngészőablak – az URL-cím azt jelzi, hogy az oldal az Azure-ban üzemel.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
+![A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
 
-Az alkalmazás most már az Azure-ban fut.
+Your application is now running on Azure.
 
-A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
+The **Publish-AzureServiceProject** cmdlet performs the following steps:
 
-1.  Létrehoz egy telepítendő csomagot. A csomag az alkalmazás mappájában lévő összes fájlt tartalmazza.
+1.  Creates a package to deploy. The package contains all the files in your application folder.
 
-2.  Létrehoz egy új **tárfiókot**, ha még nem létezik. Az Azure-tárfiók az alkalmazáscsomag tárolására szolgál a telepítés során. A telepítés befejezése után nyugodtan törölheti a tárfiókot.
+2.  Creates a new **storage account** if one does not exist. The Azure storage account is used to store the application package during deployment. You can safely delete the storage account after deployment is done.
 
-3.  Létrehoz egy új **felhőszolgáltatást**, ha még nem létezik. A **felhőszolgáltatás** az a tároló, amelyben az alkalmazás üzemel az Azure-ba való telepítéskor. További információkért lásd: [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés].
+3.  Creates a new **cloud service** if one does not already exist. A **cloud service** is the container in which your application is hosted when it is deployed to Azure. For more information, see [Overview of Creating a Hosted Service for Azure].
 
-4.  Közzéteszi a telepítési csomagot az Azure-ban.
+4.  Publishes the deployment package to Azure.
 
 
-## Az alkalmazás leállítása és törlése
+## Stopping and deleting your application
 
-Érdemes lehet letiltani az alkalmazást a telepítést követően a további költségek elkerülése érdekében. Az Azure a webesszerepkör-példányok esetében óránként számol fel díjat a felhasznált kiszolgálóidő után. A kiszolgálóidő felhasználása az alkalmazás üzembe helyezésétől kezdődik, még akkor is, ha a példányok nem futnak, és leállított állapotban vannak.
+After deploying your application, you may want to disable it so you can avoid extra costs. Azure bills web role instances per hour of server time consumed. Server time is consumed once your application is deployed, even if the instances are not running and are in the stopped state.
 
-1.  Állítsa le az előző szakaszban létrehozott szolgáltatástelepítést a Windows PowerShell-ablakban az alábbi parancsmag használatával:
+1.  In the Windows PowerShell window, stop the service deployment created in the previous section with the following cmdlet:
 
         Stop-AzureService
 
-    A szolgáltatás leállítása eltarthat néhány percig. Miután a szolgáltatás leállt, kap egy üzenetet, amely tájékoztatja a leállásról.
+    Stopping the service may take several minutes. When the service is stopped, you receive a message indicating that it has stopped.
 
-    ![A Stop-AzureService parancs állapota][The status of the Stop-AzureService command]
+    ![The status of the Stop-AzureService command][The status of the Stop-AzureService command]
 
-2.  A szolgáltatás törléséhez hívja meg a következő parancsot:
+2.  To delete the service, call the following cmdlet:
 
         Remove-AzureService
 
-    Ha a rendszer rákérdez, írja be az **Y** karaktert a szolgáltatás törléséhez.
+    When prompted, enter **Y** to delete the service.
 
-    A szolgáltatás törlése eltarthat néhány percig. Miután megtörtént a szolgáltatás törlése, kap egy üzenetet, amely tájékoztatást ad erről.
+    Deleting the service may take several minutes. After the service has been deleted you receive a message indicating that the service was deleted.
 
-    ![A Remove-AzureService parancs állapota][The status of the Remove-AzureService command]
+    ![The status of the Remove-AzureService command][The status of the Remove-AzureService command]
 
-    > [AZURE.NOTE] A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. További információk a tárfiók törlésével kapcsolatban: [Tárfiók törlése az Azure-előfizetésből].
+    > [AZURE.NOTE] Deleting the service does not delete the storage account that was created when the service was initially published, and you will continue to be billed for storage used. For more information on deleting a storage account, see [How to Delete a Storage Account from an Azure Subscription].
 
-## Következő lépések
+## Next steps
 
-További információk: [Node.js fejlesztői központ].
+For more information, see the [Node.js Developer Center].
 
 <!-- URL List -->
 
-[Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[egyszerűsített webalkalmazás használatát]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
-[Azure PowerShell]: ../powershell-install-configure.md
+[Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service-web/choose-web-site-cloud-service-vm.md
+[using a lightweight web app]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
+[Azure Powershell]: ../powershell-install-configure.md
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[PowerShell összekapcsolása]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
+[Connect PowerShell]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
 [nodejs.org]: http://nodejs.org/
-[Tárfiók törlése az Azure-előfizetésből]: ../storage/how-to-manage-a-storage-account.md
-[Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés]: https://azure.microsoft.com/documentation/services/cloud-services/
-[Node.js fejlesztői központ]: https://azure.microsoft.com/develop/nodejs/
+[How to Delete a Storage Account from an Azure Subscription]: ../storage/how-to-manage-a-storage-account.md
+[Overview of Creating a Hosted Service for Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
+[Node.js Developer Center]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
 
-[A New-AzureService helloworld parancs eredménye]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
-[Az Add-AzureNodeWebRole parancs kimenete]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
-[A webböngészőben megjelenő „Hello World” weboldal]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
-[A Publish-AzureService parancs kimenete]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
-[A Publish-AzureService parancsfájl teljes állapotkimenete]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
-[A „hello world” oldalt megjelenítő böngészőablak – az URL-cím azt jelzi, hogy az oldal az Azure-ban üzemel.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
-[A Stop-AzureService parancs állapota]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
-[A Remove-AzureService parancs állapota]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+[The result of the New-AzureService helloworld command]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
+[The output of the Add-AzureNodeWebRole command]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
+[A web browser displaying the Hello World web page]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
+[The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
+[The full status output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
+[A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
+[The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
+[The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

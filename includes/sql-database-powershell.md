@@ -1,17 +1,17 @@
 
-## Indítsa el a PowerShell-munkamenetet
+## Start your PowerShell session
 
-Ehhez telepíteni és futtatni kell az [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) legújabb verzióját. Részletes információk: [How to install and configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
-
-
->[AZURE.NOTE] Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../articles/resource-group-overview.md) támogatott, így a példák a Resource Manager [Azure SQL Database PowerShell parancsmagjait](https://msdn.microsoft.com/library/azure/mt574084.aspx) veszik alapul. Az létező klasszikus telepítési modell [Azure SQL Database (classic) parancsmagjai](https://msdn.microsoft.com/library/azure/dn546723.aspx) visszafelé kompatibilisen támogatottak, de a Resource Manager parancsmagjainak használata ajánlott.
+First, you need to have the latest [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) installed and running. For detailed information, see [How to install and configure Azure PowerShell](../articles/powershell-install-configure.md).
 
 
-Futtassa az [**Add-AzureRmAccount**](https://msdn.microsoft.com/library/mt619267.aspx) parancsmagot – ekkor megjelenik egy bejelentkezési képernyő, amely a hitelesítő adatainak megadását kéri. Használja a hitelesítő adatokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
+>[AZURE.NOTE] Many new features of SQL Database are only supported when you are using the [Azure Resource Manager deployment model](../articles/resource-group-overview.md), so examples use the [Azure SQL Database PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) for Resource Manager. The existing classic deployment model [Azure SQL Database (classic) cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) are supported for backward compatibility, but we recommend you use the Resource Manager cmdlets.
+
+
+Run the [**Add-AzureRmAccount**](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet, and you will be presented with a sign-in screen to enter your credentials. Use the same credentials that you use to sign in to the Azure portal.
 
     Add-AzureRmAccount
 
-Ha több előfizetéssel rendelkezik, használja a [**Set-AzureRmContext**](https://msdn.microsoft.com/library/mt619263.aspx) parancsmagot, amellyel kiválaszthatja, hogy melyik előfizetéssel használja a PowerShell-munkamenetet. Ahhoz, hogy megtudja, melyik előfizetést használja a jelenlegi PowerShell-munkamenet, futtassa a [**Get-AzureRmContext**](https://msdn.microsoft.com/library/mt619265.aspx) parancsmagot. Az összes előfizetés megtekintéséhez futtassa a [**Get-AzureRmSubscription**](https://msdn.microsoft.com/library/mt619284.aspx) parancsmagot.
+If you have multiple subscriptions, use the [**Set-AzureRmContext**](https://msdn.microsoft.com/library/mt619263.aspx) cmdlet to select which subscription your PowerShell session should use. To see what subscription the current PowerShell session is using, run [**Get-AzureRmContext**](https://msdn.microsoft.com/library/mt619265.aspx). To see all your subscriptions, run [**Get-AzureRmSubscription**](https://msdn.microsoft.com/library/mt619284.aspx).
 
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 

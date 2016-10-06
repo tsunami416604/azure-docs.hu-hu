@@ -1,19 +1,19 @@
-Az Azure határozza meg, hogy a Python melyik verzióját kell használni a virtuális környezethez, a következő prioritásokkal:
+Azure will determine the version of Python to use for its virtual environment with the following priority:
 
-1. a gyökérmappa runtime.txt fájljában megadott verzió
-1. a Python-beállítás által a webalkalmazás-konfigurációban megadott verzió (a webalkalmazása **Settings**(Beállítások)  > **App Settings** (Alkalmazásbeállítások) paneljén, az Azure Portalon)
-1. ha a fentiek egyike sincs megadva, a Python-2.7 az alapértelmezett verzió
+1. version specified in runtime.txt in the root folder
+1. version specified by Python setting in the web app configuration (the **Settings** > **Application Settings** blade for your web app in the Azure Portal)
+1. python-2.7 is the default if none of the above are specified
 
-Érvényes értékek a 
+Valid values for the contents of 
 
     \runtime.txt
 
-tartalmához:
+are:
 
 - python-2.7
 - python-3.4
 
-A megadott mikroverziót (harmadik számjegy) a rendszer figyelmen kívül hagyja.
+If the micro version (third digit) is specified, it is ignored.
 
 
 <!--HONumber=Sep16_HO4-->

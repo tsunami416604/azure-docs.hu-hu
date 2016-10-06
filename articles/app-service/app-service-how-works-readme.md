@@ -28,6 +28,7 @@ Az App Service a következő lehetőségeket kínálja a fejlesztőknek:
 * API-k létrehozása, telepítése és közzététele az API Apps szolgáltatással.
 * Üzleti alkalmazások összekapcsolása munkafolyamatokban és az adatok átalakítása a Logic Apps segítségével.
 
+
 Mindegyik alkalmazástípus alapja a méretezhető és rugalmas webalkalmazásplatform, amely a fejlesztők számára a tervezésétől kezdve a karbantartásáig optimizált, teljes körű életciklus-kezelést biztosít. Az életciklus-képességek az alábbiakat teszik lehetővé:
 
 * Alkalmazások gyors létrehozása – kezdje teljesen az elejéről, vagy válasszon OSS-csomagot az Azure Piactérről. 

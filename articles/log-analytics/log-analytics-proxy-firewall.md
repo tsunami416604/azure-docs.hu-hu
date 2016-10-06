@@ -182,7 +182,7 @@ Ha megoldásokat adott hozzá az OMS rendszerhez, megtekintheti őket az Operati
 
 ## Következő lépések
 
-- [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) funkciók hozzáadásához és adatgyűjtéshez.
+- A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 - A [naplókeresések](log-analytics-log-searches.md) megismerése a megoldások által összegyűjtött részletes információk megtekintéséhez.
 
 

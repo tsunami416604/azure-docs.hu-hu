@@ -1,13 +1,13 @@
 
-Az alábbiakban az elkészült alkalmazás képernyőképei láthatók:
+The following are screen captures from the completed app:
 
 ![](./media/mobile-services-windows-universal-get-started/mobile-quickstart-completed.png)
-<br/>Windows Áruházbeli alkalmazás
+<br/>Windows Store app
 
 ![](./media/mobile-services-windows-universal-get-started/mobile-quickstart-completed-wp8.png)
-<br/>Windows Phone Áruházbeli alkalmazás
+<br/>Windows Phone Store app
 
-Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows Áruházbeli és Windows Phone Áruházbeli alkalmazásokkal kapcsolatos Mobile Services-oktatóanyag elvégzéséhez. 
+Completing this tutorial is a prerequisite for all other Mobile Services tutorials for Windows Store and Windows Phone Store apps. 
 
 <!--HONumber=Sep16_HO4-->
 

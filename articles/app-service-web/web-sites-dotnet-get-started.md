@@ -1,6 +1,6 @@
 <properties
-    pageTitle="ASP.NET alkalmazás telepítése az Azure App Service szolgáltatásba a Visual Studio használatával | Microsoft Azure"
-    description="ASP.NET webes projekt telepítése új webalkalmazásba az Azure App Service szolgáltatásban a Visual Studio használatával."
+    pageTitle="Deploy an ASP.NET app to Azure App Service using Visual Studio | Microsoft Azure"
+    description="Learn how to deploy an ASP.NET web project to a new web app in Azure App Service, using Visual Studio."
     services="app-service\web"
     documentationCenter=".net"
     authors="tdykstra"
@@ -16,235 +16,236 @@
     ms.date="07/22/2016"
     ms.author="rachelap"/>
 
-# ASP.NET webalkalmazás telepítése az Azure App Service szolgáltatásba a Visual Studio használatával
+
+# Deploy an ASP.NET web app to Azure App Service, using Visual Studio
 
 [AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-## Áttekintés
+## Overview
 
-Ez az oktatóanyag bemutatja, hogyan telepíthető ASP.NET webalkalmazás az [Azure App Service szolgáltatásban lévő webalkalmazásba](app-service-web-overview.md) a Visual Studio 2015 használatával.
+This tutorial shows how to deploy an ASP.NET web application to a [web app in Azure App Service](app-service-web-overview.md) by using Visual Studio 2015.
 
-Az oktatóanyag azt feltételezi, hogy Ön egy ASP.NET fejlesztő, akinek nincs előzetes tapasztalata az Azure használatával. Az oktatóanyag végrehajtásával egy egyszerű, működő webalkalmazása lesz a felhőben.
+The tutorial assumes that you are an ASP.NET developer who has no previous experience with using Azure. When you're finished, you'll have a simple web application up and running in the cloud.
 
-Az oktatóanyagból a következőket sajátíthatja el:
+You'll learn:
 
-* Új App Service webalkalmazás létrehozása a Visual Studio programban új webes projekt létrehozása során.
-* Webes projekt telepítése egy App Service webalkalmazásba a Visual Studio használatával.
+* How to create a new App Service web app while you create a new web project in Visual Studio.
+* How to deploy a web project to an App Service web app by using Visual Studio.
 
-Az ábra az oktatóanyag lépéseit mutatja be.
+The diagram illustrates what you do in the tutorial.
 
-![A Visual Studio létrehozási és telepítési ábrája](./media/web-sites-dotnet-get-started/Create_App.png)
+![Visual Studio create and deploy diagram](./media/web-sites-dotnet-get-started/Create_App.png)
 
-Az oktatóanyag végén a [Hibaelhárítás](#troubleshooting) szakaszban találhat javaslatokat azzal kapcsolatban, hogy mi a teendő, ha valami nem működik, a [További lépések](#next-steps) szakaszban pedig más oktatóanyagokra mutató hivatkozásokat találhat, amelyek részletesen bemutatják az Azure App Service használatát.
+At the end of the tutorial, a [Troubleshooting](#troubleshooting) section gives ideas on what to do if something doesn't work, and a [Next steps](#next-steps) section provides links to other tutorials that go into more depth about how to use Azure App Service.
 
-Mivel ez egy első lépéseket ismertető oktatóanyag, a bemutatott telepítendő webes projekt egyszerű – nem használ adatbázist és nem végez hitelesítést vagy engedélyezést. Összetettebb telepítési témakörökre mutató hivatkozásokat itt találhat: [How to deploy an Azure web app](web-sites-deploy.md) (Azure webalkalmazás telepítése).
+As this is a getting-started tutorial, the web project it shows how to deploy is a simple one that doesn't use a database and doesn't do authentication or authorization. For links to more advanced deployment topics, see [How to deploy an Azure web app](web-sites-deploy.md).
 
-Az Azure SDK for .NET telepítéséhez szükséges időn kívül az oktatóanyag elvégzése kb. 10–15 percet vesz igénybe.
+Apart from the time required to install the Azure SDK for .NET, this tutorial will take about 10-15 minutes to complete.
 
-## Előfeltételek
+## Prerequisites
 
-* Az oktatóanyag azt feltételezi, hogy Ön már használta az ASP.NET MVC-t és a Visual Studiót. A bevezetésért lásd: [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) (ASP.NET MVC 5 – Első lépések).
+* The tutorial assumes you have worked with ASP.NET MVC and Visual Studio. If you need an introduction, see [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started).
 
-* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* You need an Azure account. You can [open a free Azure account](/pricing/free-trial/?WT.mc_id=A261C142F) or [Activate Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
 
-    Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. ahol létrehozhat egy rövid élettartamú alapszintű alkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár semmilyen kötelezettséggel.
+    If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751). There you can create a short-lived starter app in App Service — no credit card required, and no commitments.
 
-## <a name="setupdevenv"></a>A fejlesztési környezet beállítása
+## <a name="setupdevenv"></a>Set up the development environment
 
-Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../dotnet-sdk.md) 2.9-es vagy újabb verziójához készült. 
+The tutorial is written for Visual Studio 2015 with the [Azure SDK for .NET](../dotnet-sdk.md) 2.9 or later. 
 
-* [Töltse le a legfrissebb Azure SDK-t a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a Visual Studio 2015 még nincs telepítve, az SDK telepíti azt.
+* [Download the latest Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). The SDK installs Visual Studio 2015 if you don't already have it.
 
-    >[AZURE.NOTE] Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
+    >[AZURE.NOTE] Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
 
-Ha a számítógépén a Visual Studio 2013 van telepítve, és inkább ezt szeretné használni, [töltse le a legfrissebb Azure SDK-t a Visual Studio 2013-hoz](http://go.microsoft.com/fwlink/?LinkID=324322). Egyes képernyők eltérhetnek az ábrákon láthatótól.
+If you have Visual Studio 2013 and prefer to use that, you can [download the latest Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322). Some screens may look different from the illustrations.
 
-## Új webes projekt konfigurálása
+## Configure a new web project
 
-A következő lépés egy webes projekt létrehozása a Visual Studióban, valamint egy webalkalmazás létrehozása az Azure App Service-ben. Az oktatóanyag ezek szakaszában konfigurálja az új webes projektet. 
+Your next step is to create a web project in Visual Studio and a web app in Azure App Service. In this section of the tutorial you configure the new web project. 
 
-1. Nyissa meg a Visual Studio 2015-öt.
+1. Open Visual Studio 2015.
 
-2. Kattintson a **File > New > Project** (Fájl > Új > Projekt) elemre.
+2. Click **File > New > Project**.
 
-3. A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# > Web > ASP.NET Web Application** (ASP.NET webalkalmazás) elemet.
+3. In the **New Project** dialog box, click **Visual C# > Web > ASP.NET Web Application**.
 
-3. Győződjön meg arról, hogy a **.NET Framework 4.5.2** (.NET-keretrendszer 4.5.2) van kiválasztva célkeretrendszerként.
+3. Make sure that **.NET Framework 4.5.2** is selected as the target framework.
 
-4.  Az [Azure Application Insights](../application-insights/app-insights-overview.md) figyeli a webalkalmazása rendelkezésre állását, teljesítményét és használatát. Az **Add Application Insights to Project** (Az Application Insights hozzáadása a projekthez) jelölőnégyzet automatikusan be van jelölve, amikor először hoz létre webes projektet a Visual Studio telepítése után. Ha a jelölőnégyzet be van jelölve, de nem szeretné kipróbálni az Application Insights programot, törölje a jelölést.
+4.  [Azure Application Insights](../application-insights/app-insights-overview.md) monitors your web app for availability, performance, and usage. The **Add Application Insights to Project** check box is selected by default the first time you create a web project after installing Visual Studio. Clear the check box if it's selected but you don't want to try Application Insights.
 
-4. Nevezze el az alkalmazást **MyExample** néven, majd kattintson az **OK** gombra.
+4. Name the application **MyExample**, and then click **OK**.
 
-    ![A New Project (Új projekt) párbeszédpanel](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
+    ![New Project dialog box](./media/web-sites-dotnet-get-started/GS13newprojdb.png)
 
-5. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanelban válassza az **MVC** sablont, majd kattintson a **Change Authentication** (Hitelesítés módosítása) lehetőségre.
+5. In the **New ASP.NET Project** dialog box, select the **MVC** template, and then click **Change Authentication**.
 
-    Ebben az oktatóanyagban egy ASP.NET MVC webes projektet telepít. Ha ASP.NET webes API-projektek telepítését szeretné elsajátítani, tekintse meg a [További lépések](#next-steps) szakaszt. 
+    For this tutorial, you deploy an ASP.NET MVC web project. If you want to learn how to deploy an ASP.NET Web API project, see the [Next steps](#next-steps) section. 
 
-    ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](./media/web-sites-dotnet-get-started/GS13changeauth.png)
+    ![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started/GS13changeauth.png)
 
-6. A **Change Authentication** (Hitelesítés módosítása) párbeszédpanelen kattintson a **No Authentication** (Nincs hitelesítés) elemre, majd az **OK** gombra.
+6. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**.
 
-    ![Nincs hitelesítés](./media/web-sites-dotnet-get-started/GS13noauth.png)
+    ![No Authentication](./media/web-sites-dotnet-get-started/GS13noauth.png)
 
-    Ebben az első lépéseket ismertető oktatóanyagban egy egyszerű alkalmazást telepít, amely nem használ felhasználói bejelentkezést.
+    For this getting-started tutorial you're deploying a simple app that doesn't do user log-in.
 
-5. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel **Microsoft Azure** szakaszában győződjön meg arról hogy a **Host in the cloud** (Üzemeltetés a felhőben) lehetőség be van jelölve, és a legördülő listából ki van választva az **App Service** lehetőség.
+5. In the **Microsoft Azure** section of the **New ASP.NET Project** dialog box, make sure that **Host in the cloud** is selected and that **App Service** is selected in the drop-down list.
 
-    ![A New ASP.NET Project (Új ASP.NET-projekt) párbeszédpanel](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
+    ![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
 
-    Ezek a beállítások utasítják a Visual Studiót egy Azure webalkalmazás létrehozására a webes projekthez.
+    These settings direct Visual Studio to create an Azure web app for your web project.
 
-6. Kattintson az **OK** gombra
+6. Click **OK**
 
-## Azure-erőforrások konfigurálása az új webalkalmazáshoz
+## Configure Azure resources for a new web app
 
-Most pedig utasítani fogja a Visual Studiót a kívánt Azure-erőforrások létrehozására.
+Now you tell Visual Studio about the Azure resources that you want it to create.
 
-5. A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-ba az Azure-előfizetése kezeléséhez használt fiók azonosítójával és jelszavával.
+5. In the **Create App Service** dialog, click **Add an account**, and then sign in to Azure with the ID and password of the account that you use to manage your Azure subscription.
 
-    ![Bejelentkezés az Azure-ba](./media/web-sites-dotnet-get-started/configuresitesettings.png)
+    ![Sign in to Azure](./media/web-sites-dotnet-get-started/configuresitesettings.png)
 
-    Ha már bejelentkezett korábban ugyanezen a számítógépen, előfordulhat, hogy nem jelenik meg az **Add an account** (Fiók hozzáadása) gomb. Ebben az esetben kihagyhatja ezt a lépést, vagy előfordulhat, hogy újra meg kell adnia a hitelesítő adatait.
+    If you already signed in earlier on the same computer, you might not see the **Add an account** button. In that case, you can skip this step or you might need to reenter your credentials.
  
-3. Adjon meg egy **webalkalmazás-nevet**, amely egyedi az *azurewebsites.net* tartományban. Adhatja például a webalkalmazásnak a MyExample nevet számjegyekkel, hogy egyedi legyen, például: MyExample810. Ha a rendszer létrehoz egy alapértelmezett webes nevet, az egyedi lesz, így használhatja.
+3. Enter a **Web App Name** that is unique in the *azurewebsites.net* domain. For example, you can name it MyExample with numbers to the right to make it unique, such as MyExample810. If a default web name is created for you, it will be unique and you can use that.
 
-    Ha valaki már használta az Ön által megadott nevet, a zöld pipa helyett egy piros felkiáltójel jelenik meg a jobb oldalon. Ekkor meg kell adnia egy másik nevet.
+    If someone else has already used the name that you enter, you see a red exclamation mark to the right instead of a green check mark, and you have to enter a different name.
 
-    Az alkalmazás URL-címe a megadott név lesz a *.azurewebsites.net* utótaggal. Ha például a név `MyExample810`, az URL-cím `myexample810.azurewebsites.net`.
+    The URL for your application is this name plus *.azurewebsites.net*. For example, if the name is `MyExample810`, the URL is `myexample810.azurewebsites.net`.
 
-    Az Azure-webalkalmazásokhoz egyéni tartományt is használtat. További információk: [Configure a custom domain name in Azure App Service](web-sites-custom-domain-name.md) (Egyéni tartománynév beállítása az Azure App Service-ben).
+    You can also use a custom domain with an Azure web app. For more information, see [Configure a custom domain name in Azure App Service](web-sites-custom-domain-name.md).
 
-6. Kattintson a **New** (Új) gombra a **Resource Group** (Erőforráscsoport) mező mellett, majd írja be a „MyExample” nevet, vagy egy másik kívánt nevet. 
+6. Click the **New** button next to the **Resource Group** box, and then enter "MyExample" or another name if you prefer. 
 
-    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/web-sites-dotnet-get-started/rgcreate.png)
+    ![Create App Service dialog](./media/web-sites-dotnet-get-started/rgcreate.png)
 
-    Az erőforráscsoport olyan Azure-erőforrások gyűjteménye, mint a webalkalmazások, adatbázisok és virtuális gépek. Az oktatóanyagok esetén a legjobb megoldás új erőforráscsoport létrehozása, mert így egyszerűbb az oktatóanyag végrehajtása során létrehozott Azure-erőforrások eltávolítása egy lépésben. További információk: [Azure Resource Manager overview](../resource-group-overview.md) (Az Azure Resource Manager áttekintése).
+    A resource group is a collection of Azure resources such as web apps, databases, and VMs. For a tutorial, it's generally best to create a new resource group because that makes it easy to delete in one step any Azure resources that you create for the tutorial. For more information, see [Azure Resource Manager overview](../resource-group-overview.md).
 
-4. Kattintson a **New** (Új) gombra az **App Service Plan** (App Service-csomag) legördülő menü mellett.
+4. Click the **New** button next to the **App Service Plan** drop-down.
 
-    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/web-sites-dotnet-get-started/createasplan.png)
+    ![Create App Service dialog](./media/web-sites-dotnet-get-started/createasplan.png)
 
-    Megjelenik a **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszédpanel.
+    The **Configure App Service Plan** dialog appears.
 
-    ![A Configure App Service (App Service konfigurálása) párbeszédpanel](./media/web-sites-dotnet-get-started/configasp.png)
+    ![Configure App Service dialog](./media/web-sites-dotnet-get-started/configasp.png)
 
-    A következő lépésekben konfigurál egy App Service-csomagot az új erőforráscsoporthoz. Az App Service-csomag azokat a számítási erőforrásokat határozza meg, amelyeken a webalkalmazás fut. Ha például az ingyenes szintet választja, az API-alkalmazása megosztott virtuális gépeken fut, míg egyes fizetett szinteken dedikált virtuális gépeken. További információk: [App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) (Az App Service-csomagok áttekintése).
+    In the following steps, you configure an App Service plan for the new resource group. An App Service plan specifies the compute resources that your web app runs on. For example, if you choose the free tier, your API app runs on shared VMs, while for some paid tiers it runs on dedicated VMs. For more information, see [App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-5. A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszédablakban adja meg a „MyExamplePlan” nevet vagy egy másik kívánt nevet.
+5. In the **Configure App Service Plan** dialog, enter "MyExamplePlan" or another name if you prefer.
 
-5. A **Location** (Hely) legördülő menüben válassza ki az Önhöz legközelebbi helyet.
+5. In the **Location** drop-down list, choose the location that is closest to you.
 
-    Ez a beállítás azt határozza meg, hogy melyik Azure-adatközpontban fog futni az alkalmazás. Ebben az oktatóanyagban nincs különbség bármelyik régiót is választja. Azonban éles alkalmazások esetén az azt elérő ügyfelekhez lehető legközelebbi kiszolgálót célszerű választani a [késés](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090) minimalizálása érdekében.
+    This setting specifies which Azure datacenter your app will run in. For this tutorial, you can select any region and it won't make a noticeable difference. But for a production app, you want your server to be as close as possible to the clients that are accessing it, to minimize [latency](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090).
 
-5. A **Size** (Méret) legördülő menüben kattintson a **Free** (Ingyenes) elemre.
+5. In the **Size** drop-down, click **Free**.
 
-    Ehhez az oktatóanyaghoz az ingyenes tarifacsomag elegendő teljesítményt biztosít.
+    For this tutorial, The free pricing tier will provide good enough performance.
 
-6. A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszédpanelen kattintson az **OK** gombra.
+6. In the **Configure App Service Plan** dialog, click **OK**.
 
-7. A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson a **Create** (Létrehozás) gombra.
+7. In the **Create App Service** dialog box, click **Create**.
 
-## A Visual Studio létrehozza a projektet és a webalkalmazást
+## Visual Studio creates the project and web app
 
-A Visual Studio rövid időn belül – általában kevesebb mint egy percen belül – létrehozza a webes projektet és a webalkalmazást.  
+In a short time, usually less than a minute, Visual Studio creates the web project and the web app.  
 
-A **Megoldáskezelő** ablakban megtekinthetők az új projekt fájljai és mappái.
+The **Solution Explorer** window shows the files and folders in the new project.
 
-![Megoldáskezelő](./media/web-sites-dotnet-get-started/solutionexplorer.png)
+![Solution Explorer](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-Az **Azure App Service Activity** (Azure App Service-tevékenység) ablak mutatja, hogy a webalkalmazás létrejött.
+The **Azure App Service Activity** window shows that the web app has been created.
 
-![A létrehozott webalkalmazás az Azure App Service Activity (Azure App Service-tevékenység) ablakban](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
+![Web app created in Azure App Service Activity window](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
-A **Cloud Explorer** (Felhőkezelő) ablakban megtekintheti és kezelheti az Azure-erőforrásokat, beleértve a most létrehozott új webalkalmazást.
+The **Cloud Explorer** window lets you view and manage Azure resources, including the new web app that you just created.
 
-![A létrehozott webalkalmazás a Cloud Explorer (Felhőkezelő) ablakban](./media/web-sites-dotnet-get-started/siteinse.png)
+![Web app created in Cloud Explorer](./media/web-sites-dotnet-get-started/siteinse.png)
     
-## A webes projekt telepítése az Azure-webalkalmazásban
+## Deploy the web project to the Azure web app
 
-Ebben a részben telepíti a webes projektet a webalkalmazásban.
+In this section, you deploy the web project to the web app.
 
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
+1. In **Solution Explorer**, right-click the project, and choose **Publish**.
 
-    ![A Visual Studio menüjében válassza a Publish (Közzététel) lehetőséget](./media/web-sites-dotnet-get-started/choosepublish.png)
+    ![Choose Publish in Visual Studio menu](./media/web-sites-dotnet-get-started/choosepublish.png)
 
-    Néhány másodpercen belül megjelenik a **Publish Web** (Webes közzététel) varázsló. A varázsló egy *közzétételi profillal* nyílik meg, amelyben beállítások szerepelnek a webes projekt telepítéséhez az új webalkalmazásban.
+    In a few seconds, the **Publish Web** wizard appears. The wizard opens to a *publish profile* that has settings for deploying the web project to the new web app.
 
-    A közzétételi profil része a telepítéshez szükséges felhasználónév és jelszó.  Ezeket a hitelesítő adatokat a rendszer hozta létre, és nem kell őket megadnia. A jelszó egy rejtett, felhasználóspecifikus fájlban van titkosítva, amely a `Properties\PublishProfiles` mappában található.
+    The publish profile includes a user name and password for deployment.  These credentials have been generated for you, and you don't have to enter them. The password is encrypted in a hidden user-specific file in the `Properties\PublishProfiles` folder.
  
-8. A **Publish Web** (Webes közzététel) varázsló **Connection** (Kapcsolat) lapján kattintson a **Next** (Tovább) gombra.
+8. On the **Connection** tab of the **Publish Web** wizard, click **Next**.
 
-    ![Kattintson a Next (Tovább) gombra a Publish Web (Webes közzététel) varázsló Connection (Kapcsolat) lapján](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
+    ![Click Next on Connection tab of Publish Web wizard](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
 
-    A következő a **Settings** (Beállítások) lap. Itt módosíthatja a build konfigurációját úgy, hogy hibakeresési buildet telepítsen a [távoli hibakereséshez](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug). Ezen a lapon több[fájlközzétételi beállítás](https://msdn.microsoft.com/library/dd465337.aspx#Anchor_2) is elérhető.
+    Next is the **Settings** tab. Here you can change the build configuration to deploy a debug build for [remote debugging](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug). The tab also offers several [File Publish Options](https://msdn.microsoft.com/library/dd465337.aspx#Anchor_2).
 
-10. A **Settings** (Beállítások) lapon kattintson a **Next** (Tovább) gombra.
+10. On the **Settings** tab, click **Next**.
 
-    ![A Publish Web (Webes közzététel) varázsló Settings (Beállítások) lapja](./media/web-sites-dotnet-get-started/GS13SettingsTab.png)
+    ![Settings tab of Publish Web wizard](./media/web-sites-dotnet-get-started/GS13SettingsTab.png)
 
-    A következő a **Preview** (Előnézet) lap. Itt megtekintheti, melyik fájlok lesznek a projektből az API-alkalmazásba másolva. Amikor telepít egy projektet egy API-alkalmazásban, amelyen már korábban telepítést végzett, csak a módosított fájlok lesznek másolva. A másolandó elemek listájának megjelenítéséhez kattintson a **Start Preview** (Előnézet indítása) gombra.
+    The **Preview** tab is next. Here you have an opportunity to see what files are going to be copied from your project to the API app. When you're deploying a project to an API app that you already deployed to earlier, only changed files are copied. If you want to see a list of what will be copied, you can click the **Start Preview** button.
 
-11. A **Preview** (Előnézet) lapon kattintson a **Publish** (Közzététel) lehetőségre.
+11. On the **Preview** tab, click **Publish**.
 
-    ![A Publish Web (Webes közzététel) varázsló Preview (Előnézet) lapja](./media/web-sites-dotnet-get-started/GS13previewoutput.png)
+    ![Preview tab of Publish Web wizard](./media/web-sites-dotnet-get-started/GS13previewoutput.png)
 
-    Amikor a **Publish** (Közzététel) gombra kattint, a Visual Studio megkezdi a fájlok másolását az Azure-kiszolgálóra. Ez egy-két percet vesz igénybe.
+    When you click **Publish**, Visual Studio begins the process of copying the files to the Azure server. This may take a minute or two.
 
-    Az **Output** (Kimenet) és az **Azure App Service Activity** (Azure App Service-tevékenység) ablakban megtekinthető, milyen telepítési műveletek lettek elvégezve, és itt jelenik meg a sikeres telepítésről szóló jelentés is.
+    The **Output** and **Azure App Service Activity** windows show what deployment actions were taken and report successful completion of the deployment.
 
-    ![A Visual Studio Output (Kimenet) ablaka a sikeres telepítést jelzi](./media/web-sites-dotnet-get-started/PublishOutput.png)
+    ![Visual Studio Output window reporting successful deployment](./media/web-sites-dotnet-get-started/PublishOutput.png)
 
-    A sikeres telepítés után az alapértelmezett böngésző automatikusan megnyitja a telepített webalkalmazás URL-címét, és a létrehozott alkalmazás innentől kezdve fut a felhőben. A böngésző címsorában megjelenő URL-cím mutatja, hogy a webalkalmazás be lett töltve az internetről.
+    Upon successful deployment, the default browser automatically opens to the URL of the deployed web app, and the application that you created is now running in the cloud. The URL in the browser address bar shows that the web app is loaded from the Internet.
 
-    ![Az Azure-ban futó webalkalmazás](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
+    ![Web app running in Azure](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
 
-    > [AZURE.TIP] A gyors telepítéshez engedélyezheti a **Web One Click Publish** (Egykattintásos webes közzététel) eszköztárat. Kattintson a **View (Nézet) > Toolbars (Eszköztárak)** elemre, majd válassza a **Web One Click Publish** (Egykattintásos webes közzététel) lehetőséget. Az eszköztárban kiválaszthat egy profilt, és egy gombra kattintva elvégezheti a közzétételt, vagy egy másikra kattintva megnyithatja a **Publish Web** (Webes közzététel) varázslót.
-    > ![A Web One Click Publish (Egykattintásos webes közzététel) eszköztár](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
+    > [AZURE.TIP] You can enable the **Web One Click Publish** toolbar for quick deployment. Click **View > Toolbars**, and then select **Web One Click Publish**. You can use the toolbar to select a profile, click a button to publish, or click a button to open the **Publish Web** wizard.
+    > ![Web One Click Publish Toolbar](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
 
-## Hibaelhárítás
+## Troubleshooting
 
-Ha problémába ütközik az oktatóanyag lépéseinek követése közben, győződjön meg arról, hogy az Azure SDK for .NET legújabb verzióját használja. Ennek legegyszerűbb módja [az Azure SDK letöltése a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a legfrissebb verzió van telepítve, a Webplatform-telepítő értesíti Önt arról, hogy nincs szükség a telepítésre.
+If you run into a problem as you go through this tutorial, make sure that you're using the latest version of the Azure SDK for .NET. The easiest way to do that is to [download the Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). If you have the current version installed, the Web Platform Installer lets you know that no installation is needed.
 
-Ha vállalati hálózaton dolgozik, és tűzfalon keresztül szeretne az Azure App Service-re telepíteni, győződjön meg arról, hogy a 443-as és a 8172-es port nyitva van a webes telepítéshez. Ha nem tudja kinyitni ezeket a portokat, tekintse át a következő További lépések szakaszt az egyéb telepítési lehetőségekért.
+If you're on a corporate network and are trying to deploy to Azure App Service through a firewall, make sure that ports 443 and 8172 are open for Web Deploy. If you can't open those ports, see the following Next steps section for other deployment options.
 
-Most, hogy sikeresen telepítette ASP.NET webalkalmazását az Azure App Service-ben, további információkat tudhat meg a Visual Studio hibaelhárítást megkönnyítő funkcióiról. A naplózással, a távoli hibakereséssel és egyebekkel kapcsolatos információkért lásd: [Troubleshooting Azure web apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md) (Azure-webalkalmazások hibaelhárítása a Visual Studióban).
+After you have your ASP.NET web app running in Azure App Service, you might want to learn more about Visual Studio features that simplify troubleshooting. For information about logging, remote debugging, and more, see  [Troubleshooting Azure web apps in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
-## Következő lépések
+## Next steps
 
-Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű webalkalmazást és telepíteni azt egy Azure-webalkalmazásban. Íme, néhány kapcsolódó témakör és forrás, amely az Azure App Service-szel kapcsolatos további tudnivalókat biztosít:
+In this tutorial, you've seen how to create a simple web application and deploy it to an Azure web app. Here are some related topics and resources for learning more about Azure App Service:
 
-* Megfigyelheti és kezelheti webalkalmazását az [Azure portálon](https://portal.azure.com/). 
+* Monitor and manage your web app in the [Azure portal](https://portal.azure.com/). 
 
-    További információk: [Az Azure portál áttekintése](/services/management-portal/) és [Configure web apps in Azure App Service](web-sites-configure.md) (Webalkalmazások konfigurálása az Azure App Service szolgáltatásban).
+    For more information, see [an overview of the Azure portal](/services/management-portal/) and [Configure web apps in Azure App Service](web-sites-configure.md).
 
-* Meglévő webes projektet telepíthet egy új webalkalmazásba a Visual Studio használatával
+* Deploy an existing web project to a new web app, using Visual Studio
 
-    Kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, és kattintson a **Publish** (Közzétesz) lehetőségre. Közzétételi célként válassza a **Microsoft Azure App Service** lehetőséget, majd kattintson a **New** (Új) gombra. Az ekkor megjelenő párbeszédpanelek megegyeznek az ebben az oktatóanyagban láthatókkal.
+    Right-click the project in **Solution Explorer**, and then click **Publish**. Choose **Microsoft Azure App Service** as the publish target, and then click **New**. The dialogs are then the same as what you've seen in this tutorial.
 
-* Webes projektet telepíthet a forráskezelőből
+* Deploy a web project from source control
 
-    Tudnivalók a [telepítés automatizálásáról](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) [forráskezelő rendszerből](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control): [Ismerkedés a webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started.md) és [Az Azure-webalkalmazások telepítése](web-sites-deploy.md).
+    For information about [automating deployment](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) from a [source control system](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control), see [Get started with web apps in Azure App Service](app-service-web-get-started.md) and [How to deploy an Azure web app](web-sites-deploy.md).
 
-* ASP.NET webes API-t telepíthet egy API-alkalmazásba az Azure App Service szolgáltatásban
+* Deploy an ASP.NET Web API to an API app in Azure App Service
 
-    Most láthatta, hogyan hozható létre az Azure App Service egy példánya, amely főként egy webhely üzemeltetéséhez használható. Az App Service emellett a webes API-k üzemeltetéséhez szükséges funkciókat is biztosít. Ilyen például a CORS-támogatás és az API-metaadatok támogatása az ügyfélkódok létrehozásához. A webalkalmazásokban használhat API-funkciókat, de ha főként API-t szeretne üzemeltetni egy App Service-példányban, az **API-alkalmazás** jobb választás. További információkért lásd: [Get started with API Apps and ASP.NET in Azure App Service](../app-service-api/app-service-api-dotnet-get-started.md) (API-alkalmazások és ASP.NET az Azure App Service szolgáltatásban – Első lépések). 
+    You've seen how to create an instance of Azure App Service that is mainly intended to host a website. App Service also offers features for hosting Web APIs, such as CORS support and API metadata support for client code generation. You can use API features in a web app, but if you mainly want to host an API in an instance of App Service, an **API app** would be a better choice. For more information, see [Get started with API Apps and ASP.NET in Azure App Service](../app-service-api/app-service-api-dotnet-get-started.md). 
 
-* Egyéni tartománynév és SSL hozzáadása
+* Add a custom domain name and SSL
 
-    Az SSL és a saját tartomány (például www.contoso.com a contoso.azurewebsites.net helyett) használatával kapcsolatban lásd a következő forrásokat:
+    For information about how to use SSL and your own domain (for example, www.contoso.com instead of contoso.azurewebsites.net), see the following resources:
 
-    * [Configure a custom domain name in Azure App Service (Egyéni tartománynév beállítása az Azure App Service szolgáltatásban)](web-sites-custom-domain-name.md)
-    * [Enable HTTPS for an Azure website (HTTPS engedélyezése az Azure-webhelyeken)](web-sites-configure-ssl-certificate.md)
+    * [Configure a custom domain name in Azure App Service](web-sites-custom-domain-name.md)
+    * [Enable HTTPS for an Azure website](web-sites-configure-ssl-certificate.md)
 
-* Ha már nem használja őket, törölje a webalkalmazást tartalmazó erőforráscsoportot és a kapcsolódó Azure-erőforrásokat.
+* Delete the resource group that contains your web app and any related Azure resources when you're done with them.
 
-    További információ az erőforráscsoportoknak az Azure Portalon való használatával kapcsolatban: [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md) (Erőforrások üzembe helyezése Resource Manager-sablonok és az Azure Portal segítségével).   
+    For information about how to work with resource groups in the Azure portal, see [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md).   
 
-*   További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) és [Create and deploy a mobile app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service) (Mobilalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
+*   For more examples of creating an ASP.NET Web App in App Service, see [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) and [Create and deploy a mobile app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service) from the [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). For more quickstarts from the HealthClinic.biz demo, see [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts).
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

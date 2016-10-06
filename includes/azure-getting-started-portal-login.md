@@ -8,28 +8,28 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## Csatlakozás az Azure Portalhoz előfizetéssel
+## Connect to the Azure portal with a subscription
 
-Az Azure Portalhoz való csatlakozáshoz előfizetéssel kell rendelkeznie.
+To connect to the Azure portal, you must have a subscription.
 
-### Új fiók létrehozása
+### Get a new account
 
-Ha még nem rendelkezik Azure-fiókkal, válassza az alábbi lehetőségek valamelyikét a létrehozásához:
+If you do not have an existing Azure account, choose one of the following options to obtain an account:
 
-- [Ingyenes fiók](https://azure.microsoft.com/get-started/) létrehozása.
-- [MSDN-előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) használata.
+- Get a [free account](https://azure.microsoft.com/get-started/).
+- Use an [MSDN subscription](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/).
 
-### Bejelentkezés meglévő fiókkal
+### Sign in by using your existing account
 
-[Meglévő előfizetés]( https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure Portalhoz való csatlakozáshoz.
+Using your [existing subscription]( https://account.windowsazure.com/Home/Index), follow these steps to connect to the Azure portal.
 
-1. Nyisson meg egy tetszőleges böngészőt, és csatlakozzon az [Azure Portalhoz](https://portal.azure.com/).
+1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/).
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. A **Bejelentkezés** oldalon adja meg az előfizetése hitelesítő adatait.
+1. On the **Sign in** page, provide the credentials for your subscription.
 
-   ![Bejelentkezés](./media/azure-getting-started-portal-login/login.png)
+   ![Sign in](./media/azure-getting-started-portal-login/login.png)
 
 
 <!--HONumber=Sep16_HO4-->

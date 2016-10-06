@@ -13,8 +13,9 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/23/2016"
+   ms.date="09/27/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>
+
 
 
 # Mi az Azure SQL Data Warehouse?
@@ -49,7 +50,7 @@ Az architektúrát a következő ábra szemlélteti.
 
 **Számítási csomópontok:** a számítási csomópontok állnak az SQL Data Warehouse teljesítménye mögött. Ezek olyan SQL-adatbázisok, amelyek tárolják az adatokat, és feldolgozzák a lekérdezést. Adatok hozzáadásakor az SQL Data Warehouse a számítási csomópontokra osztja el a sorokat. A párhuzamos lekérdezéseket is a számítási csomópontok futtatják az adatokon. A feldolgozást követően ezek a csomópontok visszaküldik az eredményeket a vezérlő csomópontnak. A lekérdezés befejezéséhez a vezérlő csomópont aggregálja az eredményeket, majd visszaadja a végeredményt.
 
-**Tárolás:** a rendszer az adatokat az Azure Blob szolgáltatásban tárolja. Amikor a számítási csomópontok kommunikálnak az adatokkal, közvetlenül a blobtárolóra írnak és arról olvasnak. Mivel az Azure-tárterület átlátható módon és korlátlanul bővíthető, az SQL Data Warehouse is képes ugyanerre. Mivel a számítás és a tárolás nem függ egymástól, az SQL Data Warehouse automatikusan át tudja méretezni a tárolást, külön, a számítás méretezése nélkül, és fordítva. Az Azure Blob tároló emellett teljesen hibatűrő, és megkönnyíti a biztonsági mentési és helyreállítási folyamatokat.
+**Tárolás:** a rendszer az adatokat az Azure Blob szolgáltatásban tárolja. Amikor a számítási csomópontok kommunikálnak az adatokkal, közvetlenül a blobtárolóra írnak és arról olvasnak. Mivel az Azure-tárolót transzparens módon és korlátlanul bővítheti, az SQL Data Warehouse is képes ugyanerre. Mivel a számítás és a tárolás nem függ egymástól, az SQL Data Warehouse automatikusan át tudja méretezni a tárolást, külön, a számítás méretezése nélkül, és fordítva. Az Azure Blob tároló emellett teljesen hibatűrő, és megkönnyíti a biztonsági mentési és helyreállítási folyamatokat.
 
 **Adatátviteli szolgáltatás:** az adatátviteli szolgáltatás (DMS) az adatok csomópontok közötti áthelyezését végzi. A DMS hozzáférést biztosít a számítási csomópontoknak az összekapcsolásokhoz és az aggregációhoz szükséges adatokhoz. A DMS nem Azure-szolgáltatás. Ez egy Windows-szolgáltatás, amely minden csomóponton együtt fut az SQL Database szolgáltatással. Mivel a DMS a háttérben fut, nem fogja közvetlenül használni. Ha azonban megtekinti a lekérdezésterveket, megfigyelheti, hogy van köztük néhány DMS-művelet, mivel a lekérdezések párhuzamos futtatásához szükség van az adatmozgatásra.
 
@@ -83,7 +84,7 @@ Az erőforrások SQL Data Warehouse szolgáltatásnak történő kiosztása az a
 
 - A Microsoft módosíthatja a szolgáltatás mögöttes architektúráját anélkül, hogy az hatással lenne a számítási feladatok teljesítményére.
 
-- A Microsoft gyors ütemben fejleszti az SQL Data Warehouse teljesítményét olyan módon, hogy a szolgáltatás skálázható legyen, és a fejlődés a teljes rendszeren egyenletes legyen.
+- A Microsoft gyors ütemben fejleszti az SQL Data Warehouse teljesítményét, és gondoskodik a szolgáltatás további méretezhetőségéről, valamint arról, hogy a fejlődés a teljes rendszeren mindenhol tetten érhető legyen.
 
 Az adattárházegységek három pontos mérőszámból álló mértéknek tekinthetők, amely szorosan összefügg az adatraktározás munkateljesítményével. A cél az, hogy ezeket a kulcsfontosságú munkaterhelési mérőszámokat lineárisan lehessen skálázni az adatraktárhoz választott DWU-kkal.
 
@@ -134,7 +135,7 @@ Az SQL Data Warehouse együttműködik számos olyan eszközzel, amelyet az SQL 
 
 ## Hibrid adatforrások forgatókönyvei
 
-Az SQL Data Warehouse PolyBase szolgáltatással való használata egyedülálló képességet biztosít a felhasználók számára az adatoknak az ökoszisztémán belüli mozgatására, és ezzel lehetővé teszi a speciális hibrid forgatókönyvek kialakítását nem relációs és helyszíni adatforrásokkal.
+Az SQL Data Warehouse a PolyBase technológiával való használata egyedülálló képességet biztosít a felhasználók számára az adatok ökoszisztémán belüli mozgatására, és ezzel lehetővé teszi a speciális hibrid forgatókönyvek kialakítását nem relációs és helyszíni adatforrásokkal.
 
 A PolyBase lehetővé teszi a különböző forrásokból származó adatok használatát a jól ismert T-SQL parancsokkal. A PolyBase lehetővé teszi az Azure Blob tárolóban tárolt nem relációs adatok normál táblákhoz hasonló lekérdezését. A PolyBase szolgáltatást akkor használja, ha nem relációs adatokat szeretne lekérdezni vagy nem relációs adatokat szeretne importálni az SQL Data Warehouse szolgáltatásba.
 
@@ -142,19 +143,20 @@ A PolyBase lehetővé teszi a különböző forrásokból származó adatok hasz
 
 - A PolyBase integrációs szempontból rendszerfüggetlen. Minden általa támogatott forrás ugyanazokat a szolgáltatásokat és funkciókat érheti el. A PolyBase által beolvasott adatok többféle formátumúak lehetnek, a tagolt fájlokat és az ORC fájlokat is beleértve.
 
-- A PolyBase a HD Insight-fürt tárolójaként is alkalmazható blobtároló elérésére használható. Így ugyanazokat az adatokat relációs és nem relációs eszközökkel is elérheti.
+- A PolyBase technológiával hozzá lehet férni azokhoz a blobtárolókhoz, amelyet egy HD Insight-fürt tárolóként használ. Így ugyanazokat az adatokat relációs és nem relációs eszközökkel is elérheti.
 
 ## Következő lépések
 
 Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról, ismerje meg, hogyan hozhat létre gyorsan egy [SQL Data Warehouse létrehozása][] és hogyan [mintaadatokat tölthet be][]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][], amikor az új fogalmakkal ismerkedik. Esetleg tekintsen meg néhányat a többi SQL Data Warehouse erőforrás közül.  
 
+- [Ügyfelek sikertörténetei]
 - [Blogok]
 - [Funkciókérések]
 - [Videók]
-- [CAT csapatblogok]
+- [Az ügyféltanácsadói csapat blogjai]
 - [Támogatási jegy létrehozása]
-- [MSDN fórum]
-- [Stack Overflow fórum]
+- [MSDN-fórum]
+- [Stack Overflow-fórum]
 - [Twitter]
 
 
@@ -162,28 +164,29 @@ Miután a fentiekben áttekintést kapott az SQL Data Warehouse használatáról
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[Támogatási jegy létrehozása]: sql-data-warehouse-get-started-create-support-ticket.md
-[mintaadatokat tölthet be]: sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
-[áttelepítési dokumentációban]: sql-data-warehouse-overview-migrate.md
-[Az SQL Data Warehouse megoldási partnerei]: sql-data-warehouse-partner-business-intelligence.md
-[Az integrált eszközök áttekintése]: sql-data-warehouse-overview-integrate.md
-[A biztonsági mentés és a visszaállítás áttekintése]: sql-data-warehouse-restore-database-overview.md
+[Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[mintaadatokat tölthet be]: ./sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse létrehozása]: ./sql-data-warehouse-get-started-provision.md
+[áttelepítési dokumentációban]: ./sql-data-warehouse-overview-migrate.md
+[Az SQL Data Warehouse megoldási partnerei]: ./sql-data-warehouse-partner-business-intelligence.md
+[Az integrált eszközök áttekintése]: ./sql-data-warehouse-overview-integrate.md
+[A biztonsági mentés és a visszaállítás áttekintése]: ./sql-data-warehouse-restore-database-overview.md
 [Azure szószedetét]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
+[Ügyfelek sikertörténetei]: https://customers.microsoft.com/search?sq=&ff=story_products_services%26%3EAzure%2FAzure%2FAzure%20SQL%20Data%20Warehouse%26%26story_product_families%26%3EAzure%2FAzure%26%26story_product_categories%26%3EAzure&p=0
 [Blogok]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[CAT csapatblogok]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN fórum]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Stack Overflow fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[MSDN-fórum]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
+[Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

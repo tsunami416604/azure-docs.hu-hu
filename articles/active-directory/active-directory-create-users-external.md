@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/02/2016"
+    ms.date="09/22/2016"
     ms.author="curtand"/>
 
 
 # Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba
 
 > [AZURE.SELECTOR]
-- [Azure Portal](active-directory-create-users-external-azure-portal.md)
+- [Azure Portal](active-directory-users-create-external-azure-portal.md)
 - [klasszikus Azure portál](active-directory-create-users-external.md)
 
 Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
@@ -71,7 +71,7 @@ Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-
 - **Klasszikus Azure portál:** lehetővé teszi, hogy egy több címtár rendszergazdájaként eljáró külső felhasználó kezelje ezeket a címtárakat.
 - **SharePoint Online:** ha a külső megosztás engedélyezett, lehetővé teszi, hogy a külső felhasználók elérjék a SharePoint Online engedélyezett erőforrásait.
 - **Dynamics CRM:** ha a felhasználó PowerShellen keresztül kapott licencet, lehetővé teszi, hogy a külső felhasználó elérje az engedélyezett erőforrásokat a Dynamics CRM-ben.
-- **Dynamics AX:** ha a felhasználó PowerShellen keresztül kapott licencet, lehetővé teszi, hogy a külső felhasználó elérje az engedélyezett erőforrásokat a Dynamics AX-ben. Az [Azure AD külső felhasználók](#known-limitations-of-azure-ad-external-users) és a [vendégfelhasználók](#guest-user-management-and-limitations) korlátozásai a Dynamics AX külső felhasználóira is érvényesek.
+- **Dynamics AX:** ha a felhasználó PowerShellen keresztül kapott licencet, lehetővé teszi, hogy a külső felhasználó elérje az engedélyezett erőforrásokat a Dynamics AX-ben. Az [Azure AD külső felhasználóira](#known-limitations-of-azure-ad-external-users) vonatkozó korlátozások a Dynamics AX külső felhasználóira is érvényesek.
 
 ### Az Azure AD külső felhasználóinak ismert korlátozásai
 
@@ -91,6 +91,6 @@ Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

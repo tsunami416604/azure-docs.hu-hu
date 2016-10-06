@@ -1,15 +1,15 @@
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartomány üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát. Az egyes tartományokhoz létrehozott DNS-rekordok a tartomány DNS-zónájában helyezkednek majd el. 
+A DNS zone is used to host the DNS records for a particular domain. In order to start hosting your domain, you need to create a DNS zone. Any DNS record created for a particular domain will be inside a DNS zone for the domain. 
 
-A „contoso.com” tartomány például számos DNS-rekordot tartalmazhat, például „mail.contoso.com” (levelezési kiszolgálóhoz) és „www.contoso.com” (webhelyhez). 
+For example, the domain "contoso.com" may contain a number of DNS records, such as "mail.contoso.com" (for a mail server) and "www.contoso.com" (for a web site). 
 
 
-## <a name="names"></a>A DNS-zónák neve
+## <a name="names"></a>About DNS zone names
  
-- A zóna nevének egyedinek kell lennie az erőforráscsoporton belül, és nem egyezhet egy meglévő névvel. Ellenkező esetben a művelet sikertelen lesz.
+- The name of the zone must be unique within the resource group, and the zone must not exist already. Otherwise, the operation will fail.
 
-- Az egyes zónanevek újra felhasználhatók egy másik erőforráscsoportban vagy egy másik Azure-előfizetésben. 
+- The same zone name can be re-used in a different resource group or a different Azure subscription. 
 
-- Abban az esetben, ha több zóna rendelkezik ugyanazzal a névvel, minden példány különböző névkiszolgáló-címet kap, és csak egyetlen példány delegálható a szülőtartományból. További információ: [Delegate a domain to Azure DNS](../articles/dns/dns-domain-delegation.md) (Tartomány delegálása az Azure DNS-be).
+- Where multiple zones share the same name, each instance will be assigned different name server addresses, and only one instance can be delegated from the parent domain. For more information, see [Delegate a domain to Azure DNS](../articles/dns/dns-domain-delegation.md).
 
 <!--HONumber=Sep16_HO4-->
 

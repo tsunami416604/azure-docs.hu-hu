@@ -1,11 +1,11 @@
 
-A VPN-eszköz konfigurálásához szüksége lesz a virtuális hálózati átjáró nyilvános IP-címére, hogy konfigurálni tudja a helyszíni VPN-eszközt. A konkrét konfigurációs információkért forduljon az eszköz gyártójához, és konfigurálja az eszközt. Az Azure-ral jól használható VPN-eszközökről a [VPN-eszközöket](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) ismertető cikkben talál további információt.
+To configure your VPN device, you'll need the public IP address of the virtual network gateway for configuring your on-premises VPN device. Work with your device manufacturer for specific configuration information and configure your device. Refer to the [VPN Devices](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md) for more information about VPN devices that work well with Azure.
 
-A virtuális hálózati átjáró IP-címét az alábbi minta alapján keresheti meg a PowerShell használatával:
+To find the public IP address of your virtual network gateway using PowerShell, use the following sample:
 
     Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 
-A virtuális hálózati átjáró IP-címét az Azure Portalon is megtekintheti. Válassza a **Virtuális hálózati átjárók** elemet, majd kattintson az átjárója nevére.
+You can also view the public IP address for your virtual network gateway by using the Azure portal. Navigate to **Virtual network gateways**, then click the name of your gateway.
 
 <!--HONumber=Sep16_HO4-->
 

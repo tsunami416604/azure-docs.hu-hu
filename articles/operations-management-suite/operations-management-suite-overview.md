@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Az Operations Management Suite (OMS) áttekintése | Microsoft Azure"
-   description="A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.  Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
+   pageTitle="Operations Management Suite (OMS) overview | Microsoft Azure"
+   description="Microsoft Operations Management Suite (OMS) is Microsoft's cloud-based IT management solution that helps you manage and protect your on-premises and cloud infrastructure.  This article identifies the different services included in OMS and provides links to their detailed content."
    services="operations-management-suite"
    documentationCenter=""
    authors="bwren"
@@ -16,49 +16,49 @@
    ms.author="bwren" />
 
 
-# Az Operations Management Suite (OMS) áttekintése
+# Operations Management Suite (OMS) overview
 
-A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.  Mivel az OMS felhőalapú szolgáltatás, gyorsan és az infrastruktúra-szolgáltatásokra fordított minimális mértékű befektetéssel üzembe helyezhető.  Az új funkciók bevezetése automatikus, így csökkenthetők a folyamatos karbantartás és frissítés költségei.
+Microsoft Operations Management Suite (OMS) is Microsoft's cloud-based IT management solution that helps you manage and protect your on-premises and cloud infrastructure.  Since OMS is implemented as a cloud-based service, you can have it up and running quickly with minimal investment in infrastructure services.  New features are delivered automatically, saving you ongoing maintenance and upgrade costs.
 
-Amellett, hogy az OMS önmagában is értékes szolgáltatásokat biztosít, integrálható a System Center összetevőivel, például a System Center Operations Manager termékkel, így a meglévő felügyeleti beruházások kiterjeszthetők a felhőre.  A System Center és az OMS együttműködve teljes hibrid felügyeleti megoldást képes biztosítani.
+In addition to providing valuable services on its own, OMS can integrate with System Center components such as System Center Operations Manager to extend your existing management investments into the cloud.  System Center and OMS can work together to provide a full hybrid management experience.
 
-A következőkben az OMS különböző felhasználási területeinek és az őket megvalósító szolgáltatásoknak a magas szintű leírását olvashatja.  A különböző OMS-összetevők részletes dokumentációjának tanulmányozása előtt az OMS-architektúra vázlatán áttekintheti az egyes összetevők szerepét.
-
-
-## ![Betekintések és elemzés](media/operations-management-suite-overview/icon-insight-analytics.png) Betekintések és elemzés
-
-A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) segít az operációs rendszerek és alkalmazások által generált napló- és teljesítményadatokat összegyűjteni, keresni, a köztük lévő összefüggéseket felderíteni, illetve az adatok alapján cselekedni. Ez lehetővé teszi, hogy az integrált keresés és az egyéni irányítópultok segítségével valós idejű üzemeltetési adatokhoz jusson, és azonnal elemezze a különböző számítási feladatokból és a kiszolgálókról származó rekordok millióit, függetlenül attól, hogy fizikailag hol helyezkednek el.
-
-A Log Analytics egyszerűen kiegészíthető olyan megoldásokkal, amelyek meghatározzák a gyűjtendő adatokat, valamint az elemzés logikáját.  A megoldások tartalmazhatnak olyan kiegészítő funkciókat, amelyek automatikusan, minimális konfigurációval, vagy akár konfiguráció nélkül is üzembe helyezhetők az ügynökökön.  Az egyedi megoldások által biztosított elemzési eszközök mellett egyéni keresést is végezhet a teljes adatkészleten az adatok rendszerekkel és alkalmazásokkal fennálló összefüggéseinek feltárásához.  
+The following sections provide a high level description of the different value areas of OMS and the services that implement them.  You can refer to OMS architecture for an overview of the different OMS components before reviewing the detailed documentation for each.
 
 
-## ![Automatizálás és vezérlés](media/operations-management-suite-overview/icon-automation-control.png) Automatizálás és vezérlés
+## ![Insight and Analytics](media/operations-management-suite-overview/icon-insight-analytics.png) Insight and Analytics
 
-Az Azure Automation az adminisztratív folyamatokat PowerShell-alapú, az Azure-felhőben futó [runbookok](../automation/automation-runbook-types.md) segítségével automatizálja.  A runbookok hozzáférhetnek minden olyan termékhez vagy szolgáltatáshoz, amely PowerShell használatával felügyelhető, így többek között a más felhőkben – például az Amazon Web Servicesben (AWS) – található erőforrásokhoz is.  A runbookok futtathatók a helyi adatközpontban is, és kezelhetők velük a helyi erőforrások.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) helps you collect, correlate, search, and act on log and performance data generated by operating systems and applications. It gives you real-time operational insights using integrated search and custom dashboards to readily analyze millions of records across all of your workloads and servers regardless of their physical location.
 
-Az Azure Automation a [PowerShell DSC](../automation/automation-dsc-overview.md) használatával biztosít konfigurációkezelést.  Létrehozhat és kezelhet az Azure szolgáltatásban üzemeltetett DSC-erőforrásokat, és alkalmazhatja őket a felhőbeli és a helyszíni rendszerekre a konfigurációjuk automatikus meghatározásához és kikényszerítéséhez.
-
-
-## ![Védelem és helyreállítás](media/operations-management-suite-overview/icon-protection-recovery.png) Védelem és vészhelyreállítás
-
-Az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett.  Képes biztonsági másolatot készíteni a fizikai és a virtuális Windows kiszolgálókról, valamint az olyan alkalmazások számítási feladatairól, mint az SQL Server és a SharePoint.  A System Center Data Protection Manager (DPM) is használhatja arra, hogy a redundancia és a hosszú távú tárolás biztosítása érdekében a védett adatokat az Azure szolgáltatásba replikálja.
-
-Az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) a helyszíni Hyper-V virtuális gépek, VMware virtuális gépek és fizikai Windows/Linux kiszolgálók replikálásával, feladatátvételével és helyreállításával segít a vállalatnak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A gépek replikálhatók egy másodlagos adatközpontba, illetve arra is van lehetőség, hogy a gépek Azure szolgáltatásba replikálása révén kiterjessze az adatközpontot. A Site Recovery is egyszerű feladatátvételt és helyreállítási lehetőségeket biztosít a számítási feladatok számára. Integrálható az olyan vészhelyreállítási mechanizmusokkal, mint például az SQL Server AlwaysOn, valamint helyreállítási terveket kínál a több számítógépen rétegzett számítási feladatok egyszerű feladatátvételéhez.
+You can easily add solutions to Log Analytics that define data to be collected and the logic for its analysis.  Solutions may include additional functionality that is automatically delivered to agents with minimal or no configuration.  In addition to using analysis tools provided by individual solutions, you can perform custom searches across the entire dataset in order to correlate data between systems and applications.  
 
 
-## ![OMS Biztonság és megfelelőség](media/operations-management-suite-overview/icon-security-compliance.png) Biztonság és megfelelőség
-A biztonsági és megfelelőségi funkciók segítenek azonosítani, felmérni és mérsékelni az infrastruktúrát fenyegető biztonsági kockázatokat.  Az OMS ide tartozó funkcióit a Log Analytics szolgáltatáson belüli különböző olyan megoldások valósítják meg, amelyek elemzik az ügynökrendszerekről származó naplóadatokat és konfigurációkat, így segítve Önt a számítási környezet folyamatos védelmében.
+## ![Automation & Control](media/operations-management-suite-overview/icon-automation-control.png) Automation & Control
 
-- A [biztonsági és auditálási megoldás](log-analytics-security-audit.md ) a gyanús tevékenységek azonosítása érdekében összegyűjti és elemzi a felügyelt rendszerekről származó biztonsági eseményeket.
-- A [kártevőirtó megoldás](log-analytics-malware.md ) jelentést készít a felügyelt rendszereken használt, kártevőkkel szembeni védelem állapotáról.  
-- A rendszerfrissítési megoldás elemzi a felügyelt rendszereken elérhető biztonsági és egyéb frissítéseket, így egyszerűen be tudja azonosítani, hogy mely rendszerek igénylik javítás telepítését.
+Azure Automation automates administrative processes with [runbooks](../automation/automation-runbook-types.md) that are based on PowerShell and run in the Azure cloud.  Runbooks can access any product or service that can be managed with PowerShell including resources in other clouds such as Amazon Web Services (AWS).  Runbooks can also be executed on a server in your local data center to manage local resources.
+
+Azure Automation provides configuration management with [PowerShell DSC](../automation/automation-dsc-overview.md).  You can create and manage DSC resources hosted in Azure and apply them to cloud and on-premises systems to define and automatically enforce their configuration.
 
 
-## Következő lépések
-- További tudnivalók a [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) szolgáltatásról.
-- További tudnivalók a [Azure Automation](../automation/automation-intro.md) szolgáltatásról.
-- További tudnivalók a [Azure Backup](http://azure.microsoft.com/documentation/services/backup) szolgáltatásról.
-- További tudnivalók a [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) szolgáltatásról.
+## ![Protection and Recovery](media/operations-management-suite-overview/icon-protection-recovery.png) Protection and Disaster Recovery
+
+[Azure Backup](http://azure.microsoft.com/documentation/services/backup) protects your application data and retains it for years without any capital investment and with minimal operating costs.  It can backup data from physical and virtual Windows servers in addition to application workloads such as SQL Server and SharePoint.  It can also be used by System Center Data Protection Manager (DPM) to replicate protected data to Azure for redundancy and long term storage.
+
+[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) contributes to your business continuity and a disaster recovery (BCDR) strategy by orchestrating replication, failover, and recovery of on-premises Hyper-V virtual machines, VMware virtual machines, and physical Windows/Linux servers. You can replicate machines to a secondary data center or extend your data center by replicating them to Azure. Site Recovery also provides simple failover and recovery for workloads. It integrates with disaster recovery mechanisms such as SQL Server AlwaysOn, and provides recovery plans for easy failover of workloads that are tiered across multiple machines.
+
+
+## ![OMS Security and Compliance](media/operations-management-suite-overview/icon-security-compliance.png) Security and Compliance
+Security and Compliance helps you identify, assess, and mitigate security risks to your infrastructure.  These features of OMS are implemented through multiple solutions in Log Analytics that analyze log data and configuration from agent systems to assist you in ensuring the ongoing security of your environment.
+
+- The [Security and Audit solution](log-analytics-security-audit.md ) collects and analyzes security events on managed systems to identify suspicious activity.
+- The [Antimalware solution](log-analytics-malware.md ) reports on the status of antimalware protection on managed systems.  
+- The System Updates solution performs an analysis of the security updates and other updates on your managed systems so that you easily identify systems requiring patching.
+
+
+## Next steps
+- Learn about [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics).
+- Learn about [Azure Automation](../automation/automation-intro.md).
+- Learn about [Azure Backup](http://azure.microsoft.com/documentation/services/backup).
+- Learn about [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery).
 
 
 

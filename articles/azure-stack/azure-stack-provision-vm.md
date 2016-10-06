@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Előfizetés egy ajánlatra, majd egy virtuális gép létrehozása az Azure Stackben (bérlőként) | Microsoft Azure"
-    description="Megtudhatja, hogy bérlőként hogyan fizethet elő egy ajánlatra, és hogyan építhet ki virtuális gépet az Azure Stack szolgáltatásban."
+    pageTitle="Provision a VM in Azure Stack (tenant) | Microsoft Azure"
+    description="As a tenant, learn how to provision a VM in Azure Stack."
     services="azure-stack"
     documentationCenter=""
     authors="ErikjeMS"
@@ -13,40 +13,38 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/01/2016"
+    ms.date="09/26/2016"
     ms.author="erikje"/>
 
 
-# Virtuális gép kiépítése
+# Provision a virtual machine
 
-Most, hogy létrehozott egy előfizetést, tesztelje, hogy a bérlők ki tudnak-e építeni virtuális gépeket.
+Now that you've [created a subscription](azure-stack-subscribe-plan-provision-vm.md), test that your tenants can provision a virtual machine.
 
-1.  Kattintson az **Új** elemre, majd a **Számítás**, és végül a **WindowsServer-2012-R2-Datacenter** elemre.  
+1.  On the Azure Stack POC computer, log in to `https://portal.azurestack.local` as [an admin](azure-stack-connect-azure-stack.md#log-in-as-a-service-administrator), and then click **New** > **Virtual machines** > **WindowsServer-2012-R2-Datacenter**.  
 
-    ![](media/azure-stack-subscribe-plan-provision-vm/image5.png)
+    ![](media/azure-stack-provision-vm/image01.png)
 
-2.  Az **Alapvető beállítások** panelen írjon be egy **nevet**, egy **felhasználónevet**, egy **jelszót** és egy **erőforráscsoportot,** majd kattintson az **OK** gombra.  
+2.  In the **Basics** blade, type a **Name**, **User name**, and **Password**. For **VM disk type**, chose **HDD**. Choose a **Subscription**. Create a new **Resource group**, or select an existing one, and then click **OK**.  
 
-    ![](media/azure-stack-subscribe-plan-provision-vm/image6.png)
+3.  In the **Choose a size** blade, click **A1 Basic**, and then click **Select**.  
 
-3.  A **Méret** panelen kattintson az **A1 Alapszintű**, majd a **Kiválasztás** elemre.  
+4.  In the **Settings** blade, click **Virtual network**. In the **Choose virtual network** blade, click **Create new**. In the **Create virtual network** blade, accept all the defaults and click **OK**. In the **Settings** blade, click **OK** to create the virtual machine.
 
-    ![](media/azure-stack-subscribe-plan-provision-vm/image7.png)
+    ![](media/azure-stack-provision-vm/image04.png)
 
-4.  A **Beállítások** panelen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.  
+5.  In the **Summary** blade, click **OK** to create the virtual machine.  
 
-    ![](media/azure-stack-subscribe-plan-provision-vm/image8.png)
+6. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
 
-5.  Az **Összegzés** panelen kattintson az **OK** gombra a virtuális gép létrehozásához.  
+    ![](media/azure-stack-provision-vm/image06.png)
 
-    ![](media/azure-stack-subscribe-plan-provision-vm/image9.png)
+## Next steps
 
-## Következő lépések
-
-[Tárfiókok](azure-stack-provision-storage-account.md)
+[Storage accounts](azure-stack-provision-storage-account.md)
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

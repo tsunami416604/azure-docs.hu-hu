@@ -13,7 +13,7 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="vm-windows-sql-server"
     ms.workload="infrastructure-services"
-    ms.date="09/20/2016"
+    ms.date="09/21/2016"
     ms.author="jroth" />
 
 
@@ -142,9 +142,9 @@ Ha nem szeretné engedélyezni az adatbázis-alrendszerhez az interneten kereszt
 - A **Helyi (csak virtuális gépen belül)** beállítással az SQL Serverhez csak a virtuális gépen belülről lehet csatlakozni.
 - A **Magánjellegű (virtuális hálózaton belül)** beállítással az SQL Serverhez az azonos virtuális hálózaton található gépek és szolgáltatások csatlakozhatnak.
 
-Általánosságban elmondható, hogy a forgatókönyv által lehetővé tett legszigorúbb kapcsolódási korlátozás kiválasztásával növelhető a biztonság. Hálózati biztonsági csoportszabályok és SQL-/Windows-hitelesítés használatával azonban mindegyik lehetőség biztosítható.
+>[AZURE.NOTE] Az SQL Server Express kiadás virtuálisgép-rendszerképe nem engedélyezi automatikusan a TCP/IP-protokollt. Ez még a nyilvános és a magán kapcsolati lehetőségekre is érvényes. Az Express kiadás esetén a virtuális gép létrehozása után [manuálisan kell engedélyezni a TCP/IP-protokollt](#configure-sql-server-to-listen-on-the-tcp-protocol) az SQL Server Configuration Manager használatával.
 
->[AZURE.NOTE] Az SQL Server Express és Developer kiadásainak virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP-protokollt. Ez megakadályozza a távoli csatlakozást még akkor is, ha a portálon a Nyilvános vagy Privát lehetőségek lettek kiválasztva. Az Express és Developer kiadások esetében a virtuális gép létrehozása után az SQL Server Configuration Manager használatával, [manuálisan kell engedélyezni a TCP/IP-protokollt](virtual-machines-windows-sql-connect.md#configure-sql-server-to-listen-on-the-tcp-protocol).
+Általánosságban elmondható, hogy a forgatókönyv által lehetővé tett legszigorúbb kapcsolódási korlátozás kiválasztásával növelhető a biztonság. Hálózati biztonsági csoportszabályok és SQL-/Windows-hitelesítés használatával azonban mindegyik lehetőség biztosítható.
 
 A **Port** alapértelmezett beállítás 1433. Megadhat eltérő portszámot is.
 További információ: [Csatlakozás SQL Server rendszerű virtuális géphez (Resource Manager) | Microsoft Azure](virtual-machines-windows-sql-connect.md).
@@ -268,6 +268,6 @@ Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése]
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

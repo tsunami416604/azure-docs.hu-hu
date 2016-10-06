@@ -322,10 +322,10 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
 10. Ha a szelet **Ready** (Kész) állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
  
     ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
-11. A szelet részleteinek a **Data slice** (Adatszelet) panelen való megtekintéséhez kattintson a szeletre.
+11. A szelet részleteinek az **Adatszelet** panelen való megtekintéséhez kattintson a szeletre.
 
     ![Adatszelet részletei](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)  
-12. Kattintson egy tevékenységfuttatásra az **Activity runs list** listában (Tevékenységfuttatások lista) az aktivitásfuttatás részleteinek (ebben az esetbe Hive-tevékenység), az **Activity run details** (Tevékenységfuttatás részletei) ablakban való megjelenítéséhez.   
+12. Kattintson egy tevékenységfuttatásra az **Activity runs list** (Tevékenységfuttatások listája) területen a tevékenységfuttatás (ebben az esetben Hive-tevékenység) részleteinek az **Activity run details** (Tevékenységfuttatás részletei) ablakban való megjelenítéséhez.   
 
     ![Tevékenységfuttatás részletei](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)  
     

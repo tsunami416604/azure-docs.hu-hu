@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="mobile-windows-phone"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="06/29/2016"
+    ms.date="10/03/2016"
     ms.author="wesmc"/>
 
 
@@ -217,7 +217,7 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
 [Az MPNS hitelesített módja]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-phone-send-breaking-news.md
+[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
 [bejelentéskatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [csempekatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp

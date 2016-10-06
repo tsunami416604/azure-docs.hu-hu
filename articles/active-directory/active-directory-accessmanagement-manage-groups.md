@@ -78,6 +78,8 @@ A feladatokat a klasszikus Azure-portál alapján ismertetjük. További inform�
 
 Az Azure AD-ben könnyen beállíthat egy egyszerű szabályt annak megadásához, hogy melyek a csoporttagságra kijelölt felhasználók. Az egyszerű szabály egy olyan szabály, amely csak egyszeres összehasonlítást végez. Ha például egy csoport egy SaaS-alkalmazáshoz van hozzárendelve, beállíthat egy olyan szabályt, hogy a csoportba az „értékesítési képviselő” beosztású felhasználók legyenek felvéve. Ez a szabály minden ilyen beosztású felhasználó számára hozzáférést biztosít az adott SaaS-alkalmazáshoz.
 
+Ha egy felhasználó bármely attribútuma megváltozik, a rendszer kiértékeli a dinamikus csoportokra vonatkozó összes szabályt egy címtárban, és ezáltal ellenőrzi, hogy a felhasználó attribútumának módosulása magával vonja-e bármilyen csoport hozzáadását vagy eltávolítását. Ha egy felhasználó megfelel egy csoportra vonatkozó szabálynak, automatikusan tagként lesz hozzáadva az adott csoporthoz. Amennyiben már nem felel meg az arra a csoportra vonatkozó szabálynak, amelynek tagja, el lesz távolítva az adott csoportból, és a tagsága megszűnik.
+
 > [AZURE.NOTE] Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van. A beágyazott csoporttagság az alkalmazásokhoz történő csoportalapú hozzárendeléseknél egyelőre nem támogatott.
 >
 > Dinamikus csoporttagság hozzárendeléséhez Prémium szintű Azure AD licencet kell hozzárendelni
@@ -117,6 +119,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,9 +1,9 @@
 <properties
-    pageTitle="A Mobile Apps használatának első lépései a Xamarin.Forms eszközkészlettel"
-    description="Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin.Forms-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást."
+    pageTitle="Get Started with Mobile Apps by using Xamarin.Forms"
+    description="Follow this tutorial to get started using Azure Mobile Apps for Xamarin.Forms development"
     services="app-service\mobile"
     documentationCenter="xamarin"
-    authors="wesmc7777"
+    authors="adrianhall"
     manager="erikre"
     editor=""/>
 
@@ -13,161 +13,162 @@
     ms.tgt_pltfrm="mobile-xamarin"
     ms.devlang="dotnet"
     ms.topic="hero-article"
-    ms.date="08/11/2016"
-    ms.author="glenga"/>
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-#Xamarin.Forms-alkalmazás létrehozása
+
+#Create a Xamarin.Forms app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-##Áttekintés
+##Overview
 
-Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat a Xamarin.Forms-mobilalkalmazásokhoz egy Azure-alapú mobil-háttéralkalmazás segítségével. Létre fog hozni egy új mobil-háttéralkalmazást, illetve egy olyan egyszerű _Teendőlista_ Xamarin.Forms-alkalmazást, amely az alkalmazásadatait az Azure-ban tárolja.
+This tutorial shows you how to add a cloud-based backend service to a Xamarin.Forms mobile app using an Azure Mobile App backend. You will create both a new Mobile App backend and a simple _Todo list_ Xamarin.Forms app that stores app data in Azure.
 
-Az oktatóanyag végrehajtása feltétele a Mobile Apps Xamarin.Forms-alkalmazásokra vonatkozó összes többi oktatóanyagának elérésének.
+Completing this tutorial is a prerequisite for all other Mobile Apps tutorials for Xamarin.Forms.
 
-##Előfeltételek
+##Prerequisites
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+To complete this tutorial, you need the following:
 
-* Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* An active Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free Mobile Apps that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése). 
+* Visual Studio with Xamarin. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) for instructions. 
 
-* Mac számítógép 7.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. Lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) és [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (Beállítás, telepítés és ellenőrzés Macintosh-felhasználók számára) (MSDN).
+* A Mac with Xcode v7.0 or later and Xamarin Studio Community installed. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) and [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
  
->[AZURE.NOTE] Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű mobilalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile), where you can immediately create a short-lived starter Mobile App in App Service. No credit cards required; no commitments.
 
-## Új Azure Mobile Apps-háttéralkalmazás létrehozása
+## Create a new Azure Mobile App backend
 
-Új Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
+Follow these steps to create a new Mobile App backend.
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 
-Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ügyfélalkalmazásai használni tudnak. A következő lépésben le kell töltenie egy kiszolgálóprojektet egy egyszerű „Teendőlista” háttéralkalmazáshoz, és közzé kell tennie az Azure-ban.
+You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, you will download a server project for a simple "todo list" backend and publish it to Azure.
 
-## Kiszolgálóprojekt konfigurálása
+## Configure the server project
 
-Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás használatára az alábbi lépésekkel.
+Follow the steps below to configure the server project to use either the Node.js or .NET backend.
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-##A Xamarin.Forms-megoldás letöltése és futtatása
+##Download and run the Xamarin.Forms solution
 
-Itt több lehetősége is van. Letöltheti a megoldást egy Mac-számítógépre, és megnyithatja a Xamarin Studióban, vagy letöltheti a megoldást egy Windows-számítógépre, és megnyithatja a Visual Studióban egy hálózati Mac-számítógép segítségével az iOS-alkalmazás buildjének elkészítéséhez. A Xamarin beállítási lehetőségeivel kapcsolatos bővebb információkat lásd a [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) című cikkben.
+Here you have a couple of choices. You can download the solution to a Mac and open it in Xamarin Studio, or you can download the solution to a Windows computer and open it in Visual Studio using a networked Mac for building the iOS app. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) if you need more detailed instructions on the Xamarin setup scenarios.
 
-Lássunk hozzá:
+Let's proceed:
 
- 1. Macintosh- vagy Windows-számítógépén nyissa meg egy böngészőablakban az [Azure Portal].
- 2. A mobilalkalmazás beállítási paneljén kattintson az **Első lépések** (a Mobil alatt) > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
+ 1. On your Mac or on your Windows computer, open the [Azure Portal] in a browser window.
+ 2. On the settings blade for your Mobile App, click **Get Started** (under Mobile) > **Xamarin.Forms**. Under step 3, click  **Create a new app** if it's not already selected.  Next click the **Download** button.
 
-    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    This downloads a project that contains a client application that is connected to your mobile app. Save the compressed project file to your local computer, and make a note of where you save it.
 
- 3. Bontsa ki a letöltött projektet, és nyissa meg a Xamarin Studio (vagy a Visual Studio) alkalmazást.
+ 3. Extract the project that you downloaded, and then open it in Xamarin Studio or Visual Studio.
 
     ![][9]
 
     ![][8]
 
 
-##Az iOS-projekt futtatása (nem kötelező)
+##(Optional) Run the iOS project
 
-Ez a szakasz az iOS-eszközökhöz készült Xamarin iOS-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik iOS-eszközökkel.
+This section is for running the Xamarin iOS project for iOS devices. You can skip this section if you are not working with iOS devices.
 
-####Xamarin Studióban
+####In Xamarin Studio
 
-1. Kattintson a jobb gombbal az iOS-projektre, és kattintson a **Set As Startup Project** (Beállítás kezdőprojektként) lehetőségre.
-2. A **Run** (Futtatás) menüben kattintson a **Start Debugging** (Hibakeresés indítása) lehetőségre a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az iPhone-emulátoron.
+1. Right-click the iOS project, and then click **Set As Startup Project**.
+2. On the **Run** menu, click **Start Debugging** to build the project and start the app in the iPhone emulator.
 
-####Visual Studióban
-1. Kattintson a jobb gombbal az iOS-projektre, és kattintson a **Set as StartUp Project** (Beállítás kezdőprojektként) lehetőségre.
-2. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
-3. A **Configuration Manager** párbeszédpanelen jelölje be az iOS-projekthez tartozó **Build** és **Deploy** (Telepítés) jelölőnégyzetet.
-4. Indítsa el a projekt buildjének elkészítését az **F5** billentyűt lenyomásával, és indítsa el az alkalmazást az iPhone-emulátoron.
+####In Visual Studio
+1. Right-click the iOS project, and then click **Set as StartUp Project**.
+2. On the **Build** menu, click **Configuration Manager**.
+3. In the **Configuration Manager** dialog box, select the **Build** and **Deploy** checkboxes of the iOS project.
+4. Press the **F5** key to build the project and start the app in the iPhone emulator.
 
-    >[AZURE.NOTE] Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
+    >[AZURE.NOTE] If you have problems building, run NuGet package manager and update to the latest version of the Xamarin support packages. Sometimes the Quickstart projects may lag behind in being updated to the latest.    
 
-Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás_, majd kattintson a **+** gombra.
+In the app, type meaningful text, such as _Learn Xamarin_ and then click the **+** button.
 
 ![][10]
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+This sends a POST request to the new mobile app backend hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data is displayed in the list.
 
 >[AZURE.NOTE]
-> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+> You'll find the code that accesses your mobile app backend in the TodoItemManager.cs C# file of the portable class library project of your solution.
 
-##Az Android-projekt futtatása (nem kötelező)
+##(Optional) Run the Android project
 
-Ez a szakasz az Android rendszerre készült Xamarin Droid-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik Android-eszközökkel.
+This section is for running the Xamarin droid project for Android. You can skip this section if you are not working with Android devices.
 
-####Xamarin Studióban
+####In Xamarin Studio
 
-1. Kattintson a jobb gombbal az Android-projektre, és kattintson a **Set As Startup Project** (Beállítás kezdőprojektként) lehetőségre.
-2. A **Run** (Futtatás) menüben kattintson a **Start Debugging** (Hibakeresés indítása) lehetőségre a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást egy Android-emulátoron.
+1. Right-click the Android project, and then click **Set As Startup Project**.
+2. On the **Run** menu, click **Start Debugging** to build the project and start the app in an Android emulator.
 
-####Visual Studióban
-1. Kattintson a jobb gombbal az Android- (Droid-) projektre, és kattintson a **Set as StartUp Project** (Beállítás kezdőprojektként) lehetőségre.
-4. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
-5. A **Configuration Manager** párbeszédpanelen jelölje be az Android-projekthez tartozó **Build** és **Telepítés** (Deploy) jelölőnégyzetet.
-6. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást egy Android-emulátoron.
+####In Visual Studio
+1. Right-click the Android (Droid) project, and then click **Set as StartUp Project**.
+4. On the **Build** menu, click **Configuration Manager**.
+5. In the **Configuration Manager** dialog box, select the **Build** and **Deploy** checkboxes of the Android project.
+6. Press the **F5** key to build the project and start the app in an Android emulator.
 
-    >[AZURE.NOTE] Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
+    >[AZURE.NOTE] If you have problems building, run NuGet package manager and update to the latest version of the Xamarin support packages. Sometimes the Quickstart projects may lag behind in being updated to the latest.    
 
 
-Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás_, majd kattintson a **+** gombra.
+In the app, type meaningful text, such as _Learn Xamarin_ and then click the **+** button.
 
 ![][11]
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+This sends a POST request to the new mobile app backend hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data is displayed in the list.
 
 > [AZURE.NOTE]
-> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+> You'll find the code that accesses your mobile app backend in the TodoItemManager.cs C# file of the portable class library project of your solution.
 
 
-##A Windows-projekt futtatása (nem kötelező)
+##(Optional) Run the Windows project
 
 
-Ez a szakasz a Windows-eszközökhöz készült Xamarin WinApp-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik Windows-eszközökkel.
+This section is for running the Xamarin WinApp project for Windows devices. You can skip this section if you are not working with Windows devices.
 
 
-####Visual Studióban
-1. Kattintson a jobb gombbal a Windows-projektek egyikére, és kattintson a **Set as StartUp Project** (Beállítás kezdőprojektként) lehetőségre.
-4. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
-5. A **Configuration Manager** párbeszédpanelen jelölje be a választott Windows-projekthez tartozó **Build** és **Deploy** (Telepítés) jelölőnégyzetet.
-6. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást egy Windows-emulátoron.
+####In Visual Studio
+1. Right-click any of the Windows projects, and then click **Set as StartUp Project**.
+4. On the **Build** menu, click **Configuration Manager**.
+5. In the **Configuration Manager** dialog box, select the **Build** and **Deploy** checkboxes of the Windows project that you chose.
+6. Press the **F5** key to build the project and start the app in a Windows emulator.
 
-    >[AZURE.NOTE] Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
+    >[AZURE.NOTE] If you have problems building, run NuGet package manager and update to the latest version of the Xamarin support packages. Sometimes the Quickstart projects may lag behind in being updated to the latest.    
 
 
-Az alkalmazásban írjon be egy értelmes szöveget, például _Xamarin-tanulás_, majd kattintson a **+** gombra.
+In the app, type meaningful text, such as _Learn Xamarin_ and then click the **+** button.
 
-Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
+This sends a POST request to the new mobile app backend hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data is displayed in the list.
 
 ![][12]
 
 > [AZURE.NOTE]
-> A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
+> You'll find the code that accesses your mobile app backend in the TodoItemManager.cs C# file of the portable class library project of your solution.
 
-##Következő lépések
+##Next steps
 
-* [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
-Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+* [Add authentication to your app](app-service-mobile-xamarin-forms-get-started-users.md)  
+Learn how to authenticate users of your app with an identity provider.
 
-* [Leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-push.md)  
-Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazásához, illetve hogyan konfigurálhatja Mobile Apps-háttéralkalmazását az Azure Notification Hubs használatára a leküldéses értesítések küldéséhez.
+* [Add push notifications to your app](app-service-mobile-xamarin-forms-get-started-push.md)  
+Learn how to add push notifications support to your app and configure your Mobile App backend to use Azure Notification Hubs to send push notifications.
 
-* [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
+* [Enable offline sync for your app](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
 
-* [A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md)  
-Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban. 
+* [How to use the managed client for Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)  
+Learn how to work with the managed client SDK in your Xamarin app. 
 
 
 <!-- Anchors. -->
-[Bevezetés a mobil-háttéralkalmazások használatába]:#getting-started
-[Új mobil-háttéralkalmazás létrehozása]:#create-new-service
-[Következő lépések]:#next-steps
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
+[Next Steps]:#next-steps
 
 
 <!-- Images. -->
@@ -181,12 +182,12 @@ Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazás
 
 <!-- URLs. -->
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-[Mobilalkalmazás-SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure Portal]: https://portal.azure.com/
 
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

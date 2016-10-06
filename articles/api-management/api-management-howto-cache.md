@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához | Microsoft Azure"
-    description="Megtudhatja, hogyan javíthat az API Management szolgáltatáshívások késleltetésén, sávszélesség-használatán és a webszolgáltatások terhelésén."
+    pageTitle="Add caching to improve performance in Azure API Management | Microsoft Azure"
+    description="Learn how to improve the latency, bandwidth consumption, and web service load for API Management service calls."
     services="api-management"
     documentationCenter=""
     authors="steved0x"
@@ -16,63 +16,64 @@
     ms.date="08/24/2016"
     ms.author="sdanie"/>
 
-# Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
-Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
+# Add caching to improve performance in Azure API Management
 
-Jelen útmutató ismerteti, hogyan adhatja hozzá az API-hoz a válaszok gyorsítótárazását, és hogyan konfigurálhat házirendeket a minta Echo API-műveletekhez. Ezt követően meghívhatja a műveletet a fejlesztői portálról a gyorsítótárazás működés közbeni ellenőrzéséhez.
+Operations in API Management can be configured for response caching. Response caching can significantly reduce API latency, bandwidth consumption, and web service load for data that does not change frequently.
 
->[AZURE.NOTE] További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
+This guide shows you how to add response caching for your API and configure policies for the sample Echo API operations. You can then call the operation from the developer portal to verify caching in action.
 
-## Előfeltételek
+>[AZURE.NOTE] For information on caching items by key using policy expressions, see [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
 
-Mielőtt belekezdene az útmutató lépéseibe, rendelkeznie kell egy API Management szolgáltatáspéldánnyal, amelyhez konfigurálva van egy API és egy termék. Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [Ismerkedés az Azure API Management szolgáltatással][] oktatóanyag [API Management szolgáltatáspéldány létrehozása][] című szakaszát.
+## Prerequisites
 
-## <a name="configure-caching"> </a>Művelet konfigurálása gyorsítótárazáshoz
+Before following the steps in this guide, you must have an API Management service instance with an API and a product configured. If you have not yet created an API Management service instance, see [Create an API Management service instance][] in the [Get started with Azure API Management][] tutorial.
 
-Ebben a lépésben a minta Echo API **GET Resource (cached)** műveletének gyorsítótárazási beállításait fogja ellenőrizni.
+## <a name="configure-caching"> </a>Configure an operation for caching
 
->[AZURE.NOTE] Minden API Management szolgáltatáspéldányhoz előre konfigurálva van egy kipróbálható Echo API, amely segít megismerni az API Management szolgáltatást. További információkért lásd: [Ismerkedés az Azure API Management szolgáltatással][].
+In this step, you will review the caching settings of the **GET Resource (cached)** operation of the sample Echo API.
 
-Első lépésként kattintson a **Kezelés** lehetőségre az API Management szolgáltatás klasszikus Azure portálján. Ezzel továbblép az API Management közzétevő portáljára.
+>[AZURE.NOTE] Each API Management service instance comes preconfigured with an Echo API that can be used to experiment with and learn about API Management. For more information, see [Get started with Azure API Management][].
 
-![Közzétevő portál][api-management-management-console]
+To get started, click **Manage** in the Azure Classic Portal for your API Management service. This takes you to the API Management publisher portal.
 
-Kattintson a bal oldali **API Management** menü **API-k** elemére, majd kattintson az **Echo API** lehetőségre.
+![Publisher portal][api-management-management-console]
+
+Click **APIs** from the **API Management** menu on the left, and then click **Echo API**.
 
 ![Echo API][api-management-echo-api]
 
-Kattintson a **Műveletek** lapra, majd kattintson a **Műveletek** lista **GET Resource (cached)** műveletére.
+Click the **Operations** tab, and then click the **GET Resource (cached)** operation from the **Operations** list.
 
-![Echo API műveletek][api-management-echo-api-operations]
+![Echo API operations][api-management-echo-api-operations]
 
-Kattintson a **Gyorsítótárazás** lapra a művelet gyorsítótárazási beállításainak megtekintéséhez.
+Click the **Caching** tab to view the caching settings for this operation.
 
-![Gyorsítótárazás lap][api-management-caching-tab]
+![Caching tab][api-management-caching-tab]
 
-Ha engedélyezni szeretné a gyorsítótárazást egy művelet számára, jelölje be az **Engedélyezés** jelölőnégyzetet. Ebben a példában engedélyezve van a gyorsítótárazás.
+To enable caching for an operation, select the **Enable** check box. In this example, caching is enabled.
 
-Minden művelet válasza egy kulccsal van ellátva a **Változtatás a lekérdezési karakterlánc paraméterei alapján** és **Változtatás a fejlécek alapján** mezőkben megadott értékek szerint. Ha gyorsítótárazni szeretné a többszöri válaszadást a lekérdezési karakterlánc paraméterei vagy a fejlécek alapján, ebben a két mezőben konfigurálhatja őket.
+Each operation response is keyed, based on the values in the **Vary by query string parameters** and **Vary by headers** fields. If you want to cache multiple responses based on query string parameters or headers, you can configure them in these two fields.
 
-Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **3600** másodperc, ami egy órának felel meg.
+**Duration** specifies the expiration interval of the cached responses. In this example, the interval is **3600** seconds, which is equivalent to one hour.
 
-Ha a példa gyorsítótárazási konfigurációját használja, a **GET Resource (cached)** műveletre irányuló első kérés a háttérszolgáltatásból küld vissza választ. Ez a válasz gyorsítótárazva lesz, és egy kulccsal lesz ellátva a megadott fejlécek és lekérdezési karakterlánc paraméterek alapján. A művelet későbbi, egyező paraméterekkel rendelkező hívásai a gyorsítótárazott választ küldik vissza, egészen addig, amíg a gyorsítótárazás időköze le nem jár.
+Using the caching configuration in this example, the first request to the **GET Resource (cached)** operation returns a response from the backend service. This response will be cached, keyed by the specified headers and query string parameters. Subsequent calls to the operation, with matching parameters, will have the cached response returned, until the cache duration interval has expired.
 
-## <a name="caching-policies"> </a>A gyorsítótárazási házirendek áttekintése
+## <a name="caching-policies"> </a>Review the caching policies
 
-Ebben a lépésben a minta Echo API **GET Resource (cached)** műveletének gyorsítótárazási beállításait ellenőrzi.
+In this step, you review the caching settings for the **GET Resource (cached)** operation of the sample Echo API.
 
-Amikor a **Gyorsítótárazás** lapon konfigurálják egy művelet gyorsítótárazási beállításait, a rendszer gyorsítótárazási házirendeket ad művelethez. Ezeket a házirendeket a házirendszerkesztőben lehet megtekinteni és szerkeszteni.
+When caching settings are configured for an operation on the **Caching** tab, caching policies are added for the operation. These policies can be viewed and edited in the policy editor.
 
-Kattintson a bal oldali **API Management** menü **Házirendek** elemére, majd válassza ki az **Echo API / GET Resource (cached)** lehetőséget a **Művelet** legördülő listából.
+Click **Policies** from the **API Management** menu on the left, and then select **Echo API / GET Resource (cached)** from the **Operation** drop-down list.
 
-![Házirend-hatókör művelet][api-management-operation-dropdown]
+![Policy scope operation][api-management-operation-dropdown]
 
-Ez megjeleníti a művelet házirendjeit a házirendszerkesztőben.
+This displays the policies for this operation in the policy editor.
 
-![API Management házirendszerkesztő][api-management-policy-editor]
+![API Management policy editor][api-management-policy-editor]
 
-A művelet házirend-definíciójába beletartoznak azok a házirendek is, amelyek az előző lépésben a **Gyorsítótárazás** lappal ellenőrzött gyorsítótárazási konfigurációt definiálják.
+The policy definition for this operation includes the policies that define the caching configuration that were reviewed using the **Caching** tab in the previous step.
 
     <policies>
         <inbound>
@@ -89,48 +90,48 @@ A művelet házirend-definíciójába beletartoznak azok a házirendek is, amely
         </outbound>
     </policies>
 
->[AZURE.NOTE] A gyorsítótárazási házirendek házirendszerkesztőben végzett módosításai meg fognak jelenni a művelet **Gyorsítótárazás** oldalán, és fordítva.
+>[AZURE.NOTE] Changes made to the caching policies in the policy editor will be reflected on the **Caching** tab of an operation, and vice-versa.
 
-## <a name="test-operation"> </a>Művelet meghívása és a gyorsítótárazás tesztelése
+## <a name="test-operation"> </a>Call an operation and test the caching
 
-A gyorsítótárazás működés közbeni megtekintéséhez meghívhatjuk a műveletet a fejlesztői portálról. Kattintson a **Fejlesztői portál** lehetőségre a jobb felső menüben.
+To see the caching in action, we can call the operation from the developer portal. Click **Developer portal** in the top right menu.
 
-![Fejlesztői portál][api-management-developer-portal-menu]
+![Developer portal][api-management-developer-portal-menu]
 
-Kattintson az **API-k** elemre a felső menüben, majd válassza az **Echo API** lehetőséget.
+Click **APIs** in the top menu, and then select **Echo API**.
 
 ![Echo API][api-management-apis-echo-api]
 
->Ha csak egy API van konfigurálva, vagy csak egy API látható a fiókja számára, és rákattint az API-k elemre, az közvetlenül az API-hoz tartozó művelethez fogja vinni.
+>If you have only one API configured or visible to your account, then clicking APIs takes you directly to the operations for that API.
 
-Válassza ki a **GET Resource (cached)** műveletet, majd kattintson a **Konzol megnyitása** lehetőségre.
+Select the **GET Resource (cached)** operation, and then click **Open Console**.
 
-![Konzol megnyitása][api-management-open-console]
+![Open console][api-management-open-console]
 
-A konzol lehetővé teszi, hogy műveleteket hívjon meg közvetlenül a fejlesztői portálról.
+The console allows you to invoke operations directly from the developer portal.
 
-![Konzol][api-management-console]
+![Console][api-management-console]
 
-Tartsa meg a **param1** és a **param2** alapértelmezett értékeit.
+Keep the default values for **param1** and **param2**.
 
-Válassza ki a kívánt kulcsot a **subscription-key** legördülő listából. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor az alapból ki lesz választva.
+Select the desired key from the **subscription-key** drop-down list. If your account has only one subscription, it will already be selected.
 
-Írja be a **sampleheader:value1** kifejezést a **Kérésfejlécek** szövegmezőbe.
+Enter **sampleheader:value1** in the **Request headers** text box.
 
-Kattintson a **HTTP Get** lehetőségre, és jegyezze fel a válaszfejléceket.
+Click **HTTP Get** and make a note of the response headers.
 
-Írja be a **sampleheader:value2** kifejezést a **Kérésfejlécek** szövegmezőbe, majd kattintson a **HTTP Get** lehetőségre.
+Enter **sampleheader:value2** in the **Request headers** text box, and then click **HTTP Get**.
 
-Vegye figyelembe, hogy a **sampleheader** értéke a válaszban is **value1**. Próbáljon ki különböző értékeket, és jegyezze fel az első visszaküldött hívás gyorsítótárazott válaszát.
+Note that the value of **sampleheader** is still **value1** in the response. Try some different values and note that the cached response from the first call is returned.
 
-Írja be a **25** értéket a **param2** mezőbe, majd kattintson a **HTTP Get** lehetőségre.
+Enter **25** into the **param2** field, and then click **HTTP Get**.
 
-Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **value2**. Mivel a művelet eredményei egy kulccsal vannak ellátva a lekérdezési karakterlánc alapján, a rendszer nem küldte vissza az előző gyorsítótárazott választ.
+Note that the value of **sampleheader** in the response is now **value2**. Because the operation results are keyed by query string, the previous cached response was not returned.
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"> </a>Next steps
 
--   További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][] [Gyorsítótárazási házirendek][] szakaszában talál.
--   További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
+-   For more information about caching policies, see [Caching policies][] in the [API Management policy reference][].
+-   For information on caching items by key using policy expressions, see [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png
@@ -144,25 +145,25 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **valu
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[Műveletek hozzáadása API-khoz]: api-management-howto-add-operations.md
-[Termék hozzáadása és közzététele]: api-management-howto-add-products.md
-[Figyelés és elemzés]: api-management-monitoring.md
-[API-k hozzáadása termékekhez]: api-management-howto-add-products.md#add-apis
-[Termék közzététele]: api-management-howto-add-products.md#publish-product
-[Ismerkedés az Azure API Management szolgáltatással]: api-management-get-started.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
 
-[API Management házirend-referencia]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Gyorsítótárazási házirendek]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
+[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[API Management szolgáltatáspéldány létrehozása]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[Művelet konfigurálása gyorsítótárazáshoz]: #configure-caching
-[A gyorsítótárazási házirendek áttekintése]: #caching-policies
-[Művelet meghívása és a gyorsítótárazás tesztelése]: #test-operation
-[Következő lépések]: #next-steps
+[Configure an operation for caching]: #configure-caching
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
+[Next steps]: #next-steps
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,21 +1,21 @@
 > [AZURE.SELECTOR]
-- [C##](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
+- [C#](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
 - [Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 - [Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
 
-## Bevezetés
+## Introduction
 
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé az eszközök internetes hálózatához (IoT) csatlakozó több millió eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan lehet megbízható és biztonságos módon csatlakoztatni az eszközöket a megoldás háttérrendszeréhez. A kihívás megoldására az IoT Hub a következőket kínálja:
+Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of Internet of Things (IoT) devices and a solution back end. One of the biggest challenges that IoT projects face is how to reliably and securely connect devices to the solution back end. To address this challenge, IoT Hub:
 
-- Megbízható nagy kapacitású üzenetkezelést kínál az eszközök és a felhő között mindkét irányban.
-- Az eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés segítségével lehetővé teszi a biztonságos kommunikációt.
-- Tartalmazza a legnépszerűbb nyelvek és platformok eszközkönyvtárait.
+- Offers reliable device-to-cloud and cloud-to-device hyper-scale messaging.
+- Enables secure communications using per-device security credentials and access control.
+- Includes device libraries for the most popular languages and platforms.
 
-Ez az oktatóanyag a következőket mutatja be:
+This tutorial shows you how to:
 
-- Egy IoT Hub létrehozása az Azure Portallal.
-- Eszközidentitás létrehozása az IoT Hubban.
-- Egy szimulált eszköz létrehozása, amely telemetriai adatokat küld a felhő háttérrendszerének, és parancsokat fogad a felhő háttérrendszeréből.
+- Use the Azure portal to create an IoT hub.
+- Create a device identity in your IoT hub.
+- Create a simulated device that sends telemetry to your cloud back end, and receives commands from your cloud back end.
 
 <!--HONumber=Sep16_HO4-->
 

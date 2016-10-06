@@ -1,57 +1,64 @@
 <properties
-	pageTitle="Service Bus messaging overview | Microsoft Azure"
-	description="Service Bus Messaging: flexible data delivery in the cloud"
-	services="service-bus-messaging"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+    pageTitle="A Service Bus üzenetkezelésének áttekintése | Microsoft Azure"
+    description="Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben"
+    services="service-bus-messaging"
+    documentationCenter=".net"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="service-bus-messaging"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="get-started-article"
-	ms.date="09/27/2016"
-	ms.author="sethm"/>
+    ms.service="service-bus-messaging"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="multiple"
+    ms.topic="get-started-article"
+    ms.date="09/27/2016"
+    ms.author="sethm"/>
 
 
-# Service Bus messaging: flexible data delivery in the cloud
 
-Microsoft Azure Service Bus is a reliable information delivery service. The purpose of this service is to make communication easier. When two or more parties want to exchange information, they need a communication mechanism. Service Bus is a brokered, or third-party communication mechanism. This is similar to a postal service in the physical world. Postal services make it very easy to send different kinds of letters and packages with a variety of delivery guarantees, anywhere in the world.
+# Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben
 
-Similar to the postal service delivering letters, Service Bus is flexible information delivery from both the sender and the recipient. The messaging service ensures that the information is delivered even if the two parties are never both online at the same time, or if they aren't available at the exact same time. In this way, messaging is similar to sending a letter, while non-brokered communication is similar to placing a phone call (or how a phone call used to be - before call waiting and caller ID, which are much more like brokered messaging).
+A Microsoft Azure Service Bus egy megbízható információkézbesítési szolgáltatás. A szolgáltatás célja a kommunikáció megkönnyítése. Ha két vagy több fél információt szeretne cserélni, kommunikációs mechanizmusra van szükségük. A Service Bus egy közvetítő- vagy harmadikfél-alapú kommunikációs módszer. Hasonló a fizikai világ postai szolgáltatásaihoz. A postai szolgáltatások számos kézbesítési garanciával könnyítik meg különböző fajta levelek és csomagok küldését a világ minden táján.
 
-The message sender can also require a variety of delivery characteristics including transactions, duplicate detection, time-based expiration, and batching. These patterns have postal analogies as well: repeat delivery, required signature, address change, or recall.
+A postai szolgáltatás levélkézbesítéséhez hasonlóan a Service Bus is rugalmas információkézbesítési szolgáltatást biztosít a küldő és a címzett számára. Az üzenetkezelési szolgáltatás biztosítja, hogy az információ akkor is célba érjen, ha a két fél soha nincs egyszerre online, vagy nem érhetők el pont egyszerre. Ebben a tekintetben az üzenetkezelés egy levél küldéséhez, a nem közvetítőalapú kommunikáció pedig egy telefonhíváshoz (vagy legalábbis a hívásvárakoztatás és hívóazonosítás korát megelőző idők telefonhívásaihoz) hasonlít.
 
-Service Bus supports two distinct messaging patterns: *Relay* and *brokered messaging*.
+Az üzenet küldője számos különböző továbbítási jellemzőt igényelhet (például tranzakciók, kettős észlelés, időalapú lejárat és kötegelés). Ezeknek a mintáknak is megvannak a postai párhuzamaik: ismételt kézbesítés, kötelező aláírás, címmódosítás vagy visszahívás.
+
+A Service Bus két különböző üzenetkezelési mintát támogat: a *Relay* továbbítón keresztüli üzenetcserét és a *közvetítőalapú üzenettovábbítást*.
 
 ## Service Bus Relay
 
-The [Relay](../service-bus-relay/service-bus-relay-overview.md) component of Service Bus is a centralized (but highly load-balanced) service that supports a variety of different transport protocols and Web services standards. This includes SOAP, WS-*, and even REST. The [relay service](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) provides a variety of different relay connectivity options and can help negotiate direct peer-to-peer connections when it is possible. Service Bus is optimized for .NET developers who use the Windows Communication Foundation (WCF), both with regard to performance and usability, and provides full access to its relay service through SOAP and REST interfaces. This makes it possible for any SOAP or REST programming environment to integrate with Service Bus.
+A Service Bus [Relay](../service-bus-relay/service-bus-relay-overview.md) összetevője egy központosított (de erősen elosztott terhelésű) szolgáltatás, amely számos különböző átviteli protokollt és webszolgáltatási szabványt támogat. Ezek közé tartozik például a SOAP, a WS-* és a REST is. A [továbbítási szolgáltatás](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) számos különböző továbbítási kapcsolati lehetőséget biztosít, és segít a közvetlen társközi kapcsolatok egyeztetésében, ha lehetséges. A Service Bus a teljesítmény és a használhatóság tekintetében a Windows Communication Foundation (WCF) szolgáltatást használó .NET-fejlesztők számára van optimalizálva, másrészt teljes hozzáférést biztosít a továbbítási szolgáltatáshoz a SOAP és a REST felületeken keresztül. Ez lehetővé teszi bármely SOAP vagy REST programozási környezet integrálását a Service Busba.
 
-The relay service supports traditional one-way messaging, request/response messaging, and peer-to-peer messaging. It also supports event distribution at Internet-scope to enable publish-subscribe scenarios and bi-directional socket communication for increased point-to-point efficiency. In the relayed messaging pattern, an on-premises service connects to the relay service through an outbound port and creates a bi-directional socket for communication tied to a particular rendezvous address. The client can then communicate with the on-premises service by sending messages to the relay service targeting the rendezvous address. The relay service will then "relay" messages to the on-premises service through the bi-directional socket already in place. The client does not need a direct connection to the on-premises service, nor is it required to know where the service resides, and the on-premises service does not need any inbound ports open on the firewall.
+A továbbítási szolgáltatás támogatja a hagyományos egyirányú, a kérelem/válasz típusú és a társközi üzenetkezelést. Támogatja az események terjesztését is az internetes tartományban, így a pontok közötti nagyobb hatékonyság érdekében lehetővé válnak a közzétételi és előfizetési forgatókönyvek és a kétirányú szoftvercsatornás kommunikáció. A továbbítón keresztüli üzenetcsere mintában a helyszíni szolgáltatás csatlakozik a továbbítási szolgáltatáshoz egy kimenő porton keresztül, majd létrehoz egy adott szinkronizálási címhez kötött kétirányú szoftvercsatornát a kommunikációhoz. Az ügyfél ezután kommunikálhat a helyszíni szolgáltatással, ha a szinkronizálási címet megcélozva üzeneteket küld a továbbítási szolgáltatásnak. A továbbítási szolgáltatás ezután továbbítja az üzeneteket a helyszíni szolgáltatásra a már létrejött kétirányú szoftvercsatornán keresztül. Az ügyfélnek nincs szüksége közvetlen kapcsolatra a helyszíni szolgáltatással, és azt sem kell tudnia, hol található, a helyszíni szolgáltatásnak pedig nincs szüksége megnyitott bejövő portra a tűzfalon.
 
-You initiate the connection between your on-premises service and the relay service, using a suite of WCF "relay" bindings. Behind the scenes, the relay bindings map to transport binding elements designed to create WCF channel components that integrate with Service Bus in the cloud.
+A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett átviteli kötőelemekké képezi le.
 
-Service Bus Relay provides many benefits, but requires the server and client to both be online at the same time in order to send and receive messages. This is not optimal for HTTP-style communication, in which the requests may not be typically long-lived, nor for clients that connect only occasionally, such as browsers, mobile applications, and so on. Brokered messaging supports decoupled communication, and has its own advantages; clients and servers can connect when needed and perform their operations in an asynchronous manner.
+A Service Bus Relay használatával történő üzenetcsere számos előnnyel jár, de elengedhetetlen hozzá, hogy a kiszolgáló és az ügyfél egyszerre legyen online állapotban, hogy küldeni és fogadni lehessen az üzeneteket. Ez nem optimális a HTTP-stílusú kommunikáció esetén, ahol a kérelmek jellemzően nem hosszú életűek, illetve az olyan ügyfelek számára sem, akik csak alkalmanként csatlakoznak (például böngészők, mobilalkalmazások stb.). A közvetítőalapú üzenettovábbítás támogatja a leválasztott kommunikációt, és megvannak a saját előnyei; az ügyfelek és a kiszolgálók akkor csatlakozhatnak, amikor szükséges, és a műveleteket aszinkron módon hajthatják végre.
 
-## Brokered messaging
+## Közvetítőalapú üzenettovábbítás
 
-In contrast to the relay scheme, [brokered messaging](service-bus-queues-topics-subscriptions.md) can be thought of as asynchronous, or "temporally decoupled." Producers (senders) and consumers (receivers) do not have to be online at the same time. The messaging infrastructure reliably stores messages in a "broker" (such as a queue) until the consuming party is ready to receive them. This allows the components of the distributed application to be disconnected, either voluntarily; for example, for maintenance, or due to a component crash, without affecting the entire system. Furthermore, the receiving application may only have to come online during certain times of the day, such as an inventory management system that only is required to run at the end of the business day.
+A továbbítón keresztüli üzenetcsere sémájával szemben a [közvetítőalapú üzenettovábbítás](service-bus-queues-topics-subscriptions.md) tekinthető aszinkronnak vagy átmenetileg leválasztottnak. Az adatalkotóknak (küldőknek) és a fogyasztóknak (fogadóknak) nem kell egyszerre online lenniük. Az üzenetküldési infrastruktúra megbízhatóan tárolja az üzeneteket egy közvetítőben (például várólistán), amíg a fogyasztó fél készen nem áll a fogadásukra. Ez lehetővé teszi az elosztott alkalmazás összetevőinek leválasztását, akár önkéntesen – például karbantartási céllal –, akár egy összetevő összeomlása miatt, anélkül, hogy ez az egész rendszerre hatással lenne. A fogadó alkalmazásnak továbbá csak a nap bizonyos szakaszaiban kell online lennie, például egy olyan készletkezelő rendszer esetén, amelynek csak a munkanapok végén kell futnia.
 
-The core components of the Service Bus brokered messaging infrastructure are queues, topics, and subscriptions.  The primary difference is that topics support publish/subscribe capabilities that can be used for sophisticated content-based routing and delivery logic, including sending to multiple recipients. These components enable new asynchronous messaging scenarios, such as temporal decoupling, publish/subscribe, and load balancing. For more information about these messaging entities, see [Service Bus queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md).
+A Service Bus közvetítő alapú üzenettovábbítás infrastruktúrájának alapvető összetevői a várólisták, témakörök és előfizetések.  Az elsődleges különbség az, hogy a témakörök támogatják a közzétételi/előfizetési képességeket, amelyek segítségével kifinomultabb tartalomalapú útválasztás és kézbesítési logika érhető el, például küldés több címzettnek. Ezek az összetevők új aszinkron üzenetkezelési forgatókönyveket tesznek lehetővé, például az átmeneti leválasztást, a közzétételt/előfizetést és a terheléselosztást. További információk ezekről az üzenetkezelési entitásokról: [Service Bus queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Service Bus-üzenetsorok, -témakörök és -előfizetések).
 
-As with the Relay infrastructure, the brokered messaging capability is provided for WCF and .NET Framework programmers, and also via REST.
+Akárcsak a Relay-infrastruktúra esetén, a közvetítőalapú üzenettovábbítás képessége is elérhető a WCF és .NET-keretrendszer programozói számára, valamint REST-en keresztül is.
 
-## Next steps
+## Következő lépések
 
-To learn more about Service Bus messaging, see the following topics.
+A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-- [Service Bus fundamentals](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md)
-- [Service Bus architecture](../service-bus/service-bus-architecture.md)
-- [How to use Service Bus queues](service-bus-dotnet-get-started-with-queues.md)
-- [How to use Service Bus topics and subscriptions](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Service Bus fundamentals (A Service Bus alapjai)](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
+- [Service Bus-architektúra](../service-bus/service-bus-architecture.md)
+- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-get-started-with-queues.md)
+- [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

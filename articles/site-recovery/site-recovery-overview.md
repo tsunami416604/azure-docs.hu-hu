@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Mi a Site Recovery? | Microsoft Azure" 
-    description="Áttekintést nyújt az Azure Site Recovery szolgáltatásról, és ismerteti a szolgáltatás üzembe helyezését." 
+    pageTitle="What is Site Recovery? | Microsoft Azure" 
+    description="Provides an overview of the Azure Site Recovery service and explains how the service can be deployed." 
     services="site-recovery" 
     documentationCenter="" 
     authors="rayne-wiselman" 
@@ -13,76 +13,77 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="storage-backup-recovery" 
-    ms.date="02/22/2016" 
+    ms.date="09/29/2016" 
     ms.author="raynew"/>
 
-#  Mi a Site Recovery?
 
-Üdvözli Önt az Azure Site Recovery szolgáltatás! Kezdje ezzel a cikkel, hogy gyorsan áttekinthesse a Site Recovery szolgáltatás működését, illetve azt, hogyan járulhat hozzá a szolgáltatás üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiájának megvalósításához.
+#  What is Site Recovery?
 
-## Áttekintés
+Welcome to the Azure Site Recovery! Start with this article to get a quick overview of the Site Recovery service and how can contribute to your business continuity and disaster recovery (BCDR) strategy.
 
-A legtöbb vállalatnál szükség van üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak az alkalmazások, a számítási feladatok és az adatok üzemben maradni a tervezett és nem tervezett leállások során, illetve, hogy hogyan lehet minél gyorsabban visszaállni a normál működésre. Fontos, hogy a BCDR stratégia gondoskodjon a vállalati adatok biztonságáról és helyreállíthatóságáról, és lehetővé tegye, hogy a számítási feladatok még vészhelyzet esetén se álljanak le. 
+## Overview
 
-Az Azure Site Recovery szolgáltatása a helyszíni fizikai kiszolgálóknak és virtuális gépeknek az Azure-felhőbe vagy egy másodlagos adatközpontba történő replikálásával segít a stratégia kidolgozásában. Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat. További információ: [Mi a Site Recovery?](site-recovery-overview.md)
+Organizations need a BCDR strategy that determines how apps, workloads, and data stay running and available during planned and unplanned downtime, and recover to normal working conditions as soon as possible. Your BCDR strategy should keep business data safe and recoverable, and ensure that workloads remain continuously available when disaster occurs. 
 
-## Site Recovery az Azure Portalon
+Site Recovery is an Azure service that contributes to your BCDR strategy by orchestrating replication of on-premises physical servers and virtual machines to the cloud (Azure) or to a secondary datacenter. When outages occur in your primary location, you fail over to the secondary location to keep apps and workloads available. You fail back to your primary location when it returns to normal operations. Learn more in [What is Site Recovery?](site-recovery-overview.md)
 
-Az Azure két különböző [üzemi modellel](../resource-manager-deployment-model.md) rendelkezik az erőforrások létrehozásához és használatához: az Azure Resource Manager-modellel és a klasszikus szolgáltatáskezelési modellel. Az Azure-ban két különböző portál érhető el: a [klasszikus Azure Portal](https://manage.windowsazure.com/), amely a klasszikus üzembe helyezési modellt, és az [Azure Portal](https://portal.azure.com), amely mindkét modellt támogatja.
+## Site Recovery in the Azure portal
 
-A Site Recovery a klasszikus portálon és az Azure Portalon egyaránt elérhető. A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatáskezelési modellel támogatható. Az Azure Portalon a klasszikus modellen és a Resource Manageren alapuló üzemelő példányok is támogatottak. [További információ](site-recovery-overview.md#site-recovery-in-the-azure-portal) az Azure Portalon történő üzembe helyezésről.
+Azure has two different [deployment models](../resource-manager-deployment-model.md) for creating and working with resources: the Azure Resource Manager model and the classic services management model. Azure also has two portals – the [Azure classic portal](https://manage.windowsazure.com/) that supports the classic deployment model, and the [Azure portal](https://portal.azure.com) with support for both deployment models.
 
-A cikk információi a klasszikus és az Azure Portalon üzemelő példányokra egyaránt vonatkoznak. Az esetleges különbségeket jelezzük.
+Site Recovery is available in both the classic portal and the Azure portal. In the Azure classic portal you can support Site Recovery with the classic services management model. In the Azure portal you can support the classic model or Resource Manager deployments. [Read more](site-recovery-overview.md#site-recovery-in-the-azure-portal) about deploying with the Azure portal.
+
+The information in this article applies to both classic and Azure portal deployments. Differences are noted where applicable.
 
 
-## Miért előnyös a Site Recovery használata? 
+## Why use Site Recovery? 
 
-A Site Recovery a következőkkel segítheti a vállalatát:
+Here's what Site Recovery can do for your business:
 
-- **A BCDR-stratégia leegyszerűsítése** – A Site Recovery megkönnyíti több üzleti számítási feladat és alkalmazás replikációjának, feladatátvételének és helyreállításának egyetlen helyről történő kezelését. A Site Recovery koordinálja a replikációt és a feladatátvételt, de nem fér hozzá az alkalmazás adataihoz, és semmilyen arra vonatkozó információval nem rendelkezik.
-- **Rugalmas replikáció biztosítása** – A Site Recovery segítségével replikálhatja a Hyper-V virtuális gépeken, a VMware virtuális gépeken és a Windows/Linux fizikai kiszolgálókon futó számítási feladatokat. 
-- **Egyszerű feladatátvétel és helyreállítás** – A Site Recovery feladatátvételi teszteket biztosít a vészhelyreállítások részletezésének támogatásához anélkül, hogy ez hatással lenne az éles környezetekre. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel befejezése után visszaadhatja a feladatokat az elsődleges helyeknek. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását. 
-- **Másodlagos adatközpont kiküszöbölése** – A replikálást egy másodlagos helyszíni helyre vagy az Azure-ba végezheti. Ha az Azure-t használj a vészhelyreállítás célhelyeként, elkerülheti a másodlagos hely fenntartásával járó költségeket és bonyodalmakat, és a replikált adatokat az Azure Storage fogja tárolni, az összes általa biztosított hibatűrés mellett.
-- **Integrálás a meglévő BCDR-technológiákkal** – A Site Recovery együttműködik az alkalmazás más BCDR-funkcióival. A Site Recovery segítségével megvédheti például a vállalati számítási feladatok SQL Server háttéralkalmazását, ideértve az SQL Server AlwaysOn natív támogatását is a rendelkezésre állási csoportok feladatátvételének kezelésében. 
+- **Simplify your BCDR strategy**—Site Recovery makes it easy to handle replication, failover and recovery of multiple business workloads and apps from a single location. Site recovery orchestrates replication and failover but doesn't intercept your application data or have any information about it.
+- **Provide flexible replication**—Using Site Recovery you can replicate workloads running on Hyper-V virtual machines, VMware virtual machines, and Windows/Linux physical servers. 
+- **Easy failover and recovery**—Site Recovery provides test failovers to support disaster recovery drills without affecting production environments. You can also run planned failovers with a zero-data loss for expected outages, or unplanned failovers with minimal data loss (depending on replication frequency) for unexpected disasters. After failover you can failback to your primary sites. Site Recovery provides recovery plans that can include scripts and Azure automation workbooks so that you can customize failover and recovery of multi-tier applications. 
+- **Eliminate secondary datacenter**—You can replicate to a secondary on-premises site, or to Azure. Using Azure as a destination for disaster recovery eliminates the cost and complexity maintaining a secondary site, and replicated data is stored in Azure Storage, with all the resilience that provides.
+- **Integrate with existing BCDR technologies**—Site Recovery partners with other application BCDR features. For example you can use Site Recovery to protect the SQL Server back end of corporate workloads, including native support for SQL Server AlwaysOn to manage the failover of availability groups. 
 
-## Miket replikálhatok?
+## What can I replicate?
 
-Itt található egy összefoglaló arról, hogy mit replikálhat a Site Recovery használatával.
+Here's a summary of what you can replicate using Site Recovery.
 
-![Két helyszíni hely közötti replikálás](./media/site-recovery-overview/asr-overview-graphic.png)
+![On-premises to on-premises](./media/site-recovery-overview/asr-overview-graphic.png)
 
-**REPLIKÁLÁS** | **REPLIKÁLÁS FORRÁSA (HELYSZÍNI)** | **REPLIKÁLÁS CÉLHELYE** | **CIKK**
+**REPLICATE** | **REPLICATE FROM (ON-PREMISES)** | **REPLICATE TO** | **ARTICLE**
 ---|---|---|---
-VMware virtuális gépek | VMware-kiszolgáló | Azure | [Részletek](site-recovery-vmware-to-azure-classic.md)
-VMware virtuális gépek | VMware-kiszolgáló | Másodlagos VMware-hely | [Részletek](site-recovery-vmware-to-vmware.md) 
-Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben | Azure | [Részletek](site-recovery-vmm-to-azure.md) 
-Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben | Másodlagos VMM-hely | [Részletek](site-recovery-vmm-to-vmm.md)
-Hyper-V virtuális gépek | Hyper-V-gazdagépek a VMM-felhőben, SAN-tárakkal| VMM másodlagos hely, SAN-tárral | [Részletek](site-recovery-vmm-san.md)
-Hyper-V virtuális gépek | Hyper-V-gazdagép (VMM nélkül) | Azure | [Részletek](site-recovery-hyper-v-site-to-azure.md)
-Fizikai Windows-/Linux-kiszolgálók | Fizikai kiszolgáló | Azure | [Részletek](site-recovery-vmware-to-azure-classic.md)
-Fizikai Windows/Linux-kiszolgálókon futó számítási feladatok | Fizikai kiszolgáló | Másodlagos adatközpont | [Részletek](site-recovery-vmware-to-vmware.md) 
+VMware VMs | VMware server | Azure | [Learn more](site-recovery-vmware-to-azure-classic.md)
+VMware VMs | VMware server | Secondary VMware site | [Learn more](site-recovery-vmware-to-vmware.md) 
+Hyper-V VMs | Hyper-V host in VMM cloud | Azure | [Learn more](site-recovery-vmm-to-azure.md) 
+Hyper-V VMs | Hyper-V host in VMM cloud | Secondary VMM site | [Learn more](site-recovery-vmm-to-vmm.md)
+Hyper-V VMs | Hyper-V host in VMM cloud with SAN storage| Secondary VMM site with SAN storage | [Learn more](site-recovery-vmm-san.md)
+Hyper-V VMs | Hyper-V host (no VMM) | Azure | [Learn more](site-recovery-hyper-v-site-to-azure.md)
+Physical Windows/Linux servers | Physical server | Azure | [Learn more](site-recovery-vmware-to-azure-classic.md)
+Workloads running on physical Windows/Linux servers | Physical server | Secondary datacenter | [Learn more](site-recovery-vmware-to-vmware.md) 
 
 
-## Milyen számítási feladatokat tudok megvédeni?
+## What workloads can I protect?
 
-A Site Recovery elősegíti az alkalmazásbarát BCDR-stratégia megvalósítását, így a számítási feladatok és az alkalmazások konzisztens módon futhatnak továbbra leállások esetén is. A Site Recovery a következőket biztosítja: 
+Site Recovery can help with application-aware BCDR so that workloads and apps continue to run in a consistent way when outages occur. Site Recovery provides: 
 
-- **Alkalmazáskonzisztens pillanatképek** – Egyetlen vagy N szintű alkalmazásokhoz alkalmazáskonzisztens pillanatképeket használó replikáció.
-- **Közel szinkron replikáció** – A replikáció gyakorisága Hyper-V esetén akár 30 másodperc is lehet, VMware esetén pedig folyamatos lehet a replikáció.
-- **Integráció az SQL Server AlwaysOn szolgáltatással** – A Site Recovery helyreállítási terveiben kezelheti a rendelkezésre állási csoportok feladatátvételét. 
-- **Rugalmas helyreállítási tervek** – Külső parancsfájlokat, manuális műveleteket és Azure Automation-forgatókönyveket tartalmazó helyreállítási terveket hozhat létre és szabhat testre, amelyek segítségével egész alkalmazáscsoportokat állíthat helyre egyetlen kattintással.
-- **Automatizálási könyvtár** – Az Azure Automation-könyvtár gazdag, éles használatra kész és alkalmazásspecifikus parancsfájlokat tartalmazó automatizálási könyvtár, amely letölthető, és beépíthető a Site Recovery szolgáltatásba.
-- **Egyszerű hálózatkezelés** – A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, amely hatékony hálózatváltást garantál.
+- **Application-consistent snapshots**—Replication using application-consistent snapshots for single or N-tier apps.
+- **Near-synchronous replication**—Replication frequency as low as 30 seconds for Hyper-V, and continuous replication for VMware.
+- **Integration with SQL Server AlwaysOn**—You can manage the failover of availability groups in Site Recovery recovery plans. 
+- **Flexible recovery plans**— You can create and customize recovery plans with external scripts, manual actions, and Azure Automation runbooks that enable you to recover an entire application stack with a single click.
+- **Automation library**—A rich Azure Automation library provides production-ready, application-specific scripts that can be downloaded and integrated with Site Recovery.
+- **Simple network management**—Advanced network management in Site Recovery and Azure simplifies application network requirements, including reserving IP addresses, configuring load-balancers, and integrating Azure Traffic Manager for efficient network switch overs.
 
 
-## Következő lépések
+## Next steps
 
-- További információk: [Milyen számítási feladatokat tud védeni a Site Recovery?](site-recovery-workload.md)
-- További információk a Site Recovery architektúrájáról: [Hogyan működik a Site Recovery?](site-recovery-components.md)
+- Read more in [What workloads can Site Recovery protect?](site-recovery-workload.md)
+- Learn more about Site Recovery architecture in [How does Site Recovery work?](site-recovery-components.md)
  
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

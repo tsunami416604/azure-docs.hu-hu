@@ -14,16 +14,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/23/2016"
-    ms.author="femila"/>
+    ms.date="09/27/2016"
+    ms.author="Markvi"/>
+
 
 # Ismerkedés az Azure Active Directory eszközregisztrációjával
 
 Az Azure Active Directory eszközregisztráció az eszközalapú feltételes hozzáférési forgatókönyvek alapja. Amikor regisztrál egy eszközt, az Azure Active Directory eszközregisztráció egy identitással látja el az eszközt, amely az eszköz hitelesítésére használható a felhasználó bejelentkezésekor. A hitelesített eszköz és az eszköz attribútumai ezután a feltételes hozzáférési házirendek betartatásához használhatók a felhőben és a helyszínen tárolt alkalmazások esetében.
 
-Amikor mobileszköz-kezelési (MDM) megoldással, például az Intune-nal ötvözi, frissülnek az Azure Active Directoryban lévő eszközattribútumok az eszköz további információival. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak.
-
-Az Azure Active Directory eszközregisztráció az Azure Active Directoryban érhető el. A szolgáltatás részét képezi az iOS-, Android- és Windows Phone-eszközök támogatása. Az Azure Active Directory eszközregisztrációt használó egyes forgatókönyvek konkrétabb követelményekkel és platformtámogatással rendelkezhetnek.
+Amikor mobileszköz-kezelési (MDM) megoldással, például a Microsoft Intune-nal ötvözi, frissülnek az Azure Active Directoryban lévő eszközattribútumok az eszköz további információival. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak. További információk az eszközöknek a Microsoft Intune-ban történő regisztrálásával kapcsolatban: [Eszközök regisztrálása felügyeletre a Microsoft Intune-ban](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune).
 
 ## Az Azure Active Directory eszközregisztráció által engedélyezett forgatókönyvek
 
@@ -31,12 +30,15 @@ Az Azure Active Directory eszközregisztráció részét képezi az iOS-, Androi
 
 - **Helyben tárolt alkalmazások feltételes hozzáférése:** Hozzáférési házirendekkel használhat regisztrált eszközöket olyan alkalmazásokhoz, amelyek a Windows Server 2012 R2 AD FS szolgáltatásának használatához vannak konfigurálva. A helyszíni feltételes hozzáférés beállításáról további információért lásd: [Helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával](active-directory-conditional-access-on-premises-setup.md).
 
-- **Feltételes hozzáférés az Office 365-alkalmazásokhoz a Microsoft Intune-nal:** Az informatikai rendszergazdák feltételes hozzáférési eszközházirendeket adhatnak meg a vállalati erőforrások biztonságossá tétele érdekében, miközben lehetővé teheteik, hogy az infomunkások elérhessék a szolgáltatásokat a feltételeknek megfelelő eszközökön. További információ: Feltételes hozzáférés eszközházirendjei Office 365-szolgáltatásokhoz.
+- **Feltételes hozzáférés az Office 365-alkalmazásokhoz a Microsoft Intune-nal:** Az informatikai rendszergazdák feltételes hozzáférési eszközházirendeket adhatnak meg a vállalati erőforrások biztonságossá tétele érdekében, miközben lehetővé teheteik, hogy az infomunkások elérhessék a szolgáltatásokat a feltételeknek megfelelő eszközökön. További információ: [Feltételes hozzáférés eszközházirendjei Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md).
 
 ##Az Azure Active Directory eszközregisztráció beállítása
 
 Engedélyeznie kell az Azure AD eszközregisztrációját az Azure Portalon, hogy a mobileszközök felderíthessék a szolgáltatást a jól ismert DNS-rekordok megkeresésével. Úgy kell konfigurálnia a vállalat DNS-ét, hogy a Windows 10, Windows 8.1, Windows 7, Android és iOS rendszerű eszközök felderíthessék és használhassák a szolgáltatást.
 Az Azure Active Directory felügyeleti portálján tekintheti meg és engedélyezheti/tilthatja le a regisztrált eszközöket.
+
+>[AZURE.NOTE]
+ Az automatikus eszközregisztráció beállításával kapcsolatos legújabb utasításokat a [How to setup automatic registration of Windows domain joined devices with Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md) (Windows-tartományhoz csatlakoztatott eszközök automatikus regisztrációjának beállítása az Azure Active Directoryval) című cikkben tekintheti meg.
 
 ### Az Azure Active Directory eszközregisztrációs szolgáltatás engedélyezése
 
@@ -81,7 +83,7 @@ Ha például két UPN-utótagot használ a szervezetben (például a @contoso.co
 
 ## További témakörök
 
-Regisztrálhatja a Windows 7- és a Windows 8.1-tartományhoz csatlakozott eszközöket az Azure AD eszközregisztrációval. A következő témakör további információt nyújt az előfeltételekről és a Windows 7- és Windows 8.1-eszközökkel végzett eszközregisztráció konfigurálásához szükséges lépésekről.
+Regisztrálhatja a Windows 7- és a Windows 8.1-tartományhoz csatlakozott eszközöket az Azure AD eszközregisztrációval. A következő témakörök további információt nyújtanak az előfeltételekről és a Windows 7- és Windows 8.1-eszközökkel végzett eszközregisztráció konfigurálásához szükséges lépésekről.
 
 - [Automatikus eszközregisztráció az Azure Active Directoryval Windows-tartományhoz csatlakozott eszközökkel](active-directory-conditional-access-automatic-device-registration.md)
 - [Automatikus eszközregisztráció konfigurálása Windows 7-tartományhoz csatlakozott eszközökkel](active-directory-conditional-access-automatic-device-registration-windows7.md)
@@ -90,6 +92,6 @@ Regisztrálhatja a Windows 7- és a Windows 8.1-tartományhoz csatlakozott eszk�
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

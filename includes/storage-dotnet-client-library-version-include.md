@@ -1,6 +1,6 @@
->[AZURE.NOTE] Javasoljuk, hogy az oktatóanyag teljesítéséhez az Azure Storage .NET-hez készült ügyféloldali kódtár legújabb verzióját használja. A kódtár legújabb, 7.x verziója letölthető a [NuGetről](https://www.nuget.org/packages/WindowsAzure.Storage/). Az ügyféloldali kódtár forrása elérhető a [GitHubban](https://github.com/Azure/azure-storage-net).
+>[AZURE.NOTE] We recommend that you use the latest version of the Azure Storage Client Library for .NET to complete this tutorial. The latest version of the library is 7.x, available for download on [Nuget](https://www.nuget.org/packages/WindowsAzure.Storage/). The source for the client library is available on [GitHub](https://github.com/Azure/azure-storage-net).
 >
->A Storage Emulator használata esetén vegye figyelembe, hogy az ügyféloldali kódtár 7.x verziójához a Storage Emulator 4.3-as vagy újabb verziója szükséges 
+>If you are using the storage emulator, note that version 7.x of the client library requires at least version 4.3 of the storage emulator 
 
 
 

@@ -1,9 +1,9 @@
 <properties
-    pageTitle="Android-alkalmazás létrehozása az Azure App Service Mobile Apps szolgáltatásban| Microsoft Azure"
-    description="Az útmutató bevezeti Önt az Azure-alapú mobil-háttéralkalmazások használatával megvalósítható, Android rendszerben történő fejlesztésbe."
+    pageTitle="Create an Android app on Azure App Service Mobile Apps | Microsoft Azure"
+    description="Follow this tutorial to get started with using Azure mobile app backends for Android development"
     services="app-service\mobile"
     documentationCenter="android"
-    authors="RickSaling"
+    authors="yuaxu"
     manager="erikre"
     editor=""/>
 
@@ -13,36 +13,37 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="java"
     ms.topic="hero-article"
-    ms.date="08/17/2016"
-    ms.author="ricksal"/>
+    ms.date="10/01/2016"
+    ms.author="yuaxu"/>
 
-#Android-alkalmazás létrehozása
+
+#Create an Android app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## Áttekintés
+## Overview
 
-Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat az Android-mobilalkalmazásokhoz egy Azure-alapú mobil-háttéralkalmazás segítségével.  Létre fog hozni egy új mobil-háttéralkalmazást, illetve egy egyszerű _Tennivalólista_ Android-alkalmazást, amely alkalmazásadatokat tárol az Azure-ban.
+This tutorial shows you how to add a cloud-based backend service to an Android mobile app by using an Azure mobile app backend.  You will create both a new mobile app backend and a simple _Todo list_ Android app that stores app data in Azure.
 
-Az oktatóanyag végrehajtása feltétele az Azure App Service Mobile Apps szolgáltatásának használatát ismertető többi Android-oktatóanyag megértésének.
+Completing this tutorial is a prerequisite for all other Android tutorials about using the Mobile Apps feature in Azure App Service.
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+To complete this tutorial, you need the following:
 
-* [Android Developer Tools](https://developer.android.com/sdk/index.html): ez a csomag tartalmazza az androidos integrált fejlesztőkörnyezetet, valamint a legújabb Android-platformot.
-* Azure Mobile Android SDK, amelyre a rendszer automatikusan hivatkozik a letöltött bevezető gyorssablonos projekt letöltésekor.
-* [Aktív Azure-fiók](https://azure.microsoft.com/pricing/free-trial/).
+* [Android Developer Tools](https://developer.android.com/sdk/index.html), which includes the Android Studio integrated development environment, and the latest Android platform.
+* Azure Mobile Android SDK, which is automatically referenced as part of the quickstart project you download.
+* An [active Azure account](https://azure.microsoft.com/pricing/free-trial/).
 
-## Új Azure Mobile Apps-háttéralkalmazás létrehozása
+## Create a new Azure mobile app backend
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## Kiszolgálóprojekt konfigurálása
+## Configure the server project
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## Az Android-alkalmazás letöltése és futtatása
+## Download and run the Android app
 
 [AZURE.INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
@@ -50,11 +51,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

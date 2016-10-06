@@ -14,7 +14,8 @@
     ms.devlang="dotnet"
     ms.topic="hero-article"
     ms.date="07/26/2016"
-    ms.author="gusapost"/>
+    ms.author="cbrooks;robinsh"/>
+
 
 # Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -52,7 +53,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 
 Adja hozzá a következő `using` utasításokat a `program.cs` fájl elejéhez:
 
-    using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+    using Microsoft.Azure; // Namespace for CloudConfigurationManager
     using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
@@ -280,6 +281,6 @@ Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokbó
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/17/2016"
+   ms.date="09/23/2016"
    ms.author="alkohli" />
 
 
@@ -132,13 +132,15 @@ Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
 
 Az eljárások végrehajtása előtt ellenőrizze, hogy teljesülnek-e [A virtuális eszköz előfeltételei](#prerequisites-for-the-virtual-device). 
 
-Miután létrehozott egy virtuális hálózatot, konfigurálta a StorSimple Manager szolgáltatást és regisztrálta a fizikai StorSimple eszközt a szolgáltatásban, az alábbi lépések segítségével létrehozhat és konfigurálhat egy StorSimple virtuális eszközt.
+Miután létrehozott egy virtuális hálózatot, konfigurálta a StorSimple Manager szolgáltatást és regisztrálta a fizikai StorSimple eszközt a szolgáltatásban, az alábbi lépések segítségével létrehozhat és konfigurálhat egy StorSimple virtuális eszközt. 
 
 ### 1. lépés: Virtuális eszköz létrehozása
 
 A StorSimple virtuális eszköz létrehozásához hajtsa végre az alábbi lépéseket.
 
 [AZURE.INCLUDE [Create a virtual device](../../includes/storsimple-create-virtual-device-u2.md)]
+
+Ha a virtuális eszköz létrehozása ebben a lépésben meghiúsul, lehet, hogy nem rendelkezik internetkapcsolattal. Virtuális eszköz létrehozásakor olvassa el az [internetkapcsolat hibáinak elhárításával](#troubleshoot-internet-connectivity-errors) foglalkozó szakaszt további információ megtekintéséhez.
 
 
 ### 2. lépés: A virtuális eszköz konfigurálása és regisztrálása
@@ -274,6 +276,19 @@ Ha törli vagy leállítja a virtuális eszközt, az **Offline** állapottal fog
 [AZURE.INCLUDE [Delete a virtual device](../../includes/storsimple-delete-virtual-device.md)]
 
    
+## Az internetkapcsolat hibáinak elhárítása 
+
+Ha nincs internetkapcsolat a virtuális eszköz létrehozása közben, a létrehozási lépés sikertelen lesz. Az internetkapcsolat miatti hiba elhárításához hajtsa végre a következő lépéseket a klasszikus Azure portálon:
+
+1. Hozzon létre egy Windows Server 2012 virtuális gépet az Azure-ban. A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a virtuális eszköznek. Ha már rendelkezik meglévő Windows Server-gazdagéppel az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
+2. Jelentkezzen be távolról az előző lépésben létrehozott virtuális gépbe. 
+3. Nyisson meg egy parancsablakot a virtuális gépen (Win+R, majd írja be a `cmd` kifejezést).
+4. Futtassa az alábbi parancsot a parancssorban.
+
+    `nslookup windows.net`
+
+5. Ha az `nslookup` sikertelen, akkor az internetkapcsolat hibája megakadályozza, hogy a virtuális eszköz regisztráljon a StorSimple Manager szolgáltatásban. 
+6. Végezze el a virtuális hálózat szükséges módosításait, hogy a virtuális eszköz elérhesse az Azure-helyeket, például a „windows.net” helyet.
 
 ## Következő lépések
 

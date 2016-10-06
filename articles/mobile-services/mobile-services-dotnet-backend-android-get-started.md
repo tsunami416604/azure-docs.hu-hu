@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Ismerkedés az Azure Mobile Services for Android alkalmazásokkal"
-    description="Ez az oktatóanyag segítséget nyújt az Azure Mobile Services for Android-fejlesztések első lépéseiben."
+    pageTitle="Get Started with Azure Mobile Services for Android apps"
+    description="Follow this tutorial to get started using Azure Mobile Services for Android development."
     services="mobile-services"
     documentationCenter="android"
     authors="RickSaling"
@@ -18,91 +18,92 @@
     ms.author="ricksal"/>
 
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépéseit
+
+# <a name="getting-started"> </a>Get started with Mobile Services
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> A témakör megfelelő Mobile Apps-verzióját itt találja: [Android-alkalmazás létrehozása az Azure Mobile Apps szolgáltatásban](../app-service-mobile/app-service-mobile-android-get-started.md).
+> For the equivalent Mobile Apps version of this topic, see [Create an Android app in Azure Mobile Apps](../app-service-mobile/app-service-mobile-android-get-started.md).
 
-Az oktatóanyag bemutatja, hogyan adhat felhőalapú háttérszolgáltatást Android-alkalmazásokhoz az Azure Mobile Services használatával. Az oktatóprogram során létrehoz egy új mobilszolgáltatást, valamint egy egyszerű _Teendőlista_ alkalmazást, amely az alkalmazásadatokat az új mobilszolgáltatásban tárolja. Az így létrehozott mobilszolgáltatás a támogatott .NET-nyelveket használó Visual Studio használatával kezeli a kiszolgálóoldali üzleti logikát és a mobilszolgáltatást. A témakör alábbi szakasza bemutatja egy olyan mobilszolgáltatások létrehozását, amely lehetővé teszi a kiszolgálóoldali üzleti logika írását a JavaScript használatával: [JavaScript háttérrendszer verzió](mobile-services-android-get-started.md).
+This tutorial shows you how to add a cloud-based backend service to an Android app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses the supported .NET languages using Visual Studio for server-side business logic and to manage the mobile service. To create a mobile service that lets you write your server-side business logic in JavaScript, see the [JavaScript backend version](mobile-services-android-get-started.md) of this topic.
 
-A kész alkalmazásról az alábbiakban látható egy képernyőkép:
+A screenshot from the completed app is below:
 
 ![](./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png)
 
-Az oktatóanyag elvégzéséhez szükség lesz az [Android Developer Tools][Android Studio] eszközökre, amelyek az Android Studio integrált fejlesztőkörnyezetet és a legújabb Android platformot foglalják magukban. Android 4.2 vagy újabb verzió szükséges.
+Completing this tutorial requires the [Android Developer Tools][Android Studio], which includes the Android Studio integrated development environment, and the latest Android platform. Android 4.2 or a later version is required.
 
-A letöltött gyorsútmutató-projekt tartalmazza a Mobile Services SDK for Android csomagot.
+The downloaded quickstart project contains the Mobile Services SDK for Android.
 
-> [AZURE.IMPORTANT] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, regisztráljon az Azure-próbaverzióra, és a hozzá kapott akár 10 ingyenes mobilszolgáltatást a próbaidőszak után is használhatja. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28).
+> [AZURE.IMPORTANT] To complete this tutorial, you need an Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free mobile services that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28).
 
 
-## <a name="create-new-service"> </a>Új mobilszolgáltatás létrehozása
+## <a name="create-new-service"> </a>Create a new mobile service
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
-## Töltse le a mobilszolgáltatást a helyi számítógépre.
+## Download the mobile service to your local computer
 
-Miután létrehozta a mobilszolgáltatást, töltse le a személyre szabott mobilszolgáltatás-projektjét, amelyet a helyi számítógépén vagy virtuális gépén futtathat.
+Now that you have created the mobile service, download your personalized mobile service project that you can run on your local computer or virtual machine.
 
-1. Kattintson az imént létrehozott mobilszolgáltatásra, majd a gyorsindítási lap **Platform kiválasztása** részében kattintson az **Android** lehetőségre, és bontsa ki az **Új Android-alkalmazás létrehozása** elemet.
+1. Click the mobile service that you just created, then in the quickstart tab, click **Android** under **Choose platform** and expand **Create a new Android app**.
 
     ![][1]
 
-2. Ha még nem tette, töltse le és telepítse a [Visual Studio 2013 Professional](https://go.microsoft.com/fwLink/p/?LinkID=391934) eszközt, vagy ennek egy frissebb verzióját.
+2. If you haven't already done so, download and install [Visual Studio Professional 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934), or a later version.
 
-3. A második lépésben kattintson az **Alkalmazás letöltése és futtatása** menüben a **Letöltés** gombra.
+3. In Step 2, click **Download** under **Download and publish your service to the cloud**.
 
-    Ez letölti a mobilszolgáltatását megvalósító Visual Studio-projektet. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+    This downloads the Visual Studio project that implements your mobile service. Save the compressed project file to your local computer, and make a note of where you saved it.
 
-## Mobilszolgáltatás tesztelése
+## Test the mobile service
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
-## Mobilszolgáltatás közzététele
+## Publish your mobile service
 
 [AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-## Új Android-alkalmazás létrehozása
+## Create a new Android app
 
-Ebben a szakaszban egy, a mobilszolgáltatásához csatlakozó új Android-alkalmazást hoz létre.
+In this section you will create a new Android app that is connected to your mobile service.
 
-1. A [Klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
+1. In the [Azure classic portal], click **Mobile Services**, and then click the mobile service that you just created.
 
-2. A gyorsindítási lap **Platform kiválasztása** szakaszában kattintson az **Android** lehetőségre, és bontsa ki az **Új Android-alkalmazás létrehozása** elemet.
+2. In the quickstart tab, click **Android** under **Choose platform** and expand **Create a new Android app**.
 
     ![][2]
 
-3. Ha még nem tette, töltse le és telepítse az [Android Developer Tools][Android SDK] eszközöket a helyi számítógépén vagy virtuális gépén.
+3. If you haven't already done so, download and install the [Android Developer Tools][Android SDK] on your local computer or virtual machine.
 
-4. A **Download and run your app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
+4. Under **Download and run your app**, click **Download**.
 
-    Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolódó _Teendőlista_ mintaalkalmazáshoz. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
+    This downloads the project for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
 
-## Az Android-alkalmazás futtatása
+## Run your Android app
 
 [AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
-## <a name="next-steps"> </a>Következő lépések
-Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
+## <a name="next-steps"> </a>Next Steps
+Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services:
 
-* [Leküldéses értesítések hozzáadása az alkalmazáshoz]
-  <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazás számára.
+* [Add push notifications to your app]
+  <br/>Learn how to send a very basic push notification to your app.
 
-* [Hitelesítés hozzáadása az alkalmazáshoz]
-  <br/>Ismerje meg, hogyan korlátozhatja a háttérrendszeri adatok elérhetőségét az alkalmazás egyes regisztrált felhasználóira.
+* [Add authentication to your app]
+  <br/>Learn how to restrict access to your backend data to specific registered users of your app.
 
-* [Mobile Services .NET-háttérrendszer hibaelhárítása]
-  <br/> Ismerje meg, hogyan diagnosztizálhatja és javíthatja ki a Mobile Services .NET-háttérrendszerekkel kapcsolatban felmerülő hibákat.
+* [Troubleshoot a Mobile Services .NET backend]
+  <br/> Learn how to diagnose and fix issues that can arise with a Mobile Services .NET backend.
 
 <!-- Anchors. -->
-[A Mobile Services használatának első lépései]:#getting-started
-[Új mobilszolgáltatás létrehozása]:#create-new-service
-[A mobilszolgáltatás-példány meghatározása]:#define-mobile-service-instance
-[Következő lépések]:#next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
@@ -122,18 +123,18 @@ Most, hogy végzett a gyors üzembe helyezéssel, megtudhatja, hogyan hajthat v�
 [15]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-services-import-android-project.png
 
 <!-- URLs. -->
-[Első lépések (Eclipse)]: mobile-services-dotnet-backend-android-get-started-ec.md
-[Leküldéses értesítések hozzáadása az alkalmazáshoz]: mobile-services-dotnet-backend-android-get-started-push.md
-[Hitelesítés hozzáadása az alkalmazáshoz]: mobile-services-dotnet-backend-android-get-started-auth.md
+[Get started (Eclipse)]: mobile-services-dotnet-backend-android-get-started-ec.md
+[Add push notifications to your app]: mobile-services-dotnet-backend-android-get-started-push.md
+[Add authentication to your app]: mobile-services-dotnet-backend-android-get-started-auth.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Android Studio]: https://developer.android.com/sdk/index.html
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Mobile Services .NET-háttérrendszer hibaelhárítása]: mobile-services-dotnet-backend-how-to-troubleshoot.md
+[Troubleshoot a Mobile Services .NET backend]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

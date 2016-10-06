@@ -38,7 +38,7 @@ A kulcstartó most már a helyes bérlőazonosítóhoz van társítva, a régi h
 
 ## Következő lépések
 
-- Ha kérdései vannak a Key Vaulttal kapcsolatban, keresse fel az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
+- Amennyiben a Key Vault szolgáltatással kapcsolatos kérdése merülne fel, tekintse az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 
 
 

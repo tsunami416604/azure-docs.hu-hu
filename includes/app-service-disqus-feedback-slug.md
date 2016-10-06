@@ -1,6 +1,6 @@
 
->[AZURE.TIP] **Valami mást keres?**  
->Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
+>[AZURE.TIP] **Looking for something else?**  
+>If this topic didn't contain what you were expecting, is missing something, or in some other way didn't meet your needs, please provide us with you feedback using the Disqus thread below.
 
 <!--HONumber=Sep16_HO4-->
 

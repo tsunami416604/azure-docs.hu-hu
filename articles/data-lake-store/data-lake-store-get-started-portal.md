@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="Bevezetés a Data Lake Store használatába | Azure" 
-   description="Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban a portál használatával" 
+   pageTitle="Get started with Data Lake Store | Azure" 
+   description="Use the portal to create a Data Lake Store account and perform basic operations in the Data Lake Store" 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,13 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/02/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
-# Az Azure Data Lake Store használatának első lépései az Azure Portal használatával
+
+# Get started with Azure Data Lake Store using the Azure Portal
 
 > [AZURE.SELECTOR]
-- [Portál](data-lake-store-get-started-portal.md)
+- [Portal](data-lake-store-get-started-portal.md)
 - [PowerShell](data-lake-store-get-started-powershell.md)
 - [.NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -27,119 +28,109 @@
 - [Azure CLI](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure Portal használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Azure Data Lake Store](data-lake-store-overview.md) (Az Azure Data Lake Store áttekintése).
+Learn how to use the Azure Portal to create an Azure Data Lake Store account and perform basic operations such as create folders, upload and download data files, delete your account, etc. For more information about Data Lake Store, see [Overview of Azure Data Lake Store](data-lake-store-overview.md).
 
-## Előfeltételek
+## Prerequisites
 
-Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
+Before you begin this tutorial, you must have the following:
 
-- **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="signup"></a>Engedélyezze Azure-előfizetését a Data Lake Store nyilvános előzetes verziójához
+## Do you learn fast with videos?
 
-Először igényelnie kell az Azure-előfizetésének engedélyezését a Data Lake Store nyilvános előzetes verziójához. Kövesse az alábbi lépéseket.
+Watch the following videos to get started with Data Lake Store.
 
-1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre.
-3. A **New Data Lake Store** (Új Data Lake Store) panelen kattintson a **Sign up to preview** (Feliratkozás az előzetes verzióra) elemre. Olvassa el az információkat, majd kattintson az **OK** gombra. Amint megtörtént az előfizetés engedélyezése a Nyilvános előzetes verzióhoz, egy e-mailt fog kapni.
+* [Create a Data Lake Store account](https://mix.office.com/watch/1k1cycy4l4gen)
+* [Manage data in Data Lake Store using the Data Explorer](https://mix.office.com/watch/icletrxrh6pc)
 
-    ![Regisztráció a Nyilvános előzetes verzióra](./media/data-lake-store-get-started-portal/preview-signup.png "Create a new Azure Data Lake account")
+## Create an Azure Data Lake Store account
 
-## Gyorsan tanul videók segítségével?
+1. Sign on to the new [Azure Portal](https://portal.azure.com).
 
-Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
+2. Click **NEW**, click **Data + Storage**, and then click **Azure Data Lake Store**. Read the information in the **Azure Data Lake Store** blade, and then click **Create** in the bottom left corner of the blade.
 
-* [Data Lake Store-fiók létrehozása](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Adatkezelés a Data Lake Store-ban az Adatkezelő használatával](https://mix.office.com/watch/icletrxrh6pc)
+3. In the **New Data Lake Store** blade, provide the values as shown in the screen capture below:
 
-## Azure Data Lake Store-fiók létrehozása
+    ![Create a new Azure Data Lake Store account](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Create a new Azure Data Lake account")
 
-1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
+    - **Subscription**. Select the subscription under which you want to create a new Data Lake Store account.
+    - **Resource Group**. Select an existing resource group, or click **Create a resource group** to create one. A resource group is a container that holds related resources for an application. For more information, see [Resource Groups in Azure](resource-group-overview.md#resource-groups).
+    - **Location**: Select a location where you want to create the Data Lake Store account.
 
-2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
+4. Select **Pin to Startboard** if you want the Data Lake Store account to be accessible from the Startboard.
 
-3. A **New Data Lake Store** (Új Data Lake Store) panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
+5. Click **Create**. If you chose to pin the account to the startboard, you are taken back to the startboard and you can see the progress of your Data Lake Store account provisioning. Once the Data Lake Store account is provisioned, the account blade shows up.
 
-    ![Új Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Create a new Azure Data Lake account")
+6. Expand the **Essentials** drop-down to see the information about your Data Lake Store account such as the resource group it is a part of, the location, etc. Click the **Quick Start** icon to see links to other resources related to Data Lake Store.
 
-    - **Előfizetés**. Válassza ki az előfizetést, amelyhez létre kíván hozni egy új Data Lake Store-fiókot.
-    - **Erőforráscsoport**. Válasszon ki egy meglévő erőforráscsoportot, vagy kattintson a **Create a resource group** (Erőforráscsoport létrehozása) elemre, ha szeretne létrehozni egyet. Az erőforráscsoport egy tároló, amely alkalmazásokhoz kapcsolódó erőforrásokat tárol. További információk: [Erőforráscsoportok az Azure-ban](resource-group-overview.md#resource-groups).
-    - **Hely**: Válassza ki, hol szeretné létrehozni a Data Lake Store-fiókot.
+    ![Your Azure Data Lake Store account](./media/data-lake-store-get-started-portal/ADL.Account.QuickStart.png "Your Azure Data Lake account")
 
-4. Válassza a **Pin to Startboard** (Rögzítés a kezdőpulton) lehetőséget, ha szeretné, hogy a Data Lake Store-fiók a kezdőpultról is elérhető legyen.
+## <a name="createfolder"></a>Create folders in Azure Data Lake Store account
 
-5. Kattintson a **Létrehozás** gombra. Ha úgy döntött, hogy rögzíti a fiókot a kezdőpulton, visszakerül a kezdőpultra, ahol láthatja a Data Lake Store-fiók üzembe helyezésének folyamatát. A Data Lake Store-fiók üzembe helyezése után megjelenik a fiókpanel.
+You can create folders under your Data Lake Store account to manage and store data.
 
-6. Bontsa ki az **Essentials** (Alapvető adatok) legördülő menüt a Data Lake Store-fiók részleteinek (pl. az erőforráscsoport, amelynek része, a helye stb.) megtekintéséhez. Kattintson a**Quick Start** (Gyors üzembe helyezés) ikonra a Data Lake Store-hoz kapcsolódó egyéb forrásokra mutató hivatkozások megtekintéséhez.
+1. Open the Data Lake Store account that you just created. From the left pane, click **Browse**, click **Data Lake Store**, and then from the Data Lake Store blade, click the account name under which you want to create folders. If you pinned the account to the startboard, click that account tile.
 
-    ![Saját Azure Data Lake Store-fiók](./media/data-lake-store-get-started-portal/ADL.Account.QuickStart.png "Your Azure Data Lake account")
+2. In your Data Lake Store account blade, click **Data Explorer**.
 
-## <a name="createfolder"></a>Mappák létrehozása az Azure Data Lake Store-fiókban
+    ![Create folders in Data Lake Store account](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Create folders in Data Lake Store account")
 
-A Data Lake Store-fiókjában mappákat hozhat létre az adatok kezelésére és tárolására.
-
-1. Nyissa meg az imént létrehozott Data Lake Store-fiókot. A bal oldali ablaktáblában kattintson a **Browse** (Tallózás), **Data Lake Store** elemre, majd a Data Lake Store panelen kattintson a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
-
-2. A Data Lake Store-fiók panelén kattintson a **Data Explorer** (Adatkezelő) elemre.
-
-    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Create folders in Data Lake Store account")
-
-3. A Data Lake Store-fiók panelén kattintson a **New Folder** (Új mappa) elemre, adjon nevet az új mappának, majd kattintson az **OK** gombra.
+3. In your Data Lake Store account blade, click **New Folder**, enter a name for the new folder, and then click **OK**.
     
-    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Create folders in Data Lake Store account")
+    ![Create folders in Data Lake Store account](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Create folders in Data Lake Store account")
     
-    Az újonnan létrehozott mappa megjelenik a **Data Explorer** (Adatkezelő) panelen lesz listázva. Bármilyen szinten létrehozhat beágyazott mappákat.
+    The newly created folder will be listed in the **Data Explorer** blade. You can create nested folders upto any level.
 
-    ![Mappák létrehozása a Data Lake-fiókban](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Create folders in Data Lake account")
-
-
-## <a name="uploaddata"></a>Fájlok feltöltése az Azure Data Lake Store-fiókba
-
-Adatait közvetlenül, gyökérszinten is feltöltheti az Azure Data Lake Store-fiókba, vagy a fiókon belül létrehozott mappába. Az alábbi képernyőfelvételen látható lépésekkel feltölthet egy fájlt egy almappába a **Data Explorer** (Adatkezelő) panelről. A képernyőfelvételen a fájl az útkövetésben jelölt almappába lesz feltöltve (vörös téglalappal kijelölve).
-
-Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
-
-![Adatok feltöltése](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Upload data")
+    ![Create folders in Data Lake account](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Create folders in Data Lake account")
 
 
-## <a name="properties"></a>A tárolt adatokra vonatkozó tulajdonságok és műveletek
+## <a name="uploaddata"></a>Upload data to Azure Data Lake Store account
 
-Kattintson az újonnan hozzáadott fájlra a **Properties** (Tulajdonságok) panel megnyitásához. Ezen a panelen érhetők el a fájlhoz kapcsolódó tulajdonságok és a rajta a panelben elvégezhető műveletek. Másolhatja az Azure Data Lake Store-fiókban lévő fájl teljes elérési útját is, amely az alábbi képernyőfelvételen vörös téglalappal van kijelölve.
+You can upload your data to an Azure Data Lake Store account directly at the root level or to a folder that you created within the account. In the screen capture below, follow the steps to upload a file to a sub-folder from the **Data Explorer** blade. In this screen capture, the file is uploaded to a sub-folder shown in the breadcrumbs (marked in a red box).
 
-![Az adatok tulajdonságai](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Properties on the data")
+If you are looking for some sample data to upload, you can get the **Ambulance Data** folder from the [Azure Data Lake Git Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData).
 
-* Kattintson a **Preview** (Előnézet) elemre a fájl előnézetének közvetlenül a böngészőből történő megtekintéséhez. Az előnézet formátumát is meghatározhatja. Kattintson a **Preview** (Előnézet), majd a **Format** (Formátum) elemre a **File Preview** (Fájl előnézete) panelen, és a **File Preview Format** (Fájl előnézetének formátuma) panelen adja meg az olyan beállításokat, mint a megjelenítendő sorok száma, a használni kívánt kódolás és elválasztók stb.
-
-  ![A fájl előnézetének formátuma](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "File preview format")
-
-* Kattintson a **Download** (Letöltés) elemre a fájl letöltéséhez a számítógépére.
-
-* Kattintson a **Rename file** (Fájl átnevezése) elemre a fájl átnevezéséhez.
-
-* Kattintson a **Delete file** (Fájl törlése) elemre a fájl törléséhez.
+![Upload data](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Upload data")
 
 
-## Az adatok védelme
+## <a name="properties"></a>Properties and actions available on the stored data
 
-Az Azure Active Directory és a hozzáférés-vezérlés (ACLs) segítségével gondoskodhat az Azure Data Lake Store-fiókban tárolt adatok védelméről. Az erre vonatkozó utasításokért lásd: [Az adatok védelme az Azure Data Lake Store-ban](data-lake-store-secure-data.md).
+Click the newly added file to open the **Properties** blade. The properties associated with the file and the actions you can perform on the file are available in this blade. You can also copy the full path to file in your Azure Data Lake Store account, highlighted in the red box in the screen capture below.
 
+![Properties on the data](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Properties on the data")
 
-## Az Azure Data Lake Store-fiók törlése
+* Click **Preview** to see a preview of the file, directly from the browser. You can specify the format of the preview as well. Click **Preview**, click **Format** in the **File Preview** blade, and in the **File Preview Format** blade specify the options such as number of rows to display, encoding to use, delimiter to use, etc.
 
-Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) elemre a Data Lake Store panelen. A művelet megerősítéséhez a rendszer a törölni kívánt fiók nevének megadását kéri. Adja meg a fiók nevét, majd kattintson a **Delete** (Törlés) gombra.
+  ![File preview format](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "File preview format")
 
-![Data Lake-fiók törlése](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
+* Click **Download** to download the file to your computer.
 
+* Click **Rename file** to rename the file.
 
-## Következő lépések
-
-- [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
-- [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-- [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Access diagnostic logs for Data Lake Store (A Data Lake Store diagnosztikai naplóinak elérése)](data-lake-store-diagnostic-logs.md)
+* Click **Delete file** to delete the file.
 
 
+## Secure your data
 
-<!--HONumber=sep16_HO1-->
+You can secure the data stored in your Azure Data Lake Store account using Azure Active Directory and access control (ACLs). For instructions on how to do that, see [Securing data in Azure Data Lake Store](data-lake-store-secure-data.md).
+
+
+## Delete Azure Data Lake Store account
+
+To delete an Azure Data Lake Store account, from your Data Lake Store blade, click **Delete**. To confirm the action, you'll be prompted to enter the name of the account you wish to delete. Enter the name of the account, and then click **Delete**.
+
+![Delete Data Lake account](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
+
+
+## Next steps
+
+- [Secure data in Data Lake Store](data-lake-store-secure-data.md)
+- [Use Azure Data Lake Analytics with Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+- [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Access diagnostic logs for Data Lake Store](data-lake-store-diagnostic-logs.md)
+
+
+
+<!--HONumber=Sep16_HO4-->
 
 

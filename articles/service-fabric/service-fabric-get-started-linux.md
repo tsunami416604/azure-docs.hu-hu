@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Set up your development environment on Linux | Microsoft Azure"
-   description="Install the runtime and SDK and create a local development cluster on Linux. After completing this setup, you will be ready to build applications."
+   pageTitle="A fejlesztési környezet beállítása Linuxon | Microsoft Azure"
+   description="Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására."
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,7 +16,8 @@
    ms.date="09/26/2016"
    ms.author="seanmck"/>
 
-# Prepare your development environment on Linux
+
+# A fejlesztőkörnyezet előkészítése Linuxon
 
 
 > [AZURE.SELECTOR]
@@ -24,77 +25,77 @@
 - [Linux](service-fabric-get-started-linux.md)
 - [OSX](service-fabric-get-started-mac.md)
 
- To deploy and run [Azure Service Fabric applications](service-fabric-application-model.md) on your Linux development machine, install the runtime and common SDK. You can also install optional SDKs for Java and .NET Core.
+ Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-hoz készült opcionális SDK-kat is telepítheti.
 
-## Prerequisites
-### Supported operating system versions
-The following operating system versions are supported for development:
+## Előfeltételek
+### Támogatott operációsrendszer-verziók
+A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 - Ubuntu 16.04 (Xenial Xerus)
 
-## Update your apt sources
+## Frissítse az apt-forrásait
 
-To install the SDK and the associated runtime package via apt-get, you must first update your apt sources.
+Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get használatával történő telepítéséhez először frissítenie kell az apt-forrásait.
 
-1. Open a terminal.
-2. Add the Service Fabric repo to your sources list.
+1. Nyisson meg egy terminált.
+2. Adja hozzá a Service Fabric-adattárat a források listájához.
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
-3. Add the new GPG key to your apt keyring.
+3. Adja hozzá az új GPG-kulcsot az apt-kulcstárhoz.
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
 
-4. Refresh your package lists based on the newly added repositories.
+4. Frissítse a csomaglistákat az újonnan hozzáadott adattárak szerint.
 
     ```bash
     sudo apt-get update
     ```
 
-## Install and set up the SDK
+## Az SDK telepítése és beállítása
 
-Once your sources are updated, you can install the SDK.
+A források frissítése után telepítheti az SDK-t.
 
-1. Install the Service Fabric SDK package. You will be asked to confirm the installation and to agree to a license agreement.
+1. Telepítse a Service Fabric SDK-csomagot. A rendszer fel fogja kérni, hogy erősítse meg a telepítést, és fogadjon el egy licencszerződést.
 
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
 
-2. Run the SDK setup script.
+2. Futtassa az SDK telepítőszkriptjét.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## Set up the Azure cross-platform CLI
+## A platformfüggetlen Azure parancssori felület beállítása
 
-The [Azure cross-platform CLI][azure-xplat-cli-github] includes commands for interacting with Service Fabric entities, including clusters and applications. It is based on Node.js so [ensure that you have installed Node][install-node] before proceeding with the instructions below.
+A [platformfüggetlen Azure parancssori felület][azure-xplat-cli-github] a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. Node.js-alapú, ezért az alábbi utasítások végrehajtása előtt [ellenőrizze, hogy telepítve van-e a Node][install-node].
 
-1. Clone the github repo to your development machine.
+1. Klónozza a github-adattárat a fejlesztői gépére.
 
     ```bash
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
 
-2. Switch into the cloned repo and install the CLI's dependencies using the Node Package Manager (npm).
+2. Váltson át a klónozott adattárra, és telepítse a parancssori felület függőségeit a Node Package Managerrel (npm).
 
     ```bash
     cd azure-xplat-cli
     npm install
     ```
 
-3. Create a symlink from the bin/azure folder of the cloned repo to /usr/bin/azure so that it's added to your path and commands are available from any directory.
+3. Hozzon létre szimbolikus csatolást a klónozott adattár bin/azure mappájából az /usr/bin/azure mappába, hogy bekerüljön az elérési útjába, és a parancsok bármelyik könyvtárból elérhetők legyenek.
 
     ```bash
     sudo ln -s $(pwd)/bin/azure /usr/bin/azure
     ```
 
-4. Finally, enable auto-completion Service Fabric commands.
+4. Végezetül engedélyezze a Service Fabric-parancsok automatikus kiegészítését.
 
     ```bash
     azure --completion >> ~/azure.completion.sh
@@ -102,75 +103,75 @@ The [Azure cross-platform CLI][azure-xplat-cli-github] includes commands for int
     source ~/azure.completion.sh
     ```
 
-## Set up a local cluster
+## Helyi fürt beállítása
 
-If everything has installed successfully, you should be able to start a local cluster.
+Ha mindent sikeresen telepített, elindíthatja a helyi fürtöt.
 
-1. Run the cluster setup script.
+1. Futtassa a fürttelepítési szkriptet.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Open a web browser and navigate to http://localhost:19080/Explorer. If the cluster has started, you should see the Service Fabric Explorer dashboard.
+2. Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: http://localhost:19080/Explorer. Ha a fürt elindult, megjelenik a Service Fabric Explorer irányítópultja.
 
-    ![Service Fabric Explorer on Linux][sfx-linux]
+    ![Service Fabric Explorer Linuxon][sfx-linux]
 
-At this point, you are able to deploy pre-built Service Fabric application packages or new ones based on guest containers or guest executables. To build new services using the Java or .NET Core SDKs, follow the optional setup steps below.
+Ezen a ponton előzetesen összeállított Service Fabric-alkalmazáscsomagokat, vagy vendégtárolókon és vendég futtatható fájlokon alapuló új alkalmazáscsomagokat helyezhet üzembe. Ha új szolgáltatásokat kíván létrehozni a Java vagy .NET Core SDK-k használatával, kövesse az alábbi opcionális lépéseket.
 
-## Install the Java SDK and Eclipse Neon plugin (optional)
+## A Java SDK és az Eclipse Neon beépülő modul telepítése (nem kötelező)
 
-The Java SDK provides the libraries and templates required to build Service Fabric services using Java.
+A Java SDK biztosítja a Java-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat.
 
-1. Install the Java SDK package.
+1. Telepítse a Java SDK-csomagot.
 
     ```bash
     sudo apt-get install servicefabricsdkjava
     ```
 
-2. Run the SDK setup script.
+2. Futtassa az SDK telepítőszkriptjét.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-You can install the Eclipse plugin for Service Fabric from within the Eclipse Neon IDE.
+A Service Fabric Eclipse beépülő modulját az Eclipse Neon IDE-ből is telepítheti.
 
-1. In Eclipse, ensure that you have Buildship version 1.0.17 or later installed. You can check the versions of installed components by choosing **Help > Installation Details**. You can update Buildship using the instructions [here][buildship-update].
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Help > Installation Details** (Súgó > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. Az [itt][buildship-update] található utasítások alapján frissítheti a Buildshipet.
 
-2. To install the Service Fabric plugin, choose **Help > Install New Software...**
+2. A Service Fabric beépülő modul telepítéséhez válassza a **Help > Install New Software...** (Súgó > Új szoftver telepítése) lehetőséget.
 
-3. In the "Work with" textbox, enter: http://dl.windowsazure.com/eclipse/servicefabric
+3. A Work with (Használat) szövegbeviteli mezőbe írja be a következőt: http://dl.windowsazure.com/eclipse/servicefabric
 
-4. Click Add.
+4. Kattintson az Add (Hozzáadás) parancsra.
 
-    ![Eclipse plugin][sf-eclipse-plugin]
+    ![Eclipse beépülő modul][sf-eclipse-plugin]
 
-5. Choose the Service Fabric plugin and click next.
+5. Válassza ki a Service Fabric beépülő modult, majd kattintson a Next (Tovább) gombra.
 
-6. Proceed through the installation and accept the end-user license agreement.
+6. Folytassa a telepítést, és fogadja el a végfelhasználói licencszerződést.
 
-## Install the .NET Core SDK (optional)
+## A .NET Core SDK telepítése (opcionális)
 
-The .NET Core SDK provides the libraries and templates required to build Service Fabric services using cross-platform .NET Core.
+A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat.
 
-1. Install the .NET Core SDK package.
+1. Telepítse a .NET Core SDK-csomagot.
 
     ```bash
     sudo apt-get install servicefabricsdkcsharp
     ```
 
-2. Run the SDK setup script.
+2. Futtassa az SDK telepítőszkriptjét.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
 
-## Next steps
+## Következő lépések
 
-- [Create your first Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)
+- [Az első Java-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 
-- [Prepare your development environment on OSX](service-fabric-get-started-mac.md)
+- [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
 
 
 <!-- Links -->
@@ -183,3 +184,9 @@ The .NET Core SDK provides the libraries and templates required to build Service
 
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
+
+
+
+<!--HONumber=Sep16_HO4-->
+
+

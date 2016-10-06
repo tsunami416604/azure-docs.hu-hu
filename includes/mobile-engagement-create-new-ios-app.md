@@ -1,22 +1,21 @@
-1. Indítsa el az **Xcode** eszközkészletet, majd a felugró ablakban válassza ki a **Create new Xcode project** (Új Xcode-projekt létrehozása) lehetőséget.
+1. Start **Xcode** and in the pop-up, select **Create a new Xcode project**.
 
     ![](./media/mobile-engagement-create-new-ios-app/xcode-new-project.png)
 
-2. Válassza ki a **Single View Application** (Egynézetes alkalmazás) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
+2. Select **Single View Application**, and then click **Next**.
 
     ![](./media/mobile-engagement-create-new-ios-app/xcode-simple-view.png)
 
-3. Töltse ki a **Product Name** (Termék neve), **Organization Name** (Szervezet neve) és **Organization Identifier** (Szervezet azonosítója) mezőket. A nyelv (**Language**) beállításánál az alkalmazásnak megfelelően válassza ki az **Objective-C** vagy **Swift** lehetőséget.
+3. Fill in the **Product Name**, **Organization Name**, and **Organization Identifier**. Select **Objective-C** or **Swift** in the **Language** selection based on your app.
 
     ![](./media/mobile-engagement-create-new-ios-app/xcode-project-props.png)
 
-> [AZURE.IMPORTANT] Győződjön meg arról, hogy a csomagazonosító megegyezik az Apple fejlesztői konzoljában az AppId paraméterhez megadottal, valamint hogy rendelkezik a hozzá tartozó tanúsítvánnyal. 
+> [AZURE.IMPORTANT] Make sure that the Bundle Identifier matches with what you have defined in the Apple Developer console for AppId and that you have a corresponding certificate for it. 
 
-Az Xcode most létrehozza a bemutatóalkalmazást, amelybe integrálni fogja a Mobile Engagementet.
-
-
+Xcode will create the demo app into which we integrate Mobile Engagement.
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Sep16_HO4-->
 
 

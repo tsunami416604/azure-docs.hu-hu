@@ -1,10 +1,10 @@
 <properties
-   pageTitle="U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával| Azure"
-   description="Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, valamint hogyan fejleszthet és tesztelhet U-SQL-parancsfájlokat. "
+   pageTitle="Develop U-SQL scripts using Data Lake Tools for Visual Studio | Azure"
+   description="Learn how to install Data Lake Tools for Visual Studio, how to develop and test U-SQL scripts. "
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -16,78 +16,79 @@
    ms.date="05/16/2016"
    ms.author="edmaca"/>
 
-# Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
+
+# Tutorial: develop U-SQL scripts using Data Lake Tools for Visual Studio
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 
-Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, és hogyan használhatja U-SQL-parancsfájlok fejlesztésére és tesztelésére.
+Learn how to install Data Lake Tools for Visual Studio, and use Data Lake Tools for Visual Studio to write and test U-SQL scripts.
 
-A U-SQL egy rendkívüli mértékben méretezhető, széles körben bővíthető nyelv, amellyel bármilyen, a Data Lake adattárban vagy azon kívül tárolt adat előkészíthető, átalakítható és elemezhető. További információért lásd az U-SQL-segédanyagot a következő címen: http://go.microsoft.com/fwlink/p/?LinkId=691348.
+U-SQL is a hyper-scalable, highly extensible language for preparing, transforming and analyzing all data in the data lake and beyond. For more information, see [U-SQL Reference] (http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 
-###Előfeltételek
+###Prerequisites
 
-- **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio „15” egyelőre nem támogatott, ezen jelenleg is dolgozunk.**
-- **Microsoft Azure SDK for .NET 2.7.1-es vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
+- **Visual Studio 2015, Visual Studio 2013 update 4, or Visual Studio 2012. Enterprise (Ultimate/Premium), Professional, Community editions are supported; Express edition is not supported. Visual Studio "15" is currently not supported and we are working on that.**
+- **Microsoft Azure SDK for .NET version 2.7.1 or above**.  Install it using the [Web platform installer](http://www.microsoft.com/web/downloads/platform.aspx).
 - **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**.
 
-    A Data Lake Tools for Visual Studio telepítése után a Server Explorer eszközben az „Azure” csomópont alatt megjelenik egy „Data Lake Analytics” csomópont (a Server Explorer a Ctrl+Alt+S billentyűkombináció lenyomásával nyitható meg).
+    Once Data Lake Tools for Visual Studio is installed, you will see a "Data Lake Analytics" node in Server Explorer under the "Azure" node (you can open Server explorer by pressing Ctrl+Alt+S).
 
-- **Végezze el [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md)** oktatóanyag következő két szakaszát.
+- **Go through the following two sections in [Get Started with Azure Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)**.
 
-    - [Azure Data Lake Data Lake Analytics-fiók létrehozása](data-lake-analytics-get-started-portal.md#create_adl_analytics_account).
-    - [A SearchLog.tsv fájl feltöltése az alapértelmezett Data Lake-tárfiókba](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account).
+    - [Create an Azure Data Lake Analytics account](data-lake-analytics-get-started-portal.md#create_adl_analytics_account).
+    - [Upload SearchLog.tsv to the default Data Lake Storage account](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account).
 
-    Hogy megkönnyítsük a munkáját, egy Data Lake Analytic-szolgáltatás létrehozásához és forrásadatfájlok feltöltéséhez használható példaparancsfájlt találhat itt: [Appx-A PowerShell sample for preparing the tutorial](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial) („A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez).
+    For your convenience, a PowerShell sample script for creating a Data Lake Analytic service and uploading source data file can be found in [Appx-A PowerShell sample for preparing the tutorial](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial).
 
-    A Data Lake Tools nem támogatja a Data Lake Analytics-fiókok létrehozását. Ezért azt az Azure portál, az Azure PowerShell, a .NET SDK vagy az Azure parancssori felület (CLI) használatával kell létrehoznia. Egy Data Lake Analytics-feladat futtatásához adatokra lesz szükség. Habár a Data Lake Tools támogatja az adatok feltöltését, az oktatóprogram könnyebb követhetősége érdekében a példaadatokat a portál használatával fogja feltölteni.
+    The Data Lake Tools doesn't support creating Data Lake Analytics accounts. So you have to create it using the Azure portal, Azure PowerShell, .NET SDK or Azure CLI. To run a Data Lake Analytics job, you will need some data. Even though the Data Lake Tools supports uploading data, you will use the portal to upload the sample data to make this tutorial easier to follow.
 
-## Csatlakozás az Azure szolgáltatáshoz
+## Connect to Azure
 
-**A Data Lake Analytics szolgáltatáshoz való kapcsolódáshoz**
+**To connect to Data Lake Analytics**
 
-1. Nyissa meg a Visual Studiót.
-2. A **View** (Nézet) menüben kattintson a **Server Explorer** elemre a Server Explorer eszköz megnyitásához. Ezt a **[CTRL]+[ALT]+S** billentyűkombináció lenyomásával is megnyithatja.
-3. Kattintson a jobb gombbal az **Azure** elemre, majd kattintson a „Connect to Microsoft Azure Subscription” (Csatlakozás egy Microsoft Azure-előfizetéshez) lehetőségre, és kövesse a megjelenő utasításokat.
-4. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája, ha vannak ilyenek. A Visual Studio eszközben nem lehet Data Lake Analytics-fiókokat létrehozni. A fiókok létrehozásával kapcsolatos információkért lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure portállal](data-lake-analytics-get-started-portal.md) vagy [Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md).
+1. Open Visual Studio.
+2. From the **View** menu, click **Server Explorer** to open Server Explorer. Or press **[CTRL]+[ALT]+S**.
+3. Right-click **Azure**, click "Connect to Microsoft Azure Subscription", and then follow instructions.
+4. From **Server Explorer**, expand **Azure**, and then expand **Data Lake Analytics**. You shall see a list of your Data Lake Analytics accounts if there are any. You cannot create Data Lake Analytics accounts from Visual Studio. To create an account, see [Get Started with Azure Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md) or [Get Started with Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md).
 
-## Forrásadatfájlok feltöltése
+## Upload source data files
 
-Az oktatóanyag korábbi **Előfeltétel** szakaszában már feltöltött adatokat.  
+You have uploaded some data in the **Prerequisite** section earlier in the tutorial.  
 
-Ha a saját adatait szeretné használni, a Data Lake Tools szolgáltatásból a következő módszerek használatával tölthet fel adatokat.
+In case you want to use your own data, here are the procedures for uploading data from the Data Lake Tools.
 
-**Fájlok feltöltése a függő Azure Data Lake-fiókba**
+**To upload files to the dependent Azure Data Lake account**
 
-1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, és bontsa ki a **Storage Accounts** (Tárfiókok) elemet. Látni fogja az alapértelmezett Data Lake-tárfiókot, a kapcsolt Data Lake-tárfiókokat és a kapcsolt Azure Storage-fiókokat. Az alapértelmezett Data Lake-fiókot egy „Default Storage Account” (Alapértelmezett tárfiók) címke jelöli.
-2. Kattintson a jobb gombbal az alapértelmezett Data Lake-tárfiókra, majd kattintson az **Explorer** elemre.  Ekkor megnyílik a Data Lake Tools for Visual Studio szolgáltatás Explorer ablaktáblája.  Ebben a bal oldalon egy fa nézet, a jobb oldalon pedig a tartalmak láthatók.
-3. Lépjen arra a mappára, ahová fájlokat szeretne feltölteni.
-4. Kattintson a jobb gombbal egy üres területen, majd kattintson az **Upload** (Feltöltés) parancsra.
+1. From **Server Explorer**, expand **Azure**, expand **Data Lake Analytics**, expand your Data Lake Analytics account, expand **Storage Accounts**. You shall see the default Data Lake Storage account, and the linked Data Lake Storage accounts, and the linked Azure Storage accounts. The default Data Lake account has a label "Default Storage Account".
+2. Right-click the default Data Lake Storage account, and then click **Explorer**.  It opens the Data Lake Tools for Visual Studio Explorer pane.  In the left, it shows a tree view, the content view is on the right.
+3. Browse to the folder where you want to upload files,
+4. Right-click any blank space, and then click **Upload**.
 
-    ![U-SQL Visual Studio-projekt U-SQL](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
+    ![U-SQL Visual Studio project U-SQL](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-upload-files.png)
 
-**Fájlok feltöltése egy kapcsolt Azure-blobtárfiókba**
+**To upload files to a linked Azure Blob storage account**
 
-1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, és bontsa ki a **Storage Accounts** (Tárfiókok) elemet. Látni fogja az alapértelmezett Data Lake-tárfiókot, a kapcsolt Data Lake-tárfiókokat és a kapcsolt Azure Storage-fiókokat.
-2. Bontsa ki az Azure-tárfiókot.
-3. Kattintson a jobb gombbal arra a tárolóra, amelybe fájlokat szeretne feltölteni, majd kattintson az **Explorer** elemre. Ha nincsenek tárolói, először létre kell hoznia egyet az Azure portál, az Azure PowerShell, vagy egy egyéb eszköz használatával.
-4. Lépjen arra a mappára, ahová fájlokat szeretne feltölteni.
-5. Kattintson a jobb gombbal egy üres területen, majd kattintson az **Upload** (Feltöltés) parancsra.
+1. From **Server Explorer**, expand **Azure**, expand **Data Lake Analytics**, expand your Data Lake Analytics account, expand **Storage Accounts**. You shall see the default Data Lake Storage account, and the linked Data Lake Storage accounts, and the linked Azure Storage accounts.
+2. Expand the Azure Storage Account.
+3. Right-click the container where you want to upload files, and then click **Explorer**. If you don't have a container, you must first create one using the Azure portal, Azure PowerShell, or other tools.
+4. Browse to the folder where you want to upload files,
+5. Right-click any blank space, and then click **Upload**.
 
-## U-SQL-parancsfájlok fejlesztése
+## Develop U-SQL scripts
 
-A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
+The Data Lake Analytics jobs are written in the U-SQL language. To learn more about U-SQL, see [Get started with U-SQL language](data-lake-analytics-u-sql-get-started.md) and [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348).
 
-**Data Lake Analytics-feladat létrehozása és elküldése**
+**To create and submit a Data Lake Analytics job**
 
-1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
-2. Válassza ki a **U-SQL projekt** típust.
+1. From the **File** menu, click **New**, and then click **Project**.
+2. Select the **U-SQL Project** type.
 
-    ![új U-SQL Visual Studio-projekt](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
+    ![new U-SQL Visual Studio project](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. Kattintson az **OK** gombra. A Visual Studio létrehoz egy megoldást egy **Script.usql** fájllal.
-4. Adja hozzá a következő parancsot a **Script.usql** fájlhoz:
+3. Click **OK**. Visual studio creates a solution with a **Script.usql** file.
+4. Enter the following script into **Script.usql**:
 
         @searchlog =
             EXTRACT UserId          int,
@@ -108,191 +109,192 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
             TO "/Output/SearchLog-from-Data-Lake.csv"
         USING Outputters.Csv();
 
-    Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** segítségével, majd létrehoz egy csv-fájlt az **Outputters.Csv()** használatával.
+    This U-SQL script reads the source data file using **Extractors.Tsv()**, and then creates a csv file using **Outputters.Csv()**.
 
-    Ne módosítsa az elérési utat, kivéve, ha átmásolta a forrásfájlt egy másik helyre.  A Data Lake Analytics létrehozza a kimeneti mappát, ha az még nem létezik.
+    Don't modify the two paths unless you copied the source file into a different location.  Data Lake Analytics will create the output folder if it doesn't exist.
 
-    Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa:
+    It is simpler to use relative paths for files stored in default data Lake accounts. You can also use absolute paths.  For example
 
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 
-    A társított tárfiókokban lévő fájlok eléréséhez abszolút elérési utakat kell használnia.  A társított Azure Storage-fiókban tárolt fájlok szintaxisa:
+    You must use absolute paths to access  files in  linked Storage accounts.  The syntax for files stored in linked Azure Storage account is:
 
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE] A nyilvános blobokkal vagy a nyilvános tárolókhoz hozzáférési jogosultságokkal rendelkező Azure Blob-tárolók használata jelenleg nem támogatott.  
+    >[AZURE.NOTE] Azure Blob container with public blobs or public containers access permissions are not currently supported.  
 
-    Tekintse meg az alábbi funkciókat:
+    Notice the following features:
 
     - **IntelliSense**
 
-        A neveket automatikusan befejezi a rendszer, és megjelennek a sorhalmaz, az osztályok, az adatbázisok, a sémák és a felhasználó által meghatározott objektumok (UDO-k) tagjai.
+        Name auto completed and the members will be shown for Rowset, Classes, Databases, Schemas and User Defined Objects (UDOs).
 
-        A katalógusokhoz (pl. adatbázisokhoz, sémákhoz, táblákhoz, UDO-khoz) tartozó IntelliSense a számítási fiókhoz kapcsolódik. A felső eszköztárban látható a jelenleg aktív számítási fiók, adatbázis és séma, amelyek a legördülő menükben módosíthatók.
+        IntelliSense for catalog entities (Databases, Schemas, Tables, UDOs etc.) is related to your compute account. You can check the current active compute account, database and schema in the top toolbar, and switch them through the dropdown lists.
 
-    - *Oszlopok *kibontása***
+    - **Expand * columns**
 
-        Kattintson a * karaktertől jobbra, és egy kék aláhúzást fog látni a * alatt. Mozgassa a mutatót a kék aláhúzásra, majd kattintson a lefelé mutató nyílra.
-        ![* kibontása a Data Lake Visual Studio Tools szolgáltatásban](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Click the right of *, you shall see a blue underline beneath the *. Hover your mouse cursor on the blue underline, and then click the down arrow.
+        ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
-        Kattintson az **Expand Columns** (Oszlopok kibontása) lehetőségre, és az eszköz a * jel helyére behelyettesíti az oszlopok neveit.
+        Click **Expand Columns**, the tool will replace the * with the column names.
 
-    - **Automatikus formázás**
+    - **Auto Format**
 
-        A felhasználók a kód szerkezete alapján módosíthatják az U-SQL szkript behúzásának mértékét az Edit (Szerkesztés) -> (Advanced) Speciális menüben:
+        Users can change the indentation of the U-SQL script based on the code structure under Edit->Advanced:
 
-        - Dokumentum formázása (Ctrl+E, D): a teljes dokumentumot formázza   
-        - Kijelölés formázása (Ctrl+K, Ctrl+F): a kijelölt részletet formázza. Ha semmi sincs kijelölve, ez a parancs azt a sort formázza, amelyben a kurzor áll.  
+        - Format Document (Ctrl+E, D) : Formats the whole document   
+        - Format Selection (Ctrl+K, Ctrl+F): Formats the selection. If no selection has been made, this shortcut formats the line the cursor is in.  
 
-        A formázási szabályok mindegyike konfigurálható a Tools (Eszközök) -> Options (Beállítások) -> Text Editor (Szövegszerkesztő) > SIP > Formatting (Formázás) menüpont alatt.  
-    - **Intelligens behúzás**
+        All the formatting rules are configurable under Tools->Options->Text Editor->SIP->Formatting.  
+    - **Smart Indent**
 
-        A Data Lake Tools for Visual Studio a parancsok írása közben képes egyes kifejezések automatikus behúzására. Ez a szolgáltatás alapértelmezés szerint le van tiltva, a felhasználó a U-SQL -> Options and Settings (Beállítások) -> Switches (Kapcsolók) -> Enable Smart Indent (Intelligens behúzás engedélyezése) menüpont alatt kapcsolhatja be.
+        Data Lake Tools for Visual Studio is able to indent expressions automatically while you are writing scripts. This feature is disabled by default, users need to enable it through checking U-SQL->Options and Settings ->Switches->Enable Smart Indent.
 
-    - **Definícióhoz ugrás és Minden hivatkozás keresése**
+    - **Go To Definition and Find All References**
 
-        Ha a jobb gombbal kattint egy sorhalmaz, paraméter, oszlop, UDO vagy egyéb elem nevére, a Go To Definition (Definícióhoz ugrás) parancsra kattintva (vagy az F12 billentyűvel) a definíciójához léphet. A Find All References (Minden hivatkozás keresése) parancs (vagy a Shift+F12 billentyűkombináció) megmutatja az összes hivatkozást.
+        Right-clicking the name of a RowSet/parameter/column/UDO etc. and clicking Go To Definition (F12) allows you to navigate to its definition. By clicking Find All References (Shift+F12), will show all the references.
 
-    - **Azure-elérési út beszúrása**
+    - **Insert Azure Path**
 
-        Ahelyett, hogy egy fájl Azure elérési útját megjegyezné és kézzel beírná a parancsok írásakor, a Data Lake Tools for Visual Studio egy egyszerűbb megoldást kínál: kattintson a szerkesztőben a jobb gombbal, majd kattintson az Insert Azure Path (Azure-elérési út) beszúrása lehetőségre. Lépjen a fájlhoz az Azure Blob Browser (Azure-blobtallózás) párbeszédablakban. Kattintson az **OK** gombra. A szolgáltatás beszúrja a fájl elérési útját a kódba.
+        Rather than remembering Azure file path and type it manually when writing script, Data Lake Tools for Visual Studio provides an easy way: right-click in the editor, click Insert Azure Path. Navigate to the file in the Azure Blob Browser dialog. Click **OK**. the file path will be inserted to your code.
 
-5. Adja meg a Data Lake Analytics-fiókot, -adatbázist és -sémát. Tesztelés céljából a parancsot helyileg is futtathatja, ha a **(local)** (helyi) lehetőséget választja. További információk: [Run U-SQL locally](#run-u-sql-locally) (U-SQL helyi futtatása).
+5. Specify the Data Lake Analytics account, Database, and Schema. You can select **(local)** to run the script locally for the testing purpose. For more information, see [Run U-SQL locally](#run-u-sql-locally).
 
-    ![U-SQL Visual Studio-projekt elküldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
+    ![Submit U-SQL Visual Studio project](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
-    További információk: [Use U-SQL catalog](data-lake-analytics-use-u-sql-catalog.md) (U-SQL-katalógus használata).
+    For more information, see [Use U-SQL catalog](data-lake-analytics-use-u-sql-catalog.md).
 
-5. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Build Script** (Parancsfájl létrehozása) elemre. Erősítse meg az eredményt az Output (Kimenet) ablaktáblán.
-6. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Submit Script** (Parancsfájl elküldése) lehetőségre. A **Submit** (Elküldés) gombra is kattinthat a Script.usql ablaktáblán.  Lásd az előző képernyőképet.  Kattintson a Submit (Elküldés) gomb melletti lefelé mutató nyílra az alábbi speciális beállításokkal történő küldéshez:
-7. Adja meg a **Feladat nevét**, erősítse meg az **Analytics-fiókot**, majd kattintson a **Submit** Elküldés gombra. Az elküldés után az eredmények és a feladatra mutató hivatkozás megjelenik a Data Lake Tools for Visual Studio Eredmények ablakában.
+5. From **Solution Explorer**, right-click **Script.usql**, and then click **Build Script**. Verify the result in the Output pane.
+6. From **Solution Explorer**, right-click **Script.usql**, and then click **Submit Script**. Optionally, you can also click **Submit** from Script.usql pane.  See the previous screenshot.  Click the down arrow next to the Submit button to submit using the advance options:
+7. Specify **Job Name**, verify the **Analytics Account**, and then click **Submit**. Submission results and job link are available in the Data Lake Tools for Visual Studio Results window when the submission is completed.
 
-    ![U-SQL Visual Studio-projekt elküldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
+    ![Submit U-SQL Visual Studio project](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
 
-8. Kattintson a Refresh (Frissítés) gombra a feladat legfrissebb állapotának megtekintéséhez. Ha a feladat sikeresen lezajlott, megjelenik a **Job Graph** (Feladat grafikonja), a **Meta Data Operations** (Metaadat-műveletek), a **State History** (Állapotelőzmények) és a **Diagnostics** (Diagnosztika):
+8. You must click the Refresh button to see the latest job status and refresh the screen. When the job successes, it will show you the **Job Graph**, **Meta Data Operations**, **State History**, **Diagnostics**:
 
-    ![U-SQL Visual Studio Data Lake Analytics-feladat teljesítménygrafikonja](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
+    ![U-SQL Visual Studio Data Lake Analytics job performance graph](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-    * Feladat összegzése. Megjeleníti az aktuális feladattal kapcsolatos összegző információkat, pl. az állapotot, az előrehaladást, a végrehajtás idejét, a futtatókörnyezet nevét vagy a küldőt.   
-    * Feladat részletei. Részletes információkat ad a feladatról, köztük a parancsfájlt, a forrásokat és a Vertex végrehajtási nézetet.
-    * Feladat grafikonjai. Négy grafikonon jeleníti meg a feladattal kapcsolatos információkat: az előrehaladást, az olvasott és írt adatok mennyiségét, a végrehajtás idejét, a csomópontonkénti átlagos végrehajtási időt, valamint az átviteli be- és kimenetet.
-    * Metaadat-műveletek. Megjelenít minden metaadatokkal kapcsolatos műveletet.
-    * Állapotelőzmények.
-    * Diagnosztika. A Data Lake Tools for Visual Studio automatikusan diagnosztizálja a feladat végrehajtását. Értesítéseket küld, ha hibák vagy teljesítményproblémák lépnek fel a feladatokban. További információért lásd a Feladatdiagnosztika (hivatkozás később) részt.
+    * Job Summary. Show the summary information of current job, e.g.: State, Progress, Execution Time, Runtime Name, Submitter etc.   
+    * Job Details. Detailed information on this job is provided, including script, resource, Vertex Execution View.
+    * Job Graph. Four graphs are provided to visualize the job’s information: Progress, Data Read, Data Written, Execution Time, Average Execution Time Per Node, Input Throughput, Output Throughput.
+    * Metadata Operations. It shows all the metadata operations.
+    * State History.
+    * Diagnostics. Data Lake Tools for Visual Studio will diagnose job execution automatically. You will receive alerts when there are some errors or performance issues in their jobs. See Job Diagnostics (link TBD) part for more information.
 
-**Feladat állapotának ellenőrzése**
+**To check job state**
 
-1. A Server Explorer eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, végül a Data Lake Analytics-fiók nevét
-2. Kattintson duplán a **Jobs** (Feladatok) elemre a feladatok listázásához.
-2. Kattintson egy feladatra az állapota megtekintéséhez.
+1. From Server Explorer, expand **Azure**, expand **Data Lake Analytics**, expand the Data Lake Analytics account name
+2. Double-click **Jobs** to list the jobs.
+2. Click a job to see the status.
 
-**Feladat kimenetének megtekintése**
+**To see the job output**
 
-1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, bontsa ki a **Storage Accounts** (Tárfiókok) elemet, kattintson a jobb gombbal az alapértelmezett Data Lake-tárfiókra, majd kattintson az **Explorer** elemre.
-2.  Kattintson duplán az **output** (kimenet) mappára a megnyitásához
-3.  Kattintson duplán a **SearchLog-From-adltools.csv** fájlra.
-
-
-###Feladat visszajátszása
-
-A feladat visszajátszásával végignézheti egy feladat végrehajtásának menetét, és vizuálisan észlelheti a teljesítményanomáliákat és a szűk keresztmetszeteket. Ez a funkció egy feladat végrehajtásának befejeződése előtt (tehát a feladat aktív futása közben) és a végrehajtás befejezése után is használható. A végrehajtás közbeni visszajátszáskor a felhasználó az aktuális állapotig nézheti újra a feladat menetét.
-
-**Feladat végrehajtási folyamatának megtekintése**  
-
-1. Kattintson a **Load Profile** (Profil betöltése) lehetőségre a jobb felső sarokban. Lásd az előző képernyőképet.
-2. Kattintson a Play (Lejátszás) gombra a bal alsó sarokban a feladat végrehajtási folyamatának megtekintéséhez.
-3. A visszajátszás közben kattintson a **Pause** (Szünet) gombra a megállításhoz, vagy húzza a folyamatjelzőt egy adott pontra.
+1. From **Server Explorer**, expand **Azure**, expand **Data Lake Analytics**, expand your Data Lake Analytics account, expand **Storage Accounts**, right-click the default Data Lake Storage account, and then click **Explorer**.
+2.  Double-click **output** to open the folder
+3.  Double-click **SearchLog-From-adltools.csv**.
 
 
-###Hőtérkép
+###Job Playback
 
-A Data Lake Tools for Visual Studio szolgáltatás feladatnézetében a felhasználó által választható színsémákkal jelezhető a feladatok előrehaladása, adatbemenete és -kimenete, végrehajtási ideje és az egyes szintek átviteli be- és kimenete. Ennek segítségével a felhasználók közvetlenül és intuitív módon ismerhetik fel a lehetséges problémákat és a feladatok tulajdonságainak eloszlását. A megjelenítendő adatforrás a legördülő listából választható ki.  
+Job playback enables you to watch job execution progress and visually detect out performance anomalies and bottlenecks. This feature can be used before the job completes execution (i.e. during the time the job is actively running) as well as after the execution has completed. Doing playback during job execution will allow the user to play back the progress up to the current time.
 
-## U-SQL helyi futtatása
+**To view job execution progress**  
 
-A Visual Studio szolgáltatásban a U-SQL helyi futtatásával a következőket teheti meg:
+1. Click **Load Profile** on the upper right corner. See the previous screen shot.
+2. Click on the Play button on the bottom left corner to review the job execution progress.
+3. During the playback, click **Pause** to stop it or directly drag the progress bar to specific positions.
 
-- Helyileg futtathat U-SQL-parancsfájlokat, valamint C#-szerelvényeket.
-- Helyileg végezhet hibakeresést C#-szerelvényeken.
-- Helyi adatbázisokat, szerelvényeket, sémákat és táblákat hozhat létre/törölhet/tekinthet meg a Server Explorer eszközben, ugyanúgy, ahogy az Azure Data Lake Analytics szolgáltatásban is.
 
-A Visual Studio szolgáltatásban egy *Local* (Helyi) fiókot talál, és a telepítő létrehoz egy *DataRoot* mappát a *C:\LocalRunRoot* mappán belül. A DataRoot mappa a következőkre használható:
+###Heat Map
 
-- Metaadatok, többek között táblák, adatbázisok, táblaértékű függvények (TVF-ek) tárolása.
-- Egy adott parancsfájl esetében, ha a hivatkozott bemeneti/kimeneti elérési utak relatív utak, a rendszer a DataRoot mappában fog keresni (valamint a parancsfájl elérési útján, ha az meg van adva)
-- A rendszer NEM keres a DataRoot mappában akkor, amikor egy szerelvény regisztrálási kísérletekor egy relatív utat használ (további részletekért lásd a „Use assemblies when doing local run” (Szerelvények használata helyi futtatáskor) részt)
+Data Lake Tools for Visual Studio provides user-selectable color-overlays on job view to indicate progress, data I/O, execution time, I/O throughput of each stage. Through this, users can figure out potential issues and distribution of job properties directly and intuitively. You can choose a data source to display from the drop-down list.  
 
-A következő videó bemutatja a U-SQL helyi futtatási funkcióját:
+## Run U-SQL locally
+
+Using the U-SQL local run experience in Visual Studio, you can:
+
+- Run U-SQL scripts locally, along with C# Assemblies.
+- Debug C# assemblies locally.
+- Create/delete/view local databases, assemblies, schemas, and tables in Server Explorer just as you can do for Azure Data Lake Analytics service.
+
+You will see a *Local* account in Visual Studio, and the installer creates a *DataRoot* folder located *C:\LocalRunRoot*. The DataRoot folder will be used:
+
+- Store  metadata including tables, DBs, TVFs, etc.
+- For a certain script: if a relative path is referenced in input/output paths, we will look up the DataRoot (as well as the script’s path if the it’s input)
+- The DataRoot folder will NOT be referenced if you are trying to register an assembly and use a relative path (see “Use assemblies when doing local run” part for more details)
+
+The following video demonstrates the U-SQL local run feature:
 
 >[AZURE.VIDEO usql-localrun]
 
-### Ismert problémák és korlátozások
+### Known issues and limitations
 
-- A U-SQL helyi futtatása nem támogatja a fájlkészletek helyi lekérdezését. Lásd: [U-SQL-fájlkészletek](https://msdn.microsoft.com/library/azure/mt621294.aspx). Ez a későbbiekben lesz megoldva.
-- Kis teljesítmény az alacsony szintű párhuzamosság miatt, mivel a feladattervek egyetlen folyamatban, egymást követően vannak végrehajtva.
-- A helyi futtatáskor nem jelennek meg a Visual Studio szolgáltatásban a feladatok grafikonjai. Ez a későbbiekben lesz megoldva.
-- Nem lehet táblákat, adatbázisokat, egyebeket létrehozni a Server Explorer eszközben a helyi fiókhoz.
-- Egy relatív útra történő hivatkozáskor:
+- U-SQL Local Run does not support querying filesets locally. See [U-SQL filesets](https://msdn.microsoft.com/library/azure/mt621294.aspx). This will be resolved in the future.
+- Slow performance due to low parallelism, because job plans are executed serially in a single process.
+- Local run can't show job graphs in Visual Studio. This will be addressed in the future.
+- Cannot create table/DB etc. in Server Explorer for the local account.
+- When a relative path is referenced:
 
-    - A parancsfájl bemenetében (EXTRACT * FROM “/path/abc”) a rendszer a DataRoot elérési úton és a parancsfájl elérési útján is keres.
-    - A parancsfájl kimenetében (OUTPUT TO “path/abc”) a DataRoot elérési út lesz a kimeneti mappa.
-    - A szerelvények regisztrálásakor (CREATE ASSEMBLY xyz FROM “/path/abc”) a rendszer a parancsfájl elérési útján keres, de a DataRoot mappában nem.
-    - A regisztrált TVF-ek, nézetek és egyéb metaadat-entitások esetében a rendszer a DataRoot elérési úton keres, de a parancsfájl elérési útján nem.
+    - In script input (EXTRACT * FROM “/path/abc”) - both the DataRoot path and the script path will be searched.
+    - In script output (OUTPUT TO “path/abc”): the DataRoot path will be used as the output folder.
+    - In assembly registration (CREATE ASSEMBLY xyz FROM “/path/abc”): the script path will be searched, but not the DataRoot.
+    - In registered TVF/View or other metadata entities: the DataRoot Path will be searched, but not the script path.
 
-    A Data Lake szolgáltatáson futtatott parancsfájlok esetében a rendszer az alapértelmezett tárfiókot használja gyökérmappaként, és aszerint végzi el a keresést.
+    For scripts ran on Data Lake serivce, the default storage account will be used as root folder and will be searched accordingly.
 
-### U-SQL-parancsfájlok helyi tesztelése
-A U-SQL-parancsfájlok fejlesztésére vonatkozó útmutatásért lásd: [U-SQL-parancsfájlok fejlesztése](#develop-and-test-u-sql-scripts). A U-SQL-parancsfájlok helyi létrehozásához és teszteléséhez válassza a **(Local)** (Helyi) lehetőséget a fürtök legördülő listájából, majd kattintson a **Submit** (Elküldés) gombra. Ellenőrizze, hogy a helyes adatokra hivatkozik-e – vagy hivatkozzon egy abszolút elérési útra, vagy helyezze az adatokat a DataRoot mappába.
+### Test U-SQL scripts locally
+For instructions on developing U-SQL scripts, see [Develop U-SQL scripts](#develop-and-test-u-sql-scripts). To build and run U-SQL scripts locally, select **(Local)** in the cluster drop-down list, and then click **Submit**. Please make sure you have the right data referenced - either refer to the absolute path or put the data under the DataRoot folder.
 
-![U-SQL Visual Studio-projekt helyi küldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
+![Submit U-SQL Visual Studio project locally](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
 
-Kattintson a jobb gombbal egy parancsfájlra, majd kattintson a **Run Local Plan** (Helyi terv futtatása) elemre a helyi menüben, vagy nyomja le a **CTRL+F5** billentyűkombinációt a helyi futtatás aktiválásához.
+You can also right-click a script and then click **Run Local Plan** in the context menu, or press **CTRL+F5** to trigger local run.
 
-### Szerelvények használata helyi futtatáskor
+### Use assemblies in local run
 
-A testreszabott C#-fájlok futtatásának két módja létezik:
+There are two ways to run the customized C# files:
 
-- Írjon szerelvényeket a fájl mögötti kódba, és a szerelvények automatikusan regisztrálva lesznek, majd a parancsfájl befejezése után el lesznek dobva.
-- Hozzon létre egy C#-szerelvényprojektet, és regisztrálja a kimeneti dll-fájlt a helyi fiókba egy, az alábbihoz hasonló parancsfájllal. Vegye figyelembe, hogy az elérési út a parancsfájl helyéhez képest relatív, nem a DataRoot mappához képest.
+- Write assemblies in the code behind file and the assemblies will be automatically registered and dropped after the script is done.
+- Create a C# assembly project and register the output dll to the local account through a script like below. Please note that the path is relative to the script rather than the DataRoot folder.
 
-![Szerelvények használata U-SQL helyi futtatásakor](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
+![Use assemblies in u-sql local run](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
 
-### Parancsfájlok és C#-szerelvények helyi hibakeresése
+### Debug scripts and C# assemblies locally
 
-A C#-szerelvények hibakeresését anélkül is elvégezheti, hogy elküldené és regisztrálná őket az Azure Data Lake Analytics szolgáltatásba. Töréspontokat állíthat be a fájl mögötti kódban és a hivatkozott C#-projektben is.
+You can debug C# assemblies without submitting and registering it to the Azure Data Lake Analytics Service. You can set breakpoints in both the code behind file and in a referenced C# project.
 
-**Helyi kódok hibakeresése fájl mögötti kódban**
-1.  Állítson be töréspontokat a fájl mögötti kódban.
-2.  Nyomja le az **F5** billentyűt a parancsfájl helyi hibakereséséhez.
+**To debug local code in code behind file**
+1.  Set breakpoints in the code behind file.
+2.  Press **F5** to debug the script locally.
 
-A következő eljárás csak a Visual Studio 2015 esetében működik. A régebbi kiadásokban lehetséges, hogy kézzel kell megadnia a pdb-fájlokat.
+The following procedure only works in Visual Studio 2015. In older Visual Studio you may need to manually add the pdb files.
 
-**Helyi kódok hibakeresése egy hivatkozott C#-projektben**
-1.  Hozzon létre egy C#-szerelvényprojektet, és állítsa be úgy, hogy hozza létre a kimeneti dll-fájlt.
-2.  Regisztrálja a dll-fájlt egy U-SQL-kivonat használatával:
+**To debug local code in a referenced C# project**
+1.  Create a C# Assembly project, and build it to generate the output dll.
+2.  Register the dll using a U-SQL statement:
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-3.  Állítson be töréspontokat a C#-kódban.
-4.  Nyomja le az **F5** billentyűt a C#-dll-fájlra hivatkozó parancsfájl helyi hibakereséséhez.  
+3.  Set breakpoints in the C# code.
+4.  Press **F5** to debug the script with referencing the C# dll locally.  
 
-##Lásd még:
+##See also
 
-A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
+To get started with Data Lake Analytics using different tools, see:
 
-- [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
-- [A Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
-- [A Data Lake Analytics használatának első lépései a .NET SDK-val](data-lake-analytics-get-started-net-sdk.md)
+- [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
+- [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+- [Get started with Data Lake Analytics using .NET SDK](data-lake-analytics-get-started-net-sdk.md)
+- [Debug C# code in U-SQL jobs](data-lake-analytics-debug-u-sql-jobs.md)
 
-További fejlesztői témakörökért lásd:
+To see more development topics:
 
-- [Webes naplók elemzése a Data Lake Analytics segítségével](data-lake-analytics-analyze-weblogs.md)
-- [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
-- [Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével](data-lake-analytics-u-sql-get-started.md)
-- [Felhasználó által definiált U-SQL-operátorok fejlesztése Data Lake Analytics-feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+- [Analyze weblogs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
+- [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+- [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
+- [Develop U-SQL user defined operators for Data Lake Analytics jobs](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-##„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez
+##Appx-A PowerShell sample for preparing the tutorial
 
-A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics-fiókot és a forrásadatokat. Ezt átugorva az [U-SQL-parancsfájlok fejlesztése](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) részhez léphet.
+The following PowerShell script prepares an Azure Data Lake Analytics account and the source data for you, So you can skip to [Develop U-SQL scripts](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts).
 
     #region - used for creating Azure service names
     $nameToken = "<Enter an alias>"
@@ -364,6 +366,6 @@ A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

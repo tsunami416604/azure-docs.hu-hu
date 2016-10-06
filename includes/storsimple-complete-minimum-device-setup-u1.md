@@ -1,33 +1,33 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-#### A minimális StorSimple eszközbeállítás befejezése
+#### To complete the minimum StorSimple device setup
 
-1. Válassza ki az eszközt, és kattintson a **Gyors üzembe helyezés** gombra. Az Eszköz konfigurálása varázsló elindításához kattintson az **Eszköz beállításának befejezése** lehetőségre.
+1. Select the device and click **Quick Start**. Click **Complete device setup** to start the Configure device wizard.
 
-2. Az Eszköz konfigurálása varázsló **Alapbeállítások** párbeszédpaneljén tegye a következőket:
-  1. Adjon egy **rövid** nevet az eszköznek. Az alapértelmezett eszköznév olyan információkból áll, mint az eszköz típusa és sorozatszáma. Az eszköz kezelése érdekében egy legfeljebb 64 karakterből álló rövid nevet rendelhet hozzá.
-  2. Az **időzóna** az eszköz üzembe helyezésének földrajzi helyétől függ. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
-  3. A **DNS-beállítások** területen adjon meg egy címet a **Másodlagos DNS-kiszolgálóhoz**. Ha IPv6-címeket használ, a mező a Windows PowerShell felületén megadott IPv6-előtag alapján lesz kitöltve. 
-  Ha a másodlagos DNS-kiszolgáló nincs beállítva, akkor nem lesz lehetősége az eszközkonfigurációk mentésére.
-  4. Az iSCSI-kompatibilis adapterek felületén engedélyezzen legalább egy hálózatot az iSCSI számára. Legalább egy hálózati adaptert engedélyezni kell a felhőhöz, és egyet az iSCSI-hoz. A DATA 0 automatikusan engedélyezve van a felhőhöz.
+2. In the Configure device wizard **Basic Settings** dialog box, do the following:
+  1. Supply a **friendly name** for your device. The default device name reflects information such as the device model and serial number. You can assign a friendly name of up to 64 characters to manage your device.
+  2. Set the **time zone** based on the geographic location in which the device is being deployed. Your device will use this time zone for all scheduled operations.
+  3. Under **DNS Settings**, provide an address for your **Secondary DNS Server**. If you are using IPv6, the field will be populated based on the IPv6 prefix provided in the Windows PowerShell interface. 
+  If the secondary DNS server is not configured, you will not be allowed to save your device configuration.
+  4. Under iSCSI enabled interfaces, enable at least one network for iSCSI. At least one network interface needs to be cloud-enabled and one interface needs to be iSCSI-enabled. DATA 0 is automatically cloud-enabled.
  
-      ![A StorSimple minimális eszközbeállításának alapbeállításai](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupBasicSettings1-include.png)
+      ![StorSimple minimum device setup basic settings](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupBasicSettings1-include.png)
 
-3. Kattintson a nyíl ikonra. ![StorSimple nyíl ikon](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
+3. Click the arrow icon. ![StorSimple arrow icon](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
 
-4. A **Hálózati adapterek** párbeszédpanelen adja meg a Vezérlő 0 és a Vezérlő 1 fix IP-címét. **A vezérlő fix IP-címeinek az alhálózaton belüli, az eszköz IP-címe alapján elérhető, szabad IP-címeknek kell lenniük.** Ha a DATA 0 adapter az IPv4 használatára van konfigurálva, akkor a fix IP-címeket is IPv4-formátumban kell megadni. Ha IPv6-konfigurációhoz tartozó előtagot adott meg, a fix IP-címek automatikusan ezekbe a mezőkbe lesznek betöltve.
+4. In the **Network Interfaces** dialog box, provide the fixed IP addresses for Controller 0 and Controller 1. **The controller fixed IP addresses need to be free IPs within the subnet accessible by the device IP address.** If the DATA 0 interface was configured for IPv4, the fixed IP addresses need to be provided in the IPv4 format. If you provided a prefix for IPv6 configuration, the fixed IP addresses will be populated automatically in these fields.
 
 
-    ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
+    ![StorSimple minimum device setup network interfaces](./media/storsimple-complete-minimum-device-setup-u1/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
-    A vezérlőhöz tartozó fix IP-címek az eszköz frissítéseinek karbantartásához használatosak, ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez. A fix vezérlő IP-k irányíthatóságát a [Test-HcsmConnection][Test] parancsmaggal ellenőrizheti. Az alábbi példán olyan, az internetre átirányított fix vezérlő IP-k láthatók, amelyek hozzáférnek a Microsoft Update-kiszolgálókhoz. 
+    The fixed IP addresses for the controller are used for servicing the updates to the device, and therefore the fixed IPs must be routable and able to connect to the Internet. You can check that your fixed controller IPs are routable by using the [Test-HcsmConnection][Test] cmdlet. The following example shows fixed controller IPs are routed to the Internet and can access the Microsoft Update servers. 
 
-     ![Test-HcsmConnection irányítható IP-kkel](./media/storsimple-complete-minimum-device-setup-u1/Test-HcsmConnectionOutputRegisteredDevice.png)
+     ![Test-HcsmConnection showing routable IPs](./media/storsimple-complete-minimum-device-setup-u1/Test-HcsmConnectionOutputRegisteredDevice.png)
 
-5. Kattintson a pipa ikonra ![StorSimple pipa ikon](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png).
-  Ekkor visszakerül az eszköz **Gyors üzembe helyezés** oldalára.
+5. Click the check icon ![StorSimple check icon](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png).
+  You will return to the device **Quick Start** page.
 
- > [AZURE.NOTE] Az eszköz többi beállítását bármikor módosíthatja a **Konfigurálás** lapon.
+ > [AZURE.NOTE] You can modify all the other device settings at any time by accessing the **Configure** page.
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

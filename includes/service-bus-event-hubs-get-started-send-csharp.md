@@ -1,34 +1,34 @@
-## Üzenetek küldése az Event Hubs szolgáltatásnak
+## Send messages to Event Hubs
 
-Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az eseményeket az eseményközpontjába.
+In this section, you'll write a Windows console app that sends events to your Event Hub.
 
-1. Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Sender** (Küldő) nevet.
+1. In Visual Studio, create a new Visual C# Desktop App project using the **Console  Application** project template. Name the project **Sender**.
 
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png)
 
-2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése megoldáshoz) parancsra. 
+2. In Solution Explorer, right-click the solution, and then click **Manage NuGet Packages for Solution**. 
 
-3. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Ügyeljen arra, hogy a projekt neve (**Sender**) meg legyen adva a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket. 
+3. Click the **Browse** tab, then search for `Microsoft Azure Service Bus`. Ensure that the project name (**Sender**) is specified in the **Version(s)** box. Click **Install**, and accept the terms of use. 
 
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png)
 
-    A Visual Studio letölti és telepíti az [Azure Service Bus library NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (Azure szolgáltatásbusz-könyvtár NuGet-csomag) elemet, és hozzáad egy rá mutató hivatkozást is.
+    Visual Studio downloads, installs, and adds a reference to the [Azure Service Bus library NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus).
 
-4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+4. Add the following `using` statements at the top of the **Program.cs** file:
 
     ```
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
 
-5. Adja hozzá a következő mezőket a **Program** osztályhoz, lecserélve a helyőrző értékeket az előző szakaszban létrehozott eseményközpont nevével, valamint a korábban elmentett névtérszintű kapcsolati karakterlánccal.
+5. Add the following fields to the **Program** class, substituting the placeholder values with the name of the Event Hub you created in the previous section, and the namespace-level connection string you saved previously.
 
     ```
     static string eventHubName = "{Event Hub name}";
     static string connectionString = "{send connection string}";
     ```
 
-6. Adja hozzá a **Program** osztályhoz a következő módszert:
+6. Add the following method to the **Program** class:
 
     ```
     static void SendingRandomMessages()
@@ -54,9 +54,9 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     }
     ```
 
-    Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának 200 ezredmásodperces késleltetéssel.
+    This method continuously sends events to your Event Hub with a 200-ms delay.
 
-7. Végül adja a következő sorokat a **Main** metódushoz:
+7. Finally, add the following lines to the **Main** method:
 
     ```
     Console.WriteLine("Press Ctrl-C to stop the sender process");

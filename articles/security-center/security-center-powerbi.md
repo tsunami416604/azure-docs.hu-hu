@@ -118,6 +118,6 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irány
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

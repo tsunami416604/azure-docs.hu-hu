@@ -1,7 +1,7 @@
 <properties
-    pageTitle="Oktatóanyag Java alapú alkalmazásfejlesztéshez DocumentDB használatával | Microsoft Azure"
-    description="Ez a Java-webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Java-alkalmazás adatait az Azure DocumentDB szolgáltatás segítségével."
-    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, java-alkalmazás, java-webalkalmazás oktatóanyag, documentdb, azure, Microsoft Azure"
+    pageTitle="Java application development tutorial using DocumentDB | Microsoft Azure"
+    description="This Java web application tutorial shows you how to use the Azure DocumentDB service to store and access data from a Java application hosted on Azure Websites."
+    keywords="Application development, database tutorial, java application, java web application tutorial, documentdb, azure, Microsoft azure"
     services="documentdb"
     documentationCenter="java"
     authors="AndrewHoh"
@@ -17,7 +17,8 @@
     ms.date="08/24/2016"
     ms.author="anhoh"/>
 
-# Java-webalkalmazás létrehozása a DocumentDB használatával
+
+# Build a Java web application using DocumentDB
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -25,80 +26,80 @@
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
-Ez a Java-webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Java-alkalmazás adatait a [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB) szolgáltatás segítségével. A témakörben érintett témák köre:
+This Java web application tutorial shows you how to use the [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB) service to store and access data from a Java application hosted on Azure Websites. In this topic, you will learn:
 
-- Alapszintű JSP-alkalmazás létrehozása az Eclipse-ben.
-- Az Azure DocumentDB szolgáltatás használata a [DocumentDB Java SDK-val](https://github.com/Azure/azure-documentdb-java).
+- How to build a basic JSP application in Eclipse.
+- How to work with the Azure DocumentDB service using the [DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java).
 
-Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létre egy webalapú feladatkezelő alkalmazást, amellyel feladatokat hozhat létre, kérhet le, valamint „kész” jelöléssel láthatja el azokat, ahogyan azt az alábbi illusztráció is mutatja. A rendszer a teendőlistában szereplő összes feladatot JSON-dokumentumokként tárolja az Azure DocumentDB-ben.
+This Java application tutorial shows you how to create a web-based task-management application that enables you to create, retrieve, and mark tasks as complete, as shown in the following image. Each of the tasks in the ToDo list are stored as JSON documents in Azure DocumentDB.
 
-![Saját teendőlista Java-alkalmazása](./media/documentdb-java-application/image1.png)
+![My ToDo List Java application](./media/documentdb-java-application/image1.png)
 
-> [AZURE.TIP] Ez az alkalmazásfejlesztési oktatóanyag feltételezi, hogy rendelkezik korábbi tapasztalattal a Java használatát illetően. Ha még nem ismeri a Javát vagy az [előfeltételt jelentő eszközöket](#Prerequisites), ajánlott letölteni a teljes [teendők](https://github.com/Azure-Samples/documentdb-java-todo-app) projektet a GitHubról, majd lefordítani azt a [jelen cikk végén található utasítások](#GetProject) segítségével. A projekt lefordítása után a cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.  
+> [AZURE.TIP] This application development tutorial assumes that you have prior experience using Java. If you are new to Java or the [prerequisite tools](#Prerequisites), we recommend downloading the complete [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) project from GitHub and building it using [the instructions at the end of this article](#GetProject). Once you have it built, you can review the article to gain insight on the code in the context of the project.  
 
-##<a id="Prerequisites"></a>A jelen Java-alkalmazásokra vonatkozó oktatóanyag előfeltételei
-Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
+##<a id="Prerequisites"></a>Prerequisites for this Java web application tutorial
+Before you begin this application development tutorial, you must have the following:
 
-- Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- [Java fejlesztői készlet (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- [Java EE-fejlesztőknek készült Eclipse IDE.](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
-- [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service-web/web-sites-java-get-started.md)
+- An active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
+- [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+- [Eclipse IDE for Java EE Developers.](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
+- [An Azure Website with a Java runtime environment (e.g. Tomcat or Jetty) enabled.](../app-service-web/web-sites-java-get-started.md)
 
-Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
+If you're installing these tools for the first time, coreservlets.com provides a walk-through of the installation process in the Quick Start section of their [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) article.
 
-##<a id="CreateDB"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
+##<a id="CreateDB"></a>Step 1: Create a DocumentDB database account
 
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
+Let's start by creating a DocumentDB account. If you already have an account, you can skip to [Step 2: Create the Java JSP application](#CreateJSP).
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-##<a id="CreateJSP"></a>2. lépés: Új Java JSP-alkalmazás létrehozása
+##<a id="CreateJSP"></a>Step 2: Create the Java JSP application
 
-JSP-alkalmazás létrehozása:
+To create the JSP application:
 
-1. Először is hozzon létre egy Java-projektet. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőség az elérhető projektek között, tegye a következőt: kattintson a **File** (Fájl), **New** (Új), **Project** (Projekt) lehetőségre, bontsa ki a **Web** elemet, majd kattintson a **Dynamic Web Projekt** (Dinamikus webes projekt) elemre, és végül a **Tovább** gombra.
+1. First, we’ll start off by creating a Java project. Start Eclipse, then click **File**, click **New**, and then click **Dynamic Web Project**. If you don’t see **Dynamic Web Project** listed as an available project, do the following: click **File**, click **New**, click **Project**…, expand **Web**, click **Dynamic Web Project**, and click **Next**.
 
-    ![JSP Java-alkalmazások fejlesztése](./media/documentdb-java-application/image10.png)
+    ![JSP Java Application Development](./media/documentdb-java-application/image10.png)
 
-2. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.
-3. Az Eclipse Project Explorer (Projektböngésző) nézetében bontsa ki a projektet. Kattintson a jobb gombbal a **WebContent** (Webes tartalom), majd a **New** (Új) elemre, és végül a **JSP File** (JSP-fájl) elemre.
-4. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp**. A szülőmappa neve maradjon **WebContent**, ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
+2. Enter a project name in the **Project name** box, and in the **Target Runtime** drop-down menu, optionally select a value (e.g. Apache Tomcat v7.0), and then click **Finish**. Selecting a target runtime enables you to run your project locally through Eclipse.
+3. In Eclipse, in the Project Explorer view, expand your project. Right-click **WebContent**, click **New**, and then click **JSP File**.
+4. In the **New JSP File** dialog box, name the file **index.jsp**. Keep the parent folder as **WebContent**, as shown in the following illustration, and then click **Next**.
 
-    ![Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag](./media/documentdb-java-application/image11.png)
+    ![Make a New JSP File - Java Web Application Tutorial](./media/documentdb-java-application/image11.png)
 
-5. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
+5. In the **Select JSP Template** dialog box, for the purpose of this tutorial select **New JSP File (html)**, and then click **Finish**.
 
-6. Miután megnyílt az index.jsp fájl az Eclipse-ben, adja hozzá a **Hello World!** szöveget a már meglévő <body> elemhez. A frissített <body>-tartalomnak az alábbi kódhoz kell hasonlítania:
+6. When the index.jsp file opens in Eclipse, add text to display **Hello World!** within the existing <body> element. Your updated <body> content should look like the following code:
 
         <body>
             <% out.println("Hello World!"); %>
         </body>
 
-8. Mentse az index.jsp fájlt.
-9. Ha megadta a tervezett futásidőt a 2. lépésben, most rákattinthat a **Project** (Projekt), majd a **Run** (Futtatás) elemre a JSP-alkalmazás helyileg történő futtatásához.
+8. Save the index.jsp file.
+9. If you set a target runtime in step 2, you can click **Project** and then **Run** to run your JSP application locally:
 
-    ![Hello World – Java-alkalmazásokra vonatkozó oktatóanyag](./media/documentdb-java-application/image12.png)
+    ![Hello World – Java Application Tutorial](./media/documentdb-java-application/image12.png)
 
-##<a id="InstallSDK"></a>3. lépés: A DocumentDB Java SDK telepítése ##
+##<a id="InstallSDK"></a>Step 3: Install the DocumentDB Java SDK ##
 
-A DocumentDB Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Maven](http://maven.apache.org/) használatával kérhetők le.
+The easiest way to pull in the DocumentDB Java SDK and its dependencies is through [Apache Maven](http://maven.apache.org/).
 
-Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések végrehajtásával:
+To do this, you will need to convert your project to a maven project by completing the following steps:
 
-1. Kattintson a jobb gombbal a projektre a Project Explorer (Projektböngésző) nézetben, kattintson a **Configure** (Konfigurálás), majd a **Convert to Maven Project** (Konvertálás Maven-projekté) lehetőségre.
-2. A **Create new POM** (Új POM létrehozása) ablakban fogadja el az alapértelmezett beállításokat, majd kattintson a **Finish** (Befejezés) lehetőségre.
-3. A **Project Explorer** (Projektböngésző) nézetben nyissa meg a pom.xml fájlt.
-4. A **Dependencies** (Függőségek) lap **Dependencies** (Függőségek) paneljén kattintson az **Add** (Hozzáadás) lehetőségre.
-4. A **Select Dependency** (Függőség kiválasztása) ablakban tegye a következőket:
- - A **GroupId** (Csoportazonosító) mezőben adja meg a következőt: com.microsoft.azure.
- - Az **Azure Id** (Azure-azonosító) mezőben adja meg a következőt: azure-documentdb.
- - A **Version** (Verzió) mezőben adja meg a következőt: 1.5.1.
+1. Right-click your project in the Project Explorer, click **Configure**, click **Convert to Maven Project**.
+2. In the **Create new POM** window, accept the defaults and click **Finish**.
+3. In **Project Explorer**, open the pom.xml file.
+4. On the **Dependencies** tab, in the **Dependencies** pane, click **Add**.
+4. In the **Select Dependency** window, do the following:
+ - In the **GroupId** box, enter com.microsoft.azure.
+ - In the **Artifact Id** box enter azure-documentdb.
+ - In the **Version** box enter 1.5.1.
 
-    ![A DocumentDB Java Application SDK telepítése](./media/documentdb-java-application/image13.png)
+    ![Install DocumentDB Java Application SDK](./media/documentdb-java-application/image13.png)
 
-    Vagy adja hozzá a függőség XML-fájljának GroupId és ArtifactId szakaszát közvetlenül a pom.xml fájlhoz egy szövegszerkesztő segítségével:
+    Or add the dependency XML for GroupId and ArtifactId directly to the pom.xml via a text editor:
 
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -106,12 +107,12 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             <version>1.5.1</version>
         </dependency>
 
-5. Az **Ok** gombra való kattintás után a Maven feltelepíti a DocumentDB Java SDK-t.
-6. Mentse a pom.xml fájlt.
+5. Click **Ok** and Maven will install the DocumentDB Java SDK.
+6. Save the pom.xml file.
 
-##<a id="UseService"></a>4. lépés: A DocumentDB szolgáltatás használata Java-alkalmazásokban
+##<a id="UseService"></a>Step 4: Using the DocumentDB service in a Java application
 
-1. Először is határozza meg a TodoItem (Tennivaló) objektumot:
+1. First, let's define the TodoItem object:
 
         @Data
         @Builder
@@ -122,9 +123,9 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             private String name;
         }
 
-    Ebben a projektben a [Project Lombok](http://projectlombok.org/) nevű projekt használatával hoztuk létre a konstruktort, a beolvasókat, a beállítókat és a felépítőt. Ezt a kódot kézzel is megírhatja, vagy létrehozhatja azt az IDE használatával.
+    In this project, we are using [Project Lombok](http://projectlombok.org/) to generate the constructor, getters, setters, and a builder. Alternatively, you can write this code manually or have the IDE generate it.
 
-2. A DocumentDB szolgáltatás elindításához példányosítania kell egy új **DocumentClient** ügyfelet. Általában érdemes újrafelhasználni a **DocumentClient** ügyfelet ahelyett, hogy minden későbbi kérés esetén új ügyfelet hozna létre. Az ügyfél újrafelhasználásához burkolja be azt egy **DocumentClientFactory** használatával. Az [1. lépésben](#CreateDB) a vágólapra mentett URI és PRIMARY KEY (ELSŐDLEGES KULCS) értékeket szintén itt kell beilleszteni. Cserélje ki a [YOUR\_ENDPOINT\_HERE] részt az URI-re, a [YOUR\_KEY\_HERE] részt pedig az elsődleges kulcsra.
+2. To invoke the DocumentDB service, you must instantiate a new **DocumentClient**. In general, it is best to reuse the **DocumentClient** - rather than construct a new client for each subsequent request. We can reuse the client by wrapping the client in a **DocumentClientFactory**. This is also where you need to paste the URI and PRIMARY KEY value you saved to your clipboard in [step 1](#CreateDB). Replace [YOUR\_ENDPOINT\_HERE] with your URI and replace [YOUR\_KEY\_HERE] with your PRIMARY KEY.
 
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
         private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -140,11 +141,11 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             return documentClient;
         }
 
-3. Ezután hozzon létre egy DAO-t a teendők a DocumentDB szolgáltatásba történő kivonatolásához.
+3. Now let's create a Data Access Object (DAO) to abstract persisting our ToDo items to DocumentDB.
 
-    Ha menteni szeretné a teendőket egy gyűjteménybe, az ügyfélnek tudnia kell, melyik adatbázisban és gyűjteményben kívánja azt megőrizni (ahogy erre az önhivatkozások is hivatkoznak). Általában érdemes gyorsítótárazni az adatbázist és a gyűjteményt, amennyiben ez lehetséges, így elkerülhető az adatbázissal való fölösleges üzenetváltás.
+    In order to save ToDo items to a collection, the client needs to know which database and collection to persist to (as referenced by self-links). In general, it is best to cache the database and collection when possible to avoid additional round-trips to the database.
 
-    Az alábbi kód bemutatja, hogyan kérheti le az adatbázist és a gyűjteményt, ha azok léteznek, és hogyan hozhat létre újat, ha azok még nem léteznek:
+    The following code illustrates how to retrieve our database and collection, if it exists, or create a new one if it doesn't exist:
 
         public class DocDbDao implements TodoDao {
             // The name of our database.
@@ -232,7 +233,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             }
         }
 
-4. A következő lépésben be kell írnia egy kódrészletet a teendők a gyűjteményben való megőrzéséhez. A jelen példában a [Gson](https://code.google.com/p/google-gson/) segítségével szerializáltuk és deszerializáltuk a teendő POJO objektumait JSON-dokumentumokká. A [Jackson](http://jackson.codehaus.org/), illetve saját egyéni szerializálói szintén remek megoldást jelentenek a POJO-k szerializálására.
+4. The next step is to write some code to persist the TodoItems in to the collection. In this example, we will use [Gson](https://code.google.com/p/google-gson/) to serialize and de-serialize TodoItem Plain Old Java Objects (POJOs) to JSON documents. [Jackson](http://jackson.codehaus.org/) or your own custom serializer are also great alternatives for serializing POJOs.
 
         // We'll use Gson for POJO <=> JSON serialization for this example.
         private static Gson gson = new Gson();
@@ -261,7 +262,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
 
 
 
-5. Csakúgy, mint a DocumentDB-adatbázisok és -gyűjtemények esetén, a dokumentumok szintén önhivatkozásokkal is hivatkoznak magukra. A következő segédfüggvény lehetővé teszi a dokumentumok az önhivatkozástól eltérő attribútum (pl. „id”) alapján történő lekérését:
+5. Like DocumentDB databases and collections, documents are also referenced by self-links. The following helper function lets us retrieve documents by another attribute (e.g. "id") rather than self-link:
 
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -277,7 +278,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             }
         }
 
-6. Az 5. lépésben leírt segédmetódus segítségével lekérheti egy teendő JSON-dokumentumát annak azonosítója alapján, majd deszerializálhatja azt egy POJO-vá.
+6. We can use the helper method in step 5 to retrieve a TodoItem JSON document by id and then deserialize it to a POJO:
 
         @Override
         public TodoItem readTodoItem(String id) {
@@ -292,7 +293,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             }
         }
 
-7. A DocumentClient ügyfél segítségével szintén lekérheti a teendők gyűjteményét vagy listáját a DocumentDB SQL használatával:
+7. We can also use the DocumentClient to get a collection or list of TodoItems using DocumentDB SQL:
 
         @Override
         public List<TodoItem> readTodoItems() {
@@ -313,7 +314,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             return todoItems;
         }
 
-8. A DocumentClient ügyfél segítségével számos módon frissítheti a dokumentumokat. A teendőlista alkalmazásában azt szeretnénk, ha beállíthatnánk, hogy elvégeztük-e az egyes teendőket. Ez a dokumentum „complete” (befejezve) attribútumának frissítésével érhető el:
+8. There are many ways to update a document with the DocumentClient. In our Todo list application, we want to be able to toggle whether a TodoItem is complete. This can be achieved by updating the "complete" attribute within the document:
 
         @Override
         public TodoItem updateTodoItem(String id, boolean isComplete) {
@@ -338,7 +339,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
 
-9. Végül azt szeretnénk, ha törölhetnénk az egyes teendőket a listából. Ehhez a korábban megírt segédmetódus használatával kérje le az önhivatkozást, majd adja ki a törlés parancsot az ügyfélnek:
+9. Finally, we want the ability to delete a TodoItem from our list. To do this, we can use the helper method we wrote earlier to retrieve the self-link and then tell the client to delete it:
 
         @Override
         public boolean deleteTodoItem(String id) {
@@ -359,11 +360,11 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
         }
 
 
-##<a id="Wire"></a>5. lépés: A Java-alkalmazásfejlesztési projekt fennmaradó részeinek összefűzése
+##<a id="Wire"></a>Step 5: Wiring the rest of the of Java application development project together
 
-Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie egy gyors felhasználói felületet, és hozzá kell fűznie azt a DAO objektumhoz.
+Now that we've finished the fun bits - all that left is to build a quick user interface and wire it up to our DAO.
 
-1. Először is hozzon létre egy vezérlőt a DAO meghívásához:
+1. First, let's start with building a controller to call our DAO:
 
         public class TodoItemController {
             public static TodoItemController getInstance() {
@@ -405,9 +406,9 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
             }
         }
 
-    Egy összetettebb alkalmazásban a vezérlő a DAO mellett bonyolult üzleti logikát is tartalmazhat.
+    In a more complex application, the controller may house complicated business logic on top of the DAO.
 
-2. Ezután hozzon létre egy servletet, amely továbbítja a HTTP-kéréseket a vezérlőhöz:
+2. Next, we'll create a servlet to route HTTP requests to the controller:
 
         public class TodoServlet extends HttpServlet {
             // API Keys
@@ -470,7 +471,7 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
             }
         }
 
-3. Szükség lesz egy webes felhasználói felületre, amelyet megjeleníthet a felhasználó számára. Írja át a korábban létrehozott index.jsp fájlt az alábbi módon:
+3. We'll need a Web User Interface to display to the user. Let's re-write the index.jsp we created earlier:
 
         <html>
         <head>
@@ -559,7 +560,7 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
         </body>
         </html>
 
-4. Majd végezetül írjon egy ügyféloldali Javascript-kódot, amely megteremti a kapcsolatot a webes felhasználói felület és a servlet között:
+4. And finally, write some client-side Javascript to tie the web user interface and the servlet together:
 
         var todoApp = {
           /*
@@ -732,56 +733,56 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
           todoApp.install();
         });
 
-5. Nagyszerű! Most már csak le kell tesztelni az alkalmazást. Futtassa az alkalmazást helyileg, és adjon hozzá néhány teendőt. Ehhez adja meg az elemek nevét és kategóriáját, majd kattintson az **Add Task** (Feladat hozzáadása) elemre.
+5. Awesome! Now all that's left is to test the application. Run the application locally, and add some Todo items by filling in the item name and category and clicking **Add Task**.
 
-6. Ha megjelent az elem, a jelölőnégyzet bejelölésével, majd az **Update Tasks** (Feladatok frissítése) gombra való kattintással állíthatja be, hogy elvégezte-e már azt.
+6. Once the item appears, you can update whether it's complete by toggling the checkbox and clicking **Update Tasks**.
 
-##<a id="Deploy"></a>6. lépés: A Java-alkalmazás telepítése az Azure Websitesra
+##<a id="Deploy"></a>Step 6: Deploy your Java application to Azure Websites
 
-Az Azure Websites rendkívül megkönnyíti a Java-alkalmazások telepítését. Nincs más dolga, mint exportálni az alkalmazást WAR-fájlként, majd feltölteni azt egy forráskezelő rendszer (pl. GIT) vagy FTP segítségével.
+Azure Websites makes deploying Java Applications as simple as exporting your application as a WAR file and either uploading it via source control (e.g. GIT) or FTP.
 
-1. Az alkalmazás WAR-fájlként történő exportálásához kattintson a jobb gombbal a projektre a **Project Explorer** (Projektböngésző) nézetben, majd kattintson az **Export** (Exportálás), és végül a **WAR File** (WAR-fájl) lehetőségre.
-2. A **WAR Export** (WAR-fájl exportálása) ablakban tegye a következőket:
- - A Web project (Webes projekt) mezőben adja meg a következőt: azure-documentdb-java-sample.
- - A Destination (Cél) mezőben válassza ki, hova szeretné menteni a WAR-fájlt.
- - Kattintson a **Finish** (Befejezés) gombra.
+1. To export your application as a WAR, right-click on your project in **Project Explorer**, click **Export**, and then click **WAR File**.
+2. In the **WAR Export** window, do the following:
+ - In the Web project box, enter azure-documentdb-java-sample.
+ - In the Destination box, choose a destination to save the WAR file.
+ - Click **Finish**.
 
-3. Most, hogy megvan a WAR-fájl, egyszerűen csak töltse fel azt az Azure Websites **webapps** könyvtárába. Fájlok feltöltésével kapcsolatos további információk: [Adding an application to your Java website on Azure](../app-service-web/web-sites-java-add-app.md) (Alkalmazás hozzáadása az Azure Java-webhelyéhez).
+3. Now that you have a WAR file in hand, you can simply upload it to your Azure Website's **webapps** directory. For instructions on uploading the file, see [Adding an application to your Java website on Azure](../app-service-web/web-sites-java-add-app.md).
 
-    Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futtatókörnyezet észleli majd annak hozzáadását, és automatikusan betölti azt.
-4. A kész termék megtekintéséhez keresse fel a http://SAJÁT\_WEBHELY\_NEVE.azurewebsites.net/azure-documentdb-java-sample/ oldalt, és kezdje el a feladatok hozzáadását.
+    Once the WAR file is uploaded to the webapps directory, the runtime environment will detect that you've added it and will automatically load it.
+4. To view your finished product, navigate to http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ and start adding your tasks!
 
-##<a id="GetProject"></a>A projekt beszerzése a GitHubról
+##<a id="GetProject"></a>Get the project from GitHub
 
-A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) (teendők) projektben. A teendők projekt Eclipse-be történő importálásához győződjön meg arról, hogy rendelkezik az [Előfeltételek](#Prerequisites) szakaszban ismertetett szoftverekkel és erőforrásokkal, majd tegye a következőket:
+All the samples in this tutorial are included in the [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) project on GitHub. To import the todo project into Eclipse, ensure you have the software and resources listed in the [Prerequisites](#Prerequisites) section, then do the following:
 
-1. Telepítse a [Project Lombok](http://projectlombok.org/) nevű projektet. A projekt konstruktorainak, beolvasóinak, beállítóinak létrehozása a Lombok használatával történik. A lombok.jar fájl letöltése után kattintson rá duplán annak telepítéséhez, vagy telepítse azt a parancssorból.
-2. Ha az Eclipse meg van nyitva, zárja be, és indítsa el újra a Lombok betöltéséhez.
-3. Az Eclipse **File** (Fájl) menüjében kattintson az **Import** (Importálás) elemre.
-4. Az **Import** (Importálás) ablakban kattintson a **Git**, majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
-5. A **Select Repository Source** (Tárház forrásának kiválasztása) képernyőn kattintson a **Clone URI** (URI klónozása) lehetőségre.
-6. A **Source Git Repository** (Forrás Git-tárház) képernyő **URI** mezőjében adja meg a következőt: https://github.com/Azure-Samples/documentdb-java-todo-app.git, majd kattintson a **Next** (Tovább) gombra.
-7. A **Branch Selection** (Ág kiválasztása) képernyőn válassza a **master** (fő) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
-8. A **Local Destination** (Helyi cél) képernyőn kattintson a **Browse** (Tallózás) lehetőségre, válassza ki a mappát, ahova a tárházat másolni szeretné, majd kattintson a **Next** (Tovább) gombra.
-9. A **Select a wizard to use for importing projects** (Varázsló kiválasztása a projektek importálásához) képernyőn győződjön meg arról, hogy az **Import existing projects** (Létező projektek importálása) lehetőség van kiválasztva, majd kattintson a **Next** (Tovább) gombra.
-10. Az **Import Projects** (Projektek importálása) képernyőn törölje a **DocumentDB** projekt jelölését, majd kattintson a **Finish** (Befejezés) gombra. A DocumentDB-projekt tartalmazza a DocumentDB Java SDK-t, amely ezúttal függőségként lesz hozzáadva.
-11. A **Project Explorer** (Projektböngésző) nézetben lépjen a következő helyre: azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java. Itt cserélje ki a HOST és MASTER_KEY értékeket a DocumentDB-fiókjának URI és PRIMARY KEY értékeivel, majd mentse a fájlt. További információ: [1. lépés DocumentDB-adatbázisfiók létrehozása](#CreateDB).
-12. A **Project Explorer** (Projektböngésző) nézetben kattintson a jobb gombbal az **azure-documentdb-java-sample** elemre, majd kattintson a **Build Path** (Fordítás elérési útja), és végül a **Configure Build Path** (Fordítás elérési útjának konfigurálása) lehetőségre.
-13. A **Java Build Path** (Java-verzió elérési útja) képernyő jobb oldalsó paneljén válassza ki a **Libraries** (Könyvtárak) lapot, majd kattintson az **Add External JARs** (Külső JAR-fájlok hozzáadása) lehetőségre. Navigáljon a lombok.jar fájl helyére, kattintson az **Open** (Megnyitás), majd az **OK** gombra.
-14. A 12. lépésben leírtak segítségével nyissa meg ismét a **Properties** (Tulajdonságok) ablakot, majd a bal oldali ablaktáblán kattintson a **Targeted Runtimes** (Tervezett futásidők) elemre.
-15. A **Targeted Runtimes** (Tervezett futásidők) képernyőn kattintson a **New** (Új) elemre, válassza ki az **Apache Tomcat v7.0** lehetőséget, majd kattintson az **OK** gombra.
-16. A 12. lépésben leírtak segítségével nyissa meg ismét a **Properties** (Tulajdonságok) ablakot, majd a bal oldali ablaktáblán kattintson a **Project Facets** (A projekt aspektusai) elemre.
-17. A **Project Facets** (A projekt aspektusai) képernyőn válassza a **Dynamic Web Module** (Dinamikus webmodul), majd a **Java** lehetőséget, és kattintson az **OK** gombra.
-18. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd az **Add and Remove** (Hozzáadás és eltávolítás) lehetőségre.
-19. Az **Add and Remove** (Hozzáadás és eltávolítás) ablakban helyezze át az **azure-documentdb-java-sample** kiszolgálót a **Configured** (Konfigurált) mezőbe, majd kattintson a **Finish** (Befejezés) gombra.
-20. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd a **Restart** (Újraindítás) lehetőségre.
-21. Egy böngészőből keresse fel a http://localhost:8080/azure-documentdb-java-sample/ címet, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
-22. Projekt telepítése egy Azure-webhelyre: [6. lépés : Az alkalmazás telepítése az Azure Websitesra](#Deploy).
+1. Install [Project Lombok](http://projectlombok.org/). Lombok is used to generate constructors, getters, setters in the project. Once you have downloaded the lombok.jar file, double-click it to install it or install it from the command line.
+2. If Eclipse is open, close it and restart it to load Lombok.
+3. In Eclipse, on the **File** menu, click **Import**.
+4. In the **Import** window, click **Git**, click **Projects from Git**, and then click **Next**.
+5. On the **Select Repository Source** screen, click **Clone URI**.
+6. On the **Source Git Repository** screen, in the **URI** box, enter https://github.com/Azure-Samples/documentdb-java-todo-app.git, and then click **Next**.
+7. On the **Branch Selection** screen, ensure that **master** is selected, and then click **Next**.
+8. On the **Local Destination** screen, click **Browse** to select a folder where the repository can be copied, and then click **Next**.
+9. On the **Select a wizard to use for importing projects** screen, ensure that **Import existing projects** is selected, and then click **Next**.
+10. On the **Import Projects** screen, unselect the **DocumentDB** project, and then click **Finish**. The DocumentDB project contains the DocumentDB Java SDK, which we will add as a dependency instead.
+11. In **Project Explorer**, navigate to azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java and replace the HOST and MASTER_KEY values with the URI and PRIMARY KEY for your DocumentDB account, and then save the file. For more information, see [Step 1. Create a DocumentDB database account](#CreateDB).
+12. In **Project Explorer**, right click the **azure-documentdb-java-sample**, click **Build Path**, and then click **Configure Build Path**.
+13. On the **Java Build Path** screen, in the right pane, select the **Libraries** tab, and then click **Add External JARs**. Navigate to the location of the lombok.jar file, and click **Open**, and then click **OK**.
+14. Use step 12 to open the **Properties** window again, and then in the left pane click **Targeted Runtimes**.
+15. On the **Targeted Runtimes** screen, click **New**, select **Apache Tomcat v7.0**, and then click **OK**.
+16. Use step 12 to open the **Properties** window again, and then in the left pane click **Project Facets**.
+17. On the **Project Facets** screen, select **Dynamic Web Module** and **Java**, and then click **OK**.
+18. On the **Servers** tab at the bottom of the screen, right-click **Tomcat v7.0 Server at localhost** and then click **Add and Remove**.
+19. On the **Add and Remove** window, move **azure-documentdb-java-sample** to the **Configured** box, and then click **Finish**.
+20. In the **Server** tab, right-click **Tomcat v7.0 Server at localhost**, and then click **Restart**.
+21. In a browser, navigate to http://localhost:8080/azure-documentdb-java-sample/ and start adding to your task list. Note that if you changed your default port values, change 8080 to the value you selected.
+22. To deploy your project to an Azure web site, see [Step 6. Deploy your application to Azure Websites](#Deploy).
 
 [1]: media/documentdb-java-application/keys.png
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

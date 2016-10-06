@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="07/15/2016"
+    ms.date="09/27/2016"
     ms.author="cabailey"/>
 
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag segít megismerni az Azure Key Vault szolgáltatást, amellye
 
 >[AZURE.NOTE]  Ez az oktatóanyag nem tartalmaz arra vonatkozó útmutatást, hogy hogyan kell létrehozni a kulcstartó valamely kulcsa vagy titkos kódja használatának az alkalmazások számára való engedélyezésével foglalkozó lépésben szereplő Azure-alkalmazást.
 >
->Az Azure Key Vault jelenleg nem konfigurálható az Azure portálon. Ehelyett használja az itt szereplő Azure PowerShell-utasításokat. A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben az egyenértékű oktatóanyagban](key-vault-manage-with-cli.md).
+>Az oktatóanyag az Azure PowerShellt használja. A platformfüggetlen parancssori felületre vonatkozó utasításokat [ebben az oktatóanyagban](key-vault-manage-with-cli.md) tekintheti meg.
 
 Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
 
@@ -64,9 +64,9 @@ Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fi�
 
 Vegye figyelembe, hogy az Azure bizonyos példányainak, például az Azure Governmentnek a használatakor az -Environment paramétert kell használni ehhez a parancshoz. Példa: `Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
-Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell beolvassa az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint az elsőt használja.
+Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell megkeresi az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint kiválasztja az elsőt.
 
-Ha több előfizetése van, és meg szeretné szabni, hogy melyiket használja az Azure Key Vaulthoz, írja be az alábbi parancsot a fiókhoz tartozó előfizetések megtekintéséhez: 
+Ha több előfizetése van, és meg szeretné szabni, hogy melyiket használja az Azure Key Vaulthoz, írja be az alábbi parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
     Get-AzureRmSubscription
 
@@ -86,7 +86,7 @@ Az Azure Resource Manager használatakor minden kapcsolódó erőforrás egy er�
 
 ## <a id="vault"></a>Kulcstartó létrehozása ##
 
-A[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736.aspx) parancsmag segítségével hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
+A [New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736\(v=azure.200\).aspx).aspx parancsmaggal hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
 
 Ha például a tároló neve **ContosoKeyVault**, az erőforráscsoport neve **ContosoResourceGroup**, a földrajzi hely pedig **Kelet-Ázsia**, írja be az alábbi parancsot:
 
@@ -99,12 +99,12 @@ Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulaj
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Egyelőre senki másnak nincs erre engedélye.
 
->[AZURE.NOTE]  Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmProvider](https://msdn.microsoft.com/library/mt679020.aspx).
+>[AZURE.NOTE]  Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmProvider](https://msdn.microsoft.com/library/azure/mt759831\(v=azure.200\).aspx).
 >
 
 ## <a id="add"></a>Kulcs vagy titkos kód hozzáadása a kulcstartóhoz ##
 
-Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048.aspx) parancsmagot, majd írja be a következő parancsot:
+Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048\(v=azure.200\).aspx) parancsmagot, majd írja be a következő parancsot:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -164,15 +164,15 @@ Az alkalmazás regisztrálása az Azure Active Directory szolgáltatásban:
 3. Kattintson az **APPLICATIONS** (ALKALMAZÁSOK) elemre. Ha még nem adott hozzá alkalmazást a címtárhoz, ezen az oldalon csak az **Add an App** (Alkalmazás hozzáadása) hivatkozás jelenik meg. Kattintson a hivatkozásra, vagy kattintson a **ADD** (HOZZÁADÁS) gombra a parancssávban.
 4.  Az **ADD APPLICATION** (ALKALMAZÁS HOZZÁADÁSA) varázsló **What do you want to do?** (Mit kíván tenni?) lapján kattintson a **Add an application my organization is developing** (A vállalatom által fejlesztett alkalmazás hozzáadása) lehetőségre.
 5.  A **Tell us about your application** (Az alkalmazás bemutatása) oldalon adjon meg egy nevet az alkalmazásnak, majd válassza a **WEB APPLICATION AND/OR WEB API** (WEBALKALMAZÁS ÉS/VAGY WEBES API) (az alapértelmezett beállítás) lehetőséget. Kattintson a **Next** (Tovább) ikonra.
-6.  Az **App properties** (Alkalmazás tulajdonságai) oldalon adja meg a webalkalmazás bejelentkezési URL-címét és az alkalmazásazonosító URI-ját a **SIGN-ON URL**, illetve az **APP ID URI** mezőkben. Ha az alkalmazás nem rendelkezik ezekkel az értékekkel, ehhez a lépéshez nem létező értékeket is megadhat (például http://test1.contoso.com mindkét mezőhöz). Nem számít, hogy létezik-e az adott weboldal. A lényeg az, hogy az alkalmazásazonosító URI-jai eltérőek legyenek a címtár mindegyik alkalmazásában. A címtár ezzel a karakterlánccal azonosítja az alkalmazást.
+6.  Az **App properties** (Alkalmazás tulajdonságai) oldalon adja meg a webalkalmazás bejelentkezési URL-címét és az alkalmazásazonosító URI-ját a **SIGN-ON URL**, illetve az **APP ID URI** mezőkben. Ha az alkalmazás nem rendelkezik ezekkel az értékekkel, ehhez a lépéshez nem létező értékeket is megadhat (például http://test1.contoso.com mindkét mezőhöz). Nem számít, hogy ezek a webhelyek léteznek-e. Az a fontos, hogy az egyes alkalmazások alkalmazásazonosítójának URI-ja a címtár minden alkalmazásánál más legyen. A címtár ezzel a karakterlánccal azonosítja az alkalmazást.
 7.  Kattintson a **Complete** (Befejezés) ikonra a varázslóban a módosítások mentéséhez.
 8.  A **Quick Start** (Első lépések) lapon kattintson a **CONFIGURE** (KONFIGURÁLÁS) elemre.
-9.  Görgessen a **keys** (kulcsok) szakaszhoz, adja meg az időtartamot, majd kattintson a **SAVE** (MENTÉS) gombra. A lap ekkor frissül, és kijelzi a kulcs értékét. Az alkalmazásban ezt a kulcsértéket, valamint **CLIENT ID** (ÜGYFÉLAZONOSÍTÓ) értéket kell beállítani. (A beállítás menete alkalmazásonként eltérő lehet.)
+9.  Görgessen a **keys** (kulcsok) szakaszhoz, adja meg az időtartamot, majd kattintson a **SAVE** (MENTÉS) gombra. A lap ekkor frissül, és kijelzi a kulcs értékét. Az alkalmazásban ezt a kulcsértéket, valamint **CLIENT ID** (ÜGYFÉLAZONOSÍTÓ) értéket kell beállítani. (A konfigurálásra vonatkozó utasítások alkalmazásspecifikusak.)
 10. Másolja ki a lapról az ügyfélazonosító értékét, mert ezzel fogja beállítani a tároló engedélyeit a következő lépésben.
 
 ## <a id="authorize"></a>A kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára ##
 
-Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) parancsmagot.
+Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625\(v=azure.200\).aspx) parancsmagot.
 
 Ha például a tároló neve **ContosoKeyVault**, az engedélyezni kívánt alkalmazás ügyfélazonosítója 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed, és engedélyezni szeretné az alkalmazás számára, hogy a tároló kulcsait visszafejtse és használja, futtassa az alábbi parancsot:
 
@@ -207,7 +207,7 @@ Az alábbi paranccsal egy .PFX-fájlban lévő kulcsot importálhat a számító
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
 
 
-A következő parancs egy „saját kulcs használata” (BYOK-) csomagot importál. Ezzel a helyi HSM-ben hozhatja létre a kulcsot, majd helyezheti át a Key Vault szolgáltatás HSM-jeire anélkül, hogy a kulcs elhagyná a HSM határait:
+A következő parancs egy „saját kulcs használata” (BYOK-) csomagot importál. Ezzel a forgatókönyvvel a helyi HSM-ben hozhatja létre a kulcsot, majd helyezheti át a Key Vault szolgáltatás HSM-jeibe anélkül, hogy a kulcs elhagyná a HSM határait:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
@@ -215,7 +215,7 @@ A BYOK-csomag létrehozásával kapcsolatos részletesebb útmutatásért tekint
 
 ## <a id="delete"></a>Kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése ##
 
-Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485.aspx) parancsmaggal:
+Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485\(v=azure.200\).aspx) parancsmaggal:
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
@@ -241,7 +241,7 @@ Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vau
 
 A kulcstartó használatának módjairól az [Azure Key Vault Logging](key-vault-logging.md) (Az Azure Key Vault naplózása) című témakörben olvashat.
 
-A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
+A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.200\).aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
  
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).

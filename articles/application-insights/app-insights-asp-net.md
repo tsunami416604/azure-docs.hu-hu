@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Webalkalmazás-elemzés beállítása az ASP.NET-hez az Application Insights segítségével" 
-    description="Konfigurálhatja a helyszínen vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítményét, rendelkezésre állását és használatelemzését." 
+    pageTitle="Set up web app analytics for ASP.NET with Application Insights | Microsoft Azure" 
+    description="Configure performance, availability and usage analytics for your ASP.NET website, hosted on-premises or in Azure." 
     services="application-insights" 
     documentationCenter=".net"
     authors="NumberByColors" 
@@ -16,125 +16,126 @@
     ms.author="daviste"/>
 
 
-# Az Application Insights beállítása az ASP.NET-hez
 
-A [Visual Studio Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md).  Olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy felhőbeli VM-eken futtat, másrészt Azure-webalkalmazásokkal.
+# Set up Application Insights for ASP.NET
 
-
-## Előkészületek
-
-A következők szükségesek:
-
-* Visual Studio 2013 3. frissítés vagy újabb. Az újabb jobb.
-* Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével. 
-
-További cikkeket olvashat el, ha a következők érdeklik:
-
-* [Webalkalmazás beállítása futási időben](app-insights-monitor-performance-live-website-now.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)
-
-## <a name="ide"></a> 1. Application Insights SDK hozzáadása
+[Visual Studio Application Insights](app-insights-overview.md) monitors your live application to help you [detect and diagnose performance issues and exceptions](app-insights-detect-triage-diagnose.md), and [discover how your app is used](app-insights-overview-usage.md).  It works for apps that are hosted on your own on-premises IIS servers or on cloud VMs, as well as Azure web apps.
 
 
-### Ha ez egy új projekt...
+## Before you start
 
-Amikor új projektet hoz létre a Visual Studióban, győződjön meg arról, hogy be van jelölve az Application Insights lehetőség. 
+You need:
 
+* Visual Studio 2013 update 3 or later. Later is better.
+* A subscription to [Microsoft Azure](http://azure.com). If your team or organization has an Azure subscription, the owner can add you to it, using your [Microsoft account](http://live.com). 
 
-![ASP.NET-projekt létrehozása](./media/app-insights-asp-net/appinsights-01-vsnewp1.png)
+There are alternative articles to look at if you are interested in:
 
+* [Instrumenting a web app at run time](app-insights-monitor-performance-live-website-now.md)
+* [Azure Cloud services](app-insights-cloudservices.md)
 
-### ...vagy ha egy meglévő projekt
-
-Kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) területén, és válassza az **Add Application Insights Telemetry** (Application Insights telemetria hozzáadása) vagy a **Configure Application Insights** (Application Insights konfigurálása) elemet.
-
-![Az Application Insights hozzáadása lehetőség kiválasztása](./media/app-insights-asp-net/appinsights-03-addExisting.png)
-
-* ASP.NET-magprojekt? – [Kövesse ezeket az utasításokat néhány sornyi kód javításához](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs). 
+## <a name="ide"></a> 1. Add Application Insights SDK
 
 
+### If it's a new project...
 
-## <a name="run"></a> 2. Az alkalmazás futtatása
+Make sure Application Insights is selected when you create a new project in Visual Studio. 
 
-Futtassa az F5 billentyűvel az alkalmazást, és próbálja ki: nyisson meg több oldalt, hogy létrejöjjön valamennyi telemetria.
 
-A Visual Studióban láthatja a naplózott események számát. 
+![Create an ASP.NET project](./media/app-insights-asp-net/appinsights-01-vsnewp1.png)
 
-![A Visual Studióban megjelenik az Application Insights gomb a hibakeresés alatt.](./media/app-insights-asp-net/54.png)
 
-## 3. A telemetria megtekintése...
+### ... or if it's an existing project
 
-### ... a Visual Studióban
+Right-click the project in Solution Explorer, and choose **Add Application Insights Telemetry** or **Configure Application Insights**.
 
-Nyissa meg az Application Insights ablakot a Visual Studióban: Kattintson az Application Insights gombra, vagy kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) felületén:
+![Choose Add Application Insights](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
-![A Visual Studióban megjelenik az Application Insights gomb a hibakeresés alatt.](./media/app-insights-asp-net/55.png)
+* ASP.NET Core project? - [Follow these instructions to fix a few lines of code](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs). 
 
-Ez a nézet az alkalmazás kiszolgálói oldalán létrehozott telemetriát jeleníti meg. Kísérletezzen a szűrőkkel, és kattintson valamely eseményre további részletek megtekintéséhez.
 
-[További tudnivalók az Application Insights-eszközökről a Visual Studióban](app-insights-visual-studio.md).
+
+## <a name="run"></a> 2. Run your app
+
+Run your application with F5 and try it out: open different pages to generate some telemetry.
+
+In Visual Studio, you see a count of the events that have been logged. 
+
+![In Visual Studio, the Application Insights button shows during debugging.](./media/app-insights-asp-net/54.png)
+
+## 3. See your telemetry...
+
+### ... in Visual Studio
+
+Open the Application Insights window in Visual Studio: Either click the Application Insights button, or right-click your project in Solution Explorer:
+
+![In Visual Studio, the Application Insights button shows during debugging.](./media/app-insights-asp-net/55.png)
+
+This view shows telemetry generated in the server side of your app. Experiment with the filters, and click any event to see more detail.
+
+[Learn more about Application Insights tools in Visual Studio](app-insights-visual-studio.md).
 
 <a name="monitor"></a> 
-### ...a portálon
+### ... in the portal
 
-Ha nem a *Csak SDK telepítése* lehetőséget választja, az Application Insights webportálon is megtekintheti a telemetriát. 
+Unless you chose *Install SDK only,* you can also see the telemetry at the Application Insights web portal. 
 
-A portálon a Visual Studiónál több diagram, elemzőeszköz és irányítópult található. 
+The portal has more charts, analytic tools, and dashboards than Visual Studio. 
 
 
-Nyissa meg az Application Insights-erőforrást az [Azure Portalon](https://portal.azure.com/).
+Open your Application Insights resource in the [Azure portal](https://portal.azure.com/).
 
-![Kattintson a jobb gombbal a projektre, és nyissa meg az Azure portált](./media/app-insights-asp-net/appinsights-04-openPortal.png)
+![Right-click your project and open the Azure portal](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
-A portál az alkalmazásából a telemetria egy nézetével nyílik meg:
+The portal opens on a view of the telemetry from your app:
 ![](./media/app-insights-asp-net/66.png)
 
-* Az első telemetria az [Élő mérőszámok streame](app-insights-metrics-explorer.md#live-metrics-stream) alatt jelenik meg.
-* Az egyes események a **Keresés** mezőben jelennek meg (1). Az adatok megjelenítése eltarthat néhány percig. Kattintson egy eseményre a tulajdonságai megtekintéséhez. 
-* Az összesített mérőszámok a diagramokban jelennek meg (2). Egy-két percet igénybe vehet, hogy az adatok itt megjelenjenek. Kattintson valamely diagramra egy további részleteket tartalmazó panel megnyitásához.
+* The first telemetry appears in [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream).
+* Individual events appear in **Search** (1). Data may take a few minutes to appear. Click any event in order to see its properties. 
+* Aggregated metrics appear in the charts (2). It might take a minute or two for data to appear here. Click any chart to open a blade with more detail.
 
-[További tudnivalók az Application Insights használatáról az Azure Portalon](app-insights-dashboards.md).
+[Learn more about using Application Insights in the Azure portal](app-insights-dashboards.md).
 
-## 4. Az alkalmazás közzététele
+## 4. Publish your app
 
-Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](app-insights-metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
+Publish your app to your IIS server or to Azure. Watch [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream) to make sure everything is running smoothly.
 
-Látni fogja a telemetria felépülését az Application Insights portálon, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](app-insights-dashboards.md) állíthat be. Használhatja a nagy teljesítményű [Analytics lekérdezési nyelvet](app-insights-analytics.md) a használat és a teljesítmény elemzéséhez, vagy megadott események megtalálásához. 
+You'll see your telemetry building up in the Application Insights portal, where you can monitor metrics, search your telemetry, and set up [dashboards](app-insights-dashboards.md). You can also use the powerful [Analytics query language](app-insights-analytics.md) to analyze usage and performance or find specific events. 
 
-Folytathatja a telemetria elemzését a [Visual Studióban](app-insights-visual-studio.md) olyan eszközökkel, mint a diagnosztikai keresés és a [trendek](app-insights-visual-studio-trends.md).
+You can also continue to analyze your telemetry in [Visual Studio](app-insights-visual-studio.md) with tools such as diagnostic search and [Trends](app-insights-visual-studio-trends.md).
 
-> [AZURE.NOTE] Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](app-insights-pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](app-insights-sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
+> [AZURE.NOTE] If your app sends enough telemetry to approach the [throttling limits](app-insights-pricing.md#limits-summary), automatic [sampling](app-insights-sampling.md) switches on. Sampling reduces the quantity of telemetry sent from your app, while preserving correlated data for diagnostic purposes.
 
 
-##<a name="land"></a> Mit csinált az „Application Insights hozzáadása”?
+##<a name="land"></a> What did 'Add Application Insights' do?
 
-Az Application Insights telemetriát küld az alkalmazástól az Application Insights portálra (amely a Microsoft Azure-ban található):
+Application Insights sends telemetry from your app to the Application Insights portal (which is hosted in Microsoft Azure):
 
 ![](./media/app-insights-asp-net/01-scheme.png)
 
-Így a parancs három dolgot tett:
+So the command did three things:
 
-1. Az Application Insights Web SDK NuGet-csomagot hozzáadta a projekthez. A Visual Studióban való megtekintéshez kattintson a jobb gombbal a projektjére és válassza a Manage NuGet Packages (NuGet-csomagok kezelése) lehetőséget.
-2. Létrehozott egy Application Insights-erőforrást [az Azure Portalon](https://portal.azure.com/). Itt láthatja az adatait. Lekéri a *kialakítási kulcsot*, amely azonosítja az erőforrást.
-3. Beilleszti a kialakítási kulcsot az `ApplicationInsights.config` fájlba, hogy az SDK telemetriát küldhessen a portálra.
+1. Add the Application Insights Web SDK NuGet package to your project. To see it in Visual Studio, right-click your project and choose Manage NuGet Packages.
+2. Create an Application Insights resource in [the Azure portal](https://portal.azure.com/). This is where you'll see your data. It retrieves the *instrumentation key,* which identifies the resource.
+3. Inserts the instrumentation key in `ApplicationInsights.config`, so that the SDK can send telemetry to the portal.
 
-Ha szeretné, kézzel is elvégezheti ezeket a lépéseket az [ASP.NET 4](app-insights-asp-net-manual.md) vagy az [ASP.NET-mag](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) esetében.
+If you want, you can do these steps manually for [ASP.NET 4](app-insights-windows-services.md) or [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started).
 
-### Frissítés a jövőbeli SDK-verziókra
+### To upgrade to future SDK versions
 
-Ha frissíteni szeretne egy [új SDK-kiadásra](app-insights-release-notes-dotnet.md), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a Microsoft.ApplicationInsights.Web lehetőséget, és válassza a Frissítés elemet.
+To upgrade to a [new release of the SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), open NuGet package manager again, and filter on installed packages. Select Microsoft.ApplicationInsights.Web and choose Upgrade.
 
-Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
+If you made any customizations to ApplicationInsights.config, save a copy of it before you upgrade, and afterwards merge your changes into the new version.
 
 
 
-## A következő lépések
+## Next steps
 
 | | 
 |---|---
-|**[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>Hibakeresés telemetriával, diagnosztikai keresés, részletezés lefúrás a kódig.|![Visual Studio](./media/app-insights-asp-net/61.png)
-|**[Az Application Insights portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/app-insights-asp-net/62.png)
-|**[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. | ![Visual Studio](./media/app-insights-asp-net/64.png)
+|**[Working with Application Insights in Visual Studio](app-insights-visual-studio.md)**<br/>Debugging with telemetry, diagnostic search, drill through to code.|![Visual studio](./media/app-insights-asp-net/61.png)
+|**[Working with the Application Insights portal](app-insights-dashboards.md)**<br/>Dashboards, powerful diagnostic and analytic tools, alerts, a live dependency map of your application, and telemetry export. |![Visual studio](./media/app-insights-asp-net/62.png)
+|**[Add more data](app-insights-asp-net-more.md)**<br/>Monitor usage, availability, dependencies, exceptions. Integrate traces from logging frameworks. Write custom telemetry. | ![Visual studio](./media/app-insights-asp-net/64.png)
 
 
 
@@ -144,6 +145,6 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

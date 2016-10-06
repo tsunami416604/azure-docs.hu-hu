@@ -299,7 +299,7 @@ Ebben a lépésben egy **ADFCopyTutorialDF** nevű Azure-adatelőállítót fog 
 
         Write-Host $results
 
-Vegye figyelembe a következő pontokat:
+Vegye figyelembe a következő szempontokat:
  
 - Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredményeknél a következő hibaüzenet jelenik meg: **A(z) „ADFCopyTutorialDF” Data factory nem érhető el**, tegye a következőket:  
     1. Módosítsa a nevet (például yournameADFCopyTutorialDF) a **datafactory.json** fájlban.

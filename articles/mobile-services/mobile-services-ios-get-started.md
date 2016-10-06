@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Ismerkedés az Azure Mobile Services iOS-alkalmazásokkal való használatával | JavaScript-háttérrendszer"
-    description="Ez az oktatóanyag segítséget nyújt az Azure Mobile Services iOS-fejlesztésre való használatának első lépéseiben."
+    pageTitle="Get Started with Azure Mobile Services for iOS apps | JavaScript Backend"
+    description="Follow this tutorial to get started using Azure Mobile Services for iOS development."
     services="mobile-services"
     documentationCenter="ios"
     authors="krisragh"
@@ -16,64 +16,65 @@
     ms.date="07/21/2016"
     ms.author="krisragh"/>
 
-# <a name="getting-started"> </a>A Mobile Services használatának első lépései
+
+# <a name="getting-started"> </a>Get started with Mobile Services
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> A témakör megfelelő Mobile Apps-verziójáért lásd: [Create an iOS app in Azure Mobile Apps](../app-service-mobile/app-service-mobile-ios-get-started.md) (iOS-alkalmazás létrehozása az Azure Mobile Apps szolgáltatásban).
+> For the equivalent Mobile Apps version of this topic, see [Create an iOS app in Azure Mobile Apps](../app-service-mobile/app-service-mobile-ios-get-started.md).
 
-Az oktatóanyag bemutatja, hogyan adhat felhőalapú háttérszolgáltatást iOS-alkalmazásokhoz az Azure Mobile Services használatával.
+This tutorial shows you how to add a cloud-based backend service to an iOS app using Azure Mobile Services.
 
-Az oktatóprogram során létrehoz egy új mobilszolgáltatást, valamint egy egyszerű _Teendőlista_ alkalmazást, amely az alkalmazásadatokat az új mobilszolgáltatásban tárolja. A létrehozandó mobilszolgáltatás JavaScriptet használ a kiszolgálóoldali üzleti logikához. A .NET-es kiszolgálóoldali üzleti logikát használó mobilszolgáltatások létrehozásával kapcsolatban lásd a témakör [.NET háttérrendszer verziója] szakaszát.
+In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses JavaScript for server-side business logic. To create a mobile service with server-side business logic in .NET, see the [.NET backend version] of this topic.
 
-> [AZURE.NOTE] Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, regisztráljon az Azure-próbaverzióra, és a hozzá kapott [ingyenes mobilszolgáltatásokat a próbaidőszak után is használhatja](https://azure.microsoft.com/pricing/details/mobile-services/). További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20).
+> [AZURE.NOTE] To complete this tutorial, you need an Azure account. If you don't have an account, you can sign up for an Azure trial and get [free mobile services that you can keep using even after your trial ends](https://azure.microsoft.com/pricing/details/mobile-services/). For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20).
 
-## <a name="create-new-service"> </a>Új mobilszolgáltatás létrehozása
+## <a name="create-new-service"> </a>Create a new mobile service
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
-## Új iOS-alkalmazás létrehozása
+## Create a new iOS app
 
-A klasszikus Azure portálon található gyors üzembe helyezési szolgáltatással létrehozhat egy, a mobilszolgáltatáshoz kapcsolódó új alkalmazást:
+You can follow an easy Quick Start in the Azure classic portal to create a new app connected to your mobile service:
 
-1. A [klasszikus Azure portál] kattintson a **Mobile Services** elemre, majd az imént létrehozott mobilszolgáltatásra.
+1. In the [Azure classic portal], click **Mobile Services**, and then click the mobile service that you just created.
 
-2. A Quick Start (Gyors üzembe helyezés) lap **Choose a platform** (Platform kiválasztása) területén kattintson az **iOS** elemre, és bontsa ki a **Create a new iOS app** (Új iOS-alkalmazás létrehozása) elemet. Ez megjeleníti a mobilszolgáltatáshoz kapcsolódó új iOS-alkalmazás létrehozásának lépéseit.
+2. In the Quick Start tab, click **iOS** under **Choose a platform** and expand **Create a new iOS app**. This displays the steps to create an iOS app connected to your mobile service.
 
-3. Kattintson a **Create TodoItem table** (TodoItem tábla létrehozása) elemre az alkalmazásadatok tárolására szolgáló tábla létrehozásához.
+3. Click **Create TodoItem table** to create a table to store app data.
 
-4. A **Download and run your app** (Alkalmazás letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra. Ezzel letölti a projektet a mobilszolgáltatáshoz kapcsolt _Teendőlista_ mintaalkalmazáshoz, továbbá letölti a Mobile Services iOS SDK-t is. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+4. Under **Download and run your app**, click **Download**. This downloads the project for the sample _To do list_ application that is connected to your mobile service, along with the Mobile Services iOS SDK. Save the compressed project file to your local computer, and make a note of where you saved it.
 
-## Az új iOS-alkalmazás futtatása
+## Run your new iOS app
 
 [AZURE.INCLUDE [mobile-services-ios-run-app](../../includes/mobile-services-ios-run-app.md)]
 
 <ol start="4">
-<li><p>A klasszikus Azure portál visszatérve kattintson a **DATA** (ADATOK) fülre, majd a **TodoItem** táblára. Így tallózással kiválaszthatja az alkalmazás által a táblába beszúrt adatokat.<p></li></ol></p>
+<li><p>Back in the [Azure classic portal], click the **DATA** tab and then click the **TodoItem** table. This lets you browse the data inserted by the app into the table.<p></li></ol></p>
 
-## <a name="next-steps"> </a>Következő lépések
-Megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Servicesben:
+## <a name="next-steps"> </a>Next Steps
+Learn how to perform additional important tasks in Mobile Services:
 
-* [Bevezetés az offline adatszinkronizálás használatába]
-    <br/>Megismerheti, hogyan teheti gyorsabban kezelhetővé és robusztusabbá alkalmazását az offline adatszinkronizálás segítségével.
+* [Get started with offline data sync]
+    <br/>Learn how to use offline data sync to make your app responsive and robust.
 
-* [Hitelesítés hozzáadása meglévő alkalmazáshoz]
-    <br/>Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+* [Add authentication to an existing app]
+    <br/>Learn how to authenticate users of your app with an identity provider.
 
-* [Leküldéses értesítések hozzáadása meglévő alkalmazáshoz]
-    <br/>Ismerje meg, hogyan küldhet nagyon egyszerű leküldéses értesítéseket az alkalmazásnak.
+* [Add push notifications to an existing app]
+    <br/>Learn how to send a very basic push notification to your app.
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 
 <!-- Anchors. -->
-[A Mobile Services használatának első lépései]:#getting-started
-[Új mobilszolgáltatás létrehozása]:#create-new-service
-[A mobilszolgáltatás-példány meghatározása]:#define-mobile-service-instance
-[Következő lépések]:#next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [6]: ./media/mobile-services-ios-get-started/mobile-portal-quickstart-ios.png
@@ -86,18 +87,18 @@ Megtudhatja, hogyan hajthat végre további fontos feladatokat a Mobile Services
 
 
 <!-- URLs. -->
-[Bevezetés az offline adatszinkronizálás használatába]: mobile-services-ios-get-started-offline-data.md
-[Hitelesítés hozzáadása meglévő alkalmazáshoz]: mobile-services-dotnet-backend-ios-get-started-users.md
-[Leküldéses értesítések hozzáadása meglévő alkalmazáshoz]: mobile-services-dotnet-backend-ios-get-started-push.md
+[Get started with offline data sync]: mobile-services-ios-get-started-offline-data.md
+[Add authentication to an existing app]: mobile-services-dotnet-backend-ios-get-started-users.md
+[Add push notifications to an existing app]: mobile-services-dotnet-backend-ios-get-started-push.md
 
 
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[klasszikus Azure portál]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[.NET háttérrendszer verziója]: mobile-services-dotnet-backend-ios-get-started.md
+[.NET backend version]: mobile-services-dotnet-backend-ios-get-started.md
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

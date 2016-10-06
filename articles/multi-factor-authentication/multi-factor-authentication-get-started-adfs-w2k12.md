@@ -1,5 +1,5 @@
 <properties
-    pageTitle="A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és a Windows Server 2012 R2 AD FS használatával | Microsoft Azure"
+    pageTitle="MFA-kiszolgáló és a Windows Server 2012 R2 AD FS | Microsoft Azure"
     description="Ez a cikk az Azure Multi-Factor Authentication és az AD FS Windows Server 2012 R2 alatti használatának első lépéseit mutatja be."
     services="multi-factor-authentication"
     documentationCenter=""
@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/04/2016"
+    ms.date="09/22/2016"
     ms.author="kgremban"/>
 
 
 
-# A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS segítségével Windows Server 2012 R2 rendszerben
+# A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS használatával a Windows Server 2012 R2 rendszeren
 
 Ha szervezete Active Directory összevonási szolgáltatásokat (AD FS-t) használ, és szeretne védelmet biztosítani a felhőnek vagy a helyszíni erőforrásoknak, helyezzen üzembe és konfiguráljon egy Azure Multi-Factor Authentication-kiszolgálót, és állítsa be, hogy az együttműködjön az AD FS-sel. Ezzel többtényezős hitelesítést aktiválhat a nagy értékű végpontokon.
 
@@ -75,20 +75,61 @@ Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy va
 3. Futtassa a MultiFactorAuthenticationAdfsAdapterSetup64.msi telepítőfájlt.
 4. A Multi-Factor Authentication AD FS-adapter telepítőjében kattintson a **Tovább** gombra a telepítés elvégzéséhez.
 5. Amikor a telepítés befejeződött, kattintson a **Bezárás** gombra.
-6. Szerkessze a MultiFactorAuthenticationAdfsAdapter.config fájlt a következőképpen:
 
-|MultiFactorAuthenticationAdfsAdapter.config lépés| Allépés|
-|:------------- | :------------- |
-|Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.||
-|Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére.</br></br>Példa:  **https://contoso.com/&lt;tanúsítványnév&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx**</br></br>A tanúsítványnév helyére írja be saját tanúsítványa nevét. ||
-|Végezze el a Web Service SDK konfigurálását.<br><br>*1. lehetőség*: felhasználónévvel és jelszóval.|<ol type="a"><li>Állítsa a **WebServiceSdkUsername** értékét olyan fiókra, amely a PhoneFactor-adminisztrátorok biztonsági csoport tagja. Használja a &lt;tartomány&gt;&#92;&lt;felhasználónév&gt; formátumot.<li>Állítsa a **WebServiceSdkPassword** értékét a megfelelő fiókjelszóra.</li></ol>
-|Végezze el a Web Service SDK *további* konfigurálását.<br><br>*2. lehetőség*: ügyféltanúsítvánnyal.|<ol type="a"><li>Szerezzen be ügyféltanúsítványt a Web Service SDK-t futtató kiszolgáló hitelesítésszolgáltatójától. Ismerje meg, hogyan [szerezheti be az ügyféltanúsítványt](https://technet.microsoft.com/library/cc770328.aspx).</li><li>Importálja az ügyféltanúsítványt a helyi számítógép személyes tanúsítványtárolójába a Web Service SDK-t futtató kiszolgálón. Megjegyzés: Győződjön meg róla, hogy a hitelesítésszolgáltató nyilvános tanúsítványa szerepel-e a megbízható legfelső szintű tanúsítványok tanúsítványtárolójában.</li><li>Exportálja az ügyféltanúsítvány nyilvános és titkos kulcsát egy .pfx fájlba.</li><li>Exportálja a nyilvános kulcsot Base64 formátumban egy .cer-fájlba.</li><li>A Kiszolgálókezelőben ellenőrizze, hogy a Webkiszolgáló (IIS)\Webkiszolgáló\Biztonság\IIS ügyféltanúsítvány-hozzárendelés hitelesítése szolgáltatás telepítve van-e. Ha nincs telepítve, válassza a **Szerepkörök és szolgáltatások hozzáadása** lehetőséget a szolgáltatás hozzáadásához.</li><li>Az IIS-kezelőben kattintson duplán a **Konfigurációszerkesztő** lehetőségre a Web Service SDK virtuális könyvtárat tartalmazó webhelyen. Megjegyzés: Nagyon fontos, hogy ezt a webhely szintjén végezze, ne a virtuális könyvtár szintjén.</li><li>Lépjen a **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** szakaszra.</li><li>Az **enabled** elemet állítsa **true** értékre.</li><li>Állítsa a **oneToOneCertificateMappingsEnabled** elemet **true** értékre.</li><li>Kattintson a **oneToOneMappings** melletti **...** gombra, majd kattintson a **Hozzáadás** hivatkozásra.</li><li>Nyissa meg a korábban exportált Base64 .cer-fájlt. Távolítsa el a *-----BEGIN CERTIFICATE-----* és az *-----END CERTIFICATE-----* elemet, továbbá minden sortörést. Másolja az eredményül kapott karakterláncot.</li><li>Állítsa a **certificate** értékét az előző lépésben másolt karakterláncra.</li><li>Az **enabled** elemet állítsa **true** értékre.</li><li>Állítsa a **userName** értékét egy olyan fiókra, amely a PhoneFactor-adminisztrátorok biztonsági csoport tagja. Használja a &lt;tartomány&gt;&#92;&lt;felhasználónév&gt; formátumot.</li><li>Állítsa be a jelszót és a megfelelő fiókjelszót, majd zárja be a Konfigurációszerkesztőt.</li><li>Kattintson az **Alkalmaz** hivatkozásra.</li><li>A Web Service SDK virtuális könyvtárában kattintson duplán a **Hitelesítés** lehetőségre.</li><li>Győződjön meg arról, hogy az **ASP.NET megszemélyesítés** és az **Alapszintű hitelesítés** **Engedélyezve** értékre, és a többi elem pedig **Letiltva** értékre van-e állítva.</li><li>A Web Service SDK virtuális könyvtárában kattintson duplán az **SSL-beállítások** lehetőségre.</li><li>Adja meg az **Ügyféltanúsítványok** számára az **Elfogadás** értéket, és kattintson az **Alkalmaz** gombra.</li><li>Másolja a korábban exportált .pfx-fájlt az AD FS-adaptert futtató kiszolgálóra.</li><li>Importálja a .pfx-fájlt a helyi számítógép személyes tanúsítványtárolójába.</li><li>Kattintson jobb gombbal, majd válassza a **Titkos kulcsok kezelése** lehetőséget, és adjon olvasási hozzáférést az AD FS szolgáltatásba való bejelentkezéshez használt fióknak.</li><li>Nyissa meg az ügyféltanúsítványt, és másolja az ujjlenyomatot a **Részletek** lapról.</li><li>A MultiFactorAuthenticationAdfsAdapter.config fájlban állítsa a **WebServiceSdkCertificateThumbprint** értékét az előző lépésben másolt karakterláncra.</li></ol>
-| Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 parancsfájlt: adja hozzá a *-ConfigurationFilePath &lt;path&gt;* értéket a `Register-AdfsAuthenticationProvider` parancs végéhez. A *&lt;path&gt;* helyére írja be a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útját.||
+## Szerkessze a MultiFactorAuthenticationAdfsAdapter.config fájlt
 
-Az adapter regisztrálásához futtassa a PowerShellben a \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 parancsfájlt. Lezajlik az adapter regisztrálása WindowsAzureMultiFactorAuthentication néven. A regisztráció csak az AD FS szolgáltatás újraindítása után lép életbe.
+A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse az alábbi lépéseket:
+
+1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
+2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: **https://contoso.com/&lt;tanúsítványnév&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx** A tanúsítványnév a tanúsítvány nevét jelöli.  
+3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 parancsfájlt: adja hozzá a *-ConfigurationFilePath &lt;path&gt;* értéket a `Register-AdfsAuthenticationProvider` parancs végéhez. A *&lt;path&gt;* helyére írja be a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útját.
+
+### A Web Service SDK konfigurálása felhasználónévvel és jelszóval
+
+Két lehetőség érhető el a Web Service SDK konfigurálására. A felhasználónévvel és jelszóval, illetve az ügyféltanúsítvánnyal történő konfigurálás. Kövesse az alábbi lépéseket, ha az első lehetőséget választja, vagy ugorjon előre, ha a másodikat.  
+
+1. Állítsa a **WebServiceSdkUsername** értékét olyan fiókra, amely a PhoneFactor-adminisztrátorok biztonsági csoport tagja. Használja a &lt;tartomány&gt;&#92;&lt;felhasználónév&gt; formátumot.  
+2. Állítsa a **WebServiceSdkPassword** értékét a megfelelő fiókjelszóra.
+
+### A Web Service SDK konfigurálása ügyféltanúsítvánnyal
+
+Ha nem szeretne felhasználónevet és jelszót használni, az alábbi lépések követésével végezze el a Web Service SDK konfigurálását ügyféltanúsítvánnyal.
+
+1. Szerezzen be ügyféltanúsítványt a Web Service SDK-t futtató kiszolgáló hitelesítésszolgáltatójától. Ismerje meg, hogyan [szerezheti be az ügyféltanúsítványt](https://technet.microsoft.com/library/cc770328.aspx).  
+2. Importálja az ügyféltanúsítványt a helyi számítógép személyes tanúsítványtárolójába a Web Service SDK-t futtató kiszolgálón. Megjegyzés: Győződjön meg róla, hogy a hitelesítésszolgáltató nyilvános tanúsítványa szerepel-e a megbízható legfelső szintű tanúsítványok tanúsítványtárolójában.  
+3. Exportálja az ügyféltanúsítvány nyilvános és titkos kulcsát egy .pfx fájlba.  
+4. Exportálja a nyilvános kulcsot Base64 formátumban egy .cer-fájlba.  
+5. A Kiszolgálókezelőben ellenőrizze, hogy a Webkiszolgáló (IIS)\Webkiszolgáló\Biztonság\IIS ügyféltanúsítvány-hozzárendelés hitelesítése szolgáltatás telepítve van-e. Ha nincs telepítve, válassza a **Szerepkörök és szolgáltatások hozzáadása** lehetőséget a szolgáltatás hozzáadásához.  
+6. Az IIS-kezelőben kattintson duplán a **Konfigurációszerkesztő** lehetőségre a Web Service SDK virtuális könyvtárat tartalmazó webhelyen. Megjegyzés: Nagyon fontos, hogy ezt a webhely szintjén végezze, ne a virtuális könyvtár szintjén.  
+7. Lépjen a **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** szakaszra.  
+8. Az **enabled** elemet állítsa **true** értékre.  
+9. Állítsa a **oneToOneCertificateMappingsEnabled** elemet **true** értékre.  
+10. Kattintson a **oneToOneMappings** melletti **...** gombra, majd kattintson a **Hozzáadás** hivatkozásra.  
+11. Nyissa meg a korábban exportált Base64 .cer-fájlt. Távolítsa el a *-----BEGIN CERTIFICATE-----* és az *-----END CERTIFICATE-----* elemet, továbbá minden sortörést. Másolja az eredményül kapott karakterláncot.  
+12. Állítsa a **certificate** értékét az előző lépésben másolt karakterláncra.  
+13. Az **enabled** elemet állítsa **true** értékre.  
+14. Állítsa a **userName** értékét egy olyan fiókra, amely a PhoneFactor-adminisztrátorok biztonsági csoport tagja. Használja a &lt;tartomány&gt;&#92;&lt;felhasználónév&gt; formátumot.  
+15. Állítsa be a jelszót és a megfelelő fiókjelszót, majd zárja be a Konfigurációszerkesztőt.  
+16. Kattintson az **Alkalmaz** hivatkozásra.  
+17. A Web Service SDK virtuális könyvtárában kattintson duplán a **Hitelesítés** lehetőségre.  
+18. Győződjön meg arról, hogy az **ASP.NET megszemélyesítés** és az **Alapszintű hitelesítés** **Engedélyezve** értékre, és a többi elem pedig **Letiltva** értékre van-e állítva.  
+19. A Web Service SDK virtuális könyvtárában kattintson duplán az **SSL-beállítások** lehetőségre.  
+20. Adja meg az **Ügyféltanúsítványok** számára az **Elfogadás** értéket, és kattintson az **Alkalmaz** gombra.  
+21. Másolja a korábban exportált .pfx-fájlt az AD FS-adaptert futtató kiszolgálóra.  
+22. Importálja a .pfx-fájlt a helyi számítógép személyes tanúsítványtárolójába.  
+23. Kattintson jobb gombbal, majd válassza a **Titkos kulcsok kezelése** lehetőséget, és adjon olvasási hozzáférést az AD FS szolgáltatásba való bejelentkezéshez használt fióknak.  
+24. Nyissa meg az ügyféltanúsítványt, és másolja az ujjlenyomatot a **Részletek** lapról.  
+25. A MultiFactorAuthenticationAdfsAdapter.config fájlban állítsa a **WebServiceSdkCertificateThumbprint** értékét az előző lépésben másolt karakterláncra.  
+
+
+Végezetül futtassa a \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet a PowerShellben az adapter regisztrálásához. Lezajlik az adapter regisztrálása WindowsAzureMultiFactorAuthentication néven. A regisztráció csak az AD FS szolgáltatás újraindítása után lép életbe.
+
+## Kapcsolódó témakörök
+
+Ha segítségre van szüksége a hibaelhárításhoz, tekintse meg az [Azure Multi-Factor Authenticationnel kapcsolatos gyakori kérdéseket](multi-factor-authentication-faq.md).
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

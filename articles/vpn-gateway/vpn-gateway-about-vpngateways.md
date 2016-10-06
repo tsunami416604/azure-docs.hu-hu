@@ -13,21 +13,33 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc" />
 
 
 # Információk a VPN Gateway-ről
 
 
-A virtuális hálózati átjárók a virtuális hálózatok és a helyszínek közötti, valamint az Azure-alapú virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak. Egy kapcsolat létrehozásához hozzá kell adnia egy virtuális hálózati átjárót egy virtuális hálózathoz, és meg kell adnia a további erőforrásokat, valamint azok beállításait. 
+A virtuális hálózati átjárók az Azure virtuális hálózatok és a helyszínek közötti, valamint az Azure-alapú virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak. VPN-átjáró konfigurálásakor létre kell hoznia és konfigurálnia kell egy virtuális hálózati átjárót és egy virtuális hálózati átjárókapcsolatot.
 
-Egy virtuális hálózati átjáró létrehozásakor több beállítást is meg kell adnia. Az egyik szükséges beállítás a „-GatewayType”. Az átjáró típusa adja meg az átjáró kapcsolódási módját. Kétféle virtuális hálózati átjárótípus létezik: VPN és ExpressRoute. Amikor a hálózati adatforgalom átvitele egy dedikált privát kapcsolaton keresztül történik, az „ExpressRoute” átjárótípus használatos. Ezt ExpressRoute-átjárónak is hívják. Amikor a hálózati adatforgalom továbbítása titkosítva, egy nyilvános kapcsolaton keresztül történik, a „Vpn” átjárótípus használatos. Ez VPN-átjáróként ismert. A hely–hely, pont–hely és a virtuális hálózatok közötti kapcsolat kapcsolatok mind VPN-átjárót használnak.
+A Resource Manager-alapú üzemi modellben a virtuális hálózati átjárók létrehozásakor több beállítást is meg kell adnia. Az egyik szükséges beállítás a „-GatewayType”. Kétféle virtuális hálózati átjárótípus létezik: VPN és ExpressRoute. 
 
-Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rendelkezhet átjárótípusonként. Rendelkezhet például egy virtuális hálózati átjáróval, amely a -GatewayType Vpn típust, és egy másikkal, amelyik a -GatewayType ExpressRoute típust használja. Ez a cikk elsősorban a VPN Gateway átjáróval foglalkozik. További információ az ExpressRoute-tal kapcsolatban: [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
+Amikor a hálózati adatforgalom átvitele egy dedikált privát kapcsolaton keresztül történik, az „ExpressRoute” átjárótípus használatos. Ezt ExpressRoute-átjárónak is hívják. Amikor a hálózati adatforgalom továbbítása titkosítva, egy nyilvános kapcsolaton keresztül történik, a „Vpn” átjárótípus használatos. Ez VPN-átjáróként ismert. A hely–hely, pont–hely és a virtuális hálózatok közötti kapcsolat kapcsolatok mind VPN-átjárót használnak.
 
-Az átjárók követelményeivel kapcsolatos információkért tekintse meg a[Gateway Requirements](vpn-gateway-about-vpn-gateway-settings.md#requirements) (Az átjáróra vonatkozó követelmények) című részt. A becsült összesített átviteli sebességgel kapcsolatban tekintse meg az [About VPN Gateway Settings](vpn-gateway-about-vpn-gateway-settings.md#aggthroughput) (Információk a VPN Gateway beállításairól) című cikket. Díjszabással kapcsolatos információk: [VPN Gateway Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway). Az előfizetésekkel és a szolgáltatásra vonatkozó korlátozásokkal kapcsolatban tekintse meg a [Networking Limits](../articles/azure-subscription-service-limits.md#networking-limits) (Hálózati korlátok) című részt.
+Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rendelkezhet átjárótípusonként. Rendelkezhet például egy virtuális hálózati átjáróval, amely a -GatewayType ExpressRoute típust, és egy másikkal, amelyik a -GatewayType Vpn típust használja. Ez a cikk elsősorban a VPN Gateway átjáróval foglalkozik. További információ az ExpressRoute-tal kapcsolatban: [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
 
+## Díjszabás
+
+[AZURE.INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)] 
+
+
+## Gateway termékváltozatok
+
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)] 
+
+Az alábbi táblázatban az átjárótípusok és azok becsült összesített átviteli sebessége tekinthető meg. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
+
+[AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)] 
 
 ## VPN Gateway átjáró konfigurálása
 
@@ -82,7 +94,7 @@ Az Azure jelenleg kétféle üzemi modellt kínál: a klasszikust és a Resource
 
 #### Virtuális hálózatok közötti társviszony
 
-A kapcsolat létrehozására használhat virtuális hálózatok közötti társviszonyt, ha a virtuális hálózat megfelel bizonyos követelményeknek. A virtuális hálózatok közötti társviszony nem használ virtuális hálózati átjárót. A [virtuális hálózatok közötti társviszony](../virtual-network/virtual-network-peering-overview.md) jelenleg előzetes verzióban üzemel.
+A kapcsolat létrehozására használhat virtuális hálózatok közötti társviszonyt, ha a virtuális hálózat megfelel bizonyos követelményeknek. A virtuális hálózatok közötti társviszony nem használ virtuális hálózati átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 
 ### Üzembe helyezési modellek és módszerek virtuális hálózatok közötti kapcsolatokhoz
@@ -139,6 +151,6 @@ A VPN-átjáró konfigurációjának megtervezése Lásd még: [VPN Gateway terv
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

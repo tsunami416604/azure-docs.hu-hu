@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Az ExpressRoute QoS-követelményei | Microsoft Azure"
-   description="Ez az oldal ExpressRoute-kapcsolatcsoportok QoS-konfigurálásának és -kezelésének részletes követelményeit ismerteti."
+   pageTitle="QoS Requirements for ExpressRoute | Microsoft Azure"
+   description="This page provides detailed requirements for configuring and managing QoS for ExpressRoute circuits."
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
@@ -15,43 +15,44 @@
    ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
-# Az ExpressRoute QoS-követelményei
 
-A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
+# ExpressRoute QoS requirements
+
+Skype for Business has various workloads that require differentiated QoS treatment. If you plan to consume voice services through ExpressRoute, you should adhere to the requirements described below.
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
->[AZURE.NOTE] A QoS-követelmények csak a Microsoft társviszony-létesítésre vonatkoznak. Az Azure nyilvános vagy Azure privát társviszony-létesítésen keresztül kapott hálózati forgalom DSCP-értékei 0-ra állnak. 
+>[AZURE.NOTE] QoS requirements apply to the Microsoft peering only. The DSCP values in your network traffic received on Azure public peering and Azure private peering will be reset to 0. 
 
-A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöléseket sorolja fel. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](https://technet.microsoft.com/library/gg405409.aspx).
+The following table provides a list of DSCP markings used by Skype for Business. Refer to [Managing QoS for Skype for Business](https://technet.microsoft.com/library/gg405409.aspx) for more information.
 
-| **Forgalomosztály** | **Kezelés (DSCP-jelölés)** | **Skype Vállalati verzió számítási feladata** |
+| **Traffic Class** | **Treatment (DSCP Marking)** | **Skype for Business Workloads** |
 |---|---|---|
-| **Hang** | EF (46) | Skype- / Lync-hang |
-| **Interaktív** | AF41 (34) | Videó |
-|   | AF21 (18) | Alkalmazásmegosztás | 
-|   | CS3 (24) | SIP-jelzés |
-| **Alapértelmezett** | AF11 (10) | Fájlátvitel|
-|   | CS0 (0) | Bármi más| 
+| **Voice** | EF (46) | Skype / Lync voice |
+| **Interactive** | AF41 (34) | Video |
+|   | AF21 (18) | App sharing | 
+|   | CS3 (24) | SIP signaling |
+| **Default** | AF11 (10) | File transfer|
+|   | CS0 (0) | Anything else| 
 
 
-- Osztályoznia kell a munkaterheléseket, és meg kell jelölnie a megfelelő DSCP-értékeket. A DSCP-jelöléseket az [itt](https://technet.microsoft.com/library/gg405409.aspx) leírt útmutatások alapján állíthatja be a hálózatban.
+- You should classify the workloads and mark the right DSCP values. Follow the guidance provided [here](https://technet.microsoft.com/library/gg405409.aspx) on how to set DSCP markings in your network.
 
-- Több QoS várakozási sort kell konfigurálnia és támogatnia a hálózaton belül. A hangnak egy különálló osztálynak kell lennie, és az RFC 3246-ban meghatározott EF-kezelést kell fogadnia. 
+- You should configure and support multiple QoS queues within your network. Voice must be a standalone class and receive the EF treatment specified in RFC 3246. 
 
-- Forgalomosztályonként meghatározhatja a várakozásisor-kezelési mechanizmust, a torlódásészlelési házirendet és a sávszélesség-kiosztást. Skype Vállalati verzió számítási feladatainak DSCP-jelölését azonban meg kell tartania. Ha a fenti listában nem szereplő DSCP-jelöléseket használ, például az AF31 (26) jelölést, ezt a DSCP-értéket 0 értékre kell felülírnia, mielőtt elküldi a csomagot a Microsoftnak. A Microsoft csak a fenti táblázatban szereplő DSCP-értékkel jelölt csomagokat küld. 
+- You can decide the queuing mechanism, congestion detection policy, and bandwidth allocation per traffic class. But, the DSCP marking for Skype for Business workloads must be preserved. If you are using DSCP markings not listed above, e.g. AF31 (26), you must rewrite this DSCP value to 0 before sending the packet to Microsoft. Microsoft only sends packets marked with the DSCP value shown in the above table. 
 
-## Következő lépések
+## Next steps
 
-- Tekintse meg az [Útválasztás](expressroute-routing.md) és a [NAT](expressroute-nat.md) követelményeit.
-- Tekintse meg a következő hivatkozásokat az ExpressRoute-kapcsolat konfigurálásához:
+- Refer to the requirements for [Routing](expressroute-routing.md) and [NAT](expressroute-nat.md).
+- See the following links to configure your ExpressRoute connection.
 
-    - [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md)
-    - [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
-    - [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
+    - [Create an ExpressRoute circuit](expressroute-howto-circuit-classic.md)
+    - [Configure routing](expressroute-howto-routing-classic.md)
+    - [Link a VNet to an ExpressRoute circuit](expressroute-howto-linkvnet-classic.md)
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Sep16_HO4-->
 
 

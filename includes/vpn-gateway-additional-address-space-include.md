@@ -1,19 +1,19 @@
-### Címtartomány felvétele
+### To add address space
 
-1. További címtartományok felvételéhez kattintson az **All Settings** (Összes beállítás) elemre a **Settings** (Beállítások) panel megnyitásához. 
+1. To add additional address space, click **All settings** to open the **Settings** blade. 
 
-2. A **Settings** (Beállítások) panelen kattintson az **Address Space** (Címtartomány) elemre az Address Space (Címtartomány) panel megnyitásához. Adja hozzá a további címtartományt ezen a panelen, majd a panel tetején látható **Save** (Mentés) gombra kattintva mentse a konfigurációt.
+2. On the **Settings** blade, click **Address space** to open the Address space blade. Add the additional address space in this blade, and then click **Save** at the top of the blade.
 
-    ![Címtartomány felvétele](./media/vpn-gateway-additional-address-space-include/address400.png)
+    ![Add address space](./media/vpn-gateway-additional-address-space-include/address400.png)
 
-### Alhálózatok felvétele 
+### To add subnets 
 
-1. Ha további alhálózatokat kíván hozzáadni a címterekhez, akkor a **Settings** (Beállítások) panel **Subnets** (Alhálózatok) elemére kattintva bontsa ki a **Subnets** (Alhálózatok) panelt. 
+1. To add additional subnets to your address spaces, in the **Settings** blade, click **Subnets** to open the **Subnets** blade. 
 
-2. A Subnets (Alhálózatok) panel **Add** (Hozzáadás) elemére kattintva nyissa meg az **Add subnet** (Alhálózat hozzáadása) panelt. Nevezze el az új alhálózatot, adja meg a címtartományt, majd kattintson a panel alján található **OK** gombra. Miután az alhálózat létrejött, az alhálózatok paneljén megtekintheti egy VNet összes alhálózatát.
+2. In the Subnets blade, click **Add** to open the **Add subnet** blade. Name your new subnet and specify the address range, and then click **OK** at the bottom of the blade. Once a subnet has been created, you can use the subnets blade to view all of your subnets for a VNet.
 
 
-    ![Alhálózat-beállítások](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)       
+    ![Subnet settings](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)       
 
 
 <!--HONumber=Sep16_HO4-->

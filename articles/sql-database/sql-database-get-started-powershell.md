@@ -133,7 +133,7 @@ A következő PowerShell-szkript létrehoz egy SQL-adatbázist, valamint annak m
 ## Következő lépések
 Az SQL-adatbázis létrehozása és az általános adatbázis-beállítási feladatok elvégzése után készen áll a következőre:
 
-- [Az SQL Database kezelése PowerShell használatával](sql-database-command-line-tools.md)
+- [Az SQL Database kezelése PowerShell használatával](sql-database-manage-powershell.md)
 - [Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása](sql-database-connect-query-ssms.md)
 
 

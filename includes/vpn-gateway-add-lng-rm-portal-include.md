@@ -1,20 +1,20 @@
-1. A portálon lépjen az **Új** > **Hálózatkezelés** > **Helyi hálózati átjáró** elemre.
+1. In the portal, navigate to **New** > **Networking** > **Local network gateway**.
 
-    ![helyi hálózati átjáró létrehozása](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
+    ![create local network gateway](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
 
-2. A **Helyi hálózati átjáró létrehozása** panelen adjon meg egy **Nevet** a helyi hálózati átjáróobjektumnak.
+2. On the **Create local network gateway blade**, specify a **Name** for your local network gateway object.
  
-3. Adjon meg egy érvényes nyilvános **IP-címet** azon VPN-eszköz vagy virtuális hálózati átjáró számára, amelyhez csatlakozni kíván.<br>Ha a helyi hálózat egy helyszíni helyet képvisel, ez az IP-cím annak a VPN-eszköznek az IP-címe, amelyhez csatlakozni kíván. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára.<br>Ha a helyi hálózat egy másik virtuális hálózatot képvisel, akkor a virtuális hálózat virtuális hálózati átjárójához rendelt nyilvános IP-címet kell megadnia.<br>
+3. Specify a valid public **IP address** for the VPN device or virtual network gateway to which you want to connect.<br>If this local network represents an on-premises location, this is the public IP address of the VPN device that you want to connect to. It cannot be behind NAT and has to be reachable by Azure.<br>If this local network represents another VNet, you will specify the public IP address that was assigned to the virtual network gateway for that VNet.<br>
 
-4. A **Címtartomány** annak a hálózatnak a címtartományára utal, amelyet a helyi hálózat képvisel. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott címtartományok ne legyenek átfedésben olyan egyéb hálózatok címtartományaival, amelyekhez csatlakozni kíván.
+4. **Address Space** refers to the address ranges for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to.
  
-5. Az **Előfizetés** résznél ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg.
+5. For **Subscription**, verify that the correct subscription is showing.
 
-6. Az **Erőforráscsoport** beállításnál válassza ki a használni kívánt erőforráscsoportot. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy korábban létrehozottat.
+6. For **Resource Group**, select the resource group that you want to use. You can either create a new resource group, or select one that you have already created.
 
-7. A **Hely** beállításnál válassza ki a helyet, ahol az objektum létrejön. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
+7. For **Location**, select the location that this object will be created in. You may want to select the same location that your VNet resides in, but you are not required to do so.
 
-8. A helyi hálózati átjáró létrehozásához kattintson a **Create** (Létrehozás) gombra.
+8. Click **Create** to create the local network gateway.
 
 
 <!--HONumber=Sep16_HO4-->

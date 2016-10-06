@@ -412,6 +412,6 @@ Most, hogy megismerte a Blob Storage alapjait, az alábbi hivatkozásokat követ
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

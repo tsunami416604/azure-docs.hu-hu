@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Csatlakozás Microsoft Azure Stack POC-hoz | Microsoft Azure"
-    description="További tudnivalók az Azure Stack POC portálhoz szolgáltatás-rendszergazdaként vagy bérlőként történő csatlakozásról."
+    pageTitle="Connect to Microsoft Azure Stack POC | Microsoft Azure"
+    description="Learn how to connect to the Azure Stack POC portal as a service administrator or tenant."
     services="azure-stack"
     documentationCenter=""
     authors="ErikjeMS"
@@ -13,63 +13,55 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/01/2016"
+    ms.date="09/26/2016"
     ms.author="erikje"/>
 
 
-# Bejelentkezés az Azure Stack POC virtuális gépre
+# Log in to the Azure Stack POC virtual machine
 
-Az Azure Stack POC virtuális gépre a következő szerepeket használva jelentkezhet be:
+You can log in to the Azure Stack POC virtual machine as a
 
-- [**szolgáltatás-rendszergazda:**](#log-in-as-a-service-administrator) kezelheti az erőforrás-szolgáltatókat, bérlőajánlatokat, csomagokat, szolgáltatásokat, kvótákat és a díjszabást.
+- [**service administrator**](#log-in-as-a-service-administrator) to manage resource providers, tenant offers, plans, services, quotas, and pricing.
 
-vagy
+or
 
-- [**bérlő:**](#log-in-as-a-tenant) létrehozhat, megfigyelhet és kezelhet olyan szolgáltatásokat, amelyekre előfizetett – ilyen például a Web Apps, a Storage és a Virtual Machines.
+- [**tenant**](#log-in-as-a-tenant) to provision, monitor, and manage services that you're subscribe to, like Web Apps, storage, and virtual machines.
 
-## Bejelentkezés szolgáltatás-rendszergazdaként
+## Log in as a service administrator
 
-1.  Jelentkezzen be az Azure Stack POC fizikai gépre.
+1.  Log in to the Azure Stack POC physical machine.
 
-2.  Kattintson duplán a **ClientVM.AzureStack.local.rdp** asztali ikonra az ügyfél virtuális géphez tartozó távoli asztali kapcsolat megnyitásához.
- 
-    ![](media/azure-stack-connect-azure-stack/clientvmazurestacklocalicon.png)
-    
-    Ez automatikusan azt az AzureStack\\AzureStackUser fiókot használja, amelyet az üzembehelyezési parancsfájl hozott létre. A szkriptfolyamat 5. lépésében megadott rendszergazdai jelszót használja **A beépített rendszergazdai jelszó megadása** üzenetnél.
+2.  Open a Remote Desktop Connection and connect to MAS-CON01. Use the admin password you gave in step 5 of the script process at the **Enter the password for the built-in administrator** prompt.
 
-3.  A ClientVM.AzureStack.local asztalon kattintson duplán a **Microsoft Azure Stack POC Portal** ikonra (https://portal.azurestack.local/) a [portál](azure-stack-key-features.md#portal) megnyitásához.
+3.  On the ClientVM.AzureStack.local desktop, double-click **Microsoft Azure Stack Portal** icon (https://portal.azurestack.local/) to open the [portal](azure-stack-key-features.md#portal).
 
-    ![](media/azure-stack-connect-azure-stack/microsoftazurestackpocprtalicon.png)
+    ![](media/azure-stack-connect-azure-stack/microsoftazurestackportalicon.png)
 
-4.  Jelentkezzen be szolgáltatás-rendszergazda fiókkal.
+4.  Log in using the service administrator account.
 
-## Bejelentkezés bérlőként
+## Log in as a tenant
 
-A szolgáltatás-rendszergazda bejelentkezhet bérlőként azon csomagok, ajánlatok és előfizetések teszteléséhez, amelyeket a bérlői használhatnak.
-Ha még nem rendelkezik ilyennel, [hozzon létre egy bérlői fiókot](azure-stack-add-new-user-aad.md) a bejelentkezés előtt.
+A service administrator can log in as a tenant to test the plans, offers, and subscriptions that their tenants might use.
+If you don’t already have one, [Create a tenant account](azure-stack-add-new-user-aad.md) before you log in.
 
-1.  Jelentkezzen be az Azure Stack fizikai gépre.
+1.  Log in to the Azure Stack physical machine.
 
-2.  Kattintson duplán a **ClientVM.AzureStack.local.rdp** asztali ikonra az ügyfél virtuális géphez tartozó távoli asztali kapcsolat megnyitásához. 
+2.  Open a Remote Desktop Connection and connect to MAS-CON01. Use the admin password you gave in step 5 of the script process at the **Enter the password for the built-in administrator** prompt.
 
-    ![](media/azure-stack-connect-azure-stack/clientvmazurestacklocalicon.png)
+3.  On the ClientVM.AzureStack.local desktop, double-click **Microsoft Azure Stack POC Portal** icon (https://portal.azurestack.local/) to open the [portal](azure-stack-key-features.md#portal).
 
-    Ez automatikusan azt az AzureStack\\AzureStackUser fiókot használja, amelyet az üzembehelyezési parancsfájl hozott létre. A szkriptfolyamat 5. lépésében megadott rendszergazdai jelszót használja **A beépített rendszergazdai jelszó megadása** üzenetnél.
+    ![](media/azure-stack-connect-azure-stack/microsoftazurestackportalicon.png)
 
-3.  A ClientVM.AzureStack.local asztalon kattintson duplán a **Microsoft Azure Stack POC Portal** ikonra (https://portal.azurestack.local/) a [portál](azure-stack-key-features.md#portal) megnyitásához.
+4.  Log in using a tenant account.
 
-    ![](media/azure-stack-connect-azure-stack/microsoftazurestackpocprtalicon.png)
+RDP may restrict how many users can access the physical Microsoft Azure POC host.
 
-4.  Jelentkezzen be a bérlői fiókkal.
+## Next steps
 
-Az RDP korlátozhatja, hogy hány felhasználó érheti el a fizikai Microsoft Azure POC-állomást. Több felhasználó engedélyezéshez tekintse meg a [Több egyidejű felhasználói kapcsolat engedélyezése](azure-stack-enable-multiple-concurrent-users.md) című részt.
-
-## Következő lépések
-
-[Első feladatok](azure-stack-first-scenarios.md)
+[First tasks](azure-stack-first-scenarios.md)
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 

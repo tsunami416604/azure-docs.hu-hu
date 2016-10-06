@@ -1,54 +1,54 @@
-## Mik azok a Service Bus-üzenettémák és -előfizetések?
+## What are Service Bus topics and subscriptions?
 
-A Service Bus-üzenettémák és -előfizetések *közzétételi/előfizetési* modellt biztosítanak az üzenettovábbításhoz. Üzenettémák és előfizetések használata esetén az elosztott alkalmazások összetevői nem közvetlenül egymással kommunikálnak, hanem egy közvetítőként szolgáló üzenettémakörön keresztül.
+Service Bus topics and subscriptions support a *publish/subscribe* messaging communication model. When using topics and subscriptions, components of a distributed application do not communicate directly with each other; instead they exchange messages via a topic, which acts as an intermediary.
 
-![Az üzenettémakörök alapfogalmai](./media/howto-service-bus-topics/sb-topics-01.png)
+![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-A Service Bus-üzenetsorokkal ellentétben, amely esetében minden üzenetet egy-egy fogyasztó dolgoz fel, az üzenettémák és előfizetések a közzététel/előfizetés minta használatával „egy a többhöz” típusú kommunikációt biztosítanak. Egy üzenettémakörhöz több előfizetést is lehet regisztrálni. Ha egy üzenetet elküldenek egy témakörbe, az összes előfizetés számára elérhetővé válik, amelyek egymástól függetlenül kezelhetik és dolgozhatják fel az üzenetet.
+In contrast with Service Bus queues, in which each message is processed by a single consumer, topics and subscriptions provide a "one-to-many" form of communication, using a publish/subscribe pattern. It is possible to register multiple subscriptions to a topic. When a message is sent to a topic, it is then made available to each subscription to handle/process independently.
 
-Az egyes témakörökre való előfizetés egy virtuális üzenetsorra hasonlít, amely minden, a témakörnek elküldött üzenetről kap egy másolatot. Lehetősége van szűrőszabályok előfizetésenként történő beállítására is, amelyek lehetővé teszik annak szűrését vagy korlátozását, hogy az adott témakörbe beérkezett üzenetet melyik előfizetések kaphatják meg.
+A subscription to a topic resembles a virtual queue that receives copies of the messages that were sent to the topic. You can optionally register filter rules for a topic on a per-subscription basis, which enables you to filter or restrict which messages to a topic are received by which topic subscriptions.
 
-A Service Bus-üzenettémák és -előfizetések lehetővé teszik a számos felhasználótól és alkalmazásból érkező, hatalmas mennyiségű üzenet méretezését és feldolgozását.
+Service Bus topics and subscriptions enable you to scale and process a very large number of messages across many users and applications.
 
-## Névtér létrehozása
+## Create a namespace
 
-A Service Bus-üzenettémák és -előfizetések Azure-ban való használatához először létre kell hoznia egy *szolgáltatásnévteret*. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
+To begin using Service Bus topics and subscriptions in Azure, you must first create a *service namespace*. A namespace provides a scoping container for addressing Service Bus resources within your application.
 
-Névtér létrehozása:
+To create a namespace:
 
-1. Jelentkezzen be az [Azure Portal][].
+1. Log on to the [Azure portal][].
 
-2. A portál bal oldali navigációs paneljén kattintson az **Új**, majd a **Enterprise Integration** (Vállalati integráció), végül a **Service Bus** elemre.
+2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
 
-4. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
 
-5. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium).
+5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
 
-7. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
+7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
 
-9. Az **Erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelynek a névtér a része lesz, vagy hozzon létre egy újat.      
+9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
 
-8. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
+8. In **Location**, choose the country or region in which your namespace should be hosted.
 
-    ![Névtér létrehozása][create-namespace]
+    ![Create namespace][create-namespace]
 
-6. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+6. Click the **Create** button. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
  
-### Hitelesítő adatok beszerzése
+### Obtain the credentials
 
-1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
+1. In the list of namespaces, click the newly created namespace name.
  
-3. A **Service Bus-névtér** panelen kattintson a **Megosztott elérési házirendek** elemre.
+3. In the **Service Bus namespace** blade, click **Shared access policies**.
 
-4. A **Megosztott elérési házirendek** panelen kattintson a **RootManageSharedAccessKey** elemre.
+4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
 
     ![connection-info][connection-info]
 
-5. A **Házirend: RootManageSharedAccessKey** panelen a **Kapcsolati karakterlánc – elsődleges kulcs** melletti másolás gombra kattintva másolja a kapcsolati karakterláncot a vágólapra későbbi használatra.
+5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use.
 
     ![connection-string][connection-string]
 
-[Azure Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png
 [connection-info]: ./media/howto-service-bus-topics/connection-info.png
 [connection-string]: ./media/howto-service-bus-topics/connection-string.png
