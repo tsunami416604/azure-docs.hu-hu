@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/31/2016"
+   ms.date="10/03/2016"
    ms.author="cherylmc"/>
 
 
@@ -55,23 +55,22 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 Ha gyakorlatként használja ezeket a lépéseket, ezeket a konfigurációs mintaértékeket használhatja:
 
-- Virtuális hálózat neve: TestVNet1
-- Címtér: 10.11.0.0/16 és 10.12.0.0/16
-- Alhálózatok: 
+- **Virtuális hálózat neve:** TestVNet1
+- **Címtér:** 10.11.0.0/16 és 10.12.0.0/16
+- **Alhálózatok:**
     - Előtér: 10.11.0.0/24
     - Háttér: 10.12.0.0/24
     - Átjáróalhálózat: 10.12.255.0/27
-- Erőforráscsoport: TestRG1
-- Hely: East US
-- DNS-kiszolgáló: 8.8.8.8
-- Átjáró neve: VNet1GW
-- Nyilvános IP-cím: VNet1GWIP
-- VPN típusa: Route-based
-- Kapcsolat típusa: Site-to-site (IPsec)
-- Átjáró típusa: VPN
-- Helyi hálózati átjáró neve: Site2
-- Kapcsolat neve: VNet1toSite2
-
+- **Erőforráscsoport:** TestRG1
+- **Hely:** az USA keleti régiója
+- **DNS-kiszolgáló:** 8.8.8.8
+- **Átjáró neve:** VNet1GW
+- **Nyilvános IP-cím:** VNet1GWIP
+- **VPN típusa:** útvonalalapú
+- **Kapcsolat típusa:** helyek közötti kapcsolat (IPsec)
+- **Átjáró típusa:** VPN
+- **Helyi hálózati átjáró neve:** Site2
+- **Kapcsolat neve:** VNet1toSite2
 
 
 ## 1. Virtuális hálózat létrehozása 
@@ -90,29 +89,24 @@ Miután létrehozta a virtuális hálózatot, további címtereket és alhálóz
 
 ## <a name="dns"></a>3. DNS-kiszolgáló megadása
 
-Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) a DNS-kiszolgáló megadásakor.
-
 ### DNS-kiszolgáló megadása
 
 [AZURE.INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## 4. Átjáróalhálózat létrehozása
 
-Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, létre kell hoznia az átjáróalhálózatot ahhoz a virtuális hálózathoz, amelyhez csatlakozni szeretne. A létrehozott átjáróalhálózat neve legyen *GatewaySubnet*, különben nem fog megfelelően működni. 
-
-Az átjáróalhálózat előtagjához egyes konfigurációk esetén /28-as vagy nagyobb alhálózat szükséges, hogy a készletben elférjen a szükséges mennyiségű IP-cím. Ez azt jelenti, hogy az átjáróalhálózat előtagjának /28-nak, /27-nek, /26-nak stb. kell lennie. Érdemes lehet megfontolni nagyobb alhálózat létrehozását az esetleges későbbi konfigurációbővítések érdekében.
+Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, létre kell hoznia az átjáróalhálózatot ahhoz a virtuális hálózathoz, amelyhez csatlakozni szeretne. Ha lehetséges, a legjobb megoldás egy átjáróalhálózat létrehozása /28 vagy /27 CIDR-blokk használatával annak érdekében, hogy a jövőbeli további konfigurációs követelmények számára elegendő IP-címet biztosíthasson.
 
 Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) az átjáróalhálózat létrehozásakor.
 
 ### Átjáróalhálózat létrehozása
 
-[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)] 
 
 [AZURE.INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## 5. Virtuális hálózati átjáró létrehozása
 
-Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) az átjáró létrehozásakor.
+Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [mintakonfiguráció-értékeket](#values).
 
 ### Virtuális hálózati átjáró létrehozása
 
@@ -120,9 +114,9 @@ Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [ért
 
 ## 6. Helyi hálózati átjáró létrehozása
 
-A *helyi hálózati átjáró* a helyszíni helyet jelenti. A helyi hálózati átjárónak meg kell adni egy nevet, amellyel az Azure hivatkozhat rá. 
+A „helyi hálózati átjáró” a helyszíni helyet jelenti. A helyi hálózati átjárónak meg kell adni egy nevet, amellyel az Azure hivatkozhat rá. 
 
-Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) a helyi hely felvételekor.
+Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [mintakonfiguráció-értékeket](#values).
 
 ### Helyi hálózati átjáró létrehozása
 
@@ -157,6 +151,6 @@ A VPN-kapcsolatot ellenőrizheti a portálon, vagy a PowerShell használatával 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

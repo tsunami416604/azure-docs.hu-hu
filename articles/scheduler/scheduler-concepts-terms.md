@@ -221,6 +221,6 @@ A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbó
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

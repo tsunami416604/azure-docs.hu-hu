@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 
@@ -35,17 +35,8 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajt
 ## Előfeltételek
 
 - **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- **Egy Azure Active Directory-alkalmazás létrehozása**. Az Azure Active Directory használatával történő hitelesítésnek két módja van – **interaktív** és **nem interaktív**. A hitelesítés kívánt módjának megfelelően eltérő előfeltételek érvényesek.
-    * **Interaktív hitelesítés** (a cikk ezt használja) – Az Azure Active Directoryban létre kell hoznia egy **webalkalmazást**. Miután létrehozta az alkalmazást, kérje le az alkalmazáshoz kapcsolódó alábbi értékeket.
-        - Az **ügyfél-azonosító** és az **átirányítási URI** lekérése az alkalmazáshoz
-        - Delegált engedélyek beállítása
 
-    * **Nem interaktív hitelesítés** – Az Azure Active Directoryban létre kell hoznia egy **webalkalmazást**. Miután létrehozta az alkalmazást, kérje le az alkalmazáshoz kapcsolódó alábbi értékeket.
-        - Az **ügyfél-azonosító**, az **ügyfél titkos kulcsa** és az **átirányítási URI** lekérése az alkalmazáshoz
-        - Delegált engedélyek beállítása
-        - Rendelje hozzá az Azure Active Directory-alkalmazást egy szerepkörhöz. A szerepkör lehet annak a hatókörnek a szintjén, amelyen engedélyt kíván biztosítani az Azure Active Directory-alkalmazásnak. Az alkalmazás például hozzárendelhető az előfizetés szintjén vagy egy erőforráscsoport szintjén is. Útmutatásért lásd: [Assign application to a role](../resource-group-create-service-principal-portal.md#assign-application-to-role) (Alkalmazás hozzárendelése szerepkörhöz). 
-
-    Az értékek lekérésére, az engedélyek beállítására és a szerepkörök hozzárendelésére vonatkozó utasítások: [Create Active Directory application and service principal using portal](../resource-group-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával).
+- **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
 - [cURL](http://curl.haxx.se/). Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API-hívásokat indítani a Data Lake Store-fiókra.
 
@@ -53,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajt
 
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-### Interaktív (felhasználóhitelesítés)
+### Végfelhasználó hitelesítése (interaktív)
 
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Az interaktív hitelesítéshez hajtsa végre a következő lépéseket.
 
@@ -61,7 +52,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-    >[AZURE.NOTE] \<A REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát: https://localhost, `https%3A%2F%2Flocalhost`)
+    >[AZURE.NOTE] \<A REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. A https://localhost esetében tehát használja a következőt: `https%3A%2F%2Flocalhost`)
 
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
         
@@ -92,7 +83,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
  
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-### Nem interaktív
+### Szolgáltatások közötti hitelesítés (nem interaktív)
 
 Ebben az esetben az alkalmazás maga biztosítja saját hitelesítő adatait a műveletek végrehajtásához. Ehhez egy alábbihoz hasonló POST-kérelmet kell kiadnia. 
 
@@ -278,6 +269,6 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

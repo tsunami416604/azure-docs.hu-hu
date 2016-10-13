@@ -1,37 +1,40 @@
-1. In the portal, go to **New** > **Networking** > **Virtual network gateway**. This will open the **Create virtual network gateway** blade.
+1. A portál lépjen az **Új** elemre. A keresőmezőbe írja be: „Virtuális hálózati átjáró”. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** panelt.
+2. A **Virtuális hálózati átjáró** panel alján kattintson a **Létrehozás** gombra. Megnyílik a **Virtuális hálózati átjáró létrehozása** panel. Töltse ki a virtuális hálózati átjáró értékeit.
 
-    ![Gateway](./media/vpn-gateway-add-gw-rm-portal-include/creategw250.png)
+    ![A Virtuális hálózati átjáró létrehozása panel mezői](./media/vpn-gateway-add-gw-rm-portal-include/createvnetgw300.png "Create virtual network gateway blade fields")
 
-2. On the **Create virtual network gateway** blade, in the  **Name** field, name your gateway. This is not the same as naming a gateway subnet. It's the name of the gateway object you will be creating.
+3. **Név**: adjon nevet az átjárónak. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
 
-3. Adjust the **Location** field to point to the location where your virtual network is located. If you don't do this, the VNet list will not show your virtual network.
+4. **Átjáró típusa**: válassza ki a **VPN** elemet. A VPN-átjárók a **VPN** virtuális hálózati átjárótípust használják. 
+
+5. **VPN típusa**: válassza ki a konfigurációjához megadott VPN-típust. A legtöbb konfigurációhoz útvonalalapú VPN-típus szükséges.
+
+6. **SKU**: válassza ki az átjáró SKU-ját a legördülő listából. A legördülő listában szereplő SKU-k a kiválasztott VPN-típustól függenek.
+
+7. **Hely**: Állítsa be úgy a **Hely** mezőt, hogy a virtuális hálózat helyére mutasson.
  
-4. Next, choose the virtual network to which you want to add this gateway. Click **Virtual network** to open the **Choose a virtual network** blade. Select the VNet. In order for the VNet to appear in the list, it must already have a valid gateway subnet.
+8. Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót. Kattintson a **Virtuális hálózat** elemre a **Virtuális hálózat választása** panel megnyitásához. Válassza ki a VNet elemet. Ha a VNet nem jelenik meg, ellenőrizze, hogy a **Hely** mező arra a régióra mutat-e, amelyikben a virtuális hálózata található.
 
-5. Choose a public IP address. Click **Public IP address** to open the **Choose public IP address** blade. Click **+Create New** to open the **Create public IP address blade**. Input a name for your public IP address. This will create a public IP address object to which a public IP address will be dynamically assigned. <br>Click **OK** to save your changes.
+9. Válasszon egy nyilvános IP-címet. A **Nyilvános IP-cím** elemre kattintva nyissa meg a **Nyilvános IP-cím választása** panelt. Ezután az **+Új létrehozása** elemre kattintva nyissa meg a **Nyilvános IP-cím létrehozása** panelt. Adjon egy nevet a nyilvános IP-címnek. Ez a panel létrehoz egy nyilvános IP-cím-objektumot, amelyhez dinamikusan hozzá lesz rendelve egy nyilvános IP-cím.<br>Kattintson az **OK** gombra a panel módosításainak mentéséhez.
 
-5. For **Gateway type**, select the Gateway type that is specified for your configuration.
+10. **Előfizetés**: ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 
-6. For **VPN type**, select the VPN type that is specified for your configuration.
+11. **Erőforráscsoport**: ezt a beállítást a kiválasztott virtuális hálózat határozza meg. 
 
-7. For **Subscription**, verify that the correct subscription is selected.
+12. Ne módosítsa a **Helyet** az előbbi beállítások megadása után.
 
-8. The **Resource group** is determined by the Virtual Network that you select. 
+13. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a panel alján lévő **Rögzítés az irányítópulton** elemet.
 
-9. Don't adjust the **Location** after you've specified the settings above. 
+14. A **Létrehozás** gombra kattintva hozzákezdhet az átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és az irányítópulton megjelenik a „Deploying Virtual network gateway” (Virtuális hálózati átjáró üzembe helyezése) csempe. Az átjáró létrehozása akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
 
-10. At this point, your blade will look similar to the graphic in step 1. Verify that the settings match the settings for your own configuration. You can select **Pin to dashboard** at the bottom of the blade if you want your gateway to appear on the dashboard.
+    ![Virtuális hálózati átjáró üzembe helyezése](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png "Deploying Virtual network gateway")
 
-11. Click **Create** to begin creating the gateway. The settings will be validated and you'll see the "Deploying Virtual network gateway" tile on the dashboard. Creating a gateway can take up to 45 minutes. You may need to refresh your portal page to see the completed status.
-
-    ![Gateway](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png)
-
-11. After the gateway is created, you can view the IP address that has been assigned to it by looking at the virtual network in the portal. The gateway will appear as a connected device. You can click on the connected device (your virtual network gateway) to view more information.
+11. Az átjáró létrehozása után úgy tekintheti meg a hozzárendelt IP-címet, ha megnézi a virtuális hálózatot a portálon. Az átjáró csatlakoztatott eszközként fog megjelenni. A csatlakoztatott eszközre (azaz a virtuális hálózati átjáróra) kattintva további információkat jeleníthet meg.
 
 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

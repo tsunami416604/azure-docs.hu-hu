@@ -25,7 +25,7 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 
 > [AZURE.NOTE] A cikkben található lépések során Linux-alapú HDInsight-fürtöt hozunk létre. Windows-alapú Storm on HDInsight-fürt létrehozásának lépései: [Apache Storm-oktatóanyag: Megismerkedés a Storm Starter-mintákkal a HDInsight platformon történő adatelemzés során](hdinsight-apache-storm-tutorial-get-started.md)
 
-## Előkészületek
+## Előfeltételek
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -38,6 +38,10 @@ Ennek az Apache Storm-oktatóanyagnak a sikeres befejezéséhez az alábbiakra v
     - **Linux-, Unix- vagy OS X-ügyfelek esetén**: Lásd: [Use SSH with Linux-based Hadoop on HDInsight from Linux, OS X or Unix](hdinsight-hadoop-linux-use-ssh-unix.md) (Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben)
 
     - **Windows-ügyfelek számára**: Lásd: [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md) (Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben)
+
+### A hozzáférés-vezérlésre vonatkozó követelmények
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## Storm-fürt létrehozása
 
@@ -195,6 +199,6 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

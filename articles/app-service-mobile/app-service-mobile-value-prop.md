@@ -100,12 +100,12 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 [telepítési lehetőségek]: ../app-service-web/web-sites-deploy.md
 [hibrid kapcsolatok]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [virtuális hálózatokkal]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
+[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-környezetek]: ../app-service-web/app-service-app-service-environment-intro.md
 [tanulási térkép]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

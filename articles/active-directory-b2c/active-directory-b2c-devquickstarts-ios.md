@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure Active Directory B2C: Call a web API from an iOS application using third party libraries| Microsoft Azure"
-    description="This article will show you how to create an iOS 'to-do list' app that calls a Node.js web API by using OAuth 2.0 bearer tokens using a third party library"
+    pageTitle="Azure Active Directory B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával | Microsoft Azure"
+    description="A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0 tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t külső fejlesztőktől származó kódtárak használatával."
     services="active-directory-b2c"
     documentationCenter="ios"
     authors="brandwe"
@@ -13,73 +13,73 @@
     ms.author="brandwe"/>
 
 
-# Azure AD B2C : Call a web API from an iOS application using a third party library
+# Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-The Microsoft identity platform uses open standards such as OAuth2 and OpenID Connect. This allows developers to leverage any library they wish to integrate with our services. To aid developers in using our platform with other libraries we've written a few walkthroughs like this one to demonstate how to configure third party libraries to connect to the Microsoft identity platform. Most libraries that implement [the RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) will be able to connect to the Microsoft Identity platform.
+A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Így a fejlesztők bármilyen típusú kódtárat integrálhatnak szolgáltatásainkkal. Hogy segítséget nyújtsunk a fejlesztőknek platformunk más kódtárakkal való használatában, több különböző útmutatót is írtunk, amelyekből megtudhatják, hogy hogyan kell beállítani úgy a külső fejlesztőktől származó kódtárakat, hogy azok kapcsolódni tudjanak a Microsoft identitásplatformjához. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) használó legtöbb kódtár képes lesz kapcsolódni a Microsoft identitásplatformjához.
 
 
-If you're new to OAuth2 or OpenID Connect much of this sample configuration may not make much sense to you. We recommend you look at a brief [overview of the protocol we've documented here](active-directory-b2c-reference-protocols.md).
+Ha csak most ismerkedik az OAuth2 vagy az OpenID Connect használatával, előfordulhat, hogy nem fogja tökéletesen érteni a konfigurációs lépéseket. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](active-directory-b2c-reference-protocols.md).
 
 > [AZURE.NOTE]
-    Some features of our platform that do have an expression in these standards, such as Conditional Access and Intune policy management, require you to use our open source Microsoft Azure Identity Libraries. 
+    Platformunknak a szabványokban leképzett több funkciójához (például a feltételes hozzáféréshez vagy az Intune-szabályzatok felügyeletéhez) a nyílt forráskódú Microsoft Azure identitáskódtárainkat is használnia kell. 
    
-Not all Azure Active Directory scenarios & features are supported by the B2C platform.  To determine if you should use the B2C platform, read about [B2C limitations](active-directory-b2c-limitations.md).
+A B2C platform nem támogatja az összes Azure Active Directory-forgatókönyvet és funkciót.  Ha nem biztos benne, hogy érdemes-e a B2C platformot használnia, olvassa el a [B2C korlátozásait](active-directory-b2c-limitations.md).
 
 
-## Get an Azure AD B2C directory
+## Az Azure AD B2C-címtár beszerzése
 
-Before you can use Azure AD B2C, you must create a directory, or tenant. A directory is a container for all of your users, apps, groups, and more. If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue.
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
 
-## Create an application
+## Alkalmazás létrehozása
 
-Next, you need to create an app in your B2C directory. This gives Azure AD information that it needs to communicate securely with your app. Both the app and the web API are represented by a single **Application ID** in this case, because they comprise one logical app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md). Be sure to:
+A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Az ügyfélalkalmazást és a webes API-t egyetlen **alkalmazásazonosító** képviseli, mivel a két elem közös logikai alkalmazássá áll össze. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
 
-- Include a **mobile device** in the application.
-- Copy the **Application ID** that is assigned to your app. You will also need this later.
+- Az alkalmazáshoz tartozzon egy **mobileszköz**.
+- Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Később erre is szüksége lesz.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Create your policies
+## Házirendek létrehozása
 
-In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This app contains one identity experience: a combined sign in and sign-up. You need to create this policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy). When you create the policy, be sure to:
+Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Az alkalmazás egyetlen identitással kapcsolatos interakciót tartalmaz: egy kombinált regisztrációs és bejelentkezési folyamatot. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint. A szabályzat létrehozásakor ügyeljen arra, hogy:
 
-- Choose the **Display name** and sign-up attributes in your policy.
-- Choose the **Display name** and **Object ID** application claims in every policy. You can choose other claims as well.
-- Copy the **Name** of each policy after you create it. It should have the prefix `b2c_1_`.  You'll need the policy name later.
+- A szabályzatban adja meg a **Megjelenített név** értékét, illetve a regisztrációs attribútumokat.
+- Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Ezenfelül más jogcímeket is használhat.
+- Az egyes házirendek létrehozása után másolja a házirend **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzat nevére később még szüksége lesz.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-After you have created your policies, you're ready to build your app.
+A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
 
 
-## Download the code
+## A kód letöltése
 
-The code for this tutorial is maintained [on GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c).  To follow along, you can [download the app as a .zip](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)/archive/master.zip) or clone it:
+Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c).  Hogy követni tudja a lépéseket, [töltse le .zip-fájlként az alkalmazást](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)/archive/master.zip), vagy klónozza:
 
 ```
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-Or just download the completed code and get started right away: 
+Vagy egyszerűen csak töltse le az elkészült kódot, és már kezdheti is: 
 
 ```
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-## Download the third party library nxoauth2 and launch a workspace
+## A külső fejlesztőtől származó nxoauth2 kódtár letöltése és a munkaterület elindítása
 
-For this walkthrough we will use the OAuth2Client from GitHub, an OAuth2 library for Mac OS X & iOS (Cocoa & Cocoa touch). This library is based on draft 10 of the OAuth2 spec. It implements the native application profile and supports the end-user authorization endpoint. These are all the things we'll need in order to integrat with The Microsoft identity platform.
+Ebben az útmutatóban a GitHubon található OAuth2Client nevű, Mac OS X-hez és iOS-hez (Cocoa és Cocoa touch) készült OAuth2-kódtárat fogjuk használni. A kódtár az OAuth2 specifikációinak 10-es tervezetén alapul. Célja a natív alkalmazásprofil implementálása, valamint a végfelhasználót hitelesítő végpont támogatása. Ezekre mind szükség lesz a Microsoft identitásplatformjával való integrációhoz.
 
-### Adding the library to your project using CocoaPods
+### A kódtár hozzáadása a projekthez a CocoaPods segítségével
 
-CocoaPods is a dependency manager for Xcode projects. It manages the above installation steps automatically.
+A CocoaPods egy Xcode-projektekhez készült függőségkezelő. Automatikusan képes elvégezi a fenti telepítési lépéseket.
 
 ```
 $ vi Podfile
 ```
-Add the following to this podfile:
+Adja hozzá a következőt a pod-fájlhoz:
 
 ```
  platform :ios, '8.0'
@@ -91,7 +91,7 @@ Add the following to this podfile:
  end
 ```
 
-Now load the podfile using cocoapods. This will create a new XCode Workspace you will load.
+Ezt követően töltse be a pod-fájlt a CocoaPods segítségével. Ezzel létrehozza az új XCode-munkaterületet, amelyet később be fog tölteni.
 
 ```
 $ pod install
@@ -100,23 +100,23 @@ $ open SampleforB2C.xcworkspace
 
 ```
 
-## The structure of the project
+## A projekt struktúrája
 
-We have the following structure set up for our project in the skeleton:
+A vázban a következő struktúrát állítottuk be a projekthez:
 
-* A **Master View** with a task pane
-* A **Add Task View** for the data about the selected task
-* A **Login View** that allows a user to sign-in to the app.
+* **Főnézet**, amelyhez munkaablak is tartozik
+* **Tevékenység hozzáadása nézet**, amely a kiválasztott feladat adatait tartalmazza
+* **Bejelentkezési nézet**, amelyből a felhasználók bejelentkezhetnek az alkalmazásba.
 
-We will jump in to various files in the project to add authentication. Other parts of the code such as the visual code is not germane to identity and are provided for you.
+Az útmutató során hitelesítést fogunk adni a projektben szereplő különböző fájlokhoz. A kód más részei, például a vizuális kód nem fontos az identitáskezelés szempontjából, ezért ezt készen bocsátjuk rendelkezésre.
 
-## Create the `settings.plist` file for your application
+## Az alkalmazáshoz tartozó `settings.plist` fájl létrehozása
 
-It's easier to configure the application if we have a centralized location to put our configuration values. It also helps you understand what each setting does in your application. We will leverage the *Property List* as a way to provide these values to the application.
+Leegyszerűsíti az alkalmazás konfigurálását, ha egyetlen központi helyen tároljuk az összes konfigurációs értékét. Ez ráadásul segít jobban átlátni, hogy mire szolgálnak az egyes beállítások az alkalmazásban. Az értékeket a *Tulajdonságlista* segítségével adjuk át az alkalmazásnak.
 
-* Create/Open the `settings.plist` file under `Supporting Files` in your application workspace
+* Nyissa meg/hozza létre a `settings.plist` fájlt az alkalmazás munkaterületének `Supporting Files` részén.
 
-* Enter in the following values (we'll go through them in detail soon)
+* Adja meg az alábbi értékeket (ezeket hamarosan részletesen is elmagyarázzuk).
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -147,28 +147,28 @@ It's easier to configure the application if we have a centralized location to pu
 </plist>
 ```
 
-Let's go in to these in detail.
+Nézzük az értékek részletezését.
 
 
-For `authURL`, `loginURL`, `bhh`, `tokenURL` you'll notice you need to fill in your tenant name. This is the tenant name of your B2C tenant that was assigned to you. For instance, `kidventusb2c.onmicrosoft.com`.If you use our open source Microsoft Azure Identity Libraries we would pull this data down for you using our metadata endpoint. We've done the hard work of extracting these values for you.
+Az `authURL`, `loginURL`, `bhh` és `tokenURL` értékeknél láthatta, hogy a bérlő nevét kellett megadnia. Ez annak a B2C-bérlőnek a bérlőneve, amelyet Önhöz rendeltek. Például `kidventusb2c.onmicrosoft.com`. Ha a Microsoft Azure identitáskódtárait használja, ezt az információt metaadatvégpontunk segítségével kérjük le Önnek. A nehezét, azaz az értékek kinyerését mi végezzük Ön helyett.
 
-For more information on B2C tenant names take a look here: [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-The `keychain` value is the container that the NXOAuth2Client library will use to create a keychain to store your tokens. If you'd like to get SSO across numerous apps you can specify the same keychain in each of your applications as well as request the use of that keychain in your XCode entitements. This is covered in the Apple documentation.
+A `keychain` érték azt a tárolót adja meg, amelyet az NXOAuth2Client kódtár a jogkivonatok tárolására szolgáló kulcslánc létrehozásához fog használni. Ha több alkalmazásra érvényes egyszeri bejelentkezést (SSO-t) szeretne használni, adja meg az összes alkalmazásban ugyanezt a kulcsláncot, valamint az XCode-jogosultságokban kérelmezze a kulcslánc használatát. Ennek módját az Apple dokumentációja írja le.
 
-The `<policy name>`  at the end of each URL are the places where you'd put the policy you created above. The app will call these policies depending on the flow.
+Az egyes URL-címek végén szereplő `<policy name>` azokat a helyeket jelöli, ahová a fentiekben létrehozott szabályzat kerül. Az alkalmazás a folyamattól függően meghívja ezeket a szabályzatokat.
 
-The `taskAPI` is the REST Endpoint we will call with your B2C token to either add tasks or query existing tasks. This has been set up specifically for this sample. You don't need to change it for the sample to work.
+A `taskAPI` az a REST-végpont, amelyet a B2C-jogkivonat segítségével feladatok hozzáadása vagy meglévő feladatok lekérdezése céljából meghívunk. Ezt itt kifejezetten ehhez a mintához állítottuk be, ezért nem szükséges módosítani.
 
-The rest of these values are required to use the library and simply create places for you to carry values to the context.
+A többi érték a kódtár használatát segíti elő, és olyan helyeket biztosít, amelyek segítségével átadhatja az értékeket a kontextusnak.
 
-Now that we have the `settings.plist` file created, we need code to read it.
+Most, hogy létrehoztuk a `settings.plist` fájlt, már csak a kódra van szükség, hogy be tudjuk olvasni.
 
-## Set up a AppData class to read our settings
+## AppData osztály létrehozása a beállítások beolvasása érdekében
 
-Let's make a simple file that just parses our `settngs.plist` file we created above and make those settings avaialble in the future to any class. Since we don't want to create a new copy of the data every time a class asks for it, we will use a Singleton pattern and only return the same instance created each time a request is made for the settings
+Hozzunk létre egy egyszerű fájlt, amely elemzi a fentiekben elkészített `settngs.plist` fájlt, és a jövőben bármilyen osztály számára elérhetővé teszi a beállításokat. Mivel nem szeretnénk újabb és újabb másolatot létrehozni az adatokból minden alkalommal, amikor egy osztály lekéri azokat, egy Singleton-mintát fogunk használni, amely mindig ugyanazt a példányt adja vissza a beállításokra vonatkozó kéréseknek.
 
-* Create an `AppData.h` file:
+* Hozzon létre egy `AppData.h` fájlt:
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -191,7 +191,7 @@ Let's make a simple file that just parses our `settngs.plist` file we created ab
 @end
 ```
 
-* Create an `AppData.m` file:
+* Hozzon létre egy `AppData.m` fájlt:
 
 ```objc
 #import "AppData.h"
@@ -227,32 +227,32 @@ Let's make a simple file that just parses our `settngs.plist` file we created ab
 @end
 ```
 
-Now we can easily get at our data by simply calling `  AppData *data = [AppData getInstance];` in any of our classes as you'll see below.
+Ettől kezdve (ahogy azt lentebb látni fogjuk), minden osztályból elég egy `  AppData *data = [AppData getInstance];` hívás az adatok beszerzéséhez.
 
 
 
-## Set up the NXOAuth2Client library in your AppDelegate
+## Az NXOAuth2Client kódtár beállítása az AppDelegate-ben
 
-The NXOAuthClient library requires some values to get set up. Once that is complete you can use the token that is aquired to call the REST API. Since we know that the `AppDelegate` will be called any time we load the application it makes sense that we put our configuration values in to that file.
-* Open `AppDelegate.m` file
+Az NXOAuthClient kódtár beállításához különböző értékek szükségesek. Ha ezeket megadta, a létrejövő jogkivonat segítségével meghívhatja a REST API-t. Mivel tudjuk, hogy az alkalmazás betöltésekor a rendszer mindig meghívja az `AppDelegate`-et, logikus lépés ebben a fájlban elhelyezni a konfigurációs értékeket.
+* Nyissa meg az `AppDelegate.m` fájlt.
 
-* Import some header files we will use later.
+* Importálja azokat a fejlécfájlokat, amelyeket később fogunk használni.
 
 ```objc
 #import "NXOAuth2.h" // the Identity library we are using
 #import "AppData.h" // the class we just created we will use to load the settings of our application
 ```
 
-* Add the `setupOAuth2AccountStore` method in the AppDelegate
+* Adja hozzá a `setupOAuth2AccountStore` metódust az AppDelegate-hez.
 
-We need to create an AccountStore and then feed it the data we just read in from the `settings.plist` file.
+Létre kell hoznunk egy AccountStore-t, és átadni ennek a `settings.plist` fájlból beolvasott adatokat.
 
-There are some things you should be aware of regarding the B2C service at this point that will make this code more understandable:
+Itt meg kell említenünk néhány dolgot a B2C szolgáltatással kapcsolatban, amely segít érthetőbbé tenni az alábbi kódot:
 
 
-1. Azure AD B2C uses the *policy* as provided by the query parameters to service your request. This allows Azure Active Directory to act as an independent service just for your application. In order to provide these extra query parameters we need to provide the `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` method with our custom policy parameters. 
+1. Az Azure AD B2C a lekérdezési paraméterek által biztosított módon használja a *szabályzatot* a kérések teljesítésére. Így az Azure Active Directory független, kizárólag az Ön alkalmazásához kapcsolódó szolgáltatásként tud működni. Ahhoz, hogy megadhassuk ezeket a további lekérdezési paramétereket, el kell látnunk a `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` metódust szabályzatunk egyedi paramétereivel. 
 
-2. Azure AD B2C uses scopes in much the same way as other OAuth2 servers. However since the use of B2C is as much about authenticating a user as accessing resources some scopes are absolutely required in order for the flow to work correctly. This is the `openid` scope. Our Microsoft identity SDKs automatically provide the `openid` scope for you so you won't see that in our SDK configuration. Since we are using a third party library, however, we need to specify this scope.
+2. Az Azure AD B2C a többi OAuth2-kiszolgálókhoz rendkívül hasonló módon kezeli a hatóköröket. Mivel azonban a B2C használatának célja nemcsak a felhasználók hitelesítése, hanem legalább ilyen mértékben az erőforrások elérhetővé tétele is, ahhoz, hogy a folyamat megfelelően működjön, bizonyos hatókörökre feltétlenül szükség van. Ilyen az `openid` hatókör. A Microsoft identitáskezelő SDK-i automatikusan elérhetővé teszik az `openid` hatókört, így ez itt nem szerepel az SDK konfigurációjában. Mivel azonban külső fejlesztőtől származó kódtárat használunk, ezúttal meg kell adnunk ezt a hatókört.
 
 ```objc
 - (void)setupOAuth2AccountStore {
@@ -285,18 +285,18 @@ There are some things you should be aware of regarding the B2C service at this p
                                         forAccountType:data.accountIdentifier];
 }
 ```
-Next, make sure you call it in the AppDelegate under `didFinishLaunchingWithOptions:` method. 
+Ezt követően állítsa be, hogy az AppDelegate is meghívja a hatókört a `didFinishLaunchingWithOptions:` metódus részeként. 
 
 ```
 [self setupOAuth2AccountStore];
 ```
 
 
-## Create a `LoginViewController` class that we will use to handle authentication requests
+## A hitelesítési kérések kezelésére szolgáló `LoginViewController` osztály létrehozása
 
-We use a webview for account sign-in. This allows us to prompt the user for additional factors like SMS text message (if configured) or give error messages back to the user. Here we'll set up the webview and then later write the code to handle the callbacks that will happen in the WebView from the Microsoft Identity Service.
+A fiókkal történő bejelentkezéshez webnézetet használunk. Így felszólíthatjuk a felhasználót különféle további tényezők (például, ha beállítja, SMS-üzenetek) használatára, illetve megjeleníthetjük számára az esetleges hibaüzeneteket. Most beállítjuk a webnézetet, majd később megírjuk a kódot, amely kezelni fogja a webnézetben a Microsoft identitásszolgáltatásától érkező visszahívásokat.
 
-* Create a `LoginViewController.h` class
+* Hozzon létre egy `LoginViewController.h` osztályt.
 
 ```objc
 @interface LoginViewController : UIViewController <UIWebViewDelegate>
@@ -307,14 +307,14 @@ We use a webview for account sign-in. This allows us to prompt the user for addi
 - (void)requestOAuth2Access; // This is where we invoke our webview.
 ```
 
-We will create each of these methods below.
+Az egyes metódusokat alább fogjuk létrehozni.
 
 > [AZURE.NOTE] 
-    Make sure that you bind the `loginView` to the actual webview that is inside your storyboard. Otherwise you won't have a webview that can pop up when it's time to authenticate.
+    Ne felejtse el összekötni a `loginView`-t a forgatókönyvben szereplő tényleges webnézettel. Ellenkező esetben a webnézet nem fog megjelenni, amikor hitelesítést kell kérni.
 
-* Create a `LoginViewController.m` class
+* Hozzon létre egy `LoginViewController.m` osztályt.
 
-* Add some variables to carry state as we authenticate
+* Adjon hozzá változókat, amelyek átadják az állapotokat a hitelesítés során.
 
 ```objc
 NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
@@ -324,9 +324,9 @@ bool isRequestBusy; \\ A way to give status to the thread that the request is st
 NSURL *authcode; \\ A placeholder for our auth code.
 ```
 
-* Override the WebView methods to handle authentication
+* Írja felül a webnézet metódusait a hitelesítés kezeléséhez.
 
-We need to tell the webview the behavior we want when a user needs to login as discussed above. You can simply cut and paste the code below.
+Be kell állítanunk, hogy a webnézet mit tegyen, amikor a felhasználók be szeretnének jelentkezni a fentiekben leírtak szerint. Egyszerűen másolja a fájlba az alábbi kódot.
 
 ```objc
 - (void)resolveUsingUIWebView:(NSURL *)URL {
@@ -396,9 +396,9 @@ We need to tell the webview the behavior we want when a user needs to login as d
 
 ```
 
-* Write code to handle the result of the OAuth2 request
+* Írja meg az OAuth2-kérés eredményét kezelő kódot.
 
-We'll need code that will handle the redirectURL that comes back from the WebView. If it wasn't successful, we will try again. Meanwhile the library will provide the error that you can see in the console or handle asyncronously. 
+Szükségünk lesz a kódra, amely képes kezelni a webnézettől visszakapott átirányítási URL-címet. Ha nem jártunk sikerrel, újrapróbálkozunk. Ilyenkor a kódtár megadja a hibát, amelyet aztán megtekinthet a konzolban, vagy aszinkron módon kezelhet. 
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSURL *)accessResult {
@@ -415,9 +415,9 @@ We'll need code that will handle the redirectURL that comes back from the WebVie
 }
 ```
 
-* Set up the Notification factories.
+* Állítson be értesítési példányosító metódusokat.
 
-We create the same method we did in the `AppDelegate` above, but this time we will add some `NSNotification`s to tell us what is happening in our service. We set up an observer that will tell us when anything changes with the token. Once we get the token we return the user back to the `masterView`.
+Ugyanazt a metódust állítjuk be, mint fent, az `AppDelegate` esetében, de ezúttal néhány `NSNotification` hozzáadásával elérjük, hogy a metódus tájékoztasson minket arról, hogy mi történik a szolgáltatásban. Beállítunk egy figyelőt, amely közli, ha bármi módosul a jogkivonatban. Ha megvan a jogkivonat, visszaléptetjük a felhasználót a `masterView`-be.
 
 
 
@@ -458,9 +458,9 @@ We create the same method we did in the `AppDelegate` above, but this time we wi
 }
 
 ```
-* Add code that handles the user whenever a request is initiated for sign-native
+* Adja hozzá a kódot, amely kezeli a felhasználót, amikor sign-native kérést kezdeményeznek.
 
-Let's create a method that will be called whenever we have a request for authentication. This will be the method that actually creates a webview
+Hozzuk létre a metódust, amelyet a rendszer meghív, ha hitelesítési kérést kap. Ez lesz az a metódus, amely ténylegesen létrehozza a webnézetet.
 
 ```objc
 - (void)requestOAuth2Access {
@@ -479,7 +479,7 @@ Let's create a method that will be called whenever we have a request for authent
 }
 ```
 
-* Finally, let's call all these methods we've written above every time the `LoginViewController` loads. We do this by adding these methods to our `viewDidLoad` method Apple gives us
+* Végül állítsuk be, hogy a rendszer a `LoginViewController` betöltésekor mindig meghívja a fentiekben megírt összes metódust. Ezt úgy érjük el, hogy hozzáadjuk a metódusokat az Apple-től kapott `viewDidLoad` metódushoz.
 
 ```objc
   [super viewDidLoad];
@@ -497,14 +497,14 @@ Let's create a method that will be called whenever we have a request for authent
   [NSURLCache setSharedURLCache:URLCache];
 ```
 
-You are now done with creating the main way we'll interact with our application for sign in. After we've signed in, we'll need to use our tokens we've received. For that we'll create some helper code that will call REST APIs for us using this library.
+Ezzel létrehoztuk a fő módszert, amellyel bejelentkezés céljából interakcióba lehet lépni az alkalmazással. A bejelentkezést követően használni kell a kapott jogkivonatokat. Ehhez meg kell írnunk némi segédkódot, amely a kódtár használatával meghívja a REST API-kat.
 
 
-## Create a `GraphAPICaller` class to handle our requests to a REST API
+## Hozzon létre egy `GraphAPICaller` osztályt, amely kezeli a REST API felé irányuló kéréseket.
 
-We have a configuration loaded every time we load our app. Now we need to do something with it once we have a token. 
+Elértük, hogy a rendszer az alkalmazás megnyitásakor betöltse a konfigurációt. Most ezzel kell tennünk valamit, ha megkaptuk a jogkivonatot. 
 
-* Create a `GraphAPICaller.h`  file
+* Hozzon létre egy `GraphAPICaller.h` fájlt.
 
 ```objc
 @interface GraphAPICaller : NSObject <NSURLConnectionDataDelegate>
@@ -517,11 +517,11 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
 @end
 ```
 
-You see from this code that we will be creating two methods: one to get the tasks from an API and another to add tasks to the API.
+Ebből a kódból látható, hogy két metódust fogunk létrehozni: egyet a feladatok lekérésre az API-tól, egy másikat pedig feladatok API-hoz adására.
 
-Now that we've set up our interface, let's add the actual implementation:
+Most, hogy beállítottuk az interfészt, adjuk hozzá a tényleges implementációt:
 
-* Create a `GraphAPICaller.m file`
+* Hozzon létre egy `GraphAPICaller.m file`
 
 ```objc
 @implementation GraphAPICaller
@@ -632,23 +632,23 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 @end
 ```
 
-## Run the sample app
+## A mintaalkalmazás futtatása
 
-Finally, build and run the app in Xcode. Sign up or sign in to the app, and create tasks for a signed-in user. Sign out and sign back in as a different user, and create tasks for that user.
+Végül fordítsa le és futtassa az alkalmazást az Xcode-ban. Regisztráljon vagy jelentkezzen be az alkalmazásba, majd hozzon létre feladatokat a bejelentkezett felhasználónak. Jelentkezzen ki, majd jelentkezzen be egy másik felhasználóval, és hozzon létre feladatokat ennek a felhasználónak is.
 
-Notice that the tasks are stored per-user on the API, because the API extracts the user's identity from the access token that it receives.
-
-
-## Next steps
-
-You can now move onto more advanced B2C topics. You might try:
-
-[Call a Node.js web API from a Node.js web app]()
-
-[Customize the UX for a B2C app]()
+Figyelje meg, hogy a rendszer felhasználónként tárolja a feladatokat az API-ban, mivel az API kinyeri a felhasználó identitását a beérkező hozzáférési jogkivonatból.
 
 
+## Következő lépések
 
-<!--HONumber=Sep16_HO4-->
+Most már továbbléphet az összetettebb B2C-témákra. Próbálkozzon meg a következőkkel:
+
+[Call a Node.js web API from a Node.js web app (Node.js webes API meghívása Node.js webalkalmazásokból)]()
+
+[Customize the UX for a B2C app (A felhasználói élmény testre szabása B2C-alkalmazásokhoz)]()
+
+
+
+<!--HONumber=Oct16_HO1-->
 
 

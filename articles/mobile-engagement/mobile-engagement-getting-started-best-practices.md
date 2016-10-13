@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="mobile-multiple"
     ms.workload="mobile" 
-    ms.date="07/07/2016"
+    ms.date="10/04/2016"
     ms.author="wesmc;ricksal"/>
 
 
@@ -357,7 +357,7 @@ Alaposan tesztelje az alkalmazásba ágyazott értesítési működések mindegy
 
 #### Beállítás
 
-Az Azure Mobile Engagement beállítása nagyon egyszerű. A felhasználói felülethez kapcsolódó teljes dokumentáció elérhető az Azure Mobile Engagement webhelyén [a felhasználói felület használatát](mobile-engagement-user-interface.md) ismertető témakörben.
+Az Azure Mobile Engagement beállítása nagyon egyszerű. A felhasználói felülethez kapcsolódó teljes dokumentáció elérhető az Azure Mobile Engagement webhelyén [a felhasználói felület használatát](mobile-engagement-user-interface-home.md) ismertető témakörben.
 
 Ajánlott a projekt felhasználóinak megfelelő szerepköreivel és szerepkörcsoportjaival kezdeni a beállítást. Így könnyebben kezelheti a felhasználóknak a platformhoz való hozzáférését. A szerepkörök az alábbiakat foglalhatják magukban:
 
@@ -410,6 +410,6 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

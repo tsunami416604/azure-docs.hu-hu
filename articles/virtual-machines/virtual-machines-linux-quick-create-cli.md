@@ -20,19 +20,19 @@
 
 # Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel
 
-Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) `azure vm quick-create` parancsának használatával. A `quick-create` parancs egy alapvető, biztonságos infrastruktúrában lévő virtuális gépet helyez üzembe, amelyet prototípusként vagy egy elgondolás gyors teszteléséhez használhat. A cikkben foglaltak végrehajtásához
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) `azure vm quick-create` parancsának használatával. A `quick-create` parancs egy alapvető, biztonságos infrastruktúrában lévő virtuális gépet helyez üzembe, amelyet prototípusként vagy egy elgondolás gyors teszteléséhez használhat. A cikkben foglaltak végrehajtásához szükség van:
 
-- Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/)) van szükség
+- egy Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/)),
 
-- és be kell jelentkeznie az [Azure parancssori felületre](../xplat-cli-install.md) a következővel: `azure login`.
+- és be kell jelentkeznie az [Azure parancssori felületre](../xplat-cli-install.md) a következővel: `azure login`
 
-- Az Azure parancssori felületnek `azure config mode arm` Azure Resource Manager módban _kell lennie_.  
+- az Azure parancssori felületnek Azure Resource Manager módban _kell lennie_ `azure config mode arm`
 
 Linux virtuális gépet az [Azure Portallal](virtual-machines-linux-quick-create-portal.md) is gyorsan üzembe helyezhet.
 
 ## Gyors parancsok
 
-Az alábbi példa azt szemlélteti, hogyan helyezheti üzembe a CoreOS virtuális gépet, és hogyan csatolhatja a Secure Shell-kulcsot (SSH) (az argumentumok eltérhetnek).
+Az alábbi példa azt szemlélteti, hogyan helyezheti üzembe a CoreOS virtuális gépet, és hogyan csatolhatja a Secure Shell-kulcsot (SSH) (az argumentumok eltérhetnek):
 
 ```bash
 azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
@@ -42,7 +42,7 @@ Az alábbi szakaszok a parancsot és annak követelményeit ismertetik az Ubuntu
 
 ## Virtuális gép – gyorslétrehozási aliasok
 
-A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakoribb disztribúciói számára leképezett Azure parancssori felület aliasainak a használata. Az alábbi táblázat az aliasokat tartalmazza (az Azure parancssori felület 0.10-es verziójától kezdve). A `quick-create`parancsot használó minden üzembe helyezés SSD-tárhelyen alapuló virtuális gépeket használ alapértelmezésként, amelyek gyorsabb üzembe helyezést és magas teljesítményű lemezelérést tesznek lehetővé. (Ezek az aliasok az Azure-ban rendelkezésre álló disztribúcióknak csak egy kis részét jelentik. Az Azure Marketplace-en elérhető további rendszerképeket [a rendszerképek keresésével](virtual-machines-linux-cli-ps-findimage.md) találhatja meg, vagy [feltöltheti saját egyéni rendszerképét](virtual-machines-linux-create-upload-generic.md).)
+A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakoribb disztribúciói számára leképezett Azure parancssori felület aliasainak a használata. Az alábbi táblázat az aliasokat tartalmazza (az Azure parancssori felület 0.10-es verziójától kezdve). A `quick-create` parancsot használó minden üzembe helyezés SSD-tárhelyen alapuló virtuális gépeket használ alapértelmezettként, ami gyorsabb üzembe helyezést és magas teljesítményű lemezelérést tesz lehetővé. (Ezek az aliasok az Azure-ban rendelkezésre álló disztribúcióknak csak egy kis részét jelentik. Az Azure Marketplace-en elérhető további rendszerképeket [a rendszerképek keresésével](virtual-machines-linux-cli-ps-findimage.md) találhatja meg, vagy [feltöltheti saját egyéni rendszerképét](virtual-machines-linux-create-upload-generic.md).)
 
 | Alias     | Közzétevő | Ajánlat        | SKU         | Verzió |
 |:----------|:----------|:-------------|:------------|:--------|
@@ -57,15 +57,15 @@ Az alábbi szakaszok az **ImageURN** kapcsoló (`-Q`) `UbuntuLTS` aliasát haszn
 
 ## Részletes bemutató
 
-A korábbi `quick-create` példa csak a `-M` jelölőt emelte ki a feltöltendő nyilvános SSH-kulcs azonosításához, és közben letiltotta az SSH-jelszókat, így a rendszer a következő adatok megadását kéri:
+A korábbi `quick-create` példa csak az `-M` jelölőt emelte ki a feltöltendő nyilvános SSH-kulcs azonosításához, és közben letiltotta az SSH-jelszavakat, így a rendszer a következő argumentumok megadását kéri:
 
 - az erőforráscsoport neve (az első Azure-erőforráscsoport esetén általában bármilyen karakterlánc használható)
 - a virtuális gép neve
-- hely (az USA nyugati régiója és a Nyugat-Európa megfelelő alapértelmezett értékek)
+- hely (`westus` vagy `westeurope` jó alapértelmezett értékek)
 - Linux (hogy az Azure tudja, melyik operációs rendszert kívánja használni)
 - felhasználónév
 
-Az alábbiak meghatározzák az összes értéket, így nincs szükség további adatkérésre. Ha `~/.ssh/id_rsa.pub` ssh-rsa formátumú nyilvános kulcsfájllal rendelkezik, nincs szükség beavatkozásra.
+Az alábbi példa meghatározza az összes értéket, így nincs szükség további adatkérésre. Ha `~/.ssh/id_rsa.pub` ssh-rsa formátumú nyilvános kulcsfájllal rendelkezik, nincs szükség beavatkozásra:
 
 ```bash
 azure vm quick-create \
@@ -78,7 +78,7 @@ azure vm quick-create \
 -Q UbuntuLTS
 ```
 
-A kimenetnek az alábbi kimeneti blokkhoz hasonlóan kell kinéznie.
+A kimenetnek az alábbi kimeneti blokkhoz hasonlóan kell kinéznie:
 
 ```bash
 info:    Executing command vm quick-create
@@ -156,13 +156,13 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-Jelentkezzen be a virtuális gépre a kimenetben szereplő nyilvános IP-cím használatával. A listában szereplő teljes tartománynevet (FQDN) is használhatja.
+Jelentkezzen be a virtuális gépre a kimenetben szereplő nyilvános IP-cím használatával. A listában szereplő teljes tartománynevet (FQDN) is használhatja:
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub exampleAdminUser@138.91.247.29
 ```
 
-A bejelentkezési folyamatnak az alábbiakhoz hasonlóan kell kinéznie:
+A bejelentkezési folyamatnak az alábbi kimeneti blokkhoz hasonlóan kell kinéznie:
 
 ```bash
 Warning: Permanently added '138.91.247.29' (ECDSA) to the list of known hosts.
@@ -208,6 +208,6 @@ Az `azure vm quick-create` parancs a virtuális gépek gyors üzembe helyezésé
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

@@ -13,11 +13,16 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/25/2016"
+   ms.date="09/28/2016"
    ms.author="seanmck"/>
 
 
-# Az első Service Fabric-alkalmazás létrehozása Linux rendszeren Java használatával
+
+# Az első Azure Service Fabric-alkalmazás létrehozása
+
+> [AZURE.SELECTOR]
+- [C Sharp](service-fabric-create-your-first-application-in-visual-studio.md)
+- [Java](service-fabric-create-your-first-linux-application-with-java.md)
 
 A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .NET és a Java használatával egyaránt. A jelen oktatóanyagban áttekintjük, hogyan hozhat létre alkalmazásokat a Linux rendszerre, valamint szolgáltatásokat a Java használatával.
 
@@ -124,6 +129,6 @@ Néhány másodpercen belül megtörténik az alkalmazás létrehozása és tele
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

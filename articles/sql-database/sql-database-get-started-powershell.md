@@ -143,6 +143,6 @@ Az SQL-adatbázis létrehozása és az általános adatbázis-beállítási fela
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

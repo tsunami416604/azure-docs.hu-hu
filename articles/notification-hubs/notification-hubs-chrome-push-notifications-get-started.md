@@ -481,6 +481,6 @@ Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, o
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

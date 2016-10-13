@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Get Started with Azure Mobile Apps for Xamarin.Android apps"
-    description="Follow this tutorial to get started using Azure Mobile Apps for Xamarin Android development"
+    pageTitle="Bevezetés az Azure Mobile Apps szolgáltatásnak a Xamarin.Android-alkalmazásokkal való használatába"
+    description="Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin Android-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást"
     services="app-service\mobile"
     documentationCenter="xamarin"
     authors="adrianhall"
@@ -17,66 +17,66 @@
     ms.author="adrianha" />
 
 
-#Create a Xamarin.Android App
+#Xamarin.Android-alkalmazás létrehozása
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-##Overview
+##Áttekintés
 
-This tutorial shows you how to add a cloud-based backend service to a Xamarin.Android app. For more information, see [What are Mobile Apps](app-service-mobile-value-prop.md).
+Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat Xamarin.Android-alkalmazásokhoz. További információ: [Mi a Mobile Apps szolgáltatás?](app-service-mobile-value-prop.md).
 
-A screenshot from the completed app is below:
+Alább az elkészült alkalmazás képernyőképe látható:
 
 ![][0]
 
-Completing this tutorial is a prerequisite for all other Mobile Apps tutorials for Xamarin.Android apps.
+Az oktatóanyag végrehajtása feltétele a Mobile Apps Xamarin.Android-alkalmazásokra vonatkozó összes többi oktatóanyag elérésének.
 
-##Prerequisites
+##Előfeltételek
 
-To complete this tutorial, you need the following:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* An active Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free Mobile Apps that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
+* Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio with Xamarin. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) for instructions.  
+* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése).  
  
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile), where you can immediately create a short-lived starter Mobile App in App Service. No credit cards required; no commitments.
+>[AZURE.NOTE] Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű mobilalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
-## Create a new Azure Mobile App backend
+## Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
-Follow these steps to create a new Mobile App backend.
+Új Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, you will download a server project for a simple "todo list" backend and publish it to Azure.
+Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ügyfélalkalmazásai használni tudnak. A következő lépésben le kell töltenie egy kiszolgálóprojektet egy egyszerű „Teendőlista” háttéralkalmazáshoz, és közzé kell tennie az Azure-ban.
 
-## Configure the server project
+## Kiszolgálóprojekt konfigurálása
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## Download and run the Xamarin.Android app
+## A Xamarin.Android-alkalmazás letöltése és futtatása
 
-1. Under **Download and run your Xamarin.Android project**, click the **Download** button.
+1. A **Download and run your Xamarin.Android project** (A Xamarin.Android-projekt letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
 
-    This downloads a project that contains a client application that is connected to your mobile app. Save the compressed project file to your local computer, and make a note of where you save it.
+    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse a tömörített projektfájlt a helyi számítógépre, és jegyezze fel a mentési helyét.
 
-2. Press the **F5** key to build the project and start the app.
+2. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást.
 
-3. In the app, type meaningful text, such as _Complete the tutorial_ and then click the **Add** button.
+3. Az alkalmazásban írjon be egy értelmes szöveget, például _Az oktatóanyag befejezése_, majd kattintson a **Hozzáadás** gombra.
 
     ![][10]
 
-    This sends a POST request to the new mobile app backend hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data appears in the list.
+    Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára. A rendszer beilleszti kérés adatait a TodoItem táblába. A táblázatban tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
-    > [AZURE.NOTE] You can review the code that accesses your mobile app backend to query and insert data, which is found in the ToDoActivity.cs C# file.
+    > [AZURE.NOTE] A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a ToDoActivity.cs C# fájlban tekintheti meg.
 
-##Next steps
+##Következő lépések
 
-* [Add authentication to your app ](app-service-mobile-xamarin-android-get-started-users.md)  
-Learn how to authenticate users of your app with an identity provider.
-* [Add push notifications to your Xamarin.Android app](app-service-mobile-xamarin-android-get-started-push.md)  
-Learn how to add push notifications to your app.
-* [How to use the managed client for Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)  
-Learn how to work with the managed client SDK in your Xamarin app. 
+* [Hitelesítés hozzáadása az alkalmazáshoz ](app-service-mobile-xamarin-android-get-started-users.md)  
+Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
+* [Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz](app-service-mobile-xamarin-android-get-started-push.md)  
+Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazáshoz.
+* [A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md)  
+Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban. 
 
 
 <!-- Images. -->
@@ -92,6 +92,6 @@ Learn how to work with the managed client SDK in your Xamarin app.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

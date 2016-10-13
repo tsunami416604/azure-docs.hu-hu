@@ -78,6 +78,6 @@ Ha a szervezete több tartománynevet használ (például: „contoso.com” és
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

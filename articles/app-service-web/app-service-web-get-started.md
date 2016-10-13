@@ -33,6 +33,7 @@ Az alábbiakat fogja elvégezni:
 
 ## Előfeltételek
 
+>[AZURE.INCLUDE [app-service-linux](../../includes/app-service-linux.md)] 
 
 - [Telepítse a Git szoftvert](http://www.git-scm.com/downloads). Ellenőrizze a telepítés sikerességét a(z) `git --version` futtatásával egy új Windows-parancssorból, PowerShell-ablakból, Linux-shellből vagy OS X-terminálból.
 - Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
@@ -151,6 +152,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

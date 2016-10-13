@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="09/22/2016"
+    ms.date="09/30/2016"
     ms.author="curtand"/>
 
 
@@ -87,14 +87,33 @@ A bejelentkezési oldal alábbi elemei szabhatók testre:
 
 ![][5]
 
- Oldalelem  | Helye az oldalon
-    ------------- | -------------
-Szalagcímembléma | Az oldal jobb felső részén látható. Lecseréli a bejelentkezés célhelyének (például Office 365 vagy Azure) emblémáját.
-Nagy méretű ábra/háttérszín | Az oldal bal oldali részén látható. Lecseréli a bejelentkezés célhelyének képét. Alacsony sávszélességű kapcsolat vagy keskeny képernyő használatakor a nagy ábrák helyén a háttérszín jelenhet meg.
-A bejelentkezési oldal szövege | A fenti ábrán az oldal lábléce látható, ahol hasznos információkat tehet közzé, mielőtt még valaki bejelentkezne munkahelyi vagy iskolai fiókjával. Érdemes lehet például itt elhelyezni az ügyfélszolgálat telefonszámát vagy egy jogi nyilatkozatot.
+
+
+| Oldalelem  | Helye az oldalon |
+|:--            | ---                  |
+|Szalagcímembléma    | Az oldal jobb felső részén látható. Lecseréli a bejelentkezés célhelyének (például Office 365 vagy Azure) emblémáját.|
+|Nagy méretű ábra/háttérszín | Az oldal bal oldali részén látható. Lecseréli a bejelentkezés célhelyének képét. Alacsony sávszélességű kapcsolat vagy keskeny képernyő használatakor a nagy ábrák helyén a háttérszín jelenhet meg.|
+|Bejelentkezve szeretnék maradni | A Jelszó szövegmező alatt látható. |
+|A bejelentkezési oldal szövege | A fenti ábrán az oldal lábléce látható, ahol hasznos információkat tehet közzé, mielőtt még valaki bejelentkezne munkahelyi vagy iskolai fiókjával. Érdemes lehet például itt elhelyezni az ügyfélszolgálat telefonszámát vagy egy jogi nyilatkozatot.|
+
 
 > [AZURE.NOTE]
 Ezen elemek egyike sem kötelező. Ha például megad szalagcímemblémát, de nagy méretű ábrát nem, a bejelentkezési oldalon az embléma és a célhelyhez tartozó ábra jelenik meg (ez esetben az Office 365 kaliforniai főutat ábrázoló képe).
+
+
+A bejelentkezési oldalon a **Bejelentkezve szeretnék maradni** jelölőnégyzet lehetővé teszi a felhasználó számára, hogy a böngészője bezárása és újbóli megnyitása után is bejelentkezve maradjon. Ez nincs hatással a munkamenet élettartamára. Az Azure Active Directory bejelentkezési oldalán elrejtheti a jelölőnégyzetet.
+
+A jelölőnégyzet megjelenése a **KMSI elrejtése** beállításától függ.
+
+![][9]
+
+
+A jelölőnégyzet elrejtéséhez konfigurálja a beállítást **Rejtett** értékre. 
+
+> [AZURE.NOTE] A SharePoint Online és az Office 2010 egyes funkciói attól függenek, hogy a felhasználók be tudják-e jelölni ezt a jelölőnégyzetet. Ha ezt a beállítást rejtett értékre konfigurálja, a felhasználóinak további és váratlan bejelentkezési felszólítások jelenhetnek meg.
+
+
+
 
 Az oldalon szereplő összes elem honosítható. A testreszabási összetevők „alapértelmezett” készletének összeállítását követően a különböző területi beállításokhoz további verziókat is konfigurálhat. A különböző elemek szabadon kombinálhatók. Megteheti például a következőt:
 
@@ -220,9 +239,10 @@ A bejelentkezési oldal háttérszíne | A bejelentkezési oldal háttérszíne 
 [6]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedleft.png
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
+[9]: ./media/active-directory-add-company-branding/hidekmsi.png
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

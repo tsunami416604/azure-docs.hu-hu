@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 
@@ -38,36 +38,40 @@ Az Azure parancssori felület implementálva van a Node.js-ben. Használható b�
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 - **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
 - **Azure parancssori felület** – A telepítésre és konfigurálásra vonatkozó információkért lásd: [Install and configure the Azure CLI](../xplat-cli-install.md) (Az Azure parancssori felület telepítése és konfigurálása). Győződjön meg róla, hogy újraindította a számítógépét a parancssori felület telepítése után.
+
+## Authentication
+
+Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ral, ahol Ön végfelhasználóként jelentkezik be. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
 ##Bejelentkezés az Azure-előfizetésbe
 
-Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületről](../xplat-cli-connect.md) lépéseit, és csatlakoztassa az előfizetését a __bejelentkezéses__ módszerrel.
+1. Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületéről (Azure CLI)](../xplat-cli-connect.md) című dokumentumban leírt lépéseket, és csatlakozzon az előfizetéséhez az `azure login` módszerrel.
+
+2. Az `azure account list` paranccsal sorolja fel a fiókjához társított előfizetéseket.
+
+        info:    Executing command account list
+        data:    Name              Id                                    Current
+        data:    ----------------  ------------------------------------  -------
+        data:    Azure-sub-1       ####################################  true
+        data:    Azure-sub-2       ####################################  false
+
+    A fenti kimenetben jelenleg az **Azure-sub-1** van engedélyezve, és van egy másik előfizetés, az **Azure-sub-2**. 
+
+3. Válassza ki a használni kívánt előfizetést. Ha az Azure-sub-2 előfizetés alapján szeretne dolgozni, használja az `azure account set` parancsot.
+
+        azure account set Azure-sub-2
 
 
 ## Azure Data Lake Store-fiók létrehozása
 
 Nyisson meg egy parancssor, rendszerhéjat vagy terminálalapú munkamenetet, és futtassa a következő parancsokat.
 
-1. Jelentkezzen be az Azure-előfizetésbe:
-
-        azure login
-
-    A rendszer fel fogja kérni egy webhely megnyitására és egy hitelesítési kód megadására. Az Azure-előfizetésbe való bejelentkezéshez kövesse a webhelyen megjelenő utasításokat.
-
 2. Váltson Azure Resource Manager módra az alábbi paranccsal:
 
         azure config mode arm
 
-
-3. Jelenítse meg a fiókhoz tartozó Azure-előfizetéseket.
-
-        azure account list
-
-
-4. Ha több Azure-előfizetéssel rendelkezik, az alábbi parancs segítségével állítsa be azt az előfizetést, amelyet az Azure parancssori felület parancsai használni fognak:
-
-        azure account set <subscriptionname>
 
 5. Hozzon létre egy új erőforráscsoportot. Az alábbi parancsban adja meg a használni kívánt paraméterértékeket.
 
@@ -191,6 +195,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

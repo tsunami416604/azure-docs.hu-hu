@@ -185,6 +185,6 @@ Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletesen beállít
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

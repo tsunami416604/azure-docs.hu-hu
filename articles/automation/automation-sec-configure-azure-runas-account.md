@@ -389,6 +389,6 @@ Ha a klasszikus futtató fiókkal szeretne hitelesítést végezni a klasszikus 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

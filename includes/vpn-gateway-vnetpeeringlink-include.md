@@ -1,1 +1,5 @@
->[AZURE.NOTE] If your VNets are in the same region, you may want to consider connecting them by using VNet peering. For more information, see the [VNet peering](../articles/virtual-network/virtual-network-peering-overview.md) article.
+A virtuális hálózatok VPN-átjáró használata nélkül is összekapcsolhatók. Ha a virtuális hálózatai ugyanabban a régióban találhatók, a Virtuális hálózatok közötti társviszony létesítésével érdemes lehet összekapcsolni őket. További információkat a [Virtuális hálózatok közötti társviszony](../articles/virtual-network/virtual-network-peering-overview.md) című cikk tartalmazza.
+
+<!--HONumber=Oct16_HO1-->
+
+

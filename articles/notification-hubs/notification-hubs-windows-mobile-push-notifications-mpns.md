@@ -225,6 +225,6 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

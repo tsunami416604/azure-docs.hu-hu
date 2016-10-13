@@ -1,9 +1,9 @@
 <properties
- pageTitle="Device management overview | Microsoft Azure"
- description="Overview of Azure IoT Hub device management: device twins, device queries, device jobs"
+ pageTitle="Az eszközfelügyelet áttekintése | Microsoft Azure"
+ description="Az Azure IoT Hub-eszközfelügyelet áttekintése"
  services="iot-hub"
  documentationCenter=""
- authors="juanjperez"
+ authors="bzurcher"
  manager="timlt"
  editor=""/>
 
@@ -13,118 +13,111 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
- ms.author="juanpere"/>
+ ms.date="09/16/2016"
+ ms.author="bzurcher"/>
 
 
-# Overview of Azure IoT Hub device management (preview)
 
-Azure IoT Hub device management enables standards-based IoT device management for you to remotely manage, configure, and update your devices.
 
-There are three main concepts for device management in Azure IoT:
+# Az Azure IoT Hub-eszközfelügyelet áttekintése (előzetes verzió)
 
-1.  **Device twin:** the representation of the physical device in IoT Hub.
+## Az Azure IoT-eszközfelügyeleti módszer
 
-2.  **Device queries**: enable you to find device twins and generate an aggregate understanding of multiple device twins. For example, you could run a query to find all device twins with a firmware version of 1.0.
+Az Azure IoT Hub-eszközfelügyelet biztosítja a funkciókat és a bővíthetőségi modellt az eszközök és háttéralkalmazások számára annak érdekében, hogy az IoT-eszközfelügyeletet felhasználhassák az IoT-ben szereplő különféle eszközökhöz és protokollokhoz.  Az IoT-ben különböző eszközök találhatók a nagy mértékben korlátozott érzékelőktől és egyetlen célra használható mikrovezérlőktől kezdve a nagyobb teljesítményű átjárókig, amelyek más eszközöket és protokollokat engedélyeznek.  Az IoT-megoldások jelentősen eltérnek a függőleges tartományokban és az olyan alkalmazásokban, amelyeknél minden egyes tartomány kezelőihez egyedi használati esetek tartoznak.  Az IoT-megoldások az IoT-eszközfelügyelet képességeit, mintáit és kódtárait felhasználva engedélyezhetik a különféle eszközöket és felhasználókat tartalmazó állományok eszközfelügyeletét.  
 
-3.  **Device jobs**: an action to perform on one or more physical devices, such as firmware update, reboot, and factory reset.
+## Bevezetés
 
-## Device twin
+Egy sikeres IoT-megoldás létrehozásának fontos részét képezi egy stratégia biztosítása arra vonatkozóan, hogyan végezzék a kezelők az eszközflotta folyamatos felügyeletét. Az IoT-kezelőknek olyan egyszerű és megbízható eszközökre és alkalmazásokra van szükségük, amelyek segítségével feladataik stratégiailag fontosabb szempontjaira koncentrálhatnak. Azure IoT Hub olyan építőelemeket biztosít az IoT-alkalmazások létrehozásához, amelyek megkönnyítik a legfontosabb eszközfelügyeleti minták létrehozását.
 
-The device twin is the representation of a physical device in Azure IoT. The **Microsoft.Azure.Devices.Device** object is used to represent the device twin.
+Az eszközök akkor igénylik az IoT Hub-os felügyeletet, ha olyan, eszközfelügyeleti ügynöknek nevezett egyszerű alkalmazást futtatnak, amely az eszközt biztonságosan csatlakoztatja a felhőhöz. Az ügynökkód lehetővé teszi, hogy az alkalmazási oldalról egy kezelő távolról hitelesítse az eszköz állapotát, és elvégezze az olyan felügyeleti műveleteket, mint például a hálózat konfigurációs módosításainak alkalmazása vagy belső vezérlőprogram frissítéseinek telepítése.
 
-![][img-twin]
+## Az IoT-eszközfelügyelet alapelvei
 
-The device twin has the following components:
+Az IoT a felügyeleti kihívások egyedi készletét hordozza magában, és olyan megoldást, amely a IoT-eszközfelügyeleti alapelveket biztosítja:
 
-1.  **Device Fields:** Device fields are predefined properties used for both IoT Hub messaging and device management. These help IoT Hub identify and connect with physical devices. Device fields are not synchronized to the device and are stored exclusively in the device twin. Device fields include the device id and authentication information.
+![][img-dm_principles]
 
-2.  **Device Properties:** Device properties are a predefined dictionary of properties that describes the physical device. The physical device is the master of each device property and is the authoritative store of each corresponding value. An eventually consistent representation of these properties is stored in the device twin in the cloud. The coherence and freshness are subject to synchronization settings, described in [Tutorial: how to use the device twin][lnk-tutorial-twin]. Some examples of device properties include firmware version, battery level, and manufacturer name.
+- **Méretezés és automatizálás**: az IoT olyan egyszerű eszközöket igényel, amelyekkel automatizálhatók a rutinfeladatok, és aránylag kis üzemeltetői létszámmal az eszközök millióinak felügyeletét biztosítják. A kezelők napról napra azt várják, hogy távolról, kötegelten kezelhessék az eszközök működését, és a rendszer csak akkor riassza őket, ha olyan hiba történt, amelynek elhárításához a közvetlen beavatkozásukra van szükség.
 
-3.  **Service Properties:** Service properties are **&lt;key,value&gt;** pairs that the developer adds to the service properties dictionary. These properties extend the data model for the device twin, enabling you to better characterize your device. Service properties are not synchronized to the device and are stored exclusively in the device twin in the cloud. One example of a service property is **&lt;NextServiceDate, 11/12/2017&gt;**, which could be used to find devices by their next date of service.
+- **Nyitottság és kompatibilitás**: az IoT-eszközök ökoszisztémája rendkívül szerteágazó. A felügyeleti eszközöket úgy kell kialakítani, hogy alkalmasak legyenek nagy mennyiségű eszközosztály, platform és protokoll befogadására. A kezelők képesek legyenek az összes eszköz támogatására, a legnagyobb mértékben korlátozott, beágyazott, egyetlen folyamatot végző processzorlapkáktól a nagy teljesítményű és teljes funkcionalitású számítógépekig.
 
-4.  **Tags:** Tags are a subset of service properties which are arbitrary strings rather than dictionary properties. They can be used to annotate device twins or organize devices into groups. Tags are not synchronized to the device and are stored exclusively in the device twin. For example, if your device twin represents a physical truck, you could add a tag for each type of cargo in the truck – **apples**, **oranges**, and **bananas**.
+- **A környezet figyelése**: az IoT-környezetek dinamikusak és állandóan változnak. A szolgáltatás megbízhatósága rendkívül fontos. Az eszközfelügyeleti műveleteknek szerepelniük kell az SLA karbantartási ablakaiban, a hálózat és a tápellátás állapotában, a használatban lévő feltételekben és az eszköz földrajzi helyeiben annak biztosításához, hogy a karbantartási állásidő ne befolyásolja a létfontosságú üzleti tevékenységeket, illetve ne idézzen elő veszélyes feltételeket.
 
-## Device Queries
+- **Sok szerepkör kiszolgálása**: az IoT-műveletekhez tartozó szerepkörök egyedi munkafolyamatainak és folyamatainak támogatása rendkívül fontos. Az üzemeltető személyzetnek harmonikusan együtt kell működnie a belső informatikai részlegek adott korlátozásaival, és biztosítania kell az eszközműveletekre vonatkozó információkat a felügyelők és más vezetői szerepkörök számára.
 
-In the previous section, you learned about the different components of the device twin. Now, we will explain how to find device twins in the IoT Hub device registry based on device properties, service properties or tags. An example of when you would use a query is to find devices that need to be updated. You can query for all devices with a specified firmware version and feed the result into a specific action (known in IoT Hub as a device job, which is explained in the following section).
+## Az IoT-eszközök életciklusa 
 
-You can query using tags and properties:
+Bár az IoT-projektek nagy mértékben eltérnek egymástól, számos közös minta létezik az eszközök felügyeletéhez. Az Azure IoT-ban ezeket a mintákat a rendszer az IoT-eszköz életciklusában azonosítja, amely az alábbi öt különböző szakaszból áll:
 
--   To query for device twins using tags, you pass an array of strings and the query returns the set of devices which are tagged with all of those strings.
+![][img-device_lifecycle]
 
--   To query for device twins using service properties or device properties, you use a JSON query expression. The example below shows how you could query for all devices with the device property with the key **FirmwareVersion** and value **1.0**. You can see that the **type** of the property is **device**, indicating we are querying based on device properties, not service properties:
+1. **Tervezés**: a kezelők olyan eszköztulajdonság-sémát hozhatnak létre, amely segítségével könnyen és pontosan lekérdezhetnek és megcélozhatnak egy eszközcsoportot, amelyen kötegelt felügyeleti műveleteket hajthatnak végre.
 
-  ```
-  {                           
-      "filter": {                  
-        "property": {                
-          "name": "FirmwareVersion",   
-          "type": "device"             
-        },                           
-        "value": "1.0",              
-        "comparisonOperator": "eq",  
-        "type": "comparison"         
-      },                           
-      "project": null,             
-      "aggregate": null,           
-      "sort": null                 
-  }
-  ```
+    *Kapcsolódó építőelemek*: [Bevezetés az ikereszközök használatába][lnk-twins-getstarted], [Az ikertulajdonságok használata][lnk-twin-properties]
 
-## Device Jobs
+2. **Kiépítés**: az új eszközök biztonságos hitelesítése az IoT Hub számára, és lehetőség biztosítása a kezelők számára az eszköz képességeinek és aktuális állapotának azonnali felderítésére.
 
-The next concept in device management is device jobs, which enable coordination of multi-step orchestrations on multiple devices.
+    *Kapcsolódó építőelemek*: [Bevezetés az IoT Hub használatába][lnk-hub-getstarted], [Az ikertulajdonságok használata][lnk-twin-properties]
 
-There are six types of device jobs that are provided by Azure IoT Hub device management at present (we will add additional jobs as customers need them):
+3. **Konfigurálás**: az eszközök kötegelt konfigurációmódosításainak és belső vezérlőprogramjuk frissítéseinek megkönnyítése üzemi állapotuk és biztonságuk megőrzésével.
 
-- **Firmware update**: Updates the firmware (or OS image) on the physical device.
-- **Reboot**: Reboots the physical device.
-- **Factory reset**: Reverts the firmware (or OS image) of the physical device to a factory provided backup image stored on the device.
-- **Configuration update**: Configures the IoT Hub client agent running on the physical device.
-- **Read device property**: Gets the most recent value of a device property on the physical device.
-- **Write device property:** Changes a device property on the physical device.
+    *Kapcsolódó építőelemek*: [Az ikertulajdonságok használata][lnk-twin-properties], [C2D metódusok][lnk-c2d-methods], [Feladatok ütemezése/szórása][lnk-jobs]
 
-For details on how to use each of these jobs, please see the [API documentation for C\# and node.js][lnk-apidocs].
+4. **Figyelés**: eszközflotta általános üzemi állapotának és a folyamatban lévő frissítéskibocsátások állapotának figyelése annak érdekében, hogy riaszthassák a kezelőket a beavatkozásukat igénylő problémák felmerülésével kapcsolatban.
 
-A job can operate on multiple devices. When you start a job, an associated child job is created for each of those devices. A child job operates on a single device. Each child job has a pointer to its parent job. The parent job is only a container for the child jobs, it does not implement any logic to distinguish between types of devices (such as updating an Intel Edison versus updating a Raspberry Pi). The following diagram illustrates the relationship between a parent job, its children, and the associated physical devices.
+    *Kapcsolódó építőelemek *: [Az ikertulajdonságok használata][lnk-twin-properties]
 
-![][img-jobs]
+5. **Kivonás**: az eszközök lecserélése vagy leszerelése meghibásodás vagy frissítési ciklus után, illetve a szolgáltatás élettartamának végén.
 
-You can query job history to understand the state of jobs that you have started. For some example queries, see [our query library][lnk-query-samples].
+    *Kapcsolódó építőelemek *:
+    
+## IoT Hub-eszközfelügyeleti minták
 
-## Device Implementation
+Az IoT Hub a (kezdeti) eszközfelügyeleti minták következő csoportját biztosítja.  Ahogy az [oktatóprogramok][lnk-get-started] bemutatják, ezeket a mintákat úgy bővítheti, hogy illeszkedjenek a pontos forgatókönyvhöz, és ezen alapminták alapján új mintákat tervezhet más forgatókönyvekhez.
 
-Now that we have covered the service-side concepts, let's discuss how to create a managed physical device. The Azure IoT Hub DM client library enables you to manage your IoT devices with Azure IoT Hub. “Manage” includes actions such as rebooting, factory resetting, and updating firmware.  Today, we provide a platform-independent C library, but we will add support for other languages soon.  
+1. **Újraindítás** – A háttéralkalmazás D2C metódus segítségével tájékoztatja az eszközt az újraindítás kezdeményezéséről.  Az eszköz az ikereszköz jelentett tulajdonságait felhasználva frissíti az eszköz újraindítási állapotát. 
 
-The DM client library has two main responsibilities in device management:
+    ![][img-reboot_pattern]
 
-- Synchronize properties on the physical device with its corresponding device twin in IoT Hub
-- Choreograph device jobs sent by IoT Hub to the device
+2. **Gyári visszaállítás** – A háttéralkalmazás egy D2C metódus segítségével tájékoztatja az eszközt egy gyári visszaállítás kezdeményezéséről.  Az eszköz az ikereszköz jelentett tulajdonságait felhasználva frissíti az eszköz gyári visszaállítási állapotát.
 
-To learn more about these responsibilities and the implementation on the physical device in [Introducing the Azure IoT Hub device management client library for C][lnk-library-c].
+    ![][img-facreset_pattern]
 
-## Next steps
+3. **Konfigurálás** – A háttéralkalmazás az ikereszköz kívánt tulajdonságait felhasználva konfigurálja az eszközön futó szoftvert.  Az eszköz az ikereszköz jelentett tulajdonságait felhasználva frissíti az eszköz konfigurálási állapotát. 
 
-To implement client applications on a wide variety of device hardware platforms and operating systems, you can use the IoT device SDKs. The IoT device SDKs include libraries that facilitate sending telemetry to an IoT hub and receiving cloud-to-device commands. When you use the SDKs, you can choose from a number of network protocols to communicate with IoT Hub. To learn more, see the [information about device SDKs][lnk-device-sdks].
+    ![][img-config_pattern]
 
-To continue learning about the Azure IoT Hub device management features, see the [Get started with Azure IoT Hub device management][lnk-get-started] tutorial.
+4. **Belső vezérlőprogram frissítése** – A háttéralkalmazás egy D2C metódus segítségével tájékoztatja az eszközt a belső vezérlőprogram frissítésének kezdeményezéséről.  Az eszköz egy több lépésből álló folyamatot kezdeményez a belsővezérlőprogram-csomag letöltésére, alkalmazza a belsővezérlőprogram-csomagot, végül újból csatlakozik az IoT Hub szolgáltatáshoz.  A több lépésből álló folyamat során az eszköz az ikereszköz jelentett tulajdonságait felhasználva frissíti az eszköz előrehaladási folyamatát és az állapotát. 
+
+    ![][img-fwupdate_pattern]
+
+5. **Előrehaladási folyamat és állapot jelentése** – A háttéralkalmazás lefuttatja az ikereszköz lekérdezéseit egy eszközcsoporton, és jelentést készít az eszközön futó műveletek előrehaladási folyamatáról és állapotáról.
+
+    ![][img-report_progress_pattern]
+
+## Következő lépések
+
+Az Azure IoT Hub által biztosított építőelemek segítségével a fejlesztők olyan IoT-alkalmazásokat hozhatnak létre, amelyek az eszköz életciklusának minden egyes szakaszában megfelelnek az IoT-kezelő egyedi követelményeinek.
+
+Ha szeretne részletesebben is megismerkedni az Azure IoT Hub eszközfelügyeleti funkcióival, olvassa el a [Get started with Azure IoT Hub device management][lnk-get-started] (Ismerkedés az Azure IoT Hub eszközfelügyeleti funkcióival) című oktatóanyagot.
 
 <!-- Images and links -->
-[img-twin]: media/iot-hub-device-management-overview/image1.png
-[img-jobs]: media/iot-hub-device-management-overview/image2.png
-[img-client]: media/iot-hub-device-management-overview/image3.png
+[img-dm_principles]: media/iot-hub-device-management-overview/image4.png
+[img-device_lifecycle]: media/iot-hub-device-management-overview/image5.png
+[img-config_pattern]: media/iot-hub-device-management-overview/configuration-pattern.png
+[img-facreset_pattern]: media/iot-hub-device-management-overview/facreset-pattern.png
+[img-fwupdate_pattern]: media/iot-hub-device-management-overview/fwupdate-pattern.png
+[img-reboot_pattern]: media/iot-hub-device-management-overview/reboot-pattern.png
+[img-report_progress_pattern]: media/iot-hub-device-management-overview/report-progress-pattern.png
 
-[lnk-lwm2m]: http://technical.openmobilealliance.org/Technical/technical-information/release-program/current-releases/oma-lightweightm2m-v1-0
-[lnk-library-c]: iot-hub-device-management-library.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
-[lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
-[lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
-[lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
-[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
+[lnk-twins-getstarted]: iot-hub-node-node-twin-getstarted.md
+[lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
+[lnk-hub-getstarted]: iot-hub-csharp-csharp-getstarted.md
+[lnk-c2d-methods]: iot-hub-c2d-methods.md
+[lnk-jobs]: iot-hub-schedule-jobs.md
 
 
-
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

@@ -13,11 +13,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/25/2016"
+   ms.date="09/30/2016"
    ms.author="markvi"/>
 
 
 # Jelentéskészítés az Azure Active Directory előzetes kiadásában
+
+> [AZURE.SELECTOR]
+- [Azure Portal](active-directory-reporting-azure-portal.md)
+- [klasszikus Azure portál](active-directory-reporting-guide.md)
 
 *Ez a dokumentáció az [Azure Active Directory Reporting-útmutató](active-directory-reporting-guide.md) része.*
 
@@ -220,6 +224,6 @@ Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporti
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

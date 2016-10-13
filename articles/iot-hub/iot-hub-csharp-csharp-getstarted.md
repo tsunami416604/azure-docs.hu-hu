@@ -285,6 +285,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

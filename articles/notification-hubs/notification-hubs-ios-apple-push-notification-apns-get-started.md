@@ -509,6 +509,6 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Azure Portal]: https://portal.azure.com
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

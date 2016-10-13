@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas adat
 
 Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. További információk: [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md) (Rugalmas adatbáziskészletek ára és teljesítménye).
 
-> [AZURE.NOTE] A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek a lehető leghamarabb általánosan elérhetők lesznek ebben a régióban. Emellett a rugalmas készletek jelenleg nem támogatják a [memóriában végzett OLTP-feldolgozást és elemzéseket](sql-database-in-memory.md) használó adatbázisokat.
+> [AZURE.NOTE] A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek a lehető leghamarabb általánosan elérhetők lesznek ebben a régióban. 
 
 ## 1. lépés: Új készlet létrehozása
 
@@ -118,6 +118,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

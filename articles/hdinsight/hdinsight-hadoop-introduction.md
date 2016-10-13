@@ -255,7 +255,7 @@ Ezek az üzletiintelligencia-eszközök segíthetnek a big data elemzések elvé
 
 * [Az Excel és a Hadoop csatlakoztatása a Power Query segítségével](hdinsight-connect-excel-power-query.md): megtudhatja, hogyan csatlakoztathatja az Excelt a HDInsight-fürthöz kapcsolódó adatokat tároló Azure Storage-fiókhoz az Excelhez készült Microsoft Power Query segítségével. Használatához Windows-munkaállomás szükséges. Windows- vagy Linux-alapú fürtökkel működik.
 
-* [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztő segítségével](hdinsight-connect-excel-hive-ODBC-driver.md): megtudhatja, hogyan importálhat adatokat a HDInsight-ból a Microsoft Hive ODBC-illesztővel. Használatához Windows-munkaállomás szükséges. Windows- vagy Linux-alapú fürtökkel működik.
+* [Az Excel és a Hadoop csatlakoztatása a Microsoft Hive ODBC-illesztő segítségével](hdinsight-connect-excel-hive-odbc-driver.md): megtudhatja, hogyan importálhat adatokat a HDInsight-ból a Microsoft Hive ODBC-illesztővel. Használatához Windows-munkaállomás szükséges. Windows- vagy Linux-alapú fürtökkel működik.
 
 * [Microsoft Cloud platform](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx): további információt szerezhet az Office 365-höz készült Power BI szolgáltatásról, letöltheti az SQL Server próbaverzióját, és beállíthatja a SharePoint Server 2013-at és az SQL Server BI-t.
 
@@ -272,6 +272,6 @@ Ezek az üzletiintelligencia-eszközök segíthetnek a big data elemzések elvé
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

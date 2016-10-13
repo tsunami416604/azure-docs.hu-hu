@@ -1,7 +1,6 @@
 <properties
-
-    pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
-    description="How to create and manage groups to manage Azure users using Azure Active Directory."
+    pageTitle="Csoportkezelés az Azure Active Directoryban | Microsoft Azure"
+    description="Csoportok létrehozása és kezelése az Azure Active Directoryban az Azure-felhasználók kezeléséhez."
     services="active-directory"
     documentationCenter=""
     authors="curtand"
@@ -14,12 +13,18 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="09/22/2016"
+    ms.date="09/29/2016"
     ms.author="curtand"/>
 
 
 
 # Csoportkezelés az Azure Active Directoryban
+
+> [AZURE.SELECTOR]
+- [Azure Portal](active-directory-groups-create-azure-portal.md)
+- [klasszikus Azure portál](active-directory-accessmanagement-manage-groups.md)
+- [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+
 
 Az Azure Active Directory (Azure AD) egyik felhasználó-kezelési szolgáltatása a felhasználói csoportok létrehozásának lehetősége. A csoportokat kezelési feladatok, például licencek hozzárendelése vagy egyszerre több felhasználónak adott engedélyek elvégzésére használhatja. A csoportokkal hozzáférési engedélyeket is hozzárendelhet a következőkhöz:
 
@@ -119,6 +124,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 
