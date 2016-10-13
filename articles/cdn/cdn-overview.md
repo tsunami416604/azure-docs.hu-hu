@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="09/01/2016"
+    ms.date="09/30/2016"
     ms.author="casoper"/>
 
 
@@ -53,7 +53,7 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 
 |       | Akamai Standard | Verizon Standard | Verizon Premium |
 |-------|-----------------|------------------|-----------------|
-| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service-web/cdn-websites-with-cdn.md) és a [Media Services](../media-services/media-services-manage-origins.md#enable_cdn) szolgáltatással. | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service-web/cdn-websites-with-cdn.md) és a [Media Services](../media-services/media-services-manage-origins.md#enable-cdn) szolgáltatással. | **&#x2713;** | **&#x2713;** | **&#x2713;**|
 | Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](./cdn-app-dev-net.md), [Node.js](./cdn-app-dev-node.md) vagy [PowerShell](./cdn-manage-powershell.md) használatával. | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | HTTPS-támogatás | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | Terheléselosztás | **&#x2713;** | **&#x2713;** | **&#x2713;** |
@@ -90,6 +90,6 @@ Díjszabási információkért tekintse meg [A tartalomkézbesítési hálózat 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

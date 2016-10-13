@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/26/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 
@@ -113,9 +113,9 @@ A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .
 
 ## Authentication
 
-### Végfelhasználói hitelesítés használata esetén
+### Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
 
-Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent találhat egy példát.
+Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent találhat egy példát. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk.
 
     // User login via interactive popup
     // Use the client ID of an existing AAD "Native Client" application.
@@ -125,7 +125,10 @@ Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent 
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
 
-A fenti kódrészletben olyan Azure AD-tartományt és ügyfél-azonosítót használunk, amely minden Azure-előfizetés számára alapértelmezés szerint elérhető. Ha saját Azure AD-tartományt és alkalmazás-ügyfélazonosítót szeretne használni, létre kell hoznia egy natív Azure AD-alkalmazást. Útmutatás: [Egy Active Directory-alkalmazás létrehozása](../resource-group-create-service-principal-portal.md#create-an-active-directory-application).
+Néhány tudnivaló a fenti kódrészlettel kapcsolatban.
+
+* Az oktatóanyag gyorsabb teljesítése érdekében ez a kódrészlet olyan Azure AD-tartományt és ügyfél-azonosítót használ, amely minden Azure-előfizetés számára alapértelmezés szerint elérhető. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
+* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-tartományt, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatás: [Egy Active Directory-alkalmazás létrehozása](../resource-group-create-service-principal-portal.md#create-an-active-directory-application).
 
 >[AZURE.NOTE] A fenti hivatkozások követésével elérhető utasítások egy Azure AD-webalkalmazásra vonatkoznak. A lépések azonban pontosan ugyanazok akkor is, ha úgy döntött, hogy inkább egy natív ügyfélalkalmazást hoz létre. 
 
@@ -276,6 +279,6 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

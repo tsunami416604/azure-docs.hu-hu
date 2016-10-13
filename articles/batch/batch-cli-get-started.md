@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="big-compute"
-   ms.date="09/06/2016"
+   ms.date="09/30/2016"
    ms.author="marsma"/>
 
 
@@ -21,7 +21,7 @@
 
 A platformfüggetlen Azure parancssori felület (Azure CLI) segítségével kezelheti a Batch-fiókokat és -erőforrásokat, például a készleteket, a feladatokat és a tevékenységeket a Linux, Mac és Windows parancsrendszerhéjakban. Az Azure CLI-vel a Batch API-k, az Azure Portal és a Batch PowerShell-parancsmagok használatával végrehajtott műveletek közül sokat elvégezhet.
 
-Ez a cikk az Azure CLI 0.10.3-as verzióján alapul.
+Ez a cikk az Azure CLI 0.10.5-ös verzióján alapul.
 
 ## Előfeltételek
 
@@ -216,19 +216,39 @@ Alkalmazáscsomag **hozzáadása**:
 
 A csomag **aktiválása**:
 
-    azure batch application package activate "resgroup002" "azbatch002" "MyTaskApplication" "1.10-beta3" zip
+    azure batch application package activate "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" zip
+
+Állítsa be az alkalmazás **alapértelmezett verzióját** :
+
+    azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
 ### Alkalmazáscsomag üzembe helyezése
 
 Új készlet létrehozásakor megadhat egy vagy több alkalmazáscsomagot az üzembe helyezéshez. Ha a készlet létrehozásakor megad egy csomagot, az a csomópont készlethez való csatlakoztatásakor minden csomóponton üzembe lesz helyezve. A csomagok akkor is üzembe lesznek helyezve, ha a csomópontot újraindítják vagy alaphelyzetbe állítják.
 
-Ez a parancs meghatároz egy csomagot a készlet létrehozásakor, amely akkor lesz üzembe helyezve, amikor az egyes csomópontok csatlakoznak az új készlethez:
+Adja meg az `--app-package-ref` kapcsolót, ha készletet hoz létre egy alkalmazáscsomag üzembe helyezéséhez a készlet csomópontjain, amikor azok csatlakoznak a készlethez. Az `--app-package-ref` kapcsoló elfogadja a számítási csomópontokon üzembe helyezni kívánt alkalmazások azonosítóinak pontosvesszővel elválasztott listáját.
 
-    azure batch pool create --id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
+    azure batch pool create --pool-id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
 
-Jelenleg a parancssori kapcsolókkal nem adhatja meg, hogy melyik csomagverzió legyen üzembe helyezve. A készlethez való hozzárendelés előtt be kell állítania az alkalmazás alapértelmezett verzióját az Azure Portal használatával. Az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazás üzembe helyezése Azure Batch-alkalmazáscsomagokkal) című cikk útmutatót biztosít az alapértelmezett verzió beállításához. Megadhat egy alapértelmezett verziót azonban akkor, ha a készlet létrehozásakor a parancssori kapcsolók helyett egy [JSON-fájlt](#json-files) használ.
+Ha parancssori kapcsolók használatával hoz létre készletet, akkor nem tudja megadni, hogy *melyik* alkalmazáscsomag-verzió legyen üzembe helyezve a számítási csomópontokon, például „1.10-beta3”. Ezért a készlet létrehozása előtt meg kell adnia az alkalmazás alapértelmezett verzióját az `azure batch application set [options] --default-version <version-id>` kapcsolóval (lásd az előző szakaszt). Megadhat azonban egy csomagverziót is a készlet számára akkor, ha a készlet létrehozásakor a parancssori kapcsolók helyett egy [JSON-fájlt](#json-files) használ.
+
+Az alkalmazáscsomagok használatával kapcsolatban további információkat az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazások üzembe helyezése az Azure Batch-alkalmazáscsomagokkal) című cikk tartalmazza.
 
 >[AZURE.IMPORTANT] Az alkalmazáscsomagok használatához [hozzá kell kapcsolnia egy Azure Storage-fiókot](#linked-storage-account-autostorage) a Batch-fiókjához.
+
+### Készlet alkalmazáscsomagjainak frissítése
+
+Egy meglévő készlethez rendelt alkalmazások frissítéséhez adja ki az `azure batch pool set` parancsot az `--app-package-ref` kulccsal:
+
+    azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
+
+Ha egy már meglévő készlet számítási csomópontjain szeretné üzembe helyezni az új alkalmazáscsomagot, újra kell indítania vagy alaphelyzetbe kell állítania az adott csomópontok rendszerképét:
+
+    azure batch node reboot --pool-id "pool001" --node-id "tvm-3105992504_1-20160930t164509z"
+
+>[AZURE.TIP] Az `azure batch node list` utasítással beszerezheti a készletben lévő csomópontok és azonosítóik listáját.
+
+Ne feledje, hogy még az üzembe helyezése előtt konfigurálnia kell az alkalmazást az alapértelmezett verziójával (`azure batch application set [options] --default-version <version-id>`).
 
 ## Hibaelhárítási tippek
 
@@ -256,6 +276,6 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

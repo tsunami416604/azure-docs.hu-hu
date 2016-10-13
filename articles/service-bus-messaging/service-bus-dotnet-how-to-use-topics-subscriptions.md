@@ -152,6 +152,8 @@ if (!namespaceManager.TopicExists("TestTopic"))
 
 A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával is létrehozhat üzenettémakör-előfizetéseket. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
 
+> [AZURE.IMPORTANT] Ahhoz, hogy egy előfizetés üzeneteket kapjon, létre kell hoznia az előfizetés, mielőtt még bármilyen üzenetet küldene a témakörbe. Ha egy témakörhöz nem tartoznak előfizetések, a témakör figyelmen kívül hagyja az üzeneteket.
+
 ### Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 
 Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, akkor a **MatchAll** szűrő az alapértelmezett használandó szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példa egy „AllMessages” nevű előfizetést hoz létre, és az alapértelmezett **MatchAll** szűrőt használja.
@@ -330,6 +332,6 @@ Most, hogy megismerte a Service Bus-témakörök és -előfizetések alapjait, a
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

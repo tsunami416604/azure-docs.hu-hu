@@ -30,13 +30,17 @@ A jelen dokumentumban lévő információk a Linux-alapú HDInsight-fürtökre j
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-###Előfeltételek
+##Előfeltételek
 
 Ezen HBase oktatóanyag elkezdéséhez a következőkkel kell rendelkeznie:
 
 - **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- [Biztonságos rendszerhéj (SSU)](hdinsight-hadoop-linux-use-ssh-unix.md). 
+- [Biztonságos rendszerhéj (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md). 
 - [curl](http://curl.haxx.se/download.html).
+
+### A hozzáférés-vezérlésre vonatkozó követelmények
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## HBase-fürt létrehozása
 
@@ -328,6 +332,6 @@ További tudnivalókért lásd:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

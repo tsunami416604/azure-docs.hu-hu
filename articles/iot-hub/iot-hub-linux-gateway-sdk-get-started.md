@@ -1,6 +1,6 @@
 <properties
     pageTitle="IoT Hub-átjáró SDK – Első lépések | Microsoft Azure"
-    description="Az Azure IoT Hub-átjáró SDK bemutatója az Azure IoT Hub-átjáró SDK használatához szükséges alapvető fogalmak ismertetéséhez Linux rendszert használ."
+    description="Az Azure IoT Hub-átjáró SDK-nak ez a bemutatója az Azure IoT Hub-átjáró SDK használatához szükséges alapvető fogalmak ismertetéséhez Linux rendszert használ."
     services="iot-hub"
     documentationCenter=""
     authors="chipalost"
@@ -86,6 +86,6 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

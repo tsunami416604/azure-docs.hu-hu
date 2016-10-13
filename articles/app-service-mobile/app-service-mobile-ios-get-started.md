@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Create an iOS app on Azure App Service Mobile Apps | Microsoft Azure"
-    description="Follow this tutorial to get started with using Azure mobile app backends for iOS development in Objective-C or Swift"
+    pageTitle="iOS-alkalmazás létrehozása az Azure App Service Mobile Apps szolgáltatásban| Microsoft Azure"
+    description="Az útmutató bevezeti Önt az Azure-alapú mobil-háttéralkalmazások használatával megvalósítható, Objective-C vagy Swift nyelven történő iOS-fejlesztésbe."
     services="app-service\mobile"
     documentationCenter="ios"
     authors="yuaxu"
@@ -17,26 +17,26 @@
     ms.author="yuaxu"/>
 
 
-#Create an iOS app
+#iOS-alkalmazás létrehozása
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## Overview
+## Áttekintés
 
-This tutorial shows how to add [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, to an iOS app. We'll first create a new mobile backend. Then, we'll use a simple _Todo list_ iOS app to store data in Azure.
+Az útmutató azt mutatja be, hogyan adhatja hozzá az [Azure Mobile Apps](app-service-mobile-value-prop.md) felhőalapú háttérszolgáltatást az iOS-alkalmazásokhoz. Először létre kell hoznunk egy új mobil-háttéralkalmazást. Ezt követően egy egyszerű _Tennivalólista_ iOS-alkalmazást fogunk használni az adatoknak az Azure-ban való tárolására.
 
-To complete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)
+Az oktatóanyag elvégzéséhez egy Mac gépre és [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) lesz szüksége.
 
 
-## Step I: Create a new Azure mobile app backend
+## 1. lépés: Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## Step II: Configure the backend project
+## 2. lépés: A háttéralkalmazás-projekt konfigurálása
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## Step III: Download and run the iOS app
+## 3. lépés: Az iOS-alkalmazás letöltése és futtatása
 
 [AZURE.INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
@@ -44,12 +44,12 @@ To complete this tutorial, you need a Mac and [an Azure account](https://azure.m
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

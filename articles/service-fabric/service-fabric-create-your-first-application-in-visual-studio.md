@@ -13,11 +13,16 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/26/2016"
+   ms.date="09/28/2016"
    ms.author="ryanwi"/>
 
 
-# Az első Azure Service Fabric-alkalmazás létrehozása a Visual Studióban
+
+# Az első Azure Service Fabric-alkalmazás létrehozása
+
+> [AZURE.SELECTOR]
+- [C Sharp](service-fabric-create-your-first-application-in-visual-studio.md)
+- [Java](service-fabric-create-your-first-linux-application-with-java.md)
 
 A Service Fabric SDK egy Visual Studio-bővítmény tartalmaz, amely sablonokat és eszközöket biztosít a Service Fabric-alkalmazások létrehozásához, üzembe helyezéséhez és hibakereséséhez. Ez a témakör végigvezeti Önt az első alkalmazás létrehozásának folyamatán a Visual Studióban.
 
@@ -151,6 +156,6 @@ A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe,
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Bevezetés az Azure Search használatába | Microsoft Azure | Bevezetés az Azure Search használatába | DocumentDB | Felhőalapú keresőszolgáltatás" 
-    description="Hozza létre első Azure Search-megoldását az oktatóanyag részletes bemutatójának segítségével. Ismerje meg, hogyan hozhat létre Azure Search-indexet a DocumentDB adataiból. Ez egy portálalapú, kódmentes gyakorlat, az Adatok importálása varázsló használatával." 
+    pageTitle="Bevezetés az Azure Search használatába | Microsoft Azure | DocumentDB | Felhőalapú keresőszolgáltatás" 
+    description="Ismerje meg, hogyan hozhatja létre első Azure Search-indexét a bemutató oktatóanyag és a DocumentDB-mintaadatok felhasználásával. Ez a portálalapú, kódmentes gyakorlat az Adatok importálása varázslót használja." 
     services="search" 
     documentationCenter="" 
     authors="HeidiSteen" 
@@ -14,7 +14,7 @@
     ms.workload="search" 
     ms.topic="hero-article" 
     ms.tgt_pltfrm="na" 
-    ms.date="08/29/2016" 
+    ms.date="10/03/2016" 
     ms.author="heidist"/>
 
 
@@ -24,7 +24,7 @@ Ez a kódmentes bevezető közvetlenül a portálba épített funkciók segíts�
 
 Az oktatóanyag feltételezi, hogy Ön rendelkezik egy [minta Azure DocumentDB-adatbázissal](#apdx-sampledata), amelyet az adataink és utasításaink segítségével egyszerűen létrehozhat, de ugyanezeket a lépéseket alkalmazhatja a DocumentDB vagy SQL-adatbázisban már meglévő saját adataira is.
 
-> [AZURE.NOTE] Az első lépéseket bemutató oktatóanyaghoz szükség van egy [Azure-előfizetésre](../../includes/free-trial-note.md) és egy [Azure Search szolgáltatásra](search-create-service-portal.md). 
+> [AZURE.NOTE] Az első lépéseket bemutató oktatóanyaghoz szükség van egy [Azure-előfizetésre](/pricing/free-trial/?WT.mc_id=A261C142F) és egy [Azure Search szolgáltatásra](search-create-service-portal.md). 
  
 ## A szolgáltatása megkeresése
 
@@ -36,15 +36,15 @@ Az oktatóanyag feltételezi, hogy Ön rendelkezik egy [minta Azure DocumentDB-a
 
 ## Szabad terület ellenőrzése
 
-Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, három adatforrásra és három indexelőre korlátozódik. Mielőtt hozzákezdene, ellenőrizze, hogy elegendő hellyel rendelkezik-e további elemek számára. Ez a bemutató minden objektumból egyet fog létrehozni.
+Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, három adatforrásra és három indexelőre korlátozódik. Mielőtt hozzákezdene, ellenőrizze, hogy elegendő hellyel rendelkezik-e további elemek számára. Ez a bemutató minden objektumból egyet hoz létre.
 
 ## Index létrehozása és az adatok betöltése
 
-A keresési lekérdezések egy *index* segítségével ismétlődnek, amely kereshető adatokat, metaadatokat és bizonyos keresési viselkedések optimalizálásához használt szerkezeteket tartalmaz. Első lépésként meg fog határozni és fel fog tölteni egy indexet.
+A keresési lekérdezések egy *index* segítségével ismétlődnek, amely kereshető adatokat, metaadatokat és bizonyos keresési viselkedések optimalizálásához használt szerkezeteket tartalmaz. Első lépésként határozzon meg és töltsön fel egy indexet.
 
 Az index létrehozásának számos módja van. Ha az adatai az Azure Search által bejárható tárolóban, például az Azure SQL-adatbázisban, egy Azure virtuális gépen lévő SQL Server kiszolgálón vagy egy DocumentDB adatbázisban vannak, egy *indexelő* segítségével nagyon egyszerűen hozhat létre és tölthet fel indexet.
 
-Ahhoz, hogy ez a feladat portálalapú maradjon, feltételezzük, hogy az adatok egy olyan DocumentDB-adatbázisból származnak, amely egy indexelővel az **Adatok importálása** varázsló segítségével bejárható. 
+Ahhoz, hogy ez a feladat portálalapú maradjon, olyan DocumentDB-adatbázisból származó adatokat használunk, amely egy indexelővel az **Adatok importálása** varázsló segítségével bejárható. 
 
 A folytatás előtt hozzon létre egy, az oktatóanyaghoz használható [minta DocumentDB-adatbázist](#apdx-sampledata), majd térjen vissza ehhez a szakaszhoz, és hajtsa végre az alábbi lépéseket.
 
@@ -53,13 +53,13 @@ A folytatás előtt hozzon létre egy, az oktatóanyaghoz használható [minta D
 
 1. Az Azure Search szolgáltatás irányítópultján kattintson az **Adatok importálása** parancsra a parancssávon az indexet létrehozó és feltöltő varázsló elindításához.
 
-  ![][7]
+    ![][7]
 
 2. A varázslóban kattintson az **Adatforrás** > **DocumentDB** > **Név** elemre, majd írja be az adatforrás nevét. Az adatforrás egy olyan kapcsolatobjektum az Azure Search szolgáltatásban, amelyet más indexelők is használhatnak. Miután létrehozta, „meglévő adatforrásként” elérhetővé válik a szolgáltatásában.
 
-3. Válassza ki meglévő DocumentDB-fiókját, az adatbázist és a gyűjteményt. Ha az általunk megadott mintaadatokat használja, az adatforrása definíciója a következőképpen fog kinézni:
+3. Válassza ki meglévő DocumentDB-fiókját, az adatbázist és a gyűjteményt. Ha az általunk megadott mintaadatokat használja, az adatforrása definíciója a következőképpen néz ki:
 
-  ![][2]
+    ![][2]
 
 Figyelje meg, hogy kihagyjuk a lekérdezést. Ennek az oka az, hogy ezúttal nem végezzük el az adatkészletünk változáskövetését. Ha az adatkészlete olyan mezőt tartalmaz, amely nyomon követi a rekordok frissítését, akkor konfigurálhat egy Azure Search-indexelőt, és a változáskövetés segítségével nyomon követheti az indexe szelektív frissítéseit.
 
@@ -150,7 +150,7 @@ Ugyanezt a munkafolyamatot kipróbálhatja az Adatok importálása varázsló se
 
 Ez a szakasz egy kis adatbázist hoz létre a DocumentDB használatával, amelynek a segítségével végrehajthatók az oktatóanyagban szereplő feladatok.
 
-Az alábbi utasítások általános útmutatást nyújtanak, de nem adnak teljes körű tájékoztatást. Ha további segítségre lenne szüksége a DocumentDB portálnavigációjával vagy feladataival kapcsolatban, olvassa el a DocumentDB dokumentációját, azonban , a legtöbb parancs, amelyre szüksége lesz, vagy az irányítópult tetején lévő szolgáltatási parancssávon, vagy az adatbázis paneljén található. 
+Az alábbi utasítások általános útmutatást nyújtanak, de nem adnak teljes körű tájékoztatást. Ha további segítségre lenne szüksége a DocumentDB portálnavigációjával vagy feladataival kapcsolatban, olvassa el a DocumentDB dokumentációját, azonban a legtöbb parancs, amelyre szüksége van, vagy az irányítópult tetején lévő szolgáltatási parancssávon, vagy az adatbázis paneljén található. 
 
   ![][1]
 
@@ -171,7 +171,7 @@ Az alábbi utasítások általános útmutatást nyújtanak, de nem adnak teljes
 6. Ismételje meg a következő fájlköteg beolvasását mindaddig, amíg az utolsót (669.json) fel nem töltötte.
 7. Kattintson a **Lekérdezéskezelő** elemre, és ellenőrizze, hogy az adatok feltöltése a Dokumentumkezelő követelményeinek megfelelően történt-e.
 
-Ez egyszerűen elvégezhető az alapértelmezett lekérdezéssel, amelyet azonban úgy is módosíthat, hogy az első 300 elemet válassza ki (ez az adatkészlet kevesebb mint 300 elemet tartalmaz).
+Ez egyszerűen elvégezhető az alapértelmezett lekérdezéssel, amelyet azonban úgy is módosíthat, hogy az első 300 elemet választja ki (ez az adatkészlet kevesebb mint 300 elemet tartalmaz).
 
 JSON kimeneti adatokat kell visszakapnia, a 386. számú dokumentummal kezdődően és a 669. számú dokumentummal végződően. Az adatok feltöltése után [visszatérhet a bemutató lépéseihez](#defineDS), és az **Adatok importálása varázslóval** létrehozhat egy indexet.
 
@@ -187,6 +187,6 @@ JSON kimeneti adatokat kell visszakapnia, a 386. számú dokumentummal kezdődő
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

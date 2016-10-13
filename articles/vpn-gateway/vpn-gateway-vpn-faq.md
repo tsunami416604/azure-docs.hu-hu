@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Virtual Network VPN Gateway FAQ | Microsoft Azure"
-   description="The VPN Gateway FAQ. FAQ for Microsoft Azure Virtual Network cross-premises connections, hybrid configuration connections, and VPN Gateways"
+   pageTitle="Virtuális hálózati VPN Gateway – gyakori kérdések | Microsoft Azure"
+   description="A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network létesítmények közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról"
    services="vpn-gateway"
    documentationCenter="na"
    authors="yushwang"
@@ -16,245 +16,245 @@
    ms.author="yushwang" />
 
 
-# VPN Gateway FAQ
+# VPN Gateway – gyakori kérdések
 
-## Connecting to Virtual Networks
+## Csatlakozás virtuális hálózatokhoz
 
-### Can I connect virtual networks in different Azure regions?
-Yes. In fact, there is no region constraint. One virtual network can connect to another virtual network in the same region, or in a different Azure region.
+### Összekapcsolhatok eltérő Azure-régiókban található virtuális hálózatokat?
+Igen. Nincs régiókorlátozás. A virtuális hálózatok összekapcsolhatók az azonos régióban vagy más Azure-régiókban található virtuális hálózatokkal is.
 
-### Can I connect virtual networks in different subscriptions?
-Yes.
+### Összekapcsolhatok egymással különböző előfizetésekben található virtuális hálózatokat?
+Igen.
 
-### Can I connect to multiple sites from a single virtual network?
+### Csatlakozhatok több helyhez egyetlen virtuális hálózatból?
 
-You can connect to multiple sites by using Windows PowerShell and the Azure REST APIs. See the [Multi-Site and VNet-to-VNet Connectivity](#multi-site-and-vnet-to-vnet-connectivity) FAQ section.
-## What are my cross-premises connection options?
+A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több helyhez is. Lásd a gyakori kérdések [Többhelyes és virtuális hálózatok közötti kapcsolatok](#multi-site-and-vnet-to-vnet-connectivity) című szakaszát.
+## Milyen lehetőségeim vannak a létesítmények közötti kapcsolódásra?
 
-The following cross-premises connections are supported:
+A következő létesítmények közötti kapcsolattípusok támogatottak:
 
-- [Site-to-Site](vpn-gateway-site-to-site-create.md) – VPN connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or RRAS.
+- [Helyek közötti kapcsolat](vpn-gateway-site-to-site-create.md) – VPN-kapcsolat IPsec (IKE v1 és IKE v2) használatával. Ehhez a kapcsolattípushoz VPN-eszköz vagy RRAS szükséges.
 
-- [Point-to-Site](vpn-gateway-point-to-site-create.md) – VPN connection over SSTP (Secure Socket Tunneling Protocol). This connection does not require a VPN device.
+- [Pont–hely kapcsolat](vpn-gateway-point-to-site-create.md) – VPN-kapcsolat STTP (Secure Socket Tunneling Protocol) használatával. Ehhez a kapcsolattípushoz nem szükséges VPN-eszköz.
 
-- [VNet-to-VNet](virtual-networks-configure-vnet-to-vnet-connection.md) – This type of connection is the same as a Site-to-Site configuration. VNet to VNet is a VPN connection over IPsec (IKE v1 and IKE v2). It does not require a VPN device.
+- [Virtuális hálózatok közötti kapcsolat](virtual-networks-configure-vnet-to-vnet-connection.md) – A helyek közötti kapcsolattal megegyező kapcsolattípus. A virtuális hálózatok közötti kapcsolat egy IPsec-et (IKE v1 és IKE v2) használó VPN-kapcsolat, nem szükséges hozzá VPN-eszköz.
 
-- [Multi-Site](vpn-gateway-multi-site.md) – This is a variation of a Site-to-Site configuration that allows you to connect multiple on-premises sites to a virtual network.
+- [Többhelyes kapcsolat](vpn-gateway-multi-site.md) – Ez a helyek közötti kapcsolat egy változata, amely több helyszíni hely csatlakoztatását teszi lehetővé egy virtuális hálózathoz.
 
-- [ExpressRoute](../expressroute/expressroute-introduction.md) – ExpressRoute is a direct connection to Azure from your WAN, not over the public Internet. See the [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) and the [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) for more information.
+- [ExpressRoute](../expressroute/expressroute-introduction.md) – Az ExpressRoute közvetlen kapcsolatot biztosít az Azure-ral WAN-on (nem a nyilvános interneten) keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
-For more information about connections, see [About VPN Gateway](vpn-gateway-about-vpngateways.md).
+További információk a kapcsolatokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 
-### What is the difference between a Site-to-Site connection and Point-to-Site?
+### Mi a különbség a helyek közötti és a pont–hely kapcsolatok között?
 
-**Site-to-Site** connections let you connect between any of the computers located on your premises to any virtual machine or role instance within your virtual network, depending on how you choose to configure routing. It's a great option for an always-available cross-premises connection and is well-suited for hybrid configurations. This type of connection relies on an IPsec VPN appliance (hardware or soft appliance), which must be deployed at the edge of your network. To create this type of connection, you must have the required VPN hardware and an externally facing IPv4 address.
+A **helyek közötti** kapcsolatok lehetővé teszik a helyszínen található számítógépek csatlakoztatását a virtuális hálózaton belüli virtuális gépekhez vagy szerepkörpéldányokhoz az útválasztás konfigurációjától függően. Ez ideális megoldás folyamatosan elérhető létesítmények közötti kapcsolatokhoz, és hibrid konfigurációkhoz is használható. Ez a kapcsolattípus IPsec VPN-készüléket használ (hardver- vagy szoftverkészüléket), amelyet a hálózat szélén kell üzembe helyezni. Az ilyen típusú kapcsolat létrehozásához szükség van a megfelelő VPN-hardverre és egy kifelé irányuló IPv4-címre.
 
-**Point-to-Site** connections let you connect from a single computer from anywhere to anything located in your virtual network. It uses the Windows in-box VPN client. As part of the Point-to-Site configuration, you install a certificate and a VPN client configuration package, which contains the settings that allow your computer to connect to any virtual machine or role instance within the virtual network. It's great when you want to connect to a virtual network, but aren't located on-premises. It's also a good option when you don't have access to VPN hardware or an externally facing IPv4 address, both of which are required for a Site-to-Site connection. 
+A **pont–hely** kapcsolattal csatlakozhat egy tetszőleges helyen található számítógépről a virtuális hálózata összes eleméhez. Ez a típus a Windows beépített VPN-ügyfelét használja. A pont–hely konfiguráció részeként telepíteni kell egy tanúsítványt és egy VPN-ügyfélkonfigurációs csomagot, amelyben azok a beállítások találhatók, amelyeket a számítógépe használ a virtuális hálózatban található virtuális gépekhez vagy szerepkörpéldányokhoz való csatlakozáshoz. Ez ideális megoldás, ha csatlakozni szeretne egy virtuális hálózathoz, de nem a helyszínen tartózkodik, valamint akkor is jól használható, ha nincs hozzáférése VPN-hardverhez vagy kifelé irányuló IPv4-címhez, amelyek a helyek közötti kapcsolatok kialakításához szükségesek. 
 
-You can configure your virtual network to use both Site-to-Site and Point-to-Site concurrently, provided that you create your Site-to-Site connection using a route-based VPN type for your gateway. Route-based VPN types are called dynamic gateways in the classic deployment model.
+A virtuális hálózatát konfigurálhatja úgy, hogy helyek közötti és pont–hely kapcsolatokat használjon egyidejűleg – ha a helyek közötti kapcsolatot útvonalalapú VPN-típussal hozza létre az átjáróhoz. Az útvonalalapú VPN-típusok korábbi megnevezése dinamikus átjáró volt a klasszikus üzemi modellben.
 
-### What is ExpressRoute?
+### Mi az az ExpressRoute?
 
-ExpressRoute lets you create private connections between Microsoft datacenters and infrastructure that’s on your premises or in a co-location environment. With ExpressRoute, you can establish connections to Microsoft cloud services such as Microsoft Azure and Office 365 at an ExpressRoute partner co-location facility, or directly connect from your existing WAN network (such as an MPLS VPN provided by a network service provider).
+Az ExpressRoute használatával magánkapcsolatok hozhatók létre a Microsoft-adatközpontok és a helyszíni vagy közös elhelyezésű környezet között. Az ExpressRoute használatával egy ExpressRoute-partneri közös elhelyezési létesítményben létesíthet kapcsolatot Microsoft-felhőszolgáltatásokkal – például a Microsoft Azure-ral vagy az Office 365-tel – vagy közvetlenül csatlakozhat azokhoz meglévő WAN hálózatról (például egy hálózati szolgáltató által biztosított MPLS VPN-ről).
 
-ExpressRoute connections offer better security, more reliability, higher bandwidth, and lower latencies than typical connections over the Internet. In some cases, using ExpressRoute connections to transfer data between your on-premises network and Azure can also yield significant cost benefits. If you already have created a cross-premises connection from your on-premises network to Azure, you can migrate to an ExpressRoute connection while keeping your virtual network intact.
+Az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál biztonságosabbak, megbízhatóbbak, valamint nagyobb a sávszélességük és alacsonyabb a késésük. Egyes esetekben kiemelkedően költséghatékony lehet az ExpressRoute-kapcsolat használata a helyszíni hálózat és az Azure közötti adatátvitelhez. Ha már csatlakoztatta helyszíni hálózatát létesítmények közötti kapcsolattal az Azure-hoz, áttérhet ExpressRoute-kapcsolatra a virtuális hálózat módosítása nélkül.
 
-See the [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) for more details.
+További részletek: [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
-## Site-to-Site connections and VPN devices
+## Helyek közötti kapcsolatok és VPN-eszközök
 
-### What should I consider when selecting a VPN device?
+### Mit érdemes figyelembe venni a VPN-eszköz kiválasztásakor?
 
-We have validated a set of standard Site-to-Site VPN devices in partnership with device vendors. A list of known compatible VPN devices, their corresponding configuration instructions or samples, and device specs can be found [here](vpn-gateway-about-vpn-devices.md). All devices in the device families listed as known compatible should work with Virtual Network. To help configure your VPN device, refer to the device configuration sample or link that corresponds to appropriate device family.
+Eszközszállítói partnereinkkel különböző standard helyek közötti VPN-eszközöket ellenőriztünk. Az [itt](vpn-gateway-about-vpn-devices.md) elérhető listán szerepelnek a kompatibilis VPN-eszközök és a hozzájuk tartozó konfigurációs útmutatók vagy minták, valamint az eszközökre vonatkozó műszaki adatok. A listán kompatibilisként szereplő eszközcsaládokba tartozó összes eszköz működik a virtuális hálózatokkal. A VPN-eszköz konfigurálásához tekintse meg az eszközkonfigurációs mintát, vagy kövesse a megfelelő eszközcsaládhoz tartozó hivatkozást.
 
-### What do I do if I have a VPN device that isn't in the known compatible device list?
+### Mi a teendő, ha az én VPN-eszközöm nincs az ismert kompatibilis eszközök listájában?
 
-If you do not see your device listed as a known compatible VPN device and you want to use it for your VPN connection, you'll need to verify that it meets the supported IPsec/IKE configuration options and parameters listed [here](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list). Devices meeting the minimum requirements should work well with VPN gateways. Contact your device manufacturer for additional support and configuration instructions.
+Ha nem látja az eszközét a kompatibilis VPN-eszközök listájában, de azt szeretné használni a VPN-kapcsolathoz, ellenőriznie kell, hogy megfelel-e az [itt](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list) felsorolt támogatott IPsec/IKE-konfigurációknak és paramétereknek. A minimális rendszerkövetelményeknek megfelelő eszközök működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
 
-### Why does my policy-based VPN tunnel go down when traffic is idle?
+### Miért áll le a házirendalapú VPN-alagutam, amikor nincs adatforgalom?
 
-This is expected behavior for policy-based (also known as static routing) VPN gateways. When the traffic over the tunnel is idle for more than 5 minutes, the tunnel will be torn down. When traffic starts flowing in either direction, the tunnel will be reestablished immediately. If you have a route-based (also known as dynamic) VPN gateway, you will not experience this behavior.
+Ez normális működés házirendalapú (más néven statikus útválasztású) VPN-átjárók esetében. Ha az alagúton átmenő adatforgalom több mint 5 percig inaktív, a rendszer megszakítja az alagutat, Amikor az adatforgalom megindul bármelyik irányba, az alagút azonnal újra létrejön.
 
-### Can I use software VPNs to connect to Azure?
+### Csatlakozhatok az Azure-hoz szoftveres VPN-nel?
 
-We support Windows Server 2012 Routing and Remote Access (RRAS) servers for Site-to-Site cross-premises configuration.
+A helyek közötti létesítmények közötti konfigurációkhoz támogatottak a Windows Server 2012 útválasztási és távelérési (RRAS) kiszolgálók is.
 
-Other software VPN solutions should work with our gateway as long as they conform to industry standard IPsec implementations. Contact the vendor of the software for configuration and support instructions.
+Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az iparági szabványos IPsec-megvalósításoknak. A konfigurációs és támogatási útmutatáshoz vegye fel a kapcsolatot a szoftver szállítójával.
 
-## Point-to-Site connections
+## Pont–hely kapcsolatok
 
-### What operating systems can I use with Point-to-Site?
+### Milyen operációs rendszereket használhatok pont–hely kapcsolatokhoz?
 
-The following operating systems are supported:
+A következő operációs rendszerek támogatottak:
 
-- Windows 7 (32-bit and 64-bit)
+- Windows 7 (32 bites és 64 bites)
 
-- Windows Server 2008 R2 (64-bit only)
+- Windows Server 2008 R2 (csak 64 bites)
 
-- Windows 8 (32-bit and 64-bit)
+- Windows 8 (32 bites és 64 bites)
 
-- Windows 8.1 (32-bit and 64-bit)
+- Windows 8.1 (32 bites és 64 bites)
 
-- Windows Server 2012 (64-bit only)
+- Windows Server 2012 (csak 64 bites)
 
-- Windows Server 2012 R2 (64-bit only)
+- Windows Server 2012 R2 (csak 64 bites)
 
 - Windows 10
 
-### Can I use any software VPN client for Point-to-Site that supports SSTP?
+### Használhatok szoftveres VPN-ügyfelet az SSTP-t támogató pont–hely kapcsolatokhoz?
 
-No. Support is limited only to the Windows operating system versions listed above.
+Nem. Kizárólag a Windows operációs rendszerek fent felsorolt verziói támogatottak.
 
-### How many VPN client endpoints can I have in my Point-to-Site configuration?
+### Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
-We support up to 128 VPN clients to be able to connect to a virtual network at the same time.
+Egy virtuális hálózathoz egyidejűleg 128 VPN-ügyfél csatlakozhat.
 
-### Can I use my own internal PKI root CA for Point-to-Site connectivity?
+### Használhatom a saját PKI legfelső szintű hitelesítésszolgáltatómat a pont–hely kapcsolathoz?
 
-Yes. Previously, only self-signed root certificates could be used. You can still upload 20 root certificates.
+Igen. Korábban csak önaláírt főtanúsítványt lehetett használni. Továbbra is 20 főtanúsítvány tölthető fel.
 
-### Can I traverse proxies and firewalls using Point-to-Site capability?
+### Lehetővé teszi-e a pont–hely kapcsolat a proxykon és tűzfalakon való áthaladást?
 
-Yes. We use SSTP (Secure Socket Tunneling Protocol) to tunnel through firewalls. This tunnel will appear as an HTTPs connection.
+Igen. A tűzfalakon áthaladó alagutakhoz STTP-t (Secure Socket Tunneling Protocol) használunk. Ez az alagút HTTPS-kapcsolatként jelenik meg.
 
-### If I restart a client computer configured for Point-to-Site, will the VPN automatically reconnect?
+### Ha újraindítok egy pont–hely kapcsolat használatára konfigurált ügyfélszámítógépet, a VPN automatikusan újracsatlakozik?
 
-By default, the client computer will not reestablish the VPN connection automatically.
+Alapértelmezés szerint az ügyfélszámítógép nem létesíti újra a VPN-kapcsolatot.
 
-### Does Point-to-Site support auto-reconnect and DDNS on the VPN clients?
+### Támogatják a pont–hely kapcsolatok az automatikus újrakapcsolódást és a DDNS-t a VPN-ügyfeleken?
 
-Auto-reconnect and DDNS are currently not supported in Point-to-Site VPNs.
+Az automatikus újrakapcsolódás és a DDNS jelenleg nem támogatott a pont–hely VPN-kapcsolatokhoz.
 
-### Can I have Site-to-Site and Point-to-Site configurations coexist for the same virtual network?
+### Lehetnek-e helyek közötti és pont–hely konfigurációk egyidejűleg egy virtuális hálózaton?
 
-Yes. Both these solutions will work if you have a RouteBased VPN type for your gateway. For the classic deployment model, you need a dynamic gateway. We do not support Point-to-Site for static routing VPN gateways or gateways using -VpnType PolicyBased.
+Igen. Mindkét megoldás működhet, ha az átjárójához RouteBased (útvonalapú) VPN-típust használ. A klasszikus üzemi modellhez dinamikus átjáróra van szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású VPN-átjárókhoz vagy a PolicyBased értékű -VpnType paraméterrel rendelkező átjárókhoz.
 
-### Can I configure a Point-to-Site client to connect to multiple virtual networks at the same time?
+### Konfigurálhatok úgy egy pont–hely ügyfelet, hogy több virtuális hálózathoz csatlakozzon egyszerre?
 
-Yes, it is possible. But the virtual networks cannot have overlapping IP prefixes and the Point-to-Site address spaces must not overlap between the virtual networks.
+Igen, ez lehetséges. Azonban ezen virtuális hálózatok IP-előtagjai nem lehetnek egymással átfedésben, és a pont–hely kapcsolatok címterei nem lehetnek egymással átfedésben a virtuális hálózatok között.
 
-### How much throughput can I expect through Site-to-Site or Point-to-Site connections?
+### Milyen átviteli sebességre számíthatok a helyek közötti és a pont–hely kapcsolatok esetében?
 
-It's difficult to maintain the exact throughput of the VPN tunnels. IPsec and SSTP are crypto-heavy VPN protocols. Throughput is also limited by the latency and bandwidth between your premises and the Internet.
+Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SSTP erős titkosítást használó VPN-protokoll. Az átviteli sebességet emellett a késés, valamint a helyszín és az internet közötti sávszélesség is korlátozza.
 
-## Gateways
+## Átjárók
 
-### What is a policy-based (static-routing) gateway?
+### Mik azok a házirendalapú (statikus útválasztású) átjárók?
 
-Policy-based gateways implement policy-based VPNs. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or Traffic Selector) is usually defined as an access list in the VPN configuration.
+A házirendalapú átjárók házirendalapú VPN-kapcsolatokat valósítanak meg. A házirendalapú VPN-ek a helyszíni hálózat és az Azure VNet közötti címelőtag-kombinációk alapján titkosítják és irányítják a csomagokat az IPsec-alagutakon keresztül. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-konfigurációban.
 
-### What is a route-based (dynamic-routing) gateway?
+### Mik azok az útvonalalapú (dinamikus útválasztású) átjárók?
 
-Route-based gateways implement the route-based VPNs. Route-based VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy or traffic selector for route based VPNs are configured as any-to-any (or wild cards).
+Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva.
 
-### Can I get my VPN gateway IP address before I create it?
+### Megszerezhetem a VPN-átjáróm IP-címét, mielőtt létrehozom az átjárót?
 
-No. You have to create your gateway first to get the IP address. The IP address changes if you delete and recreate your VPN gateway.
+Nem. Az átjárót létre kell hozni az IP-cím beszerzéséhez. Ha törli, majd újra létrehozza a VPN-átjárót, az IP-cím megváltozik.
 
-### How does my VPN tunnel get authenticated?
+### Hogyan történik a VPN-alagút hitelesítése?
 
-Azure VPN uses PSK (Pre-Shared Key) authentication. We generate a pre-shared key (PSK) when we create the VPN tunnel. You can change the auto-generated PSK to your own with the Set Pre-Shared Key PowerShell cmdlet or REST API.
+Az Azure VPN PSK (előmegosztott kulcsos) hitelesítést használ. A VPN-alagút létrehozásakor létrehozunk egy előmegosztott kulcsot (PSK) is. Az automatikusan létrehozott PSK-t az Előmegosztott kulcs beállítása PowerShell-parancsmaggal vagy a REST API-vel lecserélheti a sajátjára.
 
-### Can I use the Set Pre-Shared Key API to configure my policy-based (static routing) gateway VPN?
+### Használhatom-e az Előmegosztott kulcs beállítása API-t a házirendalapú (statikus útválasztású) átjárói VPN konfigurálásához?
 
-Yes, the Set Pre-Shared Key API and PowerShell cmdlet can be used to configure both Azure policy-based (static) VPNs and route-based (dynamic) routing VPNs.
+Igen, az Előmegosztott kulcs beállítása API és PowerShell-parancsmag használható az Azure házirendalapú (statikus) VPN-ek és útvonalalapú (dinamikus) VPN-ek konfigurálásához is.
 
-### Can I use other authentication options?
+### Használhatok más hitelesítési módszert?
 
-We are limited to using pre-shared keys (PSK) for authentication.
+Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 
-### What is the "gateway subnet" and why is it needed?
+### Mi az az „átjáróalhálózat,” és miért szükséges?
 
-We have a gateway service that we run to enable cross-premises connectivity. 
+A létesítmények közötti kapcsolatok az átjárószolgáltatásunkkal engedélyezhetők. 
 
-You'll need to create a gateway subnet for your VNet to configure a VPN gateway. All gateway subnets must be named GatewaySubnet to work properly. Don't name your gateway subnet something else. And don't deploy VMs or anything else to the gateway subnet.
+A VPN-átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáró-alhálózatnak a GatewaySubnet névvel kell rendelkeznie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
 
-The gateway subnet minimum size depends entirely on the configuration that you want to create. Although it is possible to create a gateway subnet as small as /29 for some configurations, we recommend that you create a gateway subnet of /28 or larger (/28, /27, /26 etc.). 
+Az átjáró-alhálózat minimális mérete teljes mértékben a létrehozni kívánt konfigurációtól függ. Ugyan egyes konfigurációkhoz létrehozhat kicsi, akár /29-es méretű átjáróalhálózatot is, ajánlott /28-ast vagy nagyobbat létrehozni (/28, /27, /26 stb.). 
 
-### Can I deploy Virtual Machines or role instances to my gateway subnet?
+### Telepíthetek virtuális gépeket vagy szerepkörpéldányokat az átjáróalhálózatomra?
 
-No.
+Nem.
 
-### How do I specify which traffic goes through the VPN gateway?
+### Hogyan határozhatom meg, milyen adatforgalom haladjon át a VPN-átjárón?
 
-If you are using the Azure Classic Portal, add each range that you want sent through the gateway for your virtual network on the Networks page under Local Networks.
+Ha a klasszikus Azure portált használja, a Hálózatok lap Helyi hálózatok részében adja hozzá az összes tartományt, amelyet átküldene az átjárón a virtuális hálózathoz.
 
-### Can I configure Forced Tunneling?
+### Konfigurálhatok kényszerített bújtatást?
 
-Yes. See [Configure forced tunneling](vpn-gateway-about-forced-tunneling.md).
+Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md).
 
-### Can I set up my own VPN server in Azure and use it to connect to my on-premises network?
+### Üzembe helyezhetem a saját VPN-kiszolgálómat az Azure-ban, és csatlakozhatok vele a helyszíni hálózatomhoz?
 
-Yes, you can deploy your own VPN gateways or servers in Azure either from the Azure Marketplace or creating your own VPN routers. You will need to configure user defined routes in your virtual network to ensure traffic is routed properly between your on-premises networks and your virtual network subnets.
+Igen, az Azure-ban üzembe helyezheti saját VPN-átjáróit vagy -kiszolgálóit az Azure Piactérről, vagy saját VPN-útválasztók létrehozásával. Ilyenkor a virtuális hálózatában felhasználó által definiált útvonalakat kell konfigurálnia, hogy az adatforgalom megfelelően legyen irányítva a helyszíni hálózatai és a virtuális hálózatainak alhálózatai között.
 
-### Why are certain ports opened on my VPN gateway?
+### Miért vannak egyes portok nyitva a VPN-átjárómon?
 
-They are required for Azure infrastructure communication. They are protected (locked down) by Azure certificates. Without proper certificates, external entities, including the customers of those gateways, will not be able to cause any effect on those endpoints.
+Ezek szükségesek az Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). A megfelelő tanúsítványok nélkül a külső entitások – például az átjárók ügyfelei – nem gyakorolhatnak semmilyen hatást a végpontokra.
 
-A VPN gateway is fundamentally a multi-homed device with one NIC tapping into the customer private network, and one NIC facing the public network. Azure infrastructure entities cannot tap into customer private networks for compliance reasons, so they need to utilize public endpoints for infrastructure communication. The public endpoints are periodically scanned by Azure security audit.
+A VPN-átjáró alapvetően egy többhelyű eszköz, amelynek egy hálózati adaptere az ügyfél magánhálózatához, egy másik hálózati adaptere pedig a nyilvános hálózathoz csatlakozik. Az Azure-infrastruktúra entitásai megfelelőségi okokból nem csatlakozhatnak az ügyfelek magánhálózataihoz, így az infrastruktúra-kommunikációhoz nyilvános végpontokat kell használniuk. A nyilvános végpontokat az Azure biztonsági naplózás rendszeresen ellenőrzi.
 
 
-### More information about gateway types, requirements, and throughput
+### További információk az átjárótípusokról, a követelményekről és az adatátviteli sebességről
 
-For more information, see [About VPN Gateway Settings](vpn-gateway-about-vpn gateway-settings.md).
+További információk: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn gateway-settings.md).
 
-## Multi-Site and VNet-to-VNet connectivity
+## Többhelyes és virtuális hálózatok közötti kapcsolatok
 
-### Which type of gateways can support multi-site and VNet-to-VNet connectivity?
+### Milyen átjárótípusok támogatják a többhelyes és a virtuális hálózatok közötti kapcsolatokat?
 
-Only route-based (dynamic routing) VPNs.
+Csak az útvonalalapú (dinamikus útválasztású) VPN-ek.
 
-### Can I connect a VNet with a RouteBased VPN Type to another VNet with a PolicyBased VPN type?
+### Összekapcsolhatok egy RouteBased (útvonalapú) VPN-típussal rendelkező virtuális hálózatot egy házirendalapú VPN-típussal rendelkezővel?
 
-No, both virtual networks MUST be using route-based (dynamic routing) VPNs.
+Nem, mindkét virtuális hálózatnak útvonalalapú (dinamikus útválasztású) VPN-t KELL használnia.
 
-### Is the VNet-to-VNet traffic secure?
+### Biztonságos-e a virtuális hálózatok közötti adatforgalom?
 
-Yes, it is protected by IPsec/IKE encryption.
+Igen, az adatforgalmat IPsec/IKE-titkosítás védi.
 
-### Does VNet-to-VNet traffic travel over the Azure backbone?
+### A virtuális hálózatok közötti adatforgalom az Azure gerinchálózatát használja?
 
-Yes.
+Igen.
 
-### How many on-premises sites and virtual networks can one virtual network connect to?
+### Hány helyszíni helyhez és virtuális hálózathoz kapcsolódhat egyetlen virtuális hálózat?
 
-Max. 10 combined for the Basic and Standard Dynamic Routing gateways; 30 for the High Performance VPN gateways.
+Legfeljebb egyszerre 10-hez alapszintű és standard dinamikus útválasztású átjárók esetén, illetve 30-hoz nagy teljesítményű VPN-átjárók esetében.
 
-### Can I use Point-to-Site VPNs with my virtual network with multiple VPN tunnels?
+### Használhatok pont–hely VPN-t több VPN-alagúttal a virtuális hálózatomhoz?
 
-Yes, Point-to-Site (P2S) VPNs can be used with the VPN gateways connecting to multiple on-premises sites and other virtual networks.
+Igen, a pont–hely (P2S) VPN-ek több helyszíni helyhez és egyéb virtuális hálózatokhoz csatlakozó VPN-átjárókkal is használhatók.
 
-### Can I configure multiple tunnels between my virtual network and my on-premises site using multi-site VPN?
+### Konfigurálhatok több alagutat a virtuális hálózatom és a helyszíni helyem között többhelyes VPN használatával?
 
-No, redundant tunnels between an Azure virtual network and an on-premises site are not supported.
+Nem, a redundáns alagutak az Azure Virtual Network hálózatok és a helyszíni helyek között nem támogatottak.
 
-### Can there be overlapping address spaces among the connected virtual networks and on-premises local sites?
+### Lehetnek-e egymással átfedésben lévő címterek a csatlakoztatott virtuális hálózatok és helyszíni helyek között?
 
-No. Overlapping address spaces will cause the network configuration file upload or "Creating Virtual Network" to fail.
+Nem. Ha a címterek átfedésben vannak egymással, a hálózati konfigurációs fájl feltöltése vagy a virtuális hálózat létrehozása meghiúsul.
 
-### Do I get more bandwidth with more Site-to-Site VPNs than for a single virtual network?
+### Nagyobb sávszélességhez jutok több helyek közötti VPN használatával, mint egyetlen virtuális hálózattal?
 
-No, all VPN tunnels, including Point-to-Site VPNs, share the same Azure VPN gateway and the available bandwidth.
+Nem, az összes VPN-alagút, így a pont–hely VPN-ek is ugyanazt az Azure VPN Gateway átjárót és elérhető sávszélességet használják.
 
-### Can I use Azure VPN gateway to transit traffic between my on-premises sites or to another virtual network?
+### Használhatok Azure VPN Gateway átjárót az adatforgalomhoz a helyszíni helyeim között vagy egy másik virtuális hálózatba?
 
-**Classic deployment model**<br>
-Transit traffic via Azure VPN gateway is possible using the classic deployment model, but relies on statically defined address spaces in the network configuration file. BGP is not yet supported with Azure Virtual Networks and VPN gateways using the classic deployment model. Without BGP, manually defining transit address spaces is very error prone, and not recommended.<br>
-**Resource Manager deployment model**<br>
-If you are using the Resource Manager deployment model, see the [BGP](#bgp) section for more information.
+**Klasszikus üzemi modell**<br>
+Az Azure VPN Gateway-átjárókon keresztüli adatátvitel a klasszikus üzemi modellel lehetséges, de ez a hálózati konfigurációs fájlban statikusan meghatározott címterekre hagyatkozik. A BGP jelenleg nem támogatott az Azure Virtual Networkökhöz és VPN Gateway-átjárókhoz a klasszikus üzemi modell használatával. BGP nélkül az átviteli címterek manuális meghatározása sok hibalehetőséggel jár, ezért nem ajánlott.<br>
+**Resource Manager-alapú üzemi modell**<br>
+Ha a Resource Manager-alapú üzemi modellt használja, további információért tekintse meg a [BGP](#bgp) szakaszt.
 
-### Does Azure generate the same IPsec/IKE pre-shared key for all my VPN connections for the same virtual network?
+### Egy adott virtuális hálózaton az Azure ugyanazt az IPsec/IKE előmegosztott kulcsot hozza létre az összes VPN-kapcsolathoz?
 
-No, Azure by default generates different pre-shared keys for different VPN connections. However, you can use the Set VPN Gateway Key REST API or PowerShell cmdlet to set the key value you prefer. The key MUST be alphanumerical string of length between 1 to 128 characters.
+Nem, az Azure alapértelmezés szerint különböző előmegosztott kulcsokat hoz létre a különböző VPN-kapcsolatokhoz. Azonban a VPN-átjáró kulcsának megadása REST API-val vagy PowerShell-parancsmaggal tetszőlegesen megadhatja a kulcs értékét. A kulcsnak 1–128 karakter közötti hosszúságú alfanumerikus karakterláncnak KELL lennie.
 
-### Does Azure charge for traffic between virtual networks?
+### Felszámol az Azure díjat a virtuális hálózatok közötti adatforgalomért?
 
-For traffic between different Azure virtual networks, Azure charges only for traffic traversing from one Azure region to another. The charge rate is listed in the Azure [VPN Gateway Pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) page.
+A különböző Azure Virtual Networkök közötti adatforgalom esetében az Azure csak az egyik Azure-régióból másikba való adatátvitelért számít fel díjat. A díjszabás az Azure [VPN Gateway díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) oldalán található.
 
 
-### Can I connect a virtual network with IPsec VPNs to my ExpressRoute circuit?
+### Csatlakoztathatok IPsec VPN-ekkel rendelkező virtuális hálózatot az ExpressRoute-kapcsolatcsoportomhoz?
 
-Yes, this is supported. For more information, see [Configure ExpressRoute and Site-to-Site VPN connections that coexist](../expressroute/expressroute-howto-coexist-classic.md).
+Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-classic.md).
 
 ## <a name="bgp"></a>BGP
 
@@ -262,26 +262,26 @@ Yes, this is supported. For more information, see [Configure ExpressRoute and Si
 
 
 
-## Cross-premises connectivity and VMs
+## Létesítmények közötti kapcsolatok és virtuális gépek
 
-### If my virtual machine is in a virtual network and I have a cross-premises connection, how should I connect to the VM?
+### Ha a virtuális gépem egy virtuális hálózaton található, és rendelkezem egy létesítmények közötti kapcsolattal, hogyan csatlakozhatok a virtuális géphez?
 
-You have a few options. If you have RDP enabled and you have created an endpoint, you can connect to your virtual machine by using the VIP. In that case, you would specify the VIP and the port that you want to connect to. You'll need to configure the port on your virtual machine for the traffic. Typically, you would go to the Azure Classic Portal and save the settings for the RDP connection to your computer. The settings contain the necessary connection information.
+Több lehetősége van. Ha az RDP engedélyezve van, és létrehozott egy végpontot, a virtuális IP-címmel csatlakozhat a virtuális géphez. Ebben az esetben meg kell adnia a virtuális IP-címet és a portot, amelyhez csatlakozni szeretne, a virtuális gép portját pedig konfigurálnia kell az adatátvitelhez. Általános esetben ehhez lépjen a klasszikus Azure portálra, és mentse az RDP-kapcsolat beállításait a számítógépén. Ezek a beállítások tartalmazzák a szükséges kapcsolati információkat.
 
-If you have a virtual network with cross-premises connectivity configured, you can connect to your virtual machine by using the internal DIP or private IP address. You can also connect to your virtual machine by internal DIP from another virtual machine that's located on the same virtual network. You can't RDP to your virtual machine by using the DIP if you are connecting from a location outside of your virtual network. For example, if you have a Point-to-Site virtual network configured and you don't establish a connection from your computer, you can't connect to the virtual machine by DIP.
+Ha a virtuális hálózatán konfigurálva van létesítmények közötti kapcsolat, a belső dedikált IP-címmel vagy magánhálózati IP-címmel csatlakozhat a virtuális géphez. A belső dedikált IP-címmel egy, a virtuális hálózaton található másik virtuális gépről is csatlakoztathat a virtuális géphez. Ha a virtuális hálózatán kívüli helyről csatlakozik, nem használhatja az RDP-t a virtuális gépéhez való csatlakozáshoz a dedikált IP-címmel. Ha például pont–hely virtuális hálózatot konfigurált, és nem létesít kapcsolatot a számítógépéről, nem csatlakozhat a virtuális gépéhez a dedikált IP-címmel.
 
-### If my virtual machine is in a virtual network with cross-premises connectivity, does all the traffic from my VM go through that connection?
+### Ha a virtuális gépem létesítmények közötti kapcsolattal rendelkező virtuális hálózaton található, a virtuális gépem teljes adatforgalma ezen a kapcsolaton halad át?
 
-No. Only the traffic that has a destination IP that is contained in the virtual network Local Network IP address ranges that you specified will go through the virtual network gateway. Traffic has a destination IP located within the virtual network stays within the virtual network. Other traffic is sent through the load balancer to the public networks, or if forced tunneling is used, sent through the Azure VPN gateway. If you are troubleshooting, it's important to make sure that you have all the ranges listed in your Local Network that you want to send through the gateway. Verify that the Local Network address ranges do not overlap with any of the address ranges in the virtual network. Also, you want to verify that the DNS server you are using is resolving the name to the proper IP address.
+Nem. Csak az az adatforgalom fog áthaladni a virtuális hálózati átjárón, amely a virtuális hálózat Ön által meghatározott helyi hálózati IP-címtartományaiban található cél-IP-címmel rendelkezik. A virtuális hálózaton belüli cél-IP-címmel rendelkező adatforgalom a virtuális hálózaton belül marad. Az egyéb adatforgalom a terheléselosztón keresztül a nyilvános hálózatok felé lesz irányítva, vagy ha kényszerített bújtatást használ, akkor az Azure VPN Gatewayen megy keresztül. Ha hibaelhárítást végez, ügyeljen arra, hogy az összes tartomány fel legyen sorolva a helyi hálózatán, amelyet át szeretne küldeni az átjárón. Ellenőrizze, hogy a helyi hálózat címtartományai nincsenek-e átfedésben a virtuális hálózatban található címtartományok valamelyikével. Emellett ellenőrizze azt is, hogy a használt DNS-kiszolgáló a megfelelő IP-címre oldja-e fel a nevet.
 
 
-## Virtual Network FAQ
+## Virtual Network – gyakori kérdések
 
-You view additional virtual network information in the [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md).
+A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md) (Virtual Network – gyakori kérdések).
  
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

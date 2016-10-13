@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a record set and records for a DNS Zone using CLI| Microsoft Azure"
-   description="How to create host records for Azure DNS.Setting up record sets and records using CLI"
+   pageTitle="Rekordhalmaz és rekordok létrehozása egy DNS-zóna számára a parancssori felület használatával| Microsoft Azure"
+   description="Állomásrekordok létrehozása az Azure DNS számára. Rekordhalmazok és rekordok beállítása a parancssori felület használatával"
    services="dns"
    documentationCenter="na"
    authors="sdwheeler"
@@ -17,58 +17,58 @@
    ms.author="sewhee"/>
 
 
-# Create DNS record sets and records by using CLI
+# DNS-rekordhalmazok és -rekordok létrehozása a parancssori felület használatával
 
 > [AZURE.SELECTOR]
-- [Azure Portal](dns-getstarted-create-recordset-portal.md)
+- [Azure portál](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
 
-This article walks you through the process of creating records and records sets by using CLI. After creating your DNS zone, you need to add the DNS records for your domain. To do this, you first need to understand DNS records and record sets.
+Ez a cikk végigvezeti a rekordok és a rekordhalmazok parancssori felület használatával történő létrehozásának folyamatán. Miután létrehozta a DNS-zónát, fel kell vennie a tartomány DNS-rekordjait. Ehhez tisztában kell lennie a DNS-rekordok és a rekordhalmazok jelentésével.
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## Create a record set and record
+## Rekordhalmaz és rekord létrehozása
 
-In this section, we'll show you how to create a record set and records. In this example, you'll create a record set that has the relative name "www" in the DNS zone "contoso.com". The fully-qualified name of the records is "www.contoso.com". The record type is "A", and the time to live (TTL) is 60 seconds. After completing this step, you will have created an empty record set.
+Ebben a szakaszban egy rekordhalmaz és néhány rekord létrehozását mutatjuk be. A példában egy olyan rekordhalmazt hozunk létre, amely a „www” relatív névvel rendelkezik a „contoso.com” DNS-zónában. A rekordok teljesen minősített neve „www.contoso.com”. A rekordtípus „A”, az élettartam (TTL) pedig 60 másodperc. A lépés befejezése után egy üres rekordhalmaz fog a rendelkezésére állni.
 
-To create a record set in the apex of the zone (in this case, "contoso.com"), use the record name "@", including the quotation marks. This is a common DNS convention.
+Ha a zóna (ebben az esetben a „contoso.com”) legfelső pontján szeretne létrehozni egy rekordot, használja az "@" rekordnevet (az idézőjelekkel együtt). Ez a DNS-rendszerben általános egyezmény.
 
-### 1. Create a record set
+### 1. Rekordhalmaz létrehozása
 
-To create record set, use `azure network dns record-set create`. Specify the resource group, zone name, record set relative name, the record type, and the TTL. If the `--ttl` parameter is not defined, the value defaults to four (in seconds). After completing this step, you will have an empty "www" record set.
+Rekordhalmaz létrehozásához használja az `azure network dns record-set create` parancsot. Adja meg az erőforráscsoportot, a zóna nevét, a rekordhalmaz relatív nevét, a rekordtípust, valamint az élettartamot (TTL). Ha a `--ttl` paraméter nincs megadva, az alapértelmezett érték négy (másodpercben). A lépés befejezése után egy üres „www” rekordhalmaz fog a rendelkezésére állni.
 
-*Usage: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
+*Használat: network dns record-set create <erőforráscsoport> <dns-zóna-neve> <name> <type> <ttl>*
 
     azure network dns record-set create myresourcegroup  contoso.com  www A  60
 
-### 2. Add records
+### 2. Rekordok hozzáadása
 
-To use the newly created "www" record set, you need to add records to it. You add records to record sets by using `azure network dns record-set add-record`.
+Az újonnan létrehozott „www” rekordhalmaz használatához rekordokat kell hozzáadni. A rekordokat az `azure network dns record-set add-record` parancs használatával adhatja hozzá a rekordhalmazokhoz.
 
-The parameters for adding records to a record set vary depending on the type of the record set. For example, when using a record set of type "A", you will only be able to specify records with the parameter `-a <IPv4 address>`.
+A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Például az „A” típusú rekordhalmazok használata esetén csak az `-a <IPv4 address>` paraméterrel lehet megadni a paramétereket.
 
-You can add IPv4 *A* records to the "www" record set by using the following command:
+A „www” rekordhalmazhoz a következő paranccsal adhat hozzá *A* típusú IPv4-rekordokat:
 
-*Usage: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
+*Használat: network dns record-set add-record <erőforráscsoport> <dns-zóna-neve> <rekordhalmaz-neve> <type>*
 
     azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
 
-## Additional record type examples
+## További példák a rekordtípusokra
 
-The following examples show how to create a record set of each record type. Each record set contains a single record.
+Az alábbi példák azt mutatják be, hogy hogyan hozhatók létre a különböző rekordtípusú rekordhalmazok. Minden rekordhalmaz egyetlen rekordot tartalmaz.
 
 [AZURE.INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
 
-## Next steps
+## Következő lépések
 
-To manage your record set and records, see [Manage DNS records and record sets by using CLI](dns-operations-recordsets-portal.md).
+A rekordhalmaz és a rekordok kezelésével kapcsolatban tekintse meg [A DNS-rekordok és -rekordhalmazok kezelése a parancssori felület használatával](dns-operations-recordsets-portal.md) című cikket.
 
-For more information about Azure DNS, see the [Azure DNS Overview](dns-overview.md).
+Az Azure DNS szolgáltatással kapcsolatos további információért tekintse meg [Mi az Azure DNS?](dns-overview.md) című cikket.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

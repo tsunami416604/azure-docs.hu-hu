@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-**Előfeltételek:**
+## Előfeltételek
 
 - **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -39,18 +39,21 @@
     
     -  Windows rendszerű számítógépről – [Az SSH és a Linux-alapú HDInsight (Hadoop) együttes használata Windows rendszerről](hdinsight-hadoop-linux-use-ssh-windows.md).
 
->[AZURE.NOTE] Ez a cikk egy ARM-sablon segítségével hoz létre egy Spark-fürtöt, amely [Azure Storage-blobokat használ fürttárolóként](hdinsight-hadoop-use-blob-storage.md). Olyan Spark-fürt is létrehozható, amely az alapértelmezett tárolóként használt Azure Storage-blobok mellett az [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) szolgáltatást is használja további tárolóként. Útmutatás: [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) (HDInsight-fürt létrehozása a Data Lake Store-ral).
+>[AZURE.NOTE] Ez a cikk egy Azure Resource Manager-sablon segítségével hoz létre egy Spark-fürtöt, amely [Azure Storage-blobokat használ fürttárolóként](hdinsight-hadoop-use-blob-storage.md). Olyan Spark-fürt is létrehozható, amely az alapértelmezett tárolóként használt Azure Storage-blobok mellett az [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) szolgáltatást is használja további tárolóként. Útmutatás: [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) (HDInsight-fürt létrehozása a Data Lake Store-ral).
 
+### A hozzáférés-vezérlésre vonatkozó követelmények
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## Spark-fürt létrehozása
 
-Ebben a szakaszban 3.4-es verziójú (1.6.1-es Spark-verziójú) HDInsight-fürtöt hoz létre egy Azure ARM-sablon használatával. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+Ebben a szakaszban 3.4-es verziójú (1.6.1-es Spark-verziójú) HDInsight-fürtöt hoz létre egy Azure Resource Manager-sablonnal. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Az alábbi képre kattintva megnyithat egy ARM-sablont az Azure portálon.         
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon.         
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Az ARM-sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-spark-cluster-in-hdinsight.json*. 
+    A sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-spark-cluster-in-hdinsight.json*. 
    
 2. A Parameters (Paraméterek) panelen adja meg a következőket:
 
@@ -217,6 +220,6 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

@@ -20,12 +20,13 @@
 # Oktatóanyag: Folyamat létrehozása másolási tevékenységgel az Azure PowerShell használatával
 > [AZURE.SELECTOR]
 - [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 - [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
+
 
 Az oktatóanyag során létrehoz és felügyel egy Azure Data Factory-folyamatot egy másolási tevékenységgel Azure PowerShell parancsmagok használatával. Az oktatóanyag során létrehozott adat-előállító folyamata egy másolási tevékenység használatával adatokat másol egy Azure-blobból egy Azure SQL Database-adatbázisba.
 
@@ -465,6 +466,6 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
  
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

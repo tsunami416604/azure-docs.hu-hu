@@ -20,12 +20,13 @@
 # Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával
 > [AZURE.SELECTOR]
 - [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 - [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
+
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure-adat-előállítót a REST API segítségével. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
 
@@ -493,6 +494,6 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
  
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

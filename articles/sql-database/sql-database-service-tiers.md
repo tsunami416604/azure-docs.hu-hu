@@ -20,7 +20,7 @@
 
 # Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken
 
-Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. Mindegyik teljesítményszint egy növekvő erőforráskészletet nyújt az egyre növekvő adatátvitel kézbesítéséhez. Minden adatbázis a saját teljesítményszintjének megfelelő [szolgáltatásszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) kezelhető. Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, ahol közös erőforráskészlettel rendelkeznek. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-DTU.md) 
+Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. Mindegyik teljesítményszint egy növekvő erőforráskészletet nyújt az egyre növekvő adatátvitel kézbesítéséhez. Minden adatbázis a saját teljesítményszintjének megfelelő [szolgáltatásszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) kezelhető. Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, ahol közös erőforráskészlettel rendelkeznek. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-dtu.md) 
 
 A lehetséges szolgáltatásszintek mindkét esetben az **Alapszintű**, a **Standard** és a **Prémium**. A szolgáltatásszintek adatbázis-beállításai hasonlóak a különálló adatbázisok és a rugalmas készletek esetén, de a rugalmas készleteknél további szempontokat is figyelembe kell venni. Ez a cikk az önálló adatbázisok és a rugalmas készletek szolgáltatásszintjeinek részleteit ismerteti.
 
@@ -91,6 +91,6 @@ A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

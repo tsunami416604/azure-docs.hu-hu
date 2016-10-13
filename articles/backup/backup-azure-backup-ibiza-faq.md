@@ -24,11 +24,11 @@
 - [Backup GYIK klasszikus módhoz](backup-azure-backup-faq.md)
 - [Backup GYIK Resource Manager módhoz](backup-azure-backup-ibiza-faq.md)
 
-Ez a cikk a Recovery Services-tárolóra vonatkozó információkat tartalmaz, és az [Azure Backup GYIK](backup-azure-backup-faq) kiegészítéséül szolgál. Az Azure Backup GYIK tartalmazza az Azure Backup szolgáltatással kapcsolatos kérdéseket és válaszokat.  
+Ez a cikk a Recovery Services-tárolóra vonatkozó információkat tartalmaz, és az [Azure Backup GYIK](backup-azure-backup-faq.md) kiegészítéséül szolgál. Az Azure Backup GYIK tartalmazza az Azure Backup szolgáltatással kapcsolatos kérdéseket és válaszokat.  
 
 Az Azure Backup szolgáltatással kapcsolatban ezen vagy egy kapcsolódó cikk Disqus szakaszában tehet fel kérdéseket. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
-## Ha a Recovery Services-tárolók Resource Manager alapúak, a (klasszikus módú) Backup-tárolók támogatása megmarad? <br/>
+## A helyreállítási tárak a Resource Manageren alapulnak. A biztonsági mentési tárak (klasszikus módban) továbbra is támogatottak? <br/>
 Igen, a Backup tárolók még támogatottak. Backup tárolókat a [klasszikus portálon](https://manage.windowsazure.com) lehet létrehozni. Recovery Services-tárolókat az [Azure Portalon](https://portal.azure.com) lehet létrehozni. Határozottan javasolt azonban Recovery Services-tárolót létrehozni, mivel a jövőbeli fejlesztések csak Recovery Services-tárolókban lesznek elérhetők. 
 
 ## Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra? <br/>
@@ -46,6 +46,6 @@ A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 

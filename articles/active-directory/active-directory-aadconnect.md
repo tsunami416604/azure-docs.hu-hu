@@ -4,7 +4,7 @@
     keywords="az Azure AD Connect bemutatása, az Azure AD Connect áttekintése, mi az Azure AD Connect, az Active Directory telepítése"
     services="active-directory"
     documentationCenter=""
-    authors="andkjell"
+    authors="billmath"
     manager="femila"
     editor=""/>
 
@@ -14,8 +14,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="09/30/2016"
-    ms.author="andkjell;billmath"/>
+    ms.date="10/04/2016"
+    ms.author="billmath"/>
 
 
 # Helyszíni identitások integrálása az Azure Active Directoryval
@@ -24,7 +24,7 @@ Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Direct
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [AZURE.IMPORTANT] [Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Itt az ideje, hogy Azure AD Connectre frissítsen a Microsoft Azure Active Directory Sync (DirSync) vagy az Azure AD Sync eszközről, mivel ezek elavultak, és a támogatásuk 2017. április 13-ától megszűnik.](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Itt az ideje, hogy Azure AD Connectre frissítsen a Microsoft Azure Active Directory Sync (DirSync) vagy az Azure AD Sync eszközről, mivel ezek elavultak, és a támogatásuk 2017. április 13-ától megszűnik.](active-directory-aadconnect-dirsync-deprecated.md)
 
 ![Mi az az Azure AD Connect?](./media/active-directory-aadconnect/arch.png)
 
@@ -56,9 +56,9 @@ Az Azure AD Connect a [Microsoft letöltőközpontból](http://go.microsoft.com/
 Megoldás | Forgatókönyv
 ----- | ----- |
 Előkészületek – [Hardverkövetelmények és előfeltételek](active-directory-aadconnect-prerequisites.md) | <li>Az Azure AD Connect telepítése előtt végrehajtandó lépések.</li>
-[Gyorsbeállítások](active-directory-aadconnect-get-started-express.md) | <li>Ennek a lehetőségnek a használata akkor ajánlott, ha egyerdős AD-vel rendelkezik.</li> <li>Felhasználói bejelentkezés egyetlen jelszóval, jelszó-szinkronizálás segítségével.</li>
-[Testreszabott beállítások](active-directory-aadconnect-get-started-custom.md) | <li>Több erdő megléte esetén használatos. Számos helyszíni [topológiát](active-directory-aadconnect-topologies.md) támogat.</li> <li>Testre szabhatja a bejelentkezést, például ADFS-t állíthat be az összevonáshoz, vagy külső féltől származó identitásszolgáltatót használhat.</li> <li>Testre szabhatja a szinkronizálási funkciókat, például a szűrést és a visszaírást.</li>
-[Frissítés a DirSync szolgáltatásról](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>Akkor használatos, ha már rendelkezik működő DirSync-kiszolgálóval.</li>
+[Gyorsbeállítások](./aad-connect/active-directory-aadconnect-get-started-express.md) | <li>Ennek a lehetőségnek a használata akkor ajánlott, ha egyerdős AD-vel rendelkezik.</li> <li>Felhasználói bejelentkezés egyetlen jelszóval, jelszó-szinkronizálás segítségével.</li>
+[Testreszabott beállítások](./aad-connect/active-directory-aadconnect-get-started-custom.md) | <li>Több erdő megléte esetén használatos. Számos helyszíni [topológiát](active-directory-aadconnect-topologies.md) támogat.</li> <li>Testre szabhatja a bejelentkezést, például ADFS-t állíthat be az összevonáshoz, vagy külső féltől származó identitásszolgáltatót használhat.</li> <li>Testre szabhatja a szinkronizálási funkciókat, például a szűrést és a visszaírást.</li>
+[Frissítés a DirSync szolgáltatásról](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>Akkor használatos, ha már rendelkezik működő DirSync-kiszolgálóval.</li>
 [Frissítés Azure AD Sync-ről vagy Azure AD Connect-ről](active-directory-aadconnect-upgrade-previous-version.md)| <li>Igény szerint számos különböző módszer áll rendelkezésére.</li>
 
 
@@ -69,9 +69,9 @@ Előkészületek – [Hardverkövetelmények és előfeltételek](active-directo
 Témakör |  
 --------- | ---------
 Az Azure AD Connect letöltése | [Az Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771)
-Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](active-directory-aadconnect-get-started-express.md)
-Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](active-directory-aadconnect-get-started-custom.md)
-Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](./aad-connect/active-directory-aadconnect-get-started-express.md)
+Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](./aad-connect/active-directory-aadconnect-get-started-custom.md)
+Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)
 A telepítést követően | [A telepítés ellenőrzése és licencek hozzárendelése ](active-directory-aadconnect-whats-next.md)
 
 ### További információk az Azure AD Connect telepítésével kapcsolatban
@@ -82,7 +82,7 @@ Témakör |
 --------- | ---------
 Támogatott topológiák | [Azure AD Connect-topológiák](active-directory-aadconnect-topologies.md)
 Tervezési alapelvek | [Az Azure AD Connect tervezési alapelvei](active-directory-aadconnect-design-concepts.md)
-Telepítési fiókok | [További információk az Azure AD Connect hitelesítő adataival és engedélyeivel kapcsolatban](active-directory-aadconnect-accounts-permissions.md)
+Telepítési fiókok | [További információk az Azure AD Connect hitelesítő adataival és engedélyeivel kapcsolatban](./aad-connect/active-directory-aadconnect-accounts-permissions.md)
 Az üzemeltetés megtervezése | [Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok](active-directory-aadconnectsync-operations.md)
 A felhasználói bejelentkezés lehetőségei | [A felhasználói bejelentkezés lehetőségei az Azure AD Connectben](active-directory-aadconnect-user-signin.md)
 
@@ -167,6 +167,6 @@ Az Ignite 2015 bemutatója a helyszíni címtárak felhőbe történő kiterjesz
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

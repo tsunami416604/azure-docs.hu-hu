@@ -13,11 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/18/2016"
+    ms.date="09/30/2016"
     ms.author="curtand;jeffsta"/>
 
 
 # Egyéni tartománynév hozzáadása az Azure Active Directoryhoz
+
+> [AZURE.SELECTOR]
+- [Azure Portal](active-directory-domains-add-qzure-portal.md)
+- [klasszikus Azure portál](active-directory-add-domain.md)
 
 Üzleti tevékenysége során a vállalatok egy vagy több tartománynevet használnak, a felhasználók pedig vállalati tartománynév használatával jelentkeznek be a vállalati hálózatra. Mivel most már Azure Active Directoryt (Azure AD-t) használ, vállalata tartománynevét is felveheti az Azure AD-ba. Ezzel lehetővé válik, hogy olyan felhasználóneveket rendeljen a címtárhoz, amelyek a felhasználók számára is felismerhetők (például „alice@contoso.com”). A folyamat egyszerűen végrehajtható:
 
@@ -94,6 +98,6 @@ Ha a szervezete több tartománynevet használ (például: „contoso.com” és
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

@@ -241,6 +241,6 @@ Az alábbi lépésekkel hozhat létre társviszonyt egy klasszikus virtuális h�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

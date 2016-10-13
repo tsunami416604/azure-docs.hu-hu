@@ -133,6 +133,6 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

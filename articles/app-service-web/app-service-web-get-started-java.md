@@ -118,7 +118,7 @@ Amikor csak frissítésre van szüksége, csak töltse fel az új WAR-fájlt ugy
 
 ## Következő lépések
 
-[Java-webalkalmazás létrehozása egy Azure Marketplace-ről beszerzett sablonnal](app-service-web-java-get-started.md#marketplace). Beszerezheti a saját teljesen testreszabható Tomcat-tárolóját, és használhatja az ismerős kezelő felhasználói felületét. 
+[Java-webalkalmazás létrehozása egy Azure Marketplace-ről beszerzett sablonnal](web-sites-java-get-started.md#marketplace). Beszerezheti a saját teljesen testreszabható Tomcat-tárolóját, és használhatja az ismerős kezelő felhasználói felületét. 
 
 Az Azure-webalkalmazáson elvégezheti a hibakeresést közvetlenül az [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) vagy az [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md) használatával.
 
@@ -130,6 +130,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

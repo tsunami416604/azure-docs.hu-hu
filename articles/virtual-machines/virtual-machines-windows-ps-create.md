@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/07/2016"
+    ms.date="09/27/2016"
     ms.author="davidmu"/>
 
 
@@ -26,7 +26,7 @@ Egy virtuális gép létrehozásához a cikkben található összes lépést el 
 
 ## 1. lépés: Az Azure PowerShell telepítése
 
-Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és az Azure-fiókba való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
         
 ## 2. lépés: Erőforráscsoport létrehozása
 
@@ -36,7 +36,7 @@ Először is létre kell hoznia egy erőforráscsoportot.
 
         Get-AzureRmLocation | sort Location | Select Location
         
-    Ennek nagyjából a következőképpen kell kinéznie:
+    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
     
         Location
         --------
@@ -123,7 +123,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy bonyolultsági feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+    A jelszónak 12–123 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy kisbetűt, egy nagybetűt, egy számot és egy különleges karaktert. 
         
 2. Cserélje le a **$vmName** értéket a virtuális gép nevére. Hozza létre a változót és a virtuálisgép-konfigurációt.
 
@@ -147,7 +147,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. Cserélje le a **$blobPath** értéket annak a tárnak az elérési útjára és fájlnevére, amelyet a virtuális merevlemez használni fog. A virtuálismerevlemez-fájlt általában egy tároló tartalmazza, például a **vhds/WindowsVMosDisk.vhd**. Hozza létre a változókat.
+6. Cserélje le a **$blobPath** értéket a virtuális merevlemez tárának az elérési útjára és fájlnevére. A virtuálismerevlemez-fájlt általában egy tároló tartalmazza, például a **vhds/WindowsVMosDisk.vhd**. Hozza létre a változókat.
 
         $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
@@ -175,6 +175,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 
