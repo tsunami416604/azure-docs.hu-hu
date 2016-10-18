@@ -1,127 +1,128 @@
 <properties
-    pageTitle="Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását. | Stream Analytics"
-    description="IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és valós idejű adatfeldolgozással"
-    keywords="iot-megoldás, bevezetés az iot használatába"
+    pageTitle="Get started with Azure Stream Analytics to process data from IoT devices. | Microsoft Azure"
+    description="IoT sensor tags and data streams with stream analytics and real-time data processing"
+    keywords="iot solution, get started with iot"
     services="stream-analytics"
     documentationCenter=""
     authors="jeffstokes72"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"
 />
 
-<tags 
-    ms.service="stream-analytics" 
-    ms.devlang="na" 
-    ms.topic="hero-article" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="data-services" 
-    ms.date="08/11/2016"
+<tags
+    ms.service="stream-analytics"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="data-services"
+    ms.date="09/26/2016"
     ms.author="jeffstok"
 />
 
-# Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre streamfeldolgozó logikákat, és hogyan gyűjthet velük adatokat az eszközök internetes hálózatára kapcsolódó (IoT-) eszközökről. Egy valódi, az IoT-re épülő gyakorlati esettel fogjuk bemutatni, hogyan hozhat létre egy megoldást gyorsan és gazdaságosan.
+# <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Get started with Azure Stream Analytics to process data from IoT devices
 
-## Előfeltételek
+In this tutorial, you will learn how to create stream-processing logic to gather data from Internet of Things (IoT) devices. We will use a real-world, Internet of Things (IoT) use case to demonstrate how to build your solution quickly and economically.
 
--   [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/)
--   A mintalékérdezés és a mintaadatfájlok letölthetők a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot)
+## <a name="prerequisites"></a>Prerequisites
 
-## Forgatókönyv
+-   [Azure subscription](https://azure.microsoft.com/pricing/free-trial/)
+-   Sample query and data files downloadable from [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
 
-A Contoso egy vállalat az ipari automatizálás területén, amely teljesen automatizálta a gyártási folyamatait. A gyár gépeinek érzékelői valós idejű adatstreamek létrehozására képesek. Ebben a forgatókönyvben a termelési szint egyik igazgatója valós idejű elemzéseket szeretne kapni az érzékelők adataiból, hogy mintákat keressen bennük, és ezek alapján tegyen további lépéseket. Az érzékelők adatain a SAQL nyelvet (Stream Analytics Query Language) használjuk, hogy érdekes szabályszerűségeket keressünk a beérkező streamben.
+## <a name="scenario"></a>Scenario
 
-Itt az adatokat egy Texas Instrument Sensor Tag eszköz állítja elő.
+Contoso, which is a company in the industrial automation space, has completely automated its manufacturing process. The machinery in this plant has sensors that are capable of emitting streams of data in real time. In this scenario, a production floor manager wants to have real-time insights from the sensor data to look for patterns and take actions on them. We will use the Stream Analytics Query Language (SAQL) over the sensor data to find interesting patterns from the incoming stream of data.
 
-![Texas Instruments Sensor Tag](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-01.jpg)
+Here data is being generated from a Texas Instruments sensor tag device.
 
-A hasznos adatok JSON formátumban vannak, és a következőképpen néznek ki:
+![Texas Instruments sensor tag](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-01.jpg)
 
-    
+The payload of the data is in JSON format and looks like the following:
+
+
     {
         "time": "2016-01-26T20:47:53.0000000",  
         "dspl": "sensorE",  
         "temp": 123,  
         "hmdt": 34  
     }  
-    
-A valós forgatókönyvekben több száz ilyen érzékelő állíthat elő eseményeket streamként. Ideális esetben van egy átjáróeszköz, amely egy bizonyos kód futtatásával elküldi ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/) részére. A Stream Analytics-feladatok felhasználják az Event Hubs eseményeit, és a streameken valós idejű lekérdezéseket futtatnak. Ezután elküldheti az eredményeket az egyik [támogatott kimenetre](stream-analytics-define-outputs.md).
 
-A használat megkönnyítése érdekében ebben a Kezdeti lépések útmutatóban valódi SensorTag eszközökről származó mintaadatfájlokat adtunk meg, amelyeken különböző lekérdezéseket futtathat, és megtekintheti az eredményeiket. A következő útmutatókból megtudhatja, hogyan csatlakoztathatja a feladatait bemenetekhez és kimenetekhez, és hogyan helyezheti üzembe őket az Azure szolgáltatásban.
+In a real-world scenario, you could have hundreds of these sensors generating events as a stream. Ideally, a gateway device would run code to push these events to [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) or [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/). Your Stream Analytics job would ingest these events from Event Hubs and run real-time analytics queries against the streams. Then, you could send the results to one of the [supported outputs](stream-analytics-define-outputs.md).
 
-## Stream Analytics-feladat létrehozása
+For ease of use, this getting started guide provides a sample data file, which was captured from real sensor tag devices. You can run queries on the sample data and see results. In subsequent tutorials, you will learn how to connect your job to inputs and outputs and deploy them to the Azure service.
 
-Az [Azure Portalon](http://manage.windowsazure.com) válassza a Stream Analytics elemet, és a lap bal alsó sarkában található **„Új”** gombra kattintva hozzon létre egy új elemzési feladatot.
+## <a name="create-a-stream-analytics-job"></a>Create a Stream Analytics job
 
-![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
+1. In the [Azure portal](http://manage.windowsazure.com), click **STREAM ANALYTICS**, and then click **NEW** in the lower-left corner of the page to create a new analytics job.
 
-Kattintson a „**Gyors létrehozás**” gombra.
+    ![Create a new Stream Analytics job](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
-A **„Regional Monitoring Storage Account”** (Régió szerinti megfigyelési tárfiók) beállításnál válassza az **Új tárfiók létrehozása** lehetőséget, és adjon neki egy egyedi nevet. Az Azure Stream Analytics ezt a fiókot fogja használni a jövőbeli feladataiból származó megfigyelési információk tárolására.
+2. Click **QUICK CREATE**.
 
-> [AZURE.NOTE] Régiónként csak egyszer hozza létre ezt a tárfiókot, és ez a tároló az adott régióban létrehozott összes Stream Analytics-feladat között meg lesz osztva.
+3. For the **REGIONAL MONITORING STORAGE ACCOUNT** setting, click **CREATE NEW STORAGE ACCOUNT**, and give it a unique name. Azure Stream Analytics will use this account to store monitoring information for all your future jobs.
 
-Kattintson az oldal alján lévő „**Stream Analytics-feladat létrehozása**” elemre.
+    > [AZURE.NOTE] You should create this storage account only once per region. This storage will be shared across all Stream Analytics jobs that are created in that region.
 
-![Tárfiók konfigurálása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
+4. Click **CREATE STREAM ANALYTICS JOB** at the bottom of the page.
 
-## Azure Stream Analytics-lekérdezés
+    ![Storage account configuration](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
 
-A Lekérdezés fülre kattintva lépjen a Lekérdezésszerkesztőhöz. A Lekérdezés lap egy olyan T-SQL-lekérdezést tartalmaz, amely végrehajtja az átalakítást a beérkező eseményadatokon.
+## <a name="azure-stream-analytics-query"></a>Azure Stream Analytics query
 
-## Nyers adatok archiválása
+Click the **QUERY** tab to go to the Query Editor. The **QUERY** tab contains a T-SQL query that performs the transformation over the incoming event data.
 
-A lekérdezések legegyszerűbb formája az áthaladás, amely a kijelölt kimeneten archiválja az összes bemeneti adatot.
+## <a name="archive-your-raw-data"></a>Archive your raw data
 
-![Feladatlekérdezés archiválása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+The simplest form of query is a pass-through query that archives all input data to its designated output.
 
-Most töltse le a számítógépére a mintaadatfájlokat a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot). Másolja és illessze be a lekérdezést a **PassThrough.txt** fájlból. Kattintson az alsó Teszt gombra, és válassza ki a letöltés helyéről a **HelloWorldASA-InputStream.json** nevű fájlt.
+![Archive job query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-![Teszt gomb a Stream Analytics szolgáltatásban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+Now, download the sample data file from [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) to a location on your computer. Paste the query from the PassThrough.txt file. Click the **Test** button, and then select the HelloWorldASA-InputStream.json data file from your downloaded location.
 
-![Teszt bemeneti stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+![Test button in Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-A lekérdezés eredményeit az alábbi tallózóban láthatja.
+![Test input stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 
-![Teszteredmények](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+You can see the results of the query in the browser as shown in the following screenshot.
 
-## Adatok szűrése feltétel alapján
+![Test results](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
-Próbáljuk meg egy feltétel alapján szűrni az eredményeket. Azt szeretnénk, ha az eredmények között csak a „SensorA” érzékelőből érkező események jelenjenek meg. A lekérdezés a **Filtering.txt** fájlban található.
+## <a name="filter-the-data-based-on-a-condition"></a>Filter the data based on a condition
 
-![adatstream szűrése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
+Let’s try to filter the results based on a condition. We would like to show results for only those events that come from “sensorA.” The query is in the Filtering.txt file.
 
-Vegye figyelembe, hogy jelen esetben egy karakterláncértéket hasonlítunk össze, amely megkülönbözteti a kis- és nagybetűket. A lekérdezés végrehajtásához kattintson az **Ismétlés** gombra. A lekérdezésnek csak 389 sort kell visszaadnia az 1860 eseményből.
+![Filtering a data stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-![Második kimeneti eredmény a lekérdezéstesztelésből](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
+Note that the case-sensitive query compares a string value. Click the **Rerun** button to execute the query. The query should return 389 rows out of 1860 events.
 
-## Riasztás az üzleti munkafolyamat elindítására
+![Second output results from query test](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
-Most részletesebbé tesszük a lekérdezést. Ha az átlaghőmérsékletet 30 másodperces időközönként szeretnénk mérni, és csak akkor szeretnénk eredményeket megjeleníteni, ha az átlaghőmérséklet meghaladja a 100 fokot, akkor minden érzékelőtípus esetében leírjuk az alábbi lekérdezést, majd az **Ismétlés** gombra kattintva megjelenítjük az eredményeket. A lekérdezés a **ThresholdAlerting.txt** fájlban található.
+## <a name="alert-to-trigger-a-business-workflow"></a>Alert to trigger a business workflow
 
-![30 másodperces szűrőlekérdezés](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
+Let's make our query more detailed. For every type of sensor, we want to monitor average temperature per 30-second window and display results only if the average temperature is above 100 degrees. We will write the following query and then click **Rerun** to see the results. The query is in the ThresholdAlerting.txt file.
 
-Látható, hogy az eredmények most csak 245 sorban jelenítik meg azokat az érzékelőket, amelyeknél az átlaghőmérséklet nagyobb 100 foknál. Ebben a lekérdezésben az események streamjét a **dspl** szerint csoportosítottuk, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. Az ilyen jellegű időalapú lekérdezések esetében elengedhetetlen az időköz megadása. A **TIMESTAMP BY** záradékkal az „idő” oszlopot adtuk meg, amely minden időalapú számításhoz megadja az időközt. Részletes információkat az [időkezelést](https://msdn.microsoft.com/library/azure/mt582045.aspx) és az [ablakkezelési függvényeket](https://msdn.microsoft.com/library/azure/dn835019.aspx) ismertető MSDN-témakörökben talál.
+![30-second filter query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-![Hőmérséklet 100 fok felett](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
+You should now see results that contain only 245 rows and names of sensors where the average temperate is greater than 100. This query groups the stream of events by **dspl**, which is the sensor name, over a **Tumbling Window** of 30 seconds. Temporal queries must state how we want time to progress. By using the **TIMESTAMP BY** clause, we have specified the **OUTPUTTIME** column to associate times with all temporal calculations. For detailed information, read the MSDN articles about [Time Management](https://msdn.microsoft.com/library/azure/mt582045.aspx) and [Windowing functions](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
-## Események hiányának észlelése
+![Temp over 100](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Hogyan írható olyan lekérdezés, amely a bemeneti események hiányát keresi? Ez viszonylag egyszerűen megtehető. Keressük meg a legutóbbi esetet, amikor az érzékelő adatokat küldött, majd a következő percben egyáltalán nem küldött ki eseményt. A lekérdezés az **AbsenseOfEvent.txt** fájlban található.
+## <a name="detect-absence-of-events"></a>Detect absence of events
 
-![Események hiányának észlelése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
+How can we write a query to find a lack of input events? Let’s find the last time that a sensor sent data and then did not send events for the next minute. The query is in the AbsenseOfEvent.txt file.
 
-Itt egy **BAL OLDALI KÜLSŐ ILLESZTÉST** alkalmazunk ugyanarra az adatstreamre (önillesztés). Belső illesztés esetén csak akkor kapunk eredményt, ha van egyezés.  **BAL OLDALI KÜLSŐ** illesztés esetében azonban, ha az illesztés bal oldalán lévő eseményhez nincs egyezés, akkor a rendszer olyan oszlopot ad vissza, amely a jobb oldali sor összes oszlopában NULL értéket tartalmaz. Ez a módszer nagyon hasznos, ha események hiányára kíván rákeresni. Az [ILLESZTÉS](https://msdn.microsoft.com/library/azure/dn835026.aspx) részleteit az MSDN-dokumentációnkban találja.
+![Detect absence of events](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
 
-![eredmények illesztése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
+Here we use a **LEFT OUTER** join to the same data stream (self-join). For an **INNER** join, a result is returned only when a match is found.  For a **LEFT OUTER** join, if an event from the left side of the join is unmatched, a row that has NULL for all the columns of the right side is returned. This technique is very useful to find an absence of events. See our MSDN documentation for more information about [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx).
 
-## Összegzés
+![Join results](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
 
-A jelen oktatóanyag célja annak bemutatása, hogy hogyan lehet Stream Analytics lekérdezési nyelven különböző lekérdezéseket írni, és az eredményeket megjeleníteni a képernyőn. Ezek azonban csak az első lépések. A Stream Analytics rengeteg lehetőséget rejt még magában. A Stream Analytics számos bemenetet és kimenetet támogat, és még az Azure Machine Learning függvényeinek előnyeit is ki tudja használni, ami az adatstreamek elemzésének hatékony eszközévé teszi. A [Tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) segítségével részletesebben megismerheti a Stream Analyticset, a lekérdezések írásáról pedig további információkat olvashat a [Gyakori lekérdezési minták](./stream-analytics-stream-analytics-query-patterns.md) című cikkben.
+## <a name="conclusion"></a>Conclusion
+
+The purpose of this tutorial is to demonstrate how to write different Stream Analytics Query Language queries and see results in the browser. However, this is just getting started. You can do so much more with Stream Analytics. Stream Analytics supports a variety of inputs and outputs and can even use functions in Azure Machine Learning to make it a robust tool for analyzing data streams. You can start to explore more about Stream Analytics by using our [learning map](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). For more information about how to write queries, read the article about [common query patterns](./stream-analytics-stream-analytics-query-patterns.md).
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 
