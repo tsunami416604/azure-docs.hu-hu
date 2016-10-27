@@ -1,14 +1,14 @@
 <properties
     pageTitle="A Service Bus üzenetkezelésének áttekintése | Microsoft Azure"
     description="Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="multiple"
@@ -18,7 +18,7 @@
 
 
 
-# Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben
+# <a name="service-bus-messaging:-flexible-data-delivery-in-the-cloud"></a>Service Bus üzenetkezelés: rugalmas adattovábbítás a felhőben
 
 A Microsoft Azure Service Bus egy megbízható információkézbesítési szolgáltatás. A szolgáltatás célja a kommunikáció megkönnyítése. Ha két vagy több fél információt szeretne cserélni, kommunikációs mechanizmusra van szükségük. A Service Bus egy közvetítő- vagy harmadikfél-alapú kommunikációs módszer. Hasonló a fizikai világ postai szolgáltatásaihoz. A postai szolgáltatások számos kézbesítési garanciával könnyítik meg különböző fajta levelek és csomagok küldését a világ minden táján.
 
@@ -28,7 +28,7 @@ Az üzenet küldője számos különböző továbbítási jellemzőt igényelhet
 
 A Service Bus két különböző üzenetkezelési mintát támogat: a *Relay* továbbítón keresztüli üzenetcserét és a *közvetítőalapú üzenettovábbítást*.
 
-## Service Bus Relay
+## <a name="service-bus-relay"></a>Service Bus Relay
 
 A Service Bus [Relay](../service-bus-relay/service-bus-relay-overview.md) összetevője egy központosított (de erősen elosztott terhelésű) szolgáltatás, amely számos különböző átviteli protokollt és webszolgáltatási szabványt támogat. Ezek közé tartozik például a SOAP, a WS-* és a REST is. A [továbbítási szolgáltatás](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) számos különböző továbbítási kapcsolati lehetőséget biztosít, és segít a közvetlen társközi kapcsolatok egyeztetésében, ha lehetséges. A Service Bus a teljesítmény és a használhatóság tekintetében a Windows Communication Foundation (WCF) szolgáltatást használó .NET-fejlesztők számára van optimalizálva, másrészt teljes hozzáférést biztosít a továbbítási szolgáltatáshoz a SOAP és a REST felületeken keresztül. Ez lehetővé teszi bármely SOAP vagy REST programozási környezet integrálását a Service Busba.
 
@@ -38,7 +38,7 @@ A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdemé
 
 A Service Bus Relay használatával történő üzenetcsere számos előnnyel jár, de elengedhetetlen hozzá, hogy a kiszolgáló és az ügyfél egyszerre legyen online állapotban, hogy küldeni és fogadni lehessen az üzeneteket. Ez nem optimális a HTTP-stílusú kommunikáció esetén, ahol a kérelmek jellemzően nem hosszú életűek, illetve az olyan ügyfelek számára sem, akik csak alkalmanként csatlakoznak (például böngészők, mobilalkalmazások stb.). A közvetítőalapú üzenettovábbítás támogatja a leválasztott kommunikációt, és megvannak a saját előnyei; az ügyfelek és a kiszolgálók akkor csatlakozhatnak, amikor szükséges, és a műveleteket aszinkron módon hajthatják végre.
 
-## Közvetítőalapú üzenettovábbítás
+## <a name="brokered-messaging"></a>Közvetítőalapú üzenettovábbítás
 
 A továbbítón keresztüli üzenetcsere sémájával szemben a [közvetítőalapú üzenettovábbítás](service-bus-queues-topics-subscriptions.md) tekinthető aszinkronnak vagy átmenetileg leválasztottnak. Az adatalkotóknak (küldőknek) és a fogyasztóknak (fogadóknak) nem kell egyszerre online lenniük. Az üzenetküldési infrastruktúra megbízhatóan tárolja az üzeneteket egy közvetítőben (például várólistán), amíg a fogyasztó fél készen nem áll a fogadásukra. Ez lehetővé teszi az elosztott alkalmazás összetevőinek leválasztását, akár önkéntesen – például karbantartási céllal –, akár egy összetevő összeomlása miatt, anélkül, hogy ez az egész rendszerre hatással lenne. A fogadó alkalmazásnak továbbá csak a nap bizonyos szakaszaiban kell online lennie, például egy olyan készletkezelő rendszer esetén, amelynek csak a munkanapok végén kell futnia.
 
@@ -46,19 +46,18 @@ A Service Bus közvetítő alapú üzenettovábbítás infrastruktúrájának al
 
 Akárcsak a Relay-infrastruktúra esetén, a közvetítőalapú üzenettovábbítás képessége is elérhető a WCF és .NET-keretrendszer programozói számára, valamint REST-en keresztül is.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-- [Service Bus fundamentals (A Service Bus alapjai)](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
-- [Service Bus-architektúra](../service-bus/service-bus-architecture.md)
-- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-get-started-with-queues.md)
-- [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
+- [A Service Bus-üzenetsorok használata](service-bus-dotnet-get-started-with-queues.md)
+- [A Service Bus-üzenettémakörök és -előfizetések használata](./service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

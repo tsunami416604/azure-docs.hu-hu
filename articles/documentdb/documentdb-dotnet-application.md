@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="ASP.NET MVC tutorial for DocumentDB: Web Application Development | Microsoft Azure" 
-    description="ASP.NET MVC tutorial to create an MVC web application using DocumentDB. You'll store JSON and access data from a todo app hosted on Azure Websites - ASP NET MVC tutorial step by step." 
-    keywords="asp.net mvc tutorial, web application development, mvc web application, asp net mvc tutorial step by step"
+    pageTitle="ASP.NET MVC oktatóprogram a DocumentDB szolgáltatáshoz: webalkalmazás-fejlesztés | Microsoft Azure" 
+    description="ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához a DocumentDB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre." 
+    keywords="asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag"
     services="documentdb" 
     documentationCenter=".net" 
-    authors="AndrewHoh" 
+    authors="syamkmsft" 
     manager="jhubbard" 
     editor="cgronlun"/>
 
@@ -16,10 +16,10 @@
     ms.devlang="dotnet" 
     ms.topic="hero-article" 
     ms.date="08/25/2016" 
-    ms.author="anhoh"/>
+    ms.author="syamk"/>
 
 
-# <a name="_Toc395809351"></a>ASP.NET MVC Tutorial: Web application development with DocumentDB
+# <a name="<a-name="_toc395809351"></a>asp.net-mvc-tutorial:-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -27,127 +27,127 @@
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md) 
 
-To highlight how you can efficiently leverage Azure DocumentDB to store and query JSON documents, this article provides an end-to-end walk-through showing you how to build a todo app using Azure DocumentDB. The tasks will be stored as JSON documents in Azure DocumentDB.
+Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure DocumentDB eszközzel, és ezáltal hogyan teheti hatékonnyá a JSON-dokumentumok tárolását és lekérdezését. A feladatok JSON-dokumentumokként lesznek tárolva az Azure DocumentDB-ben.
 
-![Screen shot of the todo list MVC web application created by this tutorial - ASP NET MVC tutorial step by step](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image1.png)
+![Az oktatóprogram során létrehozott teendőlista-kezelő MVC webalkalmazás képernyőfelvétele – ASP NET MVC oktatóprogram lépésről lépésre](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image1.png)
 
-This walk-through shows you how to use the DocumentDB service provided by Azure to store and access data from an ASP.NET MVC web application hosted on Azure. If you're looking for a tutorial that focuses only on DocumentDB, and not the ASP.NET MVC components, see [Build a DocumentDB C# console application](documentdb-get-started.md).
+Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított DocumentDB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak a DocumentDB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [DocumentDB C# konzolalkalmazás felépítése](documentdb-get-started.md).
 
-> [AZURE.TIP] This tutorial assumes that you have prior experience using ASP.NET MVC and Azure Websites. If you are new to ASP.NET or the [prerequisite tools](#_Toc395637760), we recommend downloading the complete sample project from [GitHub][] and following the instructions in this sample. Once you have it built, you can review this article to gain insight on the code in the context of the project.
+> [AZURE.TIP] Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHub][] és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
 
-## <a name="_Toc395637760"></a>Prerequisites for this database tutorial
+## <a name="<a-name="_toc395637760"></a>prerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>Az adatbázis-oktatóanyag előfeltételei
 
-Before following the instructions in this article, you should ensure that you have the following:
+A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
-- An active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2015](http://www.visualstudio.com/) or Visual Studio 2013 Update 4 or higher. If using Visual Studio 2013, you will need to install the [Microsoft.Net.Compilers nuget package](https://www.nuget.org/packages/Microsoft.Net.Compilers/) to add support for C# 6.0. 
-- Azure SDK for .NET version 2.5.1 or higher, available through the [Microsoft Web Platform Installer][].
+- Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+- [Visual Studio 2015](http://www.visualstudio.com/) vagy Visual Studio 2013 Update 4 vagy újabb verzió. Ha Visual Studio 2013-at használ, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/) a C# 6.0 támogatásához. 
+- Azure SDK for .NET 2.5.1-es vagy újabb verzió, amely a [Microsoft Webplatform-telepítőn][] keresztül érhető el.
 
-All the screen shots in this article have been taken using Visual Studio 2013 with Update 4 applied and the Azure SDK for .NET version 2.5.1. If your system is configured with different versions it is possible that your screens and options won't match entirely, but if you meet the above prerequisites this solution should work.
+A jelen cikk összes képernyőfelvétele az Update 4-es verzióval ellátott Visual Studio 2013 programmal és az Azure SDK for .NET 2.5.1-es verzióval készült. Ha a rendszere más verziókkal van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
-## <a name="_Toc395637761"></a>Step 1: Create a DocumentDB database account
+## <a name="<a-name="_toc395637761"></a>step-1:-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 
-Let's start by creating a DocumentDB account. If you already have an account, you can skip to [Create a new ASP.NET MVC application](#_Toc395637762).
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
 <br/>
-We will now walk through how to create a new ASP.NET MVC application from the ground-up. 
+Most végigvezetjük azon, hogyan hozhat létre új ASP.NET MVC alkalmazást az alapoktól. 
 
-## <a name="_Toc395637762"></a>Step 2: Create a new ASP.NET MVC application
+## <a name="<a-name="_toc395637762"></a>step-2:-create-a-new-asp.net-mvc-application"></a><a name="_Toc395637762"></a>2. lépés: Új ASP.NET MVC alkalmazás létrehozása
 
-Now that you have an account, let's create our new ASP.NET project.
+Most, hogy már rendelkezik fiókkal, hozzuk létre az új ASP.NET projektet.
 
-1. In Visual Studio, on the **File** menu, point to **New**, and then click **Project**.
+1. A Visual Studio programban, a **File** (Fájl) menüben mutasson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 
-    The **New Project** dialog box appears.
-2. In the **Project types** pane, expand **Templates**, **Visual C#**, **Web**, and then select **ASP.NET Web Application**.
+    Megjelenik a **New project** (Új projekt) párbeszédpanel.
+2. A **Project types** (Projekttípusok) panelen bontsa ki a **Templates** (Sablonok), **Visual C#**, **Web** elemeket, majd válassza az **ASP.NET Web Application** (ASP.NET webalkalmazás) elemet.
 
-    ![Screen shot of the New Project dialog box with the ASP.NET Web Application project type highlighted](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image10.png)
+    ![Képernyőfelvétel a New Project (Új projekt) párbeszédpanelről, ahol az ASP.NET webalkalmazás projekttípus van kijelölve](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image10.png)
 
-3. In the **Name** box, type the name of the project. This tutorial uses the name "todo". If you choose to use something other than this, then wherever this tutorial talks about the todo namespace, you need to adjust the provided code samples to use whatever you named your application. 
+3. A **Name** (Név) szövegmezőbe írja be a projekt nevét. Ez az oktatóprogram a „todo” (teendők) nevet használja. Ha más nevet választ, akkor amikor az oktatóprogram a „todo” (teendők) névteréről beszél, akkor a megadott kódmintákat úgy kell módosítania, hogy az alkalmazás tényleges nevét használja. 
 
-4. Click **Browse** to navigate to the folder where you would like to create the project, and then click **OK**.
+4. Kattintson a **Browse** (Böngészés) gombra azon mappa megkereséséhez, ahol létre szeretné hozni a projektet, majd kattintson az **OK** gombra.
 
-    The **New ASP.NET Project** dialog box appears.
+    Megjelenik a **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel.
 
-    ![Screen shot of the New ASP.NET Project dialog box with the MVC application template highlighted and the Host in the cloud box checked](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image11.png)
+    ![Képernyőfelvétel a New ASP.NET Project (Új ASP.NET projekt) párbeszédpanelről, ahol az MVC alkalmazássablon van kiemelve, és be van jelölve a Host in the cloud (Üzemeltetés a felhőben) jelölőnégyzet](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image11.png)
 
-5. In the templates pane, select **MVC**.
+5. A sablonok panelén válassza az **MVC** elemet.
 
-6. If you plan on hosting your application in Azure then select **Host in the cloud** on the lower right to have Azure host the application. We've selected to host in the cloud, and to run the application hosted in an Azure Website. Selecting this option will preprovision an Azure Website for you and make life a lot easier when it comes time to deploy the final working application. If you want to host this elsewhere or don't want to configure Azure upfront, then just clear **Host in the Cloud**.
+6. Ha az Azure rendszeren szeretné üzemeltetni az alkalmazást, jelölje be a bal alsó részen lévő **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget. Kiválasztottuk, hogy a felhőben üzemeltessük és egy Azure-webhelyről futtassuk az alkalmazást. Ezen lehetőség kiválasztásával egy Azure-webhelyet kap, és sokkal könnyebb lesz a dolga, amikor üzembe kell helyeznie a végleges, működő alkalmazást. Ha ezt máshol szeretné üzemeltetni vagy nem szeretné előre konfigurálni az Azure rendszert, akkor egyszerűen törölje a **Host in the Cloud** (Üzemeltetés a felhőben) lehetőséget.
 
-7. Click **OK** and let Visual Studio do its thing around scaffolding the empty ASP.NET MVC template. 
+7. Kattintson az **OK** gombra, és várja meg, hogy a Visual Studio kialakítsa a szerkezetet az üres ASP.NET MVC sablonban. 
 
-8. If you chose to host this in the cloud you will see at least one additional screen asking you to login to your Azure account and provide some values for your new website. Supply all the additional values and continue. 
+8. Ha úgy döntött, hogy ezt a felhőben üzemelteti, legalább egy további képernyőt lát, amely megkéri, hogy jelentkezzen be az Azure-fiókjába és adjon meg néhány értéket az új webhelyhez. Adja meg az összes további értéket, és folytassa. 
 
-    I haven't chosen a "Database server" here because we're not using an Azure SQL Database Server here, we're going to be creating a new Azure DocumentDB account later on in the Azure Portal.
+    Itt nem választottam „Adatbázis-kiszolgálót”, mert itt nem Azure SQL adatbázis-kiszolgálót használunk, hanem később hozunk létre új Azure DocumentDB-fiókot az Azure-portálon.
 
-    For more information about choosing an **App Service plan** and **Resource group**, see [Azure App Service plans in-depth overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+    Az **App Service-csomagok** és az **Erőforráscsoportok** kiválasztásáról további információért lásd: [Az Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-    ![Screen shot of the Configure Microsoft Azure Website dialog box](./media/documentdb-dotnet-application/image11_1.png)
+    ![A Configure Microsoft Azure Website (Microsoft Azure webhely konfigurálása) párbeszédpanel képernyőfelvétele](./media/documentdb-dotnet-application/image11_1.png)
 
-9. Once Visual Studio has finished creating the boilerplate MVC application you have an empty ASP.NET application that you can run locally.
+9. Ha a Visual Studio befejezte a sablonszöveges MVC alkalmazás létrehozását, egy üres ASP.NET alkalmazást kap, amelyet helyileg futtathat.
 
-    We'll skip running the project locally because I'm sure we've all seen the ASP.NET "Hello World" application. Let's go straight to adding DocumentDB to this project and building our application.
+    Kihagyjuk a projekt helyi futtatását, mert biztosan mindannyian láttuk az ASP.NET „Hello World” alkalmazást. Ugorjunk közvetlenül a DocumentDB ezen projekthez való hozzáadására és az alkalmazás felépítésére.
 
-## <a name="_Toc395637767"></a>Step 3: Add DocumentDB to your MVC web application project
+## <a name="<a-name="_toc395637767"></a>step-3:-add-documentdb-to-your-mvc-web-application-project"></a><a name="_Toc395637767"></a>3. lépés: DocumentDB hozzáadása az MVC webalkalmazás projekthez
 
-Now that we have most of the ASP.NET MVC plumbing that we need for this solution, let's get to the real purpose of this tutorial, adding Azure DocumentDB to our MVC web application.
+Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy részével, folytassuk az oktatóprogram valódi céljával, amely az Azure DocumentDB MVC webalkalmazáshoz adása.
 
-1. The DocumentDB .NET SDK is packaged and distributed as a NuGet package. To get the NuGet package in Visual Studio, use the NuGet package manager in Visual Studio by right-clicking on the project in **Solution Explorer** and then clicking **Manage NuGet Packages**.
+1. A DocumentDB .NET SDK NuGet-csomagként van csomagolva és elosztva. A Visual Studióban a NuGet-csomag beszerzéséhez használja a Visual Studio NuGet-csomagkezelőjét. Ehhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
 
-    ![Sreen shot of the right-click options for the web application project in Solution Explorer, with Manage NuGet Packages highlighted.](./media/documentdb-dotnet-application/image21.png)
+    ![A Megoldáskezelőben a webalkalmazás projekt helyi menüjének képernyőfelvétele, ahol a Manage NuGet Packages (NuGet-csomagok kezelése) parancs van kiemelve.](./media/documentdb-dotnet-application/image21.png)
 
-    The **Manage NuGet Packages** dialog box appears.
+    Megjelenik a **Manage NuGet Packages** (NuGet-csomagok kezelése) párbeszédpanel.
 
-2. In the NuGet **Browse** box, type ***Azure DocumentDB***.
+2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure DocumentDB*** szöveget.
     
-    From the results, install the **Microsoft Azure DocumentDB Client Library** package. This will download and install the DocumentDB package as well as all dependencies, like Newtonsoft.Json. Click **OK** in the **Preview** window, and **I Accept** in the **License Acceptance** window to complete the install.
+    Az eredmények közül telepítse a **Microsoft Azure DocumentDB Client Library** csomagot. Ez letölti és telepíti a DocumentDB-csomagot, valamint az összes függőségét, például a Newtonsoft.Json elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
 
-    ![Sreen shot of the Manage NuGet Packages window, with the Microsoft Azure DocumentDB Client Library highlighted](./media/documentdb-dotnet-application/nuget.png)
+    ![A Manage NuGet Packages (NuGet-csomagok kezelése) ablak képernyőfelvétele, ahol a Microsoft Azure DocumentDB Client Library elem van kiemelve](./media/documentdb-dotnet-application/nuget.png)
 
-    Alternatively you can use the Package Manager Console to install the package. To do so, on the **Tools** menu, click **NuGet Package Manager**, and then click **Package Manager Console**. At the prompt, type the following.
+    A Csomagkezelő konzollal is telepítheti a csomagot. Ehhez a **Tools** (Eszközök) menüben kattintson a **NuGet Package Manager** (NuGet-csomagkezelő) elemre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre. A parancssorba írja be a következőt.
 
         Install-Package Microsoft.Azure.DocumentDB
 
-3. Once the package is installed, your Visual Studio solution should resemble the following with two new references added, Microsoft.Azure.Documents.Client and Newtonsoft.Json.
+3. A csomag telepítése után a Visual Studio megoldásnak a következőre kell hasonlítania két hozzáadott hivatkozással: Microsoft.Azure.Documents.Client és Newtonsoft.Json.
 
-    ![Sreen shot of the two references added to the JSON data project in Solution Explorer](./media/documentdb-dotnet-application/image22.png)
+    ![A Megoldáskezelőben a JSON adatprojekthez adott két hivatkozás képernyőfelvétele](./media/documentdb-dotnet-application/image22.png)
 
 
-##<a name="_Toc395637763"></a>Step 4: Set up the ASP.NET MVC application
+##<a name="<a-name="_toc395637763"></a>step-4:-set-up-the-asp.net-mvc-application"></a><a name="_Toc395637763"></a>4. lépés: Az ASP.NET MVC alkalmazás beállítása
  
-Now let's add the models, views, and controllers to this MVC application:
+Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC alkalmazáshoz:
 
-- [Add a model](#_Toc395637764).
-- [Add a controller](#_Toc395637765).
-- [Add views](#_Toc395637766).
+- [Modell hozzáadása](#_Toc395637764).
+- [Vezérlő hozzáadása](#_Toc395637765).
+- [Nézetek hozzáadása](#_Toc395637766).
 
 
-### <a name="_Toc395637764"></a>Add a JSON data model
+### <a name="<a-name="_toc395637764"></a>add-a-json-data-model"></a><a name="_Toc395637764"></a>JSON adatmodell hozzáadása
 
-Let's begin by creating the **M** in MVC, the model. 
+Először hozzuk létre az **M-et** az MVC-ből, a modellt. 
 
-1. In **Solution Explorer**, right-click the **Models** folder, click **Add**, and then click **Class**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a **Models** (Modellek) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra.
 
-    The **Add New Item** dialog box appears.
+    Megjelenik az **Add New Item** (Új elem hozzáadása) párbeszédpanel.
 
-2. Name your new class **Item.cs** and click **Add**. 
+2. Adja az új osztálynak az **Item.cs** nevet, és kattintson az **Add** (Hozzáadás) gombra. 
 
-3. In this new **Item.cs** file, add the following after the last *using statement*.
+3. Ebben az új **Item.cs** fájlban adja hozzá a következőket az utolsó *használati utasítás* után.
         
         using Newtonsoft.Json;
     
-4. Now replace this code 
+4. Most cserélje le ezt a kódot 
         
         public class Item
         {
         }
 
-    with the following code.
+    a következő kóddal.
 
         public class Item
         {
@@ -164,106 +164,106 @@ Let's begin by creating the **M** in MVC, the model.
             public bool Completed { get; set; }
         }
 
-    All data in DocumentDB is passed over the wire and stored as JSON. To control the way your objects are serialized/deserialized by JSON.NET you can use the **JsonProperty** attribute as demonstrated in the **Item** class we just created. You don't **have** to do this but I want to ensure that my properties follow the JSON camelCase naming conventions. 
+    A DocumentDB összes adata átkerül a hálózaton keresztül, és JSON-fájlként lesz tárolva. Az objektumok JSON.NET általi szerializálási/deszerializálási módjának beállításához használhatja a **JsonProperty** attribútumot, ahogyan az az imént létrehozott **Item** (Elem) osztályban látható. Nem **kell** ezt csinálnia, de biztosítani szeretném, hogy a tulajdonságaim követik a JSON camelCase elnevezési konvenciókat. 
     
-    Not only can you control the format of the property name when it goes into JSON, but you can entirely rename your .NET properties like I did with the **Description** property. 
+    Nem csak a tulajdonságnév formátumát vezérelheti, amikor a JSON-ba kerül, hanem teljesen át is nevezheti a .NET tulajdonságokat, mint ahogyan a **Description** (Leírás) tulajdonsággal tettem. 
     
 
-### <a name="_Toc395637765"></a>Add a controller
+### <a name="<a-name="_toc395637765"></a>add-a-controller"></a><a name="_Toc395637765"></a>Vezérlő hozzáadása
 
-That takes care of the **M**, now let's create the **C** in MVC, a controller class.
+Ezzel megvagyunk az **M-mel**, most hozzuk létre az MVC **C-jét**, amely vezérlőosztály.
 
-1. In **Solution Explorer**, right-click the **Controllers** folder, click **Add**, and then click **Controller**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
-    The **Add Scaffold** dialog box appears.
+    Megjelenik az **Add Scaffold** (Szerkezet hozzáadása) párbeszédpanel.
 
-2. Select **MVC 5 Controller - Empty** and then click **Add**.
+2. Válassza az **MVC 5 Controller - Empty** (MVC 5 vezérlő - Üres) elemet, majd kattintson az **Add** (Hozzáadás) gombra.
 
-    ![Screen shot of the Add Scaffold dialog box with the MVC 5 Controller - Empty option highlighted](./media/documentdb-dotnet-application/image14.png)
+    ![Az Add Scaffold (Szerkezet hozzáadása) párbeszédpanel képernyőfelvétele, ahol ki van jelölve az MVC 5 Controller - Empty (MVC 5 vezérlő - Üres) lehetőség](./media/documentdb-dotnet-application/image14.png)
 
-3. Name your new Controller, **ItemController.**
+3. Adja az **ItemController** nevet az új vezérlőnek.
 
-    ![Screen shot of the Add Controller dialog box](./media/documentdb-dotnet-application/image15.png)
+    ![Az Add Controller (Vezérlő hozzáadása) párbeszédpanel képernyőfelvétele](./media/documentdb-dotnet-application/image15.png)
 
-    Once the file is created, your Visual Studio solution should resemble the following with the new ItemController.cs file in **Solution Explorer**. The new Item.cs file created earlier is also shown.
+    A fájl létrehozása után a Visual Studio megoldásnak a következőre kell hasonlítania az új ItemController.cs fájllal a **Megoldáskezelőben**. A korábban létrehozott új Item.cs fájl is látható.
 
-    ![Screen shot of the Visual Studio solution - Solution Explorer with the new ItemController.cs file and Item.cs file highlighted](./media/documentdb-dotnet-application/image16.png)
+    ![A Visual Studio megoldás - Megoldáskezelő képernyőfelvétele, ahol ki van emelve az új ItemController.cs és Item.cs fájl](./media/documentdb-dotnet-application/image16.png)
 
-    You can close ItemController.cs, we'll come back to it later. 
+    Bezárhatja az ItemController.cs fájlt, később visszatérünk ahhoz. 
 
-### <a name="_Toc395637766"></a>Add views
+### <a name="<a-name="_toc395637766"></a>add-views"></a><a name="_Toc395637766"></a>Nézetek hozzáadása
 
-Now, let's create the **V** in MVC, the views:
+Most hozzuk létre az MVC **V** elemét, a nézeteket:
 
-- [Add an Item Index view](#AddItemIndexView).
-- [Add a New Item view](#AddNewIndexView).
-- [Add an Edit Item view](#_Toc395888515).
+- [Elemindexnézet hozzáadása](#AddItemIndexView).
+- [Új elemnézet hozzáadása](#AddNewIndexView).
+- [Elemszerkesztési nézet hozzáadása](#_Toc395888515).
 
 
-#### <a name="AddItemIndexView"></a>Add an Item Index view
+#### <a name="<a-name="additemindexview"></a>add-an-item-index-view"></a><a name="AddItemIndexView"></a>Elemindexnézet hozzáadása
 
-1. In **Solution Explorer**, expand the **Views**  folder, right-click the empty **Item** folder that Visual Studio created for you when you added the **ItemController** earlier, click **Add**, and then click **View**.
+1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, kattintson a jobb gombbal az üres **Elem** mappára, amelyet a Visual Studio az **ItemController** korábbi hozzáadásakor hozott létre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **View** (Nézet) elemre.
 
-    ![Screen shot of Solution Explorer showing the Item folder that Visual Studio created with the Add View commands highlighted](./media/documentdb-dotnet-application/image17.png)
+    ![A Megoldáskezelő képernyőfelvétele, amelyen a Visual Studio által létrehozott Item mappa látható, és az Add View (Nézet hozzáadása) parancsok vannak kiemelve](./media/documentdb-dotnet-application/image17.png)
 
-2. In the **Add View** dialog box, do the following:
-    - In the **View name** box, type ***Index***.
-    - In the **Template** box, select ***List***.
-    - In the **Model class** box, select ***Item (todo.Models)***.
-    - Leave the **Data context class** box empty. 
-    - In the layout page box, type ***~/Views/Shared/_Layout.cshtml***.
+2. Az **Add View** (Nézet hozzáadása) párbeszédpanelen tegye a következőket:
+    - A **View name** (Nézet neve) mezőbe írja be az ***Index*** nevet.
+    - A **Template** (Sablon) mezőben válassza a ***List*** (Lista) elemet.
+    - A **Model class** (Modellosztály) mezőben válassza ki az ***Item (todo.Models)*** elemet.
+    - Hagyja üresen a **Data context class** (Adatkörnyezet osztálya) mezőt. 
+    - A layout page (elrendezéslap) mezőbe írja be a ***~/Views/Shared/_Layout.cshtml*** szöveget.
     
-    ![Screen shot showing the Add View dialog box](./media/documentdb-dotnet-application/image18.png)
+    ![Az Add View (Nézet hozzáadása) párbeszédpanelt megjelenítő képernyőfelvétel](./media/documentdb-dotnet-application/image18.png)
 
-3. Once all these values are set, click **Add** and let Visual Studio create a new template view. Once it is done, it will open the cshtml file  that was created. We can close that file in Visual Studio as we will come back to it later.
+3. Amikor ezen értékek mindegyike már be van állítva, kattintson az **Add** (Hozzáadás) gombra és várja meg, hogy a Visual Studio létrehozzon egy új sablonnézetet. Ha ezzel végzett, a rendszer megnyitja a létrehozott cshtml fájlt. Bezárhatjuk ezt a fájlt a Visual Studióban, mivel később visszatérünk hozzá.
 
-#### <a name="AddNewIndexView"></a>Add a New Item view
+#### <a name="<a-name="addnewindexview"></a>add-a-new-item-view"></a><a name="AddNewIndexView"></a>Új elemnézet hozzáadása
 
-Similar to how we created an **Item Index** view, we will now create a new view for creating new **Items**.
+Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új nézetet új **elemek** létrehozásához.
 
-1. In **Solution Explorer**, right-click the **Item** folder again, click **Add**, and then click **View**.
+1. A **Megoldáskezelőben** ismét kattintson a jobb gombbal az **Item** (Elem) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **View** (Nézet) gombra.
 
-2. In the **Add View** dialog box, do the following:
-    - In the **View name** box, type ***Create***.
-    - In the **Template** box, select ***Create***.
-    - In the **Model class** box, select ***Item (todo.Models)***.
-    - Leave the **Data context class** box empty.
-    - In the layout page box, type ***~/Views/Shared/_Layout.cshtml***.
-    - Click **Add**.
+2. Az **Add View** (Nézet hozzáadása) párbeszédpanelen tegye a következőket:
+    - A **View name** (Nézet neve) mezőbe írja be a ***Create*** (Létrehozás) nevet.
+    - A **Template** (Sablon) mezőben válassza a ***Create*** (Létrehozás) elemet.
+    - A **Model class** (Modellosztály) mezőben válassza ki az ***Item (todo.Models)*** elemet.
+    - Hagyja üresen a **Data context class** (Adatkörnyezet osztálya) mezőt.
+    - A layout page (elrendezéslap) mezőbe írja be a ***~/Views/Shared/_Layout.cshtml*** szöveget.
+    - Kattintson az **Add** (Hozzáadás) parancsra.
 
-#### <a name="_Toc395888515"></a>Add an Edit Item view
+#### <a name="<a-name="_toc395888515"></a>add-an-edit-item-view"></a><a name="_Toc395888515"></a>Elemszerkesztési nézet hozzáadása
 
-And finally, add one last view for editing an **Item** in the same way as before.
+És végül adjon hozzá egy utolsó nézetet az **elemek** szerkesztéséhez, ahogyan azt korábban is tette.
 
-1. In **Solution Explorer**, right-click the **Item** folder again, click **Add**, and then click **View**.
+1. A **Megoldáskezelőben** ismét kattintson a jobb gombbal az **Item** (Elem) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **View** (Nézet) gombra.
 
-2. In the **Add View** dialog box, do the following:
-    - In the **View name** box, type ***Edit***.
-    - In the **Template** box, select ***Edit***.
-    - In the **Model class** box, select ***Item (todo.Models)***.
-    - Leave the **Data context class** box empty. 
-    - In the layout page box, type ***~/Views/Shared/_Layout.cshtml***.
-    - Click **Add**.
+2. Az **Add View** (Nézet hozzáadása) párbeszédpanelen tegye a következőket:
+    - A **View name** (Nézet neve) mezőbe írja be az ***Edit*** (Szerkesztés) nevet.
+    - A **Template** (Sablon) mezőben válassza az ***Edit*** (Szerkesztés) elemet.
+    - A **Model class** (Modellosztály) mezőben válassza ki az ***Item (todo.Models)*** elemet.
+    - Hagyja üresen a **Data context class** (Adatkörnyezet osztálya) mezőt. 
+    - A layout page (elrendezéslap) mezőbe írja be a ***~/Views/Shared/_Layout.cshtml*** szöveget.
+    - Kattintson az **Add** (Hozzáadás) parancsra.
 
-Once this is done, close all the cshtml documents in Visual Studio as we will return to these views later.
+Ha ezzel végzett, zárja be az összes cshtml dokumentumot a Visual Studióban, mivel később vissza fog térni ezekhez a nézetekhez.
 
-## <a name="_Toc395637769"></a>Step 5: Wiring up DocumentDB
+## <a name="<a-name="_toc395637769"></a>step-5:-wiring-up-documentdb"></a><a name="_Toc395637769"></a>5. lépés: A DocumentDB csatlakoztatása
 
-Now that the standard MVC stuff is taken care of, let's turn to adding the code for DocumentDB. 
+Most, hogy elvégeztük az MVC-vel kapcsolatos szokásos feladatokat, adjuk hozzá a DocumentDB kódját. 
 
-In this section, we'll add code to handle the following:
+Ebben a szakaszban a következők kezeléséhez adunk hozzá kódot:
 
-- [Listing incomplete Items](#_Toc395637770).
-- [Adding Items](#_Toc395637771).
-- [Editing Items](#_Toc395637772).
+- [Hiányos elemek listázása](#_Toc395637770).
+- [Elemek hozzáadása](#_Toc395637771).
+- [Elemek szerkesztése](#_Toc395637772).
 
-### <a name="_Toc395637770"></a>Listing incomplete Items in your MVC web application
+### <a name="<a-name="_toc395637770"></a>listing-incomplete-items-in-your-mvc-web-application"></a><a name="_Toc395637770"></a>Hiányos elemek listázása az MVC webalkalmazásban
 
-The first thing to do here is add a class that contains all the logic to connect to and use DocumentDB. For this tutorial we'll encapsulate all this logic in to a repository class called DocumentDBRepository. 
+Itt először hozzá kell adni egy osztályt, amely tartalmazza a DocumentDB adatbázishoz való csatlakozás és a DocumentDB használatának összes logikáját. Ehhez az oktatóprogramhoz ezen logikák mindegyikét a DocumentDBRepository nevű adattárba foglaljuk. 
 
-1. In **Solution Explorer**, right-click on the project, click **Add**, and then click **Class**. Name the new class **DocumentDBRepository** and click **Add**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra. Adja az új osztálynak a **DocumentDBRepository** nevet, és kattintson az **Add** (Hozzáadás) gombra.
  
-2. In the newly created **DocumentDBRepository** class and add the following *using statements* above the *namespace* declaration
+2. Az újonnan létrehozott **DocumentDBRepository** osztályban adja a következő *használati utasításokat* a *névtér-deklaráció* fölé
         
         using Microsoft.Azure.Documents; 
         using Microsoft.Azure.Documents.Client; 
@@ -272,13 +272,13 @@ The first thing to do here is add a class that contains all the logic to connect
         using System.Linq.Expressions;
         using System.Threading.Tasks;
 
-    Now replace this code 
+    Most cserélje le ezt a kódot 
 
         public class DocumentDBRepository
         {
         }
 
-    with the following code.
+    a következő kóddal.
 
         public static class DocumentDBRepository<T> where T : class
         {
@@ -335,21 +335,21 @@ The first thing to do here is add a class that contains all the logic to connect
             }
         }
 
-    > [AZURE.TIP] When creating a new DocumentCollection you can supply an optional RequestOptions parameter of OfferType, which allows you to specify the performance level of the new collection. If this parameter is not passed the default offer type will be used. For more on DocumentDB offer types please refer to [DocumentDB Performance Levels](documentdb-performance-levels.md)
+    > [AZURE.TIP] Új DocumentCollection létrehozásakor megadhat egy választható OfferType típusú RequestOptions paramétert, amellyel megadhatja az új gyűjtemény teljesítményszintjét. Ha ez a paraméter nem kerül át, a rendszer az alapértelmezett ajánlattípust használja. A DocumentDB ajánlattípusokról további információ: [DocumentDB teljesítményszintek](documentdb-performance-levels.md)
 
-3. We're reading some values from configuration, so open the **Web.config** file of your application and add the following lines under the `<AppSettings>` section.
+3. A konfigurációból adunk hozzá néhány értéket, ezért nyissa meg az alkalmazás **Web.config** fájlját, és adja hozzá a következő sorokat az `<AppSettings>` szakasz alá.
     
         <add key="endpoint" value="enter the URI from the Keys blade of the Azure Portal"/>
         <add key="authKey" value="enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal"/>
         <add key="database" value="ToDoList"/>
         <add key="collection" value="Items"/>
     
-4. Now, update the values for *endpoint* and *authKey* using the Keys blade of the Azure Portal. Use the **URI** from the Keys blade as the value of the endpoint setting, and use the **PRIMARY KEY**, or **SECONDARY KEY** from the Keys blade as the value of the authKey setting.
+4. Most frissítse az *endpoint* (végpont) és az *authKey* (hitelesítési kulcs) értékeit az Azure-portál Keys (Kulcsok) panelén. A Keys (Kulcsok) panel **URI-címét** használja a végpontbeállítás értékeként, és a Keys (Kulcsok) panel **PRIMARY KEY** (ELSŐDLEGES KULCS) vagy **SECONDARY KEY** (MÁSODLAGOS KULCS) értékét használja az authKey beállítás értékeként.
 
 
-    That takes care of wiring up the DocumentDB repository, now let's add our application logic.
+    Ezzel elvégeztük a DocumentDB-adattár csatlakoztatását, most adjuk hozzá az alkalmazás logikáját.
 
-5. The first thing we want to be able to do with a todo list application is to display the incomplete items.  Copy and paste the following code snippet anywhere within the **DocumentDBRepository** class.
+5. Először is meg szeretnénk tudni jeleníteni a hiányos elemeket a teendőlista alkalmazással.  Másolja és illessze be a következő kódrészletet bárhová a **DocumentDBRepository** osztályban.
 
         public static async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
         {
@@ -368,15 +368,15 @@ The first thing to do here is add a class that contains all the logic to connect
         }
 
 
-6. Open the **ItemController** we added earlier and add the following *using statements* above the namespace declaration.
+6. Nyissa meg a korábban hozzáadott **ItemController** elemet, és adja a következő *használati utasításokat* a névtér-deklaráció fölé
 
         using System.Net;
         using System.Threading.Tasks;
         using todo.Models;
 
-    If your project is not named "todo", then you need to update using "todo.Models"; to reflect the name of your project.
+    Ha a projekt neve nem „todo” (teendők), akkor frissítenie kell a „todo.Models” paranccsal, hogy tükrözze a projekt nevét.
 
-    Now replace this code
+    Most cserélje le ezt a kódot
 
         //GET: Item
         public ActionResult Index()
@@ -384,7 +384,7 @@ The first thing to do here is add a class that contains all the logic to connect
             return View();
         }
 
-    with the following code.
+    a következő kóddal.
 
         [ActionName("Index")]
         public async Task<ActionResult> IndexAsync()
@@ -393,42 +393,42 @@ The first thing to do here is add a class that contains all the logic to connect
             return View(items);
         }
     
-7. Open **Global.asax.cs** and add the following line to the **Application_Start** method 
+7. Nyissa meg a **Global.asax.cs** fájlt, és adja hozzá a következő sort az **Application_Start** metódushoz 
  
         DocumentDBRepository<todo.Models.Item>.Initialize();
     
-At this point your solution should be able to build without any errors.
+Ekkor ideális esetben hibák nélkül fel kell tudnia építenie az alkalmazást.
 
-If you ran the application now, you would go to the **HomeController** and the **Index** view of that controller. This is the default behavior for the MVC template project we chose at the start but we don't want that! Let's change the routing on this MVC application to alter this behavior.
+Ha most futtatná az alkalmazást, a **HomeController** vezérlőbe és annak **Index** nézetébe kerülne. Ez az először választott MVC sablonprojekt alapértelmezett viselkedése, de mi nem ezt szeretnénk! Módosítsuk a jelen MVC alkalmazás útválasztását ezen viselkedés megváltoztatásához.
 
-Open ***App\_Start\RouteConfig.cs*** and locate the line starting with "defaults:" and change it to resemble the following.
+Nyissa meg az ***App\_Start\RouteConfig.cs*** fájlt, keresse meg a „defaults:” kezdetű sort, és módosítsa úgy, hogy a következőhöz hasonlítson.
 
         defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
 
-This now tells ASP.NET MVC that if you have not specified a value in the URL to control the routing behavior that instead of **Home**, use **Item** as the controller and user **Index** as the view.
+Ez most közli az ASP.NET MVC-vel, ha nem adott meg értéket az URL-címben az útválasztási viselkedés vezérléséhez, hogy a **Home** (Kezdőlap) helyett az **Item** (Elem) elemet használja vezérlőként és a felhasználói **Index** elemet nézetként.
 
-Now if you run the application, it will call into your **ItemController** which will call in to the repository class and use the GetItems method to return all the incomplete items to the **Views**\\**Item**\\**Index** view. 
+Ha most futtatja az alkalmazást, az az **ItemController** vezérlőt hívja meg, amely az adattár osztályt hívja meg és a GetItems metódussal adja vissza az összes hiányos elemet a **Views**\\**Item**\\**Index** (Nézetek > Elem > Index) nézetben. 
 
-If you build and run this project now, you should now see something that looks this.    
+Ha most felépíti és futtatja ezt a projektet, valami ilyesmit kell látnia.    
 
-![Screen shot of the todo list web application created by this database tutorial](./media/documentdb-dotnet-application/image23.png)
+![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/documentdb-dotnet-application/image23.png)
 
-### <a name="_Toc395637771"></a>Adding Items
+### <a name="<a-name="_toc395637771"></a>adding-items"></a><a name="_Toc395637771"></a>Elemek hozzáadása
 
-Let's put some items into our database so we have something more than an empty grid to look at.
+Tegyünk néhány elemet az adatbázisba, hogy ne csak egy üres táblát lássunk.
 
-Let's add some code to  DocumentDBRepository and ItemController to persist the record in DocumentDB.
+Adjunk néhány kódot a DocumentDBRepository és az ItemController elemhez, hogy megmaradjon a rekord a DocumentDB adatbázisban.
 
-1.  Add the following method to your **DocumentDBRepository** class.
+1.  Adja hozzá a **DocumentDBRepository** tárhoz a következő metódust:
 
         public static async Task<Document> CreateItemAsync(T item)
         {
             return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
         }
 
-    This method simply takes an object passed to it and persists it in DocumentDB.
+    Ez a metódus egyszerűen vesz egy neki küldött objektumot, és megőrzi azt a DocumentDB adatbázisban.
 
-2. Open the ItemController.cs file and add the following code snippet within the class. This is how ASP.NET MVC knows what to do for the **Create** action. In this case just render the associated Create.cshtml view created earlier.
+2. Nyissa meg az ItemController.cs fájlt, és adja hozzá a következő kódrészletet az osztályon belül. Az ASP.NET MVC így tudja, hogy mit tegyen a **Create** (Létrehozás) művelethez. Ebben az esetben csak jelenítse meg a korábban létrehozott társított Create.cshtml nézetet.
 
         [ActionName("Create")]
         public async Task<ActionResult> CreateAsync()
@@ -436,9 +436,9 @@ Let's add some code to  DocumentDBRepository and ItemController to persist the r
             return View();
         }
 
-    We now need some more code in this controller that will accept the submission from the **Create** view.
+    Most több kódra van szükségünk ebben a vezérlőben, amely elfogadja a **Create** (Létrehozás) nézetből végzett elküldést.
 
-2. Add the next block of code to the ItemController.cs class that tells ASP.NET MVC what to do with a form POST for this controller.
+2. Adja hozzá a következő kódblokkot az ItemController.cs osztályhoz, amely közli az ASP.NET MVC-vel, hogy mit tegyen az ezen vezérlőből származó POST űrlapművelettel.
     
         [HttpPost]
         [ActionName("Create")]
@@ -454,20 +454,20 @@ Let's add some code to  DocumentDBRepository and ItemController to persist the r
             return View(item);
         }
 
-    This code calls in to the DocumentDBRepository and uses the CreateItemAsync method to persist the new todo item to the database. 
+    Ez a kód a DocumentDBRepository tárat hívja be, és a CreateItemAsync metódussal őrzi meg az új teendőelemet az adatbázisban. 
  
-    **Security Note**: The **ValidateAntiForgeryToken** attribute is used here to help protect this application against cross-site request forgery attacks. There is more to it than just adding this attribute, your views need to work with this anti-forgery token as well. For more on the subject, and examples of how to implement this correctly, please see [Preventing Cross-Site Request Forgery][]. The source code provided on [GitHub][] has the full implementation in place.
+    **Biztonsági megjegyzés**: A **ValidateAntiForgeryToken** attribútum itt segít megvédeni az alkalmazást a webhelyközi kérések hamisítása ellen. Az attribútum hozzáadásánál többről van szó, a nézeteknek is működniük kell ezzel a hamisítás elleni tokennel. A témáról további részletekért és a megfelelő megvalósításának példáiért lásd: [Webhelyközi kérések hamisításának megakadályozása][]. A [GitHub][] közzétett forráskódban szerepel a teljes megvalósítás.
 
-    **Security Note**: We also use the **Bind** attribute on the method parameter to help protect against over-posting attacks. For more details please see [Basic CRUD Operations in ASP.NET MVC][].
+    **Biztonsági megjegyzés**: A metódus paraméteren a **Bind** (Kötés) attribútummal is segítünk a túlküldéses támadások elleni védelemben. További részletekért lásd: [Alapvető CRUD műveletek az ASP.NET MVC-ben][].
 
-This concludes the code required to add new Items to our database.
+Ennyi lenne az adatbázishoz új elemek hozzáadásához szükséges kód.
 
 
-### <a name="_Toc395637772"></a>Editing Items
+### <a name="<a-name="_toc395637772"></a>editing-items"></a><a name="_Toc395637772"></a>Elemek szerkesztése
 
-There is one last thing for us to do, and that is to add the ability to edit **Items** in the database and to mark them as complete. The view for editing was already added to the project, so we just need to add some code to our controller and to the **DocumentDBRepository** class again.
+Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szerkeszthetők az adatbázisban és megjelölhetők befejezettként. A szerkesztésre szolgáló nézet már a projekthez lett adva, így csak néhány kódot kell ismét hozzáadnunk a vezérlőhöz és a **DocumentDBRepository** osztályhoz.
 
-1. Add the following to the **DocumentDBRepository** class.
+1. Adja hozzá a következőt a **DocumentDBRepository** osztályhoz.
 
         public static async Task<Document> UpdateItemAsync(string id, T item)
         {
@@ -494,11 +494,11 @@ There is one last thing for us to do, and that is to add the ability to edit **I
             }
         }
     
-    The first of these methods, **GetItem** fetches an Item from DocumentDB which is passed back to the **ItemController** and then on to the **Edit** view.
+    Ezen metódusok közül az első, a **GetItem** egy elemet kér le a DocumentDB adatbázisból, amelyet visszaküld az **ItemController** vezérlőhöz, majd az **Edit** (Szerkesztés) nézethez.
     
-    The second of the methods we just added replaces the **Document** in DocumentDB with the version of the **Document** passed in from the **ItemController**.
+    A most hozzáadott metódusok közül a második lecseréli a **dokumentumot** a DocumentDB adatbázisban a **dokumentum** azon verziójával, amely az **ItemController** vezérlőből származik.
 
-2. Add the following to the **ItemController** class.
+2. Adja hozzá a következőt az **ItemController** osztályhoz.
 
         [HttpPost]
         [ActionName("Edit")]
@@ -531,70 +531,70 @@ There is one last thing for us to do, and that is to add the ability to edit **I
             return View(item);
         }
     
-    The first method handles the Http GET that happens when the user clicks on the **Edit** link from the **Index** view. This method fetches a [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) from DocumentDB and passes it to the **Edit** view.
+    Az első metódus a Http GET kérést kezeli, amely akkor történik meg, amikor a felhasználó az **Edit** (Szerkesztés) hivatkozásra kattint az **Index** nézetből. Ez a metódus [**dokumentumot**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) kér le a DocumentDB adatbázisból és az **Edit** (Szerkesztés) nézetbe küldi azt.
 
-    The **Edit** view will then do an Http POST to the **IndexController**. 
+    Az **Edit** (Szerkesztés) nézet ezután Http POST kérést küld az **IndexController** vezérlőnek. 
     
-    The second method we added handles passing the updated object to DocumentDB to be persisted in the database.
+    A második hozzáadott metódus kezeli a frissített objektum átadását a DocumentDB adatbázisnak, hogy megmaradjon az adatbázisban.
 
-That's it, that is everything we need to run our application, list incomplete **Items**, add new **Items**, and edit **Items**.
+Ennyi, ez minden, amire szükségünk van az alkalmazás futtatásához, a hiányos **elemek** listázásához és új **elemek** hozzáadásához, valamint az **elemek** szerkesztéséhez.
 
-## <a name="_Toc395637773"></a>Step 6: Run the application locally
+## <a name="<a-name="_toc395637773"></a>step-6:-run-the-application-locally"></a><a name="_Toc395637773"></a>6. lépés: Az alkalmazás helyileg történő futtatása
 
-To test the application on your local machine, do the following:
+Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
-1. Hit F5 in Visual Studio to build the application in debug mode. It should build the application and launch a browser with the empty grid page we saw before:
+1. Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
 
-    ![Screen shot of the todo list web application created by this database tutorial](./media/documentdb-dotnet-application/image24.png)
+    ![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/documentdb-dotnet-application/image24.png)
 
-    If you are using Visual Studio 2013 and receive the error "Cannot await in the body of a catch clause." you need to install the [Microsoft.Net.Compilers nuget package](https://www.nuget.org/packages/Microsoft.Net.Compilers/). You can also compare your code against the sample project on [GitHub][]. 
+    Ha Visual Studio 2013-at használ, és a „Nem lehet várakozni a „catch” záradék törzsében.” hibaüzenetet kapja, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/). Emellett össze is hasonlíthatja a kódját a [GitHub][] lévő mintaprojekttel. 
 
-2. Click the **Create New** link and add values to the **Name** and **Description** fields. Leave the **Completed** check box unselected otherwise the new **Item** will be added in a completed state and will not appear on the initial list.
+2. Kattintson a **Create New** (Új létrehozása) hivatkozásra, és adjon értékeket a **Name** (Név) és a **Description** (Leírás) mezőkbe. Hagyja bejelöletlenül a **Completed** (Befejezve) jelölőnégyzetet, különben az új **elem** befejezett állapotban lesz hozzáadva és nem jelenik meg a kiindulási listában.
 
-    ![Screen shot of the Create view](./media/documentdb-dotnet-application/image25.png)
+    ![Képernyőfelvétel a Create (Létrehozás) nézetről](./media/documentdb-dotnet-application/image25.png)
 
-3. Click **Create** and you are redirected back to the **Index** view and your **Item** appears in the list.
+3. Kattintson a **Create** (Létrehozás) gombra, és a rendszer visszairányítja az **Index** nézetre, ahol az **elem** megjelenik a listában.
 
-    ![Screen shot of the Index view](./media/documentdb-dotnet-application/image26.png)
+    ![Képernyőfelvétel az Index nézetről](./media/documentdb-dotnet-application/image26.png)
 
-    Feel free to add a few more **Items** to your todo list.
+    Nyugodtan adjon hozzá még néhány **elemet** a teendőlistához.
 
-3. Click **Edit** next to an **Item** on the list and you are taken to the **Edit** view where you can update any property of your object, including the **Completed** flag. If you mark the **Complete** flag and click **Save**, the **Item** is removed from the list of incomplete tasks.
+3. Kattintson az **Edit** (Szerkesztés) gombra a lista egy **eleme** mellett, és az **Edit** (Szerkesztés) nézetbe kerül, ahol frissítheti az objektum bármely tulajdonságát, beleértve a **Completed** (Befejezve) jelzőt. Ha bejelöli a **Complete** (Befejezve) jelzőt és a **Save** (Mentés) gombra kattint, azzal eltávolítja az **elemet** a hiányos feladatok listájából.
 
-    ![Screen shot of the Index view with the Completed box checked](./media/documentdb-dotnet-application/image27.png)
+    ![Képernyőfelvétel az Index nézetről, bejelölt Completed (Befejezve) jelölőnégyzettel](./media/documentdb-dotnet-application/image27.png)
 
-4. Once you've tested the app, press Ctrl+F5 to stop debugging the app. You're ready to deploy!
+4. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-## <a name="_Toc395637774"></a>Step 7: Deploy the application to Azure Websites
+## <a name="<a-name="_toc395637774"></a>step-7:-deploy-the-application-to-azure-websites"></a><a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure Websites-ban
 
-Now that you have the complete application working correctly with DocumentDB we're going to deploy this web app to Azure Websites. If you selected **Host in the cloud** when you created the empty ASP.NET MVC project then Visual Studio makes this really easy and does most of the work for you. 
+Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissal, Azure-webhelyekre fogjuk telepíteni ezt a webalkalmazást. Ha bejelölte a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget az üres ASP.NET MVC projekt létrehozásakor, akkor a Visual Studio jelentősen megkönnyíti ezt, és a legtöbb munkát elvégzi. 
 
-1. To publish this application all you need to do is right-click on the project in **Solution Explorer** and click **Publish**.
+1. Az alkalmazás közzétételéhez egyszerűen a jobb gombbal a projektre kell kattintania a **Megoldáskezelőben**, majd a **Publish** (Közzététel) parancsot választania.
 
-    ![Screen shot of the Publish option in Solution Explorer](./media/documentdb-dotnet-application/image28.png)
+    ![Képernyőfelvétel a Közzététel lehetőségről a Megoldáskezelőben](./media/documentdb-dotnet-application/image28.png)
 
-2. Everything should already be configured according to your credentials; in fact the website has already been created in Azure for you at the **Destination URL** shown, all you need to do is click **Publish**.
+2. Már mindennek konfigurálva kell lennie a hitelesítő adatai szerint; valójában a webhely már létrejött az Azure rendszerben az itt látható **Destination URL** (Cél URL) helyen, csak a **Publish** (Közzététel) gombra kell kattintania.
 
-    ![Screen shot of the Publish Web dialog box in Visual Studio - ASP NET MVC tutorial step by step](./media/documentdb-dotnet-application/image29.png)
+    ![A Visual Studio Publish Web (Webes közzététel) párbeszédpanelének képernyőfelvétele – ASP NET MVC oktatóprogram lépésről lépésre](./media/documentdb-dotnet-application/image29.png)
 
-In a few seconds, Visual Studio will finish publishing your web application and launch a browser where you can see your handy work running in Azure!
+Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját!
 
-## <a name="_Toc395637775"></a>Next steps
+## <a name="<a-name="_toc395637775"></a>next-steps"></a><a name="_Toc395637775"></a>Következő lépések
 
-Congratulations! You just built your first ASP.NET MVC web application using Azure DocumentDB and published it to Azure Websites. The source code for the complete application, including the detail and delete functionality that were not included in this tutorial can be downloaded or cloned from [GitHub][]. So if you're interested in adding that to your app, grab the code and add it to this app.
+Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHub][]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 
-To add additional functionality to your application, review the APIs available in the [DocumentDB .NET Library](https://msdn.microsoft.com/library/azure/dn948556.aspx) and feel free to contribute to the DocumentDB .NET Library on [GitHub][]. 
+Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [DocumentDB .NET kódtárban](https://msdn.microsoft.com/library/azure/dn948556.aspx) lévő API-kat, és nyugodtan járuljon hozzá a DocumentDB .NET kódtárhoz a [GitHub][]. 
 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Microsoft Webplatform-telepítő]: http://www.microsoft.com/web/downloads/platform.aspx
+[Webhelyközi kérések hamisításának megakadályozása]: http://go.microsoft.com/fwlink/?LinkID=517254
+[Alapszintű CRUD műveletek az ASP.NET MVC-ben]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

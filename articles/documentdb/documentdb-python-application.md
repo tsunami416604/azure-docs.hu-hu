@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Python Flask Web Application Development with DocumentDB | Microsoft Azure"
-    description="Review a database tutorial on using DocumentDB to store and access data from a Python Flask web application hosted on Azure. Find application development solutions." 
-    keywords="Application development, database tutorial, python flask, python web application, python web development, documentdb, azure, Microsoft azure"
+    pageTitle="Python Flask-webalkalmazás fejlesztése a DocumentDB használatával | Microsoft Azure"
+    description="Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait a DocumentDB használatával. Alkalmazásfejlesztési megoldások keresése." 
+    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, python flask, python-webalkalmazás, python-webfejlesztés, documentdb, azure, Microsoft Azure"
     services="documentdb"
     documentationCenter="python"
-    authors="AndrewHoh"
+    authors="syamkmsft"
     manager="jhubbard"
     editor="cgronlun"/>
 
@@ -15,10 +15,10 @@
     ms.devlang="python"
     ms.topic="hero-article"
     ms.date="08/25/2016"
-    ms.author="anhoh"/>
+    ms.author="syamk"/>
 
 
-# Python Flask Web Application Development with DocumentDB
+# <a name="python-flask-web-application-development-with-documentdb"></a>Python Flask-webalkalmazás fejlesztése a DocumentDB használatával
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -26,76 +26,76 @@
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
-This tutorial shows you how to use Azure DocumentDB to store and access data from a Python web application hosted on Azure and presumes that you have some prior experience using Python and Azure websites.
+Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python-webalkalmazás adatait az Azure DocumentDB használatával, valamint feltételezi, hogy már rendelkezik némi tapasztalattal a Python és az Azure Websites használatát illetően.
 
-This database tutorial covers:
+Az adatbázis-oktatóanyag az alábbiakat ismerteti:
 
-1. Creating and provisioning a DocumentDB account.
-2. Creating a Python MVC application.
-3. Connecting to and using Azure DocumentDB from your web application.
-4. Deploying the web application to Azure Websites.
+1. DocumentDB-fiók létrehozása és üzembe helyezése.
+2. Python MVC-alkalmazás létrehozása.
+3. Az Azure DocumentDB a webalkalmazásból történő használata, valamint az ahhoz való csatlakozás.
+4. A webalkalmazás Azure Websitesra történő telepítése.
 
-By following this tutorial, you will build a simple voting application that allows you to vote for a poll.
+Az oktatóanyag utasításait követve egy egyszerű szavazóalkalmazást fog létrehozni, amely lehetővé teszi, hogy leadja a voksát egy szavazáson.
 
-![Screen shot of the todo list web application created by this database tutorial](./media/documentdb-python-application/image1.png)
+![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/documentdb-python-application/image1.png)
 
 
-## Database tutorial prerequisites
+## <a name="database-tutorial-prerequisites"></a>Az adatbázis-oktatóanyag előfeltételei
 
-Before following the instructions in this article, you should ensure that you have the following installed:
+A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
-- An active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2013](http://www.visualstudio.com/) or higher, or [Visual Studio Express](), which is the free version. The instructions in this tutorial are written specifically for Visual Studio 2015. 
-- Python Tools for Visual Studio from [GitHub](http://microsoft.github.io/PTVS/). This tutorial uses Python Tools for VS 2015. 
-- Azure Python SDK for Visual Studio, version 2.4 or higher available from [azure.com](https://azure.microsoft.com/downloads/). We used Microsoft Azure SDK for Python 2.7.
-- Python 2.7 from [python.org][2]. We used Python 2.7.11. 
+- Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+- [Visual Studio 2013-as](http://www.visualstudio.com/) vagy újabb, illetve az ingyenes [Visual Studio Express]() verzió. Az oktatóanyagban szereplő utasítások kifejezetten a Visual Studio 2015-ös verzióhoz íródtak. 
+- Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja. 
+- Az Azure Python SDK for Visual Studio az [azure.com](https://azure.microsoft.com/downloads/) webhelyről letölthető 2.4-es vagy újabb verziója. Az oktatóanyagban a Python 2.7-hez készült Microsoft Azure SDK-t használtuk.
+- A [Python.org][2] webhelyen elérhető Python 2.7-es verzió. Mi a Python 2.7.11-es verziót használtuk. 
 
-> [AZURE.IMPORTANT] If you are installing Python 2.7 for the first time, ensure that in the Customize Python 2.7.11 screen, you select **Add python.exe to Path**.
+> [AZURE.IMPORTANT] Ha először telepíti a Python 2.7-es verziót, győződjön meg arról, hogy a Customize Python 2.7.11 (A Python 2.7.11 testreszabása) képernyőn kiválasztotta az **Add python.exe to Path** (Python.exe hozzáadása az útvonalhoz) lehetőséget.
 > 
->    ![Screen shot of the Customize Python 2.7.11 screen, where you need to select Add python.exe to Path](./media/documentdb-python-application/image2.png)
+>    ![Képernyőfelvétel a Customize Python 2.7.11 (Python 2.7.11 testreszabása) képernyőről, ahol be az Add python.exe to Path (Python.exe hozzáadása az útvonalhoz) lehetőséget ki kell választania.](./media/documentdb-python-application/image2.png)
 
-- Microsoft Visual C++ Compiler for Python 2.7 from the [Microsoft Download Center][3].
+- A [Microsoft letöltőközpontból][3] beszerezhető Microsoft Visual C++ Compiler for Python 2.7.
 
-## Step 1: Create a DocumentDB database account
+## <a name="step-1:-create-a-documentdb-database-account"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 
-Let's start by creating a DocumentDB account. If you already have an account, you can skip to [Step 2: Create a new Python Flask web application](#step-2:-create-a-new-python-flask-web-application).
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 <br/>
-We will now walk through how to create a new Python Flask web application from the ground up.
+Most végigvezetjük azon, hogyan hozhat létre új Python Flask-webalkalmazást az alapoktól kezdve.
 
-## Step 2: Create a new Python Flask web application
+## <a name="step-2:-create-a-new-python-flask-web-application"></a>2. lépés: Új Python Flask-webalkalmazás létrehozása
 
-1. In Visual Studio, on the **File** menu, point to **New**, and then click **Project**.
+1. A Visual Studio programban, a **File** (Fájl) menüben mutasson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 
-    The **New Project** dialog box appears.
+    Megjelenik a **New project** (Új projekt) párbeszédpanel.
 
-2. In the left pane, expand **Templates** and then **Python**, and then click **Web**. 
+2. A bal oldali ablaktáblán bontsa ki a **Templates** (Sablonok), majd a **Python** elemet, és kattintson a **Web** lehetőségre. 
 
-3. Select **Flask  Web Project** in the center pane, then in the **Name** box type **tutorial**, and then click **OK**. Remember that Python package names should be all lowercase, as described in the [Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).
+3. Válassza ki a **Flask Web Project** (Flask webes projekt) lehetőséget a középső ablaktáblán, majd a **Name** (Név) mezőbe írja be a **tutorial** nevet, és kattintson az **OK** gombra. Ne feledje, hogy a Python-csomagok nevében csak kisbetű szerepelhet, ahogyan ezt a [Stílusmutató a Python-kódokhoz](https://www.python.org/dev/peps/pep-0008/#package-and-module-names) című útmutató is részletezi.
 
-    For those new to Python Flask, it is a web application development framework that helps you build web applications in Python faster.
+    Azok számára, akik még nem ismernék, a Python Flask egy webalkalmazás-fejlesztési keretrendszer, amely lehetővé teszi a webalkalmazások Pythonban történő gyorsabb létrehozását.
 
-    ![Screen shot of the New Project window in Visual Studio with Python highlighted on the left, Python Flask Web Project selected in the middle, and the name tutorial in the Name box](./media/documentdb-python-application/image9.png)
+    ![Képernyőfelvétel a Visual Studio New Project (Új projekt) ablakáról, amely bal oldalán ki van emelve a Python, középen ki van választva a Python Flask webes projekt elem, a Name (Név) mezőben pedig meg van adva a tutorial név.](./media/documentdb-python-application/image9.png)
 
-4. In the **Python Tools for Visual Studio** window, click **Install into a virtual environment**. 
+4. A **Python Tools for Visual Studio** ablakban kattintson az **Install into a virtual environment** (Telepítés virtuális környezetbe) lehetőségre. 
 
-    ![Screen shot of the database tutorial - Python Tools for Visual Studio window](./media/documentdb-python-application/image10.png)
+    ![Képernyőfelvétel az adatbázisról-oktatóanyagról – Python Tools for Visual Studio](./media/documentdb-python-application/image10.png)
 
-5. In the **Add Virtual Environment** window, you can accept the defaults and use Python 2.7 as the base environment because PyDocumentDB does not currently support Python 3.x, and then click **Create**. This sets up the required Python virtual environment for your project.
+5. Az **Add Virtual Environment** (Virtuális környezet hozzáadása) ablakban elfogadhatja az alapértelmezett értékeket, és a Python 2.7-es verziót használhatja alapkörnyezetként, mivel a PyDocumentDB jelenleg nem támogatja a Python 3.x-es verzióit. Végül kattintson a **Create** (Létrehozás) gombra. Ezzel beállítja a projekthez szükséges Python virtuális környezetet.
 
-    ![Screen shot of the database tutorial - Python Tools for Visual Studio window](./media/documentdb-python-application/image10_A.png)
+    ![Képernyőfelvétel az adatbázisról-oktatóanyagról – Python Tools for Visual Studio](./media/documentdb-python-application/image10_A.png)
 
-    The output window displays `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` when the environment is successfully installed.
+    A környezet sikeres telepítését követően a következőt látja majd a kimeneti ablakban: `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`.
 
-## Step 3: Modify the Python Flask web application
+## <a name="step-3:-modify-the-python-flask-web-application"></a>3. lépés: A Python Flask-webalkalmazás módosítása
 
-### Add the Python Flask packages to your project
+### <a name="add-the-python-flask-packages-to-your-project"></a>A Python Flask-csomagok hozzáadása a projekthez
 
-After your project is set up, you'll need to add the required Flask packages to your project, including pydocumentdb, the Python package for DocumentDB.
+A projekt beállítását követően hozzá kell adnia a szükséges Flask-csomagokat a projekthez, beleértve a pydocumentdb csomagot is, amely a DocumentDB-hez szükséges Python-csomag.
 
-1. In Solution Explorer, open the file named **requirements.txt** and replace the contents with the following:
+1. A Solution Explorer (Megoldáskezelő) nézetben nyissa meg a **requirements.txt** fájlt, majd cserélje ki annak tartalmát a következőre:
 
         flask==0.9
         flask-mail==0.7.6
@@ -109,34 +109,34 @@ After your project is set up, you'll need to add the required Flask packages to 
         flup
         pydocumentdb>=1.0.0
 
-2. Save the **requirements.txt** file. 
-3. In Solution Explorer, right-click **env** and click **Install from requirements.txt**.
+2. Mentse a **requirements.txt** fájlt. 
+3. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal az **env** elemre, majd kattintson az **Install from requirements.txt** (Telepítés a requirements.txt fájlból) lehetőségre.
 
-    ![Screen shot showing env (Python 2.7) selected with Install from requirements.txt highlighted in the list](./media/documentdb-python-application/image11.png)
+    ![A képernyőfelvétel az env elem (Python 2.7) kiválasztását, valamint az Install from requirements.txt (Telepítés a requirements.txt fájlból) lehetőséget mutatja be.](./media/documentdb-python-application/image11.png)
 
-    After successful installation, the output window displays the following:
+    A sikeres telepítés után a kimeneti ablak a következőt jeleníti meg:
 
         Successfully installed Babel-2.3.2 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.4 blinker-1.4 decorator-4.0.9 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.6.1 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
 
-    > [AZURE.NOTE] In rare cases, you might see a failure in the output window. If this happens, check if the error is related to cleanup. Sometimes the cleanup fails, but the installation will still be successful (scroll up in the output window to verify this). You can check your installation by [Verifying the virtual environment](#verify-the-virtual-environment). If the installation failed but the verification is successful, it's OK to continue.
+    > [AZURE.NOTE] Ritka esetekben előfordulhat, hogy egy hibaüzenet jelenik meg a kimeneti ablakban. Ebben az esetben ellenőrizze, hogy a hiba a tisztítással kapcsolatos-e. Előfordul, hogy a tisztítás sikertelen, de a telepítés sikeres (ennek ellenőrzéséhez görgessen felfelé a kimeneti ablakban). A telepítés állapotát a [virtuális környezet ellenőrzésével](#verify-the-virtual-environment) vizsgálhatja meg. Ha a telepítés sikertelen volt, de a megerősítés sikeres, akkor továbbléphet.
 
-### Verify the virtual environment
+### <a name="verify-the-virtual-environment"></a>A virtuális környezet ellenőrzése
 
-Let's make sure that everything is installed correctly.
+Ellenőrizzük, hogy minden megfelelően telepítve van-e.
 
-1. Build the solution by pressing **Ctrl**+**Shift**+**B**.
-2. Once the build succeeds, start the website by pressing **F5**. This launches the Flask development server and starts your web browser. You should see the following page.
+1. Fordítsa le a megoldást a **Ctrl**+**Shift**+**B** billentyűkombináció lenyomásával.
+2. A sikeres fordítás után indítsa el a webhelyet az **F5** billentyű lenyomásával. Ez elindítja a Flask fejlesztési kiszolgálót és a webböngészőt. A következő lapnak kell megjelennie.
 
-    ![The empty Python Flask web development project displayed in a browser](./media/documentdb-python-application/image12.png)
+    ![A böngészőben megjelenített üres Python Flask webes fejlesztési projekt](./media/documentdb-python-application/image12.png)
 
-3. Stop debugging the website by pressing **Shift**+**F5** in Visual Studio.
+3. Nyomja le a **Shift**+**F5** billentyűkombinációt a Visual Studio alkalmazásban a webhely hibakeresésének leállításához.
 
-### Create database, collection, and document definitions
+### <a name="create-database,-collection,-and-document-definitions"></a>Adatbázis-, gyűjtemény- és dokumentum-definíciók létrehozása
 
-Now let's create your voting application by adding new files and updating others.
+Ideje létrehozni a szavazóalkalmazást az új fájlok hozzáadásával, valamint a többi fájl frissítésével.
 
-1. In Solution Explorer, right-click the **tutorial** project, click **Add**, and then click **New Item**. Select **Empty Python File** and name the file **forms.py**.  
-2. Add the following code to the forms.py file, and then save the file.
+1. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal a **tutorial** nevű projektre, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) gombra. Válassza az **Empty Python File** (Üres Python-fájl) lehetőséget, és adja neki a **forms.py** nevet.  
+2. Adja hozzá a következő kódot a forms.py fájlhoz, majd mentse azt.
 
 ```python
 from flask.ext.wtf import Form
@@ -150,10 +150,10 @@ class VoteForm(Form):
 ```
 
 
-### Add the required imports to views.py
+### <a name="add-the-required-imports-to-views.py"></a>A szükséges importálások hozzáadása a views.py fájlhoz
 
-1. In Solution Explorer, expand the **tutorial** folder, and open the **views.py** file. 
-2. Add the following import statements to the top of the **views.py** file, then save the file. These import DocumentDB's PythonSDK and the Flask packages.
+1. A Solution Explorer (Megoldáskezelő) nézetben bontsa ki a **tutorial** mappát, majd nyissa meg a **views.py** fájlt. 
+2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják majd a DocumentDB Python SDK-it és a Flask-csomagokat.
 
     ```python
     from forms import VoteForm
@@ -162,9 +162,9 @@ class VoteForm(Form):
     ```
 
 
-### Create database, collection, and document
+### <a name="create-database,-collection,-and-document"></a>Adatbázisok, gyűjtemények és dokumentumok létrehozása
 
-- Still in **views.py**, add the following code to the end of the file. This takes care of creating the database used by the form. Do not delete any of the existing code in **views.py**. Simply append this to the end.
+- Adja hozzá az alábbi kódot a **views.py** fájl végéhez. Ezzel létrehozza az űrlap által használt adatbázist. Ne töröljön semmit a **views.py** fájl meglévő kódjából. Egyszerűen csak fűzze hozzá a kódot a fájl végéhez.
 
 ```python
 @app.route('/create')
@@ -201,12 +201,12 @@ def create():
         message='You just created a new database, collection, and document.  Your old votes have been deleted')
 ```
 
-> [AZURE.TIP] The **CreateCollection** method takes an optional **RequestOptions** as the third parameter. This can be used to specify the Offer Type for the collection. If no offerType value is supplied, then the collection will be created using the default Offer Type. For more information on DocumentDB Offer Types, see [Performance levels in DocumentDB](documentdb-performance-levels.md).
+> [AZURE.TIP] A **CreateCollection** metódus egy harmadik paramétere egy opcionális **RequestOptions** paraméter. Ezzel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket az offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre. A DocumentDB ajánlattípusaival kapcsolatos további információkért lásd: [Performance levels in DocumentDB](documentdb-performance-levels.md) (A DocumentDB teljesítményszintjei)
 
 
-### Read database, collection, document, and submit form
+### <a name="read-database,-collection,-document,-and-submit-form"></a>Adatbázis, gyűjtemény és dokumentum beolvasása, valamint az űrlap elküldése
 
-- Still in **views.py**, add the following code to the end of the file. This takes care of setting up the form, reading the database, collection, and document. Do not delete any of the existing code in **views.py**. Simply append this to the end.
+- Adja hozzá az alábbi kódot a **views.py** fájl végéhez. Ezzel létrehozza az űrlapot, beolvassa az adatbázist, a gyűjteményt és a dokumentumot. Ne töröljön semmit a **views.py** fájl meglévő kódjából. Egyszerűen csak fűzze hozzá a kódot a fájl végéhez.
 
 ```python
 @app.route('/vote', methods=['GET', 'POST'])
@@ -256,12 +256,12 @@ def vote():
 ```
 
 
-### Create the HTML files
+### <a name="create-the-html-files"></a>A HTML-fájlok létrehozása
 
-1. In Solution Explorer, in the **tutorial** folder, right click the **templates** folder, click **Add**, and then click **New Item**. 
-2. Select **HTML Page**, and then in the name box type **create.html**. 
-3. Repeat steps 1 and 2 to create two additional HTML files: results.html and vote.html.
-4. Add the following code to **create.html** in the `<body>` element. It displays a message stating that we created a new database, collection, and document.
+1. A Solution Explorer (Megoldáskezelő) nézetben, a **tutorial** mappában kattintson a jobb gombbal a **Templates** (Sablonok) mappára, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) elemre. 
+2. Válassza ki a **HTML Page** (HTML-oldal) lehetőséget, majd a Name (Név) mezőbe írja be a **create.html** nevet. 
+3. Ismételje meg az 1. és 2. lépést, és adjon hozzá további kettő HTML-fájlt: ezek a results.html és a vote.html.
+4. Adja hozzá a következő kódot a **create.html** fájl `<body>` szakaszához. Ez megjelenít egy üzenetet, miszerint sikeresen létrehozott egy új adatbázist, gyűjteményt és dokumentumot.
 
     ```html
     {% extends "layout.html" %}
@@ -272,7 +272,7 @@ def vote():
     {% endblock %}
     ```
 
-5. Add the following code to **results.html** in the `<body`> element. It displays the results of the poll.
+5. Adja hozzá a következő kódot a **results.html** fájl `<body`> szakaszához. Ez megjeleníti a szavazás eredményét.
 
     ```html
     {% extends "layout.html" %}
@@ -298,7 +298,7 @@ def vote():
     {% endblock %}
     ```
 
-6. Add the following code to **vote.html** in the `<body`> element. It displays the poll and accepts the votes. On registering the votes, the control is passed over to views.py where we will recognize the vote cast and append the document accordingly.
+6. Adja hozzá a következő kódot a **vote.html** fájl `<body`> szakaszához. Ez megjeleníti a szavazást, és fogadja a szavazatokat. A szavazatok regisztrálása után a vezérlést a views.py fájl veszi át, ahol feldolgozhatjuk a leadott szavazatot, és annak megfelelően hozzáfűzhetjük a szükséges dokumentumot.
 
     ```html
     {% extends "layout.html" %}
@@ -312,7 +312,7 @@ def vote():
     {% endblock %}
     ```
 
-7. In the **templates** folder, replace the contents of **index.html** with the following. This serves as the landing page for your application.
+7. A **templates** mappában cserélje ki az **index.html** fájl tartalmát az alábbira. Ez lesz az alkalmazás kezdőlapja.
     
     ```html
     {% extends "layout.html" %}
@@ -324,11 +324,11 @@ def vote():
     {% endblock %}
     ```
 
-### Add a configuration file and change the \_\_init\_\_.py
+### <a name="add-a-configuration-file-and-change-the-\_\_init\_\_.py"></a>Konfigurációs fájl hozzáadása és az \_\_init\_\_.py fájl módosítása
 
-1. In Solution Explorer, right-click the **tutorial** project, click **Add**, click **New Item**, select **Empty Python File**, and then name the file **config.py**. This config file is required by forms in Flask. You can use it to provide a secret key as well. This key is not needed for this tutorial though.
+1. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal a **tutorial** nevű projektre, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) gombra, válassza az **Empty Python File** (Üres Python-fájl) lehetőséget, és a fájlnak adja a **config.py** nevet. A Flask űrlapjainak szüksége van erre a konfigurációs fájlra. Ezzel a fájllal egy titkos kulcsot is megadhat. A jelen oktatóanyaghoz azonban nincs szükség ilyen kulcsra.
 
-2. Add the following code to config.py, you'll need to alter the values of **DOCUMENTDB\_HOST** and **DOCUMENTDB\_KEY** in the next step.
+2. Adja hozzá a következő kódot a config.py fájlhoz, és a következő lépésben módosítsa a **DOCUMENTDB\_HOST** és **DOCUMENTDB\_KEY** paraméterek értékét.
 
     ```python
     CSRF_ENABLED = True
@@ -342,13 +342,13 @@ def vote():
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
 
-3. In the [Azure portal](https://portal.azure.com/), navigate to the **Keys** blade by clicking **Browse**, **DocumentDB Accounts**, double-click the name of the account to use, and then click the **Keys** button in the **Essentials** area. In the **Keys** blade, copy the **URI** value and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_HOST** property. 
-4. Back in the Azure portal, in the **Keys** blade, copy the value of the **Primary Key** or the **Secondary Key**, and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_KEY** property.
-5. In the **\_\_init\_\_.py** file, add the following line. 
+3. Az [Azure Portalon](https://portal.azure.com/) navigáljon a **Kulcsok** panelre. Ehhez kattintson a **Tallózás**, majd a **DocumentDB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** panelen másolja ki az **URI** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_HOST** paraméter értéke helyére. 
+4. Ismét az Azure Portalon, a **Kulcsok** panelen másolja ki az **Elsődleges kulcs** vagy **Másodlagos kulcs** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_KEY** paraméter értéke helyére.
+5. Adja hozzá a következő sort az **\_\_init\_\_.py** fájlhoz. 
 
         app.config.from_object('config')
 
-    So that the content of the file is:
+    Tehát a fájl tartalma a következő legyen:
 
     ```python
     from flask import Flask
@@ -357,86 +357,86 @@ def vote():
     import tutorial.views
     ```
 
-6. After adding all the files, Solution Explorer should look like this:
+6. Az összes fájl hozzáadása után a Solution Explorer (Megoldáskezelő) nézetnek az alábbi módon kell kinéznie:
 
-    ![Screen shot of the Visual Studio Solution Explorer window](./media/documentdb-python-application/image15.png)
+    ![Képernyőfelvétel a Visual Studio Solution Explorer (Megoldáskezelő) ablakáról](./media/documentdb-python-application/image15.png)
 
 
-## Step 4: Run your web application locally
+## <a name="step-4:-run-your-web-application-locally"></a>4. lépés: A webalkalmazás helyileg történő futtatása
 
-1. Build the solution by pressing **Ctrl**+**Shift**+**B**.
-2. Once the build succeeds, start the website by pressing **F5**. You should see the following on your screen.
+1. Fordítsa le a megoldást a **Ctrl**+**Shift**+**B** billentyűkombináció lenyomásával.
+2. A sikeres fordítás után indítsa el a webhelyet az **F5** billentyű lenyomásával. A következőnek kell megjelennie a képernyőn.
 
-    ![Screen shot of the Python + DocumentDB Voting Application displayed in a web browser](./media/documentdb-python-application/image16.png)
+    ![Képernyőfelvétel a webböngészőben megjelenített Python + DocumentDB szavazóalkalmazásról](./media/documentdb-python-application/image16.png)
 
-3. Click **Create/Clear the Voting Database** to generate the database.
+3. Kattintson a **Create/Clear the Voting Database** (A szavazóadatbázis létrehozása/törlése) lehetőségre az adatbázis létrehozásához.
 
-    ![Screen shot of the Create Page of the web application – development details](./media/documentdb-python-application/image17.png)
+    ![Képernyőfelvétel a webalkalmazás Create (Létrehozás) lapjáról – fejlesztési részletek](./media/documentdb-python-application/image17.png)
 
-4. Then, click **Vote** and select your option.
+4. Ezután kattintson a **Vote** (Szavazás) elemre, és válassza ki a kívánt elemet.
 
-    ![Screen shot of the web application with a voting question posed](./media/documentdb-python-application/image18.png)
+    ![Képernyőfelvétel a webalkalmazásról és a szavazási kérdés feltételéről](./media/documentdb-python-application/image18.png)
 
-5. For every vote you cast, it increments the appropriate counter.
+5. Minden leadott szavazattal az annak megfelelő számlálót növeli.
 
-    ![Screen shot of the Results of the vote page shown](./media/documentdb-python-application/image19.png)
+    ![Képernyőfelvétel a szavazás oldalának Results (Eredmények) lapjáról](./media/documentdb-python-application/image19.png)
 
-6. Stop debugging the project by pressing Shift+F5.
+6. A projekt hibakeresésének leállításához nyomja le a Shift+F5 billentyűkombinációt.
 
-## Step 5: Deploy the web application to Azure Websites
+## <a name="step-5:-deploy-the-web-application-to-azure-websites"></a>5. lépés: A webalkalmazás Azure Websitesra történő telepítése
 
-Now that you have the complete application working correctly against DocumentDB, we're going to deploy this to Azure Websites.
+Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB-vel, feltelepítjük a webalkalmazást az Azure Websitesra.
 
-1. Right-click the project in Solution Explorer (make sure you're not still running it locally) and select **Publish**.  
+1. Kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) nézetben (győződjön meg arról, hogy helyileg már nem futtatja azt), és válassza a **Publish** (Közzététel) lehetőséget.  
 
-    ![Screen shot of the tutorial selected in Solution Explorer, with the Publish option highlighted](./media/documentdb-python-application/image20.png)
+    ![Képernyőfelvétel a kiválasztott „tutorial” projektről a Solution Explorer (Megoldáskezelő) nézetben, a kiemelt Publish (Közzététel) lehetőséggel](./media/documentdb-python-application/image20.png)
 
-2. In the **Publish Web** window, select **Microsoft Azure Web Apps**, and then click **Next**.
+2. A **Publish Web** (Webes közzététel) ablakban válassza a **Microsoft Azure Web Apps** (Microsoft Azure-webalkalmazások) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
 
-    ![Screen shot of the Publish Web window with Microsoft Azure Web Apps highlighted](./media/documentdb-python-application/image21.png)
+    ![Képernyőfelvétel a Publish Web (Webes közzététel) ablakról, és a kiemelt Microsoft Azure Web Apps (Microsoft Azure-webalkalmazások) lehetőségről](./media/documentdb-python-application/image21.png)
 
-3. In the **Microsoft Azure Web Apps Window** window, click **New**.
+3. A **Microsoft Azure Web Apps** (Microsoft Azure-webalkalmazások) ablakban kattintson a **New** (Új) lehetőségre.
 
-    ![Screen shot of the Microsoft Azure Web Apps Window window](./media/documentdb-python-application/select-existing-website.png)
+    ![Képernyőfelvétel a Microsoft Azure Web Apps (Microsoft Azure-webalkalmazások) ablakról](./media/documentdb-python-application/select-existing-website.png)
 
-4. In the **Create site on Microsoft Azure** window, enter a **Web app name**, **App Service plan**, **Resource group**, and **Region**, then click **Create**.
+4. A **Create site on Microsoft Azure** (Webhely létrehozása a Microsoft Azure-ban) ablakban adja meg a **Web app name** (Webalkalmazás neve), **App Service plan** (App Service-csomag), **Resource group** (Erőforráscsoport) és **Region** (Régió) beállításokat, majd kattintson a **Create** (Létrehozás) gombra.
 
-    ![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
+    ![Képernyőfelvétel a Microsoft Azure-ablak Create (Létrehozás) lapjáról](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
 
-5. In the **Publish Web** window, click **Publish**.
+5. A **Publish Web** (Webes közzététel) ablakban kattintson a **Publish** (Közzététel) gombra.
 
-    ![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/publish-web.png)
+    ![Képernyőfelvétel a Microsoft Azure-ablak Create (Létrehozás) lapjáról](./media/documentdb-python-application/publish-web.png)
 
-3. In a few seconds, Visual Studio will finish publishing your web application and launch a browser where you can see your handy work running in Azure!
+3. Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját!
 
-## Troubleshooting
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-If this is the first Python app you've run on your computer, ensure that the following folders (or the equivalent installation locations) are included in your PATH variable:
+Ha ez az első Python-alkalmazás, amelyet számítógépén futtat, győződjön meg arról, hogy a következő mappák (vagy az azokkal egyenértékű telepítési helyek) szerepelnek a PATH változóban:
 
     C:\Python27\site-packages;C:\Python27\;C:\Python27\Scripts;
 
-If you receive an error on your vote page, and you named your project something other than **tutorial**, make sure that **\_\_init\_\_.py** references the correct project name in the line: `import tutorial.view`.
+Ha hibába ütközik a szavazási lapon, és a projektet nem **tutorial** néven hozta létre, győződjön meg arról, hogy az **\_\_init\_\_.py** fájl a megfelelő projektnévre hivatkozik a következő sorban: `import tutorial.view`.
 
-## Next steps
+## <a name="next-steps"></a>Következő lépések
 
-Congratulations! You have just completed your first Python web application using Azure DocumentDB and published it to Azure Websites.
+Gratulálunk! Elkészítette első Python-webalkalmazását az Azure DocumentDB használatával, és közzétette azt az Azure Websitesban.
 
-We update and improve this topic frequently based on your feedback.  Once you've completed the tutorial, please using the voting buttons at the top and bottom of this page, and be sure to include your feedback on what improvements you want to see made. If you'd like us to contact you directly, feel free to include your email address in your comments.
+Gyakran frissítjük és javítjuk a jelen témakört a visszajelzések alapján.  Az oktatóanyag befejezése után a lap tetején vagy alján található szavazógomb használatával küldhet visszajelzést. A visszajelzésbe azt is foglalja bele, hogy milyen javításokat szeretne látni. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
 
-To add additional functionality to your web application, review the APIs available in the [DocumentDB Python SDK](documentdb-sdk-python.md).
+Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [DocumentDB Python SDK](documentdb-sdk-python.md)-ban elérhető API-kat.
 
-For more information about Azure, Visual Studio, and Python, see the [Python Developer Center](https://azure.microsoft.com/develop/python/). 
+Az Azure-ra, a Visual Studióval és a Pythonnal kapcsolatos további információkért lásd: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/). 
 
-For additional Python Flask tutorials, see [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
+További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) (A Flask óriási oktatóanyaga – 1. rész: Hello, World!) 
 
   [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
   [2]: https://www.python.org/downloads/windows/
   [3]: https://www.microsoft.com/download/details.aspx?id=44266
-  [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-  [Azure portal]: http://portal.azure.com
+  [Microsoft Webplatform-telepítő]: http://www.microsoft.com/web/downloads/platform.aspx
+  [Azure Portal]: http://portal.azure.com
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

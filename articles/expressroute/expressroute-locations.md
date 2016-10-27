@@ -12,15 +12,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/20/2016"
+   ms.date="10/12/2016"
    ms.author="cherylmc" />
 
 
-# ExpressRoute-partnerek és társviszony-létesítési helyszínek.
+# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
 A cikkben található táblázatok információkat nyújtanak az ExpressRoute-kapcsolatszolgáltatókkal, az ExpressRoute földrajzi lefedettségével, az ExpressRoute-on támogatott Microsoft-felhőszolgáltatásokkal és az ExpressRoute-rendszerintegrátorokkal (SI) kapcsolatban.
 
-## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
+## <a name="<a-name="partners"></a>expressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
 
 Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következő térkép az Azure-régiók és ExpressRoute-helyek listáját tartalmazza. Az ExpressRoute-helyek azokra a helyekre utalnak, ahol a Microsoft több szolgáltatóval is társul.
 
@@ -44,24 +44,25 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 |**Geopolitikai régió**|**Azure-régiók**|**ExpressRoute-helyek**|
 |---|---|---|---|
-|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas, New York, Washington|
+|**Az Egyesült Államok kormányának felhője**|USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia|Chicago, Dallas, New York, Washington, D.C.|
 |**Kína**|Észak-Kína, Kelet-Kína|Peking, Sanghaj|
-|**Németország**|Közép-Németország, Kelet-Németország|Berlin+, Frankfurt|
+|**Németország**|Közép-Németország, Kelet-Németország|Berlin, Frankfurt|
 
 
 A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard ExpressRoute-termékváltozatokban. A globális kapcsolatok támogatásához engedélyeznie kell az ExpressRoute prémium bővítményt. Az országos felhőkörnyezetekhez való kapcsolódás nem támogatott. Igény esetén tájékozódjon kapcsolatszolgáltatójánál a lehetőségekről.
 
 
-## Kapcsolatszolgáltatói helyek
+## <a name="connectivity-provider-locations"></a>Kapcsolatszolgáltatói helyek
 
 > [AZURE.SELECTOR]
 [Helyek szolgáltató alapján](expressroute-locations.md#connectivity-provider-locations)
 [Szolgáltatók hely alapján](expressroute-locations-providers.md#connectivity-provider-locations)
 
-### Termelési Azure
+### <a name="production-azure"></a>Termelési Azure
 
 | **Szolgáltató**  |**Microsoft Azure** | **Office 365 és CRM Online** | **Helyek** |
 |-----------------------|--------------------|----------------|---------------|
+| **AARNet** | Támogatott | Támogatott | Melbourne, Sydney |
 | **[Aryaka Networks]( http://www.aryaka.com/)** | Támogatott | Támogatott | Amszterdam, Szilícium-völgy, Szingapúr, Tokió, Washington, D.C. |
 | **[AT&T NetBond]( https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Támogatott | Támogatott | Amszterdam, Chicago, Dallas, London, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
 | **[British Telecom]( http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | Támogatott | Támogatott | Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
@@ -73,18 +74,18 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | Támogatott | Támogatott | Los Angeles | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Támogatott | Támogatott | Amszterdam, Atlanta, Chicago, Dallas, Hongkong, London, Los Angeles, Melbourne, New York, Oszaka, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **euNetworks** |  Támogatott | Támogatott | Amszterdam |
-| **GÉANT** | Hamarosan | Hamarosan | Amszterdam+ |
-| **[Internet Initiative Japan Inc. – IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |  Támogatott | Támogatott | Oszaka, Tokió |
+| **GÉANT** | Támogatott | Támogatott | Amszterdam |
+| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |  Támogatott | Támogatott | Oszaka, Tokió |
 | **[InterCloud]( https://www.intercloud.com/)** | Támogatott | Támogatott | Amszterdam, London, Szingapúr, Washington, D.C. |
 | **Internet Solutions - Cloud Connect** | Támogatott | Támogatott | Amszterdam, London |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)**  | Támogatott | Támogatott | Amszterdam, London, Párizs |
-| **Jisc** | Hamarosan | Hamarosan | London+ | 
+| **Jisc** | Hamarosan elérhető | Hamarosan | London+ | 
 | **[Level 3 Communications]( http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Támogatott | Támogatott | Amszterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Szilícium-völgy, Washington, D.C. |
 | **Megaport** | Támogatott | Támogatott | Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Szingapúr, Sydney, Washington D.C. |
 | **MTN** | Támogatott | Támogatott | London |
 | **NEXTDC** | Támogatott | Támogatott | Melbourne, Sydney |
 | **NTT Communications** | Támogatott | Támogatott | London, Los Angeles, Oszaka, Tokió |
-| **[Narancssárga]( http://www.orange-business.com/en/products/business-vpn-galerie)** | Támogatott | Támogatott | Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
+| **[Orange]( http://www.orange-business.com/en/products/business-vpn-galerie)** | Támogatott | Támogatott | Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
 | **PCCW Global Limited** | Támogatott | Támogatott | Hongkong |
 | **[SingTel]( http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |  Támogatott | Támogatott | Szingapúr |
 | **Softbank** | Támogatott | Támogatott | Oszaka, Tokió | 
@@ -99,9 +100,9 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 
  **+** = hamarosan elérhető
 
-### Országos felhőkörnyezetek
+### <a name="national-cloud-environments"></a>Országos felhőkörnyezetek
 
-#### Az Egyesült Államok kormányának felhője
+#### <a name="us-government-cloud"></a>Az Egyesült Államok kormányának felhője
 
 | **Szolgáltató**  |**Microsoft Azure** | **Office 365** | **Helyek** |
 |-----------------------|--------------------|----------------|---------------|
@@ -110,23 +111,23 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **[Level 3 Communications]( http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Támogatott | Támogatott | Chicago, New York+, Washington, D.C. |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Támogatott | Támogatott | Chicago, Dallas+, New York, Washington, D.C. |
 
-#### Kína
+#### <a name="china"></a>Kína
 
 | **Szolgáltató**  |**Microsoft Azure** | **Office 365** | **Helyek** |
 |-----------------------|--------------------|----------------|---------------|
 | **China Telecom** | Támogatott | Nem támogatott | Peking, Sanghaj|
 További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsazure.cn/home/features/expressroute/).
 
-#### Németország
+#### <a name="germany"></a>Németország
 
 | **Szolgáltató**  |**Microsoft Azure** | **Office 365** | **Helyek** |
 |-----------------------|--------------------|----------------|---------------|
-| **[Colt]( http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | Támogatott | Nem támogatott | Berlin+, Frankfurt|
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Hamarosan elérhető | Nem támogatott | Frankfurt+|
-| **e-shelter** | Hamarosan elérhető | Nem támogatott | Berlin+|
+| **[Colt]( http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | Támogatott | Nem támogatott | Berlin, Frankfurt|
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Támogatott | Nem támogatott | Frankfurt|
+| **e-shelter** | Támogatott | Nem támogatott | Berlin|
 | **Interxion** | Támogatott | Nem támogatott | Frankfurt|
 
-## <a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
+## <a name="<a-name="nonpartners"></a>connectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
 
 Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is létesíthet kapcsolatot.
 
@@ -151,7 +152,7 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 |**[XO Communications](http://www.xo.com/)**|Equinix|Szilícium-völgy|
 
 
-## ExpressRoute-rendszerintegrátorok
+## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
 
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.
 
@@ -164,7 +165,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | USA |
 |**[Project Leadership](http://www.projectleadership.net/azure)** | USA |
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 - Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
@@ -174,6 +175,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO2-->
 
 

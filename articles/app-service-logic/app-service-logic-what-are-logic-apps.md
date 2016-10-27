@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="What are Logic Apps?" 
-    description="Learn more about App Service Logic Apps" 
+    pageTitle="Mi a Logic Apps szolgáltatás?" 
+    description="További tudnivalók az App Service Logic Apps szolgáltatásról" 
     authors="kevinlam1" 
     manager="dwrede" 
     editor="" 
@@ -13,78 +13,78 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article" 
-    ms.date="07/12/2016"
+    ms.date="10/12/2016"
     ms.author="klam"/>
 
 
-#What are Logic Apps?
+# <a name="what-are-logic-apps?"></a>Mi a Logic Apps szolgáltatás?
 
-Logic Apps provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow.  There are [many connectors](../connectors/apis-list.md) across the cloud and on-premises to quickly integrate across services and protocols.  A logic app begins with a trigger (like 'When an account is added to Dynamics CRM') and after firing can begin many combinations actions, conversions, and condition logic.
+A Logic Apps lehetőséget teremt a skálázható integrálások és munkafolyamatok felhőbe implementálásának leegyszerűsítésére és implementálása. Egy vizuális tervezőt biztosít a folyamatai lépéssorozatként, más néven munkafolyamatként történő modellezésére és automatizálására.  Sok helyszíni és felhőben található [összekötő](../connectors/apis-list.md) létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között.  Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.
 
-The advantages of using Logic Apps include the following:  
+A Logic Apps használatának előnyei többek között a következők:  
 
-- Saving time by designing complex processes using easy to understand design tools
-- Implementing patterns and workflows seamlessly, that would otherwise be difficult to implement in code
-- Getting started quickly from templates
-- Customizing your logic app with your own custom APIs, code, and actions
-- Connect and synchronise disparate systems across on-premises and the cloud
-- Build off of BizTalk server, API Management, Azure Functions, and Azure Service Bus with first-class integration support
+- Idő spórolható meg, mert az összetett folyamatok tervezése könnyen átlátható tervezőeszközökkel történik
+- Minták és munkafolyamatok zökkenőmentes megvalósítása, amelyek amúgy nehezen implementálhatók lennének a programkódban
+- Gyors kezdés sablonok segítségével
+- A logikai alkalmazás testre szabható egyéni API-kkal, programkóddal és műveletekkel
+- Különálló rendszerek összekapcsolása és szinkronizálása a helyszíni rendszer és a felhő között
+- BizTalk Server, API Management, Azure Functions és Azure Service Bus kiépítése első osztályú integrációs támogatással
 
-Logic Apps is a fully managed iPaaS (integration Platform as a Service) allowing developers not to have to worry about building hosting, scalability, availability and management.  Logic Apps will scale up automatically to meet demand.
+A Logic Apps egy teljesen felügyelt iPaaS (szolgáltatásként nyújtott integrációs platform), amely lehetővé teszi a fejlesztők számára, hogy ne kelljen aggódniuk az üzemeltetés, a méretezhetőség és a felügyelet kiépítése miatt.  A Logic Apps automatikusan vertikálisan felskálázódik, hogy kielégítse az igényeket.
 
-![Flow app designer](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
+![Alkalmazásfolyamat-tervező](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
 
-As mentioned, with Logic Apps, you can automate business processes. Here are a couple examples:  
+Ahogy korábban már említettük, a Logic Apps segítségével automatizálhatja az üzleti folyamatokat. Íme néhány példa erre:  
  
-* Move files uploaded to an FTP server into Azure Storage
-* Process and route orders across on-premises and cloud systems
-* Monitor all tweets about a certain topic, analyze the sentiment, and create alerts and tasks for items needing followup.
+* FTP-kiszolgálóra feltöltött fájlok áthelyezése az Azure Storage-ba
+* Rendelések feldolgozása és irányítása a helyszíni és felhőrendszerek között
+* Egy megadott témához tartozó tweetek figyelése, vélemények elemzése, valamint riasztások és feladatok létrehozása utókövetést igénylő elemekhez.
 
-Scenarios such as these can be configured all from the visual designer and without writing a single line of code. Get started [building your logic app now][create].  Once written - a logic app can be [quickly deployed and reconfigured](app-service-logic-create-deploy-template.md) across multiple environments and regions.
+Az ehhez hasonló helyzeteknek megfelelő konfiguráláshoz mindössze a vizuális tervező szükséges, egyetlen sor kódot sem kell írnia. Kezdje el [összeállítani saját logikai alkalmazását][létrehozás].  Ha már megírták, a logikai alkalmazás [gyorsan üzembe helyezhető és újrakonfigurálható](app-service-logic-create-deploy-template.md) több környezetben és régióban is.
 
-## Why Logic Apps?
+## <a name="why-logic-apps?"></a>Miért válasszam a Logic Apps szolgáltatást?
 
-Logic Apps brings speed and scalability into the enterprise integration space.  The ease of use of the designer, variety of available triggers and actions, and powerful management tools make centralizing your APIs simpler than ever.  As businesses move towards digitalization, Logic Apps allows you to connect legacy and cutting-edge systems together.
+A Logic Apps sebességet és méretezhetőséget biztosít a vállalati integráció terén.  A tervező könnyű használata, a számos elérhető eseményindító és művelet, valamint a sokoldalú kezelőeszközök teszik minden eddiginél könnyebbé az API-k központosítását.  Ahogy a vállalkozások a digitalizáció felé mozdulnak el, a Logic Apps lehetővé teszi a régi és a legmodernebb rendszerek összekapcsolását.
 
-Additionally, with our [Enterprise Integration Account][biztalk] you can scale to mature integration scenarios with the power of a [XML messaging][xml], [trading partner management][tpm], and more.
+Továbbá a [nagyvállalati integrációs fiókokkal][biztalk] részletes integrációs forgatókönyvekre is méretezhet az [XML-üzenetküldés][xml], a [kereskedelmipartner-kezelés][tpm] és további szolgáltatások használatával.
 
-- **Easy to use design tools** - Logic Apps can be designed end-to-end in the browser or with Visual Studio tools. Start with a trigger - from a simple schedule to when a GitHub issue is created. Then orchestrate any number of actions using the rich gallery of connectors.
+- **Könnyen használható tervezőeszközök** – A Logic Apps teljes körűen megtervezhető a böngészőben vagy a Visual Studio-eszközökkel. Indítás eseményindítóval – egy egyszerű ütemezéstől a GitHub-problémák létrehozásáig is eljuthat. Ezt követően az összekötők széles választéka segítségével tetszőleges számú műveletet vezényelhet le.
 
-- **Connect APIs easily** - Even composition tasks that are easy to describe are difficult to implement in code. Logic Apps makes it easy to connect disparate systems. Want to connect your cloud marketing solution to your on-premises billing system? Want to centralize messaging across APIs and systems with an Enterprise Service Bus? Logic apps are the fastest, most reliable way to deliver solutions to these problems.
+- **API-k könnyű csatlakoztatása** – Még a könnyen leírható, de összetett feladatokat is nehéz a programkódban implementálni. A Logic Apps megkönnyíti a különböző rendszerek összekapcsolását. Szeretné összekapcsolni felhőalapú marketingmegoldását a helyszíni számlázórendszerrel? Szeretné központosítani az API-k és rendszerek közötti üzenetküldést egy Enterprise Service Bus segítségével? A Logic Apps a lehető leggyorsabb és legmegbízhatóbb megoldást kínálja ezekre a feladatokra.
 
-- **Get started quickly from templates** - To help you get started we've provided a [gallery of templates][templates] that allow you to rapidly create some common solutions. From advanced B2B solutions to simple SaaS connectivity, and even a few that are just 'for fun' - the gallery is the fastest way to get started with the power of Logic Apps.
+- **Gyors használatbavétel a sablonok révén** – Hogy megkönnyítsük a program használatának első lépéseit, összeállítottunk egy [sablongalériát][sablonok], amelynek alapján számos gyakran előforduló megoldás is rendkívül gyorsan megalkotható. A speciális B2B-megoldásoktól az egyszerű SaaS-kapcsolatokig és néhány olyanig, amely csak kedvtelésből készült – a katalógus a leggyorsabb módja a Logic Apps képességei megismerésének.
 
-- **Extensibility baked-in** - Don't see the connector you need? Logic Apps is designed to work with your own APIs and code; you can easily create your own API app to use as a custom connector, or call into an [Azure Function](https://functions.azure.com) to execute snippets of code on-demand. 
+- **Beépített bővíthetőség** – Nem találja a szükséges összekötőt? A Logic Appst arra tervezték, hogy együttműködjön a saját API-kkal és programkóddal. Egyszerűen létrehozhatja és használhatja saját API-alkalmazását egyéni összekötőként, vagy meghívhatja egy [Azure-függvényben](https://functions.azure.com) a kódtöredékek igény szerinti végrehajtásához. 
 
-- **Real integration horsepower** - Start easy and grow as you need. Logic Apps can easily leverage the power of BizTalk, Microsoft's industry leading integration solution to enable integration professionals to build the solutions they need. Find out more about the [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md).
+- **Komoly integrációs teljesítmény** – Kezdje könnyedén, és növekedjen az igényekkel együtt. A Logic Apps a BizTalk, a Microsoft piacvezető integrációs megoldásának erejével eszközöket ad az integrációs szakemberek kezébe, amelyekkel könnyedén kialakíthatják a saját igényeiknek leginkább megfelelő megoldásokat. További információk az [Enterprise Integration Packről](./app-service-logic-enterprise-integration-overview.md).
 
-## Logic App Concepts
+## <a name="logic-app-concepts"></a>A logikai alkalmazások alapjai
 
-The following are some of the key pieces that comprise the Logic Apps experience. 
+Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük ki. 
 
-- **Workflow** - Logic Apps provides a graphical way to model your business processes as a series of steps or a workflow.
-- **Managed Connectors** - Your logic apps need access to data and services. Managed connectors are created specifically to aid you when you are connecting to and working with your data. See the list of connectors available now in [managed connectors][managedapis].
-- **Triggers** - Some Managed Connectors can also act as a trigger. A trigger starts a new instance of a workflow based on a specific event, like the arrival of an e-mail or a change in your Azure Storage account.
--  **Actions** - Each step after the trigger in a workflow is called an action. Each action typically maps to an operation on your managed connector or custom API apps.
-- **Enterprise Integration Pack** - For more advanced integration scenarios, Logic Apps includes capabilities from BizTalk. BizTalk is Microsoft's industry leading integration platform. The Enterprise Integration Pack connectors allow you to easily include validation, transformation, and more in to your Logic App workflows.
+- **Munkafolyamat** – A Logic Apps grafikus felületén lépések sorozataként vagy munkafolyamatként modellezheti az üzleti folyamatokat.
+- **Felügyelt összekötők** – A logikai alkalmazásoknak hozzá kell férniük az adatokhoz és a szolgáltatásokhoz. A felügyelt összekötők azzal a céllal jöttek létre, hogy segítséget nyújtsanak, amikor az adataihoz csatlakozik vagy azokkal dolgozik. A jelenleg elérhető összekötők listája a [felügyelt összekötők][managedapis] alatt található meg.
+- **Eseményindítók** – Néhány felügyelt összekötő betöltheti az eseményindító szerepét is. Az eseményindítóknak az a szerepük, hogy egy adott esemény bekövetkezésekor (például e-mail érkezésekor vagy az Azure-tárfiókban bekövetkezett változáskor) a munkafolyamat új példányát indítsák el.
+-  **Műveletek** – Az eseményindítót követő lépéseket műveleteknek nevezzük. Minden művelet általában egy másik művelethez vezet a felügyelt összekötőn vagy egyéni API-alkalmazásokban.
+- **Enterprise Integration Pack** – A további speciális integrálási forgatókönyvek mmegvalósításaérdekében a Logic Apps BizTalk-képességeket is tartalmaz. A BizTalk a Microsoft piacvezető integrációs platformja. Az Enterprise Integration Pack-összekötők lehetővé teszik, hogy egyszerűen belefoglaljon érvényesítést, átalakítást és még több lehetőséget a Logic App-munkafolyamatokba.
 
-## Getting Started  
+## <a name="getting-started"></a>Első lépések  
 
-- To get started with Logic Apps, follow the [create a Logic App][create] tutorial.  
-- [View common examples and scenarios](app-service-logic-examples-and-scenarios.md)
-- [You can automate business processes with Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [Learn How to Integrate your systems with Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
+- Az első lépések megismeréséhez olvassa el a [Logikai alkalmazás létrehozása][létrehozás] című oktatóanyagot.  
+- [Gyakori példák és felhasználási helyzetek megtekintése](app-service-logic-examples-and-scenarios.md)
+- [Üzleti folyamatok automatizálása a Logic Apps segítségével](http://channel9.msdn.com/Events/Build/2016/T694) 
+- [A Logic Apps segítségével történő rendszerintegráció módjainak megismerése](http://channel9.msdn.com/Events/Build/2016/P462)
 
 [biztalk]: app-service-logic-enterprise-integration-accounts.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
-[create]: app-service-logic-create-a-logic-app.md
+[létrehozás]: app-service-logic-create-a-logic-app.md
 [managedapis]: ../connectors/apis-list.md
 [tpm]: app-service-logic-enterprise-integration-accounts.md
 [xml]: app-service-logic-enterprise-integration-b2b.md
-[templates]: app-service-logic-use-logic-app-templates.md
+[sablonok]: app-service-logic-use-logic-app-templates.md
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

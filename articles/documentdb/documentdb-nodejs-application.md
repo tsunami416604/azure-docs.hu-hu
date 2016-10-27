@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Learn Node.js - DocumentDB Node.js Tutorial | Microsoft Azure" 
-    description="Learn Node.js! Tutorial explores how to use Microsoft Azure DocumentDB to store and access data from a Node.js Express web application hosted on Azure Websites." 
-    keywords="Application development, database tutorial, learn node.js, node.js tutorial, documentdb, azure, Microsoft azure"
+    pageTitle="A Node.js megismerése – DocumentDB Node.js oktatóanyag | Microsoft Azure" 
+    description="A Node.js megismerése Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-webalkalmazások adatait a Microsoft Azure DocumentDB segítségével." 
+    keywords="Alkalmazásfejlesztés, adatbázis-oktatóanyag, a node.js megismerése, node.js-oktatóanyag, documentdb, azure, Microsoft Azure"
     services="documentdb" 
     documentationCenter="nodejs" 
-    authors="AndrewHoh" 
+    authors="syamkmsft" 
     manager="jhubbard" 
     editor="cgronlun"/>
 
@@ -15,10 +15,10 @@
     ms.devlang="nodejs" 
     ms.topic="hero-article" 
     ms.date="08/25/2016" 
-    ms.author="anhoh"/>
+    ms.author="syamk"/>
 
 
-# <a name="_Toc395783175"></a>Build a Node.js web application using DocumentDB
+# <a name="<a-name="_toc395783175"></a>build-a-node.js-web-application-using-documentdb"></a><a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -26,93 +26,93 @@
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
-This Node.js tutorial shows you how to use the Azure DocumentDB service to store and access data from a Node.js Express application hosted on Azure Websites.
+Ez a Node.js-webalkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-alkalmazás adatait az Azure DocumentDB segítségével.
 
-We recommend getting started by watching the following video, where you will learn how to provision an Azure DocumentDB database account and store JSON documents in your Node.js application. 
+Azt javasoljuk, hogy kezdésként tekintse meg az alábbi videót, amelyből megtudhatja, hogyan oszthat ki egy Azure DocumentDB-adatbázisfiókot, valamint tárolhat JSON-dokumentumokat Node.js-alkalmazásában. 
 
 > [AZURE.VIDEO azure-demo-getting-started-with-azure-documentdb-on-nodejs-in-linux]
 
-Then, return to this Node.js tutorial, where you'll learn the answers to the following questions:
+Ezt követően térjen vissza a jelen Node.js-oktatóanyaghoz, amelyben az alábbi kérdésekre kaphat választ:
 
-- How do I work with DocumentDB using the documentdb npm module?
-- How do I deploy the web application to Azure Websites?
+- Hogyan használhatom a documentdb npm modult a DocumentDB szolgáltatással folytatott munkához?
+- Hogyan telepíthetem a webalkalmazást az Azure Websitesra?
 
-By following this database tutorial, you will build a simple web-based task-management application that allows creating, retrieving and completing of tasks. The tasks will be stored as JSON documents in Azure DocumentDB.
+A jelen adatbázis-oktatóanyagban leírtak követésével egy olyan egyszerű, webalapú feladatkezelő alkalmazást hoz majd létre, amellyel feladatokat hozhat létre, kérhet le és végezhet el. A feladatok JSON-dokumentumokként lesznek tárolva az Azure DocumentDB-ben.
 
-![Screen shot of the My Todo List application created in this Node.js tutorial](./media/documentdb-nodejs-application/image1.png)
+![Képernyőfelvétel a jelen Node.js oktatóanyag során készített My Todo List (Saját teendőlista) alkalmazásról](./media/documentdb-nodejs-application/image1.png)
 
-Don't have time to complete the tutorial and just want to get the complete solution? Not a problem, you can get the complete sample solution from [GitHub][].
+Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a teljes megoldáshoz? A teljes megoldást beszerezheti a [GitHub][].
 
-## <a name="_Toc395783176"></a>Prerequisites
+## <a name="<a-name="_toc395783176"></a>prerequisites"></a><a name="_Toc395783176"></a>Előfeltételek
 
-> [AZURE.TIP] This Node.js tutorial assumes that you have some prior experience using Node.js and Azure Websites.
+> [AZURE.TIP] Ez a Node.js-oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Node.js és az Azure Websites használatát illetően.
 
-Before following the instructions in this article, you should ensure that you have the following:
+A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
-- An active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
-- [Node.js][] version v0.10.29 or higher.
-- [Express generator](http://www.expressjs.com/starter/generator.html) (you can install this via `npm install express-generator -g`)
+- Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+- [Node.js][]-verzió: 0.10.29-s vagy újabb.
+- [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 - [Git][].
 
-## <a name="_Toc395637761"></a>Step 1: Create a DocumentDB database account
+## <a name="<a-name="_toc395637761"></a>step-1:-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 
-Let's start by creating a DocumentDB account. If you already have an account, you can skip to [Step 2: Create a new Node.js application](#_Toc395783178).
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>Step 2: Learn to create a new Node.js application
+## <a name="<a-name="_toc395783178"></a>step-2:-learn-to-create-a-new-node.js-application"></a><a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
 
-Now let's learn to create a basic Hello World Node.js project using the [Express](http://expressjs.com/) framework.
+Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-projektet az [Express](http://expressjs.com/)-keretrendszer használatával.
 
-1. Open your favorite terminal.
+1. Nyissa meg kedvenc terminálját.
 
-2. Use the express generator to generate a new application called **todo**.
+2. Az Express generátor használatával hozzon létre egy új alkalmazást **todo** (teendők) néven.
 
         express todo
 
-3. Open your new **todo** directory and install dependencies.
+3. Nyissa meg az új **todo** könyvtárat, és telepítse a függőségeket.
 
         cd todo
         npm install
 
-4. Run your new application.
+4. Futtassa az új alkalmazást.
 
         npm start
 
-5. You can you view your new application by navigating your browser to [http://localhost:3000](http://localhost:3000).
+5. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a következő címre: [http://localhost:3000](http://localhost:3000).
 
-    ![Learn Node.js - Screenshot of the Hello World application in a browser window](./media/documentdb-nodejs-application/image12.png)
+    ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/documentdb-nodejs-application/image12.png)
 
-## <a name="_Toc395783179"></a>Step 3: Install additional modules
+## <a name="<a-name="_toc395783179"></a>step-3:-install-additional-modules"></a><a name="_Toc395783179"></a>3. lépés: További modulok telepítése
 
-The **package.json** file is one of the files created in the root of the project. This file contains a list of additional modules that are required for your Node.js application. Later, when you deploy this application to an Azure Websites, this file is used to determine which modules need to be installed on Azure to support your application. We still need to install two more packages for this tutorial.
+A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később, amikor egy Azure Websitesra telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
 
-1. Back in the terminal, install the **async** module via npm.
+1. A terminálban telepítse az **async** modult az npm segítségével.
 
         npm install async --save
 
-1. Install the **documentdb** module via npm. This is the module where all the DocumentDB magic happens.
+1. Telepítse a **DocumentDB** modult az npm segítségével. Ez az a modul, amelyben a DocumentDB-vel kapcsolatos csodák történnek.
 
         npm install documentdb --save
 
-3. A quick check of the **package.json** file of the application should show the additional modules. This file will tell Azure which packages to download and install when running your application. It should resemble the example below.
+3. Ha gyorsan megtekinti a **package.json** fájl tartalmát, láthatja is a további modulokat. Ez a fájl utasítja az Azure-t az alkalmazás futtatásakor szükséges csomagok letöltésére és telepítésére. Ennek az alábbi példához hasonlóan kell kinéznie.
 
-    ![Screenshot of the package.json tab](./media/documentdb-nodejs-application/image17.png)
+    ![Képernyőfelvétel a package.json lapról](./media/documentdb-nodejs-application/image17.png)
 
-       This tells Node (and Azure later) that your application depends on these additional modules.
+    Ez értesíti a Node-ot (majd később az Azure-t) arról, hogy az alkalmazás ezektől a további moduloktól függ.
 
-## <a name="_Toc395783180"></a>Step 4: Using the DocumentDB service in a node application
+## <a name="<a-name="_toc395783180"></a>step-4:-using-the-documentdb-service-in-a-node-application"></a><a name="_Toc395783180"></a>4. lépés: A DocumentDB szolgáltatás használata Node.js-alkalmazásokban
 
-That takes care of all the initial setup and configuration, now let’s get down to why we’re here, and that’s to write some code using Azure DocumentDB.
+Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni a kódírást az Azure DocumentDB használatával.
 
-### Create the model
+### <a name="create-the-model"></a>A modell létrehozása
 
-1. In the project directory, create a new directory named **models**.
-2. In the **models** directory, create a new file named **taskDao.js**. This file will contain the model for the tasks created by our application.
-3. In the same **models** directory, create another new file named **docdbUtils.js**. This file will contain some useful, reusable, code that we will use throughout our application. 
-4. Copy the following code in to **docdbUtils.js**
+1. A projektkönyvtárban hozzon létre egy új könyvtárat **models** (modellek) néven.
+2. A **models** könyvtárban hozzon létre egy új fájlt **taskDao.js** néven. Ez a fájl tartalmazza majd a modellt az alkalmazás által létrehozott feladatok számára.
+3. Ugyanabban a **models** könyvtárban hozzon létre egy másik új fájlt **docdbUtils.js** néven. Ez a fájl néhány hasznos, újrafelhasználható, az alkalmazás minden területén használt kódot tartalmaz majd.. 
+4. Másolja be az alábbi kódot a **docdbUtils.js** fájlba
 
         var DocumentDBClient = require('documentdb').DocumentClient;
             
@@ -180,18 +180,18 @@ That takes care of all the initial setup and configuration, now let’s get down
                 
         module.exports = DocDBUtils;
 
-    > [AZURE.TIP] createCollection takes an optional requestOptions parameter that can be used to specify the Offer Type for the Collection. If no requestOptions.offerType value is supplied then the Collection will be created using the default Offer Type.
+    > [AZURE.TIP] A createCollection metódus tartalmazhat egy opcionális requestOptions paramétert is, amellyel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket a requestOptions.offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre.
     >
-    > For more information on DocumentDB Offer Types please refer to [Performance levels in DocumentDB](documentdb-performance-levels.md) 
+    > A DocumentDB ajánlattípusaival kapcsolatos további információkért lásd: [Performance levels in DocumentDB](documentdb-performance-levels.md) (A DocumentDB teljesítményszintjei) 
         
-3. Save and close the **docdbUtils.js** file.
+3. Mentse és zárja be a **docdbUtils.js** fájlt.
 
-4. At the beginning of the **taskDao.js** file, add the following code to reference the **DocumentDBClient** and the **docdbUtils.js** we created above:
+4. A **taskDao.js** fájl elejéhez adja hozzá a következő kódot a **DocumentDBClient**-ügyfélre és a fentiekben létrehozott **docdbUtils.js** fájlra való hivatkozáshoz:
 
         var DocumentDBClient = require('documentdb').DocumentClient;
         var docdbUtils = require('./docdbUtils');
 
-4. Next, you will add code to define and export the Task object. This is responsible for initializing our Task object and setting up the Database and Document Collection we will use.
+4. Ezután adja hozzá a feladatobjektum meghatározására és exportálására használt kódot. Ez felelős a feladatobjektum elindításáért, valamint a használni kívánt adatbázis és dokumentumgyűjtemény beállításáért.
 
         function TaskDao(documentDBClient, databaseId, collectionId) {
           this.client = documentDBClient;
@@ -204,7 +204,7 @@ That takes care of all the initial setup and configuration, now let’s get down
         
         module.exports = TaskDao;
 
-5. Next, add the following code to define additional methods on the Task object, which allow interactions with data stored in DocumentDB.
+5. Ezután adja hozzá a következő kódot a feladatobjektumokhoz további metódusok meghatározásához, amelyek lehetővé teszik majd a DocumentDB-ben tárolt adatokkal folytatott interakciót.
 
         TaskDao.prototype = {
             init: function (callback) {
@@ -300,12 +300,12 @@ That takes care of all the initial setup and configuration, now let’s get down
             }
         };
 
-6. Save and close the **taskDao.js** file. 
+6. Mentse és zárja be a **taskDao.js** fájlt. 
 
-### Create the controller
+### <a name="create-the-controller"></a>A vezérlő létrehozása
 
-1. In the **routes** directory of your project, create a new file named **tasklist.js**. 
-2. Add the following code to **tasklist.js**. This loads the DocumentDBClient and async modules, which are used by **tasklist.js**. This also defined the **TaskList** function, which is passed an instance of the **Task** object we defined earlier:
+1. A projekt **routes** könyvtárában hozzon létre egy új fájlt **tasklist.js** néven. 
+2. Adja hozzá a következő kódot a **tasklist.js** fájlhoz. Ez betölti a **tasklist.js** fájl által használt DocumentDBClient és async modult. Emellett a **TaskList** (Feladatlista) függvényt is meghatározta, amelyet a rendszer továbbad a **Task** (Feladat) objektum korábban meghatározott példányának:
 
         var DocumentDBClient = require('documentdb').DocumentClient;
         var async = require('async');
@@ -316,7 +316,7 @@ That takes care of all the initial setup and configuration, now let’s get down
         
         module.exports = TaskList;
 
-3. Continue adding to the **tasklist.js** file by adding the methods used to **showTasks, addTask**, and **completeTasks**:
+3. Folytassa a **tasklist.js** fájlhoz való hozzáadást a **showTasks, addTasks** és **completeTasks** által használt metódusok hozzáadásával.
         
         TaskList.prototype = {
             showTasks: function (req, res) {
@@ -378,12 +378,12 @@ That takes care of all the initial setup and configuration, now let’s get down
         };
 
 
-4. Save and close the **tasklist.js** file.
+4. Mentse és zárja be a **tasklist.js** fájlt.
  
-### Add config.js
+### <a name="add-config.js"></a>A config.js fájl hozzáadása
 
-1. In your project directory create a new file named **config.js**.
-2. Add the following to **config.js**. This defines configuration settings and values needed for our application.
+1. A projektkönyvtárban hozzon létre egy új fájlt **config.js** néven.
+2. Adja hozzá a következőket a **config.js** fájlhoz. Ez meghatározza az alkalmazáshoz szükséges konfigurációs beállításokat és értékeket.
 
         var config = {}
         
@@ -394,27 +394,27 @@ That takes care of all the initial setup and configuration, now let’s get down
         
         module.exports = config;
 
-3. In the **config.js** file, update the values of HOST and AUTH_KEY using the values found in the Keys blade of your DocumentDB account on the [Microsoft Azure Portal](https://portal.azure.com):
+3. A **config.js** fájlban frissítse a HOST és AUTH_KEY értékeket a [Microsoft Azure portálon](https://portal.azure.com), a DocumentDB-fiókjának Kulcsok panelén található értékekkel.
 
-4. Save and close the **config.js** file.
+4. Mentse és zárja be a **config.js** fájlt.
  
-### Modify app.js
+### <a name="modify-app.js"></a>Az app.js fájl módosítása
 
-1. In the project directory, open the **app.js** file. This file was created earlier when the Express web application was created.
-2. Add the following code to the top of **app.js**
+1. A projekt könyvtárában nyissa meg az **app.js** fájlt. Ez a fájl korábban, az Express-webalkalmazás létrehozásakor jött létre.
+2. Adja hozzá a következő kódot az **app.js** fájl elejéhez
     
         var DocumentDBClient = require('documentdb').DocumentClient;
         var config = require('./config');
         var TaskList = require('./routes/tasklist');
         var TaskDao = require('./models/taskDao');
 
-3. This code defines the config file to be used, and proceeds to read values out of this file in to some variables we will use soon.
-4. Replace the following two lines in **app.js** file:
+3. Ez a kód határozza meg a használni kívánt konfigurációs fájlt, és olvassa ki az értékeket abból néhány változó számára, amelyeket hamarosan használni fog.
+4. Cserélje ki az **app.js** fájl alábbi két sorát:
 
         app.use('/', routes);
         app.use('/users', users); 
 
-      with the following snippet:
+      a következő kódtöredékre:
 
         var docDbClient = new DocumentDBClient(config.host, {
             masterKey: config.authKey
@@ -430,16 +430,16 @@ That takes care of all the initial setup and configuration, now let’s get down
 
 
 
-6. These lines define a new instance of our **TaskDao** object, with a new connection to DocumentDB (using the values read from the **config.js**), initialize the task object and then bind form actions to methods on our **TaskList** controller. 
+6. Ezek a sorok meghatározzák a **TaskDao** objektum egy új példányát, amely egy új (a **config.js** fájlból kiolvasott értékek felhasználásával létesített) kapcsolattal csatlakozik a DocumentDB-adatbázishoz. Továbbá ezek inicializálják a feladatobjektumot, majd társítanak űrlapműveleteket a metódusokhoz a **TaskList**-vezérlőn. 
 
-7. Finally, save and close the **app.js** file, we're just about done.
+7. Végül mentse és zárja be az **app.js** fájlt. És már majdnem készen is van.
  
-## <a name="_Toc395783181"></a>Step 5: Build a user interface
+## <a name="<a-name="_toc395783181"></a>step-5:-build-a-user-interface"></a><a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
 
-Now let’s turn our attention to building the user interface so a user can actually interact with our application. The Express application we created uses **Jade** as the view engine. For more information on Jade please refer to [http://jade-lang.com/](http://jade-lang.com/).
+Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. A Jade motorral kapcsolatos további információkért lásd: [http://jade-lang.com/](http://jade-lang.com/).
 
-1. The **layout.jade** file in the **views** directory is used as a global template for other **.jade** files. In this step you will modify it to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking website. 
-2. Open the **layout.jade** file found in the **views** folder and replace the contents with the following;
+1. A rendszer a **views** (nézetek) könyvtárban található **layout.jade** fájlt használja a többi **.jade** fájl globális sablonjaként. Ebben a lépésben ezt a sablont a [Twitter Bootstrap](https://github.com/twbs/bootstrap) eszközkészletre módosítja majd, amellyel könnyen tervezhet tetszetős webhelyeket. 
+2. Nyissa meg a **views** (nézetek) mappában található **layout.jade** fájlt, majd cserélje ki annak tartalmát a következőre:
     
         doctype html
         html
@@ -457,10 +457,10 @@ Now let’s turn our attention to building the user interface so a user can actu
 
 
 
-    This effectively tells the **Jade** engine to render some HTML for our application and creates a **block** called **content** where we can supply the layout for our content pages.
-    Save and close this **layout.jade** file.
+    Ez gyakorlatilag megmondja a **Jade** motornak, hogy rendereljen HTML-kódot az alkalmazás számára, és létrehoz egy **content** (tartalom) nevű **blokkot**, ahol megadhatja a tartalomoldalak elrendezését.
+    Mentse és zárja be a **layout.jade** fájlt.
 
-4. Now open the **index.jade** file, the view that will be used by our application, and replace the content of the file with the following:
+4. Most nyissa meg az **index.jade** fájlt, az alkalmazás által használt nézetet, és cserélje ki a fájl tartalmát az alábbira:
 
         extends layout
         
@@ -500,15 +500,15 @@ Now let’s turn our attention to building the user interface so a user can actu
             br
             button.btn(type="submit") Add item
 
-    This extends layout, and provides content for the **content** placeholder we saw in the **layout.jade** file earlier.
+    Ez kibővíti az elrendezést, és tartalmat biztosít a **layout.jade** fájlban az imént látott **content** (tartalom) helyőrző számára.
     
-    In this layout we created two HTML forms. 
-    The first form contains a table for our data and a button that allows us to update items by posting to **/completetask** method of our controller.
-    The second form contains two input fields and a button that allows us to create a new item by posting to **/addtask** method of our controller.
+    Ebben az elrendezésben két HTML-űrlapot hoztunk létre. 
+    Az első űrlap az adatok táblázatát, valamint egy gombot tartalmaz, amely lehetővé teszi az elemek frissítését úgy, hogy elküldi azokat a vezérlő **/completetask** metódusának.
+    A második űrlap két beviteli mezőt és egy gombot tartalmaz, amely lehetővé teszi új elemek létrehozását úgy, hogy elküldi azokat a vezérlő **/addtask** metódusának.
     
-    This should be all that we need for our application to work.
+    Az alkalmazás működéséhez csak ennyire van szükség.
 
-5. Open the **style.css** file in **public\stylesheets** directory and replace the code with the following:
+5. Nyissa meg a **public\stylesheets** könyvtárban található **style.css** fájlt, és cserélje ki a kódot a következőre:
 
         body {
           padding: 50px;
@@ -528,44 +528,44 @@ Now let’s turn our attention to building the user interface so a user can actu
           border: outset 1px #C8C8C8;
         }
 
-    Save and close this **style.css** file.
+    Mentse és zárja be a **style.css** fájlt.
 
-## <a name="_Toc395783181"></a>Step 6: Run your application locally
+## <a name="<a-name="_toc395783181"></a>step-6:-run-your-application-locally"></a><a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
 
-1. To test the application on your local machine, run `npm start` in a terminal to start your application, and launch a browser with a page that looks like the image below:
+1. Ha tesztelni szeretné az alkalmazást a helyi gépén, futtassa az `npm start` parancsot egy terminálban az alkalmazás elindításához és egy böngésző megnyitásához az alábbi illusztráción láthatóhoz hasonló oldallal:
 
-    ![Screenshot of the MyTodo List application in a browser window](./media/documentdb-nodejs-application/image18.png)
+    ![Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban](./media/documentdb-nodejs-application/image18.png)
 
 
-2. Use the provided fields for Item, Item Name and Category to enter information, and then click **Add Item**.
+2. Adja meg az adatokat az Item (Elem), Item Name (Elem neve) és Category (Kategória) mezőkben, majd kattintson az **Add Item** (Elem hozzáadása) lehetőségre.
 
-3. The page should update to display the newly created item in the ToDo list.
+3. Az oldal ekkor frissül, és megjeleníti az újonnan létrehozott elemet a teendőlistában.
 
-    ![Screenshot of the application with a new item in the ToDo list](./media/documentdb-nodejs-application/image19.png)
+    ![Képernyőfelvétel az alkalmazásról és a teendőlista új eleméről](./media/documentdb-nodejs-application/image19.png)
 
-4. To complete a task, simply check the checkbox in the Complete column, and then click **Update tasks**.
+4. A feladatok elvégzéséhez egyszerűen jelölje be a jelölőnégyzetet a Complete (Elvégezve) oszlopban, majd kattintson az **Update tasks** (Feladatok frissítése) lehetőségre.
 
-## <a name="_Toc395783182"></a>Step 7: Deploy your application development project to Azure Websites
+## <a name="<a-name="_toc395783182"></a>step-7:-deploy-your-application-development-project-to-azure-websites"></a><a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt üzembe helyezése az Azure Websites-ban
 
-1. If you haven't already, enable a git repository for your Azure Website. You can find instructions on how to do this in the [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) topic.
+1. Ha még nem tette meg, engedélyezzen egy Git-tárházat az Azure Websites számára. Ehhez a következő témakörben találhat útmutatót: [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
-2. Add your Azure Website as a git remote.
+2. Adja hozzá Azure-webhelyét távoli Git-elemként.
 
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
 
-3. Deploy by pushing to the remote.
+3. Helyezze üzembe a tárházat a távoli mappához küldéssel.
 
         git push azure master
 
-4. In a few seconds, git will finish publishing your web application and launch a browser where you can see your handy work running in Azure!
+4. Néhány másodpercen belül a Git befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure-on futó munkáját.
 
-## <a name="_Toc395637775"></a>Next steps
+## <a name="<a-name="_toc395637775"></a>next-steps"></a><a name="_Toc395637775"></a>Következő lépések
 
-Congratulations! You have just built your first Node.js Express Web Application using Azure DocumentDB and published it to Azure Websites.
+Gratulálunk! Létrehozta az első Node.js Express-webalkalmazását az Azure DocumentDB használatával, és közzétette azt az Azure Websiteson.
 
-The source code for the complete reference application can be downloaded from [GitHub][].
+A teljes referenciaalkalmazás forráskódja letölthető a [Github][].
 
-For more information, see the [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/).
+További információk: [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/).
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
@@ -574,6 +574,6 @@ For more information, see the [Node.js Developer Center](https://azure.microsoft
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

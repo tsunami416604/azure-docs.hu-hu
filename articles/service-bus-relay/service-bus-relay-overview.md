@@ -1,14 +1,14 @@
 <properties
     pageTitle="A Service Bus Relay áttekintése | Microsoft Azure"
     description="A Service Bus Relay áttekintése."
-    services="service-bus-relay"
+    services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-relay"
+    ms.service="service-bus"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="multiple"
@@ -18,7 +18,7 @@
 
 
 
-# A Service Bus Relay áttekintése
+# <a name="overview-of-service-bus-relay"></a>A Service Bus Relay áttekintése
 
 A Service Bus fő összetevője egy központosított (de erősen elosztott terhelésű) *továbbítási* szolgáltatás, amely lehetővé teszi olyan hibrid alkalmazások összeállítását, amelyek egy Azure-adatközpontban és a saját helyszíni vállalati környezetben is futnak.  A Service Bus Relay számos különböző átviteli protokollt és webszolgáltatási szabványt támogat. Ezek közé tartozik például a SOAP, a WS-* és a REST is. A továbbítási szolgáltatás úgy segíti a hibrid alkalmazásait, hogy biztonságosan lehetővé teszi a vállalati hálózaton belüli Windows Communication Foundation (WCF-) szolgáltatások közzétételét a nyilvános felhőben anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrában. 
 
@@ -30,16 +30,16 @@ A továbbítón keresztüli üzenetcsere mintában a helyszíni szolgáltatás c
 
 A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le. 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus Relayjel kapcsolatos részletekért lásd az alábbi témaköröket.
 
-- [Azure Service Bus architectural overview (Az Azure Service Bus architektúrájának áttekintése)](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-- [A Service Bus Relay szolgáltatás használata](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
+- [Azure Service Bus architectural overview](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) (Az Azure Service Bus architektúrájának áttekintése)
+- [How to use the Service Bus Relay service](service-bus-dotnet-how-to-use-relay.md) (A Service Bus Relay szolgáltatás használata)
 
  
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

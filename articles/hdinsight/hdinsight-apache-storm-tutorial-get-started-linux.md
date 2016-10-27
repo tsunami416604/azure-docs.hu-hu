@@ -14,18 +14,18 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/16/2016"
+   ms.date="10/12/2016"
    ms.author="larryfr"/>
 
 
 
-# Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
+# <a name="apache-storm-tutorial:-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
 
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
 > [AZURE.NOTE] A cikkben található lépések során Linux-alapú HDInsight-fürtöt hozunk létre. Windows-alapú Storm on HDInsight-fürt létrehozásának lépései: [Apache Storm-oktatóanyag: Megismerkedés a Storm Starter-mintákkal a HDInsight platformon történő adatelemzés során](hdinsight-apache-storm-tutorial-get-started.md)
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -39,11 +39,11 @@ Ennek az Apache Storm-oktatóanyagnak a sikeres befejezéséhez az alábbiakra v
 
     - **Windows-ügyfelek számára**: Lásd: [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md) (Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben)
 
-### A hozzáférés-vezérlésre vonatkozó követelmények
+### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
 
 [AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
-## Storm-fürt létrehozása
+## <a name="create-a-storm-cluster"></a>Storm-fürt létrehozása
 
 Ebben a szakaszban 3.2-es verziójú (0.9.3-as Storm-verziójú) HDInsight-fürtöt hoz létre egy Azure Resource Manager-sablon használatával. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -80,7 +80,7 @@ Ebben a szakaszban 3.2-es verziójú (0.9.3-as Storm-verziójú) HDInsight-fürt
 6. Kattintson a ** Create** (Létrehozás) gombra. Ekkor egy új csempe jelenik meg Submitting deployment for Template deployment (Üzemelő példány elküldése sablon üzemelő példányhoz) A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
 
-##Storm Starter-minta futtatása HDInsight platformon
+##<a name="run-a-storm-starter-sample-on-hdinsight"></a>Storm Starter-minta futtatása HDInsight platformon
 
 A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-starter)-minták a HDInsight-fürt részét képezik. A következő lépésekben a WordCount-példát fogja futtatni.
 
@@ -98,9 +98,9 @@ A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-sta
 
 2. Használja az alábbi parancsot példatopológia indításához:
 
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.10.0.2.4.2.4-5.jar storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology wordcount
         
-    > [AZURE.NOTE] A HDInsight a Storm újabb verzióival történő frissítésekor lehetséges, hogy a fájlnév `0.10.0.2.4.2.4-5` része megváltozik.
+    > [AZURE.NOTE] A fájlnév `*` része a verziószámmal való egyeztetéshez szükséges, amely a HDInsight frissítésével módosul.
 
     Ekkor a fürtön a már ismert „wordcount” néven elindul a WordCount-példatopológia. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
 
@@ -108,7 +108,7 @@ A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-sta
     >
     > A WordCount-példa és egyéb Storm Starter-példák megtalálhatóak a fürtön a következő helyen: `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-##A topológia figyelése
+##<a name="monitor-the-topology"></a>A topológia figyelése
 
 A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít a futó topológiákkal való munkavégzéshez.
 
@@ -175,15 +175,15 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
     Ebből láthatja, hogy a szövegben a **hét** szó 1 493 957 alkalommal fordul elő. Az előfordulások számlálása a topológia indításától kezdve történik.
 
-##A topológia leállítása
+##<a name="stop-the-topology"></a>A topológia leállítása
 
 Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-count topológiához, majd válassza a **Kill** (Törlés) gombot a **Topology actions** (Topológiaműveletek) szakaszban. Amikor a rendszer kéri, adjon meg 10 másodperces értéket a topológia leállítása előtti várakozási időként. Az időtúllépés lejáratát követően az adott topológia már nem jelenik meg az irányítópult **Storm UI** (Storm felhasználói felülete) szakaszában.
 
-##A fürt törlése
+##<a name="delete-the-cluster"></a>A fürt törlése
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-##<a id="next"></a>Következő lépések
+##<a name="<a-id="next"></a>next-steps"></a><a id="next"></a>Következő lépések
 
 Ebben az Apache Storm-oktatóanyagban a Storm Starter használatával sajátította el Storm on HDInsight-fürt létrehozását, valamint a Storm irányítópultjának kezelését a Storm-topológiák üzembe helyezéséhez, figyeléséhez és felügyeletéhez. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](hdinsight-storm-develop-java-topology.md).
 
@@ -199,6 +199,6 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO3-->
 
 

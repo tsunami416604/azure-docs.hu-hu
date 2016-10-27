@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="csharp"
    ms.workload="data-management"
-   ms.date="09/14/2016"
+   ms.date="10/04/2016"
    ms.author="sstein"/>
 
 
@@ -26,18 +26,19 @@
 - [C##](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven az [Azure SQL Database .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas adatbáziskészletek létrehozásával kapcsolatban lásd: [Új rugalmas adatbáziskészlet létrehozása](sql-database-elastic-pool-create-csharp.md).
+Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas adatbáziskészletek létrehozásával kapcsolatban lásd: [Új rugalmas adatbáziskészlet létrehozása](sql-database-elastic-pool-create-csharp.md).
 
-Az Azure SQL Database .NET-es kódtára az [Azure Resource Manageren](../resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
+Az Azure SQL Database Management .NET-es kódtára az [Azure Resource Manageren](../resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
-
-> [AZURE.NOTE] Az SQL Database .NET-es kódtára jelenleg előzetes verzióban érhető el.
-
+>[AZURE.NOTE] Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../resource-group-overview.md) támogatott, ezért mindig használja az **Azure SQL Database Management legújabb .NET-es kódtárát ([dokumentáció](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi, [klasszikus üzemi modellen alapuló kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb, Resource Manager-alapú kódtárakat.
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 - Azure-előfizetés. Ha szüksége van Azure-előfizetésre, kattintson a lap tetején látható **INGYENES FIÓK** elemre, majd térjen vissza ehhez a cikkhez.
 - Visual Studio. A Visual Studio ingyenes példánya beszerezhető a [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) (Visual Studio-letöltések) lapon.
+
+>[AZURE.NOTE] Ez a cikk bemutatja egy új, üres SQL-adatbázis létrehozásának lépéseit. Adatbázis másolásához, méretezéséhez, készletbeli létrehozásához stb. módosítsa a *CreateOrUpdateDatabase(...)* metódust az alábbi példában. További információ: [DatabaseCreateMode](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databasecreatemode.aspx) és [DatabaseProperties](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databaseproperties.aspx) osztály.
+
 
 
 ## Egy konzolalkalmazás létrehozása és a szükséges kódtárak telepítése
@@ -50,7 +51,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 Egy SQL-adatbázis C# segítségével történő létrehozásához töltse be a szükséges kezelési kódtárakat (a [csomagkezelő konzol](http://docs.nuget.org/Consume/Package-Manager-Console) használatával):
 
 1. Kattintson a **Tools** (Eszközök)  > **NuGet Package Manager** (NuGet-csomagkezelő) > **Package Manager Console** (Csomagkezelő konzol) elemre.
-2. A [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) telepítéséhez gépelje be: `Install-Package Microsoft.Azure.Management.Sql –Pre`.
+2. A [Microsoft Azure SQL Management Library](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) legújabb verziójának telepítéséhez gépelje be a következőt: `Install-Package Microsoft.Azure.Management.Sql –Pre`.
 3. A [Microsoft Azure Resource Manager Library](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager) telepítéséhez gépelje be: `Install-Package Microsoft.Azure.Management.ResourceManager –Pre`.
 4. A [Microsoft Azure Common Authentication Library](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication) telepítéséhez gépelje be: `Install-Package Microsoft.Azure.Common.Authentication –Pre`. 
 
@@ -294,6 +295,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

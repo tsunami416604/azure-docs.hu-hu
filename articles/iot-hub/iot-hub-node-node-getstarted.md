@@ -31,7 +31,7 @@ Az oktatóanyag végén három Node.js-konzolalkalmazással fog rendelkezni:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-+ A Node.js 0.12.x vagy újabb verziója. <br/> [A fejlesztési környezet előkészítése][lnk-dev-setup] leírja, hogyan telepíthető a Node.js ehhez az oktatóprogramhoz Windows vagy Linux rendszeren.
++ A Node.js 0.10.x vagy újabb verziója.
 
 + Aktív Azure-fiók. (Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].)
 
@@ -314,6 +314,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

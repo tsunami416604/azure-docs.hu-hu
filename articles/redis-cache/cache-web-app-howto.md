@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="cache-redis" 
     ms.devlang="na" 
     ms.topic="hero-article" 
-    ms.date="07/22/2016" 
+    ms.date="10/11/2016" 
     ms.author="sdanie"/>
 
 
@@ -34,7 +34,7 @@ Az oktatóanyagból a következőket sajátíthatja el:
 -   Adatbázisadatok elérése az Entity Framework használatával.
 -   Az adatteljesítmény növelésének és az adatbázis-terhelés csökkentése az Azure Redis Cache használatával történő adattárolás és -beolvasás révén.
 -   Egy rendezett Redis-készlet használata az 5 legjobb csoport lekérdezéséhez.
--   Azure-erőforrások kiépítése egy ARM-sablont használó alkalmazás számára.
+-   Azure-erőforrások kiépítése egy Resource Manager-sablont használó alkalmazás számára.
 -   Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
 
 ## Előfeltételek
@@ -853,6 +853,6 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

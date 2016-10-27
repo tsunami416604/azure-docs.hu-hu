@@ -1,13 +1,13 @@
 <properties 
     pageTitle="A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga | Microsoft Azure"
     description="A közvetítőalapú üzenettovábbítás .NET-oktatóanyaga."
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
     editor="" />
 <tags 
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.devlang="na"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
@@ -16,7 +16,7 @@
     ms.author="sethm" />
 
 
-# A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga
+# <a name="service-bus-brokered-messaging-.net-tutorial"></a>A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga
 
 Az Azure Service Bus két átfogó üzenetküldési megoldást nyújt: az egyiket egy a felhőben futó központi „továbbító” szolgáltatáson keresztül, amely több különböző átviteli protokollt és webszolgáltatást támogat (többek között SOAP, WS-* és REST). Az ügyfélnek nincs szüksége közvetlen kapcsolatra a helyszíni szolgáltatással, és azt sem kell tudnia, hol található, a helyszíni szolgáltatásnak pedig nincs szüksége megnyitott bejövő portra a tűzfalon.
 
@@ -24,21 +24,21 @@ A második üzenetküldési megoldás „közvetítőalapú” üzenettovábbít
 
 A jelen oktatóanyag célja, hogy áttekintést és gyakorlati tapasztalatot nyújtson az üzenetsorokkal kapcsolatban, amelyek a Service Bus által felügyelt üzenettovábbítás alapvető összetevői. Miután a végére ért az oktatóanyag témaköreinek, egy olyan alkalmazással fog rendelkezni, amely feltölt egy üzenetlistát, létrehoz egy üzenetsort és üzeneteket küld ennek az üzenetsornak. Végezetül az alkalmazás megjeleníti az üzenetsorból érkezett üzeneteket, megtisztítja az erőforrásait, majd kilép. A Service Bus Relay-t használó alkalmazás létrehozását bemutató kapcsolódó oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
 
-## Bevezetés és előfeltételek
+## <a name="introduction-and-prerequisites"></a>Bevezetés és előfeltételek
 
 Az üzenetsorok elsőnek be, elsőnek ki (First In, First Out, FIFO) üzenetküldést biztosítanak egy vagy több versengő fogyasztó számára. A FIFO esetében az üzeneteket általában az érzékelők fogadják és dolgozzák fel a sorhoz történő hozzáadásuk időrendje szerint, és minden üzenetet csak egy üzenetfogyasztó fogad és dolgoz fel. Az üzenetsorok használatának egyik legfontosabb előnye, hogy az alkalmazás összetevői*ideiglenesen leválaszthatók*, vagyis az előállítóknak és a fogyasztóknak nem kell egyszerre küldeniük és fogadniuk az üzeneteket, mivel az üzenetsor tartósan tárolja őket. Egy kapcsolódó előny a *terheléselosztás*, amely lehetővé teszi az előállítók és a fogyasztók számára, hogy különböző ütemben küldjenek és fogadjanak üzeneteket.
 
 Az alábbiakban néhány adminisztratív és előfeltételként szolgáló lépést talál, amelyeket az oktatóanyag elkezdése előtt el kell végeznie. Az első egy szolgáltatási névtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
-### Szolgáltatásnévtér létrehozása és SAS-kulcs beszerzése
+### <a name="create-a-service-namespace-and-obtain-a-sas-key"></a>Szolgáltatásnévtér létrehozása és SAS-kulcs beszerzése
 
-Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 A következő lépésben létre kell hoznia egy Visual Studio-projektet, és két olyan segédfüggvényt kell írnia, amely egy vesszővel elválasztott üzenetlistát tölt be egy szigorú típusmegadású [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) .NET [Lista](https://msdn.microsoft.com/library/6sh2ey19.aspx) objektumba.
 
-### Visual Studio-projekt létrehozása
+### <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
 1. Nyissa meg a Visual Studiót rendszergazdaként. Ehhez a Start menüben kattintson a jobb gombbal a programra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 
@@ -95,7 +95,7 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
 
 1. Keresse meg a 6. lépésben létrehozott Data.csv fájlt. Kattintson a fájlra, majd kattintson az **Add** (Hozzáadás) gombra. Győződjön meg arról, hogy az **All Files (*.*)** (Minden fájl) lehetőség van kiválasztva a fájltípusok listájában.
 
-### Az üzenetek listáját elemző metódus létrehozása
+### <a name="create-a-method-that-parses-a-list-of-messages"></a>Az üzenetek listáját elemző metódus létrehozása
 
 1. A `Main()` metódus előtti `Program` osztályban deklaráljon két változót: egy **DataTable** típusút, amely a Data.csv fájlban lévő üzenetek listáját tartalmazza. A másik típusa Listaobjektum legyen, amely [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) szigorú típussal rendelkezik. Az utóbbi a közvetítőalapú üzenetek listája, amelyeket az oktatóanyag következő lépései alkalmaznak.
 
@@ -158,7 +158,7 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     }
     ```
 
-### Az üzenetek listáját betöltő metódus létrehozása
+### <a name="create-a-method-that-loads-the-list-of-messages"></a>Az üzenetek listáját betöltő metódus létrehozása
 
 1. A `Main()` metóduson kívül határozzon meg egy `GenerateMessages()` metódust, amely fogadja a `ParseCSVFile()` által visszaadott **DataTable** objektumot, és betölti a táblát a közvetítőalapú üzenetek szigorú típusmegadású listájába. A metódus ezután visszaadja a **Lista** objektumot, ahogy az alábbi példában is látható. 
 
@@ -194,7 +194,7 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     }
     ```
 
-### A felhasználó hitelesítő adatainak beszerzése
+### <a name="obtain-user-credentials"></a>A felhasználó hitelesítő adatainak beszerzése
 
 1. Először hozzon létre három globális karakterlánc típusú változót az értékek tárolásához. Deklarálja ezeket az értékeket közvetlenül az előző változók deklarációja után; például:
 
@@ -244,11 +244,11 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     }
     ```
 
-### A megoldás létrehozása
+### <a name="build-the-solution"></a>A megoldás létrehozása
 
 A Visual Studio **Létrehozás** menüjében rákattinthat a **Megoldás fordítása** elemre, vagy a **Ctrl+Shift+B** billentyűkombináció lenyomásával ellenőrizheti az eddigi munkája pontosságát.
 
-## Felügyeleti hitelesítő adatok létrehozása
+## <a name="create-management-credentials"></a>Felügyeleti hitelesítő adatok létrehozása
 
 Ebben a lépésben meghatározza a felügyeleti műveleteket, amelyeket az alkalmazás engedélyezéséhez szükséges közös hozzáférésű jogosultságkód (SAS) hitelesítő adatok létrehozásához fog használni.
 
@@ -280,7 +280,7 @@ Ebben a lépésben meghatározza a felügyeleti műveleteket, amelyeket az alkal
     NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
     ```
 
-### Példa
+### <a name="example"></a>Példa
 
 Mostanra a kód az alábbihoz hasonlít:
 
@@ -388,11 +388,11 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## Üzenetek küldése az üzenetsorba
+## <a name="send-messages-to-the-queue"></a>Üzenetek küldése az üzenetsorba
 
 Ebben a lépésben létrehoz egy üzenetsort, majd elküldi a közvetítőalapú üzenetek listájában lévő üzeneteket ennek az üzenetsornak.
 
-### Üzenetsor létrehozása és üzenetek küldése az üzenetsorba
+### <a name="create-queue-and-send-messages-to-the-queue"></a>Üzenetsor létrehozása és üzenetek küldése az üzenetsorba
 
 1. Először hozzon létre egy üzenetsort. Adja neki például a `myQueue` nevet, majd deklarálja közvetlenül az előző lépés során a `Queue()` metódusban hozzáadott felügyeleti műveletek után:
 
@@ -433,11 +433,11 @@ Ebben a lépésben létrehoz egy üzenetsort, majd elküldi a közvetítőalapú
     }
     ```
 
-## Üzenet fogadása az üzenetsorból
+## <a name="receive-messages-from-the-queue"></a>Üzenet fogadása az üzenetsorból
 
 Ebben a lépésben beszerzi az üzenetek listáját az előző lépésben létrehozott üzenetsorból.
 
-### Fogadó létrehozása és üzenetek fogadása az üzenetsorból
+### <a name="create-a-receiver-and-receive-messages-from-the-queue"></a>Fogadó létrehozása és üzenetek fogadása az üzenetsorból
 
 A `Queue()` metódusban végezze el az iterációt az üzenetsoron, fogadja az üzeneteket a [QueueClient.ReceiveAsync](https://msdn.microsoft.com/library/azure/dn130423.aspx) metódus használatával, majd nyomtasson minden üzenetet a konzolba. Vegye fel a következő kódot közvetlenül az előző lépésben felvett kód után:
 
@@ -456,7 +456,7 @@ while ((message = await myQueueClient.ReceiveAsync(new TimeSpan(hours: 0, minute
 
 Vegye figyelembe, hogy a `Thread.Sleep` csak az üzenetfeldolgozás szimulálására szolgál, és egy valódi üzenetküldési alkalmazásban valószínűleg nem lenne rá szükség.
 
-### A Queue metódus befejezése és az erőforrások törlése
+### <a name="end-the-queue-method-and-clean-up-resources"></a>A Queue metódus befejezése és az erőforrások törlése
 
 Az üzenetgyár és az üzenetsor erőforrásainak törléséhez vegye fel az alábbi kódot közvetlenül az előző kód után:
 
@@ -466,7 +466,7 @@ myQueueClient.Close();
 namespaceClient.DeleteQueue("IssueTrackingQueue");
 ```
 
-### A Queue metódus meghívása
+### <a name="call-the-queue-method"></a>A Queue metódus meghívása
 
 Az utolsó lépés egy utasítás hozzáadása, amely meghívja a `Queue()` metódust a következőből: `Main()`. Vegye fel az alábbi kiemelt kódsort a Main() végéhez:
     
@@ -485,7 +485,7 @@ public static void Main(string[] args)
 }
 ```
 
-### Példa
+### <a name="example"></a>Példa
 
 Az alábbi kód a teljes **QueueSample** alkalmazást tartalmazza.
 
@@ -636,27 +636,27 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## A QueueSample alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-queuesample-application"></a>A QueueSample alkalmazás létrehozása és futtatása
 
 Most, hogy elvégezte az előző lépéseket, létrehozhatja és futtathatja a **QueueSample** alkalmazást.
 
-### A QueueSample alkalmazás létrehozása
+### <a name="build-the-queuesample-application"></a>A QueueSample alkalmazás létrehozása
 
 A Visual Studio **Létrehozás** menüjében kattintson a **Megoldás fordítása** elemre, vagy nyomja le a **Ctrl+Shift+B** billentyűkombinációt. Ha hibákat észlel, az előző lépés végén bemutatott teljes példa alapján ellenőrizze, hogy a kód megfelelő-e.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Service Bus-ügyfélalkalmazást és szolgáltatást a Service Bus közvetítőalapú üzenettovábbítási képességeivel. A Service Bus [Relay](service-bus-messaging-overview.md#Relayed-messaging)-t alkalmazó hasonló oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
 
 A [Service Busról](https://azure.microsoft.com/services/service-bus/) a következő témakörökben talál további információt.
 
-- [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](service-bus-messaging-overview.md)
-- [Service Bus fundamentals (A Service Bus alapjai)](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus-architektúra](../service-bus/service-bus-architecture.md)
+- [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
+- [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus-architektúra](service-bus-architecture.md)
 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

@@ -1,158 +1,165 @@
 <properties
-	pageTitle="Virtual Machine Scale Sets Overview | Microsoft Azure"
-	description="Learn more about Virtual Machine Scale Sets"
-	services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="gbowerman"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Virtuálisgép-méretezési csoportok – áttekintés | Microsoft Azure"
+    description="További információk a virtuálisgép-méretezési csoportokról"
+    services="virtual-machine-scale-sets"
+    documentationCenter=""
+    authors="gbowerman"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/13/2016"
-	ms.author="guybo"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/13/2016"
+    ms.author="guybo"/>
 
-# Virtual Machine Scale Sets Overview
 
-Virtual machine scale sets are an Azure Compute resource you can use to deploy and manage a set of identical VMs. With all VMs configured the same, VM scale sets are designed to support true autoscale – no pre-provisioning of VMs is required – and as such makes it easier to build large-scale services targeting big compute, big data, and containerized workloads.
+# <a name="virtual-machine-scale-sets-overview"></a>Virtuálisgép-méretezési csoportok – áttekintés
 
-For applications that need to scale compute resources out and in, scale operations are implicitly balanced across fault and update domains. For an introduction to VM scale sets refer to the [Azure blog announcement](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/).
+A virtuálisgép-méretezési csoportok olyan Azure Compute-erőforrások, amelyek azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó virtuálisgép-méretezési csoportok a valódi automatikus méretezés támogatására készültek (miközben nincs szükség virtuális gépek üzembe helyezésére), és mint olyanok, megkönnyítik a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítését.
 
-Take a look at these videos for more about VM scale sets:
+A számítási erőforrások horizontális fel- és leskálázását igénylő alkalmazások esetében a méretezési műveletek implicit módon oszlanak el a tartalék- és frissítési tartományok között. A virtuálisgép-méretezési csoportokról bővebb bevezetést [ebben az Azure-blogbejegyzésben](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/) talál.
 
- - [Mark Russinovich talks Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)  
+A virtuálisgép-méretezési csoportokkal kapcsolatban további információkat tudhat meg az alábbi videókból:
 
- - [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
+ - [Mark Russinovich talks Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/) (Mark Russinovich ismerteti az Azure-alapú méretezési csoportokat)  
 
-## Creating and managing VM scale sets
+ - [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman) (A virtuálisgép-méretezési csoportokról Guy Bowerman mesél)
 
-You can create a VM Scale Set in the [Azure portal](https://portal.azure.com) by selecting _new_ and typing in "scale" in the search bar. You will see "Virtual machine scale set" in the results. From there you can fill in the required fields to customize and deploy your scale set. 
+## <a name="creating-and-managing-vm-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása és felügyelete
 
-VM scale sets can also be defined and deployed using JSON templates and [REST APIs](https://msdn.microsoft.com/library/mt589023.aspx) just like individual Azure Resource Manager VMs. Therefore, any standard Azure Resource Manager deployment methods can be used. For more information about templates, see [Authoring Azure Resource Manager templates](../resource-group-authoring-templates.md).
+Ha virtuálisgép-méretezési csoportokat szeretne létrehozni az [Azure Portálon](https://portal.azure.com), válassza az _új_ lehetőséget, majd írja be a keresőmezőbe a „méretezés” szót. Az eredmények között megjelenik a „Virtuálisgép-méretezési csoport” kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. 
 
-A set of example templates for VM scale sets can be found in the Azure Quickstart templates GitHub repository [here.](https://github.com/Azure/azure-quickstart-templates) (look for templates with _vmss_ in the title)
+A virtuálisgép-méretezési csoportok megadását és üzembe helyezését – az egyedi Azure Resource Manager-alapú virtuális gépekhez hasonlóan – JSON-sablonok és [REST API-k](https://msdn.microsoft.com/library/mt589023.aspx) segítségével is elvégezheti. Ezért lehetőség van bármilyen szabványos Azure Resource Manager-alapú üzembe helyezési módszer használatára. A sablonokról további információkat az [Authoring Azure Resource Manager templates](../resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
-In the detail pages for these templates you'll see a button that links to the portal deployment feature. To deploy the VM scale set, click on the button and then fill in any parameters that are required in the portal. If you're not sure whether a resource supports upper or mixed case it is safer to always use lower case parameter values. There is also a handy video dissection of a VM scale set template here:
+A virtuálisgép-méretezési csoportokhoz tartozó példasablonkészlet az Azure-gyorssablonok GitHub-adattárában található [itt.](https://github.com/Azure/azure-quickstart-templates) (olyan sablonokat keressen, amelyek címében szerepel a _vmss_ szó).
 
-[VM Scale Set Template Dissection](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player)
+E sablonok információs lapjain talál egy, a portálon keresztüli üzembe helyezési funkcióra mutató gombot. A virtuálisgép-méretezési csoport üzembe helyezéséhez kattintson erre a gombra, majd a portálon írjon be minden szükséges paramétert. Ha nem biztos abban, hogy egy erőforrás támogatja-e a kis- és nagybetűs karaktereket, célszerűbb mindig kisbetűs paraméterértékeket használni. Itt talál továbbá egy hasznos, részletekbe menő videót a virtuálisgép-méretezési csoportsablonról:
 
-## Scaling a VM scale set out and in
+[VM Scale Set Template Dissection](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player) (Virtuálisgép-méretezési csoportsablon részletesen)
 
-To increase or decrease the number of virtual machines in a VM scale set, simply change the _capacity_ property and redeploy the template. This simplicity makes it easy to write your own custom scaling layer if you want to define custom scale events that are not supported by Azure autoscale.
+## <a name="scaling-a-vm-scale-set-out-and-in"></a>Virtuálisgép-méretezési csoport horizontális fel- és leskálázása
 
-If you are redeploying a template to change the capacity, you could define a much smaller template which only includes the SKU and the updated capacity. An example of this is shown [here.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)
+Ha egy Virtuálisgép-méretezési csoportban növelni vagy csökkenteni szeretné a virtuális gépek számát, módosítsa a _capacity_ tulajdonság értékét, majd alkalmazza újra a sablont. Ezzel az egyszerű módszerrel könnyűszerrel írható meg egy saját testreszabott méretezési réteg, ha olyan egyedi méretezési eseményeket szeretne meghatározni, amelyeket nem támogat az Azure-alapú automatikus skálázás.
 
-To walk through the steps that create a scale set that is automatically scaled, see [Automatically Scale Machines in a Virtual Machine Scale Set](virtual-machine-scale-sets-windows-autoscale.md)
+Ha a kapacitás módosításához újraalkalmaz egy sablont, akkor lehetőség van egy sokkal kisebb, csak a termékváltozatot és a frissített kapacitást tartalmazó sablon megadására. Erre [itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) talál példát.
 
-## Monitoring your VM scale set
+Az automatikusan méretezett méretezési csoportok létrehozásának lépéseiről bővebben az [Automatically Scale Machines in a Virtual Machine Scale Set](virtual-machine-scale-sets-windows-autoscale.md) (Gépek automatikus méretezése egy virtuálisgép-méretezési csoportban) című témakörben olvashat.
 
-The [Azure portal](https://portal.azure.com) lists scale sets and shows basic properties, as well as listing VMs in the set. For more detail you can use the [Azure Resource Explorer](https://resources.azure.com) to view VM scale sets. VM scale sets are a resource under Microsoft.Compute, so from this site you can see them by expanding the following links:
+## <a name="monitoring-your-vm-scale-set"></a>Virtuálisgép-méretezési csoport figyelése
 
-	subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
+Az [Azure Portal](https://portal.azure.com) felsorolja a méretezési csoportokat, és megjeleníti azok alapvető tulajdonságait, valamint a csoportba tartozó virtuális gépeket. A virtuálisgép-méretezési csoportok további részleteit az [Azure erőforrás-kezelővel](https://resources.azure.com) tekintheti meg. A virtuálisgép-méretezési csoportok a Microsoft.Compute erőforrásai, vagyis ezen a webhelyen tekintheti meg őket az alábbi hivatkozások kibontásával:
 
-## VM scale set scenarios
+    subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
 
-This section lists some typical VM scale set scenarios. Some higher level Azure services (like Batch, Service Fabric, Azure Container Service) will use these scenarios.
+## <a name="vm-scale-set-scenarios"></a>Virtuálisgép-méretezési csoportok használatának esetei
 
- - **RDP / SSH to VM scale set instances** - A VM scale set is created inside a VNET and individual VMs in the scale set are not allocated public IP addresses. This is a good thing because you don't generally want the expense and management overhead of allocating separate public IP addresses to all the stateless resources in your compute grid, and you can easily connect to these VMs from other resources in your VNET including ones which have public IP addresses like load balancers or standalone virtual machines.
+Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány tipikus esetét sorolja fel. Ezek az esetek néhány magasabb szintű Azure-szolgáltatás (például a Batch, a Service Fabric, az Azure Container Service) használatakor merülhetnek fel.
 
- - **Connect to VMs using NAT rules** - You can create a public IP address, assign it to a load balancer, and define inbound NAT rules which map a port on the IP address to a port on a VM in the VM scale set. For example:
+ - **RDP/SSH a virtuálisgép-méretezési csoport példányaihoz** – A rendszer egy virtuálisgép-méretezési csoportot hozott létre egy virtuális hálózaton belül, és a méretezési csoportba tartozó egyes virtuális gépekhez nem osztott ki nyilvános IP-címeket. Ez azért is lehet hasznos, mert a számítási gridben általában véve nem szeretné viselni az egyes nyilvános IP-címek minden állapot nélküli erőforráshoz való kiosztásával járó költségeket és munkaterhelést, és a virtuális hálózatában lévő más erőforrásokról (köztük azokról, amelyek nyilvános IP-címekkel rendelkeznek, például a terheléselosztókról és a különálló virtuális gépekről) könnyűszerrel kapcsolódhat ezekhez a virtuális gépekhez.
+
+ - **Csatlakozás virtuális gépekhez NAT-szabályok használatával** – Létrehozhat egy nyilvános IP-címet, hozzárendelheti egy terheléselosztóhoz, majd bejövő NAT-szabályokat adhat meg, amelyek az IP-címen található portot hozzárendelik a virtuálisgép-méretezési csoportban lévő virtuális gépen található porthoz. Példa:
  
-	Source | Source Port | Destination | Destination Port
-	--- | --- | --- | ---
-	Public IP | Port 50000 | vmss\_0 | Port 22
-	Public IP | Port 50001 | vmss\_1 | Port 22
-	Public IP | Port 50002 | vmss\_2 | Port 22
+    Forrás | Forrásport | Cél | Célport
+    --- | --- | --- | ---
+    Nyilvános IP-cím | 50000-es port | vmss\_0 | 22-es port
+    Nyilvános IP-cím | 50001-es port | vmss\_1 | 22-es port
+    Nyilvános IP-cím | 50002-es port | vmss\_2 | 22-es port
 
-	Here's an example of creating a VM scale set which uses NAT rules to enable SSH connection to every VM in a scale set using a single public IP: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
+    Az alábbiakban egy példát láthat egy virtuálisgép-méretezési csoport létrehozására, amely NAT-szabályokkal engedélyezi az SSH-kapcsolatot az egyetlen nyilvános IP-címet használó méretezési csoportban lévő összes virtuális géphez: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
 
-	Here's an example of doing the same with RDP and Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
+    Itt pedig egy másik példa ugyanerre az RDP és a Windows esetében: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
 
- - **Connect to VMs using a "jumpbox"** - If you create a VM scale set and a standalone VM in the same VNET, the standalone VM and the VM scale set VMs can connect to one another using their internal IP addresses as defined by the VNET/Subnet. If you create a public IP address and assign it to the standalone VM you can RDP or SSH to the standalone VM and then connect from that machine to your VM scale set instances. You may notice at this point that a simple VM scale set is inherently more secure than a simple standalone VM with a public IP address in its default configuration.
+ - **Csatlakozás virtuális gépekhez „jumpbox” segítségével** – Ha ugyanabban a virtuális hálózatban hoz létre egy virtuálisgép-méretezési csoportot és egy különálló virtuális gépet, a különálló virtuális gép és a virtuálisgép-méretezési csoport virtuális gépei kapcsolódhatnak egymáshoz a virtuális hálózat/alhálózat által megadott belső IP-címeik használatával. Ha létrehoz egy nyilvános IP-címet, majd hozzárendeli a különálló virtuális géphez, RDP és SSH segítségével kapcsolódhat a különálló virtuális géphez, majd arról a gépről a virtuálisgép-méretezési csoport példányaihoz. Bizonyára észrevette, hogy egy egyszerű virtuálisgép-méretezési csoport eleve biztonságosabb, mint alapértelmezett konfigurációjában egy nyilvános IP-címmel rendelkező egyszerű különálló virtuális gép.
 
-	[For an example of this approach, this template creates a simple Mesos cluster consisting of a standalone Master VM which manages a VM scale-set based cluster of VMs.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
+    [Ez a példasablon egy egyszerű, egy különálló, fő virtuális gépet tartalmazó Mesos-fürtöt hoz létre, amely egy virtuálisgép-méretezési csoport virtuális gépeiből álló fürtöt felügyel.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
 
- - **Load balancing to VM scale set instances** - If you want to deliver work to a compute cluster of VMs using a "round-robin" approach, you can configure an Azure load balancer with load-balancing rules accordingly. You can define probes to verify your application is running by pinging ports with a specified protocol, interval and request path. The Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) also supports scale sets, along with more sophisticated load balancing scenarios.
+ - **Terheléselosztás a virtuálisgép-méretezési csoport példányaiban** – Ha virtuális gépek számítási fürtjére a ciklikus időszeletelés módszerével szeretne munkát továbbítani, lehetőség van egy Azure-terheléselosztó megfelelő terheléselosztási szabályokkal való konfigurálására. Mintavételeket adhat meg annak ellenőrzésére, hogy az alkalmazása a portok megadott protokollal, intervallummal és kérelmi útvonallal való pingelésével fut-e. Az Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) szintén támogatja a méretezési csoportokat, több más kifinomult terheléselosztási esettel együtt.
 
-	[Here is an example which creates a VM scale set of VMs running IIS web server, and uses a load balancer to balance the load that each VM receives. It also uses the HTTP protocol to ping a specific URL on each VM.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) (look at the Microsoft.Network/loadBalancers resource type and the networkProfile and extensionProfile in the virtualMachineScaleSet)
+    [Ez a példasablon IIS-webkiszolgálón futó virtuális gépek virtuálisgép-méretezési csoportját hozza létre, és terheléselosztó segítségével osztja el az egyes virtuális gépeket érő terhelést. Emellett a HTTP-protokoll használatával pingel egy adott URL-címet az egyes virtuális gépeken.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) (tekintse meg a Microsoft.Network/loadBalancers erőforrástípust, valamint a networkProfile és az extensionProfile objektumot a virtualMachineScaleSet osztályban)
 
- - **Deploying a VM scale set as a compute cluster in a PaaS cluster manager** - VM scale sets are sometimes described as a next-generation worker role. It's a valid description but it also runs the risk of confusing scale set features with PaaS v1 Worker role features. In a sense VM scale sets provide a true "worker role" or worker resource, in that they provide a generalized compute resource which is platform/runtime independent, customizable and integrates into Azure Resource Manager IaaS.
+ - **Virtuálisgép-méretezési csoport üzembe helyezése számítási fürtként egy PaaS-fürtkezelőben** – A virtuálisgép-méretezési csoportokat néha következő generációs feldolgozói szerepkörnek is nevezik. Ez egy valós leírás, de fennáll esetében annak a kockázata, hogy a méretezési csoport funkcióit összekeverik a PaaS v1 feldolgozói szerepkör funkcióival. A virtuálisgép-méretezési csoportok bizonyos értelemben valódi „feldolgozói szerepkört” vagy feldolgozói erőforrást biztosítanak, amelyben platform- és futásidő-független, testreszabható és az Azure Resource Manager IaaS szolgáltatásába integrálható általános számítási erőforrást nyújtanak.
 
-	A PaaS v1 worker role, while limited in terms of platform/runtime support (Windows platform images only) also includes services such as VIP swap, configurable upgrade settings, runtime/app deployment specific settings which are either not _yet_ available in VM scale sets, or will be delivered by other higher level PaaS services like Service Fabric. With this in mind you can look at VM scale sets as an infrastructure which supports PaaS. I.e. PaaS solutions like Service Fabric or cluster managers like Mesos can build on top of VM scale sets as a scalable compute layer.
+    Bár egy PaaS v1-alapú feldolgozói szerepkör a platform-/futásidő-támogatás tekintetében korlátozott (csak Windows platformú lemezképekkel használható), magában foglal olyan szolgáltatásokat is, mint a virtuális IP-címek felcserélése, konfigurálható frissítési beállítások, futásidő- és alkalmazástelepítés-specifikus beállítások, amelyek vagy nem érhetők _még_ el a virtuálisgép-méretezési csoportokban, vagy más magasabb szintű PaaS-szolgáltatások, például Service Fabric részeként vásárolhatók meg. Mindezt szem előtt tartva a virtuálisgép-méretezési csoportok PaaS-szolgáltatást támogató infrastruktúrának is tekinthetők. Vagyis a PaaS megoldások, például a Service Fabric vagy az olyan fürtkezelők, mint a Mesos, méretezhető számítási rétegként épülhetnek rá a virtuálisgép-méretezési csoportokra.
 
-	[For an example of this approach, this template creates a simple Mesos cluster consisting of a standalone Master VM which manages a VM scale-set based cluster of VMs.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json) Future versions of the [Azure Container Service](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/) will deploy more complex/hardened versions of this scenario based on VM scale sets.
+    [Ez a példasablon egy egyszerű, egy különálló, fő virtuális gépet tartalmazó Mesos-fürtöt hoz létre, amely egy virtuálisgép-méretezési csoport virtuális gépeiből álló fürtöt felügyel.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json) A virtuálisgép-méretezési csoportokra építve az [Azure Container Service](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/) későbbi verziói e forgatókönyv összetettebb és jobban megerősített verzióit fogják alkalmazni.
 
-## VM scale set performance and scale guidance
+## <a name="vm-scale-set-performance-and-scale-guidance"></a>A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
 
-- Do not create more than 500 VMs in multiple VM Scale Sets at a time.
-- Plan for no more than 20 VMs per storage account (unless you set the _overprovision_ property to "false", in which case you can go up to 40).
-- Spread out the first letters of storage account names as much as possible.  The example VMSS templates in [Azure Quickstart templates](https://github.com/Azure/azure-quickstart-templates/) provide examples of how to do this.
-- If using custom VMs, plan for no more than 40 VMs per VM scale set, in a single storage account.  You will need the image pre-copied into the storage account before you can begin VM scale set deployment. See the FAQ for more information.
-- Plan for no more than 4096 VMs per VNET.
-- The number of VMs you can create is limited by the core quota in the region in which you are deploying. You may need to contact Customer Support to increase your Compute quota limit increased even if you have a high limit of cores for use with cloud services or IaaS v1 today. To query your quota you can run the following Azure CLI command: `azure vm list-usage`, and the following PowerShell command: `Get-AzureRmVMUsage` (if using a version of PowerShell below 1.0 use `Get-AzureVMUsage`).
+- Több virtuálisgép-méretezési csoportban egyszerre legfeljebb csak 500 virtuális gépet hozzon létre.
+- Tárfiókonként legfeljebb csak 20 virtuális gépet tervezzen (hacsak az _overprovision_ tulajdonság értékét hamisra nem állította, amely esetben 40 gépet is megadhat).
+- Minél tágabb tartományból válassza ki a tárfiókok nevének kezdőbetűit.  Az [Azure Quickstart templates](https://github.com/Azure/azure-quickstart-templates/) (Azure gyorsindítási sablonok) webhelyen található, virtuálisgép-méretezési csoportokkal kapcsolatos példasablonok számos példát szolgáltatnak e művelet elvégzésnek módjára.
+- Ha egyéni virtuális gépeket használ, egyetlen tárfiókban legfeljebb csak 40 virtuális gépet tervezzen virtuálisgép-méretezési csoportokként.  Mielőtt elkezdhetné a virtuálisgép-méretezési csoport üzembe helyezését, a tárfiókba kell másolnia a lemezképet. További információkat a gyakori kérdések között találhat.
+- Virtuális hálózatonként legfeljebb csak 4096 virtuális gépet tervezzen.
+- A létrehozható virtuális gépek számának a telepítést végrehajtó régióban érvényes magkvóta szab határt. Előfordulhat, hogy kapcsolatba kell lépnie az ügyfélszolgálattal a számítási kvótahatár további növelése érdekében, még akkor is, ha a felhőszolgáltatásokhoz vagy az IaaS v1-szolgáltatáshoz használt magok esetében magas a határérték. A kvóta lekérdezéséhez futtathatja az Azure parancssori felületének `azure vm list-usage` parancsát, vagy a `Get-AzureRmVMUsage` PowerShell-parancsot (ha a PowerShell 1.0-nál korábbi verziót használ, használja a `Get-AzureVMUsage` parancsot).
 
-## VM scale set frequently asked questions
+## <a name="vm-scale-set-frequently-asked-questions"></a>A virtuálisgép-méretezési csoportokkal kapcsolatos gyakori kérdések
 
-**Q.** How many VMs can you have in a VM scale set?
+**K.** Hány virtuális gépet tartalmazhat egy virtuálisgép-méretezési csoport?
 
-**A.** 100 if you use platform images which can be distributed across multiple storage accounts. If you use custom images, up to 40 (if the _overprovision_ property is set to "false", 20 by default), since custom images are currently limited to a single storage account.
+**V.** 100-at, ha több tárfiók között elosztható platformlemezképeket használ. Ha egyéni lemezképeket használ, legfeljebb 40-et (alapértelmezés szerint pedig 20-at, ha az _overprovision_ tulajdonság hamis értékre van állítva), mivel az egyéni lemezképek jelenleg egyetlen tárfiókra korlátozódnak.
 
-**Q** What other resource limits exist for VM scale sets?
+**K.** Milyen egyéb erőforráskorlátok vonatkoznak a virtuálisgép-méretezési csoportokra?
 
-**A.** You are limited to creating no more than 500 VMs in multiple scale sets per region during a 10 minute period. The existing [Azure Subscription Service Limits/](../azure-subscription-service-limits.md) apply.
+**V.** Egy 10 perces időszak alatt régiónként legfeljebb 500 virtuális gépet hozhat létre több méretezési csoportban. A mindenkori [Azure-előfizetési szolgáltatási korlátok/](../azure-subscription-service-limits.md) irányadók.
 
-**Q.** Are Data Disks Supported within VM scale sets?
+**K.** Támogatott az adatlemezek használata a virtuálisgép-méretezési csoportokon belül?
 
-**A.** Not in the initial release. Your options for storing data are:
+**V.** Az eredeti kiadásban nem. A következő adattárolási lehetőségek állnak rendelkezésre:
 
-- Azure files (SMB shared drives)
+- Azure Files (SMB-megosztásos meghajtók)
 
-- OS drive
+- Operációs rendszer meghajtója
 
-- Temp drive (local, not backed by Azure storage)
+- Ideiglenes meghajtó (helyi, nem Azure Storage-alapú)
 
-- Azure data service (e.g. Azure tables, Azure blobs)
+- Azure-adatszolgáltatás (például Azure-táblák, Azure-blobok)
 
-- External data service (e.g. remote DB)
+- Külső adatszolgáltatás (például távoli adatbázis)
 
-**Q.** Which Azure regions support VM scale sets?
+**K.** Mely Azure-régiók támogatják a virtuálisgép-méretezési csoportokat?
 
-**A.** Any region which supports Azure Resource Manager supports VM Scale Sets.
+**V.** A virtuálisgép-méretezési csoportokat minden olyan régió támogatja, amely támogatja az Azure Resource Managert.
 
-**Q.** How do you create a VM scale set using a custom image?
+**K.** Hogyan lehet egyéni lemezképekből virtuálisgép-méretezési csoportot létrehozni?
 
-**A.** Leave the vhdContainers property blank, for example:
+**V.** Hagyja üresen a vhdContainers tulajdonságot, például:
 
-	"storageProfile": {
-		"osDisk": {
-			"name": "vmssosdisk",
-			"caching": "ReadOnly",
-			"createOption": "FromImage",
-			"image": {
-				"uri": "https://mycustomimage.blob.core.windows.net/system/Microsoft.Compute/Images/mytemplates/template-osDisk.vhd"
-			},
-			"osType": "Windows"
-		}
-	},
+    "storageProfile": {
+        "osDisk": {
+            "name": "vmssosdisk",
+            "caching": "ReadOnly",
+            "createOption": "FromImage",
+            "image": {
+                "uri": "https://mycustomimage.blob.core.windows.net/system/Microsoft.Compute/Images/mytemplates/template-osDisk.vhd"
+            },
+            "osType": "Windows"
+        }
+    },
 
 
-**Q.** If I reduce my VM scale set capacity from 20 to 15, which VMs will be removed?
+**K.** Ha a virtuálisgép-méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
 
-**A.** Virtual machines are removed from the scale set evenly across upgrade domains and fault domains to maximize availability. VMs with the highest id's are removed first.
+**V.** A rendszer egyenlő arányban távolítja el a virtuális gépeket a méretezési csoportból a frissítési és tartalék tartományok egészében, a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
 
-**Q.** How about it if I then increase the capacity from 15 to 18?
+**K.** Mi történik, ha ezután 15-ről 18-ra növelem a kapacitást?
 
-**A.** If you increase capacity to 18, then 3 new VMs will be created. Each time the VM instance id will be incremented from the previous highest value (e.g. 20, 21, 22). VMs are balanced across FDs and UDs.
+**V.** Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például 20, 21, 22). A virtuális gépek a tartalék és frissítési tartományok között oszlanak el.
 
-**Q.** When using multiple extensions in a VM scale set, can I enforce an execution sequence?
+**K.** Ha több bővítményt használok egy virtuálisgép-méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
-**A.** Not directly, but for the customScript extension, your script could wait for another extension to complete ([for example by monitoring the extension log](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)). Additional guidance on extension sequencing can be found in this blog post: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/).
+**V.** Közvetlenül nem, bár a customScript bővítmény esetében a szkript megvárhatja egy másik bővítmény futtatásának befejezését ([például a bővítménynapló figyelésével](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)). További útmutató a végrehajtási sorrendről az alábbi blogbejegyzésben található: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Végrehajtási sorrendbe állítás Azure-alapú virtuálisgép-méretezési csoportokban).
 
-**Q.** Do VM scale sets work with Azure availability sets?
+**K.** Használhatók virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
-**A.** Yes. A VM scale set is an implicit availability set with 5 FDs and 5 UDs. You don't need to configure anything under virtualMachineProfile. In future releases, VM scale sets are likely to span multiple tenants but for now a scale set is a single availability set.
+**V.** Igen. A virtuálisgép-méretezési csoport egy implicit rendelkezésre állási csoport 5 tartalék és 5 frissítési tartománnyal. A virtualMachineProfile alatt nincs szükség további konfigurálásra. A jövőbeli kiadásokban valószínűsíthető, hogy a virtuálisgép-méretezési csoportok több bérlőre terjednek majd ki, de ez idő szerint egy méretezési csoport csak egyetlen rendelkezésre állási csoportot jelent.
+
+
+
+<!--HONumber=Oct16_HO3-->
+
+

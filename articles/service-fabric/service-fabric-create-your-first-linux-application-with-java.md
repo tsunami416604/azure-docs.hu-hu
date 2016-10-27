@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/28/2016"
+   ms.date="10/04/2016"
    ms.author="seanmck"/>
 
 
@@ -21,8 +21,9 @@
 # Az első Azure Service Fabric-alkalmazás létrehozása
 
 > [AZURE.SELECTOR]
-- [C Sharp](service-fabric-create-your-first-application-in-visual-studio.md)
-- [Java](service-fabric-create-your-first-linux-application-with-java.md)
+- [C# – Windows](service-fabric-create-your-first-application-in-visual-studio.md)
+- [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
+- [C# – Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 
 A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .NET és a Java használatával egyaránt. A jelen oktatóanyagban áttekintjük, hogyan hozhat létre alkalmazásokat a Linux rendszerre, valamint szolgáltatásokat a Java használatával.
 
@@ -49,6 +50,7 @@ A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek
 A Service Fabric Yeoman-sablonok tartalmaznak egy [Gradle](https://gradle.org/) felépítési szkriptet, amelyet felhasználhat az alkalmazás terminálból történő létrehozásához.
 
   ```bash
+  cd myapp
   gradle
   ```
 
@@ -59,13 +61,12 @@ Az alkalmazást a létrehozása után az Azure parancssori felülettel telepíth
 1. Csatlakozzon a helyi Service Fabric-fürthöz.
 
     ```bash
-    azuresfcli servicefabric cluster connect
+    azure servicefabric cluster connect
     ```
 
 2. Használja a sablonban megadott telepítési szkriptet az alkalmazáscsomag a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
     ```bash
-    cd myapp
     ./install.sh
     ```
 
@@ -92,7 +93,7 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 ## Alkalmazás létrehozása és központi telepítése az Eclipse Neon beépülő modul használatával
 
-Amennyiben telepítette az Eclipse Neon szolgáltatási beépülő modult, a segítségével létrehozhat, felépíthet és telepíthet Java használatával készült Service Fabric-alkalmazásokat.
+Amennyiben telepítette az Eclipse Neon szolgáltatási beépülő modult, a segítségével létrehozhat, felépíthet és telepíthet Java használatával készült Service Fabric-alkalmazásokat.  Az Eclipse telepítésekor válassza az **Eclipse IDE JAVA-fejlesztőknek** lehetőséget.
 
 ### Az alkalmazás létrehozása
 
@@ -121,6 +122,7 @@ Néhány másodpercen belül megtörténik az alkalmazás létrehozása és tele
 ## Következő lépések
 
 - [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)
+- [Service Fabric-fürtök kezelése az Azure parancssori felület használatával](service-fabric-azure-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
@@ -129,6 +131,6 @@ Néhány másodpercen belül megtörténik az alkalmazás létrehozása és tele
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO3-->
 
 

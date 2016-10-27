@@ -1,14 +1,14 @@
 <properties
     pageTitle="A Service Bus prémium és standard szintű üzenetkezelés tarifacsomagjainak áttekintése | Microsoft Azure"
     description="A Service Bus prémium és standard szintű üzenetkezelés"
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter=".net"
     authors="djrosanova"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
@@ -17,7 +17,7 @@
     ms.author="darosa;sethm"/>
 
 
-# A Service Bus prémium és standard szintű üzenetkezelés szintjei 
+# <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei 
 
 A Service Bus üzenettovábbítás, amely az üzenetsorokhoz és témakörökhöz hasonló üzenetkezelési entitásokat is tartalmaz, a vállalati üzenetkezelési képességeket ötvözi a gazdag közzétételi/előfizetési szemantikákkal a felhőbeli skálázással. A Service Bus üzenetkezelés számos kifinomult felhőalapú megoldás kommunikációs vázaként szolgál.
 
@@ -37,30 +37,29 @@ A **Service Bus prémium szintű üzenetkezelés** a CPU-ban és a memóriaréte
 
 Nem csak kiszámíthatóbb és nagyobb rendelkezésre állású a teljesítmény, de gyorsabb is. A Service Bus prémium szintű üzenetkezelés az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásban bemutatott tárolási motorra épít. Prémium szintű üzenetkezelés esetén a csúcsteljesítmény jóval gyorsabb, mint a standard szint esetén.
 
-## Prémium szintű üzenetkezelés – műszaki eltérések
+## <a name="premium-messaging-technical-differences"></a>Prémium szintű üzenetkezelés – műszaki eltérések
 
 Alább olvasható néhány különbség a prémium és a standard szintű üzenetkezelési szintek között.
 
-### Particionált üzenetsorok és témakörök
+### <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
 A particionált üzenetsorok és témakörök támogatottak a prémium szintű üzenetkezelésben, de nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. A particionálásra vonatkozó további információkat a [Partitioned queues and topics](service-bus-partitioning.md) (Particionált üzenetsorok és témakörök) című rész tartalmazza.
 
-### Expressz entitások
+### <a name="express-entities"></a>Expressz entitások
 
 Mivel a prémium szintű üzenetkezelés teljesen izolált futtatókörnyezetben fut, a prémium szintű névterekben az expressz entitások nem támogatottak. További információkért az expressz szolgáltatásról lásd a [Microsoft.ServiceBus.Messaging.QueueDescription.EnableExpress](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enableexpress.aspx) tulajdonságot.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-- [Introducing Azure Service Bus Premium messaging (Az Azure Service Bus prémium szintű üzenetkezelés bemutatása) (blogbejegyzés)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-- [Introducing Azure Service Bus Premium messaging (Az Azure Service Bus prémium szintű üzenetkezelés bemutatása) (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-- [Service Bus messaging overview (A Service Bus üzenetkezelésének áttekintése)](service-bus-messaging-overview.md)
-- [Azure Service Bus architectural overview (Az Azure Service Bus architektúrájának áttekintése)](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-- [How to use Service Bus Queues (A Service Bus-üzenetsorok használata)](service-bus-dotnet-get-started-with-queues.md)
+- [Introducing Azure Service Bus Premium messaging](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Az Azure Service Bus prémium szintű üzenetkezelés bemutatása) (blogbejegyzés)
+- [Introducing Azure Service Bus Premium messaging](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Az Azure Service Bus prémium szintű üzenetkezelés bemutatása) (Channel9)
+- [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
+- [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

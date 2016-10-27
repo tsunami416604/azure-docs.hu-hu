@@ -175,7 +175,7 @@ A példákban a következő értékeket használjuk:
 
     Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és három alhálózatot, amelyek neve a következő: GatewaySubnet, FrontEnd és Backend. Az értékek behelyettesítésekor fontos, hogy az átjáróalhálózat neve mindenképp GatewaySubnet legyen. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul. 
 
-    A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Jóllehet létrehozható átjáróalhálózat kisebb, akár /29-es alhálózat használatával is, ez nem ajánlott. Ajánlott ennél nagyobb alhálózat, például /27-es vagy /26-os használata. Ez lehetővé teszi, hogy olyan meglévő vagy jövőbeli konfigurációkat használjon, amelyek nagyobb átjáróalhálózatot igényelnek. 
+    A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít ahhoz, hogy az esetleges további konfigurációkat is elbírják. 
 
         $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
         $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -476,6 +476,9 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 ## <a name="verify"></a>A kapcsolat ellenőrzése
 
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
 
@@ -487,6 +490,6 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 
