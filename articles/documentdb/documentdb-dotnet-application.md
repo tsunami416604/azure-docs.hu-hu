@@ -19,7 +19,7 @@
     ms.author="syamk"/>
 
 
-# <a name="<a-name="_toc395809351"></a>asp.net-mvc-tutorial:-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
+# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -35,7 +35,7 @@ Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított Do
 
 > [AZURE.TIP] Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHub][] és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
 
-## <a name="<a-name="_toc395637760"></a>prerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>Az adatbázis-oktatóanyag előfeltételei
+## <a name="_Toc395637760"></a>Az adatbázis-oktatóanyag előfeltételei
 
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
@@ -45,7 +45,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
 A jelen cikk összes képernyőfelvétele az Update 4-es verzióval ellátott Visual Studio 2013 programmal és az Azure SDK for .NET 2.5.1-es verzióval készült. Ha a rendszere más verziókkal van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
-## <a name="<a-name="_toc395637761"></a>step-1:-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
+## <a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 
 Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
@@ -56,7 +56,7 @@ Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, to
 <br/>
 Most végigvezetjük azon, hogyan hozhat létre új ASP.NET MVC alkalmazást az alapoktól. 
 
-## <a name="<a-name="_toc395637762"></a>step-2:-create-a-new-asp.net-mvc-application"></a><a name="_Toc395637762"></a>2. lépés: Új ASP.NET MVC alkalmazás létrehozása
+## <a name="_Toc395637762"></a>2. lépés: Új ASP.NET MVC alkalmazás létrehozása
 
 Most, hogy már rendelkezik fiókkal, hozzuk létre az új ASP.NET projektet.
 
@@ -93,7 +93,7 @@ Most, hogy már rendelkezik fiókkal, hozzuk létre az új ASP.NET projektet.
 
     Kihagyjuk a projekt helyi futtatását, mert biztosan mindannyian láttuk az ASP.NET „Hello World” alkalmazást. Ugorjunk közvetlenül a DocumentDB ezen projekthez való hozzáadására és az alkalmazás felépítésére.
 
-## <a name="<a-name="_toc395637767"></a>step-3:-add-documentdb-to-your-mvc-web-application-project"></a><a name="_Toc395637767"></a>3. lépés: DocumentDB hozzáadása az MVC webalkalmazás projekthez
+## <a name="_Toc395637767"></a>3. lépés: DocumentDB hozzáadása az MVC webalkalmazás projekthez
 
 Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy részével, folytassuk az oktatóprogram valódi céljával, amely az Azure DocumentDB MVC webalkalmazáshoz adása.
 
@@ -118,7 +118,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy
     ![A Megoldáskezelőben a JSON adatprojekthez adott két hivatkozás képernyőfelvétele](./media/documentdb-dotnet-application/image22.png)
 
 
-##<a name="<a-name="_toc395637763"></a>step-4:-set-up-the-asp.net-mvc-application"></a><a name="_Toc395637763"></a>4. lépés: Az ASP.NET MVC alkalmazás beállítása
+## <a name="_Toc395637763"></a>4. lépés: Az ASP.NET MVC alkalmazás beállítása
  
 Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC alkalmazáshoz:
 
@@ -127,7 +127,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC alk
 - [Nézetek hozzáadása](#_Toc395637766).
 
 
-### <a name="<a-name="_toc395637764"></a>add-a-json-data-model"></a><a name="_Toc395637764"></a>JSON adatmodell hozzáadása
+### <a name="_Toc395637764"></a>JSON adatmodell hozzáadása
 
 Először hozzuk létre az **M-et** az MVC-ből, a modellt. 
 
@@ -169,7 +169,7 @@ Először hozzuk létre az **M-et** az MVC-ből, a modellt.
     Nem csak a tulajdonságnév formátumát vezérelheti, amikor a JSON-ba kerül, hanem teljesen át is nevezheti a .NET tulajdonságokat, mint ahogyan a **Description** (Leírás) tulajdonsággal tettem. 
     
 
-### <a name="<a-name="_toc395637765"></a>add-a-controller"></a><a name="_Toc395637765"></a>Vezérlő hozzáadása
+### <a name="_Toc395637765"></a>Vezérlő hozzáadása
 
 Ezzel megvagyunk az **M-mel**, most hozzuk létre az MVC **C-jét**, amely vezérlőosztály.
 
@@ -191,7 +191,7 @@ Ezzel megvagyunk az **M-mel**, most hozzuk létre az MVC **C-jét**, amely vezé
 
     Bezárhatja az ItemController.cs fájlt, később visszatérünk ahhoz. 
 
-### <a name="<a-name="_toc395637766"></a>add-views"></a><a name="_Toc395637766"></a>Nézetek hozzáadása
+### <a name="_Toc395637766"></a>Nézetek hozzáadása
 
 Most hozzuk létre az MVC **V** elemét, a nézeteket:
 
@@ -200,7 +200,7 @@ Most hozzuk létre az MVC **V** elemét, a nézeteket:
 - [Elemszerkesztési nézet hozzáadása](#_Toc395888515).
 
 
-#### <a name="<a-name="additemindexview"></a>add-an-item-index-view"></a><a name="AddItemIndexView"></a>Elemindexnézet hozzáadása
+#### <a name="AddItemIndexView"></a>Elemindexnézet hozzáadása
 
 1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, kattintson a jobb gombbal az üres **Elem** mappára, amelyet a Visual Studio az **ItemController** korábbi hozzáadásakor hozott létre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **View** (Nézet) elemre.
 
@@ -217,7 +217,7 @@ Most hozzuk létre az MVC **V** elemét, a nézeteket:
 
 3. Amikor ezen értékek mindegyike már be van állítva, kattintson az **Add** (Hozzáadás) gombra és várja meg, hogy a Visual Studio létrehozzon egy új sablonnézetet. Ha ezzel végzett, a rendszer megnyitja a létrehozott cshtml fájlt. Bezárhatjuk ezt a fájlt a Visual Studióban, mivel később visszatérünk hozzá.
 
-#### <a name="<a-name="addnewindexview"></a>add-a-new-item-view"></a><a name="AddNewIndexView"></a>Új elemnézet hozzáadása
+#### <a name="AddNewIndexView"></a>Új elemnézet hozzáadása
 
 Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új nézetet új **elemek** létrehozásához.
 
@@ -231,7 +231,7 @@ Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új n
     - A layout page (elrendezéslap) mezőbe írja be a ***~/Views/Shared/_Layout.cshtml*** szöveget.
     - Kattintson az **Add** (Hozzáadás) parancsra.
 
-#### <a name="<a-name="_toc395888515"></a>add-an-edit-item-view"></a><a name="_Toc395888515"></a>Elemszerkesztési nézet hozzáadása
+#### <a name="_Toc395888515"></a>Elemszerkesztési nézet hozzáadása
 
 És végül adjon hozzá egy utolsó nézetet az **elemek** szerkesztéséhez, ahogyan azt korábban is tette.
 
@@ -247,7 +247,7 @@ Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új n
 
 Ha ezzel végzett, zárja be az összes cshtml dokumentumot a Visual Studióban, mivel később vissza fog térni ezekhez a nézetekhez.
 
-## <a name="<a-name="_toc395637769"></a>step-5:-wiring-up-documentdb"></a><a name="_Toc395637769"></a>5. lépés: A DocumentDB csatlakoztatása
+## <a name="_Toc395637769"></a>5. lépés: A DocumentDB csatlakoztatása
 
 Most, hogy elvégeztük az MVC-vel kapcsolatos szokásos feladatokat, adjuk hozzá a DocumentDB kódját. 
 
@@ -257,7 +257,7 @@ Ebben a szakaszban a következők kezeléséhez adunk hozzá kódot:
 - [Elemek hozzáadása](#_Toc395637771).
 - [Elemek szerkesztése](#_Toc395637772).
 
-### <a name="<a-name="_toc395637770"></a>listing-incomplete-items-in-your-mvc-web-application"></a><a name="_Toc395637770"></a>Hiányos elemek listázása az MVC webalkalmazásban
+### <a name="_Toc395637770"></a>Hiányos elemek listázása az MVC webalkalmazásban
 
 Itt először hozzá kell adni egy osztályt, amely tartalmazza a DocumentDB adatbázishoz való csatlakozás és a DocumentDB használatának összes logikáját. Ehhez az oktatóprogramhoz ezen logikák mindegyikét a DocumentDBRepository nevű adattárba foglaljuk. 
 
@@ -413,7 +413,7 @@ Ha most felépíti és futtatja ezt a projektet, valami ilyesmit kell látnia.
 
 ![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/documentdb-dotnet-application/image23.png)
 
-### <a name="<a-name="_toc395637771"></a>adding-items"></a><a name="_Toc395637771"></a>Elemek hozzáadása
+### <a name="_Toc395637771"></a>Elemek hozzáadása
 
 Tegyünk néhány elemet az adatbázisba, hogy ne csak egy üres táblát lássunk.
 
@@ -463,7 +463,7 @@ Adjunk néhány kódot a DocumentDBRepository és az ItemController elemhez, hog
 Ennyi lenne az adatbázishoz új elemek hozzáadásához szükséges kód.
 
 
-### <a name="<a-name="_toc395637772"></a>editing-items"></a><a name="_Toc395637772"></a>Elemek szerkesztése
+### <a name="_Toc395637772"></a>Elemek szerkesztése
 
 Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szerkeszthetők az adatbázisban és megjelölhetők befejezettként. A szerkesztésre szolgáló nézet már a projekthez lett adva, így csak néhány kódot kell ismét hozzáadnunk a vezérlőhöz és a **DocumentDBRepository** osztályhoz.
 
@@ -539,7 +539,7 @@ Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szer
 
 Ennyi, ez minden, amire szükségünk van az alkalmazás futtatásához, a hiányos **elemek** listázásához és új **elemek** hozzáadásához, valamint az **elemek** szerkesztéséhez.
 
-## <a name="<a-name="_toc395637773"></a>step-6:-run-the-application-locally"></a><a name="_Toc395637773"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="_Toc395637773"></a>6. lépés: Az alkalmazás helyileg történő futtatása
 
 Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
@@ -565,7 +565,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
 4. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-## <a name="<a-name="_toc395637774"></a>step-7:-deploy-the-application-to-azure-websites"></a><a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure Websites-ban
+## <a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure Websites-ban
 
 Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissal, Azure-webhelyekre fogjuk telepíteni ezt a webalkalmazást. Ha bejelölte a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget az üres ASP.NET MVC projekt létrehozásakor, akkor a Visual Studio jelentősen megkönnyíti ezt, és a legtöbb munkát elvégzi. 
 
@@ -579,7 +579,7 @@ Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissa
 
 Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját!
 
-## <a name="<a-name="_toc395637775"></a>next-steps"></a><a name="_Toc395637775"></a>Következő lépések
+## <a name="_Toc395637775"></a>Következő lépések
 
 Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHub][]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 

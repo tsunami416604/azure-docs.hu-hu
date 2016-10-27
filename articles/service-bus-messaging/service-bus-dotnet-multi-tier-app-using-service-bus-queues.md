@@ -422,7 +422,7 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 
 További információ a többrétegű forgatókönyvekkel kapcsolatban:  
 
-* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)][multitierstorage]  
+* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)](multitierstorage)  
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png

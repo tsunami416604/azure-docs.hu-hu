@@ -256,7 +256,7 @@ A különböző Azure Virtual Networkök közötti adatforgalom esetében az Azu
 
 Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="<a-name="bgp"></a>bgp"></a><a name="bgp"></a>BGP
+## </a><a name="bgp"></a>BGP
 
 [AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)] 
 

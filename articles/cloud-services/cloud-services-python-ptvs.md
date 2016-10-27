@@ -33,7 +33,7 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 
 ## <a name="what-are-python-web-and-worker-roles?"></a>Mik a Python webes és feldolgozói szerepkörök?
 
-Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service portálon][futtatási modell-webhelyek], [Azure virtuális gépek][végrehajtási modell virtuális gépek] és [Azure Cloud Services][végrehajtási modell felhőszolgáltatások]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service portálon](futtatási modell-webhelyek), [Azure virtuális gépek](végrehajtási modell virtuális gépek) és [Azure Cloud Services](végrehajtási modell felhőszolgáltatások). Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 

@@ -20,7 +20,7 @@
 
 A cikkben található táblázatok információkat nyújtanak az ExpressRoute-kapcsolatszolgáltatókkal, az ExpressRoute földrajzi lefedettségével, az ExpressRoute-on támogatott Microsoft-felhőszolgáltatásokkal és az ExpressRoute-rendszerintegrátorokkal (SI) kapcsolatban.
 
-## <a name="<a-name="partners"></a>expressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
+## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
 
 Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következő térkép az Azure-régiók és ExpressRoute-helyek listáját tartalmazza. Az ExpressRoute-helyek azokra a helyekre utalnak, ahol a Microsoft több szolgáltatóval is társul.
 
@@ -127,7 +127,7 @@ További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsaz
 | **e-shelter** | Támogatott | Nem támogatott | Berlin|
 | **Interxion** | Támogatott | Nem támogatott | Frankfurt|
 
-## <a name="<a-name="nonpartners"></a>connectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
+## <a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
 
 Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is létesíthet kapcsolatot.
 

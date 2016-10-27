@@ -18,7 +18,7 @@
     ms.author="syamk"/>
 
 
-# <a name="<a-name="_toc395783175"></a>build-a-node.js-web-application-using-documentdb"></a><a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
+# <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -43,7 +43,7 @@ A jelen adatbázis-oktatóanyagban leírtak követésével egy olyan egyszerű, 
 
 Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a teljes megoldáshoz? A teljes megoldást beszerezheti a [GitHub][].
 
-## <a name="<a-name="_toc395783176"></a>prerequisites"></a><a name="_Toc395783176"></a>Előfeltételek
+## <a name="_Toc395783176"></a>Előfeltételek
 
 > [AZURE.TIP] Ez a Node.js-oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Node.js és az Azure Websites használatát illetően.
 
@@ -54,7 +54,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 - [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 - [Git][].
 
-## <a name="<a-name="_toc395637761"></a>step-1:-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
+## <a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 
 Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
 
@@ -62,7 +62,7 @@ Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, to
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="<a-name="_toc395783178"></a>step-2:-learn-to-create-a-new-node.js-application"></a><a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
+## <a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
 
 Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-projektet az [Express](http://expressjs.com/)-keretrendszer használatával.
 
@@ -85,7 +85,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 
     ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/documentdb-nodejs-application/image12.png)
 
-## <a name="<a-name="_toc395783179"></a>step-3:-install-additional-modules"></a><a name="_Toc395783179"></a>3. lépés: További modulok telepítése
+## <a name="_Toc395783179"></a>3. lépés: További modulok telepítése
 
 A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később, amikor egy Azure Websitesra telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
 
@@ -103,7 +103,7 @@ A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmapp�
 
     Ez értesíti a Node-ot (majd később az Azure-t) arról, hogy az alkalmazás ezektől a további moduloktól függ.
 
-## <a name="<a-name="_toc395783180"></a>step-4:-using-the-documentdb-service-in-a-node-application"></a><a name="_Toc395783180"></a>4. lépés: A DocumentDB szolgáltatás használata Node.js-alkalmazásokban
+## <a name="_Toc395783180"></a>4. lépés: A DocumentDB szolgáltatás használata Node.js-alkalmazásokban
 
 Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni a kódírást az Azure DocumentDB használatával.
 
@@ -434,7 +434,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 
 7. Végül mentse és zárja be az **app.js** fájlt. És már majdnem készen is van.
  
-## <a name="<a-name="_toc395783181"></a>step-5:-build-a-user-interface"></a><a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
+## <a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
 
 Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. A Jade motorral kapcsolatos további információkért lásd: [http://jade-lang.com/](http://jade-lang.com/).
 
@@ -530,7 +530,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
     Mentse és zárja be a **style.css** fájlt.
 
-## <a name="<a-name="_toc395783181"></a>step-6:-run-your-application-locally"></a><a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
 
 1. Ha tesztelni szeretné az alkalmazást a helyi gépén, futtassa az `npm start` parancsot egy terminálban az alkalmazás elindításához és egy böngésző megnyitásához az alábbi illusztráción láthatóhoz hasonló oldallal:
 
@@ -545,7 +545,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
 4. A feladatok elvégzéséhez egyszerűen jelölje be a jelölőnégyzetet a Complete (Elvégezve) oszlopban, majd kattintson az **Update tasks** (Feladatok frissítése) lehetőségre.
 
-## <a name="<a-name="_toc395783182"></a>step-7:-deploy-your-application-development-project-to-azure-websites"></a><a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt üzembe helyezése az Azure Websites-ban
+## <a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt üzembe helyezése az Azure Websites-ban
 
 1. Ha még nem tette meg, engedélyezzen egy Git-tárházat az Azure Websites számára. Ehhez a következő témakörben találhat útmutatót: [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
@@ -559,7 +559,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
 4. Néhány másodpercen belül a Git befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure-on futó munkáját.
 
-## <a name="<a-name="_toc395637775"></a>next-steps"></a><a name="_Toc395637775"></a>Következő lépések
+## <a name="_Toc395637775"></a>Következő lépések
 
 Gratulálunk! Létrehozta az első Node.js Express-webalkalmazását az Azure DocumentDB használatával, és közzétette azt az Azure Websiteson.
 

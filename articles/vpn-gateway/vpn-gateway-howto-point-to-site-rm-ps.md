@@ -69,7 +69,7 @@ Ehhez a konfigurációhoz a következő értékeket használjuk: A változókat 
     
 - Telepítse az Azure Resource Manager PowerShell-parancsmagjait (az 1.0.2-es vagy újabb verziót). A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md). Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
 
-## <a name="<a-name="declare"></a>part-1---log-in-and-set-variables"></a><a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
+## <a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
 
 Ez a szakasz a bejelentkezést és a konfigurációban használt értékek deklarálását ismerteti. A minta parancsprogramok a deklarált értékeket használják. Módosítsa az értékeket úgy, hogy megfeleljenek a saját környezetének. Azt is megteheti, hogy a deklarált értékeket használja, és gyakorlásként halad végig a lépéseken.
 
@@ -178,7 +178,7 @@ Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanús�
 
     ![VPN-ügyfél](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
-## <a name="<a-name="cc"></a>part-6---generate-the-client-certificate"></a><a name="cc"></a>6. rész – Az ügyféltanúsítvány létrehozása
+## <a name="cc"></a>6. rész – Az ügyféltanúsítvány létrehozása
 
 Ezután állítsa elő az ügyféltanúsítványokat. Létrehozhat egy egyedi tanúsítványt minden csatlakozó ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfél esetén. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy szükség esetén visszavonhat egyetlen tanúsítványt. Ha azonban mindenki ugyanazt az ügyféltanúsítványt használja, és úgy találja, hogy egyetlen ügyféltől vissza kell vonnia a tanúsítványt, az összes olyan ügyfél számára elő kell állítania és telepítenie kell új tanúsítványokat, amelyek az adott tanúsítványt használják a hitelesítéshez.
 
