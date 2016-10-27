@@ -13,29 +13,29 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="get-started-article"
-    ms.date="09/15/2016"
+    ms.date="10/12/2016"
     ms.author="juliako;anilmur"/>
 
 
 
-#Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
+#<a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-.net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
 
 > [AZURE.SELECTOR]
-- [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
 >[AZURE.NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F). 
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F).
 
-##Áttekintés
+##<a name="overview"></a>Áttekintés
 
 Ez az útmutató lépésről lépésre bemutatja, hogyan hozhat létre egy **csatornát**, amely a fogadott egyféle sávszélességű élő adatfolyamokat többféle sávszélességűvé kódolja.
 
 További elméleti információk a valós idejű kódolásra képes csatornákról: [Élő adatfolyam továbbítása az Azure Media Services használatával, és többféle sávszélességű adatfolyamok létrehozása](media-services-manage-live-encoder-enabled-channels.md)
 
 
-##Gyakori élő adatfolyam-továbbítási forgatókönyv
+##<a name="common-live-streaming-scenario"></a>Gyakori élő adatfolyam-továbbítási forgatókönyv
 
 A következő lépések a gyakran használt élő adatfolyam-továbbítási alkalmazások létrehozásához elvégzendő feladatokat írják le.
 
@@ -43,17 +43,17 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](http://go.microsoft.com/fwlink/?LinkId=532824)
 
-    Ezt a lépést a csatorna létrehozása után is elvégezheti.
+Ezt a lépést a csatorna létrehozása után is elvégezheti.
 
 1. Hozzon létre és indítson el egy csatornát.
 
 1. Kérje le a csatorna feldolgozó URL-címét.
 
-    Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
+Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 
 1. Kérje le a csatorna előnézeti URL-címét.
 
-    Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
+Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 
 2. Hozzon létre egy adategységet.
 3. Ha azt szeretné, hogy az adategység a lejátszás során dinamikusan legyen titkosítva, tegye a következőket:
@@ -63,14 +63,14 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 3. Hozzon létre egy programot, és állítsa be, hogy az az imént létrehozott adategységet használja.
 1. Tegye közzé a programhoz társított adategységet egy OnDemand-kereső létrehozásával.
 
-    Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
+Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 
 1. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
 2. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
 1. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
 1. Törölje a programot (esetlegesen törölje az adategységet is).
 
-## Ismertetett témák
+## <a name="what-you'll-learn"></a>Ismertetett témák
 
 Ez a témakör bemutatja, hogyan hajthat végre különböző műveleteket csatornákon és programokon a Media Services .NET SDK használatával. A műveletek között számos hosszú futású művelet található, így hosszú futású műveleteket felügyelő .NET API-kat használunk.
 
@@ -86,37 +86,37 @@ Ez a témakör bemutatja, hogyan végezze el a következőket:
 1. A csatornát és a hozzá kapcsolódó erőforrások tisztán tartása.
 
 
-##Előfeltételek
+##<a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzésének a következők a feltételei.
 
-- Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. 
-    
-    Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a jóváírásokat el is használta, továbbra is megtarthatja a fiókot és használhatja az ingyenes szolgáltatásokat és lehetőségeket, mint például a Web Apps szolgáltatást az Azure App Service alatt.
-- Egy Media Services-fiók szükséges. Egy Media Services-fiók létrehozásához lásd: [Fiók létrehozása](media-services-create-account.md)
+- Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége.
+
+Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](/pricing/free-trial/?WT.mc_id=A261C142F). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a jóváírásokat el is használta, továbbra is megtarthatja a fiókot és használhatja az ingyenes szolgáltatásokat és lehetőségeket, mint például a Web Apps szolgáltatást az Azure App Service alatt.
+- Egy Media Services-fiók szükséges. Egy Media Services-fiók létrehozásához lásd: [Fiók létrehozása](media-services-portal-create-account.md)
 - Visual Studio 2010 SP1 (Professional, Premium, Ultimate vagy Express) vagy későbbi verzió.
 - A Media Services .NET SDK legalább 3.2.0.0 vagy újabb verziójával kell rendelkeznie.
 - Egy webkamera és egy egyféle sávszélességű élő adatfolyamot küldő kódoló.
 
-##Megfontolások
+##<a name="considerations"></a>Megfontolások
 
 - Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
 - Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 
-##Minta letöltése
+##<a name="download-sample"></a>Minta letöltése
 
 Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
 
 
-##A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
+##<a name="set-up-for-development-with-media-services-sdk-for-.net"></a>A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
 
 1. Hozzon létre egy konzolalkalmazást a Visual Studio használatával.
 1. Adja hozzá a konzolalkalmazáshoz a .NET-keretrendszerhez készült Media Services SDK-t a Media Services NuGet csomagjának segítségével.
 
-##Kapcsolódás a Media Services szolgáltatáshoz
+##<a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 Javasoljuk, hogy a Media Services-nevet és -fiókkulcsot egy app.config fájlban tárolja.
 
->[AZURE.NOTE]A Név és Kulcs értékének eléréséhez lépjen a klasszikus Azure portálra, válassza ki a Media Services-fiókját, majd a portál ablakának alján kattintson a „MANAGE KEYS” (KULCSOK KEZELÉSE) ikonra. A szövegdobozok melletti ikonokra való kattintás a rendszer vágólapjára másolja az értékeket.
+>[AZURE.NOTE]A név és a kulcs értékeinek megtekintéséhez nyissa meg Azure Portal-fiókját. Jobb oldalt megjelenik a Beállítások ablak. A Beállítások ablakban válassza a Kulcsok lehetőséget. A szövegdobozok melletti ikonokra való kattintás a rendszer vágólapjára másolja az értékeket.
 
 Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a Media Services-fiókjához tartozó név és fiókkulcs értékeit.
 
@@ -130,7 +130,7 @@ Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a M
     </configuration>
      
     
-##Mintakód
+##<a name="code-example"></a>Mintakód
 
     using System;
     using System.Collections.Generic;
@@ -519,22 +519,22 @@ Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a M
     }   
 
 
-##Következő lépés
+##<a name="next-step"></a>Következő lépés
 
 Tekintse át a Media Services képzési terveket.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Visszajelzés küldése
+##<a name="provide-feedback"></a>Visszajelzés küldése
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### Valami mást keres?
+### <a name="looking-for-something-else?"></a>Valami mást keres?
 
 Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

@@ -1,23 +1,24 @@
 <properties
-    pageTitle="Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását. | Stream Analytics"
+    pageTitle="Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását. | Microsoft Azure"
     description="IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és valós idejű adatfeldolgozással"
     keywords="iot-megoldás, bevezetés az iot használatába"
     services="stream-analytics"
     documentationCenter=""
     authors="jeffstokes72"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"
 />
 
-<tags 
-    ms.service="stream-analytics" 
-    ms.devlang="na" 
-    ms.topic="hero-article" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="data-services" 
-    ms.date="08/11/2016"
+<tags
+    ms.service="stream-analytics"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="data-services"
+    ms.date="09/26/2016"
     ms.author="jeffstok"
 />
+
 
 # Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
 
@@ -38,90 +39,90 @@ Itt az adatokat egy Texas Instrument Sensor Tag eszköz állítja elő.
 
 A hasznos adatok JSON formátumban vannak, és a következőképpen néznek ki:
 
-    
+
     {
         "time": "2016-01-26T20:47:53.0000000",  
         "dspl": "sensorE",  
         "temp": 123,  
         "hmdt": 34  
     }  
-    
+
 A valós forgatókönyvekben több száz ilyen érzékelő állíthat elő eseményeket streamként. Ideális esetben van egy átjáróeszköz, amely egy bizonyos kód futtatásával elküldi ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/) részére. A Stream Analytics-feladatok felhasználják az Event Hubs eseményeit, és a streameken valós idejű lekérdezéseket futtatnak. Ezután elküldheti az eredményeket az egyik [támogatott kimenetre](stream-analytics-define-outputs.md).
 
-A használat megkönnyítése érdekében ebben a Kezdeti lépések útmutatóban valódi SensorTag eszközökről származó mintaadatfájlokat adtunk meg, amelyeken különböző lekérdezéseket futtathat, és megtekintheti az eredményeiket. A következő útmutatókból megtudhatja, hogyan csatlakoztathatja a feladatait bemenetekhez és kimenetekhez, és hogyan helyezheti üzembe őket az Azure szolgáltatásban.
+A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató valódi SensorTag eszközökről származó mintaadatfájlokat biztosít. Ezeken lekérdezéseket futtathat, és megtekintheti az eredményeiket. A következő útmutatókból megtudhatja, hogyan csatlakoztathatja a feladatait bemenetekhez és kimenetekhez, és hogyan helyezheti üzembe őket az Azure szolgáltatásban.
 
 ## Stream Analytics-feladat létrehozása
 
-Az [Azure Portalon](http://manage.windowsazure.com) válassza a Stream Analytics elemet, és a lap bal alsó sarkában található **„Új”** gombra kattintva hozzon létre egy új elemzési feladatot.
+1. Az [Azure Portalon](http://manage.windowsazure.com) kattintson a **STREAM ANALYTICS** elemre, majd a lap bal alsó sarkában található **NEW** (Új) gombra kattintva hozzon létre egy új elemzési feladatot.
 
-![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
+    ![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
-Kattintson a „**Gyors létrehozás**” gombra.
+2. Kattintson a **QUICK CREATE** (Gyorslétrehozás) gombra.
 
-A **„Regional Monitoring Storage Account”** (Régió szerinti megfigyelési tárfiók) beállításnál válassza az **Új tárfiók létrehozása** lehetőséget, és adjon neki egy egyedi nevet. Az Azure Stream Analytics ezt a fiókot fogja használni a jövőbeli feladataiból származó megfigyelési információk tárolására.
+3. A **REGIONAL MONITORING STORAGE ACCOUNT** (Régió szerinti megfigyelési tárfiók) beállításnál válassza az **CREATE NEW STORAGE ACCOUNT** (Új tárfiók létrehozása) lehetőséget, és adjon neki egy egyedi nevet. Az Azure Stream Analytics ezt a fiókot fogja használni a jövőbeli feladataiból származó megfigyelési információk tárolására.
 
-> [AZURE.NOTE] Régiónként csak egyszer hozza létre ezt a tárfiókot, és ez a tároló az adott régióban létrehozott összes Stream Analytics-feladat között meg lesz osztva.
+    > [AZURE.NOTE] Régiónként csak egyszer hozza létre ezt a tárfiókot. Ez a tároló az adott régióban létrehozott összes Stream Analytics-feladat között meg lesz osztva.
 
-Kattintson az oldal alján lévő „**Stream Analytics-feladat létrehozása**” elemre.
+4. Kattintson a lap alján lévő **CREATE STREAM ANALYTICS JOB** (Stream Analytics-feladat létrehozása) elemre.
 
-![Tárfiók konfigurálása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
+    ![Tárfiók konfigurálása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
 
 ## Azure Stream Analytics-lekérdezés
 
-A Lekérdezés fülre kattintva lépjen a Lekérdezésszerkesztőhöz. A Lekérdezés lap egy olyan T-SQL-lekérdezést tartalmaz, amely végrehajtja az átalakítást a beérkező eseményadatokon.
+A **QUERY** (Lekérdezés) fülre kattintva lépjen a Lekérdezésszerkesztőhöz. A **QUERY** (Lekérdezés) lap egy olyan T-SQL-lekérdezést tartalmaz, amely végrehajtja az átalakítást a beérkező eseményadatokon.
 
 ## Nyers adatok archiválása
 
-A lekérdezések legegyszerűbb formája az áthaladás, amely a kijelölt kimeneten archiválja az összes bemeneti adatot.
+A lekérdezések legegyszerűbb formája a továbbított lekérdezés, amely a kijelölt kimeneten archiválja az összes bemeneti adatot.
 
 ![Feladatlekérdezés archiválása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-Most töltse le a számítógépére a mintaadatfájlokat a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot). Másolja és illessze be a lekérdezést a **PassThrough.txt** fájlból. Kattintson az alsó Teszt gombra, és válassza ki a letöltés helyéről a **HelloWorldASA-InputStream.json** nevű fájlt.
+Most töltse le a számítógépére a mintaadatfájlokat a [GitHubból](https://aka.ms/azure-stream-analytics-get-started-iot). Illessze be a lekérdezést a PassThrough.txt fájlból. Kattintson az alsó **Teszt** gombra, és válassza ki a letöltés helyéről a HelloWorldASA-InputStream.json nevű fájlt.
 
 ![Teszt gomb a Stream Analytics szolgáltatásban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ![Teszt bemeneti stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 
-A lekérdezés eredményeit az alábbi tallózóban láthatja.
+A lekérdezés eredményeit az alábbi képernyőképen látható tallózóban tekintheti meg.
 
 ![Teszteredmények](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ## Adatok szűrése feltétel alapján
 
-Próbáljuk meg egy feltétel alapján szűrni az eredményeket. Azt szeretnénk, ha az eredmények között csak a „SensorA” érzékelőből érkező események jelenjenek meg. A lekérdezés a **Filtering.txt** fájlban található.
+Próbáljuk meg egy feltétel alapján szűrni az eredményeket. Azt szeretnénk, hogy az eredmények között csak a „sensorA” érzékelőből érkező események jelenjenek meg. A lekérdezés a Filtering.txt fájlban található.
 
-![adatstream szűrése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
+![Adatstream szűrése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-Vegye figyelembe, hogy jelen esetben egy karakterláncértéket hasonlítunk össze, amely megkülönbözteti a kis- és nagybetűket. A lekérdezés végrehajtásához kattintson az **Ismétlés** gombra. A lekérdezésnek csak 389 sort kell visszaadnia az 1860 eseményből.
+Vegye figyelembe, hogy a kis- és nagybetűket megkülönböztető lekérdezés karakterlánc típusú értékkel végzi az összehasonlítást. A lekérdezés végrehajtásához kattintson az **Ismétlés** gombra. A lekérdezésnek 389 sort kell visszaadnia az 1860 eseményből.
 
 ![Második kimeneti eredmény a lekérdezéstesztelésből](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
 ## Riasztás az üzleti munkafolyamat elindítására
 
-Most részletesebbé tesszük a lekérdezést. Ha az átlaghőmérsékletet 30 másodperces időközönként szeretnénk mérni, és csak akkor szeretnénk eredményeket megjeleníteni, ha az átlaghőmérséklet meghaladja a 100 fokot, akkor minden érzékelőtípus esetében leírjuk az alábbi lekérdezést, majd az **Ismétlés** gombra kattintva megjelenítjük az eredményeket. A lekérdezés a **ThresholdAlerting.txt** fájlban található.
+Tegyük részletesebbé a lekérdezést. Az átlaghőmérsékletet minden érzékelőtípus esetében 30 másodperces időközönként szeretnénk mérni, és csak akkor szeretnénk eredményeket megjeleníteni, ha az átlaghőmérséklet meghaladja a 100 fokot. Megírjuk az alábbi lekérdezést, majd az **Ismétlés** gombra kattintva megjelenítjük az eredményeket. A lekérdezés a ThresholdAlerting.txt fájlban található.
 
 ![30 másodperces szűrőlekérdezés](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Látható, hogy az eredmények most csak 245 sorban jelenítik meg azokat az érzékelőket, amelyeknél az átlaghőmérséklet nagyobb 100 foknál. Ebben a lekérdezésben az események streamjét a **dspl** szerint csoportosítottuk, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. Az ilyen jellegű időalapú lekérdezések esetében elengedhetetlen az időköz megadása. A **TIMESTAMP BY** záradékkal az „idő” oszlopot adtuk meg, amely minden időalapú számításhoz megadja az időközt. Részletes információkat az [időkezelést](https://msdn.microsoft.com/library/azure/mt582045.aspx) és az [ablakkezelési függvényeket](https://msdn.microsoft.com/library/azure/dn835019.aspx) ismertető MSDN-témakörökben talál.
+Látható, hogy az eredmények most csak 245 sorban jelenítik meg azoknak az érzékelőknek a nevét, amelyeknél az átlaghőmérséklet nagyobb 100 foknál. Ez a lekérdezés az események streamjét a **dspl** szerint csoportosítja, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. A historikus lekérdezések esetében elengedhetetlen az időköz megadása. A **TIMESTAMP BY** záradékkal az **OUTPUTTIME** oszlopot adtuk meg, amely minden historikus számításhoz társít egy időközt. Részletes információkat az [időkezelést](https://msdn.microsoft.com/library/azure/mt582045.aspx) és az [ablakkezelési függvényeket](https://msdn.microsoft.com/library/azure/dn835019.aspx) ismertető MSDN-témakörökben talál.
 
 ![Hőmérséklet 100 fok felett](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
 ## Események hiányának észlelése
 
-Hogyan írható olyan lekérdezés, amely a bemeneti események hiányát keresi? Ez viszonylag egyszerűen megtehető. Keressük meg a legutóbbi esetet, amikor az érzékelő adatokat küldött, majd a következő percben egyáltalán nem küldött ki eseményt. A lekérdezés az **AbsenseOfEvent.txt** fájlban található.
+Hogyan írható olyan lekérdezés, amely a bemeneti események hiányát keresi? Keressük meg a legutóbbi esetet, amikor az érzékelő adatokat küldött, majd a következő percben nem küldött eseményeket. A lekérdezés a AbsenseOfEvent.txt fájlban található.
 
 ![Események hiányának észlelése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
 
-Itt egy **BAL OLDALI KÜLSŐ ILLESZTÉST** alkalmazunk ugyanarra az adatstreamre (önillesztés). Belső illesztés esetén csak akkor kapunk eredményt, ha van egyezés.  **BAL OLDALI KÜLSŐ** illesztés esetében azonban, ha az illesztés bal oldalán lévő eseményhez nincs egyezés, akkor a rendszer olyan oszlopot ad vissza, amely a jobb oldali sor összes oszlopában NULL értéket tartalmaz. Ez a módszer nagyon hasznos, ha események hiányára kíván rákeresni. Az [ILLESZTÉS](https://msdn.microsoft.com/library/azure/dn835026.aspx) részleteit az MSDN-dokumentációnkban találja.
+Itt egy **BAL OLDALI KÜLSŐ** illesztést alkalmazunk ugyanarra az adatstreamre (önillesztés). **BELSŐ** illesztés esetén csak akkor kapunk eredményt, ha van egyezés.  **BAL OLDALI KÜLSŐ** illesztés esetében azonban, ha az illesztés bal oldalán lévő eseményhez nincs egyezés, akkor a rendszer olyan oszlopot ad vissza, amely a jobb oldal összes oszlopában NULL értéket tartalmaz. Ez a módszer nagyon hasznos, ha események hiányára kíván rákeresni. Az [ILLESZTÉS](https://msdn.microsoft.com/library/azure/dn835026.aspx) részleteit az MSDN-dokumentációnkban találja.
 
-![eredmények illesztése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
+![Eredmények illesztése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
 
 ## Összegzés
 
-A jelen oktatóanyag célja annak bemutatása, hogy hogyan lehet Stream Analytics lekérdezési nyelven különböző lekérdezéseket írni, és az eredményeket megjeleníteni a képernyőn. Ezek azonban csak az első lépések. A Stream Analytics rengeteg lehetőséget rejt még magában. A Stream Analytics számos bemenetet és kimenetet támogat, és még az Azure Machine Learning függvényeinek előnyeit is ki tudja használni, ami az adatstreamek elemzésének hatékony eszközévé teszi. A [Tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) segítségével részletesebben megismerheti a Stream Analyticset, a lekérdezések írásáról pedig további információkat olvashat a [Gyakori lekérdezési minták](./stream-analytics-stream-analytics-query-patterns.md) című cikkben.
+A jelen oktatóanyag célja annak bemutatása, hogyan lehet Stream Analytics lekérdezési nyelven különböző lekérdezéseket írni, és az eredményeket megjeleníteni a képernyőn. Ezek azonban csak az első lépések. A Stream Analytics rengeteg lehetőséget rejt még magában. A Stream Analytics számos bemenetet és kimenetet támogat, és még az Azure Machine Learning függvényeinek előnyeit is ki tudja használni, ami az adatstreamek elemzésének hatékony eszközévé teszi. [Tanulási térképünk](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) használatával elkezdheti felfedezni a Stream Analytics további részleteit. Ha szeretne többet megtudni arról, hogyan kell lekérdezéseket írni, olvassa el a [Gyakori lekérdezési minták](./stream-analytics-stream-analytics-query-patterns.md) című cikket.
 
 
 
-<!--HONumber=sep16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

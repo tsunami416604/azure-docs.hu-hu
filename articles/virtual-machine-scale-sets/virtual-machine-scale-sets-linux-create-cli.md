@@ -1,22 +1,29 @@
 <properties
-    pageTitle="Create a Virtual Machine Scale Set | Microsoft Azure"
-    description="Create a Virtual Machine Scale Set using the Azure CLI"
+    pageTitle="Virtuálisgép-méretezési csoport létrehozása| Microsoft Azure"
+    description="Virtuálisgép-méretezési csoport létrehozása az Azure parancssori felületével"
     services="virtual-machine-scale-sets"
     documentationCenter=""
-	authors="gatneil"
-	manager="madhana"
-	editor="tysonn"
-	tags="azure-resource-manager" />
+    authors="gatneil"
+    manager="madhana"
+    editor="tysonn"
+    tags="azure-resource-manager" />
 
 <tags
     ms.service="virtual-machine-scale-sets"
     ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="article"
+    ms.topic="get-started-article"
     ms.date="03/22/2016"
-	ms.author="gatneil"/>
+    ms.author="gatneil"/>
 
-# Create a Linux Virtual Machine Scale Set using Azure CLI
+
+# <a name="create-a-linux-virtual-machine-scale-set-using-azure-cli"></a>Linux rendszerű virtuálisgép-méretezési csoport létrehozása az Azure parancssori felületével
 
 [AZURE.INCLUDE [virtual-machines-linux-cli-vmss-quick-create-include](../../includes/virtual-machines-linux-cli-vmss-quick-create-include.md)]
+
+
+
+<!--HONumber=Oct16_HO3-->
+
+

@@ -18,10 +18,10 @@
 
 
 
-#Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
+#<a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
 
 > [AZURE.SELECTOR]
-- [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag bemutatja, hogyan hozzon létre egy egyszeres sávszélesség
 
 >[AZURE.NOTE]További elméleti információk a valós idejű kódolásra képes csatornákról: [Élő adatfolyam továbbítása az Azure Media Services használatával, és többféle sávszélességű adatfolyamok létrehozása](media-services-manage-live-encoder-enabled-channels.md)
 
-##Az élő streamelés egy gyakori alaphelyzete
+##<a name="common-live-streaming-scenario"></a>Az élő streamelés egy gyakori alaphelyzete
 
 A leggyakrabban használt streamelési alkalmazások kialakításához általában az alábbi lépések szükségesek.
 
@@ -57,7 +57,7 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 1. Amikor le szeretné állítani az esemény streamelését és archiválását, állítsa le az eseményt.
 1. Törölje az eseményt (és ha szeretné, törölje az objektumot is).   
 
-##Az oktatóanyag tartalma
+##<a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 
 Ebben az oktatóanyagban az Azure Portallal a következő feladatokat végezzük el: 
 
@@ -69,14 +69,14 @@ Ebben az oktatóanyagban az Azure Portallal a következő feladatokat végezzük
 1.  Tartalom lejátszása 
 2.  Takarítás
 
-##Előfeltételek
+##<a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzésének a következők a feltételei.
 
 - Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-- Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-create-account.md) (Fiók létrehozása).
+- Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
 - Egy webkamera és egy egyszeres sávszélességű élő stream továbbítására alkalmas kódoló.
 
-##Streamvégpontok konfigurálása 
+##<a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása 
 
 A Media Services dinamikus becsomagolást biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS, Smooth Streaming illetve HDS formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus becsomagolás révén elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
@@ -99,7 +99,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
 
     >[AZURE.NOTE]Az új egységek allokációja akár 20 percig is eltarthat.
 
-##CSATORNA létrehozása
+##<a name="create-a-channel"></a>CSATORNA létrehozása
 
 1. Az [Azure Portalon](https://portal.azure.com/) kattintson a Media Services elemre, majd a Media Services-fiók nevére.
 2. Válassza a **Live Streaming** (Élő adatfolyam) lehetőséget.
@@ -143,16 +143,16 @@ A csatorna létrehozását követően a csatornára kattintva, majd a **Settings
 További információk: [Live streaming using Azure Media Services to create multi-bitrate streams](media-services-manage-live-encoder-enabled-channels.md) (Élő streamelés az Azure Media Services segítségével többszörös sávszélességű streamek létrehozása érdekében).
 
 
-##A betöltési URL-címek beolvasása
+##<a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 
 A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket kell megadnia az élő kódolónak. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
 ![betöltési URL-címek](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 
-##Események létrehozása és kezelése
+##<a name="create-and-manage-events"></a>Események létrehozása és kezelése
 
-###Áttekintés
+###<a name="overview"></a>Áttekintés
 
 A csatornákhoz események/programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. Az eseményeket/programokat a csatornák kezelik. A csatornák és programok viszonya hasonló a hagyományos televíziózáshoz, ahol a csatornák folyamatosan közvetítik a különböző tartalmakat, amelyek adott időtartamon át tartó részeit programoknak nevezzük.
 
@@ -172,7 +172,7 @@ Ha már leállította és törölte is az eseményt, a felhasználók igény sze
 
 Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetővé tenni őket streamelésre, törölje a streamelési lokátort.
 
-###Események létrehozása/indítása/leállítása
+###<a name="create/start/stop-events"></a>Események létrehozása/indítása/leállítása
 
 Ha elvégezte a stream és a csatorna összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy objektumot, egy programot és egy streamelési lokátort. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
 
@@ -199,7 +199,7 @@ A közzétett eseményt a **Live event** (Élő esemény) oldalon tekintheti meg
 Az **Off Air** (Közvetítés leállítása) gombbal az összes élő eseményt leállíthatja. 
 
 
-##Esemény megtekintése
+##<a name="watch-the-event"></a>Esemény megtekintése
 
 Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (Megtekintés) elemére. 
  
@@ -207,7 +207,7 @@ Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (M
 
 A leállítása után az élő esemény automatikusan átalakítja az eseményeket igény szerinti tartalommá.
 
-##A fölöslegessé vált elemek eltávolítása
+##<a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Ha befejezte az esemény streamelését, és törölni szeretné a korábban kiosztott erőforrásokat, kövesse az alábbi eljárást.
 
@@ -215,7 +215,7 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 - Állítsa le a csatornát. A csatorna leállítását követően nem számítunk fel további díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
 - A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. A leállított állapotú csatornák után nem számítunk fel díjakat.
   
-##Archivált tartalom megtekintése
+##<a name="view-archived-content"></a>Archivált tartalom megtekintése
 
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
@@ -223,19 +223,19 @@ Az objektumok kezeléséhez válassza a  **Setting** (Beállítás) elemet, majd
 
 ![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
-##Megfontolandó szempontok
+##<a name="considerations"></a>Megfontolandó szempontok
 
 - Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
 - Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
 
 
-##Következő lépés
+##<a name="next-step"></a>Következő lépés
 
 Tekintse át a Media Services képzési terveket.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##Visszajelzés küldése
+##<a name="provide-feedback"></a>Visszajelzés küldése
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -243,6 +243,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

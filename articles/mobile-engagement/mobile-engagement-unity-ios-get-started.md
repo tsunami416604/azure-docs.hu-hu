@@ -34,7 +34,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 ##<a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
 
-[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
+[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
 ##<a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 
@@ -136,6 +136,6 @@ Az alkalmazásban nem kell további konfigurációt elvégezni az értesítések
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

@@ -57,15 +57,15 @@ Az Azure Machine Learning két különböző típusú szolgáltatást tud biztos
 * Kérés-válasz szolgáltatás (RRS): alacsony késésű, nagy mértékben skálázható szolgáltatás, amely interfészt biztosít a Machine Learning Studióban létrehozott, és onnan üzembe helyezett állapot nélküli modellekhez.
 * Kötegelt végrehajtási szolgáltatás (BES): aszinkron szolgáltatás, amely adatrekordok szerint pontozza a kötegeket.
 
-A REST API felhasználására, illetve a webszolgáltatás elérésére számos megoldás áll rendelkezésre. Írhat például egy alkalmazást C#, R vagy Python nyelven azzal a mintakóddal, amelyet a rendszer a webszolgáltatás üzembe helyezésekor hozott létre. 
+A REST API felhasználására, illetve a webszolgáltatás elérésére számos megoldás áll rendelkezésre. Írhat például egy alkalmazást C#, R vagy Python nyelven azzal a mintakóddal, amelyet a rendszer a webszolgáltatás üzembe helyezésekor hozott létre.
 
-A mintakód a következő helyeken érhető el: A webszolgáltatás Consume (Felhasználás) lapján az Azure Machine Learning webszolgáltatások portálján, és a Machine Learning Studio webszolgáltatási irányítópultján található API-súgóoldalon. 
+A mintakód a következő helyeken érhető el: A webszolgáltatás Consume (Felhasználás) lapján az Azure Machine Learning webszolgáltatások portálján, és a Machine Learning Studio webszolgáltatási irányítópultján található API-súgóoldalon.
 
 Vagy az Önnek létrehozott Microsoft Excel-munkafüzetmintát is használhatja (ez szintén a Studióban, a webszolgáltatás irányítópultján érhető el).
 
 **Milyen újdonságokat hoz az új Azure ML-webszolgáltatások funkció?**
 
-Az új Azure Machine Learning webszolgáltatásokkal kapcsolatos további információkért tekintse meg a [kapcsolódó dokumentációt](machine-learning-whats-new.md). 
+Az új Azure Machine Learning webszolgáltatásokkal kapcsolatos további információkért tekintse meg a [kapcsolódó dokumentációt](machine-learning-whats-new.md).
 
 ## A Machine Learning Studióra vonatkozó kérdések
 
@@ -266,7 +266,7 @@ A hibakódok listáját és azok leírását a [Machine Learning modulok hibakó
 
 **Milyen a webszolgáltatások méretezhetősége?**
 
-Jelenleg az alapértelmezett végpont 20 egyidejű RRS-kérelemmel rendelkezik végpontonként. Ezt végpontonként 200 egyidejű kérelemre is méretezheti, valamint az [API-végpontok méretezése](machine-learning-scaling-endpoints.md) alapján minden webszolgáltatást 10 000 végpontra méretezhet webszolgáltatásonként. A BES esetében minden végpont 40 kérelem feldolgozását engedélyezi egyidejűleg, illetve, amennyiben a kérelmek száma meghaladja a 40-et, az új kérelmek várólistára kerülnek. A várólistára került kérelmeket automatikusan futtatja a rendszer, amint a lista elkezd kiürülni.
+Jelenleg az alapértelmezett végpont 20 egyidejű RRS-kérelemmel rendelkezik végpontonként. Ezt végpontonként 200 egyidejű kérelemre is méretezheti, valamint a [Webszolgáltatások méretezése](machine-learning-scaling-webservice.md) alapján minden webszolgáltatást 10 000 végpontra méretezhet webszolgáltatásonként. A BES esetében minden végpont 40 kérelem feldolgozását engedélyezi egyidejűleg, illetve, amennyiben a kérelmek száma meghaladja a 40-et, az új kérelmek várólistára kerülnek. A várólistára került kérelmeket automatikusan futtatja a rendszer, amint a lista elkezd kiürülni.
 
 
 **Az R-munkák csomópontokon vannak elosztva?**
@@ -355,7 +355,7 @@ Amíg kipróbálja a Machine Learning Studiót, használhatja az ingyenes tarifa
 
 Ha úgy véli, hogy az Azure Machine Learning felel meg a legjobban igényeinek, előfizethet a standard szintre. Az előfizetéshez regisztrálnia kell egy Microsoft Azure-előfizetést.
 
-A standard szinten havonta kell fizetnie a Machine Learning Studióban megadott egyes munkaterületekért. Amikor kísérletet futtat a Studióban, fizetnie kell a kísérlet elvégzéséhez felhasznált számítási erőforrásokért. Amikor klasszikus webszolgáltatást helyez üzembe, a használat alapján kell fizetnie a tranzakciókért és a számítási órákért. 
+A standard szinten havonta kell fizetnie a Machine Learning Studióban megadott egyes munkaterületekért. Amikor kísérletet futtat a Studióban, fizetnie kell a kísérlet elvégzéséhez felhasznált számítási erőforrásokért. Amikor klasszikus webszolgáltatást helyez üzembe, a használat alapján kell fizetnie a tranzakciókért és a számítási órákért.
 
 Az új Machine Learning webszolgáltatások esetében bevezettük a számlázási csomagokat, amelyek megkönnyítik a költségek tervezését. A szintenként meghatározott díjak kedvezményesebb árakat kínálnak a nagy kapacitást igénylő ügyfelek számára.
 
@@ -370,7 +370,7 @@ A számlázással és a díjszabással kapcsolatos további információkért ol
 **Létezik a Machine Learningnek ingyenes próbaverziója?**
 
  Az Azure Machine Learning ingyenes előfizetési lehetőséget is kínál (tovább információkért lásd: [Machine Learning díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)), a Machine Learning Studióhoz pedig 8 órás, gyors kipróbálási időszak érhető el (a próbaverzió eléréséhez jelentkezzen be a [Machine Learning Studióba](https://studio.azureml.net/?selectAccess=true&o=2)).
- 
+
  Emellett az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](/pricing/free-trial-faq/).
 
 **Mit nevezünk tranzakciónak?**
@@ -383,7 +383,7 @@ Igen, a rendszer összesíti az RRS- és BES-tranzakciókat, és ezekért kell f
 
 **Mik azok az API számítási órák?**
 
-Az API üzemóra számlázási egység, amely azon az időtartamon alapul, amennyibe az API-hívásnak beletelik, hogy az ML számítási erőforrásait felhasználva lefusson. A hívásokat a rendszer a számlázás céljából összesíti. 
+Az API üzemóra számlázási egység, amely azon az időtartamon alapul, amennyibe az API-hívásnak beletelik, hogy az ML számítási erőforrásait felhasználva lefusson. A hívásokat a rendszer a számlázás céljából összesíti.
 
 **Általában milyen hosszú időt vesz igénybe egy jellemző éles üzemi API-hívás?**
 
@@ -391,17 +391,17 @@ A különböző éles üzemi API-hívások időtartama között jelentős eltér
 
 **Mik a számítási órák a Studióban?**
 
-A számítási óra a Studio számlázási egysége, amelynek alapján fizetnie kell azért az összesített időtartamért, amíg kísérletei használták a Studio számítási erőforrásait. 
+A számítási óra a Studio számlázási egysége, amelynek alapján fizetnie kell azért az összesített időtartamért, amíg kísérletei használták a Studio számítási erőforrásait.
 
 **Mit jelent az új webszolgáltatásokban a fejlesztés + tesztelés szint?**
 
 Az Azure ML új webszolgáltatások több szintet biztosítanak, amelyet felhasználhat számlázási csomagjai kialakításához. A fejlesztés + tesztelés szint korlátozott szolgáltatási keretet biztosít, amely lehetővé teszi, hogy új webszolgáltatásként tesztelje a kísérletét, további költségek nélkül. Ez lehetőséget nyújt a kísérlet gyakorlati kipróbálására.
 
-**Kell külön fizetnem a tárterületért?** 
+**Kell külön fizetnem a tárterületért?**
 
 A Machine Learning Ingyenes szintje nem igényel különálló tárterületet, illetve nem is teszi lehetővé annak használatát. A Machine Learning Standard szintjénél a felhasználóknak Azure-tárfiókkal kell rendelkezniük. Az Azure-tárterületért [külön kell fizetnie](https://azure.microsoft.com/pricing/details/storage/).
 
-**Hogyan támogatja a Machine Learning a magas rendelkezésre állást?** 
+**Hogyan támogatja a Machine Learning a magas rendelkezésre állást?**
 
 A különböző éles üzemi API-hívások időtartama között jelentős eltérés lehet, a hívások az adatfeldolgozási és a gépi tanulási modell összetettségétől függően néhány száz ezredmásodperctől több másodpercig is terjedhetnek, de akár perceket is igénybe vehetnek. Az éles üzemi API-hívások időtartamának megbecsülésére a legjobb módszer, ha a Machine Learning szolgáltatás segítségével teszteli a modellt.
 
@@ -409,7 +409,7 @@ A különböző éles üzemi API-hívások időtartama között jelentős eltér
 
 A Machine Learning szolgáltatás egy több-bérlős szolgáltatás. A háttérrendszeren ténylegesen felhasznált számítási erőforrások eltérőek, és a teljesítmény és az előre látható használat alapján lettek optimalizálva.
 
-### Az új webszolgáltatások kezelése 
+### Az új webszolgáltatások kezelése
 
 **Mi történik, ha törlöm a csomagot?**
 
@@ -419,29 +419,29 @@ Megjegyzés: ha a csomagot használja egy webszolgáltatás, nem lehet törölni
 
 **Mik azok a csomagpéldányok?**
 
-A csomagpéldány a szolgáltatási keret egysége, amelyet a számlázási csomaghoz adhat. Amikor kiválasztja a számlázási szintet a számlázási csomaghoz, egy darab példányt kap. Ha többre van szüksége, további példányokat adhat csomagjához a kiválasztott számlázási szintről. 
+A csomagpéldány a szolgáltatási keret egysége, amelyet a számlázási csomaghoz adhat. Amikor kiválasztja a számlázási szintet a számlázási csomaghoz, egy darab példányt kap. Ha többre van szüksége, további példányokat adhat csomagjához a kiválasztott számlázási szintről.
 
 **Legfeljebb hány csomagpéldányt használhatok?**
 
 A fejlesztés + tesztelés szinten egy példány szerepelhet az előfizetésben.
 
-Az S1, az S2 és az S3 szinten annyi példányt vehet fel, ahányra csak szüksége van. 
+Az S1, az S2 és az S3 szinten annyi példányt vehet fel, ahányra csak szüksége van.
 
 Megjegyzés: a tervezett használat mértékétől függően költséghatékonyabb megoldás lehet, ha ahelyett, hogy újabb példányokat adna az aktuális szinthez, inkább magasabb keretszintre tér át.
 
 **Mi történik, ha módosítom a csomagom szintjét (magasabbra vagy alacsonyabbra)?**
 
-Töröljük a régi csomagot, a használatot pedig időarányosan kiszámlázzuk. A számlázási időszak fennmaradó időtartamára az új, magasabb vagy alacsonyabb szint teljes keretét tartalmazó új csomag jön létre. 
+Töröljük a régi csomagot, a használatot pedig időarányosan kiszámlázzuk. A számlázási időszak fennmaradó időtartamára az új, magasabb vagy alacsonyabb szint teljes keretét tartalmazó új csomag jön létre.
 
 Megjegyzés: a szolgáltatási keret az adott időszakra vonatkozik, a fel nem használt erőforrások nem vihetők át a következő időszakra.
 
 **Mi történik, ha növelem a csomagban lévő példányok számát?**
 
-A keretek arányos alapon érhetők el, és az érvénybe lépésük akár 24 órát is igénybe vehet. 
+A keretek arányos alapon érhetők el, és az érvénybe lépésük akár 24 órát is igénybe vehet.
 
 **Mi történik, ha törlök egy példányt a csomagból?**
 
-A példányt eltávolítjuk az előfizetéséből, a használatot pedig időarányosan számlázzuk ki. 
+A példányt eltávolítjuk az előfizetéséből, a használatot pedig időarányosan számlázzuk ki.
 
 
 ### Regisztrálás új webszolgáltatás-csomagokra
@@ -450,9 +450,9 @@ A példányt eltávolítjuk az előfizetéséből, a használatot pedig időará
 
 Számlázási csomagot két különböző módon hozhat létre.
 
-Az új webszolgáltatás első üzembe helyezésekor választhat egy meglévő csomagot, vagy létrehozhat egy új csomagot. 
+Az új webszolgáltatás első üzembe helyezésekor választhat egy meglévő csomagot, vagy létrehozhat egy új csomagot.
 
-Az itt létrehozott csomagok a felhasználó alapértelmezett régiójához fognak tartozni, és a webszolgáltatást is ebben a régióban helyezzük üzembe. 
+Az itt létrehozott csomagok a felhasználó alapértelmezett régiójához fognak tartozni, és a webszolgáltatást is ebben a régióban helyezzük üzembe.
 
 Ha az alapértelmezett régión kívül szeretne szolgáltatásokat üzembe helyezni, a szolgáltatás üzembe helyezése előtt célszerű meghatározni a számlázási csomagokat.
 
@@ -460,7 +460,7 @@ Ebben az esetben jelentkezzen be az Azure Machine Learning webszolgáltatások p
 
 **Melyik csomaggal érdemes kezdeni?**
 
-Javasoljuk, hogy először válassza a Standard S1 csomagot, és kövesse figyelemmel, hogy mennyi erőforrást használnak szolgáltatásai. Ha úgy találja, hogy gyorsan kimerül a szolgáltatási keret, adjon hozzá további példányokat, vagy a kedvezményesebb fizetés érdekében váltson magasabb szintre. A számlázási csomagot bármikor tetszés szerint módosíthatja. 
+Javasoljuk, hogy először válassza a Standard S1 csomagot, és kövesse figyelemmel, hogy mennyi erőforrást használnak szolgáltatásai. Ha úgy találja, hogy gyorsan kimerül a szolgáltatási keret, adjon hozzá további példányokat, vagy a kedvezményesebb fizetés érdekében váltson magasabb szintre. A számlázási csomagot bármikor tetszés szerint módosíthatja.
 
 **Mely régiókban érhetők el az új csomagok?**
 
@@ -478,21 +478,21 @@ Igen. A csomagok ára régiónként változik. Ha egy webszolgáltatást egy má
 
 **Hogyan tudom ellenőrizni, hogy felmerültek-e többletköltségek a webszolgáltatás használata miatt?**
 
-Az Azure Machine Learning webszolgáltatások portál Csomagok lapján az összes csomag által használt erőforrásokat megtekintheti. Jelentkezzen be a portálra, és kattintson a Csomagok menüpontra. 
+Az Azure Machine Learning webszolgáltatások portál Csomagok lapján az összes csomag által használt erőforrásokat megtekintheti. Jelentkezzen be a portálra, és kattintson a Csomagok menüpontra.
 
-A táblázat Tranzakciók és Számítás oszlopában láthatja a csomag szolgáltatási keretét, és azt, hogy az adott pillanatig annak hány százalékát használta fel. 
+A táblázat Tranzakciók és Számítás oszlopában láthatja a csomag szolgáltatási keretét, és azt, hogy az adott pillanatig annak hány százalékát használta fel.
 
 **Mi történik, ha a fejlesztés + tesztelés szint esetében kimerítem a szolgáltatási keretet?**
 
 A fejlesztés + tesztelés szinttel ellátott szolgáltatásokat ilyenkor a következő periódus elérkeztéig leállítja, illetve Önnek lehetősége van áthelyezni őket az egyik fizetett szint alá.
 
-**Hogyan számítják ki a kérés-válasz (RRS) és a kötegelt (BES) számítási feladatokért fizetendő összeget a klasszikus webszolgáltatásoknál és az új webszolgáltatások többleteinél?** 
+**Hogyan számítják ki a kérés-válasz (RRS) és a kötegelt (BES) számítási feladatokért fizetendő összeget a klasszikus webszolgáltatásoknál és az új webszolgáltatások többleteinél?**
 
-RRS számítási feladat esetén fizetni kell minden API-tranzakciós hívásért, és a kérelmekhez szükséges számítási időért. Az éles RRS API-tranzakciók díjának a számítása a következőképpen történik: az API-hívások teljes száma szorozva 1000 tranzakció díjával (az egyes tranzakciók szerint arányosítva). Az éles RRS API-számítási üzemórák díjának a számítása a következőképpen történik: az egyes API-hívások futtatásához szükséges idő szorozva az API-tranzakciók teljes számával szorozva az egyes éles API számítási órák díjával. 
+RRS számítási feladat esetén fizetni kell minden API-tranzakciós hívásért, és a kérelmekhez szükséges számítási időért. Az éles RRS API-tranzakciók díjának a számítása a következőképpen történik: az API-hívások teljes száma szorozva 1000 tranzakció díjával (az egyes tranzakciók szerint arányosítva). Az éles RRS API-számítási üzemórák díjának a számítása a következőképpen történik: az egyes API-hívások futtatásához szükséges idő szorozva az API-tranzakciók teljes számával szorozva az egyes éles API számítási órák díjával.
 
 A Standard S1 csomagban érvényes többletköltségekkel számolva 1 000 000, egyenként 0,72 másodpercen át futó API-tranzakcióért 500 USD-t (1 000 000 * 0,50 USD/1000 API-hívás) kell fizetni az éles API-tranzakciókért magukért, és 400 USD-t (1 000 000 * 0,72 másodperc * 2 USD/óra) az éles üzemi API-k számítási üzemidejéért, azaz az összköltség 900 USD.
 
-A BES számítási feladatokért ugyanígy kell fizetni, azonban az API-tranzakciók költsége az elküldött kötegelt feladatok számához igazodik, a számítási költségek pedig az ezen kötegelt feladatok elvégzéséhez szükséges számítási időn alapulnak. Az éles BES API-tranzakciók díjának a számítása a következőképpen történik: az elküldött feladatok teljes száma szorozva 1000 tranzakció díjával (az egyes tranzakciók szerint arányosítva). Az éles BES API-számítási üzemórák díjának a számítása a következőképpen történik: a feladat egyes sorainak a futtatásához szükséges idő szorozva a feladat egyes sorainak a számával szorozva a feladatok teljes számával szorozva az egyes éles API számítási órák díjával. A Machine Learning számológépének használata során a tranzakcióhoz tartozó érték a beküldeni tervezett feladatok számát jelöli, a tranzakciónkénti időt tartalmazó mező pedig az egyes feladatokban szereplő összes sor lefutásához szükséges időt mutatja. 
+A BES számítási feladatokért ugyanígy kell fizetni, azonban az API-tranzakciók költsége az elküldött kötegelt feladatok számához igazodik, a számítási költségek pedig az ezen kötegelt feladatok elvégzéséhez szükséges számítási időn alapulnak. Az éles BES API-tranzakciók díjának a számítása a következőképpen történik: az elküldött feladatok teljes száma szorozva 1000 tranzakció díjával (az egyes tranzakciók szerint arányosítva). Az éles BES API-számítási üzemórák díjának a számítása a következőképpen történik: a feladat egyes sorainak a futtatásához szükséges idő szorozva a feladat egyes sorainak a számával szorozva a feladatok teljes számával szorozva az egyes éles API számítási órák díjával. A Machine Learning számológépének használata során a tranzakcióhoz tartozó érték a beküldeni tervezett feladatok számát jelöli, a tranzakciónkénti időt tartalmazó mező pedig az egyes feladatokban szereplő összes sor lefutásához szükséges időt mutatja.
 
 A Standard S1 csomagban érvényes többletköltségekkel számolva ha napi 100 feladatot ad be, és ezek mindegyike 500, egyenként 0,72 másodpercen át futó sort tartalmaz, a havi átlagköltség 1,55 USD (napi 100 feladat = 3100 feladat/hónap * 0,50 USD/1000 API-tranzakció) az éles API-tranzakciókért, és 620 USD (500 sor * 0,72 másodperc * 3100 feladat * 2 USD/óra) az éles üzemi API-k számítási üzemidejéért, azaz összesen 621,55 USD.
 
@@ -505,30 +505,30 @@ Igen, az Azure Machine Learning továbbra is használható a klasszikus webszolg
 
 **Mit tartalmaz az Azure Machine Learning Ingyenes szintje?**
 
-Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. Az Ingyenes szinthez tartozó számítási feladatok nem tudják elérni az adatokat a helyszíni SQL-kiszolgálókhoz való kapcsolódással. 
+Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. Az Ingyenes szinthez tartozó számítási feladatok nem tudják elérni az adatokat a helyszíni SQL-kiszolgálókhoz való kapcsolódással.
 
 **Mit tartalmaznak az Azure Machine Learning Standard szintjei és csomagjai?**
 
 Az Azure Machine Learning Standard szintje az Azure Machine Learning Studio fizetős változatát tartalmazza. Az Azure ML Studio havi díjának számlázása munkaterület/hónap alapon történik, és a részhónapokért időarányos módon kell fizetni. Az Azure ML Studio-kísérletezési idő (óra) után az aktív kísérletezéssel töltött számítási óránként számítunk fel díjat. A nem teljes órákért időarányos módon kell fizetni.  
 
-Az Azure ML API szolgáltatásnál a fizetendő összeget az határozza meg, hogy a klasszikus vagy az új webszolgáltatásról van szó. 
+Az Azure ML API szolgáltatásnál a fizetendő összeget az határozza meg, hogy a klasszikus vagy az új webszolgáltatásról van szó.
 
-Az alábbi díjakat munkaterületenként összesítik az előfizetéshez kapcsolódóan. 
+Az alábbi díjakat munkaterületenként összesítik az előfizetéshez kapcsolódóan.
 
 * Machine Learning-munkaterület előfizetés – A Machine Learning-munkaterület előfizetés egy havi díj, amely hozzáférést biztosít egy ML Studio-munkaterülethez, és szükséges a kísérleteknek a Studióban történő futtatásához és az éles API-k használatához.
 * Studio-kísérletezési idő (óra): ez az érték az ML Studióban futtatott kísérletek, valamint az éles üzemi API-hívások átmeneti környezetben való futtatása során elvégzett számítási feladatokkal kapcsolatos díjakat összesíti.
 * Érje el adatait a tanítási és pontozási modellekben egy helyszíni SQL-kiszolgálóhoz való csatlakozással.
-* Klasszikus webszolgáltatásoknál: 
+* Klasszikus webszolgáltatásoknál:
     * Számítási üzemidő éles üzemi API-n (óra) – Ez az érték az éles üzemben futó webszolgáltatásokért fizetendő számítási díjakat adja meg.
     * Éles üzemi API-tranzakciók (ezer db) – Ez az érték az éles üzemi webszolgáltatás felé irányuló hívásonkénti díjakat adja meg.
 
-A fenti díjakon kívül, az új webszolgáltatások esetén a díjak a választott csomagban vannak összesítve: 
+A fenti díjakon kívül, az új webszolgáltatások esetén a díjak a választott csomagban vannak összesítve:
 
 * Standard S1/S2/S3 API-csomag (egység) – Ez az érték az új webszolgáltatáshoz kiválasztott példány típusát adja meg.
 * Standard S1/S2/S3 keretét túllépő API-számítási üzemóra – Ez az érték azt adja meg, hogy mennyi számítási feladatokkal kapcsolatos díj merült fel azt követően, hogy az éles üzemben futó új webszolgáltatással felhasználta a meglévő példány(ok)ban elérhető szolgáltatási keretet. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
 * Standard S1/S2/S3 keretét túllépő API-tranzakciószám (1000-es egységekben) – Ez az érték azt adja meg, hogy mennyi díj merült fel az éles üzemben futó új webszolgáltatás felé irányuló hívásonként azt követően, hogy a meglévő példány(ok)ban elérhető szolgáltatási keret kimerült. A kereten felüli használatért az S1/S2/S3 csomagszinthez tartozó feláras díj alapján kell fizetni.
-* Szolgáltatási keretbe foglalt API-számítási üzemóra – az új webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-számítási üzemórákat. 
-* Szolgáltatási keretbe foglalt API-tranzakció (1000-es egységekben) – az új webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-tranzakciókat. 
+* Szolgáltatási keretbe foglalt API-számítási üzemóra – az új webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-számítási üzemórákat.
+* Szolgáltatási keretbe foglalt API-tranzakció (1000-es egységekben) – az új webszolgáltatásoknál ez az érték jelzi a szolgáltatási keretbe foglalt API-tranzakciókat.
 
 
 **Hogy tudok regisztrálni az Azure ML Ingyenes szintjére?**
@@ -547,7 +547,7 @@ Nem. A Standard szint a Machine Learning azon változata, amely a szintek beveze
 
 **Van rá lehetőség az Ingyenes szinten, hogy API-ként üzembe helyezzem gépi tanulási modelljeimet?**
 
-Igen, az Ingyenes szinten átmeneti API-szolgáltatásokba helyezheti üzembe gépi tanulási modelljeit. Ahhoz azonban már a Standard szintre lesz szüksége, hogy az átmeneti API-szolgáltatás éles üzemben használhassa, illetve hogy beszerezhesse az üzembe helyezett szolgáltatáshoz kapcsolódó éles végpontot. 
+Igen, az Ingyenes szinten átmeneti API-szolgáltatásokba helyezheti üzembe gépi tanulási modelljeit. Ahhoz azonban már a Standard szintre lesz szüksége, hogy az átmeneti API-szolgáltatás éles üzemben használhassa, illetve hogy beszerezhesse az üzembe helyezett szolgáltatáshoz kapcsolódó éles végpontot.
 
 **Mi a különbség az Azure ingyenes próbaverziója és az Azure Machine Learning Ingyenes szintje között?**
 
@@ -593,6 +593,6 @@ A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt le
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

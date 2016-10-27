@@ -152,6 +152,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

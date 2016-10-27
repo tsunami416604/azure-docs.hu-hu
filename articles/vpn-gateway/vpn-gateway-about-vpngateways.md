@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/21/2016"
+   ms.date="10/06/2016"
    ms.author="cherylmc" />
 
 
@@ -36,6 +36,7 @@ Mindegyik virtuális hálózat csak egy virtuális hálózati átjáróval rende
 ## Gateway termékváltozatok
 
 [AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+Szabályalapú VPN-ek csak az alapszintű termékváltozatot használó átjárók esetében hozhatók létre.
 Az átjáró-termékváltozatokkal kapcsolatos további információkért lásd: [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Átjáró-termékváltozatok).
 
 Az alábbi táblázatban az átjárótípusok és azok becsült összesített átviteli sebessége tekinthető meg. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
@@ -152,6 +153,6 @@ A VPN-átjáró konfigurációjának megtervezése Lásd még: [VPN Gateway terv
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

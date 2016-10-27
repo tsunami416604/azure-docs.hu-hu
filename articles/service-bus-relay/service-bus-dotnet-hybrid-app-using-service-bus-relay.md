@@ -1,14 +1,14 @@
 <properties
     pageTitle="Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Azure"
     description="Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure Service Bus Relay használatával."
-    services="service-bus-relay"
+    services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-relay"
+    ms.service="service-bus"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
@@ -17,9 +17,9 @@
     ms.author="sethm"/>
 
 
-# Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus Relay használatával
+# <a name=".net-on-premises/cloud-hybrid-application-using-azure-service-bus-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus Relay használatával
 
-## Introduction (Bevezetés)
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Ez a cikk azt ismerteti, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
@@ -30,15 +30,15 @@ Az oktatóanyagban érintett témák köre:
 
 [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## Hogyan segít a Service Bus Relay a hibrid megoldások terén?
+## <a name="how-the-service-bus-relay-helps-with-hybrid-solutions"></a>Hogyan segít a Service Bus Relay a hibrid megoldások terén?
 
 Az üzleti megoldások általában egyéni kódok kombinációjából állnak, amelyeket az új és egyedi üzleti követelmények és már meglévő megoldások és rendszerek által szolgáltatott létező funkciók kezeléséhez írtak.
 
 A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
-A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
+A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus-messaging/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
-## A megoldás forgatókönyve
+## <a name="solution-scenario"></a>A megoldás forgatókönyve
 
 Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
 
@@ -50,7 +50,7 @@ A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja
 
 ![][1]
 
-## A fejlesztési környezet kialakítása
+## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
 Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
@@ -64,19 +64,19 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszkö
 
 6.  A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
-## Névtér létrehozása
+## <a name="create-a-namespace"></a>Névtér létrehozása
 
 A Service Bus-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## Helyszíni kiszolgáló létrehozása
+## <a name="create-an-on-premises-server"></a>Helyszíni kiszolgáló létrehozása
 
 Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
 
 Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
 
-### A projekt létrehozása
+### <a name="create-the-project"></a>A projekt létrehozása
 
 1.  Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 
@@ -229,11 +229,11 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
 
 14. Nyomja le a **Ctrl+Shift+B** billentyűkombinációt, vagy a **Build** (Fordítás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre, és ellenőrizze az eddigi munkája pontosságát.
 
-## ASP.NET-alkalmazás létrehozása
+## <a name="create-an-asp.net-application"></a>ASP.NET-alkalmazás létrehozása
 
 Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely megjeleníti a termékszolgáltatásból lekért adatokat.
 
-### A projekt létrehozása
+### <a name="create-the-project"></a>A projekt létrehozása
 
 1.  Ellenőrizze, hogy a Visual Studio rendszergazdai jogosultságokkal fut-e.
 
@@ -265,7 +265,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 
     ![][17]
 
-### A webalkalmazás módosítása
+### <a name="modify-the-web-application"></a>A webalkalmazás módosítása
 
 1.  A Visual Studióban a Product.cs fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
@@ -354,7 +354,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 9.  Az eddigi munkája pontosságának ellenőrzéséhez lenyomhatja a **Ctrl+Shift+B** billentyűkombinációt a projekt létrehozásához.
 
 
-### Az alkalmazás futtatása helyben
+### <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
 Futtassa az alkalmazást a működése ellenőrzéséhez.
 
@@ -364,7 +364,7 @@ Futtassa az alkalmazást a működése ellenőrzéséhez.
 
     ![][21]
 
-## Az egyes alkotórészek összeállítása teljes egésszé
+## <a name="put-the-pieces-together"></a>Az egyes alkotórészek összeállítása teljes egésszé
 
 A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalmazáshoz csatlakoztassuk.
 
@@ -442,7 +442,7 @@ A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalma
 
 15. A **Property Pages** (Tulajdonságlapok) párbeszédpanelen kattintson az **OK** gombra.
 
-## A projekt helyi futtatása
+## <a name="run-the-project-locally"></a>A projekt helyi futtatása
 
 Az alkalmazás helyi teszteléséhez nyomja le az **F5** billentyűt a Visual Studióban. Először a helyszíni kiszolgálónak (**ProductsServer**) kell elindulnia, és ezt követően kell megnyílnia a **ProductsPortal** alkalmazásnak egy böngészőablakban. Ezúttal a termék helyszíni rendszeréből származó adatokat fog látni a termékleltárban.
 
@@ -452,7 +452,7 @@ A **ProductsPortal** oldalon kattintson a **Frissítés** parancsra. Valahánysz
 
 Zárja be mindkét alkalmazást, mielőtt a következő lépéssel folytatná.
 
-## A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
+## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
 
 A következő lépés a **ProductsPortal** előtérkiszolgáló Azure-webalkalmazássá történő átalakítása. Először is telepítse a **ProductsPortal** projektet [A webes projekt telepítése az Azure-webalkalmazásban](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-the-azure-web-app) című szakaszban leírtak szerint. A telepítés befejezése után térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 
@@ -462,7 +462,7 @@ Másolja ki a telepített webalkalmazás URL-címét, mert szükség lesz rá a 
 
 ![][9] 
 
-### A ProductsPortal beállítása webalkalmazásként
+### <a name="set-productsportal-as-web-app"></a>A ProductsPortal beállítása webalkalmazásként
 
 Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a **ProductsPortal** webalkalmazásként indult el a Visual Studióban.
 
@@ -478,7 +478,7 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
 7. A Visual Studio Build (Fordítás) menüjében kattintson a **Rebuild Solution** (Megoldás újrafordítása) parancsra.
 
-## Az alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 2.  Nyomja le az F5 billentyűt az alkalmazás fordításához és futtatásához. Először a helyszíni kiszolgálónak (**ProductsServer** konzolalkalmazás) kell elindulnia, ezt követően indul el a **ProductsPortal** alkalmazás a böngészőablakban a képernyőképen is látható módon. Figyelje meg, hogy a termék helyszíni rendszeréből származó adatokat láthat a termékleltárban, és ezek az adatok a webalkalmazásban jelennek meg. Ellenőrizze az URL-címet, és győződjön meg arról, hogy a **ProductsPortal** Azure-webalkalmazás fut a felhőben. 
 
@@ -492,7 +492,7 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
     ![][38]
 
-## Következő lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
@@ -534,6 +534,6 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

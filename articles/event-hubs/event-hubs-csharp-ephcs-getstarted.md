@@ -17,11 +17,11 @@
     ms.author="jotaub;sethm"/>
 
 
-# Bevezetés az Event Hubs használatába
+# <a name="get-started-with-event-hubs"></a>Bevezetés az Event Hubs használatába
 
 [AZURE.INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
 
-## Bevezetés
+## <a name="introduction"></a>Bevezetés
 
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
 
@@ -39,7 +39,7 @@ Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
-## Az alkalmazások futtatása
+## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 Készen áll arra, hogy futtassa az alkalmazásokat.
 
@@ -71,13 +71,12 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
 
 Nyomja le a **Ctrl+C** billentyűkombinációt a **Küldő** ablakban a Küldő alkalmazás bezárásához, majd nyomja le az **Enter** billentyűt a Fogadó ablakban ezen alkalmazás bezárásához.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot, valamint adatokat fogad és küld, így továbbléphet a következő forgatókönyvekre:
 
 - [Az Event Hubsot használó teljes mintaalkalmazás][].
 - Az [eseményfeldolgozás horizontális felskálázása az Event Hubs használatával][] – példa.
-- [Üzenetsor-kezelési megoldás][] a Service Bus által kezelt üzenetsorok használatával.
 - [Event Hubs – áttekintés][]
 
 <!-- Images. -->
@@ -87,16 +86,16 @@ Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot,
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[klasszikus Azure portál]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs – áttekintés]: event-hubs-overview.md
-[Az Event Hubsot használó teljes mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[eseményfeldolgozás horizontális felskálázása az Event Hubs használatával]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Üzenetsor-kezelési megoldás]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Az Event Hubsot használó mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Eseményfeldolgozás horizontális felskálázása az Event Hubs használatával]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[üzenetsor-kezelési megoldás]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

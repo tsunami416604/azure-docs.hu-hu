@@ -17,7 +17,7 @@
     ms.author="rachelap"/>
 
 
-# A webalkalmazások áttekintése
+# <a name="web-apps-overview"></a>A webalkalmazások áttekintése
 
 Az *App Service Web Apps* egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. Ez a [szolgáltatásként kínált platform](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) a Microsoft Azure ajánlata, melynek segítségével az üzleti logikára koncentrálhat, miközben az Azure intézkedik az alkalmazások futtatásához és méretezéséhez szükséges infrastruktúráról.
 
@@ -27,7 +27,7 @@ Az alábbi ötperces videó bemutatja az Azure App Service Web Apps szolgáltat�
 
 >[AZURE.INCLUDE [app-service-linux](../../includes/app-service-linux.md)] 
 
-## Mi az az App Service-webalkalmazás?
+## <a name="what-is-a-web-app-in-app-service?"></a>Mi az az App Service-webalkalmazás?
 
 Az App Service-ben egy *webalkalmazás* az Azure által egy webhely vagy webalkalmazás üzemeltetéséhez biztosított számítási erőforrások összessége.  
 
@@ -37,7 +37,7 @@ A kód bármilyen nyelven vagy keretrendszerben lehet, amelyet támogat az [Azur
 
 Példák általános alkalmazás-forgatókönyvekre, amelyekhez használhatók a Webalkalmazások: [Webalkalmazások forgatókönyvei](https://azure.microsoft.com/documentation/scenarios/web-app/) és a **Forgatókönyvek és javaslatok** szakasz itt: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](choose-web-site-cloud-service-vm.md#scenarios).
 
-## Miért érdemes használni a webalkalmazásokat?
+## <a name="why-use-web-apps?"></a>Miért érdemes használni a webalkalmazásokat?
 
 Az App Service néhány kulcsszolgáltatása, amely a Webalkalmazások szolgáltatásra is vonatkozik:
 
@@ -59,7 +59,7 @@ Ráadásul egy webalkalmazás kihasználhatja az [API Apps](../app-service-api/a
 
 Az App Service-webalkalmazásokon kívül az Azure más szolgáltatásokat is kínál, amelyek használhatók webhelyek és webalkalmazások üzemeltetésére. A legtöbb forgatókönyvhöz a Webalkalmazások a legjobb választás.  Mikroszolgáltatási architektúra esetében érdemes megfontolni a [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) használatát, ha pedig nagyobb felügyeletre van szüksége a kódot futtató virtuális gépek fölött, akkor érdemes megfontolni az [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) használatát. További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](choose-web-site-cloud-service-vm.md).
 
-## Bevezetés
+## <a name="getting-started"></a>Bevezetés
 
 Ha kezdésként telepíteni szeretné egy új webalkalmazás mintakódját az App Service-ben, kövesse [Az első webalkalmazás telepítése az Azure-ba 5 perc alatt](app-service-web-get-started.md) című oktatóanyagot. Szüksége lesz egy ingyenes Azure-fiókra.
 
@@ -67,6 +67,6 @@ Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése el
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

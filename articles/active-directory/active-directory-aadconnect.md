@@ -167,6 +167,6 @@ Az Ignite 2015 bemutatója a helyszíni címtárak felhőbe történő kiterjesz
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

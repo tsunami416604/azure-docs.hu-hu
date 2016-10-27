@@ -190,6 +190,6 @@ Miután létrehozta a DNS-zónát, az internetes tartományához tartozó nevek 
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/12/2016"
+    ms.date="10/05/2016"
     ms.author="asteen"/>
 
 
@@ -62,8 +62,8 @@ Mielőtt önkiszolgáló jelszó-visszaállítást engedélyezhetne és használ
 ### 1. lépés: Jelszó-visszaállítási házirend konfigurálása
 Felhasználói jelszó-visszaállítási házirend konfigurálásához végezze el a következő lépéseket:
 
-1.  Nyisson meg egy böngészőt, és nyissa meg az [Azure felügyeleti portált](https://manage.windowsazure.com).
-2.  Az [Azure felügyeleti portálon](https://manage.windowsazure.com) keresse meg az **Active Directory-bővítményt** a bal oldali navigációs sávon.
+1.  Nyisson meg egy böngészőt, és nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
+2.  A [klasszikus Azure portálon](https://manage.windowsazure.com) keresse meg az **Active Directory-bővítményt** a bal oldali navigációs sávon.
 
     ![Jelszókezelés az Azure AD-ben][001]
 
@@ -94,7 +94,7 @@ Felhasználói jelszó-visszaállítási házirend konfigurálásához végezze 
 ### 2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál
 Több lehetősége van arra, hogyan adhatja meg a szervezetében lévő felhasználók adatait a jelszó-visszaállításhoz.
 
--   A felhasználók szerkesztése az [Azure felügyeleti portálon](https://manage.windowsazure.com) vagy az [Office 365 felügyeleti portálon](https://portal.microsoftonline.com)
+-   A felhasználók szerkesztése a [klasszikus Azure portálon](https://manage.windowsazure.com) vagy az [Office 365 felügyeleti portálon](https://portal.microsoftonline.com)
 -   Az AAD Connect használata a felhasználói tulajdonságok a helyszíni Active Directory-tartományból az Azure AD-be történő szinkronizálásához
 -   Felhasználói tulajdonságok szerkesztése a Windows PowerShell használatával
 -   Ha lehetővé szeretné tenni, hogy a felhasználók regisztrálhassák a saját adataikat, irányítsa őket a [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) címen elérhető regisztrációs portálra
@@ -212,7 +212,7 @@ A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy ú
 
 Ha ez a verziószám nagyobb vagy egyenlő, mint **1.0.0419.0911**, vagy ha az Azure AD Connectet telepíti, továbbléphet a [2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben a felhasználói felületen vagy a PowerShellen keresztül, és ellenőrzés](#step-2-enable-password-writeback-in-azure-ad-connect) című szakaszra.
 
- > [AZURE.NOTE] Ha most telepíti először az Azure AD Connect eszközt, a figyelmébe ajánlunk néhány ajánlott eljárást, hogy előkészítse a környezetét a címtár-szinkronizálásra.  Az Azure AD Connect eszköz telepítése előtt aktiválnia kell a címtár-szinkronizálást az [Office 365 felügyeleti portálon](https://portal.microsoftonline.com) vagy az [Azure felügyeleti portálon](https://manage.windowsazure.com).  További információért lásd: [Az Azure AD Connect kezelése](active-directory-aadconnect-whats-next.md).
+ > [AZURE.NOTE] Ha most telepíti először az Azure AD Connect eszközt, a figyelmébe ajánlunk néhány ajánlott eljárást, hogy előkészítse a környezetét a címtár-szinkronizálásra.  Az Azure AD Connect eszköz telepítése előtt aktiválnia kell a címtár-szinkronizálást az [Office 365 felügyeleti portálon](https://portal.microsoftonline.com) vagy a [klasszikus Azure portálon](https://manage.windowsazure.com).  További információért lásd: [Az Azure AD Connect kezelése](active-directory-aadconnect-whats-next.md).
 
 
 ### 2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben
@@ -227,17 +227,17 @@ Most, hogy letöltötte az Azure AD Connect eszközt, készen áll a jelszóviss
 
 4.  Fejezze be a varázsló lépéseit, és az utolsó oldal tartalmazza a módosításokat és a jelszóvisszaírás konfigurációjának módosítását.
 
-> [AZURE.NOTE] Bármikor letilthatja a jelszóvisszaírást a varázsló ismételt futtatásával és a funkció jelölésének törlésével, vagy a **Jelszavak visszaírása helyszíni címtárba** beállítás **Nem** értékre állításával a címtár **Konfigurálás** lapjának **Felhasználói jelszó-visszaállítási házirend** szakaszában az [Azure felügyeleti portálon](https://manage.windowsazure.com).  További információ a jelszóvisszaállítási felület testreszabásáról: [Testreszabás: Azure AD-jelszókezelés](active-directory-passwords-customize.md).
+> [AZURE.NOTE] Bármikor letilthatja a jelszóvisszaírást a varázsló ismételt futtatásával és a funkció jelölésének törlésével, vagy a **Jelszavak visszaírása helyszíni címtárba** beállítás **Nem** értékre állításával a címtár **Konfigurálás** lapjának **Felhasználói jelszó-visszaállítási házirend** szakaszában a [klasszikus Azure portálon](https://manage.windowsazure.com).  További információ a jelszóvisszaállítási felület testreszabásáról: [Testreszabás: Azure AD-jelszókezelés](active-directory-passwords-customize.md).
 
 #### A jelszóvisszaírás engedélyezése a Windows PowerShell használatával
 1.  A **Directory Sync számítógépén** nyisson meg egy új **emelt szintű Windows PowerShell-ablakot**.
-2.  Ha a modul még nincs betöltve, írja be az `Import-Module ADSync` parancsot, hogy az Azure AD Connect-parancsmagokat betöltse az aktuális munkamenetbe.
-3.  A rendszeren lévő AAD-összekötők listájának lekéréséhez futtassa a `Get-ADSyncConnector` parancsmagot, és tárolja az eredményeket a következőben: `$aadConnectorName`
-4.  Az aktuális összekötő aktuális visszaírási állapotának lekéréséhez futtassa a következő parancsmagot: `Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName`
-5.  A jelszóvisszaírás engedélyezéséhez futtassa a következő parancsmagot: `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName –Enable $true`
+2.  Ha a modul még nincs betöltve, írja be az `import-module ADSync` parancsot, hogy az Azure AD Connect-parancsmagokat betöltse az aktuális munkamenetbe.
+3.  A rendszeren lévő Azure AD-összekötők listájának lekéréséhez futtassa a `Get-ADSyncConnector` parancsmagot, és tárolja az eredményeket a `$aadConnectorName` változóban, például `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
+4.  Az aktuális összekötő aktuális visszaírási állapotának lekéréséhez futtassa a következő parancsmagot: `Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
+5.  A jelszóvisszaírás engedélyezéséhez futtassa a következő parancsmagot: `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
 > [AZURE.NOTE] Ha a rendszer bekéri a hitelesítő adatait, győződjön meg róla, hogy az AzureADCredential hitelesítő adatokhoz megadott rendszergazdai fiók egy **felhőalapú rendszergazdai fiók** legyen (amely az Azure AD-ben jött létre), nem pedig összevont fiók (amely helyszíni AD-ben jött létre, és az Azure AD-be lett szinkronizálva).
-> [AZURE.NOTE] Letilthatja a jelszóvisszaírást a PowerShellen keresztül a fenti eljárást megismételve, csak adja meg a `$false` értéket, vagy állítsa a **Jelszavak visszaírása helyszíni címtárba** beállítást **Nem** értékre a címtár **Konfigurálás** lapjának **Felhasználói jelszó-visszaállítási házirend** szakaszában az [Azure felügyeleti portálon](https://manage.windowsazure.com).
+> [AZURE.NOTE] Letilthatja a jelszóvisszaírást a PowerShellen keresztül a fenti eljárást megismételve, csak adja meg a `$false` értéket, vagy állítsa a **Jelszavak visszaírása helyszíni címtárba** beállítást **Nem** értékre a címtár **Konfigurálás** lapjának **Felhasználói jelszó-visszaállítási házirend** szakaszában a [klasszikus Azure portálon](https://manage.windowsazure.com).
 
 #### Ellenőrizze, hogy sikeres volt-e a konfiguráció
 Ha a konfiguráció sikeres, a jelszóvisszaállítás engedélyezett állapotáról szóló üzenetet lát a Windows PowerShell-ablakban, vagy a sikerről szóló üzenetet a konfigurációs felhasználói felületen.
@@ -362,6 +362,6 @@ Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokument�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

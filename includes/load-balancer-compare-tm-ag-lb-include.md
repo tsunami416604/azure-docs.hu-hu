@@ -1,31 +1,35 @@
-## Load Balancer differences
+## <a name="load-balancer-differences"></a>Terheléselosztási különbségek
 
-There are different options to distribute network traffic using Microsoft Azure. These options work differently from each other, having a different feature set and support different scenarios. They can each be used in isolation, or combining them.
+A Microsoft Azure-ral többféleképpen lehet elosztani a hálózati forgalmat. Ezek a lehetőségek különböző működési elveken alapulnak, különböző funkciókészlettel rendelkeznek és különböző forgatókönyveket támogatnak. Elkülönítve vagy egymással kombinálva egyaránt használhatók.
 
-- **Azure Load Balancer** works at the transport layer (Layer 4 in the OSI network reference stack). It provides network-level distribution of traffic across instances of an application running in the same Azure data center.
+- Az **Azure Load Balancer** a szállítási rétegben működik (4. réteg a hálózatireferencia-veremben). Hálózati szintű forgalomelosztást biztosít az adott alkalmazás ugyanabban az Azure-adatközpontban futó példányai között.
 
-- **Application Gateway** works at the application layer (Layer 7 in the OSI network reference stack). It acts as a reverse-proxy service, terminating the client connection and forwarding requests to back-end endpoints.
+- Az **Application Gateway** az alkalmazási rétegben működik (7. réteg az OSI hálózatireferencia-veremben). Fordított proxyszolgáltatásként működik, az ügyfélkapcsolatok leállítását és a kérelmek háttérvégpontokhoz való továbbítását végzi.
 
-- **Traffic Manager** works at the DNS level.  It uses DNS responses to direct end-user traffic to globally distributed endpoints. Clients then connect to those endpoints directly.
+- A **Traffic Manager** a DNS szintjén működik.  DNS-válaszokat használva irányítja a végfelhasználói forgalmat a globálisan elosztott végpontok felé. Ezután az ügyfelek közvetlenül a végpontokhoz csatlakoznak.
 
-The following table summarizes the features offered by each service:
+Az alábbi táblázat az egyes szolgáltatások funkcióit összegzi:
 
-| Service | Azure Load Balancer | Application Gateway | Traffic Manager |
+| Szolgáltatás | Azure Load Balancer | Application Gateway | Traffic Manager |
 |---|---|---|---|
-|Technology| Transport level (Layer 4) | Application level (Layer 7) | DNS level |
-| Application protocols supported |	Any | HTTP and HTTPS | 	Any (An HTTP endpoint is required for endpoint monitoring) |
-| Endpoints | Azure VMs and Cloud Services role instances | Any Azure Internal IP address or public internet IP address | Azure VMs, Cloud Services, Azure Web Apps, and external endpoints |
-| Vnet support | Can be used for both Internet facing and internal (Vnet) applications | Can be used for both Internet facing and internal (Vnet) applications |	Only supports Internet-facing applications |
-Endpoint Monitoring | Supported via probes | Supported via probes | Supported via HTTP/HTTPS GET | 
+|Technológia| Forgalmi szint (4. szint) | Alkalmazásszint (7. szint) | DNS-szint |
+| Támogatott alkalmazásprotokollok | Bármelyik | HTTP és HTTPS |  Bármelyik (a végpontmonitoringhoz szükség van egy HTTP-végpontra) |
+| Végpontok | Azure-os virtuális gépek és Cloud Services-szerepkörpéldányok | Bármely belső Azure IP-cím vagy nyilvános IP-cím | Azure-os virtuális gépek, Cloud Services-példányok, Azure Web Apps és külső végpontok |
+| Vnet-támogatás | Internetes és belső (virtuális hálózati) alkalmazásokhoz egyaránt felhasználható | Internetes és belső (virtuális hálózati) alkalmazásokhoz egyaránt felhasználható |    Csak az internetes alkalmazásokat támogatja |
+Végpontmonitoring | Mintavételen keresztül támogatott | Mintavételen keresztül támogatott | HTTP/HTTPS GET-en keresztül támogatott | 
 
-Azure Load Balancer and Application Gateway route network traffic to endpoints but they have different usage scenarios to which traffic to handle. The following table helps understanding the difference between the two load balancers:
+Az Azure Load Balancer és az Application Gateway a végpontok felé irányítja a hálózati forgalmat, de különböző használati forgatókönyvvel rendelkeznek a kezelt forgalom szempontjából. Az alábbi táblázat segít a két terheléselosztó közti különbség megértésében:
 
-| Type | Azure Load Balancer | Application Gateway |
+| Típus | Azure Load Balancer | Application Gateway |
 |---|---|---|
-| Protocols | UDP/TCP | HTTP/ HTTPS |
-| IP reservation | Supported | Not supported | 
-| Load balancing mode | 5-tuple(source IP, source port, destination IP, destination port, protocol type) | Round Robin<br>Routing based on URL | 
-| Load balancing mode (source IP /sticky sessions) |  2-tuple (source IP and destination IP), 3-tuple (source IP, destination IP, and port). Can scale up or down based on the number of virtual machines | Cookie-based affinity<br>Routing based on URL |
-| Health probes | Default: probe interval - 15 secs. Taken out of rotation: 2 Continuous failures. Supports user-defined probes | Idle probe interval 30 secs. Taken out after 5 consecutive live traffic failures or a single probe failure in idle mode. Supports user-defined probes | 
-| SSL offloading | Not supported | Supported | 
+| Protokollok | UDP/TCP | HTTP/HTTPS |
+| IP-címfenntartás | Támogatott | Nem támogatott | 
+| Terheléselosztási mód | 5 rekordos (forrás IP-címe, forrásport, cél IP-címe, célport, protokolltípus) | Ciklikus időszeletelés<br>Útválasztás URL-cím alapján | 
+| Terheléselosztási mód (forrás IP-cím/fix kiszolgálású munkamenetek) |  2 rekordos (forrás IP-cím és cél IP-cím), 3 rekordos (forrás IP-cím, cél IP-cím és port). Méretezés a virtuális gépek számának megfelelően | Cookie-alapú affinitás<br>Útválasztás URL-cím alapján |
+| Állapotminták | Alapértelmezett: 15 másodperces mintavételi időköz. A rotációból kivéve: 2 folyamatos hiba után. Támogatja a felhasználó által definiált mintavételeket | Üresjárati mintavételi időköz – 30 másodperc. 5 egymásutáni élő forgalmi hiba vagy egyetlen üresjárati módú mintavételi hiba után kivéve. Támogatja a felhasználó által definiált mintavételeket | 
+| SSL-kiürítés | Nem támogatott | Támogatott | 
   
+
+<!--HONumber=Oct16_HO3-->
+
+

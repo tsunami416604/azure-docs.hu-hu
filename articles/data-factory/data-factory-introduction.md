@@ -49,9 +49,9 @@ Ha olyan adattárból/adattárba szeretne adatokat továbbítani, amely nem tám
 A társított szolgáltatások meghatározzák azokat az információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel (pl.: Azure Storage, helyszíni SQL Server, Azure HDInsight). A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 
 - Egy **adattár**, többek között például egy helyszíni SQL Server, Oracle-adatbázis, fájlmegosztás vagy egy Azure Blob Storage-fiók jelölésére. A támogatott adattárak listája az [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című részben található. 
-- Olyan **számítási erőforrás** jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. A támogatott számítási környezetek listája az [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) című szakaszban található. 
+- Olyan **számítási erőforrás** jelölésére, amelyen végrehajtható a tevékenység. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. A támogatott számítási környezetek listája az [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) szakaszban található. 
 
-## Adatkészletek 
+## Adathalmazok 
 A társított szolgáltatások adattárakat társítanak az Azure Data Factoryhoz. Az adatkészletek az adattárakon belüli adatstruktúrákat jelölik. Az Azure Storage társított szolgáltatása például kapcsolódási információkat szolgáltat a Data Factory számára az Azure Storage-fiókhoz való csatlakozáshoz. Az Azure Blob-adatkészlet meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a folyamat beolvassa az adatokat. Hasonlóképpen, az Azure SQL társított szolgáltatása kapcsolódási adatokat szolgáltat az Azure SQL Database számára, az Azure SQL-adatkészlet pedig az adatokat tartalmazó táblát határozza meg.   
 
 ## Data Factory-entitások közötti kapcsolatok
@@ -83,6 +83,7 @@ Oktatóanyag | Leírás
 [Adatfolyamat kiépítése egy helyszíni és egy felhőalapú adattár közötti adatáthelyezéshez adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md) | Ebben az oktatóanyagban olyan folyamattal rendelkező data factoryt épít ki, amely egy **helyszíni** SQL Server-adatbázisból Azure-blobba **helyez át adatokat**. A bemutató részeként telepíti és konfigurálja az adatkezelési átjárót a gépen. 
 
 
-<!--HONumber=Sep16_HO4-->
+
+<!--HONumber=Oct16_HO3-->
 
 

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-windows-store"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/19/2016"  
+    ms.date="10/10/2016"  
     ms.author="piyushjo"/>
 
 
@@ -28,15 +28,13 @@ Fontos, hogy legalább „alapszintű integrációt” hozzá kell adnia ahhoz, 
 
 ##A Mobile Engagement beállítása a mobilalkalmazáshoz az Azure-ban
 
-[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
+[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
 ##A Mobile Engagement portál megnyitása
 
-Az alkalmazás megfigyelésének és kezelésének megkezdéséhez lépjen a Mobile Engagement portálra a lap alján található **Engage** (Aktiválás) gombra kattintva.
+Az alkalmazás megfigyelésének és kezelésének megkezdéséhez lépjen a Mobile Engagement portálra a lap tetején található **Engagement-portál** gombra kattintva.
 
-![](../../includes/media/mobile-engagement-connect-app-with-monitor/engage-button.png)
-
-Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és kezelheti a szegmenseket, elérheti a felhasználókat stb.:    
+Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és kezelheti a szegmenseket, elérheti a felhasználókat és így tovább:    
 
 - [Az alkalmazással kapcsolatos valós idejű adatok figyelése](mobile-engagement-user-interface-monitor.md)
 - [Az alkalmazás előzményadatainak elemzése](mobile-engagement-user-interface-analytics.md)
@@ -51,6 +49,6 @@ Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

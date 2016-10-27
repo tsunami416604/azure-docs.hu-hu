@@ -45,6 +45,6 @@ Az App Service tehát lehetővé teszi a fejlesztőknek, hogy a kódra összpont
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

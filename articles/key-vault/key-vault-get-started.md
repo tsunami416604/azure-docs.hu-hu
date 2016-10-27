@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="09/27/2016"
+    ms.date="10/10/2016"
     ms.author="cabailey"/>
 
 
@@ -86,7 +86,7 @@ Az Azure Resource Manager használatakor minden kapcsolódó erőforrás egy er�
 
 ## <a id="vault"></a>Kulcstartó létrehozása ##
 
-A [New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736\(v=azure.200\).aspx).aspx parancsmaggal hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
+A[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736\(v=azure.300\).aspx) parancsmag segítségével hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
 
 Ha például a tároló neve **ContosoKeyVault**, az erőforráscsoport neve **ContosoResourceGroup**, a földrajzi hely pedig **Kelet-Ázsia**, írja be az alábbi parancsot:
 
@@ -99,12 +99,12 @@ Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulaj
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Egyelőre senki másnak nincs erre engedélye.
 
->[AZURE.NOTE]  Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmProvider](https://msdn.microsoft.com/library/azure/mt759831\(v=azure.200\).aspx).
+>[AZURE.NOTE]  Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmResourceProvider](https://msdn.microsoft.com/library/azure/mt759831\(v=azure.300\).aspx).
 >
 
 ## <a id="add"></a>Kulcs vagy titkos kód hozzáadása a kulcstartóhoz ##
 
-Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048\(v=azure.200\).aspx) parancsmagot, majd írja be a következő parancsot:
+Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048\(v=azure.300\).aspx) parancsmagot, majd írja be a következő parancsot:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -172,7 +172,7 @@ Az alkalmazás regisztrálása az Azure Active Directory szolgáltatásban:
 
 ## <a id="authorize"></a>A kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára ##
 
-Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625\(v=azure.200\).aspx) parancsmagot.
+Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625\(v=azure.300\).aspx) parancsmagot.
 
 Ha például a tároló neve **ContosoKeyVault**, az engedélyezni kívánt alkalmazás ügyfélazonosítója 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed, és engedélyezni szeretné az alkalmazás számára, hogy a tároló kulcsait visszafejtse és használja, futtassa az alábbi parancsot:
 
@@ -215,7 +215,7 @@ A BYOK-csomag létrehozásával kapcsolatos részletesebb útmutatásért tekint
 
 ## <a id="delete"></a>Kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése ##
 
-Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485\(v=azure.200\).aspx) parancsmaggal:
+Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485\(v=azure.300\).aspx) parancsmaggal:
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
@@ -241,13 +241,13 @@ Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vau
 
 A kulcstartó használatának módjairól az [Azure Key Vault Logging](key-vault-logging.md) (Az Azure Key Vault naplózása) című témakörben olvashat.
 
-A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.200\).aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
+A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.300\).aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
  
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

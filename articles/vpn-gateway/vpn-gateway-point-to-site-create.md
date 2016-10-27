@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/27/2016"
+   ms.date="10/06/2016"
    ms.author="cherylmc"/>
 
 
@@ -22,6 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klasszikus – Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 - [Klasszikus – Klasszikus portál](vpn-gateway-point-to-site-create.md)
 
 A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról, vagy akkor, ha csak néhány ügyfelet kíván csatlakoztatni a virtuális hálózathoz.
@@ -196,6 +197,6 @@ További információ a virtuális hálózatokról a [Virtual Network-dokumentá
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

@@ -13,14 +13,15 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/31/2016"
+   ms.date="10/06/2016"
    ms.author="cherylmc" />
 
 
-# Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
 
 > [AZURE.SELECTOR]
 - [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [Klasszikus – Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 - [Klasszikus – Klasszikus portál](vpn-gateway-point-to-site-create.md)
 
 A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról, vagy akkor, ha csak néhány ügyfelet kíván csatlakoztatni a virtuális hálózathoz. 
@@ -35,14 +36,14 @@ A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
 
-**Üzemi modellek és eszközök a pont–hely kapcsolatokhoz**
+**Üzembe helyezési modellek és eszközök a pont–hely kapcsolatokhoz**
 
 [AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)] 
 
 ![Pont–hely diagram](./media/vpn-gateway-howto-point-to-site-rm-ps/p2srm.png "point-to-site")
 
 
-## A konfiguráció bemutatása
+## <a name="about-this-configuration"></a>A konfiguráció bemutatása
 
 Ez az útmutató azt ismerteti, hogyan hozhat létre pont–hely kapcsolattal rendelkező virtuális hálózatot. Az útmutatás segít az ehhez a konfigurációhoz szükséges tanúsítványok előállításában is. A pont–hely kapcsolatot a következő elemek alkotják: egy VPN-átjárót tartalmazó virtuális hálózat, egy főtanúsítvány (.cer fájl formájában, ez a nyilvános kulcs), egy ügyféltanúsítvány és a VPN-konfigurációja az ügyfélen. 
 
@@ -62,7 +63,7 @@ Ehhez a konfigurációhoz a következő értékeket használjuk: A változókat 
 - VPN típusa: **RouteBased**
 
 
-## Mielőtt hozzálát
+## <a name="before-beginning"></a>Mielőtt hozzálát
 
 - Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
     
@@ -105,7 +106,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
         $P2SRootCertName = "ARMP2SRootCert.cer"
 
 
-## 2. rész – Virtuális hálózat konfigurálása 
+## <a name="part-2---configure-a-vnet"></a>2. rész – Virtuális hálózat konfigurálása 
 
 
 1. Hozzon létre egy erőforráscsoportot.
@@ -132,7 +133,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
         $pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
         $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
-## 3. rész – Megbízható tanúsítványok hozzáadása
+## <a name="part-3---add-trusted-certificates"></a>3. rész – Megbízható tanúsítványok hozzáadása
 
 Az Azure tanúsítvánnyal hitelesíti azokat az ügyfeleket, amelyek pont–hely konfigurációt használnak. Importálnia kell a .cer fájlt (a nyilvános kulcsot) főtanúsítványként az Azure-ba. Amikor hozzáad egy Base64-kódolású X.509 (.cer) fájlt az Azure-hoz, arra utasítja az Azure-t, hogy bízzon meg a fájl által képviselt főtanúsítványban.
 
@@ -140,7 +141,7 @@ Nagyvállalati megoldás esetén használhatja meglévő tanúsítványláncát.
 
 Bárhogyan jut is a tanúsítványhoz, fel kell töltenie a tanúsítvány .cer fájlját az Azure-ba, és elő kell állítania az ügyféltanúsítványokat, majd telepítenie kell őket azokra az ügyfelekre, amelyek csatlakozni fognak. Nem magát az önaláírt tanúsítványt kell telepíteni az ügyfelekre. Az ügyféltanúsítványokat később, a cikk [Ügyfél-konfiguráció](#cc) szakaszában is telepítheti.
         
-Az Azure-ra legfeljebb 20 megbízható tanúsítványt tölthet fel. A nyilvános kulcsot úgy állíthatja elő, hogy Base64-kódolású X.509 (.cer) fájlként exportálja tanúsítványt. A .cer fájlként való exportálás egyik módja a **certmger.msc** konzol használata. Nyissa meg, és keresse meg a tanúsítványt a Személyes/Tanúsítványok tárolóban. Kattintson rá a jobb gombbal, és exportálja a titkos kulcs nélkül, „Base64 kódolású X.509 (.CER)” formátumban. Jegyezze fel azt az elérési utat, ahová exportálta a .cer fájlt. Ez a minta azt mutatja be, hogyan lehet beszerezni a tanúsítvány Base64-kódolású karakterláncos leképezését. 
+Az Azure-ra legfeljebb 20 megbízható tanúsítványt tölthet fel. A nyilvános kulcsot úgy állíthatja elő, hogy Base64-kódolású X.509 (.cer) fájlként exportálja tanúsítványt. A .cer fájlként való exportálás egyik módja a **certmgr.msc** konzol használata. Nyissa meg, és keresse meg a tanúsítványt a Személyes/Tanúsítványok tárolóban. Kattintson rá a jobb gombbal, és exportálja a titkos kulcs nélkül, „Base64 kódolású X.509 (.CER)” formátumban. Jegyezze fel azt az elérési utat, ahová exportálta a .cer fájlt. Ez a minta azt mutatja be, hogyan lehet beszerezni a tanúsítvány Base64-kódolású karakterláncos leképezését. 
 
 Vegye fel a megbízható tanúsítványt az Azure-ba. Ehhez a lépéshez azt az elérési utat kell használnia, amelyre exportálta saját .cer fájlját. Különösen ügyeljen a cikk 1. részében beállított $P2SRootCertName = "ARMP2SRootCert.cer" változóra. Ha nem ez a tanúsítvány neve, annak megfelelően módosítsa a változót.
     
@@ -149,7 +150,7 @@ Vegye fel a megbízható tanúsítványt az Azure-ba. Ehhez a lépéshez azt az 
         $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
         $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
 
-## 4. lépés – A VPN-átjáró létrehozása
+## <a name="part-4---create-the-vpn-gateway"></a>4. lépés – A VPN-átjáró létrehozása
 
 Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális hálózat számára. A *-GatewayType* csak **Vpn** lehet, a *-VpnType* pedig csak **RouteBased** lehet. Ennek végrehajtása 45 percig is eltarthat.
 
@@ -158,7 +159,7 @@ Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális h
         -VpnType RouteBased -EnableBgp $false -GatewaySku Standard `
         -VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
 
-## 5. rész: A VPN-ügyfél konfigurációs csomagjának letöltése
+## <a name="part-5---download-the-vpn-client-configuration-package"></a>5. rész: A VPN-ügyfél konfigurációs csomagjának letöltése
 
 Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanúsítványon kívül telepíteni kell a VPN-ügyfélkonfigurációs csomagot is. A windowsos ügyfelekhez érhetők el VPN-ügyfélkonfigurációs csomagok. A VPN-ügyfélcsomag arra vonatkozó információkat tartalmaz, hogy miképpen kell konfigurálnia Windows beépített VPN-ügyfélszoftverét, és konkrétan arra a VPN-re vonatkozik, amellyel kapcsolatot létesít. A csomag nem telepít további szoftvert. További információk: [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md#point-to-site-connections).
 
@@ -181,11 +182,11 @@ Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanús�
 
 Ezután állítsa elő az ügyféltanúsítványokat. Létrehozhat egy egyedi tanúsítványt minden csatlakozó ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfél esetén. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy szükség esetén visszavonhat egyetlen tanúsítványt. Ha azonban mindenki ugyanazt az ügyféltanúsítványt használja, és úgy találja, hogy egyetlen ügyféltől vissza kell vonnia a tanúsítványt, az összes olyan ügyfél számára elő kell állítania és telepítenie kell új tanúsítványokat, amelyek az adott tanúsítványt használják a hitelesítéshez.
 
-- Ha vállalati tanúsítványmegoldást használ, az általános „név@vállalat.com” formátumban hozza létre az ügyféltanúsítványokat a NetBIOS „TARTOMÁNY\felhasználónév” formátuma helyett. 
+- Ha vállalati tanúsítványmegoldást használ, az általános 'name@yourdomain.com', formátumban hozza létre az ügyféltanúsítványokat a NetBIOS „TARTOMÁNY\felhasználónév” formátuma helyett. 
 
 - Ha önaláírt tanúsítványt használ, az ügyféltanúsítvány létrehozásával kapcsolatban tekintse meg a [Working with self-signed root certificates for Point-to-Site configurations](vpn-gateway-certificates-point-to-site.md) (Önaláírt főtanúsítványok használata pont–hely konfigurációk esetében).
 
-## 7. rész – Az ügyféltanúsítvány telepítése
+## <a name="part-7---install-the-client-certificate"></a>7. rész – Az ügyféltanúsítvány telepítése
 
 Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet csatlakoztatni szeretne a virtuális hálózathoz. A hitelesítéshez ügyféltanúsítványra van szükség. Az ügyféltanúsítványt telepítheti automatikusan vagy manuálisan. A következő lépések végigvezetik az ügyféltanúsítvány manuális exportálásán és telepítésén.
 
@@ -194,7 +195,7 @@ Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet c
 3. Másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Amikor a rendszer kéri, adja meg a jelszót. Ne módosítsa a telepítés helyét.
 
 
-## 8. rész – Csatlakozás az Azure-hoz
+## <a name="part-8---connect-to-azure"></a>8. rész – Csatlakozás az Azure-hoz
 
 1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Ilyen esetében kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához. 
 
@@ -206,7 +207,7 @@ Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet c
 
     ![3. VPN-ügyfél](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "VPN client connection 2")
 
-## 9. lépés – A kapcsolat ellenőrzése
+## <a name="part-9---verify-your-connection"></a>9. lépés – A kapcsolat ellenőrzése
 
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 
@@ -223,13 +224,13 @@ Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet c
             Default Gateway.................:
             NetBIOS over Tcpip..............: Enabled
 
-## Megbízható főtanúsítvány hozzáadása vagy eltávolítása
+## <a name="to-add-or-remove-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása vagy eltávolítása
 
 A tanúsítványok a VPN-ügyfelek hitelesítésére használatosak a pont–hely VPN-kapcsolatokban. A következő lépések végigvezetik a főtanúsítványok hozzáadásának és eltávolításának folyamatán. Amikor hozzáad egy Base64-kódolású X.509 (.cer) fájlt az Azure-hoz, arra utasítja az Azure-t, hogy bízzon meg a fájl által képviselt főtanúsítványban. 
 
 A megbízható főtanúsítvány hozzáadására és eltávolítására használhatja a PowerShellt, illetve az Azure Portal webhelyet. Ha az Azure Portal segítségével szeretné elvégezni, nyissa meg a **virtuális hálózati átjáró > beállítások > Pont-hely konfiguráció > Főtanúsítványok** területet. A következő lépések végigvezetik ezen feladatok PowerShell használatával való elvégzésén. 
 
-### Megbízható főtanúsítvány hozzáadása
+### <a name="add-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása
 
 Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fájl formájában. A következő lépésekkel tölthet fel főtanúsítványt.
 
@@ -255,7 +256,7 @@ Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fáj
         Get-AzureRmVpnClientRootCertificate -ResourceGroupName "TestRG" `
         -VirtualNetworkGatewayName "GW"
 
-### Megbízható főtanúsítvány eltávolítása
+### <a name="to-remove-a-trusted-root-certificate"></a>Megbízható főtanúsítvány eltávolítása
 
 A megbízható főtanúsítványt eltávolíthatja az Azure-ból. Ha eltávolít egy megbízható tanúsítványt, akkor az abból a főtanúsítványból generált ügyféltanúsítványok nem tudnak többé pont–hely kapcsolattal csatlakozni az Azure-hoz. Ha azt szeretné, hogy az ügyfelek csatlakozni tudjanak, telepíteniük kell egy olyan új ügyféltanúsítvány, amelyet az Azure által megbízhatónak tartott tanúsítványból generáltak.
 
@@ -275,11 +276,11 @@ A megbízható főtanúsítványt eltávolíthatja az Azure-ból. Ha eltávolít
         Get-AzureRmVpnClientRootCertificate -ResourceGroupName "TestRG" `
         -VirtualNetworkGatewayName "GW"
 
-## A visszavont ügyféltanúsítványok listájának kezelése
+## <a name="to-manage-the-list-of-revoked-client-certificates"></a>A visszavont ügyféltanúsítványok listájának kezelése
 
 Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok listájával az egyes ügyféltanúsítványok alapján, szelektíven tagadhatja meg a pont–hely kapcsolódás lehetőségét. Ha töröl egy .cer formátumú főtanúsítványt az Azure-ból, azzal megvonja a hozzáférést minden olyan ügyféltanúsítványtól, amelyet a visszavont főtanúsítvánnyal generáltak/írtak alá. Ha egy konkrét ügyféltanúsítványt szeretne visszavonni, és nem a főtanúsítványt, erre is lehetősége nyílik. Ily módon továbbra is érvényesek marad a főtanúsítványból generált többi tanúsítvány. A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a munkacsoport vagy a szervezet szintjén, az egyes felhasználókra vonatkozó részletesebb szabályozást pedig visszavont ügyféltanúsítványokkal oldják meg.
 
-### Ügyféltanúsítvány visszavonása
+### <a name="revoke-a-client-certificate"></a>Ügyféltanúsítvány visszavonása
 
 1. Keresse meg a visszavonni kívánt tanúsítvány ujjlenyomatát.
 
@@ -295,7 +296,7 @@ Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok 
 
         Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
 
-### Ügyféltanúsítvány érvényességének visszaállítása
+### <a name="reinstate-a-client-certificate"></a>Ügyféltanúsítvány érvényességének visszaállítása
 
 Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez törölni kell az ujjlenyomatukat a visszavont ügyféltanúsítványok listájából.
 
@@ -308,7 +309,7 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
 
         Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Felvehet virtuális gépet a virtuális hálózatba. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
@@ -316,6 +317,6 @@ Felvehet virtuális gépet a virtuális hálózatba. A lépésekért lásd: [Vir
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

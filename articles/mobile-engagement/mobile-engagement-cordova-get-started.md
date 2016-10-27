@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Get Started with Azure Mobile Engagement for Cordova/Phonegap"
-    description="Learn how to use Azure Mobile Engagement with Analytics and Push Notifications for Cordova/Phonegap apps."
+    pageTitle="Ismerkedés az Azure Mobile Engagement Cordova/Phonegap-alkalmazásokkal való használatával"
+    description="Ismerje meg, hogyan használható az Azure Mobile Engagement a Cordova/Phonegap-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
     services="mobile-engagement"
     documentationCenter="Mobile"
     authors="piyushjo"
@@ -17,60 +17,60 @@
     ms.author="piyushjo" />
 
 
-# Get Started with Azure Mobile Engagement for Cordova/Phonegap
+# Ismerkedés az Azure Mobile Engagement Cordova/Phonegap-alkalmazásokkal való használatával
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-This topic shows you how to use Azure Mobile Engagement to understand your app usage and send push notifications to segmented users for a mobile application developed with Cordova.
+Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazás használatának megértéséhez, valamint leküldéses értesítéseknek a Cordova használatával fejlesztett mobilalkalmazásba történő küldéséhez a szegmentált felhasználók számára.
 
-In this tutorial, we will create a blank Cordova app using Mac and then integrate Mobile Engagement SDK. It collects basic analytics data and receives push notifications using Apple Push Notification System (APNS) for iOS and Google Cloud Messaging (GCM) for Android. We will deploy this to an iOS or Android device for testing. 
+Ebben az oktatóanyagban létre fogunk hozni egy üres Cordova-alkalmazást Mac használatával, majd integráljuk a Mobile Engagement SDK-t. Az alkalmazás alapszintű elemzési adatokat gyűjt össze, és leküldéses értesítéseket fogad az iOS rendszerhez készült Apple leküldéses értesítési rendszerének (APNS) és az Android Google Cloud Messaging (GCM) szolgáltatásának a használatával. Az alkalmazást iOS- vagy Android-eszközön fogjuk üzembe helyezni tesztelés céljából. 
 
-> [AZURE.NOTE] To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started).
+> [AZURE.NOTE] Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started).
 
-This tutorial requires the following:
+Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-+ XCode, which you can install from Mac App Store (for deploying to iOS)
-+ [Android SDK & Emulator](http://developer.android.com/sdk/installing/index.html) (for deploying to Android)
-+ Push notification certificate (.p12) that you can obtain from Apple Dev Center for APNS
-+ GCM Project number that you can obtain from your Google Developer Console for GCM
-+ [Mobile Engagement Cordova Plugin](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-engagement)
++ XCode, amely a MAC App Store áruházából telepíthető (iOS rendszeren történő üzembe helyezéshez),
++ [Android SDK és -emulátor](http://developer.android.com/sdk/installing/index.html) (Android rendszeren történő üzembe helyezéshez),
++ leküldéses értesítési tanúsítvány (.p12), amelyet az Apple APNS fejlesztési központjában szerezhet be,
++ GCM-projektszám, amelyet a Google Developer Console for GCM konzolon keresztül szerezhet be,
++ [Mobile Engagement Cordova beépülő modul.](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-engagement)
 
-> [AZURE.NOTE] You can find the source code and the ReadMe for the Cordova plugin on [Github](https://github.com/Azure/azure-mobile-engagement-cordova)
+> [AZURE.NOTE] A Cordova beépülő modul forráskódját és a ReadMe fájlt a [GitHub](https://github.com/Azure/azure-mobile-engagement-cordova) webhelyén érheti el.
 
-##<a id="setup-azme"></a>Setup Mobile Engagement for your Cordova app
+##<a id="setup-azme"></a>A Mobile Engagement beállítása a Cordova-alkalmazáshoz
 
-[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
+[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-##<a id="connecting-app"></a>Connecting your app to the Mobile Engagement backend
+##<a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 
-This tutorial presents a "basic integration" which is the minimal set required to collect data and send a push notification. 
+Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. 
 
-We will create a basic app with Cordova to demonstrate the integration:
+Létre fogunk hozni egy alapszintű alkalmazást a Cordova segítségével az integráció bemutatásához:
 
-###Create a new Cordova project
+###Új Cordova-projekt létrehozása
 
-1. Launch *Terminal* window on your Mac machine and type the following which will create a new Cordova project from the default template. Make sure that the publishing profile you eventually use to deploy your iOS app is using 'com.mycompany.myapp' as the App ID. 
+1. Indítsa el a *Terminál* ablakot a Mac számítógépen, és írja be az alábbiakat, amellyel létrehoz egy új Cordova-projektet az alapértelmezett sablon alapján. Győződjön meg róla, hogy az iOS-alkalmazás majdani üzembe helyezéséhez használni kívánt közzétételi profil a „com.mycompany.myapp” alkalmazásazonosítót használja. 
 
         $ cordova create azme-cordova com.mycompany.myapp
         $ cd azme-cordova
 
-2. Execute the following to configure your project for **iOS** and run it in the iOS Simulator:
+2. Hajtsa végre az alábbiakat a projekt konfigurálásához **iOS** esetén, majd futtassa azt az iOS Simulator alkalmazásban:
 
         $ cordova platform add ios 
         $ cordova run ios
 
-3. Execute the following to configure your project for **Android** and run it in the Android emulator. Make sure that your Android SDK Emulator settings have its Target as Google APIs (Google Inc.) with the CPU / ABI as Google APIs ARM.  
+3. Hajtsa végre az alábbiakat a projekt konfigurálásához **Android** esetén, majd futtassa azt az Android-emulátorban. Győződjön meg róla, hogy az Android SDK Emulator beállításainál a Target (Cél) beállítás értéke Google APIs (Google Inc.), a CPU/ABI értéke pedig a Google APIs ARM.  
 
         $ cordova platform add android
         $ cordova run android
 
-4.  Add the Cordova Console plugin. 
+4.  Adja hozzá a Cordova-konzol beépülő modulját. 
 
         $ cordova plugin add cordova-plugin-console 
 
-###Connect your app to Mobile Engagement backend
+###Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 
-1. Install the Azure Mobile Engagement Cordova plugin while providing the variable values to configure the plugin:
+1. Telepítse az Azure Mobile Engagement Cordova beépülő modulját, és közben adja meg a beépülő modul konfigurálásához szükséges változók értékeit:
 
         cordova plugin add cordova-plugin-ms-azure-mobile-engagement    
             --variable AZME_IOS_CONNECTION_STRING=<iOS Connection String> 
@@ -82,33 +82,33 @@ We will create a basic app with Cordova to demonstrate the integration:
             --variable AZME_ENABLE_NATIVE_LOG=true|false
             --variable AZME_ENABLE_PLUGIN_LOG=true|false
 
-*Android Reach Icon* : must be the name of the resource without any extension, nor drawable prefix (ex: mynotificationicon), and the icon file must be copied into your android project (platforms/android/res/drawable)
+*Android Reach Icon*: az erőforrás nevének kell lennie kiterjesztés vagy a rajzolható előtag nélkül (például: mynotificationicon), és az ikonfájlt az Android-projektbe kell másolni (platforms/android/res/drawable).
 
-*iOS Reach Icon*  : must be the name of the resource with its extension (ex:  mynotificationicon.png), and the icon file must be added into your iOS project with XCode (using the Add Files Menu)
+*iOS Reach Icon*: az erőforrás nevének kell lennie a kiterjesztéssel együtt (például: mynotificationicon.png), és az ikonfájlt hozzá kell adni az iOS-projekthez az XCode segítségével (az Add Files Menu (Fájl hozzáadása menü) használatával).
 
-##<a id="monitor"></a>Enabling real-time monitoring
+##<a id="monitor"></a>Valós idejű figyelés engedélyezése
 
-1. In the Cordova project - edit **www/js/index.js** to add the call to Mobile Engagement to declare a new activity once the *deviceReady* event is received.
+1. A Cordova-projektben módosítsa a **www/js/index.js** fájlt úgy, hogy hozzáadja a Mobile Engagementre irányuló hívást egy új tevékenység deklaráláshoz a *deviceReady* esemény fogadását követően.
 
          onDeviceReady: function() {
                 Engagement.startActivity("myPage",{});
             }
 
-2. Run the application:
+2. Futtassa az alkalmazást:
         
-    - **For iOS**
+    - **iOS esetén**
     
-        In `Terminal` window launch your app in a new Simulator instance by executing the following:
+        A `Terminal` ablakban indítsa el az alkalmazást a Simulator új példányában az alábbiak végrehajtásával:
 
             cordova run ios
 
-    - **For Android**
+    - **Android esetén**
         
-        In `Terminal` window launch your app in a new emulator instance by executing the following:
+        A `Terminal` ablakban indítsa el az alkalmazást az emulátor új példányában az alábbiak végrehajtásával:
 
             cordova run android
 
-3. You can see the following in the console logs:
+3. A konzolnaplófájlokban az alábbiakat láthatja:
 
         [Engagement] Agent: Session started
         [Engagement] Agent: Activity 'myPage' started
@@ -117,44 +117,44 @@ We will create a basic app with Cordova to demonstrate the integration:
         [Engagement] Connection: Sent: startSession
         [Engagement] Connection: Sent: activity name='myPage'
 
-##<a id="monitor"></a>Connect app with real-time monitoring
+##<a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>Enabling Push Notifications and in-app messaging
+##<a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 
-Mobile Engagement allows you to interact with your users using Push Notifications and in-app messaging in the context of campaigns. This module is called REACH in the Mobile Engagement portal.
-The following sections will setup your app to receive them.
+A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
+Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
-###Configure Push credentials for Mobile Engagement
+###Leküldési hitelesítő adatok konfigurálása a Mobile Engagementhez
 
-To allow Mobile Engagement to send Push Notifications on your behalf, you need to grant it access to your Apple iOS certificate or GCM Server API Key. 
+Annak engedélyezéséhez, hogy a Mobile Engagement leküldéses értesítéseket küldhessen a nevében, hozzáférést kell biztosítania számára az Apple iOS-tanúsítvány vagy a GCM-kiszolgáló API-kulcsához. 
     
-1. Navigate to your Mobile Engagement portal. Ensure you're in the app we're using for this project and then click on the **Engage** button at the bottom:
+1. Nyissa meg a Mobile Engagement portált. Nyissa meg a projekthez használt alkalmazást, majd kattintson a lap alján található **Engage** (Aktiválás) gombra:
     
     ![][1]
     
-2. You will land in the settings page in your Engagement Portal. From there click on the **Native Push** section:
+2. Ezzel megnyitja az Engagement portál beállításokat tartalmazó lapját. A lapon kattintson a **Native Push** (Natív leküldés) szakaszra:
     
     ![][2]
 
-3. Configure iOS Certificate/GCM Server API Key
+3. iOS-tanúsítvány/GCM-kiszolgáló API-kulcsának konfigurálása
 
     **[iOS]**
 
-    a. Select your .p12, upload it and type your password:
+    a. Jelölje ki .p12 tanúsítványát, töltse fel, és írja be jelszavát:
     
     ![][3]
 
     **[Android]**
 
-    a. Click the edit icon in front of **API Key** in the GCM Settings section and in the popup which shows up, paste the GCM Server Key and click **OK**. 
+    a. Kattintson az **API Key** (API-kulcs) előtt található szerkesztési ikonra a GCM Settings (GCM-beállítások) szakaszban, illessze be a GCM kiszolgálói kulcsot az előugró ablakban, majd kattintson az **OK** gombra. 
         
     ![][4]
 
-###Enable push notifications in the Cordova app
+###Leküldéses értesítések engedélyezése a Cordova-alkalmazásban
 
-Edit **www/js/index.js** to add the call to Mobile Engagement to request push notifications and declare a handler:
+Módosítsa a **www/js/index.js** fájlt úgy, hogy hozzáadja a Mobile Engagementre irányuló hívást leküldéses értesítések kéréséhez és egy kezelő deklarálásához:
 
      onDeviceReady: function() {
            Engagement.initializeReach(  
@@ -165,67 +165,67 @@ Edit **www/js/index.js** to add the call to Mobile Engagement to request push no
             Engagement.startActivity("myPage",{});  
         }
 
-###Run the app
+###Az alkalmazás futtatása
 
 **[iOS]**
 
-1. We will use XCode to build and deploy the app on the device to test push notifications since iOS only allows push notifications to an actual device. Go to the location where your Cordova project is created and navigate to **...\platforms\ios** location. Open up the native .xcodeproj file in XCode. 
+1. Mivel az iOS csak tényleges eszközre teszi lehetővé leküldéses értesítések küldését, az XCode használatával fogjuk létrehozni és üzembe helyezni az alkalmazást az eszközön a leküldéses értesítések teszteléséhez. Lépjen a Cordova-projekt létrehozásának helyére, majd navigáljon a **...\platforms\ios** helyre. Nyissa meg a natív .xcodeproj fájlt az XCode-ban. 
     
-2. Build and deploy the Cordova app to the iOS device using the account which has the provisioning profile containing the certificate you just uploaded to the Mobile Engagement portal and the App Id which matches the one you provided while creating the Cordova app. You can check out the *Bundle identifier* in your **Resources\*-info.plist** file in XCode to match it up. 
+2. Hozza létre és helyezze üzembe a Cordova-alkalmazást az iOS eszközön annak a fióknak a használatával, amely tartalmazza a Mobile Engagement portálra most feltöltött tanúsítványt és a Cordova-alkalmazás létrehozásakor megadott azonosítóval egyező alkalmazásazonosítót magában foglaló kiépítési profilt. Az egyeztetéshez megtekintheti a *csomagazonosítót* a **Resources\*-info.plist** fájlban az XCode-ban. 
 
-3. You will see the standard iOS popup on your device saying that the app requests permission to send notifications. Grant the permission. 
+3. Az eszközön megjelenik a szokásos iOS előugró ablak, amely engedélyt kér az alkalmazás számára értesítések küldéséhez. Adja meg az engedélyt. 
 
 **[Android]**
 
-You can simply use the emulator to run the Android app as GCM notifications are supported on the Android emulator. 
+Nyugodtan használhatja az emulátort az Android-alkalmazás futtatásához, mivel az Android-emulátor támogatja a GCM-értesítéseket. 
 
     cordova run android
 
-##<a id="send"></a>Send a notification to your app
+##<a id="send"></a>Értesítés küldése az alkalmazásnak
 
-We will now create a simple Push Notification campaign that will send a push to your app running on the device:
+Most létre fogunk hozni egy egyszerű leküldéses értesítési kampányt, amely egy leküldéses üzenetet fog küldeni az eszközön futó alkalmazásnak:
 
-1. Navigate to the **Reach** tab in your Mobile Engagement portal
+1. Lépjen a Mobile Engagement portál **Reach** (Elérés) lapjára.
 
-2. Click **New Announcement** to create your push campaign
+2. Kattintson a **New Announcement** (Új közlemény) elemre a leküldéses kampány létrehozásához.
 
     ![][6]
 
-3. Provide inputs to create your campaign **[Android]**
+3. Adja meg a bemeneti adatokat a kampány létrehozásához **[Android]**.
     
-    - Provide a **Name** for your campaign. 
-    - Select the **Delivery Type** as *System notification* *Simple*
-    - Select the **Delivery time** as *"Any Time"*
-    - Provide a **Title** for your notification which will be the first line in the push.
-    - Provide a **Message** for your notification which will serve as the message body. 
+    - Adja meg a kampány nevét a **Name** mezőben. 
+    - A **Delivery Type** (Kézbesítési típus) értékeként jelölje be a *System notification* és *Simple* (Rendszerértesítés, Egyszerű) választógombot.
+    - A **Delivery time** (Kézbesítési idő) értékeként jelölje be az *Any time* (Bármikor) választógombot.
+    - Írja be az értesítés címét a **Title** (Cím) mezőbe. A cím a leküldéses értesítés első sora lesz.
+    - Írja be az értesítés szövegét a **Message** (Üzenet) mezőbe. Ez a szöveg lesz az üzenet törzse. 
 
     ![][11]
 
-4. Provide inputs to create your campaign **[iOS]**
+4. Adja meg a bemeneti adatokat a kampány létrehozásához **[iOS]**.
 
-    - Provide a **Name** for your campaign. 
-    - Select the **Delivery time** as *"Out of app only"*
-    - Provide a **Title** for your notification which will be the first line in the push.
-    - Provide a **Message** for your notification which will serve as the message body. 
+    - Írja be a kampány nevét a **Name** mezőbe. 
+    - A **Delivery time** (Kézbesítési idő) értékeként jelölje be az *Out of app only* (Csak alkalmazáson kívül) választógombot.
+    - Írja be az értesítés címét a **Title** (Cím) mezőbe. A cím a leküldéses értesítés első sora lesz.
+    - Írja be az értesítés szövegét a **Message** (Üzenet) mezőbe. Ez a szöveg lesz az üzenet törzse. 
  
     ![][12]
 
-5. Scroll down, and in the content section select **Notification only**
+5. Görgessen le, és a Content (Tartalom) részen jelölje be a **Notification only** (Csak értesítés) választógombot.
 
     ![][8]
 
-6. [Optional] You can also provide an Action URL. Make sure that it uses a URL scheme provided while configuring the plugin's **AZME\_REDIRECT\_URL** variable e.g. *myapp://test*.  
+6. (Választható) Megadhatja egy művelet URL-címét is. Győződjön meg róla, hogy a cím a beépülő modul **AZME\_REDIRECT\_URL** változójának konfigurálásánál megadott URL-sémát használja, például: *myapp://test*.  
 
-7. You're done setting the most basic campaign possible. Now scroll down again and click the **Create** button to save your campaign.
+7. Ezzel befejezte a lehető legalapvetőbb kampány beállítását. Görgessen újra le, és kattintson a **Create** (Létrehozás) gombra a kampány mentéséhez.
 
-8. Finally **Activate** your campaign
+8. Végül aktiválja a kampányt az **Activate** (Aktiválás) gombra kattintva.
     
     ![][10]
 
-9. You should now see a push notification on your device or emulator as part of this campaign. 
+9. Ekkor meg kellene jelennie egy leküldéses értesítésnek az eszközön vagy az emulátorban a jelen kampány részeként. 
 
-##<a id="next-steps"></a>Next Steps
-[Overview of all methods available with Cordova Mobile Engagement SDK](https://github.com/Azure/azure-mobile-engagement-cordova)
+##<a id="next-steps"></a>Következő lépések
+[A Cordova Mobile Engagement SDK-val elérhető összes módszer áttekintése](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- Images. -->
 
@@ -242,6 +242,6 @@ We will now create a simple Push Notification campaign that will send a push to 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

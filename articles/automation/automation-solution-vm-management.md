@@ -13,17 +13,17 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="10/04/2016"
+    ms.date="10/07/2016"
     ms.author="magoedte"/>
 
 
 # Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás az Automation szolgáltatásban
 
-A Virtuális gépek indítása/leállítása munkaidőn kívül (előzetes verzió) megoldás egy felhasználó által definiált ütemezés alapján elindítja és leállítja az Azure Resource Manager virtuális gépeit, és betekintést nyújt azon automatizálási feladatok sikeres működésébe, amelyek az OMS Log Analytics segítségével elindítják és leállítják a virtuális gépeket.  
+A virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás elindítja és leállítja a felhasználó Azure Resource Manager virtuális gépeit a felhasználó által meghatározott ütemezés szerint, valamint betekintést nyújt a felhasználó virtuális gépeit elindító és leállító Automation-feladatokba az OMS Log Analytics segítségével.  
 
 ## Előfeltételek
 
-- A runbookok [Azure-futtatófiókkal](automation-sec-configure-azure-runas-account.md) működnek.  A futtatófiók az előnyben részesített hitelesítési módszer, mivel az tanúsítványalapú hitelesítést használ a jelszó helyett, ami lejárhat vagy gyakran változhat.  
+- A runbookok (forgatókönyvek) [Azure-futtatófiókkal](automation-sec-configure-azure-runas-account.md) használhatóak.  A futtatófiók az előnyben részesített hitelesítési módszer, mivel az tanúsítványalapú hitelesítést használ a jelszó helyett, ami lejárhat vagy gyakran változhat.  
 
 - Ez a megoldás csak olyan virtuális gépek felügyeletére alkalmas, amelyek ugyanabban az előfizetésben és erőforráscsoportban vannak, mint amelyikben az Automation-fiók található.  
 
@@ -76,8 +76,8 @@ StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | Megadja azt az előfizeté
 
 Ütemezés | Leírás|
 ---------|------------|
-StartByResourceGroup-Schedule-MS-Mgmt | Ütemezés a StartByResourceGroup runbookhoz.|
-StopByResourceGroup-Schedule-MS-Mgmt | Ütemezés a StopByResourceGroup runbookhoz.|
+StartByResourceGroup-Schedule-MS-Mgmt | A StartByResourceGroup runbook ütemezése, amely a jelen megoldás által felügyelt virtuális gépek elindítását hajtja végre.|
+StopByResourceGroup-Schedule-MS-Mgmt | A StopByResourceGroup runbook ütemezése, amely a jelen megoldás által felügyelt virtuális gépek leállítását hajtja végre.|
 
 ### Hitelesítő adatok
 
@@ -92,8 +92,8 @@ Hajtsa végre az alábbi lépéseket, hogy a Virtuális gépek indítása/leáll
 1. Az Azure Portal kezdőképernyőjén válassza ki a **Piactér** csempét.  Ha a csempe már nincs a kezdőképernyőhöz rögzítve, a bal oldali navigációs ablaktáblában jelölje ki az **Új** elemet.  
 2. A Piactér panelen írja be a keresőmezőbe a **VM indítása** kifejezést, majd a keresési eredmények közül válassza ki a **Virtuális gépek indítása/leállítása munkaidőn kívüli [előzetes verzió]** megoldást.  
 3. A kiválasztott megoldáshoz tartozó **Virtuális gépek indítása/leállítása munkaidőn kívüli [előzetes verzió]** panelen tekintse át az összefoglaló adatokat, majd kattintson a **Létrehozás** gombra.  
-4. Megjelenik az **Add Soultion** (Megoldás hozzáadása) panel, ahol a rendszer arra kéri, hogy konfigurálja a megoldást, mielőtt importálná az Automation-előfizetésbe.<br><br> ![Virtuálisgép-felügyelet – Megoldás hozzáadása panel](media/automation-solution-vm-management/vm-management-solution-add-solution-blade.png)<br><br>
-5.  A **Megoldás hozzáadása** panelen válassza ki a **Munkaterület** elemet, majd itt válassza ki az Automation-fiókot tartalmazó Azure-előfizetéshez kapcsolódó OMS-munkaterületet, vagy hozzon létre egy újat.  Ha még nem rendelkezik OMS-munkaterülettel, válassza ki az **Új munkaterület létrehozása** lehetőséget, és az **OMS-munkaterület** panelen végezze el a következő műveleteket: 
+4. A **Megoldás hozzáadása** panel ott jelenik meg, ahol a felhasználót a rendszer a megoldás konfigurálására kéri annak az Automation-előfizetésbe történő importálása előtt.<br><br> ![Virtuálisgép-felügyelet – Megoldás hozzáadása panel](media/automation-solution-vm-management/vm-management-solution-add-solution-blade.png)<br><br>
+5.  A **Megoldás hozzáadása** panelen válassza ki a **Munkaterület** elemet, majd itt válassza ki az Automation-fiókot tartalmazó Azure-előfizetéshez kapcsolódó OMS-munkaterületet, vagy hozzon létre egy újat.  Ha nem rendelkezik OMS-munkaterülettel, válassza ki az **Új munkaterület létrehozása** lehetőséget és az **OMS-munkaterület** panelen végezze el az alábbiakat: 
    - Adja meg az új **OMS-munkaterület** nevét.
    - A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
    - Az **Erőforráscsoport** területen létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévőt.  
@@ -101,7 +101,7 @@ Hajtsa végre az alábbi lépéseket, hogy a Virtuális gépek indítása/leáll
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen.  A megoldás két csomagban választható: ingyenes és OMS fizetett csomag.  Az ingyenes csomagnál korlátozva van a naponta összegyűjtött adatok mennyisége, a megőrzési időtartam és a runbook-feladatok futásideje (perc).  Az OMS fizetett csomagnál a naponta összegyűjtött adatok mennyisége nincs korlátozva.  
 
         > [AZURE.NOTE]
-        > Habár a Különálló fizetett csomag is megjelenik lehetőségként, azonban nem választható.  Ha kiválasztja, és ezt a megoldást akarja létrehozni az előfizetésben, akkor az sikertelen lesz.  Csak akkor lesz választható, ha ezt a megoldást hivatalosan is kiadják.<br>Ha ezt a megoldást használja, az csak az automatizálási feladat idejét (percben), illetve a naplófeldolgozást fogja használni.  A megoldás nem egészíti ki további OMS-csomópontokkal a környezetét.  
+        > Amíg az Önálló fizetett csomag megjelenik lehetőségként, ez a megoldás nem alkalmazható.  Ha kiválasztja, és ezt a megoldást akarja létrehozni az előfizetésben, akkor az sikertelen lesz.  Csak akkor lesz választható, ha ezt a megoldást hivatalosan is kiadják.<br>Ha ezt a megoldást használja, az csak az automatizálási feladat idejét (percben), illetve a naplófeldolgozást fogja használni.  A megoldás nem egészíti ki további OMS-csomópontokkal a környezetét.  
 
 6. Miután az **OMS-munkaterület** panelen megadta a szükséges adatokat, kattintson a **Létrehozás** gombra.  Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenőrzi a rendszer az adatokat, és hogyan hozza létre a munkaterületet.  Ezután visszatér a **Megoldás hozzáadása** panelre.  
 7. A **Megoldás hozzáadása** panelen válassza ki az **Automation-fiók** elemet.  Új OMS-munkaterület létrehozásakor egy hozzá társított új Automation-fiókot is létre kell hoznia, valamint meg kell adnia az Azure-előfizetését, az erőforráscsoportot és a régiót.  Kiválaszthatja az **Automation-fiók létrehozása** lehetőséget, és az **Automation-fiók hozzáadása** panelen megadhatja a következő adatokat: 
@@ -113,7 +113,7 @@ Hajtsa végre az alábbi lépéseket, hogy a Virtuális gépek indítása/leáll
 
 8. Végül a **Megoldás hozzáadása** panelen válassza ki a **Konfiguráció** elemet, és ekkor megjelenik a **Paraméterek** panel.  A **Paraméterek** panelen a rendszer az alábbi műveletek elvégzésére kéri:  
    - Adja meg a **Cél erőforráscsoport nevét**, ami annak az erőforráscsoportnak a neve, amely a megoldás által felügyelendő virtuális gépeket tartalmazza.  Több nevet is megadhat, pontosvesszővel elválasztva őket egymástól (az értékek megkülönböztetik a kis- és a nagybetűket).  Helyettesítő karaktert is használhat, ha az előfizetés összes erőforráscsoportjában lévő virtuális gépeket szeretné megadni.
-   - Válasszon ki egy olyan **ütemezést**, amely a cél erőforráscsoport(ok)ban lévő virtuális gépek ismétlődő elindítási és leállítási dátuma és időpontja.
+   - Válasszon ki egy olyan **ütemezést**, amely a cél erőforráscsoport(ok)ban lévő virtuális gépek ismétlődő elindítási és leállítási dátuma és időpontja.  
 
 10. Miután befejezte a megoldás kezdeti beállításainak konfigurálását, válassza ki a **Létrehozás** lehetőséget.  A rendszer érvényesíti az összes beállítást, majd megpróbálja üzembe helyezni a megoldást az előfizetésében.  A folyamat eltarthat néhány másodpercig, az előrehaladását nyomon követheti az **Értesítések** menüpont alatt. 
 
@@ -128,6 +128,9 @@ A virtuális gépek felügyelete megoldás hozzáadásakor az OMS-munkaterülete
 Az Automation-fiókjában úgy érheti el és kezelheti a megoldást, ha kiválasztja a **Megoldások** csempét, majd a **Megoldások** panelen található listáról kiválasztja **Virtuális gépek indítása és leállítása [munkaterület]** elemet.<br><br> ![Automation-megoldások listája](media/automation-solution-vm-management/vm-management-solution-autoaccount-solution-list.png)  
 
 A megoldás kiválasztásakor megjelenik a **Virtuális gépek indítása és leállítása [munkaterület]** megoldáspanel, ahol áttekintheti a fontos részleteket, például a **StartStopVM** csempét, ami az OMS-munkaterülethez hasonlóan a megoldás azon runbook-feladatoknak a számát és grafikus ábrázolását jeleníti meg, amelyek elindultak és sikeresen befejeződtek.<br><br> ![Automation VM-megoldás panel](media/automation-solution-vm-management/vm-management-solution-solution-blade.png)  
+
+Innen megnyithatja OMS-munkaterületét is, és további elemzéseket végezhet a feladatrekordokon.  Csak kattintson az **Összes beállítás** lehetőségre, majd a **Beállítások** panelen válassza ki a **Gyors üzembe helyezés** elemet, végül pedig a **Gyors üzembe helyezés** panelen válassza ki az **OMS-portál** lehetőséget.   Ezzel megnyílik egy új lap vagy egy új böngésző-munkamenet, és megjelenik az Automation-fiókjához és -előfizetéséhez tartozó OMS-munkaterülete.  
+
 
 ### E-mail-értesítések konfigurálása
 
@@ -150,6 +153,10 @@ A korábban kiemelt változók konfigurálásához hajtsa végre az alábbi lép
 2. Az **Automation-erőforrások** szakasz alatt található **Beállítások** panelen válassza ki az **Adategységek** elemet. 
 3. Az **Adategységek** panelen válassza ki a **Változók** csempét, és a **Változók** panelen válassza ki a fent felsorolt változót, majd módosítsa az értékét a korábbi [Változó](##variables) szakaszban megadott leírásnak megfelelően.  
 4. Kattintson a **Mentés** gombra a változó módosított értékeinek mentéséhez.   
+
+### Az indítási és leállítási ütemezés módosítása
+
+Ebben a megoldásban az indítási és leállítási ütemezés felügyelete a [Runbook ütemezése az Azure Automationben](automation-scheduling-a-runbook.md) szakaszban ismertetett lépéseket követi.  Ne feledje, hogy az ütemezési konfiguráció nem módosítható.  Le kell tiltania a meglévő ütemezést, és létre kell hoznia egy újat, majd csatolnia kell azt ahhoz a **StartByResourceGroup-MS-Mgmt-VM** vagy **StopByResourceGroup-MS-Mgmt-VM** runbookhoz, amelyiknél alkalmazni szeretné.   
 
 ## Log Analytics-rekordok
 
@@ -224,6 +231,6 @@ A StartVM és a StopVM runbook feladatainak állapotmegjelenítése az idő múl
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

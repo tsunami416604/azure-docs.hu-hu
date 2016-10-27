@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Get started with Windows Universal Apps Azure Mobile Engagement"
-    description="Learn how to use Azure Mobile Engagement with analytics and push notifications for Windows Universal Apps."
+    pageTitle="Ismerkedés az Azure Mobile Engagement univerzális Windows-alkalmazásokkal való használatával"
+    description="Ismerje meg, hogyan használható az Azure Mobile Engagement az univerzális Windows-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel."
     services="mobile-engagement"
     documentationCenter="windows"
     authors="piyushjo"
@@ -17,63 +17,63 @@
     ms.author="piyushjo;ricksal" />
 
 
-# Get started with Azure Mobile Engagement for Windows Universal Apps
+# Ismerkedés az Azure Mobile Engagement univerzális Windows-alkalmazásokkal való használatával
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-This topic shows you how to use Azure Mobile Engagement to understand your app usage and send push notifications to segmented users of a Windows Universal application.
-This tutorial demonstrates the simple broadcast scenario using Mobile Engagement. You create a blank Windows Universal App that collects basic app usage data and receives push notifications using Windows Notification Service (WNS).
+Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések univerzális Windows-alkalmazásba történő küldéséhez szegmentált felhasználók számára.
+Ez az oktatóanyag a Mobile Engagementet használó egyszerű küldési forgatókönyvet mutat be. Ennek során létrehoz egy üres univerzális Windows-alkalmazást, amely alapszintű alkalmazáshasználati adatokat gyűjt, és leküldéses értesítéseket fogad a Windows értesítési szolgáltatása (WNS) használatával.
 
-## Prerequisites
+## Előfeltételek
 
 [AZURE.INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
 
-## Set up Mobile Engagement for your Windows Universal app
+## A Mobile Engagement beállítása az univerzális Windows-alkalmazáshoz
 
-[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal.md)]
+[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-##<a id="connecting-app"></a>Connect your app to the Mobile Engagement backend
+##<a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 
-This tutorial presents a "basic integration," which is the minimal set required to collect data and send a push notification. The complete integration documentation can be found in the [Mobile Engagement Windows Universal SDK integration](mobile-engagement-windows-store-sdk-overview.md).
+Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. A teljes integrációs dokumentáció itt található: [Mobile Engagement univerzális Windows SDK-integráció](mobile-engagement-windows-store-sdk-overview.md).
 
-You create a basic app with Visual Studio to demonstrate the integration.
+Létre fog hozni egy alapszintű alkalmazást a Visual Studio segítségével az integráció bemutatásához.
 
-###Create a Windows Universal App project
+###Univerzális Windows-alkalmazás projekt létrehozása
 
-The following steps assume the use of Visual Studio 2015 though the steps are similar in earlier versions of Visual Studio.
+A következő lépések a Visual Studio 2015 használatát feltételezik, de a lépések a Visual Studio korábbi verziói esetén is hasonlóak.
 
-1. Start Visual Studio, and in the **Home** screen, select **New Project**.
+1. Indítsa el a Visual Studiót, és a **Kezdőképernyőn** válassza a **New Project** (Új projekt) lehetőséget.
 
-2. In the pop-up, select **Windows** -> **Universal** -> **Blank App (Universal Windows)**. Fill in the app **Name** and **Solution name**, and then click **OK**.
+2. Az előugró ablakban válassza a **Windows** -> **Universal** -> **Blank App (Universal Windows)** (Windows > Univerzális > Üres alkalmazás (Univerzális Windows)) lehetőséget. Adja meg az alkalmazás **nevét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 
     ![][1]
 
-You have now created a Windows Universal App project into which you next integrate the Azure Mobile Engagement SDK.
+Most létrehozott egy új univerzális Windows-alkalmazás projektet, amelybe integrálni fogjuk az Azure Mobile Engagement SDK-t.
 
-###Connect your app to Mobile Engagement backend
+###Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 
-1. Install the [MicrosoftAzure.MobileEngagement] Nuget package in your project. If you are targeting both Windows and Windows Phone platforms, you need to do this for both projects. For Windows 8.x and Windows Phone 8.1, the same Nuget package places the correct platform-specific binaries in each project.
+1. Telepítse a [MicrosoftAzure.MobileEngagement] NuGet-csomagot a projektben. Ha a Windows és a Windows Phone platformot is célozza, ezt mindkét projekt esetében el kell végeznie. A Windows 8.x és a Windows Phone 8.1 esetében ugyanaz a NuGet-csomag mindkét projektben elhelyezi a megfelelő platformspecifikus bináris fájlokat.
 
-2. Open **Package.appxmanifest** and make sure that the following capability is added there:
+2. Nyissa meg a **Package.appxmanifest** csomagot, és ellenőrizze, hogy az tartalmazza a következő képességet:
 
         Internet (Client)
 
     ![][2]
 
-3. Now copy the connection string that you copied earlier for your Mobile Engagement App and paste it in the `Resources\EngagementConfiguration.xml` file, between the `<connectionString>` and `</connectionString>` tags:
+3. Most másolja a korábban a Mobile Engagement-alkalmazáshoz kimásolt kapcsolati karakterláncot, és illessze be a `Resources\EngagementConfiguration.xml` fájlba, a `<connectionString>` és a `</connectionString>` címke közé:
 
     ![][3]
 
-    >[AZURE.TIP] If your App targets both Windows and Windows Phone platforms, you should still create two Mobile Engagement Applications - one for each supported platform. Having two apps ensures that you can create correct segmentation of the audience and can send appropriately targeted notifications for each platform.
+    >[AZURE.TIP] Ha az alkalmazása a Windows és a Windows Phone platformot is célozza, hozzon létre két Mobile Engagement-alkalmazást – egyet-egyet mindegyik támogatott platformhoz. Ezzel a két alkalmazással biztosítható, hogy megfelelő közönségszegmentálást hozhasson létre, és megfelelően célzott értesítéseket küldhessen mindegyik platformra.
 
-4. In the `App.xaml.cs` file:
+4. Az `App.xaml.cs` fájlban:
 
-    a. Add the `using` statement:
+    a. Adja hozzá a következő `using` utasítást:
 
             using Microsoft.Azure.Engagement;
 
-    b. Add a method that initializes the Engagement:
+    b. Adja hozzá az Engagementet inicializáló metódust:
 
            private void InitEngagement(IActivatedEventArgs e)
            {
@@ -82,7 +82,7 @@ You have now created a Windows Universal App project into which you next integra
              //... rest of the code
            }
 
-    c. Initialize the SDK in the **OnLaunched** method:
+    c. Inicializálja az SDK-t az **OnLaunched** metódusban:
 
             protected override void OnLaunched(LaunchActivatedEventArgs e)
             {
@@ -91,7 +91,7 @@ You have now created a Windows Universal App project into which you next integra
               //... rest of the code
             }
 
-    c. Insert the following in the **OnActivated** method and add the method if it is not already present:
+    c. Szúrja be a következőt az **OnActivated** metódusba (ha a metódus nem található, vegye fel):
 
             protected override void OnActivated(IActivatedEventArgs e)
             {
@@ -100,46 +100,46 @@ You have now created a Windows Universal App project into which you next integra
               //... rest of the code
             }
 
-##<a id="monitor"></a>Enable real-time monitoring
+##<a id="monitor"></a>Valós idejű figyelés engedélyezése
 
-To start sending data and ensuring that the users are active, you must send at least one screen (Activity) to the Mobile Engagement backend.
+Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt (tevékenységet) el kell küldenie a Mobile Engagement háttérrendszere számára.
 
-1.  In the **MainPage.xaml.cs**, add the following `using` statement:
+1.  A **MainPage.xaml.cs** fájlban adja hozzá a következő `using` utasítást:
 
         using Microsoft.Azure.Engagement.Overlay;
 
-2. Change the base class of **MainPage** from **Page** to **EngagementPageOverlay**:
+2. Cserélje le a **MainPage** alaposztályának eddigi **Page** értékét a következőre: **EngagementPageOverlay**:
 
         class MainPage : EngagementPageOverlay
 
-3. In the `MainPage.xaml` file:
+3. Az `MainPage.xaml` fájlban:
 
-    a. Add to your namespaces declarations:
+    a. Adja hozzá a következőt a névtér-deklarációkhoz:
 
         xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 
-    b. Replace the **Page** in the XML tag name with **engagement:EngagementPageOverlay**
+    b. Az XML-címke nevének **Page** részét cserélje le a következőre: **engagement:EngagementPageOverlay**.
 
-> [AZURE.IMPORTANT] If your page overrides the `OnNavigatedTo` method, be sure to call `base.OnNavigatedTo(e)`. Otherwise, the activity is not reported `EngagementPage` calls `StartActivity` inside its `OnNavigatedTo` method). This is especially important in a Windows Phone project where the default template has an `OnNavigatedTo` method.
+> [AZURE.IMPORTANT] Ha az oldala felülírja az `OnNavigatedTo` metódust, hívja meg a következőt: `base.OnNavigatedTo(e)`. Ellenkező esetben a tevékenységről nem készül jelentés (az `EngagementPage` meghívja a `StartActivity` tevékenységet az `OnNavigatedTo` metódusán belül). Ez különösen a Windows Phone-projektek esetében fontos, ahol az alapértelmezett sablonok egy `OnNavigatedTo` metódussal rendelkeznek.
 
-##<a id="monitor"></a>Connect app with real-time monitoring
+##<a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 
 [AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>Enable push notifications and in-app messaging
+##<a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 
-Mobile Engagement allows you to interact and reach your users with push notifications and in-app messaging in the context of campaigns. This module is called REACH in the Mobile Engagement portal.
-The following sections set up your app to receive them.
+A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
+Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
-###Enable your app to receive WNS Push Notifications
+###WNS leküldéses értesítések fogadásának engedélyezése az alkalmazásban
 
-1. In the `Package.appxmanifest` file, in the **Application** tab, under **Notifications**, set **Toast capable:** to **Yes**
+1. A `Package.appxmanifest` fájlban, az **Application** (Alkalmazás) lap **Notifications** (Értesítések) részében a **Toast capable:** (Bejelentések engedélyezése:) beállításnál adja meg a **Yes** (Igen) értéket.
 
     ![][5]
 
-###Initialize the REACH SDK
+###A REACH SDK inicializálása
 
-In `App.xaml.cs`, call **EngagementReach.Instance.Init(e);** in the **InitEngagement** function right after the agent initialization:
+Az `App.xaml.cs` fájlban, az **InitEngagement** függvényben hívja meg az **EngagementReach.Instance.Init(e);** elemet közvetlenül az ügynök inicializálása után:
 
         private void InitEngagement(IActivatedEventArgs e)
         {
@@ -147,52 +147,52 @@ In `App.xaml.cs`, call **EngagementReach.Instance.Init(e);** in the **InitEngage
            EngagementReach.Instance.Init(e);
         }
 
-You're ready to send a toast. Next we verify that you have correctly carried out this basic integration.
+Készen áll a bejelentés elküldésére. A következő lépésben ellenőrizni fogjuk, hogy ezt az alapszintű integrációt megfelelően végezte-e el.
 
-###Grant access to Mobile Engagement to send notifications
+###Értesítésküldési hozzáférés biztosítása a Mobile Engagement számára
 
-1. Open [Windows Store Dev Center] in your web browser, login, and create an account if necessary.
-2. Click **Dashboard** at the top right corner and then click **Create a new app** from the left panel menu.
+1. Nyissa meg a [Windows fejlesztői központot] a webböngészőjében, és jelentkezzen be, vagy ha szükséges, hozzon létre egy fiókot.
+2. Kattintson a jobb felső sarokban lévő **Irányítópult** elemre, majd kattintson a bal oldali panelmenüben az **Új alkalmazás létrehozása** lehetőségre.
 
     ![][9]
 
-2. Create your app by reserving its name.
+2. Hozza létre az alkalmazást a neve lefoglalásával.
 
     ![][10]
 
-3. Once the app has been created, navigate to **Services -> Push notifications** from the left menu.
+3. Miután létrehozta az alkalmazást, lépjen a bal oldali menü **Szolgáltatások -> Leküldéses értesítések** részébe.
 
     ![][11]
 
-4. In the Push notifications section, click the **Live Services site** link.
+4. A Leküldéses értesítések szakaszban kattintson a **Live Services webhelye** hivatkozásra.
 
     ![][12]
 
-5. You navigate to the Push credentials section. Make sure you are in the **App Settings** section and then copy your **Package SID** and **Client secret**
+5. Ezzel a Leküldési hitelesítő adatok részhez lép. Ellenőrizze, hogy az **Alkalmazásbeállítások** szakaszban van-e, majd másolja ki a **Csomag biztonsági azonosítóját** és a **Titkos ügyfélkulcsot**.
 
     ![][13]
 
-6. Navigate to the **Settings** of your Mobile Engagement portal, and click the **Native Push** section on the left. Then, click the **Edit** button to enter your **Package security identifier (SID)** and your **Secret Key** as shown:
+6. Lépjen a **Beállítások** részre a Mobile Engagement portálon, majd kattintson a bal oldalon a **Natív leküldés** szakaszra. Ezután kattintson a **Szerkesztés** gombra, és adja meg a **Csomag biztonsági azonosítója (SID)** és a **Titkos kulcs** értékét az itt látható módon:
 
     ![][6]
 
-8. Finally make sure that you have associated your Visual Studio app with this created app in the App store. Click **Associate App with Store** in Visual Studio.
+8. Végül ellenőrizze, hogy a Visual Studio alkalmazás társítva van-e az újonnan létrehozott alkalmazással az alkalmazás-áruházban. A Visual Studióban kattintson a következőkre: **Associate app with the store** (Alkalmazás társítása az Áruházzal).
     ![][7]
 
-##<a id="send"></a>Send a notification to your app
+##<a id="send"></a>Értesítés küldése az alkalmazásnak
 
 [AZURE.INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
-If the app is running, you see an in-app notification. otherwise if the app is closed, you see a toast notification.
-If you see an in-app notification but not a toast notification, and you are running the app in debug mode in Visual Studio, then try **Lifecycle events -> Suspend** in the toolbar to ensure that the app is suspended. If you clicked the Home button while debugging the application in Visual Studio, then it doesn't always get suspended and while you see the notification as in-app, it doesn't show up as a toast notification.  
+Ha az alkalmazás fut, egy alkalmazásbeli értesítést kell látnia. Ha azonban az alkalmazás be van zárva, egy bejelentési értesítést fog látni.
+Ha alkalmazásbeli értesítés jelenik meg, és nem bejelentési értesítés, és az alkalmazást hibakeresési módban futtatja a Visual Studióban, akkor kattintson az eszköztár **Lifecycle events -> Suspend** (Életciklus-események -> Felfüggesztés) lehetőségére, hogy az alkalmazás biztosan fel legyen függesztve. Ha akkor kattintott a Kezdőképernyő gombra, miközben az alkalmazás hibakeresését végzi a Visual Studióban, az nem mindig lesz felfüggesztve, és bár egy alkalmazásbeli értesítés megjelenik, bejelentési értesítés nem.  
 
 ![][8]
 
 <!-- URLs. -->
-[Mobile Engagement Windows Universal SDK documentation]: ../mobile-engagement-windows-store-integrate-engagement/
+[Mobile Engagement univerzális Windows SDK-dokumentáció]: ../mobile-engagement-windows-store-integrate-engagement/
 [MicrosoftAzure.MobileEngagement]: http://go.microsoft.com/?linkid=9864592
-[Windows Store Dev Center]: https://dev.windows.com
-[Windows Universal Apps - Overlay integration]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
+[Windows fejlesztői központot]: https://dev.windows.com
+[Univerzális Windows-alkalmazások – átfedéses integráció]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-windows-store-dotnet-get-started/universal-app-creation.png
@@ -210,6 +210,6 @@ If you see an in-app notification but not a toast notification, and you are runn
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 
