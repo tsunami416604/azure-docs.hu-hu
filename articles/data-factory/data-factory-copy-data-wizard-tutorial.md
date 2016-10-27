@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Oktatóanyag: Folyamat létrehozása a Másolás varázsló használatával" 
+    pageTitle="Oktatóanyag: Folyamat létrehozása a Másolás varázsló használatával | Microsoft Azure" 
     description="Az oktatóanyag során létrehoz egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot a Data Factory által támogatott Másolás varázslóval." 
     services="data-factory" 
     documentationCenter="" 
@@ -10,7 +10,7 @@
 <tags 
     ms.service="data-factory" 
     ms.workload="data-services" 
-    ms.tgt_pltfrm="na" **
+    ms.tgt_pltfrm="na"
     ms.devlang="na" 
     ms.topic="get-started-article" 
     ms.date="09/16/2016" 
@@ -24,6 +24,7 @@
 - [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -120,7 +121,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     ![Copy (Másolás) eszköz – performance settings (Teljesítménybeállítások) oldal](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## A Monitor and Manage alkalmazás elindítása 
-12. A **Deployment** (Üzembe helyezés) oldalon kattintson a **Click here to monitor copy pipeline** (Kattintson ide a másolási folyamat figyeléséhez) hivatkozásra.
+12. A **Deployment** (Üzembe helyezés) lapon kattintson a következő hivatkozásra: `Click here to monitor copy pipeline`.
 
     ![Copy (Másolás) eszköz – Deployment succeeded (Sikeres üzembe helyezés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
 13. A [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Folyamatok figyelése és felügyelete a Monitoring App használatával) című cikk útmutatásaiból megtudhatja, hogyan figyelheti a létrehozott folyamatot. A szelet megtekintéséhez kattintson a **Frissítés** ikonra az **ACTIVITY WINDOWS** (TEVÉKENYSÉGABLAKOK ) listában. 
@@ -139,6 +140,6 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO3-->
 
 

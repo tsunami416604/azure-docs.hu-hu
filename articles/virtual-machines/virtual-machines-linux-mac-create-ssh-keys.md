@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/08/2016"
+    ms.date="10/06/2016"
     ms.author="v-livech"/>
 
 
@@ -24,7 +24,7 @@ Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelye
 
 ## Gyors parancslista
 
-Az alábbi parancspéldákban cserélje a &lt; és &gt; közötti értékeket a saját környezet értékeire.
+Az alábbi parancspéldákban cserélje a &lt; és &gt; közötti értékeket a saját környezet értékeire.  Kezdje a könyvtárak módosításával, `cd ~/.ssh/` hogy minden ssh-kulcs abban a könyvtárban legyen létrehozva.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "<your_user@yourdomain.com>"
@@ -79,7 +79,7 @@ Az Azure legalább 2048 bites ssh-rsa formátumú nyilvános és titkos kulcsoka
 
 ## Az ssh-keygen használata
 
-Ez a parancs jelszóval védett (titkosított) SSH-kulcspárt hoz létre 2048 bites RSA használatával, és az egyszerű azonosítás érdekében megjegyzéssel van ellátva.
+Ez a parancs jelszóval védett (titkosított) SSH-kulcspárt hoz létre 2048 bites RSA használatával, és az egyszerű azonosítás érdekében megjegyzéssel van ellátva.  Kezdje a könyvtárak váltásával, `cd ~/.ssh/` hogy minden ssh-kulcs abban a könyvtárban legyen létrehozva.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
@@ -102,12 +102,12 @@ Ha a klasszikus üzembe helyezési modellt használja (a klasszikus Azure portá
 PEM-formátumú kulcs meglévő nyilvános SSH-kulcsból történő létrehozása:
 
 ```bash
-ssh-keygen -f id_rsa.pub -m 'PEM' -e > id_rsa.pem
+ssh-keygen -f ~/.ssh/id_rsa.pub -e > ~/.ssh/id_ssh2.pem
 ```
 
 ## Az ssh-keygen bemutatása
 
-Az alábbiakban az egyes lépesek részletes ismertetését olvashatja.  Először futtassa a `ssh-keygen` parancsot.
+Az alábbiakban az egyes lépesek részletes ismertetését olvashatja.  Elsőként váltson a `~/.ssh` könyvtárra, majd futtassa a következőt: `ssh-keygen`.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
@@ -246,6 +246,6 @@ Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

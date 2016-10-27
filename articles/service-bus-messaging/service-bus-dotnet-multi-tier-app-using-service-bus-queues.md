@@ -1,14 +1,14 @@
 <properties
     pageTitle="Többrétegű .NET-alkalmazás | Microsoft Azure"
     description="Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között."
-    services="service-bus-messaging"
+    services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
     manager="timlt"
     editor=""/>
 
 <tags
-    ms.service="service-bus-messaging"
+    ms.service="service-bus"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
@@ -17,9 +17,9 @@
     ms.author="sethm"/>
 
 
-# Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
+# <a name=".net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 
-## Bevezetés
+## <a name="introduction"></a>Bevezetés
 
 A Visual Studio és az ingyenes Azure SDK for .NET használatával könnyen fejleszthet a Microsoft Azure platformra. Ez az oktatóanyag végigvezeti egy olyan alkalmazás létrehozásának a lépésein, amely több, a helyi környezetben futó Azure-erőforrást használ. A lépések során feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban.
 
@@ -38,7 +38,7 @@ Az alábbi képernyőfelvételen a kész alkalmazás látható.
 
 ![][0]
 
-## Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
+## <a name="scenario-overview:-inter-role-communication"></a>Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
 
 A feldolgozási kérés küldéséhez a webes szerepkörben futó előtér felhasználói felületi összetevőnek együtt kell működnie a feldolgozói szerepkörben futó középső rétegbeli logikával. Ez a példa Service Bus közvetítőalapú üzenettovábbítást használ a rétegek közötti kommunikációhoz.
 
@@ -60,7 +60,7 @@ Ennek a kommunikációs mechanizmusnak több előnye is van a közvetlen üzenet
 
 Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 
-## A fejlesztési környezet kialakítása
+## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
 Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
@@ -74,18 +74,18 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszkö
 
 6.  A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
-## Névtér létrehozása
+## <a name="create-a-namespace"></a>Névtér létrehozása
 
 A következő lépés egy szolgáltatásnévtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtér és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## Webes szerepkör létrehozása
+## <a name="create-a-web-role"></a>Webes szerepkör létrehozása
 
 Ebben a szakaszban az alkalmazás előtérrendszerét hozza létre. Először létrehozza az alkalmazás által megjelenített oldalakat.
 Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzenetsorba, és megjeleníti az üzenetsor állapotára vonatkozó információkat.
 
-### A projekt létrehozása
+### <a name="create-the-project"></a>A projekt létrehozása
 
 1.  Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
 
@@ -123,7 +123,7 @@ Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzene
 
 9.  A **Megoldáskezelőben** kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be az **OnlineOrder.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
-### A webes szerepkör kódjának megírása
+### <a name="write-the-code-for-your-web-role"></a>A webes szerepkör kódjának megírása
 
 Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat hozza létre.
 
@@ -231,7 +231,7 @@ Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat h
 
     ![][17]
 
-### Az elemeknek a Service Bus-üzenetsorba történő elküldésére szolgáló kód megírása
+### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Az elemeknek a Service Bus-üzenetsorba történő elküldésére szolgáló kód megírása
 
 Adja hozzá az elemeknek a Service Bus-üzenetsorba történő elküldésére szolgáló kódot. Először hozza létre a Service Bus-üzenetsor kapcsolati adatait tartalmazó osztályt. Ezután inicializálja a kapcsolatot a Global.aspx.cs osztályból. Végül frissítse a korábban a HomeController.cs osztályban létrehozott elküldési kódot az elemek tényleges elküldéséhez a Service Bus-üzenetsorba.
 
@@ -353,7 +353,7 @@ Adja hozzá az elemeknek a Service Bus-üzenetsorba történő elküldésére sz
 
     ![][18]
 
-## A feldolgozói szerepkör létrehozása
+## <a name="create-the-worker-role"></a>A feldolgozói szerepkör létrehozása
 
 Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött rendeléseket. Ez a példa a **Worker Role with Service Bus Queue** (Feldolgozói szerepkör Service Bus-üzenetsorral) Visual Studio-projektsablont használja. A szükséges hitelesítő adatokat már beszerezte a portálról.
 
@@ -412,7 +412,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
 
     ![][20]
 
-## Következő lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
@@ -422,7 +422,7 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 
 További információ a többrétegű forgatókönyvekkel kapcsolatban:  
 
-* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)][multitierstorage]  
+* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)](multitierstorage)  
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -461,10 +461,10 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
   [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
   [sbwacom]: /documentation/services/service-bus/  
   [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
-  [multitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
+  [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

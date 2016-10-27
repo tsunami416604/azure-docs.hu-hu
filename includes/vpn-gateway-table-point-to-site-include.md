@@ -1,12 +1,11 @@
-|  | **Klasszikus üzembe helyezés**  |  **Resource Managerrel végzett üzembe helyezés**  |
-|----------------------------------------|--------------|------------------------|
-| **Klasszikus portál** | [Cikk](../articles/vpn-gateway/vpn-gateway-point-to-site-create.md) | Nem támogatott |
-| **Azure Portal** |  Támogatott  |  Nem támogatott  |
-| **PowerShell** | Támogatott | [Cikk](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
+|**Üzemi modell/módszer**|**Azure Portal**| **Klasszikus portál** | **PowerShell**|
+|-------------------------------------|-----------------|---------------------|---------------|
+|**Klasszikus** |  [Cikk](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)| [Cikk](../articles/vpn-gateway/point-to-site-create.md)  | Támogatott |
+|**Resource Manager** |Nem támogatott| Nem támogatott   | [Cikk](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)  |
 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

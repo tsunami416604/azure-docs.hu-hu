@@ -1,37 +1,21 @@
 
-###Create a Google Cloud Messaging project with API key
+###<a name="create-a-google-firebase-project-with-api-key"></a>Google Firebase-projekt létrehozása API-kulccsal
 
->[AZURE.NOTE] To complete this procedure, you must have a Google account that has a verified email address. To create a new Google account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>.
+>[AZURE.NOTE] Az eljárás végrehajtásához egy hitelesített e-mail-címmel rendelkező Google-fiókra lesz szükség. Új Google-fiók létrehozásához látogassa meg az <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> webhelyet.
 
-1. Navigate to the [Google Cloud Console](https://console.developers.google.com/project) and sign-in with your Google account credentials.
+1. Nyissa meg a [Firebase Console](https://console.firebase.google.com/) webhelyét, és jelentkezzen be Google-fiókja hitelesítő adataival.
 
-2. Go to **All Projects** and then click **Create Project**.
+2. Kattintson az **Create new Project** (Új projekt létrehozása) gombra,  vagy kattintson az **Import Google Project** (Google-projekt importálása) hivatkozásra egy meglévő projekt importálásához. 
 
-3. Enter a **Project name** and click **Create**
+3. Ha új projektet hoz létre, adja meg a **projekt nevét** és válassza ki az **országát/régióját**.
 
-4. Once the project is created then make sure that you are noting down the **Project number** which will be a long numerical value. You can find this under **IAM & Admin section** in the **Settings** of your Project and you will require this later. 
+4. A projektlapon kattintson balra fent a **Settings** (Beállítások) fogaskerékre. Kattintson a menü **Project settings** (Projektbeállítások) pontjára.  
  
-    ![](./media/mobile-engagement-enable-google-cloud-messaging/project-number.png)
+5. Kattintson fent a **Cloud Messaging** fülre. 
 
-5. Now we will create a key for the Google Cloud messaging platform which will be used by our platform to send notifications to the Android devices. Go to the **API Manager** section and click on **Google Cloud Messaging** under **Mobile APIs**. 
-
-    ![](./media/mobile-engagement-enable-google-cloud-messaging/gcm.png)
-
-6. On the next page, click **Enable** button. The dashboard will prompt you to create credentials. So click on **Go to Credentials** button. 
-
-    ![](./media/mobile-engagement-enable-google-cloud-messaging/enable-GCM.png)
-
-6. Select **Google Cloud Messaging** from the first dropdown box and **Web server** from the second one, and then click **What credentials do I need?**
-
-    ![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key.png)
-
-7. In **Add credentials to your project** page, click **Create API key**.
-
-    ![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key5.png)
-
-8. Make a note of the **API KEY** value. You will use this API key value later to configure in the "Native Push" section. Now click **Done**.
+6. Jegyezze fel a **Server key** (Kiszolgálói kulcs) és a **Sender ID** (Feladóazonosító) értékét, mivel ezekre majd szükség lesz az *Android-jegyzékfájlban*.  
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

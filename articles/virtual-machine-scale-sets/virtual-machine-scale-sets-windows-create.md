@@ -1,45 +1,46 @@
 <properties
-	pageTitle="Create a Virtual Machine Scale Set | Microsoft Azure"
-	description="Create a Virtual Machine Scale Set using PowerShell"
-	services="virtual-machine-scale-sets"
+    pageTitle="Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel | Microsoft Azure"
+    description="Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel"
+    services="virtual-machine-scale-sets"
     documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    authors="davidmu1"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/25/2016"
-	ms.author="davidmu"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="10/10/2016"
+    ms.author="davidmu"/>
 
-# Create a Windows Virtual Machine Scale Set using Azure PowerShell
 
-These steps follow a fill-in-the-blanks approach for creating an Azure Virtual Machine Scale Set. See [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md) to learn more about scale sets.
+# <a name="create-a-windows-virtual-machine-scale-set-using-azure-powershell"></a>Windowsos virtuálisgép-méretezési csoport létrehozása az Azure PowerShell-lel
 
-It should take about 30 minutes to do the steps in this article.
+Ezek a lépések behelyettesítésen alapuló megközelítéssel hoznak létre egy Azure-beli virtuálisgép-méretezési csoportot. További információ a méretezési készletekről: [Virtuálisgép-méretezési csoportok áttekintése](virtual-machine-scale-sets-overview.md).
 
-## Step 1: Install Azure PowerShell
+A cikkben található lépések elvégzése nagyjából 30 percet vesz igénybe.
 
-See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for information about how to install the latest version of Azure PowerShell, select the subscription that you want to use, and sign in to your Azure account.
+## <a name="step-1:-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
 
-## Step 2: Create resources
+Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
 
-Create the resources that are needed for your new virtual machine scale set.
+## <a name="step-2:-create-resources"></a>2. lépés: Erőforrások létrehozása
 
-### Resource group
+Hozza létre az új méretezési csoporthoz szükséges erőforrásokat.
 
-A virtual machine scale set must be contained in a resource group.
+### <a name="resource-group"></a>Erőforráscsoport
 
-1.  Get a list of available locations and the services that are supported:
+A virtuálisgép-méretezési csoportoknak egy erőforráscsoporton belül kell lenniük.
+
+1. Kérjen le egy listát az összes elérhető helyről és támogatott szolgáltatásról:
 
         Get-AzureLocation | Sort Name | Select Name, AvailableServices
 
-    You should see something like this
+    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
 
         Name                AvailableServices
         ----                -----------------
@@ -62,19 +63,19 @@ A virtual machine scale set must be contained in a resource group.
         West India          {Compute, Storage, PersistentVMRole, HighMemory}
         West US             {Compute, Storage, PersistentVMRole, HighMemory}
 
-2. Pick a location that works best for you, replace the value of **$locName** with that location name, and then create the variable:
+2. Válassza ki az Ön számára legalkalmasabb helyet, cserélje le a **$locName** értéket a hely nevére, majd hozza létre a következő változót:
 
         $locName = "location name from the list, such as Central US"
 
-3. Replace the value of **$rgName** with the name that you want to use for the new resource group and then create the variable: 
+3. Cserélje le a **$rgName** értéket a használni kívánt új erőforráscsoport nevére, majd hozza létre a következő változót: 
 
         $rgName = "resource group name"
         
-4. Create the resource group:
+4. Hozza létre az erőforráscsoportot:
     
         New-AzureRmResourceGroup -Name $rgName -Location $locName
 
-    You should see something like this:
+    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
 
         ResourceGroupName : myrg1
         Location          : centralus
@@ -82,36 +83,33 @@ A virtual machine scale set must be contained in a resource group.
         Tags              :
         ResourceId        : /subscriptions/########-####-####-####-############/resourceGroups/myrg1
 
-### Storage account
+### <a name="storage-account"></a>Tárfiók
 
-A storage account is used by a virtual machine to store the operating system disk and diagnostic data used for scaling. It is a best practice to have one storage account for every 20 virtual machines created in a scale set. Since scale sets are designed to be easy to scale out, create as many storage accounts as you need for the maximum number of virtual machines you plan your scale set to grow to. The example in this article shows 3 storage accounts being created, allowing the scale set to grow comfortably to 60 virtual machines.
+A virtuális gép által a tárfiókban tárolja az operációsrendszer-lemezt és a méretezéshez használt diagnosztikai adatokat. Az ajánlott eljárás az, hogy ha lehetséges, a méretezési csoportban létrehozott minden egyes virtuális géphez tartozzon egy tárfiók. Ha nem lehetséges, akkor tárfiókonként legfeljebb 20 virtuális géppel tervezzen. A cikkben szereplő példa három virtuális gép számára létrehozott három tárfiókot tartalmaz.
 
-1. Replace the value of **saName** with the name that you want to use for the storage account and then create the variable: 
+1. Cserélje le a **$stName** értéket a tárfiók nevére. Ellenőrizze, hogy a név egyedi-e. 
 
         $saName = "storage account name"
-        
-2. Test whether the name that you selected is unique:
-    
-        Test-AzureName -Storage $saName
+        Get-AzureRmStorageAccountNameAvailability $saName
 
-    If the answer is **False**, your proposed name is unique.
+    Ha a válasz **Igaz** eredményt ad, a választott név egyedi.
 
-3. Replace the value of **$saType** with the type of the storage account and then create the variable:  
+3. Cserélje le a **$saType** értéket a tárfiók típusára, majd hozza létre a változót:  
 
         $saType = "storage account type"
         
-    Possible values are: Standard_LRS, Standard_GRS, Standard_RAGRS, or Premium_LRS.
+    Lehetséges értékek: Standard_LRS, Standard_GRS, Standard_RAGRS vagy Premium_LRS.
         
-4. Create the account:
+4. Felhasználói fiók létrehozása:
     
         New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
 
-    You should see something like this:
+    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
 
         ResourceGroupName   : myrg1
         StorageAccountName  : myst1
         Id                  : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft
-	                    	.Storage/storageAccounts/myst1
+                              .Storage/storageAccounts/myst1
         Location            : centralus
         AccountType         : StandardLRS
         CreationTime        : 3/15/2016 4:51:52 PM
@@ -127,93 +125,93 @@ A storage account is used by a virtual machine to store the operating system dis
         Tags                : {}
         Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
 
-5. Repeat steps 1 through 4 to create 3 storage accounts, for example myst1, myst2, and myst3.
+5. Ismételje meg az 1-4. lépést három tárfiók létrehozásához (például myst1, myst2 és myst3).
 
-### Virtual network
+### <a name="virtual-network"></a>Virtuális hálózat
 
-A virtual network is required for the virtual machines in the scale set.
+A méretezési csoportban található virtuális gépekhez szükséges egy virtuális hálózat.
 
-1. Replace the value of **$subName** with the name that you want to use for the subnet in the virtual network and then create the variable: 
+1. Cserélje le a **$subnetName** értéket az alhálózat kívánt nevére a virtuális hálózatban, majd hozza létre a következő változót: 
 
-        $subName = "subnet name"
+        $subnetName = "subnet name"
         
-2. Create the subnet configuration:
+2. Az alhálózat-konfiguráció létrehozása:
     
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subName -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
         
-    The address prefix may be different in your virtual network.
+    A címelőtag eltérő lehet a virtuális hálózatán belül.
 
-3. Replace the value of **$netName** with the name that you want to use for the virtual network and then create the variable: 
+3. Cserélje le a **$netName** értéket a virtuális hálózat kívánt nevére, majd hozza létre a következő változót: 
 
         $netName = "virtual network name"
         
-4. Create the virtual network:
+4. Virtuális hálózat létrehozása:
     
         $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-### Public IP address
+### <a name="public-ip-address"></a>Nyilvános IP-cím
 
-Before a network interface can be created, you need to create a public IP address.
+Egy hálózati adapter létrehozása előtt létre kell hoznia egy nyilvános IP-címet.
 
-1. Replace the value of **$domName** with the domain name label that you want to use with your public IP address and then create the variable:  
+1. Cserélje le a **$domName** értéket a nyilvános IP-címével használni kívánt tartománynév-címkére, majd hozza létre a következő változót:  
 
         $domName = "domain name label"
         
-    The label can contain only letters, numbers, and hyphens, and the last character must be a letter or number.
+    A címke csak betűket, számokat és kötőjeleket tartalmazhat (az utolsó karakternek betűnek vagy számnak kell lennie).
     
-2. Test whether the name is unique:
+2. Ellenőrizze, hogy a név egyedi-e:
     
         Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
 
-    If the answer is **True**, your proposed name is unique.
+    Ha a válasz **Igaz** eredményt ad, a választott név egyedi.
 
-3. Replace the value of **$pipName** with the name that you want to use for the public IP address and then create the variable. 
+3. Cserélje le a **$pipName** értéket a használni kívánt nyilvános IP-cím nevére, majd hozza létre a változót. 
 
         $pipName = "public ip address name"
         
-4. Create the public IP address:
+4. Nyilvános IP-cím létrehozása:
     
         $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
 
-### Network interface
+### <a name="network-interface"></a>Hálózati illesztő
 
-Now that you have the public IP address, you can create the network interface.
+Most, hogy már rendelkezik a nyilvános IP-címmel, létrehozhatja a hálózati adaptert.
 
-1. Replace the value of **$nicName** with the name that you want to use for the network interface and then create the variable: 
+1. Cserélje le a **$nicName** értéket a hálózati adapter kívánt nevére, majd hozza létre a következő változót: 
 
         $nicName = "network interface name"
         
-2. Create the network interface:
+2. Hálózati adapter létrehozása:
     
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
-### Configuration of the scale set
+### <a name="configuration-of-the-scale-set"></a>A méretezési csoport konfigurálása
 
-You have all the resources that you need for the scale set configuration, so let's create it.  
+Minden erőforrás rendelkezésre áll a méretezési csoport konfigurálásához, így most már létrehozhatja.  
 
-1. Replace the value of **$ipName** with the name that you want to use for the IP configuration and then create the variable: 
+1. Cserélje le az **$ipName** értéket az IP-konfiguráció kívánt nevére, majd hozza létre a következő változót: 
 
         $ipName = "IP configuration name"
         
-2. Create the IP configuration:
+2. Az IP-konfiguráció létrehozása:
 
         $ipConfig = New-AzureRmVmssIpConfig -Name $ipName -LoadBalancerBackendAddressPoolsId $null -SubnetId $vnet.Subnets[0].Id
 
-2. Replace the value of **$vmssConfig** with the name that you want to use for the scale set configuration and then create the variable:   
+2. Cserélje le a **$vmssConfig** értéket a méretezésicsoport-konfiguráció kívánt nevére, majd hozza létre a következő változót:   
 
         $vmssConfig = "Scale set configuration name"
         
-3. Create the configuration for the scale set:
+3. A méretezésicsoport-konfiguráció létrehozása:
 
-        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A1" -UpgradePolicyMode "manual"
+        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
         
-    This example shows a scale set being created with 3 virtual machines. See [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md) for more about the capacity of scale sets. This step also includes setting the size (referred to as SkuName) of the virtual machines in the set. Look at [Sizes for virtual machines](../virtual-machines/virtual-machines-windows-sizes.md) to find a size that meets your needs.
+    Ez a példa egy három virtuális géppel létrehozott méretezési csoportot mutat be. A méretezési csoportok kapacitásával kapcsolatos információkért lásd:[Virtuálisgép-méretezési csoportok áttekintése](virtual-machine-scale-sets-overview.md). Ez a lépés a csoportban található virtuális gépek méretének (más néven SkuName) a beállítását is magában foglalja. Az igényeinek megfelelő méret megtalálásához lásd: [Virtuális gépek méretei](../virtual-machines/virtual-machines-windows-sizes.md).
     
-4. Add the network interface configuration to the scale set configuration:
+4. Adja hozzá a hálózatiadapter-konfigurációt a méretezési csoporthoz:
         
         Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
         
-    You should see something like this:
+    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
 
         Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
         UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
@@ -226,59 +224,59 @@ You have all the resources that you need for the scale set configuration, so let
         Location              : Central US
         Tags                  :
 
-#### Operating system  profile
+#### <a name="operating-system-profile"></a>Operációs rendszer profilja
 
-1. Replace the value of **$computerName** with the computer name prefix that you want to use and then create the variable: 
+1. Cserélje le a **$computerName** értéket a használni kívánt számítógépnév-előtagra, majd hozza létre a következő változót: 
 
         $computerName = "computer name prefix"
         
-2. Replace the value of **$adminName** the name of the administrator account on the virtual machines and then create the variable:
+2. Cserélje le az **$adminName** értéket a virtuális gépeken található rendszergazdai fiók nevére, majd hozza létre a következő változót:
 
         $adminName = "administrator account name"
         
-3. Replace the value of **$adminPassword** with the account password and then create the variable:
+3. Cserélje le az **$adminPassword** értéket a fiók jelszavára, majd hozza létre a következő változót:
 
         $adminPassword = "password for administrator accounts"
         
-4. Create the operating system profile:
+4. Az operációs rendszer profiljának létrehozása:
 
         Set-AzureRmVmssOsProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix $computerName -AdminUsername $adminName -AdminPassword $adminPassword
 
-#### Storage profile
+#### <a name="storage-profile"></a>Tárolóprofil
 
-1. Replace the value of **$storageProfile** with the name that you want to use for the storage profile and then create the variable:  
+1. Cserélje le a **$storageProfile** értéket a tárterületprofil kívánt nevére, majd hozza létre a változót:  
 
         $storageProfile = "storage profile name"
         
-2. Create the variables that define the image to use:  
+2. Hozza létre a használni kívánt rendszerképet meghatározó változókat:  
       
         $imagePublisher = "MicrosoftWindowsServer"
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
         
-    Look at [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md) to find the information about other images to use.
+    További információ a használható egyéb rendszerképekről:[Azure virtuális gépek rendszerképeinek keresése és kiválasztása a Windows PowerShell és az Azure CLI használatával](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md).
         
-3. Replace the value of **$vhdContainers** with a list that contains the paths where the virtual hard disks are stored, such as "https://mystorage.blob.core.windows.net/vhds", and then create the variable:
+3. Cserélje le a **$vhdContainers** értéket egy olyan listára, amely a virtuális merevlemezek tárolási helyére mutató elérési utakat tartalmazza (például „https://mystorage.blob.core.windows.net/vhds”), majd hozza létre a következő változót:
        
         $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
         
-4. Create the storage profile:
+4. A tárolóprofil létrehozása:
 
         Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
-### Virtual machine scale set
+### <a name="virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport
 
-Finally, you can create the scale set.
+Végül létrehozhatja a méretezési csoportot.
 
-1. Replace the value of **$vmssName** with the name of the virtual machine scale set and then create the variable:
+1. Cserélje le a **$vmssName** értéket a virtuálisgép-méretezési csoport nevére, majd hozza létre a következő változót:
 
         $vmssName = "scale set name"
         
-2. Create the scale set:
+2. A méretezési csoport létrehozása:
 
         New-AzureRmVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmss
 
-    You should see something like this that shows you the deployment succeeded:
+    A sikeres üzembe helyezés után a következő példához hasonló tartalom látható:
 
         Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
         UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
@@ -286,19 +284,19 @@ Finally, you can create the scale set.
         ProvisioningState     : Updating
         OverProvision         :
         Id                    : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microso
-                               ft.Compute/virtualMachineScaleSets/myvmss1
+                                ft.Compute/virtualMachineScaleSets/myvmss1
         Name                  : myvmss1
         Type                  : Microsoft.Compute/virtualMachineScaleSets
         Location              : centralus
         Tags                  :
 
-## Step 3: Explore resources
+## <a name="step-3:-explore-resources"></a>3. lépés: Erőforrások vizsgálata
 
-Use these resources to explore the virtual machine scale set that you just created:
+Ezekkel az erőforrásokkal megvizsgálhatja a létrehozott virtuálisgép-méretezési csoportot:
 
-- Azure portal - A limited amount of information is available using the portal.
-- [Azure Resource Explorer](https://resources.azure.com/) - This is the best tool for exploring the current state of your scale set.
-- Azure PowerShell - Use this command to get information:
+- Azure Portal – A portál használatával elérhető korlátozott mennyiségű információ.
+- [Azure Resource Explorer](https://resources.azure.com/) – Ezzel az eszközzel megtekintheti a méretezési csoport aktuális állapotát.
+- Azure PowerShell – A következő paranccsal kérhet le további információkat:
 
         Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
         
@@ -307,8 +305,14 @@ Use these resources to explore the virtual machine scale set that you just creat
         Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
         
 
-## Next steps
+## <a name="next-steps"></a>Következő lépések
 
-- Manage the scale set that you just created using the information in [Manage virtual machines in a Virtual Machine Scale Set](virtual-machine-scale-sets-windows-manage.md)
-- Consider setting up automatic scaling of your scale set by using information in [Automatic scaling and virtual machine scale sets](virtual-machine-scale-sets-autoscale-overview.md)
-- Learn more about vertical scaling by reviewing [Vertical autoscale with Virtual Machine Scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+- A létrehozott méretezési csoport kezelésével kapcsolatos információkért lásd: [Virtuálisgép-méretezési csoportban lévő virtuális gépek felügyelete](virtual-machine-scale-sets-windows-manage.md)
+- Az [Automatikus méretezés és virtuálisgép-méretezési csoportok](virtual-machine-scale-sets-autoscale-overview.md) című dokumentumban foglalt információk alapján beállíthatja a méretezési csoport automatikus méretezését
+- További információ a vertikális skálázásáról: [Vertikális automatikus méretezés a virtuálisgép-méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+
+
+
+<!--HONumber=Oct16_HO3-->
+
+

@@ -32,10 +32,8 @@ Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott
 
 Név | Leírás
 --- | ---
-[Azure Service Bus](app-service-logic-connector-azureservicebus.md) | Képes üzeneteket küldeni a Service Bus-üzenetsorokból és -témákból, valamint üzeneteket fogadni a Service Bus-üzenetsorok és  -előfizetések felől.
 [Bing Fordító](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Szöveg fordítása más nyelvre a Bing segítségével.
 [HTTP](app-service-logic-connector-http.md) | A HTTP-figyelő megnyit egy végpontot, amely HTTP-kiszolgálóként üzemel, és figyeli a beérkező HTTP- vagy HTTPS-kéréseket. A HTTP-művelet nem igényel API-alkalmazást, ezt a funkciót a Logic Apps natívan támogatja.
-[Microsoft Office 365](app-service-logic-connector-office365.md) | Az Office 365-összekötő képes a felhasználó Office 365-fiókját használva küldeni és fogadni e-maileket, illetve kezelni a naptárt és a névjegyeket.
 [Slack](app-service-logic-connector-slack.md) | Csatlakozás a Slackhez, illetve üzenetek közzététele a Slack-csatornákban.
 
 
@@ -44,19 +42,10 @@ Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott
 
 Név  | Leírás
 ------------- | -------------
-[AS2-összekötő](app-service-logic-connector-as2.md) | Az AS2 átviteli protokollal történő üzenetfogadásra és -küldésre használható. Az adatok átvitele biztonságosan és megbízhatóan, digitális tanúsítványok és titkosítás használatával történik.
-[BizTalk EDIFACT](app-service-logic-connector-edifact.md) | A vállalatközi kommunikációban használt EDIFACT-protokollal fogad és küld üzeneteket.
-[BizTalk Flat File Encoder](app-service-logic-flatfile-encoder.md) | Együttműködési képességet biztosít a strukturálatlan fájladatok (például Excel- vagy CSV-fájlok) és az XML-adatok között. Ez az API-alkalmazás képes strukturálatlan fájlpéldányokat XML-lé konvertálni és fordítva.
-[BizTalk JSON Encoder](app-service-logic-connector-jsonencoder.md) | Kódoló és dekóder, amely segít együttműködési képességet biztosítani az alkalmazásnak a JSON- és az XML-adatok között. Képes adott JSON-példányt XML-lé konvertálni  és fordítva.
 [BizTalk Rules](app-service-logic-use-biztalk-rules.md) | A BizTalk Rules a vállalaton belüli üzleti logikai meghatározására és vezérlésére használható. Az üzleti szabályzatok újrafordítás és a társított alkalmazások újratelepítése nélkül is frissíthetők.
-[BizTalk Trading Partner Management](app-service-logic-connector-tpm.md) | Vállalatközi kapcsolatok meghatározására és fenntartására használható a partnerek, egyezmények, illetve a megállapodásokban használt sémák és tanúsítványok segítségével. Ezeket a kapcsolatokat az AS2, EDIFACT és X12 API-alkalmazások foganatosítják.
-[BizTalk Transform Service](app-service-logic-transform-xml-documents.md) | Egy adott formátumból más formátumba konvertálja az adatokat. Ezenfelül meglévő térkép (.trfm-fájl) feltöltésére, a forrás- és célsémák közötti kapcsolatok megtekintésére, valamint a „Tesztelés” funkciónak a mintaként használt beviteli XML-tartalmakon való lefuttatására is használható. Ezenfelül különféle beépített funkciók is elérhetők, például karakterlánc-feldolgozás, feltételes hozzárendelés stb.
-[BizTalk X12](app-service-logic-connector-x12.md) | A vállalatközi kommunikációban használt X12-protokoll segítségével fogad és küld üzeneteket.
-[BizTalk XML Validator](app-service-logic-xml-validator.md) | XML-adatoknak az előre definiált XML-sémák alapján történő ellenőrzésére szolgál. Használhat meglévő sémákat, vagy akár saját sémákat is generálható strukturálatlan fájlpéldányok, JSON-példányok vagy meglévő összekötők alapján.
 [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | Az Ön által megválasztott XPath alapján megkeresi az XML-tartalmakat, és kinyeri belőlük az adatokat.
 [DB2-összekötő](app-service-logic-connector-db2.md) | Csatlakozik egy helyszíni IBM DB2-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani. <br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz.
 [Fájl](app-service-logic-connector-file.md) | Ezzel az összekötővel csatlakozhat a helyszíni fájlrendszerhez vagy hálózathoz, és különféle műveleteket hajthat végre, például fájlok feltöltését, törlését, listázását stb.
-[FTP<br/>FTPS](app-service-logic-connector-ftp.md) | Ezzel az összekötővel csatlakozhat FTP-/FTPS-kiszolgálókhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlok feltöltését, lekérését, törlését stb.
 [Informix](app-service-logic-connector-informix.md) | Egy helyszíni IBM Informix-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani.<br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz.
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | Helyszíni SQL Server és Azure SQL Database összekapcsolására szolgál. Az összekötővel SQL-adatbázistáblában szereplő bejegyzéseket hozhat létre, frissíthet, kérhet le és törölhet.
 MQ | Egy helyszíni, 8-as verziójú IBM WebSphere MQ Server kiszolgálóhoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Az összekötő a Microsoft MQ-ügyfelét is tartalmazza.<br/><br/>Nincsenek eseményindítók. Nincsenek műveletek.<br/><br/>**Megjegyzés:** Jelenleg nem használható a Logic Apps szolgáltatásban.
@@ -82,6 +71,6 @@ Az összekötők a logikai alkalmazásban műveletként is felhasználhatók. A 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

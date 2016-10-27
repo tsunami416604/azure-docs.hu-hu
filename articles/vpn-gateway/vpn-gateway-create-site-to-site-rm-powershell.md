@@ -70,7 +70,7 @@ Válassza ki a használni kívánt előfizetést.
 
 ## 2. Virtuális hálózat és átjáró-alhálózat létrehozása
 
-A példák egy /28-as átjáró-alhálózatot használnak. Ugyan létrehozható átjáró-alhálózat kisebb, akár /29-es alhálózat használatával is, ez nem ajánlott. A további szolgáltatások követelményeinek való megfelelés érdekében javasoljuk /27-es vagy nagyobb (például /26-os vagy /25-ös) átjáró-alhálózat létrehozását. 
+A példák egy /28-as átjáró-alhálózatot használnak. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít ahhoz, hogy az esetleges további konfigurációkat is elbírják.
 
 Ha már rendelkezik /29-es vagy nagyobb átjáró-alhálózattal ellátott virtuális hálózattal, továbbléphet a [Helyi hálózati átjáró hozzáadása](#localnet) részre.
 
@@ -226,6 +226,6 @@ Ha módosítania kell a helyi hálózati átjáró előtagjait, használja a kö
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

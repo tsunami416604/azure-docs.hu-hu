@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="09/14/2016"
+    ms.date="10/04/2016"
     ms.author="sstein"/>
 
 
@@ -29,9 +29,7 @@ Ez a cikk leírja, hogyan hozhat létre egy rugalmas Azure SQL-adatbáziskészle
 
 Az Azure SQL Database .NET-es kódtára az [Azure Resource Manageren](../resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
-
-> [AZURE.NOTE] Az SQL Database .NET-es kódtára jelenleg előzetes verzióban érhető el.
-
+>[AZURE.NOTE] Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../resource-group-overview.md) támogatott, ezért mindig használja a legújabb **Azure SQL Database Management .NET-es kódtárát ([docs](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet Package](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi [klasszikus üzembe helyezésű, modell-alapú kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb Resource Manager-alapú kódtárakat.
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -318,6 +316,6 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO3-->
 
 

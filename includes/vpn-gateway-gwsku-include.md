@@ -6,6 +6,13 @@ A VPN Gateway a következő termékváltozatok használatára képes:
 - Standard
 - HighPerformance
 
-<!--HONumber=Sep16_HO4-->
+A termékváltozat kiválasztásakor tartsa szem előtt az alábbi korlátozásokat:
+
+- PolicyBased-típusú VPN-ekhez az alapszintű átjáró-termékváltozatot kell használni. A PolicyBased VPN-eket (régebbi nevén Statikus útválasztás) semmilyen más termékváltozat nem támogatja.
+- A BGP az alapszintű termékváltozathoz nem támogatott.
+- Az alapszintű termékváltozat nem támogatja az ExpressRoute-VPN-átjárók egyszerre konfigurált beállításait.
+
+
+<!--HONumber=Oct16_HO3-->
 
 
