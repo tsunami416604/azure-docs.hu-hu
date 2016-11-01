@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
@@ -45,11 +45,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
     ![Azure Storage-eszközök](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 
-## <a name="step-1:-add-sample-data-to-azure-blob-storage"></a>1. lépés: Mintaadatok felvétele az Azure Blob Storage-ba
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>1. lépés: Mintaadatok felvétele az Azure Blob Storage-ba
 
 Az adatok betöltéséhez mintaadatokat kell helyeznünk egy Azure blobtárolóba. Ebben a lépésben feltöltünk egy Azure Storage-blobot mintaadatokkal. Később a PolyBase segítségével töltjük majd be ezeket a mintaadatokat az SQL Data Warehouse-adatbázisba.
 
-### <a name="a.-prepare-a-sample-text-file"></a>A. Minta szöveges fájl előkészítése
+### <a name="a-prepare-a-sample-text-file"></a>A. Minta szöveges fájl előkészítése
 
 Minta szöveges fájl előkészítése:
 
@@ -70,7 +70,7 @@ Minta szöveges fájl előkészítése:
 20150101,1,3
 ```
 
-### <a name="b.-find-your-blob-service-endpoint"></a>B. A Blob-szolgáltatásvégpont megkeresése
+### <a name="b-find-your-blob-service-endpoint"></a>B. A Blob-szolgáltatásvégpont megkeresése
 
 A Blob-szolgáltatásvégpont megkeresése:
 
@@ -84,7 +84,7 @@ A Blob-szolgáltatásvégpont megkeresése:
 
     ![Blob-szolgáltatásvégpont](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c.-find-your-azure-storage-key"></a>C. Az Azure Storage-kulcs megkeresése
+### <a name="c-find-your-azure-storage-key"></a>C. Az Azure Storage-kulcs megkeresése
 
 Az Azure Storage-kulcs megkeresése:
 
@@ -95,7 +95,7 @@ Az Azure Storage-kulcs megkeresése:
 
     ![Az Azure Storage-kulcs másolása](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d.-copy-the-sample-file-to-azure-blob-storage"></a>D. A mintafájl Azure Blob Storage-ba másolása
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. A mintafájl Azure Blob Storage-ba másolása
 
 Adatok másolása az Azure Blob Storage-ba:
 
@@ -113,7 +113,7 @@ Adatok másolása az Azure Blob Storage-ba:
 
 Lásd még [az AzCopy parancssori segédprogram használatát ismertető][] részt.
 
-### <a name="e.-explore-your-blob-storage-container"></a>E. A Blob Storage-tároló áttekintése
+### <a name="e-explore-your-blob-storage-container"></a>E. A Blob Storage-tároló áttekintése
 
 A Blob Storage-ba feltöltött fájl megtekintése:
 
@@ -126,7 +126,7 @@ A Blob Storage-ba feltöltött fájl megtekintése:
     ![Az Azure Storage-blob megtekintése](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
 
-## <a name="step-2:-create-an-external-table-for-the-sample-data"></a>2. lépés: Külső tábla létrehozása a mintaadatokhoz
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>2. lépés: Külső tábla létrehozása a mintaadatokhoz
 
 Ebben a szakaszban létrehozunk külső táblát, amely a mintaadatokat határozza meg.
 
@@ -216,7 +216,7 @@ Az SQL Server Object Explorerben a Visual Studióban megtekintheti a külső fá
 
 ![Külső tábla megtekintése](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## <a name="step-3:-load-data-into-sql-data-warehouse"></a>3. lépés: Adatok betöltése az SQL Data Warehouse-ba
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>3. lépés: Adatok betöltése az SQL Data Warehouse-ba
 
 Ha létrejött a külső tábla, betöltheti az adatokat egy új táblába, vagy beszúrhatja őket egy meglévő táblába.
 
@@ -236,7 +236,7 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
 
 Az SQL Data Warehouse nem tudja automatikus létrehozni és frissíteni a statisztikákat. A lekérdezési teljesítmény eléréséhez ezért fontos statisztikákat létrehozni minden tábla minden oszlopához az első betöltéskor. Fontos a statisztikák frissítése is az adatok lényeges módosításai után.
 
