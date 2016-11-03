@@ -226,7 +226,7 @@ Ezek a témakörök további információkat adnak az Azure Data Factory szolgá
 [Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Azure Data Factory (Data Factory Editor) – első lépések]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
 [Az Azure Data Factory bemutatása]: ../data-factory/data-factory-introduction.md
-[Mintaadatok betöltése az SQL Data Warehouse-ba]: sql-data-warehouse-load-sample-databases.md
+[Mintaadatok betöltése az SQL Data Warehouse adatbázisba]: sql-data-warehouse-load-sample-databases.md
 [Adatok áthelyezése az Azure SQL Data Warehouse-ba és onnan máshová az Azure Data Factory használatával]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
 [Oktatóanyag: Adatok másolása az Azure Storage-blobból az Azure SQL Database-be]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
@@ -241,6 +241,6 @@ Ezek a témakörök további információkat adnak az Azure Data Factory szolgá
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!---HONumber=Oct16_HO3-->
 
 
