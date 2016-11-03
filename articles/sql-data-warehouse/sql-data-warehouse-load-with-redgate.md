@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/13/2016"
+   ms.date="10/31/2016"
    ms.author="mausher;barbkess"/>
 
 
@@ -41,17 +41,17 @@ Az oktatóanyag elindítása előtt a következőkkel kell rendelkeznie:
 
 > [AZURE.NOTE] Ha a tárfiók és az adattárház ugyanabban a régióban található, jobb teljesítményt érhet el.
 
-## <a name="step-1:-sign-in-to-data-platform-studio-with-your-azure-account"></a>1. lépés: Bejelentkezés a Data Platform Studióba az Azure-fiókkal
+## <a name="step-1-sign-in-to-data-platform-studio-with-your-azure-account"></a>1. lépés: Bejelentkezés a Data Platform Studióba az Azure-fiókkal
 Nyissa meg a webböngészőt, majd navigáljon a [Data Platform Studio](https://www.dataplatformstudio.com/) webhelyére. Jelentkezzen be ugyanazzal az Azure-fiókkal, amelyet a tárfiók és az adattárház létrehozásához használt. Ha az e-mail-címe egy munkahelyi vagy iskolai fiókkal és egy Microsoft-fiókkal is társítva van, győződjön meg arról, hogy azt a fiókot választja, amely hozzá tud férni az erőforrásaihoz.
 
 > [AZURE.NOTE] Ha most használja először a Data Platform Studiót, a rendszer megkéri, hogy engedélyezze az alkalmazás számára az Azure-erőforrások kezelését.
 
-## <a name="step-2:-start-the-import-wizard"></a>2. lépés: Az importálási varázsló elindítása
+## <a name="step-2-start-the-import-wizard"></a>2. lépés: Az importálási varázsló elindítása
 A DPS főképernyőjén válassza az Import to Azure SQL Data Warehouse (Importálás az Azure SQL Data Warehouse-ba) hivatkozást az importálási varázsló elindításához.
 
 ![][1]
 
-## <a name="step-3:-install-the-data-platform-studio-gateway"></a>3. lépés: A Data Platform Studio-átjáró telepítése
+## <a name="step-3-install-the-data-platform-studio-gateway"></a>3. lépés: A Data Platform Studio-átjáró telepítése
 A helyszíni SQL Server-adatbázishoz való csatlakozáshoz telepíteni kell a DPS-átjárót. Az átjáró egy ügyfélügynök, amely hozzáférést biztosít a helyszíni környezethez, kinyeri az adatokat, és feltölti őket a tárfiókba. Az adatai soha nem haladnak keresztül a Redgate kiszolgálóin. Az átjáró telepítése:
 
 1.  Kattintson a **Create Gateway** (Átjáró létrehozása) hivatkozásra.
@@ -63,28 +63,28 @@ A helyszíni SQL Server-adatbázishoz való csatlakozáshoz telepíteni kell a D
 
 A telepítést követően az átjáró Kapcsolatban állapotúra változik, és kiválaszthatja a Next (Tovább) lehetőséget.
 
-## <a name="step-4:-identify-the-source-database"></a>4. lépés: A forrásadatbázis azonosítása
+## <a name="step-4-identify-the-source-database"></a>4. lépés: A forrásadatbázis azonosítása
 Az *Enter Server Name* (Kiszolgálónév megadása) szövegmezőben adja meg az adatbázist üzemeltető kiszolgáló nevét, majd válassza a **Next** (Tovább) lehetőséget. Ezt követően a legördülő menüből válassza ki azt az adatbázist, amelyből adatot kíván importálni.
 
 ![][3]
 
 Majd a DPS importálható táblákat keres a kiválasztott adatbázisban. Alapértelmezés szerint a DPS az adatbázis összes tábláját importálja. Az All Tables (Összes tábla) hivatkozás kibontásával táblákat jelölhet ki, vagy törölheti a jelölésüket. A folytatáshoz válassza a Next (Tovább) gombot.
 
-## <a name="step-5:-choose-a-storage-account-to-stage-the-data"></a>5. lépés: Tárfiók kiválasztása az adatok előkészítéséhez
+## <a name="step-5-choose-a-storage-account-to-stage-the-data"></a>5. lépés: Tárfiók kiválasztása az adatok előkészítéséhez
 A DPS felkéri, hogy adjon meg egy helyet az adatok előkészítéséhez. Válasszon ki egy meglévő tárfiókot az előfizetéséből, majd válassza a **Next** (Tovább) lehetőséget.
 
 > [AZURE.NOTE] A DPS létrehoz egy új blobtárolót a kiválasztott tárfiókban, és minden importáláshoz más mappát használ.
 
 ![][4]
 
-## <a name="step-6:-select-a-data-warehouse"></a>6. lépés: Adattárház kiválasztása
+## <a name="step-6-select-a-data-warehouse"></a>6. lépés: Adattárház kiválasztása
 Ezután válassza ki azt az online [Azure SQL Data Warehouse](http://aka.ms/sqldw)-adatbázist, amelybe importálni szeretné az adatokat. Az adatbázis kiválasztása után adja meg a hitelesítő adatokat az adatbázishoz való csatlakozáshoz, majd válassza a **Next** (Tovább) lehetőséget.
 
 ![][5]
 
 > [AZURE.NOTE] A DPS egyesíti a forrásadattáblákat az adattárházban. A DPS figyelmezteti, ha a tábla neve miatt felül kell írni az adattárház meglévő tábláit. Ha szeretné, törölheti az adattárház meglévő objektumait. Ehhez az importálás előtt jelölje be a Delete all existing objects (Összes meglévő objektum törlése) lehetőséget.
 
-## <a name="step-7:-import-the-data"></a>7. lépés: Az adatok importálása
+## <a name="step-7-import-the-data"></a>7. lépés: Az adatok importálása
 A DPS visszaigazolja, hogy Ön importálni szeretné az adatokat. Az adatok importálásának megkezdéséhez egyszerűen kattintson a Start import (Importálás indítása) gombra.
 
 ![][6]
