@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="mausher;barbkess"/>
 
 
 
@@ -57,7 +57,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 Ebben az oktatóanyagban létrehoz egy táblát az Azure SQL Data Warehouse-ban, és adatokat importál a táblába.
 
-### <a name="step-1:-create-a-table-in-azure-sql-data-warehouse"></a>1. lépés: Tábla létrehozása az Azure SQL Data Warehouse-ban
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>1. lépés: Tábla létrehozása az Azure SQL Data Warehouse-ban
 
 Egy parancssorban az sqlcmd paranccsal futtassa a következő lekérdezést. Ezzel egy táblát hoz létre a példányán:
 
@@ -79,7 +79,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 >[AZURE.NOTE] További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][] vagy [CREATE TABLE szintaxis][].
 
-### <a name="step-2:-create-a-source-data-file"></a>2. lépés: Forrásadatfájlok létrehozása
+### <a name="step-2-create-a-source-data-file"></a>2. lépés: Forrásadatfájlok létrehozása
 
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt).
 
@@ -100,7 +100,7 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 
 > [AZURE.NOTE] Fontos észben tartani, hogy a bcp.exe nem támogatja az UTF-8 kódolást. A bcp.exe használatakor használjon ASCII fájlokat vagy UTF-16 kódolást.
 
-### <a name="step-3:-connect-and-import-the-data"></a>3. lépés: Csatlakozás és az adatok importálása
+### <a name="step-3-connect-and-import-the-data"></a>3. lépés: Csatlakozás és az adatok importálása
 A bcp és az alábbi parancs segítségével csatlakozhat és importálhatja az adatokat. Az értékeket szükség szerint cserélje le:
 
 ```sql
@@ -130,7 +130,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
 
 Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
 
@@ -147,7 +147,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ## <a name="export-data-from-sql-data-warehouse"></a>Adatok exportálása az SQL Data Warehouse-ból
 Ebben az oktatóanyagban létrehoz egy adatfájlt egy SQL Data Warehouse-táblából. A fenti létrehozott adatokat exportáljuk egy új, DimDate2_export.txt adatfájlba.
 
-### <a name="step-1:-export-the-data"></a>1. lépés: Az adatok exportálása
+### <a name="step-1-export-the-data"></a>1. lépés: Az adatok exportálása
 
 A bcp segédprogram és az alábbi parancs segítségével csatlakozhat és exportálhatja az adatokat. Az értékeket szükség szerint cserélje le:
 
