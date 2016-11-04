@@ -1,49 +1,45 @@
-<properties
-    pageTitle="Python webes és feldolgozói szerepkörök a Visual Studio eszközzel | Microsoft Azure"
-    description="Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel."
-    services="cloud-services"
-    documentationCenter="python"
-    authors="thraka"
-    manager="timlt"
-    editor=""/>
+---
+title: Python webes és feldolgozói szerepkörök a Visual Studio eszközzel | Microsoft Docs
+description: Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel.
+services: cloud-services
+documentationcenter: python
+author: thraka
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="python"
-    ms.topic="hero-article"
-    ms.date="08/03/2016"
-    ms.author="adegeo"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: python
+ms.topic: hero-article
+ms.date: 08/03/2016
+ms.author: adegeo
 
-
-
+---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
-
-Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy, a Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
+Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][Python Tools for Visual Studio] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy, a Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
 
 ## <a name="prerequisites"></a>Előfeltételek
+* Visual Studio 2013 vagy 2015
+* [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
+* [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015]
+* [Python 2.7 32 bites][] vagy [Python 3.5, 32 bites][Python 3.5, 32 bites]
 
- - Visual Studio 2013 vagy 2015
- - [Python Tools for Visual Studio][] (PTVS)
- - [Azure SDK Tools for VS 2013][] vagy [Azure SDK Tools for VS 2015][]
- - [Python 2.7 32 bites][] vagy [Python 3.5, 32 bites][]
-
-[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+[!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles?"></a>Mik a Python webes és feldolgozói szerepkörök?
-
-Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service portálon](futtatási modell-webhelyek), [Azure virtuális gépek](végrehajtási modell virtuális gépek) és [Azure Cloud Services](végrehajtási modell felhőszolgáltatások). Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service portálon](futtatási modell-webhelyek.md), [Azure virtuális gépek](végrehajtási modell virtuális gépek.md) és [Azure Cloud Services](végrehajtási modell felhőszolgáltatások.md). Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 
-> [AZURE.NOTE] *Egyszerű webhelyet szeretne készíteni?*
-Ha egy egyszerű webhely előterét kívánja futtatni, fontolja meg az Azure App Service egyszerűsített Web Apps szolgáltatásának használatát. Könnyedén frissíthet Cloud Service szolgáltatásra, ha a webhely növekszik és a követelmények változnak. A <a href="/develop/python/">Python fejlesztői központban</a> találhat az Azure App Service Web Apps szolgáltatásának fejlesztését ismertető cikkeket.
-<br />
-
+> [!NOTE]
+> *Egyszerű webhelyet szeretne készíteni?*
+> Ha egy egyszerű webhely előterét kívánja futtatni, fontolja meg az Azure App Service egyszerűsített Web Apps szolgáltatásának használatát. Könnyedén frissíthet Cloud Service szolgáltatásra, ha a webhely növekszik és a követelmények változnak. A <a href="/develop/python/">Python fejlesztői központban</a> találhat az Azure App Service Web Apps szolgáltatásának fejlesztését ismertető cikkeket.
+> <br />
+> 
+> 
 
 ## <a name="project-creation"></a>Projekt létrehozása
-
 A Visual Studio eszközben válassza az **Azure Cloud Service** lehetőséget az **Új projekt** párbeszédpanelen a **Python** területen.
 
 ![Új projekt párbeszédpanel](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
@@ -63,13 +59,14 @@ Egy meglévő felhőszolgáltatáshoz bármikor hozzáadhat webes vagy feldolgoz
 A felhőszolgáltatás tartalmazhat különböző nyelveken kialakított szerepköröket.  Például kialakíthat egy Python webes szerepkört Django, Python vagy C# feldolgozói szerepkör használatával.  A szerepkörök között egyszerűen kommunikálhat Service Bus üzenetsorok vagy tárolási sorok használatával.
 
 ## <a name="install-python-on-the-cloud-service"></a>A Python telepítése a felhőszolgáltatáson
-
->[AZURE.WARNING] A Visual Studióval települt telepítési parancsfájlok (a cikk utolsó frissítésekor) erre a célra nem használhatók. A megoldást ez a szakasz ismerteti.
+> [!WARNING]
+> A Visual Studióval települt telepítési parancsfájlok (a cikk utolsó frissítésekor) erre a célra nem használhatók. A megoldást ez a szakasz ismerteti.
+> 
+> 
 
 A telepítési parancsfájlok fő problémája, hogy nem telepítik a Pythont. Először határozzon meg két [indítási feladatot](cloud-services-startup-tasks.md) a [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlban. Az első feladat (**PrepPython.ps1**) letölti és telepíti a Python-futtatókörnyezetet. A második feladat (**PipInstaller.ps1**) a pipet futtatja a vonatkozó függőségek telepítéséhez.
 
 Az alábbi parancsfájlok a Python 3.5-ösre vonatkoznak. Ha a Python 2.x verzióját szeretné használni, állítsa a **PYTHON2** változófájlt **be** értékre a két indítási és a futtatókörnyezeti feladathoz: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
-
 
 ```xml
 <Startup>
@@ -90,7 +87,7 @@ Az alábbi parancsfájlok a Python 3.5-ösre vonatkoznak. Ha a Python 2.x verzi�
       </Variable>
       <Variable name="PYTHON2" value="off" />
     </Environment>
-    
+
   </Task>
 
 </Startup>
@@ -114,7 +111,6 @@ A **PYTHON2** és a **PYPATH** változót hozzá kell adni a feldolgozó indít�
 ```
 
 #### <a name="sample-servicedefinition.csdef"></a>Mintául szolgáló ServiceDefinition.csdef
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="AzureCloudServicePython" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -166,7 +162,6 @@ A **PYTHON2** és a **PYPATH** változót hozzá kell adni a feldolgozó indít�
 Ezután hozza létre a **PrepPython.ps1** és a **PipInstaller.ps1** fájlokat a szerepkör **./bin** mappájában.
 
 #### <a name="preppython.ps1"></a>PrepPython.ps1
-
 Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a Python 2.7-t telepíti. Más esetekben a Python 3.5 települ.
 
 ```powershell
@@ -192,7 +187,7 @@ if (-not $is_emulated){
             $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
             $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
         }
-        
+
         Write-Output "Not found, downloading $url to $outFile$nl"
         Invoke-WebRequest $url -OutFile $outFile
         Write-Output "Installing$nl"
@@ -213,7 +208,6 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstaller.ps1"></a>PipInstaller.ps1
-
 Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-t használja. Más esetekben a Python 3.5 lesz használatban.
 
 ```powershell
@@ -242,8 +236,10 @@ if (-not $is_emulated){
 ```
 
 #### <a name="modify-launchworker.ps1"></a>A LaunchWorker.ps1 módosítása
-
->[AZURE.NOTE] **Feldolgozói szerepkörű** projekt esetében az indítófájl végrehajtásához **LauncherWorker.ps1** fájl szükséges. **Webes szerepkörű** projekt esetében az indítófájl definiálása nem ebben a fájlban, hanem a projekt tulajdonságaiban történik.
+> [!NOTE]
+> **Feldolgozói szerepkörű** projekt esetében az indítófájl végrehajtásához **LauncherWorker.ps1** fájl szükséges. **Webes szerepkörű** projekt esetében az indítófájl definiálása nem ebben a fájlban, hanem a projekt tulajdonságaiban történik.
+> 
+> 
 
 A **bin\LaunchWorker.ps1** eredetileg azért jött létre, hogy előkészítési munkákat végezzen, de nem igazán működik. Cserélje le a fájl tartalmát a következő parancsfájllal.
 
@@ -285,7 +281,6 @@ else
 ```
 
 #### <a name="ps.cmd"></a>ps.cmd
-
 A Visual Studio-sablonoknak létre kellett hozniuk egy **ps.cmd** fájlt a **./bin** mappában. Ez a héjparancsfájl kiemeli a fenti PowerShell burkoló parancsfájlokat, és a meghívott PowerShell burkoló neve alapján biztosít naplózást. Ha a fájl nem jött létre, itt láthatja, minek kéne benne lennie. 
 
 ```bat
@@ -300,7 +295,6 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Helyi futtatás
-
 Ha a felhőszolgáltatási projektet állítja be kiindulási projektnek, és megnyomja az F5 billentyűt, a felhőszolgáltatás a helyi Azure emulátorban fog futni.
 
 Bár a PVTS támogatja az indítást az emulátorban, a hibakeresés (például töréspontok keresése) nem fog működni.
@@ -310,7 +304,6 @@ A webes és feldolgozói szerepkörök hibakereséséhez állítsa be a szerepk�
 ![A megoldás kiindulási projektjének tulajdonságai](./media/cloud-services-python-ptvs/startup.png)
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure platformon
-
 A közzétételhez kattintson a jobb gombbal a felhőszolgáltatási projektre a megoldásban, majd kattintson a **Közzététel** gombra.
 
 ![Bejelentkezés a Microsoft Azure közzétételhez](./media/cloud-services-python-ptvs/publish-sign-in.png)
@@ -326,23 +319,20 @@ Egy folyamatjelző jelenik meg a kimeneti ablakban, majd megnyílik a Microsoft 
 A telepítés néhány percet vesz igénybe, ezután a webes és/vagy feldolgozói szerepkörök el is indulnak az Azure portálon!
 
 ### <a name="investigate-logs"></a>Naplók vizsgálata
-
 A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\{role}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba elő fog fordulni, amely akkor keletkezik, amikor a parancsfájl megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
 
 ## <a name="next-steps"></a>Következő lépések
-
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:
 
-- [Cloud Service-projektek][]
+* [Cloud Service-projektek][Cloud Service-projektek]
 
 Ha további részletekre kíváncsi az Azure szolgáltatások használatáról webes és feldolgozói szerepkörökből, mint az Azure Storage vagy a Service Bus, olvassa el a következő cikkeket.
 
-- [Blob Service][]
-- [Table Service][]
-- [Queue szolgáltatás][]
-- [Service Bus által kezelt üzenetsorok][]
-- [Service Bus-üzenettémák][]
-
+* [Blob Service][Blob Service]
+* [Table Service][Table Service]
+* [Queue szolgáltatás][Queue szolgáltatás]
+* [Service Bus által kezelt üzenetsorok][Service Bus által kezelt üzenetsorok]
+* [Service Bus-üzenettémák][Service Bus-üzenettémák]
 
 <!--Link references-->
 

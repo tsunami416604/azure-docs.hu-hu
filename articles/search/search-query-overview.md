@@ -1,35 +1,34 @@
-<properties
-    pageTitle="Az Azure Search-index lekérdezése | Microsoft Azure | Üzemeltetett felhőalapú keresési szolgáltatás"
-    description="Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el."
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-/>
+---
+title: Az Azure Search-index lekérdezése | Microsoft Docs
+description: Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el.
+services: search
+documentationcenter: ''
+author: ashmaka
 
-<tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
-
+---
 # Az Azure Search-index lekérdezése
-> [AZURE.SELECTOR]
-- [Áttekintés](search-query-overview.md)
-- [Portál](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-query-overview.md)
+> * [Portál](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 Az Azure Search számára keresési kérések elküldésekor az alkalmazás keresőmezőjébe írt tényleges szavak mellett számos paraméter is megadható. Ezen lekérdezési paraméterek segítségével jobban kézben tartható a teljes szöveges keresés.
 
 Az alábbi lista röviden ismerteti az Azure Search lekérdezési paramétereinek gyakori alkalmazásait. A lekérdezési paraméterek és azok viselkedésének teljes leírását a [REST API](https://msdn.microsoft.com/library/azure/dn798927.aspx) és a [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.searchparameters_properties.aspx) részletes információi között találja.
 
 ## A lekérdezések típusai
-
-Az Azure Search számos lehetőséget kínál rendkívül hatékony lekérdezések végrehajtására. Az itt használt két fő lekérdezési típus: `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes _searchable_ (kereshető) mezőjében, működése pedig hasonló a Google vagy a Bing keresőmotoréhoz. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes _filterable_ (szűrhető) mezőjén. A `search` lekérdezésektől eltérően, a `filter` lekérdezéseknek egy mező pontos tartalmával kell megegyezniük, ami azt jelenti, hogy a karakterláncot tartalmazó mezők esetében a rendszer megkülönbözteti a kis- és nagybetűket.
+Az Azure Search számos lehetőséget kínál rendkívül hatékony lekérdezések végrehajtására. Az itt használt két fő lekérdezési típus: `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes *searchable* (kereshető) mezőjében, működése pedig hasonló a Google vagy a Bing keresőmotoréhoz. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes *filterable* (szűrhető) mezőjén. A `search` lekérdezésektől eltérően, a `filter` lekérdezéseknek egy mező pontos tartalmával kell megegyezniük, ami azt jelenti, hogy a karakterláncot tartalmazó mezők esetében a rendszer megkülönbözteti a kis- és nagybetűket.
 
 A keresések és a szűrések együtt vagy külön-külön is alkalmazhatók. Ha együtt használja azokat, a rendszer a szűrőt először a teljes indexre alkalmazza, majd annak eredményein hajtja végre a keresést. A szűrők éppen ezért hasznosak a lekérdezés teljesítményének javítására, mivel általuk lecsökkenthető a keresési lekérdezés által feldolgozandó dokumentumok köre.
 
@@ -43,8 +42,6 @@ A [Lucene lekérdezési szintaxis](https://msdn.microsoft.com/library/azure/mt58
 
 Ezen lekérdezési szintaxis használatával könnyedén szert tehet a következő képességekre: [mező-hatáskörű lekérdezések](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_fields), [intelligens keresés](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_fuzzy), [közelségi keresés](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_proximity), [kifejezés-kiemelés](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_termboost), [reguláris kifejezésekkel végzett keresés](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_regex), [helyettesítő karakterekkel végzett keresés](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_wildcard), [szintaxis-alapok](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_syntax) és [logikai operátorokkal végzett lekérdezések](https://msdn.microsoft.com/library/azure/mt589323.aspx#bkmk_boolean).
 
-
-
 ## Az eredmények rendezése
 A keresési lekérdezés eredményeinek fogadásakor kérheti, hogy az Azure Search az eredményeket egy adott mezőben lévő érték szerint rendezve szolgáltassa. Alapértelmezés szerint az Azure Search a keresési eredményeket az egyes dokumentumok keresési pontszáma szent rangsorolja, amelyet a [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) állományból származtat.
 
@@ -55,11 +52,8 @@ A keresési eredmények lapozása az Azure Search segítségével könnyen megva
 
 A keresési eredmények lapozásáról további információkat a [Keresési eredmények lapozása az Azure Search szolgáltatásban](search-pagination-page-layout.md) című cikkben talál.
 
-
 ## Találatok kiemelése
-Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPostTag` paramétereinek használatával egyszerűen kiemelhető a keresési lekérdezésnek megfelelő keresési eredmények pontos köre. Megadhatja, hogy mely _searchable_ (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt karakterlánc-címkéket.
-
-
+Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPostTag` paramétereinek használatával egyszerűen kiemelhető a keresési lekérdezésnek megfelelő keresési eredmények pontos köre. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt karakterlánc-címkéket.
 
 <!--HONumber=Sep16_HO4-->
 

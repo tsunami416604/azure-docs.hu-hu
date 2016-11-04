@@ -1,24 +1,22 @@
-<properties
-    pageTitle="A Stretch Database áttekintése | Microsoft Azure"
-    description="Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe."
-    services="sql-server-stretch-database"
-    documentationCenter=""
-    authors="douglaslMS"
-    manager=""
-    editor=""/>
+---
+title: A Stretch Database áttekintése | Microsoft Docs
+description: Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe.
+services: sql-server-stretch-database
+documentationcenter: ''
+author: douglaslMS
+manager: ''
+editor: ''
 
-<tags
-    ms.service="sql-server-stretch-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="06/27/2016"
-    ms.author="douglasl"/>
+ms.service: sql-server-stretch-database
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 06/27/2016
+ms.author: douglasl
 
-
+---
 # A Stretch Database áttekintése
-
 A Stretch Database a ritkán használt adatokat átlátható módon és biztonságosan telepíti át a Microsoft Azure felhőbe.
 
 Ha szeretné azonnal megkezdeni a Stretch Database használatát, olvassa el a [Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása](sql-server-stretch-database-wizard.md) című cikket.
@@ -41,9 +39,8 @@ Nyugodt maradhat afelől, hogy a legfontosabb alkalmazásai biztonságosan kerü
 ## Mire való a Stretch Database?
 Miután engedélyezi a Stretch Database-t egy SQL Server-példány, egy adatbázis és legalább egy tábla számára, a Stretch Database csendesen megkezdi a ritkán használt adatok áttelepítését az Azure-ba.
 
--   Ha a ritkán használt adatokat egy különálló táblában tárolja, a teljes táblát áttelepítheti.
-
--   Ha a tábla gyakran és ritkán használt adatokat is tartalmaz, meghatározhat egy szűrőfüggvényt az áttelepíteni kívánt sorok kiválasztásához.
+* Ha a ritkán használt adatokat egy különálló táblában tárolja, a teljes táblát áttelepítheti.
+* Ha a tábla gyakran és ritkán használt adatokat is tartalmaz, meghatározhat egy szűrőfüggvényt az áttelepíteni kívánt sorok kiválasztásához.
 
 **Nem szükséges módosítania meglévő lekérdezéseit és ügyfélalkalmazásait.** Az adatok áttelepítése közben sem veszti el hozzáférését a helyi és a távoli adatokhoz. A távoli lekérdezéseknek van egy kis késése, de ez a késés csak akkor jelentkezik, ha ritkán használt adatokat kérdez le.
 
@@ -56,12 +53,12 @@ Az **adatok áttelepítését akár szüneteltetheti is**, így elháríthatja a
 ## Érdemes Önnek beszereznie a Stretch Database-t?
 Ha az alábbi állítások igazak Önre, a Stretch Database segíthet megfelelni a követelményeknek, és megoldani a felmerülő problémákat.
 
-|Ha Ön döntéshozó|Ha Ön adatbázisgazda|
-|------------------------------|-------------------|
-|Feladataim közé tartozik a tranzakciós adatok hosszú távú megőrzése.|Az általam használt táblák olyan nagyra nőttek, hogy már nehézséget okoz a kezelésük.|
-|Időnként lekérdezést kell végrehajtanom a ritkán használt adatokban.|A felhasználóim azt mondják, hogy hozzáférést szeretnének a ritkán használt adatokhoz, de azokat csak ritkán használják.|
-|Vannak olyan (akár régebbi) alkalmazásaim, amelyeket már nem fogok frissíteni.|Folyamatosan több és több tárterületet vásárolok.|
-|Szeretnék kevesebbet költeni a tárolásra.|Az SLA keretében nincs lehetőségem ilyen nagy táblák biztonsági mentésére és helyreállítására.|
+| Ha Ön döntéshozó | Ha Ön adatbázisgazda |
+| --- | --- |
+| Feladataim közé tartozik a tranzakciós adatok hosszú távú megőrzése. |Az általam használt táblák olyan nagyra nőttek, hogy már nehézséget okoz a kezelésük. |
+| Időnként lekérdezést kell végrehajtanom a ritkán használt adatokban. |A felhasználóim azt mondják, hogy hozzáférést szeretnének a ritkán használt adatokhoz, de azokat csak ritkán használják. |
+| Vannak olyan (akár régebbi) alkalmazásaim, amelyeket már nem fogok frissíteni. |Folyamatosan több és több tárterületet vásárolok. |
+| Szeretnék kevesebbet költeni a tárolásra. |Az SLA keretében nincs lehetőségem ilyen nagy táblák biztonsági mentésére és helyreállítására. |
 
 ## Milyen típusú alkalmazások és táblák alkalmasak a Stretch Database segítségével történő áttelepítésre?
 A Stretch Database olyan tranzakciós adatbázisokhoz készült, amelyek nagy mennyiségű, ritkán használt adatot tartalmaznak általában kis számú táblában tárolva. Ezek a táblák akár több mint egymilliárd sort is tartalmazhatnak.

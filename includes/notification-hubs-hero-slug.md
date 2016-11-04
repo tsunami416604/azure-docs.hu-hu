@@ -5,7 +5,6 @@ If you are already familiar with Notification Hubs, you may want to select anoth
 
 We do take your feedback seriously. If you have any difficulties completing this topic, or recommendations for improving this content, we would appreciate your feedback at the bottom of the page.
 
-
 <!--HONumber=Sep16_HO4-->
 
 

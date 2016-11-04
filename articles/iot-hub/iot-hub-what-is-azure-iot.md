@@ -1,32 +1,30 @@
-<properties
- pageTitle="Azure-megoldások az eszközök internetes hálózatához | Microsoft Azure"
- description="Az IoT áttekintése az Azure-ban, beleértve egy minta megoldásarchitektúrát és azt, hogy miként kapcsolódik az Azure IoT Hubhoz, az eszköz SDK-khoz és az előre konfigurált megoldásokhoz"
- services="iot-hub"
- documentationCenter=""
- authors="dominicbetts"
- manager="timlt"
- editor=""/>
+---
+title: Azure-megoldások az eszközök internetes hálózatához | Microsoft Docs
+description: Az IoT áttekintése az Azure-ban, beleértve egy minta megoldásarchitektúrát és azt, hogy miként kapcsolódik az Azure IoT Hubhoz, az eszköz SDK-khoz és az előre konfigurált megoldásokhoz
+services: iot-hub
+documentationcenter: ''
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="na"
- ms.topic="get-started-article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="10/05/2016"
- ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/05/2016
+ms.author: dobett
 
-
-[AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
+---
+[!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Következő lépések
-
 Az Azure IoT Hub olyan Azure-szolgáltatás, amely biztonságos és megbízható kétirányú kommunikációt tesz lehetővé az alkalmazás háttérrendszere és több millió eszköz között. Az alkalmazás háttérrendszerét az alábbi funkciókkal látja el:
 
-- Az eszközök telemetriai adatainak lekérése távolról.
-- Az eszközök adatainak átirányítása egy stream-eseményfeldolgozóra.
-- Fájlfeltöltés az eszközökről.
-- Felhőből az eszközre irányuló parancsok küldése adott eszközökre.
+* Az eszközök telemetriai adatainak lekérése távolról.
+* Az eszközök adatainak átirányítása egy stream-eseményfeldolgozóra.
+* Fájlfeltöltés az eszközökről.
+* Felhőből az eszközre irányuló parancsok küldése adott eszközökre.
 
 Az IoT Hubbal saját megoldáshátteret valósíthat meg. Ezenkívül az IoT Hub eszközidentitás-jegyzéket tartalmaz, amellyel kiépíthetők az eszközök, a biztonsági hitelesítő adataik és a hubhoz való csatlakozással kapcsolatos jogosultságaik. További információk az IoT Hubról: [Mi az IoT Hub?][lnk-iot-hub].
 

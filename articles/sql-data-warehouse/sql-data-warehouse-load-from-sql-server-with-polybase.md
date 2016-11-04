@@ -1,55 +1,52 @@
-<properties
-   pageTitle="Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (PolyBase) | Microsoft Azure"
-   description="A bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, az AzCopy segítségével importál adatokat az Azure Blob Storage-ban, és a PolyBase használatával viszi be az adatokat az SQL Data Warehouse-ba."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="ckarst"
-   manager="barbkess"
-   editor=""/>
+---
+title: Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (PolyBase) | Microsoft Docs
+description: A bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, az AzCopy segítségével importál adatokat az Azure Blob Storage-ban, és a PolyBase használatával viszi be az adatokat az SQL Data Warehouse-ba.
+services: sql-data-warehouse
+documentationcenter: NA
+author: ckarst
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/30/2016
+ms.author: cakarst;barbkess;sonyama
 
-
-
+---
 # Adatok betöltése a PolyBase-zel az SQL Data Warehouse-ba
-
-> [AZURE.SELECTOR]
-- [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
-- [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-- [bcp](sql-data-warehouse-load-from-sql-server-with-bcp.md)
+> [!div class="op_single_selector"]
+> * [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+> * [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+> * [bcp](sql-data-warehouse-load-from-sql-server-with-bcp.md)
+> 
+> 
 
 Ez az oktatóanyag bemutatja, hogyan lehet adatokat betölteni az SQL Data Warehouse-ba az AzCopy és a PolyBase segítségével. Az oktatóanyag végére elsajátíthatja a következőket:
 
-- Adatok másolása az Azure Blob Storage-ba az AzCopy segítségével
-- Adatbázis-objektumok létrehozása az adatok meghatározásához
-- T-SQL lekérdezés futtatása az adatok betöltéséhez
+* Adatok másolása az Azure Blob Storage-ba az AzCopy segítségével
+* Adatbázis-objektumok létrehozása az adatok meghatározásához
+* T-SQL lekérdezés futtatása az adatok betöltéséhez
 
->[AZURE.VIDEO loading-data-with-polybase-in-azure-sql-data-warehouse]
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
+> 
+> 
 
 ## Előfeltételek
-
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- Egy SQL Data Warehouse-adatbázis.
-- Egy standard helyileg redundáns tárolás (Standard-LRS), standard georedundáns tárolás (Standard-GRS) vagy standard írásvédett georedundáns tárolás (Standard-RAGRS) típusú Azure Storage-fiók.
-- AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][], amely a Microsoft Azure Storage-eszközökkel együtt települ.
-
+* Egy SQL Data Warehouse-adatbázis.
+* Egy standard helyileg redundáns tárolás (Standard-LRS), standard georedundáns tárolás (Standard-GRS) vagy standard írásvédett georedundáns tárolás (Standard-RAGRS) típusú Azure Storage-fiók.
+* AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][az AzCopy legújabb verzióját], amely a Microsoft Azure Storage-eszközökkel együtt települ.
+  
     ![Azure Storage-eszközök](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-
 ## 1. lépés: Mintaadatok felvétele az Azure Blob Storage-ba
-
 Az adatok betöltéséhez mintaadatokat kell helyeznünk egy Azure blobtárolóba. Ebben a lépésben feltöltünk egy Azure Storage-blobot mintaadatokkal. Később a PolyBase segítségével töltjük majd be ezeket a mintaadatokat az SQL Data Warehouse-adatbázisba.
 
 ### A. Minta szöveges fájl előkészítése
-
 Minta szöveges fájl előkészítése:
 
 1. Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új fájlba. Mentse a fájlt a helyi átmeneti könyvtárba %temp%\DimDate2.txt néven.
@@ -70,42 +67,37 @@ Minta szöveges fájl előkészítése:
 ```
 
 ### B. A Blob-szolgáltatásvégpont megkeresése
-
 A Blob-szolgáltatásvégpont megkeresése:
 
 1. Az Azure Portalon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
 2. Kattintson a használni kívánt tárfiókra.
 3. A Storage-fiók panelen kattintson a Blobok elemre
-
+   
     ![Kattintson a Blobok elemre](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
-
-1. Mentse a Blob-szolgáltatásvégpontot későbbi használatra.
-
+4. Mentse a Blob-szolgáltatásvégpontot későbbi használatra.
+   
     ![Blob-szolgáltatásvégpont](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### C. Az Azure Storage-kulcs megkeresése
-
 Az Azure Storage-kulcs megkeresése:
 
 1. Az Azure Portalon válassza a **Tallózás** > **Storage-fiókok** lehetőséget.
 2. Kattintson a használni kívánt tárfiókra.
 3. Válassza az **Összes beállítás** > **Hívóbetűk** lehetőséget.
 4. Kattintson a másolás mezőre az egyik hívóbetű vágólapra másolásához.
-
+   
     ![Az Azure Storage-kulcs másolása](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
 ### D. A mintafájl Azure Blob Storage-ba másolása
-
 Adatok másolása az Azure Blob Storage-ba:
 
 1. Nyisson meg egy parancssort, és módosítsa a könyvtárakat az AzCopy telepítési könyvtárára. Ez a parancs az alapértelmezett telepítési könyvtárra vált egy 64 bites Windows-ügyfélen.
-
+   
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-
-1. A fájl feltöltéséhez futtassa az alábbi parancsot. Adja meg a(z) <blob service endpoint URL> Blob-szolgáltatásvégpont URL-jét és az <azure_storage_account_key> Azure Storage-fiók kulcsát.
-
+2. A fájl feltöltéséhez futtassa az alábbi parancsot. Adja meg a(z) <blob service endpoint URL> Blob-szolgáltatásvégpont URL-jét és az <azure_storage_account_key> Azure Storage-fiók kulcsát.
+   
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
@@ -113,7 +105,6 @@ Adatok másolása az Azure Blob Storage-ba:
 Lásd még: [Bevezetés az AzCopy parancssori segédprogram használatába][az AzCopy legújabb verzióját].
 
 ### E. A Blob Storage-tároló áttekintése
-
 A Blob Storage-ba feltöltött fájl megtekintése:
 
 1. Térjen vissza a Blob szolgáltatás panelre.
@@ -121,26 +112,23 @@ A Blob Storage-ba feltöltött fájl megtekintése:
 3. Az adatok elérési útjának megtekintéséhez kattintson a **datedimension** elemre, és megjelenik a **DimDate2.txt** nevű feltöltött fájl.
 4. A tulajdonságok megtekintéséhez kattintson a **DimDate2.txt** elemre.
 5. Ne feledje, hogy a Blob tulajdonságai panelen letöltheti és törölheti a fájlt.
-
+   
     ![Az Azure Storage-blob megtekintése](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-
 ## 2. lépés: Külső tábla létrehozása a mintaadatokhoz
-
 Ebben a szakaszban létrehozunk külső táblát, amely a mintaadatokat határozza meg.
 
 A PolyBase külső táblák segítségével fér hozzá az adatokhoz az Azure Blob Storage-ban. Mivel a rendszer nem az SQL Data Warehouse-ban az adatokat, a PolyBase adatbázis-alapú kötődő hitelesítési adatokkal végzi a külső adatok hitelesítését..
 
 Az ebben a példában található példa a következő Transact-SQL utasításokkal hoz létre külső táblákat.
 
-- [Create Master Key (Transact-SQL)][] (Mesterkulcs létrehozása) az adatbázishoz kötődő hitelesítő adatok titkosításához.
-- [Create Database Scoped Credential (Transact-SQL)][] (Adatbázishoz kötődő hitelesítő adatok létrehozása) az Azure Storage-fiókhoz tartozó hitelesítési adatok megadásához.
-- [Create External Data Source (Transact-SQL)][] (Külső adatforrás létrehozása) az Azure Blob Storage helyének megadásához.
-- [Create External File Format (Transact-SQL)][] (Külső fájlformátum létrehozása) az adatformátum megadásához.
-- [Create External Table (Transact-SQL)][] (Külső tábla létrehozása) a tábladefiníció és az adatok helyének megadásához.
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)] (Mesterkulcs létrehozása) az adatbázishoz kötődő hitelesítő adatok titkosításához.
+* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] (Adatbázishoz kötődő hitelesítő adatok létrehozása) az Azure Storage-fiókhoz tartozó hitelesítési adatok megadásához.
+* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)] (Külső adatforrás létrehozása) az Azure Blob Storage helyének megadásához.
+* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)] (Külső fájlformátum létrehozása) az adatformátum megadásához.
+* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)] (Külső tábla létrehozása) a tábladefiníció és az adatok helyének megadásához.
 
 Futtassa ezt a lekérdezést az SQL Data Warehouse-adatbázison. Létrehoz egy külső táblát DimDate2External néven a dbo sémában, amely az Azure Blob Storage DimDate2.txt mintaadataira mutat.
-
 
 ```sql
 -- A: Create a master key.
@@ -216,11 +204,10 @@ Az SQL Server Object Explorerben a Visual Studióban megtekintheti a külső fá
 ![Külső tábla megtekintése](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
 ## 3. lépés: Adatok betöltése az SQL Data Warehouse-ba
-
 Ha létrejött a külső tábla, betöltheti az adatokat egy új táblába, vagy beszúrhatja őket egy meglévő táblába.
 
-- Az adatok új táblába való betöltéséhez futtassa a [CREATE TABLE AS SELECT (Transact-SQL)][] utasítást. Az új tábla tartalmazza a lekérdezésben szereplő oszlopokat. Az oszlopok adattípusai megfelelnek a külső tábla definíciójában szereplő adattípusoknak.
-- Az adatok meglévő táblába való betöltéséhez használja az [INSERT ---SELECT (Transact-SQL)][] utasítást.
+* Az adatok új táblába való betöltéséhez futtassa a [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] utasítást. Az új tábla tartalmazza a lekérdezésben szereplő oszlopokat. Az oszlopok adattípusai megfelelnek a külső tábla definíciójában szereplő adattípusoknak.
+* Az adatok meglévő táblába való betöltéséhez használja az [INSERT ---SELECT (Transact-SQL)][INSERT ---SELECT (Transact-SQL)] utasítást.
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -236,7 +223,6 @@ SELECT * FROM [dbo].[DimDate2External];
 ```
 
 ## 4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
-
 Az SQL Data Warehouse nem tudja automatikus létrehozni és frissíteni a statisztikákat. A lekérdezési teljesítmény eléréséhez ezért fontos statisztikákat létrehozni minden tábla minden oszlopához az első betöltéskor. Fontos a statisztikák frissítése is az adatok lényeges módosításai után.
 
 Ez a példa egyoszlopos statisztikát hoz létre az új DimDate2 táblához.
@@ -247,11 +233,10 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-További tudnivalók: [Statisztika][].  
-
+További tudnivalók: [Statisztika][Statisztika].  
 
 ## Következő lépések
-A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][] találhat további információt.
+A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][PolyBase-útmutatóban] találhat további információt.
 
 <!--Image references-->
 

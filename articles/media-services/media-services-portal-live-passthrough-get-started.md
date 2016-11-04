@@ -1,83 +1,81 @@
-<properties 
-    pageTitle="Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával | Microsoft Azure" 
-    description="Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával | Microsoft Docs
+description: Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva.
+services: media-services
+documentationcenter: ''
+author: juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article"
-    ms.date="09/05/2016" 
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/05/2016
+ms.author: juliako
 
-
-
-#<a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
-
-> [AZURE.SELECTOR]
-- [Portal]( media-services-portal-live-passthrough-get-started.md)
-- [.NET]( media-services-dotnet-live-encode-with-onpremises-encoders.md)
-- [REST]( https://msdn.microsoft.com/library/azure/dn783458.aspx)
+---
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
+> [!div class="op_single_selector"]
+> * [Portal](media-services-portal-live-passthrough-get-started.md)
+> * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+> * [REST](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> 
+> 
 
 Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure Portalon. 
 
-##<a name="prerequisites"></a>Előfeltételek
-
+## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
-- Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
-- Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-- Egy webkamera. Például a [Telestream Wirecast kódoló](http://www.telestream.net/wirecast/overview.htm).
+* Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy webkamera. Például a [Telestream Wirecast kódoló](http://www.telestream.net/wirecast/overview.htm).
 
 Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 
-- [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (Az Azure Media Services RTMP-támogatása és az élő kódolók)
-- [Overview of Live Streaming using Azure Media Services](media-services-manage-channels-overview.md) (Az Azure Media Services segítségével történő élő streamelés áttekintése)
-- [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
+* [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (Az Azure Media Services RTMP-támogatása és az élő kódolók)
+* [Overview of Live Streaming using Azure Media Services](media-services-manage-channels-overview.md) (Az Azure Media Services segítségével történő élő streamelés áttekintése)
+* [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
 
-
-##<a name="<a-id="scenario"></a>common-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
-
+## <a name="<a-id="scenario"></a>common-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
 1. Csatlakoztasson a számítógéphez egy videokamerát. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
-    
+   
     Ezt a lépést a csatorna létrehozása után is el lehet végezni.
-
-1. Hozzon létre és indítson el egy átmenő csatornát.
-1. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
-
+2. Hozzon létre és indítson el egy átmenő csatornát.
+3. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
+   
     Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
-1. Kérje le a csatorna előnézeti URL-címét. 
-
+4. Kérje le a csatorna előnézeti URL-címét. 
+   
     Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
-
-3. Hozzon létre egy élő eseményt/programot. 
-
+5. Hozzon létre egy élő eseményt/programot. 
+   
     Az Azure portál használata esetén az élő esemény létrehozása egy objektumot is létrehoz. 
-      
-    >[AZURE.NOTE]Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
-1. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
-2. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
-1. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
-1. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
+   
+   > [!NOTE]
+   > Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
+   > 
+   > 
+6. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
+7. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
+8. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
+9. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
 
->[AZURE.IMPORTANT] A [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő adatfolyam továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikkből tájékozódhat helyszíni kódolókkal és átmenő csatornákkal történő élő streamelés fogalmairól és fontos szempontjairól.
+> [!IMPORTANT]
+> A [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő adatfolyam továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikkből tájékozódhat helyszíni kódolókkal és átmenő csatornákkal történő élő streamelés fogalmairól és fontos szempontjairól.
+> 
+> 
 
-##<a name="to-view-notifications-and-errors"></a>Az értesítések és a hibák megtekintése
-
+## <a name="to-view-notifications-and-errors"></a>Az értesítések és a hibák megtekintése
 Ha meg szeretné tekinteni az Azure portál által előállított értesítéseket és hibaüzeneteket, kattintson az Értesítés ikonra.
 
 ![Értesítések](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
-##<a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása 
-
+## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
 A Media Services dinamikus becsomagolást biztosít, így anélkül lehet MPEG DASH-, HLS-, Smooth Streaming, illetve HDS-formátumban továbbítani a többszörös átviteli sebességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus becsomagolás használatával csak egyféle formátumban kell tárolni a fájlokat és fizetni utánuk, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
 
 A dinamikus becsomagolás előnyének kihasználásához léteznie kell legalább egy streamelési egységnek annál a streamvégpontnál, amely a tervek szerint közvetíteni fogja a tartalmat.  
@@ -85,24 +83,23 @@ A dinamikus becsomagolás előnyének kihasználásához léteznie kell legaláb
 Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
-
-2. Kattintson az alapértelmezett streamvégpontra. 
-
+2. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
+3. Kattintson az alapértelmezett streamvégpontra. 
+   
     Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
-
-3. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
-
+4. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
+   
     ![Streamelési egységek](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
+5. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
+   
+   > [!NOTE]
+   > Az új egységek allokációja akár 20 percig is eltarthat.
+   > 
+   > 
 
-4. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
-
-    >[AZURE.NOTE]Az új egységek allokációja akár 20 percig is eltarthat.
-    
-##<a name="create-and-start-pass-through-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
-
+## <a name="create-and-start-pass-through-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
 A csatornákhoz események/programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. Az eseményeket a csatornák kezelik. 
-    
+
 Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam határozza meg azt is, hogy mennyi idővel ugorhatnak vissza az ügyfelek az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan eldobja azt a tartalmat, amely korábbi a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
 
 Minden esemény egy objektumhoz van társítva. Az esemény közzétételéhez létre kell hoznia egy OnDemand-lokátort a társított objektumhoz. Ez a lokátor teszi lehetővé az ügyfelek számára megadható streamelő URL-cím összeállítását.
@@ -119,73 +116,61 @@ Ha már leállította és törölte is az eseményt, a felhasználók igény sze
 
 Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetővé tenni őket streamelésre, törölje a streamelési lokátort.
 
-###<a name="to-use-the-portal-to-create-a-channel"></a>Csatorna létrehozása a portállal 
-
+### <a name="to-use-the-portal-to-create-a-channel"></a>Csatorna létrehozása a portállal
 Ez a szakasz azt mutatja be, hogyan lehet átmenő csatornát létrehozni a **Gyorslétrehozás** beállítással.
 
 Az átmenő csatornákról a [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikk tartalmaz részletes tájékoztatást.
 
 1. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
-
+   
     ![Bevezetés](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
-    
+   
     Megjelenik a **Live streaming** (Élő stream) ablak.
-
-3. A **Quick Create** (Gyorslétrehozás) gombra kattintva létrehozhat egy az RTMP betöltési protokollt használó átmenő csatornát.
-
+2. A **Quick Create** (Gyorslétrehozás) gombra kattintva létrehozhat egy az RTMP betöltési protokollt használó átmenő csatornát.
+   
     Megjelenik a **CREATE A NEW CHANNEL** (Új csatorna létrehozása) ablak.
-4. Nevezze el az új csatornát, és kattintson a **Create** (Létrehozás) gombra. 
-
+3. Nevezze el az új csatornát, és kattintson a **Create** (Létrehozás) gombra. 
+   
     Ennek hatására létrejön egy, az RTMP-betöltési protokollt használó csatorna.
 
-##<a name="create-events"></a>Események létrehozása
-
+## <a name="create-events"></a>Események létrehozása
 1. Válassza ki azt a csatornát, amelyhez eseményt szeretne hozzáadni.
 2. Kattintson a **Live Event** (Élő esemény) gombra.
 
 ![Esemény](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
-
-##<a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
-
+## <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket kell megadnia az élő kódolónak. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
 ![Létrehozva](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
-##<a name="watch-the-event"></a>Esemény megtekintése
-
+## <a name="watch-the-event"></a>Esemény megtekintése
 Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (Megtekintés) elemére. 
- 
+
 ![Létrehozva](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
 Leállítása után az élő esemény automatikusan átalakul igény szerinti tartalommá.
 
-##<a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Az átmenő csatornákról a [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikk tartalmaz részletes tájékoztatást.
 
-- Egy csatornát csak akkor lehet  leállítani, ha már leállítottak minden, a csatornán közvetített eseményt/programot.  A csatorna leállítását követően nem számítunk fel további díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
-- Egy csatornát csak akkor lehet törölni, ha töröltek minden, a csatornán közvetített élő eseményt.
+* Egy csatornát csak akkor lehet  leállítani, ha már leállítottak minden, a csatornán közvetített eseményt/programot.  A csatorna leállítását követően nem számítunk fel további díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
+* Egy csatornát csak akkor lehet törölni, ha töröltek minden, a csatornán közvetített élő eseményt.
 
-##<a name="view-archived-content"></a>Archivált tartalom megtekintése
-
+## <a name="view-archived-content"></a>Archivált tartalom megtekintése
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
 Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd kattintson az **Assets** (Objektumok) elemre.
 
 ![Objektumok](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
-##<a name="next-step"></a>Következő lépés
-
+## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Visszajelzés küldése
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>Visszajelzés küldése
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO3-->
 

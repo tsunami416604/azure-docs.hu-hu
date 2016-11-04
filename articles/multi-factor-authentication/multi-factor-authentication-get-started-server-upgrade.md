@@ -1,24 +1,22 @@
-<properties 
-    pageTitle="Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra"
-    description="Ez a dokumentum ismerteti az Azure MFA-kiszolgálóval kapcsolatos első lépéseket, illetve azt, hogy hogyan frissíthet a régebbi phonefactor ügynökről."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+---
+title: Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
+description: Ez a dokumentum ismerteti az Azure MFA-kiszolgálóval kapcsolatos első lépéseket, illetve azt, hogy hogyan frissíthet a régebbi phonefactor ügynökről.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
-
+---
 # Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
-
 Ha a PhoneFactor ügynök 5.x vagy régebbi verziójáról frissít az Azure Multi-Factor Authentication-kiszolgálóra, a PhoneFactor ügynököt és a kapcsolódó összetevőit el kell távolítani a Multi-Factor Authentication-kiszolgáló és kapcsolódó összetevőinek telepítése előtt.
 
 ## Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
@@ -40,6 +38,7 @@ Ha a PhoneFactor ügynök 5.x vagy régebbi verziójáról frissít az Azure Mul
 
 
 <li>Ha a Mobile App Web Service telepítve van:
+
 <ol>
 <li>Nyissa meg a telepítési mappát, és készítsen biztonsági másolatot a web.config fájlról. Az alapértelmezett telepítési hely a C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService mappa.</li>
 <li>Távolítsa el a Mobile App Web Service-t a Windows Programok és szolgáltatások lapja segítségével.</li></ol>
@@ -57,6 +56,7 @@ Ha a PhoneFactor ügynök 5.x vagy régebbi verziójáról frissít az Azure Mul
 <li>Ha a felhasználói portált korábban telepítette a PhoneFactor ügynök kiszolgálóján, telepítse az új Multi-Factor Authentication felhasználói portált a Multi-Factor Authentication-kiszolgáló felhasználói felületén keresztül. Vegye figyelembe, hogy az alapértelmezett virtuális címtár neve mostantól „PhoneFactor” helyett „MultiFactorAuth”. Ha a korábbi nevet szeretné használni, a virtuális címtár nevét a telepítés közben módosítania kell. Ellenkező esetben, ha a telepítés során engedélyezi az új alapértelmezett név használatát, kattintson a felhasználói portál ikonra a Multi-Factor Authentication-kiszolgálón és frissítse a felhasználói portál URL-címét a Beállítások lapon.
 
 <li>Ha a felhasználói portál és/vagy a Mobile App Web Service korábban a PhoneFactor ügynöktől eltérő kiszolgálón volt telepítve:
+
 <ol>
 <li>Nyissa meg a telepítési helyet (például C:\Program Files\PhoneFactor), és másolja a megfelelő telepítőket a másik kiszolgálóra. A felhasználói portál és a Mobile App Web Service is rendelkezik 32 bites és 64 bites telepítővel is. Ezeknek a neve MultiFactorAuthenticationUserPortalSetupXX.msi, illetve MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.</li>
 <li>A webkiszolgálón a felhasználói portál telepítéséhez nyisson meg egy parancssort rendszergazdaként, és futtassa a MultiFactorAuthenticationUserPortalSetupXX.msi fájlt. Vegye figyelembe, hogy az alapértelmezett virtuális címtár neve mostantól „PhoneFactor” helyett „MultiFactorAuth”. Ha a korábbi nevet szeretné használni, a virtuális címtár nevét a telepítés közben módosítania kell. Ellenkező esetben, ha a telepítés során engedélyezi az új alapértelmezett név használatát, kattintson a felhasználói portál ikonra a Multi-Factor Authentication-kiszolgálón és frissítse a felhasználói portál URL-címét a Beállítások lapon. A meglévő felhasználókat tájékoztatni kell az új URL-címről.</li>

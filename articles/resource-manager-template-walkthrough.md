@@ -1,24 +1,22 @@
-<properties
-   pageTitle="Útmutató Resource Manager sablonokhoz | Microsoft Azure"
-   description="Egy alapszintű Azure IaaS-architektúrát kiépítő Resource Manager-sablon részletes bemutatása."
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="navalev"
-   manager=""
-   editor=""/>
+---
+title: Útmutató Resource Manager sablonokhoz | Microsoft Docs
+description: Egy alapszintű Azure IaaS-architektúrát kiépítő Resource Manager-sablon részletes bemutatása.
+services: azure-resource-manager
+documentationcenter: na
+author: navalev
+manager: ''
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/04/2016"
-   ms.author="navale;tomfitz"/>
-   
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/04/2016
+ms.author: navale;tomfitz
 
+---
 # Útmutató Resource Manager sablonokhoz
-
 A sablonok létrehozásakor feltett első kérdések egyike az, hogy „hogyan is kezdjünk bele”. Elkezdheti egy üres sablonból is a [Sablonok készítése](resource-group-authoring-templates.md#template-format) című cikkben leírt alapszintű struktúrát követve, és hozzáadhatja az erőforrásokat, valamint a megfelelő paramétereket és változókat. Az is jó megoldás, ha először átnézi a [gyorsindítási galériát](https://github.com/Azure/azure-quickstart-templates), és keres olyan forgatókönyveket, amelyek hasonlóak a létrehozni kívánt forgatókönyvhöz. Egyesíthet több sablont is, vagy szerkeszthet egy már létezőt, hogy az megfeleljen saját forgatókönyvének. 
 
 Vessen egy pillantást egy gyakori infrastruktúrára:
@@ -33,10 +31,12 @@ Ez a témakör bemutatja azon lépéseket, amelyekkel elkészíthető a fent le�
 
 Ez azonban túl sok ahhoz, hogy egyszerre hozza őket létre, ezért először hozzon létre egy tárfiókot, és telepítse azt. A tárfiókok létrehozásának elsajátítása után további erőforrásokat ad majd hozzá, és újból telepíti majd a sablont az infrastruktúra befejezéséhez.
 
->[AZURE.NOTE] A sablon létrehozásához bármilyen szerkesztőt használhat. A Visual Studio olyan eszközöket biztosít, amelyek egyszerűbbé teszik a sablonok fejlesztését. A jelen oktatóanyag elvégzéséhez azonban nincs szükség a Visual Studio használatára. A Webes alkalmazások és SQL-adatbázisok Visual Studióval történő létrehozásával kapcsolatos oktatóanyag: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio használatával](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
+> [!NOTE]
+> A sablon létrehozásához bármilyen szerkesztőt használhat. A Visual Studio olyan eszközöket biztosít, amelyek egyszerűbbé teszik a sablonok fejlesztését. A jelen oktatóanyag elvégzéséhez azonban nincs szükség a Visual Studio használatára. A Webes alkalmazások és SQL-adatbázisok Visual Studióval történő létrehozásával kapcsolatos oktatóanyag: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio használatával](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). 
+> 
+> 
 
 ## A Resource Manager-sablon létrehozása
-
 A sablon egy JSON-fájl, amely meghatározza a később telepítendő összes erőforrást. Emellett lehetővé teszi a telepítés során megadott paraméterek, a más értékekből és kifejezésekből összeállított változók, valamint a telepítés kimeneteinek meghatározását is. 
 
 Kezdjük a legegyszerűbb sablonnal:
@@ -162,14 +162,15 @@ A **type** (típus) tulajdonság az erőforrás-szolgáltatót és az erőforrá
 ```
 
 Ha pedig Azure parancssori felületet használ, futtassa az alábbi parancsot:
+
 ```
     azure provider list
 ```
 Mivel ebben a témakörben tárfiókokat, virtuális gépeket és virtuális hálózatot használ a létrehozáshoz, az alábbi szolgáltatókkal fog dolgozni:
 
-- Microsoft.Storage
-- Microsoft.Compute
-- Microsoft.Network
+* Microsoft.Storage
+* Microsoft.Compute
+* Microsoft.Network
 
 Az egyes szolgáltatók erőforrástípusainak megtekintéséhez futtassa az alábbi PowerShell-parancsot:
 
@@ -387,7 +388,7 @@ A beállítandó tulajdonságokért tekintse meg a [Hálózati illesztőkhöz sz
 Két virtuális gépet hoz majd létre a copyIndex() függvény használatával, ahogyan ezt a [hálózati illesztők](#network-interface) esetében is tette.
 A virtuális gépek létrehozása a tárfióktól, a hálózati illesztőtől és a rendelkezésre állási csoporttól függ. Ez a virtuális gép egy piactéri rendszerképből lesz létrehozva a `storageProfile` tulajdonság alapján. A kép közzétevőjének, ajánlatának, termékváltozatának és verziójának meghatározásához használja az `imageReference` parancsot. Az utolsó lépés a diagnosztikai profil konfigurálása, amely lehetővé teszi a virtuális gép diagnosztikáját. 
 
-A piactéri rendszerkép kapcsolódó tulajdonságainak megkereséséhez kövesse a [Linux virtuálisgép-rendszerképek kiválasztása](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md), vagy a [Windows virtuálisgép-rendszerképek kiválasztása](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md) cikkben leírt utasításokat.
+A piactéri rendszerkép kapcsolódó tulajdonságainak megkereséséhez kövesse a [Linux virtuálisgép-rendszerképek kiválasztása](virtual-machines/virtual-machines-linux-cli-ps-findimage.md), vagy a [Windows virtuálisgép-rendszerképek kiválasztása](virtual-machines/virtual-machines-windows-cli-ps-findimage.md) cikkben leírt utasításokat.
 
 ```json
 {
@@ -448,12 +449,14 @@ A piactéri rendszerkép kapcsolódó tulajdonságainak megkereséséhez kövess
 }
 ```
 
->[AZURE.NOTE] A **harmadik fél** által közzétett rendszerképek esetében meg kell adnia egy másik tulajdonságot is: `plan`. Erre példát a gyorsindítási galéria [alábbi sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) találhat. 
+> [!NOTE]
+> A **harmadik fél** által közzétett rendszerképek esetében meg kell adnia egy másik tulajdonságot is: `plan`. Erre példát a gyorsindítási galéria [alábbi sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) találhat. 
+> 
+> 
 
 Ezennel befejezte a sablon erőforrásainak definiálását.
 
 ## Paraméterek
-
 A paraméterek szakaszban határozza meg a sablon telepítésekor megadható értékeket. Csak azon értékek esetében határozzon meg paramétereket, amelyek Ön szerint eltérőek lehetnek a telepítés során. Megadhat egy alapértelmezett értéket is a paraméterek számára, amelyet a rendszer akkor használ, ha nem adtak meg értéket a telepítés során. Meghatározhatja a megengedett értékeket is, ahogy ezt az **imageSKU** paraméter esetében is láthatja.
 
 ```json
@@ -554,7 +557,6 @@ A paraméterek szakaszban határozza meg a sablon telepítésekor megadható ér
 ```
 
 ## Változók
-
 A változók szakaszban meghatározhatja a sablonban egynél több helyen használt értékeket, vagy azokat az értékeket, amelyek több kifejezésből és változóból tevődnek össze. A változókat gyakran arra használják, hogy leegyszerűsítsék a sablon szintaxisát.
 
 ```json
@@ -577,12 +579,9 @@ Elkészült a sablon! Összehasonlíthatja a sablont a [gyorsindítási galéria
 A sablont újból telepítheti a tárfiók telepítésénél használt parancsokkal. Nem kell törölni a tárfiókot az újbóli telepítés előtt, mert a Resource Manager átugorja a már létező, és nem módosított erőforrások újbóli létrehozását.
 
 ## Következő lépések
-
-- Az [Azure Resource Manager-sablon vizualizálója (ARMViz)](http://armviz.io/#/) egy remek eszköz, amellyel vizuálisan megjelenítheti Resource Manager-sablonjait, ha azok már túl nagyok, és nem láthatók át a JSON-fájlból olvasva.
-- A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
-- A sablonok telepítésével kapcsolatos információkért lásd: [Erőforráscsoport telepítése Azure Resource Manager-sablon használatával](resource-group-template-deploy.md).
-
-
+* Az [Azure Resource Manager-sablon vizualizálója (ARMViz)](http://armviz.io/#/) egy remek eszköz, amellyel vizuálisan megjelenítheti Resource Manager-sablonjait, ha azok már túl nagyok, és nem láthatók át a JSON-fájlból olvasva.
+* A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
+* A sablonok telepítésével kapcsolatos információkért lásd: [Erőforráscsoport telepítése Azure Resource Manager-sablon használatával](resource-group-template-deploy.md).
 
 <!--HONumber=Sep16_HO4-->
 

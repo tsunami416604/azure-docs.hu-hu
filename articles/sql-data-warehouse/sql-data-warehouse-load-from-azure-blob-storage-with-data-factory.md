@@ -1,59 +1,54 @@
-<properties
-   pageTitle="Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba (Azure Data Factory) | Microsoft Azure"
-   description="Sajátítsa el az adatok betöltését az Azure Data Factoryvel"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="lodipalm"
-   manager="barbkess"
-   editor=""
-   tags="azure-sql-data-warehouse"/>
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/16/2016"
-   ms.author="lodipalm;barbkess;sonyama"/>
+---
+title: Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba (Azure Data Factory) | Microsoft Docs
+description: Sajátítsa el az adatok betöltését az Azure Data Factoryvel
+services: sql-data-warehouse
+documentationcenter: NA
+author: lodipalm
+manager: barbkess
+editor: ''
+tags: azure-sql-data-warehouse
 
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/16/2016
+ms.author: lodipalm;barbkess;sonyama
 
+---
 # Adatok betöltése az Azure Blob Storage-ből az Azure SQL Data Warehouse-ba (Azure Data Factory)
-
-> [AZURE.SELECTOR]
-- [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-- [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+> [!div class="op_single_selector"]
+> * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+> 
+> 
 
  Ez az oktatóanyag bemutatja, hogyan lehet folyamatokat létrehozni az Azure Data Factoryben az adatok Azure Storage-blobból SQL Data Warehouse-ba való áthelyezéséhez. A következő lépésekben:
 
-+ Mintaadatokat telepíthet egy Azure Storage-blobba.
-+ Erőforrásokat csatlakoztathat az Azure Data Factoryhoz.
-+ Folyamatot hozhat létre az adatok a tárolóblobokból az SQL Data Warehouse-ba való áthelyezéséhez.
+* Mintaadatokat telepíthet egy Azure Storage-blobba.
+* Erőforrásokat csatlakoztathat az Azure Data Factoryhoz.
+* Folyamatot hozhat létre az adatok a tárolóblobokból az SQL Data Warehouse-ba való áthelyezéséhez.
 
->[AZURE.VIDEO loading-azure-sql-data-warehouse-with-azure-data-factory]
-
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-Azure-SQL-Data-Warehouse-with-Azure-Data-Factory/player]
+> 
+> 
 
 ## Előkészületek
-
-Tekintse át az [Az Azure Data Factory bemutatása][] című cikket, és ismerje meg az Azure Data Factoryt.
+Tekintse át az [Az Azure Data Factory bemutatása][Az Azure Data Factory bemutatása] című cikket, és ismerje meg az Azure Data Factoryt.
 
 ### Erőforrások létrehozása és azonosítása
-
 Az oktatóanyag elindítása előtt rendelkeznie kell a következő erőforrásokkal.
 
-   + **Azure Storage-blob**: Az oktatóanyagban az Azure Storage-blob lesz az adatforrás az Azure Data Factory-folyamathoz, így rendelkeznie kell egy elérhető tárolóval a mintaadatok tárolásához. Ha még nem rendelkezik ilyennel, így hozhat létre: [Tárfiók létrehozása][] .
-
-   + **SQL Data Warehouse**: Az oktatóanyag az adatokat az Azure Storage-blob tárolóból az SQL Data Warehouse-ba helyezi át, ezért rendelkeznie kell egy online adatraktárral, amelybe be vannak töltve az AdventureWorksDW-mintaadatok. Ha nem rendelkezik adatraktárral, sajátítsa el, miként [hozhat létre egyet][SQL Data Warehouse létrehozása] . Ha rendelkezik adatraktárral, de nem töltötte fel a mintaadatokkal, [manuálisan is feltöltheti azokat][Mintaadatok betöltése az SQL Data Warehouse adatbázisba] .
-
-   + **Azure Data Factory**: A tényleges betöltést az Azure Data Factory végzi el, ezért szüksége lesz egyre az adatáthelyezési folyamat elvégzéséhez. Ha még nem rendelkezik fiókkal, a [Azure Data Factory (Data Factory Editor) – első lépések][] 1. lépése leírja, miként hozhat létre egyet.
-
-   + **AZCopy**: Az AZCopy a mintaadatok másolásához szükséges a helyi ügyfélről az Azure Storage-blobba. Telepítési útmutatásért lásd az [AZCopy dokumentációját][].
+* **Azure Storage-blob**: Az oktatóanyagban az Azure Storage-blob lesz az adatforrás az Azure Data Factory-folyamathoz, így rendelkeznie kell egy elérhető tárolóval a mintaadatok tárolásához. Ha még nem rendelkezik ilyennel, így hozhat létre: [Tárfiók létrehozása][Tárfiók létrehozása] .
+* **SQL Data Warehouse**: Az oktatóanyag az adatokat az Azure Storage-blob tárolóból az SQL Data Warehouse-ba helyezi át, ezért rendelkeznie kell egy online adatraktárral, amelybe be vannak töltve az AdventureWorksDW-mintaadatok. Ha nem rendelkezik adatraktárral, sajátítsa el, miként [hozhat létre egyet][SQL Data Warehouse létrehozása] . Ha rendelkezik adatraktárral, de nem töltötte fel a mintaadatokkal, [manuálisan is feltöltheti azokat][Mintaadatok betöltése az SQL Data Warehouse adatbázisba] .
+* **Azure Data Factory**: A tényleges betöltést az Azure Data Factory végzi el, ezért szüksége lesz egyre az adatáthelyezési folyamat elvégzéséhez. Ha még nem rendelkezik fiókkal, a [Azure Data Factory (Data Factory Editor) – első lépések][Azure Data Factory (Data Factory Editor) – első lépések] 1. lépése leírja, miként hozhat létre egyet.
+* **AZCopy**: Az AZCopy a mintaadatok másolásához szükséges a helyi ügyfélről az Azure Storage-blobba. Telepítési útmutatásért lásd az [AZCopy dokumentációját][AZCopy dokumentációját].
 
 ## 1. lépés: Mintaadatok másolása az Azure Storage-blobba
-
 Ha a fentiek mind rendelkezésre állnak, készen áll a mintaadatok másolására az Azure Storage-blobba.
 
-1. [Töltse le a mintaadatokat][]. Ezek az adatok további három év értékesítési adataival bővítik az AdventureWorksDW-mintaadatait.
-
+1. [Töltse le a mintaadatokat][Töltse le a mintaadatokat]. Ezek az adatok további három év értékesítési adataival bővítik az AdventureWorksDW-mintaadatait.
 2. Töltse be három év adatait az Azure Storage-blobba az AZCopy parancs használatával.
 
 ````
@@ -62,17 +57,14 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 
 
 ## 2. lépés: Erőforrások csatlakoztatása az Azure Data Factoryhoz
-
 Most, hogy az adatok a helyükön vannak, létrehozható az Azure Data Factory-folyamat az adatok az Azure Blob Storage-ból az SQL Data Warehouse-ba való áthelyezésére.
 
-Első lépésként nyissa meg az [Azure Portal][], és válassza ki saját data factoryját a bal oldali menüből.
+Első lépésként nyissa meg az [Azure Portal][Azure Portal], és válassza ki saját data factoryját a bal oldali menüből.
 
 ### 2.1. lépés: Társított szolgáltatás létrehozása
-
 Társítsa Azure Storage-fiókját és az SQL Data Warehouse-t saját data factoryjához.  
 
 1. A regisztrációs folyamat elindításához először kattintson a data factory „Összekapcsolt szolgáltatások” szakaszára, majd az „Új adattároló” lehetőségre. Válasszon egy nevet, amely alatt az Azure tárterületet regisztrálni szeretné, típusként válassza az Azure Storage lehetőséget, majd adja meg a fióknevet és a fiókkulcsot.
-
 2. Az SQL Data Warehouse regisztrálásához lépjen a „Fejlesztés és üzembe helyezés” szakaszra, és válassza az „Új adattároló”, majd az „Azure SQL Data Warehouse” lehetőséget. Másolja és illessze be ezt a sablont, majd adja meg a kért adatokat.
 
 ```JSON
@@ -89,11 +81,9 @@ Társítsa Azure Storage-fiókját és az SQL Data Warehouse-t saját data facto
 ```
 
 ### 2.2. lépés: Az adatkészlet meghatározása
-
 Az összekapcsolt szolgáltatások létrehozását követően meg kell határoznunk az adatkészleteket.  Itt ez a tárolóból az adatbázisba mozgatott adatok struktúrájának meghatározását jelenti.  További információk a létrehozással kapcsolatban
 
 1. A folyamat indításához lépjen a data factory „Fejlesztés és üzembe helyezés” szakaszára.
-
 2. Kattintson az „Új adathalmaz”, majd az „Azure Blob Storage” lehetőségre a tároló a data factoryhoz kapcsolásához.  Az alábbi parancsfájl használatával határozhatja meg az adatokat az Azure Blob Storage-ban:
 
 ```JSON
@@ -128,7 +118,7 @@ Az összekapcsolt szolgáltatások létrehozását követően meg kell határozn
 ```
 
 
-3. Most meghatározzuk az adatkészletet az SQL Data Warehouse-hoz.  A folyamat elindításához ismét kattintson az „Új adathalmaz” majd az „Azure SQL Data Warehouse” lehetőségre.
+1. Most meghatározzuk az adatkészletet az SQL Data Warehouse-hoz.  A folyamat elindításához ismét kattintson az „Új adathalmaz” majd az „Azure SQL Data Warehouse” lehetőségre.
 
 ```JSON
 {
@@ -148,8 +138,7 @@ Az összekapcsolt szolgáltatások létrehozását követően meg kell határozn
 ```
 
 ## 3. lépés: A folyamat létrehozása és futtatása
-
-Végül létrehozzuk és futtatjuk a folyamatot az Azure Data Factoryban.  Ez a művelet végzi el az adatok tényleges mozgatását.  Az SQL Data Warehouse-ban és az Azure Data Factoryben végrehajtható műveletek teljes listáját [itt] találja[Move data to and from Azure SQL Data Warehouse using Azure Data Factory] (Adatok áthelyezése az Azure SQL Data Warehouse-ba és onnan máshová az Azure Data Factory használatával).
+Végül létrehozzuk és futtatjuk a folyamatot az Azure Data Factoryban.  Ez a művelet végzi el az adatok tényleges mozgatását.  Az SQL Data Warehouse-ban és az Azure Data Factoryben végrehajtható műveletek teljes listáját [itt] találja[Move data to and from Azure SQL Data Warehouse using Azure Data Factory](Adatok áthelyezése az Azure SQL Data Warehouse-ba és onnan máshová az Azure Data Factory használatával.md).
 
 A „Fejlesztés és üzembe helyezés” szakaszban most kattintson a „Több parancs”, majd az „Új adatcsatorna” lehetőségre.  Miután létrehozta a folyamatot, az alábbi kód használatával helyezheti át az adatokat az adatraktárba:
 
@@ -202,18 +191,15 @@ A „Fejlesztés és üzembe helyezés” szakaszban most kattintson a „Több 
 ```
 
 ## Következő lépések
-
 Ha többet szeretne tudni, kezdje a következők áttekintésével:
 
-- [Azure Data Factory képzési terv][].
-- [Azure SQL Data Warehouse-összekötő][]. Ez a fő referencia-témakör az Azure Data Factory és az Azure SQL Data Warehouse együttes használatáról.
-
+* [Azure Data Factory képzési terv][Azure Data Factory képzési terv].
+* [Azure SQL Data Warehouse-összekötő][Azure SQL Data Warehouse-összekötő]. Ez a fő referencia-témakör az Azure Data Factory és az Azure SQL Data Warehouse együttes használatáról.
 
 Ezek a témakörök további információkat adnak az Azure Data Factory szolgáltatással kapcsolatban. Ugyan az Azure SQL Database és a HDInsight a témájuk, a bennük foglalt információk azonban az Azure SQL Data Warehouse-ra is vonatkoznak.
 
-- [Oktatóanyag: Azure Data Factory – első lépések][] Ez a fő oktatóanyag az adatok Azure Data Factoryval történő feldolgozásáról. Ebben az oktatóanyagban felépítheti első folyamatát, amely a HDInsight használatával webes naplókat alakít át és elemez havi rendszerességgel. Megjegyzés: Ebben az oktatóanyagban nincs másolási tevékenység.
-- [Oktatóanyag: Adatok másolása az Azure Storage-blobból az Azure SQL Database-be][]. Ebben az oktatóanyagban létrehozhat egy folyamatot az Azure Data Factoryben az adatok Azure Storage-blobból az Azure SQL Database-be való áthelyezéséhez.
-
+* [Oktatóanyag: Azure Data Factory – első lépések][Oktatóanyag: Azure Data Factory – első lépések] Ez a fő oktatóanyag az adatok Azure Data Factoryval történő feldolgozásáról. Ebben az oktatóanyagban felépítheti első folyamatát, amely a HDInsight használatával webes naplókat alakít át és elemez havi rendszerességgel. Megjegyzés: Ebben az oktatóanyagban nincs másolási tevékenység.
+* [Oktatóanyag: Adatok másolása az Azure Storage-blobból az Azure SQL Database-be][Oktatóanyag: Adatok másolása az Azure Storage-blobból az Azure SQL Database-be]. Ebben az oktatóanyagban létrehozhat egy folyamatot az Azure Data Factoryben az adatok Azure Storage-blobból az Azure SQL Database-be való áthelyezéséhez.
 
 <!--Image references-->
 

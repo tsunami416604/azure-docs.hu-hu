@@ -1,21 +1,22 @@
-<properties
-   pageTitle="Microsoft Power BI Embedded előzetes verzió – Power BI-jelentés beágyazása IFrame használatával"
-   description="Microsoft Power BI Embedded előzetes verzió – Alapvető kódok a jelentések alkalmazásba történő integrálásához; hitelesítés Power BI Embedded alkalmazási jogkivonattal; jelentések lekérése"
-   services="power-bi-embedded"
-   documentationCenter=""
-   authors="dvana"
-   manager="NA"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="power-bi-embedded"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="powerbi"
-   ms.date="05/16/2016"
-   ms.author="derrickv"/>
+---
+title: Microsoft Power BI Embedded előzetes verzió – Power BI-jelentés beágyazása IFrame használatával
+description: Microsoft Power BI Embedded előzetes verzió – Alapvető kódok a jelentések alkalmazásba történő integrálásához; hitelesítés Power BI Embedded alkalmazási jogkivonattal; jelentések lekérése
+services: power-bi-embedded
+documentationcenter: ''
+author: dvana
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: power-bi-embedded
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: powerbi
+ms.date: 05/16/2016
+ms.author: derrickv
+
+---
 # Power BI-jelentés beágyazása IFrame segítségével
 Ez a cikk azt ismerteti, hogyan lehet egy alapvető kóddal jelentést integrálni vagy beágyazni az alkalmazásba a **Power BI Embedded** REST API, alkalmazási jogkivonatok, IFrame és egyes JavaScript-kódok használatával.
 
@@ -27,20 +28,20 @@ A következőkben bemutatjuk, hogyan lehet **Power BI Embedded**-jelentéseket i
 
 A jelentések integrálásának lépései a következők:
 
-- 1. lépés: [Jelentés lekérése a munkaterületen](#GetReport). Ebben a lépésben egy alkalmazás jogkivonat-folyamata segítségével be kell szereznie egy hozzáférési jogkivonatot, amellyel meghívhatja a [Jelentések lekérése](https://msdn.microsoft.com/library/mt711510.aspx) REST-műveletet. Miután a **Jelentések lekérése** listából lekérte a jelentést, **IFrame**-elemmel ágyazza be azt egy alkalmazásba.
-- 2. lépés: [Jelentés beágyazása az alkalmazásba](#EmbedReport). Ebben a lépésben egy jelentés beágyazási jogkivonata, JavaScript és egy IFrame-keret segítségével integrálja vagy beágyazza a jelentést egy webalkalmazásba.
+* 1. lépés: [Jelentés lekérése a munkaterületen](#GetReport). Ebben a lépésben egy alkalmazás jogkivonat-folyamata segítségével be kell szereznie egy hozzáférési jogkivonatot, amellyel meghívhatja a [Jelentések lekérése](https://msdn.microsoft.com/library/mt711510.aspx) REST-műveletet. Miután a **Jelentések lekérése** listából lekérte a jelentést, **IFrame**-elemmel ágyazza be azt egy alkalmazásba.
+* 1. lépés: [Jelentés beágyazása az alkalmazásba](#EmbedReport). Ebben a lépésben egy jelentés beágyazási jogkivonata, JavaScript és egy IFrame-keret segítségével integrálja vagy beágyazza a jelentést egy webalkalmazásba.
 
 Ha futtatni szeretné a jelentés integrálását bemutató mintát, töltse le a [Jelentés integrálása IFrame használatával](https://github.com/Azure-Samples/power-bi-embedded-iframe) mintát a GitHubon, és konfigurálja a következő három Web.Config beállítást:
 
-- **AccessKey**: Az **AccessKey** beállítással egy JSON webes jogkivonat (JWT) hozható létre, amely a jelentések lekérésére és beágyazására egyaránt használható. Az **AccessKey** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
-- **WorkspaceName**: A **WorkspaceName** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
-- **WorkspaceId**: A **WorkspaceId** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
+* **AccessKey**: Az **AccessKey** beállítással egy JSON webes jogkivonat (JWT) hozható létre, amely a jelentések lekérésére és beágyazására egyaránt használható. Az **AccessKey** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
+* **WorkspaceName**: A **WorkspaceName** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
+* **WorkspaceId**: A **WorkspaceId** beszerzéséről további információt az [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md) című témakörben talál.
 
 A következő szakasz a jelentés integrálásához szükséges kódot mutatja be.
 
 <a name="GetReport"/>
-## Jelentés lekérése a munkaterületen
 
+## Jelentés lekérése a munkaterületen
 A jelentés integrálásához szüksége lesz egy jelentés-**azonosítóra** és egy **embedUrl**-címre. A jelentés-**azonosító** és az **embedUrl**-cím beszerzéséhez hívja meg a [Jelentések lekérése](https://msdn.microsoft.com/library/mt711510.aspx) REST-műveletet, majd a JSON-listából válassza ki a kívánt jelentést. A [Jelentés beágyazása alkalmazásba](#EmbedReport) szakaszban ezzel a jelentés-**azonosítóval** és **embedUrl**-címmel ágyazhatja be a jelentést az alkalmazásba.
 
 ### JSON-válasz lekérése a jelentésekhez
@@ -109,13 +110,13 @@ protected void getReportsButton_Click(object sender, EventArgs e)
 ```
 
 <a name="EmbedReport"/>
-## Jelentés beágyazása egy alkalmazásba
 
+## Jelentés beágyazása egy alkalmazásba
 Mielőtt beágyazhatná a kiválasztott jelentést az alkalmazásba, be kell szereznie a jelentéshez tartozó beágyazási jogkivonatot. Ez a jogkivonat nagyon hasonló a **Power BI Embedded** REST-műveletek meghívásához használt alkalmazási jogkivonathoz, azonban a REST-erőforrás helyett a jelentés erőforrásához jön létre. A következő kód segítségével kérheti le a jelentés alkalmazási jogkivonatát. A jelentés alkalmazási jogkivonatának használatáról további információt a [Jelentés beágyazása egy alkalmazásba](#EmbedReportJS) című szakaszban talál.
 
 <a name="EmbedReportToken"/>
-### A jelentés alkalmazási jogkivonatának lekérése
 
+### A jelentés alkalmazási jogkivonatának lekérése
 ```
 protected void getReportAppTokenButton_Click(object sender, EventArgs e)
 {
@@ -133,12 +134,11 @@ protected void getReportAppTokenButton_Click(object sender, EventArgs e)
 ```
 
 <a name="EmbedReportJS"/>
-### Jelentés beágyazása saját alkalmazásba
 
+### Jelentés beágyazása saját alkalmazásba
 A **Power BI**-jelentést IFrame- és néhány JavaScript-kód segítségével ágyazhatja be az alkalmazásba. A következő példa a jelentés beágyazásához szükséges IFrame- és JavaScript-kódot mutatja be. A jelentések beágyazásához szükséges összes mintakódot a [Jelentés integrálása IFrame használatával](https://github.com/Azure-Samples/power-bi-embedded-iframe) mintában találja a GitHubon.
 
-![Iframe](media\power-bi-embedded-integrate-report\Iframe.png)
-
+![Iframe](media\\power-bi-embedded-integrate-report\\Iframe.png)
 
 ```
 window.onload = function () {
@@ -183,9 +183,7 @@ function postActionLoadReport() {
 Miután beágyazta a jelentést az alkalmazásba, a jelentést szűrheti is. A következő szakasz bemutatja, hogyan használható egy URL-cím szintaxisa a jelentések szűréséhez.
 
 ## Jelentés szűrése
-
 A beágyazott jelentések szűrését elvégezheti egy URL-cím szintaxisával. Ehhez egy lekérdezési karakterlánc paramétert kell adnia a meghatározott szűrőt tartalmazó iFrame src url-címhez. Végezhet **érték szerinti szűrést**, illetve **elrejtheti a keresőablakot**.
-
 
 **Szűrés érték szerint**
 
@@ -203,7 +201,10 @@ Végezhet például olyan szűrést, ahol a Store Chain (Üzletlánc) értéke a
 $filter=Store/Chain%20eq%20'Lindseys'
 ```
 
-> [AZURE.NOTE] A {tableName/fieldName} nem tartalmazhat szóközt és speciális karaktereket. A {fieldValue} egyetlen kategorikus értéket enged.
+> [!NOTE]
+> A {tableName/fieldName} nem tartalmazhat szóközt és speciális karaktereket. A {fieldValue} egyetlen kategorikus értéket enged.
+> 
+> 
 
 **A keresőablak elrejtése**
 
@@ -214,21 +215,18 @@ A **keresőablak** elrejtéséhez be kell építenie a **filterPaneEnabled** ér
 ```
 
 ## Összegzés
-
 A fenti cikk a **Power BI**-jelentések alkalmazásokba történő beágyazásához szükséges kódot mutatta be. Ha gyorsan meg szeretne ismerkedni azzal, hogyan lehet jelentéseket integrálni egy alkalmazásba, töltse le a GitHubról a következő mintákat:
 
-- [Jelentés integrálása minta IFrame használatával](https://github.com/Azure-Samples/power-bi-embedded-iframe)
-- [Minta irányítópult webalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Jelentés integrálása minta IFrame használatával](https://github.com/Azure-Samples/power-bi-embedded-iframe)
+* [Minta irányítópult webalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493)
 
 ## Lásd még:
-- [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md)
-- [Bevezetés a minta használatába](power-bi-embedded-get-started-sample.md)
-- [System.IdentityModel.Tokens.SigningCredentials](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
-- [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
-- [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
-- [Jelentések lekérése](https://msdn.microsoft.com/library/mt711510.aspx)
-
-
+* [Ismerkedés a Microsoft Power BI Embedded előzetes verziójával](power-bi-embedded-get-started.md)
+* [Bevezetés a minta használatába](power-bi-embedded-get-started-sample.md)
+* [System.IdentityModel.Tokens.SigningCredentials](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
+* [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
+* [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
+* [Jelentések lekérése](https://msdn.microsoft.com/library/mt711510.aspx)
 
 <!--HONumber=Jun16_HO2--->
 

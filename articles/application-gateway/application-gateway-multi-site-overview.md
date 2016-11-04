@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Több hely üzemeltetése az Application Gateway-en | Microsoft Azure"
-   description="Ez az oldal áttekintést nyújt az Application Gateway többhelyes támogatásáról."
-   documentationCenter="na"
-   services="application-gateway"
-   authors="amsriva"
-   manager="rossort"
-   editor="amsriva"/>
-<tags
-   ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/04/2016"
-   ms.author="amsriva"/>
+---
+title: Több hely üzemeltetése az Application Gateway-en | Microsoft Docs
+description: Ez az oldal áttekintést nyújt az Application Gateway többhelyes támogatásáról.
+documentationcenter: na
+services: application-gateway
+author: amsriva
+manager: rossort
+editor: amsriva
 
+ms.service: application-gateway
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/04/2016
+ms.author: amsriva
 
+---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
-
 A többhelyes üzemeltetéssel egynél több webalkalmazást konfigurálhat ugyanazon az alkalmazásátjáró-példányon. Ezzel a funkcióval hatékonyabb topológiát konfigurálhat telepítéseihez, mivel akár 20 webhelyet is hozzáadhat egyetlen alkalmazásátjáróhoz. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Az alábbi példában az alkalmazásátjáró a contoso.com és a fabrikam.com webhelyet szolgálja ki a ContosoServerPool és a FabrikamServerPool nevű háttér-kiszolgálókészlettel.
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
@@ -27,7 +26,6 @@ A rendszer a http://contoso.com felé irányuló kérelmeket a ContosoServerPool
 Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon alkalmazásátjáró-telepítésről lehet üzemeltetni. Az altartományok használatának példái között lehet az egyetlen alkalmazásátjáró-telepítésen üzemeltetett http://blog.contoso.com és http://app.contoso.com.
 
 ## <a name="host-headers-and-server-name-indication-(sni)"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
-
 Három elterjedt mechanizmus létezik az ugyanazon az infrastruktúrán történő többhelyes üzemeltetéshez.
 
 1. Több webalkalmazás üzemeltetése mindegyikhez rendelt egyedi IP-címmel.
@@ -37,7 +35,6 @@ Három elterjedt mechanizmus létezik az ugyanazon az infrastruktúrán történ
 Jelenleg az alkalmazásátjáró egyetlen nyilvános IP-címet kap, amelyen figyeli a forgalmat. Éppen ezért több, saját IP-címmel rendelkező alkalmazás üzemeltetése jelenleg nem támogatott. Az Application Gateway támogatja a különböző portokat figyelő több alkalmazás üzemeltetését, ám ilyen esetekben az alkalmazásoknak nem szabványos portokon kellene fogadniuk forgalmat, ami rendszerint nem kívánatos konfiguráció. Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az alkalmazásátjárón üzemeltetett webhelyek ezenkívül támogathatják az SSL-alapú kiszervezést SNI (Kiszolgálónév jelzése) TLS-bővítménnyel. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
 ## <a name="listener-configuration-element"></a>Figyelő konfigurációs elem
-
 A már létező HTTPListener konfigurációs elem támogatja az állomásnév- és kiszolgálónév-jelzési elemeket, amelyekkel az alkalmazásátjáró a megfelelő háttérkészlet felé irányítja a forgalmat. Az alábbi kódpélda a sablonfájlból származó HttpListeners-elem kódrészlete.
 
     "httpListeners": [
@@ -80,7 +77,6 @@ A már létező HTTPListener konfigurációs elem támogatja az állomásnév- �
 A teljes körű sablonalapú telepítés leírását a [Resource Manager template using multiple site hosting](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) (Többhelyes üzemeltetést használó Resource Manager-sablon) weboldalon találja.
 
 ## <a name="routing-rule"></a>Útválasztási szabály
-
 Nincs szükség változtatásra az útválasztási szabályban. Az alapszintű útválasztási szabályt kell továbbra is választani, hogy a megfelelő webhelyfigyelőt kapcsolja a megfelelő háttércímkészlethez.
 
     "requestRoutingRules": [
@@ -119,10 +115,7 @@ Nincs szükség változtatásra az útválasztási szabályban. Az alapszintű �
     ]
 
 ## <a name="next-steps"></a>Következő lépések
-
 Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](application-gateway-create-multisite-azureresourcemanager-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
-
-
 
 <!--HONumber=Oct16_HO3-->
 

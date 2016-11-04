@@ -1,27 +1,28 @@
-<properties
-    pageTitle="Az adathasználat elemzése a Log Analyticsben | Microsoft Azure"
-    description="A Log Analytics Használat lapján megtekintheti az OMS szolgáltatásnak elküldött adatok mennyiségét."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Az adathasználat elemzése a Log Analyticsben | Microsoft Docs
+description: A Log Analytics Használat lapján megtekintheti az OMS szolgáltatásnak elküldött adatok mennyiségét.
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/11/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/11/2016
+ms.author: banders
 
-
+---
 # Az adathasználat elemzése a Log Analyticsben
-
 Az Operations Management Suite (OMS) Log Analytics összetevője összegyűjti az adatokat, és rendszeresen elküldi őket az OMS szolgáltatásnak.  A **Használat** lapon megtekinthető, hogy mennyi adat érkezik az OMS szolgáltatáshoz. Az is látható a **Használat** lapon, hogy a megoldások mennyi adatot küldenek, és a kiszolgálók milyen gyakran küldenek adatokat.
 
->[AZURE.NOTE] Ha az [OMS webhelyen](http://www.microsoft.com/oms) létrehozott ingyenes fiókot használ, naponta legfeljebb 500 MB adatot küldhet az OMS szolgáltatásnak. Ha eléri a napi korlátot, az adatelemzés leáll, és másnap folytatódik. Előfordulhat továbbá, hogy újra kell küldenie azokat az adatokat, amelyeket az OMS nem fogadott vagy nem dolgozott fel.
+> [!NOTE]
+> Ha az [OMS webhelyen](http://www.microsoft.com/oms) létrehozott ingyenes fiókot használ, naponta legfeljebb 500 MB adatot küldhet az OMS szolgáltatásnak. Ha eléri a napi korlátot, az adatelemzés leáll, és másnap folytatódik. Előfordulhat továbbá, hogy újra kell küldenie azokat az adatokat, amelyeket az OMS nem fogadott vagy nem dolgozott fel.
+> 
+> 
 
 Az eddigi használatot megtekintheti az OMS **Áttekintés** irányítópultjának **Használat** csempéjén.
 
@@ -33,14 +34,13 @@ Ha túllépte vagy megközelítette a napi használati korlátot, valamelyik meg
 
 A **Használat** lapon az alábbi információk találhatók meg:
 
-- Napi átlagos használat
-- Az egyes megoldások adathasználata az elmúlt 30 napban
-- A környezetbe tartozó kiszolgálók által az OMS szolgáltatásnak elküldött adatok mennyisége az elmúlt 30 napban
-- Az adatforgalmi csomag tarifacsomagja és becsült költsége
-- A szolgáltatói szerződésre (SLA-ra) vonatkozó információk, azt is beleértve, hogy mennyi ideig tart az OMS-nek az adatok feldolgozása
+* Napi átlagos használat
+* Az egyes megoldások adathasználata az elmúlt 30 napban
+* A környezetbe tartozó kiszolgálók által az OMS szolgáltatásnak elküldött adatok mennyisége az elmúlt 30 napban
+* Az adatforgalmi csomag tarifacsomagja és becsült költsége
+* A szolgáltatói szerződésre (SLA-ra) vonatkozó információk, azt is beleértve, hogy mennyi ideig tart az OMS-nek az adatok feldolgozása
 
 ## A használati adatok használata
-
 1. Az **Áttekintés** lapon kattintson a **Használat** csempére.
 2. A **Használat** lapon tekintse meg az Önt legjobban érdeklő használati kategóriákat.
 3. Ha valamelyik megoldása túl sokat fogyaszt a napi feltöltési kvótából, akkor esetleg eltávolíthatja azt a megoldást.
@@ -51,10 +51,10 @@ A **Használat** lapon az alábbi információk találhatók meg:
 3. A kibontott **Az Ön adatforgalmi díjcsomagja** területen láthatja a becsült havi költséget.  
     ![Az Ön adatforgalmi díjcsomagja](./media/log-analytics-usage/usage-data-plan.png)
 4. Ha látni szeretné a számlázási adatokat, jelenítse meg az előfizetés adatait a **Számla megtekintése** elemre kattintva.
-    - Az előfizetések lapján kattintson az előfizetésre. Ennek hatására megjelennek a részletes adatok, valamint a használat tételes listája.  
-        ![előfizetést](./media/log-analytics-usage/usage-sub01.png)
-    - Az előfizetés Összegzés lapján különféle műveletek állnak rendelkezésére, amelyekkel kezelheti az előfizetést, és további részleteket jeleníthet meg róla.  
-        ![Az előfizetés részletei](./media/log-analytics-usage/usage-sub02.png)
+   * Az előfizetések lapján kattintson az előfizetésre. Ennek hatására megjelennek a részletes adatok, valamint a használat tételes listája.  
+       ![előfizetést](./media/log-analytics-usage/usage-sub01.png)
+   * Az előfizetés Összegzés lapján különféle műveletek állnak rendelkezésére, amelyekkel kezelheti az előfizetést, és további részleteket jeleníthet meg róla.  
+       ![Az előfizetés részletei](./media/log-analytics-usage/usage-sub02.png)
 
 ## Az SLA adatkötegeinek megtekintése
 1. Az **Áttekintés** lapon kattintson a **Használat** csempére.
@@ -63,10 +63,7 @@ A **Használat** lapon az alábbi információk találhatók meg:
     ![SLA részletei](./media/log-analytics-usage/usage-sla-details.png)
 
 ## Következő lépések
-
-- Részletesen megismerheti a megoldások által gyűjtött adatokat a [Log searches in Log Analytics](log-analytics-log-searches.md) (Naplóbeli keresés a Log Analyticsben) című cikkből.
-
-
+* Részletesen megismerheti a megoldások által gyűjtött adatokat a [Log searches in Log Analytics](log-analytics-log-searches.md) (Naplóbeli keresés a Log Analyticsben) című cikkből.
 
 <!--HONumber=Sep16_HO4-->
 

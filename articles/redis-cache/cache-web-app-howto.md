@@ -1,98 +1,89 @@
-<properties 
-    pageTitle="Webalkalmazás létrehozása a Redis Cache használatával | Microsoft Azure" 
-    description="Megtudhatja, hogyan hozhat létre webalkalmazást a Redis Cache használatával" 
-    services="redis-cache" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="douge" 
-    editor=""/>
+---
+title: Webalkalmazás létrehozása a Redis Cache használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre webalkalmazást a Redis Cache használatával
+services: redis-cache
+documentationcenter: ''
+author: steved0x
+manager: douge
+editor: ''
 
-<tags 
-    ms.service="cache" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="cache-redis" 
-    ms.devlang="na" 
-    ms.topic="hero-article" 
-    ms.date="10/11/2016" 
-    ms.author="sdanie"/>
+ms.service: cache
+ms.workload: tbd
+ms.tgt_pltfrm: cache-redis
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 10/11/2016
+ms.author: sdanie
 
-
+---
 # Webalkalmazás létrehozása a Redis Cache használatával
-
-> [AZURE.SELECTOR]
-- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-- [ASP.NET](cache-web-app-howto.md)
-- [Node.js](cache-nodejs-get-started.md)
-- [Java](cache-java-get-started.md)
-- [Python](cache-python-get-started.md)
+> [!div class="op_single_selector"]
+> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+> * [ASP.NET](cache-web-app-howto.md)
+> * [Node.js](cache-nodejs-get-started.md)
+> * [Java](cache-java-get-started.md)
+> * [Python](cache-python-get-started.md)
+> 
+> 
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre és helyezhet üzembe egy ASP.NET-webalkalmazást az Azure App Service szolgáltatásban lévő webalkalmazásba a Visual Studio 2015 használatával. Ez a mintaalkalmazás a csoportstatisztikák adatbázisból származó listáját jeleníti meg, illetve az Azure Redis Cache használatának különböző módjait mutatja be a gyorsítótár adatainak tárolására és beolvasására. Az oktatóanyag befejezését követően egy olyan futó webalkalmazással fog rendelkezni, amely adatokat olvas be és ír egy adatbázisba, az Azure Redis Cache használatával lett optimalizálva, és az Azure-ban van üzemeltetve.
 
 Az oktatóanyagból a következőket sajátíthatja el:
 
--   ASP.NET MVC 5 webalkalmazás létrehozása a Visual Studio használatával.
--   Adatbázisadatok elérése az Entity Framework használatával.
--   Az adatteljesítmény növelésének és az adatbázis-terhelés csökkentése az Azure Redis Cache használatával történő adattárolás és -beolvasás révén.
--   Egy rendezett Redis-készlet használata az 5 legjobb csoport lekérdezéséhez.
--   Azure-erőforrások kiépítése egy Resource Manager-sablont használó alkalmazás számára.
--   Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
+* ASP.NET MVC 5 webalkalmazás létrehozása a Visual Studio használatával.
+* Adatbázisadatok elérése az Entity Framework használatával.
+* Az adatteljesítmény növelésének és az adatbázis-terhelés csökkentése az Azure Redis Cache használatával történő adattárolás és -beolvasás révén.
+* Egy rendezett Redis-készlet használata az 5 legjobb csoport lekérdezéséhez.
+* Azure-erőforrások kiépítése egy Resource Manager-sablont használó alkalmazás számára.
+* Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
 
 ## Előfeltételek
-
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie.
 
--   [Azure-fiók](#azure-account)
--   [Visual Studio 2015, Azure SDK for .NET csomaggal](#visual-studio-2015-with-the-azure-sdk-for-net)
+* [Azure-fiók](#azure-account)
+* [Visual Studio 2015, Azure SDK for .NET csomaggal](#visual-studio-2015-with-the-azure-sdk-for-net)
 
 ### Azure-fiók
-
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-fiókra. A következőket teheti:
 
 * [Nyisson egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=redis_cache_hero). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a keretét el is használta, továbbra is megtarthatja a fiókot, és használhatja az ingyenes szolgáltatásokat és lehetőségeket.
 * [Aktiválja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
 ### Visual Studio 2015, Azure SDK for .NET csomaggal
-
 Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2-es vagy újabb verziójához készült. [Innen letöltheti a legfrissebb Azure SDK-t a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a Visual Studio még nincs telepítve, a rendszer automatikusan telepíti azt, az SDK-val együtt.
 
 Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfrissebb Azure SDK for Visual Studio 2013 alkalmazást](http://go.microsoft.com/fwlink/?LinkID=324322). Egyes képernyők eltérhetnek a jelen oktatóanyag ábráin láthatóaktól.
 
->[AZURE.NOTE] Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
+> [!NOTE]
+> Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
+> 
+> 
 
 ## A Visual Studio-projekt létrehozása
-
 1. Nyissa meg a Visual Studio alkalmazást, majd kattintson a **File** (File), **New** (Új), **Project** (Projekt) lehetőségre.
-
 2. Bontsa ki a **Visual C#** csomópontot a **Templates** (Sablonok) listában, válassza a **Cloud** (Felhő) lehetőséget, majd kattintson az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre. Győződjön meg arról, hogy a **.NET Framework 4.5.2** keretrendszer van kiválasztva.  Írja be a **ContosoTeamStats** szöveget a **Name** (Név) szövegmezőbe, majd kattintson az **OK** gombra.
- 
+   
     ![Projekt létrehozása][cache-create-project]
-
 3. A projekt típusaként válassza az **MVC** lehetőséget. Törölje a **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet jelölését. Az oktatóanyag következő lépéseiben megismerkedhet az [Azure-erőforrások kiépítésével](#provision-the-azure-resources) és az [alkalmazások közzétételével az Azure-ban](#publish-the-application-to-azure). A **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet bejelölésével a Visual Studio felületéről egy App Service-webalkalmazás létrehozására itt láthat példát: [Ismerkedés a webalkalmazásokkal az Azure App Service-ben, az ASP.NET és a Visual Studio használatával](../app-service-web/web-sites-dotnet-get-started.md).
-
+   
     ![Projektsablon kiválasztása][cache-select-template]
-
 4. A projekt létrehozásához kattintson az **OK** gombra.
 
 ## Az ASP.NET MVC alkalmazás létrehozása
-
 Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létrehozni, amely adatbázisból olvas be és jelenít meg csoportstatisztikákat.
 
--   [Modell hozzáadása](#add-the-model)
--   [Vezérlő hozzáadása](#add-the-controller)
--   [A nézetek konfigurálása](#configure-the-views)
+* [Modell hozzáadása](#add-the-model)
+* [Vezérlő hozzáadása](#add-the-controller)
+* [A nézetek konfigurálása](#configure-the-views)
 
 ### Modell hozzáadása
-
 1. Kattintson a jobb gombbal a **Models** (Modellek) elemre a **Solution Explorer** (Megoldáskezelő) területén, és válassza az **Add** (Hozzáadás), **Class** (Osztály) lehetőségeket. 
-
+   
     ![Modell hozzáadása][cache-model-add-class]
-
 2. Az osztály neveként adja meg a `Team` nevet, majd kattintson az **Add** (Hozzáadás) gombra.
-
+   
     ![Modellosztály hozzáadása][cache-model-add-class-dialog]
-
 3. A `Team.cs` fájl elején cserélje le a `using` utasításokat az alábbi „using” utasításokra.
-
 
         using System;
         using System.Collections.Generic;
@@ -100,8 +91,7 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
         using System.Data.Entity.SqlServer;
 
 
-4. Cserélje le a `Team` osztály definícióját az alábbi kódrészlettel, amely a `Team` osztály frissített definícióját, valamint néhány további Entity Framework-súgóosztályt tartalmaz. További információk a jelen oktatóanyagban használt, Code First nevű Entity Framework-megközelítésról: [Code First alkalmazása egy új adatbázisra](https://msdn.microsoft.com/data/jj193542).
-
+1. Cserélje le a `Team` osztály definícióját az alábbi kódrészlettel, amely a `Team` osztály frissített definícióját, valamint néhány további Entity Framework-súgóosztályt tartalmaz. További információk a jelen oktatóanyagban használt, Code First nevű Entity Framework-megközelítésról: [Code First alkalmazása egy új adatbázisra](https://msdn.microsoft.com/data/jj193542).
 
         public class Team
         {
@@ -110,12 +100,12 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
             public int Wins { get; set; }
             public int Losses { get; set; }
             public int Ties { get; set; }
-        
+
             static public void PlayGames(IEnumerable<Team> teams)
             {
                 // Simple random generation of statistics.
                 Random r = new Random();
-        
+
                 foreach (var t in teams)
                 {
                     t.Wins = r.Next(33);
@@ -124,17 +114,17 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
                 }
             }
         }
-        
+
         public class TeamContext : DbContext
         {
             public TeamContext()
                 : base("TeamContext")
             {
             }
-        
+
             public DbSet<Team> Teams { get; set; }
         }
-        
+
         public class TeamInitializer : CreateDatabaseIfNotExists<TeamContext>
         {
             protected override void Seed(TeamContext context)
@@ -154,14 +144,14 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
                     new Team{Name="Graphic Design Institute"},
                     new Team{Name="Nod Publishers"}
                 };
-        
+
                 Team.PlayGames(teams);
-        
+
                 teams.ForEach(t => context.Teams.Add(t));
                 context.SaveChanges();
             }
         }
-        
+
         public class TeamConfiguration : DbConfiguration
         {
             public TeamConfiguration()
@@ -171,14 +161,12 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
         }
 
 
-2. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **web.config** fájlra annak megnyitásához.
-
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **web.config** fájlra annak megnyitásához.
+   
     ![Web.config][cache-web-config]
-
-3.  Adja hozzá az alábbi kapcsolati karakterláncot a `connectionStrings` szakaszhoz. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
-
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
-
+2. Adja hozzá az alábbi kapcsolati karakterláncot a `connectionStrings` szakaszhoz. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
+   
+       <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
 
     Ennek hozzáadását követően a `connectionStrings` szakasznak az alábbi példához hasonlóan kell kinéznie.
 
@@ -190,43 +178,34 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
         </connectionStrings>
 
 ### Vezérlő hozzáadása
-
 1. A projekt létrehozásához nyomja le az **F6** billentyűt. 
 2. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, majd válassza az **Add** (Hozzáadás), **Controller** (Vezérlő) lehetőségeket.
-
+   
     ![Vezérlő hozzáadása][cache-add-controller]
-
 3. Válassza az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) lehetőséget, majd kattintson az **Add** (Hozzáadás) lehetőségre. Ha az **Add** (Hozzáadás) gombra kattintva a rendszer hibaüzenetet küld, győződjön meg arról, hogy a projekt létrehozása előzetesen megtörtént.
-
+   
     ![Vezérlőosztály hozzáadása][cache-add-controller-class]
-
-5. Válassza ki a **Team (ContosoTeamStats.Models)** elemet a **Model class** (Modellosztály) legördülő listából. Válassza ki a **TeamContext (ContosoTeamStats.Models)** elemet a **Adatkörnyezet osztálya** (Adatkörnyezet osztálya) legördülő listából. Írja be a `TeamsController` szöveget a **Controller** (Vezérlő) névmezőbe (ha az nincs automatikusan kitöltve). Kattintson az **Add** (Hozzáadás) gombra a vezérlőosztály létrehozásához és az alapértelmezett nézetek hozzáadásához.
-
+4. Válassza ki a **Team (ContosoTeamStats.Models)** elemet a **Model class** (Modellosztály) legördülő listából. Válassza ki a **TeamContext (ContosoTeamStats.Models)** elemet a **Adatkörnyezet osztálya** (Adatkörnyezet osztálya) legördülő listából. Írja be a `TeamsController` szöveget a **Controller** (Vezérlő) névmezőbe (ha az nincs automatikusan kitöltve). Kattintson az **Add** (Hozzáadás) gombra a vezérlőosztály létrehozásához és az alapértelmezett nézetek hozzáadásához.
+   
     ![Vezérlő konfigurálása][cache-configure-controller]
-
-4. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Global.asax** elemet, majd kattintson duplán a **Global.asax.cs** fájlra annak megnyitásához.
-
+5. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Global.asax** elemet, majd kattintson duplán a **Global.asax.cs** fájlra annak megnyitásához.
+   
     ![Global.asax.cs][cache-global-asax]
-
-5. Adja hozzá a következő két „using” utasítást a elejéhez, a többi „using” utasítás alá.
-
+6. Adja hozzá a következő két „using” utasítást a elejéhez, a többi „using” utasítás alá.
 
         using System.Data.Entity;
         using ContosoTeamStats.Models;
 
 
-6. Illessze az alábbi kódsort az `Application_Start` módszer végére.
-
+1. Illessze az alábbi kódsort az `Application_Start` módszer végére.
 
         Database.SetInitializer<TeamContext>(new TeamInitializer());
 
 
-7. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki az `App_Start` elemet, majd kattintson duplán a `RouteConfig.cs` elemre.
-
+1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki az `App_Start` elemet, majd kattintson duplán a `RouteConfig.cs` elemre.
+   
     ![RouteConfig.cs][cache-RouteConfig-cs]
-
-8. Cserélje le a `controller = "Home"` elemet a `RegisterRoutes` módszer alábbi kódjában a `controller = "Teams"` szövegre, a következő példán látható módon.
-
+2. Cserélje le a `controller = "Home"` elemet a `RegisterRoutes` módszer alábbi kódjában a `controller = "Teams"` szövegre, a következő példán látható módon.
 
         routes.MapRoute(
             name: "Default",
@@ -236,67 +215,57 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
 
 
 ### A nézetek konfigurálása
-
 1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views**(Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
-
+   
     ![_Layout.cshtml][cache-layout-cshtml]
-
 2. Az alábbi példában látható módon módosítsa a `title` elem tartalmát, majd cserélje le a `My ASP.NET Application` szöveget a `Contoso Team Stats` szövegre.
-
 
         <title>@ViewBag.Title - Contoso Team Stats</title>
 
 
-3. A `body` szakaszban frissítse az első `Html.ActionLink` utasítást, és cserélje le az `Application name` szöveget a `Contoso Team Stats` szövegre, majd a `Home` szöveget a `Teams` szövegre.
-    -   Előtte: `@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })`
-    -   Utána: `@Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
-
-    ![Kódmódosítások][cache-layout-cshtml-code]
-
-4. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek**és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában az adatelérés optimalizálása és további alkalmazásszolgáltatások biztosítása érdekében el fogja végezni a Redis Cache hozzáadását.
+1. A `body` szakaszban frissítse az első `Html.ActionLink` utasítást, és cserélje le az `Application name` szöveget a `Contoso Team Stats` szövegre, majd a `Home` szöveget a `Teams` szövegre.
+   
+   * Előtte: `@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })`
+   * Utána: `@Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
+     
+     ![Kódmódosítások][cache-layout-cshtml-code]
+2. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek**és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában az adatelérés optimalizálása és további alkalmazásszolgáltatások biztosítása érdekében el fogja végezni a Redis Cache hozzáadását.
 
 ![Kezdő szintű alkalmazás][cache-starter-application]
 
 ## Az alkalmazás konfigurálása a Redis Cache használatára
-
 Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigurálását az Azure Redis Cache-példányból származó Contoso-csoportstatisztikák tárolására és beolvasására a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) gyorsítótárügyfél használatával.
 
--   [Az alkalmazás konfigurálása a StackExchange.Redis használatára](#configure-the-application-to-use-stackexchangeredis)
--   [A TeamsController osztály frissítése a gyorsítótárból vagy az adatbázisból eredmények visszaadásához](#update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database)
--   [A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez](#update-the-create-edit-and-delete-methods-to-work-with-the-cache)
--   [A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez](#update-the-teams-index-view-to-work-with-the-cache)
-
+* [Az alkalmazás konfigurálása a StackExchange.Redis használatára](#configure-the-application-to-use-stackexchangeredis)
+* [A TeamsController osztály frissítése a gyorsítótárból vagy az adatbázisból eredmények visszaadásához](#update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database)
+* [A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez](#update-the-create-edit-and-delete-methods-to-work-with-the-cache)
+* [A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez](#update-the-teams-index-view-to-work-with-the-cache)
 
 ### Az alkalmazás konfigurálása a StackExchange.Redis használatára
-
 1. Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag használatával történő konfigurálásához kattintson a jobb gombbal a projektre a **Solution Explorer** (Megoldáskezelő) felületén, majd válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. 
-
+   
     ![NuGet-csomagok kezelése][redis-cache-manage-nuget-menu]
-
 2. Írja be a **StackExchange.Redis** kifejezést a keresőmezőbe, az eredmények közül válassza ki a kívánt verziót, majd kattintson a **Install** (Telepítés) gombra.
-
+   
     ![StackExchange.Redis NuGet-csomag][redis-cache-stack-exchange-nuget]
-
+   
     A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szükséges szerelvényhivatkozásokat az Azure Redis Cache a StackExchange.Redis gyorsítótárügyféllel történő eléréséhez. Ha inkább a **StackExchange.Redis** ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, válassza a **StackExchange.Redis.StrongName**, ellenkező esetben pedig a **StackExchange.Redis** lehetőséget.
-
 3. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **TeamsController.cs** fájlra annak megnyitásához.
-
+   
     ![Csoportvezérlő][cache-teamscontroller]
-
 4. Adja hozzá az alábbi „using” utasítást a **TeamsController.cs** fájlhoz.
-
+   
         using System.Configuration;
         using StackExchange.Redis;
-
 5. Adja hozzá az alábbi két tulajdonságot a `TeamsController` osztályhoz.
-
+   
         // Redis Connection string info
         private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
             string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
             return ConnectionMultiplexer.Connect(cacheConnection);
         });
-    
+   
         public static ConnectionMultiplexer Connection
         {
             get
@@ -304,101 +273,95 @@ Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigur
                 return lazyConnection.Value;
             }
         }
-  
-1. Hozzon létre egy `WebAppPlusCacheAppSecrets.config` nevű fájlt a számítógépen, majd mentse azt egy olyan helyre, amelyet a mintaalkalmazás forráskódja nem fog ellenőrizni, amennyiben úgy dönt, hogy valahol ellenőrizni kívánja azt. Jelen példában az `AppSettingsSecrets.config` fájl elérési útja: `C:\AppSecrets\WebAppPlusCacheAppSecrets.config`.
-
+6. Hozzon létre egy `WebAppPlusCacheAppSecrets.config` nevű fájlt a számítógépen, majd mentse azt egy olyan helyre, amelyet a mintaalkalmazás forráskódja nem fog ellenőrizni, amennyiben úgy dönt, hogy valahol ellenőrizni kívánja azt. Jelen példában az `AppSettingsSecrets.config` fájl elérési útja: `C:\AppSecrets\WebAppPlusCacheAppSecrets.config`.
+   
     Módosítsa a `WebAppPlusCacheAppSecrets.config` fájlt, és adja hozzá az alábbi tartalmakat. Az alkalmazás helyi futtatásakor ezen információk az Azure Redis Cache-példányhoz történő kapcsolódáshoz lesznek felhasználva. Az oktatóanyag későbbi szakaszában egy Azure Redis Cache-példány létrehozását, valamint a gyorsítótár nevének és jelszavának módosítását fogja elvégezni. Ha nem tervezi az alkalmazás helyi futtatását, kihagyhatja ennek a fájlnak a létrehozását, illetve a fájlra hivatkozó következő lépéseket, mivel az Azure-on történő telepítéskor az alkalmazás a gyorsítótár csatlakoztatási információit a webalkalmazás beállításaiból kéri le, nem pedig ebből a fájlból. Mivel a `WebAppPlusCacheAppSecrets.config` nem települ az Azure-on az alkalmazással együtt, csak abban az esetben van rá szüksége, ha az alkalmazást helyileg kívánja futtatni.
-
 
         <appSettings>
           <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
         </appSettings>
 
 
-2. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **web.config** fájlra annak megnyitásához.
-
+1. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **web.config** fájlra annak megnyitásához.
+   
     ![Web.config][cache-web-config]
-
-3. Adja hozzá az alábbi `file` attribútumot az `appSettings` elemhez. Ha más fájlnevet vagy helyet használ, helyettesítse azokat a példában látható értékekkel.
-    -   Előtte: `<appSettings>`
-    -   Utána: ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
-
-    Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati karakterláncok) nem képezik részét az alkalmazás forráskódjának. A webalkalmazás Azure-on történő üzembe helyezésekor a `WebAppPlusCacheAppSecrests.config` fájl nem lesz telepítve (ez megfelel a szándékainknak). A titkos kulcsok megadására számos mód létezik az Azure-ban, ezek pedig ennek az oktatóanyagnak a későbbi lépéseiben automatikusan konfigurálva lesznek az [Azure-erőforrások kiépítésekor](#provision-the-azure-resources). További információk a titkos kulcsok használatáról az Azure-ban: [Ajánlott eljárások a jelszavak és egyéb érzékeny adatok telepítéséhez az ASP.NET és az Azure App Service szolgáltatásokban](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure).
-
+2. Adja hozzá az alábbi `file` attribútumot az `appSettings` elemhez. Ha más fájlnevet vagy helyet használ, helyettesítse azokat a példában látható értékekkel.
+   
+   * Előtte: `<appSettings>`
+   * Utána: ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
+     
+     Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati karakterláncok) nem képezik részét az alkalmazás forráskódjának. A webalkalmazás Azure-on történő üzembe helyezésekor a `WebAppPlusCacheAppSecrests.config` fájl nem lesz telepítve (ez megfelel a szándékainknak). A titkos kulcsok megadására számos mód létezik az Azure-ban, ezek pedig ennek az oktatóanyagnak a későbbi lépéseiben automatikusan konfigurálva lesznek az [Azure-erőforrások kiépítésekor](#provision-the-azure-resources). További információk a titkos kulcsok használatáról az Azure-ban: [Ajánlott eljárások a jelszavak és egyéb érzékeny adatok telepítéséhez az ASP.NET és az Azure App Service szolgáltatásokban](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure).
 
 ### A TeamsController osztály frissítése a gyorsítótárból vagy az adatbázisból eredmények visszaadásához
-
 Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárból is lekérdezhetők. A csapatstatisztikák a gyorsítótárban szerializált `List<Team>`, illetve (Redis adattípusok használatával) rendezett készlet formájában vannak tárolva. Rendezett készletből történő lekérdezéskor egyes, az összes vagy bizonyos feltételnek megfelelő elemek lekérésére van lehetőség. Jelen példában lekérdezünk egy rendezett készletet a győzelmek száma szerint rangsorolt 5 legjobb csapatra.
 
->[AZURE.NOTE] Az Azure Redis Cache használatához nem szükséges a csapatstatisztikák többféle formátumban történő elmentése a gyorsítótárban. Ez az oktatóanyag többféle formátumot használ az adatok gyorsítótárazásához használható különböző módszerek és adattípusok példáinak bemutatására.
-
-
+> [!NOTE]
+> Az Azure Redis Cache használatához nem szükséges a csapatstatisztikák többféle formátumban történő elmentése a gyorsítótárban. Ez az oktatóanyag többféle formátumot használ az adatok gyorsítótárazásához használható különböző módszerek és adattípusok példáinak bemutatására.
+> 
+> 
 
 1. Adja hozzá az alábbi „using” utasításokat a `TeamsController.cs` fájl elejéhez, a többi „using” utasítással együtt.
-
+   
         using System.Diagnostics;
         using Newtonsoft.Json;
-
 2. Az aktuális `public ActionResult Index()` módszert cserélje le az alábbi megvalósításra.
-
 
         // GET: Teams
         public ActionResult Index(string actionType, string resultType)
         {
             List<Team> teams = null;
-        
+
             switch(actionType)
             {
                 case "playGames": // Play a new season of games.
                     PlayGames();
                     break;
-        
+
                 case "clearCache": // Clear the results from the cache.
                     ClearCachedTeams();
                     break;
-        
+
                 case "rebuildDB": // Rebuild the database with sample data.
                     RebuildDB();
                     break;
             }
-        
+
             // Measure the time it takes to retrieve the results.
             Stopwatch sw = Stopwatch.StartNew();
-        
+
             switch(resultType)
             {
                 case "teamsSortedSet": // Retrieve teams from sorted set.
                     teams = GetFromSortedSet();
                     break;
-        
+
                 case "teamsSortedSetTop5": // Retrieve the top 5 teams from the sorted set.
                     teams = GetFromSortedSetTop5();
                     break;
-        
+
                 case "teamsList": // Retrieve teams from the cached List<Team>.
                     teams = GetFromList();
                     break;
-        
+
                 case "fromDB": // Retrieve results from the database.
                 default:
                     teams = GetFromDB();
                     break;
             }
-        
+
             sw.Stop();
             double ms = sw.ElapsedTicks / (Stopwatch.Frequency / (1000.0));
 
             // Add the elapsed time of the operation to the ViewBag.msg.
             ViewBag.msg += " MS: " + ms.ToString();
-        
+
             return View(teams);
         }
 
 
-3. Vegye fel az alábbi három módszert a `TeamsController` osztályba azon `playGames`, `clearCache`, és `rebuildDB` művelettípusok megvalósításához, amelyek az előző kódrészletben hozzáadott „switch” utasításból származnak.
-
+1. Vegye fel az alábbi három módszert a `TeamsController` osztályba azon `playGames`, `clearCache`, és `rebuildDB` művelettípusok megvalósításához, amelyek az előző kódrészletben hozzáadott „switch” utasításból származnak.
+   
     Egy játékszezon szimulálásával a `PlayGames` módszer frissíti a csapatstatisztikákat, az eredményeket elmenti az adatbázisba, majd törli a gyorsítótárból a már elavult adatokat.
-
 
         void PlayGames()
         {
@@ -406,18 +369,18 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
             // Play a "season" of games.
             var teams = from t in db.Teams
                         select t;
-    
+
             Team.PlayGames(teams);
-    
+
             db.SaveChanges();
-    
+
             // Clear any cached results
             ClearCachedTeams();
         }
 
 
     A `RebuildDB` módszer újrainicializálja az adatbázist az alapértelmezett csapatokkal, statisztikákat állít elő számukra, és törli a gyorsítótárból a már elavult adatokat.
-    
+
         void RebuildDB()
         {
             ViewBag.msg += "Rebuilding DB. ";
@@ -432,7 +395,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
     A `ClearCachedTeams` módszer eltávolítja a gyorsítótárazott csapatstatisztikákat a gyorsítótárból.
 
-    
+
         void ClearCachedTeams()
         {
             IDatabase cache = Connection.GetDatabase();
@@ -442,20 +405,19 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
         } 
 
 
-4. Vegye fel az alábbi négy módszert a `TeamsController` osztályba a csapatstatisztikák gyorsítótárból és adatbázisból különböző módszerekkel történő lekérdezéséhez. Ezen módszerek mindegyike egy, a nézetben megjelenített `List<Team>` választ ad vissza.
-
+1. Vegye fel az alábbi négy módszert a `TeamsController` osztályba a csapatstatisztikák gyorsítótárból és adatbázisból különböző módszerekkel történő lekérdezéséhez. Ezen módszerek mindegyike egy, a nézetben megjelenített `List<Team>` választ ad vissza.
+   
     A `GetFromDB` módszer beolvassa a csapatstatisztikákat a gyorsítótárból.
-
+   
         List<Team> GetFromDB()
         {
             ViewBag.msg += "Results read from DB. ";
             var results = from t in db.Teams
                 orderby t.Wins descending
                 select t; 
-    
+   
             return results.ToList<Team>();
         }
-
 
     A `GetFromList` módszer szerializált `List<Team>` formájában olvassa be a csapatstatisztikákat a gyorsítótárból. Gyorsítótár-tévesztés esetén a rendszer az adatbázisból olvassa be a statisztikákat, és azokat a gyorsítótárba menti a következő alkalomra. Jelen mintában a JSON.NET szerializálást alkalmazzuk a .NET-objektumok gyorsítótárba és gyorsítótárból történő szerializálására. További információk: [.NET-objektumokkal való munka az Azure Redis Cache-ben](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
@@ -506,10 +468,10 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
             else
             {
                 ViewBag.msg += "Teams sorted set cache miss. ";
-    
+
                 // Read from DB
                 teams = GetFromDB();
-    
+
                 ViewBag.msg += "Storing results to cache. ";
                 foreach (var t in teams)
                 {
@@ -552,11 +514,9 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
 
 
 ### A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez
-
 A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok hozzáadásához, szerkesztéséhez és törléséhez. Egy csapat hozzáadását, szerkesztését vagy eltávolítását követően a gyorsítótárban található adatok elavulttá válnak. Jelen szakaszban ezen három módszer módosítását fogja elvégezni a gyorsítótárazott csapatok törlése érdekében, így a gyorsítótár szinkronizálva lesz az adatbázissal.
 
 1. Keresse meg a `Create(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
-
 
         // POST: Teams/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -574,13 +534,12 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
                 ClearCachedTeams();
                 return RedirectToAction("Index");
             }
-    
+
             return View(team);
         }
 
 
-2. Keresse meg a `Edit(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
-
+1. Keresse meg a `Edit(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
 
         // POST: Teams/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -602,8 +561,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
         }
 
 
-3. Keresse meg a `DeleteConfirmed(int id)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
-
+1. Keresse meg a `DeleteConfirmed(int id)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
 
         // POST: Teams/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -621,17 +579,14 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
 
 
 ### A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez
-
 1. A **Solution Explorer** (Megoldáskezelőben) bontsa ki a **Views** (Nézetek), majd a **Teams** (Csapatok) mappát, és kattintson duplán az **Index.cshtml** fájlra.
-
+   
     ![Index.cshtml][cache-views-teams-index-cshtml]
-
 2. A fájl elején keresse meg az alábbi bekezdéselemet.
-
+   
     ![Művelettábla][cache-teams-index-table]
-
+   
     Itt található az új csapat létrehozására szolgáló hivatkozás. Cserélje le a bekezdéselemet az alábbi táblával. Ez a tábla műveleti hivatkozásokkal rendelkezik egy új csapat létrehozása, egy új játékszezon lejátszása, a gyorsítótár kiürítése, a csapatok gyorsítótárból, több formátumban történő lekérdezése, a csapatok adatbázisból történő lekérdezése, valamint az adatbázis friss mintaadatokkal való újraépítése céljából.
-
 
         <table class="table">
             <tr>
@@ -663,23 +618,21 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
         </table>
 
 
-3. Görgessen lefelé az **Index.cshtml** fájl aljához, és vegye fel az alábbi `tr` elemet, így ez lesz a fájl utolsó táblájának utolsó sora.
-
+1. Görgessen lefelé az **Index.cshtml** fájl aljához, és vegye fel az alábbi `tr` elemet, így ez lesz a fájl utolsó táblájának utolsó sora.
+   
         <tr><td colspan="5">@ViewBag.Msg</td></tr>
-
+   
     Ez a sor a `ViewBag.Msg` értékét jeleníti meg, amely az aktuális művelet állapotjelentését tartalmazza. Ennek beállítása az előző lépés egyik műveleti hivatkozására kattintva történik.   
-
+   
     ![Állapotüzenet][cache-status-message]
-
-4. A projekt létrehozásához nyomja le az **F6** billentyűt.
+2. A projekt létrehozásához nyomja le az **F6** billentyűt.
 
 ## Azure-erőforrások kiépítése
-
 Az alkalmazásnak az Azure-on történő üzemeltetéséhez először is létre kell hoznia az alkalmazás számára szükséges Azure-szolgáltatásokat. A jelen oktatóanyagban szereplő mintaalkalmazás az alábbi Azure-szolgáltatásokat használja.
 
--   Azure Redis Cache
--   App Service webalkalmazás
--   SQL Database
+* Azure Redis Cache
+* App Service webalkalmazás
+* SQL Database
 
 Ezen szolgáltatások új vagy létező, szabadon választott erőforráscsoporton történő üzembe helyezéséhez kattintson az alábbi **Deploy to Azure** (Üzembe helyezés az Azure-ban) gombra.
 
@@ -687,7 +640,10 @@ Ezen szolgáltatások új vagy létező, szabadon választott erőforráscsoport
 
 Ez az **Deploy to Azure** (Üzembe helyezés az Azure-ban) gomb a [Webalkalmazás, Redis Cache és SQL Database egyidejű létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) [Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates) sablonját használja ezen szolgáltatások kiépítéséhez, illetve az SQL Database kapcsolati karakterláncának megadásához és az Azure Redis Cache-kapcsolatikarakterlánc alkalmazás-beállításához.
 
->[AZURE.NOTE] Ha nincs Azure-fiókja, néhány perc alatt [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero).
+> [!NOTE]
+> Ha nincs Azure-fiókja, néhány perc alatt [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero).
+> 
+> 
 
 Az **Üzembe helyezés az Azure-ban** gombra kattintva megnyílik az Azure portál, majd elindul a sablonban megadott erőforrások létrehozásának folyamata.
 
@@ -696,7 +652,6 @@ Az **Üzembe helyezés az Azure-ban** gombra kattintva megnyílik az Azure port�
 1. Az **Egyéni üzembe helyezés** panelen válassza ki a használni kívánt Azure-előfizetést, jelöljön ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat, majd adja meg az erőforráscsoport helyét.
 2. A **Paraméterek** panelen adjon meg egy rendszergazdai fióknevet (**ADMINISTRATORLOGIN** – ne használja az **admin** kifejezést), egy rendszergazdai bejelentkezési jelszót (**ADMINISTRATORLOGINPASSWORD**) és egy adatbázisnevet (**DATABASENAME**). A többi paraméter egy ingyenes App Service-futtatási csomagra van konfigurálva, valamint alacsonyabb költségszint elérése válik lehetővé az SQL Database és az Azure Redis Cache esetében, amelyek nem részei az ingyenes szintnek.
 3. Ha kívánja, módosítsa a többi beállítás bármelyikét, majd kattintson az **OK** gombra.
-
 
 ![Üzembe helyezés az Azure-ban][cache-deploy-to-azure-step-2]
 
@@ -714,108 +669,104 @@ A központi telepítés állapotát a **Microsoft.Template** panelen tekintheti 
 
 A kiépítés után a Visual Studio felületéről közzéteheti alkalmazását az Azure-on.
 
->[AZURE.NOTE] A kiépítési folyamat során esetlegesen jelentkező hibák a **Microsoft.Template** panelen jelennek meg. Gyakori hiba például az előfizetésenkénti túl sok SQL Server-példány és a túl sok Ingyenes App Service-futtatási csomag. A hibák elhárítása és a folyamat újraindítása a **Microsoft.Template** panel **Ismételt üzembe helyezés** elemére, vagy a jelen oktatóanyag **Üzembe helyezés az Azure-ban** gombjára kattintva végezhető el.
+> [!NOTE]
+> A kiépítési folyamat során esetlegesen jelentkező hibák a **Microsoft.Template** panelen jelennek meg. Gyakori hiba például az előfizetésenkénti túl sok SQL Server-példány és a túl sok Ingyenes App Service-futtatási csomag. A hibák elhárítása és a folyamat újraindítása a **Microsoft.Template** panel **Ismételt üzembe helyezés** elemére, vagy a jelen oktatóanyag **Üzembe helyezés az Azure-ban** gombjára kattintva végezhető el.
+> 
+> 
 
 ## Az alkalmazás közzététele az Azure-ban
-
 Az oktatóanyag ezen lépésben közzéteszi alkalmazását az Azure-ban, majd futtatja azt a felhőben
 
 1. Kattintson a jobb gombbal a Visual Studio **ContosoTeamStats** projektjére, majd válassza a **Publish** (Közzététel) lehetőséget
-
+   
     ![Közzététel][cache-publish-app]
-
 2. Kattintson a **Microsoft Azure App Service** lehetőségre.
-
+   
     ![Közzététel][cache-publish-to-app-service]
-
 3. Válassza ki az Azure-erőforrások létrehozásakor használt előfizetést, bontsa ki az erőforrásokat tartalmazó erőforráscsoportot, válassza ki a kívánt webalkalmazást, majd kattintson az **OK** gombra. Ha az **Üzembe helyezés az Azure-ban** gombot használta, a webalkalmazás neve a **webSite** kifejezéssel kezdődik, amit néhány további karakter követ.
-
+   
     ![Webalkalmazás kiválasztása][cache-select-web-app]
-
 4. A beállítások ellenőrzéséhez kattintson a **Validate Connection** (Kapcsolat érvényesítése) lehetőségre, majd kattintson a **Publish** (Közzététel) gombra.
-
+   
     ![Közzététel][cache-publish]
-
+   
     A közzétételi folyamat néhány pillanat múlva befejeződik, és a böngésző a futó mintaalkalmazással együtt indul majd el. Ha érvényesítés vagy közzététel közben a rendszer DNS-hibát ad vissza, az alkalmazáshoz tartozó Azure-erőforrások kiépítési folyamata pedig csak az imént fejeződött be, várjon egy kicsit, és próbálkozzon újra.
-
+   
     ![Gyorsítótár hozzáadva][cache-added-to-application]
 
 A mintaalkalmazás egyes műveleti hivatkozásait a következő táblázat ismerteti.
 
-| Műveletek                  | Leírás                                                                                                                                                      |
-|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Új létrehozása              | Létrehoz egy új csapatot.                                                                                                                                               |
-| Szezon végigjátszása             | Végigjátszik egy szezont, frissíti a csapatstatisztikákat, és törli a gyorsítótárból az elavult adatokat.                                                                          |
-| Gyorsítótár ürítése             | Törli a csapatstatisztikákat a gyorsítótárból.                                                                                                                             |
-| Lista a gyorsítótárból         | Lekérdezi a csapatstatisztikákat a gyorsítótárból. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba a következő alkalomra.                                        |
-| Rendezett készlet a gyorsítótárból   | Lekérdezi a csapatstatisztikákat a gyorsítótárból egy rendezett készlet használatával. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba egy rendezett készlet használatával.  |
-| Az 5 legjobb csapat a gyorsítótárból  | Lekérdezi az 5 legjobb csapatot a gyorsítótárból egy rendezett készlet használatával. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba egy rendezett készlet használatával. |
-| Betöltés adatbázisból            | Lekérdezi a csapatstatisztikákat az adatbázisból.                                                                                                                       |
-| Adatbázis újraépítése              | Újraépíti az adatbázist, és ismét feltölti azt minta-csapatadatokkal.                                                                                                        |
-| Szerkesztés / Részletek / Törlés | Szerkeszthet egy csapatot, megtekintheti annak részletes adatait, törölhet egy csapatot.                                                                                                             |
-
+| Műveletek | Leírás |
+| --- | --- |
+| Új létrehozása |Létrehoz egy új csapatot. |
+| Szezon végigjátszása |Végigjátszik egy szezont, frissíti a csapatstatisztikákat, és törli a gyorsítótárból az elavult adatokat. |
+| Gyorsítótár ürítése |Törli a csapatstatisztikákat a gyorsítótárból. |
+| Lista a gyorsítótárból |Lekérdezi a csapatstatisztikákat a gyorsítótárból. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba a következő alkalomra. |
+| Rendezett készlet a gyorsítótárból |Lekérdezi a csapatstatisztikákat a gyorsítótárból egy rendezett készlet használatával. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba egy rendezett készlet használatával. |
+| Az 5 legjobb csapat a gyorsítótárból |Lekérdezi az 5 legjobb csapatot a gyorsítótárból egy rendezett készlet használatával. Gyorsítótár-tévesztés esetén az adatbázisból tölti be a statisztikákat, és menti azt a gyorsítótárba egy rendezett készlet használatával. |
+| Betöltés adatbázisból |Lekérdezi a csapatstatisztikákat az adatbázisból. |
+| Adatbázis újraépítése |Újraépíti az adatbázist, és ismét feltölti azt minta-csapatadatokkal. |
+| Szerkesztés / Részletek / Törlés |Szerkeszthet egy csapatot, megtekintheti annak részletes adatait, törölhet egy csapatot. |
 
 Kattintson néhány műveletre, és kísérletezzen az adatok különböző forrásokból történő lekérdezésével. Figyelje meg az adatbázisból és a gyorsítótárból történő adatlekérdezés különböző módjainak végrehajtásához szükséges időbeli eltéréseket.
 
 ## Az erőforrások törlése az alkalmazás bezárását követően
-
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Ha a [Azure-erőforrások kiépítése](#provision-the-azure-resources) szakasz **Üzembe helyezés az Azure-ban** gombját használja, és valamennyi erőforrás azonos erőforráscsoportban található, az erőforráscsoport törlésével egy művelettel, együttesen is törölheti azokat.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 2. Írja be az erőforráscsoport nevét az **Elemek szűrése...** szövegmezőbe.
 3. Kattintson az erőforráscsoporttól jobbra lévő **...** elemre.
 4. Kattintson a **Törlés** gombra.
-
+   
     ![Törlés][cache-delete-resource-group]
-
 5. Írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
-
+   
     ![Törlés megerősítése][cache-delete-confirm]
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
->[AZURE.IMPORTANT] Ügyeljen arra, hogy az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő erőforráscsoportban hozta létre, az erőforrásokat külön-külön törölheti a megfelelő panelekről.
+> [!IMPORTANT]
+> Ügyeljen arra, hogy az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő erőforráscsoportban hozta létre, az erőforrásokat külön-külön törölheti a megfelelő panelekről.
+> 
+> 
 
 ## Mintaalkalmazás futtatása helyi gépen
-
 Az alkalmazás helyi számítógépen történő futtatásához egy olyan Azure Redis Cache-példányra van szükség, amelyen az adatok gyorsítótárazása elvégezhető. 
 
--   Ha az alkalmazás Azure-on történő közzétételét az előző szakaszban leírt módon hajtotta végre, használhatja az abban a lépésben üzembe helyezett Azure Redis Cache-példányt.
--   Ha rendelkezik egy másik meglévő Azure Redis Cache-példánnyal, használhatja azt ezen minta helyi futtatásához.
--   Amennyiben létre kell hoznia egy Azure Redis Cache-példányt, ennek műveleti lépéseit megtalálja a [Gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) részben.
+* Ha az alkalmazás Azure-on történő közzétételét az előző szakaszban leírt módon hajtotta végre, használhatja az abban a lépésben üzembe helyezett Azure Redis Cache-példányt.
+* Ha rendelkezik egy másik meglévő Azure Redis Cache-példánnyal, használhatja azt ezen minta helyi futtatásához.
+* Amennyiben létre kell hoznia egy Azure Redis Cache-példányt, ennek műveleti lépéseit megtalálja a [Gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache) részben.
 
 A használni kívánt gyorsítótár kiválasztása vagy létrehozása után keresse meg azt az Azure portálon, majd kérje le a hozzá tartozó [állomásnév](cache-configure.md#properties) és [hívóbetű](cache-configure.md#access-keys) paramétereket. Útmutatásért lásd: [A Redis Cache-gyorsítótár beállításai](cache-configure.md#configure-redis-cache-settings).
 
 1. A kívánt szerkesztővel nyissa meg a jelem oktatóanyag [Az alkalmazás konfigurálása a Redis Cache használatára](#configure-the-application-to-use-redis-cache) lépésében létrehozott `WebAppPlusCacheAppSecrets.config` fájlt.
-
 2. Módosítsa a `value` attribútumot, és cserélje le a `MyCache.redis.cache.windows.net` elemet a gyorsítótár [állomásnevével](cache-configure.md#properties), majd jelszóként adja meg a gyorsítótár [elsődleges vagy másodlagos kulcsát](cache-configure.md#access-keys).
-
 
         <appSettings>
           <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
         </appSettings>
 
 
-3. Az alkalmazás futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt.
+1. Az alkalmazás futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt.
 
->[AZURE.NOTE] Vegye figyelembe, hogy mivel az alkalmazás (beleértve az adatbázist is) futtatása helyileg történik, a Redis Cache üzemeltetését pedig az Azure végzi, a gyorsítótár teljesítménye az adatbázisénál kisebbnek tűnhet. A legjobb teljesítmény érdekében az ügyfélalkalmazásnak és az Azure Redis Cache-példánynak azonos helyen kell lennie. 
+> [!NOTE]
+> Vegye figyelembe, hogy mivel az alkalmazás (beleértve az adatbázist is) futtatása helyileg történik, a Redis Cache üzemeltetését pedig az Azure végzi, a gyorsítótár teljesítménye az adatbázisénál kisebbnek tűnhet. A legjobb teljesítmény érdekében az ügyfélalkalmazásnak és az Azure Redis Cache-példánynak azonos helyen kell lennie. 
+> 
+> 
 
 ## Következő lépések
-
--   Az [ASP.NET MVC 5 – Első lépések](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) elvégzéséről további információkat az [ASP.NET](http://asp.net/) webhelyén talál.
--   További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/).
-    -   A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
--   Itt további információkat talál a jelen oktatóanyagban használt, [Code first to a new database](https://msdn.microsoft.com/data/jj193542) (Code First alkalmazása egy új adatbázisra) nevű Entity Framework-megközelítésról.
--   További információ [az Azure App Service webalkalmazásairól](../app-service-web/app-service-web-overview.md).
--   Tudnivalók a gyorsítótár [figyeléséről](cache-how-to-monitor.md) az Azure portálon.
-
--   Az Azure Redis Cache prémium funkcióinak megismerése
-    -   [Adatmegőrzés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-persistence.md)
-    -   [Fürtözés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-clustering.md)
-    -   [Virtuális hálózat támogatásának konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-vnet.md)
-    -   További részletes információk a prémium gyorsítótárak méretével, teljesítményével és a sávszélességével kapcsolatban: [Azure Redis Cache – Gyakori kérdések](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
-
-
+* Az [ASP.NET MVC 5 – Első lépések](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) elvégzéséről további információkat az [ASP.NET](http://asp.net/) webhelyén talál.
+* További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/).
+  * A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
+* Itt további információkat talál a jelen oktatóanyagban használt, [Code first to a new database](https://msdn.microsoft.com/data/jj193542) (Code First alkalmazása egy új adatbázisra) nevű Entity Framework-megközelítésról.
+* További információ [az Azure App Service webalkalmazásairól](../app-service-web/app-service-web-overview.md).
+* Tudnivalók a gyorsítótár [figyeléséről](cache-how-to-monitor.md) az Azure portálon.
+* Az Azure Redis Cache prémium funkcióinak megismerése
+  
+  * [Adatmegőrzés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-persistence.md)
+  * [Fürtözés konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-clustering.md)
+  * [Virtuális hálózat támogatásának konfigurálása prémium szintű Azure Redis Cache-gyorsítótárhoz](cache-how-to-premium-vnet.md)
+  * További részletes információk a prémium gyorsítótárak méretével, teljesítményével és a sávszélességével kapcsolatban: [Azure Redis Cache – Gyakori kérdések](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
 
 <!-- IMAGES -->
 [cache-starter-application]: ./media/cache-web-app-howto/cache-starter-application.png

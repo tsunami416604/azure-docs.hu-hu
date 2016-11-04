@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Az ExpressRoute-útválasztás optimalizálása | Microsoft Azure"
-   description="Ez az oldal részletesen ismerteti, hogy hogyan optimalizálható az útválasztás, ha egy ügyfél több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti Microsoftot az ügyfél vállalati hálózatával."
-   documentationCenter="na"
-   services="expressroute"
-   authors="charwen"
-   manager="carmonm"
-   editor=""/>
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/10/2016"
-   ms.author="charwen"/>
+---
+title: Az ExpressRoute-útválasztás optimalizálása | Microsoft Docs
+description: Ez az oldal részletesen ismerteti, hogy hogyan optimalizálható az útválasztás, ha egy ügyfél több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti Microsoftot az ügyfél vállalati hálózatával.
+documentationcenter: na
+services: expressroute
+author: charwen
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/10/2016
+ms.author: charwen
 
+---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
 
@@ -39,13 +39,17 @@ A problémára két megoldás létezik. Az első, hogy egyszerűen a Los Angeles
 
 A második megoldás az, hogy továbbra is meghirdeti mindkét előtagot mindkét ExpressRoute-kapcsolatcsoporton, és emellett egy tippet ad arról, hogy melyik előtag melyik irodához van közelebb. Mivel támogatjuk a BGP AS PATH előtag-beillesztést, konfigurálhatja az előtaghoz tartozó AS PATH előtag-beillesztést, és befolyásolhatja az útválasztást. Ebben a példában meghosszabbíthatja az USA keleti régiójában az 172.2.0.0/31 előtag AS PATH értékét, aminek hatására az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoportot fogjuk előnyben részesíteni az ehhez az előtaghoz irányuló forgalom esetében (mivel a hálózatunk úgy fogja látni, hogy az előtaghoz tartozó útvonal rövidebb a nyugati parton). Hasonlóképpen meghosszabbíthatja az USA nyugati régiójában az 172.2.0.2/31 előtag AS PATH értékét, aminek hatására az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoportot fogjuk előnyben részesíteni. Az útválasztás mindkét iroda esetében optimalizálva van. Ezzel a kialakítással, ha az egyik ExpressRoute-kör megszakad, az Exchange Online továbbra is elérheti az Ön hálózatát a másik ExpressRoute-kapcsolatcsoporton és a WAN hálózaton keresztül. 
 
->[AZURE.IMPORTANT] Az AS PATH értékében lévő privát AS-számokat eltávolítjuk a Microsoft társviszony-létesítésen keresztül fogadott előtagok esetében. Az AS PATH értékéhez nyilvános AS-számokat kell hozzáfűznie a Microsoft társviszony-létesítés útválasztásának befolyásolásához.
+> [!IMPORTANT]
+> Az AS PATH értékében lévő privát AS-számokat eltávolítjuk a Microsoft társviszony-létesítésen keresztül fogadott előtagok esetében. Az AS PATH értékéhez nyilvános AS-számokat kell hozzáfűznie a Microsoft társviszony-létesítés útválasztásának befolyásolásához.
+> 
+> 
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 
->[AZURE.IMPORTANT] Bár az itt felsorolt példák a Microsoftra és a Nyilvános társviszony-létesítésre vonatkoznak, ugyanezek a funkciók a magánhálózati társviszony-létesítéshez is támogatottak. Emellett egyetlen ExpressRoute-kapcsolatcsoporton belül működik az AS Path előtag-beillesztés is, így befolyásolva az elsődleges és a másodlagos útvonalak kiválasztását.
-
-
+> [!IMPORTANT]
+> Bár az itt felsorolt példák a Microsoftra és a Nyilvános társviszony-létesítésre vonatkoznak, ugyanezek a funkciók a magánhálózati társviszony-létesítéshez is támogatottak. Emellett egyetlen ExpressRoute-kapcsolatcsoporton belül működik az AS Path előtag-beillesztés is, így befolyásolva az elsődleges és a másodlagos útvonalak kiválasztását.
+> 
+> 
 
 <!--HONumber=Oct16_HO3-->
 

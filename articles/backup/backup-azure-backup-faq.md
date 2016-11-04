@@ -1,53 +1,52 @@
-<properties
-   pageTitle="Azure Backup – gyakori kérdések | Microsoft Azure"
-   description="Ez a cikk megválaszolja a biztonsági mentési szolgáltatásra és ügynökre, a biztonsági mentésre és azok megtartására, helyreállításra, biztonságára és egyéb, a biztonsági mentéssel és a vészhelyreállítással kapcsolatos általános gyakori kérdéseket."
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás"/>
+---
+title: Azure Backup – gyakori kérdések | Microsoft Docs
+description: Ez a cikk megválaszolja a biztonsági mentési szolgáltatásra és ügynökre, a biztonsági mentésre és azok megtartására, helyreállításra, biztonságára és egyéb, a biztonsági mentéssel és a vészhelyreállítással kapcsolatos általános gyakori kérdéseket.
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-     ms.tgt_pltfrm="na"
-     ms.devlang="na"
-     ms.topic="get-started-article"
-     ms.date="08/29/2016"
-     ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/29/2016
+ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 
-
+---
 # <a name="azure-backup-service--faq"></a>Azure Backup szolgáltatás – gyakori kérdések
-
-> [AZURE.SELECTOR]
-- [Backup GYIK klasszikus módhoz](backup-azure-backup-faq.md)
-- [Backup GYIK Resource Manager módhoz](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [Backup GYIK klasszikus módhoz](backup-azure-backup-faq.md)
+> * [Backup GYIK Resource Manager módhoz](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdések (és a hozzájuk tartozó válaszok) listája. Közösségünk gyorsan válaszol, és ha egy kérdést gyakran feltesznek, hozzáadjuk ehhez a cikkhez. A kérdésekre adott válaszok általában hivatkozási vagy támogatási információkat tartalmaznak. Az Azure Backup szolgáltatással kapcsolatban ezen vagy egy kapcsolódó cikk Disqus szakaszában tehet fel kérdéseket. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
-
 
 ## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup?-"></a>Melyek azok az operációs rendszerek, amelyekből biztonsági mentést tudok készíteni az Azure-ba az Azure Backup használatával? <br/>
 Az Azure Backup a következő operációs rendszereket támogatja a fájlok, mappák és alkalmazások Azure Backup Server és SCDPM segítségével végzett biztonsági mentéséhez. 
 
-| Operációs rendszer        | Platform           | SKU  |
-| :------------- |-------------| :-----|
-| Windows 8 és a legújabb szervizcsomagok      | 64 bit | Enterprise, Pro |
-| Windows 7 és a legújabb szervizcsomagok      | 64 bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
-| Windows 8.1 és a legújabb szervizcsomagok | 64 bit      |    Enterprise, Pro |
-| Windows 10      | 64 bit | Enterprise, Pro, Home |
-|Windows Server 2012 R2 és a legújabb szervizcsomagok| 64 bit| Standard, Datacenter, Foundation|
-|Windows Server 2012 és a legújabb szervizcsomagok|    64 bit| Datacenter, Foundation, Standard|
-|Windows Storage Server 2012 R2 és a legújabb szervizcsomagok  |64 bit|    Standard, Workgroup|
-|Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup
-|Windows Server 2012 R2 és a legújabb szervizcsomagok  |64 bit|    Essential|
-|Windows Server 2008 R2 SP1 |64 bit|    Standard, Enterprise, Datacenter, Foundation|
-|Windows Server 2008 SP2    |64 bit|    Standard, Enterprise, Datacenter, Foundation|
+| Operációs rendszer | Platform | SKU |
+|:--- | --- |:--- |
+| Windows 8 és a legújabb szervizcsomagok |64 bit |Enterprise, Pro |
+| Windows 7 és a legújabb szervizcsomagok |64 bit |Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
+| Windows 8.1 és a legújabb szervizcsomagok |64 bit |Enterprise, Pro |
+| Windows 10 |64 bit |Enterprise, Pro, Home |
+| Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
+| Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
+| Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
+| Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
+| Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Essential |
+| Windows Server 2008 R2 SP1 |64 bit |Standard, Enterprise, Datacenter, Foundation |
+| Windows Server 2008 SP2 |64 bit |Standard, Enterprise, Datacenter, Foundation |
 
 Azure VM Backup esetében:
 
-- **Linux**: Az Azure Backup az [Azure által támogatott disztribúciók listáját](../virtual-machines/virtual-machines-linux-endorsed-distros.md) támogatja a Core OS Linux kivételével.  Egyéb saját Linux-disztribúciók is működtethetők, ha a virtuális gép ügynöke elérhető a virtuális gépen, és a rendszer támogatja a Pythont.
-- **Windows Server**: A Windows Server 2008 R2-nél régebbi verziók nem támogatottak.
+* **Linux**: Az Azure Backup az [Azure által támogatott disztribúciók listáját](../virtual-machines/virtual-machines-linux-endorsed-distros.md) támogatja a Core OS Linux kivételével.  Egyéb saját Linux-disztribúciók is működtethetők, ha a virtuális gép ügynöke elérhető a virtuális gépen, és a rendszer támogatja a Pythont.
+* **Windows Server**: A Windows Server 2008 R2-nél régebbi verziók nem támogatottak.
 
 ## <a name="where-can-i-download-the-latest-azure-backup-agent?-"></a>Honnan tölthetem le a legújabb Azure Backup ügynököt? <br/>
 [Innen](http://aka.ms/azurebackup_agent) töltheti le a legújabb ügynököt a Windows Server, System Center DPM vagy Windows-ügyfél biztonsági mentése számára. Ha egy virtuális gépről szeretne biztonsági mentést készíteni, használja a virtuálisgép-ügynököt (amely automatikusan telepíti a megfelelő bővítményt). Az Azure katalógusból létrehozott virtuális gépeken a virtuálisgép-ügynök már jelen van.
@@ -74,26 +73,26 @@ Regisztrálnia kell a kiszolgáló új nevét a Backup-tárolóban. Ha létrehoz
 ## <a name="what-types-of-drives-can-i-backup-files-and-folders-from?-"></a>Milyen típusú meghajtókon lévő fájlokról és mappákról tudok biztonsági másolatot készíteni? <br/>
 A következő meghajtókról/kötetekről nem lehet biztonsági másolatot készíteni:
 
-- Cserélhető adathordozó: A meghajtónak állandónak kell lennie ahhoz, hogy egy biztonsági mentés forráselemeként lehessen használni.
-- Csak olvasható kötetek: A kötetnek a működéshez írhatónak kell lennie a kötet árnyékmásolat (VSS) számára.
-- Offline kötetek: A kötetnek a működéshez online-nak kell lennie a VSS számára.
-- Hálózati megosztás: A kötetnek helyinek kell lennie a kiszolgáló számára, hogy az online biztonsági mentés használatával biztonsági másolatot lehessen róla készíteni.
-- BitLocker által védett kötetek: A kötetet fel kell oldani a biztonsági mentés megkezdése előtt.
-- Fájlrendszer azonosítása: Az online biztonsági mentési szolgáltatás ezen verziója csak az NTFS fájlrendszert támogatja.
+* Cserélhető adathordozó: A meghajtónak állandónak kell lennie ahhoz, hogy egy biztonsági mentés forráselemeként lehessen használni.
+* Csak olvasható kötetek: A kötetnek a működéshez írhatónak kell lennie a kötet árnyékmásolat (VSS) számára.
+* Offline kötetek: A kötetnek a működéshez online-nak kell lennie a VSS számára.
+* Hálózati megosztás: A kötetnek helyinek kell lennie a kiszolgáló számára, hogy az online biztonsági mentés használatával biztonsági másolatot lehessen róla készíteni.
+* BitLocker által védett kötetek: A kötetet fel kell oldani a biztonsági mentés megkezdése előtt.
+* Fájlrendszer azonosítása: Az online biztonsági mentési szolgáltatás ezen verziója csak az NTFS fájlrendszert támogatja.
 
 ## <a name="what-file-and-folder-types-can-i-back-up-from-my-server?"></a>A kiszolgálón lévő milyen fájlokról és mappákról készíthetek biztonsági másolatot?<br/>
 A következő típusok támogatottak:
 
-- Titkosított
-- Tömörített
-- Ritka
-- Tömörített + ritka
-- Rögzített hivatkozások: Nem támogatott, átugorva
-- Újraelemzési pont: Nem támogatott, átugorva
-- Titkosított + tömörített: Nem támogatott, átugorva
-- Titkosított + ritka: Nem támogatott, átugorva
-- Tömörített stream: Nem támogatott, átugorva
-- Ritka stream: Nem támogatott, átugorva
+* Titkosított
+* Tömörített
+* Ritka
+* Tömörített + ritka
+* Rögzített hivatkozások: Nem támogatott, átugorva
+* Újraelemzési pont: Nem támogatott, átugorva
+* Titkosított + tömörített: Nem támogatott, átugorva
+* Titkosított + ritka: Nem támogatott, átugorva
+* Tömörített stream: Nem támogatott, átugorva
+* Ritka stream: Nem támogatott, átugorva
 
 ## <a name="what's-the-minimum-size-requirement-for-the-cache-folder?-"></a>Mi a gyorsítótármappa minimális méretkövetelménye? <br/>
 A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít. A gyorsítótár mappájának az adatok tárolásához szükséges terület 5%-ának kell lennie.
@@ -118,11 +117,11 @@ Ez a figyelmeztetés akkor jelenik meg, amikor a helyi kiszolgálón tárolt üt
 ## <a name="what-firewall-rules-should-be-configured-for-azure-backup?-"></a>Milyen tűzfalszabályokat kell konfigurálni az Azure Backup szolgáltatáshoz? <br/>
 A helyi adatoknak és a számítási feladatoknak az Azure rendszerbe történő zökkenőmentes átviteléhez és védelméhez a tűzfalnak érdemes engedélyezi a következő URL-címekkel történő kommunikációt:
 
-- www.msftncsi.com
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* www.msftncsi.com
+* \*.Microsoft.com
+* \*.WindowsAzure.com
+* \*.microsoftonline.com
+* \*.windows.net
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension?-"></a>Telepíthetem az Azure Backup ügynököt egy olyan Azure virtuális gépre, amelyet az Azure Backup szolgáltatás már támogat a virtuális gép bővítmény használatával? <br/>
 Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az Azure virtuális gépeknek az erre szolgáló bővítmény használatával. Az Azure Backup ügynököt telepítheti egy vendég Windows operációs rendszerre, hogy megvédje a vendég operációs rendszeren található fájlokat és mappákat.
@@ -133,10 +132,10 @@ Az Azure Backup ügynököt telepítheti a vendég Windows operációs rendszere
 ## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders.-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-on-premises-application/vm-workloads-to-azure?-"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepíthetem az SCDPM szolgáltatást, hogy együttműködjön az Azure Backup ügynökkel a helyi alkalmazások vagy a virtuális gép számítási feladatainak Azure-ban történő megvédésében? <br/>
 Az Azure Backup SCDPM szolgáltatással történő használatához javasolt először az SCDPM-et telepíteni, és csak aztán az Azure Backup ügynököt. Ez biztosítja az Azure Backup ügynök és az SCDPM problémamentes integrációját, és lehetővé teszi fájlok és mappák, alkalmazások számítási feladatai és virtuális gépek Azure-ban történő védelmét közvetlenül az SCDPM felügyeleti konzoljából. A fent említett okokból nem javasolt és nem támogatott az SCDPM telepítése az Azure Backup ügynök telepítése után.
 
-## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent?-"></a>Mi a fájl elérési útjának hossza, amely meghatározható az Azure Backup ügynök használatával az Azure Backup házirendjének részeként? <br/>  
+## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent?-"></a>Mi a fájl elérési útjának hossza, amely meghatározható az Azure Backup ügynök használatával az Azure Backup házirendjének részeként? <br/>
 Az Azure Backup ügynök az NTFS-re hagyatkozik. A [fájl elérési útvonalának hossz-specifikációját a Windows API korlátozza](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Ha a rendszer olyan fájlokról készít biztonsági másolatot, amelyeknek elérési útja hosszabb, mint a Windows API által meghatározott korlát, az ügyfelek dönthetnek a mentendő fájlok szülőmappájának vagy lemezmeghajtójának biztonsági mentése mellett.  
 
-## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent?"></a>Mely karakterek engedélyezettek az Azure Backup ügynököt használó Azure Backup házirend elérési útjában? <br>  
+## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent?"></a>Mely karakterek engedélyezettek az Azure Backup ügynököt használó Azure Backup házirend elérési útjában? <br>
  Az Azure Backup ügynök az NTFS-re hagyatkozik. Ez engedélyezi az [NTFS által támogatott karakterek](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) használatát a fájl meghatározásának részeként.  
 
 ## <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-(bmr)-backup-for-a-physical-server?-"></a>Használhatom az Azure Backup kiszolgálót egy operációs rendszer nélküli helyreállítás (BMR) biztonsági másolatának létrehozásához egy fizikai kiszolgálón? <br/>
@@ -148,23 +147,23 @@ Igen, a Backup szolgáltatás számos eseményalapú értesítéssel rendelkezik
 ## <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up?-"></a>Létezik méretkorlátozás a biztonsági mentésre kijelölt adatforrásokra vonatkozóan? <br/>
 Noha tárolószinten nincsen korlátozva, hogy mennyi adatról készíthet biztonsági másolatot, az Azure Backup korlátozza az adatforrások maximális méretét (gyakorlati okokból azonban ezek a korlátok nagyon magasak). A 2015. augusztusi állapot szerint a támogatott operációs rendszerek esetén az adatforrás maximális mérete a következő:
 
-|Sorszám | Operációs rendszer |  Adatforrás maximális mérete |
-| :-------------: |:-------------| :-----|
-|1| Windows Server 2012 vagy újabb| 54 400 GB|
-|2| Windows 8 vagy újabb| 54 400 GB|
-|3| Windows Server 2008, Windows Server 2008 R2 | 1700 GB|
-|4| Windows 7 | 1700 GB|
+| Sorszám | Operációs rendszer | Adatforrás maximális mérete |
+|:---:|:--- |:--- |
+| 1 |Windows Server 2012 vagy újabb |54 400 GB |
+| 2 |Windows 8 vagy újabb |54 400 GB |
+| 3 |Windows Server 2008, Windows Server 2008 R2 |1700 GB |
+| 4 |Windows 7 |1700 GB |
 
 Az alábbi táblázat megmagyarázza, hogy az egyes adatforrásméretek hogyan lettek meghatározva.
 
-|   Adatforrás  |   Részletek |
-| :-------------: |:-------------|
-|Kötet |Egy kiszolgáló vagy ügyfélgép egyetlen kötetéről biztonsági mentés alatt álló adatok mennyisége|
-|Hyper-V virtuális gép | A biztonsági mentés alatt álló virtuális gép összes virtuális merevlemezének összes adata|
-|Microsoft SQL Server-adatbázis | A biztonsági mentés alatt álló egyetlen SQL-adatbázis mérete |
-|Microsoft SharePoint |Egy biztonsági mentés alatt álló SharePoint-farm tartalmának és konfigurációs adatbázisainak összessége|
-|Microsoft Exchange |Egy biztonsági mentés alatt álló Exchange-kiszolgáló összes Exchange-adatbázisa|
-|BMR/Rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy rendszerállapotának minden egyes másolata|
+| Adatforrás | Részletek |
+|:---:|:--- |
+| Kötet |Egy kiszolgáló vagy ügyfélgép egyetlen kötetéről biztonsági mentés alatt álló adatok mennyisége |
+| Hyper-V virtuális gép |A biztonsági mentés alatt álló virtuális gép összes virtuális merevlemezének összes adata |
+| Microsoft SQL Server-adatbázis |A biztonsági mentés alatt álló egyetlen SQL-adatbázis mérete |
+| Microsoft SharePoint |Egy biztonsági mentés alatt álló SharePoint-farm tartalmának és konfigurációs adatbázisainak összessége |
+| Microsoft Exchange |Egy biztonsági mentés alatt álló Exchange-kiszolgáló összes Exchange-adatbázisa |
+| BMR/Rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy rendszerállapotának minden egyes másolata |
 
 ## <a name="are-there-limits-on-the-number-of-times-a-backup-job-can-be-scheduled-per-day?"></a>Egy biztonsági mentési feladat napi ütemezési száma korlátozott?<br/>
 Igen, Windows Server vagy Windows-ügyfél esetén a biztonsági mentési feladatok naponta legfeljebb háromszor futtathatók. System Center DPM esetén a biztonsági mentési feladatok naponta legfeljebb kétszer futtathatók. Az infrastruktúra-szolgáltatás virtuális gépei esetén a biztonsági mentési feladat naponta legfeljebb egyszer futtatható.
@@ -200,7 +199,7 @@ Nem. Eltöröltük a helyreállítási pontok korlátozásait. Annyi helyreáll�
  Minden, az Azure Backup ügynökétől, az SCDPM-ből vagy az Azure Backup Serverről származó adatot, amelyről biztonsági mentés készül, a rendszer tömörít és titkosít az átvitel előtt. A tömörítés és a titkosítás alkalmazása után a biztonsági mentési tárolóban lévő adatok 30–40 százalékkal kisebbek.
 
 ## <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-service?"></a>Van mód a Backup szolgáltatás által használt sávszélesség nagyságának beállítására?<br/>
- Igen, használhatja a Backup ügynök **Tulajdonságok módosítása** beállítását a sávszélesség módosításához. Beállíthatja a sávszélesség méretét, továbbá az időpontokat, amikor használja ezt a sávszélességet. További információt itt talál: [Hálózati szabályozás](../backup-configure-vault.md#enable-network-throttling)
+ Igen, használhatja a Backup ügynök **Tulajdonságok módosítása** beállítását a sávszélesség módosításához. Beállíthatja a sávszélesség méretét, továbbá az időpontokat, amikor használja ezt a sávszélességet. További információt itt talál: [Hálózati szabályozás](backup-configure-vault.md#enable-network-throttling)
 
 ## <a name="my-internet-bandwidth-is-limited-for-the-amount-of-data-i-need-to-back-up.-is-there-a-way-i-can-move-data-to-a-certain-location-with-a-large-network-pipe-and-push-that-data-into-azure?-"></a>Az internetes sávszélességem korlátozott a biztonsági mentéshez szükséges adatok mennyiségéhez képest. Van mód arra, hogy egy gyorsabb internetkapcsolattal rendelkező helyre vigyem az adatokat, és onnan küldjem azokat az Azure-ba? <br/>
 Készíthet biztonsági másolatot az adatairól az Azure számára a szabványos online biztonsági mentési folyamattal, vagy használhatja az Azure Import/Export szolgáltatást, hogy átvigye az adatokat az Azure-blobtárolóba. Más mód nem létezik az adatok biztonsági másolatának az Azure tárolóba juttatására. Az Azure Import/Export szolgáltatás Azure Backuppal történő használatáról további információt az [Offline Backup munkafolyamat](backup-azure-backup-import-export.md) című cikkben talál.
@@ -225,43 +224,40 @@ Az adatok biztonsági másolatának titkosításához használt kulcs csak az ü
 
 ## <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agent?"></a>Hogyan változtathatom meg az Azure Backup ügynök számára meghatározott gyorsítótár helyét?<br/>
  Menjen végig lépésenként az alábbi felsoroláson a gyorsítótár helyének megváltoztatásához.
-- Állítsa le a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
 
+* Állítsa le a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
+  
   ```PS C:\> Net stop obengine```
+* Ne helyezze át a fájlokat. Ehelyett másolja a gyorsítótár mappáját egy másik, elegendő tárhellyel rendelkező meghajtóra. Miután ellenőrizte, hogy a biztonsági másolatok működnek az új gyorsítótárhelyen, az eredeti gyorsítótárhelyet eltávolíthatja.
+* Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótárhely mappájának elérési útjával.<br/>
 
-- Ne helyezze át a fájlokat. Ehelyett másolja a gyorsítótár mappáját egy másik, elegendő tárhellyel rendelkező meghajtóra. Miután ellenőrizte, hogy a biztonsági másolatok működnek az új gyorsítótárhelyen, az eredeti gyorsítótárhelyet eltávolíthatja.
+| Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
+| --- | --- | --- |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
 
-- Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótárhely mappájának elérési útjával.<br/>
-
-|Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
-| ------ | ------- | ------|
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *Új gyorsítótár-mappa helye* |
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *Új gyorsítótár-mappa helye* |
-
-- Indítsa újra a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
-
+* Indítsa újra a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
+  
   ```PS C:\> Net start obengine```
-
+  
   Miután a biztonsági mentés létrehozása sikeresen befejeződött az új gyorsítótárhelyen, eltávolíthatja az eredeti gyorsítótármappát.
 
 ## <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expected?"></a>Hova helyezhetem el az Azure Backup ügynök gyorsítótármappáját, hogy megfelelően működjön?<br/>
 A gyorsítótár-mappa számára a következő helyek nem javasoltak:
 
-- Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyek és a cserélhető adathordozók, például az USB-meghajtók nem támogatottak.
-- Offline kötetek: A gyorsítótár-mappának online kell lennie az Azure Backup ügynök használatával készített várható biztonsági mentés számára.
+* Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyek és a cserélhető adathordozók, például az USB-meghajtók nem támogatottak.
+* Offline kötetek: A gyorsítótár-mappának online kell lennie az Azure Backup ügynök használatával készített várható biztonsági mentés számára.
 
 ## <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supported?"></a>Vannak a gyorsítótármappának olyan attribútumai, amelyek nem támogatottak?<br/>
  A következő attribútumok vagy kombinációik nem támogatottak a gyorsítótármappa számára:
 
-- Titkosított
-- Deduplikált
-- Tömörített
-- Ritka
-- Újraelemzési pont
+* Titkosított
+* Deduplikált
+* Tömörített
+* Ritka
+* Újraelemzési pont
 
 Sem a gyorsítótármappának, sem a metaadatok virtuális merevlemez-meghajtójának nem érdemes a fenti attribútumokkal rendelkeznie az Azure Backup ügynök hibátlan működése érdekében.
-
-
 
 <!--HONumber=Oct16_HO3-->
 

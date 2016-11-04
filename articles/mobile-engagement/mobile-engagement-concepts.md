@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Mobile Engagement – fogalmak | Microsoft Azure"
-    description="Azure Mobile Engagement – fogalmak"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="dwrede"
-    editor="" />
+---
+title: Mobile Engagement – fogalmak | Microsoft Docs
+description: Azure Mobile Engagement – fogalmak
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/19/2016"
-    ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/19/2016
+ms.author: piyushjo
 
-
+---
 # Azure Mobile Engagement – fogalmak
-
 A Mobile Engagement néhány általános, minden támogatott platform esetén érvényes fogalmat használ. Ez a cikk röviden ismerteti ezen fogalmakat.
 
 A cikk remek kezdőpont, ha a Mobile Engagement új felhasználója. Emellett mindenképpen olvassa el a használt platformra vonatkozó dokumentációt, mert az pontosítja az ebben a cikkben ismertetett fogalmakat további információval, példákkal és lehetséges korlátozásokkal.
@@ -80,13 +78,10 @@ A további adatok szerkezete hasonlít a JSON-objektumokhoz: a kulcs/érték pá
 A kulcs/érték párok teljes fájának tárolása JSON-objektumként történik. A kulcs/érték pároknak azonban csupán az első szintjét bontja fel a rendszer, hogy közvetlenül elérhetők legyenek néhány olyan fejlett funkció számára, amilyen például a Segments (Szegmensek) (egyszerűen definiálhat például egy „Sci-Fi-rajongók” szegmenset, amely az összes olyan felhasználót tartalmazza, akik legalább 10 alkalommal küldték el a „content_viewed” eseményt az elmúlt hónapban a „scifi” értékű „content_type” további kulccsal kiegészítve). Ezért erősen ajánlott csak olyan egyszerű listákból álló további adatokat elküldeni, amelyekben a kulcs/érték párok skaláris értékek (például karakterláncok, dátumok, egész számok és logikai értékek).
 
 ## Következő lépések
-
-- [Windows Universal SDK overview for Azure Mobile Engagement (Windows Universal SDK és Azure Mobile Engagement – áttekintés)](mobile-engagement-windows-store-sdk-overview.md)
-- [Windows Phone Silverlight SDK overview for Azure Mobile Engagement (Windows Phone Silverlight SDK és Azure Mobile Engagement – áttekintés)](mobile-engagement-windows-phone-sdk-overview.md)
-- [iOS SDK for Azure Mobile Engagement (iOS SDK és Azure Mobile Engagement)](mobile-engagement-ios-sdk-overview.md)
-- [Android SDK és Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
-
-
+* [Windows Universal SDK overview for Azure Mobile Engagement (Windows Universal SDK és Azure Mobile Engagement – áttekintés)](mobile-engagement-windows-store-sdk-overview.md)
+* [Windows Phone Silverlight SDK overview for Azure Mobile Engagement (Windows Phone Silverlight SDK és Azure Mobile Engagement – áttekintés)](mobile-engagement-windows-phone-sdk-overview.md)
+* [iOS SDK for Azure Mobile Engagement (iOS SDK és Azure Mobile Engagement)](mobile-engagement-ios-sdk-overview.md)
+* [Android SDK és Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
 
 <!--HONumber=Sep16_HO4-->
 

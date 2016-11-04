@@ -1,47 +1,39 @@
-<properties 
-    pageTitle="Igény szerinti tartalomtovábbítás Java használatával | Microsoft Azure" 
-    description="Leírja, hogyan végezhet el az Azure Media Services használatával olyan gyakori műveleteket, mint az erőforrások kódolása, titkosítása és továbbítása." 
-    services="media-services" 
-    documentationCenter="java" 
-    authors="juliako" 
-    manager="erikre" 
-/>
+---
+title: Igény szerinti tartalomtovábbítás Java használatával | Microsoft Docs
+description: Leírja, hogyan végezhet el az Azure Media Services használatával olyan gyakori műveleteket, mint az erőforrások kódolása, titkosítása és továbbítása.
+services: media-services
+documentationcenter: java
+author: juliako
+manager: erikre
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article"
-    ms.date="10/12/2016"   
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 10/12/2016
+ms.author: juliako
 
-
+---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Igény szerinti tartalomtovábbítás Java használatával
+[!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-[AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
-
-##<a name="setting-up-an-azure-account-for-media-services"></a>Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
-
+## <a name="setting-up-an-azure-account-for-media-services"></a>Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
 Media Services-fiók létrehozásához használja az Azure Portalt. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md) Miután az Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
 
-##<a name="setting-up-for-media-services-development"></a>A Media Services-fejlesztés előkészítése
-
+## <a name="setting-up-for-media-services-development"></a>A Media Services-fejlesztés előkészítése
 Ez a szakasz a Javához készült Media Services SDK használatával végzett Media Services-fejlesztés általános előfeltételeit tartalmazza.
 
-###<a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
+* Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
+* A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][] lehet telepíteni.
 
--   Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
--   A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][] lehet telepíteni.
-
-##<a name="how-to:-use-media-services-with-java"></a>Útmutató: A Media Services használata Javával
-
+## <a name="how-to:-use-media-services-with-java"></a>Útmutató: A Media Services használata Javával
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
 
 A kód használatához először létre kell hoznia egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
 
 A „clientId” és „clientSecret” változó helyére helyettesítse be a saját értékeit. A kód egy helyileg tárolt fájlt is használ. Meg kell adnia a saját használandó fájlját.
-
 
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -171,7 +163,7 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
     // Retrieve the list of Media Processors that match the name
     ListResult<MediaProcessorInfo> mediaProcessors = mediaService
                               .list(MediaProcessor.list().set("$filter", String.format("Name eq '%s'", preferredEncoder)));
-    
+
               // Use the latest version of the Media Processor
               MediaProcessorInfo mediaProcessor = null;
               for (MediaProcessorInfo info : mediaProcessors) {
@@ -179,37 +171,37 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
                       mediaProcessor = info;
                   }
               }
-    
+
               System.out.println("Using Media Processor: " + mediaProcessor.getName() + " " + mediaProcessor.getVersion());
-    
+
               // Create a task with the specified Media Processor
               String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
               String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
                       + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
                       + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
-    
+
               Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
                       .setConfiguration(encodingPreset).setName("Encoding");
-    
+
               // Create the Job; this automatically schedules and runs it.
               Job.Creator jobCreator = Job.create()
                       .setName(String.format("Encoding %s to %s", assetToEncode.getName(), encodingPreset))
                       .addInputMediaAsset(assetToEncode.getId()).setPriority(2).addTaskCreator(task);
               JobInfo job = mediaService.create(jobCreator);
-            
+
               String jobId = job.getId();
               System.out.println("Created Job with Id: " + jobId);
-    
+
               // Check to see if the Job has completed
               checkJobStatus(jobId);
               // Done with the Job
-    
+
               // Retrieve the output Asset
               ListResult<AssetInfo> outputAssets = mediaService.list(Asset.list(job.getOutputAssetsLink()));
               return outputAssets.get(0);
           }
-        
-    
+
+
           public static String getStreamingOriginLocator(AssetInfo asset) throws ServiceException {
               // Get the .ISM AssetFile
               ListResult<AssetFileInfo> assetFiles = mediaService.list(AssetFile.list(asset.getAssetFilesLink()));
@@ -220,63 +212,59 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
                       break;
                   }
               }
-    
+
               AccessPolicyInfo originAccessPolicy;
               LocatorInfo originLocator = null;
-    
+
               // Create a 30-day readonly AccessPolicy
               double durationInMinutes = 60 * 24 * 30;
               originAccessPolicy = mediaService.create(
                       AccessPolicy.create("Streaming policy", durationInMinutes, EnumSet.of(AccessPolicyPermission.READ)));
-    
+
               // Create a Locator using the AccessPolicy and Asset
               originLocator = mediaService
                       .create(Locator.create(originAccessPolicy.getId(), asset.getId(), LocatorType.OnDemandOrigin));
-    
+
               // Create a Smooth Streaming base URL
               return originLocator.getPath() + streamingAssetFile.getName() + "/manifest";
           }
-    
+
           private static void checkJobStatus(String jobId) throws InterruptedException, ServiceException {
               boolean done = false;
               JobState jobState = null;
               while (!done) {
                   // Sleep for 5 seconds
                   Thread.sleep(5000);
-                
+
                   // Query the updated Job state
                   jobState = mediaService.get(Job.get(jobId)).getState();
                   System.out.println("Job state: " + jobState);
-    
+
                   if (jobState == JobState.Finished || jobState == JobState.Canceled || jobState == JobState.Error) {
                       done = true;
                   }
               }
           }
-    
+
     }
 
 
-##<a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## <a name="provide-feedback"></a>Visszajelzés küldése
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##<a name="provide-feedback"></a>Visszajelzés küldése
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-##<a name="additional-resources"></a>További források
-
-A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][].
+## <a name="additional-resources"></a>További források
+A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][Java-dokumentáció az Azure-könyvtárakban].
 
 <!-- URLs. -->
 
-  [Azure Java fejlesztői központ]: http://azure.microsoft.com/develop/java/
-  [Java-dokumentáció az Azure-könyvtárakban]: http://dl.windowsazure.com/javadoc/
-  [Media Services ügyféloldali fejlesztés]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Azure Java fejlesztői központ]: http://azure.microsoft.com/develop/java/
+[Java-dokumentáció az Azure-könyvtárakban]: http://dl.windowsazure.com/javadoc/
+[Media Services ügyféloldali fejlesztés]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
- 
+
 
 
 

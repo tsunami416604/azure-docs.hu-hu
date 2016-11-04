@@ -1,63 +1,55 @@
-<properties
-    pageTitle="Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel | Microsoft Azure"
-    description="Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
-    services="storage"
-    documentationCenter=".net"
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+---
+title: Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel | Microsoft Docs
+description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
+services: storage
+documentationcenter: .net
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="hero-article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 10/18/2016
+ms.author: tamram
 
-
-
+---
 # <a name="get-started-with-azure-table-storage-using-.net"></a>Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Áttekintés
-
 Az Azure Table Storage egy olyan szolgáltatás, amely strukturált NoSQL-adatokat tárol a felhőben. A Table Storage egy séma nélküli kulcs-/attribútumtár. Mivel a Table Storage séma nélküli, az adatokat könnyen az alkalmazás változó igényeihez igazíthatja. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó. Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
 
 A Table Storage segítségével rugalmas adatkészleteket tárolhat, például webalkalmazások felhasználói adatait, címtárakat, eszközadatokat és bármilyen egyéb metaadatot, amelyre a szolgáltatásnak szüksége van. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
 
 ### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-
 Ez az oktatóanyag bemutatja, hogyan írhat .NET kódot néhány, az Azure Table Storage szolgáltatást használó általános forgatókönyvhöz, beleértve a táblák létrehozását és törlését, valamint táblaadatok beszúrását, frissítését, törlését és lekérdezését.
 
 **Az oktatóanyag áttekintésének becsült ideje:** 45 perc
 
 **Előfeltételek:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
-- [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
-- [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- Egy [Azure-tárfiók](storage-create-storage-account.md#create-a-storage-account)
+* [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+* [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+* Egy [Azure-tárfiók](storage-create-storage-account.md#create-a-storage-account)
 
-[AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
+[!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
 ### <a name="more-samples"></a>További példák
-
 További példák a Table Storage használatára: [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel). Letöltheti és futtathatja a mintaalkalmazást, vagy megkeresheti a kódot a GitHubon.
 
+[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
-
-[AZURE.INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
+[!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
 ### <a name="add-namespace-declarations"></a>Névtér-deklarációk hozzáadása
-
 Adja hozzá a következő `using` utasításokat a `program.cs` fájl elejéhez:
 
     using Microsoft.Azure; // Namespace for CloudConfigurationManager
@@ -65,11 +57,9 @@ Adja hozzá a következő `using` utasításokat a `program.cs` fájl elejéhez:
     using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
 ### <a name="parse-the-connection-string"></a>Kapcsolati karakterlánc elemzése
-
-[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
+[!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-table-service-client"></a>A Table szolgáltatásügyfél létrehozása
-
 A **CloudTableClient** osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. A szolgáltatásügyfél létrehozásának egyik módja:
 
     // Create the table client.
@@ -78,7 +68,6 @@ A **CloudTableClient** osztály segítségével lekérheti a Table Storage-ban t
 Most már készen áll a Table Storage-ból adatokat olvasó és abba adatokat író kód írására.
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-
 A példa bemutatja, hogyan hozhat létre táblát, ha még nem rendelkezik vele:
 
     // Retrieve the storage account from the connection string.
@@ -95,7 +84,6 @@ A példa bemutatja, hogyan hozhat létre táblát, ha még nem rendelkezik vele:
     table.CreateIfNotExists();
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-
 Az entitásokat a rendszer C\# objektumokká képezi le egy **TableEntity** osztályból származtatott egyéni osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé.  A Table Service szolgáltatásban tárolni kívánt tulajdonságoknak egy, a `get` és a `set` elemet is elérhetővé tévő támogatott típus nyilvános tulajdonságának kell lenniük.
 Az entitástípusnak emellett elérhetővé *kell* tennie egy paraméter nélküli konstruktort is.
 
@@ -138,13 +126,12 @@ Az entitásokat is tartalmazó táblaműveleteket a korábban, a „Tábla létr
     table.Execute(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-
 Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat egy táblába. Néhány további megjegyzés a kötegműveletekkel kapcsolatban:
 
--  Egyetlen kötegművelettel frissítéseket, törléseket és beszúrásokat hajthat végre.
--  Egy kötegművelet legfeljebb 100 entitást tartalmazhat.
--  Egy kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.
--  Ugyan lekérdezést is végre lehet hajtani kötegműveletként, de ilyenkor ez lehet a köteg egyetlen művelete.
+* Egyetlen kötegművelettel frissítéseket, törléseket és beszúrásokat hajthat végre.
+* Egy kötegművelet legfeljebb 100 entitást tartalmazhat.
+* Egy kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.
+* Ugyan lekérdezést is végre lehet hajtani kötegműveletként, de ilyenkor ez lehet a köteg egyetlen művelete.
 
 <!-- -->
 Az alábbi példakód létrehoz két entitásobjektumot, és mindkettőt hozzáadja a **TableBatchOperation** művelethez az **Insert** módszerrel. Ezután meghívja a **CloudTable.Execute** objektumot a művelet végrehajtásához.
@@ -180,7 +167,6 @@ Az alábbi példakód létrehoz két entitásobjektumot, és mindkettőt hozzáa
     table.ExecuteBatch(batchOperation);
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
-
 Ha egy táblából egy partíció összes entitását le szeretné kérni, használja a **TableQuery** objektumot.
 Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
 
@@ -205,7 +191,6 @@ Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitá
     }
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
-
 Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat egy tartományt a partíciókulcs és a sorkulcs szűrőjének kombinálásával. Az alábbi példakód két szűrő segítségével kéri le az összes olyan entitást a „Smith” partícióból, ahol a sorkulcs (keresztnév) az ábécében az „E”-t megelőző betűvel kezdődik, majd megjeleníti a lekérdezés eredményeit.
 
     // Retrieve the storage account from the connection string.
@@ -233,7 +218,6 @@ Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat e
     }
 
 ## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
-
 Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kódban a **TableOperation** művelettel adja meg a „Ben Smith” nevű ügyfelet.
 Ezzel a módszerrel a rendszer egy gyűjtemény helyett csak egyetlen entitást ad vissza, és az **ableResult.Result** táblában visszaadott érték egy **CustomerEntity** objektum.
 Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.
@@ -261,7 +245,6 @@ Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leg
        Console.WriteLine("The phone number could not be retrieved.");
 
 ## <a name="replace-an-entity"></a>Entitás cseréje
-
 Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. Az **Insert** parancs hívása helyett a kód a **Replace** parancsot használja. A rendszer így teljesen lecseréli az entitást a kiszolgálón, hacsak az a lekérdezés óta nem módosult, mert ez esetben a művelet sikertelen lesz.  Erre a hibára azért van szükség, hogy az alkalmazás ne írhasson felül véletlenül egy olyan módosítást, amelyet az alkalmazás egy másik összetevője hozott létre a lekérés és a frissítés között.  A hiba megfelelő kezeléséhez kérje le újra az entitást, végezze el a módosításokat (ha még érvényesek), majd hajtson végre egy újabb **Replace** műveletet.  A következő szakaszban megtudhatja, hogyan bírálhatja felül ezt a viselkedést.
 
     // Retrieve the storage account from the connection string.
@@ -301,7 +284,6 @@ Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, mód
        Console.WriteLine("Entity could not be retrieved.");
 
 ## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy lecserélése
-
 Ha az entitás a kiszolgálóról való lekérdezés óta módosult, a **Replace** műveletek sikertelenek lesznek.  Ezenkívül a **Replace** művelet sikeres végrehajtásához először le kell kérnie az entitást a kiszolgálóról.
 Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hogy a benne tárolt aktuális értékek irrelevánsak-e. A frissítés mindent felülír.  Ehhez használja az **InsertOrReplace** műveletet.  Ha nem létezik az entitás, ez a művelet beszúrja, ha pedig létezik, akkor a legutóbbi frissítés idejétől függetlenül lecseréli.  Az alábbi kódpéldában a rendszer lekérdezi Ben Smith ügyfélentitását, majd az **InsertOrReplace** művelettel menti a kiszolgálóra.  Az entitáson a lekérési és a frissítési művelet között történt összes módosítást felül lesz írva.
 
@@ -342,7 +324,6 @@ Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hog
        Console.WriteLine("Entity could not be retrieved.");
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-
 Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. A kivetítésről az [Introducing Upsert and Query Projection (Az upsert (frissítés/beszúrás) és a lekérdezésleképezés bemutatása) blogbejegyzés][] című blogbejegyzésből tudhat meg többet. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
 
     // Retrieve the storage account from the connection string.
@@ -367,7 +348,6 @@ Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti
     }
 
 ## <a name="delete-an-entity"></a>Entitás törlése
-
 A lekérdezés után az entitás frissítésénél bemutatott minta alapján egyszerűen törölheti az entitásokat.  Az alábbi kód lekérdez, majd töröl egy ügyfélentitást.
 
     // Retrieve the storage account from the connection string.
@@ -404,7 +384,6 @@ A lekérdezés után az entitás frissítésénél bemutatott minta alapján egy
        Console.WriteLine("Could not retrieve the entity.");
 
 ## <a name="delete-a-table"></a>Tábla törlése
-
 Végezetül pedig az alábbi példakóddal törölhető egy tábla a tárfiókból. A törölt táblák a törlés után egy ideig nem hozhatók létre újra.
 
     // Retrieve the storage account from the connection string.
@@ -421,7 +400,6 @@ Végezetül pedig az alábbi példakóddal törölhető egy tábla a tárfiókb�
     table.DeleteIfExists();
 
 ## <a name="retrieve-entities-in-pages-asynchronously"></a>Oldalak entitásainak aszinkron lekérése
-
 Ha sok entitást olvas, és az összes visszaadott entitás helyett csak az éppen lekérdezett entitásokat szeretné feldolgozni/megjeleníteni, szegmentált lekérdezéssel kérje le az entitásokat. A példa bemutatja, hogy az Async-Await mintázattal hogyan kérhetők le eredmények az oldalakról úgy, hogy ne legyen letiltva a végrehajtás, amíg egy nagy eredménykészletre várakozik. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Asynchronous Programming with Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Aszinkron programozás az Async és Await műveletekkel (C# és Visual Basic)).
 
     // Initialize a default TableQuery to retrieve all the entities in the table.
@@ -447,35 +425,35 @@ Ha sok entitást olvas, és az összes visszaadott entitás helyett csak az épp
     } while(continuationToken != null);
 
 ## <a name="next-steps"></a>Következő lépések
-
 Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is:
 
-- További Table Storage-példákat a [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) című cikkben tekinthet meg.
-- A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
-    - [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-    - [REST API – referencia](http://msdn.microsoft.com/library/azure/dd179355)
-- Az [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md) használatával megtudhatja, hogyan egyszerűsítheti az Azure Storage használatához írt kódot
-- Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
-    - [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
-    - [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../sql-database/sql-database-develop-dotnet-simple.md) a relációs adatok tárolásához.
+* További Table Storage-példákat a [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) című cikkben tekinthet meg.
+* A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
+  * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+  * [REST API – referencia](http://msdn.microsoft.com/library/azure/dd179355)
+* Az [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md) használatával megtudhatja, hogyan egyszerűsítheti az Azure Storage használatához írt kódot
+* Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
+  * [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
+  * [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../sql-database/sql-database-develop-dotnet-simple.md) a relációs adatok tárolásához.
 
-  [Az Azure SDK for .NET letöltése és telepítése]: /develop/net/
-  [Azure-projekt létrehozása a Visual Studióban]: http://msdn.microsoft.com/library/azure/ee405487.aspx
+[Az Azure SDK for .NET letöltése és telepítése]: /develop/net/
+[Azure-projekt létrehozása a Visual Studióban]: http://msdn.microsoft.com/library/azure/ee405487.aspx
 
-  [Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
-  [Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
-  [Blob7]: ./media/storage-dotnet-how-to-use-table-storage/blob7.png
-  [Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
-  [Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
+[Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
+[Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
+[Blob7]: ./media/storage-dotnet-how-to-use-table-storage/blob7.png
+[Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
+[Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
 
   [Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx (Az upsert (frissítés/beszúrás) és a lekérdezésleképezés bemutatása) blogbejegyzés
-  [.NET ügyféloldali kódtár – referencia]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [Az Azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-  [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
-  [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-  [Térbeli]: http://nuget.org/packages/System.Spatial/5.0.2
-  [How to: Programmatically access Table storage]: #tablestorage (Útmutató: A Table Storage elérése programozott módon)
+
+[.NET ügyféloldali kódtár – referencia]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+[Az Azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/
+[Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+[OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
+[Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
+[Térbeli]: http://nuget.org/packages/System.Spatial/5.0.2
+[How to: Programmatically access Table storage]: #tablestorage (Útmutató: A Table Storage elérése programozott módon)
 
 
 

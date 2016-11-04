@@ -1,37 +1,36 @@
-<properties
-    pageTitle="Azure Search-index létrehozása REST API használatával | Microsoft Azure | Üzemeltetett felhőalapú keresőszolgáltatás"
-    description="Index létrehozása kódból az Azure Search HTTP REST API használatával."
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-    manager=""
-    editor=""
-    tags="azure-portal"/>
+---
+title: Azure Search-index létrehozása REST API használatával | Microsoft Docs
+description: Index létrehozása kódból az Azure Search HTTP REST API használatával.
+services: search
+documentationcenter: ''
+author: ashmaka
+manager: ''
+editor: ''
+tags: azure-portal
 
-<tags
-    ms.service="search"
-    ms.devlang="rest-api"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
-
+---
 # Azure Search-index létrehozása REST API használatával
-> [AZURE.SELECTOR]
-- [Áttekintés](search-what-is-an-index.md)
-- [Portál](search-create-index-portal.md)
-- [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
-
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-what-is-an-index.md)
+> * [Portál](search-create-index-portal.md)
+> * [.NET](search-create-index-dotnet.md)
+> * [REST](search-create-index-rest-api.md)
+> 
+> 
 
 Ez a cikk végigvezeti az Azure Search-[index](https://msdn.microsoft.com/library/azure/dn798941.aspx) Azure Search REST API használatával történő létrehozásának folyamatán.
 
 Már az útmutató követése és az index létrehozása előtt [létre kell hoznia egy Azure Search szolgáltatást](search-create-service-portal.md).
 
 Az Azure Search-index REST API használatával történő létrehozásához egyetlen HTTP POST-kérelmet fog küldeni az Azure Search szolgáltatás URL-végpontjának. Az index definícióját a kérés törzse fogja tartalmazni megfelelően formázott JSON-tartalomként.
-
 
 ## I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
 Most, hogy létrehozta az Azure Search szolgáltatást, HTTP-kérelmeket küldhet a szolgáltatás URL-végpontjának a REST API használatával. Azonban az *összes* API-kérelemnek tartalmaznia kell a létesített Search szolgáltatás számára előállított API-kulcsot. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
@@ -42,8 +41,8 @@ Most, hogy létrehozta az Azure Search szolgáltatást, HTTP-kérelmeket küldhe
 
 A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
- - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
- - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
+* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
+* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
 
 Index létrehozása céljából az elsődleges és a másodlagos adminisztrációs kulcsot is használhatja.
 
@@ -87,9 +86,7 @@ A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mez
 1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési karakterlánc paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2015-02-28`).
 2. A kérelem fejlécében a `Content-Type` számára adja meg az `application/json` beállítást. Az `api-key` fejlécben is meg kell adni a szolgáltatás I. lépésben azonosított adminisztrációs kulcsát.
 
-
 Az alábbi kérelem küldéséhez meg kell adnia a saját szolgáltatásnevét és API-kulcsát:
-
 
     POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
     Content-Type: application/json
@@ -106,8 +103,6 @@ Miután végzett az index használatával, és törölni szeretné, csak küldj�
 
 ## Tovább
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.
-
-
 
 <!--HONumber=Sep16_HO4-->
 

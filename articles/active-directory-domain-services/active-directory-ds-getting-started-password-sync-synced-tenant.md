@@ -1,22 +1,21 @@
-<properties
-    pageTitle="Azure AD tartományi szolgáltatások: Jelszavak szinkronizálásának engedélyezése | Microsoft Azure"
-    description="Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+---
+title: 'Azure AD tartományi szolgáltatások: Jelszavak szinkronizálásának engedélyezése | Microsoft Docs'
+description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
+services: active-directory-ds
+documentationcenter: ''
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
 
-<tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/20/2016"
-    ms.author="maheshu"/>
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/20/2016
+ms.author: maheshu
 
-
+---
 # Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
 Az előző feladatokban engedélyezte az Azure AD tartományi szolgáltatásokat az Azure AD-bérlő számára. A következő feladat az Azure AD tartományi szolgáltatásokkal való jelszó-szinkronizálás engedélyezése. Ha a bejelentkezési adatok szinkronizálása be van állítva, a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományra.
 
@@ -24,16 +23,16 @@ Az ehhez szükséges lépések eltérőek aszerint, hogy a szervezet csak felhő
 
 <br>
 
-> [AZURE.SELECTOR]
-- [Kizárólag felhőalapú Azure AD-bérlő](active-directory-ds-getting-started-password-sync.md)
-- [Szinkronizált Azure AD-bérlő](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> [!div class="op_single_selector"]
+> * [Kizárólag felhőalapú Azure AD-bérlő](active-directory-ds-getting-started-password-sync.md)
+> * [Szinkronizált Azure AD-bérlő](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> 
+> 
 
 <br>
 
-
 ## 5. feladat: Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra szinkronizált Azure AD bérlő esetén
 A szinkronizált Azure AD-bérlő a szervezet helyi címtárával való szinkronizálásra van beállítva az Azure AD Connect használatával. Az Azure AD Connect alapértelmezés szerint nem szinkronizálja az NTLM és Kerberos hitelesítő adatok kivonatait az Azure AD-val. Az Azure AD tartományi szolgáltatások használatához az Azure AD Connectet úgy kell konfigurálni, hogy szinkronizálja az NTLM- és Kerberos-hitelesítéshez szükséges hitelesítőadat-kivonatokat. Az alábbi lépésekkel engedélyezheti a kivonatok az Azure AD-bérlővel való szinkronizálását.
-
 
 ### Azure AD Connect telepítése vagy frissítése
 Telepítse az Azure AD Connect legújabb ajánlott kiadását egy tartományhoz csatlakoztatott számítógépre. Ha az Azure AD Connect egy példánya már telepítve van, frissítse az Azure AD Connect legújabb verziójára. A már ismert és esetleg már javított problémák/hibák elkerülése érdekében győződjön meg arról, hogy az Azure AD Connect legújabb verzióját használja.
@@ -42,10 +41,12 @@ Telepítse az Azure AD Connect legújabb ajánlott kiadását egy tartományhoz 
 
 Ajánlott verzió: **1.1.281.0** – közzététel dátuma: 2016. szeptember 7.
 
-  > [AZURE.WARNING] Az Azure AD Connect legújabb ajánlott verzióját FELTÉTLENÜL telepítenie kell ahhoz, hogy az örökölt (NTLM és Kerberos hitelesítéshez szükséges) jelszavas hitelesítő adatokat szinkronizálni lehessen az Azure AD bérlőhöz. Ez a funkció nem érhető el az Azure AD Connect korábbi verzióiban vagy az örökölt DirSync eszközzel.
+> [!WARNING]
+> Az Azure AD Connect legújabb ajánlott verzióját FELTÉTLENÜL telepítenie kell ahhoz, hogy az örökölt (NTLM és Kerberos hitelesítéshez szükséges) jelszavas hitelesítő adatokat szinkronizálni lehessen az Azure AD bérlőhöz. Ez a funkció nem érhető el az Azure AD Connect korábbi verzióiban vagy az örökölt DirSync eszközzel.
+> 
+> 
 
 Az Azure AD Connect telepítési utasításai a következő cikkben érhetők el: [Ismerkedés az Azure AD Connecttel](../active-directory/active-directory-aadconnect.md)
-
 
 ### NTLM és Kerberos hitelesítőadat-kivonatok Azure AD-val történő szinkronizálásának engedélyezése
 A teljes jelszó-szinkronizálás és a helyszíni felhasználók jelszókivonatainak Azure AD-bérlővel való szinkronizálásának engedélyezéséhez hajtsa végre a következő PowerShell-parancsfájlt minden AD-erdőben. A parancsfájl engedélyezi az NTLM-/Kerberos-hitelesítéshez szükséges hitelesítő adatok szinkronizálását az Azure AD-bérlővel.
@@ -66,20 +67,13 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 A címtár méretétől (felhasználók, csoportok stb. száma) függ, hogy a jelszókivonatok Azure AD-val történő szinkronizálása mennyi időt vesz igénybe. A jelszavak a hitelesítő kivonatok Azure AD-hoz történő szinkronizálását követően rövid időn belül használhatóvá válnak az Azure AD tartományi szolgáltatások által kezelt tartományban.
 
-
 <br>
 
 ## Kapcsolódó tartalom
-
-- [Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra csak felhőalapú Azure AD címtárhoz](active-directory-ds-getting-started-password-sync.md)
-
-- [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
-
-- [Windows virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-
-- [Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-
-
+* [Jelszó-szinkronizálás engedélyezése AAD tartományi szolgáltatásokra csak felhőalapú Azure AD címtárhoz](active-directory-ds-getting-started-password-sync.md)
+* [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
+* [Windows virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
 <!--HONumber=Sep16_HO4-->
 

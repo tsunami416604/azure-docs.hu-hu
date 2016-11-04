@@ -1,23 +1,22 @@
 
-<properties
-    pageTitle="Az Azure AD Connect Health használata az AD DS szolgáltatással | Microsoft Azure"
-    description="Ez az Azure AD Connect Health-oldal ismerteti az AD DS figyelésének módját."
-    services="active-directory"
-    documentationCenter=""
-    authors="arluca"
-    manager="samueld"
-    editor="curtand"/>
+---
+title: Az Azure AD Connect Health használata az AD DS szolgáltatással | Microsoft Docs
+description: Ez az Azure AD Connect Health-oldal ismerteti az AD DS figyelésének módját.
+services: active-directory
+documentationcenter: ''
+author: arluca
+manager: samueld
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/30/2016"
-    ms.author="arluca"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/30/2016
+ms.author: arluca
 
-
+---
 # Az Azure AD Connect Health használata az AD DS szolgáltatással
 Az alábbi dokumentáció az Active Directory tartományi szolgáltatások Azure AD Connect Health használatával történő figyelésére vonatkozik. Az AD DS támogatott verziói: Windows Server 2008 R2, Windows Server 2012 és Windows Server 2012 R2.
 
@@ -52,7 +51,6 @@ Ez a funkció különböző teljesítményszámlálók grafikus trendjeit jelen�
 Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de belefoglalhat továbbiakat is úgy, hogy a szűrő parancsra kattint, és kijelöli a kívánt teljesítményszámlálót, vagy törli annak jelölését. Továbbá, egy teljesítményszámláló diagramjára duplán kattintva megnyílik egy új panel, amely az egyes megfigyelt tartományvezérlőkhöz tartozó adatpontokat tartalmazza.
 
 ## Kapcsolódó hivatkozások
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](active-directory-aadconnect-health-operations.md)
@@ -60,8 +58,6 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 * [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health Version History (Az Azure AD Connect Health verzióelőzményei)](active-directory-aadconnect-health-version-history.md)
-
-
 
 <!--HONumber=Oct16_HO1-->
 

@@ -1,44 +1,43 @@
-<properties
-   pageTitle="Az Azure SQL Data Warehouse lekérdezése (sqlcmd) | Microsoft Azure"
-   description="Az Azure SQL Data Warehouse lekérdezése az sqlcmd parancssori segédprogram használatával."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
-   editor=""/>
+---
+title: Az Azure SQL Data Warehouse lekérdezése (sqlcmd) | Microsoft Docs
+description: Az Azure SQL Data Warehouse lekérdezése az sqlcmd parancssori segédprogram használatával.
+services: sql-data-warehouse
+documentationcenter: NA
+author: sonyam
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="09/06/2016"
-   ms.author="barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 09/06/2016
+ms.author: barbkess;sonyama
 
-
+---
 # Az Azure SQL Data Warehouse lekérdezése (sqlcmd)
+> [!div class="op_single_selector"]
+> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-
-Ez az útmutató az [sqlcmd][] parancssori segédprogramot használja az Azure SQL Data Warehouse lekérdezéséhez.  
+Ez az útmutató az [sqlcmd][sqlcmd] parancssori segédprogramot használja az Azure SQL Data Warehouse lekérdezéséhez.  
 
 ## 1. Kapcsolódás
+Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncban a következő paraméterekre van szükség:
 
-Az [sqlcmd][] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncban a következő paraméterekre van szükség:
-
-+ **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
-+ **Database (-d):** Az adatbázis neve.
-+ **Enable Quoted Identifiers (-I):** Az SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
+* **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
+* **Database (-d):** Az adatbázis neve.
+* **Enable Quoted Identifiers (-I):** Az SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-+ **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó formátumban.`>`
-+ **Password (-P):** A felhasználóhoz tartozó jelszó.
+* **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó formátumban.`>`
+* **Password (-P):** A felhasználóhoz tartozó jelszó.
 
 A kapcsolati karakterlánc például a következőképpen nézhet ki:
 
@@ -48,7 +47,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 
 Az Azure Active Directory beépített hitelesítés használatához meg kell adnia az Azure Active Directory paramétereit:
 
-+ **Azure Active Directory Authentication (-G):** az Azure Active Directory használata a hitelesítéshez
+* **Azure Active Directory Authentication (-G):** az Azure Active Directory használata a hitelesítéshez
 
 A kapcsolati karakterlánc például a következőképpen nézhet ki:
 
@@ -56,10 +55,12 @@ A kapcsolati karakterlánc például a következőképpen nézhet ki:
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
-> [AZURE.NOTE] Az Active Directory használatával történő hitelesítéshez [engedélyeznie kell az Azure Active Directory-hitelesítést](sql-data-warehouse-authentication.md).
+> [!NOTE]
+> Az Active Directory használatával történő hitelesítéshez [engedélyeznie kell az Azure Active Directory-hitelesítést](sql-data-warehouse-authentication.md).
+> 
+> 
 
 ## 2. Lekérdezés
-
 A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.  Ebben a példában a lekérdezések elküldése interaktív módban történik.
 
 ```sql
@@ -80,7 +81,6 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## Következő lépések
-
 Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokumentációjában][sqlcmd] tekintheti meg.
 
 <!--Image references-->

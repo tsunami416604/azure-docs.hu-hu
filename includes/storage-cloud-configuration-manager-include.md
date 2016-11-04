@@ -12,7 +12,6 @@ Here's an example that shows how to use retrieve a connection string from a conf
 
 Using Azure Configuration Manager is optional. You can also use an API such as the .NET Framework's [ConfigurationManager class](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
 
-
 <!--HONumber=Sep16_HO4-->
 
 

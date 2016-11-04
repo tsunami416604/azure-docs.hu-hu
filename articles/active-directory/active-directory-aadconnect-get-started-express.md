@@ -1,21 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect: Első lépések a gyorsbeállításokkal | Microsoft Azure"
-    description="Ismerje meg, hogyan töltheti le, telepítheti és futtathatja az Azure AD Connect telepítővarázslóját."
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="stevenpo"
-    editor="curtand"/>
+---
+title: 'Azure AD Connect: Első lépések a gyorsbeállításokkal | Microsoft Docs'
+description: Ismerje meg, hogyan töltheti le, telepítheti és futtathatja az Azure AD Connect telepítővarázslóját.
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: stevenpo
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="06/27/2016"
-    ms.author="billmath;andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 06/27/2016
+ms.author: billmath;andkjell
 
+---
 # Első lépések az Azure AD Connecttel a gyorsbeállítások használatával
 Az Azure AD Connect **Express Settings** (Gyorsbeállítások) akkor használható, ha egyerdős topológiával rendelkezik, és a hitelesítéshez [jelszó-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) alkalmaz. Az **Express Settings** (Gyorsbeállítások) az alapértelmezett beállítás, és ez használatos a leggyakoribb üzembe helyezési forgatókönyvhöz. Csak pár rövid kattintásnyira van attól, hogy kiterjessze helyszíni címtárát a felhőre.
 
@@ -30,26 +30,27 @@ Ezeket a lépéseket működés közben a [Videók](#videos) szakaszban tekinthe
 2. Keresse meg az **AzureADConnect.msi** fájlt, és kattintson rá duplán.
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
 4. Az Express settings (Gyorsbeállítások) képernyőn kattintson a **Use express settings** (Gyorsbeállítások használata) lehetőségre.  
-![Üdvözli az Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
+   ![Üdvözli az Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
 5. A Connect to Azure AD (Csatlakozás az Azure AD szolgáltatáshoz) képernyőn adja meg az Azure AD egy globális rendszergazdai fiókjának felhasználónevét és jelszavát. Kattintson a **Tovább** gombra.  
-![Csatlakozás az Azure AD szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectaad.png) Ha hibaüzenetet kap és problémák adódnak a kapcsolódással, tekintse meg a [Troubleshoot connectivity problems](active-directory-aadconnect-troubleshoot-connectivity.md) (Kapcsolati problémák elhárítása) szakaszt.
+   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectaad.png) Ha hibaüzenetet kap és problémák adódnak a kapcsolódással, tekintse meg a [Troubleshoot connectivity problems](active-directory-aadconnect-troubleshoot-connectivity.md) (Kapcsolati problémák elhárítása) szakaszt.
 6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, azaz FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. Kattintson a **Tovább** gombra.  
-![Csatlakozás az AD DS szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectad.png)
+   ![Csatlakozás az AD DS szolgáltatáshoz](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. Az [**Azure AD sign-in configuration**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) (Azure AD bejelentkezés konfigurálása) lap csak akkor jelenik meg, ha nem végezte el [a tartományok ellenőrzését](active-directory-add-domain.md) az [előfeltételek](active-directory-aadconnect-prerequisites.md) közt.
-![Nem ellenőrzött tartományok](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
-Ha ez a lap megjelenik, tekintse át az összes **Not Added** (Hozzá nem adott) és **Not Verified** (Nem ellenőrzött) megjelöléssel rendelkező tartományt. Bizonyosodjon meg róla, hogy az Ön által használt tartományok ellenőrizve lettek az Azure AD szolgáltatásban. Kattintson a Frissítés jelre, miután ellenőrizte a tartományokat.
+   ![Nem ellenőrzött tartományok](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
+   Ha ez a lap megjelenik, tekintse át az összes **Not Added** (Hozzá nem adott) és **Not Verified** (Nem ellenőrzött) megjelöléssel rendelkező tartományt. Bizonyosodjon meg róla, hogy az Ön által használt tartományok ellenőrizve lettek az Azure AD szolgáltatásban. Kattintson a Frissítés jelre, miután ellenőrizte a tartományokat.
 8. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
-    - Másik lehetőségként a Ready to configure (Konfigurálásra kész) oldalon törölheti a **Start the synchronization process as soon as configuration completes** (Szinkronizálási folyamat indítása a konfiguráció befejeztével) beállítás bejelölését. A jelölőnégyzet jelölését akkor érdemes törölnie, ha további konfigurálást, például [szűrést](active-directory-aadconnectsync-configure-filtering.md) kíván végezni. Ha törli a beállítást, a varázsló konfigurálja a szinkronizálást, az ütemezőt azonban letiltva hagyja. Az ütemező nem fog futni, amíg manuálisan nem engedélyezi [a telepítővarázsló ismételt futtatásával](active-directory-aadconnectsync-installation-wizard.md).
-    - Ha az Exchange működik a helyszíni Active Directory szolgáltatásban, akkor lehetősége van engedélyezni az [**Exchange hibrid telepítést**](https://technet.microsoft.com/library/jj200581.aspx) is. Ezt a beállítást akkor engedélyezze, ha Exchange postaládákat egy időben kíván üzemeltetni a felhőben és a helyszíni rendszeren.
-![Készen áll az Azure AD Connect konfigurálására](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
+   * Másik lehetőségként a Ready to configure (Konfigurálásra kész) oldalon törölheti a **Start the synchronization process as soon as configuration completes** (Szinkronizálási folyamat indítása a konfiguráció befejeztével) beállítás bejelölését. A jelölőnégyzet jelölését akkor érdemes törölnie, ha további konfigurálást, például [szűrést](active-directory-aadconnectsync-configure-filtering.md) kíván végezni. Ha törli a beállítást, a varázsló konfigurálja a szinkronizálást, az ütemezőt azonban letiltva hagyja. Az ütemező nem fog futni, amíg manuálisan nem engedélyezi [a telepítővarázsló ismételt futtatásával](active-directory-aadconnectsync-installation-wizard.md).
+   * Ha az Exchange működik a helyszíni Active Directory szolgáltatásban, akkor lehetősége van engedélyezni az [**Exchange hibrid telepítést**](https://technet.microsoft.com/library/jj200581.aspx) is. Ezt a beállítást akkor engedélyezze, ha Exchange postaládákat egy időben kíván üzemeltetni a felhőben és a helyszíni rendszeren.
+     ![Készen áll az Azure AD Connect konfigurálására](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
 9. A telepítés befejezése után kattintson az **Exit** (Kilépés) gombra.
 10. Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 ## Videók
-
 A gyorstelepítés használatát bemutató videót itt tekintheti meg:
 
->[AZURE.VIDEO azure-active-directory-connect-express-settings]
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Express-Settings/player]
+> 
+> 
 
 ## Következő lépések
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](active-directory-aadconnect-whats-next.md).
@@ -61,15 +62,12 @@ Ismerje meg részletesebben a következő általános témaköröket: [az üteme
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
 
 ## Kapcsolódó dokumentáció
-
-Témakör |  
---------- | ---------
-Az Azure AD Connect áttekintése | [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
-Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](active-directory-aadconnect-get-started-custom.md)
-Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md)
-Telepítési fiókok | [További információk az Azure AD Connect-fiókokkal és -engedélyekkel kapcsolatban](active-directory-aadconnect-accounts-permissions.md)
-
-
+| Témakör |
+| --- | --- |
+| Az Azure AD Connect áttekintése |
+| Telepítés testreszabott beállítások használatával |
+| Frissítés a DirSync szolgáltatásról |
+| Telepítési fiókok |
 
 <!--HONumber=sep16_HO1-->
 

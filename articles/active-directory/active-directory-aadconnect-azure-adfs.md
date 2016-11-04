@@ -1,25 +1,23 @@
-<properties
-    pageTitle="Az Active Directory összevonási szolgáltatások az Azure-ban | Microsoft Azure"
-    description="Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az AD FS szolgáltatást az Azure-ban, és biztosítson ezzel magas fokú rendelkezésre állást."
-    keywords="AD FS üzembe helyezése azure-ban, azure adfs üzembe helyezése, azure adfs, azure ad fs, adfs üzembe helyezése, ad fs üzembe helyezése, adfs azure-ban, adfs üzembe helyezése azure-ban, AD FS üzembe helyezése azure-ban, adfs azure, az AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba"
-    services="active-directory"
-    documentationCenter=""
-    authors="anandyadavmsft"
-    manager="femila"
-    editor=""/>
+---
+title: Az Active Directory összevonási szolgáltatások az Azure-ban | Microsoft Docs
+description: Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az AD FS szolgáltatást az Azure-ban, és biztosítson ezzel magas fokú rendelkezésre állást.
+keywords: AD FS üzembe helyezése azure-ban, azure adfs üzembe helyezése, azure adfs, azure ad fs, adfs üzembe helyezése, ad fs üzembe helyezése, adfs azure-ban, adfs üzembe helyezése azure-ban, AD FS üzembe helyezése azure-ban, adfs azure, az AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba
+services: active-directory
+documentationcenter: ''
+author: anandyadavmsft
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="07/13/2016"
-    ms.author="anandy;billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 07/13/2016
+ms.author: anandy;billmath
 
-
-# Az AD FS üzembe helyezése az Azure-ban 
-
+---
+# Az AD FS üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
 Az AD FS Azure-ban történő üzembe helyezése számos előnnyel jár. Alább ezek közül sorolunk fel néhányat:
 
@@ -29,7 +27,6 @@ Az AD FS Azure-ban történő üzembe helyezése számos előnnyel jár. Alább 
 * **Egyszerű felügyelet** – Az Azure Portal rendkívül könnyen használható felügyeleti funkciói révén az infrastruktúra kezelése kiemelkedően egyszerű és problémamentes feladat. 
 
 ## Tervezési alapelvek
-
 ![Az üzembe helyezés megtervezése](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
 A fenti diagram az AD FS-infrastruktúra Azure-ban való üzembe helyezéséhez javasolt alapszintű topológiát mutatja be. Alább részletesen is leírjuk a topológia különböző részei mögött álló elveket:
@@ -42,18 +39,16 @@ A fenti diagram az AD FS-infrastruktúra Azure-ban való üzembe helyezéséhez 
 * **Tárfiókok**: javasoljuk, hogy rendelkezzen legalább két tárfiókkal. Ha csupán egyetlen tárfiókot használ, azzal rendszerkritikus meghibásodási pontot hozhat létre, amely ahhoz vezethet, hogy az üzemelő példány nem fog rendelkezésre állni, ha bekövetkezik az a valószínűtlen eset, hogy a tárfiók működése leáll. Azzal, ha két tárfiókot használ, lefedheti mind a két meghibásodási lehetőséget.
 * **Hálózatok szétválasztása**: a webalkalmazásproxy-kiszolgálókat eltérő DMZ-hálózatokban helyezze üzembe. Osszon egy virtuális hálózatot két alhálózatra, majd a webalkalmazásproxy-kiszolgáló(ka)t helyezze üzembe az elszigetelt alhálózatban. Ezt követően egyszerűen megadhatja a hálózati biztonsági csoportok beállításait az egyes alhálózatokra vonatkozóan, és konfigurálhatja, hogy a rendszer csak a szükséges kommunikációt engedélyezze a két alhálózat között. Alább részletes információkat is megtudhat ezzel kapcsolatban az egyes üzemelőpéldány-típusokra vonatkozóan.
 
-##Az AD FS Azure-ban való üzembe helyezésének lépései
-
+## Az AD FS Azure-ban való üzembe helyezésének lépései
 Az ebben a részben szereplő lépések útmutatást nyújtanak az alábbiakban leírt AD FS-infrastruktúra Azure-ban való üzembe helyezéséhez.
 
 ### 1. A hálózat üzembe helyezése
-
 Ahogy fent már leírtuk, hozzon létre két, egyetlen virtuális hálózathoz tartozó különböző alhálózatot, vagy két teljesen különálló virtuális hálózatot (VNet). Ebben a cikkben egyetlen virtuális hálózatot hozunk létre, amelyet aztán két alhálózatra bontunk. Jelenleg ez az egyszerűbb megoldás, mivel két önálló virtuális hálózat esetében átjáróra lenne szükség a virtuális hálózatok között a kommunikációhoz.
 
 **1.1 Virtuális hálózat létrehozása**
 
 ![Virtuális hálózat létrehozása](./media/active-directory-aadconnect-azure-adfs/deploynetwork1.png)
-    
+
 Az Azure Portal webhelyen mindössze ki kell választania a kívánt virtuális hálózatot, amelyet aztán egy alhálózattal együtt akár egyetlen kattintással is üzembe helyezhet. Az INT alhálózat már definiálva van, és készen áll a virtuális gépek fogadására.
 A következő lépés, hogy egy másik alhálózatot vegyünk fel a hálózatba. Ez lesz a DMZ-alhálózat. A DMZ-alhálózat létrehozásához egyszerűen tegye a következőket:
 
@@ -63,7 +58,6 @@ A következő lépés, hogy egy másik alhálózatot vegyünk fel a hálózatba.
 * Az alhálózat létrehozásához adja meg az alhálózat nevét és a címtartományt.
 
 ![Alhálózat](./media/active-directory-aadconnect-azure-adfs/deploynetwork2.png)
-
 
 ![DMZ-alhálózat](./media/active-directory-aadconnect-azure-adfs/deploynetwork3.png)
 
@@ -101,14 +95,13 @@ Javasoljuk, hogy használja az ExpressRoute megoldást. Az ExpressRoute használ
 Habár mi az ExpressRoute használatát javasoljuk, bármelyik kapcsolódási módszert választhatja, ha az jobban megfelel szervezete igényeinek. Ha többet szeretne megtudni az ExpressRoute-ról és az ExpressRoute által kínált különböző kapcsolódási lehetőségekről, olvassa el [Az ExpressRoute technikai áttekintése](https://aka.ms/Azure/ExpressRoute) című cikket.
 
 ### 2. Tárfiókok létrehozása
-
 A magas rendelkezésre állás fenntartása érdekében hozzon létre két tárfiókot, így a rendszer elérhetősége sosem egyetlen tárfióktól fog függni. Az egyes rendelkezésre állási csoportokhoz tartozó gépeket ossza két csoportra, majd rendeljen a csoportokhoz egy-egy tárfiókot. Ne feledje, csak a tényleges tárterület-használatért kell fizetnie.
 
 ![Tárfiókok létrehozása](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
 ### 3. Rendelkezésre állási csoportok létrehozása
-
 Hozzon létre egyenként legalább 2 gépet tartalmazó rendelkezésre állási csoportokat a szerepkörök számára (tartományvezérlő/AD FS és WAP). Így a szerepkörök magasabb fokú rendelkezésre állást tudnak garantálni. A rendelkezésre állási csoportok létrehozása előtt határozza meg a következő paramétereket:
+
 * **Tartalék tartományok**: az azonos tartalék tartományba tartozó virtuális gépek ugyanazt az áramforrást és fizikai hálózati kapcsolót használják. Javasoljuk, hogy használjon legalább 2 különböző tartalék tartományt. A beállítás alapértelmezett értéke a 3, ennél az üzemelő példánynál meghagyhatja ezt.
 * **Frissítési tartományok**: az azonos frissítési tartományhoz tartozó gépeket a rendszer egyszerre indítja újra a frissítés során. Érdemes legalább 2 különböző frissítési tartományt használni. A beállítás alapértelmezett értéke az 5, ennél az üzemelő példánynál meghagyhatja ezt.
 
@@ -117,19 +110,19 @@ Hozzon létre egyenként legalább 2 gépet tartalmazó rendelkezésre állási 
 Hozza létre a következő rendelkezésre állási csoportokat:
 
 | Rendelkezésre állási csoport | Szerepkör | Tartalék tartományok | Frissítési tartományok |
-|:----------------:|:----:|:-----------:|:-----------|
-| contosodcset | Tartományvezérlő/ADFS | 3 | 5 |
-| contosowapset | WAP | 3 | 5 |
+|:---:|:---:|:---:|:--- |
+| contosodcset |Tartományvezérlő/ADFS |3 |5 |
+| contosowapset |WAP |3 |5 |
 
 ### 4.  Virtuális gépek üzembe helyezése
 A következő lépés, hogy üzembe helyezzük a virtuális gépeket, amelyek futtatni fogják az infrastruktúra különböző szerepköreit. Mindegyik rendelkezésre állási csoportban használjon legalább két gépet. Az alapszintű üzemelő példányhoz hozzon létre hat virtuális gépet.
 
 | Gép | Szerepkör | Alhálózat | Rendelkezésre állási csoport | Tárfiók | IP-cím |
-|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|contosodc1|Tartományvezérlő/ADFS|INT|contosodcset|contososac1|Statikus|
-|contosodc2|Tartományvezérlő/ADFS|INT|contosodcset|contososac2|Statikus|
-|contosowap1|WAP|DMZ|contosowapset|contososac1|Statikus|
-|contosowap2|WAP|DMZ|contosowapset|contososac2|Statikus|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| contosodc1 |Tartományvezérlő/ADFS |INT |contosodcset |contososac1 |Statikus |
+| contosodc2 |Tartományvezérlő/ADFS |INT |contosodcset |contososac2 |Statikus |
+| contosowap1 |WAP |DMZ |contosowapset |contososac1 |Statikus |
+| contosowap2 |WAP |DMZ |contosowapset |contososac2 |Statikus |
 
 Talán észrevette, hogy egyetlen NSG-t sem adtunk meg. Ez azért történt így, mert az Azure-ban az NSG-ket az alhálózatok szintjén is használhatja. Így az alhálózathoz vagy az NIC-objektumhoz társított különböző NSG-k segítségével az egyes gépek hálózati forgalmát is szabályozhatja. További információk: [Mi az a hálózati biztonsági csoport (NSG)?](https://aka.ms/Azure/NSG).
 Ha Ön kezeli a DNS-t, javasoljuk, hogy statikus IP-címeket használjon. Használhatja az Azure DNS-t is, és a tartomány DNS-rekordjaiban az Azure-beli teljes tartománynevük alapján is hivatkozhat az új gépekre.
@@ -140,20 +133,23 @@ Az üzembe helyezés befejezését követően a virtuális gépek paneljének az
 ### 5. Tartományvezérlő-/AD FS-kiszolgálók konfigurálása
  A bejövő kérések hitelesítéséhez az AD FS-nek kapcsolatban kell állnia a tartományvezérlővel. Javasoljuk, hogy helyezze üzembe az Azure-ban a tartományvezérlő replikáját, mivel ezzel hitelesítés alkalmával elkerülheti a költséges utat az Azure és a helyszíni tartományvezérlő között. A magas rendelkezésre állás kialakítása érdekében javasoljuk, hogy hozzon létre egy legalább 2 tartományvezérlőt tartalmazó rendelkezésre állási csoportot.
 
-|Tartományvezérlő|Szerepkör|Tárfiók|
-|:-----:|:-----:|:-----:|
-|contosodc1|Replika|contososac1|
-|contosodc2|Replika|contososac2|
+| Tartományvezérlő | Szerepkör | Tárfiók |
+|:---:|:---:|:---:|
+| contosodc1 |Replika |contososac1 |
+| contosodc2 |Replika |contososac2 |
 
 * Léptesse elő a két kiszolgálót replika tartományvezérlőnek DNS-sel.
 * Konfigurálja az AD FS-kiszolgálókat: telepítse az AD FS szerepkört a Kiszolgálókezelővel.
 
-###6.   A belső terheléselosztó (ILB) üzembe helyezése
-
+### 6.   A belső terheléselosztó (ILB) üzembe helyezése
 **6.1.  Az ILB létrehozása**
 
 ILB üzembe helyezéséhez válassza a Terheléselosztók lehetőséget az Azure Portal webhelyen, majd kattintson a hozzáadás (+) ikonra.
->[AZURE.NOTE] Ha a menüben nem látja a **Terheléselosztók** lehetőséget, kattintson a portálon bal oldalt alul található **Tallózás** gombra, és görgessen lefelé, amíg meg nem látja a **Terheléselosztók** elemet.  Ha megtalálta, kattintson a sárga csillagra. Ezzel a lehetőség bekerül a menübe. Most az új terheléselosztó ikont választva nyissa meg a panelt. Ezen megkezdheti a terheléselosztó konfigurálását.
+
+> [!NOTE]
+> Ha a menüben nem látja a **Terheléselosztók** lehetőséget, kattintson a portálon bal oldalt alul található **Tallózás** gombra, és görgessen lefelé, amíg meg nem látja a **Terheléselosztók** elemet.  Ha megtalálta, kattintson a sárga csillagra. Ezzel a lehetőség bekerül a menübe. Most az új terheléselosztó ikont választva nyissa meg a panelt. Ezen megkezdheti a terheléselosztó konfigurálását.
+> 
+> 
 
 ![Terheléselosztó tallózása](./media/active-directory-aadconnect-azure-adfs/browseloadbalancer.png)
 
@@ -164,37 +160,40 @@ ILB üzembe helyezéséhez válassza a Terheléselosztók lehetőséget az Azure
 * **IP-címkiosztás**: dinamikus.
 
 ![Belső terheléselosztó](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
- 
+
 Miután rákattint a Létrehozás gombra, a rendszer üzembe helyezi az ILB-t. Ezt követően meg kell jelennie a terheléselosztók listájában:
 
 ![Terheléselosztók listája az ILB létrehozását követően](./media/active-directory-aadconnect-azure-adfs/ilbdeployment2.png)
- 
+
 A következő lépés a háttérkészlet és a háttérmintavétel beállítása.
 
 **6.2.  Az ILB-háttérkészlet konfigurálása**
 
 Válassza ki az újonnan létrehozott ILB-t a Terheléselosztók panelen. Megnyílik a beállítások panelje. 
-1.  Válasszon a beállítási panelen elérhető háttérkészletek közül.
-2.  A Háttérkészlet hozzáadása panelen kattintson a Virtuális gép felvétele lehetőségre.
-3.  Megjelenik egy panel, amelyen kiválaszthatja a rendelkezésre állási csoportot.
-4.  Válassza az AD FS rendelkezésre állási csoportját.
+
+1. Válasszon a beállítási panelen elérhető háttérkészletek közül.
+2. A Háttérkészlet hozzáadása panelen kattintson a Virtuális gép felvétele lehetőségre.
+3. Megjelenik egy panel, amelyen kiválaszthatja a rendelkezésre állási csoportot.
+4. Válassza az AD FS rendelkezésre állási csoportját.
 
 ![Az ILB-háttérkészlet konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
- 
+
 **6.3.  A mintavétel konfigurálása**
 
 Az ILB beállítási paneljén válassza a Mintavételek lehetőséget.
-1.  Kattintson a Hozzáadás gombra.
-2.  Adja meg a mintavétel adatait. a. **Név**: a mintavétel neve. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Időköz**: 5 (alapértelmezett érték) – ez az az időköz, amelynek elteltével az ILB mintavételt végez a gépeken, az „e” háttérkészletben. **Nem kifogástalan állapot küszöbértéke**: 2 (alapértelmezett érték) – ez az a küszöbérték, amely meghatározza, hogy az ILB hány egymást követő mintavételi hiba után deklarálja, hogy a gép nem válaszol. A nem válaszoló gépre a rendszer nem irányít forgalmat.
+
+1. Kattintson a Hozzáadás gombra.
+2. Adja meg a mintavétel adatait. a. **Név**: a mintavétel neve. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Időköz**: 5 (alapértelmezett érték) – ez az az időköz, amelynek elteltével az ILB mintavételt végez a gépeken, az „e” háttérkészletben. **Nem kifogástalan állapot küszöbértéke**: 2 (alapértelmezett érték) – ez az a küszöbérték, amely meghatározza, hogy az ILB hány egymást követő mintavételi hiba után deklarálja, hogy a gép nem válaszol. A nem válaszoló gépre a rendszer nem irányít forgalmat.
 
 ![Az ILB-mintavétel konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
- 
+
 **6.4.  Terheléselosztási szabályok létrehozása**
 
 A forgalom hatékony elosztása érdekében állítson be terheléselosztási szabályokat az ILB-n. Terheléselosztási szabály létrehozása: 
-1.  Az ILB beállítási paneljén válassza a Terheléselosztási szabály lehetőséget.
-2.  A Terheléselosztási szabály panelen kattintson a Hozzáadás gombra.
-3.  A Minden terheléselosztási szabály panelen: a. **Név**: adja meg a szabály nevét. b. **Protokoll**: válassza a TCP lehetőséget. c. **Port**: 443. d. **Háttérport**: 443. e. **Háttérkészlet**: válassza ki az AD FS-fürthöz korábban létrehozott készletet. f. **Mintavétel**: válassza ki az AD FS-kiszolgálókhoz korábban létrehozott mintavételt.
+
+1. Az ILB beállítási paneljén válassza a Terheléselosztási szabály lehetőséget.
+2. A Terheléselosztási szabály panelen kattintson a Hozzáadás gombra.
+3. A Minden terheléselosztási szabály panelen: a. **Név**: adja meg a szabály nevét. b. **Protokoll**: válassza a TCP lehetőséget. c. **Port**: 443. d. **Háttérport**: 443. e. **Háttérkészlet**: válassza ki az AD FS-fürthöz korábban létrehozott készletet. f. **Mintavétel**: válassza ki az AD FS-kiszolgálókhoz korábban létrehozott mintavételt.
 
 ![ILB-terheléselosztási szabályok konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
@@ -203,8 +202,7 @@ A forgalom hatékony elosztása érdekében állítson be terheléselosztási sz
 Lépjen be a DNS-kiszolgálóra, és hozzon létre egy CNAME-et az ILB számára. A CNAME az összevonási szolgáltatáshoz tartozzon, az IP-cím pedig mutasson az ILB IP-címére. Ha például az ILB DIP-címe 10.3.0.8, a telepített összevonási szolgáltatás pedig az fs.contoso.com, hozzon létre egy CNAME-et az fs.contoso.com-hoz, és mutasson a 10.3.0.8 címre.
 Ezzel garantálja, hogy az fs.contoso.com-ot érintő kommunikáció eljut az ILB-re, és a megfelelő utat járja be.
 
-###7.   A webalkalmazásproxy-kiszolgálók konfigurálása
-
+### 7.   A webalkalmazásproxy-kiszolgálók konfigurálása
 **7.1.  A webalkalmazásproxy-kiszolgálók konfigurálása az AD FS-kiszolgálók elérésére**
 
 Hogy a webalkalmazásproxy-kiszolgálók el tudják érni az ILB mögötti AD FS-kiszolgálókat, hozzon létre egy rekordot a %systemroot%\system32\drivers\etc\hosts könyvtárban az ILB számára. A megkülönböztető név (DN) legyen az összevonási szolgáltatás neve, például fs.contoso.com. IP-címként pedig az ILB IP-címét (a példában 10.3.0.8) adja meg.
@@ -214,11 +212,11 @@ Hogy a webalkalmazásproxy-kiszolgálók el tudják érni az ILB mögötti AD FS
 Miután beállította, hogy a webalkalmazásproxy-kiszolgálók képesek legyenek elérni az ILB mögötti AD FS-kiszolgálókat, telepítheti a webalkalmazásproxy-kiszolgálókat. A webalkalmazásproxy-kiszolgálókat nem szükséges csatlakoztatni a tartományhoz. Telepítse a két webalkalmazásproxy-kiszolgálóra a webalkalmazás-proxy szerepköröket. Ehhez válassza a Távelérés szerepkört. A kiszolgálókezelő végigvezeti a WAP telepítésén.
 A WAP üzembe helyezésével kapcsolatos további információkért olvassa el az [Install and Configure the Web Application Proxy Server](https://technet.microsoft.com/library/dn383662.aspx) (A webalkalmazás-proxy kiszolgálók telepítése és konfigurálása) című cikket.
 
-###8.   Az internetre irányuló (nyilvános) terheléselosztó üzembe helyezése
-
+### 8.   Az internetre irányuló (nyilvános) terheléselosztó üzembe helyezése
 **8.1.  Az internetre irányuló (nyilvános) terheléselosztó létrehozása**
- 
+
 Az Azure Portal webhelyen válassza a Terheléselosztók lehetőséget, majd kattintson a Hozzáadás gombra. A Terheléselosztó létrehozása panelen adja meg az alábbi adatokat:
+
 1. **Név**: a terheléselosztó neve.
 2. **Séma**: Nyilvános – ezzel a beállítással közölheti az Azure-ral, hogy a terheléselosztóhoz nyilvános cím szükséges.
 3. **IP-cím**: hozzon létre új (dinamikus) IP-címet.
@@ -228,13 +226,14 @@ Az Azure Portal webhelyen válassza a Terheléselosztók lehetőséget, majd kat
 Az üzembe helyezést követően a terheléselosztó megjelenik a Terheléselosztók listában.
 
 ![Terheléselosztók listája](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
- 
+
 **8.2.  DNS-címke hozzárendelése a nyilvános IP-címhez**
 
 A Terheléselosztók panelen kattintson az újonnan létrehozott terheléselosztó bejegyzésére. Megnyílik a konfigurációs panel. A nyilvános IP-cím DNS-címkéjének beállításához kövesse az alábbi lépéseket:
-1.  Kattintson a nyilvános IP-címre. Ezzel megnyitja a nyilvános IP-cím beállításait tartalmazó panelt.
-2.  Kattintson a Konfiguráció lehetőségre.
-3.  Adja meg a DNS-címkét. Ez lesz a nyilvános, bárhonnan elérhető DNS-címke, például contosofs.westus.cloudapp.azure.com. Felvehet egy bejegyzést az összevonási szolgáltatás külső DNS-e (például fs.contoso.com) számára, amelyet a rendszer a külső terheléselosztó DNS-címkéjéhez rendel (contosofs.westus.cloudapp.azure.com).
+
+1. Kattintson a nyilvános IP-címre. Ezzel megnyitja a nyilvános IP-cím beállításait tartalmazó panelt.
+2. Kattintson a Konfiguráció lehetőségre.
+3. Adja meg a DNS-címkét. Ez lesz a nyilvános, bárhonnan elérhető DNS-címke, például contosofs.westus.cloudapp.azure.com. Felvehet egy bejegyzést az összevonási szolgáltatás külső DNS-e (például fs.contoso.com) számára, amelyet a rendszer a külső terheléselosztó DNS-címkéjéhez rendel (contosofs.westus.cloudapp.azure.com).
 
 ![Az internetre irányuló terheléselosztó konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 
@@ -245,53 +244,55 @@ A Terheléselosztók panelen kattintson az újonnan létrehozott terheléseloszt
 Az internetre irányuló (nyilvános) terheléselosztó háttérkészletének a WAP-kiszolgálóknál használt rendelkezésre állási csoportként való beállításához végezze el ugyanazokat a lépéseket, amelyeket a belső terheléselosztó létrehozásakor bemutattunk. Példa: contosowapset.
 
 ![Az internetre irányuló terheléselosztó háttérkészletének konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
- 
+
 **8.4.  Mintavétel konfigurálása**
 
 A WAP-kiszolgálók háttérkészletéhez tartozó mintavétel konfigurálásához végezze el a belső terheléselosztó konfigurálására vonatkozó lépéseket.
 
 ![Az internetre irányuló terheléselosztó mintavételének konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
- 
+
 **8.5.  Terheléselosztási szabály(ok) létrehozása**
 
 A 443-as TCP-portra vonatkozó terheléselosztási szabályok konfigurálásához végezze el az ILB esetében ismertetett lépéseket.
 
 ![Az internetre irányuló terheléselosztó terheléselosztási szabályainak konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
- 
-###9.   A hálózat biztonságának beállítása
 
+### 9.   A hálózat biztonságának beállítása
 **9.1.  A belső alhálózat biztonságának beállítása**
 
 Általánosságban elmondható, hogy a belső alhálózat biztonságának kialakításához a következő szabályok szükségesek (a lenti sorrendben).
 
-|Szabály|Leírás|Folyamat|
-|:----|:----|:------:|
-|AllowHTTPSFromDMZ| A DMZ felől érkező HTTPS-kommunikáció engedélyezése | Bejövő |
-|DenyAllFromDMZ| Ez a szabály a DMZ felől a belső alhálózatra irányuló összes forgalmat blokkolja. Az AllowHTTPSFromDMZ szabály már garantálja, hogy a HTTPS-kommunikáció átjusson, ez a szabály pedig minden mást blokkol | Bejövő |
-|DenyInternetOutbound| Tiltja az internet-hozzáférést | Kimenő |
+| Szabály | Leírás | Folyamat |
+|:--- |:--- |:---:|
+| AllowHTTPSFromDMZ |A DMZ felől érkező HTTPS-kommunikáció engedélyezése |Bejövő |
+| DenyAllFromDMZ |Ez a szabály a DMZ felől a belső alhálózatra irányuló összes forgalmat blokkolja. Az AllowHTTPSFromDMZ szabály már garantálja, hogy a HTTPS-kommunikáció átjusson, ez a szabály pedig minden mást blokkol |Bejövő |
+| DenyInternetOutbound |Tiltja az internet-hozzáférést |Kimenő |
 
 [comment]: <> (![INT-hozzáférési szabályok (bejövő)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [comment]: <> (![INT-hozzáférési szabályok (kimenő)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
- 
+
 **9.2.  A DMZ-alhálózat biztonságának beállítása**
 
-|Szabály|Leírás|Folyamat|
-|:----|:----|:------:|
-|AllowHttpsFromVirtualNetwork| Virtuális hálózatokról érkező HTTPS-forgalom engedélyezése | Bejövő |
-|AllowHTTPSInternet| Az internet felől a DMZ-be irányuló HTTPS-forgalom engedélyezése | Bejövő|
-|DenyingressexceptHTTPS| A HTTPS-től eltérő típusú forgalom tiltása az internet felől | Bejövő |
-|DenyOutToInternet| A HTTPS-től eltérő típusú forgalom tiltása az internet felé | Kimenő |
+| Szabály | Leírás | Folyamat |
+|:--- |:--- |:---:|
+| AllowHttpsFromVirtualNetwork |Virtuális hálózatokról érkező HTTPS-forgalom engedélyezése |Bejövő |
+| AllowHTTPSInternet |Az internet felől a DMZ-be irányuló HTTPS-forgalom engedélyezése |Bejövő |
+| DenyingressexceptHTTPS |A HTTPS-től eltérő típusú forgalom tiltása az internet felől |Bejövő |
+| DenyOutToInternet |A HTTPS-től eltérő típusú forgalom tiltása az internet felé |Kimenő |
 
 [comment]: <> (![EXT-hozzáférési szabályok (bejövő)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [comment]: <> (![EXT-hozzáférési szabályok (kimenő)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
 
->[AZURE.NOTE] Ha az ügyfelek esetében felhasználói tanúsítvány hitelesítésére (clientTLS típusú hitelesítés X509 felhasználói tanúsítványok használatával) van szükség, az AD FS-nél engedélyezni kell a 49443-as TCP-porton a bejövő hozzáférést.
+> [!NOTE]
+> Ha az ügyfelek esetében felhasználói tanúsítvány hitelesítésére (clientTLS típusú hitelesítés X509 felhasználói tanúsítványok használatával) van szükség, az AD FS-nél engedélyezni kell a 49443-as TCP-porton a bejövő hozzáférést.
+> 
+> 
 
-###10.  Az AD FS-bejelentkezés tesztelése
-
+### 10.  Az AD FS-bejelentkezés tesztelése
 Az AD FS legegyszerűbben az IdpInitiatedSignon.aspx oldal segítségével tesztelhető. Ahhoz, hogy ez megvalósítható legyen, engedélyezze az IdpInitiatedSignOn tulajdonságot az AD FS tulajdonságaiban. Az AD FS beállításának ellenőrzéséhez kövesse az alábbi lépéseket:
-1.  Az engedélyezéshez futtassa az alábbi parancsmagot az AD FS-kiszolgálón a PowerShell segítségével.
-    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2.  Egy külső gépről nyissa meg a következő címet: https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx.  
-3.  Az AD FS oldalának az alábbi módon kell megjelennie:
+
+1. Az engedélyezéshez futtassa az alábbi parancsmagot az AD FS-kiszolgálón a PowerShell segítségével.
+   Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
+2. Egy külső gépről nyissa meg a következő címet: https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx.  
+3. Az AD FS oldalának az alábbi módon kell megjelennie:
 
 ![Bejelentkezési lap tesztelése](./media/active-directory-aadconnect-azure-adfs/test1.png)
 
@@ -300,25 +301,18 @@ A sikeres bejelentkezést követően a rendszer az alább látható üzenetet je
 ![Teszt sikeres](./media/active-directory-aadconnect-azure-adfs/test2.png)
 
 ## További források
-* [Rendelkezésre állási csoportok](https://aka.ms/Azure/Availability ) 
+* [Rendelkezésre állási csoportok](https://aka.ms/Azure/Availability) 
 * [Azure Load Balancer](https://aka.ms/Azure/ILB)
 * [Belső terheléselosztó](https://aka.ms/Azure/ILB/Internal)
 * [Internetre irányuló terheléselosztó](https://aka.ms/Azure/ILB/Internet)
-* [Tárfiókok](https://aka.ms/Azure/Storage )
+* [Tárfiókok](https://aka.ms/Azure/Storage)
 * [Azure virtuális hálózatok](https://aka.ms/Azure/VNet)
 * [Az AD FS és a webalkalmazás-proxy hivatkozások](http://aka.ms/ADFSLinks) 
 
 ## Következő lépések
-
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 * [Configuring and managing your AD FS using Azure AD Connect (Az AD FS konfigurálása és felügyelete az Azure AD Connect segítségével)](active-directory-aadconnectfed-whatis.md)
 * [Az AD FS nagy rendelkezésre állású, több földrajzi régióra kiterjedő üzembe helyezése az Azure Traffic Managerrel](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
-
-
-
-
-
 
 <!--HONumber=Sep16_HO4-->
 

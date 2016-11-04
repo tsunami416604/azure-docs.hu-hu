@@ -1,26 +1,25 @@
-<properties
-    pageTitle="Azure RemoteApp-licenckezelés | Microsoft Azure"
-    description="Ismerje meg az Azure RemoteApp licenckezelését."
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Azure RemoteApp-licenckezelés | Microsoft Docs
+description: Ismerje meg az Azure RemoteApp licenckezelését.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
-
+---
 # Hogyan működik a licenckezelés az Azure RemoteAppban?
-
-> [AZURE.IMPORTANT]
+> [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Az eddigiekben beállította az Azure RemoteAppot, létrehozta a sablonokat, és készen áll arra, hogy alkalmazásokat tegyen közzé a felhasználóknak. Egy dolog azonban még hátra van: a licencelés. Hogyan működik a RemoteApp és rajta keresztül megosztott alkalmazások licenckezelése?
 
@@ -37,8 +36,6 @@ Más alkalmazások esetében meg kell győződnie arról, hogy rendelkezik az al
 Ez így érthető, ugye? Bármilyen alkalmazást közzétehet, amelynek megosztására jogosultsága van. És meg kell győződnie róla, hogy valóban jogosult a programok megosztására.
 
 Vegye figyelembe, hogy felhőalapú gyűjtemény esetében nem használhat ügyféllicencet vagy mennyiségi licencelési megállapodást. A hibrid gyűjteményekben lévő alkalmazások aktiválására *használhat* mennyiségi licencelési megállapodást (kivéve az Office esetében). Ehhez csak telepítenie kell ezeket a sablon rendszerképre a mennyiségi licencelési adathordozóról. A licencek távoli asztali környezetben való telepítéséhez kövesse az alkalmazás gyártójának információit.
-
-
 
 <!--HONumber=Sep16_HO4-->
 

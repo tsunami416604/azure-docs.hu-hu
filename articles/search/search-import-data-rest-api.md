@@ -1,28 +1,29 @@
-<properties
-    pageTitle="Adatfeltöltés az Azure Search szolgáltatásban a REST API használatával | Microsoft Azure | Üzemeltetett felhőalapú keresési szolgáltatás"
-    description="Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe, a REST API használatával."
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-    manager=""
-    editor=""
-    tags=""/>
+---
+title: Adatfeltöltés az Azure Search szolgáltatásban a REST API használatával | Microsoft Docs
+description: Megismerkedhet az adatfeltöltéssel az Azure Search szolgáltatás indexébe, a REST API használatával.
+services: search
+documentationcenter: ''
+author: ashmaka
+manager: ''
+editor: ''
+tags: ''
 
-<tags
-    ms.service="search"
-    ms.devlang="rest-api"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
-
+---
 # Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
-> [AZURE.SELECTOR]
-- [Áttekintés](search-what-is-data-import.md)
-- [.NET](search-import-data-dotnet.md)
-- [REST](search-import-data-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-what-is-data-import.md)
+> * [.NET](search-import-data-dotnet.md)
+> * [REST](search-import-data-rest-api.md)
+> 
+> 
 
 Jelen cikk az Azure Search-indexbe történő adatimportálást mutatja be az [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) használatával.
 
@@ -39,8 +40,8 @@ Ha a REST API használatával HTTP-kérések kiadását végzi a szolgáltatáso
 
 A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
-  - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
-  - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
+* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
+* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
 
 Egy indexbe történő adatimportáláshoz az elsődleges vagy a másodlagos rendszergazdai kulcsok bármelyikét használhatja.
 
@@ -49,12 +50,12 @@ A REST API használatakor JSON-kéréstörzsekkel ellátott HTTP POST kéréseke
 
 A „value” tömbben található minden JSON-objektum egy-egy indexelendő dokumentumot képvisel. Ezen objektumok mindegyike tartalmazza a dokumentum kulcsát, valamint megadja a végrehajtani kívánt indexelési műveletet (például feltöltés, egyesítés vagy törlés). Attól függően, hogy az alábbi műveletek közül melyiket választja ki, az egyes dokumentumok esetében csak bizonyos mezők lesznek kötelezően megjelenítendők:
 
-@search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések
---- | --- | --- | ---
-`upload` | Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. | billentyű, továbbá a meghatározni kívánt egyéb mezők | Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva.
-`merge` | Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. | billentyű, továbbá a meghatározni kívánt egyéb mezők | A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. Ez `Collection(Edm.String)` típusú mezőket tartalmaz. Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`.
-`mergeOrUpload` | Ha az indexben már létezik az adott kulccsal ellátott dokumentum, ezen művelet viselkedése hasonló lesz a `merge` műveletéhez. Ha nem létezik ilyen dokumentum, a művelet viselkedése az `upload` új dokumentum esetében mutatott viselkedésének fog megfelelni. | billentyű, továbbá a meghatározni kívánt egyéb mezők | -
-`delete` | Eltávolítja a megadott dokumentumot az indexből. | csak billentyű | A rendszer figyelmen kívül hagyja a kulcsmezőn kívül megadott mezőket. Ha egyetlen mezőt kíván eltávolítani a dokumentumból, e helyett használja a `merge` műveletet, és a mező számára explicit módon adja meg a null értéket.
+| @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |
+| --- | --- | --- | --- |
+| `upload` |Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. |billentyű, továbbá a meghatározni kívánt egyéb mezők |Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva. |
+| `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. Ez `Collection(Edm.String)` típusú mezőket tartalmaz. Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
+| `mergeOrUpload` |Ha az indexben már létezik az adott kulccsal ellátott dokumentum, ezen művelet viselkedése hasonló lesz a `merge` műveletéhez. Ha nem létezik ilyen dokumentum, a művelet viselkedése az `upload` új dokumentum esetében mutatott viselkedésének fog megfelelni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |- |
+| `delete` |Eltávolítja a megadott dokumentumot az indexből. |csak billentyű |A rendszer figyelmen kívül hagyja a kulcsmezőn kívül megadott mezőket. Ha egyetlen mezőt kíván eltávolítani a dokumentumból, e helyett használja a `merge` műveletet, és a mező számára explicit módon adja meg a null értéket. |
 
 ## III. A HTTP-kérés és a kérés törzsének létrehozása
 Most, hogy összegyűjtötte az indexelési műveletekhez szükséges mezők értékeit, készen áll a tulajdonképpeni HTTP-kérés és a JSON-kérés törzsének létrehozására az adatok importálásához.
@@ -67,7 +68,6 @@ Az URL-címben meg kell majd adnia a szolgáltatás nevét, az index nevét (ami
     api-key: [admin key]
 
 #### A kérelem törzse
-
 ```JSON
 {
     "value": [
@@ -154,7 +154,10 @@ Ha az indexelés legalább egy elem esetében meghiúsult, a rendszer a követke
 }
 ```
 
-> [AZURE.NOTE] Ez leggyakrabban azt jelenti, hogy a Search szolgáltatás terhelése elérte azt a pontot, amelytől kezdve az indexelési kérések `503` válaszokat adnak vissza. Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
+> [!NOTE]
+> Ez leggyakrabban azt jelenti, hogy a Search szolgáltatás terhelése elérte azt a pontot, amelytől kezdve az indexelési kérések `503` válaszokat adnak vissza. Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
+> 
+> 
 
 #### 429
 Az indexenkénti dokumentumszám-kvóta túllépésekor a rendszer a következő állapotkódot fogja visszaadni: `429`.
@@ -162,14 +165,15 @@ Az indexenkénti dokumentumszám-kvóta túllépésekor a rendszer a következő
 #### 503
 Ha az indexelés a kérésben szereplő összes elem esetében meghiúsult, a rendszer a következő állapotkódot fogja visszaadni: `503`. Ez a hibaüzenet azt jelzi, hogy a rendszer terhelése nagy, és a kérés jelenleg nem dolgozható fel.
 
-> [AZURE.NOTE] Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
+> [!NOTE]
+> Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
+> 
+> 
 
 További információk a dokumentumokkal végzett műveletekről, illetve a sikeres/meghiúsult műveletekre adott rendszerválaszokról: [Dokumentumok hozzáadása, frissítése vagy törlése](https://msdn.microsoft.com/library/azure/dn798930.aspx). További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
 
 ## Következő lépés
 Az Azure Search-index feltöltését követően készen áll a dokumentumkeresési lekérdezések kiadásának elindítására. Részletes információk: [Az Azure Search-index lekérdezése](search-query-overview.md).
-
-
 
 <!--HONumber=Sep16_HO4-->
 

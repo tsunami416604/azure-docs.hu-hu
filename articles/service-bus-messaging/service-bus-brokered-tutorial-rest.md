@@ -1,61 +1,51 @@
-<properties 
-    pageTitle="A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga | Microsoft Azure"
-    description="A felügyelt üzenettovábbítás REST oktatóanyaga."
-    services="service-bus"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="service-bus"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="09/27/2016"
-    ms.author="sethm" />
+---
+title: A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga | Microsoft Docs
+description: A felügyelt üzenettovábbítás REST oktatóanyaga.
+services: service-bus
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: service-bus
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/27/2016
+ms.author: sethm
 
+---
 # <a name="service-bus-brokered-messaging-rest-tutorial"></a>A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga
-
-[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre REST-alapú Azure Service Bus-üzenetsort, illetve témakört/előfizetést.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
+Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
-Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
-
-[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-console-client"></a>Konzolügyfél létrehozása
-
 A Service Bus-üzenetsorok lehetővé teszik az üzenetek érkezési sorrendben történő tárolását. Az üzenettémák és előfizetések közzététel/előfizetés mintát valósítanak meg. Először létrehozhat egy üzenettémakört, majd egy vagy több, az üzenettémakörhöz rendelt előfizetést. Az üzenettémakörbe küldött üzeneteket a témakör előfizetői azonnal megkapják.
 
 A jelen oktatóanyagban található kód a következőt hajtja végre.
 
-- A névtér és a [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs segítségével hozzáfér a Service Bus-névtér erőforrásaihoz.
-
-- Létrehoz egy üzenetsort, egy üzenetet küld az üzenetsorba, és kiolvassa az üzenetet az üzenetsorból.
-
-- Létrehoz egy üzenettémakört, egy előfizetést az üzenettémára, majd elküldi és kiolvassa az üzenetet az előfizetésből.
-
-- A Service Bustól lekéri az üzenetsorra, az üzenettémakörre és az előfizetésre vonatkozó összes információt, beleértve az előfizetési szabályokat.
-
-- Törli az üzenetsor, az üzenettémakör és az előfizetés erőforrásait.
+* A névtér és a [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs segítségével hozzáfér a Service Bus-névtér erőforrásaihoz.
+* Létrehoz egy üzenetsort, egy üzenetet küld az üzenetsorba, és kiolvassa az üzenetet az üzenetsorból.
+* Létrehoz egy üzenettémakört, egy előfizetést az üzenettémára, majd elküldi és kiolvassa az üzenetet az előfizetésből.
+* A Service Bustól lekéri az üzenetsorra, az üzenettémakörre és az előfizetésre vonatkozó összes információt, beleértve az előfizetési szabályokat.
+* Törli az üzenetsor, az üzenettémakör és az előfizetés erőforrásait.
 
 A szolgáltatás egy REST-stílusú webszolgáltatás, ezért nem tartalmaz speciális típusokat, mivel a teljes adatcsere karakterláncokon alapul. Ez azt jelenti, hogy a Visual Studio-projekt nem hivatkozhat egy Service Bus-könyvtárra sem.
 
 Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, egy alapszintű Visual Studio-konzolalkalmazást kell létrehoznia.
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
-
 1. Indítsa el a Visual Studiót rendszergazdaként. Ehhez a **Start** menüben kattintson a jobb gombbal a programra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
-
-1. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **Fájl** menüre, és kattintson az **Új**, majd a **Projekt** elemre. Az **Új projekt** párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg a **Más nyelvek** területen), válassza ki a **Konzolalkalmazás** sablont, és nevezze el **Microsoft.ServiceBus.Samples** néven. Használja az alapértelmezett helyet. A projekt létrehozásához kattintson az **OK** gombra.
-
-1. A Program.cs fájlban győződjön meg róla, hogy a(z) `using` utasítás a következőképpen jelenik meg:
-
+2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **Fájl** menüre, és kattintson az **Új**, majd a **Projekt** elemre. Az **Új projekt** párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg a **Más nyelvek** területen), válassza ki a **Konzolalkalmazás** sablont, és nevezze el **Microsoft.ServiceBus.Samples** néven. Használja az alapértelmezett helyet. A projekt létrehozásához kattintson az **OK** gombra.
+3. A Program.cs fájlban győződjön meg róla, hogy a(z) `using` utasítás a következőképpen jelenik meg:
+   
     ```
     using System;
     using System.Globalization;
@@ -65,68 +55,65 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
     using System.Text;
     using System.Xml;
     ```
-
-1. Ha szükséges, nevezze át a program névterét a Visual Studio alapértelmezett értékéről a következőre: `Microsoft.ServiceBus.Samples`.
-
-1. A(z) `Program` osztályon belül adja hozzá a következő globális változókat:
-    
+4. Ha szükséges, nevezze át a program névterét a Visual Studio alapértelmezett értékéről a következőre: `Microsoft.ServiceBus.Samples`.
+5. A(z) `Program` osztályon belül adja hozzá a következő globális változókat:
+   
     ```
     static string serviceNamespace;
     static string baseAddress;
     static string token;
     const string sbHostName = "servicebus.windows.net";
     ```
-
-1. A(z) `Main()` területre illessze be a következő kódot:
-
+6. A(z) `Main()` területre illessze be a következő kódot:
+   
     ```
     Console.Write("Enter your service namespace: ");
     serviceNamespace = Console.ReadLine();
-    
+   
     Console.Write("Enter your SAS key: ");
     string SASKey = Console.ReadLine();
-    
+   
     baseAddress = "https://" + serviceNamespace + "." + sbHostName + "/";
     try
     {
         token = GetSASToken("RootManageSharedAccessKey", SASKey);
-    
+   
         string queueName = "Queue" + Guid.NewGuid().ToString();
-    
+   
         // Create and put a message in the queue
         CreateQueue(queueName, token);
         SendMessage(queueName, "msg1");
         string msg = ReceiveAndDeleteMessage(queueName);
-    
+   
         string topicName = "Topic" + Guid.NewGuid().ToString();
         string subscriptionName = "Subscription" + Guid.NewGuid().ToString();
         CreateTopic(topicName);
         CreateSubscription(topicName, subscriptionName);
         SendMessage(topicName, "msg2");
-    
+   
         Console.WriteLine(ReceiveAndDeleteMessage(topicName + "/Subscriptions/" + subscriptionName));
-    
+   
         // Get an Atom feed with all the queues in the namespace
         Console.WriteLine(GetResources("$Resources/Queues"));
-    
+   
         // Get an Atom feed with all the topics in the namespace
         Console.WriteLine(GetResources("$Resources/Topics"));
-    
+   
         // Get an Atom feed with all the subscriptions for the topic we just created
         Console.WriteLine(GetResources(topicName + "/Subscriptions"));
-    
+   
         // Get an Atom feed with all the rules for the topic and subscription we just created
         Console.WriteLine(GetResources(topicName + "/Subscriptions/" + subscriptionName + "/Rules"));
-    
+   
         // Delete the queue we created
         DeleteResource(queueName);
-    
+   
         // Delete the topic we created
         DeleteResource(topicName);
-    
+   
         // Get an Atom feed with all the topics in the namespace, it shouldn't have the one we created now
         Console.WriteLine(GetResources("$Resources/Topics"));
-    
+   
         // Get an Atom feed with all the queues in the namespace, it shouldn't have the one we created now
         Console.WriteLine(GetResources("$Resources/Queues"));
     }
@@ -144,17 +131,15 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
             }
         }
     }
-    
+   
     Console.WriteLine("\nPress ENTER to exit.");
     Console.ReadLine();
     ```
 
 ## <a name="create-management-credentials"></a>Felügyeleti hitelesítő adatok létrehozása
-
 A következő lépés egy olyan metódus megírása, amely feldolgozza az előző lépésben megadott névteret és SAS-kulcsot, és egy SAS-jogkivonatot ad vissza. Ez a példa egy egy órán keresztül érvényes SAS-jogkivonatot hoz létre.
 
 ### <a name="create-a-getsastoken()-method"></a>GetSASToken() metódus létrehozása
-
 Illessze be a következő kódot a(z) `Main()` metódus után, a(z) `Program` osztályon belül:
 
 ```
@@ -172,7 +157,6 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 }
 ```
 ## <a name="create-the-queue"></a>Az üzenetsor létrehozása
-
 A következő lépés egy olyan metódus írása, amely a REST-stílusú HTTP PUT parancsot használja egy üzenetsor létrehozásához.
 
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `GetSASToken()` kód után:
@@ -201,11 +185,10 @@ private static string CreateQueue(string queueName, string token)
 ```
 
 ## <a name="send-a-message-to-the-queue"></a>Üzenet küldése az üzenetsorba
-
 Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust vesz fel, amely egy üzenetet küld az előző lépésben létrehozott üzenetsorba.
 
 1. Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `CreateQueue()` kód után:
-
+   
     ```
     // Sends a message to the "queueName" queue, given the name and the value to enqueue
     // Uses an HTTP POST request.
@@ -215,22 +198,20 @@ Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust v
         Console.WriteLine("\nSending message {0} - to address {1}", body, fullAddress);
         WebClient webClient = new WebClient();
         webClient.Headers[HttpRequestHeader.Authorization] = token;
-    
+   
         webClient.UploadData(fullAddress, "POST", Encoding.UTF8.GetBytes(body));
     }
     ```
-
-1. A közvetítőalapú üzenet standard tulajdonságai egy `BrokerProperties` HTTP-fejlécben vannak elhelyezve. A közvetítő tulajdonságait JSON formátumban kell szerializálni. Ahhoz, hogy a program 30 másodperces **TimeToLive** értéket határozzon meg, és hozzáadja az „M1” címkét az üzenethez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
-
+2. A közvetítőalapú üzenet standard tulajdonságai egy `BrokerProperties` HTTP-fejlécben vannak elhelyezve. A közvetítő tulajdonságait JSON formátumban kell szerializálni. Ahhoz, hogy a program 30 másodperces **TimeToLive** értéket határozzon meg, és hozzáadja az „M1” címkét az üzenethez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
+   
     ```
     // Add brokered message properties "TimeToLive" and "Label"
     webClient.Headers.Add("BrokerProperties", "{ \"TimeToLive\":30, \"Label\":\"M1\"}");
     ```
-
+   
     Vegye figyelembe, hogy a rendszer hozzáadta, és hozzá fogja adni a közvetítőalapú üzenet tulajdonságait. Emiatt a küldési kérésnek egy olyan API-verziót kell meghatároznia, amely a kérés részét képező közvetítőalapú üzenet összes tulajdonságát támogatja. Ha a meghatározott API-verzió nem támogatja a közvetítőalapú üzenet egyik tulajdonságát, az adott tulajdonságot figyelmen kívül hagyja a rendszer.
-
-1. Az egyéni üzenettulajdonságok kulcs-érték párok készleteként definiálhatók. Minden egyéni tulajdonságot külön TPPT-fejléc tárol. A „Prioritás” és „Ügyfél” egyéni tulajdonságok felvételéhez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
-
+3. Az egyéni üzenettulajdonságok kulcs-érték párok készleteként definiálhatók. Minden egyéni tulajdonságot külön TPPT-fejléc tárol. A „Prioritás” és „Ügyfél” egyéni tulajdonságok felvételéhez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
+   
     ```
     // Add custom properties "Priority" and "Customer".
     webClient.Headers.Add("Priority", "High");
@@ -238,7 +219,6 @@ Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust v
     ```
 
 ## <a name="receive-and-delete-a-message-from-the-queue"></a>Üzenet fogadása és törlése az üzenetsorból
-
 A következő lépés egy olyan metódus hozzáadása, amely a REST-stílusú HTTP DELETE parancsot használja egy üzenet fogadásához és törléséhez az üzenetsorból.
 
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `SendMessage()` kód után:
@@ -262,11 +242,9 @@ private static string ReceiveAndDeleteMessage(string resourceName)
 ```
 
 ## <a name="create-a-topic-and-subscription"></a>Üzenettémakör és előfizetés létrehozása
-
 A következő lépés egy olyan metódus írása, amely a REST-stílusú HTTP PUT parancsot használja egy üzenettémakör létrehozásához. Ezután egy olyan metódust kell írnia, amely létrehoz egy előfizetést az adott üzenettémakörhöz.
 
 ### <a name="create-a-topic"></a>Üzenettémakör létrehozása
-
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `ReceiveAndDeleteMessage()` kód után:
 
 ```
@@ -292,7 +270,6 @@ private static string CreateTopic(string topicName)
 ```
 
 ### <a name="create-a-subscription"></a>Előfizetés létrehozása
-
 A következő kód egy előfizetést hoz létre az előző lépésben létrehozott üzenettémakörhöz. Adja hozzá a következő kódot közvetlenül a(z) `CreateTopic()` definíciója után:
 
 ```
@@ -317,11 +294,9 @@ private static string CreateSubscription(string topicName, string subscriptionNa
 ```
 
 ## <a name="retrieve-message-resources"></a>Üzenet-erőforrások lekérése
-
 Ebben a lépésben fel kell vennie azt a kódot, amely lekéri az üzenet tulajdonságait, majd törli az előző lépésben létrehozott üzenetkezelési erőforrásokat.
 
 ### <a name="retrieve-an-atom-feed-with-the-specified-resources"></a>Atom-hírcsatorna lekérése a megadott erőforrásokkal
-
 Vegye fel a következő kódot közvetlenül az előző lépésben felvett `CreateSubscription()` kód után:
 
 ```
@@ -336,7 +311,6 @@ private static string GetResources(string resourceAddress)
 ```
 
 ### <a name="delete-messaging-entities"></a>Üzenetküldési entitások törlése
-
 Vegye fel a következő kódot közvetlenül az előző lépésben felvett kód után:
 
 ```
@@ -353,7 +327,6 @@ private static string DeleteResource(string resourceName)
 ```
 
 ### <a name="format-the-atom-feed"></a>Az Atom-hírcsatorna formázása
-
 A(z) `GetResources()` metódus meghívja a(z) `FormatXml()` metódust, amely újraformázza a lekért Atom-hírcsatornát, hogy jobban olvasható legyen. A(z) `FormatXml()` definíciója a következőkben látható. Vegye fel ezt a kódot közvetlenül az előző lépésben létrehozott `DeleteResource()` kód után:
 
 ```
@@ -375,15 +348,12 @@ private static string FormatXml(string inputXml)
 ```
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
-
 Most már lefordíthatja és futtathatja az alkalmazást. A Visual Studio **Létrehozás** menüjében kattintson a **Megoldás fordítása** elemre, vagy nyomja le a **Ctrl+Shift+B** billentyűkombinációt.
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
-
 Ha nem voltak benne hibák, az alkalmazás futtatásához nyomja le az F5 billentyűt. Amikor a program kéri, adja meg a névteret, a SAS-kulcs nevét, és az első lépésben beszerzett SAS-kulcs értékét.
 
 ### <a name="example"></a>Példa
-
 A következő példában a teljes kód látható, ahogy meg kell jelennie, ha követte az oktatóanyag összes lépését.
 
 ```
@@ -621,15 +591,11 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-
 További információért lásd a következő cikkeket:
 
-- [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
-- [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus Relay REST tutorial](../service-bus-relay/service-bus-relay-rest-tutorial.md) (A Service Bus relay REST-oktatóanyaga)
-
-
-
+* [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
+* [A Service Bus alapjai](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus Relay REST tutorial](../service-bus-relay/service-bus-relay-rest-tutorial.md) (A Service Bus relay REST-oktatóanyaga)
 
 <!--HONumber=Oct16_HO3-->
 

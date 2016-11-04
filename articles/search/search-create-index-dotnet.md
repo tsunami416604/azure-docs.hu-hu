@@ -1,30 +1,30 @@
-<properties
-    pageTitle="Azure Search-index létrehozása .NET SDK használatával | Microsoft Azure | Üzemeltetett felhőalapú keresőszolgáltatás"
-    description="Index létrehozása kódban Azure Search .NET SDK használatával."
-    services="search"
-    documentationCenter=""
-    authors="brjohnstmsft"
-    manager=""
-    editor=""
-    tags="azure-portal"/>
+---
+title: Azure Search-index létrehozása .NET SDK használatával | Microsoft Docs
+description: Index létrehozása kódban Azure Search .NET SDK használatával.
+services: search
+documentationcenter: ''
+author: brjohnstmsft
+manager: ''
+editor: ''
+tags: azure-portal
 
-<tags
-    ms.service="search"
-    ms.devlang="dotnet"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="brjohnst"/>
+ms.service: search
+ms.devlang: dotnet
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: brjohnst
 
-
+---
 # Azure Search-index létrehozása .NET SDK használatával
-> [AZURE.SELECTOR]
-- [Áttekintés](search-what-is-an-index.md)
-- [Portál](search-create-index-portal.md)
-- [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
-
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-what-is-an-index.md)
+> * [Portál](search-create-index-portal.md)
+> * [.NET](search-create-index-dotnet.md)
+> * [REST](search-create-index-rest-api.md)
+> 
+> 
 
 Ez a cikk végigvezeti az Azure Search-[index](https://msdn.microsoft.com/library/azure/dn798941.aspx) [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) használatával történő létrehozásának folyamatán.
 
@@ -41,12 +41,13 @@ Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arr
 
 A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
-  - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
-  - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
+* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
+* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
 
 Index létrehozása céljából az elsődleges és a másodlagos adminisztrációs kulcsot is használhatja.
 
 <a name="CreateSearchServiceClient"></a>
+
 ## II. A SearchServiceClient osztály példányának létrehozása
 Az Azure Search .NET SDK használatához létre kell hoznia a `SearchServiceClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. `SearchCredentials` becsomagolja az API-kulcsot.
 
@@ -61,9 +62,13 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 `SearchServiceClient` `Indexes` tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
 
-> [AZURE.NOTE] A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.
+> [!NOTE]
+> A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.
+> 
+> 
 
 <a name="DefineIndex"></a>
+
 ## III. Az Azure Search-index meghatározása a `Index` osztály használatával
 A `Indexes.Create` módszer egyetlen meghívása létrehozza az indexet. Ez a módszer egy `Index` objektumot használ paraméterként, amely meghatározza az Azure Search-indexet. Létre kell hoznia és inicializálnia kell egy `Index` objektumot az alábbiak szerint:
 
@@ -102,7 +107,10 @@ Vegye figyelembe, hogy az indexében pontosan egy `DataType.String` típusú mez
 
 A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mezőhöz, mert a mező francia szöveg tárolására szolgál. A nyelvi elemzőkkel kapcsolatos további információkért tekintse meg [az MSDN Nyelvi támogatás című témakörét](https://msdn.microsoft.com/library/azure/dn879793.aspx), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
-> [AZURE.NOTE]  Vegye figyelembe, hogy a konstruktorban lévő `AnalyzerName.FrLucene` átadásával a `Field` automatikusan `DataType.String` típusú lesz, és az `IsSearchable` feltétel `true` értékre lesz beállítva.
+> [!NOTE]
+> Vegye figyelembe, hogy a konstruktorban lévő `AnalyzerName.FrLucene` átadásával a `Field` automatikusan `DataType.String` típusú lesz, és az `IsSearchable` feltétel `true` értékre lesz beállítva.
+> 
+> 
 
 ## IV. Az index létrehozása
 Most, hogy már rendelkezik egy inicializált `Index` objektummal, a `SearchServiceClient` objektumon lévő `Indexes.Create` meghívásával egyszerűen létrehozhatja az indexet:
@@ -119,12 +127,13 @@ Miután létrehozta az indexet, és törölni szeretné, csak hívja meg a `Sear
 serviceClient.Indexes.Delete("hotels");
 ```
 
-> [AZURE.NOTE] Ebben a cikkben a példakód az egyszerűség érdekében az Azure Search .NET SDK szinkron módszereit használja. Azt javasoljuk, hogy a méretezhetőség és a gyors válaszadás érdekében használja saját alkalmazásaiban az aszinkron módszereket. Például a fenti esetekben használhatja a `CreateAsync` és a `DeleteAsync` módszert a `Create` és a `Delete` helyett.
+> [!NOTE]
+> Ebben a cikkben a példakód az egyszerűség érdekében az Azure Search .NET SDK szinkron módszereit használja. Azt javasoljuk, hogy a méretezhetőség és a gyors válaszadás érdekében használja saját alkalmazásaiban az aszinkron módszereket. Például a fenti esetekben használhatja a `CreateAsync` és a `DeleteAsync` módszert a `Create` és a `Delete` helyett.
+> 
+> 
 
 ## Tovább
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.
-
-
 
 <!--HONumber=Sep16_HO4-->
 

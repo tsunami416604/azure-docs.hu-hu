@@ -1,27 +1,24 @@
-<properties
-    pageTitle="Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével | Microsoft Azure"
-    description="Az Azure Diagnostics konfigurálásának automatizálása az Application Insights felé való továbbításra."
-    services="application-insights"
-    documentationCenter=".net"
-    authors="sbtron"
-    manager="douge"/>
+---
+title: Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével | Microsoft Docs
+description: Az Azure Diagnostics konfigurálásának automatizálása az Application Insights felé való továbbításra.
+services: application-insights
+documentationcenter: .net
+author: sbtron
+manager: douge
 
-<tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="11/17/2015"
-    ms.author="awills"/>
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 11/17/2015
+ms.author: awills
 
-
+---
 # Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével
-
 A [Microsoft Azure](https://azure.com) [konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](app-insights-azure-diagnostics.md) a [Visual Studio Application Insights ](app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
 
 ## A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
-
 A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Példa:
 
 ```ps
@@ -58,11 +55,10 @@ A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` para
 ``` 
 
 ## A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
-
 Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosticsExtension`.
 
 ```ps
- 
+
     $service_name = "MyService"
     $diagnostics_storagename = "myservicediagnostics"
     $webrole_diagconfigpath = "MyService.WebRole.PubConfig.xml" 
@@ -88,7 +84,6 @@ Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosti
 ```
 
 ## Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
-
 ```ps
 
     Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
@@ -96,7 +91,6 @@ Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosti
 
 
 ## A diagnosztikai bővítmény eltávolítása
-
 ```ps
 
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
@@ -113,13 +107,9 @@ A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 
 
 ## Lásd még:
-
 * [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](app-insights-cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](app-insights-azure-diagnostics.md)
 * [Riasztások konfigurálásának automatizálása](app-insights-powershell-alerts.md)
-
-
-
 
 <!--HONumber=Sep16_HO4-->
 

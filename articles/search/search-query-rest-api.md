@@ -1,27 +1,27 @@
-<properties
-    pageTitle="Az Azure Search-index lekérdezése a REST API használatával | Microsoft Azure | Üzemeltetett felhőalapú keresési szolgáltatás"
-    description="Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el."
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-/>
+---
+title: Az Azure Search-index lekérdezése a REST API használatával | Microsoft Docs
+description: Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el.
+services: search
+documentationcenter: ''
+author: ashmaka
 
-<tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
-
+---
 # Az Azure Search-index lekérdezése a REST API használatával
-> [AZURE.SELECTOR]
-- [Áttekintés](search-query-overview.md)
-- [Portál](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-query-overview.md)
+> * [Portál](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) használatával.
 
@@ -36,8 +36,8 @@ Az Azure Search REST API-ján végrehajtott keresési műveletek egyik fontos el
 
 A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
- - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
- - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
+* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
+* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
 
 Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszergazdai kulcsok szintén használhatók a lekérdezésekhez, az alkalmazáskódban azonban inkább lekérdezési kulcsot használjon, mivel ez a módszer jobban követi a [legalacsonyabb jogosultsági szint elvét](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
@@ -50,10 +50,7 @@ A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevé
 
 A POST esetében a formátum ugyanez, azzal a kiegészítéssel, hogy a lekérdezési karakterlánc paraméterei között csak az API-verzió szerepel.
 
-
-
 #### Példa a lekérdezésekre
-
 Alább néhány példa látható a „hotels” nevű index lekérdezéseire. Ezek a lekérdezések GET- és POST-formátumban is megtekinthetők.
 
 A teljes indexben keres a „budget” kifejezésre, és csak a `hotelName` mezőt adja vissza:
@@ -100,6 +97,7 @@ Azt követően, hogy meghatározta a lekérdezést a HTTP-kérés (GET esetében
 
 #### Kérés és kérésfejlécek
 A GET esetében kettő, a POST esetében három kérésfejlécet kell meghatároznia:
+
 1. Az `api-key` fejléc beállításának a fenti I. lépésben található lekérdezési kulcsnak kell lennie. Vegye figyelembe, hogy az `api-key` fejléceként rendszergazdai kulcsot is használhat, javasolt azonban a lekérdezési kulcs használata, mivel az kizárólag csak olvasási hozzáférést biztosít az indexekhez és a dokumentumokhoz.
 2. Az `Accept` fejléc beállítása a következő legyen: `application/json`.
 3. Kizárólag a POST kérelem esetében, a `Content-Type` fejléc beállítása szintén a következő legyen: `application/json`.
@@ -159,8 +157,6 @@ A sikeres lekérdezési kérés `200 OK` állapotkódot eredményez, a keresési
 ```
 
 További segítségért tekintse meg a [Dokumentumok keresése](https://msdn.microsoft.com/library/azure/dn798927.aspx) rész „Válasz” szakaszát. További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
-
-
 
 <!--HONumber=Sep16_HO4-->
 

@@ -1,26 +1,26 @@
-<properties 
-    pageTitle="Mi az az Azure RemoteApp? | Microsoft Azure" 
-    description="Ismerje meg, hogyan oszthat meg alkalmazásokat és erőforrásokat bármilyen eszközön az Azure RemoteAppon keresztül." 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
-    manager="mbaldwin" 
-    editor=""/>
+---
+title: Mi az az Azure RemoteApp? | Microsoft Docs
+description: Ismerje meg, hogyan oszthat meg alkalmazásokat és erőforrásokat bármilyen eszközön az Azure RemoteAppon keresztül.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
+editor: ''
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="08/15/2016" 
-    ms.author="elizapo"/>
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # Mi az az Azure RemoteApp?
-
-> [AZURE.IMPORTANT]
+> [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Az Azure RemoteApp az Azure-ban biztosítja a helyszíni Microsoft RemoteApp program funkcióit a távoli asztali szolgáltatások támogatásával. Az Azure RemoteApp segítségével biztonságos távoli elérést biztosíthat az alkalmazásokhoz számos különböző felhasználói eszközről. Az Azure RemoteApp alapvetően nem állandó terminálkiszolgáló-munkameneteket üzemeltet a felhőben, amelyeket használhat és megoszthat a felhasználóival.
 
@@ -37,23 +37,20 @@ Az Azure RemoteApp a [Microsoft virtuális asztali infrastruktúra](http://www.m
 ## Azure RemoteApp-gyűjtemények
 Kétféle [Azure RemoteApp-gyűjtemény](remoteapp-collections.md) létezik:
 
-
-- A **felhőalapú gyűjtemény** a felhőben üzemelteti a programokat és tárolja az adatokat. A felhasználók a Microsoft-fiókjukkal, illetve az Azure Active Directory-val szinkronizált vagy összevont vállalati hitelesítő adataikkal jelentkezhetnek be és érhetik el az alkalmazásokat.
-
+* A **felhőalapú gyűjtemény** a felhőben üzemelteti a programokat és tárolja az adatokat. A felhasználók a Microsoft-fiókjukkal, illetve az Azure Active Directory-val szinkronizált vagy összevont vállalati hitelesítő adataikkal jelentkezhetnek be és érhetik el az alkalmazásokat.
+  
     Akkor válassza a felhőalapú gyűjteményt, ha a megosztani kívánt alkalmazásnak nincs szüksége kapcsolatra a vállalat magánhálózatában lévő erőforrásokhoz (például egy VPN-eszközön keresztül). Ha az alkalmazás az interneten, a OneDrive-ban vagy az Azure-ban található erőforrásokat használ, használhatja a felhőalapú gyűjteményt. Emellett ez hozható létre a leggyorsabban.
-
-- A **hibrid gyűjtemény** az Azure felhőben üzemel és ott tárolja az adatokat, de lehetővé teszi a felhasználók számára, hogy elérjék a helyi hálózaton tárolt adatokat és erőforrásokat is. A felhasználók az Azure Active Directoryval szinkronizált vagy összevont vállalati hitelesítő adataikkal jelentkezhetnek be, és érhetik el az alkalmazásokat.
-
+* A **hibrid gyűjtemény** az Azure felhőben üzemel és ott tárolja az adatokat, de lehetővé teszi a felhasználók számára, hogy elérjék a helyi hálózaton tárolt adatokat és erőforrásokat is. A felhasználók az Azure Active Directoryval szinkronizált vagy összevont vállalati hitelesítő adataikkal jelentkezhetnek be, és érhetik el az alkalmazásokat.
+  
     Akkor válassza a hibrid gyűjteményt, ha szüksége van kapcsolatra a vállalat magánhálózatán lévő erőforrásokhoz. Ha például az alkalmazásnak hozzá kell férnie az alábbiak egyikéhez:
-
-    - Az intraneten található fájlkiszolgálók
-    - Quicken
-    - Tűzfal mögött lévő adatbázisok
-
+  
+  * Az intraneten található fájlkiszolgálók
+  * Quicken
+  * Tűzfal mögött lévő adatbázisok
+    
     Ez általában azon nagy méretű vállalatok számára hasznos, amelyeknek sok erőforrásuk található a magánhálózatukon, amelyek nem helyezhetők át a felhőbe.
 
 A különböző gyűjteményekhez különböző lehetőségek érhetők el, beleértve a hálózatokat, ezért fel kell mérnie, hogy [melyik gyűjtemény](remoteapp-collections.md) a legjobb az Ön számára. 
-
 
 ### A gyűjtemény frissítése
 A hibrid és a felhőalapú gyűjtemények közötti legfőbb különbségek egyike a szoftverfrissítések kezelésének módja. Egy felhőgyűjtemény esetében, amely az Office 365 ProPlus vagy az Office 2013 előre telepített rendszerképét használja, nem kell aggódnia a frissítések miatt. A szolgáltatás karbantartja magát, és folyamatosan telepíti az alkalmazásokra és az operációs rendszerre frissítéseit.
@@ -72,18 +69,16 @@ Az ügyfelekkel kapcsolatos további információk: [Accessing your apps in Azur
 ## Következő lépések
 Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első lépéseiben:
 
-- [What kind of collection do you need for Azure RemoteApp? (Milyen típusú gyűjteményre van szüksége az Azure RemoteApphoz?)](remoteapp-collections.md)
-- [Create an Azure RemoteApp image (Azure RemoteApp-rendszerkép létrehozása)](remoteapp-imageoptions.md)
-- [How to create a cloud collection of Azure RemoteApp (Az Azure RemoteApp felhőalapú gyűjteményének létrehozása)](remoteapp-create-cloud-deployment.md)
-- [How to create a hybrid collection of Azure RemoteApp (Az Azure RemoteApp hibrid gyűjteményének létrehozása)](remoteapp-create-hybrid-deployment.md)
-- [Hogyan működik a licenckezelés az Azure RemoteAppban?](remoteapp-licensing.md)
-- [Best practices for using Azure RemoteApp (Ajánlott eljárások az Azure RemoteApp használatához)](remoteapp-bestpractices.md)
-- [Azure RemoteApp – gyakori kérdések](remoteapp-faq.md)
- 
+* [What kind of collection do you need for Azure RemoteApp? (Milyen típusú gyűjteményre van szüksége az Azure RemoteApphoz?)](remoteapp-collections.md)
+* [Create an Azure RemoteApp image (Azure RemoteApp-rendszerkép létrehozása)](remoteapp-imageoptions.md)
+* [How to create a cloud collection of Azure RemoteApp (Az Azure RemoteApp felhőalapú gyűjteményének létrehozása)](remoteapp-create-cloud-deployment.md)
+* [How to create a hybrid collection of Azure RemoteApp (Az Azure RemoteApp hibrid gyűjteményének létrehozása)](remoteapp-create-hybrid-deployment.md)
+* [Hogyan működik a licenckezelés az Azure RemoteAppban?](remoteapp-licensing.md)
+* [Best practices for using Azure RemoteApp (Ajánlott eljárások az Azure RemoteApp használatához)](remoteapp-bestpractices.md)
+* [Azure RemoteApp – gyakori kérdések](remoteapp-faq.md)
 
-### Segítsen nekünk, hogy segítsünk 
+### Segítsen nekünk, hogy segítsünk
 Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** vagy a **Szerkesztés** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
-
 
 <!--HONumber=Sep16_HO4-->
 

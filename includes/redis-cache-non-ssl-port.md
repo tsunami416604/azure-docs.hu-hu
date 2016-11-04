@@ -2,8 +2,6 @@ To enable the non-SSL port, [browse](../articles/redis-cache/cache-configure.md#
 
 ![Redis cache settings](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 
-
-
 <!--HONumber=Sep16_HO4-->
 
 

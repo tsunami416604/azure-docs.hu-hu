@@ -1,81 +1,74 @@
-<properties
-   pageTitle="Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Azure"
-   description="Az Azure SQL Data Warehouse kiszolgálónevének és kapcsolati karakterláncának lekérdezése"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
-   editor=""/>
+---
+title: Csatlakozás az Azure SQL Data Warehouse-hoz | Microsoft Docs
+description: Az Azure SQL Data Warehouse kiszolgálónevének és kapcsolati karakterláncának lekérdezése
+services: sql-data-warehouse
+documentationcenter: NA
+author: sonyam
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="09/26/2016"
-   ms.author="sonyama;barbkess"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 09/26/2016
+ms.author: sonyama;barbkess
 
-
+---
 # Csatlakozás az Azure SQL Data Warehouse-hoz
-
 Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Warehouse-hoz.
 
 ## A kiszolgálónév lekérdezése
-
 Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában sample.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portal][].
+1. Nyissa meg az [Azure Portal][Azure Portal].
 2. Kattintson az **SQL-adatbázisok** elemre 
 3. Kattintson arra az adatbázisra, amelyhez csatlakozni kíván.
 4. Keresse meg a teljes kiszolgálónevet.
-
+   
     ![Teljes kiszolgálónév][1]
 
 ## Támogatott illesztők és kapcsolati karakterláncok
+Az Azure SQL Data Warehouse a következőket támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
 
-Az Azure SQL Data Warehouse a következőket támogatja: [ADO.NET][], [ODBC][], [PHP][] és [JDBC][]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
-
-> [AZURE.NOTE] Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
+> [!NOTE]
+> Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
+> 
+> 
 
 ### Minta ADO.NET kapcsolati karakterlánc
-
 ```C#
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
 ### Minta ODBC kapcsolati karakterlánc
-
 ```C#
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 ```
 
 ### Minta PHP kapcsolati karakterlánc
-
 ```PHP
 Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
 ### Minta JDBC kapcsolati karakterlánc
-
 ```Java
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
 ## Kapcsolati beállítások
-
 Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
-| Adatbázis-beállítások       | Érték                        |
-| :--------------------- | :--------------------------- |
-| [ANSI_NULLS][]         | ON                           |
-| [QUOTED_IDENTIFIERS][] | ON                           |
-| [DATEFORMAT][]         | hné                          |
-| [DATEFIRST][]          | 7                            |
+| Adatbázis-beállítások | Érték |
+|:--- |:--- |
+| [ANSI_NULLS][ANSI_NULLS] |ON |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
+| [DATEFORMAT][DATEFORMAT] |hné |
+| [DATEFIRST][DATEFIRST] |7 |
 
 ## Következő lépések
-
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Query with Visual Studio][]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][] (Hitelesítés az Azure SQL Warehouse-szal).
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Query with Visual Studio][Query with Visual Studio]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Hitelesítés az Azure SQL Warehouse-szal).
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

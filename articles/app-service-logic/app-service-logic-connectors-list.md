@@ -1,54 +1,57 @@
-<properties
-    pageTitle="A rendelkezésre álló összekötők és API Apps-lista | Microsoft Azure App Service"
-    description="Az Azure App Service-ben rendelkezésre álló összekötők és az API Apps megismerése"
-    services="logic-apps"
-    documentationCenter=""
-    authors="MandiOhlinger"
-    manager="erikre"
-    editor="cgronlun"/>
+---
+title: A rendelkezésre álló összekötők és API Apps-lista | Microsoft Docs
+description: Az Azure App Service-ben rendelkezésre álló összekötők és az API Apps megismerése
+services: logic-apps
+documentationcenter: ''
+author: MandiOhlinger
+manager: erikre
+editor: cgronlun
 
-<tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/01/2016"
-    ms.author="mandia"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/01/2016
+ms.author: mandia
 
-
-
+---
 # A Logic Apps-alkalmazásokban használható összekötők és API-alkalmazások listája
->[AZURE.NOTE] A cikk e verziója a Logic Apps 2014. 12. 01. dátumú előnézeti sémaverziójára vonatkozik. A Logic Apps általánosan elérhető (GA) verziójával kapcsolatban tekintse meg az [új összekötők listáját](../connectors/apis-list.md).
+> [!NOTE]
+> A cikk e verziója a Logic Apps 2014. 12. 01. dátumú előnézeti sémaverziójára vonatkozik. A Logic Apps általánosan elérhető (GA) verziójával kapcsolatban tekintse meg az [új összekötők listáját](../connectors/apis-list.md).
+> 
+> 
 
 A cikkben leírtak alapján megismerheti a Microsoft által a Logic Apps szolgáltatásban való használatra létrehozott összekötőket és API-alkalmazásokat.
 
 Ha szeretne további tájékoztatáshoz jutni az árakról, illetve kíváncsi rá, hogy mit tartalmaznak az egyes szolgáltatásszintek, látogasson el az [Azure App Service Díjszabás](https://azure.microsoft.com/pricing/details/app-service/) című weblapra.
 
-> [AZURE.NOTE] Ha a Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [a Logic Apps kipróbálását](https://tryappservice.azure.com/?appservice=logic) lehetővé tevő oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> [!NOTE]
+> Ha a Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [a Logic Apps kipróbálását](https://tryappservice.azure.com/?appservice=logic) lehetővé tevő oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> 
+> 
 
 ## Magösszekötők
 Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott és magösszekötőként felhasználható összekötőt és API-alkalmazást:
 
-Név | Leírás
---- | ---
-[Bing Fordító](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Szöveg fordítása más nyelvre a Bing segítségével.
-[HTTP](app-service-logic-connector-http.md) | A HTTP-figyelő megnyit egy végpontot, amely HTTP-kiszolgálóként üzemel, és figyeli a beérkező HTTP- vagy HTTPS-kéréseket. A HTTP-művelet nem igényel API-alkalmazást, ezt a funkciót a Logic Apps natívan támogatja.
-[Slack](app-service-logic-connector-slack.md) | Csatlakozás a Slackhez, illetve üzenetek közzététele a Slack-csatornákban.
-
+| Név | Leírás |
+| --- | --- |
+| [Bing Fordító](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) |Szöveg fordítása más nyelvre a Bing segítségével. |
+| [HTTP](app-service-logic-connector-http.md) |A HTTP-figyelő megnyit egy végpontot, amely HTTP-kiszolgálóként üzemel, és figyeli a beérkező HTTP- vagy HTTPS-kéréseket. A HTTP-művelet nem igényel API-alkalmazást, ezt a funkciót a Logic Apps natívan támogatja. |
+| [Slack](app-service-logic-connector-slack.md) |Csatlakozás a Slackhez, illetve üzenetek közzététele a Slack-csatornákban. |
 
 ## Vállalati integrációs összekötők
 Az alábbi táblázatban megtalálja az összes, a Microsoft által létrehozott és vállalati integrációs összekötőként felhasználható összekötőt és API-alkalmazást:
 
-Név  | Leírás
-------------- | -------------
-[BizTalk Rules](app-service-logic-use-biztalk-rules.md) | A BizTalk Rules a vállalaton belüli üzleti logikai meghatározására és vezérlésére használható. Az üzleti szabályzatok újrafordítás és a társított alkalmazások újratelepítése nélkül is frissíthetők.
-[BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | Az Ön által megválasztott XPath alapján megkeresi az XML-tartalmakat, és kinyeri belőlük az adatokat.
-[DB2-összekötő](app-service-logic-connector-db2.md) | Csatlakozik egy helyszíni IBM DB2-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani. <br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz.
-[Fájl](app-service-logic-connector-file.md) | Ezzel az összekötővel csatlakozhat a helyszíni fájlrendszerhez vagy hálózathoz, és különféle műveleteket hajthat végre, például fájlok feltöltését, törlését, listázását stb.
-[Informix](app-service-logic-connector-informix.md) | Egy helyszíni IBM Informix-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani.<br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz.
-[Microsoft SQL Server](app-service-logic-connector-sql.md) | Helyszíni SQL Server és Azure SQL Database összekapcsolására szolgál. Az összekötővel SQL-adatbázistáblában szereplő bejegyzéseket hozhat létre, frissíthet, kérhet le és törölhet.
-MQ | Egy helyszíni, 8-as verziójú IBM WebSphere MQ Server kiszolgálóhoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Az összekötő a Microsoft MQ-ügyfelét is tartalmazza.<br/><br/>Nincsenek eseményindítók. Nincsenek műveletek.<br/><br/>**Megjegyzés:** Jelenleg nem használható a Logic Apps szolgáltatásban.
+| Név | Leírás |
+| --- | --- |
+| [BizTalk Rules](app-service-logic-use-biztalk-rules.md) |A BizTalk Rules a vállalaton belüli üzleti logikai meghatározására és vezérlésére használható. Az üzleti szabályzatok újrafordítás és a társított alkalmazások újratelepítése nélkül is frissíthetők. |
+| [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) |Az Ön által megválasztott XPath alapján megkeresi az XML-tartalmakat, és kinyeri belőlük az adatokat. |
+| [DB2-összekötő](app-service-logic-connector-db2.md) |Csatlakozik egy helyszíni IBM DB2-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani. <br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz. |
+| [Fájl](app-service-logic-connector-file.md) |Ezzel az összekötővel csatlakozhat a helyszíni fájlrendszerhez vagy hálózathoz, és különféle műveleteket hajthat végre, például fájlok feltöltését, törlését, listázását stb. |
+| [Informix](app-service-logic-connector-informix.md) |Egy helyszíni IBM Informix-adatbázishoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Képes a webes API- és OData API-műveleteket Informix strukturált lekérdezésinyelv-parancsokhoz párosítani.<br/><br/>Nincsenek eseményindítók. A műveletek a következők lehetnek: táblázat kiválasztása, beillesztés, frissítés, törlés és egyéni utasítás.<br/><br/>Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Ez az összekötő tartalmazza a Microsoft DRDA-ügyfelét is, amelynek segítségével TCP/IP-hálózaton keresztül is csatlakozhat az Informix-kiszolgálókhoz. |
+| [Microsoft SQL Server](app-service-logic-connector-sql.md) |Helyszíni SQL Server és Azure SQL Database összekapcsolására szolgál. Az összekötővel SQL-adatbázistáblában szereplő bejegyzéseket hozhat létre, frissíthet, kérhet le és törölhet. |
+| MQ |Egy helyszíni, 8-as verziójú IBM WebSphere MQ Server kiszolgálóhoz és egy Windows operációs rendszeren futó Azure virtuális géphez csatlakozik. Helyszíni használat esetén a VPN vagy az Azure ExpressRoute is igénybe vehető. Az összekötő a Microsoft MQ-ügyfelét is tartalmazza.<br/><br/>Nincsenek eseményindítók. Nincsenek műveletek.<br/><br/>**Megjegyzés:** Jelenleg nem használható a Logic Apps szolgáltatásban. |
 
 ## Eseményindítóként használható összekötők
 Számos összekötő eseményindítókat biztosít a Logic Apps szolgáltatásban való használatra. Ezek az eseményindítók két csoportba sorolhatók:
@@ -68,8 +71,6 @@ Az összekötők a logikai alkalmazásban műveletként is felhasználhatók. A 
 [Mik azok az összekötők és a BizTalk API-alkalmazások?](app-service-logic-what-are-biztalk-api-apps.md)  
 [Using the Hybrid Connection Manager in Azure App Service (A Hybrid Connection Manager használata az Azure App Services-ben)](app-service-logic-hybrid-connection-manager.md)  
 [Manage and Monitor your built-in API Apps and Connectors (A beépített API-alkalmazások és összekötők kezelése és figyelése)](app-service-logic-monitor-your-connectors.md)
-
-
 
 <!--HONumber=Oct16_HO3-->
 

@@ -1,58 +1,61 @@
-<properties
-    pageTitle="Az első adat-előállító létrehozása (REST) | Microsoft Azure"
-    description="Az oktatóanyag során egy minta Azure Data Factory-adatcsatornát fogunk létrehozni a Data Factory REST API-val."
-    services="data-factory"
-    documentationCenter=""
-    authors="spelluru"
-    manager="jhubbard"
-    editor="monicar"
-/>
+---
+title: Az első adat-előállító létrehozása (REST) | Microsoft Docs
+description: Az oktatóanyag során egy minta Azure Data Factory-adatcsatornát fogunk létrehozni a Data Factory REST API-val.
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-    ms.service="data-factory"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/16/2016"
-    ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/16/2016
+ms.author: spelluru
 
-
+---
 # Oktatóanyag: Az első data factory létrehozása a Data Factory REST API használatával
-> [AZURE.SELECTOR]
-- [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-- [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
-- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
-- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
+> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
+> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+> 
+> 
 
 Ebből a cikkből megtudhatja, hogyan hozza létre első Azure data factoryját a Data Factory REST API segítségével.
 
 ## Előfeltételek
-- Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című részt, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
-- Telepítse gépére a [Curl](https://curl.haxx.se/dlwiz/) eszközt. A Curl eszköz a REST-parancsokkal együtt az adat-előállító létrehozására használható. 
-- Az [ebben a cikkben](../resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
-    1. Hozzon létre egy **ADFGetStartedApp** nevű webalkalmazást az Azure Active Directoryban.
-    2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
-    3. Szerezze be a **bérlőazonosítót**. 
-    4. Rendelje az **ADFGetStartedApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
-- Telepítse az [Azure PowerShellt](../powershell-install-configure.md).  
-- Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
-    1. Futtassa a **Login-AzureRmAccount** parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.  
-    2. Futtassa a **Get-AzureRmSubscription** parancsot a fiókhoz elérhető összes előfizetés megtekintéséhez.
-    3. A használni kívánt előfizetés kiválasztásához futtassa a következőt: **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext**. Cserélje a **NameOfAzureSubscription** kifejezést az Azure-előfizetés nevére. 
-3. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben:  
-
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-
-    Az oktatóanyag különböző lépései során feltételezzük, hogy az ADFTutorialResourceGroup elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, használja ehelyett saját erőforráscsoportja nevét, amikor az oktatóanyag az ADFTutorialResourceGroup csoportra utal.
+* Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című részt, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
+* Telepítse gépére a [Curl](https://curl.haxx.se/dlwiz/) eszközt. A Curl eszköz a REST-parancsokkal együtt az adat-előállító létrehozására használható. 
+* Az [ebben a cikkben](../resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
+  1. Hozzon létre egy **ADFGetStartedApp** nevű webalkalmazást az Azure Active Directoryban.
+  2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
+  3. Szerezze be a **bérlőazonosítót**. 
+  4. Rendelje az **ADFGetStartedApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
+* Telepítse az [Azure PowerShellt](../powershell-install-configure.md).  
+* Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
+  1. Futtassa a **Login-AzureRmAccount** parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.  
+  2. Futtassa a **Get-AzureRmSubscription** parancsot a fiókhoz elérhető összes előfizetés megtekintéséhez.
+  3. A használni kívánt előfizetés kiválasztásához futtassa a következőt: **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext**. Cserélje a **NameOfAzureSubscription** kifejezést az Azure-előfizetés nevére. 
+* Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben:  
+  
+       New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+  
+   Az oktatóanyag különböző lépései során feltételezzük, hogy az ADFTutorialResourceGroup elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, használja ehelyett saját erőforráscsoportja nevét, amikor az oktatóanyag az ADFTutorialResourceGroup csoportra utal.
 
 ## JSON-definíciók létrehozása
 Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is található. 
 
-### datafactory.json 
-> [AZURE.IMPORTANT] Globálisan egyedi nevet kell használnia, ezért érdemes lehet előtagot/utótagot adnia az ADFCopyTutorialDF névhez, hogy az egyedivé váljon. 
+### datafactory.json
+> [!IMPORTANT]
+> Globálisan egyedi nevet kell használnia, ezért érdemes lehet előtagot/utótagot adnia az ADFCopyTutorialDF névhez, hogy az egyedivé váljon. 
+> 
+> 
 
     {  
         "name": "FirstDataFactoryREST",  
@@ -60,7 +63,10 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
     }  
 
 ### azurestoragelinkedservice.json
-> [AZURE.IMPORTANT] Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+> [!IMPORTANT]
+> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+> 
+> 
 
     {
         "name": "AzureStorageLinkedService",
@@ -74,7 +80,6 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 
 ### hdinsightondemandlinkedservice.json
-
     {
         "name": "HDInsightOnDemandLinkedService",
         "properties": {
@@ -91,24 +96,23 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
 
 | Tulajdonság | Leírás |
-| :------- | :---------- |
-| Verzió | Megadja, hogy a HDInsight-fürtnek 3.2-es verziójúnak kell lennie. | 
-| ClusterSize | A HDInsight-fürt mérete. | 
-| TimeToLive | Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
-| linkedServiceName | Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
+|:--- |:--- |
+| Verzió |Megadja, hogy a HDInsight-fürtnek 3.2-es verziójúnak kell lennie. |
+| ClusterSize |A HDInsight-fürt mérete. |
+| TimeToLive |Megadja, hogy a HDInsight-fürt mennyi ideig lehet tétlen, mielőtt törölné a rendszer. |
+| linkedServiceName |Megadja a HDInsight által előállított naplók tárolására szolgáló tárfiókot. |
 
 Vegye figyelembe a következő szempontokat: 
 
-- A Data Factory létrehoz egy **Windows-alapú** HDInsight-fürtöt a fenti JSON-fájllal. A szolgáltatás **Linux-alapú** HDInsight-fürtöt is képes létrehozni. További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás). 
-- Igény szerinti HDInsight-fürt helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
-- A HDInsight-fürt létrehoz egy **alapértelmezett tárolót ** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a program tervezett működésének része. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). Ha befejeződött a feldolgozás, a rendszer törli a fürtöt.
-
+* A Data Factory létrehoz egy **Windows-alapú** HDInsight-fürtöt a fenti JSON-fájllal. A szolgáltatás **Linux-alapú** HDInsight-fürtöt is képes létrehozni. További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás). 
+* Igény szerinti HDInsight-fürt helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
+* A HDInsight-fürt létrehoz egy **alapértelmezett tárolót ** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a program tervezett működésének része. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). Ha befejeződött a feldolgozás, a rendszer törli a fürtöt.
+  
     Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: „adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](http://storageexplorer.com/).
 
 További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás). 
 
 ### inputdataset.json
-
     {
         "name": "AzureBlobInput",
         "properties": {
@@ -137,17 +141,16 @@ A JSON-kódrészlet meghatározza az **AzureBlobInput** nevű adatkészletet, am
 Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
 
 | Tulajdonság | Leírás |
-| :------- | :---------- |
-| type | A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |  
-| linkedServiceName | A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
-| fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
-| type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. | 
-| columnDelimiter | A naplófájlokban a vessző karakter (,) szolgál az oszlopok elválasztására. |
-| frequency/interval | A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el. | 
-| external | Ez a tulajdonság true (igaz) értékre van állítva, ha a bemeneti adatokat nem a Data Factory szolgáltatás hozta létre. | 
+|:--- |:--- |
+| type |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
+| linkedServiceName |A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
+| fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
+| type |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
+| columnDelimiter |A naplófájlokban a vessző karakter (,) szolgál az oszlopok elválasztására. |
+| frequency/interval |A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el. |
+| external |Ez a tulajdonság true (igaz) értékre van állítva, ha a bemeneti adatokat nem a Data Factory szolgáltatás hozta létre. |
 
 ### outputdataset.json
-
     {
         "name": "AzureBlobOutput",
         "properties": {
@@ -170,8 +173,10 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 A JSON-kódrészlet meghatározza az **AzureBlobOutput** nevű adatkészletet, amely az adatcsatorna egyik tevékenységének kimeneti adatait jelöli. Emellett azt is meghatározza, hogy az eredmények tárolása az **adfgetstarted** nevű blobtárolóban és a **partitioneddata** nevű mappában történik. Az **availability** (rendelkezésre állás) szakasz meghatározza, hogy a kimeneti adatkészlet előállítása havonta történik.
 
 ### pipeline.json
-> [AZURE.IMPORTANT] Cserélje a **storageaccountname** kifejezést Azure Storage-fiókja nevére. 
-
+> [!IMPORTANT]
+> Cserélje a **storageaccountname** kifejezést Azure Storage-fiókja nevére. 
+> 
+> 
 
     {
         "name": "MyFirstPipeline",
@@ -220,13 +225,18 @@ A folyamat **start** (kezdés) és **end** (befejezés) tulajdonságai a folyama
 
 A tevékenység JSON-fájljában meg van határozva, hogy a Hive-parancsfájl a **linkedServiceName** – **HDInsightOnDemandLinkedService** által meghatározott számítási szolgáltatáson fut.
 
-> [AZURE.NOTE] Az előző példában használt JSON-tulajdonságokkal kapcsolatos részletekért lásd az [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) (Az adatcsatornák működése) című témakört. 
+> [!NOTE]
+> Az előző példában használt JSON-tulajdonságokkal kapcsolatos részletekért lásd az [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) (Az adatcsatornák működése) című témakört. 
+> 
+> 
 
 ## Globális változók beállítása
-
 Adja meg saját értékeit, majd az Azure PowerShellben hajtsa végre a következő parancsokat:
 
-> [AZURE.IMPORTANT] Az ügyfél-azonosító, a titkos ügyfélkód, a bérlőazonosító és az előfizetés-azonosító beszerzésével kapcsolatban olvassa el az [Előfeltételek](#prerequisites) című fejezetet.   
+> [!IMPORTANT]
+> Az ügyfél-azonosító, a titkos ügyfélkód, a bérlőazonosító és az előfizetés-azonosító beszerzésével kapcsolatban olvassa el az [Előfeltételek](#prerequisites) című fejezetet.   
+> 
+> 
 
     $client_id = "<client ID of application in AAD>"
     $client_secret = "<client key of application in AAD>"
@@ -239,79 +249,77 @@ Adja meg saját értékeit, majd az Azure PowerShellben hajtsa végre a követke
 
 
 ## Hitelesítés az AAD segítségével
-
     $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
     $responseToken = Invoke-Command -scriptblock $cmd;
     $accessToken = (ConvertFrom-Json $responseToken).access_token;
-    
+
     (ConvertFrom-Json $responseToken) 
 
 
 
 ## Data factory létrehozása
-
 Ebben a lépésben egy **FirstDataFactoryREST** nevű Azure-adatelőállítót fog létrehozni. A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Például a másolási tevékenység, amely adatokat másol a forrásadattárból a céladattárba, és a HDInsight Hive tevékenység, amely Hive-parancsfájlt futtat az adatok átalakításához. Az adat-előállító létrehozásához futtassa az alábbi parancsokat: 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
-
+   
     Ellenőrizze, hogy itt is azt az adatelőállító-nevet adja-e meg, amit a **datafactory.json** fájlban (ADFCopyTutorialDF). 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
 2. Az **Invoke-Command** használatával futtassa a parancsot.
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. Tekintse meg az eredményeket. Ha az adat-előállító sikeresen létrejött, az **eredmények** között meg kell jelennie az adat-előállítóhoz tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.  
-
+   
         Write-Host $results
 
 Vegye figyelembe a következő szempontokat:
- 
-- Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredményeknél a következő hibaüzenet jelenik meg: **A(z) „FirstDataFactoryREST” Data factory nem érhető el**, végezze el a következő lépéseket:  
-    1. Módosítsa a nevet (például yournameFirstDataFactoryREST) a **datafactory.json** fájlban. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
-    2. Az első parancsnál, amikor a **$cmd** változóhoz értéket rendel, cserélje le a FirstDataFactoryREST értéket az új névre, és futtassa le így a parancsot. 
-    3. A következő két parancs lefuttatásával hívja meg a REST API-t, amely létrehozza az adat-előállítót, és kiírja a művelet eredményeit. 
-- Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
-- Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
-- Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
 
-    - Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához: 
-        
-            Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredményeknél a következő hibaüzenet jelenik meg: **A(z) „FirstDataFactoryREST” Data factory nem érhető el**, végezze el a következő lépéseket:  
+  1. Módosítsa a nevet (például yournameFirstDataFactoryREST) a **datafactory.json** fájlban. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
+  2. Az első parancsnál, amikor a **$cmd** változóhoz értéket rendel, cserélje le a FirstDataFactoryREST értéket az új névre, és futtassa le így a parancsot. 
+  3. A következő két parancs lefuttatásával hívja meg a REST API-t, amely létrehozza az adat-előállítót, és kiírja a művelet eredményeit. 
+* Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének/rendszergazdájának kell lennie.
+* Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
+* Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
+  
+  * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához: 
     
-        Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e: 
+          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     
-            Get-AzureRmResourceProvider
-    - Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
+      Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e: 
+    
+          Get-AzureRmResourceProvider
+  * Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
 
 A folyamat létrehozása előtt először létre kell hoznia néhány Data Factory-entitást. Először társított szolgáltatásokat kell létrehoznia, amelyek adattárakat/számítási szolgáltatásokat társítanak az adattárhoz, majd bemeneti és kimeneti adatkészleteket kell meghatároznia, amelyek a társított adattárakban lévő adatokat képviselik. 
 
-## Társított szolgáltatások létrehozása 
+## Társított szolgáltatások létrehozása
 Ebben a lépésben az Azure Storage-fiókját és egy igény szerinti Azure HDInsight-fürtöt társít az adat-előállítóhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. a HDInsight társított szolgáltatás pedig a folyamat tevékenységében meghatározott Hive-parancsfájlt futtatja. 
 
 ### Azure Storage társított szolgáltatás létrehozása
 Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállítóhoz. Ebben az oktatóanyagban ugyanazt az Azure Storage-fiókot fogja használni a bemeneti/kimeneti adatok és a HQL-parancsfájl tárolásához.
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
 2. Az **Invoke-Command** használatával futtassa a parancsot.
- 
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. Tekintse meg az eredményeket. Ha a társított szolgáltatás sikeresen létrejött, az **eredmények** között meg kell jelennie a társított szolgáltatáshoz tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.
-  
+   
         Write-Host $results
 
 ### Azure HDInsight társított szolgáltatás létrehozása
 Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factoryhoz. A HDInsight-fürtöt a rendszer automatikusan létrehozza a futásidő során, majd törli a feldolgozás befejezését követően, miután egy adott ideig tétlen volt. Igény szerinti HDInsight-fürt helyett saját HDInsight-fürtöt is használhat. További információ: [Compute Linked Services](data-factory-compute-linked-services.md) (Számítási társított szolgáltatás).  
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz.
- 
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
 2. Az **Invoke-Command** használatával futtassa a parancsot.
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. Tekintse meg az eredményeket. Ha a társított szolgáltatás sikeresen létrejött, az **eredmények** között meg kell jelennie a társított szolgáltatáshoz tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.  
-
+   
         Write-Host $results
 
 ## Adatkészletek létrehozása
@@ -321,25 +329,24 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 Ebben a lépésben létrehozza a bemeneti adatkészletet, amely az Azure Blob Storage-fiókban tárolt bemeneti adatokat jelöli.
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
-
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
 2. Az **Invoke-Command** használatával futtassa a parancsot.
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. Tekintse meg az eredményeket. Ha az adatkészlet sikeresen létrejött, az **eredmények** között meg kell jelennie az adatkészlethez tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.
-  
+   
         Write-Host $results
-### Kimeneti adatkészlet létrehozása
-Ebben a lépésben létrehozza a kimeneti adatkészletet, amely az Azure Blob Storage-fiókban tárolt kimeneti adatokat jelöli.
-
-1. Rendelje a parancsot a **cmd** nevű változóhoz.
- 
+   ### Kimeneti adatkészlet létrehozása
+   Ebben a lépésben létrehozza a kimeneti adatkészletet, amely az Azure Blob Storage-fiókban tárolt kimeneti adatokat jelöli.
+4. Rendelje a parancsot a **cmd** nevű változóhoz.
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
-2. Az **Invoke-Command** használatával futtassa a parancsot.
-
+5. Az **Invoke-Command** használatával futtassa a parancsot.
+   
         $results = Invoke-Command -scriptblock $cmd;
-3. Tekintse meg az eredményeket. Ha az adatkészlet sikeresen létrejött, az **eredmények** között meg kell jelennie az adatkészlethez tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.
-  
+6. Tekintse meg az eredményeket. Ha az adatkészlet sikeresen létrejött, az **eredmények** között meg kell jelennie az adatkészlethez tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.
+   
         Write-Host $results 
 
 ## Folyamat létrehozása
@@ -348,15 +355,15 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
 Győződjön meg arról, hogy az **input.log** fájl megjelenik az Azure Blob Storage **adfgetstarted/inputdata** mappájában, és futtassa az alábbi parancsot a folyamat üzembe helyezéséhez. Mivel a **start** (kezdés) és az **end** (befejezés) időpontok múltbeli értékekre vannak beállítva, és az **isPaused** tulajdonság értéke false (hamis), a folyamat (a folyamatban foglalt tevékenység) az üzembe helyezés után azonnal fut. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz.
- 
+   
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
 2. Az **Invoke-Command** használatával futtassa a parancsot.
-
+   
         $results = Invoke-Command -scriptblock $cmd;
 3. Tekintse meg az eredményeket. Ha az adatkészlet sikeresen létrejött, az **eredmények** között meg kell jelennie az adatkészlethez tartozó JSON-nak. Ellenkező esetben hibaüzenet jelenik meg.  
-
+   
         Write-Host $results
-5. Gratulálunk, sikeresen létrehozta első folyamatát az Azure PowerShell használatával!
+4. Gratulálunk, sikeresen létrehozta első folyamatát az Azure PowerShell használatával!
 
 ## Folyamat figyelése
 Ebben a lépésben a Data Factory REST API segítségével figyelheti meg az adatcsatorna által készített szeleteket.
@@ -374,43 +381,45 @@ Ebben a lépésben a Data Factory REST API segítségével figyelheti meg az ada
     }
 
 
-> [AZURE.IMPORTANT] 
+> [!IMPORTANT]
 > Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért a folyamat várhatóan **körülbelül 30 perc** alatt dolgozza fel a szeletet.  
+> 
+> 
 
 Futtassa addig az Invoke-Command parancsot, illetve a következő parancsot, amíg a szelet **Kész** vagy **Sikertelen** állapotba nem kerül. Ha a szelet Ready (Kész) állapotú, a kimeneti adatok blobtárolójának **adfgetstarted** tárolójában ellenőrizze a **partitioneddata** mappát.  Az igény szerinti HDInsight-fürt létrehozása általában hosszabb időt vesz igénybe.
 
 ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 
-> [AZURE.IMPORTANT] A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra le szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagban foglaltakat, töltse fel a bemeneti fájlt (input.log) az adfgetstarted tároló inputdata mappájába.
+> [!IMPORTANT]
+> A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra le szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagban foglaltakat, töltse fel a bemeneti fájlt (input.log) az adfgetstarted tároló inputdata mappájába.
+> 
+> 
 
 A szeletek figyelésére és a felmerülő problémák megoldására az Azure Portalt is használhatja. További információk: [Monitor pipelines using Azure portal](data-factory-build-your-first-pipeline-using-editor.md##monitor-pipeline) (Adatcsatornák figyelése az Azure Portal használatával).  
 
-## Összefoglalás 
+## Összefoglalás
 Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight Hadoop-fürtön futtatott Hive-parancsfájllal dolgozza fel az adatokat. Az Azure Portal Data Factory Editor eszközét használta a következő lépések végrehajtásához:  
 
-1.  Létrehozott egy Azure **data factoryt**.
-2.  Létrehozott két **társított szolgáltatást**:
-    1.  Az **Azure Storage** társított szolgáltatást, amely a bemeneti és kimeneti adatokat tároló Azure blob-tárolót társítja a data factoryval.
-    2.  Az **Azure HDInsight** igény szerinti társított szolgáltatást, amely egy igény szerinti HDInsight Hadoop-fürtöt társít a data factoryval. Az Azure Data Factory létrehoz egy HDInsight Hadoop-fürtöt, amely igény szerint dolgozza fel a bemeneti adatokat és állítja elő a kimeneti adatokat. 
-3.  Létrehozott két **adatkészletet**, amelyek leírják a bemeneti és kimeneti adatokat az adatcsatorna HDInsight Hive-tevékenysége számára. 
-4.  Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel. 
+1. Létrehozott egy Azure **data factoryt**.
+2. Létrehozott két **társított szolgáltatást**:
+   1. Az **Azure Storage** társított szolgáltatást, amely a bemeneti és kimeneti adatokat tároló Azure blob-tárolót társítja a data factoryval.
+   2. Az **Azure HDInsight** igény szerinti társított szolgáltatást, amely egy igény szerinti HDInsight Hadoop-fürtöt társít a data factoryval. Az Azure Data Factory létrehoz egy HDInsight Hadoop-fürtöt, amely igény szerint dolgozza fel a bemeneti adatokat és állítja elő a kimeneti adatokat. 
+3. Létrehozott két **adatkészletet**, amelyek leírják a bemeneti és kimeneti adatokat az adatcsatorna HDInsight Hive-tevékenysége számára. 
+4. Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel. 
 
 ## Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti Azure HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database adatbázisba történő másolásához, tekintse meg a következő cikket: [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Oktatóanyag: adatok másolása Azure-blobból Azure SQL Database adatbázisba).
 
 ## Lásd még:
 | Témakör | Leírás |
-| :---- | :---- |
-| [Data Factory REST API Reference (Data Factory REST API referenciája)](https://msdn.microsoft.com/library/azure/dn906738.aspx) |  A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |
-| [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) | Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). |
-| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) | Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
-| [Folyamatok](data-factory-create-pipelines.md) | Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
-| [Adatkészletek](data-factory-create-datasets.md) | Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban.
-| [Monitor and manage pipelines using Azure portal blades (Folyamatok figyelése és felügyelete az Azure Portal paneljeinek használatával)](data-factory-monitor-manage-pipelines.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti az adatcsatornákat, illetve hogyan kereshet bennük hibákat az Azure Portal paneljeinek használatával. |
-| [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) | Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. 
-
-
-
+|:--- |:--- |
+| [Data Factory REST API Reference (Data Factory REST API referenciája)](https://msdn.microsoft.com/library/azure/dn906738.aspx) |A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |
+| [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) |Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). |
+| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
+| [Monitor and manage pipelines using Azure portal blades (Folyamatok figyelése és felügyelete az Azure Portal paneljeinek használatával)](data-factory-monitor-manage-pipelines.md) |Ez a cikk ismerteti, hogyan figyelheti és felügyelheti az adatcsatornákat, illetve hogyan kereshet bennük hibákat az Azure Portal paneljeinek használatával. |
+| [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. |
 
 <!--HONumber=Sep16_HO4-->
 

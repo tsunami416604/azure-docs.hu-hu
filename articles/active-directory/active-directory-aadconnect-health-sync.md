@@ -1,23 +1,22 @@
 
-<properties
-    pageTitle="Az Azure AD Connect Health használata a szinkronizálási szolgáltatással | Microsoft Azure"
-    description="Ez az Azure AD Connect Health-oldal bemutatja az Azure AD Connect szinkronizálási szolgáltatás megfigyelését."
-    services="active-directory"
-    documentationCenter=""
-    authors="billmath"
-    manager="femila"
-    editor="curtand"/>
+---
+title: Az Azure AD Connect Health használata a szinkronizálási szolgáltatással | Microsoft Docs
+description: Ez az Azure AD Connect Health-oldal bemutatja az Azure AD Connect szinkronizálási szolgáltatás megfigyelését.
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/08/2016"
-    ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/08/2016
+ms.author: billmath
 
-
+---
 # Az Azure AD Connect Health szinkronizálási szolgáltatás használata
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
 
@@ -44,8 +43,8 @@ Ezt úgy módosíthatja, ha a „Beállítások” elemre kattint, és engedély
 ## Szinkronizálási elemzés
 Az Azure AD Connect Health szinkronizálási szolgáltatás legújabb kiadása a következő új képességekkel bővült:
 
-- Szinkronizálási műveletek késleltetése
-- Objektummódosítási trend
+* Szinkronizálási műveletek késleltetése
+* Objektummódosítási trend
 
 ### Szinkronizálási késések
 Ez a funkció egy tendenciagrafikont hoz létre az összekötőkhöz kapcsolódó szinkronizálási műveletek (importálás, exportálás stb.) késéseiről.  Így nemcsak a műveletek késései ismerhetők meg gyorsan és könnyen (hasznos a nagy méretű, tömeges változások esetén), hanem lehetővé teszi a késésekben előforduló, potenciálisan további vizsgálatot igénylő rendellenességek észlelését.
@@ -60,7 +59,6 @@ Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure 
 ![Szinkronizálási késések](./media/active-directory-aadconnect-health-sync/syncobjectchanges.png)
 
 ## Kapcsolódó hivatkozások
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health Operations (Az Azure AD Connect Health műveletei)](active-directory-aadconnect-health-operations.md)
@@ -68,9 +66,6 @@ Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure 
 * [Az Azure AD Connect Health használata az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health Version History (Az Azure AD Connect Health verzióelőzményei)](active-directory-aadconnect-health-version-history.md)
-
-
-
 
 <!--HONumber=Sep16_HO4-->
 

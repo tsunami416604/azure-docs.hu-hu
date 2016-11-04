@@ -1,65 +1,60 @@
-<properties
-   pageTitle="Adatok betöltése az SQL Serverből az Azure SQL Data Warehouse-ba (bcp) | Microsoft Azure"
-   description="Kisebb adatméret esetében a bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, majd közvetlenül az SQL Data Warehouse-ba importálja őket."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="lodipalm"
-   manager="barbkess"
-   editor=""/>
+---
+title: Adatok betöltése az SQL Serverből az Azure SQL Data Warehouse-ba (bcp) | Microsoft Docs
+description: Kisebb adatméret esetében a bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, majd közvetlenül az SQL Data Warehouse-ba importálja őket.
+services: sql-data-warehouse
+documentationcenter: NA
+author: lodipalm
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="lodipalm;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/30/2016
+ms.author: lodipalm;barbkess;sonyama
 
-
-
+---
 # Adatok betöltése az SQL Serverből az Azure SQL Data Warehouse-ba (egybesimított fájlok)
-
-> [AZURE.SELECTOR]
-- [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
-- [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-- [bcp](sql-data-warehouse-load-from-sql-server-with-bcp.md)
+> [!div class="op_single_selector"]
+> * [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+> * [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+> * [bcp](sql-data-warehouse-load-from-sql-server-with-bcp.md)
+> 
+> 
 
 Kisebb adatkészletek esetében a bcp parancssori segédprogrammal exportálhat adatokat az SQL Serverből, majd közvetlenül az SQL Data Warehouse-ba töltheti be őket.
 
 Az oktatóanyag során a következőket hajtja végre a bcp segítségével:
 
-- Exportál egy táblát az SQL Serverből a bcp out paranccsal (vagy létrehoz egy egyszerű mintafájlt)
-- Importál egy táblát egy egybesimított fájlból az SQL Data Warehouse-ba.
-- Statisztikákat készít a betöltött adatokról.
+* Exportál egy táblát az SQL Serverből a bcp out paranccsal (vagy létrehoz egy egyszerű mintafájlt)
+* Importál egy táblát egy egybesimított fájlból az SQL Data Warehouse-ba.
+* Statisztikákat készít a betöltött adatokról.
 
->[AZURE.VIDEO loading-data-into-azure-sql-data-warehouse-with-bcp]
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
+> 
+> 
 
 ## Előkészületek
-
 ### Előfeltételek
-
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- Egy SQL Data Warehouse-adatbázis
-- Telepített bcp parancssori segédprogram
-- Telepített sqlcmd parancssori segédprogram
+* Egy SQL Data Warehouse-adatbázis
+* Telepített bcp parancssori segédprogram
+* Telepített sqlcmd parancssori segédprogram
 
-A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][].
+A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpontból].
 
 ### Adatok ASCII vagy UTF-16 formátumban
-
 Ha a saját adataival próbálja használni ezt az oktatóanyagot, az adatoknak ASCII vagy UTF-16 kódolást kell használniuk, mert a bcp nem támogatja az UTF-8 formátumot. 
 
 A PolyBase támogatja az UTF-8 formátumot, de az UTF-16 formátumot még nem. Ügyeljen arra, hogy ha a bcp-t és a PolyBase-t együtt kívánja használni, az adatokat az SQL Serverből való exportálás után UTF-8 formátumra kell alakítania. 
 
-
 ## 1. Céltábla létrehozása
-
 Adjon meg egy táblát az SQL Data Warehouse-ban a betöltés céltáblájául. A tábla oszlopainak meg kell felelnie az adatfájl egyes soraiban szereplő adatoknak.
 
 Tábla létrehozásához nyisson meg egy parancssort, és az sqlcmd.exe segítségével futtassa a következő parancsot:
-
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -79,7 +74,6 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## 2. Forrásadatfájlok létrehozása
-
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt). Ezek az adatok ASCII formátumban vannak.
 
 ```
@@ -120,24 +114,23 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 Az eredménynek így kell kinéznie:
 
-DateId |CalendarQuarter |FiscalQuarter
------------ |--------------- |-------------
-20150101 |1 |3
-20150201 |1 |3
-20150301 |1 |3
-20150401 |2 |4
-20150501 |2 |4
-20150601 |2 |4
-20150701 |3 |1
-20150801 |3 |1
-20150801 |3 |1
-20151001 |4 |2
-20151101 |4 |2
-20151201 |4 |2
+| DateId | CalendarQuarter | FiscalQuarter |
+| --- | --- | --- |
+| 20150101 |1 |3 |
+| 20150201 |1 |3 |
+| 20150301 |1 |3 |
+| 20150401 |2 |4 |
+| 20150501 |2 |4 |
+| 20150601 |2 |4 |
+| 20150701 |3 |1 |
+| 20150801 |3 |1 |
+| 20150801 |3 |1 |
+| 20151001 |4 |2 |
+| 20151101 |4 |2 |
+| 20151201 |4 |2 |
 
 ## 4. Statisztika létrehozása
-
-Az SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását vagy automatikus frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetése: [Statisztika][]. 
+Az SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását vagy automatikus frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetése: [Statisztika][Statisztika]. 
 
 A statisztika létrehozásához futtassa az alábbi parancsot az újonnan betöltött táblákon.
 
@@ -155,7 +148,6 @@ Ha szeretné, exportálhatja az SQL Data Warehouse-ból épp visszatöltött ada
 Az eredmények viszont eltérőek lesznek. Minthogy az adatokat a rendszer elosztott helyeken tárolja az SQL Data Warehouse-ban, az adatok exportálásakor minden számítási csomópont a kimeneti fájlba írja az adatait. A kimeneti fájl adatainak sorrendje valószínűleg eltér a bemeneti fájl adatainak sorrendjétől.
 
 ### Tábla exportálása és az exportált eredmények összehasonlítása
-
 Az exportált adatok megtekintéséhez nyissa meg a parancssort, és futtassa ezt a parancsot a saját paramétereivel. A ServerName az Azure logikai SQL Server neve.
 
 ```sql
@@ -179,13 +171,12 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 ```
 
 ### Lekérdezés eredményeinek exportálása
-
 A bcp **queryout** függvényével exportálhatja egy lekérdezés eredményeit az egész tábla exportálása helyett. 
 
 ## Következő lépések
-A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][].
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][].
-További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban: [Táblák áttekintése][] vagy [CREATE TABLE szintaxis][].
+A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Adatok betöltése az SQL Data Warehouse-ba].
+További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse fejlesztői áttekintés].
+További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
 
 <!--Image references-->
 

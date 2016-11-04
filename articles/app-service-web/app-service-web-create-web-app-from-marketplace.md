@@ -1,27 +1,25 @@
-<properties
-    pageTitle="Webalkalmazások létrehozása az Azure Piactérről | Microsoft Azure"
-    description="Megtudhatja, hogy az Azure portál segítségével hogyan hozhat létre új WordPress webalkalmazásokat az Azure Piactérről."
-    services="app-service\web"
-    documentationCenter=""
-    authors="rmcmurray"
-    manager="wpickett"
-    editor=""/>
+---
+title: Webalkalmazások létrehozása az Azure Piactérről | Microsoft Docs
+description: Megtudhatja, hogy az Azure portál segítségével hogyan hozhat létre új WordPress webalkalmazásokat az Azure Piactérről.
+services: app-service\web
+documentationcenter: ''
+author: rmcmurray
+manager: wpickett
+editor: ''
 
-<tags
-    ms.service="app-service-web"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/20/2016"
-    ms.author="robmcm"/>
+ms.service: app-service-web
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/20/2016
+ms.author: robmcm
 
-
+---
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
 
 # Webalkalmazások létrehozása a Azure Piactérről
-
-[AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
+[!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. Például: WordPress, Umbraco CMS, Drupal stb. Ezek a webalkalmazások a legkülönbözőbb népszerű keretrendszerekre épülnek, mint a [PHP] ebben a WordPress példában, vagy a [.NET], a [Node.js], a [Java] és a [Python], csak hogy néhányat említsünk. A webalkalmazások Azure Piactérről való létrehozásához az [Azure Portal] eléréséhez használt böngésző az egyetlen szoftver, amelyre szüksége van.
 
@@ -37,107 +35,90 @@ A jelen oktatóanyag esetében egy WordPress blogwebhelyet fog üzembe helyezni 
 
 Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatbázist használ. Ha ehelyett SQL Database szolgáltatást használna az adatbázishoz, akkor tekintse meg a [Project Nami] nevű alkalmazást, amely szintén elérhető az Azure Piactéren keresztül.
 
-> [AZURE.NOTE]
+> [!NOTE]
 > Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit][aktiválás], vagy [regisztráljon egy ingyenes próbaverzióra][ingyenes próba].
->
+> 
 > Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása] oldalra. Innen azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben; ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> 
+> 
 
 ## Webalkalmazás keresése és létrehozása az Azure App Service használatával
-
 1. Jelentkezzen be az [Azure Portal].
-
-1. Kattintson az **Új** lehetőségre.
-    
+2. Kattintson az **Új** lehetőségre.
+   
     ![Új Azure-erőforrás létrehozása][MarketplaceStart]
-    
-1. Keresse meg a **WordPress** alkalmazást, majd kattintson a **WordPress** lehetőségre. (Ha a MySQL helyett inkább SQL Database szolgáltatást használna, akkor keresse meg a **Project Nami** alkalmazást.)
-
+3. Keresse meg a **WordPress** alkalmazást, majd kattintson a **WordPress** lehetőségre. (Ha a MySQL helyett inkább SQL Database szolgáltatást használna, akkor keresse meg a **Project Nami** alkalmazást.)
+   
     ![A WordPress alkalmazás keresése a Piactéren][MarketplaceSearch]
-    
-1. A WordPress alkalmazás leírásának elolvasása után kattintson a **Létrehozás** gombra.
-
+4. A WordPress alkalmazás leírásának elolvasása után kattintson a **Létrehozás** gombra.
+   
     ![A WordPress webalkalmazás létrehozása][MarketplaceCreate]
 
 ## Az Azure App Service szolgáltatás beállításainak konfigurálása az új webalkalmazás számára
-
 1. Miután létrehozott egy új webalkalmazást, megjelenik a WordPress beállításpanelje, amelynek segítségével elvégezheti a következő lépéseket:
-
+   
     ![A WordPress webalkalmazás beállításainak konfigurálása][ConfigStart]
-
-1. A **Webalkalmazás** mezőben adjon meg egy nevet a webalkalmazás számára.
-
+2. A **Webalkalmazás** mezőben adjon meg egy nevet a webalkalmazás számára.
+   
     Ennek a névnek egyedinek kell lennie az azurewebsites.net tartományban, mert a webalkalmazás URL-címe *{név}*.azurewebsites.net lesz. Ha a megadott név nem egyedi, egy piros felkiáltójel jelenik meg a szövegmezőben.
-
+   
     ![A WordPress webalkalmazás nevének konfigurálása][ConfigAppName]
-
-1. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni kívánja. 
-
+3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni kívánja. 
+   
     ![A webalkalmazáshoz tartozó előfizetés konfigurálása][ConfigSubscription]
-
-1. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
-
+4. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
+   
     További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése][ResourceGroups].
-
+   
     ![A webalkalmazáshoz tartozó erőforráscsoport konfigurálása][ConfigResourceGroup]
-
-1. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
-
+5. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
+   
     További információk az App Service-csomagokról: [Azure App Service plans overview][AzureAppServicePlans] (Az Azure App Service-csomagok áttekintése). 
-
+   
     ![A webalkalmazáshoz tartozó szolgáltatáscsomag konfigurálása][ConfigServicePlan]
-
-1. Kattintson az **Adatbázis**elemre, majd az **Új MySQL Adatbázis** panelen adja meg a MySQL adatbázis konfigurálásához szükséges értékeket.
-
+6. Kattintson az **Adatbázis**elemre, majd az **Új MySQL Adatbázis** panelen adja meg a MySQL adatbázis konfigurálásához szükséges értékeket.
+   
     a. Írjon be egy új nevet, vagy hagyja meg az alapértelmezett nevet.
-
+   
     b. A **Database Type** (Adatbázistípus) mezőt hagyja **Shared** (Megosztott) értéken.
-
+   
     c. Válassza ki ugyanazt a helyet, amelyet a webalkalmazás számára is választott.
-
+   
     d. Válasszon egy tarifacsomagot. **Merkúr** – ingyenes, minimális kapcsolódással és lemezterülettel – ideális ehhez az oktatóanyaghoz.
-
+   
     e. Az **Új MySQL-adatbázis** panelen fogadja el a jogi feltételeket, majd kattintson az **OK** gombra. 
-
+   
     ![A webalkalmazáshoz tartozó adatbázis-beállítások konfigurálása][ConfigDatabase]
-
-1. A **WordPress** panelen fogadja el a jogi feltételeket, majd kattintson a **Létrehozás** gombra. 
-
+7. A **WordPress** panelen fogadja el a jogi feltételeket, majd kattintson a **Létrehozás** gombra. 
+   
     ![Fejezze be a webalkalmazás beállítását, és kattintson az OK gombra][ConfigFinished]
-
+   
     Az Azure App Service általában kevesebb, mint egy perc alatt létrehozza a webalkalmazást. A portáloldal tetején lévő harang ikonra kattintva figyelemmel követheti a folyamatot.
-
+   
     ![Folyamatjelző][ConfigProgress]
 
 ## A WordPress-webalkalmazás elindítása és kezelése
-    
 1. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure Portalon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
-
+   
     A villanykörte ikonnal rendelkező további erőforrás az [Application Insights][ApplicationInsights], amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
-
-1. Az **Erőforráscsoport** panelen kattintson a webalkalmazás sorra.
-
+2. Az **Erőforráscsoport** panelen kattintson a webalkalmazás sorra.
+   
     ![A WordPress webalkalmazás kiválasztása][WordPressSelect]
-
-1. A Webalkalmazás panelen kattintson a **Tallózás** gombra.
-
+3. A Webalkalmazás panelen kattintson a **Tallózás** gombra.
+   
     ![Keresse meg a WordPress webalkalmazást][WordPressBrowse]
-
-1. Ha a rendszer kéri, hogy válasszon nyelvet a WordPress bloghoz, válassza ki a kívánt nyelvet, majd kattintson a **Folytatás** gombra.
-
+4. Ha a rendszer kéri, hogy válasszon nyelvet a WordPress bloghoz, válassza ki a kívánt nyelvet, majd kattintson a **Folytatás** gombra.
+   
     ![A WordPress webalkalmazás nyelvének konfigurálása][WordPressLanguage]
-
-1. A WordPress **Kezdőlapján** adja meg a WordPress által kért konfigurációs információkat, majd kattintson a **WordPress telepítése** gombra.
-
+5. A WordPress **Kezdőlapján** adja meg a WordPress által kért konfigurációs információkat, majd kattintson a **WordPress telepítése** gombra.
+   
     ![A WordPress webalkalmazás beállításainak konfigurálása][WordPressConfigure]
-
-1. Jelentkezzen be a **Kezdőlapon** létrehozott hitelesítő adatok segítségével.  
-
-1. A webhely irányítópult-oldala nyílik meg, és megjeleníti az Ön által megadott információkat.    
-
+6. Jelentkezzen be a **Kezdőlapon** létrehozott hitelesítő adatok segítségével.  
+7. A webhely irányítópult-oldala nyílik meg, és megjeleníti az Ön által megadott információkat.    
+   
     ![A WordPress irányítópult megtekintése][WordPressDashboard2]
 
 ## Következő lépések
-
 Ebben az oktatóanyagban megtudhatta, hogyan helyezhet üzembe egy példa-webalkalmazást az Azure Piactérről.
 
 Az App Service Web Apps használatával kapcsolatos további információért lásd a lap bal oldalán (széles böngészőablakok esetén) vagy a lap tetején (keskeny böngészőablakok esetén) lévő hivatkozásokat.

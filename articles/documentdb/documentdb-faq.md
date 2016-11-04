@@ -1,35 +1,32 @@
-<properties 
-    pageTitle="Kérdések a DocumentDB adatbázissal kapcsolatban – Gyakori kérdések | Microsoft Azure" 
-    description="Válaszokat kaphat az Azure DocumentDB, egy JSON-hoz készült NoSQL-alapú dokumentumadatbázis-szolgáltatással kapcsolatos gyakori kérdésekre. Az adatbázis kapacitásával, teljesítményszintjeivel és méretezhetőségével kapcsolatos kérdések megválaszolása." 
-    keywords="Database questions, frequently asked questions, documentdb, azure, Microsoft azure"
-    services="documentdb" 
-    authors="mimig1" 
-    manager="jhubbard" 
-    editor="monicar" 
-    documentationCenter=""/>
+---
+title: Kérdések a DocumentDB adatbázissal kapcsolatban – Gyakori kérdések | Microsoft Docs
+description: Válaszokat kaphat az Azure DocumentDB, egy JSON-hoz készült NoSQL-alapú dokumentumadatbázis-szolgáltatással kapcsolatos gyakori kérdésekre. Az adatbázis kapacitásával, teljesítményszintjeivel és méretezhetőségével kapcsolatos kérdések megválaszolása.
+keywords: Database questions, frequently asked questions, documentdb, azure, Microsoft azure
+services: documentdb
+author: mimig1
+manager: jhubbard
+editor: monicar
+documentationcenter: ''
 
-<tags 
-    ms.service="documentdb" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-    ms.date="03/30/2016" 
-    ms.author="mimig"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 03/30/2016
+ms.author: mimig
 
-
-#Gyakori kérdések a DocumentDB-ről
-
+---
+# Gyakori kérdések a DocumentDB-ről
 ## Az adatbázisra vonatkozó kérdések a Microsoft Azure DocumentDB alapjairól
-
-### Mi a Microsoft Azure DocumentDB? 
+### Mi a Microsoft Azure DocumentDB?
 A Microsoft Azure DocumentDB szolgáltatás egy kiválóan méretezhető, NoSQL-alapú dokumentumkezelő adatbázis-szolgáltatás, amely sémamentes adatok széleskörű lekérdezését biztosítja, konfigurálható és megbízható teljesítményt nyújt, valamint gyors fejlesztést tesz lehetővé – mindezt egy felügyelt platformon keresztül, amelynek alapjául az Azure sokoldalúsága és széles körű alkalmazhatósága szolgál. A DocumentDB minden olyan webes, mobil-, játék- és IoT-alkalmazáshoz megfelelő megoldás, amelynél a kiszámítható teljesítmény, a közel valós idejű hozzáférés és a sémamentesadat-modell jelenti a legfőbb szempontokat. A DocumentDB a natív JSON-adatmodell révén biztosítja a sémák rugalmasságát és a gazdag indexelési lehetőségeket, továbbá JavaScript-integrációval ellátott, több dokumentumos tranzakciótámogatást is tartalmaz.  
-  
+
 Az adatbázissal kapcsolatos további kérdésekért, válaszokért, valamint a szolgáltatás telepítésére és használatára vonatkozó utasításokért lásd: [DocumentDB dokumentációs oldal](https://azure.microsoft.com/documentation/services/documentdb/).
 
 ### Milyen adatbázis a DocumentDB?
 A DocumentDB egy NoSQL-alapú, dokumentumközpontú adatbázis, amely JSON formátumban tárolja az adatokat.  A DocumentDB támogatja a beágyazott, önálló adatstruktúrákat, amelyek egy gazdag DocumentDB [SQL-lekérdezési szintaxis](documentdb-sql-query.md) használatával kérhetők le. A DocumentDB [tárolt eljárások, eseményindítók és felhasználó által megadott függvények](documentdb-programming.md) révén biztosítja a kiszolgálóoldali JavaScript nagy teljesítményű tranzakciós feldolgozását. Az adatbázis továbbá támogatja a fejlesztők által beállítható konzisztenciaszinteket a [társított teljesítményszintekkel](documentdb-performance-levels.md).
- 
+
 ### Rendelkeznek-e a DocumentDB-adatbázisok olyan táblákkal, mint egy relációs adatbázis (RDBMS)?
 Nem, a DocumentDB JSON-dokumentumok gyűjteményeiben tárolja az adatokat.  A DocumentDB erőforrásaival kapcsolatos információkért lásd: [A DocumentDB erőforrás-modellje és fogalmai](documentdb-resources.md). 
 
@@ -39,7 +36,7 @@ Igen, a DocumentDB engedélyezi az alkalmazások számára, hogy sémadefiníci�
 ### Támogatja a DocumentDB az ACID-tranzakciókat?
 Igen, a DocumentDB támogatja a JavaScriptben tárolt eljárásokként és eseményindítókként kifejezett dokumentumok közötti tranzakciókat. A tranzakciók az egyes gyűjteményeken belül egyetlen partícióra vannak korlátozva, végrehajtásuk pedig az ACID-szemantikákkal, mindent vagy semmit alapon történik a többi párhuzamosan végrehajtott kódtól vagy felhasználói kérelmektől elkülönítve.  Ha a JavaScript alkalmazáskód kiszolgálóoldali végrehajtásakor kivételek jelentkeznek, a teljes tranzakció vissza lesz állítva. 
 
-### Melyek a DocumentDB jellemző használati esetei?  
+### Melyek a DocumentDB jellemző használati esetei?
 A DocumentDB jó választás az új webes, mobil-, játék- és IoT-alkalmazásokhoz, amelyek esetében fontos az automatikus méretezés, a kiszámítható teljesítmény, az ezredmásodperces válaszidők gyorsasága és a sémamentes adatokra épülő lekérdezés képessége. A DocumentDB rendkívül gyors fejlesztést tesz lehetővé, így támogatja az alkalmazás adatmodelljeinek folyamatos ismétlését. A felhasználók által létrehozott tartalmakat és adatokat kezelő alkalmazások a [DocumentDB gyakori alkalmazási esetei](documentdb-use-cases.md).  
 
 ### Hogyan kínál a DocumentDB kiszámítható teljesítményt?
@@ -50,10 +47,10 @@ Az egyes DocumentDB-gyűjtemények a létesített átviteli sebesség révén le
 ### A DocumentDB megfelel a HIPAA-szabványnak?
 Igen, a DocumentDB megfelel a HIPAA-szabványnak. A HIPAA az egyéni és beazonosítható egészségügyi adatok használatára, nyilvánosságra hozatalára és védelmére vonatkozó követelményeket állapítja meg. További információkért lásd: [Microsoft Adatvédelmi központ](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
 
-### Mik a DocumentDB tárolási korlátai? 
+### Mik a DocumentDB tárolási korlátai?
 Egy gyűjtemény által a DocumentDB-adatbázisban tárolható adatok teljes mennyiségének nincs elméleti korlátja. Ha egy gyűjteményben több mint 250 GB adatot szeretne tárolni, a fiók kvótájának növeléséért [lépjen kapcsolatba az ügyfélszolgálattal](documentdb-increase-limits.md). 
 
-### Mik a DocumentDB átviteli sebességének korlátai? 
+### Mik a DocumentDB átviteli sebességének korlátai?
 Nincs elméleti korlátja annak, hogy egy gyűjtemény összesen mekkora átviteli sebességet támogat a DocumentDB-adatbázisban, amennyiben a munkaterhelés nagyjából egyenlően osztható el megfelelően nagy számú partíciós kulcsok között. Ha szeretné meghaladni a gyűjteményenkénti vagy fiókonkénti 250 000 kérelemegység/másodperces értéket, a fiók kvótájának növeléséért [lépjen kapcsolatba az ügyfélszolgálattal](documentdb-increase-limits.md). 
 
 ### Mennyibe kerül a Microsoft Azure DocumentDB?
@@ -66,7 +63,6 @@ Ha korábban még nem használta az Azure-t, regisztrálhat egy [Ingyenes Azure-
 Ha segítségre van szüksége, lépjen kapcsolatba velünk a [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) és az [Azure DocumentDB MSDN fejlesztői fórumok](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB) segítségével, vagy foglaljon időpontot egy [személyes csevegésre a DocumentDB mérnöki csapatával](http://www.askdocdb.com/). Ha értesülni szeretne a DocumentDB-vel kapcsolatos legújabb hírekről és szolgáltatásokról, kövessen minket a [Twitteren](https://twitter.com/DocumentDB).
 
 ## A Microsoft Azure DocumentDB beállítása
-
 ### Hogyan regisztrálhatok a Microsoft Azure DocumentDB szolgáltatásra?
 A DocumentDB az [Azure portálról][azure-portal] érhető el.  Először regisztrálnia kell egy Microsoft Azure-előfizetésre.  A Microsoft Azure-előfizetési regisztrációt követően a DocumentDB-fiókot hozzáadhatja Azure-előfizetéséhez. A DocumentDB-fiók hozzáadására vonatkozó utasításokért lásd: [DocumentDB adatbázis-fiók létrehozása](documentdb-create-account.md).   
 
@@ -85,7 +81,6 @@ A gyűjtemények továbbá a DocumentDB számlázási egységei. A gyűjteménye
 Felhasználókat és engedélyeket a [DocumentDB SDK-k](documentdb-sdk-dotnet.md) egyike vagy a [REST API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx) használatával hozhat létre.   
 
 ## Adatbázissal kapcsolatos kérdések a Microsoft Azure DocumentDB használatával történő fejlesztésről
-
 ### Hogyan kezdhetem el a fejlesztését a DocumentDB használatával?
 [SDK-k](documentdb-sdk-dotnet.md) a .NET, Python, Node.js, JavaScript és Java esetében érhetők el.  A fejlesztők továbbá a [RESTful HTTP API-k](https://msdn.microsoft.com/library/azure/dn781481.aspx) segítségével is használhatják a DocumentDB-erőforrásokat számos különböző platformon és programnyelven. 
 
@@ -103,22 +98,19 @@ A DocumentDB HTTP entitáscímkék vagy ETag-ek használatával támogatja az eg
 ### Hogyan végezhetők tranzakciók a DocumentDB-ben?
 A DocumentDB JavaScriptben tárolt eljárások és eseményindítók révén támogatja a nyelvintegrált tranzakciókat. A parancsfájlban az összes művelet pillanatkép-elkülönítés használatával lesz végrehajtva, egypartíciós gyűjtemény esetében a gyűjtemény hatókörében, particionált gyűjtemény esetében pedig a gyűjteményen belül azonos partíciós kulccsal rendelkező dokumentumok hatókörében. A tranzakció kezdetekor pillanatkép készül a dokumentumverziókról (ETag-ek), és csak akkor lesznek véglegesítve, ha a parancsfájl sikeres. Ha a JavaScript hibát jelez, a tranzakció vissza lesz állítva. További részletekért lásd: [DocumentDB kiszolgálóoldali programozása](documentdb-programming.md).
 
-### Hogyan szúrhatók be kötegelve dokumentumok a DocumentDB-be? 
+### Hogyan szúrhatók be kötegelve dokumentumok a DocumentDB-be?
 A dokumentumok háromféleképpen szúrhatók be kötegelve a DocumentDB-be:
 
-- Az adatáttelepítés eszközzel az [Adatok importálása a DocumentDB-be](documentdb-import-data.md) című leírásban foglaltak szerint.
-- Az Azure-portálon található Dokumentumtallózó használatával a [Dokumentumok kötegelt hozzáadása a Dokumentumtallózóval](documentdb-view-json-document-explorer.md#BulkAdd) című leírásban foglaltak szerint.
-- Tárolt eljárások használatával a [DocumentDB kiszolgálóoldali programozása](documentdb-programming.md) című leírásban foglaltak szerint.
+* Az adatáttelepítés eszközzel az [Adatok importálása a DocumentDB-be](documentdb-import-data.md) című leírásban foglaltak szerint.
+* Az Azure-portálon található Dokumentumtallózó használatával a [Dokumentumok kötegelt hozzáadása a Dokumentumtallózóval](documentdb-view-json-document-explorer.md#BulkAdd) című leírásban foglaltak szerint.
+* Tárolt eljárások használatával a [DocumentDB kiszolgálóoldali programozása](documentdb-programming.md) című leírásban foglaltak szerint.
 
 ### Támogatja a DocumentDB az erőforrás-hivatkozások gyorsítótárazását?
 Igen. Mivel a DocumentDB egy RESTful szolgáltatás, az erőforrás-hivatkozások nem módosíthatók, és ezáltal gyorsítótárazhatók. A DocumentDB-ügyfelek megadhatnak egy „If-None-Match” fejlécet bármilyen erőforrás, például dokumentum vagy gyűjtemény olvasása esetén, és csak akkor frissítik a helyi másolataikat, ha a kiszolgálóverzió módosult. 
 
-
-
-
 [azure-portal]: https://portal.azure.com
 [lekérdezés]: documentdb-sql-query.md
- 
+
 
 
 <!--HONumber=Jun16_HO2-->

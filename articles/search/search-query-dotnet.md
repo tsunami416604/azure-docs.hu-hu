@@ -1,27 +1,27 @@
-<properties
-    pageTitle="Az Azure Search-index lekérdezése a .NET SDK használatával | Microsoft Azure | Üzemeltetett felhőalapú keresési szolgáltatás"
-    description="Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el."
-    services="search"
-    documentationCenter=""
-    authors="brjohnstmsft"
-/>
+---
+title: Az Azure Search-index lekérdezése a .NET SDK használatával | Microsoft Docs
+description: Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el.
+services: search
+documentationcenter: ''
+author: brjohnstmsft
 
-<tags
-    ms.service="search"
-    ms.devlang="dotnet"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="brjohnst"/>
+ms.service: search
+ms.devlang: dotnet
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: brjohnst
 
-
+---
 # Az Azure Search-index lekérdezése a .NET SDK használatával
-> [AZURE.SELECTOR]
-- [Áttekintés](search-query-overview.md)
-- [Portál](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Áttekintés](search-query-overview.md)
+> * [Portál](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) használatával.
 
@@ -38,8 +38,8 @@ Az Azure Search-index létrehozását követően most már csaknem készen áll 
 
 A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
 
-  - Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
-  - A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
+* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
+* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és a dokumentumokhoz, és általában a keresési kéréseket kibocsátó ügyfélalkalmazások számára vannak kiosztva.
 
 Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszergazdai kulcsok szintén használhatók a lekérdezésekhez, az alkalmazáskódban azonban inkább lekérdezési kulcsot használjon, mivel ez a módszer jobban követi a [legalacsonyabb jogosultsági szint elvét](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
@@ -61,12 +61,11 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 A .NET SDK használatával történő keresés ugyanolyan egyszerűen végrehajtható, mint a `Documents.Search` módszer meghívása a következőn: `SearchIndexClient`. Ezen módszer néhány paramétert használ, ide értve a keresett szöveget, a lekérdezés további finomításához használható `SearchParameters` objektummal együtt.
 
 #### A lekérdezések típusai
-Az itt használt két fő [lekérdezési típus](search-query-overview.md#types-of-queries): `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes _searchable_ (kereshető) mezőjében. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes _filterable_ (szűrhető) mezőjén.
+Az itt használt két fő [lekérdezési típus](search-query-overview.md#types-of-queries): `search` és `filter`. A `search` lekérdezés egy vagy több kifejezésre keres rá az index összes *searchable* (kereshető) mezőjében. A `filter` lekérdezés egy logikai kifejezés kiértékelését végzi el az index összes *filterable* (szűrhető) mezőjén.
 
 A keresések és a szűrések egyaránt a `Documents.Search` módszer használatával vannak végrehajtva. Keresési lekérdezések a `searchText` paraméterben, szűrőkifejezések pedig a `SearchParameters` osztály `Filter` tulajdonságában adhatóak át. A keresés nélküli szűrés végrehajtásához a `searchText` paraméter számára a `"*"` kifejezést adja át. A szűrés nélküli keresés végrehajtásához ne állítsa be a `Filter` tulajdonságot, vagy egyáltalán ne adja át azt egy `SearchParameters`-példányban.
 
 #### Példa a lekérdezésekre
-
 Az alábbi mintakód néhány különböző módját mutatja be az [Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md#DefineIndex) című részben meghatározott „hotels” index lekérdezésének. Vegye figyelembe, hogy a keresési eredményekkel visszaadott dokumentumok annak a `Hotel` osztálynak a példányai, amely az [Adatok importálása az Azure Search szolgáltatásban .NET SDK használatával](search-import-data-dotnet.md#HotelClass) című részben lett meghatározva. Ez a mintakód a `WriteDocuments` módszer használatával jeleníti meg a keresési eredményeket a konzolon. Ezt a módszert a következő szakasz ismerteti.
 
 ```csharp
@@ -162,8 +161,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 ```
 
 A fenti mintakód a keresési eredményeket a konzolon jeleníti meg. A keresési eredményeket hasonlóképpen kell megjeleníteni a saját alkalmazásában is. Az ASP.NET MVC-alapú webalkalmazásokban történő keresésieredmény-rendelerelésre itt láthat példát: [a GitHub-on lévő minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample).
-
-
 
 <!--HONumber=Sep16_HO4-->
 

@@ -1,55 +1,55 @@
-<properties
-    pageTitle="A Microsoft Azure Logic Apps alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Azure App Service | Microsoft Azure"
-    description="A Microsoft által felügyelt összekötők teljes listája, amelyek használatával Logic Apps alkalmazásokat készíthet az Azure App Service szolgáltatásban"
-    services="logic-apps"
-    documentationCenter=""
-    authors="MSFTMAN"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+---
+title: A Microsoft Azure Logic Apps alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Docs
+description: A Microsoft által felügyelt összekötők teljes listája, amelyek használatával Logic Apps alkalmazásokat készíthet az Azure App Service szolgáltatásban
+services: logic-apps
+documentationcenter: ''
+author: MSFTMAN
+manager: erikre
+editor: ''
+tags: connectors
 
-<tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/20/2016"
-    ms.author="deonhe"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/20/2016
+ms.author: deonhe
 
-
+---
 # Az összekötők listája
-
 Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok kiépítésének módjaival.
 
 ## Szokványos összekötők
+| Összekötők |  |  |  |
+| --- | --- | --- | --- |
+| [![API Icon][API/Web-Appicon]<br/>**API/Web App**][API/Web-Appdoc] |[![API Icon][Azure-Blobicon]<br/>**Azure Blob**][Azure-Blobdoc] |[![API Icon][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc] |[![API Icon][Boxicon]<br/>**Box**][Boxdoc] |
+| [![API Icon][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc] |[![API Icon][DB2icon]<br/>**DB2**][db2doc] |[![API Icon][Delayicon]<br/>**Delay**][Delaydoc] |[![API Icon][Dropboxicon]<br/>**Dropbox**][Dropboxdoc] |
+| [![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc] |[![API Icon][FTPicon]<br/>**FTP**][FTPdoc] |[![API Icon][GitHubicon]<br/>**GitHub**][GitHubdoc] |[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc] |
+| ![API-ikon][Google-Sheetsicon]<br/>**Google Táblázatok** |![API-ikon][Google-Tasksicon]<br/>**Google Teendők** |![API-ikon][Google~Calendaricon]<br/>**Google<br/>Naptár** |[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc] |
+| [![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc] |[![API Icon][HTTP~Requesticon]<br/>**HTTP<br/>Request**][HTTP~Requestdoc] |[![API Icon][HTTP~Responseicon]<br/>**HTTP<br/>Response**][HTTP~Responsedoc] |[![API Icon][Informixicon]<br/>**Informix**][informixdoc] |
+| ![API-ikon][Instagramicon]<br/>**Instagram** |[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc] |![API-ikon][Mandrillicon]<br/>**Mandrill** |[![API Icon][Nested~Logic-Appicon]<br/>**Nested<br/>Logic App**][Nested~Logic-Appdoc] |
+| [![API Icon][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc] |[![API Icon][Office-365~Usersicon]<br/>**Office 365<br/>Users**][Office-365~Usersdoc] |[![API Icon][Office-365~Videoicon]<br/>**Office 365<br/>Video**][Office-365~Videodoc] |[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc] |
+| [![API Icon][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc] |[![API Icon][Outlookicon]<br/>**Outlook**][Outlookdoc] |[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc] |[![API Icon][Queryicon]<br/>**Query**][Querydoc] |
+| [![API Icon][Recurrenceicon]<br/>**Recurrence**][Recurrencedoc] |[![API Icon][RSSicon]<br/>**RSS**][RSSdoc] |[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc] |[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc] |
+| [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] |[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc] |[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc] |[![API Icon][Slackicon]<br/>**Slack**][Slackdoc] |
+| [![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc] |![API-ikon][SparkPosticon]<br/>**SparkPost** |[![API Icon][SQLicon]<br/>**SQL**][SQLdoc] |[![API Icon][Translatoricon]<br/>**Translator**][Translatordoc] |
+| [![API Icon][Trelloicon]<br/>**Trello**][Trellodoc] |[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc] |[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] |[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc] |
+| [![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc] |[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc] |![API-ikon][YouTubeicon]<br/>**YouTube** | |
 
-|Összekötők||||
-|-----------|-----------|-----------|-----------|
-|[![API Icon][API/Web-Appicon]<br/>**API/Web App**][API/Web-Appdoc]|[![API Icon][Azure-Blobicon]<br/>**Azure Blob**][Azure-Blobdoc]|[![API Icon][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc]|[![API Icon][Boxicon]<br/>**Box**][Boxdoc]|
-|[![API Icon][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|
-|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|[![API Icon][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|
-|![API-ikon][Google-Sheetsicon]<br/>**Google Táblázatok**|![API-ikon][Google-Tasksicon]<br/>**Google Teendők**|![API-ikon][Google~Calendaricon]<br/>**Google<br/>Naptár**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|
-|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|[![API Icon][HTTP~Requesticon]<br/>**HTTP<br/>Request**][HTTP~Requestdoc]|[![API Icon][HTTP~Responseicon]<br/>**HTTP<br/>Response**][HTTP~Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][informixdoc]|
-|![API-ikon][Instagramicon]<br/>**Instagram**|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API-ikon][Mandrillicon]<br/>**Mandrill**|[![API Icon][Nested~Logic-Appicon]<br/>**Nested<br/>Logic App**][Nested~Logic-Appdoc]|
-|[![API Icon][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API Icon][Office-365~Usersicon]<br/>**Office 365<br/>Users**][Office-365~Usersdoc]|[![API Icon][Office-365~Videoicon]<br/>**Office 365<br/>Video**][Office-365~Videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
-|[![API Icon][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API Icon][Outlookicon]<br/>**Outlook**][Outlookdoc]|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API Icon][Queryicon]<br/>**Query**][Querydoc]|
-|[![API Icon][Recurrenceicon]<br/>**Recurrence**][Recurrencedoc]|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
-|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|
-|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API-ikon][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQLicon]<br/>**SQL**][SQLdoc]|[![API Icon][Translatoricon]<br/>**Translator**][Translatordoc]|
-|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|
-|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|![API-ikon][YouTubeicon]<br/>**YouTube**||
-
-> [AZURE.NOTE] Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> [!NOTE]
+> Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> 
+> 
 
 ## Enterprise Integration Pack- (EIP-) összekötők
 Az EIP-összekötőkkel logikai alkalmazásokat hozhat létre EAI-t és EDI-t tartalmazó B2B-forgatókönyvekhez.  
- 
-|EIP-összekötők ||||
-|-----------|-----------|-----------|-----------|
-|[![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc]|[![API Icon][xmltransformicon]<br/>**XML<br/> transform**][xmltransformdoc]|[![API Icon][flatfileicon]<br/>**Flat file</br>encode**][flatfiledoc]|[![API Icon][flatfiledecodeicon]<br/>**Flat file</br>decode**][flatfiledecodedoc]|
-|[![API Icon][as2icon]<br/>**AS2</br>decode**][as2decode]|[![API Icon][as2icon]<br/>**AS2</br>encode**][as2encode]|[![API Icon][x12icon]<br/>**X12</br>decode**][x12decode]|[![API Icon][x12icon]<br/>**X12</br>encode**][x12encode]|
-|[![API Icon][x12icon]<br/>**EDIFACT</br>decode**][EDIFACTdecode]|[![API Icon][x12icon]<br/>**EDIFACT</br>encode**][EDIFACTencode]||||
+
+| EIP-összekötők |  |  |  |
+| --- | --- | --- | --- |
+| [![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc] |[![API Icon][xmltransformicon]<br/>**XML<br/> transform**][xmltransformdoc] |[![API Icon][flatfileicon]<br/>**Flat file</br>encode**][flatfiledoc] |[![API Icon][flatfiledecodeicon]<br/>**Flat file</br>decode**][flatfiledecodedoc] |
+| [![API Icon][as2icon]<br/>**AS2</br>decode**][as2decode] |[![API Icon][as2icon]<br/>**AS2</br>encode**][as2encode] |[![API Icon][x12icon]<br/>**X12</br>decode**][x12decode] |[![API Icon][x12icon]<br/>**X12</br>encode**][x12encode] |
+| [![API Icon][x12icon]<br/>**EDIFACT</br>decode**][EDIFACTdecode] |[![API Icon][x12icon]<br/>**EDIFACT</br>encode**][EDIFACTencode] | | |
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### Az összekötők lehetnek eseményindítók
@@ -64,10 +64,9 @@ Két eseményindító-típus létezik:
 Az összekötők használhatók műveletekként is az alkalmazásokban. A műveletek olyan adatok gyűjtéséhez lehetnek hasznosak, amelyeket azután az alkalmazás végrehajtása során használ. Előfordulhat például, hogy ügyféladatokat kell keresnie egy SQL-adatbázisban egy megrendelés feldolgozásához. Vagy előfordulhat, hogy a céltáblában kell adatokat írnia, frissítenie vagy törölnie. Ezt mind megteheti az összekötők által kínált műveletekkel. Ezek a műveletek leképezhetőek a Swagger-metaadatokban meghatározott műveletekké.
 
 ## Következő lépések
-
-- [Hozzon létre egy Logic App alkalmazást](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-- [Egyéni összekötő létrehozása](../app-service-logic/app-service-logic-create-api-app.md)
-- [A Logic Apps figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
+* [Hozzon létre egy Logic App alkalmazást](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+* [Egyéni összekötő létrehozása](../app-service-logic/app-service-logic-create-api-app.md)
+* [A Logic Apps figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
 
 <!--Connectors Documentation-->
 [azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Csatlakozhat az Azure-blobhoz a blobtárolókban található fájlok kezeléséhez."

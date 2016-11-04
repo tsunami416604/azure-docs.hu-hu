@@ -1,5 +1,4 @@
 ## Tipikus kimenet
-
 Az alábbiakban a Hello World minta által a naplófájlba írt kimenet példáját láthatja. A sortörés és a tabulátor karakterek az olvashatóság kedvéért lettek hozzáadva:
 
 ```
@@ -31,11 +30,9 @@ Az alábbiakban a Hello World minta által a naplófájlba írt kimenet példáj
 ```
 
 ## Kódrészletek
-
 Ez a szakasz a Hello World minta kódjának néhány fő részét tárgyalja.
 
 ### Átjáró létrehozása
-
 A fejlesztőnek *átjárófolyamatot* kell írnia. Ez a program létrehoz egy belső infrastruktúrát (a közvetítő), betölti a modulokat, és mindent úgy állít be, hogy megfelelően működjön. Az SDK-ban megtalálható a **Gateway_Create_From_JSON** függvényt, amellyel elindíthat egy átjárót a JSON-fájlokból. A **Gateway_Create_From_JSON** függvényt a használata előtt továbbítania kell egy olyan a JSON-fájl elérési útjára, amely meghatározza a betöltendő modulokat. 
 
 Az átjárófolyamat kódját a Hello World mintában találja, a [main.c][lnk-main-c] fájlban. Az olvashatóság érdekében az alábbi részlet az átjáró folyamatkódjának rövidített verzióját mutatja. Ez a program létrehoz egy átjárót, majd megvárja, amíg a felhasználó lenyomja az **ENTER** billentyűt, mielőtt lebontja az átjárót. 
@@ -61,13 +58,14 @@ int main(int argc, char** argv)
 
 A JSON-beállításfájl tartalmazza a betöltendő modulok listáját. Minden modulnak meg kell határoznia a következőket:
 
-- **module_name**: a modul egyedi neve.
-- **module_path**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl.
-- **args**: a modul által igényelt konfigurációs információk.
+* **module_name**: a modul egyedi neve.
+* **module_path**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl.
+* **args**: a modul által igényelt konfigurációs információk.
 
 A JSON-fájl is tartalmazza a modulok közötti hivatkozásokat, amelyek a rendszer átad a közvetítőnek. Egy hivatkozás két tulajdonsággal rendelkezik:
-- **source**: modulnév a `modules` szakaszból vagy „\*”.
-- **sink**: modulnév a `modules` szakaszból
+
+* **source**: modulnév a `modules` szakaszból vagy „\*”.
+* **sink**: modulnév a `modules` szakaszból
 
 Minden hivatkozás meghatároz egy üzenetútvonalat és irányt. A `source` modulból érkező üzeneteket a `sink` modulnak kell továbbítani. A `source` modult „\*” értékűre is be lehet állítani, ami azt jelzi, hogy a moduloktól érkező üzeneteket a `sink` fogja fogadni.
 
@@ -99,7 +97,6 @@ A következő minta a Linuxon a Hello World minta konfigurálásához használt 
 ```
 
 ### A Hello World modul üzenet-közzététele
-
 Megkeresheti a „Hello World” modul által használt kódot, hogy közzétegye a [„hello_world.c”][lnk-helloworld-c] fájlban lévő üzeneteket. Az alábbi részletben egy módosított verzió látható, további megjegyzésekkel és az olvashatóság érdekében kevesebb hibakezelési kóddal:
 
 ```
@@ -109,7 +106,7 @@ int helloWorldThread(void *param)
     HELLOWORLD_HANDLE_DATA* handleData = param;
     MESSAGE_CONFIG msgConfig;
     MAP_HANDLE propertiesMap = Map_Create(NULL);
-    
+
     // add a property named "helloWorld" with a value of "from Azure IoT
     // Gateway SDK simple sample!" to a set of message properties that
     // will be appended to the message before publishing it. 
@@ -121,7 +118,7 @@ int helloWorldThread(void *param)
 
     // set the properties for the message
     msgConfig.sourceProperties = propertiesMap;
-    
+
     // create a message based on the msgConfig structure
     MESSAGE_HANDLE helloWorldMessage = Message_Create(&msgConfig);
 
@@ -149,7 +146,6 @@ int helloWorldThread(void *param)
 ```
 
 ### A Hello World modul üzenetfeldolgozása
-
 A Hello World modulnak soha nem kell olyan üzeneteket feldolgoznia, amelyeket más modulok tesznek közzé a közvetítőn. A Hello World modulban ezért az üzenet-visszahívás megvalósítása művelet nélküli függvény.
 
 ```
@@ -160,7 +156,6 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 ```
 
 ### A naplózómodul üzenet-közzététele és -feldolgozása
-
 A naplózó modul üzeneteket fogad a közvetítőtől, és egy fájlba írja őket. Soha nem tesz közzé üzeneteket. A naplózó modul kódja ezért soha nem hívja meg a **Broker_Publish** függvényt.
 
 A közvetítő a [logger.c][lnk-logger-c] fájlban lévő **Logger_Recieve** függvény indításával kézbesíti az üzeneteket a naplózó modulnak. Az alábbi részletben egy módosított verzió látható, további megjegyzésekkel és az olvashatóság érdekében kevesebb hibakezelési kóddal:
@@ -205,11 +200,10 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 ```
 
 ## Következő lépések
-
 A Gateway SDK használatának megismeréséhez tekintse meg a következőket:
 
-- [IoT Gateway SDK – eszközről a felhőbe irányuló üzeneteket küldhet egy szimulált eszközzel Linuxon][lnk-gateway-simulated].
-- [Azure IoT Gateway SDK][lnk-gateway-sdk] a GitHubon.
+* [IoT Gateway SDK – eszközről a felhőbe irányuló üzeneteket küldhet egy szimulált eszközzel Linuxon][lnk-gateway-simulated].
+* [Azure IoT Gateway SDK][lnk-gateway-sdk] a GitHubon.
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c

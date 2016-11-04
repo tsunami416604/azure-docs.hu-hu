@@ -3,10 +3,6 @@ Microsoft Azure ExpressRoute lets you extend your on-premises networks into the 
 
 ![](./media/expressroute-intro-include/expressroute-basic.png)
 
-
-
-
-
 <!--HONumber=Sep16_HO4-->
 
 
