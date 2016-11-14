@@ -1,32 +1,34 @@
-There are two types of storage accounts:
+Kétféle tárfióktípus létezik:
 
-### General-purpose Storage Accounts
-A general-purpose storage account gives you access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks under a single account. This type of storage account has two performance tiers:
+### <a name="generalpurpose-storage-accounts"></a>Általános célú tárfiókok
+Egy általános célú tárfiók olyan Azure Storage-szolgáltatásokhoz biztosít hozzáférést egyetlen fiókban, mint a Tables, a Queues, a Files, a Blobs és az Azure virtuális gép lemezei. Ez a tárfióktípus két teljesítményszinttel rendelkezik:
 
-* A standard storage performance tier which allows you to store Tables, Queues, Files, Blobs and Azure virtual machine disks.
-* A premium storage performance tier which currently only supports Azure virtual machine disks. See [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) for an in-depth overview of Premium storage.
+* Egy standard tárolási teljesítményszinttel, amely a táblák, üzenetsorok, fájlok, blobok és Azure virtuálisgép-lemezek tárolását teszi lehetővé.
+* Egy prémium szintű Storage teljesítményszinttel, amely jelenleg csak az Azure virtuális gépek lemezeit támogatja. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
 
-### Blob Storage Accounts
-A Blob storage account is a specialized storage account for storing your unstructured data as blobs (objects) in Azure Storage. Blob storage accounts are similar to your existing general-purpose storage accounts and share all the great durability, availability, scalability, and performance features that you use today including 100% API consistency for block blobs and append blobs. For applications requiring only block or append blob storage, we recommend using Blob storage accounts.
+### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
+A Blob Storage-fiók egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok hasonlóak a meglévő általános célú tárfiókjaihoz, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.
 
 > [!NOTE]
-> Blob storage accounts support only block and append blobs, and not page blobs.
+> A Blob Storage-fiókok csak a blokkblobokat és a hozzáfűző blobokat támogatják, a lapblobokat nem.
 > 
 > 
 
-Blob storage accounts expose the **Access Tier** attribute which can be specified during account creation and modified later as needed. There are two types of access tiers that can be specified based on your data access pattern:
+A Blob Storage-fiókokban elérhető a **Hozzáférési szint** attribútum, amely a fiók létrehozásakor adható meg, később pedig szükség szerint módosítható. Kétféle hozzáférési szint adható meg az adathozzáférési minták alapján:
 
-* A **Hot** access tier which indicates that the objects in the storage account will be more frequently accessed. This allows you to store data at a lower access cost.
-* A **Cool** access tier which indicates that the objects in the storage account will be less frequently accessed. This allows you to store data at a lower data storage cost.
+* Egy **Gyakori** hozzáférési szint, amely a tárfiókban tárolt objektumok gyakoribb elérésére utal. Az adatait így alacsonyabb hozzáférési költség mellett tárolhatja.
+* Egy **Ritka** hozzáférési szint, amely a tárfiókban tárolt objektumok ritkább elérésére utal. Az adatait így alacsonyabb adattárolási költség mellett tárolhatja.
 
-If there is a change in the usage pattern of your data, you can also switch between these access tiers at any time. Changing the access tier may result in additional charges. Please see [Pricing and billing for Blob storage accounts](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing) for more details.
+Ha változik az adatok használati módja, bármikor válthat a hozzáférési rétegek közt. A hozzáférési rétegek módosítása további díjakat vonhat maga után. További részletek: [Blob Storage-fiókok – Árak és számlázás](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing).
 
-For more details on Blob storage accounts, see [Azure Blob Storage: Cool and Hot tiers](../articles/storage/storage-blob-storage-tiers.md).
+Blob Storage-fiókok további részletei: [Azure Blob Storage: Cool and Hot tiers](../articles/storage/storage-blob-storage-tiers.md) (Azure Blob Storage: Ritka és Gyakori hozzáférési szintek).
 
-Before you can create a storage account, you must have an Azure subscription, which is a plan that gives you access to a variety of Azure services. You can get started with Azure with a [free account](https://azure.microsoft.com/pricing/free-trial/). Once you decide to purchase a subscription plan, you can choose from a variety of [purchase options](https://azure.microsoft.com/pricing/purchase-options/). If you’re an [MSDN subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), you get free monthly credits that you can use with Azure services, including Azure Storage. See [Azure Storage Pricing ](https://azure.microsoft.com/pricing/details/storage/) for information on volume pricing.
+Ahhoz, hogy létrehozhasson egy tárfiókot, Azure-előfizetéssel kell rendelkeznie. Ez a csomag számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. Az Azure használatát egy [ingyenes fiók](https://azure.microsoft.com/pricing/free-trial/) létrehozásával is elkezdheti. Ha úgy dönt, hogy szeretne előfizetési csomagot vásárolni, több [vásárlási lehetőség](https://azure.microsoft.com/pricing/purchase-options/) közül választhat. Ha Ön [MSDN-előfizető](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ingyenes havi krediteket kap, amelyeket olyan Azure-szolgáltatásokhoz használhat, mint az Azure Storage. A mennyiségi díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-To learn how to create a storage account, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) for more details. You can create up to 100 uniquely named storage accounts with a single subscription. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account limits.
+A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása). Akár 100 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

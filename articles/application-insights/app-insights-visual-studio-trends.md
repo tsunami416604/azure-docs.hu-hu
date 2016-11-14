@@ -1,21 +1,25 @@
 ---
-title: Trendek elemzése a Visual Studióban | Microsoft Docs
-description: Elemezhet, megjeleníthet és felfedezhet trendeket a Visual Studióban található Application Insights telemetriáival.
+title: "Trendek elemzése a Visual Studióban | Microsoft Docs"
+description: "Elemezhet, megjeleníthet és felfedezhet trendeket a Visual Studióban található Application Insights telemetriáival."
 services: application-insights
 documentationcenter: .net
 author: numberbycolors
 manager: douge
-
+ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2016
+ms.date: 10/25/2016
 ms.author: daviste
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 00c697b47ef17c9c575378c7d433b9bf19602749
+
 
 ---
-# Trendek elemzése a Visual Studióban
+# <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti alkalmazása fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. Azáltal, hogy részletesebb diagnosztikai információhoz ad hozzáférést, a Trends segíthet az alkalmazás teljesítményének növelésében, a kivételek okának megtalálásában, valamint az egyéni eseményeire vonatkozó háttérismeretek feltárásában.
 
 ![Példa a Trends ablakára](./media/app-insights-visual-studio-trends/app-insights-trends-hero-750.png)
@@ -25,7 +29,7 @@ Az Application Insights Trends eszköze megjeleníti alkalmazása fontos telemet
 > 
 > 
 
-## Az Application Insights Trends megnyitása
+## <a name="open-application-insights-trends"></a>Az Application Insights Trends megnyitása
 Az Application Insights Trends ablak megnyitása:
 
 * Az Application Insights eszköztárgombjáról válassza az **Explore Telemetry Trends** (Telemetriatrendek megtekintése) lehetőséget, vagy
@@ -34,7 +38,7 @@ Az Application Insights Trends ablak megnyitása:
 
 A rendszer kérheti egy erőforrás kiválasztását. Kattintson a **Select a resource** (Erőforrás kiválasztása) elemre, jelentkezzen be Azure-előfizetéssel, majd válasszon egy olyan Application Insights-erőforrást a listából, amelynek a telemetriatrendjeit elemezni szeretné.
 
-## Trendelemzés kiválasztása
+## <a name="choose-a-trend-analysis"></a>Trendelemzés kiválasztása
 ![Trendelemzések általános típusainak menüje](./media/app-insights-visual-studio-trends/app-insights-trends-1-750.png)
 
 Első lépésként válasszon egyet az öt általános trendelemzési típus közül, amelyek mindegyike az elmúlt 24 órából származó adatokat elemzi:
@@ -47,7 +51,7 @@ Első lépésként válasszon egyet az öt általános trendelemzési típus kö
 
 Ezeket az előzetesen összeállított elemzéseket később a Trends ablak bal felső sarkában található **View common types of telemetry analysis** (Telemetriaelemzés általános típusainak megtekintése) gombbal érheti el.
 
-## Trendek megjelenítése az alkalmazásban
+## <a name="visualize-trends-in-your-application"></a>Trendek megjelenítése az alkalmazásban
 Az Application Insights Trends idősorozatos megjelenítést hoz létre az alkalmazás telemetriája alapján. Minden idősorozatos megjelenítés egy, a telemetria egyik tulajdonsága alapján csoportosított, adott időtartományba eső telemetriatípust jelenít meg. Előfordulhat például, hogy szeretné megtekinteni az elmúlt 24 óra kiszolgálókérelmeit a kiindulási ország szerint csoportosítva. Ebben a példában a képi megjelenítés buborékai az egyes országokhoz/régiókhoz tartozó kiszolgálókérelmek egy órára vonatkoztatott számát jelképezik.
 
 Használja az ablak tetején található vezérlőket annak módosításához, hogy milyen típusú telemetriákat szeretne megjeleníteni. Először válassza ki az Önt érdeklő telemetriatípust:
@@ -69,7 +73,7 @@ Navigáció a képi megjelenítésben található buborékok között:
 > 
 > 
 
-## Szűrés
+## <a name="filter"></a>Szűrés
 Az ablak alján található szűrővezérlőkkel specifikusabb trendeket is feltárhat. Szűrő alkalmazásához kattintson a szűrő nevére. Gyorsan válthat különböző szűrők között, így olyan trendeket is feltárhat, amelyek a telemetria egy adott dimenziójában rejtőznek. Ha egy dimenzióban szűrőt alkalmaz, például a kivétel típusára vonatkozót, a többi dimenzióban található szűrőkre akkor is rá tud kattintani, ha kiszürkítve jelennek meg. Szűrő használatának a visszavonásához kattintson újra rá. Ctrl+kattintással egy dimenzión belül több szűrőt is kijelölhet.
 
 ![Trendszűrők](./media/app-insights-visual-studio-trends/TrendsFiltering-750.png)
@@ -85,7 +89,7 @@ Szűrő visszavonásához kattintson a **Remove selected filters and query again
 
 ![Több szűrő](./media/app-insights-visual-studio-trends/TrendsFiltering2-750.png)
 
-## Rendellenességek keresése
+## <a name="find-anomalies"></a>Rendellenességek keresése
 A Trends eszköz képes kiemelni azon események buborékait, amelyek az ugyanazon idősorozatban található buborékokkal összehasonlítva rendellenesnek mutatkoznak. A View Type (Nézettípus) legördülő menüben válassza a **Counts in time bucket (highlight anomalies)** (Időtartamra vonatkozó számérték – rendellenességek kiemelése) vagy a **Percentages in time bucket (highlight anomalies)** (Időtartamra vonatkozó százalékérték – rendellenességek kiemelése) lehetőséget. A piros buborékok rendellenesek. A rendellenességek olyan szám- vagy százalékértékkel rendelkező buborékok, amelyek 2,1-szeresen meghaladják a számok/százalékok elmúlt két időtartományra jellemző standard szórását (48 óra, ha az utolsó 24 órát nézi stb.).
 
 ![A színes pontok rendellenességeket jeleznek.](./media/app-insights-visual-studio-trends/TrendsAnomalies-750.png)
@@ -95,13 +99,16 @@ A Trends eszköz képes kiemelni azon események buborékait, amelyek az ugyanaz
 > 
 > 
 
-## <a name="next"></a>Következő lépések
+## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
 |  |  |
 | --- | --- |
 | **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/app-insights-visual-studio-trends/34.png) |
 | **[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
-| **[Az Application Insights portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
+| **[Az Application Insights-portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

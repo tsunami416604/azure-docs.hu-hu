@@ -1,13 +1,13 @@
 ---
-title: Detailed walkthrough of using the Azure Active Directory B2B collaboration preview | Microsoft Docs
-description: Azure Active Directory B2B collaboration supports your cross-company relationships by enabling business partners to selectively access your corporate applications
+title: "Az Azure Active Directory B2B együttműködés előzetes verziójának részletes bemutatója | Microsoft Docs"
+description: "Az Azure Active Directory B2B együttműködés a vállalatokon átívelő kapcsolatok támogatása érdekében lehetővé teszi, hogy az üzleti partnerek szelektíven érhessék el a vállalati alkalmazásokat"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: viv-liu
 manager: cliffdi
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 7ae68208-63c1-4128-8e44-43a4f56d34dc
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: get-started-article
@@ -15,73 +15,80 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/09/2016
 ms.author: viviali
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f2e38a5b8b541f3e1797cfdb700fd4c7107657b9
+
 
 ---
-# Azure AD B2B collaboration preview: Detailed walkthrough
-This walkthrough outlines how to use Azure AD B2B collaboration. As the IT administrator of Contoso, we want to share applications with employees from three partner companies. None of the partner companies need to have Azure AD.
+# <a name="azure-ad-b2b-collaboration-preview-detailed-walkthrough"></a>Azure AD B2B együttműködés előzetes verziója: részletes bemutató
+Ez a bemutató az Azure AD B2B együttműködés használatának módját ismerteti. A Contoso informatikai rendszergazdájaként három partnervállalat alkalmazottaival szeretnénk megosztani alkalmazásokat. Egyik partnervállalatnál sem feltétel az Azure AD megléte.
 
-* Alice from Simple Partner Org
-* Bob, from Medium Partner Org, needs access to a set of apps
-* Carol, from Complex Partner Org, needs access to a set of apps, and membership in groups at Contoso
+* Alice, a Simple Partner szervezet munkatársa
+* Bob, a Medium Partner szervezet munkatársa, és bizonyos alkalmazásokhoz kell hozzáférést kapnia
+* Carol, a Complex Partner szervezet munkatársa, és bizonyos alkalmazásokhoz kell hozzáférést kapnia, valamint tagsági jogviszonyra van szüksége a Contoso csoportjaiban
 
-After invitations are sent out to partner users, we can configure them in Azure AD to grant access to apps and membership to groups through the Azure portal. Let's start by adding Alice.
+Miután meghívókat küldtünk a partnerfelhasználóknak, konfigurálhatjuk őket az Azure AD-ben, hogy hozzáférést nyújtsunk az alkalmazásokhoz és a csoporttagsághoz az Azure Portalon keresztül. Először vegyük fel Alice felhasználóját.
 
-## Adding Alice to the Contoso directory
-1. Create a .csv file with the headers as shown, populating only Alice's **Email**, **DisplayName**, and **InviteContactUsUrl**. **DisplayName** is the name that appears in the invite, and also the name that appears in the Contoso Azure AD directory. **InviteContactUsUrl** is a way for Alice to contact Contoso. In the following example, InviteContactUsUrl specifies the LinkedIn profile of Contoso. It is important to spell the labels in the first row of the .csv file exactly as specified in the [CSV file format reference](active-directory-b2b-references-csv-file-format.md).  
-   ![Example CSV file for Alice](./media/active-directory-b2b-detailed-walkthrough/AliceCSV.png)
-2. In the Azure portal, add a user into the Contoso directory (Active Directory > Contoso > Users > Add User). In the "Type of User" drop down, select "Users in partner companies". Upload the .csv file. Make sure that the .csv file is closed before uploading.  
-   ![CSV file upload for Alice](./media/active-directory-b2b-detailed-walkthrough/AliceUpload.png)
-3. Alice is now represented as an External User in the Contoso Azure AD directory.  
-   ![Alice is listed in Azure AD](./media/active-directory-b2b-detailed-walkthrough/AliceInAD.png)
-4. Alice receives the following email.  
-   ![Invitation email for Alice](./media/active-directory-b2b-detailed-walkthrough/AliceEmail.png)
-5. Alice clicks the link, and she is prompted to accept the invitation and to sign in using her work credentials. If Alice is not in the Azure AD directory, Alice is prompted to sign up.  
-   ![Sign up after invitation for Alice](./media/active-directory-b2b-detailed-walkthrough/AliceSignUp.png)
-6. Alice is redirected to the App Access Panel, empty until she is granted access to apps.  
-   ![Access Panel for Alice](./media/active-directory-b2b-detailed-walkthrough/AliceAccessPanel.png)
+## <a name="adding-alice-to-the-contoso-directory"></a>Alice hozzáadása a Contoso címtárához
+1. Hozzon létre egy .csv fájlt az itt látható fejlécekkel, feltöltve Alice **Email**, **DisplayName** és **InviteContactUsUrl** mezőjét. A **DisplayName** a meghívón megjelenő név, valamint a Contoso Azure AD-címtárban megjelenő név. Alice az **InviteContactUsUrl** címen keresztül léphet kapcsolatba a Contoso vállalattal. A következő példában az InviteContactUsUrl a Contoso LinkedIn-profilját határozza meg. Fontos, hogy a .csv fájl első sorában lévő címkéket pontosan [A CSV fájlformátum referenciájában](active-directory-b2b-references-csv-file-format.md) látható módon írja be.  
+   ![Alice CSV-példafájlja](./media/active-directory-b2b-detailed-walkthrough/AliceCSV.png)
+2. Az Azure Portalon adjon egy felhasználót a Contoso címtárához (Active Directory > Contoso > Felhasználók > Felhasználó hozzáadása). A „Felhasználó típusa” legördülő listában válassza a „Partnervállalatok felhasználói” elemet. Töltse fel a .csv fájlt. A feltöltés előtt győződjön meg róla, hogy a .csv fájl be van zárva.  
+   ![CSV-fájl feltöltése Alice-hoz](./media/active-directory-b2b-detailed-walkthrough/AliceUpload.png)
+3. Alice most Külső felhasználóként szerepel a Contoso Azure AD-címtárban.  
+   ![Alice szerepel az Azure AD listájában](./media/active-directory-b2b-detailed-walkthrough/AliceInAD.png)
+4. Alice a következő e-mailt kapja.  
+   ![Alice meghívót tartalmazó e-mailje](./media/active-directory-b2b-detailed-walkthrough/AliceEmail.png)
+5. Alice a hivatkozásra kattint, és a rendszer felkéri, hogy fogadja el a meghívást, és jelentkezzen be a munkahelyi hitelesítő adataival. Ha Alice nem szerepel az Azure AD-címtárban, a rendszer felkéri a regisztrálásra.  
+   ![Regisztráció Alice meghívása után](./media/active-directory-b2b-detailed-walkthrough/AliceSignUp.png)
+6. Alice az Alkalmazás-hozzáférési panelre lesz átirányítva, amely üres, amíg hozzáférést nem kap az alkalmazásokhoz.  
+   ![Alice hozzáférési panelje](./media/active-directory-b2b-detailed-walkthrough/AliceAccessPanel.png)
 
-This procedure enables the simplest form of B2B collaboration. As a user in the Contoso Azure AD directory, Alice can be granted access to applications and groups through the Azure portal. Now let's add Bob, who needs access to the applications Moodle and Salesforce.
+Ez az eljárás a B2B együttműködés legegyszerűbb formáját teszi lehetővé. A Contoso Azure AD-címtárban lévő felhasználóként Alice-nak hozzáférés adható az alkalmazásokhoz és csoportokhoz az Azure Portalon keresztül. Most adjuk hozzá Bobot, akinek a Moodle és a Salesforce alkalmazásokat kell elérnie.
 
-## Adding Bob to the Contoso directory and granting access to apps
-1. Use Windows PowerShell with the Azure AD Module installed to find the application IDs of Moodle and Salesforce. The IDs can be retrieved using the cmdlet: `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` This brings up a list of all available applications in Contoso and their AppPrincialIds.  
-   ![Retrieve IDs for Bob](./media/active-directory-b2b-detailed-walkthrough/BobPowerShell.png)
-2. Create a .csv file containing Bob's Email and DisplayName, **InviteAppID**, **InviteAppResources**, and InviteContactUsUrl. Populate **InviteAppResources** with the AppPrincipalIds of Moodle and Salesforce found from PowerShell, separated by a space. Populate **InviteAppId** with the same AppPrincipalId of Moodle to brand the email and sign in pages with a Moodle logo.  
-   ![Example CSV file for Bob](./media/active-directory-b2b-detailed-walkthrough/BobCSV.png)
-3. Upload the .csv file through the Azure Portal just as it was done for Alice. Bob is now an external user in the Contoso Azure AD directory.
-4. Bob receives the following email.  
-   ![Invitation email for Bob](./media/active-directory-b2b-detailed-walkthrough/BobEmail.png)
-5. Bob clicks the link and is prompted to accept the invitation. After he is signed in, he is directed to the Access Panel and can already use Moodle and Salesforce.  
-   ![Access Panel for Bob](./media/active-directory-b2b-detailed-walkthrough/BobAccessPanel.png)
+## <a name="adding-bob-to-the-contoso-directory-and-granting-access-to-apps"></a>Bob hozzáadása a Contoso címtárához és hozzáférés biztosítása az alkalmazásokhoz
+1. A Windows PowerShellt használja a telepített Azure AD-modullal a Moodle és a Salesforce alkalmazásazonosítóinak megkereséséhez. Az azonosítók a következő parancsmaggal olvashatók be: `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` Ez lekéri a Contoso címtárában elérhető összes alkalmazás és azok AppPrincialId azonosítójának listáját.  
+   ![Bob azonosítóinak beolvasása](./media/active-directory-b2b-detailed-walkthrough/BobPowerShell.png)
+2. Hozzon létre egy .csv fájlt Bob Email és DisplayName, **InviteAppID**, **InviteAppResources** és InviteContactUsUrl információival. Töltse fel az **InviteAppResources** mezőt a PowerShellben talált Moodle és Salesforce AppPrincipalId azonosítókkal, vesszővel elválasztva őket. Töltse fel az **InviteAppId** mezőt ugyanezen Moodle AppPrincipalId azonosítóval, hogy a Moodle emblémáját felhasználja az e-mailben és a bejelentkezési oldalakon.  
+   ![Bob CSV-példafájlja](./media/active-directory-b2b-detailed-walkthrough/BobCSV.png)
+3. Töltse fel a .csv fájlt az Azure Portalon keresztül, ahogyan Alice esetén is tette. Bob most egy külső felhasználó a Contoso Azure AD-címtárban.
+4. Bob a következő e-mailt kapja.  
+   ![Bob meghívót tartalmazó e-mailje](./media/active-directory-b2b-detailed-walkthrough/BobEmail.png)
+5. Bob a hivatkozásra kattint, és a rendszer felkéri, hogy fogadja el a meghívást. Miután bejelentkezett, a Hozzáférési panelre lesz átirányítva, és már használhatja is a Moodle és a Salesforce alkalmazást.  
+   ![Bob hozzáférési panelje](./media/active-directory-b2b-detailed-walkthrough/BobAccessPanel.png)
 
-We will add Carol next, who needs access to applications as well as membership to groups in the Contoso directory.
+Ezután Carolt vesszük fel, akinek elérést kell adni az alkalmazásokhoz és tagsági jogviszonyra van szüksége a Contoso címtár csoportjaiban.
 
-## Adding Carol to the Contoso directory, granting access to apps, and giving group membership
-1. Use Windows PowerShell with the Azure AD Module installed to find the application IDs and group IDs within Contoso.
+## <a name="adding-carol-to-the-contoso-directory-granting-access-to-apps-and-giving-group-membership"></a>Carol hozzáadása a Contoso címtárához és hozzáférés biztosítása az alkalmazásokhoz, valamint a csoporttagság biztosítása
+1. A Windows PowerShellt használja a telepített Azure AD-modullal a Contoso címtárán belüli alkalmazásazonosítók és csoportazonosítók megkereséséhez.
    
-   * Retrieve AppPrincipalId using cmdlet `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`, same as for Bob
-   * Retrieve ObjectId for groups using cmdlet `Get-MsolGroup | fl DisplayName, ObjectId`. This brings up a list of all groups in Contoso and their ObjectIds. Group IDs can also be retrieved as the Object ID in the Properties tab of the group in the Azure portal.  
-     ![Retrieve IDs and groups for Carol](./media/active-directory-b2b-detailed-walkthrough/CarolPowerShell.png)
-2. Create .csv file, populating Carol's Email, DisplayName, InviteAppID, InviteAppResources, **InviteGroupResources**, and InviteContactUsUrl. **InviteGroupResources** is populated by the ObjectIds of the groups MyGroup1 and Externals, separated by a space.  
-   ![Example CSV file for Carol](./media/active-directory-b2b-detailed-walkthrough/CarolCSV.png)
-3. Upload the .csv file through the Azure portal.
-4. Carol is a user in the Contoso directory and is also a member of the groups MyGroup1 and Externals, as seen in the Azure portal.  
-   ![Carol is listed in a group in Azure AD](./media/active-directory-b2b-detailed-walkthrough/CarolGroup.png)
-5. Carol receives an email containing a link to accept the invitation. After she signs in, she is redirected to the App Access Panel to have access to Moodle and Salesforce.  
+   * Az AppPrincipalId azonosítót a `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` parancsmaggal olvassa be, ahogyan Bob esetében
+   * A `Get-MsolGroup | fl DisplayName, ObjectId` parancsmaggal olvassa be a csoportok ObjectId azonosítóját. Ez lekéri a Contoso címtárában lévő összes csoport és azok ObjectId azonosítójának listáját. A csoportazonosítók objektumazonosítóként is beolvashatók az Azure Portalon lévő csoport Tulajdonságok lapjáról.  
+     ![Carol azonosítóinak és csoportjainak beolvasása](./media/active-directory-b2b-detailed-walkthrough/CarolPowerShell.png)
+2. Hozzon létre egy .csv fájlt, és töltse fel Carol Email, DisplayName, InviteAppID, InviteAppResources, **InviteGroupResources** és InviteContactUsUrl információival. Az **InviteGroupResources** mezőt a MyGroup1 és az Externals csoportok ObjectId azonosítói töltik fel, vesszővel elválasztva.  
+   ![Carol CSV-példafájlja](./media/active-directory-b2b-detailed-walkthrough/CarolCSV.png)
+3. Töltse fel a .csv fájlt az Azure Portalon keresztül.
+4. Carol a Contoso címtárában szereplő felhasználó, és a MyGroup1 és az Externals csoport tagja is, ahogyan az az Azure Portalon is látható.  
+   ![Carol szerepel az Azure AD egy csoportjában](./media/active-directory-b2b-detailed-walkthrough/CarolGroup.png)
+5. Carol kap egy e-mailt, amely tartalmazza a meghívó elfogadásának hivatkozását. Miután bejelentkezik, az Alkalmazás-hozzáférési panelre lesz átirányítva, hogy hozzáféréssel rendelkezzen a Moodle és a Salesforce alkalmazáshoz.  
 
-That's all there is to adding users from partner businesses in Azure AD B2B collaboration. This walkthrough showed how to add users Alice, Bob, and Carol to the Contoso directory using three separate .csv files. This process can be made easier by condensing the separate .csv files into a single file.  
-![Example CSV file for Alice, Bob, and Carol](./media/active-directory-b2b-detailed-walkthrough/CombinedCSV.png)
+Ennyit kell tudni a felhasználók partnervállalatokból történő hozzáadásáról az Azure AD B2B együttműködés használata során. Ez a bemutató ismertette, hogyan adhatja hozzá az Alice, Bob és Carol nevű felhasználókat a Contoso címtárához három különálló .csv fájl használatával. Ez a folyamat megkönnyíthető, ha a különálló .csv fájlokat egyetlen fájlban egyesíti.  
+![Alice, Bob és Carol CSV-példafájlja](./media/active-directory-b2b-detailed-walkthrough/CombinedCSV.png)
 
-## Related articles
-Browse our other articles on Azure AD B2B collaboration:
+## <a name="related-articles"></a>Kapcsolódó cikkek
+Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 
-* [What is Azure AD B2B collaboration?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [How it works](active-directory-b2b-how-it-works.md)
-* [CSV file format reference](active-directory-b2b-references-csv-file-format.md)
-* [External user token format](active-directory-b2b-references-external-user-token-format.md)
-* [External user object attribute changes](active-directory-b2b-references-external-user-object-attribute-changes.md)
-* [Current preview limitations](active-directory-b2b-current-preview-limitations.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Működés](active-directory-b2b-how-it-works.md)
+* [A CSV fájlformátum referenciája](active-directory-b2b-references-csv-file-format.md)
+* [Külső felhasználói token formátuma](active-directory-b2b-references-external-user-token-format.md)
+* [Külső felhasználói objektum attribútumainak módosítása](active-directory-b2b-references-external-user-object-attribute-changes.md)
+* [Az aktuális előzetes verzió korlátozásai](active-directory-b2b-current-preview-limitations.md)
+* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

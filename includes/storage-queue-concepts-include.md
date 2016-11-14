@@ -1,26 +1,28 @@
-## What is Queue Storage?
-Azure Queue storage is a service for storing large numbers of messages that can be accessed from anywhere in the world via authenticated calls using HTTP or HTTPS. A single queue message can be up to 64 KB in size, and a queue can contain millions of messages, up to the total capacity limit of a storage account.
+## <a name="what-is-queue-storage"></a>Mi a Queue Storage?
+Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat.
 
-Common uses of Queue storage include:
+A Queue Storage gyakori használati módjai:
 
-* Creating a backlog of work to process asynchronously
-* Passing messages from an Azure web role to an Azure worker role
+* Hátralékos munkák létrehozása aszinkron feldolgozáshoz
+* Üzenetek átadása egy Azure webes szerepkörről egy Azure feldolgozói szerepkörnek
 
-## Queue Service Concepts
-The Queue service contains the following components:
+## <a name="queue-service-concepts"></a>A Queue szolgáltatás alapfogalmai
+A Queue szolgáltatás az alábbi összetevőkből áll:
 
 ![Queue1](./media/storage-queue-concepts-include/queue1.png)
 
-* **URL format:** Queues are addressable using the following URL format:   
+* **URL-formátum:** Az üzenetsorok a következő URL-formátummal érhetők el:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
-    The following URL addresses a queue in the diagram:  
+    Az ábra egyik üzenetsora a következő URL-címmel érhető el:  
   
         http://myaccount.queue.core.windows.net/images-to-download
-* **Storage Account:** All access to Azure Storage is done through a storage account. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account capacity.
-* **Queue:** A queue contains a set of messages. All messages must be in a queue. Note that the queue name must be all lowercase. For information on naming queues, see [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
-* **Message:** A message, in any format, of up to 64 KB. The maximum time that a message can remain in the queue is 7 days.
+* **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+* **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. Az összes üzenetnek üzenetsorban kell lennie. Vegye figyelembe, hogy az üzenetsor neve csak kisbetűket tartalmazhat. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
+* **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. Egy üzenet legfeljebb 7 napig maradhat egy üzenetsorban.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

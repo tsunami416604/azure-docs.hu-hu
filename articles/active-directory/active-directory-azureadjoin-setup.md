@@ -1,13 +1,13 @@
 ---
-title: Az Azure AD Join beállítása a felhasználóknak | Microsoft Docs
-description: Ez a cikk ismerteti, hogy a rendszergazdák miként állíthatják be az Azure AD Joint a helyszíni címtár- és eszközregisztrációhoz.
+title: "Az Azure AD Join beállítása a felhasználóknak | Microsoft Docs"
+description: "Ez a cikk ismerteti, hogy a rendszergazdák miként állíthatják be az Azure AD Joint a helyszíni címtár- és eszközregisztrációhoz."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: bfc5d415-c918-4d8b-afee-b3f41cc28469
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,16 +15,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: aaa52cdecc09adb3b7ca53e0c0283d4203b21810
+
 
 ---
-# Az Azure AD Join beállítása a vállalatánál
+# <a name="setting-up-azure-ad-join-in-your-organization"></a>Az Azure AD Join beállítása a vállalatánál
 Az Azure Active Directory Join (Azure AD Join) beállítása előtt szinkronizálnia kell a helyszíni felhasználócímtárat a felhővel, vagy manuálisan kell felügyelt fiókokat létrehoznia az Azure AD-ben.
 
 A helyszíni felhasználók Azure Advel történő szinkronizálásának részletes útmutatásáért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
 
 A felhasználók manuális létrehozásához és felügyeletéhez lásd: [Felhasználófelügyelet az Azure AD-ben](https://msdn.microsoft.com/library/azure/hh967609.aspx).
 
-## Az eszközregisztráció beállítása
+## <a name="set-up-device-registration"></a>Az eszközregisztráció beállítása
 1. Jelentkezzen be az Azure Portalra rendszergazdaként.
 2. A bal oldali panelen válassza az **Active Directory** elemet.
 3. A **Címtár** lapon válassza ki a címtárat.
@@ -46,13 +50,16 @@ A következő három forgatókönyvvel engedélyezheti, hogy a felhasználók be
 * A felhasználók egy tartományon keresztül csatlakoztathatnak egy, a vállalat tulajdonában álló eszközt a helyszíni Active Directoryhoz, majd kiterjeszthetik az eszközt az Azure AD-re.
 * A felhasználók munkahelyi vagy iskolai fiókokat adnak a Windows rendszerhez a személyes eszközükön
 
-## További információ
+## <a name="additional-information"></a>További információ
 * [Vállalati használatú Windows 10: Az eszközök munkahelyi célú használata](active-directory-azureadjoin-windows10-devices-overview.md)
 * [A felhőalapú képességek kiterjesztése a Windows 10-eszközökre az Azure Active Directory Joinon keresztül](active-directory-azureadjoin-user-upgrade.md)
 * [További információk az Azure AD Join használati forgatókönyveiről](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure AD-hez Windows 10-es környezetben](active-directory-azureadjoin-devices-group-policy.md)
+* [Tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure AD-hez Windows 10-es környezetben](active-directory-azureadjoin-devices-group-policy.md)
 * [Az Azure AD Join beállítása](active-directory-azureadjoin-setup.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
