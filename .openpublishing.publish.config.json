@@ -2,8 +2,8 @@
   "build_entry_point": "docs",
   "need_generate_pdf": false,
   "need_generate_intellisense": false,
-	"enable_push_aggregation": true,
-	"enable_pull_request_aggregation": true,
+  "enable_push_aggregation": true,
+  "enable_pull_request_aggregation": true,
   "docsets_to_publish": [
     {
       "docset_name": "azure-documents",
@@ -29,7 +29,7 @@
     "master-sync-work"
   ],
   "skip_source_output_uploading": false,
-  "need_preview_pull_request": true,
+  "need_preview_pull_request": false,
   "enable_incremental_build": true,
   "dependent_repositories": [
     {
