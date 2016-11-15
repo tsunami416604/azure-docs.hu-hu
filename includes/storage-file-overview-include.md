@@ -5,6 +5,8 @@ Mivel a File Storage-megosztás egy szabványos SMB-fájlmegosztás, az Azure-ba
 
 Azure fájlmegosztásokat létrehozhat az [Azure Portalon](https://portal.azure.com), az Azure Storage PowerShell parancsmagjainak segítségével, illetve az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API-val. Emellett, mivel a fájlmegosztások SMB-megosztások, azokhoz szabványos, ismert fájlrendszer API-kkal is hozzáférhet.
 
-<!--HONumber=Oct16_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

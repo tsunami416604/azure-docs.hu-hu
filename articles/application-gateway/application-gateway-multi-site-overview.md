@@ -1,19 +1,23 @@
 ---
-title: Több hely üzemeltetése az Application Gateway-en | Microsoft Docs
-description: Ez az oldal áttekintést nyújt az Application Gateway többhelyes támogatásáról.
+title: "Több hely üzemeltetése az Application Gateway-en | Microsoft Docs"
+description: "Ez az oldal áttekintést nyújt az Application Gateway többhelyes támogatásáról."
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-
+ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.date: 10/25/2016
 ms.author: amsriva
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 85fc1315f32811873c577fe75d88eb08a2bbac26
+
 
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
@@ -25,7 +29,7 @@ A rendszer a http://contoso.com felé irányuló kérelmeket a ContosoServerPool
 
 Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon alkalmazásátjáró-telepítésről lehet üzemeltetni. Az altartományok használatának példái között lehet az egyetlen alkalmazásátjáró-telepítésen üzemeltetett http://blog.contoso.com és http://app.contoso.com.
 
-## <a name="host-headers-and-server-name-indication-(sni)"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
+## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 Három elterjedt mechanizmus létezik az ugyanazon az infrastruktúrán történő többhelyes üzemeltetéshez.
 
 1. Több webalkalmazás üzemeltetése mindegyikhez rendelt egyedi IP-címmel.
@@ -117,6 +121,9 @@ Nincs szükség változtatásra az útválasztási szabályban. Az alapszintű �
 ## <a name="next-steps"></a>Következő lépések
 Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](application-gateway-create-multisite-azureresourcemanager-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

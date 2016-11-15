@@ -1,12 +1,12 @@
 ---
-title: PolyBase az SQL Data Warehouse-ban – oktatóanyag | Microsoft Docs
-description: Megismerheti a PolyBase-t és az adatraktározási forgatókönyvekben való használatát.
+title: "1PolyBase az SQL Data Warehouse-ban – oktatóanyag | Microsoft Docs"
+description: "Megismerheti a PolyBase-t és az adatraktározási forgatókönyvekben való használatát."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
+
 
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Adatok betöltése a PolyBase-zel az SQL Data Warehouse-ba
@@ -40,7 +44,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy SQL Data Warehouse-adatbázis.
 * Egy standard helyileg redundáns tárolás (Standard-LRS), standard georedundáns tárolás (Standard-GRS) vagy standard írásvédett georedundáns tárolás (Standard-RAGRS) típusú Azure Storage-fiók.
-* AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][], amely a Microsoft Azure Storage-eszközökkel együtt települ.
+* AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][az AzCopy legújabb verziója], amely a Microsoft Azure Storage-eszközökkel együtt települ.
   
     ![Azure Storage-eszközök](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
@@ -103,7 +107,7 @@ Adatok másolása az Azure Blob Storage-ba:
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Lásd még [az AzCopy parancssori segédprogram használatát ismertető][] részt.
+Lásd még: [Az AzCopy parancssori segédprogram használatának megismerése][Az AzCopy parancssori segédprogram használatának megismerése].
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. A Blob Storage-tároló áttekintése
 A Blob Storage-ba feltöltött fájl megtekintése:
@@ -208,7 +212,7 @@ Az SQL Server Object Explorerben a Visual Studióban megtekintheti a külső fá
 Ha létrejött a külső tábla, betöltheti az adatokat egy új táblába, vagy beszúrhatja őket egy meglévő táblába.
 
 * Az adatok új táblába való betöltéséhez futtassa a [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] utasítást. Az új tábla tartalmazza a lekérdezésben szereplő oszlopokat. Az oszlopok adattípusai megfelelnek a külső tábla definíciójában szereplő adattípusoknak.
-* Az adatok meglévő táblába való betöltéséhez használja az [INSERT ---SELECT (Transact-SQL)][] utasítást.
+* Az adatok meglévő táblába való betöltéséhez használja az [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] utasítást.
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -237,7 +241,7 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 További tudnivalók: [Statisztika][Statisztika].  
 
 ## <a name="next-steps"></a>Következő lépések
-A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][] találhat további információt.
+A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][PolyBase-útmutató] találhat további információt.
 
 <!--Image references-->
 
@@ -274,6 +278,6 @@ A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban]
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

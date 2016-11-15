@@ -1,12 +1,12 @@
 ---
-title: Bevezetés az Event Hubs használatába C# környezetben | Microsoft Docs
-description: Ez az oktatóanyag segítséget nyújt az Azure Event Hubs C# környezetben való használatához, valamint az EventProcessorHost használatához.
+title: "Bevezetés az Event Hubs használatába C# környezetben | Microsoft Docs"
+description: "Ez az oktatóanyag segítséget nyújt az Azure Event Hubs C# környezetben való használatához, valamint az EventProcessorHost használatához."
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 2ec2378a-34f7-44c3-b976-cc444c98c338
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/02/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Bevezetés az Event Hubs használatába
@@ -61,8 +65,8 @@ Nyomja le a **Ctrl+C** billentyűkombinációt a **Küldő** ablakban a Küldő 
 ## <a name="next-steps"></a>Következő lépések
 Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot, valamint adatokat fogad és küld, így továbbléphet a következő forgatókönyvekre:
 
-* [Az Event Hubsot használó teljes mintaalkalmazás][].
-* Az [eseményfeldolgozás horizontális felskálázása az Event Hubs használatával][eseményfeldolgozás horizontális felskálázása az Event Hubs használatával] – példa.
+* Teljes [Event Hubsot használó mintaalkalmazás][Event Hubsot használó mintaalkalmazás].
+* [Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával][Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával] – minta.
 * [Event Hubs – áttekintés][Event Hubs – áttekintés]
 
 <!-- Images. -->
@@ -82,6 +86,6 @@ Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot,
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

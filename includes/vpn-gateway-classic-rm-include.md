@@ -1,5 +1,7 @@
-It's important to know that Azure currently works with two deployment models: Resource Manager and classic. Before you begin your configuration, make sure that you understand the deployment models and tools. You'll need to know which model that you want to work in. Not all networking features are supported yet for both models. For information about the deployment models, see [Understanding Resource Manager deployment and classic deployment](../articles/resource-manager-deployment-model.md).
+Fontos tudni, hogy az Azure jelenleg két üzembe helyezési modellel működik: Resource Manager és klasszikus. Mielőtt hozzákezd a konfiguráláshoz, ismerkedjen meg az üzembe helyezési modellek és eszközök működésével. Tudnia kell, hogy melyik modellben kíván dolgozni. Egyelőre nem minden hálózatkezelési funkció támogatott mind a két modellben. További információ az üzembe helyezési modellekről: [Understanding Resource Manager deployment and classic deployment](../articles/resource-manager-deployment-model.md) (A Resource Manager-telepítés és a klasszikus telepítés ismertetése).
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

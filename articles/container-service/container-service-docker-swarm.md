@@ -1,33 +1,37 @@
 ---
-title: Az Azure tárolószolgáltatás tárolóinak kezelése a Docker Swarmmal | Microsoft Docs
-description: Azure tárolószolgáltatás – tárolók üzembe helyezése a Docker Swarmmal
+title: "Az Azure tárolószolgáltatás tárolóinak kezelése a Docker Swarmmal | Microsoft Docs"
+description: "Azure tárolószolgáltatás – tárolók üzembe helyezése a Docker Swarmmal"
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, tárolók, mikroszolgáltatások, Mesos, Azure
-
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+ms.assetid: af8f6fb2-13dc-429c-b82a-24a741168d42
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: nepeters
+ms.author: timlt
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 99953be1a9d99cc1fdd5cd46522ccd262c09e25b
+
 
 ---
-# Tárolókezelés a Docker Swarmmal
+# <a name="container-management-with-docker-swarm"></a>Tárolókezelés a Docker Swarmmal
 A Docker Swarm olyan környezetet biztosít, amelyben tárolóalapú számítási feladatokat helyezhet üzembe egy Docker-gazdagépekből álló készletben. A Docker Swarm a natív Docker API-t használja. A Docker Swarm tárolókezelésének munkafolyamata majdnem azonos az egyetlen tároló-gazdagépen elvégzendő munkafolyamattal. Ez a dokumentum egyszerű példák segítségével ismerteti, hogy miként helyezhetők üzembe a tárolóalapú munkafolyamatok a Docker Swarm Azure tárolószolgáltatás-példányaiban. További részletes dokumentációt a Docker Swarmról a [ Docker.com](https://docs.docker.com/swarm/) webhelyen talál.
 
 A dokumentumban szereplő gyakorlatok előfeltételei:
 
-[Swarm-fürt létrehozása az Azure tárolószolgáltatásban](container-service-deployment.md)
+[Swarm-fürt létrehozása az Azure Container Service-ben](container-service-deployment.md)
 
-[Csatlakozás a Swarm-fürthöz az Azure tárolószolgáltatásban](container-service-connect.md)
+[Csatlakozás a Swarm-fürthöz az Azure Container Service-ben](container-service-connect.md)
 
-## Új tároló üzembe helyezése
+## <a name="deploy-a-new-container"></a>Új tároló üzembe helyezése
 Ha új tárolót szeretne létrehozni a Docker Swarmban, használja a `docker run` parancsot (ügyeljen arra, hogy a fenti előfeltételeknek megfelelően nyisson meg egy SSH-alagutat a főkiszolgálók felé). Az alábbi példa létrehoz egy tárolót a `yeasy/simple-web` lemezképből:
 
 ```bash
@@ -51,7 +55,7 @@ A tárolóban futó alkalmazást a Swarm ügynök terheléselosztójának nyilv�
 
 Alapértelmezés szerint a Load Balancer a 80-as, 8080-as és 443-as portot nyitja meg. Ha másik porton keresztül szeretne csatlakozni, akkor az Azure Load Balancerben meg kell nyitnia a portot az ügynökkészlet számára.
 
-## Több tároló üzembe helyezése
+## <a name="deploy-multiple-containers"></a>Több tároló üzembe helyezése
 Amikor több tároló is elindul a „docker run” többszöri végrehajtása után, a `docker ps` paranccsal megtekintheti, mely állomásokon futnak a tárolók. Az alábbi példában három tároló oszlik el egyenlően a három Swarm-ügynökön:  
 
 ```bash
@@ -63,7 +67,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 4298d397b9ab        yeasy/simple-web    "/bin/sh -c 'python i"   2 minutes ago       Up 2 minutes        10.0.0.5:80->80/tcp   swarm-agent-34A73819-1/happy_allen
 ```  
 
-## Tároló üzembe helyezése a Docker Compose-zal
+## <a name="deploy-containers-by-using-docker-compose"></a>Tároló üzembe helyezése a Docker Compose-zal
 A Docker Compose-zal automatizálhatja a több tároló telepítését és konfigurálását. Ehhez hozzon létre egy Secure Shell- (SSH-) alagutat, és állítsa be a DOCKER_HOST változót (lásd a feni előfeltételeket).
 
 Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja ezt a [mintát](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
@@ -109,9 +113,12 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `compose.yml` fájlban megadott tárolókat.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Docker Swarmról](https://docs.docker.com/swarm/)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

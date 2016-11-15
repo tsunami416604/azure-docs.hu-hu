@@ -1,39 +1,39 @@
-## Receive messages with EventProcessorHost
-[EventProcessorHost][EventProcessorHost] is a .NET class that simplifies receiving events from Event Hubs by managing persistent checkpoints and parallel receives from those Event Hubs. Using [EventProcessorHost][EventProcessorHost], you can split events across multiple receivers, even when hosted in different nodes. This example shows how to use [EventProcessorHost][EventProcessorHost] for a single receiver. The [Scaled out event processing][Scaled out event processing] sample shows how to use [EventProcessorHost][EventProcessorHost] with multiple receivers.
+## <a name="receive-messages-with-eventprocessorhost"></a>Üzenetek fogadása az EventProcessorHost szolgáltatással
+Az [EventProcessorHost][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az [EventProcessorHost][EventProcessorHost] használatával akkor is feloszthatja az eseményeket több fogadóra, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] egyetlen fogadóhoz. A [horizontálisan felskálázott eseményfeldolgozási][horizontálisan felskálázott eseményfeldolgozási] minta megmutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] több fogadóval.
 
-To use [EventProcessorHost][EventProcessorHost], you must have an [Azure Storage account][Azure Storage account]:
+Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-fiók][Azure Storage-fiók] szükséges:
 
-1. Log on to the [Azure portal][Azure portal], and click **New** at the top left of the screen.
-2. Click **Data + Storage**, then click **Storage account**.
+1. Jelentkezzen be az [Azure Portalra][Azure Portalra], és kattintson az **Új** gombra a képernyő bal felső részén.
+2. Kattintson az **Adatok + tárolás**, majd a **Tárfiók** elemre.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
-3. In the **Create storage account** blade, type a name for the storage account. Choose an Azure subscription, resource group, and location in which to create the resource. Then click **Create**.
+3. A **Tárfiókok létrehozása** panelen írja be a tárfiók nevét. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage2.png)
-4. In the list of storage accounts, click the newly-created storage account.
-5. In the storage account blade, click **Access keys**. Copy the value of **key1** to use later in this tutorial.
+4. A tárfiókok listáján kattintson az újonnan létrehozott tárfiókra.
+5. A tárfiók panelen kattintson a **Hívóbetűk** elemre. Másolja ki a **key1** értékét – erre később lesz szükség az oktatóprogramban.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage3.png)
-6. In Visual Studio, create a new Visual C# Desktop App project using the **Console  Application** project template. Name the project **Receiver**.
+6. Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Receiver** (Fogadó) nevet.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png)
-7. In Solution Explorer, right-click the solution, and then click **Manage NuGet Packages for Solution**.
-8. Click the **Browse** tab, then search for `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Ensure that the project name (**Receiver**) is specified in the **Version(s)** box. Click **Install**, and accept the terms of use.
+7. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése megoldáshoz) parancsra.
+8. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Ügyeljen arra, hogy a projekt neve (**Receiver**) meg legyen adva a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png)
    
-    Visual Studio downloads, installs, and adds a reference to the [Azure Service Bus Event Hub - EventProcessorHost NuGet package](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost), with all its dependencies.
-9. Right-click the **Receiver** project, click **Add**, and then click **Class**. Name the new class **SimpleEventProcessor**, and then click **Add** to create the class.
+    A Visual Studio letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) minden függőségével együtt, és hozzáad egy rá mutató hivatkozást is.
+9. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png)
-10. Add the following statements at the top of the SimpleEventProcessor.cs file:
+10. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
     
      ```
      using Microsoft.ServiceBus.Messaging;
      using System.Diagnostics;
      ```
     
-     Then, substitute the following code for the body of the class:
+     Ezután helyettesítse be a következő kódot az osztály törzseként:
     
      ```
      class SimpleEventProcessor : IEventProcessor
@@ -77,14 +77,14 @@ To use [EventProcessorHost][EventProcessorHost], you must have an [Azure Storage
      }
      ```
     
-     This class will be called by the **EventProcessorHost** to process events received from the Event Hub. Note that the `SimpleEventProcessor` class uses a stopwatch to periodically call the checkpoint method on the **EventProcessorHost** context. This ensures that, if the receiver is restarted, it will lose no more than five minutes of processing work.
-11. In the **Program** class, add the following `using` statement at the top of the file:
+     Ezt az osztályt fogja meghívni az **EventProcessorHost** az eseményközpontból fogadott események feldolgozásához. Vegye figyelembe, hogy a `SimpleEventProcessor` osztály stoppert használ az ellenőrzőpont-módszer hívásához az **EventProcessorHost** környezetben. Ez biztosítja, hogy ha a fogadó újraindul, nem vész el öt percnél több feldolgozási munka.
+11. A **Program** osztályban adja hozzá a következő `using` utasítást a fájl elejéhez:
     
      ```
      using Microsoft.ServiceBus.Messaging;
      ```
     
-     Then, replace the `Main` method in the `Program` class with the following code, substituting the Event Hub name and the namespace-level connection string that you saved previously, and the storage account and key that you copied in the previous sections. 
+     Ezután cserélje le a `Main` metódust a `Program` osztályban a következő kódra, behelyettesítve az eseményközpont nevét, a korábban mentett névtérszintű kapcsolati karakterláncot, valamint a tárfiókot és a kulcsot, amelyeket a korábbi szakaszokban lemásolt. 
     
      ```
      static void Main(string[] args)
@@ -109,18 +109,18 @@ To use [EventProcessorHost][EventProcessorHost], you must have an [Azure Storage
      ```
 
 > [!NOTE]
-> This tutorial uses a single instance of [EventProcessorHost][EventProcessorHost]. To increase throughput, it is recommended that you run multiple instances of [EventProcessorHost][EventProcessorHost], as shown in the [Scaled out event processing][Scaled out event processing] sample. In those cases, the various instances automatically coordinate with each other to load balance the received events. If you want multiple receivers to each process *all* the events, you must use the **ConsumerGroup** concept. When receiving events from different machines, it might be useful to specify names for [EventProcessorHost][EventProcessorHost] instances based on the machines (or roles) in which they are deployed. For more information about these topics, see the [Event Hubs Overview][Event Hubs Overview] and [Event Hubs Programming Guide][Event Hubs Programming Guide] topics.
+> Ez az oktatóprogram az [EventProcessorHost][EventProcessorHost] egyetlen példányát használja. Az átviteli sebesség növelése érdekében ajánlott az [EventProcessorHost][EventProcessorHost] több példányának futtatása, ahogy a [horizontálisan felskálázott eseményfeldolgozási][horizontálisan felskálázott eseményfeldolgozási] minta mutatja. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló neveket adni az [EventProcessorHost][EventProcessorHost] példányoknak. További információ ezekről a témákról: [Event Hubs – Áttekintés][Event Hubs – áttekintés] és [Event Hubs programozási útmutató][Event Hubs programozási útmutató].
 > 
 > 
 
 <!-- Links -->
-[Event Hubs Overview]: event-hubs-overview.md
-[Event Hubs Programming Guide]: event-hubs-programming-guide.md
-[Scaled out event processing]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure Storage account]: ../storage/storage-create-storage-account.md
+[Event Hubs – áttekintés]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs programozási útmutató]: ../articles/event-hubs/event-hubs-programming-guide.md
+[Horizontálisan felskálázott eseményfeldolgozás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure Storage-fiók]: ../articles/storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

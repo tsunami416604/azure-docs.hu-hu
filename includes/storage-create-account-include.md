@@ -1,10 +1,12 @@
-## Create an Azure storage account
-The easiest way to create your first Azure storage account is by using the [Azure Portal](https://portal.azure.com). To learn more, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account).
+## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
 
-You can also create an Azure storage account by using [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/storage-azure-cli.md), or the [Storage Resource Provider Client Library for .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx).
+Ezenkívül az [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md), az [Azure CLI](../articles/storage/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Storage erőforrás-szolgáltató ügyfél](https://msdn.microsoft.com/library/azure/mt131037.aspx) használatával is létrehozhat egy Azure Storage-fiókot.
 
-If you prefer not to create a storage account at this time, you can also use the Azure storage emulator to run and test your code in a local environment. For more information, see [Use the Azure Storage Emulator for Development and Testing](../articles/storage/storage-use-emulator.md).
+Ha most nem kíván tárfiókot létrehozni, az Azure Storage Emulatorral helyi környezetben futtathatja és tesztelheti a kódját. További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](../articles/storage/storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral).
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Új felhasználók hozzáadása az Azure Active Directoryhoz | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat, vagy hogyan módosíthatja a felhasználói adatokat az Azure Active Directoryban.
+title: "Új felhasználók hozzáadása az Azure Active Directoryhoz | Microsoft Docs"
+description: "Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat, vagy hogyan módosíthatja a felhasználói adatokat az Azure Active Directoryban."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e3673727-6bec-4fdc-87a4-d65b213c4c3c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/22/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
+
 
 ---
-# Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
+# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
 Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat a szervezetben, és hogyan vehet fel Microsoft-fiókkal rendelkező felhasználókat. Az Azure Active Directoryban a más címtárakban lévő felhasználók felvételéről vagy a partnervállalatokban lévő felhasználók felvételéről további információért lásd: [Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba](active-directory-create-users-external.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
 
-## Felhasználó hozzáadása
+## <a name="add-a-user"></a>Felhasználó hozzáadása
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 2. Válassza az **Active Directory** lehetőséget, majd válassza ki a szervezete címtárának nevét.
 3. Válassza a **Felhasználók** lapot, majd a parancssávon válassza a **Felhasználó hozzáadása** parancsot.
@@ -34,12 +38,12 @@ Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk a
 > [!IMPORTANT]
 > Ha a szervezete több tartományt használ, a következő problémákról kell tudnia a felhasználói fiók hozzáadásakor:
 > 
-> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja például a geoffgrisso@contoso.onmicrosoft.com címet vegye fel, **majd ezt követően a** geoffgrisso@contoso.com címet.
-> * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com hozzáadása előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a változásokat.
+> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, ** címet, majd a ** geoffgrisso@contoso.com. címet
+> * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com. előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a módosításokat.
 > 
 > 
 
-## Felhasználói adatok módosítása
+## <a name="change-user-information"></a>Felhasználói adatok módosítása
 Bármely felhasználói attribútumot módosíthat, kivéve az objektumazonosítót.
 
 1. Nyissa meg a címtárat.
@@ -48,7 +52,7 @@ Bármely felhasználói attribútumot módosíthat, kivéve az objektumazonosít
 
 Ha az épp módosított felhasználó szinkronizálva van a helyszíni Active Directory szolgáltatással, nem módosíthatja a felhasználó adatait ezzel az eljárással. A felhasználó módosításához használja a helyszíni Active Directory-felügyeleti eszközöket.
 
-## Vendégfelhasználók kezelése és korlátozásai
+## <a name="guest-user-management-and-limitations"></a>Vendégfelhasználók kezelése és korlátozásai
 A vendégfiókok másik címtárakban lévő olyan felhasználók, akik meg lettek hívva a címtárába a SharePoint-dokumentumok, alkalmazások vagy más Azure-erőforrások elérése céljából. A címtárban lévő vendégfiókok mögöttes UserType attribútuma „Vendég” beállítású. A normál felhasználók (különösen a címtár tagjai) UserType attribútuma „Tag”.
 
 A vendégek korlátozott jogosultságokkal rendelkeznek a címtárban. Ezek a jogosultságok korlátozzák a vendégek azon képességét, hogy a címtár más felhasználóinak adatait felderítsék. De a vendégfelhasználók továbbra is kommunikálhatnak azon erőforrásokkal társított felhasználókkal és csoportokkal, amelyeken dolgoznak. A vendégfelhasználók a következőkre képesek:
@@ -60,7 +64,7 @@ A vendégek korlátozott jogosultságokkal rendelkeznek a címtárban. Ezek a jo
 * A címtárban lévő ellenőrzött tartományok listájának lekérése.
 * Hozzájárulás megadása az alkalmazásoknak, ugyanazon hozzáférést adva nekik, mint a címtár tagjainak.
 
-## A vendégfelhasználók hozzáférési házirendjeinek beállítása
+## <a name="set-guest-user-access-policies"></a>A vendégfelhasználók hozzáférési házirendjeinek beállítása
 A címtár **Konfigurálás** lapja tartalmazza a vendégfelhasználók hozzáférés-vezérlésének lehetőségeit. Ezek a lehetőségek csak a klasszikus Azure portálon módosíthatók a címtár globális rendszergazdája által. Jelenleg erre a célra nem létezik PowerShell- vagy API-módszer.
 
 A klasszikus Azure portálon a **Konfigurálás** lap megnyitásához válassza az **Active Directory** lehetőséget, majd jelölje ki a címtár nevét.
@@ -71,7 +75,7 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 ![hozzáférés-vezérlési lehetőségek a vendégfelhasználók számára][2]
 
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 * [Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba](active-directory-create-users-external.md)
 * [Az Azure AD felügyelete](active-directory-administer.md)
 * [Jelszavak kezelése az Azure AD-ben](active-directory-manage-passwords.md)
@@ -83,6 +87,6 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

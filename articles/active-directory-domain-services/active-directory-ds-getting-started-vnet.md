@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD tartományi szolgáltatások: Virtuális hálózat létrehozása vagy kiválasztása | Microsoft Docs'
-description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
+title: "Azure AD tartományi szolgáltatások: Virtuális hálózat létrehozása vagy kiválasztása | Microsoft Docs"
+description: "Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 13ab1608-e3d8-40de-9f7b-9b5b42199af4
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/03/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0617dbff2ba281091ba5775e7969edfead4d80c8
+
 
 ---
-# Virtuális hálózat létrehozása vagy kiválasztása az Azure AD tartományi szolgáltatásokhoz
-## Irányelvek Azure-alapú virtuális hálózat kiválasztásához
+# <a name="create-or-select-a-virtual-network-for-azure-ad-domain-services"></a>Virtuális hálózat létrehozása vagy kiválasztása az Azure AD tartományi szolgáltatásokhoz
+## <a name="guidelines-to-select-an-azure-virtual-network"></a>Irányelvek Azure-alapú virtuális hálózat kiválasztásához
 > [!NOTE]
 > **Előkészületek**: Tekintse át a [Hálózati megfontolások az Azure AD tartományi szolgáltatásokhoz](active-directory-ds-networking.md) című dokumentumot.
 > 
 > 
 
-## 2. feladat: Azure-alapú virtuális hálózat létrehozása
+## <a name="task-2-create-an-azure-virtual-network"></a>2. feladat: Azure-alapú virtuális hálózat létrehozása
 A következő konfigurálási feladat egy Azure-alapú virtuális hálózat és azon belül egy alhálózat létrehozása. Engedélyezze az Azure AD tartományi szolgáltatásokat a virtuális hálózatának ezen az alhálózatán. Ezt a lépést kihagyhatja, ha egy már létező virtuális hálózatot szeretne használni.
 
 > [!NOTE]
@@ -60,9 +64,12 @@ A következő konfigurációs lépések végrehajtásával hozza létre azt az A
 
 <br>
 
-## 3. feladat – Az Azure AD tartományi szolgáltatások engedélyezése
+## <a name="task-3-enable-azure-ad-domain-services"></a>3. feladat – Az Azure AD tartományi szolgáltatások engedélyezése
 A következő konfigurációs feladat [az Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started-enableaadds.md).
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

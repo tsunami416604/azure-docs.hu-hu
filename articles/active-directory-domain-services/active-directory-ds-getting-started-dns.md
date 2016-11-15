@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD tartományi szolgáltatások: az Azure virtuális hálózat DNS-beállításainak frissítése | Microsoft Docs'
-description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
+title: "Azure AD tartományi szolgáltatások: az Azure virtuális hálózat DNS-beállításainak frissítése | Microsoft Docs"
+description: "Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: d4f3e82c-6807-4690-b298-4eabad2b7927
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/21/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 81c0564390c57c7ee001ce5a574ab670faf898b4
+
 
 ---
-# Azure AD tartományi szolgáltatások: az Azure virtuális hálózat DNS-beállításainak frissítése
-## 4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
+# <a name="azure-ad-domain-services-update-dns-settings-for-the-azure-virtual-network"></a>Azure AD tartományi szolgáltatások: az Azure virtuális hálózat DNS-beállításainak frissítése
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
 A korábbi konfigurációs feladatokban sikeresen engedélyezte az Azure AD tartományi szolgáltatásokat a címtárhoz. A következő feladat annak biztosítása, hogy a virtuális hálózaton lévő összes számítógép képes legyen csatlakozni ezekhez a szolgáltatásokhoz, és használhassa azokat. Frissítse a virtuális hálózat DNS-kiszolgálójának beállításait, hogy arra a két IP-címre mutassanak, amelyeken az Azure AD tartományi szolgáltatások elérhetők a virtuális hálózaton.
 
 > [!NOTE]
@@ -46,9 +50,12 @@ Hajtsa végre az alábbi konfigurációs lépéseket a DNS-kiszolgáló azon vir
 > 
 > 
 
-## 5. feladat – Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
+## <a name="task-5-enable-password-synchronization-to-azure-ad-domain-services"></a>5. feladat – Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra
 A következő konfigurációs feladat a [jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokra](active-directory-ds-getting-started-password-sync.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

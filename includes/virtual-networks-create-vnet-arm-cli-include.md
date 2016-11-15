@@ -1,19 +1,19 @@
-## How to create a VNet using the Azure CLI
-You can use the Azure CLI to manage your Azure resources from the command prompt from any computer running Windows, Linux, or OSX. To create a VNet by using the Azure CLI, follow the steps below.
+## <a name="how-to-create-a-vnet-using-the-azure-cli"></a>VNet létrehozása az Azure CLI használatával
+Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat bármilyen Windows, Linux vagy OSX rendszert futtató számítógépről. Az alábbi lépésekkel hozhat létre egy VNetet az Azure CLI segítségével.
 
-1. If you have never used the Azure CLI, see [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg az [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
    
         azure config mode arm
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         info:    New mode is arm
-3. If necessary, run the **azure group create** to create a new resource group, as shown below. Notice the output of the command. The list shown after the output explains the parameters used. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md#resource-groups).
+3. Szükség esetén az **azure group create** futtatásával hozzon létre egy új erőforráscsoportot, a lent látható módon. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
    
         azure group create -n TestRG -l centralus
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         info:    Executing command group create
         + Getting resource group TestRG
@@ -27,13 +27,13 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
         data:
         info:    group create command OK
    
-   * **-n (or --name)**. Name for the new resource group. For our scenario, *TestRG*.
-   * **-l (or --location)**. Azure region where the new resource group will be created. For our scenario, *centralus*.
-4. Run the **azure network vnet create** command to create a VNet and a subnet, as shown below. 
+   * **-n (vagy --name)**. Az új erőforráscsoport neve. A mi esetünkben *TestRG*.
+   * **-l (vagy --location)**. Az Azure-régió, ahol az új erőforráscsoport létrejön. A mi esetünkben *centralus*.
+4. Futtassa az **azure network vnet create** parancsot egy VNet és egy alhálózat létrehozásához az alábbiak szerint. 
    
         azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l centralus
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         info:    Executing command network vnet create
         + Looking up virtual network "TestVNet"
@@ -48,15 +48,15 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
         data:      192.168.0.0/16
         info:    network vnet create command OK
    
-   * **-g (or --resource-group)**. Name of the resource group where the VNet will be created. For our scenario, *TestRG*.
-   * **-n (or --name)**. Name of the VNet to be created. For our scenario, *TestVNet*
-   * **-a (or --address-prefixes)**. List of CIDR blocks used for the VNet address space. For our scenario, *192.168.0.0/16*
-   * **-l (or --location)**. Azure region where the VNet will be created. For our scenario, *centralus*.
-5. Run the **azure network vnet subnet create** command to create a subnet as shown below. Notice the output of the command. The list shown after the output explains the parameters used.
+   * **-g (vagy --resource-group)**. Az erőforráscsoport neve, ahol a VNet létrejön. A mi esetünkben *TestRG*.
+   * **-n (vagy --name)**. A létrehozni kívánt VNet neve. A mi esetünkben *TestVNet*
+   * **-a (vagy --address-prefixes)**. A VNet címteréhez használt CIDR-blokkok listája. A mi esetünkben *192.168.0.0/16*
+   * **-l (vagy --location)**. Az Azure-régió, ahol a VNet létrejön. A mi esetünkben *centralus*.
+5. Futtassa az **azure network vnet subnet create** parancsot egy alhálózat létrehozásához az alábbiak szerint. Figyelje meg a parancs kimenetét. A kimenet után látható lista ismerteti a használt paramétereket.
    
         azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         info:    Executing command network vnet subnet create
         + Looking up the subnet "FrontEnd"
@@ -70,17 +70,17 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
         data:
         info:    network vnet subnet create command OK
    
-   * **-e (or --vnet-name**. Name of the VNet where the subnet will be created. For our scenario, *TestVNet*.
-   * **-n (or --name)**. Name of the new subnet. For our scenario, *FrontEnd*.
-   * **-a (or --address-prefix)**. Subnet CIDR block. Four our scenario, *192.168.1.0/24*.
-6. Repeat step 5 above to create other subnets, if necessary. For our scenario, run the command below to create the *BackEnd* subnet.
+   * **-e (vagy --vnet-name**. A VNet neve, ahol létrejön az alhálózat. A mi esetünkben *TestVNet*.
+   * **-n (vagy --name)**. Az új alhálózat neve. A mi esetünkben *FrontEnd*.
+   * **-a (vagy --address-prefix)**. Az alhálózat CIDR-blokkja. A mi esetünkben *192.168.1.0/24*.
+6. Szükség esetén az 5. lépést megismételve hozhat létre egyéb alhálózatokat. A mi esetünkben az alábbi parancsot futtatva hozza létre a *BackEnd* alhálózatot.
    
         azure network vnet subnet create -g TestRG -e TestVNet -n BackEnd -a 192.168.2.0/24
-7. Run the **azure network vnet show** command to view the properties of the new vnet, as shown below.
+7. Futtassa az **azure network vnet show** parancsot az új vnet tulajdonságainak megtekintéséhez a lent látható módon.
    
         azure network vnet show -g TestRG -n TestVNet
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         info:    Executing command network vnet show
         + Looking up virtual network "TestVNet"
@@ -100,6 +100,8 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
         data:
         info:    network vnet show command OK
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 
