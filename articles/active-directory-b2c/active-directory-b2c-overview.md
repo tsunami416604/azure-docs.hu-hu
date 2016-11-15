@@ -1,12 +1,12 @@
 ---
-title: 'Azure Active Directory B2C: Áttekintés | Microsoft Docs'
-description: A felhasználók felé néző alkalmazások fejlesztése az Azure Active Directory B2C-vel
+title: "Azure Active Directory B2C: Áttekintés | Microsoft Docs"
+description: "A felhasználók felé néző alkalmazások fejlesztése az Azure Active Directory B2C-vel"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: swkrish
-manager: msmbaldwin
+manager: mbaldwin
 editor: bryanla
-
+ms.assetid: c465dbde-f800-4f2e-8814-0ff5f5dae610
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,21 +14,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/24/2016
 ms.author: swkrish
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 217ffc63e07d66de522accc42c246125d01713c8
+
 
 ---
-# Azure Active Directory B2C: Felhasználók regisztrálása és bejelentkezése az alkalmazásokba
+# <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications"></a>Azure Active Directory B2C: Felhasználók regisztrálása és bejelentkezése az alkalmazásokba
 Az Azure Active Directory B2C egy kiterjedt funkciókészlettel ellátott felhőbeli identitáskezelő megoldás a felhasználók felé néző webes és mobilalkalmazásokhoz. Ez a globális szolgáltatás magas rendelkezésre állást biztosít, és akár több száz millió felhasználói identitásra is felskálázható. A vállalati szintű biztonsági platformra épülő Azure Active Directory B2C védelmet nyújt alkalmazásainak, vállalatának és ügyfeleinek.
 
 A múltban gyakori volt, hogy a felhasználók alkalmazásokra való regisztrációját és bejelentkezését megvalósítani kívánó alkalmazásfejlesztők maguk írták meg az ehhez szükséges kódot. Ennek keretében általában helyszíni adatbázisokat vagy rendszereket használtak a felhasználónevek és jelszavak tárolására. Az Azure Active Directory B2C biztonságos, szabványokon alapuló platformja és bővíthető szabályzatainak széles választéka révén fejlettebb módszert kínál a felhasználói identitáskezelés alkalmazásokba való integrálására. Az Azure Active Directory B2C használata lehetővé teszi, hogy a felhasználók meglévő közösségi hálózati fiókjukkal (Facebook, Google, Amazon, LinkedIn) is regisztrálhassanak az alkalmazásokra, de új fiókot is létrehozhatnak egy e-mail-cím vagy felhasználónév és egy jelszó kiválasztásával (ezeket „helyi fiókoknak” nevezzük).
 
-## Bevezetés
+## <a name="get-started"></a>Bevezetés
 A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létrehozásához először regisztrálnia kell az alkalmazást egy Azure Active Directory B2C-bérlővel. Hozzon létre egy saját bérlőt az [Azure AD B2C-bérlő létrehozása](active-directory-b2c-get-started.md) című részben ismertetett lépések segítségével.
 
-Alkalmazását kétféle módon kötheti össze az Azure Active Directory B2C-vel: küldhet közvetlen protokollüzeneteket az [OAuth 2.0](active-directory-b2c-reference-protocols.md#oauth2-authorization-code-flow) vagy az [Open ID Connect](active-directory-b2c-reference-protocols.md#openid-connect-sign-in-flow) segítségével, vagy használhatja kódtárainkat, amelyek elvégzik Ön helyett ezt a munkát. Válassza ki előnyben részesített platformját az alábbi táblázatból, és ismerkedjen meg a részletekkel.
+Alkalmazását kétféle módon kötheti össze az Azure Active Directory B2C-vel: küldhet közvetlen protokollüzeneteket az [OAuth 2.0 vagy az Open ID Connect](active-directory-b2c-reference-protocols.md) segítségével, vagy használhatja kódtárainkat, amelyek elvégzik Ön helyett ezt a munkát. Válassza ki előnyben részesített platformját az alábbi táblázatból, és ismerkedjen meg a részletekkel.
 
 [!INCLUDE [active-directory-b2c-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-## Újdonságok
+## <a name="whats-new"></a>Újdonságok
 Keresse fel rendszeresen ezt a lapot, hiszen itt szerezhet tudomást az Azure Active Directory B2C-t érintő változásokról. A frissítésekről az @AzureAD néven Twitter-üzeneteket is küldünk.
 
 * Megismerheti a [bővíthető szabályzat-keretrendszert](active-directory-b2c-reference-policies.md), valamint az alkalmazásokban létrehozható és használható szabályzattípusokat.
@@ -36,7 +40,7 @@ Keresse fel rendszeresen ezt a lapot, hiszen itt szerezhet tudomást az Azure Ac
 * [A szolgáltatás jelenlegi korlátozásai és megkötései](active-directory-b2c-limitations.md).
 * Végül az Azure AD B2C-t és ASP.NET-magot használó [kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c).
 
-## Útmutatók
+## <a name="howto-articles"></a>Útmutatók
 Ismerje meg, hogyan használhatja az Azure Active Directory B2C egyes szolgáltatásait:
 
 * [Facebook-](active-directory-b2c-setup-fb-app.md), [Google+-](active-directory-b2c-setup-goog-app.md), [Microsoft-](active-directory-b2c-setup-msa-app.md), [Amazon-](active-directory-b2c-setup-amzn-app.md) és [LinkedIn-](active-directory-b2c-setup-li-app.md)fiókok beállítása a felhasználók felé néző alkalmazásokban való használatra
@@ -46,7 +50,7 @@ Ismerje meg, hogyan használhatja az Azure Active Directory B2C egyes szolgálta
 * Az Azure Active Directory B2C által üzemeltetett [felhasználók felé néző regisztrációs, bejelentkezési és más lapok megjelenésnek és használatának testreszabása](active-directory-b2c-reference-ui-customization.md)
 * [Felhasználók programokon keresztüli létrehozása, beolvasása, frissítése és törlése az Azure Active Directory Graph API segítségével](active-directory-b2c-devquickstarts-graph-dotnet.md) az Azure Active Directory B2C-bérlőben
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgáltatást:
 
 * Tekintse meg az [Azure Active Directory B2C díjszabásával kapcsolatos információkat](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
@@ -57,9 +61,12 @@ Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgálta
 * Olvassa el az [Azure Active Directory B2C-vel kapcsolatos gyakori kérdéseket](active-directory-b2c-faqs.md).
 * [Az Azure Active Directory B2C-vel kapcsolatos fájltámogatási kérések](active-directory-b2c-support.md).
 
-## Biztonsági frissítések termékeinkhez
+## <a name="get-security-updates-for-our-products"></a>Biztonsági frissítések termékeinkhez
 Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekről. Látogasson el [erre a lapra](https://technet.microsoft.com/security/dd252948), és fizessen elő a biztonsági tanácsadói riasztásokra.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

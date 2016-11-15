@@ -1,12 +1,12 @@
 ---
-title: A Microsoft Azure Portal áttekintése
-description: Ismerje meg, a Microsoft Azure Portalt használatát.
-services: ''
-documentationcenter: ''
+title: "A Microsoft Azure Portal áttekintése"
+description: "Ismerje meg, a Microsoft Azure Portalt használatát."
+services: 
+documentationcenter: 
 author: davidwrede
 manager: dwrede
 editor: jimbe
-
+ms.assetid: 53cb9df1-c96a-4f4e-b022-18336cd3d697
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 31bea465db1afb5efc22b2280d83d3b50bced329
+
 
 ---
-# A Microsoft Azure Portal áttekintése
+# <a name="microsoft-azure-portal-overview"></a>A Microsoft Azure Portal áttekintése
 A Microsoft Azure Portal egy központi felület, ahol kioszthatja és kezelheti az Azure-erőforrásokat.  Ez az oktatóanyag bemutatja a portált, illetve megmutatja, hogyan használhatja néhány főbb funkcióját
 
 * Az **univerzális piactéren** a Microsoft és egyéb gyártók által fejlesztett alkalmazások ezrei között válogathat, amelyeket megvásárolhat és/vagy letölthet.
@@ -26,10 +30,10 @@ A Microsoft Azure Portal egy központi felület, ahol kioszthatja és kezelheti 
   
   ![Az Azure Portal felhasználói felületének bemutatása][UIOrientation]
 
-## A kezdés előtt
+## <a name="before-you-get-started"></a>A kezdés előtt
 Érvényes Azure-előfizetéssel kell rendelkeznie az oktatóanyag megtekintéséhez.  Ha még nem rendelkezik ezzel, most [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).  Ha rendelkezik előfizetéssel, a portálhoz a [https://portal.azure.com] webhelyen férhet hozzá.
 
-## Erőforrás létrehozása
+## <a name="how-to-create-a-resource"></a>Erőforrás létrehozása
 Az Azure Piactéren elemek százait hozhatja létre egyetlen helyen.  Tegyük fel, hogy egy új Windows Server 2012 virtuális gépet kíván létrehozni.  Az +ÚJ felület a belépési pont a piactér kiemelt kategóriáinak gondosan összeválogatott listájához.  Mindegyik kategóriában kiemelt elemeket találhat, valamint egy hivatkozást a teljes piactérre, amely megjeleníti az összes kategóriát és keresést. Az új Windows Server 2012 virtuális gép létrehozásához hajtsa végre a következő műveleteket:  
 
 1. A Windows Server 2012 kiemelt elem, ezért kiválaszthatja a Számítás kategóriából.  
@@ -40,12 +44,12 @@ Az értesítési központ riasztást küld, amikor az erőforrás létrejött, m
 
 ![Portálkategóriák][PortalCategories]
 
-## Az erőforrások megkeresése
+## <a name="how-to-find-your-resources"></a>Az erőforrások megkeresése
 A gyakran használt erőforrásokat akármikor rögzítheti a kezdőpulton, azonban előfordulhat, hogy a ritkábban használtakat tallózással kell megkeresnie.  Az alább látható tallózási központ segítségével érheti el az összes erőforrást.  Szűrhet előfizetés alapján, kiválaszthat/átméretezhet oszlopokat, illetve megnyithatja a felügyeleti paneleket az egyes elemekre kattintva.
 
 ![Tallózási központ][BrowseHub]
 
-## Erőforrás-elérés kezelése és delegálása
+## <a name="how-to-manage-and-delegate-access-to-a-resource"></a>Erőforrás-elérés kezelése és delegálása
 Ezen a panelen csatlakozhat a virtuális géphez távoli asztali kapcsolattal, ellenőrizhet fontos teljesítménymutatókat, szabályozhatja a hozzáférést a virtuális géphez szerepköralapú hozzáférés-vezérléssel (RBAC), konfigurálhatja a virtuális gépet, illetve végezhet egyéb fontos felügyeleti műveleteket.  A hozzáférés szerepkörön alapuló delegálása fontos a tömeges felügyelethez.  További információkért kattintson [ide](active-directory/role-based-access-control-configure.md). Egy erőforráshoz való hozzáférés delegálásához hajtsa végre a következő műveleteket:
 
 1. Keresse meg az erőforrást.
@@ -56,7 +60,7 @@ Ezen a panelen csatlakozhat a virtuális géphez távoli asztali kapcsolattal, e
 
 ![Erőforrás kezelése][ManageResource]
 
-## Az erőforráspanelek testreszabása
+## <a name="how-to-customize-a-resource-blade"></a>Az erőforráspanelek testreszabása
 Az Azure előre konfigurálja a paneleket az Ön erőforrásaihoz, azonban a paneleken lévő csempéket szabadon módosíthatja.  A testreszabási módban egyszerűen hozzáadhatja, eltávolíthatja, átméretezheti vagy átrendezheti a csempéket. A panel testreszabásához hajtsa végre a következő műveleteket:
 
 1. Keresse meg az erőforrást.
@@ -66,12 +70,12 @@ Az Azure előre konfigurálja a paneleket az Ön erőforrásaihoz, azonban a pan
 
 ![Panelek testreszabása][CustomizeBlades]
 
-## Segítségkérés
+## <a name="how-to-get-help"></a>Segítségkérés
 Ha problémába ütközik, mi szívesen segítünk Önnek.  A portál rendelkezik egy súgó és támogatási oldallal, amely segít a probléma megoldásában.  A [támogatási csomagjától](https://azure.microsoft.com/support/plans/) függően közvetlenül a portálon is létrehozhat támogatási jegyeket.  A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon. A súgó és támogatás oldalt a Tallózás -> Súgó + támogatás paranccsal is elérheti.  
 
 ![Súgó és támogatás][HelpSupport]
 
-## Összefoglalás
+## <a name="summary"></a>Összefoglalás
 Tekintsük át, hogy mit tudott meg ebből az oktatóanyagból:
 
 * Megtudta, hogyan lehet regisztrálni, előfizetést beszerezni és elérni a portált
@@ -93,6 +97,6 @@ A Microsoft Azure Portal jelentősen leegyszerűsíti az alkalmazások felépít
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

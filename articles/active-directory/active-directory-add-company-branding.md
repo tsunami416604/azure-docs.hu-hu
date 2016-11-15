@@ -1,12 +1,12 @@
 ---
-title: Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
-description: Megismerkedhet a vállalati arculat hozzáadásának mikéntjével az Azure bejelentkezési és hozzáférési oldalán
+title: "Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon"
+description: "Megismerkedhet a vállalati arculat hozzáadásának mikéntjével az Azure bejelentkezési és hozzáférési oldalán"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f74621b4-4ef0-4899-8c0e-0c20347a8c31
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+
 
 ---
-# Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
+# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
 A félreértések elkerülése végett számos vállalat igyekszik egységes megjelenést adni az általa kezelt összes webhelynek és szolgáltatásnak. Az Azure Active Directory ennek érdekében testre szabhatóvá teszi az alábbi webhelyek megjelenését a vállalat emblémájának elhelyezésével és egyéni színsémák alkalmazásával:
 
 * **Bejelentkezési oldal** – Ez az oldal jelenik meg az olyan Office 365- vagy más webes alkalmazásokra történő bejelentkezéskor, amelyek identitásszolgáltatóként az Azure AD-t használják. Ezzel az oldallal a kezdőtartomány-felderítés vagy hitelesítő adatainak megadása során találkozik. A kezdőtartomány-felderítés lehetővé teszi, hogy a rendszer átirányítsa az összevont felhasználókat a helyszíni STS-eikre (például az AD FS-re).
@@ -30,7 +34,7 @@ Ez a témakör a bejelentkezési oldal és a hozzáférési panel testreszabás�
 > 
 > 
 
-## A bejelentkezési oldal testreszabása
+## <a name="customizing-the-signin-page"></a>A bejelentkezési oldal testreszabása
 A felhasználók jellemzően akkor használják a bejelentkezési oldalt, ha böngészőalapú hozzáférésre van szükségük a szervezetük által előfizetett felhőalkalmazásaikhoz és szolgáltatásaikhoz.
 
 A bejelentkezési oldalon alkalmazott módosítások megjelenése akár egy órát is igénybe vehet.
@@ -73,7 +77,7 @@ Ugyanez felfelé átméretezett böngészőablak esetében:
 
 ![][7]
 
-## Melyek az oldal testreszabható elemei?
+## <a name="what-elements-on-the-page-can-i-customize"></a>Melyek az oldal testreszabható elemei?
 A bejelentkezési oldal alábbi elemei szabhatók testre:
 
 ![][5]
@@ -108,14 +112,14 @@ Az oldalon szereplő összes elem honosítható. A testreszabási összetevők �
 * Létrehozhat egy „alapértelmezett” nagy méretű ábrát, amely minden országban használható, majd hozza létre ennek angol és francia verzióját. Ha a böngésző a két nyelv valamelyikére van állítva, akkor az ábra speciális verziója, minden más nyelv esetében pedig az alapértelmezett ábra jelenik meg.
 * A vállalat eltérő verziójú (például japán vagy héber) emblémáit is beállíthatja.
 
-## A hozzáférési panel oldalának testreszabása
+## <a name="access-panel-page-customization"></a>A hozzáférési panel oldalának testreszabása
 A hozzáférési panel alapvetően a portál egy olyan oldala, ahonnan olyan felhőalkalmazásokhoz lehet gyorsan hozzáférni, amelyekhez a rendszergazda jogosultságot adott. Ezen az oldalon az alkalmazások kattintható alkalmazáscsempékként jelennek meg.
 
 Az alábbi képernyőfelvétel a hozzáférési panel oldalát mutatja be a testreszabást követően.
 
 ![][8]
 
-## A címtár konfigurálása a vállalati arculattal
+## <a name="configure-your-directory-with-company-branding"></a>A címtár konfigurálása a vállalati arculattal
 A klasszikus Azure portálon testreszabható elemek egy alapértelmezett készletét állíthatja be címtáranként. Az alapértelmezett verziók mentését követően a rendszergazda az egyes elemek különböző nyelvekhez/területi beállításokhoz honosított verzióit is hozzáadhatja a készlethez. A testre szabható elemek egyikének sem kötelező a használata.
 
 Ha például beállít egy alapértelmezett szalagcímemblémát, de nagy méretű ábrát nem, az embléma megjelenik a bejelentkezési oldal jobb felső sarkában. A megjelenő ábra azonban a webhely lapértelmezett ábrája lesz.
@@ -149,7 +153,7 @@ A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjele
 5. Kattintson az **Add branding for a specific language** (Márkajelzés hozzáadása adott nyelven) lehetőségre.
 6. Válassza ki az embléma testreszabásánál használni kívánt nyelvet, majd kattintson a **Tovább** gombra.
 7. Csak azokat az elemeket szerkessze, amelyeknek felül szeretné írni a nyelvét. A mezők egyike sem kötelező. Az üresen hagyott mezőkbe az egyéni alapértelmezett érték kerül (vagy a Microsoft által beállított alapérték, ha egyéni nincsen konfigurálva).
-8. Kattintson a **Mentés**gombra.
+8. Kattintson a **Save** (Mentés) gombra.
 
 **Ha el szeretné távolítani a címtárból a vállalati arculatot, hajtsa végre a következő lépéseket:**
 
@@ -173,7 +177,7 @@ A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjele
 8. Amennyiben szükséges, kattintson újra a **Customize Branding** (Márkajelzés testreszabása) gombra, majd ismételje meg ezeket a lépéseket az összes eltávolítandó nyelvspecifikus márkajelzés esetében.
     Ha a **Customize Branding** (Márkajelzés testreszabása) elemre kattint, az összes márkajelzési beállítás törlődik, és a **Customize Default Branding** (Alapértelmezett márkajelzés konfigurálása) űrlap jelenik meg, megadott beállítások nélkül.
 
-## Tesztelés és példák
+## <a name="testing-and-examples"></a>Tesztelés és példák
 Javasoljuk, hogy mielőtt éles környezetben hajtana végre módosításokat, próbálja ki azokat egy tesztelési bérlőn.
 
 **Annak ellenőrzése, hogy a rendszer életbe léptette-e a márkajelzési beállításokat:**
@@ -190,7 +194,7 @@ A hatékony és megfelelő testreszabási készletek létrehozásában segítsé
 
 A nyelvspecifikus beállítások teszteléséhez a böngésző alapértelmezett nyelvét a testreszabás során beállított nyelvre kell módosítani. Internet Explorer böngésző használata esetén ezt az **Internetbeállítások** menüben adhatja meg.
 
-## Testreszabható elemek
+## <a name="customizable-elements"></a>Testreszabható elemek
 Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. Címtáranként egy vállalati emblémát konfigurálhat, amelyet a bejelentkezési és a hozzáférési panel oldalakon is használhat. Bizonyos testreszabható elemek kizárólag a bejelentkezési oldalon jelennek meg. A különböző testreszabható elemek részletes adatait az alábbi táblázat tartalmazza.
 
 | Név | Leírás | Korlátozások | Javaslatok |
@@ -203,9 +207,9 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 | A bejelentkezési oldal ábrája |Az ábra a bejelentkezési oldalon a bejelentkezési űrlaptól balra látható nagy méretű kép. |<p>JPG vagy PNG</p><p>1420 x 1200</p><p>500 kB</p> |<p>1420 x 1200 képpont.</p><p>Fontos: a mérete legyen a lehető legkisebb, ideálisan 200 kB alatti. Ha a kép túlságosan nagy, az kihatással van a bejelentkezési oldal teljesítményére, amikor a kép nincs gyorsítótárazva.</p><p>A különböző képarányoknak való megfelelés érdekében a rendszer a képet gyakran levágja. Az elsődleges látványelemeket a bal felső sarokban (jobbról balra író nyelvek esetén a jobb felső sarokban) helyezze el, mivel a böngészőablak átméretezése keskenyebb formára az alsó résztől/jobb saroktól a felső rész/bal sarok felé történik.</p> |
 | A bejelentkezési oldal háttérszíne |A bejelentkezési oldal háttérszíne a bejelentkezési űrlaptól balra található területen érvényesül. |Hexadecimális formátumú RGB-színnek kell lennie (például: #FFFFFF) |<p>Alacsony sávszélességű kapcsolat használatakor a nagy méretű ábrák helyén a háttérszín jelenhet meg.</p><p>Javasoljuk, hogy a szalagcím emblémájának elsődleges színét válassza háttérszínnek.</p> |
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Prémium szintű Azure Active Directory használatába](active-directory-get-started-premium.md)
-* [View your access and usage reports (A hozzáférési és használati jelentések megtekintése)](active-directory-view-access-usage-reports.md)
+* [A hozzáférési és használati jelentések megtekintése](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-add-company-branding/SignInPage_beforecustomization.png
@@ -220,6 +224,6 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Nov16_HO2-->
 
 

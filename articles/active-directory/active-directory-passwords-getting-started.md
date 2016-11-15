@@ -1,13 +1,13 @@
 ---
-title: 'Első lépések: Azure AD-jelszókezelés | Microsoft Docs'
-description: Lehetővé teheti, hogy a felhasználók visszaállíthassák a saját jelszavukat, megismerheti a jelszó-visszaállítás előfeltételeit, és lehetővé teheti a jelszavak visszaírását a helyszíni jelszavak kezeléséhez az Active Directoryban.
+title: "Első lépések: Azure AD-jelszókezelés | Microsoft Docs"
+description: "Lehetővé teheti, hogy a felhasználók visszaállíthassák a saját jelszavukat, megismerheti a jelszó-visszaállítás előfeltételeit, és lehetővé teheti a jelszavak visszaírását a helyszíni jelszavak kezeléséhez az Active Directoryban."
 services: active-directory
-keywords: Active Directory-jelszókezelés, jelszókezelés, Azure AD-jelszó alaphelyzetbe állítása
-documentationcenter: ''
+keywords: "Active Directory-jelszókezelés, jelszókezelés, Azure AD-jelszó alaphelyzetbe állítása"
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+
 
 ---
-# A jelszókezelés első lépései
+# <a name="getting-started-with-password-management"></a>A jelszókezelés első lépései
 > [!IMPORTANT]
 > **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
 > 
@@ -38,7 +42,7 @@ Csupán néhány egyszerű lépéssel lehetővé teheti, hogy a felhasználók k
   * [4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
   * [5. lépés: Az AD-jelszó visszaállítása felhasználóként, és ellenőrzés](#step-5-reset-your-ad-password-as-a-user)
 
-## Annak engedélyezése, hogy a felhasználók visszaállíthassák az Azure AD-jelszavaikat
+## <a name="enable-users-to-reset-their-azure-ad-passwords"></a>Annak engedélyezése, hogy a felhasználók visszaállíthassák az Azure AD-jelszavaikat
 Ez a szakasz végigvezeti az önkiszolgáló jelszó-visszaállítás az AAD a felhőalapú címtárához történő engedélyezésén, a felhasználók önkiszolgáló jelszó-visszaállításhoz történő regisztrálásán, majd végül tesztelési célból egy önkiszolgáló jelszó-visszaállítás felhasználóként történő elvégzésén.
 
 * [Az önkiszolgáló jelszó-visszaállítás előfeltételei](#prerequisites)
@@ -46,7 +50,7 @@ Ez a szakasz végigvezeti az önkiszolgáló jelszó-visszaállítás az AAD a f
 * [2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál](#step-2-add-contact-data-for-your-test-user)
 * [3. lépés: Jelszó visszaállítása felhasználóként](#step-3-reset-your-azure-ad-password-as-a-user)
 
-### Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 Mielőtt önkiszolgáló jelszó-visszaállítást engedélyezhetne és használhatna, eleget kell tennie a következő előfeltételeknek:
 
 * Hozzon létre egy AAD-bérlőt. További információ: [Ismerkedés az Azure AD szolgáltatással](https://azure.microsoft.com/trial/get-started-active-directory/)
@@ -61,7 +65,7 @@ Mielőtt önkiszolgáló jelszó-visszaállítást engedélyezhetne és használ
 * Hozzon létre legalább egy rendszergazdai fiókot és egy felhasználói fiókot az AAD-címtárában.
 * Rendeljen egy AAD Prémium, Alapszintű vagy egy fizetős O365-licencet a létrehozott rendszergazdai és felhasználói fiókhoz.
 
-### 1. lépés: Jelszó-visszaállítási házirend konfigurálása
+### <a name="step-1-configure-password-reset-policy"></a>1. lépés: Jelszó-visszaállítási házirend konfigurálása
 Felhasználói jelszó-visszaállítási házirend konfigurálásához végezze el a következő lépéseket:
 
 1. Nyisson meg egy böngészőt, és nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
@@ -94,7 +98,7 @@ Felhasználói jelszó-visszaállítási házirend konfigurálásához végezze 
    
    ![][006]
 
-### 2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál
+### <a name="step-2-add-contact-data-for-your-test-user"></a>2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál
 Több lehetősége van arra, hogyan adhatja meg a szervezetében lévő felhasználók adatait a jelszó-visszaállításhoz.
 
 * A felhasználók szerkesztése a [klasszikus Azure portálon](https://manage.windowsazure.com) vagy az [Office 365 felügyeleti portálon](https://portal.microsoftonline.com)
@@ -105,7 +109,7 @@ Több lehetősége van arra, hogyan adhatja meg a szervezetében lévő felhaszn
 
 Ha további információt szeretne megtudni arról, hogy milyen adatokat használ a jelszóvisszaállítás, valamint az adatok formázási követelményeiről, lásd: [Milyen adatokat használ a jelszóvisszaállítás?](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset).
 
-#### Felhasználói kapcsolati adatok hozzáadása a Felhasználói regisztrációs portálon
+#### <a name="to-add-user-contact-data-via-the-user-registration-portal"></a>Felhasználói kapcsolati adatok hozzáadása a Felhasználói regisztrációs portálon
 1. A jelszó-visszaállítási portál használatához meg kell adnia a szervezetében lévő felhasználóknak ezen oldal hivatkozását ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)), vagy be kell kapcsolnia a felhasználók automatikus regisztrációját megkövetelő beállítást.  Amikor erre a hivatkozásra kattintanak, a rendszer megkéri őket, hogy jelentkezzenek be a szervezeti fiókjukkal.  Ezután a következő oldalt láthatják:
    
    ![][007]
@@ -119,10 +123,10 @@ Ha további információt szeretne megtudni arról, hogy milyen adatokat haszná
    
    ![][010]
 
-### 3. lépés: Az AzureAD-jelszó visszaállítása felhasználóként
+### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>3. lépés: Az AzureAD-jelszó visszaállítása felhasználóként
 Most, hogy konfigurált egy felhasználói visszaállítási házirendet, és megadta a felhasználó kapcsolattartási adatait, ez a felhasználó önkiszolgáló jelszó-visszaállítást végezhet.
 
-#### Önkiszolgáló jelszó-visszaállítás elvégzése
+#### <a name="to-perform-a-selfservice-password-reset"></a>Önkiszolgáló jelszó-visszaállítás elvégzése
 1. Ha például a [**portal.microsoftonline.com**](http://portal.microsoftonline.com) oldalra lép, az alábbihoz hasonló bejelentkezési képernyőt lát.  Kattintson a **Nem tudja elérni a fiókját?** hivatkozásra a jelszó-visszaállítási felhasználói felület teszteléséhez.
    
    ![][011]
@@ -154,7 +158,7 @@ Most, hogy konfigurált egy felhasználói visszaállítási házirendet, és me
     
     ![][020]
 
-## Annak engedélyezése, hogy a felhasználók visszaállíthassák vagy módosíthassák az AD-jelszavaikat
+## <a name="enable-users-to-reset-or-change-their-ad-passwords"></a>Annak engedélyezése, hogy a felhasználók visszaállíthassák vagy módosíthassák az AD-jelszavaikat
 Ez a szakasz a jelszó-visszaállítás konfigurálásán vezeti végig annak érdekében, hogy jelszavakat írhasson vissza a helyszíni Active Directoryba.
 
 * [Jelszóvisszaírás előfeltételei](#writeback-prerequisites)
@@ -164,7 +168,7 @@ Ez a szakasz a jelszó-visszaállítás konfigurálásán vezeti végig annak é
 * [4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
 * [5. lépés: Az AD-jelszó visszaállítása felhasználóként, és ellenőrzés](#step-5-reset-your-ad-password-as-a-user)
 
-### A visszaírás előfeltételei
+### <a name="writeback-prerequisites"></a>A visszaírás előfeltételei
 Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell tennie a következő előfeltételeknek:
 
 * Rendelkezik egy Azure AD-bérlővel, és engedélyezve van az Azure AD Prémium.  További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
@@ -194,10 +198,10 @@ Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell
   > 
   > 
 
-### 1. lépés: Az Azure AD Connect legújabb verziójának letöltése
+### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>1. lépés: Az Azure AD Connect legújabb verziójának letöltése
 A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy újabb verziójú Azure AD Sync eszközben érhető el.  A Jelszóvisszaíró automatikus fiókzárolás-feloldással az Azure AD Connectben vagy az **1.0.0485.0222**-es vagy újabb verziójú Azure AD Sync eszközben érhető el. Ha régebbi verziót futtat, frissítsen legalább erre a verzióra a folytatás előtt. [Kattintson ide az Azure AD Connect legújabb verziójának letöltéséhez](active-directory-aadconnect.md#install-azure-ad-connect).
 
-#### Az Azure AD Sync verziójának ellenőrzése
+#### <a name="to-check-the-version-of-azure-ad-sync"></a>Az Azure AD Sync verziójának ellenőrzése
 1. Nyissa meg a **%ProgramFiles%\Azure Active Directory Sync\** könyvtárat.
 2. Keresse meg a **ConfigWizard.exe** végrehajtható fájlt.
 3. Kattintson a jobb gombbal a végrehajtható fájlra, és válassza ki a **Tulajdonságok** elemet a helyi menüből.
@@ -213,10 +217,10 @@ Ha ez a verziószám nagyobb vagy egyenlő, mint **1.0.0419.0911**, vagy ha az A
 > 
 > 
 
-### 2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben
+### <a name="step-2-enable-password-writeback-in-azure-ad-connect"></a>2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben
 Most, hogy letöltötte az Azure AD Connect eszközt, készen áll a jelszóvisszaírás engedélyezésére.  Ezt az alábbi két módszer egyikével teheti meg.  Engedélyezheti a jelszóvisszaírást az Azure AD Connect telepítővarázsló választható funkciókat felsoroló képernyőjén, vagy engedélyezheti a Windows PowerShellen keresztül.
 
-#### A jelszóvisszaírás engedélyezése a konfigurációs varázslóban
+#### <a name="to-enable-password-writeback-in-the-configuration-wizard"></a>A jelszóvisszaírás engedélyezése a konfigurációs varázslóban
 1. A **Directory Sync számítógépén** nyissa meg az **Azure AD Connect** konfigurációs varázslóját.
 2. Kattintsa végig a lépéseket, amíg el nem éri a **választható funkciók** konfigurációs képernyőt.
 3. Jelölje be a **Jelszóvisszaírás** lehetőséget.
@@ -229,12 +233,12 @@ Most, hogy letöltötte az Azure AD Connect eszközt, készen áll a jelszóviss
 > 
 > 
 
-#### A jelszóvisszaírás engedélyezése a Windows PowerShell használatával
+#### <a name="to-enable-password-writeback-using-windows-powershell"></a>A jelszóvisszaírás engedélyezése a Windows PowerShell használatával
 1. A **Directory Sync számítógépén** nyisson meg egy új **emelt szintű Windows PowerShell-ablakot**.
 2. Ha a modul még nincs betöltve, írja be az `import-module ADSync` parancsot, hogy az Azure AD Connect-parancsmagokat betöltse az aktuális munkamenetbe.
 3. A rendszeren lévő Azure AD-összekötők listájának lekéréséhez futtassa a `Get-ADSyncConnector` parancsmagot, és tárolja az eredményeket a `$aadConnectorName` változóban, például `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
-4. Az aktuális összekötő aktuális visszaírási állapotának lekéréséhez futtassa a következő parancsmagot: `Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
-5. A jelszóvisszaírás engedélyezéséhez futtassa a következő parancsmagot: `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
+4. Az aktuális összekötő aktuális visszaírási állapotának lekéréséhez futtassa a következő parancsmagot:`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
+5. A jelszóvisszaírás engedélyezéséhez futtassa a következő parancsmagot:`Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
 > [!NOTE]
 > Ha a rendszer bekéri a hitelesítő adatait, győződjön meg róla, hogy az AzureADCredential hitelesítő adatokhoz megadott rendszergazdai fiók egy **felhőalapú rendszergazdai fiók** legyen (amely az Azure AD-ben jött létre), nem pedig összevont fiók (amely helyszíni AD-ben jött létre, és az Azure AD-be lett szinkronizálva).
@@ -244,14 +248,14 @@ Most, hogy letöltötte az Azure AD Connect eszközt, készen áll a jelszóviss
 > 
 > 
 
-#### Ellenőrizze, hogy sikeres volt-e a konfiguráció
+#### <a name="verify-that-the-configuration-was-successful"></a>Ellenőrizze, hogy sikeres volt-e a konfiguráció
 Ha a konfiguráció sikeres, a jelszóvisszaállítás engedélyezett állapotáról szóló üzenetet lát a Windows PowerShell-ablakban, vagy a sikerről szóló üzenetet a konfigurációs felhasználói felületen.
 
 A szolgáltatás megfelelő telepítését úgy is ellenőrizheti, ha megnyitja az Eseménynaplót, megkeresi az alkalmazás eseménynaplóját, és megkeresi a **31005 - OnboardingEventSuccess** eseményt a **PasswordResetService** forrásból.
 
   ![][023]
 
-### 3. lépés: A tűzfal konfigurálása
+### <a name="step-3-configure-your-firewall"></a>3. lépés: A tűzfal konfigurálása
 Miután engedélyezte a jelszóvisszaírást az Azure AD Connect eszközben, ellenőriznie kell, hogy tud-e csatlakozni a felhőhöz a szolgáltatás.
 
 1. Miután befejeződött a telepítés, ha ismeretlen kimenő kapcsolatokat blokkol a környezetben, a következő szabályokat is hozzá kell adnia a tűzfalhoz. Ellenőrizze, hogy újraindította-e az AAD Connect gépét a módosítások elvégzése után:
@@ -259,7 +263,7 @@ Miután engedélyezte a jelszóvisszaírást az Azure AD Connect eszközben, ell
    * Kimenő kapcsolatok engedélyezése a https://ssprsbprodncu-sb.accesscontrol.windows.net/ címre
    * Amikor proxyt használ, vagy általános kapcsolati hibákat tapasztal, engedélyezze a kimenő kapcsolatokat a 9350–9354-es és az 5671-es TCP-porton keresztül.
 
-### 4. lépés: A megfelelő Active Directory-engedélyek beállítása
+### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>4. lépés: A megfelelő Active Directory-engedélyek beállítása
 Minden erdő esetén, amely olyan felhasználókat tartalmaz, akiknek a jelszavait vissza fogja állítani, ha X a konfigurációs varázslóban (a kezdeti konfiguráció során) az erdőhöz meghatározott fiók, az X-hez meg kell adnia a **Jelszó alaphelyzetbe állítása**, **Jelszó módosítása**, **Írási engedélyek** kibővített jogot a `lockoutTime` alatt és az **Írási engedélyek** kibővített jogot a `pwdLastSet` alatt az erdőben lévő minden tartomány gyökérobjektumán. A jognak minden felhasználói objektum által örököltként kell megjelölve lennie.  
 
 Ha nem biztos abban, melyik fiókra utalnak a fentiek, nyissa meg az Azure Active Directory Connect konfigurációs felhasználói felületet, és kattintson **A megoldás áttekintése** elemre.  A fiók, amelyhez engedélyeket kell hozzáadnia, vörös színnel van aláhúzva az alábbi képernyőképen.
@@ -275,7 +279,7 @@ Ha nem biztos abban, melyik fiókra utalnak a fentiek, nyissa meg az Azure Activ
 > 
 > 
 
-#### A megfelelő engedélyek beállítása, hogy a visszaírás megtörténjen
+#### <a name="to-set-up-the-right-permissions-for-writeback-to-occur"></a>A megfelelő engedélyek beállítása, hogy a visszaírás megtörténjen
 1. Nyissa meg az **Active Directory – felhasználók és számítógépek** modult egy olyan fiókkal, amely megfelelő tartományi rendszergazdai engedélyekkel rendelkezik.
 2. A **Nézet menüben** győződjön meg róla, hogy a **Speciális szolgáltatások** be van kapcsolva.
 3. A bal oldali panelen kattintson a jobb gombbal a tartomány gyökerét jelző objektumra.
@@ -295,10 +299,10 @@ Ha nem biztos abban, melyik fiókra utalnak a fentiek, nyissa meg az Azure Activ
    ![][028]
 10. Ezután kattintson az **Alkalmaz/OK** gombra az összes megnyitott párbeszédpanelen.
 
-### 5. lépés: Az AD-jelszó visszaállítása felhasználóként
+### <a name="step-5-reset-your-ad-password-as-a-user"></a>5. lépés: Az AD-jelszó visszaállítása felhasználóként
 Most, hogy engedélyezett a jelszóvisszaírás, tesztelheti a működését, ha visszaállítja a felhőalapú bérlőben szinkronizált fiókkal rendelkező felhasználó jelszavát.
 
-#### A jelszóvisszaírás megfelelő működésének ellenőrzése
+#### <a name="to-verify-password-writeback-is-working-properly"></a>A jelszóvisszaírás megfelelő működésének ellenőrzése
 1. Nyissa meg a [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) oldalt, vagy valamely szervezeti azonosítót kérő bejelentkezési képernyőt, és kattintson a **Nem tudja elérni a fiókját?** hivatkozásra.
    
    ![][029]
@@ -314,7 +318,7 @@ Most, hogy engedélyezett a jelszóvisszaírás, tesztelheti a működését, ha
 <br/>
 <br/>
 
-## A jelszóvisszaállítási dokumentáció hivatkozásai
+## <a name="links-to-password-reset-documentation"></a>A jelszóvisszaállítási dokumentáció hivatkozásai
 Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokumentációs oldal hivatkozását:
 
 * **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
@@ -361,6 +365,6 @@ Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokument�
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

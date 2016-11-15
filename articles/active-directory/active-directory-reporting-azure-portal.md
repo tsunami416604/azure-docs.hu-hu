@@ -1,22 +1,26 @@
 ---
-title: Jelentéskészítés az Azure Active Directory előzetes kiadásában | Microsoft Docs
-description: Ez a dokumentum az Azure Active Directory előzetes kiadásában elérhető különféle jelentéseket sorolja fel
+title: "Jelentéskészítés az Azure Active Directory előzetes kiadásában | Microsoft Docs"
+description: "Ez a dokumentum az Azure Active Directory előzetes kiadásában elérhető különféle jelentéseket sorolja fel"
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 10/31/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
+
 
 ---
-# Jelentéskészítés az Azure Active Directory előzetes kiadásában
+# <a name="azure-active-directory-reporting-preview"></a>Jelentéskészítés az Azure Active Directory előzetes kiadásában
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-reporting-azure-portal.md)
 > * [klasszikus Azure portál](active-directory-reporting-guide.md)
@@ -34,8 +38,8 @@ A jelentéskészítés két fő területe:
 
 A keresett adatok hatókörétől függően a jelentésekhez úgy férhet hozzá, ha a **Felhasználók és csoportok** vagy a **Vállalati alkalmazások** elemre kattint az [Azure Portal](https://portal.azure.com) szolgáltatáslistájában.
 
-## Bejelentkezési tevékenységek
-### Felhasználók bejelentkezési tevékenységei
+## <a name="signin-activities"></a>Bejelentkezési tevékenységek
+### <a name="user-signin-activities"></a>Felhasználók bejelentkezési tevékenységei
 A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
 
 * Milyen egy adott felhasználó bejelentkezési mintázata?
@@ -62,7 +66,7 @@ A bejelentkezési tevékenységek listájának minden sora részletes informáci
 * Mi a bejelentkezéshez tartozó IP-cím?
 * Mi volt a bejelentkezés állapota?
 
-### Felügyelt alkalmazások használati adatai
+### <a name="usage-of-managed-applications"></a>Felügyelt alkalmazások használati adatai
 A bejelentkezési információk alkalmazás-központú nézetével az alábbi kérdésekre kaphat választ:
 
 * Ki használja az alkalmazásaimat?
@@ -93,17 +97,23 @@ Az oszlopválasztóval kiválaszthatja a megjelenítendő adatmezőket.
 
 ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
 
-### Bejelentkezések szűrése
-A megjelenített adatok korlátozása érdekében időintervallum szerint szűrheti a bejelentkezéseket.
+### <a name="filtering-signins"></a>Bejelentkezések szűrése
+A következő mezőkkel szűrheti a bejelentkezéseket a megjelenített adatok korlátozása érdekében:
 
-![Jelentéskészítés](./media/active-directory-reporting-azure-portal/927.png "Reporting")
+* Dátum és idő 
+* Felhasználó egyszerű neve
+* Alkalmazásnév
+* Ügyfél neve
+* Bejelentkezési állapot
+
+![Jelentéskészítés](./media/active-directory-reporting-azure-portal/293.png "Reporting")
 
 A bejelentkezési tevékenységek bejegyzéseit konkrét bejegyzések keresésével is szűrheti.
 Ezzel a keresési módszerrel konkrét **felhasználókra**, **csoportokra** vagy **alkalmazásokra** szűkítheti a bejelentkezések hatókörét.
 
 ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/84.png "Reporting")
 
-## Naplók
+## <a name="audit-logs"></a>Naplók
 Az Azure Active Directory naplói a rendszertevékenységek rekordjait tartalmazzák megfelelőségi célokból.
 
 Az Azure Portalon három fő kategóriája van a kapcsolódó tevékenységek naplózásának:
@@ -126,7 +136,7 @@ Részletes információk a listanézet elemeire kattintva érhetők el.
 
 ![Naplózás](./media/active-directory-reporting-azure-portal/873.png "Auditing")
 
-### Felhasználók és csoportok auditnaplói
+### <a name="users-and-groups-audit-logs"></a>Felhasználók és csoportok auditnaplói
 A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
 
 * Milyen típusú frissítéseket telepítettek a felhasználók?
@@ -142,7 +152,7 @@ Ha csak át szeretné tekinteni a felhasználókhoz és csoportokhoz kapcsolód�
 
 ![Naplózás](./media/active-directory-reporting-azure-portal/93.png "Auditing")
 
-### Alkalmazások auditnaplói
+### <a name="application-audit-logs"></a>Alkalmazások auditnaplói
 Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
 
 * Mely alkalmazások lettek hozzáadva vagy frissítve?
@@ -155,18 +165,44 @@ Ha csak át szeretné tekinteni az alkalmazásokhoz kapcsolódó naplózási ada
 
 ![Naplózás](./media/active-directory-reporting-azure-portal/134.png "Auditing")
 
-### Auditnaplók szűrése
-A megjelenített adatok korlátozása érdekében időintervallum szerint szűrheti az auditnaplókat.
+### <a name="filtering-audit-logs"></a>Auditnaplók szűrése
+A következő mezőkkel szűrheti a bejelentkezéseket a megjelenített adatok korlátozása érdekében:
 
-![Naplózás](./media/active-directory-reporting-azure-portal/324.png "Auditing")
+* Dátum és idő
+* Szereplő felhasználói egyszerű neve
+* Tevékenység típusa
+* Tevékenység
+
+![Naplózás](./media/active-directory-reporting-azure-portal/356.png "Auditing")
+
+A **Tevékenység típusa** lista tartalma a panel belépési pontjához van kötve.  
+Ha a belépési pontja az Azure Active Directory, ez a lista tartalmazza az összes lehetséges tevékenységtípust:
+
+* Alkalmazás 
+* Csoport 
+* Felhasználó
+* Eszköz
+* Címtár
+* Szabályzat
+* Egyéb
+
+![Naplózás](./media/active-directory-reporting-azure-portal/825.png "Auditing")
+
+A listázott tevékenységek hatókörét a tevékenységtípus határozza meg.
+Ha például a **Csoport** érték van kiválasztva a **Tevékenység típusaként**, a **Tevékenység** lista csak a csoporttal kapcsolatos tevékenységeket tartalmazza.   
+
+![Naplózás](./media/active-directory-reporting-azure-portal/654.png "Auditing")
 
 Az auditnaplók bejegyzéseit konkrét bejegyzések keresésével is szűrheti.
 
 ![Naplózás](./media/active-directory-reporting-azure-portal/237.png "Auditing")
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporting-guide.md).
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

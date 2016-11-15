@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD B2C: Secure a web API by using Node.js | Microsoft Docs'
-description: How to build a Node.js web API that accepts tokens from a B2C tenant
+title: "Azure AD B2C: Védelem biztosítása webes API-k számára a Node.js segítségével | Microsoft Docs"
+description: "Node.js webes API létrehozása, amely fogadja a B2C-bérlők által küldött jogkivonatokat"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: brandwe
-manager: msmbaldwin
-editor: ''
-
+manager: mbaldwin
+editor: 
+ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,95 +14,99 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 08/30/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
+
 
 ---
-# Azure AD B2C: Secure a web API by using Node.js
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Védelem biztosítása webes API-k számára a Node.js segítségével
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-With Azure Active Directory (Azure AD) B2C, you can secure a web API by using OAuth 2.0 access tokens. These tokens allow your client apps that use Azure AD B2C to authenticate to the API. This article shows you how to create a "to-do list" API that allows users to add and list tasks. The web API is secured using Azure AD B2C and only allows authenticated users to manage their to-do list.
+Az Azure Active Directory (Azure AD) B2C segítségével védetté tehet egy webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával. Ezek a jogkivonatok engedélyezik az Azure AD B2C-t alkalmazó ügyfélalkalmazások számára az API hitelesítését. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan „feladatlista” API-t, amelyben a felhasználók megjeleníthetik a listát és új feladatokat adhatnak hozzá. A webes API-t az Azure AD B2C látja el védelemmel, így csak a hitelesített felhasználók kezelhetik a feladatlistájukat.
 
 > [!NOTE]
-> This sample was written to be connected to by using our [iOS B2C sample application](active-directory-b2c-devquickstarts-ios.md). Do the current walk-through first, and then follow along with that sample.
+> Ezt a mintát úgy írtuk meg, hogy az [iOS B2C mintaalkalmazással](active-directory-b2c-devquickstarts-ios.md) lehessen hozzá csatlakozni. Először haladjon végig ezen az ismertetőn, és aztán térjen rá az említett mintára.
 > 
 > 
 
-**Passport** is authentication middleware for Node.js. Flexible and modular, Passport can be unobtrusively installed in any Express-based or Restify web application. A comprehensive set of strategies supports authentication by using a user name and password, Facebook, Twitter, and more. We have developed a strategy for Azure Active Directory (Azure AD). You install this module and then add the Azure AD `passport-azure-ad` plug-in.
+A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább. Kidolgoztunk egy stratégiát, amellyel a szoftver az Azure Active Directory (Azure AD) esetében is felhasználható. Először telepítenie kell a modult, majd hozzá kell adni az Azure AD `passport-azure-ad` bővítményt.
 
-To do this sample, you need to:
+Ennek a mintának az elvégzéséhez először az alábbiakat kell elvégeznie:
 
-1. Register an application with Azure AD.
-2. Set up your application to use Passport's `azure-ad-passport` plug-in.
-3. Configure a client application to call the "to-do list" web API.
+1. Alkalmazás regisztrálása az Azure AD-ben.
+2. Az alkalmazás beállítása a Passport `azure-ad-passport` bővítményének használatára.
+3. Ügyfélalkalmazás konfigurálása a „feladatlista” webes API meghívására.
 
-## Get an Azure AD B2C directory
-Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all users, apps, groups, and more.  If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue.
+## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
+Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt.  A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket.  Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
 
-## Create an application
-Next, you need to create an app in your B2C directory that gives Azure AD some information that it needs to securely communicate with your app. In this case, both the client app and web API are represented by a single **Application ID**, because they comprise one logical app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md). Be sure to:
+## <a name="create-an-application"></a>Alkalmazás létrehozása
+Következő lépésként létre kell hoznia egy alkalmazást a B2C-címtárban, amely ellátja az Azure AD-t a biztonságos kommunikációhoz szükséges információkkal. Ebben az esetben az ügyfélalkalmazáshoz és a webes API-hoz egyetlen **alkalmazásazonosító** tartozik, mivel a két elem egyetlen logikai alkalmazás lesz. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
 
-* Include a **web app/web api** in the application
-* Enter `http://localhost/TodoListService` as a **Reply URL**. It is the default URL for this code sample.
-* Create an **Application secret** for your application and copy it. You need this data later. Note that this value needs to be [XML escaped](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) before you use it.
-* Copy the **Application ID** that is assigned to your app. You need this data later.
+* Az alkalmazás tartalmazzon egy **webalkalmazást vagy webes API-t**
+* A **Reply URL** (Válasz URL-cím) legyen a következő: `http://localhost/TodoListService`. Ez a kódminta alapértelmezett URL-címe.
+* Hozzon létre egy **alkalmazástitkot** az alkalmazáshoz, majd másolja. Erre az adatra később még szükség lesz. Ne feledje, hogy az értékben használat előtt [az XML-nek megfelelő feloldójelekkel](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) kell megjelölni a vezérlőkaraktereket.
+* Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre az adatra később még szükség lesz.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Create your policies
-In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This app contains two identity experiences: sign up and sign in. You need to create one policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy).  When you create your three policies, be sure to:
+## <a name="create-your-policies"></a>Házirendek létrehozása
+Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
-* Choose the **Display name** and other sign-up attributes in your sign-up policy.
-* Choose the **Display name** and **Object ID** application claims in every policy.  You can choose other claims as well.
-* Copy down the **Name** of each policy after you create it. It should have the prefix `b2c_1_`.  You need those policy names later.
+* A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve az egyéb regisztrációs attribútumokat.
+* Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet.  Ezenfelül más jogcímeket is használhat.
+* Az egyes szabályzatok létrehozását követően másolja a szabályzat **nevét**. A névnek a következő előtaggal kell rendelkeznie: `b2c_1_`.  A szabályzatok nevére később még szüksége lesz.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-After you have created your three policies, you're ready to build your app.
+A három szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
 
-To learn about how policies work in Azure AD B2C, start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).
+Ha szeretné megismerni a szabályzatoknak az Azure AD B2C alatti működését, végezze el a [.NET-es webalkalmazások használatába bevezető oktatóanyagot](active-directory-b2c-devquickstarts-web-dotnet.md).
 
-## Download the code
-The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). To build the sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). You can also clone the skeleton:
+## <a name="download-the-code"></a>A kód letöltése
+Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). A minta menet közbeni létrehozásához [letöltheti a projektvázát tartalmazó .zip-fájlt](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). A vázprojektet klónozhatja is:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS.git
 ```
 
-The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) or on the `complete` branch of the same repository.
+A kész alkalmazás [.zip fájlként](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) vagy `complete` az adott adattár ágában is elérhető.
 
-## Download Node.js for your platform
-To successfully use this sample, you need a working installation of Node.js. 
+## <a name="download-nodejs-for-your-platform"></a>A Node.js letöltése a platformra
+A minta használatához rendelkeznie kell a Node.js telepített és működő verziójával. 
 
-Install Node.js from [nodejs.org](http://nodejs.org).
+Telepítse a Node.js-t a [nodejs.org](http://nodejs.org) oldalról.
 
-## Install MongoDB for your platform
-To successfully use this sample, you need a working installation of MongoDB. We use MongoDB to make your REST API persistent across server instances.
+## <a name="install-mongodb-for-your-platform"></a>A MongoDB telepítése a platformra
+A minta használatához rendelkeznie kell a MongoDB telepített és működő verziójával. A MongoDB-re a REST API különböző kiszolgálópéldányok közötti perzisztenciájának kialakításához van szükség.
 
-Install MongoDB from [mongodb.org](http://www.mongodb.org).
+Telepítse a MongoDB-t a [mongodb.org](http://www.mongodb.org) oldalról.
 
 > [!NOTE]
-> This walk-through assumes that you use the default installation and server endpoints for MongoDB, which at the time of this writing is `mongodb://localhost`.
+> Ebben az útmutatóban feltételezzük, hogy Ön a MongoDB alapértelmezett telepítését és kiszolgálóvégpontjait használja, amely a cikk írásának időpontjában a következő: `mongodb://localhost`.
 > 
 > 
 
-## Install the Restify modules in your web API
-We use Restify to build your REST API. Restify is a minimal and flexible Node.js application framework derived from Express. It has a robust set of features for building REST APIs on top of Connect.
+## <a name="install-the-restify-modules-in-your-web-api"></a>A Restify-modulok telepítése a webes API-ra.
+A REST API létrehozásához a Restify programot használjuk. A Restify egy minimális igényű és rugalmas Node.js alkalmazási keretrendszer, amely az Express alapján készült. Számos hatékony funkciót kínál a Connectre épített REST API-k létrehozásához.
 
-### Install Restify
-From the command line, change your directory to `azuread`. If the `azuread` directory doesn't exist, create it.
+### <a name="install-restify"></a>A Restify telepítése
+A parancssorban módosítsa a következőre a könyvtárat: `azuread`. Ha az `azuread` könyvtár nem létezik, hozza létre.
 
-`cd azuread` or `mkdir azuread;`
+`cd azuread` vagy `mkdir azuread;`
 
-Enter the following command:
+Írja be a következő parancsot:
 
 `npm install restify`
 
-This command installs Restify.
+Ez a parancs elvégzi a Restify telepítését.
 
-#### Did you get an error?
-In some operating systems, when you use `npm`, you may receive the error `Error: EPERM, chmod '/usr/local/bin/..'` and a request that you run the account as an administrator. If this problem occurs, use the `sudo` command to run `npm` at a higher privilege level.
+#### <a name="did-you-get-an-error"></a>Hibaüzenetet kapott?
+Egyes operációs rendszereken az `npm` parancs használata esetén az `Error: EPERM, chmod '/usr/local/bin/..'` szövegű hiba jelenik meg, és a rendszer felszólítja, hogy futtassa rendszergazdaként a fiókot. Ha ez a probléma jelentkezik, a `sudo` parancs használatával futtassa magasabb jogosultsági szinten az `npm` parancsot.
 
-#### Did you get a DTrace error?
-You may see something like this text when you install Restify:
+#### <a name="did-you-get-a-dtrace-error"></a>DTrace hibaüzenetet kapott?
+Előfordulhat, hogy a Restify telepítése során az alábbihoz hasonló üzenet jelenik meg:
 
 ```Shell
 clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
@@ -121,9 +125,9 @@ gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 
-Restify provides a powerful mechanism for tracing REST calls by using DTrace. However, many operating systems do not have DTrace available. You can safely ignore these errors.
+A Restify a DTrace segítségével biztosít a REST-hívások követésére szolgáló funkciókat. Számos operációs rendszerben azonban nem található meg a DTrace. Ezeket a hibákat nyugodtan figyelmen kívül hagyhatja.
 
-The output of the command should appear similar to this text:
+A parancs kimenetének a következőképp kell kinéznie:
 
     restify@2.6.1 node_modules/restify
     ├── assert-plus@0.1.4
@@ -146,34 +150,34 @@ The output of the command should appear similar to this text:
     ├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
     └── bunyan@0.22.0 (mv@0.0.5)
 
-## Install Passport in your web API
-From the command line, change your directory to `azuread`, if it's not already there.
+## <a name="install-passport-in-your-web-api"></a>A Passport telepítése a webes API-ba
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van).
 
-Install Passport using the following command:
+A Passport telepítéséhez használja az alábbi parancsot :
 
 `npm install passport`
 
-The output of the command should be similar to this text:
+A parancs kimenetének a következőképpen kell kinéznie:
 
     passport@0.1.17 node_modules\passport
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## Add passport-azuread to your web API
-Next, add the OAuth strategy by using `passport-azuread`, a suite of strategies that connect Azure AD with Passport. Use this strategy for bearer tokens in the REST API sample.
+## <a name="add-passportazuread-to-your-web-api"></a>A passport-azuread hozzáadása a webes API-hoz
+Következő lépésként a `passport-azuread` használatával adja hozzá az OAuth stratégiát. Ez a stratégiacsomag szolgál az Azure AD és a Passport összekapcsolására. A REST API-mintában ez a stratégia használható a tulajdonosi jogkivonatokhoz.
 
 > [!NOTE]
-> Although OAuth2 provides a framework in which any known token type can be issued, only certain token types have gained widespread use. The tokens for protecting endpoints are bearer tokens. These types of tokens are the most widely issued in OAuth2. Many implementations assume that bearer tokens are the only type of token issued.
+> Az OAuth2 keretrendszerében ugyan bármely ismert jogkivonat kibocsátható, csupán néhány típust használnak szélesebb körben. A végpontok védelmére szolgáló jogkivonatokat tulajdonosi jogkivonatoknak nevezzük. Az OAuth2-ben ezek a leggyakrabban kibocsátott jogkivonattípusok. Számos implementáció eleve úgy veszi, hogy csak tulajdonosi jogkivonatokat bocsátottak ki.
 > 
 > 
 
-From the command line, change your directory to `azuread`, if it's not already there.
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van).
 
-Install the Passport `passport-azure-ad` module using the following command:
+Telepítse a `passport-azure-ad` Passport-modult az alábbi paranccsal:
 
 `npm install passport-azure-ad`
 
-The output of the command should be similar to this text:
+A parancs kimenetének a következőképpen kell kinéznie:
 
 ``
 passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -190,19 +194,19 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 ``
 
-## Add MongoDB modules to your web API
-This sample uses MongoDB as your data store. For that install Mongoose, a widely used plug-in for managing models and schemas.
+## <a name="add-mongodb-modules-to-your-web-api"></a>MongoDB-modulok hozzáadása a webes API-hoz
+Ebben a példában a MongoDB lesz az adattároló. Ezért telepítenie kell a népszerű Mongoose bővítményt, amely modellek és sémák kezelésére szolgál.
 
 * `npm install mongoose`
 
-## Install additional modules
-Next, install the remaining required modules.
+## <a name="install-additional-modules"></a>A kiegészítő modulok telepítése
+Következő lépésként telepítse a további szükséges modulokat.
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Install the modules in your `node_modules` directory:
+Telepítse a modulokat a `node_modules` könyvtárba:
 
 * `npm install assert-plus`
 * `npm install ejs`
@@ -210,14 +214,14 @@ Install the modules in your `node_modules` directory:
 * `npm install express`
 * `npm install bunyan`
 
-## Create a server.js file with your dependencies
-The `server.js` file provides the majority of the functionality for your Web API server. 
+## <a name="create-a-serverjs-file-with-your-dependencies"></a>A függőségeknek megfelelő server.js fájl létrehozása
+A `server.js` fájl biztosítja a funkciók legnagyobb részét a webes API kiszolgálója számára. 
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Create a `server.js` file in an editor. Add the following information:
+Hozza létre a `server.js` fájlt valamelyik szerkesztőben. Adja meg a következő információkat:
 
 ```Javascript
 'use strict';
@@ -236,16 +240,16 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Save the file. You return to it later.
+Mentse a fájlt. Később még visszatérünk rá.
 
-## Create a config.js file to store your Azure AD settings
-This code file passes the configuration parameters from your Azure AD Portal to the `Passport.js` file. You created these configuration values when you added the web API to the portal in the first part of the walk-through. We explain what to put in the values of these parameters after you copy the code.
+## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Az Azure AD-beállításokat tároló config.js fájl létrehozása
+Ez a kódfájl adja át a konfigurációs paramétereket az Azure AD-portálból a `Passport.js` fájlnak. Ezeket a konfigurációs értékeket akkor hozta létre, amikor az útmutató korábbi részében hozzáadta a webes API-t a portálhoz. A paraméterek kitöltésének módját a kód másolását követően ismertetjük.
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Create a `config.js` file in an editor. Add the following information:
+Hozza létre a `config.js` fájlt valamelyik szerkesztőben. Adja meg a következő információkat:
 
 ```Javascript
 // Don't commit this file to your public repos. This config is for first-run
@@ -263,35 +267,35 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-### Required values
-`clientID`: The client ID of your Web API application.
+### <a name="required-values"></a>Kötelező értékek
+`clientID`: A webes API-alkalmazás ügyfél-azonosítója.
 
-`IdentityMetadata`: This is where `passport-azure-ad` looks for your configuration data for the identity provider. It also looks for the keys to validate the JSON web tokens. 
+`IdentityMetadata`: a `passport-azure-ad` itt fogja keresni az identitásszolgáltatóra vonatkozó konfigurációs adatokat, továbbá a JSON webes jogkivonatainak érvényesítéséhez szükséges kulcsokat is. 
 
-`audience`: The uniform resource identifier (URI) from the portal that identifies your calling application. 
+`audience`: A hívást indító alkalmazást azonosító portál URI-ja. 
 
-`tenantName`: Your tenant name (for example, **contoso.onmicrosoft.com**).
+`tenantName`: A bérlő neve (például **contoso.onmicrosoft.com**).
 
-`policyName`: The policy that you want to validate the tokens coming in to your server. This policy should be the same policy that you use on the client application for sign-in.
+`policyName`: A kiszolgálóra érkező jogkivonatok érvényesítésére használni kívánt szabályzat. Ez ugyanaz a szabályzat legyen, mint amelyet az ügyfélalkalmazásban használ a bejelentkezéshez.
 
 > [!NOTE]
-> For our B2C preview, use the same policies across both client and server setup. If you have already completed a walk-through and created these policies, you don't need to do so again. Because you completed the walk-through, you shouldn't need to set up new policies for client walk-throughs on the site.
+> A B2C előzetes verziójában az ügyfél és a kiszolgáló beállítása során is ugyanazokat a szabályzatokat használjuk. Ha már más oktatóanyagok keretében létrehozta ezeket a szabályzatokat, nem szükséges ismét létrehoznia őket. Mivel korábban már elvégezte az előírt lépéseket, nem szükséges új szabályzatokat létrehozni a webhelyen az ügyfelekre vonatkozó útmutatás részeként.
 > 
 > 
 
-## Add configuration to your server.js file
-To read the values from the `config.js` file you created, add the `.config` file as a required resource in your application, and then set the global variables to those in the `config.js` document.
+## <a name="add-configuration-to-your-serverjs-file"></a>Konfiguráció hozzáadása a server.js fájlhoz
+A létrehozott `config.js` fájl értékeinek kiolvasásához kötelező erőforrásként adja hozzá a `.config` fájlt az alkalmazáshoz, majd állítsa a globális változókat a `config.js` dokumentumban megadott értékekre.
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Open the `server.js` file in an editor. Add the following information:
+Nyissa meg a `server.js` fájlt valamelyik szerkesztőben. Adja meg a következő információkat:
 
 ```Javascript
 var config = require('./config');
 ```
-Add a new section to `server.js` that includes the following code:
+Adjon egy új szakaszt a `server.js` fájlhoz. A szakasz a következő kódot tartalmazza:
 
 ```Javascript
 // We pass these options in to the ODICBearerStrategy.
@@ -309,7 +313,7 @@ var options = {
 };
 ```
 
-Next, let's add some placeholders for the users we receive from our calling applications.
+A következő lépésben hozzon létre helyőrzőket a hívó alkalmazásból érkező felhasználók számára.
 
 ```Javascript
 // array to hold logged in users and the current logged in user (owner)
@@ -317,7 +321,7 @@ var users = [];
 var owner = null;
 ```
 
-Let's go ahead and create our logger too.
+Most pedig hozzon létre naplózót.
 
 ```Javascript
 // Our logger
@@ -326,32 +330,32 @@ var log = bunyan.createLogger({
 });
 ```
 
-## Add the MongoDB model and schema information by using Mongoose
-The earlier preparation pays off as you bring these three files together in a REST API service.
+## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>A MongoDB-modellre és -sémára vonatkozó információk hozzáadása a Mongoose segítségével
+Itt érik be a korábban elvégzett munka gyümölcse: az elkészített három fájlt most összehozzuk egy REST API-szolgáltatásban.
 
-For this walk-through, use MongoDB to store your tasks, as discussed earlier.
+Az itt olvasható lépéseknél (ahogy arra már korábban utaltunk) a MongoDB-t használja a feladatok tárolására.
 
-In the `config.js` file, you called your database **tasklist**. That name was also what you put at the end of the `mongoose_auth_local` connection URL. You don't need to create this database beforehand in MongoDB. It creates the database for you on the first run of your server application.
+A `config.js` fájlban az adatbázis a **tasklist** nevet kapta. Ez az név került a `mongoose_auth_local` csatlakozási URL-cím végére is. Ezt az adatbázist nem szükséges előre létrehozni a MongoDB-ben. Az adatbázist az kiszolgálóalkalmazás az első futtatásakor létrehozza.
 
-After you tell the server which MongoDB database to use, you need to write some additional code to create the model and schema for your server tasks.
+Miután közli a kiszolgálóval, hogy melyik MongoDB-adatbázist használja, a kiszolgálói feladatokhoz tartozó modell és séma létrehozásához további kódot kell írnia.
 
-### Expand the model
-This schema model is simple. You can expand it as required.
+### <a name="expand-the-model"></a>A modell kibővítése
+Ez a sémamodell egyszerű. Ez azt is jelenti, hogy szükség esetén könnyedén kibővíthető.
 
-`owner`: Who is assigned to the task. This object is a **string**.  
+`owner`: A feladathoz rendelt személy. Ez egy **karakterlánc**.  
 
-`Text`: The task itself. This object is a **string**.
+`Text`: Maga a feladat. Ez egy **karakterlánc**.
 
-`date`: The date that the task is due. This object is a **datetime**.
+`date`: A feladat határideje. Ez egy **datetime** (dátum és idő) típusú objektum.
 
-`completed`: If the task is complete. This object is a **Boolean**.
+`completed`: Azt jelzi, hogy a feladat elkészült-e. Ez egy **logikai** típusú objektum.
 
-### Create the schema in the code
-From the command line, change your directory to `azuread`, if it's not already there:
+### <a name="create-the-schema-in-the-code"></a>A séma kódjának megírása
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Open the `server.js` file in an editor. Add the following information below the configuration entry:
+Nyissa meg a `server.js` fájlt valamelyik szerkesztőben. Helyezze el a következő adatokat a konfigurációs bejegyzés alatt:
 
 ```Javascript
 // MongoDB setup
@@ -376,15 +380,15 @@ var TaskSchema = new Schema({
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-You first create the schema, and then you create a model object that you use to store your data throughout the code when you define your **routes**.
+Először létre kell hozni a sémát, majd a modellobjektumot, amelyet arra fog használni, hogy a kód egészében tárolja adatait az **útvonalak** meghatározása során.
 
-## Add routes for your REST API task server
-Now that you have a database model to work with, add the routes you use for your REST API server.
+## <a name="add-routes-for-your-rest-api-task-server"></a>A REST API-feladatkiszolgálóra mutató útvonalak hozzáadása
+Most, hogy létrehozta az adatbázismodellt, adja hozzá a REST API-kiszolgálóhoz használandó útvonalakat.
 
-### About routes in Restify
-Routes work in Restify in the same way that they work when they use the Express stack. You define routes by using the URI that you expect the client applications to call. 
+### <a name="about-routes-in-restify"></a>Az útvonalak működése a Restify programban
+Az útvonalak a Restifyban ugyanúgy működnek, mint az Express verem használata esetén. Az útvonalakat azon URI használatával kell meghatározni, amelyet elképzelései szerint az ügyfélalkalmazások meg fognak hívni. 
 
-A typical pattern for a Restify route is:
+Íme egy jellegzetes Restify-útvonal:
 
 ```Javascript
 function createObject(req, res, next) {
@@ -397,16 +401,16 @@ return next(); // keep the server going
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
 ```
 
-Restify and Express can provide much deeper functionality, such as defining application types and doing complex routing across different endpoints. For the purposes of this tutorial, we keep these routes simple.
+A Restify és az Express ennél jóval összetettebb funkciók biztosítására is képes: például definiálhatja velük az alkalmazástípusokat, valamint bonyolult útvonalvezetést valósíthat meg a különböző végpontok között. Ebben az oktatóanyagban egyszerűbb útvonalakat használunk.
 
-#### Add default routes to your server
-You now add the basic CRUD routes of **create** and **list** for our REST API. Other routes can be found in the `complete` branch of the sample.
+#### <a name="add-default-routes-to-your-server"></a>Alapértelmezett útvonalak beállítása a kiszolgálón
+Most a REST API-hoz hozzáadjuk az alapszintű CRUD-útvonalakat: **létrehozás** és **listázás**. A példa `complete` részében további útvonalak is szerepelnek.
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-Open the `server.js` file in an editor. Below the database entries you made above add the following information:
+Nyissa meg a `server.js` fájlt valamelyik szerkesztőben. Írja be az alábbi információkat a fentiekben létrehozott adatbázis-bejegyzések alá:
 
 ```Javascript
 /**
@@ -495,10 +499,10 @@ function listTasks(req, res, next) {
 ```
 
 
-#### Add error handling for the routes
-Add some error handling so that you can communicate any problems you encounter back to the client in a way that it can understand.
+#### <a name="add-error-handling-for-the-routes"></a>Hibakezelés beállítása az útvonalakhoz
+Állítson be hibakezelést is, hogy az észlelt problémákat olyan formában továbbíthassa az ügyfélhez, amelyet az képes megérteni.
 
-Add the following code:
+Adja hozzá a következő kódot:
 
 ```Javascript
 ///--- Errors for communicating something interesting back to the client
@@ -537,10 +541,10 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ```
 
 
-## Create your server
-You have now defined your database and put your routes in place. The last thing for you to do is to add the server instance that manages your calls.
+## <a name="create-your-server"></a>A kiszolgáló létrehozása
+Készen áll az adatbázis, és az útvonalak is a helyükön vannak. Utolsó lépésként hozzá kell adni a hívásokat kezelő kiszolgálópéldányt.
 
-Restify and Express provide deep customization for a REST API server, but we use the most basic setup here. 
+A Restify és az Express mélyreható konfigurációs funkciókat biztosítanak a REST API-kiszolgálóhoz, de itt most az alapszintű beállításokat fogjuk használni. 
 
 ```Javascript
 
@@ -590,7 +594,7 @@ server.use(passport.session()); // Provides session support
 
 
 ```
-## Add the routes to the server (without authentication)
+## <a name="add-the-routes-to-the-server-without-authentication"></a>Útvonalak hozzáadása a kiszolgálóhoz (hitelesítés nélkül)
 ```Javascript
 server.get('/api/tasks', passport.authenticate('oauth-bearer', {
     session: false
@@ -662,20 +666,20 @@ server.listen(serverPort, function() {
 
 ``` 
 
-## Add authentication to your REST API server
-Now that you have a running REST API server, you can make it useful against Azure AD.
+## <a name="add-authentication-to-your-rest-api-server"></a>Hitelesítés hozzáadása a REST API-kiszolgálóhoz
+Most, hogy rendelkezésére áll a futó REST API-kiszolgáló, felhasználhatja azt az Azure AD-ben is.
 
-From the command line, change your directory to `azuread`, if it's not already there:
+A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
 `cd azuread`
 
-### Use the OIDCBearerStrategy that is included with passport-azure-ad
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passportazuread"></a>A passport-azure-ad részét képező OIDCBearerStrategy használata
 > [!TIP]
-> When you write APIs, you should always link the data to something unique from the token that the user can’t spoof. When the server stores ToDo items, it does so based on the **oid** of the user in the token (called through token.oid), which goes in the “owner” field. This value ensures that only that user can access their own ToDo items. There is no exposure in the API of “owner,” so an external user can request others’ ToDo items even if they are authenticated.
+> Az API-k írásakor mindig kapcsolja az adatokat a jogkivonat valamely különleges részéhez, amelyhez a felhasználók nem tudnak jogosulatlanul hozzáférni. A kiszolgáló a jogkivonat „owner” mezőjében szereplő felhasználónak (a token.oid segítségével meghívott) **objektumazonosítója** alapján tárolja a ToDo elemeket. Ez az érték biztosítja, hogy csak az adott felhasználó férhet hozzá a saját ToDo elemeihez. Az „owner” API-ja nem jelenik meg sehol, így még a hitelesített külső felhasználók sem kérelmezhetik mások ToDo elemeit.
 > 
 > 
 
-Next, use the bearer strategy that comes with `passport-azure-ad`.
+Ezt követően használja a `passport-azure-ad` részét képező tulajdonosi stratégiát.
 
 ```Javascript
 var findById = function(id, fn) {
@@ -714,28 +718,28 @@ var oidcStrategy = new OIDCBearerStrategy(options,
 passport.use(oidcStrategy);
 ```
 
-Passport uses the same pattern for all its strategies. You pass it a `function()` that has `token` and `done` as parameters. The strategy comes back to you after it has done all of its work. You should then store the user and save the token so that you don’t need to ask for it again.
+A Passport az összes stratégia esetében hasonló mintát alkalmaz. Át kell neki adni egy `function()` elemet, amelynek paramétereihez tartozik a `token` és a `done`. Ha a stratégia elvégezte teendőit, visszatér Önhöz. Ekkor érdemes tárolni a felhasználót és menteni a jogkivonatot, hogy a műveletet ne kelljen megismételni.
 
 > [!IMPORTANT]
-> The code above takes any user who happens to authenticate to your server. This process is known as autoregistration. In production servers, don't let in any users access the API without first having them go through a registration process. This process is usually the pattern you see in consumer apps that allow you to register by using Facebook but then ask you to fill out additional information. If this program wasn’t a command-line program, we could have extracted the email from the token object that is returned and then asked users to fill out additional information. Because this is a sample, we add them to an in-memory database.
+> A fenti kódrészlettel a hitelesítésen áteső felhasználók bejuthatnak a kiszolgálóra. Ezt a folyamatot automatikus regisztrációnak nevezzük. Az élesben működő kiszolgálók esetében csak akkor engedélyezze az API-khoz való felhasználói hozzáférést, ha már elvégezték a regisztrációs folyamatot. Általában ezt a megoldást látjuk az olyan fogyasztói alkalmazásoknál, amelyek engedélyezik a Facebook segítségével történő regisztrációt, de aztán további adatok megadását kérik. Ha ez nem parancssori program lenne, a visszakapott jogkivonat-objektumból kinyerhettük volna az e-mail-címet, és felkérhettük volna a felhasználót a kiegészítő adatok megadására. Mivel ez csupán egy példa, most egyszerűen hozzáadjuk őket a memóriában lévő adatbázishoz.
 > 
 > 
 
-## Run your server application to verify that it rejects you
-You can use `curl` to see if you now have OAuth2 protection against your endpoints. The headers returned should be enough to tell you that you are on the right path.
+## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>A kiszolgálóalkalmazás futtatása annak ellenőrzése érdekében, hogy elutasítja-e Önt
+A `curl` használatával ellenőrizheti, hogy az OAuth2-védelem működik-e a végpontokon. A visszakapott fejlécek alapján már megállapíthatja, hogy jó úton jár-e.
 
-Make sure that your MongoDB instance is running:
+Ellenőrizze, hogy fut-e a MongoDB-példány:
 
     $sudo mongodb
 
-Change to the directory and run the server:
+Váltson át a könyvtárra és futtassa a kiszolgálót:
 
     $ cd azuread
     $ node server.js
 
-In a new terminal window, run `curl`
+Egy új terminálablakban futtassa a `curl` parancsot
 
-Try a basic POST:
+Próbálkozzon meg egy egyszerű POST művelettel:
 
 `$ curl -isS -X POST http://127.0.0.1:3000/api/tasks/brandon/Hello`
 
@@ -747,16 +751,19 @@ Date: Tue, 14 Jul 2015 05:45:03 GMT
 Transfer-Encoding: chunked
 ```
 
-A 401 error is the response you want. It indicates that the Passport layer is trying to redirect to the authorize endpoint.
+A cél, hogy 401-es hiba jelenjen meg. Ez azt jelzi, hogy a Passport réteg megpróbálja átirányítani a hitelesítési végpontra.
 
-## You now have a REST API service that uses OAuth2
-You have implemented a REST API by using Restify and OAuth! You now have sufficient code so that you can continue to develop your service and build on this example. You have gone as far as you can with this server without using an OAuth2-compatible client. For that next step use an additional walk-through like our [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md) walkthrough.
+## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>Az OAuth2-t használó REST API-szolgáltatás ezzel elkészült
+A Restify és az OAuth használatával elkészítette a REST API-t! Most már rendelkezésre állnak a megfelelő kódrészletek, amelyek segítségével tovább fejlesztheti szolgáltatását. Megtettünk mindent, ami a kiszolgálón OAuth2-kompatibilis ügyfél nélkül lehetséges volt. A következő lépéshez használjon újabb útmutatókat, például a [Csatlakozás webes API-hoz az iOS rendszer és a B2C segítségével](active-directory-b2c-devquickstarts-ios.md) című témakört.
 
-## Next steps
-You can now move to more advanced topics, such as:
+## <a name="next-steps"></a>Következő lépések
+Most már továbbléphet az összetettebb témákra, például:
 
-[Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md)
+[Csatlakozás webes API-hoz az iOS rendszer és a B2C segítségével](active-directory-b2c-devquickstarts-ios.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

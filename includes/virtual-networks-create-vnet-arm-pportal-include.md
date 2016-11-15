@@ -1,31 +1,33 @@
-## How to create a VNet in the Azure portal
-To create a VNet based on the scenario above by using the Azure preview portal, follow the steps below.
+## <a name="how-to-create-a-vnet-in-the-azure-portal"></a>VNet létrehozása az Azure Portalon
+Ha a fenti forgatókönyv alapján kíván létrehozni egy VNetet az Azure Betekintő portál használatával, kövesse az alábbi lépéseket.
 
-1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
-2. Click **NEW** > **Networking** > **Virtual network**, then click **Resource Manager** from the **Select a deployment model** list, and then click **Create**, as seen in the figure below.
+1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+2. Kattintson az **ÚJ** > **Hálózatkezelés** > **Virtuális hálózat** elemre, majd kattintson az **Erőforrás-kezelő** elemre a **Telepítési modell kiválasztása** listában, végül pedig kattintson a **Létrehozás** elemre, amint az alábbi ábrán látható.
    
-    ![Create VNet in Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
-3. On the **Create virtual network** blade, configure the VNet settings as shown in the figure below.
+    ![VNet létrehozása az Azure Portalon](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
+3. A **Virtuális hálózat létrehozása** panelen konfigurálja a VNet beállításait az alábbi ábrán látható módon.
    
-    ![Create virtual network blade](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
-4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md#resource-groups).
+    ![Virtuális hálózat létrehozása panel](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
+4. Kattintson az **Erőforráscsoport** elemre, majd válassza ki az erőforráscsoportot, amelyhez a VNetet hozzá kívánja adni, vagy az **Új létrehozása** elemre kattintva adja hozzá a VNetet egy új erőforráscsoporthoz. Az alábbi ábrán a **TestRG** nevű új erőforráscsoport erőforráscsoport-beállításai láthatóak. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
    
-    ![Resource group](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
-5. If necessary, change the **Subscription** and **Location** settings for your VNet. 
-6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**. 
-7. Click **Create** and notice the tile named **Creating Virtual network** as shown in the figure below.
+    ![Erőforráscsoport](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
+5. Szükség esetén módosítsa a VNethez tartozó **Előfizetés** és **Hely** beállításokat. 
+6. Ha nem szeretné, hogy a VNet csempe megjelenjen a **Kezdőpulton**, tiltsa le **A kezdőpulton rögzít** lehetőséget. 
+7. Kattintson a **Létrehozás** gombra, és megjelenik a **Virtuális hálózat létrehozása** csempe, amint az az alábbi ábrán is látható.
    
-    ![Creating virtual network tile](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
-8. Wait for the VNet to be created, then in the **Virtual network** blade, click **All settings** > **Subnets** > **Add** as seen below.
+    ![Virtuális hálózat csempéjének létrehozása](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
+8. Várja meg, amíg létrejön a VNet, majd a **Virtuális hálózat** panelen kattintson az **Összes beállítás** > **Alhálózatok** > **Hozzáadás** elemre az alább látható módon.
    
-    ![Adding subnet in the Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
-9. Specify the subnet settings for the *BackEnd* subnet, as shown below, and then click **OK**. 
+    ![Alhálózat hozzáadása az Azure Portalon](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
+9. Adja meg a *BackEnd* alhálózathoz tartozó alhálózati beállításokat az alább látható módon, majd kattintson az **OK** gombra. 
    
-    ![Subnet settings](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
-10. Notice the list of subnets, as shown in the figure below.
+    ![Alhálózat-beállítások](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
+10. Megjelenik az alhálózatok listája, amint az az alábbi ábrán látható.
     
-    ![List of subnets in VNet](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
+    ![A VNet alhálózatainak listája](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

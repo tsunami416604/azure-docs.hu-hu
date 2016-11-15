@@ -1,12 +1,12 @@
 ---
-title: Webalkalmazás létrehozása a Redis Cache használatával | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre webalkalmazást a Redis Cache használatával
+title: "Webalkalmazás létrehozása a Redis Cache használatával | Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre webalkalmazást a Redis Cache használatával"
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/11/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 425729dde12d8477b7b8ecd6394b31b7c5a5e92b
+
 
 ---
-# Webalkalmazás létrehozása a Redis Cache használatával
+# <a name="how-to-create-a-web-app-with-redis-cache"></a>Webalkalmazás létrehozása a Redis Cache használatával
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -37,19 +41,19 @@ Az oktatóanyagból a következőket sajátíthatja el:
 * Azure-erőforrások kiépítése egy Resource Manager-sablont használó alkalmazás számára.
 * Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie.
 
 * [Azure-fiók](#azure-account)
 * [Visual Studio 2015, Azure SDK for .NET csomaggal](#visual-studio-2015-with-the-azure-sdk-for-net)
 
-### Azure-fiók
+### <a name="azure-account"></a>Azure-fiók
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-fiókra. A következőket teheti:
 
 * [Nyisson egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=redis_cache_hero). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a keretét el is használta, továbbra is megtarthatja a fiókot, és használhatja az ingyenes szolgáltatásokat és lehetőségeket.
 * [Aktiválja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
-### Visual Studio 2015, Azure SDK for .NET csomaggal
+### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015, Azure SDK for .NET csomaggal
 Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2-es vagy újabb verziójához készült. [Innen letöltheti a legfrissebb Azure SDK-t a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a Visual Studio még nincs telepítve, a rendszer automatikusan telepíti azt, az SDK-val együtt.
 
 Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfrissebb Azure SDK for Visual Studio 2013 alkalmazást](http://go.microsoft.com/fwlink/?LinkID=324322). Egyes képernyők eltérhetnek a jelen oktatóanyag ábráin láthatóaktól.
@@ -59,7 +63,7 @@ Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfri
 > 
 > 
 
-## A Visual Studio-projekt létrehozása
+## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 1. Nyissa meg a Visual Studio alkalmazást, majd kattintson a **File** (File), **New** (Új), **Project** (Projekt) lehetőségre.
 2. Bontsa ki a **Visual C#** csomópontot a **Templates** (Sablonok) listában, válassza a **Cloud** (Felhő) lehetőséget, majd kattintson az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre. Győződjön meg arról, hogy a **.NET Framework 4.5.2** keretrendszer van kiválasztva.  Írja be a **ContosoTeamStats** szöveget a **Name** (Név) szövegmezőbe, majd kattintson az **OK** gombra.
    
@@ -69,14 +73,14 @@ Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfri
     ![Projektsablon kiválasztása][cache-select-template]
 4. A projekt létrehozásához kattintson az **OK** gombra.
 
-## Az ASP.NET MVC alkalmazás létrehozása
+## <a name="create-the-aspnet-mvc-application"></a>Az ASP.NET MVC alkalmazás létrehozása
 Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létrehozni, amely adatbázisból olvas be és jelenít meg csoportstatisztikákat.
 
 * [Modell hozzáadása](#add-the-model)
 * [Vezérlő hozzáadása](#add-the-controller)
 * [A nézetek konfigurálása](#configure-the-views)
 
-### Modell hozzáadása
+### <a name="add-the-model"></a>Modell hozzáadása
 1. Kattintson a jobb gombbal a **Models** (Modellek) elemre a **Solution Explorer** (Megoldáskezelő) területén, és válassza az **Add** (Hozzáadás), **Class** (Osztály) lehetőségeket. 
    
     ![Modell hozzáadása][cache-model-add-class]
@@ -174,10 +178,10 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
         <connectionStrings>
             <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
                 providerName="System.Data.SqlClient" />
-            <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"  providerName="System.Data.SqlClient" />
+            <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
         </connectionStrings>
 
-### Vezérlő hozzáadása
+### <a name="add-the-controller"></a>Vezérlő hozzáadása
 1. A projekt létrehozásához nyomja le az **F6** billentyűt. 
 2. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, majd válassza az **Add** (Hozzáadás), **Controller** (Vezérlő) lehetőségeket.
    
@@ -214,7 +218,7 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
         );
 
 
-### A nézetek konfigurálása
+### <a name="configure-the-views"></a>A nézetek konfigurálása
 1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views**(Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
    
     ![_Layout.cshtml][cache-layout-cshtml]
@@ -233,7 +237,7 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
 
 ![Kezdő szintű alkalmazás][cache-starter-application]
 
-## Az alkalmazás konfigurálása a Redis Cache használatára
+## <a name="configure-the-application-to-use-redis-cache"></a>Az alkalmazás konfigurálása a Redis Cache használatára
 Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigurálását az Azure Redis Cache-példányból származó Contoso-csoportstatisztikák tárolására és beolvasására a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) gyorsítótárügyfél használatával.
 
 * [Az alkalmazás konfigurálása a StackExchange.Redis használatára](#configure-the-application-to-use-stackexchangeredis)
@@ -241,7 +245,7 @@ Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigur
 * [A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez](#update-the-create-edit-and-delete-methods-to-work-with-the-cache)
 * [A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez](#update-the-teams-index-view-to-work-with-the-cache)
 
-### Az alkalmazás konfigurálása a StackExchange.Redis használatára
+### <a name="configure-the-application-to-use-stackexchangeredis"></a>Az alkalmazás konfigurálása a StackExchange.Redis használatára
 1. Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag használatával történő konfigurálásához kattintson a jobb gombbal a projektre a **Solution Explorer** (Megoldáskezelő) felületén, majd válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. 
    
     ![NuGet-csomagok kezelése][redis-cache-manage-nuget-menu]
@@ -292,7 +296,7 @@ Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigur
      
      Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati karakterláncok) nem képezik részét az alkalmazás forráskódjának. A webalkalmazás Azure-on történő üzembe helyezésekor a `WebAppPlusCacheAppSecrests.config` fájl nem lesz telepítve (ez megfelel a szándékainknak). A titkos kulcsok megadására számos mód létezik az Azure-ban, ezek pedig ennek az oktatóanyagnak a későbbi lépéseiben automatikusan konfigurálva lesznek az [Azure-erőforrások kiépítésekor](#provision-the-azure-resources). További információk a titkos kulcsok használatáról az Azure-ban: [Ajánlott eljárások a jelszavak és egyéb érzékeny adatok telepítéséhez az ASP.NET és az Azure App Service szolgáltatásokban](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure).
 
-### A TeamsController osztály frissítése a gyorsítótárból vagy az adatbázisból eredmények visszaadásához
+### <a name="update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database"></a>A TeamsController osztály frissítése a gyorsítótárból vagy az adatbázisból eredmények visszaadásához
 Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárból is lekérdezhetők. A csapatstatisztikák a gyorsítótárban szerializált `List<Team>`, illetve (Redis adattípusok használatával) rendezett készlet formájában vannak tárolva. Rendezett készletből történő lekérdezéskor egyes, az összes vagy bizonyos feltételnek megfelelő elemek lekérésére van lehetőség. Jelen példában lekérdezünk egy rendezett készletet a győzelmek száma szerint rangsorolt 5 legjobb csapatra.
 
 > [!NOTE]
@@ -513,7 +517,7 @@ Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárb�
         }
 
 
-### A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez
+### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>A Létrehozás, Szerkesztés és Törlés módszerek frissítése a gyorsítótárral való együttműködéshez
 A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok hozzáadásához, szerkesztéséhez és törléséhez. Egy csapat hozzáadását, szerkesztését vagy eltávolítását követően a gyorsítótárban található adatok elavulttá válnak. Jelen szakaszban ezen három módszer módosítását fogja elvégezni a gyorsítótárazott csapatok törlése érdekében, így a gyorsítótár szinkronizálva lesz az adatbázissal.
 
 1. Keresse meg a `Create(Team team)` módszert a `TeamsController` osztályban. Adjon hozzá hívást a `ClearCachedTeams` módszerhez, ahogy az az alábbi példában is látható.
@@ -578,7 +582,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
         }
 
 
-### A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez
+### <a name="update-the-teams-index-view-to-work-with-the-cache"></a>A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez
 1. A **Solution Explorer** (Megoldáskezelőben) bontsa ki a **Views** (Nézetek), majd a **Teams** (Csapatok) mappát, és kattintson duplán az **Index.cshtml** fájlra.
    
     ![Index.cshtml][cache-views-teams-index-cshtml]
@@ -627,7 +631,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     ![Állapotüzenet][cache-status-message]
 2. A projekt létrehozásához nyomja le az **F6** billentyűt.
 
-## Azure-erőforrások kiépítése
+## <a name="provision-the-azure-resources"></a>Azure-erőforrások kiépítése
 Az alkalmazásnak az Azure-on történő üzemeltetéséhez először is létre kell hoznia az alkalmazás számára szükséges Azure-szolgáltatásokat. A jelen oktatóanyagban szereplő mintaalkalmazás az alábbi Azure-szolgáltatásokat használja.
 
 * Azure Redis Cache
@@ -674,7 +678,7 @@ A kiépítés után a Visual Studio felületéről közzéteheti alkalmazását 
 > 
 > 
 
-## Az alkalmazás közzététele az Azure-ban
+## <a name="publish-the-application-to-azure"></a>Az alkalmazás közzététele az Azure-ban
 Az oktatóanyag ezen lépésben közzéteszi alkalmazását az Azure-ban, majd futtatja azt a felhőben
 
 1. Kattintson a jobb gombbal a Visual Studio **ContosoTeamStats** projektjére, majd válassza a **Publish** (Közzététel) lehetőséget
@@ -710,7 +714,7 @@ A mintaalkalmazás egyes műveleti hivatkozásait a következő táblázat ismer
 
 Kattintson néhány műveletre, és kísérletezzen az adatok különböző forrásokból történő lekérdezésével. Figyelje meg az adatbázisból és a gyorsítótárból történő adatlekérdezés különböző módjainak végrehajtásához szükséges időbeli eltéréseket.
 
-## Az erőforrások törlése az alkalmazás bezárását követően
+## <a name="delete-the-resources-when-you-are-finished-with-the-application"></a>Az erőforrások törlése az alkalmazás bezárását követően
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Ha a [Azure-erőforrások kiépítése](#provision-the-azure-resources) szakasz **Üzembe helyezés az Azure-ban** gombját használja, és valamennyi erőforrás azonos erőforráscsoportban található, az erőforráscsoport törlésével egy művelettel, együttesen is törölheti azokat.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
@@ -730,7 +734,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 > 
 > 
 
-## Mintaalkalmazás futtatása helyi gépen
+## <a name="run-the-sample-application-on-your-local-machine"></a>Mintaalkalmazás futtatása helyi gépen
 Az alkalmazás helyi számítógépen történő futtatásához egy olyan Azure Redis Cache-példányra van szükség, amelyen az adatok gyorsítótárazása elvégezhető. 
 
 * Ha az alkalmazás Azure-on történő közzétételét az előző szakaszban leírt módon hajtotta végre, használhatja az abban a lépésben üzembe helyezett Azure Redis Cache-példányt.
@@ -754,7 +758,7 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [ASP.NET MVC 5 – Első lépések](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) elvégzéséről további információkat az [ASP.NET](http://asp.net/) webhelyén talál.
 * További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/).
   * A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
@@ -804,6 +808,6 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

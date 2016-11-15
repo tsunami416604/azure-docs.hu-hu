@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
-description: Megtudhatja, hogyan telepíthet egy Node.js alkalmazást az Azure App Service-ben.
+title: "Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben"
+description: "Megtudhatja, hogyan telepíthet egy Node.js alkalmazást az Azure App Service-ben."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb2b90c8-02b6-4700-929b-5de9a35d67cc
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+
 
 ---
-# Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
+# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alkalmazást, és hogyan telepítheti azt az [Azure App Service] olyan parancssori környezetben, mint a cmd.exe vagy a bash. Az oktatóanyag utasításai követhetők bármelyik olyan operációs rendszeren, amely képes a Node.js futtatására.
@@ -27,7 +31,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
 
 <a name="prereq"></a>
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * [Node.js]
 * [Bower]
 * [Yeoman]
@@ -35,7 +39,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
 * [Azure CLI]
 * Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra], vagy [aktiválhatja a Visual Studio előfizetői előnyeit].
 
-## Egyszerű Node.js webalkalmazás létrehozása és telepítése
+## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>Egyszerű Node.js webalkalmazás létrehozása és telepítése
 1. Nyissa meg a kívánt parancssori terminált, és telepítse a [Express generator for Yeoman]
    
         npm install -g generator-express
@@ -99,10 +103,10 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
    
     ![Példa a telepített alkalmazás tallózással való megkeresésére.][deployed-express-app]
 
-## A Node.js webalkalmazás frissítése
+## <a name="update-your-nodejs-web-app"></a>A Node.js webalkalmazás frissítése
 Az App Service-ben futó Node.js webalkalmazás frissítéséhez csak futtassa a `git add`, `git commit` és `git push` parancsokat, mint ahogyan azt a webalkalmazás első telepítésekor tette.
 
-## Hogyan telepíti az App Service a Node.js alkalmazást
+## <a name="how-app-service-deploys-your-nodejs-app"></a>Hogyan telepíti az App Service a Node.js alkalmazást
 Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazásokat. Az Azure CLI és a Kudu motor (Git telepítés) egymással együttműködve biztosítanak egy zökkenőmentes élményt a Node.js alkalmazások parancssori felületről való fejlesztésekor és telepítésekor. 
 
 * `azure site create --git` felismeri a server.js vagy az app.js fájl közös Node.js mintázatát, és létrehoz egy iisnode.yml fájlt a gyökérkönyvtárban. Ezt a fájlt használhatja az iisnode testreszabásához.
@@ -112,7 +116,7 @@ Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazás
   * Egy Web.config létrehozása az iisnode-hoz, amely az indítási parancsfájlra mutat a package.json kódjában (pl. server.js vagy app.js).
   * A Web.config testreszabása, hogy az alkalmazás készen álljon a Node-Inspectorral való hibakeresésre.
 
-## Egy Node.js keretrendszer használata
+## <a name="use-a-nodejs-framework"></a>Egy Node.js keretrendszer használata
 Ha az alkalmazásfejlesztéshez egy népszerű Node.js keretrendszert használ, mint a [Sails.js][SAILSJS] vagy a [MEAN.js][MEANJS], telepítheti ezeket az App Service-be. A népszerű Node.js keretrendszereknek megvannak saját jellegzetességei, és a csomagfüggőségeik folyamatosan frissülnek. Az App Service azonban elérhetővé teszi az stdout és az stderr naplókat, így pontosan tudhatja, hogy mi történik az alkalmazásával, és annak megfelelően végezhet módosításokat. További információk: [Az stdout és az stderr naplók lekérése az iisnode-ról](#iisnodelog).
 
 Az alábbi oktatóanyagok bemutatják, hogyan használhat egy adott keretrendszert az App Service-ben:
@@ -123,7 +127,7 @@ Az alábbi oktatóanyagok bemutatják, hogyan használhat egy adott keretrendsze
 
 <a name="version"></a>
 
-## Adott Node.js motor használata
+## <a name="use-a-specific-nodejs-engine"></a>Adott Node.js motor használata
 Az általános munkamenetben úgy írhatja elő az App Service-nek egy adott Node.js motor használatát, ahogyan azt egy package.json esetén tenné.
 Példa:
 
@@ -144,7 +148,7 @@ A Kudu telepítési motor az alábbi lépések szerint határozza meg, melyik No
 
 <a name="iisnodelog"></a>
 
-## Az stdout és az stderr naplók lekérése az iisnode-ról
+## <a name="get-stdout-and-stderr-logs-from-iisnode"></a>Az stdout és az stderr naplók lekérése az iisnode-ról
 Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
 
 > [!NOTE]
@@ -170,7 +174,7 @@ Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
    
         https://{appname}.scm.azurewebsites.net/DebugConsole 
    
-    Ez az URL-cím eltér a webalkalmazás URL-címétől abban, hogy hozzá lett fűzve egy „*.scm.*” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
+    Ez az URL-cím eltér a webalkalmazás URL-címétől abban, hogy hozzá lett fűzve egy ” *.scm.* ” tag a DNS-névhez. Ha kihagyja ezt a kiegészítést az URL-hez, 404 hibaüzenetet kap.
 5. Lépjen a D:\home\site\wwwroot\iisnode helyre
    
     ![Navigálás az iisnode naplófájlok helyéhez.][iislog-kudu-console-find]
@@ -182,7 +186,7 @@ Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
    
     ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-console-read]
 
-## Alkalmazás hibakeresése a Node-Inspector használatával
+## <a name="debug-your-app-with-nodeinspector"></a>Alkalmazás hibakeresése a Node-Inspector használatával
 Ha a Node-Inspector segítségével szeretne hibakeresést végezni a Node.js alkalmazásokon, használhatja azt az élő App Service alkalmazáshoz. A Node-Inspector előre telepítve van az App Service iisnode telepítésében. Ha a Git segítségével végzi a telepítést, a Kudu automatikusan generált Web.config eleme már tartalmazza a Node-Inspector engedélyezéséhez szükséges összes konfigurációt.
 
 A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
@@ -204,7 +208,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
    
         http://{appname}.azurewebsites.net/app.js/debug
 
-## További erőforrások
+## <a name="more-resources"></a>További erőforrások
 * [A Node.js verzió megadása az Azure alkalmazásban](../nodejs-specify-node-version-azure-apps.md)
 * [Ajánlott eljárások és hibaelhárítási útmutató az Azure-on futó Node.js-alkalmazásokhoz](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](web-sites-nodejs-debug.md)
@@ -231,7 +235,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [regisztráljon egy ingyenes próbaverzióra]: http://go.microsoft.com/fwlink/?LinkId=623901
-[webalkalmazásra]: ./app-service-web-overview.md
+[webalkalmazás]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -243,6 +247,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

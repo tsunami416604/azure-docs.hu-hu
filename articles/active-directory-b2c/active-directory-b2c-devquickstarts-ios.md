@@ -1,12 +1,12 @@
 ---
-title: 'Azure Active Directory B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával | Microsoft Docs'
-description: A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0 tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t külső fejlesztőktől származó kódtárak használatával.
+title: "Azure Active Directory B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával | Microsoft Docs"
+description: "A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0 tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t külső fejlesztőktől származó kódtárak használatával."
 services: active-directory-b2c
 documentationcenter: ios
 author: brandwe
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: objectivec
 ms.topic: hero-article
 ms.date: 07/26/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1b570e66afb7a4d3f7fc9b65600bfa7dc0fcc4b5
+
 
 ---
-# Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
+# <a name="azure-ad-b2c-call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Így a fejlesztők bármilyen típusú kódtárat integrálhatnak szolgáltatásainkkal. Hogy segítséget nyújtsunk a fejlesztőknek platformunk más kódtárakkal való használatában, több különböző útmutatót is írtunk, amelyekből megtudhatják, hogy hogyan kell beállítani úgy a külső fejlesztőktől származó kódtárakat, hogy azok kapcsolódni tudjanak a Microsoft identitásplatformjához. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) használó legtöbb kódtár képes lesz kapcsolódni a Microsoft identitásplatformjához.
@@ -30,10 +34,10 @@ Ha csak most ismerkedik az OAuth2 vagy az OpenID Connect használatával, előfo
 
 A B2C platform nem támogatja az összes Azure Active Directory-forgatókönyvet és funkciót.  Ha nem biztos benne, hogy érdemes-e a B2C platformot használnia, olvassa el a [B2C korlátozásait](active-directory-b2c-limitations.md).
 
-## Az Azure AD B2C-címtár beszerzése
+## <a name="get-an-azure-ad-b2c-directory"></a>Az Azure AD B2C-címtár beszerzése
 Az Azure AD B2C használatához létre kell hoznia egy címtárat vagy bérlőt. A címtárban tárolhatja az összes felhasználót, alkalmazást, csoportot és más elemeket. Ha még nem tette meg, [hozzon létre most egy B2C-címtárat](active-directory-b2c-get-started.md), mielőtt továbblépne.
 
-## Alkalmazás létrehozása
+## <a name="create-an-application"></a>Alkalmazás létrehozása
 A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez biztosítja az alkalmazással történő biztonságos kommunikációhoz szükséges információkat az Azure AD számára. Az ügyfélalkalmazást és a webes API-t egyetlen **alkalmazásazonosító** képviseli, mivel a két elem közös logikai alkalmazássá áll össze. Az alkalmazást a következő [utasítások](active-directory-b2c-app-registration.md) alapján hozza létre. Ügyeljen arra, hogy:
 
 * Az alkalmazáshoz tartozzon egy **mobileszköz**.
@@ -41,7 +45,7 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## Házirendek létrehozása
+## <a name="create-your-policies"></a>Házirendek létrehozása
 Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Az alkalmazás egyetlen identitással kapcsolatos interakciót tartalmaz: egy kombinált regisztrációs és bejelentkezési folyamatot. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint. A szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * A szabályzatban adja meg a **Megjelenített név** értékét, illetve a regisztrációs attribútumokat.
@@ -52,7 +56,7 @@ Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directo
 
 A szabályzat létrehozását követően készen áll az alkalmazás elkészítésére.
 
-## A kód letöltése
+## <a name="download-the-code"></a>A kód letöltése
 Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c).  Hogy követni tudja a lépéseket, [töltse le .zip-fájlként az alkalmazást](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)/archive/master.zip), vagy klónozza:
 
 ```
@@ -65,10 +69,10 @@ Vagy egyszerűen csak töltse le az elkészült kódot, és már kezdheti is:
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-## A külső fejlesztőtől származó nxoauth2 kódtár letöltése és a munkaterület elindítása
+## <a name="download-the-third-party-library-nxoauth2-and-launch-a-workspace"></a>A külső fejlesztőtől származó nxoauth2 kódtár letöltése és a munkaterület elindítása
 Ebben az útmutatóban a GitHubon található OAuth2Client nevű, Mac OS X-hez és iOS-hez (Cocoa és Cocoa touch) készült OAuth2-kódtárat fogjuk használni. A kódtár az OAuth2 specifikációinak 10-es tervezetén alapul. Célja a natív alkalmazásprofil implementálása, valamint a végfelhasználót hitelesítő végpont támogatása. Ezekre mind szükség lesz a Microsoft identitásplatformjával való integrációhoz.
 
-### A kódtár hozzáadása a projekthez a CocoaPods segítségével
+### <a name="adding-the-library-to-your-project-using-cocoapods"></a>A kódtár hozzáadása a projekthez a CocoaPods segítségével
 A CocoaPods egy Xcode-projektekhez készült függőségkezelő. Automatikusan képes elvégezi a fenti telepítési lépéseket.
 
 ```
@@ -95,7 +99,7 @@ $ open SampleforB2C.xcworkspace
 
 ```
 
-## A projekt struktúrája
+## <a name="the-structure-of-the-project"></a>A projekt struktúrája
 A vázban a következő struktúrát állítottuk be a projekthez:
 
 * **Főnézet**, amelyhez munkaablak is tartozik
@@ -104,7 +108,7 @@ A vázban a következő struktúrát állítottuk be a projekthez:
 
 Az útmutató során hitelesítést fogunk adni a projektben szereplő különböző fájlokhoz. A kód más részei, például a vizuális kód nem fontos az identitáskezelés szempontjából, ezért ezt készen bocsátjuk rendelkezésre.
 
-## Az alkalmazáshoz tartozó `settings.plist` fájl létrehozása
+## <a name="create-the-settingsplist-file-for-your-application"></a>Az alkalmazáshoz tartozó `settings.plist` fájl létrehozása
 Leegyszerűsíti az alkalmazás konfigurálását, ha egyetlen központi helyen tároljuk az összes konfigurációs értékét. Ez ráadásul segít jobban átlátni, hogy mire szolgálnak az egyes beállítások az alkalmazásban. Az értékeket a *Tulajdonságlista* segítségével adjuk át az alkalmazásnak.
 
 * Nyissa meg/hozza létre a `settings.plist` fájlt az alkalmazás munkaterületének `Supporting Files` részén.
@@ -155,7 +159,7 @@ A többi érték a kódtár használatát segíti elő, és olyan helyeket bizto
 
 Most, hogy létrehoztuk a `settings.plist` fájlt, már csak a kódra van szükség, hogy be tudjuk olvasni.
 
-## AppData osztály létrehozása a beállítások beolvasása érdekében
+## <a name="set-up-a-appdata-class-to-read-our-settings"></a>AppData osztály létrehozása a beállítások beolvasása érdekében
 Hozzunk létre egy egyszerű fájlt, amely elemzi a fentiekben elkészített `settngs.plist` fájlt, és a jövőben bármilyen osztály számára elérhetővé teszi a beállításokat. Mivel nem szeretnénk újabb és újabb másolatot létrehozni az adatokból minden alkalommal, amikor egy osztály lekéri azokat, egy Singleton-mintát fogunk használni, amely mindig ugyanazt a példányt adja vissza a beállításokra vonatkozó kéréseknek.
 
 * Hozzon létre egy `AppData.h` fájlt:
@@ -219,7 +223,7 @@ Hozzunk létre egy egyszerű fájlt, amely elemzi a fentiekben elkészített `se
 
 Ettől kezdve (ahogy azt lentebb látni fogjuk), minden osztályból elég egy `  AppData *data = [AppData getInstance];` hívás az adatok beszerzéséhez.
 
-## Az NXOAuth2Client kódtár beállítása az AppDelegate-ben
+## <a name="set-up-the-nxoauth2client-library-in-your-appdelegate"></a>Az NXOAuth2Client kódtár beállítása az AppDelegate-ben
 Az NXOAuthClient kódtár beállításához különböző értékek szükségesek. Ha ezeket megadta, a létrejövő jogkivonat segítségével meghívhatja a REST API-t. Mivel tudjuk, hogy az alkalmazás betöltésekor a rendszer mindig meghívja az `AppDelegate`-et, logikus lépés ebben a fájlban elhelyezni a konfigurációs értékeket.
 
 * Nyissa meg az `AppDelegate.m` fájlt.
@@ -277,7 +281,7 @@ Ezt követően állítsa be, hogy az AppDelegate is meghívja a hatókört a `di
 ```
 
 
-## A hitelesítési kérések kezelésére szolgáló `LoginViewController` osztály létrehozása
+## <a name="create-a-loginviewcontroller-class-that-we-will-use-to-handle-authentication-requests"></a>A hitelesítési kérések kezelésére szolgáló `LoginViewController` osztály létrehozása
 A fiókkal történő bejelentkezéshez webnézetet használunk. Így felszólíthatjuk a felhasználót különféle további tényezők (például, ha beállítja, SMS-üzenetek) használatára, illetve megjeleníthetjük számára az esetleges hibaüzeneteket. Most beállítjuk a webnézetet, majd később megírjuk a kódot, amely kezelni fogja a webnézetben a Microsoft identitásszolgáltatásától érkező visszahívásokat.
 
 * Hozzon létre egy `LoginViewController.h` osztályt.
@@ -482,7 +486,7 @@ Hozzuk létre a metódust, amelyet a rendszer meghív, ha hitelesítési kérés
 
 Ezzel létrehoztuk a fő módszert, amellyel bejelentkezés céljából interakcióba lehet lépni az alkalmazással. A bejelentkezést követően használni kell a kapott jogkivonatokat. Ehhez meg kell írnunk némi segédkódot, amely a kódtár használatával meghívja a REST API-kat.
 
-## Hozzon létre egy `GraphAPICaller` osztályt, amely kezeli a REST API felé irányuló kéréseket.
+## <a name="create-a-graphapicaller-class-to-handle-our-requests-to-a-rest-api"></a>Hozzon létre egy `GraphAPICaller` osztályt, amely kezeli a REST API felé irányuló kéréseket.
 Elértük, hogy a rendszer az alkalmazás megnyitásakor betöltse a konfigurációt. Most ezzel kell tennünk valamit, ha megkaptuk a jogkivonatot. 
 
 * Hozzon létre egy `GraphAPICaller.h` fájlt.
@@ -613,18 +617,21 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 @end
 ```
 
-## A mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 Végül fordítsa le és futtassa az alkalmazást az Xcode-ban. Regisztráljon vagy jelentkezzen be az alkalmazásba, majd hozzon létre feladatokat a bejelentkezett felhasználónak. Jelentkezzen ki, majd jelentkezzen be egy másik felhasználóval, és hozzon létre feladatokat ennek a felhasználónak is.
 
 Figyelje meg, hogy a rendszer felhasználónként tárolja a feladatokat az API-ban, mivel az API kinyeri a felhasználó identitását a beérkező hozzáférési jogkivonatból.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most már továbbléphet az összetettebb B2C-témákra. Próbálkozzon meg a következőkkel:
 
 [Call a Node.js web API from a Node.js web app (Node.js webes API meghívása Node.js webalkalmazásokból)]()
 
 [Customize the UX for a B2C app (A felhasználói élmény testre szabása B2C-alkalmazásokhoz)]()
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

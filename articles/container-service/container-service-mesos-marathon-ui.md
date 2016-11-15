@@ -1,42 +1,46 @@
 ---
-title: Az Azure tárolószolgáltatás tárolóinak kezelése a webes felhasználói felületen | Microsoft Docs
-description: A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével.
+title: "Az Azure tárolószolgáltatás tárolóinak kezelése a webes felhasználói felületen | Microsoft Docs"
+description: "A cikk azt ismerteti, hogyan telepíthetők tárolók egy Azure tárolószolgáltatásba a Marathon webes felhasználói felület segítségével."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, tárolók, mikroszolgáltatások, Mesos, Azure
-
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+ms.assetid: d148ed1e-b582-4d51-944f-1ac7ae3c4fd6
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2016
-ms.author: nepeters
+ms.author: timlt
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ae2945b0025da3bc933a1e4a8f10f21fd35cb51c
+
 
 ---
-# Tárolókezelés a webes felhasználói felületen
+# <a name="container-management-through-the-web-ui"></a>Tárolókezelés a webes felhasználói felületen
 A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról.
 
 Számos népszerű alkalmazáshoz és szolgáltatáshoz elérhetők keretrendszerek, ez a dokumentum azonban azt ismerteti, hogyan lehet üzemelő tárolópéldányokat létrehozni, illetve skálázni őket a Marathon segítségével. Mielőtt végighalad a példákon, szüksége van egy az Azure tárolószolgáltatásban konfigurált DC/OS-fürtre. Ezen kívül távoli kapcsolatot kell tudnia létesíteni ezzel a fürttel. Ezekkel az elemekkel kapcsolatban a következő cikkekben talál további tájékoztatást:
 
-* [Azure  tárolószolgáltatás-fürt üzembe helyezése](container-service-deployment.md)
-* [Csatlakozás Azure tárolószolgáltatási fürthöz](container-service-connect.md)
+* [Az Azure Container Service-fürt üzembe helyezése](container-service-deployment.md)
+* [Csatlakozás Azure Container Service-fürthöz](container-service-connect.md)
 
-## A DC/OS felhasználói felületének megnyitása
+## <a name="explore-the-dcos-ui"></a>A DC/OS felhasználói felületének megnyitása
 Alakítson ki  Secure Shell-alagutat (SSH-alagutat), és nyissa meg böngészőben a http://localhost/ címet. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
 
 ![A DC/OS UI felhasználói felülete](media/dcos/dcos2.png)
 
-## A Marathon felhasználói felület megnyitása
+## <a name="explore-the-marathon-ui"></a>A Marathon felhasználói felület megnyitása
 A Marathon felhasználói felületet a http://localhost/Marathon URL-cím megnyitásával jelenítheti meg. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
 
 ![Marathon felhasználói felület](media/dcos/dcos3.png)
 
-## Docker-formázású tároló üzembe helyezése
+## <a name="deploy-a-dockerformatted-container"></a>Docker-formázású tároló üzembe helyezése
 Ha új tárolót kíván üzembe helyezni a Marathon segítségével, kattintson a **Create Application** (Alkalmazás létrehozása) gombra, és adja meg a következő információkat az űrlapon:
 
 | Mező | Érték |
@@ -77,7 +81,7 @@ Azt is láthatja, hogy a fürt melyik csomópontján fut a feladat.
 
 ![A DC/OS webes felhasználói felülete – a feladat fürtcsomópontja](media/dcos/dcos9.png)
 
-## A tárolók skálázása
+## <a name="scale-your-containers"></a>A tárolók skálázása
 A Marathon felhasználói felület segítségével módosítható a tárolók példányainak száma. Ehhez navigáljon a **Marathon** lapra, jelölje be a skálázni kívánt tárolót, és kattintson a **Scale** (Skálázás) gombra. Adja meg a **Scale Application** (Alkalmazás skálázása) párbeszédpanelen, hogy hány tárolópéldányt szeretne, majd válassza a **Scale Application** (Alkalmazás skálázása) gombot.
 
 ![Marathon felhasználói felület – Scale Application (Alkalmazás skálázása) párbeszédpanel](media/dcos/dcos10.png)
@@ -88,15 +92,18 @@ A skálázási művelet befejezése után több példányt fog látni ugyanabbó
 
 ![A DC/OS webes felhasználói felülete – csomópontok](media/dcos/dcos12.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [A DC/OS és a Marathon API használata](container-service-mesos-marathon-rest.md)
 
 A Mesost használó Azure Container Service részletes bemutatása
 
-> [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
+> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON203/player]
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

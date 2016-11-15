@@ -1,12 +1,12 @@
 ---
-title: Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft Docs
-description: Helyszíni alkalmazásait közzéteheti a felhőben az Azure AD-alkalmazásproxy használatával.
+title: "Alkalmazások közzététele az Azure AD-alkalmazásproxyval | Microsoft Docs"
+description: "Helyszíni alkalmazásait közzéteheti a felhőben az Azure AD-alkalmazásproxy használatával."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/19/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0ba28b2708045a216e1b9fdd7601010b2b554737
+
 
 ---
-# Alkalmazások közzététele az Azure AD-alkalmazásproxyval
+# <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azáltal, hogy közzétesz helyszíni alkalmazásokat, és ezek elérhetővé válnak az interneten keresztül. Ennél a pontnál, már [engedélyezte az alkalmazásproxyt a klasszikus Azure-portálon](active-directory-application-proxy-enable.md). Ez a cikk végigvezeti a helyi hálózaton futó alkalmazások közzétételének és távoli, hálózaton kívüli biztonságos hozzáférésük kiépítésének lépésein. Miután befejezte a cikkben leírtakat, készen áll az alkalmazás személyre szabott információkkal vagy biztonsági követelményekkel történő konfigurálására.
 
 > [!NOTE]
@@ -24,7 +28,7 @@ Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azá
 > 
 > 
 
-## Alkalmazás közzététele a varázsló használatával
+## <a name="publish-an-app-using-the-wizard"></a>Alkalmazás közzététele a varázsló használatával
 1. Jelentkezzen be rendszergazdaként a [klasszikus Azure portálra](https://manage.windowsazure.com/).
 2. Lépjen az Active Directory területre, majd válassza ki azt a címtárat, amelyen az alkalmazásproxyt engedélyezte.
    
@@ -52,7 +56,7 @@ Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azá
      ![Az alkalmazás tulajdonságai](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)  
 6. A varázsló bezárásához kattintson a képernyő alján található pipára. Az alkalmazás így már meg van adva az Azure AD-ben.
 
-## Felhasználók és csoportok hozzárendelése az alkalmazáshoz
+## <a name="assign-users-and-groups-to-the-application"></a>Felhasználók és csoportok hozzárendelése az alkalmazáshoz
 Ahhoz, hogy a felhasználók hozzáférjenek a közzétett alkalmazáshoz, egyénileg vagy csoportosan hozzá kell őket rendelni. (Ne feledkezzen meg a saját hozzáférésének hozzárendeléséről.) Ehhez arra van szükség, hogy minden felhasználó rendelkezzen Azure Basic vagy nagyobb licenccel. Licenceket egyénekhez vagy csoportokhoz is hozzárendelhet. További részletek: [Felhasználók hozzárendelése egy alkalmazáshoz](active-directory-applications-guiding-developers-assigning-users.md). 
 
 Az előhitelesítést igénylő alkalmazások esetében ezzel jogosultságot is kapnak az alkalmazás használatára. Az előhitelesítést nem igénylő alkalmazások esetében is hozzárendelhetők a felhasználók az alkalmazáshoz, amely így megjelenik az alkalmazáslistájukban (például: MyApps).
@@ -62,7 +66,7 @@ Az előhitelesítést igénylő alkalmazások esetében ezzel jogosultságot is 
     ![Felhasználók hozzárendelése az alkalmazásproxy első lépései oldalán – képernyőfelvétel](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
 2. Keressen rá a címtár adott csoportjára, vagy jelenítse meg az összes felhasználót. Kattintson a pipajelre a keresési eredmények megjelenítéséhez.
    
-    ![Csoportok vagy felhasználók keresése – képernyőfelvétel](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
+      ![Csoportok vagy felhasználók keresése – képernyőfelvétel](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
 3. Válasszon ki minden olyan felhasználót vagy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz, majd kattintson a **Hozzárendelés** gombra. E művelet végrehajtását meg kell erősítenie.
 
 > [!NOTE]
@@ -70,10 +74,10 @@ Az előhitelesítést igénylő alkalmazások esetében ezzel jogosultságot is 
 > 
 > 
 
-## A közzétett alkalmazás tesztelése
+## <a name="test-your-published-application"></a>A közzétett alkalmazás tesztelése
 Miután közzétette az alkalmazást, tesztelheti azt úgy, hogy a közzétett URL-t megnyitja. Győződjön meg róla, hogy az alkalmazás elérhető, megfelelően jelenik meg, és minden a vártak szerint működik. Ha problémája van, vagy hibaüzenetet kap, próbálja meg a [hibaelhárítási útmutató](active-directory-application-proxy-troubleshoot.md) használatát.
 
-## Az alkalmazás konfigurálása
+## <a name="configure-your-application"></a>Az alkalmazás konfigurálása
 A Konfigurálás oldalon módosíthatja a közzétett alkalmazásokat, illetve speciális beállításokat adhat meg. Ezen az oldalon a név módosításával vagy embléma feltöltésével testre is szabhatja az alkalmazást. Olyan hozzáférési szabályokat is kezelhet, mint például a előhitelesítési módszer vagy a többtényezős hitelesítés.
 
 ![Speciális konfiguráció](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
@@ -86,7 +90,7 @@ Egy alkalmazás megtekintéséhez és hozzáférhetőségének ellenőrzéséhez
 
 Egy alkalmazás törléséhez jelölje ki azt a listában, majd kattintson a **Törlés** gombra.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Alkalmazások közzététele saját tartománynév használatával](active-directory-application-proxy-custom-domains.md)
 * [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
 * [Feltételes hozzáférés engedélyezése](active-directory-application-proxy-conditional-access.md)
@@ -94,6 +98,9 @@ Egy alkalmazás törléséhez jelölje ki azt a listában, majd kattintson a **T
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

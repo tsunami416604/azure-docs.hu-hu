@@ -1,12 +1,12 @@
 ---
-title: Az Azure CDN szolgáltatás használata | Microsoft Docs
-description: Ez a témakör azt mutatja be, hogyan engedélyezhető a CDN (Content Delivery Network – tartalomkézbesítési hálózat) az Azure számára. Az oktatóanyag végigvezeti Önt egy új CDN-profil és -végpont létrehozásán.
+title: "Az Azure CDN szolgáltatás használata | Microsoft Docs"
+description: "Ez a témakör azt mutatja be, hogyan engedélyezhető a CDN (Content Delivery Network – tartalomkézbesítési hálózat) az Azure számára. Az oktatóanyag végigvezeti Önt egy új CDN-profil és -végpont létrehozásán."
 services: cdn
-documentationcenter: ''
+documentationcenter: 
 author: camsoper
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2016
 ms.author: casoper
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
+
 
 ---
-# Az Azure CDN szolgáltatás használata
+# <a name="using-azure-cdn"></a>Az Azure CDN szolgáltatás használata
 Ez a témakör egy új CDN-profil és -végpont létrehozásán keresztül vezeti Önt végig az Azure CDN aktiválásán.
 
 > [!IMPORTANT]
@@ -24,7 +28,7 @@ Ez a témakör egy új CDN-profil és -végpont létrehozásán keresztül vezet
 > 
 > 
 
-## Új CDN-profil létrehozása
+## <a name="create-a-new-cdn-profile"></a>Új CDN-profil létrehozása
 A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-végpontot tartalmaz.  Előfordulhat, hogy több profil használatával rendszerezni szeretné a CDN-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján.
 
 > [!NOTE]
@@ -36,7 +40,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## Új CDN-végpont létrehozása
+## <a name="create-a-new-cdn-endpoint"></a>Új CDN-végpont létrehozása
 **Új CDN-végpont létrehozása**
 
 1. Az [Azure portálon](https://portal.azure.com) lépjen a CDN-profilra.  Lehetséges, hogy a profilt az előző lépésben az irányítópulton rögzítette.  Amennyiben nem rögzítette, kattintson **Tallózás** gombra, majd a **CDN-profilok** elemre, végül kattintson arra a profilra, amelyet hozzá szeretne adni a végponthoz.
@@ -88,7 +92,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
     > 
     > 
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [Lekérdezési karakterláncot tartalmazó kérelmek gyorsítótárazási viselkedésének vezérlése](cdn-query-string.md)
 * [CDN-tartalom leképezése egyéni tartományra](cdn-map-content-to-custom-domain.md)
 * [Eszközök előzetes betöltése Azure CDN-végponton](cdn-preload-endpoint.md)
@@ -102,6 +106,6 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

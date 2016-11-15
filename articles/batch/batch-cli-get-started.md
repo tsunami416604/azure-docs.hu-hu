@@ -1,12 +1,12 @@
 ---
-title: Az Azure Batch CLI használatának első lépései | Microsoft Docs
-description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben
+title: "Az Azure Batch parancssori felület használatának első lépései | Microsoft Docs"
+description: "Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben"
 services: batch
-documentationcenter: ''
+documentationcenter: 
 author: mmacy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 09/30/2016
 ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
+
 
 ---
-# Az Azure Batch CLI használatának első lépései
+# <a name="get-started-with-azure-batch-cli"></a>Az Azure Batch CLI használatának első lépései
 A platformfüggetlen Azure parancssori felület (Azure CLI) segítségével kezelheti a Batch-fiókokat és -erőforrásokat, például a készleteket, a feladatokat és a tevékenységeket a Linux, Mac és Windows parancsrendszerhéjakban. Az Azure CLI-vel a Batch API-k, az Azure Portal és a Batch PowerShell-parancsmagok használatával végrehajtott műveletek közül sokat elvégezhet.
 
 Ez a cikk az Azure CLI 0.10.5-ös verzióján alapul.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * [Telepítse az Azure CLI-t](../xplat-cli-install.md)
 * [Csatlakoztassa az Azure CLI-t az Azure-előfizetéshez](../xplat-cli-connect.md)
 * Váltson **Resource Manager módra**: `azure config mode arm`
@@ -31,7 +35,7 @@ Ez a cikk az Azure CLI 0.10.5-ös verzióján alapul.
 > 
 > 
 
-## Segítség a parancsokhoz
+## <a name="command-help"></a>Segítség a parancsokhoz
 Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha csak a `-h` kapcsolót fűzi hozzá a parancshoz. Példa:
 
 * Ha segítséget szeretne kérni az `azure` parancshoz, írja be a következőt: `azure -h`
@@ -40,7 +44,7 @@ Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha csak a `-h
 
 Ha bizonytalan, a `-h` parancssori kapcsoló használatával az Azure CLI bármely parancsához segítséget kérhet.
 
-## Batch-fiók létrehozása
+## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 Használat
 
     azure batch account create [options] <name>
@@ -58,7 +62,7 @@ Létrehoz egy új Batch-fiókot a megadott paraméterekkel. Meg kell adnia legal
 > 
 > 
 
-### Társított tárfiók (autostorage)
+### <a name="linked-storage-account-autostorage"></a>Társított tárfiók (autostorage)
 Dönthet úgy (opcionális), hogy a Batch-fiók létrehozáskor egy **általános célú** Storage-fiókot társít hozzá. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója társított általános célú tárfiókban található Blob-tárolót használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
 
 Ha az új Batch-fiók létrehozáskor egy létező Azure Storage-fiókot szeretne hozzá társítani, adja meg a `--autostorage-account-id` kapcsolót. Ehhez a kapcsolóhoz szükség van a tárfiók teljes erőforrás-azonosítójára.
@@ -71,7 +75,7 @@ Ezután használja az **Url** értéket a `--autostorage-account-id` kapcsolóho
 
     azure batch account create --location "West US"  --resource-group "resgroup001" --autostorage-account-id "/subscriptions/8ffffff8-4444-4444-bfbf-8ffffff84444/resourceGroups/resgroup001/providers/Microsoft.Storage/storageAccounts/storageaccount001" "batchaccount001"
 
-## Batch-fiók törlése
+## <a name="delete-a-batch-account"></a>Batch-fiók törlése
 Használat
 
     azure batch account delete [options] <name>
@@ -82,10 +86,10 @@ Példa:
 
 Törli a megadott Batch-fiókot. A felugró kérdésre erősítse meg, hogy valóban el kívánja távolítani a fiókot (a fiókeltávolítás eltarthat egy ideig).
 
-## A fiók hozzáférési kulcsainak kezelése
+## <a name="manage-account-access-keys"></a>A fiók hozzáférési kulcsainak kezelése
 A Batch-fiókban található [erőforrások létrehozásához és módosításához](#create-and-modify-batch-resources) szüksége van egy hozzáférési kulcsra.
 
-### Hozzáférési kulcsok listája
+### <a name="list-access-keys"></a>Hozzáférési kulcsok listája
 Használat
 
     azure batch account keys list [options] <name>
@@ -96,7 +100,7 @@ Példa:
 
 Listázza a fiókkulcsokat a megadott Batch-fiókhoz.
 
-### Új hozzáférési kulcs létrehozása
+### <a name="generate-a-new-access-key"></a>Új hozzáférési kulcs létrehozása
 Használat
 
     azure batch account keys renew [options] --<primary|secondary> <name>
@@ -107,10 +111,10 @@ Példa:
 
 Újra létrehozza a megadott fiókkulcsokat az adott Batch-fiókhoz.
 
-## Batch-erőforrások létrehozása és módosítása
+## <a name="create-and-modify-batch-resources"></a>Batch-erőforrások létrehozása és módosítása
 Az Azure CLI-vel olyan Batch-erőforrásokat hozhat létre, olvashat, frissíthet vagy törölhet (CRUD), mint például a készletek, a számítási csomópontok, a feladatok és a tevékenységek. Ezekhez a CRUD-műveletekhez szükség van a Batch-fiók nevére, a hozzáférési kulcsra és a végpontra. Ezeket a `-a`, a `-k` és a `-u` kapcsolókkal adhatja meg vagy állíthatja be a [környezeti változókat](#credential-environment-variables), amelyeket a CLI automatikusan használ (ha ki vannak töltve).
 
-### A hitelesítő adatok környezeti változói
+### <a name="credential-environment-variables"></a>A hitelesítő adatok környezeti változói
 Beállíthatja az `AZURE_BATCH_ACCOUNT`, `AZURE_BATCH_ACCESS_KEY` és `AZURE_BATCH_ENDPOINT` környezeti változókat is ahelyett, hogy a parancssoron minden végrehajtandó parancshoz megadná a `-a`, `-k`és `-u` kapcsolókat. A Batch CLI ezeket a változókat használja (ha be vannak állítva), ezért kihagyhatja a `-a`, `-k` és `-u` kapcsolókat. A cikk többi része ezen környezeti változók használatát feltételezi.
 
 > [!TIP]
@@ -118,7 +122,7 @@ Beállíthatja az `AZURE_BATCH_ACCOUNT`, `AZURE_BATCH_ACCESS_KEY` és `AZURE_BAT
 > 
 > 
 
-### JSON-fájlok
+### <a name="json-files"></a>JSON-fájlok
 Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Példa:
 
 `azure batch pool create my_batch_pool.json`
@@ -132,7 +136,7 @@ Az erőforrás létrehozásához szükséges JSON-fájl megkereséséhez tekints
 > 
 > 
 
-## Készlet létrehozása
+## <a name="create-a-pool"></a>Készlet létrehozása
 Használat
 
     azure batch pool create [options] [json-file]
@@ -160,7 +164,7 @@ Készletet a következővel törölhet:
 > 
 > 
 
-## Feladat létrehozása
+## <a name="create-a-job"></a>Feladat létrehozása
 Használat
 
     azure batch job create [options] [json-file]
@@ -175,13 +179,13 @@ Feladatot a következővel törölhet:
 
     azure batch job delete [job-id]
 
-## Készletek, feladatok, tevékenységek és egyéb erőforrások listázása
+## <a name="list-pools-jobs-tasks-and-other-resources"></a>Készletek, feladatok, tevékenységek és egyéb erőforrások listázása
 Minden Batch erőforrástípus támogat egy `list` parancsot, amely lekérdezi a Batch-fiókját, és listázza az adott típusú erőforrásokat. Például listázhatja a fiókja készleteit és egy feladat tevékenységeit:
 
     azure batch pool list
     azure batch task list --job-id "job001"
 
-### Az erőforrások hatékony listázása
+### <a name="listing-resources-efficiently"></a>Az erőforrások hatékony listázása
 A lekérdezés gyorsítása érdekében megadhatja a **select**, **filter** és az **expand** záradékkapcsolókat a `list` műveletekhez. Ezekkel a kapcsolókkal korlátozhatja a Batch szolgáltatás által visszaadott anyagok mennyiségét. Mivel minden szűrés a kiszolgálói oldalon történik, csak az Önt érdeklő adatok lesznek továbbítva. Ezekkel a záradékokkal a listaműveletek végrehajtásakor sávszélességet (és ezáltal időt) takaríthat meg.
 
 Például ez csak olyan készleteket fog visszaadni, amelyeknek az azonosítói „renderTask” előtaggal kezdődnek:
@@ -196,7 +200,7 @@ A Batch CLI a Batch szolgáltatás által támogatott mindhárom záradékot tá
 
 A három záradékkal és a listázó lekérdezések végrehajtására való használatukkal kapcsolatos részletekért tekintse meg a [Query the Azure Batch service efficiently](batch-efficient-list-queries.md) (Az Azure Batch szolgáltatás hatékony lekérdezése) című cikket.
 
-## Alkalmazáscsomagok kezelése
+## <a name="application-package-management"></a>Alkalmazáscsomagok kezelése
 Az alkalmazáscsomagok egyszerű módot kínálnak az alkalmazások üzembe helyezésére a készletek számítási csomópontjain. Az Azure CLI-vel feltöltheti az alkalmazáscsomagokat, kezelheti a csomagverziókat és törölheti a csomagokat.
 
 Új alkalmazás létrehozása és csomagverzió hozzáadása:
@@ -217,7 +221,7 @@ A csomag **aktiválása**:
 
     azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
-### Alkalmazáscsomag üzembe helyezése
+### <a name="deploy-an-application-package"></a>Alkalmazáscsomag üzembe helyezése
 Új készlet létrehozásakor megadhat egy vagy több alkalmazáscsomagot az üzembe helyezéshez. Ha a készlet létrehozásakor megad egy csomagot, az a csomópont készlethez való csatlakoztatásakor minden csomóponton üzembe lesz helyezve. A csomagok akkor is üzembe lesznek helyezve, ha a csomópontot újraindítják vagy alaphelyzetbe állítják.
 
 Adja meg az `--app-package-ref` kapcsolót, ha készletet hoz létre egy alkalmazáscsomag üzembe helyezéséhez a készlet csomópontjain, amikor azok csatlakoznak a készlethez. Az `--app-package-ref` kapcsoló elfogadja a számítási csomópontokon üzembe helyezni kívánt alkalmazások azonosítóinak pontosvesszővel elválasztott listáját.
@@ -233,7 +237,7 @@ Az alkalmazáscsomagok használatával kapcsolatban további információkat az 
 > 
 > 
 
-### Készlet alkalmazáscsomagjainak frissítése
+### <a name="update-a-pools-application-packages"></a>Készlet alkalmazáscsomagjainak frissítése
 Egy meglévő készlethez rendelt alkalmazások frissítéséhez adja ki az `azure batch pool set` parancsot az `--app-package-ref` kulccsal:
 
     azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
@@ -249,7 +253,7 @@ Ha egy már meglévő készlet számítási csomópontjain szeretné üzembe hel
 
 Ne feledje, hogy még az üzembe helyezése előtt konfigurálnia kell az alkalmazást az alapértelmezett verziójával (`azure batch application set [options] --default-version <version-id>`).
 
-## Hibaelhárítási tippek
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához használható forrásokat találja. Ez az információ nem feltétlenül fogja megoldani az összes problémát, de segíthet leszűkíteni a hibák okát, és javasolhat néhány olyan forrást, amely segíti a hibák megoldását.
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
@@ -258,7 +262,7 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 * A [Batch fórum az MSDN-en][batch_forum] egy nagyszerű forrás, amelyet a Batch csapatának tagjai folyamatosan figyelnek. Mindenképp ott tegye fel a kérdéseit, ha problémákba ütközne, vagy segítségre lenne szüksége egy adott művelethez.
 * Az Azure CLI jelenleg nem támogatja az összes Batch-erőforrásműveletet. Például jelenleg nem határozhatja meg egy készletnél az alkalmazáscsomag *verzióját*, csak a csomagazonosítót. Ilyen esetekben előfordulhat, hogy a parancssori kapcsolók használata helyett meg kell adnia egy `--json-file` kapcsolót a parancshoz. Ügyeljen rá, hogy a CLI legújabb verzióját használja a jövőbeli fejlesztések használatba vétele érdekében.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A szolgáltatás Batch számítási csomópontokon futtatott alkalmazások kezelésére és üzembe helyezésére való használatával kapcsolatban lásd: [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazástelepítés Azure Batch-alkalmazáscsomagokkal).
 * További információ az elemek számának csökkentéséről és a Batch lekérdezésiről visszaadott információk típusáról: [Query the Batch service efficiently](batch-efficient-list-queries.md) (A Batch szolgáltatás hatékony lekérdezése).
 
@@ -268,6 +272,7 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 
 
-<!--HONumber=Oct16_HO1-->
+
+<!--HONumber=Nov16_HO2-->
 
 

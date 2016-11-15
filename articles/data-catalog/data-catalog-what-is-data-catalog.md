@@ -1,13 +1,13 @@
 ---
 title: Mi az az Azure Data Catalog? | Microsoft Docs
-description: Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, valamint a problémákat, amelyek áthidalására a szolgáltatást tervezték. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználónak – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások regisztrálását, felderítését, megértését és felhasználását.
+description: "Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, valamint a problémákat, amelyek áthidalására a szolgáltatást tervezték. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználónak – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások regisztrálását, felderítését, megértését és felhasználását."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: cc733907-17ec-4153-9f0c-5b3754b2db19
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: get-started-article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 09/21/2016
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 97482bc365395e3d9218688bf38ded4a54bb556a
+
 
 ---
-# Mi az az Azure Data Catalog?
+# <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
 Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a felhasználóknak, hogy számukra szükséges adatforrásokat fedezzenek fel, és hogy a talált adatforrásokat értelmezzék, miközben a szervezeteket is segíti minél többet kihozni a meglévő befektetéseikből. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználó számára – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások felderítését, értelmezését és felhasználását. A Data Catalog egy közösségi metaadat- és megjegyzésmegosztási modellt is tartalmaz, amelynek segítségével minden felhasználó közzéteheti a saját ismereteit, és egy adatközösség hozható létre.
 
-## Az adatok felfedezésének kihívásai az adatfelhasználók számára
+## <a name="discovery-challenges-for-data-consumers"></a>Az adatok felfedezésének kihívásai az adatfelhasználók számára
 A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív tudáson alapú folyamat. Ez számos kihívást támaszt a vállalatok számára, akik az információs adategységeiket a lehető leghatékonyabban szeretnék kihasználni.
 
 * A felhasználók nem tudnak az adatforrások létezéséről, amíg egy másik folyamat során nem kerülnek velük kapcsolatba. Nincs egy központi nyilvántartás az adatforrásokról.
@@ -29,7 +33,7 @@ A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív 
 * Ha egy felhasználónak kérdései vannak egy adategységgel kapcsolatban, offline módon kell felvennie a kapcsolatot az adatokért felelős szakértővel vagy csapattal. Nincs explicit kapcsolat az adatok és a használatukra vonatkozó szakértői meglátásokkal rendelkező személyek között.
 * Hacsak egy felhasználó nincs tisztában az adatforráshoz való hozzáférés kérelmezésének menetével, az adatforrás és a hozzá tartozó dokumentáció felfedezésével még mindig nem fér hozzá az adatokhoz, amelyekre szüksége van.
 
-## Az adatok felfedezésének kihívásai az adatalkotók számára
+## <a name="discovery-challenges-for-data-producers"></a>Az adatok felfedezésének kihívásai az adatalkotók számára
 Miközben az adatfelhasználók mindezekkel a kihívásokkal néznek szembe, az információs adategységek létrehozásáért és fenntartásáért felelős felhasználóknak szintén megvannak a saját kihívásaik.
 
 * Az adatforrások leíró metaadatokkal való ellátása gyakran hiábavaló, mivel az ügyfélalkalmazások általában nem veszik figyelembe az adatforrásokban tárolt leírásokat.
@@ -40,7 +44,7 @@ Az adatforrásokhoz tartozó dokumentációk létrehozása és fenntartása öss
 
 Ezek a kihívások együttesen jelentős korlátokat állítanak a vállalatok elé, akik szorgalmazni kívánják a vállalati adatok felhasználását és értelmezését.
 
-## Az Azure Data Catalog segíthet
+## <a name="azure-data-catalog-can-help"></a>Az Azure Data Catalog segíthet
 A Data Catalog szolgáltatást arra tervezték, hogy megoldja ezeket a problémákat, és lehetővé tegye a vállalatok számára, hogy a lehető leghatékonyabban használják ki a meglévő információs eszközeiket. A Data Catalog segít az adatforrásokat könnyen felfedezhetővé és értelmezhetővé tenni azon felhasználók számára, akiknek szükségük van a bennük foglalt adatokra.
 
 A Data Catalog egy felhőalapú szolgáltatást biztosít, amelybe az adatforrásokat regisztrálni lehet. Az adatok az eredeti helyükön maradnak, de a metaadatok másolatai bekerülnek a Data Catalog katalógusába, az adatforrások helyére mutató hivatkozásokkal együtt. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetők, majd értelmezhetők.
@@ -51,12 +55,12 @@ Az adatforrások regisztrálásának elsődleges célja, hogy a források felfed
 
 ![Az Azure Data Catalog képességei](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
-## Bevezetés a Data Catalog használatába
+## <a name="get-started-with-data-catalog"></a>Bevezetés a Data Catalog használatába
 A Data Catalog használatának azonnali megkezdéséhez látogasson el a [www.azuredatacatalog.com](https://www.azuredatacatalog.com) webhelyre.
 
 Az első lépésekről szóló útmutatót [itt](data-catalog-get-started.md) érheti el.
 
-## További információ a Data Catalog szolgáltatásról
+## <a name="learn-more-about-data-catalog"></a>További információ a Data Catalog szolgáltatásról
 A Data Catalog képességeinek bővebb megismeréséhez lásd a következő témaköröket:
 
 * [Adatforrások regisztrálása](data-catalog-how-to-register.md)
@@ -69,6 +73,9 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 * [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 * [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

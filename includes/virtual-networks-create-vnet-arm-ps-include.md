@@ -1,101 +1,101 @@
-## How to create a VNet using PowerShell
-To create a VNet by using PowerShell, follow the steps below.
+## <a name="how-to-create-a-vnet-using-powershell"></a>VNet létrehozása a PowerShell használatával
+Az alábbi lépésekkel hozhat létre egy VNetet a PowerShell használatával.
 
-1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
-2. If necessary, create a new resource group, as shown below. For our scenario, create a resource group named *TestRG*. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md).
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+2. Szükség esetén hozzon létre egy új erőforráscsoportot a lent látható módon. A forgatókönyvünk esetében hozzon létre egy új erőforráscsoportot *TestRG* néven. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
    
         New-AzureRmResourceGroup -Name TestRG -Location centralus
    
-    Expected output:
+    Várt kimenet:
    
         ResourceGroupName : TestRG
         Location          : centralus
         ProvisioningState : Succeeded
         Tags              :
-        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG   
-3. Create a new VNet named *TestVNet*, as shown below.
+        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG    
+3. Hozzon létre egy új *TestBNet* nevű VNetet a lent látható módon.
    
         New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
-            -AddressPrefix 192.168.0.0/16 -Location centralus   
+            -AddressPrefix 192.168.0.0/16 -Location centralus    
    
-    Expected output:
+    Várt kimenet:
    
-        Name                : TestVNet
-        ResourceGroupName   : TestRG
-        Location            : centralus
-        Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-        Etag                : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        ProvisioningState       : Succeeded
-        Tags                    : 
-        AddressSpace            : {
+        Name                  : TestVNet
+        ResourceGroupName     : TestRG
+        Location              : centralus
+        Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        Etag                   : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ProvisioningState          : Succeeded
+        Tags                       : 
+        AddressSpace               : {
                                    "AddressPrefixes": [
                                      "192.168.0.0/16"
                                    ]
-                                 }
-        DhcpOptions             : {}
-        Subnets                 : []
-        VirtualNetworkPeerings  : []
-4. Store the virtual network object in a variable, as shown below.
+                                  }
+        DhcpOptions                : {}
+        Subnets                    : []
+        VirtualNetworkPeerings     : []
+4. A virtuális hálózat objektumot tárolja az alább látható módon egy változóban.
    
         $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
    
    > [!TIP]
-   > You can combine steps 3 and 4 by running **$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus**.
+   > A 3. és 4. lépést kombinálhatja a **$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** futtatásával.
    > 
    > 
-5. Add a subnet to the new VNet variable, as shown below.
+5. Adjon hozzá egy alhálózatot az új VNet változóhoz az alább látható módon.
    
         Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
             -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
    
-    Expected output:
+    Várt kimenet:
    
-        Name                : TestVNet
-        ResourceGroupName   : TestRG
-        Location            : centralus
-        Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-        Etag                : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        ProvisioningState   : Succeeded
-        Tags                :
-        AddressSpace        : {
+        Name                  : TestVNet
+        ResourceGroupName     : TestRG
+        Location              : centralus
+        Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        Etag                  : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ProvisioningState     : Succeeded
+        Tags                  :
+        AddressSpace          : {
                                   "AddressPrefixes": [
                                     "192.168.0.0/16"
                                   ]
                                 }
-        DhcpOptions         : {}
+        DhcpOptions           : {}
         Subnets             : [
                                   {
                                     "Name": "FrontEnd",
                                     "AddressPrefix": "192.168.1.0/24"
                                   }
                                 ]
-        VirtualNetworkPeerings  : []
-6. Repeat step 5 above for each subnet you want to create. The command below creates the *BackEnd* subnet for our scenario.
+        VirtualNetworkPeerings     : []
+6. A fenti 5. lépést ismételje meg minden létrehozni kívánt alhálózat esetében. Az alábbi parancs létrehozza a *BackEnd* alhálózatot a forgatókönyvünkhöz.
    
         Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
             -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
-7. Although you create subnets, they currently only exist in the local variable used to retrieve the VNet you create in step 4 above. To save the changes to Azure, run the **Set-AzureRmVirtualNetwork** cmdlet, as shown below.
+7. Ugyan létrehoz alhálózatokat, azok jelenleg csak a VNet lekéréséhez a 4. lépésben használt helyi változóban léteznek. A módosítások Azure-ban való mentéséhez futtassa az alább látható módon a **Set-AzureRmVirtualNetwork** parancsmagot.
    
-        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet 
+        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet    
    
-    Expected output:
+    Várt kimenet:
    
-        Name                : TestVNet
-        ResourceGroupName   : TestRG
-        Location            : centralus
-        Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-        Etag                : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        ProvisioningState   : Succeeded
-        Tags                :
-        AddressSpace        : {
+        Name                  : TestVNet
+        ResourceGroupName     : TestRG
+        Location              : centralus
+        Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        Etag                  : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ProvisioningState     : Succeeded
+        Tags                  :
+        AddressSpace          : {
                                   "AddressPrefixes": [
                                     "192.168.0.0/16"
                                   ]
                                 }
-        DhcpOptions         : {
+        DhcpOptions           : {
                                   "DnsServers": []
                                 }
-        Subnets             : [
+        Subnets               : [
                                   {
                                     "Name": "FrontEnd",
                                     "Etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
@@ -115,6 +115,8 @@ To create a VNet by using PowerShell, follow the steps below.
                                 ]
         VirtualNetworkPeerings : []
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

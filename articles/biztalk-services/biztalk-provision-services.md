@@ -1,265 +1,269 @@
 ---
-title: Create Azure BizTalk Services in the Azure portal | Microsoft Docs
-description: Learn how to provision or create Azure BizTalk Services in the Azure portal; MABS, WABS
+title: "Azure BizTalk Services létrehozása az Azure Portalon | Microsoft Docs"
+description: "Megtudhatja, hogyan építheti ki vagy hozhatja létre az Azure BizTalk Servicest az Azure Portalon: MABS, WABS"
 services: biztalk-services
-documentationcenter: ''
+documentationcenter: 
 author: MandiOhlinger
-manager: erikre
-editor: ''
-
+manager: anneta
+editor: 
+ms.assetid: 3ad18876-a649-40d6-9aa0-1509c1d62c43
 ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2016
+ms.date: 11/07/2016
 ms.author: mandia
+translationtype: Human Translation
+ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
+ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
+
 
 ---
-# Create BizTalk Services using the Azure portal
-Create Azure BizTalk Services in the Azure portal.
+# <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
+Azure BizTalk Services létrehozása az Azure Portalon.
 
 > [!TIP]
-> To sign in to the Azure portal, you need an Azure account and Azure subscription. If you don't have an account, you can create a free trial account within a few minutes. See [Azure Free Trial](http://go.microsoft.com/fwlink/p/?LinkID=239738).
+> Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
 > 
 > 
 
-## Create a BizTalk Service
-Depending on the Edition you choose, not all BizTalk Service settings may be available.
+## <a name="create-a-biztalk-service"></a>BizTalk-szolgáltatás létrehozása
+A kiválasztott kiadástól függően lehet, hogy nem mindegyik BizTalk-szolgáltatásbeállítás érhető el.
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. In the bottom navigation pane, select **NEW**:  
-   ![Select the New button][NEWButton]
-3. Select **APP SERVICES** > **BIZTALK SERVICE** > **CUSTOM CREATE**:  
-   ![Select BizTalk Service and select Custom Create][NewBizTalkService]
-4. Enter the BizTalk Service settings:
+1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. A navigációs ablak alján kattintson a **NEW** (ÚJ) elemre:  
+   ![Válassza a New (Új) gombot][NEWButton]
+3. Válassza az **APP SERVICES** (ALKALMAZÁSSZOLGÁLTATÁSOK) > **BIZTALK SERVICE** > **CUSTOM CREATE** (EGYÉNI LÉTREHOZÁS) elemet:  
+   ![Válassza a BizTalk Service elemet, majd a Custom Create (Egyéni létrehozás) elemet][NewBizTalkService]
+4. Adja meg a BizTalk-szolgáltatásbeállításokat:
    
     <table border="1">
     <tr>
-    <td><strong>BizTalk service name</strong></td>
-    <td>You can enter any name but be specific. Some examples include:<br/><br/>
+    <td><strong>BizTalk-szolgáltatás neve</strong></td>
+    <td>Bármilyen nevet megadhat, de használjon konkrét nevet. Néhány példa:<br/><br/>
     <em>mycompany</em>.biztalk.windows.net<br/>
     <em>mycompanymyapplication</em>.biztalk.windows.net<br/>
-    <em>myapplication</em>.biztalk.windows.net<br/><br/>".biztalk.windows.net" is automatically added to the name you enter. This creates a URL that is used to access your BizTalk Service, like <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>.
+    <em>myapplication</em>.biztalk.windows.net<br/><br/>A „.biztalk.windows.net” automatikusan hozzá lesz adva megadott névhez. Ez olyan URL-t hoz létre, amellyel elérheti a BizTalk-szolgáltatást (például <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>).
     </td>
     </tr>
     <tr>
-    <td><strong>Edition</strong></td>
-    <td>If you are in the testing/development phase, choose <strong>Developer</strong>. If you are in the production phase, use the <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk Services: Editions Chart</a> to determine if <strong>Premium</strong>, <strong>Standard</strong>, or <strong>Basic</strong> is the correct choice for your business scenario.
+    <td><strong>Kiadás</strong></td>
+    <td>Ha a tesztelési/fejlesztési fázisban van, válassza a <strong>Developer</strong> elemet. Ha a termelési fázisban van, a <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk Services: Kiadások diagramja</a> szakasz alapján határozza meg, hogy a <strong>Premium</strong>, <strong>Standard</strong> vagy <strong>Alapszintű</strong> a legmegfelelőbb választás az üzleti forgatókönyvéhez.
     </td>
     </tr>
     <tr>
-    <td><strong>Region</strong></td>
-    <td>Select the geographic region to host your BizTalk Service.</td>
+    <td><strong>Régió</strong></td>
+    <td>Válassza ki a BizTalk-szolgáltatás földrajzi helyét.</td>
     </tr>
     <tr>
-    <td><strong>Domain URL</strong></td>
-    <td><strong>Optional</strong>. By default, the domain URL is <em>YourBizTalkServiceName</em>.biztalk.windows.net. A custom domain can also be entered. For example, if your domain is <em>contoso</em>, you can enter: <br/><br/>
-    <em>MyCompany</em>.contoso.com<br/>
-    <em>MyCompanyMyApplication</em>.contoso.com<br/>
-    <em>MyApplication</em>.contoso.com<br/>
-    <em>YourBizTalkServiceName</em>.contoso.com<br/>
+    <td><strong>Tartomány URL-je</strong></td>
+    <td><strong>Választható</strong>. Alapértelmezés szerint a tartomány URL-je a <em>SajázBizTalkSzolgáltatásNeve</em>.biztalk.windows.net. Egyéni tartomány is beírható. Ha a tartománya például a <em>contoso</em>, beírhatja a következőt: <br/><br/>
+    <em>Sajátvállalat</em>.contoso.com<br/>
+    <em>SajátVállalatSajátAlkalmazás</em>.contoso.com<br/>
+    <em>SajátAlkalmazás</em>.contoso.com<br/>
+    <em>BizTalkSzolgáltatásNeve</em>.contoso.com<br/>
     </td>
     </tr>
     </table>
-   Select the NEXT arrow.
-5. Enter the Storage and Database Settings:
+   Válassza a TOVÁBB nyilat.
+5. Adja meg a tároló és az adatbázis beállításait:
    
     <table border="1">
     <tr>
-    <td><strong>Monitoring/Archiving storage account</strong></td>
-    <td>Select an existing storage account or create a new storage account. <br/><br/>If you create a new Storage account, enter the <strong>Storage Account Name</strong>.</td>
+    <td><strong>Megfigyelő/archiváló tárfiók</strong></td>
+    <td>Válasszon meglévő Storage-fiókot, vagy hozzon létre egy új Storage-fiókot. <br/><br/>Ha új Storage-fiókot hoz létre, adja meg a <strong>Storage-fiók nevét</strong>.</td>
     </tr>
     <tr>
-    <td><strong>Tracking database</strong></td>
-    <td>If you use an existing Azure SQL Database, it cannot be used by another BizTalk Service. You need the login name and password entered when that Azure SQL Database Server was created.<br/><br/><strong>TIP</strong> Create the Tracking database and Monitoring/Archiving storage account in the same region as the BizTalk Service.</td>
+    <td><strong>Nyomkövető adatbázis</strong></td>
+    <td>Ha meglévő Azure SQL Database-adatbázist használ, azt nem használhatja másik BizTalk-szolgáltatás. Meg kell adnia az Azure SQL Database Server létrehozásakor megadott bejelentkezési nevet és jelszót.<br/><br/><strong>TIPP</strong> A nyomkövető adatbázist és a megfigyelő/archiváló tárfiókot ugyanabban a régióban hozza létre, mint a BizTalk-szolgáltatást.</td>
     </tr>
     </table>
-   Select the NEXT arrow.
-6. Enter the Database settings:
+   Válassza a TOVÁBB nyilat.
+6. Adja meg az adatbázis beállításait:
    
     <table border="1">
     <tr>
-    <td><strong>Name</strong></td>
-    <td>Available when <strong>Create a new SQL Database instance</strong> is selected in the previous screen.
+    <td><strong>Name (Név)</strong></td>
+    <td>Akkor érhető el, ha az előző képernyőn az <strong>Új SQL Database-példány létrehozását</strong> választotta.
     <br/><br/>
-    Enter a SQL Database name to be used by your BizTalk Service.</td>
+    Írja be a BizTalk-szolgáltatás által használandó SQL Database-adatbázis nevét.</td>
     </tr>
     <tr>
-    <td><strong>Server</strong></td>
-    <td>Available when <strong>Create a new SQL Database instance</strong> is selected in the previous screen.
+    <td><strong>Kiszolgáló</strong></td>
+    <td>Akkor érhető el, ha az előző képernyőn az <strong>Új SQL Database-példány létrehozását</strong> választotta.
     <br/><br/>
-    Select an existing SQL Database Server or create a new SQL Database server.</td>
+    Válasszon egy meglévő SQL Database-kiszolgálót vagy hozzon létre új SQL Database-kiszolgálót.</td>
     </tr>
     <tr>
-    <td><strong>Server login name</strong></td>
-    <td>Enter the login user name.</td>
+    <td><strong>Kiszolgáló bejelentkezési neve</strong></td>
+    <td>Adja meg a bejelentkezési felhasználónevet.</td>
     </tr>
     <tr>
-    <td><strong>Server login password</strong></td>
-    <td>Enter the login password.</td>
+    <td><strong>Kiszolgáló bejelentkezési jelszava</strong></td>
+    <td>Adja meg a bejelentkezési jelszót.</td>
     </tr>
     <tr>
-    <td><strong>Region</strong></td>
-    <td>Available when <strong>Create a new SQL Database instance</strong> is selected. Select the geographic region to host your SQL Database.</td>
+    <td><strong>Régió</strong></td>
+    <td>Akkor érhető el, ha az <strong>Új SQL Database-példány létrehozását</strong> választotta. Válassza ki az SQL Database földrajzi helyét.</td>
     </tr>
     </table>
 
-Select the check mark to complete the wizard. The progress icon appears:  
-![Progress icon displays when complete][ProgressComplete]
+Kattintson a pipára a varázsló befejezéséhez. Megjelenik az állapotjelző ikon:  
+![Az állapotjelző ikon megjelenik, ha befejeződött][ProgressComplete]
 
-When complete, the Azure BizTalk Service is created and ready for your applications. The default settings are sufficient. If you want to change the default settings, select **BIZTALK SERVICES** in the left navigation pane, and then select your BizTalk Service. Additional settings are displayed in the [Dashboard, Monitor, and Scale tabs](biztalk-dashboard-monitor-scale-tabs.md) at the top.
+Amikor elkészült, létrejön az Azure BizTalk-szolgáltatás, és készen áll az alkalmazásokhoz. Az alapértelmezett beállítások elegendőek. Ha módosítani kívánja az alapértelmezett beállításokat, válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatását. A fenti [Irányítópult, Figyelő és Méretezés lapokon](biztalk-dashboard-monitor-scale-tabs.md) további beállítások jelennek meg.
 
-Depending on the state of the BizTalk Service, there are some operations that cannot be completed. For a list of these operations, go to [BizTalk Services State Chart](biztalk-service-state-chart.md).
+A BizTalk-szolgáltatás állapotától függően néhány művelet nem végezhető el. Ezen műveletek listájáért tekintse meg a [BizTalk-szolgáltatások állapota diagramot](biztalk-service-state-chart.md).
 
-## Post-provisioning steps
-* [Install the certificate on a local computer](#InstallCert)
-* [Add a production-ready certificate](#AddCert)
-* [Get the Access Control namespace](#ACS)
+## <a name="postprovisioning-steps"></a>Kiépítés utáni lépések
+* [A tanúsítvány telepítése helyi számítógépre](#InstallCert)
+* [Termelésre kész tanúsítvány hozzáadása](#AddCert)
+* [A hozzáférés-vezérlési névtér beszerzése](#ACS)
 
-#### <a name="InstallCert"></a>Install the certificate on a local computer
-As part of BizTalk Service provisioning, a self-signed certificate is created and associated with your BizTalk Service subscription. You must download this certificate and install it on computers from where you either deploy BizTalk Service applications or send messages to a BizTalk Service endpoint.
+#### <a name="a-nameinstallcertainstall-the-certificate-on-a-local-computer"></a><a name="InstallCert"></a>A tanúsítvány telepítése helyi számítógépre
+A BizTalk-szolgáltatás kiépítésének részeként létrejön egy önaláírt tanúsítvány, amely társítva van a BizTalk-szolgáltatás előfizetésével. Le kell töltenie és telepítenie kell ezt a tanúsítványt azokra a számítógépekre, amelyekről üzembe helyezi a BizTalk-szolgáltatás alkalmazásait, vagy amelyekről üzeneteket küld a BizTalk-szolgáltatás végpontjaira.
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Select **BIZTALK SERVICES** in the left navigation pane, and then select your BizTalk Service subscription.
-3. Select the **Dashboard** tab.
-4. Select **Download SSL Certificate**:  
-   ![Modify SSL Certificate][QuickGlance]
-5. Double-click the certificate and run through the wizard to install the certificate. Make sure you install the certificate under the **Trusted Root Certificate Authorities** store.
+1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. Válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatás előfizetését.
+3. Kattintson az **Irányítópult** fülre.
+4. Válassza az **SSL-tanúsítvány letöltése** elemet:  
+   ![SSL-tanúsítvány módosítása][QuickGlance]
+5. Kattintson duplán a tanúsítványra, és haladjon végig a varázslón a tanúsítvány telepítéséhez. Győződjön meg arról, hogy a **Megbízható gyökérhitelesítő hatóságok** tárolóba telepítette a tanúsítványt.
 
-#### <a name="AddCert"></a>Add a production-ready certificate
-The self-signed certificate that is automatically created when creating BizTalk Services is intended for use in development environments only. For production scenarios, replace it with a production-ready certificate.
+#### <a name="a-nameaddcertaadd-a-productionready-certificate"></a><a name="AddCert"></a>Termelésre kész tanúsítvány hozzáadása
+A BizTalk-szolgáltatások létrehozásakor automatikusan létrejött önaláírt tanúsítvány csak fejlesztési környezetekben használható. A termelési forgatókönyvekhez cserélje le egy termelésre kész tanúsítványra.
 
-1. On the **Dashboard** tab, select **Update SSL Certificate**.
-2. Browse to your private SSL certificate (*CertificateName*.pfx) that includes your BizTalk Service name, enter the password, and then click the check mark.
+1. Az **Irányítópult** lapon válassza az **SSL-tanúsítvány frissítése** lehetőséget.
+2. Keresse meg a BizTalk-szolgáltatás nevét tartalmazó személyes SSL-tanúsítványt (*CertificateName*.pfx), írja be a jelszót, majd kattintson a pipára.
 
-#### <a name="ACS"></a>Get the Access Control namespace
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. Select **BIZTALK SERVICES** in the left navigation pane, and then select your BizTalk Service.
-3. In the task bar, select **Connection Information**:  
-   ![Select Connection Information][ACSConnectInfo]
-4. Copy the Access Control values.
+#### <a name="a-nameacsaget-the-access-control-namespace"></a><a name="ACS"></a>A hozzáférés-vezérlési névtér beszerzése
+1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
+2. Válassza a bal oldali navigációs panelen a **BIZTALK SERVICES** elemet, majd válassza ki a BizTalk-szolgáltatást.
+3. A tálcán válassza a **Connection Information** (Kapcsolódási adatok) lehetőséget:  
+   ![Kattintson a Connection Information (Kapcsolatadatok) elemre.][ACSConnectInfo]
+4. Másolja a hozzáférés-vezérlési értékeket.
 
-When you deploy a BizTalk Service project from Visual Studio, you enter this Access Control namespace. The Access Control namespace is automatically created for your BizTalk Service.
+Amikor BizTalk Service-projektet helyez üzembe a Visual Studióból, ezt a hozzáférés-vezérlési névteret írja be. A hozzáférés-vezérlési névtér automatikusan létrejön a BizTalk Services-szolgáltatáshoz.
 
-The Access Control values can be used with any application. When Azure BizTalk Services is created, this Access Control namespace controls the authentication with your BizTalk Service deployment. If you want to change the subscription or manage the namespace, select **ACTIVE DIRECTORY** in the left navigation pane and then select your namespace. The task bar lists your options.
+A hozzáférés-vezérlési értékeket bármilyen alkalmazással használhatja. Az Azure BizTalk-szolgáltatások létrehozásakor ez a hozzáférés-vezérlési névtér vezérli a BizTalk Services-szolgáltatás üzembe helyezésekor végzett hitelesítést. Az előfizetés módosításához vagy a névtér felügyeletéhez válassza a bal oldali navigációs panelen az **ACTIVE DIRECTORY** elemet, majd válassza ki a névteret. A tálca felsorolja a lehetőségeket.
 
-Clicking **Manage** opens the Access Control Management Portal. In the Access Control Management Portal, the BizTalk Service uses **Service identities**:  
-![ACS Service Identities in the Access Control Management Portal][ACSServiceIdentities]
+A **Manage** (Felügyelet) gombra kattintva megnyitja a hozzáférés-vezérlési felügyeleti portált. A hozzáférés-vezérlési felügyeleti portálon a BizTalk Services-szolgáltatás **szolgáltatásidentitásokat** használ:  
+![ACS-szolgáltatásidentitások a hozzáférés-vezérlési felügyeleti portálon][ACSServiceIdentities]
 
-The Access Control service identity is a set of credentials that allow applications or clients to authenticate directly with Access Control and receive a token.
+A hozzáférés-vezérlési szolgáltatásidentitás olyan hitelesítő adatok készlete, amelyekkel az alkalmazások vagy ügyfelek közvetlenül hitelesíthetnek a hozzáférés-vezérléssel, és tokent kaphatnak.
 
 > [!IMPORTANT]
-> The BizTalk Service uses **Owner** for the default service identity and the **Password** value. If you use the Symmetric Key value instead of the Password value, the following error may occur.<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
+> A BizTalk Services-szolgáltatás a **Tulajdonost** használja az alapértelmezett szolgáltatásidentitáshoz és a **Jelszó** értékéhez. Ha a Szimmetrikus kulcs értéket használja a Jelszó érték helyett, a következő hiba fordulhat elő.<br/><br/>*Nem lehet kapcsolódni a hozzáférés-vezérlési felügyeleti szolgáltatásfiókhoz a megadott hitelesítő adatokkal*
 > 
 > 
 
-[Managing Your ACS Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx) lists some guidelines and recommendations.
+[Az ACS-névtér felügyeletét](https://msdn.microsoft.com/library/azure/hh674478.aspx) ismertető dokumentum tartalmaz néhány útmutatást és javaslatot.
 
-## Requirements explained
-These requirements do not apply to the Free Edition.
+## <a name="requirements-explained"></a>A követelmények részletei
+Ezek a követelmények nem érvényesek az ingyenes kiadásra.
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>What you need</strong></td>
-        <td><strong>Why you need it</strong></td>
+        <td><strong>Mi szükséges</strong></td>
+        <td><strong>Miért szükséges</strong></td>
 </tr>
 <tr>
-<td>Azure subscription</td>
-<td>The subscription determines who can sign in to the Azure portal. The Account holder creates the subscription at <a HREF="https://account.windowsazure.com/Subscriptions"> Azure Subscriptions</a>.
+<td>Azure-előfizetés</td>
+<td>Az előfizetés határozza meg, hogy ki jelentkezhet be az Azure Portalra. A fióktulajdonos hozza létre az előfizetést az <a HREF="https://account.windowsazure.com/Subscriptions"> Azure-előfizetésekben</a>.
 <br/><br/>
-The Azure account can have multiple subscriptions and can be managed by anyone who is permitted. For example, your Azure account holder creates a subscription named <em>BizTalkServiceSubscription</em> and gives the BizTalk Administrators within your company (for example, ContosoBTSAdmins@live.com) access to this subscription. In this scenario, the BizTalk Administrators sign in to the Azure portal and have full Administrator rights to all the hosted services in the subscription, including Azure BizTalk Services. The BizTalk Administrators are not the Azure account holders and therefore don't have access to any billing information.
-<br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577"> Manage Subscriptions and Storage Accounts in the Azure portal</a> provides more information.
+Az Azure-fiók több előfizetéssel rendelkezhet, és bárki felügyelheti, aki erre jogosult. Az Azure-fióktulajdonos például létrehozhat egy <em>BizTalkServiceSubscription</em> nevű előfizetést, és hozzáférést adhat a vállalaton (például ContosoBTSAdmins@live.com)) belüli BizTalk-rendszergazdáknak az előfizetéshez. Ebben a forgatókönyvben a BizTalk-rendszergazdák bejelentkeznek az Azure Portalra, és teljes rendszergazdai jogosultságokkal rendelkeznek az előfizetés összes üzemeltetett szolgáltatásához, beleértve az Azure BizTalk-szolgáltatásokat is. A BizTalk-rendszergazdák nem az Azure-fiók tulajdonosai, és ezért nem érik el a számlázási információkat.
+<br/><br/>További információt az 
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">előfizetések és tárfiókok az Azure Portalon való kezelését</a> ismertető szakaszban talál.
 </td>
 </tr>
 <tr>
 <td>Azure SQL Database</td>
-<td>Stores the tables, views, and stored procedures used by the BizTalk Service, including the Tracking data.
+<td>A BizTalk-szolgáltatás által használt táblázatokat, nézeteket és tárolt eljárásokat tárolja, beleértve a nyomkövető adatokat.
 <br/><br/>
-When you create a BizTalk Service, you can use an existing Azure SQL Server, Azure SQL Database, or automatically create a new Server or Database.
+BizTalk-szolgáltatások létrehozásakor használhat meglévő Azure SQL Server-kiszolgálót vagy Azure SQL Database-adatbázist, vagy automatikusan létrehozhat egy új kiszolgálót vagy adatbázist.
 <br/><br/>
-The SQL Database scale is automatically configured. Typically, the default scale is sufficient for a BizTalk Service. Changing the scale impacts pricing. See <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930"> Accounts and Billing in Azure SQL Database</a>
+Az SQL Database méretének konfigurálása automatikusan történik. Az alapértelmezett méret általában elég a BizTalk-szolgáltatásokhoz. A méret módosítása hatással van az árra. Lásd: <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930">Fiókok és számlázás az Azure SQL Database-ben</a>
 <br/><br/>
-<strong>Notes</strong>
+<strong>Megjegyzések</strong>
 <br/>
 <ul>
-<li> When you create a new Azure SQL Server and Database, Azure Services is automatically enabled. The BizTalk Service requires Azure Services be enabled.</li>
-<li>If you create a new Azure SQL Database on an existing Azure SQL Server, the firewall rules of the Server are not changed. As a result, it's possible other Azure Services are not allowed access to the Server's databases.</li>
+<li> Új Azure SQL Server és adatbázis létrehozásakor az Azure-szolgáltatások automatikusan engedélyezettek. A BizTalk-szolgáltatáshoz az Azure-szolgáltatásoknak engedélyezve kell lenniük.</li>
+<li>Ha új Azure SQL Database-adatbázist hoz létre meglévő Azure SQL Server -kiszolgálón, a kiszolgáló tűzfalszabályai nem változnak. Ennek eredményeképpen lehet, hogy más Azure-szolgáltatások nem tudják elérni a kiszolgáló adatbázisait.</li>
 </ul>
 </td>
 </tr>
 <tr>
-<td>Azure Access Control namespace</td>
-<td>Authenticates with Azure BizTalk Services. When you deploy a BizTalk Service project from Visual Studio, you enter this Access Control namespace. When you create a BizTalk Service, the Access Control namespace is automatically created.</td>
+<td>Azure hozzáférés-vezérlési névtér</td>
+<td>Az Azure BizTalk Services modullal végez hitelesítést. Amikor BizTalk Service-projektet helyez üzembe a Visual Studióból, ezt a hozzáférés-vezérlési névteret írja be. BizTalk Services-szolgáltatás létrehozásakor a hozzáférés-vezérlési névtér automatikusan létrejön.</td>
 </tr>
 
 <tr>
-<td>Azure Storage account</td>
-<td>Gives access to tables, blobs, and queues used by your BizTalk Service to save the following:
+<td>Azure Storage-fiók</td>
+<td>Hozzáférést nyújt a BizTalk Services-szolgáltatás által használt táblázatokhoz, blobokhoz és sorokhoz a következők mentése érdekében:
 
 <ul>
-<li>Log files that monitor the BizTalk Service. The monitoring output is also displayed in the **Monitoring** tab in the Azure portal.</li>
-<li>When creating an X12 or AS2 agreement between partners, you can enable the Archiving feature to store message properties. This data is saved in the Storage account.</li>
+<li>A BizTalk Services-szolgáltatást figyelő naplófájlok. A megfigyelés kimenete az Azure Portal **Figyelés** lapján is megjelenik.</li>
+<li>Amikor X12- vagy AS2-egyezményt hoz létre partnerek között, engedélyezheti az Archiválás funkciót az üzenettulajdonságok tárolása érdekében. Ezeket az adatokat a tárfiókba menti a rendszer.</li>
 </ul>
 <br/>
-When you create a BizTalk Service, you can use an existing Storage account or automatically create a new Storage account.
+BizTalk Services-szolgáltatások létrehozásakor használhat meglévő Storage-fiókot, vagy automatikusan létrehozhat egy új Storage-fiókot.
 <br/><br/>
-The default Storage settings are sufficient for a BizTalk Service.
+Az alapértelmezett tárolóbeállítások elegendőek a BizTalk-szolgáltatásokhoz.
 <br/><br/>
-When you create a Storage account, a Primary Key and Secondary Key are automatically created. These Keys control access to your Storage account. The BizTalk Service automatically uses the Primary Key.
+Storage-fiók létrehozásakor automatikusan létrejön egy elsődleges kulcs és egy másodlagos kulcs. Ezek a kulcsok vezérlik a tárfiók elérését. A BizTalk Services-szolgáltatás automatikusan az elsődleges kulcsot használja.
 <br/><br/>
-See <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671"> Storage</a> for more information.
+További információért lásd: <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671">Storage</a>.
 </td>
 </tr>
 
 <tr>
-<td>SSL private certificate</td>
+<td>SSL személyes tanúsítvány</td>
 <td>
-When an Azure BizTalk Service is created, an HTTPS URL that includes your BizTalk Service name is also created. This URL is automatically configured to use a self-signed development-only certificate. For production, you need a private SSL certificate.
+Azure BizTalk Services-szolgáltatások létrehozásakor létrejön a BizTalk Services-szolgáltatás nevét tartalmazó HTTPS URL. Ez az URL automatikusan úgy van konfigurálva, hogy önaláírt, csak fejlesztési tanúsítványt használjon. A termeléshez személyes SSL-tanúsítvány szükséges.
 <br/><br/>
-<strong>Important SSL Certificate Information</strong>
+<strong>SSL-tanúsítvánnyal kapcsolatos fontos információk</strong>
 
 <ul>
-<li>The certificate expiration date must be less than 5 years.</li>
-<li>All private certificates require a password. Know this password and as a best practice, share this password with your administrators.</li>
-<li>Self-signed certificates are used in a test/development environment. When using self-signed certificates, import the certificate to your Personal certificate store and the Trusted Root Certification Authorities certificate store.</li>
+<li>A tanúsítvány lejárati dátumának 5 éven belül kell lennie.</li>
+<li>Minden személyes tanúsítványhoz jelszó szükséges. Jegyezze meg ezt a jelszót, és ajánlott eljárásként ossza meg a rendszergazdáival.</li>
+<li>A tesztelési/fejlesztési környezetekben önaláírt tanúsítványokat használnak. Önaláírt tanúsítvány használatakor importálja a tanúsítványt a személyes tanúsítványtárolójába és a megbízható legfelső szintű hitelesítésszolgáltatók tanúsítványtárolóba.</li>
 </ul>
-<br/>When sending the production certificate request to your certification authority, give the following certificate properties:
+<br/>Amikor a termelési tanúsítvánnyal kapcsolatos kérést elküldi a hitelesítésszolgáltatójának, adja meg a tanúsítvány következő tulajdonságait:
 <br/>
 
 <ul>
-<li><strong>Enhanced Key Usage</strong>: At a minimum, Azure BizTalk Services requires Server Authentication.</li>
-<li><strong>Common Name</strong>: Enter the fully qualified domain name (FQDN) of your Azure BizTalk Service URL. See <a HREF="#BizTalk">Create a BizTalk Service</a> in this article.</li>
+<li><strong>Kibővített kulcshasználat</strong>: Az Azure BizTalk Services legalább kiszolgálói hitelesítést igényel.</li>
+<li><strong>Köznapi név</strong>: Adja meg az Azure BizTalk Services-szolgáltatás URL-jének teljes tartománynevét (FQDN-jét). Lásd ezen cikk <a HREF="#BizTalk">BizTalk Services-szolgáltatás létrehozása</a> szakaszát.</li>
 </ul>
 <br/>
-A new or different certificate can be added after the BizTalk Service is created.
+A BizTalk szolgáltatás létrehozása után hozzáadható egy új vagy másik tanúsítvány.
 </td>
 </tr>
 </table>
 
 
 
-## Hybrid Connections
-When you create an Azure BizTalk Service, the **Hybrid Connections** tab is available:
+## <a name="hybrid-connections"></a>Hibrid kapcsolatok
+Azure BizTalk Servies-szolgáltatások létrehozásakor elérhető a **Hibrid kapcsolatok** lap:
 
-![Hybrid Connections Tab][HybridConnectionTab]
+![Hibrid kapcsolatok lap][HybridConnectionTab]
 
-Hybrid Connections are used to connect an Azure website or Azure mobile service to any on-premises resource that uses a static TCP port, such as SQL Server, MySQL, HTTP Web APIs, Mobile Services, and most custom Web Services.  Hybrid Connections and the BizTalk Adapter Service are different. The BizTalk Adapter Service is used to connect Azure BizTalk Services to an on-premises Line of Business (LOB) system.
+A hibrid kapcsolatok az Azure-webhelyeket vagy Azure-mobilszolgáltatásokat bármely, statikus TCP-portot használó helyszíni erőforráshoz, például SQL Serverhez, MySQL-hez, HTTP Web API-khoz, mobilszolgáltatásokhoz és a legtöbb egyéni webszolgáltatáshoz csatlakoztatják.  A hibrid kapcsolatok és a BizTalk Adapter Service nem ugyanaz. A BizTalk Adapter Service Azure BizTalk Services-szolgáltatásokat csatlakoztat helyszíni üzletági (LOB) rendszerekhez.
 
- See [Hybrid Connections](integration-hybrid-connection-overview.md) to learn more, including creating and managing Hybrid Connections.
+ További információért lásd a [Hibrid kapcsolatok](integration-hybrid-connection-overview.md) című szakaszt, ahol a hibrid kapcsolatok létrehozásáról és felügyeletéről is olvashat.
 
-## Next steps
-Now that a BizTalk Service is created, familiarize yourself with the different [BizTalk Services: Dashboard, Monitor and Scale tabs](biztalk-dashboard-monitor-scale-tabs.md). Your BizTalk Service is ready for your applications. To start creating applications, go to [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+## <a name="next-steps"></a>Következő lépések
+Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különböző [BizTalk Services: Irányítópult, Figyelő és Méret lapokat](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
-## See also
-* [BizTalk Services: Editions Chart](biztalk-editions-feature-chart.md)<br/>
-* [BizTalk Services: State Chart](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Backup and Restore](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Throttling](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Issuer Name and Issuer Key](biztalk-issuer-name-issuer-key.md)<br/>
-* [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Hybrid Connections](integration-hybrid-connection-overview.md)
+## <a name="see-also"></a>Lásd még:
+* [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
+* [BizTalk Services: Állapottáblázat](biztalk-service-state-chart.md)<br/>
+* [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
+* [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Hibrid kapcsolatok](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
 [NEWButton]: ./media/biztalk-provision-services/WABS_New.png
@@ -271,6 +275,6 @@ Now that a BizTalk Service is created, familiarize yourself with the different [
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

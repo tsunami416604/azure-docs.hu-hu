@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure AD Privileged Identity Management alkalmazással | Microsoft Docs
-description: Megtudhatja, hogyan kezelhet kiemelt identitásokat az Azure Portal Azure Active Directory Privileged Identity Management alkalmazásával.
+title: "Ismerkedés az Azure AD Privileged Identity Management alkalmazással | Microsoft Docs"
+description: "Megtudhatja, hogyan kezelhet kiemelt identitásokat az Azure Portal Azure Active Directory Privileged Identity Management alkalmazásával."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
+
 
 ---
-# Ismerkedés az Azure AD Privileged Identity Management alkalmazással
+# <a name="get-started-with-azure-ad-privileged-identity-management"></a>Ismerkedés az Azure AD Privileged Identity Management alkalmazással
 Az Azure Active Directory (AD) Privileged Identity Management segítségével kezelheti, irányíthatja és felügyelheti a szervezeten belüli hozzáféréseket. Ebbe beletartozik az Azure AD és más online Microsoft-szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz való hozzáférés.
 
 Ez a cikk bemutatja, hogyan veheti fel az Azure AD PIM alkalmazást az Azure Portal irányítópultjára.
 
-## A Privileged Identity Management alkalmazás felvétele
+## <a name="add-the-privileged-identity-management-application"></a>A Privileged Identity Management alkalmazás felvétele
 Az Azure AD Privileged Identity Management használata előtt fel kell vennie az alkalmazást az Azure Portal irányítópultjára.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a címtára globális rendszergazdájaként.
@@ -31,7 +35,7 @@ Az Azure AD Privileged Identity Management használata előtt fel kell vennie az
 
 Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management alkalmazást használja, akkor a [biztonság varázsló](active-directory-privileged-identity-management-security-wizard.md) végigvezeti a hozzárendelés kezdeti lépésein. Ezután automatikusan Ön lesz a címtár első **biztonsági rendszergazdája** és **kiemelt szerepkörű rendszergazdája**. Csak a kiemelt szerepkörű rendszergazdák férhetnek hozzá az alkalmazáshoz, hogy más rendszergazdák hozzáférését kezeljék.  
 
-## A feladatok megkeresése
+## <a name="navigate-to-your-tasks"></a>A feladatok megkeresése
 Az Azure AD Privileged Identity Management beállítása után az alkalmazás minden megnyitásakor megjelenik a navigációs panel. Ezen a panelen végezheti el az identitáskezelési feladatokat.
 
 ![Felső szintű PIM-tevékenységek – képernyőkép](./media/active-directory-privileged-identity-management-getting-started/pim_tasks.png)
@@ -41,7 +45,7 @@ Az Azure AD Privileged Identity Management beállítása után az alkalmazás mi
 * Az **Emelt szintű hozzáférés felülvizsgálata** lehetőséggel megtekintheti a függőben lévő hozzáférési felülvizsgálatokat, amelyeket be kell fejeznie, legyen szó akár a saját hozzáféréseiről vagy egy másik felhasználóéról. 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure AD Privileged Identity Management áttekintése](active-directory-privileged-identity-management-configure.md) további részleteket tartalmaz arról, hogyan kezelheti a rendszergazdai hozzáférést a szervezetében.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
@@ -52,6 +56,6 @@ Az Azure AD Privileged Identity Management beállítása után az alkalmazás mi
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

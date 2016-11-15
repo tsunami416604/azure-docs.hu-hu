@@ -1,5 +1,5 @@
 > [!div class="op_single_selector"]
-> * [NET](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
+> * [.NET](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 > * [Java](../articles/service-bus-messaging/service-bus-java-how-to-use-queues.md)
 > * [Node.js](../articles/service-bus-messaging/service-bus-nodejs-how-to-use-queues.md)
 > * [PHP](../articles/service-bus-messaging/service-bus-php-how-to-use-queues.md)
@@ -9,6 +9,8 @@
 > 
 > 
 
-<!--HONumber=Oct16_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 
