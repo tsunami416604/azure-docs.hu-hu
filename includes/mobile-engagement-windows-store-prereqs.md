@@ -1,21 +1,23 @@
 
-This tutorial requires the following:
+Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 * Visual Studio 2015
-* [MicrosoftAzure.MobileEngagement](http://go.microsoft.com/?linkid=9864592) Nuget package
+* [MicrosoftAzure.MobileEngagement](http://go.microsoft.com/?linkid=9864592) NuGet-csomag
 
 > [!IMPORTANT]
-> This tutorial assumes use of Visual Studio 15. You can also use Visual Studio 13, but that user interface is slightly different from what is in this tutorial.
+> Ez az oktatóanyag a Visual Studio 15 használatát feltételezi. Használhatja a Visual Studio 13-at is, de annak a felhasználói kezelőfelülete némileg eltér a jelen oktatóanyagban foglaltaktól.
 > 
 > 
 
 &nbsp;
 
 > [!NOTE]
-> To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-store-dotnet-get-started).
+> Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-store-dotnet-get-started).
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

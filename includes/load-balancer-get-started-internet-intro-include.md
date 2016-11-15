@@ -1,8 +1,12 @@
-An Azure load balancer is a Layer-4 (TCP, UDP) load balancer. The load balancer provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
+Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 
-You can configure a load balancer to:
+A terheléselosztót az alábbi feladatokra lehet konfigurálni:
 
-* Load balance incoming Internet traffic to virtual machines (VMs). We refer to a load balancer in this scenario as an [Internet-facing load balancer](../articles/load-balancer/load-balancer-internet-overview.md).
-* Load balance traffic between VMs in a virtual network (VNet), between VMs in cloud services, or between on-premises computers and VMs in a cross-premises virtual network. We refer to a load balancer in this scenario as an [internal load balancer (ILB)](../articles/load-balancer/load-balancer-internal-overview.md).
-* Forward external traffic to a specific VM instance.
+* Bejövő internetes forgalom terheléselosztása virtuális gépek (VM-ek) között. Ebben a forgatókönyvben a terheléselosztó [internetre kapcsolódó terheléselosztót](../articles/load-balancer/load-balancer-internet-overview.md) jelent.
+* Forgalom terheléselosztása virtuális hálózat (VNet) virtuális gépei között, felhőszolgáltatások virtuális gépei között, vagy helyszíni számítógépek és létesítmények közötti virtuális hálózat virtuális gépei között. Ebben a forgatókönyvben a terheléselosztó [belső terheléselosztót (ILB)](../articles/load-balancer/load-balancer-internal-overview.md) jelent.
+* Külső forgalom továbbítása egy adott VM-példányhoz.
+
+
+<!--HONumber=Nov16_HO2-->
+
 

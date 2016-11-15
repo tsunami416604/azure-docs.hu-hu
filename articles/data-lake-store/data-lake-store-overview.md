@@ -1,102 +1,110 @@
 ---
-title: Overview of Azure Data Lake Store | Microsoft Docs
-description: Understand what is Azure Data Lake Store and the value it provides over other data stores
+title: "Az Azure Data Lake Store áttekintése | Microsoft Docs"
+description: "Megtudhatja, mi az Azure Data Lake Store, és milyen értékeket nyújt az egyéb adattárakhoz képest"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/02/2016
+ms.date: 11/02/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c90fe9e9f088e8af80b5d9dcf7ab5b970034122f
+
 
 ---
-# Overview of Azure Data Lake Store
-Azure Data Lake Store is an enterprise-wide hyper-scale repository for big data analytic workloads. Azure Data Lake enables you to capture data of any size, type, and ingestion speed in one single place for operational and exploratory analytics.
+# <a name="overview-of-azure-data-lake-store"></a>Az Azure Data Lake Store áttekintése
+Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Az Azure Data Lake lehetővé teszi mindenféle méretű, típusú és feldolgozási sebességű adatok egy helyen történő műveleti és felderítési jellegű feldolgozását.
 
 > [!TIP]
-> Use the [Data Lake Store learning path](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/) to start exploring the Azure Data Lake Store service.
+> Fedezze fel az Azure Data Lake Store szolgáltatást a [Data Lake Store képzési terv](https://azure.microsoft.com/documentation/learning-paths/data-lake-store-self-guided-training/) segítségével.
 > 
 > 
 
-Azure Data Lake Store can be accessed from Hadoop (available with HDInsight cluster) using the WebHDFS-compatible REST APIs. It is specifically designed to enable analytics on the stored data and is tuned for performance for data analytics scenarios. Out of the box, it includes all the enterprise-grade capabilities—security, manageability, scalability, reliability, and availability—essential for real-world enterprise use cases.
+Az Azure Data Lake Store a (HDInsight-fürttel hozzáférhető) Hadoopból érhető el a WebHDFS-kompatibilis REST API-k használatával. Kifejezetten arra tervezték, hogy lehetővé tegye a tárolt adatok elemzését, továbbá nagy teljesítményt nyújtson az adatelemzési forgatókönyvekben. Minden olyan vállalati szintű képességet tartalmaz – biztonság, kezelhetőség, méretezhetőség, megbízhatóság és rendelkezésre állás –, amelyek elengedhetetlenek a valós vállalati alkalmazások esetében.
 
 ![Azure Data Lake](./media/data-lake-store-overview/data-lake-store-concept.png)
 
-Some of the key capabilities of the Azure Data Lake include the following.
+Az Azure Data Lake főbb képességei közé az alábbiak tartoznak.
 
-### Built for Hadoop
-The Azure Data Lake store is an Apache Hadoop file system compatible with Hadoop Distributed File System (HDFS) and works with the Hadoop ecosystem.  Your existing HDInsight applications or services that use the WebHDFS API can easily integrate with Data Lake Store. Data Lake Store also exposes a WebHDFS-compatible REST interface for applications
+### <a name="built-for-hadoop"></a>Hadoop-kompatibilis
+Az Azure Data Lake-adattár egy Hadoop elosztott fájlrendszerrel (HDFS) kompatibilis Apache Hadoop-fájlrendszer, amely együttműködik a Hadoop-ökoszisztémával.  A WebHDFS API-t használó meglévő HDInsight-alkalmazásai vagy szolgáltatásai könnyen integrálhatók a Data Lake Store-ral. A Data Lake Store továbbá elérhetővé tesz egy WebHDFS-kompatibilis REST-felületet is az alkalmazásokhoz
 
-Data stored in Data Lake Store can be easily analyzed using Hadoop analytic frameworks such as MapReduce or Hive. Microsoft Azure HDInsight clusters can be provisioned and configured to directly access data stored in Data Lake Store.
+A Data Lake Store-ban tárolt adatok könnyen elemezhetők a Hadoop elemzési keretrendszerek, például a MapReduce vagy a Hive segítségével. A Microsoft Azure HDInsight-fürtök úgy is üzembe helyezhetők és konfigurálhatók, hogy közvetlenül elérjék a Data Lake Store-ban tárolt adatokat.
 
-### Unlimited storage, petabyte files
-Azure Data Lake Store provides unlimited storage and is suitable for storing a variety of data for analytics. It does not impose any limits on account sizes, file sizes, or the amount of data that can be stored in a data lake. Individual files can range from kilobyte to petabytes in size making it a great choice to store any type of data. Data is stored durably by making multiple copies and there is no limit on the duration of time for which the data can be stored in the data lake.
+### <a name="unlimited-storage-petabyte-files"></a>Korlátlan tárterület, petabájtnyi fájlok
+Az Azure Data Lake Store korlátlan tárterületet biztosít, és különböző, elemzési célú adatok tárolására alkalmas. Nincsenek megkötések a fiókok méretének, a fájlméret, vagy a data lake-ben tárolt adatok mennyiségének tekintetében. Az egyéni fájlok mérete a kilobájtoktól a petabájtokig terjedhet, így bármilyen típusú adat tárolásához kiváló választás. A számos másolatnak köszönhetően az adatok megbízhatóan, valamint korlátlan ideig tárolhatók a data lake-ben.
 
-### Performance-tuned for big data analytics
-Azure Data Lake Store is built for running large scale analytic systems that require massive throughput to query and analyze large amounts of data. The data lake spreads parts of a file over a number of individual storage servers. This improves the read throughput when reading the file in parallel for performing data analytics.
+### <a name="performancetuned-for-big-data-analytics"></a>A teljesítmény a big data koncepción alapuló adatelemzéshez lett igazítva
+Az Azure Data Lake Store nagy méretű elemzési rendszerek futtatására lett tervezve, amelyek jelentős átviteli sebességet igényelnek nagy mennyiségű adatok lekérdezéséhez és elemzéséhez. A data lake több egyéni tárolókiszolgáló között osztja el egy fájl részeit. Ez javítja az olvasás átviteli sebességét a fájl adatelemzés céljából történő párhuzamos beolvasásakor.
 
-### Enterprise-ready: Highly-available and secure
-Azure Data Lake Store provides industry-standard availability and reliability. Your data assets are stored durably by making redundant copies to guard against any unexpected failures. Enterprises can use Azure Data Lake in their solutions as an important part of their existing data platform.
+### <a name="enterpriseready-highlyavailable-and-secure"></a>Felkészült a nagyvállalatok igényeire: Magas rendelkezésre állású és biztonságos
+Az Azure Data Lake Store az iparági szabványnak megfelelő rendelkezésre állást és megbízhatóságot biztosít. Adatvagyonának tartós tárolását a redundáns másolatok teszik lehetővé, amelyek védelmet biztosítanak a váratlan meghibásodások esetén. A vállalatok meglévő adatplatformjuk fontos részeként alkalmazhatják az Azure Data Lake-et megoldásaikban.
 
-Data Lake Store also provides enterprise-grade security for the stored data. For more information, see [Securing data in Azure Data Lake Store](#DataLakeStoreSecurity).
+A Data Lake Store továbbá nagyvállalati szintű védelmet biztosít a tárolt adatok számára. További információ: [Az adatok védelme az Azure Data Lake Store-ban](#DataLakeStoreSecurity).
 
-### All Data
-Azure Data Lake Store can store any data in their native format, as is, without requiring any prior transformations. Data Lake Store does not require a schema to be defined before the data is loaded, leaving it up to the individual analytic framework to interpret the data and define a schema at the time of the analysis. Being able to store files of arbitrary sizes and formats makes it possible for Data Lake Store to handle structured, semi-structured, and unstructured data.
+### <a name="all-data"></a>Minden adat
+Az Azure Data Lake Store bármilyen adatot képes natív formátumában, módosítás vagy előzetes átalakítás nélkül tárolni. A Data Lake Store nem igényli egy séma definiálását az adatok betöltése előtt, így az egyéni elemzési keretrendszer maga értelmezheti az adatokat és definiálhat egy sémát az elemzés során. A tetszőleges méretű és formátumú fájlok tárolásának képessége lehetővé teszi, hogy a Data Lake Store strukturált, félig strukturált és strukturálatlan adatokat is kezelhessen.
 
-Azure Data Lake Store containers for data are essentially folders and files. You operate on the stored data using SDKs, Azure Portal, and Azure Powershell. As long as you put your data into the store using these interfaces and using the appropriate containers, you can store any type of data. Data Lake Store does not perform any special handling of data based on the type of data it stores.
+Az Azure Data Lake Store adattárolói lényegében mappák és fájlok. A tárolt adatokat az SDK-k, az Azure Portal és az Azure PowerShell használatával kezelheti. Mindaddig, amíg a fenti felületeken keresztül és a megfelelő tárolók használatával helyezi el adatait a tárolóban, bármilyen típusú adatot tárolhat. A Data Lake Store nem kezeli különleges módon az adatokat a tárolt adatok típusa alapján.
 
-## <a name="DataLakeStoreSecurity"></a>Securing data in Azure Data Lake Store
-Azure Data Lake Store uses Azure Active Directory for authentication and access control lists (ACLs) to manage access to your data.
+## <a name="a-namedatalakestoresecurityasecuring-data-in-azure-data-lake-store"></a><a name="DataLakeStoreSecurity"></a>Az adatok védelme az Azure Data Lake Store-ban
+Az Azure Data Lake Store az Azure Active Directory a hitelesítésével és hozzáférés-vezérlési listáival (ACL-ek) felügyeli az adatok hozzáférését.
 
-| Feature | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
-| Authentication |Azure Data Lake Store integrates with Azure Active Directory (AAD) for identity and access management for all the data stored in Azure Data Lake Store. As a result of the integration, Azure Data Lake benefits from all AAD features including multi-factor authentication, conditional access, role-based access control, application usage monitoring, security monitoring and alerting, etc. Azure Data Lake Store supports the OAuth 2.0 protocol for authentication with in the REST interface. |
-| Access control |Azure Data Lake Store provides access control by supporting POSIX-style permissions exposed by the WebHDFS protocol. In the current release, ACLs can be enabled on the root folder, sub-folders, as well as individual files. The ACLs you apply to the root folder will also applicable to all the child folders/files as well. |
+| Authentication |Az Azure Data Lake Store integrálható az Azure Active Directory-val (AAD) az Azure Data Lake Store-ban tárolt összes adat identitás- és hozzáférés-kezelés érdekében. Az integrációnak köszönhetően az Azure Data Lake az AAD összes funkcióját használni tudja, többek között a többtényezős hitelesítést, a feltételes hozzáférést, a szerepköralapú hozzáférés-vezérlést, az alkalmazás-használat figyelését, a biztonsági figyelést és riasztást stb. Az Azure Data Lake Store támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. |
+| Hozzáférés-vezérlés |Az Azure Data Lake Store a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával biztosítja a hozzáférés-vezérlést. A Data Lake Store nyilvános előzetes verziójában (a jelenlegi kiadásban) a hozzáférés-vezérlési listákat a legfelső szintű mappához, az almappákhoz vagy egyes fájlokhoz lehet engedélyezni. További információkat a hozzáférés-vezérlési listák Data Lake Store-környezetben való működéséről a következő témakörben talál: [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md). |
+| Titkosítás |A Data Lake Store biztosítja a fiókban tárolt adatok titkosítását. A Data Lake Store-fiók létrehozásakor megadhatja a titkosítási beállításokat. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. További információkat a titkosítással kapcsolatos konfigurációról a következő témakörben talál: [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). |
 
-Want to learn more about securing data in Data Lake Store. Follow the links below.
+Többet szeretne megtudni az adatok védelméről a Data Lake Store-ban? Kövesse az alábbi hivatkozásokat.
 
-* For instructions on how to secure data in Data Lake Store, see [Securing data in Azure Data Lake Store](data-lake-store-secure-data.md).
-* Prefer videos? [Watch this video](https://mix.office.com/watch/1q2mgzh9nn5lx) on how to secure data stored in Data Lake Store.
+* Az adatok a Data Lake Store-ban való védelmére vonatkozó utasításokért lásd: [Az adatok védelme az Azure Data Lake Store-ban](data-lake-store-secure-data.md).
+* Szeretne inkább videókat megtekinteni? [Tekintse meg ezt a videót](https://mix.office.com/watch/1q2mgzh9nn5lx) az adatok a védelméről a Data Lake Store-ban.
 
-## Applications compatible with Azure Data Lake Store
-Azure Data Lake Store is compatible with most open source components in the Hadoop ecosystem. It also integrates nicely with other Azure services. This makes Data Lake Store a perfect option for your data storage needs. Follow the links below to learn more about how Data Lake Store can be used both with open source components as well as other Azure services.
+## <a name="applications-compatible-with-azure-data-lake-store"></a>Az Azure Data Lake Store-ral kompatibilis alkalmazások
+Az Azure Data Lake Store a Hadoop-ökoszisztéma legtöbb nyílt forráskódú összetevőjével kompatibilis. Emellett egyéb Azure-szolgáltatásokkal is jól integrálható. Mindez azt jelenti, hogy a Data Lake Store tökéletes megoldás az adattárolási igények kielégítésére. Kövesse az alábbi hivatkozásokat, ha többet szeretne megtudni arról, hogyan használható a Data Lake Store a nyílt forráskódú összetevőkkel és az egyéb Azure-szolgáltatásokkal.
 
-* See [Applications and services compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md) for a list of open source applications interoperable with Data Lake Store.
-* See [Integrating with other Azure services](data-lake-store-integrate-with-other-services.md) to understand how Data Lake Store can be used with other Azure services to enable a wider range of scenarios.
-* See [Scenarios for using Data Lake Store](data-lake-store-data-scenarios.md) to learn how to use Data Lake Store in scenarios such as ingesting data, processing data, downloading data, and visualizing data.
+* A Data Lake Store-ral kompatibilis nyílt forráskódú alkalmazások listáját: [Az Azure Data Lake Store-ral kompatibilis alkalmazások és szolgáltatások](data-lake-store-compatible-oss-other-applications.md).
+* Ha többet szeretne megtudni arról, hogyan használható a Data Lake Store más Azure-szolgáltatásokkal a lehetséges forgatókönyvek bővítése érdekében, lásd: [Integráció más Azure-szolgáltatásokkal](data-lake-store-integrate-with-other-services.md).
+* Ha többet szeretne megtudni arról, hogyan használható a Data Lake Store az olyan forgatókönyvek esetében, mint az adatok bevitele, feldolgozása, letöltése és megjelenítése, lásd: [A Data Lake Store használatára vonatkozó forgatókönyvek](data-lake-store-data-scenarios.md).
 
-## What is Azure Data Lake Store file system (adl://)?
-Data Lake Store can be accessed via the new filesystem, the AzureDataLakeFilesystem (adl://), in Hadoop environments (available with HDInsight cluster). Applications and services that use adl:// are able to take advantage of further performance optimization that are not currently available in WebHDFS. As a result, Data Lake Store gives you the flexibility to either avail the best performance with the recommended option of using adl:// or maintain existing code by continuing to use the WebHDFS API directly. Azure HDInsight fully leverages the AzureDataLakeFilesystem to provide the best performance on Data Lake Store.
+## <a name="what-is-azure-data-lake-store-file-system-adl"></a>Mi az Azure Data Lake Store-fájlrendszer (adl://)?
+A Data Lake Store-hoz az új fájlrendszer, (a HDInsight-fürttel hozzáférhető) AzureDataLakeFilesystem (adl://) használatával lehet hozzáférni a Hadoop-környezetekben. Az adl:// használatával az alkalmazások és szolgáltatások további teljesítmény-optimalizálásokat hasznosíthatnak, amelyek jelenleg nem érhetők el a WebHDFS-ben. Ennek eredményeképpen a Data Lake Store biztosítja azt a rugalmasságot, amellyel a legjobb teljesítményt érheti el az adl:// ajánlott beállításainak használatával, vagy fenntarthatja a meglévő kódot a WebHDFS API közvetlen használatával. Az Azure HDInsight teljes mértékben kihasználja az AzureDataLakeFilesystemet, hogy a lehető legjobb teljesítményt biztosítsa a Data Lake Store-on.
 
-You can access your data in the Data Lake Store using `adl://<data_lake_store_name>.azuredatalakestore.net`. For more information on how to access the data in the Data Lake Store, see [View properties of the stored data](data-lake-store-get-started-portal.md#properties)
+A Data Lake Store-ban lévő adatait az `adl://<data_lake_store_name>.azuredatalakestore.net` használatával érheti el. A Data Lake Store-ban lévő adatok elérésével kapcsolatos további információkért lásd: [A tárolt adatok tulajdonságainak megtekintése](data-lake-store-get-started-portal.md#properties)
 
-## How do I start using Azure Data Lake Store?
-See [Get Started with Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md), on how to provision a Data Lake Store using the Azure Portal. Once you have provisioned Azure Data Lake, you can learn how to use big data offerings such as Azure Data Lake Analytics or Azure HDInsight with Data Lake Store. You can also create a .NET application to create an Azure Data Lake Store account and perform operations such as upload data, download data, etc.
+## <a name="how-do-i-start-using-azure-data-lake-store"></a>Hogyan kezdhetem meg az Azure Data Lake Store használatát?
+Data Lake Store kiépítése az Azure Portal használatával: [A Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). Az Azure Data Lake kiépítése után megtudhatja, hogyan használja az Azure Data Lake Analytics vagy az Azure HDInsight big data ajánlatokat a Data Lake Store-ral. .NET-alkalmazásokat készíthet is egy Azure Data Lake Store-fiók létrehozásához, illetve műveletek, például adatok letöltése, feltöltése stb. végrehajtásához.
 
-* [Get Started with Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az Azure Data Lake Store használatának első lépései a .NET SDK-val](data-lake-store-get-started-net-sdk.md)
 
-## Data Lake Store videos
-If you prefer watching videos to learn, Data Lake Store provides videos on a range of features.
+## <a name="data-lake-store-videos"></a>Data Lake Store-videók
+Ha könnyebben tanul videók megtekintésével, a Data Lake Store számos szolgáltatáshoz biztosít videókat.
 
-* [Create an Azure Data Lake Store Account](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Use the Data Explorer to Manage Data in Azure Data Lake Store](https://mix.office.com/watch/icletrxrh6pc)
-* [Connect Azure Data Lake Analytics to Azure Data Lake Store](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Access Azure Data Lake Store via Data Lake Analytics](https://mix.office.com/watch/1n0s45up381a8)
-* [Connect Azure HDInsight to Azure Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2)
-* [Access Azure Data Lake Store via Hive and Pig](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Use DistCp (Hadoop Distributed Copy) to copy data to and from Azure Data Lake Store](https://mix.office.com/watch/1liuojvdx6sie)
-* [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store](https://mix.office.com/watch/1butcdjxmu114)
-* [Data Orchestration using Azure Data Factory for Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Securing Data in the Azure Data Lake Store](https://mix.office.com/watch/1q2mgzh9nn5lx)
+* [Azure Data Lake Store-fiók létrehozása](https://mix.office.com/watch/1k1cycy4l4gen)
+* [Adatkezelés az Azure Data Lake Store-ban az Adatkezelő használatával](https://mix.office.com/watch/icletrxrh6pc)
+* [Az Azure Data Lake Analytics és az Azure Data Lake Store összekapcsolása](https://mix.office.com/watch/qwji0dc9rx9k)
+* [Az Azure Data Lake Store elérése a Data Lake Analytics használatával](https://mix.office.com/watch/1n0s45up381a8)
+* [Az Azure HDInsight és az Azure Data Lake Store összekapcsolása](https://mix.office.com/watch/l93xri2yhtp2)
+* [Az Azure Data Lake Store elérése a Hive és a Pig használatával](https://mix.office.com/watch/1n9g5w0fiqv1q)
+* [Adatok másolása az Azure Data Lake Store-ba és az Azure Data Lake Store-ból a DistCP (Hadoop Distributed Copy) használatával](https://mix.office.com/watch/1liuojvdx6sie)
+* [Adatok áthelyezése relációs források és az Azure Data Lake Store között az Apache Sqoop használatával](https://mix.office.com/watch/1butcdjxmu114)
+* [Adatok előkészítése az Azure Data Lake Store-hoz készült Azure Data Factory használatával](https://mix.office.com/watch/1oa7le7t2u4ka)
+* [Az adatok védelme az Azure Data Lake Store-ban](https://mix.office.com/watch/1q2mgzh9nn5lx)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
