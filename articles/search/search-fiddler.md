@@ -1,22 +1,26 @@
 ---
-title: Az Azure Search REST API-k értékelése és tesztelése a Fiddler használatával | Microsoft Docs
-description: A Fiddler használatával kódolás nélkül ellenőrizheti az Azure Search rendelkezésre állását, illetve próbálhatja ki a REST API-kat.
+title: "A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez | Microsoft Docs"
+description: "A Fiddler használatával kódolás nélkül ellenőrizheti az Azure Search rendelkezésre állását, illetve próbálhatja ki a REST API-kat."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: HeidiSteen
 manager: mblythe
-editor: ''
-
+editor: 
+ms.assetid: 790e5779-c6a3-4a07-9d1e-d6739e6b87d2
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/08/2016
+ms.date: 10/17/2016
 ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
+ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
+
 
 ---
-# A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez
+# <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-query-overview.md)
 > * [Keresési ablak](search-explorer.md)
@@ -32,11 +36,11 @@ Az alábbi lépéseket követve létre fog hozni egy indexet, dokumentumokat fog
 
 Az alábbi lépések elvégzéséhez szüksége lesz egy Azure Search szolgáltatásra és egy `api-key` elemre. A kezdéssel kapcsolatos útmutatásért tekintse meg az [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) című cikket.
 
-## Index létrehozása
+## <a name="create-an-index"></a>Index létrehozása
 1. Indítsa el a Fiddlert. A **Fájl** menüben kapcsolja ki a **Forgalom rögzítése** beállítást az aktuális feladathoz nem kapcsolódó HTTP-tevékenység elrejtéséhez.
 2. A **Szerkesztő** lapon állítson össze egy, az alábbi képernyőfelvételen láthatóhoz hasonló kérelmet.
    
-    ![][1]
+      ![][1]
 3. Válassza a **PUT** lehetőséget.
 4. Adja meg a szolgáltatás URL-címét, a kérelem attribútumait, valamint az API-verziót meghatározó URL-címet. Ügyeljen az alábbiakra:
    
@@ -46,38 +50,38 @@ Az alábbi lépések elvégzéséhez szüksége lesz egy Azure Search szolgálta
      
      A teljes URL-címnek az alábbi példához kell hasonlítania.
      
-            https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+             https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
 5. Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
    
-           User-Agent: Fiddler
-           host: my-app.search.windows.net
-           content-type: application/json
-           api-key: 1111222233334444
+         User-Agent: Fiddler
+         host: my-app.search.windows.net
+         content-type: application/json
+         api-key: 1111222233334444
 6. A kérelem törzse területre illessze be az index definícióját alkotó mezőket.
    
-            {
-           "name": "hotels",  
-           "fields": [
-             {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-             {"name": "baseRate", "type": "Edm.Double"},
-             {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-             {"name": "hotelName", "type": "Edm.String"},
-             {"name": "category", "type": "Edm.String"},
-             {"name": "tags", "type": "Collection(Edm.String)"},
-             {"name": "parkingIncluded", "type": "Edm.Boolean"},
-             {"name": "smokingAllowed", "type": "Edm.Boolean"},
-             {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-             {"name": "rating", "type": "Edm.Int32"},
-             {"name": "location", "type": "Edm.GeographyPoint"}
-            ]
-           }
+          {
+         "name": "hotels",  
+         "fields": [
+           {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
+           {"name": "baseRate", "type": "Edm.Double"},
+           {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+           {"name": "hotelName", "type": "Edm.String"},
+           {"name": "category", "type": "Edm.String"},
+           {"name": "tags", "type": "Collection(Edm.String)"},
+           {"name": "parkingIncluded", "type": "Edm.Boolean"},
+           {"name": "smokingAllowed", "type": "Edm.Boolean"},
+           {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+           {"name": "rating", "type": "Edm.Int32"},
+           {"name": "location", "type": "Edm.GeographyPoint"}
+          ]
+         }
 7. Kattintson a **Végrehajtás** parancsra.
 
 Néhány másodperc múlva a munkamenetlistában megjelenik a 201-es HTTP-válasz, amely azt jelzi, hogy az index sikeresen létrejött.
 
 Ha 504-es HTTP-választ kap, ellenőrizze, hogy az URL-címben a HTTPS előtag van-e megadva. Ha 400-as vagy 404-es HTTP-válasz jelenik meg, akkor ellenőrizze, hogy a kérelem törzsében nincsenek-e beillesztési hibák. A 403-as HTTP-válasz általában az API-kulccsal kapcsolatos hibát jelez (érvénytelen a kulcs vagy szintaktikai hiba van az API-kulcs meghatározásában).
 
-## Dokumentumok betöltése
+## <a name="load-documents"></a>Dokumentumok betöltése
 A **Szerkesztő** lapon a dokumentumok küldésére szolgáló kérelem az alábbihoz hasonlóan jelenik meg. A kérelem törzse négy szálloda keresési adatait tartalmazza.
 
    ![][2]
@@ -85,80 +89,80 @@ A **Szerkesztő** lapon a dokumentumok küldésére szolgáló kérelem az aláb
 1. Válassza a **POST** lehetőséget.
 2. Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL-cím, majd az „/indexes/<'indexname'>/docs/index?api-version=2015-02-28” karakterlánc követ. A teljes URL-címnek az alábbi példához kell hasonlítania.
    
-           https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
 3. A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
    
-           User-Agent: Fiddler
-           host: my-app.search.windows.net
-           content-type: application/json
-           api-key: 1111222233334444
+         User-Agent: Fiddler
+         host: my-app.search.windows.net
+         content-type: application/json
+         api-key: 1111222233334444
 4. A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
    
+         {
+         "value": [
+         {
+             "@search.action": "upload",
+             "hotelId": "1",
+             "baseRate": 199.0,
+             "description": "Best hotel in town",
+             "hotelName": "Fancy Stay",
+             "category": "Luxury",
+             "tags": ["pool", "view", "wifi", "concierge"],
+             "parkingIncluded": false,
+             "smokingAllowed": false,
+             "lastRenovationDate": "2010-06-27T00:00:00Z",
+             "rating": 5,
+             "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+           },
            {
-           "value": [
+             "@search.action": "upload",
+             "hotelId": "2",
+             "baseRate": 79.99,
+             "description": "Cheapest hotel in town",
+             "hotelName": "Roach Motel",
+             "category": "Budget",
+             "tags": ["motel", "budget"],
+             "parkingIncluded": true,
+             "smokingAllowed": true,
+             "lastRenovationDate": "1982-04-28T00:00:00Z",
+             "rating": 1,
+             "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+           },
            {
-               "@search.action": "upload",
-               "hotelId": "1",
-               "baseRate": 199.0,
-               "description": "Best hotel in town",
-               "hotelName": "Fancy Stay",
-               "category": "Luxury",
-               "tags": ["pool", "view", "wifi", "concierge"],
-               "parkingIncluded": false,
-               "smokingAllowed": false,
-               "lastRenovationDate": "2010-06-27T00:00:00Z",
-               "rating": 5,
-               "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-             },
-             {
-               "@search.action": "upload",
-               "hotelId": "2",
-               "baseRate": 79.99,
-               "description": "Cheapest hotel in town",
-               "hotelName": "Roach Motel",
-               "category": "Budget",
-               "tags": ["motel", "budget"],
-               "parkingIncluded": true,
-               "smokingAllowed": true,
-               "lastRenovationDate": "1982-04-28T00:00:00Z",
-               "rating": 1,
-               "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-             },
-             {
-               "@search.action": "upload",
-               "hotelId": "3",
-               "baseRate": 279.99,
-               "description": "Surprisingly expensive",
-               "hotelName": "Dew Drop Inn",
-               "category": "Bed and Breakfast",
-               "tags": ["charming", "quaint"],
-               "parkingIncluded": true,
-               "smokingAllowed": false,
-               "lastRenovationDate": null,
-               "rating": 4,
-               "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-             },
-             {
-               "@search.action": "upload",
-               "hotelId": "4",
-               "baseRate": 220.00,
-               "description": "This could be the one",
-               "hotelName": "A Hotel for Everyone",
-               "category": "Basic hotel",
-               "tags": ["pool", "wifi"],
-               "parkingIncluded": true,
-               "smokingAllowed": false,
-               "lastRenovationDate": null,
-               "rating": 4,
-               "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-             }
-            ]
+             "@search.action": "upload",
+             "hotelId": "3",
+             "baseRate": 279.99,
+             "description": "Surprisingly expensive",
+             "hotelName": "Dew Drop Inn",
+             "category": "Bed and Breakfast",
+             "tags": ["charming", "quaint"],
+             "parkingIncluded": true,
+             "smokingAllowed": false,
+             "lastRenovationDate": null,
+             "rating": 4,
+             "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
+           },
+           {
+             "@search.action": "upload",
+             "hotelId": "4",
+             "baseRate": 220.00,
+             "description": "This could be the one",
+             "hotelName": "A Hotel for Everyone",
+             "category": "Basic hotel",
+             "tags": ["pool", "wifi"],
+             "parkingIncluded": true,
+             "smokingAllowed": false,
+             "lastRenovationDate": null,
+             "rating": 4,
+             "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
            }
+          ]
+         }
 5. Kattintson a **Végrehajtás** parancsra.
 
 Néhány másodperc múlva megjelenik a 200-as HTTP-válasz a munkamenetlistában. Ez azt jelenti, hogy a dokumentumok sikeresen létrejöttek. Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült feltölteni. Ha a 404-es válasz jelenik meg, akkor a kérelem fejlécében vagy törzsében szintaktikai hiba van.
 
-## Az index lekérdezése
+## <a name="query-the-index"></a>Az index lekérdezése
 Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket.  A **Szerkesztő** lapon a szolgáltatást lekérdező **GET** parancs az alábbi képernyőfelvételhez hasonló lesz.
 
    ![][3]
@@ -166,15 +170,15 @@ Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket.  A
 1. Válassza a **GET** lehetőséget.
 2. Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL, majd az „/indexes/<'indexname'>/docs?” karakterlánc, végül a lekérdezési paraméterek követnek. Példaképpen használja a következő URL-címet, és cserélje le benne a mintaállomásnevet egy, az Ön szolgáltatásában érvényes állomásnévvel.
    
-           https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
+         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
    
    Ez a lekérdezés a „motel” kifejezést keresi, és értékkorlátozó kategóriákat ad vissza az értékelésekhez.
 3. A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
    
-           User-Agent: Fiddler
-           host: my-app.search.windows.net
-           content-type: application/json
-           api-key: 1111222233334444
+         User-Agent: Fiddler
+         host: my-app.search.windows.net
+         content-type: application/json
+         api-key: 1111222233334444
 
 200-as válaszkódnak kell érkeznie, a válasz kimenetének pedig az alábbi képernyőfelvételhez kell hasonlítania.
 
@@ -190,7 +194,7 @@ A következő példalekérdezés az MSDN webhelyén megtekinthető és a [Search
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2015-02-28
 
-## A rendszer lekérdezése
+## <a name="query-the-system"></a>A rendszer lekérdezése
 A rendszertől a dokumentumok számát és a tárhelyhasználatot is lekérdezheti. A **Szerkesztő** lapon a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete.
 
  ![][5]
@@ -198,18 +202,18 @@ A rendszertől a dokumentumok számát és a tárhelyhasználatot is lekérdezhe
 1. Válassza a **GET** lehetőséget.
 2. Adjon meg egy olyan URL-címet, amelyben a szolgáltatási URL-címet az „/indexes/hotels/stats?api-version=2015-02-28” karakterlánc követi.
    
-           https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
 3. Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
    
-           User-Agent: Fiddler
-           host: my-app.search.windows.net
-           content-type: application/json
-           api-key: 1111222233334444
+         User-Agent: Fiddler
+         host: my-app.search.windows.net
+         content-type: application/json
+         api-key: 1111222233334444
 4. Hagyja üresen a kérés törzsét.
 5. Kattintson a **Végrehajtás** parancsra. A munkamenetlistában a 200-as HTTP-állapotkódnak kell megjelennie. Válassza ki a parancshoz közzétett bejegyzést.
 6. Kattintson a **Vizsgálók**, majd a **Fejlécek** fülre, végül válassza ki a JSON-formátumot. Ekkor megjelenik a dokumentumok száma és a tárhely mérete (KB).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg [A Search szolgáltatás kezelése az Azure rendszerben](search-manage.md) című cikket az Azure Search kód nélküli kezelésével és használatával kapcsolatban.
 
 <!--Image References-->
@@ -221,6 +225,6 @@ Tekintse meg [A Search szolgáltatás kezelése az Azure rendszerben](search-man
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

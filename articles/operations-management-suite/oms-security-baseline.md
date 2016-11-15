@@ -1,12 +1,12 @@
 ---
-title: Operations Management Suite Security and Audit Solution Baseline | Microsoft Docs
-description: This document explains how to use OMS Security and Audit solution to perform a baseline assessment of all monitored computers for compliance and security purpose.
+title: "Operations Management Suite biztonsági és auditálási megoldás alapkonfigurációja| Microsoft Docs"
+description: "Ez a dokumentum ismerteti, hogyan lehet használni az OMS biztonsági és auditálási megoldást az összes figyelt számítógép alapkonfigurációjának megfelelőségi és biztonsági célú értékelésére."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -14,72 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+
 
 ---
-# Baseline Assessment in Operations Management Suite Security and Audit Solution
-This document helps you to use [Operations Management Suite (OMS) Security and Audit Solution](operations-management-suite-overview.md) baseline assessment capabilities to access the secure state of your monitored resources.
+# <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Az alapkonfiguráció értékelése az Operations Management Suite biztonsági és auditálási megoldásában
+Ez a dokumentum segít az [Operations Management Suite (OMS) biztonsági és auditálási megoldás](operations-management-suite-overview.md) alapkonfiguráció-értékelési képességeinek használatában, hogy hozzáférhessen a figyelt erőforrások biztonsági állapotához.
 
-## What is Baseline Assessment?
-Microsoft, together with industry and government organizations worldwide, defines a Windows configuration that represents highly secure server deployments. This configuration is a set of registry keys, audit policy settings, and security policy settings along with Microsoft’s recommended values for these settings. This set of rules is known as Security baseline. OMS Security and Audit baseline assessment capability can seamlessly scan all your computers for compliance. 
+## <a name="what-is-baseline-assessment"></a>Mi az az alapkonfiguráció-értékelés?
+A Microsoft a világszerte elhelyezkedő iparági és kormányzati szervezetekkel közösen olyan Windows-konfigurációt határoz meg, amely nagy biztonságú kiszolgálók üzembe helyezését teszi lehetővé. Ez a konfiguráció beállításkulcsokból, auditálási szabályzatok beállításaiból és biztonsági szabályzatok beállításaiból áll, valamint a Microsoft ajánlott értékeit tartalmazza ezekhez a beállításokhoz. Ez a szabályzathalmaz biztonsági alapkonfigurációként ismert. Az OMS biztonság és auditálás alapkonfiguráció-értékelési képességével megfelelőség szempontjából zökkenőmentesen átvizsgálható az összes számítógépe. 
 
-There are three types of rules:
+Három szabálytípus áll rendelkezésre:
 
-* **Registry rules**: check that registry keys are set correctly.
-* **Audit policy rules**: rules regarding your audit policy.
-* **Security policy rules**: rules regarding the user’s permissions on the machine.
+* **Beállításjegyzék-szabályok**: a beállításkulcsok megfelelő beállításának ellenőrzéséhez.
+* **Auditálási házirend-szabályok**: az auditálási házirendre vonatkozó szabályok.
+* **Biztonságiházirend-szabályok**: a számítógépen a felhasználói engedélyekre vonatkozó szabályok.
 
 > [!NOTE]
-> Read [Use OMS Security to assess the Security Configuration Baseline](https://blogs.technet.microsoft.com/msoms/2016/08/12/use-oms-security-to-assess-the-security-configuration-baseline/) for a brief overview of this feature.
+> A funkció rövid áttekintéséhez olvassa el a [Use OMS Security to assess the Security Configuration Baseline](https://blogs.technet.microsoft.com/msoms/2016/08/12/use-oms-security-to-assess-the-security-configuration-baseline/) (Az OMS-biztonság használata a biztonsági alapkonfiguráció értékelésére) című cikket.
 > 
 > 
 
-## Security Baseline Assessment
-You can review your current security baseline assessment for all computers that are monitored by OMS Security and Audit using the dashboard.  Execute the following steps to access the security baseline assessment dashboard:
+## <a name="security-baseline-assessment"></a>A biztonsági alapkonfiguráció értékelése
+Az irányítópult használatával áttekintheti az OMS biztonsági és auditálási megoldás által figyelt összes számítógépére vonatkozó jelenlegi alapkonfiguráció-értékelést.  A biztonsági alapkonfiguráció-értékelési irányítópult eléréséhez hajtsa végre az alábbi lépéseket:
 
-1. In the **Microsoft Operations Management Suite** main dashboard, click **Security and Audit** tile.
-2. In the **Security and Audit** dashboard, click **Baseline Assessment** under **Security Domains**. The **Security Baseline Assessment** dashboard appears as shown in the following image:
+1. A **Microsoft Operations Management Suite** fő irányítópultján kattintson a **Biztonság és auditálás** csempére.
+2. A **Biztonság és Audit** irányítópulton kattintson az **Alapkonfiguráció értékelése** lehetőségre a **Biztonsági tartományok** alatt. A **Biztonsági alapkonfiguráció értékelése** irányítópult a következő ábrának megfelelően jelenik meg:
    
-    ![OMS Security and Audit Baseline Assessment](./media/oms-security-baseline/oms-security-baseline-fig1.png)
+    ![Az OMS biztonsági és auditálási alapkonfiguráció értékelése](./media/oms-security-baseline/oms-security-baseline-fig1.png)
 
-This dashboard is divided in three major areas:
+Ez az irányítópult három fő területet oszlik:
 
-* **Computers compared to baseline**: this section gives a summary of the number of computers that were accessed and the percentage of computers that passed the assessment. It also gives the top 10 computers and the percentage result for the assessment.
-* **Required Rules Status**: this section has the intent to bring awareness of the failed rules by severity and failed rules by type. By looking to the first graph you can quickly identify if most the failed rules are critical, or not. It also gives a list of the top 10 failed rules and their severity. The second graph shows the type of rule that failed during the assessment. 
-* **Computers missing baseline assessment**: this section list the computers that were not accessed due to operating system incompatibility or failures. 
+* **Az alapkonfigurációval összevetett számítógépek**: ebben a szakaszban jelenik meg azon számítógépek számának az összegzése, amelyekhez hozzáfértek, valamint az értékelésen megfelelt számítógépek százalékos aránya. A legelső 10 számítógép, valamint az értékelés százalékos eredményei szintén itt láthatók.
+* **Kötelező szabályok állapota**: ez a szakasz hívja fel a figyelmet a nem teljesített szabályokra, súlyosság és típus szerint csoportosítva. Az első diagramra pillantva gyorsan azonosíthatja, hogy a nem teljesített szabályok nagy része kritikus fontosságú-e vagy sem. A 10 leggyakrabban nem teljesített szabály és a súlyosságuk listája szintén itt jelenik meg. A második diagram az értékelés során sikertelen szabály típusát jeleníti meg. 
+* **Az alapkonfiguráció értékeléséből kimaradt számítógépek**: ez a szakasz azokat a számítógépeket listázza, amelyekhez az operációs rendszer inkompatibilitása vagy hibák miatt nem történt hozzáférés. 
 
-### Accessing computers compared to baseline
-Ideally all your computers are be compliant with the security baseline assessment. However it is expected that in some circumstances this doesn't happen. As part of the security management process, it is important to include reviewing the computers that failed to pass all security assessment tests. A quick way to visualize that is by selecting the option **Computers accessed** located in the **Computers compared to baseline** section. You should see the log search result showing the list of computers as shows in the following screen:
+### <a name="accessing-computers-compared-to-baseline"></a>Számítógépek elérése az alapkonfigurációval való összehasonlításhoz
+Ideális esetben minden számítógépe kompatibilis a biztonsági alapkonfiguráció értékelésével. Azonban várható, hogy bizonyos körülmények között ez nem valósul meg. A biztonsági felügyeleti folyamat részeként fontos azoknak a számítógépeknek a felülvizsgálata is, amelyek nem feleltek meg az összes biztonsági értékelési teszten. Ennek gyors megjelenítéséhez válassza az **Elért számítógépek** lehetőséget, amely **Az alapkonfigurációval összevetett számítógépek** szakaszban található. Meg kell jelennie a naplózott keresési eredményeknek a számítógépeket tartalmazó listával, a következő képernyőn látható módon:
 
-![Computer accessed results](./media/oms-security-baseline/oms-security-baseline-fig2.png)
+![Az elért számítógépeket tartalmazó eredmények](./media/oms-security-baseline/oms-security-baseline-fig2.png)
 
-The search result is shown in a table format, where the first column has the computer name and the second color has the number of rules that failed. To retrieve the information regarding the type of rule that failed, click in the number of failed rules besides the computer name. You should see a result similar to the one shown in the following image:
+A keresési eredmények táblázatos formátumban jelennek meg, ahol az első oszlop a számítógép nevét, a második pedig a sikertelen szabályok számát tartalmazza. A sikertelen szabályok típusának lekéréséhez kattintson a sikertelen szabályok számára a számítógép neve mellett. Az eredmény a következő ábrához hasonló módon jelenik meg:
 
-![Computer accessed results details](./media/oms-security-baseline/oms-security-baseline-fig3.png)
+![Az elért számítógépeket tartalmazó eredmények részletei](./media/oms-security-baseline/oms-security-baseline-fig3.png)
 
-In this search result, you have the total of accessed rules, the number of critical rules that failed, the warning rules and the information failed rules.
+Ebben a keresési eredményben szerepel az elért szabályok teljes száma, a sikertelen kritikus szabályok száma, a figyelmeztetési szabályok és a sikertelen információt tartalmazó szabályok.
 
-### Accessing required rules status
-After obtaining the information regarding the percentage number of computers that passed the assessment, you may want to obtain more information about which rules are failing according to the criticality. This visualization helps you to prioritize which computers should be addressed first to ensure they will be compliant in the next assessment. Hover over the Critical part of the graph located in the **Failed rules by severity** tile, under **Required rules status** and click it. You should see a result similar to the following screen:
+### <a name="accessing-required-rules-status"></a>A kötelező szabályok állapotának elérése
+Miután beszerezte az értékelésen megfelelt számítógépek számának százalékos arányára vonatkozó információt, lehet, hogy szeretne további információt arról, hogy mely szabályok sikertelenek kritikusság szempontjából. Ez a képi megjelenítés segít meghatározni a prioritást, hogy mely számítógépekkel kell elsőként foglalkozni a megfelelőségük biztosításához a következő értékelés során. Vigye a kurzort a diagram Kritikus része fölé a **Nem teljesített szabályok súlyosság szerint** csempén a **Kötelező szabályok állapota** alatt, és kattintson rá. Az eredmény a következő képernyőhöz hasonló módon jelenik meg:
 
-![Failed rules by severity details](./media/oms-security-baseline/oms-security-baseline-fig4.png) 
+![A Nem teljesített szabályok súlyosság szerint részletei](./media/oms-security-baseline/oms-security-baseline-fig4.png) 
 
-In this log result you see the type of baseline rule that failed, the description of this rule, and the Common Configuration Enumeration (CCE) ID of this security rule. These attributes should be enough to perform a corrective action to fix this problem in the target computer.
+Ez a naplóeredmény tartalmazza a nem teljesített alapkonfigurációs szabály típusát, a szabály leírását és a biztonsági szabály Common Configuration Enumeration (CCE) azonosítóját. Ezeknek az attribútumoknak elegendőknek kell lenniük javítási művelet végrehajtásához a célszámítógépen a probléma megoldása érdekében.
 
 > [!NOTE]
-> For more information about CCE, access the [National Vulnerability Database](https://nvd.nist.gov/cce/index.cfm).
+> A CCE-re vonatkozó további információkért látogasson el a [National Vulnerability Database](https://nvd.nist.gov/cce/index.cfm) webhelyére.
 > 
 > 
 
-### Accessing computers missing baseline assessment
-OMS supports the domain member baseline profile on Windows Server 2008 R2 up to Windows Server 2012 R2. Windows Server 2016 baseline isn’t final yet and will be added as soon as it is published. All other operating systems scanned via OMS Security and Audit baseline assessment appears under the **Computers missing baseline assessment** section.
+### <a name="accessing-computers-missing-baseline-assessment"></a>Az alapkonfiguráció értékeléséből kimaradt számítógépek elérése
+Az OMS a tartományi tag alapkonfigurációjának profilját a Windows Server 2008 R2 verziótól a Windows Server 2012 R2 verzióig támogatja. A Windows Server 2016 alapkonfigurációja még nem végleges, és közzététele után azonnal megtörténik a hozzáadása. Minden más operációs rendszer, amelyet az OMS biztonság és audit alapkonfiguráció értékelése megvizsgált **Az alapkonfiguráció értékeléséből kimaradt számítógépek** szakaszban fognak megjelenni.
 
-## See also
-In this document, you learned about OMS Security and Audit baseline assessment. To learn more about OMS Security, see the following articles:
+## <a name="see-also"></a>Lásd még:
+Ebben a dokumentumban az OMS biztonság és audit alapkonfigurációs értékeléséről olvashatott. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
-* [Operations Management Suite (OMS) overview](operations-management-suite-overview.md)
-* [Monitoring and Responding to Security Alerts in Operations Management Suite Security and Audit Solution](oms-security-responding-alerts.md)
-* [Monitoring Resources in Operations Management Suite Security and Audit Solution](oms-security-monitoring-resources.md)
+* [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
+* [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
+* [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

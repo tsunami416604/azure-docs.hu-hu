@@ -1,76 +1,80 @@
 ---
-title: Create an internal load balancer using the Azure CLI in the classic deployment model | Microsoft Docs
-description: Learn how to create an internal load balancer using the Azure CLI in the classic deployment model
+title: "Belső terheléselosztó létrehozása az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
+
 
 ---
-# Get started creating an internal load balancer (classic) using the Azure CLI
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Bevezetés a belső terheléselosztó (klasszikus) létrehozásába az Azure parancssori felület használatával
 [!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
 
-Learn how to [perform these steps using the Resource Manager model](load-balancer-get-started-ilb-arm-cli.md).
+[ Ismerje meg, hogyan ](load-balancer-get-started-ilb-arm-cli.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## To create an internal load balancer set for virtual machines
-To create an internal load balancer set and the servers that will send their traffic to it, you must do the following:
+## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a>Belső terheléselosztó készlet létrehozása a virtuális gépekhez
+Belső terheléselosztó készlet, illetve a forgalmukat a készletnek küldő kiszolgálók konfigurálásához tegye a következőket:
 
-1. Create an instance of Internal Load Balancing that will be the endpoint of incoming traffic to be load balanced across the servers of a load-balanced set.
-2. Add endpoints corresponding to the virtual machines that will be receiving the incoming traffic.
-3. Configure the servers that will be sending the traffic to be load balanced to send their traffic to the virtual IP (VIP) address of the Internal Load Balancing instance.
+1. Hozzon létre egy belső terheléselosztási példányt, amely annak a bejövő forgalomnak a végpontja lesz, amelynek a terhelését el kell osztani az elosztott terhelésű készlet kiszolgálóin.
+2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat fogják kapni.
+3. Konfigurálja úgy a kiszolgálókat, amelyek a terheléselosztóra fogják küldeni a forgalmat, hogy azt a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
 
-## Step by step creating an internal load balancer using CLI
-This guide shows how to create an internal load balancer based on the scenario above.
+## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Belső terheléselosztó parancssori felület használatával történő létrehozásának lépései
+Ez az útmutató bemutatja, hogyan hozhat létre belső terheléselosztót a fenti forgatókönyv alapján.
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../xplat-cli-install.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to classic mode, as shown below.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+2. Az **azure config mode** parancs futtatásával váltson a klasszikus módra, a lent látható módon.
    
         azure config mode asm
    
-    Expected output:
+    Várt kimenet:
    
         info:    New mode is asm
 
-## Create endpoint and load balancer set
-The scenario assumes the virtual machines "DB1" and "DB2" in a cloud service called "mytestcloud". Both virtual machines are using a virtual network called my "testvnet" with subnet "subnet-1".
+## <a name="create-endpoint-and-load-balancer-set"></a>Végpont és terheléselosztó készlet létrehozása
+A forgatókönyv azt feltételezi, hogy a „mytestcloud” nevű felhőszolgáltatásban létre van hozva két virtuális gép, a „DB1” és a „DB2”. Mindkét virtuális gép a „testvnet” nevű virtuális hálózatot használja, a „alhalozat-1” nevű alhálózattal.
 
-This guide will create an internal load balancer set using port 1433 as private port and 1433 as local port.
+Ez az útmutató létrehoz egy belső terheléselosztó készletet: az 1433-as portot használja nyilvános portként, és az 1433-as portot használja helyi portként.
 
-This is a common scenario where you have SQL virtual machines on the back end using an internal load balancer to guarantee the database servers won't be exposed directly using a public IP address.
+Ez egy gyakori forgatókönyv, amelyben a háttér SQL virtuális gépei terheléselosztót használnak annak a biztosítására, hogy az adatbázis-kiszolgálók ne legyenek közvetlenül elérhetők a használt nyilvános IP-cím miatt.
 
-### Step 1
-Create an internal load balancer set using `azure network service internal-load-balancer add`.
+### <a name="step-1"></a>1. lépés
+Belső terheléselosztó készlet létrehozása a következő használatával: `azure network service internal-load-balancer add`.
 
      azure service internal-load-balancer add -r mytestcloud -n ilbset -t subnet-1 -a 192.168.2.7
 
-Parameters used:
+Használt paraméterek:
 
-**-r** - cloud service name<BR>
-**-n** - internal load balancer name<BR>
-**-t** - subnet name ( same subnet by the virtual machines you will add to the internal load balancer)<BR>
-**-a** - (optional) add a static private IP address<BR>
+**-r** – felhőszolgáltatás neve<BR>
+**-n** – belső terheléselosztó neve<BR>
+**-t** -alhálózat neve (azonos alhálózat a belső terheléselosztóhoz hozzáadott virtuális gépekével)<BR>
+**-a** – (opcionális) statikus privát IP-cím hozzáadása<BR>
 
-Check out `azure service internal-load-balancer --help` for more information.
+További információ: `azure service internal-load-balancer --help`.
 
-You can check the internal load balancer properties using the command `azure service internal-load-balancer list` *cloud service name*.
+A belső terheléselosztó tulajdonságait a következő paranccsal ellenőrizheti: `azure service internal-load-balancer list` *felhőszolgáltatás neve*.
 
-Here follows an example of the output:
+A kimenet például a következő lehet:
 
     azure service internal-load-balancer list my-testcloud
     info:    Executing command service internal-load-balancer list
@@ -81,26 +85,26 @@ Here follows an example of the output:
     info:    service internal-load-balancer list command OK
 
 
-## Step 2
-You configure the internal load balancer set when you add the first endpoint. You will associate the endpoint, virtual machine and probe port to the internal load balancer set in this step.
+## <a name="step-2"></a>2. lépés
+A belső terheléselosztó készlet konfigurálását az első végpont hozzáadásakor kell elvégezni. Ebben a lépésben a végpontot, a virtuális gépet és a mintavételi portot társítja a belső terheléselosztó készlethez.
 
     azure vm endpoint create db1 1433 -k 1433 tcp -t 1433 -r tcp -e 300 -f 600 -i ilbset
 
-Parameters used:
+Használt paraméterek:
 
-**-k** - local virtual machine port<BR>
-**-t** - probe port<BR>
-**-r** - probe protocol<BR>
-**-e** - probe interval in seconds<BR>
-**-f** - timeout interval in seconds <BR>
-**-i** - internal load balancer name <BR>
+**-k** – helyi virtuális gép portja<BR>
+**-t** – mintavételi port<BR>
+**-r** – mintavételi protokoll<BR>
+**-e** – mintavételi időköz (másodperc)<BR>
+**-f** – időtúllépési időköz (másodperc) <BR>
+**-i** – belső terheléselosztó neve <BR>
 
-## Step 3
-Verify the load balancer configuration using `azure vm show` *virtual machine name*
+## <a name="step-3"></a>3. lépés
+Ellenőrizze a terheléselosztó konfigurációját a következő használatával: `azure vm show` *virtuális gép neve*
 
     azure vm show DB1
 
-The output will be:
+A kimenet a következő lesz:
 
         azure vm show DB1
     info:    Executing command vm show
@@ -150,24 +154,30 @@ The output will be:
     info:    vm show command OK
 
 
-## Create a remote desktop endpoint for a virtual machine
-You can create a remote desktop endpoint to forward network traffic from a public port to a local port for a specific virtual machine using `azure vm endpoint create`.
+## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Hozzon létre egy távoli asztali végpontot a virtuális géphez
+Létrehozhat egy távoli asztali végpontot a hálózati forgalom nyilvános portról helyi portra történő továbbításához egy adott virtuális géphez a `azure vm endpoint create` parancs használatával.
 
     azure vm endpoint create web1 54580 -k 3389
 
 
-## Remove virtual machine from load balancer
-You can remove a virtual machine from an internal load balancer set by deleting the associated endpoint. Once the endpoint is removed, the virtual machine won't belong to the load balancer set anymore.
+## <a name="remove-virtual-machine-from-load-balancer"></a>Virtuális gép eltávolítása a terheléselosztóból
+A virtuális gépet a hozzárendelt végpont törlésével lehet eltávolítani a belső terheléselosztó készletből. Miután megtörtént a végpont eltávolítása, a virtuális gép többé nem tartozik a terheléselosztó készlethez.
 
- Using the example above, you can remove the endpoint created for virtual machine "DB1" from internal load balancer "ilbset" by using the command `azure vm endpoint delete`.
+ A fenti példa használatával eltávolíthatja a „DB1” virtuális géphez létrehozott végpontot az „lbset” belső terheléselosztóból a következő parancs használatával: `azure vm endpoint delete`.
 
     azure vm endpoint delete DB1 tcp-1433-1433
 
 
-Check out `azure vm endpoint --help` for more information.
+További információ: `azure vm endpoint --help`.
 
-## Next steps
-[Configure a load balancer distribution mode using source IP affinity](load-balancer-distribution-mode.md)
+## <a name="next-steps"></a>Következő lépések
+[A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

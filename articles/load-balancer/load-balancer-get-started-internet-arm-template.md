@@ -1,66 +1,87 @@
 ---
-title: Create an Internet facing load balancer in Resource Manager using a template | Microsoft Docs
-description: Learn how to create an Internet facing load balancer in Resource Manager using a template
+title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása a Resource Managerben sablon használatával | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben sablon használatával"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: b24f4729-4559-4458-8527-71009d242647
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
+ms.date: 10/24/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
 
 ---
-# Creating an Internet facing load balancer using a template
+
+# <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása sablon használatával
+
 [!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-This article covers the Resource Manager deployment model. You can also [Learn how to create an Internet facing load balancer using classic deployment model](load-balancer-get-started-internet-classic-portal.md)
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a klasszikus üzemi modell használatával](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## Deploy the template by using click to deploy
-The sample template available in the public repository uses a parameter file containing the default values used to generate the scenario described above. To deploy this template using click to deploy, follow [this link](http://go.microsoft.com/fwlink/?LinkId=544801), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal.
+## <a name="deploy-the-template-by-using-click-to-deploy"></a>A sablon üzembe helyezése kattintással végrehajtható üzembe helyezéssel
 
-## Deploy the template by using PowerShell
-To deploy the template you downloaded by using PowerShell, follow the steps below.
+A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv létrehozásához használt alapértelmezett értékeket tartalmazó paraméterfájlt használja. Ha a sablon üzembe helyezését kattintással végrehajtható üzembe helyezéssel szeretné elvégezni, kövesse [ezt a hivatkozást](http://go.microsoft.com/fwlink/?LinkId=544801), kattintson az **Üzembe helyezés az Azure-on** lehetőségre, cserélje ki az alapértelmezett paraméterértékeket, ha szükséges, majd kövesse a portálon megjelenő utasításokat.
 
-1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
-2. Run the **New-AzureRmResourceGroupDeployment** cmdlet to create a resource group using the template.
-   
+## <a name="deploy-the-template-by-using-powershell"></a>A sablon üzembe helyezése a PowerShell használatával
+
+A letöltött sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
+
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+2. A **New-AzureRmResourceGroupDeployment** parancsmag futtatásával és a sablon használatával hozzon létre egy erőforráscsoportot.
+
+    ```powershell
         New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
             -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
             -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
+    ```
 
-## Deploy the template by using the Azure CLI
-To deploy the template by using the Azure CLI, follow the steps below.
+## <a name="deploy-the-template-by-using-the-azure-cli"></a>A sablon üzembe helyezése az Azure parancssori felület használatával
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../xplat-cli-install.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
-   
+Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori felület használatával.
+
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
+
+    ```azurecli
         azure config mode arm
-   
-    Here is the expected output for the command above:
-   
+    ```
+
+    A fenti parancs várható kimenete:
+
         info:    New mode is arm
-3. From your browser, navigate to **https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json**, copy the contents of the json file and paste into a new file in your computer. For this scenario, you would be copying the values below to a file named **c:\lb\azuredeploy.parameters.json**.
-4. Run the **azure group deployment create** cmdlet to deploy the new load balancer by using the template and parameter files you downloaded and modified above. The list shown after the output explains the parameters used.
-   
-        azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' -e 'c:\lb\azuredeploy.parameters.json'
 
-## Next steps
-[Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-ps.md)
+3. Lépjen a böngészőből a [Gyorssablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) lapra, másolja át és illessze be a json-fájl tartalmát egy új fájlba a számítógépén. Ehhez a forgatókönyvhöz az alábbi értékeket át kell másolnia egy **c:\lb\azuredeploy.parameters.json** nevű fájlba.
+4. Futtassa az **azure group deployment create** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új terheléselosztót. A kimenet után látható lista ismerteti a használt paramétereket.
 
-[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
+    ```azurecli
+        azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
+    ```
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+## <a name="next-steps"></a>Következő lépések
+
+[Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
+
+[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
+
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

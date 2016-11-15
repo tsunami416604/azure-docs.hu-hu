@@ -1,99 +1,109 @@
 ---
-title: Create an Internet-facing load balancer in Resource Manager using the Azure portal | Microsoft Docs
-description: Learn how to create an Internet-facing load balancer in Resource Manager using the Azure portal
+title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása a Resource Managerben az Azure Portallal | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben az Azure Portallal"
 services: load-balancer
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: annahar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d9e27ce132a837ec26a92de0c38b3e1c23b706c1
+
 
 ---
-# Creating an Internet-facing load balancer using the Azure portal
+# <a name="creating-an-internetfacing-load-balancer-using-the-azure-portal"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Portallal
 [!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-This article covers the Resource Manager deployment model. You can also [Learn how to create an Internet-facing load balancer using classic deployment](load-balancer-get-started-internet-classic-portal.md)
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a klasszikus üzemelő példány használatával](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-This covers the sequence of individual tasks it has to be done to create a load balancer and explain in detail what is being done to accomplish the goal.
+Tartalmazza a terheléselosztó létrehozása érdekében elvégzendő feladatok sorozatát, és részletesen elmagyarázza, mit kell végrehajtani a cél megvalósítása érdekében.
 
-## What is required to create an Internet-facing load balancer?
-You need to create and configure the following objects to deploy a load balancer.
+## <a name="what-is-required-to-create-an-internetfacing-load-balancer"></a>Mi szükséges egy internetkapcsolattal rendelkező terheléselosztó létrehozásához?
+A terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehozni és konfigurálni.
 
-* Front-end IP configuration - contains public IP addresses for incoming network traffic.
-* Back-end address pool - contains network interfaces (NICs) for the virtual machines to receive network traffic from the load balancer.
-* Load balancing rules - contains rules mapping a public port on the load balancer to port in the back-end address pool.
-* Inbound NAT rules - contains rules mapping a public port on the load balancer to a port for a specific virtual machine in the back-end address pool.
-* Probes - contains health probes used to check availability of virtual machines instances in the back-end address pool.
+* Előtér-IP-konfiguráció – a nyilvános IP-címeket tartalmazza a bejövő hálózati forgalomhoz.
+* Háttércímkészlet – hálózati adaptereket (NIC) tartalmaz, amelyek segítségével a virtuális gépek fogadhatják a terheléselosztóról érkező hálózati forgalmat.
+* Terheléselosztási szabályok – olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá háttércímkészlet portjaihoz.
+* Bejövő NAT-szabályok – olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá egy adott virtuális gép portjához a háttércímkészletben.
+* Mintavételezők – állapotfigyelő mintavételezőket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állását ellenőrzik a háttércímkészletben.
 
-You can get more information about load balancer components with Azure Resource Manager at [Azure Resource Manager support for Load Balancer](load-balancer-arm.md).
+További információkat szerezhet a terheléselosztónak az Azure Resource Managerben használt összetevőiről [Az Azure Resource Manager által nyújtott támogatás a terheléselosztó számára](load-balancer-arm.md) című részben.
 
-## Set up a load balancer in Azure portal
+## <a name="set-up-a-load-balancer-in-azure-portal"></a>Terheléselosztó beállítása az Azure Portalon
 > [!IMPORTANT]
-> This example assumes you have a virtual network called **myVNet**. Refer to [create virtual network](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) to do this. It also assumes there is a subnet within **myVNet** called **LB-Subnet-BE** and two VMs called **web1** and **web2** respectively within the same availability set called **myAvailSet** in **myVNet**. Refer to [this link](../virtual-machines/virtual-machines-windows-hero-tutorial.md) to create VMs.
+> A példa feltételezi, hogy Ön rendelkezik egy **myVNet** nevű virtuális hálózattal. A művelet elvégzéséhez lásd a [Virtuális hálózat létrehozása](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) című részt. Feltételezi továbbá, hogy a **myVNet** hálózat tartalmaz egy **LB-Subnet-BE** nevű alhálózatot és két virtuális gépet (**web1** és **web2**) a **myVNet** ugyanazon **myAvailSet** nevű rendelkezésre állási csoportján belül. A virtuális gépek létrehozásához tekintse meg [ezt a hivatkozást](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 > 
 > 
 
-1. From a browser navigate to the Azure portal: [http://portal.azure.com](http://portal.azure.com) and login with your Azure account.
-2. On the top left-hand side of the screen select **New** > **Networking** > **Load Balancer.**
-3. In the **Create load balancer** blade, type a name for your load balancer. Here it is called **myLoadBalancer**.
-4. Under **Type**, select **Public**.
-5. Under **Public IP address**, create a new public IP called **myPublicIP**.
-6. Under Resource Group, select **myRG**. Then select an appropriate **Location**, and then click **OK**. The load balancer will then start to deploy and will take a few minutes to successfully complete deployment.
+1. Egy böngészőből keresse fel az Azure Portalt: [http://portal.azure.com](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
+2. A képernyő bal felső részén válassza ki az **Új** > **Hálózat** > **Terheléselosztó** elemet.
+3. A **Terheléselosztó létrehozása** panelen írja be a terheléselosztó nevét. Most **myLoadBalancer** a neve.
+4. A **Típus** alatt válassza ki a **Nyilvános** elemet.
+5. A **Nyilvános IP-cím** alatt hozzon létre egy új nyilvános IP-címet **myPublicIP** néven.
+6. Az Erőforráscsoport alatt válassza ki a **myRG** elemet. Ezután válassza ki a megfelelő **helyet**, majd kattintson az **OK** gombra. Ekkor elindul a terheléselosztó üzembe helyezése, ami néhány perc alatt sikeresen befejeződik.
 
-![Updating resource group of load balancer](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+![Terheléselosztó erőforráscsoportjának frissítése](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-## Create a back-end address pool
-1. Once your load balancer has successfully deployed, select it from within your resources. Under settings, select Backend Pools. Type a name for your backend pool. Then click on the **Add** button toward the top of the blade that shows up.
-2. Click on **Add a virtual machine** in the **Add backend pool** blade.  Select **Choose an availability set** under **Availability set** and select **myAvailSet**. Next, select **Choose the virtual machines** under the Virtual Machines section in the blade and click on **web1** and **web2**, the two VMs created for load balancing. Ensure that both have blue check marks to the left as shown in the image below. Then, click **Select** in that blade followed by OK in the **Choose Virtual machines** blade and then **OK** in the **Add backend pool** blade.
+## <a name="create-a-backend-address-pool"></a>Háttércímkészlet létrehozása
+1. A terheléselosztó sikeres üzembe helyezését követően válassza ki azt az erőforrások közül. A Beállítások alatt válassza ki a Háttérkészletek elemet. Írja be a háttérkészlet nevét. Ezután kattintson a megjelenő panel tetején található **Hozzáadás** gombra.
+2. A **Háttérkészlet hozzáadása** panelen kattintson a **Virtuális gép hozzáadása** lehetőségre.  A **Rendelkezésre állási készlet** alatt válassza ki a **Rendelkezésre állási készlet kiválasztása ** lehetőséget, majd válassza ki a **myAvailSet** elemet. Ezután a panel Virtuális gépek szakasza alatt válassza ki a **Virtuális gépek kiválasztása** lehetőséget, majd kattintson a **web1** és a **web2** elemre, a terheléselosztás céljából létrehozott két virtuális gépre. Győződjön meg róla, hogy mindkét gép bal oldalán kék pipa található, az alábbi képnek megfelelően. Ezután kattintson ugyanazon a panelen a **Kiválasztás** elemre, majd a **Virtuális gépek kiválasztása** panelen az OK gombra, s végül a **Háttérkészlet hozzáadása** panelen az **OK** gombra.
    
-    ![Adding to the backend address pool - ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
-3. Check to make sure your notifications drop down list has an update regarding saving the load balancer backend pool in addition to updating the network interface for both the VMs **web1** and **web2**.
+    ![Hozzáadás a háttércímkészlethez – ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+3. Ellenőrizze, hogy az értesítések legördülő listája tartalmaz-e a terheléselosztó háttérkészletének mentésére vonatkozó frissítést is a két virtuális gép (**web1** és **web2**) frissítésén kívül.
 
-## Create a probe, LB rule, and NAT rules
-1. Create a health probe.
+## <a name="create-a-probe-lb-rule-and-nat-rules"></a>Mintavétel, LB-szabály és NAT-szabályok létrehozása
+1. Hozzon létre egy állapotmintát.
    
-    Under Settings of your load balancer, select Probes. Then click **Add** located at the top of the blade.
+    A terheléselosztó Beállítások menüjéből válassza ki a Mintavételek elemet. Ezután kattintson a panel tetején található **Hozzáadás** gombra.
    
-    There are two ways to configure a probe: HTTP or TCP. This example shows HTTP, but TCP can be configured in a similar manner.
-    Update the necessary information. As mentioned, **myLoadBalancer** will load balance traffic on Port 80. The path selected is HealthProbe.aspx, Interval is 15 seconds, and Unhealthy threshold is 2. Once finished, click **OK** to create the probe.
+    Két módszer van a mintavétel konfigurálására: HTTP vagy TCP. Ez a példa a HTTP módszert mutatja be, de a TCP is hasonló módon konfigurálható.
+    Frissítse a szükséges információkat. Amint már említettük, a **myLoadBalancer** betölti a 80-as portra az elosztott terhelésű forgalmat. A kiválasztott elérési út a HealthProbe.aspx, az időköz 15 másodperc, a nem kifogástalan állapot küszöbértéke pedig 2. Ha végzett, a projekt létrehozásához kattintson az **OK** gombra.
    
-    Hover your pointer over the ‘i’ icon to learn more about these individual configurations and how they can be changed to cater to your requirements.
+    Vigye az egérmutatót az „i” ikon fölé, ha szeretne többet megtudni az egyes konfigurációkról, illetve arról, hogyan lehet őket módosítani az igényeinek megfelelően.
    
-    ![Adding a probe](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
-2. Create a load balancer rule.
+    ![Mintavétel hozzáadása](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
+2. Hozzon létre egy terheléselosztó-szabályt.
    
-    Click on Load balancing rules in the Settings section of your load balancer. In the new blade, click on **Add**. Name your rule. Here, it is HTTP. Choose the frontend port and Backend port. Here, 80 is chosen for both. Choose **LB-backend** as your Backend pool and the previously created **HealthProbe** as the Probe. Other configurations can be set according to your requirements. Then click OK to save the load balancing rule.
+    Kattintson a terheléselosztó Beállítások szakaszában található Terheléselosztási szabályok betöltése lehetőségre. Az új panelen kattintson a **Hozzáadás** gombra. Adjon nevet a szabálynak. Itt a neve HTTP. Válassza ki az előtérportot és a háttérportot. Ebben a példában mindkettőnek 80-as port van kiválasztva. Válassza ki az **LB-háttér** elemet háttérkészletként, illetve a korábban létrehozott **HealthProbe** elemet mintavételként. A többi konfigurációt a saját igényeinek megfelelően állíthatja be. Ezután kattintson az OK gombra a terheléselosztási szabály mentéséhez.
    
-    ![Adding a load balancing rule](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
-3. Create inbound NAT rules
+    ![Terheléselosztási szabály hozzáadása](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+3. Bejövő NAT-szabályok létrehozása
    
-    Click on Inbound NAT rules under the settings section of your load balancer. In the new blade that, click **Add**. Then name your inbound NAT rule. Here it is called **inboundNATrule1**. The destination should be the Public IP previously created. Select Custom under Service and select the protocol you would like to use. Here TCP is selected. Enter the port, 3441, and the Target port, in this case, 3389. then click OK to save this rule.
+    Kattintson a terheléselosztó Beállítások szakaszában található Bejövő NAT-szabályok lehetőségre. Az új panelen kattintson a **Hozzáadás** gombra. Ezután adjon nevet a bejövő NAT-szabálynak. Itt **inboundNATrule1** a neve. A célnak a korábban létrehozott nyilvános IP-címnek kell lennie. A Szolgáltatás alatt Válassza ki az Egyéni elemet, és válassza ki a használni kívánt protokollt. Itt a TCP van kiválasztva. Adja meg a portot: 3441, illetve a célportot, ebben az esetben: 3389. ezután kattintson az OK gombra a szabály mentéséhez.
    
-    Once the first rule is created, repeat this step for the second inbound NAT rule called inboundNATrule2 from port 3442 to Target port 3389.
+    Az első szabály létrehozása után ismételje meg ezt a lépést a második bejövő NAT-szabályra is, amelynek neve inboundNATrule2, a 3442-es porttól a 3389-es célportig.
    
-    ![Adding an inbound NAT rule](./media/load-balancer-get-started-internet-portal/6-load-balancer-inbound-nat-rules.png)
+    ![Bejövő NAT-szabály hozzáadása](./media/load-balancer-get-started-internet-portal/6-load-balancer-inbound-nat-rules.png)
 
-## Remove a Load Balancer
-To delete a load balancer, select the load balancer you want to remove. In the *Load Balancer* blade, click on **Delete** located at the stop of the blade. Then select **Yes** when prompted.
+## <a name="remove-a-load-balancer"></a>Terheléselosztó eltávolítása
+Terheléselosztó törléséhez válassza ki az eltávolítani kívánt terheléselosztót. A *Terheléselosztó* panelen kattintson a panel tetején található **Törlés** gombra. Ezután válassza ki az **Igen** lehetőséget, ha a rendszer megkérdezi.
 
-## Next steps
-[Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-cli.md)
+## <a name="next-steps"></a>Következő lépések
+[Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-cli.md)
 
-[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
+[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

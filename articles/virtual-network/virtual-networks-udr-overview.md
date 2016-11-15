@@ -1,12 +1,12 @@
 ---
-title: What are User Defined Routes and IP Forwarding?
-description: Learn how to use User Defined Routes (UDR) and IP Forwarding to forward traffic to network virtual appliances in Azure.
+title: "Mi a felhasználó által megadott útvonal és az IP-továbbítás?"
+description: "Ismerje meg, hogyan kell használni a felhasználó által megadott útvonalakat (UDR) és az IP-továbbítást a forgalom virtuális készülékekre történő irányításához az Azure-ban."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: c39076c4-11b7-4b46-a904-817503c4b486
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,96 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+
 
 ---
-# What are User Defined Routes and IP Forwarding?
-When you add virtual machines (VMs) to a virtual network (VNet) in Azure, you will notice that the VMs are able to communicate with each other over the network, automatically. You do not need to specify a gateway, even though the VMs are in different subnets. The same is true for communication from the VMs to the public Internet, and even to your on-premises network when a hybrid connection from Azure to your own datacenter is present.
+# <a name="what-are-user-defined-routes-and-ip-forwarding"></a>Mi a felhasználó által megadott útvonal és az IP-továbbítás?
+Amikor az Azure-ban virtuális gépeket (VM-ek) ad hozzá egy virtuális hálózathoz (VNet), észre fogja venni, hogy a virtuális gépek automatikusan tudnak egymással kommunikálni a hálózaton keresztül. Nem kell megadni átjárót, akkor sem, ha a virtuális gépek külön alhálózatokon vannak. Ugyanez vonatkozik a virtuális gépek és a nyilvános internet közötti kommunikációra, és akár a helyszíni hálózatra is, ha jelen van egy hibrid kapcsolat az Azure és a saját adatközpont között.
 
-This flow of communication is possible because Azure uses a series of system routes to define how IP traffic flows. System routes control the flow of communication in the following scenarios:
+A kommunikáció ilyen típusú áramlása azért lehetséges, mert az Azure rendszerútvonalak sorát használja az IP-cím adatforgalmának meghatározására. A rendszerútvonalak az alábbi helyzetekben irányítják a kommunikáció áramlását:
 
-* From within the same subnet.
-* From a subnet to another within a VNet.
-* From VMs to the Internet.
-* From a VNet to another VNet through a VPN gateway.
-* From a VNet to your on-premises network through a VPN gateway.
+* Ha ugyanazon az alhálózaton belül történik.
+* Két alhálózat között történik egy virtuális hálózaton belül.
+* Virtuális gépek és az internet között történik.
+* Két VNet között történik egy VPN-átjárón keresztül.
+* Egy VNet és a helyszíni hálózat között történik egy VPN-átjárón keresztül.
 
-The figure below shows a simple setup with a VNet, two subnets, and a few VMs, along with the system routes that allow IP traffic to flow.
+Az alábbi ábrán egy egyszerű beállítás látható egy virtuális hálózattal, két alhálózattal és néhány virtuális géppel, valamint azokkal a rendszerútvonalakkal, amelyek engedélyezik az IP-cím forgalmának áramlását.
 
-![System routes in Azure](./media/virtual-networks-udr-overview/Figure1.png)
+![Rendszerútvonalak az Azure-ban](./media/virtual-networks-udr-overview/Figure1.png)
 
-Although the use of system routes facilitates traffic automatically for your deployment, there are cases in which you want to control the routing of packets through a virtual appliance. You can do so by creating user defined routes that specify the next hop for packets flowing to a specific subnet to go to your virtual appliance instead, and enabling IP forwarding for the VM running as the virtual appliance.
+Bár a rendszerútvonalak használata automatikusan segíti az üzemelő példány forgalmát, vannak esetek, amikor a csomagok útválasztását érdemesebb egy virtuális készüléken keresztül irányítani. Ezt úgy teheti meg, hogy felhasználó által megadott útvonalakat hoz létre, amelyek úgy határozzák meg a következő ugrást az adott alhálózatra áramló csomagok számára, hogy azok a virtuális készülékre érkezzenek, valamint engedélyezi az IP-továbbítást a virtuális készülékként futó virtuális gép számára.
 
-The figure below shows an example of user defined routes and IP forwarding to force packets sent to one subnet from another to go through a virtual appliance on a third subnet.
+Az alábbi ábra a felhasználó által megadott útvonalakra és az IP-továbbításra mutat egy példát, amelyben az egyik alhálózatról a másikra küldött csomagokat arra kényszerítik, hogy áthaladjanak a harmadik alhálózat virtuális készülékén.
 
-![System routes in Azure](./media/virtual-networks-udr-overview/Figure2.png)
+![Rendszerútvonalak az Azure-ban](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> User defined routes are only applied to traffic leaving a subnet. you cannot create routes to specify how traffic comes into a subnet from the Internet, for instance. Also, the appliance you are forwarding traffic to cannot be in the same subnet where the traffic originates. Always create a separate subnet for your appliances. 
+> A rendszer a felhasználó által megadott útvonalakat csak az alhálózatot elhagyó forgalomra alkalmazza. Nem hozhat létre útvonalakat például azért, hogy meghatározzák milyen úton érkezik a forgalom az internetről egy alhálózatba. Emellett az a készülék, amelyre a forgalmat továbbítja, nem lehet ugyanabban az alhálózatban, mint ahonnan a forgalom származik. Mindig hozzon létre egy külön alhálózatot a készülékeinek. 
 > 
 > 
 
-## Route resource
-Packets are routed over a TCP/IP network based on a route table defined at each node on the physical network. A route table is a collection of individual routes used to decide where to forward packets based on the destination IP address. A route consists of the following:
+## <a name="route-resource"></a>Útvonal-erőforrás
+A csomagok útválasztása a TCP/IP-hálózatban egy útválasztási táblázaton alapul, ami a fizikai hálózat minden csomópontján meg van határozva. Az útválasztási táblázat külön útvonalak gyűjteménye, amelyet arra használnak, hogy az IP-célcím alapján eldöntsék, a rendszer hova továbbítsa a csomagokat. Az útvonalak a következőket tartalmazzák:
 
-| Property | Description | Constraints | Considerations |
+| Tulajdonság | Leírás | Korlátozások | Megfontolások |
 | --- | --- | --- | --- |
-| Address Prefix |The destination CIDR to which the route applies, such as 10.1.0.0/16. |Must be a valid CIDR range representing addresses on the public Internet, Azure virtual network, or on-premises datacenter. |Make sure the **Address prefix** does not contain the address for the **Next hop address**, otherwise your packets will enter in a loop going from the source to the next hop without ever reaching the destination. |
-| Next hop type |The type of Azure hop the packet should be sent to. |Must be one of the following values: <br/> **Virtual Network**. Represents the local virtual network. For instance, if you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network, the route for each subnet in the route table will have a next hop value of *Virtual Network*. <br/> **Virtual Network Gateway**. Represents an Azure S2S VPN Gateway. <br/> **Internet**. Represents the default Internet gateway provided by the Azure Infrastructure. <br/> **Virtual Appliance**. Represents a virtual appliance you added to your Azure virtual network. <br/> **None**. Represents a black hole. Packets forwarded to a black hole will not be forwarded at all. |Consider using a **None** type to stop packets from flowing to a given destination. |
-| Next hop address |The next hop address contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is *Virtual Appliance*. |Must be a reachable IP address. |If the IP address represents a VM, make sure you enable [IP forwarding](#IP-forwarding) in Azure for the VM. |
+| Címelőtag |A cél CIDR, amelyre az útvonal vonatkozik, például 10.1.0.0/16. |Érvényes CIDR tartománynak kell lennie, ami a nyilvános interneten, az Azure virtuális hálózatban vagy a helyszíni adatközpontban található címeket jelöli. |Győződjön meg arról, hogy a **címelőtag** nem **a következő ugrás címét** tartalmazza, különben a csomagok bekerülnek egy hurokba, és a forrásuktól a következő ugráshoz kerülnek anélkül, hogy valaha is elérnék a céljukat. |
+| A következő ugrás típusa |Az Azure ugrás típusa, amellyel a csomagot küldeni kell. |A következő értékek egyikének kell lennie: <br/> **Virtuális hálózat**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Virtuális hálózat* lesz. <br/> **Virtuális hálózati átjáró**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **Nincs**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva. |Érdemes a **Nincs** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. |
+| A következő ugrás címe |A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*. |Egy olyan IP-címnek kell lennie, ami elérhető azon virtuális hálózaton belül, ahol a felhasználó által megadott útvonal van alkalmazva. |Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. |
 
-In Azure PowerShell some of the "NextHopType" values have different names:
+Az Azure PowerShellben néhány „NextHopType” értéknek különböző neve van:
 
-* Virtual Network is VnetLocal
-* Virtual Network Gateway is VirtualNetworkGateway
-* Virtual Appliance is VirtualAppliance
-* Internet is Internet
-* None is None
+* A virtuális hálózat a VnetLocal
+* A virtuális hálózati átjáró a VirtualNetworkGateway
+* A virtuális készülék a VirtualAppliance
+* Az internet az Internet
+* A nincs a Nincs
 
-### System Routes
-Every subnet created in a virtual network is automatically associated with a route table that contains the following system route rules:
+### <a name="system-routes"></a>Rendszerútvonalak
+A rendszer a virtuális hálózatban létrehozott összes alhálózatot automatikusan hozzárendeli egy útválasztási táblázathoz, ami az alábbi útválasztási szabályokat tartalmazza:
 
-* **Local Vnet Rule**: This rule is automatically created for every subnet in a virtual network. It specifies that there is a direct link between the VMs in the VNet and there is no intermediate next hop.
-* **On-premises Rule**: This rule applies to all traffic destined to the on-premises address range and uses VPN gateway as the next hop destination.
-* **Internet Rule**: This rule handles all traffic destined to the public Internet and uses the infrastructure internet gateway as the next hop for all traffic destined to the Internet.
+* **Helyi Vnet szabály**: Ez a szabály a virtuális hálózat miden alhálózatában automatikusan létrejön. Meghatározza, hogy a virtuális hálózatban a virtuális gépek között közvetlen kapcsolat van, és nincs köztes ugrás.
+* **Helyszíni szabály**: Ez a szabály a helyszíni címtartományba irányuló teljes forgalomra érvényes, és VPN-átjárót használ a következő ugrási célként.
+* **Internet szabály**: Ez a szabály kezeli a nyilvános internet felé irányuló teljes forgalmat (címelőtag 0.0.0.0/0) , és az internetre irányuló forgalomnál az infrastruktúra internetes átjáróját használja következő ugrásként.
 
-### User Defined Routes
-For most environments you will only need the system routes already defined by Azure. However, you may need to create a route table and add one or more routes in specific cases, such as:
+### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
+A legtöbb környezetben csak az Azure által meghatározott rendszerútvonalakra van szükség. Lehetséges azonban, hogy létre kell hoznia egy útválasztási táblázatot, amelyhez bizonyos esetekben hozzá kell adnia egy vagy több útvonalat, ilyenek például:
 
-* Force tunneling to the Internet via your on-premises network.
-* Use of virtual appliances in your Azure environment.
+* Kényszerített bújtatás az internetre a helyszíni hálózaton keresztül.
+* Virtuális készülékek használata Azure környezetben.
 
-In the scenarios above, you will have to create a route table and add user defined routes to it. You can have multiple route tables, and the same route table can be associated to one or more subnets. And each subnet can only be associated to a single route table. All VMs and cloud services in a subnet use the route table associated to that subnet.
+A fenti helyzetekben létre kell hoznia egy útválasztási táblázatot, és hozzá kell adnia felhasználó által meghatározott útvonalakat. Egyszerre több útválasztási táblázattal is rendelkezhet, és ugyanazt az útválasztási táblázatot egy vagy több alhálózathoz is hozzá lehet rendelni. És minden alhálózathoz csak egy útválasztási táblázatot lehet hozzárendelni. Az alhálózat minden virtuális gépe és felhőszolgáltatása ugyanazt az alhálózathoz hozzárendelt útválasztási táblázatot használja.
 
-Subnets rely on system routes until a route table is associated to the subnet. Once an association exists, routing is done based on Longest Prefix Match (LPM) among both user defined routes and system routes. If there is more than one route with the same LPM match then a route is selected based on its origin in the following order:
+Az alhálózatok egészen addig rendszerútvonalakra támaszkodnak, amíg hozzá nem rendelnek egy útválasztási táblázatot az alhálózathoz. Miután egy hozzárendelés létrejött, az útválasztás a felhasználó által megadott útvonalaknál és a rendszerútvonalaknál is a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
 
-1. User defined route
-2. BGP route (when ExpressRoute is used)
-3. System route
+1. Felhasználó által megadott útvonal
+2. BGP-útvonal (ExpressRoute használatánál)
+3. Rendszerútvonal
 
-To learn how to create user defined routes, see [How to Create Routes and Enable IP Forwarding in Azure](virtual-network-create-udr-arm-template.md).
-
-> [!IMPORTANT]
-> User defined routes are only applied to Azure VMs and cloud services. For instance, if you want to add a firewall virtual appliance between your on-premises network and Azure, you will have to create a user defined route for your Azure route tables that forwards all traffic going to the on-premises address space to the virtual appliance. You can also add a user defined route (UDR) to the GatewaySubnet to forward all traffic from on-premises to Azure through the virtual appliance. This is a recent addition.
-> 
-> 
-
-### BGP Routes
-If you have an ExpressRoute connection between your on-premises network and Azure, you can enable BGP to propagate routes from your on-premises network to Azure. These BGP routes are used in the same way as system routes and user defined routes in each Azure subnet. For more information see [ExpressRoute Introduction](../expressroute/expressroute-introduction.md).
+A felhasználó által megadott útvonalak létrehozásával kapcsolatban tekintse meg a [How to Create Routes and Enable IP Forwarding in Azure](virtual-network-create-udr-arm-template.md) (Hogyan hozhat létre útvonalakat, és engedélyezheti az IP-továbbítást az Azure-ban) című cikket.
 
 > [!IMPORTANT]
-> You can configure your Azure environment to use force tunneling through your on-premises network by creating a user defined route for subnet 0.0.0.0/0 that uses the VPN gateway as the next hop. However, this only works if you are using a VPN gateway, not ExpressRoute. For ExpressRoute, forced tunneling is configured through BGP.
+> A rendszer a felhasználó által megadott útvonalakat csak az Azure virtuális gépekre és felhőszolgáltatásokra alkalmazza. Ha például virtuális készülékként egy tűzfalat szeretne beiktatni a helyszíni hálózat és az Azure közé, létre kell hoznia egy felhasználó által megadott útvonalat az Azure útválasztási táblázatban, amely a helyszíni címtérre irányuló teljes forgalmat a virtuális készülékre továbbítja. Hozzáadhat egy felhasználó által megadott útvonalat a GatewaySubnet alhálózathoz, így az összes helyszíni forgalmat továbbíthatja az Azure-ba a virtuális készüléken keresztül. Ez a lehetőség a közelmúltban lett hozzáadva.
 > 
 > 
 
-## IP Forwarding
-As describe above, one of the main reasons to create a user defined route is to forward traffic to a virtual appliance. A virtual appliance is nothing more than a VM that runs an application used to handle network traffic in some way, such as a firewall or a NAT device.
+### <a name="bgp-routes"></a>BGP-útvonalak
+Ha a helyszíni hálózat és az Azure között ExpressRoute kapcsolat van, akkor engedélyezni lehet a BGP-t, hogy az útvonalakat a helyszíni hálózatból az Azure-ba terjessze. A BGP-útvonalakat minden Azure alhálózatban ugyanúgy kell használni, mint a rendszerútvonalakat és a felhasználó által megadott útvonalakat. További információ: [ExpressRoute Introduction](../expressroute/expressroute-introduction.md) (Az ExpressRoute bemutatása).
 
-This virtual appliance VM must be able to receive incoming traffic that is not addressed to itself. To allow a VM to receive traffic addressed to other destinations, you must enable IP Forwarding for the VM. This is an Azure setting, not a setting in the guest operating system.
+> [!IMPORTANT]
+> Az Azure környezetet a helyszíni hálózaton keresztül lehet úgy konfigurálni, hogy kényszerített bújtatást használjon. Ehhez létre kell hozni egy felhasználó által megadott útvonalat a 0.0.0.0/0 alhálózat számára, amely a VPN-átjárót használja következő ugrásként. Ez azonban csak akkor működik, ha VPN-átjárót használ, nem ExpressRoute-ot. Az ExpressRoute-nál a kényszerített bújtatás konfigurálása a BGP-n keresztül történik.
+> 
+> 
 
-## Next Steps
-* Learn how to [create routes in the Resource Manager deployment model](virtual-network-create-udr-arm-template.md) and associate them to subnets. 
-* Learn how to [create routes in the classic deployment model](virtual-network-create-udr-classic-ps.md) and associate them to subnets.
+## <a name="ip-forwarding"></a>IP-továbbítás
+A fent leírtak alapján a felhasználó által megadott útvonal létrehozásának egyik fő oka a forgalom virtuális készülékre történő továbbítása. A virtuális készülék nem más, mint egy virtuális gép, amelyen egy olyan alkalmazás fut, ami a hálózati forgalmat kezeli valamilyen módon, például tűzfallal vagy NAT-eszközzel.
 
-<!--HONumber=Sep16_HO4-->
+A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett bejövő forgalmat. Ahhoz, hogy egy virtuális gép számára engedélyezze a más célhelyre irányított forgalom fogadását, először engedélyeznie kell a virtuális gép számára az IP-továbbítást. Ez egy Azure beállítás, nem a vendég operációs rendszer beállítása.
+
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg, hogyan [hozhat létre útvonalakat a Resource Manager üzembe helyezési modellben](virtual-network-create-udr-arm-template.md), és hogyan rendelheti őket hozzá az alhálózatokhoz. 
+* Ismerje meg, hogyan [hozhat létre útvonalakat a klasszikus üzembe helyezési modellben](virtual-network-create-udr-classic-ps.md), és hogyan rendelheti őket hozzá az alhálózatokhoz.
+
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

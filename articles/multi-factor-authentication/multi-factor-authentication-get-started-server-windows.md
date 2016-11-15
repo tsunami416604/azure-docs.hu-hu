@@ -1,12 +1,12 @@
 ---
-title: Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
-description: Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a Windows-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez.
+title: "Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló"
+description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a Windows-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtand
-
+ms.assetid: 19a4043f-c4ce-43c0-80e7-2548ee92cb74
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1952e103c574f83c2c6285e32c59144816749348
+
 
 ---
-# Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
+# <a name="windows-authentication-and-azure-multifactor-authentication-server"></a>Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
 A Windows-hitelesítés szakaszban a rendszergazda engedélyezheti és konfigurálhatja egy vagy több alkalmazás Windows-hitelesítését.  Az alábbi listában felsorolt szempontokat érdemes figyelembe venni Windows-hitelesítés beállításakor.
 
 * Újraindítás szükséges a terminálszolgáltatások Azure Multi-Factor Authentication szolgáltatásának aktiválódásához.
@@ -28,7 +32,7 @@ A Windows-hitelesítés szakaszban a rendszergazda engedélyezheti és konfigur�
 > 
 > 
 
-## Ha egy alkalmazás védelmét Windows-hitelesítéssel szeretné biztosítani, kövesse az alábbi eljárást.
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Ha egy alkalmazás védelmét Windows-hitelesítéssel szeretné biztosítani, kövesse az alábbi eljárást.
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a Windows-hitelesítés ikonra.
    ![Windows-hitelesítés](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
 2. Jelölje be a Windows-hitelesítés engedélyezése jelölőnégyzetet. Alapértelmezés szerint a jelölőnégyzet nincs bejelölve.
@@ -42,6 +46,9 @@ A Windows-hitelesítés szakaszban a rendszergazda engedélyezheti és konfigur�
 10. Válassza az Alhálózat lehetőséget, ha egy IP-címtartományt szeretne megadni alhálózat megjelöléssel. Adja meg az alhálózat kezdő IP-címét, és válassza ki a megfelelő hálózati maszkot a legördülő listából.
 11. Kattintson az OK gombra.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

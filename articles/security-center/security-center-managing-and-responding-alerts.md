@@ -1,30 +1,34 @@
 ---
-title: Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben | Microsoft Docs
-description: Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
+title: "Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben | Microsoft Docs"
+description: "Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2016
+ms.date: 10/17/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
+
 
 ---
-# Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
+# <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
 
 > [!NOTE]
-> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Igénybe veheti a 90 napos ingyenes próbaverziót. A frissítéshez a [Biztonsági szabályzat](security-center-policies.md) beállításnál válassza ki a kívánt tarifacsomagot. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Igénybe veheti a 90 napos ingyenes próbaverziót. A frissítéshez a [Biztonsági szabályzat](security-center-policies.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
 > 
 > 
 
-## Mik azok a biztonsági riasztások?
+## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások, például a tűzfalak és a végpontvédelmi megoldások naplóadatait a valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében. A Security Centerben megtekinthető a rangsorolt biztonsági riasztások listája, ezenkívül a probléma gyors vizsgálatára vonatkozó információk és a támadás elhárításával kapcsolatos javaslatok is megjelennek. Az Azure Security Center ezenkívül [incidensekbe](security-center-incident.md) összesíti azokat a riasztásokat, amelyek törlési láncot alkotó mintát jeleznek. 
 
 > [!NOTE]
@@ -32,7 +36,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 > 
 > 
 
-## Biztonsági riasztások kezelése
+## <a name="managing-security-alerts"></a>Biztonsági riasztások kezelése
 A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat. Nyissa meg az Azure Portal webhelyet, és az egyes riasztásokkal kapcsolatos további részletek megjelenítéséhez kövesse az alábbi lépéseket:
 
 1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
@@ -54,7 +58,7 @@ A panel alsó részén találhatók az egyes riasztások részletei. Rendezésü
   * **Elvetve:** A felhasználó elvetette a biztonsági riasztást. Általában azoknak a riasztásoknak ez az állapota, amelyeket megvizsgáltak, és vagy megoldottak, vagy azok nem bizonyultak tényleges támadásnak.
 * **Súlyosság:** A súlyosság szintje lehet magas, közepes vagy alacsony.
 
-### A riasztások szűrése
+### <a name="filtering-alerts"></a>A riasztások szűrése
 A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.
 
 1. Kattintson a **Szűrő** lehetőségre a **Biztonsági riasztások** panelen. A **Szűrő** panel megnyílása után válassza ki azokat a dátumra, állapotra és súlyosságra vonatkozó értékeket, amelyeket meg kíván tekinteni.
@@ -64,7 +68,7 @@ A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztás
    
    ![A riasztások elvetése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig4-ga.png)
 
-### Válaszadás a biztonsági riasztásokra
+### <a name="respond-to-security-alerts"></a>Válaszadás a biztonsági riasztásokra
 Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riasztást kiváltó esemény(ek)ről, és arról, hogy milyen lépéseket kell tennie a támadás elhárítása érdekében. A biztonsági riasztások típus és dátum szerint vannak csoportosítva. Ha valamelyik biztonsági riasztásra kattint, megnyílik egy panel, amely a csoportosított riasztások listáját tartalmazza.
 
 ![Válaszadás a biztonsági riasztásokra az Azure Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig5-ga.png)
@@ -82,7 +86,7 @@ A Security Center által javasolt elhárítási műveletek a biztonsági riaszt�
 > 
 > 
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
@@ -91,6 +95,9 @@ Ebből a dokumentumból megismerte a Security Center biztonsági szabályzataina
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

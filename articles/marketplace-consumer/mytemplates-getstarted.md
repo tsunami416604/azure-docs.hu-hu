@@ -1,14 +1,14 @@
 ---
-title: Bevezetés a magánsablonok használatába | Microsoft Docs
-description: Magánsablonok hozzáadása, kezelése és megosztása az Azure portál, az Azure parancssori felülete, illetve a PowerShell segítségével.
+title: "Bevezetés a magánsablonok használatába | Microsoft Docs"
+description: "Magánsablonok hozzáadása, kezelése és megosztása az Azure portál, az Azure parancssori felülete, illetve a PowerShell segítségével."
 services: marketplace-customer
-documentationcenter: ''
+documentationcenter: 
 author: VybavaRamadoss
 manager: asimm
-editor: ''
+editor: 
 tags: marketplace, azure-resource-manager
-keywords: ''
-
+keywords: 
+ms.assetid: 6ec20778-b578-4885-acb5-104b0e51ea1a
 ms.service: marketplace
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,16 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
+
 
 ---
-# Bevezetés a magánsablonok használatába az Azure portálon
+# <a name="get-started-with-private-templates-on-the-azure-portal"></a>Bevezetés a magánsablonok használatába az Azure portálon
 Az [Azure Resource Manager](../resource-group-authoring-templates.md) sablonjai olyan deklaratív sablonok, amelyek az üzemelő példány definiálására használatosak. Meghatározhatja az adott megoldáshoz üzembe helyezendő erőforrásokat, valamint megadhatja azokat a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON-okból és kifejezésekből áll, amelyek segítségével kialakíthatja az üzemelő példány értékeit.
 
 Az [Azure Portal](https://portal.azure.com) új **Sablonok** funkciója, valamint a **Microsoft.Gallery** erőforrás-szolgáltató az [Azure Piactér](https://azure.microsoft.com/marketplace/) bővítményeként használható, amelynek segítségével a felhasználók saját könyvtárukból származó magánsablonokat hozhatnak létre, kezelhetnek és helyezhetnek üzembe.
 
 Ebben a dokumentumban bemutatjuk, hogyan adhat hozzá, kezelhet és oszthat meg **magánsablonokat** az Azure Portalon.
 
-## Útmutatás
+## <a name="guidance"></a>Útmutatás
 A következő javaslatok segítségével teljes mértékben kihasználhatja a **sablonok** előnyeit a megoldásaival való munkavégzés során.
 
 * A **sablonok** beágyazott erőforrások, amelyek egy Resource Manager-sablont, illetve további metaadatokat tartalmaznak. Hasonlóan viselkednek, mint a Piactér elemei. A legfontosabb különbség, hogy a Piactér elemei nyilvánosak, míg ezek a sablonok privát felhasználásra szolgálnak.
@@ -35,10 +39,10 @@ A következő javaslatok segítségével teljes mértékben kihasználhatja a **
 * A **sablonok** ahhoz a felhasználóhoz kötődnek, aki közzéteszi őket. Az olvasási hozzáféréssel rendelkezők szabadon megtekinthetik a közzétevő nevét.
 * A **sablonok** a Resource Managerhez tartozó erőforrások, amelyeket közzététel után nem lehet átnevezni.
 
-## Sablonerőforrás hozzáadása
+## <a name="add-a-template-resource"></a>Sablonerőforrás hozzáadása
 Az Azure Portalon két módszer áll rendelkezésre **sablonerőforrás** létrehozására.
 
-### 1. módszer: Új sablonerőforrás létrehozása már futó erőforráscsoportból
+### <a name="method-1-create-a-new-template-resource-from-a-running-resource-group"></a>1. módszer: Új sablonerőforrás létrehozása már futó erőforráscsoportból
 1. Nyisson meg egy meglévő erőforráscsoportot az Azure portálon. A **Beállítások** menüben válassza a **Sablon exportálása** lehetőséget.
 2. A Resource Manager-sablon exportálását követően használja a **Sablon mentése** gombot az exportált elemnek a **Sablonok** tárházba mentéséhez. A Sablon exportálása funkcióról részletes leírást [itt](../resource-manager-export-template.md) talál.
    <br /><br />
@@ -58,7 +62,7 @@ Az Azure Portalon két módszer áll rendelkezésre **sablonerőforrás** létre
    > 
    > 
 
-### B. 2. módszer: Új sablonerőforrás hozzáadása tallózással
+### <a name="b-method-2-add-a-new-template-resource-from-browse"></a>B. 2. módszer: Új sablonerőforrás hozzáadása tallózással
 Beállításokat még nem tartalmazó **sablont** is hozzáadhat. Ehhez kattintson a **Tallózás > Sablonok** menüpontban elérhető +Hozzáadás parancsgombra. Meg kell adnia a nevet, a leírást és a Resource Manager-sablon JSON-ját.
 
 ![Sablon hozzáadása](media/add-template-portal1.PNG)  <br />
@@ -68,7 +72,7 @@ Beállításokat még nem tartalmazó **sablont** is hozzáadhat. Ehhez kattints
 > 
 > 
 
-## Sablonerőforrás megtekintése
+## <a name="view-template-resources"></a>Sablonerőforrás megtekintése
 A **Tallózás > Sablonok** menüben az összes elérhető **sablon** megtekinthető. Itt az Ön által létrehozott **sablonok**, valamint az Önnel különböző szintű engedélyekkel megosztott sablonok egyaránt megjelennek. További részletek a [hozzáférés-vezérlésre](#access-control-for-a-tenant-resource-provider) vonatkozó alábbi szakaszban olvashatók.
 
 ![Sablon megtekintése](media/view-template-portal1.PNG)  <br />
@@ -77,7 +81,7 @@ A **sablon** részletes adatainak megtekintéséhez kattintson a lista kívánt 
 
 ![Sablon megtekintése](media/view-template-portal2c.png)  <br />
 
-## Sablonerőforrás módosítása
+## <a name="edit-a-template-resource"></a>Sablonerőforrás módosítása
 A **sablon** szerkesztési folyamatának elindításához kattintson jobb gombbal a kívánt elemre a Tallózás listában, vagy válassza a Szerkesztés parancsgombot.
 
 ![Sablon szerkesztése](media/edit-template-portal1a.PNG)  <br />
@@ -90,15 +94,15 @@ A **sablon** mentését követően megerősítési értesítés jelenik meg.
 
 ![Sablon szerkesztése](media/edit-template-portal3b.png)  <br />
 
-## Sablonerőforrás üzembe helyezése
+## <a name="deploy-a-template-resource"></a>Sablonerőforrás üzembe helyezése
 Bármely **sablon** üzembe helyezhető, amelyhez **olvasási** engedélyekkel rendelkezik. Az üzembe helyezési folyamat elindítja az Azure standard sablon-üzembe helyezési paneljét. Az üzembe helyezés folytatásához adja meg a Resource Manager-sablon paramétereihez tartozó értékeket.
 
 ![Sablon üzembe helyezése](media/deploy-template-portal1b.png)  <br />
 
-## Sablonerőforrás megosztása
+## <a name="share-a-template-resource"></a>Sablonerőforrás megosztása
 A **sablonerőforrást** megoszthatja kollégáival. A megosztás hasonlóan működik, mint [a szerepkör-hozzárendelés az Azure-erőforrásoknál](../active-directory/role-based-access-control-configure.md). A **sablon** tulajdonosa engedélyt ad a többi felhasználónak, akik így műveleteket végezhetnek a sablonerőforrással. Azok a személyek vagy csoportok, akikkel megosztja a **sablont**, jogosulttá válnak a Resource Manager-sablon és a hozzá tartozó katalógusbeli tulajdonságok megtekintésére.
 
-### A Microsoft.Gallery erőforrások hozzáférés-vezérlése
+### <a name="access-control-for-the-microsoftgallery-resources"></a>A Microsoft.Gallery erőforrások hozzáférés-vezérlése
 | Szerepkör | Engedélyek |
 | --- | --- |
 | Tulajdonos |Lehetővé teszi a sablonerőforrás teljes körű ellenőrzését, ideértve a megosztást is |
@@ -124,11 +128,14 @@ Kattintson a **Kijelölés**, majd az **OK** gombra. A megjelenő képernyőn l�
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információk: [Authoring templates](../resource-group-authoring-templates.md) (Sablonok készítése)
 * A Resource Manager-sablonokban használható függvények ismertetése: [Template functions](../resource-group-template-functions.md) (Sablonfüggvények)
 * A sablonok kialakításával kapcsolatos útmutatásért lásd: [Best practices for designing Azure Resource Manager templates](../best-practices-resource-manager-design-templates.md) (Azure Resource Manager-sablonok tervezésének ajánlott eljárásai)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

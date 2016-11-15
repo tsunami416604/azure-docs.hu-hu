@@ -1,27 +1,32 @@
 ---
-title: SQL-adatraktár adatainak megjelenítése Power BI használatával | Microsoft Docs
-description: SQL-adatraktár adatainak megjelenítése Power BI használatával
+title: "SQL-adatraktár adatainak megjelenítése Power BI használatával |Microsoft Azure"
+description: "SQL-adatraktár adatainak megjelenítése Power BI használatával"
 services: sql-data-warehouse
 documentationcenter: NA
-author: lodipalm
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/16/2016
-ms.author: lodipalm;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
+
 
 ---
-# Adatok megjelenítése Power BI használatával
+# <a name="visualize-data-with-power-bi"></a>Adatok megjelenítése Power BI használatával
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
@@ -31,15 +36,15 @@ Ez az oktatóanyag az SQL-adatraktárhoz Power BI-on keresztül történő kapcs
 > 
 > 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][SQL Data Warehouse létrehozása] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][a mintaadatokat manuálisan is betöltheti].
+* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][SQL Data Warehouse létrehozása] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adattárházzal, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][mintaadatok manuális betöltése].
 
-## 1. Csatlakozás az adatbázishoz
+## <a name="1-connect-to-your-database"></a>1. Csatlakozás az adatbázishoz
 A Power BI megnyitása és csatlakozás az AdventureWorksDW adatbázishoz:
 
-1. Jelentkezzen be az [Azure Portal][Azure Portal].
+1. Jelentkezzen be az [Azure Portalra][Azure Portal].
 2. Kattintson az **SQL adatbázisok** elemre, és válassza ki az AdventureWorks nevű SQL Data Warehouse-adatbázist.
    
     ![Adatbázis keresése][1]
@@ -56,7 +61,7 @@ A Power BI megnyitása és csatlakozás az AdventureWorksDW adatbázishoz:
    
     ![Power BI, AdventureWorksDW megnyitása][5]
 
-## 2. Jelentés létrehozása
+## <a name="2-create-a-report"></a>2. Jelentés létrehozása
 Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI használatával. Az elemzés végrehajtásához az AdventureWorksDW AggregateSales nevű nézete használható. Ebben a nézetben megtalálhatóak a vállalati értékesítés elemzéséhez szükséges fő mutatók.
 
 1. Az értékesítési összegeket irányítószám szerint megjelenítő térkép létrehozásához kattintson a jobb oldali panelen az AggregateSales nézetre annak kibontásához. Kattintson a PostalCode és a SalesAmount oszlopra azok kiválasztásához.
@@ -83,8 +88,8 @@ Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI h
 
 A folyamatot bármikor mentheti a **Fájl** gombra kattintva, majd a **Mentés** lehetőséget választva.
 
-## Következő lépések
-Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fejlesztés][fejlesztés], a [betöltés][betöltés] és az [áttelepítés][áttelepítés] folyamatával, vagy körülnézhet a [Power BI webhelyén][Power BI webhelyén].
+## <a name="next-steps"></a>Következő lépések
+Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fejlesztés][fejlesztés], a [betöltés][betöltés] és az [áttelepítés][áttelepítés] folyamatával, vagy körülnézhet a [Power BI webhelyén][a Power BI webhelye].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -104,16 +109,16 @@ Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fe
 [áttelepítés]: sql-data-warehouse-overview-migrate.md
 [fejlesztés]: sql-data-warehouse-overview-develop.md
 [betöltés]: sql-data-warehouse-overview-load.md
-[a mintaadatokat manuálisan is betöltheti]: sql-data-warehouse-load-sample-databases.md
-[kapcsolódás az SQL-adatraktárhoz]: sql-data-warehouse-integrate-power-bi.md
+[mintaadatok manuális betöltése]: sql-data-warehouse-load-sample-databases.md
+[kapcsolódás SQL Data Warehouse-hoz]: sql-data-warehouse-integrate-power-bi.md
 [SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
 [Azure Portal]: https://portal.azure.com/
-[Power BI webhelyén]: http://www.powerbi.com/
+[a Power BI webhelye]: http://www.powerbi.com/
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

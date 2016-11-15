@@ -1,13 +1,13 @@
 ---
-title: 'SQL Database oktatóanyag: Ismerkedés az adatbázis-biztonsággal'
-description: Felhasználói fiókok létrehozása az adatbázisok eléréséhez és kezeléséhez.
-keywords: ''
+title: "SQL Database oktatóanyag: Ismerkedés az adatbázis-biztonsággal"
+description: "Felhasználói fiókok létrehozása az adatbázisok eléréséhez és kezeléséhez."
+keywords: 
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 67797b09-f5c3-4ec2-8494-fe18883edf7f
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/17/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a3bd8ac5466ae67df0a1865509c8fb897d1374ec
+
 
 ---
-# SQL Database oktatóanyag: SQL Database felhasználói fiókok létrehozása az adatbázisok eléréséhez és kezeléséhez
+# <a name="sql-database-tutorial-create-sql-database-user-accounts-to-access-and-manage-a-database"></a>SQL Database oktatóanyag: SQL Database felhasználói fiókok létrehozása az adatbázisok eléréséhez és kezeléséhez
 > [!div class="op_single_selector"]
 > * [Első lépéseket ismertető oktatóanyag](sql-database-get-started-security.md)
 > * [Hozzáférés biztosítása](sql-database-manage-logins.md)
@@ -41,9 +45,12 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az SQ
 
 [!INCLUDE [Create SQL Database database](../../includes/sql-database-sql-server-management-studio-connect-user.md)]
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Miután végigment ezen az SQL Database oktatóanyagon, és létrehozott egy felhasználói fiókot, illetve DBO engedélyeket adott ki hozzá, készen áll arra, hogy további információkat tudjon meg az [SQL Database adatbázis-biztonsága](sql-database-manage-logins.md) témáról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

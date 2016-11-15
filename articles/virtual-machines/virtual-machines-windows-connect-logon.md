@@ -1,13 +1,13 @@
 ---
-title: Csatlakozás egy Windows Server rendszerű virtuális géphez | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat és jelentkezhet be egy Windows virtuális gépre az Azure Portal és a Resource Manager-alapú üzemi modell használatával.
+title: "Csatlakozás Windows Server-rendszerű virtuális géphez | Microsoft Docs"
+description: "Megtudhatja, hogyan csatlakozhat és jelentkezhet be egy Windows virtuális gépre az Azure Portal és a Resource Manager-alapú üzemi modell használatával."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: ef62b02e-bf35-468d-b4c3-71b63fe7f409
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,12 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: db417fb72442ea8a5cd4ef882eb657b08bebaa0a
+
 
 ---
-# Csatlakozás és bejelentkezés Windows rendszert futtató Azure virtuális gépre
+# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Csatlakozás és bejelentkezés Windows rendszert futtató Azure virtuális gépre
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához. Először csatlakozzon a virtuális géphez, majd jelentkezzen be.
 
-## Csatlakozás a virtuális géphez
+## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A központi menüben kattintson a **Virtuális gépek** elemre.
 3. Válassza ki a virtuális gépet a listából.
@@ -33,12 +37,15 @@ Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) m
    > 
    > 
 
-## Bejelentkezés a virtuális gépre
+## <a name="log-on-to-the-virtual-machine"></a>Bejelentkezés a virtuális gépre
 [!INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A csatlakozási kísérlet során felmerülő hibákkal kapcsolatban tekintse meg [Távoli asztali kapcsolatok hibaelhárítása](virtual-machines-windows-troubleshoot-rdp-connection.md) című témakört. Ez a cikk útmutatást nyújt a gyakori problémák diagnosztizálásához és elhárításához.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

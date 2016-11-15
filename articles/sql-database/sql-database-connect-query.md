@@ -1,13 +1,13 @@
 ---
-title: Csatlakozás SQL Database adatbázishoz C# lekérdezéssel | Microsoft Docs
-description: Program írása C# programozási nyelven lekérdezéséhez és SQL-adatbázishoz való csatlakozáshoz. Információk IP-címekről, kapcsolati sztringekről, biztonságos bejelentkezésről és ingyenes Visual Studio.
+title: "Csatlakozás SQL Database adatbázishoz C# lekérdezéssel | Microsoft Docs"
+description: "Program írása C# programozási nyelven lekérdezéséhez és SQL-adatbázishoz való csatlakozáshoz. Információk IP-címekről, kapcsolati sztringekről, biztonságos bejelentkezésről és ingyenes Visual Studio."
 services: sql-database
-keywords: c# adatbázis-lekérdezés, c# lekérdezés, csatlakozás adatbázishoz, SQL C#
-documentationcenter: ''
+keywords: "c# adatbázis-lekérdezés, c# lekérdezés, csatlakozás adatbázishoz, SQL C#"
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: stevestein
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 333babec567a4700ca0882c883e4460442d844e1
+
 
 ---
-# Kapcsolódás SQL Database adatbázishoz Visual Studio használatával
+# <a name="connect-to-a-sql-database-with-visual-studio"></a>Kapcsolódás SQL Database adatbázishoz Visual Studio használatával
 > [!div class="op_single_selector"]
 > * [Visual Studio](sql-database-connect-query.md)
 > * [SSMS](sql-database-connect-query-ssms.md)
@@ -27,7 +31,7 @@ ms.author: stevestein
 
 Kapcsolódás Azure SQL Database adatbázishoz a Visual Studióban. 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 SQL-adatbázishoz a Visual Studio használatával történő csatlakozáshoz a következők szükségesek: 
 
 * Egy SQL-adatbázis, amelyhez csatlakozhat. Ebben a cikkben az **AdventureWorks** mintaadatbázist használjuk. Az AdventureWorks mintaadatbázis beszerzésével kapcsolatban lásd: [A bemutató-adatbázis létrehozása](sql-database-get-started.md).
@@ -36,7 +40,7 @@ SQL-adatbázishoz a Visual Studio használatával történő csatlakozáshoz a k
   * [Visual Studio Community, letöltés](http://www.visualstudio.com/products/visual-studio-community-vs)
   * [Egyéb lehetőségek Visual Studio ingyenes letöltésére](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
 
-## Nyissa meg a Visual Studiót az Azure Portalon
+## <a name="open-visual-studio-from-the-azure-portal"></a>Nyissa meg a Visual Studiót az Azure Portalon
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Kattintson a **További szolgáltatások** > **SQL-adatbázisok** elemre.
 3. Nyissa meg az **AdventureWorks** adatbázis paneljét. Ehhez keresse meg az *AdventureWorks* adatbázist, és kattintson rá.
@@ -56,7 +60,7 @@ SQL-adatbázishoz a Visual Studio használatával történő csatlakozáshoz a k
    
     ![Új lekérdezés. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
 
-## Mintalekérdezés futtatása
+## <a name="run-a-sample-query"></a>Mintalekérdezés futtatása
 Az adatbázishoz való csatlakozást követően a következő lépések bemutatják, hogyan futtathat egy egyszerű lekérdezést:
 
 1. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Új lekérdezés** lehetőséget.
@@ -75,10 +79,13 @@ Az adatbázishoz való csatlakozást követően a következő lépések bemutatj
    
     ![Siker. Csatakozás SQL Database-kiszolgálóhoz: Visual Studio](./media/sql-database-connect-query/run-query.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A Visual Studio az SQL Server Data Tools eszközöket használja SQL-adatbázisok megnyitásához. További információ: [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx).
 * SQL-adatbázishoz kód használatával történő csatlakozással kapcsolatban lásd: [Connect to SQL Database by using .NET (C#)](sql-database-develop-dotnet-simple.md) (Csatlakozás SQL Database adatbázishoz a .NET (C#) használatával).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

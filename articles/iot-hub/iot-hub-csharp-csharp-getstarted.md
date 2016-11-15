@@ -1,12 +1,12 @@
 ---
-title: Az Azure IoT Hub használata a C# környezettel – Első lépések | Microsoft Docs
-description: Az Azure IoT Hub használata a C# környezettel – Első lépéseket ismertető oktatóanyag | Microsoft Azure Az Azure IoT Hubot és a C# környezetet a Microsoft Azure IoT SDK-kal együtt használva az eszközök internetes hálózatán alapuló megoldást valósíthat meg.
+title: "Az Azure IoT Hub használata a C# környezettel – Első lépések | Microsoft Docs"
+description: "Az Azure IoT Hub használata a C# környezettel – Első lépéseket ismertető oktatóanyag | Microsoft Azure Az Azure IoT Hubot és a C# környezetet a Microsoft Azure IoT SDK-kal együtt használva az eszközök internetes hálózatán alapuló megoldást valósíthat meg."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: hero-article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 97c5d3c3e78ce6ec23f260bd26a0b41dc7c7197a
+
 
 ---
-# Ismerkedés az Azure IoT Hub for .NET szolgáltatással
+# <a name="get-started-with-azure-iot-hub-for-net"></a>Ismerkedés az Azure IoT Hub for .NET szolgáltatással
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag végén három Windows-konzolalkalmazással fog rendelkezni:
 
 * A **CreateDeviceIdentity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat a szimulált eszközhöz.
 * A **ReadDeviceToCloudMessages** megjeleníti a szimulált eszköz által küldött telemetriát.
-* A **SimulatedDevice** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és másodpercenként telemetriai üzenetet küld az AMQPS protokoll használatával.
+* A **SimulatedDevice** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és másodpercenként telemetriai üzenetet küld az AMQP protokoll használatával.
 
 > [!NOTE]
 > Különböző SDK-kat használhat az alkalmazások összeállításához, hogy eszközökön és a megoldás háttérrendszerén is fussanak. Ezekről az [IoT Hub SDK-k][lnk-hub-sdks] című témakörben talál további információt.
@@ -33,13 +37,13 @@ Az oktatóanyag végén három Windows-konzolalkalmazással fog rendelkezni:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Microsoft Visual Studio 2015.
-* Aktív Azure-fiók. (Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].)
+* Aktív Azure-fiók. (Ha nincs fiókja, néhány perc alatt létrehozhat egy [ ingyenes próbafiókot][lnk-free-trial].)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és kapcsolati karakterlánccal.
 
-## Eszközidentitás létrehozása
+## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az eszközidentitás-jegyzékbe. További információkért lásd az [Azure IoT Hub fejlesztői útmutató][lnk-devguide-identity] eszközidentitás-jegyzékekről szóló szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
 1. A Visual Studióban adjon hozzá egy Visual C# nyelvű Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateDeviceIdentity** nevet.
@@ -89,11 +93,11 @@ Ebben a szakaszban egy Windows-konzolalkalmazást fog létrehozni, amely egy esz
 > 
 > 
 
-## Az eszközről a felhőbe irányuló üzenetek fogadása
-Ebben a szakaszban egy Windows-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Azure Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. (Ez az oktatóanyag az IoT Hub Event Hubs-kompatibilis végpontokra vonatkozik.)
+## <a name="receive-devicetocloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek fogadása
+Ebben a szakaszban egy Windows-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Azure Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. (Ez az oktatóanyag az IoT Hub Event Hub-kompatibilis végpontokra vonatkozik.)
 
 > [!NOTE]
-> Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hubs-kompatibilis végpontok mindig az AMQPS protokollt használják.
+> Az eszközről a felhőbe irányuló üzenetek olvasásához használt Event Hub-kompatibilis végpontok mindig az AMQP protokollt használják.
 > 
 > 
 
@@ -101,7 +105,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást hoz létre, amely az eszközr�
    
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt][10]
 2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal az **ReadDeviceToCloudMessages** projektre, majd kattintson a **Manage Nuget Packages** (Nuget-csomagok kezelése) parancsra.
-3. A **Nuget Package Manager** (Nuget-csomagkezelő) ablakban keresse meg a **WindowsAzure.ServiceBus** csomagot, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti az [Azure Service Bus][lnk-servicebus-nuget] elemet minden függőségével, és hozzáad egy rá mutató hivatkozást is. A csomag lehetővé teszi az alkalmazás számára, hogy csatlakozzon az Event Hubs-kompatibilis végponthoz az IoT Hubon.
+3. A **Nuget Package Manager** (Nuget-csomagkezelő) ablakban keresse meg a **WindowsAzure.ServiceBus** csomagot, válassza az **Install** (Telepítés) lehetőséget, és fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti az [Azure Service Bus][lnk-servicebus-nuget] elemet minden függőségével, és hozzáad egy rá mutató hivatkozást is. A csomag lehetővé teszi az alkalmazás számára, hogy csatlakozzon az Event Hub-kompatibilis végponthoz az IoT Hubon.
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
         using Microsoft.ServiceBus.Messaging;
@@ -151,7 +155,7 @@ Ebben a szakaszban egy Windows-konzolalkalmazást hoz létre, amely az eszközr�
         }  
         Task.WaitAll(tasks.ToArray());
 
-## Szimulált eszközalkalmazás létrehozása
+## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban egy olyan eszközt szimuláló Windows-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldi.
 
 1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console Application** (Konzolalkalmazás) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **SimulatedDevice** nevet.
@@ -203,7 +207,7 @@ Ebben a szakaszban egy olyan eszközt szimuláló Windows-konzolalkalmazást hoz
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
    
-   A **Create** metódus alapértelmezés szerint létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációra. A HTTPS protokoll használatához használja a **Create** metódus felülírását, amely lehetővé teszi a protokoll megadását. Ha a HTTPS protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** Nuget-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
+   A **Create** metódus alapértelmezés szerint létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációra. A HTTP protokoll használatához használja a **Create** metódus felülírását, amely lehetővé teszi a protokoll megadását. Ha a HTTP protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** Nuget-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
 
 Ez az oktatóanyag végigvezeti egy IoT Hub-eszközügyfél létrehozásának lépésein. A [Connected Service for Azure IoT Hub][lnk-connected-service] (Csatlakoztatott szolgáltatás Azure IoT Hubhoz) Visual Studio-bővítmény használatával is hozzáadhatja a szükséges kódot az eszközügyfél-alkalmazáshoz.
 
@@ -212,27 +216,27 @@ Ez az oktatóanyag végigvezeti egy IoT Hub-eszközügyfél létrehozásának l�
 > 
 > 
 
-## Az alkalmazások futtatása
+## <a name="run-the-applications"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
 
 1. A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza a **Start** (Indítás) elemet a **ReadDeviceToCloudMessages** és a **SimulatedDevice** projekt műveleteként.
    
-   ![Indítási projektek tulajdonságai][41]
+    ![Indítási projektek tulajdonságai][41]
 2. Nyomja le az **F5** billentyűt a két alkalmazás futtatásához. A **SimulatedDevice** alkalmazás konzolkimenete a szimulált eszköz által az IoT Hubnak küldött üzeneteket jeleníti meg. A **ReadDeviceToCloudMessages** alkalmazás konzolkimenete az IoT Hub által fogadott üzeneteket jeleníti meg.
    
-   ![Az alkalmazások konzolkimenetei][42]
+    ![Az alkalmazások konzolkimenetei][42]
 3. Az [Azure Portal][lnk-portal] **Használat** csempéje a hubnak küldött üzenetek számát jeleníti meg:
    
     ![Az Azure Portal Használat csempéje][43]
 
-## Következő lépések
-Ebben az oktatóanyagban egy IoT Hubot konfigurált a portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban egy IoT Hubot konfigurált az Azure portálon, majd létrehozott egy eszközidentitást a hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön a hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti a hub által fogadott üzeneteket. 
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 
 * [Eszköz csatlakoztatása][lnk-connect-device]
 * [Eszközfelügyelet – első lépések][lnk-device-management]
-* [Átjáró SDK – első lépések][lnk-gateway-SDK]
+* [IoT átjáró SDK – első lépések][lnk-gateway-SDK]
 
 Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban tekintse meg [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
 
@@ -266,6 +270,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Nov16_HO2-->
 
 

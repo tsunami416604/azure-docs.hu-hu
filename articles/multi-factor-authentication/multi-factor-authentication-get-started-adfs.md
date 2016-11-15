@@ -1,49 +1,57 @@
 ---
-title: Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
-description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát.
+title: "Azure MFA és AD FS | Microsoft Docs"
+description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát."
 services: multi-factor-authentication
-documentationcenter: ''
-author: billmath
-manager: stevenpo
-editor: curtland
-
+documentationcenter: 
+author: kgremban
+manager: femila
+editor: yossib
+ms.assetid: 44fbba68-6cf9-46c1-a9df-736580b68ae3
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/04/2016
-ms.author: billmath
+ms.date: 10/17/2016
+ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dcf67cfd5f4d44188f119ca40b227b32c684e1f7
+
 
 ---
-# Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
+# <a name="getting-started-with-azure-multifactor-authentication-and-active-directory-federation-services"></a>Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
 <center>![Felhő](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-Ha a szervezete az AD FS használatával vonta össze a helyszíni Active Directoryt az Azure Active Directoryval, a következő két módon használható az Azure Multi-Factor Authentication.
+Ha a szervezete az AD FS használatával vonta össze a helyszíni Active Directoryt az Azure Active Directoryval, az Azure Multi-Factor Authentication két módon használható .
 
-* A felhőerőforrások védelme az Azure Multi-Factor Authentication vagy az Active Directory összevonási szolgáltatások használatával 
-* A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló használatával 
+* A felhőerőforrások védelme az Azure Multi-Factor Authentication vagy az Active Directory összevonási szolgáltatások használatával
+* A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló használatával
 
-A következő táblázat foglalja össze a hitelesítésbeli különbségeket az erőforrások az Azure Multi-Factor Authentication használatával, illetve az AD FS használatával való védelme esetén
+A következő táblázat foglalja össze az ellenőrzésbeli különbségeket az erőforrásoknak az Azure Multi-Factor Authentication használatával, illetve az AD FS használatával való védelme esetén
 
-| Hitelesítés – Böngészőalapú alkalmazások | Hitelesítés – Nem böngészőalapú alkalmazások |
+| Ellenőrzés – Böngészőalapú alkalmazások | Ellenőrzés – Nem böngészőalapú alkalmazások |
 |:--- |:--- |:--- |
-| Az Azure AD-erőforrások védelme az Azure Multi-Factor Authentication használatával |<li>A hitelesítés első tényezője a helyszínen történik az AD FS-sel.</li> <li>A második tényező felhőalapú hitelesítést használó telefonalapú módszer.</li> |
-| Az Azure AD-erőforrások védelme az Active Directory összevonási szolgáltatásokkal |<li>A hitelesítés első tényezője a helyszínen történik az AD FS-sel.</li><li>A második tényező a helyszínen történik a jogcím betartásával.</li> |
+| Az Azure AD-erőforrások védelme az Azure Multi-Factor Authentication használatával |<li>Az ellenőrzés első lépése a helyszínen történik az AD FS használatával.</li> <li>A második lépés felhőalapú hitelesítést használó telefonalapú módszer.</li> |
+| Az Azure AD-erőforrások védelme az Active Directory összevonási szolgáltatásokkal |<li>Az ellenőrzés első lépése a helyszínen történik az AD FS használatával.</li><li>A második lépés a helyszínen történik a jogcím betartásával.</li> |
 
-Összevont felhasználók alkalmazásjelszavaival kapcsolatos figyelmeztetések: 
+Összevont felhasználók alkalmazásjelszavaival kapcsolatos figyelmeztetések:
 
 * Az alkalmazásjelszavak ellenőrzése felhőalapú hitelesítéssel történik, így mellőzik az összevonásokat. Az összevonás csak alkalmazásjelszó beállításakor van aktív használatban.
-* Az alkalmazásjelszó nem tartja be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
+* Az alkalmazásjelszavak nem tartják be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
 * Az alkalmazásjelszavak használata esetén nem érhető el a helyszíni hitelesítésnaplózás.
-* A fiókok letiltása/törlése akár 3 óráig is eltarthat a dirsync szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
+* A fiókok letiltása/törlése akár 3 óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
 
-Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló az AD FS-sel való beállításával kapcsolatos információért lásd a következőt:
+## <a name="next-steps"></a>Következő lépések
+Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló az AD FS-sel való beállításával kapcsolatos információt a következő cikkekben talál:
 
 * [A felhőerőforrások védelme az Azure Multi-Factor Authentication és az AD FS használatával](multi-factor-authentication-get-started-adfs-cloud.md)
 * [A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és a Windows Server 2012 R2 AD FS használatával](multi-factor-authentication-get-started-adfs-w2k12.md)
-* [A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával](multi-factor-authentication-get-started-adfs-adfs2.md)
+* [A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával](multi-factor-authentication-get-started-adfs-adfs2.md)
 
-<!--HONumber=sep16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

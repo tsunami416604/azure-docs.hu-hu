@@ -1,12 +1,12 @@
 ---
-title: Bevezetés az Azure Search használatába Java nyelven | Microsoft Docs
-description: Üzemeltetett felhőalapú keresőalkalmazás felépítése az Azure rendszerben a Java programozási nyelv használatával.
+title: "Bevezetés az Azure Search használatába Java nyelven | Microsoft Docs"
+description: "Üzemeltetett felhőalapú keresőalkalmazás felépítése az Azure rendszerben a Java programozási nyelv használatával."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: EvanBoyle
 manager: pablocas
 editor: v-lincan
-
+ms.assetid: 8b4df3c9-3ae5-4e3a-b4bb-74b516a91c8e
 ms.service: search
 ms.devlang: na
 ms.workload: search
@@ -14,9 +14,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6ecc365fd90ba955efb977c4e598eae6746916f0
+
 
 ---
-# Bevezetés az Azure Search használatába Java nyelven
+# <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -33,7 +37,7 @@ A minta összeállításához és teszteléséhez a következő szoftvereket has
 * [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-## Tudnivalók az adatokról
+## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](http://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
 Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
@@ -43,7 +47,7 @@ Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https:/
 > 
 > 
 
-## Tudnivalók a programfájlokról
+## <a name="about-the-program-files"></a>Tudnivalók a programfájlokról
 Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 
 * Search.jsp: a felhasználói felületet biztosítja
@@ -56,7 +60,7 @@ Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 
 <a id="sub-2"></a>
 
-## Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
+## <a name="find-the-service-name-and-apikey-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
 Az Azure Search szolgáltatásba történő minden REST API-hívás esetében meg kell adnia a szolgáltatás URL-címét és API-kulcsát. 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
@@ -64,17 +68,17 @@ Az Azure Search szolgáltatásba történő minden REST API-hívás esetében me
 3. Válassza ki a használni kívánt szolgáltatást.
 4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
    
-    ![][3]
+      ![][3]
 5. Másolja át a szolgáltatás URL-címét és egy adminisztrációs kulcsot. Később lesz rájuk szüksége, amikor hozzáadja őket a **config.properties** fájlhoz.
 
-## A mintafájlok letöltése
+## <a name="download-the-sample-files"></a>A mintafájlok letöltése
 1. Lépjen a GitHubon található [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) elemre.
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse a .zip-fájlt a lemezre, és bontsa ki a benne található összes fájlt. A Java-munkaterületére csomagolja ki a fájlokat, hogy később könnyebben megtalálja a projektet.
 3. A mintafájlok csak olvashatók. Kattintson a jobb gombbal a mappa tulajdonságaira, és törölje a csak olvasható attribútumot.
 
 Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan fog történni.  
 
-## Projekt importálása
+## <a name="import-project"></a>Projekt importálása
 1. Az Eclipse-ben válassza ki a **File** (Fájl)  > **Import** (Importálás)  > **General** (Általános)  > **Existing Projects into Workspace** (Meglévő projekteket a munkaterületre) lehetőséget.
    
     ![][4]
@@ -84,14 +88,14 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 3. Kattintson a **Finish** (Befejezés) gombra.
 4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
 
-## A szolgáltatás URL-címének és API-kulcsának konfigurálása
+## <a name="configure-the-service-url-and-apikey"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
 1. A **Project Explorer** (Projektböngésző) nézetben kattintson duplán a **config.properties** elemre, hogy szerkeszthesse a kiszolgáló nevét és az API-kulcsot tartalmazó konfigurációs beállításokat.
 2. Tekintse meg a jelen cikkben korábban ismertetett lépéseket, ahol a szolgáltatás URL-címét és API-kulcsát megtalálhatta az [Azure portálon](https://portal.azure.com), és az adott értékeket írja be **config.properties** fájlba.
 3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. A következő lépésben az ugyanabban a fájlban található „szolgáltatásnevet” cserélje ki a saját szolgáltatása nevére (az URL-cím első összetevője: http://servicename.search.windows.net).
    
     ![][5]
 
-## A projekt, a build és a futtatókörnyezetek konfigurálása
+## <a name="configure-the-project-build-and-runtime-environments"></a>A projekt, a build és a futtatókörnyezetek konfigurálása
 1. Az Eclipse Project Explorer (Projektböngésző) nézetében kattintson a jobb gombbal a Project (Projekt) > **Properties** (Tulajdonságok)  > **Project Facets** (A projekt aspektusai) elemre.
 2. Válassza ki a **Dynamic Web Module** (Dinamikus webmodul), a **Java** és a **JavaScript** elemet.
    
@@ -117,7 +121,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 
 Ezzel befejezte a konfigurálási feladatokat. A következő lépésben felépíti és futtatja a projektet.
 
-## A projekt felépítése
+## <a name="build-the-project"></a>A projekt felépítése
 1. A projekt konfigurálásához a Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projekt nevére, és válassza ki a **Run As** (Futtatás másként)  > **Maven build...** elemet.
    
     ![][10]
@@ -125,7 +129,7 @@ Ezzel befejezte a konfigurálási feladatokat. A következő lépésben felépí
 
 Az állapotüzenetek kimenetként a konzolablakban jelennek meg. A BUILD SUCCESS (Sikeres felépítés) üzenetnek kell megjelennie, amely azt jelzi, hogy a projekt hibák nélkül felépült.
 
-## Az alkalmazás futtatása
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 Utolsó lépésként futtassa le az alkalmazást egy helyi kiszolgáló futtatókörnyezetében.
 
 Ha az Eclipse keretrendszerben még nem határozta meg egy kiszolgáló futtatókörnyezetét, először azt kell elvégeznie.
@@ -142,7 +146,7 @@ Az alkalmazás futtatásakor egy keresőmezőt tartalmazó böngészőablaknak k
 
 Várjon körülbelül egy percet, mielőtt a **Search** (Keresés) gombra kattintana, hogy a szolgáltatásnak legyen elég ideje az index létrehozására és betöltésére. Ha a HTTP 404 hibaüzenet jelenik meg, csak egy kicsit tovább kell várnia az újrapróbálkozás előtt.
 
-## USGS-adatok keresése
+## <a name="search-on-usgs-data"></a>USGS-adatok keresése
 Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha rákattint egy üres keresőmező **Search** (Keresés) gombjára, megjelenik az 50 legfontosabb bejegyzés; ez az alapértelmezett viselkedés.
 
 A keresett kifejezés beírása elindítja a keresőmotort. Próbáljon meg a helyhez kötődő nevet beírni. „Roger Williams” volt Rhode Island első kormányzója. Számos parkot, épületet és iskolát neveztek el róla.
@@ -155,7 +159,7 @@ Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 * Pembroke
 * goose+cape
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az Azure Search első oktatóanyaga, amely Java és USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
 Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a további kísérletezéshez, például bővítheti a [keresőoldalt](search-pagination-page-layout.md) vagy [jellemzőalapú navigációt](search-faceted-navigation.md) valósíthat meg. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
@@ -178,6 +182,6 @@ Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóany
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

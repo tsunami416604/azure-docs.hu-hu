@@ -1,12 +1,12 @@
 ---
-title: Azonos Office 365-élmény bármely Azure RemoteAppot használó eszközön | Microsoft Docs
-description: Ismerje meg, hogyan oszthatja meg bármelyik Office 365-alkalmazást a felhasználóival az Azure RemoteApp segítségével.
+title: "Azonos Office 365-élmény bármely Azure RemoteAppot használó eszközön | Microsoft Docs"
+description: "Ismerje meg, hogyan oszthatja meg bármelyik Office 365-alkalmazást a felhasználóival az Azure RemoteApp segítségével."
 services: remoteapp
-documentationcenter: ''
+documentationcenter: 
 author: guscatalano
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 0c971ce9-7d45-4cfb-9737-15b6706047e8
 ms.service: remoteapp
 ms.devlang: na
 ms.topic: hero-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 08/15/2016
 ms.author: guscatal;elizapo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0146ee4516ee54c3507567c25183e212db1ba7d2
+
 
 ---
-# Azonos Office 365-élmény bármely Azure RemoteApp szolgáltatást használó eszközön
+# <a name="get-the-same-office-365-experience-on-any-device-with-azure-remoteapp"></a>Azonos Office 365-élmény bármely Azure RemoteApp szolgáltatást használó eszközön
 > [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
@@ -26,12 +30,12 @@ Ez a cikk ismerteti, hogy hogyan helyezheti üzembe az Office 365-alkalmazásoka
 
 Ezt az Azure RemoteApp használatával érheti el az Office 365 méretezhető virtuális gépeken való üzemeltetésével az Azure-ban, amelyekhez a felhasználók csatlakozhatnak. A virtuális gépek ezen készletét „felhőalapú gyűjteménynek” nevezik.
 
-## Felhőalapú gyűjtemény létrehozása
+## <a name="create-a-cloud-collection"></a>Felhőalapú gyűjtemény létrehozása
 Miután létrehozott egy Azure-fiókot, először navigáljon a **RemoteAppra** a bal oldalon található hivatkozásra kattintva.
 ![Az Azure RemoteApp megjelenítése az Azure Portalon](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
 Ezután alul kattintson a **new** (új) , majd a gyűjtemény „gyors létrehozása” elemre. Adjon meg egy nevet, a régiót, az előfizetését, a díjcsomagot és az általunk biztosított „Office Professional 2013” rendszerképet.
-![Létrehozás párbeszédpanel](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
+![Párbeszédpanel létrehozása](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
 Miután kitölti az űrlapot, elindul a gyűjtemény létrehozásának folyamata. Ez akár egy órát is igénybe vehet.
 
@@ -47,7 +51,7 @@ Ezen a ponton a **User Access** (Felhasználói hozzáférés) elemre kattintva 
 
 Most próbáljon meg csatlakozni az Office 365-höz.
 
-## Csatlakozás az Office 365-höz
+## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
 Nyissa meg a [https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/) webhelyet, görgessen a lap aljára, és a **Download clients** (Ügyfelek letöltése) elemre kattintva telepítse az Azure RemoteApp-ügyfelet az épp használt eszközre. Az alábbi képernyőképek a Windowsra vonatkoznak.
 
 Miután elindul az alkalmazás, a rendszer felkéri, hogy jelentkezzen be Microsoft-fiókjával (korábban „Live ID”). Egyelőre használja ugyanazt, mint amit az Azure-fiókhoz használt. Amikor bejelentkezik, egy értesítés jelenik meg az új meghívókról, kattintson rá, ekkor az alábbihoz hasonló listának kell megjelennie. Kattintson arra a meghívóra, amelyben az Azure-fiók tulajdonosának e-mail-címe szerepel.
@@ -68,6 +72,9 @@ Ha bármelyik alkalmazásra kattint, az alkalmazás elindul az Azure virtuális 
 
 ![powerpoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

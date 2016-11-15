@@ -1,12 +1,12 @@
 ---
-title: Címtár-integráció az Azure Multi-Factor Authentication és az Active Directory között
-description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan integrálható az Azure Multi-Factor Authentication-kiszolgáló az Active Directoryval a címtárak szinkronizálása érdekében.
+title: "Címtár-integráció az Azure Multi-Factor Authentication és az Active Directory között"
+description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan integrálható az Azure Multi-Factor Authentication-kiszolgáló az Active Directoryval a címtárak szinkronizálása érdekében."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtand
-
+ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: da64189de722b5ee3552530bb1276539e5c6c323
+
 
 ---
-# Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
+# <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 A Címtár-integráció szakaszban konfigurálhatja a kiszolgálót az Active Directoryval vagy egy másik LDAP-címtárral való integrációhoz.  Konfigurálhatja az attribútumokat, hogy azok megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
 
-## Beállítások
+## <a name="settings"></a>Beállítások
 Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy van konfigurálva, hogy a felhasználókat az Active Directoryból importálja vagy szinkronizálja.  Ezen a lapon felülírhatja az alapértelmezett viselkedést, illetve kötést hozhat létre egy másik LDAP-címtárhoz, egy ADAM-címtárhoz vagy egy adott Active Directory-tartományvezérlőhöz.  Ezenkívül lehetővé teszi LDAP-hitelesítés használatát proxy LDAP-hoz vagy LDAP-kötés használatát RADIUS célként, előhitelesítéshez IIS-hitelesítésnél vagy elsődleges hitelesítéshez a felhasználói portálon.  A következő táblázat ismerteti az egyes beállításokat.
 
 ![Beállítások](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
@@ -45,7 +49,7 @@ A következő táblázat az LDAP-konfigurációs beállításokat ismerteti.
 | Lekérdezés méretkorlátja |Megadhatja a címtárkeresések által visszaadott felhasználók maximális számára vonatkozó méretkorlátozást.  Ennek a korlátnak meg kell egyeznie az LDAP-címtár konfigurációjával.  Nagy méretű keresések esetén, ahol a lapozás nem támogatott, az importálás és a szinkronizálás a felhasználókat kötegekben próbálja meg lekérni.  Ha az itt megadott méretkorlát nagyobb mint az LDAP-címtárban megadott korlát, előfordulhat, hogy néhány felhasználó kimarad. |
 | Teszt gomb |A Teszt gombra kattintva tesztelheti az LDAP-kiszolgálóhoz való kötéseket.  <br><br> Megjegyzés: Az LDAP használatára vonatkozó beállítást nem kell kijelölni a kötések teszteléséhez.  Ez lehetővé teszi a kötések tesztelését az LDAP-konfiguráció használata előtt. |
 
-## Szűrők
+## <a name="filters"></a>Szűrők
 A szűrőkkel feltételeket adhat meg a rekordok minősítéséhez címtárkeresések végrehajtásakor.  Szűrők beállításával korlátozhatja a szinkronizálni kívánt objektumok körét.  
 
 ![Szűrők](./media/multi-factor-authentication-get-started-server-dirint/dirint2.png)
@@ -56,7 +60,7 @@ Az Azure Multi-Factor Authentication az alábbi 3 beállítással rendelkezik.
 * **Biztonsági csoport szűrője** – Megadhatja a címtárkereséskor a biztonságicsoport-rekordok minősítéséhez használt szűrőfeltételeket.  Active Directory és ADAM esetén általában a következő feltétel használható: (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).  Egyéb LDAP-címtárak esetén a címtársémától függően olyan szűrőfeltételeket érdemes használni, amelyek az egyes biztonságicsoport-objektumok típusait minősítik.  <br>Megjegyzés: Ha üresen hagyja, a rendszer alapértelmezés szerint a következő feltételt használja: (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)).
 * **Felhasználószűrő** – Megadhatja a címtárkereséskor a felhasználórekordok minősítéséhez használt szűrőfeltételeket.  Active Directory és ADAM esetén általában a következő feltétel használható: (&(objectClass=user)(objectCategory=person)).  Egyéb LDAP-címtárak esetén a címtársémától függően az (objectClass=inetOrgPerson) vagy valamilyen hasonló szűrőfeltétel használható. <br>Megjegyzés: Ha üresen hagyja, a rendszer alapértelmezés szerint a következő feltételt használja: (&(objectCategory=person)(objectClass=user)).
 
-## Attribútumok
+## <a name="attributes"></a>Attribútumok
 Az attribútumok igény szerint testreszabhatók egy adott címtárhoz.  Ez lehetővé teszi egyéni attribútumok hozzáadását és a szinkronizálás finomhangolását csak a szükséges attribútumokra.  Az egyes attribútummezők értékeként az attribútum a címtársémában meghatározott nevét kell megadni.  További információkat az alábbi táblázatban talál.
 
 ![Attribútumok](./media/multi-factor-authentication-get-started-server-dirint/dirint3.png)
@@ -96,7 +100,7 @@ Az attribútumok szerkesztéséhez egyszerűen kattintson a Szerkesztés gombra 
 
 ![Attribútumok szerkesztése](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
-## Szinkronizálás
+## <a name="synchronization"></a>Szinkronizálás
 A szinkronizálás biztosítja, hogy az Azure Multi-Factor felhasználói adatbázis szinkronizálva legyen az Active Directory vagy egy másik Lightweight Directory Access Protocol- (LDAP-) címtár felhasználóival.  A folyamat hasonló a felhasználók az Active Directoryból való manuális importálásához, azonban rendszeresen lekérdezi az Active Directory-felhasználók és biztonsági csoportok változásait feldolgozásra.  Ezenkívül lehetővé teszi a tárolókból vagy biztonsági csoportokból eltávolított felhasználók letiltását vagy eltávolítását és az Active Directoryból törölt felhasználók eltávolítását.
 
 A Multi-Factor Auth ADSync szolgáltatása egy Windows-szolgáltatás, amely rendeszeresen lekérdezi az Active Directoryt.  Ez nem keverendő össze az Azure AD Sync vagy az Azure AD Connect szolgáltatással.  A Multi-Factor Auth ADSync, bár egy hasonló kódalapra épül, csak az Azure Multi-Factor Authentication-kiszolgálóval működik.  A telepítéskor leállított állapotban van, és a Multi-Factor Auth-kiszolgáló szolgáltatás indítja el, ha futásra van konfigurálva.  Ha többkiszolgálós Multi-Factor Auth-kiszolgálókonfigurációval rendelkezik, a Multi-Factor Auth ADSync csak egy kiszolgálón futtatható.
@@ -135,11 +139,14 @@ A Feljebb és Lejjebb gombbal a rendszergazda módosíthatja a szinkronizált el
 > 
 > 
 
-## Multi-Factor Auth-kiszolgálók
+## <a name="multifactor-auth-servers"></a>Multi-Factor Auth-kiszolgálók
 További Multi-Factor Auth-kiszolgálókat beállíthat úgy, hogy tartalék RADIUS-proxyként, LDAP-proxyként, illetve IIS-hitelesítési kiszolgálóként szolgáljanak. A szinkronizálási konfiguráció az összes ügynökre érvényes. Azonban csak az egyik ügynökön futhat a Multi-Factor Auth-kiszolgáló szolgáltatás. Ezen a lapon kiválaszthatja a szinkronizálásra engedélyezett Multi-Factor Auth-kiszolgálót.
 
 ![Multi-Factor-Auth-kiszolgálók](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

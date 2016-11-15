@@ -1,12 +1,12 @@
 ---
-title: Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után | Microsoft Docs
-description: A cikkből megtudhatja, hogyan módosíthatja a kulcstartó bérlőazonosítóját, miután egy előfizetést másik bérlőhöz helyezett át.
+title: "Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után | Microsoft Docs"
+description: "A cikkből megtudhatja, hogyan módosíthatja a kulcstartó bérlőazonosítóját, miután egy előfizetést másik bérlőhöz helyezett át."
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
-
+ms.assetid: 46d7bc21-fa79-49e4-8c84-032eef1d813e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/13/2016
 ms.author: ambapat
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cfb9084d6cf60369a17678129f56960f1f7c793f
+
 
 ---
-# Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
-### Kérdés: Az előfizetésem átkerült A bérlőtől B bérlőhöz. Hogyan módosíthatom a meglévő kulcstartó bérlőazonosítóját, és hogyan állíthatok be helyes ACL-eket a B bérlő rendszerbiztonsági tagjai számára?
+# <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
+### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Kérdés: Az előfizetésem átkerült A bérlőtől B bérlőhöz. Hogyan módosíthatom a meglévő kulcstartó bérlőazonosítóját, és hogyan állíthatok be helyes ACL-eket a B bérlő rendszerbiztonsági tagjai számára?
 Amikor új kulcstartót hoz létre egy előfizetésben, az automatikusan annak az előfizetésnek az alapértelmezett Azure Active Directory-bérlőazonosítójához kötődik. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. Ha áthelyezi az Azure előfizetését az A bérlőtől a B bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a B bérlőhöz tartozó rendszerbiztonsági tagok (felhasználók és alkalmazások) számára. A következőképpen oldhatja meg a problémát:
 
 * Módosítania kell minden ebbe az előfizetésbe tartozó meglévő kulcstartó bérlőazonosítóját a B bérlőre.
@@ -27,16 +31,19 @@ Amikor új kulcstartót hoz létre egy előfizetésben, az automatikusan annak a
 Ha például a „kucstarto” kulcstartót használja egy olyan előfizetésben, amelyet áthelyezett az A bérlőtől a B bérlőhöz, a következőképpen módosíthatja a kulcs bérlőazonosítóját, és törölheti a régi hozzáférési szabályzatokat.
 
 <pre>
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName kulcstarto).ResourceId $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId $vault.Properties.AccessPolicies = @() Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId $vault.Properties.AccessPolicies = @() Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-Ez a kulcstartó előzőleg az A bérlőhöz tartozott, ezért a **$vault.Properties.TenantId** értéke az A bérlő, a **(Get-AzureRmContext).Tenant.TenantId** értéke pedig B bérlő.
+Ez a kulcstartó az áthelyezést megelőzően az A bérlőhöz tartozott, ezért a **$vault.Properties.TenantId** eredeti értéke az A bérlő, a **(Get-AzureRmContext).Tenant.TenantId** értéke pedig B bérlő.
 
 A kulcstartó most már a helyes bérlőazonosítóhoz van társítva, a régi hozzáférésiszabályzat-bejegyzések pedig törölve vannak, tehát beállíthatja az új hozzáférésiszabályzat-bejegyzéseket a [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx) parancsmaggal.
 
-## Következő lépések
-* Amennyiben a Key Vault szolgáltatással kapcsolatos kérdése merülne fel, tekintse az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+## <a name="next-steps"></a>Következő lépések
+Amennyiben az Azure Key Vaulttal kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

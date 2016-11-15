@@ -1,13 +1,13 @@
 ---
-title: Társviszony-létesítés virtuális hálózatok között az Azure Portal használatával | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre virtuális hálózatot az Azure Portallal a Resource Managerben.
+title: "Társviszony-létesítés virtuális hálózatok között az Azure Portal használatával | Microsoft Docs"
+description: "Ismerje meg, hogyan hozhat létre virtuális hálózatot az Azure Portallal a Resource Managerben."
 services: virtual-network
-documentationcenter: ''
+documentationcenter: 
 author: NarayanAnnamalai
 manager: jefco
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 026bca75-2946-4c03-b4f6-9f3c5809c69a
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayanannamalai;annahar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 688fed72b32767f33010b9e8f17921b16320072d
+
 
 ---
-# Társviszony-létesítés virtuális hálózatok között az Azure Portal használatával
+# <a name="create-a-virtual-network-peering-using-the-azure-portal"></a>Társviszony-létesítés virtuális hálózatok között az Azure Portal használatával
 [!INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnetpeering-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnetpeering-intro-include.md)]
@@ -90,7 +94,7 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
    > 
 6. Jelentkezzen be a portálra a FelhasználóA felhasználóként, navigáljon a VNET3 panelre, kattintson a Társviszony elemre, jelölje be az „Ismerem az erőforrás-azonosítómat” jelölőnégyzetet, és írja be a VNET5 erőforrás-azonosítóját az alábbi formátumban.
    
-    /subscriptions/<erőforrás-azonosító>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/<VNET name>
+    /subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Network/VirtualNetwork/{VNETname}
    
     ![Erőforrás-azonosító](./media/virtual-networks-create-vnetpeering-arm-portal/figure12.png)
 7. Jelentkezzen be a portálra a FelhasználóB felhasználóként, majd kövesse a fenti lépéseket egy társviszony-létesítési csatolás létrehozásához a VNET5 és a VNET3 között.
@@ -121,7 +125,7 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
    
     ![Társviszony-kapcsolat ellenőrzése](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
 
-## Virtuális hálózatok közötti társviszony eltávolítása
+## <a name="remove-vnet-peering"></a>Virtuális hálózatok közötti társviszony eltávolítása
 1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 2. Lépjen a Virtuális hálózat panelre, kattintson a Társviszonyok elemre, kattintson az eltávolítani kívánt csatolásra, majd kattintson a Törlés gombra.
    
@@ -131,6 +135,9 @@ A virtuális hálózatok közötti társviszony mindegyik csatolása rendelkezik
     ![2. törlés](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 4. Ebben az állapotban addig nem hozhatja létre újra a csatolást, amíg a társviszony-csatolás állapota Kezdeményezettre nem változik. Javasoljuk, hogy mindkét csatolást távolítsa el, mielőtt újra létrehozza a virtuális hálózatok közötti társviszonyt.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

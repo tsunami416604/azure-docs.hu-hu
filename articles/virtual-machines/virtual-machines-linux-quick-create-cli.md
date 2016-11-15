@@ -1,41 +1,46 @@
 ---
-title: Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel | Microsoft Docs
-description: Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel.
+title: "Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel | Microsoft Docs"
+description: "Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: vlivech
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/08/2016
+ms.date: 10/27/2016
 ms.author: v-livech
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fd75ab9a37dfc75679427a16c3ecb36adb1c9925
+
 
 ---
-# Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel
+# <a name="create-a-linux-vm-on-azure-by-using-the-cli"></a>Linux virtuális gép létrehozása az Azure-ban a parancssori felülettel
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) `azure vm quick-create` parancsának használatával. A `quick-create` parancs egy alapvető, biztonságos infrastruktúrában lévő virtuális gépet helyez üzembe, amelyet prototípusként vagy egy elgondolás gyors teszteléséhez használhat. A cikkben foglaltak végrehajtásához szükség van:
 
 * egy Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/)),
-* és be kell jelentkeznie az [Azure parancssori felületre](../xplat-cli-install.md) a következővel: `azure login`
-* az Azure parancssori felületnek Azure Resource Manager módban *kell lennie* `azure config mode arm`
+* és be kell jelentkeznie az [Azure parancssori felületre](../xplat-cli-install.md) a következővel: `azure login`.
+* Az Azure parancssori felületnek `azure config mode arm` Azure Resource Manager módban *kell lennie*.
 
 Linux virtuális gépet az [Azure Portallal](virtual-machines-linux-quick-create-portal.md) is gyorsan üzembe helyezhet.
 
-## Gyors parancsok
+## <a name="quick-commands"></a>Gyors parancsok
 Az alábbi példa azt szemlélteti, hogyan helyezheti üzembe a CoreOS virtuális gépet, és hogyan csatolhatja a Secure Shell-kulcsot (SSH) (az argumentumok eltérhetnek):
 
-```bash
-azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
+```azurecli
+azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 ```
 
-Az alábbi szakaszok a parancsot és annak követelményeit ismertetik az Ubuntu Server 14.04 LTS Linux-disztribúció használatával.  
+## <a name="detailed-walkthrough"></a>Részletes bemutató
+A következő bemutató egy UbuntuLTS virtuális gép üzembe helyezését szemlélteti lépésről lépésre, az egyes lépések funkciójának magyarázatával együtt.
 
-## Virtuális gép – gyorslétrehozási aliasok
-A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakoribb disztribúciói számára leképezett Azure parancssori felület aliasainak a használata. Az alábbi táblázat az aliasokat tartalmazza (az Azure parancssori felület 0.10-es verziójától kezdve). A `quick-create` parancsot használó minden üzembe helyezés SSD-tárhelyen alapuló virtuális gépeket használ alapértelmezettként, ami gyorsabb üzembe helyezést és magas teljesítményű lemezelérést tesz lehetővé. (Ezek az aliasok az Azure-ban rendelkezésre álló disztribúcióknak csak egy kis részét jelentik. Az Azure Marketplace-en elérhető további rendszerképeket [a rendszerképek keresésével](virtual-machines-linux-cli-ps-findimage.md) találhatja meg, vagy [feltöltheti saját egyéni rendszerképét](virtual-machines-linux-create-upload-generic.md).)
+## <a name="vm-quickcreate-aliases"></a>Virtuális gép – gyorslétrehozási aliasok
+A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakoribb disztribúciói számára leképezett Azure parancssori felület aliasainak a használata. Az alábbi táblázat az aliasokat tartalmazza (az Azure parancssori felület 0.10-es verziójától kezdve). A `quick-create` parancsot használó minden üzembe helyezés SSD-tárhelyen alapuló virtuális gépeket használ alapértelmezettként, ami gyorsabb üzembe helyezést és magas teljesítményű lemezelérést tesz lehetővé. (Ezek az aliasok az Azure-ban rendelkezésre álló disztribúcióknak csak egy kis részét jelentik. Az Azure Marketplace-en további rendszerképekhez [rendszerképek PowerShellben történő keresésével](virtual-machines-linux-cli-ps-findimage.md), [a weben](https://azure.microsoft.com/marketplace/virtual-machines/), illetve [saját egyéni rendszerképének feltöltésével](virtual-machines-linux-create-upload-generic.md) juthat.)
 
 | Alias | Közzétevő | Ajánlat | SKU | Verzió |
 |:--- |:--- |:--- |:--- |:--- |
@@ -48,7 +53,6 @@ A disztribúcióválasztás egyszerű módja az operációs rendszerek leggyakor
 
 Az alábbi szakaszok az **ImageURN** kapcsoló (`-Q`) `UbuntuLTS` aliasát használják az Ubuntu 14.04.4 LTS Server üzembe helyezéséhez.
 
-## Részletes bemutató
 A korábbi `quick-create` példa csak az `-M` jelölőt emelte ki a feltöltendő nyilvános SSH-kulcs azonosításához, és közben letiltotta az SSH-jelszavakat, így a rendszer a következő argumentumok megadását kéri:
 
 * az erőforráscsoport neve (az első Azure-erőforráscsoport esetén általában bármilyen karakterlánc használható)
@@ -59,23 +63,23 @@ A korábbi `quick-create` példa csak az `-M` jelölőt emelte ki a feltöltend�
 
 Az alábbi példa meghatározza az összes értéket, így nincs szükség további adatkérésre. Ha `~/.ssh/id_rsa.pub` ssh-rsa formátumú nyilvános kulcsfájllal rendelkezik, nincs szükség beavatkozásra:
 
-```bash
+```azurecli
 azure vm quick-create \
--g exampleResourceGroup \
--n exampleVMName \
--l westus \
--y Linux \
--u exampleAdminUser \
--M ~/.ssh/id_rsa.pub \
--Q UbuntuLTS
+  --resource-group myResourceGroup \
+  --name myVM \
+  --location westus \
+  --os-type Linux \
+  --admin-username myAdminUser \
+  --ssh-public-file ~/.ssh/id_rsa.pub \
+  --image-urn UbuntuLTS
 ```
 
 A kimenetnek az alábbi kimeneti blokkhoz hasonlóan kell kinéznie:
 
-```bash
+```azurecli
 info:    Executing command vm quick-create
 + Listing virtual machine sizes available in the location "westus"
-+ Looking up the VM "exampleVMName"
++ Looking up the VM "myVM"
 info:    Verifying the public key SSH file: /Users/ahmet/.ssh/id_rsa.pub
 info:    Using the VM Size "Standard_DS1"
 info:    The [OS, Data] Disk or image configuration requires storage account
@@ -95,8 +99,8 @@ info:    PublicIP with given name "examp-westu-1633070839-pip" not found, creati
 + Creating NIC "examp-westu-1633070839-nic"
 + Looking up the NIC "examp-westu-1633070839-nic"
 + Looking up the storage account clisto1710997031examplev
-+ Creating VM "exampleVMName"
-+ Looking up the VM "exampleVMName"
++ Creating VM "myVM"
++ Looking up the VM "myVM"
 + Looking up the NIC "examp-westu-1633070839-nic"
 + Looking up the public ip "examp-westu-1633070839-pip"
 data:    Id                              :/subscriptions/2<--snip-->d/resourceGroups/exampleResourceGroup/providers/Microsoft.Compute/virtualMachines/exampleVMName
@@ -124,8 +128,8 @@ data:        Vhd:
 data:          Uri                       :https://cli16330708391032639673.blob.core.windows.net/vhds/clic7fadb847357e9cf-os-1473374894359.vhd
 data:
 data:    OS Profile:
-data:      Computer Name                 :exampleVMName
-data:      User Name                     :exampleAdminUser
+data:      Computer Name                 :myVM
+data:      User Name                     :myAdminUser
 data:      Linux Configuration:
 data:        Disable Password Auth       :true
 data:
@@ -148,10 +152,11 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
+## <a name="log-in-to-the-new-vm"></a>Jelentkezzen be az új virtuális gépre
 Jelentkezzen be a virtuális gépre a kimenetben szereplő nyilvános IP-cím használatával. A listában szereplő teljes tartománynevet (FQDN) is használhatja:
 
 ```bash
-ssh -i ~/.ssh/id_rsa.pub exampleAdminUser@138.91.247.29
+ssh -i ~/.ssh/id_rsa.pub ahmet@138.91.247.29
 ```
 
 A bejelentkezési folyamatnak az alábbi kimeneti blokkhoz hasonlóan kell kinéznie:
@@ -185,10 +190,10 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-exampleAdminUser@exampleVMName:~$
+myAdminUser@myVM:~$
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az `azure vm quick-create` parancs a virtuális gépek gyors üzembe helyezésére szolgál, hogy bejelentkezhessen a rendszerhéjakba, és elkezdhesse a munkát. A `vm quick-create` használata azonban nem biztosít széles körű vezérlést, illetve összetettebb környezet létrehozását sem teszi lehetővé.  Az infrastruktúrának megfelelően beállított Linux virtuális gép üzembe helyezéséhez kattintson az alábbi cikkek valamelyikére:
 
 * [Adott üzembe helyezés létrehozása Azure Resource Manager-sablonnal](virtual-machines-linux-cli-deploy-templates.md)
@@ -197,6 +202,9 @@ Az `azure vm quick-create` parancs a virtuális gépek gyors üzembe helyezésé
 
 [Használhatja a `docker-machine` Azure-illesztőt is különféle parancsokkal egy Linux virtuális gép Docker-gazdagépként való gyors létrehozásához](virtual-machines-linux-docker-machine.md).
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

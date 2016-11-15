@@ -1,13 +1,13 @@
 ---
-title: Az előre konfigurált megoldások bemutatása | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan telepíthet egy előre konfigurált Azure IoT Suite-megoldást.
-services: ''
+title: "Az előre konfigurált megoldások bemutatása | Microsoft Docs"
+description: "Ebből az oktatóanyagból megtudhatja, hogyan telepíthet egy előre konfigurált Azure IoT Suite-megoldást."
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 6ab38d1a-b564-469e-8a87-e597aa51d0f7
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -15,10 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8ec86ebefccaf74c67cb7917ccf7d538bc95ae07
+
 
 ---
-# Oktatóprogram: Az előre konfigurált megoldások bemutatása
-## Bevezetés
+# <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>Oktatóprogram: Az előre konfigurált megoldások bemutatása
+## <a name="introduction"></a>Bevezetés
 Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *távoli figyelő* megoldás csatlakozik az eszközökhöz, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére használható, valamint az ezen streamre automatikusan válaszoló folyamatok létrehozásával az üzleti eredmények is javíthatók.
 
 Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált távoli figyelő megoldást. Emellett a távoli figyelő megoldás alapszintű funkcióin is végigvezeti. Ezek közül számos szolgáltatáshoz a megoldás irányítópultján keresztül férhet hozzá, amelyet a rendszer az előre konfigurált megoldással együtt telepít:
@@ -34,7 +38,7 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-## A megoldás irányítópultjának megtekintése
+## <a name="view-the-solution-dashboard"></a>A megoldás irányítópultjának megtekintése
 A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Megtekintheti például a telemetriát, eszközöket adhat hozzá és szabályokat konfigurálhat.
 
 1. Amikor a kiépítés befejeződött, és az előre konfigurált megoldás csempéje **Kész** állapotot jelez, kattintson az **Indítás** gombra a távoli figyelési megoldás új lapon való megnyitásához.
@@ -50,7 +54,7 @@ Az irányítópult az alábbi információkat jeleníti meg:
 * A **Telemetria előzményei** panel a páratartalommal és hőmérséklettel kapcsolatos telemetriát jelenít meg a kiválasztott eszközről közel valós időben, és összesített adatokat tartalmaz, például a maximális, minimális és átlagos páratartalmat.
 * A **Riasztások előzményei** panel közelmúltbeli riasztási eseményeket jelenít meg, amikor egy telemetriaérték túllépett egy küszöbértéken. Saját riasztásokat is meghatározhat az előre konfigurált megoldás által létrehozott példák mellett.
 
-## Az eszközlista megtekintése
+## <a name="view-the-device-list"></a>Az eszközlista megtekintése
 Az eszközlista a megoldásban regisztrált összes eszközt megjeleníti. Megtekintheti és szerkesztheti az eszközök metaadatait, eszközöket adhat hozzá vagy távolíthat el, illetve parancsokat küldhet az eszközöknek.
 
 1. Kattintson a bal oldali menü **Eszközök** elemére a megoldás *eszközlistájának* megjelenítéséhez.
@@ -67,7 +71,7 @@ Az **Eszköz részletei** panel három szakaszból áll:
 * Az **Eszköztulajdonságok** szakasz az eszköz metaadatait listázza. Egyes metaadatok magáról az eszközről származnak (például a gyártó), másokat pedig megoldás hoz létre (például a létrehozás idejét). Itt szerkesztheti az eszköz metaadatait.
 * A **Hitelesítési kulcsok** szakasz azon kulcsokat sorolja fel, amelyeket az eszköz használhat a megoldással való hitelesítésre.
 
-## Parancs elküldése egy eszközre
+## <a name="send-a-command-to-a-device"></a>Parancs elküldése egy eszközre
 Az eszköz részletei panel megjeleníti az adott eszköz által támogatott összes parancsot, és lehetővé teszi, hogy parancsokat küldjön az eszközökre. Amikor egy eszköz először elindul, információkat küld a megoldásnak az általa támogatott parancsokról.
 
 1. A kiválasztott eszköz részleteit tartalmazó panelen kattintson a **Parancsok** elemre.
@@ -81,7 +85,7 @@ Az eszköz részletei panel megjeleníti az adott eszköz által támogatott ös
 
 A megoldás nyomon követi az általa küldött összes parancs állapotát. Az eredmény kezdetben **Függőben** állapotú. Amikor az eszköz jelenti, hogy végrehajtotta a parancsot, az eredmény **Sikeres** állapotra vált.
 
-## Új szimulált eszköz hozzáadása
+## <a name="add-a-new-simulated-device"></a>Új szimulált eszköz hozzáadása
 Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható négy mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközök a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
 
 Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldáshoz:
@@ -107,7 +111,7 @@ Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldásho
    
     ![Az új eszköz telemetriájának megtekintése][img-runningnew-2]
 
-## Az eszköz metaadatainak szerkesztése
+## <a name="edit-the-device-metadata"></a>Az eszköz metaadatainak szerkesztése
 Amikor az eszköz első alkalommal csatlakozik a megoldáshoz, elküldi metaadatait a megoldás számára. Ha az eszköz metaadatait a megoldás irányítópultján szerkeszti, az elküldi az új metaadatértékeket az eszköznek, és a megoldás DocumentDB-adatbázisában tárolja azokat. További információk: [Eszközidentitás-jegyzék és DocumentDB][lnk-devicemetadata].
 
 1. Lépjen vissza az eszközlistára.
@@ -121,7 +125,7 @@ Amikor az eszköz első alkalommal csatlakozik a megoldáshoz, elküldi metaadat
    
     ![Az eszköz metaadatainak szerkesztése][img-editdevice3]
 
-## Szabály hozzáadása az új eszközhöz
+## <a name="add-a-rule-for-the-new-device"></a>Szabály hozzáadása az új eszközhöz
 A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban olyan szabályt ad hozzá, amely riasztást küld, amikor az új eszköz által jelentett hőmérséklet meghaladja a 47 fokot. Mielőtt elkezdené, figyelje meg, hogy az irányítópulton az új eszköz telemetriaelőzményei szerint az eszköz hőmérséklete soha nem lép túl 45 fokon.
 
 1. Lépjen vissza az eszközlistára.
@@ -151,7 +155,7 @@ A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban 
 > 
 > 
 
-## Egyéb jellemzők
+## <a name="other-features"></a>Egyéb jellemzők
 A megoldás portáljával adott jellemzőkkel, például modellszámmal rendelkező eszközöket kereshet:
 
 ![Eszköz keresése][img-search]
@@ -160,7 +164,7 @@ Letilthatja az eszközöket, és a letiltásuk után eltávolíthatja őket:
 
 ![Eszköz letiltása és eltávolítása][img-disable]
 
-## A színfalak mögött
+## <a name="behind-the-scenes"></a>A színfalak mögött
 Előre konfigurált megoldás üzembe helyezésekor az üzembehelyezési folyamat több erőforrást hoz létre a kiválasztott Azure-előfizetésben. Ezeket az erőforrásokat az Azure [Portalon][lnk-portal] tekintheti meg. Az üzembe helyezési folyamat létrehoz egy **erőforráscsoportot** az előre konfigurált megoldáshoz kiválasztott néven alapuló névvel:
 
 ![Előre konfigurált megoldás az Azure Portalon][img-portal]
@@ -180,7 +184,7 @@ Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előf
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT Suite használatával:
 
 * [Az előre konfigurált távoli figyelési megoldás bemutatója][lnk-rm-walkthrough]
@@ -225,6 +229,6 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

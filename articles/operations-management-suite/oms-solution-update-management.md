@@ -1,242 +1,247 @@
 ---
-title: Update Management solution in OMS | Microsoft Docs
-description: This article is intended to help you understand how to use this solution to manage updates for your Windows and Linux computers.
+title: "Frissítéskezelési megoldás az OMS-ben | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást Windows és Linux rendszerű számítógépek frissítéseinek kezelésére."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2016
+ms.date: 10/14/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+
 
 ---
-# ![Update Management Solution in OMS](./media/oms-solution-update-management/update-management-solution-icon.png) Update Management solution in OMS
-The Update Management solution in OMS allows you to manage updates for your Windows and Linux computers.  You can quickly assess the status of available updates on all agent computers and initiate the process of installing required updates for servers. 
+# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![Frissítéskezelési megoldás az OMS-ben](./media/oms-solution-update-management/update-management-solution-icon.png) Frissítéskezelési megoldás az OMS-ben
+Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű számítógépek frissítéseit kezelheti.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és elindítható a kiszolgálók szükséges frissítéseinek telepítése is. 
 
-## Prerequisites
-* Windows agents must either be configured to communicate with a Windows Server Update Services (WSUS) server or have access to Microsoft Update.  
+## <a name="prerequisites"></a>Előfeltételek
+* A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük.  
   
   > [!NOTE]
-  > The Windows agent cannot be managed concurrently by System Center Configuration Manager.  
+  > A Windows-ügynök ezzel egyidejűleg nem felügyelhető a System Center Configuration Manager használatával.  
   > 
   > 
-* Linux agents must have access to an update repository.  The OMS Agent for Linux can be downloaded from [GitHub](https://github.com/microsoft/oms-agent-for-linux). 
+* A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.  A Linuxhoz készült OMS-ügynök letölthető a [GitHubról](https://github.com/microsoft/oms-agent-for-linux). 
 
-## Configuration
-Perform the following steps to add the Update Management solution to your OMS workspace and add Linux agents.  Windows agents are added automatically with no additional configuration.
+## <a name="configuration"></a>Konfiguráció
+A Frissítéskezelési megoldás OMS-munkaterülethez való hozzáadásához és Linux-ügynökök felvételéhez hajtsa végre az alábbi lépéseket.  Windows-ügynökök hozzáadása automatikusan történik, esetükben nincs szükség további konfigurációs beállításokra.
 
-1. Add the Update Management solution to your OMS workspace using the process described in [Add OMS solutions](../log-analytics/log-analytics-add-solutions.md) from the Solutions Gallery.  
-2. In the OMS portal, select **Settings** and then **Connected Sources**.  Note the **Workspace ID** and either the **Primary Key** or **Secondary Key**.
-3. Perform the following steps for each Linux computer.
+1. Az OMS-munkaterülethez adja hozzá a Frissítéskezelési megoldást. Ehhez kövesse a megoldástárban található [OMS-megoldás hozzáadása](../log-analytics/log-analytics-add-solutions.md) című témakörben leírt eljárást.  
+2. Az OMS-portálon válassza a **Beállítások**, majd az **Összekapcsolt források** elemet.  Jegyezze fel a **munkaterület azonosítóját** és vagy az **elsődleges kulcsot**, vagy a **másodlagos kulcsot**.
+3. Minden Linux-számítógép esetében végezze el az alábbi lépéseket.
    
-   a.  Install the latest version of the OMS Agent for Linux by running the following commands.  Replace <Workspace ID> with the Workspace ID and <Key> with either the Primary or Secondary Key.
+   a.    A linuxos OMS-ügynök legújabb verziójának telepítéséhez futtassa az alábbi parancsot.  A <Workspace ID> helyére írja be a munkaterület azonosítóját, a <Key> helyére pedig vagy az elsődleges kulcsot, vagy a másodlagos kulcsot.
    
-       cd ~
-       wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
    
-    b. To remove the agent, run the following command.
+   b. Az ügynök eltávolításához futtassa az alábbi parancsot.
    
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
-## Management packs
-If your System Center Operations Manager management group is connected to your OMS workspace, then the following management packs will be installed in Operations Manager when you add this solution. There is no configuration or maintenance of these management packs required. 
+## <a name="management-packs"></a>Felügyeleti csomagok
+Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolva az OMS-munkaterülettel, ennek a megoldásnak a hozzáadásakor az alábbi felügyeleti csomagok is telepítve lesznek az Operations Managerben. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat. 
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
-* Update Deployment MP
+* Frissítéstelepítő felügyeleti csomag
 
-For more information on how solution management packs are updated, see [Connect Operations Manager to Log Analytics](../log-analytics/log-analytics-om-agents.md).
+A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../log-analytics/log-analytics-om-agents.md).
 
-## Data collection
-### Supported agents
-The following table describes the connected sources that are supported by this solution.
+## <a name="data-collection"></a>Adatgyűjtés
+### <a name="supported-agents"></a>Támogatott ügynökök
+Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Connected Source | Supported | Description |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows agents |Yes |The solution collects information about system updates from Windows agents and initiates installation of required updates. |
-| Linux agents |Yes |The solution collects information about system updates from Linux agents. |
-| Operations Manager management group |Yes |The solution collects information about system updates from agents in a connected management group.<br>A direct connection from the Operations Manager agent to Log Analytics is not required. Data is forwarded from the management group to the OMS repository. |
-| Azure storage account |No |Azure storage does not include information about system updates. |
+| Windows-ügynökök |Igen |A megoldás információt szerez be Windows-ügynököktől a rendszerfrissítésekről, és kezdeményezi a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |A megoldás információt szerez be a Linux-ügynököktől a rendszerfrissítésekről. |
+| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br>Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. Az adatok a felügyeleti csoportból az OMS-tárházba lesznek továbbítva. |
+| Azure Storage-fiók |Nem |Az Azure Storage nem tartalmaz rendszerfrissítésekkel kapcsolatos információt. |
 
-### Collection frequency
-For each managed Windows computer, a scan is performed twice per day.  When an update is installed, its information is updated within 15 minutes.  
+### <a name="collection-frequency"></a>A gyűjtés gyakorisága
+Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat.  Az információk a telepítést követő 15 percen belül frissülnek.  
 
-For each managed Linux computer, a scan is performed every 3 hours.  
+Linux-számítógépek esetében a vizsgálat három óránként történik.  
 
-## Using the solution
-When you add the Update Management solution to your OMS workspace, the **Update Management** tile will be added to your OMS dashboard. This tile displays a count and graphical representation of the number of computers in your environment currently requiring system updates.<br><br>
-![Update Management Summary Tile](media/oms-solution-update-management/update-management-summary-tile.png)  
+## <a name="using-the-solution"></a>A megoldás használata
+A Frissítéskezelési megoldás hozzáadásakor az OMS-munkaterületen a **Frissítéskezelés** csempe felkerül az OMS-irányítópultra. Ez a csempe a környezetben jelenleg elérhető, frissítést igénylő számítógépek számát és grafikus ábrázolását jeleníti meg.<br><br>
+![Frissítéskezelés – áttekintő csempe](media/oms-solution-update-management/update-management-summary-tile.png)  
 
-## Viewing Update Assessments
-Click on the **Update Management** tile to open the **Update Management** dashboard. The dashboard includes the columns in the following table. Each column lists up to ten items matching that column's criteria for the specified scope and time range. You can run a log search that returns all records by clicking **See all** at the bottom of the column or by clicking the column header.
+## <a name="viewing-update-assessments"></a>A frissítési felmérések áttekintése
+A **Frissítéskezelés** irányítópultjának megnyitásához kattintson a **Frissítéskezelés** csempére. Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlopban legfeljebb tíz olyan elem jelenik meg, amely megfelel a megadott hatóköri és időtartományi kritériumoknak. Az oszlop alján található **Az összes megtekintése** elemre vagy az oszlop fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-| Column | Description |
+| Oszlop | Leírás |
 | --- | --- |
-| **Computers Missing Updates** | |
-| Critical or Security Updates |Lists the top ten computers that are missing updates sorted by the number of updates they're missing. Click on a computer name to run a log search returning all update records for that computer. |
-| Critical or Security Updates older than 30 days |Identifies number of computers that are missing critical or security updates grouped by the length of time since the update was published. Click on one of the entries to run a log search returning all missing and critical updates. |
-| **Required Missing Updates** | |
-| Critical or Security Updates |Lists classifications of updates that computers are missing sorted by the number of computers missing updates in the category. Click a classification to run a log search returning all update records for that classification. |
-| **Update Deployments** | |
-| Update Deployments |Number of currently scheduled update deployments and the duration until the next scheduled run.  Click on the tile to view schedules, currently running, and completed updates or to schedule a new deployment. |
+| **Frissítést igénylő számítógépek** | |
+| Kritikus vagy biztonsági frissítések |Az első tíz, frissítést igénylő számítógépet listázza a hiányzó frissítések száma alapján sorba rendezve. A számítógép nevére kattintva naplókeresést indíthat el, amellyel megjelenítheti az adott számítógépre vonatkozó összes frissítési bejegyzést. |
+| 30 napnál régebbi kritikus vagy biztonsági frissítések |A kritikus vagy biztonsági frissítéseket igénylő számítógépeket azonosítja a frissítés közzététele óta eltelt idő alapján sorba rendezve. A bejegyzés nevére kattintva keresést indíthat a naplóban, amellyel megjeleníti az összes hiányzó és kritikus frissítést. |
+| **Hiányzó szükséges frissítések** | |
+| Kritikus vagy biztonsági frissítések |A számítógépekről hiányzó frissítéseket kategorizálva listázza aszerint sorba rendezve, hogy az adott kategórián belüli frissítések hány számítógépről hiányoznak. Az egyes kategóriák nevére kattintva naplókeresést indíthat el, amely megjeleníti az adott kategória összes frissítési bejegyzését. |
+| **Frissítéstelepítések** | |
+| Frissítéstelepítések |A jelenleg beütemezett frissítéstelepítések számát, valamint a következő beütemezett telepítésig hátralévő időt jeleníti meg.  A csempére kattintva megjelenítheti az ütemezéseket, a folyamatban lévő és a befejezett frissítéseket, továbbá új telepítés ütemezését végezheti el. |
 
 <br>  
-![Update Management Summary Dashboard](./media/oms-solution-update-management/update-management-deployment-dashboard.png)<br>  
+![Frissítéskezelés – áttekintő irányítópult](./media/oms-solution-update-management/update-management-deployment-dashboard.png)<br>  
 <br>
-![Update Management Dashboard Computer View](./media/oms-solution-update-management/update-management-assessment-computer-view.png)<br>  
+![Frissítéskezelés irányítópultja – számítógép nézet](./media/oms-solution-update-management/update-management-assessment-computer-view.png)<br>  
 <br>
-![Update Management Dashboard Package View](./media/oms-solution-update-management/update-management-assessment-package-view.png)<br>  
+![Frissítéskezelés irányítópultja – csomag nézet](./media/oms-solution-update-management/update-management-assessment-package-view.png)<br>  
 
-## Installing updates
-Once updates have been assessed for all of the computers in your environment, you can have required updates installed by creating an *Update Deployment*.  An Update Deployment is a scheduled installation of required updates for one or more Windows computers.  You specify the date and time for the deployment in addition to a computer or group of computers that should be included.  
+## <a name="installing-updates"></a>Frissítések telepítése
+A környezetben szereplő összes Windows-számítógép frissítési felmérését követően a szükséges frissítések telepítését *frissítéstelepítés* létrehozásával végezheti el.  A frissítéstelepítés egy vagy több Windows-számítógép szükséges frissítéseinek ütemezett telepítése.  Ehhez meg kell adnia a központi telepítés dátumát és idejét, valamint meg kell határoznia a telepítésben érintett számítógépet vagy számítógépcsoportot.  
 
-Updates are installed by runbooks in Azure Automation.  You cannot currently view these runbooks, and they don’t require any configuration.  When an Update Deployment is created, it creates a schedule in that starts a master update runbook at the specified time for the included computers.  This master runbook starts a child runbook on each Windows agent that performs installation of required updates.  
+A telepítést az Azure Automation runbookjai végzik.  A runbookok jelenleg nem tekinthetők meg, és nem kívánnak semmilyen konfigurálást.  Frissítéstelepítés létrehozásakor egy ütemezés jön létre, amely a megadott időben a megadott számítógépekre irányuló frissítési mester runbookot indít el.  A mester runbook minden Windows-ügynökön egy gyermek runbookot indít, amely elvégzi a szükséges frissítések telepítését.  
 
-### Viewing update deployments
-Click the **Update Deployment** tile to view the list of existing Update Deployments.  They are grouped by status – **Scheduled**, **Running**, and **Completed**.<br><br> ![Update Deployments Schedule Page](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
+### <a name="viewing-update-deployments"></a>Frissítéstelepítések megtekintése
+Az elérhető frissítéstelepítések listáját a **Frissítéstelepítés** csempére kattintva tekintheti meg.  A lista a frissítések állapota szerinti csoportosításban jelenik meg: **Ütemezett**, **Futó** és **Befejezett**.<br><br> ![Frissítéstelepítési ütemezési lap](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
-The properties displayed for each Update Deployment are described in the following table.
+A frissítéstelepítések tulajdonságait az alábbi táblázat ismerteti.
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Name |Name of the Update Deployment. |
-| Schedule |Type of schedule.  *OneTime* is currently the only possible value. |
-| Start Time |Date and time that the Update Deployment is scheduled to start. |
-| Duration |Number of minutes the Update Deployment is allowed to run.  If all updates are not installed within this duration, then the remaining updates must wait until the next Update Deployment. |
-| Servers |Number of computers affected by the Update Deployment. |
-| Status |Current status of the Update Deployment.<br><br>Possible values are:<br>-  Not Started<br>- Running<br>- Finished |
+| Név |A frissítéstelepítés neve. |
+| Ütemezés |Az ütemezés típusa.  Jelenleg az *OneTime* (Egyszeri) az egyetlen lehetséges érték. |
+| Kezdési idő |A frissítéstelepítés ütemezett kezdetének dátuma és időpontja. |
+| Időtartam |A frissítéstelepítés engedélyezett futási idejének hossza percekben megadva.  Ha ez alatt az idő alatt nem fejeződik be minden frissítés telepítése, akkor a hátramaradó frissítések csak a következő ütemezett frissítéstelepítés során kerülnek telepítésre. |
+| Kiszolgálók |A frissítéstelepítés által érintett számítógépek száma. |
+| status |A frissítéstelepítés aktuális állapota.<br><br>Lehetséges értékek:<br>– Nincs elindítva<br>– Fut<br>– Befejeződött |
 
-Click on an Update Deployment to view its detail screen which includes the columns in the following table.  These columns will not be populated if the Update Deployment has not yet started.<br>
+Az egyes frissítéstelepítésekre kattintva megjeleníthető a részletes nézetű képernyő, amely az alábbi táblázatban felsorolt oszlopokat tartalmazza.  Ha a frissítéstelepítés még nem indult el, az oszlopok nem tartalmaznak adatot.<br>
 
-| Column | Description |
+| Oszlop | Leírás |
 | --- | --- |
-| **Computer Results** | |
-| Completed Successfully |Lists the number of computers in the Update Deployment by status.  Click on a status to run a log search returning all update records with that status for the Update Deployment. |
-| Computer Installation Status |Lists the computers involved in the Update Deployment and the percentage of updates that successfully installed. Click on one of the entries to run a log search returning all missing and critical updates. |
-| **Update Instance Results** | |
-| Instance Installation Status |Lists classifications of updates that computers are missing sorted by the number of computers missing updates in the category. Click a computer to run a log search returning all update records for that computer. |
+| **Számítógépekre vonatkozó adatok** | |
+| Sikeresen befejezve |A frissítéstelepítéssel érintett számítógépek számát jelzi ki az állapot szerint rendezve.  Az állapot nevére kattintva naplókeresést indíthat el, amely megjelenítheti az adott állapotú összes frissítési bejegyzést. |
+| Számítógép telepítési állapota |A frissítéstelepítéssel érintett számítógépeket listázza a sikeres telepítések százalékarányával. A bejegyzés nevére kattintva keresést indíthat a naplóban, amellyel megjeleníti az összes hiányzó és kritikus frissítést. |
+| **Frissítési példányok adatai** | |
+| Példányok telepítésének állapota |A számítógépekről hiányzó frissítéseket kategorizálva listázza aszerint sorba rendezve, hogy az adott kategórián belüli frissítések hány számítógépről hiányoznak. A számítógép nevére kattintva naplókeresést indíthat el, amely megjelenítheti az adott számítógépre vonatkozó összes frissítési bejegyzést. |
 
-<br><br> ![Overview of Update Deployment Results](./media/oms-solution-update-management/update-la-updaterunresults-page.png)
+<br><br> ![Frissítéstelepítési eredmények áttekintése](./media/oms-solution-update-management/update-la-updaterunresults-page.png)
 
-### Creating an Update Deployment
-Create a new Update Deployment by clicking the **Add** button at the top of the screen to open the **New Update Deployment** page.  You must provide values for the properties in the following table.
+### <a name="creating-an-update-deployment"></a>Frissítéstelepítés létrehozása
+Új frissítéstelepítés létrehozásához a képernyő felső részében kattintson a **Hozzáadás** gombra az **Új telepítésfrissítés** lap megnyitásához.  Az alábbi táblázatban szereplő tulajdonságok értékeit kell megadnia.
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Name |Unique name to identify the update deployment. |
-| Time Zone |Time zone to use for the start time. |
-| Start Time |Date and time to start the update deployment. |
-| Duration |Number of minutes the Update Deployment is allowed to run.  If all updates are not installed within this duration, then the remaining updates must wait until the next Update Deployment. |
-| Computers |Names of computers or computer groups to include in the Update Deployment.  Select one or more entries from the drop down list. |
+| Név |A frissítéstelepítést beazonosító egyedi név. |
+| Időzóna |A kezdési időpontnál használandó időzóna. |
+| Kezdési idő |A frissítéstelepítés indításának dátuma és időpontja. |
+| Időtartam |A frissítéstelepítés engedélyezett futási idejének hossza percekben megadva.  Ha ez alatt az idő alatt nem fejeződik be minden frissítés telepítése, akkor a hátramaradó frissítések csak a következő ütemezett frissítéstelepítés során kerülnek telepítésre. |
+| Számítógépek |A frissítéstelepítés által érintett számítógépek vagy számítógépcsoportok nevei.  A legördülő listából válasszon ki egy vagy több elemet. |
 
-<br><br> ![New Update Deployment Page](./media/oms-solution-update-management/update-newupdaterun-page.png)
+<br><br> ![Új frissítéstelepítés lapja](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
-### Time range
-By default, the scope of the data analyzed in the Update Management solution is from all connected management groups generated within the last 1 day. 
+### <a name="time-range"></a>Időtartomány
+A Frissítéskezelési szolgáltatás adatelemzése alapértelmezés szerint a legutóbbi egy nap során felderített csatlakoztatott felügyeleti csoportokra terjed ki. 
 
-To change the time range of the data, select **Data based on** at the top of the dashboard. You can select records created or updated within the last 7 days, 1 day, or 6 hours. Or you can select **Custom** and specify a custom date range.<br><br> ![Custom Time Range Option](./media/oms-solution-update-management/update-la-time-range-scope-databasedon.png)  
+Az adatokra vonatkozó időtartomány módosításához válassza ki az irányítópult tetején látható **Az adatok időtartománya** elemet. Itt meghatározhatja, hogy milyen időtartományban létrehozott vagy módosított adatok legyenek használva: legutóbbi 7 nap, 1 nap vagy 6 óra. Az **Egyéni** lehetőség választásával egyéni dátumtartományt is megadhat.<br><br> ![Egyéni időtartomány beállítása](./media/oms-solution-update-management/update-la-time-range-scope-databasedon.png)  
 
-## Log Analytics records
-The Update Management solution creates two types of records in the OMS repository.
+## <a name="log-analytics-records"></a>Log Analytics-rekordok
+A Frissítéskezelési megoldás két rekordtípust hoz létre az OMS-adattárban.
 
-### Update records
-A record with a type of **Update** is created for each update that is either installed or needed on each computer. Update records have the properties in the following table.
+### <a name="update-records"></a>Update típusú rekordok
+Az egyes számítógépekhez szükséges vagy telepített minden egyes frissítéshez egy**Update** (frissítés) típusú rekord készül. Az Update típusú rekordok tulajdonságait az alábbi táblázat ismerteti.
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Type |*Update* |
-| SourceSystem |The source that approved installation of the update.<br>Possible values are:<br>- Microsoft Update<br>-  Windows Update<br>- SCCM<br>- Linux Servers (Fetched from Package Managers) |
-| Approved |Specifies whether the update has been approved for installation.<br> For Linux servers this is currently optional as patching is not managed by OMS. |
-| Classification for Windows |Classification of the update.<br>Possible values are:<br>- Applications<br>- Critical Updates<br>- Definition Updates<br>- Feature Packs<br>- Security Updates<br>- Service Packs<br>- Update Rollups<br>- Updates |
-| Classification for Linux |Cassification of the update.<br>Possible values are:<br>-Critical Updates<br>- Security Updates<br>- Other Updates |
-| Computer |Name of the computer. |
-| InstallTimeAvailable |Specifies whether the installation time is available from other agents that installed the same update. |
-| InstallTimePredictionSeconds |Estimated installation time in seconds based on other agents that installed the same update. |
-| KBID |ID of the KB article that describes the update. |
-| ManagementGroupName |Name of the management group for SCOM agents.  For other agents, this is AOI-<workspace ID>. |
-| MSRCBulletinID |ID of the Microsoft security bulletin describing the update. |
-| MSRCSeverity |Severity of the Microsoft security bulletin.<br>Possible values are:<br>- Critical<br>- Important<br>- Moderate |
-| Optional |Specifies whether the update is optional. |
-| Product |Name of the product the update is for.  Click **View** to open the article in a browser. |
-| PackageSeverity |The severity of the vulnerability fixed in this update, as reported by the  Linux distro vendors. |
-| PublishDate |Date and time that the update was installed. |
-| RebootBehavior |Specifies if the update forces a reboot.<br>Possible values are:<br>- canrequestreboot<br>- neverreboots |
-| RevisionNumber |Revision number of the update. |
-| SourceComputerId |GUID to uniquely identify the computer. |
-| TimeGenerated |Date and time that the record was last updated. |
-| Title |Title of the update. |
-| UpdateID |GUID to uniquely identify the update. |
-| UpdateState |Specifies whether the update is installed on this computer.<br>Possible values are:<br>- Installed - The update is installed on this computer.<br>- Needed - The update is not installed and is needed on this computer. |
+| Típus |*Update* |
+| SourceSystem |A frissítés telepítését jóváhagyó forrás.<br>Lehetséges értékek:<br>– Microsoft Update (Microsoft-frissítés)<br>– Windows Update (Windows-frissítés)<br>– SCCM<br>– Linux Servers (Linux-kiszolgálók – a csomagkezelőkből lekért információ alapján) |
+| Approved |Azt jelzi, hogy a frissítés jóvá lett-e hagyva telepítésre.<br> Linux-kiszolgálók esetén ez nem kötelező, mivel a javításokat nem az OMS kezeli. |
+| Kategóriák Windows esetén |A frissítés kategóriája.<br>Lehetséges értékek:<br>– Applications (Alkalmazások)<br>– Critical Updates (Kritikus frissítések)<br>– Definition Updates (Definíciófrissítés)<br>– Feature Packs (Funkciócsomag)<br>– Security Updates (Biztonsági frissítések)<br>– Service Packs (Szervizcsomagok)<br>– Update Rollups (Kumulatív frissítések)<br>– Updates (Frissítések) |
+| Kategóriák Linux esetén |A frissítés kategóriája.<br>Lehetséges értékek:<br>– Critical Updates (Kritikus frissítések)<br>– Security Updates (Biztonsági frissítések)<br>– Other Updates (Másféle frissítések) |
+| Computer |A számítógép neve. |
+| InstallTimeAvailable |Azt jelzi, hogy elérhető-e a telepítés ideje az ugyanezt a frissítést telepítő más ügynököktől. |
+| InstallTimePredictionSeconds |Az ugyanezt a frissítést telepítő más ügynököktől származó információ alapján számított várható telepítési idő. |
+| KBID |A frissítést ismertető tudásbáziscikk azonosítója. |
+| ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetén ez AOI-<workspace ID>. |
+| MSRCBulletinID |A frissítést ismertető Microsoft biztonsági közlemény azonosítója. |
+| MSRCSeverity |A Microsoft biztonsági közlemény fontossága.<br>Lehetséges értékek:<br>– Critical (Kritikus)<br>– Important (Fontos)<br>– Moderate (Közepes) |
+| Optional |Azt jelzi, hogy a frissítés választható-e. |
+| Product |A terméke neve, amelyhez a frissítés tartozik.  A **Megtekintés** lehetőségre kattintva a cikket megnyithatja egy böngészőben. |
+| PackageSeverity |A frissítés által javított biztonsági rés  súlyossága a Linux-disztribúció szállítója által közölt adatok alapján. |
+| PublishDate |A frissítés telepítésének dátuma és időpontja. |
+| RebootBehavior |Azt jelzi, hogy a frissítés telepítéséhez szükséges-e újraindítás.<br>Lehetséges értékek:<br>- canrequestreboot (újraindítást igényelhet)<br>- neverreboots (nem igényel újraindítást) |
+| RevisionNumber |A frissítés változatszáma. |
+| SourceComputerId |A számítógép azonosításához használt globálisan egyedi azonosító (GUID). |
+| TimeGenerated |A rekord utolsó frissítésének dátuma és időpontja. |
+| Cím |A frissítés címe. |
+| UpdateID |A frissítés azonosításához használt globálisan egyedi azonosító (GUID). |
+| UpdateState |Azt jelzi, hogy a frissítés telepítve van-e ezen a számítógépen.<br>Lehetséges értékek:<br>– Installed – A frissítés telepítve van ezen a számítógépen.<br>– Needed – A frissítés szükséges, de nincs telepítve ezen a számítógépen. |
 
 <br>
-When you perform any log search that returns records with a type of **Update** you can select the **Updates** view which displays a set of tiles summarizing the updates returned by the search. You can click on the entries in the **Missing and applied updates** and **Required and optional updates** tiles to scope the view to that set of updates. Select the **List** or **Table** view to return the individual records.<br> 
+Ha olyan naplókeresést végez, amely **Update** típusú rekordokat ad vissza, a **Frissítések** nézet kiválasztásával megjeleníthet olyan csempéket, amelyek a keresés eredményeként visszaadott frissítések áttekintését tartalmazzák. A **Hiányzó és alkalmazott frissítések** és a **Szükséges és választható frissítések** csempék bejegyzéseire kattintva az adott típusú frissítésekre korlátozhatja a megjelenítést. Az eredeti rekordokhoz a **Lista** vagy a **Táblázat** nézetre kattintva térhet vissza.<br> 
 
-![Log Search Update View with Record Type Update](./media/oms-solution-update-management/update-la-view-updates.png)  
+![Naplókeresés, frissítés nézet, Update típusú rekorddal](./media/oms-solution-update-management/update-la-view-updates.png)  
 
-In the **Table** view, you can click on the **KBID** for any record to open a browser with the KB article. This allows you to quickly read about the details of the particular update.<br> 
+A **Táblázat** nézetben bármely rekord **KBID** tulajdonságára kattintva a vonatkozó tudásbáziscikket megnyithatja egy böngészőben. Ez lehetővé teszi, hogy az egyes frissítésekről egyszerűen jusson további információkhoz.<br> 
 
-![Log Search Table View With Tiles Record Type Updates](./media/oms-solution-update-management/update-la-view-table.png)
+![Naplókeresés, táblázat nézet csempékkel, frissítések típusú rekorddal](./media/oms-solution-update-management/update-la-view-table.png)
 
-In the **List** view, you click the **View** link next to the KBID to open the KB article.<br>
+**Lista** nézetben a tudásbáziscikk megnyitásához a KBID tulajdonság melletti **Megtekintés** hivatkozásra kell kattintani.<br>
 
-![Log Search List View With Tiles Record Type Updates](./media/oms-solution-update-management/update-la-view-list.png)
+![Naplókeresés, lista nézet csempékkel, frissítések típusú rekorddal](./media/oms-solution-update-management/update-la-view-list.png)
 
-### UpdateSummary records
-A record with a type of **UpdateSummary** is created for each Windows agent computer. This record is updated each time the computer is scanned for updates. **UpdateSummary** records have the properties in the following table.
+### <a name="updatesummary-records"></a>UpdateSummary típusú rekordok
+Minden Windows-ügynök esetében egy **UpdateSummary** típusú rekord készül. Ez a rekord minden olyan alkalommal frissül, amikor a számítógépen frissítéskeresés történik. Az **UpdateSummary** típusú rekordok tulajdonságait az alábbi táblázat ismerteti.
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Type |UpdateSummary |
+| Típus |UpdateSummary |
 | SourceSystem |OpsManager |
-| Computer |Name of the computer. |
-| CriticalUpdatesMissing |Number of critical updates missing on the computer. |
-| ManagementGroupName |Name of the management group for SCOM agents. For other agents, this is AOI-<workspace ID>. |
-| NETRuntimeVersion |Version of the .NET runtime installed on the computer. |
-| OldestMissingSecurityUpdateBucket |Bucket to categorize the time since the oldest missing security update on this computer was published.<br>Possible values are:<br>- Older<br>-  180 days ago<br>- 150 days ago<br>- 120 days ago<br>- 90 days ago<br>- 60 days ago<br>- 30 days go<br>- Recent |
-| OldestMissingSecurityUpdateInDays |Number of days since the oldest missing security update on this computer was published. |
-| OsVersion |Version of the operating system installed on the computer. |
-| OtherUpdatesMissing |Number of other updates missing on the computer. |
-| SecurityUpdatesMissing |Number of security updates missing on the computer. |
-| SourceComputerId |GUID to uniquely identify the computer. |
-| TimeGenerated |Date and time that the record was last updated. |
-| TotalUpdatesMissing |Total number of updates missing on the computer. |
-| WindowsUpdateAgentVersion |Version number of the Windows Update agent on the computer. |
-| WindowsUpdateSetting |Setting for how the computer will install important updates.<br>Possible values are:<br>- Disabled<br>- Notify before installation<br>- Scheduled installation |
-| WSUSServer |URL of WSUS server if the computer is configured to use one. |
+| Computer |A számítógép neve. |
+| CriticalUpdatesMissing |A számítógépről hiányzó kritikus frissítések száma. |
+| ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén. Más ügynökök esetén ez AOI-<workspace ID>. |
+| NETRuntimeVersion |A számítógépre telepített .NET-futtatórendszer verziója. |
+| OldestMissingSecurityUpdateBucket |A számítógépen a leghosszabb ideje hiányzó biztonsági frissítés kiadása óta eltelt időt kategorizáló gyűjtő.<br>Lehetséges értékek:<br>– Older (Régebbi)<br>– 180 days ago (180 napja)<br>– 150 days ago (150 napja)<br>– 120 days ago (120 napja)<br>– 90 days ago (90 napja)<br>– 60 days ago (60 napja)<br>– 30 days ago (30 napja)<br>– Recent (Friss) |
+| OldestMissingSecurityUpdateInDays |A számítógépen a leghosszabb ideje hiányzó biztonsági frissítés kiadása óta eltelt napok száma. |
+| OsVersion |A számítógépre telepített operációs rendszer verziószáma. |
+| OtherUpdatesMissing |A számítógépről hiányzó további frissítések száma. |
+| SecurityUpdatesMissing |A számítógépről hiányzó biztonsági frissítések száma. |
+| SourceComputerId |A számítógép azonosításához használt globálisan egyedi azonosító (GUID). |
+| TimeGenerated |A rekord utolsó frissítésének dátuma és időpontja. |
+| TotalUpdatesMissing |A számítógépről hiányzó összes frissítés száma. |
+| WindowsUpdateAgentVersion |A számítógépen található Windows Update Agent verziószáma. |
+| WindowsUpdateSetting |A fontos frissítések telepítésének módját meghatározó beállítás a számítógépen.<br>Lehetséges értékek:<br>– Disabled (Letiltva)<br>– Notify before installation (Értesítés telepítés előtt)<br>– Scheduled installation (Ütemezett telepítése) |
+| WSUSServer |A WSUS-kiszolgálóra mutató URL, ha a számítógép konfigurálásában meg van adva ennek használata. |
 
-## Sample log searches
-The following table provides sample log searches for update records collected by this solution. 
+## <a name="sample-log-searches"></a>Naplókeresési minták
+A következő táblázat a megoldás által összegyűjtött frissítési rekordokkal kapcsolatos naplókeresési mintákat tartalmazza. 
 
-| Query | Description |
+| Lekérdezés | Leírás |
 | --- | --- |
-| All computers with missing updates |Type=Update UpdateState=Needed Optional=false &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |
-| Missing updates for computer "COMPUTER01.contoso.com" (replace with your own computer name) |Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" &#124; select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate |
-| All computers with missing critical or security updates |Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") |
-| Critical or security updates needed by machines where updates are manually applied |Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual &#124; Distinct Computer} &#124; Distinct KBID |
-| Error events for machines that have missing critical or security required updates |Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false &#124; Distinct Computer} |
-| All computers with missing update rollups |Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |
-| Distinct missing updates across all computers |Type=Update UpdateState=Needed Optional=false &#124; Distinct Title |
-| WSUS computer membership |Type=UpdateSummary &#124; measure count() by WSUSServer |
-| Automatic update configuration |Type=UpdateSummary &#124; measure count() by WindowsUpdateSetting |
-| Computers with automatic update disabled |Type=UpdateSummary WindowsUpdateSetting=Manual |
-| List of all the Linux machines which have a package update available |Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |
-| List of all the Linux machines which have a package update available which addresses Critical or Security vulnerability |Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |
-| List of all packages that have an update available |Type=Update and OSType=Linux and UpdateState!="Not needed" |
-| List of all packages that have an update available which addresses Critical or Security vulnerability |Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |
-| List of all the “Ubuntu” machines with any update available |Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |
+| Minden számítógép, amelyről hiányzik frissítés |Type=Update UpdateState=Needed Optional=false &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |
+| A "COMPUTER01.contoso.com" számítógépről hiányzó frissítések (írja felül a nevet a saját gép nevére) |Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" &#124; select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate |
+| Minden számítógép, amelyről kritikus vagy biztonsági frissítés hiányzik |Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") |
+| Hiányzó kritikus vagy biztonsági frissítések olyan számítógépeken, amelyeken kézi frissítés van beállítva |Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual &#124; Distinct Computer} &#124; Distinct KBID |
+| Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false &#124; Distinct Computer} |
+| Minden olyan számítógép, amelynél kumulatív frissítések hiányoznak |Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |
+| Egyedi frissítések minden számítógépnél |Type=Update UpdateState=Needed Optional=false &#124; Egyedi név |
+| WSUS-t használó számítógépek |Type=UpdateSummary &#124; measure count() by WSUSServer |
+| Automatikus frissítési beállítások |Type=UpdateSummary &#124; measure count() by WindowsUpdateSetting |
+| Azok a számítógépek, amelyeken az automatikus frissítés le van tiltva |Type=UpdateSummary WindowsUpdateSetting=Manual |
+| Minden olyan Linux-számítógép, amelyhez csomagfrissítés érhető el |Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |
+| Minden olyan Linux-számítógép, amelyhez kritikus vagy biztonsági rést javító csomagfrissítés érhető el |Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |
+| Minden olyan csomag, amelyhez frissítés érhető el |Type=Update and OSType=Linux and UpdateState!="Not needed" |
+| Minden olyan csomag, amelyhez kritikus vagy biztonsági rést javító frissítés érhető el |Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |
+| Minden olyan Ubuntu-gép, amelyhez bármilyen frissítés érhető el |Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |
 
-## Next steps
-* Use Log Searches in [Log Analytics](../log-analytics/log-analytics-log-searches.md) to view detailed update data.
-* [Create your own dashboards](../log-analytics/log-analytics-dashboards.md) showing update compliance for your managed computers.
-* [Create alerts](../log-analytics/log-analytics-alerts.md) when critical updates are detected as missing from computers or a computer has automatic updates disabled.  
+## <a name="next-steps"></a>Következő lépések
+* A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
+* [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) megjelenítheti a felügyelt számítógépek frissítési megfelelőségét.
+* [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.  
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

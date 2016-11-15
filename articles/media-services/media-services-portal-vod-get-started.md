@@ -1,12 +1,12 @@
 ---
 title: " Igény szerinti tartalomtovábbítás az Azure Portal használatával | Microsoft Docs"
-description: Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással.
+description: "Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 25d8b204f328514ebcfc69228dcbf9342bdf205b
+
 
 ---
-# Igény szerinti tartalomtovábbítás az Azure Portal használatával
+# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással.
@@ -35,11 +39,11 @@ Az oktatóanyag a következő feladatokat tartalmazza:
 5. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
 6. Tartalom lejátszása
 
-## Azure Media Services-fiók létrehozása
+## <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson az **+Új** > **Adathordozó + CDN** > **Media Services** lehetőségre.
+2. Kattintson a **+New** > **Web + Mobile** > **Media Services** elemre.
    
     ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new1.png)
 3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
@@ -48,7 +52,7 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
    
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
    2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
-   3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../resource-group-overview.md#resource-groups) talál.
+   3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../azure-resource-manager/resource-group-overview.md#resource-groups) talál.
    4. A **Hely** részben válassza ki azt a földrajzi régiót, amelyben tárolni kívánja a Media Services-fiókhoz tartozó adathordozó- és metaadatrekordokat. A rendszer ezen régió alapján fogja feldolgozni, illetve streamelni az adathordozót. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. 
    5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
       
@@ -62,7 +66,7 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
    
     Az AMS-fiók kezeléséhez (például videók feltöltéséhez, objektumok kódolásához, a feladatok előrehaladásának figyeléséhez) használja a **Settings** (Beállítások) ablakot.
 
-## Kulcsok kezelése
+## <a name="manage-keys"></a>Kulcsok kezelése
 A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fiók nevére és az elsődleges kulcs adataira.
 
 1. Válassza ki a fiókját az Azure Portalon. 
@@ -75,7 +79,7 @@ A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fi�
    
     ![Media Services, kulcsok](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
-## Streamvégpontok konfigurálása
+## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
 Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges).
 
 A Media Services dinamikus becsomagolást biztosít, amelynek köszönhetően adaptív sávszélességű MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming, HDS) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolnia kéne.
@@ -103,7 +107,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
    > 
    > 
 
-## Fájlok feltöltése
+## <a name="upload-files"></a>Fájlok feltöltése
 Ha az Azure Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
 
 1. A **Settings** (Beállítások) ablakban kattintson az **Assets** (Objektumok) elemre.
@@ -123,7 +127,7 @@ Ha az Azure Media Services használatával kíván videókat streamelni, fel kel
 
 A feltöltés befejezését követően az új objektum bekerül az **Objektumok** ablakban található listába. 
 
-## Objektumok kódolása
+## <a name="encode-assets"></a>Objektumok kódolása
 Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges). A videók adaptív sávszélességű streameléséhez többszörös sávszélességű fájlokká kell kódolnia a forrásvideókat. Javasoljuk, hogy a videók kódolásához használja a **Media Encoder Standard** kódolót.  
 
 A Media Services dinamikus becsomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS, Smooth Streaming illetve HDS formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
@@ -133,7 +137,7 @@ A dinamikus csomagolás előnyeinek kihasználásához a következőket kell ten
 * Kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit egy későbbi részben találja meg).
 * Szerezzen be legalább egy streamelési egységet a tartalom továbbításához használni kívánt streamvégpontra. További információkért lásd a [streamvégpontok konfigurálását bemutató részt](media-services-portal-vod-get-started.md#configure-streaming-endpoints). 
 
-### Kódolás a portál használatával
+### <a name="to-use-the-portal-to-encode"></a>Kódolás a portál használatával
 Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a Media Encoder Standard segítségével történő kódolásához.
 
 1. A **Settings** (Beállítások) ablakban válassza az **Assets** (Objektumok) lehetőséget.  
@@ -146,12 +150,12 @@ Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a 
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 5. Nyomja meg a **Create** (Létrehozás) gombot.
 
-### Kódolási feladatok előrehaladásának figyelése
+### <a name="monitor-encoding-job-progress"></a>Kódolási feladatok előrehaladásának figyelése
 A kódolási feladat előrehaladásának figyeléséhez kattintson az oldal tetején található **Settings** (Beállítások), majd a **Jobs** (Feladatok) elemre.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-## Tartalom közzététele
+## <a name="publish-content"></a>Tartalom közzététele
 Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először „közzé kell tennie” az objektumot. Ehhez létre kell hoznia egy lokátort. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: 
 
 * Streamelési (OnDemandOrigin) lokátorokat, amelyek adaptív streameléshez (például MPEG DASH, HLS vagy Smooth Streaming adatok streameléséhez) használhatók. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism-fájlt. 
@@ -181,7 +185,7 @@ Az SAS URL-cím formátuma a következő:
 
 A lokátor lejárati idejének módosításához használjon [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Az SAS-keresők lejárati dátumának frissítésekor az URL-cím is módosul.
 
-### Az objektum portál segítségével történő közzététele
+### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 Az objektumnak a portál segítségével történő közzétételéhez tegye a következőket:
 
 1. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget.
@@ -194,7 +198,7 @@ Az objektumnak a portál segítségével történő közzétételéhez tegye a k
 
 Az URL-cím bekerül a **Közzétett URL-címek** listájába.
 
-## Tartalom lejátszása a portálról
+## <a name="play-content-from-the-portal"></a>Tartalom lejátszása a portálról
 Az Azure Portalon talál egy tartalomlejátszót, amellyel tesztelheti a videót.
 
 Kattintson a kívánt videóra, majd a **Lejátszás** gombra.
@@ -206,14 +210,17 @@ Vegye figyelembe a következőket:
 * Ellenőrizze, hogy közzétette-e a videót.
 * A **Media Player** az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, rákattintva másolja az URL-címet, és használjon másik lejátszót. Például az [Azure Media Services lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Visszajelzés küldése
+## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

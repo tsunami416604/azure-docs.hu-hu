@@ -1,138 +1,142 @@
 ---
-title: Create an Internet-facing load balancer in Resource Manager by using PowerShell | Microsoft Docs
-description: Learn how to create an Internet-facing load balancer in Resource Manager by using PowerShell
+title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása a Resource Managerben a PowerShell használatával | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a Resource Managerben a PowerShell használatával"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8257f548-7019-417f-b15f-d004a1eec826
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 10/24/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7b74067b2f174e1242f5eb6c3028af4ef7b2f22e
+
 
 ---
-# <a name="get-started"></a>Creating an Internet-facing load balancer in Resource Manager by using PowerShell
+# <a name="a-namegetstartedacreating-an-internetfacing-load-balancer-in-resource-manager-by-using-powershell"></a><a name="get-started"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Resource Managerben a PowerShell használatával
 [!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-This article covers the Resource Manager deployment model. You can also [learn how to create an Internet-facing load balancer by using the classic deployment model](load-balancer-get-started-internet-classic-cli.md).
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a klasszikus üzemi modell használatával](load-balancer-get-started-internet-classic-cli.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## Deploying the solution by using Azure PowerShell
-The following procedures show how to create an Internet-facing load balancer by using Azure Resource Manager with PowerShell. With Azure Resource Manager, each resource is created and configured individually, and then put together to create a resource.
+## <a name="deploying-the-solution-by-using-azure-powershell"></a>A megoldás telepítése az Azure PowerShell használatával
+A következő eljárások bemutatják, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó az Azure Resource Managerben a PowerShell használatával. Az Azure Resource Manager lehetővé teszi, hogy az egyes erőforrások létrehozása és konfigurálása egyenként történjen, majd az összerakásukkal jöjjön létre egy terheléselosztó.
 
-You must create and configure the following objects to deploy a load balancer:
+A terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehozni és konfigurálni:
 
-* Front-end IP configuration: contains public IP (PIP) addresses for incoming network traffic.
-* Back-end address pool: contains network interfaces (NICs) for the virtual machines to receive network traffic from the load balancer.
-* Load-balancing rules: contains rules that map a public port on the load balancer to a port in the back-end address pool.
-* Inbound NAT rules: contains rules that map a public port on the load balancer to a port for a specific virtual machine in the back-end address pool.
-* Probes: contains health probes used to check availability of virtual machine instances in the back-end address pool.
+* Előtér-IP-konfiguráció: a nyilvános IP-címeket (PIP) tartalmazza a bejövő hálózati forgalomhoz.
+* Háttércímkészlet: hálózati adaptereket (NIC) tartalmaz, amelyek segítségével a virtuális gépek fogadhatják a terheléselosztóról érkező hálózati forgalmat.
+* Terheléselosztási szabályok: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját rendelik hozzá a háttércímkészletben lévő porthoz.
+* Bejövő NAT-szabályok: olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá egy adott virtuális gép portjához a háttércímkészletben.
+* Mintavételezők: állapotfigyelő mintavételezőket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állását ellenőrzik a háttércímkészletben.
 
-For more information, see [Azure Resource Manager support for Load Balancer](load-balancer-arm.md).
+A további információkat az [Azure Resource Manager support for Load Balancer](load-balancer-arm.md) (Azure Resource Manager-támogatás a terheléselosztóhoz) című rész tartalmazza.
 
-## Set up PowerShell to use Resource Manager
-Make sure you have the latest production version of the Azure Resource Manager module for PowerShell:
+## <a name="set-up-powershell-to-use-resource-manager"></a>A PowerShell beállítása a Resource Manager használatához
+Győződjön meg arról, hogy az Azure Resource Manager modul legújabb üzemi verziójával rendelkezik a PowerShellhez:
 
-1. Sign in to Azure.
-   
+1. Jelentkezzen be az Azure-ba.
+
         Login-AzureRmAccount
-   
-    Enter your credentials when prompted.
-2. Check the subscriptions for the account.
-   
+
+    Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
+2. Keresse meg a fiókot az előfizetésekben.
+
         Get-AzureRmSubscription
-3. Choose which of your Azure subscriptions to use.
-   
+3. Válassza ki, hogy melyek Azure-előfizetését használja.
+
         Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
-4. Create a resource group. (Skip this step if you're using an existing resource group.)
-   
+4. Hozzon létre egy erőforráscsoportot. (Hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ.)
+
         New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
-## Create a virtual network and a public IP address for the front-end IP pool
-1. Create a subnet and a virtual network.
-   
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>Virtuális hálózat és nyilvános IP-cím létrehozása az előtér-IP-címkészlethez
+1. Hozzon létre egy alhálózatot és egy virtuális hálózatot.
+
         $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
         New-AzureRmvirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
-2. Create an Azure public IP address resource, named **PublicIP**, to be used by a front-end IP pool with the DNS name **loadbalancernrp.westus.cloudapp.azure.com**. The following command uses the static allocation type.
-   
-        $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' –AllocationMethod Static -DomainNameLabel loadbalancernrp
-   
-   > [!IMPORTANT]
-   > The load balancer uses the domain label of the public IP as a prefix for its FQDN. This is different from the classic deployment model, which uses the cloud service as the load balancer FQDN.
-   > In this example, the FQDN is **loadbalancernrp.westus.cloudapp.azure.com**.
-   > 
-   > 
+2. Hozzon létre egy előtér-IP-címkészlet által használandó Azure-beli nyilvános IP-címet **PublicIP** névvel és **loadbalancernrp.westus.cloudapp.azure.com** DNS-névvel. A következő parancs a statikus felosztástípust használja.
 
-## Create a front-end IP pool and a back-end address pool
-1. Create a front-end IP pool named **LB-Frontend** that uses the **PublicIp** resource.
-   
+        $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' –AllocationMethod Static -DomainNameLabel loadbalancernrp
+
+   > [!IMPORTANT]
+   > A terheléselosztó a nyilvános IP-cím tartománycímkéjét használja a teljes tartományneve előtagjaként. Ez eltér a klasszikus üzemi modelltől, amely a felhőalapú szolgáltatást használja a terheléselosztó teljes tartományneveként.
+   > Ebben a példában a **loadbalancernrp.westus.cloudapp.azure.com** a teljes tartománynév.
+   >
+   >
+
+## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>Előtér-IP-címkészlet és háttércímkészlet létrehozása
+1. Hozzon létre egy **LB-Frontend** nevű előtér-IP-címkészletet, amely a **PublicIp** erőforrást használja.
+
         $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PublicIpAddress $publicIP
-2. Create a back-end address pool named **LB-backend**.
-   
+2. Hozzon létre egy **LB-backend** nevű háttércímkészletet.
+
         $beaddresspool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name LB-backend
 
-## Create NAT rules, a load balancer rule, a probe, and a load balancer
-This example creates the following items:
+## <a name="create-nat-rules-a-load-balancer-rule-a-probe-and-a-load-balancer"></a>NAT-szabályok, terheléselosztó-szabály, mintavétel és terheléselosztó létrehozása
+Ez a példa a következő elemeket hozza létre:
 
-* A NAT rule to translate all incoming traffic on port 3441 to port 3389
-* A NAT rule to translate all incoming traffic on port 3442 to port 3389
-* A probe rule to check the health status on a page named **HealthProbe.aspx**
-* A load balancer rule to balance all incoming traffic on port 80 to port 80 on the addresses in the back-end pool
-* A load balancer that uses all these objects
+* Egy NAT-szabályt, amely a 3441-es porton bejövő összes forgalmat lefordítja a 3389-es portra
+* Egy NAT-szabályt, amely a 3442-es porton bejövő összes forgalmat lefordítja a 3389-es portra
+* Egy mintavételi szabályt, amely az állapotot ellenőrzi a **HealthProbe.aspx** nevű oldalon
+* Egy terheléselosztó-szabályt, amely elosztja a 80-as porton bejövő összes forgalmat a háttércímkészletben szereplő címekhez tartozó 80-as porton
+* Egy terheléselosztót, amely mindezeket az objektumokat használja
 
-Use these steps:
+Használja az alábbi lépéseket:
 
-1. Create the NAT rules.
-   
+1. Hozza létre a NAT-szabályokat.
+
         $inboundNATRule1= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP1 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
-   
+
         $inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
-2. Create a health probe. There are two ways to configure a probe:
-   
-    HTTP probe
-   
+2. Hozzon létre egy állapotmintát. Két módszer van a mintavétel konfigurálására:
+
+    HTTP-mintavétel
+
         $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-   
-    TCP probe
-   
+
+    TCP-mintavétel
+
         $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-3. Create a load balancer rule.
-   
+3. Hozzon létre egy terheléselosztó-szabályt.
+
         $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-4. Create the load balancer by using the previously created objects.
-   
+4. Hozzon létre egy terheléselosztót a korábban létrehozott objektumokkal.
+
         $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name NRP-LB -Location 'West US' -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 
-## Create NICs
-Create network interfaces (or modify existing ones) and then associate them to NAT rules, load balancer rules, and probes:
+## <a name="create-nics"></a>Hálózati adapterek létrehozása
+Hozzon létre hálózati adaptereket (vagy módosítsa a meglévőket), majd társítsa őket a NAT-szabályokhoz, a terheléselosztási szabályokhoz és a mintavételekhez:
 
-1. Get the virtual network and a virtual network subnet, where the NICs need to be created.
-   
+1. Szerezze be azt a virtuális hálózatot és egy virtuális alhálózatot, ahol a hálózati adaptereket létre kell hozni.
+
         $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
         $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
-2. Create a NIC named **lb-nic1-be**, and associate it with the first NAT rule and the first (and only) back-end address pool.
-   
+2. Hozzon létre egy hálózati adaptert **lb-nic1-be** néven, majd társítsa az első NAT-szabállyal és az első (és egyetlen) háttércímkészlettel.
+
         $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
-3. Create a NIC named **lb-nic2-be**, and associate it with the second NAT rule and the first (and only) back-end address pool.
-   
+3. Hozzon létre egy hálózati adaptert **lb-nic2-be** néven, majd társítsa a második NAT-szabállyal és az első (és egyetlen) háttércímkészlettel.
+
         $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
-4. Check the NICs.
-   
+4. Ellenőrizze a hálózati adaptereket.
+
         $backendnic1
-   
-    Expected output:
-   
+
+    Várt kimenet:
+
         Name                 : lb-nic1-be
         ResourceGroupName    : NRP-RG
         Location             : westus
@@ -178,58 +182,63 @@ Create network interfaces (or modify existing ones) and then associate them to N
                         }
         EnableIPForwarding   : False
         NetworkSecurityGroup : null
-        Primary              : 
-5. Use the `Add-AzureRmVMNetworkInterface` cmdlet to assign the NICs to different VMs.
+        Primary              :
+5. Az `Add-AzureRmVMNetworkInterface` parancsmag használatával rendelje hozzá a hálózati adaptereket különböző virtuális gépekhez.
 
-## Create a virtual machine
-For guidance on creating a virtual machine and assigning a NIC, see option 5 in [Create and preconfigure a Windows virtual machine with Resource Manager and Azure PowerShell](../virtual-machines/virtual-machines-windows-create-powershell.md#Example).
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+A virtuális gép létrehozásával és egy hálózati adapter hozzárendelésével kapcsolatos útmutatásért lásd: [Azure-beli virtuális gép létrehozása a PowerShell használatával](../virtual-machines/virtual-machines-windows-ps-create.md).
 
-## Add the network interface to the load balancer
-1. Retrieve the load balancer from Azure.
-   
-    Load the load balancer resource into a variable (if you haven't done that yet). The variable is called **$lb**. Use the same names from the load balancer resource that you created earlier.
-   
+## <a name="add-the-network-interface-to-the-load-balancer"></a>A hálózati adapter hozzáadása a terheléselosztóhoz
+1. Olvassa be a terheléselosztót az Azure-ból.
+
+    Töltse be a terheléselosztó-erőforrást egy változóba (ha még nem tette meg). A változó neve **$lb**. Használja ugyanazokat a neveket, amelyeket a korábban létrehozott terheléselosztó-erőforrásban használt.
+
         $lb= get-azurermloadbalancer –name NRP-LB -resourcegroupname NRP-RG
-2. Load the back-end configuration to a variable.
-   
-        $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
-3. Load the already created network interface into a variable. The variable name is **$nic**. The network interface name is the same one from the earlier example.
-   
-        $nic =get-azurermnetworkinterface –name lb-nic1-be -resourcegroupname NRP-RG
-4. Change the back-end configuration on the network interface.
-   
-        $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
-5. Save the network interface object.
-   
-        Set-AzureRmNetworkInterface -NetworkInterface $nic
-   
-    After a network interface is added to the load balancer back-end pool, it starts receiving network traffic based on the load-balancing rules for that load balancer resource.
+2. Töltse be a háttér-konfigurációt egy változóba.
 
-## Update an existing load balancer
-1. By using the load balancer from the earlier example, assign a load balancer object to the variable **$slb** by using `Get-AzureLoadBalancer`.
-   
+        $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+3. Töltse be a már létrehozott hálózati adaptert egy változóba. A változó neve **$nic**. A hálózati adapter neve ugyanaz, mint a korábbi példában.
+
+        $nic =get-azurermnetworkinterface –name lb-nic1-be -resourcegroupname NRP-RG
+4. Módosítsa a hálózati adapter háttér-konfigurációját.
+
+        $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
+5. Mentse a hálózati adapter objektumot.
+
+        Set-AzureRmNetworkInterface -NetworkInterface $nic
+
+    Miután hozzáadott egy hálózati adaptert a terheléselosztó háttérkészletéhez, az elkezdi fogadni a hálózati forgalmat az adott terheléselosztó-erőforrásra vonatkozó terheléselosztási szabályok alapján.
+
+## <a name="update-an-existing-load-balancer"></a>Meglévő terheléselosztó frissítése
+1. A korábbi példából származó terheléselosztó felhasználásával a `Get-AzureLoadBalancer` paranccsal rendeljen hozzá egy terheléselosztó objektumot az **$slb** változóhoz.
+
         $slb = get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
-2. In the following example, you add an inbound NAT rule--by using port 81 in the front-end pool and port 8181 for the back-end pool--to an existing load balancer.
-   
+2. A következő példában egy bejövő NAT-szabályt ad hozzá – az előtérkészlet 81-es portját és a háttérkészlet 8181-es portját használva – egy meglévő a terheléselosztóhoz.
+
         $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol TCP
-3. Save the new configuration by using `Set-AzureLoadBalancer`.
-   
+3. Mentse az új konfigurációt a `Set-AzureLoadBalancer` paranccsal.
+
         $slb | Set-AzureRmLoadBalancer
 
-## Remove a load balancer
-Use the command `Remove-AzureLoadBalancer` to delete a previously created load balancer named **NRP-LB** in a resource group called **NRP-RG**.
+## <a name="remove-a-load-balancer"></a>Terheléselosztó eltávolítása
+A `Remove-AzureLoadBalancer` paranccsal törölje a korábban létrehozott **NRP-LB** nevű terheléselosztót az **NRP-RG** nevű erőforráscsoportból.
 
     Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 > [!NOTE]
-> You can use the optional switch **-Force** to avoid the prompt for deletion.
-> 
-> 
+> A választható **-Force** kapcsolóval elkerülheti a törlésre vonatkozó kérdést.
+>
+>
 
-## Next steps
-[Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-ps.md)
+## <a name="next-steps"></a>Következő lépések
+[Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
 
-[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
+[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

@@ -1,13 +1,13 @@
 ---
-title: A Microsoft Azure IoT Suite áttekintése | Microsoft Docs
-description: A cikk áttekinti, hogyan biztosít az Azure IoT Suite az eszközök internetes hálózatán alapuló, előre konfigurált megoldásokat adatok gyűjtéséhez, elemzéséhez és tárolásához, megjelenítések biztosításához, valamint a más rendszerekkel való integrációhoz.
-services: ''
+title: "A Microsoft Azure IoT Suite áttekintése | Microsoft Docs"
+description: "A cikk áttekinti, hogyan biztosít az Azure IoT Suite az eszközök internetes hálózatán alapuló, előre konfigurált megoldásokat adatok gyűjtéséhez, elemzéséhez és tárolásához, megjelenítések biztosításához, valamint a más rendszerekkel való integrációhoz."
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 2d38d08a-4133-4e5c-8b28-f93cadb5df05
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7b0df1fc79e82a99ea65296a4e09bdb48fde9451
+
 
 ---
-# Mi az Azure IoT Suite?
+# <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 Az Azure eszközök internetes hálózata (IoT) szolgáltatások a képességek széles választékát nyújtják. Ezekkel a vállalati szintű szolgáltatásokkal a következőket teheti:
 
 * Adatok gyűjtése eszközökről
@@ -34,7 +38,7 @@ A következő videó az Azure IoT Suite bemutatását tartalmazza:
 > 
 > 
 
-## Azure IoT-szolgáltatások az Azure IoT Suite-ban
+## <a name="azure-iot-services-in-azure-iot-suite"></a>Azure IoT-szolgáltatások az Azure IoT Suite-ban
 Az előre konfigurált megoldások általában a következő szolgáltatásokat használják:
 
 * Az Azure IoT Suite középpontjában az [Azure IoT Hub][lnk-iot-hub] szolgáltatás áll. Ez a szolgáltatás az eszközökről a felhőbe irányuló és a felhőből az eszközre irányuló üzenetküldési képességeket nyújt, és a felhő és a többi fontos IoT-szolgáltatás átjárójaként működik. A szolgáltatás lehetővé teszi, hogy nagy mennyiségű üzenetet fogadjon az eszközökről, és parancsokat küldjön az eszközökre.
@@ -44,10 +48,10 @@ Az előre konfigurált megoldások általában a következő szolgáltatásokat 
 
 A tipikus IoT-megoldások architektúrájának áttekintéséért lásd: [Microsoft Azure és az eszközök internetes hálózata (IoT)][iot-suite-what-is-azure-iot].
 
-## Előre konfigurált megoldások
+## <a name="preconfigured-solutions"></a>Előre konfigurált megoldások
 Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teheti meg az első lépéseket és fedezheti fel az Azure IoT Suite által biztosított általános IoT-forgatókönyveket, például a *távoli megfigyelést* és a *prediktív karbantartást*. Ezeket a megoldásokat az Azure-előfizetésre telepítheti, majd egy teljes körű IoT-forgatókönyvet futtathat.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, többet is megtudhat az IoT Suite előre konfigurált megoldásairól a következő cikkből: [Mik az Azure IoT előre konfigurált megoldásai?][lnk-what-are-preconfig]
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
@@ -62,6 +66,6 @@ Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, több
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

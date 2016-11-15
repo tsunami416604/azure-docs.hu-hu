@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával
-description: Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-eszközökön üzembe helyezett Unity-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében.
+title: "Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával"
+description: "Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-eszközökön üzembe helyezett Unity-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
-manager: ''
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: d5f0ef79-be00-4cec-97a5-a0b2fdaa380e
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-unity-android
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
+
 
 ---
-# Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával
+# <a name="get-started-with-azure-mobile-engagement-for-unity-android-deployment"></a>Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Unity-alkalmazás szegmentált felhasználói számára való küldéséhez Android-eszközön való üzembe helyezés esetén.
@@ -33,11 +37,11 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-## <a id="setup-azme"></a>A Mobile Engagement beállítása az Android-alkalmazáshoz
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-android-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az Android-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
-### A Unity-csomag importálása
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+### <a name="import-the-unity-package"></a>A Unity-csomag importálása
 1. Töltse le a [Mobile Engagement Unity-csomagot](https://aka.ms/azmeunitysdk), és mentse a helyi gépére. 
 2. Lépjen az **Assets -> Import Package -> Custom Package** (Eszközök -> Csomag importálása -> Egyéni csomag) lehetőségre, majd válassza ki az előző lépésben letöltött csomagot. 
    
@@ -49,7 +53,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
    
     ![][72] 
 
-### Az EngagementConfiguration frissítése
+### <a name="update-the-engagementconfiguration"></a>Az EngagementConfiguration frissítése
 1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **ANDROID\_CONNECTION\_STRING** elemet az Azure Portalról korábban beszerzett kapcsolati karakterlánccal.  
    
     ![][73]
@@ -63,7 +67,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-### Az alkalmazás konfigurálása alapszintű nyomkövetéshez
+### <a name="configure-the-app-for-basic-tracking"></a>Az alkalmazás konfigurálása alapszintű nyomkövetéshez
 1. Nyissa meg szerkesztésre a lejátszóobjektumhoz csatolt **PlayerController** parancsfájlt. 
 2. Adja hozzá a következő using utasítást:
    
@@ -73,7 +77,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
         EngagementAgent.Initialize();
         EngagementAgent.StartActivity("Home");
 
-### Az alkalmazás üzembe helyezése és futtatása
+### <a name="deploy-and-run-the-app"></a>Az alkalmazás üzembe helyezése és futtatása
 Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-alkalmazást megpróbálná üzembe helyezni az eszközén. 
 
 1. Csatlakoztasson a gépéhez egy Android-eszközt. 
@@ -94,13 +98,13 @@ Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-a
 6. Előfordulhat, hogy a rendszer arra kéri, hogy adja meg annak a mappának nevét, ahol az Android-csomag tárolva lesz. 
 7. Ha a művelet sikeres, akkor a csomag üzembe lesz helyezve a csatlakoztatott eszközön, és a Unity-játék megjelenik a telefonon. 
 
-## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
-### Az EngagementConfiguration frissítése
+### <a name="update-the-engagementconfiguration"></a>Az EngagementConfiguration frissítése
 1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **ANDROID\_GOOGLE\_NUMBER** elemet a Google Cloud Developer portálról korábban beszerzett **Google projektszámmal**. Ez egy karakterláncérték, ezért tegye idézőjelek közé. 
    
     ![][75]
@@ -109,7 +113,7 @@ Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-a
    
     ![][74]
 
-### Az alkalmazás konfigurálása értesítések fogadására
+### <a name="configure-the-app-to-receive-notifications"></a>Az alkalmazás konfigurálása értesítések fogadására
 1. Nyissa meg szerkesztésre a lejátszóobjektumhoz csatolt **PlayerController** parancsfájlt. 
 2. Adja hozzá a következőt a `Start()` metódushoz:
    
@@ -133,6 +137,6 @@ Ellenőrizze, hogy az Android SDK telepítve van-e a gépén, mielőtt a Unity-a
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

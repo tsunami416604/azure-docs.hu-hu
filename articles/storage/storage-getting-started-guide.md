@@ -1,28 +1,32 @@
 ---
-title: Az Azure Storage első lépéseinek rövid összefoglalása | Microsoft Docs
-description: Gyorsan megismerkedhet a Microsoft Azure-blobokkal, -táblákkal és -üzenetsorokkal az Azure Storage gyors üzembe helyezés, a Visual Studio és az Azure Storage Emulator használatával. Öt percen belül lefuttathatja az első Azure Storage-alkalmazását.
+title: "Az Azure Storage első lépéseinek összefoglalása öt percben| Microsoft Docs"
+description: "Gyorsan megismerkedhet a Microsoft Azure-blobokkal, -táblákkal és -üzenetsorokkal az Azure Storage gyors üzembe helyezés, a Visual Studio és az Azure Storage Emulator használatával. Öt percen belül lefuttathatja az első Azure Storage-alkalmazását."
 services: storage
 documentationcenter: .net
 author: tamram
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 582f76f8-c814-4a69-8a5c-1fd0e0d5d8f2
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 09/20/2016
-ms.author: dineshm;tamram
+ms.date: 10/18/2016
+ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 369e45ed8303735976813c1224ce74842f886536
+
 
 ---
-# Az Azure Storage első lépéseinek rövid összefoglalása
-## Áttekintés
+# <a name="get-started-with-azure-storage-in-five-minutes"></a>Az Azure Storage első lépéseinek rövid összefoglalása
+## <a name="overview"></a>Áttekintés
 Az Azure Storage segítségével könnyen elkezdheti a fejlesztést. Az oktatóanyagból megtudhatja, hogyan készíthet gyorsan egy Azure Storage-alkalmazást. A folyamat során az Azure SDK for .NET-hez mellékelt gyors üzembe helyezési sablonokat fogja használni. A gyors üzembe helyezés futtatásra kész kódokat tartalmaz, amelyek bemutatnak néhány alapszintű programozási forgatókönyvet az Azure Storage-ban.
 
 Ha többet szeretne megtudni az Azure Storage-ról a kód áttekintése előtt, olvassa el a [Következő lépések](#next-steps) szakaszt.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 A kezdéshez a következő előfeltételeknek kell teljesülniük:
 
 1. Az alkalmazás fordításához és felépítéséhez a számítógépen telepítve kell lennie a [Visual Studio](https://www.visualstudio.com/) valamelyik verziójának.
@@ -35,7 +39,7 @@ A kezdéshez a következő előfeltételeknek kell teljesülniük:
    * Az Azure-előfizetés beszerzéséhez keresse fel az [Ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/), a [Vásárlási lehetőségek](https://azure.microsoft.com/pricing/purchase-options/) és az MSDN, a Microsoft Partner Network, a BizSpark és egyéb Microsoft programok tagjai számára elérhető [Ajánlatok tagoknak](https://azure.microsoft.com/pricing/member-offers/) webhelyeket.
    * Az Azure Storage-fiók létrehozásáról lásd: [How to create a storage account](storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
 
-## Az első Azure Storage-alkalmazás futtatása a felhőalapú Azure Storage-ban
+## <a name="run-your-first-azure-storage-application-against-azure-storage-in-the-cloud"></a>Az első Azure Storage-alkalmazás futtatása a felhőalapú Azure Storage-ban
 Ha már van fiókja, létrehozhat egy egyszerű Azure Storage-alkalmazást az egyik Azure gyors üzembe helyezési mintaprojekttel a Visual Studióban. Ez az oktatóanyag az Azure Storage-hoz készült mintaprojektekre koncentrál: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák):
 
 1. Indítsa el a Visual Studiót.
@@ -62,7 +66,7 @@ A következő lépésben futtassa a mintaalkalmazást:
 4. A **Build** menüben kattintson a **Megoldás fordítása** elemre.
 5. A **Hibakeresés** menüben a megoldás lépésről lépésre való futtatásához nyomja le az **F11**, vagy a teljes megoldás futtatásához az **F5** billentyűt.
 
-## Az első Azure Storage-alkalmazás helyi futtatása az Azure Storage Emulatorban
+## <a name="run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator"></a>Az első Azure Storage-alkalmazás helyi futtatása az Azure Storage Emulatorban
 Az [Azure Storage Emulator](storage-use-emulator.md) helyi környezetet biztosít, amely az Azure Blob, Queue és Table Service szolgáltatásait emulálja a fejlesztéshez. A Storage Emulatorral helyben tesztelheti Storage-alkalmazását Azure-előfizetés vagy tárfiók létrehozása, illetve bármilyen felmerülő költség nélkül.
 
 A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egyik Azure gyors üzembe helyezési mintaprojekttel a Visual Studióban. Ez az oktatóanyag az **Azure Blob Storage**, **Azure Table Storage** és az **Azure Queue Storage** szolgáltatásokra koncentrál:
@@ -87,24 +91,24 @@ Következő lépésben futtassa a mintaalkalmazást az Azure Storage Emulatorban
 2. A Visual Studio **Build** menüjében kattintson a **Megoldás fordítása** elemre.
 3. A **Hibakeresés** menüben a megoldás lépésről lépésre való futtatásához nyomja le az **F11**, vagy a teljes megoldás futtatásához az **F5** billentyűt.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
 * [Ismerkedés az Azure Storage Explorerrel](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Get started with Azure Blob Storage using .NET (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel)](storage-dotnet-how-to-use-blobs.md)
+* [Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-blobs.md)
 * [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-tables.md)
 * [Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel](storage-dotnet-how-to-use-queues.md)
-* [Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással)](storage-dotnet-how-to-use-files.md)
-* [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](storage-use-azcopy.md)
-* [Azure Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/)
+* [Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással](storage-dotnet-how-to-use-files.md)
+* [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
+* [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
 * [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [Az Azure Storage szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

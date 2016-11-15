@@ -1,22 +1,26 @@
 ---
-title: Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával | Microsoft Docs
-description: Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva.
+title: "Élő adatfolyam-továbbítás helyszíni kódolókkal az Azure Portal használatával | Microsoft Docs"
+description: "Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2016
+ms.date: 10/24/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
+
 
 ---
-# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
+# <a name="how-to-perform-live-streaming-with-onpremise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -30,7 +34,7 @@ Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folya
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
-* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy Media Services-fiók.    A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * Egy webkamera. Például a [Telestream Wirecast kódoló](http://www.telestream.net/wirecast/overview.htm).
 
 Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
@@ -39,7 +43,7 @@ Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 * [Overview of Live Streaming using Azure Media Services](media-services-manage-channels-overview.md) (Az Azure Media Services segítségével történő élő streamelés áttekintése)
 * [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
 
-## <a name="<a-id="scenario"></a>common-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
+## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
 1. Csatlakoztasson a számítógéphez egy videokamerát. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
@@ -97,7 +101,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
    > 
    > 
 
-## <a name="create-and-start-pass-through-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
+## <a name="create-and-start-passthrough-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
 A csatornákhoz események/programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. Az eseményeket a csatornák kezelik. 
 
 Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam határozza meg azt is, hogy mennyi idővel ugorhatnak vissza az ügyfelek az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan eldobja azt a tartalmat, amely korábbi a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
@@ -121,15 +125,16 @@ Ez a szakasz azt mutatja be, hogyan lehet átmenő csatornát létrehozni a **Gy
 
 Az átmenő csatornákról a [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikk tartalmaz részletes tájékoztatást.
 
-1. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
+1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
+2. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
    
     ![Bevezetés](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     Megjelenik a **Live streaming** (Élő stream) ablak.
-2. A **Quick Create** (Gyorslétrehozás) gombra kattintva létrehozhat egy az RTMP betöltési protokollt használó átmenő csatornát.
+3. A **Quick Create** (Gyorslétrehozás) gombra kattintva létrehozhat egy az RTMP betöltési protokollt használó átmenő csatornát.
    
     Megjelenik a **CREATE A NEW CHANNEL** (Új csatorna létrehozása) ablak.
-3. Nevezze el az új csatornát, és kattintson a **Create** (Létrehozás) gombra. 
+4. Nevezze el az új csatornát, és kattintson a **Create** (Létrehozás) gombra. 
    
     Ennek hatására létrejön egy, az RTMP-betöltési protokollt használó csatorna.
 
@@ -172,6 +177,9 @@ Tekintse át a Media Services képzési terveket.
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

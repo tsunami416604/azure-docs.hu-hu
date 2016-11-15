@@ -1,12 +1,12 @@
 ---
-title: A Service Bus-üzenettémakörök használata a .NET keretrendszerrel | Microsoft Docs
-description: Megismerheti a Service Bus-üzenettémakörök és előfizetések a .NET-keretrendszerrel való használatát az Azure-ban. A kódminták .NET-alkalmazásokhoz íródtak.
+title: "A Service Bus-üzenettémakörök használata a .NET keretrendszerrel | Microsoft Docs"
+description: "Megismerheti a Service Bus-üzenettémakörök és előfizetések a .NET-keretrendszerrel való használatát az Azure-ban. A kódminták .NET-alkalmazásokhoz íródtak."
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 31d0bc29-6524-4b1b-9c7f-aa15d5a9d3b4
 ms.service: service-bus
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b90d2b49807b39bb7a71315877a8e84550efc9cc
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>A Service Bus-üzenettémakörök és -előfizetések használata
@@ -47,7 +51,7 @@ A Service Bus egy kapcsolati karakterláncot használ a végpontok és a hiteles
 Mindkét esetben a(z) `CloudConfigurationManager.GetSetting` metódussal kérheti le a kapcsolati karakterláncot, amint az a cikk későbbi részében látható lesz.
 
 ### <a name="configure-your-connection-string"></a>A kapcsolati karakterlánc konfigurálása
-A szolgáltatás konfigurációs mechanizmusa lehetővé teszi a konfigurációs beállítások dinamikus módosítását az [Azure Portal][Azure Portal] az alkalmazás újbóli telepítése nélkül. Hozzáadhat például egy `Setting` címkét a szolgáltatás definíciós (**.csdef**) fájljához a következő példában látható módon.
+A szolgáltatás konfigurációs mechanizmusa lehetővé teszi a konfigurációs beállítások dinamikus módosítását az [Azure Portalról][Azure Portal] az alkalmazás újbóli telepítése nélkül. Hozzáadhat például egy `Setting` címkét a szolgáltatás definíciós (**.csdef**) fájljához a következő példában látható módon.
 
 ```
 <ServiceDefinition name="Azure1">
@@ -90,7 +94,7 @@ Webhelyek vagy virtuális gépek használata esetén ajánlott a. NET konfigurá
 </configuration>
 ```
 
-Használja az [Azure Portal][Azure Portal] lekért SAS-nevet és -kulcsértékeit az előzőekben leírtak szerint.
+Használja az [Azure Portalról][Azure Portal] lekért SAS-nevet és -kulcsértékeit az előzőekben leírtak szerint.
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) osztály használatával kezelési műveleteket hajthat végre a Service Bus-üzenettémakörökön és előfizetéseken. Ez az osztály metódusokat biztosít az üzenettémakörök létrehozásához, enumerálásához és törléséhez.
@@ -151,7 +155,7 @@ A [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.serviceb
 > 
 > 
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, akkor a **MatchAll** szűrő az alapértelmezett használandó szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példa egy „AllMessages” nevű előfizetést hoz létre, és az alapértelmezett **MatchAll** szűrőt használja.
 
 ```
@@ -307,7 +311,7 @@ Most, hogy megismerte a Service Bus-témakörök és -előfizetések alapjait, a
 * [Témakörszűrők – minta][Témakörszűrők – minta]
 * Az [SqlFilter][SqlFilter] API-referenciája.
 * A [Service Bus brokered messaging .NET tutorial][Service Bus brokered messaging .NET tutorial] (A Service Bus által felügyelt üzenettovábbítás .NET oktatóanyaga) segítségével összeállíthat egy működő alkalmazást, amely üzeneteket küld egy Service Bus-üzenetsorba, illetve üzeneteket fogad belőle.
-* Service Bus-minták: Letöltés az [Azure-minták][Azure-minták] közül vagy [áttekintés](../service-bus/service-bus-samples.md).
+* Service Bus-minták: Letöltés az [Azure-minták][Azure-minták] közül vagy [áttekintés](service-bus-samples.md).
 
 [Azure Portal]: https://portal.azure.com
 
@@ -322,6 +326,6 @@ Most, hogy megismerte a Service Bus-témakörök és -előfizetések alapjait, a
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

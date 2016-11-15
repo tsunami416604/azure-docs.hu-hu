@@ -1,12 +1,12 @@
 ---
-title: A fejlesztési környezet beállítása Mac OS X-en | Microsoft Docs
-description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására.
+title: "A fejlesztési környezet beállítása Mac OS X-en | Microsoft Docs"
+description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására."
 services: service-fabric
 documentationcenter: .net
 author: seanmck
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2016
 ms.author: seanmck
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b25afa13010716188eab0623b1d8ea0d525a2b36
+
 
 ---
-# A fejlesztési környezet beállítása Mac OS X-en
+# <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
 > -[ Windows](service-fabric-get-started.md)
 > 
@@ -27,13 +31,13 @@ ms.author: seanmck
 
 Linux-fürtökön futó Service Fabric-alkalmazásokat hozhat létre a Mac OS X-en. Ez a cikk bemutatja, hogyan állíthatja be Mac gépét a fejlesztéshez.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 A Service Fabric nem fut natív módon az OS X-en. A helyi Service Fabric-fürt futtatásához egy Vagrant és VirtualBox alkalmazásokat használó, előre konfigurált Ubuntu-virtuális gépet biztosítunk. A kezdés előtt a következőkre lesz szüksége:
 
 * [Vagrant (1.8.4-es vagy újabb verzió)](http://wwww.vagrantup.com/downloads)
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
-## A helyi virtuális gép létrehozása
+## <a name="create-the-local-vm"></a>A helyi virtuális gép létrehozása
 Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehozásához tegye a következőket:
 
 1. Klónozza a Vagrantfile-adattárat
@@ -67,7 +71,7 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
    
     ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
 
-## Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése (nem kötelező)
+## <a name="install-the-service-fabric-plugin-for-eclipse-neon-optional"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése (nem kötelező)
 A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely leegyszerűsítheti a Java-szolgáltatások létrehozásának és üzembe helyezésének folyamatát.
 
 1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Help > Installation Details** (Súgó > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. Az [itt][buildship-update] található utasítások alapján frissítheti a Buildshipet.
@@ -79,7 +83,7 @@ A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely 
 5. Válassza ki a Service Fabric beépülő modult, majd kattintson a Next (Tovább) gombra.
 6. Folytassa a telepítést, és fogadja el a végfelhasználói licencszerződést.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az első Service Fabric-alkalmazás létrehozása Linuxra](service-fabric-create-your-first-linux-application-with-java.md)
 
 <!-- Links -->
@@ -96,6 +100,6 @@ A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

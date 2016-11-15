@@ -1,44 +1,48 @@
 ---
-title: Create an internal load balancer for cloud services in the classic deployment model | Microsoft Docs
-description: Learn how to create an internal load balancer using PowerShell in the classic deployment model
+title: "Belső terheléselosztó létrehozása a felhőszolgáltatásokhoz a klasszikus üzembehelyezési modellben | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre belső terheléselosztó a PowerShell használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 85e22954c19d7d51579029c7426f0ee79b780504
 
 ---
-# Get started creating an internal load balancer (classic) for cloud services
-[!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
 
-<BR>
+# <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Bevezetés a belső terheléselosztó (klasszikus) felhőszolgáltatásokhoz történő létrehozásába
+
+[!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
 
-Learn how to [perform these steps using the Resource Manager model](load-balancer-get-started-ilb-arm-ps.md).
+Ismerje meg, [hogyan hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával](load-balancer-get-started-ilb-arm-ps.md).
 
-## Configure internal load balancer for cloud services
-Internal load balancer is supported for both virtual machines and cloud services. An internal load balancer endpoint created in a cloud service that is outside a regional virtual network will be accessible only within the cloud service.
+## <a name="configure-internal-load-balancer-for-cloud-services"></a>Belső terheléselosztó konfigurálása a felhőszolgáltatásokhoz
 
-The internal load balancer configuration has to be set during the creation of the first deployment in the cloud service, as shown in the sample below.
+A belső terheléselosztó használata virtuális gépek és felhőszolgáltatások esetén egyaránt támogatott. Egy regionális virtuális hálózaton kívül eső felhőszolgáltatásban létrehozott belső terheléselosztói végpont csak az adott felhőszolgáltatásban érhető el.
+
+A belső terheléselosztó konfigurációját be kell állítania az alábbi mintában látható módon, amikor az első telepítést létrehozza a felhőszolgáltatásban.
 
 > [!IMPORTANT]
-> A prerequisite to run the steps below is to have a virtual network already created for the cloud deployment. You will need the virtual network name and subnet name to create the Internal Load Balancing.
-> 
-> 
+> Az alábbi lépések futtatásának előfeltétele, hogy a felhőtelepítéshez már létre legyen hozva egy virtuális hálózat. A belső terheléselosztás létrehozásához szüksége lesz a virtuális hálózat és az alhálózat nevére.
 
-### Step 1
-Open the service configuration file (.cscfg) for your cloud deployment in Visual Studio and add the following section to create the Internal Load Balancing under the last "`</Role>`" item for the network configuration.
+### <a name="step-1"></a>1. lépés
 
+Nyissa meg a felhőtelepítéshez szükséges szolgáltatáskonfigurációs fájlt (.cscfg) a Visual Studióban, és a hálózat konfigurálásához adja hozzá a következő szakaszt az utolsó „`</Role>`” elem alatt, hogy létrehozhassa a belső terheléselosztást.
+
+```xml
     <NetworkConfiguration>
       <LoadBalancers>
         <LoadBalancer name="name of the load balancer">
@@ -46,10 +50,11 @@ Open the service configuration file (.cscfg) for your cloud deployment in Visual
         </LoadBalancer>
       </LoadBalancers>
     </NetworkConfiguration>
+```
 
+Adja meg a hálózat konfigurációs fájljához szükséges értékeket, hogy lássa, hogyan fog kinézni. A példában feltételeztük, létrehozott egy „test_vnet” nevű alhálózatot, amely egy test_subnet nevű 10.0.0.0/24 alhálózatot tartalmaz, és a statikus IP-címe 10.0.0.4. A terheléselosztó elnevezése testLB lesz.
 
-Let's add the values for the network configuration file to show how it will look. In the example, assume you created a subnet called "test_vnet" with a subnet 10.0.0.0/24 called test_subnet and a static IP 10.0.0.4. The load balancer will be named testLB.
-
+```xml
     <NetworkConfiguration>
       <LoadBalancers>
         <LoadBalancer name="testLB">
@@ -57,30 +62,43 @@ Let's add the values for the network configuration file to show how it will look
         </LoadBalancer>
       </LoadBalancers>
     </NetworkConfiguration>
+```
 
-For more information about the load balancer schema, see [Add load balancer](https://msdn.microsoft.com/library/azure/dn722411.aspx).
+A terheléselosztó sémájával kapcsolatos további információkért lásd: [Add load balancer](https://msdn.microsoft.com/library/azure/dn722411.aspx) (Terheléselosztó hozzáadása).
 
-### Step 2
-Change the service definition (.csdef) file to add endpoints to the Internal Load Balancing. The moment a role instance is created, the service definition file will add the role instances to the Internal Load Balancing.
+### <a name="step-2"></a>2. lépés
 
+Ha végpontokat szeretne hozzáadni a belső terheléselosztáshoz, módosítsa a szolgáltatásdefiníciós fájlt (.csdef). Szerepkörpéldány létrehozásakor a szolgáltatásdefiníciós fájl hozzáadja a szerepkörpéldányokat a belső terheléselosztáshoz.
+
+```xml
     <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
       <Endpoints>
         <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
       </Endpoints>
     </WorkerRole>
+```
 
-Following the same values from the example above, let's add the values to the service definition file.
+A fenti példa értékeit felhasználva adja hozzá az értékeket a szolgáltatásdefiníciós fájlhoz.
 
-    <WorkerRole name=WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
+```xml
+    <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
       <Endpoints>
         <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
       </Endpoints>
     </WorkerRole>
+```
 
-The network traffic will be load balanced using the testLB load balancer using port 80 for incoming requests, sending to worker role instances also on port 80.
+A hálózati forgalom terhelésének elosztása a testLB terheléselosztóval végezhető el, ehhez a 80-as portot kell használni a bejövő kérelmek fogadásához, valamint a feldolgozói szerepkörpéldányokra való küldést szintén a 80-as porton keresztül kell végezni.
 
-## Next steps
-[Configure a load balancer distribution mode using source IP affinity](load-balancer-distribution-mode.md)
+## <a name="next-steps"></a>Következő lépések
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
+
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

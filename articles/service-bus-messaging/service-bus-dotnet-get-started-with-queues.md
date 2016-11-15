@@ -1,12 +1,12 @@
 ---
-title: Bevezetés a Service Bus által kezelt üzenetsorok használatába | Microsoft Docs
-description: C# konzolalkalmazás létrehozása Service Bus üzenetkezelés számára
+title: "Bevezetés a Service Bus által kezelt üzenetsorok használatába | Microsoft Docs"
+description: "C# konzolalkalmazás létrehozása Service Bus üzenetkezelés számára"
 services: service-bus
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus
 ms.devlang: tbd
 ms.topic: hero-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/23/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+
 
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
@@ -33,17 +37,17 @@ A jelen oktatóanyagban a következő műveleteket fogjuk végrehajtani:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1.-create-a-namespace-using-the-azure-portal"></a>1. Névtér létrehozása az Azure Portal használatával
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Névtér létrehozása az Azure Portal használatával
 Ha a Service Bus-névteret már létrehozta, ugorjon az [Üzenetsor létrehozása az Azure Portal használatával](#2-create-a-queue-using-the-azure-portal) szakaszra.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2.-create-a-queue-using-the-azure-portal"></a>2. Üzenetsor létrehozása az Azure Portal használatával
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Üzenetsor létrehozása az Azure Portal használatával
 Ha a Service Bus-üzenetsort már létrehozta, ugorjon az [Üzenetek küldése az üzenetsorba](#3-send-messages-to-the-queue) szakaszra.
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3.-send-messages-to-the-queue"></a>3. Üzenetek küldése az üzenetsorba
+## <a name="3-send-messages-to-the-queue"></a>3. Üzenetek küldése az üzenetsorba
 A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzenetsorba való küldéséhez.
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
@@ -99,7 +103,7 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzene
    
       ![Üzenetek száma][queue-message]
 
-## <a name="4.-receive-messages-from-the-queue"></a>4. Üzenet fogadása az üzenetsorból
+## <a name="4-receive-messages-from-the-queue"></a>4. Üzenet fogadása az üzenetsorból
 1. Hozzon létre egy új konzolalkalmazást, majd vegyen fel egy hivatkozást a Service Bus NuGet-csomagjára, hasonlóan az előző küldési alkalmazáshoz.
 2. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
    
@@ -172,6 +176,7 @@ Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://githu
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
 
-<!--HONumber=Oct16_HO3-->
+
+<!--HONumber=Nov16_HO2-->
 
 

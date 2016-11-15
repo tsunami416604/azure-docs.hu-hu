@@ -1,12 +1,12 @@
 ---
-title: Azure virtuális gép titkosítása | Microsoft Docs
-description: A dokumentum segítséget nyújt Önnek virtuális gépeinek az Azure Security Center által küldött riasztást követő titkosításában.
+title: "Azure virtuális gép titkosítása | Microsoft Docs"
+description: "A dokumentum segítséget nyújt Önnek virtuális gépeinek az Azure Security Center által küldött riasztást követő titkosításában."
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
 ms.topic: hero-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2016
 ms.author: tomsh
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 65d586405bc79ccf0d5e27c09d750818e5f3dd24
+
 
 ---
-# Azure virtuális gép titkosítása
+# <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
 
 ![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption\\security-center-disk-encryption-fig1.png)
@@ -42,10 +46,10 @@ Az előfeltételek beállítására, valamint az Azure virtuális gépek titkos�
 > 
 > 
 
-## Az Azure PowerShell telepítése és konfigurálása
+## <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
 Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy újabb verzióját. A [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című cikkben minden lépést megtalál, amelyet el kell végeznie az Azure PowerShell telepítéséhez. A legegyszerűbb, ha a cikkben említett Web PI telepítési módszert használja. Ha a gépen már fut az Azure PowerShell, akkor is telepítse újra a Web PI módszerrel, hogy biztosan a legújabb verziót használja.
 
-## Az Azure Disk Encryption titkosítási előfeltétel-konfigurációs parancsprogram beszerzése és futtatása
+## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Az Azure Disk Encryption titkosítási előfeltétel-konfigurációs parancsprogram beszerzése és futtatása
 Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram beállítja az Azure virtuális gépek titkosításához szükséges összes előfeltételt.
 
 1. Nyissa meg a GitHubon az [Azure Disk Encryption előfeltétel-beállító parancsprogramot](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1) tartalmazó lapot.
@@ -70,7 +74,7 @@ Az alábbi képhez hasonlóan kell megjelennie a programnak.
 
 A felső panel a „parancsprogrampanel”, az alsó a „konzol”. A cikk későbbi részeiben mi is használni fogjuk ezeket az elnevezéseket.
 
-## Az Azure Disk Encryption előfeltétel-konfigurációs PowerShell-parancs futtatása
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Az Azure Disk Encryption előfeltétel-konfigurációs PowerShell-parancs futtatása
 Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram a következő információkat kéri az elindítását követően:
 
 * **Resource Group Name** (Erőforráscsoport neve) – Annak az erőforráscsoportnak a neve, amelyben el szeretné helyezni a kulcstárolót.  Ha a megadott néven még nem található erőforráscsoport, a rendszer létrehoz egyet a beírt néven. Ha már van az előfizetésben olyan erőforráscsoport, amelyet erre a célra kíván használni, adja meg ennek az erőforráscsoportnak a nevét.
@@ -108,10 +112,10 @@ A parancsprogram eredményének a következőhöz hasonlóan kell kinéznie:
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig5.png)
 
-## Az Azure virtuális gép titkosítása
+## <a name="encrypt-the-azure-virtual-machine"></a>Az Azure virtuális gép titkosítása
 Most már készen áll a virtuális gép titkosítására. Ha a virtuális gép ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, továbbléphet a titkosításhoz szükséges lépésekre. Ha azonban a virtuális gép nem ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, írja be a következő parancsot a PowerShell ISE konzoljába:
 
-**$resourceGroupName = <’Virtuális_gép_erőforráscsoportja’>**
+**$resourceGroupName = <Virtuális_gép_erőforráscsoportja>**
 
 A **<Virtuális_gép_erőforráscsoportja>** helyére szimpla idézőjelbe téve írja be a virtuális gépet tartalmazó erőforráscsoport nevét. Nyomja le az **ENTER** billentyűt.
 Ha szeretné ellenőrizni, hogy a megfelelő erőforráscsoport-nevet adta-e meg, írja be a következőt a PowerShell ISE konzoljába:
@@ -122,7 +126,7 @@ Nyomja le az **ENTER** billentyűt. Meg kell jelennie a virtuális gépeket tart
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig6.png)
 
-### A titkosítás lépései
+### <a name="encryption-steps"></a>A titkosítás lépései
 Először közölnie kell a PowerShell-lel a titkosítani kívánt virtuális gép nevét. Írja be a konzolba a következőt:
 
 **$vmName = <’virtuális_gép_neve’>**
@@ -167,7 +171,7 @@ A **Lemezek** panelen láthatja, hogy a **Titkosítás** mező értéke **Enged�
 
 ![Lemeztulajdonságok](./media/security-center-disk-encryption\\security-center-disk-encryption-fig12.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titkosítani. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – A cikkből megismerheti az Azure-erőforrások állapotfigyelésének módját.
@@ -175,6 +179,9 @@ Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titko
 * [Azure Security Center: GYIK](security-center-faq.md) – Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

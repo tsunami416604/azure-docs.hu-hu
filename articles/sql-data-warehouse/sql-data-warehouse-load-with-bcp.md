@@ -1,12 +1,12 @@
 ---
-title: Adatok betöltése az SQL Data Warehouse-ba bcp segítségével | Microsoft Docs
-description: Megismerheti a bcp-t és az adatraktározási forgatókönyvekben való használatát.
+title: "Adatok betöltése az SQL Data Warehouse-ba bcp segítségével | Microsoft Docs"
+description: "Megismerheti a bcp-t és az adatraktározási forgatókönyvekben való használatát."
 services: sql-data-warehouse
 documentationcenter: NA
 author: twounder
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: f9467d11-fcd6-4131-a65a-2022d2c32d24
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
+
 
 ---
 # <a name="load-data-with-bcp"></a>Adatok betöltése a bcp használatával
@@ -51,7 +55,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Telepített SQLCMD parancssori segédprogram
 
 > [!NOTE]
-> A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][].
+> A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpont].
 > 
 > 
 
@@ -78,7 +82,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
+> További információk a táblák létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
 > 
 > 
 
@@ -201,6 +205,6 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL 
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

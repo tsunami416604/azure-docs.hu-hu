@@ -1,30 +1,34 @@
 ---
-title: Biztonsági incidensek kezelése az Azure Security Centerben | Microsoft Docs
-description: Ebből a dokumentumból elsajátíthatja az Azure Security Center a biztonsági incidensek kezeléséhez szükséges képességeinek alkalmazását.
+title: "Biztonsági incidensek kezelése az Azure Security Centerben | Microsoft Docs"
+description: "Ebből a dokumentumból elsajátíthatja az Azure Security Center a biztonsági incidensek kezeléséhez szükséges képességeinek alkalmazását."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2016
+ms.date: 10/18/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9aeb08f0e4b4446fe8a4fc9ef7f4670ea08eacaa
+
 
 ---
-# Biztonsági incidensek kezelése az Azure Security Centerben
+# <a name="handling-security-incident-in-azure-security-center"></a>Biztonsági incidensek kezelése az Azure Security Centerben
 A biztonsági riasztások osztályba sorolása és kivizsgálása még a legképzettebb biztonsági elemzők számára is időigényes feladat lehet, sokak számára pedig már annak megtalálása is nehézséget okoz, hogy hol kezdjenek hozzá. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
 
 Ebben a dokumentumban megismerkedhet a Security Center biztonságiriasztás-kezelési funkcióinak használatával.
 
-## Mi az a biztonsági incidens?
+## <a name="what-is-a-security-incident"></a>Mi az a biztonsági incidens?
 A Security Centerben egy biztonsági incidens az adott erőforráshoz tartozó összes olyan riasztás együttese, amelyek egy [támadási folyamatba](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) illeszthetők. Ezek az incidensek megjelennek a [Security Alerts](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások) csempén és panelen is. Az incidensek megnyitásakor megjelenik a kapcsolódó riasztások listája, amelyből további információkat kaphat az egyes riasztásokról.
 
-## Biztonsági incidensek kezelése
+## <a name="managing-security-incidents"></a>Biztonsági incidensek kezelése
 A Biztonsági riasztások csempén áttekintheti az aktuális biztonsági incidenseket. Nyissa meg az Azure Portalt, és kövesse az alábbi lépéseket az egyes biztonsági incidensek részleteinek megtekintéséhez:
 
 1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
@@ -46,16 +50,19 @@ A panelen megjelenő információk a riasztástól függően változnak. Ezen ri
 * Egy adott riasztás kezelhető egy incidens (ha van) részeként, valamint önálló riasztásként is. 
 * Az incidens bezárásával a kapcsolódó riasztások nem záródnak be.
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-kezelési képességeinek használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-* [Az Azure Security Center észlelési képességei](security-center-detection-capabilities.md)
+* [Az Azure Security Center észlelési funkciói](security-center-detection-capabilities.md)
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

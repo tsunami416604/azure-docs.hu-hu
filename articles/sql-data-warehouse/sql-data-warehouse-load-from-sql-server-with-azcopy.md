@@ -1,25 +1,29 @@
 ---
-title: Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (PolyBase) | Microsoft Docs
-description: A bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, az AzCopy segítségével importál adatokat az Azure Blob Storage-ban, és a PolyBase használatával viszi be az adatokat az SQL Data Warehouse-ba.
+title: "Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (PolyBase) | Microsoft Docs"
+description: "A bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, az AzCopy segítségével importál adatokat az Azure Blob Storage-ban, és a PolyBase használatával viszi be az adatokat az SQL Data Warehouse-ba."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 4d42786a-fb28-43c9-9c3b-72d19c0ecc11
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/30/2016
-ms.author: cakarst;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f3a4ad30d1aa0ec273b6b875b0d2d037005ac159
+
 
 ---
-# Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (AZCopy)
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-azcopy"></a>Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (AZCopy)
 Adatok betöltése a bcp és az AZCopy parancssori segédprogram használatával az SQL Serverről az Azure Blob Storage-be. Ezután az adatok betöltése a PolyBase vagy az Azure Data Factory használatával az Azure SQL Data Warehouse-ba. 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy SQL Data Warehouse-adatbázis
@@ -27,14 +31,14 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Telepített SQLCMD parancssori segédprogram
 
 > [!NOTE]
-> A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpontból].
+> A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpont].
 > 
 > 
 
-## Adatok importálása az SQL Data Warehouse-ba
+## <a name="import-data-into-sql-data-warehouse"></a>Adatok importálása az SQL Data Warehouse-ba
 Ebben az oktatóanyagban létrehoz egy táblát az Azure SQL Data Warehouse-ban, és adatokat importál a táblába.
 
-### 1. lépés: Tábla létrehozása az Azure SQL Data Warehouse-ban
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>1. lépés: Tábla létrehozása az Azure SQL Data Warehouse-ban
 Egy parancssorban az sqlcmd paranccsal futtassa a következő lekérdezést. Ezzel egy táblát hoz létre a példányán:
 
 ```sql
@@ -54,11 +58,11 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
+> További információk a táblák létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
 > 
 > 
 
-### 2. lépés: Forrásadatfájlok létrehozása
+### <a name="step-2-create-a-source-data-file"></a>2. lépés: Forrásadatfájlok létrehozása
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt).
 
 ```
@@ -81,7 +85,7 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 > 
 > 
 
-### 3. lépés: Csatlakozás és az adatok importálása
+### <a name="step-3-connect-and-import-the-data"></a>3. lépés: Csatlakozás és az adatok importálása
 A bcp és az alábbi parancs segítségével csatlakozhat és importálhatja az adatokat. Az értékeket szükség szerint cserélje le:
 
 ```sql
@@ -111,7 +115,7 @@ Az alábbi eredményeket fogja kapni:
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-### 4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
 Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][Statisztika] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
 
 Hajtsa végre az alábbi CREATE STATISTICS utasításokat egy sqlcmd parancssorból:
@@ -124,10 +128,10 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## Adatok exportálása az SQL Data Warehouse-ból
+## <a name="export-data-from-sql-data-warehouse"></a>Adatok exportálása az SQL Data Warehouse-ból
 Ebben az oktatóanyagban létrehoz egy adatfájlt egy SQL Data Warehouse-táblából. A fenti létrehozott adatokat exportáljuk egy új, DimDate2_export.txt adatfájlba.
 
-### 1. lépés: Az adatok exportálása
+### <a name="step-1-export-the-data"></a>1. lépés: Az adatok exportálása
 A bcp segédprogram és az alábbi parancs segítségével csatlakozhat és exportálhatja az adatokat. Az értékeket szükség szerint cserélje le:
 
 ```sql
@@ -155,7 +159,7 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Adatok betöltése az SQL Data Warehouse-ba].
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse fejlesztői áttekintés].
 
@@ -173,10 +177,10 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL 
 [CREATE TABLE szintaxis]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft letöltőközpontból]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft letöltőközpont]: https://www.microsoft.com/download/details.aspx?id=36433
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

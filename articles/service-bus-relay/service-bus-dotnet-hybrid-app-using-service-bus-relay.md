@@ -1,12 +1,12 @@
 ---
-title: Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure Service Bus Relay használatával.
+title: "Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure Service Bus Relay használatával."
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
 ms.service: service-bus
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+
 
 ---
-# <a name=".net-on-premises/cloud-hybrid-application-using-azure-service-bus-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus Relay használatával
-## <a name="introduction"></a>Introduction (Bevezetés)
+# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus WCF Relay használatával
+## <a name="introduction"></a>Bevezetés
 Ez a cikk azt ismerteti, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
 Az oktatóanyagban érintett témák köre:
 
 * Meglévő webszolgáltatás létrehozása vagy alakítása a használathoz egy webes megoldással.
-* Az Azure Service Bus Relay szolgáltatás használata az Azure-alkalmazások és a máshol tárolt webszolgáltatások közötti adatmegosztásra.
+* Az Azure Service Bus WCF Relay szolgáltatás használata az Azure-alkalmazások és a máshol tárolt webszolgáltatások közötti adatmegosztásra.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -32,7 +36,7 @@ Az üzleti megoldások általában egyéni kódok kombinációjából állnak, a
 
 A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
-A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
+A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus-messaging/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
 ## <a name="solution-scenario"></a>A megoldás forgatókönyve
 Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
@@ -59,7 +63,7 @@ A Service Bus-funkciók Azure-ban való használatához először létre kell ho
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-on-premises-server"></a>Helyszíni kiszolgáló létrehozása
+## <a name="create-an-onpremises-server"></a>Helyszíni kiszolgáló létrehozása
 Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
 
 Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
@@ -197,14 +201,14 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
     
     ```
     <appSettings>
-    <!-- Service Bus specific app settings for messaging connections -->
-    <add key="Microsoft.ServiceBus.ConnectionString"
+       <!-- Service Bus specific app settings for messaging connections -->
+       <add key="Microsoft.ServiceBus.ConnectionString"
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
 14. Nyomja le a **Ctrl+Shift+B** billentyűkombinációt, vagy a **Build** (Fordítás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre, és ellenőrizze az eddigi munkája pontosságát.
 
-## <a name="create-an-asp.net-application"></a>ASP.NET-alkalmazás létrehozása
+## <a name="create-an-aspnet-application"></a>ASP.NET-alkalmazás létrehozása
 Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely megjeleníti a termékszolgáltatásból lekért adatokat.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
@@ -234,7 +238,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
    
    ```
    // Declare properties for the products inventory.
-   namespace ProductsWeb.Models
+    namespace ProductsWeb.Models
    {
        public class Product
        {
@@ -278,31 +282,31 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
    @model IEnumerable<ProductsWeb.Models.Product>
    
    @{
-           ViewBag.Title = "Index";
+            ViewBag.Title = "Index";
    }
    
    <h2>Prod Inventory</h2>
    
    <table>
-           <tr>
-               <th>
-                   @Html.DisplayNameFor(model => model.Name)
-               </th>
+             <tr>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Name)
+                 </th>
                  <th></th>
-               <th>
-                   @Html.DisplayNameFor(model => model.Quantity)
-               </th>
-           </tr>
+                 <th>
+                     @Html.DisplayNameFor(model => model.Quantity)
+                 </th>
+             </tr>
    
    @foreach (var item in Model) {
-           <tr>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Name)
-               </td>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Quantity)
-               </td>
-           </tr>
+             <tr>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Name)
+                 </td>
+                 <td>
+                     @Html.DisplayFor(modelItem => item.Quantity)
+                 </td>
+             </tr>
    }
    
    </table>
@@ -469,6 +473,6 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

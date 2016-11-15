@@ -1,22 +1,26 @@
 ---
-title: Az első Service Fabric-alkalmazás létrehozása a Visual Studióban | Microsoft Docs
-description: Service Fabric-alkalmazás létrehozása, üzembe helyezése és hibakeresése a Visual Studio használatával
+title: "Az első Service Fabric-alkalmazás létrehozása a Visual Studióban | Microsoft Docs"
+description: "Service Fabric-alkalmazás létrehozása, üzembe helyezése és hibakeresése a Visual Studio használatával"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2016
+ms.date: 10/26/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 037dc010a6dc60eb49ad4fdad2861e8653e36199
+
 
 ---
-# Az első Azure Service Fabric-alkalmazás létrehozása
+# <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [C# – Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
@@ -26,17 +30,17 @@ ms.author: ryanwi
 
 A Service Fabric SDK egy Visual Studio-bővítmény tartalmaz, amely sablonokat és eszközöket biztosít a Service Fabric-alkalmazások létrehozásához, üzembe helyezéséhez és hibakereséséhez. Ez a témakör végigvezeti Önt az első alkalmazás létrehozásának folyamatán a Visual Studióban.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md).
 
-## Bemutató videó
+## <a name="video-walkthrough"></a>Bemutató videó
 A következő videó végigkalauzolja az ebben az oktatóanyagban található lépéseken.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
 > 
 > 
 
-## Az alkalmazás létrehozása
+## <a name="create-the-application"></a>Az alkalmazás létrehozása
 A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. Az Új projekt varázslóval az első szolgáltatási projektjével együtt egy alkalmazási projektet is létrehozhat. Később további szolgáltatásokat is hozzáadhat.
 
 1. Indítsa el a Visual Studiót rendszergazdaként.
@@ -65,7 +69,7 @@ A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek
      
      A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Reliable Services használatába](service-fabric-reliable-services-quick-start.md).
 
-## Az alkalmazás üzembe helyezése és hibakeresése
+## <a name="deploy-and-debug-the-application"></a>Az alkalmazás üzembe helyezése és hibakeresése
 Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
 
 1. Nyomja le az F5 billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez.
@@ -75,7 +79,7 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
    > 
    > 
    
-    Amikor a fürt létrejött, értesítést fog kapni a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
+    Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
    
     ![A helyifürt-rendszertálca értesítése][4]
 2. Az alkalmazás elindításakor a Visual Studio automatikusan megjeleníti a Diagnosztikai eseménynaplót, ahol a szolgáltatás nyomkövetési kimenetei tekinthetők meg.
@@ -87,7 +91,7 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
    
     ![A diagnosztikai eseménynapló részletei][6]
    
-    A helyi fürt egyetlen gépen üzemeltetett öt csomópontot tartalmaz. Olyan öt csomópontból álló fürtöt utánoz, amelynek a csomópontjai különböző gépeken vannak. Vegyük most a helyi fürt egyik csomópontját, és szimuláljuk rajta egy gép elvesztését, miközben a Visual Studio hibakeresőjét használjuk.
+    A helyi fürt egyetlen gépen üzemeltetett öt csomópontot tartalmaz. Olyan öt csomópontból álló fürtöt utánoz, amelynek a csomópontjai különböző gépeken vannak. Vegyük le a helyi fürtről az egyik csomópontot, ezzel szimulálva egy gép elvesztését, és ugyanakkor kipróbálva a Visual Studio hibakereső funkcióját.
    
    > [!NOTE]
    > A projektsablon által kibocsátott alkalmazásdiagnosztikai események a benne foglalt `ServiceEventSource` osztályt használják. További információ: [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
@@ -107,24 +111,24 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
     ![Csomópont leállítása a Service Fabric Explorerben][sfx-stop-node]
    
     Pillanatnyilag a töréspont megjelenését tekintheti meg a Visual Studióban, mivel az egyik csomóponton korábban végzett számítása zökkenőmentesen átadja a feladatokat egy másiknak.
-8. Térjen vissza a Diagnosztikai eseménynaplóhoz, és vizsgálja meg az üzeneteket. Vegye figyelembe, hogy a számláló értéke továbbra is növekedett, annak ellenére, hogy az események valójában egy másik csomópontról érkeznek.
+8. Térjen vissza a Diagnosztikai eseménynaplóhoz, és vizsgálja meg az üzeneteket. A számláló értéke továbbra is növekszik, annak ellenére, hogy az események valójában egy másik csomópontról érkeznek.
    
     ![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
 
-## Fürt üzemmód átkapcsolása
+## <a name="switch-cluster-mode"></a>Fürt üzemmód átkapcsolása
 Alapértelmezés szerint a helyi fejlesztési fürt 5 csomópontos fürtként való futáshoz van konfigurálva, ami több csomópontra telepített szolgáltatások hibakeresésében nagyon hasznos. Azonban az alkalmazások 5 csomópontos fejlesztési fürtre való telepítése eltarthat egy ideig. Ha azt szeretné, hogy a kódmódosítások gyorsan települjenek, és nincs szükség az alkalmazás 5 csomóponton való futtatására, átválthatja a fejlesztési fürtöt 1 csomópontos üzemmódúra. Ha a kódot egy csomópontos fürtön szeretné futtatni, kattintson a jobb gombbal a tálcán található Local Cluster Manager elemre, és válassza ki a **Fürt üzemmód átkapcsolása -> 1 csomópontos** lehetőséget.  
 
 ![Fürt üzemmód átkapcsolása][switch-cluster-mode]
 
-A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe, és az összes kiépített vagy a fürtön futó alkalmazás törlődik.
+A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe, és a fürtön kiépített vagy futó valamennyi alkalmazás törlődik.
 
-## Takarítás
+## <a name="cleaning-up"></a>Takarítás
   A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt nagyon is valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
 
 1. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
-2. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Vegye figyelembe, hogy ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A fürtöt csak abban az esetben törölje, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
+2. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A fürtöt csak abban az esetben törölje, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
 * Megtudhatja, hogyan tölthet fel szolgáltatásokat az internetre egy [webszolgáltatási előtér](service-fabric-add-a-web-frontend.md) használatával.
@@ -147,6 +151,6 @@ A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe,
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

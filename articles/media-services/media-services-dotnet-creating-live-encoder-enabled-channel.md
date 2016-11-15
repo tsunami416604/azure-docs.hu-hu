@@ -1,12 +1,12 @@
 ---
-title: Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET-tel | Microsoft Docs
-description: Ez az útmutató lépésről lépésre ismerteti, hogyan hozhat létre egy csatornát, amely a fogadott egyféle sávszélességű élő adatfolyamokat a .NET SDK használatával többféle sávszélességűvé kódolja.
+title: "Élő adatfolyam-továbbítás az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET-tel | Microsoft Docs"
+description: "Ez az útmutató lépésről lépésre ismerteti, hogyan hozhat létre egy csatornát, amely a fogadott egyféle sávszélességű élő adatfolyamokat a .NET SDK használatával többféle sávszélességűvé kódolja."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-.net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -68,7 +72,7 @@ Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott
 3. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
 4. Törölje a programot (esetlegesen törölje az adategységet is).
 
-## <a name="what-you'll-learn"></a>Ismertetett témák
+## <a name="what-youll-learn"></a>Ismertetett témák
 Ez a témakör bemutatja, hogyan hajthat végre különböző műveleteket csatornákon és programokon a Media Services .NET SDK használatával. A műveletek között számos hosszú futású művelet található, így hosszú futású műveleteket felügyelő .NET API-kat használunk.
 
 Ez a témakör bemutatja, hogyan végezze el a következőket:
@@ -101,7 +105,7 @@ Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. T
 ## <a name="download-sample"></a>Minta letöltése
 Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
 
-## <a name="set-up-for-development-with-media-services-sdk-for-.net"></a>A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
+## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
 1. Hozzon létre egy konzolalkalmazást a Visual Studio használatával.
 2. Adja hozzá a konzolalkalmazáshoz a .NET-keretrendszerhez készült Media Services SDK-t a Media Services NuGet csomagjának segítségével.
 
@@ -341,7 +345,7 @@ Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a M
             /// <returns></returns>
             public static ILocator CreateLocatorForAsset(IAsset asset, TimeSpan ArchiveWindowLength)
             {
-                // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
+                 // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
                 var locator = _context.Locators.CreateLocator
                     (
                         LocatorType.OnDemandOrigin,
@@ -509,7 +513,7 @@ Adja hozzá az appSettings szakaszt az app.config fájlhoz, és állítsa be a M
                     operationId ?? string.Empty);
             }
         }
-    }   
+    }    
 
 
 ## <a name="next-step"></a>Következő lépés
@@ -520,9 +524,12 @@ Tekintse át a Media Services képzési terveket.
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else?"></a>Valami mást keres?
+### <a name="looking-for-something-else"></a>Valami mást keres?
 Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

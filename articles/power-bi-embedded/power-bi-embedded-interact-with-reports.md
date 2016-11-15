@@ -1,13 +1,13 @@
 ---
-title: Jelentések kezelése a JavaScript API használatával | Microsoft Docs
-description: Power BI Embedded, jelentések kezelése a JavaScript API használatával
+title: "Jelentések kezelése a JavaScript API használatával | Microsoft Docs"
+description: "Power BI Embedded, jelentések kezelése a JavaScript API használatával"
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+
 
 ---
-# Power BI-jelentések kezelése a JavaScript API használatával
+# <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Power BI-jelentések kezelése a JavaScript API használatával
 A Power BI JavaScript API segítségével egyszerűen beágyazhatja a Power BI-jelentéseket az alkalmazásokba. Az API használatával az alkalmazások programozott módon képesek az olyan jelentéselemekkel való interakcióra, mint az oldalak és a szűrők. Ez az interaktivitás a Power BI-jelentéseket az alkalmazás még szervesebb részévé teszi.
 
 A Power BI-jelentések olyan iframe elemek használatával ágyazhatók be az alkalmazásokba, amelyek üzemeltetése az alkalmazások részeként történik. Az iframe elemek az alkalmazás és a jelentés közötti határként viselkednek, ahogyan az a következő képen is látható. 
@@ -30,12 +34,12 @@ Az iframe elemek lényegesen leegyszerűsítik a beágyazási folyamatot, a Java
 
 A Power BI JavaScript API segítségével olyan kód írható, amely biztonságosan áthalad az iframe-határolón. Ez teszi lehetővé az alkalmazás számára a műveletek programozott módon történő végrehajtását a jelentésekben, valamint olyan műveleti események figyelését, amelyeket a felhasználók a jelentésen belül létrehoznak.
 
-## Mire használható a Power BI JavaScript API?
+## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Mire használható a Power BI JavaScript API?
 A JavaScript API segítségével jelentéseket kezelhet, a jelentések adott lapjaira navigálhat, szűrheti a jelentéseket, és kezelheti a beágyazási eseményeket is. Az alábbi ábrán az API szerkezete látható.
 
 ![A Power BI JavaScript API-t bemutató ábra](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
 
-### Jelentések kezelése
+### <a name="manage-reports"></a>Jelentések kezelése
 A JavaScript API-val az alábbi jelentés- és lapszintű viselkedések kezelhetők:
 
 * Adott Power BI-jelentés biztonságos beágyazása az alkalmazásba – próbálja ki a [beágyazási bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario1)
@@ -47,15 +51,15 @@ A JavaScript API-val az alábbi jelentés- és lapszintű viselkedések kezelhet
 
 [További információ jelentések beágyazásáról](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embedding-Basics)
 
-### Navigálás egy jelentés adott lapjaira
+### <a name="navigate-to-pages-in-a-report"></a>Navigálás egy jelentés adott lapjaira
 A JavaScript API segítségével a jelentések összes lapját áttekintheti, és beállíthatja az aktuális lapot. Próbálja ki a [navigációs bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario3).
 
 [További információ a lapok közötti navigálásról](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Page-Navigation)
 
-### Jelentés szűrése
+### <a name="filter-a-report"></a>Jelentés szűrése
 A JavaScript API a beágyazott jelentésekhez és azok lapjaihoz alapszintű és speciális szűrési képességeket biztosít. Próbálja ki a [szűrési bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario4), és tekintsen át néhány bevezető jellegű kódot.  
 
-#### Alapszintű szűrők
+#### <a name="basic-filters"></a>Alapszintű szűrők
 Az alapszintű szűrők oszlop- vagy hierarchiaszinten vannak elhelyezve, és tartalmazzák a felvenni vagy kizárni kívánt értékek listáját.
 
 ```
@@ -71,7 +75,7 @@ const basicFilter: pbi.models.IBasicFilter = {
 ```
 
 
-#### Speciális szűrők
+#### <a name="advanced-filters"></a>Speciális szűrők
 A speciális szűrők AND vagy OR logikai operátorokat használnak, és egy vagy több feltételt fogadnak el, azok operátoraival és értékeivel együtt. Támogatott feltételek:
 
 * None
@@ -110,7 +114,7 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 ```
 [További információk a szűrésről](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Filters)
 
-### Események kezelése
+### <a name="handling-events"></a>Események kezelése
 Az iframe elembe történő információküldés mellett az alkalmazás az alábbi, az iframe elemből érkező eseményekhez kapcsolódó információk fogadására is képes:
 
 * Beágyazás
@@ -122,7 +126,7 @@ Az iframe elembe történő információküldés mellett az alkalmazás az aláb
 
 [További tudnivalók az események kezeléséről](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozásokra kattintva további információkhoz juthat a Power BI JavaScript API-ról:
 
 * [JavaScript API wiki](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
@@ -132,6 +136,9 @@ Az alábbi hivatkozásokra kattintva további információkhoz juthat a Power BI
   * [Ember](https://github.com/Microsoft/powerbi-ember)
 * [Élő bemutató](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

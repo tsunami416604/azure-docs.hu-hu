@@ -1,12 +1,12 @@
 ---
-title: Az Azure Media Services áttekintése és gyakori alkalmazási esetei | Microsoft Docs
-description: Ezen témakör áttekintést nyújt az Azure Media Services szolgáltatásairól
+title: "Az Azure Media Services áttekintése és gyakori alkalmazási esetei | Microsoft Docs"
+description: "Ezen témakör áttekintést nyújt az Azure Media Services szolgáltatásairól"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7a5e9723-c379-446b-b4d6-d0e41bd7d31f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2a4395385ab0e6e71e5139883a544add0a081cf2
+
 
 ---
 # <a name="azure-media-services-overview-and-common-scenarios"></a>Az Azure Media Services áttekintése és gyakori alkalmazási esetei
@@ -58,12 +62,12 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 
 Az Azure Media Services összes fő összetevőjét bemutató útmutató-sorozat: [Az Azure Media Services részletes oktatóprogramjai](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) Ez a sorozat átfogó áttekintést nyújt a fogalmakról, és az AMSE eszköz használatával mutatja be az AMS-feladatokat. Megjegyzés: Az AMSE eszköz egy Windows-eszköz. Az eszköz támogatja a legtöbb olyan műveletet, amelyek a [.NET-keretrendszerhez készült AMS SDK](https://github.com/Azure/azure-sdk-for-media-services), a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java) vagy az [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) használatával programozás útján megvalósíthatók.
 
-## <a name="<a-id="vod_scenarios"></a>delivering-media-on-demand-with-azure-media-services:-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Igény szerinti médiatovábbítás az Azure Media Services használatával: gyakori forgatókönyvek és műveletek
+## <a name="a-idvodscenariosadelivering-media-ondemand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Igény szerinti médiatovábbítás az Azure Media Services használatával: gyakori forgatókönyvek és műveletek
 Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz a kapcsolódó témakörökre. A következő diagramon láthatók a Media Services platform azon fontosabb részei, amelyek szerepet játszanak az igény szerinti tartalomtovábbításban. 
 
 ![VoD-munkafolyamat](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
-### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-(non-encrypted)"></a>Tartalom védelme a tárolón és folyamatos médiatovábbítás tisztán (titkosítatlanul)
+### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-nonencrypted"></a>Tartalom védelme a tárolón és folyamatos médiatovábbítás tisztán (titkosítatlanul)
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe.
    
     Javasolt az adategységen tárolótitkosítást alkalmazni, ezáltal védve a tartalmat feltöltés és tárolás közben.
@@ -78,7 +82,7 @@ Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz 
     Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 5. Továbbítsa a közzétett tartalmat.
 
-### <a name="protect-content-in-storage,-deliver-dynamically-encrypted-streaming-media"></a>Tartalom védelme a tárolón és dinamikusan titkosított folyamatos médiatovábbítás
+### <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Tartalom védelme a tárolón és dinamikusan titkosított folyamatos médiatovábbítás
 A dinamikus titkosítás használatához lennie kell legalább egy folyamatos átvitelhez fenntartott egységnek a streamvégpontján, amelyről a titkosított tartalmat továbbítani kívánja.
 
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe. Alkalmazzon az adategységen tárolótitkosítást.
@@ -112,7 +116,7 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
     Az SAS-kereső használata esetén a tartalmat az Azure-blobtárolóból lehet letölteni. Ebben az esetben nincs szükség folyamatos átvitelhez fenntartott egységekre.
 4. Töltse le fokozatosan a tartalmat.
 
-## <a name="<a-id="live_scenarios"></a>delivering-live-streaming-events-with-azure-media-services"></a><a id="live_scenarios"></a>Események élő adatfolyamainak továbbítása az Azure Media Services használatával
+## <a name="a-idlivescenariosadelivering-live-streaming-events-with-azure-media-services"></a><a id="live_scenarios"></a>Események élő adatfolyamainak továbbítása az Azure Media Services használatával
 Az élő adatfolyam-továbbításban általában a következő összetevők játszanak szerepet:
 
 * Egy kamera, amely az eseményt közvetíti.
@@ -144,7 +148,7 @@ A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalm�
 
 * Egy helyszíni élő kódoló egy egyfajta sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van a Media Services használatával történő élő kódolás a következő formátumok egyikében: RTP (MPEG-TS), RTMP vagy Smooth Streaming (töredékes MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
-### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-(pass-through)"></a>Helyszíni kódolóktól többféle sávszélességű adatfolyamot fogadó (áteresztő) csatornák használata
+### <a name="working-with-channels-that-receive-multibitrate-live-stream-from-onpremises-encoders-passthrough"></a>Helyszíni kódolóktól többféle sávszélességű adatfolyamot fogadó (áteresztő) csatornák használata
 A következő diagramon láthatók a AMS platform azon fontosabb részei, amelyek szerepet játszanak az **áteresztő** munkafolyamatban.
 
 ![Élő munkafolyamat][live-overview2]
@@ -179,7 +183,7 @@ A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="service-level-agreement-(sla)"></a>Szolgáltatói szerződés (SLA)
+## <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
 * A Media Services kódolási funkciójához szükséges REST API-tranzakciókhoz 99,9%-os rendelkezésre állást garantálunk.
 * Az adatfolyam-továbbítási funkciók szolgáltatási kéréseinek sikeres kiszolgálására 99,9%-os rendelkezésre állást garantálunk létező médiatartalmak esetében, legalább egy adatfolyam-továbbítási egység megvásárlásakor.
 * Az élő csatornák esetében garantáljuk, hogy a futó csatornák az idő legalább 99,9%-ában elérhetők lesznek kívülről.
@@ -197,6 +201,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

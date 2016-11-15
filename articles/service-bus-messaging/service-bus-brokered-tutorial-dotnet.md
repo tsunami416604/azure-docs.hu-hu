@@ -1,12 +1,12 @@
 ---
-title: A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga | Microsoft Docs
-description: A közvetítőalapú üzenettovábbítás .NET-oktatóanyaga.
+title: "A Service Bus által felügyelt közvetítőalapú üzenettovábbítás .NET-oktatóanyaga | Microsoft Docs"
+description: "A közvetítőalapú üzenettovábbítás .NET-oktatóanyaga."
 services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 964e019a-8abe-42f3-8314-867010cb2608
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3127a84f4d4cd9881de56a6d199cfb1780cd8189
+
 
 ---
-# <a name="service-bus-brokered-messaging-.net-tutorial"></a>A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga
+# <a name="service-bus-brokered-messaging-net-tutorial"></a>A Service Bus által felügyelt üzenettovábbítás .NET-oktatóanyaga
 Az Azure Service Bus két átfogó üzenetküldési megoldást nyújt: az egyiket egy a felhőben futó központi „továbbító” szolgáltatáson keresztül, amely több különböző átviteli protokollt és webszolgáltatást támogat (többek között SOAP, WS-* és REST). Az ügyfélnek nincs szüksége közvetlen kapcsolatra a helyszíni szolgáltatással, és azt sem kell tudnia, hol található, a helyszíni szolgáltatásnak pedig nincs szüksége megnyitott bejövő portra a tűzfalon.
 
 A második üzenetküldési megoldás „közvetítőalapú” üzenettovábbítási képességeket tesz lehetővé. Ezek aszinkron vagy leválasztott üzenetküldési funkcióknak tekinthetők, amelyek támogatják a közzétételi-feliratkozási, az időalapú leválasztási és a terheléselosztási forgatókönyveket a Service Bus üzenetküldési infrastruktúrájának használatával. A leválasztott kommunikációnak számos előnye van: az ügyfelek és a kiszolgálók például szükség szerint kapcsolódhatnak, és aszinkron módon hajthatják végre a műveleteiket.
 
-A jelen oktatóanyag célja, hogy áttekintést és gyakorlati tapasztalatot nyújtson az üzenetsorokkal kapcsolatban, amelyek a Service Bus által felügyelt üzenettovábbítás alapvető összetevői. Miután a végére ért az oktatóanyag témaköreinek, egy olyan alkalmazással fog rendelkezni, amely feltölt egy üzenetlistát, létrehoz egy üzenetsort és üzeneteket küld ennek az üzenetsornak. Végezetül az alkalmazás megjeleníti az üzenetsorból érkezett üzeneteket, megtisztítja az erőforrásait, majd kilép. A Service Bus Relay-t használó alkalmazás létrehozását bemutató kapcsolódó oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
+A jelen oktatóanyag célja, hogy áttekintést és gyakorlati tapasztalatot nyújtson az üzenetsorokkal kapcsolatban, amelyek a Service Bus által felügyelt üzenettovábbítás alapvető összetevői. Miután a végére ért az oktatóanyag témaköreinek, egy olyan alkalmazással fog rendelkezni, amely feltölt egy üzenetlistát, létrehoz egy üzenetsort és üzeneteket küld ennek az üzenetsornak. Végezetül az alkalmazás megjeleníti az üzenetsorból érkezett üzeneteket, megtisztítja az erőforrásait, majd kilép. A Service Bus WCF Relay-t használó alkalmazás létrehozását bemutató kapcsolódó oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
 
 ## <a name="introduction-and-prerequisites"></a>Bevezetés és előfeltételek
 Az üzenetsorok elsőnek be, elsőnek ki (First In, First Out, FIFO) üzenetküldést biztosítanak egy vagy több versengő fogyasztó számára. A FIFO esetében az üzeneteket általában az érzékelők fogadják és dolgozzák fel a sorhoz történő hozzáadásuk időrendje szerint, és minden üzenetet csak egy üzenetfogyasztó fogad és dolgoz fel. Az üzenetsorok használatának egyik legfontosabb előnye, hogy az alkalmazás összetevői*ideiglenesen leválaszthatók*, vagyis az előállítóknak és a fogyasztóknak nem kell egyszerre küldeniük és fogadniuk az üzeneteket, mivel az üzenetsor tartósan tárolja őket. Egy kapcsolódó előny a *terheléselosztás*, amely lehetővé teszi az előállítók és a fogyasztók számára, hogy különböző ütemben küldjenek és fogadjanak üzeneteket.
@@ -29,7 +33,7 @@ Az üzenetsorok elsőnek be, elsőnek ki (First In, First Out, FIFO) üzenetkül
 Az alábbiakban néhány adminisztratív és előfeltételként szolgáló lépést talál, amelyeket az oktatóanyag elkezdése előtt el kell végeznie. Az első egy szolgáltatási névtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 ### <a name="create-a-service-namespace-and-obtain-a-sas-key"></a>Szolgáltatásnévtér létrehozása és SAS-kulcs beszerzése
-Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -611,14 +615,17 @@ Most, hogy elvégezte az előző lépéseket, létrehozhatja és futtathatja a *
 A Visual Studio **Létrehozás** menüjében kattintson a **Megoldás fordítása** elemre, vagy nyomja le a **Ctrl+Shift+B** billentyűkombinációt. Ha hibákat észlel, az előző lépés végén bemutatott teljes példa alapján ellenőrizze, hogy a kód megfelelő-e.
 
 ## <a name="next-steps"></a>Következő lépések
-Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Service Bus-ügyfélalkalmazást és szolgáltatást a Service Bus közvetítőalapú üzenettovábbítási képességeivel. A Service Bus [Relay](service-bus-messaging-overview.md#Relayed-messaging)-t alkalmazó hasonló oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
+Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Service Bus-ügyfélalkalmazást és szolgáltatást a Service Bus közvetítőalapú üzenettovábbítási képességeivel. A Service Bus [WCF Relay](service-bus-messaging-overview.md#Relayed-messaging)-t alkalmazó hasonló oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
 
 A [Service Busról](https://azure.microsoft.com/services/service-bus/) a következő témakörökben talál további információt.
 
 * [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
-* [A Service Bus alapjai](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus-architektúra](../service-bus/service-bus-architecture.md)
+* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus-architektúra](service-bus-architecture.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

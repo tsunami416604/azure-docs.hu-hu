@@ -1,12 +1,12 @@
 ---
-title: Mi az a hálózati biztonsági csoport (NSG)?
-description: Ismerje meg a hálózati biztonsági csoportokra (NSG) épülő Azure elosztott tűzfalat, és azt, hogy miként használhatja az NSG-ket a virtuális hálózatokon (VNetek) a forgalom elkülönítésére és irányítására.
+title: "Mi az a hálózati biztonsági csoport (NSG)?"
+description: "Ismerje meg a hálózati biztonsági csoportokra (NSG) épülő Azure elosztott tűzfalat, és azt, hogy miként használhatja az NSG-ket a virtuális hálózatokon (VNetek) a forgalom elkülönítésére és irányítására."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 20e850fc-6456-4b5f-9a3f-a8379b052bc9
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 92ba745915c4b496ac6b0ff3b3e25f6611f5707c
+
 
 ---
-# Mi az a hálózati biztonsági csoport (NSG)?
+# <a name="what-is-a-network-security-group-nsg"></a>Mi az a hálózati biztonsági csoport (NSG)?
 A hálózati biztonsági csoport (NSG) tartalmaz egy hozzáférés-vezérlési listát (ACL) a szabályokról, amelyek egy virtuális hálózaton belül engedélyezik vagy megtagadják a virtuálisgép-példányokra irányuló hálózati forgalmat. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Amikor egy NSG-t hozzárendelnek egy alhálózathoz, az ACL szabályok érvényessé válnak az alhálózat összes virtuálisgép-példányára. Emellett egy adott virtuális gépre irányuló forgalmat tovább is lehet korlátozni azzal hogy egy NSG-t közvetlenül ahhoz a virtuális géphez rendelnek.
 
-## NSG-erőforrás
+## <a name="nsg-resource"></a>NSG-erőforrás
 Az NSG-k az alábbi tulajdonságokat tartalmazzák.
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
@@ -34,20 +38,20 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák.
 > 
 > 
 
-### NSG-szabályok
+### <a name="nsg-rules"></a>NSG-szabályok
 Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák.
 
-| Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
+| Tulajdonság | Leírás | Korlátozások | Megfontolások |
 | --- | --- | --- | --- |
-| **Név** |A szabály neve |Egyedinek kell lennie a régión belül<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat<br/>Betűvel vagy számmal kell kezdődnie<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie<br/>Legfeljebb 80 karakterből állhat |Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját |
+| **Name (Név)** |A szabály neve |Egyedinek kell lennie a régión belül<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat<br/>Betűvel vagy számmal kell kezdődnie<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie<br/>Legfeljebb 80 karakterből állhat |Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját |
 | **Protocol (Protokoll)** |A szabálynak megfelelő protokoll |TCP, UDP vagy \* |A \* protokollként történő használata tartalmazza az ICMP-t (csak kelet–nyugat irányú forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát<br/>A \* használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja |
-| **Forrásporttartomány** |A szabálynak megfelelő forrásporttartomány |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65635) vagy \* (minden porthoz) |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a „*” jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani |
-| **Célporttartomány** |A szabálynak megfelelő célporttartomány |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz) |A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani |
-| **Forráscímelőtag** |A szabálynak megfelelő forráscím-előtag vagy címke |Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez) |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez |
-| **Célcím-előtag** |A szabálynak megfelelő célcím-előtag vagy címke |Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez) |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez |
-| **Irány** |A forgalom szabálynak megfelelő iránya |bejövő vagy kimenő |A bejövő vagy kimenő szabályokat a rendszer külön dolgozza fel, az irány alapján |
-| **Prioritás** |A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi, és amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom |100 és 4096 közötti szám |A prioritások meghatározásakor érdemes 100-zas lépésközt használni, hogy az új szabályoknak is legyen hely a meglévő szabályok között |
-| **Hozzáférés** |Az alkalmazandó hozzáférés típusa, ha a csomag megfelel a szabálynak |engedélyezés vagy megtagadás |Ne feledje, hogy ha egy csomag egyik szabálynak sem felel meg, akkor a rendszer eldobja a csomagot |
+| **Source port range (Forrásporttartomány)** |A szabálynak megfelelő forrásporttartomány |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65635) vagy \* (minden porthoz) |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a „*” jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani |
+| **Destination port range (Célporttartomány)** |A szabálynak megfelelő célporttartomány |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz) |A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani |
+| **Source address prefix (Forráscímelőtag)** |A szabálynak megfelelő forráscím-előtag vagy címke |Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez) |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez |
+| **Destination address prefix (Célcímelőtag)** |A szabálynak megfelelő célcím-előtag vagy címke |Egyetlen IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez) |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez |
+| **Direction (Irány)** |A forgalom szabálynak megfelelő iránya |bejövő vagy kimenő |A bejövő vagy kimenő szabályokat a rendszer külön dolgozza fel, az irány alapján |
+| **Priority (Prioritás)** |A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi, és amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom |100 és 4096 közötti szám |A prioritások meghatározásakor érdemes 100-zas lépésközt használni, hogy az új szabályoknak is legyen hely a meglévő szabályok között |
+| **Access (Hozzáférés)** |Az alkalmazandó hozzáférés típusa, ha a csomag megfelel a szabálynak |engedélyezés vagy megtagadás |Ne feledje, hogy ha egy csomag egyik szabálynak sem felel meg, akkor a rendszer eldobja a csomagot |
 
 Az NSG-k két szabálykészletet tartalmaznak: bejövőt és kimenőt. A szabály prioritásának az egyes készleten belül kell egyedinek lennie. 
 
@@ -55,21 +59,21 @@ Az NSG-k két szabálykészletet tartalmaznak: bejövőt és kimenőt. A szabál
 
 A fenti ábrán az NSG-szabályok feldolgozásának folyamata látható.
 
-### Alapértelmezett címkék
+### <a name="default-tags"></a>Alapértelmezett címkék
 Az alapértelmezett címkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. Az alapértelmezett címkéket a szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Háromféle alapértelmezett címkét lehet használni.
 
 * **VIRTUAL_NETWORK:** Ez az alapértelmezett címke a hálózati címtereket jelöli. Beletartozik a virtuális hálózat címtere (az Azure által meghatározott CIDR tartományok), illetve az összes csatlakoztatott helyszíni címtér és Azure VNet (helyi hálózatok).
 * **AZURE_LOADBALANCER:** Ez az alapértelmezett címke az Azure infrastruktúra terheléselosztóját jelöli. Ezt a rendszer le fogja fordítani arra az Azure-adatközponti IP-címre, ahonnan az Azure állapot-mintavételi csomagjai származnak.
 * **INTERNET:** Ez az alapértelmezett címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik és a nyilvános interneten keresztül érhető el. A tartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
 
-### Alapértelmezett szabályok
+### <a name="default-rules"></a>Alapértelmezett szabályok
 Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat. 
 
 Ahogy az alábbi alapértelmezett szabályok is mutatják, a virtuális hálózatból eredő, és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van. Bár az internethez való kapcsolódás kimenő irányban engedélyezett, bejövő irányban alapértelmezés szerint le van tiltva. Van egy alapértelmezett szabály, ami engedélyezi az Azure terheléselosztója számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ezt a szabályt felül lehet bírálni, ha nem elosztott terhelésű készletet használ.
 
 **Bejövő alapértelmezett szabályok**
 
-| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protocol (Protokoll) | Access |
+| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ALLOW VNET INBOUND |65000 |VIRTUAL_NETWORK |* |VIRTUAL_NETWORK |* |* |ALLOW |
 | ALLOW AZURE LOAD BALANCER INBOUND |65001 |AZURE_LOADBALANCER |* |* |* |* |ALLOW |
@@ -77,13 +81,13 @@ Ahogy az alábbi alapértelmezett szabályok is mutatják, a virtuális hálóza
 
 **Kimenő alapértelmezett szabályok**
 
-| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protocol (Protokoll) | Access |
+| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ALLOW VNET OUTBOUND |65000 |VIRTUAL_NETWORK |* |VIRTUAL_NETWORK |* |* |ALLOW |
 | ALLOW INTERNET OUTBOUND |65001 |* |* |INTERNET |* |* |ALLOW |
 | DENY ALL OUTBOUND |65500 |* |* |* |* |* |DENY |
 
-## Az NSG-k társítása
+## <a name="associating-nsgs"></a>Az NSG-k társítása
 Az NSG-ket virtuális gépekhez, hálózati adapterekhez és alhálózatokhoz is társíthatja attól függően, hogy milyen üzembe helyezési modellt használ.
 
 [!INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
@@ -98,27 +102,27 @@ Különböző NSG-ket társíthat egy virtuális géphez (vagy hálózati adapte
   
   1. Alhálózatra alkalmazott NSG. 
      
-         If subnet NSG has a matching rule to deny traffic, packet will be dropped here.
+     Ha az alhálózati NSG tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer.
   2. Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG. 
      
-         If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped at VM\NIC, although subnet NSG has a matching rule to allow traffic.
+     Ha a virtuális gép/hálózati adapter NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot a virtuális gépnél/hálózati adapternél dobja el a rendszer, bár az alhálózati NSG rendelkezik egyeztetési szabállyal a forgalom engedélyezéséhez.
 * **Kimenő forgalom**
   
   1. Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG. 
      
-         If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped here.
+     Ha a virtuális gép/hálózati adapter NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer.
   2. Alhálózatra alkalmazott NSG.
      
-         If subnet NSG has a matching rule to deny traffic, packet will be dropped here, although VM\NIC NSG has a matching rule to allow traffic.
+     Ha az alhálózati NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer, bár az virtuális gép/hálózati adapter NSG-je rendelkezik egyeztetési szabállyal a forgalom engedélyezéséhez.
      
-     ![NSG ACL-ek](./media/virtual-network-nsg-overview/figure2.png)
+      ![NSG ACL-ek](./media/virtual-network-nsg-overview/figure2.png)
 
 > [!NOTE]
 > Bár egy alhálózathoz, virtuális géphez vagy hálózati adapterhez csak egy NSG-t lehet társítani, ugyanazt az NSG-t korlátlan számú erőforráshoz hozzá lehet rendelni.
 > 
 > 
 
-## Megvalósítás
+## <a name="implementation"></a>Megvalósítás
 Az NSG-ket a hagyományos és a Resource Manager üzembe helyezési modellel is meg lehet valósítani a lent felsorolt eszközök használatával.
 
 | Üzembe helyezési eszköz | Klasszikus | Resource Manager |
@@ -133,18 +137,18 @@ Az NSG-ket a hagyományos és a Resource Manager üzembe helyezési modellel is 
 | --- | --- | --- |
 |  | | |
 
-## Tervezés
-Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:   
+## <a name="planning"></a>Tervezés
+Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:    
 
 1. Milyen típusú erőforrásokkal szeretné szűrni a bejövő és kimenő forgalmat (hálózati adapterek ugyanabban a virtuális gépben, virtuális gépek vagy más erőforrások, például ugyanahhoz az alhálózathoz vagy más alhálózatokhoz csatlakoztatott felhőszolgáltatások vagy alkalmazásszolgáltatási környezetek)?
 2. Az erőforrások, amelyekkel a bejövő/kimenő forgalmat szeretné szűrni, meglévő VNetek alhálózataihoz csatlakoznak, vagy új VNetekhez vagy alhálózatokhoz fognak csatlakozni?
 
 A hálózati biztonság Azure-ban történő megtervezésével kapcsolatos további információkért olvassa el [a felhőszolgáltatások és a hálózati biztonság ajánlott eljárásait](../best-practices-network-security.md). 
 
-## Kialakítási szempontok
+## <a name="design-considerations"></a>Kialakítási szempontok
 Ha megválaszolta a [Tervezés](#Planning) szakasz kérdéseit, tekintse át az alábbiakat, mielőtt meghatározná az NSG-ket.
 
-### Korlátok
+### <a name="limits"></a>Korlátok
 Az NSG-k tervezésekor figyelembe kell vennie az alábbi korlátokat.
 
 | **Leírás** | **Alapértelmezett korlát** | **Következmények** |
@@ -158,35 +162,35 @@ Az NSG-k tervezésekor figyelembe kell vennie az alábbi korlátokat.
 > 
 > 
 
-### VNet és alhálózat kialakítása
+### <a name="vnet-and-subnet-design"></a>VNet és alhálózat kialakítása
 Mivel az NSG-ket alhálózatokra is lehet alkalmazni, minimalizálhatja az NSG-k számát azzal, hogy alhálózat szerint csoportosítja az erőforrásokat, és az alhálózatokra alkalmazza az NSG-ket.  Ha úgy dönt, hogy NSG-ket alkalmaz az alhálózatokra, azt tapasztalhatja, hogy a meglévő VNetek és alhálózatok meghatározásánál nem vették figyelembe az NSG-ket. Előfordulhat, hogy az NSG-kialakítás támogatásához új virtuális hálózatokat és alhálózatokat kell meghatároznia. Helyezze üzembe az új erőforrásokat az új alhálózatokra. Ezt követően meghatározhatja az áttelepítési stratégiát a meglévő erőforrások új alhálózatokra történő áthelyezésére. 
 
-### Különleges szabályok
+### <a name="special-rules"></a>Különleges szabályok
 Figyelembe kell vennie az alább felsorolt különleges szabályokat. Győződjön meg arról, hogy nem tiltotta le a szabályok által engedélyezett forgalmat, máskülönben az infrastruktúra nem fog tudni kommunikálni az alapvető fontosságú Azure szolgáltatásokkal.
 
 * **A gazdacsomópont virtuális IP-címe:** A virtuális gazdagép IP-címe (168.63.129.16) biztosítja az olyan alapvető infrastruktúra szolgáltatásokat, mint a DHCP, a DNS és az állapotfigyelés. Ez a nyilvános IP-cím a Microsofthoz tartozik, és minden régióban ezt a virtualizált IP-címet fogják használni erre a célra. Az IP-cím a virtuális gépet üzemeltető kiszolgálógép (gazdacsomópont) fizikai IP-címét képezi le. Ez a gazdacsomópont látja el a DHCP-továbbító, a rekurzív DNS-feloldó, valamint vizsgálati forrás szerepét a terheléselosztó és a gép állapotmintáihoz. Az IP-címmel folytatott kommunikáció nem minősül támadásnak.
 * **Licencelés (Kulcskezelő szolgáltatás):** A virtuális gépeken futó Windows-rendszerképeket licencelni kell. Ehhez el kell küldeni egy licencelési kérelmet a kulcskezelő szolgáltatás ilyen kérelmeket kezelő kiszolgálóinak. Ez mindig az 1688-as kimenő porton lesz.
 
-### ICMP-forgalom
+### <a name="icmp-traffic"></a>ICMP-forgalom
 A jelenlegi NSG-szabályok csak a *TCP* és az *UDP* protokollokat engedélyezik. Az *ICMP*-nek nincs külön címkéje. A virtuális hálózatokon belül azonban a bejövő VNet szabály (65000-es alapértelmezett bejövő szabály) alapértelmezés szerint engedélyezi az ICMP-forgalmat, amely lehetővé teszi a bármely portról és protokollról érkező, illetve oda irányuló forgalmat a VNeten belül.
 
-### Alhálózatok
+### <a name="subnets"></a>Alhálózatok
 * Vegye figyelembe a számítási feladat által igényelt rétegek számát. Minden réteget el lehet különíteni egy alhálózattal, amelyre alkalmazva van egy NSG. 
 * Ha meg kell valósítania egy alhálózatot egy VPN-átjáró vagy ExpressRoute-kör számára, semmiképpen **NE** alkalmazzon NSG-t arra az alhálózatra. Ha mégis így tenne, a VNetek vagy helyszínek közötti kapcsolat nem fog működni.
 * Ha egy virtuális készüléket kell megvalósítania, a virtuális készüléket mindenképpen saját alhálózatba helyezze üzembe, hogy a felhasználó által megadott útvonalak (UDR-ek) megfelelően tudnak működni. Megvalósíthat egy alhálózatszintű NSG-t is az alhálózat be- és kifelé irányuló forgalmának szűrésére. Tudjon meg többet arról, [hogyan lehet irányítani az adatforgalmat és hogyan kell használni a virtuális készülékeket](virtual-networks-udr-overview.md).
 
-### Terheléselosztók
+### <a name="load-balancers"></a>Terheléselosztók
 * Vegyük példaként a terheléselosztási és a NAT-szabályokat a számítási feladatok által használt terheléselosztónál. A szabályok egy háttérkészlethez vannak kötve, ami hálózati adaptereket (Resource Manager-üzemelő példányok) vagy virtuális gépeket/szerepkörpéldányokat (klasszikus üzembe helyezés) tartalmaz. Érdemes létrehozni egy NSG-t minden egyes háttérkészlethez, így a terheléselosztókban csak a megvalósított szabályok által leképezett forgalom lesz engedélyezve. Ez garantálja, hogy szűrve lesz a háttérkészletbe közvetlenül érkező forgalom, ami nem halad át a terheléselosztón.
 * A klasszikus üzembe helyezés során végpontokat hoz létre, amelyek leképezik a terheléselosztón található portokat a virtuális gépekre vagy szerepkörpéldányokra. Emellett a Resource Manager üzembe helyezés során egyéni, nyilvános terheléselosztót is létrehozhat. Ha a forgalmat olyan virtuális gépekre és szerepkörpéldányokra korlátozza, amelyek az NSG-k használatával egy terheléselosztó háttérkészletének részeivé válnak, ne feledje, hogy a bejövő forgalom célportja egyben a virtuális gép vagy szerepkörpéldány tényleges portja, nem pedig a terheléselosztó által elérhetővé tett port. Azt is vegye figyelembe, hogy a forrásport és a virtuális géppel való kapcsolat címe az interneten található távoli számítógép egy portjával és egy címével egyezik, nem pedig a terheléselosztó által elérhetővé tett porttal és címmel.
 * A nyilvános terheléselosztókhoz hasonlóan amikor azért hoz létre NSG-ket, hogy a belső terheléselosztón (ILB) keresztülhaladó forgalmat szűrjék, tisztában kell lennie azzal, hogy az alkalmazott forrásport és címtartomány a hívást küldő számítógépével egyezik meg, nem pedig a terheléselosztóéval. A célport és a címtartomány nem a terheléselosztóhoz, hanem a forgalmat fogadó számítógéphez kapcsolódik.
 
-### Egyéb
+### <a name="other"></a>Egyéb
 * A végpont-alapú ACL-ek és NSG-k nem támogatottak ugyanazon a kiszolgálón. Ha használni szeretne egy NSG-t, és már be van állítva egy végponti ACL, először el kell távolítani a végponti ACL-t. Ennek módjáról a [Manage endpoint ACLs](virtual-networks-acl-powershell.md) (Végponti ACL-ek kezelése) szakaszban talál információt.
 * A Resource Manager üzembe helyezési modellben a hálózati adapter általi kezelés (távelérés) engedélyezéséhez egy hálózati adapterhez társított NSG-t több hálózati adapterrel rendelkező virtuális gépekkel is használhat, elkülönítve ezzel a forgalmat.
 * A terheléselosztók használatához hasonlóan a más VNetekről érkező forgalom szűrésénél a távoli gép forráscímtartományát kell használni, nem a VNeteket összekötő átjárót.
 * Sok Azure-szolgáltatást nem lehet csatlakoztatni az Azure virtuális hálózataihoz, és ezért a feléjük irányuló, illetve tőlük érkező forgalmat nem lehet NSG-kkel szűrni.  Olvassa el a használatban lévő szolgáltatások dokumentációját annak megállapítására, hogy lehet-e őket VNetekhez csatlakoztatni.
 
-## Üzembe helyezési minta
+## <a name="sample-deployment"></a>Üzembe helyezési minta
 A cikkben leírtak alkalmazásának szemléltetéséhez NSG-ket fogunk meghatározni a hálózati forgalom szűrésére egy kétrétegű számítási feladatmegoldáshoz az alábbi követelményekkel:
 
 1. Az előtér (Windows webkiszolgálók) és háttér (SQL Database-kiszolgálók) közötti forgalmat el kell különíteni.
@@ -205,10 +209,10 @@ A fenti diagramon látható módon a *Web1* és a *Web2* virtuális gépek a *Fr
 
 A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területekre korlátozódik. Az egyes NSG-khez szükséges szabályok számának minimalizálása, illetve a további virtuális gépek a meglévő virtuális gépekkel azonos számítási feladattípust futtató alhálózatokhoz való hozzáadásának megkönnyítése érdekében az alábbi alhálózat-szintű NSG-ket lehet megvalósítani.
 
-### NSG a FrontEnd alhálózathoz
+### <a name="nsg-for-frontend-subnet"></a>NSG a FrontEnd alhálózathoz
 **Bejövő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HTTP engedélyezése |Engedélyezés |100 |INTERNET |\* |\* |80 |TCP |
 | RDP engedélyezése a FrontEnd alhálózatból |Engedélyezés |200 |192.168.1.0/24 |\* |\* |3389 |TCP |
@@ -216,27 +220,27 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 
 **Kimenő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | internetforgalom megtagadása |Megtagadás |100 |\* |\* |INTERNET |\* |\* |
 
-### NSG a BackEnd alhálózathoz
+### <a name="nsg-for-backend-subnet"></a>NSG a BackEnd alhálózathoz
 **Bejövő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | internetforgalom megtagadása |Megtagadás |100 |INTERNET |\* |\* |\* |\* |
 
 **Kimenő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | internetforgalom megtagadása |Megtagadás |100 |\* |\* |INTERNET |\* |\* |
 
-### NSG egyetlen FrontEnd alhálózaton belüli virtuális géphez (hálózati adapterhez) az internetről érkező RDP számára
+### <a name="nsg-for-single-vm-nic-in-frontend-for-rdp-from-internet"></a>NSG egyetlen FrontEnd alhálózaton belüli virtuális géphez (hálózati adapterhez) az internetről érkező RDP számára
 **Bejövő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | internetről érkező RDP engedélyezése |Engedélyezés |100 |INTERNET |* |\* |3389 |TCP |
 
@@ -245,33 +249,33 @@ A fent látható 1–6 követelmény (a 3. kivételével) alhálózati területe
 > 
 > 
 
-### NSG a háttérbeli felügyeleti hálózati adapterekhez
+### <a name="nsg-for-management-nics-in-backend"></a>NSG a háttérbeli felügyeleti hálózati adapterekhez
 **Bejövő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | előtérből érkező RDP engedélyezése |Engedélyezés |100 |192.168.1.0/24 |* |\* |3389 |TCP |
 
-### NSG a háttérbeli adatbázis-hozzáférési hálózati adapterekhez
+### <a name="nsg-for-database-access-nics-in-back-end"></a>NSG a háttérbeli adatbázis-hozzáférési hálózati adapterekhez
 **Bejövő szabályok**
 
-| Szabály | Access | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protocol (Protokoll) |
+| Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | előtérből érkező SQL engedélyezése |Engedélyezés |100 |192.168.1.0/24 |* |\* |1433 |TCP |
 
 Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kell társítani, ezt a forgatókönyvet Resource Manager-telepítésként kell üzembe helyezni. Figyelje meg, hogy a szabályok egyesítve vannak az alhálózat és a hálózati adapterek szintjén, attól függően, hogy hogyan kell őket alkalmazni. 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Deploy NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md) (NSG-k telepítése a klasszikus üzembe helyezési modellel).
 * [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md) (NSG-k üzembe helyezése a Resource Manager eszközzel).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).
 
 [green]: ./media/virtual-network-nsg-overview/green.png
-[sárga]: ./media/virtual-network-nsg-overview/yellow.png
-[vörös]: ./media/virtual-network-nsg-overview/red.png
+[yellow]: ./media/virtual-network-nsg-overview/yellow.png
+[red]: ./media/virtual-network-nsg-overview/red.png
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés a Tártallózó alkalmazással (előzetes verzió) | Microsoft Docs
-description: Azure tárerőforrások kezelése a Tártallózó alkalmazással (előzetes verzió)
+title: "Ismerkedés a Tártallózó alkalmazással (előzetes verzió) | Microsoft Docs"
+description: "Azure tárerőforrások kezelése a Tártallózó alkalmazással (előzetes verzió)"
 services: storage
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
 ms.topic: get-started-article
@@ -14,18 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d5c003c9240d8625d2921666e1361ce0512138bb
+
 
 ---
-# Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
-## Áttekintés
+# <a name="getting-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
+## <a name="overview"></a>Áttekintés
 A Microsoft Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, OS X és Linux rendszereken. Ebben a cikkben megismerheti az Azure-tárfiókok csatlakoztatásának és kezelésének különféle módjait.
 
 ![Microsoft Azure Tártallózó (előzetes verzió)][15]
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com)
 
-## Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
+## <a name="connect-to-a-storage-account-or-service"></a>Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
 A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Ezek a következők lehetnek: csatlakozás az Azure-előfizetésekkel társított tárfiókokhoz, csatlakozás a más Azure-előfizetésekből megosztott tárfiókokhoz és -szolgáltatásokhoz, vagy akár a helyi tárterület csatlakoztatása és kezelése az Azure Storage Emulator használatával:
 
 * [Csatlakozás Azure-előfizetéshez](#connect-to-an-azure-subscription) – Az Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
@@ -34,7 +38,7 @@ A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfi
 * [Tárfiók csatolása SAS használatával](#attach-storage-account-using-sas) – Más Azure-előfizetések alá tartozó tárolási erőforrások kezelése SAS használatával.
 * [Szolgáltatás csatolása SAS használatával](#attach-service-using-sas) – Más Azure-előfizetések alá tartozó adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla) kezelése SAS használatával.
 
-## Csatlakozás Azure-előfizetéshez
+## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 > [!NOTE]
 > Ha nincs Azure-fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja Visual Studio-előfizetése kiemelt előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 > 
@@ -53,7 +57,7 @@ A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfi
    
     ![Kiválasztott Azure-előfizetések][4]
 
-## Munkavégzés helyi fejlesztési tárterülettel
+## <a name="work-with-local-development-storage"></a>Munkavégzés helyi fejlesztési tárterülettel
 A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is dolgozhat az Azure Storage Emulator használatával. Így anélkül is írhat kódot a tárterületre és tesztelheti azt, hogy szüksége lenne egy telepített tárfiókra az Azure szolgáltatásban (mivel a tárfiókot az Azure Storage Emulator emulálja).
 
 > [!NOTE]
@@ -74,10 +78,10 @@ A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is do
    * Azure Queue Storage-erőforrások kezelése – *Hamarosan elérhető*
    * Azure Table Storage-erőforrások kezelése – *Hamarosan elérhető*
 
-## Külső tárfiók csatolása vagy leválasztása
+## <a name="attach-or-detach-an-external-storage-account"></a>Külső tárfiók csatolása vagy leválasztása
 A Tártallózó (előzetes verzió) segítségével külső tárfiókokat csatolhat, így azok könnyen megoszthatóak. Ez a szakasz külső tárfiókok csatolását (és leválasztását) írja le.
 
-### Tárfiók hitelesítő adatainak lekérése
+### <a name="get-the-storage-account-credentials"></a>Tárfiók hitelesítő adatainak lekérése
 A külső tárfiókok megosztásához először az adott fiók tulajdonosának le kell kérnie a fiók hitelesítő adatait (a fióknevet és a kulcsot), majd meg kell osztania azokat a – külső – fiókot csatlakoztatni kívánó személlyel. A tárfiók hitelesítő adatainak lekérése az Azure portálon keresztül lehetséges az alábbi lépések végrehajtásával: 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
@@ -91,7 +95,7 @@ A külső tárfiókok megosztásához először az adott fiók tulajdonosának l
    
    ![Elérési kulcs][6]
 
-### Külső tárfiók csatolása
+### <a name="attach-to-an-external-storage-account"></a>Külső tárfiók csatolása
 Külső tárfiók csatolásához szükség van a fiók nevére és kulcsára. A *Tárfiók hitelesítő adatainak lekérése* szakasz ismerteti ezen értékek lekérését az Azure Portalról. Vegye figyelembe, hogy a portálon a fiókkulcs neve „kulcs 1”, így ahol a Tártallózónál (előzetes verzió) a fiókkulcsot meg kell adni, ott a „kulcs 1” értéket kell beírni (vagy bemásolni). 
 
 1. A Tártallózóban (előzetes verzió) válassza ki a **Csatlakozás Azure Storage-hoz** lehetőséget.
@@ -108,13 +112,13 @@ Külső tárfiók csatolásához szükség van a fiók nevére és kulcsára. A 
    
    ![Külső tárfiók csatolásának eredménye][9]
 
-### Külső tárfiók leválasztása
+### <a name="detach-from-an-external-storage-account"></a>Külső tárfiók leválasztása
 1. Kattintson a jobb gombbal a leválasztani kívánt külső tárfiókra, és válassza – a helyi menüből – a **Leválasztás** lehetőséget.
    
    ![Tár leválasztása lehetőség][10]
 2. Amikor a megerősítő üzenet megjelenik, kattintson az **Igen** gombra a külső tárfiók leválasztásának jóváhagyásához.
 
-## Tárfiók csatolása SAS használatával
+## <a name="attach-storage-account-using-sas"></a>Tárfiók csatolása SAS használatával
 A [SAS (Shared Access Signature, közös hozzáférésű jogosultságkód)](storage/storage-dotnet-shared-access-signature-part-1.md) lehetővé teszi, hogy az Azure-előfizetés rendszergazdája ideiglenes hozzáférést engedélyezzen a tárfiókhoz anélkül, hogy kiadná az Azure-előfizetés hitelesítő adatait. 
 
 Ennek szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azure-előfizetés rendszergazdája, és hozzáférést szeretne engedélyezni „B” felhasználó számára a tárfiókhoz adott időtartamra és meghatározott engedélyekkel:
@@ -123,7 +127,7 @@ Ennek szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azu
 2. Az „A” felhasználó megosztja a SAS-kódot a tárfiókhoz hozzáférést igénylő személlyel – esetünkben a „B” felhasználóval.  
 3. A „B” felhasználó a Tártallózó (előzetes verzió) segítségével csatolja az „A” felhasználóhoz tartozó fiókot a megadott SAS-kód használatával. 
 
-### SAS-kód lekérése a megosztani kívánt fiókhoz
+### <a name="get-a-sas-for-the-account-you-want-to-share"></a>SAS-kód lekérése a megosztani kívánt fiókhoz
 1. A Tártallózóban (előzetes verzió) kattintson a jobb gombbal a megosztani kívánt tárfiókra, és válassza – a helyi menüből – a **Közös hozzáférésű jogosultságkód igénylése** lehetőséget.
    
    ![SAS beszerzése menüpont][13]
@@ -132,7 +136,7 @@ Ennek szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azu
     ![SAS beszerzése párbeszédpanel][14]
 3. Megjelenik egy második **Közös hozzáférésű jogosultságkód** párbeszédpanel a SAS-kóddal. Kattintson a **Másolás** parancsra a **Kapcsolati karakterlánc** mellett annak a vágólapra másolásához. Válassza a **Bezárás** lehetőséget a párbeszédpanel bezárásához.
 
-### Közös fiók csatolása a SAS használatával
+### <a name="attach-to-the-shared-account-using-the-sas"></a>Közös fiók csatolása a SAS használatával
 1. A Tártallózóban (előzetes verzió) válassza ki a **Csatlakozás Azure Storage-hoz** lehetőséget.
    
    ![Csatlakozás Azure Storage-hoz lehetőség][23]
@@ -144,10 +148,10 @@ Ennek szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azu
    
    ![SAS használatával történő fiókhoz csatolás eredménye][17]
 
-## Szolgáltatás csatolása SAS használatával
+## <a name="attach-service-using-sas"></a>Szolgáltatás csatolása SAS használatával
 A [Fiók csatolása SAS használatával](#attach-storage-account-using-sas) szakasz mutatja be, hogyan adhat az Azure-előfizetés rendszergazdája ideiglenes hozzáférést a tárfiókhoz a tárfiók SAS-kódjának létrehozásával (és megosztásával). Hasonlóképpen, SAS-kód létrehozható adott szolgáltatásokhoz (blob tárolókhoz, üzenetsorokhoz és táblákhoz) is a tárfiókon belül.  
 
-### SAS-kód létrehozása a megosztani kívánt szolgáltatáshoz
+### <a name="generate-a-sas-for-the-service-you-want-to-share"></a>SAS-kód létrehozása a megosztani kívánt szolgáltatáshoz
 Ebben a kontextusban a szolgáltatások blob tárolók, üzenetsorok vagy táblák lehetnek. Az alábbi szakaszok ismertetik a SAS-kód létrehozását az egyes felsorolt szolgáltatásokhoz:
 
 * [SAS lekérése blob tárolóhoz](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
@@ -155,7 +159,7 @@ Ebben a kontextusban a szolgáltatások blob tárolók, üzenetsorok vagy tábl�
 * SAS lekérése üzenetsorhoz – *Hamarosan elérhető*
 * SAS lekérése táblához – *Hamarosan elérhető*
 
-### Közös fiókszolgáltatás csatolása a SAS használatával
+### <a name="attach-to-the-shared-account-service-using-the-sas"></a>Közös fiókszolgáltatás csatolása a SAS használatával
 1. A Tártallózóban (előzetes verzió) válassza ki a **Csatlakozás Azure Storage-hoz** lehetőséget.
    
    ![Csatlakozás Azure Storage-hoz lehetőség][23]
@@ -167,7 +171,7 @@ Ebben a kontextusban a szolgáltatások blob tárolók, üzenetsorok vagy tábl�
    
    ![SAS használatával történő megosztott szolgáltatáshoz csatolás eredménye][20]
 
-## Tárfiókok keresése
+## <a name="search-for-storage-accounts"></a>Tárfiókok keresése
 Amennyiben tárfiókjai listája túl hosszú, az adott tárfiókok megtalálásának egyszerű módja lehet a keresőmező használata a bal oldali ablaktábla tetején. 
 
 Ahogy elkezdi beírni a szöveget a keresőmezőbe, a bal oldali ablaktábla csak azokat a tárfiókokat jeleníti meg, amelyek tartalmazzák az addig beírt szövegre adott találatokat. Az alábbi képernyőfelvételen egy olyan eset látható, ahol az összes tárfiók közt azokat a tárfiókokat kerestem, amelyeknek a neve tartalmazza a „tarcher” karakterláncot.
@@ -176,7 +180,7 @@ Ahogy elkezdi beírni a szöveget a keresőmezőbe, a bal oldali ablaktábla csa
 
 A keresés törléséhez kattintson az **x** gombra a keresőmezőben.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Blob Storage-erőforrások kezelése a Tártallózó (előzetes verzió) használatával](vs-azure-tools-storage-explorer-blobs.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
@@ -202,6 +206,6 @@ A keresés törléséhez kattintson az **x** gombra a keresőmezőben.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

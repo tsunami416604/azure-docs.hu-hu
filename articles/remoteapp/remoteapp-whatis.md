@@ -1,12 +1,12 @@
 ---
 title: Mi az az Azure RemoteApp? | Microsoft Docs
-description: Ismerje meg, hogyan oszthat meg alkalmazásokat és erőforrásokat bármilyen eszközön az Azure RemoteAppon keresztül.
+description: "Ismerje meg, hogyan oszthat meg alkalmazásokat és erőforrásokat bármilyen eszközön az Azure RemoteAppon keresztül."
 services: remoteapp
-documentationcenter: ''
+documentationcenter: 
 author: lizap
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: d7a8a311-e70a-4463-ac85-c7f62c500921
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: elizapo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 95b4e6914de787bb2c25527ce9635f872b4746a6
+
 
 ---
-# Mi az az Azure RemoteApp?
+# <a name="what-is-azure-remoteapp"></a>Mi az az Azure RemoteApp?
 > [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
@@ -34,7 +38,7 @@ Az Azure RemoteApp a [Microsoft virtuális asztali infrastruktúra](http://www.m
 
 **Újdonság!** Szeretne többet megtudni az Azure RemoteAppról? Vagy készen áll arra, hogy méretezve ellenőrizze az Azure RemoteAppot? Csatlakozzon a hetente megtartott [szakértői válaszok webes szemináriumhoz](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website).
 
-## Azure RemoteApp-gyűjtemények
+## <a name="azure-remoteapp-collections"></a>Azure RemoteApp-gyűjtemények
 Kétféle [Azure RemoteApp-gyűjtemény](remoteapp-collections.md) létezik:
 
 * A **felhőalapú gyűjtemény** a felhőben üzemelteti a programokat és tárolja az adatokat. A felhasználók a Microsoft-fiókjukkal, illetve az Azure Active Directory-val szinkronizált vagy összevont vállalati hitelesítő adataikkal jelentkezhetnek be és érhetik el az alkalmazásokat.
@@ -52,7 +56,7 @@ Kétféle [Azure RemoteApp-gyűjtemény](remoteapp-collections.md) létezik:
 
 A különböző gyűjteményekhez különböző lehetőségek érhetők el, beleértve a hálózatokat, ezért fel kell mérnie, hogy [melyik gyűjtemény](remoteapp-collections.md) a legjobb az Ön számára. 
 
-### A gyűjtemény frissítése
+### <a name="updating-your-collection"></a>A gyűjtemény frissítése
 A hibrid és a felhőalapú gyűjtemények közötti legfőbb különbségek egyike a szoftverfrissítések kezelésének módja. Egy felhőgyűjtemény esetében, amely az Office 365 ProPlus vagy az Office 2013 előre telepített rendszerképét használja, nem kell aggódnia a frissítések miatt. A szolgáltatás karbantartja magát, és folyamatosan telepíti az alkalmazásokra és az operációs rendszerre frissítéseit.
 
 A hibrid gyűjtemények, valamint az egyéni sablonrendszerképet használó felhőalapú gyűjtemények esetében a rendszerkép és az alkalmazások karbantartása az Ön feladata. A tartományhoz csatlakoztatott rendszerképek esetében olyan eszközökkel vezérelheti a frissítéseket, mint a Windows Update, a Csoportházirend vagy a System Center.
@@ -61,25 +65,28 @@ Miután frissíti az egyéni sablon rendszerképet, fel kell töltenie az új re
 
 További információk: [A gyűjtemény frissítése](remoteapp-update.md).
 
-## Támogatott RemoteApp-ügyfelek
+## <a name="supported-remoteapp-clients"></a>Támogatott RemoteApp-ügyfelek
 Az Azure RemoteApp a Windows és Windows RT rendszerekhez készült RemoteApp-ügyfélalkalmazásokon, valamint a Mac, iOS és Android rendszerekhez készült Microsoft távoli asztali alkalmazásokon támogatott. A felhasználók mobileszközeiken vagy számítógépeiken használhatják ezeket az alkalmazásokat az új Azure RemoteApp-programok eléréséhez.
 
 Az ügyfelekkel kapcsolatos további információk: [Accessing your apps in Azure RemoteApp](remoteapp-clients.md) (Az alkalmazások elérése az Azure RemoteAppban).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első lépéseiben:
 
-* [What kind of collection do you need for Azure RemoteApp? (Milyen típusú gyűjteményre van szüksége az Azure RemoteApphoz?)](remoteapp-collections.md)
-* [Create an Azure RemoteApp image (Azure RemoteApp-rendszerkép létrehozása)](remoteapp-imageoptions.md)
-* [How to create a cloud collection of Azure RemoteApp (Az Azure RemoteApp felhőalapú gyűjteményének létrehozása)](remoteapp-create-cloud-deployment.md)
-* [How to create a hybrid collection of Azure RemoteApp (Az Azure RemoteApp hibrid gyűjteményének létrehozása)](remoteapp-create-hybrid-deployment.md)
-* [Hogyan működik a licenckezelés az Azure RemoteAppban?](remoteapp-licensing.md)
-* [Best practices for using Azure RemoteApp (Ajánlott eljárások az Azure RemoteApp használatához)](remoteapp-bestpractices.md)
-* [Azure RemoteApp – gyakori kérdések](remoteapp-faq.md)
+* [What kind of collection do you need for Azure RemoteApp?](remoteapp-collections.md) (Milyen típusú gyűjteményre van szüksége az Azure RemoteApphoz?)
+* [Create an Azure RemoteApp image](remoteapp-imageoptions.md) (Azure RemoteApp-rendszerkép létrehozása)
+* [How to create a cloud collection of Azure RemoteApp](remoteapp-create-cloud-deployment.md) (Az Azure RemoteApp felhőalapú gyűjteményének létrehozása)
+* [How to create a hybrid collection of Azure RemoteApp](remoteapp-create-hybrid-deployment.md) (Az Azure RemoteApp hibrid gyűjteményének létrehozása)
+* [How does licensing work in Azure RemoteApp?](remoteapp-licensing.md) (Hogyan működik a licenckezelés az Azure RemoteAppban?)
+* [Best practices for using Azure RemoteApp](remoteapp-bestpractices.md) (Ajánlott eljárások az Azure RemoteApp használatához)
+* [Azure RemoteApp FAQ](remoteapp-faq.md) (Azure RemoteApp – gyakori kérdések)
 
-### Segítsen nekünk, hogy segítsünk
+### <a name="help-us-help-you"></a>Segítsen nekünk, hogy segítsünk
 Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** vagy a **Szerkesztés** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

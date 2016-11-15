@@ -1,13 +1,13 @@
 ---
-title: Új rugalmas készlet létrehozása az Azure Portalon | Microsoft Docs
-description: A cikk ismerteti, hogyan adható méretezhető rugalmas adatbáziskészlet az SQL-adatbázis konfigurációjához, amely megkönnyíti a felügyeletet, valamint az erőforrások számos adatbázis közti megosztását.
-keywords: méretezhető adatbázis,adatbázis-konfiguráció
+title: "Új rugalmas készlet létrehozása az Azure Portalon | Microsoft Docs"
+description: "A cikk ismerteti, hogyan adható méretezhető rugalmas adatbáziskészlet az SQL-adatbázis konfigurációjához, amely megkönnyíti a felügyeletet, valamint az erőforrások számos adatbázis közti megosztását."
+keywords: "méretezhető adatbázis,adatbázis-konfiguráció"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: ninarn
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: bf12594b-d258-40e6-a9fc-d8a8710c2d65
 ms.service: sql-database
 ms.devlang: NA
 ms.date: 07/20/2016
@@ -15,13 +15,17 @@ ms.author: ninarn
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f83e1aa30cfee86137c13c3a15c0e989558c0df8
+
 
 ---
-# Új rugalmas adatbáziskészlet létrehozása az Azure Portallal
+# <a name="create-a-new-elastic-database-pool-with-the-azure-portal"></a>Új rugalmas adatbáziskészlet létrehozása az Azure Portallal
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
-> * [C##](sql-database-elastic-pool-create-csharp.md)
+> * [C#](sql-database-elastic-pool-create-csharp.md)
 > 
 > 
 
@@ -34,7 +38,7 @@ Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók kül
 > 
 > 
 
-## 1. lépés: Új készlet létrehozása
+## <a name="step-1-create-a-new-pool"></a>1. lépés: Új készlet létrehozása
 A cikk bemutatja, hogy miként lehet új készletet létrehozni a portál egy meglévő **kiszolgáló** paneljéről, amely a meglévő adatbázisok készletbe történő áthelyezésének legegyszerűbb módja. 
 
 > [!NOTE]
@@ -58,7 +62,7 @@ A cikk bemutatja, hogy miként lehet új készletet létrehozni a portál egy me
     ![A rugalmas készlet konfigurálása](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 3. Adjon nevet a rugalmas készletnek, vagy hagyja meg az alapértelmezett nevet.
 
-## 2. lépés: Tarifacsomag kiválasztása
+## <a name="step-2-choose-a-pricing-tier"></a>2. lépés: Tarifacsomag kiválasztása
 A készlethez tartozó tarifacsomag határozza meg, hogy mely funkciók érhetők el a készlethez tartozó rugalmas adatbázisokban, illetve hogy az egyes adatbázisokon legfeljebb hány eDTU (eDTU MAX) és mennyi tárterület (GB) használható fel. A részletekért lásd a tarifacsomagokról szóló cikket.
 
 A készlet tarifacsomagjának módosításához kattintson a **Tarifacsomag** lehetőségre, majd a kívánt tarifacsomagra, azután kattintson a **Kiválasztás** elemre.
@@ -70,7 +74,7 @@ A készlet tarifacsomagjának módosításához kattintson a **Tarifacsomag** le
 
 ![Tarifacsomag kiválasztása](./media/sql-database-elastic-pool-create-portal/pricing-tier.png)
 
-## 3. lépés: A készlet konfigurálása
+## <a name="step-3-configure-the-pool"></a>3. lépés: A készlet konfigurálása
 A tarifacsomag beállítását követően kattintson a Készlet beállítása elemre. A megnyíló lapon vehet fel adatbázisokat, állíthatja be a készlethez tartozó eDTU-kat és a tárterület mennyiségét (GB-ban), és állíthatja be a készlethez tartozó rugalmas adatbázisokban használt eDTU-k minimális és maximális számát.
 
 1. Kattintson a **Készlet beállítása** elemre.
@@ -86,7 +90,7 @@ A tarifacsomag beállítását követően kattintson a Készlet beállítása el
 4. Ha módosította a beállításokat, kattintson a **Készlet beállítása** panel **Kiválasztás** elemére.
 5. A készlet létrehozásához kattintson az **OK** gombra.
 
-## A készlettel kapcsolatos javaslatok megértése
+## <a name="understand-pool-recommendations"></a>A készlettel kapcsolatos javaslatok megértése
 Az SQL Database szolgáltatás a használati előzmények elemzésével megállapítja, hogy megéri-e önálló adatbázisok helyett készleteket használni, és ha igen, javasol egy vagy több készletet. A javaslatokat a rendszer a kiszolgáló adatbázisainak a készlethez leginkább illő egyedi részhalmazával konfigurálja.
 
 ![javasolt készlet](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
@@ -102,17 +106,20 @@ A szolgáltatás az elmúlt 30 nap telemetriai adatai alapján javasol készlete
 
 A szolgáltatás értékeli az erőforrásigényeket, illetve azt, hogy megéri-e a különböző csomagokhoz tartozó önálló adatbázisokat ugyanahhoz a csomaghoz tartozó készletekbe vonni. A rendszer például megvizsgálja, hogy érdemes-e a kiszolgálón található Standard adatbázisokat Standard rugalmas készletté alakítani. Ez azt is jelenti, hogy a szolgáltatás különböző csomagokat tartalmazó javaslatokat nem tesz, azaz soha nem javasolja például, hogy Prémium készletbe helyezzen egy Standard adatbázist.
 
-### Dinamikus javaslatok
+### <a name="dynamic-recommendations"></a>Dinamikus javaslatok
 Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott adatbázisok korábbi használati adatai alapján automatikusan létrehozza a javaslatokat. Ezek a javaslatok megjelennek az eDTU- és GB-használati diagramon, illetve a **Készlet beállítása** panel felső részén található javaslatsávban is. A javaslatok célja, hogy segítsenek az Ön konkrét adatbázisaihoz optimalizált készlet létrehozásában.
 
 ![dinamikus javaslatok](./media/sql-database-elastic-pool-create-portal/dynamic-recommendation.png)
 
-## További források
-* [Manage a SQL Database elastic pool with the portal (SQL Database rugalmas készlet felügyelete a portálon)](sql-database-elastic-pool-manage-portal.md)
-* [Manage a SQL Database elastic pool with PowerShell (SQL Database rugalmas készlet felügyelete PowerShell-lel)](sql-database-elastic-pool-manage-powershell.md)
-* [Manage a SQL Database elastic pool with C (SQL Database rugalmas készlet felügyelete C-vel)#](sql-database-elastic-pool-manage-csharp.md)
-* [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](sql-database-elastic-scale-introduction.md) 
+## <a name="additional-resources"></a>További források
+* [SQL Database rugalmas készlet felügyelete a portálon](sql-database-elastic-pool-manage-portal.md)
+* [SQL Database rugalmas készlet felügyelete PowerShell-lel](sql-database-elastic-pool-manage-powershell.md)
+* [SQL Database rugalmas készlet felügyelete C-vel](sql-database-elastic-pool-manage-csharp.md)
+* [Horizontális felskálázás az Azure SQL Database segítségével](sql-database-elastic-scale-introduction.md) 
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

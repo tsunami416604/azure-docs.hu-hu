@@ -1,12 +1,12 @@
 ---
-title: IIS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
-description: Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az IIS-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez.
+title: "IIS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló"
+description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az IIS-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtand
-
+ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
+
 
 ---
-# IIS-hitelesítés
+# <a name="iis-authentication"></a>IIS-hitelesítés
 Az Azure Multi-Factor Authentication-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és konfigurálhatja az IIS-hitelesítést a Microsoft IIS-webalkalmazásokkal való integrációra. Az Azure Multi-Factor Authentication-kiszolgáló egy beépülő modult telepít, amely képes szűrni az IIS-webkiszolgálónak küldött kéréseket az Azure Multi-Factor Authentication hozzáadása érdekében. Az IIS beépülő modul támogatja az űrlapalapú hitelesítést és az integrált Windows HTTP-hitelesítést. Ezenkívül a megbízható IP-címek konfigurálhatók úgy, hogy a belső IP-címek mentesüljenek kéttényezős hitelesítés alól.
 
 ![IIS-hitelesítés](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## Az űrlapalapú IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
+## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>Az űrlapalapú IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
 Űrlapalapú hitelesítést használó IIS-webalkalmazás védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az IIS-webkiszolgálón és konfigurálja a kiszolgálót a következő eljárásnak megfelelően.
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
@@ -39,7 +43,7 @@ Az Azure Multi-Factor Authentication-kiszolgáló IIS-hitelesítés szakaszában
 13. Miután a rendszer észlelte vagy megadta az URL-címet és az oldal változóit, a webhely adatai megjelennek az Űrlapalapú panelen.
 14. Tekintse meg az alábbi IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón című szakaszt az IIS-hitelesítés konfigurációjának befejezéséhez.
 
-## Integrált Windows IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
+## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>Integrált Windows IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
 Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az IIS-webkiszolgálón, és konfigurálja a kiszolgálót az alábbi eljárásnak megfelelően.
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
@@ -52,14 +56,14 @@ Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhe
 8. Kattintson az OK gombra.
 9. Tekintse meg az alábbi [IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) című szakaszt az IIS-hitelesítés konfigurációjának elvégzéséhez.
 
-## IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón
+## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón
 Miután konfigurálta az Űrlapalapú hitelesítés vagy a HTTP-hitelesítés URL-címeit és beállításait, ki kell választania a helyeket, ahol az Azure Multi-Factor Authentication IIS beépülő modulokat betölteni és engedélyezni szeretné az IIS-ben. Kövesse az alábbi eljárást:
 
 1. Ha az IIS 6-os verzióját futtatja, kattintson az ISAPI fülre, és válassza ki a webhelyet, amely alatt a webalkalmazás fut (például alapértelmezett webhely) az Azure Multi-Factor Authentication ISAPI-szűrő beépülő modul engedélyezéséhez a webhely esetében.
 2. Ha az IIS 7-es vagy újabb verzióját futtatja, kattintson a Natív modul fülre, és válassza ki a kiszolgálót, webhelye(ke)t vagy alkalmazás(oka)t az IIS beépülő modul engedélyezéséhez a kívánt szinte(ke)n.
 3. Kattintson az IIS-hitelesítés engedélyezése jelölőnégyzetre a képernyő tetején. Az Azure Multi-Factor Authentication mostantól biztosítja a kiválasztott IIS-alkalmazás védelmét. Győződjön meg arról, hogy importálta a felhasználókat a kiszolgálóra. Tekintse meg az alábbi Megbízható IP-címek szakaszt, ha a belső IP-címeket engedélyezési listára szeretné helyezni, hogy a kéttényezős hitelesítés végrehajtása ne legyen kötelező, amikor ezekről a helyszínekről jelentkezik be a webhelyre.
 
-## Megbízható IP-címek
+## <a name="trusted-ips"></a>Megbízható IP-címek
 A Megbízható IP-címek segítségével a felhasználók adott IP-címekről vagy alhálózatokról származó webhelykérések esetén kihagyhatják az Azure Multi-Factor Authenticationt. Például mentesítheti a felhasználókat az Azure Multi-Factor Authentication alól, ha az irodából jelentkeznek be. Ehhez az irodai alhálózatot Megbízható IP-címek bejegyzésként kell megadni. A Megbízható IP-címek konfigurálásához kövesse az alábbi eljárást:
 
 1. Az IIS-hitelesítés szakaszban kattintson a Megbízható IP-címek fülre.
@@ -67,6 +71,9 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 3. A Megbízható IP-címek hozzáadása párbeszédpanel megjelenésekor válassza az Egyetlen IP-cím, az IP-címtartomány vagy az Alhálózat választógombot.
 4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az OK gombra. Ezzel az engedélyezési lista hozzáadása megtörtént.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

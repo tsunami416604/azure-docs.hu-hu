@@ -1,44 +1,48 @@
 ---
-title: Create an internal load balancer using PowerShell in the classic deployment model | Microsoft Docs
-description: Learn how to create an internal load balancer using PowerShell in the classic deployment model
+title: "Belső terheléselosztó létrehozása a PowerShell használatával a klasszikus üzembehelyezési modellben | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre belső terheléselosztó a PowerShell használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ed28a11420d4bcc732801aea8d6217dbf14389d4
+
 
 ---
-# Get started creating an internal load balancer (classic) using PowerShell
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Bevezetés a belső terheléselosztó (klasszikus) PowerShell használatával történő létrehozásába
 [!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
 
-Learn how to [perform these steps using the Resource Manager model](load-balancer-get-started-ilb-arm-ps.md).
+Ismerje meg, [hogyan hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával](load-balancer-get-started-ilb-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## Create an internal load balancer set for virtual machines
-To create an internal load balancer set and the servers that will send their traffic to it, you have to do the following:
+## <a name="create-an-internal-load-balancer-set-for-virtual-machines"></a>Belső terheléselosztó készlet létrehozása a virtuális gépekhez
+Egy belső terheléselosztó készletnek, illetve azoknak a kiszolgálóknak a létrehozásához, amelyek a forgalmukat küldik rá, a következőket kell tennie:
 
-1. Create an instance of Internal Load Balancing that will be the endpoint of incoming traffic to be load balanced across the servers of a load-balanced set.
-2. Add endpoints corresponding to the virtual machines that will be receiving the incoming traffic.
-3. Configure the servers that will be sending the traffic to be load balanced to send their traffic to the virtual IP (VIP) address of the Internal Load Balancing instance.
+1. Hozzon létre egy belső terheléselosztási példányt, amely annak a bejövő forgalomnak a végpontja lesz, amelynek a terhelését el kell osztani az elosztott terhelésű készlet kiszolgálóin.
+2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat fogják kapni.
+3. Konfigurálja úgy a kiszolgálókat, amelyek a terheléselosztóra fogják küldeni a forgalmat, hogy azt a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
 
-### Step 1: Create an Internal Load Balancing instance
-For an existing cloud service or a cloud service deployed under a regional virtual network, you can create an Internal Load Balancing instance with the following Windows PowerShell commands:
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>1. lépés: Belső terheléselosztási példány létrehozása
+Egy meglévő felhőalapú szolgáltatás vagy egy regionális virtuális hálózat alatt üzembe helyezett felhőalapú szolgáltatás esetében a következő Windows PowerShell-parancsokkal hozhat létre belső terheléselosztási példányt:
 
     $svc="<Cloud Service Name>"
     $ilb="<Name of your ILB instance>"
@@ -48,10 +52,10 @@ For an existing cloud service or a cloud service deployed under a regional virtu
     Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
 
 
-Note that this use of the [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) Windows PowerShell cmdlet uses the DefaultProbe parameter set. For more information on additional parameter sets, see [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
+Vegye figyelembe, hogy az [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) Windows PowerShell-parancsmag ilyen használata a DefaultProbe paraméterkészletet használja. A további paraméterkészletekkel kapcsolatos további információkért lásd: [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### Step 2: Add endpoints to the Internal Load Balancing instance
-Here is an example:
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>2. lépés: Végpontok hozzáadása a belső terheléselosztási példányhoz
+Például:
 
     $svc="mytestcloud"
     $vmname="DB1"
@@ -64,45 +68,45 @@ Here is an example:
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 
 
-### Step 3: Configure your servers to send their traffic to the new Internal Load Balancing endpoint
-You have to  configure the servers whose traffic is going to be load balanced to use the new IP address (the VIP) of the Internal Load Balancing instance. This is the address on which the Internal Load Balancing instance is listening. In most cases, you need to just add or modify a DNS record for the VIP of the Internal Load Balancing instance.
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>3. lépés: A kiszolgálók konfigurálása, hogy a forgalmat az új belső terheléselosztási végpontra küldjék
+Azokat a kiszolgálókat, amelyeknek a forgalmán terheléselosztás történik, úgy kell konfigurálni, hogy a belső terheléselosztási példány új IP-címét (a VIP-címet) használják. Ez az a cím, amelyet a belső terheléselosztási példány figyel. A legtöbb esetben csak hozzá kell adnia egy DNS-rekordot a belső terheléselosztási példány VIP-címéhez, vagy módosítania kell a DNS-rekordot.
 
-If you specified the IP address during the creation of the Internal Load Balancing instance, you already have the VIP. Otherwise, you can see the VIP from the following commands:
+Ha a belső terheléselosztási példány létrehozása során adta meg az IP-címet, már rendelkezik a VIP-címmel. Ellenkező esetben a VIP-cím a következő parancsokkal tekinthető meg:
 
     $svc="<Cloud Service Name>"
     Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 
 
 
-To use these commands, fill in the values and remove the < and >. Here is an example:
+A parancsok használatához töltse ki az értékeket, és távolítsa el a < és a > karaktereket. Például:
 
     $svc="mytestcloud"
     Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 
 
-From the display of the Get-AzureInternalLoadBalancer command, note the IP address and make the necessary changes to your servers or DNS records to ensure that traffic gets sent to the VIP.
+A Get-AzureInternalLoadBalancer parancs kimenetéből írja fel az IP-címet, és végezze el a megfelelő változtatásokat a kiszolgálókon vagy a DNS-rekordokon annak a biztosítására, hogy a rendszer a VIP-címre küldje a forgalmat.
 
 > [!NOTE]
-> The Microsoft Azure platform uses a static, publicly routable IPv4 address for a variety of administrative scenarios. The IP address is 168.63.129.16. This IP address should not be blocked by any firewalls, because it can cause unexpected behavior.
-> With respect to Azure Internal Load Balancing, this IP address is used by monitoring probes from the load balancer to determine the health state for virtual machines in a load balanced set. If a Network Security Group is used to restrict traffic to Azure virtual machines in an internally load-balanced set or is applied to a Virtual Network Subnet, ensure that a Network Security Rule is added to allow traffic from 168.63.129.16.
+> A Microsoft Azure platform egy statikus, nyilvánosan irányítható IPv4-címet használ számos különböző felügyeleti forgatókönyvhöz. Az IP-cím a 168.63.129.16. Ezt az IP-címet nem blokkolhatja egy tűzfal sem, mert ez nem várt viselkedést okozhat.
+> Az Azure belső terheléselosztás esetében ezt az IP-címet használják a terheléselosztó figyelési mintavételezői az elosztott terhelésű készlet virtuális gépeinek állapotmeghatározásához. Ha egy belső elosztott terhelésű készletben hálózati biztonsági csoportot használnak az Azure virtuális gépekre irányuló forgalom korlátozásához, vagy egy virtuális alhálózaton alkalmazzák, győződjön meg arról, hogy a 168.63.129.16 címről érkező adatforgalom engedélyezéséhez felvettek egy hálózati biztonsági szabályt.
 > 
 > 
 
-## Example of internal load balancing
-To step you through the end-to end process of creating a load-balanced set for two example configurations, see the following sections.
+## <a name="example-of-internal-load-balancing"></a>Példa a belső terheléselosztásra
+A következő szakaszok lépésenként mutatják be egy elosztott terhelésű készlet létrehozásának teljes folyamatát két példakonfigurációhoz.
 
-### An Internet facing, multi-tier application
-You want to provide a load balanced database service for  a set of Internet-facing web servers. Both sets of servers are hosted in a single Azure cloud service. Web server traffic to TCP port 1433 must be distributed among two virtual machines in the database tier. Figure 1 shows the configuration.
+### <a name="an-internet-facing-multitier-application"></a>Az internetről elérhető, több rétegből álló alkalmazás
+Elosztott terhelésű adatbázis-szolgáltatást szeretne biztosítani internetről elérhető webkiszolgálók készlete számára. Mindkét kiszolgálókészletet ugyanaz az Azure felhőszolgáltatás üzemelteti. Az 1433-as TCP-portra irányuló webkiszolgálói forgalmat két virtuális gép között kell elosztani az adatbázisszinten. Az 1. ábra a konfigurációt mutatja.
 
-![Internal load-balanced set for the database tier](./media/load-balancer-internal-getstarted/IC736321.png)
+![Belső elosztott terhelésű készlet az adatbázisszint számára](./media/load-balancer-internal-getstarted/IC736321.png)
 
-The configuration consists of the following:
+A konfiguráció a következőket tartalmazza:
 
-* The existing cloud service hosting the virtual machines is named mytestcloud.
-* The two existing database servers are named DB1, DB2.
-* Web servers in the web tier connect to the database servers in the database tier by using the private IP address. Another option is to use your own DNS for the virtual network and manually register an A record for the internal load balancer set.
+* A meglévő felhőszolgáltatás neve, amely a virtuális gépeket üzemelteti, a mytestcloud.
+* A két meglévő adatbázis-kiszolgáló neve DB1 és DB2.
+* A webszint webkiszolgálói az adatbázisszint adatbázis-kiszolgálóihoz magánhálózati IP-címek használatával csatlakoznak. Egy másik megoldás saját DNS használata a virtuális hálózathoz, és A-rekord manuális regisztrálása a belső terheléselosztó készlethez.
 
-The following commands configure a new Internal Load Balancing instance named **ILBset** and add endpoints to the virtual machines corresponding to the two database servers:
+A következő parancsok **ILBset** néven egy új belső terheléselosztási példányt konfigurálnak, és a két adatbázis-kiszolgálóra vonatkozóan végpontokat adnak hozzá a virtuális gépekhez:
 
     $svc="mytestcloud"
     $ilb="ilbset"
@@ -120,47 +124,53 @@ The following commands configure a new Internal Load Balancing instance named **
     Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 
 
-## Remove an Internal Load Balancing configuration
-To remove a virtual machine as an endpoint from an internal load balancer instance, use the following commands:
+## <a name="remove-an-internal-load-balancing-configuration"></a>Belső terheléselosztási konfiguráció eltávolítása
+Használja a következő parancsokat a virtuális gép végpontként történő eltávolítására a belső terheléselosztási példányról:
 
     $svc="<Cloud service name>"
     $vmname="<Name of the VM>"
     $epname="<Name of the endpoint>"
     Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 
-To use these commands, fill in the values, removing the < and >.
+A parancsok használatához töltse ki az értékeket, a < és a > karaktert eltávolítva.
 
-Here is an example:
+Például:
 
     $svc="mytestcloud"
     $vmname="DB1"
     $epname="TCP-1433-1433"
     Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 
-To remove an internal load balancer instance from a cloud service, use the following commands:
+Belső terheléselosztási példány eltávolításához egy felhőszolgáltatásból használja a következő parancsokat:
 
     $svc="<Cloud service name>"
     Remove-AzureInternalLoadBalancer -ServiceName $svc
 
-To use these commands, fill in the value and remove the < and >.
+A parancsok használatához töltse ki az értékeket, és távolítsa el a < és a > karaktereket.
 
-Here is an example:
+Például:
 
     $svc="mytestcloud"
     Remove-AzureInternalLoadBalancer -ServiceName $svc
 
 
 
-## Additional information about internal load balancer cmdlets
-To obtain additional information about Internal Load Balancing cmdlets, run the following commands at a Windows PowerShell prompt:
+## <a name="additional-information-about-internal-load-balancer-cmdlets"></a>További információ a belső terheléselosztási parancsmagokról
+A belső terheléselosztási parancsmagokkal kapcsolatos további információkért futtassa a Windows PowerShell parancssorában a következő parancsokat:
 
 * Get-help New-AzureInternalLoadBalancerConfig -full
 * Get-help Add-AzureInternalLoadBalancer -full
 * Get-help Get-AzureInternalLoadbalancer -full
 * Get-help Remove-AzureInternalLoadBalancer -full
 
-## Next steps
-[Configure a load balancer distribution mode using source IP affinity](load-balancer-distribution-mode.md)
+## <a name="next-steps"></a>Következő lépések
+[A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

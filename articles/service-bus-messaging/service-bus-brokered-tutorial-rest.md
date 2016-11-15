@@ -1,12 +1,12 @@
 ---
-title: A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga | Microsoft Docs
-description: A felügyelt üzenettovábbítás REST oktatóanyaga.
+title: "A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga | Microsoft Docs"
+description: "A felügyelt üzenettovábbítás REST oktatóanyaga."
 services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9b7a8147-a1b1-42fc-b30e-f52e79a902b5
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45b72037e2de01b9201edf3e4ebee7e80d996383
+
 
 ---
 # <a name="service-bus-brokered-messaging-rest-tutorial"></a>A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga
@@ -22,7 +26,7 @@ ms.author: sethm
 Ez az oktatóanyag bemutatja, hogyan hozhat létre REST-alapú Azure Service Bus-üzenetsort, illetve témakört/előfizetést.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
-Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+Az első lépés egy szolgáltatásnévtér létrehozása, valamint egy [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és a SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -31,7 +35,7 @@ A Service Bus-üzenetsorok lehetővé teszik az üzenetek érkezési sorrendben 
 
 A jelen oktatóanyagban található kód a következőt hajtja végre.
 
-* A névtér és a [közös hozzáférésű jogosultságkód](../service-bus/service-bus-sas-overview.md) (SAS-) kulcs segítségével hozzáfér a Service Bus-névtér erőforrásaihoz.
+* A névtér és a [közös hozzáférésű jogosultságkód](service-bus-sas-overview.md) (SAS-) kulcs segítségével hozzáfér a Service Bus-névtér erőforrásaihoz.
 * Létrehoz egy üzenetsort, egy üzenetet küld az üzenetsorba, és kiolvassa az üzenetet az üzenetsorból.
 * Létrehoz egy üzenettémakört, egy előfizetést az üzenettémára, majd elküldi és kiolvassa az üzenetet az előfizetésből.
 * A Service Bustól lekéri az üzenetsorra, az üzenettémakörre és az előfizetésre vonatkozó összes információt, beleértve az előfizetési szabályokat.
@@ -139,7 +143,7 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
 ## <a name="create-management-credentials"></a>Felügyeleti hitelesítő adatok létrehozása
 A következő lépés egy olyan metódus megírása, amely feldolgozza az előző lépésben megadott névteret és SAS-kulcsot, és egy SAS-jogkivonatot ad vissza. Ez a példa egy egy órán keresztül érvényes SAS-jogkivonatot hoz létre.
 
-### <a name="create-a-getsastoken()-method"></a>GetSASToken() metódus létrehozása
+### <a name="create-a-getsastoken-method"></a>GetSASToken() metódus létrehozása
 Illessze be a következő kódot a(z) `Main()` metódus után, a(z) `Program` osztályon belül:
 
 ```
@@ -594,9 +598,12 @@ namespace Microsoft.ServiceBus.Samples
 További információért lásd a következő cikkeket:
 
 * [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
-* [A Service Bus alapjai](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus Relay REST tutorial](../service-bus-relay/service-bus-relay-rest-tutorial.md) (A Service Bus relay REST-oktatóanyaga)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

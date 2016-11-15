@@ -1,20 +1,24 @@
 ---
-title: Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel | Microsoft Docs
-description: Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel
+title: "Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel | Microsoft Docs"
+description: "Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel"
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7bb03323-8bcc-4ee4-9a3e-144ca6d644e2
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 10/18/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+
 
 ---
 # <a name="create-a-windows-virtual-machine-scale-set-using-azure-powershell"></a>Windowsos virtuálisgép-méretezési csoport létrehozása az Azure PowerShell-lel
@@ -22,41 +26,18 @@ Ezek a lépések behelyettesítésen alapuló megközelítéssel hoznak létre e
 
 A cikkben található lépések elvégzése nagyjából 30 percet vesz igénybe.
 
-## <a name="step-1:-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
+## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
 Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
 
-## <a name="step-2:-create-resources"></a>2. lépés: Erőforrások létrehozása
+## <a name="step-2-create-resources"></a>2. lépés: Erőforrások létrehozása
 Hozza létre az új méretezési csoporthoz szükséges erőforrásokat.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 A virtuálisgép-méretezési csoportoknak egy erőforráscsoporton belül kell lenniük.
 
-1. Kérjen le egy listát az összes elérhető helyről és támogatott szolgáltatásról:
+1. Szerezzen be egy listát az összes olyan elérhető helyről, ahol erőforrásokat helyezhet el:
    
-        Get-AzureLocation | Sort Name | Select Name, AvailableServices
-   
-    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
-   
-        Name                AvailableServices
-        ----                -----------------
-        Australia East      {Compute, Storage, PersistentVMRole, HighMemory}
-        Australia Southeast {Compute, Storage, PersistentVMRole, HighMemory}
-        Brazil South        {Compute, Storage, PersistentVMRole, HighMemory}
-        Central India       {Compute, Storage, PersistentVMRole, HighMemory}
-        Central US          {Compute, Storage, PersistentVMRole, HighMemory}
-        East Asia           {Compute, Storage, PersistentVMRole, HighMemory}
-        East US             {Compute, Storage, PersistentVMRole, HighMemory}
-        East US 2           {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan East          {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan West          {Compute, Storage, PersistentVMRole, HighMemory}
-        North Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        North Europe        {Compute, Storage, PersistentVMRole, HighMemory}
-        South Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        South India         {Compute, Storage, PersistentVMRole, HighMemory}
-        Southeast Asia      {Compute, Storage, PersistentVMRole, HighMemory}
-        West Europe         {Compute, Storage, PersistentVMRole, HighMemory}
-        West India          {Compute, Storage, PersistentVMRole, HighMemory}
-        West US             {Compute, Storage, PersistentVMRole, HighMemory}
+        Get-AzureLocation | Sort Name | Select Name
 2. Válassza ki az Ön számára legalkalmasabb helyet, cserélje le a **$locName** értéket a hely nevére, majd hozza létre a következő változót:
    
         $locName = "location name from the list, such as Central US"
@@ -132,36 +113,6 @@ A méretezési csoportban található virtuális gépekhez szükséges egy virtu
 4. Virtuális hálózat létrehozása:
    
         $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-### <a name="public-ip-address"></a>Nyilvános IP-cím
-Egy hálózati adapter létrehozása előtt létre kell hoznia egy nyilvános IP-címet.
-
-1. Cserélje le a **$domName** értéket a nyilvános IP-címével használni kívánt tartománynév-címkére, majd hozza létre a következő változót:  
-   
-        $domName = "domain name label"
-   
-    A címke csak betűket, számokat és kötőjeleket tartalmazhat (az utolsó karakternek betűnek vagy számnak kell lennie).
-2. Ellenőrizze, hogy a név egyedi-e:
-   
-        Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
-   
-    Ha a válasz **Igaz** eredményt ad, a választott név egyedi.
-3. Cserélje le a **$pipName** értéket a használni kívánt nyilvános IP-cím nevére, majd hozza létre a változót. 
-   
-        $pipName = "public ip address name"
-4. Nyilvános IP-cím létrehozása:
-   
-        $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
-
-### <a name="network-interface"></a>Hálózati illesztő
-Most, hogy már rendelkezik a nyilvános IP-címmel, létrehozhatja a hálózati adaptert.
-
-1. Cserélje le a **$nicName** értéket a hálózati adapter kívánt nevére, majd hozza létre a következő változót: 
-   
-        $nicName = "network interface name"
-2. Hálózati adapter létrehozása:
-   
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
 ### <a name="configuration-of-the-scale-set"></a>A méretezési csoport konfigurálása
 Minden erőforrás rendelkezésre áll a méretezési csoport konfigurálásához, így most már létrehozhatja.  
@@ -253,7 +204,7 @@ Végül létrehozhatja a méretezési csoportot.
         Location              : centralus
         Tags                  :
 
-## <a name="step-3:-explore-resources"></a>3. lépés: Erőforrások vizsgálata
+## <a name="step-3-explore-resources"></a>3. lépés: Erőforrások vizsgálata
 Ezekkel az erőforrásokkal megvizsgálhatja a létrehozott virtuálisgép-méretezési csoportot:
 
 * Azure Portal – A portál használatával elérhető korlátozott mennyiségű információ.
@@ -271,6 +222,9 @@ Ezekkel az erőforrásokkal megvizsgálhatja a létrehozott virtuálisgép-mére
 * Az [Automatikus méretezés és virtuálisgép-méretezési csoportok](virtual-machine-scale-sets-autoscale-overview.md) című dokumentumban foglalt információk alapján beállíthatja a méretezési csoport automatikus méretezését
 * További információ a vertikális skálázásáról: [Vertikális automatikus méretezés a virtuálisgép-méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

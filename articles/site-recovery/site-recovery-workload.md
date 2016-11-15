@@ -1,12 +1,12 @@
 ---
-title: Milyen számítási feladatokat tud védeni az Azure Site Recovery?
-description: Az Azure Site Recovery a helyszíni virtuális gépek és a fizikai kiszolgálók Azure-ba vagy egy másodlagos helyszíni helyre történő replikálásának, feladatátvételének és helyreállításának koordinálásával képes védelmet nyújtani a számítási feladatok és alkalmazások számára.
+title: "Milyen számítási feladatokat tud védeni az Azure Site Recovery?"
+description: "Az Azure Site Recovery a helyszíni virtuális gépek és a fizikai kiszolgálók Azure-ba vagy egy másodlagos helyszíni helyre történő replikálásának, feladatátvételének és helyreállításának koordinálásával képes védelmet nyújtani a számítási feladatok és alkalmazások számára."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: cfreeman
-editor: ''
-
+editor: 
+ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/10/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ddeadcf741eb099f7c14a554dd4f31561a408aa1
+
 
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery?"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
+# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 Ez a cikk az Azure Site Recoveryvel replikálható számítási feladatokat és alkalmazásokat írja le.
 
 Megjegyzéseit vagy kérdéseit a cikk alján, vagy az [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti fel.
@@ -28,7 +32,7 @@ Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recover
 
 A Site Recovery számos Microsoft-alkalmazással (például SharePoint, Exchange, Dynamics, SQL Server és Active Directory) képes együttműködni. A Microsoft továbbá szorosan együttműködik az olyan vezető szállítókkal, mint az Oracle, a SAP, az IBM vagy a Red Hat. A replikációs megoldásokat alkalmazásonként szabhatja testre.
 
-## <a name="why-use-site-recovery-for-application-replication?"></a>Miért előnyös a Site Recovery használata az alkalmazásreplikációhoz?
+## <a name="why-use-site-recovery-for-application-replication"></a>Miért előnyös a Site Recovery használata az alkalmazásreplikációhoz?
 A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelemhez és helyreállításhoz:
 
 * Alkalmazásfüggetlen, így egy támogatott gépen futó bármilyen számítási feladatok replikációját biztosítja.
@@ -129,6 +133,9 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az SAP véd
 ## <a name="next-steps"></a>Következő lépések
 [Készüljön fel a Site Recovery üzembe helyezésére](site-recovery-best-practices.md) 
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

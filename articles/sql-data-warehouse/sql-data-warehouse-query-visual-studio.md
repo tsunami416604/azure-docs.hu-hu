@@ -1,92 +1,97 @@
 ---
-title: Query Azure SQL Data Warehouse (Visual Studio) | Microsoft Docs
-description: Query SQL Data Warehouse with Visual Studio.
+title: "Az Azure SQL Data Warehouse lekérdezése (Visual Studio) | Microsoft Docs"
+description: "Az SQL Data Warehouse lekérdezése a Visual Studióval."
 services: sql-data-warehouse
 documentationcenter: NA
-author: sonyam
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: daace889-95e5-4826-b2fc-047eac9d6d95
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/16/2016
-ms.author: sonyama;barbkess
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
+
 
 ---
-# Query Azure SQL Data Warehouse (Visual Studio)
+# <a name="query-azure-sql-data-warehouse-visual-studio"></a>Az Azure SQL Data Warehouse lekérdezése (Visual Studio)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-Use Visual Studio to query Azure SQL Data Warehouse in just a few minutes. This method uses the SQL Server Data Tools (SSDT) extension in Visual Studio. 
+A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL Data Warehouse-t. Ez a módszer a Visual Studio SQL Server Data Tools (SSDT) bővítményét használja. 
 
-## Prerequisites
-To use this tutorial, you need:
+## <a name="prerequisites"></a>Előfeltételek
+Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* An existing SQL data warehouse. To create one, see [Create a SQL Data Warehouse][Create a SQL Data Warehouse].
-* SSDT for Visual Studio. If you have Visual Studio, you probably already have this. For installation instructions and options, see [Installing Visual Studio and SSDT][Installing Visual Studio and SSDT].
-* The fully qualified SQL server name. To find this, see [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse].
+* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][SQL Data Warehouse létrehozása] című cikkben találja.
+* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése][A Visual Studio és az SSDT telepítése] című cikkben olvashat bővebben.
+* Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Csatlakozás az SQL Data Warehouse-hoz][Csatlakozás az SQL Data Warehouse-hoz] című cikket.
 
-## 1. Connect to your SQL Data Warehouse
-1. Open Visual Studio 2013 or 2015.
-2. Open SQL Server Object Explorer. To do this, select **View** > **SQL Server Object Explorer**.
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
+1. Nyissa meg a Visual Studio 2013-at vagy 2015-öt.
+2. Nyissa meg az SQL Server Object Explorert. Ehhez válassza a következőket: **View** (Nézet)  > **SQL Server Object Explorer**.
    
     ![SQL Server Object Explorer][1]
-3. Click the **Add SQL Server** icon.
+3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
    
-    ![Add SQL Server][2]
-4. Fill in the fields in the Connect to Server window.
+    ![SQL Server hozzáadása][2]
+4. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.
    
-    ![Connect to Server][3]
+    ![Csatlakozás kiszolgálóhoz][3]
    
-   * **Server name**. Enter the **server name** previously identified.
-   * **Authentication**. Select **SQL Server Authentication** or **Active Directory Integrated Authentication**.
-   * **User Name** and **Password**. Enter user name and password if SQL Server Authentication was selected above.
-   * Click **Connect**.
-5. To explore, expand your Azure SQL server. You can view the databases associated with the server. Expand AdventureWorksDW to see the tables in your sample database.
+   * **Kiszolgálónév**. Adja meg a korábban azonosított **kiszolgálónevet**.
+   * **Hitelesítés**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
+   * **Felhasználónév** és **Jelszó**. Amennyiben az SQL Server-hitelesítést választotta, adja meg felhasználónevét és jelszavát.
+   * Kattintson a **Csatlakozás** gombra.
+5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
    
-    ![Explore AdventureWorksDW][4]
+    ![Az AdventureWorksDW áttekintése][4]
 
-## 2. Run a sample query
-Now that a connection has been established to your database, let's write a query.
+## <a name="2-run-a-sample-query"></a>2. Mintalekérdezés futtatása
+Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekérdezést.
 
-1. Right-click your database in SQL Server Object Explorer.
-2. Select **New Query**. A new query window opens.
+1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
+2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
    
-    ![New query][5]
-3. Copy this TSQL query into the query window:
+    ![Új lekérdezés][5]
+3. Másolja be ezt a TSQL-lekérdezést a lekérdezési ablakba:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Run the query. To do this, click the green arrow or use the following shortcut: `CTRL`+`SHIFT`+`E`.
+4. Futtassa a lekérdezést. Ehhez kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL`+`SHIFT`+`E`.
    
-    ![Run query][6]
-5. Look at the query results. In this example, the FactInternetSales table has 60398 rows.
+    ![A lekérdezés futtatása][6]
+5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.
    
-    ![Query results][7]
+    ![Lekérdezés eredményei][7]
 
-## Next steps
-Now that you can connect and query, try [visualizing the data with PowerBI][visualizing the data with PowerBI].
+## <a name="next-steps"></a>Következő lépések
+Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, következhet [az adatok megjelenítése a PowerBI használatával][az adatok megjelenítése a PowerBI használatával].
 
-To configure your environment for Azure Active Directory authentication, see [Authenticate to SQL Data Warehouse][Authenticate to SQL Data Warehouse].
+A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg a [Hitelesítés az SQL Data Warehouse-ban][Hitelesítés az SQL Data Warehouse-ban] című cikket.
 
 <!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
+[Csatlakozás az SQL Data Warehouse-hoz]: sql-data-warehouse-connect-overview.md
+[SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
+[A Visual Studio és az SSDT telepítése]: sql-data-warehouse-install-visual-studio.md
+[Hitelesítés az SQL Data Warehouse-ban]: sql-data-warehouse-authentication.md
+[az adatok megjelenítése a PowerBI használatával]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -100,6 +105,6 @@ To configure your environment for Azure Active Directory authentication, see [Au
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

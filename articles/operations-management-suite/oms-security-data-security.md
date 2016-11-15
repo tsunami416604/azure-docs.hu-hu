@@ -1,12 +1,12 @@
 ---
-title: Operations Management Suite Security and Audit Solution Data Security | Microsoft Docs
-description: This document explains how data is managed and safeguarded in Operations Management Suite Security and Audit Solution.
+title: "Adatbiztonság az Operations Management Suite biztonsági és auditálási megoldásban | Microsoft Docs"
+description: "Ez a dokumentum azt ismerteti, hogyan zajlik az adatok kezelése az Operations Management Suite biztonsági és auditálási megoldásban."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 9cdf7deb-2a30-4672-b89f-71179ee8326a
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -14,46 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d81d3ff9c91d0056c69f5f190d3dfaa507c1e340
+
 
 ---
-# Operations Management Suite Security and Audit solution data security
-To help customers prevent, detect, and respond to threats, [Operations Management Suite  (OMS) Security and Audit Solution](operations-management-suite-overview.md) collects and processes data about your resources, which includes:
+# <a name="operations-management-suite-security-and-audit-solution-data-security"></a>Adatbiztonság az Operations Management Suite biztonsági és auditálási megoldásban
+Annak érdekében, hogy segítse az ügyfeleket a fenyegetések kiküszöbölésében, felderítésében, illetve a rájuk való válaszadásban, az [Operations Management Suite (OMS) biztonsági és auditálási megoldás](operations-management-suite-overview.md) adatokat gyűjt, illetve dolgoz fel az Ön erőforrásairól, többek között a következőkről:
 
-* Security event log
-* Event Tracing for Windows (ETW) events
-* AppLocker auditing events
-* Windows Firewall log
-* Advanced Threat Analytics events
-* Results of baseline assessment
-* Results of antimalware assessment
-* Results of update/patch assessment
-* Syslogs streams that are explicitly enabled on the agent
+* Biztonsági eseménynapló
+* A Windows esemény-nyomkövetés (ETW) eseményei
+* AppLocker naplózási események
+* A Windows tűzfal naplója
+* Advanced Threat Analytics-események
+* A biztonsági alapkonfiguráció értékelése
+* Kártevőirtó-felmérés eredménye
+* Frissítések/javítások felmérésének eredménye
+* Az ügynökön kifejezetten engedélyezett Syslogs-streamek
 
-We make strong commitments to protect the privacy and security of this data. Microsoft adheres to strict compliance and security guidelines—from coding to operating a service.
-This article explains how data is managed and safeguarded in OMS Security and Audit Solution.
+Fontos kötelességünknek tekintjük ezen adatok védelmét és biztonságát. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
+Ez a cikk bemutatja, hogyan kezeli az OMS biztonsági és auditálási megoldás az adatokat, illetve hogyan gondoskodik a védelmükről.
 
-## Data sources
-OMS Security and Audit Solution analyze data from your Virtual Machines and physical computers where the OMS Agent is installed. OMS Security and Audit Solution can collect configuration information about security events, such as Windows event, audit logs, IIS logs and syslog messages. Examples of such data are: operating system type and version, running processes, machine name, IP addresses, logged in user, and tenant ID.  
+## <a name="data-sources"></a>Adatforrások
+Az OMS biztonsági és auditálási megoldás elemzi azokról a virtuális gépekről és fizikai számítógépekről származó adatokat, amelyekre telepítve van az OMS-ügynök. Az OMS biztonsági és auditálási megoldás konfigurációs információkat gyűjthet a biztonsági eseményekről, például a Windows-eseményekről, az auditnaplókról, az IIS-naplókról és a syslog-üzenetekről. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója.  
 
-## Data protection
-**Data segregation**: Data is kept logically separate on each component throughout the service. All data is tagged per organization. This tagging persists throughout the data lifecycle, and it is enforced at each layer of the service. 
+## <a name="data-protection"></a>Adatvédelem
+**Az adatok elkülönítése**: az adatok logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. 
 
-**Data access**: To provide security recommendations and investigate potential security threats, Microsoft personnel may access information collected or analyzed by services. We adhere to the [Microsoft Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) and [Privacy Statement](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx), which state that Microsoft will not use Customer Data or derive information from it for any advertising or similar commercial purposes. To provide security recommendations and investigate potential security threats, Microsoft personnel may access information collected or analyzed by services. We only use Customer Data as needed to provide you with Azure services, including purposes compatible with providing those services. You retain all rights to your own data.
+**Hozzáférés az adatokhoz**: a biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása érdekében a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által összegyűjtött vagy elemzett információkhoz. Betartjuk a [Microsoft Online Services](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) és az [adatvédelmi nyilatkozat](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx) feltételeit, amelyek szerint a Microsoft nem használja fel az ügyféladatokat, és nem veszi igénybe azokat hirdetési vagy hasonló kereskedelmi célokra. A biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása érdekében a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által összegyűjtött vagy elemzett információkhoz. Az ügyféladatokat szükség esetén csak arra használjuk, hogy biztosítsuk Önnek az Azure-szolgáltatásokat, beleértve a szolgáltatások nyújtásának megfelelő célokat is. A saját adataihoz fűződő összes jog az Ön tulajdonában marad.
 
-**Data use**: Microsoft uses patterns and threat intelligence seen across multiple tenants to enhance our prevention and detection capabilities; we do so in accordance with the privacy commitments described in our [Privacy Statement](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Az adatok felhasználása**: a Microsoft a különböző bérlőknél észlelt mintákat és fenyegetésre vonatkozó intelligenciát használ a megelőzési és észlelési funkcióihoz, és ezt az [adatvédelmi nyilatkozatában](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx) ismertetett adatvédelmi kötelezettségeinek megfelelően teszi.
 
 > [!NOTE]
-> Data location is configured at the OMS workspace level, during the workspace creation, which is part of the initial OMS Security and Audit configuration process.
+> Az adatok helye az OMS-munkaterület szintjén állítható be a munkaterület létrehozása során, az OMS biztonsági és auditálási megoldás kezdeti konfigurációs folyamatának részeként.
 > 
 > 
 
-## See also
-In this document, you learned how data is managed and safeguarded in OMS. To learn more about OMS Security and Audit solution, see:
+## <a name="see-also"></a>Lásd még:
+Ebből a dokumentumból megtudta, hogyan kezeli az OMS az adatokat, és hogyan gondoskodik a védelmükről. Ha többet szeretne megtudni az OMS biztonsági és a naplózási megoldásról, tekintse meg a következő cikkeket:
 
-* [Operations Management Suite (OMS) overview](operations-management-suite-overview.md)
-* [Monitoring and Responding to Security Alerts in Operations Management Suite Security and Audit Solution](oms-security-responding-alerts.md)
-* [Monitoring Resources in Operations Management Suite Security and Audit Solution](oms-security-monitoring-resources.md)
+* [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
+* [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
+* [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Excel csatlakoztatása SQL Database adatbázishoz| Microsoft Docs
-description: Útmutató a Microsoft Excel Azure SQL adatbázishoz való csatlakoztatásához a felhőben. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+title: "Excel csatlakoztatása SQL Database adatbázishoz| Microsoft Docs"
+description: "Útmutató a Microsoft Excel Azure SQL adatbázishoz való csatlakoztatásához a felhőben. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez."
 services: sql-database
-keywords: excel csatlakoztatása sql-hez, adatok importálása excelbe
-documentationcenter: ''
+keywords: "excel csatlakoztatása sql-hez, adatok importálása excelbe"
+documentationcenter: 
 author: joseidz
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 906924bc-2707-48d3-bac6-397976a0409d
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/05/2016
 ms.author: joseidz
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3a0f9501760ba3ea97341d30cd706c971c826430
+
 
 ---
-# SQL Database oktatóanyag: Excel csatlakoztatása Azure SQL adatbázishoz és jelentés létrehozása
+# <a name="sql-database-tutorial-connect-excel-to-an-azure-sql-database-and-create-a-report"></a>SQL Database oktatóanyag: Excel csatlakoztatása Azure SQL adatbázishoz és jelentés létrehozása
 > [!div class="op_single_selector"]
 > * [Visual Studio](sql-database-connect-query.md)
 > * [SSMS](sql-database-connect-query-ssms.md)
@@ -31,7 +35,7 @@ Ezekhez a műveletekhez szükség van egy Azure SQL-adatbázisra. Ha nincs ilyen
 
 Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](https://products.office.com/en-US/) verziót vettük alapul.
 
-## Excel csatlakoztatása SQL-adatbázishoz és ODC-fájl létrehozása
+## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>Excel csatlakoztatása SQL-adatbázishoz és ODC-fájl létrehozása
 1. Az Excel SQL-adatbázishoz való csatlakoztatásához nyissa meg az Excelt, majd hozzon létre egy új munkafüzetet, vagy nyisson meg egy meglévő Excel-munkafüzetet.
 2. Az oldal tetején található menüsávon kattintson az **Adatok**, majd az**Egyéb forrásokból származó**, majd az**SQL szerverről származó** lehetőségre.
    
@@ -58,7 +62,7 @@ Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](
    
     Megjelenik az **Adatimportálás** párbeszédpanel.
 
-## Adatok importálása Excelbe és kimutatásdiagram létrehozása
+## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Adatok importálása Excelbe és kimutatásdiagram létrehozása
 Most, hogy létrehozta a kapcsolatot és az adatokat, illetve kapcsolatadatokat tartalmazó fájlt, az adatok importálása következik.
 
 1. Az **Adatok importálása** párbeszédpanelen kattintson az adatok munkalapon történő megjelenítéséhez használni kívánt beállításra, majd kattintson az **OK** gombra. Válassza a **Kimutatásdiagram** lehetőséget. Az **Új munkalap**kiválasztásával új munkalapot is létrehozhat, vagy választhatja az **Adatok hozzáadása adatmodellhez** beállítást is. Az adatmodellekről további információkat az [Adatmodell létrehozása Excelben](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B) részben talál. Kattintson a **Tulajdonságok** lehetőségre az előző lépésben létrehozott ODC-fájllal kapcsolatos információkért és az adatfrissítés beállításainak kiválasztásáért.
@@ -76,11 +80,14 @@ Most, hogy létrehozta a kapcsolatot és az adatokat, illetve kapcsolatadatokat 
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Kapcsolódás az SQL Database adatbázishoz az SQL Server Management Studio használatával](sql-database-connect-query-ssms.md) speciális lekérdezés és elemzés céljából.
 * Tudjon meg többet a [rugalmas készletek](sql-database-elastic-pool.md) előnyeiről.
 * [A háttérben SQL Database adatbázishoz kapcsolódó webalkalmazás létrehozása](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

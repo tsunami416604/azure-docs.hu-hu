@@ -1,12 +1,12 @@
 ---
-title: PlayReady és/vagy Widevine Dynamic Common Encryption használata | Microsoft Docs
-description: A Microsoft Azure Media Services lehetővé teszi, hogy MPEG-DASH, Smooth Streaming vagy HTTP-Live-Streaming (HLS) típusú streamjeit Microsoft PlayReady DRM-védelemmel lássa el. Ezenfelül Widevine DRM-védelemmel ellátott DASH-továbbítást is kínál. Ez a témakör bemutatja, hogyan állíthat be dinamikus titkosítást a PlayReady vagy a Widevine DRM segítségével.
+title: "PlayReady és/vagy Widevine Dynamic Common Encryption használata | Microsoft Docs"
+description: "A Microsoft Azure Media Services lehetővé teszi, hogy MPEG-DASH, Smooth Streaming vagy HTTP-Live-Streaming (HLS) típusú streamjeit Microsoft PlayReady DRM-védelemmel lássa el. Ezenfelül Widevine DRM-védelemmel ellátott DASH-továbbítást is kínál. Ez a témakör bemutatja, hogyan állíthat be dinamikus titkosítást a PlayReady vagy a Widevine DRM segítségével."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/27/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 59c0b46015b3d112d17dd79a2a4bfd3b3165dfba
+
 
 ---
-# A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata
+# <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-drm.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -41,10 +45,10 @@ Ez a témakör azon fejlesztők számára lehet hasznos, akik többféle DRM-mel
 > 
 > 
 
-## Minta letöltése
+## <a name="download-sample"></a>Minta letöltése
 A cikkben leírt mintát [innen](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) töltheti le.
 
-## A Dynamic Common Encryption és DRM-licenctovábbítási szolgáltatások konfigurálása
+## <a name="configuring-dynamic-common-encryption-and-drm-license-delivery-services"></a>A Dynamic Common Encryption és DRM-licenctovábbítási szolgáltatások konfigurálása
 A következőkben általános lépéseket olvashat, amelyeket el kell végeznie ahhoz, hogy PlayReady-védelemmel lássa el objektumait a Media Services licenctovábbítási szolgáltatása, valamint a dinamikus titkosítás használata mellett.
 
 1. Hozzon létre egy objektumot, és töltse fel a fájlokat az objektumba.
@@ -68,32 +72,32 @@ Az alábbi képen a fentiekben leírt munkafolyamatot láthatja. Itt a tokenes h
 
 A témakör további részében részletes magyarázatokat, kódmintákat és olyan témakörökre mutató hivatkozásokat talál, amelyek segítenek elérni a fent leírt célokat.
 
-## Aktuális korlátozások
+## <a name="current-limitations"></a>Aktuális korlátozások
 Objektumtovábbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell az ahhoz tartozó lokátort (ha van), majd létre kell hoznia egy új lokátort.
 
 Az Azure Media Services szolgáltatással végzett Widevine-titkosításra vonatkozó korlátozások: a funkció jelenleg nem támogatja több tartalomkulcs használatát.
 
-## Objektum létrehozása, majd fájlok feltöltése az objektumba
+## <a name="create-an-asset-and-upload-files-into-the-asset"></a>Objektum létrehozása, majd fájlok feltöltése az objektumba
 A videók kezeléséhez, kódolásához és streameléséhez először fel kell töltenie tartalmait a Microsoft Azure Media Services szolgáltatásba. A feltöltést követően tartalmai a biztonságos felhőtárhelyre kerülnek további feldolgozás és streamelés céljából.
 
 További információk: [Upload Files into a Media Services account](media-services-dotnet-upload-files.md) (Fájlok feltöltése a Media Services-fiókba).
 
-## A fájlt tartalmazó objektum kódolása az adaptív sávszélességű MP4 típusú beállításkészlettel
+## <a name="encode-the-asset-containing-the-file-to-the-adaptive-bitrate-mp4-set"></a>A fájlt tartalmazó objektum kódolása az adaptív sávszélességű MP4 típusú beállításkészlettel
 A dinamikus titkosítás segítségével mindössze egy többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektumot kell létrehoznia. Ezt követően az igényalapú streamelési kiszolgáló a jegyzékfájlban és a töredékkérésben megadott formátumnak megfelelően gondoskodik arról, hogy a rendszer a kiválasztott protokollal biztosítsa a streamet az Ön számára. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ. További információkért lásd a [Dynamic Packaging Overview](media-services-dynamic-packaging-overview.md) (A dinamikus becsomagolás áttekintése) című témakört.
 
 A kódolással kapcsolatos utasításokért lásd: [How to encode an asset using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) (Objektum kódolása a Media Encoder Standard használatával).
 
-## <a id="create_contentkey"></a>Tartalomkulcs létrehozása, majd a kódolt objektumhoz való társítása
+## <a name="a-idcreatecontentkeyacreate-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Tartalomkulcs létrehozása és társítása a kódolt objektumhoz
 A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítására használható kulcsot.
 
 További információk: [Create content key](media-services-dotnet-create-contentkey.md) (Tartalomkulcs létrehozása).
 
-## <a id="configure_key_auth_policy"></a>A tartalomkulcs hitelesítési szabályzatának konfigurálása
+## <a name="a-idconfigurekeyauthpolicyaconfigure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>A tartalomkulcs engedélyezési házirendjének konfigurálása
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. Ahhoz, hogy az ügyfél (a lejátszó) megkaphassa a kulcsot, Önnek be kell állítania a tartalomkulcs-hitelesítési szabályzatot, amelynek az ügyfélnek meg kell felelnie. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások.
 
 További információk: [A tartalomkulcs hitelesítési szabályzatának létrehozása](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption).
 
-## <a id="configure_asset_delivery_policy"></a>Objektumtovábbítási szabályzat konfigurálása
+## <a name="a-idconfigureassetdeliverypolicyaconfigure-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>Objektumtovábbítási szabályzat konfigurálása
 Konfigurálja az objektum továbbítási szabályzatát. Az objektumtovábbítási szabályzat konfigurálásához többek között az alábbiak tartoznak:
 
 * A DRM-licenckérési URL-cím. 
@@ -102,7 +106,7 @@ Konfigurálja az objektum továbbítási szabályzatát. Az objektumtovábbítá
 
 További információk: [Objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a id="create_locator"></a>OnDemand-lokátor létrehozása a streamelési URL-cím lekérése érdekében
+## <a name="a-idcreatelocatoracreate-an-ondemand-streaming-locator-in-order-to-get-a-streaming-url"></a><a id="create_locator"></a>OnDemand-lokátor létrehozása a streamelési URL-cím lekérése érdekében
 A felhasználók rendelkezésére kell bocsátania a Smooth, DASH vagy HLS streamelési URL-címét.
 
 > [!NOTE]
@@ -112,7 +116,7 @@ A felhasználók rendelkezésére kell bocsátania a Smooth, DASH vagy HLS strea
 
 További információk az objektumok közzétételéről és a streamelési URL-cím létrehozásáról: [Build a streaming URL](media-services-deliver-streaming-content.md) (Streamelési URL-cím létrehozása).
 
-## Tesztjogkivonat lekérése
+## <a name="get-a-test-token"></a>Tesztjogkivonat lekérése
 Kérje le a kulcshitelesítési szabályzatban használt jogkivonat-korlátozásoknak megfelelő tesztjogkivonatot.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -129,7 +133,7 @@ Kérje le a kulcshitelesítési szabályzatban használt jogkivonat-korlátozás
 
 A stream kipróbálásához használja az [AMS-lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-## <a id="example"></a>Példa
+## <a name="a-idexampleaexample"></a><a id="example"></a>Példa
 Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media Services SDK for .Net 3.5.2-es verziója vezetett be (azaz a funkciót, amelynek segítségével Widevine-licencsablon állítható be, majd a Widevine-licenc lekérhető az Azure Media Services szolgáltatásból). A csomag telepítéséhez az alábbi Nuget-csomagparancsot használtuk:
 
     PM> Install-Package windowsazure.mediaservices -Version 3.5.2
@@ -306,7 +310,7 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
 
                     ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
                     encodeTask.InputAssets.Add(inputAsset);
-                    encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset),    AssetCreationOptions.StorageEncrypted);
+                    encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset),     AssetCreationOptions.StorageEncrypted);
 
                     job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
                     job.Submit();
@@ -600,21 +604,24 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
         }
 
 
-## Következő lépés
+## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Visszajelzés küldése
+## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Lásd még
-[CENC with Multi-DRM and Access Control (CNEC többszörös DRM-mel és hozzáférés-vezérléssel)](media-services-cenc-with-multidrm-access-control.md)
+## <a name="see-also"></a>Lásd még:
+[CENC with Multi-DRM and Access Control](media-services-cenc-with-multidrm-access-control.md) (CENC többszörös DRM-mel és hozzáférés-vezérléssel)
 
-[Configure Widevine packaging with AMS (Widevine-csomagolás konfigurálása az AMS-szel)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
+[Configure Widevine packaging with AMS](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services) (Widevine-csomagolás konfigurálása az AMS-szel)
 
-[Announcing Google Widevine license delivery services in Azure Media Services (A Google Widevine-licenctovábbítási szolgáltatás megjelenése az Azure Media Services szolgáltatásban)](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+[Announcing Google Widevine license delivery services in Azure Media Services](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/) (A Google Widevine-licenctovábbítási szolgáltatás megjelenése az Azure Media Services-ben)
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
