@@ -1,26 +1,30 @@
 ---
-title: Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával | Microsoft Docs
-description: Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések Android-eszközökre történő küldéséhez.
+title: "Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával | Microsoft Docs"
+description: "Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések Android-eszközökre történő küldéséhez."
 services: notification-hubs
 documentationcenter: android
-keywords: leküldéses értesítések,leküldéses értesítés,android leküldéses értesítés
-author: wesmc7777
+keywords: "leküldéses értesítések,leküldéses értesítés,android leküldéses értesítés"
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/05/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
+
 
 ---
-# Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával
+# <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]
 > Ez a témakör a leküldéses értesítések Google Cloud Messaging (GCM) használatával történő küldését mutatja be. Ha a Google Firebase Cloud Messaging (FCM) szolgáltatását használja, tekintse meg a [Sending push notifications to Android with Azure Notification Hubs and FCM](notification-hubs-android-push-notification-google-fcm-get-started.md) (Leküldéses értesítések küldése Androidra az Azure Notification Hubs és a FCM használatával).
 > 
@@ -33,7 +37,7 @@ Létre fog hozni egy üres Android-alkalmazást, amely leküldéses értesítés
 
 Az oktatóanyag teljes kódja [itt](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted) tölthető le a GitHubról.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
 > 
@@ -43,10 +47,10 @@ A fent említett aktív Azure-fiókon kívül csak az [Android Studio](http://go
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Android-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
 
-## Google Cloud Messaging szolgáltatást támogató projekt létrehozása
+## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Google Cloud Messaging szolgáltatást támogató projekt létrehozása
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-## Új értesítési központ konfigurálása
+## <a name="configure-a-new-notification-hub"></a>Új értesítési központ konfigurálása
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 &emsp;&emsp;6.   A **Beállítások** panelen válassza az **Értesítési szolgáltatások**, majd a **Google (GCM)** lehetőséget. Adja meg az API-kulcsot, majd kattintson a **Mentés** gombra.
@@ -55,20 +59,20 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Android-a
 
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
-### Új Android-projekt létrehozása
+## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+### <a name="create-a-new-android-project"></a>Új Android-projekt létrehozása
 1. Az Android Studióban indítson el egy új Android Studio-projektet.
    
-    ![Android Studio – új projekt][13]
+       ![Android Studio - new project][13]
 2. Válassza ki a **Phone and Tablet** (Telefon és táblagép) helyigényt és a támogatni kívánt **Minimum SDK** csomagot. Ezután kattintson a **Next** (Tovább) gombra.
    
-    ![Android Studio – projektlétrehozási munkafolyamat][14]
+       ![Android Studio - project creation workflow][14]
 3. Fő tevékenységként válassza az **Empty Activity** (Üres tevékenység) lehetőséget, és kattintson a **Next** (Tovább), majd a **Finish** (Befejezés) gombokra.
 
-### Google Play-szolgáltatások felvétele a projektbe
+### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
-### Azure Notification Hubs-kódtárak felvétele
+### <a name="adding-azure-notification-hubs-libraries"></a>Azure Notification Hubs-kódtárak felvétele
 1. Az **alkalmazás** `Build.Gradle` fájljában adja hozzá az alábbi sorokat a **dependencies** (függőségek) szakaszhoz.
    
         compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
@@ -81,7 +85,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
             }
         }
 
-### Az AndroidManifest.xml fájl frissítése.
+### <a name="updating-the-androidmanifestxml"></a>Az AndroidManifest.xml fájl frissítése.
 1. A GCM támogatásának biztosításához létre kell hoznunk egy Példányazonosító-figyelő szolgáltatást a kódban, amely a [regisztrációs jogkivonatok lekérésére](https://developers.google.com/cloud-messaging/android/client#sample-register) szolgál a [Google példányazonosító API-jának](https://developers.google.com/instance-id/) használatával. Ebben az oktatóanyagban az osztály neve `MyInstanceIDService` lesz. 
    
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható tényleges csomagnévre.
@@ -120,7 +124,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         <permission android:name="<your package>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
         <uses-permission android:name="<your package>.permission.C2D_MESSAGE"/>
 
-### Kód felvétele
+### <a name="adding-code"></a>Kód felvétele
 1. A Projekt nézetben bontsa ki a következőt: **app** > **src** > **main** > **java**. Kattintson a jobb gombbal a **java** területen látható csomagmappára, kattintson a **New** (Új), majd a **Java Class** (Java-osztály) elemre. Adjon hozzá egy új, `NotificationSettings` nevű osztályt. 
    
     ![Android Studio – új Java-osztály][6]
@@ -187,7 +191,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
             }
    
             @Override
-            protected void onHandleIntent(Intent intent) {      
+            protected void onHandleIntent(Intent intent) {        
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String resultString = null;
                 String regID = null;
@@ -201,7 +205,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
                     // Storing the registration id that indicates whether the generated token has been
                     // sent to your server. If it is not stored, send the token to your server,
                     // otherwise your server should have already received the token.
-                    if ((regID=sharedPreferences.getString("registrationID", null)) == null) {      
+                    if ((regID=sharedPreferences.getString("registrationID", null)) == null) {        
                         NotificationHub hub = new NotificationHub(NotificationSettings.HubName,
                                 NotificationSettings.HubListenConnectionString, this);
                         Log.i(TAG, "Attempting to register with NH using token : " + token);
@@ -213,7 +217,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
                         // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
    
                         resultString = "Registered Successfully - RegId : " + regID;
-                        Log.i(TAG, resultString);       
+                        Log.i(TAG, resultString);        
                         sharedPreferences.edit().putString("registrationID", regID ).apply();
                     } else {
                         resultString = "Previously Registered Successfully - RegId : " + regID;
@@ -387,14 +391,14 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
 12. Az Android Studio menüsorában kattintson a **Build** > **Rebuild Project** (Projekt újraépítése) elemre annak ellenőrzéséhez, hogy a kód nem tartalmaz-e hibát.
 
-## Leküldéses értesítések küldése
+## <a name="sending-push-notifications"></a>Leküldéses értesítések küldése
 A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portal] – keresse az alábbiakban látható **Hibaelhárítás** szakaszt a központ paneljén.
 
 ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-## (Nem kötelező) Leküldéses értesítések küldése közvetlenül az alkalmazásból
+## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Nem kötelező) Leküldéses értesítések küldése közvetlenül az alkalmazásból
 Az értesítések elküldése általában háttérkiszolgáló használatával történik. Bizonyos esetekben előfordulhat, hogy közvetlenül az ügyfélalkalmazásból kíván leküldéses értesítéseket küldeni. Ez a szakasz az ügyfélből, az [Azure Notification Hub REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) használatával történő értesítésküldést mutatja be.
 
 1. Az Android Studio projektnézetében bontsa ki a következőt: **App** > **src** > **main** > **res** > **layout**. Nyissa meg az `activity_main.xml` elrendezésfájlt, majd kattintson a **Text** (Szöveg) fülre a fájl szöveges tartalmának frissítéséhez. Frissítse az alábbi kóddal, amely új `Button` és `EditText` vezérlőket vesz fel, amelyekkel a leküldéses értesítési üzenetek elküldhetők az értesítési központba. A kódot az alsó részen, közvetlenül a `</RelativeLayout>` rész elé adja hozzá.
@@ -439,7 +443,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
         import android.util.Base64;
         import android.view.View;
         import android.widget.EditText;
-5. A `MainActivity.java` fájlban adja hozzá az alábbi tagokat az `MainActivity` osztály felső részén.  
+5. A `MainActivity.java` fájlban adja hozzá az alábbi tagokat az `MainActivity` osztály felső részén.    
    
         private String HubEndpoint = null;
         private String HubSasKeyName = null;
@@ -570,7 +574,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
                             // Example below targets 3 specific tags
                             // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
                             // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
-                            //      "tag1 || tag2 || tag3");
+                            //        "tag1 || tag2 || tag3");
    
                             // Send notification message
                             urlConnection.setFixedLengthStreamingMode(json.length());
@@ -606,27 +610,27 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
             }.start();
         }
 
-## Az alkalmazás tesztelése
-#### Leküldéses értesítések az emulátorban
+## <a name="testing-your-app"></a>Az alkalmazás tesztelése
+#### <a name="push-notifications-in-the-emulator"></a>Leküldéses értesítések az emulátorban
 A leküldéses értesítések emulátorban végzett teszteléséhez győződjön meg arról, hogy az emulátor rendszerképe támogatja az alkalmazáshoz kiválasztott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, a **SERVICE\_NOT\_AVAILABLE** (a szolgáltatás nem érhető el) kivételt adja vissza a rendszer.
 
 A fentieken túl győződjön meg arról is, hogy a **Settings** (Beállítások)  > **Accounts** (Fiókok) területen hozzáadta a Google-fiókját a futó emulátorhoz. Ellenkező esetben a GCM-regisztrációs kísérletek **AUTHENTICATION\_FAILED** (sikertelen hitelesítés) kivételt eredményezhetnek.
 
-#### Az alkalmazás futtatása
+#### <a name="running-the-application"></a>Az alkalmazás futtatása
 1. Futtassa az alkalmazást, és figyelje meg, hogy sikeres regisztráció esetén jelentést kap a regisztrációs azonosítóról.
    
-    ![Tesztelés Android rendszeren – Csatornaregisztráció][18]
+       ![Testing on Android - Channel registration][18]
 2. Adjon meg egy értesítési üzenetet, amelyet a központon regisztrált minden Android-eszközre el kíván küldeni.
    
-    ![Tesztelés Android rendszeren – Üzenetküldés][19]
+       ![Testing on Android - sending a message][19]
 3. Nyomja le a **Send Notification** (Értesítés küldése) gombot. Az alkalmazást futtató összes eszközön megjelenik egy `AlertDialog`-példány a leküldéses értesítési üzenettel együtt. Az alkalmazással nem rendelkező, de a leküldéses értesítésekre korábban már regisztrált eszközök az Android értesítéskezelőjén keresztül kapják meg az értesítést. Ezek az értesítések a bal felső sarokból lefelé pöccintve tekinthetők meg.
    
-    ![Tesztelés Android rendszeren – Értesítések][21]
+       ![Testing on Android - notifications][21]
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Következő lépésként javasoljuk [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyag megtekintését. Ebben bemutatjuk, hogy hogyan küldhet értesítéseket ASP.NET-háttérrendszerből adott felhasználók számára címkék használatával.
 
-Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news](Friss hírek küldése Notification Hubs használatával.md) című oktatóanyagot.
+Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című oktatóanyagot.
 
 A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] foglalkozó témakörben tekinthet meg további általános információt.
 
@@ -659,14 +663,14 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Bevezetés a leküldéses értesítések használatába a Mobile Servicesben]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Kódtárprojekt hivatkozása]: http://go.microsoft.com/fwlink/?LinkId=389800
-[klasszikus Azure portál]: https://manage.windowsazure.com/
-[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
+[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 
