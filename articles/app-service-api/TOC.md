@@ -58,7 +58,7 @@
 ### App Service-környezet
 #### [Webalkalmazás létrehozása Azure App Service-környezetben](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Belső Load Balancer használata](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Belső terheléselosztó használata](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## [Üzembe helyezés](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Üzembe helyezés az App Service-ben](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -73,7 +73,7 @@
 ### [App Service-környezet](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Földrajzi alapú méretezés App Service-környezetekkel](../app-service-web/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Alkalmazások méretezése App Service-környezetben](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-#### [Automatikus méretezés App Service-környezetben](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Automatikus skálázás App Service Environment-környezetben](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Kezelés
 ### [Konfigurálás](../app-service-web/web-sites-configure.md?toc=%2fazure%2fapp-service-api%2ftoc.json)

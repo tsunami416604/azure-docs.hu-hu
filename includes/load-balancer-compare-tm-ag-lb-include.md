@@ -1,4 +1,5 @@
 ## <a name="load-balancer-differences"></a>Terheléselosztási különbségek
+
 A Microsoft Azure-ral többféleképpen lehet elosztani a hálózati forgalmat. Ezek a lehetőségek különböző működési elveken alapulnak, különböző funkciókészlettel rendelkeznek és különböző forgatókönyveket támogatnak. Elkülönítve vagy egymással kombinálva egyaránt használhatók.
 
 * Az **Azure Load Balancer** a szállítási rétegben működik (4. réteg a hálózatireferencia-veremben). Hálózati szintű forgalomelosztást biztosít az adott alkalmazás ugyanabban az Azure-adatközpontban futó példányai között.
@@ -26,6 +27,7 @@ Az Azure Load Balancer és az Application Gateway a végpontok felé irányítja
 | Állapotminták |Alapértelmezett: 15 másodperces mintavételi időköz. A rotációból kivéve: 2 folyamatos hiba után. Támogatja a felhasználó által definiált mintavételeket |Üresjárati mintavételi időköz – 30 másodperc. 5 egymásutáni élő forgalmi hiba vagy egyetlen üresjárati módú mintavételi hiba után kivéve. Támogatja a felhasználó által definiált mintavételeket |
 | SSL-kiürítés |Nem támogatott |Támogatott |
 
-<!--HONumber=Oct16_HO3-->
+
+<!--HONumber=Nov16_HO2-->
 
 

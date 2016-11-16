@@ -1,12 +1,12 @@
 ---
-title: A környezet kialakítása | Microsoft Docs
-description: Környezet kialakítása az Azure Media Services segítségével történő fejlesztéshez.
+title: "A környezet kialakítása | Microsoft Docs"
+description: "Környezet kialakítása az Azure Media Services segítségével történő fejlesztéshez."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0258a633-8b42-4853-acc7-3b5162d1d8cd
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 88e04780a5255e136de3d18ab946ef2981ecece5
+
 
 ---
 # <a name="set-up-your-environment"></a>A környezet kialakítása
@@ -44,12 +48,15 @@ Az Azure Media Serviceshez való programozott kapcsolódáshoz válasszon a .NET
 
 [!INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
 
-## <a name="next-steps:-azure-media-services-learning-paths"></a>További lépések: Az Azure Media Services képzési tervei
+## <a name="next-steps-azure-media-services-learning-paths"></a>További lépések: Az Azure Media Services képzési tervei
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

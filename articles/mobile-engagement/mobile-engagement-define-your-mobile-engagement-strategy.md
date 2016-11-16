@@ -1,12 +1,12 @@
 ---
-title: Define your Mobile Engagement strategy | Microsoft Docs
-description: Learn how to onboard and optimize your Mobile Engagement with analytics and push notifications.
+title: "A Mobile Engagement-stratégia kidolgozása | Microsoft Docs"
+description: "Ismerje meg, hogyan vezethető be és optimalizálható a Mobile Engagement az elemzések és leküldéses értesítések tekintetében."
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,122 +14,126 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
+
 
 ---
-# Define your Mobile Engagement strategy
-*You wrote your app for a reason: to have your users use it!*
+# <a name="define-your-mobile-engagement-strategy"></a>A Mobile Engagement-stratégia kidolgozása
+*Alkalmazását okkal készítette el: azért, hogy felhasználói használhassák azt!*
 
-We believe you certainly put a great deal of effort in trying to make it a great app that users will love. You also probably invested a sizeable amount of marketing budget to acquire users. But after the initial exhilarating peak of users, you might see them slowly stop using your app. *This is what Azure Mobile Engagement all about!*: getting them to stick around and allow you to incrementally improve your app through test and learn.
+Biztosak vagyunk abban, hogy rengeteg energiát fektetett abba, hogy nagyszerű alkalmazás legyen, amelyet a felhasználók szeretni fognak. Valószínűleg jelentős összeget költött marketingre is, hogy felhasználókat szerezzen. A felhasználók kezdeti szívderítő áradata után azonban esetleg azt látja, hogy a felhasználók lassan abbahagyják az alkalmazás használatát. *Erről szól az Azure Mobile Engagement*: rávenni a felhasználókat a maradásra, és fokozatosan fejleszteni az alkalmazást tesztelés és tanulás útján.
 
-Our approach to improving retention and usage is based on engaging app users through push notifications and In-app messages, but in a very special way, with messages and communication tailored to them, each according to their behavior in your app. Our goal is to let you communicate with the right audience at the right time and the right location.
+A megtartás és a használat javításának általunk választott megközelítése azon alapul, hogy kapcsolatot teremtünk a felhasználókkal leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel, azonban kifinomult módon, a felhasználókra szabott olyan üzenetekkel és kommunikációval, amelyek mindegyikét az alkalmazáson belüli viselkedésük szerint formálunk. Célunk, hogy a megfelelő célközönséggel tudjon kommunikálni a megfelelő időben és helyen.
 
-But for that, you'll have to start with *understanding your users*, then create groups based on what they did or their characteristics (we call it segments) and then create relevant communications to each segment.
+Ehhez azonban először *meg kell ismernie a felhasználókat*, majd csoportokat kell létrehoznia a tevékenységük vagy jellemzőik alapján (ezen csoportokat szegmenseknek nevezzük), végül a szegmenseknek szóló kommunikációt kell teremtenie.
 
-## Mobile Engagement serves your objectives
-*We talked about retention, and usage, but for what?*
+## <a name="mobile-engagement-serves-your-objectives"></a>A Mobile Engagement segítséget nyújt a céljai megvalósításához
+*Beszéltünk megtartásról és használatról, de mi célból?*
 
-Building your Mobile Engagement strategy requires looking first at your app's objectives and key performance indicators (KPIs).
+A Mobile Engagement-stratégia kidolgozásához először az alkalmazás céljait és fő teljesítménymutatóit (KPI-k) kell szemügyre vennie.
 
-Start by defining the objectives and KPIs that help to define your engagement use-cases with the right prism.
+Kezdje a célok és a KPI-k meghatározásával, amelyek megfelelő megvilágításba helyezik és segítenek meghatározni a bevonási használati eseteket.
 
-Your use-cases are a simple list of campaigns you'd like to make to communicate with your users, ranging from the simple welcome, to the very advanced utility notification triggered by your IT system. A well-constructed use-case must include at least the trio *what-who-when*:
+A használati esetek azon kampányok egyszerű listája, amelyeket meg szeretne valósítani a felhasználókkal való kommunikációhoz, kezdve egy egyszerű üdvözléssel az informatikai rendszer által aktivált, nagyon fejlett segítő jellegű értesítésig. Egy jól felépített használati esetnek legalább a *mit-kinek-mikor?* kérdéscsoportra adott válaszok alapján kell felépülnie:
 
-1. A very short designation (for example, a "Welcome campaign").
-2. **What**: A message example (for example, "Glad to have you onboard! Remember to login to get your 1st month free!"). This message is by no means final, you'll be able to change it any time you like, but it usually helps to start thinking about what we want to say.
-3. **Who**: The segment that will receive this message (for example, "All users who launched the app for the first time 3 days ago, have visited the login page but have not logged-in").
-   * Yes, you can do that very easily with Azure Mobile Engagement :)
-   * Again, this does not have to be final as you can define your segments at any time, but it is important to define early on your segmentation criteria to ensure you collect the right data.
-4. **When**: The timing of your campaign. It may be on a given date, or after a specific action, based on a trigger. Mobile Engagement offers an important amount of possibilities to rightly time your communication.
+1. Egy nagyon rövid megjelölést (például: „Üdvözlőkampány”).
+2. **Mit**: Példaüzenet (például: „Örülünk, hogy csatlakozott hozzánk! Ne felejtsen el bejelentkezni az 1. első ingyenes hónap igénybe vételéhez!”). Ez az üzenet semmiképpen sem végleges, bármikor megváltoztathatja, azonban általában segít elindulni a mondanivaló meghatározásakor.
+3. **Kinek**: Az üzenetet megkapó szegmens (például: „Minden felhasználó, aki 3 nappal ezelőtt nyitotta meg először a mobilalkalmazást, ellátogatott a bejelentkezési oldalra, de nem jelentkezett be”).
+   * Igen, az Azure Mobile Engagement segítségével ezt nagyon egyszerűen elvégezheti :)
+   * Ez szintén nem végleges, mint ahogyan a szegmenseket is bármikor meghatározhatja, azonban fontos, hogy a szegmentálási feltételeket hamar meghatározza a megfelelő adatok gyűjtésének a biztosításához.
+4. **Mikor**: A kampány időzítése. A kampány indulhat adott napon, egy adott művelet után vagy kiválthatja egy eseményindító. A Mobile Engagement számos lehetőséget kínál a kommunikáció megfelelő időzítéséhez.
 
-Once use-cases and segment are defined, it gives a guideline to define the data that must be collected within an application. This is the role of a *“tag plan”*. A tag plan allows you to ensure that the data collection is specified to the developers. Hence, developers are able to embed Mobile Engagement with the right setup for you to work your campaigns with the right data. It will also be very important to run tests to ensure the integration is correct and collects what you need.
+Ha definiálta a használati eseteket és a szegmenseket, azok útmutatóként szolgálnak az alkalmazáson belül összegyűjtendő adatok meghatározásához. Ez a *„címkézési terv”* szerepe. A címkézési tervvel biztosíthatja, hogy a fejlesztők ismerjék az adatgyűjtés részleteit. A fejlesztők így beágyazhatják a megfelelően beállított Mobile Engagementet, ami lehetővé teszi, hogy a megfelelő adatokkal dolgozzon a kampányokban. Nagyon fontos tesztek futtatása annak biztosításához, hogy az integráció megfelelő legyen és a szükséges adatokat gyűjtse.
 
-Based on the integration, once applications are published, you as a marketer will be able to see your analytics in real-time, segment your audience and then start to send smart targeted push notification to engage with end-users in or out of the app.
+Az integráció alapján, az alkalmazások közzétételét követően már forgalmazóként láthatja az elemzéseket valós időben, szegmentálhatja a célközönséget, továbbá elkezdhet intelligensen célzott leküldéses értesítéseket küldeni a végfelhasználók bevonásához az alkalmazáson kívül vagy belül.
 
-### Use-cases to get started
-1. Welcome strategy: Create several push notification campaigns based on the end-user behavior at the launch of the application in order to re-engage at D+2/5/10/15 after the first session and increase first run retention.
-2. Promote a new content (feature, article/video, or product) based on the behavior of the end-user to send the information only to end-users that are more likely to engage.
-3. Rate the application: Target less than 1 percent of your user base that is most likely to rate the app 5 stars on the store.
-4. Boost subscriptions: Promote valuable contents to end-users that have not seen them yet to increase subscription.
-5. Tutorial: No more mandatory tutorial for everyone. Why not build great tutorials in-app and then trigger them through in-app messages only if the user seems to not use the app or has difficulty using a feature?
+### <a name="usecases-to-get-started"></a>Használati esetek az első lépésekhez
+1. Üdvözlési stratégia: Hozzon létre több leküldéses értesítési kampányt a végfelhasználók alkalmazásindításkor mutatott viselkedésmintái alapján az első munkamenet utáni ismételt kapcsolatfelvétel céljából D+2/5/10/15 időpontban, és növelje az első futtatáshoz kapcsolódó megtartást.
+2. Népszerűsítsen új tartalmakat (funkció, cikk/videó vagy termék) a végfelhasználók viselkedése alapján úgy, hogy csak azon végfelhasználóknak küld információt, akik nagyobb eséllyel reagálnak arra.
+3. Alkalmazás értékelése: Célozza a felhasználóbázis azon kevesebb mint 1 százalékát, akik a legnagyobb eséllyel adnak 5 csillagos értékelést alkalmazásának az áruházban.
+4. Előfizetések számának növelése: Az előfizetések számának növeléséhez népszerűsítsen olyan értékes tartalmakat a végfelhasználók számára, amelyekkel még nem találkoztak.
+5. Oktatóanyag: Nincs többé mindenki számára kötelező oktatóanyag. Miért ne hozhatna létre nagyszerű oktatóanyagokat az alkalmazáson belül, és aktiválhatná azokat alkalmazáson belüli üzenetekkel csak akkor, ha a felhasználó nem használja az alkalmazást vagy nehézsége támad egy-egy funkció használatával?
 
-## Why do you need analytics to engage?
-As you might realize at this point, making a broadcast push notification only is not enough. The core concept of Mobile Engagement is to help marketers and developers engage with the right end-user at the right time and in the right place. To know those three main concepts, it is essential to gather analytics from your application and then use it to segment your audience. This is also even more powerful when behavior segments complements data from your other database or CRM or from a cross channel. Mobile Engagement allows retrieving data from anywhere and uses it to target the right audience.
+## <a name="why-do-you-need-analytics-to-engage"></a>Miért van szüksége elemzésekre a bevonáshoz?
+Ezen a ponton talán már rájött, hogy csak leküldéses értesítések létrehozása nem elegendő. A Mobile Engagement központi elve az, hogy segítsen a forgalmazóknak és a fejlesztőknek a megfelelő végfelhasználókkal felvenni a kapcsolatot a megfelelő időben és helyen. Ezen három fő alapelv ismeretéhez alapvető fontossággal bír az elemzések gyűjtése az alkalmazásból, majd a célközönség szegmentálása azok használatával. Ez még sokkal hatékonyabb, ha a viselkedési szegmensek kiegészítik a többi adatbázisból, a CRM-rendszerből vagy a keresztcsatornából származó adatokat. A Mobile Engagement bárhonnan lehetővé teszi az adatok gyűjtését, és azok felhasználását a megfelelő célközönség megcélzásához.
 
-To be the most contextual possible when engaging your audience, it is crucial to have the knowledge of the end-users behavior, to know their status in real-time. Data collection allows marketers to focus really on what matters to play use-cases and achieve their mobile engagement strategy objectives. Achieving the objectives set earlier is also the reason why the best practice in fact is not to gather anything and everything in the analytics but only those that allow you to focus on what you want to learn and your use-cases. This is the good way to start, try, test and learn how to use the solution and address smart push notification and increase the retention of an application to bring it at a success-story level.
+Ahhoz, hogy a kontextusnak leginkább megfelelő módon vegye fel a kapcsolatot célközönségével, létfontosságú a végfelhasználó viselkedésének és valós idejű állapotának ismerete. Az adatgyűjtés lehetővé teszi a forgalmazók számára, hogy arra összpontosítsanak, ami igazán fontos a használati esetek lejátszásához és mobilmarketing-stratégiájuk céljainak eléréséhez. A korábban meghatározott célok elérése az oka annak is, amiért az ajánlott eljárás tulajdonképpen nem a lehető legtöbb, hanem csak azon információk gyűjtése az elemzésekből, amelyek lehetővé teszik, hogy a használati esetekre és arra összpontosítson, amit meg akar tudni. Ez a jó módszer a kezdéshez, a próbálkozásokhoz, a teszteléshez és annak megismeréséhez, hogyan használható a megoldás, és címezhetők meg az intelligens leküldéses értesítések, illetve hogyan növelhető egy alkalmazás felhasználóinak megtartása, amelyekkel sikertörténet szintjére lehet emelni az alkalmazást.
 
 > [!NOTE]
-> Remember: Too much data kills the data!
+> Emlékezzen erre: A túl sok adat használhatatlanná teszi az adatokat!
 > 
 > 
 
-### Use-cases and best practices
-In the following sections we'll discuss briefly some key use-cases that we've come across from our customers to get you started.
+### <a name="usecases-and-best-practices"></a>Használati esetek és ajánlott eljárások
+Az első lépéseket segítendő az alábbi szakaszokban röviden ismertetünk néhány olyan főbb használati esetet, amelyekkel az ügyfeleinkhez kapcsolódóan találkoztunk.
 
-#### Media
-Collect the type of content that is consumed by the end-user and then segment the audience based on this behavior to target specific types of content only to an audience that will be more likely to consume. It avoids spamming a whole user base and ensuring a better retention.
+#### <a name="media"></a>Média
+Gyűjtse össze a végfelhasználók által fogyasztott tartalmak típusait, és szegmentálja a célközönséget ezen viselkedésük alapján, így az adott típusú tartalmakat kizárólag olyan célközönségnek juttathatja el, akik nagyobb valószínűséggel fogyasztják azokat. Ezzel elkerülheti a teljes felhasználói bázis elárasztását levélszeméttel, és jobb megtartást biztosíthat.
 
-#### M-commerce
-Collect the product categories most visited within the application and target audience to promote a discount or new product in that category that the end-user will be more likely to purchase. Aim to boost revenues. Again the objective is not to spam!
+#### <a name="mcommerce"></a>M-kereskedelem
+Gyűjtse össze az alkalmazásban a legtöbbet megtekintett termékkategóriákat, és azon célközönség számára népszerűsítse az adott kategóriába tartozó kedvezményt vagy új terméket, amelynek végfelhasználói nagyobb eséllyel fogják azt megvásárolni. Célozza az árbevétel növelését. A cél most is a levélszemét elkerülése!
 
-#### Gaming
-Collect the level of game for an end-user and the time spent in a given period to target the audience that could be stalled and would be more likely to jump to a next level with a bonus offer.
+#### <a name="gaming"></a>Játékok
+Gyűjtse össze a végfelhasználók játékszintjét és az adott időtartam alatt a játékkal töltött idő mennyiségét, hogy olyan célközönséget célozhasson meg, amely tagjai megakadhattak és várhatóan új szintre lépnének egy bónuszajánlat segítségével.
 
-Communicate about specific events with an incentive to those users that have not played for some time to try to encourage them to return.
+Kommunikáljon olyan ösztönzőkkel járó különleges eseményekről, amelyek az egy ideje már nem játszó felhasználóknak kedveznek, a visszatérésre bátorítva őket.
 
-#### Retail
-Collect the products or brands that an audience should be more likely to consume based on favorites or behavior, and drive the audience to your store to increase purchase revenues.
+#### <a name="retail"></a>Kiskereskedelem
+Gyűjtse össze azokat a termékeket és márkákat, amelyeket a közönség a kedvencei és viselkedése alapján nagyobb eséllyel fogyasztana, és irányítsa célközönségét az áruházba a vásárlási bevételek növeléséhez.
 
-#### Banking
-Collect data from end-users that created an account at the first launch of the application. Aim to deploy a welcome strategy with a targeted push notification and increase the number of account subscriptions.
+#### <a name="banking"></a>Banki szolgáltatások
+Gyűjtsön adatokat azon végfelhasználóktól, akik az alkalmazás első indításakor hoztak létre fiókot. Törekedjen egy üdvözlési kampány indítására célzott leküldéses értesítésekkel, és növelje a fiók-előfizetések számát.
 
-### How to create a great tag plan?
-A tag plan must be like a description of the user-path or a kind of workflow of the application, providing all the necessary tags (data) that must be collected to have enough analytics to understand user behavior and properly segment the user base. This is not a technical process. Hence, marketers are able to specify the data they want to collect based on their Mobile Engagement strategy.
+### <a name="how-to-create-a-great-tag-plan"></a>Hogyan hozhatunk létre remek címkézési tervet?
+A címkézési tervnek tulajdonképpen a felhasználó által megtett út leírásának vagy az alkalmazás egyfajta munkafolyamatának kell lennie, meg kell adnia minden szükséges címkét (adatot), amelyek gyűjtésével és elemzésével elég információ áll rendelkezésre a felhasználók viselkedésének megértésére és a felhasználói bázis megfelelő szegmentálására. Ez nem műszaki jellegű feladat. A forgalmazók ezért a Mobile Engagement-stratégiájuk alapján adhatják meg a gyűjteni kívánt adatokat.
 
-The minimum is to tag at least all the screens (called *activities* in Mobile Engagement) of an application. This helps determine the user-path.
+Egy alkalmazásban legalább a képernyőket (a Mobile Engagementben *tevékenységek* néven ismertek) el kell látni címkével. Ez segítséget nyújt a felhasználók által megtett út meghatározásában.
 
-An activity can embed *events* that collect action information like clicking a button. This allows the collection of interactions within the application. Therefore, marketers are able to know what screen users are visiting and what they are doing.
+A tevékenység tartalmazhat *eseményeket*, amelyek műveletinformációkat gyűjtenek, ilyen például egy gombra való kattintás. Ez lehetővé teszi az alkalmazáson belüli interakciók gyűjtését. A forgalmazók így nyomon követhetik, hogy melyik képernyőt látogatják a felhasználók és milyen tevékenységet folytatnak.
 
-`Jobs` are actions with a duration. This is very useful for marketer to understand how long it takes for a user to create an account or to login for instance. This also could be useful for developers to monitor how long it takes to call a web service.
+`Jobs`időtartammal rendelkező műveletek. Ez nagyon hasznos a forgalmazók számára annak megértéséhez, hogy mennyi ideig tart a felhasználó számára a felhasználói fiók létrehozása vagy a bejelentkezés. Ez annak megfigyelésére is hasznos lehet a fejlesztők számára, hogy mennyi időt vesz igénybe egy webes szolgáltatás hívása.
 
-`Errors` can also be monitored to know if users are having issues in your app. For example, getting frequent connection issues.
+`Errors`is megfigyelhetők annak meghatározására, hogy a felhasználók problémákba ütköznek-e az alkalmazással kapcsolatban. Például: gyakran előforduló kapcsolódási problémák.
 
-All of this type of data can be augmented with parameters (*extra-information* in Mobile Engagement) allowing you to gather dynamic data from the application. This is important to allow fine-grained segmentation. For instance, marketers can segment a user based on the type of content they have consumed. The type of content will be the dynamic information of an activity or an event.
+Az összes ilyen típusú adat kiegészíthető paraméterekkel (a Mobile Engagementben *további információkkal*), ami lehetővé teszi dinamikus adatok gyűjtését az alkalmazásból. Ez a részletes szegmentáláshoz fontos. A forgalmazók szegmentálhatják például a felhasználókat az általuk fogyasztott tartalmak típusa alapján. A tartalom típusa lesz a tevékenység vagy esemény dinamikus információja.
 
-*App-information* is data that allows you to confirm the status of the application or of the user in real-time. This also helps to categorize an audience base and target it quickly. For example, it can use a true/false status of whether the user is logging in or not, or his subscription expiration date.
+Az *alkalmazásadatok* olyan adatok, amelyek lehetővé teszik az alkalmazás vagy a felhasználó állapotának valós idejű ellenőrzését. Ez segíti a közönségbázis gyors kategorizálását és megcélzását is. Az adatok használhatnak például egy igaz/hamis állapotot annak követésére, hogy a felhasználó bejelentkezik-e vagy sem, vagy mikor jár le az előfizetése.
 
-#### Example of tags
-*Use-case: Segment audience behavior to target the right end-user with the right push notification content*
+#### <a name="example-of-tags"></a>Példa címkékre
+*Használati eset: A célközönség viselkedésének szegmentálása a megfelelő végfelhasználók megfelelő leküldéses értesítési tartalmakkal való ellátására*
 
-1. Send push notification to promote a category of product: Gather behavior data to segment audience based on the category of product they have visited x times in a given period or a specific item they have added in a cart. The data collected will allow you to segment and then send a push notification to the right audience.
-2. Rate the app: Collect data based on the content shared by the audience on a social network. Aims to segment the audience by determining the *ambassadors* of your app. Using a push notification in-app, the ambassadors are the best audience of your app to ask to rate your app 5 stars in the store.
+1. Leküldéses értesítés küldése egy adott termékkategória népszerűsítéséhez: Gyűjtsön viselkedési adatokat a célközönség szegmentálásához annak alapján, hogy egy bizonyos termékkategóriát hányszor tekintettek meg egy adott időtartam alatt vagy egy adott tételt hányszor adtak hozzá a kosárhoz. Az összegyűjtött adatok lehetővé teszik a szegmentálást, majd leküldéses értesítés küldését a megfelelő célközönségnek.
+2. Alkalmazás értékelése: Gyűjtsön adatokat a célközönség közösségi hálózatokon megosztott tartalmai alapján. Célja a célközönség szegmentálása az alkalmazás *nagyköveteinek* meghatározásával. A nagykövetek az alkalmazás legjobb célközönsége, őket a legcélszerűbb arra kérni leküldéses értesítés küldésével, hogy 5 csillagos értékelést adjanak az alkalmazásnak.
    
    ![][1]
 
-*Use-case: Declarative data*
+*Használati eset: Deklaratív adatok*
 
-1. Segment alert news: Collect declarative data to segment audience based on their preferences. It allows sending push notification of a specific topic that really interests a specific audience.
-2. Segment audience based on login status. Collect data to know if a user is connected or has created an account. Helps target end-users that have not yet logged in and sends a push notification to encourage end-user to convert.
+1. Szegmensnek szóló hírek: Gyűjtsön deklaratív adatokat a célközönség szegmentálásához a preferenciáik alapján. Ez lehetővé teszi leküldéses értesítések küldését egy olyan témával kapcsolatban, amely ténylegesen érdekel egy adott célközönséget.
+2. A célközönség szegmentálása a bejelentkezési állapot alapján. Gyűjtsön adatokat annak meghatározására, hogy egy felhasználó csatlakozott-e vagy létrehozott-e fiókot. Ez segítséget nyújt azon végfelhasználókat megcélzásában, akik még nem jelentkeztek be, és leküldéses értesítést küld, amellyel a csatlakozásra bátorítja őket.
    ![][2]
 
-### Next steps
-* Visit [Mobile Engagement Concepts] to learn more about basic Mobile Engagement concepts.
-* Visit [Create a Mobile Engagement App](mobile-engagement-create.md) to create a new Mobile Engagement App Collection in Azure and start managing your apps with the Mobile Engagement portal.
-* Visit [Best practices](mobile-engagement-getting-started-best-practices.md) to go into details.
-* Visit [Gaming App scenario](mobile-engagement-gaming-scenario.md) to learn about implementing Mobile Engagement with a sample gaming app. 
-* Visit [Media App scenario](mobile-engagement-media-scenario.md) to learn about implementing Mobile Engagement with a sample media app. 
-* Visit [Tutorials] to learn more about the implementation.
+### <a name="next-steps"></a>Következő lépések
+* A Mobile Engagement fogalmait a [Mobile Engagement fogalmait] ismertető cikkben ismerheti meg bővebben.
+* Keresse fel a [Mobile Engagement-alkalmazás létrehozását](mobile-engagement-create.md) ismertető cikket, amely egy új Mobile Engagement-alkalmazásgyűjteménynek az Azure-ban való létrehozását, valamint azt ismerteti, hogy hogyan kezdheti meg az alkalmazások kezelését a Mobile Engagement portál használatával.
+* A részletekkel kapcsolatban keresse fel az [ajánlott eljárásokkal](mobile-engagement-getting-started-best-practices.md) foglalkozó cikket.
+* Keresse fel a [játékalkalmazásról szóló forgatókönyvet](mobile-engagement-gaming-scenario.md) a Mobile Engagement minta játékalkalmazással való használatával kapcsolatos információkért. 
+* Keresse fel a [médiaalkalmazásról szóló forgatókönyvet](mobile-engagement-media-scenario.md) a Mobile Engagement minta médiaalkalmazással való használatával kapcsolatos információkért. 
+* Tekintse át az [oktatóanyagokat] a megvalósítással kapcsolatos további részletekért.
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-define-your-mobile-engagement-strategy/use-case1.png
 [2]: ./media/mobile-engagement-define-your-mobile-engagement-strategy/use-case2.png
 
 <!-- URLs. -->
-[Mobile Engagement Concepts]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
-[Tutorials]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
+[Mobile Engagement fogalmait]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
+[oktatóanyagokat]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,8 +1,10 @@
-#### To shut down a virtual device
-1. Sign in to the Management Portal.
-2. Click **Virtual Machines**, and then select the virtual device.
-3. Click **Shutdown**.
+#### <a name="to-shut-down-a-virtual-device"></a>Virtuális eszköz leállítása
+1. Jelentkezzen be a felügyeleti portálra.
+2. Kattintson a **Virtual Machines** lehetőségre, majd válasszon ki egy virtuális eszközt.
+3. Kattintson a **Leállítás** elemre.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Az első data factory létrehozása (Visual Studio) | Microsoft Docs
-description: Az oktatóanyag során létrehoz egy mintául szolgáló Azure Data Factory-folyamatot a Visual Studio használatával.
+title: "Az első data factory létrehozása (Visual Studio) | Microsoft Docs"
+description: "Az oktatóanyag során létrehoz egy mintául szolgáló Azure Data Factory-folyamatot a Visual Studio használatával."
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 7398c0c9-7a03-4628-94b3-f2aaef4a72c5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/17/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dc46837a2be9047e5bcbd920c2e0119f2c5a5ea6
+
 
 ---
-# <a name="tutorial:-build-your-azure-first-data-factory-using-microsoft-visual-studio"></a>Oktatóanyag: Az első Azure data factory létrehozása a Microsoft Visual Studio használatával
+# <a name="tutorial-build-your-azure-first-data-factory-using-microsoft-visual-studio"></a>Oktatóanyag: Az első Azure data factory létrehozása a Microsoft Visual Studio használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -236,7 +240,7 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
             }
         }
    
-    A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
+     A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
    
     A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
    
@@ -254,13 +258,13 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
    > 
 4. Mentse a **HiveActivity1.json** fájlt.
 
-### <a name="add-partitionweblogs.hql-and-input.log-as-a-dependency"></a>A partitionweblogs.hql és az input.log fájl hozzáadása függőségként
+### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>A partitionweblogs.hql és az input.log fájl hozzáadása függőségként
 1. A **Solution Explorer** (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Dependencies** (Függőségek) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson az **Existing Item** (Meglévő elem) lehetőségre.  
 2. Lépjen a **C:\ADFGettingStarted** mappába, jelölje ki a **partitionweblogs.hql** és az **input.log** fájlt, majd kattintson az **Add** (Hozzáadás) parancsra. Ezt a két fájlt [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című cikk előfeltételeinek részeként hozta létre.
 
 Amikor a következő lépésben közzéteszi a megoldást, a **partitionweblogs.hql** fájlt az **adfgetstarted** blob-tároló parancsfájlmappájába tölti fel a rendszer.   
 
-### <a name="publish/deploy-data-factory-entities"></a>Data Factory-entitások közzététele/üzembe helyezése
+### <a name="publishdeploy-data-factory-entities"></a>Data Factory-entitások közzététele/üzembe helyezése
 1. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a projektre, majd kattintson a **Publish** (Közzététel) parancsra. 
 2. Ha megjelenik a **Sign in to your Microsoft account** (Bejelentkezés a Microsoft-fiókba) párbeszédpanel, adja meg az Azure-előfizetéssel rendelkező fiókja hitelesítő adatait, és kattintson a **sign in** (bejelentkezés) elemre.
 3. A következő párbeszédpanelnek kell megjelennie:
@@ -272,7 +276,8 @@ Amikor a következő lépésben közzéteszi a megoldást, a **partitionweblogs.
    2. Adja meg a data factory egyedi **nevét**. Ez lehet például **FirstDataFactoryUsingVS09152016**. A névnek globálisan egyedinek kell lennie.  
 
         > [AZURE.IMPORTANT] Ha a közzététel során a **Data factory name “FirstDataFactoryUsingVS” is not available** (A „FirstDataFactoryUsingVS” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveFirstDataFactoryUsingVS). A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
-1. A **Subscription** (Előfizetés) mezőben válassza ki a megfelelő előfizetést.
+3. A **Subscription** (Előfizetés) mezőben válassza ki a megfelelő előfizetést.
+
 
         > [AZURE.IMPORTANT] Ha egy előfizetést sem lát, ellenőrizze, hogy olyan fiókkal jelentkezett-e be, amely rendszergazdája vagy társadminisztrátora az előfizetésnek.  
 
@@ -333,7 +338,7 @@ Fontos tudnivalók:
    > 
    > 
    
-    ![Adathalmaz](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png) 
+    ![Adathalmaz](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
 10. Ha a szelet **Ready** (Kész) állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
     
     ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
@@ -341,13 +346,13 @@ Fontos tudnivalók:
     
     ![Adatszelet részletei](./media/data-factory-build-your-first-pipeline-using-vs/data-slice-details.png)  
 12. Kattintson egy tevékenységfuttatásra az **Activity runs list** (Tevékenységfuttatások listája) területen a tevékenységfuttatás (ebben az esetben Hive-tevékenység) részleteinek az **Activity run details** (Tevékenységfuttatás részletei) ablakban való megjelenítéséhez.   
-    ![Tevékenységfuttatás részletei)](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)  
+    ![Tevékenységfuttatás részletei)](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)    
     
     A naplófájlokban láthatja a végrehajtott Hive-lekérdezést és az állapotadatokat. A naplók hasznosak bármilyen hiba esetén a hibaelhárításban.  
 
 A [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) (Adatkészletek és folyamatok figyelése) című cikkben útmutatást találhat arról, hogy hogyan használhatja az Azure Portalt az oktatóanyagban létrehozott folyamatok és adatkészletek figyeléséhez.
 
-### <a name="monitor-pipeline-using-monitor-&-manage-app"></a>Folyamat figyelése a Monitor & Manage alkalmazással
+### <a name="monitor-pipeline-using-monitor-manage-app"></a>Folyamat figyelése a Monitor & Manage alkalmazással
 A folyamatok figyeléséhez a Monitor & Manage alkalmazást is használhatja. Az alkalmazás használatával kapcsolatos részletes információkért olvassa el a [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md) (Azure Data Factory-folyamatok figyelése és felügyelete a Monitoring and Management használatával) című cikket.
 
 1. Kattintson a Monitor & Manage csempére.
@@ -426,11 +431,11 @@ Adjon hozzá konfigurációs fájlt az egyes környezetekhez a következő lép�
     Ha a JSON-fájlban szerepel egy olyan tulajdonság, amely értékek tömbjével rendelkezik a következő kódban látható módon:  
    
         "structure": [
-            {
-                "name": "FirstName",
+              {
+                  "name": "FirstName",
                 "type": "String"
-            },
-            {
+              },
+              {
                 "name": "LastName",
                 "type": "String"
             }
@@ -499,9 +504,12 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 | [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) |Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
-| [Adathalmazok](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
+| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. |
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

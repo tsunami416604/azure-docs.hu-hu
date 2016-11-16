@@ -1,12 +1,12 @@
 ---
-title: Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével| Microsoft Docs
-description: Az Azure Security Center Power BI tartalomcsomaggal a jelentéskészítéshez létrehozott adatkészlet alapján könnyen megtalálhatja a biztonsági riasztásokat, a javaslatokat, a megtámadott erőforrásokat és a trendeket.
+title: "Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével| Microsoft Docs"
+description: "Az Azure Security Center Power BI tartalomcsomaggal a jelentéskészítéshez létrehozott adatkészlet alapján könnyen megtalálhatja a biztonsági riasztásokat, a javaslatokat, a megtámadott erőforrásokat és a trendeket."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 0ded6bc7-52e8-43b4-8940-0bee137526e3
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f085631264439062f6fccff4cdae535d7f80bbe3
+
 
 ---
-# Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével
+# <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével
 Az Azure Security Center [Power BI irányítópultja](http://aka.ms/azure-security-center-power-bi) lehetővé teszi a javaslatok és biztonsági riasztások megjelenítését, elemzését és szűrését bárhonnan, akár a mobileszközökről is. A Power BI irányítópult segítségével feltárhatja a trendeket és támadási mintákat - tekintse meg a biztonsági riasztásokat az erőforrás vagy a forrás IP-címe szerint, a cím nélküli biztonsági kockázatokat pedig erőforrás vagy kor szerint. 
 
 A Security Center javaslatainak és a biztonsági riasztásoknak más adatokkal történő összefűzésének is számos érdekes megoldása létezik, így például az [Azure vizsgálati naplók](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) és az [Azure SQL Database Auditing](https://powerbi.microsoft.com/blog/monitor-your-azure-sql-database-auditing-activity-with-power-bi/) adatainak együttes felhasználása. Mindkettő lehetővé teszi a Power BI-irányítópultok használatát, a felhőerőforrások biztonsági állapotáról történő egyszerű jelentéskészítéshez pedig az adatok Excel formátumba is exportálhatók.
 
-## Az Azure Security Center irányítópultjának használata a Power BI eléréséhez
+## <a name="using-azure-security-center-dashboard-to-access-power-bi"></a>Az Azure Security Center irányítópultjának használata a Power BI eléréséhez
 Az Azure Security Center irányítópultjának használatával is elérheti a Power BI jelentéseket. Kövesse az alábbi lépéseket a feladat végrehajtásához: 
 
 1. Az **Azure Security Center** irányítópultján kattintson a **Power BI: böngészés** gombra.
@@ -80,7 +84,7 @@ Ekkor a **Fájl** menü segítségével mentheti, kinyomtathatja vagy közzéteh
 
 ![Fájl menü](./media/security-center-powerbi/security-center-powerbi-fig8.png)
 
-## Az Azure Security Center adatainak felfedezése Power BI segítségével
+## <a name="exploring-your-azure-security-center-data-with-power-bi-services"></a>Az Azure Security Center adatainak felfedezése Power BI segítségével
 A Power BI-ban csatlakozzon a [Power BI-tartalomcsomagszolgáltatásokhoz](https://msit.powerbi.com/groups/me/getdata/services), és hajtsa végre a következő lépéseket:
 
 1. A **Power BI tartalomcsomag** ablakban az alábbi két lehetőség közül választhat.
@@ -107,7 +111,7 @@ A Power BI-ban csatlakozzon a [Power BI-tartalomcsomagszolgáltatásokhoz](https
    
     ![A Házirendkezelés irányítópultja](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irányítópultjának használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) – Annak bemutatása, miként tervezheti meg az Azure Security Center bevezetését.
@@ -116,6 +120,9 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irány
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

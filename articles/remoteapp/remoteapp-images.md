@@ -1,11 +1,11 @@
 ---
-title: Mit tartalmaznak az Azure RemoteApp sablon rendszerképei? | Microsoft Docs
-description: Az Azure RemoteApphez mellékelt sablon rendszerképek ismertetése.
+title: "Mit tartalmaznak az Azure RemoteApp sablon rendszerképei? | Microsoft Docs"
+description: "Az Azure RemoteApphez mellékelt sablon rendszerképek ismertetése."
 services: remoteapp
-documentationcenter: ''
+documentationcenter: 
 author: lizap
 manager: mbaldwin
-
+ms.assetid: 7f8442b2-81da-421e-a453-aa53ba2066b7
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
@@ -13,9 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: elizapo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b589fb3b1cdbf1f14ece6adf43e1eb0313ff09df
+
 
 ---
-# Mit tartalmaznak az Azure RemoteApp sablon rendszerképei?
+# <a name="what-is-in-the-azure-remoteapp-template-images"></a>Mit tartalmaznak az Azure RemoteApp sablon rendszerképei?
 > [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
@@ -36,7 +40,7 @@ Az Azure RemoteApp-előfizetés három sablon rendszerképet tartalmaz:
 
 Az egyes rendszerképek tartalmának részleteiért olvasson tovább.
 
-## Windows Server 2012 R2 („az eredeti rendszerkép”)
+## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2 („az eredeti rendszerkép”)
 Ez a rendszerkép a Microsoft Windows Server 2012 R2 Datacenter operációs rendszeren alapul, és a következő szerepkörök és szolgáltatások vannak rajta telepítve, hogy megfeleljen az Azure RemoteApp sablon rendszerképek követelményeinek:
 
 * .NET-keretrendszer 4.5, 3.5.1, 3.5
@@ -55,7 +59,7 @@ A rendszerképen továbbá a következő alkalmazások vannak telepítve:
 * Microsoft System Center 2012 Endpoint Protection
 * Microsoft Windows Media Player
 
-## Microsoft Office 365 ProPlus (a használatához előfizetés szükséges)
+## <a name="microsoft-office-365-proplus-subscription-required"></a>Microsoft Office 365 ProPlus (a használatához előfizetés szükséges)
 Az Office 365 a legtöbbek által kért alkalmazás, ezért létrehoztunk egy „egyéni” rendszerképet, amellyel dolgozhat.
 
 Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft Office 365 ProPlus következő összetevői vannak rajta telepítve a Windows Server 2012 R2 rendszerképnél ismertetett összetevőkön felül:
@@ -86,7 +90,7 @@ Az Office 365 ProPlus-alkalmazások összes funkciója csak az Office 365 ProPlu
 
 Vegye figyelembe, hogy az Office 365 ProPlus, a Visio Pro és a Project Pro külön licencelést igényel – ezek mindegyike saját licenccel rendelkezik.
 
-## Microsoft Office 2013 Professional Plus (csak próbaverzió)
+## <a name="microsoft-office-2013-professional-plus-trial-only"></a>Microsoft Office 2013 Professional Plus (csak próbaverzió)
 Az ingyenes próbaidőszak során a szolgáltatást az Office 2013-rendszerképpel tesztelheti.
 
 Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft Office 2013 Professional Plus következő összetevői vannak rajta telepítve a Windows Server 2012 R2 rendszerképnél ismertetett összetevőkön felül:
@@ -108,6 +112,9 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

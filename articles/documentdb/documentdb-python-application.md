@@ -1,13 +1,13 @@
 ---
-title: Python Flask-webalkalmazás fejlesztése a DocumentDB használatával | Microsoft Docs
-description: Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait a DocumentDB használatával. Alkalmazásfejlesztési megoldások keresése.
-keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, python flask, python-webalkalmazás, python-webfejlesztés, documentdb, azure, Microsoft Azure
+title: "Python Flask-webalkalmazás fejlesztése a DocumentDB használatával | Microsoft Docs"
+description: "Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait a DocumentDB használatával. Alkalmazásfejlesztési megoldások keresése."
+keywords: "Alkalmazásfejlesztés, adatbázis-oktatóanyag, python flask, python-webalkalmazás, python-webfejlesztés, documentdb, azure, Microsoft Azure"
 services: documentdb
 documentationcenter: python
 author: syamkmsft
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 20ebec18-67c2-4988-a760-be7c30cfb745
 ms.service: documentdb
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 08/25/2016
 ms.author: syamk
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
+
 
 ---
 # <a name="python-flask-web-application-development-with-documentdb"></a>Python Flask-webalkalmazás fejlesztése a DocumentDB használatával
@@ -57,7 +61,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
 * A [Microsoft letöltőközpontból][3] beszerezhető Microsoft Visual C++ Compiler for Python 2.7.
 
-## <a name="step-1:-create-a-documentdb-database-account"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
+## <a name="step-1-create-a-documentdb-database-account"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
@@ -65,7 +69,7 @@ Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, to
 <br/>
 Most végigvezetjük azon, hogyan hozhat létre új Python Flask-webalkalmazást az alapoktól kezdve.
 
-## <a name="step-2:-create-a-new-python-flask-web-application"></a>2. lépés: Új Python Flask-webalkalmazás létrehozása
+## <a name="step-2-create-a-new-python-flask-web-application"></a>2. lépés: Új Python Flask-webalkalmazás létrehozása
 1. A Visual Studio programban, a **File** (Fájl) menüben mutasson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
    
     Megjelenik a **New project** (Új projekt) párbeszédpanel.
@@ -84,7 +88,7 @@ Most végigvezetjük azon, hogyan hozhat létre új Python Flask-webalkalmazást
    
     A környezet sikeres telepítését követően a következőt látja majd a kimeneti ablakban: `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`.
 
-## <a name="step-3:-modify-the-python-flask-web-application"></a>3. lépés: A Python Flask-webalkalmazás módosítása
+## <a name="step-3-modify-the-python-flask-web-application"></a>3. lépés: A Python Flask-webalkalmazás módosítása
 ### <a name="add-the-python-flask-packages-to-your-project"></a>A Python Flask-csomagok hozzáadása a projekthez
 A projekt beállítását követően hozzá kell adnia a szükséges Flask-csomagokat a projekthez, beleértve a pydocumentdb csomagot is, amely a DocumentDB-hez szükséges Python-csomag.
 
@@ -124,7 +128,7 @@ Ellenőrizzük, hogy minden megfelelően telepítve van-e.
     ![A böngészőben megjelenített üres Python Flask webes fejlesztési projekt](./media/documentdb-python-application/image12.png)
 3. Nyomja le a **Shift**+**F5** billentyűkombinációt a Visual Studio alkalmazásban a webhely hibakeresésének leállításához.
 
-### <a name="create-database,-collection,-and-document-definitions"></a>Adatbázis-, gyűjtemény- és dokumentum-definíciók létrehozása
+### <a name="create-database-collection-and-document-definitions"></a>Adatbázis-, gyűjtemény- és dokumentum-definíciók létrehozása
 Ideje létrehozni a szavazóalkalmazást az új fájlok hozzáadásával, valamint a többi fájl frissítésével.
 
 1. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal a **tutorial** nevű projektre, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) gombra. Válassza az **Empty Python File** (Üres Python-fájl) lehetőséget, és adja neki a **forms.py** nevet.  
@@ -142,7 +146,7 @@ class VoteForm(Form):
 ```
 
 
-### <a name="add-the-required-imports-to-views.py"></a>A szükséges importálások hozzáadása a views.py fájlhoz
+### <a name="add-the-required-imports-to-viewspy"></a>A szükséges importálások hozzáadása a views.py fájlhoz
 1. A Solution Explorer (Megoldáskezelő) nézetben bontsa ki a **tutorial** mappát, majd nyissa meg a **views.py** fájlt. 
 2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják majd a DocumentDB Python SDK-it és a Flask-csomagokat.
    
@@ -152,7 +156,7 @@ class VoteForm(Form):
     import pydocumentdb.document_client as document_client
     ```
 
-### <a name="create-database,-collection,-and-document"></a>Adatbázisok, gyűjtemények és dokumentumok létrehozása
+### <a name="create-database-collection-and-document"></a>Adatbázisok, gyűjtemények és dokumentumok létrehozása
 * Adja hozzá az alábbi kódot a **views.py** fájl végéhez. Ezzel létrehozza az űrlap által használt adatbázist. Ne töröljön semmit a **views.py** fájl meglévő kódjából. Egyszerűen csak fűzze hozzá a kódot a fájl végéhez.
 
 ```python
@@ -195,7 +199,7 @@ def create():
 > 
 > 
 
-### <a name="read-database,-collection,-document,-and-submit-form"></a>Adatbázis, gyűjtemény és dokumentum beolvasása, valamint az űrlap elküldése
+### <a name="read-database-collection-document-and-submit-form"></a>Adatbázis, gyűjtemény és dokumentum beolvasása, valamint az űrlap elküldése
 * Adja hozzá az alábbi kódot a **views.py** fájl végéhez. Ezzel létrehozza az űrlapot, beolvassa az adatbázist, a gyűjteményt és a dokumentumot. Ne töröljön semmit a **views.py** fájl meglévő kódjából. Egyszerűen csak fűzze hozzá a kódot a fájl végéhez.
 
 ```python
@@ -310,7 +314,7 @@ def vote():
     {% endblock %}
     ```
 
-### <a name="add-a-configuration-file-and-change-the-\_\_init\_\_.py"></a>Konfigurációs fájl hozzáadása és az \_\_init\_\_.py fájl módosítása
+### <a name="add-a-configuration-file-and-change-the-initpy"></a>Konfigurációs fájl hozzáadása és az \_\_init\_\_.py fájl módosítása
 1. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal a **tutorial** nevű projektre, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) gombra, válassza az **Empty Python File** (Üres Python-fájl) lehetőséget, és a fájlnak adja a **config.py** nevet. A Flask űrlapjainak szüksége van erre a konfigurációs fájlra. Ezzel a fájllal egy titkos kulcsot is megadhat. A jelen oktatóanyaghoz azonban nincs szükség ilyen kulcsra.
 2. Adja hozzá a következő kódot a config.py fájlhoz, és a következő lépésben módosítsa a **DOCUMENTDB\_HOST** és **DOCUMENTDB\_KEY** paraméterek értékét.
    
@@ -343,7 +347,7 @@ def vote():
    
     ![Képernyőfelvétel a Visual Studio Solution Explorer (Megoldáskezelő) ablakáról](./media/documentdb-python-application/image15.png)
 
-## <a name="step-4:-run-your-web-application-locally"></a>4. lépés: A webalkalmazás helyileg történő futtatása
+## <a name="step-4-run-your-web-application-locally"></a>4. lépés: A webalkalmazás helyileg történő futtatása
 1. Fordítsa le a megoldást a **Ctrl**+**Shift**+**B** billentyűkombináció lenyomásával.
 2. A sikeres fordítás után indítsa el a webhelyet az **F5** billentyű lenyomásával. A következőnek kell megjelennie a képernyőn.
    
@@ -359,12 +363,12 @@ def vote():
     ![Képernyőfelvétel a szavazás oldalának Results (Eredmények) lapjáról](./media/documentdb-python-application/image19.png)
 6. A projekt hibakeresésének leállításához nyomja le a Shift+F5 billentyűkombinációt.
 
-## <a name="step-5:-deploy-the-web-application-to-azure-websites"></a>5. lépés: A webalkalmazás Azure Websitesra történő telepítése
+## <a name="step-5-deploy-the-web-application-to-azure-websites"></a>5. lépés: A webalkalmazás Azure Websitesra történő telepítése
 Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB-vel, feltelepítjük a webalkalmazást az Azure Websitesra.
 
 1. Kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) nézetben (győződjön meg arról, hogy helyileg már nem futtatja azt), és válassza a **Publish** (Közzététel) lehetőséget.  
    
-    ![Képernyőfelvétel a kiválasztott „tutorial” projektről a Solution Explorer (Megoldáskezelő) nézetben, a kiemelt Publish (Közzététel) lehetőséggel](./media/documentdb-python-application/image20.png)
+     ![Képernyőfelvétel a kiválasztott „tutorial” projektről a Solution Explorer (Megoldáskezelő) nézetben, a kiemelt Publish (Közzététel) lehetőséggel](./media/documentdb-python-application/image20.png)
 2. A **Publish Web** (Webes közzététel) ablakban válassza a **Microsoft Azure Web Apps** (Microsoft Azure-webalkalmazások) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
    
     ![Képernyőfelvétel a Publish Web (Webes közzététel) ablakról, és a kiemelt Microsoft Azure Web Apps (Microsoft Azure-webalkalmazások) lehetőségről](./media/documentdb-python-application/image21.png)
@@ -405,6 +409,6 @@ További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, W
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

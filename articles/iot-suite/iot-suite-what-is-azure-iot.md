@@ -1,13 +1,13 @@
 ---
-title: Azure-megoldások az eszközök internetes hálózatához | Microsoft Docs
-description: Az IoT áttekintése az Azure-ban, beleértve egy minta megoldásarchitektúrát és azt, hogy miként kapcsolódik az Azure IoT Suite-hoz és az előre konfigurált megoldásokhoz
-services: ''
+title: "Azure-megoldások az eszközök internetes hálózatához | Microsoft Docs"
+description: "Az IoT áttekintése az Azure-ban, beleértve egy minta megoldásarchitektúrát és azt, hogy miként kapcsolódik az Azure IoT Suite-hoz és az előre konfigurált megoldásokhoz"
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 437d2655-896f-4a9e-a4a8-b864790d3ef8
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,18 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87b9b0685ab3401a617e1089312a65d2b5a90099
+
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
-## Azure IoT Suite
+## <a name="azure-iot-suite"></a>Azure IoT Suite
 A Microsoft Azure IoT Suite vállalati szintű megoldás, amellyel gyorsan teheti meg az első lépéseket az előre konfigurált bővíthető megoldások készletével, amely általános IoT-forgatókönyveket, például a [távoli megfigyelést][lnk-preconfigured-solutions] és a [prediktív karbantartást][lnk-predictive-maintenance] érinti. Ezek a megoldások az ebben a cikkben leírt IoT-megoldásarchitektúra megvalósításai.
 
-Az előre konfigurált megoldások teljes, működő, átfogó megoldások, amelyekben a kezdeti lépésekhez szimulált eszközök, előre konfigurált Azure-szolgáltatások, például az [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics][Azure Stream Analytics], [Azure Machine Learning][Azure Machine Learning] és [Azure Storage][Azure Storage], valamint megoldásspecifikus felügyeleti konzolok találhatók. Az előre konfigurált megoldások bevált, éles környezetekben használható kódot tartalmaznak, amelyek testreszabásával és bővítésével megvalósíthatja saját specifikus IoT-megoldásait.
+Az előre konfigurált megoldások teljes, működő, átfogó megoldások, amelyekben a kezdeti lépésekhez szimulált eszközök, előre konfigurált Azure-szolgáltatások, például az [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics][Azure Stream Analytics], [Azure Machine Learning][Azure Machine Learning] és [Azure storage][Azure storage], valamint megoldásspecifikus felügyeleti konzolok találhatók. Az előre konfigurált megoldások bevált, éles környezetekben használható kódot tartalmaznak, amelyek testreszabásával és bővítésével megvalósíthatja saját specifikus IoT-megoldásait.
 
 A sok előre konfigurált megoldás által használt [Azure IoT Hub][Azure IoT Hub] szolgáltatás is érdekelheti. Az [Azure IoT Hub][Azure IoT Hub] biztonságos és megbízható, az előre konfigurált megoldásarchitektúrában használt kétirányú kommunikációt nyújt az eszközök és a felhő között.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ezekben a forrásanyagokban további információt talál az IoT Suite-ról és az előre konfigurált megoldásokról:
 
 * [Mi az Azure IoT Suite?][lnk-whatissuite]
@@ -40,10 +44,11 @@ Ezekben a forrásanyagokban további információt talál az IoT Suite-ról és 
 [Azure Event Hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
 [Azure Stream Analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
-[Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
+[Azure Storage tárterület]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
 
-<!--HONumber=Sep16_HO4-->
+
+<!--HONumber=Nov16_HO2-->
 
 

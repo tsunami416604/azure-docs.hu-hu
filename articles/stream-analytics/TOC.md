@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Mi a Stream Analytics?](stream-analytics-introduction.md)
-## [Stream Analytics – képzési terv](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
 
 # Bevezetés
 ## [IoT streamingelt adatok feldolgozása](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
@@ -8,12 +8,12 @@
 
 # Útmutató
 
-## Streammegoldások
-### [IoT-megoldás készítése](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
-### [Közösségi média elemzése](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [Érzékelőadatok elemzése a Power BI-jal]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
+## Streammegoldások fejlesztése
+### [Eszközök internetes hálózata](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
+### [Közösségi média](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [Érzékelőadatok használata a Power BI-jal](https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
 ### [Valós idejű kiértékelés a Machine Learninggel](stream-analytics-machine-learning-integration-tutorial.md)
-### [Referenciaarchitektúra: Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
 
 ## Fejlesztés
 ### [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
@@ -40,17 +40,21 @@
 ### [Egykattintásos PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [.NET](/dotnet/api/)
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST API](https://msdn.microsoft.com/library/azure/dn835031)
-## [PowerShell](https://msdn.microsoft.com/library/azure/mt270341)
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt416896)
-## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)
-## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)
+## [REST](/rest/api/streamanalytics/)
+## [Kiadási megjegyzések](stream-analytics-release-notes.md)
+
 # Erőforrások
-## [MSDN blog](http://blogs.msdn.com/b/streamanalytics/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/stream-analytics/)
+## [Blog](http://blogs.msdn.com/b/streamanalytics/)
+## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Visszajelzési fórum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=stream-analytics)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
 <!--HONumber=Nov16_HO2-->

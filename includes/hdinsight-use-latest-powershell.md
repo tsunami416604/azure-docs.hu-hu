@@ -1,10 +1,12 @@
 > [!IMPORTANT]
-> Azure PowerShell support for managing HDInsight resources using Azure Service Manager (ASM) is **deprecated**, and will be removed by January 1, 2017. The steps in this document use the new HDInsight cmdlets that work with Azure Resource Manager (ARM).
+> A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure PowerShell-támogatása **elavult**, így 2017. január 1-től megszűnik. A jelen dokumentumban leírt lépések az új HDInsight-parancsmagokat használják, amelyek az Azure Resource Managerrel (ARM) működnek.
 > 
-> Please follow the steps in [Install and configure Azure PowerShell](../articles/powershell-install-configure.md) to install the latest version of Azure PowerShell. If you have scripts that need to be modified to use the new cmdlets that work with Azure Resource Manager, see [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) for more information.
+> Kérjük, kövesse az alábbi cikkben leírt lépéseket az Azure PowerShell legújabb verziójának telepítéséhez: [Install and configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell letöltése és konfigurálása). Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új, az Azure Resource Managerrel működő parancsmagok használatához, tekintse meg az alábbi cikket: [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) (Az Azure Resource Manager-alapú fejlesztési eszközökre való áttérés HDInsight-fürtök esetén).
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

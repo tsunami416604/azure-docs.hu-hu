@@ -1,12 +1,12 @@
 ---
-title: Aszimmetrikus útválasztás | Microsoft Docs
-description: Ez a cikk végigvezeti Önt azokon a problémákon, amelyekkel az ügyfeleknek szembe kell nézniük, amikor aszimmetrikus útválasztást állítanak be olyan hálózatokon, amelyek több kapcsolattal is rendelkeznek a célhoz.
+title: "Aszimmetrikus útválasztás | Microsoft Docs"
+description: "Ez a cikk végigvezeti Önt azokon a problémákon, amelyekkel az ügyfeleknek szembe kell nézniük, amikor aszimmetrikus útválasztást állítanak be olyan hálózatokon, amelyek több kapcsolattal is rendelkeznek a célhoz."
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamazia
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
+
 
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Aszimmetrikus útválasztás több hálózati elérési úttal
@@ -60,7 +64,7 @@ Gondoskodjon róla, hogy a nyilvános IP-címeit a megfelelő távoli hálózati
 
 Ha az ExpressRoute-ot szeretné használni a hitelesítéshez, ügyeljen rá, hogy az AD FS nyilvános IP-címeit az ExpressRoute-on keresztül, NAT nélkül hirdesse meg. Ezzel a módszerrel a Microsofttól érkező, és egy helyszíni AD FS-kiszolgálóra irányuló forgalom az ExpressRoute-on halad keresztül. Az ügyféltől a Microsoft felé irányuló forgalom az ExpressRoute-ot használja, mivel az az előnyben részesített elérési út.
 
-### <a name="source-based-nat"></a>Forrásalapú NAT
+### <a name="sourcebased-nat"></a>Forrásalapú NAT
 Az aszimmetrikus útválasztás által okozott problémák megoldásának másik módját az SNAT használata jelenti. Tegyük fel, hogy nem hirdette meg egy helyszíni SMTP-kiszolgáló nyilvános IP-címét az ExpressRoute-on keresztül, mert az ilyen típusú kommunikációhoz az internetet szeretné használni. A Microsoft felől érkező, a helyszíni SMTP-kiszolgáló irányába tartó kérés az interneten halad keresztül. A beérkező kérelmet az SNAT használatával egy belső IP-címre irányítja át. Az SMTP-kiszolgálótól származó, fordított irányú forgalom az ExpressRoute helyett a peremhálózati tűzfalra érkezik (mivel ezt használja az SNAT megvalósításához). A visszafelé irányuló forgalom az interneten halad keresztül.
 
 ![A forrásalapú NAT hálózati konfigurációja](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
@@ -68,6 +72,9 @@ Az aszimmetrikus útválasztás által okozott problémák megoldásának másik
 ## <a name="asymmetric-routing-detection"></a>Az aszimmetrikus útválasztás észlelése
 A Traceroute a legjobb módszer annak vizsgálatához, hogy a forgalom a várt útvonalat járja-e be. Ha azt várja, hogy a helyszíni SMTP-kiszolgálóról a Microsoft felé irányuló forgalom az interneten haladjon keresztül, a traceroute által megjelenített útvonalnak az SMTP-kiszolgálótól kell indulnia és az Office 365 szolgáltatásnál kell végződnie. Az eredmény alapján ellenőrizheti, hogy a forgalom valóban az internet felé, és nem az ExpressRoute irányában hagyja el a hálózatot.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

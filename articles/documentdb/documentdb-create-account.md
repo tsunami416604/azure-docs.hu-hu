@@ -1,23 +1,27 @@
 ---
-title: DocumentDB-fiók létrehozása | Microsoft Docs
-description: NoSQL-adatbázis felépítése az Azure DocumentDB szolgáltatással. Kövesse ezeket az utasításokat egy DocumentDB-fiók létrehozásához és a rendkívül gyors, globális méretű NoSQL-adatbázis felépítésének elkezdéséhez.
-keywords: adatbázis felépítése
+title: "DocumentDB-fiók létrehozása | Microsoft Docs"
+description: "NoSQL-adatbázis felépítése az Azure DocumentDB szolgáltatással. Kövesse ezeket az utasításokat egy DocumentDB-fiók létrehozásához és a rendkívül gyors, globális méretű NoSQL-adatbázis felépítésének elkezdéséhez."
+keywords: "adatbázis felépítése"
 services: documentdb
-documentationcenter: ''
+documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 0e7f8488-7bb7-463e-b6fd-3ae91a02c03a
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2016
+ms.date: 10/17/2016
 ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b512a8d3f9b02ec2ec079486e04951ce02ba48c1
+
 
 ---
-# DocumentDB NoSQL-fiók létrehozása az Azure Portal használatával
+# <a name="how-to-create-a-documentdb-nosql-account-using-the-azure-portal"></a>DocumentDB NoSQL-fiók létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Portal](documentdb-create-account.md)
 > * [Azure parancssori felület és Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
@@ -33,8 +37,8 @@ DocumentDB-fiókot az Azure Portallal, Azure Resource Manager-sablonokkal vagy A
 
 Nem ismeri még a DocumentDB szolgáltatást? Nézze meg [ezt](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) a Scott Hanselman által készített négyperces videót arról, hogyan végezheti el a legáltalánosabb feladatokat az online portálon.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az ugrósávon kattintson az **Új**, majd az **Adatok + tárolás**, és végül az **Azure DocumentDB (NoSQL)** elemre.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Az ugrósávon kattintson az **Új**, majd az **Adatbázisok**, és végül az **Azure DocumentDB (NoSQL)** elemre. 
    
    ![Képernyőfelvétel az Azure Portalról, a További szolgáltatások és a DocumentDB (NoSQL) menüpont kiemelve](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
 3. Az **Új fiók** panelen adja meg a DocumentDB-fiók kívánt beállításait.
@@ -65,26 +69,29 @@ Nem ismeri még a DocumentDB szolgáltatást? Nézze meg [ezt](https://azure.mic
 [documentdb-manage]:../articles/documentdb/documentdb-manage.md
 
 
-## Következő lépések
-Most, hogy már rendelkezik DocumentDB-fiókkal, a következő lépés az adatbázis létrehozása. 
+## <a name="next-steps"></a>Következő lépések
+Most, hogy már rendelkezik DocumentDB-fiókkal, a következő lépés a DocumentDB- gyűjtemény és -adatbázis létrehozása. 
 
-A következő módszerekkel hozhat létre új adatbázist:
+A következő módszerekkel hozhat létre új gyűjteményt és adatbázist:
 
-* Az Azure Portal használatával, amelyet a [DocumentDB-adatbázis létrehozása az Azure Portallal](documentdb-create-database.md) című szakasz ismertet.
+* Az Azure Portal használatával, amelyet a [DocumentDB-gyűjtemény létrehozása az Azure Portallal](documentdb-create-collection.md) című szakasz ismertet.
 * Az átfogó, mintaadatokat is tartalmazó oktatóanyagokkal: [.NET](documentdb-get-started.md), [.NET MVC](documentdb-dotnet-application.md), [Java](documentdb-java-application.md), [Node.js](documentdb-nodejs-application.md) vagy [Python](documentdb-python-application.md).
 * A GitHubon elérhető [.NET-](documentdb-dotnet-samples.md#database-examples), [Node.js-](documentdb-nodejs-samples.md#database-examples), vagy [Python-](documentdb-python-samples.md#database-examples) mintakódokkal.
 * A [.NET](documentdb-sdk-dotnet.md), [Node.js](documentdb-sdk-node.md), [Java](documentdb-sdk-java.md), [Python](documentdb-sdk-python.md), és [REST](https://msdn.microsoft.com/library/azure/mt489072.aspx) SDK-kkal.
 
-Az adatbázis létrehozása után [egy vagy több gyűjteményt kell hozzáadnia](documentdb-create-collection.md) az adatbázishoz, majd [dokumentumokat kell hozzáadnia](documentdb-view-json-document-explorer.md) a gyűjteményekhez.
+Az adatbázis és a gyűjtemény létrehozása után [dokumentumokat kell hozzáadnia](documentdb-view-json-document-explorer.md) a gyűjteményekhez.
 
 Miután dokumentumokat adott a gyűjteményhez, a [DocumentDB SQL](documentdb-sql-query.md) használatával [lekérdezéseket végezhet](documentdb-sql-query.md#executing-queries) a dokumentumokon. A lekérdezéseket a portálon található [Lekérdezéskezelővel](documentdb-query-collections-query-explorer.md), a [REST API-val](https://msdn.microsoft.com/library/azure/dn781481.aspx) vagy az egyik [SDK-val](documentdb-sdk-dotnet.md) végezheti el.
 
-### További információ
+### <a name="learn-more"></a>További információ
 Az alábbi forrásokból többet is megtudhat a DocumentDB-ről:
 
 * [DocumentDB képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 * [DocumentDB hierarchikus erőforrásmodell és fogalmak](documentdb-resources.md)
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

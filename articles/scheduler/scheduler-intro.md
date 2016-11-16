@@ -1,12 +1,12 @@
 ---
 title: Mi az Azure Scheduler? | Microsoft Docs
-description: Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek deklaratív leírására. A rendszer ezt követően a műveletek ütemezését és futtatását automatikusan végzi el.
+description: "Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek deklaratív leírására. A rendszer ezt követően a műveletek ütemezését és futtatását automatikusan végzi el."
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: ''
-
+editor: 
+ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.service: scheduler
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f2b21e24a5f692fa315db7b58d2d2824f7145729
+
 
 ---
-# Mi az Azure Scheduler?
+# <a name="what-is-azure-scheduler"></a>Mi az Azure Scheduler?
 Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek deklaratív leírására. A rendszer ezt követően a műveletek ütemezését és futtatását automatikusan végzi el.  A Scheduler ezt [az Azure portál](scheduler-get-started-portal.md), a kód, [a REST API](https://msdn.microsoft.com/library/mt629143.aspx) vagy az Azure PowerShell használatával végzi el.
 
 A Scheduler elvégzi az ütemezett munkák létrehozását, karbantartását és meghívását.  A Scheduler nem futtat számítási feladatokat vagy kódokat. A szolgáltatás csupán *meghívja* a máshol (az Azure-ban, helyszínen vagy másik szolgáltató által) futtatott kódokat. A meghívás a következőkön keresztül történhet: HTTP, HTTPS, tárolási sor, Service Bus-üzenetsor vagy Service Bus-témakör.
@@ -30,10 +34,10 @@ A Scheduler számos különböző helyzetben alkalmazható kiválóan. Példa:
 
 A Scheduler segítségével szoftveresen hozhat létre, frissíthet, törölhet, tekinthet meg és felügyelhet feladatokat és [feladatgyűjteményeket](scheduler-concepts-terms.md), parancsprogramok használatával vagy a portálon.
 
-## Lásd még:
- [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
+## <a name="see-also"></a>Lásd még:
+ [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
 
- [Ismerkedés a Scheduler szolgáltatás Azure portálon való használatával](scheduler-get-started-portal.md)
+ [Ismerkedés a Scheduler szolgáltatás Azure Portalon való használatával](scheduler-get-started-portal.md)
 
  [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
 
@@ -47,8 +51,11 @@ A Scheduler segítségével szoftveresen hozhat létre, frissíthet, törölhet,
 
  [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
 
- [Azure Scheduler – kimeneti hitelesítés](scheduler-outbound-authentication.md)
+ [Kimenő hitelesítés az Azure Schedulerben](scheduler-outbound-authentication.md)
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

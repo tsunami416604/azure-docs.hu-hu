@@ -1,10 +1,12 @@
 
 
 > [!WARNING]
-> HDInsight clusters billing is pro-rated per minute, whether you are using them or not. Please be sure to delete your cluster after you have finished using it. For information on deleting a cluster, see [How to delete an HDInsight cluster](../articles/hdinsight/hdinsight-delete-cluster.md).
+> A HDInsight-fürtök számlázása percenként történik, akár használja őket, akár nem. Kérjük, mindig törölje a fürtöt, ha már nem használja. A fürtök törlésével kapcsolatos további információk: [How to delete an HDInsight cluster](../articles/hdinsight/hdinsight-delete-cluster.md) (HDInsight-fürtök törlése).
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

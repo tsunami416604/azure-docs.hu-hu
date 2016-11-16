@@ -55,6 +55,9 @@
 ## Fejlesztés
 ### [Funkciók hozzáadása az első webalkalmazáshoz](app-service-web-get-started-2.md)
 ### [Webalkalmazás létrehozása Linuxon](app-service-linux-how-to-create-a-web-app.md)
+### [Az App Service dokumentációja](app-service-changes-existing-services.md)
+### [Azure Portal](app-service-web-app-azure-portal.md)
+### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
 ### ASP.NET-alkalmazások
 #### [Helyezze üzembe az első .NET-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-dotnet.md)
@@ -110,7 +113,7 @@
 #### [App Service Environment létrehozása](app-service-web-how-to-create-an-app-service-environment.md)
 #### [Webalkalmazás létrehozása Azure App Service Environment-környezetben](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 #### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
-#### [Belső terheléselosztó használata](app-service-environment-with-internal-load-balancer.md)
+#### [Belső Load Balancer használata](app-service-environment-with-internal-load-balancer.md)
 
 ## [Üzembe helyezés](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Üzembe helyezés az App Service-ben](web-sites-deploy.md)
@@ -130,7 +133,7 @@
 ### [Alkalmazás vertikális felskálázása](web-sites-scale.md)
 ### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Földrajzi alapú méretezés App Service Environment-környezetekkel](app-service-app-service-environment-geo-distributed-scale.md)
-#### [Alkalmazások skálázása App Service Environment-környezetben](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+#### [Alkalmazások méretezése App Service-környezetben](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 #### [Automatikus skálázás App Service Environment-környezetben](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Azure CDN](../cdn/cdn-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 
@@ -164,7 +167,7 @@
 #### [Hálózati konfiguráció részletei az ExpressRoute-tal](app-service-app-service-environment-network-configuration-expressroute.md)
 
 ## Biztonsági mentés
-### [Alkalmazás biztonsági mentése az Azure-ban](web-sites-backup.md)
+### [Adatok biztonsági mentése az Azure-ban](web-sites-backup.md)
 ### [Alkalmazás visszaállítása az Azure-ban](web-sites-restore.md)
 ### [A REST használata App Service-alkalmazások biztonsági mentésére és visszaállítására](websites-csm-backup.md)
 
@@ -203,7 +206,7 @@
 ### [Azure-webalkalmazás teljesítménytesztelése terhelés alatt](app-service-web-app-performance-test.md) 
 
 ## Automatizálás
-### [Rugalmas fejlesztés](app-service-agile-software-development.md)
+### [Agile fejlesztés](app-service-agile-software-development.md)
 ### [Az Azure Resource Manager üzembe helyezése](app-service-deploy-complex-application-predictably.md)
 #### [Web és GitHub](app-service-web-arm-from-github-provision.md)
 #### [Web és SQL](app-service-web-arm-with-sql-database-provision.md)
@@ -243,9 +246,10 @@
 ### [Webalkalmazások teljesítménnyel kapcsolatos problémáinak elhárítása](app-service-web-troubleshoot-performance-degradation.md)
 
 # Referencia
-## [Az App Service dokumentációja](app-service-changes-existing-services.md)
-## [Azure Portal](app-service-web-app-azure-portal.md)
-## [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
+## [Azure CLI](/cli/azure/)
+## [Java](/java/api/)
+## [.NET](/dotnet/api)
+## [REST](/rest/api/appservice)
 
 # Kapcsolódó
 ## [A .NET-hez készült Azure SDK kibocsátási megjegyzései](azure-sdk-dotnet-release-notes.md)

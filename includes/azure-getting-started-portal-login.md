@@ -8,24 +8,26 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## Connect to the Azure portal with a subscription
-To connect to the Azure portal, you must have a subscription.
+## <a name="connect-to-the-azure-portal-with-a-subscription"></a>Csatlakozás az Azure Portalhoz előfizetéssel
+Az Azure Portalhoz való csatlakozáshoz előfizetéssel kell rendelkeznie.
 
-### Get a new account
-If you do not have an existing Azure account, choose one of the following options to obtain an account:
+### <a name="get-a-new-account"></a>Új fiók létrehozása
+Ha még nem rendelkezik Azure-fiókkal, válassza az alábbi lehetőségek valamelyikét a létrehozásához:
 
-* Get a [free account](https://azure.microsoft.com/get-started/).
-* Use an [MSDN subscription](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/).
+* [Ingyenes fiók](https://azure.microsoft.com/get-started/) létrehozása.
+* [MSDN-előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) használata.
 
-### Sign in by using your existing account
-Using your [existing subscription](https://account.windowsazure.com/Home/Index), follow these steps to connect to the Azure portal.
+### <a name="sign-in-by-using-your-existing-account"></a>Bejelentkezés meglévő fiókkal
+[Meglévő előfizetés](https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure Portalhoz való csatlakozáshoz.
 
-1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/).
-2. Sign in to the [Azure portal](https://portal.azure.com/).
-3. On the **Sign in** page, provide the credentials for your subscription.
+1. Nyisson meg egy tetszőleges böngészőt, és csatlakozzon az [Azure Portalhoz](https://portal.azure.com/).
+2. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+3. A **Bejelentkezés** oldalon adja meg az előfizetése hitelesítő adatait.
    
-   ![Sign in](./media/azure-getting-started-portal-login/login.png)
+   ![Bejelentkezés](./media/azure-getting-started-portal-login/login.png)
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

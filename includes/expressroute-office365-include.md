@@ -7,6 +7,8 @@ A szoftverszolgáltatásokat, például az Office 365-öt és a Dynamics 365-öt
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

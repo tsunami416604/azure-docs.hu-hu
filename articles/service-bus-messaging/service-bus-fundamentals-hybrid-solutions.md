@@ -1,12 +1,12 @@
 ---
 title: Azure Service Bus | Microsoft Docs
-description: Bevezetés a Service Bus használatába az Azure-alkalmazások más szoftverekhez való csatlakoztatásához.
+description: "Bevezetés a Service Bus használatába az Azure-alkalmazások más szoftverekhez való csatlakoztatásához."
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
 ms.service: service-bus
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
+
 
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
@@ -73,7 +77,7 @@ Bármennyire hasznosak is, az üzenetsorok nem minden esetben bizonyulnak a megf
 A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugyanúgy küldik az üzeneteket a témakörökbe, ahogy az üzenetsorokba, és az üzenetek is ugyanúgy néznek ki, mint az üzenetsorok esetén. A legnagyobb különbség az, hogy a témakörök használatával mindegyik fogadó alkalmazás létrehozhatja saját *előfizetését* egy *szűrő* definiálásával. Az előfizető csak azokat az üzeneteket látja majd, amelyek megfelelnek a szűrőnek. A 3. ábrán például egy küldő és egy 3 előfizetővel rendelkező témakör látható, mely előfizetők mindegyike saját szűrővel rendelkezik:
 
 * Az 1. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ava"* tulajdonságot.
-* Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
+* Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
 * A 3. előfizető a szűrőt *Igaz* értékűre állította, ami azt jelenti, hogy minden üzenetet megkap. Ez az alkalmazás például a naplózásért lehet felelős, és ezért minden üzenetet meg kell kapnia.
 
 Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a **ReceiveAndDelete** és a **PeekLock** mód között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
@@ -106,7 +110,7 @@ Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat 
 * A [Service Bus-üzenetsorok](service-bus-dotnet-get-started-with-queues.md) használata
 * A [Service Bus-témakörök](service-bus-dotnet-how-to-use-topics-subscriptions.md) használata
 * A [Service Bus-továbbító](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) használata
-* [Service Bus-minták](../service-bus/service-bus-samples.md)
+* [Service Bus-minták](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png
 [2]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_02_queues.png
@@ -115,6 +119,6 @@ Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat 
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

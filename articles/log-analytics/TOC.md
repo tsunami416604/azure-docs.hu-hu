@@ -1,12 +1,13 @@
 # Áttekintés
 ## [Mi az a Log Analytics?](log-analytics-overview.md)
 ## [Adatbiztonság](log-analytics-security.md)
-## [Log Analytics – gyakori kérdések](log-analytics-faq.md)
+
 # Első lépések
 ## [Regisztráció a Log Analyticsre](log-analytics-get-started.md)
 ## [Hozzáférés-kezelés](log-analytics-manage-access.md)
 ## [Proxy és tűzfal](log-analytics-proxy-firewall.md)
 ## [Használati adatok](log-analytics-usage.md)
+## [Log Analytics – gyakori kérdések](log-analytics-faq.md)
 
 # Útmutató
 ## Integrálás
@@ -48,7 +49,6 @@
 #### [SQL-elemzés](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [Rendszerfrissítés-elemzés](log-analytics-system-update.md)
-#### [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 #### [VMware](log-analytics-vmware.md)
 #### [Átviteli adatok](log-analytics-wire-data.md)
 ## Elemzés
@@ -60,9 +60,9 @@
 ### [PowerShell-parancsmagok](log-analytics-powershell-workspace-configuration.md)
 ### [Naplókeresési API](log-analytics-log-search-api.md)
 ### [Riasztási API](log-analytics-api-alerts.md)
-# Referencia
-# Kapcsolódó
+
 # Erőforrások
+## [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 
 
 

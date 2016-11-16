@@ -1,12 +1,12 @@
 ---
-title: Funkciók hozzáadása az első webalkalmazáshoz
-description: Néhány perc alatt menő funkciókat adhat hozzá az első webalkalmazásához.
+title: "Funkciók hozzáadása az első webalkalmazáshoz"
+description: "Néhány perc alatt menő funkciókat adhat hozzá az első webalkalmazásához."
 services: app-service\web
-documentationcenter: ''
+documentationcenter: 
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: 542671c2-22f0-4f20-8b4b-fa477264c492
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/12/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
+
 
 ---
-# Funkciók hozzáadása az első webalkalmazáshoz
-A [Webalkalmazás üzembe helyezése az Azure-on 5 perc alatt](app-service-web-get-started.md) fejezetben egy egyszerű webalkalmazást telepített az [Azure App Service-be](../app-service/app-service-value-prop-what-is.md). Ebben a cikkben megtudhatja, hogyan adhat gyorsan hozzá remek funkciókat az üzembe helyezett webalkalmazáshoz. Néhány perc alatt:
+# <a name="add-functionality-to-your-first-web-app"></a>Funkciók hozzáadása az első webalkalmazáshoz
+A [Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started.md) című témakörben egy egyszerű webalkalmazást helyezett üzembe az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md). Ebben a cikkben megtudhatja, hogyan adhat gyorsan hozzá remek funkciókat az üzembe helyezett webalkalmazáshoz. Néhány perc alatt:
 
 * hitelesítést kényszeríthet ki felhasználói számára,
 * automatikusan skálázhatja az alkalmazást,
@@ -32,16 +36,16 @@ A jelen oktatóanyagban lévő három tevékenység csupán néhány példája a
 > 
 > 
 
-## A felhasználók hitelesítése
+## <a name="authenticate-your-users"></a>A felhasználók hitelesítése
 Most pedig lássuk, mennyire egyszerű hitelesítést hozzáadni az alkalmazáshoz (további információk: [App Service Authentication/Authorization](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/) (App Service hitelesítés/engedélyezés)).
 
 1. Az alkalmazás imént megnyitott portálpanelén kattintson a **Beállítások** > **Hitelesítés/engedélyezés** lehetőségre.  
-    ![Hitelesítés – beállítások panel](./media/app-service-web-get-started/aad-login-settings.png)
+    ![Hitelesítés – beállítások panelje](./media/app-service-web-get-started/aad-login-settings.png)
 2. A hitelesítés bekapcsolásához kattintson a **Bekapcsolva** lehetőségre.  
 3. A **Hitelesítésszolgáltatók** részen kattintson az **Azure Active Directory** lehetőségre.  
     ![Hitelesítés – az Azure AD kiválasztása](./media/app-service-web-get-started/aad-login-config.png)
 4. Az **Azure Active Directory beállításai** panelen kattintson az **Expressz** lehetőségre, majd kattintson az **OK** gombra. Alapértelmezés szerint az új Azure AD alkalmazás az alapértelmezett címtárban jön létre.  
-   ![Hitelesítés – expressz konfiguráció](./media/app-service-web-get-started/aad-login-express.png)
+    ![Hitelesítés – expressz konfiguráció](./media/app-service-web-get-started/aad-login-express.png)
 5. Kattintson a **Save** (Mentés) gombra.  
     ![Hitelesítés – konfiguráció mentése](./media/app-service-web-get-started/aad-login-save.png)
    
@@ -52,7 +56,8 @@ Most pedig lássuk, mennyire egyszerű hitelesítést hozzáadni az alkalmazásh
     ![Hitelesítés – bejelentkezve](./media/app-service-web-get-started/aad-login-browse-http-postclick.png)  
     Ha tehát most egy nem hitelesített munkamenetet nyit meg egy másik böngészőben, akkor ugyanazon URL-címre lépve egy bejelentkezési képernyőt fog látni.  
     <!-- ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png)  -->
-    Ha semmit nem tett az Azure Active Directory-val, akkor előfordulhat, hogy az alapértelmezett címtárban nincsenek Azure AD felhasználók. Ebben az esetben az itt lévő egyetlen fiók az Azure előfizetéssel rendelkező Microsoft-fiók. Ezért jelentkeztette be ezt megelőzően a rendszer automatikusan az alkalmazásba ugyanabból a böngészőből. Ezen az oldalon is bejelentkezhet ugyanazzal a Microsoft-fiókkal.
+    Ha semmit nem tett az Azure Active Directoryval, akkor előfordulhat, hogy az alapértelmezett címtárban nincsenek Azure AD-felhasználók. Ebben az esetben az itt lévő egyetlen fiók az Azure előfizetéssel rendelkező Microsoft-fiók. Ezért jelentkeztette be ezt megelőzően a rendszer automatikusan az alkalmazásba ugyanabból a böngészőből.
+   Ezen az oldalon is bejelentkezhet ugyanazzal a Microsoft-fiókkal.
 
 Gratulálunk, Ön mostantól minden, a webalkalmazásba irányuló forgalmat hitelesít.
 
@@ -62,21 +67,22 @@ Talán észrevette, hogy a **Hitelesítés/engedélyezés** panelen sokkal több
 * Többször bejelentkezési beállítás engedélyezése
 * Az alkalmazás első meglátogatásakor az alapértelmezett viselkedés módosítása
 
-Az App Service „kulcsrakész” megoldást kínál néhány gyakori hitelesítési igényre, így nem Önnek kell megadni a hitelesítési logikát. További információ: [App Service Authentication/Authorization](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/) (App Service hitelesítés/engedélyezés).
+Az App Service „kulcsrakész” megoldást kínál néhány gyakori hitelesítési igényre, így nem Önnek kell megadni a hitelesítési logikát.
+További információ: [App Service Authentication/Authorization](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/) (App Service hitelesítés/engedélyezés).
 
-## Alkalmazás igény szerinti automatikus skálázása
-Most pedig skálázzuk automatikusan az alkalmazást, hogy az a felhasználói igények szerint automatikusan módosítsa a kapacitását (további információ: [Scale up your app in Azure](web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) és [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása)). 
+## <a name="scale-your-app-automatically-based-on-demand"></a>Alkalmazás igény szerinti automatikus skálázása
+Most pedig skálázzuk automatikusan az alkalmazást, hogy az a felhasználói igények szerint automatikusan módosítsa a kapacitását (további információ: [Scale up your app in Azure](web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) és [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása)).
 
 Röviden: a webalkalmazás két módon skálázható:
 
-* [Vertikális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Nagyobb processzorteljesítmény, több memória, lemezterület és extra funkciók, például dedikált virtuális gépek, egyedi tartományok és tanúsítványok, előkészítési pontok, automatikus skálázás és még sok más. A horizontális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service-csomag tarifacsomagját.
-* [horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Az alkalmazást futtató virtuálisgép-példányok számának növelése.
+* [Vertikális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Nagyobb processzorteljesítmény, több memória, lemezterület és extra funkciók, például dedikált virtuális gépek, egyedi tartományok és tanúsítványok, előkészítési pontok, automatikus skálázás és még sok más. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service-csomag tarifacsomagját.
+* [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): az alkalmazást futtató virtuálisgép-példányok számának növelése.
   A tarifacsomagtól függően legfeljebb 50 példányt lehet horizontálisan felskálázni.
 
 Most pedig végre lássuk hozzá az automatikus skálázás beállításához.
 
 1. Először is vertikálisan skálázzunk fel az automatikus skálázás engedélyezéséhez. Az alkalmazás portálpanelén kattintson a **Beállítások** > **Vertikális felskálázás (App Service-csomag)** lehetőségre.  
-    ![Vertikális felskálázás – beállítások panel](./media/app-service-web-get-started/scale-up-settings.png)
+    ![Vertikális felskálázás – beállítások panelje](./media/app-service-web-get-started/scale-up-settings.png)
 2. Görgessen és válassza ki az automatikus skálázást támogató legalacsonyabb, **S1 Standard** szintet (a képernyőképen be van karikázva), majd kattintson a **Kiválasztás** lehetőségre.  
     ![Vertikális felskálázás – szint kiválasztása](./media/app-service-web-get-started/scale-up-select.png)
    
@@ -87,11 +93,11 @@ Most pedig végre lássuk hozzá az automatikus skálázás beállításához.
    > 
    > 
 3. Most pedig konfiguráljuk az automatikus skálázást. Az alkalmazás portálpanelén kattintson a **Beállítások** > **Horizontális felskálázás (App Service-csomag)** lehetőségre.  
-    ![Horizontális felskálázás -–beállítások panel](./media/app-service-web-get-started/scale-out-settings.png)
+    ![Horizontális felskálázás -–beállítások panelje](./media/app-service-web-get-started/scale-out-settings.png)
 4. A **Méretezés** beállítást módosítsa **CPU Percentage** (Processzorhasználat (%) szerint) értékre. A legördülő menü alatti csúszkák ennek megfelelően frissülnek. Ezután határozzon meg egy **1** és **2** közötti **példányszám** tartományt és egy **40** és **80**. közötti **céltartományt**. Ezt a mezőkbe gépelve vagy a csúszkák mozgatásával teheti meg.  
-   ![Horizontális felskálázás – automatikus skálázás konfigurálása](./media/app-service-web-get-started/scale-out-configure.png)
+    ![Horizontális felskálázás – automatikus skálázás konfigurálása](./media/app-service-web-get-started/scale-out-configure.png)
    
-    Ezen konfiguráció alapján az alkalmazás 80%-os processzor-kihasználtság felett horizontálisan skálázódik fel, 40%-os processzor-kihasználtság alatt pedig horizontálisan skálázódik le automatikusan. 
+    Ezen konfiguráció alapján az alkalmazás 80%-os processzor-kihasználtság felett horizontálisan skálázódik fel, 40%-os processzor-kihasználtság alatt pedig horizontálisan skálázódik le automatikusan.
 5. A menüsávon kattintson a **Mentés** gombra.
 
 Gratulálunk, az alkalmazás mostantól automatikusan skálázódik.
@@ -104,22 +110,23 @@ Talán észrevette, hogy a **Skálázás beállításai** panelen sokkal több l
 * Ütemezett automatikus skálázás
 * Automatikus skálázási viselkedés beállítása jövőbeli eseményekhez
 
-Az alkalmazás vertikális felskálázásával kapcsolatban a [Scale up your app in Azure](web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) című témakörben tekinthet meg további információt. A horizontális felskálázással kapcsolatos további információ: [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása).
+Az alkalmazás vertikális felskálázásával kapcsolatban a [Scale up your app in Azure](web-sites-scale.md) (Alkalmazás vertikális felskálázása az Azure-ban) című témakörben tekinthet meg további információt. A horizontális felskálázással kapcsolatos további információ: [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Példányszám manuális vagy automatikus skálázása).
 
-## Az alkalmazással kapcsolatos riasztások fogadása
-Most, hogy az alkalmazás automatikusan skálázódik, mi történik, ha eléri a maximális példányszámot (2) és a CPU kihasználtsága a kívánt szint (80%) felett van? Riasztásokat állíthat be (további információ: [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) (Riasztások fogadása)), hogy értesítsék erről a helyzetről, így például újabb skálázásokat hajthat végre az alkalmazáson. Állítsunk is be gyorsan egy riasztást ehhez a forgatókönyvhöz.
+## <a name="receive-alerts-for-your-app"></a>Az alkalmazással kapcsolatos riasztások fogadása
+Most, hogy az alkalmazás automatikusan skálázódik, mi történik, ha eléri a maximális példányszámot (2) és a CPU kihasználtsága a kívánt szint (80%) felett van?
+Riasztásokat állíthat be (további információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) (Riasztások fogadása)), hogy értesítsék erről a helyzetről, így például újabb skálázásokat hajthat végre az alkalmazáson. Állítsunk is be gyorsan egy riasztást ehhez a forgatókönyvhöz.
 
 1. Az alkalmazás portálpanelén kattintson az **Eszközök** > **Riasztások** lehetőségre.  
-    ![Riasztások – beállítások panel](./media/app-service-web-get-started/alert-settings.png)
+    ![Riasztások – beállítások panelje](./media/app-service-web-get-started/alert-settings.png)
 2. Kattintson a **Riasztás hozzáadása** gombra. Ezután az **Erőforrás** mezőben válassza ki a **(serverfarms)** kifejezéssel végződő erőforrást. Ez az Ön App Service-csomagja.  
-    ![Riasztások - riasztások hozzáadása az App Service-csomaghoz](./media/app-service-web-get-started/alert-add.png)
+    ![Riasztások – riasztások hozzáadása az App Service-csomaghoz](./media/app-service-web-get-started/alert-add.png)
 3. Adja meg a **nevet**: `CPU Maxed`, a **metrikát**: **CPU Percentage** (Processzorhasználat (%)) és a **határértéket**: `90`, majd válassza ki az **E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak** lehetőséget, és kattintson az **OK** gombra.   
-   ![Riasztások – riasztás konfigurálása](./media/app-service-web-get-started/alert-configure.png)
+    ![Riasztások – riasztás konfigurálása](./media/app-service-web-get-started/alert-configure.png)
    
     Miután az Azure végzett a létrehozással, a riasztás a **Riasztások** panelen jelenik meg.  
     ![Riasztások – záró nézet](./media/app-service-web-get-started/alert-done.png)
 
-Gratulálunk, mostantól riasztásokat fog kapni. 
+Gratulálunk, mostantól riasztásokat fog kapni.
 
 Ez a riasztási beállítás ötpercenként ellenőrzi a processzor kihasználtságát. Ha ez a szám 90% fölé megy, akkor Ön, illetve minden engedélyezett felhasználó egy e-mail figyelmeztetést fog kapni. A riasztás fogadására jogosult összes felhasználó megtekintéséhez lépjen vissza az alkalmazás portálpaneljéhez és kattintson a **Hozzáférés** gombra.  
 ![A riasztás fogadására jogosultak megtekintése](./media/app-service-web-get-started/alert-rbac.png)
@@ -127,17 +134,17 @@ Ez a riasztási beállítás ötpercenként ellenőrzi a processzor kihasználts
 Látni fogja, hogy az **Előfizetés rendszergazdái** már **tulajdonosai** az alkalmazásnak. Ez a csoport Önt is magában foglalja, ha Ön az Azure előfizetés (például próbaverziós előfizetés) fiókadminisztrátora. Az Azure szerepköralapú hozzáférés-vezérlésével kapcsolatos további információk: [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md) (Azure szerepköralapú hozzáférés-vezérlés).
 
 > [!NOTE]
-> A riasztási szabályok az Azure szolgáltatásai. További információ: [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) (Riasztások fogadása). 
+> A riasztási szabályok az Azure szolgáltatásai. További információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) (Riasztások fogadása).
 > 
 > 
 
-## Következő lépések
-A riasztás konfigurálása során talán már észrevette az **Eszközök** panelen lévő eszközök széles skáláját. Segítségükkel hibákat háríthat el, figyelemmel kísérheti a teljesítményt, sebezhetőségeket kereshet, erőforrásokat kezelhet, interakcióba léphet a virtuális gép konzoljával, valamint hasznos bővítményeket adhat hozzá. Az ajánljuk, hogy az egyes eszközökre kattintva fedezze fel a kezében lévő egyszerű, mégis hatékony eszközöket. 
+## <a name="next-steps"></a>Következő lépések
+A riasztás konfigurálása során talán már észrevette az **Eszközök** panelen lévő eszközök széles skáláját. Segítségükkel hibákat háríthat el, figyelemmel kísérheti a teljesítményt, sebezhetőségeket kereshet, erőforrásokat kezelhet, interakcióba léphet a virtuális gép konzoljával, valamint hasznos bővítményeket adhat hozzá. Az ajánljuk, hogy az egyes eszközökre kattintva fedezze fel a kezében lévő egyszerű, mégis hatékony eszközöket.
 
 Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalmazással. Az alábbiak csak a lista kis részét képezik:
 
 * [Buy and configure a custom domain name](custom-dns-web-site-buydomains-web-app.md) (Egyedi tartománynév vásárlása és konfigurálása) – Vásároljon vonzó tartományt webalkalmazása számára a *.azurewebsites.net tartomány helyett. Esetleg használja már meglévő tartományai valamelyikét.
-* [Set up staging environments](web-sites-staged-publishing.md) (Átmeneti környezetek beállítása) – Mielőtt hozzálátna az éles használathoz, az alkalmazását egy átmeneti URL-re helyezheti üzembe. Magabiztosan frissítheti élő webalkalmazását. Összetett, több telepítési ponttal rendelkező DevOps-megoldásokat állíthat be. 
+* [Set up staging environments](web-sites-staged-publishing.md) (Átmeneti környezetek beállítása) – Mielőtt hozzálátna az éles használathoz, az alkalmazását egy átmeneti URL-re helyezheti üzembe. Magabiztosan frissítheti élő webalkalmazását. Összetett, több telepítési ponttal rendelkező DevOps-megoldásokat állíthat be.
 * [Folyamatos üzembe helyezés beállítása](app-service-continuous-deployment.md) – Az alkalmazástelepítést a verziókövetési rendszerbe integrálhatja. Minden egyes véglegesítés után üzembe helyezheti az alkalmazását az Azure-ban.
 * [Access on-premises resources](web-sites-hybrid-connection-get-started.md) (Helyszíni erőforrások elérése) – Meglévő, helyszíni adatbázisokhoz vagy CRM-rendszerekhez férhet hozzá.
 * [Back up your app](web-sites-backup.md) (Az alkalmazás biztonsági mentése) – Biztonsági mentést készíthet webalkalmazásáról és visszaállíthatja azt. Készüljön fel a váratlan meghibásodásokra és hárítsa el azokat.
@@ -145,8 +152,11 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
 * [Scan your app for vulnerabilities](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
   (Sebezhetőségek keresése az alkalmazásban) – Ellenőrizheti a webalkalmazás modern fenyegetésekkel szembeni sebezhetőségét a [Tinfoil Security](https://www.tinfoilsecurity.com/) által biztosított szolgáltatás segítségével.
 * [Run background jobs](../azure-functions/functions-overview.md) (Háttérfeladatok futtatása) – Futtathat például adatfeldolgozási vagy jelentéskészítési feladatokat.
-* [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md) 
+* [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,20 +1,24 @@
 ---
-title: Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés | Microsoft Docs
-description: Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure virtuális gépeken. Közvetlen hivatkozásokat talál az SQL Serverhez készült összes virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz.
+title: "Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés | Microsoft Docs"
+description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure virtuális gépeken. Közvetlen hivatkozásokat talál az SQL Serverhez készült összes virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: rothja
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 10/19/2016
 ms.author: jroth
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fcc2883ae52bb3d4be098ce741bbf5f5047777d2
+
 
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
@@ -28,7 +32,7 @@ Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatás
 ## <a name="overview"></a>Áttekintés
 Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe. A következő videó az SQL Server Azure virtuális gépek műszaki áttekintését tartalmazza.
 
-> [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
+> [!VIDEÓ: https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
 > 
 > 
 
@@ -51,19 +55,10 @@ A videó a következő területeket fedi le:
 > 
 > 
 
-## <a name="understand-your-options"></a>A lehetőségek megismerése
+## <a name="scenarios"></a>Forgatókönyvek
 Számos oka lehet annak, amiért úgy dönt, az adatokat az Azure-ban tárolja. Ha az alkalmazást áthelyezi az Azure-ba, az növeli a teljesítményt az adatok áthelyezéséhez. De a használata további előnyökkel is jár. Automatikusan hozzáférést kap több különböző adatközponthoz is a globális jelenlét érdekében, illetve vészhelyreállítás esetére. Emellett az adatok is tartósak, és magas szintű biztonság védi őket.
 
-Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban való tárolásának egyik módja. A következő táblázat az Azure-ra vonatkozó SQL-ajánlatok gyors összefoglalását tartalmazza.
-
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | SQL-ajánlat | Leírás |
-| ---:| --- | --- |
-| ![SQL Server az Azure Virtual Machines szolgáltatásban](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-virtual-machine.png) |[SQL Server az Azure Virtual Machines szolgáltatásban](https://azure.microsoft.com/services/virtual-machines/sql-server/) |SQL Servert futtathat az Azure Virtual Machines szolgáltatásban (a jelen témakör témája). Közvetlenül felügyelheti a virtuális gépet, és futtathatja az adatbázist az SQL Server kereskedelmi verzióin. |
-| ![SQL Database](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-database.png) |[SQL Database](https://azure.microsoft.com/services/sql-database/) |Az SQL Database szolgáltatás használatával anélkül férhet hozzá az adatbázisokhoz és méretezheti azokat, hogy kezelnie kellene az alapul szolgáló infrastruktúrát. |
-| ![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png) |[SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse/) |Az Azure SQL Data Warehouse használatával nagy mennyiségű relációs és nem relációs adatot dolgozhat fel. Skálázható adatraktározási képességeket biztosít szolgáltatásként. |
-| ![SQL Server Stretch Database](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png) |[SQL Server Stretch Database](https://azure.microsoft.com/en-us/services/sql-server-stretch-database/) |Dinamikusan kiterjesztheti az Azure-ra a Microsoft SQL Server 2016 helyszíni tranzakciós adatait. |
-
-Ezekkel a különböző lehetőségekkel számos forgatókönyv esetében jó választás lehet az SQL Server futtatása Azure-beli virtuális gépeken. Előfordulhat például, hogy egy helyszíni SQL Server-géphez hasonlóan konfigurált Azure-beli virtuális gépre van szüksége, vagy további alkalmazásokat és szolgáltatásokat szeretne futtatni ugyanazon az adatbázis-kiszolgálón. Két forrásanyag segíthet a döntésben szerepet játszó további tényezők végiggondolásában:
+Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban való tárolásának egyik módja. Ez számos forgatókönyv esetében jó választás. Előfordulhat például, hogy egy helyszíni SQL Server-géphez hasonlóan konfigurált Azure-beli virtuális gépre van szüksége, vagy további alkalmazásokat és szolgáltatásokat szeretne futtatni ugyanazon az adatbázis-kiszolgálón. Két fő erőforrás segítheti abban, hogy még több forgatókönyvet és megfontolást végiggondoljon:
 
 * [Az SQL Server az Azure-beli virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/) témakör áttekinti az SQL Server Azure-beli virtuális gépeken való használatának ajánlott forgatókönyveit. 
 * A [Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)](../sql-database/sql-database-paas-vs-sql-server-iaas.md) című témakör részletesen összehasonlítja az SQL Database-t és a virtuális gépeken futó SQL Servert.
@@ -73,28 +68,28 @@ Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra 
 
 A folyamat részletes útmutatója az [SQL Server rendszerű virtuális gép létrehozása az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md) című oktatóanyagban található. Emellett tekintse át az [Performance best practices for SQL Server VMs](virtual-machines-windows-sql-performance.md) (Az SQL Server virtuális gépek teljesítményével kapcsolatos ajánlott eljárások) című cikket, amely leírja, hogyan válassza ki a kiépítés során a megfelelő gépméretet és egyéb lehetőségeket.
 
-## <a name="option-1:-create-a-sql-vm-with-per-minute-licensing"></a>1. lehetőség: SQL virtuális gép létrehozása percalapú licenceléssel
+## <a name="option-1-create-a-sql-vm-with-perminute-licensing"></a>1. lehetőség: SQL virtuális gép létrehozása percalapú licenceléssel
 A következő táblázat a virtuálisgép-katalógus elérhető SQL Server-rendszerképeit foglalja össze. Kattintson bármelyik hivatkozásra egy új SQL virtuális gép létrehozásának megkezdéséhez az Ön által választott verzióval, kiadással és operációs rendszerrel.
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
-| **SQL 2016** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMEnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMStandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMWebWindowsServer2012R2), [Dev](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMDeveloperWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMExpressWindowsServer2012R2) |
-| **SQL 2014 SP1** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1ExpressWindowsServer2012R2) |
-| **SQL 2014** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014WebWindowsServer2012R2) |
-| **SQL 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
-| **SQL 2012 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2WebWindowsServer2012R2) |
+| **SQL 2016** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMEnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMStandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMWebWindowsServer2012R2), [Dev](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMDeveloperWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2016RTMExpressWindowsServer2012R2) |
+| **SQL 2014 SP1** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP1ExpressWindowsServer2012R2) |
+| **SQL 2014** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014WebWindowsServer2012R2) |
+| **SQL 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
+| **SQL 2012 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2WebWindowsServer2012R2) |
 | **SQL 2012 SP2** |Windows Server 2012 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2EnterpriseWindowsServer2012), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2StandardWindowsServer2012), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2WebWindowsServer2012), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP2ExpressWindowsServer2012) |
 | **SQL 2008 R2 SP3** |Windows Server 2008 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2) |
 | **SQL 2008 R2 SP3** |Windows Server 2012 |[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2012) |
 
-## <a name="option-2:-create-a-sql-vm-with-an-existing-license"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
+## <a name="option-2-create-a-sql-vm-with-an-existing-license"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálon ezek a rendszerképnevek **{BYOL}** előtagot kapnak.
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
-| **SQL Server 2016** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016RTMStandardWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016RTMStandardWindowsServer2012R2) |
-| **SQL Server 2014 SP1** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1StandardWindowsServer2012R2) |
-| **SQL Server 2012 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3StandardWindowsServer2012R2) |
+| **SQL Server 2016** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016RTMStandardWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016RTMStandardWindowsServer2012R2) |
+| **SQL Server 2014 SP1** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1StandardWindowsServer2012R2) |
+| **SQL Server 2012 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3StandardWindowsServer2012R2) |
 
 > [!IMPORTANT]
 > A BYOL VM-rendszerképek használatához nagyvállalati szerződéssel kell rendelkeznie: [Az Azure frissítési garancián keresztüli licenchordozhatósági programja](https://azure.microsoft.com/pricing/license-mobility/). Továbbá szüksége van egy érvényes licencre is az SQL Server kívánt verziójához/kiadásához. [Meg kell adnia a Microsoftnak a szükséges BYOL-információkat](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) a virtuális gép kiépítésétől számított **10** napon belül.
@@ -121,7 +116,7 @@ Az Azure virtuális gépek használni képesek az [automatikus biztonsági ment�
 ### <a name="automate-updates"></a>Frissítések automatizálása
 Az Azure virtuális gépek az [automatikus javítás](virtual-machines-windows-sql-automated-patching.md) segítségével ütemezhetnek egy karbantartási időszakot a fontos Windows- és SQL Server-frissítések automatikus telepítéséhez.
 
-### <a name="customer-experience-improvement-program-(ceip)"></a>Felhasználói élmény fokozása program (CEIP)
+### <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. 
 
 Tovább információért lásd a [Licencfeltételek elfogadása](https://msdn.microsoft.com/library/ms143343.aspx) című témakör CEIP-ről szóló szakaszát. 
@@ -131,6 +126,9 @@ Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése]
 
 További kérdései vannak? Először tekintse át [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban GYIK részét](virtual-machines-windows-sql-server-iaas-faq.md). Emellett a kérdéseit vagy megjegyzéseit az SQL virtuális gépekre vonatkozó bármelyik témakör alján megírhatja, így kapcsolatba léphet a Microsofttal és a közösséggel.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

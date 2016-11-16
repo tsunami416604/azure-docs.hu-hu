@@ -1,195 +1,191 @@
 ---
-title: Diagnose performance issues on a running IIS website | Microsoft Docs
-description: Monitor a website's performance without re-deploying it. Use standalone or with Application Insights SDK to get dependency telemetry.
+title: "Teljesítményhibák diagnosztizálása futó IIS-webhelyen | Microsoft Docs"
+description: "Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. Önállóan vagy az Application Insights SDK-val lekérheti a függőségek telemetriáját."
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
 manager: douge
-
+ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2016
+ms.date: 10/24/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
+ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
+
 
 ---
-# Instrument web apps at runtime with Application Insights
-*Application Insights is in preview.*
+# <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
+*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
-You can instrument a live web app with Visual Studio Application Insights, without having to modify or redeploy your code. In your apps are hosted by an on-premises IIS server, you install Status Monitor; or if they're Azure web apps or run in an Azure VM, you can install the Application Insights extension. (There are also separate articles about instrumenting [live J2EE web apps](app-insights-java-live.md) and [Azure Cloud Services](app-insights-cloudservices.md).)
+Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat a Visual Studio Application Insights használatával. Ha az alkalmazásokat egy helyszíni IIS-kiszolgáló működteti, telepítse az Állapotfigyelőt; vagy ha Azure-webalkalmazások, illetve egy Azure VM-en futnak, telepítheti az Application Insights bővítményt. (Külön cikkek érhetők el az [élő J2EE-webalkalmazások](app-insights-java-live.md) és az [Azure Cloud Services](app-insights-cloudservices.md) kialakításáról.)
 
-![sample charts](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
+![mintadiagramok](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-You have a choice of three ways to apply Application Insights to your .NET web applications:
+Háromféleképpen alkalmazhatja az Application Insights szolgáltatást a .NET-webalkalmazásokra:
 
-* **Build time:** [Add the Application Insights SDK][greenbrown] to your web app code. 
-* **Run time:** Instrument your web app on the server, as described below, without rebuilding and redeploying the code.
-* **Both:** Build the SDK into your web app code, and also apply the run-time extensions. Get the best of both options. 
+* **Felépítési idő:** [Adja az Application Insights SDK-t][greenbrown] a webalkalmazás kódjához.
+* **Futási idő:** A webalkalmazását a kiszolgálón, az alábbiakban leírtak szerint, a kód újraépítése és újratelepítése nélkül alakíthatja ki.
+* **Mindkettő:** Az SDK-t beépítheti a webalkalmazás-kódba, és alkalmazhatja a futásidejű bővítményeket is. Így mindkét lehetőség előnyeivel élhet.
 
-Here's a summary of what you get in each way:
+Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
-|  | Build time | Run time |
+|  | Felépítési idő | Futási idő |
 | --- | --- | --- |
-| Requests & exceptions |Yes |Yes |
-| [More detailed exceptions](app-insights-asp-net-exceptions.md) | |Yes |
-| [Dependency diagnostics](app-insights-asp-net-dependencies.md) |On .NET 4.6+ |Yes |
-| [System performance counters](app-insights-web-monitor-performance.md#system-performance-counters) | |IIS or Azure cloud service, not Azure web app |
-| [API for custom telemetry][api] |Yes | |
-| [Trace log integration](app-insights-asp-net-trace-logs.md) |Yes | |
-| [Page view & user data](app-insights-javascript.md) |Yes | |
-| No need to rebuild code |No | |
+| Kérések és kivételek |Igen |Igen |
+| [Részletes kivételek](app-insights-asp-net-exceptions.md) | |Igen |
+| [Függőségek diagnosztikája](app-insights-asp-net-dependencies.md) |.NET 4.6+ esetén |Igen |
+| [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) | |IIS vagy Azure-felhőszolgáltatás, nem Azure-webalkalmazás |
+| [API egyéni telemetriához][api] |Igen | |
+| [Nyomkövetési napló integrációja](app-insights-asp-net-trace-logs.md) |Igen | |
+| [Lapmegtekintések és felhasználói adatok](app-insights-javascript.md) |Igen | |
+| Nincs szükség a kód ismételt felépítésére |Nem | |
 
-## Instrument your web app at run time
-You need a [Microsoft Azure](http://azure.com) subscription.
+## <a name="instrument-your-web-app-at-run-time"></a>Webalkalmazás kialakítása futási időben
+Ehhez [Microsoft Azure](http://azure.com)-előfizetésre van szükség.
 
-### If your app is hosted on your IIS server
-1. On your IIS web server, sign in with administrator credentials.
-2. Download and run the [Status Monitor installer](http://go.microsoft.com/fwlink/?LinkId=506648).
-3. In the installation wizard, sign in to Microsoft Azure.
-   
-    ![Sign into Azure with your Microsoft account credentials](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-   
-    *Connection errors? See [Troubleshooting](#troubleshooting).*
-4. Pick the installed web application or website that you want to monitor, then configure the resource in which you want to see the results in the Application Insights portal.
-   
-    ![Choose an app and a resource.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
-   
-    Normally, you choose to configure a new resource and [resource group][roles].
-   
-    Otherwise, use an existing resource if you already set up [web tests][availability] for your site, or [web client monitoring][client].
-5. Restart IIS.
-   
-    ![Choose Restart at the top of the dialog.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
-   
-    Your web service will be interrupted for a short while.
-6. Notice that ApplicationInsights.config has been inserted into the web apps that you want to monitor.
-   
-    ![Find the .config file alongside the code files of the web app.](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-   
-   There are also some changes to web.config.
+### <a name="if-your-app-is-an-azure-web-app-or-cloud-service"></a>Ha az alkalmazás egy Azure-webalkalmazás vagy felhőszolgáltatás
+* Válassza az Application Insights szolgáltatást az alkalmazás vezérlőpultján az Azure-ban.
 
-#### Want to (re)configure later?
-After you complete the wizard, you can re-configure the agent whenever you want. You can also use this if you installed the agent but there was some trouble with the initial setup.
+    [További információk](app-insights-azure.md).
 
-![Click the Application Insights icon on the task bar](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
+### <a name="if-your-app-is-hosted-on-your-iis-server"></a>Ha az alkalmazás az IIS-kiszolgálóján fut.
+1. Az IIS-webkiszolgálón jelentkezzen be rendszergazdai hitelesítő adatokkal.
+2. Töltse le és futtassa az [Állapotfigyelő telepítőjét](http://go.microsoft.com/fwlink/?LinkId=506648).
+3. A telepítővarázslóban jelentkezzen be a Microsoft Azure-ba.
 
-### If your app runs as an Azure Web App
-1. In the [Azure portal](https://portal.azure.com), create an Application Insights resource with type ASP.NET. This will be where your application telemetry will be stored, analyzed and displayed.
-   
-    ![Add, Application Insights. Select ASP.NET type.](./media/app-insights-monitor-performance-live-website-now/01-new.png)
-2. Now open the control blade of your Azure Web App, open **Tools > Performance Monitoring** add the Application Insights extension.
-   
-    ![In your web app, Tools, Extensions, Add, Application Insights](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
-   
-    Select the Application Insights resource you just created.
+    ![Bejelentkezés az Azure-ba a Microsoft-fiókja hitelesítő adataival](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
 
-### If it's an Azure cloud services project
-[Add scripts to web and worker roles](app-insights-cloudservices.md).
+    *Csatlakozási hibák? Lásd: [Hibaelhárítás](#troubleshooting).*
+4. Válassza ki a megfigyelni kívánt telepített webalkalmazást vagy webhelyet, majd konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon.
 
-## View performance telemetry
-Sign into [the Azure portal](https://portal.azure.com), browse Application Insights and open the resource that you created.
+    ![Válasszon egy alkalmazást és egy erőforrást.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-![Choose Browse, Application Insights, then select your app](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
+    Általában új erőforrás és [erőforráscsoport][roles] konfigurálását választja.
 
-Open the Performance blade to see request, response time, dependency and other data.
+    Ellenkező esetben használjon meglévő erőforrást, ha már beállított [webes teszteket][availability] a helyéhez, vagy [webes ügyfélfigyelést][ügyfél].
+5. Indítsa újra az IIS-t.
 
-![Performance](./media/app-insights-monitor-performance-live-website-now/21-perf.png)
+    ![Válassza az Újraindítás gombot a párbeszédpanel tetején.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
-Click any chart to open a more detailed view.
+    A webszolgáltatása rövid időre megszakad.
+6. Az ApplicationInsights.config be lett illesztve a megfigyelni kívánt webalkalmazásokba.
 
-You can [edit, rearrange, save](app-insights-metrics-explorer.md), and pin charts or the whole blade to a [dashboard](app-insights-dashboards.md).
+    ![Keresse meg a .config fájlt a webalkalmazás kódfájljai között.](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
 
-## Dependencies
-The Dependency Duration chart shows the time taken by calls from your app to external components such as databases, REST APIs, or Azure blob storage.
+   A web.config is változott.
 
-To segment the chart by calls to different dependencies: Edit the chart, turn on Grouping, and then group by Dependency, Dependency Type or Dependency Performance.
+#### <a name="want-to-reconfigure-later"></a>Később (újra) szeretné konfigurálni?
+A varázsló befejezése után bármikor újrakonfigurálhatja az ügynököt. Ezt akkor is használhatja, ha telepítette az ügynököt, de probléma volt a kezdeti beállítással.
 
-![Dependency](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
+![Kattintson a tálcán az Application Insights ikonra](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
 
-## Performance counters
-(Not for Azure web apps.) Click Servers on the overview blade to see charts of server performance counters such as CPU occupancy and memory usage.
+## <a name="view-performance-telemetry"></a>A teljesítmény-telemetria megtekintése
+Jelentkezzen be [az Azure Portalra](https://portal.azure.com), keresse meg az Application Insights szolgáltatást és nyissa meg a létrehozott erőforrást.
 
-If you have several server instances, you might want to edit the charts to group by Role instance.
+![Válassza a Tallózás, Application Insights lehetőséget, majd válassza ki az alkalmazását](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
-![Servers](./media/app-insights-monitor-performance-live-website-now/22-servers.png)
+Nyissa meg a Teljesítmény panelt a kérelem, a válaszidő, a függőség és egyéb adatok megtekintéséhez.
 
-You can also [change the set of performance counters that are reported by the SDK](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3). 
+![Teljesítmény](./media/app-insights-monitor-performance-live-website-now/21-perf.png)
 
-## Exceptions
-![Click through the server exceptions chart](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
+Kattintson valamely diagramra a részletes nézet megtekintéséhez.
 
-You can drill down to specific exceptions (from the last seven days) and get stack traces and context data.
+[Szerkesztheti, átrendezheti, mentheti](app-insights-metrics-explorer.md) és rögzítheti a diagramokat vagy az egész panelt az [irányítópulton](app-insights-dashboards.md).
 
-## Sampling
-If your application sends a lot of data and you are using the Application Insights SDK for ASP.NET version 2.0.0-beta3 or later, the adaptive sampling feature may operate and send only a percentage of your telemetry. [Learn more about sampling.](app-insights-sampling.md)
+## <a name="dependencies"></a>Függőségek
+A Függőségi időtartam diagramon a hívások ideje látható az alkalmazás felől a külső összetevők, például adatbázisok, REST API-k vagy Azure Blob Storage felé.
 
-## Troubleshooting
-### Connection errors
-You need to open [some outgoing ports](app-insights-ip-addresses.md#outgoing-ports) in your server's firewall to allow Status Monitor to work.
+A diagram különböző függőségek felé irányuló hívások szerinti szegmentálásához szerkessze a diagramot, kapcsolja be a Csoportosítást, majd csoportosítson a Függőség, Függőség típusa vagy Függőségi teljesítmény alapján.
 
-### No telemetry?
-* Use your site, to generate some data.
-* Wait a few minutes to let the data arrive, then click **Refresh**.
-* Open Diagnostic Search (the Search tile) to see individual events. Events are often visible in Diagnostic Search before aggregate data appears in the charts.
-* Open Status Monitor and select your application on left pane. Check if there are any diagnostics messages for this application in the "Configuration notifications" section:
-  
-  ![Open the Performance blade to see request, response time, dependency and other data](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
-* Make sure your server firewall allows outgoing traffic on the ports listed above.
-* On the server, if you see a message about "insufficient permissions", try the following:
-  * In IIS Manager, select your application pool, open **Advanced Settings**, and under **Process Model** note the identity.
-  * In Computer management control panel, add this identity to the Performance Monitor Users group.
-* If you have MMA/SCOM installed on your server, some versions can conflict. Uninstall both SCOM and Status Monitor, and re-install the latest versions.
-* See [Troubleshooting][qna].
+![Függőség](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
-## System Requirements
-OS support for Application Insights Status Monitor on Server:
+## <a name="performance-counters"></a>Teljesítményszámlálók
+(Nem Azure-webalkalmazásokhoz.) Kattintson az áttekintési panelen a Kiszolgálók gombra, hogy megtekintse a kiszolgálóteljesítmény-számlálók diagramjait (például a CPU elfoglaltsága és a memóriahasználat diagramjait).
+
+Ha több kiszolgálópéldánnyal rendelkezik, szerkesztheti a csoportosítandó diagramokat Szerepkörpéldány szerint.
+
+![Kiszolgálók](./media/app-insights-monitor-performance-live-website-now/22-servers.png)
+
+Az SDK által jelentett teljesítményszámlálókat is módosíthatja. 
+
+## <a name="exceptions"></a>Kivételek
+![Kattintson végig a kiszolgálókivételek diagramján](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
+
+Lefúrhat adott kivételekhez (az utolsó hét napból), valamint hívásláncokat és környezeti adatokat kérhet le.
+
+## <a name="sampling"></a>Mintavételezés
+Ha az alkalmazása sok adatot küld, és az Application Insights SDK-t az ASP.NET 2.0.0-beta3 vagy újabb verziójához használja, működhet az adaptív mintavételezés funkció és lehet, hogy csak a telemetria valamely százalékát küldi el. [További tudnivalók a mintavételezésről.](app-insights-sampling.md)
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="connection-errors"></a>Csatlakozási hibák
+Meg kell nyitnia [néhány kimenő portot](app-insights-ip-addresses.md#outgoing-ports) a kiszolgálója tűzfalán, hogy az Állapotfigyelő működhessen.
+
+### <a name="no-telemetry"></a>Nem működik a telemetria?
+* Használja a helyét adatok létrehozásához.
+* Várjon néhány percet, amíg az adatok megérkeznek, majd kattintson a **Frissítés** gombra.
+* Az egyes események megtekintéséhez nyissa meg a Diagnosztikai keresést (a Keresés csempét). Az események gyakran láthatók a Diagnosztikai keresésben, mielőtt az összesített adatok megjelennek a diagramokban.
+* Nyissa meg az Állapotfigyelőt, és válassza ki az alkalmazását a bal oldali panelen. Ellenőrizze, hogy vannak-e diagnosztikai üzenetek ehhez az alkalmazáshoz a „Konfigurációs értesítések” szakaszban:
+
+  ![A Teljesítmény panel megnyitása a kérelem, a válaszidő, a függőség és egyéb adatok megtekintéséhez](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
+* Győződjön meg arról, hogy a kiszolgáló tűzfala lehetővé teszi a kimenő forgalmat a fenti portokon.
+* Ha a kiszolgálón „elégtelen engedélyekkel” kapcsolatos üzenet jelenik meg, próbálja meg a következőt:
+  * Az IIS-kezelőben válassza ki az alkalmazáskészletét, nyissa meg a **Speciális beállítások** elemet, és a **Folyamatmodell** területen jegyezze fel az identitást.
+  * A Számítógép-kezelés vezérlőpulton adja ezt az identitást a Teljesítményfigyelő felhasználói csoporthoz.
+* Ha MMA/SCOM van telepítve a kiszolgálón, néhány verzió esetében ütközés léphet fel. Távolítsa el az SCOM-ot és az Állapotfigyelőt is, és telepítse újra a legújabb verziókat.
+* Lásd: [Hibaelhárítás][qna].
+
+## <a name="system-requirements"></a>Rendszerkövetelmények
+Operációs rendszeri támogatás az Application Insights Állapotfigyelőhöz a kiszolgálón:
 
 * Windows Server 2008
 * Windows Server 2008 R2
 * Windows Server 2012
-* Windows server 2012 R2
+* Windows Server 2012 R2
 
-with latest SP and .NET Framework 4.0 and 4.5
+a legújabb szervizcsomaggal és a .NET-keretrendszer 4.0-s és 4.5-ös verziójával
 
-On the client side Windows 7, 8 and 8.1, again with .NET Framework 4.0 and 4.5
+Az ügyféloldalon Windows 7, 8 és 8.1, szintén a .NET-keretrendszer 4.0-s és 4.5-ös verziójával
 
-IIS support is: IIS 7, 7.5, 8, 8.5 (IIS is required)
+IIS-támogatás: IIS 7, 7.5, 8, 8.5 (az IIS kötelező)
 
-## Automation with PowerShell
-You can start and stop monitoring by using PowerShell.
+## <a name="automation-with-powershell"></a>Automatizálás a PowerShell használatával
+A PowerShell a saját IIS-kiszolgálón való használatával elindíthatja és leállíthatja a figyelést.
 
-First import the Application Insights module:
+Először importálja az Application Insights-modult:
 
 `Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
 
-Find out which apps are being monitored:
+Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 
 `Get-ApplicationInsightsMonitoringStatus [-Name appName]`
 
-* `-Name` (Optional) The name of a web app.
-* Displays the Application Insights monitoring status for each web app (or the named app) in this IIS server.
-* Returns `ApplicationInsightsApplication` for each app:
-  
-  * `SdkState==EnabledAfterDeployment`: App is being monitored, and was instrumented at run time, either by the Status Monitor tool, or by `Start-ApplicationInsightsMonitoring`.
-  * `SdkState==Disabled`: The app is not instrumented for Application Insights. Either it was never instrumented, or run-time monitoring was disabled with the Status Monitor tool or with `Stop-ApplicationInsightsMonitoring`.
-  * `SdkState==EnabledByCodeInstrumentation`: The app was instrumented by adding the SDK to the source code. Its SDK cannot be updated or stopped.
-  * `SdkVersion` shows the version in use for monitoring this app.
-  * `LatestAvailableSdkVersion`shows the version currently available on the NuGet gallery. To upgrade the app to this version, use `Update-ApplicationInsightsMonitoring`.
+* `-Name` (Választható) A webalkalmazás neve.
+* Megjeleníti mindegyik webalkalmazás (vagy elnevezett alkalmazás) Application Insights figyelési állapotát ezen az IIS-kiszolgálón.
+* Az `ApplicationInsightsApplication` elemet adja vissza mindegyik alkalmazáshoz:
+
+  * `SdkState==EnabledAfterDeployment`: Az alkalmazás megfigyelés alatt áll, és a futási időben lett kialakítva, az Állapotfigyelő eszköz vagy a `Start-ApplicationInsightsMonitoring` által.
+  * `SdkState==Disabled`: Az alkalmazás nincs kialakítva az Application Insights szolgáltatáshoz. Vagy soha nem lett kialakítva, vagy a futásidejű figyelés le van tiltva az Állapotfigyelő eszközzel vagy a `Stop-ApplicationInsightsMonitoring` eszközzel.
+  * `SdkState==EnabledByCodeInstrumentation`: Az alkalmazás kialakításakor az SDK a forráskódhoz lett hozzáadva. Az SDK-ja nem frissíthető és nem állítható le.
+  * `SdkVersion` az alkalmazás figyeléséhez használt verziót jeleníti meg.
+  * `LatestAvailableSdkVersion` a NuGet-katalógusban jelenleg elérhető verziót jeleníti meg. Ha az alkalmazást erre a verzióra szeretné frissíteni, használja a következőt: `Update-ApplicationInsightsMonitoring`.
 
 `Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000`
 
-* `-Name` The name of the app in IIS
-* `-InstrumentationKey` The ikey of the Application Insights resource where you want the results to be displayed.
-* This cmdlet only affects apps that are not already instrumented - that is, SdkState==NotInstrumented.
-  
-    The cmdlet does not affect an app that is already instrumented, either at build time by adding the SDK to the code, or at run time by a previous use of this cmdlet.
-  
-    The SDK version used to instrument the app is the version that was most recently downloaded to this server.
-  
-    To download the latest version, use Update-ApplicationInsightsVersion.
-* Returns `ApplicationInsightsApplication` on success. If it fails, it logs a trace to stderr.
+* `-Name` Az alkalmazás neve az IIS-ben
+* `-InstrumentationKey` Azon Application Insights-erőforrás kulcsa, ahol az eredményeket meg szeretné jeleníteni.
+* Ez a parancsmag csak olyan alkalmazásokra van hatással, amelyek még nincsenek kialakítva – vagyis amelyek esetében az SdkState==NotInstrumented.
+
+    A parancsmag nincs hatással az akár beépítési időben az SDK a kódhoz adásával, akár a futásidőben a parancsmag korábbi használatával már kialakított alkalmazásokra.
+
+    Az alkalmazás kialakításához használt SDK-verzió a kiszolgálóra legutóbb letöltött verzió.
+
+    A legújabb verzió letöltéséhez használja az Update-ApplicationInsightsVersion parancsot.
+* Siker esetén az `ApplicationInsightsApplication` elemet adja vissza. Sikertelenség esetén nyomkövetést naplóz a stderrben.
 
           Name                      : Default Web Site/WebApp1
           InstrumentationKey        : 00000000-0000-0000-0000-000000000000
@@ -200,65 +196,42 @@ Find out which apps are being monitored:
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
-* `-Name` The name of an app in IIS
-* `-All` Stops monitoring all apps in this IIS server for which `SdkState==EnabledAfterDeployment`
-* Stops monitoring the specified apps and removes instrumentation. It only works for apps that have been instrumented at run-time using the Status Monitoring tool or Start-ApplicationInsightsApplication. (`SdkState==EnabledAfterDeployment`)
-* Returns ApplicationInsightsApplication.
+* `-Name` Az alkalmazás neve az IIS-ben
+* `-All`Leállítja minden alkalmazás megfigyelését ezen az IIS-kiszolgálón, amely esetében az `SdkState==EnabledAfterDeployment`
+* Leállítja a megadott alkalmazások megfigyelését, és eltávolítja a kialakítást. Csak olyan alkalmazásokhoz működik, amelyek futásidőben lettek kialakítva az Állapotfigyelés eszközzel vagy a Start-ApplicationInsightsApplication paranccsal. (`SdkState==EnabledAfterDeployment`)
+* Az ApplicationInsightsApplication elemet adja vissza.
 
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
-* `-Name`: The name of a web app in IIS.
-* `-InstrumentationKey` (Optional.) Use this to change the resource to which the app's telemetry is sent.
-* This cmdlet:
-  * Upgrades the named app to the version of the SDK most recently downloaded to this machine. (Only works if `SdkState==EnabledAfterDeployment`)
-  * If you provide an instrumentation key, the named app is reconfigured to send telemetry to the resource with that key. (Works if `SdkState != Disabled`)
+* `-Name`: A webalkalmazás neve az IIS-ben.
+* `-InstrumentationKey`(Választható.) Ezzel módosíthatja az erőforrást, amelynek az alkalmazás telemetriája el lesz küldve.
+* Ez a parancsmag:
+  * frissíti az elnevezett alkalmazást a gépre legutóbb letöltött SDK-verzióra. (Csak akkor működik, ha `SdkState==EnabledAfterDeployment`)
+  * Ha megad egy kialakítási kulcsot, újrakonfigurálja az elnevezett alkalmazást, hogy telemetriát küldjön az erőforrásnak ezzel a kulccsal. (Akkor működik, ha `SdkState != Disabled`)
 
 `Update-ApplicationInsightsVersion`
 
-* Downloads the latest Application Insights SDK to the server.
+* letölti a legújabb Application Insights SDK-t a kiszolgálóra.
 
-## Azure template
-If the web app is in Azure and you create your resources using an Azure Resource Manager template, you can configure Application Insights by adding this to the resources node:
-
-    {
-      resources: [
-        /* Create Application Insights resource */
-        {
-          "apiVersion": "2015-05-01",
-          "type": "microsoft.insights/components",
-          "name": "nameOfAIAppResource",
-          "location": "centralus",
-          "kind": "web",
-          "properties": { "ApplicationId": "nameOfAIAppResource" },
-          "dependsOn": [
-            "[concat('Microsoft.Web/sites/', myWebAppName)]"
-          ]
-        }
-       ]
-     } 
-
-* `nameOfAIAppResource` - a name for the Application Insights resource
-* `myWebAppName` - the id of the web app
-
-## <a name="next"></a>Next steps
-* [Create web tests][availability] to make sure your site stays live.
-* [Search events and logs][diagnostic] to help diagnose problems.
-* [Add web client telemetry][usage] to see exceptions from web page code and to let you insert trace calls.
-* [Add Application Insights SDK to your web service code][greenbrown] so that you can insert trace and log calls in the server code.
+## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
+* [Létrehozhat webes teszteket][availability] annak biztosításához, hogy a hely elérhető maradjon.
+* [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
+* [Webesügyfél-telemetriát adhat hozzá][usage], hogy lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
+* [Application Insights SDK-t adhat a webszolgáltatás kódjához][greenbrown], hogy nyomkövetési és naplóhíváskat szúrhasson be a kiszolgálókódba.
 
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[availability]: app-insights-monitor-web-app-availability.md
-[client]: app-insights-javascript.md
-[diagnostic]: app-insights-diagnostic-search.md
+[rendelkezésre állás]: app-insights-monitor-web-app-availability.md
+[ügyfél]: app-insights-javascript.md
+[diagnosztika]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[roles]: app-insights-resources-roles-access-control.md
-[usage]: app-insights-web-track-usage.md
+[szerepkörök]: app-insights-resources-roles-access-control.md
+[használat]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

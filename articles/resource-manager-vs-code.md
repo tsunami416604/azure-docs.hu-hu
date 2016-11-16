@@ -1,12 +1,12 @@
 ---
-title: A VS Code használata a Resource Manager-sablonokkal | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan állítható be a Visual Studio Code az Azure Resource Manager-sablonok létrehozására.
+title: "A VS Code használata a Resource Manager-sablonokkal | Microsoft Docs"
+description: "Ez a cikk bemutatja, hogyan állítható be a Visual Studio Code az Azure Resource Manager-sablonok létrehozására."
 services: azure-resource-manager
 documentationcenter: na
 author: cmatskas
 manager: timlt
 editor: tysonn
-
+ms.assetid: 78f2aa22-df1d-41bd-92ec-dabd1175db88
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: chmatsk;tomfitz
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f839784aaef511c60ec1c3eea0b64bfdd5f67a4f
+
 
 ---
-# Az Azure Resource Manager-sablonok használata a Visual Studio Code kódszerkesztőben
+# <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>Az Azure Resource Manager-sablonok használata a Visual Studio Code kódszerkesztőben
 Az Azure Resource Manager-sablonok az erőforrásokat és a kapcsolódó függőségeket leíró JSON-fájlok. Ezek a fájlok néha nagyméretűek és összetettek lehetnek, ezért fontos a megfelelő eszközök biztosítása a kezelésükhöz. A Visual Studio Code egy új, könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. Egy [új bővítményével](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lehetővé teszi a Resource Manager-sablonok létrehozását és szerkesztését. A VS Code mindenhol fut, és nem igényel internet-hozzáférést, kivéve ha üzembe is szeretné helyezni a Resource Manager-sablonokat.
 
 Ha még nem telepítette a VS Code szerkesztőt, a [https://code.visualstudio.com/](https://code.visualstudio.com/) webhelyről telepítheti.
 
-## A Resource Manager bővítményének telepítése
+## <a name="install-the-resource-manager-extension"></a>A Resource Manager bővítményének telepítése
 Ha JSON-sablonokkal szeretne dolgozni a VS Code szerkesztőben, telepítenie kell egy bővítményt. A következő lépések végrehajtásával töltheti le és telepítheti a Resource Manager JSON-sablonjainak nyelvi támogatását:
 
 1. Indítsa el a VS Code szerkesztőt. 
@@ -33,7 +37,7 @@ Ha JSON-sablonokkal szeretne dolgozni a VS Code szerkesztőben, telepítenie kel
    
    Ezzel el is készült.
 
-## A Resource Manager-kódrészletek beállítása
+## <a name="set-up-resource-manager-snippets"></a>A Resource Manager-kódrészletek beállítása
 Az előző lépésekkel már telepítette az eszközös támogatást, most pedig konfigurálnia kell a VS Code szerkesztőt a JSON-sablonok kódrészleteinek használatára.
 
 1. Másolja a vágólapra az [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) tárházban található fájl tartalmát.
@@ -51,7 +55,7 @@ Az előző lépésekkel már telepítette az eszközös támogatást, most pedig
 
 Ez minden, ami szükséges a Resource Manager-kódrészletek használatának elkezdéséhez. Ezután tesztelni fogjuk ezt a beállítást.
 
-## A sablon használata a VS Code szerkesztőben
+## <a name="work-with-template-in-vs-code"></a>A sablon használata a VS Code szerkesztőben
 A sablonok használatát legegyszerűbben úgy kezdheti el, hogy választ egy gyorsan üzembe helyezhető sablont a [Github](https://github.com/Azure/azure-quickstart-templates) kínálatából, vagy a sajátját használja. A portálon keresztül könnyen [exportálhat sablonokat](resource-manager-export-template.md) bármelyik erőforráscsoportja esetében. 
 
 1. Ha exportált egy sablont egy erőforráscsoportból, nyissa meg a kibontott fájlokat VS Code szerkesztőben.
@@ -80,10 +84,10 @@ A sablonok használatát legegyszerűbben úgy kezdheti el, hogy választ egy gy
    
     ![Hibaüzenet](./media/resource-manager-vs-code/unrecognized-function.png)
 
-## Az új erőforrások üzembe helyezése
+## <a name="deploy-your-new-resources"></a>Az új erőforrások üzembe helyezése
 Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe az új erőforrásokat: 
 
-### Windows
+### <a name="windows"></a>Windows
 1. Nyissa meg a PowerShell-parancssort. 
 2. A bejelentkezéshez írja be a következő parancsot: 
    
@@ -98,7 +102,7 @@ Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe 
 4. Frissítse a paramétereket a parameters.json fájlban.
 5. Futtassa a Deploy.ps1 fájlt a sablon Azure-beli üzembe helyezéséhez.
 
-### OSX/Linux
+### <a name="osxlinux"></a>OSX/Linux
 1. Nyisson meg egy terminálablakot. 
 2. A bejelentkezéshez írja be a következő parancsot:
    
@@ -111,11 +115,14 @@ Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe 
    
         azure group deployment create -f <PathToTemplate> 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A sablonokban használható függvények részletes ismertetését lásd: [Az Azure Resource Manager-sablonok függvényei](resource-group-template-functions.md).
 * További példák a Visual Studio Code használatára: [Build cloud apps with Visual Studio Code](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code) (Felhőalkalmazások létrehozása a Visual Studio Code használatával) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóban](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). A HealthClinic.biz bemutatóban található további gyorsindítási útmutatókat lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Gyorsindítási útmutatók az Azure fejlesztői eszközeihez).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

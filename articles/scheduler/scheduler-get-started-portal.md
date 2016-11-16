@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure portál Azure Scheduler szolgáltatásával | Microsoft Docs
-description: Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
+title: "Ismerkedés az Azure Portal Azure Scheduler szolgáltatásával | Microsoft Docs"
+description: "Ismerkedés az Azure portál Azure Scheduler szolgáltatásával"
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: ''
-
+editor: 
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 85e0f59bdaae76f6feb03e66a7bbf96c29b45dec
+
 
 ---
-# Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
+# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
 Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett feladatokat. Ezen oktatóanyag segítségével elsajátíthatja egy feladat létrehozásának műveletét. Megismerkedhet a Scheduler megfigyelési és felügyeleti képességeivel is.
 
-## Feladat létrehozása
+## <a name="create-a-job"></a>Feladat létrehozása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).  
 2. Kattintson az **+Új** lehetőségre, írja be a *Scheduler* kifejezést a keresőmezőbe, majd válassza ki a **Scheduler** elemet az eredmények között, végül pedig kattintson a **Létrehozás** gombra.
    
@@ -46,7 +50,7 @@ Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett felada
       ![][recurrence-schedule]
 6. Kattintson a ** Create** (Létrehozás) gombra
 
-## Feladatok kezelése és figyelése
+## <a name="manage-and-monitor-jobs"></a>Feladatok kezelése és figyelése
 A létrehozott feladatok megjelennek az Azure fő irányítópultján. A feladatra kattintva egy új ablak nyílik meg a következő lapokkal:
 
 1. Tulajdonságok  
@@ -57,12 +61,12 @@ A létrehozott feladatok megjelennek az Azure fő irányítópultján. A feladat
    
    ![][job-overview]
 
-### Tulajdonságok
+### <a name="properties"></a>Tulajdonságok
 A Scheduler-feladathoz tartozó metaadatok kezelését ezen írásvédett tulajdonságok írják le.
 
    ![][job-properties]
 
-### Művelet beállításai
+### <a name="action-settings"></a>Művelet beállításai
 Az adott feladat konfigurálásához kattintson rá a **Feladatok** képernyőn. Ha a gyorslétrehozási varázslóban ezt nem tette meg, itt lehetősége van speciális beállítások konfigurálására.
 
 Az újrapróbálkozási házirend és a hibakezelési művelet módosítására az összes művelettípus esetében lehetőség van.
@@ -75,7 +79,7 @@ Service Bus művelettípusok esetében módosítható a névtér, a témakör/ü
 
    ![][job-action-settings]
 
-### Ütemezés
+### <a name="schedule"></a>Ütemezés
 Ha módosítani kívánja a gyorslétrehozási varázslóban létrehozott ütemezést, itt újrakonfigurálhatja azt.
 
 Ez lehetőséget ad [komplex és speciális, ismétlődő ütemezések létrehozására a feladathoz](scheduler-advanced-complexity.md).
@@ -84,7 +88,7 @@ Módosítható a kezdési dátum és időpont, az ismétlődési ütemezés, val
 
    ![][job-schedule]
 
-### Előzmények
+### <a name="history"></a>Előzmények
 Az adott feladathoz a rendszerben elérhető valamennyi feladat-végrehajtási mód kiválasztott adatai megjelennek az **Előzmények** lapon. Ezen adatok segítségével valós időben értékelhető a Scheduler szolgáltatás állapota:
 
 1. status  
@@ -100,13 +104,13 @@ Az adott futtatásra kattintva megtekintheti annak **Előzményadatait**, beleé
 
    ![][job-history-details]
 
-### Felhasználók
+### <a name="users"></a>Felhasználók
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletesen beállítható hozzáférés-vezérlést biztosít az Azure Scheduler szolgáltatáshoz. A Felhasználók lap használatának elsajátításához lásd: [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md)
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
  [A Scheduler ismertetése](scheduler-intro.md)
 
- [A Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
+ [A Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
 
  [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
 
@@ -151,6 +155,6 @@ Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletesen beállít
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Azure Search-index létrehozása .NET SDK használatával | Microsoft Docs
-description: Index létrehozása kódban Azure Search .NET SDK használatával.
+title: "Azure Search-index létrehozása .NET SDK használatával | Microsoft Docs"
+description: "Index létrehozása kódban Azure Search .NET SDK használatával."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: brjohnstmsft
-manager: ''
-editor: ''
+manager: jhubbard
+editor: 
 tags: azure-portal
-
+ms.assetid: 3a851647-fc7b-4fb6-8506-6aaa519e77cd
 ms.service: search
 ms.devlang: dotnet
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: brjohnst
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
+
 
 ---
-# Azure Search-index létrehozása .NET SDK használatával
+# <a name="create-an-azure-search-index-using-the-net-sdk"></a>Azure Search-index létrehozása .NET SDK használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-what-is-an-index.md)
 > * [Portál](search-create-index-portal.md)
@@ -32,7 +36,7 @@ Már az útmutató követése és az index létrehozása előtt [létre kell hoz
 
 Vegye figyelembe, hogy a cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja.
 
-## I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
+## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
 Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arra, hogy a .NET SDK használatával kérelmeket bocsásson ki a szolgáltatásvégponton. Először meg kell szereznie a létrehozott keresőszolgáltatáshoz generált adminisztrációs API-kulcsok egyikét. A .NET SDK minden kérelemnél elküldi ezt az API-kulcsot a szolgáltatásának. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
@@ -48,8 +52,8 @@ Index létrehozása céljából az elsődleges és a másodlagos adminisztráci�
 
 <a name="CreateSearchServiceClient"></a>
 
-## II. A SearchServiceClient osztály példányának létrehozása
-Az Azure Search .NET SDK használatához létre kell hoznia a `SearchServiceClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. `SearchCredentials` becsomagolja az API-kulcsot.
+## <a name="ii-create-an-instance-of-the-searchserviceclient-class"></a>II. A SearchServiceClient osztály példányának létrehozása
+Az Azure Search .NET SDK használatához létre kell hoznia a `SearchServiceClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
 
 Az alábbi kód egy új `SearchServiceClient`-példányt hoz létre a keresőszolgáltatás nevének, valamint az API-kulcsnak az alkalmazás konfigurációs fájljában (`app.config` vagy `web.config`) tárolt értékének a felhasználásával.
 
@@ -60,7 +64,7 @@ string adminApiKey = ConfigurationManager.AppSettings["SearchServiceAdminApiKey"
 SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
 ```
 
-`SearchServiceClient` `Indexes` tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
+`SearchServiceClient` `Indexes`tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
 
 > [!NOTE]
 > A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.
@@ -69,7 +73,7 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 <a name="DefineIndex"></a>
 
-## III. Az Azure Search-index meghatározása a `Index` osztály használatával
+## <a name="iii-define-your-azure-search-index-using-the-index-class"></a>III. Az Azure Search-index meghatározása a `Index` osztály használatával
 A `Indexes.Create` módszer egyetlen meghívása létrehozza az indexet. Ez a módszer egy `Index` objektumot használ paraméterként, amely meghatározza az Azure Search-indexet. Létre kell hoznia és inicializálnia kell egy `Index` objektumot az alábbiak szerint:
 
 1. Állítsa be az `Index` objektum `Name` tulajdonságát az index nevének.
@@ -103,7 +107,7 @@ var definition = new Index()
 
 Minden `Field` esetében annak alapján választottuk ki az indexattribútumokat, ahogyan szerintünk az alkalmazások használni fogják őket. Valószínű például, hogy a szállodákat kereső személyeket érdekelni fogják a `description` mező kulcsszóra kapott találatok, ezért az `IsSearchable` feltételt `true` értékre beállítva engedélyezzük a teljes szöveges keresést.
 
-Vegye figyelembe, hogy az indexében pontosan egy `DataType.String` típusú mező lehet kijelölve _kulcs_mezőként az `IsKey` feltétel `true` értékre történő beállításával (lásd: `hotelId` a fenti példában).
+Vegye figyelembe, hogy az indexében pontosan egy `DataType.String` típusú mező lehet kijelölve *kulcs*mezőként az `IsKey` feltétel `true` értékre történő beállításával (lásd: `hotelId` a fenti példában).
 
 A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mezőhöz, mert a mező francia szöveg tárolására szolgál. A nyelvi elemzőkkel kapcsolatos további információkért tekintse meg [az MSDN Nyelvi támogatás című témakörét](https://msdn.microsoft.com/library/azure/dn879793.aspx), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
@@ -112,7 +116,7 @@ A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mez
 > 
 > 
 
-## IV. Az index létrehozása
+## <a name="iv-create-the-index"></a>IV. Az index létrehozása
 Most, hogy már rendelkezik egy inicializált `Index` objektummal, a `SearchServiceClient` objektumon lévő `Indexes.Create` meghívásával egyszerűen létrehozhatja az indexet:
 
 ```csharp
@@ -132,9 +136,12 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## Tovább
+## <a name="next"></a>Tovább
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

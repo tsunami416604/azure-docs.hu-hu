@@ -1,222 +1,224 @@
 ---
-title: Manage your first API in Azure API Management | Microsoft Docs
-description: Learn how to create APIs, add operations, and get started with API Management.
+title: "Az első API kezelése az Azure API Management szolgáltatásban | Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre API-kat, adhat hozzá műveleteket és kezdheti meg az API Management használatát."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 51b7df8b-1c43-43c6-90c9-0aa24f48206b
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/24/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
+
 
 ---
-# Manage your first API in Azure API Management
-## <a name="overview"> </a>Overview
-This guide shows you how to quickly get started in using Azure API Management and make your first API call.
+# <a name="manage-your-first-api-in-azure-api-management"></a>Az első API kezelése az Azure API Management szolgáltatásban
+## <a name="overview"> </a>Áttekintés
+Ez az útmutató ismerteti, hogyan teheti meg gyorsan az első lépéseket az Azure API Management szolgáltatással, és hogyan indíthatja az első API-hívását.
 
-## <a name="concepts"> </a>What is Azure API Management?
-You can use Azure API Management to take any backend and launch a full-fledged API program based on it.
+## <a name="concepts"> </a>Mi az Azure API Management?
+Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
 
-Common scenarios include:
+A gyakori forgatókönyvek a következők:
 
-* **Securing mobile infrastructure** by gating access with API keys, preventing DOS attacks by using throttling, or using advanced security policies like JWT token validation.
-* **Enabling ISV partner ecosystems** by offering fast partner onboarding through the developer portal and building an API facade to decouple from internal implementations that are not ripe for partner consumption.
-* **Running an internal API program** by offering a centralized location for the organization to communicate about the availability and latest changes to APIs, gating access based on organizational accounts, all based on a secured channel between the API gateway and the backend.
+* **A mobil infrastruktúra biztonságossá tétele** a hozzáférés API-kulcsokkal történő korlátozásával, a szolgáltatásmegtagadási támadások szabályozással történő megelőzésével vagy speciális biztonsági házirendek, például a JWT-jogkivonat alapú érvényesítés használatával.
+* **Az ISV-k partneri rendszereinek engedélyezése** a fejlesztői portálon keresztüli gyors partnerfelvétellel és egy API-homlokzat építésével annak érdekében, hogy a belső megvalósításokról leválassza a partnerek általi használatra nem alkalmas megvalósításokat.
+* **Belső API-program futtatása** egy központi hely felajánlásával, ahol a szervezet tagjai kommunikálhatnak az API-k rendelkezésre állásáról és a legújabb módosításaikról, illetve a hozzáférés szervezeti fiókok alapján történő korlátozásával, mindezt az API-átjáró és a háttérrendszer közötti biztonságos csatorna alapján.
 
-The system is made up of the following components:
+A rendszer az alábbi összetevőkből áll:
 
-* The **API gateway** is the endpoint that:
+* Az **API-átjáró** az a végpont, amely:
   
-  * Accepts API calls and routes them to your backends.
-  * Verifies API keys, JWT tokens, certificates, and other credentials.
-  * Enforces usage quotas and rate limits.
-  * Transforms your API on the fly without code modifications.
-  * Caches backend responses where set up.
-  * Logs call metadata for analytics purposes.
-* The **publisher portal** is the administrative interface where you set up your API program. Use it to:
+  * Fogadja az API-hívásokat, és továbbítja őket a háttérrendszerekre.
+  * Ellenőrzi az API-kulcsokat, JWT-jogkivonatokat, tanúsítványokat és más hitelesítő adatokat.
+  * Betartatja a használati kvótákat és a sebességkorlátokat.
+  * Villámgyorsan, kódmódosítás nélkül átalakítja az API-kat.
+  * Gyorsítótárazza a háttérrendszer válaszait, ahol ez be van állítva.
+  * Elemzési céllal naplózza a hívások metaadatait.
+* A **közzétevő portál** az a rendszergazdai felület, ahol beállíthatja az API-programot. A következőkre lehet használni:
   
-  * Define or import API schema.
-  * Package APIs into products.
-  * Set up policies like quotas or transformations on the APIs.
-  * Get insights from analytics.
-  * Manage users.
-* The **developer portal** serves as the main web presence for developers, where they can:
+  * API-séma meghatározása vagy importálása.
+  * API-k termékekbe csomagolása.
+  * Házirendek, például kvóták vagy átalakítások beállítása az API-kra.
+  * Elemzések lekérése.
+  * Felhasználók kezelése.
+* A **fejlesztői portál** a fejlesztők fő webhelye, ahol a következőket tehetik:
   
-  * Read API documentation.
-  * Try out an API via the interactive console.
-  * Create an account and subscribe to get API keys.
-  * Access analytics on their own usage.
+  * Elolvashatják az API-dokumentációt.
+  * API-kat próbálhatnak ki az interaktív konzollal.
+  * Létrehozhatnak egy fiókot és előfizethetnek, hogy API-kulcsokat szerezzenek.
+  * Hozzáférhetnek a használat adataikról készült elemzésekhez.
 
-## <a name="create-service-instance"> </a>Create an API Management instance
+## <a name="create-service-instance"> </a>API Management-példány létrehozása
 > [!NOTE]
-> To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free account in just a couple of minutes. For details, see [Azure Free Trial][Azure Free Trial].
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][Ingyenes Azure-fiók létrehozása].
 > 
 > 
 
-The first step in working with API Management is to create a service instance. Sign in to the [Azure Classic Portal][Azure Classic Portal] and click **New**, **App Services**, **API Management**, **Create**.
+Az API Management használatának első lépése egy szolgáltatáspéldány létrehozása. Jelentkezzen be az [Azure Portalra][Azure Portalra], és kattintson az **Új**, **Web + mobil**, **API Management** elemre.
 
-![API Management new instance][api-management-create-instance-menu]
+![Új API Management-példány][api-management-create-instance-menu]
 
-For **URL**, specify a unique sub-domain name to use for the service URL.
+A **Név** mezőben adjon meg egy egyedi altartománynevet, amely a szolgáltatás URL-címe lesz.
 
-Choose the desired **Subscription** and **Region** for your service instance. After making your selections, click the **Next** button.
+Válassza ki a kívánt **Előfizetést**, **Erőforráscsoportot** és **Helyet** a szolgáltatáspéldányához.
 
-![New API Management service][api-management-create-instance-step1]
-
-Enter **Contoso Ltd.** for the **Organization Name**, and enter your email address in the **Administrator E-Mail** field.
+Adja meg a **Contoso Ltd.** nevet a **Szervezet neve** mezőben, majd írja be az e-mail-címét a **Rendszergazda e-mail címe** mezőbe.
 
 > [!NOTE]
-> This email address is used for notifications from the API Management system. For more information, see [How to configure notifications and email templates in Azure API Management][How to configure notifications and email templates in Azure API Management].
+> Erre az e-mail-címre fognak érkezni az API Management rendszer értesítései. További információkért lásd: [Az értesítések és e-mail-sablonok konfigurálása az Azure API Management szolgáltatásban][Az értesítések és e-mail-sablonok konfigurálása az Azure API Management szolgáltatásban].
 > 
 > 
 
-![New API Management service][api-management-create-instance-step2]
+![Új API Management szolgáltatás][api-management-create-instance-step1]
 
-API Management service instances are available in three tiers: Developer, Standard, and Premium. By default, new API Management service instances are created in the Developer tier. To select the Standard or Premium tier, check the **Advanced settings** check box and select the desired tier on the following screen.
+Az API Management szolgáltatáspéldányok három csomagban érhetők el: Fejlesztői, Standard és Prémium.
 
 > [!NOTE]
-> The Developer Tier is for development, testing, and pilot API programs where high availability is not a concern. In the Standard and Premium tiers, you can scale your reserved unit count to handle more traffic. The Standard and Premium tiers provide your API Management service with the most processing power and performance. You can complete this tutorial by using any tier. For more information about API Management tiers, see [API Management pricing][API Management pricing].
+> A Fejlesztői csomag olyan API-programok fejlesztésére, tesztelésére, és próbaüzemére szolgál, amelyeknél nem fontos a magas rendelkezésre állás. A Standard és Prémium csomagokban a fenntartott egységet lehet úgy méretezni, hogy nagyobb forgalmat legyen képes kezelni. A Standard és a Prémium csomagok biztosítják a legnagyobb feldolgozási kapacitást és teljesítményt az API Management szolgáltatása számára. Jelen oktatóanyagot bármely csomaggal elvégezheti. További információ az API Management csomagjairól: [Az API Management díjszabása][Az API Management díjszabása].
 > 
 > 
 
-Click the check box to create your service instance.
+Kattintson a **Létrehozás** elemre a szolgáltatáspéldány kiépítésének megkezdéséhez.
 
-![New API Management service][api-management-instance-created]
+![Új API Management szolgáltatás][api-management-instance-created]
 
-Once the service instance is created, the next step is to create or import an API.
+A szolgáltatáspéldány létrehozása után a következő lépés egy API létrehozása vagy importálása.
 
-## <a name="create-api"> </a>Import an API
-An API consists of a set of operations that can be invoked from a client application. API operations are proxied to existing web services.
+## <a name="create-api"> </a>API importálása
+Az API egy ügyfélalkalmazásokból meghívható műveletkészletből áll. Az API-műveleteket létező webszolgáltatásokhoz használják proxyként.
 
-APIs can be created (and operations can be added) manually, or they can be imported. In this tutorial, we will import the API for a sample calculator web service provided by Microsoft and hosted on Azure.
+Az API-kat létre lehet hozni (és a műveleteket hozzá lehet adni) manuálisan, vagy importálni is lehet. Ebben az oktatóanyagban importálni fogjuk egy Microsoft által biztosított, Azure-ban üzemeltetett minta számológép webszolgáltatás API-ját.
 
 > [!NOTE]
-> For guidance on creating an API and manually adding operations, see [How to create APIs](api-management-howto-create-apis.md) and [How to add operations to an API](api-management-howto-add-operations.md).
+> Útmutató az API-k létrehozásához és a műveletek manuális hozzáadásához: [API-k létrehozása](api-management-howto-create-apis.md) és [Műveletek hozzáadása API-khoz](api-management-howto-add-operations.md).
 > 
 > 
 
-APIs are configured from the publisher portal, which is accessed through the Azure Classic Portal. To reach the publisher portal, click **Manage** in the Azure Classic Portal for your API Management service.
+Az API-kat a közzétevő portálról lehet konfigurálni. Az eléréséhez kattintson a **Közzétevő portálra** a szolgáltatási eszköztárból.
 
-![Publisher portal][api-management-management-console]
+![Közzétevő portál][api-management-management-console]
 
-To import the calculator API, click **APIs** from the **API Management** menu on the left, and then click **Import API**.
+A számológép API importálásához kattintson a bal oldali **API Management** menü **API-k** elemére, majd kattintson az **API importálása** lehetőségre.
 
-![Import API button][api-management-import-api]
+![API importálása gomb][api-management-import-api]
 
-Perform the following steps to configure the calculator API:
+A számológép API konfigurálásához végezze el az alábbi lépéseket:
 
-1. Click **From URL**, enter **http://calcapi.cloudapp.net/calcapi.json** into the **Specification document URL** text box, and click the **Swagger** radio button.
-2. Type **calc** into the **Web API URL suffix** text box.
-3. Click in the **Products (optional)** box and choose **Starter**.
-4. Click **Save** to import the API.
+1. Kattintson az **URL-címről** lehetőségre, írja be a **http://calcapi.cloudapp.net/calcapi.json** címet a **Specifikációs dokumentum URL-címe** szövegmezőbe, majd kattintson a **Swagger** választógombra.
+2. Írja be a **calc** kifejezést a **Webes API URL-címének utótagja** szövegmezőbe.
+3. Kattintson a **Termékek (választható)** mezőre, és válassza a **Kezdő** lehetőséget.
+4. Kattintson a **Mentés** gombra az API importálásához.
 
-![Add new API][api-management-import-new-api]
+![Új API hozzáadása][api-management-import-new-api]
 
 > [!NOTE]
-> **API Management** currently supports both 1.2 and 2.0 version of Swagger document for import. Make sure that, even though [Swagger 2.0 specification](http://swagger.io/specification) declares that `host`, `basePath`, and `schemes` properties are optional, your Swagger 2.0 document **MUST** contain those properties; otherwise it won't get imported. 
+> Az **API Management** jelenleg az 1.2-es és a 2.0-ás verziójú Swagger-dokumentumok importálását is támogatja. Ügyeljen arra, hogy még ha a [Swagger 2.0 specifikációja](http://swagger.io/specification) szerint a `host`, `basePath` és `schemes` tulajdonságok nem is kötelezőek, a Swagger 2.0-ás dokumentumnak akkor is tartalmaznia **KELL** ezeket a tulajdonságokat, máskülönben nem lesz importálva. 
 > 
 > 
 
-Once the API is imported, the summary page for the API is displayed in the publisher portal.
+Az API importálása után megjelenik az API összefoglaló lapja a közzétevő portálon.
 
-![API summary][api-management-imported-api-summary]
+![API összefoglaló][api-management-imported-api-summary]
 
-The API section has several tabs. The **Summary** tab displays basic metrics and information about the API. The [Settings](api-management-howto-create-apis.md#configure-api-settings) tab is used to view and edit the configuration for an API. The [Operations](api-management-howto-add-operations.md) tab is used to manage the API's operations. The **Security** tab can be used to configure gateway authentication for the backend server by using Basic authentication or [mutual certificate authentication](api-management-howto-mutual-certificates.md), and to configure [user authorization by using OAuth 2.0](api-management-howto-oauth2.md).  The **Issues** tab is used to view issues reported by the developers who are using your APIs. The **Products** tab is used to configure the products that contain this API.
+Az API szakasz több lapból áll. Az **Összefoglalás** lap az API alapvető mérőszámait és információit jeleníti meg. A [Beállítások](api-management-howto-create-apis.md#configure-api-settings) lap az API-k konfigurációjának megtekintésére és szerkesztésére szolgál. A [Műveletek](api-management-howto-add-operations.md) lap az API műveleteinek kezelésére szolgál. A **Biztonság** lap a háttérkiszolgáló átjárójának egyszerű hitelesítés vagy [kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md) használatára való konfigurálására, illetve az [OAuth 2.0 segítségével történő felhasználói hitelesítés](api-management-howto-oauth2.md) konfigurálására szolgál.  A **Problémák** lap az API-kat használó fejlesztők által lejelentett problémák megtekintésére szolgál. A **Termékek** lap az API-t tartalmazó termékek konfigurálására szolgál.
 
-By default, each API Management instance comes with two sample products:
+Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár:
 
-* **Starter**
-* **Unlimited**
+* **Kezdő**
+* **Korlátlan**
 
-In this tutorial, the Basic Calculator API was added to the Starter product when the API was imported.
+Ebben az oktatóanyagban az API importálásakor a Kezdő termékhez adta hozzá az Egyszerű számológép API-t.
 
-In order to make calls to an API, developers must first subscribe to a product that gives them access to it. Developers can subscribe to products in the developer portal, or administrators can subscribe developers to products in the publisher portal. You are an administrator since you created the API Management instance in the previous steps in the tutorial, so you are already subscribed to every product by default.
+Egy API meghívásához a fejlesztőknek először elő kell fizetniük egy termékre, amely hozzáférést biztosít az API-hoz. A fejlesztők előfizethetnek a termékekre a fejlesztői portálon, vagy a rendszergazdák előfizethetnek a termékekre a fejlesztők nevében a közzétevő portálon. Mivel az oktatóanyag korábbi lépéseiben már létrehozott egy API Management-példányt, rendszergazdának számít, és alapértelmezés szerint minden termékre elő van fizetve.
 
-## <a name="call-operation"> </a>Call an operation from the developer portal
-Operations can be called directly from the developer portal, which provides a convenient way to view and test the operations of an API. In this tutorial step, you will call the Basic Calculator API's **Add two integers** operation. Click **Developer portal** from the menu at the top right of the publisher portal.
+## <a name="call-operation"> </a>Művelet meghívása a fejlesztői portálról
+A műveleteket meg lehet hívni közvetlenül a fejlesztői portálról, ami egy kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére. Az oktatóanyag jelen lépésében az Egyszerű számológép API **Két egész szám összeadása** műveletét fogja meghívni. Kattintson a **Fejlesztői portál** lehetőségre a közzétevő portál jobb felső részén látható menüben.
 
-![Developer portal][api-management-developer-portal-menu]
+![Fejlesztői portál][api-management-developer-portal-menu]
 
-Click **APIs** from the top menu, and then click **Basic Calculator** to see the available operations.
+Kattintson az **API-k** elemre a felső menüben, majd kattintson az **Egyszerű számológép** lehetőségre az elérhető műveletek megtekintéséhez.
 
-![Developer portal][api-management-developer-portal-calc-api]
+![Fejlesztői portál][api-management-developer-portal-calc-api]
 
-Note the sample descriptions and parameters that were imported along with the API and operations, providing documentation for the developers that will use this operation. These descriptions can also be added when operations are added manually.
+Figyelje meg az API-val és a műveletekkel együtt importált mintaleírásokat és paramétereket, amelyek dokumentációként szolgálnak a műveletet használni tervező fejlesztők számára. Ezeket a leírásokat a műveletek manuális hozzáadásakor is hozzá lehet adni.
 
-To call the **Add two integers** operation, click **Try it**.
+A **Két egész szám összeadása** művelet meghívásához kattintson a **Kipróbálom** gombra.
 
-![Try it][api-management-developer-portal-calc-api-console]
+![Kipróbálom][api-management-developer-portal-calc-api-console]
 
-You can enter some values for the parameters or keep the defaults, and then click **Send**.
+Írjon be néhány értéket a paraméterekhez, vagy fogadja el az alapértelmezett értékeket, majd kattintson a **Küldés** gombra.
 
 ![HTTP Get][api-management-invoke-get]
 
-After an operation is invoked, the developer portal displays the **Response status**, the **Response headers**, and any **Response content**.
+A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
 
-![Response][api-management-invoke-get-response]
+![Válasz][api-management-invoke-get-response]
 
-## <a name="view-analytics"> </a>View analytics
-To view analytics for Basic Calculator, switch back to the publisher portal by selecting **Manage** from the menu at the top right of the developer portal.
+## <a name="view-analytics"> </a>Elemzés megtekintése
+Az Egyszerű számológép elemzésének megtekintéséhez váltson vissza a közzétevő portálra a fejlesztői portál jobb felső részén látható menü **Kezelés** lehetőségének kiválasztásával.
 
-![Manage][api-management-manage-menu]
+![Kezelés][api-management-manage-menu]
 
-The default view for the publisher portal is the **Dashboard**, which provides an overview of your API Management instance.
+A közzétevő portál alapértelmezett nézete az **Irányítópult**, amely az API Management példány áttekintését jeleníti meg.
 
-![Dashboard][api-management-dashboard]
+![Irányítópult][api-management-dashboard]
 
-Hover the mouse over the chart for **Basic Calculator** to see the specific metrics for the usage of the API for a given time period.
+Vigye az egérmutatót a **Egyszerű számológép** ábrájára az API adott időszakban történő használatára vonatkozó mérőszámok megtekintéséhez.
 
 > [!NOTE]
-> If you don't see any lines on your chart, switch back to the developer portal and make some calls into the API, wait a few moments, and then come back to the dashboard.
+> Ha nem lát vonalakat az ábrán, váltson vissza a fejlesztői portálra és, hívja meg néhányszor az API-t, várjon pár pillanatot, majd térjen vissza az irányítópultra.
 > 
 > 
 
-Click **View Details** to view the summary page for the API, including a larger version of the displayed metrics.
+Kattintson a **Részletek megtekintése** parancsra az API összefoglaló lapjának megtekintéséhez, ahol a megjelenített mérőszámok is megtalálhatók részletesebben.
 
-![Analytics][api-management-mouse-over]
+![Elemzés][api-management-mouse-over]
 
-![Summary][api-management-api-summary-metrics]
+![Összefoglalás][api-management-api-summary-metrics]
 
-For detailed metrics and reports, click **Analytics** from the **API Management** menu on the left.
+Részletes metrikákért és jelentésekért kattintson a bal oldali **API Management** menü **Elemzés** lehetőségére.
 
-![Overview][api-management-analytics-overview]
+![Áttekintés][api-management-analytics-overview]
 
-The **Analytics** section has the following four tabs:
+Az **Elemzés** szakasz az alábbi négy lapból áll:
 
-* **At a glance** provides overall usage and health metrics, as well as the top developers, top products, top APIs, and top operations.
-* **Usage** provides an in-depth look at API calls and bandwidth, including a geographical representation.
-* **Health** focuses on status codes, cache success rates, response times, and API and service response times.
-* **Activity** provides reports that drill down on the specific activity by developer, product, API, and operation.
+* Az **Áttekintés** az általános használati és állapotmetrikákat, valamint a legnépszerűbb fejlesztőket, termékeket, API-kat és műveleteket jeleníti meg.
+* A **Használat** részletes tájékoztatást biztosít az API-hívásokról és a sávszélességről, földrajzi ábrázolással.
+* Az **Állapot** az állapotkódokkal, a gyorsítótárazás sikerességének mértékével, a válaszidőkkel, illetve az API-k és szolgáltatások válaszidejével foglalkozik.
+* A **Tevékenység** jelentéseket biztosít, amelyek egy adott tevékenységet részleteznek fejlesztő, termék, API és művelet szerint.
 
-## <a name="next-steps"> </a>Next steps
-* Learn how to [Protect your API with rate limits](api-management-howto-product-with-rules.md).
+## <a name="next-steps"> </a>Következő lépések
+* Megtudhatja, hogyan [védheti meg az API-kat sebességkorlátozással](api-management-howto-product-with-rules.md).
 
-[Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Ingyenes Azure-fiók létrehozása]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
-[Create an API Management instance]: #create-service-instance
-[Create an API]: #create-api
-[Add an operation]: #add-operation
-[Add the new API to a product]: #add-api-to-product
-[Subscribe to the product that contains the API]: #subscribe
-[Call an operation from the Developer Portal]: #call-operation
-[View analytics]: #view-analytics
-[Next steps]: #next-steps
+[API Management-példány létrehozása]: #create-service-instance
+[API létrehozása]: #create-api
+[Művelet hozzáadása]: #add-operation
+[Az új API hozzáadása egy termékhez]: #add-api-to-product
+[Előfizetés az API-t tartalmazó termékre]: #subscribe
+[Művelet meghívása a fejlesztői portálról]: #call-operation
+[Elemzés megtekintése]: #view-analytics
+[Következő lépések]: #next-steps
 
 
-[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
-[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
-[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
-[Responses]: api-management-howto-add-operations.md#responses
-[How create and publish a product]: api-management-howto-add-products.md
-[API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/
+[A fejlesztői fiókok kezelése az Azure API Management szolgáltatásban]: api-management-howto-create-or-invite-developers.md
+[API-beállítások konfigurálása]: api-management-howto-create-apis.md#configure-api-settings
+[Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban]: api-management-howto-configure-notifications.md
+[Válaszok]: api-management-howto-add-operations.md#responses
+[Termék létrehozása és közzététele]: api-management-howto-add-products.md
+[Az API Management díjszabása]: http://azure.microsoft.com/pricing/details/api-management/
 
-[Azure Classic Portal]: https://manage.windowsazure.com/
+[Azure Portal]: https://portal.azure.com/
 
 [api-management-management-console]: ./media/api-management-get-started/api-management-management-console.png
 [api-management-create-instance-menu]: ./media/api-management-get-started/api-management-create-instance-menu.png
@@ -255,6 +257,6 @@ The **Analytics** section has the following four tabs:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

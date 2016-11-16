@@ -1,12 +1,12 @@
 ---
-title: Azure AD-bérlő beszerzése | Microsoft Docs
-description: Annak ismertetése, hogyan szerezhet be egy Azure Active Directory-bérlőt az alkalmazások regisztrálásához és fordításához.
+title: "Azure AD-bérlő beszerzése | Microsoft Docs"
+description: "Annak ismertetése, hogyan szerezhet be egy Azure Active Directory-bérlőt az alkalmazások regisztrálásához és fordításához."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dstrockis
 manager: terrylan
-editor: ''
-
+editor: 
+ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b72271ca68df3b4b11c41f208fd1e3dd75b5e727
+
 
 ---
-# Azure AD-bérlő beszerzése
+# <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure AD-bérlő beszerzése
 Az Azure Active Directory (Azure AD) alatt a [bérlők](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) a szervezetek képviselői.  Ez az Azure AD szolgáltatás egy dedikált példánya, amelyet a szervezetek megkapnak és a tulajdonukban áll, amikor regisztrálnak egy Microsoft-felhőszolgáltatásra, például az Azure, a Microsoft Intune vagy az Office 365 szolgáltatásra.  Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől.  
 
 A bérlők a vállalatnál tárolják a felhasználóikat és azok információit – a jelszavaikat, a felhasználói profiljuk adatait, az engedélyeiket stb.  Csoportokat, alkalmazásokat és a szervezethez és annak biztonságához kapcsolódó egyéb információkat is tartalmazzák.
@@ -30,10 +34,10 @@ Szóval, hogyan szerezhet be Azure AD-bérlőt?  Az eljárás kissé eltérő, h
 * [Meglévő Azure-előfizetése társítva van egy szervezeti fiókkal](#use-an-organizational-azure-subscription)
 * [A fentiek közül egyikkel sem rendelkezik, és teljesen új előfizetéssel kezd](#start-from-scratch)
 
-## Meglévő Office 365-előfizetést használ
+## <a name="use-an-existing-office-365-subscription"></a>Meglévő Office 365-előfizetést használ
 Ha van meglévő Office 365-előfizetése, akkor már Azure AD-bérlővel is rendelkezik! Az [Azure Portalra](https://portal.azure.com) bejelentkezhet O365-fiókjával, és el is kezdheti használni az Azure AD-t.
 
-## MSA Azure-előfizetést használ
+## <a name="use-an-msa-azure-subscription"></a>MSA Azure-előfizetést használ
 Ha korábban regisztrált egy Azure-előfizetésre egyéni Microsoft-fiókkal, már van bérlője.  Amikor bejelentkezik az [Azure Portalra](https://portal.azure.com), a rendszer automatikusan belépteti az alapértelmezett bérlői fiókba. Szabadon használhatja ezt a bérlőt, ahogyan szeretné – de érdemes lehet egy szervezeti rendszergazdai fiókot létrehozni.
 
 Ehhez kövesse az alábbi lépéseket.  Vagy lehet, hogy új bérlőt szeretne létrehozni, és egy hasonló folyamattal rendszergazdát szeretne létrehozni a bérlőben.
@@ -52,14 +56,17 @@ Ehhez kövesse az alábbi lépéseket.  Vagy lehet, hogy új bérlőt szeretne l
 7. Az új felhasználó létrehozásához kattintson a **Létrehozás** parancsra.
 8. Az ideiglenes jelszó módosításához jelentkezzen be a [https://login.microsoftonline.com](https://login.microsoftonline.com) címre ezzel az új felhasználói fiókkal, és módosítsa a jelszót, ha a rendszer arra kéri.
 
-## Szervezeti Azure-előfizetést használ
+## <a name="use-an-organizational-azure-subscription"></a>Szervezeti Azure-előfizetést használ
 Ha korábban regisztrált egy Azure-előfizetésre a szervezeti fiókjával, már van bérlője.  Az [Azure Portalon](https://portal.azure.com) látnia kell egy bérlőt, ha a „További Szolgáltatások”, majd az „Azure Active Directory” területre navigál.  Szabadon használhatja ezt a bérlőt, ahogyan szeretné. 
 
-## Kezdés a nulláról
+## <a name="start-from-scratch"></a>Kezdés a nulláról
 Ha nem érti a fentieket, ne aggódjon.  Egyszerűen látogasson el a [https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) oldalra, hogy egy új szervezettel regisztráljon az Azure-ba.  Amint befejezte a folyamatot, egy saját Azure AD-bérlővel fog rendelkezni a regisztrációkor választott tartománynévvel.  Az [Azure Portalon](https://portal.azure.com) megkeresheti a bérlőt, ha a bal oldali navigációs sávban az „Azure Active Directory” elemre lép.
 
 Az Azure-ba történő regisztráció folyamatának részeként meg kell adnia a hitelkártyaadatait.  Nyugodtan folytathatja a folyamatot – nem kell fizetnie az alkalmazások Azure AD-ben történő közzétételéért vagy az új bérlők létrehozásáért.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

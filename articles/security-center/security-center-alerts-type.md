@@ -1,12 +1,12 @@
 ---
-title: Biztonsági riasztások típus szerint az Azure Security Centerben | Microsoft Docs
-description: Ez a dokumentum segít megismerni az Azure Security Centerben elérhető biztonsági riasztások típusait.
+title: "Biztonsági riasztások típus szerint az Azure Security Centerben | Microsoft Docs"
+description: "Ez a dokumentum segít megismerni az Azure Security Centerben elérhető biztonsági riasztások típusait."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4ddc691f4f3d53dbff2e55b7a97446427b93a8a4
+
 
 ---
-# Biztonsági riasztások típus szerint az Azure Security Centerben
+# <a name="security-alerts-by-type-in-azure-security-center"></a>Biztonsági riasztások típus szerint az Azure Security Centerben
 Ez a dokumentum segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait. A riasztások kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
 
 > [!NOTE]
@@ -24,7 +28,7 @@ Ez a dokumentum segít megismerni az Azure Security Centerben elérhető biztons
 > 
 > 
 
-## Milyen típusú riasztások állnak rendelkezésre?
+## <a name="what-type-of-alerts-are-available"></a>Milyen típusú riasztások állnak rendelkezésre?
 Az Azure Security Center különböző riasztásokat biztosít, amelyek igazodnak a számítógépes törlési lánc szakaszaihoz. Az alábbi ábrán néhány példa látható a különböző riasztásokra, amelyek a következő szakaszok valamelyikéhez kapcsolódnak.
 
 ![Törlési lánc](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
@@ -56,7 +60,7 @@ Minden egyes szakaszhoz különböző típusú támadások tartoznak, és azok k
 * Hálózatelemzés
 * Erőforrás-elemzés
 
-## Virtuális gép működésének elemzése
+## <a name="virtual-machine-behavioral-analysis"></a>Virtuális gép működésének elemzése
 Az Azure Security Center a működés elemzésével tudja azonosítani a feltört erőforrásokat a virtuális gépek eseménynaplóinak az elemzésével (például: folyamat-létrehozási események, bejelentkezési események stb.). Ezenkívül megvizsgálja az összefüggéseket más jelekkel, hogy alátámassza a nagy lépétkű kampányok bizonyítékait.
 
 > [!NOTE]
@@ -64,7 +68,7 @@ Az Azure Security Center a működés elemzésével tudja azonosítani a feltör
 > 
 > 
 
-### Összeomlás-elemzés
+### <a name="crash-analysis"></a>Összeomlás-elemzés
 Az összeomlási memóriaképben található memória elemzése olyan speciálisan kifejlesztett kártevők észleléséhez használt módszer, amelyek ki tudják játszani a hagyományos biztonsági megoldásokat. A különféle formában előforduló kártevők megpróbálják megakadályozni, hogy a hagyományos vírusirtó termékek észleljék őket, ennek érdekében vagy soha nem írnak a lemezre, vagy titkosítják a lemezre írt szoftverösszetevőket. Ez megnehezíti a kártevő szoftverek hagyományos kártevőirtó megoldások használatával történő észlelését. Azonban az ilyen kártevők memóriaelemzéssel felismerhetők, mivel a kártevőknek nyomot kell hagyniuk maguk után a memóriában ahhoz, hogy működni tudjanak.
 
 Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában. Az összeomlást okozhatja kártevő, általános alkalmazás vagy rendszerproblémák. Az összeomlási memóriaképben található memóriarész elemzésével a Security Center észlelni tudja az olyan technikákat, amelyekkel a kártevők kihasználják a szoftver biztonsági réseit, hozzáférnek a bizalmas adatokhoz, és a feltört gépen maradnak elrejtőzve. Mindez minimális hatással van a gazdagépek teljesítményére, mivel az elemzést a Security Center háttérrendszere végzi.
@@ -75,7 +79,7 @@ Az összeomlási memóriaképes elemzéshez tartozó riasztások az alábbiakban
 * PROCESSNAME: az összeomlott folyamat neve.
 * PROCESSVERSION: az összeomlott folyamat verziója.
 
-### Héjkód észlelhető
+### <a name="shellcode-discovered"></a>Héjkód észlelhető
 A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejutott a rendszerbe. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony kódokra jellemző működés jeleit mutatja. Bár előfordulhat, hogy nem rosszindulatú szoftverhez tartozik az adott működés, ez nem jellemző a szokásos szoftverfejlesztési gyakorlatban.
 
 Ez a riasztás a következő mezőt is tartalmazza:
@@ -86,7 +90,7 @@ Példa az ilyen típusú riasztásra:
 
 ![Héjkód riasztása](./media/security-center-alerts-type/security-center-alerts-type-fig2.png) 
 
-### Moduleltérítés észlelhető
+### <a name="module-hijacking-discovered"></a>Moduleltérítés észlelhető
 A Windows dinamikus csatolású kódtárai (DLL) teszik lehetővé, hogy a szoftverek használják a Windows közös rendszerfunkcióit. DLL-eltérítés akkor történik, ha a kártevő megváltoztatja a DLL-betöltési sorrendet, hogy kártékony kódot töltsön be a memóriába, ahol tetszőleges kódot lehet végrehajtani. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése egy hasonló nevű modul betöltését észlelte két különböző elérési útról, és az egyik elérési út a Windows rendszer bináris rendszerfájljainak helyére mutat.
 
 A megbízható szoftverfejlesztők esetenként nem ártó szándékkal változtatják meg a DLL-ek betöltési sorrendjét, hanem például a Windows operációs rendszer vagy a Windows-alkalmazások kialakításához vagy bővítéséhez. A DLL-betöltési sorrend ártó szándékú és esetleg jóindulatú megváltoztatásának megkülönböztetéséhez az Azure Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja. Az ellenőrzés eredménye a riasztás „SIGNATURE” mezőjében látható, és ettől függ a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet. Az eltérítést végző modul lemezen lévő példányának elemzésével, például a fájlok digitális aláírásának ellenőrzésével vagy víruskeresés futtatásával további adatokhoz juthat az eltérítést végző modul megbízható vagy rosszindulatú jellegére vonatkozóan.
@@ -102,7 +106,7 @@ Példa az ilyen típusú riasztásra:
 
 ![Moduleltérítési riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig3.png) 
 
-### Álcázásos Windows-modul észlelhető
+### <a name="masquerading-windows-module-detected"></a>Álcázásos Windows-modul észlelhető
 A kártevők felhasználhatják a Windows rendszerfájljainak (például: SVCHOST.EXE) vagy moduljainak (például: NTDLL.DLL) nevét arra, hogy „elvegyüljenek” és elfedjék a szoftver kártékony jellegét a rendszergazdák elől. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan modulokat észlelt a memóriaképben, amelyek a Windows rendszermoduljainak nevét használják, de nem felelnek meg a jellemzően a Windows-modulokra vonatkozó feltételeknek. Az álcázásos modul lemezen lévő példányának elemzésével további adatokat kaphat a modul megbízható vagy kártékony jellegére vonatkozóan. Az elemzés a következőket tartalmazhatja:
 
 * Ellenőrizze, hogy a szóban forgó fájl egy megbízható szoftvercsomaghoz tartozik-e.
@@ -121,7 +125,7 @@ Példa az ilyen típusú riasztásra:
 
 ![Álcázásos Windows-modul miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig4.png) 
 
-### Módosított bináris rendszerfájl észlelhető
+### <a name="modified-system-binary-discovered"></a>Módosított bináris rendszerfájl észlelhető
 A kártevők módosíthatják a rendszermag bináris fájljait, hogy magukat leplezve hozzáférhessenek az adatokhoz, vagy elrejtőzzenek a fertőzött rendszerben. Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése a Windows operációs rendszer módosított bináris rendszerfájljait észlelte a memóriában vagy a lemezen.
 A megbízható szoftverfejlesztők esetenként nem ártó szándékkal módosítják a memóriában lévő rendszermodulokat, hanem például elkerülő megoldásokhoz vagy az alkalmazások kompatibilitásához. A kártékony és a valószínűleg jóindulatú modulok megkülönböztetéséhez az Azure Security Center ellenőrzi, hogy a betöltött modulra illik-e a gyanús működés profilja. Az ellenőrzés eredményét a riasztás súlyossági szintje, a riasztás leírása és a hibaelhárítási művelet jelzi.
 
@@ -134,31 +138,31 @@ Példa az ilyen típusú riasztásra:
 
 ![Bináris rendszerfájl miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig5.png) 
 
-### Gyanús folyamat lett végrehajtva
+### <a name="suspicious-process-executed"></a>Gyanús folyamat lett végrehajtva
 A Security Center gyanús folyamat végrehajtását azonosítja a cél virtuális gépen azonosítja, és riasztást indít el. Az észlelés nem a konkrét nevet keresi, hanem a paraméter alapján végzi a keresést, ezért még ha a támadó átnevezi is a végrehajtható fájlt, a Security Center akkor is képes az észlelésére.
 
 Példa az ilyen típusú riasztásra:
 
 ![Gyanús folyamat miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### Több tartományi fiók lett lekérdezve
+### <a name="multiple-domain-accounts-queried"></a>Több tartományi fiók lett lekérdezve
 A Security Center számos, a tartományi fiókok lekérdezésére tett kísérletet képes észlelni, amelyeket a támadók általában a hálózat felderítése során hajtanak végre. A támadók ezt a technikát használnák fel a tartomány lekérdezéséhez: a felhasználók azonosításához, a tartomány rendszergazdai fiókjainak a megismeréséhez, megtudni, hogy mely számítógépek tartományvezérlők, és a tartomány más tartományokkal való lehetséges megbízhatósági kapcsolatainak a felderítéséhez.
 
 Példa az ilyen típusú riasztásra:
 
 ![Több tartományi fiók miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
 
-## Hálózatelemzés
+## <a name="network-analysis"></a>Hálózatelemzés
 A Security Center hálózati fenyegetettség-észlelése úgy működik, hogy automatikusan összegyűjti a biztonsági információkat az Azure IPFIX (IP-folyamatadatok exportálása) forgalmából. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket.
 
-### Gyanús kimenő forgalom észlelhető
+### <a name="suspicious-outgoing-traffic-detected"></a>Gyanús kimenő forgalom észlelhető
 A hálózati eszközök ugyanolyan módon deríthetők fel és határozhatók meg, mint a más típusú rendszerek. A támadók általában a portkereséssel kezdik. Az alábbi példában olyan gyanús SSH-adatforgalom érkezik egy virtuális gépről, amely SSH találgatásos vagy portkereséses támadást hajthat végre egy külső erőforrás ellen.
 
 ![Gyanús kimenő forgalom riasztása](./media/security-center-alerts-type/security-center-alerts-type-fig8.png) 
 
 Ez a riasztás olyan információt tartalmaz, amelyből meghatározhatja a támadás elindítására használt erőforrást, a feltört gépet, az észlelés idejét, valamint a használt protokollt és portot. Ezen a panelen megjelenik a probléma megoldásához felhasználható javítási lépések listája is.
 
-### Kártékony géppel folytatott hálózati kommunikáció
+### <a name="network-communication-with-a-malicious-machine"></a>Kártékony géppel folytatott hálózati kommunikáció
 Az Azure Security Center a Microsoft fenyegetésfelderítő hírcsatornáinak használatával észlelni tudja a kártékony IP-címmel kommunikáló feltört gépeket, amelyek sok esetben parancs- és vezérlési központként működnek. Ebben az esetben az Azure Security Center azt észlelte, hogy a kommunikáció a Pony Loader (más néven [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)) kártevő használatával történt.
 
 ![hálózati kommunikáció miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
@@ -167,17 +171,17 @@ Ez a riasztás olyan információt tartalmaz, amelyből azonosíthatja a támad�
 
 [AZURE.NOTE] A valódi IP-címek adatvédelmi okból el lettek távolítva erről a képernyőfelvételről.
 
-### Lehetséges kimenő szolgáltatásmegtagadási támadás észlelése
+### <a name="possible-outgoing-denialofservice-attack-detected"></a>Lehetséges kimenő szolgáltatásmegtagadási támadás észlelése
 Egy virtuális gépről származó rendellenes hálózati forgalom következtében a Security Center elindíthat egy lehetséges szolgáltatásmegtagadás típusú támadás miatti riasztást.
 
 Példa az ilyen típusú riasztásra:
 
 ![Kimenő szolgáltatásmegtagadás](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
-## Erőforrás-elemzés
+## <a name="resource-analysis"></a>Erőforrás-elemzés
 A Security Center erőforrás-elemzése a platformszolgáltatásokra, például az [Azure SQL Database fenyegetésészlelése](../sql-database/sql-database-threat-detection-get-started.md) funkcióval való integrációra összpontosít. Ezeknek a területeknek az elemzési eredményei alapján a Security Center elindít egy erőforráshoz kapcsolódó riasztást.
 
-### Potenciális SQL-injektálás
+### <a name="potential-sql-injection"></a>Potenciális SQL-injektálás
 Az SQL-injektálás olyan támadás, amely kártékony kódot szúr be a karakterláncokba, amelyeket a rendszer később átad az SQL Server példányának elemzés és végrehajtás céljából. Az SQL-utasításokat létrehozó összes eljárást meg kell vizsgálni az injektálási biztonsági rések felderítéséhez, mivel az SQL Server végrehajtja az összes olyan lekérdezést, amely szintaktikailag érvényes. Az SQL fenyegetésészlelési funkció a Machine Learning, viselkedéselemzés és rendellenességészlelés alapján határozza meg azokat a gyanús eseményeket, amelyek az Azure SQL-adatbázisokban megtörténhetnek. Példa:
 
 * Egy korábbi alkalmazott megpróbált hozzáférni az adatbázishoz 
@@ -188,17 +192,17 @@ Az SQL-injektálás olyan támadás, amely kártékony kódot szúr be a karakte
 
 Ez a riasztás olyan információt jelenít meg, amelynek alapján azonosíthatja a megtámadott erőforrást, az észlelés idejét, a támadás állapotát, valamint a kivizsgálás további lépéseire mutató hivatkozást is tartalmaz.
 
-### Biztonsági rés az SQL-injektálás számára
+### <a name="vulnerability-to-sql-injection"></a>Biztonsági rés az SQL-injektálás számára
 Ez a riasztás akkor indul el, ha a rendszer alkalmazáshibát észlelt egy adatbázison, ami azt jelzi, hogy valószínűleg biztonsági rés keletkezett az SQL-injektálási támadások számára.
 
 ![Potenciális SQL-injektálás miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
 
-### Ismeretlen helyről történt szokatlan hozzáférés
+### <a name="unusual-access-from-unfamiliar-location"></a>Ismeretlen helyről történt szokatlan hozzáférés
 Ez a riasztás akkor indul el, ha a rendszer egy ismeretlen IP-címről történt hozzáférést észlel a kiszolgálón, amely az utolsó időszakban nem jelent meg.
 
 ![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben dokumentumban megismerhette a Security Centerben található különböző típusú biztonsági riasztásokat. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
@@ -207,6 +211,9 @@ Ebben dokumentumban megismerhette a Security Centerben található különböző
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

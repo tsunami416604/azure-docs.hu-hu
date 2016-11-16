@@ -17,7 +17,6 @@
 ## [Gyakori kérdések](../virtual-machines-linux-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 # Bevezetés
-## [Ingyenes fiók](https://azure.microsoft.com/pricing/free-trial/)
 ## [Virtuális gép létrehozása a portálról](../virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [SSH-kulcsok létrehozása Linux és Mac rendszerben](../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [A virtuális gépek létrehozásának különböző módszerei](../virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -48,7 +47,7 @@
 ### [A Docker Compose használata az Azure-ral](../virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Saját Docker-jegyzék üzembe helyezése az Azure-ban](../virtual-machines-linux-docker-registry-in-blob-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## [Tárolás](../virtual-machines-linux-azure-vm-storage-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## A Storage használata
 ### [Lemezek és virtuális merevlemezek](../virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Lemeztitkosítás](../virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Szoftveres RAID konfigurálása](../virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -67,22 +66,21 @@
 ### [Klasszikus virtuális hálózatok csatlakoztatása Resource Manager-alapú virtuális hálózatokhoz](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [DNS-névfeloldási beállítások](../virtual-machines-linux-azure-dns.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Képek
-### [Azure által támogatott rendszerképek](../virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Egyéni rendszerképek](../virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Virtuálisgép-rendszerkép feltöltése a parancssori felületről](../virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Azure Linux-ügynök](../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [CentOS](../virtual-machines-linux-create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Ubuntu](../virtual-machines-linux-create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Debian](../virtual-machines-linux-debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [RedHat](../virtual-machines-linux-redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Alkalmazás-keretrendszerek üzembe helyezése sablonból](../virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Oracle Linux-alapú virtuális gép előkészítése Azure-beli használatra](../virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 ## Üzembe helyezés
 ### [Virtuális gép másolása](../virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Virtuális gép rögzítése](../virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Virtuális gép létrehozása sablon alapján](../virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### Képek
+#### [Azure által támogatott rendszerképek](../virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Egyéni rendszerképek](../virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Virtuálisgép-rendszerkép feltöltése a parancssori felületről](../virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure Linux-ügynök](../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [CentOS](../virtual-machines-linux-create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Ubuntu](../virtual-machines-linux-create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Debian](../virtual-machines-linux-debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [RedHat](../virtual-machines-linux-redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Alkalmazás-keretrendszerek üzembe helyezése sablonból](../virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Oracle Linux-alapú virtuális gép előkészítése Azure-beli használatra](../virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## Konfigurálás
 ### [Virtuális gép áthelyezése előfizetések között](../virtual-machines-linux-move-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -95,7 +93,7 @@
 ### [Gyökérszintű jogosultságok használata](../virtual-machines-linux-use-root-privileges.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Felhasználó hozzáadása egy Azure virtuális géphez](../virtual-machines-linux-add-user.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Felhasználónevek kiválasztása](../virtual-machines-linux-usernames.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Munkahelyi vagy iskolai identitás létrehozása az Azure Active Directoryban](../virtual-machines-linux-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Munkahelyi vagy iskolai identitás létrehozása az Azure AD-ban](../virtual-machines-linux-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Hozzáférés-kezelés](../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Házirendek alkalmazása a virtuális gépekre](../virtual-machines-linux-policy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [A Key Vault beállítása](../virtual-machines-linux-key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -122,10 +120,8 @@
 ### [Áttelepítés a parancssori felületről](../virtual-machines-linux-cli-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Gyakori áttelepítési hibák](../virtual-machines-migration-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Ajánlott eljárások
-### [Önálló virtuális gépek futtatása](../../guidance/guidance-compute-single-vm-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 ## Felkészülés
+### [Virtuális gépek futtatása – ajánlott eljárások](../../guidance/guidance-compute-single-vm-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Infrastruktúrával kapcsolatos irányelvek](../virtual-machines-linux-infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Előfizetések és fiókok](../virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Elnevezés](../virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -137,7 +133,7 @@
 ### [Tervezett karbantartás az Azure-on](../virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Ütemezés](../virtual-machines-linux-planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Számítási feladatok
+## Számítási feladatok kezelése
 ### [Bevezetés az SAP használatába](../virtual-machines-linux-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Az SAP használatának tervezése](../virtual-machines-linux-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Az SAP üzembe helyezése](../virtual-machines-linux-sap-deployment-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -152,33 +148,35 @@
 ### [Nagy teljesítményű számítástechnika (HPC)](../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [NAMD futtatása a Microsoft HPC Packkel](../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Alkalmazások
+## Alkalmazások futtatása
 ### [Node.js-alkalmazás üzembe helyezése](../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Django-webalkalmazás](../virtual-machines-linux-python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Jupyter notebook](../virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## Hibaelhárítás
-### [Hibaelhárítás az SSH-kapcsolattal rendelkező Linux-alapú virtuális gép használata során](../virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-#### [A Secure Shell (SSH) részletes hibaelhárítási lépései](../virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [SSH-kapcsolattal kapcsolatos hibaelhárítás](../virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Részletes hibaelhárítási útmutató](../virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Alkalmazás-hozzáférési hibák elhárítása](../virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Foglalási hibák elhárítása](../virtual-machines-linux-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Üzembe helyezési problémák elhárítása](../virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Virtuális üzembe helyezése egy új Azure csomópontra](../virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 # Referencia
+## [Azure CLI](/cli/azure/vm)
+## [Java](/java/api/)
 ## [Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Azure CLI](../azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Java SDK](https://azure.microsoft.com/develop/java/)
-## [Node.js SDK](https://azure.microsoft.com/develop/nodejs/)
-## [Python SDK](https://azure.microsoft.com/develop/python/)
-## [Számítási REST API](https://msdn.microsoft.com/library/azure/mt163647)
-## [Hálózati REST API](https://msdn.microsoft.com/library/azure/mt163658)
-## [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355)
 ## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates/)
+## [Számítási REST](/rest/api/compute/)
+## [Hálózati REST](/rest/api/)
+## [Tárolási REST](/rest/api/storageservices/)
+
+
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/#Linux)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
 <!--HONumber=Nov16_HO2-->

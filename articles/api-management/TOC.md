@@ -40,11 +40,11 @@
 ### [Kezelés automatizálással](automation-manage-api-management.md)
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
 #Referencia
-## [Sablonok](https://msdn.microsoft.com/en-us/library/azure/mt697540)
-## [Szolgáltatások üzembe helyezése – PowerShell-parancsmagok leírása](https://msdn.microsoft.com/en-us/library/azure/mt619282)
+## [Resource Management PowerShell cmdlet]/powershell/resourcemanager()
+## [Klasszikus üzembe helyezés – PowerShell-parancsmagok leírása](https://msdn.microsoft.com/en-us/library/azure/mt613507)
+## [REST API](/rest/api/apimanagement/)
 ## [Házirendek](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [REST API](https://msdn.microsoft.com/en-us/library/azure/dn776326)
-## [Szolgáltatásfelügyeleti PowerShell-parancsmag](https://msdn.microsoft.com/en-us/library/azure/mt613507)
+## [Sablonok](https://msdn.microsoft.com/en-us/library/azure/mt697540)
 #Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/api-management/)
 ## [Tanulmány: Felhőalapú API Management](http://j.mp/ms-apim-whitepaper)

@@ -1,5 +1,4 @@
 # Áttekintés
-## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Az Azure és az IoT](iot-hub-what-is-azure-iot.md)
 ## [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Az eszközfelügyelet áttekintése](iot-hub-device-management-overview.md)
@@ -28,22 +27,23 @@
 ### [hibaelhárítással](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 ## [Átjáró SDK (Linux) – első lépések](iot-hub-linux-gateway-sdk-get-started.md)
 ## [Átjáró SDK (Windows) – első lépések](iot-hub-windows-gateway-sdk-get-started.md)
+## oktatóanyagokat
+### [Eszközről a felhőbe irányuló üzenetek feldolgozása – oktatóanyag (.NET)](iot-hub-csharp-csharp-process-d2c.md)
+### [Eszközről felhőbe irányuló üzenetek feldolgozása – oktatóanyag (Java)](iot-hub-java-java-process-d2c.md)
+### [Fájlok feltöltése eszközökről – oktatóanyag](iot-hub-csharp-csharp-file-upload.md)
+### [Üzenetküldés a felhőből az eszközökre (.NET)](iot-hub-csharp-csharp-c2d.md)
+### [Üzenetküldés a felhőből az eszközökre (Java)](iot-hub-java-java-c2d.md)
+### [Üzenetküldés a felhőből az eszközökre (Node)](iot-hub-node-node-c2d.md)
+### [Ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md)
+### [Az ikertulajdonságok használata](iot-hub-node-node-twin-how-to-configure.md)
 
 # Útmutató
-## [Eszközről a felhőbe irányuló üzenetek feldolgozása – oktatóanyag (.NET)](iot-hub-csharp-csharp-process-d2c.md)
-## [Eszközről felhőbe irányuló üzenetek feldolgozása – oktatóanyag (Java)](iot-hub-java-java-process-d2c.md)
-## [Fájlok feltöltése eszközökről – oktatóanyag](iot-hub-csharp-csharp-file-upload.md)
-## [Üzenetküldés a felhőből az eszközökre (.NET)](iot-hub-csharp-csharp-c2d.md)
-## [Üzenetküldés a felhőből az eszközökre (Java)](iot-hub-java-java-c2d.md)
-## [Üzenetküldés a felhőből az eszközökre (Node)](iot-hub-node-node-c2d.md)
-## [Ikereszközök – első lépések](iot-hub-node-node-twin-getstarted.md)
-## [Az ikertulajdonságok használata](iot-hub-node-node-twin-how-to-configure.md)
 ## Az üzembe helyezés megtervezése
 ### [Az IoT Hub és az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
 ### [A megoldás skálázása](iot-hub-scaling.md)
 ### [Magas rendelkezésre állás és vészhelyreállítás](iot-hub-ha-dr.md)
 ### [További protokollok támogatása](iot-hub-protocol-gateway.md)
-## Fejlesztői útmutató
+## Fejlesztés
 ### [Bevezetés](iot-hub-devguide.md)
 ### [Üzenetek küldése és fogadása](iot-hub-devguide-messaging.md)
 ### [Fájlok feltöltése eszközökről](iot-hub-devguide-file-upload.md)
@@ -69,26 +69,27 @@
 ### [Használati metrikák](iot-hub-metrics.md)
 ### [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-## Biztonság
+## Biztonságos
 ### [Biztonság az alapoktól](iot-hub-security-ground-up.md)
 ### [Ajánlott biztonsági eljárások](iot-hub-security-best-practices.md)
 ### [Biztonsági architektúra](iot-hub-security-architecture.md)
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
+
+
+# Referencia
+## [Azure CLI](https://docs.microsoft.com/cli/azure)
+## [Java](https://docs.microsoft.com/java/api)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
 ## Átjáró SDK
 ### [Eszköz szimulálása az Átjáró SDK használatával – oktatóanyag (Linux)](iot-hub-linux-gateway-sdk-simulated-device.md)
 ### [Eszköz szimulálása az Átjáró SDK használatával – oktatóanyag (Windows)](iot-hub-windows-gateway-sdk-simulated-device.md)
 ### [Üzenetek küldése valós eszközről az Átjáró SDK használatával – oktatóanyag](iot-hub-gateway-sdk-physical-device.md)
-
-# Referencia
-## [Ügyfél- és eszközspecifikus .NET API-k](https://msdn.microsoft.com/library/mt488521.aspx)
-## [Az erőforrás-szolgáltató REST API-ja](https://docs.microsoft.com/rest/api/iothub/iothubresource)
-## [Eszközidentitások REST API-ja](https://go.microsoft.com/fwlink/p/?linkid=833394)
-## [Eszközök üzenetküldési REST API-ja](https://go.microsoft.com/fwlink/p/?linkid=833395)
 ## [Eszköz SDK API](http://azure.github.io/azure-iot-sdks/)
 ## [Átjáró SDK API](http://azure.github.io/azure-iot-gateway-sdk)
 ## [A C Azure IoT eszközoldali C SDK-jának bemutatása](iot-hub-device-sdk-c-intro.md)
 ## [A C IoT eszközoldali SDK-ja: további információ az IoTHubClientről](iot-hub-device-sdk-c-iothubclient.md)
 ## [A C IoT eszközoldali SDK-ja: további információ a szerializálóról](iot-hub-device-sdk-c-serializer.md)
+## [REST](https://docs.microsoft.com/en-us/rest/api/iothub/)
 
 # Kapcsolódó
 ## [Az Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -97,9 +98,15 @@
 ## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub) 
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=iot-hub) 
+## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
-## [Díjszabási információk](https://azure.microsoft.com/pricing/details/iot-hub/)
+
 
 
 <!--HONumber=Nov16_HO2-->

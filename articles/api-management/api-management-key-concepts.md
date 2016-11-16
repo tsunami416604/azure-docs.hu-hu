@@ -1,22 +1,26 @@
 ---
 title: Az API Management alapfogalmai
-description: Ismerje meg az API-kat, a termékeket, a szerepköröket, a csoportokat és az API Management többi alapfogalmát.
+description: "Ismerje meg az API-kat, a termékeket, a szerepköröket, a csoportokat és az API Management többi alapfogalmát."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: e71da405-835a-48f3-956f-45c1a85698d7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dcff834c9d4aff82e8319e6c23a74c2e49902a8c
+
 
 ---
-# Mi az API Management?
+# <a name="what-is-api-management"></a>Mi az API Management?
 Az API Management segít a szervezeteknek közzétenni az API-kat külső, partneri és belső fejlesztők számára, hogy ki tudják bontakoztatni az adataikban és szolgáltatásaikban rejlő lehetőségeket. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez.
 
 Az alábbi videó segítségével áttekintheti az Azure API Management szolgáltatást, és megtudhatja, hogyan adhat hozzá funkciókat az API-jához az API Management használatával, például hozzáférés-vezérlést, sebességkorlátozást, figyelést, eseménynaplózást és a válaszok gyorsítótárazását, minimális befektetett munkával.
@@ -53,7 +57,7 @@ Az API-k a termékeken keresztül válnak elérhetővé a fejlesztők számára.
 
 A csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A csoportok számára a termékek biztosítanak láthatóságot, a fejlesztők pedig megtekinthetik a csoportjuk számára látható termékeket és előfizethetnek rájuk. 
 
-További információkért lásd: A [Termék létrehozása és közzététele][Termék létrehozása és közzététele] című szakasz és az alábbi videó.
+További információkért lásd a [Termék létrehozása és közzététele][Termék létrehozása és közzététele] című szakaszt és az alábbi videót.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
 > 
@@ -66,7 +70,7 @@ A csoportok használatával szabályozható a fejlesztők hozzáférése a term�
 * **Fejlesztők** – A fejlesztői portál hitelesített felhasználói tartoznak ebbe a csoportba. A fejlesztők olyan ügyfelek, akik alkalmazásokat hoznak létre az API-k segítségével. A fejlesztők hozzáférhetnek a fejlesztői portálhoz, és olyan alkalmazásokat készíthetnek, amelyek egy API műveleteit hívják meg.
 * **Vendégek** – A fejlesztői portál nem hitelesített felhasználói tartoznak ebbe a csoportba, például az egyik API Management példány fejlesztői portálját meglátogató leendő ügyfelek. A vendégek kaphatnak bizonyos szintű, csak olvasási hozzáférést, például megtekinthetnek API-kat, de nem hívhatják meg őket.
 
-Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni csoportokat vagy [áttelepíthetik a társított Azure Active Directory-bérlők külső csoportjait is](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group). A fejlesztők mellett az egyéni és külső csoportoknak is lehet adni láthatóságot és hozzáférést az API-termékekhez. Például egy adott partnerszervezet fejlesztői számára létre lehet hozni egy egyéni csoportot, és hozzáférést lehet nekik biztosítani a megfelelő API-kat tartalmazó termék API-jaihoz. Egy felhasználó egyszerre több csoport tagja is lehet.
+Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni csoportokat vagy [áttelepíthetik a társított Azure Active Directory-bérlők külső csoportjait is](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group). A fejlesztők mellett az egyéni és külső csoportoknak is lehet adni láthatóságot és hozzáférést az API-termékekhez. Például egy adott partnerszervezet fejlesztői számára létre lehet hozni egy egyéni csoportot, és hozzáférést lehet nekik biztosítani a megfelelő API-kat tartalmazó termék API-jaihoz. Egy felhasználó egyszerre több csoport tagja is lehet.
 
 További információkért lásd: [Csoportok létrehozása és használata][Csoportok létrehozása és használata].
 
@@ -86,7 +90,7 @@ A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként 
 > 
 > 
 
-Az API Management házirendek teljes listájáért tekintse meg a [Házirend-referencia][Házirend-referencia] szakaszt. További információ a házirendek használatáról és konfigurálásáról: [API Management házirendek][API Management házirendek]. Ha egy sebességkorlát- és kvótaházirendekkel rendelkező termék létrehozásához keres oktatóanyagot, tekintse meg a [Speciális termékbeállítások létrehozása és konfigurálása][Speciális termékbeállítások létrehozása és konfigurálása] című szakaszt. Egy bemutatóért tekintse meg az alábbi videót.
+Az API Management-házirendek teljes listájáért tekintse meg a [Házirend-referencia][Házirend-referencia] szakaszt. További információ a házirendek használatáról és konfigurálásáról: [API Management-házirendek][API Management-házirendek]. Ha egy sebességkorlát- és kvótaházirendekkel rendelkező termék létrehozásához keres oktatóanyagot, tekintse meg a [Speciális termékbeállítások létrehozása és konfigurálása][Speciális termékbeállítások létrehozása és konfigurálása] című szakaszt. Egy bemutatóért tekintse meg az alábbi videót.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -97,7 +101,7 @@ A fejlesztők a fejlesztői portálon ismerhetik meg az API-kat, tekinthetik meg
 
 A fejlesztői portál megjelenését és működését egyéni tartalom hozzáadásával, a stílusok testre szabásával és a vállalat emblémájának hozzáadásával lehet személyre szabni.
 
-## API Management és az API-k gazdaságossága
+## <a name="api-management-and-the-api-economy"></a>API Management és az API-k gazdaságossága
 Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg az alábbi bemutatót a 2015 -ös Microsoft Ignite konferenciáról.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3708/player]
@@ -128,6 +132,6 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,25 +1,29 @@
 ---
 title: ExpressRoute-helyek | Microsoft Docs
-description: A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról.
+description: "A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról."
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2016
+ms.date: 11/02/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 86b7d396307761acb8baee5761f08a3e1120cddc
+
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 A cikkben található táblázatok információkat nyújtanak az ExpressRoute-kapcsolatszolgáltatókkal, az ExpressRoute földrajzi lefedettségével, az ExpressRoute-on támogatott Microsoft-felhőszolgáltatásokkal és az ExpressRoute-rendszerintegrátorokkal (SI) kapcsolatban.
 
-## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
+## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
 Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következő térkép az Azure-régiók és ExpressRoute-helyek listáját tartalmazza. Az ExpressRoute-helyek azokra a helyekre utalnak, ahol a Microsoft több szolgáltatóval is társul.
 
 ![Helyek térképe][0]
@@ -58,9 +62,9 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | --- | --- |
 | **Amszterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions – Cloud Connect, Interxion, Level 3 Communications, Orange, Tata Communications, TeleCity Group, Telenor, Verizon |
 | **Atlanta** |Equinix |
-| **Csennai** |Tata Communications |
+| **Csennai** |SIFY, Tata Communications |
 | **Chicago** |AT&T NetBond, Comcast, Equinix, Level 3 Communications, Zayo Group |
-| **Dallas** |AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport |
+| **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport |
 | **Dublin** |Colt, Telecity Group |
 | **Hongkong** |British Telecom, China Telecom Global, Equinix, Megaport, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **London** |AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc+, Level 3 Communications, MTN, NTT Communications, Orange, Tata Communications, Telecity Group, Telenor, Verizon, Vodafone |
@@ -68,18 +72,19 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Los Angeles** |CoreSite, Equinix, Megaport, NTT, Zayo Group |
 | **Melbourne** |AARNet, Equinix, Megaport, NEXTDC, Telstra Corporation |
 | **New York** |Equinix, Megaport, Zayo Group |
+| **Newport(Wales)+** |Következő generációs adat+ |
 | **Montreal** |Cologix+ |
 | **Mumbai** |Tata Communications |
 | **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank |
-| **Párizs** |Interxion |
+| **Párizs** |Interxion, Equinix+ |
 | **Sao Paulo** |Equinix, Telefonica |
 | **Seattle** |Equinix, Level 3 Communications, Megaport |
 | **Szilícium-völgy** |Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink+, Comcast, Equinix, Level 3 Communications, Orange, Tata Communications, Verizon, Zayo Group |
-| **Szingapúr** |Aryaka Networks, AT&T NetBond, British Telecom, Equinix, InterCloud, Megaport, Orange, SingTel, Tata Communications, Verizon |
+| **Szingapúr** |Aryaka Networks, AT&T NetBond, British Telecom, Equinix, InterCloud, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Verizon |
 | **Sydney** |AARNet, AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, Orange, Telstra Corporation, Verizon |
 | **Tokió** |Aryaka Networks, British Telecom, Colt, Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank, Verizon |
 | **Toronto** |Cologix, Equinix, Zayo Group |
-| **Washington DC** |Aryaka Networks, AT&T NetBond, British Telecom, Comcast, Equinix, InterCloud, Level 3 Communications, Megaport, Orange, Tata Communications, Verizon, Zayo Group |
+| **Washington DC** |Aryaka Networks, AT&T NetBond, British Telecom, Comcast, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, Verizon, Zayo Group |
 
  **+** = hamarosan elérhető
 
@@ -88,7 +93,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
-| **Dallas** |Equinix, Verizon+ |
+| **Dallas** |Equinix, Verizon |
 | **New York** |Equinix, Level 3 Communications+, Verizon |
 | **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
@@ -103,10 +108,10 @@ További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsaz
 #### <a name="germany"></a>Németország
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
-| **Berlin** |Colt, e-shelter |
+| **Berlin** |Colt+, e-shelter |
 | **Frankfurt** |Colt, Equinix, Interxion |
 
-## <a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
+## <a name="a-namenonpartnersaconnectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
 Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is létesíthet kapcsolatot.
 
 * Ellenőrizze a kapcsolatszolgáltatójánál, hogy kapcsolódik-e a fenti táblában felsorolt adatcsere-szolgáltatások bármelyikéhez. A következő hivatkozásokon további információkat találhat az adatcsere-szolgáltatók által kínált szolgáltatásokkal kapcsolatban. Több kapcsolatszolgáltató már eleve kapcsolódik Ethernet-adatcserélőkhöz.
@@ -148,6 +153,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

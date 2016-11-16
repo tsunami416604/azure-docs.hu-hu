@@ -2,7 +2,7 @@
 ## [Az Azure és az IoT](iot-suite-what-is-azure-iot.md)
 ## [Mi az az IoT Suite?](iot-suite-overview.md)
 ## [Mik azok az előre konfigurált megoldások?](iot-suite-what-are-preconfigured-solutions.md)
-## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+
 
 # Első lépések
 ## [Első lépések az előre konfigurált megoldásokkal](iot-suite-getstarted-preconfigured-solutions.md)
@@ -28,13 +28,14 @@
 ## [Biztonság az alapoktól](securing-iot-ground-up.md)
 
 # Kapcsolódó
-## [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
-## [Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-## [IoT Hub](https://azure.microsoft.com/services/iot-hub/)
-## [Machine Learning](https://azure.microsoft.com/services/machine-learning/)
+## [Stream Analytics](/azure/stream-analytics/)
+## [Event Hubs](/azure/event-hubs/)
+## [IoT Hub](/azure/iot-hub/)
+## [Machine Learning](/azure/machine-learning/)
 
 # Erőforrások
 ## [Gyakori kérdések](iot-suite-faq.md)
+## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
 
 

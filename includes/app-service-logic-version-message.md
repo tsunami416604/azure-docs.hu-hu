@@ -1,8 +1,10 @@
 > [!NOTE]
-> This article applies to Logic apps schema version 2014-12-01-preview. We are hard at work on the next version of this connector which will integrate easily with Logic apps schema version 2015-08-01-preview. In the meantime, [here's how you can use this connector in Logic apps 2015-08-01-preview schema version](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/). 
+> Ez a cikk a Logic Apps 2014. 12. 01. dátumú előnézeti sémaverziójára vonatkozik. Keményen dolgozunk az összekötő következő verzióján, amely könnyedén integrálható lesz a Logic Apps 2015. 08. 01. dátumú előnézeti sémaverziójával. Addig is, [a következőképpen használhatja az összekötőt a Logic Apps 2015. 08. 01. dátumú előnézeti sémaverziójában](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/). 
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

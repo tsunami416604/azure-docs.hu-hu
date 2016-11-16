@@ -1,12 +1,12 @@
 ---
-title: Rugalmas adatbáziskészlet létrehozása a C# használatával | Microsoft Docs
-description: Skálázható rugalmas adatbáziskészlet létrehozása az Azure SQL Database-ben C#-alapú adatbázis-fejlesztői módszerek használatával az erőforrások több adatbázis közötti megosztásához.
+title: "Rugalmas adatbáziskészlet létrehozása a C# használatával | Microsoft Docs"
+description: "Skálázható rugalmas adatbáziskészlet létrehozása az Azure SQL Database-ben C#-alapú adatbázis-fejlesztői módszerek használatával az erőforrások több adatbázis közötti megosztásához."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,22 +14,26 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
+
 
 ---
-# Rugalmas adatbáziskészlet létrehozása a C&#x23; használatával
+# <a name="create-an-elastic-database-pool-with-cx23"></a>Rugalmas adatbáziskészlet létrehozása a C&#x23; használatával
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
-> * [C##](sql-database-elastic-pool-create-csharp.md)
+> * [C#](sql-database-elastic-pool-create-csharp.md)
 > 
 > 
 
 Ez a cikk leírja, hogyan hozhat létre egy rugalmas Azure SQL-adatbáziskészletet a C# segítségével és az [Azure SQL Database .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). Egy önálló SQL Database létrehozása: [SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával](sql-database-get-started-csharp.md).
 
-Az Azure SQL Database .NET-es kódtára az [Azure Resource Manageren](../resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
+Az Azure SQL Database .NET-es kódtára az [Azure Resource Manageren](../azure-resource-manager/resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
 > [!NOTE]
-> Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../resource-group-overview.md) támogatott, ezért mindig használja a legújabb **Azure SQL Database Management .NET-es kódtárát ([docs](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet Package](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi [klasszikus üzembe helyezésű, modell-alapú kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb Resource Manager-alapú kódtárakat.
+> Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../azure-resource-manager/resource-group-overview.md) támogatott, ezért mindig használja a legújabb **Azure SQL Database Management .NET-es kódtárát ([docs](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet Package](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi, [klasszikus üzemi modellen alapuló kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb, Resource Manager-alapú kódtárakat.
 > 
 > 
 
@@ -38,7 +42,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 * Azure-előfizetés. Ha szüksége van Azure-előfizetésre, kattintson a lap tetején látható **INGYENES FIÓK** elemre, majd térjen vissza ehhez a cikkhez.
 * Visual Studio. A Visual Studio ingyenes példánya beszerezhető a [Visual Studio Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) (Visual Studio-letöltések) lapon.
 
-## Egy konzolalkalmazás létrehozása és a szükséges kódtárak telepítése
+## <a name="create-a-console-app-and-install-the-required-libraries"></a>Egy konzolalkalmazás létrehozása és a szükséges kódtárak telepítése
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **File** (Fájl)  > **New** (Új)  > **Project** (Projekt) lehetőségre.
 3. Hozzon létre egy C#-**konzolalkalmazást**, és adja neki a következő nevet: *SqlElasticPoolConsoleApp*
@@ -55,7 +59,7 @@ Egy SQL-adatbázis C# segítségével történő létrehozásához töltse be a 
 > 
 > 
 
-## Rugalmas SQL-adatbáziskészlet létrehozása – C#-példa
+## <a name="create-a-sql-elastic-database-pool-c-example"></a>Rugalmas SQL-adatbáziskészlet létrehozása – C#-példa
 Az alábbi példa létrehoz egy erőforráscsoportot, egy kiszolgálót, egy tűzfalszabályt, egy rugalmas készletet, majd a készletben egy SQL-adatbázist. A `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` változókkal kapcsolatban lásd: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez](#create-a-service-principal-to-access-resources).
 
 Cserélje le a **Program.cs** tartalmát az alábbiakkal, és frissítse a `{variables}` részeket az alkalmazáshoz tartozó értékekkel (a `{}` nem szükséges).
@@ -254,7 +258,7 @@ namespace SqlElasticPoolConsoleApp
 
 
 
-## Egyszerű szolgáltatás létrehozása erőforrások eléréséhez
+## <a name="create-a-service-principal-to-access-resources"></a>Egyszerű szolgáltatás létrehozása erőforrások eléréséhez
 A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alkalmazást, és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
@@ -298,15 +302,18 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Készlet kezelése](sql-database-elastic-pool-manage-csharp.md)
 * [Rugalmas feladat létrehozása](sql-database-elastic-jobs-overview.md): a rugalmas feladatok lehetővé teszik a T-SQL-szkriptek használatát egy készletben lévő tetszőleges számú adatbázishoz.
 * [Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md): horizontális skálázáshoz rugalmas adatbáziseszközöket használhat.
 
-## További források
+## <a name="additional-resources"></a>További források
 * [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Az Azure erőforrás-kezelési API-jai](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

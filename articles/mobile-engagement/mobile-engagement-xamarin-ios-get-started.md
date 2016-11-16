@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával
-description: Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.iOS-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel.
+title: "Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával"
+description: "Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.iOS-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
-manager: ''
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 0448209e-fff6-47bd-985c-2cf074bac12f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
+
 
 ---
-# Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával
+# <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Ismerkedés az Azure Mobile Engagement Xamarin.iOS-alkalmazásokkal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Xamarin.iOS-alkalmazásba történő küldéséhez szegmentált felhasználók számára.
@@ -32,15 +36,15 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-## <a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez.
 
 Létre fogunk hozni egy alapszintű alkalmazást a Xamarin segítségével az integráció bemutatásához:
 
-### Új Xamarin.iOS-projekt létrehozása
+### <a name="create-a-new-xamarinios-project"></a>Új Xamarin.iOS-projekt létrehozása
 1. Indítsa el a Xamarin Studiót. Lépjen a **File** -> **New** -> **Solution** (Fájl > Új > Megoldás) lehetőségre. 
    
     ![][1]
@@ -61,7 +65,7 @@ Létre fogunk hozni egy alapszintű alkalmazást a Xamarin segítségével az in
 
 A Xamarin Studio létrehozza a bemutatóalkalmazást, amelybe integrálni fogjuk a Mobile Engagementet. 
 
-### Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 1. Kattintson a jobb gombbal a **Packages** mappára a Solution (Megoldás) ablakban, és válassza az **Add Packages...** (Csomagok hozzáadása...) lehetőséget.
    
     ![][5]
@@ -79,7 +83,7 @@ A Xamarin Studio létrehozza a bemutatóalkalmazást, amelybe integrálni fogjuk
                     };
         EngagementAgent.Init (config);
 
-## <a id="monitor"></a>Valós idejű figyelés engedélyezése
+## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>Valós idejű figyelés engedélyezése
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt el kell küldenie a Mobile Engagement háttérrendszere számára.
 
 1. Nyissa meg a **ViewController.cs** fájlt, és adja hozzá a következő using utasítást:
@@ -87,14 +91,14 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
         using Microsoft.Azure.Engagement.Xamarin;
 2. Cserélje le az osztályt, amelytől a `ViewController` örököl, a `UIViewController` osztályról az `EngagementViewController` osztályra. 
 
-## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
-### Az alkalmazás delegáltjának módosítása
+### <a name="modify-your-application-delegate"></a>Az alkalmazás delegáltjának módosítása
 1. Nyissa meg az **AppDelegate.cs** fájlt, és adja hozzá a következő using utasítást:
    
         using System; 
@@ -140,7 +144,7 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
     ![][7]
 5. Ugyanebben az **Info.plist** fájlban ellenőrizze, hogy kiválasztotta-e az **Enable Background Modes** (Háttérmódok engedélyezése) és a **Remote Notifications** (Távoli értesítések) lehetőségeket. 
    
-    ![][8]
+     ![][8]
 6. Futtassa az alkalmazást azon az eszközön, amelyet ehhez a közzétételi profilhoz társított. 
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
@@ -157,6 +161,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

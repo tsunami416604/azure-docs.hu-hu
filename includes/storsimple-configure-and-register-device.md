@@ -1,78 +1,81 @@
 <!--author=alkohli last changed: 12/01/15-->
 
 
-#### To configure and register the device
-1. Access the Windows PowerShell interface on your StorSimple device serial console. See [Use PuTTY to connect to the device serial console](#use-putty-to-connect-to-the-device-serial-console) for instructions. **Be sure to follow the procedure exactly or you will not be able to access the console.**
-2. In the session that opens up, press Enter one time to get a command prompt. 
-3. You will be prompted to choose the language that you would like to set for your device. Specify the language, and then press Enter. 
+#### <a name="to-configure-and-register-the-device"></a>Az eszköz konfigurálása és regisztrálása
+1. Nyissa meg a Windows PowerShell felületet a StorSimple-eszköz soros konzoljában. Az erre vonatkozó utasítások [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](#use-putty-to-connect-to-the-device-serial-console) című szakaszban találhatók. **Pontosan kövesse az ismertetett eljárást, különben nem fog tudni hozzáférni a konzolhoz.**
+2. A megnyitott munkamenetben nyomja le egyszer az Enter billentyűt a parancssor megjelenítéséhez. 
+3. Ekkor a rendszer arra kéri, hogy válassza ki az eszközhöz beállítani kívánt nyelvet. Válassza ki a nyelvet, majd nyomja le az Enter billentyűt. 
    
-    ![StorSimple configure and register device 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
-4. In the serial console menu that is presented, choose option 1 to log on with full access. 
+    ![StorSimple-eszköz konfigurálása és regisztrálása, 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
+4. A soros konzol megjelenő menüjében válassza az 1. lehetőséget a teljes körű hozzáféréssel való bejelentkezéshez. 
    
-    ![StorSimple register device 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
+    ![StorSimple-eszköz regisztrálása, 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    
-     Complete steps 5-12 to configure the minimum required network settings for your device. **These configuration steps need to be performed on the active controller of the device.** The serial console menu indicates the controller state in the banner message. If you are not connected to the active controller, disconnect and then connect to the active controller.
-5. At the command prompt, type your password. The default device password is **Password1**.
-6. Type the following command:
+     Végezze le az 5–12. lépést az eszköz minimálisan szükséges hálózati beállításainak konfigurálásához. **Ezeket a konfigurálási lépéseket az eszköz aktív vezérlőjén kell elvégezni.** A vezérlő állapota a soros konzol menüjének címsorában látható. Ha nincs kapcsolat az aktív vezérlővel, akkor bontsa a kapcsolatot, és csatlakozzon újra az aktív vezérlőhöz.
+5. Írja be a jelszót a parancssorba. Az eszköz alapértelmezett jelszava: **Password1**.
+6. Írja be a következő parancsot:
    
      `Invoke-HcsSetupWizard` 
-7. A setup wizard will appear to help you configure the network settings for the device. Supply the the following information: 
+7. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg az alábbi adatokat: 
    
-   * IP address for the DATA 0 network interface
-   * Subnet mask
-   * Gateway
-   * IP address for Primary DNS server
-   * IP address for Primary NTP server
+   * A DATA 0 hálózati adapter IP-címe
+   * Alhálózati maszk
+   * Átjáró
+   * Az elsődleges DNS-kiszolgáló IP-címe
+   * Az elsődleges NTP-kiszolgáló IP-címe
      
      > [!NOTE]
-     > You may have to wait for a few minutes for the subnet mask and the DNS settings to be applied. If you get a "The device is not ready." error message, check the physical network connection on the DATA 0 network interface of your active controller.
+     > Az alhálózati maszk és a DNS-beállítások alkalmazása néhány percig is eltarthat. Ha „Az eszköz nem áll készen” hibaüzenetet kapja, ellenőrizze a fizikai hálózati kapcsolatot az aktív vezérlő DATA 0 hálózati adapterén.
      > 
      > 
-8. (Optional) configure your web proxy server. Although web proxy configuration is optional, **be aware that if you use a web proxy, you can only configure it here**. For more information, go to [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md). If you run into any issues during this step, refer to troubleshooting guidance for [Errors during web proxy configuration](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings).
+8. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, **vegye figyelembe, hogy ha webproxyt használ, azt csak itt tudja beállítani**. További információ: [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). Ha ennél a lépésnél bármilyen problémába ütközik, tekintse át [A webproxy konfigurálásakor felmerülő problémák](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings) című hibaelhárítási útmutatót.
 
-      > [AZURE.NOTE] You can press Ctrl + C at any time to exit the setup wizard. Any settings that you applied before you issued this command will be retained.
+     > [!NOTE]
+     > A Ctrl + C billentyűkombinációval bármikor kiléphet a varázslóból. A parancs kiadása előtt alkalmazott beállításokat megőrzi a rendszer.
 
-1. For security reasons, the device administrator password expires after the first session, and you will need to change it for subsequent sessions. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain a combination of lowercase characters, uppercase characters, numbers, and special characters.
-2. The StorSimple Snapshot Manager password is also set here. You use this password when you authenticate a device with your Windows host running StorSimple Snapshot Manager. When prompted, provide a 14 to 15 character password. The password must contain a combination of three of the following: lowercase, uppercase, numeric, and special characters. 
+1. Biztonsági okokból az eszköz rendszergazdai jelszava az első munkamenet végeztével lejár, így a további munkamenetekhez meg kell változtatnia azt. Amikor a rendszer erre kéri, adjon meg az eszközhöz egy rendszergazdai jelszót. Az eszköz rendszergazdai jelszavának 8–15 karakter hosszúságúnak kell lennie. A jelszónak kisbetűk, nagybetűk, számok és speciális karakterek kombinációjából kell állnia.
+2. A StorSimple Snapshot Manager jelszavát is itt állíthatja be. Ezt a jelszót az eszköz StorSimple Snapshot Manager szolgáltatást futtató Windows-gazdagépen való hitelesítéséhez használhatja. Amikor a rendszer kéri, adjon meg egy 14–15 karakterből álló jelszót. A jelszónak az alábbiak közül hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek. 
    
-   ![StorSimple register device 4](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
+   ![StorSimple-eszköz regisztrálása, 4](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
    
-   You can reset the StorSimple Snapshot Manager password from the StorSimple Manager service interface. For detailed steps, go to [Change the StorSimple passwords using the StorSimple Manager serivce](../articles/storsimple/storsimple-change-passwords.md).
+   A StorSimple Snapshot Manager jelszavát a StorSimple Manager szolgáltatási felületén tudja alaphelyzetbe állítani. Részletes utasítások: [A StorSimple-jelszavak megváltoztatása a StorSimple Manager szolgáltatással](../articles/storsimple/storsimple-change-passwords.md).
    
-   To troubleshoot any issues during this step, refer to troubleshooting guidance for [Errors related to passwords](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords).
-3. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in step 2. After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
+   A lépés során fellépő hibák elhárítására vonatkozó utasításokat a [Jelszavakkal kapcsolatos hibák](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords) című hibaelhárítási útmutatóban találja.
+3. A telepítővarázsló utolsó lépésként regisztrálja az eszközt a StorSimple Manager szolgáltatásban. Ehhez szükség van a 2. lépésben kapott szolgáltatásregisztrációs kulcsra. Előfordulhat, hogy a regisztrációs kulcs megadása után 2–3 percet várni kell az eszköz regisztrálására.
    
-   To troubleshoot any possible device registration failures, refer to [Errors during device registration](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration). For detailed troubleshooting, you can also refer to [Step-by-step troubleshooting example](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example).
-4. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location.
+   A lehetséges eszközregisztrációs hibák elhárítására vonatkozó utasításokat [Az eszközök regisztrációja során felmerülő hibák](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration) című szakaszban találja. Részletes hibaelhárítási útmutatás a [Részletes hibaelhárítási példa](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example) című szakaszban található.
+4. Az eszköz regisztrálása után megjelenik egy szolgáltatásadat-titkosítási kulcs. Másolja ki a kulcsot, és mentse egy biztonságos helyre.
    
    > [!WARNING]
-   > This key will be required with the service registration key to register additional devices with the StorSimple Manager service. Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
+   > Szüksége lesz rá a szolgáltatás regisztrációs kulcsával együtt, ha további eszközöket szeretne regisztrálni a StorSimple Manager szolgáltatásban. További információk a kulccsal kapcsolatban: [A StorSimple biztonsági megoldásai](../articles/storsimple/storsimple-security.md).
    > 
    > 
    
-    ![StorSimple register device 6](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
+    ![StorSimple-eszköz regisztrálása, 6](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
    
-    To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor. DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password and the StorSimple Snapshot Manager password will not be changed and the device will revert to the default passwords.
-5. Exit the serial console.
-6. Return to the Azure classic portal, and complete the following steps:
+    Ha ki szeretné másolni a szöveget a soros konzol ablakából, egyszerűen jelölje ki azt. A szöveget ezután a vágólapra vagy bármilyen szövegszerkesztőbe beillesztheti. NE használja a Ctrl + C billentyűparancsot a szolgáltatás adattitkosítási kulcsának másolásához. A Ctrl + C billentyűkombinációval kilép a varázslóból. Ennek eredményeképpen az eszköz rendszergazdai jelszava és a StorSimple Snapshot Manager jelszava nem változik meg, és az eszköz visszaállítja az alapértelmezett jelszót.
+5. Lépjen ki a soros konzolból.
+6. Jelentkezzen be a klasszikus Azure portálra, és hajtsa végre a következő lépéseket:
    
-   1. Double-click your StorSimple Manager service to access the **Quick Start** page.
-   2. Click **View connected devices**.
-   3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**. If the device status is **Offline**, wait for a couple of minutes for the device to come online.
+   1. Kattintson duplán a StorSimple Manager szolgáltatásra a **Gyors üzembe helyezés** lap megnyitásához.
+   2. Kattintson a **Csatlakoztatott eszközök megtekintése** lehetőségre.
+   3. Az **Eszközök** lapon tekintse meg az eszközök állapotát, és ellenőrizze, hogy az eszköz sikeresen csatlakozott-e a szolgáltatáshoz. Az eszköznek **Online** állapotúnak kell lennie. Ha az eszköz állapota **Offline**, akkor várjon néhány percet, amíg az eszköz online állapotú nem lesz.
    
-   ![StorSimple Devices page](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png) 
+   ![A StorSimple Eszközök lapja](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png) 
    
    > [!IMPORTANT]
-   > After the device is online, plug in the network cables that you had unplugged in the beginning of this step.
+   > Ha az eszköz online állapotban van, csatlakoztassa újra a lépés elején kihúzott hálózati kábeleket.
    > 
    > 
 
-After the device is successfully registered and doesn't come online, you can run the `Test-HcsmConnection -Verbose` to ensure that the network connectivity is healthy. For the detailed usage of this cmdlet, go to [cmdlet reference for Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx).
+Ha az eszköz regisztrálása sikeres volt, viszont mégsem kerül online állapotba, akkor a `Test-HcsmConnection -Verbose` futtatásával ellenőrizheti a hálózat csatlakozási állapotát. A parancsmag használatának részletes leírása a [Test-HcsmConnection parancsmag használatának ismertetésében](https://technet.microsoft.com/library/dn715782.aspx) található.
 
-![Video available](./media/storsimple-configure-and-register-device/Video_icon.png) **Video available**
+![Videó elérhető](./media/storsimple-configure-and-register-device/Video_icon.png) **Videó elérhető**
 
-To watch a video that demonstrates how to configure and register your device through Windows PowerShell for StorSimple, click [here](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
+Az eszköz StorSimple szolgáltatásban való, a Windows PowerShell segítségével történő konfigurálását és regisztrálását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,22 +1,26 @@
 ---
-title: Bevezetés a Prémium szintű Azure Active Directory használatába
-description: Ez a témakör ismerteti, hogyan regisztrálhat a Prémium szintű Active Directory-kiadásra a Mennyiségi licencelés webhelyén keresztül.
+title: "Bevezetés a Prémium szintű Azure Active Directory használatába"
+description: "Ez a témakör ismerteti, hogyan regisztrálhat a Prémium szintű Active Directory-kiadásra a Mennyiségi licencelés webhelyén keresztül."
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2016
+ms.date: 10/31/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4f5341ecd0256d6268b9247ef5ec391809b7071a
+
 
 ---
-# Bevezetés a Prémium szintű Azure Active Directory használatába
+# <a name="getting-started-with-azure-active-directory-premium"></a>Bevezetés a Prémium szintű Azure Active Directory használatába
 A Prémium szintű Active Directory-kiadásra történő regisztrálásra több lehetősége van: 
 
 **Azure vagy Office 365** – Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Active Directory-kiadást. A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
@@ -32,10 +36,10 @@ Ez a témakör ismerteti a Mennyiségi licencelési programon keresztül vásár
 > 
 > 
 
-## 1. lépés: A Prémium szintű Active Directory-kiadás regisztrálása
+## <a name="step-1-sign-up-for-active-directory-premium"></a>1. lépés: A Prémium szintű Active Directory-kiadás regisztrálása
 A regisztrációhoz lásd: [Vásárlás mennyiségi licencelésen keresztül](http://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
-## 2. lépés: A licenccsomag aktiválása
+## <a name="step-2-activate-your-license-plan"></a>2. lépés: A licenccsomag aktiválása
 Ez az első licenccsomag, amelyet a Microsofttól vásárol a Vállalati mennyiségi licencelési programon keresztül?
 Ebben az esetben egy visszaigazoló e-mailt kap a vásárlása végén.
 Az első licenccsomag aktiválásához szüksége lesz erre az e-mailre.
@@ -58,7 +62,7 @@ Amikor végzett, megjelenik a következő párbeszédpanel a bérlő licenccsoma
 
 ![Megerősítés][3]
 
-## 3. lépés: Az Azure Active Directory-hozzáférés aktiválása
+## <a name="step-3-activate-your-azure-active-directory-access"></a>3. lépés: Az Azure Active Directory-hozzáférés aktiválása
 Ha korábban már használta a Microsoft Azure-t, folytathatja a [4. lépéssel](#step-4-assign-license-to-user-accounts). 
 
 Amikor a licencek érvénybe lépnek a címtárban, egy **üdvözlő e-mailt** kap. Az e-mail megerősíti, hogy elkezdheti a Prémium szintű Active Directory vagy a Nagyvállalati mobilitási csomag licenceinek és funkcióinak kezelését. 
@@ -92,7 +96,7 @@ Lehet, hogy korábbról már van Azure-hozzáférése. Ezenkívül az Azure Acti
 
 ![Azure-képességek][8]
 
-## 4. lépés: Licenc hozzárendelése felhasználói fiókokhoz
+## <a name="step-4-assign-license-to-user-accounts"></a>4. lépés: Licenc hozzárendelése felhasználói fiókokhoz
 A megvásárolt csomag használatának elkezdése előtt manuálisan kell licenceket rendelnie a szervezeten belüli felhasználói fiókokhoz, hogy használhassák a Prémium kiadásban szereplő funkciók gazdag választékát. A következő lépésekkel rendelhet licenceket a felhasználókhoz, hogy használhassák a Prémium szintű Active Directory-funkciókat.
 
 **Ha licenceket szeretne a felhasználókhoz rendelni, végezze el a következő lépéseket:**
@@ -106,19 +110,19 @@ A megvásárolt csomag használatának elkezdése előtt manuálisan kell licenc
    
     ![Licencek hozzárendelése][11]
 
-### Licenckorlátozások
+### <a name="license-restrictions"></a>Licenckorlátozások
 Néhány licenccsomag más licenccsomagok alkészletének vagy kibővítésének számít. Általában a felhasználókhoz nem rendelhető olyan licenccsomag, amely már hozzájuk lett rendelve. Ha kibővített licenccsomagot szeretne valakihez hozzárendelni, először el kell távolítania az alkészletet alkotó licenccsomagot.
 
-### Licenckövetelmények
+### <a name="license-requirements"></a>Licenckövetelmények
 Amikor licencet rendel egy felhasználóhoz, megadhat egy elsődleges felhasználási helyet a felhasználó fiókjának tulajdonságaiban. Ha a felhasználási hely nincs meghatározva, a bérlő helye lesz automatikusan hozzárendelve a felhasználóhoz.
 
 ![Felhasználó helye][12]
 
 A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre állása ország vagy régió szerint változik. A szolgáltatások (például a Voice over Internet Protocol (VoIP)) elérhetőek lehetnek egy országban vagy régióban, míg egy másikban pedig nem. A szolgáltatásokon belüli funkciók bizonyos országokban vagy régiókban jogi okokból korlátozottak lehetnek. Annak megtekintéséhez, hogy egy szolgáltatás vagy funkció korlátozásokkal érhető-e el vagy azok nélkül, keresse meg a szolgáltatás licenckorlátozásait tartalmazó webhelyen az országát vagy régióját.
 
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 * [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon](active-directory-add-company-branding.md)
-* [View your access and usage reports (A hozzáférési és használati jelentések megtekintése)](active-directory-view-access-usage-reports.md)
+* [A hozzáférési és használati jelentések megtekintése](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-get-started-premium/MOLSEmail.png
@@ -136,6 +140,6 @@ A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre ál
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

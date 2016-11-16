@@ -1,12 +1,12 @@
 ---
-title: Biztonsági szabályzatok beállítása az Azure Security Centerben | Microsoft Docs
-description: Ebből a dokumentumból megismerheti az Azure Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
+title: "Biztonsági szabályzatok beállítása az Azure Security Centerben | Microsoft Docs"
+description: "Ebből a dokumentumból megismerheti az Azure Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,17 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
+
 
 ---
-# Biztonsági szabályzatok beállítása az Azure Security Centerben
+# <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ez a dokumentum végigvezeti a Security Center biztonsági szabályzatainak beállításához szükséges lépéseken.
 
-## Mik azok a biztonsági szabályzatok?
+## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
 A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét, amelyeket a rendszer az egy adott előfizetésen vagy erőforráscsoporton belüli erőforrásokhoz javasol. A Security Centerben a vállalat biztonsági igényeinek és az egyes előfizetésekben szereplő alkalmazások típusának vagy az adatok érzékenységének megfelelően határozhatja meg az Azure-előfizetésekre vagy -erőforráscsoportokra vonatkozó szabályzatokat.
 
 Különböző biztonsági követelmények vonatkozhatnak például a fejlesztésben vagy tesztelésben, illetve az éles környezetben használt erőforrásokra. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások is magasabb szintű biztonságot követelhetnek meg. Az Azure Security Centerben engedélyezett biztonsági szabályzatok biztonsági javaslatokkal szolgálnak, és figyelést biztosítanak, így segítenek Önnek felismerni a potenciális biztonsági réseket és elhárítani a fenyegetéseket. Az [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) cikkből további információkhoz juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatban.
 
-## Biztonsági szabályzatok beállítása előfizetésekhez
+## <a name="set-security-policies-for-subscriptions"></a>Biztonsági szabályzatok beállítása előfizetésekhez
 Az egyes előfizetésekhez vagy erőforráscsoportokhoz külön-külön biztonsági szabályzatot állíthat be. Biztonsági szabályzat módosításához az előfizetésben tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. A Security Center biztonsági szabályzatainak konfigurálásához jelentkezzen be az Azure Portalra, és kövesse az alábbiakban megadott lépéseket:
 
 1. A Security Center irányítópultján kattintson a **Policy** (Szabályzat) csempére.
@@ -80,7 +84,7 @@ Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 
 Miután minden beállítást konfigurált, kattintson a javaslatokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **OK** gombjára, majd az eredeti beállításokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **Save** (Mentés) gombjára.
 
-## Biztonsági szabályzatok beállítása erőforráscsoportokhoz
+## <a name="set-security-policies-for-resource-groups"></a>Biztonsági szabályzatok beállítása erőforráscsoportokhoz
 Ha inkább erőforráscsoportonként szeretné beállítani a biztonsági szabályzatokat, hasonló lépéseket kell követnie, mint az előfizetésekre vonatkozó biztonsági szabályzatok beállításánál. A legfontosabb különbség az, hogy ki kell bontania az előfizetés nevét, és ki kell választania azt az erőforráscsoportot, amelyet egyedi biztonsági szabályzattal szeretne ellátni:
 
 ![Erőforráscsoport kiválasztása](./media/security-center-policies/security-center-policies-fig5-ga.png)
@@ -94,7 +98,7 @@ Az erőforráscsoport kiválasztását követően megnyílik a **Security policy
 > 
 > 
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabályzatainak konfigurálását. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md). A tervezési szempontokat ismertető és az azokat figyelembe vevő tervezési folyamatokban segítő útmutató, amely megkönnyíti az Azure Security Center használatát.
@@ -104,6 +108,9 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

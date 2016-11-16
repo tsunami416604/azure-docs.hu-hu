@@ -1,12 +1,12 @@
 ---
-title: Az Azure Redis Cache használata Javával | Microsoft Docs
-description: Bevezetés az Azure Redis Cache és a Java együttes használatába
+title: "Az Azure Redis Cache használata Javával | Microsoft Docs"
+description: "Bevezetés az Azure Redis Cache és a Java együttes használatába"
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: hero-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/24/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 907f75dc02bff7e25712a564410c1974e22f0d99
+
 
 ---
-# Az Azure Redis Cache használata Javával
+# <a name="how-to-use-azure-redis-cache-with-java"></a>Az Azure Redis Cache használata Javával
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,23 +34,23 @@ Az Azure Redis Cache hozzáférést biztosít egy dedikált Redis Cache gyorsít
 
 Ez a témakör segítséget nyújt az első lépések megtételében a Javát alkalmazó Azure Redis Cache használatakor.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 [Jedis](https://github.com/xetorthio/jedis) - Java-ügyfél a Redishez
 
 Ez az oktatóanyag a Jedis használatát mutatja be, de a [http://redis.io/clients](http://redis.io/clients) webhelyen felsorolt Java-ügyfelek bármelyike használható.
 
-## Redis Cache gyorsítótár létrehozása az Azure-ban
+## <a name="create-a-redis-cache-on-azure"></a>Redis Cache gyorsítótár létrehozása az Azure-ban
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## Állomásnév és hívóbetűk lekérése
+## <a name="retrieve-the-host-name-and-access-keys"></a>Állomásnév és hívóbetűk lekérése
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## Nem SSL végpont engedélyezése
+## <a name="enable-the-nonssl-endpoint"></a>Nem SSL végpont engedélyezése
 Egyes Redis-ügyfelek nem támogatják az SSL-t, és alapértelmezés szerint a [nem SSL port le van tiltva az új Azure Redis Cache-példányokban](cache-configure.md#access-ports). Az oktatóanyag összeállításakor a [Jedis](https://github.com/xetorthio/jedis)-ügyfél nem támogatja az SSL-t. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
-## Elemek hozzáadása és lekérése a gyorsítótárból
+## <a name="add-something-to-the-cache-and-retrieve-it"></a>Elemek hozzáadása és lekérése a gyorsítótárból
     package com.mycompany.app;
     import redis.clients.jedis.Jedis;
     import redis.clients.jedis.JedisShardInfo;
@@ -60,16 +64,19 @@ Egyes Redis-ügyfelek nem támogatják az SSL-t, és alapértelmezés szerint a 
         JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
         shardInfo.setPassword("<key>"); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);
-        jedis.set("foo", "bar");
-        String value = jedis.get("foo");
+         jedis.set("foo", "bar");
+         String value = jedis.get("foo");
       }
     }
 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Engedélyezze a gyorsítótár-diagnosztikát,](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics) hogy [megfigyelhesse](https://msdn.microsoft.com/library/azure/dn763945.aspx) a gyorsítótár állapotát.
 * Olvassa el a hivatalos [Redis dokumentációt](http://redis.io/documentation).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

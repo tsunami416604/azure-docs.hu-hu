@@ -1,12 +1,12 @@
 ---
-title: A fejlesztési környezet beállítása Linuxon | Microsoft Docs
-description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
+title: "A fejlesztési környezet beállítása Linuxon | Microsoft Docs"
+description: "Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására."
 services: service-fabric
 documentationcenter: .net
 author: seanmck
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 567a998102558626df73878865b317b830ba1faa
+
 
 ---
-# A fejlesztőkörnyezet előkészítése Linuxon
+# <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
 > -[ Windows](service-fabric-get-started.md)
 > 
@@ -27,13 +31,13 @@ ms.author: seanmck
 
  Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-hoz készült opcionális SDK-kat is telepítheti.
 
-## Előfeltételek
-### Támogatott operációsrendszer-verziók
+## <a name="prerequisites"></a>Előfeltételek
+### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 * Ubuntu 16.04 (Xenial Xerus)
 
-## Frissítse az apt-forrásait
+## <a name="update-your-apt-sources"></a>Frissítse az apt-forrásait
 Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get használatával történő telepítéséhez először frissítenie kell az apt-forrásait.
 
 1. Nyisson meg egy terminált.
@@ -53,7 +57,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get használatával tör
     sudo apt-get update
     ```
 
-## Az SDK telepítése és beállítása
+## <a name="install-and-set-up-the-sdk"></a>Az SDK telepítése és beállítása
 A források frissítése után telepítheti az SDK-t.
 
 1. Telepítse a Service Fabric SDK-csomagot. A rendszer fel fogja kérni, hogy erősítse meg a telepítést, és fogadjon el egy licencszerződést.
@@ -67,7 +71,7 @@ A források frissítése után telepítheti az SDK-t.
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## A platformfüggetlen Azure parancssori felület beállítása
+## <a name="set-up-the-azure-crossplatform-cli"></a>A platformfüggetlen Azure parancssori felület beállítása
 A [platformfüggetlen Azure parancssori felület][azure-xplat-cli-github] a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. Node.js-alapú, ezért az alábbi utasítások végrehajtása előtt [ellenőrizze, hogy telepítve van-e a Node][install-node].
 
 1. Klónozza a github-adattárat a fejlesztői gépére.
@@ -94,7 +98,7 @@ A [platformfüggetlen Azure parancssori felület][azure-xplat-cli-github] a Serv
     source ~/azure.completion.sh
     ```
 
-## Helyi fürt beállítása
+## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
 Ha mindent sikeresen telepített, elindíthatja a helyi fürtöt.
 
 1. Futtassa a fürttelepítési szkriptet.
@@ -108,7 +112,7 @@ Ha mindent sikeresen telepített, elindíthatja a helyi fürtöt.
 
 Ezen a ponton előzetesen összeállított Service Fabric-alkalmazáscsomagokat, vagy vendégtárolókon és vendég futtatható fájlokon alapuló új alkalmazáscsomagokat helyezhet üzembe. Ha új szolgáltatásokat kíván létrehozni a Java vagy .NET Core SDK-k használatával, kövesse az alábbi opcionális lépéseket.
 
-## A Java SDK és az Eclipse Neon beépülő modul telepítése (nem kötelező)
+## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>A Java SDK és az Eclipse Neon beépülő modul telepítése (nem kötelező)
 A Java SDK biztosítja a Java-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat.
 
 1. Telepítse a Java SDK-csomagot.
@@ -133,7 +137,7 @@ A Service Fabric Eclipse beépülő modulját az Eclipse Neon IDE-ből is telep�
 5. Válassza ki a Service Fabric beépülő modult, majd kattintson a Next (Tovább) gombra.
 6. Folytassa a telepítést, és fogadja el a végfelhasználói licencszerződést.
 
-## A .NET Core SDK telepítése (opcionális)
+## <a name="install-the-net-core-sdk-optional"></a>A .NET Core SDK telepítése (opcionális)
 A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat.
 
 1. Telepítse a .NET Core SDK-csomagot.
@@ -147,7 +151,7 @@ A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service 
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az első Java-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
 
@@ -164,6 +168,6 @@ A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

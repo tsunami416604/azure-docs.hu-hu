@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial:  DevOps with the Azure Portal | Microsoft Docs'
-description: Learn the various DevOps workflows in the Azure Portal.
+title: "Oktatóanyag: A DevOps és az Azure Portal | Microsoft Docs"
+description: "Ismerje meg az Azure Portalon elérhető különböző DevOps-munkafolyamatokat."
 services: azure-portal
-documentationcenter: ''
+documentationcenter: 
 author: mlearned
 manager: douge
 editor: mlearned
-
+ms.assetid: 4f1c5bc1-c732-4d35-b5df-0fd68e547d38
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,130 +14,134 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b3ef77cc1b3b13a1603f1ca7c6d4a000b69453e0
+
 
 ---
-# Tutorial: DevOps with the Azure Portal
-The Azure platform is full of flexible DevOps workflows. In this tutorial, you learn how to leverage the capabilities of the Azure Portal to develop, test, deploy, troubleshoot, monitor, and manage running applications. This tutorial focuses on the following:
+# <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: A DevOps és az Azure Portal
+Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Az oktatóanyagból megtudhatja, hogyan használhatja az Azure Portal funkcióit alkalmazások fejlesztéséhez, teszteléséhez, üzembe helyezéséhez, hibaelhárításához, figyeléséhez és felügyeletéhez. Ez az oktatóanyag a következő témákkal foglalkozik:
 
-1. Creating a web app and enabling continuous deployment
-2. Develop and test an app
-3. Monitoring and Troubleshooting an app
-4. General application management tasks
+1. Webalkalmazás létrehozása és a folyamatos üzembe helyezés engedélyezése
+2. Alkalmazás fejlesztése és tesztelése
+3. Alkalmazás figyelése és hibaelhárítása
+4. Általános alkalmazásfelügyeleti feladatok
 
-## Creating a web app and enabling continuous deployment
-Create a Web app with [Azure App Service](https://azure.microsoft.com/services/app-service/), which you’ll use in the rest of this tutorial. You’ll initially enable continuous deployment from your source code repository into our running Azure environment.
+## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Webalkalmazás létrehozása és a folyamatos üzembe helyezés engedélyezése
+Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft.com/services/app-service/) szolgáltatással. Az oktatóanyag további részeiben ezt az alkalmazást fogjuk használni. Először engedélyeznie kell a folyamatos üzembe helyezést a forráskód tárházából a futó Azure-környezetbe.
 
-1. Sign into the Azure Portal
-2. Choose **App Services** &gt; **Add icon** and enter a name, choose your subscription, and create a new resource group to serve as the container for the service.
+1. Jelentkezzen be az Azure Portalra.
+2. Válassza az **App Services** &gt; **Hozzáadás ikon** lehetőséget, adjon meg egy nevet, válassza ki az előfizetését, és hozzon létre egy új erőforráscsoportot, amely a szolgáltatás tárolója lesz.
    
-   Resource groups allow you to manage various aspects of the solution such as billing, deployments and monitoring all as a single group via [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-overview/).
+   Az erőforráscsoportok segítségével egyetlen csoportként kezelheti az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) használatával a megoldás különböző részeit, például a számlázást, az üzemelő példányokat és a figyelést.
    
    ![image1][image1]
-3. After a few moments, your app service is created. Take a few minutes to explore the various menu options for the service in the portal.
+3. Pár pillanat múlva létrejön az alkalmazásszolgáltatás. Szánjon néhány percet arra, hogy a portálon áttekintse a szolgáltatáshoz elérhető különböző menüpontokat.
    
    ![image2][image2]    
-4. Click the URL. Notice the variety of available choices for tools and repositories. You can also use the languages and frameworks of your choice including .NET, Java, and Ruby.
+4. Kattintson az URL-címre. Tekintse át az eszközökhöz és a tárházakhoz elérhető különböző lehetőségeket. Kiválaszthatja a használni kívánt nyelveket és keretrendszereket is, ilyen például a .NET, a Java és a Ruby.
    
    ![image3][image3]    
-5. The Azure portal makes continuous deployment an easy process that involves only a few simple steps. In the Azure portal, choose settings from the icon for the app service you just created.
+5. Az Azure Portal a folyamatos üzembe helyezést egyszerű, néhány rövid lépésből álló folyamattá teszi. Az Azure Portalon válassza ki a kívánt beállításokat az imént létrehozott alkalmazásszolgáltatáshoz tartozó ikonra kattintva.
    
    ![image4][image4]
    
-   From the blade that opens on the right, scroll to the publishing section.
+   A jobb oldalon megnyíló panelen görgessen a közzétételi szakaszhoz.
    
    ![image5][image5]
-6. Next, configure some settings to enable continuous deployment for the app. Click Deployment Source and then click Choose Source. Notice the variety of options you have for repository sources.
+6. Ezután adja meg a szükséges beállításokat, hogy engedélyezze az alkalmazás folyamatos üzembe helyezését. Kattintson a Központi telepítés forrása elemre, és kattintson a Forrás kiválasztása elemre. Tekintse át a különböző lehetőségeket a tárházforrásoknál.
    
    ![image6][image6]
-7. For this example choose GitHub. Optionally choose the repository of your choice and setup the authorization credentials.
+7. Ebben a példában válassza a Githubot. Ha kívánja, választhat más tárházat is. Ekkor adja meg a szükséges hitelesítő adatokat.
    
    ![image7][image7]
-8. After authorization to your repository, you can then choose a project and branch you wish to deploy. There are several fictitious sample examples listed below.
+8. Miután hitelesítette magát a tárházban, kiválaszthatja az üzembe helyezendő projektet és ágat. Alább több fiktív mintapéldát láthat.
    
    ![image8][image8]
-9. Once you choose your project and branch, click ok. You should start to see notifications of a deployment.
+9. A projekt és az ág kiválasztása után kattintson az OK gombra. Meg kell jelenniük az üzembe helyezésre vonatkozó értesítéseknek.
    
    ![image9][image9]
-10. Navigate back to Github to see the webhook that was created to integrate the source control repo with Azure. The Azure Portal enables integration with Github with only a few simple steps.
+10. Lépjen vissza a Githubra, és tekintse meg a webhookot, amely azért lett létrehozva, hogy integrálja a forrásvezérlő tárházat az Azure-ral. Az Azure Portal segítségével a Githubbal való integráció néhány lépésben elvégezhető.
     
     ![image10][image10]
-11. To demonstrate continuous deployment, you quickly add some content to the repository. For a simple example, add a sample text file to a Github repo. You are free to use .NET, Ruby, Python, or some other type of application with App Service. Feel free to add a text file, ASP.NET MVC, Java, or Ruby application to the repo of your choice.
+11. A folyamatos üzembe helyezés szemléltetéséhez gyorsan vegyen fel valamilyen tartalmat a tárházba. Például vegyen fel egy egyszerű szövegfájlt a Github-tárházba. Tetszőlegesen használhat .NET, Ruby, Python vagy más típusú alkalmazást az App Service szolgáltatással. Felvehet szövegfájlt, ASP.NET MVC, Java vagy Ruby típusú alkalmazást a kiválasztott tárházba.
     
     ![image11][image11]
-12. After committing changes to your repository, you see a new deployment initiate in the portal notifications area. Click Sync if you do not quickly see changes after committing to your repository.
+12. Miután véglegesítette a tárház módosításait, a portál értesítési területén megjelenik egy új üzemelő példány jelzése. Ha a tárház változtatásainak véglegesítése után nem jelennek meg hamar a változtatások, kattintson a Szinkronizálás gombra.
     
     ![image12][image12]
-13. At this point, if you try and load the page for the app service, you may receive a 403 error. In this example, it is because there is no typical default document setup for the page such as a file like index.htm or default.html. You can quickly remedy this with the tooling in the Azure Portal.  In the Azure Portal choose Settings &gt; Application Settings.
+13. Ha ezen a ponton megpróbálja betölteni az alkalmazásszolgáltatás oldalát, 403-as hibát kaphat. Ebben a példában ennek az az oka, hogy az oldalhoz nincs beállítva egy szokásos alapértelmezett oldal, például egy olyan fájl, mint az index.htm vagy a default.html. Ezt a helyzetet gyorsan megoldhatja az Azure Portalon elérhető eszközökkel.  Az Azure Portalon kattintson a Beállítások &gt; Alkalmazásbeállítások elemre.
     
      ![image13][image13]
-14. A blade opens for application settings. Enter the name of the page “SamplePage.html” and click Save. Take a few minutes to explore the other settings.
+14. Megjelenik egy panel az alkalmazásbeállításokkal. Írja be az oldal „SamplePage.html” nevét, és kattintson a Mentés gombra. Szánjon még pár percet a többi beállítás áttekintésére.
     
     ![image14][image14]
-15. Optionally refresh your browser URL to ensure you see the expected changes. In this case, there is some simple text now populating the page. Each additional change to the repository would result in a new automatic deployment.
+15. Ha meg szeretne bizonyosodni arról, hogy megjelennek a várt módosítások, frissítheti a böngésző URL-címét. Ebben a példában ekkor egyszerű szöveggel lesz feltöltve az oldal. A tárház minden további módosítása egy új automatikus üzembe helyezést eredményezne.
     
     ![image15][image15]
     
-    Enabling continuous deployment with the Azure Portal is an easy experience. You can also build more complex release pipelines and use many other techniques with existing source control and continuous integration systems to deploy to Azure, such as leveraging automated build and release management systems.
+    A folyamatos üzembe helyezés engedélyezése az Azure Portallal nem túl bonyolult feladat. Létrehozhat ennél bonyolultabb kiadási folyamatokat, és sok más módszert is használhat a meglévő forrásvezérlő és folyamatos integrációjú rendszerekkel az Azure-ba való üzembe helyezéshez, például használhat automatikus rendszereket a létrehozás és a kiadás felügyeletéhez.
 
-## Develop and test an app
-Next, make some changes to the code base and rapidly deploy those changes. You will also setup up some performance testing for the Web app.
+## <a name="develop-and-test-an-app"></a>Alkalmazás fejlesztése és tesztelése
+Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyezze üzembe ezeket a módosításokat. Ezenkívül néhány teljesítménytesztet is be fog állítani a webalkalmazáshoz.
 
-1. In the Azure Portal choose App Services from the navigation pane, and locate your App Service.
+1. Az Azure Portalon válassza az App Services elemet a navigációs ablaktáblában, és keresse meg az alkalmazásszolgáltatását.
    
    ![image16][image16]
-2. Click Tools
+2. Kattintson az Eszközök elemre.
    
    ![image17][image17]
-3. Notice the develop category under Tools. There are several useful tools here that allow us to work with apps without leaving the Azure Portal. Click on Console.
+3. Figyelje meg az eszközöknél megjelenő Fejlesztés kategóriát. Itt több hasznos eszközt talál, amelyekkel az Azure Portal elhagyása nélkül dolgozhat az alkalmazással. Kattintson a Konzol elemre.
    
    ![image18][image18]
-4. In the console window, you can issue live commands for your app. Type the dir command and hit enter. Note that commands requiring elevated privileges do not work.
+4. A konzolablakban élő parancsokat adhat meg a alkalmazáshoz. Írja be a dir parancsot, és nyomja le az Enter billentyűt. Megjegyzendő, hogy az emelt szintű jogosultságokat igénylő parancsok nem működnek.
    
    ![image19][image19]
-5. Move back to the Develop category and choose Visual Studio Online. Note: Visual Studio Online is now named Visual Studio Team Services.
+5. Lépjen vissza a Fejlesztés kategóriához, és válassza a Visual Studio Online lehetőséget. Megjegyzés: A Visual Studio Online új neve Visual Studio Team Services.
    
    ![image20][image20]
-6. Toggle on the in-browser editing experience for your App.
+6. Váltson át a böngészőbeli szerkesztésre az alkalmazásnál.
    
    ![image21][image21]
-7. A web extension installs for your app. Extensions quickly and easily add functionality to apps in Azure. Notice some of the other extension types available in the screenshot below.
+7. Egy webes bővítmény települ az alkalmazáshoz. A bővítményekkel gyorsan és könnyen egészítheti ki további funkciókkal az alkalmazásokat az Azure-ban. Tekintse át az elérhető egyéb bővítménytípusok példáit az alábbi képernyőfelvételen.
    
    ![image22][image22]
-8. Once the Visual Studio Online extension installs, click Go.
+8. A Visual Studio Online bővítmény telepítésének befejeződése után kattintson az Indítás gombra.
    
    ![image23][image23]
-9. A browser tab opens where you see a development IDE directly in the browser. Notice the experience below is in Chrome.
+9. Megnyílik egy böngészőlap, ahol egy fejlesztői IDE környezet jelenik meg magában a böngészőben. Az alábbi példában a Chrome böngésző szerepel.
    
    ![image24][image24]
-10. You can perform several activities such as edit files, add files and folders, and download content from the live site. Make a quick edit to the SamplePage.html file.
+10. Más műveleteket is végrehajthat, például fájlokat szerkeszthet, fájlokat és mappákat vehet fel, és tartalmat tölthet le az élő webhelyről. Végezzen egy gyors szerkesztést a SamplePage.html fájlban.
     
     ![image25][image25]
-11. In a few moments, the changes are automatically saved. If you navigate back to the page, you can see the changes. Keep in mind live edits like these are most likely not suitable for production environments. However, the tools make it very easy to make quick changes for dev and test environments.
+11. Néhány pillanat múlva a módosítások automatikusan érvénybe lépnek. Ha visszalép az oldalra, megtekintheti a módosításokat. Ne feledje, hogy az ehhez hasonló élő szerkesztések minden valószínűség szerint nem alkalmazhatók az éles környezetben. Az eszközökkel azonban nagyon könnyen végrehajthatja a fejlesztési és tesztelési környezetek gyors módosításait.
     
     ![image26][image26]
     
     ![image27][image27]
-12. Move back to the tools blade and under the Develop category, click on Performance Test.
+12. Lépjen vissza az eszközök paneljére, és a Fejlesztés kategóriában kattintson a Teljesítményteszt elemre.
     
     ![image28][image28]
-13. You need to set a team services account. See here for more details: [Create a Team Services Account](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-14. Click on New to create a performance test.
+13. Be kell állítania egy Team Services-fiókot. További információt itt talál: [Team Services-fiók létrehozása](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+14. Az Új gombra kattintva hozzon létre egy új teljesítménytesztet.
     
     ![image29][image29]
     
-    Configure the various values and click Run Test at the bottom of the dialogue to initiate a performance test.
+    Konfigurálja a különböző értékeket, és kattintson a párbeszéd alján található Teszt futtatása gombra a teljesítményteszt elindításához.
     
     ![image30][image30]
     
     ![image31][image31]
-15. Once the test starts running, you can monitor the state.
+15. A teszt futása közben figyelheti az állapotot.
     
     ![image32][image32]
     
-    Once the test finishes, clicking on the result shows more details.
+    A teszt befejeződése után kattintson az eredményekre a további részletek megjelenítéséhez.
     
     ![image33][image33]
-16. In this example, you created a small test run, so there is limited data to analyze, but you can see various metrics as well as rerun your test from this view. The Azure Portal makes creating, executing, and analyzing web performance tests an easy process. The screenshots below display the performance data.
+16. Ebben a példában létrehozott egy kisebb tesztfuttatást, korlátozott mennyiségű elemezhető adattal, de így is megtekintheti a különböző mérőszámokat, és újból lefuttathatja a tesztet ebben a nézetben. Az Azure Portal egyszerűvé teszi a webes teljesítménytesztek létrehozását, végrehajtását és elemzését. Az alábbi képernyőfelvételeken a teljesítményadatok láthatók.
     
     ![image34][image34]
     
@@ -145,123 +149,123 @@ Next, make some changes to the code base and rapidly deploy those changes. You w
     
     ![image36][image36]
 
-## Monitoring and troubleshooting an app
-Azure provides many capabilities for monitoring and troubleshooting running applications.
+## <a name="monitoring-and-troubleshooting-an-app"></a>Alkalmazás figyelése és hibaelhárítása
+Az Azure számos funkciót kínál a futó alkalmazások figyeléséhez és hibaelhárításához.
 
-1. In the Azure Portal for our Web app choose Tools.
+1. A webalkalmazásunkhoz tartozó Azure Portalon válassza az Eszközök lehetőséget.
    
    ![image37][image37]
-2. Under the Troubleshoot category, notice the various choices for using tools to troubleshoot potential issues with a running app. You can do things like monitor Live HTTP traffic, enable self-healing, view logs, and more.
+2. A Hibaelhárítás kategóriában tekintse át a különböző eszközöket, amelyeket a futó alkalmazások esetleges problémáinak megoldására használhat. Lehetőség van például az élő HTTP-forgalom figyelésére, az önjavítás engedélyezésére, a naplók megtekintésére stb.
    
    ![image38][image38]
-3. Choose Site Metrics to quickly get a view of some HTTP codes.
+3. Válassza a Webhelymetrikák lehetőséget bizonyos HTTP-kódrészletek gyors megjelenítéséhez.
    
    ![image39][image39]
-4. Choose Diagnostics as a Service. Choose your application type, then choose Run.
+4. Válassza a Diagnosztika lehetőséget szolgáltatásként. Válassza ki az alkalmazás típusát, majd kattintson a Futtatás gombra.
    
    ![image40][image40]
    
-   A collection begins.
+   Elkezdődik az adatgyűjtés.
    
    ![image41][image41]
-5. You may choose the appropriate log to diagnose potential issues. You need to enable logging to see all of the available data options such as HTTP Logs.
+5. Kiválaszthatja a megfelelő naplót a potenciális problémák diagnosztizálásához. Engedélyeznie kell a naplózást, ha látni szeretné az összes rendelkezésre álló adatot, például a HTTP-naplókat.
    
    ![image42][image42]
    
-   By clicking on the Memory Dump file you can download and analyze a DebugDiag analysis report to help find potential issues.
+   Az összeomlási memóriakép fájljára kattintva letöltheti és elemezheti a hibakeresés diagnosztikai elemzési naplóját, amelyben megkeresheti a lehetséges problémákat.
    
    ![image43][image43]
-6. To view more data, you need to enable additional logging. In the Azure Portal, navigate to the Web app and choose Settings.
+6. Ha még több adatot szeretne megtekinteni, engedélyeznie kell a további naplózási lehetőségeket. Az Azure Portalon lépjen a webalkalmazáshoz, és válassza a Beállítások lehetőséget.
    
    ![image44][image44]
-7. Scroll down to the features category, and choose Diagnostic logs.
+7. Görgessen lefelé a Szolgáltatások kategóriához, és válassza a Diagnosztikai naplók elemet.
    
-    ![image45][image45]
-8. Notice the various options for logging. Toggle on Web server logging and click save.
+      ![image45][image45]
+8. Tekintse át a különböző naplózási lehetőségeket. Kapcsolja be a webkiszolgálók naplózását, és kattintson a Mentés gombra.
    
    ![image46][image46]
-9. Move back to the tools area for the app and choose Diagnostics as a service and click Run to rerun the data collection.
+9. Lépjen vissza az alkalmazás eszközeinek területére, és válassza a Diagnosztika lehetőséget szolgáltatásként, majd kattintson a Futtatás gombra az adatgyűjtés újbóli elindításához.
    
    ![image47][image47]
-10. With the HTTP logging setting enabled, you now see data collected for HTTP Logs.
+10. Ha engedélyezve van a HTTP-naplózás, láthatja a HTTP-naplókhoz gyűjtött adatokat.
     
     ![image48][image48]
-11. By clicking the HTML file log, you produce a rich browser-based report for further investigation.
+11. Ha rákattint a HTML-naplófájlra, számos további böngészőalapú jelentés jelenik meg a további elemzéshez.
     
     ![image49][image49]
-12. Move back to the tools section in the Azure Portal for the app. Scroll to the Tools section and choose Process Explorer.
+12. Lépjen vissza az eszközök szakaszára az alkalmazás Azure Portalján. Görgessen az Eszközök szakaszra, és válassza ki a Process Explorert.
     
     ![image50][image50]
-13. By choosing Process Explorer, you can view details about running processes. Notice below you can drill into processes and even kill processes all from the Azure Portal.
+13. A Process Explorer kiválasztásával megtekintheti a futó folyamatok adatait. Figyelje meg, hogy a folyamatokat kibonthatja, és még le is állíthatja az Azure Portalról.
     
     ![image51][image51]
     
     ![image52][image52]
-14. Move back to the Settings blade on the left. Click New support request.
+14. Lépjen vissza a bal oldalon található Beállítások panelre. Kattintson az Új támogatási kérelem elemre.
     
     ![image53][image53]
-15. From the blade on the right, you can fill out details about the issues, enter contact information, and even upload diagnostic data. The Azure Portal enables working with Microsoft support a seamless experience.
+15. A jobb oldali panelen beírhatja a problémával kapcsolatos adatokat, megadhatja a kapcsolattartási adatokat, és akár fel is töltheti a diagnosztikai adatokat. Az Azure Portal lehetővé teszi, hogy zökkenőmentesen együttműködjön a Microsoft támogatási szolgálatával.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    The Azure Portal helps provide powerful and familiar tooling experiences to help monitor and troubleshoot our running applications. You are also able to take action quickly by performing tasks such as recycling processes, enabling and disabling various data collections, and even integrating with Microsoft professional support.
+    Az Azure Portal hatékony és megszokott eszközöket biztosít a futó alkalmazások figyeléséhez és hibaelhárításához. Emellett gyorsan végrehajthatja az olyan műveleteket, mint az újrahasznosítási folyamatok, a különböző adatgyűjtések engedélyezése és letiltása, és akár az integráció a Microsoft szakértő támogatásával.
 
-## General Application Management
-When managing applications, you often need to perform a broad variety of activities such as configuring backup strategies, implementing and managing identity providers, and configuring Role-based access control. As with the other DevOps experiences, the Azure platform integrates these tasks directly into the portal.
+## <a name="general-application-management"></a>Általános alkalmazásfelügyelet
+Amikor alkalmazásokat felügyel, gyakran kell végrehajtania olyan tevékenységeket, mint például a biztonsági mentési stratégiák konfigurálása, az identitásszolgáltatók megvalósítása és kezelése, valamint a szerepköralapú hozzáférés-vezérlés konfigurálása. A DevOps más funkcióihoz hasonlóan az Azure platform integráltan, közvetlenül a portálon teszi elérhetővé ezeket a feladatokat.
 
-1. To ensure you are keeping the Web App safe from data loss you need to configure backups. Navigate to the Settings area for your Web app.
+1. A webalkalmazás adatvesztés elleni védelméhez biztonsági mentéseket kell konfigurálnia. Lépjen a webalkalmazás Beállítások területére.
    
    ![image56][image56]
-2. In the blade on the right, scroll down to the Features category.
+2. A jobb oldali panelen görgessen le a Szolgáltatások kategóriához.
    
     ![image57][image57]
-3. Choose Backups; a blade opens on the right.
+3. Válassza ki a Biztonsági másolatok lehetőséget. A jobb oldalon megnyílik egy panel.
    
    ![image58][image58]
-4. Click Configure, choose a storage account from the blade on the right.
+4. Kattintson a Konfigurálás gombra, és válasszon egy tárfiókot a jobb oldali panelen.
    
    ![image59][image59]
-5. Now create and choose a storage container to hold your backups. Click create at the bottom of the blade. Then select the container.
+5. Most hozzon létre egy tárolót a biztonsági mentések tárolásához. Kattintson a panel alján található Létrehozás gombra. Ezután válassza ki a tárolót.
    
    ![image60][image60]
-6. Once you have chosen the container, you can configure schedules, as well as setup backups for your databases. For this scenario, click the save icon.
+6. Miután kiválasztotta a tárolót, beállíthatja az ütemezéseket, valamint az adatbázisok biztonsági mentését. Ebben a példában kattintson a Mentés ikonra.
    
     ![image61][image61]
-7. After saving, scroll back to the blade on the left for Backups. Click Backup Now to back the application.
+7. A mentés után görgessen vissza a bal oldali panelre, a Biztonsági másolatok lehetőséghez. Kattintson a Biztonsági mentés gombra az alkalmazás biztonsági mentéséhez.
    
     ![image62][image62]
-8. In a few moments, you see a backup created. Notice the Restore Now option on the screen-shot below.
+8. Rövidesen múlva megjelenik a létrehozott biztonsági másolat. A képernyőfelvételen láthatja a Visszaállítás lehetőséget.
    
     ![image63][image63]
-9. Click on Restore Now and examine the options to the blade on the right. You can choose an appropriate backup and easily restore to an earlier state as necessary. The Azure portal has helped us easily enable a simple disaster recovery strategy for the app.
+9. Kattintson a Visszaállítás gombra, és tekintse át a jobb oldali panelen található beállításokat. Kiválaszthatja a biztonsági másolatot, és szükség esetén könnyen visszaállíthat egy korábbi állapotot. Az Azure Portal segítségével könnyen létrehoztuk az alkalmazás egyszerű vészhelyreállítási stratégiáját.
    
     ![image64][image64]
-10. Move back to the Settings blade on the left, and under Features and choose Authentication/Authorization.
+10. Lépjen vissza a bal oldali Beállítások panelre, és a Szolgáltatások elemnél válassza ki a Hitelesítés/engedélyezés lehetőséget.
     
      ![image65][image65]
-11. In the blade on the right choose App Service Authentication. Notice the variety of options you can configure with popular providers.
+11. A jobb oldali panelen válassza ki az App Service-hitelesítés lehetőséget. Tekintse át a különböző beállításokat, amelyeket megadhat a népszerű szolgáltatókhoz.
     
      ![image66][image66]
-12. Choose the provider of your choice and notice the options for the scope. You can provide an App ID and App Secret and quickly enable Facebook authentication for the app. The Azure Portal enables authentication as a turnkey solution for apps.
+12. Válassza ki a kívánt szolgáltatót, és tekintse át a hatókör beállításait. Adja meg az alkalmazás azonosítója és az alkalmazás titkos kulcsát, és engedélyezze az alkalmazás Facebook-hitelesítését. Az Azure Portal a hitelesítést kulcsrakész megoldásként biztosítja az alkalmazásokhoz.
     
      ![image67][image67]
-13. Move back to the Settings blade and choose Users under the Resource Management category.
+13. Lépjen vissza a Beállítások panelre, és válassza ki a Felhasználók elemet az Erőforrás-kezelés kategóriában.
     
      ![image68][image68]
-14. In the blade on the right examine the various options for adding roles and users. The Azure Portal lets you easily control RBAC (Role-based access control) for the application.
+14. A jobb oldali panelen tekintse át a szerepkörök és a felhasználók hozzáadásának különböző lehetőségeit. Az Azure Portal segítségével egyszerűen meghatározhatja az alkalmazás szerepkörön alapuló hozzáférés-vezérlését.
     
      ![image69][image69]
 
-## Summary
-This tutorial demonstrated some of the power with the Azure platform by quickly enabling continuous deployment for a web app, performing various development and testing activities, monitoring and troubleshooting a live app, and finally managing key strategies such as disaster recovery, identity, and role-based access control. The Azure platform enables an integrated experience for these DevOps workflows, and you can work efficiently by staying in context for the task at hand.
+## <a name="summary"></a>Összefoglalás
+Ez az oktatóanyag bemutatta az Azure platform néhány hatékony funkcióját: a webalkalmazások folyamatos üzembe helyezésének gyors engedélyezését, a különböző fejlesztési és tesztelési tevékenységek végrehajtását, az élő alkalmazások figyelését és hibaelhárítását, és végül a fontos stratégiák, például a vészhelyreállítás, az identitás és a szerepköralapú hozzáférés-vezérlés kezelését. Az Azure platform lehetővé teszi a felsorolt DevOps-munkafolyamatok integrált használatát, így hatékonyan dolgozhat az adott feladatnak megfelelő környezetben.
 
-## Next steps
-* Azure Resource Manager is important for enabling DevOps on the Azure platform.  To learn more visit [Azure Resource Manager overview](../resource-group-overview.md).
-* To learn more about Azure App Service deployment visit [Deploy your app to Azure App Service](../app-service-web/web-sites-deploy.md)
+## <a name="next-steps"></a>Következő lépések
+* Az Azure Resource Manager fontos szerepet tölt be a fejlesztés és az üzemeltetés lehetővé tételében az Azure platformon.  További tudnivalók: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
+* Az Azure App Service üzembe helyezésének ismertetését lásd: [Deploy your app to Azure App Service](../app-service-web/web-sites-deploy.md) (Alkalmazás telepítése az Azure App Service szolgáltatásban).
 
-[image1]: ./media/tutorial-azureportal-devops/image1.png
+[Image1]: ./media/tutorial-azureportal-devops/image1.png
 [image2]: ./media/tutorial-azureportal-devops/image2.png
 [image3]: ./media/tutorial-azureportal-devops/image3.png
 [image4]: ./media/tutorial-azureportal-devops/image4.png
@@ -333,6 +337,6 @@ This tutorial demonstrated some of the power with the Azure platform by quickly 
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

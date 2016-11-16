@@ -1,13 +1,13 @@
 ---
-title: Az Azure Automation biztonsága | Microsoft Docs
-description: Ez a cikk az Automation biztonságának és az Azure Automation-fiókok számára elérhető különböző hitelesítési módszerek áttekintését nyújtja.
+title: "Az Azure Automation biztonsága | Microsoft Docs"
+description: "Ez a cikk az Automation biztonságának és az Azure Automation-fiókok számára elérhető különböző hitelesítési módszerek áttekintését nyújtja."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
 editor: tysonn
-keywords: automation-biztonság, automation biztonságossá tétele
-
+keywords: "automation-biztonság, automation biztonságossá tétele"
+ms.assetid: 4a6bc2f5-c5a2-4dfb-b10d-7950d750dee8
 ms.service: automation
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5cd87c888a5e3407da2bad1bc3f2ef10aa75312b
+
 
 ---
-# Az Azure Automation biztonsága
+# <a name="azure-automation-security"></a>Az Azure Automation biztonsága
 Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.  
 Ez a cikk lefedi az Azure Automation által támogatott különböző hitelesítési forgatókönyveket, és megmutatja, hogyan kell megtenni az első lépéseket a kezelendő környezettől vagy környezetektől függően.  
 
-## Az Automation-fiókok áttekintése
+## <a name="automation-account-overview"></a>Az Automation-fiókok áttekintése
 Amikor először indítja el az Azure Automationt, legalább egy Automation-fiókot létre kell hoznia. Az Automation-fiókok lehetővé teszik, hogy elkülönítse az Automation erőforrásait (forgatókönyvek, adategységek, konfigurációk) a más Automation-fiókokban tárolt erőforrásoktól. Az Automation-fiókok segítségével külön logikai környezetekre választhatja szét az erőforrásokat. Használhat például egy fiókot fejlesztéshez, egy másikat az üzemi használatra, egy harmadikat pedig a helyszíni környezethez.  Az Azure Automation-fiók különbözik a Microsoft-fiókjától vagy az Azure-előfizetésében létrehozott fiókoktól.
 
 Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tartoznak, de az Automation-fiókok képesek bármelyik régióban kezelni az erőforrásokat. A különböző régiókban levő Automation-fiókok létrehozásának fő oka az lehet, ha a házirendeknek adatokra és erőforrásokra van szükségük ahhoz, hogy külön régióra különülhessenek el.
@@ -42,17 +46,20 @@ A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhet�
 
 Az adatközpontban egy hibrid forgatókönyv-feldolgozón vagy az AWS számítástechnikai szolgáltatásain futó forgatókönyvek nem használhatják ugyanazt a módszert, amelyet az Azure-erőforrásokon hitelesítő forgatókönyvek használnak.  Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra lesz szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez.  
 
-## Hitelesítési módszerek
+## <a name="authentication-methods"></a>Hitelesítési módszerek
 A következő táblázat összefoglalja az Azure Automation által támogatott összes környezet különböző hitelesítési módszereit, valamint az azt ismertető cikket, hogy miként lehet beállítani a hitelesítést a forgatókönyvekhez.
 
 | Módszer | Környezet | Cikk |
 | --- | --- | --- |
-| Azure AD felhasználói fiók |Azure Resource Manager és Azure szolgáltatásfelügyelet |[Forgatókönyvek hitelesítése Azure AD-felhasználói fiókkal](automation-sec-configure-aduser-account.md) |
-| Azure-futtatófiók |Azure Resource Manager |[Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
-| Klasszikus Azure-futtatófiók |Azure szolgáltatásfelügyelet |[Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
-| Windows-hitelesítés |Helyszíni adatközpont |[Forgatókönyvek hitelesítése hibrid forgatókönyv-feldolgozókhoz](automation-hybrid-runbook-worker.md) |
-| AWS hitelesítő adatok |Amazon webszolgáltatások |[Forgatókönyvek hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-sec-configure-aws-account.md) |
+| Azure AD felhasználói fiók |Azure Resource Manager és Azure szolgáltatásfelügyelet |[Runbookok hitelesítése Azure AD-felhasználói fiókkal](automation-sec-configure-aduser-account.md) |
+| Azure-futtatófiók |Azure Resource Manager |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
+| Klasszikus Azure-futtatófiók |Azure szolgáltatásfelügyelet |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
+| Windows-hitelesítés |Helyszíni adatközpont |[Runbookok hitelesítése hibrid runbook-feldolgozókhoz](automation-hybrid-runbook-worker.md) |
+| AWS hitelesítő adatok |Amazon webszolgáltatások |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-sec-configure-aws-account.md) |
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

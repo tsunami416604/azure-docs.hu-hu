@@ -1,14 +1,14 @@
 ---
-title: Csatlakozás az SQL Database-hez – SQL Server Management Studio | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezt követően pedig mintalekérdezést futtathat a Transact-SQL (T-SQL) használatával.
-metacanonical: ''
-keywords: csatlakozás sql database-hez,sql server management studio
+title: "Csatlakozás az SQL Database-hez – SQL Server Management Studio | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezt követően pedig mintalekérdezést futtathat a Transact-SQL (T-SQL) használatával."
+metacanonical: 
+keywords: "csatlakozás sql database-hez,sql server management studio"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -16,9 +16,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: sstein;carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0eb25eb76c6c6c2446ac0b2b07c65975c3719db0
+
 
 ---
-# Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása
+# <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-tsql-query"></a>Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása
 > [!div class="op_single_selector"]
 > * [Visual Studio](sql-database-connect-query.md)
 > * [SSMS](sql-database-connect-query-ssms.md)
@@ -32,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat egy SQL Database adatbázisho
 
 [!INCLUDE [SSMS Connect](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
-## Mintalekérdezések futtatása
+## <a name="run-sample-queries"></a>Mintalekérdezések futtatása
 A kiszolgálóhoz való csatlakozás után csatlakozhat egy adatbázishoz, és futtathat egy mintalekérdezést. Ha nem ismeri a lekérdezések írásának módját, tekintse meg a [Writing Transact-SQL Statements](https://msdn.microsoft.com/library/ms365303.aspx) (Transact-SQL-utasítások írása) című témakört.
 
 1. Az **Object Explorerben** lépjen a kiszolgáló egyik adatbázisához, például az **AdventureWorks** mintaadatbázisához.
@@ -52,7 +56,7 @@ A kiszolgálóhoz való csatlakozás után csatlakozhat egy adatbázishoz, és f
    
     ![Siker. Csatlakozás SQL Database-kiszolgálóhoz: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 T-SQL-utasításokkal adatbázisokat hozhat létre és kezelhet az Azure-ban, hasonlóképpen mint az SQL Serverrel. Ha tisztában van a T-SQL és az SQL Server együttes használatával, tekintse meg [az Azure SQL Database és a Transact-SQL ismertetőjét](sql-database-transact-sql-information.md), amely összefoglalja a kettő közötti különbségeket.
 
 Ha most ismerkedik a T-SQL-lel, tekintse meg [a Transact-SQL-utasítások írásával kapcsolatos oktatóanyagunkat](https://msdn.microsoft.com/library/ms365303.aspx), valamint a [Transact-SQL-adatbázismotor leírását](https://msdn.microsoft.com/library/bb510741.aspx).
@@ -61,6 +65,9 @@ Az adatbázis-felhasználók és adatbázis-felhasználói rendszergazdák létr
 
 További tudnivalók az SSMS-ről: [Use SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (Az SQL Server Management Studio használata).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

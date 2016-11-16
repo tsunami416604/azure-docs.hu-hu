@@ -1,12 +1,12 @@
 ---
-title: Azure RemoteApp FAQ | Microsoft Docs
-description: Learn answers to the most frequently asked questions about Azure RemoteApp.
+title: "Azure RemoteApp – gyakori kérdések | Microsoft Docs"
+description: "Megtudhatja a válaszokat az Azure RemoteApp szolgáltatással kapcsolatban leggyakrabban feltett kérdésekre."
 services: remoteapp
-documentationcenter: ''
+documentationcenter: 
 author: lizap
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: bad66603-91f9-437f-8a70-236405d2a27f
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
@@ -14,111 +14,118 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: elizapo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
+
 
 ---
-# Azure RemoteApp FAQ
+# <a name="azure-remoteapp-faq"></a>Azure RemoteApp – gyakori kérdések
 > [!IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
-We've heard the following questions about Azure RemoteApp. Have others? Visit the [RemoteApp forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp) and let us know what you need to know, or drop a comment down below.
+A következő kérdéseket hallottuk az Azure RemoteApp szolgáltatással kapcsolatban. További kérdései vannak? Látogasson el a [RemoteApp-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp), és tegye fel nekünk a kérdéseit, vagy szóljon hozzá alább.
 
-## Can't find what you're looking for? Have a question we didn't answer?
-If you can't find the information you need, or you have an additional question that we're not covering here, please go to the [Azure RemoteApp forum](http://aka.ms/araforum) and ask your question there. We can always add more answers here.
+## <a name="cant-find-what-youre-looking-for-have-a-question-we-didnt-answer"></a>Nem találja, amit keres? Kérdése van, amire nem kapott választ?
+Ha nem találja a keresett információt, vagy olyan kérdése van, amelyre itt nem kapott választ, kérjük, keresse fel az [Azure RemoteApp fórumát](http://aka.ms/araforum), és tegye fel ott a kérdését. Itt bármikor közzétehetünk új válaszokat.
 
-## What is Azure RemoteApp?
-* **What is Azure RemoteApp?** RemoteApp is an Azure service helps you provide secure, remote access to applications from many different user devices. Read more  about [Azure RemoteApp](remoteapp-whatis.md).
-* **What are the deployment options?** There are two kinds of RemoteApp collections: cloud and hybrid. Which one you need depends on a number of factors, like whether you need domain join. We talk about all of those decisions [here](remoteapp-collections.md).
+## <a name="what-is-azure-remoteapp"></a>Mi az az Azure RemoteApp?
+* **Mi az az Azure RemoteApp?** A RemoteApp egy Azure-szolgáltatás, amely segítségével biztonságos távoli elérést biztosíthat az alkalmazásokhoz számos különböző felhasználói eszközről. Tudjon meg többet az [Azure RemoteApp](remoteapp-whatis.md) szolgáltatásról.
+* **Mik azok az üzembe helyezési beállítások?** Kétféle RemoteApp-gyűjtemény létezik: felhőalapú és hibrid. Az, hogy Önnek melyikre van szüksége, több tényezőtől is függ, például attól, hogy szükség van-e tartományhoz csatlakozásra. A döntésről bővebben [itt](remoteapp-collections.md) olvashat.
 
-## Quick tips on using Azure RemoteApp
-* **How long until I'm disconnected? How long can I be idle before you give me the boot?** 4 hours. If you or one of your users is idle for 4 hours, you'll be automatically signed out of Azure RemoteApp. Check out the other default settings in [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md).
-* **Can I try this service for free?** Yes. There is a free trial available for 30 days. After the trial ends, you can transition to a paid account (which you can use in production) or stop using the service. Start your free trial by going to [portal.azure.com](http://portal.azure.com) - create a new instance of RemoteApp. With the free trial, you can build 2 instances of RemoteApp with 10 users per instance. Remember that this trial only lives for 30 days.
+## <a name="quick-tips-on-using-azure-remoteapp"></a>Gyors tippek az Azure RemoteApp használatához
+* **Mennyi időm van a kapcsolat megszakításáig? Mennyi ideig lehetek tétlen, mielőtt a rendszer kiléptet?** 4 órán át. Ha Ön vagy egy felhasználója 4 órán keresztül tétlen marad, az Azure RemoteApp automatikusan kilépteti. A további alapértelmezett beállításokat itt találhatja meg: [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md) (Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései).
+* **Kipróbálhatom a szolgáltatást ingyenesen?** Igen. Létezik egy ingyenes próbaverzió, amely 30 napig érhető el. Ha a próbaidő lejárt, dönthet, hogy átvált egy fizetős fiókra (amelyet éles környezetben használhat), vagy abbahagyja a szolgáltatás használatát. Az ingyenes próbaverzió használatának megkezdéséhez lépjen a [portal.azure.com](http://portal.azure.com) webhelyre, és hozzon létre egy új RemoteApp-példányt. Az ingyenes próbaverzióval két RemoteApp-példányt hozhat létre, példányonként 10 felhasználóval. Ne feledje, hogy a próbaverzió csak 30 napig használható.
   
-  ## Azure RemoteApp subscription details
-* **What are the service limits?** You can learn about the default settings and service limits of Azure RemoteApp in [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md). Let us know if you have more questions.
-* **How many users do I have to have?** There's a minimum of 20 users. Let me repeat that to be super clear - the MINIMUM is 20. You will be billed for 20. 
-* **How much does RemoteApp cost?** Check out [Azure RemoteApp Pricing Details ](https://azure.microsoft.com/pricing/details/remoteapp/).
-* **Does one type of collection cost more than another?** Yes, it can, depending on your collection requirements. A hybrid collection requires a connection from Azure RemoteApp to your on-premises network. If you use an existing VNET/Express Route, there is no additional cost. But if you use a new Azure VNET and either a gateway or Express Route, you will be charged for the [VPN gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) or [Express Route](https://azure.microsoft.com/pricing/details/expressroute/). This cost (detailed in the links) is on top of your monthly Azure RemoteApp cost.
+  ## <a name="azure-remoteapp-subscription-details"></a>Az Azure RemoteApp-előfizetés részletei
+* **Milyen korlátozások vannak érvényben a szolgáltatásra vonatkozóan?** Az Azure RemoteApp alapértelmezett beállításait és szolgáltatási korlátait itt ismerheti meg: [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md) (Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései). Ha további kérdései vannak, ossza meg velünk.
+* **Hány felhasználómnak kell lennie?** A felhasználók minimális száma 20. Csak az egyértelműség kedvéért: a 20 a MINIMUM. A számlázás 20 felhasználó után történik. 
+* **Mennyibe kerül a RemoteApp szolgáltatás?** Tekintse meg az [Azure RemoteApp díjszabásának részleteit](https://azure.microsoft.com/pricing/details/remoteapp/).
+* **Van olyan gyűjteménytípus, amely drágább, mint a többi?** Igen, előfordulhat, hogy van. Ez a gyűjteménnyel szemben támasztott követelményektől függ. A hibrid gyűjteményhez az Azure RemoteApp és az Ön helyszíni hálózata közötti kapcsolatra van szükség. Ha meglévő VNET-/Express Route-kapcsolatokat használ, ez nem jelent többletköltséget. De ha egy új Azure VNET-kapcsolatot, és egy átjárót vagy Express Route-kapcsolatot használ, a [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) vagy az [Express Route](https://azure.microsoft.com/pricing/details/expressroute/) használata díjköteles. Ez a költség (amelynek részleteit a hivatkozások között találja) az Azure RemoteApp szolgáltatás havi költségén felül fizetendő.
 
-## Collections - what's supported, which should you use, and others
-* **Are custom line-of-business (LOB) applications supported?** Yes. To use a custom application in Azure RemoteApp, create a [custom template image](remoteapp-create-custom-image.md), and then upload it to the RemoteApp collection.
-* **Will my custom LOB application work in Azure RemoteApp?** The best way to figure that out is to test it. Check out the [RD Compatibility Center](http://www.rdcompatibility.com/compatibility/default.aspx).
-* **Which deployment method (cloud or hybrid) is best for my organization?** Hybrid collections provide the most complete experience if you want full integration with single sign-on (SSO) and secure on-premises network connectivity. Cloud collections provide an agile and easy way to isolate your deployment by using multiple authentication methods. Read more about the [deployment options](remoteapp-whatis.md).
-* **We have SQL or another database either on-premises or in Azure. Which deployment type should we use?** That depends on where your SQL or backend database is. If the database is in a private network, use the hybrid collection. If the database is exposed to the Internet and allows client connections to connect to it, you can use the cloud collection.
-* **What about drive mapping, USB and serial port, clipboard sharing, and printer redirection?** All of those features are supported in Azure RemoteApp. Clipboard sharing and printer redirection is enabled by default. You can learn more about redirection [here](remoteapp-redirection.md). 
+## <a name="collections-whats-supported-which-should-you-use-and-others"></a>Gyűjtemények – mi támogatott, mit érdemes használni és egyebek
+* **Támogatottak az egyéni üzletági (LOB) alkalmazások?** Igen. Ha egy egyéni alkalmazást szeretne használni az Azure RemoteApp szolgáltatásban, hozzon létre egy [egyéni sablonrendszerképet](remoteapp-create-custom-image.md), és töltse fel azt a RemoteApp-gyűjteménybe.
+* **Működni fog az egyéni üzletági alkalmazásom az Azure RemoteAppben?** Ezt a legkönnyebben úgy tudja kideríteni, ha kipróbálja. Látogasson el a [Távoli asztali szolgáltatások kompatibilitási központjába](http://www.rdcompatibility.com/compatibility/default.aspx).
+* **Melyik üzembe helyezési módszer (felhőalapú vagy hibrid) a legjobb a szervezetem számára?** A hibrid gyűjtemények nyújtják a legteljesebb körű élményt, ha egyszeri bejelentkezést (SSO), teljes integrációt és biztonságos helyszíni hálózati kapcsolódási lehetőséget szeretne használni. A felhőalapú gyűjtemények gyors és egyszerű módot nyújtanak az üzemelő példány elszigetelésére többféle hitelesítési módszer használatával. További információk az [üzembe helyezési lehetőségekről](remoteapp-whatis.md).
+* **Van egy SQL- vagy más adatbázisunk a helyszínen vagy az Azure-ban. Melyik üzembe helyezési típust érdemes használnunk?** Ez attól függ, hogy az SQL- vagy háttéradatbázis hol található. Ha az adatbázis egy magánhálózaton található, a hibrid gyűjteményt érdemes használni. Ha az adatbázis közvetlenül az internetre csatlakozik, és ügyfelek csatlakozhatnak hozzá, a felhőalapú gyűjtemény használható.
+* **Mi a helyzet a meghajtó-hozzárendeléssel, az USB- és a soros portokkal, a vágólapmegosztással és a nyomtatóátirányítással?** Az Azure RemoteApp ezek mindegyikét támogatja. A vágólapmegosztás és a nyomtatóátirányítás alapértelmezés szerint engedélyezve van. Az átirányításról [itt](remoteapp-redirection.md) tudhat meg többet. 
 
-## Template images
-* **Can I use a cloud or existing virtual machine as the template for my RemoteApp collection?** Yes! You can create an image based on an Azure VM, use one of the images included with your subscription, or create a custom image. Check out the [RemoteApp image options](remoteapp-imageoptions.md).
+## <a name="template-images"></a>Sablonrendszerképek
+* **Használhatok egy felhőt vagy egy meglévő virtuális gépet sablonként a RemoteApp-gyűjteményemhez?** Igen! Létrehozhat egy Azure virtuális gépen alapuló rendszerképet, használhatja az előfizetéséhez járó rendszerképeket, vagy létrehozhat egyéni rendszerképeket. További információkért lásd: [RemoteApp-rendszerképekkel kapcsolatos lehetőségek](remoteapp-imageoptions.md).
 
-## Network options
-* **The hybrid collection requires a VNET. Can we use our existing VNET?** You can if the existing VNET is an Azure VNET. See "Step 1: Set up your virtual network" in the [hybrid collection instructions](remoteapp-create-hybrid-deployment.md) for more information.
-* **Can I use a VNET with a cloud collection?** Indeed you can. Check out [Create a cloud collection](remoteapp-create-cloud-deployment.md), particularly Step 1, for more information.
+## <a name="network-options"></a>Hálózati lehetőségek
+* **A hibrid gyűjteménynek VNET-kapcsolatra van szüksége. Használhatjuk a meglévő VNET-kapcsolatunkat?** Igen, ha a meglévő VNET egy Azure VNET. További információkért lásd a [hibrid gyűjteményekkel kapcsolatos útmutatás](remoteapp-create-hybrid-deployment.md) 1. lépését: „A virtuális hálózat beállítása”.
+* **Használhatok VNET-kapcsolatot felhőalapú gyűjtemény esetében?** Természetesen igen. További információért lásd: [Felhőalapú gyűjtemény létrehozása](remoteapp-create-cloud-deployment.md), különösen az 1. lépést.
 
-## Authentication options
-* **How about authentication? Which methods are supported?** The cloud collection supports Microsoft accounts and Azure Active Directory accounts, which are Office 365 accounts as well. The hybrid collection supports only Azure Active Directory accounts that have been synced (using a tool like [Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx)) from a Windows Server Active Directory deployment; specifically, either synced with the Password Synchronization option or synced with Active Directory Federation Services (AD FS) federation configured. You can also configure [Multi-Factor Authentication (MFA)](https://azure.microsoft.com/services/multi-factor-authentication/).
+## <a name="authentication-options"></a>Hitelesítési lehetőségek
+* **Mi a helyzet a hitelesítéssel? Milyen módszerek támogatottak?** A felhőalapú gyűjtemény támogatja a Microsoft-fiókokat és az Azure Active Directory-fiókokat, amelyek egyben Office 365-fiókok is. A hibrid gyűjtemény csak az olyan Azure Active Directory-fiókokat támogatja, amelyek a Windows Server Active Directory üzemelő példányából lettek szinkronizálva (az [Azure Active Directory-szinkronizáló](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) vagy hasonló eszköz használatával); pontosabban vagy a jelszó-szinkronizálási lehetőséggel, vagy az Active Directory összevonási szolgáltatások (AD FS) összevonásának konfigurálásával lettek szinkronizálva. Ezenkívül konfigurálhatja a [Multi-Factor Authentication (MFA)](https://azure.microsoft.com/services/multi-factor-authentication/) szolgáltatást is.
 
 > [!NOTE]
-> The Azure Active Directory users must be from the tenant that's associated with your subscription. (You can view and modify your subscription on the **Settings** tab in the portal. See [Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md) for more information.)
+> Az Azure Active Directory-felhasználóknak ugyanattól a bérlőtől kell származniuk, amely az Ön előfizetéséhez rendelve van. (Az előfizetését a portál **Beállítások** lapján tekintheti meg és módosíthatja. További információk: [A RemoteApp által használt Azure Active Directory-bérlő módosítása](remoteapp-changetenant.md).)
 > 
 > 
 
-* **Why can't I give my Azure Active Directory account access?** The Azure Active Directory users must be from the directory that's associated with your subscription. You can view or modify that directory on the Settings tab in the portal. See [Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md) for more information.
+* **Miért nem tudok hozzáférést biztosítani Azure Active Directory-fiókom számára?** Az Azure Active Directory-felhasználóknak ugyanabból a könyvtárból kell származniuk, amely az Ön előfizetéséhez rendelve van. A könyvtárat a portál Beállítások lapján tekintheti meg és módosíthatja. További információk: [A RemoteApp által használt Azure Active Directory-bérlő módosítása](remoteapp-changetenant.md).
 
-## Clients - what device can I use to access Azure RemoteApp?
-You can find good client information, including steps for installing the different clients at [Accessing your apps in Azure RemoteApp](remoteapp-clients.md).
+## <a name="clients-what-device-can-i-use-to-access-azure-remoteapp"></a>Ügyfelek – mely eszközökről érhetem el az Azure RemoteAppet?
+Az ügyfelekkel kapcsolatos információkat, többek között a különböző ügyfelek telepítési lépéseit itt találhatja meg: [Accessing your apps in Azure RemoteApp](remoteapp-clients.md) (Az alkalmazások elérése az Azure RemoteAppben).
 
-* **Which devices and operating systems do the client applications support?**
-  First, the computers and tablets: 
+* **Mely eszközöket és operációs rendszereket támogatják az ügyfélalkalmazások?**
+  Számítógépek és táblagépek: 
   
-  * Windows 10 (client preview)
-  * Windows 8.1 and Windows 8
+  * Windows 10 (ügyfél előzetes kiadása)
+  * Windows 8.1 és Windows 8
   * Windows 7 Service Pack 1
   * Mac OS X
-  * Windows RT
-  * Android tablets
-  * iPads And the phones:
+  * Windows RT
+  * Android rendszerű táblagépek
+  * iPadek és telefonok:
   * iPhone
-  * Android Phone
+  * Android rendszerű telefonok
   * Windows Phone
     
-    [Download](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) a RemoteApp client now.
-* **Does Azure RemoteApp support Thin Clients?** Yes, the following Windows Embedded thin clients are supported:
+    [Töltsön le](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) egy RemoteApp-ügyfelet most.
+* **Támogatja az Azure RemoteApp a vékony ügyfeleket?** Igen, a következő Windows Embedded vékony ügyfelek támogatottak:
   
   * Windows Embedded Standard 7
   * Windows Embedded 8 Standard
   * Windows Embedded 8.1 Industry Pro
   * Windows 10 IoT Enterprise
-* **Which version of Windows Server is supported for the Remote Desktop Session Host (RDSH)?** Windows Server 2012 R2.
+* **Melyik Windows Server-verziót támogatja a Távoli asztali munkamenetgazda (RDSH)?** Windows Server 2012 R2.
 
-## Support and feedback
-* **What is the support plan for RemoteApp?** Support for billing and subscription management is provided at no cost. Technical support is available through the [Azure service plans](https://azure.microsoft.com/support/plans/). You can also get free community support through our [Azure discussion forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp). 
-* **How do I submit feedback?** Visit the [feedback forum](https://feedback.azure.com/forums/247748-azure-remoteapp/).
-* **Who can I talk to learn more about Azure RemoteApp?** In addition to our [discussion forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp), which is a great place to post questions, you can join the weekly [Ask the Experts webinar](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html), where we talk about all things RemoteApp.
-* **What about RemoteApp documentation?** We're so glad you asked. In addition to the help content in the portal help drawer (just click the **?** on any page in the portal), the following articles are available to teach you all about RemoteApp:
+## <a name="support-and-feedback"></a>Támogatás és visszajelzés
+* **Mi található a RemoteApp támogatási csomagjában?** A számlázási és előfizetés-kezelési támogatás ingyenesen elérhető. Műszaki támogatás [Azure támogatási csomagok](https://azure.microsoft.com/support/plans/) formájában érhető el. Emellett [Azure vitafórumunkban](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp) ingyenes közösségi támogatáshoz juthat. 
+* **Hogyan küldhetek visszajelzést?** Látogasson el a [visszajelzési fórumra](https://feedback.azure.com/forums/247748-azure-remoteapp/).
+* **Kitől tudhatok meg többet az Azure RemoteApp szolgáltatásról?** Kérdéseit felteheti a [vitafórumon](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp), vagy csatlakozhat a heti rendszerességű [szakértői válaszok webes szemináriumhoz](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html), ahol mindenről szó van a RemoteApp szolgáltatással kapcsolatban.
+* **Mi a helyzet a RemoteApp dokumentációjával?** Örülünk, hogy megkérdezte. A portál súgófiókjában található súgótartalmakon kívül (ezek eléréséhez egyszerűen kattintson a **?** elemre a portál bármely lapján) a következő cikkekből mindent megtudhat a RemoteApp szolgáltatásról:
   
-  * **Get started:**
-    * [What is RemoteApp?](remoteapp-whatis.md)
-    * [What is in the RemoteApp template images?](remoteapp-images.md)
-    * [How does licensing work?](remoteapp-licensing.md)
-    * [How do RemoteApp and Office work together?](remoteapp-o365.md)
-    * [How does redirection work in RemoteApp](remoteapp-redirection.md)?
-  * **Deploy:**
-    * [Create a custom template image](remoteapp-create-custom-image.md)
-    * [Create a hybrid collection](remoteapp-create-hybrid-deployment.md)
-    * [Create a cloud collection](remoteapp-create-cloud-deployment.md)
-    * [Configure Azure Active Directory for RemoteApp](remoteapp-ad.md)
-    * [Publish an app in RemoteApp](remoteapp-publish.md)
-  * **Manage:**
+  * **Első lépések:**
+    * [Mi az a RemoteApp?](remoteapp-whatis.md)
+    * [Mit tartalmaznak a RemoteApp sablon rendszerképei?](remoteapp-images.md)
+    * [Hogyan működik a licenckezelés?](remoteapp-licensing.md)
+    * [Hogyan működik együtt a RemoteApp és az Office?](remoteapp-o365.md)
+    * [Hogyan működik az átirányítás a RemoteApp szolgáltatásban](remoteapp-redirection.md)?
+  * **Üzembe helyezés:**
+    * [Egyéni sablonrendszerkép létrehozása](remoteapp-create-custom-image.md)
+    * [Hibrid gyűjtemény létrehozása](remoteapp-create-hybrid-deployment.md)
+    * [Felhőalapú gyűjtemény létrehozása](remoteapp-create-cloud-deployment.md)
+    * [Az Azure Active Directory konfigurálása a RemoteApp szolgáltatáshoz](remoteapp-ad.md)
+    * [Alkalmazás közzététele a RemoteApp szolgáltatásban](remoteapp-publish.md)
+  * **Kezelés:**
     
-    * [Add users](remoteapp-user.md)
-    * [Best practices for configuring and using RemoteApp](remoteapp-bestpractices.md)  
+    * [Felhasználók hozzáadása](remoteapp-user.md)
+    * [Ajánlott eljárások a RemoteApp konfigurálásához és használatához](remoteapp-bestpractices.md)    
     
-    Videos! We also have a number of videos about RemoteApp. Some provide introduction ([Introduction to Azure RemoteApp](https://azure.microsoft.com/documentation/videos/cloud-cover-ep-150-azure-remote-app-with-thomas-willingham-and-nihar-namjoshi/)) while others walk you through deployment ([Cloud deployment](https://www.youtube.com/watch?v=3NAv2iwZtGc&feature=youtu.be) and [Hybrid deployment](https://www.youtube.com/watch?v=GCIMxPUvg0c&feature=youtu.be)). Check them out!
+    Videók: A RemoteApp szolgáltatásról számos videónk érhető el. Ezek némelyike bevezető jellegű ([Ismerkedés az Azure RemoteApp szolgáltatással](https://azure.microsoft.com/documentation/videos/cloud-cover-ep-150-azure-remote-app-with-thomas-willingham-and-nihar-namjoshi/)), míg mások az üzembe helyezésben nyújtanak segítséget ([Felhőalapú üzemelő példány](https://www.youtube.com/watch?v=3NAv2iwZtGc&feature=youtu.be) és [Hibrid üzemelő példány](https://www.youtube.com/watch?v=GCIMxPUvg0c&feature=youtu.be)). Nézze meg őket!
 
-### Help us help you
-Did you know that in addition to rating this article and making comments down below, you can make changes to the article itself? Something missing? Something wrong? Did I write something that's just confusing? Scroll up and click **Edit on GitHub** to make changes - those will come to us for review, and then, once we sign off on them, you'll see your changes and improvements right here.
+### <a name="help-us-help-you"></a>Segítsen nekünk, hogy segítsünk
+Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

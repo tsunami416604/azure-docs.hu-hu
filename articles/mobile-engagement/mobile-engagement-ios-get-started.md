@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával | Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében.
+title: "Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával | Microsoft Docs"
+description: "Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 117b5742-522b-41de-98c5-f432da2d98f8
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,9 +14,13 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/05/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
+
 
 ---
-# Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával
+# <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazás használatának megértéséhez, valamint leküldéses értesítések iOS-alkalmazásba történő küldéséhez a szegmentált felhasználók számára.
@@ -34,18 +38,18 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 > 
 > 
 
-## <a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. A teljes integrációs dokumentáció itt található: [Mobile Engagement iOS SDK-integráció](mobile-engagement-ios-sdk-overview.md)
 
 Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az integráció bemutatásához.
 
-### Új iOS-projekt létrehozása
+### <a name="create-a-new-ios-project"></a>Új iOS-projekt létrehozása
 [!INCLUDE [Create a new iOS Project](../../includes/mobile-engagement-create-new-ios-app.md)]
 
-### Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+### <a name="connect-your-app-to-the-mobile-engagement-backend"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 1. Töltse le a [Mobile Engagement iOS SDK].
 2. Bontsa ki a .tar.gz fájlt a számítógép egyik mappájába.
 3. Kattintson jobb gombbal a projektre, majd válassza az **Add files to** (Fájlok hozzáadása ehhez:) elemet.
@@ -67,13 +71,13 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
    
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
-            [...]   
-            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
-            [...]
+              [...]   
+              [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
+              [...]
         }
 9. `setTestLogEnabled` egy választható utasítás, amely engedélyezi az SDK-naplókat a problémák azonosításához. 
 
-## <a id="monitor"></a>Valós idejű figyelés engedélyezése
+## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>Valós idejű figyelés engedélyezése
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt (tevékenységet) el kell küldenie a Mobile Engagement háttérrendszere számára.
 
 1. Nyissa meg a **ViewController.h** fájlt, és importálja az **EngagementViewController.h** fájlt:
@@ -83,24 +87,24 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
    
     `@interface ViewController : EngagementViewController`
 
-## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
-### Csendes leküldéses értesítések fogadásának engedélyezése az alkalmazásban
+### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Csendes leküldéses értesítések fogadásának engedélyezése az alkalmazásban
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
-### A Reach könyvtár hozzáadása a projekthez
+### <a name="add-the-reach-library-to-your-project"></a>A Reach könyvtár hozzáadása a projekthez
 1. Kattintson jobb gombbal a projektre.
 2. Válassza az **Add file to** (Fájl hozzáadása ehhez:) elemet.
 3. Lépjen abba a mappába, amelyben kibontotta az SDK-t.
 4. Jelölje ki az `EngagementReach` mappát.
 5. Kattintson az **Add** (Hozzáadás) parancsra.
 
-### Az alkalmazás delegáltjának módosítása
+### <a name="modify-your-application-delegate"></a>Az alkalmazás delegáltjának módosítása
 1. Az **AppDeletegate.m** fájlban importálja az Engagement Reach modulját.
    
         #import "AEReachModule.h"
@@ -114,7 +118,7 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
             return YES;
         }
 
-### APNS leküldéses értesítések fogadásának engedélyezése az alkalmazásban
+### <a name="enable-your-app-to-receive-apns-push-notifications"></a>APNS leküldéses értesítések fogadásának engedélyezése az alkalmazásban
 1. Adja a következő sort az `application:didFinishLaunchingWithOptions` módszerhez:
    
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
@@ -136,7 +140,7 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
    
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
-            [[EngagementAgent shared] registerDeviceToken:deviceToken];
+             [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
 3. Adja hozzá a `didFailToRegisterForRemoteNotificationsWithError` módszert az alábbiak szerint:
@@ -167,6 +171,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

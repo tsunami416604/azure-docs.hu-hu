@@ -5,7 +5,6 @@
 ## [Gyakori kérdések](../../virtual-machines-linux-classic-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # [Első lépések](../../virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-## [Ingyenes fiók](https://azure.microsoft.com/pricing/free-trial/)
 ## [Linux rendszerű virtuális gép létrehozása a portálról](../../virtual-machines-linux-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [Az Azure parancssori felület telepítése](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [SSH-kulcsok létrehozása](../../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
@@ -24,7 +23,7 @@
 ### [Docker-gazdagép létrehozása a portálról](../../virtual-machines-linux-classic-portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [A Docker és a Swarm együttes használata](../../virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-## Tárolás
+## A Storage használata
 ### [Adatlemez csatolása](../../virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Adatlemez leválasztása](../../virtual-machines-linux-classic-detach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
@@ -32,12 +31,12 @@
 ### [Portok megnyitása a virtuális géphez](../../virtual-machines-linux-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Virtuális gépek csatlakoztatása virtuális hálózattal vagy felhőszolgáltatással](../../virtual-machines-linux-classic-connect-vms.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-## Képek
+## Rendszerképek üzembe helyezése
 ### [Virtuális merevlemez létrehozása és feltöltése](../../virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [FreeBSD virtuális merevlemez létrehozása és feltöltése](../../virtual-machines-linux-classic-freebsd-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Oracle virtuálisgép-rendszerképek listája](../../virtual-machines-linux-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-## Számítási feladatok
+## Számítási feladatok kezelése
 ### [SAP](../../virtual-machines-linux-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### MySQL és MariaDB
 #### [Oktatóanyag MariaDB-fürtökhöz](../../virtual-machines-linux-classic-mariadb-mysql-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
@@ -45,7 +44,7 @@
 #### [Elosztott terhelésű készletek használata a MySQL fürtösítéséhez](../../virtual-machines-linux-classic-mysql-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 #### [A MySQL teljesítményének optimalizálása](../../virtual-machines-linux-classic-optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-## Alkalmazások
+## Alkalmazások futtatása
 ### [A Ruby on Rails webalkalmazás](virtual-machines-linux-classic-ruby-rails-web-app.md)
 ### [Cassandra- és Node.js-ügyfél](../../virtual-machines-linux-classic-cassandra-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [LAMP verem](../../virtual-machines-linux-classic-lamp-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
@@ -56,29 +55,32 @@
 ### [Az Azure alárendelt beépülő modul használata Jenkinsszel](../../virtual-machines-azure-slave-plugin-for-jenkins.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## HPC Pack
-### [HPC Packet tartalmazó Windows RDMA-fürt használata MPI-alkalmazások futtatására](../../virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+### [Windows RDMA-fürt MPI-alkalmazások futtatásához](../../virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Windows rendszerű nagy teljesítményű számítási (HPC-) fürt HPC Pack IaaS telepítési szkripttel](../../virtual-machines-linux-classic-hpcpack-cluster-starccm.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Számítási csomópontok számának és rendelkezésre állásának kezelése](../../virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-### [Igény szerinti csomópontok hozzáadása HPC Pack-fürthöz](../../virtual-machines-linux-classic-hpcpack-cluster-openfoam.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-### [HPC Pack-fürterőforrások automatikus méretnövelése és -csökkentése](../../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+### [Igény szerinti csomópontok hozzáadása](../../virtual-machines-linux-classic-hpcpack-cluster-openfoam.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+### [Erőforrások automatikus méretezése](../../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## Hibaelhárítás
 ### [Virtuális gépek üzembe helyezése](../../virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Virtuális gép újraindítása vagy átméretezése](../../virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # Referencia
-## [Azure CLI](https://docs.microsoft.com/cli/azure/vm)
-## [Java SDK](https://azure.microsoft.com/develop/java/)
-## [Node.js SDK](https://azure.microsoft.com/develop/nodejs/)
-## [Python SDK](https://azure.microsoft.com/develop/python/)
-## [Számítási REST API](https://docs.microsoft.com/rest/azure/api/compute/2016-03-30#Virtual-Machines)
-## [Hálózati REST API](https://docs.microsoft.com/rest/azure/api/network/2016-09-01#)
-## [Tárolási REST API](https://docs.microsoft.com/rest/azure/api/storage/2016-01-01)
+## [Azure CLI](/cli/azure/vm)
+## [Java](/java/api/)
+## [Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates/)
+## [Számítási REST](/rest/api/compute/)
+## [Hálózati REST](/rest/api/)
+## [Tárolási REST](/rest/api/storageservices/)
+
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
+
 
 <!--HONumber=Nov16_HO2-->
 

@@ -1,12 +1,12 @@
 ---
-title: Tartomány delegálása az Azure DNS-be | Microsoft Docs
-description: Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit.
+title: "Tartomány delegálása az Azure DNS-be | Microsoft Docs"
+description: "Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit."
 services: dns
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/30/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e3a68b42eecede99206b2d6c6d3a1777ff75de4a
+
 
 ---
-# Tartomány delegálása az Azure DNS-be
+# <a name="delegate-a-domain-to-azure-dns"></a>Tartomány delegálása az Azure DNS-be
 Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Egy tartomány DNS-lekérdezései csak akkor érik el az Azure DNS-t, ha a tartomány delegálva van az Azure DNS-be a szülőtartományból. Ne feledje: nem az Azure DNS a tartományregisztráló. Ez a cikk ismerteti a tartománydelegálás működését és a tartományok Azure DNS-be való delegálását.
 
-## A DNS-delegálás működése
-### Tartományok és zónák
+## <a name="how-dns-delegation-works"></a>A DNS-delegálás működése
+### <a name="domains-and-zones"></a>Tartományok és zónák
 A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „**.**”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”.  És így tovább. A DNS-hierarchia tartományait különálló DNS-zónák üzemeltetik. A zónák globálisan fel vannak osztva, és a világ különböző pontjain található DNS-névkiszolgálók üzemeltetik őket.
 
 **DNS-zóna**
@@ -36,7 +40,7 @@ A tartományregisztráló egy olyan cég, amely internetes tartományneveket biz
 > 
 > 
 
-### Feloldás és delegálás
+### <a name="resolution-and-delegation"></a>Feloldás és delegálás
 Kétféle DNS-kiszolgáló létezik:
 
 * A *mérvadó* DNS-kiszolgáló üzemelteti a DNS-zónákat. Csak az ezekben a zónákban található rekordokra irányuló DNS-lekérdezéseket válaszolja meg.
@@ -61,7 +65,7 @@ Hogyan „mutat rá” egy szülőzóna a gyermekzóna névkiszolgálóira? Ezt 
 
 A delegálások a névkiszolgálói rekordok két példányával rendelkeznek: egy a gyermekzónára mutató szülőzónában, egy pedig magában a gyermekzónában található. A „contoso.com” zóna a „com” névkiszolgálói rekordjai mellett a „contoso.com” névkiszolgálói rekordjait is tartalmazza. Ezek az úgynevezett mérvadó névkiszolgálói rekordok, és a gyermekzóna tetején találhatók.
 
-## Tartomány delegálása az Azure DNS-be
+## <a name="delegating-a-domain-to-azure-dns"></a>Tartomány delegálása az Azure DNS-be
 Miután létrehozta a DNS-zónáját az Azure DNS-ben, a szülőzónában be kell állítania a névkiszolgálói rekordokat, hogy az Azure DNS legyen a zóna mérvadó névfeloldási forrása. A tartományregisztrálótól vásárolt tartományokhoz a regisztráló felajánlja, hogy beállítja ezeket a névkiszolgálói rekordokat.
 
 > [!NOTE]
@@ -71,7 +75,7 @@ Miután létrehozta a DNS-zónáját az Azure DNS-ben, a szülőzónában be kel
 
 Tegyük fel például, hogy megvette a „contoso.com” tartományt, és létrehozott egy „contoso.com” nevű zónát az Azure DNS-ben. A tartomány tulajdonosaként a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálóinak címeit (azaz a névkiszolgálói rekordokat). A regisztráló ezeket a névkiszolgálói rekordokat a szülőtartományban, ebben az esetben a „.com” tartományban tárolja. A világ különböző pontjain található ügyfelek ekkor az Azure DNS-beli tartományához lesznek irányítva, amikor megpróbálják feloldani a „contoso.com” DNS-rekordjait.
 
-### A névkiszolgálók neveinek megkeresése
+### <a name="finding-the-name-server-names"></a>A névkiszolgálók neveinek megkeresése
 Mielőtt DNS-zónáját az Azure DNS-be delegálhatná, meg kell tudnia a zóna névkiszolgálóinak neveit. Minden zóna létrehozásakor az Azure DNS egy névkiszolgálói készletből választ ki egyet.
 
 A zónájához rendelt névkiszolgálókat legegyszerűbben az Azure-portálon tekintheti meg.  Ebben a példában a „contoso.net” zónához az alábbi névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org”, és „ns4-01.azure-dns.info”:
@@ -80,7 +84,7 @@ A zónájához rendelt névkiszolgálókat legegyszerűbben az Azure-portálon t
 
 Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekordjait, amelyek a zónához rendelt névkiszolgálókat tartalmazzák.  A névkiszolgálók neveit az Azure PowerShellen vagy az Azure parancssori felületén keresztül is megtekintheti ezeknek a rekordoknak a lekérésével.
 
-Az Azure PowerShell-lel az alábbi módon kérheti le a mérvadó névkiszolgálói rekordokat. Vegye figyelembe, hogy a „@” nevű rekord a zóna tetején található rekordokra vonatkozik.
+Az Azure PowerShell-lel az alábbi módon kérheti le a mérvadó névkiszolgálói rekordokat. Vegye figyelembe, hogy a “@” nevű rekord a zóna tetején található rekordokra vonatkozik.
 
     PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
     PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
@@ -113,14 +117,14 @@ Az Azure platformfüggetlen parancssori felületével is lekérheti a mérvadó 
     data:
     info:    network dns record-set show command OK
 
-### Delegálás beállítása
+### <a name="to-set-up-delegation"></a>Delegálás beállítása
 Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a névkiszolgálói rekordokat, és cserélje le őket az Azure DNS által létrehozottakra.
 
 Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott névkiszolgálói neveket kell használnia.  Mindig használja mind a 4 névkiszolgálói nevet, a tartomány nevétől függetlenül.  A tartománydelegáláshoz nem szükséges, hogy a névkiszolgálói név ugyanazt a legfelső szintű tartományt használja, mint az Ön tartománya.
 
 Ne használjon „összetartó rekordokat” az Azure DNS névkiszolgálói IP-címeire való rámutatáshoz, mert ezek az IP-címek megváltozhatnak a jövőben. A saját zónájában történő, névkiszolgálói neveket használó delegálásokat – más néven „személyes névkiszolgálókat” – az Azure DNS jelenleg nem támogatja.
 
-### A névfeloldás működésének ellenőrzése
+### <a name="to-verify-name-resolution-is-working"></a>A névfeloldás működésének ellenőrzése
 A delegálás befejezése után ellenőrizheti, hogy a névfeloldás működik-e. Ezt például az „nslookup” vagy egy hasonló eszköz segítségével teheti meg, amely lekérdezi a zónája SOA típusú rekordját (amely szintén automatikusan létrejön a zóna létrehozásakor).
 
 Vegye figyelembe, hogy nem kell megadnia az Azure DNS névkiszolgálóit, mivel a hagyományos DNS-feloldási folyamat automatikusan megtalálja a névkiszolgálókat, ha a delegálást helyesen végezte el.
@@ -139,7 +143,7 @@ Vegye figyelembe, hogy nem kell megadnia az Azure DNS névkiszolgálóit, mivel 
     expire = 604800 (7 days)
     default TTL = 300 (5 mins)
 
-## Altartományok delegálása az Azure DNS-ben
+## <a name="delegating-subdomains-in-azure-dns"></a>Altartományok delegálása az Azure DNS-ben
 Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartomány Azure DNS-beli delegálásával. Tegyük fel például, hogy a „contoso.com” Azure DNS-beli beállítása és delegálása után szeretne egy különálló gyermekzónát is létrehozni, „partners.contoso.com” néven.
 
 Az altartományok létrehozása a hagyományos delegáláshoz hasonló módon működik. Az egyetlen különbség az, hogy a 3. lépésben a névkiszolgálói rekordokat a „contoso.com” szülőzónában kell létrehozni az Azure DNS-ben, és nem a tartományregisztráló állítja be őket.
@@ -148,28 +152,28 @@ Az altartományok létrehozása a hagyományos delegáláshoz hasonló módon m�
 2. Keresse meg a mérvadó névkiszolgálói rekordokat a gyermekzónában, így megtalálja a gyermekzónát az Azure DNS-ben üzemeltető névkiszolgálókat.
 3. A gyermekzónára mutató szülőzónában delegálja a gyermekzónát a névkiszolgálói rekordok konfigurálásával.
 
-### Altartomány delegálása
+### <a name="to-delegate-a-subdomain"></a>Altartomány delegálása
 Az alábbi PowerShell-példa bemutatja ennek működését. Ugyanezek a lépések az Azure-portálon vagy az Azure platformfüggetlen parancssori felületén keresztül is végrehajthatók.
 
-#### 1. lépés A szülő- és gyermekzónák létrehozása
+#### <a name="step-1-create-the-parent-and-child-zones"></a>1. lépés A szülő- és gyermekzónák létrehozása
 Először is létre kell hozni a szülő- és a gyermekzónákat. Ezek azonos vagy eltérő erőforráscsoportokban is lehetnek.
 
     $parent = New-AzureRmDnsZone -Name contoso.com -ResourceGroupName RG1
     $child = New-AzureRmDnsZone -Name partners.contoso.com -ResourceGroupName RG1
 
-#### 2. lépés A névkiszolgálói rekordok lékérése
+#### <a name="step-2-retrieve-ns-records"></a>2. lépés A névkiszolgálói rekordok lékérése
 Ezután le kell kérni a mérvadó névkiszolgálói rekordokat a gyermekzónából (lásd a következő példát).  Ebben találhatók a gyermekzónához rendelt névkiszolgálók.
 
     $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-#### 3. lépés A gyermekzóna delegálása
+#### <a name="step-3-delegate-the-child-zone"></a>3. lépés A gyermekzóna delegálása
 A delegálás befejezéséhez hozzon létre egy megfelelő névkiszolgálói rekordhalmazt a szülőzónában. Vegye figyelembe, hogy a szülőzóna rekordhalmazának neve megegyezik a gyermekzóna nevével, amely ebben az esetben „partners”.
 
     $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
     $parent_ns_recordset.Records = $child_ns_recordset.Records
     Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 
-### A névfeloldás működésének ellenőrzése
+### <a name="to-verify-name-resolution-is-working"></a>A névfeloldás működésének ellenőrzése
 A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy minden helyesen van-e beállítva.
 
     nslookup –type=SOA partners.contoso.com
@@ -186,11 +190,14 @@ A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy m
         expire = 604800 (7 days)
         default TTL = 300 (5 mins)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 [DNS-zónák kezelése](dns-operations-dnszones.md)
 
 [DNS-rekordok kezelése](dns-operations-recordsets.md)
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

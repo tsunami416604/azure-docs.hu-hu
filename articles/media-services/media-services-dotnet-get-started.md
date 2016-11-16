@@ -1,22 +1,26 @@
 ---
-title: Tartalmak továbbítása igény szerint a .NET használatával | Microsoft Docs
-description: Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével.
+title: "Tartalmak továbbítása igény szerint a .NET használatával | Microsoft Docs"
+description: "Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/11/2016
+ms.date: 10/17/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 80606d9fd08a4d5b5845af8ed43fdcef050e47e9
+
 
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-.net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
+# <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 > [!NOTE]
@@ -29,7 +33,7 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan valósíthat meg egy Vi
 
 Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media Services-fejlesztéshez szükséges leggyakoribb programozási objektumokat és feladatokat. Az oktatóprogram elvégzése után képes lesz adatfolyamot továbbítani vagy fokozatosan letölteni egy saját maga által feltöltött, kódolt és letöltött példa médiafájlt.
 
-## <a name="what-you'll-learn"></a>Ismertetett témák
+## <a name="what-youll-learn"></a>Ismertetett témák
 Az útmutató a következő feladatok elvégzését mutatja be:
 
 1. Media Services-fiók létrehozása (az Azure Portal használatával).
@@ -67,7 +71,7 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
    
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
    2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
-   3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../resource-group-overview.md#resource-groups) talál.
+   3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../azure-resource-manager/resource-group-overview.md#resource-groups) talál.
    4. A **Hely** részben válassza ki azt a földrajzi régiót, amelyben tárolni kívánja a Media Services-fiókhoz tartozó adathordozó- és metaadatrekordokat. A rendszer ezen régió alapján fogja feldolgozni, illetve streamelni az adathordozót. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. 
    5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
       
@@ -113,7 +117,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
 1. Hozzon létre egy új C#-konzolalkalmazást a Visual Studio 2013, Visual Studio 2012 vagy Visual Studio 2010 SP1 használatával. Adja meg a **nevét**, a **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 2. A [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) NuGet-csomag használatával telepítse az **Azure Media Services .NET SDK-bővítményeket**.  A Media Services .NET SDK-bővítmények között olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és megkönnyítik a Media Services használatával történő fejlesztést. Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
 3. Adjon hozzá egy, a System.Configuration szerelvényre mutató hivatkozást. Ez a szerelvény tartalmazza a **System.Configuration.ConfigurationManager** osztályt, amely a konfigurációs fájlok, például az App.config eléréséhez használatos.
-4. Nyissa meg az App.config fájlt (ha nem lett alapértelmezés szerint hozzáadva a projekthez, akkor adja hozzá), és adjon hozzá a fájlhoz egy *appSettings* szakaszt. Adja meg az Azure Media Services-fiókjához tartozó név és fiókkulcs értékeket, a következő példában bemutatott módon. A fiókhoz tartozó név és fiókkulcs információk megtekintéséhez nyissa meg a klasszikus Azure portált, válassza a Media Services-fiókját, majd kattintson a **MANAGE KEYS** (KULCSOK KEZELÉSE) gombra.
+4. Nyissa meg az App.config fájlt (ha nem lett alapértelmezés szerint hozzáadva a projekthez, akkor adja hozzá), és adjon hozzá a fájlhoz egy *appSettings* szakaszt. Adja meg az Azure Media Services-fiókjához tartozó név és fiókkulcs értékeket, a következő példában bemutatott módon. A fiók neve és a legfontosabb információk beszerzéséhez látogasson el az [Azure-portálra](https://portal.azure.com/), és válassza ki AMS-fiókját. Ezután válassza a **Beállítások** > **Kulcsok** lehetőséget. A Kulcsok kezelése ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot.
    
         <configuration>
         ...
@@ -408,13 +412,13 @@ A videótovábbításhoz használja az [Azure Media Services Player](http://amsp
 
 A progresszív letöltés teszteléséhez másoljon egy URL-címet a böngészőjébe (például az Internet Explorerbe, Chrome-ba vagy Safariba).
 
-## <a name="next-steps:-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
+## <a name="next-steps-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else?"></a>Valami mást keres?
+### <a name="looking-for-something-else"></a>Valami mást keres?
 Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
 
 <!-- Anchors. -->
@@ -426,6 +430,6 @@ Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a t�
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

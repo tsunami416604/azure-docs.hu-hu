@@ -1,12 +1,12 @@
 ---
-title: A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása | Microsoft Docs
-description: Állítson be egy helyi Service Fabric-fürtöt, helyezzen üzembe rajta egy meglévő alkalmazást, majd frissítse az adott alkalmazást.
+title: "A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása | Microsoft Docs"
+description: "Állítson be egy helyi Service Fabric-fürtöt, helyezzen üzembe rajta egy meglévő alkalmazást, majd frissítse az adott alkalmazást."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2016
 ms.author: ryanwi;mikhegn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 515daddf2c118f26721a557b0caf5d5415cb22c5
+
 
 ---
-# A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
+# <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
 Az Azure Service Fabric SDK teljes helyi fejlesztőkörnyezetet tartalmaz, amely segítségével gyorsan megismerkedhet a helyi fürtön lévő alkalmazások üzembe helyezésével és kezelésével. Ebben a cikkben létrehoz egy helyi fürtöt, üzembe helyez rajta egy meglévő alkalmazást, majd új verzióra frissíti, és mindezt a Windows PowerShellből fogja elvégezni.
 
 > [!NOTE]
@@ -24,7 +28,7 @@ Az Azure Service Fabric SDK teljes helyi fejlesztőkörnyezetet tartalmaz, amely
 > 
 > 
 
-## Helyi fürt létrehozása
+## <a name="create-a-local-cluster"></a>Helyi fürt létrehozása
 A Service Fabric-fürt olyan hardver-erőforrások készletét képviseli, amelyeken alkalmazásokat helyezhet üzembe. Egy fürt általában tetszőleges számú gépből épül fel, a számuk öttől akár több ezerig terjedhet. A Service Fabric azonban SDK olyan fürtkonfigurációt tartalmaz, amely csak egyetlen gépen futhat.
 
 Fontos tisztában lenni azzal, hogy a Service Fabric helyi fürtje nem emulátor vagy szimulátor. Ugyanazt a platformkódot futtatja, mint ami a több számítógépes fürtökön található. Az egyetlen különbség, hogy az általában öt számítógép között elosztott platformfolyamatokat egyetlen számítógépen futtatja.
@@ -49,7 +53,7 @@ Az SDK két lehetőséget biztosít a helyi fürt beállításához: egy Windows
    
     Most már készen arra, hogy megpróbáljon üzembe helyezni egy alkalmazást a fürtön.
 
-## Alkalmazás üzembe helyezése
+## <a name="deploy-an-application"></a>Alkalmazás üzembe helyezése
 A Service Fabric SDK az alkalmazások létrehozásához szükséges keretrendszerek és fejlesztőeszközök gazdag készletét tartalmazza. Ha meg szeretné ismerni az alkalmazások létrehozási módját a Visual Studióban, tekintse meg [Az első Service Fabric-alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md) témakört.
 
 Ebben az oktatóanyagban egy meglévő mintaalkalmazást (a neve WordCount) használunk, így a platformkezelési szempontokra (például üzembe helyezés, figyelés és frissítés) összpontosíthatunk.
@@ -89,7 +93,7 @@ Ebben az oktatóanyagban egy meglévő mintaalkalmazást (a neve WordCount) hasz
    
     Az üzembe helyezett alkalmazás négy partíciót tartalmaz. Az A–G kezdetű szavak az első partícióban, a H–N kezdetű szavak a második partícióban vannak tárolva és így tovább.
 
-## Az alkalmazás részleteinek és állapotának megtekintése
+## <a name="view-application-details-and-status"></a>Az alkalmazás részleteinek és állapotának megtekintése
 Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alkalmazás egyes részleteit.
 
 1. A fürt összes üzembe helyezett alkalmazásának lekérdezése:
@@ -129,7 +133,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
    > 
    > 
 
-## Alkalmazás frissítése
+## <a name="upgrade-an-application"></a>Alkalmazás frissítése
 A Service Fabric állásidő nélküli frissítéseket biztosít az alkalmazás állapotának figyelésével, miközben megtörténik a bevezetése az egész fürtön. Végezzük el a WordCount alkalmazás egyszerű frissítését.
 
 Az alkalmazás új verziója kizárólag a magánhangzóval kezdődő szavakat számolja össze. A frissítés előre haladtával két változást vehet észre az alkalmazás viselkedésében. Az első az a sebesség, amelynél a számok növekedésének le kell lassulnia, mivel kevesebb szót kell megszámolni. A második, mivel az első partíció két magánhangzót tartalmaz (A és E), és az összes többi partíció mindegyike csak egyet, az első partíciónál a szám gyorsabban fog növekedni, mint a többinél.
@@ -162,7 +166,7 @@ Az alkalmazás új verziója kizárólag a magánhangzóval kezdődő szavakat s
    
     ![Az alkalmazás új verziójának megtekintése a böngészőben][deployed-app-ui-v2]
 
-## Takarítás
+## <a name="cleaning-up"></a>Takarítás
 A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. Az alkalmazások futtatása azonban a háttérben tovább folytatódik mindaddig, amíg el nem távolítja azokat.  Az alkalmazások jellegétől függően azok jelentős erőforrásokat is igénybe vehetnek a gépen. Az alkalmazás és a fürt kezelésére számos lehetősége van:
 
 1. Egyedi alkalmazások és azok adatainak eltávolításához futtassa a következőket:
@@ -185,7 +189,7 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. Az alka
 3. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
 4. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A helyi fürtöt csak abban az esetben távolítsa el, ha egy ideig nem kívánja azt használni, vagy ha erőforrásokat kíván felszabadítani.
 
-## 1 csomópontos és 5 csomópontos fürt üzemmód
+## <a name="1-node-and-5-node-cluster-mode"></a>1 csomópontos és 5 csomópontos fürt üzemmód
 Amikor az alkalmazások fejlesztéséhez a helyi fürtöt használja, gyakran elvégzi a következő műveletsorok gyors ismétlését: kódírás, hibakeresés, kódmódosítás, hibakeresés stb. A folyamat optimalizálása érdekében a helyi fürt két üzemmódban futtatható: 1 csomópontos vagy 5 csomópontos üzemmódban. Mindkét fürt üzemmódnak megvannak az előnyei.
 Az 5 csomópontos fürt üzemmód lehetővé teszi egy valós fürt használatát. Tesztelheti a feladatátvételi forgatókönyveket, a szolgáltatások több példányát és replikáját használhatja.
 Az 1 csomópontos fürt üzemmód a szolgáltatások gyors üzembe helyezésére és regisztrációjára van optimalizálva, és segít a Service Fabric futtatókörnyezetével történő gyors kódérvényesítésben.
@@ -219,7 +223,7 @@ Ha a Service Fabric Local Cluster Managert használja:
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Most, hogy már üzembe helyezett és frissített néhány előre létrehozott alkalmazást, [megpróbálhatja felépíteni a saját alkalmazását a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md).
 * A jelen cikkben a helyi fürttel elvégzett összes művelet elvégezhető egy [Azure-fürttel](service-fabric-cluster-creation-via-portal.md) is.
 * A jelen cikkben végrehajtott frissítés alapszintű volt. A Service Fabric frissítéskezelésének hatékonyságát és rugalmasságát a [frissítési dokumentációból](service-fabric-application-upgrade.md) ismerheti meg.
@@ -246,6 +250,6 @@ Ha a Service Fabric Local Cluster Managert használja:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

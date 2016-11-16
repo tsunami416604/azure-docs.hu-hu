@@ -12,6 +12,8 @@
 5. Kattintson fent a **Cloud Messaging** fülre. 
 6. Jegyezze fel a **Server key** (Kiszolgálói kulcs) és a **Sender ID** (Feladóazonosító) értékét, mivel ezekre majd szükség lesz az *Android-jegyzékfájlban*.  
 
-<!--HONumber=Oct16_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

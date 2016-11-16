@@ -26,11 +26,12 @@
 ### [Az automatikus skálázás hibáinak elhárítása](virtual-machine-scale-sets-troubleshoot.md)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [Méretezési csoport REST API-ja](/rest/api/compute/virtualmachinescalesets)
-## [Méretezési csoport virtuális gépeinek REST API-ja](/rest/api/compute/virtualmachinescalesetvms)
-## [Azure PowerShell](/powershell/resourcemanager/)
-## [Azure-sablonok](https://azure.microsoft.com/documentation/templates/?term=vmss)
+## [REST](/rest/api/compute/)
+
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 
 
 <!--HONumber=Nov16_HO2-->

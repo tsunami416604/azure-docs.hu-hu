@@ -1,13 +1,13 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés az Azure Automationben | Microsoft Docs
-description: A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben.
+title: "Szerepköralapú hozzáférés-vezérlés az Azure Automationben | Microsoft Docs"
+description: "A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: mgoedtel
 manager: jwhit
 editor: tysonn
-keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
-
+keywords: "automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac"
+ms.assetid: 04b5625e-0ee8-4b5b-85cd-7734c1b3d4a3
 ms.service: automation
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;sngun
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9fff24dfd2b20a785c6046b6c9700b583c309de4
+
 
 ---
-# Szerepköralapú hozzáférés-vezérlés az Azure Automationben
-## Szerepköralapú hozzáférés-vezérlés
+# <a name="rolebased-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
+## <a name="rolebased-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az [RBAC](../active-directory/role-based-access-control-configure.md) használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amely a felhasználóknak a feladataik elvégzéséhez szükséges. A szerepköralapú hozzáférés az Azure portál, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
 
-## RBAC Automation-fiókokban
+## <a name="rbac-in-automation-accounts"></a>RBAC Automation-fiókokban
 Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szerepkörök rendelhetők az Automation-fiók tartományában lévő felhasználókhoz, csoportokhoz és alkalmazásokhoz. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:  
 
 | **Szerepkör** | **Leírás** |
@@ -39,7 +43,7 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 
 Ebben a cikkben bemutatjuk az RBAC beállítását az Azure Automationben. Elsőként tekintse meg a Közreműködő, Olvasó, Automation-operátor és Felhasználói hozzáférés rendszergazdája számára biztosított egyéni engedélyeket, így elmélyítheti a tudását, mielőtt hozzáférést biztosítana másoknak az Automation-fiókhoz.  Ha ezt elmulasztja, a hozzáférés biztosítása nem tervezett és nem kívánt következményekkel járhat.     
 
-## Közreműködői szerepkör engedélyei
+## <a name="contributor-role-permissions"></a>Közreműködői szerepkör engedélyei
 A következő táblázat azokat a műveleteket mutatja be, amelyeket a Közreműködő szerepkörrel végezhet el az Automationban.
 
 | **Erőforrás típusa** | **Olvasás** | **Írás** | **Törlés** | **Egyéb műveletek** |
@@ -62,7 +66,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Közremű
 | Automation-runbookvázlat tesztfeladat |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |
 | Automation-webhook |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) |
 
-## Olvasói szerepkör engedélyei
+## <a name="reader-role-permissions"></a>Olvasói szerepkör engedélyei
 A következő táblázat azokat a műveleteket mutatja be, amelyeket az Olvasói szerepkörrel végezhet el az Automationban.
 
 | **Erőforrás típusa** | **Olvasás** | **Írás** | **Törlés** | **Egyéb műveletek** |
@@ -74,7 +78,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket az Olvasói
 | Szerepkör-kijelölés |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 | Szerepkör-definíció |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
-## Automation-operátori szerepkör engedélyei
+## <a name="automation-operator-role-permissions"></a>Automation-operátori szerepkör engedélyei
 A következő táblázat azokat a műveleteket mutatja be, amelyeket az Automation-operátor szerepkörrel végezhet el az Automationban.
 
 | **Erőforrás típusa** | **Olvasás** | **Írás** | **Törlés** | **Egyéb műveletek** |
@@ -99,7 +103,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket az Automati
 
 Az [Automation-operátori műveletek](../active-directory/role-based-access-built-in-roles.md#automation-operator) az Automation-operátori szerepkör által az Automation-fiókon és az erőforrásokon támogatott műveleteket is felsorolja.
 
-## Felhasználói hozzáférés rendszergazdája szerepkör engedélyei
+## <a name="user-access-administrator-role-permissions"></a>Felhasználói hozzáférés rendszergazdája szerepkör engedélyei
 A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhasználói hozzáférés rendszergazdája szerepkörrel végezhet el az Automationban.
 
 | **Erőforrás típusa** | **Olvasás** | **Írás** | **Törlés** | **Egyéb műveletek** |
@@ -122,7 +126,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
 | Automation-runbookvázlat tesztfeladat |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 | Automation-webhook |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
-## Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure portál segítségével
+## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure portál segítségével
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok panelről.  
 2. Kattintson a jobb felső sarokban található **Hozzáférés** vezérlőre. Ezzel megnyitja a **Felhasználók** panelt, ahol hozzáadhat új felhasználókat, csoportokat vagy alkalmazásokat az Automation-fiók kezeléséhez, és megtekintheti a meglévő szerepköröket, amelyek konfigurálhatók az Automation-fiókhoz.  
    
@@ -133,7 +137,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
 > 
 > 
 
-### Új felhasználó hozzáadása és szerepkör hozzárendelése
+### <a name="add-a-new-user-and-assign-a-role"></a>Új felhasználó hozzáadása és szerepkör hozzárendelése
 1. A Felhasználók panelen a **Hozzáadás** gombra kattintva nyissa meg a **Hozzáférés felvétele panelt**, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, majd hozzájuk rendelhet egy szerepkört.  
    
    ![Felhasználó hozzáadása](media/automation-role-based-access-control/automation-02-add-user.png)  
@@ -162,7 +166,7 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
    
     ![Több szerepkör megtekintése](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)  
 
-### Felhasználó eltávolítása
+### <a name="remove-a-user"></a>Felhasználó eltávolítása
 Eltávolíthatja az Automation-fiókot nem kezelő, illetve már nem a szervezetnek dolgozó felhasználó engedélyeit. Alább láthatók egy felhasználó eltávolításának lépései: 
 
 1. A **Felhasználók** panelen válassza ki az eltávolítani kívánt szerepkört.
@@ -171,12 +175,12 @@ Eltávolíthatja az Automation-fiókot nem kezelő, illetve már nem a szervezet
    
    ![Felhasználók eltávolítása](media/automation-role-based-access-control/automation-08-remove-users.png)  
 
-## Szerepkörrel ellátott felhasználó
+## <a name="role-assigned-user"></a>Szerepkörrel ellátott felhasználó
 Ha egy szerepkörhöz rendelt felhasználó bejelentkezik az Automation-fiókjába, a tulajdonos fiókja immár megjelenik az **Alapértelmezett könyvtárak** listájában. Ha meg szeretnék tekinteni az Automation-fiókot, amelyhez hozzá lettek adva, az alapértelmezett könyvtárat át kell váltani a tulajdonos alapértelmezett könyvtárára.  
 
 ![Alapértelmezett könyvtár](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)  
 
-### Automation-operátori szerepkör felhasználói élménye
+### <a name="user-experience-for-automation-operator-role"></a>Automation-operátori szerepkör felhasználói élménye
 Ha egy Automation-operátori szerepkörrel felruházott felhasználó megtekinti a számára kijelölt Automation-fiókot, csak az Automation-fiókban létrehozott forgatókönyvek, forgatókönyv-feladatok és -ütemezések listáját látja, de a definíciójukat nem. Elindíthatják, leállíthatják, felfüggeszthetik, folytathatják és ütemezhetik a forgatókönyv-feladatokat. A felhasználó nem fog hozzáférni az Automation-erőforrásokhoz, például konfigurációkhoz, hibrid munkacsoportokhoz vagy DSC-csomópontokhoz.  
 
 ![Nincs hozzáférése az erőforrásokhoz](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)  
@@ -193,11 +197,11 @@ Ennek a felhasználónak nincs jogosultsága megtekinteni a forgatókönyvekhez 
 
 ![Nincs hozzáférése a webhookokhoz](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)  
 
-## Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure PowerShellel
+## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure PowerShellel
 A szerepköralapú hozzáférés konfigurálható egy Automation-fiókra az alábbi [Azure PowerShell-parancsmagokkal](../active-directory/role-based-access-control-manage-access-powershell.md).
 
 • A [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) felsorolja az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsot használhatja a **Name** (Név) tulajdonsággal, ha fel szeretné sorolni az összes műveletet, amelyet egy adott szerepkörrel lehet elvégezni.  
-    **Példa:**  
+    **Példa**  
     ![Szerepkör-definíció lekérése](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)  
 
 • A [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) felsorolja a megadott tartomány Azure AD RBAC szerepkör-hozzárendeléseit. Paraméterek nélkül ez a parancs az előfizetéshez tartozó összes szerepkör-hozzárendelést visszaadja. Az **ExpandPrincipalGroups** paraméter segítségével felsorolhatja egy adott felhasználó vagy a felhasználó csoportjának összes hozzáférés-hozzárendelését.  
@@ -221,11 +225,14 @@ A szerepköralapú hozzáférés konfigurálható egy Automation-fiókra az alá
 
 A fenti példákban cserélje ki a **bejelentkezési azonosítót**, az **előfizetés azonosítóját**, az **erőforráscsoport nevét** és az **Automation-fiók nevét** a saját fiókja adataira. Ha a rendszer rákérdez, hogy tényleg szeretné-e törölni a szerepkör-hozzárendelést, kattintson az **Igen** gombra.   
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../active-directory/role-based-access-control-manage-access-powershell.md) foglalkozó témakört.
 * További információk a forgatókönyvek elindításának különböző módjairól: [Forgatókönyv elindítása](automation-starting-a-runbook.md).
 * További információk a különböző forgatókönyv-típusokról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

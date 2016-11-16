@@ -1,113 +1,117 @@
 ---
-title: Protect your API with Azure API Management | Microsoft Docs
-description: Learn how to protect your API with quotas and throttling (rate-limiting) policies.
+title: "Az API-k védelme az Azure API Management szolgáltatással | Microsoft Docs"
+description: "Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
+
 
 ---
-# Protect your API with rate limits using Azure API Management
-This guide shows you how easy it is to add protection for your backend API by configuring rate limit and quota policies with Azure API Management.
+# <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Az API-k védelme sebességkorlátokkal az Azure API Management használatával
+Ez az útmutató ismerteti, milyen könnyen adhat védelmet a háttérrendszerben futó API-khoz az Azure API Management szolgáltatásban a sebességkorlát- és kvótaházirendek konfigurálásával.
 
-In this tutorial, you will create a "Free Trial" API product that allows developers to make up to 10 calls per minute and up to a maximum of 200 calls per week to your API using the [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies. You will then publish the API and test the rate limit policy.
+Ebben az oktatóanyagban létre fog hozni egy „Ingyenes próbaverzió” API-terméket, amely lehetővé teszi a fejlesztők számára, hogy percenként 10 hívást, hetente pedig legfeljebb 200 hívást indítsanak az API felé a [Hívások sebességének korlátozása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és a [Használati kvóta beállítása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) házirendek használatával. Ezután közzéteszi az API-t és teszteli a sebességkorlátozási házirendet.
 
-For more advanced throttling scenarios using the [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) and [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) policies, see [Advanced request throttling with Azure API Management](api-management-sample-flexible-throttling.md).
+A [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) és a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) házirendeket használó speciálisabb szabályozási forgatókönyvekért tekintse meg a [Speciális kérésszabályzás az Azure API Management szolgáltatással](api-management-sample-flexible-throttling.md) szakaszt.
 
-## <a name="create-product"> </a>To create a product
-In this step, you will create a Free Trial product that does not require subscription approval.
+## <a name="create-product"> </a>Termék létrehozása
+Ebben a lépésben létrehoz egy Ingyenes próbaverzió terméket, amely nem igényel jóváhagyott előfizetést.
 
 > [!NOTE]
-> If you already have a product configured and want to use it for this tutorial, you can jump ahead to [Configure call rate limit and quota policies][Configure call rate limit and quota policies] and follow the tutorial from there using your product in place of the Free Trial product.
+> Ha már konfigurált egy terméket, és azt szeretné használni az oktatóanyaghoz, továbbléphet [A hívások sebességének korlátozása és a kvótaházirendek konfigurálása][A hívások sebességének korlátozása és a kvótaházirendek konfigurálása] című lépésre, és onnan már az Ingyenes próbaverzió termék helyett a saját termékével követheti az oktatóanyagot.
 > 
 > 
 
-To get started, click **Manage** in the Azure Classic for your API Management service. This takes you to the API Management publisher portal.
+Első lépésként kattintson a **Közzétevő portál** elemre az API Management szolgáltatás Azure Portalján.
 
-![Publisher portal][api-management-management-console]
+![Közzétevő portál][api-management-management-console]
 
-> If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in the [Manage your first API in Azure API Management][Manage your first API in Azure API Management] tutorial.
+> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [Az első API kezelése az Azure API Management szolgáltatásban][Az első API kezelése az Azure API Management szolgáltatásban] oktatóanyag [API Management szolgáltatáspéldány létrehozása][API Management szolgáltatáspéldány létrehozása] című szakaszát.
 > 
 > 
 
-Click **Products** in the **API Management** menu on the left to display the **Products** page.
+Kattintson a bal oldali **API Management** menü **Termékek** lehetőségére a **Termékek** oldal megjelenítéséhez.
 
-![Add product][api-management-add-product]
+![Termék hozzáadása][api-management-add-product]
 
-Click **Add product** to display the **Add new product** dialog box.
+Kattintson a **Termék hozzáadása** lehetőségre az **Új termék hozzáadása** párbeszédpanel megjelenítéséhez.
 
-![Add new product][api-management-new-product-window]
+![Új termék hozzáadása][api-management-new-product-window]
 
-In the **Title** box, type **Free Trial**.
+A **Cím** mezőbe írja be az **Ingyenes próbaverzió** kifejezést.
 
-In the **Description** box, type the following text:  **Subscribers will be able to run 10 calls/minute up to a maximum of 200 calls/week after which access is denied.**
+A **Leírás** mezőbe írja be az alábbi szöveget:  **Az előfizetők percenként 10 hívást indíthatnak, hetente pedig akár 200 hívást, ami után meg lesz tagadva a hozzáférés.**
 
-Products in API Management can be protected or open. Protected products must be subscribed to before they can be used. Open products can be used without a subscription. Ensure that **Require subscription** is selected to create a protected product that requires a subscription. This is the default setting.
+Az API Management termékei védettek vagy nyitottak lehetnek. A védett termékeket csak az előfizetők használhatják. A nyitott termékeket előfizetés nélkül is lehet használni. Győződjön meg arról, hogy az **Előfizetés szükséges** lehetőség ki van választva, ha egy előfizetést igénylő védett terméket kíván létrehozni. Ez az alapértelmezett beállítás.
 
-If you want an administrator to review and accept or reject subscription attempts to this product, select **Require subscription approval**. If the check box is not selected, subscription attempts will be auto-approved. In this example, subscriptions are automatically approved, so do not select the box.
+Ha szeretné, hogy a termékre történő előfizetési kísérleteket egy rendszergazda ellenőrizze, és elfogadja vagy elutasítsa azt, válassza ki a **Előfizetés jóváhagyása szükséges** lehetőséget. Ha a jelölőnégyzet nincs bejelölve, az előfizetési kísérletek automatikusan el lesznek fogadva. Ebben a példában az előfizetések jóváhagyása automatikus, ezért ne jelölje be a jelölőnégyzetet.
 
-To allow developer accounts to subscribe multiple times to the new product, select the **Allow multiple simultaneous subscriptions** check box. This tutorial does not utilize multiple simultaneous subscriptions, so leave it unchecked.
+Ha engedélyezni szeretné a fejlesztői fiókok számára, hogy többször is előfizethessenek egy új termékre, jelölje be a **Több egyidejű előfizetés engedélyezése** jelölőnégyzetet. Ez az oktatóanyag nem használ több egyidejű előfizetést, ezért ne jelölje ezt be.
 
-After all values are entered, click **Save** to create the product.
+Miután az összes értéket megadta, kattintson a **Mentés** gombra a termék létrehozásához.
 
-![Product added][api-management-product-added]
+![Hozzáadott termék][api-management-product-added]
 
-By default, new products are visible to users in the **Administrators** group. We are going to add the **Developers** group. Click **Free Trial**, and then click the **Visibility** tab.
+Alapértelmezés szerint a **Rendszergazdák** csoport tagjai látják az új termékeket. Hozzá fogjuk adni a **Fejlesztők** csoportot. Kattintson az **Ingyenes próbaverzió** lehetőségre, majd kattintson a **Láthatóság** lapra.
 
-> In API Management, groups are used to manage the visibility of products to developers. Products grant visibility to groups, and developers can view and subscribe to the products that are visible to the groups in which they belong. For more information, see [How to create and use groups in Azure API Management][How to create and use groups in Azure API Management].
+> Az API Management szolgáltatásban csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A csoportok számára a termékek biztosítanak láthatóságot, a fejlesztők pedig megtekinthetik a csoportjuk számára látható termékeket és előfizethetnek rájuk. További információkért lásd: [Csoportok létrehozása és használata az Azure API Management szolgáltatásban][Csoportok létrehozása és használata az Azure API Management szolgáltatásban].
 > 
 > 
 
-![Add developers group][api-management-add-developers-group]
+![Fejlesztői csoport hozzáadása][api-management-add-developers-group]
 
-Select the **Developers** check box, and then click **Save**.
+Jelölje be a **Fejlesztők** jelölőnégyzetet, majd kattintson a **Mentés** gombra.
 
-## <a name="add-api"> </a>To add an API to the product
-In this step of the tutorial, we will add the Echo API to the new Free Trial product.
+## <a name="add-api"> </a>API hozzáadása a termékhez
+Az oktatóanyag ezen lépésében hozzáadjuk az Echo API-t az új Ingyenes próbaverzió termékhez.
 
-> Each API Management service instance comes pre-configured with an Echo API that can be used to experiment with and learn about API Management. For more information, see [Manage your first API in Azure API Management][Manage your first API in Azure API Management].
+> Minden API Management szolgáltatáspéldányhoz előre konfigurálva van egy kipróbálható Echo API, amely segít megismerni az API Management szolgáltatást. További információkért lásd: [Az első API kezelése az Azure API Management szolgáltatásban][Az első API kezelése az Azure API Management szolgáltatásban].
 > 
 > 
 
-Click **Products** from the **API Management** menu on the left, and then click **Free Trial** to configure the product.
+Kattintson a bal oldali **API Management** menü **Termékek** elemére, majd kattintson az **Ingyenes próbaverzió** lehetőségre a termék konfigurálásához.
 
-![Configure product][api-management-configure-product]
+![Termék konfigurálása][api-management-configure-product]
 
-Click **Add API to product**.
+Kattintson az **API hozzáadása termékhez** lehetőségre.
 
-![Add API to product][api-management-add-api]
+![API hozzáadása termékhez][api-management-add-api]
 
-Select **Echo API**, and then click **Save**.
+Válassza ki az **Echo API** elemet, majd kattintson a **Mentés** gombra.
 
-![Add Echo API][api-management-add-echo-api]
+![Echo API hozzáadása][api-management-add-echo-api]
 
-## <a name="policies"> </a>To configure call rate limit and quota policies
-Rate limits and quotas are configured in the policy editor. Click **Policies** under the **API Management** menu on the left. In the **Product** list, click **Free Trial**.
+## <a name="policies"> </a>A hívások sebességkorlátozása és a kvótaházirendek konfigurálása
+A sebességkorlátokat és a kvótákat a házirendszerkesztőben lehet konfigurálni. Kattintson a bal oldali **API Management** menü alatt található**Házirendek** lehetőségre. A **Termék** listán kattintson az **Ingyenes próbaverzió** lehetőségre.
 
-![Product policy][api-management-product-policy]
+![Termékházirend][api-management-product-policy]
 
-Click **Add Policy** to import the policy template and begin creating the rate limit and quota policies.
+Kattintson a **Házirend hozzáadása** lehetőségre a házirendsablon importálásához, hogy elkezdje létrehozni a sebességkorlát- és kvótaházirendeket.
 
-![Add policy][api-management-add-policy]
+![Házirend hozzáadása][api-management-add-policy]
 
-To insert policies, position the cursor into either the **inbound** or **outbound** section of the policy template. Rate limit and quota policies are inbound policies, so position the cursor in the inbound element.
+A házirendek beszúrásához vigye a kurzort a házirendsablon **inbound** vagy **outbound** részére. A sebességkorlát- és kvótaházirendek bejövő házirendek, ezért vigye a kurzort az „inbound” elemre.
 
-![Policy editor][api-management-policy-editor-inbound]
+![Házirendszerkesztő][api-management-policy-editor-inbound]
 
-The two policies we are adding in this tutorial are the [Limit call rate per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) and [Set usage quota per subscription](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) policies.
+A két házirend, amelyet ebben az oktatóanyagban hozzáadunk, a [Hívások számának korlátozása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és a [Használati kvóta beállítása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).
 
-![Policy statements][api-management-limit-policies]
+![Házirend-utasítások][api-management-limit-policies]
 
-After the cursor is positioned in the **inbound** policy element, click the arrow beside **Limit call rate per subscription** to insert its policy template.
+Miután a kurzort odavitte az **inbound** házirend elemre, kattintson a **Hívások számának korlátozása előfizetésenként** melletti nyílra a házirendsablon beillesztéséhez.
 
     <rate-limit calls="number" renewal-period="seconds">
     <api name="name" calls="number">
@@ -115,17 +119,17 @@ After the cursor is positioned in the **inbound** policy element, click the arro
     </api>
     </rate-limit>
 
-**Limit call rate per subscription** can be used at the product level and can also be used at the API and individual operation name levels. In this tutorial, only product-level policies are used, so delete the **api** and **operation** elements from the **rate-limit** element, so only the outer **rate-limit** element remains, as shown in the following example.
+A **Hívások számának korlátozása előfizetésenként** házirendet a termék szintjén, valamint az API és az egyéni műveletnév szintjén is lehet használni. Ebben az oktatóanyagban csak termékszintű házirendeket használunk, ezért törölje az **api** és az **operation** elemeket a **rate-limit** elemből, hogy csak a külső **rate-limit** elem maradjon, az alábbi példában látható módon.
 
     <rate-limit calls="number" renewal-period="seconds">
     </rate-limit>
 
-In the Free Trial product, the maximum allowable call rate is 10 calls per minute, so type **10** as the value for the **calls** attribute, and **60** for the **renewal-period** attribute.
+Az Ingyenes próbaverzió termékben a maximálisan engedélyezett hívások száma percenként 10, ezért írjon be **10**-et a **calls** attribútum értékéhez, és **60**-at a **renewal-period** attribútum értékéhez.
 
     <rate-limit calls="10" renewal-period="60">
     </rate-limit>
 
-To configure the **Set usage quota per subscription** policy, position your cursor immediately below the newly added **rate-limit** element within the **inbound** element, and then click the arrow to the left of **Set usage quota per subscription**.
+A **Használati kvóta beállítása előfizetésenként** házirend konfigurálásához vigye a kurzort az újonnan hozzáadott **rate-limit** elem alá az **inbound** elemen belül, majd kattintson a **Használati kvóta beállítása előfizetésenként** házirend melletti nyílra.
 
     <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
     <api name="name" calls="number" bandwidth="kilobytes">
@@ -133,26 +137,26 @@ To configure the **Set usage quota per subscription** policy, position your curs
     </api>
     </quota>
 
-Because this policy is also intended to be at the product level, delete the **api** and **operation** name elements, as shown in the following example.
+Mivel ez a házirend is a termék szintjén működik, törölje az **api** és az **operation** névelemeket az alábbi példában látható módon.
 
     <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
     </quota>
 
-Quotas can be based on the number of calls per interval, bandwidth, or both. In this tutorial, we are not throttling based on bandwidth, so delete the **bandwidth** attribute.
+A kvóták alapulhatnak az időközönként indított hívások számán, a sávszélességen, vagy mindkettőn. Ebben az oktatóanyagban nem a sávszélesség alapján szabályozunk, ezért törölje a **bandwidth** attribútumot.
 
     <quota calls="number" renewal-period="seconds">
     </quota>
 
-In the Free Trial product, the quota is 200 calls per week. Specify **200** as the value for the **calls** attribute, and then specify **604800** as the value for the **renewal-period** attribute.
+Az Ingyenes próbaverzió termékben a kvóta 200 hívás hetente. Adja meg a **200**-at a **calls** attribútum értékeként, majd adja meg a **604800**-at a **renewal-period** attribútum értékeként.
 
     <quota calls="200" renewal-period="604800">
     </quota>
 
-> Policy intervals are specified in seconds. To calculate the interval for a week, you can multiply the number of days (7) by the number of hours in a day (24) by the number of minutes in an hour (60) by the number of seconds in a minute (60): 7 * 24 * 60 * 60 = 604800.
+> A házirendidőközök másodpercekben vannak megadva. A heti időköz kiszámításához szorozza össze a napok számát (7) a nap óráinak számával (24), az óra perceinek számával (60) és a perc másodperceinek számával (60): 7 * 24 * 60 * 60 = 604800.
 > 
 > 
 
-When you have finished configuring the policy, it should match the following example.
+A házirendnek a konfigurálás után meg kell egyeznie az alábbi példával.
 
     <policies>
         <inbound>
@@ -170,86 +174,86 @@ When you have finished configuring the policy, it should match the following exa
         </outbound>
     </policies>
 
-After the desired policies are configured, click **Save**.
+Miután konfigurálta a kívánt házirendeket, kattintson a **Mentés** gombra.
 
-![Save policy][api-management-policy-save]
+![Házirend mentése][api-management-policy-save]
 
-## <a name="publish-product"> </a> To publish the product
-Now that the the APIs are added and the policies are configured, the product must be published so that it can be used by developers. Click **Products** from the **API Management** menu on the left, and then click **Free Trial** to configure the product.
+## <a name="publish-product"> </a>A termék közzététele
+Most, hogy hozzáadta az API-kat és konfigurálta a házirendeket, közzé kell tenni a terméket, hogy a fejlesztők használhassák. Kattintson a bal oldali **API Management** menü **Termékek** elemére, majd kattintson az **Ingyenes próbaverzió** lehetőségre a termék konfigurálásához.
 
-![Configure product][api-management-configure-product]
+![Termék konfigurálása][api-management-configure-product]
 
-Click **Publish**, and then click **Yes, publish it** to confirm.
+Kattintson a **Közzététel** elemre, majd kattintson az **Igen, közzéteszem** lehetőségre a megerősítéshez.
 
-![Publish product][api-management-publish-product]
+![Termék közzététele][api-management-publish-product]
 
-## <a name="subscribe-account"> </a>To subscribe a developer account to the product
-Now that the product is published, it is available to be subscribed to and used by developers.
+## <a name="subscribe-account"> </a>Előfizetés a termékre egy fejlesztői fiók nevében
+Most, hogy a termék közzé lett téve, a fejlesztők elő tudnak rá fizetni és használni tudják.
 
-> Administrators of an API Management instance are automatically subscribed to every product. In this tutorial step, we will subscribe one of the non-administrator developer accounts to the Free Trial product. If your developer account is part of the Administrators role, then you can follow along with this step, even though you are already subscribed.
+> Az API Management példányok rendszergazdái automatikusan előfizetnek az összes termékre. Az oktatóanyag ezen lépésében elő fogunk fizetni az egyik nem rendszergazdai fejlesztői fiókkal az Ingyenes próbaverzió termékre. Ha a fejlesztői fiókja a rendszergazdai szerepkör része, követheti a lépés utasításait, akkor is, ha már előfizetett.
 > 
 > 
 
-Click **Users** on the **API Management** menu on the left, and then click the name of your developer account. In this example, we are using the **Clayton Gragg** developer account.
+Kattintson a bal oldali **API Management** menü **Felhasználók** lehetőségére, majd kattintson a fejlesztői fiókja nevére. Ebben a példában a **Clayton Gragg** fejlesztői fiókot használjuk.
 
-![Configure developer][api-management-configure-developer]
+![Fejlesztő konfigurálása][api-management-configure-developer]
 
-Click **Add Subscription**.
+Kattintson az **Előfizetés hozzáadása** lehetőségre.
 
-![Add subscription][api-management-add-subscription-menu]
+![Előfizetés hozzáadása][api-management-add-subscription-menu]
 
-Select **Free Trial**, and then click **Subscribe**.
+Válassza ki az **Ingyenes próbaverzió** elemet, majd kattintson az **Előfizetés** lehetőségre.
 
-![Add subscription][api-management-add-subscription]
+![Előfizetés hozzáadása][api-management-add-subscription]
 
 > [!NOTE]
-> In this tutorial, multiple simultaneous subscriptions are not enabled for the Free Trial product. If they were, you would be prompted to name the subscription, as shown in the following example.
+> Ebben az oktatóanyagban az Ingyenes próbaverzió terméknél nincs engedélyezve a több egyidejű előfizetés. Ha engedélyezve lenne, a rendszer megkérné, hogy nevezze el az előfizetést az alábbi példában látható módon.
 > 
 > 
 
-![Add subscription][api-management-add-subscription-multiple]
+![Előfizetés hozzáadása][api-management-add-subscription-multiple]
 
-After clicking **Subscribe**, the product appears in the **Subscription** list for the user.
+Miután az **Előfizetés** lehetőségre kattint, a termék megjelenik a felhasználó számára az **Előfizetés** listán.
 
-![Subscription added][api-management-subscription-added]
+![Előfizetés hozzáadva][api-management-subscription-added]
 
-## <a name="test-rate-limit"> </a>To call an operation and test the rate limit
-Now that the Free Trial product is configured and published, we can call some operations and test the rate limit policy.
-Switch to the developer portal by clicking **Developer portal** in the upper-right menu.
+## <a name="test-rate-limit"> </a>Művelet meghívása és a sebességkorlátozás tesztelése
+Most, hogy konfigurálta és közzétette az Ingyenes próbaverzió terméket, meghívhatunk néhány műveletet, és tesztelhetjük a sebességkorlát-házirendet.
+Váltson át a fejlesztői portálra a jobb felső menü **Fejlesztői portál** lehetőségére kattintva.
 
-![Developer portal][api-management-developer-portal-menu]
+![Fejlesztői portál][api-management-developer-portal-menu]
 
-Click **APIs** in the top menu, and then click **Echo API**.
+Kattintson az **API-k** elemre a felső menüben, majd kattintson az **Echo API** lehetőségre.
 
-![Developer portal][api-management-developer-portal-api-menu]
+![Fejlesztői portál][api-management-developer-portal-api-menu]
 
-Click **GET Resource**, and then click **Try it**.
+Kattintson a **GET Resource** elemre, majd kattintson a **Kipróbálom** gombra.
 
-![Open console][api-management-open-console]
+![Konzol megnyitása][api-management-open-console]
 
-Keep the default parameter values, and then select your subscription key for the Free Trial product.
+Tartsa meg az alapértelmezett paraméterértékeket, majd válassza ki az Ingyenes próbaverzió termék előfizetői azonosítóját.
 
-![Subscription key][api-management-select-key]
+![Előfizetői azonosító][api-management-select-key]
 
 > [!NOTE]
-> If you have multiple subscriptions, be sure to select the key for **Free Trial**, or else the policies that were configured in the previous steps won't be in effect.
+> Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy az **Ingyenes próbaverzió** azonosítóját választja, különben az előző lépésekben konfigurált házirendek nem lesznek érvényben.
 > 
 > 
 
-Click **Send**, and then view the response. Note the **Response status** of **200 OK**.
+Kattintson a **Küldés** gombra, majd tekintse meg a választ. Figyelje meg, hogy a **Válaszállapot****200 OK**.
 
-![Operation results][api-management-http-get-results]
+![A művelet eredményei][api-management-http-get-results]
 
-Click **Send** at a rate greater than the rate limit policy of 10 calls per minute. After the rate limit policy is exceeded, a response status of **429 Too Many Requests** is returned.
+Kattintson a **Küldés** gombra egy olyan értékkel, amely meghaladja a 10 hívás percenként sebességkorláti házirendet. Ha túllépi a sebességkorlát-házirend értékét, a rendszer a **429 Too Many Requests** válaszállapotot küldi vissza.
 
-![Operation results][api-management-http-get-429]
+![A művelet eredményei][api-management-http-get-429]
 
-The **Response content** indicates the remaining interval before retries will be successful.
+A **Válasz tartalma** jelzi a hátralévő időközt, amely leteltével az újrapróbálkozások sikeresek lesznek.
 
-When the rate limit policy of 10 calls per minute is in effect, subsequent calls will fail until 60 seconds have elapsed from the first of the 10 successful calls to the product before the rate limit was exceeded. In this example, the remaining interval is 54 seconds.
+Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a későbbi hívások sikertelenek lesznek, amíg el nem telik 60 másodperc a sebességkorlát átlépése előtti 10 sikeres termékhívás első hívását követően. Ebben a példában a hátralévő időköz 54 másodperc.
 
-## <a name="next-steps"> </a>Next steps
-* Watch a demo of setting rate limits and quotas in the following video.
+## <a name="next-steps"> </a>Következő lépések
+* A sebességkorlátok és a kvóták beállításáról az alábbi videó kínál egy bemutatót.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -282,30 +286,30 @@ When the rate limit policy of 10 calls per minute is in effect, subsequent calls
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
-[Monitoring and analytics]: ../api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
-[Publish a product]: api-management-howto-add-products.md#publish-product
-[Manage your first API in Azure API Management]: api-management-get-started.md
-[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
-[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
-[Get started with Azure API Management]: api-management-get-started.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
-[Next steps]: #next-steps
+[Műveletek hozzáadása API-khoz]: api-management-howto-add-operations.md
+[Termék hozzáadása és közzététele]: api-management-howto-add-products.md
+[Figyelés és elemzés]: ../api-management-monitoring.md
+[API-k hozzáadása termékekhez]: api-management-howto-add-products.md#add-apis
+[Termék közzététele]: api-management-howto-add-products.md#publish-product
+[Az első API kezelése az Azure API Management szolgáltatásban]: api-management-get-started.md
+[Csoportok létrehozása és használata az Azure API Management szolgáltatásban]: api-management-howto-create-groups.md
+[Termék előfizetőinek megtekintése]: api-management-howto-add-products.md#view-subscribers
+[Ismerkedés az Azure API Management szolgáltatással]: api-management-get-started.md
+[API Management szolgáltatáspéldány létrehozása]: api-management-get-started.md#create-service-instance
+[Következő lépések]: #next-steps
 
-[Create a product]: #create-product
-[Configure call rate limit and quota policies]: #policies
-[Add an API to the product]: #add-api
-[Publish the product]: #publish-product
-[Subscribe a developer account to the product]: #subscribe-account
-[Call an operation and test the rate limit]: #test-rate-limit
+[Termék létrehozása]: #create-product
+[A hívások sebességének korlátozása és a kvótaházirendek konfigurálása]: #policies
+[API hozzáadása a termékhez]: #add-api
+[A termék közzététele]: #publish-product
+[Előfizetés a termékre egy fejlesztői fiók nevében]: #subscribe-account
+[Művelet meghívása és a sebességkorlátozás tesztelése]: #test-rate-limit
 
-[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[A hívások sebességének korlátozása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[Használati kvóta beállítása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,8 +1,12 @@
-The following tasks will be done in this scenario:
+Ebben a forgatókönyvben a következő feladatokat végezheti el:
 
-* Create a load balancer that receives network traffic on port 80 and send load-balanced traffic to virtual machines "web1" and "web2"
-* Create NAT rules for remote desktop access/SSH for virtual machines behind the load balancer
-* Create health probes
+* Olyan terheléselosztó létrehozása, amely a 80-as porton fogadja a hálózati adatokat, és az elosztott terhelésű forgalmat a „web1” és „web2” nevű virtuális gépekre küldi
+* A terheléselosztó mögötti virtuális gépekhez tartozó távoli asztali hozzáférés/SSH NAT-szabályainak létrehozása
+* Állapotminták létrehozása
 
-![Load balancer scenario](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
+![Terheléselosztói forgatókönyv](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
+
+
+<!--HONumber=Nov16_HO2-->
+
 

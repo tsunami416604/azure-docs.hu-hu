@@ -1,22 +1,26 @@
 ---
-title: WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egy új Azure-webalkalmazást egy WordPress-bloghoz az Azure Portal használatával.
+title: "WordPress-webalkalmazás létrehozása az Azure App Service-ben | Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre egy új Azure-webalkalmazást egy WordPress-bloghoz az Azure Portal használatával."
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 193ae094-0d7c-4749-a09b-ff4b1240149e
 ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: hero-article
-ms.date: 08/11/2016
+ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0bb3fcf1963819b5e8787c042fa895348dc69e12
+
 
 ---
-# WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban
+# <a name="create-a-wordpress-web-app-in-azure-app-service"></a>WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 A jelen oktatóanyag egy Azure Piactérről származó WordPress-blogwebhely üzembe helyezését mutatja be.
@@ -42,7 +46,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 > 
 > 
 
-## Válassza ki a WordPresst, és konfigurálja azt az Azure App Service-hez
+## <a name="select-wordpress-and-configure-for-azure-app-service"></a>Válassza ki a WordPresst, és konfigurálja azt az Azure App Service-hez
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson az **Új** lehetőségre.
    
@@ -59,10 +63,10 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 6. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni kívánja. 
 7. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
    
-    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
+    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 8. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
    
-    További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) 
+    További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)    
 9. Kattintson a **Database**(Adatbázis) elemre, majd az **New MySQL Database** (Új MySQL-adatbázis) panelen adja meg a MySQL-adatbázis konfigurálásához szükséges értékeket.
    
     a. Írjon be egy új nevet, vagy hagyja meg az alapértelmezett nevet.
@@ -81,7 +85,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
     
      ![Folyamatjelző](./media/web-sites-php-web-site-gallery/progress.png)
 
-## A WordPress-webalkalmazás elindítása és kezelése
+## <a name="launch-and-manage-your-wordpress-web-app"></a>A WordPress-webalkalmazás elindítása és kezelése
 1. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure Portalon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
    
     A villanykörte ikonnal rendelkező további erőforrás az [Application Insights](/services/application-insights/), amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
@@ -99,12 +103,12 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
    
     ![WordPress-webhely](./media/web-sites-php-web-site-gallery/wpdashboard.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatta, hogyan hozhat létre és helyezhet üzembe egy PHP webalkalmazást a katalógusból. A PHP az Azure-ban való használatáról további információkat a következő témakörben talál: [PHP fejlesztői központ](/develop/php/).
 
 Az App Service Web Apps használatával kapcsolatos további információért lásd a lap bal oldalán (széles böngészőablakok esetén) vagy a lap tetején (keskeny böngészőablakok esetén) lévő hivatkozásokat. 
 
-## A változások
+## <a name="whats-changed"></a>A változások
 * Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
@@ -113,6 +117,6 @@ Az App Service Web Apps használatával kapcsolatos további információért l�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

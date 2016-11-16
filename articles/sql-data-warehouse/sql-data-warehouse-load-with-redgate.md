@@ -1,12 +1,12 @@
 ---
-title: Adatok betöltése az SQL Data Warehouse-ba a Redgate Data Platform Studio használatával | Microsoft Docs
-description: Az alábbiakból megismerheti, hogyan használható a Redgate Data Platform Studio az adattárház-forgatókönyvek esetén.
+title: "Adatok betöltése az SQL Data Warehouse-ba a Redgate Data Platform Studio használatával | Microsoft Docs"
+description: "Az alábbiakból megismerheti, hogyan használható a Redgate Data Platform Studio az adattárház-forgatókönyvek esetén."
 services: sql-data-warehouse
 documentationcenter: NA
 author: twounder
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 670aef98-31f7-4436-86c0-cc989a39fe7f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 804b0ba72ca73da1a076bd4dbca8bbca33cb76b1
+
 
 ---
 # <a name="load-data-with-redgate-data-platform-studio"></a>Adatok betöltése a Redgate Data Platform Studióval
@@ -117,7 +121,7 @@ Amint befejeződik az importálás, a DPS megjelenít egy összegzést az adatok
 Ha át szeretné tekinteni az adatait az SQL Data Warehouse-ban, először olvassa el a következőket:
 
 * [Az Azure SQL Data Warehouse lekérdezése (Visual Studio)][Az Azure SQL Data Warehouse lekérdezése (Visual Studio)]
-* [Adatok megjelenítése Power BI használatával][Adatok megjelenítése Power BI használatával]
+* [Adatok megjelenítése a Power BI-ban][Adatok megjelenítése a Power BI-ban]
 
 További információk a Redgate Data Platform Studióról:
 
@@ -126,7 +130,7 @@ További információk a Redgate Data Platform Studióról:
 
 Az adatok áttelepítésének és SQL Data Warehouse-ba való betöltésének egyéb módjaival kapcsolatban lásd:
 
-* [Megoldás áttelepítése az SQL Data Warehouse-ba][Megoldás áttelepítése az SQL Data Warehouse-ba]
+* [Megoldás áttelepítése SQL Data Warehouse-ba][Megoldás áttelepítése SQL Data Warehouse-ba]
 * [Adatok betöltése az Azure SQL Data Warehouse-ba](sql-data-warehouse-overview-load.md)
 
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
@@ -149,6 +153,7 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-
 [SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
 
 
-<!--HONumber=Oct16_HO3-->
+
+<!--HONumber=Nov16_HO2-->
 
 

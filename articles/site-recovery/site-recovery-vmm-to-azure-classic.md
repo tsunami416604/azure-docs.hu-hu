@@ -1,64 +1,68 @@
 ---
-title: VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba | Microsoft Docs
-description: Ez a cikk azt mutatja be, hogyan replikáljon System Center VMM-felhőkben működő Hyper-V gazdagépeken futó Hyper-V virtuális gépeket az Azure-ba.
+title: "VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba | Microsoft Docs"
+description: "Ez a cikk azt mutatja be, hogyan replikáljon System Center VMM-felhőkben működő Hyper-V gazdagépeken futó Hyper-V virtuális gépeket az Azure-ba."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 9d526a1f-0d8e-46ec-83eb-7ea762271db5
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/06/2016
+ms.date: 11/01/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4743f1335856bcfc7a44d76841d3be83693ad063
+
 
 ---
-# VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
+# <a name="replicate-hyperv-virtual-machines-in-vmm-clouds-to-azure"></a>VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
 > [!div class="op_single_selector"]
 > * [Azure Portal](site-recovery-vmm-to-azure.md)
-> * [PowerShell – ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+> * [PowerShell – Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [Klasszikus portál](site-recovery-vmm-to-azure-classic.md)
-> * [PowerShell – klasszikus](site-recovery-deploy-with-powershell.md)
+> * [PowerShell – Klasszikus](site-recovery-deploy-with-powershell.md)
 > 
 > 
 
 Az Azure Site Recovery szolgáltatás a virtuális gépek és a fizikai kiszolgálók replikálásával, feladatátvételével és helyreállításával segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A gépeket az Azure-ba, vagy egy másodlagos helyszíni adatközpontba replikálhatja. A szolgáltatás gyors áttekintéséhez olvassa el a [What is Azure Site Recovery?](site-recovery-overview.md) (Mire használható az Azure Site Recovery szolgáltatás?) című cikket.
 
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 A cikkből megtudhatja, hogyan helyezze üzembe a Site Recovery szolgáltatást a VMM-magánfelhőkben működő Hyper-V gazdakiszolgálókon futó Hyper-V virtuális gépeknek az Azure-ba történő replikálása érdekében.
 
 A cikk bemutatja a forgatókönyvhöz szükséges előfeltételeket, valamint a Site Recovery-tároló létrehozását, az Azure Site Recovery Providernek a forrás VMM-kiszolgálóra való telepítését, a kiszolgálónak a tárolóban való regisztrációját, az Azure-tárfiókok felvételét, az Azure Recovery Services Agent ügynöknek a Hyper-V gazdakiszolgálókra való telepítését,  a VMM-felhőkre érvényes védelmi beállítások megadását (amelyeket a rendszer az összes védett virtuális gépre alkalmaz), valamint a virtuális gépek védelmének bekapcsolását. Végül megismerheti a feladatátvételi teszt végrehajtásának módját, amellyel ellenőrizheti, hogy minden az elvárások szerint működik-e.
 
 Megjegyzéseit vagy kérdéseit a cikk alján, vagy az [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti fel.
 
-## Architektúra
+## <a name="architecture"></a>Architektúra
 ![Architektúra](./media/site-recovery-vmm-to-azure-classic/topology.png)
 
 * A Site Recovery szolgáltatás üzembe helyezése során a VMM-re telepíteni kell az Azure Site Recovery Providert, a VMM-kiszolgálót pedig regisztrálni kell a Site Recovery-tárolóban. A Provider a Site Recoveryvel kommunikálva végzi el a replikálás előkészítését.
 * A Site Recovery szolgáltatás üzembe helyezése során az Azure Recovery Services Agent ügynököt telepíteni kell a Hyper-V gazdakiszolgálókra. Ez az ügynök kezeli az Azure-tárterületre irányuló adatreplikációt.
 
-## Azure-előfeltételek
+## <a name="azure-prerequisites"></a>Azure-előfeltételek
 A következőkre lesz szüksége az Azure-ban.
 
 | **Előfeltétel** | **Részletek** |
 | --- | --- |
 | **Azure-fiók** |Szüksége lesz egy [Microsoft Azure](https://azure.microsoft.com/)-fiókra. Kezdésként használhatja az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) is. [További információk](https://azure.microsoft.com/pricing/details/site-recovery/) a Site Recovery díjszabásáról. |
-| **Azure Storage tárterület** |A replikált adatok tárolásához Azure-tárfiókra lesz szüksége. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre. <br/><br/>Ehhez [standard georedundáns tárfiókot kell használnia](../storage/storage-redundancy.md#geo-redundant-storage). A fióknak és a Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia. Ne feledje, hogy a Prémium szintű tárfiókokba történő replikációt jelenleg nem támogatja a rendszer, ezért ne használjon ilyen típusú fiókokat.<br/><br/>[Itt részletesebben olvashat](../storage/storage-introduction.md) az Azure Storage-ről. |
+| **Azure Storage** |A replikált adatok tárolásához Azure-tárfiókra lesz szüksége. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre. <br/><br/>Ehhez [standard georedundáns tárfiókot kell használnia](../storage/storage-redundancy.md#geo-redundant-storage). A fióknak és a Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia. Ne feledje, hogy a Prémium szintű tárfiókokba történő replikációt jelenleg nem támogatja a rendszer, ezért ne használjon ilyen típusú fiókokat.<br/><br/>[Itt részletesebben olvashat](../storage/storage-introduction.md) az Azure Storage-ről. |
 | **Azure-hálózat** |Szüksége lesz egy Azure virtuális hálózatra, amelyhez az Azure virtuális gépek tudnak csatlakozni, ha a rendszer feladatátvételt hajt végre. Az Azure virtuális hálózatnak és a Site Recovery-tárolónak ugyanabban a régióban kell elhelyezkednie. |
 
-## Helyszíni előfeltételek
+## <a name="onpremises-prerequisites"></a>Helyszíni előfeltételek
 Az alábbiakra lesz szüksége a helyszínen.
 
 | **Előfeltétel** | **Részletek** |
 | --- | --- |
 | **VMM** |Szüksége lesz legalább egy önálló fizikai vagy virtuális kiszolgálóként vagy virtuális fürtként üzemelő VMM-kiszolgálóra. <br/><br/>A VMM-kiszolgálón a legújabb összesített frissítésekkel ellátott System Center 2012 R2-nek kell futnia.<br/><br/>A VMM-kiszolgálóban legalább egy felhőnek kell üzemelnie.<br/><br/>A védelemmel ellátni kívánt forrásfelhőnek legalább egy VMM-gazdagépcsoportot kell tartalmaznia.<br/><br/>A VMM-felhőkről a Keith Mayer blogjában olvasható [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) (Bemutató: magánfelhők létrehozása a System Center 2012 SP1 VMM-mel) című cikkből tudhat meg továbbiakat. |
-| **Hyper-V** |A VMM-felhőben legalább egy Hyper-V gazdakiszolgálónak vagy fürtnek kell üzemelnie. A gazdakiszolgálón legalább egy virtuális gépnek kell futnia. <br/><br/>A Hyper-V-kiszolgálókon legalább a Windows Server 2012 R2 verziónak kell futnia, telepíteni kell rájuk a Hyper-V szerepkört, ezenfelül a legújabb frissítésekkel is el kell látni őket.<br/><br/>A védelemmel ellátni kívánt virtuális gépeket tartalmazó Hyper-V-kiszolgálóknak a VMM-felhőben kell futniuk.<br/><br/>Ha fürtben futtatja a Hyper-V-t, ne feledje, hogy ha statikus IP-címen alapuló fürtöt használ, a rendszer nem hozza létre automatikusan a fürtszervezőt. Ebben az esetben manuálisan kell konfigurálnia a fürtszervezőt. [További információkat](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) Aidan Finn blogbejegyzésében talál. |
+| **Hyper-V** |A VMM-felhőben legalább egy Hyper-V gazdakiszolgálónak vagy fürtnek kell üzemelnie. A gazdakiszolgálón legalább egy virtuális gépnek kell futnia. <br/><br/>A Hyper-V-kiszolgálókon legalább a **Windows Server 2012 R2** verziónak kell futnia Hyper-V szerepkörrel vagy a **Microsoft Hyper-V Server 2012 R2** verziónak, és telepíteni kell rájuk a legújabb frissítéseket.<br/><br/>A védelemmel ellátni kívánt virtuális gépeket tartalmazó Hyper-V-kiszolgálóknak a VMM-felhőben kell futniuk.<br/><br/>Ha fürtben futtatja a Hyper-V-t, ne feledje, hogy ha statikus IP-címen alapuló fürtöt használ, a rendszer nem hozza létre automatikusan a fürtszervezőt. Ebben az esetben manuálisan kell konfigurálnia a fürtszervezőt. [További információkat](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) Aidan Finn blogbejegyzésében talál. |
 | **Védett gépek** |A védelemmel ellátni kívánt gépeknek meg kell felelniük az [Azure-követelményeknek](site-recovery-best-practices.md#azure-virtual-machine-requirements). |
 
-## Hálózatleképezési előfeltételek
+## <a name="network-mapping-prerequisites"></a>Hálózatleképezési előfeltételek
 Amikor védelemmel látja el az Azure virtuális gépeket, a hálózatleképezés kapcsolatot hoz létre a forrás VMM-kiszolgálókon futó virtuálisgép-hálózatok és a cél Azure-hálózatok között, így biztosítja a következőket:
 
 * Az azonos hálózaton feladatátvételt végrehajtó gépek képesek csatlakozni egymáshoz, attól függetlenül, hogy melyik helyreállítási tervhez tartoznak.
@@ -78,7 +82,7 @@ A hálózatleképezés előkészítéséhez tegye a következőket:
    * [Állítson be logikai hálózatokat](https://technet.microsoft.com/library/jj721568.aspx).
    * [Állítson be virtuálisgép-hálózatokat](https://technet.microsoft.com/library/jj721575.aspx).
 
-## 1. lépés: Site Recovery-tároló létrehozása
+## <a name="step-1-create-a-site-recovery-vault"></a>1. lépés: Site Recovery-tároló létrehozása
 1. Jelentkezzen be a regisztrálni kívánt VMM-kiszolgálón a [felügyeleti portálra](https://portal.azure.com).
 2. Kattintson a **Data Services** > **Recovery Services** > **Site Recovery-tároló** lehetőségre.
 3. Kattintson az **Új létrehozása** > **Gyorslétrehozás** elemre.
@@ -90,7 +94,7 @@ A hálózatleképezés előkészítéséhez tegye a következőket:
 
 Az állapotsorban ellenőrizheti, hogy a tároló sikeresen létrejött-e. Ezt követően a tároló **Aktív** állapottal jelenik meg a Recovery Services főoldalán.
 
-## 2. lépés: A tároló regisztrációs kulcsának létrehozása
+## <a name="step-2-generate-a-vault-registration-key"></a>2. lépés: A tároló regisztrációs kulcsának létrehozása
 Hozza létre a tároló regisztrációs kulcsát. Az Azure Site Recovery Provider letöltését, valamint VMM-kiszolgálóra történő telepítését követően ezzel a kulccsal regisztrálhatja a VMM-kiszolgálót a tárolóban.
 
 1. A **Recovery Services** lapon kattintson a kívánt tárolóra az Első lépések lap megnyitásához. Az Első lépések bármikor megnyitható az ikon segítségével is.
@@ -101,7 +105,7 @@ Hozza létre a tároló regisztrációs kulcsát. Az Azure Site Recovery Provide
    
     ![Regisztrációs kulcs](./media/site-recovery-vmm-to-azure-classic/register-key.png)
 
-## 3. lépés: Az Azure Site Recovery Provider telepítése
+## <a name="step-3-install-the-azure-site-recovery-provider"></a>3. lépés: Az Azure Site Recovery Provider telepítése
 1. A **Quick Start (Első lépések)** > **Prepare VMM servers (VMM-kiszolgálók előkészítése)** menüpontban kattintson a **Download Microsoft Azure Site Recovery Provider for installation on VMM servers** (A Microsoft Azure Site Recovery Provider letöltése VMM-kiszolgálókon való telepítés céljából) lehetőségre a Provider telepítőfájlja legújabb verziójának letöltéséhez.
 2. Futtassa ezt a fájlt a forrás VMM-kiszolgálón.
    
@@ -146,7 +150,7 @@ Hozza létre a tároló regisztrációs kulcsát. Az Azure Site Recovery Provide
 
 A regisztrációt követően az Azure Site Recovery lekéri a metaadatokat VMM-kiszolgálóról. A kiszolgáló ezt követően megjelenik a tároló **Kiszolgálók** lapjának **VMM-kiszolgálók** lapján.
 
-### Parancssori telepítés
+### <a name="command-line-installation"></a>Parancssori telepítés
 Az Azure Site Recovery Provider a következő parancssori műveletekkel is telepíthető. A Provider ezzel a módszerrel a Server Core for Windows Server 2012 R2 kiadáson is telepíthető.
 
 1. Töltse le egy mappába a Provider telepítőfájlját és a regisztrációs kulcsot. A mappa lehet például a következő: C:\ASR.
@@ -173,7 +177,7 @@ A paraméterek a következőt jelentik:
 * **/proxyUsername**: nem kötelező paraméter, amely a proxy felhasználónevét határozza meg.
 * **/proxyPassword**: nem kötelező paraméter, amely a proxy jelszavát határozza meg.  
 
-## 4. lépés: Azure-tárfiók létrehozása
+## <a name="step-4-create-an-azure-storage-account"></a>4. lépés: Azure-tárfiók létrehozása
 1. Ha még nincs Azure-tárfiókja, új fiók létrehozásához kattintson az **Add an Azure Storage Account** (Azure-tárfiók hozzáadása) elemre.
 2. A fióknál engedélyezze a georeplikációt. A fióknak és az Azure Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia.
    
@@ -184,7 +188,7 @@ A paraméterek a következőt jelentik:
 > 
 > 
 
-## 5. lépés: Az Azure Recovery Services Agent ügynök telepítése
+## <a name="step-5-install-the-azure-recovery-services-agent"></a>5. lépés: Az Azure Recovery Services Agent ügynök telepítése
 Telepítse az Azure Recovery Services Agent ügynököt a VMM-felhőben futó összes Hyper-V gazdakiszolgálóra.
 
 1. Az ügynök legfrissebb telepítőfájljának beszerzéséhez kattintson a **Quick Start (Első lépések)** > **Download Azure Site Recovery Services Agent and install on hosts (Az Azure Site Recovery Services Agent letöltése, majd telepítése a gazdagépekre)** lehetőségre.
@@ -199,12 +203,12 @@ Telepítse az Azure Recovery Services Agent ügynököt a VMM-felhőben futó ö
    
     ![A MARS Agent regisztrálása](./media/site-recovery-vmm-to-azure-classic/agent-register.png)
 
-### Parancssori telepítés
+### <a name="command-line-installation"></a>Parancssori telepítés
 A Microsoft Azure Recovery Services Agent a parancssorból is telepíthető. Használja a következő parancsot:
 
     marsagentinstaller.exe /q /nu
 
-## 6. lépés: A felhő védelmi beállításainak konfigurálása
+## <a name="step-6-configure-cloud-protection-settings"></a>6. lépés: A felhő védelmi beállításainak konfigurálása
 A VMM-kiszolgáló regisztrálását követően megadhatja a felhő védelmi beállításait. A Provider telepítésekor engedélyezte a **Synchronize cloud data with the vault** (Felhőbeli adatok szinkronizálása a tárolóval) funkciót, ezért a VMM-kiszolgálón található összes felhő meg fog jelenni a tároló <b>Protected Items</b> (Védett elemek) lapján.
 
 ![Közzétett felhő](./media/site-recovery-vmm-to-azure-classic/clouds-list.png)
@@ -225,7 +229,7 @@ A beállítások mentését követően a rendszer létrehoz egy feladatot, amely
 
 A felhőbeállítások a kezdeti mentést követően a **Configure** (Konfiguráció) lapon módosíthatók. A célhely vagy a cél tárfiók módosításához törölnie kell a felhő konfigurációját, majd újra el kell végeznie a felhő konfigurálását. Vegye figyelembe, hogy a tárfiók módosítása csupán azokra a virtuális gépekre fog vonatkozni, amelyeknél a tárfiók módosítását követően ismét engedélyezi a védelmet. A meglévő virtuális gépeket a rendszer nem helyezi át az új tárfiókba.
 
-## 7. lépés: Hálózatleképezés konfigurálása
+## <a name="step-7-configure-network-mapping"></a>7. lépés: Hálózatleképezés konfigurálása
 A hálózatleképezés megkezdése előtt ellenőrizze, hogy a forrás VMM-kiszolgálón működő virtuális gépek csatlakoznak-e a virtuálisgép-hálózathoz. Ezenfelül hozzon létre legalább egy Azure virtuális hálózatot. Ne feledje, hogy egyetlen Azure-hálózatra több virtuálisgép-hálózatot is le lehet képezni.
 
 1. A Quick Start (Első lépések) lapon kattintson a **Map networks** (Hálózatok leképezése) elemre.
@@ -246,7 +250,7 @@ Ne feledje, hogy ha a célhálózatban már több alhálózat működik, és eze
 > 
 > 
 
-## 8. lépés: A virtuális gépek védelmének engedélyezése
+## <a name="step-8-enable-protection-for-virtual-machines"></a>8. lépés: A virtuális gépek védelmének engedélyezése
 A kiszolgálók, felhők és hálózatok megfelelő konfigurálását követően engedélyezheti a felhőben működő virtuális gépek védelmét. Vegye figyelembe a következőket:
 
 * A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](site-recovery-best-practices.md#azure-virtual-machine-requirements).
@@ -274,7 +278,7 @@ A kiszolgálók, felhők és hálózatok megfelelő konfigurálását követően
   
   * Ha a forrásgépen működő hálózati adapterek száma kisebb vagy egyenlő a célgép méretéhez engedélyezett adapterek számával, a célon ugyanannyi adapter fog működni, mint a forráson.
   * Ha a forrás virtuális gépek adaptereinek száma meghaladja a célmérethez engedélyezett maximumot, a rendszer a célmérethez engedélyezett maximális számot fogja használni.
-  * Ha például a forrásgépen két hálózati adapter működik, és a célgép mérete négy adapter használatát teszi lehetővé, a célgépen két adapter fog működni. Ha azonban a forrásgépen két adapter működik, de a cél csupán egy adaptert támogat, akkor a célgépen is csak egy adapter fog működni.    
+  * Ha például a forrásgépen két hálózati adapter működik, és a célgép mérete négy adapter használatát teszi lehetővé, a célgépen két adapter fog működni. Ha azonban a forrásgépen két adapter működik, de a cél csupán egy adaptert támogat, akkor a célgépen is csak egy adapter fog működni.     
 * **A cél virtuális gép hálózata** – A hálózatot, amelyhez a virtuális gép csatlakozik, a forrás virtuális gép hálózatleképezése határozza meg. Ha a forrás virtuális gépen egynél több hálózati adapter üzemel, és a forráshálózatokat különböző célhálózatokhoz képezték le, akkor választania kell a különböző célhálózatok közül.
 * **Az egyes hálózati adapterek alhálózata** – Minden hálózati adapternél kiválaszthatja, hogy a feladatátvételt végrehajtó virtuális gép mely alhálózathoz csatlakozzon.
 * **Cél IP-címe** – Ha a forrás virtuális gép hálózati adapterét statikus IP-cím használatára állították be, akkor megadhatja a cél virtuális gép IP-címét. Ezzel a funkcióval a feladatátvételt követően is megtarthatja a forrásgép IP-címét. Ha nem ad meg IP-címet, a rendszer a feladatátvétel időpontjában elérhető IP-címek közül választ egyet a hálózati adapter számára. Ha olyan cél-IP-címet ad meg, amelyet már egy másik, az Azure-ban futó virtuális gép használ, a feladatátvétel sikertelen lesz.  
@@ -286,7 +290,7 @@ A kiszolgálók, felhők és hálózatok megfelelő konfigurálását követően
 > 
 > 
 
-## Az üzemelő példány tesztelése
+## <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 Az üzemelő példány teszteléséhez lefuttathatja egy különálló virtuális gép feladatátvételi tesztjét, vagy több virtuális gépet tartalmazó helyreállítási tervet is létrehozhat, és elvégezheti az egész terv feladatátvételi tesztjét.  
 
 A feladatátvételi teszt segítségével elkülönített hálózatban próbálhatja ki a feladatátvételi és helyreállítási mechanizmusokat. Vegye figyelembe:
@@ -299,7 +303,7 @@ A feladatátvételi teszt segítségével elkülönített hálózatban próbálh
 > 
 > 
 
-### Helyreállítási terv létrehozása
+### <a name="create-a-recovery-plan"></a>Helyreállítási terv létrehozása
 1. A **Helyreállítási terv** lapon vegyen fel egy új tervet. Adja meg a kívánt nevet, a **Forrás típusa** beállításnál válassza a **VMM** lehetőséget, a **Forrás** beállításnál pedig a forrás VMM-kiszolgálót. A cél az Azure lesz.
    
     ![Helyreállítási terv létrehozása](./media/site-recovery-vmm-to-azure-classic/recovery-plan1.png)
@@ -312,7 +316,7 @@ A feladatátvételi teszt segítségével elkülönített hálózatban próbálh
 
 A helyreállítási tervek a létrehozásukat követően megjelennek a **Helyreállítási tervek** lapon. Ezenfelül [Azure Automation-forgatókönyveket](site-recovery-runbook-automation.md) is felvehet a helyreállítási tervbe, amelyek segítségével automatizálhatja a feladatátvétel során végzendő műveleteket.
 
-### Feladatátvételi teszt futtatása
+### <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 Az Azure-ba irányuló feladatátvételi tesztet két különböző módon futtathatja.
 
 * **Feladatátvételi teszt Azure-hálózat nélkül** – Ez a típus azt ellenőrzi, hogy a virtuális hálózat megfelelően feláll-e az Azure-ban. A virtuális gép a feladatátvételt követően nem csatlakozik Azure-hálózathoz.
@@ -343,9 +347,12 @@ A feladatátvételi teszt futtatásához tegye a következőket:
 
 >
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-create-recovery-plans.md) és a [feladatátvételről](site-recovery-failover.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,24 +1,28 @@
 ---
-title: A StorSimple eszköz (2. frissítés) üzembe helyezése | Microsoft Docs
-description: Ez a cikk ismerteti a StorSimple eszköz (2. frissítés) és szolgáltatás üzembe helyezésének szükséges lépéseit és ajánlott eljárásait.
+title: "A StorSimple-eszköz (2. frissítés) üzembe helyezése | Microsoft Docs"
+description: "Ez a cikk ismerteti a StorSimple eszköz (2. frissítés) és szolgáltatás üzembe helyezésének szükséges lépéseit és ajánlott eljárásait."
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 7dff0612-617b-4fc8-a3fe-994c24bc7c51
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/11/2016
+ms.date: 10/24/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+
 
 ---
-# <a name="deploy-your-on-premises-storsimple-device-(update-2)"></a>A helyszíni StorSimple eszköz (2. frissítés) üzembe helyezése
+# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>A helyszíni StorSimple eszköz (2. frissítés) üzembe helyezése
 > [!div class="op_single_selector"]
-> * [2. frissítés](storsimple-deployment-walkthrough-u2.md)
+> * [2. és azt követő frissítések ](storsimple-deployment-walkthrough-u2.md)
 > * [1. frissítés](storsimple-deployment-walkthrough-u1.md)
 > * [GA kiadás](storsimple-deployment-walkthrough.md)
 > 
@@ -91,10 +95,10 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Az adatközpont tűzfalának portjai nyitva vannak az iSCSI és a felhőalapú forgalom számára, [A StorSimple eszköz hálózatkezelési követelményei](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device) című szakaszban leírtaknak megfelelően.
 
-## <a name="step-by-step-deployment"></a>Részletes üzembe helyezés
+## <a name="stepbystep-deployment"></a>Részletes üzembe helyezés
 Az alábbi részletes útmutatás segítségével helyezze üzembe a StorSimple eszközt az adatközpontban.
 
-## <a name="step-1:-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
+## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
 A StorSimple Manager szolgáltatás több StorSimple eszközt is tud kezelni. Az alábbi lépések végrehajtásával hozza létre a StorSimple Manager szolgáltatás egy új példányát.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
@@ -107,19 +111,19 @@ A StorSimple Manager szolgáltatás több StorSimple eszközt is tud kezelni. Az
 > 
 > 
 
-## <a name="step-2:-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
+## <a name="step-2-get-the-service-registration-key"></a>2. lépés: Szolgáltatásregisztrációs kulcs lekérése
 Ha a StorSimple Manager szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ezzel a kulccsal regisztrálhatja és csatlakoztathatja StorSimple eszközét a szolgáltatáshoz.
 
 Hajtsa végre a következő lépéseket a felügyeleti portálon.
 
 [!INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
-## <a name="step-3:-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3. lépés: Az eszköz konfigurálása és regisztrálása a StorSimple-höz készült Windows PowerShell-lel
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>3. lépés: Az eszköz konfigurálása és regisztrálása a StorSimple-höz készült Windows PowerShell-lel
 A StorSimple-höz készült Windows PowerShell-lel végezze el a StorSimple eszköz kezdeti beállítását az alábbiakban ismertetett eljárás alapján. A lépés végrehajtásához terminálemulációs szoftverre lesz szüksége. További információ: [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz.](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-configure-and-register-device-u1](../../includes/storsimple-configure-and-register-device-u1.md)]
 
-## <a name="step-4:-complete-minimum-device-setup"></a>4. lépés: Minimális eszközbeállítások végrehajtása.
+## <a name="step-4-complete-minimum-device-setup"></a>4. lépés: Minimális eszközbeállítások végrehajtása.
 A StorSimple minimális eszközkonfigurációjához a következőket kell végrehajtania: 
 
 * Állítsa be a másodlagos DNS-kiszolgálót.
@@ -130,14 +134,14 @@ Hajtsa végre az alábbi lépéseket a felügyeleti portálon a minimális eszk�
 
 [!INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup-u1.md)]
 
-## <a name="step-5:-create-a-volume-container"></a>5. lépés: Kötettároló létrehozása
+## <a name="step-5-create-a-volume-container"></a>5. lépés: Kötettároló létrehozása
 A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. Ahhoz, hogy elkezdhessen köteteket kiépíteni a StorSimple eszközön, létre kell hoznia egy kötettárolót. 
 
 A kötettároló létrehozásához hajtsa végre a következő lépéseket a felügyeleti portálon.
 
 [!INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
-## <a name="step-6:-create-a-volume"></a>6. lépés: Kötet létrehozása
+## <a name="step-6-create-a-volume"></a>6. lépés: Kötet létrehozása
 A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszközön a kiszolgálók számára. A kötet létrehozásához hajtsa végre a következő lépéseket a felügyeleti portálon.
 
 > [!IMPORTANT]
@@ -147,7 +151,7 @@ A kötettároló létrehozása után tárkötetet építhet ki a StorSimple eszk
 
 [!INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume-u2.md)]
 
-## <a name="step-7:-mount,-initialize,-and-format-a-volume"></a>7. lépés: Kötet csatlakoztatása, inicializálása és formázása
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>7. lépés: Kötet csatlakoztatása, inicializálása és formázása
 A következő lépéseket a Windows Server-állomásán kell végrehajtania. 
 
 > [!IMPORTANT]
@@ -161,7 +165,7 @@ Ha mégsem szeretné konfigurálni az MPIO-t, az alábbi lépések végrehajtás
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## <a name="step-8:-take-a-backup"></a>8. lépés: Biztonsági mentés készítése
+## <a name="step-8-take-a-backup"></a>8. lépés: Biztonsági mentés készítése
 Az adott időpontban mentett biztonsági másolatok védelmet biztosítanak a kötetek számára, továbbá javítják a rendelkezésre álló helyreállítási lehetőségeket, miközben a helyreállítási időt csökkentik. A StorSimple eszközén kétféle biztonsági mentést készíthet: helyi pillanatképeket és felhőbeli pillanatképeket. Mind a kétféle biztonsági mentés lehet **Ütemezett** vagy **Manuális**. 
 
 Az ütemezett biztonsági mentés létrehozásához hajtsa végre a következő lépéseket a felügyeleti portálon.
@@ -204,7 +208,7 @@ Az eszköz frissítése több órát is igénybe vehet. Az alábbi lépések vé
 <!-- In step 2, you may be requested to disable Data 2 and Data 3 prior to installing the updates. You must disable these network interfaces or the updates may fail.-->
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>Egy Windows Server-állomás IQN-nevének lekérése
-Hajtsa végre a következő lépéseket egy Windows Server® 2012 rendszert futtató Windows-állomás iSCSI teljes nevének (IQN) lekéréséhez.
+Hajtsa végre a következő lépéseket egy Windows Server® 2012 rendszert futtató Windows-állomás iSCSI teljes nevének (IQN) lekéréséhez.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-get-iqn.md)]
 
@@ -217,6 +221,9 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 * [Virtuális eszköz](storsimple-virtual-device-u2.md) konfigurálása.
 * A StorSimple eszközt a [StorSimple Manager szolgáltatás](storsimple-manager-service-administration.md) segítségével kezelheti.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

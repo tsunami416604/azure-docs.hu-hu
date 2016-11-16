@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Service Bus Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: bfc1bf3d78099ba04a2621bcec9f870f7f88b122
+ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
 
-Service Bus provides cloud-enabled communication with enterprise messaging and relayed communication that helps you connect on-premises solutions with the cloud. 
+---
+#<a name="service-bus-documentation"></a>Service Bus-dokumentáció
+
+A Service Bus felhőalapú kommunikációt biztosít vállalati üzenetkezeléssel és továbbított kommunikációval, amelyekkel a helyszíni megoldások csatlakoztathatók a felhőhöz. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Service Bus</h3>
+                        <h3>Az Azure Service Bus bemutatása</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Service Bus Video Library</h3>
+                        <h3>Azure Service Bus videótár</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Service Bus using the Azure portal</h3>
+                        <h3>A Service Bus használatának első lépései az Azure-portállal</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using .NET</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a .NET-tel</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Java</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a JAVA-val</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Node.js</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a Node.js-sel</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +129,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using PHP</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a PHP-vel</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +147,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Python</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a Pythonnal</h3>
                     </div>
                 </div>
             </div>
@@ -161,7 +165,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Ruby</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a Rubyval</h3>
                     </div>
                 </div>
             </div>
@@ -179,7 +183,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using REST</h3>
+                        <h3>A Service Bus által kezelt üzenetsorok használatának első lépései a REST-tel</h3>
                     </div>
                 </div>
             </div>
@@ -190,22 +194,27 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
 
 ---
 
-## Reference
+## <a name="reference"></a>Referencia
 
-### PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
+### <a name="powershell"></a>PowerShell
+[Azure PowerShell-referencia](/powershell/azureps-cmdlets-docs)
 
-### .NET
-[.NET Managed Reference API](/dotnet/api/) 
+### <a name="net"></a>.NET
+[.NET-felügyelet referencia API](/dotnet/api/) 
 
-### REST 
-[Service Bus REST API Reference](/rest/api/servicebus)  
+### <a name="rest"></a>REST 
+[Service Bus – REST API-referencia](/rest/api/servicebus)  
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Service Bus Documentation
-        </div>
+Service Bus-dokumentáció letöltése </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

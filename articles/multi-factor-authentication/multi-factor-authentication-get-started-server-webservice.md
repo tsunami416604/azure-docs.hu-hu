@@ -1,12 +1,12 @@
 ---
-title: Első lépések az MFA-kiszolgáló Mobile App Web Service szolgáltatásával
-description: Az Azure Multi-Factor Authentication alkalmazás egy további sávon kívüli hitelesítési lehetőséget kínál.  Ez lehetővé teszi, hogy az MFA-kiszolgáló leküldéses értesítéseket küldjön a felhasználóknak.
+title: "Első lépések az MFA-kiszolgáló Mobile App Web Service szolgáltatásával"
+description: "Az Azure Multi-Factor Authentication alkalmazás egy további sávon kívüli hitelesítési lehetőséget kínál.  Ez lehetővé teszi, hogy az MFA-kiszolgáló leküldéses értesítéseket küldjön a felhasználóknak."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtland
-
+ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 883b3a27b4b06785068d04a143bae6c33fbed99b
+
 
 ---
-# Első lépések az MFA-kiszolgáló Mobile App Web Service szolgáltatásával
+# <a name="getting-started-the-mfa-server-mobile-app-web-service"></a>Első lépések az MFA-kiszolgáló Mobile App Web Service szolgáltatásával
 Az Azure Multi-Factor Authentication alkalmazás egy további sávon kívüli hitelesítési lehetőséget kínál. Automatikus telefonhívás vagy SMS küldése helyett a felhasználó bejelentkezésekor az Azure Multi-Factor Authentication értesítést küld le az Azure Multi-Factor Authentication alkalmazásba a felhasználó okostelefonjára vagy táblagépére. A felhasználó egyszerűen a „Hitelesítés” lehetőségre koppint (vagy a PIN-kód megadása után a „Hitelesítés” lehetőségre koppint) a bejelentkezéshez az alkalmazásban.
 
 Az Azure Multi-Factor Authentication alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a Mobile App Web Service-szel:
@@ -40,19 +44,19 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 3. A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 4. Az Azure Multi-Factor Authentication alkalmazás aktiválása a végfelhasználók számára
 
-## A Web Service SDK telepítése
+## <a name="install-the-web-service-sdk"></a>A Web Service SDK telepítése
 Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication-kiszolgálón, lépjen a kiszolgálóra és nyissa meg az Azure Multi-Factor Authentication-kiszolgálót. Kattintson a Web Service SDK ikonra, majd a Web Service SDK telepítése… gombra, és kövesse a megjelenő utasításokat. A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány, de azt a felhasználói portál webkiszolgálójának Helyi számítógép fiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába kell importálni, hogy megbízzon ebben a tanúsítványban az SSL-kapcsolat elindításakor.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-server-webservice/sdk.png)</center>
 
-## A Mobile App Web Service telepítése
+## <a name="install-the-mobile-app-web-service"></a>A Mobile App Web Service telepítése
 A Mobile App Web Service telepítése előtt vegye figyelembe a következőket:
 
 * Ha az Azure Multi-Factor Authentication felhasználói portál már telepítve van az internetes kiszolgálón, a felhasználónév, a jelszó és a Web Service SDK-ra mutató URL-cím átmásolható a felhasználói portál web.config fájljából.
 * Hasznos lehet, ha megnyit egy webböngészőt az internetes webkiszolgálón és megkeresi a Web Service SDK a web.config fájlban megadott URL-címét. Ha a böngésző sikeresen eléri a webszolgáltatást, kérnie kell a hitelesítő adatok megadását. Írja be a web.config fájlban megadott felhasználónevet és jelszót pontosan úgy, ahogyan az a fájlban megjelenik. Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 * Ha fordított proxy vagy tűzfal található a Mobile App Web Service webkiszolgálója előtt és SSL-tehermentesítést végez, a Mobile App Web Service web.config fájljának szerkesztésével a következő kulcsot adhatja a(z) <appSettings> szakaszhoz, hogy a Mobile App Web Service http-t használhasson https helyett. Az SSL azonban továbbra is szükséges a Mobile App és a tűzfal/fordított proxy között. <add key="SSL_REQUIRED" value="false"/>
 
-### A Mobile App Web Service telepítése
+### <a name="to-install-the-mobile-app-web-service"></a>A Mobile App Web Service telepítése
 <ol>
 
 <li>Nyissa meg a Windows Intézőt az Azure Multi-Factor Authentication-kiszolgálón, és keresse meg azt a mappát, amelybe az Azure Multi-Factor Authentication-kiszolgáló telepítve van (például C:\Program Files\Azure Multi-Factor Authentication). Válassza az Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup telepítőfájl 32 bites vagy 64 bites verzióját annak a kiszolgálónak megfelelően, amelyre a Mobile App Web Service-t telepíti. Másolja a telepítőfájlt az internetes kiszolgálóra.</li>
@@ -71,10 +75,10 @@ A Mobile App Web Service telepítése előtt vegye figyelembe a következőket:
 
 <li>Nyisson meg egy webböngészőt valamelyik számítógépről és lépjen arra az URL-címre, ahol a Mobile App Web Service telepítve van (például: https://www.publicwebsite.com/PA ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.</li>
 
-### A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
+### <a name="configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 Most, hogy telepítette a Mobile App Web Service-t, konfigurálnia kell az Azure Multi-Factor Authentication-kiszolgálót, hogy működjön a portállal.
 
-#### A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
+#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>A mobilalkalmazás beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a felhasználói portál ikonra. Ha a felhasználók vezérelhetik a hitelesítési módszereiket, a Beállítások lapon a Módszer kiválasztásának engedélyezése a felhasználóknak lehetőség alatt jelölje be a Mobile App jelölőnégyzetét. Ha a szolgáltatás nincs engedélyezve, a végfelhasználóknak kapcsolatba kell lépniük a támogatási szolgálattal a Mobile App aktiválásának befejezéséhez.
 2. Jelölje be a Mobilalkalmazás aktiválásának engedélyezése a felhasználóknak jelölőnégyzetet.
 3. Jelölje be a Felhasználó beléptetésének engedélyezése jelölőnégyzetet.
@@ -85,6 +89,6 @@ Most, hogy telepítette a Mobile App Web Service-t, konfigurálnia kell az Azure
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

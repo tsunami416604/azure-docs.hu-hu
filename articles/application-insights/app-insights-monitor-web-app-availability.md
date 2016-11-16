@@ -1,11 +1,11 @@
 ---
-title: Monitor availability and responsiveness of any web site | Microsoft Docs
-description: Set up web tests in Application Insights. Get alerts if a website becomes unavailable or responds slowly.
+title: "Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése | Microsoft Docs"
+description: "Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,271 +13,275 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
+ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+
 
 ---
-# Monitor availability and responsiveness of any web site
-After you've deployed your web app or web site to any server, you can set up web tests to monitor its availability and responsiveness. [Visual Studio Application Insights](app-insights-overview.md) sends web requests to your application at regular intervals from points around the world. It alerts you if your application doesn't respond, or responds slowly.
+# <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
+Miután telepítette a webalkalmazást vagy a weboldalt bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. A [Visual Studio Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről, webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
 
-![Web test example](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
+![Példa webes tesztre](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-You can set up web tests for any HTTP or HTTPS endpoint that is accessible from the public internet.
+Webes teszteket állíthat be bármely olyan HTTP- vagy HTTPS- végponthoz, amely a nyilvános internetről érhető el.
 
-There are two types of web test:
+A webes teszteknek két típusa létezik:
 
-* [URL ping test](#create): a simple test that you can create in the Azure portal.
-* [Multi-step web test](#multi-step-web-tests): which you create in Visual Studio Ultimate or Visual Studio Enterprise and upload to the portal.
+* [URL-ping teszt](#create): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
+* [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Ultimate vagy a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
 
-You can create up to 10 web tests per application resource.
+Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 
-## <a name="create"></a>1. Create a resource for your test reports
-Skip this step if you've already [set up an Application Insights resource][start] for this application, and you want to see the availability reports in the same place.
+## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1. Erőforrás létrehozása tesztjelentésekhez
+Hagyja ki ezt a lépést, ha már [beállított egy Application Insights-erőforrást][start] ehhez az alkalmazáshoz, és ha ugyanezen a helyen szeretné megtekinteni a rendelkezésre állási jelentéseket.
 
-Sign up to [Microsoft Azure](http://azure.com), go to the [Azure portal](https://portal.azure.com), and create an Application Insights resource.
+Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
 
-![New > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
+![Új > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
-Click **All resources** to open the Overview blade for the new resource.
+Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Összes erőforrás** lehetőségre.
 
-## <a name="setup"></a>2. Create a URL ping test
-In your Application Insights resource, look for the Availability tile. Click it to open the Web tests blade for your application, and add a web test.
+## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2. URL-ping teszt létrehozása
+Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csempét. Kattintson rá az alkalmazás Webes tesztek paneljének megnyitásához, és adjon hozzá egy webes tesztet.
 
-![Fill at least the URL of your website](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **The URL** must be visible from the public internet. It can include a query string&#151;so, for example, you can exercise your database a little. If the URL resolves to a redirect, we follow it up to 10 redirects.
-* **Parse dependent requests**: Images, scripts, style files, and other resources of the page are requested as part of the test, and the recorded response time includes these times. The test fails if all these resources cannot be successfully downloaded within the timeout for the whole test.
-* **Enable retries**:  When the test fails, it is retried after a short interval. A failure is reported only if three successive attempts fail. Subsequent tests are then performed at the usual test frequency. Retry is temporarily suspended until the next success. This rule is applied independently at each test location. (We recommend this setting. On average, about 80% of failures disappear on retry.)
-* **Test frequency**: Sets how often the test is run from each test location. With a frequency of five minutes and five test locations, your site is tested on average every minute.
-* **Test locations** are the places from where our servers send web requests to your URL. Choose more than one so that you can distinguish problems in your website from network issues. You can select up to 16 locations.
-* **Success criteria**:
-  
-    **Test timeout**: Decrease this value to be alerted about slow responses. The test is counted as a failure if the responses from your site have not been received within this period. If you selected **Parse dependent requests**, then all the images, style files, scripts, and other dependent resources must have been received within this period.
-  
-    **HTTP response**: The returned status code that is counted as a success. 200 is the code that indicates that a normal web page has been returned.
-  
-    **Content match**: a string, like "Welcome!" We test that it occurs in every response. It must be a plain string, without wildcards. Don't forget that if your page content changes you might have to update it.
-* **Alerts** are, by default, sent to you if there are failures in three locations over five minutes. A failure in one location is likely to be a network problem, and not a problem with your site. But you can change the threshold to be more or less sensitive, and you can also change who the emails should be sent to.
-  
-    You can set up a [webhook](../azure-portal/insights-webhooks-alerts.md) that is called when an alert is raised. (But note that, at present, query parameters are not passed through as Properties.)
+* **Az URL-címnek** láthatónak kell lennie a nyilvános internetről. Tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
+* **Függő kérelmek elemzése**: A rendszer lekéri a lap képeit, szkriptjeit, stílusfájljait és más erőforrásait a teszt részeként, és a rögzített válaszidő magába foglalja ezeket az időket. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt.
+* **Újrapróbálkozások engedélyezése**: Amikor a teszt meghiúsul, a rendszer rövid idő után újrapróbálja. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. (Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a eltűnik az újrapróbálkozáskor.)
+* **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
+* A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Többet válasszon, hogy megkülönböztethesse webhelye problémáit a hálózati hibáktól. Legfeljebb 16 hely választható ki.
+* **Sikeresség feltétele**:
 
-### Test more URLs
-Add more tests. For example, as well as testing your home page, you can make sure your database is running by testing the URL for a search.
+    **Teszt időkorlátja:** Ha csökkenti az értéket, riasztást kap a lassú válaszokról. A teszt akkor sikertelen, ha nem érkeznek meg a webhely válaszai ezen az időtartamon belül. Ha bejelölte a **Függő kérelmek elemzése** lehetőséget, akkor az összes képnek, stílusfájlnak, szkriptnek és más függő erőforrásnak meg kell érkeznie ezen az időn belül.
 
-## <a name="monitor"></a>3. See your web test results
-After 1-2 minutes, results appear in the Web Test blade.
+    **HTTP-válasz**: A visszaadott, sikert jelző állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
 
-![Summary results on the home blade](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
+* Alapértelmezés szerint akkor kap **riasztásokat**, ha öt perc alatt három helyen fordulnak elő hibák. Ha egy helyen fordul elő a hiba, azt valószínűleg hálózati probléma okozza, és nem a hellyel van probléma. A küszöbérték érzékenységét állítani lehet, és azt is módosíthatja, hogy kinek küldje a rendszer az e-maileket.
 
-Click any bar on the summary chart for a more detailed view of that time period.
+    Be lehet állítani egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg. (Vegye figyelembe, hogy jelenleg a lekérdezési paraméterek nem továbbítódnak Tulajdonságokként.)
 
-These charts combine results for all the web tests of this application.
+### <a name="test-more-urls"></a>További URL-címek tesztelése
+Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
-## <a name="failures"></a>If you see failures
-Click a red dot.
+## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3. A webes teszt eredményeinek megtekintése
+Néhány perc elteltével az eredmények a Webes teszt panelben láthatóak.
 
-![Click a red dot](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
-Or, scroll down and click a test where you see less than 100% success.
+Kattintson az összegző diagram bármely sávjára az időszak részletesebb megjelenítéséhez.
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+Ezek a diagramok az alkalmazás összes webes tesztjének eredményeit egyesítik.
 
-The results of that test open.
+## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>Ha hibákat lát
+Kattintson egy piros pontra.
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/16-1test.png)
+![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
 
-The test is run from several locations&#151;pick one where the results are less than 100%.
+Vagy görgessen le, és kattintson egy tesztre, amelynél 100% alatti a sikeresség mértéke.
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
+![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
-Scroll down to **Failed tests** and pick a result.
+Megnyílnak a teszt eredményei.
 
-Click the result to evaluate it in the portal and see why it failed.
+![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
-![Webtest run result](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+A teszt több helyről fut&#151;válasszon ki egyet, ahol 100% alattiak az eredmények.
 
-Alternatively, you can download the result file and inspect it in Visual Studio.
+![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
 
-*Looks OK but reported as a failure?* Check all the images, scripts, style sheets, and any other files loaded by the page. If any of them fails, the test is reported as failed, even if the main html page loads OK.
+Görgessen le a **Sikertelen tesztek** részhez, és válasszon ki egy eredményt.
 
-## Multi-step web tests
-You can monitor a scenario that involves a sequence of URLs. For example, if you are monitoring a sales website, you can test that adding items to the shopping cart works correctly.
+Kattintson az eredményre a portálon való kiértékeléséhez, és tekintse meg a sikertelenség okát.
 
-To create a multi-step test, you record the scenario by using Visual Studio, and then upload the recording to Application Insights. Application Insights replays the scenario at intervals and verifies the responses.
+![A webes teszt futtatásának eredménye](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
-Note that you can't use coded functions in your tests: the scenario steps must be contained as a script in the .webtest file.
+Másik lehetőségként letöltheti az eredményfájlt, és megvizsgálhatja a Visual Studióban.
 
-#### 1. Record a scenario
-Use Visual Studio Enterprise or Ultimate to record a web session. 
+*Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
 
-1. Create a web performance test project.
-   
-    ![In Visual Studio, create a project from the Web Performance and Load Test template.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
-2. Open the .webtest file and start recording.
-   
-    ![Open the .webtest file and click Record.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
-3. Do the user actions you want to simulate in your test: open your website, add a product to the cart, and so on. Then stop your test.
-   
-    ![The web test recorder runs in Internet Explorer.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-record.png)
-   
-    Don't make a long scenario. There's a limit of 100 steps and 2 minutes.
-4. Edit the test to:
-   
-   * Add validations to check the received text and response codes.
-   * Remove any superfluous interactions. You could also remove dependent requests for pictures or to ad or tracking sites.
-     
-     Remember that you can only edit the test script - you can't add custom code or call other web tests. Don't insert loops in the test. You can use standard web test plug-ins.
-5. Run the test in Visual Studio to make sure it works.
-   
-    The web test runner opens a web browser and repeats the actions you recorded. Make sure it works as you expect.
-   
-    ![In Visual Studio, open the .webtest file and click Run.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
+## <a name="multistep-web-tests"></a>Többlépéses webes tesztek
+Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
-#### 2. Upload the web test to Application Insights
-1. In the Application Insights portal, create a new web test.
-   
-    ![On the web tests blade, choose Add.](./media/app-insights-monitor-web-app-availability/16-another-test.png)
-2. Select multi-step test, and upload the .webtest file.
-   
-    ![Select multi-step webtest.](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
-   
-    Set the test locations, frequency, and alert parameters in the same way as for ping tests.
-
-View your test results and any failures in the same way as for single-url tests.
-
-A common reason for failure is that the test runs too long. It mustn't run longer than two minutes.
-
-Don't forget that all the resources of a page must load correctly for the test to succeed, including scripts, style sheets, images, and so forth.
-
-Note that the web test must be entirely contained in the .webtest file: you can't use coded functions in the test.
-
-### Plugging time and random numbers into your multi-step test
-Suppose you're testing a tool that gets time-dependent data such as stocks from an external feed. When you record your web test, you have to use specific times, but you set them as parameters of the test, StartTime and EndTime.
-
-![A web test with parameters.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
-
-When you run the test, you'd like EndTime always to be the present time, and StartTime should be 15 minutes ago.
-
-Web Test Plug-ins provide the way to do parameterize times.
-
-1. Add a web test plug-in for each variable parameter value you want. In the web test toolbar, choose **Add Web Test Plugin**.
-   
-    ![Choose Add Web Test Plugin and select a type.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
-   
-    In this example, we use two instances of the Date Time Plug-in. One instance is for "15 minutes ago" and another for "now."
-2. Open the properties of each plug-in. Give it a name and set it to use the current time. For one of them, set Add Minutes = -15.
-   
-    ![Set name, Use Current Time, and Add Minutes.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-parameters.png)
-3. In the web test parameters, use {{plug-in name}} to reference a plug-in name.
-   
-    ![In the test parameter, use {{plug-in name}}.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
-
-Now, upload your test to the portal. It uses the dynamic values on every run of the test.
-
-## Dealing with sign-in
-If your users sign in to your app, you have various options for simulating sign-in so that you can test pages behind the sign-in. The approach you use depends on the type of security provided by the app.
-
-In all cases, you should create an account in your application just for the purpose of testing. If possible, restrict the permissions of this test account so that there's no possibility of the web tests affecting real users.
-
-### Simple username and password
-Record a web test in the usual way. Delete cookies first.
-
-### SAML authentication
-Use the SAML plugin that is available for web tests.
-
-### Client secret
-If your app has a sign-in route that involves a client secret, use that route. Azure Active Directory (AAD) is an example of a service that provides a client secret sign-in. In AAD, the client secret is the App Key. 
-
-Here's a sample web test of an Azure web app using an app key:
-
-![Client secret sample](./media/app-insights-monitor-web-app-availability/110.png)
-
-1. Get token from AAD using client secret (AppKey).
-2. Extract bearer token from response.
-3. Call API using bearer token in the authorization header.
-
-Make sure that the web test is an actual client - that is, it has its own app in AAD - and use its clientId + appkey. Your service under test also has its own app in AAD: the appID URI of this app is reflected in the web test in the “resource” field. 
-
-### Open Authentication
-An example of open authentication is signing in with your Microsoft or Google account. Many apps that use OAuth provide the client secret alternative, so your first tactic should be to investigate that possibility. 
-
-If your test must sign in using OAuth, the general approach is:
-
-* Use a tool such as Fiddler to examine the traffic between your web browser, the authentication site, and your app. 
-* Perform two or more sign-ins using different machines or browsers, or at long intervals (to allow tokens to expire).
-* By comparing different sessions, identify the token passed back from the authenticating site, that is then passed to your app server after sign-in. 
-* Record a web test using Visual Studio. 
-* Parameterize the tokens, setting the parameter when the token is returned from the authenticator, and using it in the query to the site.
-  (Visual Studio attempts to parameterize the test, but does not correctly parameterize the tokens.)
-
-## <a name="edit"></a> Edit or disable a test
-Open an individual test to edit or disable it.
-
-![Edit or disable a web test](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
-
-You might want to disable web tests while you are performing maintenance on your service.
-
-## Performance tests
-You can run a load test on your website. Like the availability test, you can send either simple requests or multi-step requests from our points around the world. Unlike an availability test, many requests are sent, simulating multiple simultaneous users.
-
-From the Overview blade, open **Settings**, **Performance Tests**. When you create a test, you are invited to connect to or create a Visual Studio Team Services account. 
-
-When the test is complete, you are shown response times and success rates.
-
-## Automation
-* [Use PowerShell scripts to set up a web test](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/) automatically. 
-* Set up a [webhook](../azure-portal/insights-webhooks-alerts.md) that is called when an alert is raised.
-
-## Questions? Problems?
-* *Can I call code from my web test?*
-  
-    No. The steps of the test must be in the .webtest file. And you can't call other web tests or use loops. But there are several plug-ins that you might find helpful.
-* *Is HTTPS supported?*
-  
-    We support TLS 1.1 and TLS 1.2.
-* *Is there a difference between "web tests" and "availability tests"?*
-  
-    We use the two terms interchangeably.
-* *I'd like to use availability tests on our internal server that runs behind a firewall.*
-  
-    Configure your firewall to permit requests from the [IP addresses   of web test agents](app-insights-ip-addresses.md#availability).
-* *Uploading a multi-step web test fails*
-  
-    There's a size limit of 300 K.
-  
-    Loops aren't supported.
-  
-    References to other web tests aren't supported.
-  
-    Data sources aren't supported.
-* *My multi-step test doesn't complete*
-  
-    There's a limit of 100 requests per test.
-  
-    The test is stopped if it runs longer than two minutes.
-* *How can I run a test with client certificates?*
-  
-    We don't support that, sorry.
-
-## <a name="video"></a>Video
+Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studióval, majd fel kell tölteni a felvételt az Application Insightsba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
+
+Vegye figyelembe, hogy a tesztekben nem használhat kódolt függvényeket: a forgatókönyv lépéseinek szkriptekként kell szerepelniük a .webtest fájlban.
+
+#### <a name="1-record-a-scenario"></a>1. Forgatókönyv rögzítése
+A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise vagy Ultimate verzióját.
+
+1. Hozzon létre egy webes teljesítményt tesztelő projektet.
+
+    ![A Visual Studióban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+2. Nyissa meg a .webtest fájlt, és kezdje meg a rögzítést.
+
+    ![Nyissa meg a .webtest fájlt, és kattintson a Record (Rögzítés) gombra.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
+3. Végezze el a felhasználói műveleteket, amelyeket a teszt során szimulálni kíván: nyissa meg a webhelyet, tegyen a kosárba egy terméket stb. Ezután állítsa le a tesztet.
+
+    ![A webes teszt rögzítője az Internet Explorerben fut.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-record.png)
+
+    A forgatókönyv ne legyen hosszú. Legfeljebb 100 lépésből állhat, és 2 percig tarthat.
+4. Szerkessze a tesztet:
+
+   * Adjon hozzá ellenőrzéseket a kapott szöveg- és válaszkódok ellenőrzéséhez.
+   * Távolítson el minden felesleges interakciót. A képekhez, illetve a hirdető vagy nyomkövetési webhelyekhez tartozó függő kérelmeket is el lehet távolítani.
+
+     Ne feledje, hogy csak a teszt szkriptjét szerkesztheti, tehát nem adhat hozzá egyéni kódot, és nem hívhat meg más webes teszteket. Ne szúrjon be hurkokat a tesztbe. Használhatja a normál webes teszt beépülő modulokat.
+5. A működés ellenőrzéséhez futtassa a tesztet a Visual Studióban.
+
+    A webes teszt futtatója megnyit egy webböngészőt, és megismétli a rögzített műveleteket. Győződjön meg arról, hogy a várakozásainak megfelelően működik.
+
+    ![A Visual Studióban nyissa meg a .webtest fájlt, majd kattintson a Run (Futtatás) gombra.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
+
+#### <a name="2-upload-the-web-test-to-application-insights"></a>2. A webes teszt feltöltése az Application Insightsba
+1. Az Application Insights portálon hozzon létre egy új webes tesztet.
+
+    ![A webes teszt panelen válassza a Hozzáadás elemet.](./media/app-insights-monitor-web-app-availability/16-another-test.png)
+2. Válassza ki a többlépéses tesztet, majd töltse fel a .webtest fájlt.
+
+    ![Válassza ki a többlépéses webtesztet.](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
+
+    Válassza ki a tesztelési helyeket, a tesztelés gyakoriságát és riasztási paramétereit ugyanúgy, mint a ping teszteknél.
+
+Tekintse meg a teszt eredményeit és a hibákat ugyanúgy, mint az egyetlen URL-címre kiterjedő teszteknél.
+
+A hibák gyakori oka, hogy a teszt túl hosszú ideig fut. A teszt nem tarthat tovább két percnél.
+
+Ne feledje, hogy az oldal összes erőforrásának megfelelően kell betöltődnie ahhoz, hogy a teszt sikeres legyen, beleértve a szkripteket, stíluslapokat, képeket stb.
+
+Vegye figyelembe, hogy a .webtest fájlnak a teljes webes tesztet tartalmaznia kell: a tesztben nem használhat kódolt függvényeket.
+
+### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
+Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, például részvényeket egy külső adatcsatornától. A webes teszt rögzítésekor meghatározott időpontokat kell használni, de ezeket a teszt StartTime és EndTime paramétereiként kell beállítani.
+
+![Egy webes teszt paraméterekkel.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
+
+A teszt futtatásakor az EndTime paraméternek mindig az aktuális időnek kell lennie, a StartTime paraméternek pedig a 15 perccel korábbi időnek.
+
+A webes teszt beépülő modulok lehetővé teszik az idő paraméterezését.
+
+1. Adjon hozzá egy webes teszt beépülő modult minden kívánt változóparaméter-értékhez. A webes teszt eszköztárában válassza ki a **Webes teszt beépülő modul hozzáadása** elemet.
+
+    ![Válassza ki a Webes teszt beépülő modul hozzáadása elemet, majd válasszon egy típust.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
+
+    Ebben a példában a Dátum és idő beépülő modul két példányát használjuk. Az egyik példány a „15 perccel ezelőtt” a másik pedig a „most” paraméterértékhez tartozik.
+2. Nyissa meg a beépülő modulok tulajdonságait. Adjon meg egy nevet, és állítsa be úgy, hogy az aktuális időt használja. Az egyiknél állítsa be a következőt: Add Minutes = -15.
+
+    ![Beállított Name, Use Current Time, és Add Minutes.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-parameters.png)
+3. A webes teszt paramétereiben a beépülő modulok nevére a {{plug-in name}} segítségével hivatkozzon.
+
+    ![A tesztparaméterében használja a {{plug-in name}} elemet.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
+
+Ezután töltse fel a tesztet a portálra. Ez a teszt minden futtatásánál a dinamikus értékeket használja.
+
+## <a name="dealing-with-signin"></a>A bejelentkezés kezelése
+Ha a felhasználók bejelentkeznek az alkalmazásába, számos lehetősége van a bejelentkezés szimulálására a bejelentkezés után megjelenő lapok teszteléséhez. A használt megközelítés az alkalmazás által kínált biztonság típusától függ.
+
+Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési célra. Ha lehetséges, korlátozza az engedélyt ezen a tesztfiókon, így elkerülheti, hogy a webes tesztek hatással legyenek a tényleges felhasználókra.
+
+### <a name="simple-username-and-password"></a>Egyszerű felhasználónév és jelszó
+Rögzítsen egy webes tesztet a szokásos módon. Először törölje a cookie-kat.
+
+### <a name="saml-authentication"></a>SAML-hitelesítés
+Használhatja a webes tesztek számára elérhető SAML beépülő modult.
+
+### <a name="client-secret"></a>Titkos ügyfélkulcs
+Ha az alkalmazás bejelentkezési módja titkos ügyfélkódot igényel, használja azt a módot. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs.
+
+Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre találhat példát:
+
+![Titkos ügyfélkulcs-minta](./media/app-insights-monitor-web-app-availability/110.png)
+
+1. Szerezze be a tokent az AAD-ből a titkos ügyfélkulcs használatával (AppKey).
+2. Nyerje ki a tulajdonosi jogkivonatot a válaszból.
+3. Az engedélyezési fejléc tulajdonosi jogkivonatával hívja meg az API-t.
+
+Győződjön meg róla, hogy a webes teszt egy tényleges ügyfél – saját alkalmazása van az AAD-ben –, valamint használja a clientId + appkey értékét. A teszt alatt álló szolgáltatása is rendelkezik saját alkalmazással az AAD-ben: az alkalmazás appID URI-ja a webes teszt „resource” mezőjében látható.
+
+### <a name="open-authentication"></a>Nyílt hitelesítés
+Nyílt hitelesítés például a Microsoft- vagy Google-fiókkal történő bejelentkezés. Számos OAuth protokollt használó alkalmazás biztosítja a titkos ügyfélkódos alternatívát, így az első feladat ennek a lehetőségnek a megvizsgálása.
+
+Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközelítés a következő:
+
+* Használjon egy eszközt, például a Fiddlert a webböngésző, a hitelesítési hely és az alkalmazás közötti forgalom vizsgálatához.
+* Jelentkezzen be legalább két alkalommal különböző gépek vagy böngészők használatával, illetve hosszú időközönként (hogy a tokennek legyen ideje lejárni).
+* A különböző munkamenetek összehasonlításával azonosítsa a hitelesítési helyről visszaadott tokent, amelyet a rendszer a bejelentkezést követően továbbad az alkalmazáskiszolgálónak.
+* Rögzítsen egy webes tesztet a Visual Studióval.
+* Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitelesítő visszaküldi a tokent, és használja a webhely felé indított lekérdezésben.
+  (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
+
+## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> Teszt szerkesztése vagy letiltása
+Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
+
+![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+
+Érdemes letiltani a webes teszteket, miközben karbantartást végez a szolgáltatáson.
+
+## <a name="performance-tests"></a>Teljesítménytesztek
+Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
+
+Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítménytesztek** elemet. Teszt létrehozásakor egy kérést kap arra, hogy csatlakozzon a Visual Studio Team Services-fiókhoz, vagy hozzon létre egyet.
+
+A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
+
+## <a name="automation"></a>Automatizálás
+* [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/).
+* Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
+
+## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
+* *Meghívhatok egy kódot a webes tesztből?*
+
+    Nem. A .webtest fájlnak tartalmaznia kell a teszt lépéseit. Nem hívhat meg más teszteket, és nem használhat hurkokat. Azonban számos beépülő modul van, amely hasznos lehet.
+* *Támogatott a HTTPS?*
+
+    A TLS 1.1 és a TLS 1.2 támogatott.
+* *Van különbség a „webes tesztek” és a „rendelkezésre állási tesztek” között?*
+
+    A két kifejezés ugyanazt jelenti.
+* *Rendelkezésre állási teszteket szeretnék használni a tűzfal mögött futó belső kiszolgálón.*
+
+    Konfigurálja úgy a tűzfalat, hogy engedélyezi a [webes tesztügynökök IP-címeiről](app-insights-ip-addresses.md) érkező kéréseket.
+* *A többlépéses teszt feltöltése sikertelen*
+
+    A méretkorlát: 300 KB.
+
+    A hurkok nem támogatottak.
+
+    A más webes tesztekre mutató hivatkozások nem támogatottak.
+
+    Az adatforrások nem támogatottak.
+* *A többlépéses teszt nem fejeződik be*
+
+    Egy teszt legfeljebb 100 kérelemből állhat.
+
+    A teszt leáll, ha két percnél tovább fut.
+* *Hogyan futtathatok tesztet ügyféltanúsítványokkal?*
+
+    Sajnos azt nem támogatjuk.
+
+## <a name="a-namevideoavideo"></a><a name="video"></a>Videó
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
-> 
-> 
+>
+>
 
-## <a name="next"></a>Next steps
-[Search diagnostic logs][diagnostic]
+## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
+[Diagnosztikai naplók keresése][diagnostic]
 
-[Troubleshooting][qna]
+[Hibaelhárítás][qna]
 
-[IP addresses of web test agents](app-insights-ip-addresses.md)
+[A webes tesztügynökök IP-címei](app-insights-ip-addresses.md)
 
 <!--Link references-->
 
 [azure-availability]: ../insights-create-web-tests.md
-[diagnostic]: app-insights-diagnostic-search.md
+[diagnosztika]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

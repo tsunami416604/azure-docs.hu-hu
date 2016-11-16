@@ -184,15 +184,18 @@
 ## [Adatok](https://go.microsoft.com/fwlink/p/?linkid=833404)
 ## [Adatfelületek](https://go.microsoft.com/fwlink/p/?linkid=833406)
 ## [Rendszer](https://go.microsoft.com/fwlink/p/?linkid=833407)
-## [PowerShell](https://go.microsoft.com/fwlink/p/?linkid=833408)
-## [REST API](https://go.microsoft.com/fwlink/p/?LinkID=532910)
-## [Java API](https://go.microsoft.com/fwlink/p/?linkid=833410)
 ## [Mintakód](http://aka.ms/servicefabricsamples)
+## [PowerShell](/powershell/servicefabric/vlatest/servicefabric)
+## [Java API](https://go.microsoft.com/fwlink/p/?linkid=833410)
+## [.NET](/dotnet/api)
+## [REST](/rest/api/servicefabric/)
 
 # Erőforrások
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric&updatetype=&platform=)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,14 +1,14 @@
 ---
-title: Azure tárolószolgáltatás-fürt üzembe helyezése | Microsoft Docs
-description: Azure tárolószolgáltatás-fürt üzembe helyezése az Azure Portal, az Azure CLI vagy a PowerShell használatával.
+title: "Azure tárolószolgáltatás-fürt üzembe helyezése | Microsoft Docs"
+description: "Azure tárolószolgáltatás-fürt üzembe helyezése az Azure Portal, az Azure CLI vagy a PowerShell használatával."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, tárolók, mikroszolgáltatások, Mesos, Azure
-
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+ms.assetid: 696a736f-9299-4613-88c6-7177089cfc23
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,14 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
+
 
 ---
-# Azure  tárolószolgáltatás-fürt üzembe helyezése
+# <a name="deploy-an-azure-container-service-cluster"></a>Azure  tárolószolgáltatás-fürt üzembe helyezése
 Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt forráskódú tárolófürtözési és vezénylési megoldásokat. Az Azure tárolószolgáltatás lehetővé teszi, hogy DC/OS- és Docker Swarm-fürtöket helyezzen üzembe Azure Resource Manager-sablonok vagy az Azure portál használatával. A fürtöket az Azure virtuálisgép-skálázási készleteivel helyezheti üzembe. A fürtök igénybe vehetik az Azure hálózati és tárolási szolgáltatásait. Az Azure tárolószolgáltatás eléréséhez Azure-előfizetés szükséges. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
 
 E dokumentum részletes útmutatása alapján üzembe helyezhet egy Azure tárolószolgáltatás-fürtöt az [Azure portál](#creating-a-service-using-the-azure-portal), az [Azure parancssori felülete (CLI)](#creating-a-service-using-the-azure-cli) vagy az [Azure PowerShell modul](#creating-a-service-using-powershell) használatával.  
 
-## Szolgáltatás létrehozása az Azure Portal használatával
+## <a name="create-a-service-by-using-the-azure-portal"></a>Szolgáltatás létrehozása az Azure Portal használatával
 Jelentkezzen be az Azure Portalra, válassza az **Új** lehetőséget, és az Azure Marketplace-en keresse meg az **Azure Container Service** elemet.
 
 ![1. üzemelő példány létrehozása](media/acs-portal1.png)  <br />
@@ -38,7 +42,7 @@ Adja meg a következő információkat:
 * **Előfizetés**: válasszon ki egy Azure-előfizetést.
 * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
 * **Hely**: válassza ki azt az Azure-régiót, amelyben az Azure Container Service-t üzembe kívánja helyezni.
-* **Nyilvános SSH kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Nagyon fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az „ssh-rsa” előtag és a „felhasználónév@tartomány” utótag. A következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azurefelhasználó@linuxvm**. A Secure Shell- (SSH-) kulcsok létrehozására vonatkozó útmutatásért tekintse meg a [Linuxra](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) és a [Windowsra](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) vonatkozó cikkeket.
+* **Nyilvános SSH kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Nagyon fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az „ssh-rsa” előtag és a 'username@domain' utótag. A következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. A Secure Shell- (SSH-) kulcsok létrehozására vonatkozó útmutatásért tekintse meg a [Linuxra](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) és a [Windowsra](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) vonatkozó cikkeket.
 
 Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
@@ -78,12 +82,12 @@ Ha úgy döntött, hogy rögzíti az üzembe helyezést az Azure Portalon, megte
 
 Az üzembe helyezés befejezése után az Azure tárolószolgáltatás-fürt használatra kész.
 
-## Szolgáltatáspéldány létrehozása az Azure CLI használatával
+## <a name="create-a-service-by-using-the-azure-cli"></a>Szolgáltatáspéldány létrehozása az Azure CLI használatával
 Az Azure tárolószolgáltatás-példány parancssorban történő létrehozásához Azure előfizetésre van szükség. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Ezen felül [telepítenie](../xplat-cli-install.md) és [konfigurálnia](../xplat-cli-connect.md) kell az Azure CLI-t is.
 
 DC/OS- vagy Docker Swarm-fürt üzembe helyezéséhez válassza az alábbi GitHub-sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
 
-* [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Győződjön meg róla, hogy az Azure CLI csatlakoztatva van egy Azure-előfizetéshez. Ehhez futtassa az alábbi parancsot:
@@ -118,7 +122,7 @@ Hozzon létre egy Azure-erőforráscsoportot és egy tárolószolgáltatás-für
 azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
 ```
 
-### A sablon paramétereinek megadása
+### <a name="provide-template-parameters"></a>A sablon paramétereinek megadása
 Ebben a parancsverzióban a paramétereket interaktív módon kell megadni. Ha paramétereket szeretne megadni, például egy JSON-formátumú karakterláncot, akkor használja a `-p` kapcsolót. Példa:
 
  ```bash
@@ -133,12 +137,12 @@ azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMP
 
 Ha szeretne megtekinteni egy példát a paraméterfájlra, keresse meg az `azuredeploy.parameters.json` nevű fájlt a GitHubon az Azure tárolószolgáltatás-sablonokkal.
 
-## Szolgáltatáspéldány létrehozása a PowerShell használatával
+## <a name="create-a-service-by-using-powershell"></a>Szolgáltatáspéldány létrehozása a PowerShell használatával
 Azure tárolószolgáltatás-fürtöt a PowerShell használatával is üzembe helyezhet. Ez a dokumentum az [Azure PowerShell modul](https://azure.microsoft.com/blog/azps-1-0/) 1.0-s verziója alapján készült.
 
 DC/OS- vagy Docker Swarm-fürt üzembe helyezéséhez válassza ki az alábbi sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
 
-* [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Mielőtt az Azure-előfizetésében létrehozna egy fürtöt, győződjön meg arról, hogy a PowerShell-munkamenet bejelentkezett az Azure-ba. Ezt a `Get-AzureRMSubscription` paranccsal teheti meg:
@@ -165,7 +169,7 @@ Miután létrehozott egy erőforráscsoport, a fürtöt az alábbi paranccsal ho
 New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
 ```
 
-### A sablon paramétereinek megadása
+### <a name="provide-template-parameters"></a>A sablon paramétereinek megadása
 Ha már használta a PowerShellt, biztosan tudja, hogy a parancsmag elérhető paraméterei között a mínuszjel (-) beírásával, majd a TAB billentyű lenyomásával válthat. Ez a funkció a sablonban megadott saját paraméterekkel is működik. Amint beírja a sablon nevét, a parancsmag beolvassa a sablont, elemzi a paramétereket, és dinamikusan hozzáadja a parancshoz a sablon paramétereit. Ez jelentősen megkönnyíti a sablon-paraméterértékek megadását. Ha megfeledkezik egy kötelező paraméterértékről, a PowerShell kérni fogja azt.
 
 Az alábbiakban a teljes parancs látható paraméterekkel együtt. Az erőforrások neveinél saját értékeket is megadhat.
@@ -174,13 +178,16 @@ Az alábbiakban a teljes parancs látható paraméterekkel együtt. Az erőforr�
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsolatra és a felügyeletre vonatkozó részletekért:
 
-* [Csatlakozás Azure tárolószolgáltatási fürthöz](container-service-connect.md)
+* [Csatlakozás Azure Container Service-fürthöz](container-service-connect.md)
 * [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
 * [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

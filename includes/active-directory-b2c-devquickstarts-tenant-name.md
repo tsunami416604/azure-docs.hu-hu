@@ -1,8 +1,10 @@
 > [!NOTE]
-> Your B2C tenant's name is the domain that you entered during tenant creation, and is displayed on the directory blade in the Azure preview portal.  It usually ends with the suffix `.onmicrosoft.com`, for instance, `contosob2c.onmicrosoft.com`.
+> A B2C bérlő neve az a tartomány, amelyet a bérlő létrehozásakor megadott, és az Azure Betekintő portál címtárpaneljén látható.  Általában az `.onmicrosoft.com` utótaggal végződik, pl.: `contosob2c.onmicrosoft.com`.
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

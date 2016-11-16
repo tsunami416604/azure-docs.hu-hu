@@ -1,12 +1,12 @@
 ---
-title: Az Azure Event Hubs áttekintése | Microsoft Docs
-description: Az Azure Event Hubs bemutatása és áttekintése.
+title: "Az Azure Event Hubs áttekintése | Microsoft Docs"
+description: "Az Azure Event Hubs bemutatása és áttekintése."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: f0e0dd20-f745-49c7-bfca-30ea1c46e873
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: df9897894a2a2a09735b0947fd335959e81a46cd
+
 
 ---
 # <a name="azure-event-hubs-overview"></a>Azure Event Hubs – áttekintés
@@ -25,7 +29,7 @@ Az Azure Event Hubs egy eseményfeldolgozási szolgáltatás, amely a felhőbe i
 
 Az eseményközpontok az Event Hubsban névterek szintjén hozhatók létre, hasonlóan a Service Bus üzenetsoraihoz és témaköreihez. Az Event Hubs AMQP-t és HTTP-t használ elsődleges API felületként. Az alábbi ábrán az Event Hubs és a Service Bus közötti kapcsolat látható.
 
-![Event Hubs](./media/event-hubs-overview/IC741188.png)
+![Event Hubs](./media/event-hubs-overview/ehoverview2.png)
 
 ## <a name="conceptual-overview"></a>Fogalmi áttekintés
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül. Az üzenetsorok és témakörök a [versengő felhasználó](https://msdn.microsoft.com/library/dn568101.aspx) modellt használják, amelyben mindegyik felhasználó ugyanabból az üzenetsorból vagy erőforrásból próbál olvasni. Az erőforrásokért való versengés végül összetettségi és skálázhatósági korlátokat eredményez a streamfeldolgozási alkalmazásokban. Az Event Hubs egy particionált felhasználói mintát használ, amelyben mindegyik felhasználó az üzenetstream csak egy adott részhalmazát, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el.
@@ -48,13 +52,13 @@ Az Event Hubs környezetében az üzenetekre *eseményadat* néven hivatkozunk. 
 ## <a name="event-publisher"></a>Esemény-közzétevő
 Minden entitás, amely eseményeket vagy adatokat küld egy eseményközpontnak *esemény-közzétevőnek* számít. Az esemény-közzétevők a HTTPS vagy az AMQP 1.0 használatával tehetik közzé az eseményeket. Az esemény-közzétevők egy közös hozzáférésű jogosultságkód- (SAS-) token használatával azonosítják magukat az eseményközpontok felé, és rendelkezhetnek egyedi azonosítóval vagy közös SAS-tokennel is, a forgatókönyv követelményeitől függően.
 
-További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
+További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
 
 ### <a name="common-publisher-tasks"></a>Általános közzétevői feladatok
 Ez a szakasz az esemény-közzétevők gyakori feladatait ismerteti.
 
 #### <a name="acquire-a-sas-token"></a>SAS-token beszerzése
-A közös hozzáférésű jogosultságkód (SAS) az Event Hubs hitelesítési mechanizmusa. A Service Bus biztosítja a SAS-házirendeket a névtér és az eseményközpont szintjén. A SAS-tokent egy SAS-kulcsból hozza létre a rendszer, és egy URL SHA-kivonata egy meghatározott formátumban kódolva. A kulcs neve (házirend) és a token együttes használatával a Service Bus képes újra létrehozni a kivonatot, és így azonosítani a küldőt. Az esemény-közzétevők SAS-tokenje általában egy adott eseményközpontban, csak **küldési** jogosultságokkal hozható létre. Ez a SAS-tokenes URL-mechanizmus az alapja a közzétevők a közzétevői házirendben bevezetett azonosításának. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
+A közös hozzáférésű jogosultságkód (SAS) az Event Hubs hitelesítési mechanizmusa. A Service Bus biztosítja a SAS-házirendeket a névtér és az eseményközpont szintjén. A SAS-tokent egy SAS-kulcsból hozza létre a rendszer, és egy URL SHA-kivonata egy meghatározott formátumban kódolva. A kulcs neve (házirend) és a token együttes használatával a Service Bus képes újra létrehozni a kivonatot, és így azonosítani a küldőt. Az esemény-közzétevők SAS-tokenje általában egy adott eseményközpontban, csak **küldési** jogosultságokkal hozható létre. Ez a SAS-tokenes URL-mechanizmus az alapja a közzétevők a közzétevői házirendben bevezetett azonosításának. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
 
 #### <a name="publishing-an-event"></a>Esemény közzététele
 Az eseményeket az AMQP 1.0 vagy HTTPS használatával teheti közzé. A Service Bus az [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) osztályt biztosítja az események a .NET-ügyfelekről az eseményközpontokba való közzétételéhez. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Az egyes közzétételekre (eseményadat-példány) 256 KB-os korlát érvényes, függetlenül attól, hogy önálló vagy kötegelt közzétételről van-e szó. Az ennél nagyobb események közzététele hibát eredményezhet. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
@@ -115,7 +119,7 @@ Az Event Hubs átviteli kapacitásának szabályozása az átviteli egységek r�
 * Bemenő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény.
 * Kimenő forgalom: másodpercenként legfeljebb 2 MB.
 
-A befelé irányuló forgalmat a megvásárolt átviteli egységek mennyisége által biztosított kapacitás szabályozza. Az ezen felül küldött adatmennyiség esetén a rendszer a „kvóta túllépve” kivételt adja vissza. Ez a mennyiség másodpercenként 1 MB vagy 1000 esemény, amelyiket a forgalom előbb eléri. A kimenő forgalom nem eredményez szabályozási kivételeket, azonban a megvásárolt átviteli egységek által biztosított adatátviteli kapacitásra van korlátozva, ami másodpercenként 2 MB átviteli egységenként. Ha közzétételi-sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt ahhoz a névtérhez, amelyben az eseményközpont létre lett hozva. További átviteli egységek beszerzéséhez módosíthatja a [klasszikus Azure portál][klasszikus Azure portál] a **Scale** (Méret) lapján található **Namespaces** (Névterek) lap megfelelő beállítását. A beállítást az Azure API-k használatával is módosíthatja.
+A befelé irányuló forgalmat a megvásárolt átviteli egységek mennyisége által biztosított kapacitás szabályozza. Az ezen felül küldött adatmennyiség esetén a rendszer a „kvóta túllépve” kivételt adja vissza. Ez a mennyiség másodpercenként 1 MB vagy 1000 esemény, amelyiket a forgalom előbb eléri. A kimenő forgalom nem eredményez szabályozási kivételeket, azonban a megvásárolt átviteli egységek által biztosított adatátviteli kapacitásra van korlátozva, ami másodpercenként 2 MB átviteli egységenként. Ha közzétételi-sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt ahhoz a névtérhez, amelyben az eseményközpont létre lett hozva. További átviteli egységek beszerzéséhez módosíthatja a [klasszikus Azure portál][klasszikus Azure portál] **Scale** (Méret) lapján található **Namespaces** (Névterek) lap megfelelő beállítását. A beállítást az Azure API-k használatával is módosíthatja.
 
 Amíg a partíció egy adatrendezési fogalom, addig az átviteli egység tisztán kapacitási. Az átviteli egységek óraalapú díjszabással rendelkeznek, és előre kell megvásárolni őket. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Az Event Hubs-névterekhez legfeljebb 20 átviteli egység vásárolható, és Azure-fiókonként is legfeljebb 20 átviteli egység szerezhető be. Az átviteli egységek közösen használhatóak egy adott névtér összes eseményközpontjában.
 
@@ -130,7 +134,7 @@ Az Event Hubs lehetővé teszi az esemény-közzétevők részletes szabályozá
 
     //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 
-Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük kell az esemény közzétételekor használt SAS-tokennel a független közzétevő-azonosságok biztosítása érdekében. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával). A közzétevői házirendek használatakor a **PartitionKey** értéke a közzétevő neve lesz. A megfelelő működéshez ezeknek az értékeknek egyezniük kell.
+Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük kell az esemény közzétételekor használt SAS-tokennel a független közzétevő-azonosságok biztosítása érdekében. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus-messaging/service-bus-shared-access-signature-authentication.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával). A közzétevői házirendek használatakor a **PartitionKey** értéke a közzétevő neve lesz. A megfelelő működéshez ezeknek az értékeknek egyezniük kell.
 
 ## <a name="summary"></a>Összefoglalás
 Az Azure Event Hubs egy nagy kapacitású esemény- és telemetria-feldolgozási szolgáltatás, amelynek használatával általános alkalmazás- és felhasználói munkafolyamat-figyelés végezhető bármilyen léptékben. Az alacsony késésű és nagy méretű közzétételi-feliratkozási képességek biztosításával az Event Hubs az „első lépcsőfok” a Big Data kezelése irányában. A közzététel-alapú identitás- és visszavonási listák révén ezek a képességek kiterjeszthetőek az eszközök internetes hálózatát (IoT) érintő általános forgatókönyvekre is. További információ az Event Hubs-alkalmazások fejlesztésével kapcsolatban: [Event Hubs programming guide](event-hubs-programming-guide.md) (Event Hubs programozási útmutató).
@@ -147,6 +151,6 @@ Most, hogy megismerkedett az Event Hubshoz kapcsolódó fogalmakkal, továbblép
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

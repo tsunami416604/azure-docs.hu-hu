@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával
-description: Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-eszközökön üzembe helyezett Unity-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében.
+title: "Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával"
+description: "Ismerje meg, hogyan használható az Azure Mobile Engagement az iOS-eszközökön üzembe helyezett Unity-alkalmazásokhoz kapcsolódó elemzések és leküldéses értesítések tekintetében."
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
-manager: ''
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 7ddfbac3-8d13-4ebe-b061-c865f357297f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-unity-ios
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
+
 
 ---
-# Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával
+# <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Unity-alkalmazás szegmentált felhasználói számára való küldéséhez iOS-eszközön való üzembe helyezés esetén.
@@ -33,11 +37,11 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-## <a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
-### A Unity-csomag importálása
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+### <a name="import-the-unity-package"></a>A Unity-csomag importálása
 1. Töltse le a [Mobile Engagement Unity-csomagot](https://aka.ms/azmeunitysdk), és mentse a helyi gépére. 
 2. Lépjen az **Assets -> Import Package -> Custom Package** (Eszközök -> Csomag importálása -> Egyéni csomag) lehetőségre, majd válassza ki az előző lépésben letöltött csomagot. 
    
@@ -49,13 +53,13 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
    
     ![][72] 
 
-### Az EngagementConfiguration frissítése
+### <a name="update-the-engagementconfiguration"></a>Az EngagementConfiguration frissítése
 1. Nyissa meg az **EngagementConfiguration** parancsfájlt az SDK mappából, és frissítse az **IOS\_CONNECTION\_STRING** elemet az Azure Portalról korábban beszerzett kapcsolati karakterlánccal.  
    
     ![][73]
 2. Mentse a fájlt. 
 
-### Az alkalmazás konfigurálása alapszintű nyomkövetéshez
+### <a name="configure-the-app-for-basic-tracking"></a>Az alkalmazás konfigurálása alapszintű nyomkövetéshez
 1. Nyissa meg szerkesztésre a lejátszóobjektumhoz csatolt **PlayerController** parancsfájlt. 
 2. Adja hozzá a következő using utasítást:
    
@@ -65,7 +69,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
         EngagementAgent.Initialize();
         EngagementAgent.StartActivity("Home");
 
-### Az alkalmazás üzembe helyezése és futtatása
+### <a name="deploy-and-run-the-app"></a>Az alkalmazás üzembe helyezése és futtatása
 1. Csatlakoztasson a gépéhez egy iOS-eszközt. 
 2. Nyissa meg a **File -> Build Settings** (Fájl -> Létrehozási beállítások) menüpontot. 
    
@@ -90,10 +94,10 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
     ![][75]
 9. Most futtassa az alkalmazást XCode-ban. Ekkor a csomag üzembe lesz helyezve a csatlakoztatott eszközön, és a Unity-játék megjelenik a telefonon. 
 
-## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alkalmazásban nem kell további konfigurációt elvégezni az értesítések fogadásához, mivel az már be van erre állítva.
 
@@ -115,6 +119,6 @@ Az alkalmazásban nem kell további konfigurációt elvégezni az értesítések
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

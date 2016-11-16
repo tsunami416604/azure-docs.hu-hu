@@ -8,6 +8,8 @@ A hozzáférés-kezelés használatával kapcsolatos további információk a k�
 * [Bevezetés a hozzáférés-kezelés Azure Portalon történő használatába](../articles/active-directory/role-based-access-control-what-is.md)
 * [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../articles/active-directory/role-based-access-control-configure.md)
 
-<!--HONumber=Sep16_HO5-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

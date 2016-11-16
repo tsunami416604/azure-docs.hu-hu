@@ -1,39 +1,81 @@
 ---
-title: Az Azure Data Lake Analytics használatának első lépései a .NET SDK-val | Microsoft Docs
-description: 'Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t Data Lake Store-fiókok létrehozásához, Data Lake Analytics-feladatok létrehozásához, valamint a U-SQL nyelven írt feladatok elküldéséhez. '
+title: "Az Azure Data Lake Analytics használatának első lépései a .NET SDK-val | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t Data Lake Store-fiókok létrehozásához, Data Lake Analytics-feladatok létrehozásához, valamint a U-SQL nyelven írt feladatok elküldéséhez. "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 1dfcbc3d-235d-4074-bc2a-e96def8298b6
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/23/2016
+ms.date: 10/26/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+
 
 ---
-# Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései a .NET SDK-val
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-net-sdk"></a>Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései a .NET SDK-val
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure .NET SDK-t a [U-SQL](data-lake-analytics-u-sql-get-started.md) nyelven írt feladatok elküldéséhez a Data Lake Analytics szolgáltatásba. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 Az oktatóanyag során elkészít egy C#-konzolalkalmazást egy olyan U-SQL-feladat elküldéséhez, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, kattintson a cikk tetején található fülekre.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012 és telepített Visual C++**.
 * **Microsoft Azure SDK for .NET 2.5-ös vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
 * **Egy Azure Data Lake Analytics-fiók**. Lásd: [Manage Data Lake Analytics using Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) (A Data Lake Analytics kezelése az Azure .NET SDK-val).
 
-## Konzolalkalmazás létrehozása
-Az oktatóanyag során keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban. 
+## <a name="create-console-application"></a>Konzolalkalmazás létrehozása
+Az alábbi oktatóanyagban keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban. 
 
 A mintául szolgáló keresési napló a nyilvános Azure blobtárolóban található. Az alkalmazásban le fogja tölteni a fájlt a munkaállomására, majd feltölti a fájlt a Data Lake Analytics-fiók alapértelmezett Data Lake Store-fiókjába.
+
+**U-SQL-parancsprogram létrehozása**
+
+A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
+
+Hozzon létre egy **SampleUSQLScript.txt** nevű fájlt a következő U-SQL-parancsprogrammal, és helyezze a fájlt a **C:\temp\** mappába.  Az elérési út nem változtatható a következő eljárással létrehozandó .NET-alkalmazásban.  
+
+    @searchlog =
+        EXTRACT UserId          int,
+                Start           DateTime,
+                Region          string,
+                Query           string,
+                Duration        int?,
+                Urls            string,
+                ClickedUrls     string
+        FROM "/Samples/Data/SearchLog.tsv"
+        USING Extractors.Tsv();
+
+    OUTPUT @searchlog   
+        TO "/Output/SearchLog-from-Data-Lake.csv"
+    USING Outputters.Csv();
+
+Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** segítségével, majd létrehoz egy csv-fájlt az **Outputters.Csv()** használatával. 
+
+A C# programban elő kell készítenie a **/Samples/Data/SearchLog.tsv** fájlt és az **/Output/** mappát.    
+
+Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa: 
+
+    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+
+A társított Storage-fiókokban lévő fájlok eléréséhez abszolút elérési utat kell használnia.  A társított Azure Storage-fiókban tárolt fájlok szintaxisa:
+
+    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+
+> [!NOTE]
+> Az Azure Data Lake szolgáltatásnak van egy ismert hibája.  Ha a példaalkalmazás megszakad vagy hibába ütközik, előfordulhat, hogy manuálisan kell törölnie a szkript által létrehozott Data Lake Store- és Data Lake Analytics-fiókokat.  Ha nem ismeri az Azure Portalt, [Az Azure Data Lake Analytics kezelése az Azure Portal használatával](data-lake-analytics-manage-use-portal.md) című útmutatóból elsajátíthatja az első lépéseket.       
+> 
+> 
 
 **Alkalmazás létrehozása**
 
@@ -46,40 +88,7 @@ A mintául szolgáló keresési napló a nyilvános Azure blobtárolóban talál
         Install-Package Microsoft.Azure.Management.DataLake.StoreUploader -Pre
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package WindowsAzure.Storage
-4. Adjon hozzá egy új fájlt a **SampleUSQLScript.txt** nevű projekthez, majd illessze be az alábbi U-SQL-parancsfájlt. A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
-   
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv"
-            USING Extractors.Tsv();
-   
-        OUTPUT @searchlog   
-            TO "/Output/SearchLog-from-Data-Lake.csv"
-        USING Outputters.Csv();
-   
-    Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** segítségével, majd létrehoz egy csv-fájlt az **Outputters.Csv()** használatával. 
-   
-    A C# programban elő kell készítenie a **/Samples/Data/SearchLog.tsv** fájlt, és az **/Output/** mappát.    
-   
-    Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa: 
-   
-        adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-   
-    A társított tárfiókokban lévő fájlok eléréséhez abszolút elérési utakat kell használnia.  A társított Azure Storage-fiókban tárolt fájlok szintaxisa:
-   
-        wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-   
-   > [!NOTE]
-   > Az Azure Data Lake szolgáltatásnak van egy ismert hibája.  Ha a példaalkalmazás megszakad vagy hibába ütközik, előfordulhat, hogy manuálisan kell törölnie a szkript által létrehozott Data Lake Store- és Data Lake Analytics-fiókokat.  Ha nem ismeri a portált, [Az Azure Data Lake Analytics kezelése az Azure portállal](data-lake-analytics-manage-use-portal.md) című útmutatóból elsajátíthatja az első lépéseket.       
-   > 
-   > 
-5. A Program.cs fájlba illessze be az alábbi kódot:
+4. A Program.cs fájlba illessze be az alábbi kódot:
    
         using System;
         using System.IO;
@@ -134,7 +143,7 @@ A mintául szolgáló keresési napló a nyilvános Azure blobtárolóban talál
                 // Download job output
                 DownloadFile(@"/Output/SearchLog-from-Data-Lake.csv", localFolderPath + "SearchLog-from-Data-Lake.csv");
 
-                WaitForNewline("Job output downloaded. You can now exit.");
+                  WaitForNewline("Job output downloaded. You can now exit.");
             }
 
             public static ServiceClientCredentials AuthenticateAzure(
@@ -237,7 +246,7 @@ A mintául szolgáló keresési napló a nyilvános Azure blobtárolóban talál
     ![Azure Data Lake Analytics-feladat U-SQL .NET SDK-kimenete](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
 2. Ellenőrizze a kimeneti fájlt.  Az alapértelmezett útvonal és a fájlnév a c:\Temp\SearchLog-from-Data-Lake.csv.
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
 * Ismerkedés a U-SQL-alkalmazások fejlesztésével: [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) (U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával).
@@ -245,6 +254,9 @@ A mintául szolgáló keresési napló a nyilvános Azure blobtárolóban talál
 * Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).
 * A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

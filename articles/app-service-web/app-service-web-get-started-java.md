@@ -1,22 +1,26 @@
 ---
-title: Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban | Microsoft Docs
-description: Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti.
+title: "Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban | Microsoft Docs"
+description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
 services: app-service\web
-documentationcenter: ''
+documentationcenter: 
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/16/2016
+ms.date: 10/13/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9c59def4fd3fbc9d94d922bc2e7a7c077a465b21
+
 
 ---
-# Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban
+# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes"></a>Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban
 Ez az oktatóanyag segítséget nyújt egy egyszerű Java-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
 
@@ -26,7 +30,7 @@ Az alábbiakat fogja elvégezni:
 * Java-mintaalkalmazás üzembe helyezése.
 * A kód élőben, üzemi környezetben való futtatása.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * Szerezzen be egy FTP-/FTPS-ügyfelet, például a [FileZillát](https://filezilla-project.org/).
 * Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
@@ -37,7 +41,7 @@ Az alábbiakat fogja elvégezni:
 
 <a name="create"></a>
 
-## Webalkalmazás létrehozása
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 2. Kattintson az **Új** > **Web + mobil** > **Webalkalmazás** elemre.
    
@@ -61,7 +65,7 @@ Az alábbiakat fogja elvégezni:
    
     ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## Java-alkalmazás üzembe helyezése a webalkalmazásban
+## <a name="deploy-a-java-app-to-your-web-app"></a>Java-alkalmazás üzembe helyezése a webalkalmazásban
 Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
 
 1. A webalkalmazás panelén görgessen le, vagy keressen rá az **Alkalmazásbeállítások** elemre, majd kattintson rá. 
@@ -71,7 +75,7 @@ Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
    
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
    
-    Amikor a **Sikeresen frissítette a webalkalmazás beállításait** értesítést kapja, keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa az alapértelmezett JSP-servletet.
+    Amikor a **Sikeresen frissítette a webalkalmazás beállításait** értesítést kapja, keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa az alapértelmezett JSP-kiszolgálóprogramot.
 3. Térjen vissza a webalkalmazás panelére, görgessen le, vagy keressen rá az **Üzembehelyezési hitelesítő adatok** elemre, majd kattintson rá.
 4. Adja meg az üzembehelyezési hitelesítő adatokat, majd kattintson a **Mentés** gombra.
 5. A webalkalmazás panelére visszatérve kattintson az **Áttekintés** elemre. Az **FTP-/üzembehelyezési felhasználónév** és az **FTPS-állomásnév** elem mellett kattintson a **Másolás** gombra az értékek másolásához.
@@ -100,19 +104,22 @@ Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
 
 Ennyi az egész! A Java-alkalmazás mostantól élesben fut az Azure-ban. A böngészőjéből keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa. 
 
-## Frissítések készítése az alkalmazáshoz
+## <a name="make-updates-to-your-app"></a>Frissítések készítése az alkalmazáshoz
 Amikor csak frissítésre van szüksége, csak töltse fel az új WAR-fájlt ugyanabba a távoli könyvtárba az FTP-/FTPS-ügyféllel.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 [Java-webalkalmazás létrehozása egy Azure Marketplace-ről beszerzett sablonnal](web-sites-java-get-started.md#marketplace). Beszerezheti a saját teljesen testreszabható Tomcat-tárolóját, és használhatja az ismerős kezelő felhasználói felületét. 
 
 Az Azure-webalkalmazáson elvégezheti a hibakeresést közvetlenül az [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) vagy az [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md) használatával.
 
 Vagy tegyen még többet az első webalkalmazásával. Példa:
 
-* Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
+* Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). 
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: 'Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása | Microsoft Docs'
-description: Ebből a cikkből megtanulhatja, hogyan konfigurálhatja adatbázisait a Stretch Database-zel való használatra az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatásával.
+title: "Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása | Microsoft Docs"
+description: "Ebből a cikkből megtanulhatja, hogyan konfigurálhatja adatbázisait a Stretch Database-zel való használatra az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatásával."
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
-manager: ''
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 1189ab95-ba84-459c-bfb1-57cdf36ee111
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/05/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0c171da72bbdbfc8c15c6e39fcc8d5000f6be087
+
 
 ---
-# Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása
+# <a name="get-started-by-running-the-enable-database-for-stretch-wizard"></a>Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása
 Az adatbázisoknak a Stretch Database-zel való használatra történő beállításához futtassa az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázslót.  Ebben a témakörben leírjuk, hogy milyen adatokat kell megadnia, és milyen lehetőségeket kell választania a varázslóban.
 
 Ha többet szeretne tudni a Stretch Database alkalmazásról, olvassa el a [Stretch Database áttekintését](sql-server-stretch-database-overview.md).
@@ -26,11 +30,11 @@ Ha többet szeretne tudni a Stretch Database alkalmazásról, olvassa el a [Stre
 > 
 > 
 
-## A varázsló elindítása
+## <a name="launch-the-wizard"></a>A varázsló elindítása
 1. Az SQL Server Management Studióban, az Object Explorerben válassza ki az adatbázist, amelyen engedélyezni szeretné a Stretch Database-t.
 2. Kattintson a jobb \-gombbal a **Tasks** (Feladatok) elemre, válassza a **Stretch** lehetőséget, majd a varázsló elindításához az **Enable** (Engedélyezés) elemet.
 
-## <a name="Intro"></a>Introduction (Bevezetés)
+## <a name="a-nameintroaintroduction"></a><a name="Intro"></a>Bevezetés
 Itt olvashat a varázsló céljáról, illetve előfeltételeiről.
 
 A fontos előfeltételek a következők:
@@ -41,7 +45,7 @@ A fontos előfeltételek a következők:
 
 ![A Stretch Database varázsló Introduction (Bevezetés) lapja][StretchWizardImage1]
 
-## <a name="Tables"></a>Select tables (Táblák kiválasztása)
+## <a name="a-nametablesaselect-tables"></a><a name="Tables"></a>Select tables (Táblák kiválasztása)
 Itt választhatja ki azokat a táblákat, amelyeken engedélyezni kívánja a Stretch Database-t.
 
 A sok sort tartalmazó táblák a rendezett lista tetején jelennek meg. Mielőtt a varázsló megjeleníti a táblák listáját, elemzi azokat, és meghatározza, hogy tartalmaznak-e a Stretch Database által jelenleg nem támogatott adattípusokat.
@@ -58,7 +62,7 @@ A sok sort tartalmazó táblák a rendezett lista tetején jelennek meg. Mielőt
 | **Rows (Sorok)** |A táblában található sorok számát jeleníti meg. |
 | **Size (Méret) (KB)** |A tábla méretét adja meg KB-ban. |
 
-## <a name="Filter"></a>Sorszűrő megadása (nem kötelező)
+## <a name="a-namefilteraoptionally-provide-a-row-filter"></a><a name="Filter"></a>Sorszűrő megadása (nem kötelező)
 Ha szűrőfüggvényt szeretne biztosítani az áttelepíteni kívánt sorok kiválasztásához, tegye a következőket a **Select tables** (Táblák kiválasztása) oldalon.
 
 1. A **Select the tables you want to stretch** (Felhőbe archiválandó táblák kiválasztása) listában kattintson a táblához tartozó sorban található **Entire Table** (Teljes tábla) lehetőségre. Megjelenik a **Select rows to stretch** (Felhőbe archiválandó sorok kiválasztása) párbeszédpanel.
@@ -84,7 +88,7 @@ Ha egy másik típusú szűrőfüggvényt szeretne használni az áttelepíteni 
 * Lépjen ki a varázslóból, majd futtassa az ALTER TABLE utasítást a Stretch a tábla számára történő engedélyezéséhez és egy szűrőfüggvény megadásához. Tovább információ: [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) (A Stretch Database használatának engedélyezése táblákon).  
 * Miután kilépett a varázslóból, futtassa az ALTER TABLE utasítást egy szűrőfüggvény megadásához. A szükséges lépéseket lásd: [Add a filter function after running the Wizard](sql-server-stretch-database-predicate-function.md#addafterwiz) (Szűrőfüggvény hozzáadása a varázsló futtatása után).
 
-## <a name="Configure"></a>Az Azure-telepítés konfigurálása
+## <a name="a-nameconfigureaconfigure-azure-deployment"></a><a name="Configure"></a>Az Azure-telepítés konfigurálása
 1. Jelentkezzen be a Microsoft Azure-ba Microsoft-fiókjával.
    
    ![Bejelentkezés az Azure-ba – Stretch Database varázsló][StretchWizardImage3]
@@ -115,7 +119,7 @@ Ha egy másik típusú szűrőfüggvényt szeretne használni az áttelepíteni 
      
      ![Meglévő Azure-kiszolgáló kiválasztása – Stretch Database varázsló][StretchWizardImage5]
 
-## <a name="Credentials"></a>Secure credentials (Biztonságos hitelesítő adatok)
+## <a name="a-namecredentialsasecure-credentials"></a><a name="Credentials"></a>Secure credentials (Biztonságos hitelesítő adatok)
 Ahhoz, hogy biztonságossá tegye a Stretch Database által a távoli adatbázishoz való kapcsolódáshoz használt adatokat, mindenképp be kell állítania az adatbázisfőkulcsot.  
 
 Ha már létezik adatbázisfőkulcs, adja meg annak jelszavát.  
@@ -128,30 +132,30 @@ Ha az adatbázis nem rendelkezik meglévő főkulccsal, adjon meg egy erős jels
 
 Az adatbázisfőkulccsal kapcsolatos további információkat a [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) és a [Create a Database Master Key](https://msdn.microsoft.com/library/aa337551.aspx) (Adatbázisfőkulcs létrehozása) című cikkekben talál. A varázsló által létrehozott hitelesítő adatokkal kapcsolatos további információk: [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
 
-## <a name="Network"></a>Select IP address (IP-cím kiválasztása)
+## <a name="a-namenetworkaselect-ip-address"></a><a name="Network"></a>Select IP address (IP-cím kiválasztása)
 Használja az alhálózati IP-címtartományát (javasolt) vagy az SQL Server nyilvános IP-címét egy olyan tűzfalszabály létrehozásához az Azure-ban, amely lehetővé teszi, hogy az SQL Server kommunikáljon a távoli Azure-kiszolgálóval.
 
 Az ezen a lapon megadott IP-cím vagy -címek azt közlik az Azure-kiszolgálóval, hogy engedélyezze az SQL Server által indított bejövő adatok, lekérdezések és felügyeleti műveletek áthaladását az Azure-tűzfalon. A varázsló az SQL Serveren megadott tűzfalbeállításokat nem módosítja.
 
 ![A Stretch Database varázsló Select IP address (IP-cím kiválasztása) lapja][StretchWizardImage7]
 
-## <a name="Summary"></a>Összefoglalás
+## <a name="a-namesummaryasummary"></a><a name="Summary"></a>Summary (Összefoglalás)
 Tekintse át a megadott értékeket és a varázslóban kiválasztott beállításokat, valamint a becsült költségeket az Azure-ban. A felhőbe való archiválás engedélyezéséhez válassza a **Finish** (Befejezés) lehetőséget.
 
 ![A Stretch Database varázsló Summary (Összefoglalás) lapja][StretchWizardImage8]
 
-## <a name="Results"></a>Results (Eredmények)
+## <a name="a-nameresultsaresults"></a><a name="Results"></a>Results (Eredmények)
 Itt tekintheti meg a művelet eredményét.
 
 Az adatáttelepítés állapotának megfigyelésének módjával kapcsolatban tekintse meg a [Monitor and troubleshoot data migration (Stretch Database)](sql-server-stretch-database-monitor.md) (Az adatáttelepítés megfigyelése és hibaelhárítása (Stretch Database)) című témakört.
 
 ![A Stretch Database varázsló Results (Eredmények) lapja][StretchWizardImage9]
 
-## <a name="KnownIssues"></a>A varázslóban előforduló hibák elhárítása
+## <a name="a-nameknownissuesatroubleshooting-the-wizard"></a><a name="KnownIssues"></a>A varázslóban előforduló hibák elhárítása
 **A Stretch Database varázsló hibát jelzett.**
 A varázsló hibát jelez, ha a kiszolgáló szintjén még nincs engedélyezve a Stretch Database, és úgy Ön futtatja a varázslót, hogy nem rendelkezik a Stretch Database engedélyezéséhez szükséges rendszergazdai engedélyekkel. Kérje meg a rendszergazdát, hogy engedélyezze a Stretch Database-t a helyi kiszolgálópéldányon, majd futtassa ismét a varázslót. További információk: [Prerequisite: Permission to enable Stretch Database on the server](sql-server-stretch-database-enable-database.md#EnableTSQLServer) (Előfeltétel: a Stretch Database kiszolgálón való engedélyezéséhez szükséges engedély).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Engedélyezze a Stretch Database használatát további táblákon. \-Figyelje az adatáttelepítést, és kezelje a felhőben való archiválásra engedélyezett adatbázisokat és táblákat.
 
 * A további táblákon való használathoz [engedélyezze a Stretch Database használatát a különböző táblákon](sql-server-stretch-database-enable-table.md).
@@ -160,7 +164,7 @@ Engedélyezze a Stretch Database használatát további táblákon. \-Figyelje a
 * [Manage and troubleshoot Stretch Database (A Stretch Database felügyelete és hibáinak elhárítása)](sql-server-stretch-database-manage.md)
 * [Backup Stretch-enabled databases (A Stretch szolgáltatást használó adatbázisok biztonsági mentése)](sql-server-stretch-database-backup.md)
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 [Enable Stretch Database for a database (A Stretch Database használatának engedélyezése adatbázisokon)](sql-server-stretch-database-enable-database.md)
 
 [Enable Stretch Database for a table (A Stretch Database használatának engedélyezése táblákon)](sql-server-stretch-database-enable-table.md)
@@ -180,6 +184,6 @@ Engedélyezze a Stretch Database használatát további táblákon. \-Figyelje a
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

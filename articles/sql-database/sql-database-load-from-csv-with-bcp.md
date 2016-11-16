@@ -1,12 +1,12 @@
 ---
-title: Adatok betöltése CSV-fájlból az Azure SQL Database-be (bcp) | Microsoft Docs
-description: Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be.
+title: "Adatok betöltése CSV-fájlból az Azure SQL Database-be (bcp) | Microsoft Docs"
+description: "Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be."
 services: sql-database
 documentationcenter: NA
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,25 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 09/13/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8d6e201ba5fb8283d883272e0cb2b8e7c11f43e5
+
 
 ---
-# Adatok betöltése CSV-fájlból az Azure SQL Data Warehouse-ba (egybesimított fájlok)
+# <a name="load-data-from-csv-into-azure-sql-data-warehouse-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Data Warehouse-ba (egybesimított fájlok)
 A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-fájlból az Azure SQL Database-be.
 
-## Előkészületek
-### Előfeltételek
+## <a name="before-you-begin"></a>Előkészületek
+### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy Azure SQL Database logikai kiszolgáló és adatbázis
 * Telepített bcp parancssori segédprogram
 * Telepített sqlcmd parancssori segédprogram
 
-A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpontból].
+A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpont].
 
-### Adatok ASCII vagy UTF-16 formátumban
+### <a name="data-in-ascii-or-utf16-format"></a>Adatok ASCII vagy UTF-16 formátumban
 Ha a saját adataival próbálja használni ezt az oktatóanyagot, az adatoknak ASCII vagy UTF-16 kódolást kell használniuk, mert a bcp nem támogatja az UTF-8 formátumot. 
 
-## 1. Céltábla létrehozása
+## <a name="1-create-a-destination-table"></a>1. Céltábla létrehozása
 Adjon meg egy táblát az SQL Database-ben céltáblaként. A tábla oszlopainak meg kell felelnie az adatfájl egyes soraiban szereplő adatoknak.
 
 Tábla létrehozásához nyisson meg egy parancssort, és az sqlcmd.exe segítségével futtassa a következő parancsot:
@@ -50,7 +54,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 2. Forrásadatfájlok létrehozása
+## <a name="2-create-a-source-data-file"></a>2. Forrásadatfájlok létrehozása
 Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöveges fájlba, majd mentse ezt a fájlt a helyi ideiglenes könyvtárba (C:\Temp\DimDate2.txt). Ezek az adatok ASCII formátumban vannak.
 
 ```
@@ -74,7 +78,7 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
 ```
 
-## 3. Az adatok betöltése
+## <a name="3-load-the-data"></a>3. Az adatok betöltése
 Az adatok betöltéséhez nyisson meg egy parancssort, és futtassa az alábbi, a kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a jelszót a saját értékeire lecserélő parancsot.
 
 ```sql
@@ -104,7 +108,7 @@ Az eredménynek így kell kinéznie:
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL Server-adatbázisok áttelepítésével](sql-database-cloud-migrate.md) foglalkozó cikket.
 
 <!--MSDN references-->
@@ -112,10 +116,10 @@ Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL
 [CREATE TABLE szintaxis]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft letöltőközpontból]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft letöltőközpont]: https://www.microsoft.com/download/details.aspx?id=36433
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

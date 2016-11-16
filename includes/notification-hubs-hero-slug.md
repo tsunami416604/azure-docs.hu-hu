@@ -1,10 +1,12 @@
 
-The goal of this topic is to help you get started using Notification Hubs quickly as possible. This topic presents a very simple broadcast scenario example in order to concentrate on the basic concepts for Notification Hubs.
+A témakör célja, hogy segítse a Notification Hubs szolgáltatás lehető leggyorsabb megismerését. Ebben a témakörben egy rendkívül egyszerű szórásos forgatókönyvpéldát mutatunk be, amellyel megismerhetők a Notification Hubs alapvető funkciói.
 
-If you are already familiar with Notification Hubs, you may want to select another topic from the left-navigation or see the relevant links in [Next steps](#next-steps).
+Ha már ismeri a Notification Hubs funkcióit, választhat egy témakört a bal oldali navigációs sávon, vagy megtekintheti az ide tartozó hivatkozásokat a [További lépések](#next-steps) oldalon.
 
-We do take your feedback seriously. If you have any difficulties completing this topic, or recommendations for improving this content, we would appreciate your feedback at the bottom of the page.
+Visszajelzéseit komolyan vesszük. Ha bármilyen nehézségbe ütközik a témakör elvégzése közben, vagy javaslatai vannak, hogyan tehetjük jobbá a tartalmat, örömmel fogadjuk visszajelzéseit az oldal alján.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

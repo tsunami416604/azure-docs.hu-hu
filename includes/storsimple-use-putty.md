@@ -1,31 +1,33 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### To connect through the serial console
-1. Connect your serial cable to the device (directly or through a USB-serial adapter).
-2. Open the **Control Panel**, and then open the **Device Manager**.
-3. Identify the COM port as shown in the following illustration.
+#### <a name="to-connect-through-the-serial-console"></a>Csatlakozás soros konzolon keresztül
+1. Csatlakoztassa a soros kábelt az eszközhöz (közvetlenül vagy egy USB–soros adapteren keresztül).
+2. Nyissa meg a **Vezérlőpultot**, majd az **Eszközkezelőt**.
+3. Keresse meg a COM-portot az alábbi ábrának megfelelően.
    
-     ![Connecting through serial console](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
-4. Start PuTTY. 
-5. In the right pane, change the **Connection type** to **Serial**.
-6. In the right pane, type the appropriate COM port. Make sure that the serial configuration parameters are set as follows:
+     ![Csatlakozás soros konzolon keresztül](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
+4. Indítsa el a PuTTY alkalmazást. 
+5. A jobb oldali panelen állítsa a **Kapcsolat típusa** beállítást **Soros** értékre.
+6. A jobb oldali panelen írja be a megfelelő COM-portot. Ügyeljen arra, hogy a soros konfiguráció paraméterei az alábbiaknak megfelelők legyenek:
    
-   * Speed: 115,200
-   * Data bits: 8
-   * Stop bits: 1
-   * Parity: None
-   * Flow control: None
+   * Sebesség: 115 200
+   * Adatbitek: 8
+   * Stopbitek: 1
+   * Paritás: Nincs
+   * Folyamatvezérlés: Nincs.
      
-     These settings are shown in the following illustration.
+     Ezek a beállítások az alábbi ábrán láthatók.
      
-     ![PuTTY settings](./media/storsimple-use-putty/HCS_PuttyConfig-include.png) 
+     ![PuTTY-beállítások](./media/storsimple-use-putty/HCS_PuttyConfig-include.png) 
      
      > [!NOTE]
-     > If the default flow control setting does not work, try setting the flow control to XON/XOFF.
+     > Ha az alapértelmezett folyamatvezérlési beállítás nem működik, próbálja meg átállítani XON/XOFF értékre.
      > 
      > 
-7. Click **Open** to start a serial session.
+7. Soros munkamenet indításához kattintson a **Megnyitás** elemre.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

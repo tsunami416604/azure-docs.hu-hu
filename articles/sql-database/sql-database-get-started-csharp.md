@@ -1,13 +1,13 @@
 ---
-title: 'Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# segítségével | Microsoft Docs'
-description: Próbálja ki az SQL Database-t az SQL- és C#-alkalmazások fejlesztésére, és hozzon létre egy Azure SQL Database adatbázist a C# segítségével és az SQL Database .NET-es kódtárával.
-keywords: sql kipróbálása, sql c#
+title: "Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# segítségével | Microsoft Docs"
+description: "Próbálja ki az SQL Database-t az SQL- és C#-alkalmazások fejlesztésére, és hozzon létre egy Azure SQL Database adatbázist a C# segítségével és az SQL Database .NET-es kódtárával."
+keywords: "sql kipróbálása, sql c#"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,22 +15,26 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0ffe433d9899610d5ff83c66b6cdaaecd16e9c57
+
 
 ---
-# Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával
+# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-get-started.md)
-> * [C##](sql-database-get-started-csharp.md)
+> * [C#](sql-database-get-started-csharp.md)
 > * [PowerShell](sql-database-get-started-powershell.md)
 > 
 > 
 
 Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas adatbáziskészletek létrehozásával kapcsolatban lásd: [Új rugalmas adatbáziskészlet létrehozása](sql-database-elastic-pool-create-csharp.md).
 
-Az Azure SQL Database Management .NET-es kódtára az [Azure Resource Manageren](../resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
+Az Azure SQL Database Management .NET-es kódtára az [Azure Resource Manageren](../azure-resource-manager/resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
 > [!NOTE]
-> Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../resource-group-overview.md) támogatott, ezért mindig használja az **Azure SQL Database Management legújabb .NET-es kódtárát ([dokumentáció](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi, [klasszikus üzemi modellen alapuló kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb, Resource Manager-alapú kódtárakat.
+> Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../azure-resource-manager/resource-group-overview.md) támogatott, ezért mindig használja az **Azure SQL Database Management legújabb .NET-es kódtárát ([dokumentáció](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. A korábbi, [klasszikus üzemi modellen alapuló kódtárak](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) csak visszamenőleges kompatibilitásra támogatottak, ezért inkább használjon újabb, Resource Manager-alapú kódtárakat.
 > 
 > 
 
@@ -44,7 +48,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 > 
 > 
 
-## Egy konzolalkalmazás létrehozása és a szükséges kódtárak telepítése
+## <a name="create-a-console-app-and-install-the-required-libraries"></a>Egy konzolalkalmazás létrehozása és a szükséges kódtárak telepítése
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **File** (Fájl)  > **New** (Új)  > **Project** (Projekt) lehetőségre.
 3. Hozzon létre egy C#-**konzolalkalmazást**, és adja neki a következő nevet: *SqlDbConsoleApp*
@@ -61,7 +65,7 @@ Egy SQL-adatbázis C# segítségével történő létrehozásához töltse be a 
 > 
 > 
 
-## Egy SQL Database-kiszolgáló, egy tűzfalszabály és egy SQL-adatbázis létrehozása – C#-minta
+## <a name="create-a-sql-database-server-firewall-rule-and-sql-database-c-example"></a>Egy SQL Database-kiszolgáló, egy tűzfalszabály és egy SQL-adatbázis létrehozása – C#-minta
 Az alábbi minta létrehoz egy erőforráscsoportot, egy kiszolgálót, egy tűzfalszabályt és egy SQL-adatbázist. A `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` változókkal kapcsolatban lásd: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez](#create-a-service-principal-to-access-resources).
 
 Cserélje le a **Program.cs** tartalmát az alábbiakkal, és frissítse a `{variables}` részeket az alkalmazáshoz tartozó értékekkel (a `{}` nem szükséges).
@@ -223,7 +227,7 @@ Cserélje le a **Program.cs** tartalmát az alábbiakkal, és frissítse a `{var
 
 
 
-## Egyszerű szolgáltatás létrehozása erőforrások eléréséhez
+## <a name="create-a-service-principal-to-access-resources"></a>Egyszerű szolgáltatás létrehozása erőforrások eléréséhez
 A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alkalmazást, és a C#-alkalmazás hitelesítéséhez szükséges egyszerű szolgáltatást. A parancsfájl kimenetének értékeire szükség lesz az előbb említett C#-mintához. Részletes információk: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
@@ -266,12 +270,12 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C# segítségével, készen áll a következő cikkek elolvasására is:
 
 * [Csatlakozás az SQL Database-hez az SQL Server Management Studio segítségével, és T-SQL-mintalekérdezés futtatása](sql-database-connect-query-ssms.md)
 
-## További források
+## <a name="additional-resources"></a>További források
 * [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Adatbázisosztály](https://msdn.microsoft.com/library/azure/microsoft.azure.management.sql.models.database.aspx)
 
@@ -288,6 +292,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

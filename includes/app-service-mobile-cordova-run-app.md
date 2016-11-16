@@ -1,17 +1,17 @@
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile app settings, click **Quickstart** > **Cordova**. Under **Configure your client application**, select **Create a New App**, then click **Download**. This downloads a complete Cordova project for an app pre-configured to connect to your backend.
-2. Unpack the downloaded ZIP file to a directory on your hard drive, navigate to the solution file (.sln) and open it using Visual Studio.
-3. In Visual Studio, choose the solution platform (Android, iOS or Windows) from the drop-down next to the start arrow, then select a specific deployment device or emulator by clicking the drop-down on the green arrow. Note that you can use the default Android platform and Ripple emulator. More advanced tutorials will require you to select a supported device or emulator. 
-4. Press F5 or click the green arrow to build and and run your Cordova app. If you see a security dialog in the emulator requesting access to the network, accept it.   
-5. After the the app is started on the device or emulator, type meaningful text in **Enter new text**, such as *Complete the tutorial* and then click the **Add** button.  
-   This sends a POST request to the Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem table in the SQL Database, and returns information about the newly stored items back to the mobile app. The mobile app displays this data in the list.
+1. Látogasson el az [Azure Portal]. Kattintson az **Összes tallózása** > **Mobilalkalmazások** lehetőségre > az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban kattintson az **Első lépések** > **Cordova** elemre. Az **Ügyfélalkalmazás konfigurálása** menüben válassza az **Új alkalmazás létrehozása** lehetőséget, majd kattintson a **Letöltés** gombra. Ez letölti egy olyan alkalmazás teljes Cordova-projektjét, amely előre konfigurálva van a háttérrendszerhez való csatlakozáshoz.
+2. Csomagolja ki a letöltött ZIP-fájlt a merevlemez egy könyvtárába, lépjen a megoldásfájlhoz (.sln), és nyissa meg a Visual Studióval.
+3. A Visual Studióban válassza ki a megoldás platformját (Android, iOS vagy Windows) a start nyíl melletti legördülő menüből, majd válassza ki a konkrét üzemelő eszközt vagy emulátort a zöld nyílon található legördülő menüre kattintva. Használhatja az alapértelmezett Android platformot és Ripple emulátort. Az összetettebb oktatóanyagok esetén egy támogatott eszközt és emulátort kell majd választania. 
+4. Nyomja le az F5 billentyűt vagy kattintson a zöld nyílra a Cordova-alkalmazás létrehozásához és futtatásához. Ha az emulátor egy biztonsági párbeszédablakot jelenít meg, amelyben hozzáférést kér a hálózathoz, fogadja el.   
+5. Miután az alkalmazás elindult az eszközön vagy az emulátoron, írjon be egy értelmes szöveget az **Új szöveg megadása** mezőbe, például *Az oktatóanyag befejezése*, majd kattintson a **Hozzáadás** gombra.  
+   Ez egy POST kérést küld a korábban telepített Azure-háttérrendszernek. A háttérrendszer beilleszti az adatokat a kérésből az SQL Database-ben található TodoItem táblába, majd visszaküldi az újonnan eltárolt elemekre vonatkozó információkat a mobilalkalmazásnak. A mobilalkalmazás megjeleníti ezeket az adatokat a listában.
    
     ![](./media/app-service-mobile-cordova-quickstart/quickstart-startup.png)
-6. Repeat the previous three steps for each device platform that you plan to support.
+6. Ismételje meg az előző három lépést minden támogatni kívánt eszközplatformra vonatkozóan.
 
 [Azure Portal]: https://portal.azure.com/
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

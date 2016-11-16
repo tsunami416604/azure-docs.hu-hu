@@ -1,12 +1,12 @@
 ---
-title: A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
-description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát.
+title: "A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz"
+description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtand
-
+ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
+
 
 ---
-# A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
+# <a name="deploying-the-user-portal-for-the-azure-multifactor-authentication-server"></a>A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
 A felhasználói portál segítségével a rendszergazda telepítheti és konfigurálhatja az Azure Multi-Factor Authentication felhasználói portálját. A felhasználói portál egy IIS-webhely, ahol a felhasználók regisztrálhatnak az Azure Multi-Factor Authenticationre és kezelhetik a fiókjaikat. A felhasználók megváltoztathatják a telefonszámukat, a PIN-kódjukat, vagy mellőzhetik az Azure Multi-Factor Authenticationt a következő bejelentkezéskor.
 
 A felhasználók a normál felhasználónevükkel és jelszavukkal jelentkeznek be a felhasználói portálra és Azure Multi-Factor Authentication-hívást végeznek vagy biztonsági kérdésekre válaszolnak a hitelesítéshez. Ha a felhasználók regisztrációja engedélyezett, a felhasználók a felhasználói portálra való első bejelentkezéskor konfigurálják a telefonszámukat és PIN-kódjukat.
@@ -25,13 +29,13 @@ A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhas
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
-## A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálón
+## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multifactor-authentication-server"></a>A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálón
 A következő előfeltételek teljesülésére van szükség, ha a felhasználói portált az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra szeretné telepíteni:
 
 * Telepíteni kell az IIS-t, beleértve az asp.net-et és az IIS 6 metabázisával való kompatibilitási funkciót (IIS 7 vagy újabb verzió esetén)
 * A bejelentkezett felhasználóknak rendszergazdai jogosultságokkal kell rendelkezniük a számítógéphez és a tartományhoz, ha szükséges.  Ez azért van, mert a fióknak engedélyekre van szüksége Active Directory biztonsági csoportok létrehozásához.
 
-### A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
+### <a name="to-deploy-the-user-portal-for-the-azure-multifactor-authentication-server"></a>A felhasználói portál üzembe helyezése az Azure Multi-Factor Authentication-kiszolgálóhoz
 1. Az Azure Multi-Factor Authentication-kiszolgálón: kattintson a bal oldali menüben lévő felhasználói portál ikonra, majd kattintson a Felhasználói portál telepítése gombra.
 2. Kattintson a Next (Tovább) gombra.
 3. Kattintson a Next (Tovább) gombra.
@@ -43,7 +47,7 @@ A következő előfeltételek teljesülésére van szükség, ha a felhasználó
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## Az Azure Multi-Factor Authentication-kiszolgáló felhasználói portáljának telepítése különálló kiszolgálón
+## <a name="deploying-the-azure-multifactor-authentication-server-user-portal-on-a-separate-server"></a>Az Azure Multi-Factor Authentication-kiszolgáló felhasználói portáljának telepítése különálló kiszolgálón
 Az Azure Multi-Factor Authentication alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a felhasználói portállal:
 
 Tekintse meg a hardver- és szoftverkövetelményeket a Hardver- és szoftverkövetelmények részben:
@@ -64,18 +68,18 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 2. A felhasználói portál telepítése
 3. A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 
-### A Web Service SDK telepítése
+### <a name="install-the-web-service-sdk"></a>A Web Service SDK telepítése
 Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication-kiszolgálón, lépjen a kiszolgálóra és nyissa meg az Azure Multi-Factor Authentication-kiszolgálót. Kattintson a Web Service SDK ikonra, majd a Web Service SDK telepítése… gombra, és kövesse a megjelenő utasításokat. A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány, de azt a felhasználói portál webkiszolgálójának Helyi számítógép fiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába kell importálni, hogy megbízzon ebben a tanúsítványban az SSL-kapcsolat elindításakor.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/sdk.png)</center>
 
-### A felhasználói portál telepítése
+### <a name="install-the-user-portal"></a>A felhasználói portál telepítése
 Mielőtt a felhasználói portált különálló kiszolgálóra telepítené, vegye figyelembe a következőket:
 
 * Hasznos lehet, ha megnyit egy webböngészőt az internetes webkiszolgálón és megkeresi a Web Service SDK a web.config fájlban megadott URL-címét. Ha a böngésző sikeresen eléri a webszolgáltatást, kérnie kell a hitelesítő adatok megadását. Írja be a web.config fájlban megadott felhasználónevet és jelszót pontosan úgy, ahogyan az a fájlban megjelenik. Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 * Ha fordított proxy vagy tűzfal található a felhasználói portál webkiszolgálója előtt és SSL-tehermentesítést végez, a felhasználói portál web.config fájljának szerkesztésével a következő kulcsot adhatja a(z) <appSettings> szakaszhoz, hogy a felhasználói portál http-t használhasson https helyett. <add key="SSL_REQUIRED" value="false"/>
 
-#### A felhasználói portál telepítése
+#### <a name="to-install-the-user-portal"></a>A felhasználói portál telepítése
 1. Nyissa meg a Windows Intézőt az Azure Multi-Factor Authentication-kiszolgálón, és keresse meg azt a mappát, amelybe az Azure Multi-Factor Authentication-kiszolgáló telepítve van (például C:\Program Files\Multi-Factor Authentication Server). Válassza a MultiFactorAuthenticationUserPortalSetup telepítőfájl 32 bites vagy 64 bites verzióját annak a kiszolgálónak megfelelően, amelyre a felhasználói portált telepíti. Másolja a telepítőfájlt az internetes kiszolgálóra.
 2. Az internetes webkiszolgálón a telepítőfájlt rendszergazdai jogosultságokkal kell futtatnia. Ennek legegyszerűbb módja, ha rendszergazdaként megnyit egy parancssort és arra a helyre lép, ahová a telepítőfájlt másolta.
 3. Futtassa a MultiFactorAuthenticationUserPortalSetup64 telepítőfájlt, és ha szeretné, módosítsa a helyet és a virtuális könyvtár nevét.
@@ -85,7 +89,7 @@ Mielőtt a felhasználói portált különálló kiszolgálóra telepítené, ve
 7. Ha azon webhely, amelyen a felhasználói portál telepítve lett (például alapértelmezett webhely) még nincs nyilvánosan aláírt tanúsítvánnyal kötve, telepítse a tanúsítványt a kiszolgálóra, ha még nincs telepítve, nyissa meg az IIS-kezelőt, és kösse a tanúsítványt a webhelyhez.
 8. Nyisson meg egy webböngészőt valamelyik számítógépről és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://www.publicwebsite.com/MultiFactorAuth). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
-## A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
+## <a name="configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 Most, hogy telepítette a portált, konfigurálnia kell az Azure Multi-Factor Authentication-kiszolgálót, hogy működjön a portállal.
 
 Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a felhasználói portálhoz.  A következő táblázat tartalmazza ezen lehetőségek listáját és annak magyarázatát, hogy mire szolgálnak.
@@ -109,7 +113,7 @@ Ezen beállítások többsége láthatóvá a felhasználók számára, ha enged
 
 ![Felhasználói portál beállításai](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
-### A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
+### <a name="to-configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a felhasználói portál ikonra. A Beállítások lapon írja be a felhasználói portál URL-címét a Felhasználói portál URL-címe szövegmezőbe. Ez az URL a felhasználóknak küldött e-mailekben szerepel a felhasználók az Azure Multi-Factor Authentication-kiszolgálóra való importálásakor, ha az e-mail funkció engedélyezve van.
 2. Válassza ki a felhasználói portálon használni kívánt beállításokat. Ha például a felhasználók vezérelhetik a hitelesítési módszereket, győződjön meg arról, hogy a Módszer kiválasztásának engedélyezése a felhasználóknak jelölőnégyzet be van jelölve azokkal a módszerekkel együtt, amelyek közül választhatnak.
 3. Kattintson a jobb felső sarkokban található Súgó ikonra a megjelenő beállításokkal kapcsolatos magyarázatokért.
@@ -117,28 +121,28 @@ Ezen beállítások többsége láthatóvá a felhasználók számára, ha enged
 <center>![Telepítés](./media/multi-factor-authentication-get-started-portal/config.png)</center>
 
 
-## Rendszergazdák lap
+## <a name="administrators-tab"></a>Rendszergazdák lap
 Ez a lap rendszergazdai jogosultságokkal rendelkező felhasználók hozzáadását teszi lehetővé.  Rendszergazdák hozzáadásakor finomhangolhatja, hogy azok milyen engedélyeket kapjanak.  Így biztos lehet abban, hogy a szükséges engedélyeket biztosítja a rendszergazdáknak.  Egyszerűen kattintson a Hozzáadás gombra, majd válassza ki a felhasználót és az engedélyeit, és kattintson a Hozzáadás lehetőségre.
 
 ![A felhasználói portál rendszergazdái](./media/multi-factor-authentication-get-started-portal/admin.png)
 
-## Biztonsági kérdések
+## <a name="security-questions"></a>Biztonsági kérdések
 Ezen a lapon megadhatja azokat a biztonsági kérdéseket, amelyeket a felhasználóknak meg kell válaszolniuk, ha a Biztonsági kérdések használata tartalék megoldásként jelölőnégyzet be van jelölve.  Az Azure Multi-Factor Authenticaton-kiszolgálón elérhető alapértelmezett kérdéseket is használhatja.  Emellett a sorrendet is módosíthatja, és saját kérdéseket adhat hozzá.  Saját kérdések hozzáadásakor megadhatja a kérdések nyelvét is.
 
 ![A felhasználói portál biztonsági kérdései](./media/multi-factor-authentication-get-started-portal/secquestion.png)
 
-## Elvégzett munkamenetek
-## SAML
+## <a name="passed-sessions"></a>Elvégzett munkamenetek
+## <a name="saml"></a>SAML
 Lehetővé teszi a felhasználói portál beállítását arra, hogy jogcímeket fogadjon el egy identitásszolgáltatótól SAML használatával.  Megadhatja az időtúllépési munkamenetet, az ellenőrző tanúsítványt és a kijelentkezési átirányítási URL-címet.
 
 ![SAML](./media/multi-factor-authentication-get-started-portal/saml.png)
 
-## Megbízható IP-címek
+## <a name="trusted-ips"></a>Megbízható IP-címek
 Ez a lap lehetővé teszi, hogy egyetlen IP-címet vagy egy IP-címtartományt adjon meg, amelyek hozzáadhatók annak érdekében, hogy mellőzve legyen a Multi-Factor Authentication, ha egy felhasználó ezen IP-címek valamelyikéről jelentkezik be.
 
 ![Felhasználó portál megbízható IP-címei](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
-## Önkiszolgáló felhasználói regisztráció
+## <a name="selfservice-user-enrollment"></a>Önkiszolgáló felhasználói regisztráció
 Ha azt szeretné, hogy a felhasználók bejelentkezzenek és regisztráljanak, be kell jelölnie a Felhasználók bejelentkezésének engedélyezése és a Felhasználó beléptetésének engedélyezése jelölőnégyzetet. Ne feledje, hogy a kiválasztott beállítások hatással vannak a felhasználó bejelentkezési élményére.
 
 Amikor például egy felhasználó bejelentkezik a felhasználói portálra és a Bejelentkezés gombra kattint, az Azure Multi-Factor Authentication felhasználói beállítási lapjára kerül.  Az Azure Multi-Factor Authentication konfigurációjától függően lehet, hogy a felhasználó kiválaszthatja a hitelesítési módszert.  
@@ -170,6 +174,9 @@ Ha a rendszergazdák úgy konfigurálták az Azure Multi-Factor Authentication-k
 
 A felhasználó önregisztrációja ezzel befejeződött, és a felhasználó be van jelentkezve a felhasználói portálra.  A felhasználók ezután bármikor újra bejelentkezhetnek a felhasználói portálra a telefonszámuk, PIN-kódjuk, hitelesítési módszerük és biztonsági kérdéseik módosításához, ha ezt a rendszergazdáik engedélyezték.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

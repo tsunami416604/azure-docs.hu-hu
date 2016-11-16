@@ -8,6 +8,8 @@
     ![Az alhálózat hozzáadása](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet300.png "Adding the subnet")
 5. A panel alján található **OK** gombra kattintva hozza létre az alhálózatot.
 
-<!--HONumber=Oct16_HO1-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

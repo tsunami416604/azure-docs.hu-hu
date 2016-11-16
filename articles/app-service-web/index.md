@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Azure Web Apps Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 29794682e0258a6d30c9b2ac96b6e58272bc3f48
+ms.openlocfilehash: 97a0f22bf72b30e6adc92e9b8d7e58a25e67c14b
 
-App Service Web Apps is a fully managed compute platform that is optimized for hosting websites and web applications. This platform-as-a-service (PaaS) offering of Microsoft Azure lets you focus on your business logic while Azure takes care of the infrastructure to run and scale your apps.
+---
+# <a name="azure-web-apps-documentation"></a>Azure Web Apps-dokumentáció
+
+Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. Ez a szolgáltatásként kínált platform (PaaS) a Microsoft Azure ajánlata, melynek segítségével az üzleti logikára koncentrálhat, miközben az Azure intézkedik az alkalmazások futtatásához és méretezéséhez szükséges infrastruktúráról.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Web Apps</h3>
+                        <h3>További tudnivalók a Web Appsról</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Web Apps (Video)</h3>
+                        <h3>A Web Apps használatának első lépései (videó)</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Web Apps Video Library</h3>
+                        <h3>Web Apps videótár</h3>
                     </div>
                 </div>
             </div>
@@ -71,25 +75,43 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using ASP.NET and Visual Studio</h3>
+                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li> 
-     <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+    </li>
+    <li>
+        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="media/index/dotnet.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using Java</h3>
+                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/dotnet.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +129,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Web Apps using Node.js </h3>
+                        <h3>Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben</h3>
                     </div>
                 </div>
             </div>
@@ -125,26 +147,25 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using Python Tools 2.2</h3>
+                        <h3>Webalkalmazás létrehozása a Python Tools 2.2 használatával</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-   
-     <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
+    <li>
+        <a href="/azure/app-service-web/web-sites-java-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/java.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using PHP</h3>
+                        <h3>Java-webalkalmazás létrehozása az Azure App Service szolgáltatásban</h3>
                     </div>
                 </div>
             </div>
@@ -162,37 +183,58 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with WordPress in Azure App Service</h3>
+                        <h3>WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-   
+    <li>
+        <a href="/azure/app-service-web/app-service-web-php-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>PHP-webalkalmazás létrehozása, konfigurálása és üzembe helyezése az Azure-ban</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 ---
 
-## Reference
+## <a name="reference"></a>Referencia
 
-### Azure CLI
-[Web Apps Azure CLI Reference](/cli/azure/appservice/web)
+### <a name="azure-cli"></a>Azure CLI
+[Web Apps AzureCLI-referencia](/cli/azure/)
 
-### Java
-[Java API Reference](/java/api/)
+### <a name="java"></a>Java
+[Web Apps JAVA API-referencia](/java/api/)
 
-### .NET
-[.NET Managed Reference](/dotnet/api)
+### <a name="net"></a>.NET
+[Web Apps – felügyelt referencia](/dotnet/api)
 
-### REST
-[Web Apps REST API Reference](/rest/api/appservice)
+### <a name="rest"></a>REST
+[Web Apps – REST API-referencia](/rest/api/appservice)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Web Apps Documentation
-        </div>
+Web Apps-dokumentáció letöltése </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO2-->
+
+

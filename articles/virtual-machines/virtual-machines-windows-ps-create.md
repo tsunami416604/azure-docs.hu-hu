@@ -1,157 +1,164 @@
 ---
-title: Azure virtuális gép létrehozása a PowerShell használatával | Microsoft Docs
-description: Az Azure PowerShell és az Azure Resource Manager használatával egyszerűen létrehozhat egy új, Windows Server rendszerű virtuális gépet.
+title: "Azure virtuális gép létrehozása a PowerShell használatával | Microsoft Docs"
+description: "Az Azure PowerShell és az Azure Resource Manager használatával egyszerűen létrehozhat egy új, Windows Server rendszerű virtuális gépet."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 14fe9ca9-e228-4d3b-a5d8-3101e9478f6e
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 10/21/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
+
 
 ---
-# Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
-Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../resource-group-overview.md) és a PowerShell használatával. 
+# <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
+Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../azure-resource-manager/resource-group-overview.md) és a PowerShell használatával. 
 
-Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe.
+Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe. A parancsokban szereplő minta paraméterértékeket cserélje le olyan nevekkel, amelyek az Ön saját környezetében értelmesek.
 
-## 1. lépés: Az Azure PowerShell telepítése
+## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
 Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
 
-## 2. lépés: Erőforráscsoport létrehozása
-Először is létre kell hoznia egy erőforráscsoportot.
+## <a name="step-2-create-a-resource-group"></a>2. lépés: Erőforráscsoport létrehozása
+Mivel egy erőforráscsoportnak kell tartalmaznia valamennyi erőforrást, ezért először ezt hozzuk létre.  
 
 1. Szerezzen be egy listát az összes elérhető helyről, ahol erőforrásokat lehet létrehozni.
    
-        Get-AzureRmLocation | sort Location | Select Location
+    ```powershell
+    Get-AzureRmLocation | sort Location | Select Location
+    ```
+2. Állítsa be az erőforrások helyét. Ez a parancs a **centralus**-t állítja be az erőforrások helyeként.
    
-    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
+    ```powershell
+    $location = "centralus"
+    ```
+3. Hozzon létre egy erőforráscsoportot. Ez a parancs a korábban beállított helyen létrehoz egy **myResourceGroup** elnevezésű erőforráscsoportot.
    
-        Location
-        --------
-        australiaeast
-        australiasoutheast
-        brazilsouth
-        canadacentral
-        canadaeast
-        centralindia
-        centralus
-        eastasia
-        eastus
-        eastus2
-        japaneast
-        japanwest
-        northcentralus
-        northeurope
-        southcentralus
-        southeastasia
-        southindia
-        westeurope
-        westindia
-        westus
-2. Cserélje le a **$locName** értéket egy helyre a listából. Hozza létre a változót.
-   
-        $locName = "centralus"
-3. Cserélje le a **$rgName** értéket az új erőforráscsoport nevére. Hozza létre a változót és az erőforráscsoportot.
-   
-        $rgName = "mygroup1"
-        New-AzureRmResourceGroup -Name $rgName -Location $locName
+    ```powershell
+    $myResourceGroup = "myResourceGroup"
+    New-AzureRmResourceGroup -Name $myResourceGroup -Location $location
+    ```
 
-## 3. lépés: Tárfiók létrehozása
-A létrehozott virtuális gép által használt virtuális merevlemez tárolásához egy [tárfiók](../storage/storage-introduction.md) szükséges.
+## <a name="step-3-create-a-storage-account"></a>3. lépés: Tárfiók létrehozása
+A létrehozott virtuális gép által használt virtuális merevlemez tárolásához egy [tárfiók](../storage/storage-introduction.md) szükséges. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 
-1. Cserélje le a **$stName** értéket a tárfiók nevére. Ellenőrizze, hogy a név egyedi-e.
+1. Ellenőrizze, hogy a tárfióknév neve egyedi-e. Ez a parancs ellenőrzi a **myStorageAccount** nevet.
    
-        $stName = "mystorage1"
-        Get-AzureRmStorageAccountNameAvailability $stName
+    ```powershell
+    $myStorageAccountName = "mystorageaccount"
+    Get-AzureRmStorageAccountNameAvailability $myStorageAccountName
+    ```
    
-    Ha ez a parancs **Igaz** eredményt ad, a választott név egyedi az Azure-ban. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
-2. Futtassa a parancsot a tárfiók létrehozásához.
+    Ha ez a parancs **Igaz** eredményt ad, a választott név egyedi az Azure-ban. 
+2. Hozza létre a tárfiókot.
    
-        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
+    ```powershell    
+    $myStorageAccount = New-AzureRmStorageAccount -ResourceGroupName $myResourceGroup `
+        -Name $myStorageAccountName -SkuName "Standard_LRS" -Kind "Storage" -Location $location
+    ```
 
-## 4. lépés: Virtuális hálózat létrehozása
+## <a name="step-4-create-a-virtual-network"></a>4. lépés: Virtuális hálózat létrehozása
 Minden virtuális gép egy [virtuális hálózat](../virtual-network/virtual-networks-overview.md) része.
 
-1. Cserélje le a **$subnetName** értéket az alhálózat nevére. Hozza létre a változót és az alhálózatot.
+1. Hozzon létre egy alhálózatot a virtuális hálózat számára. Ez a parancs létrehoz egy **mySubnet** elnevezésű alhálózatot 10.0.0.0/24 címelőtaggal.
    
-        $subnetName = "mysubnet1"
-        $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-2. Cserélje le a **$vnetName** értéket a virtuális hálózat nevére. Hozza létre a változót és a virtuális hálózatot az alhálózattal együtt.
+    ```powershell
+    $mySubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -AddressPrefix 10.0.0.0/24
+    ```
+2. Hozza létre a virtuális hálózatot. Ez a parancs az imént létrehozott alhálózat felhasználásával létrehoz egy **myVnet** elnevezésű virtuális hálózatot **10.0.0.0/16** címelőtaggal.
    
-        $vnetName = "myvnet1"
-        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-   
-    Használjon olyan értékeket, amelyek az alkalmazás és a környezet szempontjából jelentéssel bírnak.
+    ```powershell
+    $myVnet = New-AzureRmVirtualNetwork -Name "myVnet" -ResourceGroupName $myResourceGroup `
+        -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $mySubnet
+    ```
 
-## 5. lépés: Nyilvános IP-cím és hálózati adapter létrehozása
+## <a name="step-5-create-a-public-ip-address-and-network-interface"></a>5. lépés: Nyilvános IP-cím és hálózati adapter létrehozása
 A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
 
-1. Cserélje le az **$ipName** értéket a nyilvános IP-cím nevére. Hozza létre a változót és a nyilvános IP-címet.
+1. Hozza létre a nyilvános IP-címet. Ez a parancs létrehoz egy **dinamikus** elosztási módszerrel rendelkező, **myPublicIp** elnevezésű nyilvános IP-címet.
    
-        $ipName = "myIPaddress1"
-        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-2. Cserélje le a **$nicName** értéket a hálózati adapter nevére. Hozza létre a változót és a hálózati adaptert.
+    ```powershell
+    $myPublicIp = New-AzureRmPublicIpAddress -Name "myPublicIp" -ResourceGroupName $myResourceGroup `
+        -Location $location -AllocationMethod Dynamic
+    ```
+2. Hozza létre a hálózati adaptert. Ez a módszer létrehoz egy **myNIC** elnevezésű hálózati adaptert.
    
-        $nicName = "mynic1"
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+    ```powershell
+    $myNIC = New-AzureRmNetworkInterface -Name "myNIC" -ResourceGroupName $myResourceGroup `
+        -Location $location -SubnetId $myVnet.Subnets[0].Id -PublicIpAddressId $myPublicIp.Id
+    ```
 
-## 6. lépés: Virtuális gép létrehozása
+## <a name="step-6-create-a-virtual-machine"></a>6. lépés: Virtuális gép létrehozása
 Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
-1. Futtassa a parancsot a virtuális gép rendszergazdai fióknevének és jelszavának megadásához.
-   
-        $cred = Get-Credential -Message "Type the name and password of the local administrator account."
+1. Futtassa ezt a parancsot a virtuális gép rendszergazdai fióknevének és jelszavának megadásához.
+
+    ```powershell
+    $cred = Get-Credential -Message "Type the name and password of the local administrator account."
+    ```
    
     A jelszónak 12–123 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy kisbetűt, egy nagybetűt, egy számot és egy különleges karaktert. 
-2. Cserélje le a **$vmName** értéket a virtuális gép nevére. Hozza létre a változót és a virtuálisgép-konfigurációt.
+2. Hozza létre a konfigurációs objektumot a virtuális gép számra. Ez a parancsa létrehoz egy **myVmConfig** elnevezésű konfigurációs objektumot, amely meghatározza a virtuális gép nevét és méretét.
    
-        $vmName = "myvm1"
-        $vm = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A1"
+    ```powershell
+    $myVm = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2"
+    ```
    
     A virtuális gépekhez elérhető méretek listáját lásd: [Sizes for virtual machines in Azure](virtual-machines-windows-sizes.md) (Virtuális gépek méretei az Azure-ban).
-3. Cserélje le a **$compName** értéket a virtuális gép számítógépnevére. Hozza létre a változót, és adja hozzá a konfigurációhoz az operációs rendszerre vonatkozó információkat.
+3. Konfigurálja a virtuális gép operációsrendszer-beállításait. Ez a parancs beállítja a virtuális gép számítógépnevét, operációs rendszere típusát és a fiókhoz tartozó hitelesítő adatait.
    
-        $compName = "myvm1"
-        $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $compName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-4. Határozza meg a virtuális gép kiépítéséhez használni kívánt rendszerképet. 
+    ```powershell
+    $myVM = Set-AzureRmVMOperatingSystem -VM $myVM -Windows -ComputerName "myVM" -Credential $cred `
+        -ProvisionVMAgent -EnableAutoUpdate
+    ```
+4. Határozza meg a virtuális gép kiépítéséhez használni kívánt rendszerképet. Ez a parancs meghatározza a virtuális géphez használandó Windows Server-rendszerképet. 
    
-        $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+    ```powershell
+    $myVM = Set-AzureRmVMSourceImage -VM $myVM -PublisherName "MicrosoftWindowsServer" `
+        -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
+    ```
    
-    További információ a rendszerképek kiválasztásáról: [Navigate and select Windows virtual machine images in Azure with PowerShell or the CLI](virtual-machines-windows-cli-ps-findimage.md) (Windows virtuális gépek lemezképeinek navigálása és kiválasztása az Azure-ban a PowerShell vagy a parancssori felület használatával).
+    További információ a rendszerképek kiválasztásáról: [Windows virtuális gépek lemezképeinek navigálása és kiválasztása az Azure-ban a PowerShell vagy a parancssori felület használatával ](virtual-machines-windows-cli-ps-findimage.md).
 5. Adja hozzá a konfigurációhoz a létrehozott hálózati adaptert.
    
-        $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-6. Cserélje le a **$blobPath** értéket a virtuális merevlemez tárának az elérési útjára és fájlnevére. A virtuálismerevlemez-fájlt általában egy tároló tartalmazza, például a **vhds/WindowsVMosDisk.vhd**. Hozza létre a változókat.
+    ```powershell
+    $myVM = Add-AzureRmVMNetworkInterface -VM $myVM -Id $myNIC.Id
+    ```
+6. Adja meg a virtuális gép merevlemezlének nevét és helyét. A virtuális merevlemezfájl tárolása egy tárolóban történik. Ez a parancs az Ön által létrehozott tárfiókban létrehozza a lemezt egy **vhds/WindowsVMosDisk.vhd** elnevezésű tárolóban.
    
-        $blobPath = "vhds/WindowsVMosDisk.vhd"
-        $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
-7. Cserélje le a **$diskName** értéket az operációs rendszer lemezének nevére. Hozza létre a változót, és adja hozzá a konfigurációhoz a lemezinformációkat.
+    ```powershell
+    $blobPath = "vhds/myOsDisk1.vhd"
+    $osDiskUri = $myStorageAccount.PrimaryEndpoints.Blob.ToString() + $blobPath
+    ```
+7. Adja hozzá a virtuális gép konfigurációjához az operációs rendszerre vonatkozó információkat. Cserélje le a **$diskName** értéket az operációs rendszer lemezének nevére. Hozza létre a változót, és adja hozzá a konfigurációhoz a lemezinformációkat.
    
-        $diskName = "windowsvmosdisk"
-        $vm = Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
+    ```powershell
+    $vm = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
+    ```
 8. Végül hozza létre a virtuális gépet.
    
-        New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
-   
-    Az Azure Portalon látszania kell az erőforráscsoportnak és a hozzá tartozó összes erőforrásnak, a PowerShell-ablakban pedig egy sikeres állapotnak:
-   
-        RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
-        ---------  -------------------  ----------  ------------
-                                  True          OK  OK
+    ```powershell
+    New-AzureRmVM -ResourceGroupName $myResourceGroup -Location $location -VM $myVM
+    ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 * A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
 * A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

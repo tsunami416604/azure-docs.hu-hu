@@ -1,13 +1,13 @@
 ---
-title: Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával | Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja a helyalapú leküldéses értesítések kézbesítését az Azure Notification Hubs és a Bing térbeli adatainak használatával.
+title: "Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával | Microsoft Docs"
+description: "Ebben az oktatóanyagban elsajátíthatja a helyalapú leküldéses értesítések kézbesítését az Azure Notification Hubs és a Bing térbeli adatainak használatával."
 services: notification-hubs
 documentationcenter: windows
-keywords: leküldéses értesítés,leküldéses értesítés
+keywords: "leküldéses értesítés,leküldéses értesítés"
 author: dend
 manager: yuaxu
 editor: dend
-
+ms.assetid: f41beea1-0d62-4418-9ffc-c9d70607a1b7
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
@@ -15,9 +15,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/31/2016
 ms.author: dendeli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dc946619fa3134594d3891ffdf78417d054293e3
+
 
 ---
-# Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával
+# <a name="geofenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
 > 
@@ -25,14 +29,14 @@ ms.author: dendeli
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan kézbesíthet helyalapú leküldéses értesítéseket egy Univerzális Windows Platform-alkalmazásból az Azure Notification Hubs és a Bing térbeli adatainak használatával.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Mindenekelőtt arról kell meggyőződnie, hogy rendelkezik az összes szoftveres és szolgáltatási előfeltétellel:
 
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) vagy újabb (a [Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) is megfelelő). 
 * Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziója. 
 * [Fiók a Bing Térképek fejlesztői központjához](https://www.bingmapsportal.com/) (ingyenesen létrehozható, és hozzárendelhető a Microsoft-fiókjához). 
 
-## Első lépések
+## <a name="getting-started"></a>Első lépések
 Kezdjük a projekt létrehozásával. A Visual Studióban indítson egy **Üres alkalmazás (Univerzális Windows)** típusú új projektet.
 
 ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
@@ -49,7 +53,7 @@ A következő paramétereket kell megadnia a rendszer működéséhez:
 
 Most tekintsük át részletesen a fenti elemek beállításait.
 
-## Az adatforrás beállítása
+## <a name="setting-up-the-data-source"></a>Az adatforrás beállítása
 Ezt a Bing Térképek fejlesztői központjában végezheti el. Kattintson a felső navigációs sáv **Data Sources** (Adatforrások) elemére, és válassza az **Manage Data Sources** (Adatforrások kezelése) lehetőséget.
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
@@ -103,7 +107,7 @@ Ez a válasz csak akkor jelenik meg, ha a pont a kijelölt határokon belül tal
 
 ![](./media/notification-hubs-geofence/bing-maps-nores.png)
 
-## Az UWP-alkalmazás beállítása
+## <a name="setting-up-the-uwp-application"></a>Az UWP-alkalmazás beállítása
 Most, hogy az adatforrás rendelkezésre áll, elkezdhetünk dolgozni a korábban elindított UWP-alkalmazással.
 
 Mindenekelőtt engedélyezni kell a helyalapú szolgáltatásokat az alkalmazásban. Ehhez kattintson duplán a `Package.appxmanifest` fájlra a **Megoldáskezelőben**.
@@ -200,7 +204,7 @@ A hely koordinátái a **Kimenet** ablakban jelennek meg:
         });
     }
 
-## A háttérrendszer beállítása
+## <a name="setting-up-the-backend"></a>A háttérrendszer beállítása
 Töltse le a [.NET-háttérrendszer mintáját a GitHubról](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers). A letöltés után nyissa meg a `NotifyUsers` mappát, majd a `NotifyUsers.sln` fájlt.
 
 Állítsa be **Indítási projektként**, majd futtassa az `AppBackend` projektet.
@@ -306,7 +310,7 @@ A `NotificationsController.cs`-hez visszatérve hozzon létre egy ellenőrzést 
 
 Az értesítés így csak akkor lesz elküldve, ha a pont a határvonalakon belül található.
 
-## Leküldéses értesítések tesztelése UWP-alkalmazásban
+## <a name="testing-push-notifications-in-the-uwp-app"></a>Leküldéses értesítések tesztelése UWP-alkalmazásban
 Az UWP-alkalmazásban most már tudjuk tesztelni az értesítéseket. A `LocationHelper` osztályba hozzon létre egy új függvényt – `SendLocationToBackend`:
 
     public static async Task SendLocationToBackend(string pns, string userTag, string message, string latitude, string longitude)
@@ -376,7 +380,7 @@ Mivel nem a valós koordinátákat továbbítjuk (lehetséges, hogy ezek jelenle
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## Hogyan tovább?
+## <a name="whats-next"></a>Hogyan tovább?
 A fentiek mellett további lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 
 Mindenekelőtt a geokerítések dinamikus viselkedését kell biztosítania. Ehhez úgy kell beállítani a Bing API-t, hogy új határvonalakat tudjunk feltölteni a meglévő adatforráson belül. Erről további információkat a [Bing térbeliadat-szolgáltatási API-dokumentációjában](https://msdn.microsoft.com/library/ff701734.aspx) talál.
@@ -387,6 +391,9 @@ A fenti megoldás egy olyan forgatókönyvet ismertet, amelyben sokféle célpla
 
 A Notification Hubs képességeiről a [dokumentációs portálon](https://azure.microsoft.com/documentation/services/notification-hubs/) talál további részleteket.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

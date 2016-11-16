@@ -1,33 +1,38 @@
 ---
-title: Az Azure SQL Data Warehouse lekérdezése (sqlcmd) | Microsoft Docs
-description: Az Azure SQL Data Warehouse lekérdezése az sqlcmd parancssori segédprogram használatával.
+title: "Az Azure SQL Data Warehouse lekérdezése (sqlcmd) | Microsoft Docs"
+description: "Az Azure SQL Data Warehouse lekérdezése az sqlcmd parancssori segédprogram használatával."
 services: sql-data-warehouse
 documentationcenter: NA
-author: sonyam
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: 6e2b69e5-4806-4e91-9ea1-e2b63bf28c46
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 09/06/2016
-ms.author: barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1f2cf8003e46a1df30810a2594bc1d380bc13bcf
+
 
 ---
-# Az Azure SQL Data Warehouse lekérdezése (sqlcmd)
+# <a name="query-azure-sql-data-warehouse-sqlcmd"></a>Az Azure SQL Data Warehouse lekérdezése (sqlcmd)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
 Ez az útmutató az [sqlcmd][sqlcmd] parancssori segédprogramot használja az Azure SQL Data Warehouse lekérdezéséhez.  
 
-## 1. Kapcsolódás
+## <a name="1-connect"></a>1. Kapcsolódás
 Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati karakterláncát. A kapcsolati karakterláncban a következő paraméterekre van szükség:
 
 * **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
@@ -36,7 +41,7 @@ Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, é
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-* **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó formátumban.`>`
+* **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó`>` formátumban.
 * **Password (-P):** A felhasználóhoz tartozó jelszó.
 
 A kapcsolati karakterlánc például a következőképpen nézhet ki:
@@ -60,7 +65,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## 2. Lekérdezés
+## <a name="2-query"></a>2. Lekérdezés
 A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.  Ebben a példában a lekérdezések elküldése interaktív módban történik.
 
 ```sql
@@ -80,7 +85,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokumentációjában][sqlcmd] tekintheti meg.
 
 <!--Image references-->
@@ -95,6 +100,6 @@ Az sqlcmd-ben elérhető további lehetőségek részleteit az [sqlcmd dokument�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

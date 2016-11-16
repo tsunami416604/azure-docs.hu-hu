@@ -1,22 +1,26 @@
 ---
-title: Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogy az Azure Portal használatával hogyan hozhat létre egy egyszeres átviteli sebességű élő streamet fogadó csatornát, amely többszörös átviteli sebességű streammé kódolja a fogadott bemenetet.
+title: "Élő adatfolyam-továbbítás az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához | Microsoft Docs"
+description: "Ez az oktatóanyag bemutatja, hogy az Azure Portal használatával hogyan hozhat létre egy egyszeres átviteli sebességű élő streamet fogadó csatornát, amely többszörös átviteli sebességű streammé kódolja a fogadott bemenetet."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 504f74c2-3103-42a0-897b-9ff52f279e23
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/06/2016
-ms.author: juliako;juliako
+ms.date: 10/24/2016
+ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -72,7 +76,8 @@ Ebben az oktatóanyagban az Azure Portallal a következő feladatokat végezzük
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzésének a következők a feltételei.
 
-* Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. 
+  További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
 * Egy webkamera és egy egyszeres sávszélességű élő stream továbbítására alkalmas kódoló.
 
@@ -83,7 +88,7 @@ A dinamikus becsomagolás előnyének kihasználásához léteznie kell legaláb
 
 Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure-portálon](https://portal.azure.com/) és válassza ki AMS-fiókját.
 2. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
 3. Kattintson az alapértelmezett streamvégpontra. 
    
@@ -99,7 +104,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
    > 
 
 ## <a name="create-a-channel"></a>CSATORNA létrehozása
-1. Az [Azure Portalon](https://portal.azure.com/) kattintson a Media Services elemre, majd a Media Services-fiók nevére.
+1. Az [Azure-portálon](https://portal.azure.com/) kattintson a Media Services elemre, majd Media Services-fiókja nevére.
 2. Válassza a **Live Streaming** (Élő adatfolyam) lehetőséget.
 3. Válassza a **Custom create** (Egyéni létrehozás) lehetőséget. Ez a beállítás lehetővé teszi egy olyan csatorna létrehozását, amellyel használható a Live Encoding.
    
@@ -164,7 +169,7 @@ Ha már leállította és törölte is az eseményt, a felhasználók igény sze
 
 Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetővé tenni őket streamelésre, törölje a streamelési lokátort.
 
-### <a name="create/start/stop-events"></a>Események létrehozása/indítása/leállítása
+### <a name="createstartstop-events"></a>Események létrehozása/indítása/leállítása
 Ha elvégezte a stream és a csatorna összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy objektumot, egy programot és egy streamelési lokátort. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
 
 Az esemény két különböző módon indítható el: 
@@ -205,7 +210,7 @@ Ha befejezte az esemény streamelését, és törölni szeretné a korábban kio
 ## <a name="view-archived-content"></a>Archivált tartalom megtekintése
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
-Az objektumok kezeléséhez válassza a  **Setting** (Beállítás) elemet, majd kattintson az **Assets** (Objektumok) elemet.
+Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd kattintson az **Assets** (Objektumok) elemre.
 
 ![Objektumok](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
@@ -221,6 +226,9 @@ Tekintse át a Media Services képzési terveket.
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

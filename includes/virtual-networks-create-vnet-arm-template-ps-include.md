@@ -1,12 +1,12 @@
-## Deploy the ARM template by using PowerShell
-To deploy the ARM template you downloaded by using PowerShell, follow the steps below.
+## <a name="deploy-the-arm-template-by-using-powershell"></a>Az ARM-sablon üzembe helyezése a PowerShell használatával
+A letöltött ARM-sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
-2. If necessary, run the **`New-AzureRmResourceGroup`** cmdlet to create a new resource group. The command below creates a resource group named *TestRG* in the *Central US* azure region. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md).
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+2. Szükség esetén a **`New-AzureRmResourceGroup`** parancsmag futtatásával hozzon létre egy új erőforráscsoportot. Az alábbi parancs egy *TestRG* nevű erőforráscsoportot hoz létre az *USA középső régiója* Azure-régióban. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
    
         New-AzureRmResourceGroup -Name TestRG -Location centralus
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         ResourceGroupName : TestRG
         Location          : centralus
@@ -17,12 +17,12 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
                             =======  ==========
                             *
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
-3. Run the **`New-AzureRmResourceGroupDeployment`** cmdlet to deploy the new VNet by using the template and parameter files you downloaded and modified above.
+3. Futtassa az **`New-AzureRmResourceGroupDeployment`** parancsmagot, hogy a fent letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új VNetet.
    
         New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
             -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
    
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
    
         DeploymentName    : TestVNetDeployment
         ResourceGroupName : TestRG
@@ -42,11 +42,11 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
                             subnet2Name      String                     BackEnd
    
         Outputs           :
-4. Run the **`Get-AzureRmVirtualNetwork`** cmdlet to view the properties of the new VNet, as shown below.
+4. Futtassa a **`Get-AzureRmVirtualNetwork`** parancsmagot az új VNet tulajdonságainak megtekintéséhez a lent látható módon.
 
         Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 
-    Here is the expected output for the command above:
+    A fenti parancs várható kimenete:
 
         Name              : TestVNet
         ResourceGroupName : TestRG
@@ -87,6 +87,6 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
                               }
                             ]
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

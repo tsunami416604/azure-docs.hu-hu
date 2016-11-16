@@ -1,72 +1,76 @@
 ---
-title: Get started creating an Internet facing load balancer in classic deployment model using the Azure CLI | Microsoft Docs
-description: Learn how to create an Internet facing load balancer in classic deployment model using the Azure CLI
+title: "Bevezetés az internetkapcsolattal rendelkező terheléselosztó létrehozásába klasszikus üzembehelyezési modellben az Azure parancssori felület használatával | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó klasszikus üzembehelyezési modellben az Azure parancssori felület használatával"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8a346c1b2d430eceb4aa1b8bc94fbbe89394556
+
 
 ---
-# Get started creating an Internet facing load balancer (classic) in the Azure CLI
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Bevezetés az internetkapcsolattal rendelkező terheléselosztó (klasszikus) Azure parancssori felület használatával történő létrehozásába
 [!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-This article covers the classic deployment model. You can also [Learn how to create an Internet facing load balancer using Azure Resource Manager](load-balancer-get-started-internet-arm-ps.md).
+Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [azt is megismerheti, hogyan lehet internetkapcsolattal rendelkező terheléselosztót létrehozni az Azure Resource Manager használatával](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## Step by step creating an Internet facing load balancer using CLI
-This guide shows how to create an Internet load balancer based on the scenario above.
+## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Internetkapcsolattal rendelkező terheléselosztó parancssori felület használatával történő létrehozásának lépései
+Ez az útmutató bemutatja, hogyan hozhat létre internetkapcsolattal rendelkező terheléselosztót a fenti forgatókönyv alapján.
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](../xplat-cli-install.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to classic mode, as shown below.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+2. Az **azure config mode** parancs futtatásával váltson a klasszikus módra, a lent látható módon.
    
         azure config mode asm
    
-    Expected output:
+    Várt kimenet:
    
         info:    New mode is asm
 
-## Create endpoint and load balancer set
-The scenario assumes the virtual machines "web1" and "web2" were created.
-This guide will create a load balancer set using port 80 as public port and port 80 as local port. A probe port is also configured on port 80 and named the load balancer set "lbset".
+## <a name="create-endpoint-and-load-balancer-set"></a>Végpont és terheléselosztó készlet létrehozása
+A forgatókönyv feltételezi, hogy létrehozták a „web1” és „web2” virtuális gépet.
+Ez az útmutató létrehoz egy terheléselosztó készletet: a 80-as portot használja nyilvános portként, és a 80-as portot használja helyi portként. A mintavételi port szintén a 80-as porton van konfigurálva, és a terheléselosztó készlet „lbset” nevet kapta.
 
-### Step 1
-Create the first endpoint and load balancer set using `azure network vm endpoint create` for virtual machine "web1".
+### <a name="step-1"></a>1. lépés
+Hozza létre az első végpontot és terheléselosztó készletet a következő használatával a „web1” virtuális géphez: `azure network vm endpoint create`.
 
     azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset
 
-Parameters used:
+Használt paraméterek:
 
-**-k** - local virtual machine port<br>
-**-o** - protocol<BR>
-**-t** - probe port<BR>
-**-b** - load balancer name<BR>
+**-k** – helyi virtuális gép portja<br>
+**-o** – protokoll<BR>
+**-t** – mintavételi port<BR>
+**-b** – terheléselosztó neve<BR>
 
-## Step 2
-Add a second virtual machine "web2" to the load balancer set.
+## <a name="step-2"></a>2. lépés
+Adjon hozzá egy második virtuális gépet a terheléselosztó készlethez „web2” néven.
 
     azure vm endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
 
-## Step 3
-Verify the load balancer configuration using `azure vm show` .
+## <a name="step-3"></a>3. lépés
+Ellenőrizze a terheléselosztó konfigurációját a következő használatával: `azure vm show`.
 
     azure vm show web1
 
-The output will be:
+A kimenet a következő lesz:
 
     data:    DNSName "contoso.cloudapp.net"
     data:    Location "East US"
@@ -110,29 +114,35 @@ The output will be:
     data:    Network Endpoints 2 port 58081
     info:    vm show command OK
 
-## Create a remote desktop endpoint for a virtual machine
-You can create a remote desktop endpoint to forward network traffic from a public port to a local port for a specific virtual machine using `azure vm endpoint create`.
+## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Hozzon létre egy távoli asztali végpontot a virtuális géphez
+Létrehozhat egy távoli asztali végpontot a hálózati forgalom nyilvános portról helyi portra történő továbbításához egy adott virtuális géphez a `azure vm endpoint create` parancs használatával.
 
     azure vm endpoint create web1 54580 -k 3389
 
 
-## Remove virtual machine from load balancer
-You have to delete the endpoint associated to the load balancer set from the virtual machine. Once the endpoint is removed, the virtual machine doesn't belong to the load balancer set anymore.
+## <a name="remove-virtual-machine-from-load-balancer"></a>Virtuális gép eltávolítása a terheléselosztóból
+Törölnie kell a terheléselosztó készlethez társított végpontot a virtuális gépből. Miután megtörtént a végpont eltávolítása, a virtuális gép többé nem tartozik a terheléselosztó készlethez.
 
- Using the example above, you can remove the endpoint created for virtual machine "web1" from load balancer "lbset" using the command `azure vm endpoint delete`.
+ A fenti példa használatával eltávolíthatja a „web1” virtuális géphez létrehozott végpontot az „lbset” terheléselosztóból a következő parancs használatával: `azure vm endpoint delete`.
 
     azure vm endpoint delete web1 tcp-80-80
 
 
 > [!NOTE]
-> You can explore more options to manage endpoints using the command `azure vm endpoint --help`
+> A következő paranccsal további, a végpontok kezelésére szolgáló beállítást ismerhet meg: `azure vm endpoint --help`
 > 
 > 
 
-## Next steps
-[Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-ps.md)
+## <a name="next-steps"></a>Következő lépések
+[Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
 
-[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
+[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

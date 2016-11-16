@@ -1,12 +1,12 @@
 ---
-title: Bevezetés az Azure Mobile Apps szolgáltatásnak a Xamarin.Android-alkalmazásokkal való használatába
-description: Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin Android-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást
+title: "Bevezetés az Azure Mobile Apps szolgáltatásnak a Xamarin.Android-alkalmazásokkal való használatába"
+description: "Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin Android-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást"
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e59a87ec6017061078d5cb5df93207c7f93ec00b
+
 
 ---
-# <a name="create-a-xamarin.android-app"></a>Xamarin.Android-alkalmazás létrehozása
+# <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -49,10 +53,10 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
 ## <a name="configure-the-server-project"></a>Kiszolgálóprojekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarin.android-app"></a>A Xamarin.Android-alkalmazás letöltése és futtatása
+## <a name="download-and-run-the-xamarinandroid-app"></a>A Xamarin.Android-alkalmazás letöltése és futtatása
 1. A **Download and run your Xamarin.Android project** (A Xamarin.Android-projekt letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
    
-    Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
+      Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 2. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást.
 3. Az alkalmazásban írjon be egy értelmes szöveget, például *Az oktatóanyag befejezése*, majd kattintson a **Hozzáadás** gombra.
    
@@ -84,6 +88,6 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

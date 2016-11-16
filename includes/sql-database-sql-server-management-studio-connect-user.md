@@ -1,35 +1,37 @@
-## Connect to Azure SQL Database as a user
-Use the following steps to connect to Azure SQL Database with SSMS as a user.
+## <a name="connect-to-azure-sql-database-as-a-user"></a>Kapcsolódás az Azure SQL Database szolgáltatáshoz felhasználóként
+Kövesse a következő lépéseket, hogy az SSMS használatával felhasználóként csatlakozzon az Azure SQL Database szolgáltatáshoz.
 
-1. Type "Microsoft SQL Server Management Studio" in the Windows search box, and then click the desktop app to start SSMS.
-2. In the Connect to Server window, enter the following information:
+1. Írja be a „Microsoft SQL Server Management Studio” kifejezést a Windows keresőmezőbe, majd kattintson az asztali alkalmazásra az SSMS elindításához.
+2. A Connect to Server (Kapcsolódás a kiszolgálóhoz) ablakban adja meg a következő adatokat:
 
-* **Server type**: The default is database engine; do not change this value.
+* **Server type** (Kiszolgáló típusa): Az alapértelmezett adatbázismotor; ne módosítsa ezt az értéket.
   
-  * **Server name**: Enter the name of the server that hosts your SQL database in the followinbg format: *&lt;servername>*.**database.windows.net**
-  * **Authentication type**: If you are just getting started, select SQL Authentication. If you have enabled Active Directory for your SQL Database logical server, you can select either Active Directory Password Authentication or Active Directory Integrated Authentication.
-  * **User name**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the name of a user with access to a database on the server.
-  * **Password**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the password for the specified user.
+  * **Server name** (Kiszolgáló neve): Adja meg az SQL-adatbázisát üzemeltető kiszolgáló nevét a következő formátumban: *&lt;kiszolgálónév>*.**database.windows.net**
+  * **Authentication type** (Hitelesítés típusa): Ha ezek az első lépései, válassza az SQL-hitelesítést. Ha engedélyezte az Active Directory szolgáltatást az SQL Database logikai kiszolgálójához, választhatja az Active Directory jelszavas hitelesítést, vagy az Active Directory integrált hitelesítést is.
+  * **User name** (Felhasználónév): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adjon meg egy a felhasználónevet, amelynek hozzáférése van a kiszolgálón található adatbázishoz.
+  * **Password** (Jelszó): Ha az SQL-hitelesítést vagy az Active Directory jelszavas hitelesítést választotta, adja meg a megadott felhasználóhoz tartozó jelszót.
     
-       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-1.png)
+       ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-1.png)
 
-1. Click **Options** to specify the database to which you want to connect.
+1. Kattintson az **Options** (Beállítások) lehetőségre az adatbázis megadásához, amelyhez kapcsolódni szeretne.
    
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-2.png)
-2. In the **Connect to Database**, select the database to which you wish to connect.
+      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-2.png)
+2. A **Connect to Database** (Csatlakozás az adatbázishoz) ablakban válassza ki azt az adatbázist, amelyhez kapcsolódni szeretne.
    
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-3.png)
-3. Click **Connect**.
-4. If your client's IP address does not have access to the SQL Database logical server, you will be prompted to sign in to an Azure account and create a server-level firewall rule. If you are an Azure subscription administrator, Click **Sign in** to create a server-level firewall rule. If not, have an administrator create either a server-level firewall rule or a database-level firewall rule in the database to which you are trying to connect.
+     ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-3.png)
+3. Kattintson a **Connect** (Csatlakozás) gombra.
+4. Ha az ügyfél IP-címének nincs hozzáférése az SQL Database logikai kiszolgálóhoz, a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, és hozzon létre egy kiszolgálószintű tűzfalszabályt. Ha Ön Azure-előfizetési rendszergazda, kattintson a **Bejelentkezés** gombra a kiszolgálószintű tűzfalszabály létrehozásához. Ha nem az, kérjen meg egy rendszergazdát egy kiszolgálószintű vagy adatbázisszintű tűzfalszabály létrehozására ahhoz az adatbázishoz, amelyhez csatlakozni szeretne.
    
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-4.png)
-5. If your credentials grant you access to the specified database, Object Explorer opens and you can now perform administrative tasks or query data, depending upon the user permissions.
+      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-4.png)
+5. Ha a hitelesítő adatai megadják a hozzáférést az adott adatbázishoz, megnyílik az Object Explorer – ekkor a felhasználói engedélyektől függően elvégezheti az adminisztratív feladatokat és adatokat is lekérdezhet.
    
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-5.png)
+      ![SQL Server Management Studio: Csatlakozás az SQL Database kiszolgálóhoz](./media/sql-database-sql-server-management-studio-connect-user/connect-user-5.png)
 
-## Troubleshoot connection failures
-The most common reason for connection failures are mistakes in the server name (remember, <*servername*> is the name of the logical server, not the database), the user name, or the password, as well as the server not allowing connections for security reasons. 
+## <a name="troubleshoot-connection-failures"></a>Csatlakozási hibák elhárítása
+A csatlakozási hibák leggyakoribb okai a kiszolgáló nevében található hibák (ne feledje, a <*servername*> a logikai kiszolgáló neve, nem az adatbázisé), a helytelen felhasználónév vagy jelszó, valamint a biztonsági okok, melyek miatt a kiszolgáló nem engedélyez kapcsolatokat. 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

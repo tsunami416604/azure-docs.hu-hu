@@ -1,12 +1,12 @@
 ---
-title: Az ExpressRoute QoS-követelményei | Microsoft Docs
-description: Ez az oldal ExpressRoute-kapcsolatcsoportok QoS-konfigurálásának és -kezelésének részletes követelményeit ismerteti.
+title: "Az ExpressRoute QoS-követelményei | Microsoft Docs"
+description: "Ez az oldal ExpressRoute-kapcsolatcsoportok QoS-konfigurálásának és -kezelésének részletes követelményeit ismerteti."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9e74127e3140ec9973753fb5f29151c406326c36
+
 
 ---
-# Az ExpressRoute QoS-követelményei
+# <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
 A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
 
 ![](./media/expressroute-qos/expressroute-qos.png)
@@ -40,7 +44,7 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
 * Több QoS várakozási sort kell konfigurálnia és támogatnia a hálózaton belül. A hangnak egy különálló osztálynak kell lennie, és az RFC 3246-ban meghatározott EF-kezelést kell fogadnia. 
 * Forgalomosztályonként meghatározhatja a várakozásisor-kezelési mechanizmust, a torlódásészlelési házirendet és a sávszélesség-kiosztást. Skype Vállalati verzió számítási feladatainak DSCP-jelölését azonban meg kell tartania. Ha a fenti listában nem szereplő DSCP-jelöléseket használ, például az AF31 (26) jelölést, ezt a DSCP-értéket 0 értékre kell felülírnia, mielőtt elküldi a csomagot a Microsoftnak. A Microsoft csak a fenti táblázatban szereplő DSCP-értékkel jelölt csomagokat küld. 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Tekintse meg az [Útválasztás](expressroute-routing.md) és a [NAT](expressroute-nat.md) követelményeit.
 * Tekintse meg a következő hivatkozásokat az ExpressRoute-kapcsolat konfigurálásához:
   
@@ -48,6 +52,9 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
   * [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

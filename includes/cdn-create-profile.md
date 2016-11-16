@@ -1,19 +1,21 @@
-**To create a new CDN profile**
+**Új CDN-profil létrehozása**
 
-1. In the [Azure Portal](https://portal.azure.com), in the upper left, click **New**.  In the **New** blade, select **Media + CDN**, then **CDN**.
+1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában található **Új** gombra.  Az **Új** panelen válassza az **Adathordozó + CDN**, majd a **CDN** lehetőséget.
    
-    The new CDN profile blade appears.
+    Megjelenik az új CDN-profil panelje.
    
-    ![New CDN Profile](./media/cdn-create-profile/new-cdn-profile-include.png)
-2. Enter a name for your CDN profile.
-3. Select a **Location**.  This is the Azure location where your CDN profile information will be stored.  It has no impact on CDN endpoint locations.
-4. Select or create a **Resource Group**.  For more information on Resource Groups, see [Azure Resource Manager overview](../articles/resource-group-overview.md#resource-groups).
-5. Select a **Pricing tier**.  See the [CDN Overview](../articles/cdn/cdn-overview.md#azure-cdn-features) for a comparison of pricing tiers.
+    ![Új CDN-profil](./media/cdn-create-profile/new-cdn-profile-include.png)
+2. Adja meg a CDN-profil nevét.
+3. Válasszon ki egy **helyet**.  Ez az az Azure-hely, ahol a rendszer a CDN-profil adatait tárolja majd.  Ez nincs hatással a CDN-végpontok helyére.
+4. Válasszon ki vagy hozzon létre egy **erőforráscsoportot**.  További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+5. Válasszon egy tarifacsomagot a **Tarifacsomag** területen.  A tarifacsomagok összehasonlításához lásd a [CDN áttekintésével](../articles/cdn/cdn-overview.md#azure-cdn-features) foglalkozó cikket.
    
-    ![CDN pricing tier selection](./media/cdn-create-profile/cdn-choose-sku-include.png)
-6. Select the **Subscription** for this CDN profile.
-7. Click the **Create** button to create the new profile. 
+    ![CDN-tarifacsomag kiválasztása](./media/cdn-create-profile/cdn-choose-sku-include.png)
+6. Válassza ki a jelen CDN-profilhoz tartozó **előfizetést**.
+7. Az új profil létrehozásához kattintson a **Létrehozás** gombra. 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

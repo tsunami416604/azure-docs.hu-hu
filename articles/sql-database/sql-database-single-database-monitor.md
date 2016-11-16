@@ -1,13 +1,13 @@
 ---
-title: Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban | Microsoft Docs
-description: Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel.
-keywords: adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye
+title: "Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban | Microsoft Docs"
+description: "Tudja meg, hogyan figyelheti az adatbázisokat Azure- eszközökkel és dinamikus felügyeleti nézetekkel."
+keywords: "adatbázis-megfigyelés, felhőalapú adatbázis teljesítménye"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: a2e47475-c955-4a8d-a65c-cbef9a6d9b9f
 ms.service: sql-database
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/27/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f5fa586bd8902af2129a7157f0549c337ae00d00
+
 
 ---
-# Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
+# <a name="monitoring-database-performance-in-azure-sql-database"></a>Adatbázis teljesítményének figyelése Azure SQL Database adatbázisokban
 Egy Azure SQL-adatbázis teljesítményének figyelése az erőforrás-használatnak a kiválasztott adatbázis teljesítményszintjéhez viszonyított figyelésével kezdődik. A figyelés segítségével megállapítható, ha az adatbázis többletkapacitással rendelkezik, vagy éppen elérte a maximumot az erőforrások kihasználtságában, és emiatt problémák jelentkezhetnek, így az is eldönthető, hogy módosítani kell-e az adatbázis teljesítményszintjét és [szolgáltatásszintjét](sql-database-service-tiers.md). Az adatbázist figyelheti grafikus eszközök használatával az [Azure Portalon](https://portal.azure.com) vagy SQL [dinamikus felügyeleti nézetek](https://msdn.microsoft.com/library/ms188754.aspx) használatával.
 
-## Adatbázisok figyelése Azure Portal használatával
+## <a name="monitor-databases-using-the-azure-portal"></a>Adatbázisok figyelése Azure Portal használatával
 Az [Azure Portalon](https://portal.azure.com/) az adatbázis kiválasztásával és a **Figyelés** diagramra történő kattintással figyelheti egy önálló adatbázist erőforrás-használat. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
 
 * Processzorhasználat (%)
@@ -38,7 +42,7 @@ Például ha az adatbázisban munkaterhelés-növekedésére számít, beállít
 
 A metrikák annak megállapításában is segíthetnek, hogy alacsonyabb teljesítményszintre válthat-e. Tegyük fel, hogy Standard S2 adatbázist használ, és a metrikák azt mutatják, hogy az adatbázis átlagos kihasználtsága egy adott időpontban nem több, mint 10 százalék. Ebben az esetben valószínű, hogy az adatbázis Standard S1 teljesítményszinten is megfelelően fog működni. Mielőtt azonban alacsonyabb teljesítményszintre váltana, vegye figyelembe az esetlegesen hirtelen megugró vagy ingadozó munkaterheléseket.
 
-## Adatbázisok figyelése dinamikus felügyeleti nézetek használatával
+## <a name="monitor-databases-using-dmvs"></a>Adatbázisok figyelése dinamikus felügyeleti nézetek használatával
 A portálon elérhető metrikák a következő rendszernézeteken keresztül is elérhetők: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) a kiszolgáló logikai **fő**adatbázisában és [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) a felhasználói adatbázisban. Ha hosszabb ideig kevesebb részletes adatot kell figyelnie, akkor a **sys.resource_stats** nézetet válassza. Ha rövidebb ideig több részletes adatot kell figyelnie, akkor a **sys.dm_db_resource_stats** nézetet válassza. További információkat az [Útmutató az Azure SQL Database teljesítményfigyeléséhez](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats) részben talál.
 
 > [!NOTE]
@@ -48,6 +52,9 @@ A portálon elérhető metrikák a következő rendszernézeteken keresztül is 
 
 Rugalmas adatbáziskészletek esetén az ebben a szakaszban leírt technikákkal az adatbáziskészlet egyes adatbázisait is figyelheti. De ugyanígy figyelheti az adatbáziskészlet egészét is. További információkat a [Rugalmas készlet figyelése és kezelése](sql-database-elastic-pool-manage-portal.md) részben talál.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

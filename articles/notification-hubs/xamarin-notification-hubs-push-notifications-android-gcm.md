@@ -1,36 +1,40 @@
 ---
-title: Ismerkedés az Azure Notification Hubs Xamarin.Android-alkalmazásokkal való használatával | Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba.
-author: wesmc7777
+title: "Ismerkedés a Notification Hubs Xamarin.Android-alkalmazásokkal való használatával | Microsoft Docs"
+description: "Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba."
+author: ysxu
 manager: erikre
-editor: ''
+editor: 
 services: notification-hubs
 documentationcenter: xamarin
-
+ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
+
 
 ---
-# Ismerkedés a Notification Hubs Xamarin Android-alkalmazásokkal való használatával
+# <a name="get-started-with-notification-hubs-with-xamarin-for-android"></a>Ismerkedés a Notification Hubs Xamarin Android-alkalmazásokkal való használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin.Android-alkalmazásokba.
 Létre fog hozni egy üres Xamarin.Android-alkalmazást, amely leküldéses értesítéseket fogad a Google Cloud Messaging (GCM) használatával. Amikor végzett, képes lesz az értesítési központ használatával leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a minta [NotificationHubs-alkalmazásban][GitHub] érhető el.
 
 Ez az oktatóanyag az egyszerű küldési forgatókönyvet mutatja be a Notification Hubs használatával.
 
-## Előkészületek
+## <a name="before-you-begin"></a>Előkészületek
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
 Az oktatóanyag teljes kódja a GitHubon, [itt](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid) található meg.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 * Windows rendszeren Visual Studio with Xamarin, vagy Mac OS X rendszeren Xamarin Studio. A teljes telepítési útmutatás itt található: [Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése).
@@ -45,10 +49,10 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin.A
 > 
 > 
 
-## A Google Cloud Messaging engedélyezése
+## <a name="enable-google-cloud-messaging"></a>A Google Cloud Messaging engedélyezése
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-## Az értesítési központ konfigurálása
+## <a name="configure-your-notification-hub"></a>Az értesítési központ konfigurálása
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="7">
@@ -60,14 +64,14 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin.A
 
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## Az alkalmazás csatlakoztatása az értesítési központhoz
-### Új projekt létrehozása
+## <a name="connect-your-app-to-the-notification-hub"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+### <a name="create-a-new-project"></a>Új projekt létrehozása
 1. A Xamarin Studióban kattintson a **New Solution** (Új megoldás), az **Android App** (Android-alkalmazás), majd a **Next** (Tovább) elemre.
    
-    ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
 2. Adja meg az **App name** (Alkalmazás neve) és az **Identifier** (Azonosító) értékét. Kattintson a támogatni kívánt **Target Plaforms** (Célplaformok) elemekre, majd a **Next** (Tovább), végül a **Create** (Létrehozás) gombra.
    
-    ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
+       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     Ezzel létrehoz egy új Android-projektet.
 
@@ -80,20 +84,20 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
    > 
    > 
    
-    ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
+       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
 2. A **Minimum Android version** (Minimális Android-verziót) beállíthatja egy másik API-szintre.
 3. A **Target Android version** (Cél Android-verziót) beállíthatja másik cél API-verzióra (legalább 8. szintű API-nak kell lennie).
 
 Kattintson az **OK** gombra, és zárja be a Project Options (Projektbeállítások) párbeszédpanelt.
 
-### A szükséges összetevők hozzáadása a projekthez
+### <a name="add-the-required-components-to-your-project"></a>A szükséges összetevők hozzáadása a projekthez
 A Xamarin Component Store áruházban elérhető Google Cloud Messaging Client egyszerűbbé teszi a leküldéses értesítések támogatását a Xamarin.Androidban.
 
 1. Kattintson a jobb gombbal a Components (Összetevők) mappára a Xamarin.Android-alkalmazásban, és válassza a **Get More Components** (További összetevők beszerzése) lehetőséget.
 2. Keresse meg az **Azure Messaging** összetevőt, és adja hozzá a projekthez.
 3. Keresse meg a **Google Cloud Messaging Client** összetevőt, és adja hozzá a projekthez.
 
-### Értesítési központok beállítása a projektben
+### <a name="set-up-notification-hubs-in-your-project"></a>Értesítési központok beállítása a projektben
 1. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
    
    * **GoogleProjectNumber** (Google-projektszám): A projektszám értéke az alkalmazás áttekintésében található Google fejlesztői portálján. Korábban, az alkalmazásnak a portálon való létrehozása során már feljegyezte ezt az értéket.
@@ -102,8 +106,7 @@ A Xamarin Component Store áruházban elérhető Google Cloud Messaging Client e
      
      Hozzon létre egy **Constants.cs** osztályt a Xamarin-projekthez, és definiálja a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
      
-       public static class Constants
-       {
+       public static class Constants   {
      
            public const string SenderID = "<GoogleProjectNumber>"; // Google API Project Number
            public const string ListenConnectionString = "<Listen connection string>";
@@ -194,7 +197,7 @@ A Xamarin Component Store áruházban elérhető Google Cloud Messaging Client e
              private NotificationHub Hub { get; set; }
     
              public PushHandlerService() : base(Constants.SenderID)
-             {
+                {
                  Log.Info(MyBroadcastReceiver.TAG, "PushHandlerService() constructor");
              }
          }
@@ -327,7 +330,7 @@ A Xamarin Component Store áruházban elérhető Google Cloud Messaging Client e
             Log.Error(MyBroadcastReceiver.TAG, "GCM Error: " + errorId);
         }
 
-## Az alkalmazás futtatása az emulátorban
+## <a name="run-your-app-in-the-emulator"></a>Az alkalmazás futtatása az emulátorban
 Ha az emulátorban futtatja az alkalmazást, olyan Android virtuális eszközt (AVD) használjon, amely támogatja a Google API-kat.
 
 > [!IMPORTANT]
@@ -340,15 +343,15 @@ Ha az emulátorban futtatja az alkalmazást, olyan Android virtuális eszközt (
 
 1. A **Tools** (Eszközök) részen kattintson az **Open Android Emulator Manager** (Android-emulátorkezelő megnyitása) elemre, jelölje ki az eszközt, majd kattintson az **Edit** (Szerkesztés) gombra.
    
-    ![][18]
+       ![][18]
 2. A **Target** (Cél) értékeként válassza a **Google APIs** (Google API-k) lehetőséget, majd kattintson az **OK** gombra.
    
-    ![][19]
+       ![][19]
 3. A felső eszköztáron kattintson a **Run** (Futtatás) elemre, majd jelölje ki az alkalmazást. Ekkor elindul az emulátor, és futtatja az alkalmazást.
    
    Az alkalmazás lekéri a *registrationId* azonosítót a GCM-ből, és regisztrál az értesítési központban.
 
-## Értesítések küldése a háttérrendszerből
+## <a name="send-notifications-from-your-backend"></a>Értesítések küldése a háttérrendszerből
 Az értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet a [klasszikus Azure portál] az értesítési központ hibakeresési lapján keresztül, az alábbi képernyőn látható módon.
 
 ![][30]
@@ -363,12 +366,12 @@ Az alábbi listában egyéb oktatóprogramok találhatók, amelyek az értesít�
 
 Az oktatóanyag következő alszakaszaiban értesítéseket küld egy .NET-konzolalkalmazás, illetve egy mobilszolgáltatás használatával egy csomópontparancsfájl segítségével.
 
-#### (Választható) Értesítések küldése .NET-alkalmazás használatával
+#### <a name="optional-send-notifications-by-using-a-net-app"></a>(Választható) Értesítések küldése .NET-alkalmazás használatával
 Ebben a szakaszban egy .NET-konzolalkalmazás használatával küldünk értesítéseket.
 
 1. Hozzon létre egy új Visual C#-konzolalkalmazást:
    
-    ![][20]
+       ![][20]
 2. A Visual Studióban kattintson az **Eszközök**, a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelő konzol) elemre.
    
     Megjelenik a Package Manager Console (Csomagkezelő konzol) ablak a Visual Studióban.
@@ -395,17 +398,17 @@ Ebben a szakaszban egy .NET-konzolalkalmazás használatával küldünk értesí
          Console.ReadLine();
 7. Nyomja le az F5 billentyűt az alkalmazás futtatásához. Egy értesítést kell kapnia az alkalmazásban.
    
-    ![][21]
+       ![][21]
 
-#### (Választható) Értesítések küldése mobilszolgáltatás használatával
+#### <a name="optional-send-notifications-by-using-a-mobile-service"></a>(Választható) Értesítések küldése mobilszolgáltatás használatával
 1. Kövesse [A Mobile Services használatának első lépései] című témakör utasításait.
 2. Jelentkezzen be a [klasszikus Azure portál], majd jelölje ki a mobilszolgáltatást.
 3. Válassza az oldal tetején található **Scheduler** fület.
    
-    ![][22]
+       ![][22]
 4. Hozzon létre egy új ütemezett feladatot, szúrjon be egy nevet, és válassza az **On demand** (Igény szerint) lehetőséget.
    
-    ![][23]
+       ![][23]
 5. A feladat létrehozását követően kattintson a feladat nevére. Ezután válassza a felső sávon található **Script** (Parancsfájl) fület.
 6. Szúrja be a következő parancsfájlt a Scheduler függvényébe. Cserélje le a helyőrzőket az értesítési központ nevére és a *DefaultFullSharedAccessSignature* kapcsolati karakterláncra, amelyet korábban szerzett be. Kattintson a **Save** (Mentés) gombra.
    
@@ -425,8 +428,8 @@ Ebben a szakaszban egy .NET-konzolalkalmazás használatával küldünk értesí
         );
 7. Kattintson az alsó sáv **Run Once** (Futtatás egyszer) parancsára. Egy bejelentési értesítést kell kapnia.
 
-## Következő lépések
-Ebben az egyszerű példában értesítéseket küldött az összes Android-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news](Friss hírek küldése Notification Hubs használatával.md) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs Android rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
+## <a name="next-steps"></a>Következő lépések
+Ebben az egyszerű példában értesítéseket küldött az összes Android-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs Android rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
 
 <!-- Anchors. -->
 [A Google Cloud Messaging engedélyezése]: #register
@@ -461,9 +464,9 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 [A Mobile Services használatának első lépései]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript és HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[klasszikus Azure portál]: https://manage.windowsazure.com/
+[Klasszikus Azure portál]: https://manage.windowsazure.com/
 [wns-objektum]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs Android rendszeren való használatával]: http://msdn.microsoft.com/library/dn282661.aspx
 
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: /manage/services/notification-hubs/notify-users-aspnet
@@ -476,6 +479,6 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

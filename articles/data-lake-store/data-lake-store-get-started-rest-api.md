@@ -1,12 +1,12 @@
 ---
-title: A Data Lake Store használatának első lépései a REST API használatával | Microsoft Docs
-description: Műveletek végrehajtása a Data Lake Store-on WebHDFS REST API-k használatával
+title: "A Data Lake Store használatának első lépései a REST API használatával | Microsoft Docs"
+description: "Műveletek végrehajtása a Data Lake Store-on WebHDFS REST API-k használatával"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
+
 
 ---
-# Az Azure Data Lake Store használatának első lépései a REST API használatával
+# <a name="get-started-with-azure-data-lake-store-using-rest-apis"></a>Az Azure Data Lake Store használatának első lépései a REST API használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -35,15 +39,15 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajt
 > 
 > 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 * [cURL](http://curl.haxx.se/). Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API-hívásokat indítani a Data Lake Store-fiókra.
 
-## Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
+## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-### Végfelhasználó hitelesítése (interaktív)
+### <a name="enduser-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Az interaktív hitelesítéshez hajtsa végre a következő lépéseket.
 
 1. Az alkalmazáson keresztül irányítsa át a felhasználót az alábbi URL-címre:
@@ -51,7 +55,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<A REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. A https://localhost esetében tehát használja a következőt: `https%3A%2F%2Flocalhost`)
+   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. A https://localhost esetében tehát használja a következőt: `https%3A%2F%2Flocalhost`)
    > 
    > 
    
@@ -73,18 +77,18 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
    > 
 3. A válasz egy JSON-objektum, amely egy hozzáférési (pl. `"access_token": "<ACCESS_TOKEN>"`) és egy frissítési (pl. `"refresh_token": "<REFRESH_TOKEN>"`) jogkivonatot tartalmaz. Az alkalmazás a hozzáférési jogkivonatot az Azure Data Lake Store-hoz való hozzáféréshez, a frissítési jogkivonatot pedig egy új hozzáférési jogkivonat beszerzéséhez használja, amikor az előző lejár.
    
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before": "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 4. Amikor a hozzáférési jogkivonat lejár, a frissítési jogkivonat használatával kérhet egy újat az alább látható módon:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-           -F grant_type=refresh_token \
-           -F resource=https://management.core.windows.net/ \
-           -F client_id=<CLIENT-ID> \
-           -F refresh_token=<REFRESH-TOKEN>
+             -F grant_type=refresh_token \
+             -F resource=https://management.core.windows.net/ \
+             -F client_id=<CLIENT-ID> \
+             -F refresh_token=<REFRESH-TOKEN>
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-### Szolgáltatások közötti hitelesítés (nem interaktív)
+### <a name="servicetoservice-authentication-noninteractive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
 Ebben az esetben az alkalmazás maga biztosítja saját hitelesítő adatait a műveletek végrehajtásához. Ehhez egy alábbihoz hasonló POST-kérelmet kell kiadnia. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -99,7 +103,7 @@ A kérelem kimenete egy engedélyezési jogkivonatot fog tartalmazni (amelyet az
 
 Ez a cikk a **nem interaktív** módszert alkalmazza. További információk a nem interaktív (szolgáltatások közötti) hívásokról: [Szolgáltatások közötti hívások hitelesítő adatok használatával](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
-## Data Lake Store-fiók létrehozása
+## <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
 Ez a művelet az [itt](https://msdn.microsoft.com/library/mt694078.aspx) definiált REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -114,9 +118,9 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
         "department": "finance"
         },
     "properties": {}
-    }   
+    }    
 
-## Mappák létrehozása Data Lake Store-fiókban
+## <a name="create-folders-in-a-data-lake-store-account"></a>Mappák létrehozása Data Lake Store-fiókban
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -129,7 +133,7 @@ Ha a művelet sikeresen befejeződik, a következőhöz hasonló választ kell k
 
     {"boolean":true}
 
-## Data Lake Store-fiók mappáinak listázása
+## <a name="list-folders-in-a-data-lake-store-account"></a>Data Lake Store-fiók mappáinak listázása
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -157,7 +161,7 @@ Ha a művelet sikeresen befejeződik, a következőhöz hasonló választ kell k
     }
     }
 
-## Adatok feltöltése egy Data Lake Store-fiókba
+## <a name="upload-data-into-a-data-lake-store-account"></a>Adatok feltöltése egy Data Lake Store-fiókba
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File) definiált WebHDFS REST API-híváson alapul.
 
 Az adatok WebHDFS REST API használatával történő feltöltése kétlépéses folyamat, ahogy az alábbi leírásban is látható.
@@ -188,7 +192,7 @@ Az adatok WebHDFS REST API használatával történő feltöltése kétlépéses
         ...
         ...
 
-## Adatok beolvasása a Data Lake Store-fiókból
+## <a name="read-data-from-a-data-lake-store-account"></a>Adatok beolvasása a Data Lake Store-fiókból
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File) definiált WebHDFS REST API-híváson alapul.
 
 Az adatok beolvasása a Data Lake Store-fiókból egy kétlépéses folyamat.
@@ -196,7 +200,7 @@ Az adatok beolvasása a Data Lake Store-fiókból egy kétlépéses folyamat.
 * Először küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` végponthoz. Ez visszaadja azt a helyet, ahová a következő GET kérelmet kell küldenie.
 * Ezután küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` végponthoz. Ez megjeleníti a fájl tartalmát.
 
-Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. `-L` kapcsoló lényegében egyesít két kérelmet, és megismételteti a kérelmet a cURL-lel az új helyen. Végül megjelenik az összes kérelemhívás kimenete az alább látható módon. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
+Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. A(z) `-L` kapcsoló lényegében egyesít két kérelmet, és megismételteti a kérelmet a cURL-paranccsal az új helyen. Végül megjelenik az összes kérelemhívás kimenete az alább látható módon. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
 
@@ -212,7 +216,7 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     Hello, Data Lake Store user!
 
-## Fájl átnevezése a Data Lake Store-fiókban
+## <a name="rename-a-file-in-a-data-lake-store-account"></a>Fájl átnevezése a Data Lake Store-fiókban
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
 Fájl átnevezéséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -226,7 +230,7 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     {"boolean":true}
 
-## Fájl törlése a Data Lake Store-fiókból
+## <a name="delete-a-file-from-a-data-lake-store-account"></a>Fájl törlése a Data Lake Store-fiókból
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
 Fájl törléséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -240,7 +244,7 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     {"boolean":true}
 
-## Data Lake Store-fiók törlése
+## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
 Ez a művelet az [itt](https://msdn.microsoft.com/library/mt694075.aspx) definiált REST API-híváson alapul.
 
 Az alábbi cURL-parancs segítségével törölheti a Data Lake Store-fiókot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -253,9 +257,12 @@ A következőhöz hasonló kimenetnek kell megjelennie:
     ...
     ...
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [Az Azure Data Lake Store-ral kompatibilis nyílt forráskódú big data-alkalmazások](data-lake-store-compatible-oss-other-applications.md)
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

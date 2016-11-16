@@ -1,14 +1,14 @@
 ---
-title: Az első Windows rendszerű virtuális gép létrehozása | Microsoft Docs
-description: Megtudhatja, hogyan hozhatja létre az első Windows rendszerű virtuális gépet az Azure Portal használatával.
-keywords: Windows virtuális gép,virtuális gép létrehozása,virtuális számítógép, virtuális gép beállítása
+title: "Az első Windows-rendszerű virtuális gép létrehozása | Microsoft Docs"
+description: "Megtudhatja, hogyan hozhatja létre az első Windows rendszerű virtuális gépet az Azure Portal használatával."
+keywords: "Windows virtuális gép,virtuális gép létrehozása,virtuális számítógép, virtuális gép beállítása"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 785e17eb-4a13-4f06-b70f-4bd496d0ec5d
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,14 +16,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/06/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
+
 
 ---
-# Az első Windows rendszerű virtuális gép létrehozása az Azure Portalon
+# <a name="create-your-first-windows-virtual-machine-in-the-azure-portal"></a>Az első Windows rendszerű virtuális gép létrehozása az Azure Portalon
 Ez az oktatóanyag bemutatja, milyen könnyű akár néhány perc alatt létrehozni egy Windows virtuális gépet (VM) az Azure Portal használatával.  
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## A virtuális gép rendszerképének kiválasztása a piactérről
+## <a name="choose-the-vm-image-from-the-marketplace"></a>A virtuális gép rendszerképének kiválasztása a piactérről
 Példaként egy Windows Server 2012 R2 Datacenter rendszerképet használunk, de ez csak egyike az Azure által kínált számos rendszerképnek. Az elérhető rendszerképek az előfizetéstől függenek. Egyes asztali rendszerképek például az [MSDN-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) számára állnak rendelkezésre.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
@@ -34,14 +38,14 @@ Példaként egy Windows Server 2012 R2 Datacenter rendszerképet használunk, de
    
     ![Képernyőkép a virtuális géphez kiválasztandó üzembe helyezési modellről](./media/virtual-machines-windows-hero-tutorial/deployment-model.png)
 
-## A Windows rendszerű virtuális gép létrehozása
+## <a name="create-the-windows-virtual-machine"></a>A Windows rendszerű virtuális gép létrehozása
 A rendszerkép kiválasztása után használhatja az alapértelmezett beállításokat, és gyorsan létrehozhatja a virtuális gépet.
 
 1. Az **Alapvető beállítások** panelen adjon meg egy **nevet** a virtuális gép számára. A névnek 1–15 karakter hosszúnak kell lennie, és nem tartalmazhat különleges karaktereket.
 2. Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelyeket a helyi fióknak a virtuális gépen való létrehozásához használ a szolgáltatás. A helyi fiókkal jelentkezhet be a virtuális gépre és kezelheti azt. 
    
     A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
-3. Válasszon ki egy létező [Erőforráscsoportot](../resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. Adja meg egy Azure-adatközpont **helyét**, például az **USA nyugati régiója**. 
+3. Válasszon ki egy létező [Erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. Adja meg egy Azure-adatközpont **helyét**, például az **USA nyugati régiója**. 
 4. Ha végzett, kattintson az **OK** gombra a következő szakaszra való továbblépéshez. 
    
     ![Képernyőkép az **Alapvető beállítások** panel beállításairól az Azure virtuális gép konfigurálásához](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
@@ -56,7 +60,7 @@ A rendszerkép kiválasztása után használhatja az alapértelmezett beállít�
     ![Képernyőkép az Összefoglalás panelről, amely az Azure virtuális gép számára választott beállításokat mutatja](./media/virtual-machines-windows-hero-tutorial/summary-blade.png)
 8. Amíg az Azure létrehozza a virtuális gépet, a központi menü **Virtuális gépek** részén nyomon követheti a folyamat állapotát. 
 
-## Csatlakozás a virtuális géphez és bejelentkezés
+## <a name="connect-to-the-virtual-machine-and-sign-on"></a>Csatlakozás a virtuális géphez és bejelentkezés
 1. A központi menüben kattintson a **Virtuális gépek** elemre.
 2. Válassza ki a virtuális gépet a listából.
 3. A virtuális gép paneljén kattintson a **Csatlakozás** elemre. Ez létrehoz és letölt egy RDP-fájlt, amely mintegy parancsikonként használható a géphez való csatlakozáshoz. Az egyszerű elérés érdekében érdemes ezt a fájlt az asztalra menteni. **Nyissa meg** ezt a fájlt a virtuális géphez való csatlakozáshoz.
@@ -76,18 +80,21 @@ A csatlakozásra tett kísérlet során felmerülő hibákkal kapcsolatban tekin
 
 Mostantól ugyanúgy használhatja a virtuális gépet, mint bármilyen más kiszolgálót.
 
-## Opcionális: A virtuális gép leállítása
+## <a name="optional-stop-the-vm"></a>Opcionális: A virtuális gép leállítása
 Amikor nem használja a virtuális gépet, érdemes leállítani azt, a költségek csökkentése érdekében. Ehhez egyszerűen kattintson a **Leállítás** gombra, majd az **Igen** gombra.
 
 ![Képernyőkép a virtuális gép leállítására szolgáló gombról](./media/virtual-machines-windows-hero-tutorial/stop-vm.png)
 
 Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra kattintva újraindíthatja.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Kísérletezhet az új virtuális gépen az [IIS telepítésével](virtual-machines-windows-hero-role.md). Ez az oktatóanyag azt is bemutatja, hogyan nyithatja meg a 80-as portot a bejövő webes forgalomnak egy hálózati biztonsági csoport (NSG) használatával. 
 * [Létrehozhat Windows rendszerű virtuális gépet a PowerShell használatával](virtual-machines-windows-ps-create.md), vagy [Linux rendszerű virtuális gépet](virtual-machines-linux-quick-create-cli.md) az Azure parancssori felület használatával.
 * Ha érdekli az üzembe helyezés automatizálása, tekintse meg a [Windowsos virtuális gép Resource Manager-sablonnal történő létrehozását ](virtual-machines-windows-ps-template.md) ismertető cikket.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

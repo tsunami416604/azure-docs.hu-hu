@@ -1,53 +1,57 @@
+
 # Áttekintés
 ## [Mi a Cognitive Services?](https://azure.microsoft.com/services/cognitive-services/)
-
 # Első lépések
 ## [Szövegelemzés – bevezetés](cognitive-services-text-analytics-quick-start.md)
 ## [Javaslatok – bevezetés](cognitive-services-recommendations-quick-start.md)
 
 # Útmutató
-## Academic Knowledge API
-### [Áttekintés](https://www.microsoft.com/cognitive-services/academic-knowledge-api/documentation/overview)
+## Fejlesztés az Academic Knowledge API használatával
+### [Áttekintés](https://www.microsoft.com/cognitive-services/en-us/academic-knowledge-api/documentation/overview)
 ### [API-leírások](https://dev.projectoxford.ai/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97)
-## Szövegelemzések API
-### [Első lépések](cognitive-services-text-analytics-quick-start.md)
+
+## Fejlesztés a Text Analytics API használatával
 ### [API-k áttelepítése](cognitive-services-text-analytics-api-migration.md)
-## Javaslatok API
-### [Első lépések](cognitive-services-recommendations-quick-start.md)
+## Fejlesztés a Javaslatok API használatával
 ### [Betanítási adatok összegyűjtése](cognitive-services-recommendations-collecting-data.md)
 ### [Buildtípusok és modellminőség](cognitive-services-recommendations-buildtypes.md)
 ### [Kötegelt kiértékelés](cognitive-services-recommendations-batch-scoring.md)
 ### [A Javaslatok felület használata](cognitive-services-recommendations-ui-intro.md)
-## Beszélőfelismerés API
+
+## Fejlesztés a Beszélőfelismerési API használatával
 ### [API – Áttekintés](https://www.microsoft.com/cognitive-services/en-us/speaker-recognition-api/documentation)
 ### [API-leírások](https://dev.projectoxford.ai/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797)
-## Arcfelismerési API
-### [Az Arcfelismerési API bemutatása](https://www.microsoft.com/cognitive-services/en-us/face-api/documentation/overview)
-## Érzelemfelismerési API
-### [Az Érzelemfelismerési API bemutatása](https://www.microsoft.com/cognitive-services/en-us/emotion-api/documentation)
-## Bing keresési API-k
-### [A Webkeresés API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-web-search-api/documentation)
-### [A Képkeresés API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-image-search-api/documentation)
-### [A Videokeresés API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-video-search-api/documentation)
-### [A Hírek API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-news-search-api/documentation)
-## Számítógépes látástechnológiai API
+## [Fejlesztés az Arcfelismerési API használatával](https://www.microsoft.com/cognitive-services/en-us/face-api/documentation/overview)
+## [Fejlesztés az Érzelemfelismerési API használatával](https://www.microsoft.com/cognitive-services/en-us/emotion-api/documentation)
+
+## Fejlesztés a Számítógépes látástechnológiai API használatával
 ### [Áttekintés](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation)
-### [Bevezetés a Python API használatába](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation/getstarted/getstartedwithpython)
-### [Bevezetés a C# API használatába](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation/getstarted/getstartedvisionapiforwindows)
-### [Az API meghívása](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation/howtocallvisionapi)
+### [Python API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation/getstarted/getstartedwithpython)
+### [C# API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api/documentation/getstarted/getstartedvisionapiforwindows)
+### [Az API meghívása](https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/vision-api-how-to-topics/HowToCallVisionAPI)
 ### [API-leírások](https://dev.projectoxford.ai/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)
-## Bing Automatikus kiegészítési API
-### [Az Automatikus kiegészítés API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-autosuggest-api/documentation)
-## Bing Helyesírás-ellenőrzési API
-### [A Helyesírás-ellenőrzési API bemutatása](https://www.microsoft.com/cognitive-services/en-us/bing-spell-check-api/documentation)
-## Bing Beszédfelismerő API
-### [Első lépések a Beszédfelismerő API-val](https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/overview)
-## Webes nyelvi modell API
-### [Első lépések a Webes nyelvi modell API-val](https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation)
-## Intelligens hangfelismerési szolgáltatás
-### [Az Intelligens hangfelismerési szolgáltatás bemutatása](https://www.luis.ai/Help/)
 
+## Fejlesztés Bing API-kkal
+### Bing keresési API-k
+#### [Webes keresési API](https://www.microsoft.com/cognitive-services/en-us/bing-web-search-api/documentation)
+#### [Képkeresési API](https://www.microsoft.com/cognitive-services/en-us/bing-image-search-api/documentation)
+#### [Videókeresési API](https://www.microsoft.com/cognitive-services/en-us/bing-video-search-api/documentation)
+#### [Hírkeresési API](https://www.microsoft.com/cognitive-services/en-us/bing-news-search-api/documentation)
+### [Automatikus kiegészítési Bing-API](https://www.microsoft.com/cognitive-services/en-us/bing-autosuggest-api/documentation)
+### [Helyesírás-ellenőrzési Bing API](https://www.microsoft.com/cognitive-services/en-us/bing-spell-check-api/documentation)
+### [Beszédfelismerési Bing-API](https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/overview)
 
+## [Fejlesztés a Webes nyelvi modell API használatával](https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation)
+## [Fejlesztés az Intelligens hangfelismerési szolgáltatással](https://www.luis.ai/Help/)
+
+# Referencia
+## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [REST](https://docs.microsoft.com/rest/api/cognitiveservices/)
+
+# Erőforrások 
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cognitive-services)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 
 <!--HONumber=Nov16_HO2-->

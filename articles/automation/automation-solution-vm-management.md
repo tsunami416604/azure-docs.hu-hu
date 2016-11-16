@@ -1,12 +1,12 @@
 ---
-title: Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás | Microsoft Docs
-description: A Virtuális gépek felügyelete megoldás egy ütemezés alapján elindítja és leállítja az Azure Resource Manager virtuális gépeit, és proaktívan figyeli azokat a Log Analytics szolgáltatásból.
+title: "Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás | Microsoft Docs"
+description: "A Virtuális gépek felügyelete megoldás egy ütemezés alapján elindítja és leállítja az Azure Resource Manager virtuális gépeit, és proaktívan figyeli azokat a Log Analytics szolgáltatásból."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,21 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/07/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b0fec06e4a167e615381fca17def46923d9f0f1b
+
 
 ---
-# Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás az Automation szolgáltatásban
+# <a name="startstop-vms-during-offhours-preview-solution-in-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás az Automation szolgáltatásban
 A virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldás elindítja és leállítja a felhasználó Azure Resource Manager virtuális gépeit a felhasználó által meghatározott ütemezés szerint, valamint betekintést nyújt a felhasználó virtuális gépeit elindító és leállító Automation-feladatokba az OMS Log Analytics segítségével.  
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * A runbookok (forgatókönyvek) [Azure-futtatófiókkal](automation-sec-configure-azure-runas-account.md) használhatóak.  A futtatófiók az előnyben részesített hitelesítési módszer, mivel az tanúsítványalapú hitelesítést használ a jelszó helyett, ami lejárhat vagy gyakran változhat.  
 * Ez a megoldás csak olyan virtuális gépek felügyeletére alkalmas, amelyek ugyanabban az előfizetésben és erőforráscsoportban vannak, mint amelyikben az Automation-fiók található.  
 * Ez a megoldás csak a következő Azure-régiókban helyezhető üzembe: Délkelet-Ausztrália, az USA keleti régiója, Délkelet-Ázsia és Nyugat-Európa.  A virtuális gépek ütemezését kezelő runbookok bármely régió virtuális gépeit megcélozhatják.  
 * Ha e-mail-értesítéseket szeretne kapni a virtuális gépeket indító és leállító runbookok befejezéséről, az Office 365 üzleti besorolású előfizetésére van szükség.  
 
-## Megoldás-összetevők
+## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiókjába lesznek importálva és felvéve.
 
-### Runbookok
+### <a name="runbooks"></a>Runbookok
 | Forgatókönyv | Leírás |
 | --- | --- |
 | CleanSolution-MS-Mgmt-VM |Ez a runbook eltávolítja az összes ott található erőforrást és ütemezést, amikor törli a megoldást az előfizetésből. |
@@ -38,7 +42,7 @@ Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiók
 
 <br>
 
-### Változók
+### <a name="variables"></a>Változók
 | Változó | Leírás |
 | --- | --- |
 | **SendMailO365-MS-Mgmt** runbook | |
@@ -65,18 +69,18 @@ Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiók
 
 <br>
 
-### Ütemezések
+### <a name="schedules"></a>Ütemezések
 | Ütemezés | Leírás |
 | --- | --- |
 | StartByResourceGroup-Schedule-MS-Mgmt |A StartByResourceGroup runbook ütemezése, amely a jelen megoldás által felügyelt virtuális gépek elindítását hajtja végre. |
 | StopByResourceGroup-Schedule-MS-Mgmt |A StopByResourceGroup runbook ütemezése, amely a jelen megoldás által felügyelt virtuális gépek leállítását hajtja végre. |
 
-### Hitelesítő adatok
+### <a name="credentials"></a>Hitelesítő adatok
 | Hitelesítő adat | Leírás |
 | --- | --- |
 | O365Credential |Megad egy érvényes Office 365 felhasználói fiókot az e-mail-üzenetek küldéséhez.  Csak akkor szükséges, ha a SendMailO365-IsSendEmail-MS-Mgmt változó **True** (Igaz) értékre van beállítva. |
 
-## Konfiguráció
+## <a name="configuration"></a>Konfiguráció
 Hajtsa végre az alábbi lépéseket, hogy a Virtuális gépek indítása/leállítása munkaidőn kívül [előzetes verzió] megoldást hozzáadhassa az Automation-fiókjához, majd a megoldás testreszabásához konfigurálja a változókat.
 
 1. Az Azure Portal kezdőképernyőjén válassza ki a **Piactér** csempét.  Ha a csempe már nincs a kezdőképernyőhöz rögzítve, a bal oldali navigációs ablaktáblában jelölje ki az **Új** elemet.  
@@ -109,10 +113,10 @@ Hajtsa végre az alábbi lépéseket, hogy a Virtuális gépek indítása/leáll
    * Válasszon ki egy olyan **ütemezést**, amely a cél erőforráscsoport(ok)ban lévő virtuális gépek ismétlődő elindítási és leállítási dátuma és időpontja.  
 9. Miután befejezte a megoldás kezdeti beállításainak konfigurálását, válassza ki a **Létrehozás** lehetőséget.  A rendszer érvényesíti az összes beállítást, majd megpróbálja üzembe helyezni a megoldást az előfizetésében.  A folyamat eltarthat néhány másodpercig, az előrehaladását nyomon követheti az **Értesítések** menüpont alatt. 
 
-## A gyűjtés gyakorisága
+## <a name="collection-frequency"></a>A gyűjtés gyakorisága
 Az Automation-feladatnapló és -feladatstream adatai 5 percenként betöltődnek az OMS-adattárba.  
 
-## A megoldás használata
+## <a name="using-the-solution"></a>A megoldás használata
 A virtuális gépek felügyelete megoldás hozzáadásakor az OMS-munkaterületen a **StartStopVM nézet** csempe felkerül az OMS-irányítópultra.  Ez a csempe azon runbook-feladatok számát és grafikus ábrázolását jeleníti meg a megoldáshoz, amelyek elindultak és sikeresen befejeződtek.<br><br> ![Virtuális gépek felügyelete – StartStopVM nézet csempe](media/automation-solution-vm-management/vm-management-solution-startstopvm-view-tile.png)  
 
 Az Automation-fiókjában úgy érheti el és kezelheti a megoldást, ha kiválasztja a **Megoldások** csempét, majd a **Megoldások** panelen található listáról kiválasztja **Virtuális gépek indítása és leállítása [munkaterület]** elemet.<br><br> ![Automation-megoldások listája](media/automation-solution-vm-management/vm-management-solution-autoaccount-solution-list.png)  
@@ -121,7 +125,7 @@ A megoldás kiválasztásakor megjelenik a **Virtuális gépek indítása és le
 
 Innen megnyithatja OMS-munkaterületét is, és további elemzéseket végezhet a feladatrekordokon.  Csak kattintson az **Összes beállítás** lehetőségre, majd a **Beállítások** panelen válassza ki a **Gyors üzembe helyezés** elemet, végül pedig a **Gyors üzembe helyezés** panelen válassza ki az **OMS-portál** lehetőséget.   Ezzel megnyílik egy új lap vagy egy új böngésző-munkamenet, és megjelenik az Automation-fiókjához és -előfizetéséhez tartozó OMS-munkaterülete.  
 
-### E-mail-értesítések konfigurálása
+### <a name="configuring-email-notifications"></a>E-mail-értesítések konfigurálása
 E-mail-értesítések engedélyezéséhez a virtuális gépek indítását és leállítását kezelő runbookok befejeződése után módosítania kell az **O365Credential** hitelesítő adatot és legalább az alábbi változókat:
 
 * SendMailO365-IsSendEmail-MS-Mgmt
@@ -142,13 +146,13 @@ A korábban kiemelt változók konfigurálásához hajtsa végre az alábbi lép
 3. Az **Adategységek** panelen válassza ki a **Változók** csempét, és a **Változók** panelen válassza ki a fent felsorolt változót, majd módosítsa az értékét a korábbi [Változó](##variables) szakaszban megadott leírásnak megfelelően.  
 4. Kattintson a **Mentés** gombra a változó módosított értékeinek mentéséhez.   
 
-### Az indítási és leállítási ütemezés módosítása
+### <a name="modifying-the-startup-and-shutdown-schedule"></a>Az indítási és leállítási ütemezés módosítása
 Ebben a megoldásban az indítási és leállítási ütemezés felügyelete a [Runbook ütemezése az Azure Automationben](automation-scheduling-a-runbook.md) szakaszban ismertetett lépéseket követi.  Ne feledje, hogy az ütemezési konfiguráció nem módosítható.  Le kell tiltania a meglévő ütemezést, és létre kell hoznia egy újat, majd csatolnia kell azt ahhoz a **StartByResourceGroup-MS-Mgmt-VM** vagy **StopByResourceGroup-MS-Mgmt-VM** runbookhoz, amelyiknél alkalmazni szeretné.   
 
-## Log Analytics-rekordok
+## <a name="log-analytics-records"></a>Log Analytics-rekordok
 Az Automation két rekordtípust hoz létre az OMS-adattárban.
 
-### Feladatnaplók
+### <a name="job-logs"></a>Feladatnaplók
 | Tulajdonság | Leírás |
 | --- | --- |
 | Hívó |A művelet kezdeményezője.  Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer. |
@@ -168,7 +172,7 @@ Az Automation két rekordtípust hoz létre az OMS-adattárban.
 | SubscriptionId |Megadja a feladat előfizetési azonosítóját. |
 | Time |A runbook-feladat végrehajtásának dátuma és időpontja. |
 
-### Feladatstreamek
+### <a name="job-streams"></a>Feladatstreamek
 | Tulajdonság | Leírás |
 | --- | --- |
 | Hívó |A művelet kezdeményezője.  Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer. |
@@ -188,7 +192,7 @@ Az Automation két rekordtípust hoz létre az OMS-adattárban.
 
 A **JobLogs** vagy **JobStreams** kategória rekordjait visszaadó bármely naplókeresés végrehajtásakor kiválaszthatja a **JobLogs** vagy **JobStreams** nézetet, amely megjeleníti a keresés által visszaadott frissítéseket összefoglaló csempék készletét.
 
-## Naplókeresési minták
+## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött feladatrekordokkal kapcsolatos naplókeresési mintákat tartalmazza. 
 
 | Lekérdezés | Leírás |
@@ -197,11 +201,14 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 | A StopVM runbook sikeresen befejeződött feladatainak megkeresése |Category=JobLogs RunbookName_s="StartByResourceGroup-MS-Mgmt-VM" ResultType=Failed &#124; count() mérése JobId_g szerint |
 | A StartVM és a StopVM runbook feladatainak állapotmegjelenítése az idő múlásával |Category=JobLogs RunbookName_s="StartByResourceGroup-MS-Mgmt-VM" OR "StopByResourceGroup-MS-Mgmt-VM" NOT(ResultType="started") |
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A különböző keresési lekérdezések összeállításával és az Automation-feladatnaplók Log Analytics-szel történő megtekintésével kapcsolatos további tudnivalókat a [Naplókeresések a Log Analytics-ben](../log-analytics/log-analytics-log-searches.md) című rész tartalmazza
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza
 * Az OMS Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további tudnivalókat lásd: az [Azure-tárfiókbeli adatok Log Analytics-ben történő gyűjtésének az áttekintése](../log-analytics/log-analytics-azure-storage.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

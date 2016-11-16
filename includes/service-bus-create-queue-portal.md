@@ -1,25 +1,26 @@
-Please ensure that you have already created a Service Bus namespace, as shown [here][namespace-how-to].
+Ellenőrizze, hogy már létrehozott-e Service Bus-névteret, az[itt][namespace-how-to] ismertetettek szerint.
 
-1. Log on to the [Azure portal][azure-portal].
-2. In the left navigation pane of the portal, click **Service Bus**.
-3. Select the namespace that you would like to create the queue in. In this case, it is **nstest1**.
+1. Jelentkezzen be az [Azure Portalra][azure-portal].
+2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre.
+3. Válassza ki a névteret, amelyben az üzenetsort létre kívánja hozni. Ebben az esetben ez az **nstest1**.
    
-    ![Create a queue][createqueue1]
-4. In the **Service Bus namespace** blade, select **Queues**, then click **Add queue**.
+    ![Üzenetsor létrehozása][createqueue1]
+4. A **Service Bus-névtér** panelen kattintson az **Üzenetsorok**, majd az **Üzenetsor hozzáadása** elemre.
    
-    ![Select Queues][createqueue2]
-5. Enter the **Queue Name** and leave the other values with their defaults.
+    ![Üzenetsorok kiválasztása][createqueue2]
+5. Adjon meg egy nevet az **Üzenetsor neve** mezőben, a többi érték alapértelmezését pedig ne módosítsa.
    
-    ![Select New][createqueue3]
-6. At the bottom of the blade, click **Create**.
+    ![Új kiválasztása][createqueue3]
+6. Kattintson a panel alján található **Létrehozás** gombra.
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
 [createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
 
-[namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
+[namespace-how-to]: ../articles/service-bus-messaging/service-bus-create-namespace-portal.md
 [azure-portal]: https://portal.azure.com
 
-<!--HONumber=Sep16_HO4-->
+
+<!--HONumber=Nov16_HO2-->
 
 

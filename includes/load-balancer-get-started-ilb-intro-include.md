@@ -1,4 +1,8 @@
-An Azure internal load balancer (ILB) provides network load balancing between virtual machines that reside inside a cloud service, or a virtual network with a regional scope.
+Az Azure belső terheléselosztó (ILB) hálózati terheléselosztást nyújt a felhőszolgáltatásokban lévő, illetve regionális hatókörrel rendelkező virtuális hálózaton lévő virtuális gépek között.
 
-For information about the use and configuration of virtual networks with a regional scope, see [Regional Virtual Networks](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md). Existing virtual networks that have been configured for an affinity group cannot use ILB.
+A regionális hatókörrel rendelkező virtuális hálózatok használatával és konfigurációjával kapcsolatban lásd: [Regionális virtuális hálózatok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md). Az affinitáscsoporthoz konfigurált meglévő virtuális hálózatok nem használhatják az ILB-t.
+
+
+<!--HONumber=Nov16_HO2-->
+
 

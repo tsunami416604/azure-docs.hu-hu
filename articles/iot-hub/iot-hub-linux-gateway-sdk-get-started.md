@@ -1,12 +1,12 @@
 ---
-title: IoT Hub-átjáró SDK – Első lépések | Microsoft Docs
-description: Az Azure IoT Hub-átjáró SDK-nak ez a bemutatója az Azure IoT Hub-átjáró SDK használatához szükséges alapvető fogalmak ismertetéséhez Linux rendszert használ.
+title: "IoT Hub-átjáró SDK – Első lépések | Microsoft Docs"
+description: "Az Azure IoT Gateway SDK-útmutató Linux rendszerben ismerteti az Azure IoT Gateway SDK-val kapcsolatos alapvető fogalmakat."
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: chipalost
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: cf537bdd-2352-4bb1-96cd-a283fcd3d6cf
 ms.service: iot-hub
 ms.devlang: cpp
 ms.topic: get-started-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2016
 ms.author: andbuc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
+
 
 ---
-# IoT-átjáró SDK (béta) – Első lépések a Linux használatával
+# <a name="azure-iot-gateway-sdk-beta-get-started-using-linux"></a>Azure IoT Gateway SDK (béta) – Első lépések a Linux használatával
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
-## A minta létrehozása
+## <a name="how-to-build-the-sample"></a>A minta létrehozása
 Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupdevbox] az SDK Linux rendszeren történő használatához.
 
 1. Nyisson meg egy rendszerhéjat.
@@ -31,7 +35,7 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 > 
 > 
 
-## A minta futtatása
+## <a name="how-to-run-the-sample"></a>A minta futtatása
 1. A **build.sh** szkript a kimenetét a **build** mappában hozza létre, az **azure-iot-gateway-sdk** adattár helyi példányában. Ezek közé tartozik a jelen példában használt két modul is.
    
     A felépítési szkript a **liblogger_hl.so** fájlt a **build/modules/logger/** mappába, a **libhello_world_hl.so** fájlt pedig a **build/modules/hello_world/** mappába menti. Ezen elérési utakat a **module path** értékeként adja meg, ahogyan az az alábbi JSON-beállításfájlban szerepel.
@@ -46,7 +50,9 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
       [ 
         {
           "module name" : "logger_hl",
-          "module path" : "./build/modules/logger/liblogger_hl.so",
+          "loading args": {
+            "module path" : "./build/modules/logger/liblogger_hl.so"
+          },
           "args" : 
           {
             "filename":"./log.txt"
@@ -54,7 +60,9 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
         },
         {
           "module name" : "hello_world",
-          "module path" : "./build/modules/hello_world/libhello_world_hl.so",
+          "loading args": {
+            "module path" : "./build/modules/hello_world/libhello_world_hl.so"
+          },
           "args" : null
         }
       ],
@@ -81,6 +89,6 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Nov16_HO2-->
 
 

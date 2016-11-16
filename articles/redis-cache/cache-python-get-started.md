@@ -1,12 +1,12 @@
 ---
-title: How to use Azure Redis Cache with Python | Microsoft Docs
-description: Get started with Azure Redis Cache using Python
+title: "Az Azure Redis Cache használata Pythonnal | Microsoft Docs"
+description: "Bevezetés az Azure Redis Cache használatába Python alkalmazásával"
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
 editor: v-lincan
-
+ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: hero-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/16/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
+
 
 ---
-# How to use Azure Redis Cache with Python
+# <a name="how-to-use-azure-redis-cache-with-python"></a>Az Azure Redis Cache használata Pythonnal
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -26,23 +30,23 @@ ms.author: sdanie
 > 
 > 
 
-This topic shows you how to get started with Azure Redis Cache using Python.
+Ez a témakör segítséget nyújt az első lépések megtételében az Azure Redis Cache és a Python használatakor.
 
-## Prerequisites
-Install [redis-py](https://github.com/andymccurdy/redis-py).
+## <a name="prerequisites"></a>Előfeltételek
+Telepítse a [redis-py](https://github.com/andymccurdy/redis-py) ügyfelet.
 
-## Create a Redis cache on Azure
+## <a name="create-a-redis-cache-on-azure"></a>Redis Cache gyorsítótár létrehozása az Azure-ban
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## Retrieve the host name and access keys
+## <a name="retrieve-the-host-name-and-access-keys"></a>Állomásnév és hívóbetűk lekérése
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## Enable the non-SSL endpoint
-Some Redis clients don't support SSL, and by default the [non-SSL port is disabled for new Azure Redis Cache instances](cache-configure.md#access-ports). At the time of this writing, the [redis-py](https://github.com/andymccurdy/redis-py) client doesn't support SSL. 
+## <a name="enable-the-nonssl-endpoint"></a>Nem SSL végpont engedélyezése
+Egyes Redis-ügyfelek nem támogatják az SSL-t, és alapértelmezés szerint a [nem SSL port le van tiltva az új Azure Redis Cache-példányokban](cache-configure.md#access-ports). Az oktatóanyag összeállításakor a [redis-py](https://github.com/andymccurdy/redis-py) nem támogatja az SSL-t. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
-## Add something to the cache and retrieve it
+## <a name="add-something-to-the-cache-and-retrieve-it"></a>Elemek hozzáadása és lekérése a gyorsítótárból
     >>> import redis
     >>> r = redis.StrictRedis(host='<name>.redis.cache.windows.net',
           port=6380, db=0, password='<key>', ssl=True)
@@ -52,7 +56,7 @@ Some Redis clients don't support SSL, and by default the [non-SSL port is disabl
     b'bar'
 
 
-Replace `<name>` with your cache name and `key` with your access key.
+Cserélje le a `<name>` elemet a gyorsítótár nevére, és a `key` elemet a hívóbetűre.
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
@@ -60,6 +64,6 @@ Replace `<name>` with your cache name and `key` with your access key.
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

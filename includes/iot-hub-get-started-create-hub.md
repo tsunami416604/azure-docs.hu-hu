@@ -1,4 +1,4 @@
-## IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszköz. Az alábbi lépések bemutatják, hogyan hajthatja végre ezt a feladatot az Azure Portal segítségével.
 
 1. Jelentkezzen be az [Azure Portalra][lnk-portal].
@@ -16,7 +16,7 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszköz. Az alá
 4. Az IoT Hub konfigurációs beállításainak kiválasztása után kattintson a **Létrehozás** gombra.  Az IoT Hub létrehozása eltarthat néhány percig. A folyamat állapotát a kezdőpulton vagy az értesítési panelen ellenőrizheti.
    
     ![Az új IoT Hub állapota][3]
-5. Az IoT Hub sikeres létrehozása után kattintson a portálon az IoT Hub új csempéjére a hozzá tartozó panel megnyitásához. Jegyezze fel az **állomásnevet**, majd kattintson a **Megosztott elérési házirendek** elemre.
+5. Az IoT Hub sikeres létrehozása után kattintson az Azure-portálon az IoT Hub új csempéjére a hozzá tartozó panel megnyitásához. Jegyezze fel az **állomásnevet**, majd kattintson a **Megosztott elérési házirendek** elemre.
    
     ![Új IoT Hub panel][4]
 6. A **Megosztott hozzáférési házirendek** panelen kattintson az **iothubowner** házirendre, majd másolja ki és jegyezze fel az **iothubowner** panelen látható kapcsolati karakterláncot. További információkért tekintse meg az „Azure IoT Hub developer guide” (Azure IoT Hub fejlesztői útmutató) [Access control][lnk-access-control] (Hozzáférés-vezérlés) című részét.
@@ -37,6 +37,6 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszköz. Az alá
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -53,10 +53,10 @@
 # Referencia
 ## [Díjszabás részletei](service-bus-pricing-billing.md)
 ## [Példák](service-bus-samples.md)
-## [.NET API-referencia](https://msdn.microsoft.com/library/azure/jj933424)
-## [REST API – referencia](https://msdn.microsoft.com/library/azure/hh780717)
 ## [Kivételek](service-bus-messaging-exceptions.md)
 ## [Kvóták](service-bus-quotas.md)
+## [.NET](/dotnet/api/)
+## [REST](/rest/api/servicebus/)
 
 # Erőforrások
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
@@ -65,6 +65,8 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 ## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-bus)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
 <!--HONumber=Nov16_HO2-->

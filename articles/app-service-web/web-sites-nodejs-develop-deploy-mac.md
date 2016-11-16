@@ -1,108 +1,112 @@
 ---
-title: Create a Node.js web app in Azure App Service | Microsoft Docs
-description: Learn how to deploy a Node.js application to a web app in Azure App Service.
+title: "Node.js-webalkalmazás létrehozása az Azure App Service-ben | Microsoft Docs"
+description: "Megtudhatja, hogyan helyezhet üzembe egy Node.js-alkalmazást az Azure App Service webalkalmazására."
 services: app-service\web
 documentationcenter: nodejs
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 85af23df-54af-4430-8d77-a1f97e2f5b10
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/11/2016
+ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+
 
 ---
-# Create a Node.js web app in Azure App Service
+# <a name="create-a-nodejs-web-app-in-azure-app-service"></a>Node.js-webalkalmazás létrehozása az Azure App Service-ben
 > [!div class="op_single_selector"]
 > * [.Net](web-sites-dotnet-get-started.md)
 > * [Node.js](web-sites-nodejs-develop-deploy-mac.md)
 > * [Java](web-sites-java-get-started.md)
-> * [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-> * [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
+> * [PHP – Git](web-sites-php-mysql-deploy-use-git.md)
+> * [PHP – FTP](web-sites-php-mysql-deploy-use-ftp.md)
 > * [Python](web-sites-python-ptvs-django-mysql.md)
 > 
 > 
 
-This tutorial shows how to create a simple [Node.js](http://nodejs.org) application and deploy it to a [web app](app-service-web-overview.md) in [Azure App Service](../app-service/app-service-value-prop-what-is.md) by using [Git](http://git-scm.com). The instructions in this tutorial can be followed on any operating system that is capable of running Node.js.
+Az oktatóanyag bemutatja, hogyan hozhat létre egyszerű [Node.js](http://nodejs.org)-alkalmazást, és hogyan helyezheti azt üzembe azt egy [webalkalmazásra](app-service-web-overview.md) az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md) a [Git](http://git-scm.com) használatával. Az oktatóanyag utasításai követhetők bármely olyan operációs rendszeren, amely alkalmas a Node.js futtatására.
 
-You'll learn:
+Az oktatóanyagból a következőket sajátíthatja el:
 
-* How to create a web app in Azure App Service by using the Azure Portal.
-* How to deploy a Node.js application to the web app by pushing to the web app's Git repository.
+* Megtudhatja, hogyan hozhat létre egy webalkalmazást az Azure App Service-ben az Azure portál használatával.
+* Megtudhatja, hogyan helyezhet üzembe egy Node.js-alkalmazást a webalkalmazásra a webalkalmazás Git-tárházába történő küldéssel.
 
-The completed application writes a short "hello world" string to the browser.
+A kész alkalmazás egy rövid „hello world” karakterláncot jelenít meg a böngészőben.
 
-![A browser displaying the 'Hello World' message.][helloworld-completed]
+![A böngészőben megjelenő „Hello World” üzenet.][helloworld-completed]
 
-For tutorials and sample code with more complex Node.js applications, or for other topics about how to use Node.js in Azure, see the [Node.js Developer Center](/develop/nodejs/).
+Az összetettebb Node.js-alkalmazások oktatóanyagait és mintakódját, valamint a Node.js-nek az Azure felületén történő használatával kapcsolatos további információkat a következő témakörben talál: [Node.js fejlesztői központ](/develop/nodejs/).
 
 > [!NOTE]
-> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your Visual Studio subscriber benefits](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
+> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztráljon egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
-> If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751). There, you can immediately create a short-lived starter web app in App Service—no credit card required, and no commitments.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
-## Create a web app and enable Git publishing
-Follow these steps to create a web app in Azure App Service and enable Git publishing. 
+## <a name="create-a-web-app-and-enable-git-publishing"></a>Webalkalmazás létrehozása és a Git-közzététel engedélyezése
+Hajtsa végre a következő lépéseket webalkalmazás létrehozásához az Azure App Service-ben és a Git-közzététel engedélyezéséhez. 
 
-[Git](http://git-scm.com/) is a distributed version control system that you can use to deploy your Azure Website. You'll store the code you write for your web app in a local Git repository, and you'll deploy your code to Azure by pushing to a remote repository. This method of deployment is a feature of App Service web apps.  
+A [Git](http://git-scm.com/) egy olyan elosztott verziókezelő rendszer, amely Azure-webhelyének üzembe helyezésére használható. A webalkalmazásához írt kódot egy helyi Git-tárházban fogja tárolni, és a kódot az Azure-on a kód egy távoli tárházba történő küldésével fogja üzembe helyezni. Ez az üzembe helyezési módszer az App Service Web Apps szolgáltatása.  
 
-1. Sign in to the [Azure Portal](https://portal.azure.com).
-2. Click the **+ NEW** icon on the top left of the Azure Portal.
-3. Click **Web + Mobile**, and then click **Web app**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Kattintson az Azure portál bal felső részén található **+ NEW** (+ ÚJ) ikonra.
+3. Kattintson a **Web + Mobile** (Web + mobil), majd a **Web app** (Webalkalmazás) elemre.
    
     ![][portal-quick-create]
-4. Enter a name for the web app in the **Web app** box.
+4. A **Webalkalmazás** mezőben adjon meg egy nevet a webalkalmazás számára.
    
-    This name must be unique in the azurewebsites.net domain because the URL of the web app will be {name}.azurewebsites.net. If the name you enter isn't unique, a red exclamation mark appears in the text box.
-5. Select a **Subscription**.
-6. Select a **Resource Group** or create a new one.
+    Ennek a névnek egyedinek kell lennie az azurewebsites.net tartományban, mert a webalkalmazás URL-címe {név}.azurewebsites.net lesz. Ha a megadott név nem egyedi, egy piros felkiáltójel jelenik meg a szövegmezőben.
+5. Válasszon ki egy **előfizetést**.
+6. Válasszon egy **erőforráscsoportot**, vagy hozzon létre egy újat.
    
-    For more information about resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
-7. Select an **App Service plan/Location** or create a new one.
+    További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
+7. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
    
-    For more information about App Service plans, see [Azure App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
-8. Click **Create**.
+    További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)
+8. Kattintson a **Létrehozás** gombra.
    
     ![][portal-quick-create2]
    
-    In a short time, typically less than a minute, Azure finishes creating the new web app.
-9. Click **Web apps > {your new web app}**.
+    Az Azure kis időn belül, általában kevesebb mint egy perc alatt létrehozza az új webalkalmazást.
+9. Kattintson a következőre: **Web apps (Webalkalmazások) > {az Ön webalkalmazása}**.
    
     ![](./media/web-sites-nodejs-develop-deploy-mac/gotowebapp.png)
-10. In the **Web app** blade, click the **Deployment** part.
+10. A **Web app** (Webalkalmazás) panelen kattintson a **Deployment** (Üzemelő példány) részre.
     
     ![][deployment-part]
-11. In the **Continuous Deployment** blade, click **Choose Source**
-12. Click **Local Git Repository**, and then click **OK**.
+11. A **Continuous Deployment** (Folyamatos üzembe helyezés) panelen kattintson a **Choose Source** (Forrás választása) lehetőségre
+12. Kattintson a **Local Git Repository** (Helyi git-tárház) elemre, majd az **OK** gombra.
     
     ![][setup-git-publishing]
-13. Set up deployment credentials if you haven't already done so.
+13. Ha még nem tette meg, állítsa be az üzemelő példány hitelesítő adatait.
     
-    a. In the Web app blade, click **Settings > Deployment credentials**.
+    a. A Web app (Webalkalmazás) panelen kattintson a **Settings (Beállítások) > Deployment credentials (Telepítési hitelesítő adatok)** lehetőségre.
     
     ![][deployment-credentials]
     
-    b. Create a user name and password. 
+    b. Hozzon létre felhasználónevet és jelszót. 
     
     ![](./media/web-sites-nodejs-develop-deploy-mac/setdeploycreds.png)
-14. In the Web app blade, click **Settings**, and then click **Properties**.
+14. A Web app (Webalkalmazás) panelen kattintson a **Settings** (Beállítások), majd a **Properties** (Tulajdonságok) elemre.
     
-    To publish, you'll push to a remote Git repository. The URL for the repository is listed under **GIT URL**. You'll use this URL later in the tutorial.
+    A közzétételhez egy távoli Git-tárházba való küldés szükséges. A tárházhoz tartozó URL-cím a **GIT URL** (GIT URL-címe) területen van felsorolva. Ezt az URL-címet az oktatóanyag későbbi részében fogja használni.
     
     ![][git-url]
 
-## Build and test your application locally
-In this section, you'll create a **server.js** file that contains a slightly modified version of the 'Hello World' example from [nodejs.org]. The code adds process.env.PORT as the port to listen on when running in an Azure web app.
+## <a name="build-and-test-your-application-locally"></a>Az alkalmazás helyi összeállítása és tesztelése
+Ebben a szakaszban létre fogja hozni a **server.js** fájlt, amely a [nodejs.org] „Hello World” példájának kis mértékben módosított verzióját tartalmazza. A kód az Azure-webalkalmazás futtatásakor figyelő portként a process.env.PORT portot veszi fel.
 
-1. Create a directory named *helloworld*.
-2. Use a text editor to create a new file named **server.js** in the *helloworld* directory.
-3. Copy the following code into the **server.js** file, and then save the file:
+1. Hozzon létre egy könyvtárat *helloworld* néven.
+2. Szövegszerkesztő használatával hozzon létre egy **server.js** nevű új fájlt a *helloworld* könyvtárban.
+3. Másolja át az alábbi kódot a **server.js** fájlba, majd mentse a fájlt:
    
         var http = require('http')
         var port = process.env.PORT || 1337;
@@ -110,34 +114,34 @@ In this section, you'll create a **server.js** file that contains a slightly mod
           res.writeHead(200, { 'Content-Type': 'text/plain' });
           res.end('Hello World\n');
         }).listen(port);
-4. Open the command line, and use the following command to start the web app locally.
+4. Nyissa meg a parancssort, majd az alábbi parancs használatával indítsa el a webalkalmazást helyileg.
    
         node server.js
-5. Open your web browser and navigate to http://localhost:1337. 
+5. Nyissa meg a webböngészőt, majd navigáljon a következő helyre: http://localhost:1337. 
    
-    A webpage that displays "Hello World" appears, as shown in the following screenshot.
+    A következő képernyőfelvételen látható módon megjelenik egy weblap, amelyen a „Hello World” szöveg szerepel.
    
-    ![A browser displaying the 'Hello World' message.][helloworld-localhost]
+    ![A böngészőben megjelenő „Hello World” üzenet.][helloworld-localhost]
 
-## Publish your application
-1. Install Git if you haven't already done so.
+## <a name="publish-your-application"></a>Az alkalmazás közzététele
+1. Ha még nem tette meg, telepítse a Git alkalmazást.
    
-    For installation instructions for your platform, see the [Git download page](http://git-scm.com/download).
-2. From the command line, change directories to the **helloworld** directory and enter the following command to initialize a local Git repository.
+    Az Ön által használt platformra érvényes telepítési utasításokat lásd a [Git letöltési oldalán](http://git-scm.com/download).
+2. A parancssorból lépjen a **helloworld** könyvtárra, majd adja meg a következő parancsot a helyi Git-tárház indításához.
    
         git init
-3. Use the following commands to add files to the repository:
+3. Fájlok a tárházhoz adásához használja a következő parancsokat:
    
         git add .
         git commit -m "initial commit"
-4. Add a Git remote for pushing updates to the web app that you created previously, by using the following command:
+4. Az előzőleg létrehozott webalkalmazás-frissítések küldéséhez az alábbi paranccsal adjon hozzá egy távoli Git-tárházat:
    
         git remote add azure [URL for remote repository]
-5. Push your changes to Azure by using the following command:
+5. A következő parancs használatával továbbítsa a módosításokat az Azure-ba:
    
         git push azure master
    
-    You are prompted for the password that you created earlier. The output is similar to the following example.
+    A rendszer rákérdez az előzőleg létrehozott jelszóra. A kimenet a következő példához hasonló.
    
         Counting objects: 3, done.
         Delta compression using up to 8 threads.
@@ -152,39 +156,39 @@ In this section, you'll create a **server.js** file that contains a slightly mod
         remote: Deployment successful.
         To https://user@testsite.scm.azurewebsites.net/testsite.git
          * [new branch]      master -> master
-6. To view your app, click the **Browse** button on the **Web App** part in the Azure portal.
+6. Az alkalmazás megtekintéséhez az Azure portál **Web App** (Webalkalmazás) részén kattintson a **Browse** (Tallózás) gombra.
    
-    ![Browse button](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
+    ![Tallózás gomb](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
    
-    ![Hello world in Azure](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
+    ![Hello world az Azure-ban](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
 
-## Publish changes to your application
-1. Open the **server.js** file in a text editor, and change 'Hello World\n' to 'Hello Azure\n'. 
-2. Save the file.
-3. From the command line, change directories to the **helloworld** directory and run the following commands:
+## <a name="publish-changes-to-your-application"></a>Alkalmazásmódosítások közzététele
+1. Egy szövegszerkesztőben nyissa meg a **server.js** fájlt, majd a „Hello World\n” szöveget módosítsa a következőre: „Hello Azure\n”. 
+2. Mentse a fájlt.
+3. A parancssorból lépjen a **helloworld** könyvtárba, majd futtassa a következő parancsokat:
    
         git add .
         git commit -m "changing to hello azure"
         git push azure master
    
-    You are prompted for your password again.
-4. Refresh the browser window that you navigated to the web app's URL.
+    A rendszer újra rákérdez a jelszavára.
+4. Frissítse azt a böngészőablakot, amelybe a webalkalmazás URL-címét beírta.
    
-    ![A web page displaying 'Hello Azure'][helloworld-completed]
+    ![A „Hello Azure” szöveget megjelenítő weblap][helloworld-completed]
 
-## Roll back a deployment
-From the **Web app** blade you can click **Settings > Continuous Deployment** to see the deployment history in the **Deployments** blade. If you need to roll back to an earlier deployment, you can select it and then click **Redeploy** in the **Deployment Details** blade.
+## <a name="roll-back-a-deployment"></a>Üzemelő példány visszaállítása
+A **Web app** (Webalkalmazás) panelen kattintson a **Settings (Beállítások) > Continuous Deployment (Folyamatos üzembe helyezés)** elemre az üzemelő példány előzményeinek a **Deployments** (Üzemelő példányok) panelen való megtekintéséhez. Egy korábbi üzemelő példányra való visszaállításhoz jelölje ki azt, majd kattintson a **Redeploy** (Ismételt üzembe helyezés) elemre a **Deployment Details** (Példány részletei) panelen.
 
-## Next steps
-You've deployed a Node.js application to a web app in Azure App Service. To learn more about how App Service web apps run Node.js applications, see [Azure App Service Web Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx) and [Specifying a Node.js version in an Azure application](../nodejs-specify-node-version-azure-apps.md).
+## <a name="next-steps"></a>Következő lépések
+Node.js-alkalmazást helyezett üzembe az Azure App Service egyik webalkalmazásában. További információk a Node.js-alkalmazások App Service-webalkalmazásokkal történő futtatásáról: [Azure App Service Web Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx) és [Specifying a Node.js version in an Azure application](../nodejs-specify-node-version-azure-apps.md) (A Node.js-verzió megadása az Azure-alkalmazásban).
 
-Node.js provides a rich ecosystem of modules that can be used by your applications. To learn how Web Apps works with modules, see [Using Node.js modules with Azure applications](../nodejs-use-node-modules-azure-apps.md).
+A Node.js a modulok széles választékát kínálja, amelyeket az alkalmazásai használhatnak. A Web Apps modulokkal történő használatával kapcsolatban lásd: [Using Node.js modules with Azure applications](../nodejs-use-node-modules-azure-apps.md) (Node.js-modulok használata Azure-alkalmazásokkal).
 
-If you encounter problems with your application after it has been deployed to Azure, see [How to debug a Node.js application in Azure App Service](web-sites-nodejs-debug.md) for information on diagnosing the problem.
+Ha az Azure-on történő üzembe helyezést követően problémája adódik az alkalmazás használatával, a probléma diagnosztizálásával kapcsolatban információkat a [How to debug a Node.js application in Azure App Service](web-sites-nodejs-debug.md) (Node.js-alkalmazás hibakeresése az Azure App Service szolgáltatásban) című részben talál.
 
-This article uses the Azure Portal to create a web app. You can also use the [Azure Command-Line Interface](../xplat-cli-install.md) or [Azure PowerShell](../powershell-install-configure.md) to perform the same operations.
+Ebben a cikkben webalkalmazás létrehozását mutatjuk be az Azure portál használatával. Ugyanezen műveletek végrehajtásához használhatja az [Azure parancssori felületét](../xplat-cli-install.md) vagy az [Azure PowerShellt](../powershell-install-configure.md) is.
 
-For more information about how to develop Node.js applications on Azure, see the [Node.js Developer Center](/develop/nodejs/).
+A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további információkat a következő témakörben talál: [Node.js fejlesztői központ](/develop/nodejs/).
 
 [helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
 [helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
@@ -198,6 +202,6 @@ For more information about how to develop Node.js applications on Azure, see the
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,26 +1,30 @@
 ---
-title: iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba | Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin iOS-alkalmazásokba.
+title: "iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba | Microsoft Docs"
+description: "Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin iOS-alkalmazásokba."
 services: notification-hubs
-keywords: ios leküldéses értesítések,leküldéses üzenetek,leküldéses értesítések,leküldéses üzenet
+keywords: "ios leküldéses értesítések,leküldéses üzenetek,leküldéses értesítések,leküldéses üzenet"
 documentationcenter: xamarin
-author: wesmc7777
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 53f9d5b37e6f754540e70b534555750dd54895d0
+
 
 ---
-# iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba
+# <a name="ios-push-notifications-with-notification-hubs-for-xamarin-apps"></a>iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
@@ -31,7 +35,7 @@ Létre fog hozni egy üres Xamarin.iOS-alkalmazást, amely leküldéses értesí
 
 Ez az oktatóanyag az egyszerű leküldéses üzenetküldési forgatókönyvet mutatja be a Notification Hubs használatával.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 * [Xcode 6.0][Az Xcode telepítése]
@@ -48,7 +52,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin i
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-## Az értesítési központ konfigurálása
+## <a name="configure-your-notification-hub"></a>Az értesítési központ konfigurálása
 Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és az APNS-hitelesítés konfigurálásának folyamatán a létrehozott **.p12** leküldéses tanúsítvány használatával. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
@@ -68,11 +72,11 @@ Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és a
 
 Az értesítési központ konfigurálva lett az APNS-sel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
-## Az alkalmazás csatlakoztatása az értesítési központhoz
-#### Új projekt létrehozása
+## <a name="connect-your-app-to-the-notification-hub"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+#### <a name="create-a-new-project"></a>Új projekt létrehozása
 1. A Xamarin Studióban hozzon létre egy új iOS-projektet, és válassza a **Unified API** > **Single View Application** (Egyesített API > Egynézetes alkalmazás) sablont.
    
-    ![Xamarin Studio – Alkalmazástípus kiválasztása][31]
+       ![Xamarin Studio - Select Application Type][31]
 2. Adja hozzá az Azure Messaging összetevőre mutató hivatkozást. A Solution (Megoldás) nézetben kattintson a jobb gombbal a projekt **Components** (Összetevők) mappájára, és válassza a **Get More Components** (További összetevők beszerzése) lehetőséget. Keresse meg az **Azure Messaging** összetevőt, és adja hozzá a projekthez.
 3. Az **AppDelegate.cs** osztályban adja hozzá a következő using utasítást:
    
@@ -171,7 +175,7 @@ Az értesítési központ konfigurálva lett az APNS-sel való együttműködés
    > 
 10. Futtassa az alkalmazást az eszközön.
 
-## Leküldéses értesítések küldése
+## <a name="sending-push-notifications"></a>Leküldéses értesítések küldése
 A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portal] közvetlenül az értesítési központ lapján található **Hibaelhárítás** eszközkészlet **Küldés tesztelése** funkciója használatával, az alábbi képernyőn látható módon.
 
 ![](./media/notification-hubs-ios-get-started/notification-hubs-test-send.png)
@@ -183,15 +187,17 @@ Ebben az oktatóanyagban az egyszerűbb megoldást választjuk, és az ügyféla
 * **REST-felület**: A [REST-felület](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja a leküldéses értesítéseket.
 * **Microsoft Azure Notification Hubs .NET SDK**: A Visual Studio NuGet-csomagkezelőjében futtassa a következő parancsot: [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 * **Node.js**: [A Notification Hub használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Azure Mobile Services**: A „Leküldéses értesítések a Mobile Services szolgáltatásban – első lépések” ([.NET-háttérrendszer](../mobile-services/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md) | [JavaScript-háttérrendszer](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)) témakörben találhat példát arra, hogy hogyan küldhetők leküldéses értesítések a Notification Hubs szolgáltatással integrált Azure Mobile Services Backend háttérrendszerből.
+
+**Mobile Apps**: A [Leküldéses értesítések hozzáadása Mobile Apps-alkalmazáshoz](../app-service-mobile/app-service-mobile-ios-get-started-push.md) témakörben találhat példát arra, hogy hogyan küldhetők értesítések a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttéralkalmazásból.
+
 * **Java/PHP**: „A Notification Hubs használata Javából/PHP-ből” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) témakörben találhat példát arra, hogyan küldhetők leküldéses értesítések a REST API-k használatával.
 
-#### (Választható) Leküldéses értesítések küldése .NET-konzolalkalmazásból
+#### <a name="optional-send-push-notifications-from-a-net-console-app"></a>(Választható) Leküldéses értesítések küldése .NET-konzolalkalmazásból
 Ebben a szakaszban egy egyszerű .NET konzolalkalmazás használatával küldünk leküldéses értesítéseket. A jelen példában átváltunk Windows fejlesztői környezetre, amelyben a Visual Studio már telepítve lett.
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást:
    
-    ![Visual Studio – Új konzolalkalmazás létrehozása][213]
+       ![Visual Studio - Create a new console application][213]
 2. A Visual Studióban kattintson az **Eszközök**, a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelő konzol) elemre.
    
     A csomagkezelő konzolnak a Visual Studio munkaterületének aljához rögzítve kell megjelennie.
@@ -221,7 +227,7 @@ Ebben a szakaszban egy egyszerű .NET konzolalkalmazás használatával küldün
 
 Az összes lehetséges hasznos adatot megtalálja az Apple [helyi és leküldéses értesítések programozásával foglalkozó útmutatójában].
 
-#### (Választható) Értesítések küldése mobilszolgáltatásból
+#### <a name="optional-send-notifications-from-a-mobile-service"></a>(Választható) Értesítések küldése mobilszolgáltatásból
 Ebben a szakaszban egy mobilszolgáltatás használatával küldünk leküldéses értesítéseket egy csomópontparancsfájl segítségével.
 
 Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Services használatának első lépéseit] című témakör utasításait, majd:
@@ -229,10 +235,10 @@ Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Ser
 1. Jelentkezzen be a [klasszikus Azure portál], majd jelölje ki a mobilszolgáltatást.
 2. Válassza az oldal tetején található **Scheduler** fület.
    
-    ![Klasszikus Azure portál – Scheduler][215]
+       ![Azure Classic Portal - Scheduler][215]
 3. Hozzon létre egy új ütemezett feladatot, szúrjon be egy nevet, és válassza az **On demand** (Igény szerint) lehetőséget.
    
-    ![Klasszikus Azure portál – Új feladat létrehozása][216]
+       ![Azure Classic Portal - Create new job][216]
 4. A feladat létrehozását követően kattintson a feladat nevére. Ezután válassza a felső sávon található **Script** (Parancsfájl) fület.
 5. Szúrja be a következő parancsfájlt a Scheduler függvényébe. Cserélje le a helyőrzőket az értesítési központ nevére és a *DefaultFullSharedAccessSignature* kapcsolati karakterláncra, amelyet korábban szerzett be. Kattintson a **Save** (Mentés) gombra.
    
@@ -242,7 +248,7 @@ Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Ser
             null,
             {"aps":
                 {
-                "alert": "Hello from Mobile Services!"
+                  "alert": "Hello from Mobile Services!"
                 }
             },
             function (error)
@@ -254,8 +260,8 @@ Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Ser
         );
 6. Kattintson az alsó sáv **Run Once** (Futtatás egyszer) parancsára. Az eszköznek egy riasztást kell fogadnia.
 
-## Következő lépések
-Ebben az egyszerű példában leküldéses értesítéseket küldött az összes iOS-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news](Friss hírek küldése Notification Hubs használatával.md) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs iOS rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
+## <a name="next-steps"></a>Következő lépések
+Ebben az egyszerű példában leküldéses értesítéseket küldött az összes iOS-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs iOS rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
 
 <!-- Images. -->
 
@@ -276,9 +282,9 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [Saját alkalmazások]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[A Mobile Services használatának első lépéseit]: /develop/mobile/tutorials/get-started-xamarin-ios
-[klasszikus Azure portál]: https://manage.windowsazure.com/
-[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
+[A Mobile Services használatának első lépései]: /develop/mobile/tutorials/get-started-xamarin-ios
+[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs iOS rendszeren való használatával]: http://msdn.microsoft.com/library/jj927168.aspx
 [Az Xcode telepítése]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
@@ -286,7 +292,7 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: /manage/services/notification-hubs/notify-users-aspnet
 [A legfrissebb hírek elküldése a Notification Hubs használatával]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[helyi és leküldéses értesítések programozásával foglalkozó útmutatójában]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[A helyi és leküldéses értesítések programozásával foglalkozó útmutató]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification szolgáltatás]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services összetevő]: http://components.xamarin.com/view/azure-mobile-services/
@@ -297,6 +303,6 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

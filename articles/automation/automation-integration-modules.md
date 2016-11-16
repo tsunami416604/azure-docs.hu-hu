@@ -1,12 +1,12 @@
 ---
-title: Azure Automation integrációs modul létrehozása | Microsoft Docs
-description: Ez az oktatóprogram végigvezeti az integrációs modulok létrehozásán, tesztelésén és példahasználatán az Azure Automationben.
+title: "Azure Automation integrációs modul létrehozása | Microsoft Docs"
+description: "Ez az oktatóprogram végigvezeti az integrációs modulok létrehozásán, tesztelésén és példahasználatán az Azure Automationben."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: mgoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 27798efb-08b9-45d9-9b41-5ad91a3df41e
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ca2343c8915690184e63396afa4e45a22a16ec2b
+
 
 ---
-# Azure Automation integrációs modulok
+# <a name="azure-automation-integration-modules"></a>Azure Automation integrációs modulok
 Az Azure Automation mögötti alapvető technológia a PowerShell. Minthogy az Azure Automation a PowerShellre épül, a PowerShell-modulok kulcsfontosságúak az Azure Automation bővíthetősége szempontjából. Ez a cikk bemutatja az Azure Automation „integrációs modulnak” nevezett PowerShell-moduljainak használati jellemzőit, valamint gyakorlati tanácsokat nyújt saját PowerShell-moduljainak létrehozására, hogy azok biztosan működjenek integrációs modulként az Azure Automationben. 
 
-## Mi az a PowerShell-modul?
+## <a name="what-is-a-powershell-module"></a>Mi az a PowerShell-modul?
 Egy PowerShell-modul olyan PowerShell-parancsmagok csoportja, mint a **Get-Date** vagy a **Copy-Item**, amelyek használhatók a PowerShell konzolról, valamint olyan parancsfájlokból, munkafolyamatokból, forgatókönyvekből és PowerShell DSC-erőforrásokból, mint a WindowsFeature vagy File, amelyek használhatók PowerShell DSC konfigurációkból. A PowerShell összes funkciója parancsmagok és DSC-erőforrások révén jelenik meg, és minden parancsmag/DSC-erőforrás mögött egy PowerShell modul áll. Ezek jelentős része magához a PowerShellhez tartozik. A **Get-Date** parancsmag például része a Microsoft.PowerShell.Utility PowerShell-modulnak, a **Copy-Item** parancsmag része a Microsoft.PowerShell.Management PowerShell-modulnak, a Csomag DSC erőforrás pedig része a PSDesiredStateConfiguration PowerShell-modulnak. A PowerShellben mindkét modul megtalálható. Sok PowerShell-modul azonban nem része automatikusan a PowerShellnek, hanem olyan első vagy harmadik felek termékeivel érkeznek, mint a System Center 2012 Configuration Manager, illetve a hatalmas PowerShell-közösség biztosítja például a PowerShell-galériához hasonló helyeken.  A modulok hasznosak, mert a beágyazott funkciók révén egyszerűbbé teszik a bonyolult feladatokat.  További információt talál a [PowerShell-modulokról az MSDN webhelyén](https://msdn.microsoft.com/library/dd878324%28v=vs.85%29.aspx). 
 
-## Mi az az Azure Automation integrációs modul?
+## <a name="what-is-an-azure-automation-integration-module"></a>Mi az az Azure Automation integrációs modul?
 Az integrációs modul nem különbözik sokban a többi PowerShell-modultól. Egyszerűen egy olyan PowerShell-modul, amely opcionálisan tartalmaz egy további fájlt, egy Azure Automation kapcsolattípust megadó metaadatfájlt, amely a modul parancsmagjaival használható a forgatókönyvekben. Ezek a PowerShell-modulok (az opcionális fájllal vagy anélkül) importálhatók az Azure Automationbe, hogy a parancsmagjaik használhatók legyenek a forgatókönyvekben, és a DSC-erőforrásaik elérhetők legyenek használatra a DSC-konfigurációkon belülről. A színfalak mögött az Azure Automation tárolja ezeket a modulokat, és a forgatókönyv-feladat és a DSC-fordítási feladat végrehajtási ideje betölti őket az Azure Automation próbakörnyezetbe, ahol a rendszer végrehajtja a forgatókönyveket, és a lefordítja a DSC-konfigurációkat.  A modulok DSC-erőforrásai is automatikusan kikerülnek az Automation DSC lekéréses kiszolgálóra, így a DSC-konfigurációkat alkalmazni próbáló gépek lekérhetik őket.  Az Azure Automation számos Azure Powershell-modult tartalmaz használatra készen, hogy azonnal elkezdhesse az Azure-felügyelet automatizálást, továbbá egyszerűen importálhat PowerShell-modulokat bármilyen integrálni kívánt rendszerhez, szolgáltatáshoz vagy eszközhöz. 
 
 > [!NOTE]
@@ -62,7 +66,7 @@ Ha a modul esetleg tartalmaz egy Azure Automation kapcsolattípust, akkor tartal
 
 Ha már telepítette a Service Management Automation szolgáltatást, és létrehozott integrációsmodul-csomagokat az automatizálási forgatókönyvekhez, ez nagyon ismerős lesz. 
 
-## Szerzői gyakorlati tanácsok
+## <a name="authoring-best-practices"></a>Szerzői gyakorlati tanácsok
 Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt, hogy nincs gyakorlatkészlet a létrehozásukhoz. Számos dolog van még, amit érdemes meggondolni egy PowerShell-modul létrehozásakor, hogy a lehető legtöbb hasznát vegye az Azure Automationben. Ezeknek egy része kifejezetten az Azure Automationre vonatkozik, mások pedig ahhoz hasznosak, hogy a moduljai jól működjenek a PowerShell-munkafolyamatban, függetlenül attól, hogy használja-e az Automationt, vagy sem. 
 
 1. A modul összes parancsmagjáról mellékeljen egy szinopszist, egy leírást és egy súgó URI-t. A PowerShellben meghatározhat bizonyos súgóinformációkat a parancsmagokhoz, hogy a felhasználó segítséget kapjon a **Get-Help** parancsmaggal való használatukkor. Az alábbi példát követve meghatározhatja a szinopszist és a súgó URI-t egy .psm1 fájlban megírt PowerShell-modulhoz.<br>  
@@ -101,8 +105,7 @@ Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt
     $response.TwilioResponse.IncomingPhoneNumbers.IncomingPhoneNumber
     }
     ```
-   <br> 
-   Ha ezt az információt megadja, nem csak a súgó jelenik meg a **Get-Help** parancsmag segítségével a PowerShell konzolon, de megjeleníti ezt a súgó funkciót az Azure Automationön belül, például amikor tevékenységet szúr be a forgatókönyv létrehozása alatt. Ha a „Részletes súgó megtekintése” lehetőségre kattint, megnyílik a súgó URI az Azure Automation eléréséhez használt webböngésző új lapján.<br>![Integrációs modul súgó](media/automation-integration-modules/automation-integration-module-activitydesc.png)
+   <br> Ha ezt az információt megadja, nem csak a súgó jelenik meg a **Get-Help** parancsmag segítségével a PowerShell konzolon, de megjeleníti ezt a súgó funkciót az Azure Automationön belül, például amikor tevékenységet szúr be a forgatókönyv létrehozása alatt. Ha a „Részletes súgó megtekintése” lehetőségre kattint, megnyílik a súgó URI az Azure Automation eléréséhez használt webböngésző új lapján.<br>![Integrációs modul súgó](media/automation-integration-modules/automation-integration-module-activitydesc.png)
 2. Ha a modul egy távoli rendszeren fut, a. Tartalmaznia kell az integrációs modulhoz tartozó metaadatfájlt, amely meghatározza az adott távoli rendszerhez való csatlakozáshoz szükséges információkat, azaz a kapcsolat típusát. b. A modul minden egyes parancsmagjának képesnek kell lennie egy kapcsolat objektum (az adott kapcsolattípus egy példánya) befogadására paraméterként.  
     A modulban lévő parancsmagokat könnyebb használni az Azure Automationben, ha lehetővé teszi, hogy egy objektumot a kapcsolattípus mezőivel paraméterként továbbítson a parancsmagnak. Ily módon a felhasználóknak nem kell leképezniük a kapcsolat adategység-paramétereit a parancsmag megfelelő paramétereihez minden alkalommal, amikor meghívnak egy parancsmagot. A fenti forgatókönyv-példa alapján egy CorpTwilio nevű Twilio-kapcsolati adategység segítségével éri el a Twiliót, és visszaadja az összes telefonszámot a fiókból.  Figyelje meg, hogyan képezi le a kapcsolat mezőit a parancsmag paramétereire.<br>
    
@@ -154,7 +157,7 @@ Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt
     }
     ```
    <br>
-3. Adja meg a modulban lévő összes parancsmag kimenettípusát. Egy parancsmag kimenettípusának megadása lehetővé teszi a tervezés közben az IntelliSense használatát, amely segít meghatározni egy parancsmag kimenetének tulajdonságait a megírásuk támogatására. Ez különösen hasznos az Automation-forgatókönyvek grafikus létrehozásakor, ahol a tervezés közbeni információk kulcsfontosságúak a könnyedfelhasználói élmény biztosításához a modulban.<br> ![Grafikus forgatókönyv kimenettípusa](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> Ez hasonlít egy parancsmag PowerShell ISE-ben kapott kimenetének „type ahead” funkciójára, csak nem kell futtatni.<br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
+3. Adja meg a modulban lévő összes parancsmag kimenettípusát. Egy parancsmag kimenettípusának megadása lehetővé teszi a tervezés közben az IntelliSense használatát, amely segít meghatározni egy parancsmag kimenetének tulajdonságait a megírásuk támogatására. Ez különösen hasznos az Automation-forgatókönyvek grafikus létrehozásakor, ahol a tervezés közbeni információk kulcsfontosságúak a könnyedfelhasználói élmény biztosításához a modulban.<br> ![Grafikus runbook kimenettípusa](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> Ez hasonlít egy parancsmag PowerShell ISE-ben kapott kimenetének „type ahead” funkciójára, csak nem kell futtatni.<br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
 4. A modul parancsmagjai elméletben nem fogadnak komplex objektumtípusokat paraméterekként. A PowerShell-munkafolyamat eltér a PowerShelltől abban, hogy komplex típusokat tárol deszerializált formában. Az egyszerű típusok egyszerűek maradnak, a komplex típusokat azonban a rendszer deszerializált változatokká konvertálja, amelyek lényegében tulajdonságcsomagok. Ha például a **Get-Process** parancsmagot használta egy forgatókönyvben (vagy egy PowerShell-munkafolyamatban), az egy [Deserialized.System.Diagnostic.Process] típusú, nem pedig a várt [System.Diagnostic.Process] típusú objektumot ad vissza. Ez a típus ugyanazokkal a tulajdonságokkal rendelkezik, mint a nem deszerializált típus, de a metódusok nélkül. Ha megpróbálja ezt az értéket paraméterként átadni egy parancsmagnak, ahol a parancsmag egy [System.Diagnostic.Process] értéket vár ehhez a paraméterhez, az alábbi hibaüzenetet kapja: *A 'process' paraméteren nem hajtható végre az argumentum-átalakítás. Hiba: „Nem lehetséges a „Deserialized.System.Diagnostics.Process” típusú „System.Diagnostics.Process (CcmExec)” érték konvertálása a következő típusra: „System.Diagnostics.Process”.*   Ennek az az oka, hogy típusbeli eltérés van a várt [System.Diagnostic.Process] típus és a megadott [Deserialized.System.Diagnostic.Process] típus között. A probléma megoldása az, ha biztosítjuk, hogy a modul parancsmagjai ne fogadjanak be komplex típusú paramétereket. Itt látható ennek a téves megközelítése.
    
     ```
@@ -200,10 +203,13 @@ Bár az integrációs modulok alapvetően PowerShell-modulok, ez nem jelenti azt
    <br>
 6. A modulnak teljes egészében egy Xcopy-kompatibilis csomagban kell lennie. Mivel az Azure Automation-modulokat a rendszer elosztja az Automation próbakörnyezetekbe, amikor a forgatókönyveket végre kell hajtani, függetlenül kell működniük a gazdagéptől, amelyen futnak. Ez azt jelenti, hogy képesnek kell lennie a modulcsomag tömörítésére és bármely más, azonos vagy újabb PowerShell-verziót futtató gazdagépre való áthelyezésére, valamint normális működtetésére, amikor a rendszer importálja az adott gazdagép PowerShell környezetébe. Annak érdekében, hogy ez megtörténjen, fontos, hogy a modul ne függjön egy fájltól sem a modulmappán kívül (ez a Azure Automationbe való importáláskor tömörített mappa), sem a gazdagép bármilyen egyedi beállításjegyzékétől, mint például a termék telepítésekor beállítottaktól. Ha nem tartja be az ajánlott gyakorlatot, a modul nem lesz használható az Azure Automationben.  
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
 * További információk PowerShell-modulok létrehozásáról: [Windows PowerShell-modul írása](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

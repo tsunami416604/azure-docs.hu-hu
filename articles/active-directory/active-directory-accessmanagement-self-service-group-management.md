@@ -1,22 +1,26 @@
 ---
-title: Az Azure Active Directory beállítása önkiszolgáló alkalmazáshozzáférés-kezeléshez | Microsoft Docs
-description: Az önkiszolgáló csoportkezelési szolgáltatással a felhasználók biztonsági vagy Office 365-csoportokat hozhatnak létre és kezelhetnek az Azure Active Directoryban, valamint biztonsági és Office 365-csoporttagságot igényelhetnek.
+title: "Az Azure Active Directory beállítása önkiszolgáló alkalmazáshozzáférés-kezeléshez | Microsoft Docs"
+description: "Az önkiszolgáló csoportkezelési szolgáltatással a felhasználók biztonsági vagy Office 365-csoportokat hozhatnak létre és kezelhetnek az Azure Active Directoryban, valamint biztonsági és Office 365-csoporttagságot igényelhetnek."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 904d5c70-c34a-46c4-a9a7-d1efecf4821c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/10/2016
+ms.date: 11/01/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
+
 
 ---
-# Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre
+# <a name="setting-up-azure-active-directory-for-selfservice-group-management"></a>Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre
 Az önkiszolgáló csoportkezelési szolgáltatással a felhasználók biztonsági vagy Office 365-csoportokat hozhatnak létre és kezelhetnek az Azure Active Directoryban (Azure AD). A felhasználók ezenkívül biztonsági és Office 365-csoporttagságot igényelhetnek, amelyet ezután a csoport tulajdonosa elfogadhat vagy elutasíthat. Ezáltal a csoporttagság napi szintű felügyelete olyan személyeknek adható ki, akik tisztában vannak az adott tagság üzleti környezetével. Az önkiszolgáló csoportkezelési szolgáltatások kizárólag biztonsági és Office 365-csoportok esetében érhetőek el, levelezési címmel rendelkező biztonsági csoportok vagy terjesztési listák esetében nem.
 
 Az önkiszolgáló csoportkezelési szolgáltatás jelenleg két alapvető alkalmazási helyzetet tartalmaz: a delegált és az önkiszolgáló csoportkezelést.
@@ -26,7 +30,7 @@ Az önkiszolgáló csoportkezelési szolgáltatás jelenleg két alapvető alkal
 * **Önkiszolgáló csoportkezelés**
    – Jellemző példa rá két olyan felhasználó, akik egyaránt rendelkeznek egymástól függetlenül üzembe helyezett SharePoint Online-webhelyekkel. Ezek a felhasználók szeretnének egymás csapatának hozzáférést adni a saját webhelyükhöz. Ennek megvalósítása érdekében létrehozhatnak egy csoportot az Azure AD-ben, majd a SharePoint Online felületén mindketten kiválaszthatják ezt a csoportot, így biztosítva hozzáférést a webhelyeikhez. Ha valaki hozzáférést igényel, azt a hozzáférési panelen igényelheti, és ha kérését jóváhagyják, automatikusan hozzáférést kap mindkét SharePoint Online-webhelyhez. Ezt követően egyikük dönthet úgy, hogy a webhelyhez hozzáféréssel rendelkező összes felhasználó számára egy adott SaaS-alkalmazáshoz is hozzáférést ad. A SaaS-alkalmazás rendszergazdája adhat hozzáférési jogot a SharePoint Online webhelyhez tartozó alkalmazáshoz. Ettől kezdve az elfogadott kérések mindkét SharePoint Online-webhelyhez és az SaaS-alkalmazáshoz is hozzáférést biztosítanak.
 
-## Csoport elérhetővé tétele önkiszolgáló végfelhasználói tevékenységhez
+## <a name="making-a-group-available-for-end-user-selfservice"></a>Csoport elérhetővé tétele önkiszolgáló végfelhasználói tevékenységhez
 1. A [klasszikus Azure-portálon](https://manage.windowsazure.com) nyissa meg az Azure AD-címtárat.
 2. A **Configure** (Konfigurálás) lapon állítsa a **Delegated group management** (Delegált csoportkezelés) beállítást Enabled (Engedélyezve) állapotúra.
 3. Állítsa a **Users can create security groups** (A felhasználók létrehozhatnak biztonsági csoportokat) vagy **Users can create Office groups** (A felhasználók létrehozhatnak Office-csoportokat) beállítást Enabled (Engedélyezve) állapotúra.
@@ -37,15 +41,18 @@ A **Users who can use self-service for security groups** (Önkiszolgáló bizton
 
 A **Group that can use self-service for security groups** (Önkiszolgáló biztonságicsoport-kezelésre jogosult csoport) mező használatával egyéni nevet rendelhet ahhoz a csoporthoz, amely tagjai önkiszolgálásra jogosultak.
 
-## További információ
+## <a name="additional-information"></a>További információ
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
-* [Managing access to resources with Azure Active Directory groups (Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal)](active-directory-manage-groups.md)
+* [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
 * [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](active-directory-accessmanagement-groups-settings-cmdlets.md)
-* [Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)](active-directory-apps-index.md)
+* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 * [Mi az az Azure Active Directory?](active-directory-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

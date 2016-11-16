@@ -1,10 +1,10 @@
-## Üzenetek fogadása az EventProcessorHost használatával Javában
+## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Üzenetek fogadása az EventProcessorHost használatával Javában
 Az EventProcessorHost egy Java-osztály, amely leegyszerűsíti az események fogadását az Event Hubs szolgáltatásból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs eseményközpontokból. Az EventProcessorHost szolgáltatással akkor is feloszthatja az eseményeket több fogadóra, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az EventProcessorHost egyetlen fogadóhoz.
 
-### Create a storage account
-Az EventProcessorHost használatához [Azure Storage-fiók][Azure Storage-fiók] szükséges:
+### <a name="create-a-storage-account"></a>Create a storage account
+Az EventProcessorHost használatához egy [Azure Storage-fiók][Azure Storage-fiók] szükséges:
 
-1. Jelentkezzen be a [klasszikus Azure portál][klasszikus Azure portál], és kattintson a **NEW** (ÚJ) lehetőségre a képernyő alján.
+1. Jelentkezzen be a [klasszikus Azure portálra][klasszikus Azure portálra], és kattintson az **ÚJ** elemre a képernyő alján.
 2. Kattintson a **Data Services** (Adatszolgáltatások), a **Storage** (Tárolás), majd a **Quick Create** (Gyors létrehozás) lehetőségre, és adja meg a tárfiók nevét. Válassza ki a kívánt régiót, majd kattintson a **Create Storage Account** (Tárfiók létrehozása) lehetőségre.
    
     ![][11]
@@ -14,7 +14,7 @@ Az EventProcessorHost használatához [Azure Storage-fiók][Azure Storage-fiók]
    
     Másolja le az elsődleges elérési kulcsot – erre később lesz szükség az oktatóprogramban.
 
-### Java-projekt létrehozása az EventProcessor Hosttal
+### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
 Az Event Hubs Java-ügyfélkódtára a [Maven központi tárházból][Maven csomag] érhető el a Maven-projektekhez, és a következő függőségi deklarációval lehet rá hivatkozni a Maven-projektfájlból:    
 
 ``` XML
@@ -184,10 +184,10 @@ A különböző típusú összeállítási környezetekhez explicit módon szere
 > 
 
 <!-- Links -->
-[Event Hubs – áttekintés]: event-hubs-overview.md
-[Azure Storage-fiók]: ../storage/storage-create-storage-account.md
+[Event Hubs – áttekintés]: ../articles/event-hubs/event-hubs-overview.md
+[Azure Storage-fiók]: ../articles/storage/storage-create-storage-account.md
 [klasszikus Azure portál]: http://manage.windowsazure.com
-[Maven csomag]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
+[Maven-csomag]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
 <!-- Images -->
 [11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
@@ -195,6 +195,6 @@ A különböző típusú összeállítási környezetekhez explicit módon szere
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

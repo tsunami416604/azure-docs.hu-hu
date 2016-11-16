@@ -1,12 +1,12 @@
 ---
-title: Best practices for Azure SQL Data Warehouse | Microsoft Docs
-description: Recommendations and best practices you should know as you develop solutions for Azure SQL Data Warehouse. These will help you be successful.
+title: "Ajánlott eljárások az Azure SQL Data Warehouse-hoz | Microsoft Docs"
+description: "Javaslatok és ajánlott eljárások, amelyeket érdemes tudni az Azure SQL Data Warehouse-megoldások fejlesztésekor. Ezek segítségével a megoldások jobban sikerülhetnek."
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,127 +14,131 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f04cba06cfe6a9094268ea041e85753cbd99f8fd
+
 
 ---
-# <a name="best-practices-for-azure-sql-data-warehouse"></a>Best practices for Azure SQL Data Warehouse
-This article is a collection of many best practices that will help you to achieve optimal performance from your Azure SQL Data Warehouse.  Some of the concepts in this article are basic and easy to explain, other concepts are more advanced and we just scratch the surface in this article.  The purpose of this article is to give you some basic guidance and to raise awareness of important areas to focus as you build your data warehouse.  Each section introduces you to a concept and then point you to more detailed articles which cover the concept in more depth.
+# <a name="best-practices-for-azure-sql-data-warehouse"></a>Ajánlott eljárások az Azure SQL Data Warehouse-hoz
+Ez a cikk számos ajánlott eljárás gyűjteménye, amelyek segítenek optimális teljesítményt kihozni az Azure SQL Data Warehouse-ból.  A cikkben található fogalmak némelyike könnyen elmagyarázható, míg mások összetettebb fogalmak, amelyeket csak nagy vonalakban mutatunk be.  A cikk célja, hogy némi alapszintű útmutatással és a legfontosabb dolgok hangsúlyozásával segítse Önt az adattárház létrehozásában.  Minden szakasz röviden bemutat egy fogalmat, majd részletesebb cikkekhez irányít át, amelyek a fogalmat alaposabban is körüljárják.
 
-If you are just getting started with Azure SQL Data Warehouse, do not let this article overwhelm you.  The sequence of the topics is mostly in the order of importance.  If you start by focusing on the first few concepts, you'll be in good shape.  As you get more familiar and comfortable with using SQL Date Warehouse, come back and look at a few more concepts.  It won't take long for everything to make sense.
+Ha csak most kezdi el használni az Azure SQL Data Warehouse-t, ne hagyja, hogy ez a cikk megijessze.  A témakörök nagyjából fontossági sorrendben követik egymást.  Ha kezdetnek csak az első néhány fogalommal foglalkozik, az tökéletesen elegendő.  Miután már jobban megismerte és kényelmesebben tudja használni az SQL Data Warehouse-ot, folytassa néhány újabb fogalommal.  Nem fog sokáig tartani, amíg a dolgok világosan összeállnak.
 
-## <a name="reduce-cost-with-pause-and-scale"></a>Reduce cost with pause and scale
-A key feature of SQL Data Warehouse is the ability to pause when you are not using it, which stops the billing of compute resources.  Another key feature is the ability to scale resources.  Pausing and Scaling can be done via the Azure portal or through PowerShell commands.  Become familiar with these features as they can greatly reduce the cost of your data warehouse when it is not in use.  If you always want your data warehouse accessible, you may want to consider scaling it down to the smallest size, a DW100 rather than pausing.
+## <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
+Az SQL Data Warehouse egyik legfőbb jellemzője, hogy ha nem használja, felfüggesztheti a szolgáltatást, ezzel leállítva a számítási erőforrások számlázását.  Egy másik fontos jellemző az erőforrások méretezhetősége.  A felfüggesztés és a méretezés az Azure Portalon keresztül vagy PowerShell-parancsok használatával lehetséges.  Ezen funkciók elsajátítása nagy mértékben csökkentheti az adattárházzal kapcsolatos kiadásait, amikor azt épp nem használja.  Ha azt szeretné, hogy az adattárháza folyamatosan rendelkezésre álljon, érdemes lehet azt a legkisebb méretre, a DW100-ra skálázni a felfüggesztés helyett.
 
-See also [Pause compute resources][Pause compute resources], [Resume compute resources][Resume compute resources], [Scale compute resources][Scale compute resources]
+Lásd még: [Számítási erőforrások használatának felfüggesztése][Számítási erőforrások használatának felfüggesztése], [Számítási erőforrások használatának folytatása][Számítási erőforrások használatának folytatása], [Számítási erőforrások méretezése][Számítási erőforrások méretezése]
 
-## <a name="drain-transactions-before-pausing-or-scaling"></a>Drain transactions before pausing or scaling
-When you pause or scale your SQL Data Warehouse, behind the scenes your queries are canceled when you initiate the pause or scale request.  Canceling a simple SELECT query is a quick operation and has almost no impact to the time it takes to pause or scale your instance.  However, transactional queries, which modify your data or the structure of the data, may not be able to stop quickly.  **Transactional queries, by definition, must either complete in their entirety or rollback their changes.**  Rolling back the work completed by a transactional query can take as long, or even longer, than the original change the query was applying.  For example, if you cancel a query which was deleting rows and has already been running for an hour, it could take the system an hour to insert back the rows which were deleted.  If you run pause or scaling while transactions are in flight, your pause or scaling may seem to take a long time because pausing and scaling has to wait for the rollback to complete before it can proceed.
+## <a name="drain-transactions-before-pausing-or-scaling"></a>Tranzakciók ürítése felfüggesztés vagy méretezés előtt
+Ha felfüggeszti vagy méretezi az SQL Data Warehouse-t, a felfüggesztési vagy méretezési kérelem elindításakor a színfalak mögött a lekérdezések megszakadnak.  Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni.  **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.**  A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása.  Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa.  Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
 
-See also [Understanding transactions][Understanding transactions], [Optimizing transactions][Optimizing transactions]
+Lásd még: [Tranzakciók megismerése][Tranzakciók megismerése], [Tranzakciók optimalizálása][Tranzakciók optimalizálása]
 
-## <a name="maintain-statistics"></a>Maintain statistics
-Unlike SQL Server, which automatically detects and creates or updates statistics on columns, SQL Data Warehouse requires manual maintenance of statistics.  While we do plan to change this in the future, for now you will want to maintain your statistics to ensure that the SQL Data Warehouse plans are optimized.  The plans created by the optimizer are only as good as the available statistics.  **Creating sampled statistics on every column is an easy way to get started with statistics.**  It's equally important to update statistics as significant changes happen to your data.  A conservative approach may be to update your statistics daily or after each load.  There are always trade-offs between performance and the cost to create and update statistics. If you find it is taking too long to maintain all of your statistics, you may want to try to be more selective about which columns have statistics or which columns need frequent updating.  For example, you might want to update date columns, where new values may be added, daily. **You will gain the most benefit by having statistics on columns involved in joins, columns used in the WHERE clause and columns found in GROUP BY.**
+## <a name="maintain-statistics"></a>Statisztikák karbantartása
+Az SQL Serverrel ellentétben az SQL Data Warehouse nem észleli, hozza létre vagy frissíti az oszlopok statisztikáit, hanem ezek manuális karbantartása szükséges.  Noha mindezen a jövőben változtatni tervezünk, egyelőre az SQL Data Warehouse-csomagok optimalizálása érdekében saját kezűleg kell karbantartania a statisztikákat.  Az optimalizáló által létrehozott csomagok csak annyira jók, amennyire az elérhető statisztikák azok.  **A statisztikák megismerésének egyik legjobb módja a mintastatisztikák létrehozása minden oszlopról.**  Ugyanilyen fontos a statisztikák frissítése is, mivel az adatokban jelentős változások történhetnek.  Ennek hagyományos módszere, ha naponta vagy minden betöltés után frissíti a statisztikákat.  Mindig érdemes figyelembe venni, hogyan viszonyul egymáshoz a teljesítmény és a statisztikák létrehozásának és frissítésének költségei. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, lehet, hogy körültekintőbben kell kiválasztania, mely oszlopok rendelkezzenek statisztikákkal vagy melyek igényelnek gyakori frissítést.  Előfordulhat például, hogy csak a dátumoszlopokat szeretné frissíteni, amelyekbe napi rendszerességgel kerülnek új értékek. **A legnagyobb előnnyel az jár, ha az összekapcsolások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit kéri le.**
 
-See also [Manage table statistics][Manage table statistics], [CREATE STATISTICS][CREATE STATISTICS], [UPDATE STATISTICS][UPDATE STATISTICS]
+Lásd még: [táblastatisztikák kezelése][táblastatisztikák kezelése], [CREATE STATISTICS][CREATE STATISTICS], [UPDATE STATISTICS][UPDATE STATISTICS]
 
-## <a name="group-insert-statements-into-batches"></a>Group INSERT statements into batches
-A one-time load to a small table with an INSERT statement or even a periodic reload of a look-up may perform just fine for your needs with a statement like `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  However, if you need to load thousands or millions of rows throughout the day, you might find that singleton INSERTS just can't keep up.  Instead, develop your processes so that they write to a file and another process periodically comes along and loads this file.
+## <a name="group-insert-statements-into-batches"></a>INSERT utasítások csoportosítása kötegekbe
+A kis táblák INSERT utasítással végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is kielégítheti az igényeit, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Ha azonban egy nap során több ezer vagy több millió sort kell betöltenie, észreveheti, hogy az egyszeres INSERT utasítások nem feltétlenül bizonyulnak elegendőnek.  Ehelyett érdemes olyan folyamatokat kifejleszteni, amelyek egy fájlba írnak, amelyet egy időről időre aktiválódó másik folyamat rendszeresen betölt.
 
-See also [INSERT][INSERT]
+Lásd még: [INSERT][INSERT]
 
-## <a name="use-polybase-to-load-and-export-data-quickly"></a>Use PolyBase to load and export data quickly
-SQL Data Warehouse supports loading and exporting data through several tools including Azure Data Factory, PolyBase, and BCP.  For small amounts of data where performance isn't critical, any tool may be sufficient for your needs.  However, when you are loading or exporting large volumes of data or fast performance is needed, PolyBase is the best choice.  PolyBase is designed to leverage the MPP (Massively Parallel Processing) architecture of SQL Data Warehouse and will therefore load and export data magnitudes faster than any other tool.  PolyBase loads can be run using CTAS or INSERT INTO.  **Using CTAS will minimize transaction logging and the fastest way to load your data.**  Azure Data Factory also supports PolyBase loads.  PolyBase supports a variety of file formats including Gzip files.  **To maximize throughput when using gzip text files, break files up into 60 or more files to maximize parallelism of your load.**  For faster total throughput, consider loading data concurrently.
+## <a name="use-polybase-to-load-and-export-data-quickly"></a>Az adatok gyors betöltése és exportálása a PolyBase segítségével
+Az SQL Data Warehouse az adatok több eszközzel (például az Azure Data Factoryval, a PolyBase-el és a BCP-vel) végzett betöltését és exportálását is támogatja.  Kis mennyiségű adat kezelése esetén, ahol a teljesítmény nem kulcsfontosságú tényező, bármelyik eszköz megfelelhet az igényeinek.  Amikor nagy mennyiségű adatot tölt be vagy exportál, vagy gyors teljesítményre van szükség, a PolyBase a legjobb választás.  A PolyBase úgy van kialakítva, hogy kihasználja az SQL Data Warehouse MPP (Massively Parallel Processing, nagymértékben párhuzamos feldolgozási) architektúráját, így bármely más eszköznél sokkal gyorsabban tölti be és exportálja az adatokat.  A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók.  **A CTAS használata minimalizálja a tranzakciók naplózásának mértékét, és ez az adatok betöltésének leggyorsabb módja.**  Az Azure Data Factory is támogatja a PolyBase-betöltéseket.  A PolyBase többféle fájlformátumot támogat, beleértve a Gzip-fájlokat is.  **A gzip szöveges fájlok használatakor az átviteli teljesítmény maximalizálása érdekében tördelje a fájlokat 60 vagy több fájllá a betöltés párhuzamosságának növelése érdekében.**  A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat.
 
-See also [Load data][Load data], [Guide for using PolyBase][Guide for using PolyBase], [Azure SQL Data Warehouse loading patterns and strategies][Azure SQL Data Warehouse loading patterns and strategies], [Load Data with Azure Data Factory][Load Data with Azure Data Factory], [Move data with Azure Data Factory][Move data with Azure Data Factory], [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT], [Create table as select (CTAS)][Create table as select (CTAS)]
+Lásd még: [Adatok betöltése][Adatok betöltése], [Útmutató a PolyBase használatához][Útmutató a PolyBase használatához], [Azure SQL Data Warehouse betöltési minták és stratégiák][Azure SQL Data Warehouse betöltési minták és stratégiák], [Adatok betöltése az Azure Data Factoryvel][Adatok betöltése az Azure Data Factoryvel], [Adatok áthelyezése az Azure Data Factoryvel][Adatok áthelyezése az Azure Data Factoryvel], [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT], [Create table as select (CTAS)][Create table as select (CTAS)]
 
-## <a name="load-then-query-external-tables"></a>Load then query external tables
-While Polybase, also known as external tables, can be the fastest way to load data, it is not optimal for queries. SQL Data Warehouse Polybase tables currently only support Azure blob files. These files do not have any compute resources backing them.  As a result, SQL Data Warehouse cannot offload this work and therefore must read the entire file by loading it to tempdb in order to read the data.  Therefore, if you have several queries that will be querying this data, it is better to load this data once and have queries use the local table.
+## <a name="load-then-query-external-tables"></a>Betöltés, majd külső táblák lekérdezése
+Míg a PolyBase, más néven a külső táblák használata lehet az adatok betöltésének leggyorsabb módja, lekérdezésekhez nem ez a legjobb megoldás. Az SQL Data Warehouse PolyBase-táblák egyelőre még csak az Azure-blob fájlokat támogatják. Ezekhez a fájlokhoz nem tartoznak külön számítási erőforrások.  Ennek eredményeképpen az SQL Data Warehouse nem tudja kiszervezni a munkát, és be kell olvasnia a teljes fájlt úgy, hogy betölti a tempdb adatbázisba.  Ezért ha több olyan lekérdezése is van, amelyek ennek a fájlnak az adatait kérik le, érdemesebb egyszer betölteni az adatokat, és úgy beállítani a lekérdezéseket, hogy a helyi táblát használják.
 
-See also [Guide for using PolyBase][Guide for using PolyBase]
+Lásd még: [Útmutató a PolyBase használatához][Útmutató a PolyBase használatához]
 
-## <a name="hash-distribute-large-tables"></a>Hash distribute large tables
-By default, tables are Round Robin distributed.  This makes it easy for users to get started creating tables without having to decide how their tables should be distributed.  Round Robin tables may perform sufficiently for some workloads, but in most cases selecting a distribution column will perform much better.  The most common example of when a table distributed by a column will far outperform a Round Robin table is when two large fact tables are joined.  For example, if you have an orders table, which is distributed by order_id, and a transactions table, which is also distributed by order_id, when you join your orders table to your transactions table on order_id, this query becomes a pass-through query, which means we eliminate data movement operations.  Fewer steps mean a faster query.  Less data movement also makes for faster queries.  This explanation just scratches the surface. When loading a distributed table, be sure that your incoming data is not sorted on the distribution key as this will slow down your loads.  See the below links for much more details on how selecting a distribution column can improve performance as well as how to define a distributed table in the WITH clause of your CREATE TABLES statement.
+## <a name="hash-distribute-large-tables"></a>Nagy táblák kivonatos elosztása
+Alapértelmezés szerint a táblák ciklikus időszeleteléssel vannak elosztva.  Ez megkönnyíti, hogy a felhasználók anélkül kezdhessenek neki a táblák létrehozásának, hogy dönteniük kéne az elosztás módjáról.  A ciklikus időszeletelésű táblák megfelelő megoldást jelenthetnek egye számítási feladatok esetén, a legtöbb esetben azonban egy elosztási oszlop kiválasztása megfelelőbb eredményre vezet.  A leggyakoribb példája annak, amikor egy oszloppal elosztott tábla sokkal jobb teljesítményt nyújt egy ciklikus időszeletelésűnél, amikor két nagy tábla egyesül.  Ha például van egy rendelésazonosító alapján elosztott rendelési táblája és egy, szintén a rendelésazonosító alapján elosztott tranzakciótáblája, akkor ha a rendelési táblát a tranzakciótáblával egyesíti a rendelésazonosító oszlopnál, a lekérdezés továbbított lekérdezéssé válik, így kiküszöbölhetők az adatátviteli műveletek.  Ha kevesebb lépést kell végrehajtani, felgyorsul a lekérdezési folyamat.  A kisebb mértékű adatmozgás is gyorsabb lekérdezéseket eredményez.  Ez a magyarázat éppen csak bepillantást nyújt a témakörre vonatkozó tudnivalókba. Elosztott tábla betöltésekor győződjön meg arról, hogy a bejövő adatok nem az elosztási kulcs alapján vannak rendezve, mivel ez lelassítja a betöltéseket.  Az alábbi hivatkozások további információt tartalmaznak arról, hogyan javíthatja a teljesítményt az elosztási oszlop kiválasztása, valamint arról, hogyan határozhat meg elosztott táblát a CREATE TABLES utasítás WITH záradékának használatával.
 
-See also [Table overview][Table overview], [Table distribution][Table distribution], [Selecting table distribution][Selecting table distribution], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
+Lásd még: [táblák áttekintése][táblák áttekintése], [táblaelosztás][táblaelosztás], [táblaelosztás kiválasztása][táblaelosztás kiválasztása], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
 
-## <a name="do-not-overpartition"></a>Do not over-partition
-While partitioning data can be very effective for maintaining your data through partition switching or optimizing scans by with partition elimination, having too many partitions can slow down your queries.  Often a high granularity partitioning strategy which may work well on SQL Server may not work well on SQL Data Warehouse.  Having too many partitions can also reduce the effectiveness of clustered columnstore indexes if each partition has fewer than 1 million rows.  Keep in mind that behind the scenes, SQL Data Warehouse partitions your data for you into 60 databases, so if you create a table with 100 partitions, this actually results in 6000 partitions.  Each workload is different so the best advice is to experiment with partitioning to see what works best for your workload.  Consider lower granularity than what may have worked for you in SQL Server.  For example, consider using weekly or monthly partitions rather than daily partitions.
+## <a name="do-not-overpartition"></a>Túl sok partíció használatának kerülése
+Míg az adatok particionálása nagyon hatásos eszköz lehet az adatok partícióváltáson keresztüli megőrzéséhez vagy a vizsgálatok partíciókizárással végzett optimalizálásához, a túl sok partíció lelassíthatja a lekérdezéseket.  Az SQL Serveren jól működő részletesebb particionálási stratégia nem feltétlenül működik hasonló hatékonysággal az SQL Data Warehouse-ban.  A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek.  Ne feledje, hogy a háttérben az SQL Data Warehouse 60 adatbázisba particionálja az adatait, így ha 100 partícióval rendelkező táblát hoz létre, ez 6000 partíciót eredményez.  Mindegyik számítási feladat különböző, így érdemes kísérletezni a particionálással, és kideríteni, hogy az adott számítási feladatnál melyik megoldás a célravezető.  Érdemes kisebb szintű részletességet használni, mint az SQL Serveren.  A napi partíciók helyett például érdemes lehet heti vagy havi partíciókat használni.
 
-See also [Table partitioning][Table partitioning]
+Lásd még: [tábla particionálása][tábla particionálása]
 
-## <a name="minimize-transaction-sizes"></a>Minimize transaction sizes
-INSERT, UPDATE, and DELETE statements run in a transaction and when they fail they must be rolled back.  To minimize the potential for a long rollback, minimize transaction sizes whenever possible.  This can be done by dividing INSERT, UPDATE, and DELETE statements into parts.  For example, if you have an INSERT which you expect to take 1 hour, if possible, break the INSERT up into 4 parts, which will each run in 15 minutes.  Leverage special Minimal Logging cases, like CTAS, TRUNCATE, DROP TABLE or INSERT to empty tables, to reduce rollback risk.  Another way to eliminate rollbacks is to use Metadata Only operations like partition switching for data management.  For example, rather than execute a DELETE statement to delete all rows in a table where the order_date was in October of 2001, you could partition your data monthly and then switch out the partition with data for an empty partition from another table (see ALTER TABLE examples).  For unpartitioned tables consider using a CTAS to write the data you want to keep in a table rather than using DELETE.  If a CTAS takes the same amount of time, it is a much safer operation to run as it has very minimal transaction logging and can be canceled quickly if needed.
+## <a name="minimize-transaction-sizes"></a>Tranzakcióméretek minimalizálása
+Az INSERT, UPDATE és DELETE utasítások tranzakcióban futnak, és amikor meghiúsulnak, vissza kell őket állítani.  A hosszú visszaállítások előfordulásának csökkentése érdekében mindig minimalizálja a tranzakciók méretét, ahol erre lehetősége van.  Ezt úgy teheti meg, hogy részekre osztja az INSERT, UPDATE és DELETE utasításokat.  Ha például olyan INSERT utasítása van, amelynek a futtatása várhatóan 1 órát vesz igénybe, ha megoldható, ossza 4, egyenként 15 percig futó részre az INSERT utasítást.  Használja ki a minimális naplózást igénylő speciális eseteket, például a CTAS, TRUNCATE, DROP TABLE vagy INSERT utasításokat a táblák kiürítéséhez, hogy csökkentse a visszaállítással kapcsolatos kockázatokat.  A visszaállítások kiküszöbölésének másik módja a csak metaadatokat használó műveletek alkalmazása, például az adatkezelés partícióváltása.  Ahelyett például, hogy DELETE utasítással törölné egy tábla összes olyan sorát, ahol az order_date 2001. október, havonta particionálhatja az adatokat, majd az adatokkal rendelkező partíciót egy másik tábla üres partíciójára cserélheti (lásd az ALTER TABLE-re vonatkozó példákat).  A nem particionált táblák esetén érdemes lehet CTAS utasítással kiírni a táblában megőrizni kívánt adatokat a DELETE használata helyett.  Noha egy CTAS utasítás ugyanannyi időt vesz igénybe, sokkal biztonságosabban futtatható művelet, mivel minimális tranzakciónaplózást igényel, és szükség esetén gyorsan megszakítható.
 
-See also [Understanding transactions][Understanding transactions], [Optimizing transactions][Optimizing transactions], [Table partitioning][Table partitioning], [TRUNCATE TABLE][TRUNCATE TABLE], [ALTER TABLE][ALTER TABLE], [Create table as select (CTAS)][Create table as select (CTAS)]
+Lásd még: [Tranzakciók megismerése][Tranzakciók megismerése], [Tranzakciók optimalizálása][Tranzakciók optimalizálása], [Tábla particionálása][Tábla particionálása], [TRUNCATE TABLE][TRUNCATE TABLE], [ALTER TABLE][ALTER TABLE], [Create table as select (CTAS)][Create table as select (CTAS)]
 
-## <a name="use-the-smallest-possible-column-size"></a>Use the smallest possible column size
-When defining your DDL, using the smallest data type which will support your data will improve query performance.  This is especially important for CHAR and VARCHAR columns.  If the longest value in a column is 25 characters, then define your column as VARCHAR(25).  Avoid defining all character columns to a large default length.  In addition, define columns as VARCHAR when that is all that is needed rather than use NVARCHAR.
+## <a name="use-the-smallest-possible-column-size"></a>A lehető legkisebb oszlopméret használata
+Ha a DDL meghatározásakor az adatokat támogató legkisebb adattípust használja, nagyban javíthatja a lekérdezés teljesítményét.  Ez különösen fontos a CHAR és VARCHAR oszlopok esetén.  Ha egy oszlop leghosszabb értéke 25 karakterből áll, akkor VARCHAR(25) típusként határozza meg az oszlopot.  Ne határozza meg az összes karakteroszlopot nagy alapértelmezett hosszúságértékkel.  NVARCHAR helyett VARCHAR típusként határozza meg az oszlopokat, amikor ez is elegendő.
 
-See also [Table overview][Table overview], [Table data types][Table data types], [CREATE TABLE][CREATE TABLE]
+Lásd még: [Táblák áttekintése][Táblák áttekintése], [tábla adattípusok][tábla adattípusok], [CREATE TABLE][CREATE TABLE]
 
-## <a name="use-temporary-heap-tables-for-transient-data"></a>Use temporary heap tables for transient data
-When you are temporarily landing data on SQL Data Warehouse, you may find that using a heap table will make the overall process faster.  If you are loading data only to stage it before running more transformations, loading the table to heap table will be much faster than loading the data to a clustered columnstore table.  In addition, loading data to a temp table will also load much faster than loading a table to permanent storage.  Temporary tables start with a "#" and are only accessible by the session which created it, so they may only work in limited scenarios.   Heap tables are defined in the WITH clause of a CREATE TABLE.  If you do use a temporary table, remember to create statistics on that temporary table too.
+## <a name="use-temporary-heap-tables-for-transient-data"></a>Ideiglenes halomtáblák használata átmeneti adatokhoz
+Amikor ideiglenesen tárol adatokat az SQL Data Warehouse-ban, a halomtábla használata a teljes folyamatot felgyorsíthatja.  Ha csak azért tölt be adatokat, hogy további átalakítások futtatása előtt előkészítse őket, sokkal gyorsabban töltheti a táblát egy halomtáblába, mint egy fürtözött oszlopcentrikus táblába.  Azzal is tovább gyorsíthatja a folyamatot, ha az adatokat állandó tároló helyett ideiglenes táblába tölti.  Az ideiglenes táblák „#” karakterrel kezdődnek, és csak az őket létrehozó munkamenet által érhetők el, így csak korlátozott esetekben használhatók.   A halomtáblákat a CREATE TABLE utasítás WITH záradékával lehet meghatározni.  Ha ideiglenes táblát használ, ne felejtsen el rajta is statisztikákat létrehozni.
 
-See also [Temporary tables][Temporary tables], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
+See also [Ideiglenes táblák][Ideiglenes táblák], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
 
-## <a name="optimize-clustered-columnstore-tables"></a>Optimize clustered columnstore tables
-Clustered columnstore indexes are one of the most efficient ways you can store your data in Azure SQL Data Warehouse.  By default, tables in SQL Data Warehouse are created as Clustered ColumnStore.  To get the best performance for queries on columnstore tables, having good segment quality is important.  When rows are written to columnstore tables under memory pressure, columnstore segment quality may suffer.  Segment quality can be measured by number of rows in a compressed Row Group.  See the [Causes of poor columnstore index quality][Causes of poor columnstore index quality] in the [Table indexes][Table indexes] article for step by step instructions on detecting and improving segment quality for clustered columnstore tables.  Because high quality columnstore segments is important, it's a good idea to use users ids which are in the medium or large resource class for loading data.  The fewer DWUs you use, the larger the resource class you will want to assign to your loading user. 
+## <a name="optimize-clustered-columnstore-tables"></a>Fürtözött oszlopcentrikus táblák optimalizálása
+A fürtözött oszlopcentrikus indexek az adatok tárolásának leghatékonyabb módjai közé tartoznak az Azure SQL Data Warehouse-ban.  Alapértelmezés szerint a táblák az SQL Data Warehouse-ban fürtözött oszlopcentrikusként jönnek létre.  Annak érdekében, hogy az oszlopcentrikus táblák a lehető legjobb teljesítménnyel fussanak, fontos a jó szegmensminőség.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  A szegmensminőség a tömörített sorcsoportokban található sorok száma alapján mérhető fel.  A [táblaindexekkel][táblaindexek] foglalkozó cikk [az oszlopcentrikus indexek gyenge minőségének okait][az oszlopcentrikus indexek gyenge minőségének okai] ismertető szakaszában részletes utasításokat talál, amelyek a fürtözött oszlopcentrikus táblák szegmensminőségének észlelésével és javításával foglalkoznak.  Mivel fontos az oszlopcentrikus szegmensek minősége, érdemes lehet olyan felhasználói azonosítókat használni, amelyek az adatbetöltéshez kapcsolódó közepes vagy nagy erőforrásosztályba tartoznak.  Minél kevesebb DWU-t használ, annál nagyobb erőforrásosztályhoz érdemes rendelni a betöltést végző felhasználót. 
 
-Since columnstore tables generally won't push data into a compressed columnstore segment until there are more than 1 million rows per table and each SQL Data Warehouse table is partitioned into 60 tables, as a rule of thumb, columnstore tables won't benefit a query unless the table has more than 60 million rows.  For table with less than 60 million rows, it may not make any sense to have a columnstore index.  It also may not hurt.  Furthermore, if you partition your data, then you will want to consider that each partition will need to have 1 million rows to benefit from a clustered columnstore index.  If a table has 100 partitions, then it will need to have at least 6 billion rows to benefit from a clustered columns store (60 distributions * 100 partitions * 1 million rows).  If your table does not have 6 billion rows in this example, either reduce the number of partitions or consider using a heap table instead.  It also may be worth experimenting to see if better performance can be gained with a heap table with secondary indexes rather than a columnstore table.  Columnstore tables do not yet support secondary indexes.
+Mivel az oszlopcentrikus táblák általában nem küldenek adatokat tömörített oszlopcentrikus szegmensbe addig, amíg nincs több mint 1 millió sor táblánként és az SQL Data Warehouse-táblák nincsenek 60 táblává particionálva, az oszlopcentrikus táblák használata nem célravezető a lekérdezéseknél, ha a tábla kevesebb, mint 60 millió sorral rendelkezik.  Előfordulhat, hogy a 60 milliónál kevesebb sorral rendelkező táblák esetén egyáltalán nem érdemes oszlopcentrikus indexet használni.  A használatuk azonban hátrányt sem jelent.  Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partícióval rendelkezik, akkor legalább 6 milliárd sorral kell rendelkeznie a fürtözött oszloptárolók előnyeinek kihasználása érdekében (60 elosztás * 100 partíció * 1 millió sor).  Ha a tábla nem rendelkezik 6 milliárd sorral, akkor csökkentse a partíciók számát, vagy fontolja meg egy halomtábla használatát.  Azzal is érdemes lehet kísérletezni, hogy jobb teljesítmény érhető-e el egy másodlagos indexekkel rendelkező halomtáblával, mint egy oszlopcentrikussal.  Az oszlopcentrikus táblák még nem támogatják a másodlagos indexeket.
 
-When querying a columnstore table, queries will run faster if you select only the columns you need.  
+Oszlopcentrikus tábla lekérdezésekor a lekérdezések gyorsabban futnak, ha csak a szükséges oszlopokat választja ki.  
 
-See also [Table indexes][Table indexes], [Columnstore indexes guide][Columnstore indexes guide], [Rebuilding columnstore indexes][Rebuilding columnstore indexes]
+Lásd még: [táblaindexek][táblaindexek], [oszlopcentrikus indexek áttekintése][oszlopcentrikus indexek áttekintése], [oszlopcentrikus indexek újjáépítése][oszlopcentrikus indexek újjáépítése]
 
-## <a name="use-larger-resource-class-to-improve-query-performance"></a>Use larger resource class to improve query performance
-SQL Data Warehouse uses resource groups as a way to allocate memory to queries.  Out of the box, all users are assigned to the small resource class which grants 100 MB of memory per distribution.  Since there are always 60 distributions and each distribution is given a minimum of 100 MB, system wide the total memory allocation is 6,000 MB, or just under 6 GB.  Certain queries, like large joins or loads to clustered columnstore tables, will benefit from larger memory allocations.  Some queries, like pure scans, will see no benefit.  On the flip side, utilizing larger resource classes impacts concurrency, so you will want to take this into consideration before moving all of your users to a large resource class.
+## <a name="use-larger-resource-class-to-improve-query-performance"></a>Nagyobb erőforrásosztály használata a lekérdezés teljesítményének javítása érdekében
+Az SQL Data Warehouse erőforráscsoportokat használ arra, hogy memóriát foglaljon le a lekérdezésekhez.  Először minden felhasználó kis erőforrásosztályhoz van rendelve, amely elosztásonként 100 MB memóriát biztosít.  Mivel mindig 60 elosztás van és mindegyik elosztás minimum 100 MB-ot kap, a rendszeren belül összesen 6000 MB, vagyis majdnem 6 GB memória van lefoglalva.  Bizonyos lekérdezéseknél, például a nagyobb egyesítéseknél vagy a fürtözött oszlopcentrikus táblákba végzett betöltésnél előnyt jelent a nagyobb memórialefoglalások használata.  Néhány lekérdezésnél, például amelyek csak vizsgálati műveleteket végeznek, ezeknek a használata nem jár további előnnyel.  A nagyobb erőforrásosztályok használata hatással van az egyidejűség mértékére. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagy erőforrásosztályba helyezné.
 
-See also [Concurrency and workload management][Concurrency and workload management]
+Lásd még: [Egyidejűség és a számítási feladatok kezelése][Egyidejűség és a számítási feladatok kezelése]
 
-## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Use Smaller Resource Class to Increase Concurrency
-If you are noticing that user queries seem to have a long delay, it could be that your users are running in larger resource classes and are consuming a lot of concurrency slots causing other queries to queue up.  To see if users queries are queued, run `SELECT * FROM sys.dm_pdw_waits` to see if any rows are returned.
+## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Kisebb erőforrásosztály használata az egyidejűség mértékének növelése érdekében
+Ha azt látja, hogy megnőtt a felhasználói lekérdezések késleltetése, előfordulhat, hogy a felhasználók nagyobb erőforrásosztályban futnak és sok egyidejű helyet foglalnak le, így más lekérdezések sorban állásra kényszerülnek.  Ha a `SELECT * FROM sys.dm_pdw_waits` parancs futtatásakor a rendszer sorokat ad vissza, láthatja, hogy a felhasználók lekérdezései sorban állnak.
 
-See also [Concurrency and workload management][Concurrency and workload management], [sys.dm_pdw_waits][sys.dm_pdw_waits]
+Lásd még: [Egyidejűség és a számítási feladatok kezelése][Egyidejűség és a számítási feladatok kezelése], [sys.dm_pdw_waits][sys.dm_pdw_waits]
 
-## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Use DMVs to monitor and optimize your queries
-SQL Data Warehouse has several DMVs which can be used to monitor query execution.  The monitoring article below walks through step-by-step instructions on how to look at the details of an executing query.  To quickly find queries in these DMVs, using the LABEL option with your queries can help.
+## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>A lekérdezések megfigyelése és optimalizálása DMV-kkel
+Az SQL Data Warehouse több DMV-vel is rendelkezik, amelyekkel a lekérdezések futtatása figyelhető meg.  A megfigyeléssel foglalkozó alábbi témakör részletes útmutatót szolgáltat ahhoz, hogyan nézheti meg egy futtatott lekérdezés részleteit.  Ha gyorsan szeretne lekérdezéseket kikeresni a DMV-kben, segíthet, ha a lekérdezéseknél használja a LABEL beállítást.
 
-See also [Monitor your workload using DMVs][Monitor your workload using DMVs], [LABEL][LABEL], [OPTION][OPTION], [sys.dm_exec_sessions][sys.dm_exec_sessions], [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests], [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps], [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], [sys.dm_pdw_dms_workers], [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN], [sys.dm_pdw_waits][sys.dm_pdw_waits]
+Lásd még: [számítási feladatok DMV-vel végzett megfigyelése][számítási feladatok DMV-vel végzett megfigyelése], [LABEL][LABEL], [OPTION][OPTION], [sys.dm_exec_sessions][sys.dm_exec_sessions], [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests], [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps], [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], [sys.dm_pdw_dms_workers], [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN], [sys.dm_pdw_waits][sys.dm_pdw_waits]
 
-## <a name="other-resources"></a>Other resources
-Also see our [Troubleshooting][Troubleshooting] article for common issues and solutions.
+## <a name="other-resources"></a>Egyéb erőforrások
+Lásd még az általános problémákat és megoldásokat tartalmazó, [hibaelhárítással][hibaelhárítás] foglalkozó témakört.
 
-If you didn't find what you were looking for in this article, try using the "Search for docs" on the left side of this page to search all of the Azure SQL Data Warehouse documents.  The [Azure SQL Data Warehouse MSDN Forum][Azure SQL Data Warehouse MSDN Forum] was create as a place for you to ask questions to other users and to the SQL Data Warehouse Product Group.  We actively monitor this forum to ensure that your questions are answered either by another user or one of us.  If you prefer to ask your questions on Stack Overflow, we also have an [Azure SQL Data Warehouse Stack Overflow Forum][Azure SQL Data Warehouse Stack Overflow Forum].
+Ha nem találta meg a cikkben, amit keresett, próbálkozzon az oldal bal oldalán található „Dokumentumok keresése” mezővel. Az itt megadott kifejezésre a rendszer az összes Azure SQL Data Warehouse-dokumentumban rákeres.  Az [Azure SQL Data Warehouse MSDN fórum][Azure SQL Data Warehouse MSDN fórum] azért jött létre, hogy kérdéseket tehessen fel más felhasználóknak és az SQL Data Warehouse termékcsoporttal foglalkozó csapatnak.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha szívesebben tesz fel kérdéseket a Stack Overflow-n, van egy [Azure SQL Data Warehouse Stack Overflow fórumunk][Azure SQL Data Warehouse Stack Overflow fórum] is.
 
-Finally, please do use the [Azure SQL Data Warehouse Feedback][Azure SQL Data Warehouse Feedback] page to make feature requests.  Adding your requests or up-voting other requests really helps us prioritize features.
+A szolgáltatással kapcsolatos kéréseit az [Azure SQL Data Warehouse visszajelzések][Azure SQL Data Warehouse visszajelzések] oldalon küldheti be.  Ha kéréseket tesz közzé vagy más kérésekre szavaz, sokat segíthet a szolgáltatások fontossági sorrendjének megállapításában.
 
 <!--Image references-->
 
 <!--Article references-->
-[Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[egyidejűséggel és a számítási feladatok kezelésével]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
-[Table overview]: ./sql-data-warehouse-tables-overview.md
-[Table data types]: ./sql-data-warehouse-tables-data-types.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexes]: ./sql-data-warehouse-tables-index.md
-[Causes of poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
-[Rebuilding columnstore indexes]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Manage table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[Guide for using PolyBase]: ./sql-data-warehouse-load-polybase-guide.md
-[Load data]: ./sql-data-warehouse-overview-load.md
-[Move data with Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
-[Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
-[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
-[Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
-[Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
-[Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[Scale compute resources]: ./sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
-[Understanding transactions]: ./sql-data-warehouse-develop-transactions.md
-[Optimizing transactions]: ./sql-data-warehouse-develop-best-practices-transactions.md
-[Troubleshooting]: ./sql-data-warehouse-troubleshoot.md
+[táblák áttekintésével]: ./sql-data-warehouse-tables-overview.md
+[tábla adattípusaival]: ./sql-data-warehouse-tables-data-types.md
+[a táblaelosztással]: ./sql-data-warehouse-tables-distribute.md
+[táblaindexekkel]: ./sql-data-warehouse-tables-index.md
+[az oszlopcentrikus indexek gyenge minőségének okait]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[oszlopcentrikus indexek újjáépítésével]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[tábla particionálásával]: ./sql-data-warehouse-tables-partition.md
+[táblastatisztikák kezelésével]: ./sql-data-warehouse-tables-statistics.md
+[ideiglenes táblákkal]: ./sql-data-warehouse-tables-temporary.md
+[Útmutató a PolyBase használatához]: ./sql-data-warehouse-load-polybase-guide.md
+[Adatok betöltése]: ./sql-data-warehouse-overview-load.md
+[Adatok betöltése az Azure Data Factoryvel]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[Adatok betöltése az Azure Data Factoryvel]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
+[Adatok betöltése a bcp használatával]: ./sql-data-warehouse-load-with-bcp.md
+[Adatok betöltése a PolyBase használatával]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[számítási feladatok DMV-vel végzett megfigyelésével]: ./sql-data-warehouse-manage-monitor.md
+[Számítási erőforrások használatának felfüggesztése]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Számítási erőforrások használatának folytatása]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
+[Számítási erőforrások méretezése]: ./sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
+[Tranzakciók megismerése]: ./sql-data-warehouse-develop-transactions.md
+[Tranzakciók optimalizálása]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[hibaelhárítással]: ./sql-data-warehouse-troubleshoot.md
 [LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
@@ -154,17 +158,17 @@ Finally, please do use the [Azure SQL Data Warehouse Feedback][Azure SQL Data Wa
 [sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
 [sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
 [sys.dm_pdw_waits]: https://msdn.microsoft.com/library/mt203893.aspx
-[Columnstore indexes guide]: https://msdn.microsoft.com/library/gg492088.aspx
+[oszlopcentrikus indexek áttekintésével]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
-[Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
-[Azure SQL Data Warehouse Feedback]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Azure SQL Data Warehouse MSDN Forum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
-[Azure SQL Data Warehouse Stack Overflow Forum]:  http://stackoverflow.com/questions/tagged/azure-sqldw
-[Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
+[a táblaelosztás kiválasztásával]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
+[Azure SQL Data Warehouse visszajelzési]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Azure SQL Data Warehouse MSDN fórum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
+[Azure SQL Data Warehouse Stack Overflow fórumunk]:  http://stackoverflow.com/questions/tagged/azure-sqldw
+[Azure SQL Data Warehouse betöltési minták és stratégiák]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Az ExpressRoute-útválasztás optimalizálása | Microsoft Docs
-description: Ez az oldal részletesen ismerteti, hogy hogyan optimalizálható az útválasztás, ha egy ügyfél több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti Microsoftot az ügyfél vállalati hálózatával.
+title: "Az ExpressRoute-útválasztás optimalizálása | Microsoft Docs"
+description: "Ez az oldal részletesen ismerteti, hogy hogyan optimalizálható az útválasztás, ha egy ügyfél több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti Microsoftot az ügyfél vállalati hálózatával."
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: fca53249-d9c3-4cff-8916-f8749386a4dd
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: charwen
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 26f0992e734f0aae96ac6e8b7040d661d5fb063c
+
 
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
@@ -24,7 +28,7 @@ Vizsgáljuk meg az útválasztási problémát egy példán keresztül. Tegyük 
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
-### <a name="solution:-use-bgp-communities"></a>Megoldás: BGP-közösségek használata
+### <a name="solution-use-bgp-communities"></a>Megoldás: BGP-közösségek használata
 Az útválasztás mindkét irodához való optimalizálásához ismernie kell, hogy melyik előtag származik az USA nyugati Azure-régiójából és melyik az USA keleti Azure-régiójából. Ezt az információt a [BGP-közösség értékeivel](expressroute-routing.md) kódoljuk. Egy egyedi BGP-közösségértéket rendeltünk hozzá mindegyik Azure-régióhoz, például a „12076:51004” előtagot az USA keleti régiójához, a „12076:51006” előtagot az USA nyugati régiójához. Most, hogy tudja, melyik előtag melyik Azure-régióból származik, konfigurálhatja, hogy melyik ExpressRoute-kapcsolatcsoportot részesíti előnyben. Mivel az útválasztási információ cseréje a BGP segítségével történik, a BGP helyi preferenciaértékével befolyásolhatja az útválasztást. A példában magasabb helyi preferenciaértéket rendelhet hozzá a 13.100.0.0/16 előtaghoz az USA nyugati régiójában, mint az USA keleti régiójában, és hasonlóképpen magasabb helyi preferenciaértéket rendelhet hozzá a 23.100.0.0/16 előtaghoz az USA keleti régiójában, mint az USA nyugati régiójában. Ez a konfiguráció biztosítja, hogy ha a Microsoft felé mindkét útvonal elérhető, a Los Angelesben lévő felhasználók az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoport segítségével csatlakoznak az USA nyugati Azure-régiójához, míg a New Yorkban lévő felhasználók az USA keleti régiójában lévő ExpressRoute-ot használják az USA keleti Azure-régiójához való csatlakozásra. Az útválasztás minkét oldalon optimalizálva van. 
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
@@ -34,7 +38,7 @@ Itt látható egy másik példa, amelyben a Microsofttól induló kapcsolatok ho
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 
-### <a name="solution:-use-as-path-prepending"></a>Megoldás: AS PATH előtag-beillesztés
+### <a name="solution-use-as-path-prepending"></a>Megoldás: AS PATH előtag-beillesztés
 A problémára két megoldás létezik. Az első, hogy egyszerűen a Los Angeles-i iroda helyszíni előtagját (177.2.0.0/31) hirdeti meg az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoporton, és a New York-i iroda helyszíni előtagját (177.2.0.2/31) hirdeti meg az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoporton. Ennek eredményeképpen a Microsoftnak csak egy útvonal áll rendelkezésére, amelyen az egyes irodákhoz csatlakozhat. Nincs félreérthetőség, és az útválasztás optimalizálva van. Ezzel a kialakítással kell kidolgoznia egy feladatátvételi stratégiát. Abban az esetben, ha a Microsoft felé az ExpressRoute-on keresztül haladó útvonal megszakad, biztosítania kell, hogy az Exchange Online továbbra is csatlakozni tudjon a helyszíni kiszolgálókhoz. 
 
 A második megoldás az, hogy továbbra is meghirdeti mindkét előtagot mindkét ExpressRoute-kapcsolatcsoporton, és emellett egy tippet ad arról, hogy melyik előtag melyik irodához van közelebb. Mivel támogatjuk a BGP AS PATH előtag-beillesztést, konfigurálhatja az előtaghoz tartozó AS PATH előtag-beillesztést, és befolyásolhatja az útválasztást. Ebben a példában meghosszabbíthatja az USA keleti régiójában az 172.2.0.0/31 előtag AS PATH értékét, aminek hatására az USA nyugati régiójában lévő ExpressRoute-kapcsolatcsoportot fogjuk előnyben részesíteni az ehhez az előtaghoz irányuló forgalom esetében (mivel a hálózatunk úgy fogja látni, hogy az előtaghoz tartozó útvonal rövidebb a nyugati parton). Hasonlóképpen meghosszabbíthatja az USA nyugati régiójában az 172.2.0.2/31 előtag AS PATH értékét, aminek hatására az USA keleti régiójában lévő ExpressRoute-kapcsolatcsoportot fogjuk előnyben részesíteni. Az útválasztás mindkét iroda esetében optimalizálva van. Ezzel a kialakítással, ha az egyik ExpressRoute-kör megszakad, az Exchange Online továbbra is elérheti az Ön hálózatát a másik ExpressRoute-kapcsolatcsoporton és a WAN hálózaton keresztül. 
@@ -51,6 +55,9 @@ A második megoldás az, hogy továbbra is meghirdeti mindkét előtagot mindké
 > 
 > 
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

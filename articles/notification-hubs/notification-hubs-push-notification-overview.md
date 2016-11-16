@@ -1,23 +1,27 @@
 ---
 title: Azure Notification Hubs
-description: Tudja meg, hogyan használhatók a leküldéses értesítések az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával.
-author: wesmc7777
+description: "Tudja meg, hogyan használhatók a leküldéses értesítések az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával."
+author: ysxu
 manager: erikre
-editor: ''
+editor: 
 services: notification-hubs
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: fcfb0ce8-0e19-4fa8-b777-6b9f9cdda178
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: hero-article
 ms.date: 08/25/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 38735f7c0154388e8698edc5bac931c5a079a865
+
 
 ---
-# Azure Notification Hubs
-## Áttekintés
+# <a name="azure-notification-hubs"></a>Azure Notification Hubs
+## <a name="overview"></a>Áttekintés
 Az Azure Notification Hubs egy egyszerűen használható, többplatformos, kibővített leküldésesértesítés-infrastruktúrát biztosít, amellyel mobil leküldéses értesítéseket küldhet akármilyen háttérrendszerből (a felhőben, vagy a helyszínen) bármilyen mobilplatformra.
 
 A Notification Hubs használatával egyszerűen küldhet paltformfüggetlen, testreszabott leküldéses értesítéseket, absztrakt módon megjelenítve a különböző Platform Notification System (PNS) rendszerek részleteit. Egyetlen API-hívással megcélozhat egyes felhasználókat vagy akár felhasználók millióit tartalmazó teljes célközönség-szegmenseket, az összes eszközön.
@@ -30,7 +34,7 @@ A Notification Hubs szolgáltatást vállalati és végfelhasználói célokra i
 * Felhasználók értesítése olyan vállalati eseményekről, mint az új üzenetek, e-mailek, vagy új értékesítési lehetőségek.
 * Egyszer használatos jelszavak küldése többtényezős hitelesítéshez.
 
-## Mik azok a leküldéses értesítések?
+## <a name="what-are-push-notifications"></a>Mik azok a leküldéses értesítések?
 Az okostelefonok és táblagépek képesek „értesíteni” a felhasználókat egyes eseményekről. Ezek az értesítések több formában jelenhetnek meg.
 
 A Windows Áruház és a Windows Phone alkalmazásaiban az értesítések *bejelentések* formájában jelennek meg: megjelenik egy nem kizárólagos ablak, és hangjelzéssel együtt jelzi az új értesítést. Az egyéb támogatott értesítési típusok lehetnek a *csempe*, *formázatlan* és a *jelvény* típusú értesítések. További információk a Windows-eszközök által támogatott értesítéstípusokról: [Tiles, Badges, and Notifications](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx) (Csempék, jelvények és értesítések).
@@ -45,7 +49,7 @@ Néhány konkrét példa a mobilmarketing-forgatókönyvekre:
 2. Egy felhasználó bejelentéssel történő riasztása, hogy egy munkaelem lett hozzárendelve a felhasználóhoz egy munkafolyamat-alapú vállalati alkalmazásban.
 3. Egy jelvény megjelenítése az aktuális értékesítési érdeklődők számával egy CRM alkalmazásban (például Microsoft Dynamics CRM).
 
-## A leküldéses értesítések működése
+## <a name="how-push-notifications-work"></a>A leküldéses értesítések működése
 A leküldéses értesítéseket a rendszerek platformspecifikus, *Platform Notification System* (PNS) nevű infrastruktúrákon keresztül küldik el. A PNS-ek lecsupaszított funkciókkal rendelkeznek (tehát nem támogatják a szórásos küldést és a testreszabást), és nincs közös felületük. Például egy Windows Áruházbeli alkalmazásnak szánt értesítés elküldéséhez a fejlesztőnek kapcsolatba kell lépnie a WNS-sel (Windows értesítési szolgáltatás). Egy iOS-eszköznek szánt értesítés elküldéséhez pedig ugyanazon fejlesztőnek kapcsolatba kell lépnie az APNS-sel (Apple Push Notification szolgáltatás), és másodszor is el kell küldenie az üzenetet. Az Azure Notification Hubs egy közös felület biztosításával, és más, a platformokon átívelő leküldéses értesítések támogatásához használható funkciókkal segít.
 
 Ugyanakkor magas szinten minden platformos értesítési rendszere ugyanazt a sablont követi:
@@ -57,7 +61,7 @@ Ugyanakkor magas szinten minden platformos értesítési rendszere ugyanazt a sa
 
 ![][0]
 
-## A leküldéses értesítések kihívásai
+## <a name="the-challenges-of-push-notifications"></a>A leküldéses értesítések kihívásai
 Habár ezek a rendszerek nagyon hatékonyak, számos teendőt hagynak az alkalmazásfejlesztőre még a gyakori leküldéses értesítési forgatókönyvek, például a szórásos küldés vagy a leküldéses értesítések szegmentált felhasználóknak való küldése megvalósítása esetén is.
 
 A leküldéses értesítések küldése a mobilalkalmazások számára elérhető felhőszolgáltatások egyik leginkább kért funkciója. Ennek az az oka, hogy a működésükhöz szükséges infrastruktúra elég bonyolult, és általában nem kapcsolódik az alkalmazás fő üzleti logikájához. Néhány példa az igény szerinti leküldéses infrastruktúrák felépítésének kihívásaira:
@@ -69,7 +73,7 @@ A leküldéses értesítések küldése a mobilalkalmazások számára elérhet�
   * A legtöbb PNS nem támogatja a több eszközre küldött szórásos küldést. Ez azt jelenti, hogy egy eszközök millióira való szórásos küldés a PNS-ekre küldött hívások millióit eredményezi. A kérelmek méretezésének képessége nem magától értetődő, mert az alkalmazásfejlesztők általában szeretnék alacsonyan tartani a teljes késést. Például az üzenetet megkapó utolsó eszköznek nem szabad az értesítést 30 perccel az értesítés elküldése után megkapnia, mert ez sok esetben értelmetlenné tenné a leküldéses értesítéseket.
 * **Útválasztás.** A PNS-ek módot biztosítanak egy üzenet elküldéséhez egy eszközre. A legtöbb alkalmazásban azonban az értesítések célpontjai a felhasználók és/vagy az érdekelt csoportok (például minden alkalmazott, ki egy adott ügyfélfiókhoz van hozzárendelve). Így aztán ahhoz, hogy az értesítéseket a megfelelő eszközökhöz küldjék, az alkalmazások hátterének tartalmaznia kell egy beállításjegyzéket, amely hozzácsatolja az érdekelt csoportokat az eszközök tokenjeihez. Ez a terhelés hozzáadódik az alkalmazások piacra kerülési idejéhez és fenntartási költségeihez.
 
-## Miért érdemes a Notification Hubsot használni?
+## <a name="why-use-notification-hubs"></a>Miért érdemes a Notification Hubsot használni?
 A Notification Hubs megszünteti a bonyolultságot: nem kell megküzdeni a leküldéses értesítések kihívásaival. Ehelyett használhat egy értesítési központot. A Notification Hubs egy multiplatformos, kibővített leküldéses értesítési infrastruktúrát használ, és jelentősen lecsökkenti a leküldéshez tartozó kódot, amely az alkalmazás hátterében fut. A Notification Hubs a leküldéses infrastruktúrák minden funkcióját megvalósítja . Az eszközök csak a PNS-leírók regisztrálásáért, a háttér pedig a platformfüggetlen üzenetek felhasználóknak vagy érdekcsoportoknak való elküldéséért felelős, ahogy a következő ábrán is látszik:
 
 ![][1]
@@ -94,7 +98,7 @@ A Notification Hubs egy használatra kész leküldéses értesítési infrastruk
 * **Biztonság**: közös hozzáférésű jogosultságkód (SAS) vagy összevont hitelesítés.
 * **Részletes telemetria**: A portálon és szoftveresen is elérhető.
 
-## App Service Mobile Apps-integráció
+## <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps-integráció
 A különböző Azure-szolgáltatásokon elérhető zökkenőmentes és egységes élmény érdekében az [App Service Mobile Apps] a leküldéses értesítések beépített támogatását nyújtja a Notification Hubs használatával. Az [App Service Mobile Apps] jól skálázható, világszerte elérhető, vállalati fejlesztők és rendszerintegrátorok számára készült mobilalkalmazás-fejlesztő platform, amely számos lehetőséget kínál a mobilos fejlesztésekhez.
 
 A Mobile Apps-fejlesztők a következő munkafolyamatoknál használhatják a Notification Hubs szolgáltatást:
@@ -114,7 +118,7 @@ A Mobile Apps-fejlesztők a következő munkafolyamatoknál használhatják a No
 * **Rugalmasság.** A fejlesztők mindig választhatják a Notification Hubs közvetlen használatát, még az integráció megvalósítása után is.
 * **Integrált felhasználói felület az [Azure Portal].** A leküldési funkciót vizuálisan megjelenik a Mobile Appsban, és a fejlesztők könnyedén használhatják a kapcsolódó értesítési központtal a Mobile Appson keresztül.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A Notification Hubsról a következő témakörökben talál további információt:
 
 * **[Hogyan használják az ügyfelek a Notification Hubs szolgáltatást]**
@@ -146,6 +150,6 @@ A megfelelő .NET által felügyelt API-hivatkozások a leküldéses értesíté
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

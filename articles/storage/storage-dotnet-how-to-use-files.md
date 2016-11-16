@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással | Microsoft Docs
-description: A felhőben tárolhatja a fájljait az Azure File Storage használatával, valamint a felhőalapú fájlmegosztását Azure virtuális gépről vagy Windowst futtató helyszíni alkalmazásokból csatlakoztathatja.
+title: "Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással | Microsoft Docs"
+description: "A felhőben tárolhatja a fájljait az Azure File Storage használatával, valamint a felhőalapú fájlmegosztását Azure virtuális gépről vagy Windowst futtató helyszíni alkalmazásokból csatlakoztathatja."
 services: storage
 documentationcenter: .net
 author: mine-msft
 manager: aungoo
 editor: tysonn
-
+ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: minet
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
+
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással)
@@ -31,10 +35,10 @@ További részletekért a File Storage méretezési és teljesítménycéljaival
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
-## <a name="video:-using-azure-file-storage-with-windows"></a>Videó: Az Azure File storage használata Windows rendszeren
+## <a name="video-using-azure-file-storage-with-windows"></a>Videó: Az Azure File storage használata Windows rendszeren
 Ez a videó azt mutatja be, hogyan hozhat létre Azure fájlmegosztásokat Windows rendszeren.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEÓ: https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -128,14 +132,18 @@ Hozza létre a tárfiók környezetét. A környezet magában foglalja a tárfi�
 
 Az alábbi példában cserélje ki a `storage-account-name` és a `storage-account-key` elemet a tárfiók nevére és kulcsára.
 
+```powershell
     # create a context for account and key
     $ctx=New-AzureStorageContext storage-account-name storage-account-key
+```
 
 ### <a name="create-a-new-file-share"></a>Új fájlmegosztás létrehozása
 Ezután hozzon létre egy `logs` nevű új megosztást.
 
+```powershell
     # create a new share
     $s = New-AzureStorageShare logs -Context $ctx
+```
 
 Így létrejött egy fájlmegosztás a fájltárolóban. A következő lépésben hozzá kell adnia egy könyvtárat és egy fájlt.
 
@@ -147,31 +155,39 @@ Ezután hozzon létre egy `logs` nevű új megosztást.
 ### <a name="create-a-directory-in-the-file-share"></a>Könyvtár létrehozása a fájlmegosztásban
 Hozzon létre a megosztásban egy könyvtárat. Az alábbi példában szereplő könyvtár neve `CustomLogs`.
 
+```powershell
     # create a directory in the share
     New-AzureStorageDirectory -Share $s -Path CustomLogs
+```
 
 ### <a name="upload-a-local-file-to-the-directory"></a>Helyi fájl feltöltése a könyvtárba
 Töltsön fel egy helyi fájlt a könyvtárba. Az alábbi példa a következő helyről tölt fel egy fájlt: `C:\temp\Log1.txt`. A fájl elérési útját úgy szerkessze, hogy egy, a helyi gépen található érvényes fájlra mutasson.
 
+```powershell
     # upload a local file to the new directory
     Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
+```
 
 ### <a name="list-the-files-in-the-directory"></a>A könyvtárban található fájlok listázása
 Ha látni szeretné a fájlt a könyvtárban, listázhatja a könyvtárban található összes fájlt. A parancs visszaadja a CustomLogs könyvtárban található összes fájlt és alkönyvtárt (ha van alkönyvtár).
 
+```powershell
     # list files in the new directory
     Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
+```
 
 A Get-AzureStorageFile parancs bármilyen átadott könyvtárobjektum fájljait és könyvtárait listázza. A „Get-AzureStorageFile -Share $s” parancs a gyökérkönyvtár fájljait és könyvtárait listázza. Ha egy alkönyvtár fájljait szeretné listázni, meg az alkönyvtárat kell megadnia a Get-AzureStorageFile parancsnak. Így a parancs függőleges vonalig tartó első része visszaadja a CustomLogs alkönyvtár egy könyvtárpéldányát, amelyet aztán átad a Get-AzureStorageFile parancsnak, ami visszaadja a CustomLogs könyvtárban található fájlok és könyvtárak listáját.
 
 ### <a name="copy-files"></a>Fájlok másolása
 Az Azure PowerShell 0.9.7-es verziójától kezdve másolhat egy fájlt egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Alább bemutatjuk, hogyan hajthatja végre ezeket a másolási műveleteket a PowerShell-parancsmagokkal.
 
+```powershell
     # copy a file to the new directory
     Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
 
     # copy a blob to a file directory
     Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
+```
 
 ## <a name="mount-the-file-share"></a>A fájlmegosztás csatlakoztatása
 Az SMB 3.0 támogatásával a File Storage mostantól támogatja a titkosítást és az SMB 3.0-ügyfelek állandó leíróit. A titkosítás támogatása azt jelenti, hogy az SMB 3.0-ügyfelek bárhonnan csatlakoztathatnak fájlmegosztást, beleértve az alábbiakat:
@@ -188,7 +204,7 @@ Ha egy ügyfél hozzáfér a File Storage-hoz, a használt SMB verziója az oper
 | Windows Server 2008 R2 |SMB 2.1 |
 | Windows 8 |SMB 3.0 |
 | Windows Server 2012 |SMB 3.0 |
-| Windows Server 2012 R2 |SMB 3.0 |
+| Windows Server 2012 R2 |SMB 3.0 |
 | Windows 10 |SMB 3.0 |
 
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató Azure virtuális gépről
@@ -226,7 +242,7 @@ Mostantól ugyanúgy használhatja a File Storage-megosztást a virtuális gépr
 
 A fájlmegosztást csatlakoztathatja egy Azure felhőszolgáltatást futtató szerepkörről is, ha távolról csatlakozik a szerepkörhöz.
 
-### <a name="mount-the-file-share-from-an-on-premises-client-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató helyszíni ügyfélhez
+### <a name="mount-the-file-share-from-an-onpremises-client-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató helyszíni ügyfélhez
 Ha helyszíni ügyfélről szeretne fájlmegosztást csatlakoztatni, először hajtsa végre az alábbi lépéseket:
 
 * Telepítsen egy SMB 3.0-t támogató Windows-verziót. A Windows az SMB 3.0 titkosítást fogja használni, hogy biztonságosan továbbítsa az adatokat a helyszíni ügyfél és a felhőben található Azure fájlmegosztás között.
@@ -253,7 +269,7 @@ Az Azure Configuration Manager csomagjának telepítéséhez kattintson a jobb g
 
 Az Azure Configuration Manager használata nem kötelező. Használhat egy API-t is, például a .NET-keretrendszer [ConfigurationManager osztályát](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
 
-### <a name="save-your-storage-account-credentials-to-the-app.config-file"></a>A tárfiók hitelesítő adatainak mentése az app.config fájlba
+### <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>A tárfiók hitelesítő adatainak mentése az app.config fájlba
 Mentse el a hitelesítő adatokat a projekt app.config fájljába. Szerkessze az app.config fájlt úgy, hogy hasonló legyen az alábbi példában bemutatotthoz. Ehhez cserélje ki a `myaccount` elemet a tárfiók nevére, a `mykey` elemet pedig a tárfiók kulcsára.
 
     <?xml version="1.0" encoding="utf-8" ?>
@@ -275,16 +291,19 @@ Mentse el a hitelesítő adatokat a projekt app.config fájljába. Szerkessze az
 ### <a name="add-namespace-declarations"></a>Névtér-deklarációk hozzáadása
 Nyissa meg a `program.cs` fájlt a Megoldáskezelőből, és adja hozzá az alábbi névtér-deklarációkat a fájl elejéhez.
 
+```csharp
     using Microsoft.Azure; // Namespace for Azure Configuration Manager
     using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage
     using Microsoft.WindowsAzure.Storage.File; // Namespace for File storage
+```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="access-the-file-share-programmatically"></a>A fájlmegosztás szoftveres elérése
 Adja hozzá az alábbi kódot a `Main()` módszerhez (a fent látható kód után) a kapcsolati karakterlánc lekéréséhez. Ez a kód lekér egy hivatkozást a korábban létrehozott fájlra, és eredményül megjeleníti annak tartalmát a konzolablakban.
 
+```csharp
     // Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
@@ -314,6 +333,7 @@ Adja hozzá az alábbi kódot a `Main()` módszerhez (a fent látható kód utá
             }
         }
     }
+```
 
 A kimenet megtekintéséhez futtassa a konzolalkalmazást.
 
@@ -324,6 +344,7 @@ Ha beállít egy kvótát egy megosztáshoz, korlátozhatja a megosztáson táro
 
 Az alábbi példa bemutatja, hogyan ellenőrizheti egy megosztás aktuális kihasználását, és hogyan adhat meg hozzá kvótát.
 
+```csharp
     // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
@@ -351,12 +372,14 @@ Az alábbi példa bemutatja, hogyan ellenőrizheti egy megosztás aktuális kiha
         share.FetchAttributes();
         Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
     }
+```
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Közös hozzáférésű jogosultságkód létrehozása egy fájlhoz vagy fájlmegosztáshoz
 Az Azure Storage ügyféloldali kódtár 5.x-es verziójától kezdve létrehozhat egy közös hozzáférésű jogosultságkódot (shared access signature, SAS) egy fájlmegosztáshoz vagy fájlhoz. Létrehozhat egy megosztott elérési házirendet is egy fájlmegosztáshoz, hogy kezelni tudja a közös hozzáférésű jogosultságkódokat. Azért érdemes létrehozni megosztott elérési házirendet, mert annak az eszközeivel vissza lehet hívni az SAS-t, amennyiben sérülne a biztonsága.
 
 Az alábbi példa létrehoz egy megosztott elérési házirendet egy megosztáson, majd felhasználja a házirendet egy, a megosztásban található fájlhoz tartozó SAS korlátozására.
 
+```csharp
     // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
@@ -398,6 +421,7 @@ Az alábbi példa létrehoz egy megosztott elérési házirendet egy megosztáso
         fileSas.UploadText("This write operation is authenticated via SAS.");
         Console.WriteLine(fileSas.DownloadText());
     }
+```
 
 További információk a közös hozzáférésű jogosultságkód létrehozásáról és használatáról: [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS)) és [Create and use a SAS with Blob storage](storage-dotnet-shared-access-signature-part-2.md) (SAS létrehozása a Blob Storage segítségével).
 
@@ -415,6 +439,7 @@ Az AzCopy segítségével is átmásolhat egy fájlt egy másikba, egy blobot eg
 
 Az alábbi példa megosztáson belül másol át egy fájlt egy másikba. Mivel ez a másolási művelet tárfiókon belül másolja a fájlokat, a másoláshoz a megosztott kulcsos hitelesítést is használhatja.
 
+```csharp
     // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
@@ -454,12 +479,13 @@ Az alábbi példa megosztáson belül másol át egy fájlt egy másikba. Mivel 
             }
         }
     }
-
+```
 
 **Fájl másolása blobba**
 
 Az alábbi példa létrehoz egy fájlt, és átmásolja egy ugyanabban a tárfiókban található blobba. A példa létrehoz egy SAS-t a forrásfájlhoz, amelynek a segítségével a szolgáltatás hitelesíti a forrásfájl hozzáférését a másolási művelet alatt.
 
+```csharp
     // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
@@ -501,6 +527,7 @@ Az alábbi példa létrehoz egy fájlt, és átmásolja egy ugyanabban a tárfi�
     // Write the contents of the file to the console window.
     Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
     Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
+```
 
 Ugyanígy másolhat blobokat fájlokba. Ha a forrásobjektum egy blob, hozzon létre egy SAS-t, amely hitelesíti a blobhoz való hozzáférést a másolási művelet során.
 
@@ -513,11 +540,14 @@ Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készü
 
 Először adja hozzá az alábbi `using` utasításokat a program.cs fájlhoz a fent hozzáadottak kiegészítéseként:
 
+```csharp
     using Microsoft.WindowsAzure.Storage.File.Protocol;
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+```
 
 Ne feledje, hogy amíg a Blob, Table és Queue Storage a megosztott `ServiceProperties` típust használja a `Microsoft.WindowsAzure.Storage.Shared.Protocol` névtérben, a File Storage a saját típusát, a `FileServiceProperties` típust használja a `Microsoft.WindowsAzure.Storage.File.Protocol` névtérben. Mindkét névtérre hivatkozni kell a kódban, hogy az alábbi kód fordítható legyen.
 
+```csharp
     // Parse your storage connection string from your application's configuration file.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
             Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
@@ -556,7 +586,9 @@ Ne feledje, hogy amíg a Blob, Table és Queue Storage a megosztott `ServiceProp
     Console.WriteLine(serviceProperties.MinuteMetrics.MetricsLevel);
     Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
     Console.WriteLine(serviceProperties.MinuteMetrics.Version);
+```
 
+Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-file-connection-problems.md) átfogó hibaelhárítási útmutatóját. 
 
 ## <a name="file-storage-faq"></a>A File Storage-ra vonatkozó gyakran ismételt kérdések
 1. **Támogatja a File Storage az Active Directory-alapú hitelesítést?**
@@ -603,6 +635,9 @@ Ne feledje, hogy amíg a Blob, Table és Queue Storage a megosztott `ServiceProp
 14. **Az Azure File Storage használata az IBM MQ-val**
     
     Az IBM kiadott egy útmutató dokumentumot az IBM MQ ügyfelei számára, amely segítséget nyújt az Azure File Storage konfigurálásához az általuk használt szolgáltatással. További információk: [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service) (Az IBM MQ többpéldányos üzenetsor-kezelőjének beállítása a Microsoft Azure File szolgáltatással).
+15. **Azure-fájlok tárolási hibáinak elhárítása**
+    
+    Olvassa el az [Azure fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.               
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
@@ -626,6 +661,9 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 * [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

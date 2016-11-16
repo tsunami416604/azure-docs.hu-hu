@@ -1,12 +1,12 @@
 ---
-title: Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával
-description: Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.Android-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel.
+title: "Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával"
+description: "Ismerje meg, hogyan használható az Azure Mobile Engagement a Xamarin.Android-alkalmazásokhoz kapcsolódó elemzésekkel és leküldéses értesítésekkel."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
-manager: ''
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: fb68cf98-08a2-41b5-8e59-757469de3fe7
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/16/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3580bf0712d704e46e785aa95ef0ab6b54f0ba10
+
 
 ---
-# Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával
+# <a name="get-started-with-azure-mobile-engagement-for-xamarinandroid-apps"></a>Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazás használatának megértéséhez, valamint leküldéses értesítések Xamarin.Android-alkalmazásba történő küldéséhez a szegmentált felhasználók számára.
@@ -32,15 +36,15 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-## <a id="setup-azme"></a>A Mobile Engagement beállítása az Android-alkalmazáshoz
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-android-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az Android-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. 
 
 Létre fogunk hozni egy alapszintű alkalmazást a Xamarin Studio segítségével az integráció bemutatásához.
 
-### Új Xamarin.Android-projekt létrehozása
+### <a name="create-a-new-xamarinandroid-project"></a>Új Xamarin.Android-projekt létrehozása
 1. Indítsa el a **Xamarin Studiót**, lépjen a **File** -> **New** -> **Solution** (Fájl > Új > Megoldás) lehetőségre. 
    
     ![][1]
@@ -56,7 +60,7 @@ Létre fogunk hozni egy alapszintű alkalmazást a Xamarin Studio segítségéve
 
 A Xamarin Studio létrehozza az alkalmazást, amelybe integrálni fogjuk a Mobile Engagementet. 
 
-### Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 1. Kattintson a jobb gombbal a **Packages** mappára a Solution (Megoldás) ablakban, és válassza az **Add Packages...** (Csomagok hozzáadása...) lehetőséget.
    
     ![][5]
@@ -73,7 +77,7 @@ A Xamarin Studio létrehozza az alkalmazást, amelybe integrálni fogjuk a Mobil
         engagementConfiguration.ConnectionString = "YourConnectionStringFromAzurePortal";
         EngagementAgent.Init(engagementConfiguration);
 
-### Engedélyek és szolgáltatásdeklaráció hozzáadása
+### <a name="add-permissions-and-a-service-declaration"></a>Engedélyek és szolgáltatásdeklaráció hozzáadása
 1. Nyissa meg a **Manifest.xml** fájlt a Properties mappában. Válassza ki a Source (Forrás) lapot az XML-forrás közvetlen frissítéséhez.
 2. Adja hozzá a projekt Manifest.xml fájljához (amely a **Properties** mappában található) a következő engedélyeket, közvetlenül az `<application>` címke előtt vagy után:
    
@@ -86,13 +90,13 @@ A Xamarin Studio létrehozza az alkalmazást, amelybe integrálni fogjuk a Mobil
 3. Adja hozzá a következőt az `<application>` és az `</application>` címke között az ügynökszolgáltatás deklarálásához:
    
         <service
-            android:name="com.microsoft.azure.engagement.service.EngagementService"
-            android:exported="false"
-            android:label="<Your application name>"
-            android:process=":Engagement"/>
+             android:name="com.microsoft.azure.engagement.service.EngagementService"
+             android:exported="false"
+             android:label="<Your application name>"
+             android:process=":Engagement"/>
 4. A beillesztett kódban adja meg a megfelelő `"<Your application name>"` nevet a label értékeként. A név a **Settings** (Beállítások) menüben jelenik meg, amelyben a felhasználók megtekinthetik az eszközön futó szolgáltatásokat. A label értékeként megadhatja például a „Szolgáltatás” szót.
 
-### Képernyő küldése a Mobile Engagement számára
+### <a name="send-a-screen-to-mobile-engagement"></a>Képernyő küldése a Mobile Engagement számára
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt el kell küldenie a Mobile Engagement háttérrendszere számára. Ennek elvégzéséhez biztosítsa, hogy a `MainActivity` az `EngagementActivity` elemtől örököl az `Activity` helyett.
 
     public class MainActivity : EngagementActivity
@@ -111,10 +115,10 @@ Ha az `EngagementActivity` elemtől nem lehet örökölni, akkor hozzá kell adn
                 base.OnPause();            
             }
 
-## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
@@ -134,6 +138,6 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

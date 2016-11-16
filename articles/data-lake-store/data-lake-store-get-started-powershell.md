@@ -1,12 +1,12 @@
 ---
-title: Bevezetés a Data Lake Store használatába | Microsoft Docs
-description: Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure PowerShell használatával
+title: "Bevezetés a Data Lake Store használatába | Microsoft Docs"
+description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure PowerShell használatával"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: bf85f369-f9aa-4ca1-9ae7-e03a78eb7290
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: hero-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0c70eff85416b6b41eb455edc430a66b588dec41
+
 
 ---
-# Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
+# <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -30,16 +34,16 @@ ms.author: nitinme
 
 Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure PowerShell használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
 
-## Authentication
+## <a name="authentication"></a>Authentication
 Ez a cikk egy egyszerűbb, a Data Lake Store-ral történő hitelesítési módszert használ, ahol meg kell adnia az Azure-fiókjához tartozó hitelesítő adatokat. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
-## Azure Data Lake Store-fiók létrehozása
+## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 1. Nyisson meg egy új Windows PowerShell ablakot, és adja meg az alábbi kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Store-szolgáltató regisztrálásához. Győződjön meg arról, hogy az előfizetés rendszergazdájaként/tulajdonosaként jelentkezik be, amikor a rendszer erre kéri:
    
         # Log in to your Azure account
@@ -71,7 +75,7 @@ Ez a cikk egy egyszerűbb, a Data Lake Store-ral történő hitelesítési móds
    
     A kimenet értéke **True** (Igaz) kell, hogy legyen.
 
-## Könyvtárstruktúrák létrehozása az Azure Data Lake Store-ban
+## <a name="create-directory-structures-in-your-azure-data-lake-store"></a>Könyvtárstruktúrák létrehozása az Azure Data Lake Store-ban
 Az Azure Data Lake Store-fiókjában könyvtárakat hozhat létre az adatok kezelésére és tárolására.
 
 1. Adjon meg egy gyökérkönyvtárat.
@@ -88,15 +92,15 @@ Az Azure Data Lake Store-fiókjában könyvtárakat hozhat létre az adatok keze
    
     ![A könyvtár ellenőrzése](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Verify Directory")
 
-## Fájlok feltöltése az Azure Data Lake Store-ba
+## <a name="upload-data-to-your-azure-data-lake-store"></a>Fájlok feltöltése az Azure Data Lake Store-ba
 Az adatait feltöltheti közvetlenül a Data Lake Store-ba gyökérszinten, vagy a fiókon belül létrehozott könyvtárba. Az alábbi részletek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott könyvtárba (**mynewdirectory**).
 
-Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).\.
+Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata)\.
 
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
-## A Data Lake Store-ban lévő adatok átnevezése, letöltése és törlése
+## <a name="rename-download-and-delete-data-from-your-data-lake-store"></a>A Data Lake Store-ban lévő adatok átnevezése, letöltése és törlése
 Fájlok átnevezéséhez használja a következő parancsot:
 
     Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
@@ -113,18 +117,21 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert az elem törléséhez. Ha 
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
-## Az Azure Data Lake Store-fiók törlése
+## <a name="delete-your-azure-data-lake-store-account"></a>Az Azure Data Lake Store-fiók törlése
 Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
-## Következő lépések
-* [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
-* [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
+## <a name="next-steps"></a>Következő lépések
+* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,27 +1,31 @@
 ---
-title: Azure Active Directory – gyakori kérdések | Microsoft Docs
-description: Az Azure Active Directoryval kapcsolatos gyakori kérdések az Azure és az Azure Active Directory elérésével, a jelszókezeléssel és az alkalmazások elérésével kapcsolatos kérdésekre ad választ.
+title: "Azure Active Directory – gyakori kérdések | Microsoft Docs"
+description: "Az Azure Active Directoryval kapcsolatos gyakori kérdések az Azure és az Azure Active Directory elérésével, a jelszókezeléssel és az alkalmazások elérésével kapcsolatos kérdésekre ad választ."
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2016
+ms.date: 10/31/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0f7070d9d691e2471978a2986025ebfdafbeaa7c
+
 
 ---
-# Azure Active Directory – gyakori kérdések
+# <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
 
 További részletekért lásd: [Mi az az Azure Active Directory?](active-directory-whatis.md).
 
-## Az Azure és az Azure Active Directory elérése
+## <a name="accessing-azure-and-azure-active-directory"></a>Az Azure és az Azure Active Directory elérése
 **K: Miért kapok „Nem találhatók előfizetések” üzenetet, amikor megpróbálom elérni az Azure AD-t a klasszikus Azure portálon (https://manage.windowsazure.com)?**
 
 **V:** A klasszikus Azure portál eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha fizetős Office 365- vagy Azure AD-fiókkal rendelkezik, látogasson el a [http://aka.ms/accessAAD](http://aka.ms/accessAAD) címre egy egyszeri aktiváláshoz. Egyébként aktiválnia kell egy teljes[Azure-próbaverziót](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést. 
@@ -41,7 +45,7 @@ Valójában a Microsoft Online-szolgáltatásokhoz Ön által engedélyezett ös
 Ezenkívül a fizetős Azure AD-szolgáltatások (pl. az alapszintű, prémium, EMS Azure AD stb.) átfogó vállalati méretezéskezelési és biztonsági megoldásokkal egészítenek ki más online szolgáltatásokat, például az Office 365-öt és a Microsoft Azure-t.
 
 - - -
-## Első lépések a Hybrid Azure AD-ben
+## <a name="getting-started-with-hybrid-azure-ad"></a>Első lépések a Hybrid Azure AD-ben
 **K: Hogyan csatlakoztathatom a helyszíni címtáramat az Azure AD-hez?**
 
 **V:** A helyszíni címtárát az **Azure AD Connect** használatával csatlakoztathatja az Azure AD-hez. 
@@ -72,7 +76,7 @@ További információkért lásd: [Bevezetés a Hozzáférési panel használat�
 További részletekért lásd: [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](active-directory-aadconnect-health.md).  
 
 - - -
-## Jelszókezelés
+## <a name="password-management"></a>Jelszókezelés
 **K: Használhatom az Azure AD jelszóvisszaírást jelszó-szinkronizálás nélkül? (Avagy: az Azure AD SSPR-t jelszóvisszaírás nélkül szeretném használni, de nem szeretném a jelszavaimat a felhőben tárolni.)**
 
 **V:** Nem kell szinkronizálnia az AD-jelszavakat az Azure AD-vel a visszaírás engedélyezéséhez. Összevont környezetben az Azure AD SSO a helyszíni címtárra támaszkodik a felhasználó hitelesítéséhez. Ehhez a forgatókönyvhöz nem kell nyomon követni a helyszíni jelszót az Azure AD-ben.
@@ -92,7 +96,7 @@ További részletekért lásd: [A jelszókezelés első lépései](active-direct
 A jelszavakkal kapcsolatos kérdésekre adott további válaszokért lásd: [Jelszókezelés – gyakori kérdések](active-directory-passwords-faq.md).
 
 - - -
-## Alkalmazás-hozzáférés
+## <a name="application-access"></a>Alkalmazás-hozzáférés
 **K: Hol találom az Azure Ad-vel előre integrált alkalmazások és azok képességeinek listáját?**
 
 **V:** Az Azure AD a Microsoft vállalat, az alkalmazásszolgáltatók és a partnerek több mint 2600 előre integrált alkalmazásával rendelkezik. Mindegyik előre integrált alkalmazás támogatja az egyszeri bejelentkezést. Az egyszeri bejelentkezéssel a szervezeti hitelesítő adatokkal érheti el az alkalmazásokat. Néhány alkalmazás az automatikus üzembe helyezést és megszüntetést is támogatja.
@@ -154,6 +158,9 @@ További információ: [Az Office 365 és az Azure Active Directoryhoz csatlakoz
 További információ: [A felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](active-directory-saas-app-provisioning.md)
 
 - - -
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

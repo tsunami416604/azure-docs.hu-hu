@@ -1,13 +1,13 @@
 
-1. On your Mac, visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile app settings, click **Quickstart** > **iOS (Objective-C)**. If you prefer Swift, click **Quickstart** > **iOS (Swift)** instead. Under **Download and run your iOS project**, click **Download**. This downloads a complete Xcode project for an app pre-configured to connect to your backend. Open the project using Xcode.
-2. Press the **Run** button to build the project and start the app in the iOS simulator.
-3. In the app, type meaningful text, such as *Complete the tutorial* and then click the plus (**+**) icon. This sends a POST request to the Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem SQL table, and returns information about the newly stored items back to the mobile app. The mobile app displays this data in the list. 
+1. A Mac gépen látogasson el az [Azure Portal]. Kattintson az **Összes tallózása** > **Mobilalkalmazások** lehetőségre > az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban kattintson az **Első lépések** > **iOS (Objective-C)** elemre. Ha a Swift nyelvet részesíti előnyben, kattintson az **Első lépések** > **iOS (Swift)** elemre. Az **iOS-projekt letöltése és futtatása** elemnél kattintson a **Letöltés** gombra. Ez letölti egy olyan alkalmazás teljes Xcode-projektjét, amely előre konfigurálva van a háttérrendszerhez való csatlakozáshoz. Nyissa meg a projektet az Xcode használatával.
+2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás iOS-szimulátorban történő elindításához.
+3. Az alkalmazásban írjon be egy jelentéssel bíró szöveget, például *Az oktatóanyag befejezése*, majd kattintson a plusz (**+**) ikonra. Ez egy POST kérést küld a korábban telepített Azure-háttérrendszernek. A háttérrendszer beilleszti az adatokat a kérésből a TodoItem SQL táblázatba, majd visszaküldi az újonnan eltárolt adatokra vonatkozó információkat a mobilalkalmazásnak. A mobilalkalmazás megjeleníti ezeket az adatokat a listában. 
    
-    ![](./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png)
+       ![](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
 
 [Azure Portal]: https://portal.azure.com/
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

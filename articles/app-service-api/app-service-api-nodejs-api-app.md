@@ -1,12 +1,12 @@
 ---
-title: Node.js API app in Azure App Service | Microsoft Docs
-description: Learn how to create a Node.js RESTful API and deploy it to an API app in Azure App Service.
+title: "Node.js API-alkalmazás az Azure App Service platformon | Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre Node.js RESTful API-t, és hogyan telepítheti egy Azure App Service platformon futó API-alkalmazásba."
 services: app-service\api
 documentationcenter: node
 author: bradygaster
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.service: app-service-api
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,76 +14,80 @@ ms.devlang: node
 ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+
 
 ---
-# Build a Node.js RESTful API and deploy it to an API app in Azure
+# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-This tutorial shows how to create a simple [Node.js](http://nodejs.org) API and deploy it to an [API app](app-service-api-apps-why-best-platform.md) in [Azure App Service](../app-service/app-service-value-prop-what-is.md) by using [Git](http://git-scm.com). You can use any operating system that can run Node.js, and you'll do all your work using command line tools such as cmd.exe or bash.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy egyszerű [Node.js](http://nodejs.org) API-t, és hogyan telepítheti egy [API-alkalmazásba](app-service-api-apps-why-best-platform.md) az [Azure App Service](../app-service/app-service-value-prop-what-is.md) platformon a [Git](http://git-scm.com) használatával. Bármilyen, Node.js futtatására alkalmas operációs rendszert használhat, és mindent parancssori eszközökkel, például a cmd.exe vagy a bash használatával kell végrehajtania.
 
-## Prerequisites
-1. Microsoft Azure account ([open a free account here](https://azure.microsoft.com/pricing/free-trial/))
-2. [Node.js](http://nodejs.org) installed (this sample assumes that you have Node.js version 4.2.2)
-3. [Git](https://git-scm.com/) installed
-4. [GitHub](https://github.com/) account
+## <a name="prerequisites"></a>Előfeltételek
+1. Microsoft Azure-fiók ([itt nyithat ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/))
+2. Telepített [Node.js](http://nodejs.org) (ez a példa azt feltételezi, hogy a Node.js 4.2.2 verzióval rendelkezik)
+3. Telepített [Git](https://git-scm.com/)
+4. [GitHub](https://github.com/)-fiók
 
-While App Service supports many ways to deploy your code to an API app, this tutorial shows the Git method and assumes that you have basic knowledge of how to work with Git. For information about other deployment methods, see [Deploy your app to Azure App Service](../app-service-web/web-sites-deploy.md).
+Habár az App Service számos módon lehetővé teszi a kód API-alkalmazásba való telepítését, ez az oktatóanyag a Git módszert mutatja be, és feltételezi a Git használatának alapszintű ismeretét. Más központi telepítési módszerekkel kapcsolatos további információkért lásd: [Alkalmazás telepítése az Azure App Service platformra](../app-service-web/web-sites-deploy.md).
 
-## Get the sample code
-1. Open a command line interface that can run Node.js and Git commands.
-2. Navigate to a folder that you can use for a local Git repository, and clone the [GitHub repository containing the sample code](https://github.com/Azure-Samples/app-service-api-node-contact-list).
+## <a name="get-the-sample-code"></a>A mintakód letöltése
+1. Nyisson meg egy parancssori felület, amely képes a Node.js és Git-parancsok futtatására.
+2. Lépjen egy olyan mappába, amelyet a helyi Git-tárházhoz használhat, és klónozza a [mintakódot tartalmazó GitHub-tárházat](https://github.com/Azure-Samples/app-service-api-node-contact-list).
    
         git clone https://github.com/Azure-Samples/app-service-api-node-contact-list.git
    
-    The sample API provides two endpoints: a Get request to `/contacts` returns a list of names and email addresses in JSON format, while `/contacts/{id}` returns only the selected contact.
+    A minta API két végpontot nyújt: a `/contacts` Get kérése nevek és e-mail címek listáját adja vissza JSON formátumban, míg a `/contacts/{id}` csak a kiválasztott névjegyet.
 
-## Scaffold (auto-generate) Node.js code based on Swagger metadata
-[Swagger](http://swagger.io/) is a file format for metadata that describes a RESTful API. Azure App Service has [built-in support for Swagger metadata](app-service-api-metadata.md). This section of the tutorial models an API development workflow in which you create Swagger metadata first and use that to scaffold (auto-generate) server code for the API. 
+## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>Node.js kód automatikus generálása Swagger-metaadatok alapján
+A [Swagger](http://swagger.io/) egy olyan fájlformátum, amely RESTful API leírására szolgáló metaadatokat tárol. Az Azure App Service [beépített támogatást nyújt a Swagger-metaadatokhoz](app-service-api-metadata.md). Az oktatóanyagnak ez a fejezete az API-fejlesztésnek azt a folyamatát modellezi, amelynek során először létrehozzuk a Swagger-metaadatokat, majd ezek segítségével automatikusan generáljuk az API kiszolgálói kódját. 
 
 > [!NOTE]
-> You can skip this section if you don't want to learn how to scaffold Node.js code from a Swagger metadata file. If you want to just deploy sample code to a new API app, go directly to the [Create an API app in Azure](#createapiapp) section.
+> Kihagyhatja ezt a szakaszt, ha nem szeretné megtanulni, hogyan kell Swagger-metaadatfájlból Node.js-kódot generálni. Ha csak telepíteni szeretné a példakódot egy új API-alkalmazásba, ugorjon közvetlenül az [API-alkalmazás létrehozása az Azure platformon](#createapiapp) című szakaszra.
 > 
 > 
 
-### Install and execute Swaggerize
-1. Execute the following commands to install the **yo** and **generator-swaggerize** NPM modules globally.
+### <a name="install-and-execute-swaggerize"></a>A Swaggerize telepítése és elindítása
+1. A következő parancsok futtatásával telepítse globálisan a **yo** és a **generator-swaggerize** NPM modult.
    
         npm install -g yo
         npm install -g generator-swaggerize
    
-    Swaggerize is a tool that generates server code for an API described by a Swagger metadata file. The Swagger file that you'll use is named *api.json* and is located in the *start* folder of the repository you cloned.
-2. Navigate to the *start* folder, and then execute the `yo swaggerize` command. Swaggerize will ask a series of questions.  For **what to call this project**, enter "contactlist", for **path to swagger document**, enter "api.json", and for **Express, Hapi, or Restify**, enter "express".
+    A Swaggerize egy olyan eszköz, amely kiszolgálói kódot generál egy Swagger-metaadatfájllal leírt API-hoz. A használt Swagger-fájl neve *api.json*, és a klónozott tárház *start* mappájában található.
+2. Lépjen a *start* mappába, majd futtassa a `yo swaggerize` parancsot. A Swaggerize kérdéseket tesz fel Önnek.  A **what to call this project** (mi legyen a projekt neve) kérdésre a „ContactList”, a **path to swagger document** (swagger-dokumentum elérési útvonala) kérdésre az „api.json”, az **Express, Hapi, or Restify** (Express, Hapi vagy Restify) kérdésre pedig az „express” választ írja be.
    
         yo swaggerize
    
-    ![Swaggerize Command Line](media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
+    ![Swaggerize parancssor](media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
    
-    **Note**: if you encounter an error in this step, the next step explains how to fix it.
+    **Megjegyzés:**: Ha ebben a lépésben hibát észlel, a következő lépésben megtudhatja, hogyan oldhatja meg a problémát.
    
-    Swaggerize creates an application folder, scaffolds handlers and configuration files, and generates a **package.json** file. The express view engine is used to generate the Swagger help page.  
-3. If the `swaggerize` command fails with an "unexpected token" or "invalid escape sequence" error, correct the cause of the error by editing the generated *package.json* file. In the `regenerate` line under `scripts`, change the back slash that precedes *api.json* to a forward slash, so that the line looks like the following example:
+    A Swaggerize létrehoz egy alkalmazásmappát, generátorokat és konfigurációs fájlokat, és előállít egy **package.json** fájlt. Az „expressz nézet” motor előállítja a Swagger súgóoldalt.  
+3. Ha a `swaggerize` parancs „unexpected token” (nem várt token) vagy „invalid escape sequence” (érvénytelen escape-szekvencia) hibával tér vissza, a generált *package.json* fájl szerkesztésével javíthatja ki a hibát. A `regenerate` sorban (a `scripts` alatt) az *api.json* előtti perjelet írja át fordított perjelre, hogy a sor az alábbi példához hasonló legyen:
    
-        "regenerate": "yo swaggerize --only=handlers,models,tests --framework express --apiPath config/api.json"
-4. Navigate to the folder that contains the scaffolded code (in this case, the *ContactList* subfolder).
-5. Run `npm install`.
+         "regenerate": "yo swaggerize --only=handlers,models,tests --framework express --apiPath config/api.json"
+4. Keresse meg a generált kódot tartalmazó mappát (ebben az esetben a */start/ContactList* almappa).
+5. Futtassa az `npm install` parancsot.
    
         npm install
-6. Install the **jsonpath** NPM module. 
+6. Telepítse a **jsonpath** NPM modult. 
    
         npm install --save jsonpath
    
-    ![Jsonpath Install](media/app-service-api-nodejs-api-app/jsonpath-install.png)
-7. Install the **swaggerize-ui** NPM module. 
+    ![Jsonpath telepítése](media/app-service-api-nodejs-api-app/jsonpath-install.png)
+7. Telepítse a **swaggerize-ui** NPM modult. 
    
         npm install --save swaggerize-ui
    
-    ![Swaggerize Ui Install](media/app-service-api-nodejs-api-app/swaggerize-ui-install.png)
+    ![Swaggerize Ui telepítése](media/app-service-api-nodejs-api-app/swaggerize-ui-install.png)
 
-### Customize the scaffolded code
-1. Copy the **lib** folder from the **start** folder into the **ContactList** folder created by the scaffolder. 
-2. Replace the code in the **handlers/contacts.js** file with the following code. 
+### <a name="customize-the-scaffolded-code"></a>A generált kód testreszabása
+1. Másolja a **lib** mappát a **start** mappából a generáló által létrehozott **ContactList** mappába. 
+2. Cserélje a **handlers/contacts.js** fájlban lévő kódot az alábbira. 
    
-    This code uses the JSON data stored in the **lib/contacts.json** file that is served by **lib/contactRepository.js**. The new contacts.js code responds to HTTP requests to get all of the contacts and return them as a JSON payload. 
+    Ez a kód a **lib/contactRepository.js** által kiszolgált **lib/contacts.json** fájlban lévő JSON-adatokat használja. Az új contacts.js kód válaszol az összes névjegyet lekérdező HTTP-kérésekre, és JSON-adatként adja vissza őket. 
    
         'use strict';
    
@@ -94,7 +98,7 @@ While App Service supports many ways to deploy your code to an API app, this tut
                 res.json(repository.all())
             }
         };
-3. Replace the code in the **handlers/contacts/{id}.js** file with the fofllowing code. 
+3. Cserélje a **handlers/contacts/{id}.js** fájlban lévő kódot az alábbira. 
    
         'use strict';
    
@@ -105,9 +109,9 @@ While App Service supports many ways to deploy your code to an API app, this tut
                 res.json(repository.get(req.params['id']));
             }    
         };
-4. Replace the code in **server.js** with the following code. 
+4. Cserélje a **server.js** fájlban lévő kódot az alábbira. 
    
-    The changes made to the server.js file are called out by using comments so you can see the changes being made. 
+    A server.js fájl változtatásaira megjegyzésekkel hívjuk fel a figyelmet. 
    
         'use strict';
    
@@ -140,134 +144,137 @@ While App Service supports many ways to deploy your code to an API app, this tut
         server.listen(port, function () { // fifth and final change
         });
 
-### Test with the API running locally
-1. Activate the server using the Node.js command-line executable. 
+### <a name="test-with-the-api-running-locally"></a>Tesztelés helyileg futó API-val
+1. Aktiválja a kiszolgálót a Node.js parancssori végrehajtható fájllal. 
    
         node server.js
-2. When you browse to **http://localhost:8000/contacts**, you see the JSON output of the contact list (or you're prompted to download it, depending on your browser). 
+2. Ha megnyitja a **http://localhost:8000/contacts** címet, láthatja a névjegylista JSON-kimenetét (vagy letöltheti, böngészőtől függően). 
    
-    ![All Contacts Api Call](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
-3. When you browse to **http://localhost:8000/contacts/2**, you'll see the contact represented by that id value.
+    ![Az összes névjegy Api-hívás](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
+3. Ha megnyitja a **http://localhost:8000/contacts/2** címet, az azonosítóhoz tartozó névjegyet láthatja.
    
-    ![Specific Contact Api Call](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
-4. The Swagger JSON data is served via the **/swagger** endpoint:
+    ![Adott névjegy Api-hívás](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
+4. A Swagger JSON-adatokat a **/swagger** végpont biztosítja:
    
     ![Contacts Swagger Json](media/app-service-api-nodejs-api-app/contacts-swagger-json.png)
-5. The Swagger UI is served via the **/docs** endpoint. In the Swagger UI, you can use the rich HTML client features to test out your API.
+5. A Swagger felhasználói felületet a **/docs** végpont biztosítja. A Swagger felhasználói felületén gazdag HTML-ügyfélfunkciókkal tesztelheti az API-t.
    
     ![Swagger Ui](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
-## <a id="createapiapp"></a> Create a new API App
-In this section you use the Azure portal to create a new API App in Azure. This API app represents the compute resources that Azure will provide to run your code. In later sections you'll deploy your code to the new API app.
+## <a name="a-idcreateapiappa-create-a-new-api-app"></a><a id="createapiapp"></a> Új API-alkalmazás létrehozása
+Ebben a szakaszban használhatja az Azure portál segítségével új API-alkalmazást hozhat létre az Azure-ban. Ez az API-alkalmazás azokat a számítási erőforrásokat reprezentálja, amelyeket az Azure az Ön kódjának futtatásához biztosít. A későbbi szakaszokban a kódot az új API-alkalmazásba fogja telepíteni.
 
-1. Browse to the [Azure Portal](https://portal.azure.com/). 
-2. Click **New > Web + Mobile > API App**. 
+1. Keresse fel az [Azure portált](https://portal.azure.com/). 
+2. Kattintson az **Új > Web + mobil > API-alkalmazás** elemre. 
    
-    ![New API app in portal](media/app-service-api-nodejs-api-app/new-api-app-portal.png)
-3. Enter an **App name** that is unique in the *azurewebsites.net* domain, such as NodejsAPIApp plus a number to make it unique. 
+    ![Új API-alkalmazás a portálon](media/app-service-api-nodejs-api-app/new-api-app-portal.png)
+3. Az **Alkalmazásnév** mezőbe írjon be egy olyan nevet, amely egyedi az *azurewebsites.net* tartományban, például NodejsAPIApp, plusz egy szám, amellyel egyedivé teszi a nevet. 
    
-    For example, if the name is `NodejsAPIApp`, the URL will be `nodejsapiapp.azurewebsites.net`.
+    Ha például a név `NodejsAPIApp`, az URL-cím `nodejsapiapp.azurewebsites.net`.
    
-    If you enter a name that someone else has already used, you see a red exclamation mark to the right.
-4. In the **Resource Group** drop-down, click **New**, and then in **New resource group name** enter "NodejsAPIAppGroup" or another name if you prefer. 
+    Ha olyan nevet ad meg, amelyet valaki más már használ, piros felkiáltójel jelenik meg a jobb oldalon.
+4. Az **Erőforráscsoport** legördülő menüben kattintson az **Új** elemre, majd az **Új erőforráscsoport neve** mezőbe írja be a „NodejsAPIAppGroup” nevet, vagy amit szeretne. 
    
-    A [resource group](../resource-group-overview.md) is a collection of Azure resources such as API apps, databases, and VMs. For this tutorial, it's best to create a new resource group because that makes it easy to delete in one step all the Azure resources that you create for the tutorial.
-5. Click **App Service plan/Location**, and then click **Create New**.
+    Az [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) olyan Azure-erőforrások gyűjteménye, mint például az API-alkalmazások, adatbázisok és virtuális gépek. Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
+5. Kattintson az **App Service-csomag/Hely**, majd az **Új létrehozása** elemre.
    
-    ![Create App Service plan](./media/app-service-api-nodejs-api-app/newappserviceplan.png)
+    ![App Service-csomag létrehozása](./media/app-service-api-nodejs-api-app/newappserviceplan.png)
    
-    In the following steps, you create an App Service plan for the new resource group. An App Service plan specifies the compute resources that your API app runs on. For example, if you choose the free tier, your API app runs on shared VMs, while for some paid tiers it runs on dedicated VMs. For information about App Service plans, see [App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-6. In the **App Service Plan** blade, enter "NodejsAPIAppPlan" or another name if you prefer.
-7. In the **Location** drop-down list, choose the location that is closest to you.
+    A következő lépésekben létrehozzuk az új erőforráscsoporthoz tartozó App Service-csomagot. Az App Service-csomag határozza meg azokat a számítási erőforrásokat, amelyek segítségével az API-alkalmazás fut. Ha például az ingyenes csomagot választja, az API-alkalmazás megosztott virtuális gépeken fog futni, míg egyes fizetős csomagokban az alkalmazás dedikált virtuális gépeken fut. Az App Service-csomagokkal kapcsolatban további információkért lásd a következő cikket: [App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) (App Service-csomagok áttekintése).
+6. Az **App Service-csomag** panelen írja be a „NodejsAPIAppPlan” nevet, vagy amit szeretne.
+7. A **Location** (Hely) legördülő menüben válassza ki az Önhöz legközelebbi helyet.
    
-    This setting specifies which Azure datacenter your app will run in. For this tutorial, you can select any region and it won't make a noticeable difference. But for a production app, you want your server to be as close as possible to the clients that are accessing it to minimize [latency](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090).
-8. Click **Pricing tier > View All > F1 Free**.
+    Ez a beállítás azt határozza meg, hogy melyik Azure-adatközpontban fog futni az alkalmazás. Ebben az oktatóanyagban nincs különbség, bármelyik régiót is választja. Azonban éles alkalmazások esetén az azt elérő ügyfelekhez lehető legközelebbi kiszolgálót célszerű választani a [késés](http://www.bing.com/search?q=web%20latency%20introduction&qs=n&form=QBRE&pq=web%20latency%20introduction&sc=1-24&sp=-1&sk=&cvid=eefff99dfc864d25a75a83740f1e0090) minimalizálása érdekében.
+8. Kattintson az **Tarifacsomag > Az összes megtekintése > F1 Ingyenes** lehetőségre.
    
-    For this tutorial, the free pricing tier will provide sufficient performance.
+    Ehhez az oktatóanyaghoz az ingyenes szint is megfelelő teljesítményt nyújt.
    
-    ![Select Free pricing tier](./media/app-service-api-nodejs-api-app/selectfreetier.png)
-9. In the **App Service Plan** blade, click **OK**.
-10. In the **API App** blade, click **Create**.
+    ![Az Ingyenes tarifacsomag kiválasztása](./media/app-service-api-nodejs-api-app/selectfreetier.png)
+9. Az **App Service-csomag** panelen kattintson az **OK** gombra.
+10. Az **API-alkalmazást** panelen kattintson a **Létrehozás** gombra.
 
-## Set up your new API app for Git deployment
-You'll deploy your code to the API app by pushing commits to a Git repository in Azure App Service. In this section of the tutorial, you create the credentials and Git repository in Azure that you'll use for deployment.  
+## <a name="set-up-your-new-api-app-for-git-deployment"></a>Az új API-alkalmazás Git-telepítésének beállítása
+Úgy tudja telepíteni a kódot az API-alkalmazásba, hogy a véglegesítéseket beküldi az Azure App Service-ben található Git-tárházba. Az oktatóanyagnak ebben a részében létrehozzuk az Azure-ban a telepítéshez szükséges hitelesítő adatokat és Git-tárházat.  
 
-1. After your API app has been created, click **App Services > {your API app}** from the portal home page. 
+1. Az API-alkalmazás létrehozása után kattintson az **App Services > {API-alkalmazás}** lehetőségre a portál kezdőlapján. 
    
-    The portal displays the **API App** and **Settings** blades.
+    A portál megjeleníti az **API-alkalmazás** és a **Beállítások** panelt.
    
-    ![Portal API app and Settings blade](media/app-service-api-nodejs-api-app/portalapiappblade.png)
-2. In the **Settings** blade, scroll down to the **Publishing** section, and then click **Deployment credentials**.
-3. In the **Set deployment credentials** blade, enter a user name and password, and then click **Save**.
+    ![A portál API-alkalmazás és Beállítások panelje](media/app-service-api-nodejs-api-app/portalapiappblade.png)
+2. A **Beállítások** panelen görgessen le a **Közzététel** szakaszhoz, és kattintson a **Telepítési hitelesítő adatok** lehetőségre.
+3. Az **Üzembe helyezési hitelesítő adatok beállítása** panelen írjon be egy felhasználónevet és egy jelszavat, majd kattintson a **Mentés** gombra.
    
-    You'll use these credentials for publishing your Node.js code to your API app. 
+    Ezeket a hitelesítő adatokat fogja használni a Node.js-kódnak az API-alkalmazásban való közzétételéhez. 
    
-    ![Deployment Credentials](media/app-service-api-nodejs-api-app/deployment-credentials.png)
-4. In the **Settings** blade, click **Deployment source > Choose Source > Local Git Repository**, then click **OK**.
+    ![Telepítési hitelesítő adatok,](media/app-service-api-nodejs-api-app/deployment-credentials.png)
+4. Az **Üzembe helyezési hitelesítő adatok beállítása** panelen kattintson a **Központi telepítés forrása > Forrás választása > Helyi git-tárház** lehetőségre, majd az **OK** gombra.
    
-    ![Create Git Repo](media/app-service-api-nodejs-api-app/create-git-repo.png)
-5. Once your Git repository has been created the blade changes to show you your active deployments. Since the repository is new, you have no active deployments in the list. 
+    ![Git-tárház létrehozása](media/app-service-api-nodejs-api-app/create-git-repo.png)
+5. A Git-tárház létrehozása után a panel az aktív telepítéseket mutatja. Mivel a tárház új, ezért nincs aktív központi telepítés a listában. 
    
-    ![No Active Deployments](media/app-service-api-nodejs-api-app/no-active-deployments.png)
-6. Copy the Git repository URL. To do this, navigate to the blade for your new API App and look at the **Essentials** section of the blade. Notice the **Git clone URL** in the **Essentials** section. When you hover over this URL, you see an icon on the right that will copy the URL to your clipboard. Click this icon to copy the URL.
+    ![Nincs aktív telepítés](media/app-service-api-nodejs-api-app/no-active-deployments.png)
+6. Másolja ki a Git-tárház URL-címét. Ezt az új API-alkalmazás panelének **Alapvető szolgáltatások** részében találhatja meg. Az **Essentials** szakaszban látható a **Git clone URL-cím** elem. Ha erre az URL-címre mutat, a jobb oldalon egy ikon jelenik meg, amelyre kattintva a vágólapra másolhatja az URL-t. Kattintson erre az ikonra az URL vágólapra másolásához.
    
-    ![Get The Git Url From The Portal](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
+    ![A Git URL-cím másolása a portálról](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
    
-    **Note**: You will need the Git clone URL in the next section so make sure to save it somewhere for the moment.
+    **Megjegyzés:**: a Git clone URL-címre szüksége lesz a következő szakaszban, ezért addig mentse valahova.
 
-Now that you have an API App with a Git repository backing it up, you can push code into the repository to deploy the code to the API app. 
+Most, hogy már van API-alkalmazása és hozzá tartozó Git-tárháza, a tárházba való beküldéssel telepíthet kódot az API-alkalmazásba. 
 
-## Deploy your API code to Azure
-In this section you create a local Git repository that contains your server code for the API, and then you push your code from that repository to the repository in Azure that you created earlier.
+## <a name="deploy-your-api-code-to-azure"></a>Az API-kód telepítése az Azure-ba
+Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az API kiszolgálóoldali kódját, majd a kódot ebből a tárházból az Azure-ban lévő, korábban létrehozott tárházba küldjük.
 
-1. Copy the `ContactList` folder to a location that you can use for a new local Git repository. If you did the first part of the tutorial, copy `ContactList` from the `start` folder; otherwise, copy `ContactList` from the `end` folder.
-2. In your command line tool, navigate to the new folder, then execute the following command to create a new local Git repository. 
+1. Másolja a `ContactList` mappát egy olyan helyre, amelyet az új helyi Git-tárházhoz használhat. Ha elvégezte az oktatóanyag első részét, másolja a `ContactList` mappát a `start` mappából, ellenkező esetben másolja a `ContactList` mappát a `end` mappából.
+2. A választott parancssori eszközben lépjen be az új mappába, majd hajtsa végre a következő parancsot egy új helyi Git-tárház létrehozásához. 
    
         git init
    
-     ![New Local Git Repo](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. Execute the following command to add a Git remote for your API app's repository. 
+     ![Új helyi Git-tárház](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
+3. A következő parancs végrehajtásával adjon hozzá egy távoli Git-tárházat az API-alkalmazás tárházához. 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
-    **Note**: Replace the string "YOUR_GIT_CLONE_URL_HERE" with your own Git clone URL that you copied earlier. 
-4. Execute the following commands to create a commit that contains all of your code. 
+    **Megjegyzés**: A „YOUR_GIT_CLONE_URL_HERE” karakterlánc helyére a saját, korábban kimásolt Git clone URL-jét írja. 
+4. A következő parancsok futtatásával hozzon létre egy véglegesítést, amely tartalmazza az összes kódot. 
    
         git add .
         git commit -m "initial revision"
    
-    ![Git Commit Output](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. Execute the command to push your code to Azure. When you're prompted for a password, enter the one that you created earlier in the Azure portal.
+    ![A Git commit parancs kimenete](media/app-service-api-nodejs-api-app/git-commit-output.png)
+5. A parancs végrehajtásával küldje be a kódot az Azure-ba. Amikor a rendszer kéri a jelszót, adja meg az Azure portálon korábban létrehozott jelszót.
    
         git push azure master
    
-    This triggers a deployment to your API app.  
-6. In your browser, navigate back to the **Deployments** blade for your API app, and you see that the deployment is occurring. 
+    Ezzel elindítja az API-alkalmazásban való telepítést.  
+6. A böngészőben lépjen vissza az API-alkalmazás **Példányok** paneljére, ahol láthatja, hogy a telepítés folyamatban van. 
    
-    ![Deployment Happening](media/app-service-api-nodejs-api-app/deployment-happening.png)
+    ![Telepítés folyamatban](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
-    Simultaneously, the command line interface reflects the status of your deployment while it is happening. 
+    Eközben a parancssori felületen a folyamat közben látható a telepítés állapota. 
    
-    ![Node Js Deployment Happening](media/app-service-api-nodejs-api-app/node-js-deployment-happening.png)
+    ![Node Js telepítés folyamatban](media/app-service-api-nodejs-api-app/node-js-deployment-happening.png)
    
-    Once the deployment has completed, the **Deployments** blade reflects the successful deployment of your code changes to your API App. 
+    A telepítés befejeződése után a **Példányok** panelen látható, hogy a kódváltozások sikeresen bekerültek az API-alkalmazásba. 
 
-## Test with the API running in Azure
-1. Copy the **URL** in the **Essentials** section of your API App blade. 
+## <a name="test-with-the-api-running-in-azure"></a>Tesztelés Azure-ban futó API-val
+1. Másolja ki az **URL-címet** az API-alkalmazás paneljének **Alapvető szolgáltatások** szakaszából. 
    
-    ![Deployment Completed](media/app-service-api-nodejs-api-app/deployment-completed.png)
-2. Using a REST API client such as Postman or Fiddler (or your web browser), provide the URL of your contacts API call, which is the `/contacts` endpoint of your API app. The URL will be `https://{your API app name}.azurewebsites.net/contacts`
+    ![A telepítés befejeződött](media/app-service-api-nodejs-api-app/deployment-completed.png)
+2. REST API-ügyfél, például a Postman vagy a Fiddler (vagy a böngésző) használatával adja meg a névjegyek API-hívás URL-címét, ami az API-alkalmazás `/contacts` végpontja. Az URL a következő lesz: `https://{your API app name}.azurewebsites.net/contacts`
    
-    When you issue a GET request to this endpoint, you get the JSON output of your API app.
+    Amikor GET kérést küld erre  a végpontra, az API-alkalmazás JSON-kimenetét fogja megkapni.
    
-    ![Postman Hitting Api](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
-3. In a browser, go to the `/docs` endpoint to try out the Swagger UI as it runs in Azure.
+    ![Postman Api-elérés](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
+3. Egy böngészőben nyissa meg a `/docs` végpontot, és próbálja ki az Azure-ban futó Swagger felhasználói felületet.
 
-Now that you have continuous delivery wired up, you can make code changes and deploy them to Azure simply by pushing commits to your Azure Git repository.
+Ön beállította a változtatások folyamatos üzembe helyezését, így most már egyszerűen, a véglegesítéseknek az Azure Git-tárházba való beküldésével hajthat végre kódmódosításokat, és telepítheti őket.
 
-## Next steps
-At this point you've successfully created an API App and deployed Node.js API code to it. The next tutorial shows how to [consume API apps from JavaScript clients, using CORS](app-service-api-cors-consume-javascript.md).
+## <a name="next-steps"></a>Következő lépések
+Ön sikeresen létrehozott egy API-alkalmazást, és Node.js API-kódot telepített rá. A következő oktatóanyag azt mutatja be, hogyan [használhat API-alkalmazásokat JavaScript-ügyfelekkel a CORS segítségével](app-service-api-cors-consume-javascript.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

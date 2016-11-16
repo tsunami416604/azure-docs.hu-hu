@@ -1,13 +1,13 @@
 ---
-title: 'Linux oktatóanyag: Ismerkedés a Hadoop és a Hive használatával | Microsoft Docs'
-description: Ez az oktatóanyag segítséget nyújt a Hadoop használatának megkezdésében a HDInsight rendszerében. Megtudhatja, hogyan építhet ki Linux-fürtöket, és hogyan kérdezhet le adatokat a Hive segítségével.
+title: "Linux oktatóanyag: Ismerkedés a Hadoop és a Hive használatával | Microsoft Docs"
+description: "Ez az oktatóanyag segítséget nyújt a Hadoop használatának megkezdésében a HDInsight rendszerében. Megtudhatja, hogyan építhet ki Linux-fürtöket, és hogyan kérdezhet le adatokat a Hive segítségével."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 6a12ed4c-9d49-4990-abf5-0a79fdfca459
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/14/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
+
 
 ---
-# Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
+# <a name="hadoop-tutorial-get-started-using-linuxbased-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
 > [!div class="op_single_selector"]
 > * [Linux-alapú](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [Windows-alapú](hdinsight-hadoop-tutorial-get-started-windows.md)
@@ -28,15 +32,15 @@ Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.o
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elindításának feltétele:
 
 * **Azure-előfizetés**: egy ingyenes egy hónapos próbafiók létrehozásához keresse fel az [azure.microsoft.com/free](https://azure.microsoft.com/free) webhelyet.
 
-### A hozzáférés-vezérlésre vonatkozó követelmények
+### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
-## Fürt létrehozása
+## <a name="create-cluster"></a>Fürt létrehozása
 A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a szakaszban egy Linux-alapú Hadoop-fürtöt fog létrehozni a HDInsightban az [Azure Resource Manager-sablon](../resource-group-template-deploy.md) segítségével. A Resource Manager-sablon teljes mértékben testreszabható, így könnyen létrehozhatók vele olyan Azure-erőforrások, mint például a HDInsight. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. A jelen oktatóanyagban használt Resource Manager-sablon a nyilvános blobtárolóban található: [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json). 
 
 1. Az alábbi képre kattintva beléphet az Azure szolgáltatásba, és megnyithatja a Resource Manager-sablont az Azure Portalon. 
@@ -63,7 +67,7 @@ A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, f
    
    A felsorolásban két erőforrás szerepel, a fürt és az alapértelmezett tárfiók.
 
-## Hive-lekérdezések futtatása
+## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
 Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevője. Számos módon futtathat Hive-feladatokat a HDInsightban. Ebben az oktatóanyagban a portál Ambari Hive nézete segítségével fog Hive-feladatokat futtatni. A Hive-feladatok egyéb küldési módjaiért lásd: [Use Hive in HDInsight](hdinsight-use-hive.md) (A Hive használata a HDInsightban).
 
 1. Keresse fel a **https://&lt;ClusterName>.azurehdinsight.net** webhelyet, ahol a &lt;ClusterName> az a fürt, amelyet az előző szakaszban az Ambari megnyitásához hozott létre.
@@ -96,7 +100,7 @@ Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevőj
 
 Egy Hive-feladat befejezése után [exportálhatja az eredményeket az Azure SQL Database adatbázisba vagy az SQL Server-adatbázisba](hdinsight-use-sqoop-mac-linux.md), valamint az [Excel segítségével meg is jelenítheti az eredményeket](hdinsight-connect-excel-power-query.md). A Hive HDInsight rendszeren belüli használatával kapcsolatos további információkért lásd: [Use Hive and HiveQL with Hadoop in HDInsight to analyze a sample Apache log4j file](hdinsight-use-hive.md) (A Hive és a HiveQL együttes használata a HDInsight Hadoop eszközével egy Apache log4j mintafájl elemzéséhez).
 
-## Az oktatóanyag tartalmának törlése
+## <a name="clean-up-the-tutorial"></a>Az oktatóanyag tartalmának törlése
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. 
 
 > [!NOTE]
@@ -106,11 +110,11 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 
 **A fürt és/vagy az alapértelmezett tárfiók törlése**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál irányítópultján kattintson arra a csempére, amelynek a neve megegyezik a fürt létrehozásakor használt erőforráscsoport-névvel.
 3. Kattintson az erőforrás panel **Törlés** gombjára a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez, vagy kattintson a fürt nevére az **Erőforrások** csempén, majd a **Törlés** gombra a fürt paneljén. Vegye figyelembe, hogy az erőforráscsoport törlése esetén a tárfiók is törlődik. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóprogramban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Hive-lekérdezéseket.
 
 A HDInsighttal végzett adatelemzéssel kapcsolatos további információkért tekintse meg a következőket:
@@ -159,6 +163,6 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Nov16_HO2-->
 
 

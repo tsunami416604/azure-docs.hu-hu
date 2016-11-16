@@ -1,13 +1,13 @@
 ---
-title: Prediktív megoldás a hitelkockázat kiszámításához a Machine Learning használatával | Microsoft Docs
-description: Részletes útmutató, amely azt ismerteti, hogyan hozható létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldás az Azure Machine Learning Studio eszközben.
-keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
+title: "Prediktív megoldás a hitelkockázat kiszámításához a Machine Learning használatával | Microsoft Docs"
+description: "Részletes útmutató, amely azt ismerteti, hogyan hozható létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldás az Azure Machine Learning Studio eszközben."
+keywords: "hitelkockázat, prediktív elemzési megoldás,kockázatértékelés"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: aa64dc7f5bb3e928aac30987b0904435c603829c
+
 
 ---
-# Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
+# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
 A hitelkockázat értékelése természetesen összetett probléma, de a példa kedvéért most egyszerűsítsük le a paramétereket egy kicsit. Így már jó példaként szolgál annak a bemutatásához, hogy hogyan hozhatók létre prediktív elemzési megoldások a Microsoft Azure Machine Learning segítségével a Machine Learning Studio eszközt és a Machine Learning webszolgáltatást felhasználva.  
@@ -44,6 +48,9 @@ A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseke
 
 Ez az útmutató a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) kínálatában szereplő [Binary Classfication: Credit risk prediction](http://go.microsoft.com/fwlink/?LinkID=525270) (Bináris osztályozás: a hitelkockázat előrejelzése) nevű mintakísérlet egyszerűsített verzióján alapul.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

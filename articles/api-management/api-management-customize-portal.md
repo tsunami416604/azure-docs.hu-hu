@@ -1,94 +1,98 @@
 ---
-title: Customize the developer portal in Azure API Management | Microsoft Docs
-description: Learn how to customize the developer portal in Azure API Management.
+title: "A fejlesztői portál testreszabása az Azure API Management szolgáltatásban | Microsoft Docs"
+description: "Megtudhatja, hogyan szabhatja testre a fejlesztői portált az Azure API Management szolgáltatásban."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
+
 
 ---
-# Customize the developer portal in Azure API Management
-This guide shows you how to modify the look and feel of the developer portal in Azure API Management for consistency with your brand.
+# <a name="customize-the-developer-portal-in-azure-api-management"></a>A fejlesztői portál testreszabása az Azure API Management szolgáltatásban
+Ez az útmutató ismerteti, hogyan módosíthatja a fejlesztői portál megjelenését és működését az Azure API Management szolgáltatásban, hogy következetes legyen a márkájával.
 
-## <a name="change-page-headers"> </a>Change the text or logo in the page header
-One of the key aspects of portal customization is replacing the text at the top of all pages with your company name or logo.
+## <a name="change-page-headers"> </a>Az oldalfejléc szövegének vagy emblémájának módosítása
+A portálok testreszabásának egyik fő szempontja az oldalak tetején lévő szöveg lecserélése a vállalat nevére vagy emblémájára.
 
-Content within the developer portal is modified via the publisher portal, which is accessed through the Azure Classic Portal. To reach the API publisher portal, click **Manage** in the Azure Classic Portal for your API Management service.
+A fejlesztői portál tartalmát az Azure Portalon keresztül elérhető közzétevő portálon lehet módosítani. Az eléréséhez kattintson a **Közzétevő portál** elemre az API Management-példány szolgáltatási eszköztárából.
 
-![Publisher portal][api-management-management-console]
+![Közzétevő portál][api-management-management-console]
 
-The developer portal is based on a content management system or CMS. The header that appears on every page is a special type of content known as a widget. To edit the contents of that widget, click **Widgets** from the **Developer Portal** menu on the left, and then select the **Header** widget from the list.
+A fejlesztői portál egy tartalomkezelő rendszeren, vagy más néven CMS-en alapul. Az oldalakon megjelenő fejléc egy speciális tartalomtípus, amelyet widgetnek neveznek. A widget tartalmának szerkesztéséhez kattintson a bal oldali **Fejlesztői portál** menü **Widgetek** elemére, majd válassza ki a listából a **Fejléc** nevű widgetet.
 
-![Widgets header][api-management-widgets-header]
+![Widgetek fejléc][api-management-widgets-header]
 
-The contents of the header is editable from within the **Body** field. Change the text to "Fabrikam Developer Portal", and then click **Save** at the bottom of the page.
+A fejléc tartalmát a **Törzs** mezőben lehet szerkeszteni. Módosítsa a szöveget „Fabrikam fejlesztői portál”-ra, majd kattintson az oldal alján található **Mentés** gombra.
 
-Now you should be able to see the new header on every page within the developer portal.
+Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni.
 
-> To open the developer portal while in the publisher portal, click **Developer portal** in the top bar.
+> Ha a közzétevő portálon tartózkodik, és meg szeretné nyitni a fejlesztői portált, kattintson a **Fejlesztői portál** lehetőségre a felső menüsoron.
 > 
 > 
 
-## <a name="change-headers-styling"> </a>Change the styling of the headers
-The colors, fonts, sizes, spacings, and other style-related elements of any page on the portal are defined by style rules. To edit the styles, click **Appearance** from the **Developer portal** menu in the publisher portal, and then click **Begin customization** to enable the styling editor.
+## <a name="change-headers-styling"> </a>A fejlécek stílusának módosítása
+A portál oldalain megjelenő színeket, betűtípusokat, méreteket, sorközöket és más stíluselemeket a stílusszabályok határozzák meg. A stílusok szerkesztéséhez kattintson a **Megjelenés** elemre a közzétevő portál **Fejlesztői portál** menüjében, majd kattintson a **Testreszabás megkezdése** lehetőségre a stílusszerkesztő engedélyezéséhez.
 
-Your browser switches to a hidden page within the developer portal that contains samples of content, with examples for all styling rules used anywhere on the site. To open the styling editor, move your cursor over the thin gray vertical line on the left-most part of the page. The editor toolbar should appear.
+A böngésző átvált a fejlesztő portál egy rejtett oldalára, amely tartalommintákat és példákat tartalmaz a webhelyen alkalmazott összes stílusszabályra. A stílusszerkesztő megnyitásához mozgassa a kurzort az oldal bal szélső részén található vékony, szürke függőleges sávra. Ekkor megjelenik a szerkesztő eszköztár.
 
-![Customization toolbar][api-management-customization-toolbar]
+![Testreszabás eszköztár][api-management-customization-toolbar]
 
-There are two main modes of editing styling rules - **Edit all rules** displays a list of all the style rules used anywhere, while **Pick element** allows you to select an element from the page you are on and displays styles only for that element.
+A stílusszabályok szerkesztésének két fő módja van – A **Minden szabály szerkesztése** lehetőség felsorolja az összes használatban lévő stílusszabályt, az **Elem kiválasztása** lehetőséggel pedig kiválaszthat egy elemet az oldalról, ahol éppen tartózkodik, és csak a választott elem stílusai jelennek meg.
 
-In this section, we want to change the styling of only the headers. Click the **Pick element** option from the styling editor toolbar, and then click **Select an element to customize**. Elements now become highlighted as you hover over them with the mouse to signify what element's styles you would start editing if you clicked. Move the mouse over the text that represents the company name in the header ("Fabrikam Developer Portal" if you followed the instructions in the previous section), and then click it. A set of named and categorized styling rules appears within the styling editor.
+Ebben a szakaszban csak a fejlécek stílusát szeretnénk módosítani. A stílusszerkesztő eszköztáron kattintson az **Elem kiválasztása** elemre, majd kattintson a **Testreszabni kívánt elem kiválasztása** lehetőségre. Ha ezután rámutat az egérrel az elemekre, ki lesznek emelve, ezzel jelezve, hogy kattintás esetén melyik elem stílusait kezdené el szerkeszteni. A fejlécen mutasson az egérrel a vállalat nevére („Fabrikam fejlesztői portál”, ha követte az előző szakasz utasításait), majd kattintson rá. A stílusszerkesztőben meg fognak jelenni a névvel és kategóriákkal rendelkező stílusszabályok.
 
-Each rule represents a styling property of the selected element. For example, for the header text selected above, the size of the text is in @font-size-h1 while the name of the font with alternatives is in @headings-font-family.
+Minden szabály a kiválasztott elem egy formázási tulajdonságát jelöli. Például a fent kiválasztott fejléc szövegénél a szövegméret @font-size-h1, míg a betűtípus neve alternatívákkal @headings-font-family.
 
-> If you're familiar with [bootstrap][bootstrap], these rules are in fact [LESS variables][LESS variables] within the bootstrap theme used by the developer portal.
+> Ha ismeri a [bootstrap][bootstrap] felépítését, ezek a szabályok valójában [LESS változók][LESS változók] a fejlesztői portál által használt bootstrap témában.
 > 
 > 
 
-Let's change the color of the heading text. Select the entry in the **@headings-color** field and type **#000000**. This is the hex code for the color black. As you do this, you see that a square color indicator appears at the end of the text box. If you click this indicator, a color picker lets you to choose a color.
+Módosítsa a fejléc szövegének színét. Válassza ki a **@headings-color** mező bejegyzését, és írja be a **#000000** kódot. Ez a fekete szín hexadecimális kódja. Eközben a szövegmező végén megjelenik egy színjelző négyzet. Ha rákattint a jelzőre, a színválasztó segítségével kiválaszthat egy színt.
 
-![Color picker][api-management-customization-toolbar-color-picker]
+![Színválasztó][api-management-customization-toolbar-color-picker]
 
-When you are done making changes to the styles of the selected element, click **Preview Changes** to see the results on the screen. At this time, they are visible only to administrators. To make these changes visible to everyone, click the **Publish** button in the styling editor and confirm the changes.
+Ha végrehajtotta a választott elem stílusainak módosítását, kattintson a **Változtatások előnézete** lehetőségre az eredmények megjelenítéséhez. Ezen a ponton még csak a rendszergazdák láthatják őket. Ha mindenki számára láthatóvá szeretné tenni a módosításokat, kattintson a **Közzététel** gombra a stílusszerkesztőben, és hagyja jóvá a módosításokat.
 
-![Publish menu][api-management-customization-toolbar-publish-form]
+![Közzététel menü][api-management-customization-toolbar-publish-form]
 
-> To change the style rules that apply to any other element on the page, follow the same procedure as you did for the header. Click **Pick an element** from the styling editor, select the element you are interested in, and start modifying the values of the style rules displayed on the screen.
+> Az oldal bármely más elemére vonatkozó stílusszabályok módosításához kövesse ugyanazt az eljárást, mint a fejlécnél. Kattintson az **Elem kiválasztása** lehetőségre a stílusszerkesztőben, válassza ki a kívánt elemet, majd kezdje el módosítani a képernyőn megjelenő stílusszabályok értékeit.
 > 
 > 
 
-## <a name="edit-page-contents"> </a>Edit the contents of a page
-The developer portal consists of automatically generated pages like APIs, Products, Applications, Issues, and manually written content. Because it is based on a content management system, you can create such content as necessary.
+## <a name="edit-page-contents"> </a>Oldal tartalmának szerkesztése
+A fejlesztői portál automatikusan létrehozott oldalakból áll, például API-k, Termékek, Alkalmazások, Problémák és kézzel írt tartalmak. Mivel egy tartalomkezelő rendszeren alapul, szükség szerint létre lehet hozni ilyen tartalmakat.
 
-To see the list of all existing content pages, click **Content** from the **Developer portal** menu in the publisher portal.
+A létező tartalomoldalak listájának megtekintéséhez kattintson a **Tartalom** lehetőségre a közzétevő portál **Fejlesztői portál** menüjében.
 
-![Manage content][api-management-customization-manage-content]
+![Tartalom kezelése][api-management-customization-manage-content]
 
-Click the **Welcome** page to edit what is displayed on the home page of the developer portal. Make the changes you want, preview them if necessary, and then click **Publish Now** to make them visible to everyone.
+A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez kattintson a **Kezdőlap** lehetőségre. Hajtsa végre a kívánt módosításokat, tekintse meg az előnézetet, ha szeretné, majd kattintson a **Közzététel most** parancsra, hogy mindenki számára láthatóvá tegye őket.
 
-> The home page uses a special layout that allows it to display a banner at the top. This banner is not editable from the **Content** section. To edit this banner, click **Widgets** from the **Developer portal** menu, select **Home page** from the **Current Layer** drop-down list, and then open the **Banner** item under the **Featured section**. The contents of this widget are editable just like any other page.
+> A kezdőlap egy speciális elrendezést használ, amellyel megjelenítheti a szalagcímeket az oldal tetején. Ez a szalagcím nem szerkeszthető a **Tartalom** szakaszban. A szalagcím szerkesztéséhez kattintson a **Fejlesztői portál** menü **Widgetek** elemére, válassza az **Aktuális réteg** listában a **Kezdőlap** lehetőséget, majd nyissa meg a **Kiemelt szakasz** **Szalagcím** elemét. A widget tartalmai ugyanúgy szerkeszthetők, mint bármely más oldal.
 > 
 > 
 
-## <a name="next-steps"> </a>Next steps
-* Learn how to customize the content of developer portal pages using [Developer portal templates](api-management-developer-portal-templates.md).
+## <a name="next-steps"> </a>Következő lépések
+* Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalainak tartalmát a [fejlesztői portál sablonjainak](api-management-developer-portal-templates.md) használatával.
 
-[Change the text/logo in the page headers]: #change-page-headers
-[Change the styling of the headers]: #change-headers-styling
-[Edit the contents of a page]: #edit-page-contents
-[Next steps]: #next-steps
+[Az oldalfejlécek szövegének/emblémájának módosítása]: #change-page-headers
+[A fejlécek stílusának módosítása]: #change-headers-styling
+[Oldal tartalmának szerkesztése]: #edit-page-contents
+[Következő lépések]: #next-steps
 
-[Azure Classic Portal]: https://manage.windowsazure.com/
+[Klasszikus Azure-portál]: https://manage.windowsazure.com/
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
@@ -99,10 +103,10 @@ Click the **Welcome** page to edit what is displayed on the home page of the dev
 
 
 [bootstrap]: http://getbootstrap.com/
-[LESS variables]: http://getbootstrap.com/css/
+[LESS változók]: http://getbootstrap.com/css/
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

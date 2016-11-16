@@ -1,11 +1,11 @@
 ---
-title: Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére | Microsoft Docs
-description: Az Application Insights segítségével elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure webalkalmazásán.
+title: "Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére | Microsoft Docs"
+description: "Az Application Insights segítségével elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure webalkalmazásán."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,41 +13,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fb80168b38be88ab18952569e6b6f9bcb53d473a
+
 
 ---
-# Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére
+# <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére
 *Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
 A [Visual Studio Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md). Egyrészt olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy Azure VM-eken futtat, másrészt Azure webalkalmazásokkal.
 
 Az SDK biztosítja a bejövő HTTP-kérelemarányok és válaszok, a teljesítményszámlálók (CPU, memória, RPS) és a nem kezelt kivételek automatikus gyűjtését. Emellett hozzá lehet adni egyéni hívásokat a függőségek, mérőszámok vagy egyéb események nyomon követéséhez.
 
-![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
+![Példa teljesítményfigyelő diagramokra](./media/app-insights-nodejs/10-perf.png)
 
-#### Előkészületek
+#### <a name="before-you-start"></a>Előkészületek
 A következők szükségesek:
 
 * Visual Studio 2013 vagy újabb. Az újabb jobb.
 * Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével.
 
-## <a name="add"></a>Application Insights-erőforrás létrehozása
+## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights-erőforrás létrehozása
 Jelentkezzen be az [Azure portálra][portal], és hozzon létre egy új Application Insights-erőforrást. Az Azure-ban egy [erőforrás][roles] lényegében egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
 
-![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-windows-services/01-new-asp.png)
+![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-nodejs/01-new-asp.png)
 
 Az alkalmazás típusaként válassza az Egyéb lehetőséget. A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát, valamint a [Metrikaböngészőben][metrics] látható tulajdonságokat.
 
-#### A kialakítási kulcs másolása
+#### <a name="copy-the-instrumentation-key"></a>A kialakítási kulcs másolása
 A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-ba, hogy az adatokat az erőforrásba irányíthassa.
 
-![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-windows-services/02-props-asp.png)
+![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="sdk"></a> Az SDK telepítése az alkalmazásban
+## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> Az SDK telepítése az alkalmazásban
 ```
 npm install applicationinsights --save
 ```
 
-## Használat
+## <a name="usage"></a>Használat
 Ezzel engedélyezi a kérelmek figyelését, a nem kezelt kivételek nyomon követését és a rendszerteljesítmény figyelését (CPU/memória/RPS).
 
 ```javascript
@@ -60,38 +64,38 @@ A kialakítási kulcsot is be lehet állítani az APPINSIGHTS_INSTRUMENTATIONKEY
 
 Kipróbálhatja az SDK-t telemetria küldése nélkül: állítsa át a kialakítási kulcsot olyan karakterláncra, amely nem üres.
 
-## <a name="run"></a> A projekt futtatása
+## <a name="a-nameruna-run-your-project"></a><a name="run"></a> A projekt futtatása
 Futtassa az alkalmazást, és próbálja ki: nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
 
-## <a name="monitor"></a> A telemetria megtekintése
+## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> A telemetriai adatok megtekintése
 Térjen vissza az [Azure Portalra](https://portal.azure.com), és keresse meg az Application Insights-erőforrást.
 
 Tekintse meg az adatokat az Áttekintés lapon. Először csak egy vagy két pontot lát. Példa:
 
-![Kattintson végig rajtuk a további adatokért](./media/app-insights-windows-services/12-first-perf.png)
+![Kattintson végig rajtuk a további adatokért](./media/app-insights-nodejs/12-first-perf.png)
 
 Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.][perf]
 
-#### Nincs adat?
+#### <a name="no-data"></a>Nincs adat?
 * Az alkalmazás segítségével nyisson meg különböző oldalakat, hogy létrejöjjön némi telemetria.
 * Az egyes események megtekintéséhez nyissa meg a [Keresés](app-insights-diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
 * Várjon néhány másodpercet, és kattintson a **Frissítés** lehetőségre. A diagramok rendszeres időközönként frissülnek, de manuálisan is frissítheti őket, ha várja valamilyen adatok megjelenését.
 * Lásd: [Hibaelhárítás][qna].
 
-## Az alkalmazás közzététele
+## <a name="publish-your-app"></a>Az alkalmazás közzététele
 Most telepítse az alkalmazását az IIS-be vagy az Azure-be, és figyelje meg, hogyan gyűlnek az adatok.
 
-#### Nem lát adatokat a kiszolgálón való közzététel után?
+#### <a name="no-data-after-you-publish-to-your-server"></a>Nem lát adatokat a kiszolgálón való közzététel után?
 Nyissa meg ezeket a portokat a kimenő forgalom számára a kiszolgáló tűzfalán:
 
 * `dc.services.visualstudio.com:443`
 * `f5.services.visualstudio.com:443`
 
-#### Probléma adódott a lemezképfájl-kiszolgálóján?
+#### <a name="trouble-on-your-build-server"></a>Probléma adódott a lemezképfájl-kiszolgálóján?
 Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
-## Testreszabott használat
-### Az automatikus gyűjtés letiltása
+## <a name="customized-usage"></a>Testreszabott használat
+### <a name="disabling-autocollection"></a>Az automatikus gyűjtés letiltása
 ```javascript
 import appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
@@ -102,7 +106,7 @@ appInsights.setup("<instrumentation_key>")
     .start();
 ```
 
-### Egyéni figyelés
+### <a name="custom-monitoring"></a>Egyéni figyelés
 ```javascript
 import appInsights = require("applicationinsights");
 var client = appInsights.getClient();
@@ -115,7 +119,7 @@ client.trackTrace("trace message");
 
 [További információk a telemetriai API-ról](app-insights-api-custom-events-metrics.md)
 
-### Több kialakítási kulcs használata
+### <a name="using-multiple-instrumentation-keys"></a>Több kialakítási kulcs használata
 ```javascript
 import appInsights = require("applicationinsights");
 
@@ -127,8 +131,8 @@ var otherClient = appInsights.getClient("<other_instrumentation_key>");
 otherClient.trackEvent("custom event");
 ```
 
-## Példák
-### Függőségek nyomon követése
+## <a name="examples"></a>Példák
+### <a name="tracking-dependency"></a>Függőségek nyomon követése
 ```javascript
 import appInsights = require("applicationinsights");
 var client = appInsights.getClient();
@@ -144,7 +148,7 @@ client.trackDependency("dependency name", "command name", elapsedTime, success);
 
 
 
-### A „GET” kérelmek manuális kéréseinek nyomon követése
+### <a name="manual-request-tracking-of-all-get-requests"></a>A „GET” kérelmek manuális kéréseinek nyomon követése
 ```javascript
 var http = require("http");
 var appInsights = require("applicationinsights");
@@ -181,9 +185,9 @@ server.on("listening", () => {
 });
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [A telemetria figyelése a portálon](app-insights-dashboards.md)
-* [Analytics-lekérdezések írása a telemetrián](app-insights-analytics-tour.md)
+* [Analytics-lekérdezések írása a telemetriai adatokhoz](app-insights-analytics-tour.md)
 
 <!--Link references-->
 
@@ -196,6 +200,6 @@ server.on("listening", () => {
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

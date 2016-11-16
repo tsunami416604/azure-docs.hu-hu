@@ -1,26 +1,30 @@
 ---
-title: Támogatási jegy létrehozása az SQL Data Warehouse-hoz| Microsoft Docs
-description: Támogatási jegy létrehozása az SQL Data Warehouse-hoz.
+title: "Támogatási jegy létrehozása az SQL Data Warehouse-hoz| Microsoft Docs"
+description: "Támogatási jegy létrehozása az SQL Data Warehouse-hoz."
 services: sql-data-warehouse
 documentationcenter: NA
-author: sonyam
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: a91d1f53-03cb-464b-9d5b-4a9c1a194ed3
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 09/01/2016
-ms.author: sonyama;barbkess
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ede330870f451bd1e0ed6805fa937e74438fd644
+
 
 ---
-# Támogatási jegy létrehozása az SQL Data Warehouse-hoz
+# <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Támogatási jegy létrehozása az SQL Data Warehouse-hoz
 Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hozzon létre egy támogatási jegyet, hogy mérnöki csapatunk segítségére lehessen.
 
-## Támogatási jegy létrehozása
-1. Nyissa meg az [Azure Portal][Azure Portal].
+## <a name="create-a-support-ticket"></a>Támogatási jegy létrehozása
+1. Nyissa meg az [Azure Portalt][Azure Portal].
 2. A kezdőképernyőn kattintson a **Súgó és támogatás** csempére.
    
     ![Súgó és támogatás](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
@@ -43,13 +47,13 @@ Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hoz
 6. Erőforrásként adja meg a **SQL Data Warehouse** szolgáltatást.
    
     ![Erőforrás](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
-7. Jelölje ki az [Azure támogatási csomagot][Azure támogatási csomagot].
+7. Jelölje ki az [Azure támogatási csomagot][Azure támogatási csomag].
    
    * A **számlázással, kvótával és az előfizetés kezelésével** kapcsolatos támogatás minden támogatási szinten elérhető.
    * A **javítás/csere** támogatás a [Fejlesztői][Fejlesztői], [Standard][Standard], [Közvetlen professzionális támogatás][Közvetlen professzionális támogatás] vagy a [Premier][Premier] támogatás esetén érhető el. A javítás/csere típusú problémákkal az Azure használata során fellépő hibák esetén lehet a támogatáshoz fordulni, ha a hibát nagy valószínűséggel a Microsoft terméke okozta.
    * A **fejlesztői mentorálás** és a **tanácsadási szolgáltatás** [Közvetlen professzionális támogatás][Közvetlen professzionális támogatás] és [Premier][Premier] esetén érhető el. 
      
-     Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][Microsoft Premier online portálon].  Az [Azure-támogatás ügyfeleknek][Azure támogatási csomagot] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure támogatás – gyakori kérdések][Azure támogatás – gyakori kérdések] című témakör tekinti át.  
+     Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][Microsoft Premier online portál].  Az [Azure-támogatás ügyfeleknek][Azure támogatási csomagot] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure támogatás – gyakori kérdések][Azure támogatás – gyakori kérdések] című témakör tekinti át.  
      
      ![Támogatási csomag](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
 8. Válassza ki a **Problem Type** (Probléma típusa) és a **Category** (Kategória) mezőt.
@@ -63,13 +67,13 @@ Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hoz
     ![Kapcsolattartási adatok](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
 11. Kattintson a**Create** (Létrehozás) gombra a támogatási kérelem elküldéséhez.
 
-## Támogatási jegy nyomon követése
+## <a name="monitor-a-support-ticket"></a>Támogatási jegy nyomon követése
 A támogatási kérelem elküldése után az Azure támogatási csapata kapcsolatba lép Önnel. A kérelem állapotának és részleteinek megtekintéséhez kattintson a **Támogatási kérelmek kezelése** elemre az irányítópulton.
 
 ![Állapot ellenőrzése](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
-## Egyéb források
-Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Overflow][Stack Overflow] webhelyen vagy az [Azure SQL Data Warehouse MSDN fórumon][Azure SQL Data Warehouse MSDN fórumon].
+## <a name="other-resources"></a>Egyéb források
+Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Overflow][Stack Overflow] webhelyen vagy az [Azure SQL Data Warehouse MSDN fórumon][Azure SQL Data Warehouse MSDN fórum].
 
 <!--Image references--> 
 
@@ -93,6 +97,6 @@ Ezenkívül kapcsolatba léphet az SQL Data Warehouse-közösséggel a [Stack Ov
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

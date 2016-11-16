@@ -1,13 +1,13 @@
 ---
-title: Virtuális hálózat létrehozása ARM-sablonnal | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre virtuális hálózatot ARM-sablonnal | Resource Manager.
+title: "Virtuális hálózat létrehozása ARM-sablonnal | Microsoft Docs"
+description: "Ismerje meg, hogyan hozhat létre virtuális hálózatot ARM-sablonnal | Resource Manager."
 services: virtual-network
-documentationcenter: ''
+documentationcenter: 
 author: jimdial
 manager: carmonm
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 69530861-2f97-4a6e-b336-a7baf2690044
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 31b066d85474e781bd282603fceba3fa8ab135d7
+
 
 ---
-# Virtuális hálózat létrehozása ARM-sablonnal
+# <a name="create-a-virtual-network-by-using-an-arm-template"></a>Virtuális hálózat létrehozása ARM-sablonnal
 [!INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
@@ -40,6 +44,9 @@ Ha közvetlenül a GitHubból helyezi üzembe az ARM-sablont, változtatások n�
 
 [!INCLUDE [virtual-networks-create-vnet-arm-template-click-include](../../includes/virtual-networks-create-vnet-arm-template-click-include.md)]
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

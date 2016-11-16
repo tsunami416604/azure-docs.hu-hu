@@ -1,12 +1,12 @@
 ---
 title: Mi az Azure Event Hubs? | Microsoft Docs
-description: Az Azure Event Hubs áttekintése és ismertetése
+description: "Az Azure Event Hubs áttekintése és ismertetése"
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 4391d750-5bbe-456d-9091-b416127bc754
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fcc3e2cb76a06607d0bfbbad810968b70d67e4f4
+
 
 ---
-# Mi az Azure Event Hubs?
+# <a name="what-is-azure-event-hubs"></a>Mi az Azure Event Hubs?
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez. További információk és műszaki részletek: [Event Hubs – áttekintés](event-hubs-overview.md).
 
-## Az Event Hubs képességei
+## <a name="event-hubs-capabilities"></a>Az Event Hubs képességei
 Az Event Hubs egy eseményfeldolgozási szolgáltatás, amely nagy léptékű esemény- és telemetriafeldolgozást biztosít alacsony késéssel és nagy megbízhatósággal. Ez a szolgáltatás különösen hasznos az alábbi esetekben:
 
 * alkalmazások kialakítása,
@@ -28,20 +32,20 @@ Az Event Hubs egy eseményfeldolgozási szolgáltatás, amely nagy léptékű es
 
 Az Event Hubs további fontos képességei közé tartozik például a viselkedéskövetés a mobilalkalmazásokban, a forgalmi információk gyűjtése a webfarmokról, a játékbeli események rögzítése a konzolos játékokban, vagy az ipari gépekről vagy csatlakoztatott járművekről gyűjtött telemetriaadatok.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az Event Hubs szolgáltatásról az alábbi témakörökben talál részletes információkat.
 
 * [Event Hubs – áttekintés](event-hubs-overview.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Event Hubs availability and support FAQ (Az Event Hubs elérhetősége és támogatása – GYIK)](event-hubs-availability-and-support-faq.md)
-* Bevezetés az [Event Hubs használatába oktatóanyag][Event Hubs használatába oktatóanyag]
-* [Az Event Hubsot használó teljes mintaalkalmazás][Az Event Hubsot használó teljes mintaalkalmazás]
+* Bevezetés az [Event Hubs használatába oktatóanyag][Event Hubs – oktatóanyag]
+* Teljes [Event Hubsot használó mintaalkalmazás][Event Hubsot használó mintaalkalmazás]
 
-[Event Hubs használatába oktatóanyag]: event-hubs-csharp-ephcs-getstarted.md
-[Az Event Hubsot használó teljes mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs – oktatóanyag]: event-hubs-csharp-ephcs-getstarted.md
+[Az Event Hubsot használó mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

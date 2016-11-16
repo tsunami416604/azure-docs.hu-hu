@@ -1,12 +1,12 @@
 ---
-title: Mi a Logic Apps szolgáltatás?
-description: További tudnivalók az App Service Logic Apps szolgáltatásról
+title: "Mi a Logic Apps szolgáltatás?"
+description: "További tudnivalók az App Service Logic Apps szolgáltatásról"
 author: kevinlam1
 manager: dwrede
-editor: ''
+editor: 
 services: logic-apps
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 07765c05-72a6-4169-a8ab-f6420bfbaf07
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: klam
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 44941876c976fdad0303b3c638ed6a3811136634
+
 
 ---
-# <a name="what-are-logic-apps?"></a>Mi a Logic Apps szolgáltatás?
+# <a name="what-are-logic-apps"></a>Mi a Logic Apps szolgáltatás?
 A Logic Apps lehetőséget teremt a skálázható integrálások és munkafolyamatok felhőbe implementálásának leegyszerűsítésére és implementálása. Egy vizuális tervezőt biztosít a folyamatai lépéssorozatként, más néven munkafolyamatként történő modellezésére és automatizálására.  Sok helyszíni és felhőben található [összekötő](../connectors/apis-list.md) létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között.  Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.
 
 A Logic Apps használatának előnyei többek között a következők:  
@@ -40,7 +44,7 @@ Ahogy korábban már említettük, a Logic Apps segítségével automatizálhatj
 
 Az ehhez hasonló helyzeteknek megfelelő konfiguráláshoz mindössze a vizuális tervező szükséges, egyetlen sor kódot sem kell írnia. Kezdje el [összeállítani saját logikai alkalmazását][létrehozás].  Ha már megírták, a logikai alkalmazás [gyorsan üzembe helyezhető és újrakonfigurálható](app-service-logic-create-deploy-template.md) több környezetben és régióban is.
 
-## <a name="why-logic-apps?"></a>Miért válasszam a Logic Apps szolgáltatást?
+## <a name="why-logic-apps"></a>Miért válasszam a Logic Apps szolgáltatást?
 A Logic Apps sebességet és méretezhetőséget biztosít a vállalati integráció terén.  A tervező könnyű használata, a számos elérhető eseményindító és művelet, valamint a sokoldalú kezelőeszközök teszik minden eddiginél könnyebbé az API-k központosítását.  Ahogy a vállalkozások a digitalizáció felé mozdulnak el, a Logic Apps lehetővé teszi a régi és a legmodernebb rendszerek összekapcsolását.
 
 Továbbá a [nagyvállalati integrációs fiókokkal][biztalk] részletes integrációs forgatókönyvekre is méretezhet az [XML-üzenetküldés][xml], a [kereskedelmipartner-kezelés][tpm] és további szolgáltatások használatával.
@@ -76,6 +80,6 @@ Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük 
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

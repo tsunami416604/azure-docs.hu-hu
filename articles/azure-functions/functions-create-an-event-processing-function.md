@@ -1,13 +1,13 @@
 ---
-title: Eseményfeldolgozó függvény létrehozása | Microsoft Docs
-description: Használja az Azure Functions szolgáltatást olyan C# függvény létrehozására, amely egy eseményidőzítő alapján fut.
+title: "Eseményfeldolgozó függvény létrehozása | Microsoft Docs"
+description: "Használja az Azure Functions szolgáltatást olyan C# függvény létrehozására, amely egy eseményidőzítő alapján fut."
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 84bd0373-65e2-4022-bcca-2b9cd9e696f5
 ms.service: functions
 ms.devlang: multiple
 ms.topic: get-started-article
@@ -15,17 +15,21 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+
 
 ---
-# Eseményfeldolgozó Azure-függvény létrehozása
+# <a name="create-an-event-processing-azure-function"></a>Eseményfeldolgozó Azure-függvény létrehozása
 Az Azure Functions egy eseményvezérelt, számítási igények szerint működtethető szolgáltatás, amelynek a segítségével ütemezett és aktivált kódegységek hozhatók létre, különböző programnyelveken megvalósítva. További információk az Azure Functions szolgáltatásról: [Azure Functions Overview](functions-overview.md) (Az Azure Storage áttekintése).
 
 Ez a témakor egy olyan új függvény létrehozását mutatja be a C# használatával, amely egy eseményidőzitő alapján fut, és üzeneteket ad hozzá a tárolási sorhoz. 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-## Időzítő által aktivált függvény létrehozása sablonból
+## <a name="create-a-timertriggered-function-from-the-template"></a>Időzítő által aktivált függvény létrehozása sablonból
 A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/). 
 
 1. Lépjen az [Azure Functions portálra](https://functions.azure.com/signin), és jelentkezzen be az Azure-fiókjával.
@@ -40,17 +44,18 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
    
     ![Időzítő által aktivált új függvény létrehozása](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
 6. A **Develop** (Fejlesztés) lapon cserélje a meglévő C# szkriptet a **Code** (Kód) ablakban az alábbira:
-   
-        using System;
-   
-        public static void Run(TimerInfo myTimer, out string outputQueueItem, TraceWriter log)
-        {
-            // Add a new scheduled message to the queue.
-            outputQueueItem = $"Ping message added to the queue at: {DateTime.Now}.";
-   
-            // Also write the message to the logs.
-            log.Info(outputQueueItem);
-        }
+    ```cs   
+    using System;
+
+    public static void Run(TimerInfo myTimer, out string outputQueueItem, TraceWriter log)
+    {
+        // Add a new scheduled message to the queue.
+        outputQueueItem = $"Ping message added to the queue at: {DateTime.Now}.";
+
+        // Also write the message to the logs.
+        log.Info(outputQueueItem);
+    }
+    ```
    
     Ez a kód új üzenetet ad hozzá az üzenetsorhoz, amely a függvény futtatásakor aktuális idővel és dátummal rendelkezik.
 7. Kattintson a **Save** (Mentés) lehetőségre, és tekintse meg a **Logs** (Naplók) ablakot, ahol ellenőrizheti a függvény következő futtatásának idejét.
@@ -59,7 +64,7 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
 Ez egy nagy mértékben leegyszerűsített példája az időzített eseményindítóknak és a tárolásisor-kimenetek kötésének. További információkat az [Azure Functions timer trigger](functions-bindings-timer.md) (Azure Functions időzített eseményindítók) és az [Azure Functions triggers and bindings for Azure Storage](functions-bindings-storage.md) (Azure Functions eseményindítók és kötések az Azure Storage-hoz) témakörökben talál.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A következő témakörökben további, az Azure Functions szolgáltatásra vonatkozó információkat talál.
 
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
@@ -71,6 +76,9 @@ A következő témakörökben további, az Azure Functions szolgáltatásra vona
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

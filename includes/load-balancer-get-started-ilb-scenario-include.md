@@ -1,11 +1,16 @@
-## Scenario
-You are creating an internal load balancer according to the following scenario
+## <a name="scenario"></a>Forgatókönyv
 
-![IMAGE DESCRIPTION](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+Belső terheléselosztót hoz létre az alábbi forgatókönyv szerint
 
-An internal load balancer is configured in a virtual network  
+![KÉPLEÍRÁS](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-* 2 virtual machines called DB1 and DB2<BR>
-* Endpoints <BR>
-* Internal load balancer<BR>
+Belső terheléselosztó van konfigurálva a virtuális hálózatban
+
+* 2 virtuális gép, a nevük DB1 és DB2
+* Végpontok
+* Belső terheléselosztó
+
+
+<!--HONumber=Nov16_HO2-->
+
 

@@ -1,16 +1,16 @@
 # [Áttekintés](media-services-overview.md)
 ## [Alapelvek](media-services-concepts.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
-## [Kibocsátási megjegyzések](media-services-release-notes.md)
+
+
 # Bevezetés
 ## [Fiók létrehozása és felügyelete](media-services-portal-create-account.md)
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
-## Igény szerinti videó
+## Igény szerinti videó továbbítása
 ### [Portál](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
 ### [REST](media-services-rest-get-started.md)
-## Live streaming (Élő adatfolyam)
+## Élő közvetítés
 ### [Portál](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
@@ -166,12 +166,14 @@
 ###[Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referencia
-## [Media Services .NET SDK](media-services-dotnet-how-to-use.md)
-## [Media Services REST API](media-services-rest-how-to-use.md)
+## [Kibocsátási megjegyzések](media-services-release-notes.md)
+## [.NET](media-services-dotnet-how-to-use.md)
+## [REST](media-services-rest-how-to-use.md)
 ## [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
 ## [Media Encoder Standard-formátumok és -kodekek](media-services-media-encoder-standard-formats.md)
 
-# Kapcsolódó
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services-közösség](media-services-community.md)
 
 

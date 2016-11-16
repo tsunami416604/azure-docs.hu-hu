@@ -1,7 +1,9 @@
-Azure Functions is an event-driven, compute-on-demand experience that extends the existing Azure application platform with capabilities to implement code triggered by events occurring in other Azure services, SaaS products, and on-premises systems. With Azure Functions, your applications scale based on demand and you pay only for the resources you consume. Azure Functions provides an intuitive, browser-based user interface allowing you to create scheduled or triggered pieces of code implemented in a variety of programming languages. 
+Az Azure Functions egy eseményvezérelt, számítási igények szerint működtethető eszköz, amely bővíti a meglévő Azure alkalmazásplatformot, lehetővé téve események által kiváltott kód megvalósítását más Azure-szolgáltatásokban, SaaS-termékekben, valamint a helyszíni rendszerekben. Az Azure Functions segítségével alkalmazásai igény szerint méretezhetők, és Ön csak a felhasznált erőforrásokért fizet. Az Azure Functions egy intuitív böngészőalapú felhasználói felületet biztosít, amely lehetővé teszi a különböző programnyelveken megvalósított ütemezett és aktivált kódrészletek létrehozását. 
 
-This getting started video shows how to create a function app, modify the code, as well as how to interact with the triggers and bindings.
+Ez a bevezető videó bemutatja a függvényalkalmazások létrehozásának, a kódmódosításnak, valamint az eseményindítók és kötések kezelésének módját.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

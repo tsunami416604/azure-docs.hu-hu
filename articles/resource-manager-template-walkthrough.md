@@ -1,12 +1,12 @@
 ---
-title: Útmutató Resource Manager sablonokhoz | Microsoft Docs
-description: Egy alapszintű Azure IaaS-architektúrát kiépítő Resource Manager-sablon részletes bemutatása.
+title: "Útmutató a Resource Manager-sablonokhoz | Microsoft Docs"
+description: "Egy alapszintű Azure IaaS-architektúrát kiépítő Resource Manager-sablon részletes bemutatása."
 services: azure-resource-manager
 documentationcenter: na
 author: navalev
-manager: ''
-editor: ''
-
+manager: timlt
+editor: 
+ms.assetid: f1cfd704-f6e1-47d5-8094-b439c279c13f
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2016
 ms.author: navale;tomfitz
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8dcfe27b87cd76ea7b8f75c3c36f0115131eb6ae
+
 
 ---
-# Útmutató Resource Manager sablonokhoz
+# <a name="resource-manager-template-walkthrough"></a>Útmutató Resource Manager sablonokhoz
 A sablonok létrehozásakor feltett első kérdések egyike az, hogy „hogyan is kezdjünk bele”. Elkezdheti egy üres sablonból is a [Sablonok készítése](resource-group-authoring-templates.md#template-format) című cikkben leírt alapszintű struktúrát követve, és hozzáadhatja az erőforrásokat, valamint a megfelelő paramétereket és változókat. Az is jó megoldás, ha először átnézi a [gyorsindítási galériát](https://github.com/Azure/azure-quickstart-templates), és keres olyan forgatókönyveket, amelyek hasonlóak a létrehozni kívánt forgatókönyvhöz. Egyesíthet több sablont is, vagy szerkeszthet egy már létezőt, hogy az megfeleljen saját forgatókönyvének. 
 
 Vessen egy pillantást egy gyakori infrastruktúrára:
@@ -36,7 +40,7 @@ Ez azonban túl sok ahhoz, hogy egyszerre hozza őket létre, ezért először h
 > 
 > 
 
-## A Resource Manager-sablon létrehozása
+## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 A sablon egy JSON-fájl, amely meghatározza a később telepítendő összes erőforrást. Emellett lehetővé teszi a telepítés során megadott paraméterek, a más értékekből és kifejezésekből összeállított változók, valamint a telepítés kimeneteinek meghatározását is. 
 
 Kezdjük a legegyszerűbb sablonnal:
@@ -54,7 +58,7 @@ Kezdjük a legegyszerűbb sablonnal:
 
 Mentse el a fájlt **azuredeploy.json** néven (a sablon neve bármi lehet, de json-fájlnak kell lennie).
 
-## Create a storage account
+## <a name="create-a-storage-account"></a>Create a storage account
 A **resources** (erőforrás) szakaszban adjon hozzá egy objektumot, amely definiálja a tárfiókot az alább látható módon. 
 
 ```json
@@ -89,7 +93,7 @@ Most ugorjunk vissza a **parameters** (paraméterek) szakaszra, és nézzük meg
 ```
 Itt megadott egy karakterlánc típusú paramétert, amely tartalmazza majd a tárfiók nevét. A paraméter értékét a sablon telepítése során adhatja majd meg.
 
-## A sablon telepítése
+## <a name="deploying-the-template"></a>A sablon telepítése
 Most már van egy teljes sablonunk egy új tárfiók létrehozásához. Emlékezzen vissza, hogy a sablont egy **azuredeploy.json** nevű fájlban mentette el:
 
 ```json
@@ -125,12 +129,13 @@ Egy sablon telepítésének számos módja van, ahogyan ezt az [Erőforrások te
 New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West Europe"
 
 # deploy the template to the resource group
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile azuredeploy.json
 ```
 
 Vagy, a sablon az Azure parancssori felülettel történő telepítéséhez használja a következőket:
 
-```
+```azurecli
 azure group create -n ExampleResourceGroup -l "West Europe"
 
 azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n ExampleDeployment
@@ -140,7 +145,7 @@ Ezennel Ön egy tárfiók büszke tulajdonosa lett!
 
 A következő lépés az oktatóanyag elején leírt architektúra telepítéséhez szükséges erőforrások hozzáadása. Az erőforrásokat ugyanabban a sablonban kell majd hozzáadni, amelyben eddig is dolgozott.
 
-## Rendelkezésre állási csoport
+## <a name="availability-set"></a>Rendelkezésre állási csoport
 A tárfiók definiálása után adjon hozzá egy rendelkezésre állási csoportot a virtuális géphez. Ebben az esetben nincs szükség tovább tulajdonságokra, tehát a definiálás meglehetősen egyszerű. A teljes tulajdonságszakaszt megtalálhatja a [Rendelkezésre állási csoport létrehozásához szükséges REST API](https://msdn.microsoft.com/library/azure/mt163607.aspx) című részben, amennyiben meg szeretné adni a frissítési tartományok számának és tartalék tartományok számának értékét.
 
 ```json
@@ -163,7 +168,7 @@ A **type** (típus) tulajdonság az erőforrás-szolgáltatót és az erőforrá
 
 Ha pedig Azure parancssori felületet használ, futtassa az alábbi parancsot:
 
-```
+```azurecli
     azure provider list
 ```
 Mivel ebben a témakörben tárfiókokat, virtuális gépeket és virtuális hálózatot használ a létrehozáshoz, az alábbi szolgáltatókkal fog dolgozni:
@@ -180,13 +185,13 @@ Az egyes szolgáltatók erőforrástípusainak megtekintéséhez futtassa az al�
 
 Azure CLI használata esetén pedig az alábbi paranccsal lekérheti az elérhető típusokat JSON-formátumban, majd elmentheti azok listáját egy fájlba.
 
-```
+```azurecli
     azure provider show Microsoft.Compute --json > c:\temp.json
 ```
 
 Az **availabilitySets** típusnak a **Microsoft.Compute** szolgáltatón belül kell megjelennie. A típus teljes neve: **Microsoft.Compute/availabilitySets**. A sablon bármely erőforrása esetén megadhatja annak erőforrástípusát.
 
-## Nyilvános IP-cím
+## <a name="public-ip"></a>Nyilvános IP-cím
 Adjon meg egy nyilvános IP-címet. A beállítandó tulajdonságokért tekintse meg a [Nyilvános IP-címekhez szükséges REST API](https://msdn.microsoft.com/library/azure/mt163590.aspx) című részt.
 
 ```json
@@ -221,7 +226,7 @@ Az API verziójának Azure parancssori felülettel történő megtekintéséhez 
 
 Új sablon létrehozásakor mindig válassza a legújabb API-verziót.
 
-## Virtuális hálózat és alhálózat
+## <a name="virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat
 Hozzon létre egy virtuális hálózatot egyetlen alhálózattal. A beállítandó tulajdonságokért tekintse meg a [Virtuális hálózatokhoz szükséges REST API](https://msdn.microsoft.com/library/azure/mt163661.aspx) című részt.
 
 ```json
@@ -248,7 +253,7 @@ Hozzon létre egy virtuális hálózatot egyetlen alhálózattal. A beállítand
 }
 ```
 
-## Terheléselosztó
+## <a name="load-balancer"></a>Terheléselosztó
 Most egy kívülre irányuló terheléselosztót hoz majd létre. Mivel a terheléselosztó a nyilvános IP-címet használja, deklarálnia kell annak a nyilvános IP-címtől való függőségét a **dependsOn** szakaszban. Ez azt jelenti, hogy a terheléselosztó nem lesz telepítve, amíg a nyilvános IP-cím telepítése be nem fejeződött. A függőség meghatározása nélkül hibaüzenetet kapna, mert a Resource Manager párhuzamosan próbálja meg telepíteni az erőforrásokat, és olyan IP-címre próbálná a terheléselosztót beállítani, amely még nem létezik. 
 
 Emellett az alábbiakat is létrehozza majd: egy háttér címkészletet, néhány bejövő NAT-szabályt a virtuális gépek távoli asztali eléréséhez, valamint egy terheléselosztási szabályt egy TCP-hálózatfigyelővel a jelen erőforrás-definíció 80-as portján. Az összes tulajdonságért tekintse meg a [Terheléselosztóhoz szükséges REST API](https://msdn.microsoft.com/library/azure/mt163574.aspx) című részt.
@@ -340,7 +345,7 @@ Emellett az alábbiakat is létrehozza majd: egy háttér címkészletet, néhá
 }
 ```
 
-## Hálózati illesztő
+## <a name="network-interface"></a>Hálózati illesztő
 2 hálózati illesztőt hoz majd létre, mindkét virtuális gép számára egyet-egyet. A hálózati illesztők duplikált bejegyzéseinek használata helyett a [copyIndex() függvény](resource-group-create-multiple.md) használatával megismételheti a másolási ciklust (más néven: nicLoop), és létrehozhat a `numberOfInstances` változókban megadott számú hálózati illesztőt. A hálózati illesztő a virtuális hálózat és a terheléselosztó létrehozásától függ. Az illesztő a virtuális hálózat létrehozása során meghatározott alhálózatot használja, és a terheléselosztó azonosítójával konfigurálja a terheléselosztó címkészletét, valamint a bejövő NAT-szabályokat.
 A beállítandó tulajdonságokért tekintse meg a [Hálózati illesztőkhöz szükséges REST API](https://msdn.microsoft.com/library/azure/mt163668.aspx) című részt.
 
@@ -384,7 +389,7 @@ A beállítandó tulajdonságokért tekintse meg a [Hálózati illesztőkhöz sz
 }
 ```
 
-## Virtuális gép
+## <a name="virtual-machine"></a>Virtuális gép
 Két virtuális gépet hoz majd létre a copyIndex() függvény használatával, ahogyan ezt a [hálózati illesztők](#network-interface) esetében is tette.
 A virtuális gépek létrehozása a tárfióktól, a hálózati illesztőtől és a rendelkezésre állási csoporttól függ. Ez a virtuális gép egy piactéri rendszerképből lesz létrehozva a `storageProfile` tulajdonság alapján. A kép közzétevőjének, ajánlatának, termékváltozatának és verziójának meghatározásához használja az `imageReference` parancsot. Az utolsó lépés a diagnosztikai profil konfigurálása, amely lehetővé teszi a virtuális gép diagnosztikáját. 
 
@@ -456,7 +461,7 @@ A piactéri rendszerkép kapcsolódó tulajdonságainak megkereséséhez kövess
 
 Ezennel befejezte a sablon erőforrásainak definiálását.
 
-## Paraméterek
+## <a name="parameters"></a>Paraméterek
 A paraméterek szakaszban határozza meg a sablon telepítésekor megadható értékeket. Csak azon értékek esetében határozzon meg paramétereket, amelyek Ön szerint eltérőek lehetnek a telepítés során. Megadhat egy alapértelmezett értéket is a paraméterek számára, amelyet a rendszer akkor használ, ha nem adtak meg értéket a telepítés során. Meghatározhatja a megengedett értékeket is, ahogy ezt az **imageSKU** paraméter esetében is láthatja.
 
 ```json
@@ -556,7 +561,7 @@ A paraméterek szakaszban határozza meg a sablon telepítésekor megadható ér
   }
 ```
 
-## Változók
+## <a name="variables"></a>Változók
 A változók szakaszban meghatározhatja a sablonban egynél több helyen használt értékeket, vagy azokat az értékeket, amelyek több kifejezésből és változóból tevődnek össze. A változókat gyakran arra használják, hogy leegyszerűsítsék a sablon szintaxisát.
 
 ```json
@@ -578,11 +583,15 @@ Elkészült a sablon! Összehasonlíthatja a sablont a [gyorsindítási galéria
 
 A sablont újból telepítheti a tárfiók telepítésénél használt parancsokkal. Nem kell törölni a tárfiókot az újbóli telepítés előtt, mert a Resource Manager átugorja a már létező, és nem módosított erőforrások újbóli létrehozását.
 
-## Következő lépések
-* Az [Azure Resource Manager-sablon vizualizálója (ARMViz)](http://armviz.io/#/) egy remek eszköz, amellyel vizuálisan megjelenítheti Resource Manager-sablonjait, ha azok már túl nagyok, és nem láthatók át a JSON-fájlból olvasva.
+## <a name="next-steps"></a>Következő lépések
+* Az [Azure Resource Manager-sablon vizualizálója](http://armviz.io/#/) egy remek eszköz, amellyel vizuálisan megjelenítheti Resource Manager-sablonjait, ha azok már túl nagyok, és nem láthatók át kizárólag a JSON-fájlból olvasva.
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A sablonok telepítésével kapcsolatos információkért lásd: [Erőforráscsoport telepítése Azure Resource Manager-sablon használatával](resource-group-template-deploy.md).
+* A telepítés automatizálásáról négyrészes cikksorozatot tartalmaz az [Automating application deployments to Azure Virtual Machines](virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md) (Alkalmazástelepítés automatizálása Azure virtuális számítógépeken) című fejezet. A sorozat az alkalmazásarchitektúrát, -hozzáférést, -biztonságot, -elérhetőséget és -méretezést, valamint az alkalmazások üzembe helyezését ismerteti.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

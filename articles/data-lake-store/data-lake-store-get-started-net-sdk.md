@@ -1,12 +1,12 @@
 ---
-title: A Data Lake Store .NET SDK használata alkalmazások fejlesztéséhez | Microsoft Docs
-description: Az Azure Data Lake Store .NET SDK használata alkalmazások fejlesztéséhez
+title: "A Data Lake Store .NET SDK használata alkalmazások fejlesztéséhez | Microsoft Docs"
+description: "Az Azure Data Lake Store .NET SDK használata alkalmazások fejlesztéséhez"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+
 
 ---
-# Az Azure Data Lake Store használatának első lépései a .NET SDK-val
+# <a name="get-started-with-azure-data-lake-store-using-net-sdk"></a>Az Azure Data Lake Store használatának első lépései a .NET SDK-val
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -30,13 +34,13 @@ ms.author: nitinme
 
 A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) segítségével, mint például a mappák létrehozása, adatfájlok le- és feltöltése stb. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013 vagy 2015**. Az alábbi utasítások a Visual Studio 2015-öt használják.
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Store-fiók**. A fióklétrehozás módjáról [Az Azure Data Lake Store használatának első lépései](data-lake-store-get-started-portal.md) című cikk nyújt tájékoztatást.
 * **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
-## .NET-alkalmazás létrehozása
+## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
 2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
@@ -98,8 +102,8 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
-## Authentication
-### Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
+## <a name="authentication"></a>Authentication
+### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
 Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent találhat egy példát. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk.
 
     // User login via interactive popup
@@ -120,7 +124,7 @@ Néhány tudnivaló a fenti kódrészlettel kapcsolatban.
 > 
 > 
 
-### Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
+### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
 A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez az alkalmazás/szolgáltatás titkos ügyfélkódjával/kulcsával történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../resource-group-create-service-principal-portal.md) használhatja.
 
     // Service principal / appplication authentication with client secret / key
@@ -132,7 +136,7 @@ A következő kódrészlet használható az alkalmazás nem interaktív hiteles�
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-### Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
+### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
 Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás nem interaktív, az alkalmazás tanúsítványával/szolgáltatásnévvel történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../resource-group-create-service-principal-portal.md) használhatja.
 
     // Service principal / application authentication with certificate
@@ -144,7 +148,7 @@ Harmadik lehetőségként a következő kódrészlet is használható az alkalma
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
     var creds = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 
-## Ügyfélobjektumok létrehozása
+## <a name="create-client-objects"></a>Ügyfélobjektumok létrehozása
 A következő kódrészlet létrehozza a Data Lake Store-fiókot és a fájlrendszeri ügyfélobjektumokat. Ezek a szolgáltatásnak küldött kérések kiadására használatosak.
 
     // Create client objects and set the subscription ID
@@ -153,7 +157,7 @@ A következő kódrészlet létrehozza a Data Lake Store-fiókot és a fájlrend
 
     _adlsClient.SubscriptionId = _subId;
 
-## Az összes Data Lake Store-fiók listázása egy előfizetésen belül
+## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>Az összes Data Lake Store-fiók listázása egy előfizetésen belül
 A következő kódrészlet listázza az összes Data Lake Store-fiókot egy Azure-előfizetésen belül.
 
     // List all ADLS accounts within the subscription
@@ -171,7 +175,7 @@ A következő kódrészlet listázza az összes Data Lake Store-fiókot egy Azur
         return accounts;
     }
 
-## Könyvtár létrehozása
+## <a name="create-a-directory"></a>Könyvtár létrehozása
 Az alábbi részlet egy `CreateDirectory` metódust mutat be, amely egy könyvtár létrehozására használható egy Data Lake Store-fiókon belül.
 
     // Create a directory
@@ -180,7 +184,7 @@ Az alábbi részlet egy `CreateDirectory` metódust mutat be, amely egy könyvt�
         _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
     }
 
-## Fájl feltöltése
+## <a name="upload-a-file"></a>Fájl feltöltése
 Az alábbi részlet egy `UploadFile` metódust mutat be, amely fájlok egy Data Lake Store-fiókba való feltöltésére használható.
 
     // Upload a file
@@ -192,9 +196,9 @@ Az alábbi részlet egy `UploadFile` metódust mutat be, amely fájlok egy Data 
         uploader.Execute();
     }
 
-`DataLakeStoreUploader` Támogatja a rekurzív fel- és letöltést egy helyi fájlelérési út és egy Data Lake Store-fájl elérési útja között.    
+A `DataLakeStoreUploader` támogatja a rekurzív fel- és letöltést egy helyi fájlelérési út és egy Data Lake Store-fájl elérési útja között.    
 
-## Fájl vagy könyvtár adatainak lekérése
+## <a name="get-file-or-directory-info"></a>Fájl vagy könyvtár adatainak lekérése
 Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Store-ban elérhető fájlok vagy könyvtárak adatainak lekérésére használható. 
 
     // Get file or directory info
@@ -203,7 +207,7 @@ Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Stor
         return _adlsFileSystemClient.FileSystem.GetFileStatus(_adlsAccountName, path).FileStatus;
     }
 
-## Fájlok vagy könyvtárak listázása
+## <a name="list-file-or-directories"></a>Fájlok vagy könyvtárak listázása
 Az alábbi részlet egy `ListItem` metódust mutat be, amely egy Data Lake Store-fiókban található fájlok és könyvtárak listázására használható.
 
     // List files and directories
@@ -212,7 +216,7 @@ Az alábbi részlet egy `ListItem` metódust mutat be, amely egy Data Lake Store
         return _adlsFileSystemClient.FileSystem.ListFileStatus(_adlsAccountName, directoryPath).FileStatuses.FileStatus.ToList();
     }
 
-## Fájlok összefűzése
+## <a name="concatenate-files"></a>Fájlok összefűzése
 Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok összefűzésére használható. 
 
     // Concatenate files
@@ -221,7 +225,7 @@ Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok ös
         _adlsFileSystemClient.FileSystem.Concat(_adlsAccountName, destFilePath, srcFilePaths);
     }
 
-## Hozzáfűzés fájlhoz
+## <a name="append-to-a-file"></a>Hozzáfűzés fájlhoz
 Az alábbi részlet egy `AppendToFile` metódust mutat be, amely az adatok egy Data Lake Store-fiókban tárolt fájlhoz történő hozzáfűzésére használható.
 
     // Append to file
@@ -232,7 +236,7 @@ Az alábbi részlet egy `AppendToFile` metódust mutat be, amely az adatok egy D
         _adlsFileSystemClient.FileSystem.Append(_adlsAccountName, path, stream);
     }
 
-## Fájl letöltése
+## <a name="download-a-file"></a>Fájl letöltése
 Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data Lake Store-fiókból való letöltésére használható.
 
     // Download file
@@ -246,13 +250,16 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
         stream.Close();
     }
 
-## Következő lépések
-* [Secure data in Data Lake Store (Az adatok védelme a Data Lake Store-ban)](data-lake-store-secure-data.md)
-* [Use Azure Data Lake Analytics with Data Lake Store (Az Azure Data Lake Analytics használata a Data Lake Store-ral)](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store (Az Azure HDInsight használata a Data Lake Store-ral)](data-lake-store-hdinsight-hadoop-use-portal.md)
+## <a name="next-steps"></a>Következő lépések
+* [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
+* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [A Data Lake Store .NET SDK dokumentációja](https://msdn.microsoft.com/library/mt581387.aspx)
 * [A Data Lake Store REST dokumentációja](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!--HONumber=Sep16_HO5-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

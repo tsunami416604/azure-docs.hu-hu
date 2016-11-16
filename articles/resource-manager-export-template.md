@@ -1,22 +1,26 @@
 ---
-title: Azure Resource Manager-sablonok exportálása | Microsoft Docs
-description: Az Azure Resource Manager használatával sablonokat exportálhat létező erőforráscsoportokból.
+title: "Azure Resource Manager-sablonok exportálása | Microsoft Docs"
+description: "Az Azure Resource Manager használatával sablonokat exportálhat létező erőforráscsoportokból."
 services: azure-resource-manager
-documentationcenter: ''
+documentationcenter: 
 author: tfitzmac
 manager: timlt
 editor: tysonn
-
+ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/03/2016
+ms.date: 10/20/2016
 ms.author: tomfitz
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 18381e2fafb6a1e3883e0dbdf9dcfe5b59a78d32
+
 
 ---
-# Azure Resource Manager-sablonok exportálása létező erőforrásokból
+# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Azure Resource Manager-sablonok exportálása létező erőforrásokból
 A Resource Manager lehetővé teszi az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjainak exportálását. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
 
 Fontos megjegyezni, hogy sablonokat két különböző módon lehet exportálni:
@@ -24,21 +28,21 @@ Fontos megjegyezni, hogy sablonokat két különböző módon lehet exportálni:
 * Exportálhatja az üzembe helyezéshez is használt tényleges sablont. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a megközelítés akkor lehet hasznos, ha a portálon keresztül helyezte üzembe az erőforrásokat, és most szeretné megtudni, hogy hogyan alkossa meg az ezekhez az erőforrásokhoz használt sablont.
 * A másik megoldás, hogy úgy exportálja a sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. A rendszer ehelyett új sablont hoz létre az erőforráscsoport aktuális állapota alapján. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a megközelítés akkor lehet hasznos, ha a portálon vagy parancsprogramok segítségével módosította az erőforráscsoportot, és most szeretne létrehozni egy sablont az így létrejött egyedi erőforráscsoport alapján.
 
-Ebben a témakörben mind a két megoldást bemutatjuk. A [Customize an exported Azure Resource Manager template](resource-manager-customize-template.md) (Exportált Azure Resource Manager-sablon testreszabása) című cikkből megtudhatja, hogyan alakíthatja át az erőforráscsoport aktuális állapotát tükröző sablonokat úgy, hogy azok megkönnyítsék a megoldás ismételt üzembe helyezését.
+Ebben a témakörben mind a két megoldást bemutatjuk.
 
 Ebben az oktatóanyagban be fog jelentkezni az Azure Portalra, létrehoz egy tárfiókot, majd ebbe a tárfiókba exportálja a sablont. Emellett hozzá fog adni egy virtuális hálózatot az erőforráscsoport módosításához. Végül pedig exportálja az aktuális állapotot képviselő új sablont. Habár a jelen cikk egy egyszerűsített infrastruktúrára összpontosít, ugyanezen lépések használatával egy bonyolultabb megoldás sablonját is exportálhatja.
 
-## Create a storage account
-1. Az [Azure portálon](https://portal.azure.com) válassza az **Új** > **Adatok és Tárolás** > **Tárfiók** lehetőséget.
+## <a name="create-a-storage-account"></a>Create a storage account
+1. Az [Azure-portálon](https://portal.azure.com) válassza az **Új** > **Tárolás** > **Tárfiók** lehetőséget.
    
       ![tároló létrehozása](./media/resource-manager-export-template/create-storage.png)
-2. Hozzon létre egy tárfiókot **storage** névvel, saját monogramjával, valamint az aktuális dátummal. A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. Ha először egy már használatban lévő nevet ad meg, próbálkozzon meg annak egy variációjával. Erőforráscsoportnak adja meg az **ExportGroup** csoportot. A többi tulajdonság esetén használhatja az alapértelmezett értékeket. Kattintson a **Létrehozás** gombra.
+2. Hozzon létre egy tárfiókot **storage** névvel, saját monogramjával, valamint az aktuális dátummal. A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. Ha a név már használatban van, megjelenik egy üzenet, miszerint a név használatban van. Próbálkozzon egy módosított névvel. Erőforráscsoportok esetén hozzon létre új erőforráscsoportot, és nevezze el **ExportGroup**-nak. A többi tulajdonság esetén használhatja az alapértelmezett értékeket. Kattintson a **Létrehozás** gombra.
    
       ![a tároló értékeinek megadása](./media/resource-manager-export-template/provide-storage-values.png)
 
-Miután a telepítés végzett, az előfizetése tartalmazza majd a tárfiókot.
+Az üzembe helyezés egy percig is eltarthat. Miután a telepítés végzett, az előfizetése tartalmazza majd a tárfiókot.
 
-## Sablon exportálása az üzembe helyezési előzményekből
+## <a name="view-a-template-from-deployment-history"></a>Sablon megtekintése az üzembe helyezési előzményekből
 1. Nyissa meg az új erőforráscsoport paneljét. Figyelje meg, hogy a panelen a legutóbbi üzembe helyezés részletes adatai láthatók. Kattintson erre a hivatkozásra.
    
       ![erőforráscsoport panel](./media/resource-manager-export-template/resource-group-blade.png)
@@ -63,11 +67,52 @@ Miután a telepítés végzett, az előfizetése tartalmazza majd a tárfiókot.
       
       Különösen figyeljen oda a sablonra. A sablonnak az alábbihoz hasonlónak kell lennie:
       
-        {     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",     "contentVersion": "1.0.0.0",     "parameters": {       "name": {         "type": "String"       },       "accountType": {         "type": "String"       },       "location": {         "type": "String"       },       "encryptionEnabled": {         "defaultValue": false,         "type": "Bool"       }     },     "resources": [       {         "type": "Microsoft.Storage/storageAccounts",         "sku": {           "name": "[parameters('accountType')]"         },         "kind": "Storage",         "name": "[parameters('name')]",         "apiVersion": "2016-01-01",         "location": "[parameters('location')]",         "properties": {           "encryption": {             "services": {               "blob": {                 "enabled": "[parameters('encryptionEnabled')]"               }             },             "keySource": "Microsoft.Storage"           }         }       }     ]   }
+        {
+      
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "name": {
+              "type": "String"
+            },
+            "accountType": {
+              "type": "String"
+            },
+            "location": {
+              "type": "String"
+            },
+            "encryptionEnabled": {
+              "defaultValue": false,
+              "type": "Bool"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                "name": "[parameters('accountType')]"
+              },
+              "kind": "Storage",
+              "name": "[parameters('name')]",
+              "apiVersion": "2016-01-01",
+              "location": "[parameters('location')]",
+              "properties": {
+                "encryption": {
+                  "services": {
+                    "blob": {
+                      "enabled": "[parameters('encryptionEnabled')]"
+                    }
+                  },
+                  "keySource": "Microsoft.Storage"
+                }
+              }
+            }
+          ]
+        }
 
 Ez maga a sablon, amelyet a tárfiók létrehozásához használt. Figyelje meg, hogy a benne szereplő paraméterek különböző típusú tárfiókok üzembe helyezését is lehetővé teszik. A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md). A sablonokban használható függvények teljes listájáért olvassa el a következő cikket: [Azure Resource Manager template functions](resource-group-template-functions.md) (Az Azure Resource Manager-sablonokban használható függvények).
 
-## Virtuális hálózat hozzáadása
+## <a name="add-a-virtual-network"></a>Virtuális hálózat hozzáadása
 Az előző szakaszban letöltött sablon az eredeti üzembe helyezés infrastruktúráját tükrözi. Az üzembe helyezést követően végzett módosításokat azonban nem tartalmazza.
 A probléma bemutatása érdekében módosítsa az erőforráscsoportot, és adjon hozzá egy virtuális hálózatot a portálon keresztül.
 
@@ -83,12 +128,10 @@ A probléma bemutatása érdekében módosítsa az erőforráscsoportot, és adj
 4. Miután sikeresen telepítette a virtuális hálózatot az erőforráscsoportba, tekintse meg ismét a telepítési előzményeket. Most már két üzembe helyezés jelenik itt meg. Ha nem látja a második üzembe helyezést, próbálja meg bezárni, majd újra megnyitni az erőforráscsoport paneljét. Válassza ki az újabb telepítést.
    
       ![telepítési előzmények](./media/resource-manager-export-template/deployment-history.png)
-5. Tekintse meg a telepítés sablonját. Vegye figyelembe, hogy ez a sablon csak a virtuális hálózaton végzett módosításokat határozza meg.
+5. Tekintse meg a telepítés sablonját. Figyelje meg, hogy csak a virtuális hálózatot definiálja. Nem tartalmazza a korábban telepített tárfiókot. Már nem rendelkezik a csoport összes erőforrását képviselő sablonnal.
 
-Általában célszerű egyetlen sablonnal dolgozni, amely egyetlen műveletben képes telepíteni a megoldás teljes infrastruktúráját. Így nem szükséges több sablon üzembe helyezésével bajlódnia.
-
-## Az erőforráscsoport sablonjának exportálása
-Habár minden telepítés csak az erőforráscsoporton végzett módosításokat jeleníti meg, bármikor exportálhat egy olyan sablont, amely megmutatja a teljes erőforráscsoport attribútumait.  
+## <a name="export-the-template-from-resource-group"></a>Az erőforráscsoport sablonjának exportálása
+Az erőforráscsoport aktuális állapotának megismeréséhez exportáljon egy, az erőforráscsoport pillanatképét megjelenítő sablont.  
 
 > [!NOTE]
 > Több mint 200 erőforrással rendelkező erőforráscsoport esetében nem exportálhat sablont.
@@ -99,7 +142,7 @@ Habár minden telepítés csak az erőforráscsoporton végzett módosításokat
    
       ![erőforráscsoportok exportálása](./media/resource-manager-export-template/export-resource-group.png)
    
-     A sablonexportálási funkciót nem támogatja az összes erőforrástípus. Ha az erőforráscsoportban a cikkben említettek szerint kizárólag tárfiók és virtuális hálózat szerepel, nem fog hibaüzenetet kapni. Ha azonban más típusú erőforrásokat is létrehozott, előfordulhat, hogy hibaüzenet jelenik meg, amely tájékoztatja, hogy az exportálás során probléma merült fel. Ezeket a hibákat [Az exportálással kapcsolatos problémák megoldása](#fix-export-issues) című részben szereplő információk segítségével oldhatja meg.
+     A sablonexportálási funkciót nem támogatja az összes erőforrástípus. Ha az erőforráscsoportban a cikkben említettek szerint kizárólag tárfiók és virtuális hálózat szerepel, nem kap hibaüzenetet. Ha azonban más típusú erőforrásokat is létrehozott, előfordulhat, hogy hibaüzenet jelenik meg, amely tájékoztatja, hogy az exportálás során probléma merült fel. Ezeket a hibákat [Az exportálással kapcsolatos problémák megoldása](#fix-export-issues) című részben szereplő információk segítségével oldhatja meg.
 2. Ismét megjelenik a megoldás újbóli üzembe helyezéséhez használható hat fájl, de ezúttal a sablon némileg eltérően jelenik meg. Ez a sablon csak két paraméterrel rendelkezik: a tárfiók nevével, valamint a virtuális hálózat nevével.
    
         "parameters": {
@@ -120,12 +163,147 @@ Habár minden telepítés csak az erőforráscsoporton végzett módosításokat
         "properties": {
             "accountType": "Standard_RAGRS"
         },
-3. A sablon letöltésével helyben is dolgozhat rajta.
+3. Van néhány további lehetőség is arra, hogy továbbra is ezzel a sablonnal dolgozzon. Letöltheti a sablont, és dolgozhat rajta helyben egy JSON-szerkesztővel. Mentheti a sablont a saját tárába, és a portálon keresztül dolgozhat rajta.
+   
+     Ha járatos egy JSON-szerkesztő, például a [VS Code](resource-manager-vs-code.md) vagy a [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) használatában, érdemes a sablont helyileg letölteni, és az adott szerkesztőt használni. Ha nem állította be a JSON-szerkesztőt, inkább a portálon keresztül szerkessze a sablont. A témakör további részében azt feltételezzük, hogy mentette a sablont a saját tárába a portálon. Azonban ugyanazon szintaxismódosításokat végezheti el a sablonon a JSON-szerkesztőben helyileg és a portálon keresztül egyaránt.
+   
+     Ha helyben kíván dolgozni, válassza a **Letöltés** lehetőséget.
    
       ![sablon letöltése](./media/resource-manager-export-template/download-template.png)
-4. Keresse meg a letöltött .zip fájlt, és csomagolja ki annak tartalmát. A letöltött sablon segítségével újból telepítheti az infrastruktúrát.
+   
+     Ha a portálon keresztül dolgozna, válassza a **Hozzáadás a dokumentumtárhoz** lehetőséget.
+   
+      ![hozzáadás a dokumentumtárhoz](./media/resource-manager-export-template/add-to-library.png)
+   
+     Egy sablonnak a dokumentumtárhoz való hozzáadásakor adja meg a sablon nevét és leírását. Ezt követően válassza a **Mentés** lehetőséget.
+   
+     ![sablon értékeinek megadása](./media/resource-manager-export-template/set-template-values.png)
+4. Egy, a saját tárába mentett sablon megtekintéséhez válassza a **További szolgáltatások** lehetőséget, írja be a **Sablonok** szöveget az eredmények szűréséhez, majd válassza a **Sablonok** elemet.
+   
+      ![sablonok keresése](./media/resource-manager-export-template/find-templates.png)
+5. Válassza mentett nevű sablont.
+   
+      ![sablon kiválasztása](./media/resource-manager-export-template/select-library-template.png)
 
-## Az exportálással kapcsolatos problémák megoldása
+## <a name="customize-the-template"></a>A sablon testreszabása
+Az exportált sablon jól működik, ha ugyanazt a tárfiókot és a virtuális hálózatot szeretné létrehozni mindegyik üzemelő példányhoz. A Resource Manager által nyújtott lehetőségek azonban lehetővé teszik, hogy a sablonokat rugalmasabb módon helyezze üzembe. Előfordulhat például, hogy telepítés során meg szeretné adni a létrehozni kívánt tárfiók típusát, vagy a virtuális hálózat címelőtagjához és alhálózati előtagjához használni kívánt értékeket.
+
+Ebben a szakaszban paramétereket adhat hozzá az exportált sablonhoz, hogy az erőforrások más környezetekben való üzembe helyezése során újra felhasználhassa azt. Emellett néhány olyan funkciót is hozzáadhat a sablonhoz, amelyekkel csökkentheti annak az esélyét, hogy hibába ütközik annak üzembe helyezése során. Többé már nincs szüksége arra, hogy egyedi nevet találjon ki tárfiókjának. Ön helyett ugyanis a sablon hozza létre az egyedi nevet. Korlátozhatja a tárfiók típusához megadható értékeket csak az érvényes lehetőségekre.
+
+1. Válassza a **Szerkesztés** lehetőséget a sablon testreszabásához.
+   
+     ![sablon megjelenítése](./media/resource-manager-export-template/show-template.png)
+2. Válassza ki a sablont.
+   
+     ![sablon szerkesztése](./media/resource-manager-export-template/edit-template.png)
+3. A telepítés során meghatározni kívánt értékek megadásához cserélje le a **parameters** (paraméterek) szakasz tartalmát az új paraméterdefiníciókra. Figyelje meg a **storageAccount_accountType** paraméter **allowedValues** engedélyezett értékeit. Ha véletlenül érvénytelen értéket ad meg, a rendszer felismeri a hibát még a telepítés megkezdése előtt. Emellett vegye figyelembe azt is, hogy csak egy előtagot adott meg a tárfiók nevéhez, és az előtag legfeljebb 11 karakter lehet. Az előtag 11 karakterre történő korlátozásával biztosíthatja, hogy a teljes név nem haladja meg a tárfiókok esetén megengedett maximális karakterszámot. Az előtag lehetővé teszi, hogy elnevezési szabályokat alkalmazzon tárfiókjaira. Az egyedi nevek létrehozását a következő lépésben ismerheti meg.
+   
+        "parameters": {
+          "storageAccount_prefix": {
+            "type": "string",
+            "maxLength": 11
+          },
+          "storageAccount_accountType": {
+            "defaultValue": "Standard_RAGRS",
+            "type": "string",
+            "allowedValues": [
+              "Standard_LRS",
+              "Standard_ZRS",
+              "Standard_GRS",
+              "Standard_RAGRS",
+              "Premium_LRS"
+            ]
+          },
+          "virtualNetwork_name": {
+            "type": "string"
+          },
+          "addressPrefix": {
+            "defaultValue": "10.0.0.0/16",
+            "type": "string"
+          },
+          "subnetName": {
+            "defaultValue": "subnet-1",
+            "type": "string"
+          },
+          "subnetAddressPrefix": {
+            "defaultValue": "10.0.0.0/24",
+            "type": "string"
+          }
+        },
+4. A sablon **variables** (változók) szakasza jelenleg üres. A **variables** (változók) szakaszban olyan értékeket hozhat létre, amelyekkel leegyszerűsíthető a sablon további szintaxisa. Ez a szakasz cserélje ki egy új változódefinícióra. A **storageAccount_name** változó összefűzi a paraméterből származó előtagot egy egyedi karakterlánccá, amelyet a rendszer az erőforráscsoport azonosítója alapján hoz létre. Már nem kell egy egyedi nevet kitalálnia a paraméter értékének megadásakor.
+   
+        "variables": {
+          "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
+        },
+5. Ha a paramétereket és változókat az erőforrás-definíciókban is használni szeretné, cserélje le a **resources** (erőforrások) szakaszt az új erőforrás-definíciókra. Figyelje meg, hogy az erőforrás-tulajdonsághoz rendelt értéken kívül kevés változás történt az erőforrás-definíciókban. A tulajdonságok megegyeznek az exportált sablon tulajdonságaival. Egyszerűen a nem változtatható értékek helyett a paraméter-értékekhez rendelt hozzá tulajdonságokat. Az erőforrások helye úgy van beállítva a **resourceGroup().location** kifejezésen keresztül, hogy az erőforráscsoporttal megegyező legyen. A tárfiók nevéhez létrehozott változóra a **variables** kifejezés hivatkozik.
+   
+        "resources": [
+          {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetwork_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "properties": {
+              "addressSpace": {
+                "addressPrefixes": [
+                  "[parameters('addressPrefix')]"
+                ]
+              },
+              "subnets": [
+                {
+                  "name": "[parameters('subnetName')]",
+                  "properties": {
+                    "addressPrefix": "[parameters('subnetAddressPrefix')]"
+                  }
+                }
+              ]
+            },
+            "dependsOn": []
+          },
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccount_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {
+                "accountType": "[parameters('storageAccount_accountType')]"
+            },
+            "dependsOn": []
+          }
+        ]
+6. Amikor befejezte a sablon szerkesztését, kattintson az **OK** gombra.
+7. Kattintson a **Mentés** gombra a sablon módosításainak mentéséhez.
+   
+     ![sablon mentése](./media/resource-manager-export-template/save-template.png)
+8. A frissített sablon üzembe helyezéséhez válassza a **Telepítés** lehetőséget.
+   
+     ![sablon üzembe helyezése](./media/resource-manager-export-template/deploy-template.png)
+9. Adja meg a paraméterértékeket, és válassza ki az új erőforráscsoportot, amelybe az erőforrásokat üzembe kívánja helyezni.
+
+## <a name="update-the-downloaded-parameters-file"></a>A letöltött paraméterfájl frissítése
+Ha a letöltött fájlokkal dolgozik (a portál dokumentumtára helyett), frissítse a letöltött paraméterfájlt. Az ugyanis már nem egyezik a sablonban szereplő paraméterekkel. A paraméterfájl használata nem kötelező, de leegyszerűsítheti a környezetek újbóli telepítésének folyamatát. Számos paraméter esetében a sablonban megadott alapértelmezett értéket használja, így a paraméterfájlnak csupán két értéket kell tartalmaznia.
+
+Cserélje le a parameters.json fájl tartalmát az alábbira:
+
+```
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccount_prefix": {
+      "value": "storage"
+    },
+    "virtualNetwork_name": {
+      "value": "VNET"
+    }
+  }
+}
+```
+
+A frissített paraméterfájl csak azon paraméterekhez tartalmaz értékeket, amelyek nem rendelkeznek alapértelmezett értékkel. A többi paraméter esetén is megadhat értékeket, ha az alapértelmezett értéktől eltérőt szeretne használni.
+
+## <a name="fix-export-issues"></a>Az exportálással kapcsolatos problémák megoldása
 A sablonexportálási funkciót nem támogatja az összes erőforrástípus. A Resource Manager a bizalmas adatok megóvása érdekében szándékosan nem exportál bizonyos erőforrástípusokat. Valószínű például, hogy nem szeretné, hogy az oldal konfigurációjában található kapcsolati karakterlánc szerepeljen az exportált sablonban. A probléma megoldásához egyszerűen adja hozzá ismét manuálisan a hiányzó erőforrásokat a sablonhoz.
 
 > [!NOTE]
@@ -133,7 +311,7 @@ A sablonexportálási funkciót nem támogatja az összes erőforrástípus. A R
 > 
 > 
 
-Ha például az erőforráscsoport helykonfigurációjában, amelynek sablonját exportálni szeretné webalkalmazás, SQL Database-adatbázis és kapcsolati karakterlánc egyaránt található, az alábbi üzenet fog megjelenni.
+Ha például az erőforráscsoport helykonfigurációjában, amelynek sablonját exportálni szeretné webalkalmazás, SQL Database-adatbázis és kapcsolati karakterlánc egyaránt található, az alábbi üzenet jelenik meg:
 
 ![hibaüzenet](./media/resource-manager-export-template/show-error.png)
 
@@ -141,9 +319,9 @@ Válassza ki az üzenetet, és a rendszer megjeleníti, hogy mely erőforrástí
 
 ![hibaüzenet](./media/resource-manager-export-template/show-error-details.png)
 
-Ebben a részben néhány gyakori probléma megoldását mutatjuk be. Ezen erőforrások implementálásához különféle paramétereket kell a sablonhoz adnia. További információk a [Customize and redeploy exported template](resource-manager-customize-template.md) (Exportált sablonok testreszabása és újbóli üzembe helyezése) című cikkben olvashatók.
+Ez a témakör a gyakori javításokat mutatja be.
 
-### Kapcsolati karakterlánc
+### <a name="connection-string"></a>Kapcsolati karakterlánc
 A webhely erőforrásainál adja hozzá a kapcsolati karakterlánc definícióját az adatbázishoz:
 
 ```
@@ -169,7 +347,7 @@ A webhely erőforrásainál adja hozzá a kapcsolati karakterlánc definíciój�
 }
 ```    
 
-### Webhely bővítménye
+### <a name="web-site-extension"></a>Webhely bővítménye
 A webhely erőforrásainál adja hozzá a kód definícióját a telepítés érdekében:
 
 ```
@@ -198,10 +376,10 @@ A webhely erőforrásainál adja hozzá a kód definícióját a telepítés ér
 }
 ```
 
-### Virtuális gépi bővítmény
+### <a name="virtual-machine-extension"></a>Virtuális gépi bővítmény
 A virtuális gépekre vonatkozó példákért lásd: [Azure Windows VM Extension Configuration Samples](virtual-machines/virtual-machines-windows-extensions-configuration-samples.md) (Windowsos Azure virtuális gépi bővítmények konfigurációs mintái).
 
-### Virtuális hálózati átjáró
+### <a name="virtual-network-gateway"></a>Virtuális hálózati átjáró
 Adjon hozzá egy virtuális hálózati átjáró erőforrástípust.
 
 ```
@@ -236,7 +414,7 @@ Adjon hozzá egy virtuális hálózati átjáró erőforrástípust.
 },
 ```
 
-### Helyi hálózati átjáró
+### <a name="local-network-gateway"></a>Helyi hálózati átjáró
 Adjon hozzá egy helyi hálózati átjáró erőforrástípust.
 
 ```
@@ -253,7 +431,7 @@ Adjon hozzá egy helyi hálózati átjáró erőforrástípust.
 }
 ```
 
-### Kapcsolat
+### <a name="connection"></a>Kapcsolat
 Adjon hozzá egy kapcsolat erőforrástípust.
 
 ```
@@ -277,13 +455,16 @@ Adjon hozzá egy kapcsolat erőforrástípust.
 ```
 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Gratulálunk! Megtanulta, hogyan exportálhat sablonokat a portálon létrehozott erőforrásokból.
 
-* Az oktatóanyag második felében további paraméterek hozzáadásával testre szabhatja a letöltött sablont, valamint ismét üzembe helyezheti azt egy parancsfájl segítségével. Lásd: [Customize and redeploy exported template](resource-manager-customize-template.md) (Exportált sablonok testreszabása és újbóli üzembe helyezése).
+* Sablont a [PowerShell](resource-group-template-deploy.md), az [Azure parancssori felülete](resource-group-template-deploy-cli.md) vagy a [REST API](resource-group-template-deploy-rest.md) használatával helyezhet üzembe.
 * A sablonok PowerShellen keresztül történő exportálásával kapcsolatos információk: [Az Azure PowerShell használata Azure Resource Managerrel](powershell-azure-resource-manager.md).
 * A sablonok az Azure parancssori felületen keresztül történő exportálásával kapcsolatos információk: [A Mac, Linux és Windows eszközökhöz készült Azure CLI használata az Azure Resource Manager eszközzel](xplat-cli-azure-resource-manager.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

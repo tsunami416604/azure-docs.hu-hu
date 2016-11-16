@@ -1,30 +1,34 @@
 ---
 title: Azure Cool Storage blob objektumokhoz | Microsoft Docs
-description: Az Azure Blob Storage tárolási rétegei objektumadatok költséghatékony tárolását teszik lehetővé hozzáférési minták alapján. A ritkán használt adatok tárolási rétege olyan adatokra van optimalizálva, amelyeknél kisebb a hozzáférés gyakorisága.
+description: "Az Azure Blob Storage tárolási rétegei objektumadatok költséghatékony tárolását teszik lehetővé hozzáférési minták alapján. A ritkán használt adatok tárolási rétege olyan adatokra van optimalizálva, amelyeknél kisebb a hozzáférés gyakorisága."
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: michaelhauss
 manager: vamshik
 editor: tysonn
-
+ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
-ms.author: mihauss;robinsh
+ms.date: 10/18/2016
+ms.author: mihauss
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 31af2d1ade0c24a8d76e98d95fda287320552eea
+
 
 ---
-# Azure Blob Storage: a gyakran és a ritkán használt adatok tárolási rétegei
-## Áttekintés
+# <a name="azure-blob-storage-hot-and-cool-storage-tiers"></a>Azure Blob Storage: a gyakran és a ritkán használt adatok tárolási rétegei
+## <a name="overview"></a>Áttekintés
 Az Azure Storage most két tárolási réteget kínál a blobtároláshoz (objektumtároláshoz), hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **tárolási rétege gyakran használt adatokhoz** a gyakran használt adatok tárolására van optimalizálva. Az Azure **tárolási rétege ritkán használt adatokhoz** a ritkábban használt, hosszú élettartamú adatok tárolására van optimalizálva. A ritkán használt adatok tárolási rétegében lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében.
 
 Napjainkban a felhőben tárolt adatok mennyisége exponenciálisan nő. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam. A felhőben tárolt adatok az előállítás, a feldolgozás és a hozzáférés tekintetében igen különbözőek lehetnek az élettartamuk során. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően csak nagyon ritkán használják őket, ha használják őket egyáltalán.
 
 A fent vázolt adathozzáférési forgatókönyvek esetében számos előnyt biztosít az olyan rétegelt tárolási megoldás, amely egy adott hozzáférési mintára van optimalizálva. A gyakran és a ritkán használt adatok tárolási rétegének bevezetésével az Azure Blob Storage most a különböző tárolási igényeket célozza meg különböző árképzési modellekkel.
 
-## Blob Storage-fiókok
+## <a name="blob-storage-accounts"></a>Blob Storage-fiókok
 A **Blob Storage-fiókok** speciális tárfiókok a strukturálatlan adatok blobként (objektumokként) való tárolására az Azure Storage-ban. A Blob Storage-fiókokkal választhat a gyakran és a ritkán használt adatok tárolási rétege közül, így a ritkábban használt adatait alacsonyabb tárolási költséggel, a gyakrabban használt adatait pedig alacsonyabb hozzáférési költséggel tárolhatja. A Blob Storage-fiókok hasonlóak a meglévő általános célú tárfiókjaihoz, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz.
 
 > [!NOTE]
@@ -66,7 +70,7 @@ A csak blokk- és hozzáfűző blobok tárolását igénylő alkalmazásokhoz ja
 > 
 > 
 
-## A tárolási rétegek összehasonlítása
+## <a name="comparison-between-the-storage-tiers"></a>A tárolási rétegek összehasonlítása
 A következő táblázat összehasonlítja a két tárolási réteget:
 
 <table border="1" cellspacing="0" cellpadding="0" style="border: 1px solid #000000;">
@@ -118,7 +122,7 @@ A következő táblázat összehasonlítja a két tárolási réteget:
 > 
 > 
 
-## Árak és számlázás
+## <a name="pricing-and-billing"></a>Árak és számlázás
 A Blob Storage-fiókok új árképzési modellt alkalmaznak a blobtároláshoz a tárolási réteg alapján. A Blob Storage-fiókok használatakor az alábbi számlázási szempontok érvényesek:
 
 * **Tárolási költségek**: Az adattárolás díja a tárolt adatok mennyisége mellett a tárolási rétegtől függ. A ritkán használt adatok tárolási rétegének gigabájtonkénti költsége alacsonyabb, mint a gyakran használt adatok tárolási rétegéé.
@@ -133,14 +137,14 @@ A Blob Storage-fiókok új árképzési modellt alkalmaznak a blobtároláshoz a
 > 
 > 
 
-## Első lépések
+## <a name="quick-start"></a>Első lépések
 Ebben a szakaszban bemutatjuk a következő forgatókönyveket az Azure Portal használatával kapcsolatban:
 
 * Blob Storage-fiók létrehozása.
 * Blob Storage-fiók kezelése.
 
-### Az Azure Portal használata
-#### Blob Storage-fiók létrehozása az Azure Portal használatával
+### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+#### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Blob Storage-fiók létrehozása az Azure Portal használatával
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A Központ menüben válassza az **Új** > **Adatok + tárolás** > **Tárfiók** elemet.
 3. Adja meg a tárfiók nevét.
@@ -148,10 +152,10 @@ Ebben a szakaszban bemutatjuk a következő forgatókönyveket az Azure Portal h
     A névnek globálisan egyedinek kell lennie. A név része lesz a tárfiókban található objektumok elérése használt URL-címnek.  
 4. Válassza a **Resource Manager** lehetőséget üzemi modellként.
    
-    A rétegezett tárolás csak a Resource Manager tárfiókjaival használható. Ez az új erőforrások ajánlott üzembe helyezési modellje. További információk: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).  
+    A rétegezett tárolás csak a Resource Manager tárfiókjaival használható. Ez az új erőforrások ajánlott üzembe helyezési modellje. További információk: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  
 5. A Fiók típusa legördülő listában válassza a **Blobtároló** elemet.
    
-    Itt választhatja ki a tárfiók típusát. A rétegezett tárolás nem érhető el az általános célú tárolóknál, csak a Blobtároló típusú fiókban.    
+    Itt választhatja ki a tárfiók típusát. A rétegezett tárolás nem érhető el az általános célú tárolóknál, csak a Blobtároló típusú fiókban.     
    
     Vegye figyelembe, hogy ha ezt választja, a teljesítményréteg beállítása Standard lesz. A rétegezett tárolás nem érhető el a Prémium teljesítményrétegnél.
 6. Válassza ki a tárfiók replikálási beállítását: **LRS**, **GRS** vagy **RA-GRS**. Az alapértelmezett beállítás az **RA-GRS**.
@@ -161,11 +165,11 @@ Ebben a szakaszban bemutatjuk a következő forgatókönyveket az Azure Portal h
     Az Azure Storage replikálási beállításaival kapcsolatos további részleteket lásd: [Azure Storage replication](storage-redundancy.md) (Az Azure Storage replikációja).
 7. Válassza ki az igényeinek megfelelő tárolási réteget: a **Hozzáférési szint** beállításnál válassza a **Ritka** vagy a **Gyakori** lehetőséget. Az alapértelmezett réteg a **gyakran használt adatok**.
 8. Válassza ki az előfizetést, amelyikben az új tárfiókot létre szeretné hozni.
-9. Adjon meg egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../resource-group-overview.md).
+9. Adjon meg egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 10. Válassza ki a tárfiók régióját.
 11. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.
 
-#### Blob Storage-fiók tárolási rétegének módosítása az Azure Portal használatával
+#### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Blob Storage-fiók tárolási rétegének módosítása az Azure Portal használatával
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A tárfiókjának eléréséhez válassza az Összes erőforrás lehetőséget, majd válassza ki a tárfiókját.
 3. A Beállítások panelen kattintson a **Konfiguráció** elemre a fiók konfigurációjának megtekintéséhez és/vagy megváltoztatásához.
@@ -177,7 +181,7 @@ Ebben a szakaszban bemutatjuk a következő forgatókönyveket az Azure Portal h
 > 
 > 
 
-## A lehetőség mérlegelése és áttérés a Blob Storage-fiókokra
+## <a name="evaluating-and-migrating-to-blob-storage-accounts"></a>A lehetőség mérlegelése és áttérés a Blob Storage-fiókokra
 Ennek a résznek a célja, hogy segítséget nyújtson a felhasználóknak a Blob Storage-fiókok használatára való zökkenőmentes váltásban. Két felhasználói forgatókönyv közül választhat:
 
 * Rendelkezik egy meglévő általános célú tárfiókkal, és szeretné kiértékelni a Blob Storage-fiók megfelelő tárolási rétegére való áttérést.
@@ -185,13 +189,13 @@ Ennek a résznek a célja, hogy segítséget nyújtson a felhasználóknak a Blo
 
 Mindkét esetben az első teendő a Blob Storage-fiókban tárolt adataihoz kapcsolódó tárolási és hozzáférési költségek kiszámítása, és az eredmények összehasonlítása az aktuális költségekkel.
 
-### A Blob Storage-fiókok rétegeinek kiértékelése
+### <a name="evaluating-blob-storage-account-tiers"></a>A Blob Storage-fiókok rétegeinek kiértékelése
 A Blob Storage-fiókban lévő adatok tárolási és hozzáférési költségeire vonatkozó becslés elkészítéséhez ki kell értékelnie a jelenlegi használati módot vagy a várható használati módot. Általában a következőket érdemes figyelembe venni:
 
 * Tárhelyhasználat – Mennyi adatot tárol, és ez milyen mértékben változik havi szinten?
 * Tároló-hozzáférési minta – Mennyi adatot olvas és ír a fiókba (beleértve az új adatokat is)? Hány tranzakciót használ az adatok eléréséhez, és ezek milyen típusú tranzakciók?
 
-#### A meglévő tárfiókok figyelése
+#### <a name="monitoring-existing-storage-accounts"></a>A meglévő tárfiókok figyelése
 A meglévő tárfiókok figyeléséhez és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és a fiókokra vonatkozó mérőszámokat kaphat.
 A Storage Analytics olyan mérőszámokat tárol, amelyek a Blob Storage szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind az általános célú tárfiókok, mind a Blob Storage-fiókok esetében.
 Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
@@ -225,15 +229,15 @@ További tudnivalók a mérőszámadatok engedélyezésével, gyűjtésével és
 > 
 > 
 
-#### Költségbecslés a használati mérőszámok alapján
-##### Tárolási költségek
+#### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Költségbecslés a használati mérőszámok alapján
+##### <a name="storage-costs"></a>Tárolási költségek
 A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„data”* sorkulcsú utolsó bejegyzése mutatja a felhasználói adatok által igénybe vett tárolókapacitást.
 A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„analytics”* sorkulcsú utolsó bejegyzése mutatja az elemzési naplók által igénybe vett tárolókapacitást.
 
 A felhasználói adatok és az elemzési naplók (ha engedélyezve vannak) által igénybe vett teljes kapacitás alapján lehet megbecsülni a tárfiókban lévő adatok tárolási költségét.
 Ugyanezzel a módszerrel becsülhetők meg a blokkblobok és a hozzáfűző blobok tárolási költségei az általános célú tárfiókokban.
 
-##### Tranzakciós költségek
+##### <a name="transaction-costs"></a>Tranzakciós költségek
 A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalBillableRequests”* összege mutatja az adott API tranzakcióinak teljes számát. *Például* az adott időszakba eső *„GetBlob”* tranzakciók száma a *„user;GetBlob”* sorkulcsú bejegyzések összes számlázható kérelmének összege alapján számítható ki.
 
 A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
@@ -244,7 +248,7 @@ A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tran
 
 Az általános célú tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell az összes tranzakciót, függetlenül a művelettől és az API-tól.
 
-##### Az adatok hozzáférésének és a georeplikációs adatok átvitelének költségei
+##### <a name="data-access-and-georeplication-data-transfer-costs"></a>Az adatok hozzáférésének és a georeplikációs adatok átvitelének költségei
 Bár a tároló elemzése nem jelzi a tárfiókból olvasott és a tárfiókba írt adatok mennyiségét, a tranzakciók mérőszámának táblája alapján lehetőség van megközelítőleges becslésre.
 A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalIngress”* összege mutatja az adott API bejövő adatainak teljes mennyiségét bájtban.
 Hasonlóképpen a *„TotalEgress”* összege a kimenő adatok teljes mennyiségét mutatja bájtban.
@@ -261,21 +265,21 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 > 
 > 
 
-### Meglévő adatok áttelepítése
+### <a name="migrating-existing-data"></a>Meglévő adatok áttelepítése
 A Blob Storage-fiókok kifejezetten blokkblobok és hozzáfűző blobok tárolására készültek. A meglévő általános célú tárfiókok, amelyek a blobok mellett táblák, üzenetsorok, fájlok és lemezek tárolását is lehetővé teszik, nem konvertálhatóak Blob Storage-fiókká. A tárolási rétegek használatához létre kell hoznia egy új Blob Storage-fiókot, és áttelepíteni meglévő adatait az újonnan létrehozott fiókra.
 Meglévő adatai a helyi tárolóeszközökről, külső felhőtárolási szolgáltatóktól vagy meglévő általános célú Azure-tárfiókjairól a Blob Storage-fiókokba való áttelepítéséhez a következő módszereket használhatja:
 
-#### AzCopy
+#### <a name="azcopy"></a>AzCopy
 Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. Az AzCopy használatával adatait átmásolhatja Blob Storage-fiókjába meglévő általános célú tárfiókjából, vagy feltölthet adatokat helyi tárolóeszközeiről a Blob Storage-fiókba.
 
 További részletekért lásd: [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md) (Adatátvitel az AzCopy parancssori segédprogrammal).
 
-#### Adatátviteli könyvtár
+#### <a name="data-movement-library"></a>Adatátviteli könyvtár
 Az Azure Storage a .NET-keretrendszerhez készült adatátviteli könyvtára az AzCopyt működtető alapvető adatátviteli keretrendszeren alapul. A könyvtár az AzCopyhoz hasonló nagy teljesítményű, megbízható és könnyű adatátviteli műveletekhez készült. Így az AzCopy által kínált szolgáltatások előnyeit teljes mértékben kiaknázhatja alkalmazásában natív módon, anélkül, hogy ehhez az AzCopy külső példányait kellene futtatnia vagy felügyelnie.
 
 További részletek: [Azure Storage adatátviteli könyvtár a .Net-keretrendszerhez](https://github.com/Azure/azure-storage-net-data-movement)
 
-#### REST API vagy ügyfélkódtár
+#### <a name="rest-api-or-client-library"></a>REST API vagy ügyfélkódtár
 Az adatok a Blob Storage-fiókra való áttelepítéséhez létrehozhat egy egyéni alkalmazást az Azure ügyfélkódtárai vagy az Azure Storage szolgáltatások REST API felülete segítségével. Az Azure Storage gazdag ügyfélkódtárakat biztosít több nyelvhez és platformhoz is, beleértve a következőket: .NET, Java, C++, Node.JS, PHP, Ruby és Python. Az ügyfélkódtárak olyan fejlett képességeket biztosítanak, mint az újrapróbálkozási logika, a naplózás vagy a párhuzamos feltöltések. Fejleszthet közvetlenül a REST API-n is, amely minden, HTTP-/HTTPS-kérelmek létrehozására alkalmas nyelven meghívható.
 
 További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatással](storage-dotnet-how-to-use-blobs.md).
@@ -285,7 +289,7 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
 > 
 > 
 
-## Gyakori kérdések
+## <a name="faqs"></a>Gyakori kérdések
 1. **A meglévő tárfiókok továbbra is elérhetőek?**
    
     Igen, a meglévő tárfiókok továbbra is elérhetőek változatlan árképzéssel és funkcionalitással.  Nem érhető el hozzájuk a tárolási rétegek kiválasztásának lehetősége, és a jövőben sem rendelkeznek majd ezzel a képességgel.
@@ -319,8 +323,8 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
     
     A Blob Storage-fiókok nagyon hasonlóak az általános célú tárfiókokhoz a blokk- és hozzáfűző blobok tárolása tekintetében, és támogatják az Azure Storage minden lényeges szolgáltatását, beleértve a nagy tartósságot, valamint a magas szintű rendelkezésre állást, méretezhetőséget, teljesítményt és biztonságot. A Blob Storage-fiókokra jellemző konkrét szolgáltatásoktól és korlátozásoktól, valamint a fent kiemelt tárolási rétegektől eltekintve minden más változatlan marad.
 
-## Következő lépések
-### A Blob Storage-fiókok értékelése
+## <a name="next-steps"></a>Következő lépések
+### <a name="evaluate-blob-storage-accounts"></a>A Blob Storage-fiókok értékelése
 [A Blob Storage-fiókok elérhetőségének ellenőrzése régió alapján](https://azure.microsoft.com/regions/#services)
 
 [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](storage-enable-and-view-metrics.md)
@@ -329,15 +333,18 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
 
 [Az adatátviteli díjszabás megtekintése](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-### A Blob Storage-fiókok használatának megkezdése
+### <a name="start-using-blob-storage-accounts"></a>A Blob Storage-fiókok használatának megkezdése
 [Ismerkedés az Azure Blob Storage szolgáltatással](storage-dotnet-how-to-use-blobs.md)
 
 [Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová](storage-moving-data.md)
 
-[Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](storage-use-azcopy.md)
+[Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
 
 [A tárfiókok tallózása és felfedezése](http://storageexplorer.com/)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

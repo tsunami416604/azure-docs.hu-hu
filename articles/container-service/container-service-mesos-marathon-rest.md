@@ -1,34 +1,38 @@
 ---
-title: Azure tárolószolgáltatás-tárolók kezelése a REST API-val | Microsoft Docs
-description: Tárolók üzembe helyezése Azure tárolószolgáltatásbeli Mesos fürtben a Marathon REST API használatával.
+title: "Azure tárolószolgáltatás-tárolók kezelése a REST API-val | Microsoft Docs"
+description: "Tárolók üzembe helyezése Azure tárolószolgáltatásbeli Mesos fürtben a Marathon REST API használatával."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, tárolók, mikroszolgáltatások, Mesos, Azure
-
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+ms.assetid: c7175446-4507-4a33-a7a2-63583e5996e3
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: nepeters
+ms.author: timlt
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7b9358183d884dfeda3d200ef5ae8beb60d3957e
+
 
 ---
-# Tárolókezelés a REST API használatával
+# <a name="container-management-through-the-rest-api"></a>Tárolókezelés a REST API használatával
 A DC/OS biztosítja a fürtözött feladatok telepítését és skálázását lehetővé tevő környezetet, ugyanakkor absztrakciós rétegként működik a hardver fölött. A DC/OS fölötti keretrendszer gondoskodik a számítási feladatok ütemezéséről és végrehajtásáról.
 
-Számos népszerű számítási feladathoz érhetők el keretrendszerek. Ez a dokumentum azt ismerteti, hogy miként hozhat létre és hogyan méretezhet üzemelő tárolópéldányokat a Marathon használatával. A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure tárolószolgáltatásban konfigurált DC/OS-fürtre, valamint távoli kapcsolatot kell tudnia létesíteni a fürttel. Ezekről az elemekről további információt a következő cikkekben talál:
+Számos népszerű számítási feladathoz érhetők el keretrendszerek. Ez a dokumentum azt ismerteti, hogy miként hozhat létre és hogyan méretezhet üzemelő tárolópéldányokat a Marathon használatával. A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure tárolószolgáltatásban konfigurált DC/OS-fürtre, valamint távoli kapcsolatot kell tudnia létesíteni a fürttel. Ezekkel az elemekkel kapcsolatban a következő cikkekben talál további tájékoztatást:
 
-* [Azure tárolószolgáltatás-fürt üzembe helyezése](container-service-deployment.md)
-* [Csatlakozás Azure tárolószolgáltatás-fürthöz](container-service-connect.md)
+* [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md)
+* [Csatlakozás Azure Container Service-fürthöz](container-service-connect.md)
 
 Miután csatlakozott az Azure tárolószolgáltatás-fürthöz, a DC/OS-t és a megfelelő REST API-kat a http://localhost:local-port címen érheti el. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. A Marathon-végpont például a `http://localhost/marathon/v2/` címen érhető el. A [Marathon API-ról](https://mesosphere.github.io/marathon/docs/rest-api.html) és a [Chronos API-ról](https://mesos.github.io/chronos/docs/api.html) a Mesosphere dokumentációjában, a [Mesos Scheduler API-ról](http://mesos.apache.org/documentation/latest/scheduler-http-api/) pedig az Apache dokumentációjában talál további információt.
 
-## Információgyűjtés a DC/OS-ről és a Marathonról
+## <a name="gather-information-from-dcos-and-marathon"></a>Információgyűjtés a DC/OS-ről és a Marathonról
 Mielőtt tárolókat helyezne üzembe a DC/OS fürtben, gyűjtsön össze néhány olyan információt a DC/OS-fürtről, mint például a DC/OS-ügynökök neve és aktuális állapota. Ehhez kérdezze le a DC/OS REST API fő- és alárendelt kiszolgálóinak (`master/slaves`) végpontját. Ha minden megfelelően működik, megjelenik a DC/OS-ügynökök listája és az ügynökök különböző tulajdonságai.
 
 ```bash
@@ -43,7 +47,7 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## Docker-formátumú tároló üzembe helyezése
+## <a name="deploy-a-dockerformatted-container"></a>Docker-formátumú tároló üzembe helyezése
 A Docker-formátumú tárolók Marathon segítségével való üzembe helyezéséhez egy olyan JSON-fájlt kell használnia, amelyben megadhatja a kívánt üzembe helyezéssel kapcsolatos információkat. Az alábbi példában, amely egy Nginx-tároló üzembe helyezését szemlélteti, a DC/OS-ügynök 80-as portja a tároló 80-as portjával van összekötve. Figyelje meg, hogy az „acceptedResourceRoles” tulajdonság értéke „slave_public”. Ezáltal a tároló egy nyilvános ügynökskálázási készletben lévő ügynökön lesz üzembe helyezve.
 
 ```json
@@ -86,7 +90,7 @@ Ha ezt követően lekérdezi az alkalmazásokat a Marathonban, az eredmények k�
 curl localhost/marathon/v2/apps
 ```
 
-## Tárolók skálázása
+## <a name="scale-your-containers"></a>Tárolók skálázása
 A Marathon API-t az üzemelő alkalmazáspéldányok horizontális skálázására is használhatja. Az előző példában üzembe helyezett egy alkalmazáspéldányt. Ezt most skálázhatja három alkalmazáspéldányra. Ehhez hozzon létre egy JSON-fájlt az alábbi JSON-szöveg használatával, és tárolja elérhető helyen.
 
 ```json
@@ -110,7 +114,7 @@ Végül kérdezze le az alkalmazásokat a Marathon végponton. Láthatja majd, h
 curl localhost/marathon/v2/apps
 ```
 
-## Ehhez a gyakorlathoz használja a PowerShellt: Marathon REST API – kommunikáció a PowerShell-lel.
+## <a name="use-powershell-for-this-exercise-marathon-rest-api-interaction-with-powershell"></a>Ehhez a gyakorlathoz használja a PowerShellt: Marathon REST API – kommunikáció a PowerShell-lel.
 Ugyanezeket a műveleteket elvégezheti Windows rendszerben is a PowerShell-parancsok használatával.
 
 Ha információt szeretne gyűjteni a DC/OS-fürtről, például szeretné beolvasni az ügynökök nevét és állapotát, használja az alábbi parancsot.
@@ -163,10 +167,13 @@ Az alkalmazás horizontális skálázásához használja az alábbi parancsot.
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [További információk a Mesos HTTP-végpontokról](http://mesos.apache.org/documentation/latest/endpoints/).
 * [További információk a Marathon REST API-ról](https://mesosphere.github.io/marathon/docs/rest-api.html).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

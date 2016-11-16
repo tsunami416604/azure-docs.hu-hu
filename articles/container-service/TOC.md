@@ -1,5 +1,5 @@
 # Áttekintés
-## [Az ACS bemutatása](container-service-intro.md)
+## [Mi az Azure Container Service?](container-service-intro.md)
 # Első lépések
 
 ## [ACS-fürt üzembe helyezése](container-service-deployment.md)
@@ -21,12 +21,11 @@
 ### [A Docker Swarm áttekintése](container-service-docker-swarm.md)
 
 # Referencia
-
-## [REST API](https://go.microsoft.com/fwlink/p/?linkid=833499)
+## [REST API](https://docs.microsoft.com/rest/api/compute/containerservices/)
 
 # Erőforrások
-
 ## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/container-service/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 

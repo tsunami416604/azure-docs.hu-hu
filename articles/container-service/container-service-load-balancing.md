@@ -1,14 +1,14 @@
 ---
-title: Tárolók terheléselosztása Azure Container Service-fürtben | Microsoft Docs
-description: Több tárolóra kiterjedő terheléselosztás Azure Container Service-fürtben
+title: "Tárolók terheléselosztása Azure Container Service-fürtben | Microsoft Docs"
+description: "Több tárolóra kiterjedő terheléselosztás Azure Container Service-fürtben"
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Tárolók, mikroszolgáltatások, DC/OS, Azure
-
+keywords: "Tárolók, mikroszolgáltatások, DC/OS, Azure"
+ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,6 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: cf255856302ad5bdb1f6022d231833610acbcac5
+
 
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-cluster"></a>Tárolók terheléselosztása Azure Container Service-fürtben
@@ -35,14 +39,14 @@ A Marathon Load Balancer dinamikusan újrakonfigurálja magát az üzembe helyez
 
 A Marathon Load Balancer telepítéséhez a DC/OS webes felhasználói felületet vagy a parancssort használhatja.
 
-### <a name="install-marathon-lb-using-dc/os-web-ui"></a>A Marathon-LB telepítése DC/OS webes felhasználói felülettel
+### <a name="install-marathonlb-using-dcos-web-ui"></a>A Marathon-LB telepítése DC/OS webes felhasználói felülettel
 1. Kattintson a Universe elemre.
 2. Keressen rá a Marathon-LB kifejezésre.
 3. Kattintson az Install (Telepítés) gombra.
 
 ![A Marathon-LB telepítése a DC/OS webes felületén keresztül](./media/dcos/marathon-lb-install.png)
 
-### <a name="install-marathon-lb-using-the-dc/os-cli"></a>A Marathon-LB használata a DC/OS parancssori felülettel
+### <a name="install-marathonlb-using-the-dcos-cli"></a>A Marathon-LB használata a DC/OS parancssori felülettel
 A DC/OS parancssori felület telepítése és annak ellenőrzése után, hogy tud-e csatlakozni a fürthöz, futtassa a következő parancsot az ügyfélgépről:
 
 ```bash
@@ -97,13 +101,13 @@ Most, hogy már rendelkezésre áll a marathon-lb csomag, üzembe helyezhetünk 
 
 Megjegyzendő, hogy a Marathon alapértelmezés szerint a privát fürtöt helyezi üzembe; ez azt jelenti, hogy a fenti üzemelő példányt csak a terheléselosztón keresztül lehet elérni, ez pedig általában pontosan az a működésmód, amit szeretnénk.
 
-### <a name="deploy-using-the-dc/os-web-ui"></a>Üzembe helyezés a DC/OS webes felhasználói felületével
+### <a name="deploy-using-the-dcos-web-ui"></a>Üzembe helyezés a DC/OS webes felhasználói felületével
 1. Látogasson el a Marathon oldalára a http://localhost/marathon címen (az [SSH-alagút](container-service-connect.md) beállítása után), és kattintson a következőre: `Create Appliction`
 2. A `New Application` párbeszédpanelen kattintson a `JSON Mode` elemre a jobb felső sarokban.
 3. Illessze be a fenti JSON-t a szerkesztőbe.
 4. Kattintson a következőre: `Create Appliction`
 
-### <a name="deploy-using-the-dc/os-cli"></a>Üzembe helyezés a DC/OS parancssori felülettel
+### <a name="deploy-using-the-dcos-cli"></a>Üzembe helyezés a DC/OS parancssori felülettel
 Ha ezt az alkalmazást a DC/OS parancssori felülettel szeretné telepíteni, egyszerűen másolja a fenti JSON-t egy `hello-web.json` nevű fájlba, és futtassa a következőt:
 
 ```bash
@@ -129,6 +133,9 @@ Azure lb:8080 -> marathon-lb:1002 -> tarolo2:33432
 ## <a name="next-steps"></a>Következő lépések
 A [Marathon-LB-re](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/) vonatkozó további információért tekintse meg a DC/OS dokumentációt.
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

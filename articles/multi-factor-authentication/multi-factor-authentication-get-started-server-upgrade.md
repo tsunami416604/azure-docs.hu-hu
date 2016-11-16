@@ -1,12 +1,12 @@
 ---
-title: Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
-description: Ez a dokumentum ismerteti az Azure MFA-kiszolgálóval kapcsolatos első lépéseket, illetve azt, hogy hogyan frissíthet a régebbi phonefactor ügynökről.
+title: "Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra"
+description: "Ez a dokumentum ismerteti az Azure MFA-kiszolgálóval kapcsolatos első lépéseket, illetve azt, hogy hogyan frissíthet a régebbi phonefactor ügynökről."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: curtland
-
+ms.assetid: 42838ff7-bdf2-4d06-bacc-b3839a00cd76
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1cd92121b150461698674b8acd4369d09c9b9920
+
 
 ---
-# Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
+# <a name="upgrading-the-phonefactor-agent-to-azure-multifactor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
 Ha a PhoneFactor ügynök 5.x vagy régebbi verziójáról frissít az Azure Multi-Factor Authentication-kiszolgálóra, a PhoneFactor ügynököt és a kapcsolódó összetevőit el kell távolítani a Multi-Factor Authentication-kiszolgáló és kapcsolódó összetevőinek telepítése előtt.
 
-## Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
+## <a name="to-upgrade-the-phonefactor-agent-to-azure-multifactor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
 <ol>
 <li>Először készítsen biztonsági másolatot a PhoneFactor-adatfájlokról. Az alapértelmezett telepítési hely a C:\Program Files\PhoneFactor\Data\Phonefactor.pfdata mappa.
 
@@ -66,6 +70,6 @@ Ha a PhoneFactor ügynök 5.x vagy régebbi verziójáról frissít az Azure Mul
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

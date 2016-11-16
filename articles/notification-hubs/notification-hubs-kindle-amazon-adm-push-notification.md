@@ -1,35 +1,39 @@
 ---
-title: Az Azure Notification Hubs használatának első lépései Kindle-alkalmazásokhoz | Microsoft Docs
-description: Ebből az oktatóanyagból elsajátíthatja, hogy miként használható az Azure Notification Hubs leküldéses értesítések küldéséhez Kindle-alkalmazások esetén.
+title: "Az Azure Notification Hubs használatának első lépései Kindle-alkalmazásokhoz | Microsoft Docs"
+description: "Ebből az oktatóanyagból elsajátíthatja, hogy miként használható az Azure Notification Hubs leküldéses értesítések küldéséhez Kindle-alkalmazások esetén."
 services: notification-hubs
-documentationcenter: ''
-author: wesmc7777
+documentationcenter: 
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 346fc8e5-294b-4e4f-9f27-7a82d9626e93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-kindle
 ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
+
 
 ---
-# Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
+# <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 Ebből az oktatóanyagból elsajátíthatja, hogy miként használható az Azure Notification Hubs leküldéses értesítések küldéséhez Kindle-alkalmazások esetén.
 Létre fog hozni egy üres Kindle-alkalmazást, amely leküldéses értesítéseket fogad az Amazon Device Messaging (ADM) használatával.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 * Töltse le az Android SDK-t (amennyiben Eclipse-t használ) az <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a>.
 * Kövesse a <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Setting Up Your Development Environment</a> (A fejlesztési környezet beállítása) című cikk lépéseit a Kindle fejlesztési környezetének beállításához.
 
-## Új fájl hozzáadása a fejlesztői portálhoz
+## <a name="add-a-new-app-to-the-developer-portal"></a>Új fájl hozzáadása a fejlesztői portálhoz
 1. Először hozzon létre egy alkalmazást az [Amazon fejlesztői portálján].
    
     ![][0]
@@ -46,7 +50,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
    
     ![][4]
 
-## API-kulcs létrehozása
+## <a name="create-an-api-key"></a>API-kulcs létrehozása
 1. Nyisson meg egy parancssort rendszergazdai jogosultságokkal.
 2. Lépjen az Android SDK mappába.
 3. Írja be a következő parancsot:
@@ -58,10 +62,10 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 5. Jegyezze fel az **MD5**-ujjlenyomatot.
 6. A fejlesztői portálra visszatérve kattintson az **Android/Kindle** lehetőségre a **Messaging** (Üzenetküldés) lapon, és adja meg az alkalmazásához használt csomag nevét (például: **com.sample.notificationhubtest**), valamint az **MD5** értékét, majd kattintson a **Generate API Key** (API-kulcs létrehozása) lehetőségre.
 
-## Hitelesítő adatok hozzáadása a központhoz
+## <a name="add-credentials-to-the-hub"></a>Hitelesítő adatok hozzáadása a központhoz
 A portálon adja hozzá a titkos ügyfélkulcsot és az ügyfél-azonosítót az értesítési központ **Configure** (Konfigurálás) lapján.
 
-## Az alkalmazás beállítása
+## <a name="set-up-your-application"></a>Az alkalmazás beállítása
 > [!NOTE]
 > Alkalmazás létrehozásakor legalább 17-es API-szintet használjon.
 > 
@@ -121,7 +125,7 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
             </intent-filter>
         </receiver>
 
-## Az ADM üzenetkezelőjének létrehozása
+## <a name="create-your-adm-message-handler"></a>Az ADM üzenetkezelőjének létrehozása
 1. Hozzon létre egy új osztályt, mely a `com.amazon.device.messaging.ADMMessageHandlerBase` elemtől öröklődik, és nevezze el `MyADMMessageHandler`-nek, ahogy azt a következő ábra is mutatja:
    
     ![][6]
@@ -139,7 +143,7 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
-        private static NotificationHub hub;
+          private static NotificationHub hub;
         public static NotificationHub getNotificationHub(Context context) {
             Log.v("com.wa.hellokindlefire", "getNotificationHub");
             if (hub == null) {
@@ -163,22 +167,22 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
             private void sendNotification(String msg) {
                 Context ctx = getApplicationContext();
    
-             mNotificationManager = (NotificationManager)
+                mNotificationManager = (NotificationManager)
                     ctx.getSystemService(Context.NOTIFICATION_SERVICE);
    
             PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
-                new Intent(ctx, MainActivity.class), 0);
+                  new Intent(ctx, MainActivity.class), 0);
    
             NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(ctx)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Notification Hub Demo")
-                .setStyle(new NotificationCompat.BigTextStyle()
+                  new NotificationCompat.Builder(ctx)
+                  .setSmallIcon(R.mipmap.ic_launcher)
+                  .setContentTitle("Notification Hub Demo")
+                  .setStyle(new NotificationCompat.BigTextStyle()
                          .bigText(msg))
-                .setContentText(msg);
+                  .setContentText(msg);
    
-            mBuilder.setContentIntent(contentIntent);
-            mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+             mBuilder.setContentIntent(contentIntent);
+             mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
 4. Adja hozzá a következő kódot az `OnMessage()` metódushoz:
    
@@ -193,11 +197,11 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
             }
 6. Adja hozzá a következő kódot az `OnUnregistered` metódushoz:
    
-           try {
-               getNotificationHub(getApplicationContext()).unregister();
-           } catch (Exception e) {
-               Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
-           }
+         try {
+             getNotificationHub(getApplicationContext()).unregister();
+         } catch (Exception e) {
+             Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
+         }
 7. A `MainActivity` metódushoz adja hozzá a következő importálási utasítást:
    
         import com.amazon.device.messaging.ADM;
@@ -211,7 +215,7 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
             new AsyncTask() {
                   @Override
                   protected Object doInBackground(Object... params) {
-                     try {                       MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
+                     try {                         MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
                      } catch (Exception e) {
                          Log.e("com.wa.hellokindlefire", "Failed registration with hub", e);
                          return e;
@@ -221,11 +225,11 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
                }.execute(null, null, null);
         }
 
-## Az API-kulcs hozzáadása az alkalmazáshoz
+## <a name="add-your-api-key-to-your-app"></a>Az API-kulcs hozzáadása az alkalmazáshoz
 1. Az Eclipse-ben hozzon létre egy új fájlt **api_key.txt** néven a projekt könyvtáreszközeiben.
 2. Nyissa meg a fájlt, és másolja be az Amazon fejlesztői portálon létrehozott API-kulcsot.
 
-## Az alkalmazás futtatása
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 1. Indítsa el az emulátort.
 2. Az emulátorban pöccintsen lefelé a képernyő tetejéről, és kattintson a **Settings** (Beállítások), majd a **My account** (Saját fiók) elemre, végül pedig jelentkezzen be egy érvényes Amazon-fiókkal.
 3. Futtassa az alkalmazást az Eclipse-ben.
@@ -237,7 +241,7 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
-## Üzenet küldése
+## <a name="send-a-message"></a>Üzenet küldése
 Üzenet küldése a .NET használatával:
 
         static void Main(string[] args)
@@ -250,8 +254,8 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 ![][7]
 
 <!-- URLs. -->
-[Amazon fejlesztői portálján]: https://developer.amazon.com/home.html
-[töltse le az SDK-t]: https://developer.amazon.com/public/resources/development-tools/sdk
+[Amazon fejlesztői portál]: https://developer.amazon.com/home.html
+[SDK letöltése]: https://developer.amazon.com/public/resources/development-tools/sdk
 
 [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
 [1]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
@@ -264,6 +268,6 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

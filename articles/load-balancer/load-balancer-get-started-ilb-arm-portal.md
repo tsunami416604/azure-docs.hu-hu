@@ -1,94 +1,104 @@
 ---
-title: Get started creating an Internal load balancer in Resource Manager using the Azure portal | Microsoft Docs
-description: Learn how to create an Internal load balancer in Resource Manager using the Azure portal
+title: "Bevezetés a belső terheléselosztó Resource Managerben, az Azure Portalon történő létrehozásába | Microsoft Docs"
+description: "Ismerje meg, hogyan hozható létre belső terheléselosztó a Resource Managerben az Azure Portalon"
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 1ac14fb9-8d14-4892-bfe6-8bc74c48ae2c
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 10/24/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 616fa3b45f8b6f7f799eeacfb1f609a1031d24f5
+
 
 ---
-# Get started creating an Internal load balancer in the Azure portal
+# <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Belső terheléselosztó létrehozása az Azure Portalon
 [!INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
 
-[classic deployment model](load-balancer-get-started-ilb-classic-ps.md).
+[klasszikus üzemi modell](load-balancer-get-started-ilb-classic-ps.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## Get started creating an Internal load balancer using Azure portal
-To create an internal load balancer from the Azure portal, follow the steps below.
+## <a name="get-started-creating-an-internal-load-balancer-using-azure-portal"></a>Bevezetés belső terheléselosztó Azure Portalon történő létrehozásába
+Az alábbi lépések segítségével hozzon létre egy belső terheléselosztót az Azure Portalon.
 
-1. From a browser, navigate to the [Azure portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
-2. In the upper left hand side of the screen, click **New** > **Networking** > **Load balancer**.
-3. In the **Create load balancer** blade, type a **Name** for your load balancer.
-4. Under **Scheme**, click **Internal**.
-5. Click **Virtual network**, and then select the virtual network where you want to create the load balancer.
+1. Egy böngészőből keresse fel az [Azure Portalt](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
+2. A képernyő bal felső részében kattintson az **Új** > **Hálózat** > **Terheléselosztó** elemre.
+3. A **Terheléselosztó létrehozása** panelen adja meg a terheléselosztó **nevét**.
+4. A **Séma** alatt kattintson a **Belső** elemre.
+5. Kattintson a **Virtuális hálózat** elemre, majd válassza ki azt a virtuális hálózatot, amelyben a terheléselosztót szeretné létrehozni.
    
    > [!NOTE]
-   > If you do not see the virtual network you want to use, check the **Location** you are using for the load balancer, and change it accordingly.
+   > Ha nem jelenik meg a használni kívánt virtuális hálózat, ellenőrizze a terheléselosztóhoz használt **helyet**, és szükség szerint módosítsa.
    > 
    > 
-6. Click **Subnet**, and then select the subnet where you want to create the load balancer.
-7. Under **IP address assignment**, click either **Dynamic** or **Static**, depending on whether you want the IP address for the load balancer to be fixed (static) or not.
+6. Kattintson az **Alhálózat** elemre, majd válassza ki azt az alhálózatot, amelyben a terheléselosztót létre szeretné hozni.
+7. Az **IP-cím hozzárendelése** panelen kattintson a **Dinamikus** vagy a **Statikus** elemre attól függően, hogy a terheléselosztó IP-címét rögzítettre (statikus) szeretné-e beállítani vagy sem.
    
    > [!NOTE]
-   > If you select to use a static IP address, you will have to provide an address for the load balancer.
+   > Ha statikus IP-cím használatát választja, akkor meg kell adnia egy címet a terheléselosztó számára.
    > 
    > 
-8. Under **Resource group** either specify the name of a new resource group for the load balancer, or click **select existing** and select an existing resource group.
-9. Click **Create**.
+8. Az **Erőforráscsoport** alatt adja meg a terheléselosztó új erőforráscsoportjának a nevét, vagy kattintson a **Meglévő kiválasztása** elemre, és válasszon ki egy meglévő erőforráscsoportot.
+9. Kattintson a **Létrehozás** gombra.
 
-## Configure load balancing rules
-After the load balancer creation, navigate to the load balancer resource to configure it.
-You need to configure first a back-end address pool and a probe before configuring a load balancing rule.
+## <a name="configure-load-balancing-rules"></a>Terheléselosztási szabályok konfigurálása
+A terheléselosztó létrehozása után lépjen a terheléselosztó erőforrásához, és konfigurálja.
+A terheléselosztási szabály konfigurálása előtt konfigurálnia kell egy háttér-címkészletet és egy mintavételt.
 
-### Step 1: Configure a back-end pool
-1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
-2. In the **Settings** blade, click **Backend pools**.
-3. In the **Backend address pools** blade, click **Add**.
-4. In the **Add backend pool** blade, type a **Name** for the backend pool, and then click **OK**.
+### <a name="step-1-configure-a-backend-pool"></a>1. lépés: Háttérkészlet konfigurálása
+1. Az Azure Portalon kattintson a **Tallózás** > **Terheléselosztók** elemre, majd kattintson a fent létrehozott terheléselosztóra.
+2. A **Beállítások** panelen kattintson a **Háttérkészletek** elemre.
+3. A **Háttércímkészletek** panelen kattintson a **Hozzáadás** gombra.
+4. A **Háttérkészlet hozzáadása** panelen adja meg a háttérkészlet **nevét**, majd kattintson az **OK** gombra.
 
-### Step 2: Configure a probe
-1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
-2. In the **Settings** blade, click **Probes**.
-3. In the **Probes**  blade, click **Add**.
-4. In the **Add probe** blade, type a **Name** for the probe.
-5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
-6. Under **Port**, specify the port to use when accessing the probe.
-7. Under **Path** (for HTTP probes only), specify the path to use as a probe.
-8. Under **Interval** specify how frequently to probe the application.
-9. Under **Unhealthy threshold**, specify how many attempts should fail before the backend VM is marked as unhealthy.
-10. click **OK** to create probe.
+### <a name="step-2-configure-a-probe"></a>2. lépés: Mintavétel konfigurálása
+1. Az Azure Portalon kattintson a **Tallózás** > **Terheléselosztók** elemre, majd kattintson a fent létrehozott terheléselosztóra.
+2. A **Beállítások** panelen kattintson a **Mintavételek** elemre.
+3. A **Mintavételek** panelen kattintson a **Hozzáadás** gombra.
+4. A **Mintavétel hozzáadása** panelen adja meg a mintavétel **nevét**.
+5. A **Protokoll** alatt válassza ki a **HTTP** (webhelyekhez) vagy a **TCP** (más TCP-alapú alkalmazásokhoz) elemet.
+6. A **Port** alatt adja meg a mintavétel elérésekor használni kívánt portot.
+7. Az **Elérési út** alatt (csak HTTP-mintavételek esetén) adja meg a mintavételként használni kívánt elérési utat.
+8. Az **Időköz** alatt adja meg, hogy milyen gyakran kell mintát venni az alkalmazásból.
+9. A **Nem kifogásolatlan állapot küszöbértéke** alatt adja meg, hogy hány sikertelen kísérlet után kell a háttér virtuális gépet nem megfelelő állapotúként megjelölni.
+10. Mintavétel létrehozásához kattintson az **OK** gombra.
 
-### Step 3: Configure load balancing rules
-1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
-2. In the **Settings** blade, click **Load balancing rules**.
-3. In the **Load balancing rules** blade, click **Add**.
-4. In the **Add load balancing rule** blade, type a **Name** for the rule.
-5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
-6. Under **Port**, specify the port clients connect to int he load balancer.
-7. Under **Backend port**, specify the port to be used in the backend pool (usually, the load balancer port and the backend port are the same).
-8. Under **Backend pool**, select the backend pool you created above.
-9. Under **Session persistence**, select how you want sessions to persist.
-10. Under **Idle timeout (minutes)**, specify the idle timeout.
-11. Under **Floating IP (direct server return)**, click **Disabled** or **Enabled**.
-12. Click **OK**.
+### <a name="step-3-configure-load-balancing-rules"></a>3. lépés: Terheléselosztási szabályok konfigurálása
+1. Az Azure Portalon kattintson a **Tallózás** > **Terheléselosztók** elemre, majd kattintson a fent létrehozott terheléselosztóra.
+2. A **Beállítások** panelen kattintson a **Terheléselosztási szabályok** elemre.
+3. A **Terheléselosztási szabályok** panelen kattintson a **Hozzáadás** gombra.
+4. A **Terheléselosztási szabály hozzáadása** panelen adja meg a szabály **nevét**.
+5. A **Protokoll** alatt válassza ki a **HTTP** (webhelyekhez) vagy a **TCP** (más TCP-alapú alkalmazásokhoz) elemet.
+6. A **Port** alatt adja meg a port azon ügyfeleit, amelyekhez a terheléselosztóban csatlakozni kell.
+7. A **Háttérport** alatt adja meg a háttérkészletben használni kívánt portot (általában a terheléselosztó portja és a háttérport azonos).
+8. A **Háttérkészlet** alatt válassza ki a fent létrehozott háttérkészletet.
+9. A **Munkamenet megőrzése** alatt válassza ki, hogyan szeretné megőrizni a munkameneteket.
+10. Az **Üresjárat időkorlátja (perc)** alatt adja meg az üresjárati időkorlátot.
+11. A **Nem fix IP-cím (közvetlen kiszolgálói válasz)** alatt kattintson a **Letiltva** vagy az **Engedélyezve** elemre.
+12. Kattintson az **OK** gombra.
 
-## Next steps
-[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
+## <a name="next-steps"></a>Következő lépések
+[A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
+[A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

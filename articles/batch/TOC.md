@@ -1,7 +1,7 @@
 # Áttekintés
-## [A Batch alapjai](batch-technical-overview.md)
-## [A Batch funkcióinak áttekintése](batch-api-basics.md)
-## [A Bach kvótái és korlátozásai](batch-quota-limit.md)
+## [Mi az Azure Batch?](batch-technical-overview.md)
+## [A funkciók áttekintése](batch-api-basics.md)
+## [Kvóták és korlátozások](batch-quota-limit.md)
 # Első lépések
 ## [Batch-fiók létrehozása](batch-account-create-portal.md)
 ## [.NET-útmutató a Batchhez](batch-dotnet-get-started.md)
@@ -20,26 +20,32 @@
 ### [Tevékenységfüggőségek](batch-task-dependencies.md)
 ### [Visual Studio-projektsablonok a Batchben](batch-visual-studio-templates.md)
 ## Kezelés
-### [A Batch parancssori felülete](batch-cli-get-started.md)
 ### [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
+### [Azure CLI](batch-cli-get-started.md)
 ### [Diagnosztikai naplók a Batchben](batch-diagnostics.md)
+
 # Referencia
-## [Batch – REST API-referencia](https://go.microsoft.com/fwlink/p/?linkid=833492)
-## [Batch – .NET-referencia](https://go.microsoft.com/fwlink/p/?linkid=833494)
-## [Batch – Python-referencia](https://go.microsoft.com/fwlink/p/?linkid=833496)
-## [Batch – Node.js-referencia](https://go.microsoft.com/fwlink/p/?linkid=833544)
-## [Batch – Java-referencia](https://go.microsoft.com/fwlink/p/?linkid=833497)
-## [Batch Management – .NET-referencia](https://go.microsoft.com/fwlink/p/?linkid=833498)
-## [Batch – PowerShell-referencia](https://go.microsoft.com/fwlink/p/?linkid=833500)
+## [PowerShell-parancsmagok](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)
+## [Java](https://docs.microsoft.com/java/api)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Python SDK](https://go.microsoft.com/fwlink/p/?linkid=833496)
+## [Node.js](https://go.microsoft.com/fwlink/p/?linkid=833544)
+## [REST](https://docs.microsoft.com/rest/api/batchservice/)
+
 # Kapcsolódó
+## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure](batch-hpc-solutions.md)
 ## [Big Compute az Azure-ban: műszaki forrásanyagok](big-compute-resources.md)
+
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=))
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/batch/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=batch)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [A Batch C# kódmintái](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [A Batch Python kódmintái](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
+
 
 
 <!--HONumber=Nov16_HO2-->

@@ -32,18 +32,25 @@
 ## [Több virtuális IP-cím konfigurálása felhőszolgáltatáshoz](load-balancer-multivip.md)
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
+
 # Referencia
+## [PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=536407)
+## [.NET](https://docs.microsoft.com/dotnet/api/)
 ## [Resource Manager API](https://go.microsoft.com/fwlink/p/?LinkId=536405)
-## [Resource Manager PowerShell-parancsmagok](https://go.microsoft.com/fwlink/p/?LinkId=536407)
 ## [Hálózati erőforrások használata](https://go.microsoft.com/fwlink/p/?LinkId=536403)
+
 # Kapcsolódó
-## [Application Gateway](https://azure.microsoft.com/documentation/services/application-gateway/)
-## [Express Route](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [Virtuális gép](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-## [DNS](https://azure.microsoft.com/documentation/services/dns/)
+## [Application Gateway](/azure/application-gateway/)
+## [Express Route](/azure/expressroute/)
+## [Virtuális hálózat](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [Virtuális gép](/azure/virtual-machines/)
+## [Traffic Manager](/azure/traffic-manager/)
+## [DNS](/azure/dns/)
+
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/load-balancer/) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=load-balancer) 
 
 
 <!--HONumber=Nov16_HO2-->

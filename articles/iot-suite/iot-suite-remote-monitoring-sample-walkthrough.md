@@ -1,13 +1,13 @@
 ---
-title: A távoli figyelési előre konfigurált megoldás bemutatója | Microsoft Docs
-description: Az Azure IoT távoli figyelési előre konfigurált megoldás és architektúrájának leírása.
-services: ''
+title: "A távoli figyelési előre konfigurált megoldás bemutatója | Microsoft Docs"
+description: "Az Azure IoT távoli figyelési előre konfigurált megoldás és architektúrájának leírása."
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,10 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6338750446b33269614c404ecaad8f8192bf1ab2
+
 
 ---
-# A távoli figyelési előre konfigurált megoldás bemutatója
-## Bevezetés
+# <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>A távoli figyelési előre konfigurált megoldás bemutatója
+## <a name="introduction"></a>Bevezetés
 Az IoT Suite távoli figyelési [előre konfigurált megoldás][lnk-preconfigured-solutions] végpontok közötti figyelési megoldást kínál, amely egyszerre akár több, távoli helyeken futó géphez is használható. A megoldás alapvető Azure-szolgáltatások együttes használatával biztosítja az üzleti forgatókönyv általános megvalósítását, amelyet Ön kiindulópontként használhat saját egyedi megoldásának kialakításához. A megoldást [testre szabhatja][lnk-customize], hogy az minél pontosabban illeszkedjen az Ön konkrét üzleti igényeihez.
 
 Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
@@ -27,12 +31,12 @@ Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemé
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek. 
 * Kialakíthatja saját, Azure-szolgáltatásokat használó IoT-megoldását.
 
-## Logikai architektúra
+## <a name="logical-architecture"></a>Logikai architektúra
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
 
 ![Logikai architektúra](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
-## Szimulált eszközök
+## <a name="simulated-devices"></a>Szimulált eszközök
 Az előre konfigurált megoldásban a szimulált eszköz egy hűtőeszközt (például egy épület légkondicionálóját vagy létesítmény légkezelő egységét) jelöl. Amikor üzembe helyezi az előre konfigurált megoldást, egyben négy szimulált eszközt is létrehoz, amelyek egy [Azure WebJob-feladat][lnk-webjobs] részeként működnek. A szimulált eszközök segítségével könnyebben megismerheti a megoldás működését, anélkül, hogy fizikai eszközöket kellene üzembe helyeznie. Tényleges fizikai eszközök üzembe helyezésével kapcsolatban olvassa el a [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm] (Eszközök csatlakoztatása a távoli figyelési előre konfigurált megoldáshoz) című oktatóanyagot.
 
 A szimulált eszközök az alábbi típusú üzeneteket küldhetik az IoT Hubnak:
@@ -76,10 +80,10 @@ A szimulált eszközök a következő parancsokat képesek fogadni a megoldás i
 
 Az eszközparancs a megoldás hátterének címzett nyugtázását az IoT Hub küldi.
 
-## IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 Az [IoT hub][lnk-iothub] feltölti a felhőbe az eszközök által küldött adatokat, és elérhetővé teszi azokat Azure Stream Analytics (ASA) feladatokban való felhasználásra. Az IoT Hub ezenfelül parancsokat küld az eszköznek az eszközportálról. Minden Stream ASA-feladat saját IoT Hub-fogyasztói csoportot használ, amelynek segítségével beolvassa az eszközök által küldött üzenetek streamjét.
 
-## Azure Stream Analytics
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 A távoli figyelési megoldásban az [Azure Stream Analytics][lnk-asa] (ASA) továbbítja az IoT Hub által fogadott eszközüzeneteket feldolgozás vagy tárolás céljából a többi háttérkomponensnek. Az üzenet tartalmától függően a különféle ASA-feladatok más-más funkciókat végeznek el.
 
 Az **1. feladat: eszközinformáció** szűri a bejövő üzenetstreamből az eszközinformációs üzeneteket, és elküldi őket egy eseményközpont-végpontra. Az eszközök az indításukkor és a **SendDeviceInfo** parancsra adott válaszként küldenek eszközinformációs üzeneteket. Ez a feladat az alábbi lekérdezésdefiníció segítségével azonosítja a **device-info** típusú üzeneteket:
@@ -176,26 +180,26 @@ GROUP BY
     SlidingWindow (mi, 5)
 ```
 
-## Event Hubs
+## <a name="event-hubs"></a>Event Hubs
 A **device info** és a **rules** ASA-feladatok az eseményközpontoknak adják át az adataikat, amelyek megbízhatóan továbbítják azokat a WebJob-feladatban futó **eseményfeldolgozónak**.
 
-## Azure Storage
+## <a name="azure-storage"></a>Azure Storage
 A megoldás az Azure Blob Storage segítségével őrzi meg a megoldásba bevont eszközök által küldött nyers és összegzett telemetriai adatokat. Az irányítópult beolvassa a telemetriai adatokat a blobtárolóból, és ezek alapján létrehozza a diagramokat. A riasztások megjelenítéséhez az irányítópult a blobtárolóból olvassa be az adatokat, amely a küszöböt meghaladó telemetriai értékeket rögzíti. A megoldás az irányítópultban beállított küszöbértékek rögzítésére is a blobtárolót használja.
 
-## WebJobs
+## <a name="webjobs"></a>WebJobs
 Az eszközszimulátorok futtatása mellett egy WebJob-feladat működteti az eszközinformációs üzeneteket és a parancsválaszokat kezelő **eseményfeldolgozót** is. A következőket használja:
 
 * Eszközinformációs üzenetek a (DocumentDB-adatbázisban tárolt) eszközjegyzék frissítéséhez az aktuális eszközinformációkkal.
 * Parancsválasz-üzenetek a (DocumentDB-adatbázisban tárolt) eszközparancs-előzmények frissítéséhez.
 
-## DocumentDB
+## <a name="documentdb"></a>DocumentDB
 A megoldás egy DocumentDB-adatbázisban tárolja a megoldáshoz csatlakoztatott eszközökre vonatkozó adatokat. Az adatok közé tartoznak az eszköz metaadatai, valamint az eszköznek az irányítópultról küldött parancsok előzményei.
 
-## Webalkalmazások
-### Távoli figyelési irányítópult
+## <a name="web-apps"></a>Webalkalmazások
+### <a name="remote-monitoring-dashboard"></a>Távoli figyelési irányítópult
 A webalkalmazás ezen oldala PowerBI javascript-vezérlőket használ (lásd a [PowerBI-vizualizációk tárát](https://www.github.com/Microsoft/PowerBI-visuals)) az eszközök által küldött telemetriai adatok vizualizálásához. A megoldás az ASA telemetriai feladat használatával írja a blobtárolóba a telemetriai adatokat.
 
-### Eszközfelügyeleti portál
+### <a name="device-administration-portal"></a>Eszközfelügyeleti portál
 Ezzel a webalkalmazással a következőket teheti:
 
 * Új eszközöket építhet ki. Ezzel a művelettel állíthatja be az egyedi eszközazonosítót, valamint hozhatja létre a hitelesítési kulcsot. A művelet mind az IoT Hub-identitásjegyzékébe, mind a megoldásspecifikus DocumentDB-adatbázisba beírja az eszközadatokat.
@@ -204,16 +208,16 @@ Ezzel a webalkalmazással a következőket teheti:
 * Megtekintheti az eszközök parancselőzményeit.
 * Engedélyezheti és letilthatja a különböző eszközöket.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A következő TechNet-blogbejegyzés további részleteket tartalmaz a távoli figyelési előre konfigurált megoldásról:
 
-* [IoT Suite - Under The Hood - Remote Monitoring (IoT Suite – Technikai részletek – Távoli figyelés)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
-* [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT Suite – Távoli figyelés – Élő és szimulált eszközök hozzáadása)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
+* [IoT Suite – Technikai részletek – Távoli figyelés](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
+* [IIoT Suite – Távoli figyelés – Élő és szimulált eszközök hozzáadása](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 
 * [Eszközök csatlakoztatása a távoli figyelési előre konfigurált megoldáshoz][lnk-connect-rm]
-* [Engedélyek az azureiotsuite.com oldalon][lnk-permissions]
+* [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
@@ -224,6 +228,7 @@ Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 [lnk-permissions]: iot-suite-permissions.md
 
 
-<!--HONumber=Sep16_HO4-->
+
+<!--HONumber=Nov16_HO2-->
 
 

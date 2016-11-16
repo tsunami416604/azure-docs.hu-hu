@@ -38,7 +38,7 @@
 ### [IIS-webalkalmazások](multi-factor-authentication-get-started-server-iis.md)
 ### [Távoli asztali átjáró](multi-factor-authentication-get-started-server-rdg.md)
 
-## Alkalmazások fejlesztése
+## Fejlesztés 
 ### [Beépítés egyéni alkalmazásokba (SDK)](multi-factor-authentication-sdk.md)
 
 ## Hibaelhárítás

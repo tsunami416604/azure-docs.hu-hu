@@ -1,12 +1,12 @@
 ---
-title: 'Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával | Microsoft Docs'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-adatcsatornákat a REST API használatával.
+title: "Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával | Microsoft Docs"
+description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-adatcsatornákat a REST API használatával."
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+
 
 ---
-# Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-rest-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a REST API használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -36,7 +40,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
 > 
 > 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * Tekintse meg [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 * Telepítse gépére a [Curl](https://curl.haxx.se/dlwiz/) eszközt. A Curl eszköz a REST-parancsokkal együtt az adat-előállító létrehozására használható. 
 * Az [ebben a cikkben](../resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
@@ -64,10 +68,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
      
       Az oktatóanyag különböző lépései során feltételezzük, hogy az ADFTutorialResourceGroup elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, használja ehelyett saját erőforráscsoportja nevét, amikor az oktatóanyag az ADFTutorialResourceGroup csoportra utal.
 
-## JSON-definíciók létrehozása
+## <a name="create-json-definitions"></a>JSON-definíciók létrehozása
 Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is található. 
 
-### datafactory.json
+### <a name="datafactoryjson"></a>datafactory.json
 > [!IMPORTANT]
 > Globálisan egyedi nevet kell használnia, ezért érdemes lehet előtagot/utótagot adnia az ADFCopyTutorialDF névhez, hogy az egyedivé váljon. 
 > 
@@ -78,7 +82,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
         "location": "WestUS"
     }  
 
-### azurestoragelinkedservice.json
+### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
 > Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
 > 
@@ -94,7 +98,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
         }
     }
 
-### azuersqllinkedservice.json
+### <a name="azuersqllinkedservicejson"></a>azuersqllinkedservice.json
 > [!IMPORTANT]
 > A **servername**, a **databasename**, a **username** és a **password** kifejezés helyére írja be Azure SQL-kiszolgálója nevét, az SQL-adatbázis nevét, a felhasználói fiókot, valamint a fiók jelszavát.  
 > 
@@ -112,7 +116,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
     }
 
 
-### inputdataset.json
+### <a name="inputdatasetjson"></a>inputdataset.json
     {
       "name": "AzureBlobInput",
       "properties": {
@@ -152,7 +156,7 @@ A JSON-definíció az **AzureBlobInput** nevű adatkészletet határozza meg, am
 * A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. 
 * A **folderPath** értéke az **adftutorial** tároló lesz, a **fileName** értéke pedig az **emp.txt**.  
 * A formátum **type** (típus) tulajdonsága **TextFormat** (Szövegformátum) értékre van állítva.
-* A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (**columnDelimiter**). 
+* A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (**columnDelimiter**).    
 * Az **availability** értéke **hourly** lesz (a frequency értéke hour, az interval értéke pedig 1). Ez azt jelenti, hogy a Data Factory óránként keres bemeneti adatokat a megadott Blob-tároló (**adftutorial**) gyökérkönyvtárában. 
 
 Ha nem adja meg a **fileName** paramétert a bemeneti adatkészlethez, a bemeneti mappában (**folderPath**) található összes fájl/blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-ban, csak a megadott fájl/blob minősül bemenetnek.
@@ -161,7 +165,7 @@ Ha nem adja meg a **fileName** paramétert a **kimeneti táblához**, a **folder
 
 Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a **partitionedBy** tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz. 
 
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+      "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
     "fileName": "{Hour}.csv",
     "partitionedBy": 
     [
@@ -172,7 +176,7 @@ Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné be
     ],
 
 
-### outputdataset.json
+### <a name="outputdatasetjson"></a>outputdataset.json
     {
       "name": "AzureSqlOutput",
       "properties": {
@@ -209,7 +213,7 @@ Vegye figyelembe a következő pontokat:
 * Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
 * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
 
-### pipeline.json
+### <a name="pipelinejson"></a>pipeline.json
     {
       "name": "ADFTutorialPipeline",
       "properties": {
@@ -272,7 +276,7 @@ A fenti példában 24 adatszelet jön létre, mivel a nap minden órájában ké
 > 
 > 
 
-## Globális változók beállítása
+## <a name="set-global-variables"></a>Globális változók beállítása
 Adja meg saját értékeit, majd az Azure PowerShellben hajtsa végre a következő parancsokat:
 
 > [!IMPORTANT]
@@ -288,7 +292,7 @@ Adja meg saját értékeit, majd az Azure PowerShellben hajtsa végre a követke
     $rg = "ADFTutorialResourceGroup"
     $adf = "ADFCopyTutorialDF"
 
-## Hitelesítés az AAD segítségével
+## <a name="authenticate-with-aad"></a>Hitelesítés az AAD segítségével
 Az Azure Active Directory (AAD) segítségével végzett hitelesítéshez futtassa a következő parancsokat. 
 
     $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
@@ -297,7 +301,7 @@ Az Azure Active Directory (AAD) segítségével végzett hitelesítéshez futtas
 
     (ConvertFrom-Json $responseToken) 
 
-## Data factory létrehozása
+## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben egy **ADFCopyTutorialDF** nevű Azure-adatelőállítót fog létrehozni. A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Ilyen például a másolási tevékenység, amely adatokat másol a forrásból a célként megadott adattárba, vagy a HDInsight Hive tevékenység, amely Hive-parancsprogram futtatásával átalakítja a bemeneti adatokat, így biztosít védelmet a kimeneti adatoknak. Az adat-előállító létrehozásához futtassa az alábbi parancsokat: 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
@@ -336,12 +340,12 @@ Vegye figyelembe a következő szempontokat:
 
 A folyamat létrehozása előtt először létre kell hoznia néhány Data Factory-entitást. Először hozza létre a társított szolgáltatást, amely összekapcsolja a forrásként és célként használt adattárakat az Ön adattárával. Majd definiálja a bemeneti és kimeneti adatkészleteket, amelyek adatként szolgálnak a társított adattárakban. Végül hozza létre az adatcsatornát egy tevékenységgel, amely ezeket az adatkészleteket használja.
 
-## Társított szolgáltatások létrehozása
+## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. Az adattárak lehetnek a Data Factory-adatcsatornák bemeneti adatait tartalmazó vagy kimeneti adatait tároló Azure Storage-tárolók, Azure SQL Database-adatbázisok vagy helyszíni SQL Server-adatbázisok. A számítási szolgáltatások a bemeneti adatokat feldolgozó és azokból kimeneti adatokat előállító szolgáltatások. 
 
 Ebben a lépésben létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService** és **AzureSqlLinkedService**. Az AzureStorageLinkedService társított szolgáltatás egy Azure Storage-fiókot, az AzureSqlLinkedService pedig egy Azure SQL-adatbázist társít az **ADFCopyTutorialDF** adat-előállítóhoz. Az oktatóanyag későbbi részében létrehoz egy adatcsatornát, amely adatokat másol az AzuretStorageLinkedService Blob-tárolójából az AzureSqlLinkedService SQL-táblájába.
 
-### Azure Storage társított szolgáltatás létrehozása
+### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
 Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállítóhoz. Ebben az oktatóanyagban az Azure Storage-fiókot használjuk a bemeneti adatok tárolására. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
@@ -354,7 +358,7 @@ Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállít
    
         Write-Host $results
 
-### Azure SQL társított szolgáltatás létrehozása
+### <a name="create-azure-sql-linked-service"></a>Azure SQL társított szolgáltatás létrehozása
 Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállítóhoz. Ebben az oktatóanyagban ugyanezt az Azure SQL-adatbázist használjuk a kimeneti adatok tárolására.
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
@@ -367,12 +371,12 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
    
         Write-Host $results
 
-## Adatkészletek létrehozása
+## <a name="create-datasets"></a>Adatkészletek létrehozása
 Az előző lépésben létrehozta az **AzureStorageLinkedService** és az **AzureSqlLinkedService** társított szolgáltatást, hogy egy Azure Storage-fiókot és egy Azure SQL-adatbázist társítson az **ADFCopyTutorialDF** adat-előállítóhoz. Ebben a lépésben a következő lépésben létrehozandó adatcsatorna részét képező másolási tevékenység be- és kimenetét képviselő adatkészleteket fogjuk létrehozni. 
 
 Az oktatóanyagban használt bemeneti adatkészlet arra az Azure Storage-fiókban található Blob-tárolóra utal, amelyre az AzureStorageLinkedService mutat. A kimeneti adatkészlet arra az Azure SQL-adatbázisban található SQL-táblára utal, amelyre az AzureSqlLinkedService mutat.  
 
-### Az Azure Blob Storage és az Azure SQL Database előkészítése az oktatóanyaghoz
+### <a name="prepare-azure-blob-storage-and-azure-sql-database-for-the-tutorial"></a>Az Azure Blob Storage és az Azure SQL Database előkészítése az oktatóanyaghoz
 Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adatbázis előkészítéséhez ehhez az oktatóanyaghoz. 
 
 * Hozza létre az **adftutorial** nevű Blob-tárolót az Azure Blob Storage-ban, amelyre az **AzureStorageLinkedService** mutat. 
@@ -402,7 +406,7 @@ Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adat
 
     Ha az ügyfél számára nem engedélyezett az Azure SQL-kiszolgáló elérése, úgy kell beállítania az Azure SQL-kiszolgáló tűzfalát, hogy engedélyezze a hozzáférést a gép (IP-cím) számára. Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../sql-database/sql-database-configure-firewall-settings.md).
 
-### Bemeneti adatkészlet létrehozása
+### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
 Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely egy, az Azure Storage-ben található Blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás képvisel. Ez a blobtároló (**adftutorial**) tartalmazza a bemeneti adatokat az **emp.txt** fájlban. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
@@ -415,7 +419,7 @@ Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely
    
         Write-Host $results
 
-### Kimeneti adatkészlet létrehozása
+### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
 Ebben a lépésben létrehozzuk az **AzureSqlOutput** nevű kimeneti táblát. Ez az adatkészlet az Azure SQL-adatbázis egyik SQL-táblájára mutat (**emp**), amelyet az **AzureSqlLinkedService** képvisel. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz.
@@ -428,7 +432,7 @@ Ebben a lépésben létrehozzuk az **AzureSqlOutput** nevű kimeneti táblát. E
    
         Write-Host $results 
 
-## Folyamat létrehozása
+## <a name="create-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező adatcsatornát, amely bemenetként az **AzureBlobInput**, kimenetként az **AzureSqlOutput** táblát használja.
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz.
@@ -443,7 +447,7 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező ada
 
 **Gratulálunk!** Sikeresen létrehozott egy Azure-adatelőállítót, amelyhez adatokat az Azure Blob Storage-ből az Azure SQL-adatbázisba másoló adatcsatorna tartozik.
 
-## Folyamat figyelése
+## <a name="monitor-pipeline"></a>Folyamat figyelése
 Ebben a lépésben a Data Factory REST API segítségével figyelheti meg az adatcsatorna által készített szeleteket.
 
     $ds ="AzureSqlOutput"
@@ -463,17 +467,17 @@ Futtassa addig a parancsokat, amíg nem lát **Kész** vagy **Sikertelen** álla
 
 Az egyes szeletekhez a rendszer két sornyi adatot másol a forrásfájlból az Azure SQL-adatbázis emp táblájába. Ezért az összes szelet sikeres feldolgozását követően (azaz amikor az összes szelet Kész állapotban van) 24 új bejegyzésnek kell szerepelnie az emp táblában. 
 
-## Összefoglalás
+## <a name="summary"></a>Összefoglalás
 Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatelőállítót, amely adatokat másol egy Azure Blob-tárolóból egy Azure SQL-adatbázisba. Az oktatóanyag során a következő főbb lépéseket végezte el:  
 
 1. Létrehozott egy Azure **data factoryt**.
 2. **Társított szolgáltatásokat** hozott létre:
-   1. Egy Azure Storage társított szolgáltatást a bemeneti adatokat tároló Azure Storage-fiók csatlakoztatásához.    
+   1. Egy Azure Storage társított szolgáltatást a bemeneti adatokat tároló Azure Storage-fiók csatlakoztatásához.     
    2. Egy Azure SQL társított szolgáltatást a kimeneti adatokat tároló Azure SQL Database csatlakoztatásához. 
 3. **Adatkészleteket** hozott létre, amelyek az adatcsatorna bemeneti és kimeneti adatait írják le.
 4. Létrehozott egy másolási tevékenységgel ellátott **adatcsatornát**, ahol a BlobSource a forrás, az SqlSink pedig a fogadó. 
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 | Témakör | Leírás |
 |:--- |:--- |
 | [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) |Ez a cikk részletes információkat tartalmaz a jelen oktatóanyagban használt Másolás tevékenységről. |
@@ -500,6 +504,6 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

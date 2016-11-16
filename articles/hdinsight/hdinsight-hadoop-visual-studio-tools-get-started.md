@@ -1,257 +1,256 @@
 ---
-title: Learn to use Visual Studio Hadoop tools for HDInsight | Microsoft Docs
-description: Learn how to install and use Visual Studio Hadoop tools for HDInsight to connect to a Hadoop cluster and run a Hive query.
-keywords: hadoop tools,hive query,visual studio
+title: "Data Lake (HDInsight) Tools for Visual Studio használatának ismertetése |Microsoft Docs"
+description: "Megtudhatja, hogyan telepítheti és használhatja a Visual Studio Data Lake (HDInsight)-eszközöket Hadoop-fürtök csatlakoztatásához és a Hive-lekérdezések futtatásához."
+keywords: "hadoop-eszközök,hive-lekérdezés,visual studio"
 services: HDInsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: ce9c572a-1e98-46bf-9581-13a9767f1fa5
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/10/2016
+ms.date: 11/02/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8bd214c166190248662634d488d8e7b1427b5738
+
 
 ---
-# Get started using Visual Studio Hadoop tools for HDInsight to run a Hive query
-Learn how to use HDInsight Tools for Visual Studio to connect to HDInsight clusters and submit Hive queries. For more information about using HDInsight, see [Introduction to HDInsight][hdinsight.introduction] and [Get started with HDInsight][hdinsight.get.started]. For more information about connecting to a Storm cluster, see [Develop C# topologies for Apache Storm on HDInsight using Visual Studio][hdinsight.storm.visual.studio.tools].
+# <a name="get-started-using-azure-data-lake-hdinsight-tools-for-visual-studio-to-run-a-hive-query"></a>Ismerkedés az Azure Data Lake (HDInsight) Tools for Visual Studio használatával Hive-lekérdezések futtatásához
+Megtudhatja, hogyan használhat Data Lake (HDInsight) -eszközöket a Visual Studio alkalmazáshoz, hogy HDInsight-fürtökhöz csatlakozzon és Hive-lekérdezéseket adjon le. A HDInsight használatáról további információért lásd: [Introduction to HDInsight][hdinsight.introduction] (A HDInsight bemutatása) és [Get Started with HDInsight][hdinsight.get.started] (HDInsight – első lépések). További információ a Storm fürthöz végzett csatlakozásról: [Develop C# topologies for Apache Storm on HDInsight using Visual Studio][hdinsight.storm.visual.studio.tools] (C#-topológiák fejlesztése HDInsighton futó Apache Stormra a Visual Studio használatával).
 
-**Prerequisites**
+A Data Lake Tools for Visual Studio mind a Data Lake Analytics, mind a HDInsight eléréséhez használható.  A Data Lake-eszközökkel kapcsolatos információkért lásd: [Oktatóanyag: U-SQL-parancsfájlok fejlesztése Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
-To complete this tutorial and use the Hadoop tools in Visual Studio, you'll need the following:
+**Előfeltételek**
 
-* An Azure HDInsight cluster: Either a Linux-based or Windows-based cluster will work with the steps in this document. See one of the following for information on creating a cluster:
+Ezen oktatóprogram elvégzéséhez és a Data Lake-eszközök Visual Studio programban történő használatához a következőkre van szüksége:
+
+* Egy Azure HDInsight fürt: A Linux-alapú vagy a Windows-alapú fürtök is működnek ezen dokumentum lépéseivel. A következők egyikében talál információt a fürtök létrehozásáról:
   
-  * [Get started using Linux-based HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
-  * [Get started using Windows-based HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md)
-* A workstation with the following software:
+  * [Bevezetés a Linux-alapú HDInsight használatába](hdinsight-hadoop-linux-tutorial-get-started.md)
+  * [Bevezetés a Windows-alapú HDInsight használatába](hdinsight-hadoop-tutorial-get-started-windows.md)
+* Egy munkaállomás a következő szoftverrel:
   
-  * Windows 8.1, Windows 8, or Windows 7
-  * Visual Studio (one of the following versions):
+  * Windows 8.1, Windows 8 vagy Windows 7
+  * Visual Studio (a következő verziók egyike):
     
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate with [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
+    * Visual Studio 2013 Community/Professional/Premium/Ultimate [Update 4](https://www.microsoft.com/download/details.aspx?id=44921) frissítéssel
     * Visual Studio 2015 (Community/Enterprise)
     
     > [!NOTE]
-    > Currently, the HDInsight Tools for Visual Studio only come with the English version.
+    > Jelenleg a Data Lake Tools for Visual Studio csak angol nyelvű verzióban kapható.
     > 
     > 
 
-## Install HDInsight tools for Visual Studio
-HDInsight Tools for Visual Studio and Microsoft Hive ODBC Driver are packaged with Microsoft Azure SDK for .NET version 2.5.1 or later. You can install it using the [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386). You must choose the one that matches your version of Visual Studio. If you don't have Visual Studio installed, you can install the latest Visual Studio Community and Azure SDK using the [Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) or using the following links:
+## <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
+A Data Lake Tools a [Webplatform-telepítő](https://www.microsoft.com/web/downloads/) használatával telepíthető. Ki kell választania azt, amely megfelel a Visual Studio verziójának. Ha nincs telepítve a Visual Studio, a legújabb Visual Studio Community- és Azure SDK-eszközöket a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/) telepítheti:
 
-* [Visual Studio Community 2015 with Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids)
-* [Visual Studio Community 2013 with Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids)
-* [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids)
-* [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids)
+![A Data Lake Tools for Visual Studio – Webplatform-telepítő.][1]
 
-![Hadoop tools: HDinsight Tools for Visual Studio Web Platform installer.][1]
-
-## Connect to Azure subscriptions
-The HDInsight Tools for Visual Studio allows you to connect to your HDInsight clusters, perform some basic management operations, and run Hive queries.
+## <a name="connect-to-azure-subscriptions"></a>Csatlakozás Azure-előfizetésekhez
+A Data Lake Tools for Visual Studio lehetővé teszi, hogy csatlakozzon a HDInsight-fürtökhöz, néhány alapvető felügyeleti műveletet végezzen, és Hive-lekérdezéseket futtasson.
 
 > [!NOTE]
-> For information on connecting to a generic Hadoop cluster, see [Write and submit Hive queries using Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx).
+> Az általános Hadoop fürthöz végzett csatlakozásról információkért lásd: [Write and submit Hive queries using Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx) (Hive-lekérdezések írása és elküldése a Visual Studio eszközzel).
 > 
 > 
 
-**To connect to your Azure subscription**
+**Csatlakozás az Azure-előfizetéshez**
 
-1. Open Visual Studio.
-2. From the **View** menu, click **Server Explorer** to open the Server Explorer window.
-3. Expand **Azure**, and then expand **HDInsight**.
+1. Nyissa meg a Visual Studiót.
+2. A **View** (Nézet) menüben kattintson a **Server Explorer** elemre a Server Explorer ablak megnyitásához.
+3. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
    
    > [!NOTE]
-   > Notice the **HDInsight Task List** window should be open. If you don't see it, click **Other Windows** from the **View** menu, and then click **HDInsight Task List Window**.  
+   > Figyelje meg, hogy a **HDInsight TaskList** (HDInsight feladatlista) ablaknak nyitva kell lennie. Ha nem látja, kattintson az **Other Windows** (Egyéb ablakok) elemre a **View** (Nézet) menüben, majd kattintson a **HDInsight TaskList** (HDInsight feladatlista) ablakra.  
    > 
    > 
-4. Enter your Azure subscription credentials, and then click **Sign In**. This is only required if you have never connected to the Azure subscription from Visual Studio on this workstation.
-5. In Server Explorer, you'll see a list of existing HDInsight clusters. If you don't have any clusters, you can provision one by using the Azure Portal, Azure PowerShell, or the HDInsight SDK. For more information, see [Provision HDInsight clusters][hdinsight-provision].
+4. Írja be az Azure-előfizetés hitelesítő adatait, majd kattintson a **Sign In** (Bejelentkezés) gombra. Erre csak akkor van szükség, ha még soha nem csatlakozott az Azure-előfizetéshez a Visual Studio eszközből ezen a munkaállomáson.
+5. A Server Explorer eszközben meglévő HDInsight-fürtök listáját láthatja. Ha nincsenek fürtjei, létrehozhat egyet az Azure Portal, az Azure PowerShell vagy a HDInsight SDK használatával. További információkért lásd: [HDInsight-fürtök létrehozása][hdinsight-create-clusters].
    
-   ![Hadoop tools: HDInsight Tools for Visual Studio Server Explorer cluster list][5]
-6. Expand an HDInsight cluster. You'll see **Hive Databases**, a default storage account, linked storage accounts, and **Hadoop Service log**. You can further expand the entities.
+   ![Data Lake Tools for Visual Studio Kiszolgálóböngésző-fürtlista][5]
+6. Bontson ki egy HDInsight-fürtöt. Látja a **Hive adatbázisokat**, egy alapértelmezett tárfiókot, a társított tárfiókokat és a **Hadoop szolgáltatásnaplót**. Ennél jobban is kibonthatja az elemeket.
 
-After you've connected to your Azure subscription, you'll be able to do the following:
+Miután csatlakozott az Azure-előfizetéshez, a következőket teheti:
 
-**To connect to the Azure portal from Visual Studio**
+**Csatlakozás az Azure Portalhoz a Visual Studióból**
 
-* From Server Explorer, expand **Azure** > **HDInsight**, right-click an HDInsight cluster, and then click **Manage Cluster in Azure Portal**.
+* A kiszolgálóböngészőből bontsa ki az **Azure** > **HDInsight** elemet, kattintson a jobb gombbal egy HDInsight-fürtre, majd kattintson a **Manage Cluster in Azure Portal** (Fürt kezelése az Azure Portalon) parancsra.
 
-**To ask questions and provide feedback from Visual Studio**
+**Kérdések felvetése és visszajelzés a Visual Studióból**
 
-* From the **Tools** menu, click **HDInsight**, and then click **MSDN Forum** to ask questions, or click **Give Feedback**.
+* A **Tools** (Eszközök) menüben kattintson a **HDInsight** elemre, majd kattintson az **MSDN Forum** elemre kérdések felvetéséhez, vagy kattintson a **Give Feedback** (Visszajelzés küldése) parancsra.
 
-## Navigate the linked resources
-From Server Explorer, you can see the default storage account and any linked storage accounts. If you expand the default storage account, you can see the containers on the storage account. The default storage account and the default container are marked. You can also right-click any of the containers to view the contents.
+## <a name="navigate-the-linked-resources"></a>Navigálás a kapcsolt erőforrásokban
+A Server Explorer eszközből láthatja az alapértelmezett tárfiókot és az összes kapcsolt tárfiókot. Ha kibontja az alapértelmezett tárfiókot, láthatja a tárfiókon lévő tárolókat. Az alapértelmezett tárfiók és az alapértelmezett tároló meg van jelölve. Bármely tárolóra a jobb gombbal kattintva azok tartalmát is megtekintheti.
 
-![HDInsight Tools for Visual Studio server explorer cluster list][2]
+![Data Lake Tools for Visual Studio kiszolgálóböngésző-fürtlista][2]
 
-After openning a container, you can using the following buttons to upload, delete, and download blobs:
+Egy tároló megnyitása után a következő gombokkal tölthet fel, törölhet vagy tölthet le blobokat:
 
-![HDInsight Tools for Visual Studio server explorer blob operations](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
+![A Data Lake Tools for Visual Studio kiszolgálóböngésző blobműveletei](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
 
-## Run a Hive query
-[Apache Hive][apache.hive] is a data warehouse infrastructure built on Hadoop for providing data summarization, queries, and analysis. HDInsight Tools for Visual Studio supports running Hive queries from Visual Studio. For more information about Hive, see [Use Hive with HDInsight][hdinsight.hive].
+## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
+Az [Apache Hive][apache.hive] egy, a Hadoop technológiára épülő adatraktár infrastruktúra az adatösszegzések, lekérdezések és elemzések nyújtásához. A Data Lake Tools for Visual Studio támogatja a Hive-lekérdezések Visual Studióból végzett futtatását. A Hive rendszerrel kapcsolatban további információért lásd: [Use Hive with HDInsight][hdinsight.hive] (A Hive használata a HDInsightban).
 
-It is time consuming to test Hive script against an HDInsight cluster. It could take several minutes or more. HDInsight Tools for Visual Studio is capable of validating Hive script locally without connecting to a live cluster.
+Időigényes a Hive parancsfájlok tesztelése a HDInsight fürtökhöz képest időigényes. Percekbe vagy akár több időbe is telhet. A Data Lake Tools for Visual Studio képes helyben érvényesíteni a Hive-parancsfájlokat anélkül, hogy egy élő fürthöz csatlakozna.
 
-HDInsight Tools for Visual Studio also enables users to see what’s inside the Hive job by collecting and surfacing the YARN logs of certain Hive jobs.
+A Data Lake Tools for Visual Studio azt is lehetővé teszi, hogy a felhasználók lássák, mi található a Hive-feladatokban. Ehhez begyűjthetik és a felszínre hozhatják bizonyos Hive-feladatok YARN-naplóit.
 
-### View the **hivesampletable**
-All HDInsight clusters come with a sample Hive table called *hivesampletable*. We'll use this table to show you how to list Hive tables, view the table schemas, and list the rows in the Hive table.
+### <a name="view-the-hivesampletable"></a>A **hivesampletable** megtekintése
+Az összes HDInsight-fürt a *hivesampletable* nevű minta Hive táblát tartalmazza. Ezzel a táblával mutatjuk be, hogyan listázhatja a Hive táblákat, hogyan tekintheti meg a táblasémákat és hogyan listázhatja a Hive táblában lévő sorokat.
 
-**To list Hive tables and view Hive table schema**
+**A Hive-táblák listázása és a Hive-táblaséma megtekintése**
 
-1. From **Server Explorer**, expand **Azure** > **HDInsight** > the cluster of your choice > **Hive Databases** > **Default** > **hivesampletable** to see the table schema.
-2. Right-click **hivesampletable**, and then click **View Top 100 Rows** to list the rows. It is equivalent to running the following Hive query using Hive ODBC driver:
+1. A **Server Explorer** eszközből bontsa ki az **Azure** > **HDInsight** > a választott fürt > **Hive Databases** >  (Hive adatbázisok) **Deafult** > **hivesampletable** (Alapértelmezett) elemet a táblaséma megtekintéséhez.
+2. Kattintson a jobb gombbal a **hivesampletable** elemre, majd kattintson a **View Top 100 Rows** (Első 100 sor megtekintése) parancsra a sorok listázásához. Ez a következő Hive-lekérdezés Hive ODBC-illesztővel végzett futtatásával egyenlő:
    
-       SELECT * FROM hivesampletable LIMIT 100
+     SELECT * FROM hivesampletable LIMIT 100
    
-   You can customize the row count.
+   Testreszabhatja a sorok számát.
    
-   ![Hadoop tools: HDinsight Hive Visual Studio schema query][6]
+   ![Data Lake-eszközök: HDinsight Hive Visual Studio sémalekérdezés][6]
 
-### Create Hive tables
-You can use the GUI to create a Hive table or use Hive queries. For information about using Hive queries, see [Run Hive queries](#run.queries).
+### <a name="create-hive-tables"></a>Hive táblák létrehozása
+A grafikus felhasználói felülettel Hive táblákat hozhat létre, vagy Hive-lekérdezéseket használhat. A Hive-lekérdezésekkel kapcsolatban információért lásd: [Run Hive queries](#run.queries) (Hive-lekérdezések futtatása).
 
-**To create a Hive table**
+**Hive-tábla létrehozása**
 
-1. From **Server Explorer**, expand **Azure** > **HDInsight Clusters** an HDInsight cluster > **Hive Databases**, then right-click **default**, and click **Create Table**.
-2. Configure the table.
-3. Click **Create Table** to submit the job to create the new Hive table.
+1. A **Server Explorer** eszközből bontsa ki az **Azure** > **HDInsight-fürtök** egy HDInsight-fürt > **Hive Databases** (Hive-adatbázisok) elemet, majd kattintson a jobb gombbal az **alapértelmezett** elemre, és kattintson a **Create Table** (Tábla létrehozása) parancsra.
+2. Konfigurálja a táblát.
+3. Kattintson a **Create Table** (Tábla létrehozása) parancsra, hogy elküldje az új Hive tábla létrehozására szolgáló feladatot.
    
-    ![Hadoop tools: hdinsight visual studio tools create hive table][7]
+    ![Data Lake-eszközök: HDInsight Visual Studio-eszközök hive-tábla létrehozásához][7]
 
-### <a name="run.queries"></a>Validate and run Hive queries
-There are two ways to create and run Hive queries:
+### <a name="a-namerunqueriesavalidate-and-run-hive-queries"></a><a name="run.queries"></a>Hive-lekérdezések érvényesítése és futtatása
+Kétféleképpen hozhat létre és futtathat Hive-lekérdezéseket:
 
-* Create ad-hoc queries
-* Create a Hive application
+* Alkalmi lekérdezések létrehozása
+* Hive alkalmazás létrehozása
 
-**To create, validate, and run ad-hoc queries**
+**Alkalmi lekérdezések létrehozása, érvényesítése és futtatása**
 
-1. From **Server Explorer**, expand **Azure**, and then expand **HDInsight Clusters**.
-2. Right-click the cluster where you want to run the query, and then click **Write a Hive Query**.
-3. Enter the Hive queries. Notice the Hive editor supports IntelliSense. HDInsight Tools for Visual Studio supports loading the remote metadata when you are editing your Hive script. For example, when you type "SELECT * FROM", the IntelliSense lists all the suggested table names. When a table name is specified, the column names are listed by the IntelliSense. The tool supports almost all Hive DML statements, subqueries, and the built-in UDFs.
+1. A **Server Explorer** eszközből bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight Clusters** (HDInsight-fürtök) elemet.
+2. Kattintson a jobb gombbal a fürtre, ahol futtatni szeretné a lekérdezést, majd kattintson a **Write a Hive Query** (Hive-lekérdezés írása) parancsra.
+3. Adja meg a Hive-lekérdezéseket. Figyelje meg, hogy a Hive szerkesztő támogatja az IntelliSense eszközt. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-parancsfájl szerkesztésekor. Amikor például a "SELECT * FROM" parancsot írja be, az IntelliSense listázza az összes javasolt táblanevet. Amikor meg van adva egy táblanév, az oszlopnevek az IntelliSense alapján vannak listázva. Az eszköz szinte az összes Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatja.
    
-    ![Hadoop tools: HDInsight Visual Studio Tools IntelliSense][13]
+    ![Data Lake-eszközök: HDInsight Visual Studio-eszközök, IntelliSense][13]
    
-    ![Hadoop tools: HDInsight Visual Studio Tools IntelliSense][14]
+    ![Data Lake-eszközök: HDInsight Visual Studio-eszközök, IntelliSense][14]
    
    > [!NOTE]
-   > Only the metadata of the clusters that is selected in HDInsight Toolbar will be suggested.
+   > A rendszer csak a HDInsight eszköztáron kijelölt fürtök metaadatait javasolja.
    > 
    > 
-4. (Optional): Click **Validate Script** to check the script syntax errors.
+4. (Elhagyható): Kattintson a **Parancsfájl érvényesítése** gombra a parancsfájl szintaxishibáinak ellenőrzéséhez.
    
-    ![Hadoop tools: hdinsight tools for Visual Studio local validation][10]
-5. Click **Submit** or **Submit (Advanced)**. With the advanced submit option, you'll configure **Job Name**, **Arguments**, **Additional Configurations**, and **Status Directory** for the script:
+    ![Data Lake-eszközök: Data Lake Tools for Visual Studio helyi érvényesítése][10]
+5. Kattintson a **Submit** (Küldés) vagy a **Submit (Advanced)** (Küldés (Speciális)) elemre. A speciális küldés lehetőséggel konfigurálja a parancsfájl **Job Name** (Feladat neve), **Arguments** (Argumentumok), **Additional Configurations** (További konfigurációk) és **Status Directory** (Állapot könyvtár) elemeit:
    
-    ![hdinsight hadoop hive query][9]
+    ![HDinsight Hadoop hive-lekérdezés][9]
    
-    After you submit the job, you see a **Hive Job Summary** window.
+    A feladat elküldése után egy **Hive Job Summary** (Hive-feladat összegzése) ablakot lát.
    
-    ![Summary of an HDInsight Hadoop Hive query][8]
-6. Use the **Refresh** button to update the status until the job status changes to **Completed**.
-7. Click the links at the bottom to see the following: **Job Query**, **Job Output**, **Job log**, or **Yarn log**.
+    ![HDInsight Hadoop Hive-lekérdezések összegzése][8]
+6. A **Refresh** (Frissítés) gombbal frissítheti az állapotot, amíg a feladat állapota **Completed** (Befejezve) állapotúvá nem válik.
+7. Kattintson az alul lévő hivatkozásokra a következők megtekintéséhez: **Job Query** (Feladat lekérdezése), **Job Output** (Feladatkimenet), **Job log** (Feladatnapló) vagy **Yarn log** (Yarn napló).
 
-**To create and run a Hive solution**
+**Hive-megoldás létrehozása és futtatása**
 
-1. From the **FILE** menu, click **New**, and then click **Project**.
-2. Select **HDInsight** from the left pane, select **Hive Application** in the middle pane, enter the properties, and then click **OK**.
+1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
+2. Válassza ki a bal oldali panelen a **HDInsight** elemet, válassza a középső panelen a **Hive Application** (Hive alkalmazás) elemet, írja be a tulajdonságokat, majd kattintson az **OK** gombra.
    
-    ![Hadoop tools: hdinsight visual studio tools new hive project][11]
-3. From **Solution Explorer**, double-click **Script.hql** to open it.
-4. To validate the Hive script, you can click the **Validate Script** button, or right-click the script in the Hive editor, and then click **Validate Script** from the context menu.
+    ![Data Lake-eszközök: HDInsight Visual Studio-eszközök – új hive-projekt][11]
+3. A **Solution Explorer** (Megoldáskezelő) ablakban kattintson duplán a **Script.hql** fájlra a megnyitásához.
+4. A Hive-parancsfájl érvényesítéséhez a **Validate Script** (Parancsfájl érvényesítése) gombra kattinthat, vagy kattintson a jobb gombbal a parancsfájlra a Hive szerkesztőben, majd kattintson a **Validate Script** (Parancsfájl érvényesítése) parancsra a helyi menüben.
 
-### View Hive jobs
-You can view job queries, job output, job logs, and Yarn logs for Hive jobs. For more information, see the previous screenshot.
+### <a name="view-hive-jobs"></a>Hive-feladatok megtekintése
+Megtekintheti a Hive-feladatok feladatlekérdezéseit, feladatkiemenetét, feladatnaplóit és Yarn naplóit. További információért tekintse meg az előző képernyőképet.
 
-The most recent release of the tool allows you to see what’s inside your Hive jobs by collecting and surfacing  YARN logs. A YARN log can help you investigating performance issues. For more information about how HDInsight collects YARN logs, see [Access HDInsight Application Logs Programmatically][hdinsight.access.application.logs].
+Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a YARN-naplókat. A YARN naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN naplókat: [Access HDInsight Application Logs Programmatically][hdinsight.access.application.logs] (HDInsight alkalmazásnaplók szoftveres elérése).
 
-**To view Hive jobs**
+**Hive-feladatok megtekintése**
 
-1. From **Server Explorer**, expand **Azure**, and then expand **HDInsight**.
-2. Right-click an HDInsight cluster, and then click **View Jobs**. You'll see a list of the Hive jobs that ran on the cluster.
-3. Click a job in the job list to select it, and then use the **Hive Job Summary** window to open **Job Query**, **Job Output**, **Job Log**, or **Yarn log**.
+1. A **Server Explorer** eszközből bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
+2. Kattintson a jobb gombbal egyyyy HDInsight-fürtre, majd kattintson a **View Jobs** (Feladatok megyytekintése) parancsra. Láthatja azon Hive-feladatok listáját, amelyek a fürtön futottak.
+3. Kattintson egy feladatra a feladatlistában a kiválasztásához, majd a **Hive Job Summary** (Hive feladat összegzése) ablakban nyissa meg a **Job Query** (Feladat lekérdezése), **Job Output** (Feladatkimenet), **Job Log** (Feladatnapló) vagy **Yarn log** (Yarn napló) elemet.
    
-    ![Hadoop tools: HDInsight Visual Studio Tools view Hive jobs][12]
+    ![Data Lake-eszközök: HDInsight Visual Studio-eszközök – Hive-feladatok megtekintése][12]
 
-### Faster path Hive execution via HiveServer2
+### <a name="faster-path-hive-execution-via-hiveserver2"></a>Gyorsabb elérési úttal rendelkező Hive végrehajtás HiveServer2-n keresztül
 > [!NOTE]
-> This feature only works on HDInsight cluster version 3.2 and newer.
+> Ez a szolgáltatás csak a HDInsight fürt 3.2-es és újabb verzióin működik.
 > 
 > 
 
-The HDInsight Tools used to submit Hive jobs via [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (also known as Templeton). It took a long time to return job details and error information.
-In order to solve this performance issue, the HDInsight Tools executes Hive jobs directly in the cluster through HiveServer2, so that it bypasses RDP/SSH.
-In addition to better performance, users can also view Hive on Tez graphs, and the Task details.
+A Hive-feladatok [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) ( más néven Templeton) -eszközön keresztül végzett küldéséhez használt Data Lake-eszközök. Hosszú időbe telt a feladatrészletek és a hibainformációk visszaadása.
+Ezen teljesítményprobléma megoldása érdekében a Data Lake-eszközök közvetlenül a fürtön futtatják a Hive-feladatokat a HiveServer2-n keresztül, kihagyva az RDP/SSH-védelmet.
+A jobb teljesítmény mellett a felhasználók Hive on Tez ábrákat és a feladat részleteit is megtekinthetik.
 
-For HDInsight cluster version 3.2 or later, you can see a **Execute via HiveServer2** button:
+A HDInsight-fürt 3.2-es vagy újabb verziói esetén egy **Execute via HiveServer2** (Végrehajtás HiveServer2-n keresztül) gomb látható:
 
-![hdinsight visual studio tools execute via hiveserver2](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
+![Data Lake visual studio-eszközök – végrehajtás hiveserver2-n keresztül](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
 
-And you can see the logs streamed back in realtime and see the job graphs if the Hive query is executed in Tez.
+A továbbított naplók valós időben láthatók, és megtekintheti a feladatábrákat is, ha a Hive-lekérdezést a Tezben futtatja.
 
-![hdinsight visual studio tools fast path hive execution](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
+![Data Lake visual studio-eszközök gyors elérési út hive végrehajtása](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
 
-**Difference between executing queries via HiveServer2 and Submitting Queries via WebHCat**
+**A lekérdezések HiveServer2-n végzett végrehajtása és a lekérdezések WebHCaten keresztüli elküldése közötti különbségek**
 
-Even though executing queries via HiveServer2 has many performance benefits, it has several limitations. Some of the limitations are not suitable for production usage. The following table shows the differences:
+Bár a lekérdezések HiveServer2-n keresztül végzett végrehajtásának számos előnnyel rendelkezik a teljesítmény szempontjából, vannak korlátozásai is. A korlátozások némelyike nem megfelelő az éles használathoz. Az alábbi táblázat a különbségeket mutatja:
 
-|  | Executing via HiveServer2 | Submitting via WebHCat |
+|  | Végrehajtás HiveServer2-n keresztül | Elküldés WebHCaten keresztül |
 | --- | --- | --- |
-| Execute queries |Eliminates the overhead in WebHCat (which launches a MapReduce Job named “TempletonControllerJob”). |As long as a query is executed via WebHCat, WebHCat will launch a MapReduce job which introduces additional latency. |
-| Stream logs back |In near real-time. |The job execution logs are available only when the job is finished. |
-| View job history |If a query is executed via HiveServer2, it’s job history (job log, job output) is not preserved. The application can be viewed in YARN UI with limited information. |If a query is executed via WebHCat, it’s job history (job log, job output) is preserved and can be viewed using Visual Studio/HDInsight SDK/PowerShell. |
-| Close window |Executing via HiveServer2 is a “synchronous” way so you must keep the windows open; if the windows are closed then the query execution will be cancelled. |Submitting via WebHCat is a “asynchronous” way so you can submit the query via WebHCat and close Visual Studio. You can come back and see the results at any time. |
+| Lekérdezések végrehajtása |Kiküszöböli a WebHCat többletterhelését (amely elindítja a „TempletonControllerJob” nevű MapReduce feladatot). |Amikor a WebHCaten keresztül hajtja végre a lekérdezést, a WebHCat elindít MapReduce feladatot, amely további késleltetést okoz. |
+| Stream naplók vissza |Majdnem valós időben. |A feladatvégrehajtási naplók csak a feladat elvégzése után érhetők el. |
+| Feladatelőzmények megtekintése |Ha egy lekérdezést a HiveServer2-n keresztül futtat, a feladatelőzményei (feladatnapló, feladatkimenet) nem maradnak meg. Az alkalmazás a YARN felhasználói felületen tekinthető meg korlátozott információkkal. |Ha egy lekérdezést a WebHCaten keresztül futtat, a feladatelőzményei (feladatnapló, feladatkimenet) megmaradnak és megtekinthetők a Visual Studio/HDInsight SDK/PowerShell használatával. |
+| Ablak bezárása |A HiveServer2-n keresztüli végrehajtás „szinkronos” módot jelent, így nyitva kell hagynia az ablakokat; ha bezárja az ablakokat, akkor megszakítja a lekérdezés végrehajtását. |A WebHCaten keresztül végzett küldés „aszinkronos” mód, így elküldheti a lekérdezést a WebHCaten keresztül, és bezárhatja a Visual Studio eszközt. Bármikor visszatérhet és megtekintheti az eredményeket. |
 
-### Tez Hive job performance graph
-The HDInsight Visual Studio Tools support showing performance graphs for the Hive jobs ran by the Tez execution engine. For information on enabling Tez, see [use Hive in HDInsight][hdinsight.hive]. After you submit a Hive job in Visual Studio, Visual Studio shows you the graph when the job is completed.  You might need to click the **Refresh** button to get the latest job status.
+### <a name="tez-hive-job-performance-graph"></a>Tez Hive feladat teljesítménye ábra
+A Data Lake-eszközök támogatják a Tez végrehajtómotor által elvégzett Hive-feladatok teljesítményi ábráinak megjelenítését. A Tez engedélyezéséről további információért lásd: [use Hive in HDInsight][hdinsight.hive] (A Hive használata a HDInsightban). Miután elküldött egy Hive-feladatot a Visual Studióban, a Visual Studio megjeleníti az ábrát a feladat elvégzésekor.  Elképzelhető, hogy a **Refresh** (Frissítés) gombra kell kattintania a legfrissebb feladatállapot lekérdezéséhez.
 
 > [!NOTE]
-> This feature is only available for HDInsight cluster version above 3.2.4.593, and can only work for completed jobs (if you submitted your job through WebHCat; this graph will show when you execute your query through HiveServer2). This works for both Windows and Linux based clusters.
+> Ez a szolgáltatás csak a HDInsight-fürt 3.2.4.593-as vagy újabb verzióihoz érhető el, és csak a befejezett feladatokhoz működik (ha a WebHCaten keresztül küldte el a feladatot; ez az ábra akkor jelenik meg, ha a lekérdezést a HiveServer2-n keresztül futtatja). Ez Windows- és Linux-alapú fürtök esetén is működik.
 > 
 > 
 
-![hadoop hive tez performance graph](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
+![hadoop hive tez teljesítmény ábra](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
 
-To help you understand your Hive query better, the tool add the Hive Operator view in this release. You just need to double click on the vertices of the job graph and you can see all the operators inside the vertex. You can also hover on a particular operator to view more details of this operator.
+Hogy jobban megértse a Hive-lekérdezést, ez a kiadás a Hive-operátor hozzáadása nézettel bővült. Csak duplán kell kattintania a feladatábra csúcsaira, és láthatja a csúcsponton belüli lévő összes operátort. Egy adott operátor fölé helyezve a mutatót további részleteket is megtudhat az operátorról.
 
-### Task execution view for Hive on Tez jobs
-The Task execution view for Hive on Tez jobs can be used to get structured & visualized information for Hive jobs, and get more job details. When there are performance issues, you can use the view to get further details. For example, how each task operates and the detailed information about each task (data read/write, schedule/start/end time, etc.), so that you can tune job configurations or system architecture based on the visualized information.
+### <a name="task-execution-view-for-hive-on-tez-jobs"></a>Feladatvégrehajtási nézet a Hive on Tez feladatokhoz
+A feladatvégrehajtási nézet a Hive on Tez feladatokhoz eszközzel strukturált és ábrázolt információkat szerezhet be a Hive-feladatokhoz, és további részleteket a feladatokról. Ahol probléma van a teljesítménnyel, a nézettel szerezhet be további részleteket. Például arról, hogyan működnek az egyes feladatok, és részletes információt kaphat mindegyik feladatról (adatírás/-olvasás, ütemezés/kezdő/záró idő stb.), hogy a megjelenített információk alapján hangolhassa a feladatkonfigurációkat vagy a rendszerarchitektúrát.
 
-![hdinsight visual studio tools task execution view](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png)
+![Data Lake Visual Studio-eszközök – feladat-végrehajtási nézet](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png)
 
-## Run Pig scripts
-HDInsight Tools for Visual Studio supports creating and submit Pig scripts to HDInsight clusters. Users can create a Pig project from template, and then submit the script to HDInsight clusters.
+## <a name="run-pig-scripts"></a>Pig-parancsfájlok futtatása
+A Data Lake Tools for Visual Studio támogatja a Pig-parancsfájlok létrehozását és HDInsight-fürtökbe való elküldését. A felhasználók Pig-projektet hozhatnak létre sablonból, majd elküldhetik a parancsfájlt a HDInsight-fürtökhöz.
 
-## Feedbacks & Known issues
-* Currently HiveServer2 results are displayed in pure text fashion which is not ideal. We are working on fixing that.
-* If the results are started with NULL values, currently the results are not shown. We have fixed this issue and if you are blocked on this issue, feel free to drop us an email or contact support team.
-* The HQL script created by Visual Studio is encoded depending on user’s local region setting. It may not execute correctly if user uploads the script to cluster as binary.
+## <a name="feedbacks-known-issues"></a>Visszajelzések és ismert problémák
+* Jelenleg a HiveServer2 eredmények tiszta szöveggel jelennek meg, ami nem ideális. Dolgozunk ennek megoldásán.
+* Ha az eredmények NULL értékekkel kezdődnek, az eredmények jelenleg nem jelennek meg. Megoldottuk ezt a problémát, és ha elakad ennél a hibánál, nyugodtan küldjön egy e-mailt, vagy lépjen kapcsolatba a Terméktámogatással.
+* A Visual Studio által létrehozott HQL-parancsfájl a felhasználó helyi régióbeállításaitól függően kódolt. Lehet, hogy nem fut megfelelően, ha a felhasználó binárisként tölti fel a parancsfájlt a fürtbe.
 
-If you have any suggestions or feedbacks, or if you encounter any problems when using this tool, feel free to drop us an email at hdivstool at microsoft dot com.
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visual Studio-eszközből a Data Lake (HDInsight) -eszközök csomaggal, és hogyan futtathat Hive-lekérdezéseket. További információkért lásd:
 
-## Next steps
-In this article, you learned how to connect to HDInsight clusters from Visual Studio, using the Hadoop tools package, and how to run a Hive query. For more information, see:
-
-* [Use Hadoop Hive in HDInsight][hdinsight.hive]
-* [Get started using Hadoop in HDInsight][hdinsight.get.started]
-* [Submit Hadoop jobs in HDInsight][hdinsight.submit.jobs]
-* [Analyze Twitter data with Hadoop in HDInsight][hdinsight.analyze.twitter.data]
+* [Use Hadoop Hive in HDInsight][hdinsight.hive] (A Hadoop Hive használata a HDInsightban).
+* [Get started using Hadoop in HDInsight][hdinsight.get.started] (A Hadoop első lépései a HDInsightban)
+* [Submit Hadoop jobs in HDInsight][hdinsight.submit.jobs] (Hadoop-feladatok elküldése a HDInsightban)
+* [Analyze Twitter data with Hadoop in HDInsight][hdinsight.analyze.twitter.data] (Twitter-adatok elemzése a Hadoop programmal a HDInsightban)
 
 <!--Anchors-->
-[Installation]: #installation
-[Connect to your Azure subscription]: #connect-to-your-azure-subscription
-[Navigate the linked resources]: #navigate-the-linked-resources
-[Run Hive queries]: #run-hive-queries
-[Next steps]: #next-steps
+[Telepítés]: #installation
+[Csatlakozás az Azure-előfizetéshez]: #connect-to-your-azure-subscription
+[Navigálás a kapcsolt erőforrásokban]: #navigate-the-linked-resources
+[Hive-lekérdezések futtatása]: #run-hive-queries
+[Következő lépések]: #next-steps
 
 <!--Image references-->
 [1]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png
@@ -269,7 +268,7 @@ In this article, you learned how to connect to HDInsight clusters from Visual St
 
 
 <!--Link references-->
-[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-create-clusters]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight.introduction]: hdinsight-hadoop-introduction.md
 [hdinsight.get.started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight.hive]: hdinsight-use-hive.md
@@ -282,6 +281,6 @@ In this article, you learned how to connect to HDInsight clusters from Visual St
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Többrétegű .NET-alkalmazás | Microsoft Docs
-description: Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között.
+title: "Többrétegű .NET-alkalmazás | Microsoft Docs"
+description: "Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között."
 services: service-bus
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
+
 
 ---
-# <a name=".net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
+# <a name="net-multitier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 ## <a name="introduction"></a>Bevezetés
 A Visual Studio és az ingyenes Azure SDK for .NET használatával könnyen fejleszthet a Microsoft Azure platformra. Ez az oktatóanyag végigvezeti egy olyan alkalmazás létrehozásának a lépésein, amely több, a helyi környezetben futó Azure-erőforrást használ. A lépések során feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban.
 
@@ -35,7 +39,7 @@ Az alábbi képernyőfelvételen a kész alkalmazás látható.
 
 ![][0]
 
-## <a name="scenario-overview:-inter-role-communication"></a>Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
+## <a name="scenario-overview-interrole-communication"></a>Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
 A feldolgozási kérés küldéséhez a webes szerepkörben futó előtér felhasználói felületi összetevőnek együtt kell működnie a feldolgozói szerepkörben futó középső rétegbeli logikával. Ez a példa Service Bus közvetítőalapú üzenettovábbítást használ a rétegek közötti kommunikációhoz.
 
 A webes és a középső réteg között használt közvetítőalapú üzenettovábbítás elválasztja a két összetevőt. A közvetlen (vagyis TCP- vagy HTTP-alapú) üzenettovábbítással szemben a webes réteg nem közvetlenül kapcsolódik a középső réteghez, hanem a munkaegységeket üzenetekként küldi le a Service Busba, amely megbízhatóan megőrzi azokat, amíg a középső réteg kész fogadni és feldolgozni azokat.
@@ -57,7 +61,7 @@ Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
-1. Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése][Eszközök és az SDK beszerzése] című szakasz alapján.
+1. Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése][Eszközök és az SDK beszerzése] oldalról.
 2. Kattintson a használt Visual Studio-verzió **Az SDK telepítése** lehetőségére. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
@@ -363,7 +367,7 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 
 További információ a többrétegű forgatókönyvekkel kapcsolatban:  
 
-* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)](multitierstorage.md)  
+* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (Többrétegű .NET-alkalmazások tárolótáblákkal, üzenetsorokkal és blobokkal)][multitierstorage]  
 
 [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -406,6 +410,6 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 
