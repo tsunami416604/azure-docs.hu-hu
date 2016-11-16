@@ -43,27 +43,27 @@
 
 
 # Referencia
-## [API-k – Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [API-k – Szolgáltatáskezelés](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell-parancsmagok – Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell-parancsmagok – Szolgáltatáskezelés](https://msdn.microsoft.com/library/azure/dn683813)
+
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
 ## [Útválasztó-konfigurációk telepítési mintái](expressroute-config-samples-routing.md)
 ## [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
+## [REST](https://msdn.microsoft.com/library/azure/mt586720)
+## [Klasszikus REST](https://msdn.microsoft.com/library/azure/dn606310)
 
-# Kapcsolódó 
-## [Virtual Network](../virtual-network/index.md)
-## [VPN Gateway](../vpn-gateway/index.md)
-## [Virtual Machines](../virtual-machines/index.md)
-## [Load Balancer](../load-balancer/index.md)
-## [Traffic Manager](../traffic-manager/index.md)
+# Kapcsolódó
+## [Virtual Network](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [Virtual Machines](/azure/virtual-machines/)
+## [Load Balancer](/azure/load-balancer/)
+## [Traffic Manager](/azure/traffic-manager/)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [Hálózatkezelési blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Esettanulmányok](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md)
-## Videók
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=expressroute) 
 ### [ExpressRoute-kapcsolatcsoport létrehozása](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Magánhálózati társviszony-létesítés beállítása a kapcsolatcsoportokhoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Nyilvános társviszony-létesítés beállítása a kapcsolatcsoportokhoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
@@ -73,6 +73,7 @@
 ### [Virtuális hálózati átjáró csatlakoztatása egy kapcsolatcsoporthoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [A hálózati infrastruktúra fejlesztése a csatlakoztathatóság érdekében](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [Hibrid partneri viszonyok: Helyszíni forgatókönyvek engedélyezése](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute) 
 
 <!--HONumber=Nov16_HO2-->
 

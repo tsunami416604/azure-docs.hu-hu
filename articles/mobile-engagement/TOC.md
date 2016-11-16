@@ -1,7 +1,6 @@
 # [Áttekintés](mobile-engagement-overview.md)
 ## [Összehasonlítás a kapcsolódó szolgáltatásokkal](mobile-engagement-comparison.md)
 ## [Funkciók áttekintése](mobile-engagement-key-features.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
 
 # Első lépések
 ## [Android](mobile-engagement-android-get-started.md)
@@ -117,28 +116,27 @@
 ### [Szolgáltatási korlátok/szabályozások](../azure-subscription-service-limits.md#mobile-engagement-limits)
 
 # Referencia
-## [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
-## [REST API-referencia](https://msdn.microsoft.com/en-us/library/azure/mt683754)
-## [REST API Swagger-specifikációja](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)
+## [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
 ## SDK-tartalom
 ### [Android SDK](mobile-engagement-android-sdk-content.md)
 ### [iOS SDK](mobile-engagement-ios-sdk-content.md)
 ### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
-
-# Kapcsolódó
-
-# Erőforrások
-## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
-## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
-## [Videók és frissítések](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
 ## Kibocsátási megjegyzések
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
 ### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
+
+
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
+## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
+## [Videók és frissítések](https://azure.microsoft.com/documentation/services/mobile-engagement/)
+## [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+
 
 
 

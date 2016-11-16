@@ -1,16 +1,13 @@
 # [Áttekintés](cdn-overview.md)
-## [Gyakorlati tanácsok az Azure CDN-nel kapcsolatban](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+## [Mi az Azure CDN?](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 # Első lépések
-## [Az Azure CDN szolgáltatás használata](cdn-create-new-endpoint.md)
-## Ismerkedés az Azure CDN-fejlesztéssel
-### [.NET](cdn-app-dev-net.md)
-### [Node.js](cdn-app-dev-node.md)
+## [Az Azure CDN engedélyezése](cdn-create-new-endpoint.md)
 
 # Útmutató
 ## Integrálás
-### [Web Apps-integráció](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
-### [Cloud Services-integráció](cdn-cloud-service-with-cdn.md)
-### [Integráció a Storage szolgáltatással](cdn-create-a-storage-account-with-cdn.md)
+### [Web Apps](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Felhőszolgáltatások](cdn-cloud-service-with-cdn.md)
+### [Tárolás](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
 
 ## Kezelés
@@ -29,9 +26,6 @@
 ### [A működés felülbírálása szabályokkal](cdn-rules-engine.md)
 ### [Valós idejű értesítések beállítása](cdn-real-time-alerts.md)
 
-## Automatizálás
-### [Kezelés a Powershell-lel](cdn-manage-powershell.md)
-
 ## Elemzés
 ### [Használati minták elemzése](cdn-analyze-usage-patterns.md)
 ### [Extra szintű HTTP-jelentések létrehozása](cdn-advanced-http-reports.md)
@@ -39,21 +33,25 @@
 ### [Élcsomópont teljesítményelemzése](cdn-edge-performance.md)
 
 ## Fejlesztés
-### Ismerkedés az Azure CDN-fejlesztéssel
-#### [.NET](cdn-app-dev-net.md)
-#### [Node.js](cdn-app-dev-node.md)
+### [.NET](cdn-app-dev-net.md)
+### [Node.js](cdn-app-dev-node.md)
 
 ## Hibaelhárítás
-### [404-es állapot hibaelhárítása](cdn-troubleshoot-endpoint.md)
-### [Fájlok tömörítési hibáinak elhárítása](cdn-troubleshoot-compression.md)
+### [404-es állapot](cdn-troubleshoot-endpoint.md)
+### [Fájltömörítés](cdn-troubleshoot-compression.md)
 
 # Referencia
-## [REST API – referencia](https://msdn.microsoft.com/library/mt634456.aspx)
-
-# Kapcsolódó
+## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Azure CDN POP-helyek](cdn-pop-locations.md)
+## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
 
 # Erőforrások
-## [Azure CDN POP-helyek](cdn-pop-locations.md)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cdn)
+
 
 
 <!--HONumber=Nov16_HO2-->

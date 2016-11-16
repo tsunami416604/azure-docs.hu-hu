@@ -136,6 +136,9 @@
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## Partnerek
 ### [Üzleti intelligencia](sql-data-warehouse-partner-business-intelligence.md)

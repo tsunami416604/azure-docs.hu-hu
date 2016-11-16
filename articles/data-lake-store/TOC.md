@@ -35,7 +35,7 @@
 ### [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 ### [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md)
 ### [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
- 
+
 ## Integráció az Azure-szolgáltatásokkal
 ### [Használat a Data Lake Analytics-szel](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [HDInsight-fürt létrehozása a Data Lake Store-ral a Portalon](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -51,14 +51,11 @@
 ### [Diagnosztikai naplók elérése](data-lake-store-diagnostic-logs.md)
 
 # Referencia
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt581387.aspx)
-## [Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [PowerShell-parancsmagok](https://msdn.microsoft.com/library/azure/mt607120.aspx)
-## [REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-
-# Kapcsolódó
-## [Cortana Intelligence csomag](https://www.microsoft.com/en-us/cloud-platform/what-is-cortana-intelligence-suite)
+## [REST](https://docs.microsoft.com/en-us/rest/api/datalakestore/)
 
 # Erőforrások
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)

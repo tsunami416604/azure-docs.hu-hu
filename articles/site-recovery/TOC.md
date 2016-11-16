@@ -48,6 +48,10 @@
 ### [Feladat-visszavétel VMware virtuális gépek és fizikai kiszolgálók esetében](site-recovery-failback-azure-to-vmware.md)
 ## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
+# Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [Klasszikus PowerShell](/powershell/servicemanagement/)
+
 # Kapcsolódó
 ## [Azure Automation](/azure/automation/)
 
@@ -56,6 +60,7 @@
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr)
 ## [Blog](http://azure.microsoft.com/blog/tag/azure-site-recovery/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
 <!--HONumber=Nov16_HO2-->

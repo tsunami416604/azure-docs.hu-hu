@@ -1,4 +1,5 @@
-# [Áttekintés](notification-hubs-push-notification-overview.md)
+# Áttekintés
+## [Mi az az Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
 # Első lépések
 ## [Android (FCM)](notification-hubs-android-push-notification-google-fcm-get-started.md)
 ## [Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)
@@ -9,9 +10,9 @@
 ## [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)
 ## [Xamarin.Android](xamarin-notification-hubs-push-notifications-android-gcm.md)
 ## [Xamarin.iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
+## [Gyakori kérdések](notification-hubs-push-notification-faq.md)
 
 # Útmutató
-
 ## Tervezés és kialakítás
 ### [Útmutató a vállalati leküldési architektúrákhoz](notification-hubs-enterprise-push-notification-architecture.md)
 
@@ -48,24 +49,26 @@
 ### Biztonságos leküldés
 #### [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 #### [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
-#### [Windowsh](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
-
-
+#### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 
 ## Automatizálás
 ### [A Notification Hubs telepítése és kezelése a PowerShell-lel](notification-hubs-deploy-and-manage-powershell.md)
 ### [Ütemezett értesítések küldése](notification-hubs-send-push-notifications-scheduled.md)
 
-
 ## Hibaelhárítás
 ### [Diagnosztikai irányelvek](notification-hubs-push-notification-fixer.md)
 
 # Referencia
-
-# Kapcsolódó
+## [PowerShell-parancsmagok](/powershell/resourcemanager/)
+## [.NET](/dotnet/api/)
+## [REST](/rest/api/notificationhubs/)
 
 # Erőforrások
-## [Gyakori kérdések](notification-hubs-push-notification-faq.md)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-notificationhub)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
 <!--HONumber=Nov16_HO2-->

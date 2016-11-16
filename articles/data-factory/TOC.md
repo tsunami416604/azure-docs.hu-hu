@@ -91,8 +91,12 @@
 ### [Data Factory-hibák elhárítása](data-factory-troubleshoot.md)
 ### [Az Adatkezelési átjáró használatával hibáinak elhárítása](data-factory-troubleshoot-gateway-issues.md)
 ### [Üzembe helyezés Azure Resource Manager-sablonokkal](data-factory-how-to-use-resource-manager-templates.md)
-# Referencia 
+
+# Referencia
 ## [Azure Data Factory – fejlesztői referencia](data-factory-sdks.md)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
+## [REST](https://docs.microsoft.com/rest/api/datafactory/)
 
 # Erőforrások:
 ## [Esettanulmányok](data-factory-customer-case-studies.md)
@@ -103,13 +107,6 @@
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory)
 ## [Funkció kérése](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [Az Adatkezelési átjáró kibocsátási megjegyzései](data-factory-gateway-release-notes.md)
-
-
-
-
-
-
-
 
 
 <!--HONumber=Nov16_HO2-->

@@ -55,14 +55,18 @@
 ### [Többnyelvű keresés](search-language-support.md)
 
 # Referencia
-## [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165)
-## [Szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn798935)
-## [Szolgáltatási REST API (előzetes verzió)](search-api-2015-02-28-preview.md)
-## [Kezelési REST API](https://msdn.microsoft.com/library/azure/dn832684)
 ## [API-verziók](search-api-versions.md)
+## [Java](/java/api/)
+## [.NET](/dotnet/api/)
 ## [Lucene lekérdezési szintaxis](https://msdn.microsoft.com/library/azure/mt589323)
 ## [Egyszerű lekérdezési szintaxis](https://msdn.microsoft.com/library/azure/dn798920)
+## [Szolgáltatási REST](/rest/api/searchservice/)
+## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
+## [Felügyeleti REST](/rest/api/searchmanagement/)
+
 # Erőforrások
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
 ## Bemutató webhelyek
 ### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
 ### [Élő bemutató alkalmazások](https://searchsamples.azurewebsites.net/)
@@ -73,7 +77,7 @@
 ## Partner és közösség
 ### [Relációs adatok modellezése](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [Többszintű jellemzőkezelés](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [Fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 

@@ -57,7 +57,7 @@
 #### [A 8600-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8600-hardware-installation.md)
 #### [10 GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### Üzembe helyezés 
+### Üzembe helyezés
 #### [StorSimple Manager szolgáltatás](storsimple-manage-service.md)
 #### [Fizikai eszköz az Azure-ban – aktuális](storsimple-deployment-walkthrough-u2.md)
 ##### [Fizikai eszköz az Azure-ban – 1. frissítés](storsimple-deployment-walkthrough-u1.md)
@@ -68,7 +68,7 @@
 #### [SharePointhoz készült StorSimple-adapter](storsimple-adapter-for-sharepoint.md)
 
 ## Útmutató
-### Kezelés 
+### Kezelés
 #### [A StorSimple Manager szolgáltatás használata](storsimple-manager-service-administration.md)
 ##### [Visszaállítás biztonsági mentésből](storsimple-restore-from-backup-set-u2.md)
 ###### [Visszaállítás biztonsági mentésből](storsimple-restore-from-backup-set.md)
@@ -160,18 +160,20 @@
 ### [Kiadás – GA](storsimple-july-2014-release-notes.md)
 
 ## Referencia
-### [Referencia az Azure PowerShell-parancsmagokhoz](https://msdn.microsoft.com/en-us/library/azure/dn920427)
-### [Referencia a StorSimple-höz készült Windows PowerShell-parancsmagokhoz](https://technet.microsoft.com/library/dn688168.aspx)
+### [PowerShell](/powershell/servicemanagement/)
 
-# [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
+# Kapcsolódó
+## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
 
 # Erőforrások
-## [Azure blog](https://azure.microsoft.com/blog/)
-## [Fórumok](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [Marketing blog](http://blogs.technet.com/b/cis/)
-## [Marketing](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
+## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
 ## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
 <!--HONumber=Nov16_HO2-->

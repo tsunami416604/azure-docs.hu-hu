@@ -4,7 +4,7 @@
 ### [Felhasználók és kapcsolatok](../active-directory-aadconnectsync-understanding-users-and-contacts.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ### [Architektúra](../active-directory-aadconnectsync-understanding-architecture.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ### [Deklaratív kiépítés](../active-directory-aadconnectsync-understanding-declarative-provisioning.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
-#### [Deklaratív üzembe helyezési kifejezések](../active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+#### [Deklaratív üzembehelyezési kifejezések](../active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ### [Alapértelmezett konfiguráció](../active-directory-aadconnectsync-understanding-default-configuration.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ## [Mi az Azure AD Connect és az összevonás?](../active-directory-aadconnectfed-whatis.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
 ## [Mi az Azure AD Connect Health?](../active-directory-aadconnect-health.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)

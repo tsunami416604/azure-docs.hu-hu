@@ -128,27 +128,31 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referencia
-
+## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [Elemzés](app-insights-analytics-reference.md)
 ## [Mintavételezés](app-insights-sampling.md)
 ## [IP-címek](app-insights-ip-addresses.md)
 ## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ## [Adatmodell exportálása](app-insights-export-data-model.md)
-## [REST API](https://dev.applicationinsights.io/)
-## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Java SDK API](http://dl.windowsazure.com/applicationinsights/javadoc/)
 ## [Migráció az Azure Endpoint Monitoringról a rendelkezésre állási tesztekre](app-insights-migrate-azure-endpoint-tests.md)
 ## [Fejlesztői elemzések: nyelvek, platformok és integrációk](app-insights-platforms.md)
 ### [Kódminták és útmutatók](app-insights-code-samples.md)
-
 #### [Útmutatás: Telemetria engedélyezése a Microsoft Dynamics CRM Online-hoz](app-insights-sample-mscrm.md)
 #### [Útmutatás: SQL-exportálás a Stream Analytics használatával](app-insights-code-sample-export-sql-stream-analytics.md)
 #### [Kódminta: az exportált adatok elemzése](app-insights-code-sample-export-telemetry-sql-database.md)
 ## [Kibocsátási megjegyzések a következőhöz: Application Insights SDK Windows Phone-hoz és Store-hoz](app-insights-release-notes-windows.md)
 ## [Developer Analytics Tools kibocsátási megjegyzései](app-insights-release-notes-vsix.md)
 ## [SDK kibocsátási megjegyzések – Application Insights](app-insights-release-notes.md)
+## [REST API](https://dev.applicationinsights.io/)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=application-insights) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
 ## [Támogatás](app-insights-get-dev-support.md)
 
 

@@ -5,36 +5,37 @@
 # Első lépések
 
 ## [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
-### [DNS-zóna létrehozása (PowerShell)](dns-getstarted-create-dnszone.md)
-### [DNS-zóna létrehozása (parancssori felület)](dns-getstarted-create-dnszone-cli.md)
+### [PowerShell](dns-getstarted-create-dnszone.md)
+### [Parancssori felület](dns-getstarted-create-dnszone-cli.md)
 
 ## [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md)
-### [DNS-rekordok létrehozása (PowerShell)](dns-getstarted-create-recordset.md)
-### [DNS-rekordok létrehozása (parancssori felület)](dns-getstarted-create-recordset-cli.md)
+### [PowerShell](dns-getstarted-create-recordset.md)
+### [Parancssori felület](dns-getstarted-create-recordset-cli.md)
 
 ## [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
 
 # Útmutató
 
-## [DNS-zónák kezelése](dns-operations-dnszones.md)
-### [DNS-zónák kezelése (parancssori felület)](dns-operations-dnszones.md)
+## DNS-zónák kezelése
+### [PowerShell](dns-operations-dnszones.md)
+### [Parancssori felület](dns-operations-dnszones.md)
 
 ## [DNS-rekordok kezelése](dns-operations-recordsets-portal.md)
-### [DNS-rekordok kezelése (PowerShell)](dns-operations-recordsets.md)
-### [DNS-rekordok kezelése (parancssori felület)](dns-operations-recordsets-cli.md)
+### [PowerShell](dns-operations-recordsets.md)
+### [Parancssori felület](dns-operations-recordsets-cli.md)
 
 ## [Fordított DNS-rekordok kezelése](dns-reverse-dns-record-operations-ps.md)
-### [Fordított DNS-rekordok kezelése (parancssori felület)](dns-reverse-dns-record-operations-cli.md)
-### [Fordított DNS-rekordok kezelése (klasszikus PS)](dns-reverse-dns-record-operations-classic-ps.md)
+### [Parancssori felület](dns-reverse-dns-record-operations-cli.md)
+### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
 ## [DNS-zónafájl importálása és exportálása](dns-import-export.md)
 ## [Az Azure DNS használata más Azure-szolgáltatásokkal](dns-for-azure-services.md)
 ## [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md)
-## [DNS-műveletek automatizálása a DNS.NET SDK használatával](dns-sdk.md)
+## [DNS-műveletek automatizálása a .NET SDK használatával](dns-sdk.md)
 
 # Referencia
-## [PowerShell-parancsmagok](https://msdn.microsoft.com/en-us/library/azure/mt126288(v=azure.300))
-## [REST API-k](https://msdn.microsoft.com/library/azure/mt163862)
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [REST API-k](/rest/api/dns/)
 
 # Kapcsolódó
 ## [Application Gateway](/azure/application-gateway/)
@@ -42,7 +43,12 @@
 ## [Virtuális gép](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Webalkalmazások](/azure/app-service/web/)
+## [Webalkalmazások](/azure/app-service-web/)
+
+# Erőforrások
+## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
+## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
 
 
 <!--HONumber=Nov16_HO2-->

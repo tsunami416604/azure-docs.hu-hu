@@ -1,17 +1,14 @@
 # Áttekintés
 ## [Mi az az Azure Security Center?](security-center-intro.md)
-## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
-## [Díjszabás](security-center-pricing.md)
-## [Gyakori kérdések](security-center-faq.md)
 ## [Elemzések készítése a Power BI-szolgáltatással](security-center-powerbi.md)
 ## [Adatbiztonság](security-center-data-security.md)
-## Gyakori forgatókönyvek
+## Forgatókönyvek
 ### [Incidensmegoldás](security-center-incident-response.md)
 
 # Bevezetés
 ## [Első lépések](security-center-get-started.md)
 ## [Tervezés és műveletek](security-center-planning-and-operations-guide.md)
-## [A Security Center és az SQL Database](security-center-sql-database.md)
+## [Gyakori kérdések](security-center-faq.md)
 
 # Útmutató
 
@@ -59,10 +56,14 @@
 ## [REST API](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # Kapcsolódó
-## [Tudnivalók az Azure Securityről](../security/azure-security-getting-started.md)
+## [Azure Security](/azure/security/)
 
 # Erőforrások
 ## [Azure biztonsági, adatvédelmi és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
+## [Díjszabás](security-center-pricing.md)
+## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=security-center)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
 <!--HONumber=Nov16_HO2-->

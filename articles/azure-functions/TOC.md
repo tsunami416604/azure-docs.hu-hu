@@ -1,5 +1,5 @@
-# [Áttekintés](functions-overview.md)
-
+# Áttekintés
+## [Mi az az Azure Functions?](functions-overview.md)
 # Első lépések
 ## [Az első függvény létrehozása](functions-create-first-azure-function.md)
 ## [Webhook-függvény létrehozása](functions-create-a-web-hook-or-api-function.md)
@@ -38,10 +38,14 @@
 ## Üzembe helyezés
 ### [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
+# Referencia
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->

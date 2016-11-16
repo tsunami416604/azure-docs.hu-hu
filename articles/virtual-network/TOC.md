@@ -1,16 +1,15 @@
 # Áttekintés
 ## [Virtuális hálózatok](virtual-networks-overview.md)
-## [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 ## [Felhasználó által megadott útvonalak és IP-továbbítás](virtual-networks-udr-overview.md)
+## [Társviszony létesítése virtuális hálózatok között](virtual-network-peering-overview.md)
+## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
+## [Gyakori kérdések](virtual-networks-faq.md)
 ## IP-címzés
 ### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [Klasszikus](virtual-network-ip-addresses-overview-classic.md)
-## [Társviszony létesítése virtuális hálózatok között](virtual-network-peering-overview.md)
-## Virtual machines (Virtuális gépek)
+## Virtuális gépek
 ### [Hálózati illesztők](virtual-network-network-interface-overview.md)
 ### [Névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md)
-## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)
 
 # Első lépések
 ## [Virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-pportal.md)
@@ -32,7 +31,7 @@
 #### [Parancssori felület (klasszikus)](virtual-networks-create-vnet-classic-cli.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
-#### [Portál](virtual-networks-create-nsg-arm-portal.md)
+#### [Portál](virtual-networks-create-nsg-arm-pportal.md)
 #### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [Parancssori felület](virtual-networks-create-nsg-arm-cli.md)
 #### [Sablon](virtual-networks-create-nsg-arm-template.md)
@@ -75,7 +74,9 @@
 ##### [PowerShell (klasszikus)](virtual-network-deploy-multinic-classic-ps.md)
 ##### [Parancssori felület (klasszikus)](virtual-network-deploy-multinic-classic-cli.md)
 
-#### [Több IP-cím](virtual-network-multiple-ip-addresses-powershell.md)
+#### Több IP-cím
+##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
+##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 
 ### Kapcsolódási forgatókönyvek
 #### [Virtuális hálózatok közötti kapcsolat](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -92,6 +93,14 @@
 ##### [Szegélyhálózat tűzfallal és NSG-kkel](virtual-networks-dmz-nsg-fw-asm.md)
 ##### [Szegélyhálózat tűzfallal, felhasználó által megadott útvonallal (UDR-rel) és NSG-kkel](virtual-networks-dmz-nsg-fw-udr-asm.md)
 ##### [Mintaalkalmazás](virtual-networks-sample-app.md)
+
+## Konfigurálás
+### Gyorsított hálózatkezelés
+#### [Azure Portal](virtual-network-accelerated-networking-portal.md)
+#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### Hozzáférés-vezérlési listák
+#### [Klasszikus portál](virtual-networks-acl.md)
+#### [PowerShell](virtual-networks-acl-powershell.md)
 
 ## Kezelés
 ### Network security groups (Hálózati biztonsági csoportok)
@@ -110,22 +119,28 @@
 #### [Virtuális gép áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md)
 
 # Referencia
-## [PowerShell-parancsmagok (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell-parancsmagok (klasszikus)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
-## [API-k (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
-## [API-k (klasszikus)](https://msdn.microsoft.com/library/jj157182.aspx)
-## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
-## [Gyakori kérdések](virtual-networks-faq.md)
+## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
+## [PowerShell (klasszikus)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
+## [Azure CLI](/cli/azure/)
+## [Java](/java/api/)
+## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
+## [REST (klasszikus)](https://msdn.microsoft.com/library/jj157182.aspx)
+
 
 # Kapcsolódó
-## [Virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines)
-## [Application Gateway](https://azure.microsoft.com/documentation/services/application-gateway)
-## [Azure DNS](https://azure.microsoft.com/documentation/services/dns)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager)
-## [Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway)
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute)
+## [Virtual Machines](/azure/virtual-machines/)
+## [Application Gateway](/azure/application-gateway/)
+## [Azure DNS](/azure/dns/)
+## [Traffic Manager](/azure/traffic-manager/)
+## [Load Balancer](/azure/load-balancer/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [ExpressRoute](/azure/expressroute/)
 
+# Erőforrások
+## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
+## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
 <!--HONumber=Nov16_HO2-->

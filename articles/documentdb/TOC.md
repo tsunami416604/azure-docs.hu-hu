@@ -96,8 +96,10 @@
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/documentdb/)
+## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb)
-## [MSDN-fórumok](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=documentdb) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=documentdb) 
 ## [Kérdezzen a DocumentDB-től](documentdb-community.md#contact-the-team)
 ## [Közösségi portál](documentdb-community.md)
 ## [Események és felvételek](documentdb-community.md#events-and-recordings)

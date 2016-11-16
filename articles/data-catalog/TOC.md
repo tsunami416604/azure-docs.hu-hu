@@ -30,9 +30,11 @@
 ## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
 ## [Terminológia](data-catalog-terminology.md)
 ## [Kiadási megjegyzések](data-catalog-release-notes.md)
+## [REST](https://docs.microsoft.com/rest/api/datacatalog/)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
+
 
 <!--HONumber=Nov16_HO2-->
 

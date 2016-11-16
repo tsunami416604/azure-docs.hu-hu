@@ -1,21 +1,20 @@
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
-## [Melyik kiadást válasszam?](active-directory-editions.md)
-## [Alapok](fundamentals-identity.md)
-## [Az Azure Portal-élmény előzetese](active-directory-preview-explainer.md)
+## [Kiadás kiválasztása](active-directory-editions.md)
+## [Tudnivalók az Azure-identitáskezelésről](fundamentals-identity.md)
+## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
 
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
-## [Azure AD Premium](active-directory-get-started-premium.md)
+## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
-## [Az Azure AD licencelése](active-directory-licensing-what-is.md)
+## [Az AD-licencelés kezelése](active-directory-licensing-what-is.md)
 ## [Azure beszerzése a szervezet számára](sign-up-organization.md)
 ## [Gyakori kérdések](active-directory-faq.md)
 
 
 # Útmutató
-
 ## Felhasználók kezelése
 ### Felhasználók hozzáadása
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
@@ -27,29 +26,29 @@
 
 ### [Felhasználók törlése](active-directory-users-delete-user-azure-portal.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
-### [Jelszó alaphelyzetbe állítása](active-directory-users-reset-password-azure-portal.md)
+### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
 ### [A felhasználók munkahelyi adatainak kezelése](active-directory-users-work-info-azure-portal.md)
-### [Közös fiókok](active-directory-sharing-accounts.md)
+### [Fiókok megosztása](active-directory-sharing-accounts.md)
 
-### [Azure AD-csoportok](active-directory-manage-groups.md)
-#### Csoportok kezelése
-##### [Azure Portal](active-directory-groups-create-azure-portal.md)
-##### [Klasszikus portál](active-directory-accessmanagement-manage-groups.md)
-##### [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
-#### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
-#### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
-#### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
-#### [Dedikált csoportok](active-directory-accessmanagement-dedicated-groups.md)
-#### [Hozzáférés a SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
-#### Csoportbeállítások
-##### [Azure Portal](active-directory-groups-settings-azure-portal.md)
-##### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
-#### Speciális szabályok
-##### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-##### [Klasszikus portál](active-directory-accessmanagement-groups-with-advanced-rules.md)
-#### [Önkiszolgáló csoportok](active-directory-accessmanagement-self-service-group-management.md)
-#### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
+## [Csoportok és tagok kezelése](active-directory-manage-groups.md)
+### Csoportok kezelése
+#### [Azure Portal](active-directory-groups-create-azure-portal.md)
+#### [Klasszikus portál](active-directory-accessmanagement-manage-groups.md)
+#### [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
+### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
+### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
+### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
+### [Dedikált csoportok engedélyezése](active-directory-accessmanagement-dedicated-groups.md)
+### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
+### Csoportbeállítások kezelése
+#### [Azure Portal](active-directory-groups-settings-azure-portal.md)
+#### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### Speciális szabályok létrehozása
+#### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
+#### [Klasszikus portál](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
+### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 
 ## [Hozzáférési és használati jelentések megtekintése](active-directory-view-access-usage-reports.md)
 ### [Azure AD Reporting](active-directory-reporting-getting-started.md)
@@ -81,18 +80,18 @@
 
 ## [Jelszavak kezelése](active-directory-manage-passwords.md)
 ### [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
-### [Működés](active-directory-passwords-how-it-works.md)
-### [Házirendek és korlátozások](active-directory-passwords-policy.md)
+### [A jelszókezeléssel kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
+### [A szabályzatokkal és a korlátozásokkal kapcsolatos tudnivalók](active-directory-passwords-policy.md)
 ### Új jelszavak létrehozása
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 #### [Klasszikus portál](active-directory-create-users-reset-password.md)
-### [Elévülési házirendek](active-directory-passwords-set-expiration-policy.md)
-### Jelszókezelés
+### [Elévülési szabályzatok beállítása](active-directory-passwords-set-expiration-policy.md)
+### Jelszókezelés engedélyezése
 #### [Első lépések](active-directory-passwords-getting-started.md)
 #### [Üzembe helyezés](active-directory-passwords-best-practices.md)
-#### [Új jelszó létrehozása](active-directory-passwords.md)
+#### [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-passwords.md)
 #### [Testreszabás](active-directory-passwords-customize.md)
-#### [Jelentések](active-directory-passwords-get-insights.md)
+#### [Jelentések megtekintése](active-directory-passwords-get-insights.md)
 #### [További információ](active-directory-passwords-learn-more.md)
 #### [Gyakori kérdések](active-directory-passwords-faq.md)
 #### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
@@ -105,27 +104,27 @@
 #### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
 #### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
 #### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
-#### [Automatikus regisztráció](active-directory-conditional-access-automatic-device-registration.md)
+#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
 ##### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
 ##### [Windows 7](active-directory-conditional-access-automatic-device-registration-windows7.md)
 ##### [Windows 8.1](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-#### [Hitelesítő alkalmazás](active-directory-conditional-access-azure-authenticator-app.md)
-#### [Eszközházirendek](active-directory-conditional-access-device-policies.md)
-#### [Hozzáférés a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
+#### [Hitelesítő alkalmazás kezelése](active-directory-conditional-access-azure-authenticator-app.md)
+#### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
+#### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
 #### [Helyszíni üzembe helyezés](active-directory-conditional-access-on-premises-setup.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
 #### [Referencia](active-directory-conditional-access-technical-reference.md)
 
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
-#### [Üzembe helyezés](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [Eszközregisztráció](active-directory-azureadjoin-setup.md)
+#### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
+#### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
 #### [Új eszközök regisztrálása](active-directory-azureadjoin-user-frx.md)
-#### [Csatlakozás tartományhoz](active-directory-azureadjoin-devices-group-policy.md)
+#### [Üzembe helyezés](active-directory-azureadjoin-devices-group-policy.md)
 #### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
-#### [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
-#### [A Windows 10 útmutatója](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [Windows 10-eszközök](active-directory-azureadjoin-windows10-devices.md)
+#### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
+#### [A Windows 10-es integrációval kapcsolatos tudnivalók](active-directory-azureadjoin-windows10-devices-overview.md)
+#### [Windows 10-eszközök használata](active-directory-azureadjoin-windows10-devices.md)
 
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)
@@ -133,13 +132,13 @@
 
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
-### [Útmutató az első lépésekhez](active-directory-integrating-applications-getting-started.md)
+### [Első lépések](active-directory-integrating-applications-getting-started.md)
 
 ### [Felhőalkalmazások felderítése](active-directory-cloudappdiscovery-whatis.md)
-#### [Beállításjegyzék-beállítások](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [Biztonság és adatvédelem](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+#### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [Távoli hozzáférés az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
+### [Távoli hozzáférés biztosítása az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
 #### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 #### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
 #### Közzététel külön hálózatokon
@@ -152,31 +151,31 @@
 #### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
 #### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
-### [Egyszeri bejelentkezés az alkalmazásokhoz](active-directory-appssoaccess-whatis.md)
+### [Az alkalmazásokba való egyszeri bejelentkezéssel kapcsolatos tudnivalók](active-directory-appssoaccess-whatis.md)
 
 ### SaaS-alkalmazások integrálása
 #### [Azure Portal](active-directory-enterprise-apps-manage-sso.md)
 #### [Klasszikus portál](active-directory-sso-integrate-saas-apps.md)
 
-### Vállalati alkalmazások
+### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)
 #### [Márkajelzés testreszabása](active-directory-coreapps-change-app-logo-user-azure-portal.md)
 #### [Felhasználói bejelentkezések letiltása](active-directory-coreapps-disable-app-azure-portal.md)
 #### [Felhasználók eltávolítása](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [Az összes alkalmazás megtekintése](active-directory-coreapps-view-azure-portal.md)
-#### [Felhasználói fiók üzembe helyezése](active-directory-enterprise-apps-manage-provisioning.md)
+#### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 
-### Fejlesztői útmutató
+### Fejlesztés
 #### [Felhasználók hozzárendelése](active-directory-applications-guiding-developers-assigning-users.md)
 #### [Csoportok hozzárendelése](active-directory-applications-guiding-developers-assigning-groups.md)
 #### [Hozzárendelés igénylése](active-directory-applications-guiding-developers-requiring-user-assignment.md)
-#### [Üzletági alkalmazások](active-directory-applications-guiding-developers-for-lob-applications.md)
+#### [LoB-alkalmazások fejlesztése](active-directory-applications-guiding-developers-for-lob-applications.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
 
-### [SCIM használata a felhasználók üzembe helyezésére](active-directory-scim-provisioning.md)
+### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
 ### [Dokumentumtár](active-directory-apps-index.md)
 
 
@@ -206,7 +205,7 @@
 #### [Gyakori kérdések](active-directory-windows-enterprise-state-roaming-faqs.md)
 ### [Partnerek integrálása az Azure AD B2B-vel](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [Áttekintés](active-directory-b2b-collaboration-overview.md)
-#### [Működés](active-directory-b2b-how-it-works.md)
+#### [Működési elv](active-directory-b2b-how-it-works.md)
 #### [Képességek összehasonlítása](active-directory-b2b-compare-external-identities.md)
 #### [Útmutatás](active-directory-b2b-detailed-walkthrough.md)
 #### [Korlátozások](active-directory-b2b-current-preview-limitations.md)
@@ -239,7 +238,7 @@
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Bekapcsolás](active-directory-identityprotection-enable.md)
 #### [Bejelentkezési felület](active-directory-identityprotection-flows.md)
-#### [Felhasználók feloldása](active-directory-identityprotection-unblock-howto.md)
+#### [Felhasználók tiltásának feloldása](active-directory-identityprotection-unblock-howto.md)
 #### [Biztonsági rések keresése](active-directory-identityprotection-vulnerabilities.md)
 #### [Kockázati események típusai](active-directory-identityprotection-risk-events-types.md)
 #### [Kockázati események szimulálása](active-directory-identityprotection-playbook.md)
@@ -270,19 +269,18 @@
 ### [Következő lépések](active-directory-hybrid-identity-design-considerations-nextsteps.md)
 ### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
-## [Fejlesztés](./develop/active-directory-how-to-integrate.md)
-
 ## [Az AD FS üzembe helyezése az Azure-ban](active-directory-aadconnect-azure-adfs.md)
 ### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
 
-## [Az Azure AD hibaelhárítása](active-directory-troubleshooting.md)
+## [Hibaelhárítás](active-directory-troubleshooting.md)
 
 
 # Referencia
-## [Azure AD szolgáltatási korlátozások](active-directory-service-limits-restrictions.md)
-## [Active Directory Authentication Library – .NET-referencia](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
-## [Azure Active Directory PowerShell-modul](https://msdn.microsoft.com/library/azure/mt757189.aspx)
+## [PowerShell-parancsmagok](/powershell/ )
+## [Java API-referencia](/java/api)
+## [.NET API](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+## [Szolgáltatási korlátozások](active-directory-service-limits-restrictions.md)
 
 # Kapcsolódó
 ## [Többtényezős hitelesítés](/azure/multi-factor-authentication/)
@@ -291,7 +289,12 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # Erőforrások
-## [Azure Active Directory-fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory) 
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
+## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
 <!--HONumber=Nov16_HO2-->

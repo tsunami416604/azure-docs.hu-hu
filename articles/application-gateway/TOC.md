@@ -37,23 +37,27 @@
 ### [Portál](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
-### Kezelés
+## Kezelés
 ### [Diagnosztika](application-gateway-diagnostics.md)
 ### [Hibaelhárítás](application-gateway-troubleshooting-502.md)
 # Referencia
-## [Resource Manager API-k](https://msdn.microsoft.com/library/azure/mt684941)
-## [Szolgáltatásfelügyeleti API-k](https://msdn.microsoft.com/library/azure/mt299393)
-## [PowerShell-parancsmagok](https://go.microsoft.com/fwlink/p/?LinkId=536407)
+## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/resourcemanager)
+## [REST](https://msdn.microsoft.com/library/mt684941)
+## [Klasszikus REST](https://msdn.microsoft.com/library/azure/mt299393)
+
 # Kapcsolódó
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtuális hálózat](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [Virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+## [ExpressRoute](/azure/expressroute/)
+## [Virtuális hálózat](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [Virtuális gépek](/azure/virtual-machines/)
+## [Load Balancer](/azure/load-balancer/)
+## [Traffic Manager](/azure/traffic-manager/)
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)  
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
+
 
 <!--HONumber=Nov16_HO2-->
 

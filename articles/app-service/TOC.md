@@ -1,5 +1,6 @@
-# [Áttekintés](app-service-how-works-readme.md)
+# Áttekintés
 ## [Mi az App Service?](app-service-value-prop-what-is.md)
+## [Működés](app-service-how-works-readme.md)
 ## [App Service-csomagok](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
 # Bevezetés
@@ -34,7 +35,7 @@
 ### [Azure App Service és a meglévő Azure-szolgáltatások](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Az App Service-csomagok részletes áttekintése](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 ### [Nagy sűrűségű üzemeltetés](app-service-high-density-hosting.md)
-### [App Service Linux rendszeren](app-service-linux-readme.md)
+### [App Service Linuxon](app-service-linux-readme.md)
 ### [WebJobs használata az Azure App Service-ben](app-service-webjobs-readme.md)
 ### [App Service-környezet](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [Az App Service-környezet dokumentációja](app-service-app-service-environments-readme.md)
@@ -52,7 +53,7 @@
 ### App Service-környezet
 #### [Webalkalmazás létrehozása Azure App Service-környezetben](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [Belső Load Balancer használata](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service%2ftoc.json)
+#### [Belső terheléselosztó használata](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [Üzembe helyezés](app-service-deployment-readme.md)
 ### [Üzembe helyezés az App Service-ben](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -114,7 +115,7 @@
 #### [Biztonságos csatlakozás a háttérerőforrásokhoz](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## Biztonsági mentés
-### [Adatok biztonsági mentése az Azure-ban](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [Alkalmazás biztonsági mentése az Azure-ban](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Alkalmazás visszaállítása az Azure-ban](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [A REST használata App Service-alkalmazások biztonsági mentésére és visszaállítására](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
@@ -149,15 +150,14 @@
 ## [App Service-referencia](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [Ajánlott eljárások](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJob-os források](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
-
-# Kapcsolódó
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+## [REST](https://docs.microsoft.com/rest/api/appservice/)
 
-
-
-
-
-
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/app-service/)  
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=app-service) 
 
 <!--HONumber=Nov16_HO2-->
 

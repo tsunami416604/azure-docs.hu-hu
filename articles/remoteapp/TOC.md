@@ -64,6 +64,12 @@
 ### [Hibrid gyűjtemény hibaelhárítása](remoteapp-hybridtrouble.md)
 ### [Felhőalapú gyűjtemény hibaelhárítása](remoteapp-cloudtrouble.md)
 
+# Erőforrások
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=remoteapp)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)
+
 
 <!--HONumber=Nov16_HO2-->
 

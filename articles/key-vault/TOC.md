@@ -1,6 +1,5 @@
 # Áttekintés
 ## [A Key Vault ismertetése](key-vault-whatis.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)
 
 # Bevezetés
@@ -30,11 +29,14 @@
 # Referencia
 ## [Kulcsok és titkok](https://msdn.microsoft.com/en-us/library/azure/dn903623)
 ## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
-## [.NET a Key Vaulthoz](https://msdn.microsoft.com/en-us/library/azure/mt430941)
-## [REST a Key Vaulthoz](https://msdn.microsoft.com/en-us/library/azure/dn903609)
+
+## [Key Vault Resource Manager PowerShell-parancsmagok](/powershell/resourcemanager/)
+## [Key Vault klasszikus PowerShell-parancsmagok](/powershell/servicemanagement/)
+## [Key Vault az Azure CLI használatával](/cli/azure/)
+## [Key Vault a Javában – referencia](/java/api/)
+## [Key Vault – felügyelt referencia API](/dotnet/api/) 
+## [Key Vault – REST API-referencia](/rest/api/keyvault) 
 ## [Node.js a Key Vaulthoz](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
-## [Key Vault-parancsmagok](https://msdn.microsoft.com/en-us/library/azure/dn868052)
-## [Microsoft Azure PowerShell](https://msdn.microsoft.com/en-us/library/azure/jj156055.aspx)
 
 # Kapcsolódó
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
@@ -43,6 +45,7 @@
 ## [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Blog](http://blogs.technet.com/b/kv/)
 ## [Fórumok](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
 

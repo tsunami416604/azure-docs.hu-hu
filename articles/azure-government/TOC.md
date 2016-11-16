@@ -1,13 +1,11 @@
 # Áttekintés
-## [Bevezetés](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
+## [Mi az az Azure Government?](../azure-government-overview.md?toc=%@Fazure%2fazure-government%2ftoc.json)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [Igazságügy és közbiztonság](documentation-government-overview-jps.md)
 ## [Védelmi Minisztérium](documentation-government-overview-dod.md)
 
 # Első lépések
-## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
-## [Díjszabás](https://azure.microsoft.com/pricing/)
-## [Fejlesztői útmutató](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
+## [Fejlesztői útmutató](../azure-government-developer-guide.md?toc=%@Fazure%2fazure-government%2ftoc.json)
 
 # Útmutató
 ## Felkészülés
@@ -16,20 +14,22 @@
 ## Kezelés
 ### [Képek](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [Piactér](documentation-government-manage-marketplace.md)
-### [Piactéri partnerek](documentation-government-manage-marketplace-partners.md)
-### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
-### [Előfizetés használata az Azure Governmentben](documentation-government-manage-subscriptions.md)
-## Szolgáltatások
-### [Összefoglalás](documentation-government-services.md)
+### [Piactér partnerek számára](documentation-government-manage-marketplace-partners.md)
+### [Előfizetés](documentation-government-manage-subscriptions.md)
+
+# Referencia
+## [Resource Manager](documentation-government-manage-azure-resource-manager.md)
+## [Szolgáltatások](documentation-government-services.md)
 ### [Számítás](documentation-government-compute.md)
 ### [Tárolás](documentation-government-services-storage.md)
 ### [Adatbázis](documentation-government-services-database.md)
 ### [Hálózat](documentation-government-networking.md)
-### [Biztonság + identitás](documentation-government-services-securityandidentity.md)
+### [Biztonság és identitás](documentation-government-services-securityandidentity.md)
 ### [Felügyelet és kezelés](documentation-government-services-monitoringandmanagement.md)
 
-
-
+# Erőforrások
+## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
+## [Díjszabás](https://azure.microsoft.com/pricing/)
 
 
 <!--HONumber=Nov16_HO2-->

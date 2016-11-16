@@ -20,10 +20,10 @@
 ### [Gyermek runbookok](automation-child-runbooks.md)
 ### [Runbook kimenete](automation-runbook-output-and-messages.md)
 ### [Forráskezelés integrálása](automation-source-control-integration.md)
-## Forgatókönyvek automatizálása
+## Runbookok automatizálása
 ### [Runbook indítása](automation-starting-a-runbook.md)
 ### [Runbook indítása webes hívásból](automation-webhooks.md)
-### [Forgatókönyv ütemezése](automation-scheduling-a-runbook.md)
+### [Runbook ütemezése](automation-scheduling-a-runbook.md)
 ### [Runbookok futtatása a saját adatközpontjában](automation-hybrid-runbook-worker.md)
 ### [Runbook bemeneti paramétereinek konfigurálása](automation-runbook-input-parameters.md)
 ### [Runbook-feladat nyomon követése](automation-runbook-execution.md)
@@ -31,7 +31,7 @@
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
 ## Konfigurációkezelés (DSC) üzembe helyezése
 ### [Célállapot-konfiguráló (DSC)](automation-dsc-overview.md)
-### [Első lépések](automation-dsc-getting-started.md)
+### [Bevezetés](automation-dsc-getting-started.md)
 ### [Gépek előkészítése kezelésre](automation-dsc-onboarding.md)
 ### [Célállapot-konfigurálók fordítása](automation-dsc-compile.md)
 ### [Folyamatos üzembe helyezés a Chocolatey használatával](automation-dsc-cd-chocolatey.md)
@@ -70,9 +70,14 @@
 ## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)
 ## [PowerShell-parancsmagok](https://msdn.microsoft.com/library/azure/dn690262)
 ## [Erőforrás-kezelői REST API-k](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [Klasszikus üzembe helyezési REST](https://msdn.microsoft.com/library/azure/mt163781)
+## [Klasszikus üzembehelyezési REST](https://msdn.microsoft.com/library/azure/mt163781)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/automation/)  
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=automation) 
 ## [Azure Automation-képzés](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
