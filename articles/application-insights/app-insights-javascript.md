@@ -1,35 +1,37 @@
 ---
-title: Application Insights JavaScript webalkalmazásokhoz | Microsoft Docs
-description: Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
+title: "Application Insights JavaScript webalkalmazásokhoz | Microsoft Docs"
+description: "Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 11/01/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+
 
 ---
-# Application Insights weblapokhoz
-[!INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
+# <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
+Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
 
-Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio Application Insightst a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. A hibaszámokról és a lassú lapbetöltésekről beállíthat riasztásokat.
+Az Application Insights bármely weblappal használható – csak egy rövid JavaScript-kódot kell hozzáadnia. Ha a webszolgáltatása [Java](app-insights-java-get-started.md) vagy [ASP.NET](app-insights-asp-net.md), telemetriát integrálhat a kiszolgálóról és az ügyfelekről.
 
-Az Application Insights bármely weblappal használható – csak egy rövid JavaScriptet kell hozzáadni. Ha a webszolgáltatása [Java](app-insights-java-get-started.md) vagy [ASP.NET](app-insights-asp-net.md), telemetriát integrálhat a kiszolgálóról és az ügyfelekről.
+![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Böngésző elemre](./media/app-insights-javascript/03.png)
 
-Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha a csapata szervezeti előfizetéssel rendelkezik, kérje meg a tulajdonost, hogy adjon hozzá Microsoft-fiókot. Elérhető egy ingyenes tarifacsomag, így a fejlesztés és a kis mértékű használat nem kerül semmibe.
+Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha a csapata szervezeti előfizetéssel rendelkezik, kérje meg a tulajdonost, hogy adjon hozzá Microsoft-fiókot. A fejlesztés és a kis mértékű használat nem kerül semmibe.
 
-## Az Application Insights beállítása a weboldalához
-Elsőként is: hozzá kell adnia az Application Insightst a weboldalaihoz? Lehet, hogy ezt már megtette. Ha úgy döntött, hogy hozzáadja az Application Insightst a webalkalmazásához a Visual Studio New Project (Új projekt) párbeszédpanelén, a szkript hozzáadása már megtörtént. Ebben az esetben ezt nem kell még egyszer megtennie.
+## <a name="set-up-application-insights-for-your-web-page"></a>Az Application Insights beállítása a weboldalához
+A következőképpen adja hozzá a betöltő kódrészletet a weboldalakhoz.
 
-Egyéb esetben kódrészletet kell hozzáadnia a weblapjaihoz, a következők szerint.
-
-### Application Insights-erőforrás megnyitása
+### <a name="open-or-create-application-insights-resource"></a>Application Insights-erőforrás megnyitása vagy létrehozása
 Az Application Insights-erőforrásban jelennek meg a lap teljesítményével és használatával kapcsolatos adatok. 
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -44,7 +46,7 @@ Ha nincs erőforrása, hozza létre azt:
 
 *Máris kérdései vannak?* [További információk erőforrások létrehozásáról](app-insights-create-new-resource.md).
 
-### Az SDK-szkript hozzáadása az alkalmazáshoz vagy weblapokhoz
+### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Az SDK-szkript hozzáadása az alkalmazáshoz vagy weblapokhoz
 A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
 
 ![Az alkalmazás áttekintési panelén válassza a Gyors üzembe helyezés, Kód letöltése a weblapok figyeléséhez lehetőséget. Másolja a szkriptet.](./media/app-insights-javascript/02-monitor-web-page.png)
@@ -60,7 +62,7 @@ A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application 
 
 *(Ha jól ismert weblapkeretrendszert használ, keressen Application Insights-adaptereket. Például van [egy AngularJS modul](http://ngmodules.org/modules/angular-appinsights).)*
 
-## Részletes konfiguráció
+## <a name="detailed-configuration"></a>Részletes konfiguráció
 Több [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) beállíthat, de a legtöbb esetben erre nincs szükség. Letilthatja vagy korlátozhatja például az oldalmegtekintésenként jelentett Ajax-hívások számát (a forgalom csökkentése érdekében). Vagy beállíthatja a hibakeresési módot, hogy a telemetria gyorsan haladjon át a folyamaton, kötegkészítés nélkül.
 
 Ezen paraméterek beállításához keresse meg ezt a sort a kódrészletben, és adjon hozzá utána vesszővel elválasztott elemeket:
@@ -95,21 +97,21 @@ Az [elérhető paraméterek](https://github.com/Microsoft/ApplicationInsights-JS
 
 
 
-## <a name="run"></a>Az alkalmazás futtatása
+## <a name="a-namerunarun-your-app"></a><a name="run"></a>Az alkalmazás futtatása
 Futtassa a webalkalmazást, használja egy ideig telemetria létrehozásához, és várjon néhány másodpercig. Ezt futtathatja a fejlesztési számítógépén az **F5** billentyűvel, vagy közzéteheti, és hagyhatja, hogy a felhasználók játsszanak vele.
 
 Ha ellenőrizni szeretné a webalkalmazás által az Application Insightsnak küldött telemetriát, használja a böngésző hibakereső eszközeit (számos böngészőben az **F12** billentyű). Az adatokat a dc.services.visualstudio.com címre küldi a rendszer.
 
-## A böngésző teljesítményadatainak feltárása
-Nyissa meg a Böngészők panelt a felhasználók böngészőinek összesített teljesítményadatainak megjelenítéséhez.
+## <a name="explore-your-browser-performance-data"></a>A böngésző teljesítményadatainak feltárása
+Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített teljesítményadatainak megjelenítéséhez.
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/app-insights-javascript/03.png)
 
 *Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).*
 
-A Böngészők panel [Metrikaböngésző panel](app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
+A Böngésző panel [Metrikaböngésző panel](app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
-## Lapbetöltés teljesítménye
+## <a name="page-load-performance"></a>Lapbetöltés teljesítménye
 Felül található a lapbetöltési idők szegmentált diagramja. A diagram teljes magassága jelzi a lapok betöltésének és megjelenítésének átlagos idejét az alkalmazásából a felhasználók böngészőiben. Az idő mérése onnan kezdődik, amikor a böngésző elküldi a kezdeti HTTP-kérelmet, és addig tart, amíg az összes szinkron betöltési esemény fel lett dolgozva, beleértve az elrendezést és a futó szkripteket. Ebben nem tartoznak bele az aszinkron feladatok, például a kijelzők betöltése az AJAX hívásokból.
 
 A diagram a teljes lapbetöltési időt a [W3C által meghatározott standard időzítésekre](http://www.w3.org/TR/navigation-timing/#processing-model) szegmentálja. 
@@ -118,7 +120,7 @@ A diagram a teljes lapbetöltési időt a [W3C által meghatározott standard id
 
 Vegye figyelembe, hogy a *hálózati csatlakozási* idő gyakran kevesebb a vártnál, mert ez a böngészőből a kiszolgálóra irányuló összes kérelem átlaga. Számos egyéni kérés csatlakozási ideje 0, mert már van aktív kapcsolat a kiszolgálóval.
 
-### Lassú a betöltés?
+### <a name="slow-loading"></a>Lassú a betöltés?
 A lassú lapbetöltések a felhasználók elégedetlenségének fő forrásai. Ha a diagram lassú lapbetöltéseket jelez, könnyű diagnosztikai vizsgálatot végezni.
 
 A diagram az alkalmazás összes lapbetöltésének átlagát mutatja. Ha látni szeretné, hogy a probléma csak adott oldalakra korlátozott-e, tekintse meg a panel további részét, ahol az oldalak URL-címe alapján szegmentált rács található:
@@ -141,7 +143,7 @@ Kattintson a `...` gombra az esemény tulajdonságainak teljes listájáért, va
 
 ![](./media/app-insights-javascript/21.png)
 
-## AJAX teljesítménye
+## <a name="ajax-performance"></a>AJAX teljesítménye
 Győződjön meg arról, hogy a weblapjain lévő összes AJAX hívás teljesítménye megfelelő. Gyakran ezekkel töltik fel a lapja egyes részeit aszinkron módon. Lehet, hogy a teljes lap gyorsan betöltődik, de a felhasználókat zavarhatja, ha üres kijelzőket látnak, és várnak, hogy adatok jelenjenek meg ezekben.
 
 A weblapjáról végzett AJAX hívások a Böngészők panelen függőségekként jelennek meg.
@@ -167,17 +169,17 @@ Kattintson valamelyik sorra a részletekért.
 
 Kattintson a `...` gombra az Ajax hívások teljes telemetriájáért.
 
-### Nincsenek Ajax hívások jelentve?
+### <a name="no-ajax-calls-reported"></a>Nincsenek Ajax hívások jelentve?
 Az Ajax hívásokba tartoznak a weblapja szkriptjéről végzett HTTP-hívások. Ha nem látja őket a jelentésben, ellenőrizze, hogy a kódrészlet nem adja-e meg a `disableAjaxTracking` vagy a `maxAjaxCallsPerView` [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
 
-## Böngészőkivételek
+## <a name="browser-exceptions"></a>Böngészőkivételek
 A Böngészők panelen található egy kivételek összegző diagram, valamint a panelen lejjebb a kivételtípusok rácsa.
 
 ![](./media/app-insights-javascript/39.png)
 
 Ha nem látja a böngészőkivételeket a jelentésben, ellenőrizze, hogy a kódrészlet nem adja-e meg a `disableExceptionTracking` [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
 
-## Egyéni lapmegtekintési események vizsgálata
+## <a name="inspect-individual-page-view-events"></a>Egyéni lapmegtekintési események vizsgálata
 Általában az Application Insights elemzi a lapmegtekintési telemetriát, és Ön csak összegző jelentéseket tekinthet meg, amelyek az összes felhasználó átlagát tartalmazzák. De a hibakereséshez az egyes lapmegtekintési eseményeket is megtekintheti.
 
 A Diagnosztikai keresés panelen állítsa a Szűrők elemet Lapmegtekintés értékre.
@@ -193,14 +195,14 @@ Válassza ki valamelyik eseményt további részletek megtekintéséhez. A rész
 
 Használhatja a nagy teljesítményű [Analytics lekérdezési nyelvet](app-insights-analytics-tour.md) a lapmegtekintések kereséséhez.
 
-### Lapmegtekintési tulajdonságok
+### <a name="page-view-properties"></a>Lapmegtekintési tulajdonságok
 * **Lapmegtekintés időtartama** 
   
   * Alapértelmezés szerint a lap betöltéséhez szükséges idő, az ügyfél kérelmétől a teljes betöltésig (beleértve a kiegészítő fájlokat, az aszinkron feladatok, például az Ajax hívások nélkül). 
   * Ha a `overridePageViewDuration` van beállítva a [lapkonfigurációban](#detailed-configuration), az ügyfél kérelme és az első `trackPageView` végrehajtása közötti időköz. Ha elmozdította a trackPageView elemet a szokásos pozíciójából a szkript inicializálása után, az más értéket fog jelölni.
   * Ha az `overridePageViewDuration` be van állítva, és egy időtartam-argumentum van megadva a `trackPageView()` hívásban, akkor ehelyett az argumentum értékét használja a rendszer. 
 
-## Egyéni lapok száma
+## <a name="custom-page-counts"></a>Egyéni lapok száma
 Alapértelmezés szerint mindig lapszámlálás történik, amikor új lap töltődik egy ügyfélböngészőbe.  De lehet, hogy meg szeretné számlálni a további lapmegtekintéseket is. Egy lap tartalma például füleken jelenhet meg, és lehet, hogy számlálni szeretne, amikor a felhasználó fület vált. Vagy lehet, hogy a lap JavaScript kódja új tartalmat tölt be a böngésző URL-címének módosítása nélkül.
 
 Szúrjon be egy ehhez hasonló JavaScript hívást az ügyfélkód megfelelő pontján:
@@ -209,22 +211,25 @@ Szúrjon be egy ehhez hasonló JavaScript hívást az ügyfélkód megfelelő po
 
 A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a rendszer a „#” vagy „?” utáni karaktereket figyelmen kívül hagyja.
 
-## Használatkövetés
+## <a name="usage-tracking"></a>Használatkövetés
 Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 * [Információk a használatkövetésről](app-insights-web-track-usage.md)
 * [Információk az egyéni eseményekről és a mérőszám API-ról](app-insights-api-custom-events-metrics.md).
 
-#### <a name="video"></a> Videó: Használat nyomon követése
+#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> Videó: Használat nyomon követése
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
 > 
 > 
 
-## <a name="next"></a> Következő lépések
+## <a name="a-namenexta-next-steps"></a><a name="next"></a> Következő lépések
 * [Használat követése](app-insights-web-track-usage.md)
 * [Egyéni események és a mérőszámok](app-insights-api-custom-events-metrics.md)
 * [Összeállítás, mérés, tanulás](app-insights-overview-usage.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

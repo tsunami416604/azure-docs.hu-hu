@@ -1,8 +1,10 @@
 > [!IMPORTANT]
-> You cannot use applications registered in the **Applications** tab on the classic [Azure Management Portal](https://manage.windowsazure.com/) for this.
+> Erre a célra nem használhatók az [Azure felügyeleti portál](https://manage.windowsazure.com/) **Alkalmazások** lapján regisztrált alkalmazások.
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

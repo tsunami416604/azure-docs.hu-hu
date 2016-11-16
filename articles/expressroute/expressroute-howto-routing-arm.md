@@ -1,13 +1,13 @@
 ---
-title: ExpressRoute-kapcsolatcsoport útválasztásának konfigurálása | Microsoft Docs
-description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
+title: "ExpressRoute-kapcsolatcsoport útválasztásának konfigurálása | Microsoft Docs"
+description: "A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket."
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 0a036d51-77ae-4fee-9ddb-35f040fbdcdf
 ms.service: expressroute
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/05/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
+
 
 ---
-# ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
+# <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
 > [!div class="op_single_selector"]
 > [Azure Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
 > [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
@@ -31,7 +35,7 @@ A cikk az ExpressRoute-kapcsolatcsoportok útválasztási konfigurációjának l
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## Konfigurációs előfeltételek
+## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 * Az Azure PowerShell-modulok legújabb. 1.0-s vagy újabb verzióira lesz szükség. 
 * A konfigurálás megkezdése előtt mindenképp tekintse át az [előfeltételek](expressroute-prerequisites.md), az [útválasztási követelmények](expressroute-routing.md) és a [munkafolyamatok](expressroute-workflows.md) lapot.
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoportnak kiosztott és engedélyezett állapotban kell lennie, hogy az alább ismertetett parancsmagokat futtatni lehessen.
@@ -45,13 +49,13 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 
 Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
 
-## Azure privát társviszony-létesítés
+## <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
-### Azure privát társviszony-létesítés létrehozása
+### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
 1. Importálja az ExpressRoute PowerShell-modulját.
    
-    Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
+     Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
    
         Install-Module AzureRM
    
@@ -133,15 +137,15 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társvis
      > 
      > 
 
-### Azure privát társviszony-létesítés részleteinek megtekintése
+### <a name="to-view-azure-private-peering-details"></a>Azure privát társviszony-létesítés részleteinek megtekintése
 A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
 
         $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-        Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt   
+        Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt    
 
 
-### Azure privát társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-azure-private-peering-configuration"></a>Azure privát társviszony-létesítés konfigurációjának frissítése
 A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használatával. Az alábbi példában a kör VLAN azonosítóját 100-ról 500-ra frissítjük.
 
     Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -149,7 +153,7 @@ A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használ
     Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
-### Azure privát társviszony-létesítés törlése
+### <a name="to-delete-azure-private-peering"></a>Azure privát társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját a következő parancsmag futtatásával törölheti.
 
 > [!WARNING]
@@ -162,13 +166,13 @@ A társviszony-létesítés konfigurációját a következő parancsmag futtatá
 
 
 
-## Azure nyilvános társviszony-létesítés
+## <a name="azure-public-peering"></a>Azure nyilvános társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat.
 
-### Azure nyilvános társviszony-létesítés létrehozása
+### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 1. Importálja az ExpressRoute PowerShell-modulját.
    
-    Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
+     Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
    
         Install-Module AzureRM
    
@@ -222,7 +226,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
                                              "BandwidthInMbps": 200
                                            }
         ServiceKey                       : **************************************
-        Peerings                         : []   
+        Peerings                         : []    
 4. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz.
    
     Mielőtt folytatná, ellenőrizze az alábbi információk meglétét:
@@ -247,7 +251,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
 
     >[AZURE.IMPORTANT] Az AS-számot mindenképp társviszony-létesítési ASN-ként, és ne ügyfél ASN-ként adja meg.
 
-### Azure nyilvános társviszony-létesítés részleteinek megtekintése
+### <a name="to-view-azure-public-peering-details"></a>Azure nyilvános társviszony-létesítés részleteinek megtekintése
 A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
 
         $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -255,7 +259,7 @@ A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
         Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
 
 
-### Azure nyilvános társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-azure-public-peering-configuration"></a>Azure nyilvános társviszony-létesítés konfigurációjának frissítése
 A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használatával.
 
     Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600 
@@ -264,19 +268,19 @@ A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használ
 
 A fenti példában a kör VLAN-azonosítóját 200-ról 600-ra frissítjük.
 
-### Azure nyilvános társviszony-létesítés törlése
+### <a name="to-delete-azure-public-peering"></a>Azure nyilvános társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját a következő parancsmag futtatásával törölheti.
 
     Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
     Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-## Microsoft társviszony-létesítés
+## <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
-### Microsoft társviszony-létesítés létrehozása
+### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
 1. Importálja az ExpressRoute PowerShell-modulját.
    
-    Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
+     Telepítse a legújabb PowerShell-telepítőt a [PowerShell-galériából](http://www.powershellgallery.com/), és importálja az Azure Resource Manager-modulokat a PowerShell-munkamenetbe az ExpressRoute-parancsmagok használatának elkezdéséhez. A PowerShellt rendszergazdaként kell futtatnia.
    
         Install-Module AzureRM
    
@@ -330,7 +334,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
                                              "BandwidthInMbps": 200
                                            }
         ServiceKey                       : **************************************
-        Peerings                         : []   
+        Peerings                         : []    
 4. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz.
    
     Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
@@ -350,7 +354,7 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
      
        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-### Microsoft társviszony-létesítés részleteinek lekérése
+### <a name="to-get-microsoft-peering-details"></a>Microsoft társviszony-létesítés részleteinek lekérése
 A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
 
         $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -358,7 +362,7 @@ A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
         Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 
-### Microsoft társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-microsoft-peering-configuration"></a>Microsoft társviszony-létesítés konfigurációjának frissítése
 A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használatával.
 
         Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -366,20 +370,23 @@ A konfiguráció bármelyik részét frissítheti az alábbi parancsmag használ
         Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
-### Microsoft társviszony-létesítés törlése
+### <a name="to-delete-microsoft-peering"></a>Microsoft társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját a következő parancsmag futtatásával törölheti.
 
     Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
     Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-arm.md).
 
 * Az ExpressRoute-munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-munkafolyamatok).
 * A kapcsolatcsoportok társviszony-létesítéseivel kapcsolatos további információkért lásd: [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok).
 * További információkért a virtuális hálózatok használatáról lásd: [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

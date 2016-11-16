@@ -1,13 +1,13 @@
 ---
-title: 'NoSQL tutorial: DocumentDB .NET SDK | Microsoft Docs'
-description: A NoSQL tutorial that creates an online database and C# console application using the DocumentDB .NET SDK. DocumentDB is a NoSQL database for JSON.
-keywords: nosql tutorial, online database, c# console application
+title: "NoSQL-oktatóanyag: DocumentDB .NET SDK | Microsoft Docs"
+description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB .NET SDK használatával. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
 services: documentdb
 documentationcenter: .net
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
-
+ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,64 +15,68 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/29/2016
 ms.author: anhoh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f8f82859e072666ee9020af2422f1cb4d124abf2
+
 
 ---
-# NoSQL tutorial: Build a DocumentDB C# console application
+# <a name="nosql-tutorial-build-a-documentdb-c-console-application"></a>NoSQL-oktatóanyag: DocumentDB C# konzolalkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
 > 
 > 
 
-Welcome to the NoSQL tutorial for the Azure DocumentDB .NET SDK! After following this tutorial, you'll have a console application that creates and queries DocumentDB resources.
+Köszönti az Azure DocumentDB .NET SDK-hoz készült NoSQL-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
 
-We'll cover:
+Az oktatóanyag a következőket ismerteti:
 
-* Creating and connecting to a DocumentDB account
-* Configuring your Visual Studio Solution
-* Creating an online database
-* Creating a collection
-* Creating JSON documents
-* Querying the collection
-* Replacing a document
-* Deleting a document
-* Deleting the database
+* DocumentDB-fiók létrehozása, és az ahhoz való csatlakozás
+* A Visual Studio megoldás konfigurálása
+* Online adatbázis létrehozása
+* Gyűjtemény létrehozása
+* JSON-dokumentumok létrehozása
+* A gyűjtemény lekérdezése
+* Dokumentum cseréje
+* Dokumentum törlése
+* Adatbázis törlése
 
-Don't have time? Don't worry! The complete solution is available on [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started). Jump to the [Get the complete solution section](#GetSolution) for quick instructions.
+Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started). A gyors utasításokért ugorjon [A teljes megoldás beszerzése szakaszra](#GetSolution).
 
-Afterwards, please use the voting buttons at the top or bottom of this page to give us feedback. If you'd like us to contact you directly, feel free to include your email address in your comments.
+Utána a lap tetején és alján található szavazógomb használatával küldjön visszajelzést felénk. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
 
-Now let's get started!
+Most pedig lássunk neki!
 
-## Prerequisites
-Please make sure you have the following:
+## <a name="prerequisites"></a>Előfeltételek
+Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
-* An active Azure account. If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).
+* Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * [Visual Studio 2013 / Visual Studio 2015](http://www.visualstudio.com/).
-* .NET Framework 4.6
+* .NET-keretrendszer 4.6
 
-## Step 1: Create a DocumentDB account
-Let's create a DocumentDB account. If you already have an account you want to use, you can skip ahead to [Setup your Visual Studio Solution](#SetupVS).
+## <a name="step-1-create-a-documentdb-account"></a>1. lépés: DocumentDB-fiók létrehozása
+Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>Step 2: Setup your Visual Studio solution
-1. Open **Visual Studio 2015** on your computer.
-2. On the **File** menu, select **New**, and then choose **Project**.
-3. In the **New Project** dialog, select **Templates** / **Visual C#** / **Console Application**, name your project, and then click **OK**.
-   ![Screen shot of the New Project window](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
-4. In the **Solution Explorer**, right click on your new console application, which is under your Visual Studio solution.
-5. Then without leaving the menu, click on **Manage NuGet Packages...**
-   ![Screen shot of the Right Clicked Menu for the Project](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-6. In the **Nuget** tab, click **Browse**, and type **azure documentdb** in the search box.
-7. Within the results, find **Microsoft.Azure.DocumentDB** and click **Install**.
-   The package ID for the DocumentDB Client Library is [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)
-   ![Screen shot of the Nuget Menu for finding DocumentDB Client SDK](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+## <a name="a-idsetupvsastep-2-setup-your-visual-studio-solution"></a><a id="SetupVS"></a>2. lépés: A Visual Studio megoldás beállítása
+1. Nyissa meg a **Visual Studio 2015-öt** a számítógépén.
+2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
+3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **Konzolalkalmazás** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
+   ![Képernyőfelvétel az Új projekt ablakról](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található.
+5. Ezután maradjon a menüben, és kattintson a következőre: **NuGet-csomagok kezelése...**
+   ![Képernyőfelvétel a projekt helyi menüjéről](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+6. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
+7. A találatok között keresse meg a **Microsoft.Azure.DocumentDB** elemet, majd kattintson a **Telepítés** lehetőségre.
+   A DocumentDB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)
+   ![Képernyőfelvétel a Nuget menüről a DocumentDB ügyféloldali SDK-jának megtalálásához](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
-Great! Now that we finished the setup, let's start writing some code. You can find a completed code project of this tutorial at [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs).
+Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
-## <a id="Connect"></a>Step 3: Connect to a DocumentDB account
-First, add these references to the beginning of your C# application, in the Program.cs file:
+## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
+Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Program.cs fájlban:
 
     using System;
     using System.Linq;
@@ -85,11 +89,11 @@ First, add these references to the beginning of your C# application, in the Prog
     using Newtonsoft.Json;
 
 > [!IMPORTANT]
-> In order to complete this NoSQL tutorial, make sure you add the dependencies above.
+> A NoSQL-oktatóanyag befejezéséhez mindenképpen adja hozzá az alábbi függőségeket.
 > 
 > 
 
-Now, add these two constants and your *client* variable underneath your public class *Program*.
+Most adja hozzá ezt a két állandót és az *ügyfél* változót a *Program* nyilvános osztály alatt.
 
     public class Program
     {
@@ -98,17 +102,17 @@ Now, add these two constants and your *client* variable underneath your public c
         private const string PrimaryKey = "<your key>";
         private DocumentClient client;
 
-Next, head to the [Azure Portal](https://portal.azure.com) to retrieve your URI and primary key. The DocumentDB URI and primary key are necessary for your application to understand where to connect to, and for DocumentDB to trust your application's connection.
+Ezután látogasson el az [Azure-portálra](https://portal.azure.com) az URI és az elsődleges kulcs beszerzéséért. A DocumentDB URI és az elsődleges kulcs azért szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, a DocumentDB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
-In the Azure Portal, navigate to your DocumentDB account, and then click **Keys**.
+Az Azure portálon lépjen a DocumentDB-fiókra, majd kattintson a **Kulcsok** elemre.
 
-Copy the URI from the portal and paste it into `<your endpoint URI>` in the program.cs file. Then copy the PRIMARY KEY from the portal and paste it into `<your key>`.
+Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URI>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your key>` elembe.
 
-![Screen shot of the Azure Portal used by the NoSQL tutorial to create a C# console application. Shows a DocumentDB account, with the ACTIVE hub highlighted, the KEYS button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][keys]
+![Képernyőfelvétel a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure-portálról. Megjelenít egy DocumentDB-fiókot, amelyen az ACTIVE központ, a DocumentDB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve.][keys]
 
-We'll start the getting started application by creating a new instance of the **DocumentClient**.
+Először létrehozunk egy új **DocumentClient** példányt az első lépések alkalmazáshoz.
 
-Below the **Main** method, add this new asynchronous task called **GetStartedDemo**, which will instantiate our new **DocumentClient**.
+A **Fő** metódus alatt adja hozzá a **GetStartedDemo** elnevezésű új aszinkron feladatot, amely létrehozza nekünk az új **DocumentClient** példányt.
 
     static void Main(string[] args)
     {
@@ -120,7 +124,7 @@ Below the **Main** method, add this new asynchronous task called **GetStartedDem
         this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
     }
 
-Add the following code to run your asynchronous task from your **Main** method. The **Main** method will catch exceptions and write them to the console.
+Adja hozzá a következő kódot az aszinkron feladat **Fő** metódusból való futtatásához. A **Fő** metódus észleli a kivételeket, és a konzolba írja azokat.
 
     static void Main(string[] args)
     {
@@ -146,14 +150,14 @@ Add the following code to run your asynchronous task from your **Main** method. 
                     Console.ReadKey();
             }
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully connected to a DocumentDB account, let's now take a look at working with DocumentDB resources.  
+Gratulálunk! Sikeresen csatlakozott egy DocumentDB-fiókhoz. Most vessünk egy pillantást a DocumentDB-erőforrások használatára.  
 
-## Step 4: Create a database
-Before you add the code for creating a database, add a helper method for writing to the console.
+## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
+Mielőtt hozzáadja a kódot az adatbázis létrehozásához, adjon hozzá egy segédmetódust a konzolba való íráshoz.
 
-Copy and paste the **WriteToConsoleAndPromptToContinue** method underneath the **GetStartedDemo** method.
+Másolja, majd illessze be a **WriteToConsoleAndPromptToContinue** metódust a **GetStartedDemo** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
@@ -163,9 +167,9 @@ Copy and paste the **WriteToConsoleAndPromptToContinue** method underneath the *
             Console.ReadKey();
     }
 
-Your DocumentDB [database](documentdb-resources.md#databases) can be created by using the [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) method of the **DocumentClient** class. A database is the logical container of JSON document storage partitioned across collections.
+A DocumentDB [adatbázis](documentdb-resources.md#databases) a **DocumentClient** osztály [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
-Copy and paste the **CreateDatabaseIfNotExists** method underneath the **WriteToConsoleAndPromptToContinue** method.
+Másolja, majd illessze be a **CreateDatabaseIfNotExists** metódust a **WriteToConsoleAndPromptToContinue** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private async Task CreateDatabaseIfNotExists(string databaseName)
@@ -191,7 +195,7 @@ Copy and paste the **CreateDatabaseIfNotExists** method underneath the **WriteTo
             }
     }
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the client creation. This will create a database named *FamilyDB*.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba az ügyfél létrehozása alatt. Ezzel létrehoz egy *FamilyDB* elnevezésű adatbázist.
 
     private async Task GetStartedDemo()
     {
@@ -200,19 +204,19 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
         // ADD THIS PART TO YOUR CODE
         await this.CreateDatabaseIfNotExists("FamilyDB_oa");
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully created a DocumentDB database.  
+Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.  
 
-## <a id="CreateColl"></a>Step 5: Create a collection
+## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
 > [!WARNING]
-> **CreateDocumentCollectionAsync** will create a new collection with reserved throughput, which has pricing implications. For more details, please visit our [pricing page](https://azure.microsoft.com/pricing/details/documentdb/).
+> A **CreateDocumentCollectionAsync** létrehoz egy fenntartott adattovábbítási kapacitással rendelkező új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/documentdb/).
 > 
 > 
 
-A [collection](documentdb-resources.md#collections) can be created by using the [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) method of the **DocumentClient** class. A collection is a container of JSON documents and associated JavaScript application logic.
+Egy [gyűjtemény](documentdb-resources.md#collections) a **DocumentClient** osztály [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metódusának használatával hozható létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
-Copy and paste the **CreateDocumentCollectionIfNotExists** method underneath your **CreateDatabaseIfNotExists** method.
+Másolja, majd illessze be a **CreateDocumentCollectionIfNotExists** metódust a **CreateDatabaseIfNotExists** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private async Task CreateDocumentCollectionIfNotExists(string databaseName, string collectionName)
@@ -248,7 +252,7 @@ Copy and paste the **CreateDocumentCollectionIfNotExists** method underneath you
         }
     }
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the database creation. This will create a document collection named *FamilyCollection_oa*.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba az adatbázis létrehozása alatt. Ezzel létrehoz egy *FamilyCollection_oa* elnevezésű dokumentumgyűjteményt.
 
         this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
@@ -257,16 +261,16 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
         // ADD THIS PART TO YOUR CODE
         await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully created a DocumentDB document collection.  
+Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumgyűjteményt.  
 
-## <a id="CreateDoc"></a>Step 6: Create JSON documents
-A [document](documentdb-resources.md#documents) can be created by using the [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) method of the **DocumentClient** class. Documents are user defined (arbitrary) JSON content. We can now insert one or more documents. If you already have data you'd like to store in your database, you can use DocumentDB's [Data Migration tool](documentdb-import-data.md).
+## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
+A [dokumentumok](documentdb-resources.md#documents) a **DocumentClient** osztály [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metódusának használatával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, használhatja a DocumentDB [adatáttelepítési eszközét](documentdb-import-data.md).
 
-First, we need to create a **Family** class that will represent objects stored within DocumentDB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. Create these classes by adding the following internal sub-classes after the **GetStartedDemo** method.
+Először létre kell hozni egy **Család** osztályt, amely ebben a mintában a DocumentDB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. Az osztályok létrehozásához adja hozzá az alábbi belső alosztályokat a **GetStartedDemo** metódus után.
 
-Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** classes underneath the **WriteToConsoleAndPromptToContinue** method.
+Másolja, majd illessze be a **Család**, **Szülő**, **Gyermek**, **Háziállat** és **Cím** osztályokat a **WriteToConsoleAndPromptToContinue** metódus alá.
 
     private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
     {
@@ -318,7 +322,7 @@ Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** c
         public string City { get; set; }
     }
 
-Copy and paste the **CreateFamilyDocumentIfNotExists** method underneath your **CreateDocumentCollectionIfNotExists** method.
+Másolja, majd illessze be a **CreateFamilyDocumentIfNotExists** metódust a **CreateDocumentCollectionIfNotExists** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
@@ -342,9 +346,9 @@ Copy and paste the **CreateFamilyDocumentIfNotExists** method underneath your **
         }
     }
 
-And insert two documents, one each for the Andersen Family and the Wakefield Family.
+Ezután szúrjon be két dokumentumot, egyet az Andersen családhoz, egyet pedig a Wakefield családhoz.
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the document collection creation.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a dokumentumgyűjtemény létrehozása alatt.
 
     await this.CreateDatabaseIfNotExists("FamilyDB_oa");
 
@@ -416,16 +420,16 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully created two DocumentDB documents.  
+Gratulálunk! Sikeresen létrehozott két DocumentDB-dokumentumot.  
 
-![Diagram illustrating the hierarchical relationship between the account, the online database, the collection, and the documents used by the NoSQL tutorial to create a C# console application](./media/documentdb-get-started/nosql-tutorial-account-database.png)
+![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Step 7: Query DocumentDB resources
-DocumentDB supports rich [queries](documentdb-sql-query.md) against JSON documents stored in each collection.  The following sample code shows various queries - using both DocumentDB SQL syntax as well as LINQ - that we can run against the documents we inserted in the previous step.
+## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
+A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes [lekérdezéseket](documentdb-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – a DocumentDB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
 
-Copy and paste the **ExecuteSimpleQuery** method underneath your **CreateFamilyDocumentIfNotExists** method.
+Másolja, majd illessze be a **ExecuteSimpleQuery** metódust a **CreateFamilyDocumentIfNotExists** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private void ExecuteSimpleQuery(string databaseName, string collectionName)
@@ -461,27 +465,27 @@ Copy and paste the **ExecuteSimpleQuery** method underneath your **CreateFamilyD
             Console.ReadKey();
     }
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the second document creation.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a második dokumentum létrehozása alá.
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 
     // ADD THIS PART TO YOUR CODE
     this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully queried against a DocumentDB collection.
+Gratulálunk! Sikeres lekérdezést végzett egy DocumentDB-gyűjteményen.
 
-The following diagram illustrates how the DocumentDB SQL query syntax is called against the collection you created, and the same logic applies to the LINQ query as well.
+Az alábbi diagram bemutatja, hogyan indít hívást a DocumentDB SQL-lekérdezési szintaxisa a létrehozott gyűjteményre. Ugyanez a logika vonatkozik a LINQ-lekérdezésekre is.
 
-![Diagram illustrating the scope and meaning of the query used by the NoSQL tutorial to create a C# console application](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
+![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-The [FROM](documentdb-sql-query.md#from-clause) keyword is optional in the query because DocumentDB queries are already scoped to a single collection. Therefore, "FROM Families f" can be swapped with "FROM root r", or any other variable name you choose. DocumentDB will infer that Families, root, or the variable name you chose, reference the current collection by default.
+A [FROM](documentdb-sql-query.md#from-clause) kulcsszó kihagyható a lekérdezésből, mivel a DocumentDB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. A DocumentDB úgy veszi, hogy a Families, a root vagy a tetszőleges változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
-## <a id="ReplaceDocument"></a>Step 8: Replace JSON document
-DocumentDB supports replacing JSON documents.  
+## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
+A DocumentDB támogatja a JSON-dokumentumok cseréjét.  
 
-Copy and paste the **ReplaceFamilyDocument** method underneath your **ExecuteSimpleQuery** method.
+Másolja, majd illessze be a **ReplaceFamilyDocument** metódust az **ExecuteSimpleQuery** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
@@ -497,7 +501,7 @@ Copy and paste the **ReplaceFamilyDocument** method underneath your **ExecuteSim
         }
     }
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the query execution. After replacing the document, this will run the same query again to view the changed document.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a lekérdezés végrehajtása alá. Ezáltal a dokumentum cseréje után ismét ugyanaz a lekérdezés fog lefutni a megváltozott dokumentum megtekintéséhez.
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 
@@ -511,14 +515,14 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
 
     this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully replaced a DocumentDB document.
+Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
 
-## <a id="DeleteDocument"></a>Step 9: Delete JSON document
-DocumentDB supports deleting JSON documents.  
+## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
+A DocumentDB támogatja a JSON-dokumentumok törlését.  
 
-Copy and paste the **DeleteFamilyDocument** method underneath your **ReplaceFamilyDocument** method.
+Másolja, majd illessze be a **DeleteFamilyDocument** metódust a **ReplaceFamilyDocument** metódus alá.
 
     // ADD THIS PART TO YOUR CODE
     private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
@@ -534,7 +538,7 @@ Copy and paste the **DeleteFamilyDocument** method underneath your **ReplaceFami
         }
     }
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the second query execution.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a második lekérdezés végrehajtása alá.
 
     await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
 
@@ -543,14 +547,14 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
     // ADD THIS PART TO CODE
     await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully deleted a DocumentDB document.
+Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
 
-## <a id="DeleteDatabase"></a>Step 10: Delete the database
-Deleting the created database will remove the database and all children resources (collections, documents, etc.).
+## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
+A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
-Copy and paste the following code to your **GetStartedDemo** method underneath the document delete to delete the entire database and all children resources.
+Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a dokumentum törlése alá az adatbázis és az összes gyermek-erőforrás törléséhez.
 
     this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
@@ -560,14 +564,14 @@ Copy and paste the following code to your **GetStartedDemo** method underneath t
     // Clean up/delete the database
     await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"));
 
-Press **F5** to run your application.
+Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Congratulations! You have successfully deleted a DocumentDB database.
+Gratulálunk! Sikeresen törölt egy DocumentDB-adatbázist.
 
-## <a id="Run"></a>Step 11: Run your C# console application all together!
-Hit F5 in Visual Studio to build the application in debug mode.
+## <a name="a-idrunastep-11-run-your-c-console-application-all-together"></a><a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
+Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához.
 
-You should see the output of your get started app. The output will show the results of the queries we added and should match the example text below.
+Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenet megjeleníti a hozzáadott lekérdezések eredményeit, amelynek meg kell egyeznie az alábbi mintaszöveggel.
 
     Created FamilyDB_oa
     Press any key to continue ...
@@ -590,23 +594,23 @@ You should see the output of your get started app. The output will show the resu
     Deleted Family Andersen.1
     End of demo, press any key to exit.
 
-Congratulations! You've completed this NoSQL tutorial and have a working C# console application!
+Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes C# konzolalkalmazással rendelkezik!
 
-## <a id="GetSolution"></a> Get the complete NoSQL tutorial solution
-To build the GetStarted solution that contains all the samples in this article, you will need the following:
+## <a name="a-idgetsolutiona-get-the-complete-nosql-tutorial-solution"></a><a id="GetSolution"></a>A NoSQL-oktatóanyagban szereplő teljes megoldás beszerzése
+A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás összeállításához az alábbiakra lesz szüksége:
 
-* An active Azure account. If you don't have one, you can sign up for a [free account](https://azure.microsoft.com/free/).
-* A [DocumentDB account][documentdb-create-account].
-* The [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) solution available on GitHub.
+* Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* [DocumentDB-fiók][documentdb-create-account].
+* A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) megoldás.
 
-To restore the references to the DocumentDB .NET SDK in Visual Studio, right-click the **GetStarted** solution in Solution Explorer, and then click **Enable NuGet Package Restore**. Next, in the App.config file, update the EndpointUrl and AuthorizationKey values as described in [Connect to a DocumentDB account](#Connect).
+Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután az App.config fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás DocumentDB-fiókhoz](#Connect) című részben leírtak szerint.
 
-## Next steps
-* Want a more complex ASP.NET MVC NoSQL tutorial? See [Build a web application with ASP.NET MVC using DocumentDB](documentdb-dotnet-application.md).
-* Want to perform scale and performance testing with DocumentDB? See [Performance and Scale Testing with Azure DocumentDB](documentdb-performance-testing.md)
-* Learn how to [monitor a DocumentDB account](documentdb-monitor-accounts.md).
-* Run queries against our sample dataset in the [Query Playground](https://www.documentdb.com/sql/demo).
-* Learn more about the programming model in the Develop section of the [DocumentDB documentation page](https://azure.microsoft.com/documentation/services/documentdb/).
+## <a name="next-steps"></a>Következő lépések
+* Összetettebb ASP.NET MVC NoSQL-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-vel rendelkező webalkalmazás összeállítása a DocumentDB használatával](documentdb-dotnet-application.md).
+* Méret- és teljesítménytesztelést szeretne elvégezni a DocumentDB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure DocumentDB használatával](documentdb-performance-testing.md)
+* Ismerje meg, hogyan [felügyelhet egy DocumentDB-fiókot](documentdb-monitor-accounts.md).
+* Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
+* A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
@@ -614,6 +618,6 @@ To restore the references to the DocumentDB .NET SDK in Visual Studio, right-cli
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

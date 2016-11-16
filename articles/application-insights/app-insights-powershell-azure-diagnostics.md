@@ -1,11 +1,11 @@
 ---
-title: Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével | Microsoft Docs
-description: Az Azure Diagnostics konfigurálásának automatizálása az Application Insights felé való továbbításra.
+title: "Az Application Insights beállítása a PowerShell segítségével az Azure-ban | Microsoft Docs"
+description: "Az Azure Diagnostics konfigurálásának automatizálása az Application Insights felé való továbbításra."
 services: application-insights
 documentationcenter: .net
 author: sbtron
 manager: douge
-
+ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,12 +13,39 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/17/2015
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b324d38f1f06f9cfcb15665da3d0e3964555ee54
+
 
 ---
-# Azure Diagnostics küldése az Application Insights szolgáltatásba a PowerShell segítségével
+# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Az Application Insights beállítása a PowerShell segítségével Azure-webalkalmazáshoz
 A [Microsoft Azure](https://azure.com) [konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](app-insights-azure-diagnostics.md) a [Visual Studio Application Insights ](app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
 
-## A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
+## <a name="azure-template"></a>Azure-sablon
+Ha a webalkalmazás az Azure-ban található és Azure Resource Manager-sablonnal hozza létre az erőforrásait, az Application Insights konfigurálásához hozzáadhatja ezt az erőforrások csomóponthoz:
+
+    {
+      resources: [
+        /* Create Application Insights resource */
+        {
+          "apiVersion": "2015-05-01",
+          "type": "microsoft.insights/components",
+          "name": "nameOfAIAppResource",
+          "location": "centralus",
+          "kind": "web",
+          "properties": { "ApplicationId": "nameOfAIAppResource" },
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', myWebAppName)]"
+          ]
+        }
+       ]
+     } 
+
+* `nameOfAIAppResource`– az Application Insights-erőforrás neve
+* `myWebAppName`– a webalkalmazás azonosítója
+
+## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
 A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` paraméterrel, amely egy diagnosztikakonfigurációs tömböt foglal magába. Ez a `New-AzureServiceDiagnosticsExtensionConfig` parancsmag segítségével hozható létre. Példa:
 
 ```ps
@@ -54,7 +81,7 @@ A `New-AzureDeployment` parancsmag rendelkezik egy `ExtensionConfiguration` para
 
 ``` 
 
-## A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
+## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
 Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosticsExtension`.
 
 ```ps
@@ -83,14 +110,14 @@ Meglévő szolgáltatáson használja a következőt: `Set-AzureServiceDiagnosti
         -Role "WorkerRole"
 ```
 
-## Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
+## <a name="get-current-diagnostics-extension-configuration"></a>Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
 ```ps
 
     Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 
-## A diagnosztikai bővítmény eltávolítása
+## <a name="remove-diagnostics-extension"></a>A diagnosztikai bővítmény eltávolítása
 ```ps
 
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
@@ -106,11 +133,14 @@ A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 ```
 
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](app-insights-cloudservices.md)
 * [Az Azure Diagnostics küldése az Application Insights-ba](app-insights-azure-diagnostics.md)
 * [Riasztások konfigurálásának automatizálása](app-insights-powershell-alerts.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

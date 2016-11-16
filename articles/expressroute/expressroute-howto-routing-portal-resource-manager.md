@@ -1,13 +1,13 @@
 ---
-title: ExpressRoute-kapcsolatcsoport útválasztásának konfigurálása az Azure Portal használatával | Microsoft Docs
-description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
+title: "ExpressRoute-kapcsolatcsoport útválasztásának konfigurálása az Azure Portal használatával | Microsoft Docs"
+description: "A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és Microsoft társviszony-létesítéses létrehozásának és kiépítésének lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8c2a7ed2-ae5c-4e49-81f6-77cf9f2b2ac9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1d78bdb6cbb9870298b050207fd1fa9c5e71d674
+
 
 ---
-# ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
+# <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
 > [!div class="op_single_selector"]
 > [Azure Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
 > [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
@@ -31,7 +35,7 @@ A cikk az ExpressRoute-kapcsolatcsoportok útválasztási konfigurációjának l
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## Konfigurációs előfeltételek
+## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 * A konfigurálás megkezdése előtt mindenképp tekintse át az [előfeltételek](expressroute-prerequisites.md), az [útválasztási követelmények](expressroute-routing.md) és a [munkafolyamatok](expressroute-workflows.md) lapot.
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoportnak kiosztott és engedélyezett állapotban kell lennie, hogy az alább ismertetett parancsmagokat futtatni lehessen.
 
@@ -44,10 +48,10 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 
 Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) is konfigurálhatja egy adott ExpressRoute-kapcsolatcsoportban. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. 
 
-## Azure privát társviszony-létesítés
+## <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
-### Azure privát társviszony-létesítés létrehozása
+### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot.
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
@@ -68,25 +72,25 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társvis
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
-### Azure privát társviszony-létesítés részleteinek megtekintése
+### <a name="to-view-azure-private-peering-details"></a>Azure privát társviszony-létesítés részleteinek megtekintése
 Az Azure privát társviszony-létesítés tulajdonságainak megtekintéséhez válassza ki a társviszony-létesítést.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
-### Azure privát társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-azure-private-peering-configuration"></a>Azure privát társviszony-létesítés konfigurációjának frissítése
 A társviszony-létesítés sorának kijelölésével módosíthatja a társviszony-létesítés tulajdonságait. 
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
 
-### Azure privát társviszony-létesítés törlése
+### <a name="to-delete-azure-private-peering"></a>Azure privát társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját az alább látható törlés ikonra kattintva törölheti.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
 
-## Azure nyilvános társviszony-létesítés
+## <a name="azure-public-peering"></a>Azure nyilvános társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
-### Azure nyilvános társviszony-létesítés létrehozása
+### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot.
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
@@ -108,25 +112,25 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
-### Azure nyilvános társviszony-létesítés részleteinek megtekintése
+### <a name="to-view-azure-public-peering-details"></a>Azure nyilvános társviszony-létesítés részleteinek megtekintése
 Az Azure nyilvános társviszony-létesítés tulajdonságainak megtekintéséhez válassza ki a társviszony-létesítést.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
-### Azure nyilvános társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-azure-public-peering-configuration"></a>Azure nyilvános társviszony-létesítés konfigurációjának frissítése
 A társviszony-létesítés sorának kijelölésével módosíthatja a társviszony-létesítés tulajdonságait. 
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
 
-### Azure nyilvános társviszony-létesítés törlése
+### <a name="to-delete-azure-public-peering"></a>Azure nyilvános társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját az alább látható törlés ikonra kattintva törölheti.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
 
-## Microsoft társviszony-létesítés
+## <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési konfigurációjának létrehozására, lekérésére, frissítésére és törlésére vonatkozó utasításokat. 
 
-### Microsoft társviszony-létesítés létrehozása
+### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot.
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
@@ -148,11 +152,11 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
 5. Mentse a konfigurációt, miután megadta az összes paramétert. 
    
-    Ha a kapcsolatcsoport érvényesítést igénylő állapotba kerül (amint az alább látható), küldjön egy hibajegyet támogatási csapatunknak, amelyben bemutatja az előtagok tulajdonjogának igazolását.  
+    Ha a kapcsolatcsoport érvényesítést igénylő állapotba kerül (amint az alább látható), küldjön egy hibajegyet támogatási csapatunknak, amelyben bemutatja az előtagok tulajdonjogának igazolását.    
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-    A hibajegyet közvetlenül a portálról is megnyithatja, amint az alább látható.   
+    A hibajegyet közvetlenül a portálról is megnyithatja, amint az alább látható.     
 
     ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
@@ -161,28 +165,31 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    
     ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### Microsoft társviszony-létesítés részleteinek megtekintése
+### <a name="to-view-microsoft-peering-details"></a>Microsoft társviszony-létesítés részleteinek megtekintése
 Az Azure nyilvános társviszony-létesítés tulajdonságainak megtekintéséhez válassza ki a társviszony-létesítést.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
-### Microsoft társviszony-létesítés konfigurációjának frissítése
+### <a name="to-update-microsoft-peering-configuration"></a>Microsoft társviszony-létesítés konfigurációjának frissítése
 A társviszony-létesítés sorának kijelölésével módosíthatja a társviszony-létesítés tulajdonságait. 
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### Microsoft társviszony-létesítés törlése
+### <a name="to-delete-microsoft-peering"></a>Microsoft társviszony-létesítés törlése
 A társviszony-létesítés konfigurációját az alább látható törlés ikonra kattintva törölheti.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-arm.md).
 
 * Az ExpressRoute-munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-munkafolyamatok).
 * A kapcsolatcsoportok társviszony-létesítéseivel kapcsolatos további információkért lásd: [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok).
 * További információkért a virtuális hálózatok használatáról lásd: [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

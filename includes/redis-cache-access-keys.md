@@ -1,17 +1,19 @@
-To connect to an Azure Redis Cache instance, cache clients need the host name, ports, and keys of the cache. Some clients may refer to these items by slightly different names. To retrieve these items, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal](https://portal.azure.com) and click **Settings** or **All settings**. 
+Ha Azure Redis Cache gyorsítótárhoz szeretne csatlakozni, a gyorsítótárügyfeleknek szüksége lesz az állomásnévre, a portokra és a gyorsítótár kulcsaira. Egyes ügyfelek különböző neveken hivatkozhatnak ezekre az elemekre. Az elemek lekéréséhez [tallózzon](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) a saját gyorsítótárához az [Azure Portalon](https://portal.azure.com), és kattintson a **Beállítások** vagy az **Összes beállítás** elemre. 
 
-![Redis cache settings](media/redis-cache-access-keys/redis-cache-settings.png)
+![A Redis Cache-gyorsítótár beállításai](media/redis-cache-access-keys/redis-cache-settings.png)
 
-### Host name and ports
-To access the host name and ports click **Properties**.
+### <a name="host-name-and-ports"></a>Állomásnév és portok
+Az állomásnévhez és a portokhoz való hozzáféréshez kattintson a **Properties** (Tulajdonságok) lehetőségre.
 
-![Redis cache properties](media/redis-cache-access-keys/redis-cache-properties.png)
+![A Redis Cache-gyorsítótár tulajdonságai](media/redis-cache-access-keys/redis-cache-properties.png)
 
-### Access keys
-To retrieve the access keys, click **Access keys**.
+### <a name="access-keys"></a>Elérési kulcs
+A elérési kulcsok lekéréséhez kattintson az **Access keys** (Elérési kulcsok) lehetőségre.
 
-![Redis cache access keys](media/redis-cache-access-keys/redis-cache-access-keys.png)
+![A Redis Cache-gyorsítótár elérési kulcsai](media/redis-cache-access-keys/redis-cache-access-keys.png)
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

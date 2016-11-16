@@ -1,32 +1,39 @@
 ---
-title: Az ExpressRoute útválasztási követelményei | Microsoft Docs
-description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
+title: "Az ExpressRoute útválasztási követelményei | Microsoft Docs"
+description: "Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti."
 documentationcenter: na
 services: expressroute
-author: ganesr
-manager: rossort
-editor: ''
-
+author: osamazia
+manager: ganesr
+editor: 
+ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/16/2016
-ms.author: ganesr
+ms.date: 10/19/2016
+ms.author: osamazia
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7d7516dd2fa2ddc23d381ade52c53115a8af7231
+
 
 ---
-# Az ExpressRoute útválasztási követelményei
-Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alább ismertetett követelményeknek. 
+# <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
+Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek. 
 
 A kapcsolat elősegítésének érdekében beállítandó útválasztási munkamenetek leírását a [kapcsolatcsoportokat és útválasztási tartományokat](expressroute-circuit-peerings.md) ismertető cikkben találja.
 
-**Megjegyzés:** A Microsoft nem támogat semmilyen útválasztó-redundancia protokollt (pl. HSRP, VRRP) a magas rendelkezésre állású konfigurációkhoz. A magas rendelkezésre állás érdekében csak a társviszonyonként meglévő BGP-munkamenetek redundáns párjára támaszkodunk.
+> [!NOTE]
+> A Microsoft nem támogat semmilyen útválasztó-redundancia protokollt (pl. HSRP, VRRP) a magas rendelkezésre állású konfigurációkhoz. A magas rendelkezésre állás érdekében csak a társviszonyonként meglévő BGP-munkamenetek redundáns párjára támaszkodunk.
+> 
+> 
 
-## IP-címek társviszony-létesítésekhez
+## <a name="ip-addresses-used-for-peerings"></a>Társviszony-létesítéshez használt IP-címek
 Fenn kell tartania néhány IP-címblokkot az Ön hálózata és a Microsoft vállalati peremhálózati (MSEE) útválasztói közötti útválasztás konfigurálásához. Ez a szakasz a követelmények listáját tartalmazza, és ismerteti ezen IP-címek beszerzésére és használatára vonatkozó szabályokat.
 
-### IP-címek Azure privát társviszony-létesítéshez
+### <a name="ip-addresses-used-for-azure-private-peering"></a>Magánhálózati Azure-társviszony-létesítéshez használt IP-címek
 A társviszony-létesítések konfigurálásához privát IP-címeket vagy nyilvános IP-címeket használhat. Az útvonalak konfigurálásához használt címtartományok nem lehetnek átfedésben a virtuális hálózatok az Azure-ban való létrehozásához használt címtartományokkal. 
 
 * Egy /29 vagy két /30 alhálózatot le kell foglalnia az útválasztási felületek számára.
@@ -37,7 +44,7 @@ A társviszony-létesítések konfigurálásához privát IP-címeket vagy nyilv
   * Mindkét /30 alhálózathoz a /30 alhálózat IP-címét kell használnia az útválasztón. A /30 alhálózat második IP-címét a Microsoft fogja használni egy BGP-munkamenet beállításához.
   * Mindkét BGP-munkamenetet a [rendelkezésre állási SLA szerint](https://azure.microsoft.com/support/legal/sla/) kell beállítania, hogy érvényesek legyenek.  
 
-#### Példa a privát társviszony-létesítésre
+#### <a name="example-for-private-peering"></a>Példa a privát társviszony-létesítésre
 Ha az a.b.c.d/29 alhálózatot választja a társviszony-létesítés beállítására, az két /30 alhálózatra lesz felosztva. Az alábbi példában áttekintjük, hogyan használható az a.b.c.d/29 alhálózat. 
 
 Az a.b.c.d/29 alhálózat fel lesz osztva az a.b.c.d/30 és az a.b.c.d+4/30 alhálózatra, és továbbítva lesz a Microsoftnak a kiépítési API-kon keresztül. Ön az a.b.c.d+1 címet fogja használni az elsődleges PE VRF IP-címeként, a Microsoft pedig az a.b.c.d+2 címet használja az elsődleges MSEE VRF IP-címeként. Ön az a.b.c.d+5 címet fogja használni a másodlagos PE VRF IP-címeként, a Microsoft pedig az a.b.c.d+6 címet használja a másodlagos MSEE VRF IP-címeként.
@@ -47,7 +54,7 @@ Vegyük azt az esetet, amelyben a 192.168.100.128/29 címet választja a privát
 * az 192.168.100.128/30 az 1. kapcsolathoz lesz hozzárendelve, amelyből a szolgáltató a 192.168.100.129 címet, a Microsoft pedig a 192.168.100.130 címet használja.
 * az 192.168.100.132/30 a 2. kapcsolathoz lesz hozzárendelve, amelyből a szolgáltató a 192.168.100.133 címet, a Microsoft pedig a 192.168.100.134 címet használja.
 
-### IP-címek Azure nyilvános és Microsoft társviszony-létesítéshez
+### <a name="ip-addresses-used-for-azure-public-and-microsoft-peering"></a>Nyilvános Azure- és Microsoft-társviszony-létesítéshez használt IP-címek
 A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-címeket kell használnia. A Microsoftnak képesnek kell lennie ellenőrizni az IP-címek tulajdonjogát egy regionális útválasztási internetes jegyzékben vagy egy internetes útválasztási jegyzékben. 
 
 * ExpressRoute-kapcsolatcsoportonként minden társviszonyhoz egy egyedi /29 alhálózatot vagy két /30 alhálózatot kell használnia a BGP társviszony-létesítés beállításához (ha többel rendelkezik). 
@@ -55,6 +62,16 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
   * Az első /30 alhálózatot az elsődleges kapcsolathoz, a második /30 alhálózatot pedig a másodlagos kapcsolathoz fogja használni a rendszer.
   * Mindkét /30 alhálózathoz a /30 alhálózat IP-címét kell használnia az útválasztón. A /30 alhálózat második IP-címét a Microsoft fogja használni egy BGP-munkamenet beállításához.
   * Mindkét BGP-munkamenetet a [rendelkezésre állási SLA szerint](https://azure.microsoft.com/support/legal/sla/) kell beállítania, hogy érvényesek legyenek.
+
+## <a name="public-ip-address-requirement"></a>Nyilvános IP-cím-követelmények
+### <a name="private-peering"></a>Magánhálózati társviszony-létesítés
+Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e használni a magánhálózati társviszony-létesítéshez. Mi biztosítjuk a forgalom végpontok közötti elkülönítését, így elkerülhető, hogy a címek átfedésben legyenek más ügyfelekkel magánhálózati társviszony-létesítés esetén. Ezek a címek nincsenek meghirdetve az interneten. 
+
+### <a name="public-peering"></a>Nyilvános társviszony-létesítés
+Az Azure nyilvános társviszony-létesítési útvonal használatával az Azure-ban üzemeltetett összes szolgáltatáshoz csatlakozhat a nyilvános IP-címeiken keresztül. Ezen szolgáltatások közé tartoznak az [ExpressRoute – Gyakori kérdések](expressroute-faqs.md) című dokumentumban felsorolt szolgáltatások, valamint az ISV-k által a Microsoft Azure-ban üzemeltetett szolgáltatások. A Microsoft Azure-szolgáltatásokhoz a nyilvános társviszony-létesítéssel létrehozott kapcsolatokat mindig az Ön hálózata kezdeményezi a Microsoft hálózata felé. A Microsoft hálózatához tervezett forgalomhoz nyilvános IP-címeket kell használnia.
+
+### <a name="microsoft-peering"></a>Microsoft-társviszony-létesítés
+A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure nyilvános társviszony-létesítési útvonalon keresztül nem támogatott Microsoft-felhőszolgáltatásokhoz csatlakozzon. A szolgáltatások listájába beletartoznak az Office 365 szolgáltatásai, például az Exchange Online, a SharePoint Online, a Skype Vállalati verzió és a CRM Online. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében.
 
@@ -66,23 +83,28 @@ Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az
 * [RADB](http://www.radb.net/)
 * [ALTDB](http://altdb.net/)
 
-## Dinamikus útvonalcsere
+> [!IMPORTANT]
+> A Microsoft számára ExpressRoute-on hirdetett nyilvános IP-címek nem hirdethetők meg az interneten. Ez megszakíthatja a más Microsoft-szolgáltatások kapcsolatait. Azonban azok a nyilvános IP-címek, amelyeket a hálózatban található kiszolgálók használnak, amelyek O365-végpontokkal kommunikálnak a Microsofton belül, meg lehetnek hirdetve az ExpressRoute-on. 
+> 
+> 
+
+## <a name="dynamic-route-exchange"></a>Dinamikus útvonalcsere
 Az útválasztás cseréje az eBGP protokollon keresztül történik. Az EBGP-munkamenetek az MSEE-k és az Ön útválasztója között jönnek létre. A BGP-munkamenetek hitelesítése nem szükséges. Szükség esetén konfigurálható egy MD5-kivonat. A BGP-munkamenetek konfigurálásával kapcsolatban lásd az [útválasztás konfigurálását](expressroute-howto-routing-classic.md) és a [kapcsolatcsoport-kiépítési munkafolyamatokat és a kapcsolatcsoportok állapotait](expressroute-workflows.md) ismertető témaköröket.
 
-## Autonóm rendszerek számai
-A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak. A társoldalon (ügyfél vagy szolgáltató) az AS lehet nyilvános ASN (ha igazolható, hogy Ön a tulajdonosa), illetve személyes ASN-szám.
+## <a name="autonomous-system-numbers"></a>Autonóm rendszerek számai
+A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát és a Microsoft társviszony-létesítéshez. Az 65515–65520 AS-számok belső használatra vannak fenntartva. A 16 és a 32 bites AS-számok is támogatottak.
 
-Az adatátvitel szimmetriájára nem vonatkoznak követelmények az adott kapcsolatcsoportok elsődleges és másodlagos elérési útjain. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párok elsődleges vagy másodlagos oldaláról is meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
+Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Önhöz tartozó kapcsolatcsoport-párokon mindkét oldalról meg kell hirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
-## Útvonal-összevonások és előtagkorlátozások
+## <a name="route-aggregation-and-prefix-limits"></a>Útvonal-összevonások és előtagkorlátozások
 Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azure privát társviszony-létesítésen keresztül. Ez legfeljebb 10 000 előtagra növelhető, ha az ExpressRoute prémium bővítmény engedélyezve van. BGP-munkamenetenként legfeljebb 200 előtagot fogadunk el az Azure nyilvános és a Microsoft társviszony-létesítés esetében. 
 
-A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak vagy az ügyfélnek ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) a nyilvános Azure- és a Microsoft társviszony-létesítési útvonalakon található BGP-hirdetésekből. 
+A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
 
-## Tranzit útválasztás és régiók közötti útválasztás
+## <a name="transit-routing-and-crossregion-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
 Az ExpressRoute nem konfigurálható tranzit útválasztóként. A tranzit útválasztási szolgáltatások tekintetében a kapcsolatszolgáltatójára kell támaszkodnia.
 
-## Alapértelmezett útvonalak meghirdetése
+## <a name="advertising-default-routes"></a>Alapértelmezett útvonalak meghirdetése
 Az alapértelmezett útvonalak használata csak az Azure privát társviszony-létesítési munkamenetek esetében engedélyezett. Ilyen esetben a társított virtuális hálózatból származó minden forgalmat az Ön hálózatára irányítunk át. Az alapértelmezett útvonalak privát társviszony-létesítésbe történő meghirdetése az Azure-ból származó internetes útvonalak blokkolását eredményezi. Az internetről származó és az arra irányuló forgalom átirányításához az Azure-ban üzemeltetett szolgáltatások esetén a vállalati peremhálózatra kell támaszkodnia. 
 
  A más Azure-szolgáltatások és infrastruktúra-szolgáltatások csatlakozásának engedélyezéséhez biztosítania kell az alábbi elemek egyikének meglétét.
@@ -90,9 +112,12 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 * Az Azure nyilvános társviszony-létesítés engedélyezve van a forgalom nyilvános végpontokra való átirányításához
 * Felhasználó által meghatározott útválasztást használ az internetkapcsolatot igénylő összes alhálózat internetkapcsolatának engedélyezéséhez.
 
-**Megjegyzés:** Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) található utasításokat.
+> [!NOTE]
+> Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) található utasításokat.
+> 
+> 
 
-## BGP-közösségek támogatása (előzetes kiadás)
+## <a name="support-for-bgp-communities-preview"></a>BGP-közösségek támogatása (előzetes kiadás)
 Ez a szakasz áttekinti, hogyan használhatók a BGP-közösségek az ExpressRoute-tal. A Microsoft a megfelelő közösségértékekkel címkézett útvonalakkal hirdeti meg az útvonalakat a nyilvános és a Microsoft társviszony-létesítésekben. Ennek az eljárásnak az indoklását és a közösségértékek részleteit alább olvashatja. A Microsoft azonban nem fogadja el a Microsoft számára meghirdetett útvonalakhoz rendelt közösségértékeket.
 
 Ha az ExpressRoute-on keresztül csatlakozik a Microsofthoz egy geopolitikai régión belül lévő bármelyik társviszony-létesítési helyszínen, az összes Microsoft-felhőszolgáltatáshoz hozzáférést kap a geopolitikai határon belüli összes régióban. 
@@ -159,13 +184,16 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 > 
 > 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [ExpressRoute-kapcsolatcsoport létrehozása a klasszikus üzemi modellhez](expressroute-howto-circuit-classic.md) vagy [ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása az Azure Resource Managerrel](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása a klasszikus üzemi modellhez](expressroute-howto-routing-classic.md) vagy [Útválasztás konfigurálása a Resource Manager-alapú üzemi modellhez](expressroute-howto-routing-arm.md)
   * [Klasszikus VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-classic.md) vagy [Resource Manager VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

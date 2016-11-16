@@ -1,12 +1,12 @@
 ---
-title: Az App Service szolgáltatásban elérhető API Apps és az ASP.NET megismerése | Microsoft Docs
-description: Cikkünkből megtanulhatja, hogyan hozhat létre, telepíthet és használhat fel ASP.NET API-alkalmazásokat az Azure App Service szolgáltatásban a Visual Studio 2015 segítségével.
+title: "Az App Service-ben elérhető API Apps és az ASP.NET megismerése | Microsoft Docs"
+description: "Cikkünkből megtanulhatja, hogyan hozhat létre, telepíthet és használhat fel ASP.NET API-alkalmazásokat az Azure App Service szolgáltatásban a Visual Studio 2015 segítségével."
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
 ms.service: app-service-api
 ms.workload: na
 ms.tgt_pltfrm: dotnet
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: rachelap
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+
 
 ---
-# Az Azure App Service szolgáltatásban elérhető API Apps, az ASP.NET és a Swagger használatának megismerése
+# <a name="get-started-with-api-apps-aspnet-and-swagger-in-azure-app-service"></a>Az Azure App Service szolgáltatásban elérhető API Apps, az ASP.NET és a Swagger használatának megismerése
 [!INCLUDE [selector](../../includes/app-service-api-get-started-selector.md)]
 
 Ez az oktatóanyag egy sorozat része, amelyből megtanulhatja, hogy hogyan segítenek az Azure App Service szolgáltatás funkciói a RESTful API-k fejlesztésében és üzemeltetésében.  Ebben az oktatóanyagban Swagger formátumú API-metaadatok használatát vesszük alapul.
@@ -27,7 +31,7 @@ A következőket fogja megtanulni:
 * Az API-felfedezés automatizálása a Swashbuckle NuGet csomag segítségével és a Swagger API-metaadatok dinamikus generálásával.
 * A Swagger API-metaadatok felhasználása az API-alkalmazások ügyfélkódjának automatikus generálására.
 
-## Mintaalkalmazás áttekintése
+## <a name="sample-application-overview"></a>Mintaalkalmazás áttekintése
 Ebben az oktatóanyagban egy egyszerű tennivalólista típusú mintaalkalmazáson keresztül mutatjuk be a szolgáltatás funkcióit. Az alkalmazás egyoldalas előtérrel (SPA), ASP.NET Web API középső réteggel, és ASP.NET Web API adatréteggel rendelkezik.
 
 ![Az API Apps mintaalkalmazás-diagramja](./media/app-service-api-dotnet-get-started/noauthdiagram.png)
@@ -50,7 +54,7 @@ Az oktatóanyag elvégzését követően két Web API-projektje fog futni a felh
 
 A sorozat következő oktatóanyagában azt tanulhatja meg, hogyan lehet az SPA-előteret telepíteni a felhőben.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * ASP.NET Web API – Az oktatóanyagban szereplő utasítások feltételezik, hogy Ön legalább alapvető gyakorlattal rendelkezik a Visual Studio program ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) funkciójával való munkavégzés terén.
 * Azure-fiók – [Nyisson ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [használja ki a Visual Studio-előfizetők számára elérhető előnyöket](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
   
@@ -66,19 +70,19 @@ A sorozat következő oktatóanyagában azt tanulhatja meg, hogyan lehet az SPA-
     > 
     > 
 
-## A mintaalkalmazás letöltése
+## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 1. Töltse le a következő tárházat: [Azure-Samples/app-service-api-dotnet-to-do-list](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list).
    
     Kattintson a **Download ZIP** (ZIP-fájl letöltése) gombra, vagy klónozza a tárházat a helyi számítógépre.
 2. Nyissa meg a ToDoList megoldást a Visual Studio 2015-ben vagy 2013-ban.
    
    1. Mindegyik megoldást megbízhatóként kell megjelölnie.
-        ![Biztonsági figyelmeztetés](./media/app-service-api-dotnet-get-started/securitywarning.png)
+         ![Biztonsági figyelmeztetés](./media/app-service-api-dotnet-get-started/securitywarning.png)
 3. Hozza létre a NuGet-csomagok visszaállítására szolgáló megoldást (CTRL + SHIFT + B).
    
     Ha telepítés előtt szeretné működés közben megtekinteni az alkalmazást, a helyi számítógépen is futtathatja. Győződjön meg arról, hogy a kezdőprojekt a ToDoListDataAPI, és futtassa a megoldást. Számíthat arra, hogy a böngészőben a HTTP 403-as hiba jelenik meg.
 
-## A Swagger API-metaadatok és felhasználói felület használata
+## <a name="use-swagger-api-metadata-and-ui"></a>A Swagger API-metaadatok és felhasználói felület használata
 Az Azure App Service beépített támogatást tartalmaz a [Swagger](http://swagger.io/) 2.0 API-metaadatokhoz. Minden API-alkalmazás megadhat egy URL-végpontot, amely Swagger JSON formátumban adja vissza a metaadatokat az API-nak. A végpontról visszaadott metaadatok ezt követően felhasználhatók az ügyfélkód generálásához.
 
 Az ASP.NET Web API-projektek a [Swashbuckle](https://www.nuget.org/packages/Swashbuckle) NuGet-csomag segítségével képesek a Swagger-metaadatok dinamikus generálására. A letöltött ToDoListDataAPI és ToDoListAPI projektek már tartalmazzák a Swashbuckle NuGet csomagot.
@@ -194,7 +198,7 @@ A Swashbuckle bármelyik ASP.NET Web API-projekttel működik. Ha egy meglévő 
 > 
 > 
 
-## <a id="createapiapp"></a> API-alkalmazás létrehozása az Azure-ban, majd kód telepítése az alkalmazáshoz
+## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> API-alkalmazás létrehozása az Azure-ban, majd kód üzembe helyezése az alkalmazáshoz
 Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) varázslójában elérhető integrált Azure-eszközök segítségével hozunk létre egy új API-alkalmazást az Azure-ban. Ezt követően telepítjük a ToDoListDataAPI projektet az új API-alkalmazásra, majd a Swagger felhasználói felület futtatásával meghívjuk az API-t.
 
 1. A **Solution Explorer** (Megoldáskezelő) területén kattintson jobb gombbal a ToDoListDataAPI projektre, majd kattintson a **Publish** (Közzététel) elemre.
@@ -220,9 +224,9 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
     Az API-alkalmazás URL-címe a következő lesz: `{API app name}.azurewebsites.net`.
 6. A **Resource Group** (Erőforráscsoport) legördülő menüben kattintson a **New** (Új) elemre, majd adja meg a „ToDoListGroup”, vagy más tetszőleges nevet.
    
-    Az erőforráscsoportok Azure-erőforrások (például API Apps, adatbázisok, virtuális gépek stb.) gyűjteményei. Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
+    Az erőforráscsoportok Azure-erőforrások (például API Apps, adatbázisok, virtuális gépek stb.) gyűjteményei.    Ebben az oktatóanyagban érdemes új erőforráscsoportot létrehozni, mivel így később egyetlen művelettel törölheti az oktatóanyaghoz létrehozott összes Azure-erőforrást.
    
-    Ebben a mezőben kiválaszthat egy meglévő [erőforráscsoportot](../resource-group-overview.md), vagy újat is létrehozhat. Új csoport létrehozásához írjon be egy olyan nevet, amely eltér az előfizetéshez tartozó többi erőforráscsoport nevétől.
+    Ebben a mezőben kiválaszthat egy meglévő [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md), vagy újat is létrehozhat. Új csoport létrehozásához írjon be egy olyan nevet, amely eltér az előfizetéshez tartozó többi erőforráscsoport nevétől.
 7. Kattintson az **App Service Plan** (App Service-csomag) legördülő menü mellett látható **New** (Új) gombra.
    
     A képernyőképen az **API App Name** (API-alkalmazás neve), a **Subscription** (Előfizetés) és a **Resource Group** (Erőforráscsoport) mezőben látható értékek csupán példaként szolgálnak, a tényleges értékek ezektől eltérőek lesznek.
@@ -298,7 +302,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
     
     Amikor kiválaszt egy API-alkalmazást, amelyhez ügyfélkódot szeretne generálni, a Visual Studio erről az URL-címről kéri le a metaadatokat.
 
-## <a id="codegen"></a> Ügyfélkód generálása az adatréteg számára
+## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> Ügyfélkód generálása az adatréteg számára
 A Swaggernek az Azure API Appsbe való integrálásának egyik legnagyobb előnye az automatikus kódgenerálás. A generált ügyfélosztályok leegyszerűsítik az API-alkalmazásokat behívó kód megírását.
 
 A ToDoListAPI projekt már tartalmazza a generált ügyfélkódot, de a következő lépésekben törölni fogjuk azt, majd ismét generáljuk, hogy megismerkedjen a kódgenerálás módjával.
@@ -369,7 +373,7 @@ módosítsa a következőre:
             var client = new ToDoListDataAPI071316(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 
 
-## A középső réteget futtató API-alkalmazás létrehozása
+## <a name="create-an-api-app-to-host-the-middle-tier"></a>A középső réteget futtató API-alkalmazás létrehozása
 Korábban [létrehozta az API-alkalmazás adatrétegét, és telepítette rá a kódot](#createapiapp).  Most ugyanezt az eljárást kell követni a középső réteg API-alkalmazásánál.
 
 1. A **Solution Explorer** (Megoldáskezelő) területén kattintson a jobb gombbal a középső réteghez tartozó ToDoListAPI projektre (nem az adatréteghez tartozó ToDoListDataAPI-ra), majd kattintson a **Publish** (Közzététel) elemre.
@@ -388,7 +392,7 @@ Korábban [létrehozta az API-alkalmazás adatrétegét, és telepítette rá a 
    
    A Visual Studio telepíti a ToDoListAPI projektet az új API-alkalmazásba, és egy böngészőablakban megnyitja az API-alkalmazás URL-címét. Megjelenik a sikeres létrehozásról tájékoztató oldal.
 
-## A középső réteg konfigurálása az adatréteg behívására
+## <a name="configure-the-middle-tier-to-call-the-data-tier"></a>A középső réteg konfigurálása az adatréteg behívására
 Ha most próbálná meg behívni a középső réteg API-alkalmazását, az a Web.config fájlban továbbra is szereplő localhost URL-cím használatával hívná be az adatréteget. Ebben a részben meg kell adnia az adatréteg API-alkalmazásának URL-címét a középső réteg API-alkalmazásának egyik környezeti beállításánál. Ha a középső réteg API-alkalmazásának kódja lekéri az adatréteg URL-beállításait, ez a környezeti beállítás felülírja a Web.config fájlban található értéket.
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com/), majd keresse meg a ToDoListAPI projekt (középső réteg) üzemeltetésére létrehozott API-alkalmazás **API-alkalmazás** paneljét.
@@ -405,7 +409,7 @@ Ha most próbálná meg behívni a középső réteg API-alkalmazását, az a We
    
     Amikor a kód lefut az Azure-ban, a rendszer mostantól ezzel az értékkel írja felül a Web.config fájlban található localhost URL-címet.
 
-## Tesztelés
+## <a name="test"></a>Tesztelés
 1. Egy böngészőablakban nyissa meg a középső réteg API-alkalmazásának URL-címét, amelyet az előző lépéseknél hozott létre a ToDoListAPI számára. Ehhez úgy juthat el, ha a portálon, az API-alkalmazás főpaneljén rákattint az URL-címre.
 2. Adja hozzá a „swagger” szót a böngésző címsorában látható URL-címhez, majd nyomja le az Enter billentyűt. (Az URL-cím így a következő: `http://{apiappname}.azurewebsites.net/swagger`.)
    
@@ -414,7 +418,7 @@ Ha most próbálná meg behívni a középső réteg API-alkalmazását, az a We
    
     ![Swagger felhasználói felület, Get metódus](./media/app-service-api-dotnet-get-started/midtierget.png)
 
-## Hibakeresés
+## <a name="troubleshooting"></a>Hibakeresés
 Ha az oktatóanyag lépéseinek elvégzése közben hibákba ütközne, olvassa el az alábbi hibakeresési tippeket:
 
 * Ellenőrizze, hogy az [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003) legfrissebb verzióját használja-e.
@@ -424,7 +428,7 @@ Ha az oktatóanyag lépéseinek elvégzése közben hibákba ütközne, olvassa 
 
 Ha elérte, hogy az ASP.NET API-alkalmazás fusson az Azure App Service szolgáltatásban, érdemes lehet jobban megismerni a Visual Studio funkcióit, mivel ezek segíthetnek a hibakeresésben. A naplózással, a távoli hibakereséssel és a többi funkcióval kapcsolatban további információkért lásd: [Troubleshooting Azure App Service apps in Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md) (Azure App Service alkalmazások hibakeresése a Visual Studióban).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Az előzőekben megtanulta, hogy telepíthet meglévő Web API-projektet az API Appsbe, hogyan generálhat ügyfélkódot az API Appshez, illetve hogyan használhatja fel az API Appset .NET-ügyfelekből. A sorozat következő oktatóanyaga azt mutatja be, hogyan [lehet a CORS segítségével API-alkalmazásokat felhasználni JavaScript-ügyfelekből](app-service-api-cors-consume-javascript.md).
 
 Az ügyfélkód generálásával kapcsolatban lásd a GitHub.com [Azure/AutoRest](https://github.com/azure/autorest) tárházát. A generált ügyféllel kapcsolatos hibákkal kapcsolatban nyisson [problémát az AutoRest tárházban](https://github.com/azure/autorest/issues).
@@ -435,6 +439,9 @@ Ha a nulláról szeretne API-alkalmazásprojektet létrehozni, használja az **A
 
 Az **Azure API App** projektsablon használatával azt az eredményt éri el, mintha az **Üres** ASP.NET 4.5.2 sablont választaná, majd a jelölőnégyzet bejelölésével hozzáadná a Web API támogatását, és telepítené a Swashbuckle NuGet csomagot. A sablon ezenfelül tartalmaz némi Swashbuckle konfigurációs kódot is, amely megakadályozza a duplikált Swagger műveleti azonosítók létrehozását. Ha létrehozta az API App projektet, azt szintén az oktatóanyagban leírt lépésekkel telepítheti az API-alkalmazásra.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

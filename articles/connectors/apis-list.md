@@ -1,13 +1,13 @@
 ---
-title: A Microsoft Azure Logic Apps alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Docs
-description: A Microsoft által felügyelt összekötők teljes listája, amelyek használatával Logic Apps alkalmazásokat készíthet az Azure App Service szolgáltatásban
+title: "A Microsoft Azure Logic Apps-alkalmazásokban használható, Microsoft által felügyelt összekötők listája | Microsoft Docs"
+description: "A Microsoft által felügyelt összekötők teljes listája, amelyek használatával Logic Apps alkalmazásokat készíthet az Azure App Service szolgáltatásban"
 services: logic-apps
-documentationcenter: ''
+documentationcenter: 
 author: MSFTMAN
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: f1f1fd50-b7f9-4d13-824a-39678619aa7a
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -15,12 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/20/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e9134998ba7fadeb6a5e36d37b77fc8d6892c2b8
+
 
 ---
-# Az összekötők listája
+# <a name="list-of-connectors"></a>Az összekötők listája
 Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok kiépítésének módjaival.
 
-## Szokványos összekötők
+## <a name="standard-connectors"></a>Szokványos összekötők
 | Összekötők |  |  |  |
 | --- | --- | --- | --- |
 | [![API Icon][API/Web-Appicon]<br/>**API/Web App**][API/Web-Appdoc] |[![API Icon][Azure-Blobicon]<br/>**Azure Blob**][Azure-Blobdoc] |[![API Icon][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc] |[![API Icon][Boxicon]<br/>**Box**][Boxdoc] |
@@ -42,7 +46,7 @@ Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok kiépítés�
 > 
 > 
 
-## Enterprise Integration Pack- (EIP-) összekötők
+## <a name="enterprise-integration-pack-eip-connectors"></a>Enterprise Integration Pack- (EIP-) összekötők
 Az EIP-összekötőkkel logikai alkalmazásokat hozhat létre EAI-t és EDI-t tartalmazó B2B-forgatókönyvekhez.  
 
 | EIP-összekötők |  |  |  |
@@ -52,7 +56,7 @@ Az EIP-összekötőkkel logikai alkalmazásokat hozhat létre EAI-t és EDI-t ta
 | [![API Icon][x12icon]<br/>**EDIFACT</br>decode**][EDIFACTdecode] |[![API Icon][x12icon]<br/>**EDIFACT</br>encode**][EDIFACTencode] | | |
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
-### Az összekötők lehetnek eseményindítók
+### <a name="connectors-can-be-triggers"></a>Az összekötők lehetnek eseményindítók
 Több összekötő is biztosít eseményindítókat, amelyek adott események bekövetkezése esetén értesíthetik az alkalmazást. Az FTP-összekötő például az OnUpdatedFile eseményindítót tartalmazza. Készíthet olyan Logic App, PowerApp vagy Flow-alkalmazást, amely figyel erre az eseményindítóra, és végrehajt egy műveletet, amint az eseményindító aktiválódik.
 
 Két eseményindító-típus létezik:  
@@ -60,13 +64,13 @@ Két eseményindító-típus létezik:
 * Lekérdezéses eseményindítók: ezek az eseményindítók a beállított időközönként új adatokat kereső lekérdezést küldenek a szolgáltatásnak. Amikor új adatok válnak elérhetővé, az alkalmazás új példánya bemeneti adatokként fogja azokat használni a futása során. Ha meg szeretné akadályozni, hogy ugyanazokat az adatokat többször is feldolgozza a rendszer, elérheti, hogy az eseményindító megtisztítsa azokat az adatokat, amelyeket az alkalmazás már beolvasott.
 * Leküldéses eseményindítók: ezek az eseményindítók azt figyelik, hogy mikor jelennek meg adatok egy végponton, vagy mikor megy végbe egy adott esemény, majd elindítják az alkalmazás egy új példányát. Ilyen például a Twitter-összekötő.
 
-### Az összekötők lehetnek műveletek
+### <a name="connectors-can-be-actions"></a>Az összekötők lehetnek műveletek
 Az összekötők használhatók műveletekként is az alkalmazásokban. A műveletek olyan adatok gyűjtéséhez lehetnek hasznosak, amelyeket azután az alkalmazás végrehajtása során használ. Előfordulhat például, hogy ügyféladatokat kell keresnie egy SQL-adatbázisban egy megrendelés feldolgozásához. Vagy előfordulhat, hogy a céltáblában kell adatokat írnia, frissítenie vagy törölnie. Ezt mind megteheti az összekötők által kínált műveletekkel. Ezek a műveletek leképezhetőek a Swagger-metaadatokban meghatározott műveletekké.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Hozzon létre egy Logic App alkalmazást](../app-service-logic/app-service-logic-create-a-logic-app.md)  
 * [Egyéni összekötő létrehozása](../app-service-logic/app-service-logic-create-api-app.md)
-* [A Logic Apps figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
+* [Logikai alkalmazások figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
 
 <!--Connectors Documentation-->
 [azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Csatlakozhat az Azure-blobhoz a blobtárolókban található fájlok kezeléséhez."
@@ -196,6 +200,6 @@ Az összekötők használhatók műveletekként is az alkalmazásokban. A művel
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

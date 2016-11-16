@@ -1,13 +1,13 @@
 ---
-title: Hadoop-alkalmazások telepítése HDInsight platformon | Microsoft Docs
-description: A HDInsight-alkalmazások HDInsight-alkalmazásokra való telepítésének ismertetése.
+title: "Hadoop-alkalmazások telepítése HDInsight platformon | Microsoft Docs"
+description: "A HDInsight-alkalmazások HDInsight-alkalmazásokra való telepítésének ismertetése."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/14/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 02fbf7609ca2f2fac5105e347fcfc9aa5b794eb2
+
 
 ---
-# Egyéni HDInsight-alkalmazások telepítése
+# <a name="install-custom-hdinsight-applications"></a>Egyéni HDInsight-alkalmazások telepítése
 A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek.  Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései. Ebből a cikkből megtudhatja, hogyan telepíthet korábban az Azure Portalon közzé nem tett HDInsight-alkalmazásokat a HDInsight platformon. A [Hue](http://gethue.com/) alkalmazást fogja telepíteni. 
 
 Egyéb kapcsolódó cikkek:
@@ -26,10 +30,10 @@ Egyéb kapcsolódó cikkek:
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan adhat meg HDInsight-alkalmazásokat.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ha egy meglévő HDInsight-fürtre kíván HDInsight-alkalmazásokat telepíteni, HDInsight-fürttel kell rendelkeznie. A fürt létrehozását lásd: [Fürtök létrehozása](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster). HDInsight-alkalmazásokat HDInsight-fürt létrehozása közben is telepíthet.
 
-## HDInsight-alkalmazások telepítése
+## <a name="install-hdinsight-applications"></a>HDInsight-alkalmazások telepítése
 HDInsight-alkalmazások fürt létrehozása közben vagy egy meglévő HDInsight-fürtre is telepíthetők. Azure Resource Manager-sablonok meghatározása: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 
 Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
@@ -66,19 +70,19 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
 A Resource Manager-sablonok meghívására az Azure Portalon kívül az [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) és az [Azure parancssori felület](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) is használható.
 
-## A telepítés ellenőrzése
+## <a name="validate-the-installation"></a>A telepítés ellenőrzése
 Az alkalmazás telepítésének ellenőrzéséhez az alkalmazás állapotát az Azure Portalon követheti. Emellett a várt megjelenésük sorrendjében ellenőrizheti a HTTP-végpontokat is, illetve a webhelyet (ha van):
 
 **A Hue portál megnyitása**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.  Ha nem látja, kattintson a **Browse** (Tallózás), majd a **HDInsight Clusters** (HDInsight-fürtök) elemre.
 3. Kattintson arra a fürtre, amelyre az alkalmazást telepítette.
 4. A **Settings** (Beállítások) panelen kattintson az **Applications** (Alkalmazások) elemre a **General** (Általános) kategóriában. A **hue** ekkor megjelenik az **Installed Apps** (Telepített alkalmazások) panelen.
 5. A tulajdonságok listázásához kattintson a **Hue** elemre a listában.  
 6. A webhely ellenőrzéséhez kattintson annak hivatkozására; nyissa meg a HTTP-végpontot egy böngészőben a Hue webes felhasználói felületének ellenőrzéséhez, majd nyissa meg az SSH-végpontot a [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) vagy egy másik [SSH-ügyfél](hdinsight-hadoop-linux-use-ssh-unix.md) használatával.
 
-## A telepítési folyamat hibaelhárítása
+## <a name="troubleshoot-the-installation"></a>A telepítési folyamat hibaelhárítása
 Az alkalmazás telepítési állapotát a portál értesítései között (ehhez kattintson a portál felső részén található harang ikonra) követheti. 
 
 Ha az alkalmazás telepítése sikertelen, a következő három helyen tekintheti meg a hibaüzeneteket és a hibakeresési információkat:
@@ -97,13 +101,13 @@ Ha az alkalmazás telepítése sikertelen, a következő három helyen tekinthet
   
     További információk: [Hibaelhárítás](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
-## HDInsight-alkalmazások eltávolítása
+## <a name="remove-hdinsight-applications"></a>HDInsight-alkalmazások eltávolítása
 A HDInsight-alkalmazások többféleképpen törölhetők.
 
-### A portál használatával
+### <a name="use-portal"></a>A portál használatával
 **Alkalmazások eltávolítása a portál használatával**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.  Ha nem látja, kattintson a **Browse** (Tallózás), majd a **HDInsight Clusters** (HDInsight-fürtök) elemre.
 3. Kattintson arra a fürtre, amelyre az alkalmazást telepítette.
 4. A **Settings** (Beállítások) panelen kattintson az **Applications** (Alkalmazások) elemre a **General** (Általános) kategóriában. Ekkor a telepített alkalmazások listája jelenik meg. A **hue** elem ebben az oktatóanyagban az **Installed Apps** (Telepített alkalmazások) panelen található.
@@ -112,13 +116,13 @@ A HDInsight-alkalmazások többféleképpen törölhetők.
 
 A portálon törölheti a fürtöt, vagy akár az alkalmazást tartalmazó erőforráscsoportot is.
 
-### Azure PowerShell használatával
+### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 Az Azure PowerShell használatával törölheti a fürtöt vagy az erőforráscsoportot. Lásd: [Fürtök törlése az Azure PowerShell használatával](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### Az Azure parancssori felület használatával
+### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 Az Azure parancssori felület használatával törölheti a fürtöt vagy az erőforráscsoportot. Lásd: [Fürtök törlése az Azure parancssori felület használatával](hdinsight-administer-use-command-line.md#delete-clusters).
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan fejleszthet Resource Manager-sablonokat HDInsight-alkalmazások üzembe helyezéséhez.
 * [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.
 * [HDInsight-alkalmazások közzététele](hdinsight-apps-publish-applications.md): Megtudhatja, hogyan teheti közzé egyéni HDInsight-alkalmazásait az Azure Piactéren.
@@ -126,6 +130,9 @@ Az Azure parancssori felület használatával törölheti a fürtöt vagy az er�
 * [Create Linux-based Hadoop clusters in HDInsight using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban Resource Manager-sablonok segítségével): Megtudhatja, hogyan hívhat meg Resource Manager-sablonokat HDInsight-fürtök létrehozásához.
 * [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Üres élcsomópontok használata a HDInsightban): a cikk bemutatja, hogyan lehet üres élcsomópontot használni egy HDInsight-fürt elérésére, HDInsight-alkalmazások tesztelésére és HDInsight-alkalmazások üzemeltetésére.
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

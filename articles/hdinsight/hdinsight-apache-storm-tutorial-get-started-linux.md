@@ -1,13 +1,13 @@
 ---
-title: 'Apache Storm-oktatóanyag: Megismerkedés a Linux-alapú Storm on HDInsight alkalmazással | Microsoft Docs'
-description: Ismerkedjen meg a big data elemzésre szolgáló Apache Storm alkalmazással, valamint a Linux-alapú HDInsight Storm Starter-mintáival. Ismerkedjen meg a Storm valós idejű adatfeldolgozásra történő használatával.
-keywords: apache storm,apache storm-oktatóanyag,big data-elemzés,storm starter
+title: "Apache Storm-oktatóanyag: a Linux-alapú Storm on HDInsight alkalmazás bemutatása | Microsoft Docs"
+description: "Ismerkedjen meg a big data elemzésre szolgáló Apache Storm alkalmazással, valamint a Linux-alapú HDInsight Storm Starter-mintáival. Ismerkedjen meg a Storm valós idejű adatfeldolgozásra történő használatával."
+keywords: "apache storm,apache storm-oktatóanyag,big data-elemzés,storm starter"
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: d710dcac-35d1-4c27-a8d6-acaf8146b485
 ms.service: hdinsight
 ms.devlang: java
 ms.topic: get-started-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/12/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 84567b646e9cb5e95b2aaf5c3ce19fc227decc82
+
 
 ---
-# <a name="apache-storm-tutorial:-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
+# <a name="apache-storm-tutorial-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
 > [!NOTE]
@@ -66,9 +70,13 @@ Ebben a szakaszban 3.2-es verziójú (0.9.3-as Storm-verziójú) HDInsight-fürt
      > * [Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md)
      > 
      > 
+
 3. Kattintson az **OK** gombra a paraméterek mentéséhez.
+
 4. A **Custom deployment** (Egyéni üzembe helyezés) panelen kattintson a **Resource group** (Erőforráscsoport) legördülő listára, majd a **New** (Új) lehetőségre egy új erőforráscsoport létrehozásához. Az erőforráscsoport egy olyan tároló, amely csoportosítja a fürtöt, a függő tárfiókot és egyéb kapcsolt erőforrásokat.
+
 5. Kattintson a **Legal terms** (Jogi feltételek), majd a **Create** (Létrehozás) gombra.
+
 6. Kattintson a ** Create** (Létrehozás) gombra. Ekkor egy új csempe jelenik meg Submitting deployment for Template deployment (Üzemelő példány elküldése sablon üzemelő példányhoz) A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Storm Starter-minta futtatása HDInsight platformon
@@ -169,10 +177,16 @@ Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-cou
 ## <a name="delete-the-cluster"></a>A fürt törlése
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="<a-id="next"></a>next-steps"></a><a id="next"></a>Következő lépések
+## <a name="a-idnextanext-steps"></a><a id="next"></a>Következő lépések
 Ebben az Apache Storm-oktatóanyagban a Storm Starter használatával sajátította el Storm on HDInsight-fürt létrehozását, valamint a Storm irányítópultjának kezelését a Storm-topológiák üzembe helyezéséhez, figyeléséhez és felügyeletéhez. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](hdinsight-storm-develop-java-topology.md).
 
 Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topológiát kíván üzembe helyezni a HDInsighton, tekintse meg a következő cikket: [HDInsighton futó Apache Storm-topológiák üzembe helyezése és kezelése](hdinsight-storm-deploy-monitor-topology-linux.md).
+
+A.NET-fejlesztők C#- vagy hibrid C#/Java-topológiákat hozhatnak létre a Visual Studio használatával. További információk: [C#-topológiák fejlesztése HDInsight alatt futó Apache Stormra a Visual Studio Hadoop-eszközeinek használatával](hdinsight-storm-develop-csharp-visual-studio-topology.md).
+
+A HDInsight alatt futó Stormmal használható példatopológiákat az alábbiakban talál:
+
+    * [HDInsight alatt futó Storm példatopológiái](hdinsight-storm-example-topology.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html
@@ -184,6 +198,6 @@ Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topo
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO2-->
 
 

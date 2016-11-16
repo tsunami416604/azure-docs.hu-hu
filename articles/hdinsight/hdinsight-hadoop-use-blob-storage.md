@@ -1,14 +1,14 @@
 ---
-title: Adatok lekérdezése HDFS-kompatibilis Blob Storage tárolóról | Microsoft Docs
-description: A HDInsight az Azure Blob Storage tárolót használja a HDFS big data-táraként. Megtudhatja, hogyan kérdezhet le adatokat a Blob Storage tárolóból, és hogyan tárolhatja az eredményeket elemzéshez.
-keywords: blob storage,hdfs,strukturált adatok,strukturálatlan adatok
+title: "Adatok lekérdezése HDFS-kompatibilis Blob Storage-ból | Microsoft Docs"
+description: "A HDInsight az Azure Blob Storage tárolót használja a HDFS big data-táraként. Megtudhatja, hogyan kérdezhet le adatokat a Blob Storage tárolóból, és hogyan tárolhatja az eredményeket elemzéshez."
+keywords: "blob storage,hdfs,strukturált adatok,strukturálatlan adatok"
 services: hdinsight,storage
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -16,9 +16,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/06/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7baf1aa756221df62a36cd975ffb92fc8cd27232
+
 
 ---
-# A HDFS-kompatibilis Azure Blob Storage és a Hadoop együttes használata a HDInsightban
+# <a name="use-hdfscompatible-azure-blob-storage-with-hadoop-in-hdinsight"></a>A HDFS-kompatibilis Azure Blob Storage és a Hadoop együttes használata a HDInsightban
 Megtudhatja, hogyan használhat alacsony költségű Azure Blob Storage tárolót a HDInsight eszközzel, hogyan hozhat létre Azure-tárfiókot és Blob Storage tárolót, majd hogyan kezelheti a benne lévő adatokat.
 
 Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely zökkenőmentesen integrálható a HDInsight eszközzel. A Hadoop elosztott fájlrendszer (HDFS) felületen keresztül a HDInsight összetevők teljes készlete működhet közvetlenül a strukturált vagy strukturálatlan adatokon a Blob Storage tárolóban.
@@ -32,7 +36,7 @@ Az adatok Blob Storage tárolóban végzett tárolása lehetővé teszi, hogy bi
 
 A HDInsight fürtök létrehozásával kapcsolatban további információért lásd: [Get Started with HDInsight][hdinsight-get-started] (HDInsight – első lépések) vagy [Create HDInsight clusters][hdinsight-creation] (HDInsight-fürtök létrehozása).
 
-## HDInsight tároló-architektúra
+## <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 A következő ábra a HDInsight tárló-architektúra absztrakt nézetét nyújtja:
 
 ![A Hadoop fürtök a HDFS API-val érik el és tárolják a strukturált és strukturálatlan adatokat a Blob Storage tárolóban.](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight Storage Architecture")
@@ -46,7 +50,7 @@ Emellett a HDInsight lehetővé teszi az Azure Blob Storage tárolóban tárolt 
     wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
 > [!NOTE]
-> A 3.0-s verzió előtti HDInsight-verziókban az `asv://` volt használatban a `wasb://` helyett. `asv://` nem használható a 3.0-s vagy újabb verziójú HDInsight-fürtökkel, mivel ez egy hibát eredményez.
+> A 3.0-s verzió előtti HDInsight-verziókban az `asv://` volt használatban a `wasb://` helyett. `asv://` nem használható a 3.0-s vagy újabb verziójú HDInsight-fürtökkel, mivel az hibát eredményez.
 > 
 > 
 
@@ -69,7 +73,7 @@ Több WebHCat-feladat (beleértve a Hive, MapReduce, Hadoop-stream és Pig-felad
 
 A Blob Storage tárolók a strukturált és strukturálatlan adatokhoz használhatók. A Blob Storage tárolók kulcs/érték párokként tárolnak adatokat, és nincs könyvtár-hierarchia. A perjel karakter ( / ) azonban használható a kulcsnévben, hogy úgy tűnjön, mintha a fájl könyvtárszerkezetben lenne tárolva. Egy blob kulcsa lehet például az *input/log1.txt*. Nem létezik tényleges *input* könyvtár, de mivel jelen van a perjel karakter a kulcsnévben, úgy néz ki, mint egy fájlútvonal.
 
-### <a id="benefits"></a>A Blob Storage előnyei
+### <a name="a-idbenefitsabenefits-of-blob-storage"></a><a id="benefits"></a>A Blob Storage előnyei
 A számítási fürtök és tárolási erőforrások nem egy helyre helyezésével járó teljesítményi költségeket csökkenti a számítási fürtöknek a tárfiók erőforrásainak közelében való létrehozása az Azure-régión belül, ahol a nagysebességű hálózat nagyon hatékonnyá teszi, ahogyan a számítási csomópontok elérik az Azure Blob Storage tárlóban lévő adatokat.
 
 Több előnye is van annak, ha az adatokat a HDFS helyett az Azure Blob Storage tárolóban tárolja:
@@ -87,19 +91,19 @@ Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak 
 > 
 > 
 
-## Blob tárolók létrehozása
+## <a name="create-blob-containers"></a>Blob tárolók létrehozása
 A blobok használatához először hozzon létre egy [Azure Storage-fiókot][azure-storage-create]. Ennek részeként olyan Azure-régiót határozhat meg, amely ezzel a fiókkal fogja tárolni a létrehozott objektumokat. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. A Hive-metaadattár SQL Server adatbázisának és az Oozie-metaadattár SQL Server adatbázisának is ugyanabban a régióban kell lennie.
 
 Akárhol él, mindegyik létrehozott blob az Azure Storage-fiókban lévő tárolóhoz tartozik. Ez a tároló egy már létező, a HDInsight eszközön kívül létrejövő blob vagy egy HDInsight-fürthöz létrehozott tároló lehet.
 
 Az alapértelmezett Blob tároló a fürtre jellemző információkat tárolja, például a feladatelőzményeket és a naplókat. Ne osszon meg alapértelmezett Blob tárolókat több HDInsight-fürttel. Ez károsíthatja a feladatelőzményeket, és a fürt hibásan működhet. Ajánlott különböző tárolót használni mindegyik fürthöz és a megosztott adatokat az összes kapcsolódó fürt üzemelő példányában meghatározott kapcsolt tárfiókra helyezni az alapértelmezett tárfiók helyett. A kapcsolt tárfiókok konfigurálásáról további információért lásd: [Create HDInsight clusters][hdinsight-creation] (HDInsight-fürtök létrehozása). De újból felhasználhatja az alapértelmezett tárolókat az eredeti HDInsight fürt törlése után. A HBase fürtök esetén megőrizheti a HBase táblasémát és adatokat, ha létrehoz egy új HBase fürtöt a törölt HBase fürt által használt alapértelmezett blobtárolóval.
 
-### Az Azure portál használata
+### <a name="using-the-azure-portal"></a>Az Azure portál használata
 Amikor HDInsight fürtöt hoz létre a portálról, használhat meglévő tárfiókokat, vagy létrehozhat új tárfiókot:
 
 ![hdinsight hadoop létrehozási adatforrás](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
 
-### Az Azure parancssori felület használata
+### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 Ha [telepítette és konfigurálta az Azure CLI parancssori felületet](../xplat-cli-install.md), a következő parancs használható a tárfiókokhoz és tárolóhoz.
@@ -121,7 +125,7 @@ Egy tároló létrehozásához használja az alábbi parancsot:
 
     azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-### Az Azure PowerShell használata
+### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 Ha [telepítette és konfigurálta az Azure PowerShell eszközt][powershell-install], a következőt használhatja az Azure PowerShell parancssorról egy tárfiók és tároló létrehozásához:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
@@ -147,7 +151,7 @@ Ha [telepítette és konfigurálta az Azure PowerShell eszközt][powershell-inst
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-## A Blob Storage tárolóban található címfájlok
+## <a name="address-files-in-blob-storage"></a>A Blob Storage tárolóban található címfájlok
 A Blob Storage tárolóban a HDInsight eszközről végzett fájlelérés URI sémája a következő:
 
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
@@ -178,7 +182,7 @@ Az &lt;elérési út&gt; a fájl vagy könyvtár HDFS elérési útja neve. Mive
 > 
 > 
 
-## Blobok elérése az Azure parancssori felület használatával
+## <a name="access-blobs-using-azure-cli"></a>Blobok elérése az Azure parancssori felület használatával
 Használja az alábbi parancsot a blobbal kapcsolatos parancsok listázásához:
 
     azure storage blob
@@ -199,7 +203,7 @@ Használja az alábbi parancsot a blobbal kapcsolatos parancsok listázásához:
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-## Blobok elérése az Azure PowerShell eszköz használatával
+## <a name="access-blobs-using-azure-powershell"></a>Blobok elérése az Azure PowerShell eszköz használatával
 > [!NOTE]
 > Ezen szakasz parancsai a blobokban tárolt adatok PowerShell eszközön keresztüli elérésének egyszeri példáit nyújtják. A HDInsight használatához testreszabott további teljes példákért lásd: [HDInsight eszközök](https://github.com/Blackmist/hdinsight-tools).
 > 
@@ -211,10 +215,10 @@ Használja az alábbi parancsot a blobbal kapcsolatos parancsmagok listázásáh
 
 ![A blobbal kapcsolatos PowerShell parancsmagok listája.][img-hdi-powershell-blobcommands]
 
-### Fájlok feltöltése
+### <a name="upload-files"></a>Fájlok feltöltése
 Lásd: [Upload data to HDInsight][hdinsight-upload-data] (Adatok feltöltése a HDInsightba).
 
-### Fájlok letöltése
+### <a name="download-files"></a>Fájlok letöltése
 A következő parancsfájl egy blokkblobot tölt le az aktuális mappába. A parancsfájl futtatása előtt módosítsa a könyvtárt olyan mappára, ahol írási engedélyei vannak.
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -251,13 +255,13 @@ Az erőforráscsoport nevét és a fürt nevét megadva a következő kódot has
     Write-Host "Download the blob ..." -ForegroundColor Green
     Get-AzureStorageBlobContent -Container $defaultStorageContainer -Blob $blob -Context $storageContext -Force
 
-### Fájlok törlése
+### <a name="delete-files"></a>Fájlok törlése
     Remove-AzureStorageBlob -Container $containerName -Context $storageContext -blob $blob
 
-### Fájlok listázása
+### <a name="list-files"></a>Fájlok listázása
     Get-AzureStorageBlob -Container $containerName -Context $storageContext -prefix "example/data/"
 
-### Hive-lekérdezések futtatása nem meghatározott tárfiókkal
+### <a name="run-hive-queries-using-an-undefined-storage-account"></a>Hive-lekérdezések futtatása nem meghatározott tárfiókkal
 Ez a példa bemutatja, hogyan listázhat mappákat a létrehozási folyamat során nem meghatározott tárfiókból.
 $clusterName = "<HDInsightClusterName>"
 
@@ -273,7 +277,7 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasbs://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használhat HDFS-kompatibilis Azure Blob Storage tárolót a HDInsight eszközzel, és hogy az Azure Blob Storage a HDInsight alapvető alkotóeleme. Ez lehetővé teszi a méretezhető, hosszú távú adatarchiváló beszerzési megoldások kiépítését az Azure Blob Storage tárolóval, valamint hogy a HDInsight eszközzel feloldja a tárolt strukturált és strukturálatlan adatokban lévő információkat.
 
 További információkért lásd:
@@ -301,6 +305,6 @@ További információkért lásd:
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 

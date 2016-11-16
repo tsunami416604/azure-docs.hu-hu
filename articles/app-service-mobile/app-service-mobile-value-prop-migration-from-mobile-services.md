@@ -1,12 +1,12 @@
 ---
-title: A Mobile Services szolgáltatást használom, miben válhat előnyömre az App Service?
-description: Ismerje meg, milyen előnyökkel jár az App Service szolgáltatásnak a meglévő Mobile Services projektjeibe való felvétele.
+title: "A Mobile Services szolgáltatást használom, miben válhat előnyömre az App Service?"
+description: "Ismerje meg, milyen előnyökkel jár az App Service szolgáltatásnak a meglévő Mobile Services projektjeibe való felvétele."
 services: app-service\mobile
 documentationcenter: ios
 author: adrianhall
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
+
 
 ---
-# <a name="getting-started"> </a>A Mobile Services szolgáltatást használom, miben válhat előnyömre az App Service?
-## Áttekintés
+# <a name="getting-started"> </a>A Mobile Services-t használom, miben válhat előnyömre az App Service?
+## <a name="overview"></a>Áttekintés
 Az Ön által jelenleg használt Mobile Services mobilszolgáltatás biztonságban van, és a továbbiakban is támogatni fogjuk. Az *Azure App Service* platform azonban számos olyan előnyt kínál mobilalkalmazása számára, amelyek a Mobile Services szolgáltatásban nem érhetők el:
 
 * Egyszerűbb, átláthatóbb és költséghatékonyabb konstrukció alkalmazásokhoz; a választék webes és mobilos ügyfeleket egyaránt tartalmaz
@@ -29,7 +33,7 @@ Az Ön által jelenleg használt Mobile Services mobilszolgáltatás biztonságb
 * Beépített automatikus skálázás, terheléselosztás és teljesítményfigyelés
 * Beépített átmeneti üzembe helyezési, biztonsági mentési, visszaállítási és működés közbeni tesztelési funkciók
 
-## Új üzemeltetési funkciók
+## <a name="new-hosting-features"></a>Új üzemeltetési funkciók
 Az *Azure App Service* szolgáltatásban a *Mobile Apps*-háttéralkalmazás ugyanabban a tárolóban fut, mint a webalkalmazás és az API-alkalmazás. Így igénybe veheti az ezen tároló által biztosított funkciókat, köztük olyanokat is, amelyek jelenleg nem találhatók meg a Mobile Services szolgáltatásban:
 
 * Folyamatosan futó háttéralkalmazás-logika hozzáadása a WebJobson keresztül
@@ -40,26 +44,29 @@ Az *Azure App Service* szolgáltatásban a *Mobile Apps*-háttéralkalmazás ugy
 * (.NET esetében) az ASP.NET bármely funkciójának használata (például MVC)
 * (Node.js esetében) A Node ökoszisztémához tartozó bármely tiszta JavaScript-függvénytár használata (például közös MVC-függvénytárak)
 
-## Helyszíni adatok elérése VNet segítségével
+## <a name="access-onpremises-data-using-vnet"></a>Helyszíni adatok elérése VNet segítségével
 A Mobile Services szolgáltatással már jelenleg is elérheti a helyszíni erőforrásokat a hibrid kapcsolatokkal. Bizonyos esetekben azonban érdemesebb lehet VPN-megoldást használni. Az *Azure App Service* szolgáltatásban az Azure VNet is használható a Mobile Apps-háttéralkalmazás kódjához.
 
-## A kívánt háttéralkalmazás-nyelv használata
+## <a name="use-your-favorite-backend-language"></a>A kívánt háttéralkalmazás-nyelv használata
 Az *Azure App Service* szélesebb körben és több funkcióval támogatja az ASP.NET és a Node.js platformot, többek között a legújabb futtatókörnyezeteket is elérhetővé teszi.
 
-## Automatikus skálázás beállítása
+## <a name="set-up-automatic-scale"></a>Automatikus skálázás beállítása
 A Mobile Servicesben a háttéralkalmazás kódjának összes példánya kisebb méretű virtuális gépeken futott. Az *Azure App Service* szolgáltatásban jóval szélesebb körben választhatja meg a virtuális gépek méretét. Ezenfelül az ügyfelektől beérkező terhelés esetén gyors vertikális vagy horizontális skálázást végezhet a korábbi teljesítménymutatók alapján.
 
-## Részletes információk a rendszerről
+## <a name="be-in-the-know"></a>Részletes információk a rendszerről
 A felmerülő problémákról Ön és csapata is valós időben értesülhet az automatikus figyelési funkciók és riasztások segítségével. Ha szeretne részleteiben is tisztában lenni a mobilalkalmazás teljesítményével, akár a New Relic és az AppInsights által biztosított fejlett alkalmazáselemzési és -figyelési funkciókat is integrálhatja. Az *Azure App Service* segítségével mostantól számos különböző teljesítményelemzési mutatón alapuló riasztást állíthat be, akár a programon, akár az Azure Portalon keresztül.
 
-## Védelem objektumai számára
+## <a name="keep-your-assets-safe"></a>Védelem objektumai számára
 A szolgáltatás automatikus biztonsági mentést készít a háttéralkalmazásról és az adatbázisról. Kódja és adatai még katasztrófa esetén sem vesznek el, és könnyen helyreállíthatók, így magabiztosan vezetheti üzletét.
 
-## Vigyázz, kész, rajt!
+## <a name="ready-stage-go"></a>Vigyázz, kész, rajt!
 Az *Azure App Service* segítségével több különböző privát tesztelési és átmeneti előkészítő környezet hozható létre a mobilalkalmazásokhoz. Ezek segítségével még a végleges telepítés előtt alaposan tesztelheti az alkalmazásokat. Majd egyetlen perc leállási idő nélkül éles üzemre válthat. A webalkalmazásokat a rendszer előre betölti, ami hozzájárul a lehető legjobb felhasználói élményhez.
 
 Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát máris megkezdheti ezzel az [oktatóanyaggal](app-service-mobile-migrating-from-mobile-services.md).
 
-<!--HONumber=Oct16_HO1-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

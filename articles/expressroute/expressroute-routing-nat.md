@@ -1,12 +1,12 @@
 ---
-title: Az ExpressRoute útválasztási követelményei | Microsoft Docs
-description: Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti.
+title: "Az ExpressRoute útválasztási követelményei | Microsoft Docs"
+description: "Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti."
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: ganesr
-editor: ''
-
+editor: 
+ms.assetid: eaaf0393-d384-4496-9a5c-328e94c262a7
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: osamazia
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bd7537a81661bc175a770fdbd6388ba07ea912ae
+
 
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
@@ -97,7 +101,7 @@ Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azu
 
 A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
 
-## <a name="transit-routing-and-cross-region-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
+## <a name="transit-routing-and-crossregion-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
 Az ExpressRoute nem konfigurálható tranzit útválasztóként. A tranzit útválasztási szolgáltatások tekintetében a kapcsolatszolgáltatójára kell támaszkodnia.
 
 ## <a name="advertising-default-routes"></a>Alapértelmezett útvonalak meghirdetése
@@ -113,7 +117,7 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 > 
 > 
 
-## <a name="support-for-bgp-communities-(preview)"></a>BGP-közösségek támogatása (előzetes kiadás)
+## <a name="support-for-bgp-communities-preview"></a>BGP-közösségek támogatása (előzetes kiadás)
 Ez a szakasz áttekinti, hogyan használhatók a BGP-közösségek az ExpressRoute-tal. A Microsoft a megfelelő közösségértékekkel címkézett útvonalakkal hirdeti meg az útvonalakat a nyilvános és a Microsoft társviszony-létesítésekben. Ennek az eljárásnak az indoklását és a közösségértékek részleteit alább olvashatja. A Microsoft azonban nem fogadja el a Microsoft számára meghirdetett útvonalakhoz rendelt közösségértékeket.
 
 Ha az ExpressRoute-on keresztül csatlakozik a Microsofthoz egy geopolitikai régión belül lévő bármelyik társviszony-létesítési helyszínen, az összes Microsoft-felhőszolgáltatáshoz hozzáférést kap a geopolitikai határon belüli összes régióban. 
@@ -187,6 +191,9 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
   * [Útválasztás konfigurálása a klasszikus üzemi modellhez](expressroute-howto-routing-classic.md) vagy [Útválasztás konfigurálása a Resource Manager-alapú üzemi modellhez](expressroute-howto-routing-arm.md)
   * [Klasszikus VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-classic.md) vagy [Resource Manager VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

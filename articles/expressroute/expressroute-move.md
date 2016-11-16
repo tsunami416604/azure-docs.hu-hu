@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute-kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra | Microsoft Docs
-description: Ez az oldal a klasszikus és a Resource Manager-alapú üzemi modellek áthidalásához szükséges ismeretek áttekintését tartalmazza.
+title: "ExpressRoute-kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra | Microsoft Docs"
+description: "Ez az oldal a klasszikus és a Resource Manager-alapú üzemi modellek áthidalásához szükséges ismeretek áttekintését tartalmazza."
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+
 
 ---
-# ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
+# <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
 
 [!INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-classic-rm-include.md)]
@@ -25,7 +29,7 @@ Egyetlen ExpressRoute-kapcsolatcsoporttal csatlakozhat a klasszikus és a Resour
 
 ![Mindkét üzemi modellben működő virtuális hálózatokhoz csatlakozó ExpressRoute-kapcsolatcsoport](./media/expressroute-move/expressroute-move-1.png)
 
-## A klasszikus üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok
+## <a name="expressroute-circuits-that-are-created-in-the-classic-deployment-model"></a>A klasszikus üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok
 A klasszikus és a Resource Manager-alapú üzemi modellek csatlakozásának engedélyezéséhez a klasszikus üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportokat először át kell helyezni a Resource Manager-alapú üzemi modellbe. A kapcsolatok áthelyezésekor a kapcsolat nem veszik el, illetve nem szakad meg. A kapcsolatcsoportok és virtuális hálózatok között a klasszikus üzemi modellben meglévő összes kapcsolat megmarad (ugyanabban az előfizetésben és az előfizetések között is).
 
 Az áthelyezés sikeres végrehajtása után az ExpressRoute-kapcsolatcsoport megjelenése és működése ugyanolyan lesz, mint egy Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-kapcsolatcsoporté. Ezek után a Resource Manager-alapú üzemi modellben létrehozhatja a kapcsolatokat a virtuális hálózatokhoz.
@@ -34,7 +38,7 @@ Miután egy ExpressRoute-kapcsolatcsoportot áthelyezett a Resource Manager-alap
 
 A kapcsolat szolgáltatóját nem kell bevonnia az áthelyezésbe.
 
-## A Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok
+## <a name="expressroute-circuits-that-are-created-in-the-resource-manager-deployment-model"></a>A Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok
 Engedélyezheti, hogy a Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok mindkét üzemi modellből elérhetők legyenek. Az előfizetésben lévő bármely ExpressRoute-kapcsolatcsoport esetében engedélyezhető, hogy mindkét üzemi modellből elérhető legyen.
 
 * A Resource Manager-alapú üzemi modellben létrehozott ExpressRoute-kapcsolatcsoportok alapértelmezés szerint nem rendelkeznek hozzáféréssel a klasszikus üzemi modellhez.
@@ -47,14 +51,14 @@ Engedélyezheti, hogy a Resource Manager-alapú üzemi modellben létrehozott Ex
 > 
 > 
 
-## A klasszikus üzemi modellekhez való hozzáférés vezérlése
+## <a name="controlling-access-to-the-classic-deployment-model"></a>A klasszikus üzemi modellekhez való hozzáférés vezérlése
 Az ExpressRoute-kapcsolatcsoport **allowClassicOperations** paraméterének beállításával engedélyezheti egyetlen ExpressRoute-kapcsolatcsoport számára, hogy mindkét üzemi modellben csatlakozzon virtuális hálózatokhoz.
 
 Az **allowClassicOperations** paraméter TRUE értékre állítása lehetővé teszi, hogy mindkét üzemi modellből csatlakoztasson virtuális hálózatokat az ExpressRoute-kapcsolatcsoporthoz. A [virtuális hálózatok a klasszikus üzemi modellben való csatlakoztatását](expressroute-howto-linkvnet-classic.md) ismertető témakör utasításai szerint csatlakozhat virtuális hálózatokhoz a klasszikus üzemi modellben. A [virtuális hálózatok Resource Manager-alapú üzemi modellben való csatlakoztatását](expressroute-howto-linkvnet-arm.md) ismertető témakör utasításai szerint csatlakozhat virtuális hálózatokhoz a Resource Manager-alapú üzemi modellben.
 
 Ha az **allowClassicOperations** paramétert FALSE értékre állítja, azzal blokkolhatja a kapcsolatcsoport elérését a klasszikus üzemi modellből. A virtuális hálózatok klasszikus üzemi modellben meglévő összes kapcsolata azonban megmarad. Ebben az esetben az ExpressRoute-kapcsolatcsoport nem látható a klasszikus üzemi modellben.
 
-## Támogatott műveletek a klasszikus üzemi modellben
+## <a name="supported-operations-in-the-classic-deployment-model"></a>Támogatott műveletek a klasszikus üzemi modellben
 Az ExpressRoute-kapcsolatcsoportokon a következő klasszikus műveletek támogatottak, ha az **allowClassicOperations** TRUE értékre van állítva:
 
 * Az ExpressRoute-kapcsolatcsoport információinak lekérése
@@ -66,15 +70,15 @@ A következő műveleteket nem hajthatja végre, ha az **allowClassicOperations*
 * Border Gateway Protocol- (BGP-) társviszonyok létrehozása/frissítése/lekérése/törlése Azure privát, Azure nyilvános és Microsoft társviszony-létesítéshez
 * ExpressRoute-kapcsolatcsoportok törlése
 
-## Kommunikáció a klasszikus és a Resource Manager-alapú üzemi modellek között
+## <a name="communication-between-the-classic-and-the-resource-manager-deployment-models"></a>Kommunikáció a klasszikus és a Resource Manager-alapú üzemi modellek között
 Az ExpressRoute-kapcsolatcsoport hídként működik a klasszikus és a Resource Manager-alapú üzemi modellek között A klasszikus üzemi modellben lévő virtuális hálózatok virtuális gépei és a Resource Manager-alapú üzemi modellben lévő virtuális hálózatok közötti forgalom keresztülhalad az ExpressRoute-on, ha mindkét virtuális hálózat ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz csatlakozik.
 
 Az összesített átviteli sebességet a virtuális hálózati átjáró átviteli kapacitása korlátozza. Ilyen esetekben a forgalom nem lép be a kapcsolat szolgáltatójának hálózataiba vagy az Ön hálózataiba. A virtuális hálózatok közötti forgalom teljes mértékben a Microsoft hálózatán keresztül halad át.
 
-## Azure nyilvános és Microsoft társviszony-létesítési erőforrások elérése
+## <a name="access-to-azure-public-and-microsoft-peering-resources"></a>Azure nyilvános és Microsoft társviszony-létesítési erőforrások elérése
 Továbbra is zavartalanul elérheti a jellemzően Azure nyilvános társviszonyon és Microsoft-társviszonyon keresztül elérhető erőforrásokat.  
 
-## Támogatott műveletek
+## <a name="whats-supported"></a>Támogatott műveletek
 Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében támogatott műveleteket ismerteti:
 
 * Egyetlen ExpressRoute-kapcsolatcsoportot használhat a klasszikus és a Resource Manager-alapú üzemi modellekbe telepített virtuális hálózatok eléréséhez.
@@ -84,17 +88,17 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében támogatott műveletek
 * Az ExpressRoute-kapcsolatcsoport hídként működik a klasszikus és a Resource Manager-alapú üzemi modellek között A klasszikus üzemi modellben lévő virtuális hálózatok virtuális gépei és a Resource Manager-alapú üzemi modellben lévő virtuális hálózatok közötti forgalom keresztülhalad az ExpressRoute-on, ha mindkét virtuális hálózat ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz csatlakozik.
 * Az előfizetések közötti kapcsolat a klasszikus és a Resource Manager-alapú üzemi modellekben is támogatott.
 
-## Nem támogatott műveletek
+## <a name="whats-not-supported"></a>Nem támogatott műveletek
 Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott műveleteket ismerteti:
 
 * A kapcsolatcsoportok kapcsolatai, az átjárók és a virtuális hálózatok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe.
 * ExpressRoute-kapcsolatcsoportok életciklusának kezelése a klasszikus üzemi modellből.
 * Szerepköralapú hozzáférés-vezérlés (RBAC) támogatása a klasszikus üzemi modell esetében. A klasszikus üzemi modellben nem hajthat végre RBAC-vezérlési műveleteket a kapcsolatcsoportokon. Az előfizetés bármelyik rendszergazdája/társrendszergazdája csatlakoztathat virtuális hálózatokat a kapcsolatcsoporthoz, illetve leválaszthatja azokat.
 
-## Konfiguráció
+## <a name="configuration"></a>Konfiguráció
 Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md) című szakaszban ismertetett utasításokat.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása:
   
@@ -102,6 +106,9 @@ Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Re
   * [Útválasztás konfigurálása](expressroute-howto-routing-arm.md)
   * [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

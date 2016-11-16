@@ -1,8 +1,10 @@
-### Need some help?
-Post questions in the Azure forums. - [Visit MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)
+### <a name="need-some-help"></a>Segítségre van szüksége?
+Kérdéseit felteheti az Azure fórumain. – [Látogasson el az MSDN-fórumokra](http://go.microsoft.com/fwlink/?LinkId=780719)
 
-Tag questions with the keyword `azure-functions`. - [Visit Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+Kérdéseit jelölje meg az `azure-functions` kulcsszóval. – [Látogasson el a Stack Overflow webhelyre](http://stackoverflow.com/questions/tagged/azure-functions)
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

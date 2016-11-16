@@ -1,12 +1,12 @@
 ---
-title: Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felülettel | Microsoft Docs
-description: 'Ebből a cikkből megtudhatja, hogyan használhatja az Azure parancssori felületet egy Data Lake Store-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. '
+title: "Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felülettel | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan használhatja az Azure parancssori felületet egy Data Lake Store-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 651021d4-4591-4c48-b1ef-3ebc4606d66d
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: hero-article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8b38c62ae1a60728d08643990238e2cc69cb6447
+
 
 ---
-# Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felülettel
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-commandline-interface-cli"></a>Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felülettel
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure parancssori felületet Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-fiókokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 Az oktatóanyag során elkészít egy feladatot, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, kattintson a szakasz tetején található fülekre.
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
@@ -37,10 +41,10 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
   
         azure config mode arm
 
-## Data Lake Analytics-fiók létrehozása
+## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal. A Data Lake Analytics-fiók létrehozásához az alábbiakat kell megadnia:
 
-* **Azure-erőforráscsoport:** a Data Lake Analytics-fiókot egy Azure-erőforráscsoporton belül kell létrehoznia. Az [Azure Resource Manager](../resource-group-overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
+* **Azure-erőforráscsoport:** a Data Lake Analytics-fiókot egy Azure-erőforráscsoporton belül kell létrehoznia. Az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
   
     Az erőforráscsoportok felsorolása az előfizetésben:
   
@@ -71,7 +75,7 @@ A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal. A
         azure datalake analytics account create "<Data Lake Analytics Account Name>" "<Azure Location>" "<Resource Group Name>" "<Default Data Lake Account Name>"
 
         azure datalake analytics account list
-        azure datalake analytics account show "<Data Lake Analytics Account Name>"          
+        azure datalake analytics account show "<Data Lake Analytics Account Name>"            
 
 ![Data Lake Analytics-fiók megjelenítése](./media/data-lake-analytics-get-started-cli/data-lake-analytics-show-account-cli.png)
 
@@ -80,19 +84,19 @@ A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal. A
 > 
 > 
 
-## Adatok feltöltése a Data Lake Store-ba
+## <a name="upload-data-to-data-lake-store"></a>Adatok feltöltése a Data Lake Store-ba
 Az oktatóanyag során keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban. 
 
 Az Azure portál felhasználói felületet biztosít bizonyos mintaadatfájlok az alapértelmezett Data Lake-fiókba való másolásához. Ilyen adatfájl a keresési napló is. Az adatok alapértelmezett Data Lake Store-fiókba való feltöltéséhez lásd a [Forrásadatok előkészítése](data-lake-analytics-get-started-portal.md#prepare-source-data) című szakaszt.
 
 A fájlok parancssori felülettel való feltöltéséhez használja az alábbi parancsot:
 
-    azure datalake store filesystem import "<Data Lake Store Account Name>" "<Path>" "<Destination>"
-    azure datalake store filesystem list "<Data Lake Store Account Name>" "<Path>"
+      azure datalake store filesystem import "<Data Lake Store Account Name>" "<Path>" "<Destination>"
+      azure datalake store filesystem list "<Data Lake Store Account Name>" "<Path>"
 
 A Data Lake Analytics az Azure Blob Storage-hoz is rendelkezik hozzáféréssel.  A fájlok az Azure Blob Storage-ba történő feltöltéséhez lásd: [Using the Azure CLI with Azure Storage](../storage/storage-azure-cli.md) (Az Azure parancssori felület és az Azure Storage használata).
 
-## Data Lake Analytics-feladatok küldése
+## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics-feladatok küldése
 A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
 
 **Data Lake Analytics-feladatparancsfájl létrehozása**
@@ -138,9 +142,11 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
 
 A következő parancsokkal sorolhatja fel a feladatokat, lekérhet feladatadatokat és visszavonhat feladatokat:
 
-    azure datalake analytics job cancel "<Data Lake Analytics Account Name>" "<Job Id>"
-    azure datalake analytics job list "<Data Lake Analytics Account Name>"
-    azure datalake analytics job show "<Data Lake Analytics Account Name>" "<Job Id>"
+```
+azure datalake analytics job cancel "<Data Lake Analytics Account Name>" "<Job Id>"
+azure datalake analytics job list "<Data Lake Analytics Account Name>"
+azure datalake analytics job show "<Data Lake Analytics Account Name>" "<Job Id>"
+```
 
 A feladat befejezése után az alábbi parancsmagok segítségével listázhatja ki a fájlt, és letöltheti a fájlt:
 
@@ -148,7 +154,7 @@ A feladat befejezése után az alábbi parancsmagok segítségével listázhatja
     azure datalake store filesystem export "<Data Lake Store Account Name>" "/Output/SearchLog-from-Data-Lake.csv" "<Destination>"
     azure datalake store filesystem read "<Data Lake Store Account Name>" "/Output/SearchLog-from-Data-Lake.csv" <Length> <Offset>
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
 * Ismerkedés a U-SQL-alkalmazások fejlesztésével: [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) (U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával).
@@ -156,6 +162,9 @@ A feladat befejezése után az alábbi parancsmagok segítségével listázhatja
 * Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure portállal).
 * A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

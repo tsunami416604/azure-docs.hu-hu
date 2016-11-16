@@ -1,7 +1,9 @@
 
-1. Back in the Mobile App backend, click **Settings** > **Quick start** > your client platform. 
-2. Under **Create a table API**, select Node.js for **Backend language**. Accept the acknowledgment and click **Create TodoItem table**. This creates a new *TodoItem* table in your database. Remember that switching an existing backend to Node.js will overwrite all contents! To create a .NET backend instead, [follow these instructions](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app).
+1. A mobilalkalmazás háttérrendszerében, a **Beállítások** > **Első lépések** menüben kattintson saját ügyfélplatformjára. 
+2. A **Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t. Fogadja el a nyugtázást, majd kattintson a **TodoItem tábla létrehozása** elemre. Ez létrehoz egy új *TodoItem* táblát az adatbázisban. Ne feledje, hogy a létező háttérrendszerek Node.js nyelvűre történő átállítása minden tartalmat felülír. Ha inkább egy .NET-hátteret szeretne létrehozni, [kövesse ezeket az utasításokat](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app).
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

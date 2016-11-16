@@ -1,8 +1,10 @@
 > [!NOTE]
-> Although this article refers to web apps, it also applies to API apps and mobile apps.
+> Habár ez a cikk a webalkalmazásokra vonatkozik, az API-alkalmazásokra és mobilalkalmazásokra egyaránt érvényes.
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

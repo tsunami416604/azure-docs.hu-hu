@@ -1,12 +1,12 @@
 ---
-title: Labor létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Docs
-description: Labor létrehozása virtuális gépekhez az Azure DevTest Labs szolgáltatásban
+title: "Labor létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Docs"
+description: "Labor létrehozása virtuális gépekhez az Azure DevTest Labs szolgáltatásban"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 8b6d3e70-6528-42a4-a2ef-449575d0f928
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
+
 
 ---
-# Labor létrehozása az Azure DevTest Labs szolgáltatásban
-## Előfeltételek
+# <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
+## <a name="prerequisites"></a>Előfeltételek
 Labor létrehozásához a következőkre van szüksége:
 
 * Azure-előfizetés. Az Azure megvásárlási lehetőségeinek ismertetése: [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/) vagy [Ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/). Az előfizetés tulajdonosának kell lennie a labor létrehozásához.
 
-## A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
+## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
@@ -43,7 +47,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 
 * [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md).
@@ -52,6 +56,9 @@ A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 * [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md).
 * [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm-with-artifacts.md).
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

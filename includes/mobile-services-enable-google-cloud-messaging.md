@@ -1,26 +1,28 @@
 
-1. Navigate to the [Google Cloud Console](https://console.developers.google.com/project), sign in with your Google account credentials. 
-2. Click **Create Project**, type a project name, then click **Create**. If requested, carry out the SMS Verification, and click **Create** again.
+1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/project) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
+2. Kattintson a **Create Project** (Projekt létrehozása) elemre, adjon meg egy nevet a projekthez, és kattintson a **Create** (Létrehozás) gombra. Ha a rendszer kéri, végezze el az SMS-es hitelesítést, és kattintson újra a **Create** (Létrehozás) gombra.
    
-    ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
+       ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
    
-     Type in your new **Project name** and click **Create project**.
-3. Click the **Utilities and More** button and then click **Project Information**. Make a note of the **Project Number**. You will need to set this value as the `SenderId` variable in the client app.
+     Adja meg az új projekt nevét a **Project name** mezőben, és kattintson a **Create project** (Projekt létrehozása) gombra.
+3. Kattintson a **Utilities and More** (Segédprogramok és egyebek) gombra, majd a **Project Information** (Projektinformációk) elemre. Jegyezze fel a projekt számát, amely a **Project Number** mezőben található. Ezt az értéket kell majd megadnia a `SenderId` változóként az ügyfélalkalmazásban.
    
-    ![](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
-4. In the project dashboard, under **Mobile APIs**, click **Google Cloud Messaging**, then on the next page click **Enable API** and accept the terms of service. 
+       ![](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
+4. A projekt irányítópultján, a **Mobile APIs** (Mobil API-k) elem alatt kattintson a **Google Cloud Messaging**, a következő oldalon pedig az **Enable API** (API engedélyezése) lehetőségre, majd fogadja el a szolgáltatási feltételeket. 
    
-    ![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
+    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
    
-    ![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
-5. In the project dashboard, Click **Credentials** > **Create Credential** > **API Key**. 
+    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
+5. A projekt irányítópultján kattintson a **Credentials** (Hitelesítő adatok) > **Create Credential** (Hitelesítő adat létrehozása) > **API Key** (API-kulcs) lehetőségre. 
    
-    ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
-6. In **Create a new key**, click **Server key**, type a name for your key, then click **Create**.
-7. Make a note of the **API KEY** value.
+       ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
+6. A **Create a new key** (Új kulcs létrehozása) ablakban kattintson a **Server key** (Kiszolgálókulcs) lehetőségre, adja meg a kulcs nevét, majd kattintson a **Create** (Létrehozás) gombra.
+7. Jegyezze fel az **API KEY** (API-KULCS) értékét.
    
-    You will use this API key value to enable Azure to authenticate with GCM and send push notifications on behalf of your app.
+    Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében.
 
-<!--HONumber=Sep16_HO4-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

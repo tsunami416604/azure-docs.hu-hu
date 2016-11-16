@@ -10,7 +10,7 @@
    * **Név**: Az *alkalmazáskatalógus* neve 
    * **Platformok**: Válassza ki az alkalmazása platformjait a megnyíló Platformok panelen. Például ha iOS-en és Androidon is futó alkalmazást szeretne, akkor válassza ki mindkét platformot, és két alkalmazás jön létre az alkalmazáskatalógusban. 
      
-     ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
+      ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
    * **Előfizetés**: Válassza ki az Azure-előfizetést. 
    * **Erőforráscsoport**: Válassza ki azt az Azure-erőforráscsoportot, amelybe ez az Azure-erőforrás tartozni fog (Mobile Engagement-alkalmazáskatalógus). Létrehozhat egy újat is.  
    * **Hely**: Az a régió, ahol az alkalmazáskatalógus és az alkalmazás adatait tárolni kívánja.
@@ -30,6 +30,8 @@
    
     ![](./media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 
-<!--HONumber=Oct16_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

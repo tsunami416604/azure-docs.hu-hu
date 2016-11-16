@@ -1,21 +1,25 @@
 ---
 title: Application Insights Telemetria a Visual Studio CodeLensben | Microsoft Docs
-description: A CodeLens használatával gyorsan elérheti az Application Insights-kérést és a kivételtelemetriát a Visual Studióban.
+description: "A CodeLens használatával gyorsan elérheti az Application Insights-kérést és a kivételtelemetriát a Visual Studióban."
 services: application-insights
 documentationcenter: .net
 author: numberbycolors
 manager: douge
-
+ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 11/14/2016
 ms.author: daviste
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a42d55df223c25a26111bbcc05628ff7f4ff7204
+
 
 ---
-# Application Insights Telemetria a Visual Studio CodeLensben
+# <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
 A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti a [Visual Studio Application Insightsot](app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](https://msdn.microsoft.com/library/dn269218.aspx) – a az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő személy neve vagy egyéb hasznos információk jelentek meg.
 
 ![CodeLens](./media/app-insights-visual-studio-codelens/codelens-overview.png)
@@ -25,7 +29,7 @@ A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő 
 > 
 > 
 
-## Az Application Insights-adatok megkeresése
+## <a name="where-to-find-application-insights-data"></a>Az Application Insights-adatok megkeresése
 Az Application Insights Telemetriát a webalkalmazás nyilvános kérési metódusainak CodeLens-jelzőiben találja. A CodeLens-jelzők a C#- és a Visual Basic-kódokban a metódus és egyéb deklarációk fölött jelennek meg. Ha az Application Insights-adatok elérhetők egy metódushoz, akkor a kérések és kivételek jelzőit fogja látni, például „100 kérés, 1% meghiúsult” vagy „10 kivétel”. További információkért kattintson a CodeLens-jelzőre. 
 
 > [!TIP]
@@ -33,7 +37,7 @@ Az Application Insights Telemetriát a webalkalmazás nyilvános kérési metód
 > 
 > 
 
-## Kivételek a CodeLensben
+## <a name="exceptions-in-codelens"></a>Kivételek a CodeLensben
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-exceptions.png)
 
 A CodeLens-kivételjelző azt jeleníti meg, hogy az alkalmazás az elmúlt 24 óra alatti 15 leggyakoribb kivétele hányszor fordult elő az adott metódus által kiszolgált kérés feldolgozása közben.
@@ -55,7 +59,7 @@ További részletekért kattintson a CodeLens-kivételjelzőre:
 > 
 > 
 
-## Kérések a CodeLensben
+## <a name="requests-in-codelens"></a>Kérések a CodeLensben
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-requests.png)
 
 A CodeLens-kérésjelző azon HTTP-kérések számát mutatja, amelyeket egy metódus kiszolgált az elmúlt 24 órában, valamint a meghiúsult kérések százalékos arányát.
@@ -68,13 +72,16 @@ További részletekért kattintson a CodeLens-kérésjelzőre:
 * A **Trend** segítségével megtekintheti a kérések, meghiúsult kérések vagy átlagos válaszidők trendjének vizualizációját az elmúlt 24 órából.
 * A CodeLens-adatok forrásának módosításához válassza ki az Application Insights-erőforrás nevét a CodeLens részletes nézetének bal felső sarkában.
 
-## <a name="next"></a>Következő lépések
+## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
 |  |  |
 | --- | --- |
-| **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/app-insights-visual-studio-trends/34.png) |
-| **[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
-| **[Az Application Insights portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
+| **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/app-insights-visual-studio-codelens/34.png) |
+| **[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/app-insights-visual-studio-codelens/64.png) |
+| **[Az Application Insights-portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/app-insights-visual-studio-codelens/62.png) |
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

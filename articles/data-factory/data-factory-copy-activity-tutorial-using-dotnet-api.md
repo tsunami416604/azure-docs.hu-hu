@@ -1,22 +1,26 @@
 ---
-title: 'Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával | Microsoft Docs'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-adatcsatornákat a .NET API használatával.
+title: "Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával | Microsoft Docs"
+description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre másolási tevékenységgel rendelkező Azure Data Factory-adatcsatornákat a .NET API használatával."
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 10/27/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 629ff68b11df0d17629ca101e5a80a396cfd0fb9
+
 
 ---
-# Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -29,7 +33,7 @@ ms.author: spelluru
 > 
 > 
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure-adatelőállítót a .NET API segítségével. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure-adatelőállítót a .NET API segítségével. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ból az Azure SQL Database-be.
 
 A másolási tevékenység végzi az adatok továbbítását az Azure Data Factoryban. A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.   
 
@@ -38,13 +42,13 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 > 
 > 
 
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel. 
 * Visual Studio 2012, 2013 vagy 2015
 * Az [Azure .NET SDK](http://azure.microsoft.com/downloads/) letöltése és telepítése.
 * Azure PowerShell. Kövesse a [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Az Azure PowerShellt egy Azure Active Directory-alkalmazás létrehozására fogjuk használni.
 
-### Alkalmazás létrehozása az Azure Active Directoryban
+### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
 Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmazás szolgáltatásnevét, és rendelje hozzá a **Data Factory közreműködője** szerepkört.  
 
 1. Indítsa el a **PowerShellt**. 
@@ -95,7 +99,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 * Alkalmazásazonosító 
 * Jelszó (az első parancsnál adtuk meg)   
 
-## Útmutatás
+## <a name="walkthrough"></a>Útmutatás
 1. Hozzon létre egy a C# nyelvet használó .NET-konzolalkalmazást a Visual Studio 2012/2013/2015 segítségével.
    1. Indítsa el a **Visual Studio** 2012/2013/2015-at.
    2. Kattintson a **File** (Fájl) menüre, mutasson a **New** (Új) elemre, és kattintson a **Project** (Projekt) lehetőségre.
@@ -105,25 +109,29 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    6. A Hely mezőbe írja be: **C:\ADFGetStarted**.
    7. A projekt létrehozásához kattintson az **OK** gombra.
 2. Kattintson az **Eszközök** elemre, mutasson a **Nuget Package Manager** (Nuget-csomagkezelő) lehetőségre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre.
-3. A **Package Manager Console** (Csomagkezelő konzol) ablakban egyesével adja ki az alábbi parancsokat. 
-   
-       Install-Package Microsoft.Azure.Management.DataFactories
-       Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
+3. A **Csomagkezelő konzolban** hajtsa végre a következő lépéseket: 
+   1. A Data Factory-csomag telepítéséhez futtassa az alábbi parancsot: `Install-Package Microsoft.Azure.Management.DataFactories`        
+   2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezeket a beállításokat a **GetAuthorizationHeader** segédmetódus használja. 
    
     Az **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** és **&lt;tenant ID&gt;** értékek helyére írja be saját értékeit. 
    
-        <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
-            <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
-            <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
+        <?xml version="1.0" encoding="utf-8" ?>
+        <configuration>
+            <startup> 
+                <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+            </startup>
+            <appSettings>
+                <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+                <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
+                <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
    
-            <!-- Replace the following values with your own -->
-            <add key="ApplicationId" value="<Application ID>" />
-            <add key="Password" value="<Password>" />    
-            <add key="SubscriptionId" value= "Subscription ID" />
-            <add key="ActiveDirectoryTenantId" value="tenant ID" />
-        </appSettings>
+                <add key="ApplicationId" value="your application ID" />
+                <add key="Password" value="Password you used while creating the AAD application" />
+                <add key="SubscriptionId" value= "Subscription ID" />
+                <add key="ActiveDirectoryTenantId" value="Tenant ID" />
+            </appSettings>
+        </configuration>
 5. Adja hozzá az alábbi **using** utasításokat a projekt forrásfájljához (Program.cs).
    
         using System.Threading;
@@ -345,7 +353,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
                            },
                        }
                    }
-               }); 
+               });    
 2. A kimeneti adatkészlet adatszeletének állapotának lekéréséhez adja hozzá az alábbi kódot a **Main** metódushoz. Ebben a példában csupán egy szeletet fogunk kapni.   
    
            // Pulling status within a timeout threshold
@@ -453,12 +461,15 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    * Társított szolgáltatás: **LinkedService_AzureStorage** 
    * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
    * Adatcsatorna: **PipelineBlobSample** 
-10. Ellenőrizze, hogy az **adftutorial** nevű tároló „**apifactoryoutput**” mappájában létrejött-e a kimeneti fájl.
+10. Ellenőrizze, hogy a két alkalmazotti rekord a meghatározott Azure SQL-adatbázis „**emp**” táblájában lett létrehozva.
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Olvassa el az [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely részletes információkat tartalmaz az oktatóanyagban használt másolási tevékenységről.
 * A Data Factory .NET SDK-val kapcsolatos részletes információkért olvassa el a [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) (Data Factory .NET API referenciája) című cikket. Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. 
 
-<!--HONumber=Oct16_HO3-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
