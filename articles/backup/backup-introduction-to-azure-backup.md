@@ -221,6 +221,6 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!----HONumber=Nov16_HO2-->
 
 

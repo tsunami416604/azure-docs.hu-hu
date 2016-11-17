@@ -79,6 +79,6 @@ A Site Recovery alkalmazásbarát replikációt biztosít, így a számítási f
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!----HONumber=Nov16_HO2-->
 
 
