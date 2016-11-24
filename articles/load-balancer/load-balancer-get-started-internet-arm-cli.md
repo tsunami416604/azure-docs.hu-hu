@@ -16,13 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
+ms.sourcegitcommit: 7d8eb43fea032eb5aa72f448a7c1022be62a7b81
+ms.openlocfilehash: 1591fba6475ba52b6e187ba7ccb14fd2fdfc63c8
 
 ---
 # <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>Belső terheléselosztó létrehozása az Azure parancssori felület használatával
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [Sablon](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -59,7 +63,7 @@ A további információkat [Az Azure Resource Manager támogatása a terhelésel
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>Virtuális hálózat és nyilvános IP-cím létrehozása az előtér-IP-címkészlethez
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Virtuális hálózat és nyilvános IP-cím létrehozása az előtér-IP-címkészlethez
 
 1. Hozzon létre egy *NRPVnet* nevű virtuális hálózatot (VNet) az USA keleti régiója helyen az *NRPRG* nevű erőforráscsoporttal.
 
@@ -91,7 +95,7 @@ A következő parancs létrehoz egy *NRPlb* nevű terheléselosztót az *NRPRG* 
     azure network lb create NRPRG NRPlb eastus
     ```
 
-## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>Előtér-IP-címkészlet és háttércímkészlet létrehozása
+## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>Előtér-IP-címkészlet és háttércímkészlet létrehozása
 Ez a példa bemutatja, hogyan kell létrehozni azt az előtér-IP-címkészletet, amely a bejövő hálózati forgalmat fogadja a terheléselosztón, illetve azt a háttér-IP-címkészletet, ahová az előtérkészlet küldi az elosztott terhelésű hálózati forgalmat.
 
 1. Hozzon létre egy előtér-IP-címkészletet az előző lépésben létrehozott nyilvános IP-címet társítva a terheléselosztóhoz.

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a4b9ab47969c95aa9940e044b426cf2811e23f61
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
 
 
 ---
@@ -33,8 +33,8 @@ Szükséges hozzá a [Mobile Engagement Android SDK](https://aka.ms/vq9mfn) is.
 
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started).
-> 
-> 
+>
+>
 
 ## <a name="set-up-mobile-engagement-for-your-android-app"></a>A Mobile Engagement beállítása az Android-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
@@ -46,24 +46,24 @@ A teljes integrációs dokumentáció itt található: [Mobile Engagement Androi
 
 ### <a name="create-an-android-project"></a>Android-projekt létrehozása
 1. Indítsa el az **Android Studio** alkalmazást, majd az előugró ablakban válassza a **Start a new Android Studio project** (Új Android Studio-projekt indítása) elemet.
-   
+
     ![][1]
 2. Adjon meg egy alkalmazásnevet és egy vállalati tartományt. Jegyezze fel a megadott információkat, mert később még szüksége lesz rájuk. Kattintson a **Tovább** gombra.
-   
+
     ![][2]
 3. Jelölje ki a kívánt méretet és API-szintet, majd kattintson a **Next** (Tovább) gombra.
-   
+
    > [!NOTE]
    > A Mobile Engagement legalább 10-es API-szintet igényel (Android 2.3.3).
-   > 
-   > 
-   
+   >
+   >
+
     ![][3]
 4. Válassza a **Blank Activity** (Üres tevékenység) elemet, amely ezen alkalmazás egyetlen képernyője lesz, majd kattintson a **Next** (Tovább) gombra.
-   
+
     ![][4]
 5. Végül hagyja az alapértelmezett értékeket, és kattintson a **Finish** (Befejezés) gombra.
-   
+
     ![][5]
 
 Az Android Studio létrehozza a bemutatóalkalmazást, amelybe integrálni fogjuk a Mobile Engagementet.
@@ -72,35 +72,35 @@ Az Android Studio létrehozza a bemutatóalkalmazást, amelybe integrálni fogju
 1. Töltse le a [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)-t.
 2. Bontsa ki az archívumfájlt a számítógép egyik mappájába.
 3. Azonosítsa az SDK aktuális verziójához tartozó .jar könyvtárat, és másolja a vágólapra.
-   
+
       ![][6]
 4. Lépjen a **Project** (Projekt) szakaszhoz (1), és illessze be a .jar fájlt a „libs” mappába (2).
-   
+
       ![][7]
 5. Szinkronizálja a projektet a könyvtár betöltéséhez.
-   
+
       ![][8]
 
 ### <a name="connect-your-app-to-mobile-engagement-backend-with-the-connection-string"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez a kapcsolati karakterlánc segítségével
 1. Másolja az alábbi kódsorokat a tevékenység létrehozásának helyén (csak egy helyre kell beilleszteni az alkalmazásba, általában a fő tevékenységnél). Ezen példaalkalmazás esetén nyissa meg az src -> main -> java mappában található MainActivity tevékenységet, és adja hozzá a következőket:
-   
+
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
         EngagementAgent.getInstance(this).init(engagementConfiguration);
 2. Oldja fel a hivatkozásokat az Alt+Enter billentyűkombináció lenyomásával vagy a következő importálási utasítások hozzáadásával:
-   
+
         import com.microsoft.azure.engagement.EngagementAgent;
         import com.microsoft.azure.engagement.EngagementConfiguration;
 3. Lépjen vissza a klasszikus Azure portálra az alkalmazás **Connection Info** (Kapcsolati adatok) lapjáról, és másolja a **kapcsolati karakterláncot**.
-   
+
       ![][9]
 4. Illessze be azt a `setConnectionString` paraméterbe az alábbi kódban látható teljes karakterláncot lecserélve:
-   
+
         engagementConfiguration.setConnectionString("Endpoint=my-company-name.device.mobileengagement.windows.net;SdkKey=********************;AppId=*********");
 
 ### <a name="add-permissions-and-a-service-declaration"></a>Engedélyek és szolgáltatásdeklaráció hozzáadása
 1. Adja hozzá a projekt Manifest.xml fájljához a következő engedélyeket, közvetlenül az `<application>` címke előtt vagy után:
-   
+
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -108,7 +108,7 @@ Az Android Studio létrehozza a bemutatóalkalmazást, amelybe integrálni fogju
         <uses-permission android:name="android.permission.VIBRATE" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
 2. Adja hozzá a következő kódot az `<application>` és a `</application>` címke között az ügynökszolgáltatás deklarálásához:
-   
+
         <service
              android:name="com.microsoft.azure.engagement.service.EngagementService"
              android:exported="false"
@@ -124,29 +124,29 @@ Lépjen a **MainActivity.java** fájlhoz, és adja hozzá a következőt a **Mai
     public class MainActivity extends EngagementActivity {
 
 > [!NOTE]
-> Ha az alaposztály nem *Activity*, a [speciális Android-jelentéskészítéssel](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes) foglalkozó témakörben tájékozódhat a más osztályoktól való öröklésről.
-> 
-> 
+> Ha az alaposztály nem *Activity*, a [speciális Android-jelentéskészítéssel](mobile-engagement-android-advanced-reporting.md) foglalkozó témakörben tájékozódhat a más osztályoktól való öröklésről.
+>
+>
 
 Az alábbi sort tegye megjegyzésbe ezen egyszerű forgatókönyv esetén:
 
     // setSupportActionBar(toolbar);
 
-Ha meg akarja tartani az alkalmazásban az `ActionBar` értéket, tekintse meg a [speciális Android-jelentéskészítéssel](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes) foglalkozó témakört.
+Ha meg akarja tartani az alkalmazásban az `ActionBar` értéket, tekintse meg a [speciális Android-jelentéskészítéssel](mobile-engagement-android-advanced-reporting.md) foglalkozó témakört.
 
-## <a name="connect-app-with-realtime-monitoring"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="connect-app-with-real-time-monitoring"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="enable-push-notifications-and-inapp-messaging"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a name="enable-push-notifications-and-in-app-messaging"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement a kampányok során lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók ELÉRÉSÉT leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszban állíthatja be az alkalmazást a fogadásukra.
 
 ### <a name="copy-sdk-resources-in-your-project"></a>SDK-erőforrások másolása a projektben
 1. Lépjen vissza a letöltött SDK-tartalomhoz, és másolja a **res** mappát.
-   
+
     ![][10]
 2. Lépjen vissza az Android Studio alkalmazásba, jelölje ki a projektfájlok **main** könyvtárát, majd illessze be az erőforrásoknak a projekthez való hozzáadásához.
-   
+
     ![][11]
 
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]

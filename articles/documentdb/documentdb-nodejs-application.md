@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
+ms.sourcegitcommit: 82da4d7324db83d71b21741f51ebe4e364c5a8f7
+ms.openlocfilehash: bde5635ddb43271920e6258c5df46d6ae6b41985
 
 
 ---
@@ -57,13 +57,17 @@ Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a telje
 
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
-* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/)
+
+   VAGY
+
+   Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
 * [Node.js][Node.js]-verzió: 0.10.29-s vagy újabb.
 * [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 * [Git][Git].
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -542,6 +546,6 @@ További információk: [Node.js fejlesztői központ](https://azure.microsoft.c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

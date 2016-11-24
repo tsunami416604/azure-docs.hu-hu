@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58d8043e09cb04ef2cdf4f5c005d549a6cb6f73c
+ms.sourcegitcommit: a3e619d6e130212064093150d22d971a562a6601
+ms.openlocfilehash: 758680cf8ff8a9e2f0a6c241613a2ba254462f4a
 
 
 ---
@@ -30,10 +30,10 @@ Az Azure Mobile Engagement egy szolgáltatott szoftverként (SaaS) biztosított 
 
 Az Azure Mobile Engagementtel az alkalmazáskiadók és a marketingszakemberek jobban megérthetik az alkalmazásaik felhasználóit, ezáltal hatékonyabban kommunikálhatnak velük.
 
-## <a name="realtime-actionable-analytics-to-maximize-return-on-investment"></a>Valós idejű döntéstámogató elemzések a befektetések lehető legjobb megtérüléséért
+## <a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Valós idejű döntéstámogató elemzések a befektetések lehető legjobb megtérüléséért
 A `big data` gyűjtése és a valós idejű üzenetfeldolgozás kombinálásával a felhasználói viselkedésnek és a demográfiai adatoknak megfelelő elérési forgatókönyveket aktiválhat. A Mobile Engagement szinte minden az Ön üzleti igényei szempontjából fontos kérdésre választ ad. Például személyre szabott irányítópultokat hozhat létre, amelyekkel mérheti a fő teljesítménymutatókat (KPI), gyorsan észlelheti és kijavíthatja a felhasználói tölcsérútvonalak szűk keresztmetszeteit, nyomon követheti a felhasználók megtartását, és ezáltal megállapíthatja, mely kampányok biztosítják a legjobb befektetésmegtérülést. A Mobile Engagement teljes körű felhasználóiútvonal-nézetével egyszerűen és folyamatosan javíthatja és optimalizálhatja a felhasználói élményt – nagyobb megtartási arányt érhet el, és növelheti az alkalmazáshasználatot.
 
-## <a name="valueadded-push-and-communications-platform"></a>Értéknövelt leküldési és kommunikációs platform
+## <a name="value-added-push-and-communications-platform"></a>Értéknövelt leküldési és kommunikációs platform
 A Mobile Engagement alkalmazáson beüli üzenetküldési lehetőségeket biztosít, és zökkenőmentesen képes együttműködni az olyan natív leküldéses értesítési átjárókkal, mint a Google GCM, az Apple APNS, vagy a Microsoft MPNS. Ezenkívül lehetővé teszi célzott kampányok létrehozását a felhasználói viselkedés elemzése révén, amellyel egyedi ügyfélszegmensek azonosíthatóak.
 
 Ennek köszönhetően az alkalmazásfejlesztők hatékonyan, de nem tolakodó módon érhetik el ügyfeleiket.
@@ -47,7 +47,7 @@ A Microsoft régóta elkötelezett az adatvédelem mellett, ami termékeink és 
 ### <a name="next-steps"></a>További lépések:
 [A Mobile Engagement létrehozásának ajánlott eljárásai és folyamata](mobile-engagement-getting-started-best-practices.md)
 
-[Első lépések](/documentation/services/mobile-engagement/)
+[Első lépések](/index.md)
 
 [Bemutatóalkalmazások letöltése forráskóddal](https://aka.ms/azmedemoapps)
 

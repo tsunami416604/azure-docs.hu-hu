@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0e6effa1e74a06a99a2a6bea9df3cfc6deedeb0e
+ms.sourcegitcommit: ee390dcdeefbc1ed87317ae2e167b3c054911723
+ms.openlocfilehash: a8149b38872a8d5b5a5e30280712ca38d983f80c
 
 
 ---
@@ -287,7 +287,7 @@ Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, mód
     else
        Console.WriteLine("Entity could not be retrieved.");
 ```
-## <a name="insertorreplace-an-entity"></a>Entitás beszúrása vagy lecserélése
+## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy lecserélése
 Ha az entitás a kiszolgálóról való lekérdezés óta módosult, a **Replace** műveletek sikertelenek lesznek.  Ezenkívül a **Replace** művelet sikeres végrehajtásához először le kell kérnie az entitást a kiszolgálóról.
 Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hogy a benne tárolt aktuális értékek irrelevánsak-e. A frissítés mindent felülír.  Ehhez használja az **InsertOrReplace** műveletet.  Ha nem létezik az entitás, ez a művelet beszúrja, ha pedig létezik, akkor a legutóbbi frissítés idejétől függetlenül lecseréli.  Az alábbi kódpéldában a rendszer lekérdezi Ben Smith ügyfélentitását, majd az **InsertOrReplace** művelettel menti a kiszolgálóra.  Az entitáson a lekérési és a frissítési művelet között történt összes módosítást felül lesz írva.
 ```csharp
@@ -328,7 +328,7 @@ Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hog
        Console.WriteLine("Entity could not be retrieved.");
 ```
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. További információk a leképezésről: [Introducing Upsert and Query Projection blog post][(A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés)]. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
+Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. További információk a leképezésről: [A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés][A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés]. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
 ```csharp
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -449,7 +449,7 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 [Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
 [Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
 
-[Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx (Az upsert (frissítés/beszúrás) és a lekérdezésleképezés bemutatása) blogbejegyzés
+[A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 [.NET ügyféloldali kódtár – referencia]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
 [Az Azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/
 [Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)]: http://msdn.microsoft.com/library/azure/ee758697.aspx

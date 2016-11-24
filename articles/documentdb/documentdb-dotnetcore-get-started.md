@@ -1,27 +1,27 @@
 ---
-title: "NoSQL-oktatóanyag: DocumentDB .NET SDK | Microsoft Docs"
-description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB .NET SDK használatával. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+title: "NoSQL-oktatóanyag: DocumentDB .NET Core SDK | Microsoft Docs"
+description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB .NET SDK Core használatával. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
 keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
 services: documentdb
 documentationcenter: .net
-author: AndrewHoh
+author: arramac
 manager: jhubbard
 editor: monicar
-ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
+ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/16/2016
-ms.author: anhoh
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: a71130709ea33a8f6efb14ed0e4609a366d3ac98
+ms.sourcegitcommit: 86c0258cca0a4ffa507ac30da12a7a62d3e4f853
+ms.openlocfilehash: 2150deb06732985db634e23472fa075c743e19c8
 
 
 ---
-# <a name="nosql-tutorial-build-a-documentdb-c-console-application"></a>NoSQL-oktatóanyag: DocumentDB C# konzolalkalmazás létrehozása
+# <a name="nosql-tutorial-build-a-documentdb-c-console-application-on-net-core"></a>NoSQL-oktatóanyag: DocumentDB C# konzolalkalmazás létrehozása .NET Core-on
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: a71130709ea33a8f6efb14ed0e4609a366d3ac98
 >  
 > 
 
-Köszönti az Azure DocumentDB .NET SDK-hoz készült NoSQL-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
+Köszönti az Azure DocumentDB .NET Core SDK-hoz készült NoSQL-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -44,7 +44,7 @@ Az oktatóanyag a következőket ismerteti:
 * Dokumentum törlése
 * Adatbázis törlése
 
-Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started). A gyors utasításokért ugorjon [A teljes megoldás beszerzése szakaszra](#GetSolution).
+Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/arramac/documentdb-dotnet-core-getting-started). A gyors utasításokért ugorjon [A teljes megoldás beszerzése szakaszra](#GetSolution).
 
 Utána a lap tetején és alján található szavazógomb használatával küldjön visszajelzést felénk. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
 
@@ -55,8 +55,10 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
     * Vagy használhatja az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md) ebben az oktatóanyagban.
-* [Visual Studio 2013 / Visual Studio 2015](http://www.visualstudio.com/).
-* .NET-keretrendszer 4.6
+* [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) és [.NET Core 1.0.1 - VS 2015 Tooling Preview 2](https://go.microsoft.com/fwlink/?LinkID=827546)
+    * Ha MacOS vagy Linux rendszeren dolgozik, a parancssorból is fejleszthet .NET Core alkalmazásokat, ha telepíti a [.NET Core SDK-t](https://www.microsoft.com/net/core#macos) a választott platformra. 
+    * Ha Windows rendszeren dolgozik, a parancssorból is fejleszthet .NET Core alkalmazásokat, ha telepíti a [.NET Core SDK-t](https://www.microsoft.com/net/core#windows). 
+    * Használhat saját szerkesztőt is, vagy letöltheti az ingyenes [Visual Studio Code](https://code.visualstudio.com/) alkalmazást, amely Windows, Linux és MacOS rendszeren egyaránt működik. 
 
 ## <a name="step-1-create-a-documentdb-account"></a>1. lépés: DocumentDB-fiók létrehozása
 Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha a DocumentDB Emulatort használja, kövesse az [Azure DocumentDB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Visual Studio megoldás beállítása](#SetupVS) című lépésre.
@@ -66,17 +68,16 @@ Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet haszná
 ## <a name="a-idsetupvsastep-2-setup-your-visual-studio-solution"></a><a id="SetupVS"></a>2. lépés: A Visual Studio megoldás beállítása
 1. Nyissa meg a **Visual Studio 2015-öt** a számítógépén.
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
-3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **Konzolalkalmazás** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
+3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **.NET Core**/**Konzolalkalmazás (.NET Core)** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
    ![Képernyőfelvétel az Új projekt ablakról](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található.
 5. Ezután maradjon a menüben, és kattintson a következőre: **NuGet-csomagok kezelése...**
    ![Képernyőfelvétel a projekt helyi menüjéről](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
-7. A találatok között keresse meg a **Microsoft.Azure.DocumentDB** elemet, majd kattintson a **Telepítés** lehetőségre.
-   A DocumentDB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)
-   ![Képernyőfelvétel a Nuget menüről a DocumentDB ügyféloldali SDK-jának megtalálásához](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+7. A találatok között keresse meg a **Microsoft.Azure.DocumentDB.Core** elemet, majd kattintson a **Telepítés** lehetőségre.
+   A DocumentDB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core)
 
-Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
+Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/arramac/documentdb-dotnet-core-getting-started) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
 ## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
 Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Program.cs fájlban:
@@ -109,7 +110,7 @@ Ezután látogasson el az [Azure-portálra](https://portal.azure.com) az URI és
 
 Az Azure portálon lépjen a DocumentDB-fiókra, majd kattintson a **Kulcsok** elemre.
 
-Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URI>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your key>` elembe.
+Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URI>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your key>` elembe. Ha az Azure DocumentDB Emulatort használja, használjon `https://localhost:443` értéket végpontként, valamint a jól definiált engedélyezési kulcsot a [Fejlesztés a DocumentDB Emulator használatával](documentdb-nosql-local-emulator.md) című részből.
 
 ![Képernyőfelvétel a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure-portálról. Megjelenít egy DocumentDB-fiókot, amelyen az ACTIVE központ, a DocumentDB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve.][keys]
 
@@ -604,9 +605,9 @@ A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás összeáll�
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * [DocumentDB-fiók][documentdb-create-account].
-* A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) megoldás.
+* A GitHubon elérhető [GetStarted](https://github.com/arramac/documentdb-dotnet-core-getting-started) megoldás.
 
-Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután az App.config fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás DocumentDB-fiókhoz](#Connect) című részben leírtak szerint.
+Ahhoz, hogy visszaállítsa a DocumentDB .NET Core SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután a Program.cs fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás DocumentDB-fiókhoz](#Connect) című részben leírtak szerint.
 
 ## <a name="next-steps"></a>Következő lépések
 * Összetettebb ASP.NET MVC NoSQL-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-vel rendelkező webalkalmazás összeállítása a DocumentDB használatával](documentdb-dotnet-application.md).

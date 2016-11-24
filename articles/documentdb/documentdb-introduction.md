@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 11/16/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 23a6be60d7bf8fa47589fffb5132a09994d33d4c
+ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
+ms.openlocfilehash: cb1fd606fa03650980a02325b82774ce9ef8cf77
 
 
 ---
@@ -46,7 +46,7 @@ Az Azure DocumentDB az alábbi főbb képességeket és előnyöket kínálja:
 * **Nyílt kialakítás:** Hamar munkához láthat a meglévő ismeretei és eszközei használatával. A DocumentDB programozása könnyű, elérhető és nem igényli új eszközök megismerését vagy egyéni kiterjesztések használatát a JSON és a JavaScript formátumhoz. Egy egyszerű RESTful HTTP-felületen keresztül érheti el az adatbázis összes funkcióját, mint a CRUD, a lekérdezés és a JavaScript-feldolgozás. A DocumentDB támogatja a meglévő formátumokat, nyelveket és standardokat, miközben értékes adatbázis-képességeket is kínál.
 * **Automatikus indexelés:** Alapértelmezés szerint a DocumentDB [automatikusan indexeli](documentdb-indexing.md) az adatbázisban szereplő összes dokumentumot, nem vár vagy igényel semmilyen sémát, és nem szükséges másodlagos indexek létrehozása sem. Szeretne mindent indexelni? Ne aggódjon, [a JSON-fájlok elérési útjainak indexelését](documentdb-indexing-policies.md) is ki lehet kapcsolni.
 
-## <a name="a-namedatamanagementahow-does-documentdb-manage-data"></a><a name="data-management"></a>Hogyan kezeli a DocumentDB az adatokat?
+## <a name="a-namedata-managementahow-does-documentdb-manage-data"></a><a name="data-management"></a>Hogyan kezeli a DocumentDB az adatokat?
 Az Azure DocumentDB jól meghatározott adatbázis-erőforrások használatával kezeli a JSON-adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB egy egyszerű HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 
 
 A DocumentDB-adatbázis fiók egy egyedi névtér, amely hozzáférést biztosít az Azure DocumentDB-hez. Ahhoz, hogy létrehozhasson egy adatbázis-fiókot, Azure-előfizetéssel kell rendelkeznie, amely számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. 
@@ -71,6 +71,8 @@ Az Azure DocumentDB egy REST API-n keresztül tesz elérhetővé erőforrásokat
 | n/a |[Kiszolgálóoldali JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python-kódtár](http://azure.github.io/azure-documentdb-python/) |
 
+Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével a DocumentDB Emulatorban, átválthat az Azure DocumentDB-fiók használatára a felhőben.
+
 Az alapvető létrehozási, olvasási, frissítési és törlési műveletek mellett a DocumentDB egy részletes SQL-lekérdezési felületet is biztosít JSON-dokumentumok és kiszolgálóoldali támogatás lekéréséhez a JavaScript-alkalmazáslogika tranzakciós végrehajtásához. A lekérdezés és parancsfájl végrehajtására szolgáló felületek az összes platform könyvtárán, illetve a REST API-kon keresztül is elérhetők. 
 
 ### <a name="sql-query"></a>SQL-lekérdezés
@@ -92,6 +94,7 @@ Még nincs Azure-fiókja? A következőket teheti:
 
 * Regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/), amely 30 napot és egy 200 dolláros keretet biztosít az összes Azure-szolgáltatás kipróbálására. 
 * Ha MSDN-előfizetéssel rendelkezik, akkor [havi 150 dollár ingyenes Azure-kreditre](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jogosult, amit bármelyik Azure-szolgáltatáshoz felhasználhat. 
+* Töltse le az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md), és fejlessze alkalmazását helyben.
 
 Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket](https://azure.microsoft.com/documentation/learning-paths/documentdb/), és azon belül az összes elérhető képzési erőforrást. 
 
@@ -100,6 +103,6 @@ Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket]
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

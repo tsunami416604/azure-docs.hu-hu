@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 11/02/2016
+ms.date: 11/16/2016
 ms.author: denlee
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 24fa3533be1ce4659e65d924417cb715579b4851
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 4852d2b59faf01961fc8e39680bb05694dcde8d6
 
 
 ---
@@ -47,7 +47,11 @@ Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létr
 ## <a name="a-idprerequisitesaprerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>A jelen Java-webalkalmazásokra vonatkozó oktatóanyag előfeltételei
 Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/)
+
+    VAGY
+
+    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
 * [Java fejlesztői készlet (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Eclipse IDE for Java EE Developers.](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service-web/web-sites-java-get-started.md)
@@ -55,7 +59,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
 
 ## <a name="a-idcreatedbastep-1-create-a-documentdb-database-account"></a><a id="CreateDB"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -759,6 +763,6 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: a652dcd2427d579db42e963ad54ac3078cba6857
 
 
 ---
@@ -47,6 +47,10 @@ Az oktatóanyag utasításait követve egy egyszerű szavazóalkalmazást fog l�
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
 * Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+ 
+    VAGY 
+
+    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
 * [Visual Studio 2013-as](http://www.visualstudio.com/) vagy újabb, illetve az ingyenes [Visual Studio Express]() verzió. Az oktatóanyagban szereplő utasítások kifejezetten a Visual Studio 2015-ös verzióhoz íródtak. 
 * Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja. 
 * Az Azure Python SDK for Visual Studio az [azure.com](https://azure.microsoft.com/downloads/) webhelyről letölthető 2.4-es vagy újabb verziója. Az oktatóanyagban a Python 2.7-hez készült Microsoft Azure SDK-t használtuk.
@@ -62,7 +66,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 * A [Microsoft letöltőközpontból][3] beszerezhető Microsoft Visual C++ Compiler for Python 2.7.
 
 ## <a name="step-1-create-a-documentdb-database-account"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -409,6 +413,6 @@ További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, W
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

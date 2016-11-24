@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 08/29/2016
 ms.author: cfowler;mahender;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 601c5a61023fe1565dc0f8e22d9826ae5705fe22
+ms.sourcegitcommit: a06126707ad9942ba3b269b0e2e2a52f9cf0c61e
+ms.openlocfilehash: 7d6bcf84b8d1de1b9f77385909d81ad6baafe9d9
 
 
 ---
@@ -30,7 +30,7 @@ A témakor általános áttekintést nyújt az Azure Functions szolgáltatásró
 ## <a name="features"></a>Szolgáltatások
 Az Azure Functions néhány főbb jellemzője:
 
-* **Nyelvválasztás** – C#, F# Node.js, Python, PHP, Batch, Bash, Java vagy bármilyen végrehajtható formátum használatával írhat függvényeket.
+* **Nyelvválasztás** – C#, F#, Node.js, Python, PHP, Batch, Bash vagy bármilyen végrehajtható formátum használatával írhat függvényeket.
 * **Használatalapú fizetési modell** – Csak annyi időért kell fizetnie, amennyit a kódja fut. Lásd az App Service-csomag lehetőséget lent, a [díjszabás szakaszban](#pricing).  
 * **Saját függőségek használata** – A Functions a NuGetet és az NPM-et is támogatja, így Ön a kedvenc könyvtárait használhatja.  
 * **Beépített biztonság** – a HTTP-eseményindítókkal aktivált függvényeket olyan OAuth-szolgáltatókkal védheti, mint az Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókok.  
@@ -90,6 +90,6 @@ A függvények méretezésével kapcsolatos további információkért lásd: [A
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

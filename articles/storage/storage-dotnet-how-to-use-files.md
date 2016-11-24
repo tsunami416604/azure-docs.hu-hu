@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: minet
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: bf8acbd37f717c0e055facde781966665ca67d2d
 
 
 ---
@@ -210,8 +210,8 @@ Ha egy ügyfél hozzáfér a File Storage-hoz, a használt SMB verziója az oper
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató Azure virtuális gépről
 Az Azure fájlmegosztások csatlakoztatásának bemutatásához létrehozunk egy Windowst futtató Azure virtuális gépet, és távolról jelentkezünk be a megosztás csatlakoztatásához.
 
-1. Először hozzon létre egy új Azure virtuális gépet a [Create a Windows virtual machine in the Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) (Windows virtuális gép létrehozása az Azure Portalon) útmutatásait követve.
-2. Ezután lépjen be távolról a virtuális gépre a [Log on to a Windows virtual machine using the Azure Portal](../virtual-machines/virtual-machines-windows-connect-logon.md) (Bejelentkezés Windows virtuális gépre az Azure Portal segítségével) útmutatásai alapján.
+1. Először hozzon létre egy új Azure virtuális gépet a [Create a Windows virtual machine in the Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows virtuális gép létrehozása az Azure Portalon) útmutatásait követve.
+2. Ezután lépjen be távolról a virtuális gépre a [Log on to a Windows virtual machine using the Azure Portal](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Bejelentkezés Windows virtuális gépre az Azure Portal segítségével) útmutatásai alapján.
 3. Nyisson meg egy PowerShell-ablakot a virtuális gépen.
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>A tárfiók hitelesítő adatainak megőrzése a virtuális gépen
@@ -242,7 +242,7 @@ Mostantól ugyanúgy használhatja a File Storage-megosztást a virtuális gépr
 
 A fájlmegosztást csatlakoztathatja egy Azure felhőszolgáltatást futtató szerepkörről is, ha távolról csatlakozik a szerepkörhöz.
 
-### <a name="mount-the-file-share-from-an-onpremises-client-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató helyszíni ügyfélhez
+### <a name="mount-the-file-share-from-an-on-premises-client-running-windows"></a>Fájlmegosztás csatlakoztatása egy Windowst futtató helyszíni ügyfélhez
 Ha helyszíni ügyfélről szeretne fájlmegosztást csatlakoztatni, először hajtsa végre az alábbi lépéseket:
 
 * Telepítsen egy SMB 3.0-t támogató Windows-verziót. A Windows az SMB 3.0 titkosítást fogja használni, hogy biztonságosan továbbítsa az adatokat a helyszíni ügyfél és a felhőben található Azure fájlmegosztás között.

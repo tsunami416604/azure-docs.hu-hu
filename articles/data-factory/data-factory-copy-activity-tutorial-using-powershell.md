@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3247a5004198eedcf40cb3aa38de767a08e545a8
+ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
+ms.openlocfilehash: 457a5c758923a0741ab0baeebd2f22c43930f71d
 
 
 ---
@@ -121,16 +121,23 @@ Ebben a lépésben két társított szolgáltatást hoz létre, a **StorageLinke
 2. Az **Azure PowerShellben** váltson át az **ADFGetStartedPSH** mappára. 
 3. Társított szolgáltatásokat a **New-AzureRmDataFactoryLinkedService** parancsmag használatával hozhat létre. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a **ResourceGroupName** és a **DataFactoryName** paraméterek számára. Vagy a **Get-AzureRmDataFactory** használatával lekérhet egy DataFactory-objektumot, és továbbíthatja azt anélkül, hogy minden egyes alkalommal meg kellene adnia a ResourceGroupName és a DataFactoryName értékeket a parancsmag futtatásakor. Futtassa az alábbi parancsot a **Get-AzureRmDataFactory** parancsmag kimenetének hozzárendeléséhez a **$df** változóhoz. 
    
-     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+```   
+$df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+```
+
 4. Most futtassa a **New-AzureRmDataFactoryLinkedService** parancsmagot a **StorageLinkedService** társított szolgáltatás létrehozásához. 
    
-     New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
+```
+New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
+```
+
+Ha nem futtatta volna a **Get-AzureRmDataFactory** parancsmagot és rendelte volna hozzá a kimenetet a **$df** változóhoz, meg kellene adnia ResourceGroupName és a DataFactoryName paraméterek értékeit az alábbiak szerint.   
    
-   Ha nem futtatta volna a **Get-AzureRmDataFactory** parancsmagot és rendelte volna hozzá a kimenetet a **$df** változóhoz, meg kellene adnia ResourceGroupName és a DataFactoryName paraméterek értékeit az alábbiak szerint.   
-   
-     New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
-   
-   Ha az oktatóanyag lépései során bezárta az Azure PowerShellt, a következő indításakor futtatnia kell a Get-AzureRmDataFactory parancsmagot az oktatóanyag befejezéséhez.
+```
+New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
+```
+
+Ha az oktatóanyag lépései során bezárta az Azure PowerShellt, a következő indításakor futtatnia kell a Get-AzureRmDataFactory parancsmagot az oktatóanyag befejezéséhez.
 
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Társított szolgáltatás létrehozása Azure SQL Database-hez
 1. Hozzon létre egy JSON-fájlt AzureSqlLinkedService.json néven az alábbi tartalommal.
@@ -148,8 +155,10 @@ Ebben a lépésben két társított szolgáltatást hoz létre, a **StorageLinke
    A **servername**, **databasename**, **username@servername** és **password** paraméterek értékét cserélje le az Azure SQL-kiszolgáló, az adatbázis és a felhasználói fiók nevére, valamint a jelszóra.
 2. Futtassa az alábbi parancsot egy társított szolgáltatás létrehozásához. 
    
-     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
-   
+```
+New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
+```
+
    Erősítse meg, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás BE van kapcsolva az Azure SQL Serverhez. Az ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
    
    1. Kattintson a **BROWSE** (TALLÓZÁS) hubra a bal oldalon, majd az **SQL servers** (SQL Serverek) elemre.
@@ -257,10 +266,12 @@ A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lép�
              { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
          ],
    
-   A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](http://go.microsoft.com/fwlink/?LinkId=516971) (Referencia a JSON-parancsprogramokhoz).
+   A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](data-factory-data-movement-activities.md) (Referencia a JSON-parancsprogramokhoz).
 2. A Data Factory-adatkészlet létrehozásához futtassa az alábbi parancsot.
    
-     New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
+```  
+New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
+```
 
 ### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
 Ebben a lépésben egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven. Ez az adatkészlet egy SQL-táblára (**emp**) mutat az Azure SQL Database-ben, amelyet az **AzureSqlLinkedService** jelöl. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába. 
@@ -300,8 +311,10 @@ Ebben a lépésben egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven
    * Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
 2. A Data Factory-adatkészlet létrehozásához futtassa az alábbi parancsot. 
-   
-     New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
+
+```   
+New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
+```
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben létrehoz egy **Másolási tevékenységgel** rendelkező folyamatot, amely bemenetként az **EmpTableFromBlob**, kimenetként pedig az **EmpSQLTable** táblát használja.
@@ -362,10 +375,12 @@ Ebben a lépésben létrehoz egy **Másolási tevékenységgel** rendelkező fol
    
    A példában 24 adatszelet van, mert a rendszer óránként létrehoz egy adatszeletet.
    
-   A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](http://go.microsoft.com/fwlink/?LinkId=516971) (Referencia a JSON-parancsprogramokhoz).
+   A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](data-factory-data-movement-activities.md) (Referencia a JSON-parancsprogramokhoz).
 2. A Data Factory-tábla létrehozásához futtassa az alábbi parancsot. 
-   
-     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
+
+```   
+New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
+```
 
 **Gratulálunk!** Sikeresen létrehozott egy Azure data factoryt, társított szolgáltatásokat, táblákat és egy folyamatot, valamint ütemezte is a folyamatot.
 
@@ -373,26 +388,61 @@ Ebben a lépésben létrehoz egy **Másolási tevékenységgel** rendelkező fol
 Ebben a lépésben az Azure PowerShell használatával figyeli egy Azure data factory eseményeit.
 
 1. Futtassa a **Get-AzureRmDataFactory** parancsot, és rendelje a kimenetet egy $df változóhoz.
-   
-     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+
+```  
+$df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+```
+
 2. A **Get-AzureRmDataFactorySlice** parancs futtatásával hívja le az összes szelet részleteit a folyamat **EmpSQLTable** nevű kimeneti táblájában.  
-   
-     Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
-   
+
+```   
+Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
+```
+
    A **StartDateTime** paraméter év, hónap és nap részeire írja be az aktuális évet, hónapot és napot. Ennek a beállításnak egyeznie kell a **Start** (Kezdés) értékkel a folyamat JSON-fájljában. 
    
    24 szeletet kell látnia, éjféltől másnap éjfélig. 
    
    **Példa a kimenetre:**
-   
-     ResourceGroupName : ADFTutorialResourceGroup   DataFactoryName   : ADFTutorialDataFactoryPSH   TableName         : EmpSQLTable   Start             : 8/9/2016 12:00:00 AM   End               : 8/9/2016 1:00:00 AM   RetryCount        : 0   Status            : Waiting   LatencyStatus     :   LongRetryCount    : 0
+
+```   
+     ResourceGroupName : ADFTutorialResourceGroup
+     DataFactoryName   : ADFTutorialDataFactoryPSH
+     TableName         : EmpSQLTable
+     Start             : 8/9/2016 12:00:00 AM
+     End               : 8/9/2016 1:00:00 AM
+     RetryCount        : 0
+     Status            : Waiting
+     LatencyStatus     :
+     LongRetryCount    : 0
+```
 3. A **Get-AzureRmDataFactoryRun** parancs futtatásával kérje le egy **adott** szelet tevékenységfuttatásainak részleteit. Módosítsa a **StartDateTime** paraméter értékét, hogy megegyezzen a kimenetből származó szelet **Start** (Kezdés) idejével. A **StartDateTime** értékét [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. 
-   
-     Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
-   
+
+```  
+Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
+```
+
    A következő, mintaként szolgáló kimenethez hasonló kimenetnek kell megjelennie:
-   
-     Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable   ResourceGroupName   : ADFTutorialResourceGroup   DataFactoryName     : ADFTutorialDataFactoryPSH   TableName           : EmpSQLTable   ProcessingStartTime : 8/9/2016 11:03:28 PM   ProcessingEndTime   : 8/9/2016 11:04:36 PM   PercentComplete     : 100   DataSliceStart      : 8/9/2016 10:00:00 PM   DataSliceEnd        : 8/9/2016 11:00:00 PM   Status              : Succeeded   Timestamp           : 8/9/2016 11:03:28 PM   RetryAttempt        : 0   Properties          : {}   ErrorMessage        :   ActivityName        : CopyFromBlobToSQL   PipelineName        : ADFTutorialPipeline   Type                : Copy
+
+```   
+     Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable
+     ResourceGroupName   : ADFTutorialResourceGroup
+     DataFactoryName     : ADFTutorialDataFactoryPSH
+     TableName           : EmpSQLTable
+     ProcessingStartTime : 8/9/2016 11:03:28 PM
+     ProcessingEndTime   : 8/9/2016 11:04:36 PM
+     PercentComplete     : 100
+     DataSliceStart      : 8/9/2016 10:00:00 PM
+     DataSliceEnd        : 8/9/2016 11:00:00 PM
+     Status              : Succeeded
+     Timestamp           : 8/9/2016 11:03:28 PM
+     RetryAttempt        : 0
+     Properties          : {}
+     ErrorMessage        :
+     ActivityName        : CopyFromBlobToSQL
+     PipelineName        : ADFTutorialPipeline
+     Type                : Copy
+```
 
 A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért lásd a [Data Factory Cmdlet Reference][cmdlet-reference] (Data Factory-parancsmagok referenciája) című cikket. 
 

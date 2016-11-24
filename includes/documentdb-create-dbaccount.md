@@ -1,5 +1,5 @@
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az ugrósávon kattintson az **Új**, majd az **Adatok + tárolás**, és végül az **Azure DocumentDB (NoSQL)** elemre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. Az ugrósávon kattintson az **Új**, majd az **Adatbázisok**, és végül az **NoSQL (DocumentDB)** elemre.
    
    ![Képernyőfelvétel az Azure Portalról, a További szolgáltatások és a DocumentDB (NoSQL) menüpont kiemelve](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
 3. Az **Új fiók** panelen adja meg a DocumentDB-fiók kívánt beállításait.
@@ -16,11 +16,11 @@
    ![Adatbázisok gyors létrehozása – képernyőfelvétel az értesítési központról, ahol nyomon követhető a DocumentDB-fiók létrehozásának folyamata](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
    
    ![Képernyőfelvétel az értesítésközpontról, amelyben az látszik, hogy a DocumentDB-fiók sikeresen létrejött, és telepítve lett egy erőforráscsoportba – online adatbázis-készítő értesítése](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
-5. A létrehozás után a DocumentDB-fiók (az alapértelmezett beállításokkal) azonnal készen áll a használatra. A DocumentDB-fiók alapértelmezett konzisztenciája a **Munkamenet**.  Az alapértelmezett konzisztenciát az erőforrásmenü **Alapértelmezett konzisztencia** elemére kattintva módosíthatja. További információ a DocumentDB által kínált konzisztenciaszintekről: [Konzisztenciaszintek a DocumentDB-ben](../articles/documentdb/documentdb-consistency-levels.md).
-   
-   ![Képernyőfelvétel az Erőforráscsoport panelről – alkalmazás fejlesztésének megkezdése](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)  
-   
-   ![Képernyőfelvétel a Konzisztenciaszint panelről – munkamenet-konzisztencia](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-7.png)  
+5. A létrehozás után a DocumentDB-fiók (az alapértelmezett beállításokkal) azonnal készen áll a használatra. Az alapértelmezett beállítások áttekintéséhez kattintson az **NoSQL (DocumentDB)** ikonra az ugrósávon, majd kattintson az új fiókra, és végül az erőforrásmenü **Alapértelmezett konzisztencia** elemére.
+
+   ![Képernyőfelvétel, amely az Azure DocumentDB-adatbázisfiók megnyitásának módját mutatja az Azure Portalon](./media/documentdb-create-dbaccount/azure-documentdb-database-open-account-portal.png)  
+
+   A DocumentDB-fiók alapértelmezett konzisztenciája a **Munkamenet**.  Az alapértelmezett konzisztenciát az erőforrásmenü **Alapértelmezett konzisztencia** elemére kattintva módosíthatja. További információ a DocumentDB által kínált konzisztenciaszintekről: [Konzisztenciaszintek a DocumentDB-ben](../articles/documentdb/documentdb-consistency-levels.md).
 
 [DocumentDB-fiók létrehozása]: #Howto
 [Következő lépések]: #NextSteps

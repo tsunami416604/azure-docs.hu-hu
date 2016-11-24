@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3127a84f4d4cd9881de56a6d199cfb1780cd8189
+ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
+ms.openlocfilehash: d437ad6300970bd1f015413b8ad70620e2e7fd04
 
 
 ---
@@ -43,19 +43,19 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
 1. Nyissa meg a Visual Studiót rendszergazdaként. Ehhez a Start menüben kattintson a jobb gombbal a programra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **Fájl** menüre, és kattintson az **Új**, majd a **Projekt** elemre. Az **Új projekt** párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg a **Más nyelvek** területen), kattintson a **Konzolalkalmazás** sablonra, és adja neki a **Microsoft.ServiceBus.Samples** nevet. Használja az alapértelmezett **Helyet**. A projekt létrehozásához kattintson az **OK** gombra.
 3. A NuGet-csomagkezelővel adja hozzá a Service Bus-könyvtárakat a projekthez:
-   
+
    1. A Megoldáskezelőben kattintson a jobb gombbal a **QueueSample** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
    2. A **Manage Nuget Packages** (NuGet-csomagok kezelése) párbeszédpanelen kattintson a **Browse** (Tallózás) lapra, keressen az **Azure Service Bus** kifejezésre, majd kattintson az **Install** (Telepítés) elemre.
       <br />
 4. A Megoldáskezelőben kattintson duplán a Program.cs fájlra a Visual Studio-szerkesztőben való megnyitásához. Módosítsa a névtér alapértelmezett `QueueSample` nevét a következőre: `Microsoft.ServiceBus.Samples`.
-   
+
     ```
     Microsoft.ServiceBus.Samples
     {
         ...
     ```
 5. Módosítsa a `using` utasításokat az alábbi kódban látható módon.
-   
+
     ```
     using System;
     using System.Collections.Generic;
@@ -66,7 +66,7 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     using Microsoft.ServiceBus.Messaging;
     ```
 6. Hozzon létre egy Data.csv névvel ellátott szövegfájlt, és másolja a következő, vesszővel tagolt szövegbe.
-   
+
     ```
     IssueID,IssueTitle,CustomerID,CategoryID,SupportPackage,Priority,Severity,Resolved
     1,Package lost,1,1,Basic,5,1,FALSE
@@ -85,25 +85,25 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     14,Package damaged,6,7,Premium,5,5,FALSE
     15,Product defective,6,2,Premium,5,5,FALSE
     ```
-   
+
     Mentse és zárja be a Data.csv fájlt, és jegyezze meg, hová mentette.
 7. A Megoldáskezelőben kattintson a jobb gombbal a projekt nevére (a jelen példában **QueueSample**), majd kattintson az **Add** (Hozzáadás), majd az **Existing Item** (Meglévő elem) parancsra.
 8. Keresse meg a 6. lépésben létrehozott Data.csv fájlt. Kattintson a fájlra, majd kattintson az **Add** (Hozzáadás) gombra. Győződjön meg arról, hogy az **All Files (*.*)** (Minden fájl) lehetőség van kiválasztva a fájltípusok listájában.
 
 ### <a name="create-a-method-that-parses-a-list-of-messages"></a>Az üzenetek listáját elemző metódus létrehozása
 1. A `Main()` metódus előtti `Program` osztályban deklaráljon két változót: egy **DataTable** típusút, amely a Data.csv fájlban lévő üzenetek listáját tartalmazza. A másik típusa Listaobjektum legyen, amely [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) szigorú típussal rendelkezik. Az utóbbi a közvetítőalapú üzenetek listája, amelyeket az oktatóanyag következő lépései alkalmaznak.
-   
+
     ```
     namespace Microsoft.ServiceBus.Samples
     {
         class Program
         {
-   
+
             private static DataTable issues;
             private static List<BrokeredMessage> MessageList;
     ```
 2. A `Main()` metóduson kívül határozzon meg egy `ParseCSV()` metódust, amely elemzi a Data.csv fájlban lévő üzenetek listáját, és betölti őket egy [DataTable](https://msdn.microsoft.com/library/azure/system.data.datatable.aspx) táblába az itt látható módon. A módszer egy **DataTable** objektumot ad vissza.
-   
+
     ```
     static DataTable ParseCSVFile()
     {
@@ -115,14 +115,14 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
             {
                 string line;
                 string[] row;
-   
+
                 // create the columns
                 line = readFile.ReadLine();
                 foreach (string columnTitle in line.Split(','))
                 {
                     tableIssues.Columns.Add(columnTitle);
                 }
-   
+
                 while ((line = readFile.ReadLine()) != null)
                 {
                     row = line.Split(',');
@@ -134,31 +134,31 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
         {
             Console.WriteLine("Error:" + e.ToString());
         }
-   
+
         return tableIssues;
     }
     ```
 3. A `Main()` metódusban adjon meg egy utasítást a `ParseCSVFile()` metódus meghívására:
-   
+
     ```
     public static void Main(string[] args)
     {
-   
+
         // Populate test data
         issues = ParseCSVFile();
-   
+
     }
     ```
 
 ### <a name="create-a-method-that-loads-the-list-of-messages"></a>Az üzenetek listáját betöltő metódus létrehozása
-1. A `Main()` metóduson kívül határozzon meg egy `GenerateMessages()` metódust, amely fogadja a `ParseCSVFile()` által visszaadott **DataTable** objektumot, és betölti a táblát a közvetítőalapú üzenetek szigorú típusmegadású listájába. A metódus ezután visszaadja a **Lista** objektumot, ahogy az alábbi példában is látható. 
-   
+1. A `Main()` metóduson kívül határozzon meg egy `GenerateMessages()` metódust, amely fogadja a `ParseCSVFile()` által visszaadott **DataTable** objektumot, és betölti a táblát a közvetítőalapú üzenetek szigorú típusmegadású listájába. A metódus ezután visszaadja a **Lista** objektumot, ahogy az alábbi példában is látható.
+
     ```
     static List<BrokeredMessage> GenerateMessages(DataTable issues)
     {
         // Instantiate the brokered list object
         List<BrokeredMessage> result = new List<BrokeredMessage>();
-   
+
         // Iterate through the table and create a brokered message for each row
         foreach (DataRow item in issues.Rows)
         {
@@ -173,11 +173,11 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
     }
     ```
 2. A `Main()` metódusban közvetlenül a `ParseCSVFile()` hívása után adjon hozzá egy utasítást a `GenerateMessages()` metódus meghívásához, amelynek argumentuma a `ParseCSVFile()` visszaadott értéke:
-   
+
     ```
     public static void Main(string[] args)
     {
-   
+
         // Populate test data
         issues = ParseCSVFile();
         MessageList = GenerateMessages(issues);
@@ -186,46 +186,46 @@ A következő lépésben létre kell hoznia egy Visual Studio-projektet, és ké
 
 ### <a name="obtain-user-credentials"></a>A felhasználó hitelesítő adatainak beszerzése
 1. Először hozzon létre három globális karakterlánc típusú változót az értékek tárolásához. Deklarálja ezeket az értékeket közvetlenül az előző változók deklarációja után; például:
-   
+
     ```
     namespace Microsoft.ServiceBus.Samples
     {
         public class Program
         {
-   
+
             private static DataTable issues;
-            private static List<BrokeredMessage> MessageList; 
-   
+            private static List<BrokeredMessage> MessageList;
+
             // Add these variables
             private static string ServiceNamespace;
             private static string sasKeyName = "RootManageSharedAccessKey";
             private static string sasKeyValue;
             …
     ```
-2. Ezután hozzon létre egy függvényt, amely elfogadja és tárolja a szolgáltatásnévteret és az SAS-kulcsot. Ezt a metódust a `Main()` osztályon kívül adja meg. Példa: 
-   
+2. Ezután hozzon létre egy függvényt, amely elfogadja és tárolja a szolgáltatásnévteret és az SAS-kulcsot. Ezt a metódust a `Main()` osztályon kívül adja meg. Példa:
+
     ```
     static void CollectUserInput()
     {
         // User service namespace
         Console.Write("Please enter the namespace to use: ");
         ServiceNamespace = Console.ReadLine();
-   
+
         // Issuer key
         Console.Write("Enter the SAS key to use: ");
         sasKeyValue = Console.ReadLine();
     }
     ```
 3. A `Main()` osztályban közvetlenül a `GenerateMessages()` hívása után adjon hozzá egy utasítást a `CollectUserInput()` metódus meghívásához:
-   
+
     ```
     public static void Main(string[] args)
     {
-   
+
         // Populate test data
         issues = ParseCSVFile();
         MessageList = GenerateMessages(issues);
-   
+
         // Collect user input
         CollectUserInput();
     }
@@ -238,7 +238,7 @@ A Visual Studio **Létrehozás** menüjében rákattinthat a **Megoldás fordít
 Ebben a lépésben meghatározza a felügyeleti műveleteket, amelyeket az alkalmazás engedélyezéséhez szükséges közös hozzáférésű jogosultságkód (SAS) hitelesítő adatok létrehozásához fog használni.
 
 1. Az átláthatóság érdekében a jelen oktatóanyag egy külön metódusba helyezi az összes üzenetsor-műveletet. Hozzon létre egy aszinkron `Main()` metódust a `Program` osztályon belül a `Queue()` metódus után. Példa:
-   
+
     ```
     public static void Main(string[] args)
     {
@@ -249,7 +249,7 @@ Ebben a lépésben meghatározza a felügyeleti műveleteket, amelyeket az alkal
     }
     ```
 2. A következő lépés egy SAS-hitelesítő adat létrehozása a [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) objektum használatával. A létrehozási metódushoz a `CollectUserInput()` metódusból származó SAS-kulcs neve és értéke szükséges. Adja hozzá a következő kódot a `Queue()` metódushoz:
-   
+
     ```
     static async Task Queue()
     {
@@ -258,7 +258,7 @@ Ebben a lépésben meghatározza a felügyeleti műveleteket, amelyeket az alkal
     }
     ```
 3. Hozzon létre egy új névtér-felügyeleti objektumot egy URI-val, amely argumentumaiként az előző lépésben beszerzett névtér nevét és a felügyeleti hitelesítő adatokat tartalmazza. Adja hozzá ezt a kódot közvetlenül az előző lépésben létrehozott kód után. Győződjön meg arról, hogy a `<yourNamespace>` helyett a szolgáltatásnévtér nevét adja meg:
-   
+
     ```
     NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
     ```
@@ -375,29 +375,29 @@ Ebben a lépésben létrehoz egy üzenetsort, majd elküldi a közvetítőalapú
 
 ### <a name="create-queue-and-send-messages-to-the-queue"></a>Üzenetsor létrehozása és üzenetek küldése az üzenetsorba
 1. Először hozzon létre egy üzenetsort. Adja neki például a `myQueue` nevet, majd deklarálja közvetlenül az előző lépés során a `Queue()` metódusban hozzáadott felügyeleti műveletek után:
-   
+
     ```
     QueueDescription myQueue;
-   
+
     if (namespaceClient.QueueExists("IssueTrackingQueue"))
     {
         namespaceClient.DeleteQueue("IssueTrackingQueue");
     }
-   
+
     myQueue = namespaceClient.CreateQueue("IssueTrackingQueue");
     ```
 2. A `Queue()` metódusban hozzon létre egy üzenetkezelési gyártóobjektumot, amelynek argumentuma egy újonnan létrehozott Service Bus URI. Vegye fel a következő kódot közvetlenül az előző lépésben létrehozott felügyeleti műveletek után. Győződjön meg arról, hogy a `<yourNamespace>` helyett a szolgáltatásnévtér nevét adja meg:
-   
+
     ```
     MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
     ```
 3. Ezután hozza létre az üzenetsor-objektumot a [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) osztály használatával. Vegye fel a következő kódot közvetlenül az előző lépésben felvett kód után:
-   
+
     ```
     QueueClient myQueueClient = factory.CreateQueueClient("IssueTrackingQueue");
     ```
 4. Ezután vegyen fel egy kódot, amely végighalad az előzőleg létrehozott közvetítőalapú üzeneteken, és mindegyiket egy üzenetsorba küldi. Vegye fel a következő kódot közvetlenül az előző lépésben létrehozott `CreateQueueClient()` utasítás után:
-   
+
     ```
     // Send messages
     Console.WriteLine("Now sending messages to the queue.");
@@ -615,14 +615,13 @@ Most, hogy elvégezte az előző lépéseket, létrehozhatja és futtathatja a *
 A Visual Studio **Létrehozás** menüjében kattintson a **Megoldás fordítása** elemre, vagy nyomja le a **Ctrl+Shift+B** billentyűkombinációt. Ha hibákat észlel, az előző lépés végén bemutatott teljes példa alapján ellenőrizze, hogy a kód megfelelő-e.
 
 ## <a name="next-steps"></a>Következő lépések
-Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Service Bus-ügyfélalkalmazást és szolgáltatást a Service Bus közvetítőalapú üzenettovábbítási képességeivel. A Service Bus [WCF Relay](service-bus-messaging-overview.md#Relayed-messaging)-t alkalmazó hasonló oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
+Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Service Bus-ügyfélalkalmazást és szolgáltatást a Service Bus közvetítőalapú üzenettovábbítási képességeivel. A Service Bus [WCF Relay](service-bus-messaging-overview.md#service-bus-relay)-t alkalmazó hasonló oktatóanyagért lásd a [Service Bus továbbítón keresztüli üzenetcsere oktatóanyagát](../service-bus-relay/service-bus-relay-tutorial.md).
 
 A [Service Busról](https://azure.microsoft.com/services/service-bus/) a következő témakörökben talál további információt.
 
 * [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-architektúra](service-bus-architecture.md)
-
 
 
 

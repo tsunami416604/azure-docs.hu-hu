@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 11/15/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
+ms.sourcegitcommit: 3ed7c49603891b9719819143003d27888f800a95
+ms.openlocfilehash: 21a7feb9eb2588643ffc67408de9f8e60aff7798
 
 
 ---
@@ -50,9 +50,9 @@ Ha a kapacitás módosításához újraalkalmaz egy sablont, akkor lehetőség v
 Az automatikusan méretezett méretezési csoportok létrehozásának lépéseiről bővebben az [Automatically Scale Machines in a Virtual Machine Scale Set](virtual-machine-scale-sets-windows-autoscale.md) (Gépek automatikus méretezése egy virtuálisgép-méretezési csoportban) című témakörben olvashat.
 
 ## <a name="monitoring-your-vm-scale-set"></a>Virtuálisgép-méretezési csoport figyelése
-Az [Azure Portal](https://portal.azure.com) felsorolja a méretezési csoportokat, és megjeleníti azok alapvető tulajdonságait, valamint a csoportba tartozó virtuális gépeket. A virtuálisgép-méretezési csoportok további részleteit az [Azure erőforrás-kezelővel](https://resources.azure.com) tekintheti meg. A virtuálisgép-méretezési csoportok a Microsoft.Compute erőforrásai, vagyis ezen a webhelyen tekintheti meg őket az alábbi hivatkozások kibontásával:
+Az [Azure-portálon](https://portal.azure.com) megtalálható a méretezési csoportok listája, valamint olyan alapvető tulajdonságok és műveletek, mint a csoportban szereplő virtuális gépek listája és az erőforrás-használati grafikon. A virtuálisgép-méretezési csoportok további részleteit az [Azure erőforrás-kezelővel](https://resources.azure.com) tekintheti meg. A virtuálisgép-méretezési csoportok a Microsoft.Compute erőforrásai, vagyis ezen a webhelyen tekintheti meg őket az alábbi hivatkozások kibontásával:
 
-    subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
+**Előfizetések -> saját előfizetés -> resourceGroups -> szolgáltatók -> Microsoft.Compute -> virtualMachineScaleSets -> saját virtuálisgép-méretezési csoport -> stb.**
 
 ## <a name="vm-scale-set-scenarios"></a>Virtuálisgép-méretezési csoportok használatának esetei
 Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány tipikus esetét sorolja fel. Ezek az esetek néhány magasabb szintű Azure-szolgáltatás (például a Batch, a Service Fabric, az Azure Container Service) használatakor merülhetnek fel.
@@ -71,15 +71,15 @@ Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány ti
    Itt pedig egy másik példa ugyanerre az RDP és a Windows esetében: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
 * **Csatlakozás virtuális gépekhez „jumpbox” segítségével** – Ha ugyanabban a virtuális hálózatban hoz létre egy virtuálisgép-méretezési csoportot és egy különálló virtuális gépet, a különálló virtuális gép és a virtuálisgép-méretezési csoport virtuális gépei kapcsolódhatnak egymáshoz a virtuális hálózat/alhálózat által megadott belső IP-címeik használatával. Ha létrehoz egy nyilvános IP-címet, majd hozzárendeli a különálló virtuális géphez, RDP és SSH segítségével kapcsolódhat a különálló virtuális géphez, majd arról a gépről a virtuálisgép-méretezési csoport példányaihoz. Bizonyára észrevette, hogy egy egyszerű virtuálisgép-méretezési csoport eleve biztonságosabb, mint alapértelmezett konfigurációjában egy nyilvános IP-címmel rendelkező egyszerű különálló virtuális gép.
   
-   [Ez a példasablon egy egyszerű, egy különálló, fő virtuális gépet tartalmazó Mesos-fürtöt hoz létre, amely egy virtuálisgép-méretezési csoport virtuális gépeiből álló fürtöt felügyel.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
+   Ez a sablon például egy egyszerű méretezési csoportot helyez üzembe önálló virtuális géppel: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox)
 * **Terheléselosztás a virtuálisgép-méretezési csoport példányaiban** – Ha virtuális gépek számítási fürtjére a ciklikus időszeletelés módszerével szeretne munkát továbbítani, lehetőség van egy Azure-terheléselosztó megfelelő terheléselosztási szabályokkal való konfigurálására. Mintavételeket adhat meg annak ellenőrzésére, hogy az alkalmazása a portok megadott protokollal, intervallummal és kérelmi útvonallal való pingelésével fut-e. Az Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) szintén támogatja a méretezési csoportokat, több más kifinomult terheléselosztási esettel együtt.
   
-   [Ez a példasablon IIS-webkiszolgálón futó virtuális gépek virtuálisgép-méretezési csoportját hozza létre, és terheléselosztó segítségével osztja el az egyes virtuális gépeket érő terhelést. Emellett a HTTP-protokoll használatával pingel egy adott URL-címet az egyes virtuális gépeken.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) (tekintse meg a Microsoft.Network/loadBalancers erőforrástípust, valamint a networkProfile és az extensionProfile objektumot a virtualMachineScaleSet osztályban)
-* **Virtuálisgép-méretezési csoport üzembe helyezése számítási fürtként egy PaaS-fürtkezelőben** – A virtuálisgép-méretezési csoportokat néha következő generációs feldolgozói szerepkörnek is nevezik. Ez egy valós leírás, de fennáll esetében annak a kockázata, hogy a méretezési csoport funkcióit összekeverik a PaaS v1 feldolgozói szerepkör funkcióival. A virtuálisgép-méretezési csoportok bizonyos értelemben valódi „feldolgozói szerepkört” vagy feldolgozói erőforrást biztosítanak, amelyben platform- és futásidő-független, testreszabható és az Azure Resource Manager IaaS szolgáltatásába integrálható általános számítási erőforrást nyújtanak.
+   Az alábbi példa egy Apache webkiszolgálókat futtató virtuálisgép-méretezési csoport létrehozását mutatja be, amely terheléselosztót használ az egyes virtuális gépek terhelésének elosztása érdekében: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl) (tekintse meg a Microsoft.Network/loadBalancers erőforrástípust és a networkProfile és extensionProfile profilokat a virtualMachineScaleSet méretezési csoportban)
+* **Virtuálisgép-méretezési csoport üzembe helyezése számítási fürtként egy PaaS-fürtkezelőben** – A virtuálisgép-méretezési csoportokat néha következő generációs feldolgozói szerepkörnek is nevezik. A leírás érvényes, azonban fennáll a veszélye annak, hogy összekeveri a méretezési csoport funkcióit a PaaS v1 feldolgozói szerepkör funkcióival. A virtuálisgép-méretezési csoportok bizonyos értelemben valódi „feldolgozói szerepkört” vagy feldolgozói erőforrást biztosítanak, amelyben platform- és futásidő-független, testreszabható és az Azure Resource Manager IaaS szolgáltatásába integrálható általános számítási erőforrást nyújtanak.
   
    Bár egy PaaS v1-alapú feldolgozói szerepkör a platform-/futásidő-támogatás tekintetében korlátozott (csak Windows platformú lemezképekkel használható), magában foglal olyan szolgáltatásokat is, mint a virtuális IP-címek felcserélése, konfigurálható frissítési beállítások, futásidő- és alkalmazástelepítés-specifikus beállítások, amelyek vagy nem érhetők *még* el a virtuálisgép-méretezési csoportokban, vagy más magasabb szintű PaaS-szolgáltatások, például Service Fabric részeként vásárolhatók meg. Mindezt szem előtt tartva a virtuálisgép-méretezési csoportok PaaS-szolgáltatást támogató infrastruktúrának is tekinthetők. Vagyis a PaaS megoldások, például a Service Fabric vagy az olyan fürtkezelők, mint a Mesos, méretezhető számítási rétegként épülhetnek rá a virtuálisgép-méretezési csoportokra.
   
-   [Ez a példasablon egy egyszerű, egy különálló, fő virtuális gépet tartalmazó Mesos-fürtöt hoz létre, amely egy virtuálisgép-méretezési csoport virtuális gépeiből álló fürtöt felügyel.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json) A virtuálisgép-méretezési csoportokra építve az [Azure Container Service](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/) későbbi verziói e forgatókönyv összetettebb és jobban megerősített verzióit fogják alkalmazni.
+   Erre a megközelítésre példa az Azure Container Service, amely egy tárlóvezénylővel rendelkező méretezési csoportokon alapuló fürtöt helyez üzembe: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos).
 
 ## <a name="vm-scale-set-performance-and-scale-guidance"></a>A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
 * Több virtuálisgép-méretezési csoportban egyszerre legfeljebb csak 500 virtuális gépet hozzon létre.
@@ -100,7 +100,7 @@ Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány ti
 
 **K.** Támogatott az adatlemezek használata a virtuálisgép-méretezési csoportokon belül?
 
-**V.** Az eredeti kiadásban nem. A következő adattárolási lehetőségek állnak rendelkezésre:
+**V.** Az eredeti kiadás nem tartalmazza (bár az adatlemezek jelenleg előzetes verzióban elérhetők). A következő adattárolási lehetőségek állnak rendelkezésre:
 
 * Azure Files (SMB-megosztásos meghajtók)
 * Operációs rendszer meghajtója
@@ -148,6 +148,6 @@ Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány ti
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

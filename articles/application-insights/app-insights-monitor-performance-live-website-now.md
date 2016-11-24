@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: 79819619ff7f25ba1097fe12f2da7453a1fcb4f1
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
-*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
-Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat a Visual Studio Application Insights használatával. Ha az alkalmazásokat egy helyszíni IIS-kiszolgáló működteti, telepítse az Állapotfigyelőt; vagy ha Azure-webalkalmazások, illetve egy Azure VM-en futnak, telepítheti az Application Insights bővítményt. (Külön cikkek érhetők el az [élő J2EE-webalkalmazások](app-insights-java-live.md) és az [Azure Cloud Services](app-insights-cloudservices.md) kialakításáról.)
+
+Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat az Azure Application Insights használatával. Ha az alkalmazásokat egy helyszíni IIS-kiszolgáló működteti, telepítse az Állapotfigyelőt; vagy ha Azure-webalkalmazások, illetve egy Azure VM-en futnak, telepítheti az Application Insights bővítményt. (Külön cikkek érhetők el az [élő J2EE-webalkalmazások](app-insights-java-live.md) és az [Azure Cloud Services](app-insights-cloudservices.md) kialakításáról.)
 
 ![mintadiagramok](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -38,8 +38,8 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 | --- | --- | --- |
 | Kérések és kivételek |Igen |Igen |
 | [Részletes kivételek](app-insights-asp-net-exceptions.md) | |Igen |
-| [Függőségek diagnosztikája](app-insights-asp-net-dependencies.md) |.NET 4.6+ esetén |Igen |
-| [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) | |IIS vagy Azure-felhőszolgáltatás, nem Azure-webalkalmazás |
+| [Függőségek diagnosztikája](app-insights-asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
+| [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) | |IIS vagy Azure-felhőszolgáltatás, de nem Azure-webalkalmazás |
 | [API egyéni telemetriához][api] |Igen | |
 | [Nyomkövetési napló integrációja](app-insights-asp-net-trace-logs.md) |Igen | |
 | [Lapmegtekintések és felhasználói adatok](app-insights-javascript.md) |Igen | |
@@ -65,9 +65,9 @@ Ehhez [Microsoft Azure](http://azure.com)-előfizetésre van szükség.
 
     ![Válasszon egy alkalmazást és egy erőforrást.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    Általában új erőforrás és [erőforráscsoport][roles] konfigurálását választja.
+    Általában új erőforrás és [erőforráscsoport][szerepkörök] konfigurálását választja.
 
-    Ellenkező esetben használjon meglévő erőforrást, ha már beállított [webes teszteket][availability] a helyéhez, vagy [webes ügyfélfigyelést][ügyfél].
+    Ellenkező esetben használjon meglévő erőforrást, ha már beállított [webes teszteket][rendelkezésre állás] a helyéhez, vagy [webes ügyfélfigyelést][ügyfél].
 5. Indítsa újra az IIS-t.
 
     ![Válassza az Újraindítás gombot a párbeszédpanel tetején.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
@@ -214,9 +214,9 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 * letölti a legújabb Application Insights SDK-t a kiszolgálóra.
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
-* [Létrehozhat webes teszteket][availability] annak biztosításához, hogy a hely elérhető maradjon.
-* [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
-* [Webesügyfél-telemetriát adhat hozzá][usage], hogy lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
+* [Létrehozhat webes teszteket][rendelkezésre állás] annak biztosításához, hogy a hely elérhető maradjon.
+* [Eseményeket és naplókat kereshet][diagnosztika], amelyek segítenek a problémák diagnosztizálásában.
+* [Webesügyfél-telemetriát adhat hozzá][használat], hogy lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
 * [Application Insights SDK-t adhat a webszolgáltatás kódjához][greenbrown], hogy nyomkövetési és naplóhíváskat szúrhasson be a kiszolgálókódba.
 
 <!--Link references-->
@@ -232,6 +232,6 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

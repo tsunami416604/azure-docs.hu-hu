@@ -16,27 +16,27 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 98faa2eb9e76b1933e1f5f37279c36312830a62c
 
 
 ---
-# <a name="create-a-vnet-with-a-sitetosite-connection-using-powershell"></a>Virtuális hálózat létrehozása helyek közötti kapcsolattal a PowerShell használatával
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-powershell"></a>Virtuális hálózat létrehozása helyek közötti kapcsolattal a PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-átjárókapcsolat a helyszíni hálózathoz az Azure Resource Manager-alapú üzemi modell használatával. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
 
-![Helyek közötti diagram](./media/vpn-gateway-create-site-to-site-rm-powershell/s2srmps.png "site-to-site") 
+![Helyek közötti diagram](./media/vpn-gateway-create-site-to-site-rm-powershell/s2srmps.png "site-to-site")
 
-### <a name="deployment-models-and-methods-for-sitetosite-connections"></a>Üzembe helyezési modellek és módszerek a helyek közötti kapcsolatokhoz
+### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>Üzembe helyezési modellek és módszerek a helyek közötti kapcsolatokhoz
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
-A helyek közötti konfigurációkhoz elérhető üzemi modellek és módszerek az alábbi táblázatban láthatók. Amint a konfigurációs lépeseket tartalmazó cikk elérhetővé válik, egy arra mutató közvetlen hivatkozás szerepel majd ebben a táblázatban. 
+A helyek közötti konfigurációkhoz elérhető üzemi modellek és módszerek az alábbi táblázatban láthatók. Amint a konfigurációs lépeseket tartalmazó cikk elérhetővé válik, egy arra mutató közvetlen hivatkozás szerepel majd ebben a táblázatban.
 
 [!INCLUDE [site-to-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
@@ -60,7 +60,7 @@ Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő m
 
 Keresse meg a fiókot az előfizetésekben.
 
-    Get-AzureRmSubscription 
+    Get-AzureRmSubscription
 
 Válassza ki a használni kívánt előfizetést.
 
@@ -74,7 +74,7 @@ Ha már rendelkezik /29-es vagy nagyobb átjáró-alhálózattal ellátott virtu
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="to-create-a-virtual-network-and-a-gateway-subnet"></a>Virtuális hálózat és átjáró-alhálózat létrehozása
-A következő minta segítségével hozzon létre egy virtuális hálózatot és egy átjáró-alhálózatot. Az itt szerepelő értékeket cserélje ki a sajátjaival. 
+A következő minta segítségével hozzon létre egy virtuális hálózatot és egy átjáró-alhálózatot. Az itt szerepelő értékeket cserélje ki a sajátjaival.
 
 Először is hozzon létre egy erőforráscsoportot:
 
@@ -82,7 +82,7 @@ Először is hozzon létre egy erőforráscsoportot:
 
 A következő lépés a virtuális hálózat létrehozása. Ellenőrizze, hogy a megadott címterek nincsenek átfedésben a helyszíni hálózaton található egyéb címterekkel.
 
-A következő minta létrehoz egy *testvnet* nevű virtuális hálózatot és két alhálózatot a következő neveken: *GatewaySubnet* és *Subnet1*. Fontos, hogy létrehozzon egy *GatewaySubnet* nevű alhálózatot. Ha ezt az alhálózatot máshogy nevezi el, a kapcsolat konfigurálása sikertelen lesz. 
+A következő minta létrehoz egy *testvnet* nevű virtuális hálózatot és két alhálózatot a következő neveken: *GatewaySubnet* és *Subnet1*. Fontos, hogy létrehozzon egy *GatewaySubnet* nevű alhálózatot. Ha ezt az alhálózatot máshogy nevezi el, a kapcsolat konfigurálása sikertelen lesz.
 
 Állítsa be a változókat.
 
@@ -107,18 +107,18 @@ Hozza létre az átjáró-alhálózatot.
 
     Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/28 -VirtualNetwork $vnet
 
-Állítsa be a konfigurációt. 
+Állítsa be a konfigurációt.
 
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ## <a name="3-a-namelocalnetaadd-your-local-network-gateway"></a>3. <a name="localnet"></a>Helyi hálózati átjáró hozzáadása
-Virtuális hálózatokban a helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, valamint adja meg a helyi hálózati átjáró címtér-előtagját. 
+Virtuális hálózatokban a helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, valamint adja meg a helyi hálózati átjáró címtér-előtagját.
 
-Az Azure a megadott IP-címelőtagot a helyszíni helyre küldendő adatforgalom azonosítására használja. Ez azt jelenti, hogy meg kell adnia minden egyes olyan címelőtagot, amelyet a helyi hálózati átjáróhoz kíván társítani. A helyszíni hálózat módosításakor ezek az előtagok egyszerűen frissíthetők. 
+Az Azure a megadott IP-címelőtagot a helyszíni helyre küldendő adatforgalom azonosítására használja. Ez azt jelenti, hogy meg kell adnia minden egyes olyan címelőtagot, amelyet a helyi hálózati átjáróhoz kíván társítani. A helyszíni hálózat módosításakor ezek az előtagok egyszerűen frissíthetők.
 
 PowerShell-példák használatakor vegye figyelembe a következőket:
 
-* A helyszíni VPN-eszköz IP-címe: *GatewayIPAddress*. A VPN-eszköz nem lehet NAT mögött. 
+* A helyszíni VPN-eszköz IP-címe: *GatewayIPAddress*. A VPN-eszköz nem lehet NAT mögött.
 * A helyszíni címtér az *AddressPrefix*.
 
 Helyi hálózati átjáró hozzáadása egyetlen címelőtaggal:
@@ -148,17 +148,17 @@ Az átjáró konfigurációja meghatározza az alhálózatot és a használandó
 
     $vnet = Get-AzureRmVirtualNetwork -Name testvnet -ResourceGroupName testrg
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-    $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
+    $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 
 ## <a name="a-namecreategatewaya6-create-the-virtual-network-gateway"></a><a name="CreateGateway"></a>6. Virtuális hálózati átjáró létrehozása
-Ebben a lépésben a virtuális hálózati átjárót fogja létrehozni. Az átjáró létrehozása hosszú időt vehet igénybe. Gyakran 45 percig vagy tovább is tarthat. 
+Ebben a lépésben a virtuális hálózati átjárót fogja létrehozni. Az átjáró létrehozása hosszú időt vehet igénybe. Gyakran 45 percig vagy tovább is tarthat.
 
 Használja a következő értékeket:
 
-* A webhelyek közötti konfiguráció *-GatewayType* paraméterének értéke: *Vpn*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik. 
-* A *-VpnType* típus a következők valamelyike lehet: *RouteBased* (egyes dokumentumokban Dinamikus átjáró néven szerepel) vagy *PolicyBased* (egyes dokumentumokban Statikus átjáró néven szerepel). További információk a VPN-átjárótípusokról: [Információk a VPN-átjárókról](vpn-gateway-about-vpngateways.md#vpntype).
+* A webhelyek közötti konfiguráció *-GatewayType* paraméterének értéke: *Vpn*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. Más átjáró-konfigurációk például -GatewayType ExpressRoute típus alkalmazását igényelhetik.
+* A *-VpnType* típus a következők valamelyike lehet: *RouteBased* (egyes dokumentumokban Dinamikus átjáró néven szerepel) vagy *PolicyBased* (egyes dokumentumokban Statikus átjáró néven szerepel). További információk a VPN-átjárótípusokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 * A *-GatewaySku* paraméter lehetséges értékei: *Alapszintű*, *Standard* vagy *HighPerformance*.     
-  
+
         New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
         -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
         -VpnType RouteBased -GatewaySku Standard
@@ -171,7 +171,7 @@ A virtuális hálózati átjáró IP-címét az alábbi minta alapján keresheti
     Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg
 
 ## <a name="a-namecreateconnectiona8-create-the-vpn-connection"></a><a name="CreateConnection"></a>8. VPN-kapcsolat létrehozása
-Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a `-ConnectionType` értéke: *IPsec*. 
+Ezután hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. Vegye figyelembe, hogy helyek közötti kapcsolat esetében a `-ConnectionType` értéke: *IPsec*.
 
 Állítsa be a változókat.
 
@@ -184,7 +184,7 @@ Hozza létre a kapcsolatot.
     -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
     -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
-A kapcsolat rövid időn belül létrejön. 
+A kapcsolat rövid időn belül létrejön.
 
 ## <a name="a-nametoverifyato-verify-a-vpn-connection"></a><a name="toverify"></a>VPN-kapcsolat ellenőrzése
 A VPN-kapcsolat ellenőrzése többféleképpen is történhet.
@@ -192,7 +192,7 @@ A VPN-kapcsolat ellenőrzése többféleképpen is történhet.
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
 ## <a name="a-namemodifyato-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása
-Ha módosítania kell a helyi hálózati átjáró előtagjait, használja a következő utasításokat. Két utasításcsoportot adtunk meg. Ezek közül aszerint választhat, hogy az átjárókapcsolat létre lett-e már hozva. 
+Ha módosítania kell a helyi hálózati átjáró előtagjait, használja a következő utasításokat. Két utasításcsoportot adtunk meg. Ezek közül aszerint választhat, hogy az átjárókapcsolat létre lett-e már hozva.
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
@@ -200,9 +200,8 @@ Ha módosítania kell a helyi hálózati átjáró előtagjait, használja a kö
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-* A virtuális hálózatokhoz hozzáadhat virtuális gépeket. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+* A virtuális hálózatokhoz hozzáadhat virtuális gépeket. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
-
 
 
 

@@ -13,19 +13,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
-ms.date: 08/11/2016
+ms.date: 11/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06707b45944ee6b0810fbd45abbf69dccc1e00e1
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
 
 
 ---
 # <a name="nosql-nodejs-tutorial-documentdb-nodejs-console-application"></a>NoSQL Node.js oktatóanyag: DocumentDB Node.js-konzolalkalmazás
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
-> 
+> * [C++](documentdb-cpp-get-started.md)
 > 
 
 Üdvözöljük az Azure DocumentDB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely DocumentDB-erőforrásokat (pl. Node-adatbázisokat) hoz létre és kérdez le.
@@ -52,10 +53,11 @@ Most pedig lássunk neki!
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
+    * Vagy használhatja az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md) ebben az oktatóanyagban.
 * [Node.js](https://nodejs.org/)-verzió: 0.10.29-s vagy újabb.
 
 ## <a name="step-1-create-a-documentdb-account"></a>1. lépés: DocumentDB-fiók létrehozása
-Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel.
+Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha a DocumentDB Emulatort használja, kövesse az [Azure DocumentDB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre a [Node.js alkalmazás beállítása](#SetupNode) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -622,6 +624,6 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,7 +15,7 @@ A File Storage gyakori használati módjai többek között:
 ## <a name="file-storage-concepts"></a>A fájltárolóval kapcsolatos fogalmak
 A File Storage a következő összetevőkből áll:
 
-![files-concepts][files-concepts]
+![files-concepts](./media/storage-file-concepts-include/files-concepts.png)
 
 * **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
 * **Megosztás:** A File Storage-megosztás egy SMB-fájlmegosztás az Azure-ban. 
@@ -31,8 +31,7 @@ A File Storage a következő összetevőkből áll:
 
 A megosztások, könyvtárak és fájlok elnevezésére vonatkozó részleteket lásd: [Naming and Referencing Shares, Directories, Files, and Metadata](http://msdn.microsoft.com/library/azure/dn167011.aspx) (Megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása).
 
-[files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

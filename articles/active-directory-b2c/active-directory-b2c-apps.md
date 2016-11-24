@@ -15,13 +15,13 @@ ms.topic: hero-article
 ms.date: 07/22/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d36102549550515e516522ecbd964cc7bd1b4d4
+ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
+ms.openlocfilehash: a7c95f9219920932d56487c0e9b96499cc963af0
 
 
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Alkalmazások típusai
-Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md#getting-started).
+Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md#get-started).
 
 ## <a name="the-basics"></a>Az alapok
 Az Azure AD B2C-t használó alkalmazásokat az [Azure Portalon](https://portal.azure.com/) keresztül regisztrálni kell az Ön [B2C-címtárában](active-directory-b2c-get-started.md). Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz:
@@ -75,7 +75,7 @@ A webalkalmazásban a [szabályzat](active-directory-b2c-reference-policies.md) 
 
 A felhasználó identitásának ellenőrzéséhez elegendő az Azure AD-tól kapott nyilvános aláírókulcs segítségével ellenőrizni a `id_token`érvényességét. Ezzel egyúttal beállít egy munkamenetcookie-t is, amely a következő lapkérések során azonosítja a felhasználót.
 
-Ha szeretné élőben is megtekinteni a folyamatot, próbálja ki valamelyik webalkalmazás-bejelentkezési kódmintát [a kezdeti lépéseket bemutató cikkből](active-directory-b2c-overview.md#getting-started).
+Ha szeretné élőben is megtekinteni a folyamatot, próbálja ki valamelyik webalkalmazás-bejelentkezési kódmintát [a kezdeti lépéseket bemutató cikkből](active-directory-b2c-overview.md#get-started).
 
 A bejelentkezés biztosítása mellett a webkiszolgáló-alkalmazásban szükség lehet webes háttérszolgáltatások elérésére is. Ebben az esetben a webalkalmazást egy némileg különböző [OpenID Connect-folyamat](active-directory-b2c-reference-oidc.md) elvégzésére is be lehet állítani, amelynek keretében hitelesítési kódok és frissítési jogkivonatok segítségével szerzi be a jogkivonatokat. Ezt a folyamatot a következő, [Webes API-k](#web-apis) című fejezet írja le.
 
@@ -96,8 +96,8 @@ Accept: application/json
 
 > [!NOTE]
 > Az Azure AD B2C jelenleg csak azokat a webes API-kat támogatja, amelyekhez a saját, jól ismert ügyfeleikkel lehet hozzáférni. Az elkészült alkalmazás tartalmazhat például egy iOS-alkalmazást, egy Android-alkalmazást, valamint egy háttérben futó webes API-t. Ez az architektúra már most is teljes támogatást élvez. A rendszer ugyanakkor jelenleg nem támogatja, hogy ugyanezt az API-t egy partnerügyfél (például egy másik iOS-alkalmazás) is elérje. Az elkészült alkalmazás összetevőinek egyazon alkalmazásazonosítót kell használniuk.
-> 
-> 
+>
+>
 
 A webes API számos különböző típusú ügyféltől (például webalkalmazásoktól, asztali és mobilalkalmazásoktól, egylapos alkalmazásoktól, kiszolgálóoldali démonoktól vagy más webes API-któl) képes jogkivonatokat fogadni. Az alábbiakban egy webes API-t meghívó webalkalmazás teljes folyamatára láthat példát:
 
@@ -105,7 +105,7 @@ A webes API számos különböző típusú ügyféltől (például webalkalmazá
 
 Ha többet szeretne tudni a hitelesítési kódokról, frissítési jogkivonatokról, valamint a jogkivonatok lekérésének lépéseiről, olvasson az [OAuth 2.0-protokollról](active-directory-b2c-reference-oauth-code.md).
 
-Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára az Azure AD B2C segítségével, olvassa el a [kezdeti lépéseket bemutató cikk](active-directory-b2c-overview.md#getting-started) webes API-kra vonatkozó oktatóanyagát.
+Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára az Azure AD B2C segítségével, olvassa el a [kezdeti lépéseket bemutató cikk](active-directory-b2c-overview.md#get-started) webes API-kra vonatkozó oktatóanyagát.
 
 ## <a name="mobile-and-native-apps"></a>Mobil- és natív alkalmazások
 Az eszközökre telepített alkalmazások (többek között a mobil- és asztali alkalmazások) gyakran igényelnek hozzáférést háttérszolgáltatásokhoz vagy webes API-khoz a felhasználók nevében. Az Azure AD B2C és az [OAuth 2.0 hitelesítésikód-folyamata](active-directory-b2c-reference-oauth-code.md) segítségével egyedi identitáskezelési eszközöket adhat a natív alkalmazásokhoz, valamint biztonságosan megoldhatja a háttérszolgáltatások behívását is.  
@@ -114,8 +114,8 @@ Ebben a folyamatban az alkalmazás végrehajtja a [szabályzatokat](active-direc
 
 > [!NOTE]
 > Az Azure AD B2C jelenleg csak azon jogkivonatokat támogatja, amelyek egy alkalmazás saját háttér-webszolgáltatásának az elérésére szolgálnak. Az elkészült alkalmazás tartalmazhat például egy iOS-alkalmazást, egy Android-alkalmazást, valamint egy háttérben futó webes API-t. Ez az architektúra már most is teljes támogatást élvez. A rendszer jelenleg nem támogatja azonban azt, hogy az iOS-alkalmazás OAuth 2.0-hozzáférési jogkivonatok segítségével hozzáférjen a partneri webes API-khoz. Az elkészült alkalmazás összetevőinek egyazon alkalmazásazonosítót kell használniuk.
-> 
-> 
+>
+>
 
 ![Natív alkalmazás, sávok](./media/active-directory-b2c-apps/native.png)
 
@@ -125,16 +125,15 @@ Az Azure AD B2C jelenleg nem támogatja a következő típusú alkalmazásokat. 
 ### <a name="single-page-apps-javascript"></a>Egylapos alkalmazások (JavaScript)
 Számos modern alkalmazás egylapos, általában JavaScriptben írt kezelőfelületet használ. Gyakran alkalmazott keretrendszer ezek esetében az AngularJS, az Ember.js vagy a Durandal. A nyilvánosan elérhető Azure AD szolgáltatás az OAuth 2.0 típusú implicit engedélyezési folyamat által támogatja ezeket az alkalmazásokat. Az Azure AD B2C-ben azonban még nem érhető el ez a folyamat.
 
-### <a name="daemonsserverside-apps"></a>Démonok/kiszolgálóoldali alkalmazások
+### <a name="daemonsserver-side-apps"></a>Démonok/kiszolgálóoldali alkalmazások
 A hosszú futású folyamatokat tartalmazó, illetve a felhasználó jelenléte nélkül is működő alkalmazások esetében szükséges lehetőséget adni a biztonságos erőforrások, például webes API-k elérésére. Ezek az alkalmazások saját identitásuk (azaz nem a felhasználó delegált identitása), valamint az OAuth 2.0 ügyfél-hitelesítő adatok folyamata segítségével tudják elvégezni a hitelesítést és lekérni a jogkivonatokat.
 
 Az Azure AD B2C jelenleg nem támogatja a folyamatot. Ezek az alkalmazások csak akkor képesek a jogkivonatok lekérésére, ha már végbement egy interaktív felhasználói folyamat.
 
-### <a name="web-api-chains-onbehalfof-flow"></a>Webes API-láncok (meghatalmazásos folyamat)
+### <a name="web-api-chains-on-behalf-of-flow"></a>Webes API-láncok (meghatalmazásos folyamat)
 Számos architektúrában szerepelnek olyan webes API-k, amelyek más, alsóbb rétegbeli webes API-kat hívnak meg, és mindkét API biztonságát az Azure AD B2C garantálja. Ez gyakori a webes API-háttérrel rendelkező natív ügyfelek esetében. Ez aztán meghív egy Microsoft online szolgáltatást, például az Azure AD Graph API-t.
 
 Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitelesítő adatok megadásával (vagy más néven a meghatalmazásos folyamat) segítségével valósítható meg.  A meghatalmazásos folyamatot azonban még nem implementáltuk az Azure AD B2C-be.
-
 
 
 

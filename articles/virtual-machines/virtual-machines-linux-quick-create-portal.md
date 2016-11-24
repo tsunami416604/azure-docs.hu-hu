@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/28/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1446cd8892e14988ff428eaa03233f8e9aefb8a
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 3ad64861bc4c3b0a938c75990fc516ef634943ef
 
 
 ---
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azur
 Követelmények:
 
 * [egy Azure-fiók](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH nyilvános- és titkoskulcs-fájlok](virtual-machines-linux-mac-create-ssh-keys.md)
+* [SSH nyilvános- és titkoskulcs-fájlok](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="sign-in"></a>Bejelentkezés
 Miután bejelentkezett az Azure Portalra Azure-fiókjának hitelesítő adataival, kattintson a bal felső sarokban található **+ Új** elemre:
@@ -80,7 +80,7 @@ Nyissa meg a Nyilvános IP-címek menüt a hálózati kártya beállításai kö
 ## <a name="ssh-to-the-vm"></a>SSH–kapcsolat létrehozása a virtuális géppel
 Csatlakozzon az SSH-n keresztül a nyilvános IP-címhez a nyilvános SSH-kulcs használatával.  Mac vagy Linux munkaállomáson közvetlenül a terminálról hozhatja létre az SSH-kapcsolatot. Windows munkaállomásról a PuTTY, a MobaXTerm vagy a Cygwin használatával indíthat SSH-kapcsolatot Linuxra.  Ha még nem történt meg, ezzel a dokumentummal Windows-munkaállomása felkészíthető az SSH-kapcsolatra a Linux rendszerrel.
 
-[Az SSH-kulcsok és a Windows együttes használata az Azure-ban](virtual-machines-linux-ssh-from-windows.md)
+[Az SSH-kulcsok és a Windows együttes használata az Azure-ban](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ```
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
@@ -89,9 +89,9 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ## <a name="next-steps"></a>Következő lépések
 Gyorsan létrehozott egy Linux virtuális gépet tesztelési és bemutatási célokra. Az infrastruktúrának megfelelően beállított Linux virtuális gép létrehozásához kattintson az alábbi cikkek valamelyikére.
 
-* [Linux virtuális gép létrehozása az Azure-ban sablonok alapján](virtual-machines-linux-cli-deploy-templates.md)
-* [SSH-védelemmel rendelkező Linux virtuális gép létrehozása az Azure-ban sablonok használatával](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-* [Linux virtuális gép létrehozása az Azure parancssori felülettel](virtual-machines-linux-create-cli-complete.md)
+* [Linux virtuális gép létrehozása az Azure-ban sablonok alapján](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SSH-védelemmel rendelkező Linux virtuális gép létrehozása az Azure-ban sablonok használatával](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux virtuális gép létrehozása az Azure parancssori felülettel](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 

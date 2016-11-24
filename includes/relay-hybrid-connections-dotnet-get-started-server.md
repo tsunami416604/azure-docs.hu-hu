@@ -3,17 +3,21 @@
 
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft Azure Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft.Azure.Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
 ### <a name="write-some-code-to-receive-messages"></a>Írjon egy kódrészletet az üzenetek fogadásához
-1. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
+1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez.
    
-    ```cs
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
 2. Adjon állandókat a `Program` osztályhoz a Hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre.
    
-    ```cs
+    ```csharp
     private const string RelayNamespace = "{RelayNamespace}";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
@@ -21,7 +25,7 @@
     ```
 3. Adjon hozzá egy `ProcessMessagesOnConnection` nevű új metódust a `Program` osztályhoz, például a következőképpen:
    
-    ```cs
+    ```csharp
     // Method is used to initiate connection
     private static async void ProcessMessagesOnConnection(HybridConnectionStream relayConnection, CancellationTokenSource cts)
     {
@@ -72,7 +76,7 @@
     ```
 4. Adjon hozzá egy `RunAsync` nevű másik új metódust a `Program` osztályhoz, például a következőképpen:
    
-    ```cs
+    ```csharp
     private static async Task RunAsync()
     {
         var cts = new CancellationTokenSource();
@@ -117,13 +121,13 @@
     ```
 5. Adja hozzá a következő kódsort a `Main` metódushoz a `Program` osztályban.
    
-    ```cs
+    ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
     A Program.cs fájlnak így kell kinéznie:
    
-    ```cs
+    ```csharp
     namespace Server
     {
         using System;
@@ -238,6 +242,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

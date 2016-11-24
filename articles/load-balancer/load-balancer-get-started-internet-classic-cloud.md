@@ -5,7 +5,6 @@ services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: 
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
@@ -16,50 +15,53 @@ ms.workload: infrastructure-services
 ms.date: 03/17/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 171d5cd41d900b83c22e1db4bc514471a3d4b556
+ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
+ms.openlocfilehash: 6a471050a03c8399b0715c331b54636c68fd71cb
 
 ---
 
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Hozzon létre egy internetkapcsolattal rendelkező terheléselosztót felhőszolgáltatásokhoz
 
-[!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [klasszikus Azure portál](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-classic-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-classic-cli.md)
+> * [Azure Cloud Services](../load-balancer/load-balancer-get-started-internet-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [azt is megismerheti, hogyan lehet internetkapcsolattal rendelkező terheléselosztót létrehozni az Azure Resource Manager használatával](load-balancer-get-started-internet-arm-cli.md).
+> [!IMPORTANT]
+> Az Azure-erőforrásokkal való munka megkezdése előtt fontos megérteni, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik, a Resource Managerrel és a klasszikussal. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../azure-classic-rm.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különféle eszközök dokumentációit a cikk tetején található fülekre kattintva tekintheti meg. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [azt is megismerheti, hogyan lehet internetkapcsolattal rendelkező terheléselosztót létrehozni az Azure Resource Manager használatával](load-balancer-get-started-internet-arm-ps.md).
 
 A felhőszolgáltatások automatikusan terheléselosztóval vannak konfigurálva, és a szolgáltatásmodell segítségével szabhatók testre.
 
 ## <a name="create-a-load-balancer-using-the-service-definition-file"></a>Terheléselosztó létrehozása a szolgáltatásdefiníciós fájl használatával
 
-Az Azure SDK for .NET 2.5 segítségével végezheti a felhőszolgáltatása frissítését. A felhőszolgáltatások végpontbeállításait a [service definition](https://msdn.microsoft.com/library/azure/gg557553.aspx).csdef fájlban kell elvégezni.
+Az Azure SDK for .NET 2.5 segítségével végezheti a felhőszolgáltatása frissítését. A felhőszolgáltatások végpontbeállításainak kezelése a [szolgáltatásdefiníciós](https://msdn.microsoft.com/library/azure/gg557553.aspx) .csdef fájlban történik.
 
 Az alábbi példa bemutatja, hogyan van konfigurálva egy servicedefinition.csdef fájl egy felhőtelepítéshez:
 
-A felhőbeli üzembe helyezés által generált .csdef-fájl kódrészletének ellenőrzésével megtekintheti a 10000, 10001 és 10002 portokon való HTTP-használathoz konfigurált külső végpontot.
+Ha megtekinti a felhőtelepítés által létrehozott .csdef fájl kódrészletét, láthatja, hogy a külső végpont a 10000, 10001 és 10002 számú portokon, HTTP használatára van konfigurálva.
 
 ```xml
-    <ServiceDefinition name=“Tenant“>
-       <WorkerRole name=“FERole” vmsize=“Small“>
-    <Endpoints>
-        <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
-        <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
-        <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
+<ServiceDefinition name=“Tenant“>
+    <WorkerRole name=“FERole” vmsize=“Small“>
+<Endpoints>
+    <InputEndpoint name=“FE_External_Http” protocol=“http” port=“10000“ />
+    <InputEndpoint name=“FE_External_Tcp“  protocol=“tcp“  port=“10001“ />
+    <InputEndpoint name=“FE_External_Udp“  protocol=“udp“  port=“10002“ />
 
-        <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
+    <InputEndpointname=“HTTP_Probe” protocol=“http” port=“80” loadBalancerProbe=“MyProbe“ />
 
-        <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
-           <AllocatePublicPortFrom>
-              <FixedPortRange min=“10110” max=“10120“  />
-           </AllocatePublicPortFrom>
-        </InstanceInputEndpoint>
-        <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
-    </Endpoints>
-      </WorkerRole>
-    </ServiceDefinition>
+    <InstanceInputEndpoint name=“InstanceEP” protocol=“tcp” localPort=“80“>
+        <AllocatePublicPortFrom>
+            <FixedPortRange min=“10110” max=“10120“  />
+        </AllocatePublicPortFrom>
+    </InstanceInputEndpoint>
+    <InternalEndpoint name=“FE_InternalEP_Tcp” protocol=“tcp“ />
+</Endpoints>
+    </WorkerRole>
+</ServiceDefinition>
 ```
 
 ## <a name="check-load-balancer-health-status-for-cloud-services"></a>Felhőszolgáltatások állapotinformációinak ellenőrzése a terheléselosztóban
@@ -67,12 +69,12 @@ A felhőbeli üzembe helyezés által generált .csdef-fájl kódrészletének e
 Az alábbiakban egy állapotmintára látható példa:
 
 ```xml
-    <LoadBalancerProbes>
-        <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
-    </LoadBalancerProbes>
+<LoadBalancerProbes>
+    <LoadBalancerProbe name=“MyProbe” protocol=“http” path=“Probe.aspx” intervalInSeconds=“5” timeoutInSeconds=“100“ />
+</LoadBalancerProbes>
 ```
 
-A terheléselosztó egyesíti a végpontra és a mintavételre vonatkozó információkat, amelyek alapján létrehozza a szolgáltatás állapotának lekérdezéséhez használható URL-címet a következő formában: http://{virtuális gép dedikált IP-címe}:80/Probe.aspx.
+A terheléselosztó a végpont és a mintavételadatait kombinálva létrehoz egy URL-címet `http://{DIP of VM}:80/Probe.aspx` formában, amely aztán a szolgáltatás állapotának lekérdezéséhez használható.
 
 A szolgáltatás rendszeres időközönként észleli a mintavételeket ugyanarról az IP-címről. Ez az állapotminta iránti kérelem annak a csomópontnak a gazdagépétől érkezik, amelyen a virtuális gép fut. A szolgáltatásnak HTTP 200 állapotkóddal kell válaszolnia ahhoz, hogy a terheléselosztó azt feltételezze, hogy a szolgáltatás kifogástalan állapotban van. Bármilyen más HTTP-állapotkód (például 503) közvetlenül kiveszi a virtuális gépet a rotációból.
 
@@ -91,6 +93,6 @@ További információkért ellenőrizze az [állapotmintát](https://msdn.micros
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

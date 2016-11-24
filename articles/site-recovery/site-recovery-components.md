@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 94250becb238adad7983d4b45939eb988411fca3
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: ef9a7da86e7528d3052f89dbe1eaac6fbb90527c
 
 
 ---
@@ -94,7 +94,7 @@ A következőkre lesz szüksége:
 * [További információk](site-recovery-failback-azure-to-vmware.md) a feladat-visszavételről az Azure Portal webhelyen.
 * [További információk](site-recovery-failback-azure-to-vmware-classic.md) a feladat-visszavételről a klasszikus portálon.
 
-## <a name="replicate-to-azure-hyperv-vms-not-managed-by-vmm"></a>Replikálás az Azure-ba: a VMM által nem felügyelt Hyper-V virtuális gépek
+## <a name="replicate-to-azure-hyper-v-vms-not-managed-by-vmm"></a>Replikálás az Azure-ba: a VMM által nem felügyelt Hyper-V virtuális gépek
 A System Center VMM által nem felügyelt Hyper-V virtuális gépeket a következőképpen replikálhatja az Azure-ba a Site Recovery használatával:
 
 * **Az Azure Portal használatával**: ha a Site Recovery üzembe helyezését az Azure Portalon hajtja végre, a virtuális gépek feladatait a klasszikus tárnak vagy a Resource Managernek adhatja át. [További információk](site-recovery-hyper-v-site-to-azure.md).
@@ -120,7 +120,7 @@ A következőkre lesz szüksége:
 * [További információk](site-recovery-hyper-v-site-to-azure.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
 * [További információk](site-recovery-hyper-v-site-to-azure-classic.md#azure-prerequisites) a klasszikus portálon végzett üzembe helyezésre vonatkozó követelményekről.
 
-## <a name="replicate-to-azure-hyperv-vms-managed-by-vmm"></a>Replikálás az Azure-ba: a VMM által felügyelt Hyper-V virtuális gépek
+## <a name="replicate-to-azure-hyper-v-vms-managed-by-vmm"></a>Replikálás az Azure-ba: a VMM által felügyelt Hyper-V virtuális gépek
 A VMM-felhőkben lévő Hyper-V virtuális gépeket a következőképpen replikálhatja az Azure-ba a Site Recovery használatával:
 
 * **Az Azure Portal használatával**: ha a Site Recovery üzembe helyezését az Azure Portalon hajtja végre, a virtuális gépek feladatait a klasszikus tárnak vagy a Resource Managernek adhatja át. [További információk](site-recovery-vmm-to-azure.md).
@@ -144,8 +144,8 @@ A következőkre lesz szüksége:
 
 ![VMM-replikáció Azure-ba](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
-* [További információk](site-recovery-vmm-to-azure.md#azure-requirements) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
-* [További információk](site-recovery-vmm-to-azure-classic.md#before-you-start) a klasszikus portálon végzett üzembe helyezésre vonatkozó követelményekről.
+* [További információk](site-recovery-vmm-to-azure.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
+* [További információk](site-recovery-vmm-to-azure-classic.md) a klasszikus portálon végzett üzembe helyezésre vonatkozó követelményekről.
 
 ## <a name="replicate-to-a-secondary-site-vmware-virtual-machines-or-physical-servers"></a>Replikálás másodlagos helyre: VMware virtuális gépek vagy fizikai kiszolgálók
 Ha VMware virtuális gépeket vagy fizikai kiszolgálókat szeretne egy másodlagos helyre replikálni, töltse le az Azure Site Recovery-előfizetés részét képező InMage Scout segédprogramot. A segédprogram az Azure Portalról vagy a klasszikus Azure portálról tölthető le.
@@ -167,7 +167,7 @@ A következőkre lesz szüksége:
 
 ![VMware és VMware közötti replikáció](./media/site-recovery-components/vmware-to-vmware.png)
 
-## <a name="replicate-to-a-secondary-site-hyperv-vms-managed-by-vmm"></a>Replikálás másodlagos helyre: a VMM által felügyelt Hyper-V virtuális gépek
+## <a name="replicate-to-a-secondary-site-hyper-v-vms-managed-by-vmm"></a>Replikálás másodlagos helyre: a VMM által felügyelt Hyper-V virtuális gépek
 A System Center VMM által felügyelt Hyper-V virtuális gépeket a következőképpen replikálhatja egy másodlagos adatközpontba a Site Recovery használatával:
 
 * **Az Azure Portal használatával**: amikor a Site Recovery üzembe helyezését az Azure Portalon végzi. [További információk](site-recovery-hyper-v-site-to-azure.md).
@@ -193,7 +193,7 @@ A következőkre lesz szüksége:
 * [További információk](site-recovery-vmm-to-vmm.md#azure-prerequisites) az Azure Portalon végzett üzembe helyezésre vonatkozó követelményekről.
 * * [További információk](site-recovery-vmm-to-vmm-classic.md#before-you-start) a klasszikus Azure portálon végzett üzembe helyezésre vonatkozó követelményekről.
 
-## <a name="replicate-to-a-secondary-site-with-san-replication-hyperv-vms-managed-by-vmm"></a>Replikálás másodlagos helyre SAN-replikációval: a VMM által felügyelt Hyper-V virtuális gépek
+## <a name="replicate-to-a-secondary-site-with-san-replication-hyper-v-vms-managed-by-vmm"></a>Replikálás másodlagos helyre SAN-replikációval: a VMM által felügyelt Hyper-V virtuális gépek
 A VMM-felhőkben felügyelt Hyper-V virtuális gépeket a klasszikus Azure portál használatával replikálhatja a SAN-replikációt alkalmazó másodlagos helyre. Ez a forgatókönyv jelenleg nem támogatott az új Azure Portalon.
 
 E forgatókönyv esetében a Site Recovery üzembe helyezése során telepítse az Azure Site Recovery Providert a VMM-kiszolgálókra. A Provider az interneten keresztül koordinálja és valósítja meg a Site Recovery szolgáltatással történő replikációt. A rendszer SAN-szinkronreplikálás használatával replikálja az adatokat az elsődleges és másodlagos tárolótömbök között.
@@ -213,8 +213,8 @@ A következőkre lesz szüksége:
 
 [Itt megismerheti](site-recovery-vmm-san.md#before-you-start) az üzembe helyezés feltételeit.
 
-### <a name="onpremises"></a>Helyszíni követelmények
-## <a name="hyperv-protection-lifecycle"></a>A Hyper-V védelem életciklusa
+### <a name="on-premises"></a>Helyszíni követelmények
+## <a name="hyper-v-protection-lifecycle"></a>A Hyper-V védelem életciklusa
 Ez a munkafolyamat bemutatja a Hyper-V virtuális gépek védelmének, replikálásának és feladatátadásának lépéseit.
 
 1. **Védelem engedélyezése**: állítsa be a Site Recovery-tárolót, adja meg a VMM-felhő vagy a Hyper-V-hely replikációs beállításait, majd engedélyezze a virtuális gépek védelmét. A szolgáltatás elindít egy **Védelem engedélyezése** nevű feladatot, amely a **Feladatok** lapon követhető nyomon. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, majd meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően létrehozza az Azure-ba történő replikációt. A **Védelem engedélyezése** nevű feladat ezenfelül meghívja a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódust is, amely teljes körű virtuálisgép-replikációt indít el.
@@ -229,7 +229,6 @@ Ez a munkafolyamat bemutatja a Hyper-V virtuális gépek védelmének, replikál
 
 ## <a name="next-steps"></a>Következő lépések
 [Felkészülés az üzembe helyezésre](site-recovery-best-practices.md)
-
 
 
 

@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2016
+ms.date: 11/11/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: eee65672b3a9615afe2850b0cbc6daa275fc04ec
+ms.sourcegitcommit: 843f0862f9e4d8dc1d40e110710e48ad66716168
+ms.openlocfilehash: fe590e7fc551c175d2f41f5b98e1558a756df806
 
 
 ---
@@ -32,7 +32,7 @@ Az AWS használatával történő hitelesítéshez meg kell határozni az AWS hi
 ## <a name="configure-automation-account"></a>Automation-fiók konfigurálása
 Ahhoz, hogy az Azure Automation és az AWS kommunikáljon egymással, először le kell kérnie AWS hitelesítő adatait, és objektumként eltárolni őket az Azure Automation szolgáltatásban.  Végezze el az [AWS-fiók elérési kulcsának kezelése](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) című dokumentumban leírt lépéseket egy elérési kulcs létrehozásához, és másolja át az **Elérési kulcs azonosítóját** és a **Titkos elérési kulcsot** (vagy le is töltheti kulcsfájlját, hogy egy másik, biztonságos helyen tárolja azt).
 
-Miután létrehozta ás átmásolta AWS biztonsági kulcsait, létre kell hoznia egy hitelesítési objektumot egy Azure Automation fiókhoz, hogy biztonságosan tárolja őket, és hivatkozni tudjon rájuk a forgatókönyvekkel.  Kövesse az [Azure Automation hitelesítő objektumai](automation-credentials.md#creating-a-new-credential-asset) című cikk **Új hitelesítő objektum létrehozása** szakaszában leírt lépéseket, és adja meg a következő információkat:
+Miután létrehozta ás átmásolta AWS biztonsági kulcsait, létre kell hoznia egy hitelesítési objektumot egy Azure Automation fiókhoz, hogy biztonságosan tárolja őket, és hivatkozni tudjon rájuk a forgatókönyvekkel.  Kövesse az [Azure Automation hitelesítő objektumai](automation-credentials.md) című cikk **Új hitelesítő objektum létrehozása** szakaszában leírt lépéseket, és adja meg a következő információkat:
 
 1. A **Név** mezőbe írja be az **AWScred** nevet, vagy egy megfelelő értéket, amely követi az elnevezési szabványait.  
 2. A **Felhasználónév** mezőbe írja be az **Elérési azonosítóját** és a **Titkos elérési kulcsát** a **Jelszó** és **Jelszó megerősítése** mezőbe.   
@@ -42,6 +42,7 @@ Miután létrehozta ás átmásolta AWS biztonsági kulcsait, létre kell hoznia
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

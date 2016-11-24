@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 
 
 ---
@@ -114,7 +114,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
     $myVm = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2"
     ```
    
-    A virtuális gépekhez elérhető méretek listáját lásd: [Sizes for virtual machines in Azure](virtual-machines-windows-sizes.md) (Virtuális gépek méretei az Azure-ban).
+    A virtuális gépekhez elérhető méretek listáját lásd: [Sizes for virtual machines in Azure](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek méretei az Azure-ban).
 3. Konfigurálja a virtuális gép operációsrendszer-beállításait. Ez a parancs beállítja a virtuális gép számítógépnevét, operációs rendszere típusát és a fiókhoz tartozó hitelesítő adatait.
    
     ```powershell
@@ -128,7 +128,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
         -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
     ```
    
-    További információ a rendszerképek kiválasztásáról: [Windows virtuális gépek lemezképeinek navigálása és kiválasztása az Azure-ban a PowerShell vagy a parancssori felület használatával ](virtual-machines-windows-cli-ps-findimage.md).
+    További információ a rendszerképek kiválasztásáról: [Windows virtuális gépek lemezképeinek navigálása és kiválasztása az Azure-ban a PowerShell vagy a parancssori felület használatával ](virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 5. Adja hozzá a konfigurációhoz a létrehozott hálózati adaptert.
    
     ```powershell
@@ -153,8 +153,8 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 ## <a name="next-steps"></a>Következő lépések
 * Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
-* A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
-* A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
+* A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
+* A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
 
 
 

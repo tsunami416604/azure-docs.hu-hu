@@ -1,9 +1,9 @@
 ---
 title: "Java webalkalmazás elemzése az Application Insights használatával | Microsoft Docs"
-description: "A Java-webhely teljesítményének és használatának megfigyelése az Application Insights segítségével. "
+description: "Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. "
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: harelbr
 manager: douge
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc0167ef78eb3ca84e959599473af5935e5da0d0
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 2c3c0c79e62631a42249ea6dc3865e59f26cad53
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
-*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
-Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [észlelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket](app-insights-detect-triage-diagnose.md), és [kód][api-t] írhat annak követéséhez, hogy a felhasználók hogyan használják az alkalmazást.
+
+Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [észlelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket](app-insights-detect-triage-diagnose.md), és [kód][api] írhat annak követéséhez, hogy a felhasználók hogyan használják az alkalmazást.
 
 ![mintaadatok](./media/app-insights-java-get-started/5-results.png)
 
@@ -182,7 +182,7 @@ A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes t�
     </filter-mapping>
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Ha a Spring Web MVC 3.1-es vagy újabb verzióját használja
-Szerkessze úgy ezeket az elemeket, hogy tartalmazzák az Application Insights-csomagot:
+Szerkessze úgy ezeket az elemeket a *-servlet.xml fájlban, hogy tartalmazzák az Application Insights-csomagot:
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -244,11 +244,15 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
   
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
+
+* Ha a kimenő forgalmat át kell irányítani egy tűzfalon, adja meg a `http.proxyHost` és a `http.proxyPort` rendszertulajdonságot. 
+
 * Windows-kiszolgálókon telepítse a következőt:
   
   * [Microsoft Visual C++ újraterjeszthető csomag](http://www.microsoft.com/download/details.aspx?id=40784)
     
     (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
+
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
 A rendszer a nem kezelt kivételeket automatikusan begyűjti:
@@ -328,7 +332,7 @@ Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback
 ## <a name="send-your-own-telemetry"></a>Saját telemetria küldése
 Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 
-* [Nyomon követheti az egyéni eseményeket és mérőszámokat][api-t], hogy megtudja, hogyan használják a felhasználók az alkalmazását.
+* [Nyomon követheti az egyéni eseményeket és mérőszámokat][api], hogy megtudja, hogyan használják a felhasználók az alkalmazását.
 * [Eseményeket és naplókat kereshet][diagnosztika], amelyek segítenek a problémák diagnosztizálásában.
 
 ## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
@@ -360,13 +364,13 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
 [rendelkezésre állás]: app-insights-monitor-web-app-availability.md
 [diagnosztika]: app-insights-diagnostic-search.md
-[Eclipse]: app-insights-java-eclipse.md
+[eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [használat]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

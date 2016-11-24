@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 09/06/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: b54a45ed9472cfc457649a0e32c82259d95c87f0
 
 
 ---
@@ -49,7 +49,7 @@ A rendszerkép kiválasztása után használhatja az alapértelmezett beállít�
 4. Ha végzett, kattintson az **OK** gombra a következő szakaszra való továbblépéshez. 
    
     ![Képernyőkép az **Alapvető beállítások** panel beállításairól az Azure virtuális gép konfigurálásához](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. Válassza ki a virtuális gép [méretét](virtual-machines-windows-sizes.md), majd kattintson a **Kijelölés** elemre a folytatáshoz. 
+5. Válassza ki a virtuális gép [méretét](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), majd kattintson a **Kijelölés** elemre a folytatáshoz. 
    
     ![Képernyőkép a Méret panelen kiválasztható Azure virtuálisgép-méretekről](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. A **Beállítások** panelen módosíthatja a tárolási és hálózati beállításokat. A jelen oktatóanyag esetében fogadja el az alapértelmezett értékeket. Ha megfelelő méretet választott a virtuális gépnek, kipróbálhatja az Azure Premium Storage-ot – ehhez válassza a **Prémium (SSD)** elemet a **Lemez típusa** részen. A módosítások végrehajtása után kattintson az **OK** gombra.
@@ -76,7 +76,7 @@ A rendszerkép kiválasztása után használhatja az alapértelmezett beállít�
    
    ![Képernyőkép a virtuális gép identitásának ellenőrzésére vonatkozó üzenetről](./media/virtual-machines-windows-hero-tutorial/cert-warning.png)
 
-A csatlakozásra tett kísérlet során felmerülő hibákkal kapcsolatban tekintse meg a [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](virtual-machines-windows-troubleshoot-rdp-connection.md) (Windows-alapú Azure virtuális gépek távoli asztali kapcsolatainak hibaelhárítása) című témakört.
+A csatlakozásra tett kísérlet során felmerülő hibákkal kapcsolatban tekintse meg a [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows-alapú Azure virtuális gépek távoli asztali kapcsolatainak hibaelhárítása) című témakört.
 
 Mostantól ugyanúgy használhatja a virtuális gépet, mint bármilyen más kiszolgálót.
 
@@ -88,9 +88,9 @@ Amikor nem használja a virtuális gépet, érdemes leállítani azt, a költsé
 Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra kattintva újraindíthatja.
 
 ## <a name="next-steps"></a>Következő lépések
-* Kísérletezhet az új virtuális gépen az [IIS telepítésével](virtual-machines-windows-hero-role.md). Ez az oktatóanyag azt is bemutatja, hogyan nyithatja meg a 80-as portot a bejövő webes forgalomnak egy hálózati biztonsági csoport (NSG) használatával. 
-* [Létrehozhat Windows rendszerű virtuális gépet a PowerShell használatával](virtual-machines-windows-ps-create.md), vagy [Linux rendszerű virtuális gépet](virtual-machines-linux-quick-create-cli.md) az Azure parancssori felület használatával.
-* Ha érdekli az üzembe helyezés automatizálása, tekintse meg a [Windowsos virtuális gép Resource Manager-sablonnal történő létrehozását ](virtual-machines-windows-ps-template.md) ismertető cikket.
+* Kísérletezhet az új virtuális gépen az [IIS telepítésével](virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ez az oktatóanyag azt is bemutatja, hogyan nyithatja meg a 80-as portot a bejövő webes forgalomnak egy hálózati biztonsági csoport (NSG) használatával. 
+* [Létrehozhat Windows rendszerű virtuális gépet a PowerShell használatával](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), vagy [Linux rendszerű virtuális gépet](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az Azure parancssori felület használatával.
+* Ha érdekli az üzembe helyezés automatizálása, tekintse meg a [Windowsos virtuális gép Resource Manager-sablonnal történő létrehozását ](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető cikket.
 
 
 

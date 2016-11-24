@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 43bb33c1a4386108056b909bef9608087167a30a
+ms.sourcegitcommit: f6fa6511c8d54e191de27fda73aad9feb734191f
+ms.openlocfilehash: cf946c491bc9868b9d79d09c1d019e894ecc39ff
 
 
 ---
-# <a name="configure-a-pointtosite-connection-to-a-vnet-using-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -68,10 +68,10 @@ Ehhez a konfigurációhoz a következő értékeket használjuk: A változókat 
 * **VPN típusa: RouteBased**
 
 ## <a name="before-beginning"></a>Mielőtt hozzálát
-* Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+* Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 * Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md). Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
 
-## <a name="a-namedeclareapart-1-log-in-and-set-variables"></a><a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
+## <a name="a-namedeclareapart-1---log-in-and-set-variables"></a><a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
 Ez a szakasz a bejelentkezést és a konfigurációban használt értékek deklarálását ismerteti. A minta parancsprogramok a deklarált értékeket használják. Módosítsa az értékeket úgy, hogy megfeleljenek a saját környezetének. Azt is megteheti, hogy a deklarált értékeket használja, és gyakorlásként halad végig a lépéseken.
 
 1. Nyissa meg a PowerShell konzolt, és jelentkezzen be az Azure-fiókjába. Ez a parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adatait. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára.
@@ -102,7 +102,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
         $GWIPName = "VNet1GWPIP"
         $GWIPconfName = "gwipconf"
 
-## <a name="a-nameconfigurevnetapart-2-configure-a-vnet"></a><a name="ConfigureVNet"></a>2. rész – Virtuális hálózat konfigurálása
+## <a name="a-nameconfigurevnetapart-2---configure-a-vnet"></a><a name="ConfigureVNet"></a>2. rész – Virtuális hálózat konfigurálása
 1. Hozzon létre egy erőforráscsoportot.
    
         New-AzureRmResourceGroup -Name $RG -Location $Location
@@ -123,7 +123,7 @@ Ez a szakasz a bejelentkezést és a konfigurációban használt értékek dekla
         $pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
         $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
-## <a name="a-namecertificatesapart-3-certificates"></a><a name="Certificates"></a>3. rész – Tanúsítványok
+## <a name="a-namecertificatesapart-3---certificates"></a><a name="Certificates"></a>3. rész – Tanúsítványok
 A tanúsítványokat az Azure használja a VPN-ügyfelek hitelesítésére a pont–hely VPN-kapcsolatokban. A nyilvános tanúsítványadatokat (nem a titkos kulcsot) egy Base-64 kódolású X.509 .cer fájlként exportálja egy vállalati tanúsítványmegoldás által létrehozott főtanúsítványból vagy egy önaláírt főtanúsítványból. Ezután importálja a nyilvános tanúsítványadatokat a főtanúsítványból az Azure-ba. Ezenfelül létre kell hoznia egy ügyféltanúsítványt az ügyfelek főtanúsítványából. Minden egyes ügyfélen, amelynek pont–hely kapcsolattal kell csatlakoznia a virtuális hálózathoz, telepíteni kell egy, a főtanúsítványból létrehozott ügyféltanúsítványt.
 
 ### <a name="a-namecera1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1. A .cer fájl beszerzése a főtanúsítványhoz
@@ -164,7 +164,7 @@ Helyettesítse a fájl elérési útját a sajátjával, majd futtassa a parancs
         $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
         $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
 
-## <a name="a-namecreategatewayapart-4-create-the-vpn-gateway"></a><a name="creategateway"></a>4. lépés – A VPN-átjáró létrehozása
+## <a name="a-namecreategatewayapart-4---create-the-vpn-gateway"></a><a name="creategateway"></a>4. lépés – A VPN-átjáró létrehozása
 Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális hálózat számára. A *-GatewayType* csak **Vpn** lehet, a *-VpnType* pedig csak **RouteBased** lehet. Ennek végrehajtása 45 percig is eltarthat.
 
         New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -172,7 +172,7 @@ Konfigurálja és hozza létre a virtuális hálózati átjárót a virtuális h
         -VpnType RouteBased -EnableBgp $false -GatewaySku Standard `
         -VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
 
-## <a name="a-nameclientconfigapart-5-download-the-vpn-client-configuration-package"></a><a name="clientconfig"></a>5. rész: A VPN-ügyfél konfigurációs csomagjának letöltése
+## <a name="a-nameclientconfigapart-5---download-the-vpn-client-configuration-package"></a><a name="clientconfig"></a>5. rész: A VPN-ügyfél konfigurációs csomagjának letöltése
 Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanúsítványon kívül telepíteni kell a VPN-ügyfélkonfigurációs csomagot is. A windowsos ügyfelekhez érhetők el VPN-ügyfélkonfigurációs csomagok. A VPN-ügyfélcsomag arra vonatkozó információkat tartalmaz, hogy miképpen kell konfigurálnia Windows beépített VPN-ügyfélszoftverét, és konkrétan arra a VPN-re vonatkozik, amellyel kapcsolatot létesít. A csomag nem telepít további szoftvert. További információk: [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md#point-to-site-connections).
 
 1. Az átjáró létrehozása után letöltheti az ügyfél-konfigurációs csomagot. Ebben a példában a 64 bites ügyfél csomag kerül letöltésre. Ha a 32 bites ügyfelet szeretné letölteni, akkor az ’AMD64’ sort cserélje le ’x86’-ra. A VPN-ügyfelet az Azure Portal használatával is letöltheti.
@@ -187,13 +187,13 @@ Az Azure-hoz pont–hely kapcsolattal csatlakozó ügyfelekre az ügyféltanús�
    
     ![VPN-ügyfél](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
-## <a name="a-nameclientcertificateapart-6-install-the-client-certificate"></a><a name="clientcertificate"></a>6. rész – Az ügyféltanúsítvány telepítése
+## <a name="a-nameclientcertificateapart-6---install-the-client-certificate"></a><a name="clientcertificate"></a>6. rész – Az ügyféltanúsítvány telepítése
 Minden ügyfélszámítógépnek rendelkeznie kell egy ügyféltanúsítvánnyal a hitelesítéshez. Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
 1. Másolja a .pfx fájlt az ügyfélszámítógépre.
 2. Kattintson duplán a .pfx fájlra a telepítéshez. Ne módosítsa a telepítés helyét.
 
-## <a name="a-nameconnectapart-7-connect-to-azure"></a><a name="connect"></a>7. rész – Csatlakozás az Azure-hoz
+## <a name="a-nameconnectapart-7---connect-to-azure"></a><a name="connect"></a>7. rész – Csatlakozás az Azure-hoz
 1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Ilyen esetében kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához. 
 2. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
    
@@ -202,7 +202,7 @@ Minden ügyfélszámítógépnek rendelkeznie kell egy ügyféltanúsítvánnyal
    
     ![A kapcsolat létrejött](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "Connection established")
 
-## <a name="a-nameverifyapart-8-verify-your-connection"></a><a name="verify"></a>8. lépés – A kapcsolat ellenőrzése
+## <a name="a-nameverifyapart-8---verify-your-connection"></a><a name="verify"></a>8. lépés – A kapcsolat ellenőrzése
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 2. Tekintse meg az eredményeket. Figyelje meg, hogy a kapott IP-cím azok közül a címek közül való, amelyeket a pont–hely VPN-ügyfél konfigurációjának címkészletében megadott. Az eredmények a következőhöz hasonlóak:
    
@@ -289,11 +289,11 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
         Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
 
 ## <a name="next-steps"></a>Következő lépések
-Felvehet virtuális gépet a virtuális hálózatba. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

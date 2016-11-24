@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/17/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3381396ce198fbcaf13d63510ef12b225735a49
+ms.sourcegitcommit: 2a5905c5dcb36777e7b88d6ac44877fdec72e7a5
+ms.openlocfilehash: 3f078e5b5a76e1a6bc840890d2cd90f60a163384
 
 
 ---
@@ -66,7 +66,7 @@ Az oktatóanyag során a következő lépéseket fogja elvégezni:
     ![Megoldáskezelő](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. A másolási tevékenység által támogatott forrásokért és fogadókért tekintse meg a [támogatott adattárak](data-factory-data-movement-activities.md##supported-data-stores-and-formats) című részt. A Data Factory által támogatott számítási szolgáltatások listájáért tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című részt. Az oktatóanyag során ne használjon számítási szolgáltatásokat. 
+A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. A másolási tevékenység által támogatott forrásokért és fogadókért tekintse meg a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) című részt. A Data Factory által támogatott számítási szolgáltatások listájáért tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című részt. Az oktatóanyag során ne használjon számítási szolgáltatásokat. 
 
 Ebben a lépésben létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService1** és **AzureSqlLinkedService1**. Az AzureStorageLinkedService1 társított szolgáltatás egy Azure Storage-fiókot, az AzureSqlLinkedService pedig egy Azure SQL Database adatbázist társít az **ADFTutorialDataFactory** data factoryhoz. 
 

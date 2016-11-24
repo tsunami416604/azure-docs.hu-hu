@@ -3,8 +3,8 @@ title: "Az Azure CDN áttekintése | Microsoft Docs"
 description: "Megismerheti, mi is az az Azure Content Delivery Network (CDN), valamint hogyan használható a tartalmak nagy sávszélességű kézbesítéséhez a blobok és a statikus tartalom gyorsítótárazása révén."
 services: cdn
 documentationcenter: 
-author: camsoper
-manager: erikre
+author: lichard
+manager: akucer
 editor: 
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/30/2016
-ms.author: casoper
+ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 838a9ca3b77d5cd152ad2b8a54387149eafb6202
+ms.sourcegitcommit: 9a96e297711a949ac6bc464ad9154b4ad924666d
+ms.openlocfilehash: d6f56ed485eedd1e8250448c2c0794a066b11dc4
 
 
 ---
@@ -57,7 +57,7 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 | Kettős verem (IPv4/IPv6) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| [Geoszűrés](cdn-restrict-access-by-country.md) | |**&#x2713;;** |**&#x2713;;** |
+| [Geoszűrés](cdn-restrict-access-by-country.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Gyors végleges törlés](cdn-purge-endpoint.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md) | |**&#x2713;;** |**&#x2713;;** |
 | [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | |**&#x2713;;** |**&#x2713;;** |
@@ -69,6 +69,8 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 | Gyorsítótár-/fejlécbeállítások (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
 | URL-átirányítás/átírás (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
 | Mobileszközökre vonatkozó szabályok (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
+| [Jogkivonat-hitelesítés](cdn-token-auth.md)|  |  |**&#x2713;;**| 
+
 
 > [!TIP]
 > Van olyan szolgáltatás, amelyet szívesen látna az Azure CDN rendszerben?  [Küldjön visszajelzést!](https://feedback.azure.com/forums/169397-cdn) 
@@ -89,6 +91,6 @@ Díjszabási információkért tekintse meg [A tartalomkézbesítési hálózat 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

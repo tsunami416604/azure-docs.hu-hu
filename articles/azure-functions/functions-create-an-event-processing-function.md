@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
+ms.openlocfilehash: c7e4d5c0b2602ba8c12184900eba05fee48c4450
 
 
 ---
@@ -29,7 +29,7 @@ Ez a témakor egy olyan új függvény létrehozását mutatja be a C# használa
 ## <a name="prerequisites"></a>Előfeltételek
 Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-## <a name="create-a-timertriggered-function-from-the-template"></a>Időzítő által aktivált függvény létrehozása sablonból
+## <a name="create-a-timer-triggered-function-from-the-template"></a>Időzítő által aktivált függvény létrehozása sablonból
 A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/). 
 
 1. Lépjen az [Azure Functions portálra](https://functions.azure.com/signin), és jelentkezzen be az Azure-fiókjával.

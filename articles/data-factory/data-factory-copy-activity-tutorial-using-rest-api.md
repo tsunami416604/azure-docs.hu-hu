@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
+ms.openlocfilehash: 69b333b0c43d2e3e4d62168650123322a79579ba
 
 
 ---
@@ -84,7 +84,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../storage/storage-create-storage-account.md#manage-your-storage-access-keys).
 > 
 > 
 
@@ -272,7 +272,7 @@ Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendsze
 A fenti példában 24 adatszelet jön létre, mivel a nap minden órájában készül egy adatszelet.
 
 > [!NOTE]
-> Az előző példában használt JSON-tulajdonságokkal kapcsolatos részletekért lásd az [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) (Az adatcsatornák működése) című témakört.
+> Az előző példában használt JSON-tulajdonságokkal kapcsolatos részletekért lásd az [Anatomy of a Pipeline](data-factory-create-pipelines.md) (Az adatcsatornák működése) című témakört.
 > 
 > 
 

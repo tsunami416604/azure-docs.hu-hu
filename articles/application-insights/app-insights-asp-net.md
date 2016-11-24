@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: a97e20b208d92e03bd4458605aaa48ef7c389e32
 
 
 ---
 # <a name="set-up-application-insights-for-aspnet"></a>Az Application Insights beállítása az ASP.NET-hez
-A [Visual Studio Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md).  Olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy felhőbeli VM-eken futtat, másrészt Azure-webalkalmazásokkal.
+Az [Azure Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md).  Olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy felhőbeli VM-eken futtat, másrészt Azure-webalkalmazásokkal.
 
 ## <a name="before-you-start"></a>Előkészületek
 A következők szükségesek:
@@ -113,7 +113,7 @@ Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/App
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
 
 ## <a name="add-more-telemetry"></a>További telemetriai funkciók hozzáadása
-### <a name="web-pages-and-singlepage-apps"></a>Weboldalak és egylapos alkalmazások
+### <a name="web-pages-and-single-page-apps"></a>Weboldalak és egylapos alkalmazások
 1. [Adja hozzá a JavaScript-kódrészletet](app-insights-javascript.md) weboldalaihoz, és a Böngésző és a Felhasználás panelen megjelennek az oldalmegtekintésekkel, betöltési időkkel, böngészőbeli kivételekkel, az AJAX-hívások teljesítményével, valamint a felhasználók és munkamenetek számával kapcsolatos adatok.
 2. [Kódoljon egyéni eseményeket](app-insights-api-custom-events-metrics.md) a felhasználói műveletek számlálásához, időzítéséhez és méréséhez.
 
@@ -175,6 +175,6 @@ Ha a Visual Studio Team Servicest használja, egy új verzió kibocsátásakor d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

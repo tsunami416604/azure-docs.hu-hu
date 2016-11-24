@@ -1,7 +1,7 @@
 ---
-title: Mi az az Azure Machine Learning? | Microsoft Docs
+title: "Mire használható az Azure Machine Learning funkciója? | Microsoft Docs"
 description: "Ismerteti a felhőalapú Machine Learning alapvető fogalmait, az alkalmazási területeket, valamint a Machine Learning kifejezéseit."
-keywords: "mi az a machine learning,machine learning-kifejezések,prediktív,mi az a prediktív elemzés,üzembe helyezés"
+keywords: "mi az a machine learning,machine learning-kifejezések,prediktív,mi az a prediktív elemzés,machine learning-kifejezések"
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 11/11/2016
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a0415a3a07a1334f1947ff89e79bc710332de113
+ms.sourcegitcommit: ab8e5861dd7214dab41024e7048b739c072d3f64
+ms.openlocfilehash: 52a431c2af8b670fc4e4babb0a0d077051a46f54
 
 
 ---
@@ -30,41 +30,40 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva aztán inte
 Az [Adatelemzés kezdőknek](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) videósorozat rövid áttekintést ad ezekről a témákról. Az Adatelemzés kezdőknek sorozat szakzsargon vagy matematikai kifejezések használata nélkül ismerteti meg a Machine Learning használatával, és vezeti végig egy egyszerű prediktív modellen.
 
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>Mi a Microsoft Azure-felhő Machine Learning funkciója?
-Az Azure Machine Learning funkciókban gazdag felhőalapú prediktív elemzési szolgáltatás, amelynek segítségével elemzési megoldásként használható prediktív modelleket hozhat létre és helyezhet üzembe. Ha Machine Learning-kísérletek futtatására vagy megoldások felépítésére az Azure-felhőt használja, nincs szükség drága hardverek vagy infrastruktúra beszerzésére.
+Az Azure Machine Learning egy felhőalapú prediktív elemzési szolgáltatás, amely lehetővé teszi elemzési megoldásként használható prediktív modellek gyors létrehozását és üzembe helyezését.
+
+A használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modellek létrehozására használhatja internetkapcsolattal rendelkező számítógépeken, és a prediktív elemzési megoldást gyorsan üzembe helyezheti. Kezdje a munkát a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) használatra kész példáival és megoldásaival.
 
 ![Mit jelent a gépi tanulás funkció? A prediktív elemzés működésbe léptetésének alapvető munkafolyamata az Azure Machine Learning szolgáltatásban.](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
-Az Azure Machine Learning nem csupán eszközöket biztosít a modellek prediktív elemzéséhez, de teljes körűen felügyelt szolgáltatást is nyújt, amelynek segítségével felhasználásra kész webszolgáltatásként üzembe helyezheti prediktív modelljeit. Az Azure Machine Learning eszközeivel ezenfelül teljes prediktív elemzési megoldásokat hozhat létre a felhőben is, amelyeket könnyedén tesztelhet, működésbe léptethet, és felügyelhet.
+Az Azure Machine Learning nem csupán eszközöket biztosít a modellek prediktív elemzéséhez, de teljes körűen felügyelt szolgáltatást is nyújt, amelynek segítségével felhasználásra kész webszolgáltatásként üzembe helyezheti prediktív modelljeit.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-predictive-analytics"></a>Mi az a prediktív elemzés?
-A prediktív elemzések különböző matematikai képleteket, úgynevezett algoritmusokat használnak a korábbi és a jelenlegi adatok elemzéséhez, amelyekből a jövőbeni események előrejelzéséhez mintázatokat vagy trendeket állítanak elő.
+A prediktív elemzések különböző matematikai képleteket, úgynevezett algoritmusokat használnak a korábbi és a jelenlegi adatok elemzéséhez, amelyekben a jövőbeni események előrejelzését segítő mintázatokat vagy trendeket azonosítanak.
 
-Az Azure Machine Learning a prediktív elemzések végrehajtásának különösen hatékony módja: használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modellek létrehozására használhatja internetkapcsolattal rendelkező számítógépeken, és a prediktív elemzési megoldást gyorsan üzembe helyezheti. Ha gyorsan szeretne eredményt elérni, kezdje a munkát a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) használatra kész példáival és megoldásaival.
-
-## <a name="build-complete-machine-learning-solutions-in-the-cloud"></a>Teljes gépi tanulási megoldások létrehozása a felhőben
-Az Azure Machine Learning szolgáltatásban minden megtalálható, amire szüksége lehet a prediktív elemzési megoldások létrehozásához a felhőben: nagy méretű algoritmustár, létrehozási modelleket tartalmazó stúdió, a modellek webszolgáltatásként való üzembe helyezését megkönnyítő funkciók és még számos hasznos lehetőség.
+## <a name="tools-to-build-complete-machine-learning-solutions-in-the-cloud"></a>Eszközök teljes körű gépi tanulási megoldások létrehozásához a felhőben
+Az Azure Machine Learning szolgáltatásban minden megtalálható, amire szüksége lehet a teljes körű prediktív elemzési megoldások létrehozásához a felhőben: nagy méretű algoritmustár, létrehozási modelleket tartalmazó stúdió, a modellek webszolgáltatásként való üzembe helyezését megkönnyítő funkciók és még számos hasznos lehetőség. Prediktív modelleket hozhat létre, amelyeket könnyedén tesztelhet, működésbe léptethet, és felügyelhet.
 
 ### <a name="machine-learning-studio-create-predictive-models"></a>Machine Learning Studio: Prediktív modellek létrehozása
-Húzással és modulok csatlakoztatásával gyorsan létrehozhat prediktív modelleket a [Machine Learning Studióban](machine-learning-what-is-ml-studio.md). Egyszerűen kísérletezhet a különböző kombinációkkal, amelyeket ráadásul [ingyenesen próbálhat ki](https://studio.azureml.net/?selectAccess=true&o=2).
+Húzással és modulok csatlakoztatásával gyorsan létrehozhat prediktív modelleket a [Machine Learning Studióban](machine-learning-what-is-ml-studio.md). Kísérletezhet a különböző kombinációkkal, amelyeket [ingyenesen ki is próbálhat](https://studio.azureml.net/?selectAccess=true&o=2).
 
 * A [Cortana Intelligence Galleryben](machine-learning-gallery-how-to-use-contribute-publish.md) mások által kifejlesztett elemzési megoldásokat próbálhat ki, vagy létrehozhatja a sajátját. A közösség szívesen segít választ találni kísérletekkel kapcsolatos kérdéseire vagy megjegyzéseire. A kísérletekre mutató hivatkozásait különféle közösségi hálózatokon (például LinkedInen vagy Twitteren) is megoszthatja.
-  
+
   ![Kipróbálhatja mások prediktív kísérleteit, vagy feltöltheti sajátjait az Azure Cortana Intelligence Gallerybe.](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * A Machine Learning Studióban olyan [Machine Learning-algoritmusok és -modulok](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) gazdag tára áll rendelkezésre, amelyek jelentősen felgyorsítják a prediktív modell létrehozását. Mintakísérletek, R- és Python-csomagok, valamint olyan kategóriavezető Microsoft-algoritmusok közül választhat, mint az Xbox és a Bing. A Studio moduljait saját [R-](machine-learning-r-quickstart.md) és [Python-](machine-learning-execute-python-scripts.md)parancsprogramjaival bővítheti ki.
-  
+
   ![A prediktív elemzés bemutatása: prediktív elemzési kísérlet bemutatása az Azure Machine Learning Studióban](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
-### <a name="operationalize-predictive-analytics-solutions-purchase-web-services-or-publish-your-own"></a>Prediktív elemzési megoldások működésbe léptetése: Webszolgáltatások vásárlása vagy saját megoldások közzététele
-* A [Microsoft Azure Piactéren](https://datamarket.azure.com/browse?query=machine+learning) használatra kész webszolgáltatásokat vásárolhat például a következő területeken: javaslatok, szövegelemzések, anomáliadetektálás.
-* Hozza működésbe prediktív elemzési modelljeit:
-  
-  * [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
-  * [A modellek betanítása és újratanítása API-k segítségével](machine-learning-retrain-models-programmatically.md)
-  * [Webszolgáltatás-végpontok kezelése](machine-learning-create-endpoint.md)
-  * [Webszolgáltatás méretezése](machine-learning-scaling-webservice.md)
-  * [Webszolgáltatások felhasználása](machine-learning-consume-web-services.md)
+### <a name="operationalize-predictive-analytics-solutions-by-publishing-your-own"></a>Prediktív elemzési megoldások működésbe léptetése saját megoldások közzétételével
+Az alábbi oktatóanyagok ismertetik a prediktív elemzési modellek működtetését:
+
+ * [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
+ * [A modellek betanítása és újratanítása API-k segítségével](machine-learning-retrain-models-programmatically.md)
+ * [Webszolgáltatás-végpontok kezelése](machine-learning-create-endpoint.md)
+ * [Webszolgáltatás méretezése](machine-learning-scaling-webservice.md)
+ * [Webszolgáltatások felhasználása](machine-learning-consume-web-services.md)
 
 ## <a name="key-machine-learning-terms-and-concepts"></a>A Machine Learning legfontosabb kifejezései és fogalmai
 A Machine Learning kifejezéseinek jelentése nem mindig egyértelmű. Segítségül az alábbiakban ismertetjük a legfontosabb kifejezések meghatározását. Az ezek alatt található megjegyzés rovatban kérdezhet rá olyan további kifejezésekre, amelyek meghatározására kíváncsi.
@@ -115,6 +114,6 @@ A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használj
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

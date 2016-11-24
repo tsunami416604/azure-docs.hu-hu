@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/10/2016
+ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ecbee74bc0559aa632304b0a0428abb36606597
+ms.sourcegitcommit: c7d253dfca8f399527d193f14af12c166157d39d
+ms.openlocfilehash: eaadd5c8d30a522fc05d214620600331d7485485
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken
-Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. Mindegyik teljesítményszint egy növekvő erőforráskészletet nyújt az egyre növekvő adatátvitel kézbesítéséhez. Minden adatbázis a saját teljesítményszintjének megfelelő [szolgáltatásszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) kezelhető. Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, ahol közös erőforráskészlettel rendelkeznek. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-dtu.md) 
+Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére. A magasabb teljesítményszintek egy növekvő erőforráskészletet nyújtanak az egyre növekvő adatátvitel kiszolgálásához. A szolgáltatásszintek és a teljesítményszintek dinamikusan is módosíthatók. További részleteket az [Adatbázis szolgáltatásszintjeinek és teljesítményszintjeinek módosítása](sql-database-scale-up.md) című részben talál.
+
+Minden adatbázis a saját teljesítményszintjének megfelelő [szolgáltatásszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) kezelhető. Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, ahol közös erőforráskészlettel rendelkeznek. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-dtu.md) 
 
 A lehetséges szolgáltatásszintek mindkét esetben az **Alapszintű**, a **Standard** és a **Prémium**. A szolgáltatásszintek adatbázis-beállításai hasonlóak a különálló adatbázisok és a rugalmas készletek esetén, de a rugalmas készleteknél további szempontokat is figyelembe kell venni. Ez a cikk az önálló adatbázisok és a rugalmas készletek szolgáltatásszintjeinek részleteit ismerteti.
 

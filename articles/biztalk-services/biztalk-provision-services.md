@@ -15,13 +15,12 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
-Azure BizTalk Services létrehozása az Azure Portalon.
 
 > [!TIP]
 > Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
@@ -116,7 +115,7 @@ Amikor elkészült, létrejön az Azure BizTalk-szolgáltatás, és készen áll
 
 A BizTalk-szolgáltatás állapotától függően néhány művelet nem végezhető el. Ezen műveletek listájáért tekintse meg a [BizTalk-szolgáltatások állapota diagramot](biztalk-service-state-chart.md).
 
-## <a name="postprovisioning-steps"></a>Kiépítés utáni lépések
+## <a name="post-provisioning-steps"></a>Kiépítés utáni lépések
 * [A tanúsítvány telepítése helyi számítógépre](#InstallCert)
 * [Termelésre kész tanúsítvány hozzáadása](#AddCert)
 * [A hozzáférés-vezérlési névtér beszerzése](#ACS)
@@ -131,7 +130,7 @@ A BizTalk-szolgáltatás kiépítésének részeként létrejön egy önaláírt
    ![SSL-tanúsítvány módosítása][QuickGlance]
 5. Kattintson duplán a tanúsítványra, és haladjon végig a varázslón a tanúsítvány telepítéséhez. Győződjön meg arról, hogy a **Megbízható gyökérhitelesítő hatóságok** tárolóba telepítette a tanúsítványt.
 
-#### <a name="a-nameaddcertaadd-a-productionready-certificate"></a><a name="AddCert"></a>Termelésre kész tanúsítvány hozzáadása
+#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>Termelésre kész tanúsítvány hozzáadása
 A BizTalk-szolgáltatások létrehozásakor automatikusan létrejött önaláírt tanúsítvány csak fejlesztési környezetekben használható. A termelési forgatókönyvekhez cserélje le egy termelésre kész tanúsítványra.
 
 1. Az **Irányítópult** lapon válassza az **SSL-tanúsítvány frissítése** lehetőséget.
@@ -275,6 +274,6 @@ Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különb
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

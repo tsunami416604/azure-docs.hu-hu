@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 11/15/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
+ms.sourcegitcommit: 408a5fb25ef7b285a76e8f5b65890dc625574437
+ms.openlocfilehash: fba738575ee9a60cc930adfb68b7c34323bbe747
 
 
 ---
@@ -58,8 +58,8 @@ Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
    * **Hely**: Válassza ki, hol szeretné létrehozni a Data Lake Store-fiókot.
    * **Titkosítási beállítások**. Kiválaszthatja, hogy szeretné-e titkosítani a Data Lake Store-fiókot. Ha a titkosítást választja, azt is megadhatja, hogyan kívánja kezelni a fiókban lévő adatok titkosításához használni kívánt fő titkosítási kulcsot.
      
-     * (Alapértelmezett) Válassza **A titkosítás letiltása** elemet a legördülő listából, ha nem szeretne titkosítást.
-     * (Választható) Válassza az **Azure Data Lake által kezelt kulcsok használata** elemet, ha azt szeretné, hogy az Azure Data Lake Store kezelje a titkosítási kulcsokat.
+     * (Választható) Válassza **A titkosítás letiltása** elemet a legördülő listából, ha nem szeretne titkosítást.
+     * (Alapértelmezett) Válassza az **Azure Data Lake által kezelt kulcsok használata** elemet, ha azt szeretné, hogy az Azure Data Lake Store kezelje a titkosítási kulcsokat.
        
          ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
      * (Választható) Válassza az **Azure Key Vault-kulcsok kiválasztása** elemet, ha az Azure Key Vaultban lévő saját kulcsokat szeretne használni. Ezzel a lehetőséggel Key Vault-fiókot és -kulcsokat is létrehozhat, ha még nem rendelkezik ezekkel.
@@ -136,6 +136,6 @@ Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

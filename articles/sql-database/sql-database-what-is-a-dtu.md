@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91942517a481a252d631af15e532389256b64108
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: e062d55e990faeb0776f643b297788afd87ac1e3
 
 
 ---
@@ -32,7 +32,7 @@ A DTU azon erőforrások mértékegysége, amelyek egy [önálló adatbázisokra
 Az alkalmazás minimális állásideje (általában átlagosan kevesebb mint négy másodperc) mellett bármikor [módosíthatja a szolgáltatásszinteket](sql-database-scale-up.md). Számos vállalkozás és alkalmazás számára elegendő az, ha adatbázisokat tudnak létrehozni, majd az önálló adatbázisok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. Ebben a forgatókönyvben egy bizonyos számú eDTU-val rendelkező rugalmas készletet használunk.
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>Mi az a rugalmas Database Transaction Unit (eDTU)?
-Az eDTU azon erőforráskészletek (DTU-k) mértékegysége, amelyek megoszthatók egy Azure SQL Server adatbázisai között – ezeket az erőforrásokat összefoglalva [rugalmas készletnek](sql-database-elastic-pool.png) nevezzük. A rugalmas készletek egyszerű, költséghatékony megoldást kínálnak az olyan adatbázisok teljesítménybeli céljainak kezelésére, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul változik. További információt a [rugalmas készletek és szolgáltatásszintek](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) leírásában talál.
+Az eDTU azon erőforráskészletek (DTU-k) mértékegysége, amelyek megoszthatók egy Azure SQL Server adatbázisai között – ezeket az erőforrásokat összefoglalva [rugalmas készletnek](sql-database-elastic-pool.md) nevezzük. A rugalmas készletek egyszerű, költséghatékony megoldást kínálnak az olyan adatbázisok teljesítménybeli céljainak kezelésére, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul változik. További információt a [rugalmas készletek és szolgáltatásszintek](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) leírásában talál.
 
 ![Bevezetés az SQL Database-be: eDTU-k rétegek és szintek szerint](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -54,7 +54,6 @@ A teljesítményszintek arra vannak beállítva és utasítva, hogy biztosítsá
 * További információk a processzoron, a memórián, illetve az adat- és naplóátvitelen kívüli egyéb erőforrásokra vonatkozó korlátokkal kapcsolatban az [Azure SQL Database resource limits](sql-database-resource-limits.md) (Az Azure SQL Database erőforráskorlátai) cikk tartalmaz további információt.
 * A DTU-k felhasználásáról az [SQL Database lekérdezési terheléselemzőjének](sql-database-query-performance.md) leírásában talál további információt.
 * A DTU összetételének megállapításához használt OLTP számítási mintafeladat módszertanával kapcsolatos további információkat [az SQL Database mérési módszereinek áttekintése](sql-database-benchmark-overview.md) tartalmazza.
-
 
 
 
