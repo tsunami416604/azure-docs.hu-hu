@@ -67,23 +67,24 @@
 ### [Runbook-feladat felfüggesztve](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Klasszikus PowerShell](/powershell/servicemanagement)
+## [.NET](/dotnet/api)
+## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [Klasszikus REST](https://msdn.microsoft.com/library/azure/mt163781)
 ## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)
-## [PowerShell-parancsmagok](https://msdn.microsoft.com/library/azure/dn690262)
-## [Erőforrás-kezelői REST API-k](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [Klasszikus üzembehelyezési REST](https://msdn.microsoft.com/library/azure/mt163781)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=automation) 
-## [Azure Automation-képzés](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=automation)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=automation)
+## [Azure Automation-képzés](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

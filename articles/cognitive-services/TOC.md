@@ -45,7 +45,7 @@
 ## [Fejlesztés az Intelligens hangfelismerési szolgáltatással](https://www.luis.ai/Help/)
 
 # Referencia
-## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
 ## [REST](https://docs.microsoft.com/rest/api/cognitiveservices/)
 
 # Erőforrások 
@@ -54,6 +54,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

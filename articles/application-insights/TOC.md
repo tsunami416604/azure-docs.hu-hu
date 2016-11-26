@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Mi az Application Insights?](app-insights-overview.md)
-## [Működés](app-insights-detect-triage-diagnose.md)
+## [Teljesítményfigyelés a devOps-ciklusokban](app-insights-detect-triage-diagnose.md)
 
 # Bevezetés
 ## Az Azure figyelése
@@ -63,8 +63,8 @@
 #### [Metrikákhoz kapcsolódó riasztások](app-insights-alerts.md)
 
 ### [Intelligens detektálás](app-insights-proactive-diagnostics.md)
-#### [Hibadetektálás](app-insights-proactive-failure-diagnostics.md)
-#### [Anomáliadetektálás](app-insights-proactive-performance-diagnostics.md)
+#### [Hiba-anomáliák](app-insights-proactive-failure-diagnostics.md)
+#### [Teljesítmény-anomáliák](app-insights-proactive-performance-diagnostics.md)
 
 ## Elemzés
 
@@ -128,10 +128,10 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referencia
-## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [Java API](http://dl.windowsazure.com/applicationinsights/javadoc/)
 ## [.NET API](https://docs.microsoft.com/dotnet/api)
 ## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Elemzés](app-insights-analytics-reference.md)
+## [Elemzési referencia](app-insights-analytics-reference.md)
 ## [Mintavételezés](app-insights-sampling.md)
 ## [IP-címek](app-insights-ip-addresses.md)
 ## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
@@ -145,7 +145,7 @@
 ## [Kibocsátási megjegyzések a következőhöz: Application Insights SDK Windows Phone-hoz és Store-hoz](app-insights-release-notes-windows.md)
 ## [Developer Analytics Tools kibocsátási megjegyzései](app-insights-release-notes-vsix.md)
 ## [SDK kibocsátási megjegyzések – Application Insights](app-insights-release-notes.md)
-## [REST API](https://dev.applicationinsights.io/)
+## [Adatelérési REST API](https://dev.applicationinsights.io/)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-insights/)  
@@ -157,6 +157,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

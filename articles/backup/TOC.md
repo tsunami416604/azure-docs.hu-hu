@@ -1,16 +1,16 @@
 # Áttekintés
 ## [Mi az az Azure Backup?](backup-introduction-to-azure-backup.md)
 # Bevezetés
-## [Gyakori kérdések](backup-azure-backup-faq.md)
 ## [Fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
 ## [Azure-beli virtuális gépek biztonsági mentése](backup-azure-vms-first-look.md)
 ## [Az Azure-beli virtuális gépek védelme](backup-azure-vms-first-look-arm.md)
+## [Gyakori kérdések](backup-azure-backup-faq.md)
 # Útmutató
 ## A biztonsági mentés automatizálása a PowerShell-lel
 ### [Azure-beli virtuális gépek az Azure Portalon](backup-azure-vms-automation.md)
 ### [Azure-beli virtuális gépek a klasszikus portálon](backup-azure-vms-classic-automation.md)
 ### [DPM az Azure Portalon](backup-dpm-automation.md)
-### [DPM a klasszikus portálon](backup-dpm-automation-classic.md)
+### [DPM a klasszikus Azure Portalon](backup-dpm-automation-classic.md)
 ### [Windows Server az Azure Portalon](backup-client-automation.md)
 ### [Windows Server a klasszikus portálon](backup-client-automation-classic.md)
 ## Alkalmazás számítási feladatainak biztonsági mentése
@@ -52,7 +52,13 @@
 ### [Azure-beli virtuális gép mentése sikertelen: nem sikerült kommunikálni a virtuálisgép-ügynökkel a pillanatkép-állapot lekérése érdekében – a virtuális gép részfeladat időtúllépést okozott](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Az Azure Backup-fájlok és -mappák lassú biztonsági mentése](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=backup)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

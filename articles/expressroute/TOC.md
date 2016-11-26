@@ -1,11 +1,9 @@
 # Áttekintés
 ## [Mi az az ExpressRoute?](expressroute-introduction.md)
+## [ExpressRoute – Gyakori kérdések](expressroute-faqs.md)
 ## [Földrajzi egységek és partnerek](expressroute-locations.md)
-## [A kapcsolatcsoportok áthelyezése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
-## Ajánlott eljárások
-### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)
-### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
-
+### [Szolgáltatók hely alapján](expressroute-locations-providers.md)
+### [Helyek szolgáltató alapján](expressroute-locations.md)
 
 # Első lépések
 ## [Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md)
@@ -15,27 +13,36 @@
 ## [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ## [NAT-követelmények](expressroute-nat.md)
 ## [QoS-követelmények](expressroute-qos.md)
+## [A kapcsolatcsoportok áthelyezése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
 ## [Az ExpressRoute virtuális hálózati átjárói](expressroute-about-virtual-network-gateways.md)
-## [ExpressRoute – Gyakori kérdések](expressroute-faqs.md)
 
 # Útmutató
 ## Kapcsolatcsoport létrehozása és módosítása
-### [Kapcsolatcsoport létrehozása és módosítása az Azure Portalon](expressroute-howto-circuit-portal-resource-manager.md)
-### [Kapcsolatcsoport létrehozása és módosítása a PowerShell-lel](expressroute-howto-circuit-arm.md)
-### [Kapcsolatcsoport létrehozása és módosítása a PowerShell (klasszikus) használatával](expressroute-howto-circuit-classic.md)
+### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-circuit-arm.md)
+### [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 ## Útválasztási konfiguráció létrehozása és módosítása
-### [Útválasztási konfiguráció létrehozása és módosítása az Azure Portalon](expressroute-howto-routing-portal-resource-manager.md)
-### [Útválasztási konfiguráció létrehozása és módosítása a PowerShell-lel](expressroute-howto-routing-arm.md)
-### [Útválasztási konfiguráció létrehozása és módosítása a PowerShell (klasszikus) használatával](expressroute-howto-routing-classic.md)
+### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-routing-arm.md)
+### [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 ## Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
-### [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal az Azure Portalon](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal a PowerShell használatával](expressroute-howto-linkvnet-arm.md)
-### [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal a PowerShell (klasszikus) használatával](expressroute-howto-linkvnet-classic.md)
+### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-linkvnet-arm.md)
+### [PowerShell (klasszikus)](expressroute-howto-linkvnet-classic.md)
 ## Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
-### [Az ExpressRoute virtuális hálózati átjáróinak konfigurálása a PowerShell-lel](expressroute-howto-add-gateway-resource-manager.md)
-### [Az ExpressRoute virtuális hálózati átjáróinak konfigurálása a PowerShell (klasszikus) használatával](expressroute-howto-add-gateway-classic.md)
-## [Párhuzamos telephelyközi és ExpressRoute-kapcsolatok létrehozása](expressroute-howto-coexist-classic.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+### [PowerShell (klasszikus)](expressroute-howto-add-gateway-classic.md)
+## Egyidejű helyek közötti VPN Gateway- és ExpressRoute-kapcsolatok létrehozása
+### [PowerShell](expressroute-howto-coexist-resource-manager.md)
+### [PowerShell (klasszikus)](expressroute-howto-coexist-classic.md)
 ## [Kapcsolatcsoportok áttelepítése klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
+## Útválasztó konfigurálása ExpressRoute-hoz
+### [Útválasztó-konfigurációk telepítési mintái](expressroute-config-samples-routing.md)
+### [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
+
+## Ajánlott eljárások
+### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)
+### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
 
 ## Hibaelhárítás
 ### [ARP-táblák lekérése](expressroute-troubleshooting-arp-resource-manager.md)
@@ -43,12 +50,9 @@
 
 
 # Referencia
-
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [Útválasztó-konfigurációk telepítési mintái](expressroute-config-samples-routing.md)
-## [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
-## [REST](https://msdn.microsoft.com/library/azure/mt586720)
-## [Klasszikus REST](https://msdn.microsoft.com/library/azure/dn606310)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+## [REST (Resource Manager)](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/dn606310)
 
 # Kapcsolódó
 ## [Virtual Network](/azure/virtual-network/)
@@ -63,7 +67,7 @@
 ## [Esettanulmányok](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=expressroute) 
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [ExpressRoute-kapcsolatcsoport létrehozása](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Magánhálózati társviszony-létesítés beállítása a kapcsolatcsoportokhoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Nyilvános társviszony-létesítés beállítása a kapcsolatcsoportokhoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
@@ -73,8 +77,9 @@
 ### [Virtuális hálózati átjáró csatlakoztatása egy kapcsolatcsoporthoz](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [A hálózati infrastruktúra fejlesztése a csatlakoztathatóság érdekében](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [Hibrid partneri viszonyok: Helyszíni forgatókönyvek engedélyezése](https://go.microsoft.com/fwlink/p/?LinkId=615125)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

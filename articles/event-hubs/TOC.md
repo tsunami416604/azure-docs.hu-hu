@@ -24,22 +24,22 @@
 ### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
 
 # Referencia
-## [AMQP1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
-## [Az Event Hubs REST API-jának leírása](https://msdn.microsoft.com/library/azure/dn790674)
-## [Az Event Hubs .NET API-jának leírása](https://msdn.microsoft.com/library/azure/jj933424)
-## [Az eseményfeldolgozó állomás API-jának leírása](https://msdn.microsoft.com/library/microsoft.servicebus.messaging(v=azure.95).aspx)
 ## [Kvóták és korlátozások](event-hubs-quotas.md)
-## [Event Hubs-üzenetkezelés kivételei](event-hubs-messaging-exceptions.md)
+## [Üzenetkezelési kivételek](event-hubs-messaging-exceptions.md)
+## [Java](/java/api)
+## [.NET](/dotnet/api)
+## [AMQP1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
+## [REST](/rest/api/eventhub)
 
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/event-hubs/)
+## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
-## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/home?forum=servbus)
-## [Az Event Hubs erőforrásainak kezelése a Service Bus Explorerrel](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
-## [Event Hubs képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: cdfe04908d68292d07eeb9c20a4772d11fa30eff
-ms.openlocfilehash: d3ef28f2cb1459410ec90982fff94fbbced55f72
+ms.sourcegitcommit: 3273e748265fa23efadd010bb5f0bc9ce43223b6
+ms.openlocfilehash: dae331e93ab1682741a34758172d7c8cdb38aec5
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search-dokumentáció
 
-Az Azure Search egy felhőalapú keresőszolgáltatás, amely a Microsoftnak delegálja a kiszolgálók és az infrastruktúra kezelését, így egy azonnal használható szolgáltatást biztosít, amelyet feltölthet az adataival, majd keresési funkciót biztosíthat vele a webes vagy mobilalkalmazásában. Az Azure Search szolgáltatással erőteljes keresési funkcióval láthatja el alkalmazásait egy egyszerű REST API vagy .NET SDK segítségével, és a keresési infrastruktúra felügyeletével, valamint a fejlett keresési funkciókkal sem kell foglalkoznia.
+Az Azure Search egy felügyelt felhőalapú keresőszolgáltatás, amellyel hatékony keresési funkciót építhet be egyéni alkalmazásaiba, és a Portalon keresztül megfigyelheti a szolgáltatás, az indexelés és a lekérdezés folyamatait. Legfőbb funkciói közé tartozik a méretezhető, több nyelvű teljes szöveges keresés, a földrajzi keresés, a szűrés és a jellemzőalapú navigáció, a szövegkiegészítéses lekérdezések, a találatok kiemelése és az egyéni elemzők.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -47,7 +47,7 @@ Az Azure Search egy felhőalapú keresőszolgáltatás, amely a Microsoftnak del
         </a>
     </li>
     <li>
-        <a href="/azure/search/search-create-service">
+        <a href="/azure/search/search-create-service-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -57,7 +57,7 @@ Az Azure Search egy felhőalapú keresőszolgáltatás, amely a Microsoftnak del
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Bevezetés az Azure Search Azure Portallal való használatába</h3>
+                        <h3>Ismerkedés az Azure Search Azure Portallal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -82,6 +82,42 @@ Az Azure Search egy felhőalapú keresőszolgáltatás, amely a Microsoftnak del
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/search/search-query-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Search-index lekérdezése</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/search/search-howto-dotnet-sdk">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Az Azure Search használata a .NET-ben</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 
@@ -89,11 +125,64 @@ Az Azure Search egy felhőalapú keresőszolgáltatás, amely a Microsoftnak del
 
 ## <a name="reference"></a>Referencia
 
-### <a name="net"></a>.NET 
-[.NET-felügyelet referencia API](/dotnet/api/) 
-
-### <a name="rest"></a>REST 
-[Search – REST API-referencia](/rest/api/searchmanagement/) 
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/dotnet/api/microsoft.azure.search">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>A szolgáltatás .NET API-ja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/microsoft.azure.management.search">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Felügyeleti .NET API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/searchservice/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Szolgáltatás REST API-ja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/searchmanagement/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Kezelési REST API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
@@ -105,6 +194,6 @@ Azure Search-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -39,8 +39,8 @@
 ### [Az App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Nagy sűrűségű üzemeltetés](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [WebJobs használata az Azure App Service-ben](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [App Service-környezet](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Az App Service-környezet dokumentációja](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [App Service Environment](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Az App Service Environment dokumentációja](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Fejlesztés
 ### [API-metaadatok](app-service-api-metadata.md)
@@ -56,7 +56,7 @@
 #### [Az Azure Table Storage használata a WebJobs SDK-val](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ### App Service-környezet
-#### [Webalkalmazás létrehozása Azure App Service-környezetben](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Webalkalmazás létrehozása App Service Environment-környezetben](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Belső terheléselosztó használata](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
@@ -69,9 +69,9 @@
 ### [WebJobs üzembe helyezése Visual Studióval](../app-service-web/websites-dotnet-deploy-webjobs.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## [Méretezés](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [Alkalmazás vertikális felskálázás](../app-service-web/web-sites-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [App Service-környezet](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Földrajzi alapú méretezés App Service-környezetekkel](../app-service-web/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [Alkalmazás vertikális felskálázása](../app-service-web/web-sites-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Földrajzi alapú méretezés App Service Environment-környezetekkel](../app-service-web/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Alkalmazások méretezése App Service-környezetben](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 #### [Automatikus skálázás App Service Environment-környezetben](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
@@ -91,7 +91,7 @@
 ### [Webes feladatok](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Háttérfeladatok futtatása WebJobs-feladatokkal](../app-service-web/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
-### [App Service-környezet](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Konfigurálás](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Egyéni konfigurációs beállítások](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Bejövő forgalom szabályozása](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -122,7 +122,7 @@
 #### [Biztonságos csatlakozás a háttérerőforrásokhoz](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Biztonsági mentés
-### [Adatok biztonsági mentése az Azure-ban](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [Alkalmazás biztonsági mentése az Azure-ban](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Alkalmazás visszaállítása az Azure-ban](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [A REST használata App Service-alkalmazások biztonsági mentésére és visszaállítására](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
@@ -131,10 +131,10 @@
 ### [Hibaelhárítás a Visual Studióval](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Automatizálás
-### [Rugalmas fejlesztés](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [Agile fejlesztés](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Az Azure Resource Manager üzembe helyezése](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Web + GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Web + SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Web és GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+#### [Web és SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [MSDeploy egyéni állomásnévvel és SSL-tanúsítvánnyal](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### PowerShell
 #### [Biztonsági mentés és helyreállítás automatizálása](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -154,7 +154,7 @@
 
 # Referencia
 ## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-## [App Service-referencia](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+## [Az App Service dokumentációja](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 # Kapcsolódó
@@ -167,6 +167,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -27,7 +27,7 @@
 ## [Komplex VM-sablonok létrehozása és üzembe helyezése](../virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Alkalmazásarchitektúra](../virtual-machines-windows-dotnet-core-2-architecture.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Hozzáférés és biztonság](../virtual-machines-windows-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Rendelkezésre állás és skálázás](../virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Rendelkezésre állás és méretezés](../virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Alkalmazás üzembe helyezése](../virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # Útmutató
@@ -176,13 +176,15 @@
 ### [Virtuális gép ismételt üzembe helyezése](../virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
+## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates/)
-## [Számítási REST](/rest/api/compute/)
-## [Hálózati REST](/rest/api/)
-## [Tárolási REST](/rest/api/storageservices/)
+## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
+## [Számítási REST](/rest/api/compute)
+## [Hálózati REST](/rest/api)
+## [Tárolási REST](/rest/api/storageservices)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/#Windows)
@@ -191,6 +193,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -11,13 +11,14 @@
 
 # Útmutató
 ## Integrálás
-### Csatlakoztatott források
+### Összekapcsolt források
 #### [Windows-ügynökök](log-analytics-windows-agents.md)
 #### [Linux-ügynökök](log-analytics-linux-agents.md)
 #### [Azure-alapú virtuális gépek](log-analytics-azure-vm-extension.md)
 #### [Azure Storage](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
+#### [OMS Gateway](log-analytics-oms-gateway.md)
 ### Adatforrások
 #### [Az adatforrások áttekintése](log-analytics-data-sources.md)
 #### [Windows-események](log-analytics-data-sources-windows-events.md)
@@ -38,7 +39,6 @@
 #### [Riasztáskezelés](log-analytics-solution-alert-management.md)
 #### [Kapacitáskezelés](log-analytics-capacity.md)
 #### [Változáskövetés](log-analytics-change-tracking.md)
-#### [Konfigurációelemzés](log-analytics-configuration-assessment.md)
 #### [Tárolók](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
 #### [Kártevőfelmérés](log-analytics-malware.md)
@@ -48,9 +48,9 @@
 #### [Service Fabric](log-analytics-service-fabric.md)
 #### [SQL-elemzés](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
-#### [Rendszerfrissítés-elemzés](log-analytics-system-update.md)
 #### [VMware](log-analytics-vmware.md)
 #### [Átviteli adatok](log-analytics-wire-data.md)
+#### [SCOM-elemzés](log-analytics-scom-assessment.md)
 ## Elemzés
 ### [Irányítópultok](log-analytics-dashboards.md)
 ### [Nézettervező](log-analytics-view-designer.md)
@@ -63,11 +63,10 @@
 
 # Erőforrások
 ## [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

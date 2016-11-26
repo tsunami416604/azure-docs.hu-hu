@@ -6,14 +6,16 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [Tartományhoz csatlakoztatott HDInsight előzetes verziója](hdinsight-domain-joined-introduction.md)
+## [Kafka – előzetes verzió](hdinsight-apache-kafka-introduction.md)
 
 # Első lépések
 ## [Első lépések a Hadoopban](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## [Első lépések a Hive interaktív előzetes verziójában](hdinsight-hadoop-use-interactive-hive.md)
-## [Első lépések az R Server előzetes verziójában](hdinsight-hadoop-r-server-get-started.md)
+## [Első lépések az R Serverben](hdinsight-hadoop-r-server-get-started.md)
 ## [Első lépések a Sparkban](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [Első lépések a HBase-ben és a NoSQL-ben](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Első lépések a Stormban](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [Első lépések a Kafka előzetes verziójában](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop-tesztkörnyezet](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools with Hortonworks – tesztkörnyezet](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Visual Studio-eszközök](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -47,11 +49,12 @@
 ### [A DataFu és a Pig együttes használata](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [Igény szerinti fürtök](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop-feladatok elküldése](hdinsight-submit-hadoop-jobs-programmatically.md)
-## Az R Server előzetes verzió használata
+## Az R Server használata
 ### [Tárolási lehetőségek](hdinsight-hadoop-r-server-storage.md)
 ### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
 ## A Spark használata memórián belüli feldolgozáshoz
+### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)
 ### [Önálló alkalmazás](hdinsight-apache-spark-create-standalone-application.md)
 ### [Streamelési események feldolgozása](hdinsight-apache-spark-eventhub-streaming.md)
@@ -94,6 +97,10 @@
 ### [Konfigurálás](hdinsight-domain-joined-configure.md)
 ### [Kezelés](hdinsight-domain-joined-manage.md)
 ### [Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
+## A Kafka előzetes verziójának használata
+### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
+### [Használat a Sparkkal](hdinsight-apache-spark-with-kafka.md)
+### [Használat a Stormmal](hdinsight-apache-storm-with-kafka.md)
 ## Fejlesztés
 ### [Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce feladatok fejlesztése](hdinsight-hadoop-mapreduce-scalding.md)
@@ -174,12 +181,12 @@
 #### [Hive-lekérdezés teljesítménye](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # Referencia
-## [REST API – referencia](https://msdn.microsoft.com/library/mt622197.aspx)
-## [Spark REST API a távoli feladatokhoz](https://msdn.microsoft.com/library/mt613023.aspx)
-## [PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt438705.aspx)
+## [PowerShell-parancsmagok](/powershell/resourcemanager/azurerm.hdinsight/v2.2.0/azurerm.hdinsight)
 ## [.NET SDK a Hadoophoz](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET SDK a HBase-hez](https://www.nuget.org/packages/Microsoft.HBase.Client/)
 ## [.NET könyvtár az Avróhoz](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST API – referencia](/rest/api/hdinsight/)
+## [Spark REST API a távoli feladatokhoz](/rest/api/hdinsightspark/)
 
 # Kapcsolódó
 ## Windows-fürtök
@@ -217,6 +224,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

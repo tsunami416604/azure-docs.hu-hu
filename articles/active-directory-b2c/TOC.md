@@ -1,6 +1,5 @@
 # Áttekintés
-## [Az Azure AD B2C ismertetése](https://azure.microsoft.com/services/active-directory-b2c/)
-## [Működés](active-directory-b2c-overview.md)
+## [Áttekintés](active-directory-b2c-overview.md)
 ## [Alkalmazástípusok](active-directory-b2c-apps.md)
 ## [Üzemi szintű és előnézeti B2C-bérlők összehasonlítás](active-directory-b2c-reference-tenant-type.md)
 
@@ -51,10 +50,12 @@
 ## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
 
 # Erőforrások
-## [Támogatás](active-directory-b2c-support.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure visszajelzési fórum](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Támogatás](active-directory-b2c-support.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

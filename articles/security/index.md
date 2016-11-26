@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
----
-# Security Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: d06c292b36ef6dd6bd4f858603debfe93d498cb6
+ms.openlocfilehash: 622e8ccb62538110991c4f882ada9014ea03ffb4
 
-Azure’s infrastructure is designed from the facility to applications for hosting millions of customers simultaneously, and it provides a trustworthy foundation upon which businesses can meet their security needs. In addition, Azure provides you with a wide array of configurable security options and the ability to control them so that you can customize security to meet the unique requirements of your deployments.
+---
+# <a name="security-documentation"></a>A Security dokumentációja
+
+Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/security/azure-security-services-technology">
+        <a href="/azure/security/azure-security-services-technologies">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +21,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Security</h3>
+                        <h3>Az Azure Security ismertetése</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Security</h3>
+                        <h3>Az Azure Security használatának első lépései</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Network Security</h3>
+                        <h3>A Network Security használatának első lépései</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage Security</h3>
+                        <h3>A Storage Security használatának első lépései</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure’s infrastructure is designed from the facility to applications for hosti
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Virtual Machines Security</h3>
+                        <h3>A Virtual Machines Security használatának első lépései</h3>
                     </div>
                 </div>
             </div>
@@ -104,7 +108,12 @@ Azure’s infrastructure is designed from the facility to applications for hosti
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Security Documentation
-        </div>
+A Security dokumentációjának letöltése </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

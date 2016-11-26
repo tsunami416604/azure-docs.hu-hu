@@ -1,34 +1,34 @@
 # Áttekintés
 ## [Mi a DocumentDB?](documentdb-introduction.md)
 ## [Alapfogalmak](documentdb-resources.md)
-## [Tárolás és teljesítmény](documentdb-manage.md)
-## [Particionálás és méretezés](documentdb-partition-data.md)
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
-## [Konzisztencia](documentdb-consistency-levels.md)
-## [SQL-lekérdezés](documentdb-sql-query.md)
-## [A NoSQL és az SQL összevetése](documentdb-nosql-vs-sql.md)
 ## Forgatókönyvek
 ### [Gyakori alkalmazási helyzetek](documentdb-use-cases.md)
 ### [Közösségi tartalom a DocumentDB-vel](documentdb-social-media-apps.md)
-### [Több-bérlős rendszer](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)
-
 
 # Első lépések
 ## Az első alkalmazás megírása
 ### [.NET-Konzolalkalmazás](documentdb-get-started.md)
+### [.NET Core-Konzolalkalmazás](documentdb-dotnetcore-get-started.md)
 ### [Node.js-konzolalkalmazás](documentdb-nodejs-get-started.md)
+### [C++-Konzolalkalmazás](documentdb-cpp-get-started.md)
 ## Webalkalmazás készítése
 ### [.NET-webalkalmazás](documentdb-dotnet-application.md)
 ### [Node.Js-webalkalmazás](documentdb-nodejs-application.md)
 ### [Java webalkalmazások](documentdb-java-application.md)
 ### [Python Flask-webalkalmazás](documentdb-python-application.md)
+## [Helyi fejlesztés](documentdb-nosql-local-emulator.md)
 ## [Gyakori kérdések](documentdb-faq.md)
-
-
 
 # Útmutató
 
-## Kezelés 
+## Felkészülés
+### [Tárolás és teljesítmény](documentdb-manage.md)
+### [Particionálás és méretezés](documentdb-partition-data.md)
+### [Konzisztencia](documentdb-consistency-levels.md)
+### [A NoSQL és az SQL összevetése](documentdb-nosql-vs-sql.md)
+
+## Kezelés
 ### [Adatok importálása](documentdb-import-data.md)
 ### [Adatmodellezés](documentdb-modeling-data.md)
 ### [Térinformatikai adatok használata](documentdb-geospatial.md)
@@ -46,17 +46,18 @@
 ### [A fiók felbővítése](documentdb-supercharge-your-account.md)
 
 ## Fejlesztés
+### [SQL-lekérdezés](documentdb-sql-query.md)
 ### [Tárolt eljárások, eseményindítók és felhasználói függvények](documentdb-programming.md)
 ### [Teljesítménytesztelés](documentdb-performance-testing.md)
 ### [Teljesítménnyel kapcsolatos tippek](documentdb-performance-tips.md)
 ### DocumentDB a MongoDB-fejlesztők számára
-#### [Milyen protokollokat támogat a MongoDB?](documentdb-protocol-mongodb.md)
+#### [Protokolltámogatás MongoDB-hez](documentdb-protocol-mongodb.md)
 #### [Fiók létrehozása](documentdb-create-mongodb-account.md)
 #### [Csatlakozás a fiókhoz](documentdb-connect-mongodb-account.md)
 #### [A MongoChef használata](documentdb-mongodb-mongochef.md)
 #### [Protokolltámogatási minták](documentdb-mongodb-samples.md)
 
-## A portál használata 
+## A portál használata
 ### [Adatbázisfiók létrehozása](documentdb-create-account.md)
 ### [Gyűjtemény létrehozása](documentdb-create-collection.md)
 ### [Globális replikálás hozzáadása](documentdb-portal-global-replication.md)
@@ -75,34 +76,33 @@
 ### [Adatelemzés a Hadooppal](documentdb-run-hadoop-with-hdinsight.md)
 ### [Integrálás az Azure Search szolgáltatással](documentdb-search-indexer.md)
 ### [Adatok betöltése az Azure Data Factoryvel](../data-factory/data-factory-azure-documentdb-connector.md)
-### [Valós idejű adatok elemzése az Azure Stream Analyticsszel](../stream-analytics/stream-analytics-define-outputs.md#documentdb.md)
+### [Valós idejű adatok elemzése az Azure Stream Analyticsszel](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
 ### [Értesítések fogadása a Logic Apps használatával](documentdb-change-notification.md)
 ### [Érzékelőktől kapott adatok valós idejű feldolgozása](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [Adatok megjelenítése Power BI használatával](documentdb-powerbi-visualize.md)
 
 
 # Referencia
-## [.NET SDK](documentdb-sdk-dotnet.md)
-## [.NET-minták](documentdb-dotnet-samples.md)
 ## [Java SDK](documentdb-sdk-java.md)
+## [.NET SDK](documentdb-sdk-dotnet.md)
+## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
+## [.NET-minták](documentdb-dotnet-samples.md)
 ## [Node.js SDK](documentdb-sdk-node.md)
 ## [Node.js-minták](documentdb-nodejs-samples.md)
-## [Python](documentdb-sdk-python.md)
+## [Python SDK](documentdb-sdk-python.md)
 ## [Python-minták](documentdb-python-samples.md)
-## [REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) 
 ## [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 ## [SQL-szintaxis – adatlap](documentdb-sql-query-cheat-sheet.md)
-
+## [REST](/rest/api/documentdb/)
+## [REST erőforrás-szolgáltató](/rest/api/documentdbresourceprovider/)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/documentdb/)
-## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
+## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=documentdb) 
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=documentdb) 
-## [Kérdezzen a DocumentDB-től](documentdb-community.md#contact-the-team)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=documentdb)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=documentdb)
 ## [Közösségi portál](documentdb-community.md)
-## [Események és felvételek](documentdb-community.md#events-and-recordings)
 ## [Tesztlekérdezések](https://www.documentdb.com/sql/demo)
 ## [Tanulmány a sémafüggetlen indexelésről](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)
 ## [Az adatkonzisztencia magyarázata a baseball példáján](http://research.microsoft.com/apps/pubs/default.aspx?id=206913)
@@ -110,23 +110,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

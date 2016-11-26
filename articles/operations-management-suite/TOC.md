@@ -5,11 +5,11 @@
 
 # Bevezetés
 ## Betekintés és elemzés
-###[Regisztráció a Log Analytics-re](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Regisztráció a Log Analytics-re](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatizálás és vezérlés
-###[Az első runbookom](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Az első runbookom](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Védelem és helyreállítás
-###[Az Azure Backup bemutatása](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Az Azure Backup bemutatása](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Biztonság és megfelelőség
 ### [Biztonság és naplózás](oms-security-getting-started.md)
 ### [Adatbiztonság](oms-security-data-security.md)
@@ -44,8 +44,8 @@
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Riasztáskezelés](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-#### [Application Dependency Monitor](operations-management-suite-application-dependency-monitor.md)
-##### [Konfigurálás](operations-management-suite-application-dependency-monitor-configure.md)
+#### [Szolgáltatástérkép](operations-management-suite-service-map.md)
+##### [Konfigurálás](operations-management-suite-service-map-configure.md)
 #### [Azure hálózatelemzés](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Tárolók](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault-elemzés](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -64,6 +64,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

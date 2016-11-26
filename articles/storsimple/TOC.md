@@ -1,7 +1,4 @@
-# A StorSimple áttekintése
-
 # StorSimple Virtual Array
-
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-ova-overview.md)
 
@@ -54,8 +51,9 @@
 ### Telepítés
 #### [Biztonsági kérdések áttekintése](storsimple-safety.md)
 #### [A 8100-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8100-hardware-installation.md)
+
 #### [A 8600-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8600-hardware-installation.md)
-#### [10 GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+#### [10-GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### Üzembe helyezés
 #### [StorSimple Manager szolgáltatás](storsimple-manage-service.md)
@@ -63,6 +61,7 @@
 ##### [Fizikai eszköz az Azure-ban – 1. frissítés](storsimple-deployment-walkthrough-u1.md)
 ##### [Fizikai eszköz az Azure-ban – GA](storsimple-deployment-walkthrough.md)
 #### [Fizikai eszköz a Government Portalon – aktuális](storsimple-deployment-walkthrough-gov-u2.md)
+##### [Fizikai eszköz a Government Portalon – aktuális](storsimple-deployment-walkthrough-gov.md)
 #### [Virtuális eszköz az Azure-ban](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [SharePointhoz készült StorSimple-adapter](storsimple-adapter-for-sharepoint.md)
@@ -139,7 +138,7 @@
 ##### [Támogatási csomag létrehozása](storsimple-create-manage-support-package.md)
 
 ### Migrate (Áttelepítés)
-#### [Az 5000–7000-es sorozatból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
+#### [Az 5000–7000-es sorozatból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
@@ -160,22 +159,26 @@
 ### [Kiadás – GA](storsimple-july-2014-release-notes.md)
 
 ## Referencia
-### [PowerShell](/powershell/servicemanagement/)
+### [Azure PowerShell](/powershell/servicemanagement)
+### [Windows PowerShell StorSimple-parancsmagokhoz] (https://technet.microsoft.com/library/dn688168.aspx)
 
 # Kapcsolódó
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
 
 # Erőforrások
-## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
 ## [Marketing blog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
 ## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

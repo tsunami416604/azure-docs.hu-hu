@@ -1,6 +1,5 @@
 # Áttekintés
-## [Az Azure AD tartományi szolgáltatások ismertetése](https://azure.microsoft.com/services/active-directory-ds/)
-## [Működés](active-directory-ds-overview.md)
+## [Az Azure AD tartományi szolgáltatások ismertetése](active-directory-ds-overview.md)
 ## [Mit nyújt Önnek a szolgáltatás?](active-directory-ds-comparison.md)
 ## [Szolgáltatások](active-directory-ds-features.md)
 ## [Forgatókönyvek](active-directory-ds-scenarios.md)
@@ -36,9 +35,11 @@
 
 # Erőforrások 
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-ds/)
-## [Kapcsolat](active-directory-ds-contact-us.md)
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [Kapcsolat](active-directory-ds-contact-us.md)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 29794682e0258a6d30c9b2ac96b6e58272bc3f48
-ms.openlocfilehash: 97a0f22bf72b30e6adc92e9b8d7e58a25e67c14b
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 38ae37f4892fb32422ca8d7880a7b38674f29610
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web Apps-dokumentáció
@@ -75,43 +75,25 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
+                        <h3>Első lépések a Web Apps szolgáltatásban az ASP.NET és a Visual Studio használata esetén</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+    </li> 
+     <li>
+        <a href="/azure/app-service-web/web-sites-java-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
+                            <img src="media/index/java.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>ASP.NET-webalkalmazás létrehozása Visual Studióval</h3>
+                        <h3>Első lépések a Web Apps szolgáltatásban Java használata esetén</h3>
                     </div>
                 </div>
             </div>
@@ -129,7 +111,7 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben</h3>
+                        <h3>Első lépések a Web Apps szolgáltatásban Node.js használata esetén </h3>
                     </div>
                 </div>
             </div>
@@ -147,25 +129,26 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Webalkalmazás létrehozása a Python Tools 2.2 használatával</h3>
+                        <h3>Első lépések a Web Apps szolgáltatásban Python Tools 2.2 használata esetén</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+   
+     <li>
+        <a href="/azure/app-service-web/app-service-web-php-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Java-webalkalmazás létrehozása az Azure App Service szolgáltatásban</h3>
+                        <h3>Első lépések a Web Apps szolgáltatásban PHP használata esetén</h3>
                     </div>
                 </div>
             </div>
@@ -183,7 +166,29 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban</h3>
+                        <h3>Ismerkedés a WordPress-szel az Azure App Service-ben</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
+</ul>
+
+---
+
+## <a name="reference"></a>Referencia
+
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/cli/azure/appservice/web">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>Web Apps Azure CLI-referencia</p>
                     </div>
                 </div>
             </div>
@@ -191,40 +196,49 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
+        <a href="/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>PHP-webalkalmazás létrehozása, konfigurálása és üzembe helyezése az Azure-ban</h3>
+                        <h3>Java</h3>
+                        <p>Java API-referencia</p>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-</ul>
-
----
-
-## <a name="reference"></a>Referencia
-
-### <a name="azure-cli"></a>Azure CLI
-[Web Apps AzureCLI-referencia](/cli/azure/)
-
-### <a name="java"></a>Java
-[Web Apps JAVA API-referencia](/java/api/)
-
-### <a name="net"></a>.NET
-[Web Apps – felügyelt referencia](/dotnet/api)
-
-### <a name="rest"></a>REST
-[Web Apps – REST API-referencia](/rest/api/appservice)
+     <li>
+        <a href="/dotnet/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>.NET – felügyelt referencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="/rest/api/appservice">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Web Apps – REST API-referencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    </ul>
+    
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
@@ -235,6 +249,7 @@ Web Apps-dokumentáció letöltése </div>
 </div>
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

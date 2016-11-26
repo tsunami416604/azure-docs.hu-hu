@@ -1,10 +1,14 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 84efac2879c77ea2ba71127db8a05970649f6863
+ms.openlocfilehash: 078421d67ae2b2f0854b6f31bb97d146224ef685
+
 
 ---
-# App Service - API Apps Documentation
+# <a name="app-service---api-apps-documentation"></a>App Service – Api Apps-dokumentáció
 
-Azure App Service is a cloud service that's designed to solve the practical problems that engineers face today. API apps in Azure App Service offer features that make it easier to develop, host, and consume APIs in the cloud and on-premises. With API apps, you get enterprise grade security, simple access control, hybrid connectivity, automatic SDK generation, and seamless integration with Logic Apps. Azure App Service is a fully managed platform for web, mobile, and integration scenarios. API Apps is one of four app types offered by Azure App Service.
+Az API Apps egyike az Azure App Service által kínált négy alkalmazástípusnak. Az Azure App Service-ben futtatott API Apps szolgáltatás számos lehetőséget nyújt a felhőben és helyileg tárolt API-k fejlesztéséhez, üzemeltetéséhez és felhasználásához. Az Azure App Service egy teljes körűen felügyelt platform webes, mobil és integrációs célokra.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about API Apps</h3>
+                        <h3>Az API Apps ismertetése</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>App Service – videótár</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with API Apps, ASP.NET adn Swagger in Azure App Service</h3>
+                        <h3>Ismerkedés az Azure App Service szolgáltatásban elérhető API Apps, az ASP.NET és a Swagger szolgáltatásokkal</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Java API app in Azure App Service</h3>
+                        <h3>Ismerkedés a Java API-alkalmazások létrehozásával az Azure App Service platformon</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +94,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Node.js API</h3>
+                        <h3>Ismerkedés a Node.js API létrehozásával</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an API app from JavaScript using CORS</h3>
+                        <h3>Ismerkedés az API-alkalmazások JavaScriptből történő létrehozásával a CORS használatával</h3>
                     </div>
                 </div>
             </div>
@@ -123,7 +127,12 @@ Azure App Service is a cloud service that's designed to solve the practical prob
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Mobile Apps Documentation
-        </div>
+A Mobile Apps-dokumentáció letöltése </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

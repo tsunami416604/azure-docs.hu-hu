@@ -1,5 +1,6 @@
 # [Áttekintés](cdn-overview.md)
 ## [Mi az Azure CDN?](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # Első lépések
 ## [Az Azure CDN engedélyezése](cdn-create-new-endpoint.md)
 
@@ -23,6 +24,8 @@
 #### [Premium szintű csomag](cdn-query-string-premium.md)
 ### [Gyorsítótárazott eszközök végleges törlése](cdn-purge-endpoint.md)
 ### [Gyorsítótárazott eszközök előzetes betöltése](cdn-preload-endpoint.md)
+### [Jogkivonat-hitelesítés](cdn-token-auth.md)
+### [Erőforrások figyelése](cdn-resource-health.md)
 ### [A működés felülbírálása szabályokkal](cdn-rules-engine.md)
 ### [Valós idejű értesítések beállítása](cdn-real-time-alerts.md)
 
@@ -41,19 +44,19 @@
 ### [Fájltömörítés](cdn-troubleshoot-compression.md)
 
 # Referencia
-## [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [.NET](/dotnet/api/)
 ## [Azure CDN POP-helyek](cdn-pop-locations.md)
-## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
+## [REST](/rest/api/cdn/)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cdn)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

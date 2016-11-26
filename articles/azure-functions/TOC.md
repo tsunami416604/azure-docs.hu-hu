@@ -8,7 +8,7 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Választás a következők közül: Flow, Logic Apps, Functions és WebJobs](functions-compare-logic-apps-ms-flow-webjobs.md)
-### [Választás a szolgáltatáshasználat és az App Service-csomag közül](functions-scale.md)
+### [Szolgáltatási csomag kiválasztása](functions-scale.md)
 
 ## Fejlesztés
 ### [Függvényalkalmazások fejlesztése](functions-reference.md)
@@ -21,7 +21,7 @@
 #### [Mobile Apps-kötések](functions-bindings-mobile-apps.md)
 #### [Értesítési központ kimeneti kötése](functions-bindings-notification-hubs.md)
 #### [Service Bus-eseményindítók és -kötések a várólistákhoz és a témakörökhöz](functions-bindings-service-bus.md)
-#### Tárolás
+#### Tárkötések
 ##### [Blobkötések](functions-bindings-storage-blob.md)
 ##### [Üzenetsorkötések](functions-bindings-storage-queue.md)
 ##### [Táblakötések](functions-bindings-storage-table.md)
@@ -30,6 +30,7 @@
 ### [Függvény létrehozása az Azure Portal használatával](functions-create-first-azure-function-azure-portal.md)
 ### [Az Azure Functions tesztelése](functions-test-a-function.md)
 ### [Helyi fejlesztés és hibakeresés](functions-run-local.md)
+### [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 ### [Az Azure Functions használata ütemezett karbantartási feladatok végrehajtásához](functions-scenario-database-table-cleanup.md)
 
 ## Kezelés
@@ -38,8 +39,8 @@
 ## Üzembe helyezés
 ### [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
-# Referencia
-## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## Figyelés
+### [Az Azure Functions figyelése](functions-monitoring.md)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/functions/)  
@@ -48,6 +49,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

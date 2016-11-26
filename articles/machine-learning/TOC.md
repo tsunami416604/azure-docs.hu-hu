@@ -1,7 +1,5 @@
 # Áttekintés
 ## [Mi a Machine Learning?](machine-learning-what-is-machine-learning.md)
-## [Újdonságok](machine-learning-whats-new.md)
-## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
 ## Machine Learning Studio
 ### [Mi a Studio?](machine-learning-what-is-ml-studio.md)
 ### [A Studio képességei](machine-learning-studio-overview-diagram.md)
@@ -9,56 +7,13 @@
 ## Csoportos adatelemzési folyamat
 ### [Áttekintés](http://aka.ms/datascienceprocess)
 ### [Életciklus](data-science-process-overview.md)
-### [Eszközök és segédprogramok](machine-learning-data-science-environment-setup.md)
 ### [Útmutatók](data-science-process-walkthroughs.md)
-## [Alkalmazási helyzet azonosítása](machine-learning-data-science-plan-your-environment.md)
-## [Használati példák megtekintése](machine-learning-data-science-plan-sample-scenarios.md)
-## Példák
-### [Kísérleteket szemléltető példák](machine-learning-sample-experiments.md)
-### [Mintaadatkészletek](machine-learning-use-sample-datasets.md)
-### [Ügyfélforgalom példa](machine-learning-azure-ml-customer-churn-scenario.md)
-## API-k
-### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection.md)
-### [Szövegelemzés](machine-learning-apps-text-analytics.md)
-### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
-### Javaslatok
-#### [Áttekintés](machine-learning-recommendation-api-sample-application.md)
-#### [Első lépések](machine-learning-recommendation-api-quick-start-guide.md)
-#### [Referencia](machine-learning-recommendation-api-documentation.md)
-#### [JavaScript használata](machine-learning-recommendation-api-javascript-integration.md)
-#### [Gyakori kérdések](machine-learning-recommendation-api-faq.md)
-## Cortana Analytics
-### Prediktív karbantartás
-#### [Áttekintés](cortana-analytics-playbook-predictive-maintenance.md)
-#### [Architektúra](cortana-analytics-architecture-predictive-maintenance.md)
-#### [Műszaki útmutató](cortana-analytics-technical-guide-predictive-maintenance.md)
-### Járműtelemetria
-#### [Áttekintés](cortana-analytics-playbook-vehicle-telemetry.md)
-#### [Forgatókönyv](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
-#### [Telepítés](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
-## Adatelemzési folyamat
-### [Hadoop-fürtök használata](machine-learning-data-science-process-hive-walkthrough.md)
-### [1 TB-os Hadoop használata](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-### [SQL Server használata](machine-learning-data-science-process-sql-walkthrough.md)
-### [SQL Data Warehouse használata](machine-learning-data-science-process-sqldw-walkthrough.md)
-## Webszolgáltatások
-### [R példák](machine-learning-r-csharp-web-service-examples.md)
-### [Bináris osztályozó](machine-learning-r-csharp-binary-classifier.md)
-### [Fürtmodell](machine-learning-r-csharp-cluster-model.md)
-### [Többváltozós lineáris regresszió](machine-learning-r-csharp-multivariate-linear-regression.md)
-### [Előrejelzés – exponenciális simítás](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-### [Előrejelzés – ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-### [Előrejelzés – ARIMA](machine-learning-r-csharp-arima.md)
-### [Túléléselemzés](machine-learning-r-csharp-survival-analysis.md)
-### [Lexikális alapú hangulatelemzés](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-### [Aránykülönbségek tesztelése](machine-learning-r-csharp-difference-in-two-proportions.md)
-### [Normál eloszlási csomag](machine-learning-r-csharp-normal-distribution.md)
-### [Binomiális eloszlási csomag](machine-learning-r-csharp-binomial-distribution.md)
-### [Piactér – gyakori kérdések](machine-learning-marketplace-faq.md)
-
+## [Gyakori kérdések](machine-learning-faq.md)
+## [Újdonságok](machine-learning-whats-new.md)
 # Első lépések
 ## [Az első kísérlet létrehozása](machine-learning-create-experiment.md)
-## [Prediktív megoldás létrehozása](machine-learning-walkthrough-develop-predictive-solution.md)
+## Forgatókönyv – példa
+### [Prediktív megoldás létrehozása](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1: Munkaterület létrehozása](machine-learning-walkthrough-1-create-ml-workspace.md)
 ### [2: Adatok feltöltése](machine-learning-walkthrough-2-upload-data.md)
 ### [3: Kísérlet létrehozása](machine-learning-walkthrough-3-create-new-experiment.md)
@@ -71,96 +26,97 @@
 ### [3: Jó kérdések megkérdezése](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: Válasz előrejelzése](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5: Más emberek munkájának másolása](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
-## [Gyakori kérdések](machine-learning-faq.md)
-
 # Útmutató
-## Eszközök telepítése 
-### [Környezetek beállítása](machine-learning-data-science-environment-setup.md)
-### [Virtuális gépek beállítása](machine-learning-data-science-virtual-machines.md)
+## Eszközök és segédprogramok telepítése
+### [Környezetek létrehozása](machine-learning-data-science-environment-setup.md)
+### [Virtuális gépek telepítése](machine-learning-data-science-virtual-machines.md)
 ### [Hadoop testreszabása](machine-learning-data-science-customize-hadoop-cluster.md)
-## Virtuális gép beállítása
-### [DS virtuális gépek áttekintése](machine-learning-data-science-virtual-machine-overview.md)
-### [A DS VM használata](machine-learning-data-science-vm-do-ten-things.md)
-### [A DS VM üzembe helyezése](machine-learning-data-science-provision-vm.md)
-### [Azure virtuális gép beállítása](machine-learning-data-science-setup-virtual-machine.md)
-### [SQL virtuális gép beállítása](machine-learning-data-science-setup-sql-server-virtual-machine.md)
-### [Linux-alapú virtuális gépek üzembe helyezése](machine-learning-data-science-linux-dsvm-intro.md)
-### [Linuxos virtuális gép használata](machine-learning-data-science-linux-dsvm-walkthrough.md)
-## Munkaterületek kezelése
-### [Munkaterület létrehozása](machine-learning-create-workspace.md)
-### [Munkaterületek kezelése](machine-learning-manage-workspace.md)
-### [Hibaelhárítás](machine-learning-troubleshooting-creating-ml-workspace.md)
-### [Üzembe helyezés az ARM használatával](machine-learning-deploy-with-resource-manager-template.md)
-### [Létrehozás egy másik régióban](machine-learning-multi-geo.md)
-## Adatok betöltése a tárolási környezetbe
-### [Áttekintés](machine-learning-data-science-ingest-data.md)
-### [Blob Storage](machine-learning-data-science-move-azure-blob.md)
-### [A Storage Explorer használata](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
-### [Az AzCopy használata](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
-### [A Python használata](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
-### [Az SSIS használata](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
-### [Áthelyezés virtuális gépre](machine-learning-data-science-move-sql-server-virtual-machine.md)
-### [Áthelyezés SQL Database szolgáltatásra](machine-learning-data-science-move-sql-azure.md)
-### [Betöltés Hive táblákba](machine-learning-data-science-move-hive-tables.md)
-### [Betöltés helyszíni SQL-ből](machine-learning-data-science-move-sql-azure-adf.md)
-## Betanítási adatok importálása
-### [Áttekintés](machine-learning-data-science-import-data.md)
-### [Egy helyi fájlból](machine-learning-import-data-from-local-file.md)
-### [Online forrásból](machine-learning-import-data-from-online-sources.md)
-### [Kísérletből](machine-learning-import-data-from-an-experiment.md)
-### [SQL-táblák partíció használata](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
-### [Helyszíni SQL használata](machine-learning-use-data-from-an-on-premises-sql-server.md)
-## Adatok felfedezése és vizualizálása
-### [Adatok előkészítése](machine-learning-data-science-prepare-data.md)
-### Adatok megismerése
-#### [Áttekintés](machine-learning-data-science-explore-data.md)
-#### [Pandas használata](machine-learning-data-science-explore-data-blob.md)
-#### [SQL virtuális gép használata](machine-learning-data-science-explore-data-sql-server.md)
-#### [Hive táblák létrehozása](machine-learning-data-science-explore-data-hive-tables.md)
-### Mintaadatok
-#### [Áttekintés](machine-learning-data-science-sample-data.md)
-#### [Blob Storage használata](machine-learning-data-science-sample-data-blob.md)
-#### [SQL Server használata](machine-learning-data-science-sample-data-sql-server.md)
-#### [Hive táblák létrehozása](machine-learning-data-science-sample-data-hive.md)
-### Adatok feldolgozása
-#### [Hozzáférés Pythonnal](machine-learning-python-data-access.md)
-#### [Blobadatok feldolgozása](machine-learning-data-science-process-data-blob.md)
-#### [Az Azure Data Lake használata](machine-learning-data-science-process-data-lake-walkthrough.md)
-#### [SQL virtuális gép használata](machine-learning-data-science-process-sql-server-virtual-machine.md)
-#### [Adatfolyamat használata](machine-learning-automated-data-pipeline-cheat-sheet.md)
-### Spark használata
-#### [Áttekintés](machine-learning-data-science-spark-overview.md)
-#### [Adatok megismerése](machine-learning-data-science-spark-data-exploration-modeling.md)
-#### [Relevanciamodellek](machine-learning-data-science-spark-model-consumption.md)
-#### [Speciális adatfeltárás](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
-#### [Scala és Spark használata](machine-learning-data-science-process-scala-walkthrough.md)
-## Adatmodellezés
-### Jellemzőkiemelés
+### Virtuális gép telepítése
+#### [DS virtuális gépek áttekintése](machine-learning-data-science-virtual-machine-overview.md)
+#### [A DS VM használata](machine-learning-data-science-vm-do-ten-things.md)
+#### [A DS VM üzembe helyezése](machine-learning-data-science-provision-vm.md)
+#### [Az Azure VM telepítése](machine-learning-data-science-setup-virtual-machine.md)
+#### [Az SQL VM telepítése](machine-learning-data-science-setup-sql-server-virtual-machine.md)
+#### [Linux-alapú virtuális gépek üzembe helyezése](machine-learning-data-science-linux-dsvm-intro.md)
+#### [Linuxos virtuális gép használata](machine-learning-data-science-linux-dsvm-walkthrough.md)
+### Munkaterületek kezelése
+#### [Létrehozás](machine-learning-create-workspace.md)
+#### [Kezelés](machine-learning-manage-workspace.md)
+#### [Hibaelhárítás](machine-learning-troubleshooting-creating-ml-workspace.md)
+#### [Üzembe helyezés az ARM használatával](machine-learning-deploy-with-resource-manager-template.md)
+#### [Létrehozás egy másik régióban](machine-learning-multi-geo.md)
+## Üzleti igények elemzése
+### [Technikai igények](machine-learning-data-science-plan-your-environment.md)
+### [A szituáció azonosítása](machine-learning-data-science-plan-sample-scenarios.md)
+## Adatok beszerzése és megértése
+### Adatok betöltése a tárolási környezetbe
+#### [Áttekintés](machine-learning-data-science-ingest-data.md)
+#### [Blob Storage](machine-learning-data-science-move-azure-blob.md)
+#### [A Storage Explorer használata](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
+#### [Az AzCopy használata](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
+#### [A Python használata](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
+#### [Az SSIS használata](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
+#### [Áthelyezés virtuális gépre](machine-learning-data-science-move-sql-server-virtual-machine.md)
+#### [Áthelyezés SQL Database szolgáltatásra](machine-learning-data-science-move-sql-azure.md)
+#### [Betöltés Hive táblákba](machine-learning-data-science-move-hive-tables.md)
+#### [Betöltés helyszíni SQL-ből](machine-learning-data-science-move-sql-azure-adf.md)
+#### [Betöltés SQL partíciós táblákból](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
+### Betanítási adatok importálása
+#### [Áttekintés](machine-learning-data-science-import-data.md)
+#### [Egy helyi fájlból](machine-learning-import-data-from-local-file.md)
+#### [Online forrásból](machine-learning-import-data-from-online-sources.md)
+#### [Kísérletből](machine-learning-import-data-from-an-experiment.md)
+#### [Helyszíni SQL használata](machine-learning-use-data-from-an-on-premises-sql-server.md)
+### Adatok felfedezése és vizualizálása
+#### [Adatok előkészítése](machine-learning-data-science-prepare-data.md)
+#### Adatok megismerése
+##### [Áttekintés](machine-learning-data-science-explore-data.md)
+##### [Pandas használata](machine-learning-data-science-explore-data-blob.md)
+##### [SQL virtuális gép használata](machine-learning-data-science-explore-data-sql-server.md)
+##### [Hive táblák létrehozása](machine-learning-data-science-explore-data-hive-tables.md)
+#### Mintaadatok
+##### [Áttekintés](machine-learning-data-science-sample-data.md)
+##### [Blob Storage használata](machine-learning-data-science-sample-data-blob.md)
+##### [SQL Server használata](machine-learning-data-science-sample-data-sql-server.md)
+##### [Hive táblák létrehozása](machine-learning-data-science-sample-data-hive.md)
+#### Adatok feldolgozása
+##### [Hozzáférés Pythonnal](machine-learning-python-data-access.md)
+##### [Blobadatok feldolgozása](machine-learning-data-science-process-data-blob.md)
+##### [Az Azure Data Lake használata](machine-learning-data-science-process-data-lake-walkthrough.md)
+##### [SQL virtuális gép használata](machine-learning-data-science-process-sql-server-virtual-machine.md)
+##### [Adatfolyamat használata](machine-learning-automated-data-pipeline-cheat-sheet.md)
+#### Adatfeldolgozás a Spark használatával
+##### [Áttekintés](machine-learning-data-science-spark-overview.md)
+##### [Adatok megismerése](machine-learning-data-science-spark-data-exploration-modeling.md)
+##### [Relevanciamodellek](machine-learning-data-science-spark-model-consumption.md)
+##### [Speciális adatfeltárás](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
+##### [Scala és Spark használata](machine-learning-data-science-process-scala-walkthrough.md)
+## Modellek fejlesztése
+### Funkciók tervezése és kiválasztása
 #### [Áttekintés](machine-learning-data-science-create-features.md)
 #### [Pandas használata](machine-learning-data-science-create-features-blob.md)
 #### [SQL + Python használata](machine-learning-data-science-create-features-sql-server.md)
 #### [Hive-lekérdezések használata](machine-learning-data-science-create-features-hive.md)
-#### [A TDSP áttekintése](machine-learning-data-science-select-features.md)
+#### [TDSP-funkciók kiválasztása](machine-learning-data-science-select-features.md)
 ### Modellek létrehozása és betanítása
-#### [Az első kísérlet létrehozása](machine-learning-create-experiment.md)
 #### [Átalakítás relevanciává](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 #### [Az ismétlések kezelése](machine-learning-manage-experiment-iterations.md)
+#### [Modellek létrehozása a PowerShell-lel](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### Algoritmusok kiválasztása
 ##### [Algoritmusok kiválasztása](machine-learning-algorithm-choice.md)
 ##### [Algoritmusok – Adatlap](machine-learning-algorithm-cheat-sheet.md)
 ##### [Lineáris regresszió használata](machine-learning-linear-regression-in-azure.md)
 ##### [Szövegelemzés használata](machine-learning-text-analytics-module-tutorial.md)
-##### [Algoritmusok referenciája](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 #### Eredmények kiértékelése és értelmezése
 ##### [Teljesítmény kiértékelése](machine-learning-evaluate-model-performance.md)
 ##### [Paraméterek optimalizálása](machine-learning-algorithm-parameters-optimize.md)
 ##### [Eredmények értelmezése](machine-learning-interpret-model-results.md)
 ##### [Hibakeresés](machine-learning-debug-models.md)
-#### R és Python használatával
+#### Az R és a Python használata
 ##### [R-szkriptek végrehajtása](machine-learning-extend-your-experiment-with-r.md)
 ##### [Egyéni R-modulok készítése](machine-learning-custom-r-modules.md)
 ##### [Python-parancsprogramok futtatása](machine-learning-execute-python-scripts.md)
-## Üzembe helyezés
+## Modellek üzembe helyezése és felhasználása
 ### [Áttekintés](machine-learning-deploy-consume-web-service-guide.md)
 ### Modellek üzembe helyezése
 #### [Működés](machine-learning-model-progression-experiment-to-web-service.md)
@@ -188,14 +144,36 @@
 #### [Excel használata](machine-learning-consuming-from-excel.md)
 #### [Excel-bővítmény használata](machine-learning-excel-add-in-for-web-services.md)
 #### [Webalkalmazás-sablon használata](machine-learning-consume-web-service-with-web-app-template.md)
-
-#Referencia
+## Példák
+### [Kísérleteket szemléltető példák](machine-learning-sample-experiments.md)
+### [Mintaadatkészletek](machine-learning-use-sample-datasets.md)
+### [Ügyfélforgalom példa](machine-learning-azure-ml-customer-churn-scenario.md)
+### Végpontok közötti forgatókönyvek
+#### [Hadoop-fürtök használata](machine-learning-data-science-process-hive-walkthrough.md)
+#### [1 TB-os Hadoop használata](machine-learning-data-science-process-hive-criteo-walkthrough.md)
+#### [SQL Server használata](machine-learning-data-science-process-sql-walkthrough.md)
+#### [SQL Data Warehouse használata](machine-learning-data-science-process-sqldw-walkthrough.md)
+### Webszolgáltatási példák
+#### [R példák](machine-learning-r-csharp-web-service-examples.md)
+#### [Bináris osztályozó](machine-learning-r-csharp-binary-classifier.md)
+#### [Fürtmodell](machine-learning-r-csharp-cluster-model.md)
+#### [Többváltozós lineáris regresszió](machine-learning-r-csharp-multivariate-linear-regression.md)
+#### [Előrejelzés – exponenciális simítás](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
+#### [Előrejelzés – ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
+#### [Előrejelzés – ARIMA](machine-learning-r-csharp-arima.md)
+#### [Túléléselemzés](machine-learning-r-csharp-survival-analysis.md)
+#### [Lexikális alapú hangulatelemzés](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
+#### [Aránykülönbségek tesztelése](machine-learning-r-csharp-difference-in-two-proportions.md)
+#### [Normál eloszlási csomag](machine-learning-r-csharp-normal-distribution.md)
+#### [Binomiális eloszlási csomag](machine-learning-r-csharp-binomial-distribution.md)
+#### [Piactér – gyakori kérdések](machine-learning-marketplace-faq.md)
+# Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [A Machine Learning PowerShell-modulja](machine-learning-powershell-module.md)
+## [Algoritmusok referenciája](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [R – első lépések](machine-learning-r-quickstart.md)
-## [PowerShell – áttekintés](machine-learning-powershell-module.md)
-## [Modellek létrehozása a PowerShell-lel](machine-learning-create-models-and-endpoints-with-powershell.md)
-## [Webszolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn950030.aspx)
 ## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
-
+## [Felügyeleti REST API-k](/rest/api/machinelearning/index)
 # Kapcsolódó
 ## Cortana Intelligence Gallery
 ### [Áttekintés](machine-learning-gallery-how-to-use-contribute-publish.md)
@@ -208,12 +186,34 @@
 ### [oktatóanyagokat](machine-learning-gallery-tutorials.md)
 ### [Gyűjtemények](machine-learning-gallery-collections.md)
 ### [Egyéni modulok](machine-learning-gallery-custom-modules.md)
-
+## Cortana Analytics
+### API-k
+#### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection.md)
+#### [Szövegelemzés](machine-learning-apps-text-analytics.md)
+#### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
+#### Javaslatok
+##### [Áttekintés](machine-learning-recommendation-api-sample-application.md)
+##### [Első lépések](machine-learning-recommendation-api-quick-start-guide.md)
+##### [Referencia](machine-learning-recommendation-api-documentation.md)
+##### [JavaScript használata](machine-learning-recommendation-api-javascript-integration.md)
+##### [Gyakori kérdések](machine-learning-recommendation-api-faq.md)
+#### Prediktív karbantartás
+##### [Áttekintés](cortana-analytics-playbook-predictive-maintenance.md)
+##### [Architektúra](cortana-analytics-architecture-predictive-maintenance.md)
+##### [Műszaki útmutató](cortana-analytics-technical-guide-predictive-maintenance.md)
+#### Járműtelemetria
+##### [Áttekintés](cortana-analytics-playbook-vehicle-telemetry.md)
+##### [Forgatókönyv](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
+##### [Telepítés](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 # Erőforrások
+## [Díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [Blog](http://blogs.technet.com/b/machinelearning/)
-## [Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)
+## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-machine-learning)
+## [Videók](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

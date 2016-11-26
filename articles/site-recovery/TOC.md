@@ -2,7 +2,7 @@
 ## [Mi a Site Recovery?](site-recovery-overview.md)
 ## [Hogyan működik a Site Recovery?](site-recovery-components.md)
 ## [Milyen számítási feladatokat tud megvédeni?](site-recovery-workload.md)
-## [Mely operációs rendszerek támogatottak?](site-recovery-support-matrix.md)
+## [Site Recovery támogatási mátrix](site-recovery-support-matrix.md)
 ## [Gyakori kérdések](site-recovery-faq.md)
 ## [Bevezetés megtekintése](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -49,7 +49,7 @@
 ## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Klasszikus PowerShell](/powershell/servicemanagement/)
 
 # Kapcsolódó
@@ -63,6 +63,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

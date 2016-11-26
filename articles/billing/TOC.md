@@ -37,6 +37,6 @@
 # Erőforrások
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../billing-how-to-create-billing-support-ticket.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

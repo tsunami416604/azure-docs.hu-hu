@@ -98,9 +98,9 @@
 ### [Cloud Services – gyakori kérdések](cloud-services-faq.md)
 
 # Referencia
-## [.NET](https://msdn.microsoft.com/library)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 ## [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
 ## Vendég operációs rendszer kivezetése
 ### [Kivezetési szabályzat](cloud-services-guestos-retirement-policy.md)
@@ -116,6 +116,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

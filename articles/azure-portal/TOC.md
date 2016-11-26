@@ -22,7 +22,7 @@
 ### [Események és naplók megtekintése](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-# Referencia
+# Kapcsolódó
 ## [Azure Resource Manager-sablonfüggvények](../resource-group-template-functions.md)
 ## [Ajánlott eljárások az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [Gyakori metrikák az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
@@ -32,10 +32,16 @@
 ## [Azure Insights – PowerShell gyors üzembe helyezési minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure Insights parancssori felület gyors üzembe helyezési mintái](../monitoring-and-diagnostics/insights-cli-samples.md)
 
+# Erőforrások
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

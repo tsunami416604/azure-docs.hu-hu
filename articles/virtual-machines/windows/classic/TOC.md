@@ -102,13 +102,15 @@
 ### [Klasszikus üzembe helyezési hibák meglévő virtuális gép újraindításakor vagy átméretezésekor](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
+## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates/)
-## [Számítási REST](/rest/api/compute/)
-## [Hálózati REST](/rest/api/)
-## [Tárolási REST](/rest/api/storageservices/)
+## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
+## [Számítási REST](/rest/api/compute)
+## [Hálózati REST](/rest/api)
+## [Tárolási REST](/rest/api/storageservices)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
@@ -117,6 +119,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

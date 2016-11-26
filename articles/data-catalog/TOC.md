@@ -2,12 +2,11 @@
 ## [A Data Catalog ismertetése](data-catalog-what-is-data-catalog.md)
 ## [Gyakori forgatókönyvek](data-catalog-common-scenarios.md)
 ## [Támogatott adatforrások](data-catalog-dsr.md)
-## [Újdonságok](data-catalog-whats-new.md)
 
 # Első lépések
 ## [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)
 ## [Az Azure Data Catalog bevezetése](data-catalog-adopting-data-catalog.md)
-## [Az Azure Data Catalog előfeltételei](data-catalog-prerequisites.md)
+## [Előfeltételek](data-catalog-prerequisites.md)
 ## [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
 
 # Útmutató
@@ -30,12 +29,16 @@
 ## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
 ## [Terminológia](data-catalog-terminology.md)
 ## [Kiadási megjegyzések](data-catalog-release-notes.md)
-## [REST](https://docs.microsoft.com/rest/api/datacatalog/)
+## [REST](/rest/api/datacatalog/)
 
 # Erőforrások
+## [Kibocsátási megjegyzések](data-catalog-whats-new.md)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

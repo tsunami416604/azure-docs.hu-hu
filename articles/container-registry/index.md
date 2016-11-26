@@ -1,63 +1,64 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: cee95b961b45bb0a004eb6dd254222d909ea57b8
+ms.sourcegitcommit: 42be91bb4ddf87671ed9c3c5b2e5e640b0c5b059
+ms.openlocfilehash: fe9ee140084f0ab659e9db519098bbeb03305470
 
 ---
-# <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse-dokumentáció
 
-Az Azure SQL Data Warehouse egyesíti az SQL Server relációs adatbázist és az Azure-felhő horizontális felskálázhatóságát.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő SQL Data Warehouse képes kezelni a vállalati terhelést.
+# <a name="azure-container-registry-documentation"></a>Azure Container Registry-dokumentáció
+
+Az Azure Container Registry (előzetes verzió) egy privát beállításjegyzék a rendszerképek tárolásához. Az Azure Container Registry segítségével Docker-formátumú rendszerképeket tárolhat bármely típusú tárolópéldányhoz. Az Azure Container Registry jól integrálható az Azure Container Service által üzemeltetett orkesztrátorokkal, beleértve a Docker Swarm, a DC/OS és a Kubernetes szolgáltatást. 
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is">
+        <a href="/azure/container-registry/container-registry-intro">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/sql-data-warehouse.svg" alt="" />
+                            <img src="./media/index/container-registry.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>További információ az Azure SQL Data Warehouse szolgáltatásról</h3>
+                        <h3>Tudnivalók az Azure Container Registryről</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse">
+    <li>
+        <a href="/azure/container-registry/container-registry-get-started-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="./media/index/portal.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure SQL Data Warehouse – videotár</h3>
+                        <h3>Beállításjegyzék létrehozása a portállal – az első lépések</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-     <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-provision/">
+    <li>
+        <a href="/azure/container-registry/container-registry-get-started-azure-cli">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
+                            <img src="./media/index/cli.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Ismerkedés az SQL Data Warehouse létrehozásával az Azure Portal használatával</h3>
+                        <h3>Beállításjegyzékbeli létrehozása a parancssori felülettel – az első lépések</h3>
                     </div>
                 </div>
             </div>
@@ -66,18 +67,17 @@ Az Azure SQL Data Warehouse egyesíti az SQL Server relációs adatbázist és a
     </li>
 </ul>
 
----
 ## <a name="reference"></a>Referencia
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
+        <a href="/cli/azure/acr">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell – referencia</p>
+                        <h3>parancssori felület</h3>
+                        <p>Parancssori útmutató</p>
                     </div>
                 </div>
             </div>
@@ -85,13 +85,13 @@ Az Azure SQL Data Warehouse egyesíti az SQL Server relációs adatbázist és a
         </a>
     </li>
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/bb510741">
+        <a href="/rest/api/containerregistry">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>T-SQL</h3>
-                        <p>T-SQL – referencia</p>
+                        <h3>REST</h3>
+                        <p>REST API-referencia</p>
                     </div>
                 </div>
             </div>
@@ -99,14 +99,6 @@ Az Azure SQL Data Warehouse egyesíti az SQL Server relációs adatbázist és a
         </a>
     </li>
 </ul>
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-data-warehouse.pdf">
-        <div class="img"></div>
-        <div class="text">
-SQL Data Warehouse-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
