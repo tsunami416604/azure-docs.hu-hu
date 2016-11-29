@@ -52,7 +52,7 @@ Az Azure Redis Cache a népszerű, nyílt forráskódú Redis Cache-re épül. H
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
+                            <img src="media/index/dotnet.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -64,7 +64,7 @@ Az Azure Redis Cache a népszerű, nyílt forráskódú Redis Cache-re épül. H
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache">
+        <a href="/azure/redis-cache/cache-web-app-howto">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
