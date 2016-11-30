@@ -3,8 +3,8 @@ title: "Rekordhalmaz és rekordok létrehozása egy DNS-zóna számára a paranc
 description: "Állomásrekordok létrehozása az Azure DNS számára. Rekordhalmazok és rekordok beállítása a parancssori felület használatával"
 services: dns
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: georgewallace
+manager: timlt
 ms.assetid: 02b897d3-e83b-4257-b96d-5c29aa59e843
 ms.service: dns
 ms.devlang: na
@@ -12,7 +12,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: sewhee
+ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
 ms.openlocfilehash: f15333cde5304579ff0d0ba9571a870ddde19163

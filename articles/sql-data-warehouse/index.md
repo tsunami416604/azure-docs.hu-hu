@@ -47,7 +47,7 @@ Az Azure SQL Data Warehouse egyesíti az SQL Server relációs adatbázist és a
         </a>
     </li>
      <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-provision/">
+        <a href="/azure/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
