@@ -79,7 +79,6 @@
 
 # Hibaelhárítás
 ## [Az Azure Stack hibaelhárítása](azure-stack-troubleshooting.md)
-## [A Web Apps erőforrás-szolgáltatója](azure-stack-webapps-troubleshoot-known-issues.md)
 
 # Erőforrások
 ## [Eszközök](azure-stack-tools-paas-services.md)

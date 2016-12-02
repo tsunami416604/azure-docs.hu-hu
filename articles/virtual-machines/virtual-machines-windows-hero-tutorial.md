@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/06/2016
+ms.date: 11/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: b54a45ed9472cfc457649a0e32c82259d95c87f0
+ms.sourcegitcommit: 22156a9f3c5a57e10cad96661f50531b309c3a04
+ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
 
 
 ---
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Példaként egy Windows Server 2012 R2 Datacenter rendszerképet használunk, de ez csak egyike az Azure által kínált számos rendszerképnek. Az elérhető rendszerképek az előfizetéstől függenek. Egyes asztali rendszerképek például az [MSDN-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) számára állnak rendelkezésre.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A központi menüben kattintson az **Új** > **Virtuális gépek** > **Windows Server 2012 R2 Datacenter** elemre.
+2. A központi menüben kattintson az **Új** > **Számítás** > **Windows Server 2012 R2 Datacenter** elemre.
    
     ![Képernyőkép a portálon elérhető Azure virtuálisgép-rendszerképekről](./media/virtual-machines-windows-hero-tutorial/marketplace-new.png)
 3. Ellenőrizze, hogy a **Windows Server 2012 R2 Datacenter** panelen az **Üzembe helyezési modell kiválasztása** alatt az **Erőforrás-kezelő** van-e kiválasztva. Kattintson a **Létrehozás** gombra.
@@ -95,6 +95,6 @@ Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra katti
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

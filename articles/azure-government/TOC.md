@@ -16,6 +16,7 @@
 ### [Piactér](documentation-government-manage-marketplace.md)
 ### [Piactér partnerek számára](documentation-government-manage-marketplace-partners.md)
 ### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
+### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [Előfizetés](documentation-government-manage-subscriptions.md)
 
 # Referencia

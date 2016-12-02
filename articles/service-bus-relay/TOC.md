@@ -21,7 +21,7 @@
 ## [Példák](service-bus-relay-samples.md)
 ## [Hibrid kapcsolatok – .NET API](/dotnet/api/microsoft.servicebus)
 ## [WCF Relay – .NET API](/dotnet/api/microsoft.servicebus)
-
+## [Portbeállítások](service-bus-relay-port-settings.md)
 
 # Erőforrások
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
@@ -33,6 +33,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

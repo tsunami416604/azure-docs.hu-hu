@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/26/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 317d6980d304cc503cc43358c4b91459d4abd1ba
-ms.openlocfilehash: 6b08f27a27a31fcc665ab051438a962ddc711767
+ms.sourcegitcommit: 2bd363e3c22f4cf4daf2e0fa352fd4a131d1675f
+ms.openlocfilehash: 89db2c9f388b8a5496a306ba0a152ab57481ea50
 
 
 ---
 
 # <a name="create-a-linux-vm-using-the-azure-cli-20-preview"></a>Linux virtuális gép létrehozása az Azure parancssori felület 2.0 (előzetes) verziójával
-Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) 2.0 (előzetes) verzió [az vm create](/cli/azure/vm?branch=master#create) parancsának használatával. 
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) 2.0 (előzetes) verzió [az vm create](/cli/azure/vm#create) parancsának használatával. 
 
 > [!NOTE] 
 > Az Azure parancssori felület 2.0 előzetes verzió a többplatformos parancssori felületek következő generációját képviseli. Próbálja ki, és ossza meg velünk a véleményét a [GitHub projektoldalon](https://github.com/Azure/azure-cli).
@@ -127,6 +127,6 @@ Az `az vm create` parancs a virtuális gépek gyors üzembe helyezésére szolg�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

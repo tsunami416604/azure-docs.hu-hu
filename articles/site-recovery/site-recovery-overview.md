@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 10/30/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 64d085bff08d9a824204851d32504fac3e79024c
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
 
 
 ---
@@ -30,7 +30,7 @@ A Site Recovery a helyszíni virtuális gépek és fizikai kiszolgálók replik�
 Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így a számítási feladatok elérhetők maradnak, és nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat.
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Site Recovery az Azure Portalon
-Az Azure két különböző [üzemi modellel](../resource-manager-deployment-model.md) rendelkezik az erőforrások létrehozásához és használatához: Az Azure Resource Manager-modellel és a klasszikus szolgáltatáskezelési modellel. Az Azure-ban két különböző portál érhető el. A [klasszikus Azure portál](https://manage.windowsazure.com/) és az [Azure Portal](https://portal.azure.com).
+Az Azure két különböző [üzemi modellel](../azure-resource-manager/resource-manager-deployment-model.md) rendelkezik az erőforrások létrehozásához és használatához: Az Azure Resource Manager-modellel és a klasszikus szolgáltatáskezelési modellel. Az Azure-ban két különböző portál érhető el. A [klasszikus Azure portál](https://manage.windowsazure.com/) és az [Azure Portal](https://portal.azure.com).
 
 * A Site Recovery a klasszikus portálon és az Azure Portalon egyaránt üzembe helyezhető.
 * A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatáskezelési modellel támogatható.
@@ -79,6 +79,6 @@ A Site Recovery alkalmazásbarát replikációt biztosít, így a számítási f
 
 
 
-<!----HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

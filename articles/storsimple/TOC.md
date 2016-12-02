@@ -7,16 +7,41 @@
 #### [Követelmények áttekintése](storsimple-ova-system-requirements.md)
 #### [A korlátozások ismertetése](storsimple-ova-limits.md)
 #### [Az ajánlott eljárások áttekintése](storsimple-ova-best-practices.md)
-### Üzembe helyezés
+
+### Üzembe helyezés (Azure Portal)
+#### [Az üzembe helyezés előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)
+##### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md)
+#### [Üzembe helyezés Hyper-V rendszerben](storsimple-virtual-array-deploy2-provision-hyperv.md)
+#### [Üzembe helyezés VMware rendszerben](storsimple-virtual-array-deploy2-provision-vmware.md)
+#### [Beállítás fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
+#### [Beállítás iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)
+
+### Üzembe helyezés (klasszikus portál)
 #### [Az üzembe helyezés előkészítése](storsimple-ova-deploy1-portal-prep.md)
-#### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-ova-manage-service.md)
+##### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-ova-manage-service.md)
 #### [Üzembe helyezés Hyper-V rendszerben](storsimple-ova-deploy2-provision-hyperv.md)
 #### [Üzembe helyezés VMware rendszerben](storsimple-ova-deploy2-provision-vmware.md)
 #### [Beállítás fájlkiszolgálóként](storsimple-ova-deploy3-fs-setup.md)
 #### [Beállítás iSCSI-kiszolgálóként](storsimple-ova-deploy3-iscsi-setup.md)
 
 ## Útmutató
-### [Kezelés az Azure Portalon](storsimple-ova-manager-service-administration.md)
+### [Kezelés az Azure Portalon](storsimple-virtual-array-manager-service-administration.md)
+#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update.md)
+#### [Biztonsági másolatok létrehozása és kezelése](storsimple-virtual-array-backup.md)
+#### [Klónozás biztonsági mentésből](storsimple-virtual-array-clone.md)
+#### [Feladatátvétel és vészhelyreállítás](storsimple-virtual-array-failover-dr.md)
+#### [Inaktiválás és törlés](storsimple-virtual-array-deactivate-and-delete-device.md)
+#### [Megosztások kezelése](storsimple-virtual-array-manage-shares.md)
+#### [Kötetek kezelése](storsimple-virtual-array-manage-volumes.md)
+#### [Szolgáltatás összegzésének megtekintése](storsimple-virtual-array-service-summary.md)
+#### [Eszköz összegzésének megtekintése](storsimple-virtual-array-device-summary.md)
+#### [Tárfiókok kezelése](storsimple-virtual-array-manage-storage-accounts.md)
+#### [ACR-ek kezelése](storsimple-virtual-array-manage-acrs.md)
+#### [Feladatok kezelése](storsimple-virtual-array-manage-jobs.md)
+#### [Az eszköz jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)
+#### [Az MPIO konfigurálása Windows Server-gazdagépen](storsimple-virtual-array-configure-mpio-windows-server.md)
+
+### [Kezelés a klasszikus Azure portálon keresztül](storsimple-ova-manager-service-administration.md)
 #### [A legújabb frissítés telepítése](storsimple-ova-install-update-01.md)
 #### [Biztonsági másolatok létrehozása és kezelése](storsimple-ova-backup.md)
 #### [Visszaállítás biztonsági mentésből](storsimple-ova-restore.md)
@@ -61,7 +86,7 @@
 ##### [Fizikai eszköz az Azure-ban – 1. frissítés](storsimple-deployment-walkthrough-u1.md)
 ##### [Fizikai eszköz az Azure-ban – GA](storsimple-deployment-walkthrough.md)
 #### [Fizikai eszköz a Government Portalon – aktuális](storsimple-deployment-walkthrough-gov-u2.md)
-##### [Fizikai eszköz a Government Portalon – aktuális](storsimple-deployment-walkthrough-gov.md)
+##### [Fizikai eszköz a Government Portalon – 1. frissítés](storsimple-deployment-walkthrough-gov.md)
 #### [Virtuális eszköz az Azure-ban](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [SharePointhoz készült StorSimple-adapter](storsimple-adapter-for-sharepoint.md)
@@ -113,9 +138,11 @@
 ##### [MMC-műveletek használata a StorSimple Snapshot Managerben](storsimple-snapshot-manager-mmc-menu.md)
 
 ### Megoldások kiépítése
-#### [Elosztott globális névtér](https://www.microsoft.com/download/details.aspx?id=45507)
 #### [Fájlkiszolgáló Azure-ra történő vészhelyreállításának automatizálása](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple Express Route-tal](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
+#### [StorSimple VMware-rel](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
+#### [StorSimple Hyper-V-vel](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
+#### [Elosztott globális névtér](https://www.microsoft.com/download/details.aspx?id=45507)
 
 ### Figyelés
 #### [A szolgáltatások irányítópultjának használata](storsimple-service-dashboard.md)
@@ -160,7 +187,18 @@
 
 ## Referencia
 ### [Azure PowerShell](/powershell/servicemanagement)
-### [Windows PowerShell StorSimple-parancsmagokhoz] (https://technet.microsoft.com/library/dn688168.aspx)
+### [StorSimple-höz készült Windows PowerShell-parancsmagok](https://technet.microsoft.com/library/dn688168.aspx)
+
+# StorSimple Data Manager (privát előzetes verzió)
+
+## Áttekintés
+### [Mi a megoldás?](storsimple-data-manager-overview.md)
+
+## Bevezetés
+### [A StorSimple Data Manager használata](storsimple-data-manager-ui.md)
+
+## Útmutató
+### [A .NET használata az adatok átalakításához](storsimple-data-manager-dotnet-jobs.md)
 
 # Kapcsolódó
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
@@ -179,6 +217,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

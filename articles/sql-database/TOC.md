@@ -111,7 +111,7 @@
 ### Tanulás
 #### [Áttekintés](sql-database-business-continuity.md)
 #### [Adatbázisok biztonsági mentése](sql-database-automated-backups.md)
-#### [Hosszú távú megőrzés](sql-database-long-term-retention.md) 
+#### [Hosszú távú megőrzés](sql-database-long-term-retention.md)
 #### [Adatbázis-helyreállítás biztonsági másolatokkal](sql-database-recovery-using-backups.md)
 #### [A vészhelyreállítás hitelesítési követelményei](sql-database-geo-replication-security-config.md)
 #### [Folyamatos üzletmenet – tervezési forgatókönyvek](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
@@ -160,7 +160,7 @@
 #### [Csatlakozás a Visual Studio használatával](sql-database-connect-query.md)
 #### [Ügyfélalkalmazás létrehozása](https://www.microsoft.com/sql-server/developer-get-started)
 #### [Hibaüzenetek használata](sql-database-develop-error-messages.md)
-### A szoftverszolgáltatások ügyfél-implementációi
+### Az ügyfél által megvalósított szolgáltatott szoftvermegoldások
 #### [Daxko/CSI Software](sql-database-implementation-daxko.md)
 #### [GEP](sql-database-implementation-gep.md)
 #### [SnelStart](sql-database-implementation-snelstart.md)
@@ -173,7 +173,7 @@
 #### [JSON-adatok](sql-database-json-features.md)
 #### [Memóriabeli](sql-database-in-memory.md)
 ### Ajánlott
-#### [Az SQL Server fejlesztése](https://msdn.microsoft.com/library/ms179422.aspx)
+#### [SQL Server-fejlesztés](https://msdn.microsoft.com/library/ms179422.aspx)
 ## Megfigyelés és finomhangolás
 ### Tanulás
 #### [Önálló adatbázisok](sql-database-single-database-monitor.md)
@@ -184,7 +184,7 @@
 ## SQL Database V11
 ### [Webes és Üzleti kiadás – kivonás](sql-database-web-business-sunset-faq.md)
 ### [Service tier advisor](sql-database-service-tier-advisor.md)
-### [A rugalmas készlet rendszerfelmérő eszköze](sql-database-elastic-pool-database-assessment-powershell.md)
+### [Rugalmas készlet felmérőeszköze](sql-database-elastic-pool-database-assessment-powershell.md)
 ### [Váltás a V12-re](sql-database-v12-plan-prepare-upgrade.md)
 #### [Magasabb szintű verzióra váltás az Azure Portal használatával](sql-database-upgrade-server-portal.md)
 #### [Magasabb szintű verzióra váltás az PowerShell használatával](sql-database-upgrade-server-powershell.md)
@@ -358,8 +358,6 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-
-
 
 
 <!--HONumber=Nov16_HO4-->

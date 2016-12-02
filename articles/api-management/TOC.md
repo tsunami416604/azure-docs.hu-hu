@@ -13,7 +13,7 @@
 ### [API-definíció importálása](api-management-howto-import-api.md)
 ## A háttérmodul védelme
 ### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
-### [Csatlakozás a VPN vagy az ExpressRoute használatával](api-management-howto-setup-vpn.md)
+### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)
 ### [Kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md)
 ## Szabályzatok konfigurálása
 ### [Egyedi gyorsítótárazás](api-management-sample-cache-by-key.md)
@@ -63,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

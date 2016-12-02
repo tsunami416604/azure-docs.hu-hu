@@ -30,7 +30,6 @@
 
 
 ## Az Enterprise Integration Pack (EIP) használata
-### [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [Az integrációs fiókok áttekintése](../app-service-logic/app-service-logic-enterprise-integration-create-integration-account.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [Egyezmények](../app-service-logic/app-service-logic-enterprise-integration-agreements.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [B2B feldolgozás](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
@@ -87,10 +86,9 @@
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)  
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps) 
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-logic-apps)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=logic-apps) 
-
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
 <!--HONumber=Nov16_HO4-->
