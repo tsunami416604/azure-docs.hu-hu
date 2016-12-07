@@ -12,7 +12,7 @@
 ## [Az AD-licencelés kezelése](active-directory-licensing-what-is.md)
 ## [Azure beszerzése a szervezet számára](sign-up-organization.md)
 ## [Gyakori kérdések](active-directory-faq.md)
-
+## [A SaaS-alkalmazás oktatóanyagai](active-directory-saas-tutorial-list.md)
 
 # Útmutató
 ## Felhasználók kezelése
@@ -279,7 +279,7 @@
 # Referencia
 ## [PowerShell-parancsmagok](/powershell/ )
 ## [Java API-referencia](/java/api)
-## [.NET API](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [Szolgáltatási korlátozások](active-directory-service-limits-restrictions.md)
 
 # Kapcsolódó
@@ -291,12 +291,12 @@
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory) 
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

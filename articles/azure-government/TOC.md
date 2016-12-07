@@ -1,11 +1,11 @@
 # Áttekintés
-## [Mi az az Azure Government?](../azure-government-overview.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [Mi az az Azure Government?](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [Igazságügy és közbiztonság](documentation-government-overview-jps.md)
 ## [Védelmi Minisztérium](documentation-government-overview-dod.md)
 
 # Első lépések
-## [Fejlesztői útmutató](../azure-government-developer-guide.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [Fejlesztői útmutató](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
 
 # Útmutató
 ## Felkészülés
@@ -15,10 +15,11 @@
 ### [Képek](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [Piactér](documentation-government-manage-marketplace.md)
 ### [Piactér partnerek számára](documentation-government-manage-marketplace-partners.md)
+### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
+### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [Előfizetés](documentation-government-manage-subscriptions.md)
 
 # Referencia
-## [Resource Manager](documentation-government-manage-azure-resource-manager.md)
 ## [Szolgáltatások](documentation-government-services.md)
 ### [Számítás](documentation-government-compute.md)
 ### [Tárolás](documentation-government-services-storage.md)
@@ -28,10 +29,10 @@
 ### [Felügyelet és kezelés](documentation-government-services-monitoringandmanagement.md)
 
 # Erőforrások
-## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [Díjszabás](https://azure.microsoft.com/pricing/)
+## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

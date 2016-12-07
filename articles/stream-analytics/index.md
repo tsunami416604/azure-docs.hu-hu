@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 76bc79f1a256b3d4487eecf03a966ff5e094600e
-ms.openlocfilehash: e45fbe593e6e80c6ac758d122d12792b03df4310
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 5cf17ad514127f97319130c4f3f78cdfa1eed052
 
 ---
 #<a name="stream-analytics-documentation"></a>Stream Analytics-dokumentáció
@@ -111,7 +111,7 @@ Az Azure Stream Analytics egy teljes körűen felügyelt, valós idejű esemény
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Ismerkedés a valós idejű pontozási megoldás Azure Machine Learninggel való használatával</h3>
+                        <h3>A valós idejű pontozási megoldás használatának első lépései az Azure Machine Learninggel</h3>
                     </div>
                 </div>
             </div>
@@ -122,20 +122,66 @@ Az Azure Stream Analytics egy teljes körűen felügyelt, valós idejű esemény
 
 ---
 
-##<a name="reference"></a>Referencia
+## <a name="reference"></a>Referencia
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell-referencia](/powershell/azureps-cmdlets-docs)
-
-###<a name="net"></a>.NET
-[.NET-felügyelet – referencia](/dotnet/api)
-
-###<a name="query-language"></a>Lekérdezés nyelve
-[A Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998)
-
-###<a name="rest"></a>REST
-[Stream Analytics – REST API-referencia](/rest/api/streamanalytics)
-
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell-referencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>.NET – felügyelt referencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/dn834998">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Lekérdezés nyelve</h3>
+                        <p>A Stream Analytics lekérdezési nyelv leírása</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/streamanalytics">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Stream Analytics – REST API-referencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>   
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">
@@ -147,6 +193,6 @@ Stream Analytics-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

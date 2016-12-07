@@ -83,7 +83,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 1. A böngésző egy másik lapján, illetve egy másik böngésző ablakában nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be ugyanazzal a fiókkal, amelyet az előző lépésnél az adatkatalógus létrehozásához használt.
 2. Válassza a **Tallózás** lehetőséget, majd kattintson a **Data Catalog** elemre.
    
-    ](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)Azure Data Catalog – Tallózás az Azure rendszerben![ Látni fogja a korábban létrehozott adatkatalógust.
+    ![Azure Data Catalog – Tallózás az Azure rendszerben](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) Látni fogja a korábban létrehozott adatkatalógust.
    
     ![Azure Data Catalog – katalóguslista megtekintése](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Kattintson a korábban létrehozott katalógusra. Megjelenik a portál **Data Catalog** panele.

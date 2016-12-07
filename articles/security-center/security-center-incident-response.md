@@ -104,6 +104,6 @@ A csapat összeállítása még az incidens előtt fontos lépés a szervezet sz
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

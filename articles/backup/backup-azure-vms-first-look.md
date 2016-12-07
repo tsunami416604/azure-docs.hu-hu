@@ -47,7 +47,7 @@ A virtuális gépek biztonsági mentésének öt fő lépése van:
 >
 >
 
-## <a name="step-1-create-a-backup-vault-for-a-vm"></a>1. lépés – Backup-tároló létrehozása egy virtuális géphez
+## <a name="step-1---create-a-backup-vault-for-a-vm"></a>1. lépés – Backup-tároló létrehozása egy virtuális géphez
 A Backup-tároló egy olyan entitás, amely tárolja az idők során létrehozott biztonsági mentéseket és helyreállítási pontokat. A Backup-tároló azokat a biztonsági mentési házirendeket is tartalmazza, amelyek a biztonsági mentés alatt álló virtuális gépekre érvényesek.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com/).
@@ -86,7 +86,7 @@ A Backup-tároló egy olyan entitás, amely tárolja az idők során létrehozot
 
 Miután kiválasztotta a tárolási beállítást a tároló számára, készen áll, hogy hozzárendelje a virtuális gépet a tárolóhoz. A hozzárendelés megkezdéséhez fel kell deríteni és regisztrálni kell az Azure virtuális gépeket.
 
-## <a name="step-2-discover-and-register-azure-virtual-machines"></a>2. lépés – Az Azure virtuális gépek felderítése és regisztrálása
+## <a name="step-2---discover-and-register-azure-virtual-machines"></a>2. lépés – Az Azure virtuális gépek felderítése és regisztrálása
 Mielőtt regisztrálná a virtuális gépet egy tárolóval, futtassa a felderítési folyamatot az új virtuális gépek azonosítása érdekében. Ez visszaadja az előfizetésben található virtuális gépek listáját, olyan kiegészítő információkkal, mint a felhőszolgáltatás neve és a régió.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com/).
@@ -133,12 +133,12 @@ Mielőtt regisztrálná a virtuális gépet egy tárolóval, futtassa a felderí
 
     ![2. regisztrációs állapot](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3-install-the-vm-agent-on-the-virtual-machine"></a>3. lépés – A virtuálisgép-ügynök telepítése a virtuális gépre
+## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>3. lépés – A virtuálisgép-ügynök telepítése a virtuális gépre
 Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már megtalálható a virtuális gépen. Ekkor [a virtuális gépek védelmével](backup-azure-vms-first-look.md#step-4---create-the-backup-policy) folytathatja.
 
 Ha a virtuális gépe helyszíni adatközpontból lett áttelepítve, a virtuális gépre valószínűleg nincs telepítve a virtuálisgép-ügynök. Telepítenie kell a virtuálisgép-ügynököt a virtuális gépen a virtuális gép védelme előtt. A virtuálisgép-ügynök telepítésének részletes lépéseiért lásd [a virtuális gépek biztonsági mentéséről szóló cikk virtuálisgép-ügynökökre vonatkozó szakaszát](backup-azure-vms-prepare.md#vm-agent).
 
-## <a name="step-4-create-the-backup-policy"></a>4. lépés – A biztonsági mentési házirend létrehozása
+## <a name="step-4---create-the-backup-policy"></a>4. lépés – A biztonsági mentési házirend létrehozása
 A kezdeti biztonsági mentési feladat elindítása előtt készítse el a biztonsági mentési pillanatképek rögzítésének ütemezését. A biztonsági mentési házirend azt az ütemtervet jelenti, amely alapján biztonsági mentési pillanatképek készülnek, valamint ezen pillanatképek megőrzésének hosszát. A megőrzési információk a nagyapa-apa-fiú típusú biztonságimentés-rotációs sémán alapulnak.
 
 1. Keresse meg a klasszikus Azure portál **Recovery Services** területén a Backup-tárolót, és kattintson a **Regisztrált elemek** lehetőségre.
@@ -175,7 +175,7 @@ A kezdeti biztonsági mentési feladat elindítása előtt készítse el a bizto
 
     Most, hogy létrehozta a házirendet, folytassa a következő lépéssel és futtassa a kezdeti biztonsági mentést.
 
-## <a name="step-5-initial-backup"></a>5. lépés – Kezdeti biztonsági mentés
+## <a name="step-5---initial-backup"></a>5. lépés – Kezdeti biztonsági mentés
 Miután egy virtuális gépet házirenddel védett, megtekintheti a kapcsolatot a **Védett elemek** lapon. Amíg a kezdeti biztonsági mentés be nem fejeződik, a **Védelem állapota** **Védett – (kezdeti biztonsági mentés függőben)** értékű. Alapértelmezés szerint az első ütemezett biztonsági mentés a *kezdeti biztonsági mentés*.
 
 ![Biztonsági mentés függőben](./media/backup-azure-vms-first-look/protection-pending-border.png)

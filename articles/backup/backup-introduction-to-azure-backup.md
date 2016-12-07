@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/31/2016
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: c827c37ae4164ebd9cd2a971e94f073de8c59b46
+ms.sourcegitcommit: cf3930f209e84ee9b14b56566ca19d31382946aa
+ms.openlocfilehash: cefb405b4f30ca5fe20f6acfaee5ebba2690990b
 
 
 ---
@@ -51,10 +51,10 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 
 | Összetevő | Előnyök | Korlátok | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
 | --- | --- | --- | --- | --- |
-| Azure Backup (MARS) ügynöke |<li>Elkészíti a fizikai vagy virtuális Windows operációs rendszereken lévő fájlok és mappák biztonsági másolatát (a virtuális gépek lehetnek helyszíniek, vagy lehetnek az Azure-ban is).<li>Nincs szükség különálló biztonsági mentési kiszolgálóra. |<li>Biztonsági mentés naponta 3-szor. <li>Nem alkalmazásfüggő; csak fájl-/mappa-/kötetszintű visszaállítás. <li>  Nincs Linux-támogatás. |<li>Fájlok <li>Mappák |Azure Backup-tároló |
-| System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás (ha Hyper-V-n fut) |Heterogén támogatás hiánya (VMware VM biztonsági mentése, Oracle számítási feladat biztonsági mentése). |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |
+| Azure Backup (MARS) ügynöke |<li>Elkészíti a fizikai vagy virtuális Windows operációs rendszereken lévő fájlok és mappák biztonsági másolatát (a virtuális gépek lehetnek helyszíniek, vagy lehetnek az Azure-ban is)<li>Nincs szükség különálló biztonsági mentési kiszolgálóra. |<li>Biztonsági mentés naponta 3-szor. <li>Nem alkalmazásfüggő; csak fájl-/mappa-/kötetszintű visszaállítás. <li>  Nincs Linux-támogatás. |<li>Fájlok <li>Mappák |Azure Backup-tároló |
+| System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás (ha Hyper-V-n fut) <li>VMware virtuális gépek védelme a DPM 2012 R2 segítségével |Nem támogatja az Oracle számítási feladat biztonsági mentését. |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |
 | Azure Backup Server |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás (ha Hyper-V-n fut)<li>Nincs szükség System Center-licencre |<li>Heterogén támogatás hiánya (VMware VM biztonsági mentése, Oracle számítási feladat biztonsági mentése).<li>Mindig élő Azure-előfizetést igényel<li>A szalagos biztonsági mentés nem támogatott |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez |
-| Azure IaaS virtuális gép biztonsági mentése |<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Napi egyszeri biztonsági mentés/lemezszintű visszaállítás<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Azure Backup-tároló</p> |
+| Azure IaaS virtuális gép biztonsági mentése |<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Azure Backup-tároló</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Mik az egyes összetevők üzembe helyezési lehetőségei?
 | Összetevő | Üzembe helyezhető az Azure-ban? | Üzembe helyezhető a helyszínen? | A céltároló támogatott |
@@ -122,10 +122,10 @@ A következő szakaszok táblázatai az egyes Azure Backup-összetevők különb
 
 ![tábla kulcsa](./media/backup-introduction-to-azure-backup/table-key.png)
 
-A Backup-tároló az előnyben részesített tárolási cél minden összetevőben. A System Center DPM és a Backup Server lehetőséget nyújt helyi lemezmásolat készítésére is. Azonban csak a System Center DPM nyújt lehetőséget az adatok szalagos tárolóeszközre írására.
+A Backup-tároló az előnyben részesített tárolási cél minden összetevőben. A System Center DPM és az Azure Backup Server lehetőséget nyújt helyi lemezmásolat készítésére is. Azonban csak a System Center DPM nyújt lehetőséget az adatok szalagos tárolóeszközre írására.
 
 #### <a name="compression"></a>Tömörítés
-A biztonsági másolatok a szükséges tárterület csökkentése érdekében tömörítve vannak. Csak a virtuálisgép-bővítmény összetevő nem használ tömörítést. A virtuálisgép-bővítménnyel minden biztonsági mentési adatot az Ön tárfiókjából az ugyanazon régióban lévő Backup-tárolóba másol a rendszer tömörítés nélkül. A tömörítés nélküli mentés némileg megnöveli a felhasznált tárterületet. Az adatok tömörítés nélküli tárolása azonban gyorsabb helyreállítást tesz lehetővé.
+A biztonsági másolatok a szükséges tárterület csökkentése érdekében tömörítve vannak. Csak a virtuálisgép-bővítmény összetevő nem használ tömörítést. A virtuálisgép-bővítmény minden biztonsági mentési adatot az Ön tárfiókjából az ugyanazon régióban lévő Backup-tárolóba másol. Az adatátvitel során nem használ tömörítést. A tömörítés nélküli adatátvitel némileg megnöveli a felhasznált tárterületet. Az adatok tömörítés nélküli tárolása azonban gyorsabb helyreállítást tesz lehetővé, ha szüksége van a visszaállítási pontra.
 
 #### <a name="incremental-backup"></a>Növekményes biztonsági mentés
 Minden összetevő támogatja a növekményes biztonsági mentést a céltárolótól függetlenül (lemez, szalag, Backup-tároló). A növekményes biztonsági mentés biztosítja, hogy a biztonsági mentések hatékonyan használják a tárhelyet és az időt, mert csak az utolsó biztonsági mentés óta végzett módosításokat viszi át.
@@ -169,7 +169,7 @@ Az Azure virtuális gépek biztonsági mentéséhez titkosítást kell beállít
 
 A virtuálisgép-bővítmény (az IaaS virtuális gépen) közvetlenül az Azure Storage-fiókból olvassa be az adatokat a tárolóhálózaton keresztül, ezért ezt a forgalmat nem kell tömöríteni.
 
-Ha a System Center DPM vagy az Azure Backup Server szolgáltatásban készít biztonsági másolatot az adatairól, tömörítse az elsődleges kiszolgálóról a biztonsági mentési kiszolgálóra mentett adatokat. Ez kíméli a sávszélességet.
+Ha a System Center DPM vagy az Azure Backup Server szolgáltatásban készít biztonsági másolatot az adatairól, tömörítse az elsődleges kiszolgálóról a biztonsági mentési kiszolgálóra mentett adatokat. A DPM vagy az Azure Backup Server szolgáltatásban való biztonsági mentés előtti adattömörítéssel kímélheti a sávszélességet.
 
 #### <a name="network-throttling"></a>A hálózati sávszélesség szabályozása
 Az Azure Backup ügynökével szabályozhatja a hálózati sávszélességet, így az adatátvitel alatt vezérelheti a hálózati sávszélesség használatát. A szabályozás akkor lehet hasznos, ha adatokról kell biztonsági másolatot készítenie a munkaidő alatt, de nem szeretné, hogy a biztonsági mentési folyamat zavarja a többi internetes forgalmat. Az adatátvitel szabályozása a biztonsági mentési és a visszaállítást tevékenységekre vonatkozik.
@@ -207,7 +207,7 @@ A következő fogalmak segíthetnek a fontos döntések meghozatalában a bizton
 A következő oktatóanyagok lépésről lépésre ismertetik a Windows Serveren lévő adatok vagy az Azure-beli virtuális gépek védelmét:
 
 * [Fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
-* [Azure virtuális gépek biztonsági mentése](backup-azure-vms-first-look.md)
+* [Azure virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md)
 
 Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódhat részletesebben:
 
@@ -221,6 +221,6 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

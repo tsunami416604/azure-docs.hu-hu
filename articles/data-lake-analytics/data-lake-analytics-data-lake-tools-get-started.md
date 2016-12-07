@@ -15,12 +15,12 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
+ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
+ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
 
 
 ---
-# <a name="tutorial-develop-usql-scripts-using-data-lake-tools-for-visual-studio"></a>Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
+# <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, és hogyan használhatja U-SQL-parancsfájlok fejlesztésére és tesztelésére.
@@ -72,7 +72,7 @@ Ha a saját adatait szeretné használni, a Data Lake Tools szolgáltatásból a
 4. Lépjen arra a mappára, ahová fájlokat szeretne feltölteni.
 5. Kattintson a jobb gombbal egy üres területen, majd kattintson az **Upload** (Feltöltés) parancsra.
 
-## <a name="develop-usql-scripts"></a>U-SQL-parancsfájlok fejlesztése
+## <a name="develop-u-sql-scripts"></a>U-SQL-parancsfájlok fejlesztése
 A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
 
 **Data Lake Analytics-feladat létrehozása és elküldése**
@@ -195,7 +195,7 @@ A feladat visszajátszásával végignézheti egy feladat végrehajtásának men
 ### <a name="heat-map"></a>Hőtérkép
 A Data Lake Tools for Visual Studio szolgáltatás feladatnézetében a felhasználó által választható színsémákkal jelezhető a feladatok előrehaladása, adatbemenete és -kimenete, végrehajtási ideje és az egyes szintek átviteli be- és kimenete. Ennek segítségével a felhasználók közvetlenül és intuitív módon ismerhetik fel a lehetséges problémákat és a feladatok tulajdonságainak eloszlását. A megjelenítendő adatforrás a legördülő listából választható ki.  
 
-## <a name="run-usql-locally"></a>U-SQL helyi futtatása
+## <a name="run-u-sql-locally"></a>U-SQL helyi futtatása
 A Visual Studio szolgáltatásban a U-SQL helyi futtatásával a következőket teheti meg:
 
 * Helyileg futtathat U-SQL-parancsfájlokat, valamint C#-szerelvényeket.
@@ -225,7 +225,7 @@ A következő videó bemutatja a U-SQL helyi futtatási funkcióját:
 
     A Data Lake szolgáltatásban futtatott parancsfájlok esetében a rendszer az alapértelmezett tárfiókot használja gyökérmappaként, és aszerint végzi el a keresést.
 
-### <a name="test-usql-scripts-locally"></a>U-SQL-parancsfájlok helyi tesztelése
+### <a name="test-u-sql-scripts-locally"></a>U-SQL-parancsfájlok helyi tesztelése
 A U-SQL-parancsfájlok fejlesztésére vonatkozó útmutatásért lásd: [U-SQL-parancsfájlok fejlesztése](#develop-and-test-u-sql-scripts). A U-SQL-parancsfájlok helyi létrehozásához és teszteléséhez válassza a **(Local)** (Helyi) lehetőséget a fürtök legördülő listájából, majd kattintson a **Submit** (Elküldés) gombra. Ellenőrizze, hogy a helyes adatokra hivatkozik-e – vagy hivatkozzon egy abszolút elérési útra, vagy helyezze az adatokat a DataRoot mappába.
 
 ![U-SQL Visual Studio-projekt helyi küldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
@@ -255,7 +255,10 @@ A következő eljárás csak a Visual Studio 2015 esetében működik. A régebb
 1. Hozzon létre egy C#-szerelvényprojektet, és állítsa be úgy, hogy hozza létre a kimeneti dll-fájlt.
 2. Regisztrálja a dll-fájlt egy U-SQL-kivonat használatával:
 
-     CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    
 3. Állítson be töréspontokat a C#-kódban.
 4. Nyomja le az **F5** billentyűt a C#-dll-fájlra hivatkozó parancsfájl helyi hibakereséséhez.  
 
@@ -274,7 +277,7 @@ További fejlesztői témakörökért lásd:
 * [Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével](data-lake-analytics-u-sql-get-started.md)
 * [Felhasználó által definiált U-SQL-operátorok fejlesztése Data Lake Analytics-feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## <a name="appxa-powershell-sample-for-preparing-the-tutorial"></a>„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez
+## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez
 A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics-fiókot és a forrásadatokat. Ezt átugorva az [U-SQL-parancsfájlok fejlesztése](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) részhez léphet.
 
     #region - used for creating Azure service names

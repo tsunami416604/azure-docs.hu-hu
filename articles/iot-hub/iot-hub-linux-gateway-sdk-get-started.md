@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/25/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
+ms.sourcegitcommit: fb085ca229beba1757efa100ffca1e42089aedfa
+ms.openlocfilehash: 827ecc587dabfba58e87d192001c2714a1d7ce4a
 
 
 ---
-# <a name="azure-iot-gateway-sdk-beta-get-started-using-linux"></a>Azure IoT Gateway SDK (béta) – Első lépések a Linux használatával
+# <a name="azure-iot-gateway-sdk-beta---get-started-using-linux"></a>Azure IoT Gateway SDK (béta) – Első lépések a Linux használatával
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>A minta létrehozása
@@ -38,30 +38,30 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 ## <a name="how-to-run-the-sample"></a>A minta futtatása
 1. A **build.sh** szkript a kimenetét a **build** mappában hozza létre, az **azure-iot-gateway-sdk** adattár helyi példányában. Ezek közé tartozik a jelen példában használt két modul is.
    
-    A felépítési szkript a **liblogger_hl.so** fájlt a **build/modules/logger/** mappába, a **libhello_world_hl.so** fájlt pedig a **build/modules/hello_world/** mappába menti. Ezen elérési utakat a **module path** értékeként adja meg, ahogyan az az alábbi JSON-beállításfájlban szerepel.
-2. A **samples/hello_world/src** mappában lévő **hello_world_lin.json** fájl egy példa Linux rendszeren használható JSON-beállításfájlra, amelyet a minta futtatásához használhat. Az alábbiakban látható JSON-beállításfájl azzal a feltételezéssel lett létrehozva, hogy a mintát az **azure-iot-gateway-sdk** adattár helyi példányának gyökérmappájából fogja futtatni.
-3. A **logger_hl** modul **args** szakaszában a **filename** értékeként annak a fájlnak a nevét és elérési útját adja meg, amely a naplóadatokat fogja tartalmazni.
-   
-    Itt egy olyan, Linux rendszeren használható JSON-beállításfájlra láthat példát, amely a minta futtatásához használt mappában található **log.txt** fájlba ír.
+    A buildszkript a **liblogger.so** fájlt a **build/modules/logger/** mappába, a **libhello_world.so** fájlt pedig a **build/modules/hello_world/** mappába menti. Ezen elérési utakat a **module path** értékeként adja meg, ahogyan az az alábbi JSON-beállításfájlban szerepel.
+2. A hello_world_sample folyamat egy JSON konfigurációs fájl elérési útját fogadja argumentumként a parancssorban. Egy példa JSON-fájl is szerepel a tárban az **azure-iot-gateway-sdk/samples/hello_world/src/hello_world_win.json** helyen. A fájl tartalma az alábbiakban látható. A jelenlegi formájában is működik, hacsak nem módosította a buildszkriptet, hogy az a modulokat és a végrehajtható mintafájlokat ne az alapértelmezett helyekre helyezze.
+
+   > [!NOTE]
+   > A modul az aktuális munkakönyvtárhoz képest relatív útvonalakat használ. A munkamappa az ahonnan a hello_world_sample végrehajtható fájlt elindította, és nem a végrehajtható fájl könyvtára. A JSON konfigurációs mintafájl a „log.txt” naplófájlokat alapértelmezetten az aktuális munkakönyvtárba írja.
    
     ```
     {
       "modules" :
       [ 
         {
-          "module name" : "logger_hl",
+          "module name" : "logger",
           "loading args": {
-            "module path" : "./build/modules/logger/liblogger_hl.so"
+            "module path" : "./build/modules/logger/liblogger.so"
           },
           "args" : 
           {
-            "filename":"./log.txt"
+            "filename":"log.txt"
           }
         },
         {
           "module name" : "hello_world",
           "loading args": {
-            "module path" : "./build/modules/hello_world/libhello_world_hl.so"
+            "module path" : "./build/modules/hello_world/libhello_world.so"
           },
           "args" : null
         }
@@ -70,13 +70,13 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
       [
         {
           "source": "hello_world",
-          "sink": "logger_hl"
+          "sink": "logger"
         }
       ]
     }
     ```
-4. A rendszerhéjban lépjen az **azure-iot-gateway-sdk** mappába.
-5. Futtassa az alábbi parancsot:
+3. Lépjen az **azure-iot-gateway-sdk** mappába.
+4. Futtassa az alábbi parancsot:
    
    ```
    ./build/samples/hello_world/hello_world_sample ./samples/hello_world/src/hello_world_lin.json
@@ -89,6 +89,6 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

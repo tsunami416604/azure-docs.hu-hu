@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/02/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 86b7d396307761acb8baee5761f08a3e1120cddc
+ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
+ms.openlocfilehash: 877a70c162f23ced4606ee8a5c51db5e4eeaa89a
 
 
 ---
@@ -28,7 +28,10 @@ Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következ
 
 ![Helyek térképe][0]
 
-Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
+Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. 
+
+### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
+A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
@@ -40,6 +43,7 @@ Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, 
 | **Ausztrália** |Délkelet-Ausztrália, Kelet-Ausztrália |Melbourne, Sydney |
 | **India** |Nyugat-India, Közép-India, Dél-India |Csennai, Mumbai |
 
+### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>A régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
@@ -50,10 +54,10 @@ Az alábbi tábla a régiók és az országos felhők geopolitikai határainak i
 
 A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard ExpressRoute-termékváltozatokban. A globális kapcsolatok támogatásához engedélyeznie kell az ExpressRoute prémium bővítményt. Az országos felhőkörnyezetekhez való kapcsolódás nem támogatott. Igény esetén tájékozódjon kapcsolatszolgáltatójánál a lehetőségekről.
 
-## <a name="connectivity-provider-locations"></a>Kapcsolatszolgáltatói helyek
+## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>Kapcsolatszolgáltatói helyek
 > [!div class="op_single_selector"]
-> [Helyek szolgáltató alapján](expressroute-locations.md#connectivity-provider-locations)
-> [Szolgáltatók hely alapján](expressroute-locations-providers.md#connectivity-provider-locations)
+> * [Helyek szolgáltató alapján](expressroute-locations.md#locations)
+> * [Szolgáltatók hely alapján](expressroute-locations-providers.md#locations)
 > 
 > 
 
@@ -89,7 +93,8 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
  **+** = hamarosan elérhető
 
 ### <a name="national-cloud-environments"></a>Országos felhőkörnyezetek
-#### <a name="us-government-cloud"></a>Az Egyesült Államok kormányának felhője
+
+### <a name="us-government-cloud"></a>Az Egyesült Államok kormányának felhője
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
@@ -97,7 +102,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **New York** |Equinix, Level 3 Communications+, Verizon |
 | **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
-#### <a name="china"></a>Kína
+### <a name="china"></a>Kína
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Peking** |China Telecom |
@@ -105,7 +110,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 
 További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsazure.cn/home/features/expressroute/).
 
-#### <a name="germany"></a>Németország
+### <a name="germany"></a>Németország
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Berlin** |Colt+, e-shelter |
@@ -153,6 +158,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

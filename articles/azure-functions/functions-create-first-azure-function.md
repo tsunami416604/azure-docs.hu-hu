@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e446766c0f3d19a8cce585d708e8e7a809593408
+ms.sourcegitcommit: d40304cd4f7ede4e37d32f66330ac712d325f898
+ms.openlocfilehash: ea7d8acec83103c981bad279507dd7ead5f72370
 
 
 ---
@@ -35,7 +35,7 @@ A következő videó bemutatja, hogyan végezheti el az ebben az oktatóprogramb
 > 
 
 ## <a name="create-a-function-from-the-quickstart"></a>Függvény létrehozása a gyorsindítóból
-A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Kövesse az alábbi lépéseket az új függvényalkalmazás és az új függvény létrehozásához. Az új függvényalkalmazás alapértelmezett konfigurációval jön létre. A függvényalkalmazás tényleges létrehozására példát [az egyéb Azure Functions gyorsútmutatóban](functions-create-first-azure-function-azure-portal.md) talál.
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Kövesse az alábbi lépéseket egy függvényalkalmazás létrehozásához. A függvényalkalmazás alapértelmezett konfigurációval jön létre. A függvényalkalmazás tényleges létrehozására példát [az egyéb Azure Functions gyorsútmutatóban](functions-create-first-azure-function-azure-portal.md) talál.
 
 Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -44,20 +44,25 @@ Ahhoz, hogy létrehozhassa az első függvényét, egy aktív Azure-fiókkal kel
 3. Az **Első lépések** lapon kattintson a **Webhook + API** és a **JavaScript** elemre, majd kattintson a **Függvény létrehozása** parancsra. Létrejön egy új, előre meghatározott Node.js-függvény. 
    
     ![](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
-4. (Választható lehetőség) A gyorsindító ezen pontján lehetősége van megtekinteni egy bemutatót a portál Azure Functions-szolgáltatásairól.    A bemutató megtekintése vagy kihagyása után letesztelheti az új függvényt a HTTP-eseményindítóval.
+4. (Választható lehetőség) A gyorsindító ezen pontján lehetősége van megtekinteni egy bemutatót a portál Azure Functions-szolgáltatásairól. A bemutató megtekintése vagy kihagyása után letesztelheti az új függvényt a HTTP-eseményindítóval.
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 Mivel az Azure Functions gyorsindítók működő kódokat tartalmaznak, az új függvények azonnal tesztelhetők.
 
 1. A **Develop** (Fejlesztés) lapon tekintse át a **Code** (Kód) ablakot, és figyeljen arra, hogy ez a Node.js-kód egy olyan HTTP-kérést vár, amelyben a *name* (név) érték vagy az üzenet törzsében, vagy egy lekérdezési karakterláncban van továbbítva. Ha a függvény fut, a rendszer ezt az értéket a válaszüzenetben adja vissza.
    
+2. Kattintson a **Test (Tesztelés)** elemre a függvény beépített HTTP-tesztkérési panelének megjelenítéséhez.
+ 
     ![](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
-2. Görgessen le a **Request body** (Kéréstörzs) szövegdobozhoz, módosítsa a *Name* (Név) tulajdonságot a saját nevére, és kattintson a **Run** (Futtatás) parancsra. Látni fogja, ahogy próba HTTP-kérés aktiválja a végrehajtást, információ íródik a streamnaplókba, és a „hello” válasz megjelenik az **Output** (Kimenet) mezőben. 
-3. Ugyanannak a függvénynek egy másik böngészőablakból vagy lapról történő aktiválásához másolja ki a **Function URL** (Függvény URL) értéket a **Develop** (Fejlesztés) lapról, és illessze be egy böngészőcímsorba, majd fűzze hozzá a `&name=yourname` karakterláncértéket, és nyomja le az Enter billentyűt. Ekkor a rendszer beírója a naplókba ugyanazt az információt, és a böngésző ugyanúgy megjeleníti a „hello” választ, mint az előző esetben.
+
+2. A **Request body** (Kéréstörzs) szövegdobozban, módosítsa a *name* (név) tulajdonságot a saját nevére, és kattintson a **Run** (Futtatás) parancsra. Látni fogja, ahogy egy próba HTTP-kérés aktiválja a végrehajtást, információ íródik a streamnaplókba, és a „hello” válasz megjelenik a **Kimenet** mezőben.
+ 
+3. Ugyanannak a függvénynek egy másik böngészőablakból vagy lapról történő aktiválásához másolja ki a **Function URL** (Függvény URL) értéket a **Develop** (Fejlesztés) lapról, és illessze be egy böngészőcímsorba. Az URL-címhez fűzze hozzá a `&name=yourname` karakterláncértéket, és nyomja le az Enter billentyűt. Ekkor a rendszer beírója a naplókba ugyanazt az információt, és a böngésző ugyanúgy megjeleníti a „hello” választ, mint az előző esetben.
 
 ## <a name="next-steps"></a>Következő lépések
-Ez a gyorsindító egy nagyon egyszerű módot mutat be egy alapszintű, HTTP-eseményindítóval aktivált függvény végrehajtására. A következő témakörökben további információkat talál arról, hogyan használhatja ki alkalmazásaiban az Azure Functions által nyújtott lehetőségeket.
+Ez a gyorsindító egy egyszerű módot mutat be egy alapszintű, HTTP-eseményindítóval aktivált függvény végrehajtására. Az Azure Functions alkalmazásokban való használatáról a következő témakörökben talál további információt:
 
+* [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  
   Programozói segédanyagok függvények kódolásához, valamint eseményindítók és kötések meghatározásához.
 * [Az Azure Functions tesztelése](functions-test-a-function.md)  
@@ -72,6 +77,6 @@ Ez a gyorsindító egy nagyon egyszerű módot mutat be egy alapszintű, HTTP-es
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

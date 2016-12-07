@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96f4fa714aa5a76f3e7e17c2741b17b626cfe010
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: ef75623a0b8c2a4d38f527a26cbc2cf070765302
 
 
 ---
@@ -40,7 +40,7 @@ Ez a Web SDK egy előzetes verzió, és kizárólag az elemzést támogatja, bö
 ## <a name="setup-mobile-engagement-for-your-web-app"></a>A Mobile Engagement beállítása a webalkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez.
 
 Létre fogunk hozni egy alapszintű alkalmazást a Visual Studio segítségével az integráció bemutatásához, a műveleti lépéseket azonban A Visual Studión kívül létrehozott webalkalmazásokon is követheti. 
@@ -65,7 +65,7 @@ Most létrehozott egy új üres webalkalmazás-projektet, amelybe integrálni fo
    
     ![Visual Studio .js fájlokkal][1]
 
-## <a name="enable-realtime-monitoring"></a>Valós idejű figyelés engedélyezése
+## <a name="enable-real-time-monitoring"></a>Valós idejű figyelés engedélyezése
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy tevékenységet el kell küldenie a Mobile Engagement háttérrendszere számára. A webalkalmazás kontextusában a tevékenységek weblapok. 
 
 1. A saját megoldásában hozzon létre egy **home.html** nevű új lapot, majd állítsa be azt a webalkalmazás kezdőlapjaként. 
@@ -88,7 +88,7 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
         </body>
         </html>
 
-## <a name="connect-app-with-realtime-monitoring"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a name="connect-app-with-real-time-monitoring"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
   ![][2]

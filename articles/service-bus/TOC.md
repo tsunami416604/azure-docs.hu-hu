@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Üzenetkezelés](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)
-## [Relay](../service-bus-relay/service-bus-relay-overview.md)
+## [Relay](../service-bus-relay/relay-what-is-it.md)
 # Referencia
 ## [PowerShell-parancsmagok a Resource Managerben](/powershell/resourcemanager)
 ## [Service Bus – felügyelt referencia API](/dotnet/api/) 
@@ -15,6 +15,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

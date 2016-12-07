@@ -113,7 +113,7 @@
 #### [App Service Environment létrehozása](app-service-web-how-to-create-an-app-service-environment.md)
 #### [Webalkalmazás létrehozása Azure App Service Environment-környezetben](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 #### [ILB ASE létrehozása Azure Resource Manager-sablonokkal](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
-#### [Belső Load Balancer használata](app-service-environment-with-internal-load-balancer.md)
+#### [Belső terheléselosztó használata](app-service-environment-with-internal-load-balancer.md)
 
 ## [Üzembe helyezés](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Üzembe helyezés az App Service-ben](web-sites-deploy.md)
@@ -129,7 +129,7 @@
 ### [Áttelepítés IIS-ből](web-sites-migration-from-iis-server.md)
 ### [WebJobs üzembe helyezése Visual Studióval](websites-dotnet-deploy-webjobs.md)
 
-## [Skálázás](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [Méretezés](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Alkalmazás vertikális felskálázása](web-sites-scale.md)
 ### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Földrajzi alapú méretezés App Service Environment-környezetekkel](app-service-app-service-environment-geo-distributed-scale.md)
@@ -153,6 +153,7 @@
 ### [Helyszíni kapcsolatok](web-sites-hybrid-connection-get-started.md)
 ### [Azure Virtual Network](web-sites-integrate-with-vnet.md)
 ### [Speciális konfiguráció](web-sites-transform-extend.md)
+### [Tároló konfigurálása az App Service-hez Linuxon](app-service-linux-using-custom-docker-image.md)
 ### [Erőforráscsoportok](app-service-move-resources.md)
 ### [A WordPress átalakítása Multisite-ra](web-sites-php-convert-wordpress-multisite.md) 
 
@@ -167,7 +168,7 @@
 #### [Hálózati konfiguráció részletei az ExpressRoute-tal](app-service-app-service-environment-network-configuration-expressroute.md)
 
 ## Biztonsági mentés
-### [Adatok biztonsági mentése az Azure-ban](web-sites-backup.md)
+### [Alkalmazás biztonsági mentése az Azure-ban](web-sites-backup.md)
 ### [Alkalmazás visszaállítása az Azure-ban](web-sites-restore.md)
 ### [A REST használata App Service-alkalmazások biztonsági mentésére és visszaállítására](websites-csm-backup.md)
 
@@ -265,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 7107c64a25b3f60d7789cec57181eec9ce844f6b
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
 > * [Azure Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 Ebből a cikkből megtudhatja, hogyan hozható létre az SQL Data Warehouse a PowerShell használatával.
 
@@ -40,23 +40,23 @@ A kezdéshez a következők szükségesek:
 
 > [!NOTE]
 > A SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti.  1A díjszabással kapcsolatos további információkért lásd: [SQL Data Warehouse díjszabása][SQL Data Warehouse díjszabása].
-> 
-> 
+>
+>
 
 ## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse létrehozása
 1. Nyissa meg a Windows PowerShellt.
 2. A parancsmag futtatásával jelentkezzen be az Azure Resource Managerbe.
-   
+
     ```Powershell
     Login-AzureRmAccount
     ```
 3. Válassza ki a jelenlegi munkamenethez használni kívánt előfizetést.
-   
+
     ```Powershell
     Get-AzureRmSubscription    -SubscriptionName "MySubscription" | Select-AzureRmSubscription
     ```
 4. Hozza létre az adatbázist. Ebben a példában egy adatbázist hozunk létre „mynewsqldw” néven, „DW400” szintű szolgáltatási céllal az „sqldwserver1” elnevezésű kiszolgálóra, amely a „mywesteuroperesgp1” nevű erőforráscsoportban található.
-   
+
    ```Powershell
    New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse" -CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 10995116277760
    ```
@@ -89,13 +89,13 @@ Ha érdekli az SQL Data Warehouse programozott módon való kezelése, tekintse 
 [fejlesztés]: ./sql-data-warehouse-overview-develop.md
 [betöltés]: ./sql-data-warehouse-load-with-bcp.md
 [mintaadatok betöltése]: ./sql-data-warehouse-load-sample-databases.md
-[PowerShell-parancsmagok és a REST API-]: ./sql-data-warehouse-reference-powershell-cmdlets.md
+[PowerShell-parancsmagok és a REST API-k]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [tűzfalszabályok]: ../sql-database-configure-firewall-settings.md
 
-[How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)]: ../powershell-install-configure.md
+[Az Azure PowerShell telepítése és konfigurálása]: ../powershell-install-configure.md
 [SQL Data Warehouse létrehozása az Azure Portalról]: ./sql-data-warehouse-get-started-provision.md
-[Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
-[Azure SQL Database logikai kiszolgáló létrehozása PowerShell segítségével]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
+[Azure SQL Database logikai kiszolgáló létrehozása a PowerShell segítségével]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [erőforráscsoportok létrehozása]: ../resource-group-template-deploy-portal.md#create-resource-group
 
 <!--MSDN references-->
@@ -105,7 +105,7 @@ Ha érdekli az SQL Data Warehouse programozott módon való kezelése, tekintse 
 
 <!--Other Web references-->
 [Microsoft Webplatform-telepítőből]: https://aka.ms/webpi-azps
-[Az SQL Data Warehouse díjszabása]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+[SQL Data Warehouse díjszabása]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Ingyenes Azure-próbalehetőség]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure-kreditek]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 

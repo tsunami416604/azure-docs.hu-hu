@@ -28,10 +28,9 @@
 
 ### [Áttekintés](sql-data-warehouse-connect-overview.md)
 ### [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md)
-### Lekérdezés
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [A Visual Studio telepítése](sql-data-warehouse-install-visual-studio.md)
 
 ## Fejlesztés
@@ -82,8 +81,7 @@
 ### [AzCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [BCP SQL Serverről](sql-data-warehouse-load-from-sql-server-with-bcp.md)
-### [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-### [Data Factory Blob Storage-ból](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase-útmutatás](sql-data-warehouse-load-polybase-guide.md)
 ### [PolyBase Blob Storage-ból](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
@@ -111,6 +109,7 @@
 ## Teljesítmény
 
 ### [Áttekintés](sql-data-warehouse-overview-manage-user-queries.md)
+### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [Lekérdezések](sql-data-warehouse-manage-monitor.md)
 ### [Számítási feladat](sql-data-warehouse-develop-concurrency.md)
 ### [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
@@ -146,6 +145,6 @@
 ### [Adatkezelés](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

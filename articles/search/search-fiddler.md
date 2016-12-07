@@ -12,23 +12,24 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 12f5a22fa65d84682e5792bcbe88b67986540498
-
+ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
+ms.openlocfilehash: d78ceb2b616b5c574bede1e2df21c3415a9d757a
 
 ---
+
 # <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>A Fiddler használata az Azure Search REST API-k értékeléséhez és teszteléséhez
 > [!div class="op_single_selector"]
+>
 > * [Áttekintés](search-query-overview.md)
 > * [Keresési ablak](search-explorer.md)
 > * [Fiddler](search-fiddler.md)
 > * [.NET](search-query-dotnet.md)
 > * [REST](search-query-rest-api.md)
-> 
-> 
+>
+>
 
 Ez a cikk azt ismerteti, hogyan használható a [Telerik által ingyenesen letölthetőként kínált](http://www.telerik.com/fiddler) Fiddler a HTTP-kérelmek Azure Search REST API számára történő küldéséhez, valamint a válaszok API használatával történő megtekintéséhez kód írása nélkül. Az Azure Search teljes körűen felügyelt, üzemeltetett felhőalapú keresőszolgáltatás, amely egyszerűen programozható .NET és REST API-kon keresztül. Az Azure Search szolgáltatás REST API-jainak dokumentációja az [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) webhelyén tekinthető meg.
 
@@ -39,26 +40,26 @@ Az alábbi lépések elvégzéséhez szüksége lesz egy Azure Search szolgálta
 ## <a name="create-an-index"></a>Index létrehozása
 1. Indítsa el a Fiddlert. A **Fájl** menüben kapcsolja ki a **Forgalom rögzítése** beállítást az aktuális feladathoz nem kapcsolódó HTTP-tevékenység elrejtéséhez.
 2. A **Szerkesztő** lapon állítson össze egy, az alábbi képernyőfelvételen láthatóhoz hasonló kérelmet.
-   
+
       ![][1]
 3. Válassza a **PUT** lehetőséget.
 4. Adja meg a szolgáltatás URL-címét, a kérelem attribútumait, valamint az API-verziót meghatározó URL-címet. Ügyeljen az alábbiakra:
-   
+
    * A HTTPS előtagot használja.
    * A kérelemattribútum az „/indexes/hotels”. Ez arra utasítja a Search szolgáltatást, hogy létrehozzon egy „hotels” nevű indexet.
-   * Az API-verziót csupa kisbetűvel, a következő formában kell megadni: „?api-version=2015-02-28” Az API-verziók azért fontosak, mert az Azure Search rendszeresen telepíti a frissítéseket. Ritka esetekben a szolgáltatás frissítése az API-t használhatatlanná tévő változást vezethet be. Emiatt az Azure Search számára minden kérelemnél meg kell adni az API-verziót, hogy Ön mindig teljes mértékben kézben tudja tartani, hogy melyik verzió van használatban.
-     
+   * Az api-version kisbetűvel van írva, és a következő formában van megadva: „?api-version=2016-09-01”. Az API-verziók azért fontosak, mert az Azure Search rendszeresen telepíti a frissítéseket. Ritka esetekben a szolgáltatás frissítése az API-t használhatatlanná tévő változást vezethet be. Emiatt az Azure Search számára minden kérelemnél meg kell adni az API-verziót, hogy Ön mindig teljes mértékben kézben tudja tartani, hogy melyik verzió van használatban.
+
      A teljes URL-címnek az alábbi példához kell hasonlítania.
-     
-             https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+
+             https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
 5. Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 6. A kérelem törzse területre illessze be az index definícióját alkotó mezőket.
-   
+
           {
          "name": "hotels",  
          "fields": [
@@ -87,17 +88,17 @@ A **Szerkesztő** lapon a dokumentumok küldésére szolgáló kérelem az aláb
    ![][2]
 
 1. Válassza a **POST** lehetőséget.
-2. Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL-cím, majd az „/indexes/<'indexname'>/docs/index?api-version=2015-02-28” karakterlánc követ. A teljes URL-címnek az alábbi példához kell hasonlítania.
-   
-         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+2. Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatás URL-címe, majd az „/indexes/<'indexnév'>/docs/index?api-version=2016-09-01” karakterlánc követ. A teljes URL-címnek az alábbi példához kell hasonlítania.
+
+         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
 3. A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 4. A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
-   
+
          {
          "value": [
          {
@@ -169,12 +170,12 @@ Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket.  A
 
 1. Válassza a **GET** lehetőséget.
 2. Adjon meg egy olyan URL-címet, amely a HTTPS előtaggal kezdődik, amelyet a szolgáltatási URL, majd az „/indexes/<'indexname'>/docs?” karakterlánc, végül a lekérdezési paraméterek követnek. Példaképpen használja a következő URL-címet, és cserélje le benne a mintaállomásnevet egy, az Ön szolgáltatásában érvényes állomásnévvel.
-   
-         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
-   
+
+         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
+
    Ez a lekérdezés a „motel” kifejezést keresi, és értékkorlátozó kategóriákat ad vissza az értékelésekhez.
 3. A kérelem fejléce azonos az előzővel. Ne feledje, hogy a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélte.
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -188,11 +189,11 @@ A következő példalekérdezés az MSDN webhelyén megtekinthető és a [Search
 
 **A szóközök cseréje előtt:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
 
 **A szóközök + jelre cserélése után:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2015-02-28
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
 ## <a name="query-the-system"></a>A rendszer lekérdezése
 A rendszertől a dokumentumok számát és a tárhelyhasználatot is lekérdezheti. A **Szerkesztő** lapon a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete.
@@ -200,11 +201,11 @@ A rendszertől a dokumentumok számát és a tárhelyhasználatot is lekérdezhe
  ![][5]
 
 1. Válassza a **GET** lehetőséget.
-2. Adjon meg egy olyan URL-címet, amelyben a szolgáltatási URL-címet az „/indexes/hotels/stats?api-version=2015-02-28” karakterlánc követi.
-   
-         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+2. Adjon meg egy olyan URL-címet, amely tartalmazza a szolgáltatás URL-címét, majd az „/indexes/hotels/stats?api-version=2016-09-01” karakterláncot:
+
+         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
 3. Adja meg a kérelem fejlécét, a „host” és az „api-key” értékét az Ön szolgáltatásában érvényes értékekre cserélve.
-   
+
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
@@ -225,6 +226,6 @@ Tekintse meg [A Search szolgáltatás kezelése az Azure rendszerben](search-man
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

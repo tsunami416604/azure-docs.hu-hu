@@ -66,22 +66,23 @@
 ### [Virtuális gép újraindítása vagy átméretezése](../../virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # Referencia
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
 ## [Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates/)
-## [Számítási REST](/rest/api/compute/)
-## [Hálózati REST](/rest/api/)
-## [Tárolási REST](/rest/api/storageservices/)
+## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
+## [Számítási REST](/rest/api/compute)
+## [Hálózati REST](/rest/api)
+## [Tárolási REST](/rest/api/storageservices)
 
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
-## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
+## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

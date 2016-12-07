@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: ea1274dd53a93f00fa251ed03684b17b58b009c2
 
 
 ---
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe egy Azure-beli, Linux rend
 * és be kell jelentkeznie az [Azure parancssori felületre](../xplat-cli-install.md) a következővel: `azure login`.
 * Az Azure parancssori felületnek `azure config mode arm` Azure Resource Manager módban *kell lennie*.
 
-Az [Azure Portallal](virtual-machines-linux-quick-create-portal.md) is gyorsan üzembe helyezhet Linux rendszerű virtuálisgép-sablonokat.
+Az [Azure Portallal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is gyorsan üzembe helyezhet Linux rendszerű virtuálisgép-sablonokat.
 
 ## <a name="quick-command-summary"></a>Gyors parancsösszegzés
 ```azurecli

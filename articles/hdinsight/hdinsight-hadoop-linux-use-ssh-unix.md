@@ -16,242 +16,212 @@ ms.workload: big-data
 ms.date: 09/13/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 476d9ce8b64f3442031310bd9170c682a9940b2b
+ms.sourcegitcommit: 3c3944118ca986009711aee032b45c302b63e63b
+ms.openlocfilehash: 93bf35edd2173c147f48512d92bc8e4734cd1dbd
 
 
 ---
-# <a name="use-ssh-with-linuxbased-hadoop-on-hdinsight-from-linux-unix-or-os-x"></a>Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben
+# <a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-linux-unix-or-os-x"></a>Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben
+
 > [!div class="op_single_selector"]
 > * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 > * [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 > 
 > 
 
-A [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) lehetővé teszi, hogy egy parancssori felülettel távolról hajtson végre műveleteket a Linux-alapú HDInsight-fürtökön. Ez a dokumentum információt nyújt az SSH és a HDInsight együttes használatáról Linux-, Unix- vagy OS X-ügyfeleken.
-
-> [!NOTE]
-> A cikkben ismertetett eljárásokhoz Linux-, Unix- vagy OS X-ügyfelet kell használnia. Ezek a lépések Windows-alapú ügyfélen is végrehajthatók, ha telepített olyan csomagot, amely biztosítja az `ssh` és az `ssh-keygen` parancsot, ilyen például a [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) (Windowson futó Ubuntu Bash-környezete) című cikkben ismertetett Bash.
-> 
-> Ha a Windows-alapú ügyfélen nem lett telepítve az SSH, kövesse a [Use SSH with Linux-based HDInsight (Hadoop) from Windows](hdinsight-hadoop-linux-use-ssh-windows.md) (Az SSH és a Linux-alapú HDInsight (Hadoop) együttes használata a Windowsban) című útmutató lépéseit a PuTTY telepítésével és használatával kapcsolatos információkért.
-> 
-> 
-
-## <a name="prerequisites"></a>Előfeltételek
-* **ssh-keygen** és **ssh** Linux-, Unix- és OS X-ügyfelekhez. Ezeket a segédprogramokat általában az operációs rendszer biztosítja, vagy a csomagkezelő rendszeren keresztül érhetők el.
-* Egy HTML5-támogatással rendelkező modern webböngésző.
-
-VAGY
-
-* [Azure parancssori felület (CLI)](../xplat-cli-install.md).
-  
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+A [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) lehetővé teszi, hogy bejelentkezzen egy Linux-alapú HDInsight-fürtre, és parancsokat futtasson egy parancssori felületről. Ez a dokumentum alapvető információkat biztosít az SSH-ról, illetve konkrét információkat az SSH HDInsighttal történő használatáról.
 
 ## <a name="what-is-ssh"></a>Mi az az SSH?
-Az SSH egy olyan eszköz, amellyel beléphet egy távoli kiszolgálóra, és távolról parancsokat hajthat rajta végre. Az SSH a Linux-alapú HDInsight segítségével titkosított kapcsolatot hoz létre a fürt átjárócsomópontjával, és megjelenít egy parancssort, amelybe be lehet írni a parancsokat. A parancsok végrehajtására közvetlenül a kiszolgálón kerül sor.
 
-### <a name="ssh-user-name"></a>SSH-felhasználónév
-Az SSH-felhasználónév az a név, amelyet a HDInsight-fürtön a hitelesítéshez használ. Amikor a fürt létrehozása során megad egy SSH-felhasználónevet, ez a felhasználó a fürt összes csomópontján létrejön. Miután a fürt létrejött, ezzel a felhasználónévvel csatlakozhat a HDInsight-fürt átjárócsomópontjaihoz. Ezután az átjárócsomópontokról csatlakozhat az egyes munkavégző csomópontokhoz.
+Az SSH egy hálózati titkosítási protokoll, amely lehetővé teszi, hogy egy nem védett hálózaton keresztül biztonságosan kommunikáljon egy távoli kiszolgálóval. Az SSH-val biztonságos parancssori bejelentkezés biztosítható egy távoli kiszolgálóra, ebben az esetben egy HDInsight-fürt átjárócsomópontjaira vagy élcsomópontjára. 
 
-### <a name="ssh-password-or-public-key"></a>SSH-jelszó vagy nyilvános kulcs
-Az SSH-felhasználó jelszót vagy nyilvános kulcsot is használhat a hitelesítéshez. A jelszó egy Ön által megadott szöveges karakterlánc, míg a nyilvános kulcs egy kriptografikus kulcspár része, amely az Ön egyedi azonosítására szolgál.
+Az SSH emellett az ügyfél és a HDInsight-fürt közötti hálózati forgalom bújtatására is használható. Az alagút használata lehetővé teszi, hogy hozzáférjen olyan szolgáltatásokhoz a HDInsight-fürtön, amelyek nem csatlakoznak közvetlenül az internetre. Az SSH-bújtatás HDInsighttal való használatával kapcsolatos további információkat [az SSH-bújtatás a HDInsighttal való használatáról szóló cikkben](hdinsight-linux-ambari-ssh-tunnel.md) találhat.
 
-A kulcs biztonságosabb, mint a jelszó, azonban a kulcs létrehozásához további lépések szükségesek, és a kulcsot tartalmazó fájlokat biztonságos helyen kell tárolni. Ha bárki hozzáfér a kulcsfájlokhoz, utána a fiókjához is hozzáférhet. Ha a kulcsfájlok elvesznek, nem fog tudni belépni a fiókjába.
+## <a name="ssh-clients"></a>SSH-ügyfelek
 
-Egy kulcspár egy nyilvános kulcsból (amelyet a rendszer elküld a HDInsight-kiszolgálóra) és egy titkos kulcsból (amelyet az ügyfélszámítógép tárol) áll. Amikor az SSH-val a HDInsight-kiszolgálóhoz csatlakozik, az SSH-ügyfél a számítógépén található titkos kulccsal hitelesíti a kiszolgálót.
+Számos operációs rendszer biztosít SSH-ügyfél funkciót az `ssh` és az `scp` parancssori segédprogramon keresztül.
 
-## <a name="create-an-ssh-key"></a>SSH-kulcs létrehozása
-Támaszkodjon az alábbi információkra, ha a fürtön SSH-kulcsokat szeretne használni. Ha inkább jelszó használatát tervezi, kihagyhatja ezt a szakaszt.
+* __ssh__: Általános SSH-ügyfél, amely távoli parancssori munkamenet létesítésére és alagutak létrehozására használható.
+* __scp__: Olyan segédprogram, amely fájlokat másol a helyi és a távoli rendszerek között az SSH protokoll használatával.
 
-1. Nyisson meg egy terminál-munkamenetet, és az alábbi parancs használatával nézze meg, hogy rendelkezik-e létező SSH-kulcsokkal:
-   
-        ls -al ~/.ssh
-   
-    Nézze meg, hogy szerepelnek-e a következő fájlok a könyvtárlistában. Ezek a nyilvános SSH-kulcsok gyakori nevei.
-   
-   * id\_dsa.pub
-   * id\_ecdsa.pub
-   * id\_ed25519.pub
-   * id\_rsa.pub
-2. Ha nem szeretné a létező fájlokat használni, vagy nincsenek SSH-kulcsai, az alábbi megadásával hozhat létre egy új fájlt:
-   
-        ssh-keygen -t rsa
-   
-    A rendszer a következő információkat fogja kérni:
-   
-   * A fájl helye – az alapértelmezett hely a ~/.ssh/id\_rsa.
-   * Egy hozzáférési kód – a rendszer ennek az ismételt megadását fogja kérni.
-     
-     > [!NOTE]
-     > Határozottan javasoljuk, hogy a kulcshoz egy biztonságos hozzáférési kódot használjon. Ha azonban elfelejti a hozzáférési kódját, nincs lehetőség a helyreállításra.
-     > 
-     > 
-     
-     A parancs futtatásának befejeztével két új fájl jön létre: a titkos kulcs (például **id\_rsa**) és a nyilvános kulcs (például **id\_rsa.pub**).
+A Windows a Windows 10 évfordulós kiadása előtt nem biztosított SSH-ügyfelet. A Windows ezen verziója tartalmazza a fejlesztőknek készült Bash on Windows 10 szolgáltatást, amely biztosítja az `ssh`, az `scp` és más Linux-parancsokat. A Bash on Windows 10 használatával kapcsolatos további információkért lásd: [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about).
 
-## <a name="create-a-linuxbased-hdinsight-cluster"></a>Linux-alapú HDInsight-fürt létrehozása
-Egy Linux-alapú HDInsight-fürt létrehozásakor meg kell adnia az előzőleg létrehozott nyilvános kulcsot. Linux-, Unix- vagy OS X-ügyfelekről kétféle módon hozhat létre HDInsight-fürtöt:
+Ha Windows rendszert használ, és nem fér hozzá a Bash on Windows 10 szolgáltatáshoz, a következő SSH-ügyfeleket javasoljuk:
 
-* **Azure Portal** – A fürt létrehozásához egy webes portált használ.
-* **Azure parancssori felület (CLI) Mac, Linux és Windows rendszerekhez** – A fürtöt parancssori parancsok segítségével hozza létre.
-
-Mindkét módszerhez egy jelszó vagy egy nyilvános kulcs megadása szükséges. A Linux-alapú HDInsight-fürtök létrehozására vonatkozó teljes körű információkat a [Provision Linux-based HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú HDInsight-fürtök kiépítése) című témakör tartalmazza.
-
-### <a name="azure-portal"></a>Azure Portal
-Amikor az [Azure Portal][preview-portal] segítségével hoz létre egy Linux-alapú HDInsight-fürtöt, meg kell adnia egy **SSH USER NAME** (SSH-FELHASZNÁLÓNÉV) megadása szükséges, valamint választania kell egy **PASSWORD** (JELSZÓ) vagy egy **SSH PUBLIC KEY** (SSH NYILVÁNOS KULCS) megadása között.
-
-Ha az **SSH PUBLIC KEY** megadását választja, a nyilvános kulcsot (amit a **.pub** kiterjesztésű fájl tartalmaz) bemásolhatja az **SSH PublicKey** mezőbe, vagy a **Select a file** (Jelöljön ki fájlt) lehetőséggel megkeresheti és kiválaszthatja a nyilvános kulcs fájlját.
-
-![A nyilvános kulcsot kérő űrlap képe](./media/hdinsight-hadoop-linux-use-ssh-unix/ssh-key.png)
+* [Git for Windows](https://git-for-windows.github.io/): Biztosítja az `ssh` és az `scp` parancssori segédprogramot.
+* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/): Grafikus SSH-ügyfelet biztosít.
+* [MobaXterm](http://mobaxterm.mobatek.net/): Grafikus SSH-ügyfelet biztosít.
+* [Cygwin](https://cygwin.com/): Biztosítja az `ssh` és az `scp` parancssori segédprogramot.
 
 > [!NOTE]
-> A kulcsfájl egy egyszerű szövegfájl. A tartalma az alábbihoz hasonlóan néz ki:
-> 
-> ```
-> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KGz90pgMk3VRJk4PEUSELfXKxP3NtsVwLVPN1l09utI/tKHQ6WL3qy89WVVVLiwzL7tfJ2B08Gmcw8mC/YoieT/YG+4I4oAgPEmim+6/F9S0lU2I2CuFBX9JzauX8n1Y9kWzTARST+ERx2hysyA5ObLv97Xe4C2CQvGE01LGAXkw2ffP9vI+emUM+VeYrf0q3w/b1o/COKbFVZ2IpEcJ8G2SLlNsHWXofWhOKQRi64TMxT7LLoohD61q2aWNKdaE4oQdiuo8TGnt4zWLEPjzjIYIEIZGk00HiQD+KCB5pxoVtp user@system
-> ```
-> 
-> 
+> A dokumentum lépései azt feltételezik, hogy hozzáféréssel rendelkezik az `ssh` parancshoz. Ha például puTTY vagy MobaXterm ügyfelet használ, tekintse át a termék dokumentációját az egyenértékű parancsért és paraméterekért.
 
-Bejelentkezési adatokat hoz létre az adott felhasználó számára az Ön által megadott jelszó vagy nyilvános kulcs használatával.
+## <a name="ssh-authentication"></a>SSH-hitelesítés
 
-### <a name="azure-commandline-interface-for-mac-linux-and-windows"></a>Azure parancssori felület Mac, Linux és Windows rendszerekhez
-Az [Azure parancssori felület (CLI) Mac, Linux és Windows rendszerekhez](../xplat-cli-install.md) lehetővé teszi, hogy az `azure hdinsight cluster create` paranccsal egy új fürtöt hozzon létre.
+Az SSH-kapcsolatot jelszóval vagy [nyilvános kulcsú titkosítással (https://en.wikipedia.org/wiki/Public-key_cryptography)](https://en.wikipedia.org/wiki/Public-key_cryptography) lehet hitelesíteni. A kulcs használata a legbiztonságosabb megoldás, mivel nincs kitéve annyi támadásnak, mint a jelszavak. A kulcsok létrehozása és kezelése azonban bonyolultabb, mint a jelszavak használata.
 
-További információk a parancs használatáról: [Provision Hadoop Linux clusters in HDInsight using custom options](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök kiépítése a HDInsightban egyéni beállításokkal).
+A nyilvános kulcsú titkosítás használatának része egy _nyilvános_ és egy _titkos_ kulcs alkotta pár létrehozása.
 
-## <a name="connect-to-a-linuxbased-hdinsight-cluster"></a>Csatlakozás egy Linux-alapú HDInsight-fürthöz
-Egy terminál-munkamenetben az SSH paranccsal, a cím és a felhasználónév megadásával csatlakozhat az átjárócsomóponthoz:
+* A **nyilvános kulcsot** a rendszer a HDInsight-fürt csomópontjaiba tölti be, vagy bármely más szolgáltatásba, amelyet nyilvános kulcsú titkosítással kíván használni.
 
-* **SSH-cím** – A fürtökhöz kétféle címmel lehet csatlakozni az SSH segítségével:
-  
-  * **Csatlakozás az átjárócsomóponthoz**: a fürt neve, amelyet az **-ssh.azurehdinsight.net** karakterlánc követ. Például: **mycluster-ssh.azurehdinsight.net**.
-  * **Csatlakozás az élcsomóponthoz**: ha a fürt az R Server a HDInsight-on, a fürt egy élcsomópontot is tartalmazni fog, amely az **RServer.CLUSTERNAME.ssh.azurehdinsight.net** használatával érhető el, ahol a **CLUSTERNAME** a fürt nevét jelöli.
-* **Felhasználónév** – A fürt létrehozásakor megadott SSH-felhasználónév.
+* A **titkos kulccsal** igazolja a személyazonosságát a HDInsight-fürt felé, amikor bejelentkezik egy SSH-ügyféllel. Védje a titkos kulcsot. Ne ossza meg senkivel.
 
-A következő példa **me** felhasználóként csatlakozik a **mycluster** elsődleges átjárócsomóponthoz:
+    További biztonsági intézkedésként létrehozhat egy jelszót a titkos kulcshoz. Ekkor a kulcs használatához először meg kell adnia ezt a jelszót.
 
-    ssh me@mycluster-ssh.azurehdinsight.net
+### <a name="create-a-public-and-private-key"></a>Nyilvános és titkos kulcs létrehozása
 
-Ha a felhasználói fiókhoz jelszót használt, a rendszer elkéri a jelszót.
-
-Ha egy hozzáférési kóddal védett SSH-kulcsot használt, a rendszer a hozzáférési kódot kéri el. Más esetekben az SSH megpróbálja automatikusan elvégezni a hitelesítést az ügyfélen található helyi titkos kulcsok egyikével.
+Az `ssh-keygen` segédprogram a legegyszerűbb módszer a HDInsighthoz használni kívánt nyilvános és titkos kulcspár létrehozására. Egy parancssorból a következő paranccsal hozzon létre egy új kulcspárt a HDInsighthoz:
 
 > [!NOTE]
-> Ha az SSH nem tudja automatikusan kiválasztani a helyes titkos kulcsot a hitelesítéshez, használja az **-i** paramétert, és adja meg a titkos kulcs elérési útját. Az alábbi példa a `~/.ssh/id_rsa` helyről tölti be a titkos kulcsot:
-> 
-> `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
-> 
-> 
+> Amennyiben grafikus SSH-ügyfelet használ, például a MobaXTermöt vagy a puTTYt, tekintse át az ügyfél dokumentációját a kulcsok létrehozásával kapcsolatos útmutatásért.
 
-Ha az átjárócsomópont címének megadásával csatlakozik, és nincs megadva a port, az SSH alapértelmezés szerint a 22-es portot használja, és ezzel a HDInsight-fürt elsődleges átjárócsomópontjával létesít kapcsolatot. A 23-as port használata esetén a másodlagos átjárócsomóponthoz fog csatlakozni. Az átjárócsomópontokkal kapcsolatos további információkat lásd: [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md) (A Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsightban).
+    ssh-keygen -t rsa -b 2048
+   
+A rendszer a következő információk megadását kéri:
 
-### <a name="connect-to-worker-nodes"></a>Csatlakozás a munkavégző csomópontokhoz
-A munkavégző csomópontok az Azure adatközponton kívülről nem érhetők el közvetlenül, de SSH-val elérhetők a fürt átjárócsomópontjából.
+* A fájl helye: Az alapértelmezett hely a `~/.ssh/id_rsa`.
 
-Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, az alábbi lépéseket kell végrehajtania az ügyfélen:
+* Jelszó (nem kötelező): Ha megad egy jelszót, azt a HDInsight-fürtön való hitelesítéskor újból meg kell adnia.
 
-1. Egy szövegszerkesztővel nyissa meg a `~/.ssh/config` fájlt. Ha a fájl nem létezik, létrehozhatja a terminálban a `touch ~/.ssh/config` beírásával.
+> [!IMPORTANT]
+> Ez a titkos kulcs jelszava. Minden alkalommal, amikor a titkos kulcsot hitelesítéshez használja, a kulcs használatához először meg kell adnia a jelszót. Ha valaki megszerzi a titkos kulcsot, nem fogja tudni használni a jelszó nélkül.
+>
+> Ha elfelejti jelszavát, nincs lehetőség a visszaállítására vagy a helyreállítására.
+
+A parancs futtatásának befejeződésekor két új fájl jön létre:
+
+* __id\_rsa__: Ez a fájl tartalmazza a titkos kulcsot.
+    
+    > [!WARNING]
+    > Korlátoznia kell a hozzáférést ehhez a fájlhoz, hogy megakadályozza a nyilvános kulcs által védett szolgáltatásokhoz való jogosulatlan hozzáférést.
+
+* __id\_rsa.pub__: Ez a fájl tartalmazza a nyilvános kulcsot. Ezt a fájlt HDInsight-fürtök létrehozásakor használja.
+
+    > [!NOTE]
+    > Nem számít, hogy ki fér hozzá a _nyilvános_ kulcshoz. A nyilvános kulcsot önmagában csak a titkos kulcs igazolására lehet használni. Az olyan szolgáltatások, mint az SSH-kiszolgáló a személyazonosság igazolására használják a nyilvános kulcsot, amikor a titkos kulccsal végez hitelesítést.
+
+## <a name="configure-ssh-on-hdinsight"></a>Az SSH konfigurálása a HDInsight-on
+
+Amikor létrehoz egy Linux-alapú HDInsight-fürtöt, meg kell adnia egy _SSH-felhasználónevet_, valamint egy _jelszót_ vagy egy _nyilvános kulcsot_. A fürt létrehozása során a rendszer ezt az információt bejelentkezési adatok létrehozására használja a HDInsight-fürtcsomópontokon. A jelszót vagy nyilvános kulcsot a rendszer a felhasználói fiók védelmére használja.
+
+Az SSH a fürt létrehozása során történő konfigurálásával kapcsolatos további információkat a következő dokumentumokban talál:
+
+* [HDInsight létrehozása az Azure Portalon](hdinsight-hadoop-create-linux-clusters-portal.md)
+* [HDInsight létrehozása az Azure parancssori felülettel](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+* [HDInsight létrehozása az Azure PowerShell-lel](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+* [HDInsight létrehozása Azure Resource Manager-sablonokkal](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+* [HDInsight létrehozása a .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+* [HDInsight létrehozása a REST használatával](hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+
+### <a name="additional-ssh-users"></a>További SSH-felhasználók
+
+Bár a fürt létrehozása után lehetőség van további SSH-felhasználók hozzáadására, ez nem ajánlott.
+
+* Az új SSH-felhasználókat manuálisan kell hozzáadni a fürt egyes csomópontjaihoz.
+
+* Az új SSH-felhasználók ugyanolyan hozzáféréssel rendelkeznek a HDInsighthoz, mint az alapértelmezett felhasználó. A HDInsightban nem lehet korlátozni az adatokhoz vagy feladatokhoz való hozzáférést az SSH-felhasználói fiókok alapján.
+
+A hozzáférés felhasználónkénti korlátozása csak tartományhoz csatlakoztatott HDInsight-fürtön érhető el. A tartományhoz csatlakoztatott HDInsight-fürt Active Directoryval szabályozza a fürterőforrásokhoz való hozzáférést.
+
+Tartományhoz csatlakoztatott HDInsight-fürt használata lehetővé teszi az Active Directoryval való hitelesítést az SSH-val való csatlakozás után. Több felhasználó csatlakozhat SSH-val, majd a csatlakozás után hitelesítést végezhet az Active Directory-fiókjával. További információért lásd a [Tartományhoz csatlakoztatott HDInsight](#domainjoined) című szakaszt.
+
+##<a name="a-idconnecta-connect-to-hdinsight"></a><a id="connect"></a> Csatlakozás a HDInsight-hoz
+
+Bár a HDInsight-fürt összes csomópontja futtatja az SSH-kiszolgálót, nyilvános interneten keresztül csak az átjárócsomópontokhoz vagy az élcsomópontokhoz lehet csatlakozni.
+
+* Az _átjárócsomópontokhoz_ való csatlakozáshoz használja a `CLUSTERNAME-ssh.azurehdinsight.net` karakterláncot, ahol a __CLUSTERNAME__ a HDInsight-fürt neve. A 22-es port (az SSH alapértelmezett portja) az elsődleges átjárócsomóponthoz csatlakozik. A 23-as port a másodlagos átjárócsomóponthoz csatlakozik.
+
+* Egy _élcsomóponthoz_ való csatlakozáshoz használja az `EDGENAME.CLUSTERNAME-ssh.azurehdinsight.net` karakterláncot, ahol az __EDGENAME__ az élcsomópont neve, és a __CLUSTERNAME__ a HDInsight-fürt neve. Az élcsomóponthoz való csatlakozáskor használja a 22-es portot.
+
+Az alábbi példák azt mutatják be, hogyan lehet csatlakozni a __myhdi__ nevű fürt átjárócsomópontjaihoz és élcsomópontjához az __sshuser__ SSH-felhasználónévvel. Az élcsomópont neve __myedge__.
+
+| Elvégzendő művelet | Használandó karakterlánc |
+| ----- | ----- |
+| Csatlakozás az elsődleges átjárócsomóponthoz | `ssh sshuser@myhdi-ssh.azurehdinsight.net` |
+| Csatlakozás a másodlagos átjárócsomóponthoz | `ssh -p 23 sshuser@myhdi-ssh.azurehdinsight.net` |
+| Csatlakozás az élcsomóponthoz | `ssh sshuser@edge.myhdi-ssh.azurehdinsight.net` |
+
+Ha jelszóval védi az SSH-fiókot, a rendszer kérni fogja a jelszó megadását.
+
+Ha nyilvános kulccsal védi az SSH-fiókot, előfordulhat, hogy meg kell adnia a megfelelő titkos kulcs elérési útját az `-i` kapcsolóval. Az alábbi példa az `-i` kapcsoló használatát mutatja be:
+
+    ssh -i /path/to/public.key sshuser@myhdi-ssh.azurehdinsight.net
+
+### <a name="connect-to-other-nodes"></a>Csatlakozás más csomópontokhoz
+
+A munkavégző csomópontok és a Zookeeper-csomópontok nem érhetők el közvetlenül a fürtön kívülről, de a fürt átjárócsomópontjaiból vagy élcsomópontjaiból el lehet őket érni. Ez a következő általános lépésekkel valósítható meg:
+
+1. Az SSH-val csatlakozzon egy átjáró- vagy élcsomóponthoz:
+
+        ssh sshuser@myhdi-ssh.azurehdinsight.net
+
+2. Az átjáró- vagy élcsomópont felé fennálló SSH-kapcsolatból használja az `ssh` parancsot a fürt egyik munkavégző csomópontjához való csatlakozáshoz:
+
+        ssh sshuser@wn0-myhdi
+
+    A fürtben található munkavégző csomópontok listájának lekéréséhez tekintse meg a [HDInsight az Ambari REST API-val való kezelését](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) ismertető dokumentumban lévő példát a fürtcsomópontok teljes tartománynevének lekérésére.
+
+Ha az SSH-fiókot jelszó védi, a rendszer megkéri, hogy adja meg a jelszót, és létrejön a kapcsolat.
+
+Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön meg arról, hogy a helyi környezet SSH-ügynöktovábbításra van konfigurálva.
+
+> [!IMPORTANT]
+> Az alábbi lépések Linux-/UNIX-alapú rendszert feltételeznek, és a Bash on Windows 10 esetén működnek. Ha a lépések nem működnek a rendszerén, lehet, hogy át kell tekintenie az SSH-ügyfél dokumentációját.
+
+1. Egy szövegszerkesztővel nyissa meg a `~/.ssh/config` fájlt. Ha a fájl nem létezik, létrehozhatja a parancssoron az `touch ~/.ssh/config` karakterlánc beírásával.
+
 2. Adja a következőket a fájlhoz. Cserélje le a *CLUSTERNAME* kifejezést a HDInsight-fürt nevére.
    
         Host CLUSTERNAME-ssh.azurehdinsight.net
           ForwardAgent yes
    
-    Ez konfigurálja az SSH-ügynöktovábbítást a HDInsight-fürt számára.
+    Ez a bejegyzés konfigurálja az SSH-ügynöktovábbítást a HDInsight-fürt számára.
+
 3. Tesztelje az SSH-ügynöktovábbítást a terminálból a következő parancs segítségével:
    
         echo "$SSH_AUTH_SOCK"
    
-    A kapott információ az alábbihoz hasonlóan fog kinézni:
+    Ez a parancs az alábbi szöveghez hasonló információt ad vissza:
    
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
    
-    Ha nem kap semmit, az azt jelenti, hogy az **ssh-agent** nem fut. Olvassa el az operációs rendszere dokumentációjában az **ssh-agent** telepítésének és konfigurálásának részletes lépéseit, vagy tekintse meg a [Using ssh-agent with ssh](http://mah.everybody.org/docs/ssh) (Az ssh-agent és az ssh együttes használata) című cikket.
+    Ha a parancs nem ad vissza semmit, az azt jelenti, hogy az `ssh-agent` nem fut. Az ügynök indítási parancsfájljaival kapcsolatos információkért tekintse meg a [Using ssh-agent with ssh (Az ssh-agent és az ssh együttes használata – http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) című cikket, vagy olvassa el az SSH-ügynök dokumentációját az `ssh-agent` telepítésének és konfigurálásának részletes lépéseiért.
+
 4. Ha meggyőződött róla, hogy az **ssh-agent** fut, a következő segítségével adja hozzá a titkos SSH-kulcsot az ügynökhöz:
    
         ssh-add ~/.ssh/id_rsa
    
     Ha a titkos kulcsot egy másik fájl tárolja, a `~/.ssh/id_rsa` részt cserélje ki a fájl elérési útjára.
 
-A következő lépésekkel csatlakozzon a fürt munkavégző csomópontjaihoz.
+###<a name="a-iddomainjoineda-domain-joined-hdinsight"></a><a id="domainjoined"></a> Tartományhoz csatlakoztatott HDInsight
 
-> [!IMPORTANT]
-> Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, az előző lépések végrehajtásával ellenőrizze, hogy az ügynöktovábbítás működik-e.
-> 
-> 
+[A tartományhoz csatlakozó HDInsight](hdinsight-domain-joined-introduction.md) a Kerberost és a Hadoopot integrálja a HDInsightban. Mivel az SSH-felhasználó nem Active Directory tartományi felhasználó, nem futtathat Hadoop-parancsokat, amíg nem végez hitelesítést az Active Directoryval. Kövesse az alábbi lépéseket az SSH-munkamenet Active Directoryval történő hitelesítéséhez:
 
-1. Az előzőleg leírtak szerint csatlakozzon az SSH segítségével a HDInsight-fürthöz.
-2. A csatlakozás után a következő paranccsal kérje le a fürtben található csomópontok listáját. Cserélje le az *ADMINPASSWORD* elemet a fürt rendszergazdai fiókjának jelszavára. Cserélje le a *CLUSTERNAME* elemet a fürt nevére.
-   
-        curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/hosts
-   
-    Ez JSON formátumban ad meg információkat a fürt csomópontjaihoz, beleértve a `host_name` elemet is, amely tartalmazza az egyes csomópontok teljes tartománynevét (FQDN-jét). A következőkben egy példa látható a **curl** parancs által visszaadott `host_name` bejegyzésre:
-   
-        "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net"
-3. Amikor már van egy listája azokról a munkavégző csomópontokról, amelyekhez csatlakozni szeretne, használja az SSH-munkamenet következő parancsát a kiszolgálón a munkavégző csomópont csatlakoztatásához:
-   
-        ssh USERNAME@FQDN
-   
-    Cserélje le a *USERNAME* karakterláncot az SSH felhasználónevére, és az *FQDN* karakterláncot a munkavégző csomópont FQDN-jére. Például: `workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net`.
-   
-   > [!NOTE]
-   > Ha jelszóval hitelesíti az SSH-munkamenetet, a rendszer ismét elkéri a jelszót. Ha SSH-kulcsot használ, a kapcsolat további kérések nélkül létrejön.
-   > 
-   > 
-4. A munkamenet létrehozása után a terminál parancssora `username@hn#-clustername` értékről `username@wk#-clustername` értékre változik annak jelzéséhez, hogy a munkavégző csomópont csatlakoztatva van. Innentől a futtatott parancsok a munkavégző csomóponton fognak futni.
-5. Amikor már nem szeretne több műveletet végrehajtani a munkavégző csomóponton, az `exit` paranccsal zárja be a munkamenetét. Ezzel visszatér a `username@hn#-clustername` parancssorhoz.
+1. Csatlakozzon egy tartományhoz csatlakoztatott HDInisight-fürthöz az SSH-val a [Csatlakozás a HDInsight-hoz](#connect) című szakaszban leírtak szerint. Például az alábbi parancs egy __myhdi__ nevű HDInsight-fürthöz csatlakozik egy __sshuser__ nevű SSH-fiókkal.
 
-## <a name="connect-to-a-domainjoined-hdinsight-cluster"></a>Csatlakozás tartományhoz csatlakozó HDInsight-fürthöz
-[A tartományhoz csatlakozó HDInsight](hdinsight-domain-joined-introduction.md) a Kerberost és a Hadoopot integrálja a HDInsightban. Mivel az SSH felhasználó nem Active Directory tartományfelhasználó, ezért ez a fiók nem futtathat Hadoop parancsokat SSH rendszerhéjból közvetlenül a tartományhoz csatlakozó fürtön. Először le kell futtatnia a *kinit* parancsot. 
+        ssh sshuser@myhdi-ssh.azurehdinsight.net
 
-**Hive-lekérdezések futtatása tartományhoz csatlakozó HDInsight-fürtön SSH-val**
+2. Tartományi felhasználóval és jelszóval történő hitelesítéshez használja a következő parancsot:
 
-1. Csatlakozás SSH-val egy tartományhoz csatlakozó HDInsight-fürthöz.  Útmutatást talál a [Csatlakozás Linux-alapú HDInsight-fürthöz](#connect-to-a-linux-based-hdinsight-cluster) című cikkben.
-2. Futtassa a kinit parancsot. A program tartományi felhasználónevet és tartományi jelszót fog kérni. A tartományi fiókok tartományhoz csatlakozó HDInsight-fürtökhöz való konfigurálásáról további információt talál a [Tartományhoz csatlakozó HDInisight-fürtök konfigurálása](hdinsight-domain-joined-configure.md) című cikkben.
-   
-    ![HDInsight, Hadoop, tartományhoz csatlakozó, kinit](./media/hdinsight-hadoop-linux-use-ssh-unix/hdinsight-domain-joined-hadoop-kinit.png)
-3. Nyissa meg a Hive konzolt a következő parancs beírásával:
-   
-        hive
-   
-    Ezek után már futtathatja a Hive parancsait.
+        kinit
 
-## <a name="add-more-accounts"></a>További fiókok hozzáadása
-1. Hozzon létre egy új nyilvános és egy új titkos kulcsot az új felhasználói fiókhoz az [SSH-kulcs létrehozása](#create-an-ssh-key-optional) szakaszban leírt módon.
-   
-   > [!NOTE]
-   > A titkos kulcsot vagy egy olyan ügyfélen kell létrehozni, amellyel a felhasználó a fürthöz fog csatlakozni, vagy pedig a létrehozása után biztonságosan továbbítani kell egy ilyen ügyfélre.
-   > 
-   > 
-2. Egy SSH-munkamenetből adjon új felhasználót a fürthöz a következő paranccsal:
-   
-        sudo adduser --disabled-password <username>
-   
-    Ez létrehoz egy új felhasználói fiókot, de letiltja a jelszó-hitelesítést.
-3. Hozza létre a kulcs tárolására szolgáló könyvtárat és fájlokat a következő parancsokkal:
-   
-        sudo mkdir -p /home/<username>/.ssh
-        sudo touch /home/<username>/.ssh/authorized_keys
-        sudo nano /home/<username>/.ssh/authorized_keys
-4. Amikor megnyílik a nano szerkesztő, másolja be a nyilvános kulcs a tartalmát az új felhasználói fiókhoz. A **Ctrl-X** billentyűparanccsal mentse a fájlt, és lépjen ki a szerkesztőből.
-   
-    ![A nano szerkesztő képe egy példakulccsal](./media/hdinsight-hadoop-linux-use-ssh-unix/nano.png)
-5. A következő paranccsal módosítsa az .ssh mappa és a benne található tartalmak tulajdonosát az új felhasználói fiókra:
-   
-        sudo chown -hR <username>:<username> /home/<username>/.ssh
-6. Mostantól az új felhasználói fiókkal és titkos kulccsal is tud hitelesítést végezni a kiszolgálón.
+     Ha a rendszer kéri, adjon meg egy tartományi felhasználónevet és a tartományi felhasználó jelszavát.
+
+    A tartományi felhasználók tartományhoz csatlakoztatott HDInsight-fürtökhöz való konfigurálásáról további információt a [tartományhoz csatlakoztatott HDInisight-fürtök konfigurálásával kapcsolatos](hdinsight-domain-joined-configure.md) cikkben talál.
+
+A `kinit` paranccsal végzett hitelesítés után már használhatja az olyan Hadoop-parancsokat, mint a `hdfs dfs -ls /` vagy a `hive`.
 
 ## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-bújtatás
+
 Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A rendszer ilyenkor úgy irányítja a kérést a kért erőforráshoz, mintha a HDInsight-fürt átjárócsomópontból származna.
 
 > [!IMPORTANT]
 > Az SSH-alagút előfeltétele annak, hogy el tudja érni néhány Hadoop-szolgáltatás webes felhasználói felületét. Például a Feladatelőzmények felhasználói felület és az Erőforrás-kezelő felhasználói felület is csak SSH-alagúton keresztül érhető el.
-> 
-> 
 
-Az SSH-alagutak létrehozásáról és használatáról szóló további információkért lásd: [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md) (Az Ambari webes felhasználói felület, a ResourceManager, a JobHistory, a NameNode, az Oozie és egyéb webes felhasználói felületek elérése SSH-alagútkezeléssel).
+Az SSH-alagutak létrehozásával és használatával kapcsolatos további információkat [az Ambari webes felhasználói felület, a JobHistory, a NameNode, az Oozie és egyéb webes felhasználói felületek SSH-bújtatással való eléréséről szóló cikkben](hdinsight-linux-ambari-ssh-tunnel.md) találhat.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is tájékozódhat, hogyan használhatja a MapReduce-t a HDInsight-alapú Hadoopban.
 
 * [A Hive használata a HDInsightban](hdinsight-use-hive.md)
@@ -262,6 +232,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

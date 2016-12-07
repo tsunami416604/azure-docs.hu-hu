@@ -1,5 +1,5 @@
 ---
-title: "Python webes és feldolgozói szerepkörök a Visual Studio eszközzel | Microsoft Docs"
+title: "Ismerkedés a Pythonnal és az Azure Cloud Serviceszel | Microsoft Docs"
 description: "Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel."
 services: cloud-services
 documentationcenter: python
@@ -12,15 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 712c62ed3d5ff21847e2431df3530e7d39c6aae2
+ms.openlocfilehash: 53f7c17d8404bb02ab8bb2be9018ba2b179f1b08
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
+
+> [!div class="op_single_selector"]
+> * [.NET](cloud-services-dotnet-get-started.md)
+> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+> * [Python](cloud-services-python-ptvs.md)
+
 Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][Python Tools for Visual Studio] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy, a Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -166,7 +172,7 @@ A **PYTHON2** és a **PYPATH** változót hozzá kell adni a feldolgozó indít�
 Ezután hozza létre a **PrepPython.ps1** és a **PipInstaller.ps1** fájlokat a szerepkör **./bin** mappájában.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a Python 2.7-t telepíti. Más esetekben a Python 3.5 települ.
+Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-et telepíti. Egyéb esetben a Python 3.5 lesz telepítve.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -212,7 +218,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-t használja. Más esetekben a Python 3.5 lesz használatban.
+Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó **be** értékű, a rendszer a Python 2.7-et használja. Egyéb esetben a Python 3.5 lesz használatban.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -247,7 +253,7 @@ if (-not $is_emulated){
 
 A **bin\LaunchWorker.ps1** eredetileg azért jött létre, hogy előkészítési munkákat végezzen, de nem igazán működik. Cserélje le a fájl tartalmát a következő parancsfájllal.
 
-A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-t használja. Más esetekben a Python 3.5 lesz használatban.
+A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó **be** értékű, a rendszer a Python 2.7-et használja. Egyéb esetben a Python 3.5 lesz használatban.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -341,16 +347,16 @@ Ha további részletekre kíváncsi az Azure szolgáltatások használatáról w
 <!--Link references-->
 
 [Mi az a Cloud Service?]: cloud-services-choose-me.md
-[végrehajtási modell – webhelyek]: ../app-service-web/app-service-web-overview.md
-[végrehajtási modell – virtuális gépek]: ../virtual-machines/virtual-machines-windows-about.md
-[végrehajtási modell – felhőszolgáltatások]: cloud-services-choose-me.md
+[futtatási modell-webhelyek]: ../app-service-web/app-service-web-overview.md
+[végrehajtási modell virtuális gépek]: ../virtual-machines/virtual-machines-windows-about.md
+[végrehajtási modell felhőszolgáltatások]: cloud-services-choose-me.md
 [Python fejlesztői központ]: /develop/python/
 
 [Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
 [Queue szolgáltatás]: ../storage/storage-python-how-to-use-queue-storage.md
 [Table Service]: ../storage/storage-python-how-to-use-table-storage.md
-[Service Bus által kezelt üzenetsorok]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
-[Service Bus-üzenettémák]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+[Service Bus-üzenetsorok]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
+[Service Bus-témakörök]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
@@ -360,11 +366,11 @@ Ha további részletekre kíváncsi az Azure szolgáltatások használatáról w
 [Cloud Service-projektek]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7, 32 bites]: https://www.python.org/downloads/
-[Python 3.5, 32 bites]: https://www.python.org/downloads/
+[Python 2.7 32 bites]: https://www.python.org/downloads/
+[Python 3.5 32 bites]: https://www.python.org/downloads/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

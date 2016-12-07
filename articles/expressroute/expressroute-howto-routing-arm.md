@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
+ms.sourcegitcommit: 5da660fc36ac0ebef26ed815da6dbba6668643d3
+ms.openlocfilehash: 57e8ee6f067a61c1262a8902dd56393e4803c3c6
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport útválasztásának létrehozása és módosítása
 > [!div class="op_single_selector"]
-> [Azure Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell – Klasszikus](expressroute-howto-routing-classic.md)
+> * [Azure Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
+> * [PowerShell – Klasszikus](expressroute-howto-routing-classic.md)
 > 
 > 
 
@@ -249,7 +249,9 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
      
        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-    >[AZURE.IMPORTANT] Az AS-számot mindenképp társviszony-létesítési ASN-ként, és ne ügyfél ASN-ként adja meg.
+    > [!IMPORTANT]
+    > Az AS-számot mindenképp társviszony-létesítési ASN-ként, és ne ügyfél ASN-ként adja meg.
+
 
 ### <a name="to-view-azure-public-peering-details"></a>Azure nyilvános társviszony-létesítés részleteinek megtekintése
 A konfiguráció részleteit az alábbi parancsmaggal kérheti le.
@@ -387,6 +389,6 @@ A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsopo
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

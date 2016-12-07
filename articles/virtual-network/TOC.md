@@ -13,7 +13,7 @@
 
 # Első lépések
 ## [Virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-pportal.md)
-## [Virtuális gép üzembe helyezése virtuális hálózaton](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [Virtuális gép üzembe helyezése virtuális hálózaton](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -143,6 +143,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

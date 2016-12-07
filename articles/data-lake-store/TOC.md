@@ -51,19 +51,22 @@
 ### [Diagnosztikai naplók elérése](data-lake-store-diagnostic-logs.md)
 
 # Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [.NET](https://docs.microsoft.com/dotnet/api)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Java](/java/api/)
+## [.NET](/dotnet/api/)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-## [REST](https://docs.microsoft.com/en-us/rest/api/datalakestore/)
+## [REST](/rest/api/datalakestore/)
 
 # Erőforrások
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-store)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Stack Overflow fórum](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
 ## [Data Lake Store blog](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

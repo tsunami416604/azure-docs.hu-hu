@@ -6,37 +6,38 @@
 ## [Többhelyes kapcsolat](application-gateway-multi-site-overview.md)
 ## [Végpontok közötti SSL-szolgáltatások](application-gateway-backend-ssl.md)
 ## [WebSocket](application-gateway-websocket.md)
-## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md#application-gateway-limits.md)
+## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 # Bevezetés
 ## Alkalmazásátjáró létrehozása
 ### Nyilvános
 #### [Portál](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-#### [Parancssori felület](application-gateway-create-gateway-arm-template.md)
-#### [PowerShell (klasszikus)](application-gateway-create-gateway-arm-template.md)
+#### [Parancssori felület](application-gateway-create-gateway-cli.md)
+#### [PowerShell (klasszikus)](application-gateway-create-gateway.md)
 ### Belső hálózatra irányuló
 #### [PowerShell](application-gateway-ilb-arm.md)
 #### [PowerShell (klasszikus)](application-gateway-ilb.md)
 # Útmutató
-## Létrehozás a webalkalmazási tűzfallal
+## Webalkalmazási tűzfal konfigurálása
 ### [Portál](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-## Konfigurálás az SSL szolgáltatáshoz
+## Az SSL-alapú kiszervezés konfigurálása
 ### [Portál](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klasszikus)](application-gateway-ssl.md)
 ### [Házirend és végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
-## URL-alapú útválasztás létrehozása
+## URL-alapú útválasztás konfigurálása
 ### [Portál](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-## Konfigurálás többhelyes üzemeltetésre
+## Többhelyes üzemeltetés konfigurálása
 ### [Portál](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## Állapotminták létrehozása
+## Állapotminták konfigurálása
 ### [Portál](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
+## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## Kezelés
 ### [Diagnosztika](application-gateway-diagnostics.md)
 ### [Hibaelhárítás](application-gateway-troubleshooting-502.md)
@@ -54,11 +55,12 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)  
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

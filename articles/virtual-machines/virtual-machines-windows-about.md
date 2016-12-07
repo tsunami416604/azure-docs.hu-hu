@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1e422d9d1ae36b8e8a84194020d2eef65b545d0
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 8e089fd94966e4504af115fff796f306adf825bd
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: b1e422d9d1ae36b8e8a84194020d2eef65b545d0
 
 Az Azure virtuális gépek az Azure által kínált számos különböző típusú, igény szerinti, méretezhető számítási erőforrások közé tartoznak. Virtuális gépet általában akkor érdemes választani, ha átfogóbb vezérlésre van szüksége a számítási környezet felett annál, amelyet az egyéb lehetőségek kínálnak.
 
-Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartása azonban így is szükséges – beleértve a virtuális gépen futó szoftverek konfigurálását, javítását és karbantartását. További információt [itt olvashat az Azure-ban futó Linux rendszerű virtuális gépekről](virtual-machines-linux-about.md).
+Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartása azonban így is szükséges – beleértve a virtuális gépen futó szoftverek konfigurálását, javítását és karbantartását. További információt [itt olvashat az Azure-ban futó Linux rendszerű virtuális gépekről](virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Az alábbi táblázat segítségével összehasonlíthatja az Azure által kínált lehetőségeket.
 
@@ -35,9 +35,9 @@ Az alábbi táblázat segítségével összehasonlíthatja az Azure által kín�
 [!INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-Próbáljon ki egy virtuális gépet egy egyszerű virtuális gép gyors létrehozásával. Útmutatás: [Windows rendszert futtató virtuális gép létrehozása az Azure Portalon](virtual-machines-windows-hero-tutorial.md).
+Próbáljon ki egy virtuális gépet egy egyszerű virtuális gép gyors létrehozásával. Útmutatás: [Windows rendszert futtató virtuális gép létrehozása az Azure Portalon](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Mivel az oktatóanyag célja segítség nyújtása egy virtuális gép gyors létrehozásához, csak egy módszert mutat be erre ahelyett, hogy a virtuális gépek létrehozásához használható különböző eszközök mindegyikét ismertetné. Ezen eszközök összefoglalását és az utasításokra mutató hivatkozásokat lásd: [Windows rendszerű virtuális gép létrehozásának különböző módjai](virtual-machines-windows-creation-choices.md).
+Mivel az oktatóanyag célja segítség nyújtása egy virtuális gép gyors létrehozásához, csak egy módszert mutat be erre ahelyett, hogy a virtuális gépek létrehozásához használható különböző eszközök mindegyikét ismertetné. Ezen eszközök összefoglalását és az utasításokra mutató hivatkozásokat lásd: [Windows rendszerű virtuális gép létrehozásának különböző módjai](virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 

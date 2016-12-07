@@ -28,11 +28,13 @@
 ### [Képek és képletek összehasonlítása](devtest-lab-comparing-vm-base-image-types.md)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=devtest-lab&updatetype=&platform=)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=devtest-lab)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/devtest-lab/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

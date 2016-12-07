@@ -13,12 +13,13 @@
 ### [Parancssori felület](dns-getstarted-create-recordset-cli.md)
 
 ## [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
+## [Webalkalmazások egyéni DNS-rekordjainak létrehozása](dns-web-sites-custom-domain.md)
 
 # Útmutató
 
 ## DNS-zónák kezelése
 ### [PowerShell](dns-operations-dnszones.md)
-### [Parancssori felület](dns-operations-dnszones.md)
+### [Parancssori felület](dns-operations-dnszones-cli.md)
 
 ## [DNS-rekordok kezelése](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
@@ -29,12 +30,12 @@
 ### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
 ## [DNS-zónafájl importálása és exportálása](dns-import-export.md)
-## [Az Azure DNS használata más Azure-szolgáltatásokkal](dns-for-azure-services.md)
+## [Együttműködés más Azure-szolgáltatásokkal](dns-for-azure-services.md)
 ## [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md)
 ## [DNS-műveletek automatizálása a .NET SDK használatával](dns-sdk.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST API-k](/rest/api/dns/)
 
 # Kapcsolódó
@@ -46,11 +47,12 @@
 ## [Webalkalmazások](/azure/app-service-web/)
 
 # Erőforrások
-## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
-## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=dns)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

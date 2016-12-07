@@ -65,7 +65,7 @@ A JSON-beállításfájl tartalmazza a betöltendő modulok listáját. Minden m
 A JSON-fájl is tartalmazza a modulok közötti hivatkozásokat, amelyek a rendszer átad a közvetítőnek. Egy hivatkozás két tulajdonsággal rendelkezik:
 
 * **source**: modulnév a `modules` szakaszból vagy „\*”.
-* **sink**: modulnév a `modules` szakaszból
+* **sink**: modulnév a `modules` szakaszból.
 
 Minden hivatkozás meghatároz egy üzenetútvonalat és irányt. A `source` modulból érkező üzeneteket a `sink` modulnak kell továbbítani. A `source` modult „\*” értékűre is be lehet állítani, ami azt jelzi, hogy a moduloktól érkező üzeneteket a `sink` fogja fogadni.
 
@@ -216,6 +216,6 @@ Az IoT Gateway SDK használatának megismeréséhez tekintse meg a következőke
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -16,23 +16,23 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 443e74834a7181560e812ce31db460ef2c4ff911
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: bbfce3f3cf329792f270632e2244e33e3fafb7ef
 
 
 ---
-# <a name="create-a-sql-data-warehouse-database-by-using-transactsql-tsql"></a>SQL Data Warehouse-adatbázis létrehozása a Transact-SQL (TSQL) használatával
+# <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>SQL Data Warehouse-adatbázis létrehozása a Transact-SQL (TSQL) használatával
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy SQL Data Warehouse-adatbázist a T-SQL használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A kezdéshez a következők szükségesek: 
+A kezdéshez a következők szükségesek:
 
 * **Azure-fiók**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-próbalehetőség][Ingyenes Azure-próbalehetőség] vagy [MSDN Azure-kreditek][MSDN Azure-kreditek].
 * **Azure SQL-kiszolgáló**: További részletes információ: [Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével][Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével] vagy [Azure SQL Database logikai kiszolgáló létrehozása a PowerShell segítségével][Azure SQL Database logikai kiszolgáló létrehozása a PowerShell segítségével].
@@ -41,8 +41,8 @@ A kezdéshez a következők szükségesek:
 
 > [!NOTE]
 > A SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti.  A díjszabással kapcsolatos további információkért lásd: [SQL Data Warehouse díjszabása][SQL Data Warehouse díjszabása].
-> 
-> 
+>
+>
 
 ## <a name="create-a-database-with-visual-studio"></a>Adatbázis létrehozása a Visual Studióval
 Ha új Visual Studio-felhasználó, tekintse meg ezt a cikket: [Az Azure SQL Data Warehouse lekérdezése (Visual Studio)][Az Azure SQL Data Warehouse lekérdezése (Visual Studio)].  A kezdéshez nyissa meg az SQL Server Object Explorert a Visual Studióban, és csatlakozzon az SQL Data Warehouse-adatbázisnak helyet adó kiszolgálóra.  A csatlakozás után úgy hozhatja létre az SQL Data Warehouse-adatbázist, hogy a következő SQL parancsot futtatja a **fő** adatbázison.  A parancs létrehozza a MySqlDwDb adatbázist DW400 szolgáltatási céllal, és lehetővé teszi az adatbázisnak, hogy legfeljebb 10 TB nagyságúra nőjön.
@@ -71,19 +71,19 @@ Miután az SQL Data Warehouse kiépítése befejeződött, [mintaadatokat tölth
 [fejlesztés]: sql-data-warehouse-overview-develop.md
 [betöltés]: sql-data-warehouse-overview-load.md
 [mintaadatok betöltése]: sql-data-warehouse-load-sample-databases.md
-[Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
-[Azure SQL Database logikai kiszolgáló létrehozása PowerShell segítségével]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[Azure SQL Database logikai kiszolgáló létrehozása az Azure Portal segítségével]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
+[Azure SQL Database logikai kiszolgáló létrehozása a PowerShell segítségével]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [erőforráscsoportok létrehozása]: ../resource-group-template-deploy-portal.md#create-resource-group
 [A Visual Studio és az SSDT telepítése]: sql-data-warehouse-install-visual-studio.md
 [sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
-<!--MSDN references--> 
+<!--MSDN references-->
 [CREATE DATABASE]: https://msdn.microsoft.com/library/mt204021.aspx
 [ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
 [SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
 
 <!--Other Web references-->
-[Az SQL Data Warehouse díjszabása]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+[SQL Data Warehouse díjszabása]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Ingyenes Azure-próbalehetőség]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure-kreditek]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 

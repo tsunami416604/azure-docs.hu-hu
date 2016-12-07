@@ -13,7 +13,7 @@
 ### [API-definíció importálása](api-management-howto-import-api.md)
 ## A háttérmodul védelme
 ### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
-### [Csatlakozás a VPN vagy az ExpressRoute használatával](api-management-howto-setup-vpn.md)
+### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)
 ### [Kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md)
 ## Szabályzatok konfigurálása
 ### [Egyedi gyorsítótárazás](api-management-sample-cache-by-key.md)
@@ -40,13 +40,17 @@
 ### [Kezelés automatizálással](automation-manage-api-management.md)
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
 #Referencia
-## [Resource Management PowerShell cmdlet]/powershell/resourcemanager()
-## [Klasszikus üzembe helyezés – PowerShell-parancsmagok leírása](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST API](/rest/api/apimanagement/)
-## [Házirendek](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [Sablonok](https://msdn.microsoft.com/en-us/library/azure/mt697540)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Klasszikus PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [REST](/rest/api/apimanagement/)
+## [Házirendek](https://msdn.microsoft.com/library/azure/dn894081)
+## [Sablonok](https://msdn.microsoft.com/library/azure/mt697540)
 #Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=api-management)
 ## [Tanulmány: Felhőalapú API Management](http://j.mp/ms-apim-whitepaper)
 ## [API-tervezési segédlet](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API-implementálási segédlet](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -59,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

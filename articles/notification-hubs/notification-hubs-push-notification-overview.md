@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/25/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 38735f7c0154388e8698edc5bac931c5a079a865
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: 005d2fb2bce7e42d1ce961b90610b16f299abfd0
 
 
 ---
@@ -68,7 +68,7 @@ A leküldéses értesítések küldése a mobilalkalmazások számára elérhet�
 
 * **Platformfüggőség.** Ahhoz, hogy különböző platformokat használó eszközökre értesítéseket lehessen küldeni, többféle felületet kell bekódolni a háttérbe. Nem csak a kevésbé fontos részletek különböznek, de az értesítés megjelenése (csempe, bejelentés vagy jelvény) is platformfüggő. Ezek a különbségek bonyolult és nehezen fenntartható háttérkódhoz vezethetnek.
 * **Méretezés.** Az infrastruktúra méretezésének két szempontja van:
-  
+
   * A PNS-irányelvek szerint az eszközök tokenjeit minden alkalommal frissíteni kell, amikor az alkalmazás elindul. Ez már csak a tokenek naprakészen tartásához is nagy forgalomhoz (és az ezekhez tartozó adatbázis-elérésekhez) vezet. Amikor az eszközök száma nő (akár milliókra), az infrastruktúra létrehozásának és fenntartásának költségei nem elhanyagolhatók.
   * A legtöbb PNS nem támogatja a több eszközre küldött szórásos küldést. Ez azt jelenti, hogy egy eszközök millióira való szórásos küldés a PNS-ekre küldött hívások millióit eredményezi. A kérelmek méretezésének képessége nem magától értetődő, mert az alkalmazásfejlesztők általában szeretnék alacsonyan tartani a teljes késést. Például az üzenetet megkapó utolsó eszköznek nem szabad az értesítést 30 perccel az értesítés elküldése után megkapnia, mert ez sok esetben értelmetlenné tenné a leküldéses értesítéseket.
 * **Útválasztás.** A PNS-ek módot biztosítanak egy üzenet elküldéséhez egy eszközre. A legtöbb alkalmazásban azonban az értesítések célpontjai a felhasználók és/vagy az érdekelt csoportok (például minden alkalmazott, ki egy adott ügyfélfiókhoz van hozzárendelve). Így aztán ahhoz, hogy az értesítéseket a megfelelő eszközökhöz küldjék, az alkalmazások hátterének tartalmaznia kell egy beállításjegyzéket, amely hozzácsatolja az érdekelt csoportokat az eszközök tokenjeihez. Ez a terhelés hozzáadódik az alkalmazások piacra kerülési idejéhez és fenntartási költségeihez.
@@ -81,19 +81,19 @@ A Notification Hubs megszünteti a bonyolultságot: nem kell megküzdeni a lekü
 A Notification Hubs egy használatra kész leküldéses értesítési infrastruktúrát biztosít a következő előnyökkel:
 
 * **Több platform.**
-  
+
   * Minden nagyobb mobilplatform támogatása. A Notification Hubs képes leküldéses értesítéseket küldeni Windows Áruházbeli, iOS, Android és Windows Phone alkalmazásokra is.
   * A Notification Hubs közös felületet biztosít az értesítések küldéséhez az összes támogatott platformra. Nincs szükség platformspecifikus protollokra. Az alkalmazás háttér-infrastruktúrája platformspecifikus vagy platformfüggetlen formátumú értesítéseket is tud küldeni. Az alkalmazás kizárólag a Notification Hubs szolgáltatással kommunikál.
   * Eszközleírók kezelése. A Notification Hubs tartja fenn a leírók jegyzékét és PNS-visszajelzéseket.
 * **Bármely háttér-infrastuktúrával használható**: felhőalapú vagy helyszíni, .NET, PHP, Java, Node stb.
 * **Méretezés.** Az értesítési központok eszközök millióira méretezhetők újratervezés és horizontális skálázás nélkül.
 * **Sokféle kézbesítési minta**:
-  
+
   * *Szórás*: közel egyidejű továbbítást tesz lehetővé eszközök millióira egyetlen API-hívással.
   * *Egyedi küldés/csoportos küldés*: leküldés egyes felhasználókat jelölő címkékre, például az összes eszközükre; vagy szélesebb csoportokat, például különböző kiviteleket (táblagépeket és telefonokat) jelölő címkékre.
   * *Szegmentálás*: leküldés címkekifejezésekkel meghatározott összetett szegmensekhez (például a Yankees csapatát követő eszközök New Yorkban).
-    
-    Amikor leírót egy értesítési központba küldi, minden eszköz megadhat egy vagy több *címkét*. További információk a [címkét]. A címkék előzetes kiosztása és eldobása nem szükséges. A címkékkel egyszerűen küldhet értesítéseket felhasználóknak vagy érdeklődési köröknek. Mivel a címkék bármilyen alkalmazásspecifikus azonosítót tartalmazhatnak (például felhasználói vagy csoportazonosítót), a használatukkal a háttér-infrastruktúra felszabadítható az eszközleírók tárolásával és kezelésével járó terhelés alól.
+
+    Amikor leírót egy értesítési központba küldi, minden eszköz megadhat egy vagy több *címkét*. További információk a [címkét](http://msdn.microsoft.com/library/azure/dn530749.aspx). A címkék előzetes kiosztása és eldobása nem szükséges. A címkékkel egyszerűen küldhet értesítéseket felhasználóknak vagy érdeklődési köröknek. Mivel a címkék bármilyen alkalmazásspecifikus azonosítót tartalmazhatnak (például felhasználói vagy csoportazonosítót), a használatukkal a háttér-infrastruktúra felszabadítható az eszközleírók tárolásával és kezelésével járó terhelés alól.
 * **Személyre szabás**: Minden eszköznek lehet egy vagy több sablonja, így a háttérkód módosítása nélkül érhető el az eszközönkénti honosítás és személyre szabás.
 * **Biztonság**: közös hozzáférésű jogosultságkód (SAS) vagy összevont hitelesítés.
 * **Részletes telemetria**: A portálon és szoftveresen is elérhető.
@@ -111,7 +111,7 @@ A Mobile Apps-fejlesztők a következő munkafolyamatoknál használhatják a No
 Íme néhány hasznos szolgáltatás a fejlesztők számára, amelyeket ez az integráció tett elérhetővé:
 
 * **Mobile Apps-ügyfél SDK-k.** Ezek a többplatformos SDK-k egyszerű API-kat biztosítanak a regisztrációhoz, illetve a mobilalkalmazáshoz automatikusan kapcsolódó értesítési központtal való kommunikációhoz. A fejlesztőknek nem kell átrágniuk magukat a Notification Hubs hitelesítő adatain, és egy másik szolgáltatást használniuk.
-  
+
   * Az SDK-k automatikusan felcímkézik az adott eszközt a Mobile Apps által hitelesített felhasználói azonosítóval, így lehetővé teszik a felhasználóknak küldött leküldéses értesítéseket.
   * Az SDK-k a Mobile Apps telepítési azonosítót automatikusan GUID-ként használják a Notification Hubsban való regisztrációhoz, így a fejlesztőknek nem kell több szolgáltatásbeli GUID azonosítót fenntartaniuk.
 * **Telepítési modell.** A Mobile Apps a Notification Hubs legújabb leküldési modelljével mutatja be az eszközök leküldéses tulajdonságait egy JSON-telepítésben, amely egyszerűen használható, és igazodik a leküldéses értesítési szolgáltatásokhoz.

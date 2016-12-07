@@ -3,7 +3,7 @@
 2. Lépjen az **Eszközök** oldalra. Kattintson az **Eszközök** oldal alján található **Virtuális eszköz létrehozása** lehetőségre.
 3. A **Virtuális eszköz létrehozása párbeszédpanelen** adja meg a következő részleteket.
    
-     ![StorSimple virtuális eszköz létrehozása](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
+    ![StorSimple virtuális eszköz létrehozása](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
    
    1. **Név** – A virtuális eszköz egyedi neve.
    2. **Modell** – Válassza ki a virtuális eszköz modelljét. Ez a mező csak akkor jelenik meg, ha a 2. frissítést vagy újabb verziót futtat. Egy 8010-es eszközmodell 30 TB Standard szintű, míg egy 8020-as modell 64 TB Premium Storage tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es
@@ -28,6 +28,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

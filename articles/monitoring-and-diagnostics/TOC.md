@@ -1,13 +1,12 @@
 # Áttekintés
-## [A Microsoft Azure figyelési szolgáltatása](../monitoring-and-diagnostics/monitoring-overview.md)
+## [Azure Monitor – áttekintés](../monitoring-and-diagnostics/monitoring-overview.md)
 ## [Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 ## [Riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 ## [Automatikus méretezés](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)
-## [Ajánlott eljárások az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [Tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 ## [Diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
 ## [Partnerintegrációk](../monitoring-and-diagnostics/monitoring-partners.md)
-## [A REST API használatának bemutatója](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+
 
 # Első lépések
 ## [Ismerkedés az Azure Monitorral](../monitoring-and-diagnostics/monitoring-get-started.md)
@@ -21,11 +20,12 @@
 ### [Webhook beállítása metrikariasztáson](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
 ### [Metrikariasztás létrehozása Resource Manager-sablonnal](../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md)
 ## Automatikus méretezés használata
+### [Ajánlott eljárások az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ### [Gyakori metrikák az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ### [Virtuálisgép-méretezési készletek automatikus méretezése Resource Manager-sablonok használatával](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [VM-skálázási készlet gépeinek automatikus skálázása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)
 ### [Webhookok és e-mailes értesítések beállítása az automatikus méretezésben](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
-## A tevékenységnapló kezelése
+## A tevékenységnapló használata
 ### [Események megtekintése a tevékenységnaplóban](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [Webhook beállítása a tevékenységnapló egy riasztásához](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [A tevékenységnapló archiválása](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
@@ -35,7 +35,8 @@
 ### [Archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [Streamelés az Event Hubs felé](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
 ### [Diagnosztikai beállítások engedélyezése Resource Manager-sablonok használatával](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)
-
+## A REST API használata
+### [A REST API használatának bemutatója](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 
 
 # Referencia
@@ -43,10 +44,8 @@
 ## [Azure CLI](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-## [REST](https://docs.microsoft.com/rest/api/monitor/)
+## [REST API](https://msdn.microsoft.com/library/azure/dn931943)
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

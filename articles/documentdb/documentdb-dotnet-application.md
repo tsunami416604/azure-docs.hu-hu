@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
 
 
 ---
@@ -37,21 +37,25 @@ Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazás
 Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított DocumentDB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak a DocumentDB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [DocumentDB C# konzolalkalmazás felépítése](documentdb-get-started.md).
 
 > [!TIP]
-> Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHubról][GitHubról], és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
+> Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHubon][GitHubon], és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
 > 
 > 
 
 ## <a name="a-nametoc395637760aprerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>Az adatbázis-oktatóanyag előfeltételei
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
 
-* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/) 
+
+    VAGY
+
+    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
 * [Visual Studio 2015](http://www.visualstudio.com/) vagy Visual Studio 2013 Update 4 vagy újabb verzió. Ha Visual Studio 2013-at használ, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/) a C# 6.0 támogatásához. 
 * Azure SDK for .NET 2.5.1-es vagy újabb verzió, amely a [Microsoft Webplatform-telepítőn][Microsoft Webplatform-telepítőn] keresztül érhető el.
 
 A jelen cikk összes képernyőfelvétele az Update 4-es verzióval ellátott Visual Studio 2013 programmal és az Azure SDK for .NET 2.5.1-es verzióval készült. Ha a rendszere más verziókkal van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
+Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -78,6 +82,9 @@ Most, hogy már rendelkezik fiókkal, hozzuk létre az új ASP.NET projektet.
 5. A sablonok panelén válassza az **MVC** elemet.
 6. Ha az Azure rendszeren szeretné üzemeltetni az alkalmazást, jelölje be a bal alsó részen lévő **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget. Kiválasztottuk, hogy a felhőben üzemeltessük és egy Azure-webhelyről futtassuk az alkalmazást. Ezen lehetőség kiválasztásával egy Azure-webhelyet kap, és sokkal könnyebb lesz a dolga, amikor üzembe kell helyeznie a végleges, működő alkalmazást. Ha ezt máshol szeretné üzemeltetni vagy nem szeretné előre konfigurálni az Azure rendszert, akkor egyszerűen törölje a **Host in the Cloud** (Üzemeltetés a felhőben) lehetőséget.
 7. Kattintson az **OK** gombra, és várja meg, hogy a Visual Studio kialakítsa a szerkezetet az üres ASP.NET MVC sablonban. 
+
+    Ha a „Hiba történt a kérelem feldolgozása közben” hibaüzenet jelenik meg, tekintse meg a [Hibaelhárítás](#troubleshooting) című szakaszt.
+
 8. Ha úgy döntött, hogy ezt a felhőben üzemelteti, legalább egy további képernyőt lát, amely megkéri, hogy jelentkezzen be az Azure-fiókjába és adjon meg néhány értéket az új webhelyhez. Adja meg az összes további értéket, és folytassa. 
    
       Itt nem választottam „Adatbázis-kiszolgálót”, mert itt nem Azure SQL adatbázis-kiszolgálót használunk, hanem később hozunk létre új Azure DocumentDB-fiókot az Azure-portálon.
@@ -536,6 +543,25 @@ Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissa
 
 Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját!
 
+## <a name="a-nametroubleshootingatroubleshooting"></a><a name="Troubleshooting"></a>Hibaelhárítás
+
+Ha a „Hiba történt a kérelem feldolgozása közben” hibaüzenet jelenik meg a webalkalmazás üzembe helyezése során, tegye a következőket: 
+
+1. A Mégse gombra kattintva lépjen ki a hibaüzenetből, majd válassza ismét a **Microsoft Azure Web Apps** lehetőséget. 
+2. Jelentkezzen be, majd válassza az **Új** elemet új webalkalmazás létrehozásához. 
+3. A **Webalkalmazás létrehozása Microsoft Azure-ban** képernyőn tegye a következőket: 
+    
+    - Webalkalmazás neve: „todo-net-app”
+    - App Service-csomag: hozzon létre egy újat „todo-net-app” néven
+    - Erőforráscsoport: hozzon létre egy újat „todo-net-app” néven
+    - Régió: válassza az alkalmazás felhasználóihoz legközelebb eső régiót
+    - Adatbázis-kiszolgáló: kattintson a Nincs adatbázis elemre, majd a **Létrehozás** gombra. 
+
+4. A „todo-net-app * képernyőn” kattintson a **Kapcsolat ellenőrzése** elemre. A kapcsolat ellenőrzése után kattintson a **Közzététel* gombra*. 
+    
+    Az alkalmazás ekkor megjelenik a böngészőjében.
+
+
 ## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>Következő lépések
 Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubon][GitHubon]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 
@@ -543,13 +569,13 @@ Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [Documen
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Webplatform-telepítő]: http://www.microsoft.com/web/downloads/platform.aspx
+[Microsoft Webplatform-telepítőn]: http://www.microsoft.com/web/downloads/platform.aspx
 [Webhelyközi kérések hamisításának megakadályozása]: http://go.microsoft.com/fwlink/?LinkID=517254
 [Alapszintű CRUD műveletek az ASP.NET MVC-ben]: http://go.microsoft.com/fwlink/?LinkId=317598
-[GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
+[GitHubon]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

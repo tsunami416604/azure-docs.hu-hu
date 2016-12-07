@@ -1,7 +1,6 @@
 # [Áttekintés](media-services-overview.md)
 ## [Alapelvek](media-services-concepts.md)
 
-
 # Bevezetés
 ## [Fiók létrehozása és felügyelete](media-services-portal-create-account.md)
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
@@ -16,20 +15,18 @@
 
 # Útmutató
 ## Kezelés
-### [Streamvégpontok kezelése a portálon](media-services-portal-manage-streaming-endpoints.md)
+### Fiókok kezelése
+#### [PowerShell](media-services-manage-with-powershell.md)
+#### [REST](/rest/api/media/mediaservice)
 ### Entitások kezelése
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
-### [Fiókok kezelése a PowerShell-lel](media-services-manage-with-powershell.md)
-### [Videók körülvágása a Media Encoder Standarddel](media-services-crop-video.md)
-### [Útmutató: A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
-### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
-### Szűrők
-#### [Szűrők létrehozása az Azure Media Services .NET SDK-val](media-services-dotnet-dynamic-manifest.md)
-#### [Adategység kódolása a Media Encoder Standard használatával](media-services-rest-encode-asset.md)
 ### Programozott módon való kapcsolódás
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
+### [Streamvégpontok kezelése a portálon](media-services-portal-manage-streaming-endpoints.md)
+### [Útmutató: A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
+### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 
 ## Tartalom feltöltése
 ### Fájlok feltöltése egy fiókba
@@ -38,49 +35,74 @@
 #### [REST](media-services-rest-upload-files.md)
 ### [Meglévő blobok másolása](media-services-copying-existing-blob.md)
 
-## Kódolás
-### [Tartalom](media-services-encode-asset.md)
-#### Adategység kódolása a Media Encoder Standard használatával
+## [Tartalom kódolása](media-services-encode-asset.md)
+### [Kódolók összehasonlítása](media-services-compare-encoders.md)
+### [Hibakódok](media-services-encoding-error-codes.md)
+### Media Encoder Standard (MES)
+#### [Media Encoder Standard-formátumok és -kodekek](media-services-media-encoder-standard-formats.md)
+#### MES-sémák
+##### [Media Encoder Standard-séma](media-services-mes-schema.md)
+##### [Bemeneti metaadatok](media-services-input-metadata-schema.md)
+##### [Kimeneti metaadatok](media-services-output-metadata-schema.md)
+#### MES-beállításkészletek 
+##### [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
+##### [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
+##### [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
+##### [H264 Multiple Bitrate 16x9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md)
+##### [H264 Multiple Bitrate 16x9 for iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md)
+##### [H264 Multiple Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md)
+##### [H264 Multiple Bitrate 4K](media-services-mes-preset-H264-Multiple-Bitrate-4K.md)
+##### [H264 Multiple Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md)
+##### [H264 Multiple Bitrate 4x3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md)
+##### [H264 Multiple Bitrate 4x3 for iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md)
+##### [H264 Multiple Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md)
+##### [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md)
+##### [H264 Single Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md)
+##### [H264 Single Bitrate 1080p](media-services-mes-preset-H264-Single-Bitrate-1080p.md)
+##### [H264 Single Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md)
+##### [H264 Single Bitrate 16x9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md)
+##### [H264 Single Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md)
+##### [H264 Single Bitrate 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md)
+##### [H264 Single Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md)
+##### [H264 Single Bitrate 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md)
+##### [H264 Single Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md)
+##### [H264 Single Bitrate 720p](media-services-mes-preset-H264-Single-Bitrate-720p.md)
+##### [H264 Single Bitrate 720p for Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md)
+##### [H264 Single Bitrate High Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md)
+##### [H264 Single Bitrate Low Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md)
+#### Kódolás a Media Encoder Standard használatával
 ##### [Portál](media-services-portal-encode.md)
 ##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-#### [Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával](media-services-dotnet-generate-thumbnail-with-mes.md)
-#### [Speciális kódolás](media-services-advanced-encoding-with-mes.md)
+##### [REST](media-services-rest-encode-asset.md)
+#### [Speciális kódolás a MES használatával](media-services-advanced-encoding-with-mes.md)
+##### [Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával](media-services-dotnet-generate-thumbnail-with-mes.md)
+##### [Videók körülvágása a Media Encoder Standarddel](media-services-crop-video.md)
+### Media Encoder Premium-munkafolyamat
+#### [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
+#### Kódolás a Media Encoder Premium munkafolyamat használatával
 ##### [Media Encoder Premium-munkafolyamat](media-services-encode-with-premium-workflow.md)
 ##### [Oktatóanyagok a Media Encoder Premium-munkafolyamathoz](media-services-media-encoder-premium-workflow-tutorials.md)
 ##### [Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel](media-services-workflow-designer.md)
 ##### [Prémium munkafolyamat több bemenettel](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
-
-#### Sémák 
-#####[Media Encoder Standard](media-services-mes-schema.md)
-#####[Bemeneti metaadatok](media-services-input-metadata-schema.md)
-#####[Kimeneti metaadatok](media-services-output-metadata-schema.md)
-
-#### Régi kódolók
-##### [Az Azure Media Packager használata](media-services-static-packaging.md)
-
-### [Élő streamek](media-services-manage-channels-overview.md)
-#### [Helyszíni kódolók](media-services-live-streaming-with-onprem-encoders.md)
-#### Oktatóanyagok a helyszíni kódolókhoz
-##### [Portál](media-services-portal-live-passthrough-get-started.md)
-##### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [Élő stream a felhőalapú kódolóval](media-services-manage-live-encoder-enabled-channels.md)
-#### Oktatóanyagok a felhőalapú kódolókhoz
-##### [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
-##### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-#### [Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra](media-services-live-encoders-overview.md)
-#### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)
-#### [Specifikáció: darabolt MP4 élő feldolgozása](media-services-fmp4-live-ingest-overview.md)
-#### [Dinamikus csomagolás](media-services-dynamic-packaging-overview.md)
-
-### Médiafeldolgozás
+### Médiafeldolgozók
 #### [.NET](media-services-get-media-processor.md)
 #### [REST](media-services-rest-get-media-processor.md)
+### Elavult
+#### [Statikus csomagolás és titkosítás](media-services-static-packaging.md)
 
-### Kódolók konfigurálása egyféle sávszélességű élő streamhez
+## [Élő stream](media-services-manage-channels-overview.md)
+### [Helyszíni kódolók](media-services-live-streaming-with-onprem-encoders.md)
+### [Élő stream a felhőalapú kódolóval](media-services-manage-live-encoder-enabled-channels.md)
+### Oktatóanyagok a felhőalapú kódolókhoz
+#### [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
+#### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+### [Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra](media-services-live-encoders-overview.md)
 #### [Elemental Live kódoló](media-services-configure-elemental-live-encoder.md)
 #### [FMLE kódoló](media-services-configure-fmle-live-encoder.md)
 #### [NewTek TriCaster kódoló](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast kódoló](media-services-configure-wirecast-live-encoder.md)
+### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)
+### [Specifikáció: darabolt MP4 élő feldolgozása](media-services-fmp4-live-ingest-overview.md)
 
 ## [Védelem](media-services-content-protection-overview.md)
 ### [A tartalomvédelem konfigurálása a portálon](media-services-portal-protect-content.md)
@@ -106,14 +128,20 @@
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
 
 ## [Elemzés](media-services-analytics-overview.md)
+### [Média elemzése a portállal](media-services-portal-analyze.md)
 ### [Feldolgozás a 2. indexelővel](media-services-process-content-with-indexer2.md)
 ### [Feldolgozás az indexelővel](media-services-index-content.md)
 ### [Feldolgozása Hyperlapse használatával](media-services-hyperlapse-content.md)
 ### [Feldolgozás arcérzékelővel](media-services-face-and-emotion-detection.md)
 ### [Feldolgozás mozgásérzékelővel](media-services-motion-detection.md)
 ### [Feldolgozás az arcelrejtővel](media-services-face-redaction.md)
+#### [Útmutatás az arcelrejtőhöz](media-services-redactor-walkthrough.md)
 ### [Feldolgozás video-miniatűrökkel](media-services-video-summarization.md)
 ### [Feldolgozás OCR-rel](media-services-video-optical-character-recognition.md)
+
+## [Telemetria konfigurálása](media-services-telemetry-overview.md)
+###[.NET](media-services-dotnet-telemetry.md)
+###[REST](media-services-rest-telemetry.md)
 
 ## Méretezés
 ### [Médiafeldolgozás](media-services-scale-media-processing-overview.md)
@@ -124,6 +152,7 @@
 #### [Portál](media-services-portal-scale-streaming-endpoints.md)
 
 ## [Tartalom továbbítása](media-services-deliver-content-overview.md)
+### [Dinamikus csomagolás](media-services-dynamic-packaging-overview.md)
 ### [Szűrők és dinamikus jegyzékek áttekintése](media-services-dynamic-manifest-overview.md)
 ### Szűrők létrehozása
 #### [.NET](media-services-dotnet-dynamic-manifest.md)
@@ -162,30 +191,20 @@
 ## Hibaelhárítás
 ### [Gyakori kérdések](media-services-frequently-asked-questions.md)
 ### [Hibaelhárítási útmutató az élő streameléshez](media-services-troubleshooting-live-streaming.md)
-###[Hibakódok](media-services-error-codes.md)
-###[Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
+### [Hibakódok](media-services-error-codes.md)
+### [Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referencia
 ## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [.NET](media-services-dotnet-how-to-use.md)
 ## [REST](media-services-rest-how-to-use.md)
-## [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
-## [Media Encoder Standard-formátumok és -kodekek](media-services-media-encoder-standard-formats.md)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services-közösség](media-services-community.md)
+## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-
-
-
-
-
-
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

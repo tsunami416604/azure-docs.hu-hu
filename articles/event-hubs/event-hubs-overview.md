@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: df9897894a2a2a09735b0947fd335959e81a46cd
+ms.sourcegitcommit: f7f34994e85fee330c98f1d65700f4d0fd7b5fb8
+ms.openlocfilehash: d40f530c382f3918007a73246a4a9952b67240e1
 
 
 ---
@@ -146,8 +146,8 @@ Most, hogy megismerkedett az Event Hubshoz kapcsolódó fogalmakkal, továbblép
 * [Az Event Hubsot használó teljes mintaalkalmazás].
 
 [klasszikus Azure portál]: http://manage.windowsazure.com
-[Event Hubs – oktatóanyag]: event-hubs-csharp-ephcs-getstarted.md
-[Az Event Hubsot használó mintaalkalmazás]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
+[Event Hubs használatába oktatóanyag]: event-hubs-csharp-ephcs-getstarted.md
+[Az Event Hubsot használó teljes mintaalkalmazás]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 
 
 

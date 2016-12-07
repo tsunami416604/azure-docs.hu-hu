@@ -47,7 +47,7 @@
 ### [Párosított névterek](service-bus-paired-namespaces.md)
 ### [Entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
 ## Kezelés
-### [ARM-sablonok használata](service-bus-resource-manager-overview.md)
+### [Az Azure Resource Manager-sablonok használata](service-bus-resource-manager-overview.md)
 ### [A PowerShell használata entitások üzembe helyezésére](service-bus-powershell-how-to-provision.md)
 
 # Referencia
@@ -57,6 +57,10 @@
 ## [Kvóták](service-bus-quotas.md)
 ## [.NET](/dotnet/api/)
 ## [REST](/rest/api/servicebus/)
+## [SQLFilter szintaxis](service-bus-messaging-sql-filter.md)
+## [SQLRuleAction szintaxis](service-bus-messaging-sql-rule-action.md)
+## [AMQP1.0 protokoll – útmutató](service-bus-amqp-protocol-guide.md)
+### [AMQP 1.0 kérés-válasz alapú műveletek](service-bus-amqp-request-response.md)
 
 # Erőforrások
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
@@ -69,6 +73,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

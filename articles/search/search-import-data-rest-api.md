@@ -13,21 +13,22 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 10/27/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 340287e4a3331eba441bce7feb957f27aca38b2b
-
+ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
+ms.openlocfilehash: 02eebb8517183abbdbd500820d8c8beb57865ac5
 
 ---
+
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
 > [!div class="op_single_selector"]
+>
 > * [Áttekintés](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
 > * [REST](search-import-data-rest-api.md)
-> 
-> 
+>
+>
 
 Jelen cikk az Azure Search-indexbe történő adatimportálást mutatja be az [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) használatával.
 
@@ -35,7 +36,7 @@ A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](se
 
 A dokumentumok REST API használatával az indexbe történő küldéséhez egy HTTP POST kérést fog kiadni az index URL-címének végpontján. A HTTP-kérés törzse egy olyan JSON-objektum, amely tartalmazza a hozzáadni, módosítani vagy törölni kívánt dokumentumokat.
 
-## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Azonosítsa az Azure Search szolgáltatás rendszergazdai API-kulcsát
+## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Azonosítsa az Azure Search szolgáltatás rendszergazdai API-kulcsát
 Ha a REST API használatával HTTP-kérések kiadását végzi a szolgáltatáson, *mindegyik* API-kérésnek tartalmaznia kell az Ön által üzembe helyezett Search szolgáltatáshoz létrehozott API-kulcsot. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
@@ -65,9 +66,9 @@ A „value” tömbben található minden JSON-objektum egy-egy indexelendő dok
 Most, hogy összegyűjtötte az indexelési műveletekhez szükséges mezők értékeit, készen áll a tulajdonképpeni HTTP-kérés és a JSON-kérés törzsének létrehozására az adatok importálásához.
 
 #### <a name="request-and-request-headers"></a>Kérés és kérésfejlécek
-Az URL-címben meg kell majd adnia a szolgáltatás nevét, az index nevét (ami ebben az esetben „hotels”), valamint a megfelelő API-verziót (a jelen dokumentum kiadásakor érvényes API-verzió: `2015-02-28`). Meg kell határoznia a `Content-Type` és `api-key` kérésfejléceket is. Az utóbbi esetében használja a szolgáltatás rendszergazdai kulcsainak egyikét.
+Az URL-címben meg kell majd adnia a szolgáltatás nevét, az index nevét (ami ebben az esetben „hotels”), valamint a megfelelő API-verziót (a jelen dokumentum kiadásakor érvényes API-verzió: `2016-09-01`). Meg kell határoznia a `Content-Type` és `api-key` kérésfejléceket is. Az utóbbi esetében használja a szolgáltatás rendszergazdai kulcsainak egyikét.
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -160,8 +161,8 @@ Ha az indexelés legalább egy elem esetében meghiúsult, a rendszer a követke
 
 > [!NOTE]
 > Ez leggyakrabban azt jelenti, hogy a Search szolgáltatás terhelése elérte azt a pontot, amelytől kezdve az indexelési kérések `503` válaszokat adnak vissza. Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
-> 
-> 
+>
+>
 
 #### <a name="429"></a>429
 Az indexenkénti dokumentumszám-kvóta túllépésekor a rendszer a következő állapotkódot fogja visszaadni: `429`.
@@ -171,8 +172,8 @@ Ha az indexelés a kérésben szereplő összes elem esetében meghiúsult, a re
 
 > [!NOTE]
 > Ebben az esetben határozottan javasoljuk az ügyfélkód visszahívását és az újrapróbálkozás előtt egy kis várakozást. Ezzel a rendszer számára időt ad a helyreállításra, így a jövőbeni kérések nagyobb eséllyel lesznek sikeresek. A gyors újrapróbálkozásokkal csupán az adott szituációt állandósítja.
-> 
-> 
+>
+>
 
 További információk a dokumentumokkal végzett műveletekről, illetve a sikeres/meghiúsult műveletekre adott rendszerválaszokról: [Dokumentumok hozzáadása, frissítése vagy törlése](https://msdn.microsoft.com/library/azure/dn798930.aspx). További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
 
@@ -181,7 +182,6 @@ Az Azure Search-index feltöltését követően készen áll a dokumentumkeresé
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

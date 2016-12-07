@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 6fa8b353c47091c9b71173e98021117245cc6694
 
 
 ---
@@ -130,7 +130,7 @@ Minden erőforrás rendelkezésre áll a méretezési csoport konfigurálásáho
    
         $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
    
-    Ez a példa egy három virtuális géppel létrehozott méretezési csoportot mutat be. A méretezési csoportok kapacitásával kapcsolatos információkért lásd:[Virtuálisgép-méretezési csoportok áttekintése](virtual-machine-scale-sets-overview.md). Ez a lépés a csoportban található virtuális gépek méretének (más néven SkuName) a beállítását is magában foglalja. Az igényeinek megfelelő méret megtalálásához lásd: [Virtuális gépek méretei](../virtual-machines/virtual-machines-windows-sizes.md).
+    Ez a példa egy három virtuális géppel létrehozott méretezési csoportot mutat be. A méretezési csoportok kapacitásával kapcsolatos információkért lásd:[Virtuálisgép-méretezési csoportok áttekintése](virtual-machine-scale-sets-overview.md). Ez a lépés a csoportban található virtuális gépek méretének (más néven SkuName) a beállítását is magában foglalja. Az igényeinek megfelelő méret megtalálásához lásd: [Virtuális gépek méretei](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 5. Adja hozzá a hálózatiadapter-konfigurációt a méretezési csoporthoz:
    
         Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
@@ -172,7 +172,7 @@ Minden erőforrás rendelkezésre áll a méretezési csoport konfigurálásáho
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
    
-    További információ a használható egyéb rendszerképekről:[Azure virtuális gépek rendszerképeinek keresése és kiválasztása a Windows PowerShell és az Azure CLI használatával](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md).
+    További információ a használható egyéb rendszerképekről:[Azure virtuális gépek rendszerképeinek keresése és kiválasztása a Windows PowerShell és az Azure CLI használatával](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 3. Cserélje le a **$vhdContainers** értéket egy olyan listára, amely a virtuális merevlemezek tárolási helyére mutató elérési utakat tartalmazza (például „https://mystorage.blob.core.windows.net/vhds”), majd hozza létre a következő változót:
    
         $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")

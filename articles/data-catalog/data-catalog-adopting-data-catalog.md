@@ -16,8 +16,8 @@ ms.workload: data-catalog
 ms.date: 10/11/2016
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
+ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
+ms.openlocfilehash: 4c6a07c4b3597e357c520bcafde501bc0850e685
 
 
 ---
@@ -102,8 +102,8 @@ Az **adatfelhasználók** az üzleti problémák adatok felhasználásával tör
 
 Az egyik üzleti probléma, amelyet az **Azure Data Catalog** megold, az **adatalkotók** és az **adatfelhasználók** összeköttetése. Ennek érdekében egy központi tárolóként szolgál, amely a vállalati adatforrásokra vonatkozó információkat tartalmazza. David a Data Catalog használatával nyilvántartásba veszi az Adventure Works és az SQL Server adatforrásait. A közösségi forráshasználat keretében bárki, aki megtalálja ezt az adatforrást, felhasználhatja a benne található adatokat, valamint véleményt is nyilváníthat róluk. Nancy például a katalógusban való kereséssel megtalálja az adatforrásokat, és hozzájuk fűzve megosztja az adatokra vonatkozó szaktudását.  Innentől kezdve a szervezeten belül bárki hasznát veheti a megosztott tudásnak, egyszerűen azzal, hogy az adatkatalógusban keres.
 
-* Az adatforrások nyilvántartására vonatkozó további információkért lásd: [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources) (Adatforrások regisztrálása).
-* Az adatforrások felfedezésére vonatkozó további információkért lásd: [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets) (Adatforrások keresése).
+* Az adatforrások nyilvántartására vonatkozó további információkért lásd: [Register data sources](data-catalog-get-started.md) (Adatforrások regisztrálása).
+* Az adatforrások felfedezésére vonatkozó további információkért lásd: [Search data sources](data-catalog-get-started.md) (Adatforrások keresése).
 
 ### <a name="start-small-and-focused"></a>Apró kezdeti lépések és összpontosítás
 A legtöbb vállalati próbaprojekt esetében érdemes a katalógust nagy értékű adatforrásokkal feltölteni, hogy az üzleti felhasználók számára hamar láthatóvá váljon a Data Catalog értéke. Az informatikai részleg remek kezdőpont mindazon közös adatforrások azonosítására, amelyek hasznára lehetnek a próbacsapatnak. A támogatott adatforrások, mint például az SQL Server esetében javasoljuk az **Azure Data Catalog** adatforrás-regisztráló eszközének használatát. Az adatforrás-regisztráló eszközzel adatforrások széles köre regisztrálható, köztük az SQL Server- és Oracle-adatbázisok, illetve az SQL Server Reporting Services-jelentések is. A jelenlegi adatforrások teljes listájáért lásd: [Azure Data Catalog supported data sources](data-catalog-dsr.md) (Az Azure Data Catalog által támogatott adatforrások).
@@ -123,8 +123,8 @@ A kísérleti projekt keretében Nancy csapata olyan adatforrásokat is használ
 
 > [!NOTE]
 > Példaként írtunk egy eszközt, amely az **Azure Data Catalog** API használatával importál egy Excel-munkafüzetet a Data Catalog szolgáltatásba. A Data Catalog API-kkal és a példaeszközzel kapcsolatos további információkért [letöltheti az Ad Hoc munkafüzetkód-példát](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/), és átnézheti az [Azure Data Catalog REST API](https://msdn.microsoft.com/library/azure/mt267593.aspx) dokumentációját.
-> 
-> 
+>
+>
 
 Miután a próbaprojekt felállt, ideje végrehajtani a Data Catalog bevezetési tervét.
 
@@ -142,9 +142,9 @@ Néhány tipp az első lépések megtételéhez:
 Mielőtt a próbacsapat beleveti magát a Data Catalog használatába, szervezzen egy induló értekezletet, ahol részletezheti a projekttel szemben támasztott elvárásokat, és egy kezdeti oktatást is tarthat.
 
 ### <a name="set-expectations"></a>Az elvárások felállítása
-Az elvárások felállításával és célok kitűzésével az üzleti felhasználók könnyebben koncentrálnak megadott eredmények elérésére. A projekt előrehaladásának fenntartásához osszon ki rendszeres (a próbaterv méretétől és időtartamától függően napi, esetleg heti) házi feladatokat. A Data Catalog egyik legértékesebb tulajdonsága a közösségi adatforrás-használat lehetősége, amelynek köszönhetően az üzleti felhasználók vállalati adatokat használhatnak. Remek házi feladatnak bizonyulhat, ha a kísérleti csapat minden tagjának regisztrálnia kell, vagy megjegyzéssel kell ellátnia legalább egy adatforrást, amelyet felhasznált. Lásd: [Register a data source](data-catalog-get-started.md#exercise-2-registering-data-sources) (Adatforrások regisztrálása) és [How to annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources) (Adatforrások ellátása megjegyzésekkel).
+Az elvárások felállításával és célok kitűzésével az üzleti felhasználók könnyebben koncentrálnak megadott eredmények elérésére. A projekt előrehaladásának fenntartásához osszon ki rendszeres (a próbaterv méretétől és időtartamától függően napi, esetleg heti) házi feladatokat. A Data Catalog egyik legértékesebb tulajdonsága a közösségi adatforrás-használat lehetősége, amelynek köszönhetően az üzleti felhasználók vállalati adatokat használhatnak. Remek házi feladatnak bizonyulhat, ha a kísérleti csapat minden tagjának regisztrálnia kell, vagy megjegyzéssel kell ellátnia legalább egy adatforrást, amelyet felhasznált. Lásd: [Register a data source](data-catalog-get-started.md) (Adatforrások regisztrálása) és [How to annotate data sources](data-catalog-get-started.md) (Adatforrások ellátása megjegyzésekkel).
 
-Szervezzen a csoportnak rendszeres értekezleteket, amelyek során megbeszélnek bizonyos megjegyzéseket. A Data Catalog sikeres bevezetésének kulcsfontosságú tényezője az adatforrások hasznos megjegyzésekkel való ellátása, hogy a forrásokkal kapcsolatos hasznos észrevételek egy központi helyen elérhetők legyenek. Jó megjegyzések nélkül az adatforrások ismerete vállalati szinten szórványos marad. Lásd: [How to annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources) (Adatforrások ellátása megjegyzésekkel).
+Szervezzen a csoportnak rendszeres értekezleteket, amelyek során megbeszélnek bizonyos megjegyzéseket. A Data Catalog sikeres bevezetésének kulcsfontosságú tényezője az adatforrások hasznos megjegyzésekkel való ellátása, hogy a forrásokkal kapcsolatos hasznos észrevételek egy központi helyen elérhetők legyenek. Jó megjegyzések nélkül az adatforrások ismerete vállalati szinten szórványos marad. Lásd: [How to annotate data sources](data-catalog-get-started.md) (Adatforrások ellátása megjegyzésekkel).
 
 A projekt végső próbatétele természetesen az, hogy a felhasználók képesek-e megtalálni és értelmezni azon adatforrásokat, amelyeket fel kell használniuk. A próbaprojektben részt vevő felhasználóknak érdemes rendszeresen tesztelniük a katalógust, ezzel biztosítva, hogy a mindennapi munkájuk során használt adatforrások relevánsak legyenek. Ha egy szükséges adatforrás hiányzik, vagy nincs megfelelő megjegyzésekkel ellátva, az emlékeztetőként szolgálhat arra, hogy további adatforrásokat kell regisztrálni, vagy további megjegyzéseket kell megadni. Ez a gyakorlat nemcsak a próbaprojektet teszi sikeresebbé, de meg is alapozza a szokásokat, amelyek a próbaprojekt lezajlása után a többi csapatban is elterjednek.
 
@@ -162,11 +162,10 @@ Ez a cikk arról szólt, hogyan vezetheti be az **Azure Data Catalog** szolgált
 * [Az Azure Data Catalog termékoldala](https://azure.microsoft.com/services/data-catalog/)
 * [Az Azure Data Catalog dokumentációja](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Az Azure Data Catalog gyakori forgatókönyvei](data-catalog-common-scenarios.md)
-* [Adatforrások regisztrálása](data-catalog-get-started.md#exercise-2-registering-data-sources)
-* [Adatforrások keresése](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)
-* [Adatforrások ellátása megjegyzésekkel](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
-* [Metaadatok közösségi hozzáadása](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
-
+* [Adatforrások regisztrálása](data-catalog-get-started.md)
+* [Adatforrások keresése](data-catalog-get-started.md)
+* [Adatforrások ellátása megjegyzésekkel](data-catalog-get-started.md)
+* [Metaadatok közösségi hozzáadása](data-catalog-get-started.md)
 
 
 

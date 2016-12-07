@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 80001fda921c4504237b1c5e3812a84924814dfd
-ms.openlocfilehash: c0c908d2597c6570511d6a15ea3f1f48b2dab6c8
+ms.sourcegitcommit: a7f5894e445cad808f38195838376c620a6b5944
+ms.openlocfilehash: 87fab3c99228f127326609a3e614020a982192f0
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB-dokumentáció
@@ -71,7 +71,7 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -89,7 +89,7 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -107,7 +107,7 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -125,7 +125,7 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -143,11 +143,11 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>A DocumentDB első lépései egy Java JSP-alkalmazás használatával</h3>
+                        <h3>A DocumentDB első lépései egy Java JSP-alkalmazással</h3>
                     </div>
                 </div>
             </div>
@@ -161,11 +161,11 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>A DocumentDB első lépései egy Python Flask-webalkalmazással</h3>
+                        <h3>A DocumentDB első lépései egy Python Flask webalkalmazással</h3>
                     </div>
                 </div>
             </div>
@@ -176,18 +176,29 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
 
 ---
 
-##<a name="reference"></a>Referencia
-
-###<a name="net"></a>.NET
-[.NET-felügyelet – referencia](/dotnet/api)
+## <a name="reference"></a>Referencia
 
 ### <a name="java"></a>Java
-[Java SDK-referencia](/java/api)
+[Java SDK-referencia](http://azure.github.io/azure-documentdb-java)
 
-###<a name="rest"></a>REST
-[DocumentDB – REST API-referencia](https://msdn.microsoft.com/library/azure/dn781481)
+### <a name="net"></a>.NET
+[.NET-felügyelet – referencia](https://msdn.microsoft.com/library/azure/dn948556)
 
+### <a name="node"></a>Csomópont
+[Node SDK-referencia](http://azure.github.io/azure-documentdb-node/DocumentClient)
 
+### <a name="python"></a>Python
+[Python-referencia](http://azure.github.io/azure-documentdb-python/api/pydocumentdb)
+
+### <a name="sql"></a>SQL
+[SQL-referencia](https://msdn.microsoft.com/library/azure/dn782250)
+
+### <a name="rest"></a>REST
+[REST API-referencia](/rest/api/documentdb)
+
+[Erőforrás-szolgáltató API – referencia](/rest/api/documentdbresourceprovider)
+
+---
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/documentdb.pdf">
@@ -199,6 +210,6 @@ DocumentDB-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

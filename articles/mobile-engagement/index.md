@@ -1,11 +1,13 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 23e9c07934b0f4e74fa365de4c13fb978c8b6b84
+ms.openlocfilehash: b8268775b09c6b8b50f3f7e089b239240e95c516
+
 ---
-# Mobile Engagement Documentation
+# <a name="mobile-engagement-documentation"></a>Mobile Engagement – dokumentáció
 
-Azure Mobile Engagement is a service targeted specifically for digital marketers/CMOs but could be used by any mobile app owner or publisher who wants to increase the usage, retention and monetization of their mobile apps.
-
-It is a software-as-a-service (SaaS) user-engagement platform that provides data-driven insights into app usage, real-time user segmentation, and enables contextually-aware push notifications and in-app messaging.
+Az Azure Mobile Engagement egy szolgáltatott szoftverként (SaaS) biztosított felhasználóelérési platform, amely lehetővé teszi az alkalmazáshasználatba való adatvezérelt betekintést és a felhasználószegmentálást, valamint a leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -19,7 +21,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Mobile Engagement</h3>
+                        <h3>Tudnivalók a Mobile Engagementről</h3>
                     </div>
                 </div>
             </div>
@@ -33,11 +35,11 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Mobile Engagement Video Library</h3>
+                        <h3>Mobile Engagement – videótár</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +57,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for Andriod apps</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Android-alkalmazásokkal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +75,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for Cordova/Phonegap</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Cordova/Phonegap-alkalmazásokkal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +93,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for iOS apps in Objective C</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Objective C nyelven írt iOS-alkalmazásokkal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -109,7 +111,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for iOS Apps in Swift</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -127,7 +129,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for Unity Android deployment</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Unity Android üzemelő példánnyal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +147,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for Unity iOS deployment</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement Unity iOS üzemelő példánnyal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -163,7 +165,7 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Mobile Engagement for Windows Universal apps</h3>
+                        <h3>Ismerkedés az Azure Mobile Engagement univerzális Windows-alkalmazásokkal való használatával</h3>
                     </div>
                 </div>
             </div>
@@ -178,8 +180,13 @@ It is a software-as-a-service (SaaS) user-engagement platform that provides data
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/mobile-engagement.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Azure Mobile Engagement Documentation
-        </div>
+Mobile Engagement – dokumentáció letöltése </div>
     </a>
 </div>
+
+
+
+
+<!--HONumber=Nov16_HO4-->
+
 
