@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 5557dbef45d8599010a909635eebf399a5bcd2c8
 
 
 ---
@@ -71,7 +71,7 @@ A felügyeleti sík és az adatsík hozzáférés-vezérlése egymástól függe
 ## <a name="management-plane-access-control"></a>Felügyeleti sík hozzáférés-vezérlése
 A felügyelet sík olyan műveleteket tartalmaz, amelyek magára a kulcstartóra vannak hatással. Például létrehozhat vagy törölhet egy kulcstartót. Előfizetésben megkaphatja a tárolók listáját. Lehívhatja a kulcstartó tulajdonságait (például cikkszám, címkék), és beállíthatja a kulcstartóban lévő kulcsokhoz és titkos kulcsokhoz hozzáférő felhasználókat és alkalmazásokat vezérlő kulcstartó-hozzáférési házirendeket. A felügyeleti sík hozzáférés-vezérlése RBAC használatával történik. A felügyeleti síkon keresztül elvégezhető kulcstartó-műveletek teljes listáját az előző fejezet táblázatában találja. 
 
-### <a name="rolebased-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
+### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Ezen könyvtár valamennyi felhasználója, csoportja és alkalmazása hozzáférést kaphat Azure-előfizetése Azure Resource Manager-alapú üzemi modellt használó erőforrásainak kezeléséhez. Az ilyen típusú hozzáférés-vezérlést szerepköralapú hozzáférés-vezérlésnek (RBAC-nek) nevezzük. A hozzáférés az [Azure Portal](https://portal.azure.com/), az [Azure Parancssorifelület-eszközök](../xplat-cli-install.md), a [PowerShell](../powershell-install-configure.md) vagy az [Azure Resource Manager REST API-k](https://msdn.microsoft.com/library/azure/dn906885.aspx) használatával kezelhető.
 
 Az Azure Resource Manager modellel kulcstartót hozhat létre erőforráscsoporton belül, és az Azure Active Directory használatával vezérelheti e kulcstartó felügyeleti síkját. Lehetőséget adhat például felhasználóknak vagy egy csoportnak, hogy egy adott erőforráscsoport kulcstartóit kezeljék.
@@ -210,7 +210,7 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
 * [RBAC: Beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md)
   
   Ez a cikk az RBAC-ben elérhető összes beépített szerepkört ismerteti.
-* [A Resource Manager-alapú és a klasszikus üzembe helyezés ismertetése](../resource-manager-deployment-model.md)
+* [A Resource Manager-alapú és a klasszikus üzembe helyezés ismertetése](../azure-resource-manager/resource-manager-deployment-model.md)
   
   Ez a cikk a Resource Manager-alapú és a klasszikus üzembe helyezési modelleket ismerteti, és bemutatja az erőforrás-kezelő és az erőforráscsoportok használatának előnyeit
 * [Szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](../active-directory/role-based-access-control-manage-access-powershell.md)
@@ -253,6 +253,6 @@ Amennyiben a kulcstartóval kapcsolatban kérdése merülne fel, tekintse meg az
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

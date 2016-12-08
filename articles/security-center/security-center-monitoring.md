@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 5852808ad0f5cf02908df7ff969ab2106d9f5abd
 
 
 ---
@@ -192,7 +192,7 @@ Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi kép
 A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beállítását **ON** (BE) értékre.
 
 ### <a name="monitor-applications"></a>Alkalmazások figyelése
-Ha az Azure számítási feladatban felfedett webes portokkal (80-as és 443-as TCP-portok) működő (az Azure Resource Managerrel létrehozott) [virtuális gépeken](../resource-manager-deployment-model.md) található alkalmazások futnak, a Security Center képes ezeket is figyelni, azonosítani a potenciális biztonsági problémákat és megoldást javasolni. Az **Applications** (Alkalmazások) csempére kattintva megnyithatja az **Applications** (Alkalmazások) panelt, amelynek **Prevention steps** (Megelőzési lépések) szakaszában számos javaslat található. Emellett itt látható az alkalmazások állomásonkénti/virtuális IP-címenkénti lebontása is az alábbi képernyőfelvételnek megfelelően.
+Ha az Azure számítási feladatban felfedett webes portokkal (80-as és 443-as TCP-portok) működő (az Azure Resource Managerrel létrehozott) [virtuális gépeken](../azure-resource-manager/resource-manager-deployment-model.md) található alkalmazások futnak, a Security Center képes ezeket is figyelni, azonosítani a potenciális biztonsági problémákat és megoldást javasolni. Az **Applications** (Alkalmazások) csempére kattintva megnyithatja az **Applications** (Alkalmazások) panelt, amelynek **Prevention steps** (Megelőzési lépések) szakaszában számos javaslat található. Emellett itt látható az alkalmazások állomásonkénti/virtuális IP-címenkénti lebontása is az alábbi képernyőfelvételnek megfelelően.
 
 ![Alkalmazások biztonsági állapota](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -216,6 +216,6 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

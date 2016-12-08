@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
-ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
+ms.sourcegitcommit: 28222825d680ed7930dd1f2da46df28728c7c103
+ms.openlocfilehash: 48ff29e7abae511eb75aec8c1569ffdf5a57bc77
 
 
 ---
@@ -270,6 +270,8 @@ A Data Lake Analytics különböző eszközökkel való használatának megismer
 * [A Data Lake Analytics használatának első lépései a .NET SDK-val](data-lake-analytics-get-started-net-sdk.md)
 * [Hibakeresés a C#-kódban – U-SQL-feladatok](data-lake-analytics-debug-u-sql-jobs.md)
 
+A Data Lake Tools for Visual Studio kódolásának megismeréséhez lásd [az Azure Data Lake Tools for Visual Studio kód használatát](data-lake-analytics-data-lake-tools-for-vscode.md) ismertető cikket.
+
 További fejlesztői témakörökért lásd:
 
 * [Webes naplók elemzése a Data Lake Analytics segítségével](data-lake-analytics-analyze-weblogs.md)
@@ -350,6 +352,6 @@ A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

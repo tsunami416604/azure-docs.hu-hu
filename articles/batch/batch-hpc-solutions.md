@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 07/27/2016
+ms.date: 11/17/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a91c56d774ea81e175fa170e09b39548c6ae4d2
+ms.sourcegitcommit: 088d3d55a437165607e73ac2d6a3abe27e9b2639
+ms.openlocfilehash: 755fafcbc01e1da89d7ef3fa99b92da60c95bf8c
 
 
 ---
@@ -65,7 +65,7 @@ A Batch- és HPC-alkalmazások futtatásában általában egy *fürtkezelő* és
 * **Fürtkezelő** – Számítási erőforrások (vagy számítási csomópontok) kiépítésére, kibocsátására és felügyeletére szolgál. A fürtkezelők automatizálhatják az operációsrendszer-lemezképek és alkalmazások telepítését a számítási csomópontokra, igény szerint méretezhetik a számítási erőforrásokat, valamint megfigyelhetik a csomópontok teljesítményét.
 * **Feladatütemező** – Meghatározza az alkalmazások által igényelt erőforrásokat (például processzorokat vagy memóriát) és a futtatásuk feltételeit. A feladatütemezők fenntartják a feladatok várólistáját, és erőforrásokat foglalnak le a hozzájuk rendelt prioritás vagy egyéb jellemzők alapján.
 
-A Windows-alapú és Linux-alapú fürtök fürtkezelő és feladatütemező eszközei jó áttelepíthetők az Azure-ra. A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029), a Microsoft windowsos és linuxos HPC számítási feladatokhoz használható ingyenes számítási fürtkezelő megoldása például több lehetőséget nyújt az Azure-on való futtatáshoz. Linux-fürtöket is építhet nyílt forráskódú eszközök, például a Torque és a SLURM futtatásához. Emellett olyan kereskedelmi rács megoldásokat is hozzáadhat az Azure-hoz, mint a [TIBCO DataSynapse GridServer](http://www.tibco.com/company/news/releases/2016/tibco-to-accelerate-cloud-adoption-of-banking-and-capital-markets-customers-via-microsoft-collaboration), az [IBM Platform Symphony](http://www-01.ibm.com/support/docview.wss?uid=isg3T1023592) és az [Univa Grid Engine](http://www.univa.com/products/grid-engine).
+A Windows-alapú és Linux-alapú fürtök fürtkezelő és feladatütemező eszközei jó áttelepíthetők az Azure-ra. A [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029), a Microsoft windowsos és linuxos HPC számítási feladatokhoz használható ingyenes számítási fürtkezelő megoldása például több lehetőséget nyújt az Azure-on való futtatáshoz. Linux-fürtöket is építhet nyílt forráskódú eszközök, például a Torque és a SLURM futtatásához. Emellett olyan kereskedelmi rács-megoldásokat is hozzáadhat az Azure-hoz, mint a [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/), az [IBM Spectrum Symphony and Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/) és az [Univa Grid Engine](http://www.univa.com/products/grid-engine).
 
 A következő szakaszokban leírtak szerint az Azure-szolgáltatások segítségével hagyományos fürtkezelő eszközök nélkül (vagy mellett) is kezelhet számítási erőforrásokat és ütemezhet feladatokat.
 
@@ -87,10 +87,10 @@ Ebben a cikkben további információt talál a Big Compute-megoldások és -mun
 > 
 
 ### <a name="compute-services"></a>Számítási szolgáltatások
-Az Azure számítási szolgáltatások a Big Compute-megoldások fő elemei, és a különböző számítási szolgáltatások különböző forgatókönyvekhez nyújtanak előnyöket. Alapszinten ezek a szolgáltatások különböző módokat nyújtanak, amelyekkel az alkalmazások az Azure által a Windows Server Hyper-V technológiával biztosított virtuálisgép-alapú számítási példányokon futhatnak. Ezek a példányok szabványos és egyéni Linux és Windows operációs rendszereket és eszközöket futtathatnak. Az Azure különböző [példányméreteket](../virtual-machines/virtual-machines-windows-sizes.md) tesz elérhetővé a processzormagok, memória, lemezkapacitás és más jellemzők különböző konfigurációival. Az igényei alapján a példányokat több ezer magra is méretezheti, majd csökkentheti a méretüket, amikor kevesebb erőforrásra van szüksége.
+Az Azure számítási szolgáltatások a Big Compute-megoldások fő elemei, és a különböző számítási szolgáltatások különböző forgatókönyvekhez nyújtanak előnyöket. Alapszinten ezek a szolgáltatások különböző módokat nyújtanak, amelyekkel az alkalmazások az Azure által a Windows Server Hyper-V technológiával biztosított virtuálisgép-alapú számítási példányokon futhatnak. Ezek a példányok szabványos és egyéni Linux és Windows operációs rendszereket és eszközöket futtathatnak. Az Azure különböző [példányméreteket](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tesz elérhetővé a processzormagok, memória, lemezkapacitás és más jellemzők különböző konfigurációival. Az igényei alapján a példányokat több ezer magra is méretezheti, majd csökkentheti a méretüket, amikor kevesebb erőforrásra van szüksége.
 
 > [!NOTE]
-> Az Azure számításigényes példányainak használatával növelheti a HPC számítási feladatok, például a kis késést és nagy teljesítményű alkalmazáshálózatot igénylő párhuzamos MPI-alkalmazások teljesítményét és méretezhetőségét. Lásd: [About H-series and compute-intensive A-series VMs](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) (Tudnivalók a H-sorozatú és a nagy számítási igényű A-sorozatú virtuális gépekről).  
+> Az Azure [számításigényes példányai, például a H-sorozat](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával növelheti a HPC számítási feladatainak teljesítményét és méretezhetőségét. Ezek a példányok támogatják a párhuzamos MPI-alkalmazásokat is, amelyekhez alacsony késésű és nagy átviteli kapacitású alkalmazáshálózat szükséges. Emellett elérhetőek az [N-sorozat](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/) NVIDIA GPU-kkal szerelt virtuális gépei, amelyek kiterjesztik az Azure-ban lehetséges számítási és vizualizációs forgatókönyvek tárházát.  
 > 
 > 
 
@@ -124,7 +124,7 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 
 ## <a name="next-steps"></a>Következő lépések
 * Műszaki útmutatás a megoldás felépítéséhez: [Műszaki forrásanyagok a Batch- és HPC-eszközökhöz](big-compute-resources.md).
-* Beszélje meg az Azure-lehetőségeket a partnerekkel, a Cycle Computingot és az UberCloudot is beleértve.
+* Beszélje meg az Azure-lehetőségeket az olyan partnerekkel is, mint a Cycle Computing, a Rescale és az UberCloud.
 * Olvasson a [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222), [Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/), [ANSYS](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/) és [d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) által készített Azure Big Compute-megoldásokról.
 * A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 
@@ -137,6 +137,6 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

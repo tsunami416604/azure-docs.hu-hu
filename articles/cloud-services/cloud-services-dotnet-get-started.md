@@ -12,20 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 06/10/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: a3fc284a436173f1a1debc205a83d55cc1869b32
+ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
+ms.openlocfilehash: 81fd8f40d8f939e68fbe2cf9ef7b413073a8c363
 
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
-> [!div class="op_single_selector"]
-> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
-> * [.NET](cloud-services-dotnet-get-started.md)
->
->
 
 ## <a name="overview"></a>Áttekintés
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279) szolgáltatást, az [Azure Blob szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
@@ -415,7 +410,7 @@ Az alábbi szakaszok az Azure-környezetek, -blobok és -üzenetsorok használat
 * [Bevezetés az EF 6 és az MVC 5 használatába](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
 * [Bevezetés az aszinkron programozásba a .NET 4.5 rendszerben](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
 
-### <a name="contosoadscommon-adcs"></a>ContosoAdsCommon – Ad.cs
+### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon – Ad.cs
 Az Ad.cs fájl megad egy felsorolást a kategóriákhoz és egy POCO entitásosztályt a hirdetés információihoz.
 
 ```csharp
@@ -459,7 +454,7 @@ public class Ad
 }
 ```
 
-### <a name="contosoadscommon-contosoadscontextcs"></a>ContosoAdsCommon – ContosoAdsContext.cs
+### <a name="contosoadscommon---contosoadscontextcs"></a>ContosoAdsCommon – ContosoAdsContext.cs
 A ContosoAdsContext osztály megadja, hogy az Ad osztály egy DbSet gyűjteményben lesz használva, amelyet az Entity Framework egy SQL-adatbázisban tárol.
 
 ```csharp
@@ -478,7 +473,7 @@ public class ContosoAdsContext : DbContext
 
 Az osztály két konstruktorral rendelkezik. Az elsőt a webes projekt használja, és a Web.config fájlban tárolt kapcsolati karakterlánc nevét adja meg. A második konstruktor lehetővé teszi a tényleges kapcsolati karakterlánc megadását. Erre a feldolgozói szerepkör-projektnek van szüksége, mivel nem rendelkezik Web.config fájllal. Korábban már látta a kapcsolati karakterlánc tárolásának helyét, a későbbiekben pedig láthatja, hogyan kérdezi le a kód a kapcsolati karakterláncot, amikor elindítja a DbContext osztályt.
 
-### <a name="contosoadsweb-globalasaxcs"></a>ContosoAdsWeb – Global.asax.cs
+### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb – Global.asax.cs
 Az `Application_Start` metódusból meghívott kód létrehoz egy *képek* blobtárolót és egy *képek* üzenetsort, amennyiben még nem léteznek. Ez biztosítja, hogy valahányszor új tárfiókot kezd használni, vagy egy új számítógépen használja a Storage Emulatort, a szükséges blobtároló és üzenetsor automatikusan létrejöjjön.
 
 A kód a *.cscfg*-fájlból származó tárolási kapcsolati karakterlánc használatával fér hozzá a tárfiókhoz.
@@ -511,10 +506,10 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb-layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
+### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
 A *_Layout.cshtml* fájl beállítja az alkalmazás nevét a fejlécben és a láblécben, és létrehoz egy „Ads” menübejegyzést.
 
-### <a name="contosoadsweb-viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
+### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
 A *Views\Home\Index.cshtml* fájl kategóriahivatkozásokat jelenít meg a kezdőlapon. A hivatkozások átadják a `Category` felsorolás egy lekérdezési karakterlánc változóban lévő egész számú értékét az Ads indexlapnak.
 
 ```razor
@@ -524,7 +519,7 @@ A *Views\Home\Index.cshtml* fájl kategóriahivatkozásokat jelenít meg a kezd�
 <li>@Html.ActionLink("All", "Index", "Ad", null, null)</li>
 ```
 
-### <a name="contosoadsweb-adcontrollercs"></a>ContosoAdsWeb – AdController.cs
+### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
 Az *AdController.cs* fájlban lévő konstruktor meghívja az `InitializeStorage` metódust az Azure Storage ügyfélkódtár objektumainak létrehozásához, amelyek egy API-t biztosítanak a blobok és az üzenetsorok használatához.
 
 Ezután a kód lekér egy hivatkozást a *képek* blobtárolóra, ahogy azt korábban a *Global.asax.cs* esetében is láthatta. Mindeközben beállít egy webalkalmazásokhoz használható alapértelmezett [újrapróbálkozási házirendet](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling). Az alapértelmezett exponenciális leállítási újrapróbálkozási házirend egy átmeneti hiba miatti ismételt próbálkozás esetén egy percnél hosszabb időre állíthatja le a webalkalmazást. Az itt megadott újrapróbálkozási házirend minden próbálkozás után 3 másodpercet vár, legfeljebb három alkalommal.
@@ -621,7 +616,7 @@ private static async Task DeleteAdBlobAsync(Uri blobUri)
 }
 ```
 
-### <a name="contosoadsweb-viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb – Views\Ad\Index.cshtml és Details.cshtml
+### <a name="contosoadsweb---viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb – Views\Ad\Index.cshtml és Details.cshtml
 Az *Index.cshtml* fájl a hirdetés többi adatát tartalmazó miniatűrt jelenít meg.
 
 ```razor
@@ -634,7 +629,7 @@ A *Details.cshtml* fájl a teljes méretű képet jeleníti meg.
 <img src="@Html.Raw(Model.ImageURL)" />
 ```
 
-### <a name="contosoadsweb-viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb – Views\Ad\Create.cshtml és Edit.cshtml
+### <a name="contosoadsweb---viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb – Views\Ad\Create.cshtml és Edit.cshtml
 A *Create.cshtml* és az *Edit.cshtml* fájlok megadják az űrlap kódolását, amely lehetővé teszi a vezérlő számára a `HttpPostedFileBase` objektum lekérését.
 
 ```razor
@@ -647,7 +642,7 @@ Egy `<input>` elem jelzi a böngészőnek, hogy biztosítson egy fájlkiválaszt
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
-### <a name="contosoadsworker-workerrolecs-onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – OnStart metódus
+### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – OnStart metódus
 A feldolgozói szerepkör indulásakor az Azure feldolgozóiszerepkör-környezet meghívja a `WorkerRole` osztályban lévő `OnStart` metódust, az `OnStart` metódus befejezésekor pedig a `Run` metódust.
 
 Az `OnStart` metódus lekéri az adatbázis-kapcsolati karakterláncot a *.cscfg*-fájlból, és átadja az Entity Framework DbContext osztálynak. Alapértelmezés szerint az SQLClient szolgáltató van használatban, így azt nem kell megadni.
@@ -659,7 +654,7 @@ db = new ContosoAdsContext(dbConnString);
 
 Ezután a metódus lekér egy hivatkozást a tárfiókra, valamint létrehozza a blobtárolót és az üzenetsort, ha azok még nem léteznek. Az ehhez tartozó kód hasonló ahhoz, amelyet a webes szerepkör `Application_Start` metódusában látott.
 
-### <a name="contosoadsworker-workerrolecs-run-method"></a>ContosoAdsWorker – WorkerRole.cs – Run metódus
+### <a name="contosoadsworker---workerrolecs---run-method"></a>ContosoAdsWorker – WorkerRole.cs – Run metódus
 A `Run` metódus az `OnStart` metódus inicializálási feladatának befejezése után lesz meghívva. A metódus elindít egy végtelen ciklust, amely az üzenetsor új üzeneteit figyeli, és a beérkezésükkor feldolgozza azokat.
 
 ```csharp
@@ -777,6 +772,6 @@ További információkért lásd a következőket:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

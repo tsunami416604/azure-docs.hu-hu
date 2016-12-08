@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23d68a523fa9a79d2b5154eef04a5f6e706bdeb2
+ms.sourcegitcommit: 1c603d37735bbbfdfaaf4a191e2ad1ce6ff5b2b7
+ms.openlocfilehash: 67f3e923680a9a2f399c0839d2ec11ef4615da00
 
 
 ---
@@ -37,12 +38,12 @@ Számos vállalkozás és alkalmazás számára elegendő az, ha adatbázisokat 
 
 Az SQL Database [rugalmas készletei](sql-database-elastic-pool.md) megoldást jelentenek erre a problémára. A koncepció egyszerű. A készlethez lefoglalhat egy bizonyos teljesítményt, és nem egy önálló adatbázis teljesítményéért, hanem a készlet közös teljesítményéért fizet. Az adatbázis teljesítményét így nem szükséges felfelé vagy lefelé skáláznia. Az adatbáziskészlet úgynevezett *rugalmas adatbázisainak* fel- és leskálázása szükség szerint automatikusan megtörténik. A rugalmas adatbázisok használják az adatbáziskészlethez hozzárendelt teljesítményt, de nem lépik túl az adatbáziskészlet teljesítménykorlátait, így költségei előre jelezhetők még akkor is, ha az adatbázis-használat nem jelezhető előre. Ráadásul [adatbázisokat adhat hozzá a készlethez, és távolíthat el a készletből](sql-database-elastic-pool-manage-portal.md), így előre jelezhető költségek mellett néhány adatbázisról több ezer adatbázisra skálázhatja fel alkalmazását. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
-Akár az önálló adatbázist, akár a rugalmas adatbáziskészletet választja, a későbbiekben is sok mindent megváltoztathat. Az önálló adatbázisokat rugalmas adatbáziskészletekkel kombinálhatja, továbbá módosíthatja az önálló adatbázisok és az adatbáziskészletek szolgáltatásszintjét újszerű kialakítások létrehozásához. Ezenkívül az Azure teljesítménye és elérése révén modern alkalmazástervezési igényeinek kielégítése, a költségek és az erőforrások hatékonyságának irányítása, valamint az új üzleti lehetőségek kiaknázása érdekében tetszés szerint kombinálhatja az Azure-szolgáltatásokat SQL Database adatbázisokkal.
+Akár az önálló adatbázist, akár a rugalmas adatbáziskészletet választja, a későbbiekben is sok mindent megváltoztathat. Az önálló adatbázisokat rugalmas adatbáziskészletekkel kombinálhatja, továbbá gyorsan és egyszerűen módosíthatja az önálló adatbázisok és az adatbáziskészletek szolgáltatásszintjét, hogy mindig az adott helyzethez tudjon igazodni. Az Azure sokoldalúságának és széles körű alkalmazhatóságának köszönhetően tetszés szerint kombinálhatja az Azure-szolgáltatásokat SQL Database adatbázisokkal, így kielégíthetők az egyedi, modern alkalmazástervezési igények, növelhető a költség- és erőforrás-hatékonyság, és új üzleti lehetőségek tárhatók fel.
 
-Hogyan hasonlítható össze az adatbázisok és adatbáziskészletek relatív teljesítménye? Hogyan lehet megállapítani a fel- és leskálázás megfelelő mértékét? A válasz az önálló adatbázisok adatbázis-tranzakciós egységei (DTU-k) és a rugalmas adatbázisok, illetve adatbáziskészletek rugalmas adatbázis-tranzakciós egységei (eDTU-k) alapján adható meg. A részletekért olvassa el [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md) című részt.
+Hogyan hasonlítható össze az adatbázisok és adatbáziskészletek relatív teljesítménye? Hogyan lehet megállapítani a fel- és leskálázás megfelelő mértékét? A válasz az önálló adatbázisok esetében a DTU-kon, rugalmas adatbázisok és adatbáziskészletek esetében pedig az eDTU-kon alapuló teljesítmény-értékeléssel kombinált, beépített teljesítményfigyelő és riasztási eszközökben rejlik. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. A részletekért olvassa el [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md) című részt.
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az SQL-adatbázisok használatakor élvezheti a beépített adatvédelem és hibatűrés előnyeit, amelyeket egyébként külön kellene megterveznie, megvásárolnia, kiépítenie és kezelnie. Üzleti igényeitől függően kiegészítő védelmi rétegeket is igényelhet, hogy katasztrófa, hiba vagy más probléma esetén biztosítva legyen az alkalmazás gyors helyreállítása és az üzletmenet folytonossága. Az SQL Database minden egyes szolgáltatásszintje különböző funkcióválasztékot kínál, amelyeket tetszés szerint üzembe helyezhet és futtathat. Az időponthoz kötött visszaállítás segítségével az adatbázist visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba. Ezenkívül ha az adatbázisokat üzemeltető adatközpontban szolgáltatáskimaradás történik, az adatbázis-replikákra egy másik régióba történő feladatátvételt kérhet. A replikákat frissítheti, vagy áthelyezheti más régiókba.
+Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az SQL-adatbázisok használatakor élvezheti a beépített biztonság, hibatűrés és adatvédelem előnyeit, amelyeket egyébként külön kellene megvásárolnia vagy megterveznie, kiépítenie és kezelnie. Üzleti igényeitől függően kiegészítő védelmi rétegeket is igényelhet, hogy katasztrófa, hiba vagy más probléma esetén gondoskodni tudjon az alkalmazás gyors helyreállításáról és az üzletmenet folytonosságáról. Az SQL Database minden egyes szolgáltatásszintje az üzletmenet folytonosságát biztosító szolgáltatások és lehetőségek átfogó készletét kínálja, amelyeket tetszés szerint futtathat és helyezhet üzembe. Az időponthoz kötött visszaállítás segítségével az adatbázist visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba. Ha az adatbázisokat üzemeltető adatközpontban szolgáltatáskimaradás következik be, visszaállíthatja az adatbázisokat a legújabb biztonsági mentések georedundáns példányaiból, vagy feladatátvételt kezdeményezhet más régiókban található adatbázis-replikákra. A replikákat frissítéshez és ás régiókba történő áthelyezéshez is használhatja.
 
 ![Az SQL Database georeplikációja](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
@@ -59,11 +60,9 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 * Első lépésként [Hozza létre első adatbázisát](sql-database-get-started.md).
 * [Kapcsolódás és lekérdezés SSMS alkalmazásával](sql-database-connect-query-ssms.md)
 * Hozza létre első alkalmazását C#, Java, Node.js, PHP, Python vagy Ruby programozási nyelven: [Adatkapcsolattárak SQL Database és SQL Server használatához](sql-database-libraries.md)
-* Nézze meg az [Azure SQL Database szolgáltatás összes témakörére](sql-database-index-all-articles.md) vonatkozó címmutatót és leírásokat.
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

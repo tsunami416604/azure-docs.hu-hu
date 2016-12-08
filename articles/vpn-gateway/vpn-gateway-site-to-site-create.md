@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
 
 
 ---
-# <a name="create-a-vnet-with-a-sitetosite-connection-using-the-azure-classic-portal"></a>Virtuális hálózat létrehozása helyek közötti kapcsolattal a klasszikus Azure portál használatával
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-classic-portal"></a>Virtuális hálózat létrehozása helyek közötti kapcsolattal a klasszikus Azure portál használatával
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -33,7 +33,7 @@ Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálóza
 
 ![Helyek közötti diagram](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
 
-### <a name="deployment-models-and-methods-for-sitetosite-connections"></a>Üzembe helyezési modellek és módszerek a helyek közötti kapcsolatokhoz
+### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>Üzembe helyezési modellek és módszerek a helyek közötti kapcsolatokhoz
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
 A helyek közötti konfigurációkhoz elérhető üzemi modellek és módszerek az alábbi táblázatban láthatók. Amint a konfigurációs lépeseket tartalmazó cikk elérhetővé válik, egy arra mutató közvetlen hivatkozás szerepel majd ebben a táblázatban.
@@ -48,7 +48,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 * Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie valakivel, aki ezeket az adatokat megadhatja Önnek.
 * Egy kifelé irányuló, nyilvános IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
 ## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>A virtuális hálózat létrehozása
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com/).
@@ -68,7 +68,7 @@ Adja meg a következő információkat, és a továbblépéshez kattintson a job
 * **Helyek közötti VPN konfigurálása**: Jelölje be a **Helyek közötti VPN konfigurálása** jelölőnégyzetet.
 * **Helyi hálózat**: A helyi hálózat a helyszíni fizikai helyet jelenti. Választhat egy korábban létrehozott helyi hálózatot, vagy létrehozhat egy új helyi hálózatot. Ha azonban egy korábban létrehozott helyi hálózat használata mellett dönt, lépjen a **Helyi hálózatok** konfigurációs lapra, és ellenőrizze, hogy a VPN-eszköz IP-címe (nyilvános IPv4-cím) helyes-e.
 
-## <a name="a-nameconnectivityasitetosite-connectivity-page"></a><a name="Connectivity"></a>Helyek közötti kapcsolat lap
+## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>Helyek közötti kapcsolat lap
 Ha egy új helyi hálózatot hoz létre, megjelenik a **Helyek közötti kapcsolat** lap. Ha egy korábban létrehozott helyi hálózatot kíván használni, ez a lap nem jelenik meg a varázslóban, így továbbléphet a következő szakaszra.
 
 Adja meg az alábbi információkat, és kattintson a Tovább nyílra.
@@ -97,11 +97,11 @@ Kattintson a lap alján található pipára. Ekkor megkezdődik a virtuális há
 Konfigurálja a virtuális hálózati átjárót a biztonságos helyek közötti kapcsolat létrehozásához. Lásd: [Virtuális hálózati átjáró konfigurálása a klasszikus Azure portálon](vpn-gateway-configure-vpn-gateway-mp.md).
 
 ## <a name="next-steps"></a>Következő lépések
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd a [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)-dokumentációt.
+ Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -3,8 +3,8 @@ title: "Belső terheléselosztó létrehozása az Azure parancssori felület has
 description: "Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 5d1d0f59080827bde2ba9cdd825ba8c498f33751
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: b65d386af78847b7994f7df0b379e30d3e35618c
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 5d1d0f59080827bde2ba9cdd825ba8c498f33751
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](load-balancer-get-started-ilb-arm-cli.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](load-balancer-get-started-ilb-arm-cli.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -89,7 +89,7 @@ A kimenet például a következő lehet:
     info:    service internal-load-balancer list command OK
 
 
-## <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2. lépés
 
 A belső terheléselosztó készlet konfigurálását az első végpont hozzáadásakor kell elvégezni. Ebben a lépésben a végpontot, a virtuális gépet és a mintavételi portot társítja a belső terheléselosztó készlethez.
 
@@ -97,7 +97,7 @@ A belső terheléselosztó készlet konfigurálását az első végpont hozzáad
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
 ```
 
-## <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3. lépés
 
 Ellenőrizze a terheléselosztó konfigurációját a következő használatával: `azure vm show` *virtuális gép neve*
 
@@ -182,6 +182,6 @@ További információ: `azure vm endpoint --help`.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

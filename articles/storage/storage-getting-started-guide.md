@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 11/17/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 369e45ed8303735976813c1224ce74842f886536
+ms.sourcegitcommit: 1a6d1497dee72a49705e15bd2907a42f744bd3b5
+ms.openlocfilehash: 8b32412b2dcfb20f3cb1f858fa4ae4230d72c7cd
 
 
 ---
@@ -47,10 +47,9 @@ Ha már van fiókja, létrehozhat egy egyszerű Azure Storage-alkalmazást az eg
 3. Az **Új projekt** párbeszédpanelen kattintson a **Telepített** > **sablonok** > **Visual C#** > **Felhő** > **QuickStarts** (Gyors üzembe helyezések) > **Data Services** (Adatszolgáltatások) elemre.
     a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
     b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
-   
-   * 3.c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
+    c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
      
-     ![Azure gyors üzembe helyezések][Image1]
+    ![Azure gyors üzembe helyezések][Image1]
 
 Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A kód felülvizsgálatához válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Ezután kattintson duplán a Program.cs fájlra.
 
@@ -59,7 +58,10 @@ A következő lépésben futtassa a mintaalkalmazást:
 1. Válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Nyissa meg az App.config fájlt, és tegye megjegyzésbe az Azure Storage Emulator kapcsolati karakterláncát:
    
    `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
-2. Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hívóbetűjét: `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
+
+2. Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hozzáférési kulcsát:
+   
+   `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
    
    A tárfiók elérési kulcsának lekéréséhez lásd: [Manage your storage access keys](storage-create-storage-account.md#manage-your-storage-access-keys) (A tárfiókok hívóbetűinek kezelése).
 3. Miután az App.config fájlban megadta a tárfiók nevét és hívóbetűjét, a **Fájl** menüben kattintson **Az összes mentése** elemre az összes projektfájl mentéséhez.
@@ -79,6 +81,7 @@ A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egy
     c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
    
     ![Azure gyors üzembe helyezések][Image1]
+
 4. Válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Nyissa meg az App.config fájlt, és ha már felvett egy Azure-tárfiókot, akkor tegye megjegyzésbe a kapcsolati karakterláncát. Ezután állítsa vissza az Azure Storage Emulator kapcsolati karakterláncát:
    
    `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
@@ -109,6 +112,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

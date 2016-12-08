@@ -7,7 +7,7 @@ author: rgardler
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure, dcos, swarm, kubernetes, azure container service, acs"
 ms.assetid: 696a736f-9299-4613-88c6-7177089cfc23
 ms.service: container-service
 ms.devlang: na
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
+ms.sourcegitcommit: a7d957fd4be4c823077b1220dfb8ed91070a0e97
+ms.openlocfilehash: d056b9489eba1f97e8fb87f231b03d104c4cab66
 
 
 ---
 # <a name="deploy-an-azure-container-service-cluster"></a>Azure  tárolószolgáltatás-fürt üzembe helyezése
-Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt forráskódú tárolófürtözési és vezénylési megoldásokat. Az Azure tárolószolgáltatás lehetővé teszi, hogy DC/OS- és Docker Swarm-fürtöket helyezzen üzembe Azure Resource Manager-sablonok vagy az Azure portál használatával. A fürtöket az Azure virtuálisgép-skálázási készleteivel helyezheti üzembe. A fürtök igénybe vehetik az Azure hálózati és tárolási szolgáltatásait. Az Azure tárolószolgáltatás eléréséhez Azure-előfizetés szükséges. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
+Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt forráskódú tárolófürtözési és vezénylési megoldásokat. Az Azure Container Service lehetővé teszi, hogy DC/OS-, Kubernetes- és Docker Swarm-fürtöket helyezzen üzembe Azure Resource Manager-sablonok vagy az Azure portál használatával. A fürtöket az Azure virtuálisgép-skálázási készleteivel helyezheti üzembe. A fürtök igénybe vehetik az Azure hálózati és tárolási szolgáltatásait. Az Azure tárolószolgáltatás eléréséhez Azure-előfizetés szükséges. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
 
 E dokumentum részletes útmutatása alapján üzembe helyezhet egy Azure tárolószolgáltatás-fürtöt az [Azure portál](#creating-a-service-using-the-azure-portal), az [Azure parancssori felülete (CLI)](#creating-a-service-using-the-azure-cli) vagy az [Azure PowerShell modul](#creating-a-service-using-powershell) használatával.  
 
@@ -52,15 +52,21 @@ Válassza ki a vezénylés típusát. A következő lehetőségek közül válas
 
 * **DC/OS**: DC/OS fürt üzembe helyezése.
 * **Swarm**: Docker Swarm-fürt üzembe helyezése.
+* **Kubernetes**: Kubernetes-fürt üzembe helyezése.
 
 Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
-![4. üzemelő példány létrehozása](media/acs-portal4.png)  <br />
+![4. üzemelő példány létrehozása](media/acs-portal4-new.png)  <br />
+
+Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját és az egyszerű szolgáltatás titkos ügyfélkulcsát.
+Az egyszerű szolgáltatások létrehozásáról bővebb információt [ezen](https://github.com/Azure/acs-engine/blob/master/docs/serviceprincipal.md) az oldalon talál 
+
+![4.5. üzemelő példány létrehozása](media/acs-portal10.PNG)  <br />
 
 Adja meg a következő információkat:
 
-* **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben.
-* **Ügynökök száma**: a Docker Swarm esetében ez lesz az ügynökök kezdeti száma az ügynökskálázási készletben. A DC/OS esetében ez lesz az ügynökök kezdeti száma a privát skálázási készletekben. Ezenkívül létrejön egy nyilvános méretkészlet, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát az határozza meg, hogy hány főkiszolgáló jött létre a fürtön. Egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
+* **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben. Ha a „Kubernetes” lehetőséget választotta, a főkiszolgálók száma alapértelmezés szerint 1
+* **Ügynökök száma**: a Docker Swarm és a Kubernetes esetében ez lesz az ügynökök kezdeti száma az ügynökskálázási készletben. A DC/OS esetében ez lesz az ügynökök kezdeti száma a privát skálázási készletekben. Ezenkívül létrejön egy nyilvános méretkészlet, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát az határozza meg, hogy hány főkiszolgáló jött létre a fürtön. Egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
 * **Ügynök-virtuálisgép mérete**: az ügynök-virtuálisgépek mérete.
 * **DNS-előtag**: globálisan egyedi név, amely a szolgáltatás teljes tartományneveiben a főrész előtagja lesz.
 
@@ -85,10 +91,11 @@ Az üzembe helyezés befejezése után az Azure tárolószolgáltatás-fürt has
 ## <a name="create-a-service-by-using-the-azure-cli"></a>Szolgáltatáspéldány létrehozása az Azure CLI használatával
 Az Azure tárolószolgáltatás-példány parancssorban történő létrehozásához Azure előfizetésre van szükség. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Ezen felül [telepítenie](../xplat-cli-install.md) és [konfigurálnia](../xplat-cli-connect.md) kell az Azure CLI-t is.
 
-DC/OS- vagy Docker Swarm-fürt üzembe helyezéséhez válassza az alábbi GitHub-sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
+DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az alábbi GitHub-sablonok egyikét. 
 
 * [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 Győződjön meg róla, hogy az Azure CLI csatlakoztatva van egy Azure-előfizetéshez. Ehhez futtassa az alábbi parancsot:
 
@@ -140,10 +147,11 @@ Ha szeretne megtekinteni egy példát a paraméterfájlra, keresse meg az `azure
 ## <a name="create-a-service-by-using-powershell"></a>Szolgáltatáspéldány létrehozása a PowerShell használatával
 Azure tárolószolgáltatás-fürtöt a PowerShell használatával is üzembe helyezhet. Ez a dokumentum az [Azure PowerShell modul](https://azure.microsoft.com/blog/azps-1-0/) 1.0-s verziója alapján készült.
 
-DC/OS- vagy Docker Swarm-fürt üzembe helyezéséhez válassza ki az alábbi sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
+DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az alábbi sablonok egyikét. A két sablon az alapértelmezett vezénylési típus kivételével azonos.
 
 * [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 Mielőtt az Azure-előfizetésében létrehozna egy fürtöt, győződjön meg arról, hogy a PowerShell-munkamenet bejelentkezett az Azure-ba. Ezt a `Get-AzureRMSubscription` paranccsal teheti meg:
 
@@ -184,10 +192,11 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 * [Csatlakozás Azure Container Service-fürthöz](container-service-connect.md)
 * [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
 * [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
+* [Az Azure Container Service és a Kubernetes használata](container-service-kubernetes-walkthrough.md)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

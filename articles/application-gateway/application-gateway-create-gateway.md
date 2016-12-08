@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/10/2016
+ms.date: 11/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 996bac38e6b67cfe7b72e11bf29831b12086bf1b
+ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
+ms.openlocfilehash: 2a06e9c7bb6b9f2aacc1544ba4b85a90bb57f01c
 
 
 ---
 # <a name="create-start-or-delete-an-application-gateway"></a>Application Gateway létrehozása, indítása vagy törlése
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
@@ -35,13 +36,14 @@ Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvét
 Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigurálhat, elindíthat és törölhet egy Application Gateway-t.
 
 ## <a name="before-you-begin"></a>Előkészületek
+
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
 2. Ha rendelkezik meglévő virtuális hálózattal, válasszon ki egy meglévő üres alhálózatot, vagy hozzon létre egy új alhálózatot a meglévő virtuális hálózatban kizárólag az Application Gateway számára. Nem helyezheti üzembe az Application Gateway szolgáltatást az Application Gateway mögött üzembe helyezni kívánt erőforrásoktól eltérő virtuális hálózaton, kivéve ha a virtuális hálózatok között társviszony van. További információért tekintse meg a [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md) című cikket
 3. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
 4. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Mire van szükség egy Application Gateway létrehozásához?
-Amikor a **New-AzureApplicationGateway** parancsot használja az Application Gateway létrehozására, a konfigurációk még nincsenek beállítva, és az újonnan létrehozott erőforrást konfigurálni kell egy XML-fájl vagy egy konfigurációs objektum használatával.
+Amikor a `New-AzureApplicationGateway` parancsot használja az Application Gateway létrehozására, a konfigurációk még nincsenek beállítva, és az újonnan létrehozott erőforrást konfigurálni kell egy XML-fájl vagy egy konfigurációs objektum használatával.
 
 Az értékek a következők:
 
@@ -52,6 +54,7 @@ Az értékek a következők:
 * **Szabály:** A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, hogy mely háttérkiszolgáló-készletre legyen átirányítva a forgalom, ha elér egy adott figyelőt.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+
 Application Gateway létrehozásához tegye a következőket:
 
 1. Egy Application Gateway erőforrás létrehozása.
@@ -66,7 +69,8 @@ Application Gateway létrehozásához tegye a következőket:
 ![Példaforgatókönyv][scenario]
 
 ### <a name="create-an-application-gateway-resource"></a>Application Gateway erőforrás létrehozása
-Az átjáró létrehozásához használja a **New-AzureApplicationGateway** parancsmagot, és cserélje le az értékeket a saját értékeire. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
+
+Az átjáró létrehozásához használja a `New-AzureApplicationGateway` parancsmagot, és cserélje le az értékeket a saját értékeire. Az átjáró használati díjának felszámolása ekkor még nem kezdődik el. A használati díj felszámolása egy későbbi lépésnél kezdődik, amikor az átjáró sikeresen elindul.
 
 Az alábbi példa egy új Application Gateway-t hoz létre egy „testvnet1” nevű virtuális hálózat és egy „subnet-1” nevű alhálózat használatával.
 
@@ -76,7 +80,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 A *Description*, az *InstanceCount* és a *GatewaySize* opcionális paraméterek.
 
-Az átjáró létrehozásának ellenőrzéséhez használhatja a **Get-AzureApplicationGateway** parancsmagot.
+Az átjáró létrehozásának ellenőrzéséhez használhatja a `Get-AzureApplicationGateway` parancsmagot.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -102,12 +106,15 @@ DnsName       :
 A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró még nem indult el. Ezek kitöltése akkor történik, amikor az átjáró futó állapotba kerül.
 
 ## <a name="configure-the-application-gateway"></a>Az Application Gateway konfigurálása
+
 Az Application Gateway-t egy XML-fájl vagy konfigurációs objektum segítségével konfigurálhatja.
 
 ## <a name="configure-the-application-gateway-by-using-xml"></a>Az Application Gateway konfigurálása XML-fájl használatával
+
 Az alábbi példában egy XML-fájllal konfigurálja az Application Gateway beállításait, és véglegesíti őket az Application Gateway-erőforráshoz.  
 
 ### <a name="step-1"></a>1. lépés
+
 Másolja az alábbi szöveget a Jegyzettömbbe.
 
 ```xml
@@ -210,21 +217,24 @@ Az alábbi példa bemutatja, hogyan használhat egy konfigurációs fájlt az Ap
 ```
 
 ### <a name="step-2"></a>2. lépés
-A következő lépésként állítsa be az Application Gateway-t. Használja a **Set-AzureApplicationGatewayConfig** parancsmagot egy konfigurációs XML-fájllal.
+
+A következő lépésként állítsa be az Application Gateway-t. Használja a `Set-AzureApplicationGatewayConfig` parancsmagot egy konfigurációs XML-fájllal.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
 ## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Az Application Gateway konfigurálása konfigurációs objektum segítségével
-Az alábbi példa bemutatja, hogyan konfigurálhatja az Application Gateway-t konfigurációs objektumok segítségével. Minden konfigurációs elemet külön kell konfigurálni, és utána kell hozzáadni egy Application Gateway konfigurációs objektumhoz. A konfigurációs objektum létrehozása után a **Set-AzureApplicationGateway** paranccsal véglegesíti a konfigurációt a korábban létrehozott Application Gateway-erőforráshoz.
+
+Az alábbi példa bemutatja, hogyan konfigurálhatja az Application Gateway-t konfigurációs objektumok segítségével. Minden konfigurációs elemet külön kell konfigurálni, és utána kell hozzáadni egy Application Gateway konfigurációs objektumhoz. A konfigurációs objektum létrehozása után a `Set-AzureApplicationGateway` paranccsal véglegesíti a konfigurációt a korábban létrehozott Application Gateway-erőforráshoz.
 
 > [!NOTE]
-> Mielőtt értékeket rendelne a konfigurációs objektumokhoz, deklarálnia kell, hogy a PowerShell milyen típusú objektumot használ a tároláshoz. Az egyéni elemek létrehozásának első sora határozza meg, hogy milyen Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name) elemet használ a rendszer.
+> Mielőtt értékeket rendelne a konfigurációs objektumokhoz, deklarálnia kell, hogy a PowerShell milyen típusú objektumot használ a tároláshoz. Az egyéni elemek létrehozásának első sora határozza meg, hogy milyen **Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)** elemet használ a rendszer.
 > 
 > 
 
 ### <a name="step-1"></a>1. lépés
+
 Hozza létre az összes egyedi konfigurációs elemet.
 
 Hozza létre az előtérbeli IP-címet az alábbi példában látható módon.
@@ -295,6 +305,7 @@ $rule.BackendAddressPool = "pool1"
 ```
 
 ### <a name="step-2"></a>2. lépés
+
 Rendelje hozzá az összes egyéni konfigurációs elemeket egy Application Gateway konfigurációs objektumhoz ($appgwconfig).
 
 Adja hozzá az előtérbeli IP-címet a konfigurációhoz.
@@ -340,17 +351,18 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>3. lépés
-Véglegesítse a konfigurációs objektumot az Application Gateway erőforráshoz a **Set-AzureApplicationGatewayConfig** paranccsal.
+Véglegesítse a konfigurációs objektumot az Application Gateway-erőforráshoz a `Set-AzureApplicationGatewayConfig` paranccsal.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
 ## <a name="start-the-gateway"></a>Az átjáró indítása
-Az átjáró konfigurálása után indítsa el az átjárót a **Start-AzureApplicationGateway** parancsmaggal. Az Application Gateway használati díjának felszámolása az átjáró sikeres indítása után kezdődik.
+
+Az átjáró konfigurálása után indítsa el az átjárót a `Start-AzureApplicationGateway` parancsmaggal. Az Application Gateway használati díjának felszámolása az átjáró sikeres indítása után kezdődik.
 
 > [!NOTE]
-> A **Start-AzureApplicationGateway** parancsmag futtatása akár 15–20 percet is igénybe vehet.
+> A `Start-AzureApplicationGateway` parancsmag futtatása akár 15–20 percet is igénybe vehet.
 > 
 > 
 
@@ -359,7 +371,8 @@ Start-AzureApplicationGateway AppGwTest
 ```
 
 ## <a name="verify-the-gateway-status"></a>Az átjáró állapotának ellenőrzése
-Ellenőrizze az átjáró állapotát a **Get-AzureApplicationGateway** parancsmaggal. Ha a **Start-AzureApplicationGateway** sikeres volt az előző lépésben, a *State* paraméternél a „Running” állapotnak kell szerepelnie, a *Vip* és a *DnsName* paramétereknek pedig érvényes bejegyzéssel kell rendelkezniük.
+
+Ellenőrizze az átjáró állapotát a `Get-AzureApplicationGateway` parancsmaggal. Ha a `Start-AzureApplicationGateway` sikeres volt az előző lépésben, a *State* paraméternél a „Running” (Fut) állapotnak kell szerepelnie, a *Vip* és a *DnsName* paraméternek pedig érvényes bejegyzéssel kell rendelkeznie.
 
 Az alábbi példa egy működő Application Gateway-t mutat, amely kész fogadni a `http://<generated-dns-name>.cloudapp.net` felé tartó forgalmat.
 
@@ -382,13 +395,14 @@ DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
 ## <a name="delete-an-application-gateway"></a>Application Gateway törlése
+
 Application Gateway törléséhez tegye a következőket:
 
-1. Állítsa le az átjárót a **Stop-AzureApplicationGateway** parancsmaggal.
-2. Távolítsa el az átjárót a **Remove-AzureApplicationGateway** parancsmaggal.
-3. A **Get-AzureApplicationGateway** parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
+1. Állítsa le az átjárót a `Stop-AzureApplicationGateway` parancsmaggal.
+2. Távolítsa el az átjárót a `Remove-AzureApplicationGateway` parancsmaggal.
+3. A `Get-AzureApplicationGateway` parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
 
-Az alábbi példa a **Stop-AzureApplicationGateway** parancsmag első sorát mutatja, amelyet a kimenet követ.
+Az alábbi példa a `Stop-AzureApplicationGateway` parancsmag első sorát mutatja, amelyet a kimenet követ.
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -402,7 +416,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a **Remove-AzureApplicationGateway** parancsmaggal.
+Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a `Remove-AzureApplicationGateway` parancsmaggal.
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -416,7 +430,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-A szolgáltatás eltávolításának ellenőrzéséhez használhatja a **Get-AzureApplicationGateway** parancsmagot. Ez a lépés nem kötelező.
+A szolgáltatás eltávolításának ellenőrzéséhez használhatja a `Get-AzureApplicationGateway` parancsmagot. Ez a lépés nem kötelező.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -430,6 +444,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
 Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
 
 Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
@@ -443,6 +458,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

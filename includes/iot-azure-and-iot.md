@@ -13,7 +13,7 @@ Az alábbi ábrán egy tipikus IoT-megoldásarchitektúra látható. Az ábrán 
 ![Az IoT-megoldásarchitektúra][img-solution-architecture]
 
 > [!NOTE]
-> Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture] (Microsoft Azure IoT-referenciaarchitektúra)[lnk-refarch].
+> Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Microsoft Azure IoT-referenciaarchitektúra).
 > 
 > 
 
@@ -30,7 +30,7 @@ Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan leh
 * Saját fejlesztésű, egyedi vagy iparág-specifikus alkalmazás-protokollokra lehet szükség.
 * Számos népszerű hardver- és szoftverplatform használatával létrehozhatók.
 
-A fenti követelmények mellett minden egyes IoT-megoldásnak megfelelő méretezhetőséget, biztonságot és megbízhatóságot kell biztosítania. Az ebből következő kapcsolati követelmények megvalósítása rendkívül nehéz és időigényes az olyan hagyományos technológiák segítségével, mint például a webes tárolók vagy üzenetkezelő közvetítők. Az Azure IoT Hub és az IoT eszközoldali SDK-k megkönnyítik a fenti követelményeknek megfelelő megoldások megvalósítását.
+A fenti követelmények mellett minden egyes IoT-megoldásnak megfelelő méretezhetőséget, biztonságot és megbízhatóságot kell biztosítania. Az ebből következő kapcsolati követelmények megvalósítása rendkívül nehéz és időigényes az olyan hagyományos technológiák segítségével, mint például a webes tárolók vagy üzenetkezelő közvetítők. Az Azure IoT Hub és az Azure IoT eszközoldali SDK-k megkönnyítik a fenti követelményeknek megfelelő megoldások megvalósítását.
 
 Az eszközök közvetlenül kommunikálhatnak a felhőátjárók végpontjaival, vagy ha az eszköz nem képes a felhőátjáró által támogatott kommunikációs protokollok használatára, akkor csatlakozhat egy köztes átjáróhoz. Ilyen például az [Azure IoT Hub protokoll-átjáró][lnk-protocol-gateway], amely lefordítja a protokollokat, ha az eszközök nem képesek az IoT Hub által támogatott protokollok használatára.
 
@@ -55,11 +55,11 @@ A megjelenítési és üzleti kapcsolati réteg lehetővé teszi a végfelhaszn�
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Az Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
+[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

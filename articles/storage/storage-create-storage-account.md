@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/26/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d5b24b28f82c53b880e025dc43169aaad49e8434
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: fd5ca2dfb12b7527f49d32d9642a91df9e590b14
 
 
 ---
@@ -68,7 +68,7 @@ Emellett konfigurálhat egy egyéni tartománynevet a tárfiókkal való haszná
    > A tárfiók nevének egyedinek kell lennie az Azure rendszerben. Az Azure Portal jelzi, ha a választott tárfióknév már használatban van.
    > 
    > 
-4. Adja meg a használni kívánt telepítési modellt: **Resource Manager** vagy **Klasszikus**. Az ajánlott telepítési modell a **Resource Manager**. További információ: [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md) (A Resource Manager-telepítés és a klasszikus telepítés ismertetése).
+4. Adja meg a használni kívánt telepítési modellt: **Resource Manager** vagy **Klasszikus**. Az ajánlott telepítési modell a **Resource Manager**. További információ: [Understanding Resource Manager deployment and classic deployment](../azure-resource-manager/resource-manager-deployment-model.md) (A Resource Manager-telepítés és a klasszikus telepítés ismertetése).
    
    > [!NOTE]
    > Blob Storage-fiókok kizárólag a Resource Manager telepítési modell segítségével hozhatók létre.
@@ -162,6 +162,6 @@ További információ: [Azure Virtual Machines – dokumentáció](http://azure.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

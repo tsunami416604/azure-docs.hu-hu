@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
+ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
+ms.openlocfilehash: 57af74321c453733daadc1b295dd3df95d0fd052
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajthat végre fájlrendszer-műveleteket a WebHDFS REST API-k és az Azure Data Lake Store REST API-k használatával. Az Azure Data Lake Store saját REST API-kkal rendelkezik a fiókkezelési műveletekhez. Mivel azonban a Data Lake Store kompatibilis a HDFS- és a Hadoop-ökoszisztémával, támogatja a WebHDFS REST API-k használatát a fájlrendszer-műveletekhez.
@@ -47,7 +48,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajt
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-### <a name="enduser-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
+### <a name="end-user-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Az interaktív hitelesítéshez hajtsa végre a következő lépéseket.
 
 1. Az alkalmazáson keresztül irányítsa át a felhasználót az alábbi URL-címre:
@@ -88,7 +89,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-### <a name="servicetoservice-authentication-noninteractive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
+### <a name="service-to-service-authentication-non-interactive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
 Ebben az esetben az alkalmazás maga biztosítja saját hitelesítő adatait a műveletek végrehajtásához. Ehhez egy alábbihoz hasonló POST-kérelmet kell kiadnia. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -263,6 +264,6 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

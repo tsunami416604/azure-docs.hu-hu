@@ -15,17 +15,12 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: 2809b7f5367a333a7aac99db890d0aee3bc6667a
+ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
+ms.openlocfilehash: 5a6b743d69e1716ae3f48ddf0dfcb0f042133f5c
 
 
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
-> [!div class="op_single_selector"]
-> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
-> * [.NET](cloud-services-dotnet-get-started.md)
->
->
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy egyszerű, Azure-felhőszolgáltatásban futó Node.js alkalmazást. A Cloud Services a méretezhető felhőalapú alkalmazások építőeleme az Azure-ban. Lehetővé teszik az alkalmazás előtér- és háttér-összetevőinek elkülönítését, valamint egymástól független kezelését és kibővítését.  A Cloud Services egy robusztus, dedikált virtuális gépet biztosít az egyes szerepkörök megbízható üzemeltetéséhez.
 
@@ -176,9 +171,9 @@ További információk: [Node.js fejlesztői központ].
 <!-- URL List -->
 
 [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[Egyszerűsített webalkalmazás használata]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[egyszerűsített webalkalmazás használatát]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Azure PowerShell]: ../powershell-install-configure.md
-[Azure SDK a .NET 2.7-hez]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
 [PowerShell összekapcsolása]: ../powershell-install-configure.md#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés]: https://azure.microsoft.com/documentation/services/cloud-services/
@@ -196,6 +191,6 @@ További információk: [Node.js fejlesztői központ].
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
