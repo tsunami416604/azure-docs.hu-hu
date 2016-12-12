@@ -70,7 +70,7 @@ Az oktatóanyag teljes kódja [itt](https://github.com/Azure/azure-notificationh
 
 Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
@@ -673,9 +673,9 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Kódtárprojekt hivatkozása]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Klasszikus Azure portál]: https://manage.windowsazure.com/
-[Notification Hubs – áttekintés]: notification-hubs-push-notification-overview.md
+[Notification Hubs használatával]: notification-hubs-push-notification-overview.md
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
 
 
