@@ -92,7 +92,7 @@ Miután előkészítette a forrásadatokat, nekiláthat a U-SQL-parancsfájl elk
 
     ![Azure Data Lake Analytics: Új feladat gomb](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job-button.png)
 
-    Ha nem látja a panelt, tekintse meg a [Data Lake Analytics-fiók megnyitása a portálról](data-lake-analytics-manage-use-portal.md#access-adla-account) című szakaszt..
+    Ha nem látja a panelt, tekintse meg a [Data Lake Analytics-fiók megnyitása a portálról](data-lake-analytics-manage-use-portal.md#access-adla-account) című szakaszt.
 2. Adja meg a **Feladat nevét**, és az alábbi U-SQL-parancsfájlt:
 
         @searchlog =
