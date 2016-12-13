@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/27/2016
+ms.date: 12/12/2016
 ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
@@ -50,7 +50,7 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
 2. Hozzon létre új egy új konzolalkalmazás-projektet. Kattintson a **Fájl** menüre, és kattintson az **Új**, majd a **Projekt** elemre. Az **Új projekt** párbeszédpanelen kattintson a **Visual C#** elemre (ha a **Visual C#** nem jelenik meg, keresse meg a **Más nyelvek** területen), válassza ki a **Konzolalkalmazás** sablont, és nevezze el **Microsoft.ServiceBus.Samples** néven. Használja az alapértelmezett helyet. A projekt létrehozásához kattintson az **OK** gombra.
 3. A Program.cs fájlban győződjön meg róla, hogy a(z) `using` utasítás a következőképpen jelenik meg:
    
-    ```
+    ```csharp
     using System;
     using System.Globalization;
     using System.IO;
@@ -62,7 +62,7 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
 4. Ha szükséges, nevezze át a program névterét a Visual Studio alapértelmezett értékéről a következőre: `Microsoft.ServiceBus.Samples`.
 5. A(z) `Program` osztályon belül adja hozzá a következő globális változókat:
    
-    ```
+    ```csharp
     static string serviceNamespace;
     static string baseAddress;
     static string token;
@@ -70,7 +70,7 @@ Miután az első lépésben beszerezte a névteret és a hitelesítő adatokat, 
     ```
 6. A(z) `Main()` területre illessze be a következő kódot:
    
-    ```
+    ```csharp
     Console.Write("Enter your service namespace: ");
     serviceNamespace = Console.ReadLine();
    
@@ -146,7 +146,7 @@ A következő lépés egy olyan metódus megírása, amely feldolgozza az előz�
 ### <a name="create-a-getsastoken-method"></a>GetSASToken() metódus létrehozása
 Illessze be a következő kódot a(z) `Main()` metódus után, a(z) `Program` osztályon belül:
 
-```
+```csharp
 private static string GetSASToken(string SASKeyName, string SASKeyValue)
 {
   TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
@@ -165,7 +165,7 @@ A következő lépés egy olyan metódus írása, amely a REST-stílusú HTTP PU
 
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `GetSASToken()` kód után:
 
-```
+```csharp
 // Uses HTTP PUT to create the queue
 private static string CreateQueue(string queueName, string token)
 {
@@ -193,7 +193,7 @@ Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust v
 
 1. Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `CreateQueue()` kód után:
    
-    ```
+    ```csharp
     // Sends a message to the "queueName" queue, given the name and the value to enqueue
     // Uses an HTTP POST request.
     private static void SendMessage(string queueName, string body)
@@ -208,7 +208,7 @@ Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust v
     ```
 2. A közvetítőalapú üzenet standard tulajdonságai egy `BrokerProperties` HTTP-fejlécben vannak elhelyezve. A közvetítő tulajdonságait JSON formátumban kell szerializálni. Ahhoz, hogy a program 30 másodperces **TimeToLive** értéket határozzon meg, és hozzáadja az „M1” címkét az üzenethez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
    
-    ```
+    ```csharp
     // Add brokered message properties "TimeToLive" and "Label"
     webClient.Headers.Add("BrokerProperties", "{ \"TimeToLive\":30, \"Label\":\"M1\"}");
     ```
@@ -216,7 +216,7 @@ Ebben a lépésben egy REST-stílusú HTTP POST parancsot használó metódust v
     Vegye figyelembe, hogy a rendszer hozzáadta, és hozzá fogja adni a közvetítőalapú üzenet tulajdonságait. Emiatt a küldési kérésnek egy olyan API-verziót kell meghatároznia, amely a kérés részét képező közvetítőalapú üzenet összes tulajdonságát támogatja. Ha a meghatározott API-verzió nem támogatja a közvetítőalapú üzenet egyik tulajdonságát, az adott tulajdonságot figyelmen kívül hagyja a rendszer.
 3. Az egyéni üzenettulajdonságok kulcs-érték párok készleteként definiálhatók. Minden egyéni tulajdonságot külön TPPT-fejléc tárol. A „Prioritás” és „Ügyfél” egyéni tulajdonságok felvételéhez, vegye fel a következő kódot közvetlenül az előző példában szereplő `webClient.UploadData()` hívás elé:
    
-    ```
+    ```csharp
     // Add custom properties "Priority" and "Customer".
     webClient.Headers.Add("Priority", "High");
     webClient.Headers.Add("Customer", "12345");
@@ -227,7 +227,7 @@ A következő lépés egy olyan metódus hozzáadása, amely a REST-stílusú HT
 
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `SendMessage()` kód után:
 
-```
+```csharp
 // Receives and deletes the next message from the given resource (queue, topic, or subscription)
 // using the resourceName and an HTTP DELETE request
 private static string ReceiveAndDeleteMessage(string resourceName)
@@ -251,7 +251,7 @@ A következő lépés egy olyan metódus írása, amely a REST-stílusú HTTP PU
 ### <a name="create-a-topic"></a>Üzenettémakör létrehozása
 Illessze be a következő kódot közvetlenül az előző lépésben hozzáadott `ReceiveAndDeleteMessage()` kód után:
 
-```
+```csharp
 // Using an HTTP PUT request.
 private static string CreateTopic(string topicName)
 {
@@ -276,7 +276,7 @@ private static string CreateTopic(string topicName)
 ### <a name="create-a-subscription"></a>Előfizetés létrehozása
 A következő kód egy előfizetést hoz létre az előző lépésben létrehozott üzenettémakörhöz. Adja hozzá a következő kódot közvetlenül a(z) `CreateTopic()` definíciója után:
 
-```
+```csharp
 private static string CreateSubscription(string topicName, string subscriptionName)
 {
     var subscriptionAddress = baseAddress + topicName + "/Subscriptions/" + subscriptionName;
@@ -303,7 +303,7 @@ Ebben a lépésben fel kell vennie azt a kódot, amely lekéri az üzenet tulajd
 ### <a name="retrieve-an-atom-feed-with-the-specified-resources"></a>Atom-hírcsatorna lekérése a megadott erőforrásokkal
 Vegye fel a következő kódot közvetlenül az előző lépésben felvett `CreateSubscription()` kód után:
 
-```
+```csharp
 private static string GetResources(string resourceAddress)
 {
     string fullAddress = baseAddress + resourceAddress;
@@ -317,7 +317,7 @@ private static string GetResources(string resourceAddress)
 ### <a name="delete-messaging-entities"></a>Üzenetküldési entitások törlése
 Vegye fel a következő kódot közvetlenül az előző lépésben felvett kód után:
 
-```
+```csharp
 private static string DeleteResource(string resourceName)
 {
     string fullAddress = baseAddress + resourceName;
@@ -333,7 +333,7 @@ private static string DeleteResource(string resourceName)
 ### <a name="format-the-atom-feed"></a>Az Atom-hírcsatorna formázása
 A(z) `GetResources()` metódus meghívja a(z) `FormatXml()` metódust, amely újraformázza a lekért Atom-hírcsatornát, hogy jobban olvasható legyen. A(z) `FormatXml()` definíciója a következőkben látható. Vegye fel ezt a kódot közvetlenül az előző lépésben létrehozott `DeleteResource()` kód után:
 
-```
+```csharp
 // Formats the XML string to be more human-readable; intended for display purposes
 private static string FormatXml(string inputXml)
 {
@@ -360,7 +360,7 @@ Ha nem voltak benne hibák, az alkalmazás futtatásához nyomja le az F5 billen
 ### <a name="example"></a>Példa
 A következő példában a teljes kód látható, ahogy meg kell jelennie, ha követte az oktatóanyag összes lépését.
 
-```
+```csharp
 using System;
 using System.Globalization;
 using System.IO;
