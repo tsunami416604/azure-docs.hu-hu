@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/20/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
 
 
 ---
@@ -40,7 +40,7 @@ A jelen oktatóanyag esetében egy WordPress blogwebhelyet fog üzembe helyezni 
 Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatbázist használ. Ha ehelyett SQL Database szolgáltatást használna az adatbázishoz, akkor tekintse meg a [Project Nami] nevű alkalmazást, amely szintén elérhető az Azure Piactéren keresztül.
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit][aktiválás], vagy [regisztráljon egy ingyenes próbaverzióra][ingyenes próba].
+> Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit][activate], vagy [regisztrálhat egy ingyenes próbaverzióra][free trial].
 > 
 > Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása] oldalra. Innen azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben; ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
@@ -77,7 +77,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
     ![A webalkalmazáshoz tartozó erőforráscsoport konfigurálása][ConfigResourceGroup]
 5. Válasszon ki egy **App Service-csomagot/-helyet**, vagy hozzon létre egy újat.
    
-    További információk az App Service-csomagokról: [Azure App Service plans overview][AzureAppServicePlans] (Az Azure App Service-csomagok áttekintése).
+    További információk az App Service-csomagokról: [Az Azure App Service-csomagok áttekintése][AzureAppServicePlans].
    
     ![A webalkalmazáshoz tartozó szolgáltatáscsomag konfigurálása][ConfigServicePlan]
 6. Kattintson az **Adatbázis**elemre, majd az **Új MySQL Adatbázis** panelen adja meg a MySQL adatbázis konfigurálásához szükséges értékeket.
@@ -104,7 +104,7 @@ Az oktatóanyag keretein belül üzembe helyezett WordPress webhely MySQL adatb�
 ## <a name="launch-and-manage-your-wordpress-web-app"></a>A WordPress-webalkalmazás elindítása és kezelése
 1. Ha a webalkalmazás létrehozása befejeződött, navigáljon az Azure Portalon ahhoz az erőforráscsoporthoz, amelyben létrehozta az alkalmazást, és tekintse meg a webalkalmazást és az adatbázist.
    
-    A villanykörte ikonnal rendelkező további erőforrás az [Application Insights][ApplicationInsights], amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
+    A villanykörte ikonnal rendelkező plusz erőforrás az [Application Insights][ApplicationInsights], amely figyelési szolgáltatásokat biztosít a webalkalmazás számára.
 2. Az **Erőforráscsoport** panelen kattintson a webalkalmazás sorra.
    
     ![A WordPress webalkalmazás kiválasztása][WordPressSelect]
@@ -127,7 +127,7 @@ Ebben az oktatóanyagban megtudhatta, hogyan helyezhet üzembe egy példa-webalk
 
 Az App Service Web Apps használatával kapcsolatos további információért lásd a lap bal oldalán (széles böngészőablakok esetén) vagy a lap tetején (keskeny böngészőablakok esetén) lévő hivatkozásokat.
 
-WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos további információ: [Developing WordPress on Azure App Service][WordPressOnAzure] (WordPress webalkalmazások fejlesztése az Azure App Service szolgáltatásban).
+A WordPress-webalkalmazások Azure platformon való fejlesztésével kapcsolatos további információkat a [WordPress-webalkalmazások Azure App Service szolgáltatásban történő fejlesztésével][WordPressOnAzure] foglalkozó cikkben talál.
 
 <!-- URL List -->
 
@@ -136,8 +136,8 @@ WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos t
 [Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
-[aktiválás]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[ingyenes]: https://azure.microsoft.com/pricing/free-trial/
+[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[free trial]: https://azure.microsoft.com/pricing/free-trial/
 [Az App Service kipróbálása]: http://go.microsoft.com/fwlink/?LinkId=523751
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
@@ -168,6 +168,6 @@ WordPress webalkalmazások Azure platformon való fejlesztésével kapcsolatos t
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

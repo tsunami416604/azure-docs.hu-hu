@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
-ms.openlocfilehash: 69b333b0c43d2e3e4d62168650123322a79579ba
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
 
 
 ---
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
   3. Szerezze be a **bérlőazonosítót**. 
   4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
-* Telepítse az [Azure PowerShellt](../powershell-install-configure.md).  
+* Telepítse az [Azure PowerShellt](/powershell/azureps-cmdlets-docs).  
 * Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
   
   1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
@@ -402,9 +402,9 @@ Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adat
 
         CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID); 
 
-    Ha az SQL Server 2014 van telepítve a számítógépen: kövesse [Managing Azure SQL Database using SQL Server Management Studio] (Az Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studio használatával) [sql-management-studio] című cikk Connect to SQL Database of the Managing Azure SQL Database using SQL Server Management Studio (Kapcsolódás az SQL Database-hez) című 2. lépésében foglalt utasításokat Azure SQL Server-kiszolgálóhoz való csatlakozáshoz, és futtassa az SQL-szkriptet.
+    Ha az SQL Server 2014 van telepítve a számítógépen: kövesse [Az Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studióval című cikk Kapcsolódás az SQL Database-hez című 2. lépésében][sql-management-studio] foglalt utasításokat az Azure SQL Server-kiszolgálóhoz való csatlakozáshoz, és futtassa az SQL-szkriptet.
 
-    Ha az ügyfél számára nem engedélyezett az Azure SQL-kiszolgáló elérése, úgy kell beállítania az Azure SQL-kiszolgáló tűzfalát, hogy engedélyezze a hozzáférést a gép (IP-cím) számára. Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../sql-database/sql-database-configure-firewall-settings.md).
+    Ha az ügyfél számára nem engedélyezett az Azure SQL Server elérése, konfigurálnia kell az Azure SQL Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../sql-database/sql-database-configure-firewall-settings.md).
 
 ### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
 Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely egy, az Azure Storage-ben található Blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás képvisel. Ez a blobtároló (**adftutorial**) tartalmazza a bemeneti adatokat az **emp.txt** fájlban. 
@@ -495,7 +495,7 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [azure-portal]: http://portal.azure.com
-[download-azure-powershell]: ../powershell-install-configure.md
+[download-azure-powershell]: /powershell/azureps-cmdlets-docs
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
@@ -504,6 +504,6 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

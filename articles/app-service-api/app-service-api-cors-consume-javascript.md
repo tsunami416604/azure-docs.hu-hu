@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/27/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14de66f6035d8cd0579351d64b85bd7e1c8f2ab2
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: be48f1f0b9c3c749c13fd89f63d41fbaff6a62ee
 
 
 ---
@@ -51,7 +51,7 @@ A CORS szolgáltatást konfigurálhatja az Azure Portalon vagy az [Azure Resourc
    A **Save** (Mentés) gombra való kattintás után az API-alkalmazás fogadni fogja a megadott URL-címekről jövő hívásokat.
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>A CORS konfigurálása az Azure Resource Manager eszközeinek használatával
-A CORS szolgáltatást úgy is beállíthatja egy API-alkalmazáshoz, hogy [Azure Resource Manager-sablonokat](../resource-group-authoring-templates.md) használ a parancssori eszközökben, például az  [Azure PowerShell](../powershell-install-configure.md) vagy az [Azure CLI](../xplat-cli-install.md) felületen. 
+A CORS szolgáltatást úgy is beállíthatja egy API-alkalmazáshoz, hogy [Azure Resource Manager-sablonokat](../resource-group-authoring-templates.md) használ a parancssori eszközökben, például az  [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy az [Azure CLI](../xplat-cli-install.md) felületen. 
 
 Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely beállítja a CORS tulajdonságot, nyissa meg az oktatóanyag példaalkalmazását, amely a tárházban az [azuredeploy.json fájl](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Keresse meg a sablonban az a részt, amely az alábbi példára hasonlít:
 
@@ -61,7 +61,7 @@ Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely be�
             ]
         }
 
-## <a name="a-idtutorialstarta-continuing-the-net-gettingstarted-tutorial"></a><a id="tutorialstart"></a> A .NET-bevezető oktatóanyag folytatása
+## <a name="a-idtutorialstarta-continuing-the-net-getting-started-tutorial"></a><a id="tutorialstart"></a> A .NET-bevezető oktatóanyag folytatása
 Ha az API-alkalmazásokhoz készült Node.js vagy Java-bevezető sorozatot követi, akkor elvégezte a bevezetősorozatot. Ugorjon a [További lépések](#next-steps) című részre, ahol tanácsokat találhat az API-alkalmazások bővebb megismeréséhez.
 
 A cikk hátralévő része a .NET-bevezető sorozat folytatása, és feltételezi, hogy Ön sikeresen elvégezte [az első oktatóanyagot](app-service-api-dotnet-get-started.md).
@@ -252,6 +252,6 @@ Ebből a cikkből megtudhatta, hogyan engedélyezheti az App Service CORS-támog
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

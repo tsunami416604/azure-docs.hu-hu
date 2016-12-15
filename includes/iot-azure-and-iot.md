@@ -18,7 +18,7 @@ Az alábbi ábrán egy tipikus IoT-megoldásarchitektúra látható. Az ábrán 
 > 
 
 ### <a name="device-connectivity"></a>Eszközkapcsolatok
-Ebben az IoT-megoldásarchitektúrában az eszközök telemetriát (pl. szivattyútelepek érzékelőinek adatai) küldenek a felhővégpontnak tárolás és feldolgozás céljából. Egy prediktív karbantartási forgatókönyvben a háttérrendszer az érzékelők adatstreamének felhasználásával megállapíthatja, hogy egy adott szivattyú mikor igényel karbantartást. Az eszközök emellett a felhővégpontokból érkező üzenetek olvasásával fogadhatnak a felhőből az eszközre érkező parancsokat, és válaszolhatnak is azokra. A prediktív karbantartási forgatókönyvben például a megoldás háttérrendszere parancsokat küldhet a szivattyútelep többi szivattyújának, hogy azok elkezdjék az áramlás átirányítását a karbantartás megkezdése előtt, és a karbantartó mérnök megérkezésekor munkához láthasson.
+Ebben az IoT-megoldásarchitektúrában az eszközök telemetriát (pl. szivattyútelepek érzékelőinek adatai) küldenek a felhővégpontnak tárolás és feldolgozás céljából. Egy prediktív karbantartási forgatókönyvben a megoldás háttérrendszere az érzékelők adatstreamének felhasználásával megállapíthatja, hogy egy adott szivattyú mikor igényel karbantartást. Az eszközök emellett a felhővégpontokból érkező üzenetek olvasásával fogadhatnak a felhőből az eszközre érkező üzeneteket, és válaszolhatnak is azokra. A prediktív karbantartási forgatókönyvben például a megoldás háttérrendszere üzeneteket küldhet a szivattyútelep többi szivattyújának, hogy azok elkezdjék az áramlás átirányítását a karbantartás megkezdése előtt, és a karbantartó mérnök megérkezésekor munkához láthasson.
 
 Az IoT-projektek számára az egyik legnagyobb kihívást az jelenti, hogyan lehet megbízható és biztonságos módon csatlakoztatni az eszközöket a megoldás háttérrendszeréhez. Az IoT-eszközök más jellemzőkkel rendelkeznek, mint a korábban megszokott ügyfelek, például böngészők vagy mobilalkalmazások. Az IoT-eszközök jellemzői:
 
@@ -42,9 +42,9 @@ A felhőben az IoT-megoldás háttérrendszerében megy végbe az adatfeldolgoz�
 * Eszközregisztrációs képességeket biztosít, amelyek lehetővé teszik az eszközök kiosztását, valamint annak szabályozását, hogy melyik eszköz csatlakozhat az infrastruktúrához.
 * Lehetővé teszi az eszközök állapotának nyomon követését és tevékenységeik megfigyelését.
 
-A prediktív karbantartási forgatókönyvben a megoldás háttérrendszere eltárolja a korábbi telemetriai adatokat. A háttérrendszer a tárolt adatok alapján azonosítja a mintákat és elemzi a beérkező telemetriákat az egyes szivattyúk karbantartásának szükségességét jelző minták felfedezése érdekében.
+A prediktív karbantartási forgatókönyvben a megoldás háttérrendszere eltárolja a korábbi telemetriai adatokat. A megoldás háttérrendszere a tárolt adatok alapján azonosítja a mintákat, és elemzi a beérkező telemetriákat az egyes szivattyúk karbantartásának szükségességét jelző minták felfedezése érdekében.
 
-Az IoT-megoldások tartalmazhatnak automatikus visszajelzési hurkokat is. A háttérrendszer elemzőmodulja például képes megállapítani a telemetriai adatokból, hogy egy adott eszköz hőmérséklete a normális üzemi szint fölött van-e. A megoldás ezt követően képes parancsot adni az eszköznek a korrekciós műveletek végrehajtására.
+Az IoT-megoldások tartalmazhatnak automatikus visszajelzési hurkokat is. A megoldás háttérrendszerének elemzőmodulja például képes megállapítani a telemetriai adatokból, hogy egy adott eszköz hőmérséklete a normális üzemi szint fölött van-e. A megoldás ezt követően képes parancsot adni az eszköznek a korrekciós műveletek végrehajtására.
 
 ### <a name="presentation-and-business-connectivity"></a>Megjelenítés és üzleti kapcsolatok
 A megjelenítési és üzleti kapcsolati réteg lehetővé teszi a végfelhasználók számára, hogy kapcsolatba lépjenek az IoT-megoldással és az eszközökkel. Segítségével a felhasználók megtekinthetik és elemezhetik az eszközeikről összegyűjtött adatokat. Ezek irányítópultokon vagy BI-jelentések formájában is megtekinthetők, amelyek az előzmény- és a közel valós idejű adatokat egyaránt megjelenítik. A kezelő például ellenőrizheti egy adott szivattyútelep állapotát, és megtekintheti a rendszer által kiadott riasztásokat. Ez a réteg emellett lehetővé teszi az IoT-megoldás háttérrendszerének integrációját egy létező üzleti alkalmazással, hogy be lehessen vonni az üzleti vagy munkafolyamatokba. A prediktív karbantartási megoldás például integrálható egy ütemezési rendszerbe, amely kihív egy mérnököt a szivattyútelephez, ha a megoldás megállapítja, hogy valamelyik szivattyú karbantartásra szorul.
@@ -60,6 +60,6 @@ A megjelenítési és üzleti kapcsolati réteg lehetővé teszi a végfelhaszn�
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

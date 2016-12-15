@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 6fa8b353c47091c9b71173e98021117245cc6694
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 
 
 ---
@@ -27,7 +27,7 @@ Ezek a lépések behelyettesítésen alapuló megközelítéssel hoznak létre e
 A cikkben található lépések elvégzése nagyjából 30 percet vesz igénybe.
 
 ## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
-Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a name="step-2-create-resources"></a>2. lépés: Erőforrások létrehozása
 Hozza létre az új méretezési csoporthoz szükséges erőforrásokat.
@@ -225,6 +225,6 @@ Ezekkel az erőforrásokkal megvizsgálhatja a létrehozott virtuálisgép-mére
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/14/2016
+ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2759ce1fd8fd02a94256e0ba8f455608157ffbd0
-ms.openlocfilehash: 4033630dbbe065072cc58e642fce51f4860b82b6
+ms.sourcegitcommit: cfbfccfe09e6f2b3826223a779a5ff478c1f804f
+ms.openlocfilehash: 64250a0b37488eb165bd13e727f365bd391794b7
 
 
 ---
@@ -321,20 +321,20 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
    ![Adatkészlet](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
 8. A feldolgozás befejeztével a szelet **Ready** (Kész) állapotúra vált.
 
-> [!IMPORTANT]
-> Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért a folyamat várhatóan **körülbelül 30 perc** alatt dolgozza fel a szeletet.    
->
->
+   ![Adatkészlet](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)    
+   > [!IMPORTANT]
+   > Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért a folyamat várhatóan       **körülbelül 30 perc** alatt dolgozza fel a szeletet.
+   >
+   >
 
-1. Ha a szelet **Ready** (Kész) állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
+9. Ha a szelet **Ready** (Kész) állapotú, a kimeneti adatok **adfgetstarted** Blob Storage-tárolójában ellenőrizze a **partitioneddata** mappát.  
 
    ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
-2. A szelet részleteinek az **Adatszelet** panelen való megtekintéséhez kattintson a szeletre.
+10. A szelet részleteinek az **Adatszelet** panelen való megtekintéséhez kattintson a szeletre.
 
    ![Adatszelet részletei](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)  
-3. Kattintson egy tevékenységfuttatásra az **Activity runs list** (Tevékenységfuttatások listája) területen a tevékenységfuttatás (ebben az esetben Hive-tevékenység) részleteinek az **Activity run details** (Tevékenységfuttatás részletei) ablakban való megjelenítéséhez.   
+11. Kattintson egy tevékenységfuttatásra az **Activity runs list** (Tevékenységfuttatások listája) területen a tevékenységfuttatás (ebben az esetben Hive-tevékenység) részleteinek az **Activity run details** (Tevékenységfuttatás részletei) ablakban való megjelenítéséhez.   
 
    ![Tevékenységfuttatás részletei](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
@@ -382,6 +382,6 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

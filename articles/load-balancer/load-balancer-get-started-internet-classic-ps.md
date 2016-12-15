@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 3855b32c8ff13f73cf91ea8973ed40a34a062224
 
 ---
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
 
 Az alábbi lépéseket követve állíthat be egy terheléselosztót a PowerShell használatával:
 
-1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Virtuális gép létrehozása után a PowerShell-parancsmagok segítségével hozzáadhat egy terheléselosztót egy virtuális géphez ugyanazon a felhőszolgáltatáson belül.
 
 Az alábbi példában egy „webfarm” nevű terheléselosztó-készletet fog hozzáadni a „mytestcloud” (vagy myctestcloud.cloudapp.net) nevű felhőszolgáltatáshoz, ehhez a terheléselosztó végpontjait hozzáadja a „web1” és „web2” nevű virtuális gépekhez. A terheléselosztó a 80-as porton keresztül fogadja a hálózati forgalmat, és a TCP használatával elosztja a terhelést a helyi végpont (jelen esetben a 80-as port) által meghatározott virtuális gépek között.
@@ -76,6 +76,6 @@ Ha az alkalmazásának fenn kell tartania a kapcsolatot a terheléselosztó mög
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

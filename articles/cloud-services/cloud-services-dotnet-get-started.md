@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
-ms.openlocfilehash: 81fd8f40d8f939e68fbe2cf9ef7b413073a8c363
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 02474f8ab77763be1b40da95f5d7cd935ba7f121
 
 
 ---
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéra
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag feltételezi, hogy tisztában van az [Azure-felhőszolgáltatások alapfogalmaival](cloud-services-choose-me.md), például a *webes szerepkör* és a *feldolgozói szerepkör* terminológiájával.  Továbbá azt is feltételezi, hogy az [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) és a [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) Visual Studióban való használatának módját is ismeri. A mintaalkalmazás az MVC-t használja, de az oktatóanyag nagy része a Web Forms esetében is alkalmazható.
 
-Helyileg Azure-előfizetés nélkül is futtathatja az alkalmazást, de a felhőben való közzétételéhez előfizetés szükséges. Ha nincs fiókja, [aktiválhatja az MSDN előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668), vagy [regisztrálhat egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A55E3C668).
+Helyileg Azure-előfizetés nélkül is futtathatja az alkalmazást, de a felhőben való közzétételéhez előfizetés szükséges. Ha nincs fiókja, [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668), vagy [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
 Az oktatóanyag utasításai az alábbi termékek bármelyikére alkalmazhatók:
 
@@ -772,6 +772,6 @@ További információkért lásd a következőket:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

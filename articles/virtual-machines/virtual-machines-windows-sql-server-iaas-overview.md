@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/19/2016
+ms.date: 12/01/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 63ae1f48bcc384eff27a6fa8642f7a214bc7493f
+ms.sourcegitcommit: bef7de37e358b49c77a4774e3e90a5e1de273310
+ms.openlocfilehash: 5c9cbe96b92546e802190879919602da8687542f
 
 
 ---
@@ -82,7 +82,7 @@ A következő táblázat a virtuálisgép-katalógus elérhető SQL Server-rends
 | **SQL 2008 R2 SP3** |Windows Server 2008 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2) |
 | **SQL 2008 R2 SP3** |Windows Server 2012 |[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2012) |
 
-## <a name="option-2-create-a-sql-vm-with-an-existing-license"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
+## <a name="a-idbyola-option-2-create-a-sql-vm-with-an-existing-license"></a><a id="BYOL"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálon ezek a rendszerképnevek **{BYOL}** előtagot kapnak.
 
 | Verzió | Operációs rendszer | Kiadás |
@@ -94,7 +94,9 @@ Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépé
 > [!IMPORTANT]
 > A BYOL VM-rendszerképek használatához nagyvállalati szerződéssel kell rendelkeznie: [Az Azure frissítési garancián keresztüli licenchordozhatósági programja](https://azure.microsoft.com/pricing/license-mobility/). Továbbá szüksége van egy érvényes licencre is az SQL Server kívánt verziójához/kiadásához. [Meg kell adnia a Microsoftnak a szükséges BYOL-információkat](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf) a virtuális gép kiépítésétől számított **10** napon belül.
 > 
-> 
+
+> [!NOTE]
+> Nem lehetséges saját licencre módosítani egy percalapú SQL Server virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat. 
 
 ## <a name="manage-your-sql-vm"></a>Az SQL virtuális gép felügyelete
 Az SQL Server virtuális gép kiépítése után több választható felügyeleti feladatot is végrehajthat. Bizonyos szempontokból az SQL Server konfigurálását és felügyeletét pontosan ugyanúgy kell elvégeznie, ahogy egy helyszíni SQL Server-példánnyal tenné. Néhány feladat azonban csak az Azure-ra érvényes. A következő szakaszok kiemelnek néhány ilyen területet, és további információkra mutató hivatkozásokat is tartalmaznak.
@@ -129,6 +131,6 @@ További kérdései vannak? Először tekintse át [Az SQL Server használatána
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

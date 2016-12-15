@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
-ms.openlocfilehash: 5a6b743d69e1716ae3f48ddf0dfcb0f042133f5c
+ms.sourcegitcommit: d2d3f414d0e9fcc392d21327ef630f96c832c99c
+ms.openlocfilehash: d8108368a157ed05c4fe0defbcef8372e205f6f8
 
 
 ---
@@ -28,8 +28,6 @@ További információk a Cloud Servicesről, valamint annak összevetése az Azu
 
 > [!TIP]
 > Egyszerű webhelyet szeretne készíteni? Ha csak egy egyszerű webhely előterét kívánja futtatni, fontolja meg egy [egyszerűsített webalkalmazás használatát]. Könnyedén frissíthet Cloud Service szolgáltatásra, ha a webalkalmazás növekszik és a követelmények változnak.
->
->
 
 Az oktatóanyag utasításait követve egy webes szerepkörben lévő egyszerű webalkalmazást fog létrehozni. A Compute Emulator használatával fogja elvégezni az alkalmazás helyi tesztelését, majd PowerShell parancssori eszközökkel a telepítését.
 
@@ -40,8 +38,6 @@ Az alkalmazás egy egyszerű „hello world” alkalmazás:
 ## <a name="prerequisites"></a>Előfeltételek
 > [!NOTE]
 > A jelen oktatóanyagban szereplő Azure PowerShell használatához Windows rendszer szükséges.
->
->
 
 * Telepítse és konfigurálja az [Azure PowerShell] eszközt.
 * Az [Azure SDK for .NET 2.7] letöltése és telepítése. A telepítőben válassza a következőket:
@@ -75,8 +71,6 @@ Hajtsa végre az alábbi feladatokat egy új Azure Cloud Service-projekt létreh
 
    > [!NOTE]
    > Ha nem ad meg egy nevet a szerepkörhöz, alapértelmezett név lesz használva. Az első parancsmag-paraméterként megadhat egy nevet: `Add-AzureNodeWebRole MyRole`
-   >
-   >
 
 A Node.js-alkalmazás a **server.js**-fájlban van meghatározva, amely a webes szerepkör könyvtárában található (alapértelmezés szerint **WebRole1**). A kód itt látható:
 
@@ -90,7 +84,9 @@ A Node.js-alkalmazás a **server.js**-fájlban van meghatározva, amely a webes 
 Ez a kód lényegében megegyezik a [nodejs.org] webhelyen található „Hello World” példával, azt leszámítva, hogy a felhőkörnyezet által hozzárendelt portszámot használja.
 
 ## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
-    [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+
+> [!NOTE]
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. [Aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF), vagy [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
 
 ### <a name="download-the-azure-publishing-settings"></a>Az Azure közzétételi beállítások letöltése
 Az alkalmazás közzétételéhez az Azure-ban először le kell töltenie a közzétételi beállításokat az Azure-előfizetéséhez.
@@ -106,12 +102,13 @@ Az alkalmazás közzétételéhez az Azure-ban először le kell töltenie a kö
 
        Import-AzurePublishSettingsFile [path to file]
 
-    > [AZURE.NOTE] A közzétételi beállítások importálása után érdemes törölni a letöltött .publishSettings-fájlt, ugyanis olyan információkat tartalmaz, amelyekkel mások hozzáférhetnek a fiókjához.
+    > [!NOTE]
+    > A közzétételi beállítások importálása után érdemes törölni a letöltött .publishSettings-fájlt, ugyanis olyan információkat tartalmaz, amelyekkel mások hozzáférhetnek a fiókjához.
 
 ### <a name="publish-the-application"></a>Az alkalmazás közzététele
 A közzétételhez futtassa a következő parancsokat:
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
+      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
     Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
 * A **-ServiceName** megadja a központi telepítés nevét. Ennek egyedi névnek kell lennie, máskülönben a közzétételi folyamat meghiúsul. A **Get-Date** parancs hozzátold egy dátum/idő karakterláncot, amely egyedivé teheti a nevet.
@@ -124,8 +121,6 @@ Miután a közzététel sikeresen megtörtént, a következőhöz hasonló vála
 
 > [!NOTE]
 > Az első közzététel alkalmával több percet is igénybe vehet, mire az alkalmazás települ, és elérhetővé válik.
->
->
 
 A telepítés befejezése után megnyílik egy ablak a böngészőben, amely megjeleníti a felhőszolgáltatást.
 
@@ -162,8 +157,6 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
 
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
-   >
-   >
 
 ## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ].
@@ -172,25 +165,25 @@ További információk: [Node.js fejlesztői központ].
 
 [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: ../app-service-web/choose-web-site-cloud-service-vm.md
 [egyszerűsített webalkalmazás használatát]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[Azure PowerShell]: ../powershell-install-configure.md
+[Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[PowerShell összekapcsolása]: ../powershell-install-configure.md#step-3-connect
+[PowerShell összekapcsolása]: /powershell/azureps-cmdlets-docs#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js fejlesztői központ]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
 
-[A New-AzureService helloworld parancs eredménye]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
-[Az Add-AzureNodeWebRole parancs kimenete]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
-[A webböngészőben megjelenő „Hello World” weboldal]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
-[A Publish-AzureService parancs kimenete]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
-[A „hello world” oldalt megjelenítő böngészőablak – az URL-cím azt jelzi, hogy az oldal az Azure-ban üzemel.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
-[A Stop-AzureService parancs állapota]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
-[A Remove-AzureService parancs állapota]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+[The result of the New-AzureService helloworld command]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
+[The output of the Add-AzureNodeWebRole command]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
+[A web browser displaying the Hello World web page]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
+[The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
+[A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
+[The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
+[The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

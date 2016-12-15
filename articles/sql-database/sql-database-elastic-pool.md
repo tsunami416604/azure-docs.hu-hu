@@ -1,92 +1,112 @@
 ---
-title: What is an Azure elastic pool? | Microsoft Docs
-description: Manage hundreds or thousands of databases using a pool. One price for a set of performance units can be distributed over the pool. Move databases in or out at will.
-keywords: elastic database,sql databases
+title: "Mi az az Azure rugalmas készlet? | Microsoft Docs"
+description: "A készletek segítségével több száz vagy több ezer adatbázist kezelhet egyszerre. Azonos árért több teljesítményegységet kap, amelyek szétoszthatók a készleten belül. Az adatbázisok szabadon hozzáadhatók vagy eltávolíthatók."
+keywords: "rugalmas adatbázis,sql-adatbázis"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: cgronlun
-
+editor: 
+ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
+ms.custom: sharded databases pool
 ms.devlang: NA
-ms.date: 07/12/2016
+ms.date: 12/06/2016
 ms.author: CarlRabeler
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 829229542c05477d427b15a9d862f414d9c730d6
+
 
 ---
-# What is an Azure elastic pool?
-SQL DB elastic pools provide a simple cost effective solution to manage the performance goals for multiple databases that have widely varying and unpredictable usage patterns.
+# <a name="what-is-an-azure-elastic-pool"></a>Mi az az Azure rugalmas készlet?
+Az SQL DB rugalmas készletek egyszerű, költséghatékony megoldást kínálnak az olyan adatbázisok teljesítménybeli céljainak kezelésére, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul változik.
 
 > [!NOTE]
-> Elastic pools are generally available (GA) in all Azure regions except West India where it is currently in preview.  GA of elastic pools in this region will occur as soon as possible.
-> 
-> 
+> A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek a lehető leghamarabb általánosan elérhetők lesznek ebben a régióban.
+>
+>
 
-## How it works
-A common SaaS application pattern is the single-tenant database model: each customer is given their own database. Each customer (database) has unpredictable resource requirements for memory, IO, and CPU. With these peaks and valleys of demand, how do you allocate resources efficiently and cost-effectively? Traditionally, you had two options: (1) over-provision resources based on peak usage and over pay, or (2) under-provision to save cost, at the expense of performance and customer satisfaction during peaks. Elastic pools solve this problem by ensuring that databases get the performance resources they need and when they need it. They provide a simple resource allocation mechanism within a predictable budget. To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+## <a name="how-it-works"></a>Működés
+Gyakori SaaS-alkalmazási minta az egybérlős adatbázismodell: minden ügyfél saját adatbázist kap. Minden ügyfél (adatbázis) kiszámíthatatlan erőforrásigényekkel rendelkezik a memóriát, adatátvitelt és processzorteljesítményt illetően. Hogyan lehet hatékonyan és költséghatékonyan erőforrásokat lefoglalni az igényekben mutatkozó csúcsokhoz és völgyekhez igazodva? Ennek hagyományosan két módja volt: (1) a szükségesnél több erőforrás biztosítása a kihasználtsági csúcs alapján, valamint túlfizetés; vagy (2) a szükségesnél kevesebb erőforrás biztosítása a költségek megtakarítása céljából, a csúcsidőszakokban nyújtott teljesítmény és az ügyfélelégedettség rovására. A rugalmas készletek úgy oldják meg ezt a problémát, hogy akkor biztosítják az adatbázisok számára a szükséges nagy teljesítményű erőforrásokat, amikor azokra szükség van. Egy egyszerű erőforrás-lefoglalási mechanizmust biztosítanak, kiszámítható költségekkel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
-> 
-> 
+>
+>
 
-In SQL Database, the relative measure of a database's ability to handle resource demands is expressed in Database Transaction Units (DTUs) for single databases and elastic DTUs (eDTUs) for elastic databases in an elastic pool. See the [Introduction to SQL Database](sql-database-technical-overview.md#understand-dtus) to learn more about DTUs and eDTUs.
+Az SQL Database-ban az adatbázisok erőforrásigény-kezelési képességének relatív mértékét az önálló adatbázisok esetében adatbázis-tranzakciós egységekkel (DTU), a rugalmas készletben található rugalmas adatbázisok esetében pedig rugalmas DTU-kkal (eDTU) fejezzük ki. További információk a DTU-król és eDTU-król: [Az SQL Database bemutatása](sql-database-technical-overview.md).
 
-A pool is given a set number of eDTUs, for a set price. Within the pool, individual databases are given the flexibility to auto-scale within set parameters. Under heavy load, a database can consume more eDTUs to meet demand. Databases under light loads consume less, and databases under no load consume no eDTUs. Provisioning resources for the entire pool rather than for single databases simplifies your management tasks. Plus you have a predictable budget for the pool.
+Egy készlethez egy adott számú eDTU tartozik, amelyek egy adott áron vehetők igénybe. A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt az adatbázisok több eDTU-t használhatnak fel, hogy megfeleljenek az igényeknek. A kisebb terhelésű adatbázisok kevesebbet, a terhelés alatt nem álló adatbázisok pedig egyáltalán nem használnak fel eDTU-kat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet költségei is kiszámíthatóak lesznek.
 
-Additional eDTUs can be added to an existing pool with no database downtime or no impact on the databases in the elastic pool. Similarly, if extra eDTUs are no longer needed they can be removed from an existing pool at any point in time.
+A létező készletekhez további eDTU-k is hozzáadhatók anélkül, hogy a rugalmas készlet adatbázisai leállnának, vagy bármilyen hatás érné őket. Ugyanígy ha az eDTU-kra már nincs szükség, bármikor el is távolíthatók a létező készletből.
 
-And you can add or subtract databases to the pool. If a database is predictably under-utilizing resources, move it out.
+Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
-## Which databases go in a pool?
-![SQL databases sharing eDTUs in an elastic database pool.][1]
+## <a name="which-databases-go-in-a-pool"></a>Mely adatbázisok kerülnek egy készletbe?
+![SQL-adatbázisok, amelyek eDTU-kon osztoznak egy rugalmas adatbáziskészletben.][1]
 
-Databases that are great candidates for elastic pools typically have periods of activity and other periods of inactivity. In the example above you see the activity of a single database, 4 databases, and finally an elastic pool with 20 databases. Databases with varying activity over time are great candidates for elastic pools because they are not all active at the same time and can share eDTUs. Not all databases fit this pattern. Databases that have a more constant resource demand are better suited to the Basic, Standard, and Premium service tiers where resources are individually assigned.
+A rugalmas készletekhez azokat az adatbázisokat a leginkább érdemes hozzáadni, amelyeknek vannak tipikusan aktív és inaktív időszakaik. A fenti példában egy önálló adatbázis, 4 adatbázis, végül pedig egy 20 adatbázist tartalmazó rugalmas készlet aktivitása látható. Az ingadozó aktivitású adatbázisok kitűnő jelöltek a rugalmas készletekhez, mivel nem mind egyszerre aktívak, és képesek osztozni az eDTU-kon. Ebbe a mintázatba nem minden adatbázis illik bele. Az egyenletesebb erőforrás-igényű adatbázisok számára jobban megfelelőek az Alapszintű, Standard és Prémium szolgáltatási csomagok, amelyekben az erőforrások hozzárendelése különállóan történik.
 
-[Price and performance considerations for an elastic pool](sql-database-elastic-pool-guidance.md).
+[Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md).
 
-## eDTU and storage limits for elastic pools and elastic databases.
+## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>Rugalmas készletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai
+
+Az alábbi táblázat ismerteti az Alapszintű, Standard és Prémium rugalmas adatbáziskészletek jellemzőit.
+
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
-If all DTUs of an elastic pool are used, then each database in the pool receives an equal amount of resources to process queries.  The SQL Database service provides resource sharing fairness between databases by ensuring equal slices of compute time. Elastic pool resource sharing fairness is in addition to any amount of resource otherwise guaranteed to each database when the DTU min per database is set to a non-zero value.
+Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához.  Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
 
-## Elastic pool and elastic database properties
-### Limits for elastic pools
-| Property | Description |
+## <a name="elastic-pool-and-elastic-database-properties"></a>Rugalmas készletek és rugalmas adatbázisok tulajdonságai
+
+A következő táblázatok leírják a rugalmas készletekre és rugalmas adatbázisokra vonatkozó korlátokat.
+
+### <a name="limits-for-elastic-pools"></a>Rugalmas készletek korlátai
+| Tulajdonság | Leírás |
 |:--- |:--- |
-| Service tier |Basic, Standard, or Premium. The service tier determines the range in performance and storage limits that can be configured as well as business continuity choices. Every database within a pool has the same service tier as the pool. “Service tier” is also referred to as “edition.” |
-| eDTUs per pool |The maximum number of eDTUs that can be shared by databases in the pool. The total eDTUs used by databases in the pool cannot exceed this limit at the same point in time. |
-| Max storage per pool (GB) |The maximum amount of storage in GBs that can be shared by databases in the pool. The total storage used by databases in the pool cannot exceed this limit. This limit is determined by the eDTUs per pool. If this limit is exceeded, all databases become read-only. |
-| Max number of databases per pool |The maximum number of databases allowed per pool. |
-| Max concurrent workers per pool |The maximum number of concurrent workers (requests) available for all databases in the pool. |
-| Max concurrent logins per pool |The maximum number of concurrent logins for all databases in the pool. |
-| Max concurrent sessions per pool |The maximum number of sessions available for all databases in the pool. |
+| Szolgáltatásszint |Alapszintű, Standard vagy Prémium. A szolgáltatásszint határozza meg a konfigurálható teljesítmény- és tárhelykorlát-tartományokat, valamint az üzletmenet-folytonossági lehetőségeket. Egy adott készleten belül minden adatbázis ugyanahhoz a szolgáltatásszinthez tartozik, mint a készlet. A szolgáltatásszinteket más néven kiadásoknak is hívjuk. |
+| eDTU-k száma készletenként |A készletben található adatbázisok között megosztható eDTU-k maximális száma. A készletben található adatbázisok által egy időpontban használt eDTU-k teljes száma nem haladhatja meg ezt a korlátot. |
+| Maximális tárterület készletenként (GB) |A készletben található adatbázisok között megosztható tárterület maximális mennyisége (GB-ban). A készletben található adatbázisok által használt tárterület teljes mennyisége nem haladhatja meg ezt a korlátot. Ezt a korlátot az eDTU-k készletenkénti száma határozza meg. Ha a felhasznált tárterület-mennyiség túllépi ez a korlátot, minden adatbázis csak olvashatóvá válik. |
+| Adatbázisok maximális száma készletenként |A készletenként engedélyezett adatbázisok maximális száma. |
+| Egyidejű feldolgozók maximális száma készletenként |Az egy készletben található adatbázisok számára egyidejűleg összesen elérhető feldolgozók (kérések) maximális száma. |
+| Egyidejű bejelentkezések maximális száma készletenként |Az egy készletben található adatbázisok számára egyidejűleg összesen elérhető bejelentkezések maximális száma. |
+| Egyidejű munkamenetek maximális száma készletenként |Az egy készletben található adatbázisok számára összesen elérhető munkamenetek maximális száma. |
 
-### Limits for elastic databases
-| Property | Description |
+### <a name="limits-for-elastic-databases"></a>Rugalmas adatbázisok korlátai
+| Tulajdonság | Leírás |
 |:--- |:--- |
-| Max eDTUs per database |The maximum number of eDTUs that any database in the pool may use, if available based on utilization by other databases in the pool.  Max eDTU per database is not a resource guarantee for a database.  This setting is a global setting that applies to all databases in the pool. Set max eDTUs per database high enough to handle peaks in database utilization. Some degree of overcommitting is expected since the pool generally assumes hot and cold usage patterns for databases where all databases are not simultaneously peaking. For example, suppose the peak utilization per database is 20 eDTUs and only 20% of the 100 databases in the pool are peak at the same time.  If the eDTU max per database is set to 20 eDTUs, then it is reasonable to overcommit the pool by 5 times, and set the eDTUs per pool to 400. |
-| Min eDTUs per database |The minimum number of eDTUs that any database in the pool is guaranteed.  This setting is a global setting that applies to all databases in the pool. The min eDTU per database may be set to 0, and is also the default value. This property is set to anywhere between 0 and the average eDTU utilization per database. The product of the number of databases in the pool and the min eDTUs per database cannot exceed the eDTUs per pool.  For example, if a pool has 20 databases and the eDTU min per database set to 10 eDTUs, then the eDTUs per pool must be at least as large as 200 eDTUs. |
-| Max storage per database (GB) |The maximum storage for a database in a pool. Elastic databases share pool storage, so database storage is limited to the smaller of remaining pool storage and max storage per database. |
+| eDTU-k maximális száma adatbázisonként |A készletben található adatbázisok bármelyike által használható eDTU-k maximális száma (az elérhetőség a készletben található további adatbázisok kihasználtságától függ).  Az eDTU adatbázisonkénti maximális száma nem garantálja az erőforrásokat az adatbázisok számára.  Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU-k adatbázisonkénti maximális számát állítsa elég magasra ahhoz, hogy az adatbázis-kihasználtsági csúcsokkal is elbírjon. Elvárható, hogy a szükségesnél valamivel nagyobb értéket adjon meg, mivel a készlet általában hullámzó használati mintákat feltételez az adatbázisokkal kapcsolatban, amelyekben az adatbázisok kihasználtsága nem egyszerre éri el a csúcsértéket. Például tegyük fel, hogy az adatbázisonkénti felhasználási csúcs 20 eDTU, és a készletben található 100 adatbázisnak egyszerre csak a 20%-a éri el a csúcsot.  Ha az eDTU-k adatbázisonkénti maximális száma 20-ra van állítva, akkor észszerű a készletet ötszörösen túlméretezni, és az eDTU-k készletenkénti számát 400-ra állítani. |
+| eDTU-k minimális száma adatbázisonként |A készletben található adatbázisok mindegyike számára garantált eDTU-k minimális száma.  Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU adatbázisonkénti minimális száma lehet 0, ami egyben az alapértelmezett érték is. Ezen tulajdonság értékeként egy 0 és az adatbázisonkénti átlagosan használt eDTU-k száma közötti mennyiséget adjon meg. A készletben található adatbázisok számának és az eDTU-k adatbázisonkénti minimális számának szorzata nem lehet magasabb az eDTU-k készletenkénti számánál.  Például ha egy készletben 20 adatbázis van, és az eDTU-k adatbázisonkénti minimális száma 10-re van állítva, akkor az eDTU-k készletenkénti száma legalább 200 kell, hogy legyen. |
+| Maximális tárterület adatbázisonként (GB) |A készletben található adatbázisok maximális tárterülete. A rugalmas adatbázisok osztoznak a készlet tárterületein, így az adatbázisok számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut. |
 
-## Elastic database jobs
-With a pool, management tasks are simplified by running scripts in **[elastic jobs](sql-database-elastic-jobs-overview.md)**. An elastic database job eliminates most of tedium associated with large numbers of databases. To begin, see [Getting started with Elastic Database jobs](sql-database-elastic-jobs-getting-started.md).
+## <a name="elastic-database-jobs"></a>Rugalmas adatbázis-feladatok
+A készletek használata leegyszerűsíti a felügyeleti feladatokat, mivel a szkriptek **[rugalmas feladatokban](sql-database-elastic-jobs-overview.md)** futtathatók. A rugalmas adatbázis-feladatok használatával kiküszöbölhető a nagy számú adatbázis kezelésével járó monotonitás. Az első lépésekért lásd: [Ismerkedés a rugalmas adatbázis-feladatokkal](sql-database-elastic-jobs-getting-started.md).
 
-For more information about other tools, see the [Elastic database tools learning map](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/).
+További információk a rugalmas adatbázisok további eszközeiről:[Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md).
 
-## Business continuity features for databases in a pool
-Elastic databases generally support the same [business continuity features](sql-database-business-continuity.md) that are available to single databases in V12 servers.
+## <a name="business-continuity-features-for-databases-in-a-pool"></a>A készletben található adatbázisok üzletmenet-folytonossági funkciói
+A rugalmas adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek a V12-kiszolgálókon futó önálló adatbázisokhoz is elérhetők.
 
-### Point in time restore
-Point-in-time-restore uses automatic database backups to recover a database in a pool to a specific point in time. See [Point-In-Time Restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
+Az időponthoz kötött visszaállítás az automatikus adatbázis-biztonságimentések használatával állít vissza egy készlethez tartozó adatbázist egy megadott időpontra. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-### Geo-Restore
-Geo-Restore provides the default recovery option when a database is unavailable because of an incident in the region where the database is hosted. See [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) 
+### <a name="geo-restore"></a>Georedundáns helyreállítás
+A georedundáns helyreállítás biztosítja az alapértelmezett helyreállítási lehetőséget arra az esetre, ha egy adatbázis elérhetetlenné válik valamilyen, az adatbázist futtató kiszolgáló régiójában bekövetkező esemény miatt. Lásd: [Az Azure SQL Database visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 
-### Active Geo-Replication
-For applications that have more aggressive recovery requirements than Geo-Restore can offer, configure Active Geo-Replication using the [Azure portal](sql-database-geo-replication-portal.md), [PowerShell](sql-database-geo-replication-powershell.md), or [Transact-SQL](sql-database-geo-replication-transact-sql.md).
+### <a name="active-geo-replication"></a>Aktív georeplikáció
+A georedundáns helyreállítás által kínált lehetőségeknél agresszívabb helyreállítási követelményekkel bíró alkalmazásokhoz konfigurálja az aktív georeplikációt az [Azure Portal](sql-database-geo-replication-portal.md), a [PowerShell](sql-database-geo-replication-powershell.md) vagy a [Transact-SQL](sql-database-geo-replication-transact-sql.md) használatával.
+
+## <a name="additional-resources"></a>További források
+* [Microsoft Virtual Academy videotanfolyam a rugalmas adatbázisok képességeiről](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
+
+
+
+<!--HONumber=Dec16_HO1-->
+
+

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
+ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 
 ---
@@ -91,6 +91,7 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
 8. Mentse el a módosításokat, majd a git segítségével telepítse az alkalmazást az Azure-ban:
    
         git add .
+        git add -f config
         git commit -m "{your commit message}"
         git push azure master
    
@@ -186,7 +187,7 @@ Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
    
     ![Egy iisnode naplófájl vizsgálata.][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-nodeinspector"></a>Alkalmazás hibakeresése a Node-Inspector használatával
+## <a name="debug-your-app-with-node-inspector"></a>Alkalmazás hibakeresése a Node-Inspector használatával
 Ha a Node-Inspector segítségével szeretne hibakeresést végezni a Node.js alkalmazásokon, használhatja azt az élő App Service alkalmazáshoz. A Node-Inspector előre telepítve van az App Service iisnode telepítésében. Ha a Git segítségével végzi a telepítést, a Kudu automatikusan generált Web.config eleme már tartalmazza a Node-Inspector engedélyezéséhez szükséges összes konfigurációt.
 
 A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
@@ -235,7 +236,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [regisztráljon egy ingyenes próbaverzióra]: http://go.microsoft.com/fwlink/?LinkId=623901
-[webalkalmazás]: ./app-service-web-overview.md
+[web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -247,6 +248,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

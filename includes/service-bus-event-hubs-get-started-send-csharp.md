@@ -12,19 +12,19 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     A Visual Studio letölti és telepíti az [Azure Service Bus library NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (Azure szolgáltatásbusz-könyvtár NuGet-csomag) elemet, és hozzáad egy rá mutató hivatkozást is.
 4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
-    ```
+    ```csharp
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
 5. Adja hozzá a következő mezőket a **Program** osztályhoz, lecserélve a helyőrző értékeket az előző szakaszban létrehozott eseményközpont nevével, valamint a korábban elmentett névtérszintű kapcsolati karakterlánccal.
    
-    ```
+    ```csharp
     static string eventHubName = "{Event Hub name}";
     static string connectionString = "{send connection string}";
     ```
 6. Adja hozzá a **Program** osztályhoz a következő módszert:
    
-    ```
+    ```csharp
     static void SendingRandomMessages()
     {
         var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
@@ -51,7 +51,7 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának 200 ezredmásodperces késleltetéssel.
 7. Végül adja a következő sorokat a **Main** metódushoz:
    
-    ```
+    ```csharp
     Console.WriteLine("Press Ctrl-C to stop the sender process");
     Console.WriteLine("Press Enter to start now");
     Console.ReadLine();
@@ -60,6 +60,6 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

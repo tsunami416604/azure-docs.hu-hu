@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/21/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 60e47e8fd0933ecd25b3bca6085edcd5785dc580
-ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 
 ---
@@ -131,7 +131,7 @@ Az adathalmazok elemzése előtt általában némi előfeldolgozás szükséges.
 
 Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** (normalizált veszteségek) oszlopot, majd hozzáadunk egy másik modult, amely eltávolítja az összes sort, amelyből adatok hiányoznak.
 
-1. A modulpaletta tetején található keresőmezőbe gépelje be a **select columns** (oszlopok kijelölése) kifejezést. A rendszer megjeleníti a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modult, ekkor húzza ezt a kísérletvászonra. Ezzel a modullal kiválaszthatjuk, hogy melyik adatoszlopokat szeretnénk bevonni a modellbe, vagy éppen kizárni a modellből.
+1. A modulpaletta tetején található keresőmezőbe gépelje be a **select columns** (oszlopok kijelölése) kifejezést, és amikor a rendszer megjeleníti a [Adathalmaz oszlopainak kijelölése][select-columns] modult, húzza azt a kísérletvászonra. Ezzel a modullal kiválaszthatjuk, hogy melyik adatoszlopokat szeretnénk bevonni a modellbe, vagy éppen kizárni a modellből.
 
 2. Kösse össze az **Automobile price data (Raw)** (Autóárak adatai (nyers)) című adathalmaz kimeneti portját a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul bemeneti portjával.
 
@@ -157,7 +157,7 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** (n
     ***A tulajdonságok panelen látható, hogy a „normalized-losses” ( normalizált veszteségek) oszlop ki van zárva***
 
     > [!TIP]
-    > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. A jelen esetben kattintson a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, és írja be: „A normalized-losses oszlop kizárása”.
+    > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. A jelen esetben kattintson duplán a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, és írja be az „Exclude normalized losses” (A normalized-losses oszlop kizárása) szöveget.
 
     ![Megjegyzés hozzáadása egy modulhoz dupla kattintással][add-comment]
     <br/>
@@ -178,7 +178,7 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** (n
 ***A kísérlet várható megjelenése a futtatás után***
 
 > [!TIP]
-> Miért futtattuk a kísérletet most? A kísérlet futtatásával biztosítható, hogy az adatokhoz tartozó oszlopdefiníciók az adatkészletből a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulon és a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulon keresztülhaladnak. Ez azt jelenti, hogy a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulhoz kapcsolt modulok is megkapják ugyanezeket az adatokat.
+> Miért futtattuk a kísérletet most? A kísérlet futtatásával biztosítható, hogy az adatokhoz tartozó oszlopdefiníciók az adatkészletből áthaladnak a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulon és a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulon. Ez azt jelenti, hogy a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulhoz kapcsolt modulok is megkapják ugyanezeket az adatokat.
 
 Eddig még csupán az adatok megtisztítását végeztük el a kísérletben. Ha szeretné megtekinteni a megtisztított adathalmazt, kattintson a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modul bal oldali kimeneti portjára, és válassza a **Visualize** (Képi megjelenítés) lehetőséget. Láthatja, hogy a **normalized-losses** oszlop eltűnt, ahogy a hiányzó értékek is.
 
@@ -233,9 +233,9 @@ A modell betanításához az árat tartalmazó adathalmazt biztosítunk számár
 
 Az adatok a modell betanítására és tesztelésére is használhatók. Ehhez két halmazra, egy tanítási és egy tesztelési halmazra osztjuk fel az adatokat.
 
-1. Jelölje ki, majd húzza a kísérletvászonra a [Split Data][felosztás] (Adatok felosztása) modult, majd kösse össze a legutóbb használt [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal.
+1. Jelölje ki, majd húzza a kísérletvászonra a [Split Data][split] (Adatok felosztása) modult, majd kösse össze a legutóbb használt [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal.
 
-2. Kattintással válassza ki a [Split Data][felosztás] (Adatok felosztása) modult. Keresse meg a **Properties** (Tulajdonságok) panelen a vászontól jobbra a **Fraction of rows in the first output dataset** (Sorok hányadosa az első kimeneti adathalmazban) beállítást, és adja meg a 0,75 értéket. Így az adatok 75 százalékát a modell betanítására, 25 százalékát pedig a modell tesztelésére használhatjuk (a későbbiekben más százalékokkal is elvégezheti a kísérletet).
+2. Kattintással jelölje ki a [Split Data][split] (Adatok felosztása) modult. Keresse meg a **Properties** (Tulajdonságok) panelen a vászontól jobbra a **Fraction of rows in the first output dataset** (Sorok hányadosa az első kimeneti adathalmazban) beállítást, és adja meg a 0,75 értéket. Így az adatok 75 százalékát a modell betanítására, 25 százalékát pedig a modell tesztelésére használhatjuk (a későbbiekben más százalékokkal is elvégezheti a kísérletet).
 
     ![A „Split Data” (Adatok felosztása) modul felosztási értékének beállítása 0,75-re][set-split-data-percentage]
     <br/>
@@ -244,12 +244,12 @@ Az adatok a modell betanítására és tesztelésére is használhatók. Ehhez k
     > [!TIP]
     > A **Random seed** (Véletlenszám-generálás kezdőértéke) paraméter módosításával különböző véletlenszerűen kiválasztott mintákat hozhat létre, amelyeket szintén felhasználhat a modell betanítására és tesztelésére. Ez a paraméter szabályozza a pszeudo-véletlenszám-generátor kezdőértékét.
 
-2. Futtassa a kísérletet. A kísérlet futásakor a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) és a [Split Data][felosztás] (Adatok felosztása) modul átadja a következőkben hozzáadott moduloknak az oszlopdefiníciókat.  
+2. Futtassa a kísérletet. A kísérlet futtatásakor a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) és a [Split Data][split] (Adatok felosztása) modul átadja a következőkben hozzáadott moduloknak az oszlopdefiníciókat.  
 
 3. A tanulási algoritmus kiválasztásához bontsa ki a vászontól balra, a modulpalettán található **Machine Learning** (Gépi tanulás) kategóriát, majd bontsa ki az **Initialize Model** (Inicializálási modell) kategóriát is. Itt számos modulkategória közül választhat, amelyek segítségével inicializálható a gépi tanulási algoritmus. Ehhez a kísérlethez válassza a **Regression** (Regresszió) kategóriában található [Linear Regression][linear-regression] (Lineáris regresszió) modult, majd húzza a kísérletvászonra.
 (A modult úgy is megkeresheti, ha a paletta keresőmezőjébe beírja a „linear regression” kifejezést.)
 
-4. Keresse meg, majd húzza a kísérletvászonra a [Train Model][train-model] (Modell betanítása) modult. Kösse össze a [Linear Regression][linear-regression] (Lineáris regresszió) modul kimenetét a [Train Model][train-model] (Modell betanítása) modul bal oldali bemenetével, és kösse össze a [Split Data][felosztás] (Adatok felosztása) modul adatbetanítási kimenetét (bal oldali port) a [Train Model][train-model] (Modell betanítása) modul jobb oldali bemenetével.
+4. Keresse meg, majd húzza a kísérletvászonra a [Train Model][train-model] (Modell betanítása) modult. Kösse össze a [Linear Regression][linear-regression] (Lineáris regresszió) modul kimenetét a [Train Model][train-model] (Modell betanítása) modul bal oldali bemenetével, és kösse össze a [Split Data][split] (Adatok felosztása) modul adatbetanítási kimenetét (bal oldali port) a [Train Model][train-model] (Modell betanítása) modul jobb oldali bemenetével.
 
     ![A „Train Model” (Modell betanítása) modul összekötése a „Linear Regression” (Lineáris regresszió) és a „Split Data” (Adatok felosztása) modulokkal][connect-train-model]
     <br/>
@@ -275,13 +275,13 @@ Ezzel kapunk egy betanított regressziós modellt, amely képes pontszámot rend
 
 Most, hogy adataink 75 százalékával betanítottuk a modellt, a maradék 25 százalék pontozásával megállapíthatjuk, hogy mennyire működik jól.
 
-1. Keresse meg, majd húzza a kísérletvászonra a [Score Model][score-model] (Modell pontozása) modult. Kösse össze [Train Model][train-model] (Modell betanítása) modul kimenetét a [Score Model][score-model] (Modell pontozása) bal oldali bemeneti portjával. Kösse össze a [Split Data][felosztás] (Adatok felosztása) modul tesztelési adatokat tartalmazó kimenetét (jobb oldali portját) a [Score Model][score-model] (Modell pontozása) modul jobb oldali bemeneti portjával.
+1. Keresse meg, majd húzza a kísérletvászonra a [Score Model][score-model] (Modell pontozása) modult. Kösse össze a [Train Model][train-model] (Modell betanítása) modul kimenetét a [Score Model][score-model] (Modell pontozása) modul bal oldali bemeneti portjával. Kösse össze a [Split Data][split] (Adatok felosztása) modul tesztelési adatokat tartalmazó kimenetét (jobb oldali portját) a [Score Model][score-model] (Modell pontozása) modul jobb oldali bemeneti portjával.
 
     ![A „Score Model” (Modell pontozása) modul összekötése a „Train Model” (Modell betanítása) és a „Split Data” (Adatok felosztása) modulokkal][connect-score-model]
     <br/>
     ***A „Score Model” (Modell pontozása) modul összekötése a „Train Model” (Modell betanítása) és a „Split Data” (Adatok felosztása) modulokkal***
 
-2. Futtassa a kísérletet, és tekintse meg a [Score Model][score-model] (Modell pontozása) modul eredményét (kattintson a [Score Model][score-model] (Modell pontozása) modul kimeneti portjára, majd válassza a **Visualize** (Képi megjelenítés lehetőséget)). A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
+2. Futtassa a kísérletet, és tekintse meg a [Score Model][score-model] (Modell pontozása) modul eredményét (kattintson a [Score Model][score-model] modul kimeneti portjára, majd válassza a **Visualize** (Képi megjelenítés) lehetőséget). A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
 
     ![A „Score Model” (Modell pontozása) modul kimenete][score-model-output]
     <br/>
@@ -322,19 +322,19 @@ Az elkészült kísérletnek a következőképpen kell kinéznie:
 
 Most, hogy az első Machine Learning oktatóanyag végére ért, és beállította kísérletét, tovább dolgozhat a modell javításán, majd üzembe helyezheti prediktív webszolgáltatásként.
 
-- **A modell továbbfejlesztése a művelet ismétlésével** – Például módosíthatja az előrejelzéshez használt jellemzők körét. Vagy megváltoztathatja a [Linear Regression][linear-regression] (Lineáris regresszió) algoritmus tulajdonságait, vagy akár egy teljesen más algoritmust is kipróbálhat. Akár két különböző gépi tanulási algoritmus segítségével is futtathatja a kísérletet, majd az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul használatával összehasonlíthatja az eredményeket.
+- **A modell továbbfejlesztése a művelet ismétlésével** – Például módosíthatja az előrejelzéshez használt jellemzők körét. Emellett módosíthatja a [Linear Regression][linear-regression] (Lineáris regresszió) algoritmus tulajdonságait, vagy akár egy teljesen más algoritmust is kipróbálhat. Akár két különböző gépi tanulási algoritmus segítségével is futtathatja a kísérletet, majd az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul használatával összehasonlíthatja az eredményeket.
 Több modell összehasonlítására egyetlen kísérletben a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) (Regresszorok összehasonlítása) részében találhat példát.
 
     > [!TIP]
-    > Az ismétlések egy példányának másolásához használja a kísérletvászon alatt található **SAVE AS** (Mentés másként) gombot. A kísérlet összes ismétlésének megtekintéséhez kattintson a vászon alatti **VIEW RUN HISTORY** (Futtatási előzmények megtekintése) elemre. További információk: [Manage experiment iterations in Azure Machine Learning Studio][runhistory] (Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban).
+    > Az ismétlések egy példányának másolásához használja a kísérletvászon alatt található **SAVE AS** (Mentés másként) gombot. A kísérlet összes ismétlésének megtekintéséhez kattintson a vászon alatti **VIEW RUN HISTORY** (Futtatási előzmények megtekintése) elemre. További információ: [Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban][runhistory].
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-- **A modell telepítése prediktív webszolgáltatásként** – Ha már elégedett a modellel, helyezze üzembe webszolgáltatásként, amely új adatok alapján képes előre jelezni az autók árát. További információk: [Deploy an Azure Machine Learning web service][publish] (Azure Machine Learning-webszolgáltatás üzembe helyezése).
+- **A modell telepítése prediktív webszolgáltatásként** – Ha már elégedett a modellel, helyezze üzembe webszolgáltatásként, amely új adatok alapján képes előre jelezni az autók árát. További információ: [Azure Machine Learning-webszolgáltatás üzembe helyezése][publish].
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 
-Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek létrehozásához, tanításához, pontozásához és üzembe helyezéséhez használható folyamatot, olvassa el a [Develop a predictive solution by using Azure Machine Learning][walkthrough] (Prediktív megoldás létrehozása az Azure Machine Learning segítségével) című cikket.
+Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek létrehozásához, tanításához, pontozásához és üzembe helyezéséhez használható folyamatot, olvassa el [a prediktív megoldások Azure Machine Learning segítségével való fejlesztését][walkthrough] ismertető cikket.
 
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
@@ -372,11 +372,11 @@ Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek l�
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[felosztás]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "Az Azure portálon létrehozhat egy új tárfiókot, kezelheti a f
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 5e4f4360-3f81-4d63-a0b1-e7771b67af11
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 90e9fcf933173b5609eff70fa1ce4bfa027fee3d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 879e199f0c712a46b89a686d6a3dd8dd877821e4
 
 
 ---
@@ -99,7 +99,7 @@ A tárfiókban lévő objektumok eléréséhez szükséges URL-cím az objektum 
 
 Emellett konfigurálhat egy egyéni tartománynevet a tárfiókkal való használatra. További részletek: [Configure a custom domain name for your blob storage endpoint](storage-custom-domain-name.md) (Egyéni tartományév konfigurálása a Blob Storage-végponthoz).
 
-### <a name="service-colocation-with-an-affinity-group"></a>Szolgáltatások közös elhelyezése affinitáscsoporttal
+### <a name="service-co-location-with-an-affinity-group"></a>Szolgáltatások közös elhelyezése affinitáscsoporttal
 Az *affinitáscsoport* az Azure szolgáltatásainak és virtuális gépeinek földrajzi csoportosítása Azure tárfiókjával. Az affinitáscsoport javíthatja a szolgáltatás teljesítményét, ha a számítási feladatok azonos adatközpontba vagy a célközönség közelébe vannak helyezve. Emellett a kimenő adatforgalmi díjak sem merülnek fel, ha a tárfiókban lévő adatokat egy olyan másik szolgáltatás használja, amely ugyanabban az affinitáscsoportban van.
 
 > [!NOTE]
@@ -175,6 +175,6 @@ A már nem használt tárfiókok törléséhez használja a **Törlés** gombot 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

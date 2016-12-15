@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ac37244d1e691a2f075116f3d78b89923cfb845
 
 
 ---
@@ -78,7 +78,7 @@ Amikor először hoz létre Recovery Services-tárolót, meghatározza a tárol�
 
 Most, hogy létrehozott egy tárolót, előkészíti az infrastruktúrát a fájlok és mappák biztonsági mentéséhez. Ehhez letölti a Microsoft Azure Recovery Services-ügynököt és a tároló hitelesítő adatait.
 
-## <a name="step-3-download-files"></a>3. lépés – Fájlok letöltése
+## <a name="step-3---download-files"></a>3. lépés – Fájlok letöltése
 1. A Recovery Services-tároló irányítópultján kattintson a **Beállítások** elemre.
    
     ![A biztonsági mentés célja panel megnyitása](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
@@ -102,7 +102,7 @@ Most, hogy létrehozott egy tárolót, előkészíti az infrastruktúrát a fáj
    
     ![infrastruktúra előkészítése](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
-## <a name="step-4-install-and-register-the-agent"></a>4. lépés – Az ügynök telepítése és regisztrálása
+## <a name="step-4--install-and-register-the-agent"></a>4. lépés – Az ügynök telepítése és regisztrálása
 > [!NOTE]
 > A biztonsági mentés Azure Portalon keresztüli engedélyezése hamarosan elérhető lesz. Jelenleg a Microsoft Azure Recovery Services-ügynökkel a helyszínen készít biztonsági másolatokról a fájlokról és mappákról.
 > 
@@ -184,6 +184,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

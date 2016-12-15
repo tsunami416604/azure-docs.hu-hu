@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: timlt
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7b9358183d884dfeda3d200ef5ae8beb60d3957e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e8f1ad596d2b64380876a501ebcf127afdda9ccf
 
 
 ---
@@ -47,7 +47,7 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## <a name="deploy-a-dockerformatted-container"></a>Docker-formátumú tároló üzembe helyezése
+## <a name="deploy-a-docker-formatted-container"></a>Docker-formátumú tároló üzembe helyezése
 A Docker-formátumú tárolók Marathon segítségével való üzembe helyezéséhez egy olyan JSON-fájlt kell használnia, amelyben megadhatja a kívánt üzembe helyezéssel kapcsolatos információkat. Az alábbi példában, amely egy Nginx-tároló üzembe helyezését szemlélteti, a DC/OS-ügynök 80-as portja a tároló 80-as portjával van összekötve. Figyelje meg, hogy az „acceptedResourceRoles” tulajdonság értéke „slave_public”. Ezáltal a tároló egy nyilvános ügynökskálázási készletben lévő ügynökön lesz üzembe helyezve.
 
 ```json
@@ -174,6 +174,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
