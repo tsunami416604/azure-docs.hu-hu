@@ -135,38 +135,39 @@ Ebben a lépésben létrehozza az **InputDataset** nevű adatkészletet, amely e
     ![Új adatkészlet menü](./media/data-factory-copy-activity-tutorial-using-azure-portal/new-dataset-menu.png)
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre: 
    
-        {
-          "name": "InputDataset",
-          "properties": {
-            "structure": [
-              {
-                "name": "FirstName",
-                "type": "String"
-              },
-              {
-                "name": "LastName",
-                "type": "String"
-              }
-            ],
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-              "folderPath": "adftutorial/",
-              "fileName": "emp.txt",
-              "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
-              }
-            },
-            "external": true,
-            "availability": {
-              "frequency": "Hour",
-              "interval": 1
-            }
+    ```JSON
+    {
+      "name": "InputDataset",
+      "properties": {
+        "structure": [
+          {
+            "name": "FirstName",
+            "type": "String"
+          },
+          {
+            "name": "LastName",
+            "type": "String"
           }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+          "folderPath": "adftutorial/",
+          "fileName": "emp.txt",
+          "format": {
+            "type": "TextFormat",
+            "columnDelimiter": ","
+          }
+        },
+        "external": true,
+        "availability": {
+          "frequency": "Hour",
+          "interval": 1
         }
-   
-     Vegye figyelembe a következő szempontokat: 
+      }
+    }
+    ```   
+    Vegye figyelembe a következő szempontokat: 
    
    * Az adatkészlet **típusa** **AzureBlob** értékre van állítva.
    * A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. Ezt a társított szolgáltatást a 2. lépésben hozta létre.
@@ -180,16 +181,18 @@ Ebben a lépésben létrehozza az **InputDataset** nevű adatkészletet, amely e
      Ha nem adja meg a **fileName** (fájlnév) paramétert a **kimeneti táblához**, a **folderPath** útvonalon előállított fájlok a következő formátumban lesznek elnevezve: &lt;Guid\&gt;.txt (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
      
      Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a **partitionedBy** tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2016-09-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2016/09/20, a fileName beállítása pedig 08.csv lesz. 
-     
-           "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-           "fileName": "{Hour}.csv",
-           "partitionedBy": 
-           [
-               { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-               { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-               { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-               { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-           ],
+
+    ```JSON     
+    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+    "fileName": "{Hour}.csv",
+    "partitionedBy": 
+    [
+       { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+       { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+       { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+       { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+    ],
+    ```
 3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **InputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **InputDataset** adatkészlet megjelenik a fanézetben.
 
 > [!NOTE]
@@ -202,33 +205,34 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
 
 1. A Data Factory **szerkesztőjében** kattintson a **... Továbbiak**, majd az **Új adatkészlet**, végül az **Azure SQL** elemre a legördülő menüben. 
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre:
-   
-        {
-          "name": "OutputDataset",
-          "properties": {
-            "structure": [
-              {
-                "name": "FirstName",
-                "type": "String"
-              },
-              {
-                "name": "LastName",
-                "type": "String"
-              }
-            ],
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": {
-              "tableName": "emp"
-            },
-            "availability": {
-              "frequency": "Hour",
-              "interval": 1
-            }
+
+    ```JSON   
+    {
+      "name": "OutputDataset",
+      "properties": {
+        "structure": [
+          {
+            "name": "FirstName",
+            "type": "String"
+          },
+          {
+            "name": "LastName",
+            "type": "String"
           }
+        ],
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties": {
+          "tableName": "emp"
+        },
+        "availability": {
+          "frequency": "Hour",
+          "interval": 1
         }
-   
-     Vegye figyelembe a következő szempontokat: 
+      }
+    }
+    ```     
+    Vegye figyelembe a következő szempontokat: 
    
    * Az adatkészlet **type** (típus) tulajdonsága **AzureSQLTable** értékre van állítva.
    * A **linkedServiceName** tulajdonság az **AzureSqlLinkedService** értékre van állítva (ezt a társított szolgáltatást a 2. lépésben hozta létre).
@@ -247,48 +251,50 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező fol
 
 1. A Data Factory **szerkesztőjében** kattintson a **... Továbbiak**, majd az **Új adatcsatorna** elemre. Azt is megteheti, hogy a jobb gombbal a **Pipelines** (Folyamatok) elemre kattint a fanézetben, majd a **New pipeline** (Új folyamat) parancsot választja.
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre: 
-   
-        {
-          "name": "ADFTutorialPipeline",
-          "properties": {
-            "description": "Copy data from a blob to Azure SQL table",
-            "activities": [
+
+    ```JSON   
+    {
+      "name": "ADFTutorialPipeline",
+      "properties": {
+        "description": "Copy data from a blob to Azure SQL table",
+        "activities": [
+          {
+            "name": "CopyFromBlobToSQL",
+            "type": "Copy",
+            "inputs": [
               {
-                "name": "CopyFromBlobToSQL",
-                "type": "Copy",
-                "inputs": [
-                  {
-                    "name": "InputDataset"
-                  }
-                ],
-                "outputs": [
-                  {
-                    "name": "OutputDataset"
-                  }
-                ],
-                "typeProperties": {
-                  "source": {
-                    "type": "BlobSource"
-                  },
-                  "sink": {
-                    "type": "SqlSink",
-                    "writeBatchSize": 10000,
-                    "writeBatchTimeout": "60:00:00"
-                  }
-                },
-                "Policy": {
-                  "concurrency": 1,
-                  "executionPriorityOrder": "NewestFirst",
-                  "retry": 0,
-                  "timeout": "01:00:00"
-                }
+                "name": "InputDataset"
               }
             ],
-            "start": "2016-07-12T00:00:00Z",
-            "end": "2016-07-13T00:00:00Z"
+            "outputs": [
+              {
+                "name": "OutputDataset"
+              }
+            ],
+            "typeProperties": {
+              "source": {
+                "type": "BlobSource"
+              },
+              "sink": {
+                "type": "SqlSink",
+                "writeBatchSize": 10000,
+                "writeBatchTimeout": "60:00:00"
+              }
+            },
+            "Policy": {
+              "concurrency": 1,
+              "executionPriorityOrder": "NewestFirst",
+              "retry": 0,
+              "timeout": "01:00:00"
+            }
           }
-        } 
-   
+        ],
+        "start": "2016-07-12T00:00:00Z",
+        "end": "2016-07-13T00:00:00Z"
+      }
+    } 
+    ```   
+    
     Vegye figyelembe a következő szempontokat:
    
    * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
