@@ -66,7 +66,6 @@
 
 #### [Események naplózása](active-directory-reporting-audit-events.md)
 #### [Megőrzés](active-directory-reporting-retention.md)
-#### [Visszatöltés](active-directory-reporting-backfill.md)
 #### [Késések](active-directory-reporting-latencies.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
 ### A jelentések értelmezése
@@ -297,6 +296,6 @@
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
