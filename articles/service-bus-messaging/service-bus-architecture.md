@@ -1,27 +1,27 @@
 ---
 title: "Service Bus-architektúra | Microsoft Docs"
 description: "A cikk ismerteti az Azure Service Bus üzenet- és továbbításfeldolgozási architektúráját."
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: baf94c2d-0e58-4d5d-a588-767f996ccf7f
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c69783341eaed67ac29ab63d2127a4038bc0f6d
+ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
+ms.openlocfilehash: 6a2e59f9366e411d322b8560f03b115638619966
 
 
 ---
 # <a name="service-bus-architecture"></a>Service Bus-architektúra
-Ez a cikk ismerteti az Azure Service Bus üzenet- és továbbításfeldolgozási architektúráját.
+Ez a cikk ismerteti az Azure Service Bus üzenetfeldolgozási architektúrát.
 
 ## <a name="service-bus-scale-units"></a>A Service Bus skálázási egységei
 A Service Bus rendszerezése *skálázási egységek* szerint történik. A skálázási egység egy telepítési egység, amely a szolgáltatás futtatásához szükséges összes összetevőt tartalmazza. Minden régió telepít egy vagy több Service Bus skálázási egységet.
@@ -49,7 +49,7 @@ Ha a továbbítási kapcsolat létrejött, az ügyfelek üzeneteket válthatnak 
 ![Bejövő WCF Relay továbbítási kérelmek feldolgozása](./media/service-bus-architecture/IC690645.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy elolvasta a Service Bus architektúrájának áttekintését, a kezdéshez kövesse a alábbi hivatkozásokat:
+Most, hogy elolvasta a Service Bus architektúrájának áttekintését, további információkért kövesse az alábbi hivatkozásokat:
 
 * [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
@@ -58,6 +58,6 @@ Most, hogy elolvasta a Service Bus architektúrájának áttekintését, a kezd�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

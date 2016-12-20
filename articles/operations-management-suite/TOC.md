@@ -34,6 +34,7 @@
 ### [Alapterv felmérése](oms-security-baseline.md)
 ### [Kártevőfelmérés](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Rendszerfrissítési felmérés](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Biztonsági termékek csatlakoztatása](oms-security-connect-products.md)
 ## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 
 
@@ -64,6 +65,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

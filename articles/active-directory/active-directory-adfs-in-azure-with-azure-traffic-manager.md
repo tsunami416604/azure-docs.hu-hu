@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
+ms.sourcegitcommit: 3170abb4f9bd7f7996b1c0dd2e20f648ea1b9fe5
+ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 
 
 ---
-# <a name="high-availability-crossgeographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel
+# <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel
 Az [AD FS telepítése az Azure-ban](active-directory-aadconnect-azure-adfs.md) című cikk részletesen ismerteti egy egyszerű AD FS-infrastruktúra telepítésének lépéseit az Azure-ban a szervezete számára. A cikk bemutatja az AD FS az Azure-ba történő, földrajzi határokon átívelő telepítésének további lépéseit az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) használatával. Az Azure Traffic Managerrel egy földrajzilag kiterjedt, magas rendelkezésre állású és nagy teljesítményű AD FS-infrastruktúrát hozhat létre szervezete számára, amelyhez számos útválasztási módszer áll rendelkezésre a különböző igények infrastruktúrából történő kielégítésére.
 
 A magas rendelkezésre állású, földrajzi határokon átívelő AD FS-infrastruktúra a következőket teszi lehetővé:
@@ -76,7 +76,7 @@ Kövesse az alábbi lépéseket a Traffic Manager-profil létrehozásához. Tov�
    
    **Célerőforrás típusa:** Ehhez a tulajdonsághoz válassza a Nyilvános IP-cím értéket. 
    
-   **Célerőforrás:** Itt lehetősége lesz választani az előfizetéséhez elérhető különböző DNS-címkék közül. Válassza ki a DNS-címkét a célhoz.
+   **Célerőforrás:** Itt lehetősége lesz választani az előfizetéséhez elérhető különböző DNS-címkék közül. Válasszon a konfigurálni kívánt végpontnak megfelelő DNS-címkét.
    
    Adjon végpontot minden olyan földrajzi régióhoz, amelybe forgalmat kíván irányítani az Azure Traffic Manager által.
    A végpontok Traffic Managerben történő hozzáadásával és konfigurálásával kapcsolatos további információkért és a lépések részletes ismertetéséért lásd: [Végpontok felvétele, letiltása, engedélyezése és törlése](../traffic-manager/traffic-manager-endpoints.md).
@@ -94,13 +94,13 @@ Kövesse az alábbi lépéseket a Traffic Manager-profil létrehozásához. Tov�
    
     <code>fs.fabidentity.com IN CNAME mysts.trafficmanager.net</code>
 
-## <a name="test-the-routing-and-ad-fs-signin"></a>Az útválasztás és az AD FS-bejelentkezés tesztelése
+## <a name="test-the-routing-and-ad-fs-sign-in"></a>Az útválasztás és az AD FS-bejelentkezés tesztelése
 ### <a name="routing-test"></a>Útválasztási teszt
 Az útválasztás tesztelésének egy igen alapvető módja lehet az összevonási szolgáltatás DNS-nevének pingelése az egyes földrajzi régiókban lévő gépekről. A kiválasztott útválasztási módszertől függően a ténylegesen pingelt végpont jelenik meg a művelet végeredményeként. Ha például a teljesítménycentrikus útválasztást állította be, akkor az ügyfél régiójához legközelebb eső végpont lesz visszaadva. Az alábbi képernyőfelvételen két ping látható két különböző régió ügyfelének gépéről (egy a kelet-ázsiai térségéből, egy pedig az USA nyugati régiójából). 
 
 ![Útválasztási teszt](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/pingtest.png)
 
-### <a name="ad-fs-signin-test"></a>AD FS-bejelentkezési teszt
+### <a name="ad-fs-sign-in-test"></a>AD FS-bejelentkezési teszt
 Az AD FS a legegyszerűbb módon az IdpInitiatedSignon.aspx oldal használatával tesztelhető. Ahhoz, hogy ez megvalósítható legyen, engedélyezze az IdpInitiatedSignOn tulajdonságot az AD FS tulajdonságaiban. Az AD FS beállításának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Az engedélyezéshez futtassa az alábbi parancsmagot az AD FS-kiszolgálón a PowerShell segítségével. 
@@ -126,6 +126,6 @@ Az AD FS a legegyszerűbb módon az IdpInitiatedSignon.aspx oldal használatáva
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

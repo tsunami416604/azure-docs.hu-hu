@@ -53,14 +53,46 @@ int main(int argc, char** argv)
         Gateway_LL_Destroy(gateway);
     }
     return 0;
-}
+} 
 ```
 
-A JSON-beállításfájl tartalmazza a betöltendő modulok listáját. Minden modulnak meg kell határoznia a következőket:
+A JSON-beállításfájl tartalmazza a betöltendő modulok listáját és a modulok közötti hivatkozásokat.
+Minden modulnak meg kell határoznia a következőket:
 
-* **module_name**: a modul egyedi neve.
-* **module_path**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl.
+* **name**: a modul egyedi neve.
+* **loader**: olyan betöltő, amely képes a kívánt modul betöltésére.  A betöltők a különböző modultípusok betöltésére szolgáló bővítménypontok. Betöltőket a natív C, Node.js, Java és .Net nyelveken írt modulokhoz biztosítunk. A Hello World minta kizárólag a „natív” betöltőt használja, mivel a minta összes modulja C nyelven írt dinamikus könyvtár. Az egyéb nyelveken írt modulok használatával kapcsolatban bővebb információt a [Node-](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/), [Java-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample) és [.Net-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)mintákban találhat.
+    * **name**: a modul betöltéséhez használt betöltő neve.  
+    * **entrypoint**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl. Vegye figyelembe, hogy ez a belépési pont a használt betöltőtípustól függ. A Node.js betöltőjének belépési pontja például egy .js fájl, a Java betöltőjének belépési pontja egy osztályútvonal+osztálynév, a .Net betöltőjének belépési pontja pedig egy szerelvénynév+osztálynév.
+
 * **args**: a modul által igényelt konfigurációs információk.
+
+A következő kód a Linuxon a Hello World minta összes moduljának deklarálásához használt JSON-beállításfájlt mutatja be. A modul kialakításától függ, hogy egy modulnak szüksége van-e argumentumokra. Ebben a példában a naplózómodul a kimeneti fájl elérési útját használja argumentumként, a Hello World modul pedig nem vesz fel argumentumokat.
+
+```
+"modules" :
+[
+    {
+        "name" : "logger",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/logger/liblogger.so"
+        }
+        },
+        "args" : {"filename":"log.txt"}
+    },
+    {
+        "name" : "hello_world",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/hello_world/libhello_world.so"
+        }
+        },
+        "args" : null
+    }
+]
+```
 
 A JSON-fájl is tartalmazza a modulok közötti hivatkozásokat, amelyek a rendszer átad a közvetítőnek. Egy hivatkozás két tulajdonsággal rendelkezik:
 
@@ -69,35 +101,16 @@ A JSON-fájl is tartalmazza a modulok közötti hivatkozásokat, amelyek a rends
 
 Minden hivatkozás meghatároz egy üzenetútvonalat és irányt. A `source` modulból érkező üzeneteket a `sink` modulnak kell továbbítani. A `source` modult „\*” értékűre is be lehet állítani, ami azt jelzi, hogy a moduloktól érkező üzeneteket a `sink` fogja fogadni.
 
-A következő minta a Linuxon a Hello World minta konfigurálásához használt JSON-beállításfájlt mutatja be. A `logger` modul a `hello_world` modul által létrehozott összes üzenetet fel fogja használni. A modul kialakításától függ, hogy egy modulnak szüksége van-e argumentumra. Ebben a példában a naplózómodul a kimeneti fájlt elérési útját használja argumentumként, a Hello World modul pedig nem vesz fel argumentumokat:
+A következő kód a Linuxon a Hello World minta moduljai közötti hivatkozások konfigurálásához használt JSON-beállításfájlt mutatja be. A `logger` modul a `hello_world` modul által létrehozott összes üzenetet fel fogja használni.
 
 ```
-{
-    "modules" :
-    [ 
-        {
-            "module name" : "logger",
-            "loading args": {
-              "module path" : "./modules/logger/liblogger_hl.so"
-            },
-            "args" : {"filename":"log.txt"}
-        },
-        {
-            "module name" : "hello_world",
-            "loading args": {
-              "module path" : "./modules/hello_world/libhello_world_hl.so"
-            },
-            "args" : null
-        }
-    ],
-    "links" :
-    [
-        {
-            "source" : "hello_world",
-            "sink" : "logger"
-        }
-    ]
-}
+"links": 
+[
+    {
+        "source": "hello_world",
+        "sink": "logger"
+    }
+]
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>A Hello World modul üzenet-közzététele
@@ -216,6 +229,6 @@ Az IoT Gateway SDK használatának megismeréséhez tekintse meg a következőke
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

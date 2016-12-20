@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 11/23/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: bf4e77ab2678d3cb74373fd3b3cfd2a5f69d7292
+ms.sourcegitcommit: 2c7b46521c5da3290af244652b5ac20d4c309d5d
+ms.openlocfilehash: 5ec4b260ce82ec78b614ae442d3f14063ce590b5
 
 
 ---
@@ -74,7 +74,7 @@ A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
 A HBase eszközben, amely a BigTable implementációja, ugyanezen az adatok a következőképpen néznek ki:
 
-![HDInsight HBase bigtable adatok][img-hbase-sample-data-bigtable]
+![HDInsight HBase BigTable-adatok][img-hbase-sample-data-bigtable]
 
 Több értelme lesz a következő eljárás befejezése után.  
 
@@ -95,7 +95,7 @@ Több értelme lesz a következő eljárás befejezése után.
         put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
         scan 'Contacts'
    
-    ![hdinsight hadoop hbase rendszerhéj][img-hbase-shell]
+    ![HDInsight Hadoop HBase-rendszerhéj][img-hbase-shell]
 4. Egyetlen sor lekérése
    
         get 'Contacts', '1000'
@@ -142,11 +142,19 @@ Létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjáb
 ## <a name="use-hive-to-query-hbase"></a>A Hive használata a HBase lekérdezéséhez
 A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szakasz olyan Hive táblát hoz létre, amely a HBase táblára képez le, és azzal kérdezi le a HBase táblában lévő adatokat.
 
+> [!NOTE]
+> Ha a Hive és a HBase eltérő fürtökön vannak egyazon virtuális hálózaton, teljesítenie kell a zookeeperkvórumot a Hive-rendszerhéj meghívása során:
+>
+>       hive --hiveconf hbase.zookeeper.quorum=zk0-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk1-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk2-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net --hiveconf zookeeper.znode.parent=/hbase-unsecure  
+>
+>
+
 1. Nyissa meg a **PuTTY** eszközt, és csatlakozzon a fürthöz.  Lásd az előző eljárás utasításait.
 2. Nyissa meg a Hive rendszerhéjat.
    
        hive
-3. Futtassa a következő HiveQL-parancsfájlt, hogy egy, a HBase táblára leképező Hive táblát hozzon létre. Ellenőrizze, hogy létrehozta-e az oktatóanyag korábbi részében hivatkozott mintatáblát az utasítás futtatása előtt a HBase rendszerhéjjal.
+       
+3. Futtassa a következő HiveQL-szkriptet, hogy egy, a HBase-táblára leképező Hive-táblát hozzon létre. Ellenőrizze, hogy létrehozta-e az oktatóanyag korábbi részében hivatkozott mintatáblát az utasítás futtatása előtt a HBase rendszerhéjjal.
    
         CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
         STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
@@ -183,7 +191,7 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
    
         curl -u <UserName>:<Password> \
         -G https://<ClusterName>.azurehdinsight.net/hbaserest/
-3. Használja az alábbi parancsot egy új HBase-tábla létrehozásához két oszlopcsaláddal:
+3. Használja az alábbi parancsot egy új, kétoszlopos családokkal rendelkező HBase-tábla létrehozásához:
    
         curl -u <UserName>:<Password> \
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
@@ -221,53 +229,21 @@ További információ a HBase REST-ről: [Apache HBase Reference Guide](https://
 ## <a name="check-cluster-status"></a>A fürt állapotának ellenőrzése
 A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasználói felülettel kapható. A webes felhasználói felülettel a régiók statisztikáit vagy információit kérheti le.
 
-Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A rendszer ilyenkor úgy irányítja a kérést a kért erőforráshoz, mintha a HDInsight-fürt átjárócsomópontból származna. További információkért lásd: [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel) (Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben)
+**A HBase mesterfelületének elérése**
 
-**SSH-bújtatási munkamenet létesítése**
+1. Nyissa meg az Ambari webes felületet a https://&lt;Fürtnév>.azurehdinsight.net helyen.
+2. Kattintson a **HBase** elemre a bal oldali menüben.
+3. Kattintson a **Gyorshivatkozások** elemre a lap tetején, mutasson az aktív Zookeeper-csomópont hivatkozására, majd kattintson a **HBase-mesterfelület** elemre.  A felület egy új böngészőlapon nyílik meg:
 
-1. Nyissa meg a **PuTTY** eszközt.  
-2. Ha a felhasználói fiók létrehozásakor egy SSH-kulcsot adott meg a létrehozásai folyamat során, a következő lépéseket kell elvégeznie a fürt hitelesítéséhez használt titkos kulcs kiválasztásához:
-   
-    A **Category** (Kategória) szakaszban bontsa ki a **Connection** (Kapcsolat), majd az **SSH** elemet, és válassza az **Auth** (Hitelesítés) lehetőséget. Végül kattintson a **Browse** (Tallózás) gombra, és válassza ki a titkos kulcsot tartalmazó .ppk fájlt.
-3. A **Category** (Kategória) szakaszban kattintson a **Session** (Munkamenet) elemre.
-4. A PuTTY munkamenet képernyőjén lévő Basic (Alapszintű) beállításokban adja meg a következő értékeket:
-   
-   * **Host Name** (Állomásnév): a HDInsight-kiszolgáló SSH-címe a Host Name (Állomásnév) (vagy IP-cím) mezőben. Az SSH-cím a fürtnév, majd **-ssh.azurehdinsight.net**. Például: *mycluster-ssh.azurehdinsight.net*.
-   * **Port**: 22. Az elsődleges átjárócsomóponton a 22-es port az SSH-port.  
-5. A párbeszédpanel bal oldalán lévő **Category** (Kategória) szakaszban bontsa ki a **Connection** (Kapcsolat), majd az **SSH** elemet, majd kattintson a **Tunnels** (Alagutak) lehetőségre.
-6. Adja meg a következő információkat az SSH-porttovábbító űrlapot vezérlő beállításokban:
-   
-   * **Source port** (Forrásport) - Az ügyfélen az a port, amelyet továbbítani szeretne. Például: 9876.
-   * **Dynamic** (Dinamikus) - Lehetővé teszi a dinamikus SOCKS proxy útválasztást.
-7. Kattintson az **Add** (Hozzáadás) gombra a beállítások hozzáadásához.
-8. Kattintson a párbeszédpanel alján lévő **Open** (Megnyitás) gombra egy SSH-kapcsolat megnyitásához.
-9. Amikor a rendszer kéri, jelentkezzen be a kiszolgálóra egy SSH-fiókkal. Ez SSH-munkamenetet létesít, és engedélyezi az alagutat.
+  ![HDInsight HBase HMaster felhasználói felülete](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-**A zookeeperek FQDN-jének megkeresése az Ambarival**
+  A HBase-mesterfelület az alábbi részeket tartalmazza:
 
-1. Keresse fel a https://<ClusterName>.azurehdinsight.net/ webhelyet.
-2. Írja be kétszer a fürt felhasználói fiókjának hitelesítő adatait.
-3. A bal oldali menüben kattintson a **zookeeper** elemre.
-4. Kattintson a Summary (Összefoglalás) listában a három **ZooKeeper Server** (ZooKeeper-kiszolgáló) hivatkozás egyikére.
-5. Másolja a **Hostname** (Állomásnév) értékét. Például zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net.
-
-**Ügyfélprogram (Firefox) konfigurálása és a fürtállapot ellenőrzése**
-
-1. Nyissa meg a Firefox programot.
-2. Kattintson a **Menü megnyitása** gombra.
-3. Kattintson a **Beállítások** gombra.
-4. Kattintson a **Speciális** elemre, kattintson a **Hálózat** elemre, majd kattintson a **Beállítások** parancsra.
-5. Válassza a **Kézi proxybeállítás** lehetőséget.
-6. Írja be a következő értékeket:
-   
-   * **Socks gép**: localhost
-   * **Port**: Használja azt a portot, amelyet a Putty SSH-bújtatásban konfigurált.  Például: 9876.
-   * **SOCKS v5**: (kiválasztva)
-   * **Távoli DNS**: (kiválasztva)
-7. A módosítások mentéséhez kattintson az **OK** gombra.
-8. Nyissa meg a következő címet: http://&lt;ZooKeeper teljes tartományneve>:60010/master-status.
-
-Magas rendelkezésre állású fürtökön megtalálja a webes felhasználói felületet szolgáltató, aktuálisan aktív HBase főcsomópont hivatkozását.
+  - régiós kiszolgálók
+  - biztonsági mentési főkiszolgálók
+  - táblák
+  - feladatok
+  - szoftverattribútumok
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
@@ -310,6 +286,6 @@ További tudnivalókért lásd:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

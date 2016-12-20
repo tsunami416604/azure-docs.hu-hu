@@ -1,128 +1,139 @@
 ---
-title: When should an elastic database pool be used?
-description: An elastic database pool is a collection of available resources that are shared by a group of elastic databases. This document provides guidance to help assess the suitability of using an elastic database pool for a group of databases.
+title: "Mikor ajánlott a rugalmas adatbáziskészlet használata?"
+description: "A rugalmas adatbáziskészlet olyan elérhető erőforrások gyűjteménye, amelyet több rugalmas adatbázis közösen használ. Ez a dokumentum útmutatást nyújt a több adatbázis által használt rugalmas adatbáziskészletek megfelelőségének felméréséhez."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 3d3941d5-276c-4fd2-9cc1-9fe8b1e4c96c
 ms.service: sql-database
+ms.custom: sharded databases pool; app development
 ms.devlang: NA
 ms.date: 08/08/2016
 ms.author: sstein
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: 408cf315f8b44c9ebf852c3ccbf2ed93c70ef22f
+
 
 ---
-# When should an elastic database pool be used?
-Assess whether using an elastic database pool is cost efficient based on database usage patterns and pricing differences between an elastic database pool and single databases. Additional guidance is also provided to assist in determining the current pool size required for an existing set of SQL databases.  
+# <a name="when-should-an-elastic-database-pool-be-used"></a>Mikor ajánlott a rugalmas adatbáziskészlet használata?
+Az adatbázis felhasználási mintái, illetve a rugalmas adatbáziskészlet és az önálló adatbázisok közötti díjszabásbeli különbségek alapján mérje fel, hogy a rugalmas adatbáziskészlet használata költséghatékony megoldás-e. A meglévő SQL Database-adatbázisokhoz szükséges készlet aktuális méretének meghatározásához további útmutatás érhető el.  
 
-* For an overview of pools, see [SQL Database elastic database pools](sql-database-elastic-pool.md).
+* A készletek áttekintését lásd: [Rugalmas adatbáziskészletek az SQL Database-ben](sql-database-elastic-pool.md).
 
 > [!NOTE]
-> Elastic pools are generally available (GA) in all Azure regions except North Central US and West India where it is currently in preview.  GA of elastic pools in these regions will be provided as soon as possible.
+> A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek ebben a régióban a lehető leghamarabb általánosan elérhetővé válnak.
 > 
 > 
 
-## Elastic database pools
-SaaS developers build applications on top of large scale data-tiers consisting of multiple databases. A common application pattern is to provision a single database for each customer. But different customers often have varying and unpredictable usage patterns, and it is difficult to predict the resource requirements of each individual database user. So the developer may overprovision resources at considerable expense to ensure favorable throughput and response times for all databases. Or, the developer can spend less and risk a poor performance experience for their customers. To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+## <a name="elastic-database-pools"></a>Rugalmas adatbáziskészletek
+A SaaS-fejlesztők több adatbázisból álló nagyméretű adatrétegekre építenek alkalmazásokat. Gyakori alkalmazásminta az önálló adatbázis biztosítása minden egyes ügyfél számára. A különböző ügyfelek felhasználási mintája nagymértékben és kiszámíthatatlan módon változik, ezért nehéz megjósolni az adatbázis minden egyes felhasználójának erőforrásigényét. Így előfordulhat, hogy a fejlesztő a kedvező kapacitás biztosítása érdekében a szükségesnél több erőforrást helyez üzembe. A fejlesztő esetleg a kiadások csökkentése mellett is dönthet, amely esetben viszont fennáll a gyenge teljesítmény esélye. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
-Elastic pools in Azure SQL Database enable SaaS developers to optimize the price performance for a group of databases within a prescribed budget while delivering performance elasticity for each database. Pools enable the developer to purchase elastic Database Transaction Units (eDTUs) for a pool shared by multiple databases to accommodate unpredictable periods of usage by individual databases. The eDTU requirement for a pool is determined by the aggregate utilization of its databases. The amount of eDTUs available to the pool is controlled by the developer budget. Pools make it easy for the developer to reason over the impact of budget on performance and vice versa for their pool. The developer simply adds databases to the pool, sets the minimum and maximum eDTUs  for the databases, and then sets the eDTU of the pool based on their budget. A developer can use pools  to seamlessly grow their service from a lean startup to a mature business at ever-increasing scale.  
+Az Azure SQL Database rugalmas készleteivel az SaaS-fejlesztők az előre meghatározott költségvetésen belül maradva optimalizálhatják az adatbáziscsoportok ár-teljesítmény arányát, és rugalmas teljesítményt biztosíthatnak az egyes adatbázisokhoz. A készleteknek köszönhetően a fejlesztő rugalmas Database Transaction Unitokat (eDTU) vásárolhat a több adatbázis által közösen használt készlethez, hogy kiszolgálhassa az önálló adatbázisok kiszámíthatatlan felhasználási periódusait. Egy készlet eDTU-igényét az egyes adatbázisok összesített kihasználtsága határozza meg. A készlet által elérhető eDTU-k mennyiségét a fejlesztői költségvetés határozza meg. A készletek révén a fejlesztők könnyedén dönthetnek a költségvetés és a teljesítmény kölcsönhatásáról a készlet szempontjából. A fejlesztő egyszerűen adatbázisokat ad a készlethez, megadja az adatbázisok által elérhető eDTU-k minimális és maximális számát, majd a költségvetés alapján beállítja a készlethez tartozó eDTU-k számát. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.  
 
-## When to consider a pool
-Pools are well suited for a large number of databases with specific utilization patterns. For a given database, this pattern is characterized by low average utilization with relatively infrequent utilization spikes.
+## <a name="when-to-consider-a-pool"></a>Mikor érdemes megfontolni a készlet használatát
+A készleteket kifejezetten a nagy számú, speciális felhasználási mintákkal rendelkező adatbázisokhoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi.
 
-The more databases you can add to a pool the greater your savings become. Depending on your application utilization pattern, it is possible to see savings with as few as two S3 databases.  
+Minél több adatbázist tud hozzáadni egy készlethez, annál többet takaríthat meg. Az alkalmazás használati mintáitól függően már akár két S3-adatbázissal is megtakarítást érhet el.  
 
-The following sections help you understand how to assess if your specific collection of databases will benefit from being in a pool. The examples use Standard pools but the same principles also apply to Basic and Premium pools.
+A következő szakaszokból megtudhatja, hogyan mérje fel, hogy előnyös-e, ha egy adott adatbázis-gyűjtemény egy készlethez tartozik. A példákban Standard készletek szerepelnek, de ugyanezen elvek alkalmazhatók az Alapszintű és a Premium készletekre is.
 
-### Assessing database utilization patterns
-The following figure shows an example of a database that spends much time idle, but also periodically spikes with activity. This is a utilization pattern that is well suited for a pool:
+### <a name="assessing-database-utilization-patterns"></a>Az adatbázis felhasználási mintáinak felmérése
+Az alábbi ábra egy olyan adatbázist mutat be, amely sok időt tölt tétlenül, miközben időszakosan hirtelen megugró kihasználtság jellemzi. Az ilyen kihasználtsági minta esetén a készletek jól használhatók:
 
-   ![a single database suitable for a pool](./media/sql-database-elastic-pool-guidance/one-database.png)
+   ![egy készletbe illő önálló adatbázis](./media/sql-database-elastic-pool-guidance/one-database.png)
 
-For the five-minute period illustrated above, DB1 peaks up to 90 DTUs, but its overall average usage is less than five DTUs. An S3 performance level is required to run this workload in a single database, but this leaves most of the resources unused during periods of low activity.
+A fent ábrázolt ötperces periódus során a DB1 adatbázis maximális DTU-használata 90, de az összesített átlagos használati érték öt DTU alatt van. Ilyen számítási feladatok futtatásához önálló adatbázis esetén S3-as teljesítményszintre van szükség, amellyel azonban az alacsony tevékenységű időszakok során az erőforrások legnagyobb része kihasználatlan marad.
 
-A pool allows these unused DTUs to be shared across multiple databases, and so reduces the total amount of DTUs needed and overall cost.
+Egy készletben ezek a használaton kívüli DTU-k több adatbázis között lehetnek megosztva, így az összes szükséges DTU száma és az összköltség is csökken.
 
-Building on the previous example, suppose there are additional databases with similar utilization patterns as DB1. In the next two figures below, the utilization of four databases and 20 databases are layered onto the same graph to illustrate the non-overlapping nature of their utilization over time:
+Az előző példa mentén továbbhaladva tegyük fel, hogy további adatbázisokkal rendelkezünk, amelyeket DB1-hez hasonló felhasználási minták jellemeznek. A következő két ábrán a négy és a 20 adatbázis kihasználtsági adatait ugyanazon a grafikonon jelenítettük meg, így látható, hogy az adatbázisok kihasználtsága időben nem fedi egymást:
 
-   ![four databases with a utilization pattern suitable for a pool](./media/sql-database-elastic-pool-guidance/four-databases.png)
+   ![négy adatbázis egy készletbe illő kihasználtsági mintával](./media/sql-database-elastic-pool-guidance/four-databases.png)
 
-   ![twenty databases with a utilization pattern suitable for a pool](./media/sql-database-elastic-pool-guidance/twenty-databases.png)
+   ![húsz adatbázis egy készletbe illő kihasználtsági mintával](./media/sql-database-elastic-pool-guidance/twenty-databases.png)
 
-The aggregate DTU utilization across all 20 databases is illustrated by the black line in the above figure. This shows that the aggregate DTU utilization never exceeds 100 DTUs, and indicates that the 20 databases can share 100 eDTUs over this time period. This results in a 20x reduction in DTUs and a 13x price reduction compared to placing each of the databases in S3 performance levels for single databases.
+A DTU-k mind a 20 adatbázisra vonatkozó összesített kihasználtságát a fekete vonal jelzi a fenti ábrán. Ez alapján a teljes DTU-használat soha nem lépi túl a 100 DTU értéket, és az időtartam során a 20 adatbázis 100 eDTU-t használhat közösen. Ennek eredményeképpen a DTU-k száma huszadára, a költség pedig tizenharmadára csökken ahhoz képest, mintha minden egyes adatbázis S3 teljesítményszintű önálló adatbázisként működne.
 
-This example is ideal for the following reasons:
+Ez a példa az alábbi okokból ideális:
 
-* There are large differences between peak utilization and average utilization per database.  
-* The peak utilization for each database occurs at different points in time.
-* eDTUs are shared between a large number of databases.
+* Nagy különbségek vannak az adatbázisok átlagos és kiugró mértékű kihasználtsága között.  
+* Az egyes adatbázisok kiugró mértékű kihasználtsága különböző időpontokban jelentkezik.
+* Az eDTU-k sok adatbázis között vannak megosztva.
 
-The price of a pool is a function of the pool eDTUs. While the eDTU unit price for a pool is 1.5x greater than the DTU unit price for a single database, **pool eDTUs can be shared by many databases and so in many cases fewer total eDTUs are needed**. These distinctions in pricing and eDTU sharing are the basis of the price savings potential that pools can provide.  
+A készletre vonatkozó költség az eDTU-készlet függvénye. A készlethez tartozó eDTU-k egységára egy önálló adatbázis DTU-egységárának másfélszerese, azonban **a készlethez tartozó eDTU-kat sok adatbázis használhatja, így a legtöbb esetben kevesebb eDTU-ra van szükség**. Ezek a díjszabásban és eDTU-megosztásban jelentkező különbségek adják a készletekkel elérhető megtakarítás alapját.  
 
-The following rules of thumb related to database count and database utilization help to ensure that a pool delivers reduced cost compared to using performance levels for single databases.
+Az adatbázisok számára és kihasználtságára vonatkozó alábbi általános szabályokkal biztosíthatja, hogy a készlet költségcsökkenést eredményezzen az önálló adatbázisok és teljesítményszintek használatához képest.
 
-### Minimum number of databases
-If the sum of the DTUs of performance levels for single databases is more than 1.5x the eDTUs needed for the pool, then an elastic pool is more cost effective. For available sizes, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
+### <a name="minimum-number-of-databases"></a>Adatbázisok minimális száma
+Ha az önálló adatbázisok teljesítményszintjeihez tartozó DTU-k száma több mint másfélszerese a készlethez szükséges eDTU-k összegének, akkor a költséghatékonyabb megoldás a rugalmas készlet használata. Az elérhető méreteket lásd: [Rugalmas adatbáziskészletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
-***Example***<br>
-At least two S3 databases or at least 15 S0 databases are needed for a 100 eDTU pool to be more cost-effective than using performance levels for single databases.
+***Példa***<br>
+Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, hogy egy 100 eDTU-s készlet költséghatékonyabban működjön, mint ha teljesítményszinteket és önálló adatbázisokat használna.
 
-### Maximum number of concurrently peaking databases
-By sharing eDTUs, not all databases in a pool can simultaneously use eDTUs up to the limit available when using performance levels for single databases. The fewer databases that concurrently peak, the  lower the pool eDTU can be set and the more cost-effective the pool becomes. In general, not more than 2/3 (or 67%) of the databases in the pool should simultaneously peak to their eDTU limit.
+### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
+Az eDTU-k megosztásával a készlethez tartozó adatbázisok nem használhatják ki mind egyszerre az önálló adatbázisok és teljesítményszintek használata esetén elérhető maximális eDTU-kapacitást. Minél kevesebb adatbázis működik egyszerre kiugró kihasználtsággal, annál alacsonyabbra állítható be a készlet eDTU-inak száma, és annál költséghatékonyabbá válik a készlet. Általánosságban a készletben szereplő adatbázisok legfeljebb 2/3 része (67%-a) működhet egyszerre a maximális eDTU-számmal.
 
-***Example***<br>
-To reduce costs for three S3 databases in a 200 eDTU pool, at most two of these databases can simultaneously peak in their utilization.  Otherwise, if more than two of these four S3 databases simultaneously peak, the pool would have to be sized to more than 200 eDTUs.  And if the pool is resized to more than 200 eDTUs, more S3 databases would need to be added to the pool to keep costs lower than performance levels for single databases.  
+***Példa***<br>
+Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal.  Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia.  Ha pedig a készletet 200 eDTU-nál nagyobbra növeljük, akkor több S3-adatbázist kellene hozzáadnunk a készlethez, hogy a költség alacsonyabb legyen, mint ha teljesítményszinteket és önálló adatbázisokat használnánk.  
 
-Note this example does not consider utilization of other databases in the pool. If all databases have some utilization at any given point in time, then less than 2/3 (or 67%) of the databases can peak simultaneously.
+Ne feledje, hogy ebben a példában nem vesszük számításba a készlet egyéb adatbázisainak kihasználását. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
 
-### DTU utilization per database
-A large difference between the peak and average utilization of a database indicates prolonged periods of low utilization and short periods of high utilization. This utilization pattern is ideal for sharing resources across databases. A database should be considered for a pool when its peak utilization is about 1.5 times greater than its average utilization.
+### <a name="dtu-utilization-per-database"></a>DTU-használat adatbázisonként
+Az adatbázisok kiugró és átlagos kihasználtsága közötti lényeges különbség a hosszú, alacsony kihasználtságú és a rövid magas kihasználtságú időszakokban mutatkozik meg. Ilyen felhasználási minta esetén ideális az erőforrások adatbázisok közötti megosztása. Az adatbázis készletben való használatát akkor érdemes megfontolni, ha a kiugró mértékű kihasználtsága hozzávetőlegesen másfélszer nagyobb az átlagos kihasználtságánál.
 
-***Example***<br>
-An S3 database that peaks to 100 DTUs and on average uses 67 DTUs or less is a good candidate for sharing eDTUs in a pool.  Alternatively, an S1 database that peaks to 20 DTUs and on average uses 13 DTUs or less is a good candidate for a pool.
+***Példa***<br>
+Ha egy 100 DTU-s kiugró kihasználtsággal működő S3-adatbázis átlagosan legfeljebb 67 DTU-t használ, akkor jó jelöltnek számít egy eDTU-kat közösen használó készlethez.  Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
 
-## Sizing an elastic pool
-The best size for a pool depends on the aggregate eDTUs and storage resources needed for all databases in the pool. This involves determining the larger of the following:
+## <a name="sizing-an-elastic-pool"></a>Rugalmas készlet méretezése
+A készlet optimális mérete a benne szereplő adatbázisokhoz szükséges eDTU-k és tárolási erőforrások mennyiségétől függ. Ehhez meg kell állapítani, hogy az alábbiak közül melyik értéke a nagyobb:
 
-* Maximum DTUs utilized by all databases in the pool.
-* Maximum storage bytes utilized by all databases in the pool.
+* A készletben szereplő összes adatbázis által használt DTU-k maximális száma.
+* A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
-For available sizes, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
+Az elérhető méreteket lásd: [Rugalmas adatbáziskészletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
-SQL Database automatically evaluates the historical resource usage of databases in an existing SQL Database server and recommends the appropriate pool configuration in the Azure portal. In addition to the recommendations, a built-in experience estimates the eDTU usage for a custom group of databases on the server. This enables you to do a "what-if" analysis by interactively adding databases to the pool and removing them to get resource usage analysis and sizing advice before committing your changes. For a how-to, see [Monitor, manage, and size an elastic pool](sql-database-elastic-pool-manage-portal.md).
+Az SQL Database automatikusan kiértékeli az SQL Database-kiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. Az ajánlások mellett egy beépített funkciót is használhat, amely megbecsüli a kiszolgáló egyedi adatbáziscsoportjainak eDTU-használatát. Ez alapján lehetőségelemzést végezhet adatbázisok interaktív hozzáadásával és eltávolításával, majd az erőforrás-használati elemzés és a méretezési tanácsok megtekintésével a módosítások véglegesítése előtt. Útmutatás: [Rugalmas készlet felügyelete, kezelése és méretezése](sql-database-elastic-pool-manage-portal.md).
 
-For more flexible resource usage assessments that allow ad hoc sizing estimates for servers earlier than V12, as well as sizing estimates for databases in different servers, see the [Powershell script for identifying databases suitable for an elastic database pool](sql-database-elastic-pool-database-assessment-powershell.md).
+A 12-es verziónál korábbi kiszolgálókon alkalmi méretezési becsléseket lehetővé tevő, rugalmasabb erőforrás-használati értékelések, valamint a különböző kiszolgálókon található adatbázisok méretezési becslései: [Powershell-szkript a rugalmas adatbáziskészletben való használatra alkalmas adatbázisok azonosításához](sql-database-elastic-pool-database-assessment-powershell.md).
 
-| Capability | Portal experience | PowerShell script |
+| Képesség | Portal-felület | PowerShell-szkript |
 |:--- |:--- |:--- |
-| Granularity |15 seconds |15 seconds |
-| Considers pricing differences between a pool and performance levels for single databases |Yes |No |
-| Allows customizing the list of the databases analyzed |Yes |Yes |
-| Allows customizing the period of time used in the analysis |No |Yes |
-| Allows customizing the list of databases analyzed across different servers |No |Yes |
-| Allows customizing the list of databases analyzed on v11 servers |No |Yes |
+| Részletesség |15 másodperc |15 másodperc |
+| Figyelembe veszi a készlet, valamint a teljesítményszintek és önálló adatbázisok használata közötti díjszabásbeli különbségeket |Igen |Nem |
+| Az elemzett adatbázisok listája testre szabható |Igen |Igen |
+| Az elemzésben használt időszak testre szabható |Nem |Igen |
+| A különböző kiszolgálókon elemzett adatbázisok listája testre szabható |Nem |Igen |
+| A 11-es verziójú kiszolgálókon elemzett adatbázisok listája testre szabható |Nem |Igen |
 
-In cases where you can't use tooling, the following step-by-step can help you estimate whether a pool is more cost-effective than single databases:
+Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutatóval megbecsülheti, hogy a készlet költséghatékonyabb-e az önálló adatbázisok használatánál:
 
-1. Estimate the eDTUs needed for the pool as follows:
+1. A készlethez szükséges eDTU-k számát a következőképpen becsülje meg:
    
-   MAX(<*Total number of DBs* X *average DTU utilization per DB*>,<br>
-   <*Number of concurrently peaking DBs* X *Peak DTU utilization per DB*)
-2. Estimate the storage space needed for the pool by adding the number of bytes needed for all the databases in the pool.  Then determine the eDTU pool size that provides this amount of storage.  For pool storage limits based on eDTU pool size, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
-3. Take the larger of the eDTU estimates from Step 1 and Step 2.
-4. See the [SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/) and find the smallest eDTU pool size that is greater than the estimate from Step 3.
-5. Compare the pool price from Step 5 to the price of using the appropriate performance levels for single databases.
+   MAX(<*Az adatbázisok teljes száma* X *Az egyes adatbázisok átlagos DTU-használata*>,<br>
+   <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
+2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát.  Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.  További információ a készlet eDTU-készlet alapján meghatározott tárterületi korlátozásairól: [Rugalmas adatbáziskészletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
+3. Vegye az 1. és a 2. lépésben meghatározott eDTU-becslések közül a nagyobbat.
+4. Látogassa meg az [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) és keresse meg a legkisebb eDTU-val rendelkező készletméretet, amely nagyobb a 3. lépésben megbecsült értéknél.
+5. Hasonlítsa össze az 5. lépésben szereplő készlet árát az önálló adatbázisok megfelelő teljesítményszintjeinek árával.
 
-## Summary
-Not all single databases are optimum candidates for pools. Databases with usage patterns that are characterized by low average utilization and relatively infrequent utilization spikes are excellent candidates. Application usage patterns are dynamic, so use the information and tools described in this article to make an initial assessment to see if a pool is a good choice for some or all of your databases. This article is just a starting point to help with your decision as to whether or not an elastic pool is a good fit. Remember that you should continually monitor historical resource usage and constantly reassess the performance levels of all of your databases. Keep in mind that you can easily move databases in and out of elastic pools, and if you have a very large number of databases you can have multiple pools of varying sizes that you can divide your databases into.
+## <a name="summary"></a>Összefoglalás
+Nem minden önálló adatbázis optimális jelölt a készletben való használatra. A legjobb jelöltek azok az adatbázisok, amelyek használati mintázatát alacsony átlagos kihasználtság és viszonylag rendszertelen kiugró kihasználtság jellemzi. Az alkalmazáshasználati minták dinamikusak, így az ebben a cikkben tárgyalt információkkal és eszközökkel felmérheti, hogy a készlet használata jó döntés-e az adatbázisok egy része vagy egésze szempontjából. Ez a cikk kiindulási pontot annak eldöntéséhez, hogy célszerű-e a rugalmas készlet használata. Ne feledje, hogy folyamatosan figyelnie kell az erőforrások használati előzményeit, és folyamatosan újra kell értékelnie az adatbázisok teljesítményszintjeit. Vegye figyelembe, hogy az adatbázisok könnyedén elhelyezhetők a rugalmas készletekben, illetve eltávolíthatók onnan, ha pedig rendkívül sok adatbázissal rendelkezik, akkor több különböző méretű készletben is eloszthatja őket.
 
-## Next steps
-* [Create an elastic database pool](sql-database-elastic-pool-create-portal.md)
-* [Monitor, manage, and size an elastic database pool](sql-database-elastic-pool-manage-portal.md)
-* [SQL Database options and performance: understand what's available in each service tier](sql-database-service-tiers.md)
-* [PowerShell script for identifying databases suitable for an elastic database pool](sql-database-elastic-pool-database-assessment-powershell.md)
+## <a name="next-steps"></a>Következő lépések
+* [Rugalmas adatbáziskészlet létrehozása](sql-database-elastic-pool-create-portal.md)
+* [Rugalmas adatbáziskészlet figyelése, kezelése és méretezése](sql-database-elastic-pool-manage-portal.md)
+* [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md)
+* [Powershell-szkript a rugalmas adatbáziskészletben való használatra alkalmas adatbázisok azonosításához](sql-database-elastic-pool-database-assessment-powershell.md)
+
+
+
+
+<!--HONumber=Dec16_HO1-->
+
 

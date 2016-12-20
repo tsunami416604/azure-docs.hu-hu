@@ -138,6 +138,9 @@
 ##### [MMC-műveletek használata a StorSimple Snapshot Managerben](storsimple-snapshot-manager-mmc-menu.md)
 
 ### Megoldások kiépítése
+#### [StorSimple Veeammel](storsimple-configure-backup-target-veeam.md)
+#### [StorSimple Veritas Backup Execkel](storsimple-configure-backup-target-using-backup-exec.md)
+#### [StorSimple Veritas NetBackuppal](storsimple-configure-backuptarget-netbackup.md)
 #### [Fájlkiszolgáló Azure-ra történő vészhelyreállításának automatizálása](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple Express Route-tal](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple VMware-rel](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
@@ -217,6 +220,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

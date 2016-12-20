@@ -1,9 +1,9 @@
 ## <a name="receive-messages-with-eventprocessorhost"></a>Üzenetek fogadása az EventProcessorHost szolgáltatással
-Az [EventProcessorHost][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az [EventProcessorHost][EventProcessorHost] használatával akkor is feloszthatja az eseményeket több fogadóra, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] egyetlen fogadóhoz. A [horizontálisan felskálázott eseményfeldolgozási][horizontálisan felskálázott eseményfeldolgozási] minta megmutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] több fogadóval.
+Az [EventProcessorHost][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az [EventProcessorHost][EventProcessorHost] használatával akkor is feloszthatja az eseményeket több fogadóra, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] egyetlen fogadóhoz. A [Horizontálisan felskálázott eseményfeldolgozás][Horizontálisan felskálázott eseményfeldolgozás] minta megmutatja, hogyan használható az [EventProcessorHost][EventProcessorHost] több fogadóval.
 
 Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-fiók][Azure Storage-fiók] szükséges:
 
-1. Jelentkezzen be az [Azure Portalra][Azure Portalra], és kattintson az **Új** gombra a képernyő bal felső részén.
+1. Jelentkezzen be az [Azure Portal][Azure Portal], és kattintson az **Új** gombra a képernyő bal felső részén.
 2. Kattintson az **Adatok + tárolás**, majd a **Tárfiók** elemre.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
@@ -28,14 +28,14 @@ Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-f
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png)
 10. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
     
-     ```
+     ```csharp
      using Microsoft.ServiceBus.Messaging;
      using System.Diagnostics;
      ```
     
      Ezután helyettesítse be a következő kódot az osztály törzseként:
     
-     ```
+     ```csharp
      class SimpleEventProcessor : IEventProcessor
      {
          Stopwatch checkpointStopWatch;
@@ -80,13 +80,13 @@ Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-f
      Ezt az osztályt fogja meghívni az **EventProcessorHost** az eseményközpontból fogadott események feldolgozásához. Vegye figyelembe, hogy a `SimpleEventProcessor` osztály stoppert használ az ellenőrzőpont-módszer hívásához az **EventProcessorHost** környezetben. Ez biztosítja, hogy ha a fogadó újraindul, nem vész el öt percnél több feldolgozási munka.
 11. A **Program** osztályban adja hozzá a következő `using` utasítást a fájl elejéhez:
     
-     ```
+     ```csharp
      using Microsoft.ServiceBus.Messaging;
      ```
     
      Ezután cserélje le a `Main` metódust a `Program` osztályban a következő kódra, behelyettesítve az eseményközpont nevét, a korábban mentett névtérszintű kapcsolati karakterláncot, valamint a tárfiókot és a kulcsot, amelyeket a korábbi szakaszokban lemásolt. 
     
-     ```
+     ```csharp
      static void Main(string[] args)
      {
        string eventHubConnectionString = "{Event Hub connection string}";
@@ -109,7 +109,7 @@ Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-f
      ```
 
 > [!NOTE]
-> Ez az oktatóprogram az [EventProcessorHost][EventProcessorHost] egyetlen példányát használja. Az átviteli sebesség növelése érdekében ajánlott az [EventProcessorHost][EventProcessorHost] több példányának futtatása, ahogy a [horizontálisan felskálázott eseményfeldolgozási][horizontálisan felskálázott eseményfeldolgozási] minta mutatja. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló neveket adni az [EventProcessorHost][EventProcessorHost] példányoknak. További információ ezekről a témákról: [Event Hubs – Áttekintés][Event Hubs – áttekintés] és [Event Hubs programozási útmutató][Event Hubs programozási útmutató].
+> Ez az oktatóprogram az [EventProcessorHost][EventProcessorHost] egyetlen példányát használja. Az átviteli sebesség növelése érdekében ajánlott az [EventProcessorHost][EventProcessorHost] több példányának futtatása, ahogy a [Horizontálisan felskálázott eseményfeldolgozás][Horizontálisan felskálázott eseményfeldolgozás] minta mutatja. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló neveket adni az [EventProcessorHost][EventProcessorHost] példányoknak. További információ ezekről a témákról: [Event Hubs – Áttekintés][Event Hubs – áttekintés] és [Event Hubs programozási útmutató][Event Hubs programozási útmutató].
 > 
 > 
 
@@ -121,6 +121,6 @@ Az [EventProcessorHost][EventProcessorHost] használatához egy [Azure Storage-f
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure Portal]: https://portal.azure.com
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

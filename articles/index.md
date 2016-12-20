@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure-dokumentáció | Microsoft Dokumentumok"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 translationtype: Human Translation
-ms.sourcegitcommit: 392db4d8261f6e927aa5ea4b2f6b30e244bfec50
-ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
+ms.sourcegitcommit: cee95b80d3e4360d68e6f37ad3c61e15d7d2a42e
+ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
 
 ---
 <div id="main" class="v2">
@@ -136,7 +136,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/cloud-services/">
                                                 <img src="media/index/CloudService.svg" alt="" />
-                                                <p>Felhőszolgáltatások</p>
+                                                <p>Cloud Services</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -214,7 +214,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                         <li>
                                             <a href="/azure/multi-factor-authentication/">
                                                 <img src="media/index/MultiFactorAuthentication.svg" alt="" />
-                                                <p>Többtényezős hitelesítés</p>
+                                                <p>Multi-Factor Authentication</p>
                                             </a>
                                         </li>
                                         <li>
@@ -383,7 +383,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                              </li>
                             <li>
                                 <div class="group">
-                                    <h3>Tárolás</h3>
+                                    <h3>Storage</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
@@ -497,12 +497,6 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             <a href="/azure/scheduler/">
                                                 <img src="media/index/Scheduler.svg" alt="" />
                                                 <p>Scheduler</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/traffic-manager/">
-                                                <img src="media/index/TrafficManager.svg" alt="" />
-                                                <p>Traffic Manager</p>
                                             </a>
                                         </li>
                                         <li>
@@ -829,7 +823,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Felhőszolgáltatások</h3>
+                                                    <h3>Cloud Services</h3>
                                                     <p>Magas rendelkezésre állású, korlátlanul méretezhető felhőalkalmazások és API-k</p>
                                                 </div>
                                             </div>
@@ -1010,7 +1004,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Tárolás</h3>
+                                                    <h3>Storage</h3>
                                                     <p>Tartós, magas rendelkezésre állású és rendkívül rugalmasan skálázható felhőalapú tárolás</p>
                                                 </div>
                                             </div>
@@ -1463,7 +1457,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>Valós idejű adatfolyam-feldolgozás IoT-eszközök millióiról érkező adatokhoz</p>
+                                                    <p>Valós idejű streamfeldolgozás IoT-eszközök millióiról érkező adatokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1628,7 +1622,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                         <a href="#iot">Eszközök internetes hálózata</a>
                         <ul id="iot" class="cardsA">
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/develop/iot/">
+                                <a href="https://azure.microsoft.com/develop/iot/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -1715,7 +1709,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>Valós idejű adatfolyam-feldolgozás IoT-eszközök millióiról érkező adatokhoz</p>
+                                                    <p>Valós idejű streamfeldolgozás IoT-eszközök millióiról érkező adatokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2009,7 +2003,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Többtényezős hitelesítés</h3>
+                                                    <h3>Multi-Factor Authentication</h3>
                                                     <p>Az extra hitelesítési szint nagyobb biztonságot kínál adatai és alkalmazásai számára</p>
                                                 </div>
                                             </div>
@@ -2042,7 +2036,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                         <a href="#devtools">Fejlesztői eszközök</a>
                         <ul id="devtools" class="cardsA">
                             <li>
-                                <a href="https://www.visualstudio.com/en-us/docs/overview">
+                                <a href="https://www.visualstudio.com/docs/overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2256,25 +2250,6 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/traffic-manager/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/TrafficManager.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Traffic Manager</h3>
-                                                    <p>A bejövő forgalom irányítása a jobb teljesítmény és rendelkezésre állás érdekében</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/azure/monitoring-and-diagnostics/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2355,11 +2330,11 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                 </ul>
             </li>
             <li>
-                <a href="#sdktools">SDK/eszközök</a>
-                <ul id="sdktools">
+                <a href="#sdkstools">SDK-k/eszközök</a>
+                <ul id="sdkstools">
                     <li>
-                        <a href="#sdktools-all">összes</a>
-                        <ul id="sdktools-all" class="cardsF">
+                        <a href="#sdkstools-all">összes</a>
+                        <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
                                     <h1>Nyelvek &amp; keretrendszerek</h1>
@@ -2376,16 +2351,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/1.0.0-beta3">A .NET SDK beszerzése</a>
+                                                    <a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent">A .NET SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/net/">Első lépések</a>
+                                                    <a href="https://docs.microsoft.com/dotnet/api/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/dotnet/api">API-referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=dotnet">Példák</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=dotnet">Példák letöltése</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/net/">További információ</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2403,16 +2381,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/develop/python">A Python SDK beszerzése</a>
+                                                    <a href="https://pypi.python.org/pypi/azure">A Python SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/python">Első lépések</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API-referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">Példák</a>
+                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">Példák letöltése</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/python">További információ</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2430,16 +2411,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/develop/nodejs/">A Node.js SDK beszerzése</a>
+                                                    <a href="https://www.npmjs.com/package/azure">A Node.js SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/nodejs">Első lépések</a>
+                                                    <a href="http://azure.github.io/azure-sdk-for-node/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="http://azure.github.io/azure-storage-node/index.html">API-referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">Példák</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">Példák letöltése</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/nodejs">További információ</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2457,16 +2441,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-parent/1.0.0-beta3/azure-parent-1.0.0-beta3.pom">A Java SDK beszerzése</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-java#download">A Java SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/java/">Első lépések</a>
+                                                    <a href="https://docs.microsoft.com/java/api/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/java/api/">API-referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=java">Példák</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=java">Példák letöltése</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/java/">További információ</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2484,16 +2471,19 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/downloads/">A Ruby SDK beszerzése</a>
+                                                    <a href="https://rubygems.org/gems/azure">A Ruby SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/ruby/">Első lépések</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API-referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Példák</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Példák letöltése</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/develop/ruby/">További információ</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2511,13 +2501,13 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="">REST – első lépések</a>
+                                                    <a href="https://docs.microsoft.com/rest/api/">REST – első lépések</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/rest/api">Referencia</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Példák</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Példák letöltése</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2701,7 +2691,7 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
                                                     <a href="http://storageexplorer.com/">Storage Explorer</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">Első lépések</a>
+                                                    <a href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                      <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Letöltés Linuxra</a>
@@ -2861,6 +2851,6 @@ ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

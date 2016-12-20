@@ -59,7 +59,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Android-a
 
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="create-a-new-android-project"></a>Új Android-projekt létrehozása
 1. Az Android Studióban indítson el egy új Android Studio-projektet.
    
@@ -664,9 +664,9 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Kódtárprojekt hivatkozása]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Klasszikus Azure portál]: https://manage.windowsazure.com/
-[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
 
 

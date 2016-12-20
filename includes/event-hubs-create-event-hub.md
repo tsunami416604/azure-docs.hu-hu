@@ -1,6 +1,6 @@
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
-1. Jelentkezzen be az [Azure Portalon][Azure Portalon], és kattintson az **Új** gombra a képernyő bal felső részén.
-2. Kattintson az **Adatok + analitika**, majd az **Event Hubs** elemre.
+1. Jelentkezzen be az [Azure Portal][Azure Portal], és kattintson az **Új** gombra a képernyő bal felső részén.
+2. Kattintson az **Eszközök internetes hálózata**, majd az **Event Hubs** lehetőségre.
    
     ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 3. A **Névtér létrehozása** panelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
@@ -34,6 +34,6 @@ Létrejött az Eseményközpont, és most már rendelkezik az események küldé
 
 [Azure Portal]: https://portal.azure.com/
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

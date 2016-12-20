@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
+ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
+ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
 
 
 ---
@@ -134,7 +134,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
     ```powershell
     $myVM = Add-AzureRmVMNetworkInterface -VM $myVM -Id $myNIC.Id
     ```
-6. Adja meg a virtuális gép merevlemezlének nevét és helyét. A virtuális merevlemezfájl tárolása egy tárolóban történik. Ez a parancs az Ön által létrehozott tárfiókban létrehozza a lemezt egy **vhds/WindowsVMosDisk.vhd** elnevezésű tárolóban.
+6. Adja meg a virtuális gép merevlemezlének nevét és helyét. A virtuális merevlemezfájl tárolása egy tárolóban történik. Ez a parancs az Ön által létrehozott tárfiókban található **vhds/myOsDisk1.vhd** névvel ellátott tárolóban hozza létre a lemezt.
    
     ```powershell
     $blobPath = "vhds/myOsDisk1.vhd"
@@ -143,7 +143,7 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 7. Adja hozzá a virtuális gép konfigurációjához az operációs rendszerre vonatkozó információkat. Cserélje le a **$diskName** értéket az operációs rendszer lemezének nevére. Hozza létre a változót, és adja hozzá a konfigurációhoz a lemezinformációkat.
    
     ```powershell
-    $vm = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
+    $myVM = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
     ```
 8. Végül hozza létre a virtuális gépet.
    
@@ -159,6 +159,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

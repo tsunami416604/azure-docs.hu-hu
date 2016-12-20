@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+ms.sourcegitcommit: ad50c6c12bc3b328d776f37fc31f44d90a0915a3
+ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) segítségével, mint például a mappák létrehozása, adatfájlok le- és feltöltése stb. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
@@ -103,7 +104,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
 ## <a name="authentication"></a>Authentication
-### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
 Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent találhat egy példát. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk.
 
     // User login via interactive popup
@@ -117,14 +118,14 @@ Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent 
 Néhány tudnivaló a fenti kódrészlettel kapcsolatban.
 
 * Az oktatóanyag gyorsabb teljesítése érdekében ez a kódrészlet olyan Azure AD-tartományt és ügyfél-azonosítót használ, amely minden Azure-előfizetés számára alapértelmezés szerint elérhető. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
-* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-tartományt, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatás: [Egy Active Directory-alkalmazás létrehozása](../resource-group-create-service-principal-portal.md#create-an-active-directory-application).
+* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-tartományt, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatás: [Egy Active Directory-alkalmazás létrehozása](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 > [!NOTE]
 > A fenti hivatkozások követésével elérhető utasítások egy Azure AD-webalkalmazásra vonatkoznak. A lépések azonban pontosan ugyanazok akkor is, ha úgy döntött, hogy inkább egy natív ügyfélalkalmazást hoz létre. 
 > 
 > 
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
 A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez az alkalmazás/szolgáltatás titkos ügyfélkódjával/kulcsával történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../resource-group-create-service-principal-portal.md) használhatja.
 
     // Service principal / appplication authentication with client secret / key
@@ -136,7 +137,7 @@ A következő kódrészlet használható az alkalmazás nem interaktív hiteles�
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
 Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás nem interaktív, az alkalmazás tanúsítványával/szolgáltatásnévvel történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../resource-group-create-service-principal-portal.md) használhatja.
 
     // Service principal / application authentication with certificate
@@ -260,6 +261,6 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 
