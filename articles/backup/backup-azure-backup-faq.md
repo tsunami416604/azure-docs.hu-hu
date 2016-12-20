@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/21/2016
+ms.date: 11/16/2016
 ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: f85b3210fc1bdab65da29c3355ed3e1eb35da2ab
+ms.sourcegitcommit: be06f1eca1848ff6d00661cfc1166797649a98a4
+ms.openlocfilehash: cb45e7113073d19c1dc3e305d7b69373bd38d84f
 
 
 ---
-# <a name="azure-backup-service-faq"></a>Azure Backup szolgáltatás – gyakori kérdések
+# <a name="azure-backup-service--faq"></a>Azure Backup szolgáltatás – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdések (és a hozzájuk tartozó válaszok) listája. Közösségünk gyorsan válaszol, és ha egy kérdést gyakran feltesznek, hozzáadjuk ehhez a cikkhez. A kérdésekre adott válaszok általában hivatkozási vagy támogatási információkat tartalmaznak. Az Azure Backup szolgáltatással kapcsolatban ezen vagy egy kapcsolódó cikk Disqus szakaszában tehet fel kérdéseket. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup-br"></a>Melyek azok az operációs rendszerek, amelyekből biztonsági mentést tudok készíteni az Azure-ba az Azure Backup használatával? <br/>
-Az Azure Backup a következő operációs rendszereket támogatja a fájlok, mappák és alkalmazások Azure Backup Server és SCDPM segítségével végzett biztonsági mentéséhez.
+Az Azure Backup a következő operációs rendszerek biztonsági mentését támogatja: az Azure Backup Server és az SCDPM használatával védett fájlok és mappák, valamint számítási feladatokat végző alkalmazások.
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
@@ -43,7 +43,7 @@ Az Azure Backup a következő operációs rendszereket támogatja a fájlok, map
 
 Azure VM Backup esetében:
 
-* **Linux**: Az Azure Backup az [Azure által támogatott disztribúciók listáját](../virtual-machines/virtual-machines-linux-endorsed-distros.md) támogatja a Core OS Linux kivételével.  Egyéb saját Linux-disztribúciók is működtethetők, ha a virtuális gép ügynöke elérhető a virtuális gépen, és a rendszer támogatja a Pythont.
+* **Linux**: Az Azure Backup az [Azure által támogatott disztribúciókat](../virtual-machines/virtual-machines-linux-endorsed-distros.md) támogatja, a Core OS Linux kivételével.  Egyéb saját Linux-disztribúciók is működtethetők, ha a virtuális gép ügynöke elérhető a virtuális gépen, és a rendszer támogatja a Pythont.
 * **Windows Server**: A Windows Server 2008 R2-nél régebbi verziók nem támogatottak.
 
 ## <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Honnan tölthetem le a legújabb Azure Backup ügynököt? <br/>
@@ -59,14 +59,14 @@ Igen, a tároló hitelesítő adatai 48 óra után lejárnak. Ha a fájl lejár,
 Igen. 2016. szeptemberétől kezdve előfizetésenként 25 biztonsági mentési tároló hozható létre. Előfizetésenként az Azure Backup szolgáltatás minden régiójához legfeljebb 25 Recovery Services-tároló hozható létre. Ha több tárolóra van szüksége, hozzon létre egy új előfizetést.
 
 ## <a name="are-there-any-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Az egyes tárolókhoz regisztrálható kiszolgálók/gépek száma korlátozott? <br/>
-Igen, tárolónként 50 gépet regisztrálhat. Az Azure infrastruktúra-szolgáltatás virtuális gépei esetén a korlát 200 virtuális gép tárolónként. Ha több gépet szeretne regisztrálni, hozzon létre egy új tárolót.
+Igen, tárolónként 50 gépet regisztrálhat. Az Azure IaaS virtuális gépei esetén a korlát 200 virtuális gép tárolónként. Ha több gépet szeretne regisztrálni, hozzon létre egy másik tárolót.
 
 ## <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Hogyan regisztrálhatom a kiszolgálómat egy másik adatközpontra?<br/>
 A biztonsági mentési adatokat a rendszer annak a tárolónak az adatközpontjába küldi, amelyikre regisztrálva van. Az adatközpont módosításának legegyszerűbb módja az ügynök eltávolítása, újratelepítése, majd a kívánt adatközponthoz tartozó új tárolóra regisztrálása.
 
 ## <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Mi történik, ha átnevezek egy Windows-kiszolgálót, amelyről biztonsági adatmentés történik az Azure rendszerbe?<br/>
 Ha átnevez egy kiszolgálót, minden aktuálisan konfigurált biztonsági mentés leáll.
-Regisztrálnia kell a kiszolgáló új nevét a Backup-tárolóban. Ha létrehozta az új regisztrációt, az első biztonsági mentési művelet egy teljes biztonsági mentés lesz, nem pedig növekményes biztonsági mentés. Ha helyre kell állítania a korábban, a régi kiszolgálónévvel a tárolóba mentett adatokat, ezt az **Adatok helyreállítása** varázsló [**Másik kiszolgáló**](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine) beállításában teheti meg.
+Regisztrálja a kiszolgáló új nevét a Backup-tárolóban. Ha regisztrálta az új nevet a tárolóval, az első biztonsági mentési művelet egy *teljes* biztonsági mentés lesz. Ha helyre kell állítania a korábban, a régi kiszolgálónévvel a tárolóba mentett adatokat, ezt az **Adatok helyreállítása** varázsló [**Másik kiszolgáló**](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine) beállításában teheti meg.
 
 ## <a name="what-types-of-drives-can-i-backup-files-and-folders-from-br"></a>Milyen típusú meghajtókon lévő fájlokról és mappákról tudok biztonsági másolatot készíteni? <br/>
 A következő meghajtókról/kötetekről nem lehet biztonsági másolatot készíteni:
@@ -105,9 +105,9 @@ Nem. A tároló előfizetési szinten jön létre, és a létrehozása után nem
 Igen. Az ügynökszolgáltatás átalakítja a deduplikált adatokat normális adatokká, amikor előkészíti a biztonsági mentési műveletet. Ezután optimalizálja az adatokat a biztonsági mentéshez, titkosítja őket, majd elküldi a titkosított adagokat az online biztonsági mentési szolgáltatásba.
 
 ## <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik? <br/>
-Nem. A biztonsági mentési tároló eltárolja azon adatok biztonsági másolatát, amelyek a megszakítás pillanatában már át lettek küldve. Az Azure Backup egy ellenőrzőpont-alapú mechanizmust használ, így a biztonsági mentés közben esetenként ellenőrzőpontokat ad az adatok biztonsági másolatához. Mivel ellenőrzőpontok vannak az adatok biztonsági másolatában, a következő biztonsági mentési folyamat ellenőrizni tudja a fájlok épségét. A következő aktivált biztonsági mentés növekményes mentés lesz a korábban mentett adatok biztonsági másolata alapján. A növekményes biztonsági mentés jobban kihasználja a sávszélességet, így nem kell ugyanazokat az adatokat ismételten elküldeni.
+Nem. A tárolóba a megszakítás pillanata előtt már átvitt minden adat a tárolóban marad. Az Azure Backup egy ellenőrzőpont-alapú mechanizmust használ, így a biztonsági mentés közben esetenként ellenőrzőpontokat ad az adatok biztonsági másolatához. Mivel ellenőrzőpontok vannak az adatok biztonsági másolatában, a következő biztonsági mentési folyamat ellenőrizni tudja a fájlok épségét. A következő biztonsági mentési feladat a korábban már mentett adatokra épülő növekményes mentés lesz. A növekményes mentések csak az új vagy módosított adatok átvitelét jelentik, így a sávszélesség-használat optimalizálható.
 
-Azure virtuális gép biztonsági mentése esetén a feladat megszakítása után a rendszer figyelmen kívül hagyja az átvitt adatokat, és egy friss biztonsági mentés növekményes adatokat visz át egy korábban sikeresen végrehajtott biztonsági mentési feladatból.
+Ha megszakítja egy Azure virtuális gép valamely biztonsági mentését, a rendszer a már átvitt adatokat figyelmen kívül hagyja. A következő biztonsági mentési feladat az utolsó sikeres biztonsági mentéshez képest végzi el az adatok növekményes mentését.
 
 ## <a name="why-am-i-seeing-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-had-scheduled-regular-backups-previously-br"></a>Miért jelenik meg „Az Azure Backup nem lett konfigurálva ezen a kiszolgálón” figyelmeztetés annak ellenére, hogy korábban ütemeztem a rendszeres biztonsági mentést? <br/>
 Ez a figyelmeztetés akkor jelenik meg, amikor a helyi kiszolgálón tárolt ütemezett biztonsági mentési beállítások nem egyeznek meg a biztonsági mentési tárolóban tárolt beállításokkal. Ha a kiszolgáló vagy a beállítások egy korábbi hibátlan állapotra lettek visszaállítva, a biztonsági mentés ütemezése elveszítheti a szinkronizálást. Ha ilyen figyelmeztetést kap, [konfigurálja újra a biztonsági mentési házirendet](backup-azure-manage-windows-server.md), majd kattintson a **Biztonsági mentés azonnali futtatása** parancsra a helyi kiszolgálónak az Azure szolgáltatással történő újraszinkronizálásához.
@@ -122,16 +122,16 @@ A helyi adatoknak és a számítási feladatoknak az Azure rendszerbe történő
 * \*.windows.net
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Telepíthetem az Azure Backup ügynököt egy olyan Azure virtuális gépre, amelyet az Azure Backup szolgáltatás már támogat a virtuális gép bővítmény használatával? <br/>
-Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az Azure virtuális gépeknek az erre szolgáló bővítmény használatával. Az Azure Backup ügynököt telepítheti egy vendég Windows operációs rendszerre, hogy megvédje a vendég operációs rendszeren található fájlokat és mappákat.
+Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az Azure virtuális gépeknek az erre szolgáló bővítmény használatával. Telepítse az Azure Backup ügynököt a vendég Windows operációs rendszerre, hogy megvédje a vendég operációs rendszeren található fájlokat és mappákat.
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Telepíthetem az Azure Backup ügynököt egy Azure virtuális gépre, hogy biztonsági mentést készítsek egy, az Azure virtuális gép által biztosított ideiglenes tárolón lévő fájlokról és mappákról? <br/>
-Az Azure Backup ügynököt telepítheti a vendég Windows operációs rendszeren, és biztonsági mentést készíthet a fájlokról és mappákról egy ideiglenes tárolóra. Ugyanakkor vegye figyelembe, hogy a biztonsági mentések sikertelenek lesznek, ha az ideiglenes tároló adatait törli. Emellett ha az ideiglenes tároló adatait törölték, csak állandó tárolóba tud visszaállítani.
+Igen. Telepítse az Azure Backup ügynököt a vendég Windows operációs rendszeren, és készítsen biztonsági mentést a fájlokról és mappákról egy ideiglenes tárolóra. Ugyanakkor vegye figyelembe, hogy a biztonsági mentések sikertelenek lesznek, ha az ideiglenes tároló adatait törli. Emellett ha az ideiglenes tároló adatait törölték, csak állandó tárolóba tud visszaállítani.
 
-## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-onpremises-applicationvm-workloads-to-azure-br"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepíthetem az SCDPM szolgáltatást, hogy együttműködjön az Azure Backup ügynökkel a helyi alkalmazások vagy a virtuális gép számítási feladatainak Azure-ban történő megvédésében? <br/>
-Az Azure Backup SCDPM szolgáltatással történő használatához javasolt először az SCDPM-et telepíteni, és csak aztán az Azure Backup ügynököt. Ez biztosítja az Azure Backup ügynök és az SCDPM problémamentes integrációját, és lehetővé teszi fájlok és mappák, alkalmazások számítási feladatai és virtuális gépek Azure-ban történő védelmét közvetlenül az SCDPM felügyeleti konzoljából. A fent említett okokból nem javasolt és nem támogatott az SCDPM telepítése az Azure Backup ügynök telepítése után.
+## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepíthetem az SCDPM szolgáltatást, hogy együttműködjön az Azure Backup ügynökkel a helyi alkalmazások vagy a virtuális gép számítási feladatainak Azure-ban történő megvédésében? <br/>
+Az Azure Backup és a System Center Data Protection Manager (DPM) együttes használatához először a DPM-et telepítse, majd az Azure Backup ügynököt. Azzal biztosíthatja, hogy az Azure Backup ügynök együttműködik majd a DPM-mel, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
 
 ## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent-br"></a>Mi a fájl elérési útjának hossza, amely meghatározható az Azure Backup ügynök használatával az Azure Backup házirendjének részeként? <br/>
-Az Azure Backup ügynök az NTFS-re hagyatkozik. A [fájl elérési útvonalának hossz-specifikációját a Windows API korlátozza](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Ha a rendszer olyan fájlokról készít biztonsági másolatot, amelyeknek elérési útja hosszabb, mint a Windows API által meghatározott korlát, az ügyfelek dönthetnek a mentendő fájlok szülőmappájának vagy lemezmeghajtójának biztonsági mentése mellett.  
+Az Azure Backup ügynök az NTFS-re hagyatkozik. A [fájl elérési útvonalának hossz-specifikációját a Windows API korlátozza](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Ha olyan fájlokról készít biztonsági másolatot, amelyeknek elérési útja hosszabb, mint a Windows API által engedélyezett korlát, dönthet úgy, hogy a mentendő fájlok szülőmappájának vagy lemezmeghajtójának biztonsági mentését hajtja végre.  
 
 ## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Mely karakterek engedélyezettek az Azure Backup ügynököt használó Azure Backup házirend elérési útjában? <br>
  Az Azure Backup ügynök az NTFS-re hagyatkozik. Ez engedélyezi az [NTFS által támogatott karakterek](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) használatát a fájl meghatározásának részeként.  
@@ -143,12 +143,12 @@ Igen.
 Igen, a Backup szolgáltatás számos eseményalapú értesítéssel rendelkezik, amelyek egy PowerShell-parancsprogrammal használhatók. A teljes leírást itt találja: [Értesítések konfigurálása](backup-azure-monitor-vms.md#configure-notifications)
 
 ## <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Létezik méretkorlátozás a biztonsági mentésre kijelölt adatforrásokra vonatkozóan? <br/>
-Noha tárolószinten nincsen korlátozva, hogy mennyi adatról készíthet biztonsági másolatot, az Azure Backup korlátozza az adatforrások maximális méretét (gyakorlati okokból azonban ezek a korlátok nagyon magasak). A 2015. augusztusi állapot szerint a támogatott operációs rendszerek esetén az adatforrás maximális mérete a következő:
+Azon adatok mennyisége, amelyekről egy adott tárolóban biztonsági másolat készíthető, nem korlátozott. Az Azure Backup ugyan korlátozza az adatforrások maximális méretét, ez a korlát azonban rendkívül magas. A 2015. augusztusi állapot szerint a támogatott operációs rendszerek esetén az adatforrás maximális mérete a következő:
 
 | Sorszám | Operációs rendszer | Adatforrás maximális mérete |
 |:---:|:--- |:--- |
-| 1 |Windows Server 2012 vagy újabb |54 400 GB |
-| 2 |Windows 8 vagy újabb |54 400 GB |
+| 1 |Windows Server 2012 vagy újabb |54 400 GB |
+| 2 |Windows 8 vagy újabb |54 400 GB |
 | 3 |Windows Server 2008, Windows Server 2008 R2 |1700 GB |
 | 4 |Windows 7 |1700 GB |
 
@@ -197,7 +197,7 @@ Nem. Eltöröltük a helyreállítási pontok korlátozásait. Annyi helyreáll�
  Minden, az Azure Backup ügynökétől, az SCDPM-ből vagy az Azure Backup Serverről származó adatot, amelyről biztonsági mentés készül, a rendszer tömörít és titkosít az átvitel előtt. A tömörítés és a titkosítás alkalmazása után a biztonsági mentési tárolóban lévő adatok 30–40 százalékkal kisebbek.
 
 ## <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Van mód a Backup szolgáltatás által használt sávszélesség nagyságának beállítására?<br/>
- Igen, használhatja a Backup ügynök **Tulajdonságok módosítása** beállítását a sávszélesség módosításához. Beállíthatja a sávszélesség méretét, továbbá az időpontokat, amikor használja ezt a sávszélességet. További információért lásd a [Windows-kiszolgáló vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával](backup-configure-vault.md) témakör **A hálózati sávszélesség szabályozásának engedélyezése (opcionális)** szakaszát.
+ Igen, használhatja a Backup ügynök **Tulajdonságok módosítása** beállítását a sávszélesség módosításához. Beállíthatja a sávszélesség méretét, továbbá az időpontokat, amikor használja ezt a sávszélességet. A részletes útmutatást lásd a cikk [Windows-kiszolgáló vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával] témakör **[A hálózati sávszélesség szabályozásának engedélyezése](backup-configure-vault.md#enable-network-throttling)** című szakaszában.
 
 ## <a name="my-internet-bandwidth-is-limited-for-the-amount-of-data-i-need-to-back-up-is-there-a-way-i-can-move-data-to-a-certain-location-with-a-large-network-pipe-and-push-that-data-into-azure-br"></a>Az internetes sávszélességem korlátozott a biztonsági mentéshez szükséges adatok mennyiségéhez képest. Van mód arra, hogy egy gyorsabb internetkapcsolattal rendelkező helyre vigyem az adatokat, és onnan küldjem azokat az Azure-ba? <br/>
 Készíthet biztonsági másolatot az adatairól az Azure számára a szabványos online biztonsági mentési folyamattal, vagy használhatja az Azure Import/Export szolgáltatást, hogy átvigye az adatokat az Azure-blobtárolóba. Más mód nem létezik az adatok biztonsági másolatának az Azure tárolóba juttatására. Az Azure Import/Export szolgáltatás Azure Backuppal történő használatáról további információt az [Offline Backup munkafolyamat](backup-azure-backup-import-export.md) című cikkben talál.
@@ -212,7 +212,7 @@ Az Azure Backupból történő helyreállítások száma korlátlan.
 Igen. Az adatokat a rendszer az AES256 használatával a helyszíni kiszolgálón/ügyfélen/SCDPM-gépen titkosítja, és egy biztonságos HTTPS-kapcsolaton keresztül küldi el.
 
 ## <a name="is-the-backup-data-on-azure-encrypted-as-wellbr"></a>Az adatokról készült biztonsági másolat az Azure-on is titkosított?<br/>
- Igen. Az Azure-ba küldött (aktívan nem használt) adatok titkosítva maradnak. A Microsoft soha nem fejt vissza adatokat. Azure virtuális gép biztonsági mentéséhez az Azure Backup a virtuális gép titkosítására támaszkodik, vagyis ha a virtuális gépe az Azure Disk Encryption vagy más titkosítási technológiával van titkosítva, az Azure Backup ezzel védi az adatait.
+ Igen. Az Azure-ba küldött (aktívan nem használt) adatok titkosítva maradnak. A Microsoft soha nem fejt vissza adatokat. Azure virtuális gép biztonsági mentése esetén az Azure Backup a virtuális gép titkosítására támaszkodik. Ha például a virtuális gépe az Azure Disk Encryption vagy más titkosítási technológiával van titkosítva, az Azure Backup ezzel védi az adatait.
 
 ## <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>Mi az adatok biztonsági másolatának titkosításához használt titkosítási kulcs minimális hossza? <br/>
  A titkosítási kulcsnak legalább 16 karakter hosszúnak kell lennie.
@@ -221,7 +221,7 @@ Igen. Az adatokat a rendszer az AES256 használatával a helyszíni kiszolgáló
 Az adatok biztonsági másolatának titkosításához használt kulcs csak az ügyfél telephelyén van jelen. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha az ügyfél elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
 ## <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Hogyan változtathatom meg az Azure Backup ügynök számára meghatározott gyorsítótár helyét?<br/>
- Menjen végig lépésenként az alábbi felsoroláson a gyorsítótár helyének megváltoztatásához.
+ Haladjon végig lépésenként az alábbi felsoroláson a gyorsítótár helyének megváltoztatásához.
 
 * Állítsa le a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
 
@@ -240,13 +240,13 @@ Az adatok biztonsági másolatának titkosításához használt kulcs csak az ü
 
   Miután a biztonsági mentés létrehozása sikeresen befejeződött az új gyorsítótárhelyen, eltávolíthatja az eredeti gyorsítótármappát.
 
-## <a name="where-can-i-put-the-cachefolder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Hova helyezhetem el az Azure Backup ügynök gyorsítótármappáját, hogy megfelelően működjön?<br/>
+## <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Hova helyezhetem el az Azure Backup ügynök gyorsítótármappáját, hogy megfelelően működjön?<br/>
 A gyorsítótár-mappa számára a következő helyek nem javasoltak:
 
 * Hálózati megosztás vagy cserélhető adathordozó: A gyorsítótármappának helyinek kell lennie az online biztonsági mentés használatával mentést igénylő kiszolgáló számára. A hálózati helyek és a cserélhető adathordozók, például az USB-meghajtók nem támogatottak.
 * Offline kötetek: A gyorsítótár-mappának online kell lennie az Azure Backup ügynök használatával készített várható biztonsági mentés számára.
 
-## <a name="are-there-any-attributes-of-the-cachefolder-that-are-not-supportedbr"></a>Vannak a gyorsítótármappának olyan attribútumai, amelyek nem támogatottak?<br/>
+## <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Vannak a gyorsítótármappának olyan attribútumai, amelyek nem támogatottak?<br/>
  A következő attribútumok vagy kombinációik nem támogatottak a gyorsítótármappa számára:
 
 * Titkosított
@@ -255,10 +255,26 @@ A gyorsítótár-mappa számára a következő helyek nem javasoltak:
 * Ritka
 * Újraelemzési pont
 
-Sem a gyorsítótármappának, sem a metaadatok virtuális merevlemez-meghajtójának nem érdemes a fenti attribútumokkal rendelkeznie az Azure Backup ügynök hibátlan működése érdekében.
+Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója nem rendelkezik a szükséges attribútumokkal az Azure Backup ügynökhöz.
+
+## <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>A helyreállítási tárak a Resource Manageren alapulnak. A biztonsági mentési tárak (klasszikus módban) továbbra is támogatottak? <br/>
+Igen, a Backup tárolók még támogatottak. Backup tárolókat a [klasszikus portálon](https://manage.windowsazure.com) lehet létrehozni. Recovery Services-tárolókat az [Azure Portalon](https://portal.azure.com) lehet létrehozni. Határozottan javasolt azonban Recovery Services-tárolót létrehozni, mivel a jövőbeli fejlesztések csak Recovery Services-tárolókban lesznek elérhetők.
+
+## <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra? <br/>
+Sajnos nem, jelenleg nem telepíthető át egy Backup tároló tartalma egy Recovery Services-tárolóra. Jelenleg is dolgozunk ezen funkción, azonban most még nem elérhető.
+
+## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>A Recovery Services-tárolók támogatják a klasszikus vagy a Resource Manager alapú virtuális gépeket? <br/>
+A Recovery Services-tárolók mindkét modellt támogatják.  Mind a klasszikus (azaz a klasszikus portálon létrehozott), mind a Resource Manager-alapú (azaz az Azure Portalon létrehozott) virtuális gépekről készíthet biztonsági mentést egy Recovery Services-tárolóba.
+
+## <a name="i-have-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális gépemről egy Backup-tárolóban. Áttelepíthetem a virtuális gépeimet a klasszikus módból Resource Manager módba, hogy egy Recovery Services-tárolóban védjem őket?
+A klasszikus virtuális gépek a biztonsági mentési tárolókban lévő helyreállítási pontjai nem lesznek automatikusan áttelepítve a Recovery Services-tárolóba, amikor a virtuális gépet klasszikus módból Resource Manager módba telepíti. Hajtsa végre ezeket a lépéseket a virtuális gép biztonsági mentéseinek áttelepítéséhez:
+
+1. A Backup-tárolóban lépjen a **Protected Items** (Védett elemek) lapra, és válassza ki a virtuális gépet. Kattintson a [Stop Protection](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) (Védelem leállítása) gombra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
+2. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tárolót és hálózatot is mindenképpen telepítse át Resource Manager módba.
+3. Hozzon létre egy Recovery Services-tárolót, és konfigurálja a biztonsági mentést az áttelepített virtuális gépen a tároló irányítópultjának tetejénél található **Backup** (Biztonsági mentés) művelettel. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésével kapcsolatos részletes információkért lásd az [Azure virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikket.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

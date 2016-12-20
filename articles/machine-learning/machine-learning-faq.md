@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36fd6b01dae6aa9a48985a252766d3f2d0b19342
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd0e8f5bd41fcf105571f76aab2f192c2f6dd21d
 
 
 ---
@@ -101,7 +101,7 @@ A néhány GB-nál nagyobb adatkészletek esetében a helyi fájlokból való k�
 
 **Az Amazon S3-ból is lehetséges az adatbeolvasás?**
 
-Amennyiben kisebb mennyiségű adatot szeretne közzétenni egy http URL-en keresztül, használhatja az [Adatok importálása][adatimportálás] modult. Nagyobb mennyiségű adat esetében először vigye át az adatokat az Azure Storage-ba, majd használja az [Adatok importálása][adatimportálás]modult az adatok kísérletbe való beviteléhez.
+Ha kisebb mennyiségű adatot szeretne közzétenni egy http URL-címen keresztül, használja az [Adatok importálása][import-data] modult. Nagyobb mennyiségű adat esetén először vigye át az adatokat az Azure Storage-ba, majd az [Adatok importálása][import-data] modullal adja hozzá az adatokat a kísérlethez.
 <!--
 
 <SEE CLOUD DS PROCESS>
@@ -109,7 +109,7 @@ Amennyiben kisebb mennyiségű adatot szeretne közzétenni egy http URL-en kere
 
 **Létezik beépített képbeviteli képesség?**
 
-A képbeviteli képességről többet is megtudhat a [Képek importálása][képolvasó] útmutatóban.
+A képbeviteli képességről a [Képek importálása][image-reader] útmutatóban talál további információt.
 
 ### <a name="modules"></a>Modulok
 **Az általam keresett algoritmus, adatforrás, adatformátum vagy adat-átalakítási művelet nem található az Azure Machine Learning Studióban. Milyen lehetőségeim vannak?**
@@ -140,7 +140,7 @@ Mivel potenciálisan nagy mennyiségű adat átvitele zajlik a böngészőbe, a 
 ### <a name="algorithms"></a>Algoritmusok
 **Mely létező algoritmusokat támogatja a Machine Learning Studio?**
 
-A Machine Learning Studio a legkorszerűbb algoritmusokat biztosítja, többek között például a továbbfejlesztett méretezhető döntési fákat, a Bayes ajánlási rendszereket, a neurális hálózatokat és a Microsoft Research által fejlesztett Decision Jungle algoritmust. Az olyan méretezhető, nyílt forráskódú gépi tanulási csomagokat, mint a Vowpal Wabbit, szintén támogatja a Machine Learning Studio. A Machine Learning Studio támogatja a multiclass és bináris osztályzásra, a regresszióra és a fürtszolgáltatásra használt gépi tanulási algoritmusokat. Tekintse meg a [Machine Learning-modulok][gépi tanulási modulok] teljes listáját.
+A Machine Learning Studio a legkorszerűbb algoritmusokat biztosítja, többek között például a továbbfejlesztett méretezhető döntési fákat, a Bayes ajánlási rendszereket, a neurális hálózatokat és a Microsoft Research által fejlesztett Decision Jungle algoritmust. Az olyan méretezhető, nyílt forráskódú gépi tanulási csomagokat, mint a Vowpal Wabbit, szintén támogatja a Machine Learning Studio. A Machine Learning Studio támogatja a multiclass és bináris osztályzásra, a regresszióra és a fürtszolgáltatásra használt gépi tanulási algoritmusokat. Tekintse meg a [Machine Learning-modulok][machine-learning-modules] teljes listáját.
 
 **Automatikusan az adataim alapján legmegfelelőbbnek vélt Machine Learning algoritmus használatát ajánlják?**
 
@@ -185,7 +185,7 @@ Nem létezik REPL környezet az R nyelvhez a stúdióban.
 ### <a name="python-module"></a>Python modul
 **Létre lehet hozni egy egyéni Python modult?**
 
-Jelenleg nem, de a [Python-parancsfájl végrehajtására][python] szolgáló modulok használatával elérhető ugyanaz az eredmény.
+Jelenleg nem, de a [Python-szkript végrehajtására][python] szolgáló modulok használatával elérhető ugyanaz az eredmény.
 
 **Létezik REPL környezet a Python nyelvhez?**
 
@@ -224,7 +224,7 @@ Miután telepített egy prediktív modellt, nyomon követheti a klasszikus Azure
 
 **Láthatom valahol az RRS/BES elemeim kimenetét?**
 
-Az RRS esetében általában a webszolgáltatási válaszoknál láthatja az eredményt. Emellett az Azure blob-tárolóba is kiírhatja azokat. A BES esetében a kimenet alapértelmezetten egy blobba íródik. Az [Adatok exportálása][adatexportálás] modult használva egy adatbázisba vagy egy táblázatba is kiírhatja a kimenetet.
+Az RRS esetében általában a webszolgáltatási válaszoknál láthatja az eredményt. Emellett az Azure blob-tárolóba is kiírhatja azokat. A BES esetében a kimenet alapértelmezetten egy blobba íródik. Az [Adatok exportálása][export-data] modullal egy adatbázisba vagy egy táblázatba is kiírhatja a kimenetet.
 
 **Lehetséges kizárólag a Machine Learning Studióban létrehozott modelleket használva webszolgáltatást készíteni?**
 
@@ -245,7 +245,7 @@ Nem.
 
 **Mekkora mennyiségű adatot használhatok a betanításhoz?**
 
-A Machine Learning Studióban található modulok 10 GB-nyi számadatot tartalmazó adatkészletet támogatnak a gyakori alkalmazási esetekben. Ha egy modul egynél több bemenetből fogad adatokat, az összes bemenet mérete nem haladhatja meg a 10 GB-ot. A nagyobb adatkészletekből a Hive vagy az Azure SQL Database lekérdezések, illetve az adatfeldolgozást megelőzően a [statisztikai tanulási (Learning with Counts)][counts] modulokkal végrehajtott előzetes feldolgozás segítségével lehet mintát venni.  
+A Machine Learning Studióban található modulok 10 GB-nyi számadatot tartalmazó adatkészletet támogatnak a gyakori alkalmazási esetekben. Ha egy modul egynél több bemenetből fogad adatokat, az összes bemenet mérete nem haladhatja meg a 10 GB-ot. A nagyobb adatkészletből a Hive- vagy az Azure SQL Database-lekérdezések, illetve az adatfeldolgozás előtt a [statisztikai tanulási (Learning with Counts)][counts] modulokkal végrehajtott előzetes feldolgozással lehet mintát venni.  
 
 A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott adattípusok bővíthetők nagyobb adatkészletekké:
 
@@ -332,7 +332,7 @@ A számlázással és a díjszabással kapcsolatos további információkért ol
 
  Az Azure Machine Learning ingyenes előfizetési lehetőséget is kínál (tovább információkért lásd: [Machine Learning díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)), a Machine Learning Studióhoz pedig 8 órás, gyors kipróbálási időszak érhető el (a próbaverzió eléréséhez jelentkezzen be a [Machine Learning Studióba](https://studio.azureml.net/?selectAccess=true&o=2)).
 
- Emellett az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](/pricing/free-trial-faq/).
+ Emellett az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](https://azure.microsoft.com/pricing/free-trial-faq/).
 
 **Mit nevezünk tranzakciónak?**
 
@@ -432,7 +432,7 @@ Az új számlázási csomagok abban a három éles régióban érhetők el, amel
 
 Igen. A csomagok ára régiónként változik. Ha egy webszolgáltatást egy másik régióban is üzembe helyez, az adott régióhoz tartozó csomagot kell hozzárendelnie.
 
-### <a name="new-web-services-overages"></a>Új webszolgáltatások – Többletköltségek
+### <a name="new-web-services---overages"></a>Új webszolgáltatások – Többletköltségek
 **Hogyan tudom ellenőrizni, hogy felmerültek-e többletköltségek a webszolgáltatás használata miatt?**
 
 Az Azure Machine Learning webszolgáltatások portál Csomagok lapján az összes csomag által használt erőforrásokat megtekintheti. Jelentkezzen be a portálra, és kattintson a Csomagok menüpontra.
@@ -533,18 +533,18 @@ A Machine Learning szolgáltatás egy több-bérlős szolgáltatás. A háttérr
 A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt lehetőséget: ingyenesen hozhat létre és futtathat kísérleteket az Azure Machine Learning Studióban, és még hitelesítő adatokat sem kell megadnia. A vendégként végzett munkamenetek nem perzisztensek (nem lehet őket menteni), maximális időtartamuk 8 óra. További korlátozások: nincs R- és Python-támogatás, nincs lehetőség átmeneti API-k használatára, illetve az adatkészletek mérete és a tárolókapacitás is korlátozott. Ezzel szemben a Microsoft-fiókkal bejelentkező felhasználók teljes hozzáférést kapnak a Machine Learning Studio fentiekben leírt Ingyenes szintjéhez, amely egy állandó munkaterületet és átfogóbb képességeket tartalmaz. Az ingyenes Machine Learning szolgáltatást a következőképpen veheti igénybe: kattintson az **Első lépések** elemre a [https://studio.azureml.net](https://studio.azureml.net) webhelyen, majd válassza a vendéghozzáférés lehetőséget vagy jelentkezzen be egy Microsoft-fiókkal.
 
 <!-- Module References -->
-[képolvasó]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
-[csatlakozás]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/
-[gépi tanulási modulok]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
-[partíció és minta]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
-[adatimportálás]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[adatexportálás]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
-[felosztás]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
+[join]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/
+[machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
+[partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
+[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 11/14/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c122d9ecb4f43c4288cc00c24eca499ac6bb51dc
+ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
+ms.openlocfilehash: 21ebc8083113238ef70f57dae2381ebcf102c39d
 
 
 ---
@@ -43,7 +43,7 @@ A Resource Manager számos előnyt kínál:
 * Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 * Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.  
 
-A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi telepítési modellt használta, és további információkat kíván megtudni a változásokról, tekintse meg [A Resource Manager telepítés és a hagyományos telepítés ismertetése](../resource-manager-deployment-model.md) című cikket.
+A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi telepítési modellt használta, és további információkat kíván megtudni a változásokról, tekintse meg [A Resource Manager telepítés és a hagyományos telepítés ismertetése](resource-manager-deployment-model.md) című cikket.
 
 ## <a name="consistent-management-layer"></a>Konzisztens felügyeleti réteg
 A Resource Manager konzisztens felügyeleti réteget biztosít az Azure PowerShell, az Azure CLI, az Azure Portal, a REST API és a fejlesztői eszközök segítségével végrehajtott feladatok számára. Minden eszköz egy közös műveletcsoportot használ. Az Ön számára legmegfelelőbb eszközöket használhatja, és ezeket zavartalanul váltogathatja. 
@@ -60,9 +60,9 @@ Az alábbi javaslatokat követve teljes mértékben kihasználhatja a Resource M
 3. Imperatív parancsok futtatásával kezelheti az erőforrásokat, például elindíthat vagy leállíthat egy alkalmazást vagy gépet.
 4. Az azonos életciklussal rendelkező erőforrásokat egy erőforráscsoportba rendezheti. Címkék segítségével tetszés szerint rendezheti az erőforrásokat.
 
-A sablonokra vonatkozó javaslatokat talál a [Best practices for creating Azure Resource Manager templates](../resource-manager-template-best-practices.md) (Az Azure Resource Manager-sablonok létrehozásának ajánlott eljárásai) című cikkben.
+A sablonokra vonatkozó javaslatokat talál a [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md) (Az Azure Resource Manager-sablonok létrehozásának ajánlott eljárásai) című cikkben.
 
-Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](../resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport meghatározásakor:
@@ -70,7 +70,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 1. A csoportban lévő összes erőforrásnak azonos életciklussal kell rendelkeznie. Egyszerre fogja őket telepíteni, frissíteni és törölni. Ha egy erőforrásnak, például egy adatbázis-kiszolgálónak különböző fejlesztési ciklusban kell léteznie, azt másik erőforráscsoportba kell elhelyezni.
 2. Az egyes erőforrások csak egy erőforráscsoportban létezhetnek.
 3. Az erőforráscsoporthoz bármikor hozzáadhat, vagy onnan eltávolíthat egy erőforrást.
-4. Az erőforrásokat áthelyezheti az egyik erőforráscsoportból a másikba. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../resource-group-move-resources.md).
+4. Az erőforrásokat áthelyezheti az egyik erőforráscsoportból a másikba. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
 5. Az erőforráscsoportok tartalmazhatnak olyan erőforrásokat, amelyek különböző régiókban találhatók.
 6. Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez.
 7. Egy erőforrás más erőforráscsoportok erőforrásaival is interakcióba tud lépni. Ez az interakció gyakori, amikor a két erőforrás kapcsolódik, de nem ugyanaz az életciklusuk (például amikor egy webalkalmazás csatlakozik egy adatbázishoz).
@@ -100,12 +100,12 @@ Az Azure parancssori felületén is lekérheti a Microsoft.Compute támogatott e
 
     azure provider show Microsoft.Compute --json > c:\Azure\compute.json
 
-További információ: [Resource Manager-szolgáltatók, -régiók, API-verziók és -sémák](../resource-manager-supported-services.md).
+További információ: [Resource Manager-szolgáltatók, -régiók, API-verziók és -sémák](resource-manager-supported-services.md).
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
-A Resource Managerrel egy olyan sablont hozhat létre (JSON formátumban), amely meghatározza az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Amikor létrehoz egy megoldást a portálról, az automatikusan tartalmaz egy telepítési sablont. Nem szükséges teljesen új sablont létrehoznia, mivel kezdetben használhatja a sablont a megoldásához, majd testreszabhatja az adott igényeknek megfelelően. Egy meglévő erőforráscsoport sablonjának lekéréséhez exportálhatja az erőforráscsoport aktuális állapotát, vagy megtekintheti az adott telepítéshez felhasznált sablont. Az [exportált sablon](../resource-manager-export-template.md) megtekintése hasznos információkat nyújt a sablon szintaxisáról.
+A Resource Managerrel egy olyan sablont hozhat létre (JSON formátumban), amely meghatározza az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Amikor létrehoz egy megoldást a portálról, az automatikusan tartalmaz egy telepítési sablont. Nem szükséges teljesen új sablont létrehoznia, mivel kezdetben használhatja a sablont a megoldásához, majd testreszabhatja az adott igényeknek megfelelően. Egy meglévő erőforráscsoport sablonjának lekéréséhez exportálhatja az erőforráscsoport aktuális állapotát, vagy megtekintheti az adott telepítéshez felhasznált sablont. Az [exportált sablon](resource-manager-export-template.md) megtekintése hasznos információkat nyújt a sablon szintaxisáról.
 
-A sablon formázásával és létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](../resource-group-authoring-templates.md) és [Útmutató Resource Manager-sablonokhoz](../resource-manager-template-walkthrough.md).
+A sablon formázásával és létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md) és [Útmutató Resource Manager-sablonokhoz](resource-manager-template-walkthrough.md).
 
 A Resource Manager épp úgy feldolgozza a sablont, mint bármilyen más kérelmet (lásd a [Konzisztens felügyeleti réteg](#consistent-management-layer) képét). Elemzi a sablont, és a szintaxisát átalakítja a megfelelő erőforrás-szolgáltatók számára szükséges REST API-műveletekké. Például amikor a Resource Manager megkap egy sablont, amely a következő erőforrás-definíciót tartalmazza:
 
@@ -151,24 +151,24 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 ![rétegsablon](./media/resource-group-overview/tier-templates.png)
 
-A sablonok tervezésével kapcsolatos további javaslatokért lásd: [Minták Azure Resource Manager-sablonok tervezéséhez](../best-practices-resource-manager-design-templates.md). A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](../resource-group-linked-templates.md).
+A sablonok tervezésével kapcsolatos további javaslatokért lásd: [Minták Azure Resource Manager-sablonok tervezéséhez](best-practices-resource-manager-design-templates.md). A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](resource-group-linked-templates.md).
 
-A telepítés automatizálásáról négyrészes cikksorozatot tartalmaz az [Automating application deployments to Azure Virtual Machines](../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md) (Alkalmazástelepítés automatizálása Azure virtuális számítógépeken) című fejezet. A sorozat kitér az alkalmazásarchitektúrára, a hozzáférésre és biztonságra, rendelkezésre állásra és méretezésre valamint az alkalmazások telepítésére.
+A telepítés automatizálásáról négyrészes cikksorozatot tartalmaz az [Automating application deployments to Azure Virtual Machines](../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Alkalmazástelepítés automatizálása Azure virtuális számítógépeken) című fejezet. A sorozat kitér az alkalmazásarchitektúrára, a hozzáférésre és biztonságra, rendelkezésre állásra és méretezésre valamint az alkalmazások telepítésére.
 
-Az Azure Resource Manager a függőségek elemzésével biztosítja, hogy az erőforrások a megfelelő sorrendben jöjjenek létre. Ha egy erőforrás egy másik erőforráshoz tartozó értéket használ fel (például egy virtuális gép, amely egy tárfiókot igényel a lemezekhez), akkor beállíthat egy függőséget. További információ: [Függőségek meghatározása az Azure Resource Manager sablonokban](../resource-group-define-dependencies.md).
+Az Azure Resource Manager a függőségek elemzésével biztosítja, hogy az erőforrások a megfelelő sorrendben jöjjenek létre. Ha egy erőforrás egy másik erőforráshoz tartozó értéket használ fel (például egy virtuális gép, amely egy tárfiókot igényel a lemezekhez), akkor beállíthat egy függőséget. További információ: [Függőségek meghatározása az Azure Resource Manager sablonokban](resource-group-define-dependencies.md).
 
 A sablonokat az infrastruktúra frissítésére is használhatja. Hozzáadhat például egy erőforrást a megoldáshoz, valamint hozzáadhat konfigurációs szabályokat a már telepített erőforrásokhoz. Ha a sablon egy erőforrás létrehozását határozza meg, de az adott erőforrás már létezik, az Azure Resource Manager az új eszköz létrehozása helyett frissítést végez. Az Azure Resource Manager frissíti a meglévő eszközt, hogy az állapota olyan legyen, mintha új lenne.  
 
-A Resource Manager bővítményeket biztosít olyan forgatókönyvek esetére, amikor további műveletek szükségesek, például egy adott szoftver telepítése, amelyet nem tartalmaz a beállítás. Ha már használ valamilyen konfigurációfelügyeleti szolgáltatást, mint a DSC, Chef vagy Puppet, bővítmények segítségével folytathatja a munkát az adott szolgáltatással. További információ a virtuális gépi bővítményekről: [A virtuális gépi bővítmények és funkcióik áttekintése](../virtual-machines/virtual-machines-windows-extensions-features.md). 
+A Resource Manager bővítményeket biztosít olyan forgatókönyvek esetére, amikor további műveletek szükségesek, például egy adott szoftver telepítése, amelyet nem tartalmaz a beállítás. Ha már használ valamilyen konfigurációfelügyeleti szolgáltatást, mint a DSC, Chef vagy Puppet, bővítmények segítségével folytathatja a munkát az adott szolgáltatással. További információ a virtuális gépi bővítményekről: [A virtuális gépi bővítmények és funkcióik áttekintése](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Végül a sablon az alkalmazás forráskódjának részévé válik. Elhelyezheti a forráskódraktárban, és frissítheti az alkalmazás továbbfejlesztésekor. A sablont a Visual Studio eszközben szerkesztheti.
 
 A sablon meghatározása után készen áll, hogy üzembe helyezze az erőforrásokat az Azure-ban. Az erőforrások üzembe helyezéséhez használható parancsokról lásd:
 
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../resource-group-template-deploy.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](../resource-group-template-deploy-cli.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](../resource-group-template-deploy-portal.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../resource-group-template-deploy-rest.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](resource-group-template-deploy.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](resource-group-template-deploy-portal.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](resource-group-template-deploy-rest.md)
 
 ## <a name="tags"></a>Címkék
 A Resource Manager biztosít egy címkézési funkciót, amellyel a felügyeleti vagy számlázási követelményeinek megfelelően kategorizálhatja az erőforrásokat. Használjon címkéket, ha összetett erőforráscsoport- és erőforrás-gyűjteménnyel rendelkezik, és egyedi módon szeretné vizuálisan megjeleníteni az eszközöket. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak. Címkék nélkül a szervezet felhasználói létrehozhatnak több olyan erőforrást is, amelyeket később nehéz lehet azonosítani és felügyelni. Előfordulhat például, hogy törölni szeretné egy adott projekt összes erőforrását. Ha ezek az erőforrások nincsenek a projektnek megfelelően megcímkézve, akkor manuálisan kell őket megkeresnie. A címkézés hasznos módja a felesleges költségek csökkentéséhez az előfizetésében. 
@@ -200,7 +200,7 @@ A következő Azure CLI-parancsot is használhatja:
 
 A címkézett erőforrásokat az Azure Portalon is megtekintheti.
 
-Az előfizetéshez tartozó [használati jelentés](../billing/billing-understand-your-bill.md) tartalmazza a címkék nevét és értékeit, így a címkék alapján részletezheti a költségeket. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../resource-group-using-tags.md) című cikket.
+Az előfizetéshez tartozó [használati jelentés](../billing/billing-understand-your-bill.md) tartalmazza a címkék nevét és értékeit, így a címkék alapján részletezheti a költségeket. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](resource-group-using-tags.md) című cikket.
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 A Resource Manager segítségével szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a szervezetben. Natív módon integrálja a szerepköralapú hozzáférés-vezérlést (RBAC) a felügyeleti platformba, valamint az összes szolgáltatásra alkalmazza az erőforráscsoportban a hozzáférés-vezérlést. 
@@ -231,14 +231,14 @@ A szerepkörök és a hozzájuk kapcsolódó engedélyezett műveletek teljes li
 
 Egyes esetekben előfordulhat, hogy olyan kódot vagy szkriptet kíván futtatni, amely hozzáféréssel rendelkezik bizonyos erőforrásokhoz, de nem felhasználói hitelesítő adatokkal kívánja végrehajtani a futtatást. Ehelyett egy szolgáltatásnév nevű identitást hozhat létre az alkalmazásnak, és hozzárendelheti a megfelelő szerepkört a szolgáltatásnévhez. A Resource Manager használatával hitelesítő adatokat hozhat létre az alkalmazáshoz, és programozott módon hitelesítheti az alkalmazást. A szolgáltatásnevek létrehozásáról a következő témakörökben talál további információt:
 
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../resource-group-authenticate-service-principal.md)
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](../resource-group-authenticate-service-principal-cli.md)
-* [Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](../resource-group-create-service-principal-portal.md)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](resource-group-authenticate-service-principal.md)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](resource-group-authenticate-service-principal-cli.md)
+* [Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](resource-group-create-service-principal-portal.md)
 
-Kifejezetten zárolhatja a kritikus erőforrásokat is, megakadályozva, hogy a felhasználók törölhessék vagy módosíthassák azokat. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../resource-group-lock-resources.md).
+Kifejezetten zárolhatja a kritikus erőforrásokat is, megakadályozva, hogy a felhasználók törölhessék vagy módosíthassák azokat. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](resource-group-lock-resources.md).
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
-A Resource Manager naplózza az erőforrásokat létrehozó, módosító és törlő műveleteket. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A naplók megtekintéséhez válassza a **Tevékenységnaplók** elemet az erőforráscsoport **Beállítások** paneljén. A naplókat számos érték alapján szűrheti, például aszerint, hogy melyik felhasználó kezdeményezte a műveletet. További információ a vizsgálati naplók használatáról: [Műveletek naplózása a Resource Managerrel](../resource-group-audit.md).
+A Resource Manager naplózza az erőforrásokat létrehozó, módosító és törlő műveleteket. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A naplók megtekintéséhez válassza a **Tevékenységnaplók** elemet az erőforráscsoport **Beállítások** paneljén. A naplókat számos érték alapján szűrheti, például aszerint, hogy melyik felhasználó kezdeményezte a műveletet. További információ a vizsgálati naplók használatáról: [Műveletek naplózása a Resource Managerrel](resource-group-audit.md).
 
 ## <a name="customized-policies"></a>Testreszabott házirendek
 A Resource Manager lehetővé teszi, hogy létrehozzon testreszabott házirendeket az erőforrások kezeléséhez. Az Ön által létrehozott házirendek különböző forgatókönyveket tartalmazhatnak. Kényszerítheti egy adott elnevezési konvenció használatát az erőforrásokon, korlátozhatja a telepíthető példányok és erőforrások típusát, illetve korlátozhatja azokat az adott típusú erőforrás tárolásához használható régiókat. A számlázás részlegek szerinti rendszerzéséhez megkövetelheti egy adott címkeérték meglétét az erőforrásokon. A házirendek segítségével csökkentheti a költségeket és biztosíthatja az egységességet az előfizetésében. 
@@ -259,7 +259,7 @@ A következő példa egy olyan házirendet mutat be, amely annak meghatározás�
       }
     }
 
-Rengeteg típusú házirendet hozhat létre. További információ: [Erőforrások kezelése és hozzáférés szabályozása házirendekkel](../resource-manager-policy.md).
+Rengeteg típusú házirendet hozhat létre. További információ: [Erőforrások kezelése és hozzáférés szabályozása házirendekkel](resource-manager-policy.md).
 
 ## <a name="sdks"></a>SDK-k
 Az Azure SDK-k több nyelven és többféle platformon elérhetőek.
@@ -276,7 +276,7 @@ Itt találhatóak az Open Source SDK-adattáraink. Szívesen vesszük a visszaje
 [.NET](https://github.com/Azure/azure-sdk-for-net) | [Java](https://github.com/Azure/azure-sdk-for-java) | [Node.js](https://github.com/Azure/azure-sdk-for-node) | [PHP](https://github.com/Azure/azure-sdk-for-php) | [Python](https://github.com/Azure/azure-sdk-for-python) | [Ruby](https://github.com/Azure/azure-sdk-ruby)
 
 > [!NOTE]
-> Ha az SDK nem biztosítja a szükséges funkciót, hívhatja közvetlenül az [Azure REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)-t is.
+> Ha az SDK nem biztosítja a szükséges funkciót, hívhatja közvetlenül az [Azure REST API](https://docs.microsoft.com/rest/api/resources/)-t is.
 > 
 > 
 
@@ -307,21 +307,21 @@ A példákon felül a katalógus példái között is kereshet.
 [.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) | [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) | [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs) | [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python) | [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
 ## <a name="next-steps"></a>Következő lépések
-* A sablonok használatának egyszerű bemutatása: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](../resource-manager-export-template.md).
-* A sablonok létrehozásának részletes ismertetése: [Útmutató Resource Manager sablonokhoz](../resource-manager-template-walkthrough.md).
-* A sablonokban használható függvények ismertetése: [Sablonfüggvények](../resource-group-template-functions.md)
-* A Visual Studio és a Resource Manager együttes használatával kapcsolatos információ: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
-* A VS Code és a Resource Manager együttes használatával kapcsolatos információk: [Working with Azure Resource Manager Templates in Visual Studio Code](../resource-manager-vs-code.md) (Azure Resource Manager-sablonok használata a Visual Studio Code-ban).
+* A sablonok használatának egyszerű bemutatása: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
+* A sablonok létrehozásának részletes ismertetése: [Útmutató Resource Manager sablonokhoz](resource-manager-template-walkthrough.md).
+* A sablonokban használható függvények ismertetése: [Sablonfüggvények](resource-group-template-functions.md)
+* A Visual Studio és a Resource Manager együttes használatával kapcsolatos információ: [Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* A VS Code és a Resource Manager együttes használatával kapcsolatos információk: [Working with Azure Resource Manager Templates in Visual Studio Code](resource-manager-vs-code.md) (Azure Resource Manager-sablonok használata a Visual Studio Code-ban).
 
 Ismertető videó az áttekintésről:
 
-[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
 
 
-[powershellref]: https://msdn.microsoft.com/library/azure/dn757692(v=azure.200).aspx
+[powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,13 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 11/10/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 288c616c5698288c9fd467836125c1259d0418d7
-ms.openlocfilehash: 51c7899d72fb06c44c52685927b1c5dc40ab4cd3
+ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
+ms.openlocfilehash: f5f3e76711a93b9b8b0fadd08b051758a7c71619
 
 
 ---
 # <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>Az SSL-szabályzat és a teljes körű SSL engedélyezése Application Gateway-en
+
 ## <a name="overview"></a>Áttekintés
+
 Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Így a webkiszolgálók megszabadulhatnak a magas titkosítási/visszafejtési üzemeltetési költségektől. Akadnak azonban ügyfelek, akiknek a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás. Ennek okai lehetnek biztonsági/megfelelőségi előírások, vagy az, hogy az alkalmazás kizárólag biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az alkalmazásátjáró immár támogatja a teljes körű SSL-titkosítást.
 
 A teljes körű, végponttól végpontig érvényes SSL-kapcsolat segítségével titkosítva küldheti a bizalmas adatokat a háttérkiszolgálók felé, miközben kiaknázhatja az alkalmazásátjáró által biztosított 7. rétegbeli terheléselosztási funkciókat, például a cookie-affinitást, az URL-cím-alapú útválasztást, a helyalapú útválasztás támogatását vagy az XForwarded-* fejlécek beszúrását.
@@ -33,16 +35,19 @@ Amikor végpontok közötti SSL-kommunikációs móddal van konfigurálva, az al
 Jelen példa esetén a TLS1.2-t használó kérések a Pool1-ben lévő háttérkiszolgálókra vannak átirányítva teljes körű SSL segítségével.
 
 ## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>Teljes körű SSL és a tanúsítványok engedélyezése
+
 Az alkalmazásátjáró csak ismert háttérpéldányokkal kommunikál, amelyek tanúsítványa az alkalmazásátjáró engedélyezési listájában szerepel. A tanúsítványok engedélyezéséhez fel kell tölteni a háttérkiszolgáló-tanúsítvány nyilvános kulcsát az alkalmazásátjáróra (főtanúsítványt nem). Ezután kizárólag az ismert és engedélyezett háttérkiszolgálókkal való kapcsolódás engedélyezett. A fennmaradó háttérkiszolgálók átjáróhibához vezetnek. Az önaláírt tanúsítványok csupán tesztelési célokat szolgálnak, és nem ajánlottak éles számítási feladatokra. Az ilyen tanúsítványokat használat előtt a fenti lépések szerint szintén engedélyeztetni kell az alkalmazásátjáróval.
 
 ## <a name="application-gateway-ssl-policy"></a>Az Application Gateway SSL-szabályzatai
+
 Az Application Gateway támogatja a felhasználó által konfigurálható SSL-egyeztetési szabályzatokat, amelyekkel a felhasználók szorosabb ellenőrzést gyakorolhatnak a SSL-kapcsolatok felett az alkalmazásátjárón.
 
 1. Az SSL 2.0 és 3.0 alapértelmezés szerint minden alkalmazásátjárón le van tiltva. és egyáltalán nem konfigurálható.
-2. Az SSL-szabályzat definíciója lehetőséget nyújt a következő három protokoll bármelyikének letiltására: TLSv1\_0, TLSv1\_1, TLSv1\_2.
+2. Az SSL-szabályzat definíciója lehetőséget nyújt a következő három protokoll bármelyikének letiltására: **TLSv1\_0**, **TLSv1\_1**, **TLSv1\_2**.
 3. Ha nincs SSL-szabályzat megadva, mindhárom protokoll (TLSv1\_0, TLSv1\_1, TLSv1_2) engedélyezett.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Miután megismerkedett a teljes körű SSL-lel és az SSL-szabályzatokkal, látogasson el az [Enable end to end SSL on application gateway](application-gateway-end-to-end-ssl-powershell.md) (Teljes körű SSL engedélyezése az alkalmazásátjárón) weboldalra, ahonnan megtudhatja, hogyan hozhat létre olyan átjáróalkalmazást, amely képes titkosítottan küldeni a forgalmat a háttérrendszerbe.
 
 <!--Image references-->
@@ -51,6 +56,6 @@ Miután megismerkedett a teljes körű SSL-lel és az SSL-szabályzatokkal, lát
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d40304cd4f7ede4e37d32f66330ac712d325f898
-ms.openlocfilehash: ea7d8acec83103c981bad279507dd7ead5f72370
+ms.sourcegitcommit: ae5837b4fce52aad4c8b39434c27c450aafc1310
+ms.openlocfilehash: 6f42f79abed80df12148463e25935893a4bbdcde
 
 
 ---
@@ -68,7 +68,7 @@ Ez a gyorsindító egy egyszerű módot mutat be egy alapszintű, HTTP-eseményi
 * [Az Azure Functions tesztelése](functions-test-a-function.md)  
   Különböző függvénytesztelési eszközöket és technikákat ír le.
 * [Az Azure Functions méretezése](functions-scale.md)  
-  Részletezi az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomagokat, köztük a dinamikus szolgáltatáscsomagot, és segít a megfelelő csomag kiválasztásában. 
+  Az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomagokat ismerteti, köztük a Használatalapú futtatási csomagot, és segít a megfelelő csomag kiválasztásában. 
 * [Az Azure App Service-ről](../app-service/app-service-value-prop-what-is.md)  
   Az Azure Functions az Azure App Service platform használatával biztosítja az olyan alapvető funkciókat, mint az üzembe helyezések, a környezeti változók és a diagnosztika. 
 
@@ -77,6 +77,6 @@ Ez a gyorsindító egy egyszerű módot mutat be egy alapszintű, HTTP-eseményi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eda73900ded4c587bacfa3b4d4e8465c1de5a5ed
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: b38f1876b3317a44268caf80a953dee638a342d1
 
 
 ---
@@ -33,7 +33,7 @@ Az API Apps által nyújtott főbb szolgáltatások:
 * **Saját API-k használata meglévő formájukban** – nem kell megváltoztatnia a meglévő API-jai kódját ahhoz, hogy kihasználhassa az API Apps előnyeit – csupán telepítse kódját egy API-alkalmazásba. Az API minden olyan nyelvet vagy keretrendszert használhat, amelyet az App Service támogat. Ilyenek például az ASP.NET és a C#, a Java, a PHP, a Node.js és a Python.
 * **Egyszerű felhasználás** – a [Swagger API-metaadatok](http://swagger.io/) beépített támogatása ügyfelek széles köre számára teszi az API-kat egyszerűen felhasználhatóvá.  Automatikusan generálhat ügyféloldali kódot az API-jainak nyelvek széles választékában, például C#, Java és JavaScript nyelven. A kód módosítása nélkül, könnyen beállítható [CORS](app-service-api-cors-consume-javascript.md). További információ: [App Service API Apps-metaadatok API-k feltárásához és kód létrehozásához](app-service-api-metadata.md), valamint [JavaScript-alapú API-alkalmazások felhasználása a CORS használatával](app-service-api-cors-consume-javascript.md). 
 * **Egyszerű hozzáférés-vezérlés** – védje meg API-alkalmazásait a hitelesítés nélküli hozzáféréstől anélkül, hogy a kódon változtatnia kellene. A beépített hitelesítési szolgáltatások biztonságos hozzáférést tesznek lehetővé az API-khoz más szolgáltatások vagy felhasználói ügyfelek számára. A támogatott identitásszolgáltatók közé tartozik az Azure Active Directory, a Facebook, a Twitter, a Google, valamint a Microsoft-fiókok. Az ügyfelek használhatják az Active Directory Authentication Libraryt (ADAL) vagy a Mobile Apps SDK-t. További információ: [Az API Apps hitelesítése és engedélyezése az Azure App Service-ben](app-service-api-authentication.md).
-* **Visual Studio-integráció** – A Visual Studio dedikált eszközei leegyszerűsítik az API-alkalmazások létrehozásának, üzembe helyezésének, felhasználásának, hibakeresésének és felügyeletének folyamatát. További információ: [A .NET-keretrendszerhez készült Azure SDK 2.8.1-es verziójának bejelentése](/blog/announcing-azure-sdk-2-8-1-for-net/).
+* **Visual Studio-integráció** – A Visual Studio dedikált eszközei leegyszerűsítik az API-alkalmazások létrehozásának, üzembe helyezésének, felhasználásának, hibakeresésének és felügyeletének folyamatát. További információ: [A .NET-keretrendszerhez készült Azure SDK 2.8.1-es verziójának bejelentése](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/).
 * **Integráció a Logic Apps szolgáltatással** – az Ön által készített API-alkalmazások az [App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) számára is felhasználhatók.  További információ: [Az App Service-ben üzemeltetett egyéni API használata a Logic Apps szolgáltatással](../app-service-logic/app-service-logic-custom-hosted-api.md), valamint [Az új, 2015-08-01-es sémaverzió előzetese](../app-service-logic/app-service-logic-schema-2015-08-01.md).
 
 Emellett az API-alkalmazások a [Web Apps](../app-service-web/app-service-web-overview.md) és a [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) által nyújtott szolgáltatások előnyeit is kihasználhatják. Ez fordítva is igaz: ha webalkalmazást vagy mobilalkalmazást használ az API üzemeltetéséhez, a web- vagy mobilalkalmazás kihasználhatja az API Apps által nyújtott szolgáltatások előnyeit, mint például a Swagger-metaadatokat az ügyfélkód generálásához, valamint a CORS-t a tartományközi böngészőalapú hozzáféréshez. Az egyetlen különbség a három alkalmazástípus (API-, web- és mobilalkalmazások) között a nevük, valamint az Azure Portalon használt ikonjuk.
@@ -62,6 +62,6 @@ Az API-alkalmazásokkal kapcsolatos kérdéseit az [API Apps fórumán](https://
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

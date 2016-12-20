@@ -4,7 +4,7 @@ Az EventProcessorHost egy Java-osztály, amely leegyszerűsíti az események fo
 ### <a name="create-a-storage-account"></a>Create a storage account
 Az EventProcessorHost használatához egy [Azure Storage-fiók][Azure Storage-fiók] szükséges:
 
-1. Jelentkezzen be a [klasszikus Azure portálra][klasszikus Azure portálra], és kattintson az **ÚJ** elemre a képernyő alján.
+1. Jelentkezzen be a [klasszikus Azure portál][klasszikus Azure portál], és kattintson az **ÚJ** elemre a képernyő alján.
 2. Kattintson a **Data Services** (Adatszolgáltatások), a **Storage** (Tárolás), majd a **Quick Create** (Gyors létrehozás) lehetőségre, és adja meg a tárfiók nevét. Válassza ki a kívánt régiót, majd kattintson a **Create Storage Account** (Tárfiók létrehozása) lehetőségre.
    
     ![][11]
@@ -15,9 +15,9 @@ Az EventProcessorHost használatához egy [Azure Storage-fiók][Azure Storage-fi
     Másolja le az elsődleges elérési kulcsot – erre később lesz szükség az oktatóprogramban.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
-Az Event Hubs Java-ügyfélkódtára a [Maven központi tárházból][Maven csomag] érhető el a Maven-projektekhez, és a következő függőségi deklarációval lehet rá hivatkozni a Maven-projektfájlból:    
+Az Event Hubs Java-ügyfélkódtára a [Maven központi tárházból][Maven-csomag] érhető el a Maven-projektekhez, és a következő függőségi deklarációval lehet rá hivatkozni a Maven-projektfájlból:    
 
-``` XML
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
@@ -30,11 +30,11 @@ Az Event Hubs Java-ügyfélkódtára a [Maven központi tárházból][Maven csom
 </dependency>
 ```
 
-A különböző típusú összeállítási környezetekhez explicit módon szerezheti be a legutóbb kiadott JAR-fájlokat a [Maven központi tárházból][Maven csomag] vagy [a kiadás terjesztési pontjából a GitHubon](https://github.com/Azure/azure-event-hubs/releases).  
+A különböző típusú összeállítási környezetekhez explicit módon szerezheti be a legutóbb kiadott JAR-fájlokat a [Maven központi tárházból][Maven-csomag] vagy [a kiadás terjesztési pontjából a GitHubon](https://github.com/Azure/azure-event-hubs/releases).  
 
 1. A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve ```ErrorNotificationHandler``` lesz.     
    
-    ``` Java
+    ```Java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
    
@@ -167,7 +167,7 @@ A különböző típusú összeállítási környezetekhez explicit módon szere
     ```
 4. Cserélje le a következő mezőket azokra az értékekre, amelyeket az Event Hub és a Storage-fiók létrehozásakor használt.
    
-    ``` Java
+    ```Java
     final String namespaceName = "----ServiceBusNamespaceName-----";
     final String eventHubName = "----EventHubName-----";
    
@@ -195,6 +195,6 @@ A különböző típusú összeállítási környezetekhez explicit módon szere
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

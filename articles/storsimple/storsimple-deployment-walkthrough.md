@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d9e5f3b177f6b91abe48d3bb6d49a2d3195e6f79
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device"></a>A helyszíni StorSimple eszköz üzembe helyezése
+# <a name="deploy-your-on-premises-storsimple-device"></a>A helyszíni StorSimple eszköz üzembe helyezése
 > [!div class="op_single_selector"]
 > * [2. frissítés](storsimple-deployment-walkthrough-u2.md)
 > * [1. frissítés](storsimple-deployment-walkthrough-u1.md)
@@ -146,7 +146,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 |  | | |
 | **Regisztráció** |Ellenőrizze, hogy a 443-as, 80-as és 9354-es kimeneti TCP-portok nyitva vannak-e. |`Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[További információ a Test-NetConnection parancsmagról](https://technet.microsoft.com/library/dn372891.aspx) |
 
-## <a name="stepbystep-deployment"></a>Részletes üzembe helyezés
+## <a name="step-by-step-deployment"></a>Részletes üzembe helyezés
 Az alábbi részletes útmutatás segítségével helyezze üzembe a StorSimple eszközt az adatközpontban.
 
 ## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
@@ -286,6 +286,6 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

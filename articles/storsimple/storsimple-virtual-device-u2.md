@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 35b0d0e7dd73852900384c34b8b842754434cc93
-ms.openlocfilehash: 4fbdb64918a642dbe899ab8b606fbf58e1fb94d3
+ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
+ms.openlocfilehash: 40ae0d242968db83c4d4d04452fbfd93559af31e
 
 
 ---
@@ -33,7 +33,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium szintű Storage-ot támogató Azure-régiók<br></br>A régiók listáját lásd: [A 8020-as modellt támogató régiók](#supported-regions-for-8020) |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) |
+| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup> *Korábbi nevén az 1100-as*.
@@ -41,7 +41,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 <sup>2</sup> *A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
 
 #### <a name="supported-regions-for-8020"></a>A 8020-as modellt támogató régiók
-A 8020-as modellt támogató, Premium szintű Storage-régiók listáját az alábbi táblázatban találja. A lista folyamatosan frissül majd, ahogy a Premium szintű Storage egyre több régióban elérhetővé válik. 
+A 8020-as modellt támogató, Premium szintű Storage-régiók listáját az alábbi táblázatban találja. A lista folyamatosan frissül majd, ahogy a Premium szintű Storage egyre több régióban elérhetővé válik.
 
 | S. sz. | Jelenleg a következő régiókban támogatott: |
 | --- | --- |
@@ -68,7 +68,7 @@ Ez a cikk lépésenként mutatja be a StorSimple virtuális eszköz telepítés�
 * Csatlakozhat a virtuális eszközhöz.
 * Megismerheti a virtuális eszköz használatának módját.
 
-Ez az oktatóprogram a 2. frissítést és újabb verziókat futtató összes StorSimple virtuális eszközre érvényes. 
+Ez az oktatóprogram a 2. frissítést és újabb verziókat futtató összes StorSimple virtuális eszközre érvényes.
 
 ## <a name="how-the-virtual-device-differs-from-the-physical-device"></a>Miben különbözik a virtuális eszköz a fizikai eszköztől?
 A StorSimple virtuális eszköz egy csak szoftveres StorSimple-verzió, amely a Microsoft Azure Virtuális gép egyetlen csomópontján fut. A virtuális gép támogatja azokat a vészhelyreállítási forgatókönyveket, amelyekben a fizikai eszköz nem érhető el, és alkalmas a biztonsági mentésekből történő elemszintű előhívásokhoz, helyszíni vészhelyreállításhoz, valamint felhőalapú fejlesztési és tesztelési forgatókönyvekhez.
@@ -91,9 +91,9 @@ A virtuális eszköz kiépítése előtt a következő előkészületekre lesz s
 
 * A virtuális eszközhöz [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. További információ [a 8020-as modellt jelenleg támogató régiókról](#supported-regions-for-8020).
 * Saját DNS-kiszolgálónév megadása helyett az Azure által megadott alapértelmezett DNS-kiszolgáló használata javasolt. Ha megadott DNS-kiszolgálónév nem érvényes, vagy ha a DNS-kiszolgáló nem tudja megfelelően feloldani az IP-címeket, akkor a virtuális eszköz létrehozása sikertelen lesz.
-* A végpont és telephely közötti, valamint a telephely és telephely közötti lehetőségek választhatóak, de nem kötelezőek. Igény szerint ezeket a lehetőségeket speciális forgatókönyvekhez is konfigurálhatja. 
+* A végpont és telephely közötti, valamint a telephely és telephely közötti lehetőségek választhatóak, de nem kötelezőek. Igény szerint ezeket a lehetőségeket speciális forgatókönyvekhez is konfigurálhatja.
 * Az [Azure virtuális gépeket](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (gazdakiszolgálókat) létrehozhatja abban a virtuális hálózatban, amely a virtuális eszközön elérhető köteteket használja. Ezeknek a kiszolgálóknak az alábbi követelményeknek kell megfelelniük:                             
-  
+
   * Windows vagy Linux rendszerű virtuális gépnek kell lenniük, amelyen telepítve van az iSCSI-kezdeményező szoftver.
   * Ugyanazon a virtuális hálózaton kell futniuk, mint a virtuális gépnek.
   * Tudniuk kell csatlakozni a virtuális eszköz iSCSI-tárolójához a virtuális eszköz belső IP-címén keresztül.
@@ -103,7 +103,7 @@ A virtuális eszköz kiépítése előtt a következő előkészületekre lesz s
 Hajtsa végre a következő frissítéseket az Azure StorSimple eszközön a virtuális eszköz létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-manage-acrs.md) azokon a gépekhez, amelyek a virtuális eszköz gazdakiszolgálói lesznek.
-* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók]((../storage/storage-create-storage-account.md), illetve a [Premium Storage-fiók](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) létrehozásáról
+* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók]((../storage/storage-create-storage-account.md), illetve a [Premium Storage-fiók](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) létrehozásáról
 * A virtuális eszköz létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
@@ -112,9 +112,9 @@ Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
 * A szolgáltatásadat-titkosítási kulcs másolata a fizikai eszközről.
 
 ## <a name="create-and-configure-the-virtual-device"></a>A virtuális eszköz létrehozása és konfigurálása
-Az eljárások végrehajtása előtt ellenőrizze, hogy teljesülnek-e [A virtuális eszköz előfeltételei](#prerequisites-for-the-virtual-device). 
+Az eljárások végrehajtása előtt ellenőrizze, hogy teljesülnek-e [A virtuális eszköz előfeltételei](#prerequisites-for-the-virtual-device).
 
-Miután létrehozott egy virtuális hálózatot, konfigurálta a StorSimple Manager szolgáltatást és regisztrálta a fizikai StorSimple eszközt a szolgáltatásban, az alábbi lépések segítségével létrehozhat és konfigurálhat egy StorSimple virtuális eszközt. 
+Miután létrehozott egy virtuális hálózatot, konfigurálta a StorSimple Manager szolgáltatást és regisztrálta a fizikai StorSimple eszközt a szolgáltatásban, az alábbi lépések segítségével létrehozhat és konfigurálhat egy StorSimple virtuális eszközt.
 
 ### <a name="step-1-create-a-virtual-device"></a>1. lépés: Virtuális eszköz létrehozása
 A StorSimple virtuális eszköz létrehozásához hajtsa végre az alábbi lépéseket.
@@ -144,8 +144,8 @@ A StorSimple Snapshot Manager szoftver a Windows-állomáson található, és le
 
 > [!NOTE]
 > A virtuális eszköze számára a Windows-állomás egy Azure virtuális gép.
-> 
-> 
+>
+>
 
 Amikor konfigurál egy eszközt a StorSimple Snapshot Managerben, a rendszer a tárolóeszköz hitelesítése érdekében a StorSimple eszköz IP-címének és jelszavának megadására kéri. A részletes lépésekről lásd: [A StorSimple Snapshot Manager jelszavának konfigurálása](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
 
@@ -167,13 +167,13 @@ Miután engedélyezte távfelügyeletet a StorSimple eszköz konfigurációs lap
 
 > [!WARNING]
 > **A biztonság növelése érdekében a végpontokhoz való csatlakozáshoz nyomatékosan ajánlott a HTTPS használata, majd a távoli PowerShell-munkamenet befejezése után a végpontok törlése.**
-> 
-> 
+>
+>
 
 Ha szeretne távoli eljáráshívást beállítani a virtuális eszközhöz, kövesse a [Connecting remotely to your StorSimple device](storsimple-remote-connect.md) (Távoli csatlakozás a StorSimple eszközhöz) című rész eljárásait.
 
 ## <a name="connect-directly-to-the-virtual-device"></a>Közvetlen csatlakozás a virtuális eszközhöz
-A virtuális eszközhöz közvetlenül is csatlakozhat. Ha a virtuális eszközhöz közvetlenül szeretne csatlakozni egy, a virtuális hálózaton vagy a Microsoft Azure-környezeten kívüli számítógépről, akkor további végpontokat kell megadnia az alábbi eljárásban meghatározottak szerint. 
+A virtuális eszközhöz közvetlenül is csatlakozhat. Ha a virtuális eszközhöz közvetlenül szeretne csatlakozni egy, a virtuális hálózaton vagy a Microsoft Azure-környezeten kívüli számítógépről, akkor további végpontokat kell megadnia az alábbi eljárásban meghatározottak szerint.
 
 Az alábbi lépések végrehajtásával hozhat létre nyilvános végpontokat a virtuális eszközön.
 
@@ -227,8 +227,8 @@ A vészhelyreállítás (DR) azon kulcsfontosságú forgatókönyvek egyike, ame
 > [!NOTE]
 > * Ha virtuális eszközt használ a vészhelyreállítás másodlagos eszközeként, vegye figyelembe, hogy a 8010-es modell 30 TB Standard szintű tárterülettel, a 8020-as modell pedig 64 TB Prémium szintű tárterülettel rendelkezik. A nagyobb kapacitású 8020-as virtuális gép alkalmasabb lehet egy vészhelyreállítási forgatókönyvhöz.
 > * Egy 2. frissítést futtató eszközről egy 1. frissítés előtti szoftvert futtató eszközre nem klónozhat és nem hajthat végre feladatátvételt. Egy 2. frissítést futtató eszközről egy 1. frissítést (1.1-es vagy 1.2-es verziót) futtató eszközre azonban végrehajthat feladatátvételt
-> 
-> 
+>
+>
 
 Az eljárás pontos lépéseit a [virtuális eszközre történő feladatátvételt](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device) ismertető szakaszban találja.
 
@@ -245,21 +245,20 @@ Ha törli vagy leállítja a virtuális eszközt, az **Offline** állapottal fog
 Ha nincs internetkapcsolat a virtuális eszköz létrehozása közben, a létrehozási lépés sikertelen lesz. Az internetkapcsolat miatti hiba elhárításához hajtsa végre a következő lépéseket a klasszikus Azure portálon:
 
 1. Hozzon létre egy Windows Server 2012 virtuális gépet az Azure-ban. A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a virtuális eszköznek. Ha már rendelkezik meglévő Windows Server-gazdagéppel az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
-2. Jelentkezzen be távolról az előző lépésben létrehozott virtuális gépbe. 
+2. Jelentkezzen be távolról az előző lépésben létrehozott virtuális gépbe.
 3. Nyisson meg egy parancsablakot a virtuális gépen (Win+R, majd írja be a `cmd` kifejezést).
 4. Futtassa az alábbi parancsot a parancssorban.
-   
+
     `nslookup windows.net`
-5. Ha az `nslookup` sikertelen, akkor az internetkapcsolat hibája megakadályozza, hogy a virtuális eszköz regisztráljon a StorSimple Manager szolgáltatásban. 
+5. Ha az `nslookup` sikertelen, akkor az internetkapcsolat hibája megakadályozza, hogy a virtuális eszköz regisztráljon a StorSimple Manager szolgáltatásban.
 6. Végezze el a virtuális hálózat szükséges módosításait, hogy a virtuális eszköz elérhesse az Azure-helyeket, például a „windows.net” helyet.
 
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse át, hogyan végezhető el [a virtuális eszköz felügyelete a StorSimple Manager szolgáltatással](storsimple-manager-service-administration.md).
-* Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-restore-from-backup-set.md). 
+* Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-restore-from-backup-set.md).
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

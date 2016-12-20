@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 84d644e07036f511e685b0fd020cdf8c310fd969
+ms.sourcegitcommit: f426cf4b91941f19714c33abc21ef0c777f5b233
+ms.openlocfilehash: 38f3ca24b7fa136bdb4b64b6cae77078b7ea3c97
 
 
 ---
 # <a name="frequently-asked-questions-for-azure-data-lake-store"></a>Gyakori kérdések az Azure Data Lake Store-ról
 Ebben a cikkben az Azure Data Lake Store-ral kapcsolatos gyakran ismételt kérdésekről olvashat.
 
-## <a name="how-do-i-handle-disaster-recovery-and-data-corruption-for-my-azure-data-lake-store-account"></a>Hogyan kezelhetem a vészhelyreállítást és az adatok sérülését az Azure Data Lake Store-fiókomhoz?
+## <a name="how-can-i-further-protect-my-data-from-region-wide-disasters-or-accidental-deletions"></a>Hogyan gondoskodhatok még jobban az adataim védelméről a régiószintű katasztrófák és a véletlen törlés ellen?
 Az Azure Data Lake Store-fiókban lévő adatok automatikus replikációja biztosítja a rugalmasságot az átmeneti hardverhibák esetén az egyes régiókban. Ez tartósságot és magas szintű rendelkezésre állást nyújt, az Azure Data Lake Store SLA feltételeinek megfelelően. Itt talál útmutatást azzal kapcsolatban, hogyan védheti még jobban az adatait a több régióra kiterjedő ritka kimaradásokkal és véletlen törlésekkel szemben.
 
 ### <a name="disaster-recovery-guidance"></a>Vészhelyreállítási útmutató
@@ -52,6 +52,6 @@ A szervezetek [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

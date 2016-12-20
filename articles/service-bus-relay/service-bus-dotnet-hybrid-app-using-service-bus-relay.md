@@ -1,13 +1,13 @@
 ---
 title: "Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure Service Bus Relay használatával."
-services: service-bus
+description: "Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure WCF Relay használatával."
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,35 +15,35 @@ ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+ms.sourcegitcommit: 29ede770e6e63a50ba398cfb0bc8035cacdea392
+ms.openlocfilehash: 2b00b8206189dbed02e03807658c53f81171b111
 
 
 ---
-# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure Service Bus WCF Relay használatával
+# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
 ## <a name="introduction"></a>Bevezetés
 Ez a cikk azt ismerteti, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
 Az oktatóanyagban érintett témák köre:
 
 * Meglévő webszolgáltatás létrehozása vagy alakítása a használathoz egy webes megoldással.
-* Az Azure Service Bus WCF Relay szolgáltatás használata az Azure-alkalmazások és a máshol tárolt webszolgáltatások közötti adatmegosztásra.
+* Az Azure WCF Relay szolgáltatás használata az Azure-alkalmazások és a máshol tárolt webszolgáltatások közötti adatmegosztásra.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="how-the-service-bus-relay-helps-with-hybrid-solutions"></a>Hogyan segít a Service Bus Relay a hibrid megoldások terén?
+## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Hogyan segít az Azure Relay a hibrid megoldások terén?
 Az üzleti megoldások általában egyéni kódok kombinációjából állnak, amelyeket az új és egyedi üzleti követelmények és már meglévő megoldások és rendszerek által szolgáltatott létező funkciók kezeléséhez írtak.
 
 A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
-A Service Bus Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Service Bus Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Service Bus közvetítőnek. A Service Bus ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus-messaging/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
+Az Azure Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Relay-szolgáltatásnak. Az Azure Relay ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus-messaging/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
 ## <a name="solution-scenario"></a>A megoldás forgatókönyve
 Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
 
 ![][0]
 
-Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy a Service Bus Relay közvetítőn keresztül éri el ezt a rendszert. Ezt egy olyan webszolgáltatás szimulálja, amely egyszerű konzolalkalmazásként fut, és a termékek memóriában szereplő készletére épül. Ezt a konzolalkalmazást a saját számítógépén futtathatja, és a webes szerepkört az Azure-ban telepítheti. Így láthatja, hogy az Azure adatközpontjában futó webes szerepkör valójában a számítógéphez intéz hívást, bár a számítógép szinte biztosan legalább egy tűzfal és egy hálózati címfordítási (NAT-) réteg mögött található.
+Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy az Azure Relay közvetítőn keresztül éri el ezt a rendszert. Ezt egy olyan webszolgáltatás szimulálja, amely egyszerű konzolalkalmazásként fut, és a termékek memóriában szereplő készletére épül. Ezt a konzolalkalmazást a saját számítógépén futtathatja, és a webes szerepkört az Azure-ban telepítheti. Így láthatja, hogy az Azure adatközpontjában futó webes szerepkör valójában a számítógéphez intéz hívást, bár a számítógép szinte biztosan legalább egy tűzfal és egy hálózati címfordítási (NAT-) réteg mögött található.
 
 A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja.
 
@@ -59,11 +59,11 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszkö
 5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
-A Service Bus-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
+A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-onpremises-server"></a>Helyszíni kiszolgáló létrehozása
+## <a name="create-an-on-premises-server"></a>Helyszíni kiszolgáló létrehozása
 Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
 
 Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
@@ -434,10 +434,10 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
     ![][38]
 
 ## <a name="next-steps"></a>Következő lépések
-A Service Busról a következő forrásanyagokban találhat további információkat:  
+A Azure Relay szolgáltatásól a következő forrásanyagokban találhat további információkat:  
 
-* [Azure Service Bus][sbwacom]  
-* [A Service Bus-üzenetsorok használata][sbwacomqhowto]  
+* [Mi az az Azure Relay?](relay-what-is-it.md)  
+* [A Relay használata](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
@@ -467,12 +467,8 @@ A Service Busról a következő forrásanyagokban találhat további informáci�
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
 
 
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

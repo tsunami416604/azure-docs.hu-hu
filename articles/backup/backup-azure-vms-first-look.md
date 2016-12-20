@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/15/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: 9eddde0df61ac7dde9b24f973e7eec786cd48f24
-ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 
 
 ---
@@ -43,7 +43,7 @@ A virtuális gépek biztonsági mentésének öt fő lépése van:
 ![A virtuális gépek biztonsági mentési folyamatának áttekintése](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus Azure portálon lehet létrehozni. Az Azure Backup szolgáltatás támogatja a Resource Manager-alapú virtuális gépeket. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésének részleteit az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikkben tekintheti meg.
+> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus Azure portálon lehet létrehozni. Az Azure Backup szolgáltatás támogatja a Resource Manager-alapú virtuális gépeket. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésének részleteit az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikkben tekintheti meg.
 >
 >
 
@@ -211,6 +211,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

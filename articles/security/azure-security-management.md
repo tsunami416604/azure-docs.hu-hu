@@ -1,6 +1,6 @@
 ---
 title: "Biztonságkezelés az Azure-ban | Microsoft Docs"
-description: " Ez a cikk a Microsoft Azure-környezetek, például a Cloud Services, a Virtual Machines szolgáltatás és az egyéni alkalmazások távfelügyeletével kapcsolatos funkciók biztonságának fokozása érdekében végrehajtandó lépéseket ismerteti."
+description: "Ez a cikk a Microsoft Azure-környezetek, például a Cloud Services, a Virtual Machines szolgáltatás és az egyéni alkalmazások távfelügyeletével kapcsolatos funkciók biztonságának fokozása érdekében végrehajtandó lépéseket ismerteti."
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2016
+ms.date: 11/21/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 83d13b9b104ae19c6d49103d6a2ffdc6e57dd956
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b1f757678c9a88bd834482d67bf098279c463bfb
 
 
 ---
@@ -74,15 +74,15 @@ Az ügyféloldali biztonsági konfiguráció, valamint egy felügyeleti átjár�
 
 > [!NOTE]
 > Egyes, ebben a cikkben olvasható javaslatok megnövekedett adat-, hálózati vagy számítási erőforrás-igénybevétellel járhatnak, és megnövelhetik a licencek vagy előfizetések költségeit.
-> 
-> 
+>
+>
 
 ## <a name="hardened-workstation-for-management"></a>Megerősített munkaállomás a felügyelethez
 A munkaállomások megerősítésének célja az, hogy a rendszer működéséhez nélkülözhetetlen, kritikus funkciókon kívül minden mást ki lehessen iktatni, a lehető legkisebbre csökkentve a támadási felületet. A rendszer megerősítéséhez tartozik a telepített szolgáltatások és alkalmazások számának minimálisra csökkentése, az alkalmazásfuttatás korlátozása, a hálózati hozzáférés korlátozása csak a legszükségesebbekre, valamint a rendszer állandó naprakészen tartása. Továbbá a megerősített munkaállomás felügyeletre való használata elkülöníti a felügyeleti eszközöket és tevékenységeket a többi végfelhasználói feladattól.
 
 Helyszíni vállalati környezeten belül csökkentheti a fizikai infrastruktúra támadási felületét dedikált felügyeleti hálózatok, beléptetőkártyás kiszolgálótermek és a hálózat védett területein üzemelő munkaállomások segítségével. Felhőalapú vagy hibrid informatikai modellek esetében bonyolultabb lehet a felügyeleti szolgáltatások biztonságának fenntartása, az informatikai erőforrásokhoz való fizikai hozzáférés hiánya miatt. A védelmi megoldások megvalósítása precíz szoftverkonfigurációt, biztonságközpontú folyamatokat és átfogó házirendeket követel meg.
 
-Ha a felhőfelügyelethez – és az alkalmazásfejlesztéshez is – egy zárolt munkaállomást használ a lehető legkevesebb szoftver telepítésével és a legalacsonyabb jogosultsági szintekkel, a távfelügyeleti és fejlesztői környezetek szabványosításával csökkentheti a biztonsági események bekövetkeztének kockázatát. A megerősített munkaállomás-konfiguráció segíthet megakadályozni a kritikus felhőerőforrások kezelésére használható felhasználói fiókokhoz való illetéktelen hozzáférést, a kártevők és a biztonsági rések kihasználói által leggyakrabban használt utak kiiktatásával. A [Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) és a Hyper-V technológia segítségével ellenőrizheti és elkülönítheti az ügyfélrendszer viselkedését. Ily módon csökkentheti a fenyegetéseket, beleértve az e-maillel és a webes böngészéssel járó veszélyeket.
+Ha a felhőfelügyelethez – és az alkalmazásfejlesztéshez – egy zárolt munkaállomást használ a lehető legkevesebb szoftver telepítésével és a legalacsonyabb jogosultsági szintekkel, a távfelügyeleti és fejlesztői környezetek szabványosításával csökkentheti a biztonsági események bekövetkeztének kockázatát. A megerősített munkaállomás-konfiguráció segíthet megakadályozni a kritikus felhőerőforrások kezelésére használható felhasználói fiókokhoz való illetéktelen hozzáférést, a kártevők és a biztonsági rések kihasználói által leggyakrabban használt utak kiiktatásával. A [Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) és a Hyper-V technológia segítségével ellenőrizheti és elkülönítheti az ügyfélrendszer viselkedését. Ily módon csökkentheti a fenyegetéseket, beleértve az e-maillel és a webes böngészéssel járó veszélyeket.
 
 A megerősített munkaállomásokon a rendszergazda általános jogú felhasználói fiókot használ (amely megakadályozza a rendszergazdai szintű kódvégrehajtást), és a társított alkalmazásokat engedélyezési lista szabályozza. A megerősített munkaállomás alapszintű alkotóelemei:
 
@@ -92,7 +92,7 @@ A megerősített munkaállomásokon a rendszergazda általános jogú felhaszná
 * Végrehajtási korlátozások. Csak előre megadott végrehajtható fájlokat engedélyezzen, amelyek szükségesek a kezeléshez („alapértelmezésként elutasítás”). A felhasználó alapesetben semmilyen program futtatására nem kap engedélyt, kivéve, ha az explicit módon meg van határozva az engedélyezési listában.
 * Legkisebb jogosultság. A felügyeleti munkaállomások felhasználóinak ne legyen rendszergazdai jogosultsága magához a helyi géphez. Ez biztosítja, hogy ne változtathassák meg szándékosan vagy véletlenül a rendszer konfigurációját vagy a rendszerfájlokat.
 
-Mindezt kényszerítheti [csoportházirend-objektumok](https://www.microsoft.com/download/details.aspx?id=2612) (GPO-k) használatával az Active Directory tartományi szolgáltatásokban (AD DS), és ezeknek az összes felügyeleti fiókra való alkalmazásával a (helyi) felügyeleti tartományán keresztül.
+Mindezt kényszerítheti [csoportházirend-objektumok](https://www.microsoft.com/download/details.aspx?id=2612) (GPO-k) használatával az Active Directory Domain Servicesben (AD DS), és ezeknek az összes felügyeleti fiókra való alkalmazásával a (helyi) felügyeleti tartományon keresztül.
 
 ### <a name="managing-services-applications-and-data"></a>A szolgáltatások, alkalmazások és adatok felügyelete
 Az Azure felhőszolgáltatások konfigurálása lehetséges az Azure Portalon vagy SMAPI-n keresztül, a Windows PowerShell parancssori felületen, vagy olyan egyedi alkalmazás használatával, amely kihasználja ezeket a RESTful-felületeket. Ilyen mechanizmusokat használó szolgáltatások például az alábbiak: Azure Active Directory (Azure AD), Azure Storage, Azure Websites, Azure Virtual Network.
@@ -106,23 +106,23 @@ Beiktathat az Azure-környezetéhez csatlakoztatott, dedikált[távoli asztali �
 
 A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely képes kikényszeríteni a biztonsági követelményeket. Az RD-átjáró Windows Server-hálózatvédelemmel (NAP) együtt alkalmazva segít biztosítani, hogy csak az Active Directory tartományi szolgáltatások (AD DS) csoportházirend-objektumai (GPO-k) által meghatározott biztonságiállapot-feltételeknek megfelelő ügyfelek csatlakozhatnak. Továbbá:
 
-* Hozzon létre egy [Azure felügyeleti tanúsítványt](http://msdn.microsoft.com/library/azure/gg551722.aspx) az RD-átjárón, így biztosítva, hogy az legyen az egyetlen, az Azure felügyeleti portálhoz való hozzáféréssel rendelkező állomás.
+* Hozzon létre egy [Azure felügyeleti tanúsítványt](http://msdn.microsoft.com/library/azure/gg551722.aspx) az RD-átjárón, így biztosítva, hogy az legyen az egyetlen, az Azure Portalhoz való hozzáféréssel rendelkező állomás.
 * Csatlakoztassa az RD-átjárót ugyanahhoz a [felügyeleti tartományhoz](http://technet.microsoft.com/library/bb727085.aspx), amelyikhez a felügyeleti munkaállomások is kapcsolódnak. Ez akkor szükséges, ha helyek közötti IPsec VPN-t vagy ExpressRoute-ot használ az Azure AD felé egyirányú bizalmi kapcsolattal rendelkező tartományban, vagy ha összevonja a hitelesítő adatokat a helyszíni AD DS-példánya és az Azure AD között.
-* Állítson be egy [ügyfélkapcsolat-engedélyezési házirendet](http://technet.microsoft.com/library/cc753324.aspx) úgy, hogy az RD-átjáró ellenőrizze, érvényes-e (a tartományhoz csatlakozó-e) az ügyfélgép neve, és jogosult-e az Azure felügyeleti portálhoz való hozzáférésre.
+* Állítson be egy [ügyfélkapcsolat-engedélyezési házirendet](http://technet.microsoft.com/library/cc753324.aspx) úgy, hogy az RD-átjáró ellenőrizze, érvényes-e (a tartományhoz csatlakozó-e) az ügyfélgép neve, és jogosult-e az Azure Portalhoz való hozzáférésre.
 * Használjon IPsec-et az [Azure VPN-hez](https://azure.microsoft.com/documentation/services/vpn-gateway/) annak érdekében, hogy még jobban védje a felügyeleti adatforgalmat a lehallgatástól és a tokenlopástól. Ennek alternatívája lehet az elkülönített internetkapcsolat [Azure ExpressRoute-on](https://azure.microsoft.com/documentation/services/expressroute/) keresztül.
 * Állítson be többtényezős hitelesítést ([Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) használatával) vagy intelligens kártyás hitelesítést az RD-átjárón keresztül bejelentkező rendszergazdák számára.
 * Állítson be forrás [IP-címekre vonatkozó korlátozásokat](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) vagy [hálózati biztonsági csoportokat](../virtual-network/virtual-networks-nsg.md) az Azure-ban a megengedett felügyeleti végpontok számának minimalizálása érdekében.
 
 ## <a name="security-guidelines"></a>Biztonsági irányelvek
-A rendszergazdai munkaállomások felhőhasználatra való biztonságossá tétele általánosságban véve nagyon hasonlít bármilyen más, helyszíni munkaállomás esetében alkalmazott gyakorlathoz. Példa erre a minimalizált szerkezet és a korlátozó engedélyek. A felhőfelügyelet bizonyos egyedi aspektusai jobban hasonlítanak a távoli vagy izolált vállalatfelügyeletéihez. Ezek közé tartozik a hitelesítő adatok naplózása, a megnövelt biztonságú távelérés, valamint a fenyegetések észlelése és kezelése.
+A rendszergazdai munkaállomások felhőhasználatra való biztonságossá tétele általánosságban véve hasonlít bármilyen más, helyszíni munkaállomás esetében alkalmazott gyakorlathoz. Példa erre a minimalizált szerkezet és a korlátozó engedélyek. A felhőfelügyelet bizonyos egyedi aspektusai jobban hasonlítanak a távoli vagy izolált vállalatfelügyeletéihez. Ezek közé tartozik a hitelesítő adatok naplózása, a megnövelt biztonságú távelérés, valamint a fenyegetések észlelése és kezelése.
 
 ### <a name="authentication"></a>Authentication
-Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure könnyebben azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), mind a SMAPI-t (olyan ügyfelek által fejlesztett eszközök segítségével, mint a Windows PowerShell-parancsmagok), mind az Azure felügyeleti portált beállíthatja úgy, hogy az SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is igényeljenek. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
+Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure könnyebben azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), mind a SMAPI-t (olyan ügyfelek által fejlesztett eszközök segítségével, mint a Windows PowerShell-parancsmagok), mind az Azure Portalt beállíthatja úgy, hogy az SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is igényeljenek. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.
 
 ### <a name="connectivity"></a>Kapcsolatok
-Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure felügyeleti portál) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
+Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure Portal) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
 
 Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkkel kialakított kezdeti kapcsolatot, majd az egyes virtuális gépekhez vezető RDP-kapcsolatokat a VPN-alagútból alakítsa ki.
 
@@ -139,13 +139,13 @@ Háromféle elsődleges megerősített munkaállomás-konfigurációt ajánlunk.
 | Konfiguráció | Előnyök | Hátrányok |
 | --- | --- | --- |
 | Önálló, megerősített munkaállomás |Szigorúan ellenőrzött munkaállomás |A dedikált asztali gépek magasabb költsége |
-| Az alkalmazások biztonsági réseinek kihasználásával kapcsolatos kisebb kockázat |Nagyobb energiabefektetést igénylő felügyelet | |
-| A feladatok egyértelmű elkülönítése | | |
-| Vállalati PC mint virtuális gép |Alacsonyabb hardverköltségek | |
-| Szerepkör és alkalmazások elkülönítése | | |
+| - | Az alkalmazások biztonsági réseinek kihasználásával kapcsolatos kisebb kockázat |Nagyobb energiabefektetést igénylő felügyelet |
+| - | A feladatok egyértelmű elkülönítése | - |
+| Vállalati PC mint virtuális gép |Alacsonyabb hardverköltségek | - |
+| - | Szerepkör és alkalmazások elkülönítése | - |
 | Windows To Go BitLocker meghajtótitkosítással |Kompatibilitás a legtöbb PC-vel |Eszközkövetés |
-| Költséghatékonyság és hordozhatóság | | |
-| Elkülönített felügyeleti környezet | | |
+| - | Költséghatékonyság és hordozhatóság | - |
+| - | Elkülönített felügyeleti környezet |- |
 
 Fontos, hogy a megerősített munkaállomás a gazda legyen, nem pedig a vendég, és semmi ne legyen a gazda operációs rendszer és a hardver között. A „tiszta forrás alapelv” (más néven „biztonságos eredet”) követése biztosítja, hogy a gazdagép a legjobban megerősített legyen. Egyéb esetben a megerősített munkaállomás (vendég) ki van téve a gazdarendszert érő támadásoknak.
 
@@ -153,7 +153,7 @@ Még jobban elkülönítheti a felügyeleti feladatköröket dedikált rendszerk
 
 A helyszíni infrastruktúrával nem rendelkező informatikai környezetek esetében (ahol például a csoportházirend-objektumok számára nem lehetséges helyi AD DS-példányhoz történő hozzáférés, mert az összes kiszolgáló a felhőben található) az olyan szolgáltatások, mint a [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) leegyszerűsíthetik a munkaállomás-konfigurációk kiépítését és fenntartását.
 
-### <a name="standalone-hardened-workstation-for-management"></a>Önálló megerősített munkaállomás a felügyelethez
+### <a name="stand-alone-hardened-workstation-for-management"></a>Önálló megerősített munkaállomás a felügyelethez
 Önálló megerősített munkaállomás használatával a rendszergazdák rendelkeznek egy PC-vel vagy laptoppal, amelyet felügyeleti feladatok ellátására használnak, valamint egy másik, különálló PC-vel vagy laptoppal az egyéb feladatokhoz. Egy, az Azure-szolgáltatások kezelésére kijelölt munkaállomáson nincs szükség más alkalmazások telepítésére. Továbbá a [platformmegbízhatósági modulokat](https://technet.microsoft.com/library/cc766159) (TPM) vagy hasonló hardverszintű kriptográfiás technológiát támogató munkaállomások használata segít az eszközök hitelesítésében és bizonyos típusú támadások megelőzésében. A TPM a rendszermeghajtó egész kötetes védelmét is képes támogatni a [BitLocker meghajtótitkosítás](https://technet.microsoft.com/library/cc732774.aspx) használatával.
 
 Az önálló megerősített munkaállomás-forgatókönyvben (lásd alább) a Windows tűzfal (vagy egy, nem a Microsoft által készített ügyféltűzfal) helyi példánya a bejövő kapcsolatok, mint például az RDP blokkolására van konfigurálva. A rendszergazda bejelentkezhet a megerősített munkaállomásra, és indíthat RDP-munkamenetet, amely az Azure Virtual Networkhöz való VPN-kapcsolat létesítése után kapcsolódik az Azure-hoz, de nem használhat RDP-t magához a megerősített munkaállomáshoz való kapcsolódáshoz vállalati PC-ről történő bejelentkezés révén.
@@ -187,14 +187,14 @@ Ne feltételezze, hogy ha egy munkaállomás zárolva lett, más gyakori biztons
 | Nem ajánlott | Ajánlott |
 | --- | --- |
 | Ne küldjön e-mailben rendszergazdai hozzáféréshez használatos hitelesítő adatokat vagy más titkos adatokat (pl. SSL vagy felügyeleti tanúsítványokat). |Őrizze meg az adatok bizalmas mivoltát a fióknevek és jelszavak szóbeli közvetítésével (de ne tárolja őket hangpostán), végezze távolról az ügyfél-/kiszolgáló-tanúsítványok telepítését (titkosított munkameneten), védett hálózati megosztásról végezzen letöltéseket, illetve az adatokat személyesen, cserélhető adathordozókon tegye közzé. |
-| Kezelje proaktívan a felügyeleti tanúsítvány-életciklusait. | |
+| - | Kezelje proaktívan a felügyeleti tanúsítvány-életciklusait. |
 | Ne tároljon titkosítatlan vagy nem kivonatolt fiókjelszavakat alkalmazástárolókban (mint például táblázatokban, SharePoint-webhelyeken vagy fájlmegosztásokon). |Hozzon létre biztonságfelügyeleti alapelveket és rendszer-megerősítési házirendeket, és alkalmazza őket a fejlesztői környezetében. |
-| Használjon [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) tanúsítványrögzítési szabályokat, hogy biztosítsa a megfelelő hozzáférést az Azure SSL-/TLS-helyekhez. | |
+| - | Használjon [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) tanúsítványrögzítési szabályokat, hogy biztosítsa a megfelelő hozzáférést az Azure SSL-/TLS-helyekhez. |
 | Ne ossza meg ugyanazt a fiókot vagy jelszót több rendszergazda között, és ne használja ugyanazt a jelszót több felhasználói fiókhoz vagy szolgáltatáshoz, különösképpen közösségi oldalakon és más nem felügyeleti tevékenységekhez. |Hozzon létre dedikált Microsoft-fiókot az Azure-előfizetése kezelésére – egy olyat, amelyet nem használ személyes e-mailes levelezésre. |
 | Ne küldjön el e-mail-mellékletként konfigurációs fájlokat. |A konfigurációs fájlokat és profilokat megbízható helyről telepítse (például titkosított USB flash meghajtóról), nem pedig olyan biztonsági szempontból támadásoknak kitett mechanizmust igénybe véve, mint például az e-mail. |
 | Ne használjon gyenge vagy egyszerű bejelentkezési jelszót. |Tartassa be az erős jelszavak használatára vonatkozó házirendeket, és alkalmazzon lejárati ciklusokat (első használatkori megváltoztatással), konzolhasználati időkorlátokat, valamint automatikus fiókzárolást. Használjon ügyféljelszó-kezelő rendszert, többtényezős hitelesítéssel a jelszótárolóhoz való hozzáféréshez. |
 | Ne tegye interneten keresztül elérhetővé a felügyeleti portokat. |Zárolja az Azure-portokat és IP-címeket a felügyeleti hozzáférés korlátozása érdekében. További információkért tekintse meg az [Azure hálózati biztonság](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx) című tanulmányt. |
-| Használjon tűzfalat, VPN-t és NAP-ot minden felügyeleti kapcsolat esetében. | |
+| - | Használjon tűzfalat, VPN-t és NAP-ot minden felügyeleti kapcsolat esetében. |
 
 ## <a name="azure-operations"></a>Az Azure üzemeltetése
 A Microsoftnál az Azure üzemeltetésének keretein belül az üzemeltetési mérnökök és a támogatási személyzet az Azure éles rendszereihez [virtuális géppel ellátott megerősített munkaállomás PC-ken](#stand-alone-hardened-workstation-for-management) keresztül férnek hozzá. A virtuális gépen keresztül lehetséges a vállalati hálózathoz és alkalmazásokhoz (például e-mail, intranet stb.) való hozzáférés. Minden felügyeleti munkaállomás rendelkezik TPM-mel, a gazda-rendszerindítási meghajtó BitLockerrel van titkosítva, és egy speciális szervezeti egységhez (OU) vannak csatlakoztatva a Microsoft elsődleges vállalati tartományában.
@@ -235,6 +235,6 @@ A következő források általánosabb információkat kínálnak az Azure-ról 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

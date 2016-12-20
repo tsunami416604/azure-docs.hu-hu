@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: 63d31ae31703a8d43bf2ffec2e6ccdc5da3a46a3
 
 
 ---
-# <a name="about-vpn-devices-for-sitetosite-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
-Helyek közötti (S2S) VPN-kapcsolat konfigurálásához egy VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja. 
+# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
+Helyek közötti (S2S) VPN-kapcsolat konfigurálásához egy VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja.
 
 > [!NOTE]
 > Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
-> 
-> 
+>
+>
 
 Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable) táblában, tekintse meg a jelen cikk [Nem ellenőrzött VPN-eszközök](#additionaldevices) című szakaszát. Lehetséges, hogy az eszköz mégis kompatibilis az Azure-ral. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
@@ -36,10 +36,10 @@ Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable)
 * A statikus és a dinamikus útválasztás esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
-* A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek. 
+* A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
 
 ## <a name="a-namedevicetableavalidated-vpn-devices"></a><a name="devicetable"></a>Ellenőrzött VPN-eszközök
-Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti. 
+Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti.
 
 A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
@@ -66,19 +66,19 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Open Systems AG |Mission Control biztonsági átjáró |N/A |[Telepítési útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[Telepítési útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |(Hamarosan elérhető) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS 6.1.5 vagy újabb (házirendalapú), PAN-OS 7.0.5 vagy újabb (útvonalalapú) |[Konfigurációs utasítások](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs utasítások](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| Watchguard |Összes |Fireware XTM v11.x |[Konfigurációs utasítások](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) |Nem kompatibilis |
+| Watchguard |Összes |Fireware XTM v11.x |[Konfigurációs utasítások](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network) |Nem kompatibilis |
 
 (*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
 
-## <a name="a-nameadditionaldevicesanonvalidated-vpn-devices"></a><a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
-Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblában, az ennek ellenére képes lehet helyek közötti kapcsolat létesítésére. Ellenőrizze, hogy a VPN-eszköz teljesíti-e az [Információk a VPN-átjárókról](vpn-gateway-about-vpngateways.md#gateway-requirements) című cikk Az átjáróra vonatkozó követelmények szakaszában megadott minimális követelményeket. A minimális rendszerkövetelményeknek megfelelő eszközök is működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
+## <a name="a-nameadditionaldevicesanon-validated-vpn-devices"></a><a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
+Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblában, az ennek ellenére képes lehet helyek közötti kapcsolat létesítésére. Ellenőrizze, hogy a VPN-eszköz teljesíti-e az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk Az átjáróra vonatkozó követelmények szakaszában megadott minimális követelményeket. A minimális rendszerkövetelményeknek megfelelő eszközök is működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
 
 ## <a name="editing-device-configuration-samples"></a>Az eszköz konfigurációs mintáinak szerkesztése
-A megadott VPN-eszközkonfigurációs minta letöltését követően egyes értékeket a környezeti beállításoknak megfelelően le kell cserélni. 
+A megadott VPN-eszközkonfigurációs minta letöltését követően egyes értékeket a környezeti beállításoknak megfelelően le kell cserélni.
 
 **A minta szerkesztéséhez tegye a következőket:**
 
-1. Nyissa meg a mintát a Jegyzettömb alkalmazásban. 
+1. Nyissa meg a mintát a Jegyzettömb alkalmazásban.
 2. Keresse meg és cserélje le az összes <*szöveges*> karakterláncot a környezeti beállításokhoz tartozó értékekre. Győződjön meg arról, hogy szerepelnek benne < és > karakterek. A név megadásakor a kiválasztott névnek egyedinek kell lennie. Ha egy parancs nem működik, tekintse meg az eszköz gyártói dokumentációját.
 
 | **Szövegminta** | **Módosítsa a következőre:** |
@@ -98,8 +98,8 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 ## <a name="ipsec-parameters"></a>IPsec paraméterek
 > [!NOTE]
 > Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, adott kombinációk megadására és kiválasztására jelenleg nincs lehetőség az Azure VPN Gateway átjárón. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az MSS korlátozását 1350-re kell állítani.
-> 
-> 
+>
+>
 
 ### <a name="ike-phase-1-setup"></a>IKE – az 1. fázis beállítása
 | **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
@@ -153,7 +153,6 @@ Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési aj
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -17,12 +17,52 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97f74f845e19ae99cf6c5abbb9f076c7c5171993
+ms.sourcegitcommit: a4882b6fcd75ecaa826cdda3e25ee690b85a0670
+ms.openlocfilehash: 34450e25941e0be97b72c1ba30ee348d73f4bc67
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Csatlakozás Azure tárolószolgáltatási fürthöz
+Az Azure Container Service által üzembe helyezett DC/OS-, Kubernetes- és Docker Swarm-fürtök mind REST-végpontokat tesznek közzé.  A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről közvetlenül elérhető. A DC/OS és a Docker Swarm esetében létre kell hoznia egy SSH-alagutat, hogy biztonságosan csatlakozhasson a REST-végponthoz. Az egyes kapcsolatokat az alábbiakban ismertetjük.
+
+## <a name="connecting-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz.
+Ha csatlakozni szeretne egy Kubernetes-fürthöz, telepítenie kell a `kubectl` parancssori eszközt.  Az eszköz telepítésének legegyszerűbb módja az Azure 2.0 `az` parancssori eszköz használata.
+
+```console
+az acs kubernetes install cli [--install-location=/some/directory]
+```
+
+Vagy letöltheti az ügyfelet közvetlenül a [kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146).
+
+A `kubectl` telepítését követően át kell másolnia a fürt hitelesítő adatait a gépre.  Ennek legegyszerűbb módját ismét az `az` parancssori eszköz használata nyújtja:
+
+```console
+az acs kubernetes get-credentials --dns-prefix=<some-prefix> --location=<some-location>
+```
+
+Ezzel letölti a fürt hitelesítő adatait a `$HOME/.kube/config` helyre, ahol a `kubectl` megtalálja majd.
+
+Vagy az `scp` használatával is biztonságosan átmásolhatja a fájlt a fő virtuális gép `$HOME/.kube/config` helyéről a helyi gépre.
+
+```console
+mkdir $HOME/.kube/config
+scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
+```
+
+Windows rendszeren a Windowson futó Ubuntu Bash-környezetet vagy a Putty „pscp” eszközét kell használnia.
+
+A `kubectl` konfigurálását követően letesztelheti a használatát a következővel:
+
+```console
+kubectl get nodes
+```
+
+Ennek a parancsnak meg kell jelenítenie a fürtben lévő csomópontokat.
+
+További utasításokat a [Kubernetes első lépéseit](http://kubernetes.io/docs/user-guide/quick-start/) ismertető útmutatóban talál
+
+## <a name="connecting-to-a-dcos-or-swarm-cluster"></a>Csatlakozás DC/OS- vagy Swarm-fürthöz
+
 Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök REST-végpontokat tesznek közzé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. Ezeknek a végpontoknak a kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Miután az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. Ez a dokumentum végigvezeti azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszerben.
 
 > [!NOTE]
@@ -126,6 +166,6 @@ Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 
