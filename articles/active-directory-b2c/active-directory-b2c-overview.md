@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 217ffc63e07d66de522accc42c246125d01713c8
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 37c9d6808b3282d86583f6305672405775a7f306
 
 
 ---
@@ -40,7 +40,7 @@ Keresse fel rendszeresen ezt a lapot, hiszen itt szerezhet tudomást az Azure Ac
 * [A szolgáltatás jelenlegi korlátozásai és megkötései](active-directory-b2c-limitations.md).
 * Végül az Azure AD B2C-t és ASP.NET-magot használó [kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c).
 
-## <a name="howto-articles"></a>Útmutatók
+## <a name="how-to-articles"></a>Útmutatók
 Ismerje meg, hogyan használhatja az Azure Active Directory B2C egyes szolgáltatásait:
 
 * [Facebook-](active-directory-b2c-setup-fb-app.md), [Google+-](active-directory-b2c-setup-goog-app.md), [Microsoft-](active-directory-b2c-setup-msa-app.md), [Amazon-](active-directory-b2c-setup-amzn-app.md) és [LinkedIn-](active-directory-b2c-setup-li-app.md)fiókok beállítása a felhasználók felé néző alkalmazásokban való használatra
@@ -67,6 +67,6 @@ Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekrő
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
