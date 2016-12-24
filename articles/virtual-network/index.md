@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
 +toc_rel: breadcrumb.json
+description: "Ismerkedjen meg a felhőben működő virtuális hálózatok használatával. A dokumentáció bemutatja, hogyan helyezhet üzembe VNeteket, hogyan indíthat a használatukkal erőforrásokat, és hogyan integrálhatja azokat a helyszíni hálózattal."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f03b3e68dd62cdf429162d3fe7d2342bbf254b52
+ms.sourcegitcommit: 9a76fe5c0b518cdd95be71e0c3cf928f0ff93668
+ms.openlocfilehash: 7e2c2db7000b2ea0a4fe698e47e775cc2a7db4dd
 
 ---
-#<a name="virtual-network-documentation"></a>Virtual Network dokumentációja
+# <a name="virtual-network-documentation"></a>Virtual Network dokumentációja
 
-Az Azure Virtual Network (VNet) a saját hálózatának logikai megfelelője a felhőben.  A VNettel teljesen ellenőrzése alatt tarthatja a hálózat elemeit, és a VNetet alhálózatokra bonthatja, és Azure-beli virtuális gépek vagy felhőszolgáltatások indítására használhatja.  Emellett csatlakoztathatja a VNet-et a helyszíni hálózatához az Azure-ban elérhető valamelyik kapcsolódási lehetőséggel, ezzel kiterjesztheti a hálózatot a felhőbe, ugyanakkor megőrizheti az erőforrásai feletti felügyeletet.
+Ismerkedjen meg a Virtual Network (VNet) használatával, amely saját hálózatának logikai leképezése a felhőben. A dokumentáció bemutatja, hogyan telepítheti és felügyelheti a VNeteket, hogyan indíthat a használatukkal virtuális gépeket vagy felhőalapú szolgáltatásokat, hogyan csatlakoztathatja a VNeteket helyszíni hálózatához, és hogyan terjesztheti ki hálózatát a felhőbe, miközben megőrzi az irányítást az erőforrásai felett.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -105,81 +106,48 @@ Az Azure Virtual Network (VNet) a saját hálózatának logikai megfelelője a f
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-doc">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-dokumentáció</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation">PowerShell (Resource Manager)</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation">PowerShell (klasszikus)</a></p>
+                        <p><a href="/cli/azure">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/network/vnet">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>A Virtual Network Azure parancssori felülete</p>
-                    </div>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/java/api/">Java</a></p>
+                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET API-dokumentáció</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>   
-    <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt163658">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Virtual Network – REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/mt163658.aspx">REST (Resource Manager)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/jj157182.aspx">REST (klasszikus)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
-
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-network.pdf">
@@ -191,6 +159,6 @@ Virtual Network-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

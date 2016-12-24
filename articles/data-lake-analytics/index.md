@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerkedjen meg a big data-elemzéssel a Data Lake Analytics használatával. Az oktatóanyagok bemutatják, hogyan futtathat kötegelt, valós idejű és interaktív elemzéseket, és hogyan írhat U-SQL lekérdezéseket."
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: aff52fe8a31d7ef9fe30f271a2885dca1cd9a861
+ms.sourcegitcommit: 84b03eb578df1a4122b18a01c0ffba8558adc088
+ms.openlocfilehash: f36a830ede202a7519d46fa9f12299dcec4c8130
 
 ---
 # <a name="data-lake-analytics-documentation"></a>Azure Data Lake Analytics – dokumentáció
 
-Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések egyszerűsítését szolgálja. Ez a szolgáltatás lehetővé teszi, hogy a feladatok írására, futtatására és kezelésére összpontosítson, és nem kell az elosztott infrastruktúra működtetésével bajlódnia. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az analitikai szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. Az analitikai szolgáltatás az Azure Active Directoryt is támogatja, ami lehetővé teszi a helyszíni identitáskezelő rendszerbe integrált hozzáférések és szerepkörök egyszerű kezelését. A szolgáltatás tartalmazza a U-SQL lekérdezésnyelvet is, amely az SQL előnyeit egyesíti a felhasználói kód kifejezőerejével. A U-SQL skálázható elosztott futtatókörnyezete segítségével hatékonyan elemezheti az adattárban és az Azure, az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatásban működő SQL Server kiszolgálókon található adatokat.
+Ismerje meg, hogyan futtathat big data-elemzési feladatokat a Data Lake Analytics használatával, amelyek akár hatalmas adatkészletekre is skálázhatók. Az oktatóanyagok és az egyéb dokumentáció bemutatják, hogyan hozhat létre és felügyelhet kötegelt, valós idejű és interaktív elemzéseket, és hogyan hajthat végre lekérdezéseket a U-SQL nyelv használatával.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=data-lake-analytics">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=data-lake-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -175,68 +176,47 @@ Az Azure Data Lake Analytics egy új szolgáltatás, amely a big data-elemzések
 </ul>
 
 ---
-
-## <a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Data Lake Analytics Resource Manager PowerShell-parancsmagok</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Data Lake Analytics – Java API-referencia</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datalake.analytics">.NET</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-analytics">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt591959">U-SQL</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Data Lake Analytics – felügyelt dokumentáció</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="/rest/api/datalakeanalytics/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Data Lake Analytics – REST API-referencia</p>
+                        <p><a href="/rest/api/datalakeanalytics/">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -252,6 +232,6 @@ Azure Data Lake Analytics – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

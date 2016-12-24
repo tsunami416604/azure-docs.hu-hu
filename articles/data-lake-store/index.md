@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet."
 translationtype: Human Translation
-ms.sourcegitcommit: 5ddeaf6f2049983f80618d9e2294f82c60fe9af5
-ms.openlocfilehash: 2948011d1d321d0371928bbdf7a9a9414036589c
+ms.sourcegitcommit: a33b0509d1280a33a1e5134217b56071256fec24
+ms.openlocfilehash: d5ff73f8c9303bff281b2a2bbf314c76072f7569
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store – dokumentáció
 
-Az Azure Data Lake Store egy igen nagy kapacitású adattár a big data koncepción alapuló adatelemzési számítási feladatokhoz. Az Azure Data Lake lehetővé teszi mindenféle méretű, típusú és feldolgozási sebességű adatok egy helyen történő műveleti és felderítési jellegű feldolgozását.  Az Azure Data Lake Store a (HDInsight-fürttel hozzáférhető) Hadoopból érhető el a WebHDFS-kompatibilis megoldások használatával. Minden vállalati szintű képességet tartalmaz a biztonságossághoz, kezelhetőséghez, méretezhetőséghez, megbízhatósághoz és rendelkezésre álláshoz.
+Ismerje meg, hogy hogyan használhatja a nagykapacitású, Hadoop-kompatibilis Data Lake Store adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre, kezelhet, és érhet el egy Data Lake adattárat, amellyel üzemeltetési és magyarázó elemzéseket végezhet.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -157,68 +158,48 @@ Az Azure Data Lake Store egy igen nagy kapacitású adattár a big data koncepci
 </ul>
 
 ---
-
-## <a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>PowerShell-dokumentáció</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
- <li>
-        <a href="/dotnet/api">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET-felügyelet – dokumentáció</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datalake.store">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html">Python (Fiókkezelés)</a></p>
+                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (Fájlrendszer-kezelés)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
- <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java SDK-dokumentáció</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="/rest/api/datalakestore">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>A Data Lake Store REST API dokumentációja</p>
+                        <p><a href="/rest/api/datalakestore">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -231,6 +212,6 @@ Az Azure Data Lake Store dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

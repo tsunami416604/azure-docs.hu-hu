@@ -46,6 +46,7 @@
 #### [Hálózati teljesítményfigyelő](log-analytics-network-performance-monitor.md)
 #### [Biztonsági naplózás](../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [Service Fabric](log-analytics-service-fabric.md)
+#### [Szolgáltatástérkép](../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [SQL-elemzés](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [VMware](log-analytics-vmware.md)
@@ -61,12 +62,15 @@
 ### [Naplókeresési API](log-analytics-log-search-api.md)
 ### [Riasztási API](log-analytics-api-alerts.md)
 
+# Referencia
+## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+
 # Erőforrások
 ## [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

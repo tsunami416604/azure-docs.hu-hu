@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
 toc_rel: breadcrumb.json
+description: "Ismerje meg a Windows és Linux virtuális gépek létrehozását, üzembe helyezését és kezelését. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
-ms.openlocfilehash: 57994a1476186696b81b05e0ce7ae645337d35b2
+ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
+ms.openlocfilehash: fc2fb1a52416e5743476a2fc4e57956b602a1689
 
 ---
-#<a name="virtual-machines-documentation"></a>Virtual Machines-dokumentáció
+# <a name="virtual-machines-documentation"></a>Virtual Machines-dokumentáció
 
-Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartása azonban így is szükséges – beleértve a virtuális gépen futó szoftverek konfigurálását, javítását és karbantartását.
+Ismerje meg az Azure virtuális gépek létrehozásának eljárást. Az oktatóanyagok, API-referenciák és egyéb dokumentációk bemutatják, hogyan hozhat létre és telepíthet Windows vagy Linux rendszerű virtuális gépeket, valamint összetett virtuálisgép-sablonokat.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -59,6 +60,6 @@ Virtuális gépek dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

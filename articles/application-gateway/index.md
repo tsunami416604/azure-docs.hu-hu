@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan helyezhet üzembe felhőalapú alkalmazáskézbesítési vezérlőt. A dokumentáció bemutatja, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztást egy webes kezelőfelülethez."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: cbe8ab766a97c628dcbf5e3a34ec1fb1b779942c
+ms.sourcegitcommit: 8f9b8cee583b9bc12df14bf5161cab1952e3e022
+ms.openlocfilehash: 5e7843adfb31fcfc56986cce44fc5d59ee558d58
 
 ---
 #<a name="application-gateway-documentation"></a>Application Gateway – dokumentáció
 
-Az Azure Application Gateway biztosítja az Application Deliver Controller (ADC) szolgáltatást.  Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások az alkalmazásátjáró felé történő kiszervezésével.  Ez egy, az alkalmazása jobb kezelhetősége érdekében a méretezhetőséget és a magas rendelkezésre állást, valamint a diagnosztika és a naplózás széles skáláját nyújtó dedikált virtuális készülék.
+Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gateway alkalmazáskézbesítési vezérlőt (ADC). Oktatóanyagok, API-referenciák, és egyéb dokumentációk, amelyek bemutatják, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztási szolgáltatásokat, amelyek lehetővé teszik méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozását.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az Azure Application Gateway biztosítja az Application Deliver Controller (ADC)
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-gateway">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-gateway">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -104,81 +105,51 @@ Az Azure Application Gateway biztosítja az Application Deliver Controller (ADC)
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-doc">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>PowerShell-dokumentáció</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 előzetes verzió</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="/cli/azure/network/application-gateway">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Azure CLI</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.js</a></p>
+                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways">Ruby</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt684939.aspx">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API-referencia</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Klasszikus REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>   
-    </ul>
-    
+    </li>
+</ul>   
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
@@ -190,6 +161,6 @@ Application Gateway – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 
