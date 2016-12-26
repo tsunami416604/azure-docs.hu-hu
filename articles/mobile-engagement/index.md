@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan nyerhet betekintést a mobilalkalmazások használatába és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c9f8493eb39f0c519825cdaa1c06bbb24b0f478f
+ms.sourcegitcommit: 2dbe8c3bf665249af4a1626e38f6465d2db32a0b
+ms.openlocfilehash: fed0048ab3a7101c4461ffa14511a26ecd7a36eb
 
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement – dokumentáció
 
-Az Azure Mobile Engagement egy szolgáltatott szoftverként (SaaS) biztosított felhasználóelérési platform, amely lehetővé teszi az alkalmazáshasználatba való adatvezérelt betekintést és a felhasználószegmentálást, valamint a leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
+Ismerje meg, hogyan javíthatja a Mobile Engagement segítségével a mobilappok használati, felhasználómegtartási és bevételi arányait. Az oktatóanyagok, SDK-k és egyéb dokumentáció bemutatják, hogyan nyerhet betekintést az alkalmazáshasználatba és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -205,6 +206,6 @@ Mobile Engagement – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

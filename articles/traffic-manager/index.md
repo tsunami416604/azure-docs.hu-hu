@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy hogyan kezelje a bejövő forgalmat az optimális alkalmazásteljesítmény eléréséhez. A dokumentáció bemutatja a forgalom Azure- vagy külső szolgáltatásvégpontok közötti elosztásának lehetőségeit."
 translationtype: Human Translation
-ms.sourcegitcommit: 9e86ae23b3fe3b8134f4725035c03837425cc0c4
-ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
+ms.sourcegitcommit: 3123dc992bb821e79edceef01d2654aaff2468c1
+ms.openlocfilehash: a10c68140066de5be6690f30c89f4f6f2fad0825
 
 ---
 #<a name="traffic-manager-documentation"></a>Traffic Manager-dokumentáció
 
-Az Azure Traffic Manager szolgáltatás a felhasználói forgalom elosztását teszi lehetővé különböző régiókban lévő végpontok között. A Traffic Manager a tartománynévrendszer (DNS) használatával a leginkább megfelelő végpontra irányíthatja a kiválasztott forgalom-útválasztási módszer és a végpontok állapota alapján az ügyfélkéréseket, magasabb rendelkezésre állást és válaszképességet biztosítva alkalmazásának.
+Ismerje meg a Traffic Manager használatát a bejövő forgalom irányítására az optimális alkalmazásteljesítmény és megbízhatóság eléréséhez. Az oktatóanyagok, API-referenciák, és egyéb dokumentációk bemutatják a forgalom Azure- vagy külső szolgáltatásvégpontok közötti elosztásának módszereit.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -110,7 +111,7 @@ Az Azure Traffic Manager szolgáltatás a felhasználói forgalom elosztását t
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Traffic Manager REST API-referencia</p>
+                        <p>Traffic Manager – REST API</p>
                     </div>
                 </div>
             </div>
@@ -129,6 +130,6 @@ A Traffic Manager dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

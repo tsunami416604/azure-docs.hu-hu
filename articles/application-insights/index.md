@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Tekintse meg, hogy az Application Insights bővíthető alkalmazásteljesítmény-felügyeleti szolgáltatás hogyan használható a webalkalmazások és szolgáltatások problémáinak észlelésére, osztályozására és diagnosztizálására."
 translationtype: Human Translation
-ms.sourcegitcommit: c192cc88c383677abbc356242c08c7cf6f74d289
-ms.openlocfilehash: 6e74ccf90249a2397c6dbe842cf96461b02b7da3
+ms.sourcegitcommit: f0fdb938519737e67849831a0751542f69c269d9
+ms.openlocfilehash: e5425bc1f39c9ca71b6eaf2c928b0d8397319d85
 
 ---
 # <a name="application-insights-documentation"></a>Az Application Insights dokumentációja
 
-Az Application Insights egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Emellett a devOps folyamattal is integrálható, és rendelkezik kapcsolódási pont más eszközök széles köréhez is.
+Tekintse meg, hogy az Application Insights bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás hogyan használható a webfejlesztők számára. Oktatóanyagok, API-referenciák és egyéb dokumentációk mutatják be, hogy a szolgáltatás hogyan használható a webalkalmazások és szolgáltatások problémáinak észlelésére, osztályozására és diagnosztizálására.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az Application Insights egy bővíthető alkalmazásteljesítmény-felügyeleti 
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-insights">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-insights">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -121,67 +122,35 @@ Az Application Insights egy bővíthető alkalmazásteljesítmény-felügyeleti 
 </ul>
 
 ---
-
-## <a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://docs.microsoft.com/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Application Insights – Java API-dokumentáció</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="https://docs.microsoft.com/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Application Insights – felügyelt referencia API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>JavaScript</h3>
-                        <p>Application Insights – JS API-dokumentáció</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://dev.applicationinsights.io/">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Application Insights – REST API-referencia</p>
+                        <p><a href="https://dev.applicationinsights.io/">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    </ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-insights.pdf">
@@ -193,6 +162,6 @@ Az Application Insights dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

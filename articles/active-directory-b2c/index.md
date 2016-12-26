@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan helyezhet üzembe átfogó felhasználói identitáskezelést a felhőben. A dokumentáció bemutatja, hogyan védheti meg a fogyasztói webes és mobilappokat."
 translationtype: Human Translation
-ms.sourcegitcommit: 3cee8c74ed77a27c8a2006dcd28729f9c077aea9
-ms.openlocfilehash: 330f2c0efed16ae587c6f069d3feae1bb80f3097
+ms.sourcegitcommit: e3ffd8f83b4ad25d28f6d0afd82efc6150d98fa2
+ms.openlocfilehash: c5f925446b5e2cc7ea8739e22e9d093428700483
 
 ---
 
 #<a name="active-directory-b2c-documentation"></a>Active Directory B2C – dokumentáció
 
-Az Azure Active Directory B2C egy kiterjedt funkciókészlettel ellátott felhőbeli identitáskezelő megoldás a felhasználók felé néző webes és mobilalkalmazásokhoz. Ez a globális szolgáltatás magas rendelkezésre állást biztosít, és akár több száz millió felhasználói identitásra is felskálázható. A vállalati szintű biztonsági platformra épülő Azure Active Directory B2C védelmet nyújt alkalmazásainak, vállalatának és ügyfeleinek.
+Ismerje meg, hogyan állíthat be és kezelhet összefüggő felhasználói identitáskezelést a felhőben Active Directory B2C használatával. Az oktatóanyagok, referenciák és egyéb dokumentációk bemutatják, hogyan védheti meg a fogyasztói, biztonságos bejelentkezéssel rendelkező webes és mobilalkalmazásokat.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -187,6 +188,6 @@ Active Directory B2C – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

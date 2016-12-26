@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan használhatja a Content Delivery Network (CDN) szolgáltatást a tartalom globális adatközpontból bármilyen eszközre végzett továbbítására. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 5f0cd9a3f3d4b578312e1b9f9f8b9c5ee7d6aa27
+ms.sourcegitcommit: 565971021beec4afde15c17737ee82b812ba894d
+ms.openlocfilehash: fe5c35945f14c5023f070f25fd76e47d7952ce54
 
 ---
-#<a name="cdn-documentation"></a>CDN – dokumentáció
+# <a name="cdn-documentation"></a>CDN – dokumentáció
 
-Az Azure Content Delivery Network (CDN) globális megoldást nyújt a fejlesztők számára az Azure-ban vagy más helyeken üzemeltetett nagy sávszélességű tartalmak továbbítására.  A CDN használatával lehetőség van a nyilvánosan elérhető, az Azure blob-tárolóból, webalkalmazásokból, virtuális gépekről, alkalmazásmappákból vagy más HTTP/HTTPS-helyekről betöltött objektumok gyorsítótárazására.  A CDN segítségével általában statikus tartalmak, például képek, stíluslapok, dokumentumok, fájlok, ügyféloldali parancsfájlok vagy HTML-oldalak továbbíthatók.
+Ismerje meg, hogyan használható Content Delivery Network (CDN) az Azure-ban vagy máshol tárolt tartalmak nagy sávszélességű továbbítására. Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan használhatja a CDN-t a tartalom globális adatközpontokból bármilyen eszközre történő továbbítására.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -67,37 +68,44 @@ Az Azure Content Delivery Network (CDN) globális megoldást nyújt a fejlesztő
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/rest/api/CDN">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>CDN – REST API-referencia</p>
+                        <p><a href="/rest/api/cdn/">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -112,6 +120,6 @@ Azure CDN – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

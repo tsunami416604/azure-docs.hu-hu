@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
+ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
+ms.sourcegitcommit: 0500d903438e0fb062ca848e6f488860e214a705
+ms.openlocfilehash: 55b6f6e03bfd1877d4f204cb5751ae46379d6951
 
 
 ---
@@ -33,17 +33,17 @@ Mivel az Azure Active Directory (AD) egy identitáskezelést szolgáltatásként
 ## <a name="getting-started"></a>Bevezetés
 Ezek az oktatóanyagok több platformot is lefednek, és segíthetnek, hogy minél gyorsabban elkezdje az Azure Active Directoryval folytatott fejlesztést. Előfeltételként [be kell szereznie egy Azure Active Directory-bérlőt](active-directory-howto-tenant.md).
 
-### <a name="mobile-and-pc-application-quickstart-guides"></a>Mobil- és számítógépes alkalmazások első lépéseinek útmutatói
+### <a name="mobile-and-pc-application-quick-start-guides"></a>Mobil- és számítógépes alkalmazások első lépéseinek útmutatói
 | [![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md) | [![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md) | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md) | [![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md) | [![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md) | [![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md) | [![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | [iOS](active-directory-devquickstarts-ios.md) |[Android](active-directory-devquickstarts-android.md) |[.NET](active-directory-devquickstarts-dotnet.md) |[Windows Universal](active-directory-devquickstarts-windowsstore.md) |[Xamarin](active-directory-devquickstarts-xamarin.md) |[Cordova](active-directory-devquickstarts-cordova.md) |[Integráció közvetlenül OAuth 2.0-val](active-directory-protocols-oauth-code.md) |
 
-### <a name="web-application-quickstart-guides"></a>Webalkalmazások első lépéseinek útmutatói
+### <a name="web-application-quick-start-guides"></a>Webalkalmazások első lépéseinek útmutatói
 | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md) | [![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md) | [![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md) | [![Javascript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md) |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapp-dotnet.md) |[Java](active-directory-devquickstarts-webapp-java.md) |[AngularJS](active-directory-devquickstarts-angular.md) |[Javascript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |[Integráció közvetlenül OpenID Connecttel](active-directory-protocols-openid-connect-code.md) |
 
-### <a name="web-api-quickstart-guides"></a>Webes API-k első lépéseinek útmutatói
+### <a name="web-api-quick-start-guides"></a>Webes API-k első lépéseinek útmutatói
 | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md) |
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
@@ -53,15 +53,17 @@ Ezek az oktatóanyagok több platformot is lefednek, és segíthetnek, hogy min�
 |:---:|
 | [Graph API](active-directory-graph-api-quickstart.md) |
 
-## <a name="howtos"></a>Használati útmutatók
+## <a name="how-tos"></a>Használati útmutatók
 Ezek a cikkek ismertetik, hogyan végezhet el bizonyos feladatokat az Azure Active Directoryval:
 
 * [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 * [Azure AD-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával](active-directory-devhowto-multi-tenant-overview.md)
+* [Szolgáltatás/démonalkalmazás hitelesítése tanúsítvánnyal](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)
 * Alkalmazások közötti SSO engedélyezése ADAL-kódtárral [Android](active-directory-sso-android.md) és [iOS](active-directory-sso-ios.md) rendszerű eszközökön
 * [Alkalmazás AppSource Certified minősítése Azure AD-hez](active-directory-devhowto-appsource-certified.md)
 * [Az alkalmazás szerepeltetése az Azure AD alkalmazáskatalógusában](active-directory-app-gallery-listing.md)
 * [Webalkalmazások beküldése az Office 365 Értékesítői információ-központjába](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+* [Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban az Azure Portal segítségével](active-directory-app-registration.md)
 * [Az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
 * [Az ügyfélalkalmazásban található bejelentkezési és alkalmazásbeszerzési gombok arculati irányelveinek megismerése](active-directory-branding-guidelines.md)
 * [Előzetes verzió: Olyan alkalmazások fordítása, amelyekben a személyes és a munkahelyi vagy iskolai fiókokkal is bejelentkezhetnek a felhasználók](active-directory-appmodel-v2-overview.md)
@@ -116,7 +118,7 @@ Az [Azure Friday](https://azure.microsoft.com/documentation/videos/azure-friday/
 * [Cloud Identity:](http://www.cloudidentity.net) Gondolatok az identitáskezelésről mint szolgáltatásról, az Azure Active Directory vezető projektmenedzserétől.  
 * [Azure Active Directory a Twitteren:](https://twitter.com/azuread) Azure Active Directory-közlemények legfeljebb 140 karakterben.
 
-## <a name="windows-server-onpremises-development"></a>Windows Server – helyszíni fejlesztés
+## <a name="windows-server-on-premises-development"></a>Windows Server – helyszíni fejlesztés
 A Windows Server és az Active Directory összevonási szolgáltatás (AD FS) fejlesztési célú használatával kapcsolatos útmutatóért olvassa el az alábbi témaköröket:
 
 * [AD FS-forgatókönyvek fejlesztőknek](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers): Áttekintést nyújt az AD FS összetevőiről és azok működéséről a támogatott hitelesítési/engedélyezési forgatókönyvek részleteinek ismertetésével együtt.
@@ -124,7 +126,6 @@ A Windows Server és az Active Directory összevonási szolgáltatás (AD FS) fe
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

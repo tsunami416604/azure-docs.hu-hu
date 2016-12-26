@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: a607ab6bf73f59f55109f9ee60ab69aa15d74db3
 
 
 ---
@@ -30,16 +30,16 @@ ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
 > 
 > 
 
-Ez a cikk végigvezeti az Azure Search-[index](https://msdn.microsoft.com/library/azure/dn798941.aspx) [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) használatával történő létrehozásának folyamatán.
+Ez a cikk végigvezeti az Azure Search-[index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) [Azure Search .NET SDK](https://aka.ms/search-sdk) használatával történő létrehozásának folyamatán.
 
 Már az útmutató követése és az index létrehozása előtt [létre kell hoznia egy Azure Search szolgáltatást](search-create-service-portal.md).
 
 Vegye figyelembe, hogy a cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja.
 
-## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
+## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
 Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arra, hogy a .NET SDK használatával kérelmeket bocsásson ki a szolgáltatásvégponton. Először meg kell szereznie a létrehozott keresőszolgáltatáshoz generált adminisztrációs API-kulcsok egyikét. A .NET SDK minden kérelemnél elküldi ezt az API-kulcsot a szolgáltatásának. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
+1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
@@ -73,48 +73,88 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 <a name="DefineIndex"></a>
 
-## <a name="iii-define-your-azure-search-index-using-the-index-class"></a>III. Az Azure Search-index meghatározása a `Index` osztály használatával
+## <a name="iii-define-your-azure-search-index"></a>III. Az Azure Search-index meghatározása
 A `Indexes.Create` módszer egyetlen meghívása létrehozza az indexet. Ez a módszer egy `Index` objektumot használ paraméterként, amely meghatározza az Azure Search-indexet. Létre kell hoznia és inicializálnia kell egy `Index` objektumot az alábbiak szerint:
 
 1. Állítsa be az `Index` objektum `Name` tulajdonságát az index nevének.
-2. Állítsa be az `Index` objektum `Fields` tulajdonságát a `Field` objektumok tömbjének. A `Field` objektumok mindegyike meghatározza az indexben lévő egy-egy mező viselkedését. A konstruktornak megadhatja a mező nevét és az adattípust (vagy karakterláncmezők esetében az elemzőnek). Más tulajdonságokat is beállíthat, például: `IsSearchable`, `IsFilterable` stb.
+2. Állítsa be az `Index` objektum `Fields` tulajdonságát a `Field` objektumok tömbjének. A `Field` objektumok létrehozásának legegyszerűbb módja az, ha meghívja a `FieldBuilder.BuildForType` metódust, és a típus paraméternél egy modellosztályt ad meg. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez lehetővé teszi a keresési indexben található dokumentumok modellosztály-példányokhoz kötését is.
 
-Az index tervezésekor nagyon fontos figyelembe venni a keresés során tapasztalt felhasználói élményt és az üzleti igényeket, mivel minden egyes `Field` a [megfelelő attribútumokhoz](https://msdn.microsoft.com/library/azure/dn798941.aspx) rendelendő hozzá. Ezek a tulajdonságok határozzák meg, hogy melyik mezőkre melyik keresési funkciók (szűrés, értékkorlátozás, rendezés, teljes szöveges keresés stb.) vonatkoznak. Azon tulajdonságok esetében, amelyeket külön nem állított be, a `Field` osztály alapértelmezés szerint letiltja a megfelelő keresési funkciót, kivéve, ha Ön kifejezetten engedélyezi.
+> [!NOTE]
+> Ha nem tervez modellosztályt használni, közvetlenül `Field` objektumok létrehozásával is meghatározhatja az indexet. A konstruktornak megadhatja a mező nevét és az adattípust (vagy karakterláncmezők esetében az elemzőnek). Más tulajdonságokat is beállíthat, például: `IsSearchable`, `IsFilterable` stb.
+>
+>
 
-A fenti példában az indexnek a „hotels” nevet adtuk, és a mezőket az alábbiak szerint definiáltuk:
+Fontos, hogy az index megtervezésekor a felhasználóként szerzett keresési tapasztalatának és üzleti igényeinek szem előtt tartásával járjon el, és az egyes mezőkhöz a [megfelelő tulajdonságokat](https://docs.microsoft.com/rest/api/searchservice/Create-Index) rendelje. Ezek a tulajdonságok határozzák meg, hogy melyik mezőkre melyik keresési funkciók (szűrés, értékkorlátozás, rendezés, teljes szöveges keresés stb.) vonatkoznak. Azon tulajdonságok esetében, amelyeket külön nem állított be, a `Field` osztály alapértelmezés szerint letiltja a megfelelő keresési funkciót, kivéve, ha Ön kifejezetten engedélyezi.
+
+A fenti példában az indexnek a „hotels” nevet adtuk, és a mezőket egy modellosztály segítségével definiáltuk. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. A modellosztály meghatározása a következőképpen történik:
+
+```csharp
+[SerializePropertyNamesAsCamelCase]
+public partial class Hotel
+{
+    [Key]
+    [IsFilterable]
+    public string HotelId { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public double? BaseRate { get; set; }
+
+    [IsSearchable]
+    public string Description { get; set; }
+
+    [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.FrLucene)]
+    [JsonProperty("description_fr")]
+    public string DescriptionFr { get; set; }
+
+    [IsSearchable, IsFilterable, IsSortable]
+    public string HotelName { get; set; }
+
+    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+    public string Category { get; set; }
+
+    [IsSearchable, IsFilterable, IsFacetable]
+    public string[] Tags { get; set; }
+
+    [IsFilterable, IsFacetable]
+    public bool? ParkingIncluded { get; set; }
+
+    [IsFilterable, IsFacetable]
+    public bool? SmokingAllowed { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public DateTimeOffset? LastRenovationDate { get; set; }
+
+    [IsFilterable, IsSortable, IsFacetable]
+    public int? Rating { get; set; }
+
+    [IsFilterable, IsSortable]
+    public GeographyPoint Location { get; set; }
+
+    // ToString() method omitted for brevity...
+}
+```
+
+Minden tulajdonság esetében annak alapján választottuk ki az attribútumokat, ahogyan szerintünk az alkalmazások használni fogják őket. Valószínű például, hogy a hotelekre kereső felhasználókat érdekelhetik majd a `description` mezőben megadott kulcsszavak, így erre a mezőre vonatkozóan engedélyeztük a teljes szöveges keresést úgy, hogy a `Description` tulajdonsághoz hozzáadtuk az `IsSearchable` attribútumot.
+
+Vegye figyelembe, hogy az indexben csak egy `string` típusú mező lehet kijelölve *kulcsmezőként* a `Key` attribútum hozzáadásával (lásd a fenti példában: `HotelId`).
+
+A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező esetében, mivel annak francia nyelvű szöveget kell tartalmaznia. A nyelvi elemzőkkel kapcsolatos további információkért lásd a [Nyelvi támogatás című témakört](https://docs.microsoft.com/rest/api/searchservice/Language-support), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
+
+> [!NOTE]
+> Alapértelmezés szerint az index minden mezőjének neve megegyezik a modellosztály megfelelő tulajdonságainak a nevével. Ha minden tulajdonságnevet szóközök nélküli, nagybetűs szavakat (CamelCase) tartalmazó mezőnevekhez szeretne hozzárendelni, akkor jelölje meg az osztályt a `SerializePropertyNamesAsCamelCase` attribútummal. Ha másik névhez szeretné őket hozzárendelni, akkor a fenti `DescriptionFr` tulajdonsághoz hasonlóan a `JsonProperty` attribútumot is használhatja. A `JsonProperty` attribútum előnyt élvez a `SerializePropertyNamesAsCamelCase` attribútummal szemben.
+> 
+> 
+
+Most, hogy meghatároztuk a modellosztályt, már egyszerűen létrehozhatunk egy indexdefiníciót:
 
 ```csharp
 var definition = new Index()
 {
     Name = "hotels",
-    Fields = new[]
-    {
-        new Field("hotelId", DataType.String)                       { IsKey = true, IsFilterable = true },
-        new Field("baseRate", DataType.Double)                      { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("description", DataType.String)                   { IsSearchable = true },
-        new Field("description_fr", AnalyzerName.FrLucene),
-        new Field("hotelName", DataType.String)                     { IsSearchable = true, IsFilterable = true, IsSortable = true },
-        new Field("category", DataType.String)                      { IsSearchable = true, IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("tags", DataType.Collection(DataType.String))     { IsSearchable = true, IsFilterable = true, IsFacetable = true },
-        new Field("parkingIncluded", DataType.Boolean)              { IsFilterable = true, IsFacetable = true },
-        new Field("smokingAllowed", DataType.Boolean)               { IsFilterable = true, IsFacetable = true },
-        new Field("lastRenovationDate", DataType.DateTimeOffset)    { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("rating", DataType.Int32)                         { IsFilterable = true, IsSortable = true, IsFacetable = true },
-        new Field("location", DataType.GeographyPoint)              { IsFilterable = true, IsSortable = true }
-    }
+    Fields = FieldBuilder.BuildForType<Hotel>()
 };
 ```
-
-Minden `Field` esetében annak alapján választottuk ki az indexattribútumokat, ahogyan szerintünk az alkalmazások használni fogják őket. Valószínű például, hogy a szállodákat kereső személyeket érdekelni fogják a `description` mező kulcsszóra kapott találatok, ezért az `IsSearchable` feltételt `true` értékre beállítva engedélyezzük a teljes szöveges keresést.
-
-Vegye figyelembe, hogy az indexében pontosan egy `DataType.String` típusú mező lehet kijelölve *kulcs*mezőként az `IsKey` feltétel `true` értékre történő beállításával (lásd: `hotelId` a fenti példában).
-
-A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mezőhöz, mert a mező francia szöveg tárolására szolgál. A nyelvi elemzőkkel kapcsolatos további információkért tekintse meg [az MSDN Nyelvi támogatás című témakörét](https://msdn.microsoft.com/library/azure/dn879793.aspx), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
-
-> [!NOTE]
-> Vegye figyelembe, hogy a konstruktorban lévő `AnalyzerName.FrLucene` átadásával a `Field` automatikusan `DataType.String` típusú lesz, és az `IsSearchable` feltétel `true` értékre lesz beállítva.
-> 
-> 
 
 ## <a name="iv-create-the-index"></a>IV. Az index létrehozása
 Most, hogy már rendelkezik egy inicializált `Index` objektummal, a `SearchServiceClient` objektumon lévő `Indexes.Create` meghívásával egyszerűen létrehozhatja az indexet:
@@ -142,6 +182,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Az oktatóanyagok, API-referenciák és egyéb dokumentáció segítségével megtudhatja, hogyan hozhat létre az App Service használatával web- és mobilappokat bármely platformra és eszközre."
 translationtype: Human Translation
-ms.sourcegitcommit: a9afed4d89a2eb114af42ae409ff8ab72899b598
-ms.openlocfilehash: a7ae2c57b4f894165df0f2fd7560f8476ac1db0d
+ms.sourcegitcommit: e4df0029db106923e3d28f16b3dfe239cae5b032
+ms.openlocfilehash: 42f4121a53432dedf214c45897aa846e0c901a41
 
 ---
 #<a name="app-service-documentation"></a>App Service – dokumentáció
 
-Az App Service a Microsoft Azure szolgáltatásként nyújtott platformja (PaaS). Web- és mobilalkalmazásokat hozhat létre bármely platformra és eszközre. Alkalmazásait integrálhatja SaaS megoldásokkal, csatlakozhat helyszíni alkalmazásokhoz és automatizálhatja üzleti folyamatait.
+Az oktatóanyagok, API-referenciák és egyéb dokumentáció segítségével megtudhatja, hogyan fejleszthet és szolgáltathat az App Service használatával web- és mobilappokat bármely platformra és eszközre. Ismerje meg, hogyan integrálhatja alkalmazásait SaaS megoldásokkal, hogyan csatlakozhat helyszíni alkalmazásokhoz és hogyan automatizálhatja üzleti folyamatait.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -120,40 +121,6 @@ Az App Service a Microsoft Azure szolgáltatásként nyújtott platformja (PaaS)
     </li>
 </ul>
 
----
-
-<h2>Referencia</h2>
-<ul class="panelContent cardsW">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Erőforrások</h3>
-                        <p><a href="/azure/app-service-web/app-service-web-app-azure-portal?toc=%2fazure%2fapp-service%2ftoc.json">Azure Portal</a></p>
-                        <p><a href="/azure/app-service-web/app-service-changes-existing-services?toc=%2fazure%2fapp-service%2ftoc.json">App Service-referencia</a></p>
-                        <p><a href="/azure/app-service-web/app-service-best-practices?toc=%2fazure%2fapp-service%2ftoc.json">Ajánlott eljárások</a></p>
-                        <p><a href="/azure/app-service-web/websites-webjobs-resources?toc=%2fazure%2fapp-service%2ftoc.json">WebJobs-erőforrások</a></p>
-                        <p><a href="/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started?toc=%2fazure%2fapp-service%2ftoc.json">WebJobs SDK</a></p>
-                      </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/appservice/">REST API-referencia</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service.pdf">
         <div class="img"></div>
@@ -164,6 +131,6 @@ App Service – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

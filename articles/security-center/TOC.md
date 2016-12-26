@@ -8,6 +8,7 @@
 # Bevezetés
 ## [Első lépések](security-center-get-started.md)
 ## [Tervezés és műveletek](security-center-planning-and-operations-guide.md)
+## [Engedélyek](security-center-permissions.md)
 ## [Gyakori kérdések](security-center-faq.md)
 
 # Útmutató
@@ -69,6 +70,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan építhet ki adatmodellezési megoldásokat az Analysis Services használatával a felhőben. A dokumentáció bemutatja, hogyan hozhat létre vállalati BI-megoldásokat táblázatos adatok használatával."
 translationtype: Human Translation
-ms.sourcegitcommit: 1cea7999fcb9ba3d4f0febdac5acb298ec5a489a
-ms.openlocfilehash: 76a07ecf333fec4d7e406a6c6b4dc796058e664b
+ms.sourcegitcommit: fad85d382ef508b65b57559f7f52e079caae9363
+ms.openlocfilehash: 40c79ea2a68c69352d7f14bd138f8131b3b01da9
 
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services – dokumentáció
 
-A Microsoft SQL Server Analysis Services bizonyított elemzési motorjára épülő Azure Analysis Services vállalati szintű adatmodellezést nyújt a felhőben.
+Ismerje meg, hogyan építhet ki és felügyelhet adatmodellezési megoldásokat az Analysis Services használatával. Az oktatóanyagok és az egyéb dokumentációk bemutatják, hogyan hozhat létre vállalati szintű BI-megoldásokat táblázatos adatok használatával felhőalapú vagy helyszíni környezetben.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ A Microsoft SQL Server Analysis Services bizonyított elemzési motorjára épü
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/">
+        <a href="https://azure.microsoft.com/documentation/videos/index/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -67,36 +68,32 @@ A Microsoft SQL Server Analysis Services bizonyított elemzési motorjára épü
 </ul>
 
 ---
-## <a name="reference"></a>Referencia
 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>A PowerShell használata Azure Resource Manager-parancsmagokkal</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/analysisservices">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>A REST használata az Azure Analysis Services-szel – REST API-referencia</p>
+                        <p><a href="/rest/api/analysisservices/">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -112,6 +109,6 @@ Analysis Services – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

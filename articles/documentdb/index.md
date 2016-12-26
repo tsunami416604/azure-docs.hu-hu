@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg a DocumentDB sémamentes NoSQL dokumentum-adatbázis használatát. Az oktatóanyagok bemutatják az appokkal való integrációt és az SQL-lekérdezések JSON dokumentumokon való futtatását."
 translationtype: Human Translation
-ms.sourcegitcommit: a7f5894e445cad808f38195838376c620a6b5944
-ms.openlocfilehash: 87fab3c99228f127326609a3e614020a982192f0
+ms.sourcegitcommit: 14e5e2f2bdf3708ab339eff7eb58bbf87cb1a10c
+ms.openlocfilehash: 261d2d5410603fe3352c0bcfabcc15058f3f7c94
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB-dokumentáció
 
-Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltatás, amely a gyors és kiszámítható teljesítmény, a magas rendelkezésre állás, a rugalmas méretezhetőség, a globális terjesztés és a könnyű fejlesztés jegyében készült. Sémamentes NoSQL-adatbázisként a DocumentDB az SQL lekérdezési képességek gazdag és ismerős skáláját nyújtja a JSON-adatok egységesen rövid késleltetésével.
+Ismerje meg, hogy a DocumentDB hogyan használható a nagy teljesítményű webes, mobil-, játék- és IoT-alkalmazásokra. Az oktatóanyagok és egyéb dokumentációk bemutatják, hogy a JSON-adatok hogyan tárolhatók, és hogyan futtathatók SQL-lekérdezések a NoSQL adatbázis-szolgáltatás rugalmas sémájában.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -176,27 +177,38 @@ Az Azure DocumentDB egy teljes körűen felügyelt NoSQL adatbázis-szolgáltat�
 
 ---
 
-## <a name="reference"></a>Referencia
-
-### <a name="java"></a>Java
-[Java SDK-referencia](http://azure.github.io/azure-documentdb-java)
-
-### <a name="net"></a>.NET
-[.NET-felügyelet – referencia](https://msdn.microsoft.com/library/azure/dn948556)
-
-### <a name="node"></a>Csomópont
-[Node SDK-referencia](http://azure.github.io/azure-documentdb-node/DocumentClient)
-
-### <a name="python"></a>Python
-[Python-referencia](http://azure.github.io/azure-documentdb-python/api/pydocumentdb)
-
-### <a name="sql"></a>SQL
-[SQL-referencia](https://msdn.microsoft.com/library/azure/dn782250)
-
-### <a name="rest"></a>REST
-[REST API-referencia](/rest/api/documentdb)
-
-[Erőforrás-szolgáltató API – referencia](/rest/api/documentdbresourceprovider)
+<h2>Referencia</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nyelvek</h3>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet">.NET</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-dotnet-core">.NET Core</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Java</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-node">Node.js</a></p>
+                        <p><a href="/azure/documentdb/documentdb-sdk-java">Python</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/documentdb/">REST API</a></p>
+                        <p><a href="/rest/api/documentdbresourceprovider/">Az erőforrás-szolgáltató REST API-ja</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
 ---
 
@@ -210,6 +222,6 @@ DocumentDB-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 
