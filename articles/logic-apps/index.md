@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat a helyszíni és a felhőben futó üzleti munkafolyamatok automatizálására és egyszerűbbé tételére. Oktatóanyagok, sablonok és API-referenciák."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
+ms.sourcegitcommit: 09066e463fe42bb845ccadc98cd79ed1c5881462
+ms.openlocfilehash: e8ab6aecb3d614a7b42e0524382022eabf66ea36
 
 ---
 # <a name="logic-apps-documentation"></a>Logic Apps – dokumentáció
 
-A Logic Apps egy tervezési eszköz a folyamatok modellezéséhez és automatizálásukhoz munkafolyamatokká. Számos helyszíni és felhőben található összekötő létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között. Egy logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után kezdődhet számos műveleti, konverziós és feltétellogikai kombináció.
+Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat, amelyek egyszerűbbé teszik és integrálják a felhőben futó méretezhető munkafolyamatokat. Az oktatóanyagok, sablonok és API-referenciák segítségével automatizált helyszíni és felhőalapú üzleti folyamatokat alakíthat ki és vezethet be.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -154,6 +155,7 @@ A Logic Apps dokumentációjának letöltése </div>
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

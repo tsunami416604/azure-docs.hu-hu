@@ -1,15 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 316f20972fc4d231ef0a6a9e132110dfc6c1a59a
+ms.sourcegitcommit: 0d46d0e04550578a81c636aa118dc02c08428838
+ms.openlocfilehash: 8a4712af44c474cea93f04bf598e6595ba0dadee
 
 ---
 #<a name="notification-hubs-documentation"></a>Notification Hubs – dokumentáció
 
-Az Azure Notification Hubs egy egyszerűen használható, többplatformos, kibővített leküldésesértesítés-infrastruktúrát biztosít, amellyel mobil leküldéses értesítéseket küldhet akármilyen háttérrendszerből (a felhőben, vagy a helyszínen) bármilyen mobilplatformra.
-
-A Notification Hubs használatával egyszerűen küldhet paltformfüggetlen, testreszabott leküldéses értesítéseket, absztrakt módon megjelenítve a különböző Platform Notification System (PNS) rendszerek részleteit. Egyetlen API-hívással megcélozhat egyes felhasználókat vagy akár felhasználók millióit tartalmazó teljes célközönség-szegmenseket, az összes eszközön.
+Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető leküldéses értesítési motor használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -31,7 +30,7 @@ A Notification Hubs használatával egyszerűen küldhet paltformfüggetlen, tes
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=notification-hubs">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -160,52 +159,45 @@ A Notification Hubs használatával egyszerűen küldhet paltformfüggetlen, tes
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Notification Hubs PowerShell-parancsmagok</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.notificationhubs/v2.3.0/azurerm.notificationhubs">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>A Notification Hubs szolgáltatással kapcsolatos .NET API-leírások</p>
-                    </div>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.notificationhubs">.NET</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/notificationhubs/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>A Notification Hubs szolgáltatással kapcsolatos REST API-leírások</p>
+                        <p><a href="/rest/api/notificationhubs">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
+</ul>
 
 ---
 
@@ -219,6 +211,6 @@ A Notification Hubs dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

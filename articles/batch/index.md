@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy a Batch hogyan használható a nagy léptékű párhuzamos és nagy teljesítményű feldolgozási alkalmazások futtatására. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: 5b9948f59fad542ce488f7682aef2cc57b1a0b55
-ms.openlocfilehash: 20bf594172ade3277455aae59469181162b4238a
+ms.sourcegitcommit: aafd374ff1d72df90bd09479e18ac7ce83715cef
+ms.openlocfilehash: daf72b1a473e3940e889cd6caf78b709e08428c6
 
 ---
 #<a name="batch-documentation"></a>Batch – dokumentáció
 
-Az Azure Batch lehetővé teszi, hogy hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. A Batch-szolgáltatással Azure számítási erőforrásokat határoz meg az alkalmazások párhuzamos és méretezhető futtatásához. Anélkül futtathat igény szerinti vagy ütemezett feladatokat, hogy vesződnie kéne az infrastruktúra manuális létrehozásával és felügyeletével.
+Ismerje meg, hogy a Batch hogyan használható a nagy léptékű párhuzamos és nagy teljesítményű feldolgozási alkalmazások felhőalapú futtatására. Az oktatóanyagok, API-referenciák és egyéb dokumentációk megmutatják önnek, hogy hogyan definiálhat Azure számítási erőforrásokat, amelyek manuális konfigurálás vagy infrastruktúra-kezelés nélkül is párhuzamosan, a megfelelő skálázással futtatják az alkalmazásokat.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,112 +105,46 @@ Az Azure Batch lehetővé teszi, hogy hatékonyan futtasson nagyméretű párhuz
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-referencia</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/azure/batch/batch-cli-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Batch az Azure parancssori felület használatával</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.batch">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-batch/latest.azure.batch">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
-<li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Batch – felügyelt referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java SDK-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="http://azure.github.io/azure-sdk-for-node/azure-batch/latest/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Node.js</h3>
-                        <p>Node.js-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementbatch.html">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Python</h3>
-                        <p>Python SDK-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="/rest/api/batchservice">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>A Batch REST API-jainak leírása</p>
+                        <p><a href="/rest/api/batchservice">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -223,6 +158,6 @@ Azure Batch – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

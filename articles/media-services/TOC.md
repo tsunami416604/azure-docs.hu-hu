@@ -44,7 +44,7 @@
 ##### [Media Encoder Standard-séma](media-services-mes-schema.md)
 ##### [Bemeneti metaadatok](media-services-input-metadata-schema.md)
 ##### [Kimeneti metaadatok](media-services-output-metadata-schema.md)
-#### MES-beállításkészletek 
+#### [MES-beállításkészletek](media-services-mes-presets-overview.md) 
 ##### [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
 ##### [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
 ##### [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
@@ -112,7 +112,7 @@
 ### [DRM-licenckézbesítés](media-services-deliver-keys-and-licenses.md)
 ### [Partnerek használata a Widevine licencek kézbesítéséhez az Azure Media Services szolgáltatásba](media-services-licenses-partner-integration.md)
 ### [A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata](media-services-protect-with-drm.md)
-### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak továbbításához](media-services-protect-hls-with-fairplay.md)
+### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak streameléséhez](media-services-protect-hls-with-fairplay.md)
 ### [CENC többplatformos DRM és hozzáférés-vezérlés használatával: Egy referenciaterv és megvalósítás az Azure-on és az Azure Media Services szolgáltatásban](media-services-cenc-with-multidrm-access-control.md)
 
 ### Adategység-kézbesítés
@@ -134,8 +134,8 @@
 ### [Feldolgozása Hyperlapse használatával](media-services-hyperlapse-content.md)
 ### [Feldolgozás arcérzékelővel](media-services-face-and-emotion-detection.md)
 ### [Feldolgozás mozgásérzékelővel](media-services-motion-detection.md)
-### [Feldolgozás az arcelrejtővel](media-services-face-redaction.md)
-#### [Útmutatás az arcelrejtőhöz](media-services-redactor-walkthrough.md)
+### [Feldolgozás a Face Redactorral](media-services-face-redaction.md)
+#### [Útmutatás a Face Redactorhoz](media-services-redactor-walkthrough.md)
 ### [Feldolgozás video-miniatűrökkel](media-services-video-summarization.md)
 ### [Feldolgozás OCR-rel](media-services-video-optical-character-recognition.md)
 
@@ -176,7 +176,7 @@
 ## Integrálás
 ### [CDN gyorsítótárazási házirend a Media Services bővítményben](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### [A Microsoft†" Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
-### [Adategységek felügyelete több tárfiókban](meda-services-managing-multiple-storage-accounts.md)
+### [Adategységek felügyelete több Storage fiókban](meda-services-managing-multiple-storage-accounts.md)
 ### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe](media-services-axinom-integration.md)
 ### [A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe](media-services-castlabs-integration.md)
 ### [A Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md)
@@ -195,16 +195,18 @@
 ### [Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referencia
-## [Kibocsátási megjegyzések](media-services-release-notes.md)
-## [.NET](media-services-dotnet-how-to-use.md)
-## [REST](media-services-rest-how-to-use.md)
+## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.media/v0.3.1/azurerm.media)
+## [PowerShell (Szolgáltatásfelügyelet)](/powershell/servicemanagement/azure.compute/v3.1.0/azure.compute)
+## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
+## [REST](/rest/api/media)
 
 # Erőforrások
+## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services-közösség](media-services-community.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

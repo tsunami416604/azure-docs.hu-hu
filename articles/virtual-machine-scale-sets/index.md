@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan használhatja a virtuálisgép-méretezési csoportokat automatikus skálázási, nagy számítási igényű, „big data” típusú, és tárolóalapú megoldásokkal rendelkező Windows vagy Linux rendszerű virtuális gépek létrehozására."
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
+ms.sourcegitcommit: 7fefef291643ba0c640ba3520e7e40d50391220a
+ms.openlocfilehash: a35dcbfa56c03ca264d4c7a7f779672dc6ae7526
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets – dokumentáció
 
-A Virtual Machine Scale Sets olyan Azure Compute-erőforrásokat takar, amelyek azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók.  Az egyformán konfigurált virtuális gépeket tartalmazó virtuálisgép-méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ez megkönnyíti a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítését.
+Ismerje meg, hogyan használhatja a virtuálisgép-méretezési csoportokat automatikus skálázású Windows vagy Linux rendszerű virtuális gépeknél. A dokumentáció bemutatja, hogyan használhatja a méretezési csoportokat olyan szolgáltatások támogatására, amelyek nagy számítási igényű, big data és tárolóalapú megoldásokat céloznak meg.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -108,6 +109,6 @@ A Virtual Machine Scale Sets dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

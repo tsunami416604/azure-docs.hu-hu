@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 6b016384339f0dc943237a88787c2c86debd9016
+ms.sourcegitcommit: c2252fc81f97019391ca2ba957f8402c4e97a9c2
+ms.openlocfilehash: f9b17c1cc77918fb1989b94b5bb359a697ceea7c
 
 
 ---
@@ -299,11 +299,13 @@ Most, hogy az oktatóanyag végére ért, más oktatóanyagokat is szeretnénk a
 * Ha táblákat és más objektumokat szeretne létrehozni, tekintse meg a [táblák létrehozásával](https://msdn.microsoft.com/library/ms365315.aspx) foglalkozó oktatóanyag táblák létrehozását részletező fejezetét.
 
 ## <a name="additional-resources"></a>További források
-[Mi az SQL Database?](sql-database-technical-overview.md)
+
+- A műszaki áttekintést lásd a [Mi az SQL Database?](sql-database-technical-overview.md) című részben.
+- Díjszabási információkért tekintse meg [az Azure SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/) ismertető cikket.
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

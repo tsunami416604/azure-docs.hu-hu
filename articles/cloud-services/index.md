@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan használhatja a felhőszolgáltatásokat nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: af0eb3ce49e509992ab582558a342933f950afdb
+ms.sourcegitcommit: 2b32d1a06f7db06ad3f443548b33d3c8e2032a9e
+ms.openlocfilehash: 69bcbae09192ecbb6b375bac522b433f8cd5391f
 
 ---
-#<a name="cloud-services-documentation"></a>Cloud Services – dokumentáció
+# <a name="cloud-services-documentation"></a>Cloud Services – dokumentáció
 
-A Cloud Services egy szolgáltatásként nyújtott platform (Platform-as-a-Service – PaaS). Célja a méretezhető, megbízható és költséghatékonyan működtethető alkalmazások támogatása. A Cloud Services használatával anélkül élhet a virtualizálás nyújtotta előnyökkel, hogy fel kellene adnia a virtuális gép konfigurációs, javítási és szoftvertelepítési beállításai feletti irányítást.  
+Megismerheti, hogy a felhőszolgáltatások hogyan használható nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására.  Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan kezelheti a virtuális gépek gazdagépét, és hogyan konfigurálhatja, javíthatja és telepítheti a szoftvereket.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,48 +87,32 @@ A Cloud Services egy szolgáltatásként nyújtott platform (Platform-as-a-Servi
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/ee460812">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nyelvek</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">.csdef XMLSchema</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">.cscfg XMLSchema</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Cloud Services – REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee460812">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/ee758711">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Sémák</h3>
-                        <p>Cloud Services – definíciós séma</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/ee758710">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <p>Cloud Services – konfigurációs séma</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
 </ul>
 
@@ -141,6 +126,6 @@ Cloud Services – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

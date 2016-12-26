@@ -19,6 +19,7 @@
 ## [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](iot-suite-logic-apps-tutorial.md)
 ## [Előre konfigurált megoldás testreszabása](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-dynamic-telemetry.md)
+## [Egyéni szabály létrehozása a távoli figyelési megoldásban](iot-suite-custom-rule.md)
 ## [Eszközinformációk a távoli figyelési megoldásban](iot-suite-remote-monitoring-device-info.md)
 
 # Referencia
@@ -42,6 +43,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 
