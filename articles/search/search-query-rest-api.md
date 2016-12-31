@@ -11,11 +11,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: c8e745f7e1385c5ca569a9b8fbc3f5db070f102e
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 96e8177f57977f88c5a4a1ec0b9243b5b348f078
 
 ---
 
@@ -29,14 +29,14 @@ ms.openlocfilehash: c8e745f7e1385c5ca569a9b8fbc3f5db070f102e
 >
 >
 
-Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) használatával.
+Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) használatával.
 
 A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](search-what-is-an-index.md), majd [fel kell töltenie azt adatokkal](search-what-is-data-import.md).
 
 ## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
 Az Azure Search REST API-ján végrehajtott keresési műveletek egyik fontos eleme az Ön által üzembe helyezett szolgáltatás számára létrehozott *API-kulcs*. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
+1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
@@ -48,7 +48,7 @@ A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog 
 Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszergazdai kulcsok szintén használhatók a lekérdezésekhez, az alkalmazáskódban azonban inkább lekérdezési kulcsot használjon, mivel ez a módszer jobban követi a [legalacsonyabb jogosultsági szint elvét](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 ## <a name="ii-formulate-your-query"></a>II. A lekérdezés meghatározása
-Kétféleképpen [keresheti meg az indexet a REST API használatával](https://msdn.microsoft.com/library/azure/dn798927.aspx). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek meg lesznek határozva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek meg lesznek határozva a kérés URL-címén belül. Vegye figyelembe, hogy a lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://msdn.microsoft.com/library/azure/dn798927.aspx) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
+Kétféleképpen [keresheti meg az indexet a REST API használatával](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek meg lesznek határozva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek meg lesznek határozva a kérés URL-címén belül. Vegye figyelembe, hogy a lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
 A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevét*, az *index nevét*, valamint a megfelelő *API-verziót* (a jelen dokumentum kiadásakor érvényes API-verzió: `2016-09-01`) a kérés URL-címében. A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési karakterláncban* kell megadni. Az URL-cím formátuma alább látható:
 
@@ -162,10 +162,10 @@ A sikeres lekérdezési kérés `200 OK` állapotkódot eredményez, a keresési
 }
 ```
 
-További segítségért tekintse meg a [Dokumentumok keresése](https://msdn.microsoft.com/library/azure/dn798927.aspx) rész „Válasz” szakaszát. További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
+További segítségért tekintse meg a [Dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rész „Válasz” szakaszát. További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

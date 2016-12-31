@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/07/2016
+ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
+ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
-Miután telepítette a webalkalmazást vagy a weboldalt bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. A [Visual Studio Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről, webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
+Miután telepítette a webalkalmazást vagy a weboldalt bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
 
 ![Példa webes tesztre](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-Webes teszteket állíthat be bármely olyan HTTP- vagy HTTPS- végponthoz, amely a nyilvános internetről érhető el.
+Webes teszteket állíthat be bármely olyan HTTP- vagy HTTPS- végponthoz, amely a nyilvános internetről érhető el. Nem kell semmit hozzáadnia a tesztelt webhelyhez. Még csak arra sincs szükség, hogy a saját webhelye legyen: tesztelhet egy olyan REST API-t is, amelyet használni szokott.
 
 A webes teszteknek két típusa létezik:
 
@@ -58,7 +58,7 @@ Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csem
 
     **HTTP-válasz**: A visszaadott, sikert jelző állapotkód. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.
 
-    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
+    **Tartalmi egyezés**: egy karakterlánc, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű karakterláncnak kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
 * Alapértelmezés szerint akkor kap **riasztásokat**, ha öt perc alatt három helyen fordulnak elő hibák. Ha egy helyen fordul elő a hiba, azt valószínűleg hálózati probléma okozza, és nem a hellyel van probléma. A küszöbérték érzékenységét állítani lehet, és azt is módosíthatja, hogy kinek küldje a rendszer az e-maileket.
 
     Be lehet állítani egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg. (Vegye figyelembe, hogy jelenleg a lekérdezési paraméterek nem továbbítódnak Tulajdonságokként.)
@@ -102,8 +102,20 @@ Másik lehetőségként letöltheti az eredményfájlt, és megvizsgálhatja a V
 
 *Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
 
-## <a name="multistep-web-tests"></a>Többlépéses webes tesztek
+### <a name="open-the-server-request-and-exceptions"></a>Kiszolgálókérések és kivételek megnyitása
+
+Egy adott teszt részletes tulajdonságaiból megnyithatja a kéréseket és egyéb eseményeket, például a kivételeket tartalmazó kiszolgálóoldali jelentést.
+
+![A webes teszt futtatásának eredménye](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
+
+Ha nem lát kapcsolódó elemeket, elképzelhető, hogy [mintavételezés](app-insights-sampling.md) van folyamatban.
+
+## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
+
+> [!NOTE] 
+> A többlépéses webes tesztek díjkötelesek. [Díjszabási séma](http://azure.microsoft.com/pricing/details/application-insights/)
+> 
 
 Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studióval, majd fel kell tölteni a felvételt az Application Insightsba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
 
@@ -153,7 +165,7 @@ Ne feledje, hogy az oldal összes erőforrásának megfelelően kell betöltődn
 
 Vegye figyelembe, hogy a .webtest fájlnak a teljes webes tesztet tartalmaznia kell: a tesztben nem használhat kódolt függvényeket.
 
-### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
 Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, például részvényeket egy külső adatcsatornától. A webes teszt rögzítésekor meghatározott időpontokat kell használni, de ezeket a teszt StartTime és EndTime paramétereiként kell beállítani.
 
 ![Egy webes teszt paraméterekkel.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -176,7 +188,7 @@ A webes teszt beépülő modulok lehetővé teszik az idő paraméterezését.
 
 Ezután töltse fel a tesztet a portálra. Ez a teszt minden futtatásánál a dinamikus értékeket használja.
 
-## <a name="dealing-with-signin"></a>A bejelentkezés kezelése
+## <a name="dealing-with-sign-in"></a>A bejelentkezés kezelése
 Ha a felhasználók bejelentkeznek az alkalmazásába, számos lehetősége van a bejelentkezés szimulálására a bejelentkezés után megjelenő lapok teszteléséhez. A használt megközelítés az alkalmazás által kínált biztonság típusától függ.
 
 Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési célra. Ha lehetséges, korlátozza az engedélyt ezen a tesztfiókon, így elkerülheti, hogy a webes tesztek hatással legyenek a tényleges felhasználókra.
@@ -276,12 +288,12 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 <!--Link references-->
 
 [azure-availability]: ../insights-create-web-tests.md
-[diagnosztika]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

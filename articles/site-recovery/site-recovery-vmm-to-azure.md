@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: b7cccd1638bfbc79322c88f10d515a282bdb1ad3
-ms.openlocfilehash: 473ed9aa5a744d39befe5dfcb9ed04b6c88c9e26
+ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
+ms.openlocfilehash: 3727972c544bb8c2724e9f38953882a7f2251a60
 
 
 ---
@@ -46,9 +46,9 @@ Telje körű üzembe helyezéshez feltétlenül javasoljuk, hogy a cikk összes 
 | **Helyszíni korlátozások** |A HTTPS-alapú proxyk nem támogatottak |
 | **Szolgáltató/ügynök** |A replikált virtuális gépekhez szükség van az Azure Site Recovery Provider telepítésére.<br/><br/> A Hyper-V-gazdagépekhez szükség van a Recovery Services-ügynök telepítésére.<br/><br/> Ezeket az üzembe helyezés során fogja telepíteni. |
 |  **Azure-követelmények** |Azure-fiók<br/><br/> Recovery Services-tároló<br/><br/> LRS- vagy GRS-tárfiók a tárolórégióban<br/><br/> Standard szintű tárfiók<br/><br/> Azure virtuális hálózat a tárolórégióban. [Részletes információk](#azure-prerequisites). |
-|  **Azure-korlátozások** |Ha GRS-t használ, akkor a naplózáshoz egy másik LRS-fiókra is szüksége lesz<br/><br/> Az Azure Portalon létrehozott tárfiókok nem mozgathatók az azonos vagy eltérő előfizetéseken lévő erőforráscsoportok közt. <br/><br/> Prémium szintű Storage-fiók nem használható.<br/><br/> A Site Recoveryhez használt Azure-hálózatok nem mozgathatók az azonos vagy eltérő előfizetéseken lévő erőforráscsoportok közt. |
-|  **VM-replikáció** |[A virtuális gépnek meg kell felelnie az Azure-előfeltételeknek](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/> |
-|  **Replikációs korlátozások** |A statikus IP-című linuxos virtuális gépeket nem lehet replikálni.<br/><br/> A replikációból nem zárhatók ki egyedi lemezek. |
+|  **Azure-korlátozások** |Ha GRS-t használ, akkor a naplózáshoz egy másik LRS-fiókra is szüksége lesz<br/><br/> Az Azure Portalon létrehozott tárfiókok nem mozgathatók az azonos vagy eltérő előfizetéseken lévő erőforráscsoportok közt. <br/><br/> Prémium szintű Storage-fiók nem használható.<br/><br/> A Site Recoveryhez használt Azure-hálózatok nem mozgathatók az azonos vagy eltérő előfizetéseken lévő erőforráscsoportok közt. 
+|  **VM-replikáció** |[A virtuális gépnek meg kell felelnie az Azure-előfeltételeknek](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/>
+|  **Replikációs korlátozások** |A statikus IP-című linuxos virtuális gépeket nem lehet replikálni.<br/><br/> A replikációból kizárhatók egyedi lemezek, de operációsrendszer-lemezek nem.
 | **Üzembe helyezési lépések** |1) Az Azure előkészítése (előfizetés, tárolás, hálózat) -> 2) A helyszíni rendszer előkészítése (VMM és hálózatleképezés) -> 3) A Recovery Sweervices.tároló létrehozása -> 4) A VMM- és Hyper-V-gazdagépek beállítása -> 5) A replikációs beállítások konfigurálása -> 6) A replikáció engedélyezése -> 7)A replikáció és a feladatátvétel tesztelése. |
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Site Recovery az Azure Portalon
@@ -372,6 +372,7 @@ Az **UploadThreadsPerVM** beállításazonosító szabályozza a lemezen adatát
 2. Az alapértelmezett érték a 4. A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximális érték a 32. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
 
 ## <a name="step-6-enable-replication"></a>6. lépés: A replikáció engedélyezése
+
 Most már engedélyezheti a replikációt a következők szerint:
 
 1. Kattintson **2. lépés: Az alkalmazás replikálása** > **Forrás** elemre. A replikálás első alkalommal történő engedélyezését követően kattintson a tárolóban elérhető **+Replikálás** elemre a további gépek replikációjának engedélyezéséhez.
@@ -388,9 +389,20 @@ Most már engedélyezheti a replikációt a következők szerint:
 6. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben kattintással jelölje ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Végül kattintson az **OK** gombra.
 
     ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication5.png)
-7. A **Tulajdonságok** > **Tulajdonságok konfigurálása** menüben válassza ki a kijelölt virtuális gépek operációs rendszerét, valamint az operációsrendszer-lemezképet. Végül kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja.
+7. A **Tulajdonságok** > **Tulajdonságok konfigurálása** területen válassza ki a kijelölt virtuális gépek operációs rendszerét, valamint az operációsrendszer-lemezképet. Alapértelmezés szerint a virtuális gép mindegyik lemeze ki van jelölve replikációra. Érdemes lehet kihagyni egyes lemezeket a replikációból, hogy csökkentse a szükségtelen adatok az Azure-ba való replikálása miatti sávszélesség-használatot. Például előfordulhat, hogy nem szeretné replikálni az ideiglenes adatokat vagy a gépek vagy alkalmazások minden egyes újraindításakor frissülő adatokat (például pagefile.sys vagy Microsoft SQL Server tempdb) tartalmazó lemezeket. Ha ki szeretne zárni egy lemezt a replikációból, törölje a kijelölését. Ellenőrizze, hogy az Azure virtuális gép neve (a Cél neve) megfelel-e az [Azure virtuális gépekre vonatkozó követelményeknek](site-recovery-best-practices.md#azure-virtual-machine-requirements), és módosítsa, ha szükséges. Végül kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja.
 
-    ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication6.png)
+    ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+    
+    >[!NOTE]
+    > 
+    > * Csak az alaplemezek zárhatók ki a replikációból. Az operációs rendszert tartalmazó lemezt nem lehetséges, a dinamikus lemezeket pedig nem ajánlott kizárni. Az ASR nem lépes azonosítani, hogy melyik VHD-lemez alap- vagy dinamikus lemez a vendég virtuális gépen belül.  Ha nem zárja ki az összes függő dinamikus kötet lemezét, a védett dinamikus lemezek hibás lemezként szerepelnek majd a feladatátvételi virtuális gépen, és a lemezen lévő adatok nem lesznek elérhetőek.   
+    > * A replikáció engedélyezése után már nem lehet ahhoz lemezeket hozzáadni, vagy lemezeket eltávolítani belőle. Lemez hozzáadásához vagy eltávolításához le kell tiltania, majd újra kell engedélyeznie a virtuális gép védelmét.
+    > * Ha kizár egy olyan lemezt, amely valamely alkalmazás működéséhez szükséges, az Azure-ba történő feladatátvétel esetén manuálisan létre kell majd hozni azt az Azure-ban, hogy a replikált alkalmazás futtatható legyen. Másik megoldásként integrálhatja az Azure Automationt egy helyreállítási tervbe, hogy a gép feladatátvétele során létrehozza a lemezt.
+    > * Az Azure-ban manuálisan létrehozott lemezek a feladat-visszavételben nem vesznek részt. Ha például végrehajtja három lemez feladatátvételét, kettőt pedig közvetlenül az Azure virtuális gépen hoz létre, csak a feladatátvételben részt vevő három lemezen lesz végrehajtva az Azure-ból a Hyper-V-re történő feladat-visszavétel. A manuálisan létrehozott lemezek nem vehetők fel a feladat-visszavételbe vagy a Hyper-V-ről az Azure-ba történő visszirányú replikálásba.
+    >
+    >
+    
+
 8. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** menüben válassza ki a védett virtuális gépekre alkalmazni kívánt replikációs beállításokat. Végül kattintson az **OK** gombra. A replikációs szabályzatot a **Beállítások** > **Replikációs házirendek** > szabályzat neve > **Beállítások szerkesztése** menüpontban módosíthatja. Az itt megadott módosítások a már replikálás alatt álló, illetve az újonnan hozzáadott gépekre egyaránt érvényesek.
 
    ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication7.png)
@@ -426,6 +438,7 @@ Az üzemelő példány kipróbálásához futtasson feladatátvételi tesztet eg
 * A feladatátvételi teszt futtatásához javasoljuk, hogy hozzon létre egy új, az éles Azure-hálózattól elkülönített Azure-hálózatot. Az új Azure-hálózatok létrehozásakor ez az alapértelmezés. [Itt részletesebben olvashat](site-recovery-failover.md#run-a-test-failover) a feladatátvételi teszt futtatásáról.
 * Hogy az Azure-ba irányuló feladatátadás során a lehető legjobb eredményt érhesse el, telepítse a védett gépre az Azure Agent ügynököt. Ez az ügynök felgyorsítja a rendszerindítást, és segít a hibák elhárításában. Telepítse a megfelelő [linuxos](https://github.com/Azure/WALinuxAgent) vagy [windowsos](http://go.microsoft.com/fwlink/?LinkID=394789) ügynököt.
 * Az üzemelő példány megfelelő teszteléséhez az szükséges, hogy a replikált gép infrastruktúrája pontosan az elvárások szerint működjön. Ha az Active Directoryt és a DNS-t szeretné tesztelni, hozzon létre egy tartományvezérlőként működő virtuális gépet DNS-szel, és replikálja azt az Azure-ba az Azure Site Recovery használatával. További információk az [Active Directoryra vonatkozó feladatátvételi szempontokat részletező cikkben](site-recovery-active-directory.md#test-failover-considerations).
+* Ha kizárt lemezeket a replikálásból, előfordulhat, hogy a feladatátvételt követően az adott lemezeket manuálisan létre kell hoznia az Azure-ban, hogy az alkalmazás a vártnak megfelelően fusson.
 * Ha a feladatátvételi teszt helyett nem tervezett feladatátvételt szeretne futtatni, vegye figyelembe a következőket:
 
   * Ha lehetséges, a nem tervezett feladatátvétel előtt állítsa le az elsődleges gépeket. Ezzel gondoskodik róla, hogy a forrás és a replika gépek nem fognak egyszerre futni.
@@ -496,6 +509,6 @@ Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

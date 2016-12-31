@@ -1,6 +1,6 @@
 ---
-title: "Rugalmas adatbáziskészlet létrehozása a C# használatával | Microsoft Docs"
-description: "Skálázható rugalmas adatbáziskészlet létrehozása az Azure SQL Database-ben C#-alapú adatbázis-fejlesztői módszerek használatával az erőforrások több adatbázis közötti megosztásához."
+title: "Rugalmas készlet létrehozása a C# használatával | Microsoft Docs"
+description: "Méretezhető rugalmas készlet létrehozása az Azure SQL Database-ben C#-alapú adatbázis-fejlesztési módszerekkel az erőforrások több adatbázis közötti megosztásához."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: csharp
@@ -15,12 +16,12 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: b905aa65f46f601121b6774a633e72152e8ef80a
 
 
 ---
-# <a name="create-an-elastic-database-pool-with-cx23"></a>Rugalmas adatbáziskészlet létrehozása a C&#x23; használatával
+# <a name="create-an-elastic-pool-with-cx23"></a>Rugalmas készlet létrehozása a C&#x23; használatával
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -28,7 +29,7 @@ ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
 > 
 > 
 
-Ez a cikk leírja, hogyan hozhat létre egy rugalmas Azure SQL-adatbáziskészletet a C# segítségével és az [Azure SQL Database .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). Egy önálló SQL Database létrehozása: [SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával](sql-database-get-started-csharp.md).
+Ez a cikk leírja, hogyan hozhat létre egy rugalmas Azure SQL-készletet a C# segítségével és az [Azure SQL Database .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). Egy önálló SQL Database létrehozása: [SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával](sql-database-get-started-csharp.md).
 
 Az Azure SQL Database .NET-es kódtára az [Azure Resource Manageren](../azure-resource-manager/resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
@@ -59,7 +60,7 @@ Egy SQL-adatbázis C# segítségével történő létrehozásához töltse be a 
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool-c-example"></a>Rugalmas SQL-adatbáziskészlet létrehozása – C#-példa
+## <a name="create-a-sql-elastic-pool---c-example"></a>Rugalmas SQL-készlet létrehozása – C#-példa
 Az alábbi példa létrehoz egy erőforráscsoportot, egy kiszolgálót, egy tűzfalszabályt, egy rugalmas készletet, majd a készletben egy SQL-adatbázist. A `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` változókkal kapcsolatban lásd: [Egyszerű szolgáltatás létrehozása erőforrások eléréséhez](#create-a-service-principal-to-access-resources).
 
 Cserélje le a **Program.cs** tartalmát az alábbiakkal, és frissítse a `{variables}` részeket az alkalmazáshoz tartozó értékekkel (a `{}` nem szükséges).
@@ -314,6 +315,6 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

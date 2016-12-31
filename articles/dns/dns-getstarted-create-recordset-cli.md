@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 12/09/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: f15333cde5304579ff0d0ba9571a870ddde19163
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: e377f176fe24a8e7e42d409f86d6b0093ce5e7c4
 
 ---
 
@@ -26,9 +26,13 @@ ms.openlocfilehash: f15333cde5304579ff0d0ba9571a870ddde19163
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
-Ez a cikk végigvezeti a rekordok és a rekordhalmazok parancssori felület használatával történő létrehozásának folyamatán. Miután létrehozta a DNS-zónát, fel kell vennie a tartomány DNS-rekordjait. Ehhez tisztában kell lennie a DNS-rekordok és a rekordhalmazok jelentésével.
+Ez a cikk végigvezeti a rekordok és a rekordhalmazok parancssori felület használatával történő létrehozásának folyamatán. Ehhez tisztában kell lennie a DNS-rekordok és a rekordhalmazok jelentésével.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
+
+Ez a témakör a DNS-rekordok létrehozását ismerteti az Azure DNS-ben. A példák feltételezik, hogy már [telepítette az Azure parancssori felületet (CLI), bejelentkezett, és létrehozott egy DNS-zónát](dns-getstarted-create-dnszone-cli.md).
+
+Az oldalon található összes példa az „A” DNS-rekordtípust használja. A további rekordtípusokkal, illetve a DNS-rekordok és -rekordhalmazok kezelésével kapcsolatban tekintse meg [A DNS-rekordok és -rekordhalmazok kezelése az Azure parancssori felület használatával](dns-operations-recordsets-cli.md) című cikket.
 
 ## <a name="create-a-record-set-and-record"></a>Rekordhalmaz és rekord létrehozása
 
@@ -38,43 +42,58 @@ Ha a zóna (ebben az esetben a „contoso.com”) legfelső pontján szeretne l�
 
 ### <a name="1-create-a-record-set"></a>1. Rekordhalmaz létrehozása
 
-Rekordhalmaz létrehozásához használja az `azure network dns record-set create` parancsot. Adja meg az erőforráscsoportot, a zóna nevét, a rekordhalmaz relatív nevét, a rekordtípust, valamint az élettartamot (TTL). Ha a `--ttl` paraméter nincs megadva, az alapértelmezett érték négy (másodpercben). A lépés befejezése után egy üres „www” rekordhalmaz fog a rendelkezésére állni.
+Ha az új rekord neve és típusa megegyezik egy már létező rekordéval, akkor a létező rekordhalmazhoz kell hozzáadnia. Ezt a lépést kihagyhatja, és továbbléphet az alábbi [Rekordok hozzáadása](#add-records) részhez. Ha az új rekord neve és típusa nem egyezik egyetlen létező rekordéval sem, akkor egy új rekordhalmazt kell létrehoznia.
 
-*Használat: network dns record-set create \<erőforráscsoport\> \<dns-zóna-neve\> \<név\> \<típus\> \<ttl\>*
+Rekordhalmazt a `azure network dns record-set create` parancs használatával hozhat létre. További segítségért lásd: `azure network dns record-set create -h`.  
+
+Egy rekordhalmaz létrehozásakor meg kell adnia a rekordhalmaz nevét, a zónát, az élettartamot és a rekordtípust. 
 
 ```azurecli
-azure network dns record-set create myresourcegroup  contoso.com  www A  60
+azure network dns record-set create myresourcegroup contoso.com www A 60
 ```
+
+A lépés befejezése után egy üres „www” rekordhalmaz fog a rendelkezésére állni. Az újonnan létrehozott „www” rekordhalmaz használatához először rekordokat kell hozzáadni.
 
 ### <a name="2-add-records"></a>2. Rekordok hozzáadása
 
-Az újonnan létrehozott „www” rekordhalmaz használatához rekordokat kell hozzáadni. A rekordokat az `azure network dns record-set add-record` parancs használatával adhatja hozzá a rekordhalmazokhoz.
+A rekordokat az `azure network dns record-set add-record` parancs használatával adhatja hozzá a rekordhalmazokhoz. További segítségért lásd: `azure network dns record-set add-record -h`.
 
-A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Például az „A” típusú rekordhalmazok használata esetén csak az `-a <IPv4 address>` paraméterrel lehet megadni a paramétereket.
+A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Az „A” típusú rekordhalmazok használata esetén például csak az `-a <IPv4 address>` paraméterrel lehet megadni a rekordokat. A további rekordtípusok paramétereivel kapcsolatos információkért lásd: `azure network dns record-set add-record -h`.
 
-A „www” rekordhalmazhoz a következő paranccsal adhat hozzá *A* típusú IPv4-rekordokat:
-
-*Használat: network dns record-set add-record \<erőforráscsoport\> \<dns-zóna-neve\> \<rekordhalmaz-neve\> \<típus\>*
+A „www” rekordhalmazhoz a következő paranccsal adhat hozzá egy A típusú rekordot:
 
 ```azurecli
-azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
+azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 1.2.3.4
 ```
 
-## <a name="additional-record-type-examples"></a>További példák a rekordtípusokra
+### <a name="verify-name-resolution"></a>Névfeloldás ellenőrzése
 
-Az alábbi példák azt mutatják be, hogy hogyan hozhatók létre a különböző rekordtípusú rekordhalmazok. Minden rekordhalmaz egyetlen rekordot tartalmaz.
+Az Azure DNS-névkiszolgálókon található DNS-rekordokat a DNS-eszközök – például az nslookup, a DIG vagy a [Resolve-DnsName PowerShell-parancsmag](https://technet.microsoft.com/library/jj590781.aspx) – segítségével tesztelheti.
 
-[!INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
+Ha még nem delegálta a tartományát az új zóna használatára az Azure DNS-ben, a [DNS-lekérdezést közvetlenül a zóna egyik névkiszolgálójához kell irányítani](dns-getstarted-create-dnszone.md#test-name-servers). Ügyeljen arra, hogy az alábbi parancsba a rekordzóna megfelelő értékeit helyettesítse be.
+
+    nslookup
+    > set type=A
+    > server ns1-01.azure-dns.com
+    > www.contoso.com
+
+    Server:  ns1-01.azure-dns.com
+    Address:  40.90.4.1
+
+    Name:    www.contoso.com
+    Address:  1.2.3.4
 
 ## <a name="next-steps"></a>Következő lépések
 
-A rekordhalmaz és a rekordok kezelésével kapcsolatban tekintse meg [A DNS-rekordok és -rekordhalmazok kezelése a parancssori felület használatával](dns-operations-recordsets-portal.md) című cikket.
+[Tartománynév delegálása az Azure DNS-névkiszolgálókra](dns-domain-delegation.md)
 
-Az Azure DNS szolgáltatással kapcsolatos további információért tekintse meg [Mi az Azure DNS?](dns-overview.md) című cikket.
+[DNS-zónák kezelése az Azure parancssori felület használatával](dns-operations-dnszones-cli.md)
+
+[DNS-rekordok és -rekordhalmazok kezelése az Azure parancssori felület használatával](dns-operations-recordsets-cli.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

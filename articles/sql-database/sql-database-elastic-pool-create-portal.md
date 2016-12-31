@@ -1,6 +1,6 @@
 ---
 title: "Új rugalmas készlet létrehozása az Azure Portalon | Microsoft Docs"
-description: "A cikk ismerteti, hogyan adható méretezhető rugalmas adatbáziskészlet az SQL-adatbázis konfigurációjához, amely megkönnyíti a felügyeletet, valamint az erőforrások számos adatbázis közti megosztását."
+description: "A cikk ismerteti, hogyan adható méretezhető rugalmas készlet az SQL Database-konfigurációjához, amely megkönnyíti a felügyeletet, valamint az erőforrások számos adatbázis közötti megosztását."
 keywords: "méretezhető adatbázis,adatbázis-konfiguráció"
 services: sql-database
 documentationcenter: 
@@ -9,20 +9,20 @@ manager: jhubbard
 editor: 
 ms.assetid: bf12594b-d258-40e6-a9fc-d8a8710c2d65
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
 ms.date: 11/17/2016
 ms.author: ninarn
 ms.workload: data-management
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 1a0b8609acd99ec188f92a32ed4cb44a68edc3b2
-ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 230a203cca2eaab197236557482cd4cedcfb9c53
 
 
 ---
-# <a name="create-a-new-elastic-database-pool-with-the-azure-portal"></a>Új rugalmas adatbáziskészlet létrehozása az Azure Portallal
+# <a name="create-a-new-elastic-pool-with-the-azure-portal"></a>Új rugalmas készlet létrehozása az Azure Portalon
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -31,7 +31,7 @@ ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas készleteket](sql-database-elastic-pool.md) az [Azure Portalon](https://portal.azure.com/). Készlet két különböző módon hozható létre. Létrehozhatja a készletet a nulláról is, ha tisztában van a használni kívánt beállításokkal, de alapul veheti a szolgáltatás javaslatait is. Az SQL Database beépített funkciói képesek készletbeállítást javasolni, ha a rendszer úgy ítéli meg, hogy a múltbeli használat telemetriai adatai alapján ez az adatbázisok esetében használható legköltséghatékonyabb megoldás.
 
-Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. További információk: [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md) (Rugalmas adatbáziskészletek ára és teljesítménye).
+Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. Lásd: [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md).
 
 > [!NOTE]
 > A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek a lehető leghamarabb általánosan elérhetők lesznek ebben a régióban.
@@ -58,7 +58,7 @@ A cikk bemutatja, hogy miként lehet új készletet létrehozni a portál egy me
 
     ![javasolt készlet](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-3. Megjelenik az **Rugalmas adatbáziskészlet** panel, amely a készlet beállításainak megadására szolgál. Ha az előző lépésben az **Új készlet** lehetőségre kattintott, a tarifacsomag alapértelmezés szerint **Standard** lesz, és nem lesz kijelölve egy adatbázis sem. Létrehozhat egy üres készletet, vagy megadhatja a kiszolgálón már megtalálható adatbázisok egy készletét, amelyet át szeretne helyezni a készletbe. Ha egy ajánlott készletet hoz létre, a rendszer előre megadja az ajánlott tarifacsomagot, a teljesítménybeállításokat, valamint az adatbázisok listáját, amelyeket azonban módosítani is lehet.
+3. Megjelenik a **Rugalmas készlet** panel, amely a készlet beállításainak megadására szolgál. Ha az előző lépésben az **Új készlet** lehetőségre kattintott, a tarifacsomag alapértelmezés szerint **Standard** lesz, és nem lesz kijelölve egy adatbázis sem. Létrehozhat egy üres készletet, vagy megadhatja a kiszolgálón már megtalálható adatbázisok egy készletét, amelyet át szeretne helyezni a készletbe. Ha egy ajánlott készletet hoz létre, a rendszer előre megadja az ajánlott tarifacsomagot, a teljesítménybeállításokat, valamint az adatbázisok listáját, amelyeket azonban módosítani is lehet.
 
     ![A rugalmas készlet konfigurálása](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 
@@ -89,7 +89,7 @@ A tarifacsomag beállítását követően kattintson a Készlet beállítása el
 
     Ha a felvenni kívánt adatbázisokhoz elegendő korábbi használati telemetriai adat áll rendelkezésre, a rendszer frissíti az **Estimated eDTU and GB usage** (Becsült eDTU- és GB-használat) diagramot és az **Actual eDTU usage** (Tényleges eDTU-használat) sávdiagramot, amelyek segítenek Önnek meghozni a konfigurációval kapcsolatos döntéseket. Ezenfelül egyes esetekben a szolgáltatás javaslatot tartalmazó üzenetet is megjelenít, amely segít a készlet megfelelő méretének kiválasztásában. Lásd: [Dinamikus javaslatok](#dynamic-recommendations).
 
-3. A **Készlet beállítása** lapon elérhető vezérlők segítségével áttekintheti a beállításokat, és konfigurálhatja a készletet. Az egyes tarifacsomagok korlátaival kapcsolatban az [Elastic pools limits](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases) (A rugalmas készlet korlátai) című cikk nyújt tájékoztatást, a készlet megfelelő méretének kiválasztását a következő cikk ismerteti: [Price and performance considerations for elastic database pools](sql-database-elastic-pool-guidance.md) (Rugalmas adatbáziskészletek ára és teljesítménye). A készlet beállításaival kapcsolatos további információkért lásd [a rugalmas készlet tulajdonságaival](sql-database-elastic-pool.md#elastic-pool-and-elastic-database-properties) foglalkozó témakört.
+3. A **Készlet beállítása** lapon elérhető vezérlők segítségével áttekintheti a beállításokat, és konfigurálhatja a készletet. Az egyes szolgáltatásszintek korlátaival kapcsolatban [a rugalmas készlet korlátait](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases) ismertető cikk nyújt tájékoztatást, a készlet megfelelő méretének kiválasztását pedig [a rugalmas készletek árát és teljesítményét](sql-database-elastic-pool-guidance.md) ismertető cikk mutatja be. A készlet beállításaival kapcsolatos további információkért lásd [a rugalmas készlet tulajdonságaival](sql-database-elastic-pool.md#elastic-pool-and-elastic-database-properties) foglalkozó témakört.
 
     ![A rugalmas készlet konfigurálása](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -99,7 +99,7 @@ A tarifacsomag beállítását követően kattintson a Készlet beállítása el
 
 ## <a name="understand-pool-recommendations"></a>A készlettel kapcsolatos javaslatok megértése
 
-Az SQL Database szolgáltatás a használati előzmények elemzésével megállapítja, hogy megéri-e önálló adatbázisok helyett készleteket használni, és ha igen, javasol egy vagy több készletet. A javaslatokat a rendszer a kiszolgáló adatbázisainak a készlethez leginkább illő egyedi részhalmazával konfigurálja.
+Az SQL Database szolgáltatás a használati előzmények kiértékelésével megállapítja, hogy megéri-e önálló adatbázisok helyett készleteket használni, és ha igen, javasol egy vagy több készletet. A javaslatokat a rendszer a kiszolgáló adatbázisainak a készlethez leginkább illő egyedi részhalmazával konfigurálja.
 
 ![javasolt készlet](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
 
@@ -110,9 +110,9 @@ A készletjavaslat a következőkből áll:
 - Az adatbázisonkénti **eDTU MAX** és **eDTU Min** érték
 - A készletbe javasolt adatbázisok listája
 
-A szolgáltatás az elmúlt 30 nap telemetriai adatai alapján javasol készleteket. A rendszer csak a legalább már 7 napja létező adatbázisokat vonja be a rugalmas adatbáziskészlet létrehozására irányuló javaslatokba. Azokat az adatbázisokat, amelyeket korábban már elhelyezett egy másik rugalmas adatbáziskészletben, a rendszer nem javasolja újabb adatbáziskészletbe való bevonásra.
+A szolgáltatás az elmúlt 30 nap telemetriai adatai alapján javasol készleteket. A rendszer csak a legalább már 7 napja létező adatbázisokat vonja be a rugalmas készlet létrehozására irányuló javaslatokba. Azokat az adatbázisokat, amelyeket korábban már elhelyezett egy másik rugalmas készletben, a rendszer nem javasolja újabb rugalmas készletbe való bevonásra.
 
-A szolgáltatás értékeli az erőforrásigényeket, illetve azt, hogy megéri-e a különböző csomagokhoz tartozó önálló adatbázisokat ugyanahhoz a csomaghoz tartozó készletekbe vonni. A rendszer például megvizsgálja, hogy érdemes-e a kiszolgálón található Standard adatbázisokat Standard rugalmas készletté alakítani. Ez azt is jelenti, hogy a szolgáltatás különböző csomagokat tartalmazó javaslatokat nem tesz, azaz soha nem javasolja például, hogy Prémium készletbe helyezzen egy Standard adatbázist.
+A szolgáltatás kiértékeli az erőforrásigényeket, illetve azt, hogy megéri-e a különböző szolgáltatásszinteken lévő önálló adatbázisokat azonos szolgáltatásszinten lévő készletekbe vonni. A rendszer például megvizsgálja, hogy érdemes-e a kiszolgálón található Standard adatbázisokat Standard rugalmas készletté alakítani. Ez azt is jelenti, hogy a szolgáltatás különböző csomagokat tartalmazó javaslatokat nem tesz, azaz soha nem javasolja például, hogy Prémium készletbe helyezzen egy Standard adatbázist.
 
 ### <a name="dynamic-recommendations"></a>Dinamikus javaslatok
 
@@ -129,6 +129,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
