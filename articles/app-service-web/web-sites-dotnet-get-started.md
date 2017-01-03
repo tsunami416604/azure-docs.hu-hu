@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 07/22/2016
+ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
+ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
+ms.openlocfilehash: 48531201029bf09f30cb22852aaf5d3ad0b328fc
 
 
 ---
@@ -45,7 +45,7 @@ Az Azure SDK for .NET telepítéséhez szükséges időn kívül az oktatóanyag
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Az oktatóanyag azt feltételezi, hogy Ön már használta az ASP.NET MVC-t és a Visual Studiót. A bevezetésért lásd: [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) (ASP.NET MVC 5 – Első lépések).
-* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
   
     Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. ahol létrehozhat egy rövid élettartamú alapszintű alkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár semmilyen kötelezettséggel.
 
@@ -61,8 +61,8 @@ Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../d
 
 Ha a számítógépén a Visual Studio 2013 van telepítve, és inkább ezt szeretné használni, [töltse le a legfrissebb Azure SDK-t a Visual Studio 2013-hoz](http://go.microsoft.com/fwlink/?LinkID=324322). Egyes képernyők eltérhetnek az ábrákon láthatótól.
 
-## <a name="configure-a-new-web-project"></a>Új webes projekt konfigurálása
-A következő lépés egy webes projekt létrehozása a Visual Studióban, valamint egy webalkalmazás létrehozása az Azure App Service-ben. Az oktatóanyag ezek szakaszában konfigurálja az új webes projektet. 
+## <a name="create-a-web-application"></a>Webalkalmazás létrehozása
+A következő lépés egy webalkalmazás-projekt létrehozása a Visual Studióban, valamint egy webalkalmazás létrehozása az Azure App Service-ben. Az oktatóanyag ezek szakaszában konfigurálja az új webes projektet. 
 
 1. Nyissa meg a Visual Studio 2015-öt.
 2. Kattintson a **File > New > Project** (Fájl > Új > Projekt) elemre.
@@ -89,7 +89,7 @@ A következő lépés egy webes projekt létrehozása a Visual Studióban, valam
     Ezek a beállítások utasítják a Visual Studiót egy Azure webalkalmazás létrehozására a webes projekthez.
 10. Kattintson az **OK** gombra
 
-## <a name="configure-azure-resources-for-a-new-web-app"></a>Azure-erőforrások konfigurálása az új webalkalmazáshoz
+## <a name="create-the-azure-resources"></a>Azure-erőforrások létrehozása
 Most pedig utasítani fogja a Visual Studiót a kívánt Azure-erőforrások létrehozására.
 
 1. A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson az **Add an account** (Fiók hozzáadása) gombra, majd jelentkezzen be az Azure-ba az Azure-előfizetése kezeléséhez használt fiók azonosítójával és jelszavával.
@@ -128,14 +128,14 @@ Most pedig utasítani fogja a Visual Studiót a kívánt Azure-erőforrások lé
 8. A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszédpanelen kattintson az **OK** gombra.
 9. A **Create App Service** (App Service létrehozása) párbeszédpanelen kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="visual-studio-creates-the-project-and-web-app"></a>A Visual Studio létrehozza a projektet és a webalkalmazást
+## <a name="inspect-the-azure-resources-in-visual-studio"></a>Azure-erőforrások megvizsgálása a Visual Studióban
 A Visual Studio rövid időn belül – általában kevesebb mint egy percen belül – létrehozza a webes projektet és a webalkalmazást.  
 
 A **Megoldáskezelő** ablakban megtekinthetők az új projekt fájljai és mappái.
 
 ![Megoldáskezelő](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-Az **Azure App Service Activity** (Azure App Service-tevékenység) ablak mutatja, hogy a webalkalmazás létrejött.
+Az **Azure App Service Activity** (Azure App Service-tevékenység) ablak mutatja, hogy az App Service-erőforrások létrejöttek az Azure-ban. Ha erre a hivatkozásra kattint, azonnal elkezdheti közzétenni új projektjét. Az oktatóanyag később azonban bemutatja, hogyan teheti közzé fájljait bármikor.
 
 ![A létrehozott webalkalmazás az Azure App Service Activity (Azure App Service-tevékenység) ablakban](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
@@ -143,8 +143,8 @@ A **Cloud Explorer** (Felhőkezelő) ablakban megtekintheti és kezelheti az Azu
 
 ![A létrehozott webalkalmazás a Cloud Explorer (Felhőkezelő) ablakban](./media/web-sites-dotnet-get-started/siteinse.png)
 
-## <a name="deploy-the-web-project-to-the-azure-web-app"></a>A webes projekt telepítése az Azure-webalkalmazásban
-Ebben a részben telepíti a webes projektet a webalkalmazásban.
+## <a name="deploy-the-web-project-to-azure"></a>A webes projekt telepítése az Azure-ban
+Ebben a szakaszban a webes projektet telepíti az Azure App Service-ben létrehozott webalkalmazás-erőforrásban.
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
    
@@ -152,7 +152,10 @@ Ebben a részben telepíti a webes projektet a webalkalmazásban.
    
     Néhány másodpercen belül megjelenik a **Publish Web** (Webes közzététel) varázsló. A varázsló egy *közzétételi profillal* nyílik meg, amelyben beállítások szerepelnek a webes projekt telepítéséhez az új webalkalmazásban.
    
-    A közzétételi profil része a telepítéshez szükséges felhasználónév és jelszó.  Ezeket a hitelesítő adatokat a rendszer hozta létre, és nem kell őket megadnia. A jelszó egy rejtett, felhasználóspecifikus fájlban van titkosítva, amely a `Properties\PublishProfiles` mappában található.
+    > [!TIP] 
+    > A közzétételi profil része a telepítéshez szükséges felhasználónév és jelszó.  Ezeket a hitelesítő adatokat a rendszer hozta létre, és nem kell őket megadnia. A jelszó egy rejtett, felhasználóspecifikus fájlban van titkosítva, amely a `Properties\PublishProfiles` mappában található.
+    >
+    >
 2. A **Publish Web** (Webes közzététel) varázsló **Connection** (Kapcsolat) lapján kattintson a **Next** (Tovább) gombra.
    
     ![Kattintson a Next (Tovább) gombra a Publish Web (Webes közzététel) varázsló Connection (Kapcsolat) lapján](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
@@ -219,6 +222,6 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű web
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

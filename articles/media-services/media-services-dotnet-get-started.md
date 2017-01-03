@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/11/2016
+ms.date: 12/15/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: 26720340d72c31016e51cc33589388780a2f4a8a
+ms.sourcegitcommit: e048e70714c260fcb13ec5ca53434173026eb8d8
+ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 
 ---
@@ -34,7 +34,18 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan valósíthat meg egy Vi
 
 Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media Services-fejlesztéshez szükséges leggyakoribb programozási objektumokat és feladatokat. Az oktatóprogram elvégzése után képes lesz adatfolyamot továbbítani vagy fokozatosan letölteni egy saját maga által feltöltött, kódolt és letöltött példa médiafájlt.
 
+### <a name="ams-model"></a>AMS-modell
+
+A következő kép a Media Services OData-modellen alapuló VoD-alkalmazásfejlesztések során leggyakrabban használt objektumok közül mutat be néhányat. 
+
+Kattintson a képre a teljes méretű megjelenítéshez.  
+
+<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+
+A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.14) tekintheti meg.  
+
 ## <a name="what-youll-learn"></a>Ismertetett témák
+
 Az útmutató a következő feladatok elvégzését mutatja be:
 
 1. Media Services-fiók létrehozása (az Azure Portal használatával).
@@ -55,9 +66,6 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 * Operációs rendszerek: Windows 8 vagy újabb, Windows 2008 R2, Windows 7.
 * A .NET-keretrendszer 4.0-s vagy újabb verziója.
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate vagy Express) vagy későbbi verzió.
-
-## <a name="download-sample"></a>Minta letöltése
-Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
 ## <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Media Services-fiók létrehozása az Azure Portal használatával
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
@@ -146,7 +154,7 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
         using System.Threading;
         using System.IO;
         using Microsoft.WindowsAzure.MediaServices.Client;
-6. Hozzon létre egy új mappát a projekteket tartalmazó könyvtárban, és másoljon bele egy .mp4- vagy .wmv-fájlt, amelyet szeretne kódolni vagy fokozatosan letölteni. Ebben a példában a „C:\VideoFiles” elérési utat használjuk.
+6. Hozzon létre egy új mappát (a mappa a helyi meghajtón bárhol lehet), és másoljon bele egy .mp4-fájlt, amelyet szeretne kódolni vagy fokozatosan letölteni. Ebben a példában a „C:\VideoFiles” elérési utat használjuk.
 
 ## <a name="connect-to-the-media-services-account"></a>Csatlakozás a Media Services-fiókhoz
 
@@ -154,6 +162,7 @@ A .NET-keretrendszerű Media Services-szolgáltatások használatakor a **CloudM
 
 Írja felül az alapértelmezett Program osztályt a következő kóddal. A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információk a Media Services szolgáltatásokhoz való csatlakozásról: [Csatlakozás a Media Services szolgáltatásokhoz a .NET-keretrendszerhez készült Media Services SDK használatával](http://msdn.microsoft.com/library/azure/jj129571.aspx)
 
+Ne feledje frissíteni a fájl nevét és elérési útvonalát a médiafájl helyének megfelelően.
 
 A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során később lesznek meghatározva.
 
@@ -184,7 +193,7 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
                 _context = new CloudMediaContext(_cachedCredentials);
 
                 // Add calls to methods defined in this section.
-
+        // Make sure to update the file name and path to where you have your media file.
                 IAsset inputAsset =
                     UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.None);
 
@@ -256,9 +265,8 @@ A dinamikus csomagolás előnyeinek kihasználásához a következőket kell ten
 
 A következő kód bemutatja, hogyan küldhet el egy kódolási feladatot. A feladat egyetlen műveletet tartalmaz, amely azért felel, hogy a mezzazine-fájlt egy adaptív sávszélességű MP4-fájlsorozattá kódolódjon át a **Media Encoder Standard** használatával. A kód elküldi a feladatot, és vár, amíg az befejeződik.
 
-Ha a feladat befejeződött, lehetővé válik az adategység továbbítása vagy az átkódolás során létrejött MP4-fájlok progresszív letöltése.
-Megjegyzés: az MP4-fájlok progresszív letöltéséhez nem szükséges, hogy nullánál több adatfolyam-továbbítási egységgel rendelkezzen.
-
+Amint a kódolási feladat befejeződött, lehetővé válik az adategységek közzététele, majd az MP4-fájlok streamelése vagy fokozatos letöltése.
+ 
 Adja hozzá a Program osztályhoz a következő módszert.
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -299,23 +307,26 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
 Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a közös hozzáférésű jogosultságkódos (SAS) keresők pedig médiafájlok letöltéséhez (a SAS-keresőkkel kapcsolatos további információkért lásd [ezt](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) a blogot).
 
-A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használt URL-címeket.
+### <a name="some-details-about-url-formats"></a>Néhány információ az URL-formátumokról
 
-Egy Smooth Streaming URL-címnek a következő formátumban kell lennie:
+A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használandó URL-címeket. Az oktatóanyagban lévő minta kimenetei olyan URL-címek, amelyek a megfelelő böngészőkbe beilleszthetőek. Ez a szakasz csak néhány rövid példán mutatja be a különféle formátumokat. 
 
-     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+#### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>Egy MPEG DASH-továbbítási URL-címnek a következő formátumban kell lennie:
 
-Egy HLS-továbbítási URL-címnek a következő formátumban kell lennie:
+{stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest**(format=mpd-time-csf)**
 
-     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+#### <a name="a-streaming-url-for-hls-has-the-following-format"></a>Egy HLS-továbbítási URL-címnek a következő formátumban kell lennie:
 
-Egy MPEG DASH-továbbítási URL-címnek a következő formátumban kell lennie:
+{stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest**(format=m3u8-aapl)**
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+#### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>Egy Smooth Streaming URL-címnek a következő formátumban kell lennie:
+
+{stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest
+
 
 Egy fájlok letöltéséhez használt SAS URL-címnek a következő formátumban kell lennie:
 
-    {blob container name}/{asset name}/{file name}/{SAS signature}
+{blob-tároló neve}/{adategység neve}/{fájlnév}/{SAS-aláírás}
 
 A Media Services .NET SDK-bővítmények olyan kényelmes segédmódszereket biztosítanak, amelyek formázott URL-címeket adnak meg a közzétett adategységekhez.
 
@@ -389,6 +400,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
     }
 
 ## <a name="test-by-playing-your-content"></a>A tartalom lejátszhatóságának tesztelése
+
 Az előző szakaszban meghatározott program futtatásakor a konzolablakban a következőkhöz hasonló URL-címek jelennek meg:
 
 Adaptív adatfolyam-továbbítási URL-címek:
@@ -424,9 +436,18 @@ Fokozatos letöltési URL-címek (audió és videó).
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-A videótovábbításhoz használja az [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszót.
+A videótovábbításhoz illessze be az URL-címet az [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszó URL szövegmezőjébe.
 
 A progresszív letöltés teszteléséhez másoljon egy URL-címet a böngészőjébe (például az Internet Explorerbe, Chrome-ba vagy Safariba).
+
+További információkért tekintse át a következők témaköröket:
+
+- [A tartalom lejátszása meglévő lejátszókkal](media-services-playback-content-with-existing-players.md)
+- [Videolejátszó alkalmazások fejlesztése](media-services-develop-video-players.md)
+- [MPEG-DASH adaptív streamelt videók beágyazása DASH.js-sel rendelkező HTML5-alkalmazásba](media-services-embed-mpeg-dash-in-html5.md)
+
+## <a name="download-sample"></a>Minta letöltése
+Az oktatóanyagban létrehozott kódot a következő kód tartalmazza: [minta](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -446,6 +467,6 @@ Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a t�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

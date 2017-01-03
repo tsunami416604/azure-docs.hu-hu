@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/09/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2ebe71b3456420f29ffe06bc15471d3fd2121f8c
+ms.sourcegitcommit: 72cc0d9ff35ff656a6134b52812b64c39a295a6f
+ms.openlocfilehash: 53786d60d9971d9f976bf0f3ef4e40346c3101f4
 
 
 ---
@@ -34,23 +34,23 @@ Az Azure Search-index adatokkal történő feltöltésének kétféle módja lé
 
 Ez az útmutató kizárólag az adatfeltöltés leküldéses modelljének használatával foglalkozik (ezt kizárólag a [REST API](search-import-data-rest-api.md) és a [.NET SDK](search-import-data-dotnet.md) támogatja), a leküldéses modellről azonban az alábbiakban többet is megtudhat.
 
-### <a name="push-data-to-an-index"></a>Adatok elküldése egy indexbe
+## <a name="push-data-to-an-index"></a>Adatok elküldése egy indexbe
 Ez a megközelítés a programozás útján az Azure Search szolgáltatásba történő adatküldésre hivatkozik, amelynek révén azt kereshetővé teszi. Nagyon alacsony késleltetési követelményekkel rendelkező alkalmazások esetében (ha például arra van szükség, hogy a keresési műveletek szinkronizálva legyenek a dinamikus leltáradatbázissal) kizárólag a leküldéses modell használható.
 
-Az adatokat az indexbe a [REST API](https://msdn.microsoft.com/library/azure/dn798930.aspx) vagy a [.NET SDK](search-import-data-dotnet.md) használatával küldheti el. A portálon keresztül történő adatleküldéshez jelenleg nincsenek támogató eszközök.
+Az adatokat az indexbe a [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy a [.NET SDK](search-import-data-dotnet.md) használatával küldheti el. A portálon keresztül történő adatleküldéshez jelenleg nincsenek támogató eszközök.
 
 Ez a megközelítés rugalmasabb a lekéréses modellnél, mivel dokumentumokat feltölthet egyedileg, illetve kötegek formájában is (kötegenként legfeljebb 1000 darabot vagy 16 MB-t, amelyik a kisebb). A leküldéses modell az Azure Search szolgáltatásba történő dokumentumfeltöltést – annak helyétől függetlenül – szintén lehetővé teszi.
 
-### <a name="pull-data-into-an-index"></a>Adatok lekérése indexbe
+## <a name="pull-data-into-an-index"></a>Adatok lekérése indexbe
 A lekéréses modell feltérképezi a támogatott adatforrást, majd automatikusan feltölti az adatokat az Azure Search-indexbe. Az új dokumentumok felismerésén kívül az indexelők a meglévő dokumentumok módosításainak és a törléseinek nyomon követésével küszöbölik ki az aktív adatkezelés szükségességét az indexben.
 
 Az Azure Search szolgáltatásban ez a képesség az *indexelőkön* keresztül valósul meg, ami jelenleg a [Blob Storage (előnézet)](search-howto-indexing-azure-blob-storage.md), a [DocumentDB](http://aka.ms/documentdb-search-indexer), az [Azure SQL Database és az Azure virtuális gépekhez készült SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) számára érhető el.
 
-Az indexelő funkció az [Azure portálon](search-import-data-portal.md) és a [REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) részeként van közzétéve.
+Az indexelő funkció az [Azure Portalon](search-import-data-portal.md) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) részeként van közzétéve.
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

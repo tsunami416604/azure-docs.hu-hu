@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/22/2016
+ms.date: 12/06/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: a7c95f9219920932d56487c0e9b96499cc963af0
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
 
 
 ---
@@ -122,9 +122,6 @@ Ebben a folyamatban az alkalmazás végrehajtja a [szabályzatokat](active-direc
 ## <a name="current-limitations"></a>Aktuális korlátozások
 Az Azure AD B2C jelenleg nem támogatja a következő típusú alkalmazásokat. A támogatásuk bevezetése a későbbiekben várható. Az Azure AD B2C-vel kapcsolatos további korlátozásokat és megkötéseket a [Limitations and restrictions](active-directory-b2c-limitations.md) (Korlátozások és megkötések) című témakör ismerteti.
 
-### <a name="single-page-apps-javascript"></a>Egylapos alkalmazások (JavaScript)
-Számos modern alkalmazás egylapos, általában JavaScriptben írt kezelőfelületet használ. Gyakran alkalmazott keretrendszer ezek esetében az AngularJS, az Ember.js vagy a Durandal. A nyilvánosan elérhető Azure AD szolgáltatás az OAuth 2.0 típusú implicit engedélyezési folyamat által támogatja ezeket az alkalmazásokat. Az Azure AD B2C-ben azonban még nem érhető el ez a folyamat.
-
 ### <a name="daemonsserver-side-apps"></a>Démonok/kiszolgálóoldali alkalmazások
 A hosszú futású folyamatokat tartalmazó, illetve a felhasználó jelenléte nélkül is működő alkalmazások esetében szükséges lehetőséget adni a biztonságos erőforrások, például webes API-k elérésére. Ezek az alkalmazások saját identitásuk (azaz nem a felhasználó delegált identitása), valamint az OAuth 2.0 ügyfél-hitelesítő adatok folyamata segítségével tudják elvégezni a hitelesítést és lekérni a jogkivonatokat.
 
@@ -137,6 +134,6 @@ Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

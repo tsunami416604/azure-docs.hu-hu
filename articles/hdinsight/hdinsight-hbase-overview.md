@@ -17,12 +17,12 @@ ms.topic: get-started-article
 ms.date: 09/14/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 64da5705f6b5978b53281bb7c6b6b295cc954dc6
+ms.sourcegitcommit: ec9e3c6c6919bb5ce50553a29536f821fe79f577
+ms.openlocfilehash: 3d8ee1d23fab0b410bce711afc27f8bbbad4c7e4
 
 
 ---
-# <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtablelike-capabilities-for-hadoop"></a>Mi az a HBase a HDInsight eszközben: Egy NoSQL-adatbázis, amely BigTable-szerű képességeket nyújt a Hadoophoz
+# <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>Mi az a HBase a HDInsight eszközben: Egy NoSQL-adatbázis, amely BigTable-szerű képességeket nyújt a Hadoophoz
 Az Apache HBase egy nyílt forráskódú NoSQL-adatbázis, amely a Hadoopra épült, és a Google BigTable után van modellezve. A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
 
 Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. Az adatredundanciára, a kötegelt feldolgozásra és más olyan szolgáltatásokra támaszkodhat, amelyeket elosztott alkalmazások nyújtanak a Hadoop rendszerben.
@@ -30,10 +30,10 @@ Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopc
 ## <a name="how-is-hbase-implemented-in-azure-hdinsight"></a>Hogyan van megvalósítva a HBase az Azure HDInsight eszközben?
 A HDInsight HBase az Azure környezetbe integrált felügyelt fürtként érhető el. A fürtök úgy vannak konfigurálva, hogy közvetlenül az Azure Blob Storage tárolóban tárolják az adatokat, amely kis késést és nagyobb rugalmasságot biztosít a teljesítménnyel és költségekkel kapcsolatos választások során. Ez lehetővé teszi, hogy az ügyfelek olyan interaktív webhelyeket építsenek, amelyek nagy adatkészletekkel működnek, hogy a több millió végpontból származó érzékelői és telemetriai adatokat tároló szolgáltatásokat építhessenek, és hogy ezeket az adatokat Hadoop-feladatokkal elemezzék. A HBase és a Hadoop jó kezdőpont a big data-projektekhez az Azure rendszerben; különösképpen azt teszik lehetővé, hogy a valós idejű alkalmazások nagy adatkészletekkel dolgozhassanak.
 
-A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HDInsight HBase eszközhöz a virtuális hálózat üzembe helyezése is elérhető. Részletekért lásd: [Provision HDInsight clusters on Azure Virtual Network][hbase-provision-vnet] (HDInsight-fürtök üzembe helyezése az Azure Virtual Networkön).
+A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HBase-fürt a virtuális hálózaton belül hozható létre. További információ: [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet].
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Hogyan történik az adatok kezelése a HDInsight HBase-ben?
-Az adatok a HBase-ben a(z) `create`, `get`, `put` és `scan` parancsokkal kezelhetők a HBase rendszerhéjból. Az adatok a(z) `put` paranccsal írhatók, és a(z) `get` paranccsal olvashatók az adatbázisban. A(z) `scan` paranccsal szerezhetők be adatok a táblák több sorából. Az adatok a HBase C# API-val is kezelhetők, amely egy ügyfélkönyvtárat biztosít a HBase REST API-n felül. A HBase adatbázisok a Hive használatával is lekérdezhetők. Ezen programozási modellek bevezetéséért lásd: [Get started using HBase with Hadoop in HDInsight][hbase-get-started] (A HBase első lépései a Hadooppal a HDInsightban). Társprocesszorok is elérhetők, amelyek lehetővé teszik az adatfeldolgozást az adatbázist szolgáltató csomópontokban.
+Az adatok a HBase-ben a(z) `create`, `get`, `put` és `scan` parancsokkal kezelhetők a HBase rendszerhéjból. Az adatok a(z) `put` paranccsal írhatók, és a(z) `get` paranccsal olvashatók az adatbázisban. A(z) `scan` paranccsal szerezhetők be adatok a táblák több sorából. Az adatok a HBase C# API-val is kezelhetők, amely egy ügyfélkönyvtárat biztosít a HBase REST API-n felül. A HBase adatbázisok a Hive használatával is lekérdezhetők. Ezen programozási modellek bevezetését lásd: [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]. Társprocesszorok is elérhetők, amelyek lehetővé teszik az adatfeldolgozást az adatbázist szolgáltató csomópontokban.
 
 ## <a name="scenarios-use-cases-for-hbase"></a>Forgatókönyvek: A HBase használati esetei
 A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött, a webes keresés. A keresőmotorok indexeket építenek, amelyek kifejezéseket képeznek le az azokat tartalmazó weblapokra. A HBase azonban sok más használati esethez megfelelő – amelyek közül több ebben a szakaszban van felsorolva.
@@ -51,14 +51,14 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
   
     Az alkalmazások a HBase felett futhatnak adattárolóként. Erre példa a Phoenix, az OpenTSDB, a Kiji és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Erre példa a Hive, Pig, Solr, Storm, Flume, Impala, Spark, Ganglia és Drill.
 
-## <a name="a-namenextstepsanext-steps"></a><a name="next-steps"></a>Következő lépések
-* [Get started using HBase with Hadoop in HDInsight][hbase-get-started] (A HBase első lépései a Hadooppal a HDInsightban).
-* [Provision HDInsight clusters on Azure Virtual Network][hbase-provision-vnet] (HDInsight-fürtök üzembe helyezése az Azure Virtual Networkön).
-* [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-geo-replication.md)
-* [Analyze Twitter sentiment with HBase in HDInsight][hbase-twitter-sentiment] (Twitter-vélemények elemzése a HBase-szel a HDInsightban)
-* [Use Maven to build Java applications that use HBase with HDInsight (Hadoop)][hbase-build-java-maven] (A Maven használata a HDInsight (Hadoop) eszközzel HBase-t használó Java alkalmazások építéséhez)
+## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>Következő lépések
+* [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]
+* [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet]
+* [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-replication.md)
+* [Twitter-vélemények elemzése a HBase-szel a HDInsightban][hbase-twitter-sentiment]
+* [A Maven használata a HDInsight (Hadoop) eszközzel HBase-t használó Java-alkalmazások építéséhez][hbase-build-java-maven]
 
-## <a name="a-nameseealsoasee-also"></a><a name="see-also"></a>Lásd még:
+## <a name="a-namesee-alsoasee-also"></a><a name="see-also"></a>Lásd még:
 * [Apache HBase](https://hbase.apache.org/)
 * [Bigtable: Elosztott tárolórendszer strukturált adatokhoz](http://research.google.com/archive/bigtable.html)
 
@@ -84,6 +84,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

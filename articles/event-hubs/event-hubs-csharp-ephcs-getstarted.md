@@ -1,6 +1,6 @@
 ---
 title: "Bevezetés az Event Hubs használatába C# környezetben | Microsoft Docs"
-description: "Ez az oktatóanyag segítséget nyújt az Azure Event Hubs C# környezetben való használatához, valamint az EventProcessorHost használatához."
+description: "Ez az oktatóanyag segítséget nyújt az Azure Event Hubs C# környezetben való használatához, valamint az Event Processor Host használatához."
 services: event-hubs
 documentationcenter: 
 author: jtaubensee
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/02/2016
+ms.date: 12/07/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
+ms.sourcegitcommit: 015dbab81f807cd05d1fedb97f5fc62a012f2084
+ms.openlocfilehash: 54aaf68864fc83501b860ecc3daef1c0216c0140
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 35a7e4693ef979dfb947714f2fe5ce5599991189
 ## <a name="introduction"></a>Bevezetés
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
 
-A jelen oktatóanyag bemutatja, hogyan használhatja a klasszikus Azure portált eseményközpont létrehozásához. Bemutatja azt is, hogyan gyűjtheti az üzeneteket az eseményközpontba egy C# nyelven írt konzolalkalmazással, és hogyan kérheti le azokat párhuzamosan a C# [Event Processor Host][Event Processor Host] tár használatával.
+A jelen oktatóanyag bemutatja, hogyan használhatja az Azure Portalt eseményközpont létrehozásához. Bemutatja azt is, hogyan gyűjtheti az üzeneteket az eseményközpontba egy C# nyelven írt konzolalkalmazással, és hogyan kérheti le azokat párhuzamosan a C# [Event Processor Host][Event Processor Host] tár használatával.
 
 Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
@@ -65,9 +65,10 @@ Nyomja le a **Ctrl+C** billentyűkombinációt a **Küldő** ablakban a Küldő 
 ## <a name="next-steps"></a>Következő lépések
 Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot, valamint adatokat fogad és küld, így továbbléphet a következő forgatókönyvekre:
 
-* Teljes [Event Hubsot használó mintaalkalmazás][Event Hubsot használó mintaalkalmazás].
-* [Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával][Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával] – minta.
-* [Event Hubs – áttekintés][Event Hubs – áttekintés]
+* [Az Event Hubsot használó teljes mintaalkalmazás][sample application that uses Event Hubs].
+* [Event Processor Host](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
+* Az [eseményfeldolgozás horizontális felskálázása az Event Hubs használatával][Scale out Event Processing with Event Hubs] – példa.
+* [Event Hubs – áttekintés][Event Hubs overview]
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png
@@ -76,16 +77,15 @@ Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot,
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[klasszikus Azure portál]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs – áttekintés]: event-hubs-overview.md
-[Az Event Hubsot használó mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Eseményfeldolgozás horizontális felskálázása az Event Hubs használatával]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[üzenetsor-kezelési megoldás]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[queued messaging solution]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

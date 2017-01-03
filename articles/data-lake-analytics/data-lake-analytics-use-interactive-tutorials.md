@@ -1,5 +1,5 @@
 ---
-title: "A Data Lake Analytics és a U-SQL megismerése az Azure Portal interaktív oktatóanyagaival | Microsoft Docs"
+title: "A Data Lake Analytics és a U-SQL megismerése az Azure portál interaktív oktatóanyagaival | Microsoft Docs"
 description: "A Data Lake Analytics és a U-SQL megismerésének első lépései. "
 services: data-lake-analytics
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c2a9bd7f78afc77f72236d0204f39798f0388362
+ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
+ms.openlocfilehash: 36677be6bc5599f55f1f15bc145c59033ad20e0a
 
 
 ---
 # <a name="use-azure-data-lake-analytics-interactive-tutorials"></a>Az Azure Data Lake Analytics interaktív oktatóanyagainak használata
-Az Azure Portal egy interaktív oktatóanyaggal segíti a Data Lake Analytics megismerését. Ez a cikk azt ismerteti, hogyan haladhat végig a webhelynaplók elemzését bemutató oktatóanyagon.
+Az Azure portál egy interaktív oktatóanyaggal segíti a Data Lake Analytics megismerését. Ez a cikk azt ismerteti, hogyan haladhat végig a webhelynaplók elemzését bemutató oktatóanyagon.
 
 > [!NOTE]
 > Ha a Visual Studio használatával szeretné elvégezni ugyanezeket az oktatóanyagokat, tekintse meg a [Analyze website logs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelynaplók elemzése a Data Lake Analytics használatával) című cikket.
@@ -45,7 +45,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal.
 
-Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)-fióktól függ.  Ezt a fiókot kezeli a rendszer alapértelmezett Data Lake Store-fiókként.  A Data Lake Store-fiókot létrehozhatja előre, vagy a Data Lake Analytics-fiók létrehozásakor. Ebben az oktatóanyagban a Data Lake Store-fiókot az Analytics-fiókkal együtt fogja létrehozni.
+Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)-fióktól, az alapértelmezett Data Lake Store-fióktól függ.  Ebben az oktatóanyagban az alapértelmezett Data Lake Store-fiókot az Analytics-fiókkal együtt fogja létrehozni, de korábban is létrehozható.
 
 **Data Lake Analytics-fiók létrehozása**
 
@@ -60,9 +60,9 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
     ![Azure Data Lake Analytics portál panel](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
    
    * **Név:** Nevezze el az Analytics-fiókot.
-   * **Data Lake Store:** Minden Data Lake Analytics-fiókhoz tartozik egy függőségként kezelt Data Lake Store-fiók. A Data Lake Analytics-fióknak és a függő Data Lake Store-fióknak ugyanabban az Azure-adatközpontban kell lennie. Az útmutatást követve hozzon létre egy új Data Lake Store-fiókot, vagy válasszon ki egy már meglévőt.
+   * **Data Lake Store:** Minden Data Lake Analytics-fiókhoz tartozik egy függőségként kezelt Data Lake Store-fiók. A Data Lake Analytics-fióknak és a függő Data Lake Store-fióknak ugyanabban az Azure-adatközpontban kell lennie. Az útmutatást követve hozzon létre egy Data Lake Store-fiókot, vagy válasszon ki egy már meglévőt.
    * **Előfizetés:** Válassza ki az Analytics-fiókhoz használt Azure-előfizetést.
-   * **Erőforráscsoport**. Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat. Az alkalmazások általában számos összetevőből állnak, például webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból, tárolóból és külső szolgáltatásokból. Az Azure Resource Manager (ARM) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat egy Azure-erőforráscsoportként nevezett csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti, figyelheti vagy törölheti. A telepítéshez egy sablont használ, amely különböző, például tesztelési, átmeneti és üzemi környezetekben is képes működni. Tisztázhatja a szervezete számlázását a teljes csoport összegzett költségeinek megtekintésével. További információk: [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése). 
+   * **Erőforráscsoport**. Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat. Az alkalmazások általában számos összetevőből állnak, például webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból, tárolóból és külső szolgáltatásokból. Az Azure Resource Manager (ARM) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat egy Azure-erőforráscsoportként nevezett csoportként használja. Az alkalmazás erőforrásait egyetlen, koordinált műveletben telepítheti, frissítheti, figyelheti vagy törölheti. A telepítéshez egy sablont használ, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. Tisztázhatja a szervezete számlázását a teljes csoport összegzett költségeinek megtekintésével. További információk: [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése). 
    * **Hely**. Válasszon egy Azure-adatközpontot az Azure Data Lake Analytics-fiókhoz. 
 8. Válassza **A kezdőpulton rögzít** lehetőséget. Ez szükséges az oktatóanyag lépéseinek követéséhez.
 9. Kattintson a **Létrehozás** gombra. Ezzel továbblép a kezdőpult portálra. A kezdőpulton megjelenik egy új csempe „Az Azure Data Lake Analytics telepítése” címkével. A Data Lake Analytics-fiók létrehozása igénybe vehet pár másodpercet. Ha a fiók kész, a portál megnyitja a fiókot egy új panelen.
@@ -79,7 +79,7 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
     ![A Data Lake Analytics interaktív oktatóanyagok használata](./media/data-lake-analytics-use-interactive-tutorials/data-lake-analytics-explore-interactive-tutorials.png)
 4. Ha meglát egy narancssárga figyelmeztetést, amely szerint „A minták nincsenek beállítva, kattintson...”, kattintson a **Mintaadatok másolása** lehetőségre a mintaadatok alapértelmezett Data Lake Store-fiókba való másolásához. Az interaktív oktatóanyag futtatásához szükség van az adatokra.
 5. Az **Interaktív oktatóanyagok** panelen kattintson a **Webhelynapló elemzése** lehetőségre. A portál megnyitja az oktatóanyagot egy új portálpanelen.
-6. Kattintson a **1. Bevezetés** lehetőségre, és kövesse az útmutatást
+6. Kattintson a **Bevezetés** elemre, és kövesse az útmutatást
 
 ## <a name="see-also"></a>Lásd még:
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
@@ -91,6 +91,6 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

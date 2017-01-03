@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 92f97b2ebff344e8ce70d983be74c3790ba608a8
+ms.sourcegitcommit: 8835427415e8e01e851796eaf323bce7d1918c8c
+ms.openlocfilehash: 8c7ea2e7131f69bc43f2e82b816efdfbda59e85d
 
 
 ---
@@ -110,6 +110,7 @@ Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő
 
 * [Azure által támogatott disztribúciók](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Nem támogatott disztribúciókkal kapcsolatos tudnivalók](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linuxos virtuális gép feltöltése és létrehozása egyéni rendszerképből](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [How to capture a Linux virtual machine as a Resource Manager template](virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux virtuális gép rögzítése Resource Manager-sablonként).
   
   * Gyors üzembe helyezési példaparancsok egy meglévő virtuális gép rögzítésére:
@@ -128,6 +129,6 @@ Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

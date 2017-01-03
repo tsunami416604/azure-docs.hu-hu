@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
+ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
 
 
 ---
@@ -29,6 +29,7 @@ A kommunikáció ilyen típusú áramlása azért lehetséges, mert az Azure ren
 * Két alhálózat között történik egy virtuális hálózaton belül.
 * Virtuális gépek és az internet között történik.
 * Két VNet között történik egy VPN-átjárón keresztül.
+* Két VNet között történik Virtuális hálózatok közötti társviszony révén (Szolgáltatásláncolás).
 * Egy VNet és a helyszíni hálózat között történik egy VPN-átjárón keresztül.
 
 Az alábbi ábrán egy egyszerű beállítás látható egy virtuális hálózattal, két alhálózattal és néhány virtuális géppel, valamint azokkal a rendszerútvonalakkal, amelyek engedélyezik az IP-cím forgalmának áramlását.
@@ -111,6 +112,6 @@ A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett be
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

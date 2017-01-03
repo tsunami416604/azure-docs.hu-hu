@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg az Azure számlázását, valamint a használat és költségek kezelését és felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció."
 translationtype: Human Translation
-ms.sourcegitcommit: 4a2f8753e38d3d7f88b9af9bc588b544f33c0ae4
-ms.openlocfilehash: ab71026ce41ba387092f1de719818c0236173e59
+ms.sourcegitcommit: 640915b6305b2865b21937e19c324e8e7f1ba0a7
+ms.openlocfilehash: 401406bccbb6e6e7b92b431efe57e49d6745e8c2
 
 ---
 # <a name="azure-billing-documentation"></a>Azure Billing – dokumentáció
 
-Az ügyfeleknek és partnereknek az Azure-költségek pontos előrejelzésére és kezelésére van szükségük. Amennyiben Capex helyett Opex modellre térnek át, a költséghelyi visszacsatolás és visszaterhelés elemzésének képességét, valamint megbízhatóbb becslést és számlázást is igénylik, különösen nagyméretű felhőbeli üzembe helyezéseknél.
+Ismerje meg az Azure számlázását, valamint a használat és költségek felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan kezelheti fiókját.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -68,22 +69,33 @@ Az ügyfeleknek és partnereknek az Azure-költségek pontos előrejelzésére �
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Billing – REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Egyéb</h3>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">Az API áttekintése</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partnermegoldás: Cloud Cruiser</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">Partnermegoldás: Cloudyn</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 
@@ -98,6 +110,7 @@ Billing – dokumentáció letöltése </div>
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO1-->
 
 

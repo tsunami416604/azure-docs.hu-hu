@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/08/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 28222825d680ed7930dd1f2da46df28728c7c103
-ms.openlocfilehash: 48ff29e7abae511eb75aec8c1569ffdf5a57bc77
+ms.sourcegitcommit: 3c8406efd9d716df56ed3ca10fc596684945c2f2
+ms.openlocfilehash: 3281b001aeab42aace951b5bdd5d4ec901de396f
 
 
 ---
@@ -28,19 +28,19 @@ Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, �
 A U-SQL egy rendkívüli mértékben méretezhető, széles körben bővíthető nyelv, amellyel bármilyen, a Data Lake adattárban vagy azon kívül tárolt adat előkészíthető, átalakítható és elemezhető. További információért lásd az [U-SQL-segédanyagot](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio 15 egyelőre nem támogatott, ezen jelenleg is dolgozunk.**
+* **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio 2017 jelenleg nem támogatott.**
 * **Microsoft Azure SDK for .NET 2.7.1-es vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**.
 
     A Data Lake Tools for Visual Studio telepítése után a Server Explorer eszközben az „Azure” csomópont alatt megjelenik egy „Data Lake Analytics” csomópont (a Server Explorer a Ctrl+Alt+S billentyűkombináció lenyomásával nyitható meg).
-* **Végezze el [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)** oktatóanyag következő két szakaszát.
 
-  * [Azure Data Lake Data Lake Analytics-fiók létrehozása](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
-  * [A SearchLog.tsv fájl feltöltése az alapértelmezett Data Lake-tárfiókba](data-lake-analytics-get-started-portal.md#prepare-source-data).
+* **Data Lake Analytics-fiókok és mintaadatok** A Data Lake Tools nem támogatja a Data Lake Analytics-fiókok létrehozását. Ilyen fiókokat az Azure Portal, az Azure PowerShell, a .NET SDK vagy az Azure parancssori felület (CLI) használatával hozhat létre.
+Hogy megkönnyítsük a munkáját, egy Data Lake Analytics-szolgáltatás létrehozásához és a forrásadatfájl feltöltéséhez használható parancsfájlt találhat itt: [„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial).
 
-    Hogy megkönnyítsük a munkáját, egy Data Lake Analytic-szolgáltatás létrehozásához és forrásadatfájlok feltöltéséhez használható példaparancsfájlt találhat itt: [Appx-A PowerShell sample for preparing the tutorial](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial) („A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez).
+    További lehetőségként [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md) oktatóanyag következő két szakasza alapján létrehozhatja a saját fiókját, és manuálisan feltöltheti az adatokat.
 
-    A Data Lake Tools nem támogatja a Data Lake Analytics-fiókok létrehozását. Ezért azt az Azure Portal, az Azure PowerShell, a .NET SDK vagy az Azure parancssori felület (CLI) használatával kell létrehoznia. Egy Data Lake Analytics-feladat futtatásához adatokra lesz szükség. Habár a Data Lake Tools támogatja az adatok feltöltését, az oktatóprogram könnyebb követhetősége érdekében a példaadatokat a portál használatával fogja feltölteni.
+    1. [Azure Data Lake Data Lake Analytics-fiók létrehozása](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
+    2. [A SearchLog.tsv fájl feltöltése az alapértelmezett Data Lake-tárfiókba](data-lake-analytics-get-started-portal.md#prepare-source-data).
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 **A Data Lake Analytics szolgáltatáshoz való kapcsolódás**
@@ -352,6 +352,6 @@ A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

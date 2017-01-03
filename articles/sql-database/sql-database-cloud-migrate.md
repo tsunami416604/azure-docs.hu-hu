@@ -1,71 +1,74 @@
 ---
-title: SQL Server database migration to SQL Database | Microsoft Docs
-description: Learn how about on-premises SQL Server database migration to Azure SQL Database in the cloud. Use database migration tools to test compatibility prior to database migration.
-keywords: database migration,sql server database migration,database migration tools,migrate database,migrate sql database
+title: "SQL Server-adatbázis áttelepítése az SQL Database-be | Microsoft Docs"
+description: "Útmutató a helyszíni SQL Server-adatbázisok a felhőbeli Azure SQL Database-be történő áttelepítéséhez. Az adatbázis-áttelepítési eszközökkel tesztelheti a kompatibilitást az adatbázis áttelepítése előtt."
+keywords: "adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 08/24/2016
+ms.date: 11/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: d9052bd10693c0b7942c0d90fdf89be37b44842d
+ms.openlocfilehash: b0093e48266aedda2b6c88b862c0056ebe3b3114
+
 
 ---
-# SQL Server database migration to SQL Database in the cloud
-In this article, you learn to how to migrate an on-premises SQL Server 2005 or later database to Azure SQL Database. In this database migration process, you migrate your schema and your data from the SQL Server database in your current environment into SQL Database. To succeed, the existing database must first pass a compatibility test. With [SQL Database V12](sql-database-v12-whats-new.md), there are few remaining compatibility issues, other than issue related to server-level and cross-database operations. Databases and applications that rely on [partially or unsupported functions](sql-database-transact-sql-information.md) need some re-engineering to fix these incompatibilities before the SQL Server database can be migrated.
+# <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server-adatbázis áttelepítése a felhőbeli SQL Database-be
+Ebben a cikkben a helyszíni SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-be való áttelepítésének módját ismerheti meg. Ebben az adatbázis-áttelepítési folyamatban az aktuális környezetében megtalálható SQL Server-adatbázisból az SQL Database-be telepíti át a sémáját és az adatait. A művelet sikeres elvégzéséhez a meglévő adatbázisnak először meg kell felelnie egy kompatibilitási teszten. Az SQL Database 12-es verzióval a kiszolgálószintű és adatbázisok közötti műveletekkel kapcsolatos probléma helyett [szolgáltatásparitást](sql-database-features.md) próbálunk elérni. A [részben támogatott vagy nem támogatott funkciókra](sql-database-transact-sql-information.md) támaszkodó adatbázisokat és alkalmazásokat némileg át kell alakítani ezen inkompatibilitások kijavítása érdekében, még mielőtt áttelepíthetné az SQL Server-adatbázist.
 
-To migrate, the following are the steps you to take:
+Az áttelepítéshez a következő lépéseket kell elvégeznie:
 
-* **Test for Compatibility**: Validate database compatibility with [SQL Database V12](sql-database-v12-whats-new.md). 
-* **Fix Compatibility Issues, if any**: If validation fails, you must fix the validation errors.  
-* **Perform the migration** Once your database is compatible, you can use one or several methods to perform the migration. 
+* **Kompatibilitási teszt:** Az adatbázis és az SQL Database kompatibilitásának ellenőrzése. 
+* **A kompatibilitási problémák megoldása, ha vannak ilyenek:** Ha az ellenőrzés meghiúsul, ki kell javítania a kompatibilitási hibákat.  
+* **Az áttelepítés elvégzése:** Ha az adatbázis kompatibilis, egy vagy több módszer is a rendelkezésére áll az áttelepítéshez. 
 
-SQL Server provides several methods to accomplish each of these tasks. This article provides an overview of the available methods for each task. The following diagram illustrates the steps and the methods.
+Az SQL Server több módszert nyújt ezen feladatok elvégzéséhez. Ez a cikk az egyes feladatokhoz elérhető módszerek áttekintését tartalmazza. A következő ábra a lépéseket és a módszereket mutatja be.
 
-  ![VSSSDT migration diagram](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
+  ![VSSSDT áttelepítési ábra](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
 
 > [!NOTE]
-> To migrate a non-SQL Server database, including Microsoft Access, Sybase, MySQL Oracle, and DB2 to Azure SQL Database, see [SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/).
+> Nem SQL Server-adatbázis (beleértve a Microsoft Access-, Sybase-, MySQL Oracle- és DB2-adatbázisokat) az Azure SQL Database-be történő áttelepítéséhez lásd [az SQL Server áttelepítési segédet](http://blogs.msdn.com/b/ssma/) ismertető cikket.
 > 
 > 
 
-## Database migration tools test SQL Server database compatibility with SQL Database
-To test for SQL Database compatibility issues before you start the database migration process, use one of the following methods:
+## <a name="database-migration-tools-test-sql-server-database-compatibility-with-sql-database"></a>Az adatbázis-áttelepítési eszközök tesztelik az SQL Server-adatbázis és az SQL Database kompatibilitását
+Az adatbázis-áttelepítési folyamat elindítása előtt az SQL Database kompatibilitási problémáinak teszteléséhez használja a következő módszerek egyikét:
 
 > [!div class="op_single_selector"]
 > * [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
 > * [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md)
 > * [SSMS](sql-database-cloud-migrate-determine-compatibility-ssms.md)
-> * [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
 > * [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 > 
 > 
 
-* [SQL Server Data Tools for Visual Studio ("SSDT")](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md): SSDT uses the most recent compatibility rules to detect SQL Database V12 incompatibilities. If incompatibilities are detected, you can fix detected issues directly in this tool. This method is the recommended method to test and fix SQL Database V12 compatibility issues. 
-* [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md): SqlPackage is a command-line utility that tests for compatibility issues and generates a report containing detected compatibility issues. If you use this tool, make sure you use the most recent version to use the most recent compatibility rules. If errors are detected, you must use another tool to fix any detected compatibility issues - SSDT is recommended.  
-* [The Export Data Tier application wizard in SQL Server Management Studio](sql-database-cloud-migrate-determine-compatibility-ssms.md): This wizard detects and reports errors to the screen. If not errors are detected, you can continue and complete the migration to SQL Database. If errors are detected, you must use another tool to fix any detected compatibility issues - SSDT is recommended.
-* [The Microsoft SQL Server 2016 Upgrade Advisor Preview](http://www.microsoft.com/download/details.aspx?id=48119): This standalone tool, that is currently in preview, detects and generates a report of SQL Database V12 incompatibilities. This tool does not yet have the most recent compatibility rules. If no errors are detected, you can continue and complete the migration to SQL Database. If errors are detected, you must use another tool to fix any detected compatibility issues - SSDT is recommended. 
-* [SQL Azure Migration Wizard ("SAMW")](sql-database-cloud-migrate-fix-compatibility-issues.md): SAMW is a codeplex tool that uses the Azure SQL Database V11 compatibility rules to detect Azure SQL Database V12 incompatibilities. If incompatibilities are detected, some issues can be fixed directly in this tool. This tool may find incompatibilities that do not need to be fixed. It was the first Azure SQL Database migration assistance tool available and is actively supported by the SQL Server community. Also, this tool can complete the migration from within the tool itself. 
+* [SQL Server Data Tools for Visual Studio („SSDT”):](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) Az SSDT a legújabb kompatibilitási szabályokkal észleli az SQL Database V12 inkompatibilitásait. Ha inkompatibilitást észlel, ebben az eszközben közvetlenül kijavíthatja az észlelt problémákat. Ez a módszer az SQL Database V12 kompatibilitási problémáinak teszteléséhez és javításához javasolt módszer. 
+* [SqlPackage:](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md) Az SqlPackage egy parancssori segédprogram, amely teszteli a kompatibilitási hibákat, és létrehozza az észlelt kompatibilitási hibákat tartalmazó jelentést. Ha ezt az eszközt használja, győződjön meg arról, hogy a legújabb verziót használja, amely tartalmazza a legújabb kompatibilitási szabályokat. Ha hibák észlelhetők, egy másik eszközzel kell kijavítania az észlelt kompatibilitási hibákat – javasolt az SSDT használata.  
+* [Az SQL Server Management Studio Adatrétegbeli alkalmazás exportálása varázslója:](sql-database-cloud-migrate-determine-compatibility-ssms.md) Ez a varázsló észleli és a képernyőn jelenti a hibákat. Ha nem észlel hibákat, folytathatja az eljárást és elvégezheti az SQL Database-be való áttelepítést. Ha hibák észlelhetők, egy másik eszközzel kell kijavítania az észlelt kompatibilitási hibákat – javasolt az SSDT használata.
+* [SQL Azure Migration Wizard („SAMW”):](sql-database-cloud-migrate-fix-compatibility-issues.md) A SAMW egy CodePlex-eszköz, amely az Azure SQL Database V11 kompatibilitási szabályaival észleli az Azure SQL Database V12-vel kapcsolatos inkompatibilitásokat. Ha inkompatibilitást észlel, ebben az eszközben közvetlenül kijavíthatja a problémák egy részét. Ez az eszköz olyan inkompatibilitásokat is észlelhet, amelyeket nem szükséges kijavítani. Ez volt az első elérhető Azure SQL Database-áttelepítési segédeszköz, és a fejlesztését az SQL Server-közösség aktívan támogatja. Ezenkívül az eszköz használatával magából az eszközből elvégezheti az áttelepítést. 
 
-## Fix database migration compatibility issues
-If compatibility issues are detected, you must fix them before proceeding with the SQL Server database migration. There are a wide variety of compatibility issues that you might encounter, depending both on the version of SQL Server in the source database and the complexity of the database you are migrating. Older versions of SQL Server have more compatibility issues. Use the following resources, in addition to a targeted Internet search using your search engine of choices:
+## <a name="fix-database-migration-compatibility-issues"></a>Adatbázis-áttelepítés kompatibilitási problémáinak megoldása
+Ha kompatibilitási problémák észlelhetők, ki kell javítania azokat az SQL Server-adatbázis áttelepítésének folytatása előtt. Sokféle kompatibilitási problémával találkozhat a forrásadatbázis SQL Server-verziójától és az áttelepített adatbázis összetettségétől függően. Az SQL Server korábbi verziói több kompatibilitási problémával rendelkeznek. A következő forrásanyagokat érdemes használnia a keresőmotorokban végzett internetes keresés mellett:
 
-* [SQL Server database features not supported in Azure SQL Database](sql-database-transact-sql-information.md)
-* [Discontinued Database Engine Functionality in SQL Server 2016](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-* [Discontinued Database Engine Functionality in SQL Server 2014](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-* [Discontinued Database Engine Functionality in SQL Server 2012](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
-* [Discontinued Database Engine Functionality in SQL Server 2008 R2](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
-* [Discontinued Database Engine Functionality in SQL Server 2005](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
+* [Az Azure SQL Database-ben nem támogatott SQL Server-adatbázisfunkciók](sql-database-transact-sql-information.md)
+* [Megszűnt adatbázismotor-funkció az SQL Server 2016-ban](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
+* [Megszűnt adatbázismotor-funkció az SQL Server 2014-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
+* [Megszűnt adatbázismotor-funkció az SQL Server 2012-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
+* [Megszűnt adatbázismotor-funkció az SQL Server 2008 R2-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
+* [Megszűnt adatbázismotor-funkció az SQL Server 2005-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
-In addition to searching the Internet and using these resources, use the [MSDN SQL Server community forums](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver) or [StackOverflow](http://stackoverflow.com/).
+Az internetes keresés és a forrásanyagok használata mellett érdemes felkeresnie az [MSDN SQL Server közösségi fórumait](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver) vagy a [StackOverflow](http://stackoverflow.com/) oldalt.
 
-Use one of the following database migration tools to fix the issues detected:
+Használja a következő adatbázis-áttelepítési eszközök egyikét az észlelt problémák megoldásához:
 
 > [!div class="op_single_selector"]
 > * [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
@@ -74,42 +77,47 @@ Use one of the following database migration tools to fix the issues detected:
 > 
 > 
 
-* Use [SQL Server Data Tools for Visual Studio ("SSDT")](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md): To use SSDT, you import your database schema into SQL Server Data Tools for Visual Studio "SSDT") and build the project for a SQL Database V12 deployment. You then fix all detected compatibility issues in SSDT. When complete, you synchronize the changes back to the source database (or a copy of the source database. SSDT is currently the recommended method to test and fix SQL Database V12 compatibility issues. Follow the link for a [walk-through using SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md).
-* Use [SQL Server Management Studio ("SSMS")](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md): To use SSMS, you execute Transact-SQL commands to fix the errors detected using another tool. This method is primarily for advanced users to modify the database schema directly in the source database. 
-* Use [SQL Azure Migration Wizard ("SAMW")](sql-database-cloud-migrate-fix-compatibility-issues.md): To use SAMW, you generate a Transact-SQL script from the source database. The wizard transforms the script, whenever possible, to make the schema compatible with the SQL Database V12. When complete, SAMW can connect to SQL Database V12 to execute the script. This tool also analyzes trace files to determine compatibility issues. The script can be generated with schema only or can include data in BCP format.
+* Az [SQL Server Data Tools for Visual Studio („SSDT”)](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) használata: Az SSDT használatához beimportálja az adatbázissémát az SQL Server Data Tools for Visual Studióba („SSDT”), majd összeállít egy projektet egy SQL Database V12-környezethez. Ezután kijavíthatja az összes észlelt kompatibilitási problémát az SSDT-ben. Amikor elkészült, visszaszinkronizálja a módosításokat a forrásadatbázisba (vagy a forrásadatbázis egy másolatába). Jelenleg az SSDT az SQL Database V12-vel kapcsolatos kompatibilitási problémák tesztelésének és javításának javasolt módszere. Lásd az [SSDT használatának útmutatóját](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md).
+* Az [SQL Server Management Studio („SSMS”)](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) használata: Az SSMS használatához Transact-SQL-parancsokat futtat egy másik eszközzel észlelt hibák kijavítása érdekében. Ez a módszer elsődlegesen a tapasztalt felhasználóknak lehet hasznos, akik közvetlenül a forrásadatbázisban módosítják az adatbázissémát. 
+* Az [SQL Azure Migration Wizard („SAMW”)](sql-database-cloud-migrate-fix-compatibility-issues.md) használata: A SAMW használatához létrehoz egy Transact-SQL-szkriptet a forrásadatbázisból. Amikor lehetséges, a varázsló átalakítja a szkriptet, hogy a séma kompatibilis legyen az SQL Database V12-vel. Amikor elkészült, a SAMW az SQL Database V12-höz csatlakozhat a szkript futtatásához. Ez az eszköz elemzi a profilelemzési fájlokat a kompatibilitási problémák meghatározása érdekében. A szkript létrehozható csak sémával, vagy BCP formátumú adatokat is tartalmazhat.
 
-## Migrate a compatible SQL Server database to SQL Database
-To migrate a compatible SQL Server database, Microsoft provides several migration methods for various scenarios. The method you choose depends upon your tolerance for downtime, the size and complexity of your SQL Server database, and your connectivity to the Microsoft Azure cloud.  
+## <a name="migrate-a-compatible-sql-server-database-to-sql-database"></a>Kompatibilis SQL Server-adatbázis áttelepítése SQL Database-be
+Kompatibilis SQL Server-adatbázis áttelepítéséhez a Microsoft több áttelepítési módszert biztosít a különböző alkalmazási helyzetekre. A választott módszer az állásidővel kapcsolatos elvárásoktól, az SQL Server-adatbázis méretétől és összetettségétől, valamint a Microsoft Azure-felhőhöz rendelkezésre álló csatlakozási lehetőségektől függ.  
 
 > [!div class="op_single_selector"]
-> * [SSMS Migration Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
-> * [Export to BACPAC File](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-> * [Import from BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-> * [Transactional Replication](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+> * [SSMS áttelepítési varázsló](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
+> * [Exportálás BACPAC-fájlba](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
+> * [Importálás BACPAC-fájlból](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+> * [Tranzakciós replikáció](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
 > 
 > 
 
-To choose your migration method, the first question to ask is if you can afford to take the database out of production during the migration. Migrating a database while active transactions are occurring can result in database inconsistencies and possible database corruption. There are many methods to quiesce a database, from disabling client connectivity to creating a [database snapshot](https://msdn.microsoft.com/library/ms175876.aspx).
+Az áttelepítési módszer kiválasztásakor az első kérdés, hogy megengedheti-e, hogy kivegye az adatbázist az éles környezetből az áttelepítés során. Ha az adatbázisokat tranzakciók végrehajtása közben telepíti át, az az adatbázis inkonzisztens állapotát és esetleges sérülését okozhatja. Sokféleképpen elérheti az adatbázisok fokozatos leválasztását, az ügyfélkapcsolat letiltásától [adatbázis-pillanatfelvételének](https://msdn.microsoft.com/library/ms175876.aspx) létrehozásáig.
 
-To migrate with minimal downtime, use [SQL Server transaction replication](sql-database-cloud-migrate-compatible-using-transactional-replication.md) if your database meets the requirements for transactional replication. If you can afford some downtime or you are performing a test migration of a production database for later migration, consider one of the following three methods:
+Ha minimális állásidővel szeretné elvégezni az áttelepítést, használja az [SQL Server tranzakciós replikációját](sql-database-cloud-migrate-compatible-using-transactional-replication.md), ha az adatbázis megfelel a tranzakciós replikáció követelményeinek. Ha megengedhet valamennyi állásidőt vagy ha egy éles adatbázis tesztáttelepítését végzi a későbbi áttelepítéshez, érdemes lehet a következő három módszert használni:
 
-* [SSMS Migration Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md): For small to medium databases, migrating a compatible SQL Server 2005 or later database is as simple as running the [Deploy Database to Microsoft Azure Database Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md) in SQL Server Management Studio.
-* [Export to BACPAC File](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md) and then [Import from BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md): If you have connectivity challenges (no connectivity, low bandwidth, or timeout issues) and for medium to large databases, use a [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file. With this method, you export the SQL Server schema and data to a BACPAC file. You then import the BACPAC file into SQL Database using the Export Data Tier Application Wizard in SQL Server Management Studio or the [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) command-prompt utility.
-* Use BACPAC and BCP together: Use a [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file and [BCP](https://msdn.microsoft.com/library/ms162802.aspx) for much larger databases to achieve greater parallelization for increases performance, albeit with greater complexity. With this method, migrate the schema and the data separately.
+* [SSMS áttelepítési varázsló:](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md) Kis és közepes méretű adatbázisok esetén a kompatibilis SQL Server 2005- vagy újabb adatbázisok áttelepítése egyszerűen elvégezhető az [Adatbázis telepítése Microsoft Azure Database-be varázsló](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md) futtatásával az SQL Server Management Studióban.
+* [Exportálás BACPAC-fájlba](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md), majd [Importálás BACPAC-fájlból:](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) Ha problémái vannak a kapcsolattal (nincs kapcsolat, alacsony sávszélesség, vagy problémák az időtúllépéssel), illetve közepes és nagy adatbázisok esetén használjon egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-fájlt. Ezzel a módszerrel az SQL Server-sémát és az adatokat egy BACPAC-fájlba exportálja. Ezután a BACPAC-fájlt az SQL Database-be importálja az SQL Server Management Studio Adatrétegbeli alkalmazás exportálása varázslója vagy az [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) parancssori segédprogram használatával.
+* A BACPAC és a BCP együttes használata: Sokkal nagyobb adatbázisok esetén egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-fájlt és a [BCP](https://msdn.microsoft.com/library/ms162802.aspx)-t használhatja a nagyobb párhuzamosság elérése érdekében, ami növeli ugyan a teljesítményt, de nagyobb összetettséget jelent. Ezzel a módszerrel külön telepítheti át a sémát és az adatokat.
   
-  * [Export the schema only to a BACPAC file](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md).
-  * [Import the schema only from the BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) into SQL Database.
-  * Use [BCP](https://msdn.microsoft.com/library/ms162802.aspx) to extract the data into flat files and then [parallel load](https://technet.microsoft.com/library/dd425070.aspx) these files into Azure SQL Database.
+  * [Exportálja csak a sémát egy BACPAC-fájlba](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md).
+  * [Importálja csak a sémát a BACPAC-fájlból](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) az SQL Database-be.
+  * A [BCP](https://msdn.microsoft.com/library/ms162802.aspx)-vel másolja át az adatokat egybesimított fájlokba, majd [párhuzamosan töltse be](https://technet.microsoft.com/library/dd425070.aspx) ezeket a fájlokat az Azure SQL Database-be.
     
-     ![SQL Server database migration - migrate SQL database to the cloud.](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
+     ![SQL Server-adatbázis áttelepítése – az SQL Database áttelepítése a felhőbe.](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
 
-## Next steps
-* [The Microsoft SQL Server 2016 Upgrade Advisor Preview](http://www.microsoft.com/download/details.aspx?id=48119)
-* [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-* [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+## <a name="next-steps"></a>Következő lépések
+* [Az SSDT legújabb verziója](https://msdn.microsoft.com/library/mt204009.aspx)
+* [Az SQL Server Management Studio legújabb verziója](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## Additional resources
-* [SQL Database V12](sql-database-v12-whats-new.md)
-  [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
-* [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
+## <a name="additional-resources"></a>További források
+* [SQL Database-funkciók](sql-database-features.md)
+  [A Transact-SQL részben támogatott vagy nem támogatott funkciói](sql-database-transact-sql-information.md)
+* [Nem SQL Server-adatbázisok áttelepítése az SQL Server áttelepítési segéddel](http://blogs.msdn.com/b/ssma/)
+
+
+
+
+<!--HONumber=Jan17_HO1-->
+
 
