@@ -13,29 +13,37 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa64dc7f5bb3e928aac30987b0904435c603829c
+ms.sourcegitcommit: 07cb3fe0d5688d5b63fe3312cad14c2274a58a09
+ms.openlocfilehash: e98a64910f28da0a8a9b4a58c717c40d791ccf00
 
 
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
-Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat értékelése természetesen összetett probléma, de a példa kedvéért most egyszerűsítsük le a paramétereket egy kicsit. Így már jó példaként szolgál annak a bemutatásához, hogy hogyan hozhatók létre prediktív elemzési megoldások a Microsoft Azure Machine Learning segítségével a Machine Learning Studio eszközt és a Machine Learning webszolgáltatást felhasználva.  
-
-Ebben a részletes leírásban végigvezetjük Önt egy prediktív elemzési modell Machine Learning Studio használatával történő kifejlesztésén, majd a modell Azure Machine Learning webszolgáltatásként történő üzembe helyezésén. Nyilvánosan elérhető hitelkockázati adatokkal fogunk dolgozni, amelyek alapján kifejlesztünk és betanítunk egy prediktív modellt, majd a modellt üzembe helyezzük webszolgáltatásként, hogy mások is használhassák a hitelkockázatok értékeléséhez.
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-<!-- -->
+Ebben az útmutatóban a megoldások Machine Learning Studióban való fejlesztési folyamatát tekintjük át részleteiben. Egy prediktív elemzési modellt fejlesztünk ki a Machine Learning Studióban, majd üzembe helyezzük azt Azure Machine Learning-webszolgáltatásként, ahol a modell új adatokkal végezhet előrejelzéseket. 
 
 > [!TIP]
-> Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](machine-learning-studio-overview-diagram.md) című cikket.
+> Az útmutatóban leírtak abból indulnak ki, hogy legalább egyszer használta már a Machine Learning Studiót, és hogy valamennyire tisztában van a gépi tanulás fogalmaival, bár azt is feltételezik, hogy nem szakértője ezeknek.
 > 
+>Ha még soha nem használta az **Azure Machine Learning Studiót**, érdemes lehet [az első adatelemzési kísérlet az Azure Machine Learning Studióban történő létrehozását](machine-learning-create-experiment.md) ismertető oktatóanyaggal kezdenie. Az oktatóanyag végigvezeti először a Machine Learning Studio használatán, bemutatja az alapokat, valamint azt, hogyan húzhat be modulokat a kísérletbe, majd kapcsolhatja össze azokat, továbbá hogyan futtathatja a kísérletet, majd tekintheti meg az eredményeket.
+>
+>Ha most ismerkedik a gépi tanulással, az [Adatelemzés kezdőknek](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) videósorozat nagyszerű hely az induláshoz. Ez a videósorozat remek bevezetőt kínál hétköznapi nyelven és elterjedt fogalmak használatával a gépi tanulás témakörébe.
 > 
+
+## <a name="the-problem"></a>A probléma
+
+Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
+
+A hitelkockázat értékelése természetesen összetett probléma, de a példa kedvéért most leegyszerűsítjük egy kicsit a paramétereket. Jó példaként szolgálhat annak a bemutatásához, hogyan hozhatók létre prediktív elemzési megoldások a Microsoft Azure Machine Learninggel, ha a Machine Learning Studiót és a Machine Learning webszolgáltatást használjuk.  
+
+## <a name="the-solution"></a>A megoldás
+
+Ebben a részletes útmutatóban nyilvánosan elérhető hitelkockázati adatokkal fogunk dolgozni, amelyek alapján kifejlesztünk és betanítunk egy prediktív modellt, majd a modellt üzembe helyezzük webszolgáltatásként, hogy mások is használhassák a hitelkockázatok értékeléséhez.
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseket fogjuk követni:  
 
@@ -49,8 +57,13 @@ A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseke
 Ez az útmutató a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) kínálatában szereplő [Binary Classfication: Credit risk prediction](http://go.microsoft.com/fwlink/?LinkID=525270) (Bináris osztályozás: a hitelkockázat előrejelzése) nevű mintakísérlet egyszerűsített verzióján alapul.
 
 
+> [!TIP]
+> Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](machine-learning-studio-overview-diagram.md) című cikket.
+> 
+> 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Jan17_HO1-->
 
 

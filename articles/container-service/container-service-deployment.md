@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: a7d957fd4be4c823077b1220dfb8ed91070a0e97
-ms.openlocfilehash: d056b9489eba1f97e8fb87f231b03d104c4cab66
+ms.sourcegitcommit: 52f158fd50ee8427cf567889d584e342ea42abb3
+ms.openlocfilehash: b52f7b36a28a345e8693ecbafd3771c27c683a37
 
 
 ---
@@ -58,8 +58,7 @@ Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
 ![4. üzemelő példány létrehozása](media/acs-portal4-new.png)  <br />
 
-Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját és az egyszerű szolgáltatás titkos ügyfélkulcsát.
-Az egyszerű szolgáltatások létrehozásáról bővebb információt [ezen](https://github.com/Azure/acs-engine/blob/master/docs/serviceprincipal.md) az oldalon talál 
+Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját és az egyszerű szolgáltatás titkos ügyfélkulcsát. További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md). 
 
 ![4.5. üzemelő példány létrehozása](media/acs-portal10.PNG)  <br />
 
@@ -197,6 +196,6 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

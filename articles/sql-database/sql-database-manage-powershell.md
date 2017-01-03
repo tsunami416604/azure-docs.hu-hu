@@ -1,33 +1,42 @@
 ---
-title: Manage Azure SQL Database with PowerShell | Microsoft Docs
-description: Azure SQL Database management with PowerShell.
+title: "Azure SQL Database beállítása a PowerShell segítségével | Microsoft Docs"
+description: "Az Azure SQL Database kezelése a PowerShell segítségével."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 3f21ad5e-ba99-4010-b244-5e5815074d31
 ms.service: sql-database
+ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/13/2016
+ms.topic: get-started-article
+ms.date: 11/15/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: adad6b8e27e0996559d5e6dacb8dd60fbf52a631
+ms.openlocfilehash: 0c1ce1c29e447d9db4ef0df7873ef89cb835abee
+
 
 ---
-# Manage Azure SQL Database with PowerShell
+# <a name="managing-azure-sql-database-using-powershell"></a>Azure SQL Database kezelése a PowerShell használatával
 > [!div class="op_single_selector"]
-> * [Azure portal](sql-database-manage-portal.md)
+> * [Azure Portal](sql-database-manage-portal.md)
 > * [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-command-line-tools.md)
+> * [PowerShell](sql-database-manage-powershell.md)
 > 
 > 
 
-This topic shows the PowerShell cmdlets that are used to perform many Azure SQL Database tasks. For a complete list, see [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/mt574084.aspx).
+Ez a témakör az Azure SQL Database számos feladatának elvégzéséhez használt PowerShell-parancsmagokat mutatja be. A teljes listát az [Azure SQL Database-parancsmagok](https://msdn.microsoft.com/library/mt574084\(v=azure.300\).aspx) című részben tekintheti meg.
 
-## Create a resource group
-Create a resource group for our SQL Database and related Azure resources with the [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt759837.aspx) cmdlet.
+> [!TIP]
+> A kiszolgálók és a kiszolgálóalapú tűzfalak létrehozásáról, a kiszolgáló tulajdonságainak megtekintéséről, a master adatbázishoz való csatlakozásról és az onnan való lekérdezésről, a mintaadatbázis, illetve üres adatbázis létrehozásáról, az adatbázis tulajdonságainak lekérdezéséről, valamint a mintaadatbázishoz való kapcsolódásról és az abból való lekérdezésről szóló oktatóanyagok az [Első lépéseket ismertető oktatóanyagban](sql-database-get-started-powershell.md) találhatók.
+>
+
+## <a name="how-do-i-create-a-resource-group"></a>Hogyan hozható létre erőforráscsoport?
+Ha erőforráscsoportot szeretne létrehozni az SQL Database és a kapcsolódó Azure-erőforrások számára, használja a [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt759837\(v=azure.300\).aspx) parancsmagot.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -35,11 +44,11 @@ $resourceGroupLocation = "northcentralus"
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
 ```
 
-For more information, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
-For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../powershell-azure-resource-manager.md).
+Részletes útmutató: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure PowerShell-lel történő használatának első lépései](sql-database-get-started-powershell.md).
 
-## Create a SQL Database server
-Create a SQL Database server with the [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) cmdlet. Replace *server1* with the name for your server. Server names must be unique across all Azure SQL Database servers. If the server name is already taken, you get an error. This command may take several minutes to complete. The resource group must already exist in your subscription.
+## <a name="how-do-i-create-a-sql-database-server"></a>Hogyan hozható létre SQL Database-kiszolgáló?
+SQL Database-kiszolgáló létrehozásához használja a [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715\(v=azure.300\).aspx) parancsmagot. A *server1* helyére írja be a kiszolgáló nevét. A kiszolgáló nevének minden Azure SQL Database-kiszolgáló esetében egyedinek kell lennie. Ha a kiszolgálónév már foglalt, hibaüzenet jelenik meg. A parancs végrehajtása több percet is igénybe vehet. Az erőforráscsoportnak már léteznie kell az előfizetésben.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -58,10 +67,10 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
  -ResourceGroupName $resourceGroupName -ServerVersion $sqlServerVersion
 ```
 
-For more information, see [What is SQL Database](sql-database-technical-overview.md). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+További tudnivalók a kiszolgálókról: [Az SQL Database funkciói](sql-database-features.md). Részletes útmutató: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure PowerShell-lel történő használatának első lépései](sql-database-get-started-powershell.md).
 
-## Create a SQL Database server firewall rule
-Create a firewall rule to access the server with the [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) cmdlet. Run the following command, replacing the start and end IP addresses with valid values for your client. The resource group, and server must already exist in your subscription.
+## <a name="how-do-i-create-a-sql-database-server-firewall-rule"></a>Hogyan hozható létre tűzfalszabály az SQL Database-kiszolgálón?
+A kiszolgálóhoz való hozzáféréshez szükséges tűzfalszabály létrehozásához használja a [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860\(v=azure.300\).aspx) parancsmagot. Futtassa a következő parancsot a kezdő és a záró IP-címeket kicserélve az ügyfél által használt valós címmel. Az erőforráscsoportnak és a kiszolgálónak már léteznie kell az előfizetésben.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -76,12 +85,12 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
  -StartIpAddress $firewallStartIp -EndIpAddress $firewallEndIp
 ```
 
-To allow other Azure services access to your server, create a firewall rule and set both the `-StartIpAddress` and `-EndIpAddress` to **0.0.0.0**. This special firewall rule allows all Azure traffic to access the server.
+Ha engedélyezni szeretné más Azure-szolgáltatásoknak a kiszolgálóhoz való hozzáférést, hozzon létre egy tűzfalszabályt, és állítsa a `-StartIpAddress` és az `-EndIpAddress` paraméter értékét egyaránt **0.0.0.0**-ra. Ez a speciális szabály minden Azure-forgalmat engedélyez a kiszolgálón.
 
-For more information, see [Azure SQL Database Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+További információ: [Azure SQL Database-tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx). Részletes útmutató: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure PowerShell-lel történő használatának első lépései](sql-database-get-started-powershell.md).
 
-## Create a SQL database (blank)
-Create a database with the [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) cmdlet. The resource group, and server must already exist in your subscription. 
+## <a name="how-do-i-create-a-sql-database"></a>Hogyan hozható létre SQL Database-adatbázis?
+SQL Database-adatbázis létrehozásához használja a [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) parancsmagot. Az erőforráscsoportnak és a kiszolgálónak már léteznie kell az előfizetésben. 
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -96,10 +105,10 @@ $currentDatabase = New-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName 
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-For more information, see [What is SQL Database](sql-database-technical-overview.md). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+További információ: [Mi az az SQL Database?](sql-database-technical-overview.md). Részletes útmutató: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure PowerShell-lel történő használatának első lépései](sql-database-get-started-powershell.md).
 
-## Change the performance level of a SQL database
-Scale your database up or down with the [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) cmdlet. The resource group, server, and database must already exist in your subscription. Set the `-RequestedServiceObjectiveName` to a single space (like the following snippet) for Basic tier. Set it to *S0*, *S1*, *P1*, *P6*, etc., like the preceding example for other tiers.
+## <a name="how-do-i-change-the-performance-level-of-a-sql-database"></a>Hogyan változtatható az SQL Database teljesítményszintje?
+A teljesítményszint változtatásához növelje vagy csökkentse az adatbázis méretét a [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433\(v=azure.300\).aspx) parancsmag segítségével. Az erőforráscsoportnak, a kiszolgálónak és az adatbázisnak már léteznie kell az előfizetésben. Állítsa a `-RequestedServiceObjectiveName` értékét (az alábbi kódrészlethez hasonlóan) egyetlen szóközre az Alapszintű csomagban. Állítsa a következőre: *S0*, *S1*, *P1*, *P6* stb., az előző, egyéb csomagokra vonatkozó példához hasonlóan.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -114,10 +123,10 @@ Set-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName `
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-For more information, see [SQL Database options and performance: Understand what's available in each service tier](sql-database-service-tiers.md). For a sample script, see [Sample PowerShell script to change the service tier and performance level of your SQL database](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database).
+További információk: [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md). Mintaparancsprogram a [Minta PowerShell-parancsprogram az SQL Database szolgáltatás- és teljesítményszintjének módosításához](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database) című részben található.
 
-## Copy a SQL database to the same server
-Copy a SQL database to the same server with the [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644.aspx) cmdlet. Set the `-CopyServerName` and `-CopyResourceGroupName` to the same values as your source database server and resource group.
+## <a name="how-do-i-copy-a-sql-database-to-the-same-server"></a>Hogyan másolható SQL Database-adatbázis ugyanazon kiszolgálóra?
+Ha SQL Database-adatbázist szeretne másolni ugyanazon kiszolgálóra, használja a [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644\(v=azure.300\).aspx) parancsmagot. Állítsa a `-CopyServerName` és `-CopyResourceGroupName` értékeket a forrásadatbázis-kiszolgálóéval és az erőforráscsoportéval azonos értékre.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -134,10 +143,10 @@ New-AzureRmSqlDatabaseCopy -DatabaseName $databaseName `
  -CopyResourceGroupName $copyResourceGroupName
 ```
 
-For more information, see [Copy an Azure SQL Database](sql-database-copy.md). For a sample script, see [Copy a SQL database PowerShell script](sql-database-copy-powershell.md#example-powershell-script).
+További információk az [Azure SQL Database másolása](sql-database-copy.md) című részben. Mintaparancsprogram az [SQL Database PowerShell-parancsfájl másolása](sql-database-copy-powershell.md#example-powershell-script) című részben található.
 
-## Delete a SQL database
-Delete a SQL database with the [Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368.aspx) cmdlet. The resource group, server, and database must already exist in your subscription.
+## <a name="how-do-i-delete-a-sql-database"></a>Hogyan törölhető egy SQL Database-adatbázis?
+SQL Database-adatbázis törlése használja a [Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368\(v=azure.300\).aspx) parancsmagot. Az erőforráscsoportnak, a kiszolgálónak és az adatbázisnak már léteznie kell az előfizetésben.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -148,8 +157,8 @@ Remove-AzureRmSqlDatabase -DatabaseName $databaseName `
  -ServerName $sqlServerName -ResourceGroupName $resourceGroupName
 ```
 
-## Delete a SQL Database server
-Delete a server with the [Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) cmdlet.
+## <a name="how-do-i-delete-a-sql-database-server"></a>Hogyan törölhető egy SQL Database-kiszolgáló?
+SQL Database-kiszolgáló törléséhez használja a [Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488\(v=azure.300\).aspx) parancsmagot.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -158,12 +167,18 @@ $sqlServerName = "server1"
 Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceGroupName
 ```
 
-## Create and manage elastic database pools using PowerShell
-For details about creating elastic database pools using PowerShell, see [Create a new elastic database pool with PowerShell](sql-database-elastic-pool-create-powershell.md).
+## <a name="how-do-i-create-and-manage-elastic-pools-using-powershell"></a>Hogyan hozhatók létre és kezelhetők rugalmas készletek a PowerShell használatával?
+A rugalmas készletek PowerShell-lel való létrehozásának részleteit az [Új rugalmas készlet létrehozása a PowerShell-lel](sql-database-elastic-pool-create-powershell.md) című részben tekintheti meg.
 
-For details about managing elastic database pools using PowerShell, see [Monitor and manage an elastic database pool with PowerShell](sql-database-elastic-pool-manage-powershell.md).
+A rugalmas készletek PowerShell-lel való kezelésének részleteit a [Rugalmas készlet figyelése és kezelése a PowerShell-lel](sql-database-elastic-pool-manage-powershell.md) című részben tekintheti meg.
 
-## Related information
-* [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx)
-* [Azure Cmdlet Reference](https://msdn.microsoft.com/library/azure/dn708514.aspx)
+## <a name="related-information"></a>Kapcsolódó információk
+* [Azure SQL Database-parancsmagok](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)
+* [Azure parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn708514\(v=azure.300\).aspx)
+
+
+
+
+<!--HONumber=Jan17_HO1-->
+
 

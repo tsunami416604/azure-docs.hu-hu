@@ -1,116 +1,120 @@
 ---
-title: Manage a SQL Database with SSMS | Microsoft Docs
-description: Learn how to use SQL Server Management Studio to manage SQL Database servers and databases.
+title: "SQL Database-adatbázis kezelése az SSMS használatával | Microsoft Docs"
+description: "Megtudhatja, hogyan kezelhetők az SQL Database-kiszolgálók és adatbázisok az SQL Server Management Studióval."
 services: sql-database
 documentationcenter: .net
 author: stevestein
 manager: jhubbard
 editor: tysonn
-
+ms.assetid: da6f3608-5993-4134-a497-ff2811e9f31f
 ms.service: sql-database
+ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2016
+ms.topic: get-started-article
+ms.date: 09/29/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: d9ff74a49742fa77f5989b8b05e0567e3ca81dc5
+ms.openlocfilehash: 89cb8827745b31b3a77b64d5cafd586957d60d30
+
 
 ---
-# Managing Azure SQL Database using SQL Server Management Studio
+# <a name="managing-azure-sql-database-using-sql-server-management-studio"></a>Az Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studio használatával
 > [!div class="op_single_selector"]
-> * [Azure portal](sql-database-manage-portal.md)
+> * [Azure Portal](sql-database-manage-portal.md)
 > * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-command-line-tools.md)
+> * [PowerShell](sql-database-manage-powershell.md)
 > 
 > 
 
-You can use SQL Server Management Studio (SSMS) to administer Azure SQL Database servers and databases. This topic walks you through common tasks with SSMS. You should already have a server and database created in Azure SQL Database before you begin. See [Create your first Azure SQL Database](sql-database-get-started.md) and [Connect and Query using SSMS](sql-database-connect-query-ssms.md) for more information.
+Az SQL Server Management Studio (SSMS) használatával felügyelhetők az Azure SQL Database-kiszolgálók és adatbázisok. Ez a témakör részletesen ismerteti az SSMS-sel elvégezhető gyakori feladatokat. Mielőtt hozzákezdene, hozzon létre egy kiszolgálót és egy adatbázist az Azure SQL Database-ben. További információ: [Az első SQL Database-adatbázis létrehozása](sql-database-get-started.md) és [Csatlakozás és lekérdezés az SSMS használatával](sql-database-connect-query-ssms.md).
 
-It's recommended that you use the latest version of SSMS whenever you work with Azure SQL Database. 
+> [!TIP]
+> A kiszolgálók és a kiszolgálóalapú tűzfalak létrehozásáról, a kiszolgáló tulajdonságainak megtekintéséről, az SQL Server Management Studióval való csatlakozásról, a master adatbázis lekérdezéséről, a mintaadatbázis, illetve üres adatbázis létrehozásáról, az adatbázis tulajdonságainak lekérdezéséről, valamint az SQL Server Management Studióval való kapcsolódásról és a mintaadatbázis lekérdezéséről szóló oktatóanyagok az [Első lépéseket ismertető oktatóanyagban](sql-database-get-started.md) találhatók.
+>
+
+Az Azure SQL Database használatakor mindig ajánlott az SSMS legújabb verziójának letöltése. 
 
 > [!IMPORTANT]
-> Always use the latest version of SSMS because it is continually improved to work with the latest updates to Azure and SQL Database. To get the latest version, see [Download SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+> Mindig az SSMS legújabb verzióját használja, mivel folyamatosan fejlesztjük és optimalizáljuk az Azure SQL Database legújabb frissítéseivel való együttműködésre. A legújabb verzió letöltése: [Az SQL Server Management Studio letöltése](https://msdn.microsoft.com/library/mt238290.aspx).
 > 
 > 
 
-## Create and manage Azure SQL databases
-While connected to the **master** database, you can create databases on the server and modify or drop existing databases. The following steps describe how to accomplish several common database management
-tasks through Management Studio. To perform these tasks, make sure you are connected to the
-**master** database with the server-level principal login that you
-created when you set up your server.
+## <a name="create-and-manage-azure-sql-databases"></a>Azure SQL Database-adatbázisok létrehozása és kezelése
+Ha csatlakozik a **master** adatbázishoz, létrehozhat új adatbázisokat a kiszolgálón, valamint módosíthat vagy elvethet meglévő adatbázisokat. Az alábbi lépések több gyakori adatbázis-kezelési feladat Management Studióval való elvégzésének módját ismertetik. A feladatok elvégzése előtt győződjön meg arról, hogy csatlakozik a **master** adatbázishoz a kiszolgáló első beállításakor létrehozott kiszolgálószintű fő bejelentkezéssel.
 
-To open a query window in Management Studio, open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
+A Management Studióban egy lekérdezési ablak megnyitásához nyissa meg az Adatbázisok mappát, bontsa ki a **Rendszeradatbázisok** mappát, majd kattintson a jobb gombbal a **master** elemre, majd kattintson az **Új lekérdezés** elemre.
 
-* Use the **CREATE DATABASE** statement to create a database. For
-  more information, see [CREATE DATABASE (SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx). The following statement creates a database named **myTestDB** and specifies that it is a Standard S0 Edition database with a default maximum size of 250 GB.
+* A **CREATE DATABASE** utasítással hozhat létre egy adatbázist. További információ: [CREATE DATABASE (SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx). A következő utasítás egy **myTestDB** nevű adatbázist hoz lére, és megadja, hogy az egy Standard szintű, S0 kiadású adatbázis, az alapértelmezett 250 GB-os maximális mérettel.
   
       CREATE DATABASE myTestDB
       (EDITION='Standard',
        SERVICE_OBJECTIVE='S0');
 
-Click **Execute** to run the query.
+Kattintson a **Végrehajtás** parancsra a lekérdezés futtatásához.
 
-* Use the **ALTER DATABASE** statement to modify an existing database, for example if you want to change the name and edition of the database. For more information, see [ALTER DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms174269.aspx). The following statement modifies the database you created in the previous step to change edition to Standard S1.
+* Az **ALTER DATABASE** utasítás használatával módosíthat egy meglévő adatbázist, például ha módosítani kívánja az adatbázis nevét és kiadását. További információ: [ALTER DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms174269.aspx). Az alábbi utasítás S1 kiadásúra módosítja az előző lépésben létrehozott adatbázist.
   
       ALTER DATABASE myTestDB
       MODIFY
       (SERVICE_OBJECTIVE='S1');
-* Use **the DROP DATABASE** Statement to delete an existing database. For more information, see [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). The following statement deletes the **myTestDB** database, but don't drop it now because you will use it to create logins in the next step.
+* A **DROP DATABASE** utasítással törölheti a meglévő adatbázisokat. További információ: [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). Az alábbi utasítás törli a **myTestDB** adatbázist, most azonban ne vesse el, mert a következő lépésben szükség lesz rá a bejelentkezések létrehozásához.
   
       DROP DATABASE myTestBase;
-* The master database has the **sys.databases** view that you can use to view details about all databases. To view all existing databases, execute the following statement:
+* A master adatbázis rendelkezik a **sys.databases** nézettel, amellyel az összes adatbázis részleteit megtekintheti. Az összes meglévő adatbázis megtekintéséhez futtassa a következő utasítást:
   
       SELECT * FROM sys.databases;
-* In SQL Database, the **USE** statement is not supported for switching between databases. Instead, you need to establish a connection directly to the target database.
+* Az SQL Database nem támogatja a **USE** utasítást az adatbázisok közötti váltáshoz. Ehelyett közvetlen kapcsolatot kell létesítenie a céladatbázissal.
 
 > [!NOTE]
-> Many of the Transact-SQL statements that create or modify a database must be run within their own batch and cannot be grouped with other Transact-SQL statements. For more information, see the statement-specific information.
+> Az adatbázisok létrehozására és módosítására használt számos Transact-SQL utasítást a saját kötegén belül kell futtatni, és nem csoportosíthatók más Transact-SQL utasításokkal. További információkért tekintse meg az egyes utasításokra vonatkozó információkat.
 > 
 > 
 
-## Create and manage logins
-The **master** database contains logins and which logins have permission to create databases or other logins. Manage logins by connecting to the **master** database with the server-level principal login that you created when you set up your server. You can use the **CREATE LOGIN**, **ALTER LOGIN**, or **DROP LOGIN** statements to execute queries against the master database that manages logins across the entire server. For more information, see [Managing Databases and Logins in SQL Database](http://msdn.microsoft.com/library/azure/ee336235.aspx). 
+## <a name="create-and-manage-logins"></a>Bejelentkezések létrehozása és kezelése
+A **master** adatbázis tartalmazza a bejelentkezéseket, illetve azt, hogy mely bejelentkezéseknek van engedélyük adatbázisok vagy más bejelentkezések létrehozására. A bejelentkezések kezeléséhez csatlakozzon a **master** adatbázishoz a kiszolgáló első beállításakor létrehozott kiszolgálószintű fő bejelentkezéssel. A **CREATE LOGIN**, **ALTER LOGIN**, vagy **DROP LOGIN** utasításokkal futtathat lekérdezéseket a master adatbázison, amely az egész kiszolgálón kezeli a bejelentkezéseket. További információ: [Adatbázisok és bejelentkezések kezelése az SQL Database-ben](http://msdn.microsoft.com/library/azure/ee336235.aspx). 
 
-* Use the **CREATE LOGIN** statement to create a server-level login. For more information, see [CREATE LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189751.aspx). The following statement creates a login called **login1**. Replace **password1** with the password of your choice.
+* A **CREATE LOGIN** utasítással hozhat létre kiszolgálószintű bejelentkezést. További információ: [CREATE LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189751.aspx). Az alábbi utasítás egy **login1** nevű bejelentkezést hoz létre. A **password1** jelszót helyettesítse tetszőleges jelszóval.
   
       CREATE LOGIN login1 WITH password='password1';
-* Use the **CREATE USER** statement to grant database-level permissions. All logins must be created in the **master** database. For a login to connect to a different database, you must grant it database-level permissions using the **CREATE USER** statement on that database. For more information, see [CREATE USER (SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx). 
-* To give login1 permissions to a database called **myTestDB**, complete the following steps:
+* A **CREATE USER** utasítással adatbázisszintű engedélyeket adhat ki. Minden bejelentkezést a **master** adatbázisban. Ha másik adatbázishoz való csatlakozáshoz van szüksége bejelentkezésre, akkor adatbázisszintű engedélyeket kell hozzárendelnie az adatbázishoz a **CREATE USER** utasítással. További információ: [CREATE USER (SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx). 
+* Ha a login1 bejelentkezéshez a **myTestDB** nevű adatbázisra vonatkozó engedélyeket kíván hozzárendelni, kövesse az alábbi lépéseket:
   
-  1. To refresh Object Explorer to view the **myTestDB** database that you created, right-click the server name in Object Explorer and then click **Refresh**.  
+  1. Ha frissíteni kívánja az Object Explorert, hogy megtekinthesse a létrehozott **myTestDB** nevű adatbázist, kattintson a jobb gombbal a kiszolgáló nevére az Object Explorerben, majd kattintson a **Frissítés** parancsra.  
      
-     If you closed the connection, you can reconnect by selecting **Connect Object Explorer** on the File menu.
-  2. Right-click **myTestDB** database and select **New Query**.
-  3. Execute the following statement against the myTestDB database to create a database user named **login1User** that corresponds to the server-level login **login1**.
+     Ha bontotta a kapcsolatot, a Fájl menü **Object Explorer csatlakoztatása** parancsával csatlakozhat újra.
+  2. Kattintson a jobb gombbal a **myTestDB** adatbázisra, majd válassza az **Új lekérdezés** elemet.
+  3. Futtassa a következő utasítást a myTestDB adatbázison egy **login1User** nevű adatbázis-felhasználó létrehozásához, amely a **login1** kiszolgálószintű bejelentkezésnek felel meg.
      
          CREATE USER login1User FROM LOGIN login1;
-* Use the **sp\_addrolemember** stored procedure to give the user account the appropriate level of permissions on the database. For more information, see [sp_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx). The following statement gives **login1User** read-only permissions to the database by adding **login1User** to the **db\_datareader** role.
+* Az **sp\_addrolemember** tárolt eljárással adhatja meg a felhasználói fióknak a megfelelő szintű engedélyeket az adatbázisban. További információk: [sp_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx). Az alábbi utasítás csak olvasási engedélyeket biztosít **login1User** felhasználónak az adatbázisban azzal, hogy a **login1User** felhasználót hozzáadja a **db\_datareader** szerepkörhöz.
   
       exec sp_addrolemember 'db_datareader', 'login1User';    
-* Use the **ALTER LOGIN** statement to modify an existing login, for example if you want to change the password for the login. For more information, see [ALTER LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189828.aspx). The **ALTER LOGIN** statement should be run against the **master** database. Switch back to the query window that is connected to that database. The following statement modifies the **login1** login to reset the password. Replace **newPassword** with the password of your choice, and **oldPassword** with the current password for the login.
+* Az **ALTER LOGIN** utasítás használatával módosíthat egy meglévő bejelentkezést, például ha módosítani kívánja a bejelentkezés jelszavát. További információ: [ALTER LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189828.aspx). Az **ALTER LOGIN** utasítást a **master** adatbázison kell futtatni. Váltson vissza arra a lekérdezési ablakra, amelyik az adott adatbázishoz kapcsolódik. Az alábbi utasítás új jelszó létrehozásával módosítja a **login1** bejelentkezést. A **newPassword** jelszót helyettesítse tetszőleges jelszóval, az **oldPassword** jelszót pedig a bejelentkezéshez tartozó aktuális jelszóval.
   
       ALTER LOGIN login1
       WITH PASSWORD = 'newPassword'
       OLD_PASSWORD = 'oldPassword';
-* Use **the DROP LOGIN** statement to delete an existing login. Deleting a login at the server level also deletes any associated database user accounts. For more information, see [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). The **DROP LOGIN** statement should be run against the **master** database. The statement deletes the **login1** login.
+* A **DROP LOGIN** utasítással törölhet egy meglévő bejelentkezést. A bejelentkezés kiszolgálószintű törlésével az adatbázis többi hozzá tartozó felhasználói fiókját is törli. További információ: [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). A **DROP LOGIN** utasítást a **master** adatbázison kell futtatni. Az utasítás törli a **login1** bejelentkezést.
   
       DROP LOGIN login1;
-* The master database has the **sys.sql\_logins** view that you can use to view logins. To view all existing logins, execute the following statement:
+* A master adatbázis rendelkezik a **sys.sql\_bejelentkezések** nézettel, amellyel az összes bejelentkezést megtekintheti. Az összes meglévő bejelentkezés megtekintéséhez futtassa a következő utasítást:
   
       SELECT * FROM sys.sql_logins;
 
-## Monitor SQL Database using Dynamic Management Views
-SQL Database supports several dynamic management views that you can use to monitor an individual database. A few examples of the type of monitor data you can retrieve through these views are following. For
-complete details and more usage examples, see [Monitoring SQL Database using Dynamic Management Views](https://msdn.microsoft.com/library/azure/ff394114.aspx).
+## <a name="monitor-sql-database-using-dynamic-management-views"></a>SQL Database monitorozása a dinamikus felügyeleti nézetek használatával
+Az SQL Database számos dinamikus felügyeleti nézetet támogat, amelyekkel monitorozhatók az egyes adatbázisok. Az alábbiakban néhány példát láthat az ilyen nézetekkel lekérhető monitorozási adatokra. Részletes információ és további használati példák: [Az SQL Database monitorozása a dinamikus felügyeleti nézetekkel](https://msdn.microsoft.com/library/azure/ff394114.aspx).
 
-* Querying a dynamic management view requires **VIEW DATABASE STATE** permissions. To grant the **VIEW DATABASE STATE** permission to a specific database user, connect to the database and execute the following statement against the database:
+* A dinamikus felügyeleti nézetek lekérdezéséhez **VIEW DATABASE STATE** engedélyek szükségesek. Ha a **VIEW DATABASE STATE** engedélyt kívánja hozzárendelni az adatbázis egy adott felhasználójához, akkor csatlakozzon az adatbázishoz, majd futtassa rajta az alábbi utasítást:
   
       GRANT VIEW DATABASE STATE TO login1User;
-* Calculate database size using the **sys.dm\_db\_partition\_stats** view. The **sys.dm\_db\_partition\_stats** view returns page and row-count information for every partition in the database, which you can use to calculate the database size. The following query returns the size of your database in megabytes:
+* Számítsa ki az adatbázis méretét a **sys.dm\_db\_partition\_stats** nézettel. A **sys.dm\_db\_partition\_stats** nézet az adatbázis minden partíciójának oldalszám- és sorszámadatait adja vissza, amelyek alapján kiszámítható az adatbázis mérete. Az alábbi lekérdezés az adatbázis megabájtban megadott méretét adja vissza:
   
       SELECT SUM(reserved_page_count)*8.0/1024
       FROM sys.dm_db_partition_stats;   
-* Use the **sys.dm\_exec\_connections** and **sys.dm\_exec\_sessions** views to retrieve information about current user connections and internal tasks associated with the database. The following query returns information about the current connection:
+* A **sys.dm\_exec\_connections** és a **sys.dm\_exec\_sessions** nézetekkel az aktuális felhasználói kapcsolatokról és az adatbázishoz kapcsolódó belső feladatokról kérhet le információt. Az alábbi lekérdezés az aktuális kapcsolatról ad vissza információkat:
   
       SELECT
           e.connection_id,
@@ -122,7 +126,7 @@ complete details and more usage examples, see [Monitoring SQL Database using Dyn
           sys.dm_exec_sessions s
           INNER JOIN sys.dm_exec_connections e
             ON s.session_id = e.session_id;
-* Use the **sys.dm\_exec\_query\_stats** view to retrieve aggregate performance statistics for cached query plans. The following query returns information about the top five queries ranked by average CPU time.
+* A **sys.dm\_exec\_query\_stats** nézetet használhatja a gyorsítótárazott lekérdezési tervek összesített teljesítménystatisztikáinak lekérdezéséhez. Az alábbi lekérdezés a processzorhasználati idő szerinti első öt lekérdezés információit adja vissza.
   
       SELECT TOP 5 query_stats.query_hash AS "Query Hash",
           SUM(query_stats.total_worker_time), SUM(query_stats.execution_count) AS "Avg CPU Time",
@@ -138,4 +142,10 @@ complete details and more usage examples, see [Monitoring SQL Database using Dyn
            CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
       GROUP BY query_stats.query_hash
       ORDER BY 2 DESC;
+
+
+
+
+<!--HONumber=Jan17_HO1-->
+
 

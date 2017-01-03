@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
+ms.date: 12/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5081c38bae56cf6f2ed260eabb895453d7603cfd
-ms.openlocfilehash: b982274cc7dcf1ffbe1dd4c3d7f833f97704d931
+ms.sourcegitcommit: 10c350247593c806d2c4e66248dedf5f42734628
+ms.openlocfilehash: 2227ab467aca534c5a8783dfdfa3084cb1c3a126
 
 
 ---
@@ -37,7 +37,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | --- | --- | --- |
 | **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Szilícium-völgy, Washington, D.C., Montréal+, Québec város+, Toronto |
 | **Dél-Amerika** |Dél-Brazília |Sao Paulo |
-| **Európa** |Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része |Amszterdam, Dublin, London, Newport (Wales)+, Párizs |
+| **Európa** |Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része |Amszterdam, Dublin, London, Newport (Wales), Párizs |
 | **Ázsia** |Kelet-Ázsia, Délkelet-Ázsia |Hongkong, Szingapúr |
 | **Japán** |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Ausztrália** |Délkelet-Ausztrália, Kelet-Ausztrália |Melbourne, Sydney |
@@ -85,12 +85,12 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Szilícium-völgy, Washington, D.C. |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Szingapúr, Sydney, Toronto, Washington D.C. |
 | **MTN** |Támogatott |Támogatott |London |
-| **Következő generációs adatok** |Hamarosan |Hamarosan |Newport (Wales) + |
+| **[Következő generációs adatok](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Támogatott |Támogatott |Newport (Wales) |
 | **NEXTDC** |Támogatott |Támogatott |Melbourne, Sydney |
 | **NTT Communications** |Támogatott |Támogatott |London, Los Angeles, Oszaka, Szingapúr, Tokió, Washington DC |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |Támogatott |Támogatott |Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
 | **PCCW Global Limited** |Támogatott |Támogatott |Hongkong |
-| **SIFY** |Támogatott |Támogatott |Csennai |
+| **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Támogatott |Támogatott |Csennai |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Támogatott |Támogatott |Szingapúr |
 | **Softbank** |Támogatott |Támogatott |Oszaka, Tokió |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Támogatott |Támogatott |Amszterdam, Csennai, Hongkong, London, Mumbai, Szilícium-völgy, Szingapúr, Washington, D.C. |
@@ -148,8 +148,11 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **Kapcsolatszolgáltató** | **Exchange** | **Helyek** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Szingapúr |
-| **Alaska Communications** |Equinix |Seattle |
+| **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |Seattle |
+| **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | London |
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |New York, Washington, D.C. |
+| **[Macquarie](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
+| **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Washington DC |
 | **[XO Communications](http://www.xo.com/)** |Equinix |Szilícium-völgy |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
@@ -164,6 +167,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** |USA |
 | **[Project Leadership](http://www.projectleadership.net/azure)** |USA |
 
+
 ## <a name="next-steps"></a>Következő lépések
 * További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
@@ -173,6 +177,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

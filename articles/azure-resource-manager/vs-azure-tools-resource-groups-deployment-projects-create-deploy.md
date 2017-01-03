@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: dd1161f2b5cf717246391900a616e51c457f5280
+ms.sourcegitcommit: e3df10acf4a6c123186c72687a56ccb4856c46fe
+ms.openlocfilehash: 07499f9b1c9668d8cb4037405478210e0738e03d
 
 
 ---
@@ -136,7 +136,7 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
    
     Az **administratorLogin** az SQL Server rendszergazdájának felhasználónevét adja meg. Ne használjon olyan gyakori rendszergazdai neveket, mint az **sa** vagy az **admin**. 
    
-    Az **administratorLoginPassword** az SQL Server rendszergazdájának jelszavát adja meg. A **Jelszavak mentése egyszerű szövegként a paraméterfájlban** lehetőség nem biztonságos, így ezt ne használja. Mivel a jelszó nem egyszerű szövegként kerül mentésre, az üzembe helyezés során újra meg kell adnia ezt a jelszót. 
+    Az **administratorLoginPassword** az SQL Server rendszergazdájának jelszavát adja meg. A **Jelszavak mentése egyszerű szövegként a paraméterfájlban** lehetőség nem biztonságos, így ezt ne használja. Mivel a jelszót nem egyszerű szövegként menti, az üzembe helyezés során újra meg kell adnia ezt a jelszót. 
    
     A **databasePlanName** a létrehozandó új adatbázis nevét adja meg. 
    
@@ -189,7 +189,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
    
     A tulajdonságok a következők:
    
-   * A **További tulajdonságok** a webes telepítési web csomag előkészítési helyét tartalmazza, amely át lett helyezve az Azure Storage-ba. Jegyezze meg a mappa (ExampleApp) és a fájl (package.zip) nevét. Ezeket az értékeket kell megadnia paraméterként az üzembe helyezés során. 
+   * A **További tulajdonságok** a webes telepítési web csomag előkészítési helyét tartalmazza, amely át lett helyezve az Azure Storage-ba. Jegyezze meg a mappa (ExampleApp) és a fájl (package.zip) nevét. Ismernie kell ezeket az értékeket, mert az alkalmazás üzembe helyezésekor meg kell adni őket paraméterekként. 
    * A **Fájl elérési útjának belefoglalása** azt az útvonalat tartalmazza, ahol a csomag létrejött. A **Célok belefoglalása** a telepítés során végrehajtott parancsot tartalmazza. 
    * Az alapértelmezett **Build;Csomag** érték egy webes telepítési csomag (package.zip) felépítését és létrehozását teszi lehetővé.  
      
@@ -219,6 +219,6 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

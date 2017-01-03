@@ -1,6 +1,6 @@
 ---
-title: "Új rugalmas adatbáziskészlet létrehozása a PowerShell használatával | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogy a PowerShell használatával hogyan skálázhatja fel horizontálisan az Azure SQL Database-erőforrásokat több adatbázist kezelő, skálázható rugalmas adatbáziskészlet létrehozásával."
+title: "Új rugalmas készlet létrehozása a PowerShell-lel | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogy a PowerShell-lel hogyan skálázhatja fel horizontálisan az Azure SQL Database-erőforrásokat egy több adatbázist kezelő, skálázható rugalmas készlet létrehozásával."
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 37a707ee-9223-43ae-8c35-1ccafde8b83e
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
@@ -15,12 +16,12 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 14c34627623f3b0371a8ad3c3f8eb46af9ed4847
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 8bf8f24db6b543ec1161cf499e6fc116514f85cb
 
 
 ---
-# <a name="create-a-new-elastic-database-pool-with-powershell"></a>Új rugalmas adatbáziskészlet létrehozása a PowerShell használatával
+# <a name="create-a-new-elastic-pool-with-powershell"></a>Új rugalmas készlet létrehozása a PowerShell-lel
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -28,7 +29,7 @@ ms.openlocfilehash: 14c34627623f3b0371a8ad3c3f8eb46af9ed4847
 >
 >
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre [rugalmas adatbáziskészletet](sql-database-elastic-pool.md) PowerShell-parancsmagok használatával.
+Ebből a cikkből megtudhatja, hogyan hozhat létre [rugalmas készletet](sql-database-elastic-pool.md) PowerShell-parancsmagokkal.
 
 A gyakori hibakódokat megtalálja az [SQL error codes for SQL Database client applications: Database connection error and other issues](sql-database-develop-error-messages.md) (SQL Database-ügyfélalkalmazások SQL-hibakódjai: adatbázis-kapcsolati és más hibák) című cikkben.
 
@@ -37,7 +38,7 @@ A gyakori hibakódokat megtalálja az [SQL error codes for SQL Database client a
 >
 >
 
-Az Azure PowerShell 1.0-s vagy újabb verziójának kell futnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](../powershell-install-configure.md).
+Az Azure PowerShell 1.0-s vagy újabb verziójának kell futnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
 ## <a name="create-a-new-pool"></a>Új készlet létrehozása
 A [New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) parancsmag egy új készletet hoz létre. A készletenkénti eDTU-értékek, valamint a DTU-k minimális és maximális értékei a szolgáltatásszinttől (alapszintű, standard vagy prémium) függenek. Lásd: [Rugalmas készletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
@@ -83,6 +84,6 @@ Ez a parancsfájl egy új Azure-erőforráscsoportot és egy új kiszolgálót h
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

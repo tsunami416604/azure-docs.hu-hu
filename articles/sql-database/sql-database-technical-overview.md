@@ -17,15 +17,15 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 1c603d37735bbbfdfaaf4a191e2ad1ce6ff5b2b7
-ms.openlocfilehash: 67f3e923680a9a2f399c0839d2ec11ef4615da00
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 37534ff6366bd519cec50bc033b2bcd8f8bda5c7
 
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Mi az SQL Database? Bevezetés az SQL Database-be
 Az SQL Database a piacvezető Microsoft SQL Server motoron alapuló, felhőalapú relációs adatbázis-szolgáltatás, amely az üzletmenet szempontjából kritikus funkciókkal rendelkezik. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, az üzletmenet folytonosságát és adatvédelmet kínál. Így a virtuális gépek és infrastruktúra kezelése helyett az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat, megkönnyítve ezáltal a felhőbe történő áthelyezést és kiterjesztést.
 
-Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Ha készen áll, akkor percek alatt [létrehozhatja első SQL-adatbázisát](sql-database-get-started.md) vagy [rugalmas adatbáziskészletét](sql-database-elastic-pool-create-portal.md). Ha alaposabban szeretne tájékozódni, nézze meg ezt a 30 perces videót.
+Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Ha készen áll, akkor percek alatt [létrehozhatja első SQL-adatbázisát](sql-database-get-started.md) vagy [rugalmas készletét](sql-database-elastic-pool-create-portal.md). Ha alaposabban szeretne tájékozódni, nézze meg ezt a 30 perces videót.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON326/player]
 > 
@@ -34,11 +34,11 @@ Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal
 ## <a name="adjust-performance-and-scale-without-downtime"></a>Teljesítmény módosítása és skálázása leállási idő nélkül
 Az SQL-adatbázisok a Basic, Standard és Premium *szolgáltatásszinteken* érhetők el. Az egyes szolgáltatásszintek [különböző teljesítmény- és képességszinteket](sql-database-service-tiers.md) kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz munkaterhelésig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később, ha alkalmazása világszerte elterjed, manuálisan vagy programon keresztül bármikor [módosíthatja a szolgáltatásszintet](sql-database-scale-up.md) anélkül, hogy ez üzemszünettel járna az alkalmazás vagy az ügyfelek számára.
 
-Számos vállalkozás és alkalmazás számára elegendő az, ha adatbázisokat tudnak létrehozni, majd az önálló adatbázisok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése.
+Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése.
 
 Az SQL Database [rugalmas készletei](sql-database-elastic-pool.md) megoldást jelentenek erre a problémára. A koncepció egyszerű. A készlethez lefoglalhat egy bizonyos teljesítményt, és nem egy önálló adatbázis teljesítményéért, hanem a készlet közös teljesítményéért fizet. Az adatbázis teljesítményét így nem szükséges felfelé vagy lefelé skáláznia. Az adatbáziskészlet úgynevezett *rugalmas adatbázisainak* fel- és leskálázása szükség szerint automatikusan megtörténik. A rugalmas adatbázisok használják az adatbáziskészlethez hozzárendelt teljesítményt, de nem lépik túl az adatbáziskészlet teljesítménykorlátait, így költségei előre jelezhetők még akkor is, ha az adatbázis-használat nem jelezhető előre. Ráadásul [adatbázisokat adhat hozzá a készlethez, és távolíthat el a készletből](sql-database-elastic-pool-manage-portal.md), így előre jelezhető költségek mellett néhány adatbázisról több ezer adatbázisra skálázhatja fel alkalmazását. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
-Akár az önálló adatbázist, akár a rugalmas adatbáziskészletet választja, a későbbiekben is sok mindent megváltoztathat. Az önálló adatbázisokat rugalmas adatbáziskészletekkel kombinálhatja, továbbá gyorsan és egyszerűen módosíthatja az önálló adatbázisok és az adatbáziskészletek szolgáltatásszintjét, hogy mindig az adott helyzethez tudjon igazodni. Az Azure sokoldalúságának és széles körű alkalmazhatóságának köszönhetően tetszés szerint kombinálhatja az Azure-szolgáltatásokat SQL Database adatbázisokkal, így kielégíthetők az egyedi, modern alkalmazástervezési igények, növelhető a költség- és erőforrás-hatékonyság, és új üzleti lehetőségek tárhatók fel.
+Akár az önálló adatbázist, akár a rugalmas adatbáziskészletet választja, a későbbiekben is sok mindent megváltoztathat. Az önálló adatbázisokat rugalmas készletekkel kombinálhatja, továbbá gyorsan és egyszerűen módosíthatja az önálló adatbázisok és a készletek szolgáltatásszintjét, hogy az mindig az adott helyzethez tudjon igazodni. Az Azure sokoldalúságának és széles körű alkalmazhatóságának köszönhetően tetszés szerint kombinálhatja az Azure-szolgáltatásokat SQL Database adatbázisokkal, így kielégíthetők az egyedi, modern alkalmazástervezési igények, növelhető a költség- és erőforrás-hatékonyság, és új üzleti lehetőségek tárhatók fel.
 
 Hogyan hasonlítható össze az adatbázisok és adatbáziskészletek relatív teljesítménye? Hogyan lehet megállapítani a fel- és leskálázás megfelelő mértékét? A válasz az önálló adatbázisok esetében a DTU-kon, rugalmas adatbázisok és adatbáziskészletek esetében pedig az eDTU-kon alapuló teljesítmény-értékeléssel kombinált, beépített teljesítményfigyelő és riasztási eszközökben rejlik. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. A részletekért olvassa el [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md) című részt.
 
@@ -55,7 +55,7 @@ Az SQL Server megbízható adatbiztonságát az SQL Database olyan funkciói gar
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kapott a "Mi az SQL Database?" kérdésre, a következő lépésekkel folytathatja:
 
-* Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/sql-database/) az önálló adatbázisok és a rugalmas adatbázisok költségeinek összehasonlításáért és árkalkulációjáért.
+* Tekintse meg a [díjszabást ismertető oldalt](https://azure.microsoft.com/pricing/details/sql-database/) az önálló adatbázisok és a rugalmas készletek költségeinek összehasonlításáért és árkalkulációjáért.
 * Tudjon meg többet a [rugalmas készletekről](sql-database-elastic-pool.md).
 * Első lépésként [Hozza létre első adatbázisát](sql-database-get-started.md).
 * [Kapcsolódás és lekérdezés SSMS alkalmazásával](sql-database-connect-query-ssms.md)
@@ -63,6 +63,6 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

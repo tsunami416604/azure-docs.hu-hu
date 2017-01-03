@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy az App Service Web Apps hogyan használható webalkalmazások és webhelyek tárolására és létrehozására. Oktatóanyagok, videók, API-referenciák és egyéb anyagok."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 38ae37f4892fb32422ca8d7880a7b38674f29610
+ms.sourcegitcommit: c25534b4e5cda07ffe124ad151a3093a40137a6f
+ms.openlocfilehash: 4fda1c1635159a0bf6a502c4197b8523cd77a5f8
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web Apps-dokumentáció
 
-Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. Ez a szolgáltatásként kínált platform (PaaS) a Microsoft Azure ajánlata, melynek segítségével az üzleti logikára koncentrálhat, miközben az Azure intézkedik az alkalmazások futtatásához és méretezéséhez szükséges infrastruktúráról.
+Ismerje meg, hogy az App Service Web Apps hogyan használható webalkalmazások és webhelyek tárolására és létrehozására. Oktatóanyagok, videók, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan fejleszthet ezen a teljes mértékben felügyelt számítási platformon.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/get-started/">
+        <a href="https://azure.microsoft.com/get-started/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +48,7 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=web-sites">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=web-sites">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -178,67 +179,46 @@ Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/cli/azure/appservice/web">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Web Apps Azure CLI-referencia</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/cli/azure/appservice">Azure CLI 2.0 előzetes verzió</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java API-referencia</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                        <p><a href="/java/api/">Java</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET – felügyelt referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/rest/api/appservice">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Web Apps – REST API-referencia</p>
+                        <p><a href="/rest/api/appservice">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    </ul>
-    
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
@@ -250,6 +230,6 @@ Web Apps-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 
