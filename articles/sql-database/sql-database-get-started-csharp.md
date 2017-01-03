@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: csharp
@@ -17,20 +17,14 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 82b042fa17af4bc93989a4f12982530f44755280
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: e051a8828a5d36e08a0ea7d352f3d8aabf00b911
 
 
 ---
-# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# használatával és az SQL Database .NET-es kódtárával
-> [!div class="op_single_selector"]
-> * [Azure Portal](sql-database-get-started.md)
-> * [C#](sql-database-get-started-csharp.md)
-> * [PowerShell](sql-database-get-started-powershell.md)
-> 
-> 
+# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>SQL Database létrehozása a C# használatával és az SQL Database .NET-es kódtárával
 
-Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas adatbáziskészletek létrehozásával kapcsolatban lásd: [Új rugalmas adatbáziskészlet létrehozása](sql-database-elastic-pool-create-csharp.md).
+Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas készletek létrehozásával kapcsolatban lásd: [Rugalmas készlet létrehozása](sql-database-elastic-pool-create-csharp.md).
 
 Az Azure SQL Database Management .NET-es kódtára az [Azure Resource Manageren](../azure-resource-manager/resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
@@ -293,6 +287,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

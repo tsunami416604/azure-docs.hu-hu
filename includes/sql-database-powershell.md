@@ -1,6 +1,6 @@
 
 ## <a name="start-your-powershell-session"></a>Indítsa el a PowerShell-munkamenetet
-Ehhez telepítenie és futtatnia kell az [Azure PowerShell](https://msdn.microsoft.com/library/mt619274\(v=azure.300\).aspx) legújabb verzióját. Részletes információk: [How to install and configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+Ehhez telepítenie és futtatnia kell az Azure PowerShell legújabb verzióját. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
 
 > [!NOTE]
 > Az SQL Database sok új funkciója csak az [Azure Resource Manager-alapú üzemi modellben](../articles/azure-resource-manager/resource-group-overview.md) támogatott, így a példák a Resource Manager [Azure SQL Database PowerShell parancsmagjait](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx) veszik alapul. A szolgáltatásfelügyeleti (klasszikus) üzemi modell [Azure SQL Database szolgáltatásfelügyeleti parancsmagjai](https://msdn.microsoft.com/library/azure/dn546723\(v=azure.300\).aspx) visszafelé kompatibilisen támogatottak, de a Resource Manager parancsmagjainak használata ajánlott.
@@ -16,6 +16,6 @@ Ha több előfizetéssel rendelkezik, használja a [**Set-AzureRmContext**](http
     Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

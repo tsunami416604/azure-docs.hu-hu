@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 12/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eb618aea1ee5aba24cebd4d8518e9c7f546f5f4f
-ms.openlocfilehash: ae1e750a5f97325df064a02ed156610b4576f1d3
+ms.sourcegitcommit: cbbc9f29fc4dea49807f1093b673bebac628314b
+ms.openlocfilehash: e886f9c1984003d1bd1391012b26eea39d4a0b76
 
 
 ---
@@ -37,7 +37,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | --- | --- | --- |
 | **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Szilícium-völgy, Washington, D.C., Montréal+, Québec város+, Toronto |
 | **Dél-Amerika** |Dél-Brazília |Sao Paulo |
-| **Európa** |Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része |Amszterdam, Dublin, London, Newport (Wales)+, Párizs |
+| **Európa** |Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része |Amszterdam, Dublin, London, Newport (Wales), Párizs |
 | **Ázsia** |Kelet-Ázsia, Délkelet-Ázsia |Hongkong, Szingapúr |
 | **Japán** |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Ausztrália** |Délkelet-Ausztrália, Kelet-Ausztrália |Melbourne, Sydney |
@@ -76,7 +76,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **Los Angeles** |CoreSite, Equinix, Megaport, NTT, Zayo Group |
 | **Melbourne** |AARNet, Equinix, Megaport, NEXTDC, Telstra Corporation |
 | **New York** |Equinix, Megaport, Zayo Group |
-| **Newport(Wales)+** |Következő generációs adat+ |
+| **Newport (Wales)** |Következő generációs adatok |
 | **Montreal** |Cologix+ |
 | **Mumbai** |Tata Communications |
 | **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank |
@@ -134,11 +134,13 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 
 | **Hely** | **Exchange** | **Kapcsolatszolgáltatók** |
 | --- | --- | --- |
+| **London** | Equinix | Exponential E |
 | **New York** |Equinix |Lightower |
 | **Seattle** |Equinix |Alaska Communications |
 | **Szilícium-völgy** |Equinix |XO Communications |
 | **Szingapúr** |Equinix |1CLOUDSTAR |
-| **Washington DC** |Equinix |Lightower |
+| **Sydney** | Megaport | Macquarie |
+| **Washington DC** |Equinix | Lightower, Masergy |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.
@@ -158,6 +160,6 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

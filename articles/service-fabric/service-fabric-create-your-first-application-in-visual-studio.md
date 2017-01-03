@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/26/2016
+ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 037dc010a6dc60eb49ad4fdad2861e8653e36199
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 76b6934950354f94f4f68e7cfef00e890d9391a6
 
 
 ---
@@ -41,7 +41,7 @@ A következő videó végigkalauzolja az ebben az oktatóanyagban található l�
 > 
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
-A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. Az Új projekt varázslóval az első szolgáltatási projektjével együtt egy alkalmazási projektet is létrehozhat. Később további szolgáltatásokat is hozzáadhat.
+A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. Az Új projekt varázslóval az első szolgáltatásprojektjével együtt egy alkalmazásprojektet is létrehozhat. Később további szolgáltatásokat is hozzáadhat, ha szeretne.
 
 1. Indítsa el a Visual Studiót rendszergazdaként.
 2. Kattintson a **File > New Project > Cloud > Service Fabric Application** (Fájl > Új projekt > Felhő > Service Fabric-alkalmazás) elemre.
@@ -64,7 +64,7 @@ A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek
     Az alkalmazási projekt nem tartalmaz közvetlenül semmilyen kódot. Helyette számos szolgáltatási projektre hivatkozik. Ezenfelül három egyéb típusú tartalmat is tartalmaz:
    
    * **Profilok közzététele**: különböző környezetek eszközbeállításainak a kezelésére használható.
-   * **Parancsfájlok**: az alkalmazás üzembe helyezéséhez/frissítéséhez szükséges PowerShell-parancsfájlt tartalmazza. A Visual Studio a saját belső szkriptjét használja. A szkript meghívása közvetlenül a parancssorból is történhet.
+   * **Parancsfájlok**: az alkalmazás üzembe helyezéséhez/frissítéséhez szükséges PowerShell-parancsfájlt tartalmazza. A Visual Studio a belső szkriptjét használja. A szkript meghívása közvetlenül a parancssorból is történhet.
    * **Alkalmazásdefiníció**: tartalmazza az alkalmazásjegyzéket az *ApplicationPackageRoot* területen. A társított alkalmazások *ApplicationParameters* területen található paraméterfájljai határozzák meg az alkalmazást, és teszik lehetővé az adott környezetnek megfelelően történő konfigurálást.
      
      A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Reliable Services használatába](service-fabric-reliable-services-quick-start.md).
@@ -91,7 +91,7 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
    
     ![A diagnosztikai eseménynapló részletei][6]
    
-    A helyi fürt egyetlen gépen üzemeltetett öt csomópontot tartalmaz. Olyan öt csomópontból álló fürtöt utánoz, amelynek a csomópontjai különböző gépeken vannak. Vegyük le a helyi fürtről az egyik csomópontot, ezzel szimulálva egy gép elvesztését, és ugyanakkor kipróbálva a Visual Studio hibakereső funkcióját.
+    A helyi fürt egyetlen gépen üzemeltetett öt csomópontot tartalmaz. Olyan öt csomópontból álló fürtöt utánoz, amelynek a csomópontjai különböző gépeken vannak. Állítsuk le a helyi fürt egyik csomópontját, hogy szimuláljuk egy gép elvesztését, és kipróbáljuk a Visual Studio hibakereső funkcióját.
    
    > [!NOTE]
    > A projektsablon által kibocsátott alkalmazásdiagnosztikai események a benne foglalt `ServiceEventSource` osztályt használják. További információ: [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
@@ -100,13 +100,13 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
 4. A szolgáltatási projektben keresse meg a StatefulService szolgáltatástípusból származtatott osztályt (például MyStatefulService), majd a `RunAsync` metódus első sorában állítson be egy töréspontot.
    
     ![Töréspont az állapotalapú szolgáltatás RunAsync metódusában][7]
-5. Kattintson a jobb gombbal a Local Cluster Manager rendszertálca-alkalmazásra, és válassza ki a **Manage Local Cluster** (Helyi fürt kezelése) lehetőséget a Service Fabric Explorer elindításához.
+5. A Service Fabric Explorer elindításához kattintson a jobb gombbal a Local Cluster Manager rendszertálca-alkalmazásra, és válassza a **Manage Local Cluster** (Helyi fürt kezelése) lehetőséget.
    
     ![A Manage Local Cluster alkalmazásból indítsa el a Service Fabric Explorert.][systray-launch-sfx]
    
     A Service Fabric Explorer lehetővé teszi egy fürt vizuális megjelenítését, beleértve az azon üzembe helyezett alkalmazáskészletet és az azt felépítő fizikai csomópontokat is. A Service Fabric Explorerrel kapcsolatos további tudnivalókért lásd: [A fürt megjelenítése](service-fabric-visualizing-your-cluster.md).
 6. A bal oldali panelen bontsa ki a **Cluster > Nodes** (Fürt > Csomópontok) elemet, és keresse meg azt csomópont, amelyikben a kódja fut.
-7. Kattintson az **Actions > Deactivate (Restart)** (Műveletek > Inaktiválás (Újraindítás)) elemre a számítógép-újraindítás szimulálásához. (Vegye figyelembe, hogy az inaktiválás szintén a bal oldali ablaktábla csomóponti listanézetének helyi menüjéből végezhető el.)
+7. Kattintson az **Actions > Deactivate (Restart)** (Műveletek > Inaktiválás (Újraindítás)) elemre a számítógép-újraindítás szimulálásához. A csomópont inaktiválását a bal oldali ablaktábla csomóponti listanézetéből is elvégezheti.
    
     ![Csomópont leállítása a Service Fabric Explorerben][sfx-stop-node]
    
@@ -116,14 +116,14 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
     ![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="switch-cluster-mode"></a>Fürt üzemmód átkapcsolása
-Alapértelmezés szerint a helyi fejlesztési fürt 5 csomópontos fürtként való futáshoz van konfigurálva, ami több csomópontra telepített szolgáltatások hibakeresésében nagyon hasznos. Azonban az alkalmazások 5 csomópontos fejlesztési fürtre való telepítése eltarthat egy ideig. Ha azt szeretné, hogy a kódmódosítások gyorsan települjenek, és nincs szükség az alkalmazás 5 csomóponton való futtatására, átválthatja a fejlesztési fürtöt 1 csomópontos üzemmódúra. Ha a kódot egy csomópontos fürtön szeretné futtatni, kattintson a jobb gombbal a tálcán található Local Cluster Manager elemre, és válassza ki a **Fürt üzemmód átkapcsolása -> 1 csomópontos** lehetőséget.  
+Alapértelmezés szerint a helyi fejlesztési fürt ötcsomópontos fürtként való futásra van konfigurálva, ami a több csomóponton telepített szolgáltatások hibakeresésekor hasznos. Azonban az alkalmazások az ötcsomópontos fejlesztési fürtre való telepítése akár hosszabb ideig is tarthat. Ha azt szeretné, hogy a kódmódosítások gyorsan települjenek, és ne legyen szükség az alkalmazás öt csomóponton való futtatására, átállíthatja a fejlesztési fürtöt egycsomópontos üzemmódra. Ha a kódot egy csomópontos fürtön szeretné futtatni, kattintson a jobb gombbal a tálcán található Local Cluster Manager elemre, és válassza ki a **Fürt üzemmód átkapcsolása -> 1 csomópontos** lehetőséget.  
 
 ![Fürt üzemmód átkapcsolása][switch-cluster-mode]
 
-A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe, és a fürtön kiépített vagy futó valamennyi alkalmazás törlődik.
+A fürtüzemmód váltásakor a fejlesztési fürt alaphelyzetbe áll, és a fürtön kiépített vagy futó összes alkalmazás törlődik.
 
 ## <a name="cleaning-up"></a>Takarítás
-  A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt nagyon is valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
+A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
 
 1. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
 2. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A fürtöt csak abban az esetben törölje, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
@@ -133,6 +133,7 @@ A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe,
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
 * Megtudhatja, hogyan tölthet fel szolgáltatásokat az internetre egy [webszolgáltatási előtér](service-fabric-add-a-web-frontend.md) használatával.
 * Hajtsa végre a [laborgyakorlat](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) lépéseit, majd hozzon létre állapotmentes szolgáltatást, konfigurálja a figyelési és az állapotjelentéseket, és hajtson végre alkalmazásfrissítést.
+* A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 
 <!-- Image References -->
 
@@ -151,6 +152,6 @@ A fürt üzemmód átváltásakor a fejlesztési fürt visszaáll alaphelyzetbe,
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

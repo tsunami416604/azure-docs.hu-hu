@@ -1,6 +1,6 @@
 ---
 title: "NoSQL Node.js-oktatóanyag a DocumentDB-hez | Microsoft Docs"
-description: "Ez egy NoSQL Node.js-oktatóanyag, amely egy Node-adatbázis és egy C# konzolalkalmazás a DocumentDB .NET SDK használatával történő létrehozását ismerteti. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+description: "Ez egy NoSQL Node.js-oktatóanyag, amely egy NoSQL-adatbázis és egy konzolalkalmazás a DocumentDB Node.js SDK használatával történő létrehozását ismerteti. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
 keywords: "node.js-oktatóanyag, node-adatbázis"
 services: documentdb
 documentationcenter: node.js
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
+ms.sourcegitcommit: a1cd22bb4d5719493e32071879f1dc601901941f
+ms.openlocfilehash: 481e5d664ae4ae029135e06350e8c053eb6832c1
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
 > * [C++](documentdb-cpp-get-started.md)
 > 
 
-Üdvözöljük az Azure DocumentDB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást hozhat létre, amely DocumentDB-erőforrásokat (pl. Node-adatbázisokat) hoz létre és kérdez le.
+Üdvözöljük az Azure DocumentDB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -67,10 +67,10 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 3. Hozzon létre két üres JavaScript-fájlt az alábbi parancsokkal:
    * Windows:
      * ```fsutil file createnew app.js 0```
-       * ```fsutil file createnew config.js 0```
+     * ```fsutil file createnew config.js 0```
    * Linux/OS X:
      * ```touch app.js```
-       * ```touch config.js```
+     * ```touch config.js```
 4. Telepítse a DocumentDB modult az npm segítségével Használja az alábbi parancsot:
    * ```npm install documentdb --save```
 
@@ -265,7 +265,7 @@ Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.
 
 [Gyűjteményt](documentdb-resources.md#collections) a **DocumentClient** osztály [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) függvényével hozhat létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
-Másolja és illessze be a **getCollection** függvényt a **getDatabase** függvény alá a gyűjtemény az app.js fájlban az ```config``` objektum ```id``` azonosítójával történő létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már gyűjtemény ugyanazzal a ```FamilyCollection```-azonosítóval. Ha már létezik, a rendszer új gyűjtemény létrehozása helyett visszaadja a már létezőt.
+Másolja és illessze be a **getCollection** függvényt a **getDatabase** függvény alá a app.js fájlban az új gyűjtemény az ```config``` objektum ```id``` azonosítójával történő létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már gyűjtemény ugyanazzal a ```FamilyCollection```-azonosítóval. Ha már létezik, a rendszer új gyűjtemény létrehozása helyett visszaadja a már létezőt.
 
                 } else {
                     resolve(result);
@@ -368,7 +368,7 @@ Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumot.
 ## <a name="a-idqueryastep-8-query-documentdb-resources"></a><a id="Query"></a>8. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a gyűjteményben található dokumentumokra vonatkozóan futtathat le.
 
-Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá. A DocumentDB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](documentdb-sql-query.md).
+Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá az app.js fájlban. A DocumentDB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](documentdb-sql-query.md).
 
                 } else {
                     resolve(result);
@@ -425,7 +425,7 @@ Gratulálunk! Sikeresen lekérdezett egy DocumentDB-dokumentumot.
 ## <a name="a-idreplacedocumentastep-9-replace-a-document"></a><a id="ReplaceDocument"></a>9. lépés: Dokumentum cseréje
 A DocumentDB támogatja a JSON-dokumentumok cseréjét.
 
-Másolja és illessze be a **replaceDocument** függvényt a **queryCollection** függvény alá.
+Másolja és illessze be a **replaceFamilyDocument** függvényt a **queryCollection** függvény alá az app.js fájlban.
 
                     }
                     console.log();
@@ -472,7 +472,7 @@ Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
 ## <a name="a-iddeletedocumentastep-10-delete-a-document"></a><a id="DeleteDocument"></a>10. lépés: Dokumentum törlése
 A DocumentDB támogatja a JSON-dokumentumok törlését.
 
-Másolja és illessze be a **deleteDocument** függvényt a **replaceDocument** függvény alá.
+Másolja és illessze be a **deleteFamilyDocument** függvényt a **replaceFamilyDocument** függvény alá.
 
                 else {
                     resolve(result);
@@ -516,7 +516,7 @@ Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
 ## <a name="a-iddeletedatabaseastep-11-delete-the-node-database"></a><a id="DeleteDatabase"></a>11. lépés: A Node-adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
-Másolja és illessze be a következő kódrészletet (**cleanup** (tisztítás) függvény) az adatbázis, valamint minden gyermekerőforrásának törléséhez.
+Másolja és illessze be a **cleanup** függvényt a **deleteFamilyDocument** függvény alá az adatbázis, valamint minden gyermekerőforrásának törléséhez.
 
                 else {
                     resolve(result);
@@ -537,7 +537,7 @@ Másolja és illessze be a következő kódrészletet (**cleanup** (tisztítás)
         });
     }
 
-Másolja és illessze be az alábbi kódot a **deleteDocument** függvény meghívásához, valamint a **cleanup** függvény végrehajtásához.
+Másolja és illessze be az alábbi kódot a **deleteFamilyDocument** függvény meghívásához, valamint a **cleanup** függvény végrehajtásához.
 
     .then(() => deleteFamilyDocument(config.documents.Andersen))
 
@@ -600,7 +600,9 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 Gratulálunk! Ezennel befejezte a Node.js-oktatóanyagot, és létrehozta első saját DocumentDB-konzolalkalmazását.
 
 ## <a name="a-idgetsolutionaget-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
-A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás összeállításához az alábbiakra lesz szüksége:
+Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a kódot, a [Githubon](https://github.com/Azure-Samples/documentdb-node-getting-started) beszerezheti azt.
+
+A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás futtatásához az alábbiakra lesz szüksége:
 
 * [DocumentDB-fiók][documentdb-create-account].
 * A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/documentdb-node-getting-started) megoldás.
@@ -609,7 +611,11 @@ Telepítse a **DocumentDB** modult az npm segítségével. Használja az alábbi
 
 * ```npm install documentdb --save```
 
-Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.authKey értékeket a [3. lépés: Az alkalmazás konfigurációnak megadásában](#Config) leírtak alapján.
+Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.authKey értékeket a [3. lépés: Az alkalmazás konfigurációnak megadásában](#Config) leírtak alapján. 
+
+Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```.
+
+Ennyi az egész! Építse ki, és máris jó úton jár! 
 
 ## <a name="next-steps"></a>Következő lépések
 * Összetettebb Node.js-mintát szeretne használni? Lásd: [Node.js-webalkalmazás létrehozása a DocumentDB használatával](documentdb-nodejs-application.md)
@@ -624,6 +630,6 @@ Ezután, a ```config.js``` fájlban frissítse a config.endpoint és config.auth
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

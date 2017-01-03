@@ -12,15 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/12/2016
+ms.date: 12/14/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1a680f20bc9ceee8efd943cd71312372fe56a878
+ms.sourcegitcommit: 0d83c6e444d74ce7f95f796ec6c53abc43c37766
+ms.openlocfilehash: 7daf4bfa80fae2aee156af5cdb3588725aebd311
 
 
 ---
 # <a name="azure-media-services-overview-and-common-scenarios"></a>Az Azure Media Services áttekintése és gyakori alkalmazási esetei
+
 Microsoft Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
 A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létre. A munkafolyamatok bizonyos részeihez harmadik féltől származó összetevőket is szabadon felhasználhat. Például egy harmadik féltől származó kódolóval végezhet kódolást. Ezután a Media Services használatával intézheti a feltöltést, a védelmet, a csomagolást és a továbbítást.
@@ -28,17 +29,28 @@ A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létr
 A tartalmakat továbbíthatja élő adásban, illetve az ügyfelek igénye szerint is. Ezen témakör a tartalmak [élő](media-services-overview.md#live_scenarios) vagy [igény szerinti](media-services-overview.md#vod_scenarios) továbbításának leggyakoribb eseteit mutatja be. Emellett a témakör hivatkozásokat is tartalmaz egyéb, kapcsolódó témakörökre.
 
 ## <a name="sdks-and-tools"></a>SDK-k és eszközök
+
 A Media Services-megoldások létrehozásához a következőket használhatja:
 
 * [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 * Az elérhető ügyféloldali SDK-k valamelyike:
-* [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services),
-* [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
-* [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
-* [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
+    * [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services),
+    * [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
+    * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
+    * [Node.js-hez készült Azure Media Services](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Ez a Node.js SDK nem Microsoft által készített verziója. Ennek a karbantartását egy közösség végzi, és jelenleg nem fedi le 100%-osan az AMS API-k tartalmát.)
 * Meglévő eszközök:
-* [Azure Portal](https://portal.azure.com/)
-* [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
+    * [Azure Portal](https://portal.azure.com/)
+    * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
+
+A következő kép a Media Services OData-modellen alapuló fejlesztések során leggyakrabban használt objektumok közül mutat be néhányat. 
+
+Kattintson a képre a teljes méretű megjelenítéshez.  
+
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+
+
+A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.14) tekintheti meg.  
+
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 Az AMS képzési terveket itt tekintheti meg:
@@ -47,15 +59,16 @@ Az AMS képzési terveket itt tekintheti meg:
 * [AMS igény szerinti adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az Azure Media Services használatának megkezdéséhez rendelkeznie kell a következőkkel:
 
 1. Egy Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com).
 2. Egy Azure Media Services-fiók. Azure Media Services-fiókot az Azure Portal, a .NET vagy a REST API használatával hozhat létre. További információ: [Fiók létrehozása](media-services-portal-create-account.md)
 3. (Választható:) A fejlesztési környezet beállítása Válassza ki, hogy a .NET vagy a REST API fejlesztési környezetet kívánja-e használni. További információ: [Környezet beállítása](media-services-dotnet-how-to-use.md)
 
-Emellett ismerje meg a programozott [csatlakozást](media-services-dotnet-connect-programmatically.md).
+    Emellett ismerje meg a programozott [csatlakozást](media-services-dotnet-connect-programmatically.md).
 
-1. (Ajánlott:) Foglaljon le egy vagy több skálázási egységet. Javasolt lefoglalni egy vagy több skálázási egységet az éles környezetben futó alkalmazások számára.   További információ: [Streamvégpontok felügyelete](media-services-portal-manage-streaming-endpoints.md)
+4. (Ajánlott:) Foglaljon le egy vagy több skálázási egységet. Javasolt lefoglalni egy vagy több skálázási egységet az éles környezetben futó alkalmazások számára.   További információ: [Streamvégpontok felügyelete](media-services-portal-manage-streaming-endpoints.md)
 
 ## <a name="concepts-and-overview"></a>Alapfogalmak és áttekintés
 Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concepts.md)
@@ -129,11 +142,11 @@ Esetlegesen több, szinkronizált idejű élő kódoló. A kiemelt, magas rendel
 * az adatfolyam adaptív sávszélességűvé kódolása (opcionális)
 * az élő adatfolyam-továbbítás előnézete
 * a feldolgozott tartalmak rögzítése és tárolása a későbbi továbbítás érdekében (Video-on-Demand)
-* a tartalom továbbítása gyakori adatfolyam-továbbítási protokollok (például MPEG DASH, Smooth, HLS, HDS) használatával közvetlenül az ügyfelek részére, vagy egy Content Delivery Network (CDN) tartalomkézbesítési hálózatra későbbi terjesztés céljából.
+* a tartalom továbbítása gyakori streamprotokollok (például MPEG DASH, Smooth, HLS) használatával közvetlenül az ügyfelek részére, vagy egy tartalomkézbesítési hálózatra (CDN) későbbi terjesztés céljából.
 
 A **Microsoft Azure Media Services** (AMS) lehetőséget nyújt az élő adatfolyam-tartalmak feldolgozására, kódolására, előnézetére, tárolására és továbbítására is.
 
-Az ügyfelek felé történő tartalomtovábbításkor a cél a videók kiváló minőségben történő továbbítása különböző eszközökre, különböző hálózati körülmények között. A minőségi és hálózati körülményekhez való igazodáshoz használjon élő kódolókat, amelyek a video-adatfolyamot többféle bitrátájúvá (adaptív sávszélességűvé) alakítják.  A különböző eszközökre irányuló adatfolyam-továbbításhoz használja a Media Services [dinamikus csomagolási](media-services-dynamic-packaging-overview.md) lehetőségét, amely az adatfolyamot dinamikusan újracsomagolja különböző protokollok szerint. A Media Services a következő adaptív sávszélességű streamelési technikákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (csak Adobe PrimeTime/Access licenctulajdonosok esetében).
+Az ügyfelek felé történő tartalomtovábbításkor a cél a videók kiváló minőségben történő továbbítása különböző eszközökre, különböző hálózati körülmények között. A minőségi és hálózati körülményekhez való igazodáshoz használjon élő kódolókat, amelyek a video-adatfolyamot többféle bitrátájúvá (adaptív sávszélességűvé) alakítják.  A különböző eszközökre irányuló adatfolyam-továbbításhoz használja a Media Services [dinamikus csomagolási](media-services-dynamic-packaging-overview.md) lehetőségét, amely az adatfolyamot dinamikusan újracsomagolja különböző protokollok szerint. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
 
 Az Azure Media Services szolgáltatásokban a **csatornák**, a **programok** és a **streamvégpontok** felelősek az élő adatfolyamokkal kapcsolatos minden feladatért, beleértve a feldolgozást, a formázást, a DVR-t, a biztosítást, a méretezhetőséget és a redundanciát is.
 
@@ -201,6 +214,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

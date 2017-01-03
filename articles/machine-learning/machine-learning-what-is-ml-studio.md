@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a5bcc177d298aecd9fd474bd15fc0331b26e887
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
 
 
 ---
@@ -33,25 +33,30 @@ A prediktív elemzési modellek létrehozásához általában egy vagy több for
 
 Az **Azure Machine Learning Studio** interaktív, grafikus munkaterületet nyújt, amelyen könnyedén létrehozhatók, tesztelhetők és fejleszthetők a prediktív elemzési modellek. Az ***adathalmazokat*** és elemzési ***modulokat*** egy interaktív ***vászonra*** húzhatja, és összekapcsolhatja őket a Machine Learning Studio eszközben futtatható kísérletekké. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Amikor készen áll, a ***tanítási kísérletet*** átalakíthatja ***prediktív kísérletté***, majd ***közzéteheti*** webszolgáltatásként, hogy mások is hozzáférjenek.
 
+A prediktív elemzési modell összeállításához nincs szükség programozásra, csupán az adathalmazok és a modulok grafikus összekapcsolására.
+
 > [!TIP]
 > Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](machine-learning-studio-overview-diagram.md) című cikket.
 > 
 > 
-
-A prediktív elemzési modell összeállításához nincs szükség programozásra, csupán az adathalmazok és a modulok grafikus összekapcsolására.
 
 ![Az Azure ML Studio diagramja: kísérletek létrehozása, adatok beolvasása számos forrásból, pontozott adatok és modellek írása.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
 Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
 
-Felül három fül látható: a **Kezdőlap** (az először megjelenő lap), a **Studio** és a **Katalógus**.
+Kattintson a bal felső menüre, ![Menü](media/machine-learning-what-is-ml-studio/menu.png) amelyben számos lehetőséget fog látni.
 
-### <a name="studio"></a>Studio
-Kattintson a **Studio** lapra, és a rendszer felkéri a Microsoft-fiókjával, illetve a munkahelyi vagy iskolai fiókjával történő bejelentkezésre. Miután bejelentkezett, bal oldalon az alábbi lapokat fogja látni:
+### <a name="cortana-intelligence"></a>Cortana Intelligence
+Kattintson a **Cortana Intelligence** elemre, és megnyílik a [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) kezdőlapja. A Cortana Intelligence Suite egy teljes mértékben felügyelt big data-feldolgozó és összetett elemzéseket végző csomag, amelynek segítségével az adatait intelligens műveletekké alakíthatja. A teljes dokumentációt, valamint az ügyfelek beszámolóit a csomag honlapján találja.
+
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+Két lehetőség érhető el: a **Kezdőlap**, vagyis a kiindulási oldal, valamint a **Studio**.
+
+Kattintson a **Studio** elemre, és megnyílik az **Azure Machine Learning Studio**. A rendszer felkéri, hogy jelentkezzen be a Microsoft-fiókjával, illetve a munkahelyi vagy iskolai fiókjával. Miután bejelentkezett, bal oldalon az alábbi lapokat fogja látni:
 
 * **PROJEKTEK** – Az egyes projekteket alkotó kísérletek, adatkészletek, jegyzetek és egyéb erőforrások gyűjteményei
-* **KÍSÉRLETEK** – A létrehozott, futtatott és vázlatként mentett kísérletek
+* **KÍSÉRLETEK** – A létrehozott és futtatott vagy vázlatként mentett kísérletek
 * **WEBSZOLGÁLTATÁSOK** – A kísérletekből üzembe helyezett webszolgáltatások
 * **NOTEBOOKOK** – A létrehozott Jupyter notebookok
 * **ADATHALMAZOK** – A Studióba feltöltött adathalmazok
@@ -59,7 +64,7 @@ Kattintson a **Studio** lapra, és a rendszer felkéri a Microsoft-fiókjával, 
 * **BEÁLLÍTÁSOK** – A fiók és az erőforrások konfigurálására szolgáló beállítások gyűjteménye
 
 ### <a name="gallery"></a>Katalógus
-Kattintson a **Katalógus** lapra, és megnyílik a Cortana Intelligence Gallery. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
+Kattintson a **Katalógus** lapra, és megnyílik a **[Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/)**. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
 
 Erről további információkat a [Megoldások megosztása és felfedezése a Cortana Intelligence Galleryben](machine-learning-gallery-how-to-use-contribute-publish.md) című cikkben talál.
 
@@ -116,6 +121,6 @@ Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning S
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

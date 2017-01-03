@@ -1,38 +1,28 @@
-## <a name="about-records"></a>A rekordok
+### <a name="record-names"></a>Rekordnevek
 
-Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
+Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, a *relatív* név azonban nem. Például: a „www” relatív rekordnév a „contoso.com” zónában a „www.contoso.com” teljes tartománynevet adja ki.
 
-Az Azure DNS minden gyakori DNS-rekord típust támogat, beleértve a következőket: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe:
+Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. Például a „contoso.com” DNS-zónában a csúcsrekord szintén a „contoso.com” teljes tartománynévvel rendelkezik (ezt néha *csupasz* tartománynévnek is nevezzük).  A szabályok szerint a '@' relatív név csúcsrekordokat jelöl.
 
-* A SOA típusú rekordhalmazok automatikusan jönnek létre az egyes zónákkal együtt, külön nem hozhatók létre.
-* Az SPF-rekordokat TXT típusú rekordok használatával kell létrehozni. További információkat [ezen az oldalon](http://tools.ietf.org/html/rfc7208#section-3.1) talál.
+### <a name="record-types"></a>Rekordtípusok
 
-Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A „teljes” tartománynév (FQDN) tartalmazza a zóna nevét, a „relatív” név azonban nem. Például: a „www” relatív rekordnév a „contoso.com” zónában a www.contoso.com teljes tartománynevet adja ki.
+Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik gyakori típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
 
-## <a name="about-record-sets"></a>A rekordhalmazok
+Az Azure DNS minden gyakori DNS-rekord típust támogat: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe, hogy az [SPF-rekordok TXT-rekordok használatával vannak jelölve](../articles/dns/dns-zones-records.md#spf-records).
+
+### <a name="record-sets"></a>Rekordhalmazok
 
 Előfordulhat, hogy több, azonos nevű és típusú DNS-rekordot is létre kell hoznia. Tegyük fel például, hogy a „www.contoso.com” webhely két különböző IP-címről is üzemel. A webhelynek két különböző A-rekordra van szüksége a két IP-címhez. Példa egy rekordhalmazra:
 
     www.contoso.com.        3600    IN    A    134.170.185.46
     www.contoso.com.        3600    IN    A    134.170.188.221
 
-Az Azure DNS rekordhalmazok használatával kezeli a DNS-rekordokat. A rekordhalmazok az egy zónába tartozó, ugyanazzal a névvel és típussal rendelkező DNS-rekordok gyűjteményei. A legtöbb rekordhalmaz egyetlen rekordot tartalmaz, de a fentihez hasonló példához hasonló esetek sem szokatlanok, ahol egy rekordhalmazban több rekord is van.
+Az Azure DNS minden DNS-rekordot a *rekordhalmazok* használatával kezel. A rekordhalmazok (más néven az *erőforrás*-rekordhalmazok) az egy zónába tartozó, ugyanazzal a névvel és típussal rendelkező DNS-rekordok gyűjteményei. A legtöbb rekordhalmaz egyetlen rekordot tartalmaz. Azonban a fenti példa, melyben a rekordhalmaz egynél több rekordot tartalmaz, sem ritka.
 
-A SOA és CNAME típusú rekordhalmazok kivételt jelentenek ez alól. A DNS-szabványok nem engedélyezik, hogy ezen típusok esetén több rekord is ugyanazzal a névvel rendelkezzen.
+Tegyük fel például, hogy már létrehozott egy A „www” rekordot a „contoso.com” zónában, amely a „134.170.185.46” IP-címre mutat (a fenti első rekord).  A második rekord létrehozása esetén a rekordot a meglévő rekordhalmazhoz kellene hozzáadnia, egy további rekordhalmaz létrehozása helyett.
 
-Az élettartam (TTL) megadja, hogy az ügyfelek mennyi ideig gyorsítótárazzák az egyes rekordokat az újbóli lekérdezés előtt. Ebben a példában az élettartam 3600 másodperc, vagyis 1 óra. Az élettartam a rekordhalmazhoz van megadva, nem az egyes rekordokhoz, így a halmaz összes rekordján ugyanaz az érték érvényesül.
+A SOA és CNAME típusú rekordok kivételt jelentenek ez alól. A DNS-szabványok nem engedélyeznek ugyanazzal a névvel több rekordot ezen típusok esetén, ezért ezek a rekordhalmazok csak egy rekordot tartalmazhatnak.
 
-#### <a name="wildcard-record-sets"></a>Helyettesítő rekordhalmazok
-
-Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. A rendszer ezeket minden egyező nevű lekérdezésre visszaadja (hacsak nincs egy nem helyettesítő rekordhalmazból származó közelebbi találat). A helyettesítő rekordhalmazok minden rekordtípus esetén támogatottak, kivéve az NS és SOA típust.
-
-Helyettesítő rekordhalmazok létrehozásához használja a következő rekordhalmaznevet: \*. Vagy használjon \* címkével ellátott nevet, például: \*.foo.
-
-#### <a name="cname-record-sets"></a>CNAME-rekordhalmazok
-
-CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egyidejűleg egy CNAME-rekordhalmazt és egy A-rekordot is a „www” relatív névvel. Mivel a zóna felső pontja (név = ‘@’)) mindig tartalmazza a zóna létrehozásakor létrejött NS és SOA típusú rekordhalmazokat, a zóna felső pontján nem hozhat létre CNAME-rekordhalmazokat. Ezek a korlátozások a DNS-szabványokból erednek, és nem az Azure DNS korlátozásai.
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

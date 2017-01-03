@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben"
+title: "Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben | Microsoft Docs"
 description: "Megtudhatja, hogyan telepíthet egy Node.js alkalmazást az Azure App Service-ben."
 services: app-service\web
 documentationcenter: nodejs
@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: get-started-article
-ms.date: 07/01/2016
+ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
-ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
+ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
+ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
 
 
 ---
@@ -25,24 +25,35 @@ ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alkalmazást, és hogyan telepítheti azt az [Azure App Service] olyan parancssori környezetben, mint a cmd.exe vagy a bash. Az oktatóanyag utasításai követhetők bármelyik olyan operációs rendszeren, amely képes a Node.js futtatására.
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
 
 <a name="prereq"></a>
+
+## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
+
+A következő CLI-verziók egyikével elvégezheti a feladatot:
+
+- [Azure CLI 1.0](app-service-web-nodejs-get-started-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
+- [Azure CLI 2.0 (előzetes verzió)](app-service-web-nodejs-get-started.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Node.js]
 * [Bower]
 * [Yeoman]
 * [Git]
-* [Azure CLI]
+* [Azure CLI 2.0 előzetes verzió](/cli/azure/install-az-cli2)
 * Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra], vagy [aktiválhatja a Visual Studio előfizetői előnyeit].
 
-## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>Egyszerű Node.js webalkalmazás létrehozása és telepítése
+> [!NOTE]
+> Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> 
+> 
+
+## <a name="create-and-configure-a-simple-nodejs-app-for-azure"></a>Egyszerű Node.js alkalmazás létrehozása és konfigurálása az Azure-ban
 1. Nyissa meg a kívánt parancssori terminált, és telepítse a [Express generator for Yeoman]
    
         npm install -g generator-express
+
 2. `CD` egy működő könyvtárba, és hozzon létre egy Express alkalmazást az alábbi szintaxissal:
    
         yo express
@@ -56,22 +67,13 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
     `? Select a css preprocessor to use (Sass Requires Ruby):` **Nincs**  
     `? Select a database to use:` **Nincs**  
     `? Select a build tool to use:` **Grunt**
+
 3. `CD` az új alkalmazás gyökérkönyvtárára mutatva, majd indítsa el, hogy meggyőződjön arról, hogy fut a fejlesztési környezetben:
    
         npm start
    
     A böngészőben navigáljon a <http://localhost:3000> helyre, hogy meggyőződjön arról, hogy látja az Express kezdőlapot. Ha ellenőrizte, hogy az alkalmazás megfelelően fut-e, állítsa le a `Ctrl-C` segítségével.
-4. Váltson ASM módra, és jelentkezzen be az Azure-ba (ehhez az [Azure CLI szükséges](#prereq)):
-   
-        azure config mode asm
-        azure login
-   
-    A felszólítást követve folytassa a böngészőbe való bejelentkezést egy Azure-előfizetéssel rendelkező Microsoft-fiókkal.
-5. Győződjön meg arról, hogy még az alkalmazás gyökérkönyvtárában van, majd hozza létre az App Service alkalmazás-erőforrást az Azure-ban egy egyedi alkalmazásnévvel a következő parancsot használva. Például: http://{appname}.azurewebsites.net
-   
-        azure site create --git {appname}
-   
-    A felszólítást követve válasszon egy Azure-régiót, ahová telepíteni szeretné. Ha még nem állított be Git/FTP telepítési hitelesítő adatokat az Azure-előfizetéséhez, a rendszer erre is felszólítja.
+
 6. Nyissa meg a ./config/config fájlt az alkalmazás gyökeréből, és módosítsa az éles portot a `process.env.port` értékre; a `config` objektum `production` tulajdonságának pedig az alábbi példához hasonlóan kell kinéznie:
    
         production: {
@@ -82,23 +84,73 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
             port: process.env.port,
         }
    
-    Ezáltal a Node.js alkalmazás válaszolhat a webkérelmekre az alapértelmezett porton, amelyet az is figyel.
+    > [!NOTE] 
+    > Alapértelmezés szerint az Azure App Service Node.js-alkalmazásokat futtat a `production` környezeti változókkal (`process.env.NODE_ENV="production"`.
+    > A konfigurációnak köszönhetően az Azure-beli Node.js-alkalmazás válaszolhat a webkérelmekre az alapértelmezett porton, amelyet az is figyel.
+    >
+    >
+
 7. Nyissa meg a ./package.json fájlt, és adja hozzá az `engines` tulajdonságot [a kívánt Node.js verzió megadásához](#version).
    
         "engines": {
-            "node": "6.6.0"
+            "node": "6.9.1"
         }, 
-8. Mentse el a módosításokat, majd a git segítségével telepítse az alkalmazást az Azure-ban:
+
+8. Mentse a módosításokat, indítson Git-tárházat az alkalmazás gyökerében, majd véglegesítse a kódját:
    
         git add .
         git add -f config
         git commit -m "{your commit message}"
+
+## <a name="deploy-your-nodejs-app-to-azure"></a>Node.js-alkalmazás telepítése az Azure-ban
+
+1. Jelentkezzen be az Azure-ba ([Azure CLI 2.0 előzetes verzió](#prereq) szükséges):
+   
+        az login
+   
+    A felszólítást követve folytassa a böngészőbe való bejelentkezést egy Azure-előfizetéssel rendelkező Microsoft-fiókkal.
+
+3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni ezen hitelesítő adatok használatával.
+   
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). A PHP-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
+
+        az group create --location "<location>" --name my-nodejs-app-group
+
+    A `<location>` paraméterhez használható lehetséges értékek megtekintéséhez, használja az `az appservice list-locations` CLI-parancsot.
+
+3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). A PHP-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
+
+        az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
+
+4. Hozzon létre egy új, egyéni névvel rendelkező webappot az `<app_name>` paraméterben.
+
+        az appservice web create --name <app_name> --resource-group my-nodejs-app-group --plan my-nodejs-appservice-plan
+
+5. Konfigurálja az új webapphoz tartozó helyi Git üzemelő példányt a következő paranccsal:
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-nodejs-app-group
+
+    Egy ehhez hasonló JSON-kimenet jön létre, ami azt jelenti, hogy a távoli Git-tárház be lett állítva:
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. Adja hozzá a JSON-ban található URL-címet a helyi tárházhoz távoli Git-elemként (az egyszerűség kedvéért nevezzük a következőnek: `azure`).
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
+   
+7. Helyezze üzembe a mintakódot az `azure` távoli Githez. Ha a rendszer kéri, használja a korábban beállított üzembe helyezési hitelesítő adatokat.
+
         git push azure master
    
     Az Express generátor már biztosít egy .gitignore fájlt, így a `git push` nem használja a sávszélességet a node_modules/ könyvtár feltöltésekor.
+
 9. Végezetül indítsa el az élő Azure alkalmazást a böngészőben:
    
-        azure site browse
+        az appservice web browse --name <app_name> --resource-group my-nodejs-app-group
    
     Ekkor elméletben a Node.js alkalmazásának élőben futnia kell az Azure App Service-ben.
    
@@ -108,9 +160,9 @@ Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alk
 Az App Service-ben futó Node.js webalkalmazás frissítéséhez csak futtassa a `git add`, `git commit` és `git push` parancsokat, mint ahogyan azt a webalkalmazás első telepítésekor tette.
 
 ## <a name="how-app-service-deploys-your-nodejs-app"></a>Hogyan telepíti az App Service a Node.js alkalmazást
-Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazásokat. Az Azure CLI és a Kudu motor (Git telepítés) egymással együttműködve biztosítanak egy zökkenőmentes élményt a Node.js alkalmazások parancssori felületről való fejlesztésekor és telepítésekor. 
+Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazásokat. Az Azure CLI 2.0 előzetes verzió és a Kudu motor (Git-telepítés) egymással együttműködve biztosítanak zökkenőmentes élményt a Node.js-alkalmazások parancssori felületről való fejlesztésekor és telepítésekor. 
 
-* `azure site create --git` felismeri a server.js vagy az app.js fájl közös Node.js mintázatát, és létrehoz egy iisnode.yml fájlt a gyökérkönyvtárban. Ezt a fájlt használhatja az iisnode testreszabásához.
+* Létrehozhat egy iisnode.yml fájlt a gyökérkönyvtárban, amely segítségével testre szabhatja az iisnode-tulajdonságokat. Az összes konfigurálható beállítás dokumentációját [itt](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml) találhatja.
 * A `git push azure master` esetében a Kudu automatizálja az alábbi telepítési feladatokat:
   
   * Ha a package.json az adattár gyökérkönyvtárában van, futtassa az `npm install --production` parancsot.
@@ -133,7 +185,7 @@ Az általános munkamenetben úgy írhatja elő az App Service-nek egy adott Nod
 Példa:
 
     "engines": {
-        "node": "6.6.0"
+        "node": "6.9.1"
     }, 
 
 A Kudu telepítési motor az alábbi lépések szerint határozza meg, melyik Node.js motort használja:
@@ -141,6 +193,10 @@ A Kudu telepítési motor az alábbi lépések szerint határozza meg, melyik No
 * Először nézze meg az iisnode.yml fájlt, hogy a `nodeProcessCommandLine` meg van-e határozva. Ha igen, akkor használja azt.
 * Ezután nézze meg a package.js fájlt, hogy a `"node": "..."` meg van-e határozva az `engines` objektumban. Ha igen, akkor használja azt.
 * Válasszon egy alapértelmezett Node.js verziót.
+
+Az Azure App Service összes támogatott Node.js/NPM-verziójának frissített listája a következő URL-címen férhető hozzá az alkalmazás számára:
+
+    https://<app_name>.scm.azurewebsites.net/api/diagnostics/runtime
 
 > [!NOTE]
 > Ajánlott explicit módon meghatározni a kívánt Node.js motort. Az alapértelmezett Node.js verzió módosulhat, és hibaüzenetek jelenhetnek meg az Azure-webalkalmazásban, mert az alapértelmezett Node.js verzió nem megfelelő az alkalmazás számára.
@@ -157,7 +213,7 @@ Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
 > 
 > 
 
-1. Nyissa meg az Azure CLI által biztosított iisnode.yml fájlt.
+1. Nyissa meg az Azure CLI 2.0 előzetes verzió által biztosított iisnode.yml fájlt.
 2. Adja még a következő két paramétert: 
    
         loggingEnabled: true
@@ -221,7 +277,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 <!-- URL List -->
 
-[Azure CLI]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [aktiválhatja a Visual Studio előfizetői előnyeit]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/
@@ -248,6 +303,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

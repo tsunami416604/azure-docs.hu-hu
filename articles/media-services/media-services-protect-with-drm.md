@@ -12,15 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 12/11/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 6e979399c74028a34e6879d957f5c1572e8e062e
+ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
+ms.openlocfilehash: 7c2709d472d7512eda927f4f70f82e7f74adca0c
 
 
 ---
 # <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-drm.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -30,7 +31,7 @@ ms.openlocfilehash: 6e979399c74028a34e6879d957f5c1572e8e062e
 
 A Microsoft Azure Media Services lehetővé teszi, hogy MPEG-DASH, Smooth Streaming vagy HTTP-Live-Streaming (HLS) típusú streamjeit [Microsoft PlayReady DRM-védelemmel](https://www.microsoft.com/playready/overview/) lássa el. Ezenfelül arra is lehetőséget kínál, hogy titkosított DASH-streameket továbbítson Widevine DRM-licencek segítségével. Mind a PlayReady, mind a Widevine titkosítása a Common Encryption (ISO/IEC 23001-7 CENC) szabvány specifikációi szerint történik. Az AssetDeliveryConfiguration Widevine használatára történő beállításához használja az [AMS .NET SDK-t](https://www.nuget.org/packages/windowsazure.mediaservices/) (a 3.5.1-es vagy újabb verziót), vagy a REST API-t.
 
-A Media Services része egy szolgáltatás, amelynek segítségével PlayReady vagy Widevine DRM-licenceket továbbíthat. A Media Services ezenfelül API-kat is tartalmaz, amelyek segítségével beállíthatja azokat a jogokat és korlátozásokat, amelyeket szeretne betartatni a PlayReady vagy a Widevine DRM-futtatókörnyezettel, amikor egy felhasználó védett tartalmakat játszik le. Amikor a felhasználók DRM-védelemmel rendelkező tartalmat kérnek, a lejátszóalkalmazás licencet kér az AMS-licencelési szolgáltatástól.  Az AMS-licencelési szolgáltatás akkor adja meg a licencet, ha a kérelmező felhasználó megkapta a megfelelő jogosultságokat. A PlayReady- vagy Widevine-licencek tartalmazzák a feloldási kulcsot, amelynek segítségével az ügyféllejátszó képes feloldani a titkosítást, majd streamelni a kért tartalmakat.
+A Media Services része egy szolgáltatás, amelynek segítségével PlayReady vagy Widevine DRM-licenceket továbbíthat. A Media Services ezenfelül API-kat is tartalmaz, amelyek segítségével beállíthatja azokat a jogokat és korlátozásokat, amelyeket szeretne betartatni a PlayReady vagy a Widevine DRM-futtatókörnyezettel, amikor egy felhasználó védett tartalmakat játszik le. Amikor a felhasználók DRM-védelemmel rendelkező tartalmat kérnek, a lejátszóalkalmazás licencet kér az AMS-licencelési szolgáltatástól. Az AMS-licencelési szolgáltatás akkor adja meg a licencet, ha a kérelmező felhasználó megkapta a megfelelő jogosultságokat. A PlayReady- vagy Widevine-licencek tartalmazzák a feloldási kulcsot, amelynek segítségével az ügyféllejátszó képes feloldani a titkosítást, majd streamelni a kért tartalmakat.
 
 A Widevine-licencek továbbításának támogatásához a következő AMS-partnereket is használhatja: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/) vagy [castLabs](http://castlabs.com/company/partners/azure/). További információk: integráció az [Axinom](media-services-axinom-integration.md) és a [castLabs](media-services-castlabs-integration.md) rendszerekkel.
 
@@ -49,6 +50,7 @@ Ez a témakör azon fejlesztők számára lehet hasznos, akik többféle DRM-mel
 A cikkben leírt mintát [innen](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) töltheti le.
 
 ## <a name="configuring-dynamic-common-encryption-and-drm-license-delivery-services"></a>A Dynamic Common Encryption és DRM-licenctovábbítási szolgáltatások konfigurálása
+
 A következőkben általános lépéseket olvashat, amelyeket el kell végeznie ahhoz, hogy PlayReady-védelemmel lássa el objektumait a Media Services licenctovábbítási szolgáltatása, valamint a dinamikus titkosítás használata mellett.
 
 1. Hozzon létre egy objektumot, és töltse fel a fájlokat az objektumba.
@@ -56,13 +58,13 @@ A következőkben általános lépéseket olvashat, amelyeket el kell végeznie 
 3. Hozzon létre egy tartalomkulcsot, majd társítsa a kódolt objektumhoz. A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítási kulcsát.
 4. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Ahhoz, hogy az ügyfél megkaphassa a tartalomkulcsot, Önnek be kell állítania a tartalomkulcs-hitelesítési szabályzatot, amelynek az ügyfélnek meg kell felelnie.
 
-A tartalomkulcs-hitelesítési szabályzat létrehozásakor a következőket kell beállítania: továbbítási módszer (PlayReady vagy Widevine), korlátozások (nyitott vagy token), valamint azon információk, amelyek azt határozzák meg, hogy a rendszer hogyan továbbítja a kulcsot az ügyfélnek ([PlayReady-](media-services-playready-license-template-overview.md) vagy [Widevine-](media-services-widevine-license-template-overview.md)licencsablon).
+    A tartalomkulcs-hitelesítési szabályzat létrehozásakor a következőket kell beállítania: továbbítási módszer (PlayReady vagy Widevine), korlátozások (nyitott vagy token), valamint azon információk, amelyek azt határozzák meg, hogy a rendszer hogyan továbbítja a kulcsot az ügyfélnek ([PlayReady-](media-services-playready-license-template-overview.md) vagy [Widevine-](media-services-widevine-license-template-overview.md)licencsablon).
 
-1. Konfigurálja az objektum továbbítási szabályzatát. A továbbítási szabályzat konfigurációjához a következők tartoznak: továbbítási protokoll (lehet például MPEG DASH, HLS, HDS, Smooth Streaming vagy mindegyik), a dinamikus titkosítás típusa (lehet például Common Encryption) és a PlayReady- vagy Widevine-licenckérési URL-cím.
+5. Konfigurálja az objektum továbbítási szabályzatát. A továbbítási szabályzat konfigurációs lehetőségei között a következők találhatók: továbbítási protokoll (pl. MPEG DASH, HLS, Smooth Streaming vagy ezek mindegyike), a dinamikus titkosítás típusa (pl. Common Encryption), a PlayReady- vagy Widevine-licenckérési URL-cím.
 
-Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
+    Az adott objektum különböző protokolljaira akár eltérő szabályzatokat is alkalmazhat. Beállíthatja például, hogy a PlayReady-titkosítás csak a Smooth/DASH-re vonatkozzon, az AES Envelope pedig csak a HLS-re. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
 
-1. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím lekéréséhez.
+6. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím lekéréséhez.
 
 A témakör végén teljes .NET típusú példát talál.
 
@@ -101,7 +103,7 @@ További információk: [A tartalomkulcs hitelesítési szabályzatának létreh
 Konfigurálja az objektum továbbítási szabályzatát. Az objektumtovábbítási szabályzat konfigurálásához többek között az alábbiak tartoznak:
 
 * A DRM-licenckérési URL-cím.
-* Az objektumtovábbítási protokoll (például MPEG DASH, HLS, HDS, Smooth Streaming vagy mindegyik).
+* Az adategység-továbbítási protokoll (pl. MPEG DASH, HLS, Smooth Streaming vagy ezek mindegyike).
 * A dinamikus titkosítás típusa (ebben az esetben Common Encrpytion).
 
 További információk: [Objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
@@ -621,6 +623,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

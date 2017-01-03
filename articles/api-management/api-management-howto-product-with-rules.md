@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 
 ---
@@ -31,7 +31,7 @@ A [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#Lim
 Ebben a lépésben létrehoz egy Ingyenes próbaverzió terméket, amely nem igényel jóváhagyott előfizetést.
 
 > [!NOTE]
-> Ha már konfigurált egy terméket, és azt szeretné használni az oktatóanyaghoz, továbbléphet [A hívások sebességének korlátozása és a kvótaházirendek konfigurálása][A hívások sebességének korlátozása és a kvótaházirendek konfigurálása] című lépésre, és onnan már az Ingyenes próbaverzió termék helyett a saját termékével követheti az oktatóanyagot.
+> Ha már konfigurált egy terméket, és azt szeretné használni az oktatóanyaghoz, továbbléphet [A hívások sebességének korlátozása és a kvótaházirendek konfigurálása][Configure call rate limit and quota policies] című lépésre, és onnan már az Ingyenes próbaverzió termék helyett a saját termékével követheti az oktatóanyagot.
 > 
 > 
 
@@ -39,7 +39,7 @@ Első lépésként kattintson a **Közzétevő portál** elemre az API Managemen
 
 ![Közzétevő portál][api-management-management-console]
 
-> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [Az első API kezelése az Azure API Management szolgáltatásban][Az első API kezelése az Azure API Management szolgáltatásban] oktatóanyag [API Management szolgáltatáspéldány létrehozása][API Management szolgáltatáspéldány létrehozása] című szakaszát.
+> Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [Az első API kezelése az Azure API Management szolgáltatásban][Manage your first API in Azure API Management] oktatóanyag [API Management szolgáltatáspéldány létrehozása][Create an API Management service instance] című szakaszát.
 > 
 > 
 
@@ -67,7 +67,7 @@ Miután az összes értéket megadta, kattintson a **Mentés** gombra a termék 
 
 Alapértelmezés szerint a **Rendszergazdák** csoport tagjai látják az új termékeket. Hozzá fogjuk adni a **Fejlesztők** csoportot. Kattintson az **Ingyenes próbaverzió** lehetőségre, majd kattintson a **Láthatóság** lapra.
 
-> Az API Management szolgáltatásban csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A csoportok számára a termékek biztosítanak láthatóságot, a fejlesztők pedig megtekinthetik a csoportjuk számára látható termékeket és előfizethetnek rájuk. További információkért lásd: [Csoportok létrehozása és használata az Azure API Management szolgáltatásban][Csoportok létrehozása és használata az Azure API Management szolgáltatásban].
+> Az API Management szolgáltatásban csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A csoportok számára a termékek biztosítanak láthatóságot, a fejlesztők pedig megtekinthetik a csoportjuk számára látható termékeket és előfizethetnek rájuk. További információkért lásd: [Csoportok létrehozása és használata az Azure API Management szolgáltatásban][How to create and use groups in Azure API Management].
 > 
 > 
 
@@ -78,7 +78,7 @@ Jelölje be a **Fejlesztők** jelölőnégyzetet, majd kattintson a **Mentés** 
 ## <a name="add-api"> </a>API hozzáadása a termékhez
 Az oktatóanyag ezen lépésében hozzáadjuk az Echo API-t az új Ingyenes próbaverzió termékhez.
 
-> Minden API Management szolgáltatáspéldányhoz előre konfigurálva van egy kipróbálható Echo API, amely segít megismerni az API Management szolgáltatást. További információkért lásd: [Az első API kezelése az Azure API Management szolgáltatásban][Az első API kezelése az Azure API Management szolgáltatásban].
+> Minden API Management szolgáltatáspéldányhoz előre konfigurálva van egy kipróbálható Echo API, amely segít megismerni az API Management szolgáltatást. További információkért lásd: [Az első API kezelése az Azure API Management szolgáltatásban][Manage your first API in Azure API Management].
 > 
 > 
 
@@ -113,44 +113,58 @@ A két házirend, amelyet ebben az oktatóanyagban hozzáadunk, a [Hívások sz�
 
 Miután a kurzort odavitte az **inbound** házirend elemre, kattintson a **Hívások számának korlátozása előfizetésenként** melletti nyílra a házirendsablon beillesztéséhez.
 
-    <rate-limit calls="number" renewal-period="seconds">
-    <api name="name" calls="number">
-    <operation name="name" calls="number" />
-    </api>
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+<api name="name" calls="number">
+<operation name="name" calls="number" />
+</api>
+</rate-limit>
+```
 
 A **Hívások számának korlátozása előfizetésenként** házirendet a termék szintjén, valamint az API és az egyéni műveletnév szintjén is lehet használni. Ebben az oktatóanyagban csak termékszintű házirendeket használunk, ezért törölje az **api** és az **operation** elemeket a **rate-limit** elemből, hogy csak a külső **rate-limit** elem maradjon, az alábbi példában látható módon.
 
-    <rate-limit calls="number" renewal-period="seconds">
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+</rate-limit>
+```
 
 Az Ingyenes próbaverzió termékben a maximálisan engedélyezett hívások száma percenként 10, ezért írjon be **10**-et a **calls** attribútum értékéhez, és **60**-at a **renewal-period** attribútum értékéhez.
 
-    <rate-limit calls="10" renewal-period="60">
-    </rate-limit>
+```xml
+<rate-limit calls="10" renewal-period="60">
+</rate-limit>
+```
 
 A **Használati kvóta beállítása előfizetésenként** házirend konfigurálásához vigye a kurzort az újonnan hozzáadott **rate-limit** elem alá az **inbound** elemen belül, majd kattintson a **Használati kvóta beállítása előfizetésenként** házirend melletti nyílra.
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    <api name="name" calls="number" bandwidth="kilobytes">
-    <operation name="name" calls="number" bandwidth="kilobytes" />
-    </api>
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+<api name="name" calls="number" bandwidth="kilobytes">
+<operation name="name" calls="number" bandwidth="kilobytes" />
+</api>
+</quota>
+```
 
 Mivel ez a házirend is a termék szintjén működik, törölje az **api** és az **operation** névelemeket az alábbi példában látható módon.
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+</quota>
+```
 
 A kvóták alapulhatnak az időközönként indított hívások számán, a sávszélességen, vagy mindkettőn. Ebben az oktatóanyagban nem a sávszélesség alapján szabályozunk, ezért törölje a **bandwidth** attribútumot.
 
-    <quota calls="number" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" renewal-period="seconds">
+</quota>
+```
 
 Az Ingyenes próbaverzió termékben a kvóta 200 hívás hetente. Adja meg a **200**-at a **calls** attribútum értékeként, majd adja meg a **604800**-at a **renewal-period** attribútum értékeként.
 
-    <quota calls="200" renewal-period="604800">
-    </quota>
+```xml
+<quota calls="200" renewal-period="604800">
+</quota>
+```
 
 > A házirendidőközök másodpercekben vannak megadva. A heti időköz kiszámításához szorozza össze a napok számát (7) a nap óráinak számával (24), az óra perceinek számával (60) és a perc másodperceinek számával (60): 7 * 24 * 60 * 60 = 604800.
 > 
@@ -158,21 +172,23 @@ Az Ingyenes próbaverzió termékben a kvóta 200 hívás hetente. Adja meg a **
 
 A házirendnek a konfigurálás után meg kell egyeznie az alábbi példával.
 
-    <policies>
-        <inbound>
-            <rate-limit calls="10" renewal-period="60">
-            </rate-limit>
-            <quota calls="200" renewal-period="604800">
-            </quota>
-            <base />
-
-    </inbound>
-    <outbound>
-
+```xml
+<policies>
+    <inbound>
+        <rate-limit calls="10" renewal-period="60">
+        </rate-limit>
+        <quota calls="200" renewal-period="604800">
+        </quota>
         <base />
 
-        </outbound>
-    </policies>
+</inbound>
+<outbound>
+
+    <base />
+
+    </outbound>
+</policies>
+```
 
 Miután konfigurálta a kívánt házirendeket, kattintson a **Mentés** gombra.
 
@@ -286,30 +302,30 @@ Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a 
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[Műveletek hozzáadása API-khoz]: api-management-howto-add-operations.md
-[Termék hozzáadása és közzététele]: api-management-howto-add-products.md
-[Figyelés és elemzés]: ../api-management-monitoring.md
-[API-k hozzáadása termékekhez]: api-management-howto-add-products.md#add-apis
-[Termék közzététele]: api-management-howto-add-products.md#publish-product
-[Az első API kezelése az Azure API Management szolgáltatásban]: api-management-get-started.md
-[Csoportok létrehozása és használata az Azure API Management szolgáltatásban]: api-management-howto-create-groups.md
-[Termék előfizetőinek megtekintése]: api-management-howto-add-products.md#view-subscribers
-[Ismerkedés az Azure API Management szolgáltatással]: api-management-get-started.md
-[API Management szolgáltatáspéldány létrehozása]: api-management-get-started.md#create-service-instance
-[Következő lépések]: #next-steps
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: ../api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Manage your first API in Azure API Management]: api-management-get-started.md
+[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Next steps]: #next-steps
 
-[Termék létrehozása]: #create-product
-[A hívások sebességének korlátozása és a kvótaházirendek konfigurálása]: #policies
-[API hozzáadása a termékhez]: #add-api
-[A termék közzététele]: #publish-product
-[Előfizetés a termékre egy fejlesztői fiók nevében]: #subscribe-account
-[Művelet meghívása és a sebességkorlátozás tesztelése]: #test-rate-limit
+[Create a product]: #create-product
+[Configure call rate limit and quota policies]: #policies
+[Add an API to the product]: #add-api
+[Publish the product]: #publish-product
+[Subscribe a developer account to the product]: #subscribe-account
+[Call an operation and test the rate limit]: #test-rate-limit
 
-[A hívások sebességének korlátozása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
-[Használati kvóta beállítása]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

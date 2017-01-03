@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
+ms.sourcegitcommit: c9aa7cebab12eafe71476ee45ef578d3201e69e5
+ms.openlocfilehash: e7c38aa5a778d5e8a653e753e5794d7c7da31dc1
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
 ## <a name="introduction"></a>Bevezetés
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
 
-A jelen oktatóanyag bemutatja, hogyan használhatja a klasszikus Azure portált eseményközpont létrehozásához. Bemutatja azt is, hogyan gyűjtheti az üzeneteket az eseményközpontba egy C# nyelven írt konzolalkalmazással, és hogyan kérheti le azokat párhuzamosan a Java Event Processor Host tár használatával.
+A jelen oktatóanyag bemutatja, hogyan használhatja az Azure Portalt eseményközpont létrehozásához. Bemutatja azt is, hogyan gyűjtheti az üzeneteket az eseményközpontba egy C# nyelven írt konzolalkalmazással, és hogyan kérheti le azokat párhuzamosan a Java Event Processor Host tár használatával.
 
 Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
@@ -52,22 +52,22 @@ Készen áll arra, hogy futtassa az alkalmazásokat.
 ## <a name="next-steps"></a>Következő lépések
 Létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot, valamint adatokat fogad és küld, így továbbléphet a következő forgatókönyvekre:
 
-* Teljes [Event Hubsot használó mintaalkalmazás][Event Hubsot használó mintaalkalmazás].
-* [Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával][Horizontális felskálázási eseményfeldolgozás az Event Hubs használatával] – minta.
-* [Event Hubs – áttekintés][Event Hubs – áttekintés]
+* [Az Event Hubsot használó teljes mintaalkalmazás][sample application that uses Event Hubs].
+* Az [eseményfeldolgozás horizontális felskálázása az Event Hubs használatával][Scale out Event Processing with Event Hubs] – példa.
+* [Event Hubs – áttekintés][Event Hubs overview]
 
 <!-- Images. -->
 [21]: ./media/event-hubs-csharp-ephjava-getstarted/ephjava.png
 [22]: ./media/event-hubs-csharp-ephjava-getstarted/cs-send.png
 
 <!-- Links -->
-[klasszikus Azure portál]: https://manage.windowsazure.com/
-[Event Hubs – áttekintés]: event-hubs-overview.md
-[Az Event Hubsot használó mintaalkalmazás]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Eseményfeldolgozás horizontális felskálázása az Event Hubs használatával]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

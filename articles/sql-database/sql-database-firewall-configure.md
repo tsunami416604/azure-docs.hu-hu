@@ -18,8 +18,8 @@ ms.workload: data-management
 ms.date: 11/23/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: b5417e02f2c4e50c89afcfa007ccdd208775f374
+ms.sourcegitcommit: c9764e3a61ed22a2596da19dd92ef8eca395b82b
+ms.openlocfilehash: ae61359240e38e5d380fc65b5a77bf6c3e369091
 
 
 ---
@@ -37,7 +37,7 @@ A Microsoft Azure SQL Database egy relációs adatbázis-szolgáltatást nyújt 
 
 A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. Tűzfalszabályok kiszolgáló- és adatbázisszinten is létrehozhatók.
 
-* **Kiszolgálószintű tűzfalszabályok:** Ezek a szabályok hozzáférést biztosítanak az ügyfelek számára a teljes Azure SQL Serverhez, azaz az egyazon logikai kiszolgálón található összes adatbázishoz. Ezek a szabályok a **fő** adatbázisban vannak tárolva. A kiszolgálószintű tűzfalszabályok a portálon vagy Transact-SQL utasításokkal konfigurálhatók.
+* **Kiszolgálószintű tűzfalszabályok:** Ezek a szabályok hozzáférést biztosítanak az ügyfelek számára a teljes Azure SQL Serverhez, azaz az egyazon logikai kiszolgálón található összes adatbázishoz. Ezek a szabályok a **fő** adatbázisban vannak tárolva. A kiszolgálószintű tűzfalszabályok a portálon vagy Transact-SQL utasításokkal konfigurálhatók. Az Azure Portal vagy a PowerShell használatával csak az előfizetés tulajdonosa vagy az előfizetés közreműködői hozhatnak létre kiszolgálószintű tűzfalszabályokat. Ha kiszolgálószintű tűzfalszabályt kíván létrehozni a Transact-SQL használatával, akkor kiszolgálószintű fő bejelentkezőként vagy az Azure Active Directory rendszergazdájaként kell csatlakoznia az SQL Database-példányhoz (ez egyben azt is jelenti, hogy először kiszolgálószintű tűzfalszabályt kell létrehoznia egy Azure-szintű engedélyekkel rendelkező felhasználóval).
 * **Adatbázisszintű tűzfalszabályok:** Ezek a szabályok hozzáférést biztosítanak ügyfelek számára az Azure SQL Serveren belül található egyes adatbázisokhoz. Ezek a szabályok külön létrehozhatók minden adatbázishoz, és az egyes adatbázisokban vannak tárolva. (Létrehozhatók adatbázisszintű tűzfalszabályok a **fő** adatbázishoz is.) Ezek a szabályok akkor hasznosak, ha az egyazon logikai kiszolgálón található adatbázisok közül bizonyos (biztonságos) adatbázisokhoz való hozzáférést szeretné korlátozni. Az adatbázisszintű tűzfalszabályok kizárólag Transact-SQL utasításokkal konfigurálhatók.
 
 **Javaslat:** A Microsoft a biztonság és az adatbázis hordozhatóságának fokozása érdekében adatbázisszintű tűzfalszabályok használatát javasolja, amikor erre lehetőség van. Kiszolgálószintű tűzfalszabályokat használhat a rendszergazdákra vonatkozóan, vagy ha több, azonos hozzáférési követelményt támasztó adatbázissal rendelkezik, és nem szeretne időt tölteni az egyes adatbázisok egyenként való konfigurálásával.
@@ -150,6 +150,6 @@ Az adatbázisok megnyitásával kapcsolatban az [adatbázis-hozzáférés és a 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 
