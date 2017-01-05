@@ -168,6 +168,6 @@ A WordPress-webalkalmazások Azure platformon való fejlesztésével kapcsolatos
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO1-->
 
 

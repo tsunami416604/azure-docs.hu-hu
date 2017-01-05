@@ -177,6 +177,6 @@ Ha megoldásokat adott hozzá az OMS rendszerhez, megtekintheti őket az Operati
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO1-->
 
 
