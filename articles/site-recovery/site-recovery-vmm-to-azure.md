@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
-ms.openlocfilehash: 3727972c544bb8c2724e9f38953882a7f2251a60
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 8de917236d1dcbfdf0c1232380879a33d9425291
 
 
 ---
@@ -115,13 +115,13 @@ Szükség van egy Azure-hálózatra, amelyhez a feladatátvételt követően lé
 * A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
 * Az átadott Azure virtuális gépekhez használni kívánt erőforrásmodelltől függően az Azure-hálózatot is [Resource Manager üzemmódban](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) vagy [klasszikus üzemmódban](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) kell beállítani.
 * Javasoljuk, hogy a kezdés előtt hozza létre a hálózatot. Ha most kihagyja ezt a lépést, a Site Recovery üzembe helyezése közben kell majd elvégeznie.
-Vegye figyelembe, hogy a Site Recovery által használt Azure-hálózatok nem [mozgathatók](../resource-group-move-resources.md) az előfizetésen belül vagy eltérő előfizetések között.
+Vegye figyelembe, hogy a Site Recovery által használt Azure-hálózatok nem [mozgathatók](../azure-resource-manager/resource-group-move-resources.md) az előfizetésen belül vagy eltérő előfizetések között.
 
 ### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
 * Az Azure-ba replikált adatok tárolásához standard Azure-tárfiókra lesz szüksége. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 * Az átadott Azure virtuális gépekhez használni kívánt erőforrásmodelltől függően a fiókot is [Resource Manager üzemmódban](../storage/storage-create-storage-account.md) vagy [klasszikus üzemmódban](../storage/storage-create-storage-account-classic-portal.md) kell beállítani.
 * Javasoljuk, hogy még a kezdés előtt állítsa be a fiókot. Ha most kihagyja ezt a lépést, a Site Recovery üzembe helyezése közben kell majd elvégeznie.
-- Vegye figyelembe, hogy a Site Recovery által használt tárfiókok nem [mozgathatók](../resource-group-move-resources.md) az előfizetésen belül vagy eltérő előfizetések között.
+- Vegye figyelembe, hogy a Site Recovery által használt tárfiókok nem [mozgathatók](../azure-resource-manager/resource-group-move-resources.md) az előfizetésen belül vagy eltérő előfizetések között.
 
 ### <a name="prepare-the-vmm-server"></a>A VMM-kiszolgáló előkészítése
 * Ellenőrizze, hogy a VMM-kiszolgáló megfelel-e az [előfeltételeknek](#on-premises-prerequisites).
@@ -144,7 +144,7 @@ A Site Recovery leképezése során hálózatleképezést is be kell állítania
 
     ![Új tároló](./media/site-recovery-vmm-to-azure/new-vault3.png)
 3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válasszon egyet ezek közül.
-4. [Hozzon létre egy erőforráscsoportot](../resource-group-template-deploy-portal.md), vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A gépeket ebbe a régióba replikálja a rendszer. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
+4. [Hozzon létre egy erőforráscsoportot](../azure-resource-manager/resource-group-template-deploy-portal.md), vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A gépeket ebbe a régióba replikálja a rendszer. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
 5. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton** > **Tároló létrehozása** elemre.
 
     ![Új tároló](./media/site-recovery-vmm-to-azure/new-vault-settings.png)
@@ -509,6 +509,6 @@ Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

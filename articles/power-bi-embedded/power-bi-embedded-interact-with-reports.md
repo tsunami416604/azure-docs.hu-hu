@@ -16,8 +16,8 @@ ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: 28eddb52c33d9883219f146480b110574f728f89
 
 
 ---
@@ -26,18 +26,18 @@ A Power BI JavaScript API segítségével egyszerűen beágyazhatja a Power BI-j
 
 A Power BI-jelentések olyan iframe elemek használatával ágyazhatók be az alkalmazásokba, amelyek üzemeltetése az alkalmazások részeként történik. Az iframe elemek az alkalmazás és a jelentés közötti határként viselkednek, ahogyan az a következő képen is látható. 
 
-![A Power BI beágyazott iframe eleme JavaScript API nélkül](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-1.png)
+![A Power BI beágyazott iframe eleme JavaScript API nélkül](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-1.png)
 
 Az iframe elemek lényegesen leegyszerűsítik a beágyazási folyamatot, a JavaScript API nélkül azonban a jelentés és az alkalmazás nem képesek együttműködni. Az interaktivitás hiánya miatt úgy tűnhet, mintha a jelentés valójában nem lenne az alkalmazás része. Szükséges, hogy a jelentés és az alkalmazás képesek legyenek a kétirányú kommunikációra, ahogyan az a következő képen is látható.
 
-![A Power BI beágyazott iframe eleme JavaScript API-val](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-2.png)
+![A Power BI beágyazott iframe eleme JavaScript API-val](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-2.png)
 
 A Power BI JavaScript API segítségével olyan kód írható, amely biztonságosan áthalad az iframe-határolón. Ez teszi lehetővé az alkalmazás számára a műveletek programozott módon történő végrehajtását a jelentésekben, valamint olyan műveleti események figyelését, amelyeket a felhasználók a jelentésen belül létrehoznak.
 
 ## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Mire használható a Power BI JavaScript API?
 A JavaScript API segítségével jelentéseket kezelhet, a jelentések adott lapjaira navigálhat, szűrheti a jelentéseket, és kezelheti a beágyazási eseményeket is. Az alábbi ábrán az API szerkezete látható.
 
-![A Power BI JavaScript API-t bemutató ábra](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
+![A Power BI JavaScript API-t bemutató ábra](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-3.png)
 
 ### <a name="manage-reports"></a>Jelentések kezelése
 A JavaScript API-val az alábbi jelentés- és lapszintű viselkedések kezelhetők:
@@ -139,6 +139,6 @@ Az alábbi hivatkozásokra kattintva további információkhoz juthat a Power BI
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

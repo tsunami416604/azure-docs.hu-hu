@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 
 
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Bevezetés a magánsablonok használatába az Azure portálon
-Az [Azure Resource Manager](../resource-group-authoring-templates.md) sablonjai olyan deklaratív sablonok, amelyek az üzemelő példány definiálására használatosak. Meghatározhatja az adott megoldáshoz üzembe helyezendő erőforrásokat, valamint megadhatja azokat a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON-okból és kifejezésekből áll, amelyek segítségével kialakíthatja az üzemelő példány értékeit.
+Az [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) sablonjai olyan deklaratív sablonok, amelyek az üzemelő példány definiálására használatosak. Meghatározhatja az adott megoldáshoz üzembe helyezendő erőforrásokat, valamint megadhatja azokat a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON-okból és kifejezésekből áll, amelyek segítségével kialakíthatja az üzemelő példány értékeit.
 
 Az [Azure Portal](https://portal.azure.com) új **Sablonok** funkciója, valamint a **Microsoft.Gallery** erőforrás-szolgáltató az [Azure Piactér](https://azure.microsoft.com/marketplace/) bővítményeként használható, amelynek segítségével a felhasználók saját könyvtárukból származó magánsablonokat hozhatnak létre, kezelhetnek és helyezhetnek üzembe.
 
@@ -35,16 +35,16 @@ A következő javaslatok segítségével teljes mértékben kihasználhatja a **
 * A **sablonok** beágyazott erőforrások, amelyek egy Resource Manager-sablont, illetve további metaadatokat tartalmaznak. Hasonlóan viselkednek, mint a Piactér elemei. A legfontosabb különbség, hogy a Piactér elemei nyilvánosak, míg ezek a sablonok privát felhasználásra szolgálnak.
 * A **Sablonok** könyvtár hasznos segítséget nyújt a felhasználóknak üzemelő példányaik testre szabásában.
 * A **sablonok** egyszerű Azure-beli tárházat biztosítanak a felhasználóknak.
-* Kezdje egy meglévő Resource Manager-sablonnal. Keresse meg a kívánt sablont a [GitHubon](https://github.com/Azure/azure-quickstart-templates), vagy [exportálja a sablont](../resource-manager-export-template.md) egy meglévő erőforráscsoportból.
+* Kezdje egy meglévő Resource Manager-sablonnal. Keresse meg a kívánt sablont a [GitHubon](https://github.com/Azure/azure-quickstart-templates), vagy [exportálja a sablont](../azure-resource-manager/resource-manager-export-template.md) egy meglévő erőforráscsoportból.
 * A **sablonok** ahhoz a felhasználóhoz kötődnek, aki közzéteszi őket. Az olvasási hozzáféréssel rendelkezők szabadon megtekinthetik a közzétevő nevét.
 * A **sablonok** a Resource Managerhez tartozó erőforrások, amelyeket közzététel után nem lehet átnevezni.
 
 ## <a name="add-a-template-resource"></a>Sablonerőforrás hozzáadása
 Az Azure Portalon két módszer áll rendelkezésre **sablonerőforrás** létrehozására.
 
-### <a name="method-1-create-a-new-template-resource-from-a-running-resource-group"></a>1. módszer: Új sablonerőforrás létrehozása már futó erőforráscsoportból
+### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>1. módszer: Új sablonerőforrás létrehozása már futó erőforráscsoportból
 1. Nyisson meg egy meglévő erőforráscsoportot az Azure portálon. A **Beállítások** menüben válassza a **Sablon exportálása** lehetőséget.
-2. A Resource Manager-sablon exportálását követően használja a **Sablon mentése** gombot az exportált elemnek a **Sablonok** tárházba mentéséhez. A Sablon exportálása funkcióról részletes leírást [itt](../resource-manager-export-template.md) talál.
+2. A Resource Manager-sablon exportálását követően használja a **Sablon mentése** gombot az exportált elemnek a **Sablonok** tárházba mentéséhez. A Sablon exportálása funkcióról részletes leírást [itt](../azure-resource-manager/resource-manager-export-template.md) talál.
    <br /><br />
    ![Erőforráscsoport exportálása](media/rg-export-portal1.PNG)  <br />
 3. Kattintson a **Save to Template** (Mentés sablonba) parancsgombra.
@@ -62,7 +62,7 @@ Az Azure Portalon két módszer áll rendelkezésre **sablonerőforrás** létre
    > 
    > 
 
-### <a name="b-method-2-add-a-new-template-resource-from-browse"></a>B. 2. módszer: Új sablonerőforrás hozzáadása tallózással
+### <a name="method-2--add-a-new-template-resource-from-browse"></a>2. módszer: Új sablonerőforrás hozzáadása tallózással
 Beállításokat még nem tartalmazó **sablont** is hozzáadhat. Ehhez kattintson a **Tallózás > Sablonok** menüpontban elérhető +Hozzáadás parancsgombra. Meg kell adnia a nevet, a leírást és a Resource Manager-sablon JSON-ját.
 
 ![Sablon hozzáadása](media/add-template-portal1.PNG)  <br />
@@ -129,13 +129,13 @@ Kattintson a **Kijelölés**, majd az **OK** gombra. A megjelenő képernyőn l�
 > 
 
 ## <a name="next-steps"></a>Következő lépések
-* A Resource Manager-sablonok létrehozásával kapcsolatos további információk: [Authoring templates](../resource-group-authoring-templates.md) (Sablonok készítése)
-* A Resource Manager-sablonokban használható függvények ismertetése: [Template functions](../resource-group-template-functions.md) (Sablonfüggvények)
-* A sablonok kialakításával kapcsolatos útmutatásért lásd: [Best practices for designing Azure Resource Manager templates](../best-practices-resource-manager-design-templates.md) (Azure Resource Manager-sablonok tervezésének ajánlott eljárásai)
+* A Resource Manager-sablonok létrehozásával kapcsolatos további információk: [Authoring templates](../azure-resource-manager/resource-group-authoring-templates.md) (Sablonok készítése)
+* A Resource Manager-sablonokban használható függvények ismertetése: [Template functions](../azure-resource-manager/resource-group-template-functions.md) (Sablonfüggvények)
+* A sablonok kialakításával kapcsolatos útmutatásért lásd: [Best practices for designing Azure Resource Manager templates](../azure-resource-manager/best-practices-resource-manager-design-templates.md) (Azure Resource Manager-sablonok tervezésének ajánlott eljárásai)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -30,7 +30,7 @@
 ### [Webhook beállítása a tevékenységnapló egy riasztásához](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [A tevékenységnapló archiválása](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
 ### [A tevékenységnapló streamelése az Event Hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-### [Auditálási műveletek a Resource Managerben](../resource-group-audit.md)
+### [Auditálási műveletek a Resource Managerben](../azure-resource-manager/resource-group-audit.md)
 ## Diagnosztikai naplók kezelése
 ### [Archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [Streamelés az Event Hubs felé](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
@@ -40,12 +40,15 @@
 
 
 # Referencia
-## [PowerShell](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
-## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-## [REST API](https://msdn.microsoft.com/library/azure/dn931943)
+## [REST](/rest/api/monitor/)
 
-<!--HONumber=Nov16_HO4-->
+# Erőforrások
+## [PowerShell-minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
+## [Azure CLI 2.0 (előzetes verzió) mintái](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
+
+<!--HONumber=Jan17_HO1-->
 
 

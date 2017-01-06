@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/15/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 3ed7c49603891b9719819143003d27888f800a95
-ms.openlocfilehash: 21a7feb9eb2588643ffc67408de9f8e60aff7798
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 4a2cd02f6f9b6ac51c32314ce892e572e569eb7c
 
 
 ---
@@ -34,7 +34,7 @@ A virtuálisgép-méretezési csoportokkal kapcsolatban további információkat
 ## <a name="creating-and-managing-vm-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása és felügyelete
 Ha virtuálisgép-méretezési csoportokat szeretne létrehozni az [Azure Portálon](https://portal.azure.com), válassza az *új* lehetőséget, majd írja be a keresőmezőbe a „méretezés” szót. Az eredmények között megjelenik a „Virtuálisgép-méretezési csoport” kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. 
 
-A virtuálisgép-méretezési csoportok megadását és üzembe helyezését – az egyedi Azure Resource Manager-alapú virtuális gépekhez hasonlóan – JSON-sablonok és [REST API-k](https://msdn.microsoft.com/library/mt589023.aspx) segítségével is elvégezheti. Ezért lehetőség van bármilyen szabványos Azure Resource Manager-alapú üzembe helyezési módszer használatára. A sablonokról további információkat az [Authoring Azure Resource Manager templates](../resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című témakörben talál.
+A virtuálisgép-méretezési csoportok megadását és üzembe helyezését – az egyedi Azure Resource Manager-alapú virtuális gépekhez hasonlóan – JSON-sablonok és [REST API-k](https://msdn.microsoft.com/library/mt589023.aspx) segítségével is elvégezheti. Ezért lehetőség van bármilyen szabványos Azure Resource Manager-alapú üzembe helyezési módszer használatára. A sablonokról további információkat az [Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
 A virtuálisgép-méretezési csoportokhoz tartozó példasablonkészlet az Azure-gyorssablonok GitHub-adattárában található [itt.](https://github.com/Azure/azure-quickstart-templates) (olyan sablonokat keressen, amelyek címében szerepel a *vmss* szó).
 
@@ -148,6 +148,6 @@ Ez a szakasz a virtuálisgép-méretezési csoportok használatának néhány ti
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -43,33 +43,25 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
-
-
 # Útmutató
-
 ## [Tárfiók létrehozása](storage-create-storage-account.md)
-
 ## Blobok használata
 ### [Szolgáltatás áttekintése](https://msdn.microsoft.com/library/dd179376.aspx)
 ### [Gyakran és ritkán használt adatok rétege](storage-blob-storage-tiers.md)
 ### [Egyéni tartományok](storage-custom-domain-name.md)
 ### [Névtelen hozzáférés a blobokhoz](storage-manage-access-to-resources.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
-
 ## Üzenetsorok használata
 ### [Alapelvek](https://msdn.microsoft.com/library/dd179353.aspx)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
-
 ## Táblák használata
 ### [Áttekintés](https://msdn.microsoft.com/library/dd179463.aspx)
 ### [Útmutató a táblatervezéshez](storage-table-design-guide.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
-
 ## Fájlok használata
 ### [Áttekintés](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
 ### [Azure-fájlok hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-
 ## Virtuális gépek lemezeinek használata
 ### Prémium szintű Storage
 #### [Nagy teljesítményű Storage szolgáltatás virtuális gépek számítási feladataihoz](storage-premium-storage.md)
@@ -77,24 +69,20 @@
 #### [Nagy teljesítményű rendszer tervezése](storage-premium-storage-performance.md)
 ### Standard szintű Storage
 #### [Virtuálisgép-lemezek biztonsági mentése növekményes pillanatképekkel](storage-incremental-snapshots.md)
-
 ## Tervezés és kialakítás
 ### [Replikáció](storage-redundancy.md)
 ### [Méretezhetőségi és teljesítménycélok](storage-scalability-targets.md)
 ### [Teljesítmény és méretezhetőség – ellenőrzőlista](storage-performance-checklist.md)
 ### [Párhuzamosság](storage-concurrency.md)
-
 ## Fejlesztés
 ### [Példák](storage-samples.md)
 ### [Kapcsolati karakterláncok konfigurálása](storage-configure-connection-string.md)
 ### [A Storage Emulator használata](storage-use-emulator.md)
 ### [Tulajdonságok és metaadatok beállítása és lekérése](storage-properties-metadata.md)
-
 ## Kezelés
 ### [PowerShell](storage-powershell-guide-full.md)
 ### [Azure CLI](storage-azure-cli.md)
 ### [Azure Automation](automation-manage-storage.md)
-
 ## Biztonságos
 ### [Biztonsági útmutató](storage-security-guide.md)
 ### [Inaktív adatok titkosítása](storage-service-encryption.md)
@@ -105,7 +93,6 @@
 #### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
-
 ## Figyelés és hibaelhárítás
 ### Metrikák és naplózás
 #### [Storage Analytics](storage-analytics.md)
@@ -117,29 +104,64 @@
 #### [Egy klasszikus üzemelő példányon](storage-cannot-delete-storage-account-container-vhd.md)
 ### [A File Storage hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ### [Vész-helyreállítási útmutató](storage-disaster-recovery-guidance.md)
-
 ## Adatátvitel
 ### [Adatok áthelyezése a Storage-ba és a Storage-ból](storage-moving-data.md)
 ### [AzCopy parancssori segédprogram](storage-use-azcopy.md)
-### [A Blob Storage importálási/exportálási szolgáltatása](storage-import-export-service.md)
-
-
-
+### [Az Import-Export szolgáltatás használata](storage-import-export-service.md)
+### [Az Import-Export eszköz használata](storage-import-export-tool-how-to.md)
+#### [Az Import-Export eszköz telepítése](storage-import-export-tool-setup.md)
+#### [Merevlemezek előkészítése importálási feladatokhoz](storage-import-export-tool-preparing-hard-drives-import.md)
+##### [Tulajdonságok és metaadatok beállítása az importálási folyamat során](storage-import-export-tool-setting-properties-metadata-import.md)
+##### [Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+##### [Az importálási feladatokhoz használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference.md)
+#### [Lemezhasználat előnézete exportálási feladatokhoz](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [Exportálási feladat javítása](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [Az Import-Export eszköz hibaelhárítása](storage-import-export-tool-troubleshooting-v1.md)
+#### [Az Import-Export szolgáltatás jegyzékfájljainak formátuma](storage-import-export-file-format-manifest.md)
+#### [Az Import-Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma](storage-import-export-file-format-metadata-and-properties.md)
+#### [Az Import-Export szolgáltatás naplófájljainak formátuma](storage-import-export-file-format-log.md)
+### [Az Import-Export eszköz (v1) használata](storage-import-export-tool-how-to-v1.md)
+#### [Az Import-Export eszköz telepítése](storage-import-export-tool-setup-v1.md)
+#### [Merevlemezek előkészítése importálási feladatokhoz](storage-import-export-tool-preparing-hard-drives-import-v1.md)
+##### [Tulajdonságok és metaadatok beállítása az importálási folyamat során](storage-import-export-tool-setting-properties-metadata-import-v1.md)
+##### [Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+##### [Az importálási feladatokhoz használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference-v1.md)
+#### [Lemezhasználat előnézete exportálási feladatokhoz](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [Exportálási feladat javítása](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [Az Import-Export eszköz hibaelhárítása](storage-import-export-tool-troubleshooting-v1.md)
+#### [Az Import-Export szolgáltatás jegyzékfájljainak formátuma](storage-import-export-file-format-manifest.md)
+#### [Az Import-Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma](storage-import-export-file-format-metadata-and-properties.md)
+#### [Az Import-Export szolgáltatás naplófájljainak formátuma](storage-import-export-file-format-log.md)
+### [Az Azure Import-Export szolgáltatás REST API-jának használata](storage-import-export-using-the-rest-api.md)
+#### [Importálási feladat létrehozása](storage-import-export-creating-an-import-job.md)
+#### [Exportálási feladat létrehozása](storage-import-export-creating-an-export-job.md)
+#### [Feladat állapotinformációinak lekérése](storage-import-export-retrieving-state-info-for-a-job.md)
+#### [Feladatok számbavétele](storage-import-export-enumerating-jobs.md)
+#### [Feladatok megszakítása és törlése](storage-import-export-cancelling-and-deleting-jobs.md)
+#### [Meghajtójegyzékek biztonsági mentése](storage-import-export-backing-up-drive-manifests.md)
+#### [Import-Export-feladatok diagnosztizálása és hibajavítása](storage-import-export-diagnostics-and-error-recovery.md)
 # Referencia
-## [PowerShell](/powershell/storage/)
+## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
-## [Java](/java/api/)
-
 ## .NET
-### [Blob, üzenetsor, tábla és fájl](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-### [Erőforrás-szolgáltató](/dotnet/api/)
-### [Adatáthelyezés](/dotnet/api/)
-
+### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
+### [Adatáthelyezés](https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx)
+### [Blobok, üzenetsorok, táblák és fájlok](https://msdn.microsoft.com/library/azure/mt347887.aspx)
+## [Java](/java/api/)
+## [Node.js](http://azure.github.io/azure-storage-node)
+## [Ruby](http://azure.github.io/azure-storage-ruby)
+## [Python](https://azure-storage.readthedocs.io/en/latest/index.html)
+## [C++](http://azure.github.io/azure-storage-cpp)
+## [iOS](https://github.com/Azure/azure-storage-ios)
+## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blob, üzenetsor, tábla és fájl](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
-### [Erőforrás-szolgáltató](/rest/api/storagerp/)
-### [Importálás és exportálás](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
-
+### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
+### [Erőforrás-szolgáltató](/rest/api/storagerp)
+### [Importálás és exportálás](/rest/api/storageimportexport)
 
 # Kapcsolódó
 ## Klasszikus portál
@@ -147,8 +169,6 @@
 ### [Metrikák engedélyezése és megtekintése](storage-enable-and-view-metrics-classic-portal.md)
 ### [Figyelés, diagnosztika és hibaelhárítás](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
 ### [Oktatóanyag a hibaelhárításhoz](storage-e2e-troubleshooting-classic-portal.md)
-
-
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/)
@@ -159,8 +179,8 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storage)
 
 ## Azure Storage Explorer
-### [Tártallózó (előzetes verzió)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-### [Blobok kezelése a Tártallózóval (előzetes verzió)](../vs-azure-tools-storage-explorer-blobs.md)
+### [Storage Explorer (előzetes verzió)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+### [Blobok kezelése a Storage Explorerrel (előzetes verzió)](../vs-azure-tools-storage-explorer-blobs.md)
 
 ## NuGet-csomagok
 ### [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
@@ -181,6 +201,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -1,19 +1,19 @@
 # Áttekintés
 ## [Mi a kétlépéses ellenőrzés?](multi-factor-authentication-end-user.md)
-## [Milyen hatása van rám nézve?](../multi-factor-authentication-end-user-signin.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [Milyen hatása van rám nézve?](multi-factor-authentication-end-user-signin.md)
 
 # Bevezetés
-## [A fiók beállítása](../multi-factor-authentication-end-user-first-time.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [A fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 
 # Útmutató
-## [Beállítások kezelése](../multi-factor-authentication-end-user-manage-settings.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-## [Hibaelhárítás](../multi-factor-authentication-end-user-troubleshoot.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-## [Alkalmazásjelszavak beállítása](../multi-factor-authentication-end-user-app-passwords.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [Beállítások kezelése](multi-factor-authentication-end-user-manage-settings.md)
+## [Hibaelhárítás](multi-factor-authentication-end-user-troubleshoot.md)
+## [Alkalmazásjelszavak beállítása](multi-factor-authentication-end-user-app-passwords.md)
 ## A Microsoft Authenticator használata
-### [Első lépések](../multi-factor-authentication-microsoft-authenticator.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-### [Gyakori kérdések](../multi-factor-authentication-app-faq.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+### [Első lépések](microsoft-authenticator-app-how-to.md)
+### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 
