@@ -5,6 +5,6 @@ A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálóz
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

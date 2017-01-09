@@ -1,67 +1,82 @@
 ---
-title: SQL Database Develop Overview | Microsoft Docs
-description: Learn about available connectivity libraries and best practices for applications connecting to SQL Database.
+title: "Az Azure SQL Database-alapú alkalmazásfejlesztés áttekintése | Microsoft Docs"
+description: "Megismerheti az SQL Database-hez elérhető adatkapcsolattárakat és ajánlott eljárásokat az alkalmazások csatlakoztatásához."
 services: sql-database
-documentationcenter: ''
-author: annemill
+documentationcenter: 
+author: stevestein
 manager: jhubbard
 editor: genemi
-
+ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
 ms.service: sql-database
+ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/17/2016
-ms.author: annemill
+ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
+
 
 ---
-# SQL Database Development Overview
-This article walks through the basic considerations that a developer should be aware of when writing code to connect to Azure SQL Database.
+# <a name="sql-database-application-development-overview"></a>SQL Database-alapú alkalmazásfejlesztés – áttekintés
+Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor.
 
-## Language and platform
-There are code samples available for various programming languages and platforms. You can find links to the code samples at: 
+> [!TIP]
+> A kiszolgálók és a kiszolgálóalapú tűzfalak létrehozásáról, a kiszolgáló tulajdonságainak megtekintéséről, az SQL Server Management Studióval való csatlakozásról, a master adatbázis lekérdezéséről, a mintaadatbázis, illetve üres adatbázis létrehozásáról, az adatbázis tulajdonságainak lekérdezéséről, valamint az SQL Server Management Studióval való kapcsolódásról és a mintaadatbázis lekérdezéséről szóló oktatóanyagok az [Első lépéseket ismertető oktatóanyagban](sql-database-get-started.md) találhatók.
+>
 
-* More Information: [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md)
+## <a name="language-and-platform"></a>Nyelv és platform
+Különböző programozási nyelvekhez és platformokhoz érhetők el kódminták. A kódmintákra mutató hivatkozások a következő helyen találhatók: 
 
-## Resource limitations
-Azure SQL Database manages the resources available to a database using two different mechanisms: Resources Governance and Enforcement of Limits.
+* További információ: [Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez](sql-database-libraries.md)
 
-* More Information: [Azure SQL Database resource limits](sql-database-resource-limits.md)
+## <a name="resource-limitations"></a>Erőforrás-korlátozások
+Az Azure SQL Database két különböző mechanizmussal kezeli az adatbázis számára elérhető erőforrásokat: erőforrás-szabályozással és a korlátozások kényszerítésével.
 
-## Security
-Azure SQL Database provides resources for limiting access, protecting data, and monitoring activities on a SQL Database.
+* További információ: [Azure SQL Database erőforrás-korlátozások](sql-database-resource-limits.md)
 
-* More Information: [Securing your SQL Database](sql-database-security.md)
+## <a name="security"></a>Biztonság
+Az Azure SQL Database erőforrásokat biztosít a hozzáférés korlátozásához, az adatok védelméhez és a tevékenységek monitorozásához az SQL Database-adatbázisokban.
 
-## Authentication
-* Azure SQL Database supports both SQL Server authentication users and logins, as well as [Azure Active Directory authentication](sql-database-aad-authentication.md) users and logins.
-* You need to specify a particular database, instead of defaulting to the *master* database.
-* You cannot use the Transact-SQL **USE myDatabaseName;** statement on SQL Database to switch to another database.
-* More information: [SQL Database security: Manage database access and login security](sql-database-manage-logins.md)
+* Bővebb információ: [Az SQL Database-adatbázis védelme](sql-database-security-overview.md)
 
-## Resiliency
-When a transient error occurs while connecting to SQL Database, your code should retry the call.  We recommend that retry logic use backoff logic, so that it does not overwhelm the SQL Database with multiple clients retrying simultaneously.
+## <a name="authentication"></a>Authentication
+* Az Azure SQL Database az SQL Server-alapú és az [Azure Active Directory-alapú](sql-database-aad-authentication.md) hitelesítést használó felhasználókat és bejelentkezéseket is támogatja.
+* Meg kell adnia egy konkrét adatbázist az alapértelmezett *master* adatbázis használata helyett.
+* Az SQL Database-ben a **USE myDatabaseName;** Transact-SQL utasítással nem válthat másik adatbázisra.
+* További információ: [Az SQL Database biztonsága: adatbázis-hozzáférés és a bejelentkezési biztonság felügyelete](sql-database-manage-logins.md)
 
-* Code samples:  For code samples that illustrate retry logic, see samples for the language of your choice at: [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md)
-* More information: [Error messages for SQL Database client programs](sql-database-develop-error-messages.md)
+## <a name="resiliency"></a>Resiliency
+Ha átmeneti hiba történik az SQL Database-hez való kapcsolódáskor, akkor a kódnak újra kell próbálkoznia a hívással.  Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t.
 
-## Managing Connections
-* In your client connection logic, override the default timeout to be 30 seconds.  The default of 15 seconds is too short for connections that depend on the internet.
-* If you are using a [connection pool](http://msdn.microsoft.com/library/8xx3tyca.aspx), be sure to close the connection the instant your program is not actively using it, and is not preparing to reuse it.
+* Kódminták: Az újrapróbálkozási logikát szemléltető kódmintákért tekintse meg a kívánt nyelv mintáit a következő cikkben: [Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez](sql-database-libraries.md)
+* További információ: [Az SQL Database-ügyfélprogramok hibaüzenetei](sql-database-develop-error-messages.md)
 
-## Network Considerations
-* On the computer that hosts your client program, ensure the firewall allows outgoing TCP communication on port 1433.  More information: [Configure an Azure SQL Database firewall](sql-database-configure-firewall-settings.md)
-* If your client program connects to SQL Database V12 while your client runs on an Azure virtual machine (VM), you must open certain port ranges on the VM. More information: [Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)
-* Client connections to Azure SQL Database V12 sometimes bypass the proxy and interact directly with the database. Ports other than 1433 become important. More information:  [Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)
+## <a name="managing-connections"></a>Kapcsolatok kezelése
+* Az ügyfél csatlakozási logikájában írja felül az alapértelmezett időtúllépési értéket 30 másodpercre.  A 15 másodperces időtúllépési érték túl rövid az internetkapcsolattól függő kapcsolatok számára.
+* Ha [kapcsolatkészletet](http://msdn.microsoft.com/library/8xx3tyca.aspx) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
 
-## Data Sharding with Elastic Scale
-Elastic Scale simplifies the process of scaling out (and in). 
+## <a name="network-considerations"></a>Hálózati megfontolások
+* Győződjön meg róla, hogy az ügyfélprogramot futtató számítógép tűzfala engedélyezi a kimenő TCP-kommunikációt az 1433-as porton.  További információk: [Az Azure SQL Database tűzfalának konfigurálása](sql-database-configure-firewall-settings.md)
+* Ha Azure-beli virtuális gépen futtatott ügyfélprogram kapcsolódik az SQL Database 12-es verziójához, akkor meg kell nyitnia bizonyos portokat a virtuális gépen. További információ: [Az ADO.NET 4.5 és az SQL Database 12-es verziójának 1433-ason túli portjai](sql-database-develop-direct-route-ports-adonet-v12.md)
+* Az Azure SQL Database 12-es verziójának ügyfélkapcsolatai időnként közvetlenül az adatbázissal lépnek kapcsolatba, és kihagyják a proxyt. Ekkor válnak fontossá az 1433-astól különböző portok. További információ: [Az ADO.NET 4.5 és az SQL Database 12-es verziójának 1433-ason túli portjai](sql-database-develop-direct-route-ports-adonet-v12.md)
 
-* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* [Data dependent routing](sql-database-elastic-scale-data-dependent-routing.md)
-* [Get Started with Azure SQL Database Elastic Scale Preview](sql-database-elastic-scale-get-started.md)
+## <a name="data-sharding-with-elastic-scale"></a>Adatok horizontális skálázása rugalmas méretezéssel
+A rugalmas méretezéssel leegyszerűsíthető horizontális felskálázás (és leskálázás) folyamata. 
 
-## Next steps
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+* [Tervezési minták az Azure SQL Database-t használó több-bérlős SaaS-alkalmazásokhoz](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md)
+* [Ismerkedés az Azure SQL Database rugalmas méretezési funkciójának előzetes verziójával](sql-database-elastic-scale-get-started.md)
+
+## <a name="next-steps"></a>Következő lépések
+Fedezze fel az [SQL Database összes képességét](https://azure.microsoft.com/services/sql-database/).
+
+
+
+
+<!--HONumber=Dec16_HO4-->
+
 

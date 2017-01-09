@@ -14,6 +14,6 @@ Ha létrehozta a végpontot, a részletek között megnézheti a nyilvános virt
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

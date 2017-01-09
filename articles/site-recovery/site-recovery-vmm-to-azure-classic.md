@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: cab275a71c7ae1048dd6bc315ed1114e0cf81e8b
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 28c41f08bf8eaf7e6679040bb8fbab2e134d08fb
 
 
 ---
@@ -184,7 +184,7 @@ A paraméterek a következőt jelentik:
     ![Tárfiók](./media/site-recovery-vmm-to-azure-classic/storage.png)
 
 > [!NOTE]
-> A Site Recovery üzembe helyezéséhez használt tárfiókok esetében a [Migration of storage accounts](../resource-group-move-resources.md) (Tárfiókok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
+> A Site Recovery üzembe helyezéséhez használt tárfiókok esetében a [Migration of storage accounts](../azure-resource-manager/resource-group-move-resources.md) (Tárfiókok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
 >
 >
 
@@ -246,7 +246,7 @@ A beállítások mentését követően elindul egy feladat, amely a leképezési
 Ne feledje, hogy ha a célhálózatban már több alhálózat működik, és ezek egyikének ugyanaz a neve, mint annak, amelyen a forrás virtuális gép is található, a replika virtuális gép a feladatátvételt követően ehhez a cél alhálózathoz fog csatlakozni. Ha nem létezik egyező nevű alhálózat, a virtuális gép a hálózat első virtuális gépéhez csatlakozik.
 
 > [!NOTE]
-> A Site Recovery üzembe helyezéséhez használt hálózatok esetében a [Migration of networks](../resource-group-move-resources.md) (Hálózatok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
+> A Site Recovery üzembe helyezéséhez használt hálózatok esetében a [Migration of networks](../azure-resource-manager/resource-group-move-resources.md) (Hálózatok áttelepítése) művelet az egy előfizetésen belüli erőforráscsoportok között vagy előfizetések között nem támogatott.
 >
 >
 
@@ -345,13 +345,12 @@ A feladatátvételi teszt futtatásához tegye a következőket:
    * Kattintson **A feladatátvételi teszt befejeződött** elemre. Számolja fel a tesztkörnyezetet. lehetőségre a teszteléshez használt virtuális gép automatikus kikapcsolásához és törléséhez.
    * A feladatátvételi teszttel kapcsolatos megfigyelések feljegyzéséhez és mentéséhez kattintson a **Jegyzetek** elemre.
 
->
 
 ## <a name="next-steps"></a>Következő lépések
 Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-create-recovery-plans.md) és a [feladatátvételről](site-recovery-failover.md).
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

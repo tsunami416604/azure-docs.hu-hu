@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 2863bfb48d0fed706fbd3c3f14dfb6a8d77eb9ea
 
 
 ---
-# <a name="hadoop-tutorial-get-started-using-linuxbased-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
+# <a name="hadoop-tutorial-get-started-using-linux-based-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
 > [!div class="op_single_selector"]
 > * [Linux-alapú](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [Windows-alapú](hdinsight-hadoop-tutorial-get-started-windows.md)
 > 
 > 
 
-Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. Jelenleg a HDInsight 4 különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md) és [Storm](hdinsight-storm-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a 4 fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
+Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. A HDInsight jelenleg hat különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md), [Storm](hdinsight-storm-overview.md), [Interaktív Hive (előzetes verzió)](hdinsight-hadoop-use-interactive-hive.md) és [R Server](hdinsight-hadoop-r-server-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a hat fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -41,36 +41,48 @@ Az oktatóanyag elindításának feltétele:
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-cluster"></a>Fürt létrehozása
-A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a szakaszban egy Linux-alapú Hadoop-fürtöt fog létrehozni a HDInsightban az [Azure Resource Manager-sablon](../resource-group-template-deploy.md) segítségével. A Resource Manager-sablon teljes mértékben testreszabható, így könnyen létrehozhatók vele olyan Azure-erőforrások, mint például a HDInsight. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. A jelen oktatóanyagban használt Resource Manager-sablon a nyilvános blobtárolóban található: [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json). 
 
-1. Az alábbi képre kattintva beléphet az Azure szolgáltatásba, és megnyithatja a Resource Manager-sablont az Azure Portalon. 
+A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a szakaszban egy Linux-alapú Hadoop-fürtöt fog létrehozni a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A Resource Manager-sablon teljes mértékben testreszabható, így könnyen létrehozhatók vele olyan Azure-erőforrások, mint például a HDInsight. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. Az oldal tetején található választóval adja meg a fürtlétrehozási beállításokat.
+
+Az oktatóanyagban használt Resource Manager-sablon a [Githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) található. 
+
+1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. A **Parameters** (Paraméterek) panelen adja meg a következőket:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+2. Adja meg vagy válassza ki a következő értékeket:
    
     ![HDInsight Linux első lépések – Resource Manager-sablon a portálon](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png).
    
-   * **ClusterName**: Adjon nevet a létrehozandó Hadoop-fürtnek.
-   * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
-   * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni. 
+    * **Előfizetés**: Válassza ki az Azure-előfizetést.
+    * **Erőforráscsoport**: Hozzon létre új erőforráscsoportot, vagy válasszon ki egy meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. 
+    * **Hely**: Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. 
+    * **Fürt típusa**: Válassza a **hadoop** lehetőséget ehhez az oktatóanyaghoz.
+    * **Fürt neve**: Adjon nevet a létrehozandó Hadoop-fürtnek.
+    * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
+    * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni. 
      
-     Más paramétereket az oktatóanyag folytatásához nem kötelező megadni. Hagyhatja őket úgy, ahogy vannak. 
-     
+    Egyes tulajdonságok szoftveresen kötöttek a sablonban.  Ezeket az értéteket a sablonból konfigurálhatja.
+
+    * **Hely**: A fürt és a függő tárfiók helye megegyezik az erőforráscsoport helyével.
+    * **Fürt verziója**: 3.4
+    * **Operációs rendszer típusa**: Linux
+    * **Munkavégző csomópontok száma**: 2
+
      Minden egyes fürt az Azure Blob Storage-fióktól függ. Általában ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett tárfióknak ugyanabban az Azure-régióban kell lennie. A fürtök törlésével a tárfiók nem törlődik. A sablonban az alapértelmezett tárfiók neveként a fürt neve van megadva a „store” kifejezéssel kiegészítve. 
-3. Kattintson az **OK** gombra a paraméterek mentéséhez.
-4. A **Custom deployment** (Egyéni üzembe helyezés) panelen az **Új erőforráscsoport neve** megadásával hozzon létre egy új erőforráscsoportot.  Az erőforráscsoport egy olyan tároló, amely csoportosítja a fürtöt, a függő tárfiókot és egyéb elemeket. Az erőforráscsoport helye eltérhet a fürt helyétől.
-5. Kattintson a **Legal terms** (Jogi feltételek), majd a **Create** (Létrehozás) gombra.
-6. Ellenőrizze, hogy a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzet be van-e jelölve, majd kattintson a **Create** (Létrehozás) gombra. Egy új csempe jelenik meg **Deploying Template deployment** (Üzembe helyezés – Sablon telepítése) címmel. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. 
-7. A fürt létrejötte után a csempe felirata átvált az Ön által megadott erőforráscsoport-névre. A portál automatikusan két külön panelben jeleníti meg a fürtöt és a fürt beállításait. 
+
+3. Válassza az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre. A portál irányítópultján egy új csempe jelenik meg **Sablon üzemelő példányának üzembe helyezése** címmel. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrejötte után a csempe felirata átvált az Ön által megadott erőforráscsoport-névre. A portál pedig automatikusan megnyitja az erőforráscsoportot egy új panelen. A panelen a fürt és az alapértelmezett tároló is megjelenik.
    
-   ![HDInsight Linux első lépései – fürtbeállítások](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png).
-   
-   A felsorolásban két erőforrás szerepel, a fürt és az alapértelmezett tárfiók.
+    ![A HDInsight Linux első lépései – erőforráscsoport](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png).
+
+4. A fürt nevére kattintva a fürt megnyílik egy új panelen.
+
+   ![HDInsight Linux első lépései – fürtbeállítások](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)
+
 
 ## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
 Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevője. Számos módon futtathat Hive-feladatokat a HDInsightban. Ebben az oktatóanyagban a portál Ambari Hive nézete segítségével fog Hive-feladatokat futtatni. A Hive-feladatok egyéb küldési módjaiért lásd: [Use Hive in HDInsight](hdinsight-use-hive.md) (A Hive használata a HDInsightban).
 
-1. Keresse fel a **https://&lt;ClusterName>.azurehdinsight.net** webhelyet, ahol a &lt;ClusterName> az a fürt, amelyet az előző szakaszban az Ambari megnyitásához hozott létre.
+1. Az előző képernyőkép szerint kattintson a **Fürt irányítópultja**, majd a **HDInsight-fürt irányítópultja** elemre.  Keresse fel a **https://&lt;FürtNeve>.azurehdinsight.net** webhelyet, ahol a &lt;FürtNeve> az a fürt, amelyet az előző szakaszban az Ambari megnyitásához hozott létre.
 2. Adja meg az előző szakaszban létrehozott Hadoop-felhasználónevet és -jelszót. Az alapértelmezett felhasználónév az **admin**.
 3. Nyissa meg a **Hive View** nézetet az alábbi képernyőfelvételen látható módon:
    
@@ -119,15 +131,15 @@ Ebben az oktatóprogramban megtanulhatta, hogyan hozhat létre Linux-alapú HDIn
 
 A HDInsighttal végzett adatelemzéssel kapcsolatos további információkért tekintse meg a következőket:
 
-* A Hive és a HDInsight együttes használatával, például a Hive-lekérdezések Visual Studióból történő végrehajtásával kapcsolatos további információkért lásd: [Use Hive with HDInsight][hdinsight-use-hive] (A Hive használata a HDInsightban).
-* Az adatok átalakítására szolgáló Pig nyelvvel kapcsolatos további információkért lásd: [Use Pig with HDInsight][hdinsight-use-pig] (A Pig használata a HDInsightban).
-* A Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerrel kapcsolatos további információkért lásd: [Use MapReduce with HDInsight][hdinsight-use-mapreduce] (A MapReduce használata a HDInsightban).
+* További információ a Hive és a HDInsight együttes használatáról, például a Hive-lekérdezések Visual Studióból történő végrehajtásáról: [A Hive használata a HDInsighttal][hdinsight-use-hive].
+* További információ az adatok átalakítására szolgáló Pig nyelvről: [A Pig használata a HDInsighttal][hdinsight-use-pig].
+* További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal][hdinsight-use-mapreduce].
 * A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
 
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következőket:
 
 * További információ az Azure Blob Storage HDInsight-általi használatáról: [Use Azure Blob storage with HDInsight](hdinsight-hadoop-use-blob-storage.md) (Az Azure Blob Storage használata a HDInsightban).
-* Információk arról, hogyan tölthet fel adatokat a HDInsightba: [Upload data to HDInsight][hdinsight-upload-data] (Adatok feltöltése a HDInsightba).
+* További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 
 A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd:
 
@@ -149,8 +161,8 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: powershell-install-configure.md
-[powershell-open]: powershell-install-configure.md#Install
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+[powershell-open]: /powershell/azureps-cmdlets-docs#Install
 
 [img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.png
 [img-hdi-dashboard-query-select]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.png
@@ -163,6 +175,6 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

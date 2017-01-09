@@ -1,24 +1,29 @@
 ---
-title: Azure SQL Database server-level and database-level firewall rules using T-SQL | Microsoft Docs
-description: Learn how to configure the firewall for IP addresses that access Azure SQL databases.
+title: "Kiszolgáló- és adatbázisszintű Azure SQL-tűzfalszabályok a T-SQL használatával | Microsoft Docs"
+description: "A cikkből megtudhatja, hogyan konfigurálhatja a tűzfalat az Azure SQL-adatbázisokhoz hozzáférő IP-címekhez."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: BYHAM
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 71e692a1-5e2f-4a18-a6d6-527b849cf68e
 ms.service: sql-database
+ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
+translationtype: Human Translation
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: a49bc9cd8fb50dcc753fbb04bf7f2d96cf79f3ab
+
 
 ---
-# Configure Azure SQL Database server-level and database-level firewall rules using T-SQL
+# <a name="configure-azure-sql-database-server-level-and-database-level-firewall-rules-using-t-sql"></a>Kiszolgáló- és adatbázisszintű Azure SQL-tűzfalszabályok konfigurálása a T-SQL használatával
 > [!div class="op_single_selector"]
-> * [Overview](sql-database-firewall-configure.md)
+> * [Áttekintés](sql-database-firewall-configure.md)
 > * [Azure Portal](sql-database-configure-firewall-settings.md)
 > * [TSQL](sql-database-configure-firewall-settings-tsql.md)
 > * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
@@ -26,63 +31,69 @@ ms.author: rickbyh
 > 
 > 
 
-Microsoft Azure SQL Database uses firewall rules to allow connections to your servers and databases. You can define server-level and database-level firewall settings for the master or a user database in your Azure SQL Database server to selectively allow access to the database.
+A Microsoft Azure SQL Database tűzfalszabályokkal engedélyezi a kiszolgálókhoz és az adatbázisokhoz történő csatlakozást. A master és a felhasználói adatbázisok kiszolgáló- és adatbázisszintű tűzfalbeállításait az Azure SQL Database-kiszolgálón adhatja meg az adatbázisok hozzáférésének szelektív engedélyezéséhez.
 
 > [!IMPORTANT]
-> To allow applications from Azure to connect to your database server, Azure connections must be enabled. For more information about firewall rules and enabling connections from Azure, see [Azure SQL Database Firewall](sql-database-firewall-configure.md). If you are making connections inside the Azure cloud boundary, you may have to open some additional TCP ports. For more information, see the **V12 of SQL Database: Outside vs inside** section of [Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)
+> Annak engedélyezéséhez, hogy az Azure-alkalmazások csatlakozhassanak az adatbázis-kiszolgálóhoz, engedélyezni kell az Azure-kapcsolatokat. A tűzfalszabályokkal és az Azure-kapcsolatok engedélyezésével kapcsolatos további információkat lásd az [Azure SQL Database-tűzfallal](sql-database-firewall-configure.md) foglalkozó témakörben. Ha az Azure-felhő határain belül létesít kapcsolatokat, előfordulhat, hogy meg kell nyitnia néhány további TCP-portot. További információért tekintse meg az [ADO.NET 4.5 és az SQL Database V12 1433-ason túli portjaival](sql-database-develop-direct-route-ports-adonet-v12.md) foglalkozó cikk az **SQL Database V12 belső és külső kapcsolatait** ismertető szakaszát.
 > 
 > 
 
-## Server-level firewall rules
-Only the server-level principal login or Azure Active Directory administrator can create a server-level firewall rule by using Transact-SQL.
+## <a name="server-level-firewall-rules"></a>Kiszolgálószintű tűzfalszabályok
+Kiszolgálószintű tűzfalszabályt kizárólag a kiszolgálószintű fő bejelentkező vagy az Azure Active Directory-rendszergazda hozhat létre a Transact-SQL használatával.
 
-1. Launch a query window and connect to the virtual master database by using SQL Server Management Studio.
-2. Server-level firewall rules can be selected, created, updated, or deleted from within the query window.
-3. To create or update server-level firewall rules, execute the `sp_set_firewall_rule` stored procedure. The following example enables a range of IP addresses on the server Contoso.<br/>Start by seeing what rules already exist.
+1. Indítson el egy lekérdezésablakot, és csatlakozzon a virtuális master adatbázishoz az SQL Server Management Studio segítségével.
+2. A kiszolgálószintű tűzfalszabályok a lekérdezésablakban választhatók ki, hozhatók létre, frissíthetők vagy törölhetők.
+3. Kiszolgálószintű tűzfalszabály létrehozásához vagy frissítéséhez futtassa az `sp_set_firewall_rule` tárolt eljárást. Az alábbi példa egy IP-címtartományt engedélyez a Contoso kiszolgálón.<br/>Először tekintse meg a már létező szabályokat.
    
         SELECT * FROM sys.firewall_rules ORDER BY name;
    
-    Next, add a firewall rule.
+    Ezután adjon hozzá egy tűzfalszabályt.
    
         EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
             @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
    
-    To delete a server-level firewall rule, execute the sp_delete_firewall_rule stored procedure. The following example deletes the rule named ContosoFirewallRule.
+    Kiszolgálószintű tűzfalszabály törléséhez futtassa az sp_delete_firewall_rule tárolt eljárást. Az alábbi példa a ContosoFirewallRule nevű szabályt törli.
    
         EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
    
-   For more information on these stored procedures, see [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) and [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx).
+   További információ a tárolt eljárásokkal kapcsolatban: [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) és [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx).
 
-## Database-level firewall rules
-Only a database user with the **CONTROL** permission on the database (such as the database owner) can create a database-level firewall rule.
+## <a name="database-level-firewall-rules"></a>Adatbázisszintű tűzfalszabályok
+Kizárólag az adatbázis **CONTROL** (Felügyelet) engedéllyel rendelkező adatbázis-felhasználója (például az adatbázis tulajdonosa) hozhat létre adatbázisszintű tűzfalszabályokat.
 
-1. After creating a server-level firewall for your IP address, launch a query window through the Classic portal or through SQL Server Management Studio.
-2. Connect to the database for which you want to create a database-level firewall rule.
+1. Miután létrehozott egy kiszolgálószintű tűzfalszabályt az IP-címéhez, indítson el egy lekérdezésablakot a klasszikus portálon vagy az SQL Server Management Studióban.
+2. Csatlakozzon ahhoz az adatbázishoz, amelyhez adatbázisszintű tűzfalszabályt szeretne létrehozni.
    
-    To create a new or update an existing database-level firewall rule, execute the `sp_set_database_firewall_rule` stored procedure. The following example creates a new firewall rule named ContosoFirewallRule.
+    Új adatbázisszintű tűzfalszabály létrehozásához vagy egy meglévő frissítéséhez futtassa az `sp_set_database_firewall_rule` tárolt eljárást. Az alábbi példa a ContosoFirewallRule nevű új tűzfalszabályt hozza létre.
    
         EXEC sp_set_database_firewall_rule @name = N'ContosoFirewallRule', 
             @start_ip_address = '192.168.1.11', @end_ip_address = '192.168.1.11'
    
-    To delete an existing database-level firewall rule, execute the `sp_delete_database_firewall_rule` stored procedure. The following example deletes the rule named ContosoFirewallRule.
+    Meglévő adatbázisszintű tűzfalszabály törléséhez futtassa az `sp_delete_database_firewall_rule` tárolt eljárást. Az alábbi példa a ContosoFirewallRule nevű szabályt törli.
    `
    
         EXEC sp_delete_database_firewall_rule @name = N'ContosoFirewallRule'
 
-For more information on these stored procedures, see [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) and [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx).
+További információ a tárolt eljárásokkal kapcsolatban: [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) és [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx).
 
-## Next steps
-For how to articles on creating server-level firewall rules using other methods, see: 
+## <a name="next-steps"></a>Következő lépések
+A kiszolgálószintű tűzfalszabályok más módszerekkel történő létrehozásával kapcsolatban tekintse meg az alábbi cikkeket: 
 
-* [Configure Azure SQL Database server-level firewall rules using the Azure Portal](sql-database-configure-firewall-settings.md)
-* [Configure Azure SQL Database server-level firewall rules using PowerShell](sql-database-configure-firewall-settings-powershell.md)
-* [Configure Azure SQL Database server-level firewall rules using the REST API](sql-database-configure-firewall-settings-rest.md)
+* [Kiszolgálószintű Azure SQL Database-tűzfalszabályok konfigurálása az Azure Portalon](sql-database-configure-firewall-settings.md)
+* [Kiszolgálószintű Azure SQL Database-tűzfalszabályok konfigurálása a PowerShell-lel](sql-database-configure-firewall-settings-powershell.md)
+* [Kiszolgálószintű Azure SQL Database-tűzfalszabályok konfigurálása a REST API használatával](sql-database-configure-firewall-settings-rest.md)
 
-For a tutorial on creating a database, see [Create a SQL database in minutes using the Azure portal](sql-database-get-started.md).
-For help in connecting to an Azure SQL database from open source or third-party applications, see [Client quick-start code samples to SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-To understand how to navigate to databases, see [Manage database access and login security](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+Az adatbázisok létrehozásával foglalkozó oktatóanyag: [SQL Database-adatbázis létrehozása pillanatok alatt az Azure Portalon](sql-database-get-started.md).
+Ha nyílt forráskódú vagy külső alkalmazásokból szeretne kapcsolódni az Azure SQL Database-hez, lásd az [SQL Database gyors üzembe helyezési ügyfélkódmintáival](https://msdn.microsoft.com/library/azure/ee336282.aspx) foglalkozó cikket.
+Az adatbázisok megnyitásával kapcsolatban az [adatbázis-hozzáférés és a bejelentkezési biztonság kezelésével](https://msdn.microsoft.com/library/azure/ee336235.aspx) foglalkozó cikkben tájékozódhat.
 
-## Additional resources
-* [Securing your database](sql-database-security.md)
-* [Security Center for SQL Server Database Engine and Azure SQL Database](https://msdn.microsoft.com/library/bb510589)
+## <a name="additional-resources"></a>További források
+* [Az adatbázis biztonságossá tétele](sql-database-security-overview.md)
+* [Security Center az SQL Server adatbázismotorhoz és az Azure SQL Database-hez](https://msdn.microsoft.com/library/bb510589)
+
+
+
+
+<!--HONumber=Dec16_HO4-->
+
 

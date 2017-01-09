@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/15/2016
+ms.date: 12/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e048e70714c260fcb13ec5ca53434173026eb8d8
-ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
+ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
+ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 
 ---
@@ -25,9 +25,9 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). 
-> 
-> 
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+>
+>
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató lépésről lépésre bemutatja, hogyan valósíthat meg egy Video-on-Demand (VoD) tartalomtovábbító alkalmazást a .NET-keretrendszerhez készült Azure Media Services (AMS) SDK segítségével.
@@ -36,11 +36,11 @@ Az útmutató bemutatja a Media Services alapvető munkafolyamatait és a Media 
 
 ### <a name="ams-model"></a>AMS-modell
 
-A következő kép a Media Services OData-modellen alapuló VoD-alkalmazásfejlesztések során leggyakrabban használt objektumok közül mutat be néhányat. 
+A következő kép a Media Services OData-modellen alapuló VoD-alkalmazásfejlesztések során leggyakrabban használt objektumok közül mutat be néhányat.
 
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
-<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
 A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.14) tekintheti meg.  
 
@@ -60,8 +60,8 @@ Az útmutató a következő feladatok elvégzését mutatja be:
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzésének a következők a feltételei.
 
-* Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. 
-  
+* Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége.
+
     Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a jóváírásokat el is használta, továbbra is megtarthatja a fiókot és használhatja az ingyenes szolgáltatásokat és lehetőségeket, mint például a Web Apps szolgáltatást az Azure App Service alatt.
 * Operációs rendszerek: Windows 8 vagy újabb, Windows 2008 R2, Windows 7.
 * A .NET-keretrendszer 4.0-s vagy újabb verziója.
@@ -72,26 +72,26 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson az **+Új** > **Adathordozó + CDN** > **Media Services** lehetőségre.
-   
+
     ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new1.png)
 3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
-   
+
     ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new3.png)
-   
+
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
    2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
    3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../azure-resource-manager/resource-group-overview.md#resource-groups) talál.
-   4. A **Hely** részben válassza ki azt a földrajzi régiót, amelyben tárolni kívánja a Media Services-fiókhoz tartozó adathordozó- és metaadatrekordokat. A rendszer ezen régió alapján fogja feldolgozni, illetve streamelni az adathordozót. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. 
+   4. A **Hely** részben válassza ki azt a földrajzi régiót, amelyben tárolni kívánja a Media Services-fiókhoz tartozó adathordozó- és metaadatrekordokat. A rendszer ezen régió alapján fogja feldolgozni, illetve streamelni az adathordozót. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg.
    5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
-      
+
        További információkat a tárhelyről [itt](../storage/storage-introduction.md) talál.
    6. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
 4. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
-   
-    A fiók sikeres létrehozását követően státusza **Fut** értékre változik. 
-   
+
+    A fiók sikeres létrehozását követően státusza **Fut** értékre változik.
+
     ![Media Services, beállítások](./media/media-services-portal-vod-get-started/media-services-settings.png)
-   
+
     Az AMS-fiók kezeléséhez (például videók feltöltéséhez, objektumok kódolásához, a feladatok előrehaladásának figyeléséhez) használja a **Settings** (Beállítások) ablakot.
 
 ## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>A streamvégpont konfigurálása az Azure Portal használatával
@@ -108,19 +108,19 @@ A dinamikus csomagolás használatával csak egyféle formátumban kell tárolni
 
 Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
 
-1. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
-2. Kattintson az alapértelmezett streamvégpontra. 
-   
+1. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére.
+2. Kattintson az alapértelmezett streamvégpontra.
+
     Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
 3. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
-   
+
     ![Streamelési egységek](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
 4. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
-   
+
    > [!NOTE]
    > Az új egységek allokációja akár 20 percig is eltarthat.
-   > 
-   > 
+   >
+   >
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -131,20 +131,20 @@ Streameléshez fenntartott egységek létrehozásához és számának megváltoz
 
 3. Adjon hozzá egy, a System.Configuration szerelvényre mutató hivatkozást. Ez a szerelvény tartalmazza a **System.Configuration.ConfigurationManager** osztályt, amely a konfigurációs fájlok, például az App.config eléréséhez használatos.
 
-    Hivatkozás hozzáadásához tegye a következőket: a Megoldáskezelő felületén kattintson a jobb gombbal a projekt nevére, válassza a **Hozzáadás** > **Hivatkozás...** lehetőséget, és írja be a konfigurációt a keresőmezőbe. 
+    Hivatkozás hozzáadásához tegye a következőket: a Megoldáskezelő felületén kattintson a jobb gombbal a projekt nevére, válassza a **Hozzáadás** > **Hivatkozás...** lehetőséget, és írja be a konfigurációt a keresőmezőbe.
 
 4. Nyissa meg az App.config fájlt (ha nem lett alapértelmezés szerint hozzáadva a projekthez, akkor adja hozzá), és adjon hozzá a fájlhoz egy *appSettings* szakaszt. Adja meg az Azure Media Services-fiókjához tartozó név és fiókkulcs értékeket, a következő példában bemutatott módon. A fiók neve és a legfontosabb információk beszerzéséhez látogasson el az [Azure-portálra](https://portal.azure.com/), és válassza ki AMS-fiókját. Ezután válassza a **Beállítások** > **Kulcsok** lehetőséget. A Kulcsok kezelése ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. Másolja ki a fióknév és az elsődleges kulcs értékeit.
-   
+
         <configuration>
         ...
           <appSettings>
             <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
             <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
           </appSettings>
-   
+
         </configuration>
 5. Írja felül a meglévő **használati** nyilatkozatokat a Program.cs fájl elején a következő kóddal.
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
@@ -266,7 +266,7 @@ A dinamikus csomagolás előnyeinek kihasználásához a következőket kell ten
 A következő kód bemutatja, hogyan küldhet el egy kódolási feladatot. A feladat egyetlen műveletet tartalmaz, amely azért felel, hogy a mezzazine-fájlt egy adaptív sávszélességű MP4-fájlsorozattá kódolódjon át a **Media Encoder Standard** használatával. A kód elküldi a feladatot, és vár, amíg az befejeződik.
 
 Amint a kódolási feladat befejeződött, lehetővé válik az adategységek közzététele, majd az MP4-fájlok streamelése vagy fokozatos letöltése.
- 
+
 Adja hozzá a Program osztályhoz a következő módszert.
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -309,7 +309,7 @@ Egy adategység továbbításához vagy letöltéséhez először a „közzét�
 
 ### <a name="some-details-about-url-formats"></a>Néhány információ az URL-formátumokról
 
-A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használandó URL-címeket. Az oktatóanyagban lévő minta kimenetei olyan URL-címek, amelyek a megfelelő böngészőkbe beilleszthetőek. Ez a szakasz csak néhány rövid példán mutatja be a különféle formátumokat. 
+A keresők létrehozása után összeállíthatja a fájlok továbbításához vagy letöltéséhez használandó URL-címeket. Az oktatóanyagban lévő minta kimenetei olyan URL-címek, amelyek a megfelelő böngészőkbe beilleszthetőek. Ez a szakasz csak néhány rövid példán mutatja be a különféle formátumokat.
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>Egy MPEG DASH-továbbítási URL-címnek a következő formátumban kell lennie:
 
@@ -324,7 +324,7 @@ A keresők létrehozása után összeállíthatja a fájlok továbbításához v
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest
 
 
-Egy fájlok letöltéséhez használt SAS URL-címnek a következő formátumban kell lennie:
+#### <a name="a-sas-url-used-to-download-files-has-the-following-format"></a>Egy fájlok letöltéséhez használt SAS URL-címnek a következő formátumban kell lennie:
 
 {blob-tároló neve}/{adategység neve}/{fájlnév}/{SAS-aláírás}
 
@@ -449,14 +449,14 @@ További információkért tekintse át a következők témaköröket:
 ## <a name="download-sample"></a>Minta letöltése
 Az oktatóanyagban létrehozott kódot a következő kód tartalmazza: [minta](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
-## <a name="next-steps-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
+## <a name="next-steps"></a>Következő lépések 
+
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>Valami mást keres?
-Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
+
 
 <!-- Anchors. -->
 

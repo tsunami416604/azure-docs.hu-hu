@@ -9,6 +9,6 @@ A (*) azt jelzi, hogy ehhez az üzembe helyezési módszerhez a PowerShell is sz
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

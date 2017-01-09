@@ -42,12 +42,11 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
     * [Azure Portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Az Azure Media Services Explorer (AMSE) egy Winforms/C#-alkalmazás Windows rendszerre)
 
-A következő kép a Media Services OData-modellen alapuló fejlesztések során leggyakrabban használt objektumok közül mutat be néhányat. 
+A következő kép a Media Services OData-modellen alapuló fejlesztések során leggyakrabban használt objektumok közül mutat be néhányat.
 
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
-
+<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
 
 A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.14) tekintheti meg.  
 
@@ -76,22 +75,22 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 Az Azure Media Services összes fő összetevőjét bemutató útmutató-sorozat: [Az Azure Media Services részletes oktatóprogramjai](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) Ez a sorozat átfogó áttekintést nyújt a fogalmakról, és az AMSE eszköz használatával mutatja be az AMS-feladatokat. Megjegyzés: Az AMSE eszköz egy Windows-eszköz. Az eszköz támogatja a legtöbb olyan műveletet, amelyek a [.NET-keretrendszerhez készült AMS SDK](https://github.com/Azure/azure-sdk-for-media-services), a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java) vagy az [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) használatával programozás útján megvalósíthatók.
 
 ## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Igény szerinti médiatovábbítás az Azure Media Services használatával: gyakori forgatókönyvek és műveletek
-Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz a kapcsolódó témakörökre. A következő diagramon láthatók a Media Services platform azon fontosabb részei, amelyek szerepet játszanak az igény szerinti tartalomtovábbításban. 
+Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz a kapcsolódó témakörökre. A következő diagramon láthatók a Media Services platform azon fontosabb részei, amelyek szerepet játszanak az igény szerinti tartalomtovábbításban.
 
 ![VoD-munkafolyamat](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Tartalom védelme a tárolón és folyamatos médiatovábbítás tisztán (titkosítatlanul)
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe.
-   
+
     Javasolt az adategységen tárolótitkosítást alkalmazni, ezáltal védve a tartalmat feltöltés és tárolás közben.
-2. A kódolás kimenete egy adaptív sávszélességű MP4-fájlsorozat legyen. 
-   
+2. A kódolás kimenete egy adaptív sávszélességű MP4-fájlsorozat legyen.
+
     Javasolt a kimeneti adategységen tárolótitkosítást alkalmazni, ezáltal védve a tartalmat tárolás közben.
-3. Konfigurálja az adategység továbbítási házirendjét (amelyet a dinamikus csomagolás használ). 
-   
-    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia **kell** az adategység továbbítási házirendjét. 
+3. Konfigurálja az adategység továbbítási házirendjét (amelyet a dinamikus csomagolás használ).
+
+    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia **kell** az adategység továbbítási házirendjét.
 4. Tegye közzé az adategységet egy OnDemand-kereső létrehozásával.
-   
+
     Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 5. Továbbítsa a közzétett tartalmat.
 
@@ -104,28 +103,28 @@ A dinamikus titkosítás használatához lennie kell legalább egy folyamatos á
 4. Konfigurálja a tartalomkulcs-engedélyezési házirendet.
 5. Konfigurálja az adategység továbbítási házirendjét (amelyet a dinamikus csomagolás és a dinamikus titkosítás használ).
 6. Tegye közzé az adategységet egy OnDemand-kereső létrehozásával.
-7. Továbbítsa a közzétett tartalmat. 
+7. Továbbítsa a közzétett tartalmat.
 
 ### <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Gyakorlatban használható elemzések készítése videófájlokból a Médiaelemzés használatával
 A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. További információk: [Az Azure Media Services Elemző áttekintése](media-services-analytics-overview.md)
 
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe.
 2. Használja az alábbi Médiaelemzés-szolgáltatások egyikét a videók feldolgozásához:
-   
+
    * **Indexer** – [Videók feldolgozása az Azure Media Indexer 2 használatával](media-services-process-content-with-indexer2.md)
    * **Hyperlapse** – [Médiafájlok feldolgozása az Azure Media Hyperlapse használatával](media-services-hyperlapse-content.md)
    * **Mozgásérzékelés** – [Mozgásérzékelés az Azure Médiaelemzés használatával](media-services-motion-detection.md).
    * **Arcfelismerés és érzelemfelismerés** – [Arcfelismerés és érzelemfelismerés az Azure Médiaelemzés használatával](media-services-face-and-emotion-detection.md).
    * **Videóösszegzés** – [Egy videó összegzésének létrehozása az Azure Media videóindexképek használatával](media-services-video-summarization.md)
-3. A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. A médiafeldolgozók által létrehozott MP4-fájlokat fokozatosan lehet letölteni. A médiafeldolgozók által létrehozott JSON-fájlokat az Azure-blobtárolóból lehet letölteni. 
+3. A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. A médiafeldolgozók által létrehozott MP4-fájlokat fokozatosan lehet letölteni. A médiafeldolgozók által létrehozott JSON-fájlokat az Azure-blobtárolóból lehet letölteni.
 
 ### <a name="deliver-progressive-download"></a>Progresszív letöltés továbbítása
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe.
 2. A kódolás kimenete egyetlen MP4-fájl legyen.
 3. Tegye közzé az adategységet egy OnDemand- vagy SAS-kereső létrehozásával.
-   
+
     Az OnDemand kereső használata esetén biztosítsa, hogy legyen legalább egy folyamatos átvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat fokozatosan le kívánja tölteni.
-   
+
     Az SAS-kereső használata esetén a tartalmat az Azure-blobtárolóból lehet letölteni. Ebben az esetben nincs szükség folyamatos átvitelhez fenntartott egységekre.
 4. Töltse le fokozatosan a tartalmat.
 
@@ -156,8 +155,8 @@ A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalm�
 
 > [!NOTE]
 > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
-> 
-> 
+>
+>
 
 * Egy helyszíni élő kódoló egy egyfajta sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van a Media Services használatával történő élő kódolás a következő formátumok egyikében: RTP (MPEG-TS), RTMP vagy Smooth Streaming (töredékes MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
@@ -210,7 +209,6 @@ További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 [live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
-
 
 
 
