@@ -2,6 +2,6 @@ Az Azure virtuális hálózat (VNet) az Ön saját hálózatát jelképezi a fel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
