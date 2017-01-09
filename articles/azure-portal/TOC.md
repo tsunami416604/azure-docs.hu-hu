@@ -2,18 +2,18 @@
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
 # Első lépések
-## [Üzembe helyezés Resource Manager-sablonnal](../resource-group-template-deploy.md)
+## [Üzembe helyezés Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md)
 
 # Útmutató
 ## Üzembe helyezés
-### [Azure Resource Manager-sablonok létrehozása](../resource-group-authoring-templates.md)
+### [Azure Resource Manager-sablonok létrehozása](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## Kezelés
-### [Erőforrások kezelése a betekintő portálon](resource-group-portal.md)
+### [Erőforrások kezelése a betekintő portálon](../azure-resource-manager/resource-group-portal.md)
 ### [RBAC használata hozzáférések felügyeletéhez](../active-directory/role-based-access-control-configure.md)
-### [Címkék használata az erőforrások rendszerezéséhez](../resource-group-using-tags.md)
+### [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/resource-group-using-tags.md)
 ### [Az erőforrások méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)
-### [Egyszerű Azure-szolgáltatás létrehozása](../resource-group-create-service-principal-portal.md)
+### [Egyszerű Azure-szolgáltatás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 ## Figyelés
 ### [Szolgáltatási metrikák figyelése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)
 ### [Figyelési és diagnosztikai funkciók engedélyezése](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)
@@ -23,7 +23,7 @@
 ### [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 # Kapcsolódó
-## [Azure Resource Manager-sablonfüggvények](../resource-group-template-functions.md)
+## [Azure Resource Manager-sablonfüggvények](../azure-resource-manager/resource-group-template-functions.md)
 ## [Ajánlott eljárások az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [Gyakori metrikák az automatikus méretezéshez](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ## [Webhookok az automatikus méretezési értesítésekhez](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
@@ -42,6 +42,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

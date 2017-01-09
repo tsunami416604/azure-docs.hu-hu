@@ -10,6 +10,6 @@ Két dologért fizet: a virtuális hálózati átjáró óránkénti számítás
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

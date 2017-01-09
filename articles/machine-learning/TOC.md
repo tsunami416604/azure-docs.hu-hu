@@ -26,6 +26,10 @@
 ### [3: Jó kérdések megkérdezése](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: Válasz előrejelzése](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5: Más emberek munkájának másolása](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
+
+## [R – első lépések](machine-learning-r-quickstart.md)
+
+
 # Útmutató
 ## Eszközök és segédprogramok telepítése
 ### [Környezetek létrehozása](machine-learning-data-science-environment-setup.md)
@@ -49,7 +53,7 @@
 ### [Technikai igények](machine-learning-data-science-plan-your-environment.md)
 ### [A szituáció azonosítása](machine-learning-data-science-plan-sample-scenarios.md)
 ## Adatok beszerzése és megértése
-### Adatok betöltése a tárolási környezetbe
+### Adatok betöltése a tárba
 #### [Áttekintés](machine-learning-data-science-ingest-data.md)
 #### [Blob Storage](machine-learning-data-science-move-azure-blob.md)
 #### [A Storage Explorer használata](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
@@ -167,14 +171,14 @@
 #### [Normál eloszlási csomag](machine-learning-r-csharp-normal-distribution.md)
 #### [Binomiális eloszlási csomag](machine-learning-r-csharp-binomial-distribution.md)
 #### [Piactér – gyakori kérdések](machine-learning-marketplace-faq.md)
+
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [A Machine Learning PowerShell-modulja](machine-learning-powershell-module.md)
-## [Algoritmusok referenciája](https://msdn.microsoft.com/library/azure/dn905974.aspx)
-## [R – első lépések](machine-learning-r-quickstart.md)
-## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
-## [Felügyeleti REST API-k](/rest/api/machinelearning/index)
+## [PowerShell](machine-learning-powershell-module.md)
+## [Algoritmusokra és modulokra vonatkozó referenciák](https://msdn.microsoft.com/library/azure/dn905974.aspx)
+## [REST](/rest/api/machinelearning)
+
 # Kapcsolódó
+
 ## Cortana Intelligence Gallery
 ### [Áttekintés](machine-learning-gallery-how-to-use-contribute-publish.md)
 ### [Ágazatok](machine-learning-gallery-industries.md)
@@ -205,7 +209,10 @@
 ##### [Áttekintés](cortana-analytics-playbook-vehicle-telemetry.md)
 ##### [Forgatókönyv](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 ##### [Telepítés](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
+
 # Erőforrások
+## [Machine Learning – REST hibakódok](/machine-learning/machine-learning-web-service-error-codes)
+## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [Blog](http://blogs.technet.com/b/machinelearning/)
@@ -214,6 +221,7 @@
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO1-->
 
 

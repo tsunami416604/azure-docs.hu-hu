@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 38d59a49abeabd0a517bb5bf275618126e908181
-ms.openlocfilehash: be51882b9b562c877ce00620ee9b357028095296
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 1ae89bc2b58df6bcc830ded940821ab2348f55cd
 
 
 ---
@@ -37,7 +37,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
 ## <a name="prerequisites"></a>Előfeltételek
 * Tekintse meg [Az oktatóanyag áttekintése és előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 * Kövesse a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Ebben az oktatóanyagban Data Factory-entitásokat fogunk üzembe helyezni a PowerShell-lel.
-* (Nem kötelező) Az Azure Resource Manager-sablonokkal kapcsolatban az [Azure Resource Manager-sablonok készítése](../resource-group-authoring-templates.md) című cikkben tájékozódhat bővebben.
+* (Nem kötelező) Az Azure Resource Manager-sablonokkal kapcsolatban az [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) című cikkben tájékozódhat bővebben.
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-előállítót hozza létre:
@@ -557,6 +557,6 @@ Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sa
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/29/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 8be210664540fc8294ea70271f037d168b328c9d
-ms.openlocfilehash: dc604f98eacec8d52c2849452bc3df34ef7634af
+ms.sourcegitcommit: f29f36effd858f164f7b6fee8e5dab18211528b3
+ms.openlocfilehash: 6f724576badb7cf3625a139c416860b7e43ed036
 
 
 ---
@@ -47,7 +47,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket a Pytho
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
-A Data Lake Store a Pythonnal való használatához két modult kell telepítenie.
+A Data Lake Store a Pythonnal való használatához három modult kell telepítenie.
 
 * Az `azure-mgmt-resource` modult. Ez további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * Az `azure-mgmt-datalake-store` modult. Ez az Azure Data Lake Store fiókkezelési műveleteit tartalmazza. További információkat erről a modulról [az Azure Data Lake Store kezelési moduljához készült referenciaanyagban](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html) talál.
@@ -207,6 +207,6 @@ Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre.
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

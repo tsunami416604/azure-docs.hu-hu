@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: ac1c60e04b42e2804ef17ba35368dd28c1d748a4
 
 
 ---
@@ -43,7 +43,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
 ## <a name="prerequisites"></a>Előfeltételek
 * Tekintse meg [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 * Telepítse gépére a [Curl](https://curl.haxx.se/dlwiz/) eszközt. A Curl eszköz a REST-parancsokkal együtt az adat-előállító létrehozására használható. 
-* Az [ebben a cikkben](../resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
+* Az [ebben a cikkben](../azure-resource-manager/resource-group-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
   1. Hozzon létre egy **ADFCopyTutorialApp** nevű webalkalmazást az Azure Active Directoryban.
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
   3. Szerezze be a **bérlőazonosítót**. 
@@ -578,6 +578,6 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+ms.sourcegitcommit: e2e5c302d04a41386bfc98dd4e3f8546265dd9f3
+ms.openlocfilehash: e686952a7363e4758f8a3532b54cf5e7f05ce865
 
 
 ---
@@ -126,7 +126,7 @@ Ha további információt szeretne megtudni arról, hogy milyen adatokat haszná
 ### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>3. lépés: Az AzureAD-jelszó visszaállítása felhasználóként
 Most, hogy konfigurált egy felhasználói visszaállítási házirendet, és megadta a felhasználó kapcsolattartási adatait, ez a felhasználó önkiszolgáló jelszó-visszaállítást végezhet.
 
-#### <a name="to-perform-a-selfservice-password-reset"></a>Önkiszolgáló jelszó-visszaállítás elvégzése
+#### <a name="to-perform-a-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás elvégzése
 1. Ha például a [**portal.microsoftonline.com**](http://portal.microsoftonline.com) oldalra lép, az alábbihoz hasonló bejelentkezési képernyőt lát.  Kattintson a **Nem tudja elérni a fiókját?** hivatkozásra a jelszó-visszaállítási felhasználói felület teszteléséhez.
    
    ![][011]
@@ -185,7 +185,7 @@ Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell
   > Ha a Windows Server 2008 vagy 2008 R2 régebbi verzióját futtatja, továbbra is használhatja ezt a funkciót, de [le kell töltenie és telepítenie kell a KB 2386717 javítást](https://support.microsoft.com/kb/2386717), mielőtt érvénybe léptethetné a helyi AD-jelszóházirendet a felhőben.
   > 
   > 
-* Telepítve van az Azure AD Connect eszköz, és előkészítette az AD-környezetet a felhőbe történő szinkronizáláshoz.  További információért lásd: [A helyszíni identitás-infrastruktúra használata a felhőben](active-directory-aadconnect.md).
+* Telepítve van az Azure AD Connect eszköz, és előkészítette az AD-környezetet a felhőbe történő szinkronizáláshoz.  További információért lásd: [A helyszíni identitás-infrastruktúra használata a felhőben](connect/active-directory-aadconnect.md).
   
   > [!NOTE]
   > A jelszóvisszaírás tesztelése előtt először végezzen teljes importálást és teljes szinkronizálást az AD-ből és az Azure AD-ből is az Azure AD Connectben.
@@ -199,7 +199,7 @@ Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell
   > 
 
 ### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>1. lépés: Az Azure AD Connect legújabb verziójának letöltése
-A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy újabb verziójú Azure AD Sync eszközben érhető el.  A Jelszóvisszaíró automatikus fiókzárolás-feloldással az Azure AD Connectben vagy az **1.0.0485.0222**-es vagy újabb verziójú Azure AD Sync eszközben érhető el. Ha régebbi verziót futtat, frissítsen legalább erre a verzióra a folytatás előtt. [Kattintson ide az Azure AD Connect legújabb verziójának letöltéséhez](active-directory-aadconnect.md#install-azure-ad-connect).
+A Jelszóvisszaíró az Azure AD Connectben vagy az **1.0.0419.0911**-es vagy újabb verziójú Azure AD Sync eszközben érhető el.  A Jelszóvisszaíró automatikus fiókzárolás-feloldással az Azure AD Connectben vagy az **1.0.0485.0222**-es vagy újabb verziójú Azure AD Sync eszközben érhető el. Ha régebbi verziót futtat, frissítsen legalább erre a verzióra a folytatás előtt. [Kattintson ide az Azure AD Connect legújabb verziójának letöltéséhez](connect/active-directory-aadconnect.md#install-azure-ad-connect).
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>Az Azure AD Sync verziójának ellenőrzése
 1. Nyissa meg a **%ProgramFiles%\Azure Active Directory Sync\** könyvtárat.
@@ -236,7 +236,7 @@ Most, hogy letöltötte az Azure AD Connect eszközt, készen áll a jelszóviss
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>A jelszóvisszaírás engedélyezése a Windows PowerShell használatával
 1. A **Directory Sync számítógépén** nyisson meg egy új **emelt szintű Windows PowerShell-ablakot**.
 2. Ha a modul még nincs betöltve, írja be az `import-module ADSync` parancsot, hogy az Azure AD Connect-parancsmagokat betöltse az aktuális munkamenetbe.
-3. A rendszeren lévő Azure AD-összekötők listájának lekéréséhez futtassa a `Get-ADSyncConnector` parancsmagot, és tárolja az eredményeket a `$aadConnectorName` változóban, például `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
+3. A rendszeren lévő Azure AD-összekötők listájának lekéréséhez futtassa a `Get-ADSyncConnector` parancsmagot, és tárolja az eredményeket a `$aadConnectorName` változóban, például `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
 4. Az aktuális összekötő aktuális visszaírási állapotának lekéréséhez futtassa a következő parancsmagot:`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. A jelszóvisszaírás engedélyezéséhez futtassa a következő parancsmagot:`Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -256,12 +256,40 @@ A szolgáltatás megfelelő telepítését úgy is ellenőrizheti, ha megnyitja 
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>3. lépés: A tűzfal konfigurálása
-Miután engedélyezte a jelszóvisszaírást az Azure AD Connect eszközben, ellenőriznie kell, hogy tud-e csatlakozni a felhőhöz a szolgáltatás.
+Miután engedélyezte a jelszóvisszaírást, ellenőriznie kell, hogy az Azure AD Connectet futtató gép tud-e csatlakozni a Microsoft felhőszolgáltatásaihoz a jelszóvisszaírási kérelmek fogadásához. Ennek a lépésnek része a hálózati berendezések csatlakozási szabályainak frissítése (proxy-kiszolgálók, tűzfalak stb.), hogy engedélyezve legyenek a kimenő kapcsolatok bizonyos Microsoft tulajdonú URL-ekhez és IP-címekhez, megadott hálózati portokon keresztül. Ezek a módosítások eltérhetnek az Azure AD Connect eszköz verziójának függvényében. További információkat olvashat a [jelszóvisszaírás működéséről](active-directory-passwords-learn-more.md#how-password-writeback-works) és a [jelszóvisszaírás biztonsági modelljéről](active-directory-passwords-learn-more.md#password-writeback-security-model).
 
-1. Miután befejeződött a telepítés, ha ismeretlen kimenő kapcsolatokat blokkol a környezetben, a következő szabályokat is hozzá kell adnia a tűzfalhoz. Ellenőrizze, hogy újraindította-e az AAD Connect gépét a módosítások elvégzése után:
-   * Kimenő kapcsolatok engedélyezése a 443-as TCP-porton keresztül
-   * Kimenő kapcsolatok engedélyezése a https://ssprsbprodncu-sb.accesscontrol.windows.net/ címre
-   * Amikor proxyt használ, vagy általános kapcsolati hibákat tapasztal, engedélyezze a kimenő kapcsolatokat a 9350–9354-es és az 5671-es TCP-porton keresztül.
+#### <a name="why-do-i-need-to-do-this"></a>Miért van erre szükség?
+
+Annak érdekében, hogy a Jelszóvisszaíró megfelelően működjön, az Azure AD Connectet futtató gépnek képesnek kell lennie kimenő HTTPS-kapcsolatok létesítésére a **.servicebus.windows.net*, valamint adott, az Azure által használt IP-címek felé, amint azt a [Microsoft Azure Adatközpont IP-tartományainak listája](https://www.microsoft.com/download/details.aspx?id=41653) meghatározza.
+
+Azure AD Connect eszközök 1.0.8667.0-s és újabb verziói:
+
+- **1. lehetőség:** Engedélyezze az összes kimenő HTTPS-kapcsolatot a 443-as porton keresztül (URL- vagy IP-cím segítségével).
+    - Mikor érdemes ezt használni?
+        - Akkor használja ezt a lehetőséget, ha a legegyszerűbb konfigurációra van szüksége, amelyet nem kell frissíteni, amikor az Azure Datacenter IP-tartományai módosulnak.
+    - Szükséges lépések:
+        - Engedélyezze az összes kimenő HTTPS-kapcsolatot a 443-as porton keresztül (URL- vagy IP-cím segítségével).
+<br><br>
+- **2. lehetősége:** Engedélyezze a kimenő HTTPS-kapcsolatokat megadott IP_tartományokra és URL-címekre
+    - Mikor érdemes ezt használni?
+        - Akkor használja ezt a lehetőséget, ha korlátozott hálózati környezetben van, vagy más miatt nem szeretné engedélyezni a kimenő kapcsolatokat.
+        - Ha ebben a konfigurációban továbbra is használni szeretné a jelszóvisszaírást, biztosítania kell, hogy a hálózati berendezések hetente frissüljenek a Microsoft Azure Adatközpont IP-tartományainak legújabb IP-címeivel. Ezek az IP-tartományok egy minden szerdán (csendes-óceáni idő) frissülő, majd következő hétfőn (csendes-óceáni idő) hatályba lépő XML-fájlban érhetők el.
+    - Szükséges lépések:
+        - Az összes *.servicebus.windows.net címre mutató HTTPS-kapcsolat engedélyezése
+        - Engedélyezze az összes kimenő HTTPS-kapcsolatot minden IP-cím felé a Microsoft Azure Datacenter IP-tartományok listában, és frissítse ezt a konfigurációt hetente.
+
+> [!NOTE]
+> Ha a Jelszóvisszaírót a fenti útmutatást követve konfigurálta, és nem lát hibát az Azure AD Connect eseménynaplójában, de folyamatosan csatlakozási hibákat kap teszteléskor, akkor előfordulhat, hogy a környezetében lévő hálózati berendezés blokkolja a HTTPS-kapcsolatokat IP-címek felé. Előfordulhat például, hogy a kapcsolat engedélyezve van a *https://*.servicebus.windows.net* felé, a tartományon belül egy adott IP-cím felé mégis blokkolva van. Ennek megoldásához vagy úgy kell konfigurálnia a hálózati környezetet, hogy engedélyezze az összes kimenő HTTPS-kapcsolatot a 443-as porton keresztül bármely URL- vagy IP-cím felé (a fenti 1. lehetőség), vagy kérheti a hálózatkezelésért felelős csapat segítségét, hogy kifejezetten engedélyezzék a HTTPS-kapcsolatokat megadott IP-címek felé (a fenti 2. lehetőség).
+
+**Régebbi verziók esetében:**
+
+- Kimenő TCP-kapcsolatok engedélyezése a 443-as, 9350–9354-es és 5671-es porton keresztül 
+- Kimenő kapcsolatok engedélyezése a *https://ssprsbprodncu-sb.accesscontrol.windows.net/* címre
+
+> [!NOTE]
+> Ha az 1.0.8667.0-s Azure AD Connect verziónál korábbi verziót használ, a Microsoft erősen ajánlja, hogy frissítsen a [legújabb Azure AD Connect-verzióra](https://www.microsoft.com/download/details.aspx?id=47594), amely számos visszaírási hálózati fejlesztéssel teszi egyszerűbbé a konfigurálást.
+
+Amint kész a hálózati berendezések konfigurálása, indítsa újra az Azure AD Connect eszközt futtató gépet.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>4. lépés: A megfelelő Active Directory-engedélyek beállítása
 Minden erdő esetén, amely olyan felhasználókat tartalmaz, akiknek a jelszavait vissza fogja állítani, ha X a konfigurációs varázslóban (a kezdeti konfiguráció során) az erdőhöz meghatározott fiók, az X-hez meg kell adnia a **Jelszó alaphelyzetbe állítása**, **Jelszó módosítása**, **Írási engedélyek** kibővített jogot a `lockoutTime` alatt és az **Írási engedélyek** kibővített jogot a `pwdLastSet` alatt az erdőben lévő minden tartomány gyökérobjektumán. A jognak minden felhasználói objektum által örököltként kell megjelölve lennie.  
@@ -365,6 +393,6 @@ Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokument�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

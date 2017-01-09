@@ -19,6 +19,6 @@ A konfigurálás és a regisztráció befejezését követően az eszköz online
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -4,7 +4,7 @@
 # Bevezetés
 ## [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md)
 ## [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md)
-## [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adds.md)
+## [Az Azure AD Connect Health használata az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md)
 
 # Útmutató
 ## [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)
@@ -20,10 +20,10 @@
 ## [Hibrid identitáskezelés – kialakítási útmutató](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # Erőforrások
-##[Azure AD Connect – gyakori kérdések](active-directory-aadconnect-health-faq.md)
+##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

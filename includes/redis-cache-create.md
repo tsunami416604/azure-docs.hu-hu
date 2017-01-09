@@ -35,6 +35,6 @@ Az új gyorsítótár beállításainak konfigurálása után kattintson a **Lé
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

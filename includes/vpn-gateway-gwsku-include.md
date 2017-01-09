@@ -17,6 +17,6 @@ A termékváltozat kiválasztásakor vegye figyelembe az alábbiakat:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

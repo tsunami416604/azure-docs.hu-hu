@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
-ms.openlocfilehash: 48531201029bf09f30cb22852aaf5d3ad0b328fc
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 4a0d72f46fada5112563d10d22f61abc439730a7
 
 
 ---
@@ -216,7 +216,7 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű web
   * [HTTPS engedélyezése az Azure-webhelyeken)](web-sites-configure-ssl-certificate.md)
 * Ha már nem használja őket, törölje a webalkalmazást tartalmazó erőforráscsoportot és a kapcsolódó Azure-erőforrásokat.
   
-    További információ az erőforráscsoportoknak az Azure Portalon való használatával kapcsolatban: [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md) (Erőforrások üzembe helyezése Resource Manager-sablonok és az Azure Portal segítségével).   
+    További információ az erőforráscsoportoknak az Azure Portalon való használatával kapcsolatban: [Deploy resources with Resource Manager templates and Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md) (Erőforrások üzembe helyezése Resource Manager-sablonok és az Azure Portal segítségével).   
 * További példák egy ASP.NET-webalkalmazás létrehozására az App Service szolgáltatásban: [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (ASP.NET-webalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) és [Create and deploy a mobile app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service) (Mobilalkalmazás létrehozása és üzembe helyezése az Azure App Service szolgáltatásban) a [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [bemutatóból](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). A HealthClinic.biz bemutató további gyors útmutatóit lásd: [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Azure fejlesztői eszközök – gyors útmutatók).
 
 

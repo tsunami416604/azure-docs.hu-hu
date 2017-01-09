@@ -5,45 +5,38 @@ includes/sql-database-create-new-server-firewall-portal.md
 Latest Freshness check:  2016-11-28 , rickbyh.
 
 As of circa 2016-04-11, the following topics might include this include:
-articles/sql-database/sql-database-get-started-tutorial.md
+articles/sql-database/sql-database-get-started.md
 articles/sql-database/sql-database-configure-firewall-settings
+articles/sql-data-warehouse-get-started-provision.md
 
 -->
-## <a name="create-a-new-azure-sql-server-level-firewall"></a>Új Azure SQL kiszolgálószintű tűzfal létrehozása
-Kövesse a következő lépéseket az Azure Portalon, hogy létrehozzon egy kiszolgálószintű tűzfalszabályt, amely kapcsolatokat engedélyez egy egyedi IP-címről (az Ön ügyfélszámítógépéről) vagy egy teljes IP-címtartományról egy SQL Database logikai kiszolgálóra.
+## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 
-1. Ha jelenleg nem csatlakozik, jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Az alapértelmezett panelen kattintson az **SQL Server-példányok** elemre.
-   
-      ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
-3. Az **SQL Server-példányok** panelen kattintson arra a kiszolgálóra, amelyikhez létre szeretné hozni a tűzfalszabályt.
-   
-     ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
-4. Tekintse át a kiszolgálója tulajdonságait, majd kattintson a **Tűzfal** elemre.
-   
-     ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
-   
-   > [!NOTE]
-   > A kiszolgálószintű **Tűzfalbeállítások** panelt az **Adatbázis** panel eszköztárából is elérheti.
+1. Az SQL Server tűzfalához tartozó panel megnyitásához kattintson a Beállítások terület alatt található **Tűzfal** elemre az SQL Server paneljén.
+
+    ![sql server tűzfal](../articles/sql-database/media/sql-database-get-started/sql-server-firewall.png)
     
-    
-6. Kattintson az **Ügyfél IP-címének hozzáadása** lehetőségre, ha azt szeretné, hogy az Azure az Ön IP-címét írja be a szabálymezőkbe.
-   
-      ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
-7. Vagy kattintson a hozzáadott IP-címre, és szerkessze a tűzfal címét egy IP-címtartományhoz való hozzáférés engedélyezéséhez.
-   
-      ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-6.png)
-8. Kattintson a **Mentés** gombra egy kiszolgálószintű tűzfalszabály létrehozásához.
-   
-     ![Új kiszolgálótűzfal](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
-   
-   > [!IMPORTANT]
-   > Az ügyfél IP-címe időnként változhat, így előfordulhat, hogy új tűzfalszabály létrehozásáig nem férhet hozzá a kiszolgálóhoz. IP-címét ellenőrizheti a [Bing](http://www.bing.com/search?q=my%20ip%20address) használatával. Ezután hozzáadhat egy egyedi IP-címet vagy egy IP-címtartományt. Részletek: [Manage firewall settings](../articles/sql-database/sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal) (Tűzfalbeállítások kezelése).
-   > 
-   > 
+2. Ellenőrizze a megjelenő ügyfél IP-címet, és egy internetes böngészőben győződjön meg róla, hogy valóban ez az Ön által használt IP-cím (vannak olyan weboldalak, amelyek megadják ezt az információt). Időnként előfordulhat, hogy az IP-címek nem egyeznek.
+
+    ![a használt IP-cím](../articles/sql-database/media/sql-database-get-started/your-ip-address.png)
+
+3. Amennyiben az IP-címek egyeznek, kattintson az **Ügyfél IP-címének hozzáadása** elemre az eszköztárban.
+
+    ![ügyfél IP-címének hozzáadása](../articles/sql-database/media/sql-database-get-started/add-client-ip.png)
+
+    > [!NOTE]
+    > Az SQL Database-tűzfalat a kiszolgálón egyetlen IP-cím vagy egy teljes IP-címtartomány előtt is megnyithatja. A tűzfal megnyitását követően az SQL-rendszergazdák és -felhasználók a kiszolgáló bármely olyan adatbázisába bejelentkezhetnek, amelyhez érvényes hitelesítő adatokkal rendelkeznek.
+    >
+
+4. A kiszolgálószintű tűzfalszabály mentéséhez kattintson a **Mentés** gombra az eszköztárban, majd kattintson az **OK** gombra.
+
+    ![ügyfél IP-címének hozzáadása](../articles/sql-database/media/sql-database-get-started/save-firewall-rule.png)
+
+> [!Tip]
+> Az oktatóanyagot lásd a [Kiszolgáló, kiszolgálószintű tűzfalszabály, mintaadatbázis és adatbázisszintű tűzfalszabály létrehozása, és csatlakozás az SQL Server Management Studióhoz](../articles/sql-database/sql-database-get-started.md) című témakörben.    
+>
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 
