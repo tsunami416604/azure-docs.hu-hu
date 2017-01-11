@@ -109,6 +109,6 @@ A Virtual Machine Scale Sets dokumentációjának letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
