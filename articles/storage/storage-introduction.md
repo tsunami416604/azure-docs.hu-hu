@@ -3,8 +3,8 @@ title: "A Storage bemutatása | Microsoft Docs"
 description: "Áttekintés az Azure Storage-ról, a Microsoft online, felhőalapú adattároló szolgáltatásáról. Ismerje meg, hogyan használhatja fel alkalmazásaihoz az elérhető legjobb felhőalapú tárolómegoldást."
 services: storage
 documentationcenter: 
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6d1497dee72a49705e15bd2907a42f744bd3b5
-ms.openlocfilehash: 3149797c078764fa54c488e8498790ea91d1a1b1
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
 
 
 ---
@@ -75,7 +75,7 @@ A nagy mennyiségű, strukturálatlan objektumadatot a felhőben tárolni kívá
 * Konfigurációs adatok a felhőalapú alkalmazásokhoz
 * Big data (naplók és egyéb nagy adatkészletek)
 
-Minden blob egy tárolóba van rendezve. A tárolók nagy előnye, hogy az objektumok csoportjaihoz biztonsági házirendeket lehet rendelni. Egy tárfiókban korlátlan számú tárolót tárolhat, és egy tároló korlátlan számú blobot tartalmazhat a tárfiók 500 TB-os kapacitásán belül.  
+Minden blob egy tárolóba van rendezve. A tárolók nagy előnye, hogy az objektumok csoportjaihoz biztonsági házirendeket lehet rendelni. Egy tárfiókban korlátlan számú tárolót tárolhat, és egy tároló korlátlan számú blobot tartalmazhat a tárfiók 500 TB-os kapacitásán belül.
 
 A Blob Storage háromféle blobot biztosít: blokkblobokat, hozzáfűző blobokat és lapblobokat.
 
@@ -128,32 +128,32 @@ További információ a közös hozzáférésű jogosultságkódokról: [Using S
 ## <a name="replication-for-durability-and-high-availability"></a>Replikáció a tartósság és magas rendelkezésre állás érdekében
 A Microsoft Azure tárfiók tartalmát mindig replikáljuk, így biztosítva az adatok tartósságát és magas rendelkezésre állását. A replikáció akár egyazon adatközponton belül, akár egy második adatközpontban készít másolatot az adatokról, a replikáció beállítástól függően. A replikáció óvja az adatokat és biztosítja az alkalmazás üzemidejét egy átmeneti hardverhiba esetén. Ha az adatok másolata egy második adatközpontba kerül, akkor a replikáció az elsődleges helyszínen bekövetkező katasztrofális hibával szemben is védelmet nyújt.
 
-A replikáció biztosítja, hogy a tárfiók még hibák esetén is teljesíti a [Storage szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. Tekintse át az Azure Storage tartóssági és rendelkezésre állási garanciáit a szolgáltatói szerződésben . 
+A replikáció biztosítja, hogy a tárfiók még hibák esetén is teljesíti a [Storage szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) feltételeit. Tekintse át az Azure Storage tartóssági és rendelkezésre állási garanciáit a szolgáltatói szerződésben .
 
-Tárfiók létrehozásakor választhat a következő replikációs lehetőségek közül:  
+Tárfiók létrehozásakor választhat a következő replikációs lehetőségek közül:
 
-* **Helyileg redundáns tárolás (LRS)**. A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer háromszor replikálja az LRS-t egy régió egyetlen adatközpontján belül. Az LRS megvédi adatait a normál hardverhibáktól, de nem nyújt védelmet az adatközpontot érintő hibák ellen.  
-  
+* **Helyileg redundáns tárolás (LRS)**. A helyileg redundáns tárolás három másolatot tart fenn adatairól. A rendszer háromszor replikálja az LRS-t egy régió egyetlen adatközpontján belül. Az LRS megvédi adatait a normál hardverhibáktól, de nem nyújt védelmet az adatközpontot érintő hibák ellen.
+
     Az LRS kedvezményes áron vásárolható meg. A maximális tartósság érdekében az alábbiakban ismertetett georedundáns tárolás használata javasolt.
-* **Zónaredundáns tárolás (ZRS)**. A zónaredundáns tárolás három másolatot tart fenn adatairól. A ZRS során a rendszer két vagy három intézményben replikálja az adatokat, amelyek egy vagy két régióban is lehetnek, így a ZRS nagyobb tartósságot biztosít, mint az LRS. A ZRS biztosítja az adatok tartósságát egyetlen régión belül.  
-  
-    A ZRS az LRS-nél nagyobb tartósságot biztosít, azonban a maximális tartósság érdekében az alábbiakban ismertetett georedundáns tárolás használata javasolt.  
-  
+* **Zónaredundáns tárolás (ZRS)**. A zónaredundáns tárolás három másolatot tart fenn adatairól. A ZRS során a rendszer két vagy három intézményben replikálja az adatokat, amelyek egy vagy két régióban is lehetnek, így a ZRS nagyobb tartósságot biztosít, mint az LRS. A ZRS biztosítja az adatok tartósságát egyetlen régión belül.
+
+    A ZRS az LRS-nél nagyobb tartósságot biztosít, azonban a maximális tartósság érdekében az alábbiakban ismertetett georedundáns tárolás használata javasolt.
+
   > [!NOTE]
   > A ZRS jelenleg csak a blokkblobokhoz érhető el, és csak a 2014-02-14-es és frissebb verziókban támogatott.
-  > 
+  >
   > Miután létrehozott egy tárfiókot és kiválasztotta a ZRS-t, már nem módosíthatja a replikáció típusát más típusra, és ugyanez fordítva is igaz.
-  > 
-  > 
+  >
+  >
 * **Georedundáns tárolás (GRS)**. A GRS hat másolatot tart fenn adatairól. A GRS tárolással a rendszer háromszor replikálja az adatokat az elsődleges régióban, valamint még háromszor replikálja őket egy másodlagos régióban, az elsődleges régiótól több száz kilométer távolságban, így a legnagyobb szintű tartósságot biztosítja. Ha az elsődleges régióban hiba történne, az Azure Storage feladatátvételt hajt végre a másodlagos régióba. A GRS biztosítja az adatok tartósságát két külön régióban.
-  
+
     További információ az elsődleges és másodlagos régiók párosításairól: [Az Azure régiói](https://azure.microsoft.com/regions/).
-* **Írásvédett georedundáns tárolás (RA-GRS)**. Az írásvédett georedundáns tárolás az adatokat egy másodlagos földrajzi helyre replikálja, és az adatokhoz a másodlagos helyszínen is írásvédett hozzáférést biztosít. Az írásvédett georedundáns tárolással az elsődleges vagy a másodlagos helyszínről is hozzáférhet az adatokhoz, ha valamely helyszín elérhetetlenné válik. Tárfiók létrehozásakor alapértelmezés szerint az írásvédett georedundáns tárolás van beállítva. 
-  
+* **Írásvédett georedundáns tárolás (RA-GRS)**. Az írásvédett georedundáns tárolás az adatokat egy másodlagos földrajzi helyre replikálja, és az adatokhoz a másodlagos helyszínen is írásvédett hozzáférést biztosít. Az írásvédett georedundáns tárolással az elsődleges vagy a másodlagos helyszínről is hozzáférhet az adatokhoz, ha valamely helyszín elérhetetlenné válik. Tárfiók létrehozásakor alapértelmezés szerint az írásvédett georedundáns tárolás van beállítva.
+
   > [!IMPORTANT]
   > A tárfiók létrehozása után módosíthatja az adatok replikálási módját, kivéve ha a fiók létrehozásakor a ZRS módot választotta. Azonban ügyeljen arra, hogy ha az  LRS-ről  GRS-re vagy RA- GRS-re vált, akkor lehetséges, hogy egyszeri adatátviteli díjat kell fizetnie.
-  > 
-  > 
+  >
+  >
 
 További információ az Azure Storage replikációs beállításairól: [Azure Storage replication](storage-redundancy.md) (Azure Storage replikációja).
 
@@ -200,7 +200,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [Azure Storage-ügyféleszközök](storage-explorers.md)
 * [Azure SDK-k és eszközök](https://azure.microsoft.com/tools/)
 * [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](../powershell-install-configure.md)
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [AzCopy parancssori segédprogram](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -252,6 +252,6 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [Az Azure Storage első lépéseinek rövid összefoglalása](storage-getting-started-guide.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

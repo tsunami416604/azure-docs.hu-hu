@@ -15,6 +15,7 @@
 ## [Első lépések a Sparkban](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [Első lépések a HBase-ben és a NoSQL-ben](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Első lépések a Stormban](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [Első lépések a Hive interaktív előzetes verziójában](hdinsight-hadoop-use-interactive-hive.md)
 ## [Első lépések a Kafka előzetes verziójában](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop-tesztkörnyezet](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools with Hortonworks – tesztkörnyezet](hdinsight-hadoop-emulator-visual-studio.md)
@@ -181,12 +182,12 @@
 #### [Hive-lekérdezés teljesítménye](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # Referencia
-## [PowerShell-parancsmagok](/powershell/resourcemanager/azurerm.hdinsight/v2.2.0/azurerm.hdinsight)
-## [.NET SDK a Hadoophoz](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET SDK a HBase-hez](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET könyvtár az Avróhoz](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
-## [REST API – referencia](/rest/api/hdinsight/)
-## [Spark REST API a távoli feladatokhoz](/rest/api/hdinsightspark/)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # Kapcsolódó
 ## Windows-fürtök
@@ -224,6 +225,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

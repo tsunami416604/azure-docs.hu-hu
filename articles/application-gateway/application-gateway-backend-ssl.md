@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/10/2016
+ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: f5f3e76711a93b9b8b0fadd08b051758a7c71619
+ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
+ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
 
 
 ---
 # <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>Az SSL-szabályzat és a teljes körű SSL engedélyezése Application Gateway-en
 
+Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási/visszafejtési üzemeltetési költségektől. Akadnak azonban ügyfelek, akiknek a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás. Ennek a titkosítatlan kommunikációnak okai lehetnek biztonsági/megfelelőségi előírások, vagy az, hogy az alkalmazás kizárólag biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az alkalmazásátjáró immár támogatja a teljes körű SSL-titkosítást.
+
 ## <a name="overview"></a>Áttekintés
 
-Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Így a webkiszolgálók megszabadulhatnak a magas titkosítási/visszafejtési üzemeltetési költségektől. Akadnak azonban ügyfelek, akiknek a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás. Ennek okai lehetnek biztonsági/megfelelőségi előírások, vagy az, hogy az alkalmazás kizárólag biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az alkalmazásátjáró immár támogatja a teljes körű SSL-titkosítást.
-
-A teljes körű, végponttól végpontig érvényes SSL-kapcsolat segítségével titkosítva küldheti a bizalmas adatokat a háttérkiszolgálók felé, miközben kiaknázhatja az alkalmazásátjáró által biztosított 7. rétegbeli terheléselosztási funkciókat, például a cookie-affinitást, az URL-cím-alapú útválasztást, a helyalapú útválasztás támogatását vagy az XForwarded-* fejlécek beszúrását.
+A teljes körű, végponttól végpontig érvényes SSL-kapcsolat segítségével titkosítva küldheti a bizalmas adatokat a háttérkiszolgálók felé, miközben kiaknázhatja az Application Gateway által biztosított 7. rétegbeli terheléselosztási funkciókat. Ilyen például a cookie-affinitás, az URL-cím-alapú útválasztás, a helyalapú útválasztás támogatása vagy az XForwarded-* fejlécek beszúrása.
 
 Amikor végpontok közötti SSL-kommunikációs móddal van konfigurálva, az alkalmazásátjáró leállítja a felhasználó SSL-munkamenetét az átjárónál, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Az alkalmazásátjáró ekkor új SSL-kapcsolatot kezdeményez a háttérkiszolgálóhoz, és mielőtt a kérést továbbítaná, a háttérkiszolgáló nyilvánoskulcs-tanúsítványával újratitkosítja az adatokat. A teljes körű SSL akkor engedélyezett, ha a BackendHTTPSetting tulajdonságban a protokoll beállítása a Https értékre van állítva, amit a rendszer ilyenkor a háttérkészletre is alkalmaz. A biztonságos kommunikációhoz tanúsítványt kell konfigurálni a teljes körű SSL-lel engedélyezett háttérkészlet minden egyes háttérkiszolgálójához.
 
@@ -48,7 +48,7 @@ Az Application Gateway támogatja a felhasználó által konfigurálható SSL-eg
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután megismerkedett a teljes körű SSL-lel és az SSL-szabályzatokkal, látogasson el az [Enable end to end SSL on application gateway](application-gateway-end-to-end-ssl-powershell.md) (Teljes körű SSL engedélyezése az alkalmazásátjárón) weboldalra, ahonnan megtudhatja, hogyan hozhat létre olyan átjáróalkalmazást, amely képes titkosítottan küldeni a forgalmat a háttérrendszerbe.
+Miután megismerkedett a teljes körű SSL-lel és az SSL-szabályzatokkal, látogasson el az [Enable end to end SSL on application gateway](application-gateway-end-to-end-ssl-powershell.md) (Teljes körű SSL engedélyezése az alkalmazásátjárón) weboldalra, ahonnan megtudhatja, hogyan hozhat létre átjáróalkalmazást teljes körű SSL segítségével.
 
 <!--Image references-->
 
@@ -56,6 +56,6 @@ Miután megismerkedett a teljes körű SSL-lel és az SSL-szabályzatokkal, lát
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

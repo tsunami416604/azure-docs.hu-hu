@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
-description: "Ismerje meg, hogyan használhatja az Azure App Service-ben futtatott API Apps szolgáltatást a felhőben működő és helyszíni API-k fejlesztéséhez, üzemeltetéséhez és felhasználásához. Oktatóanyagok, videók és egyéb dokumentáció."
 translationtype: Human Translation
-ms.sourcegitcommit: 410479b746b5911d1ebcb51c92a6de74686cffbe
-ms.openlocfilehash: e5b9d9322bcf5860debb93fe579665f778a41e7b
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: ac7a22bd592cbb1e8cdee2e6d2896c0b8ad6ea26
+
 
 ---
 # <a name="app-service---api-apps-documentation"></a>App Service – Api Apps-dokumentáció
 
-Ismerje meg, hogyan használhatja az Azure App Service-ben futtatott API Apps szolgáltatást a felhőben működő és helyszíni API-k fejlesztéséhez, üzemeltetéséhez és felhasználásához. Oktatóanyagok, videók és egyéb dokumentáció, amelyből megtudhatja, hogyan hozhat létre és telepíthet API-alkalmazásokat.
+Az API Apps egyike az Azure App Service által kínált négy alkalmazástípusnak. Az Azure App Service-ben futtatott API Apps szolgáltatás számos lehetőséget nyújt a felhőben és helyileg tárolt API-k fejlesztéséhez, üzemeltetéséhez és felhasználásához. Az Azure App Service egy teljes körűen felügyelt platform webes, mobil és integrációs célokra.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -121,6 +121,28 @@ Ismerje meg, hogyan használhatja az Azure App Service-ben futtatott API Apps sz
     </li>     
 </ul>
 
+---
+
+<h2>Referencia</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Erőforrások</h3>
+                        <p><a href="/azure/app-service-web/app-service-web-app-azure-portal?toc=%2fazure%2fapp-service-api%2ftoc.json">Azure Portal</a></p>
+                        <p><a href="/azure/app-service-web/app-service-changes-existing-services?toc=%2fazure%2fapp-service-api%2ftoc.json">App Service-referencia</a></p>
+                        <p><a href="/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started?toc=%2fazure%2fapp-service-api%2ftoc.json">WebJobs SDK</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+---
+
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>
@@ -131,6 +153,6 @@ A Mobile Apps-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

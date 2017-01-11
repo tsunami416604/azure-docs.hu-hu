@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 12/12/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 21ebc8083113238ef70f57dae2381ebcf102c39d
+ms.sourcegitcommit: dabe7d9796ab24a257ea904bc5d978cb71d7e149
+ms.openlocfilehash: 1733edf961c2ce1297fc148d3a844ce141f5d7c2
 
 
 ---
@@ -81,6 +81,10 @@ Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport hel
 Mindegyik erőforrás-szolgáltató erőforrás-készleteket és műveleteket biztosít az Azure-szolgáltatásokkal való együttműködéshez. Ha például kulcsokat és titkos kulcsokat szeretne tárolni, a **Microsoft.KeyVault** erőforrás-szolgáltatót fogja használni. Ez az erőforrás-szolgáltató egy **vaults** nevű erőforrástípust biztosít a kulcstároló létrehozásához, illetve egy **vaults/secrets** nevű erőforrástípust a titkos kulcs létrehozásához a kulcstárolóban. 
 
 Mielőtt elkezdi erőforrásai üzembe helyezését, ismerje meg az elérhető erőforrás-szolgáltatókat. Az erőforrások és az erőforrás-szolgáltatók nevének ismerete segíthet az Azure-ban üzembe helyezni kívánt erőforrások meghatározásában.
+
+A portálon keresztül az összes erőforrás-szolgáltató látható. Az előfizetési panelen válassza az **Erőforrás-szolgáltató** elemet:
+
+![erőforrás-szolgáltatók megtekintése](./media/resource-group-overview/view-resource-providers.png)
 
 A következő PowerShell-parancsmaggal az összes erőforrás-szolgáltatót lekérheti:
 
@@ -322,6 +326,6 @@ Ismertető videó az áttekintésről:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
