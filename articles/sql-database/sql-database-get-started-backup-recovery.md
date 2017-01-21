@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: bc36f38c0089940e8f4f53a0abb13d9bb756eb1e
+ms.sourcegitcommit: 7f26cd0f6c5f9c7a2fe692bfcdc6ef60d1b2200f
+ms.openlocfilehash: d4ea089ed4b5d29c261b25e95f4d304611f9a857
 
 
 ---
@@ -104,11 +104,10 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 
 * Ön elvégezte [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started.md) oktatóanyagot vagy az azzal egyenértékű [PowerShell-verziót](sql-database-get-started-powershell.md). Ha még nem tette, végezze el ezt az előfeltételként szolgáló oktatóanyagot, vagy hajtsa végre az oktatóanyag [PowerShell-verziójának](sql-database-get-started-powershell.md) végén található PowerShell-szkriptet a továbblépés előtt.
 
-<!------------------
+
 > [!TIP]
-> You can perform these same tasks in a getting started tutorial by using either [C#](sql-database-get-started-csharp.md) or [PowerShell](sql-database-get-started-powershell.md).
->
--------------------->
+> Ugyanezen feladatokat a [PowerShell](sql-database-get-started-backup-recovery-powershell.md) használatával is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
+
 
 ## <a name="sign-in-by-using-your-existing-account"></a>Bejelentkezés meglévő fiókkal
 [Meglévő előfizetés](https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure Portalhoz való csatlakozáshoz.
@@ -179,6 +178,11 @@ Az oktatóanyag ezen szakaszában az adatbázist egy új adatbázisba állítja 
 ## <a name="configure-long-term-retention-of-automated-backups-in-an-azure-recovery-services-vault"></a>Automatikus biztonsági mentések hosszú távú megőrzésének konfigurálása Azure helyreállítási tárban 
 
 Az oktatóanyag ezen szakaszában [konfigurál egy Azure helyreállítási tárat az automatikus biztonsági másolatok megőrzésére](sql-database-long-term-retention.md) a szolgáltatásszint megőrzési idejénél hosszabb időtartamra. 
+
+
+> [!TIP]
+> A biztonsági másolatok törléséről lásd a [hosszú távú megőrzési időtartamú biztonsági mentések törlésével](sql-database-long-term-retention-delete.md) foglalkozó témakört.
+
 
 1. Nyissa meg a kiszolgáló (**sqldbtutorialserver**) **SQL Server** paneljét.
 
@@ -299,12 +303,12 @@ Az oktatóanyag ezen szakaszában az adatbázist egy új adatbázisba állítja 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A szolgáltatás által létrehozott automatikus biztonsági másolatokkal kapcsolatos további információkért lásd: [automatikus biztonsági másolatok](: https://azure.microsoft.com/en-us/documentation/articles/)sql-database-automated-backups.MD
+- A szolgáltatás által létrehozott automatikus biztonsági másolatokkal kapcsolatos további információkért lásd az [automatikus biztonsági másolatokkal](sql-database-automated-backups.md) foglalkozó témakört.
 - A biztonsági másolatok hosszú távú megőrzésével kapcsolatos további információkért lásd: [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md)
 - A biztonsági másolatokból való visszaállítással kapcsolatos további információkért lásd: [visszaállítás biztonsági másolatból](sql-database-recovery-using-backups.md)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

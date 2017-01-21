@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/25/2016
+ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f7dafd3808b688cf1a7aff43ab996fb8e3d48cb9
+ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
+ms.openlocfilehash: fe40bc372a63735b0130bcbb115c312fa2e45fa6
 
 
 ---
@@ -41,9 +41,9 @@ Az Azure HDInsight teljes körűen felügyelt Spark szolgáltatást biztosít. A
 | Szolgáltatás | Leírás |
 | --- | --- |
 | A fürtök könnyen létrehozhatók |Az Azure felügyeleti portál, az Azure PowerShell vagy a HDInsight .NET SDK használatával percek alatt létrehozható egy új Spark-fürt a HDInsight platformon. Lásd: [Spark-fürt a HDInsightban – első lépések](hdinsight-apache-spark-jupyter-spark-sql.md) |
-| Könnyű használat |A Spark on HDInsight-fürtök előre konfigurált Jupyter notebookokat tartalmaznak. Ezeket interaktív adatfeldolgozásra és -megjelenítésre használhatja. Az URL-cím https://CLUSTERNAME.azurehdinsight.net/jupyter. Cserélje le a **CLUSTERNAME** kifejezést a Spark HDInsight-fürt nevére. |
+| Könnyű használat |A Spark on HDInsight-fürtök előre konfigurált Jupyter notebookokat tartalmaznak. Ezeket interaktív adatfeldolgozásra és -megjelenítésre használhatja. A Jupyter notebook URL-je: https://CLUSTERNAME.azurehdinsight.net/jupyter. Cserélje le a **CLUSTERNAME** kifejezést a Spark HDInsight-fürt nevére. |
 | REST API-k |A Spark on HDInsight tartalmazza a [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) REST API-alapú Spark-feladatkiszolgálót, amely a futó feladatok távoli elküldésére és megfigyelésére használható. |
-| Az Azure Data Lake Store támogatása |A Spark on HDInsight az Azure Data Lake Store további tárterületként történő használatára konfigurálható. További információk a Data Lake Store-ról: [Áttekintés: Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). |
+| Az Azure Data Lake Store támogatása |A Spark on HDInsight az Azure Data Lake Store további tárterületként, vagy elsődleges tárterületként (csak HDInsight 3.5-fürtökkel) történő használatára konfigurálható. További információk a Data Lake Store-ról: [Áttekintés: Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). |
 | Integráció az Azure-szolgáltatásokkal |A Spark on HDInsight az Azure Event Hubs felé összekötővel rendelkezik. Az Event Hubs használatával az ügyfelek streamelési alkalmazásokat állíthatnak elő a már a Spark részeként elérhető [Kafka](http://kafka.apache.org/) mellett. |
 | Támogatás az R Serverhez |Az R Server on HDInsight Spark-fürtjei elosztott R-számítások futtatására állíthatók be a Spark-fürtre jellemző sebesség mellett. További információk: [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) (R Server on HDInsight – első lépések). |
 | IntelliJ IDEA-integráció |Az IntelliJ HDInsight beépülő modulját alkalmazások létrehozásához és egy HDInsight Spark-fürt számára történő elküldéséhez használhatja. További információk: [Use HDInsight Tools Plugin for IntelliJ IDEA to create Spark applications for HDInsight Spark Linux cluster (Spark-alkalmazások HDInsight Spark Linux-fürt számára történő létrehozása az IntelliJ IDEA HDInsight-eszközök beépülő moduljának használatával)](hdinsight-apache-spark-intellij-tool-plugin.md). |
@@ -69,12 +69,12 @@ Az Apache Spark on HDInsight az adattárolást Azure-blobokban végzi. Az üzlet
 
 Az Apache Spark rendelkezik a Sparkra épülő [MLlib](http://spark.apache.org/mllib/) Machine Learning-könyvtárral is. Ezenfelül a Spark on HDInsight része a számos Machine Learning-csomaggal rendelkező Python elosztási rendszer, az Anaconda is. Mindezeknek és a Jupyter notebookok beépített támogatásának köszönhetően egy csúcskategóriás környezet áll rendelkezésére Machine Learning-alkalmazások létrehozására.  
 
-### <a name="streaming-and-realtime-data-analysis"></a>Streamelés és valós idejű adatelemzés
+### <a name="streaming-and-real-time-data-analysis"></a>Streamelés és valós idejű adatelemzés
 [Oktatóanyag megtekintése](hdinsight-apache-spark-eventhub-streaming.md)
 
 A valós idejű adatelemzés a forgatókönyvek egész skáláját kiszolgálja, kezdve az azonnali adatfeldolgozás műveleti időt csökkentő képességétől a valódi streamelési megoldások kiépítéséig. A Spark on HDInsight széles körű támogatást biztosít a valós idejű elemzési megoldások kiépítéséhez. Amíg a Spark számos adatforrást (például Kafka, Flume, Twitter, ZeroMQ vagy TCP-szoftvercsatornák) támogató összekötőkkel rendelkezik, a Spark on HDInsight az Azure Event Hubs eseményközpontokból származó adatok magas szintű feldolgozását is támogatja. Az Event Hubs az Azure legnépszerűbb várólista-szolgáltatása. Az azonnal használható Event Hubs-támogatás a Spark on HDInsightot ideális platformmá teszi a valós idejű elemzési folyamatok kiépítéséhez.
 
-## <a name="a-namenextstepsawhat-components-are-included-as-part-of-a-spark-cluster"></a><a name="next-steps"></a>Milyen összetevők találhatóak egy Spark-fürtben?
+## <a name="a-namenext-stepsawhat-components-are-included-as-part-of-a-spark-cluster"></a><a name="next-steps"></a>Milyen összetevők találhatóak egy Spark-fürtben?
 A Spark on HDInsight az alábbi, a fürtökön alapértelmezés szerint elérhető összetevőkből áll.
 
 * [Spark mag](https://spark.apache.org/docs/1.5.1/). A következőket tartalmazza: Spark mag, Spark SQL, Spark streamelési API-k, GraphX és MLlib.
@@ -115,6 +115,6 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

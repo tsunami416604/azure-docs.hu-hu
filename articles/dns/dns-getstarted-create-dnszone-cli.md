@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2016
+ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
-ms.openlocfilehash: 5bbd490925e5e25f10044af55af49daa494ee026
+ms.sourcegitcommit: f156e4d4c5ffddb7e93ebf21baa75864e0e260e9
+ms.openlocfilehash: d00792a4bb19e194dbbcee8b9c11e4a744891388
 
 ---
 
@@ -26,69 +26,14 @@ ms.openlocfilehash: 5bbd490925e5e25f10044af55af49daa494ee026
 > * [PowerShell](dns-getstarted-create-dnszone.md)
 > * [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 
-Ez a cikk bemutatja a DNS-zónák létrehozásának lépéseit a platformfüggetlen Azure parancssori felület (CLI) használatával, amely Windows, Mac és Linux platformokon is elérhető. A DNS-zónákat a PowerShell használatával, illetve az Azure portálon is létrehozhatja.
+Ez a cikk bemutatja a DNS-zónák létrehozásának lépéseit a platformfüggetlen Azure parancssori felület (CLI) használatával, amely Windows, Mac és Linux platformokon is elérhető. A DNS-zónákat az [Azure PowerShell](dns-getstarted-create-dnszone.md) használatával, illetve az [Azure Portalon](dns-getstarted-create-dnszone-portal.md) is létrehozhatja.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
+[!INCLUDE [dns-cli-setup](../../includes/dns-cli-setup-include.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
 
-A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következőkkel.
-
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
-* Telepítenie kell az Azure parancssori felület (CLI) legújabb verzióját, amely Windows, Linux és Mac platformokon is elérhető. További információt az [Azure parancssori felület (CLI) telepítése](../xplat-cli-install.md) című cikkben olvashat.
-
-## <a name="step-1---sign-in-and-create-a-resource-group"></a>1. lépés: Bejelentkezés és egy erőforráscsoport létrehozása
-
-### <a name="switch-cli-mode"></a>Kapcsolja át a parancssori felület működési módját
-
-Az Azure DNS az Azure Resource Managert használja. Váltson át a parancssori felületet megfelelő módjára az ARM-parancsok használatához.
-
-```azurecli
-azure config mode arm
-```
-
-### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
-
-A rendszer arra kéri, hogy végezzen hitelesítést a hitelesítő adataival. Ne feledje, hogy csak OrgID-fiókokat használhat.
-
-```azurecli
-azure login
-```
-
-### <a name="select-the-subscription"></a>Válassza ki az előfizetést
-
-Keresse meg a fiókot az előfizetésekben.
-
-```azurecli
-azure account list
-```
-
-Válassza ki, hogy melyik Azure előfizetést fogja használni.
-
-```azurecli
-azure account set "subscription name"
-```
-
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-
-Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Mivel azonban minden DNS-erőforrás globális, nem pedig regionális, az erőforráscsoport kiválasztott helye nincs hatással az Azure DNS szolgáltatásra.
-
-Ezt a lépést kihagyhatja, ha egy meglévő erőforráscsoportot használ.
-
-```azurecli
-azure group create -n myresourcegroup --location "West US"
-```
-
-### <a name="register-resource-provider"></a>Erőforrás-szolgáltató regisztrálása
-
-Az Azure DNS szolgáltatást a Microsoft.Network erőforrás-szolgáltató kezeli. Az Azure DNS használatbavétele előtt az Azure-előfizetést regisztrálni kell ennek az erőforrás-szolgáltatónak a használatához. Ez a műveletet minden egyes előfizetés esetén csak egyszer kell elvégezni.
-
-```azurecli
-azure provider register --namespace Microsoft.Network
-```
-
-## <a name="step-2---create-a-dns-zone"></a>2. lépés: A DNS-zóna létrehozása
+## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 A DNS-zóna az `azure network dns zone create` parancs használatával hozható létre. A paranccsal kapcsolatos súgó megtekintéséhez írja be a következőt: `azure network dns zone create -h`.
 
@@ -98,14 +43,14 @@ Az alábbi példaparancs a *MyResourceGroup* erőforráscsoportban létrehozza a
 azure network dns zone create MyResourceGroup contoso.com
 ```
 
-## <a name="step-3---verify"></a>3. lépés: Ellenőrzés
+## <a name="verify-your-dns-zone"></a>A DNS-zóna ellenőrzése
 
 ### <a name="view-records"></a>A rekordok megtekintése
 
 A DNS-zónák létrehozásával a következő DNS-rekordok is létrejönnek:
 
-* Az SOA-rekord. Ez minden DNS-zóna gyökerében megtalálható.
-* A mérvadó névkiszolgálói (NS-) rekordok. Ezek a rekordok jelenítik meg, hogy mely névkiszolgálók üzemeltetik a zónát. Az Azure DNS névkiszolgálókból álló készletet használ, így a különböző névkiszolgálók különböző zónákhoz tartozhatnak az Azure DNS szolgáltatásban. További információért tekintse meg a [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md) című cikket.
+* Az *SOA*-rekord. Ez a rekord minden DNS-zóna gyökerében megtalálható.
+* A mérvadó névkiszolgálói (NS-) rekordok. Ezek a rekordok jelenítik meg, hogy mely névkiszolgálók üzemeltetik a zónát. Az Azure DNS névkiszolgálókból álló készletet használ, így a különböző névkiszolgálók különböző zónákhoz tartozhatnak az Azure DNS szolgáltatásban. További információ: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
 
 A rekordok megtekintéséhez a `azure network dns-record-set list` parancsot használhatja:
 
@@ -144,10 +89,12 @@ info:    network dns record-set list command OK
 
 Az Azure DNS-névkiszolgálókon található DNS-zónákat a DNS-eszközök – például az nslookup, a dig vagy a `Resolve-DnsName` PowerShell-parancsmag – segítségével tesztelheti.
 
-Ha még nem delegálta a tartományát az új zóna használatára az Azure DNS-ben, a DNS-lekérdezést közvetlenül a zónája egyik névkiszolgálójához kell irányítani. A zóna névkiszolgálói a mérvadó névkiszolgálói rekordokban vannak megadva, a fenti „azure network dns record-set show” paranccsal megjelenített módon. Ügyeljen arra, hogy az alábbi parancsba a saját zónája megfelelő értékeit helyettesítse be.
+Ha még nem delegálta a tartományát az új zóna használatára az Azure DNS-ben, a DNS-lekérdezést közvetlenül a zónája egyik névkiszolgálójához kell irányítani. A zóna névkiszolgálói a mérvadó névkiszolgálói rekordokban vannak megadva, az `azure network dns record-set list` paranccsal megjelenített módon.
 
-Az alábbi példa a „dig” parancs segítségével és a DNS-zónához hozzárendelt névkiszolgálók használatával kérdezi le a contoso.com tartományt. A lekérdezésnek arra a névkiszolgálóra kell mutatnia, amelyhez *@\<a zóna névkiszolgálóját\>* és a „dig” parancsot használó zóna nevét használtuk.
+Az alábbi példa a „dig” parancs segítségével és a DNS-zónához hozzárendelt névkiszolgálók használatával kérdezi le a contoso.com tartományt. Ügyeljen arra, hogy a saját zónája megfelelő értékeit helyettesítse be.
 
+     > dig @ns1-01.azure-dns.com contoso.com
+     
      <<>> DiG 9.10.2-P2 <<>> @ns1-01.azure-dns.com contoso.com
     (1 server found)
     global options: +cmd
@@ -171,11 +118,11 @@ Az alábbi példa a „dig” parancs segítségével és a DNS-zónához hozzá
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta a DNS-zónát, hozzon létre az internetes tartományához tartozó [rekordhalmazokat és rekordokat](dns-getstarted-create-recordset-cli.md).
+Miután létrehozta a DNS-zónát, [hozzon létre benne DNS-rekordhalmazokat és -rekordokat](dns-getstarted-create-recordset-cli.md).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

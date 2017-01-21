@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2016
-ms.author: osamazia
+ms.date: 01/03/2017
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7d7516dd2fa2ddc23d381ade52c53115a8af7231
+ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
+ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
 
 
 ---
@@ -101,7 +101,7 @@ Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azu
 
 A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
 
-## <a name="transit-routing-and-crossregion-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
+## <a name="transit-routing-and-cross-region-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
 Az ExpressRoute nem konfigurálható tranzit útválasztóként. A tranzit útválasztási szolgáltatások tekintetében a kapcsolatszolgáltatójára kell támaszkodnia.
 
 ## <a name="advertising-default-routes"></a>Alapértelmezett útvonalak meghirdetése
@@ -117,7 +117,7 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 > 
 > 
 
-## <a name="support-for-bgp-communities-preview"></a>BGP-közösségek támogatása (előzetes kiadás)
+## <a name="support-for-bgp-communities"></a>BGP-közösségek támogatása
 Ez a szakasz áttekinti, hogyan használhatók a BGP-közösségek az ExpressRoute-tal. A Microsoft a megfelelő közösségértékekkel címkézett útvonalakkal hirdeti meg az útvonalakat a nyilvános és a Microsoft társviszony-létesítésekben. Ennek az eljárásnak az indoklását és a közösségértékek részleteit alább olvashatja. A Microsoft azonban nem fogadja el a Microsoft számára meghirdetett útvonalakhoz rendelt közösségértékeket.
 
 Ha az ExpressRoute-on keresztül csatlakozik a Microsofthoz egy geopolitikai régión belül lévő bármelyik társviszony-létesítési helyszínen, az összes Microsoft-felhőszolgáltatáshoz hozzáférést kap a geopolitikai határon belüli összes régióban. 
@@ -126,41 +126,41 @@ Ha például Amsterdamban csatlakozik a Microsofthoz az ExpressRoute-on kereszt�
 
 A geopolitikai régiók, a hozzájuk rendelt Azure-régiók és a megfelelő ExpressRoute társviszony-létesítési helyszínek részletes listáját az [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md) oldalon találja.
 
-Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat. Több kapcsolattal jelentős előnyöket szerezhet a magas rendelkezésre állás és a földrajzi alapú redundancia területén. Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, a Microsoft ugyanazt az előtagkészletet hirdeti meg a nyilvános társviszony-létesítési és a Microsoft társviszony-létesítési útvonalakon. Ez azt jelenti, hogy a hálózatából több útvonal fog irányulni a Microsoft felé. Emiatt előfordulhat, hogy a hálózaton belüli útvonalválasztási döntések nem lesznek optimálisak. Ez az optimálisnál rosszabb csatlakozási élményt okozhat a különböző szolgáltatások esetében. 
+Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat. Több kapcsolattal jelentős előnyöket szerezhet a magas rendelkezésre állás és a földrajzi alapú redundancia területén. Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, a Microsoft ugyanazt az előtagkészletet hirdeti meg a nyilvános társviszony-létesítési és a Microsoft társviszony-létesítési útvonalakon. Ez azt jelenti, hogy a hálózatából több útvonal fog irányulni a Microsoft felé. Emiatt előfordulhat, hogy a hálózaton belüli útvonalválasztási döntések nem lesznek optimálisak. Ez az optimálisnál rosszabb csatlakozási élményt okozhat a különböző szolgáltatások esetében. A közösségértékek alapján megfelelő útválasztási döntéseket hozhat, amelyekkel [optimális útválasztást kínálhat a felhasználóknak](expressroute-optimize-routing.md).
 
-A Microsoft a megfelelő BGP-közösség értékét tartalmazó címkével látja el a nyilvános társviszony-létesítésen és a Microsoft társviszony-létesítésen keresztül meghirdetett előtagokat, amelyek jelzik, hogy az előtagok melyik régióban vannak üzemeltetve. A közösségértékek alapján megfelelő útválasztási döntéseket hozhat, amelyekkel [optimális útválasztást kínálhat az ügyfeleknek](expressroute-optimize-routing.md).
-
-| **Geopolitikai régió** | **Microsoft Azure-régió** | **BGP-közösségérték** |
-| --- | --- | --- |
-| **Észak-Amerika** | | |
-| USA keleti régiója |12076:51004 | |
-| USA 2. keleti régiója |12076:51005 | |
-| USA nyugati régiója |12076:51006 | |
-| USA nyugati régiója, 2. |12076:51026 | |
-| USA nyugati középső régiója |12076:51027 | |
-| USA északi középső régiója |12076:51007 | |
-| USA déli középső régiója |12076:51008 | |
-| USA középső régiója |12076:51009 | |
-| Közép-Kanada |12076:51020 | |
-| Kelet-Kanada |12076:51021 | |
-| **Dél-Amerika** | | |
-| Dél-Brazília |12076:51014 | |
-| **Európa** | | |
-| Észak-Európa |12076:51003 | |
-| Nyugat-Európa |12076:51002 | |
-| **Ázsia és a Csendes-óceáni térség** | | |
-| Kelet-Ázsia |12076:51010 | |
-| Délkelet-Ázsia |12076:51011 | |
-| **Japán** | | |
-| Kelet-Japán |12076:51012 | |
-| Nyugat-Japán |12076:51013 | |
-| **Ausztrália** | | |
-| Kelet-Ausztrália |12076:51015 | |
-| Délkelet-Ausztrália |12076:51016 | |
-| **India** | | |
-| Dél-India |12076:51019 | |
-| Nyugat-India |12076:51018 | |
-| Közép-India |12076:51017 | |
+| **Microsoft Azure-régió** | **BGP-közösségérték** |
+| --- | --- |
+| **Észak-Amerika** | |
+| USA keleti régiója |12076:51004 |
+| USA 2. keleti régiója |12076:51005 |
+| USA nyugati régiója |12076:51006 |
+| USA nyugati régiója, 2. |12076:51026 |
+| USA nyugati középső régiója |12076:51027 |
+| USA északi középső régiója |12076:51007 |
+| USA déli középső régiója |12076:51008 |
+| USA középső régiója |12076:51009 |
+| Közép-Kanada |12076:51020 |
+| Kelet-Kanada |12076:51021 |
+| **Dél-Amerika** | |
+| Dél-Brazília |12076:51014 |
+| **Európa** | |
+| Észak-Európa |12076:51003 |
+| Nyugat-Európa |12076:51002 |
+| Az Egyesült Királyság déli régiója | 12076:51024 |
+| Az Egyesült Királyság nyugati régiója | 12076:51025 |
+| **Ázsia és a Csendes-óceáni térség** | |
+| Kelet-Ázsia |12076:51010 |
+| Délkelet-Ázsia |12076:51011 |
+| **Japán** | |
+| Kelet-Japán |12076:51012 |
+| Nyugat-Japán |12076:51013 |
+| **Ausztrália** | |
+| Kelet-Ausztrália |12076:51015 |
+| Délkelet-Ausztrália |12076:51016 |
+| **India** | |
+| Dél-India |12076:51019 |
+| Nyugat-India |12076:51018 |
+| Közép-India |12076:51017 |
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
 
@@ -173,16 +173,34 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 | **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
-| **Exchange** |12076:5010 |
-| **SharePoint** |12076:5020 |
-| **Skype Vállalati verzió** |12076:5030 |
-| **CRM Online** |12076:5040 |
-| **Egyéb Office 365-szolgáltatások** |12076:5100 |
+| Exchange Online |12076:5010 |
+| SharePoint Online |12076:5020 |
+| Skype Vállalati online verzió |12076:5030 |
+| CRM Online |12076:5040 |
+| Egyéb Office 365-szolgáltatások |12076:5100 |
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.
 > 
 > 
+
+### <a name="bgp-community-support-in-national-clouds-preview"></a>BGP-közösségek támogatása országos felhőkörnyezetekben (Előzetes verzió)
+
+| **Országos felhőkörnyezetek – Azure-régió**| **BGP-közösségérték** |
+| --- | --- |
+| **USA-beli államigazgatás** |  |
+| USA-beli államigazgatás – Iowa | 12076:51109 |
+| USA-beli államigazgatás – Virginia | 12076:51105 |
+
+
+| **Szolgáltatás országos felhőkörnyezetekben** | **BGP-közösségérték** |
+| --- | --- |
+| **USA-beli államigazgatás** |  |
+| Exchange Online |12076:5110 |
+| SharePoint Online |12076:5120 |
+| Skype Vállalati online verzió |12076:5130 |
+| CRM Online |12076:5140 |
+| Egyéb Office 365-szolgáltatások |12076:5200 |
 
 ## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
@@ -194,6 +212,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
