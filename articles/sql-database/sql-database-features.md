@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
-ms.openlocfilehash: c7cb4b872723e07b720c87ecef9d9d8f136c25eb
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
 
 
 ---
@@ -156,11 +156,11 @@ A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javaso
 - Az Azure SQL Database-adatbázisok áttekintését lásd: [Az SQL Database-adatbázisok áttekintése](sql-database-overview.md)
 - A Transact-SQL támogatásával és eltéréseivel kapcsolatos tudnivalókat lásd: [Azure SQL Database Transact-SQL különbségek](sql-database-transact-sql-information.md)
 - A pontos erőforráskvótákat és -korlátozásokat a **szolgáltatásszint** határozza meg. A szolgáltatásszintek áttekintését lásd: [SQL Database-szolgáltatásszintek](sql-database-service-tiers.md).
-- A biztonsággal kapcsolatos irányelveket lásd: [Az Azure SQL Database biztonsági irányelvei és korlátozásai](sql-database-security-guidelines.md).
+- A biztonsági szolgáltatások áttekintését lásd [az Azure SQL Database biztonsági szolgáltatásainak áttekintésével](sql-database-security-overview.md) foglalkozó cikkben.
 - Az SQL Database illesztőinek rendelkezésre állásával és támogatásával kapcsolatos tudnivalókat lásd: [Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez](sql-database-libraries.md).
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

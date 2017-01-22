@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9aeb08f0e4b4446fe8a4fc9ef7f4670ea08eacaa
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 25fef9472f023c37538cfc2f5f7c37c0bfca746e
 
 
 ---
@@ -34,21 +34,23 @@ A Biztonsági riasztások csempén áttekintheti az aktuális biztonsági incide
 1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
    
     ![Biztonsági riasztások csempe a Security Centerben](./media/security-center-incident/security-center-incident-fig1.png)
+
 2. A csempére kattintva bontsa ki azt, ha pedig a rendszer biztonsági incidenst észlel, az a biztonsági riasztások diagram alatt jelenik meg, ahogyan az az alábbi ábrán látható:
    
-   ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig2.png)
+
 3. A biztonsági incidensek leírásának a többi riasztástól eltérő ikonja van. Kattintson erre az ikonra az incidens részleteinek megtekintéséhez.
    
-   ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig3.png)
-4. Az **incidens** panelen további részleteket tekinthet meg az adott biztonsági incidensről, többek között annak teljes leírását, súlyosságát (ez esetben magas), aktuális állapotát (ez esetben továbbra is *aktív*, ami azt jelenti, hogy a felhasználó még nem hajtott végre azt *bezáró* műveletet – ezt úgy teheti meg, ha a jobb gombbal kattint a **Biztonsági riasztások** panelen látható incidensre), a megtámadott erőforrást (amely ez esetben a *VM1*), az incidens elhárításához szükséges lépéseket, az alsó panelen pedig az incidens során előfordult riasztásokat. Ha további információkat kíván megtudni az egyes riasztásokról, egyszerűen kattintson rájuk. Ekkor egy újabb panel nyílik meg, ahogy az az alábbi képen is látható:
+    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig3.png)
+
+4. Az **incidens** panelen további részleteket tekinthet meg az adott biztonsági incidensről, többek között annak teljes leírását, súlyosságát (ez esetben magas), aktuális állapotát (ez esetben továbbra is *aktív*, ami azt jelenti, hogy a felhasználó még nem hajtott végre rajta műveletet – ezt úgy teheti meg, ha a jobb gombbal a **Biztonsági riasztások** panelen látható incidensre kattint), a megtámadott erőforrást (amely ez esetben a *VM1*), az incidens elhárításához szükséges lépéseket, az alsó panelen pedig az incidens során előfordult riasztásokat. Ha további információkat kíván megtudni az egyes riasztásokról, egyszerűen kattintson rájuk. Ekkor egy újabb panel nyílik meg, ahogy az az alábbi képen is látható:
    
-   ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig4.png)
+    ![Biztonsági incidens](./media/security-center-incident/security-center-incident-fig4.png)
 
 A panelen megjelenő információk a riasztástól függően változnak. Ezen riasztások kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket. Ezzel a képességgel kapcsolatos fontos szempontok:
 
 * Egy új szűrő alkalmazásával testre szabhatja a nézetet csak incidensek, csak riasztások vagy mindkettő megjelenítésére. 
 * Egy adott riasztás kezelhető egy incidens (ha van) részeként, valamint önálló riasztásként is. 
-* Az incidens bezárásával a kapcsolódó riasztások nem záródnak be.
 
 ## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-kezelési képességeinek használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -63,6 +65,6 @@ Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-ke
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

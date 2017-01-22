@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/03/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 5852808ad0f5cf02908df7ff969ab2106d9f5abd
+ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
+ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 
 ---
@@ -35,7 +35,7 @@ A **Resources security health** (Erőforrások biztonsági állapota) csempén i
 
 ![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
 
-Ha a Security Center intézkedést igénylő biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](../virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
+Ha a Security Center intézkedést igénylő biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](/virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
 
 ### <a name="monitor-virtual-machines"></a>Virtuális gépek figyelése
 A **Resources security health** (Erőforrások biztonsági állapota) csempén található **Virtual machines** (Virtuális gépek) elemre kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen további információkat talál az előkészítési és megelőzési lépésekről, valamint itt tekintheti meg a Security Center által figyelt valamennyi virtuális gép listáját is.
@@ -162,22 +162,22 @@ A táblázat elemei (a virtuális gépek és az alhálózatok) súlyosság szeri
 * Narancssárga: közepes szintű prioritás, a lehető legrövidebb időn belül beavatkozást igényel
 * Zöld (utolsó): megfelelő állapot
 
-A topológia e nézetében az első szinten vannak a [virtuális hálózatok](../virtual-network/virtual-networks-overview.md), a [virtuális hálózati átjárók](../vpn-gateway/vpn-gateway-site-to-site-create.md) és a [ (klasszikus) virtuális hálózatok](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). A második szinthez tartoznak az alhálózatok, míg a harmadik szinten az ezekhez az alhálózatokhoz tartozó virtuális gépek. A jobb oldali oszlopban az adott erőforrásokhoz tartozó hálózati biztonsági csoport aktuális állapota található, ahogyan az alábbi példában is látható:
+A topológia e nézetében az első szinten vannak a [virtuális hálózatok](../virtual-network/virtual-networks-overview.md), a [virtuális hálózati átjárók](/vpn-gateway/vpn-gateway-site-to-site-create.md) és a [ (klasszikus) virtuális hálózatok](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). A második szinthez tartoznak az alhálózatok, míg a harmadik szinten az ezekhez az alhálózatokhoz tartozó virtuális gépek. A jobb oldali oszlopban az adott erőforrásokhoz tartozó hálózati biztonsági csoport aktuális állapota található, ahogyan az alábbi példában is látható:
 
 ![A hálózati biztonsági csoport állapota a Networking topology (Hálózati topológia) szakaszban](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 A panel alsó részén a virtuális gépre vonatkozó javaslatok láthatók, a fentiekben leírtakhoz hasonlóan. A javaslatra kattintva további információkat tekinthet meg, illetve alkalmazhatók a szükséges biztonsági rendszabályok/konfigurációk.
 
 ### <a name="monitor-data"></a>Adatok figyelése
-A **Resources security health** (Erőforrások biztonsági állapota) csempe **Data** (Adatok) csempéjére kattintva megnyithatja az **SQL** panelt, amelyen megtekintheti a problémákkal (például a naplózás vagy a transzparens adattitkosítás kikapcsolása) kapcsolatos javaslatokat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan.
+A **Resources security health** (Erőforrások biztonsági állapota) csempe **Data** (Adatok) csempéjére kattintva megnyithatja a **Data Resources** (Adatforrások) panelt, amelyen megtekintheti az SQL és a Storage használatával kapcsolatos javaslatokat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan. A tárolás titkosításáról további információkat az Azure-tárfiókok titkosításának Azure Security Centerben történő engedélyezésével foglalkozó cikkben talál.
 
-![SQL-erőforrás állapota](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
+![Adatforrások](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
-Bármely javaslatra kattintva részletesebb információt kap a probléma megoldásához szükséges további intézkedésről. A következő példában a **Database Auditing not enabled** (Adatbázis-naplózás nincs engedélyezve) javaslat kibontott nézete látható.
+Az **SQL Recommendations** (Javaslatok az SQL használatával kapcsolatban) területen bármely javaslatra kattintva részletesebb információt kap a probléma megoldásához szükséges további intézkedésről. A következő példában a **Database Auditing & Threat detection on SQL databases** (Naplózás és fenyegetésészlelés az SQL-adatbázisokban) javaslat kibontott nézete látható.
 
-![SQL-javaslat részletei](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
+![SQL-javaslat részletei](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-Az **Enable Auditing on SQL databases** (SQL-adatbázis naplózásának engedélyezése) panelen a következő információk láthatók:
+Az **Enable Auditing & Threat detection on SQL databases** (Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon) panelen a következő információk láthatók:
 
 * Az SQL-adatbázisok listája
 * A kiszolgáló, amely tárolja ezeket
@@ -185,14 +185,15 @@ Az **Enable Auditing on SQL databases** (SQL-adatbázis naplózásának engedél
 * Az aktuális állapot
 * A probléma súlyossága
 
-Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi képernyőfelvételen látható módon megnyílik az **Auditing & Threat detection** (Naplózás és fenyegetésészlelés) panel.
+Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi képernyőn látható módon megnyílik az **Auditing & Threat detection** (Naplózás és fenyegetésészlelés) panel.
 
 ![Naplózás és fenyegetésészlelés panel](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
 A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beállítását **ON** (BE) értékre.
 
 ### <a name="monitor-applications"></a>Alkalmazások figyelése
-Ha az Azure számítási feladatban felfedett webes portokkal (80-as és 443-as TCP-portok) működő (az Azure Resource Managerrel létrehozott) [virtuális gépeken](../azure-resource-manager/resource-manager-deployment-model.md) található alkalmazások futnak, a Security Center képes ezeket is figyelni, azonosítani a potenciális biztonsági problémákat és megoldást javasolni. Az **Applications** (Alkalmazások) csempére kattintva megnyithatja az **Applications** (Alkalmazások) panelt, amelynek **Prevention steps** (Megelőzési lépések) szakaszában számos javaslat található. Emellett itt látható az alkalmazások állomásonkénti/virtuális IP-címenkénti lebontása is az alábbi képernyőfelvételnek megfelelően.
+
+Ha az Azure számítási feladatban felfedett webes portokkal (80-as és 443-as TCP-portok) működő (az Azure Resource Managerrel létrehozott) [virtuális gépeken](../azure-resource-manager/resource-manager-deployment-model.md) található alkalmazások futnak, a Security Center képes ezeket is figyelni, azonosítani a potenciális biztonsági problémákat és megoldást javasolni. Az **Alkalmazások** csempére kattintva megnyithatja az **Alkalmazások** panelt, amelynek **Alkalmazásokkal kapcsolatos javaslatok** szakaszában számos javaslat található. Emellett itt látható az alkalmazások állomásonkénti/virtuális IP-címenkénti lebontása is az alábbi képernyőfelvételnek megfelelően.
 
 ![Alkalmazások biztonsági állapota](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -216,6 +217,6 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

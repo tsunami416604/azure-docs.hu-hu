@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e2fa11046adf828497b142e1043ac1c2a15443ef
+ms.sourcegitcommit: bccec1e4078c38e1cc9205a36d3a5df579df35b6
+ms.openlocfilehash: d5ff397e947a7edc8310da59ff9fe8896829e35d
 
 
 ---
-# <a name="introduction-to-apache-storm-on-hdinsight-realtime-analytics-for-hadoop"></a>A HDInsight alatt futó Apache Storm bemutatása: Valós idejű elemzések a Hadoop használatával
+# <a name="introduction-to-apache-storm-on-hdinsight-real-time-analytics-for-hadoop"></a>A HDInsight alatt futó Apache Storm bemutatása: Valós idejű elemzések a Hadoop használatával
 A HDInsight alatt futó Apache Storm lehetővé teszi, hogy elosztott, valós idejű elemző megoldásokat hozzon létre az Azure környezetben az [Apache Hadoop](http://hadoop.apache.org) használatával.
 
 ## <a name="what-is-apache-storm"></a>Mi az Apache Storm?
@@ -36,8 +36,9 @@ A HDInsight alatt futó Apache Storm egy felügyelt fürt, amely integrálva van
   * Programozási nyelvek keverékének támogatása: az adatok Java használatával beolvashatók, majd a C használatával feldolgozhatók#
     
     > [!NOTE]
-    > A C#-topológiák csak a Windows-alapú HDInsight-fürtökön támogatottak.
+    > Egy C#-topológia Linux-alapú fürttel történő használatához 0.10.0.6 vagy újabb verzióra kell frissítenie a projekt által használt Microsoft.SCP.Net.SDK NuGet csomagot. A csomag verziójának a HDInsightban telepített Storm főverziójával is egyeznie kell. Például, a HDInsight 3.3 és 3.4 verzióján futó Storm a Storm 0.10.x verzióját használja, míg a HDInsight 3.5 a Storm 1.0.x verziót.
     > 
+    > A Linux-alapú fürtök C#-topológiáinak a .NET 4.5-öt kell használnia, és a Mono segítségével futhatnak a HDInsight-fürtön. A legtöbb megoldás működik, javasoljuk azonban, hogy ellenőrizze a lehetséges inkompatibilitásokat a [Mono kompatbilitását](http://www.mono-project.com/docs/about-mono/compatibility/) ismertető dokumentumban.
     > 
   * Storm-topológiák létrehozása a **Trident** Java kezelőfelülettel, amelyek támogatják az üzenetek „pontosan egyszeri” feldolgozását, a „tranzakciós” adattároló-megőrzést és számos gyakori stream analytics-műveletet
 * Beépített felfelé és lefelé méretezési lehetőségek: a HDInsight-fürtök a futó Storm-topológiák befolyásolása nélkül méretezhetők
@@ -47,13 +48,13 @@ A HDInsight alatt futó Apache Storm egy felügyelt fürt, amely integrálva van
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/documentation/Powered-By.html)
 
-A Storm használatának kezdő lépéseit itt találja: [A HDInsighton futó Storm bemutatása][gettingstarted]
+A Storm használatának kezdő lépéseit itt találja: [A HDInsighton futó Storm bemutatása][gettingstarted].
 
 ### <a name="ease-of-provisioning"></a>Könnyű kiépítés
 Egy HDInsight alatt futó új Storm-fürtöt percek alatt kiépíthet. Adja meg a fürt nevét, méretét, rendszergazdai fiókját és a tárfiókot. Az Azure létrehozza a fürtöt, vele együtt pedig példatopológiákat és egy webes felügyeleti irányítópultot is.
 
 > [!NOTE]
-> A Storm-fürtök az [Azure parancssori felület](../xplat-cli-install.md) vagy az [Azure PowerShell](../powershell-install-configure.md) használatával is kiépíthetők.
+> A Storm-fürtök az [Azure parancssori felület](../xplat-cli-install.md) vagy az [Azure PowerShell](/powershell/azureps-cmdlets-docs) használatával is kiépíthetők.
 > 
 > 
 
@@ -107,7 +108,7 @@ Habár a fürtben található csomópontok számát a létrehozáskor megadhatja
 ### <a name="support"></a>Támogatás
 A HDInsight alatt futó Stormhoz éjjel-nappal teljes körű, vállalati szintű támogatás áll rendelkezésre. A HDInsight alatt futó Storm emellett szolgáltatásiszint-szerződésben garantált 99,9%-os elérhetőséggel rendelkezik. Ez azt jelenti, hogy a fürt garantáltan az idő legalább 99,9%-ában elérhető lesz kívülről.
 
-## <a name="common-use-cases-for-realtime-analytics"></a>Valós idejű elemzések gyakori alkalmazási helyzetei
+## <a name="common-use-cases-for-real-time-analytics"></a>Valós idejű elemzések gyakori alkalmazási helyzetei
 Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén a HDInsight alatt futó Apache Storm használható. Információ valós felhasználási forgatókönyvekről: [How companies are using Storm](https://storm.apache.org/documentation/Powered-By.html) (A Storm vállalati felhasználása).
 
 * Eszközök internetes hálózata (IoT)
@@ -138,7 +139,7 @@ Az Apache Storm a HDInsightból vagy a Hadoopból ismerős MapReduce-feladatok h
   
   * A **Nimbus** egy Thrift-szolgáltatás, a **topológiák** pedig Thrift-definíciók, így a topológiák többféle programnyelv használatával is fejleszthetők.
 
-További információ a Storm összetevőiről: [Storm oktatóanyag][apachetutorial] az apache.org webhelyen.
+További információ a Storm összetevőiről: [Storm-oktatóanyag][apachetutorial] az apache.org webhelyen.
 
 ## <a name="what-programming-languages-can-i-use"></a>Milyen programnyelveket használhatok?
 A HDInsight-fürtön futó Storm a C#, Java és Python nyelveket támogatja.
@@ -196,7 +197,7 @@ A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt fu
 ## <a name="next-steps"></a>Következő lépések
 További információk a HDInsight alatt futó Apache Storm valós idejű elemzési megoldásairól:
 
-* [A HDInsight alatt futó Storm bemutatása][gettingstarted]
+* [A HDInsighton futó Storm bemutatása][gettingstarted]
 * [HDInsight alatt futó Storm példatopológiái](hdinsight-storm-example-topology.md)
 
 [stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
@@ -206,6 +207,6 @@ További információk a HDInsight alatt futó Apache Storm valós idejű elemz�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
