@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
-ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: 819b40302f158d1d6224878c164cf7ff71947887
 
 
 ---
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert f
 Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe. A parancsokban szereplő minta paraméterértékeket cserélje le olyan nevekkel, amelyek az Ön saját környezetében értelmesek.
 
 ## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
-Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a name="step-2-create-a-resource-group"></a>2. lépés: Erőforráscsoport létrehozása
 Mivel egy erőforráscsoportnak kell tartalmaznia valamennyi erőforrást, ezért először ezt hozzuk létre.  
@@ -159,6 +159,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

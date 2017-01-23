@@ -3,7 +3,7 @@ title: "Oktatóprogram – Ismerkedés az Azure Batch Python-ügyfelével | Micr
 description: "Egy egyszerű forgatókönyvvel megismerheti az Azure Batch alapvető fogalmait és azt, hogyan fejleszthet a Batch szolgáltatáshoz"
 services: batch
 documentationcenter: python
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 11/30/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 64f70aab802ed377de1686fcdb7e641c30299b9c
-ms.openlocfilehash: 6630899081a76d7a8bc54f53a33c76dda9f1b0fa
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 3c1efaa277c6fba7965d6fe10cc5991cb02281d7
 
 
 ---
@@ -525,7 +525,7 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
 ```
 
 ## <a name="step-7-download-task-output"></a>7. lépés: Feladat kimenetének letöltése
-![Feladat kimenetének letöltése a Storage-ból][7]<br/>
+![Tevékenység kimenetének letöltése a Storage-ból][7]<br/>
 
 Most, hogy a feladat befejeződött, a tevékenységek kimenete letölthető az Azure Storage-ból. Ez a `download_blobs_from_container` hívásával végezhető el a *python_tutorial_client.py* fájlban:
 
@@ -708,6 +708,6 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

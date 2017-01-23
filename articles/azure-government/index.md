@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: f6a1d50752043e74cd5b8adadfcb5ff41d0716d0
-ms.openlocfilehash: e93f2197c677a7e64a18646ddece38c48a200056
+ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
+ms.openlocfilehash: 93a2c8da64000d03538f73befc167368915c3dbb
 
 ---
 #<a name="azure-government-documentation"></a>Azure Government – dokumentáció
@@ -12,7 +12,7 @@ A Microsoft Azure Government egy, a biztonság, az adatvédelem és az ellenőrz
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="../azure-government-overview?toc=%2fazure%2fazure-government%2ftoc.json">
+        <a href="../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -30,7 +30,7 @@ A Microsoft Azure Government egy, a biztonság, az adatvédelem és az ellenőrz
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-government">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-government">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -51,38 +51,26 @@ A Microsoft Azure Government egy, a biztonság, az adatvédelem és az ellenőrz
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/rest/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST</h3>
-                        <p>Azure Government – REST API-referencia</p>
+                        <h3>Szolgáltatások</h3>
+                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-compute">Számítás</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-storage">Tárolás</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-database">Adatbázis</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-networking">Hálózat</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity">Biztonság és identitás</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement">Felügyelet és kezelés</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt416943">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Azure Government – felügyelt referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    </ul>
+</ul>
     
 
 <div class="downloadHolder">
@@ -95,6 +83,6 @@ Azure Government – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
