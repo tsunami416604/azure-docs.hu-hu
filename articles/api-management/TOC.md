@@ -39,13 +39,16 @@
 ### [Felhasználói fiókok kezelése](api-management-howto-create-or-invite-developers.md)
 ### [Kezelés automatizálással](automation-manage-api-management.md)
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
-#Referencia
+
+# Referencia
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Klasszikus PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
 ## [REST](/rest/api/apimanagement/)
+## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
+
+
+# Erőforrások
 ## [Házirendek](https://msdn.microsoft.com/library/azure/dn894081)
 ## [Sablonok](https://msdn.microsoft.com/library/azure/mt697540)
-#Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
@@ -63,6 +66,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

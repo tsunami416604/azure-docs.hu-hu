@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/20/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
+ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ## <a name="setting-up-an-azure-account-for-media-services"></a>Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
-Egy Media Services-fiók létrehozásához használja a klasszikus Azure portált. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md) Miután a klasszikus Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
+Media Services-fiók létrehozásához használja az Azure Portalt. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md) Miután az Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
 
 ## <a name="setting-up-for-media-services-development"></a>A Media Services-fejlesztés előkészítése
 Ez a szakasz a Javához készült Media Services SDK használatával végzett Media Services-fejlesztés általános előfeltételeit tartalmazza.
 
 ### <a name="prerequisites"></a>Előfeltételek
 * Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
-* A Javához készült Azure-könyvtárak, amelyeket az [Azure Java Developer Centerből][(Azure Java fejlesztői központból) lehet telepíteni].
+* A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][Azure Java Developer Center] lehet telepíteni.
 
 ## <a name="how-to-use-media-services-with-java"></a>Útmutató: A Media Services használata Javával
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
@@ -260,16 +260,16 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>További források
-Media Services Javadoc-dokumentációja, lásd: [Azure Libraries for Java documentation][(Java-dokumentáció Azure-könyvtárakban)].
+A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][Azure Libraries for Java documentation].
 
 <!-- URLs. -->
 
-[Azure Java fejlesztői központ]: http://azure.microsoft.com/develop/java/
-[Java-dokumentáció az Azure-könyvtárakban]: http://dl.windowsazure.com/javadoc/
-[Media Services ügyféloldali fejlesztés]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

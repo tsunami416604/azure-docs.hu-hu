@@ -1,6 +1,6 @@
 ---
-title: "Mi az a hálózati biztonsági csoport (NSG)?"
-description: "Ismerje meg a hálózati biztonsági csoportokra (NSG) épülő Azure elosztott tűzfalat, és azt, hogy miként használhatja az NSG-ket a virtuális hálózatokon (VNetek) a forgalom elkülönítésére és irányítására."
+title: "Hálózati biztonsági csoportok | Microsoft Docs"
+description: "Ismerje meg, miként különítheti el és irányíthatja a forgalmat virtuális hálózatán belül a hálózati biztonsági csoportokra épülő Azure elosztott tűzfal használatával."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92ba745915c4b496ac6b0ff3b3e25f6611f5707c
+ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
+ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
 
 
 ---
-# <a name="what-is-a-network-security-group-nsg"></a>Mi az a hálózati biztonsági csoport (NSG)?
-A hálózati biztonsági csoport (NSG) tartalmaz egy hozzáférés-vezérlési listát (ACL) a szabályokról, amelyek egy virtuális hálózaton belül engedélyezik vagy megtagadják a virtuálisgép-példányokra irányuló hálózati forgalmat. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Amikor egy NSG-t hozzárendelnek egy alhálózathoz, az ACL szabályok érvényessé válnak az alhálózat összes virtuálisgép-példányára. Emellett egy adott virtuális gépre irányuló forgalmat tovább is lehet korlátozni azzal hogy egy NSG-t közvetlenül ahhoz a virtuális géphez rendelnek.
+# <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+
+A hálózati biztonsági csoport (NSG) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom érhesse el a virtuális hálózatban futó virtuálisgép-példányokat. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Amikor egy NSG-t hozzárendelnek egy alhálózathoz, az ACL szabályok érvényessé válnak az alhálózat összes virtuálisgép-példányára. Emellett egy adott virtuális gépre irányuló forgalmat tovább is lehet korlátozni azzal hogy egy NSG-t közvetlenül ahhoz a virtuális géphez rendelnek.
+
+> [!NOTE]
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). A jelen cikk mindkét modell használatát bemutatja, de a Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 ## <a name="nsg-resource"></a>NSG-erőforrás
 Az NSG-k az alábbi tulajdonságokat tartalmazzák.
@@ -36,10 +40,9 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák.
 > [!NOTE]
 > A végpont-alapú ACL-ek és hálózati biztonsági csoportok nem támogatottak ugyanazon a virtuálisgép-példányon. Ha használni szeretne egy NSG-t, és már be van állítva egy végponti ACL, először el kell távolítani a végponti ACL-t. Ennek módjáról a [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md) (A hozzáférés-vezérlési listák (ACL-ek) kezelése a végpontoknál, a PowerShell használatával) szakaszban talál információkat.
 > 
-> 
 
 ### <a name="nsg-rules"></a>NSG-szabályok
-Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák.
+Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolások |
 | --- | --- | --- | --- |
@@ -90,55 +93,41 @@ Ahogy az alábbi alapértelmezett szabályok is mutatják, a virtuális hálóza
 ## <a name="associating-nsgs"></a>Az NSG-k társítása
 Az NSG-ket virtuális gépekhez, hálózati adapterekhez és alhálózatokhoz is társíthatja attól függően, hogy milyen üzembe helyezési modellt használ.
 
-[!INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
-
 * **NGS társítása virtuális géphez (csak klasszikus üzembe helyezés).** Amikor virtuális géphez társít egy NSG-t, a rendszer alkalmazza az NSG hálózatelérési szabályait a virtuális gépbe érkező, és az azt elhagyó forgalomra. 
 * **NGS társítása hálózati adapterhez (csak Resource Manager üzembe helyezések).** Amikor hálózati adapterhez társít egy NSG-t, a rendszer az NSG hálózatelérési szabályait csak a hálózati adapterre alkalmazza. Ez azt jelenti, hogy ha egy több hálózati adapterrel rendelkező virtuális gépben a rendszer az NSG-t csak az egyik hálózati adapterre alkalmazza, az nem lesz hatással a többi hálózati adapter forgalmára. 
 * **NSG társítása alhálózathoz (minden üzembe helyezés)**. Amikor alhálózathoz társít egy NSG-t, a rendszer alkalmazza az NSG hálózatelérési szabályait az alhálózat összes infrastruktúra-szolgáltatási és PaaS erőforrására. 
 
 Különböző NSG-ket társíthat egy virtuális géphez (vagy hálózati adapterhez, a üzembe helyezési modelltől függően) és az alhálózathoz, amelyhez hozzá van kötve egy hálózati adapter vagy egy virtuális gép. Ebben az esetben a rendszer az összes hálózatelérési szabályt alkalmazza a forgalomra, minden NSG-ben prioritás szerint, a következő sorrendben:
 
-* **Bejövő forgalom**
-  
-  1. Alhálózatra alkalmazott NSG. 
-     
-     Ha az alhálózati NSG tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer.
-  2. Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG. 
-     
-     Ha a virtuális gép/hálózati adapter NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot a virtuális gépnél/hálózati adapternél dobja el a rendszer, bár az alhálózati NSG rendelkezik egyeztetési szabállyal a forgalom engedélyezéséhez.
-* **Kimenő forgalom**
-  
-  1. Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG. 
-     
-     Ha a virtuális gép/hálózati adapter NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer.
-  2. Alhálózatra alkalmazott NSG.
-     
-     Ha az alhálózati NSG-je tartalmaz a forgalom visszautasításához egyeztetési szabályt, a csomagot itt dobja el a rendszer, bár az virtuális gép/hálózati adapter NSG-je rendelkezik egyeztetési szabállyal a forgalom engedélyezéséhez.
-     
-      ![NSG ACL-ek](./media/virtual-network-nsg-overview/figure2.png)
+- **Bejövő forgalom**
+
+  1. **Alhálózatra alkalmazott NSG:** Ha egy alhálózati NSG rendelkezik a forgalom megtagadásához szükséges megfelelő szabállyal, a csomagot a rendszer eldobja.
+
+  2. **Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG**: Ha a VM\Hálózati adapter NSG rendelkezik a forgalom megtagadásához szükséges megfelelő szabállyal, a csomagot a rendszer eldobja, miközben az alhálózati NSG rendelkezik a forgalmat engedélyező megfelelő szabállyal.
+
+- **Kimenő forgalom**
+
+  1. **Hálózati adapterre (Resource Manager) vagy virtuális gépre (hagyományos) alkalmazott NSG**: Ha a VM\Hálózati adapter NSG rendelkezik a forgalom megtagadásához szükséges megfelelő szabállyal, a csomagot a rendszer eldobja.
+
+  2. **Alhálózatra alkalmazott NSG**: Ha egy alhálózati NSG rendelkezik a forgalom megtagadásához szükséges megfelelő szabállyal, a csomagot a rendszer eldobja, miközben a VM\Hálózati adapter NSG rendelkezik a forgalmat engedélyező megfelelő szabállyal.
 
 > [!NOTE]
 > Bár egy alhálózathoz, virtuális géphez vagy hálózati adapterhez csak egy NSG-t lehet társítani, ugyanazt az NSG-t korlátlan számú erőforráshoz hozzá lehet rendelni.
-> 
-> 
+>
 
 ## <a name="implementation"></a>Megvalósítás
 Az NSG-ket a hagyományos és a Resource Manager üzembe helyezési modellel is meg lehet valósítani a lent felsorolt eszközök használatával.
 
 | Üzembe helyezési eszköz | Klasszikus | Resource Manager |
 | --- | --- | --- |
-| klasszikus portál |![Nem](./media/virtual-network-nsg-overview/red.png) |![Nem](./media/virtual-network-nsg-overview/red.png) |
-| Azure Portal |![Igen](./media/virtual-network-nsg-overview/green.png) |[![Yes][green]](virtual-networks-create-nsg-arm-pportal.md) |
-| PowerShell |[![Yes][green]](virtual-networks-create-nsg-classic-ps.md) |[![Yes][green]](virtual-networks-create-nsg-arm-ps.md) |
-| Azure CLI |[![Yes][green]](virtual-networks-create-nsg-classic-cli.md) |[![Yes][green]](virtual-networks-create-nsg-arm-cli.md) |
-| ARM-sablon |![Nem](./media/virtual-network-nsg-overview/red.png) |[![Yes][green]](virtual-networks-create-nsg-arm-template.md) |
-
-| **Kulcs** | ![Igen](./media/virtual-network-nsg-overview/green.png) Támogatott. | ![Nem](./media/virtual-network-nsg-overview/red.png) Nem támogatott. |
-| --- | --- | --- |
-|  | | |
+| klasszikus portál | Nem  | Nem |
+| Azure Portal   | Igen | [Igen](virtual-networks-create-nsg-arm-pportal.md) |
+| PowerShell     | [Igen](virtual-networks-create-nsg-classic-ps.md) | [Igen](virtual-networks-create-nsg-arm-ps.md) |
+| Azure CLI      | [Igen](virtual-networks-create-nsg-classic-cli.md) | [Igen](virtual-networks-create-nsg-arm-cli.md) |
+| ARM-sablon   | Nem  | [Igen](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>Tervezés
-Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:    
+Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:
 
 1. Milyen típusú erőforrásokkal szeretné szűrni a bejövő és kimenő forgalmat (hálózati adapterek ugyanabban a virtuális gépben, virtuális gépek vagy más erőforrások, például ugyanahhoz az alhálózathoz vagy más alhálózatokhoz csatlakoztatott felhőszolgáltatások vagy alkalmazásszolgáltatási környezetek)?
 2. Az erőforrások, amelyekkel a bejövő/kimenő forgalmat szeretné szűrni, meglévő VNetek alhálózataihoz csatlakoznak, vagy új VNetekhez vagy alhálózatokhoz fognak csatlakozni?
@@ -270,12 +259,8 @@ Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kel
 * [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md) (NSG-k üzembe helyezése a Resource Manager eszközzel).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).
 
-[green]: ./media/virtual-network-nsg-overview/green.png
-[yellow]: ./media/virtual-network-nsg-overview/yellow.png
-[red]: ./media/virtual-network-nsg-overview/red.png
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

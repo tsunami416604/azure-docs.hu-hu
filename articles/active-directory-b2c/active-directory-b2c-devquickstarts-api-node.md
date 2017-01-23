@@ -3,7 +3,7 @@ title: "Azure AD B2C: Védelem biztosítása webes API-k számára a Node.js seg
 description: "Node.js webes API létrehozása, amely fogadja a B2C-bérlők által küldött jogkivonatokat"
 services: active-directory-b2c
 documentationcenter: 
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 08/30/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
 
 
 ---
@@ -27,8 +27,8 @@ Az Azure Active Directory (Azure AD) B2C segítségével védetté tehet egy web
 
 > [!NOTE]
 > Ezt a mintát úgy írtuk meg, hogy az [iOS B2C mintaalkalmazással](active-directory-b2c-devquickstarts-ios.md) lehessen hozzá csatlakozni. Először haladjon végig ezen az ismertetőn, és aztán térjen rá az említett mintára.
-> 
-> 
+>
+>
 
 A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább. Kidolgoztunk egy stratégiát, amellyel a szoftver az Azure Active Directory (Azure AD) esetében is felhasználható. Először telepítenie kell a modult, majd hozzá kell adni az Azure AD `passport-azure-ad` bővítményt.
 
@@ -52,7 +52,7 @@ Következő lépésként létre kell hoznia egy alkalmazást a B2C-címtárban, 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Házirendek létrehozása
-Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Ez az alkalmazás két, identitással kapcsolatos műveletet tartalmaz: regisztráció és bejelentkezés. Mindkettőhöz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) leírtak szerint.  A három szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * A regisztrációs szabályzatban adja meg a **Megjelenített név** értékét, illetve az egyéb regisztrációs attribútumokat.
 * Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet.  Ezenfelül más jogcímeket is használhat.
@@ -74,7 +74,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 A kész alkalmazás [.zip fájlként](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) vagy `complete` az adott adattár ágában is elérhető.
 
 ## <a name="download-nodejs-for-your-platform"></a>A Node.js letöltése a platformra
-A minta használatához rendelkeznie kell a Node.js telepített és működő verziójával. 
+A minta használatához rendelkeznie kell a Node.js telepített és működő verziójával.
 
 Telepítse a Node.js-t a [nodejs.org](http://nodejs.org) oldalról.
 
@@ -85,8 +85,8 @@ Telepítse a MongoDB-t a [mongodb.org](http://www.mongodb.org) oldalról.
 
 > [!NOTE]
 > Ebben az útmutatóban feltételezzük, hogy Ön a MongoDB alapértelmezett telepítését és kiszolgálóvégpontjait használja, amely a cikk írásának időpontjában a következő: `mongodb://localhost`.
-> 
-> 
+>
+>
 
 ## <a name="install-the-restify-modules-in-your-web-api"></a>A Restify-modulok telepítése a webes API-ra.
 A REST API létrehozásához a Restify programot használjuk. A Restify egy minimális igényű és rugalmas Node.js alkalmazási keretrendszer, amely az Express alapján készült. Számos hatékony funkciót kínál a Connectre épített REST API-k létrehozásához.
@@ -163,13 +163,13 @@ A parancs kimenetének a következőképpen kell kinéznie:
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passportazuread-to-your-web-api"></a>A passport-azuread hozzáadása a webes API-hoz
+## <a name="add-passport-azuread-to-your-web-api"></a>A passport-azuread hozzáadása a webes API-hoz
 Következő lépésként a `passport-azuread` használatával adja hozzá az OAuth stratégiát. Ez a stratégiacsomag szolgál az Azure AD és a Passport összekapcsolására. A REST API-mintában ez a stratégia használható a tulajdonosi jogkivonatokhoz.
 
 > [!NOTE]
 > Az OAuth2 keretrendszerében ugyan bármely ismert jogkivonat kibocsátható, csupán néhány típust használnak szélesebb körben. A végpontok védelmére szolgáló jogkivonatokat tulajdonosi jogkivonatoknak nevezzük. Az OAuth2-ben ezek a leggyakrabban kibocsátott jogkivonattípusok. Számos implementáció eleve úgy veszi, hogy csak tulajdonosi jogkivonatokat bocsátottak ki.
-> 
-> 
+>
+>
 
 A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van).
 
@@ -215,7 +215,7 @@ Telepítse a modulokat a `node_modules` könyvtárba:
 * `npm install bunyan`
 
 ## <a name="create-a-serverjs-file-with-your-dependencies"></a>A függőségeknek megfelelő server.js fájl létrehozása
-A `server.js` fájl biztosítja a funkciók legnagyobb részét a webes API kiszolgálója számára. 
+A `server.js` fájl biztosítja a funkciók legnagyobb részét a webes API kiszolgálója számára.
 
 A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenleg nem ebben a könyvtárban van):
 
@@ -258,7 +258,7 @@ clientID: <your client ID for this Web API you created in the portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
 audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
 identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
-tenantName:'<tenant name>', 
+tenantName:'<tenant name>',
 policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
 passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
 };
@@ -270,9 +270,9 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 ### <a name="required-values"></a>Kötelező értékek
 `clientID`: A webes API-alkalmazás ügyfél-azonosítója.
 
-`IdentityMetadata`: a `passport-azure-ad` itt fogja keresni az identitásszolgáltatóra vonatkozó konfigurációs adatokat, továbbá a JSON webes jogkivonatainak érvényesítéséhez szükséges kulcsokat is. 
+`IdentityMetadata`: a `passport-azure-ad` itt fogja keresni az identitásszolgáltatóra vonatkozó konfigurációs adatokat, továbbá a JSON webes jogkivonatainak érvényesítéséhez szükséges kulcsokat is.
 
-`audience`: A hívást indító alkalmazást azonosító portál URI-ja. 
+`audience`: A hívást indító alkalmazást azonosító portál URI-ja.
 
 `tenantName`: A bérlő neve (például **contoso.onmicrosoft.com**).
 
@@ -280,8 +280,8 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 
 > [!NOTE]
 > A B2C előzetes verziójában az ügyfél és a kiszolgáló beállítása során is ugyanazokat a szabályzatokat használjuk. Ha már más oktatóanyagok keretében létrehozta ezeket a szabályzatokat, nem szükséges ismét létrehoznia őket. Mivel korábban már elvégezte az előírt lépéseket, nem szükséges új szabályzatokat létrehozni a webhelyen az ügyfelekre vonatkozó útmutatás részeként.
-> 
-> 
+>
+>
 
 ## <a name="add-configuration-to-your-serverjs-file"></a>Konfiguráció hozzáadása a server.js fájlhoz
 A létrehozott `config.js` fájl értékeinek kiolvasásához kötelező erőforrásként adja hozzá a `.config` fájlt az alkalmazáshoz, majd állítsa a globális változókat a `config.js` dokumentumban megadott értékekre.
@@ -386,7 +386,7 @@ Először létre kell hozni a sémát, majd a modellobjektumot, amelyet arra fog
 Most, hogy létrehozta az adatbázismodellt, adja hozzá a REST API-kiszolgálóhoz használandó útvonalakat.
 
 ### <a name="about-routes-in-restify"></a>Az útvonalak működése a Restify programban
-Az útvonalak a Restifyban ugyanúgy működnek, mint az Express verem használata esetén. Az útvonalakat azon URI használatával kell meghatározni, amelyet elképzelései szerint az ügyfélalkalmazások meg fognak hívni. 
+Az útvonalak a Restifyban ugyanúgy működnek, mint az Express verem használata esetén. Az útvonalakat azon URI használatával kell meghatározni, amelyet elképzelései szerint az ügyfélalkalmazások meg fognak hívni.
 
 Íme egy jellegzetes Restify-útvonal:
 
@@ -544,7 +544,7 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ## <a name="create-your-server"></a>A kiszolgáló létrehozása
 Készen áll az adatbázis, és az útvonalak is a helyükön vannak. Utolsó lépésként hozzá kell adni a hívásokat kezelő kiszolgálópéldányt.
 
-A Restify és az Express mélyreható konfigurációs funkciókat biztosítanak a REST API-kiszolgálóhoz, de itt most az alapszintű beállításokat fogjuk használni. 
+A Restify és az Express mélyreható konfigurációs funkciókat biztosítanak a REST API-kiszolgálóhoz, de itt most az alapszintű beállításokat fogjuk használni.
 
 ```Javascript
 
@@ -664,7 +664,7 @@ server.listen(serverPort, function() {
 
 });
 
-``` 
+```
 
 ## <a name="add-authentication-to-your-rest-api-server"></a>Hitelesítés hozzáadása a REST API-kiszolgálóhoz
 Most, hogy rendelkezésére áll a futó REST API-kiszolgáló, felhasználhatja azt az Azure AD-ben is.
@@ -673,11 +673,11 @@ A parancssorban módosítsa a következőre a könyvtárat: `azuread` (ha jelenl
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-that-is-included-with-passportazuread"></a>A passport-azure-ad részét képező OIDCBearerStrategy használata
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>A passport-azure-ad részét képező OIDCBearerStrategy használata
 > [!TIP]
 > Az API-k írásakor mindig kapcsolja az adatokat a jogkivonat valamely különleges részéhez, amelyhez a felhasználók nem tudnak jogosulatlanul hozzáférni. A kiszolgáló a jogkivonat „owner” mezőjében szereplő felhasználónak (a token.oid segítségével meghívott) **objektumazonosítója** alapján tárolja a ToDo elemeket. Ez az érték biztosítja, hogy csak az adott felhasználó férhet hozzá a saját ToDo elemeihez. Az „owner” API-ja nem jelenik meg sehol, így még a hitelesített külső felhasználók sem kérelmezhetik mások ToDo elemeit.
-> 
-> 
+>
+>
 
 Ezt követően használja a `passport-azure-ad` részét képező tulajdonosi stratégiát.
 
@@ -722,8 +722,8 @@ A Passport az összes stratégia esetében hasonló mintát alkalmaz. Át kell n
 
 > [!IMPORTANT]
 > A fenti kódrészlettel a hitelesítésen áteső felhasználók bejuthatnak a kiszolgálóra. Ezt a folyamatot automatikus regisztrációnak nevezzük. Az élesben működő kiszolgálók esetében csak akkor engedélyezze az API-khoz való felhasználói hozzáférést, ha már elvégezték a regisztrációs folyamatot. Általában ezt a megoldást látjuk az olyan fogyasztói alkalmazásoknál, amelyek engedélyezik a Facebook segítségével történő regisztrációt, de aztán további adatok megadását kérik. Ha ez nem parancssori program lenne, a visszakapott jogkivonat-objektumból kinyerhettük volna az e-mail-címet, és felkérhettük volna a felhasználót a kiegészítő adatok megadására. Mivel ez csupán egy példa, most egyszerűen hozzáadjuk őket a memóriában lévő adatbázishoz.
-> 
-> 
+>
+>
 
 ## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>A kiszolgálóalkalmazás futtatása annak ellenőrzése érdekében, hogy elutasítja-e Önt
 A `curl` használatával ellenőrizheti, hogy az OAuth2-védelem működik-e a végpontokon. A visszakapott fejlécek alapján már megállapíthatja, hogy jó úton jár-e.
@@ -763,7 +763,6 @@ Most már továbbléphet az összetettebb témákra, például:
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

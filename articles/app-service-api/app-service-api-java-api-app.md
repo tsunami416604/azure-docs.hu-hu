@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/22/2016
 ms.author: rachelap;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 
 ---
@@ -168,13 +168,11 @@ Ebben a szakaszban a Swagger által generált kód kiszolgálóoldali implement�
         package io.swagger.api.impl;
    
         import io.swagger.api.*;
-        import io.swagger.model.*;
+        
         import io.swagger.model.Contact;
         import java.util.*;
         import io.swagger.api.NotFoundException;
-        import java.io.InputStream;
-        import com.sun.jersey.core.header.FormDataContentDisposition;
-        import com.sun.jersey.multipart.FormDataParam;
+               
         import javax.ws.rs.core.Response;
         import javax.ws.rs.core.SecurityContext;
    
@@ -271,7 +269,7 @@ Ebben a szakaszban megtudhatja, hogyan hozhat létre új API-alkalmazást az Azu
     ![A Java Contacts REST API használata élőben az Azure-ban][postman-calling-azure-contacts]
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a cikkben egy Swagger JSON-fájllal és a Swagger.io szerkesztő által generált Java-kóddal indultunk el. Ezekből egyszerű módosításokkal és a Git telepítési folyamatának eredményeként egy működő, Java nyelven írt API-alkalmazást kaptunk. A következő oktatóanyag azt mutatja be, hogyan lehet [JavaScript-ügyfelekből API-alkalmazásokat használni a CORS][App Service API CORS] segítségével. A sorozat későbbi részei bemutatják, hogyan implementálhatja a hitelesítést és az engedélyezést.
+Ebben a cikkben egy Swagger JSON-fájllal és a Swagger.io szerkesztő által generált Java-kóddal indultunk el. Ezekből egyszerű módosításokkal és a Git telepítési folyamatának eredményeként egy működő, Java nyelven írt API-alkalmazást kaptunk. A következő oktatóanyag azt mutatja be, hogyan [használhat API-alkalmazásokat JavaScript-ügyfelekkel a CORS segítségével][App Service API CORS]. A sorozat későbbi részei bemutatják, hogyan implementálhatja a hitelesítést és az engedélyezést.
 
 Erre a példára építve részletesen megismerheti, hogyan használhatja a [Storage SDK for Java] csomagot a JSON-blobok megtartásához. Vagy a [Document DB Java SDK] használatával mentheti a névjegyadatokat az Azure Document DB rendszerbe. 
 
@@ -285,12 +283,12 @@ Az Azure Javával való használatáról további információ: [Azure Java fejl
 [App Service API CORS]: app-service-api-cors-consume-javascript.md
 [Azure Portal]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
-[ingyenes]: https://azure.microsoft.com/pricing/free-trial/
+[Ingyenes]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
 [Azure Java fejlesztői központ]: /develop/java/
 [Java Developer's Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
-[Maven 3]: https://maven.apache.org/
+[Maven]: https://maven.apache.org/
 [Microsoft Azure]: https://azure.microsoft.com/
 [Online Swagger Editort]: http://editor.swagger.io/
 [Postman]: https://www.getpostman.com/
@@ -319,6 +317,6 @@ Az Azure Javával való használatáról további információ: [Azure Java fejl
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

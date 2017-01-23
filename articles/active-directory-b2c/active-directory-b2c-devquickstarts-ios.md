@@ -3,7 +3,7 @@ title: "Azure Active Directory B2C: webes API meghívása iOS-alkalmazásból k�
 description: "A cikkből megtanulhatja, hogyan hozzon létre olyan „tennivalólista” típusú iOS-alkalmazást, amely OAuth 2.0 tulajdonosi jogkivonatok segítségével képes meghívni egy Node.js webes API-t külső fejlesztőktől származó kódtárak használatával."
 services: active-directory-b2c
 documentationcenter: ios
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: objectivec
 ms.topic: hero-article
-ms.date: 07/26/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1b570e66afb7a4d3f7fc9b65600bfa7dc0fcc4b5
+ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
+ms.openlocfilehash: cc5e199816668a5a0f936019ab8096e93a7a2f5a
 
 
 ---
-# <a name="azure-ad-b2c-call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
+# <a name="azure-ad-b2c--call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C: webes API meghívása iOS-alkalmazásból külső fejlesztőktől származó kódtárak használatával
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Így a fejlesztők bármilyen típusú kódtárat integrálhatnak szolgáltatásainkkal. Hogy segítséget nyújtsunk a fejlesztőknek platformunk más kódtárakkal való használatában, több különböző útmutatót is írtunk, amelyekből megtudhatják, hogy hogyan kell beállítani úgy a külső fejlesztőktől származó kódtárakat, hogy azok kapcsolódni tudjanak a Microsoft identitásplatformjához. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) használó legtöbb kódtár képes lesz kapcsolódni a Microsoft identitásplatformjához.
@@ -28,9 +28,9 @@ A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t
 Ha csak most ismerkedik az OAuth2 vagy az OpenID Connect használatával, előfordulhat, hogy nem fogja tökéletesen érteni a konfigurációs lépéseket. Ebben az esetben javasoljuk, hogy olvassa el [a protokoll áttekintését, amelyet itt talál](active-directory-b2c-reference-protocols.md).
 
 > [!NOTE]
-> Platformunknak a szabványokban leképzett több funkciójához (például a feltételes hozzáféréshez vagy az Intune-szabályzatok felügyeletéhez) a nyílt forráskódú Microsoft Azure identitáskódtárainkat is használnia kell. 
-> 
-> 
+> Platformunknak a szabványokban leképzett több funkciójához (például a feltételes hozzáféréshez vagy az Intune-szabályzatok felügyeletéhez) a nyílt forráskódú Microsoft Azure identitáskódtárainkat is használnia kell.
+>
+>
 
 A B2C platform nem támogatja az összes Azure Active Directory-forgatókönyvet és funkciót.  Ha nem biztos benne, hogy érdemes-e a B2C platformot használnia, olvassa el a [B2C korlátozásait](active-directory-b2c-limitations.md).
 
@@ -46,7 +46,7 @@ A következő lépésben hozzon létre egy alkalmazást a B2C-címtárban. Ez bi
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Házirendek létrehozása
-Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Az alkalmazás egyetlen identitással kapcsolatos interakciót tartalmaz: egy kombinált regisztrációs és bejelentkezési folyamatot. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy) leírtak szerint. A szabályzat létrehozásakor ügyeljen arra, hogy:
+Az Azure AD B2C-ben minden felhasználói élményt [házirendek](active-directory-b2c-reference-policies.md) határoznak meg. Az alkalmazás egyetlen identitással kapcsolatos interakciót tartalmaz: egy kombinált regisztrációs és bejelentkezési folyamatot. Az összes típushoz létre kell hoznia egy szabályzatot a [szabályzatok áttekintésével foglalkozó cikkben](active-directory-b2c-reference-policies.md#create-a-sign-up-policy) leírtak szerint. A szabályzat létrehozásakor ügyeljen arra, hogy:
 
 * A szabályzatban adja meg a **Megjelenített név** értékét, illetve a regisztrációs attribútumokat.
 * Az összes szabályzatban válassza ki a **Megjelenített név** és az **Objektumazonosító** alkalmazási jogcímet. Ezenfelül más jogcímeket is használhat.
@@ -63,7 +63,7 @@ Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-Vagy egyszerűen csak töltse le az elkészült kódot, és már kezdheti is: 
+Vagy egyszerűen csak töltse le az elkészült kódot, és már kezdheti is:
 
 ```
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
@@ -240,7 +240,7 @@ Létre kell hoznunk egy AccountStore-t, és átadni ennek a `settings.plist` fá
 
 Itt meg kell említenünk néhány dolgot a B2C szolgáltatással kapcsolatban, amely segít érthetőbbé tenni az alábbi kódot:
 
-1. Az Azure AD B2C a lekérdezési paraméterek által biztosított módon használja a *szabályzatot* a kérések teljesítésére. Így az Azure Active Directory független, kizárólag az Ön alkalmazásához kapcsolódó szolgáltatásként tud működni. Ahhoz, hogy megadhassuk ezeket a további lekérdezési paramétereket, el kell látnunk a `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` metódust szabályzatunk egyedi paramétereivel. 
+1. Az Azure AD B2C a lekérdezési paraméterek által biztosított módon használja a *szabályzatot* a kérések teljesítésére. Így az Azure Active Directory független, kizárólag az Ön alkalmazásához kapcsolódó szolgáltatásként tud működni. Ahhoz, hogy megadhassuk ezeket a további lekérdezési paramétereket, el kell látnunk a `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` metódust szabályzatunk egyedi paramétereivel.
 2. Az Azure AD B2C a többi OAuth2-kiszolgálókhoz rendkívül hasonló módon kezeli a hatóköröket. Mivel azonban a B2C használatának célja nemcsak a felhasználók hitelesítése, hanem legalább ilyen mértékben az erőforrások elérhetővé tétele is, ahhoz, hogy a folyamat megfelelően működjön, bizonyos hatókörökre feltétlenül szükség van. Ilyen az `openid` hatókör. A Microsoft identitáskezelő SDK-i automatikusan elérhetővé teszik az `openid` hatókört, így ez itt nem szerepel az SDK konfigurációjában. Mivel azonban külső fejlesztőtől származó kódtárat használunk, ezúttal meg kell adnunk ezt a hatókört.
 
 ```objc
@@ -274,7 +274,7 @@ Itt meg kell említenünk néhány dolgot a B2C szolgáltatással kapcsolatban, 
                                         forAccountType:data.accountIdentifier];
 }
 ```
-Ezt követően állítsa be, hogy az AppDelegate is meghívja a hatókört a `didFinishLaunchingWithOptions:` metódus részeként. 
+Ezt követően állítsa be, hogy az AppDelegate is meghívja a hatókört a `didFinishLaunchingWithOptions:` metódus részeként.
 
 ```
 [self setupOAuth2AccountStore];
@@ -299,16 +299,16 @@ Az egyes metódusokat alább fogjuk létrehozni.
 
 > [!NOTE]
 > Ne felejtse el összekötni a `loginView`-t a forgatókönyvben szereplő tényleges webnézettel. Ellenkező esetben a webnézet nem fog megjelenni, amikor hitelesítést kell kérni.
-> 
-> 
+>
+>
 
 * Hozzon létre egy `LoginViewController.m` osztályt.
 * Adjon hozzá változókat, amelyek átadják az állapotokat a hitelesítés során.
 
 ```objc
-NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
+NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory
 NSURL *myLoadedUrl; \\ The URL loaded for Azure Active Directory
-bool loginFlow = FALSE; 
+bool loginFlow = FALSE;
 bool isRequestBusy; \\ A way to give status to the thread that the request is still happening
 NSURL *authcode; \\ A placeholder for our auth code.
 ```
@@ -387,7 +387,7 @@ Be kell állítanunk, hogy a webnézet mit tegyen, amikor a felhasználók be sz
 
 * Írja meg az OAuth2-kérés eredményét kezelő kódot.
 
-Szükségünk lesz a kódra, amely képes kezelni a webnézettől visszakapott átirányítási URL-címet. Ha nem jártunk sikerrel, újrapróbálkozunk. Ilyenkor a kódtár megadja a hibát, amelyet aztán megtekinthet a konzolban, vagy aszinkron módon kezelhet. 
+Szükségünk lesz a kódra, amely képes kezelni a webnézettől visszakapott átirányítási URL-címet. Ha nem jártunk sikerrel, újrapróbálkozunk. Ilyenkor a kódtár megadja a hibát, amelyet aztán megtekinthet a konzolban, vagy aszinkron módon kezelhet.
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSURL *)accessResult {
@@ -487,7 +487,7 @@ Hozzuk létre a metódust, amelyet a rendszer meghív, ha hitelesítési kérés
 Ezzel létrehoztuk a fő módszert, amellyel bejelentkezés céljából interakcióba lehet lépni az alkalmazással. A bejelentkezést követően használni kell a kapott jogkivonatokat. Ehhez meg kell írnunk némi segédkódot, amely a kódtár használatával meghívja a REST API-kat.
 
 ## <a name="create-a-graphapicaller-class-to-handle-our-requests-to-a-rest-api"></a>Hozzon létre egy `GraphAPICaller` osztályt, amely kezeli a REST API felé irányuló kéréseket.
-Elértük, hogy a rendszer az alkalmazás megnyitásakor betöltse a konfigurációt. Most ezzel kell tennünk valamit, ha megkaptuk a jogkivonatot. 
+Elértük, hogy a rendszer az alkalmazás megnyitásakor betöltse a konfigurációt. Most ezzel kell tennünk valamit, ha megkaptuk a jogkivonatot.
 
 * Hozzon létre egy `GraphAPICaller.h` fájlt.
 
@@ -511,7 +511,7 @@ Most, hogy beállítottuk az interfészt, adjuk hozzá a tényleges implementác
 ```objc
 @implementation GraphAPICaller
 
-// 
+//
 // Gets the tasks from our REST endpoint we specified in settings
 //
 
@@ -564,7 +564,7 @@ Most, hogy beállítottuk az interfészt, adjuk hozzá a tényleges implementác
       }];
 }
 
-// 
+//
 // Adds a task from our REST endpoint we specified in settings
 //
 
@@ -631,7 +631,6 @@ Most már továbbléphet az összetettebb B2C-témákra. Próbálkozzon meg a k�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

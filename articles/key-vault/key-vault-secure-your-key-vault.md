@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/07/2016
+ms.date: 01/07/2017
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 5557dbef45d8599010a909635eebf399a5bcd2c8
+ms.sourcegitcommit: 36e0a52013b8d12c7e66c5955756a61a2c72b7dc
+ms.openlocfilehash: c3507aed3cc44d6360b8ba3ddf172e1437c1227a
 
 
 ---
@@ -72,7 +72,7 @@ A felügyeleti sík és az adatsík hozzáférés-vezérlése egymástól függe
 A felügyelet sík olyan műveleteket tartalmaz, amelyek magára a kulcstartóra vannak hatással. Például létrehozhat vagy törölhet egy kulcstartót. Előfizetésben megkaphatja a tárolók listáját. Lehívhatja a kulcstartó tulajdonságait (például cikkszám, címkék), és beállíthatja a kulcstartóban lévő kulcsokhoz és titkos kulcsokhoz hozzáférő felhasználókat és alkalmazásokat vezérlő kulcstartó-hozzáférési házirendeket. A felügyeleti sík hozzáférés-vezérlése RBAC használatával történik. A felügyeleti síkon keresztül elvégezhető kulcstartó-műveletek teljes listáját az előző fejezet táblázatában találja. 
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Ezen könyvtár valamennyi felhasználója, csoportja és alkalmazása hozzáférést kaphat Azure-előfizetése Azure Resource Manager-alapú üzemi modellt használó erőforrásainak kezeléséhez. Az ilyen típusú hozzáférés-vezérlést szerepköralapú hozzáférés-vezérlésnek (RBAC-nek) nevezzük. A hozzáférés az [Azure Portal](https://portal.azure.com/), az [Azure Parancssorifelület-eszközök](../xplat-cli-install.md), a [PowerShell](../powershell-install-configure.md) vagy az [Azure Resource Manager REST API-k](https://msdn.microsoft.com/library/azure/dn906885.aspx) használatával kezelhető.
+Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Ezen könyvtár valamennyi felhasználója, csoportja és alkalmazása hozzáférést kaphat Azure-előfizetése Azure Resource Manager-alapú üzemi modellt használó erőforrásainak kezeléséhez. Az ilyen típusú hozzáférés-vezérlést szerepköralapú hozzáférés-vezérlésnek (RBAC-nek) nevezzük. A hozzáférés az [Azure Portal](https://portal.azure.com/), az [Azure Parancssorifelület-eszközök](../xplat-cli-install.md), a [PowerShell](/powershell/azureps-cmdlets-docs) vagy az [Azure Resource Manager REST API-k](https://msdn.microsoft.com/library/azure/dn906885.aspx) használatával kezelhető.
 
 Az Azure Resource Manager modellel kulcstartót hozhat létre erőforráscsoporton belül, és az Azure Active Directory használatával vezérelheti e kulcstartó felügyeleti síkját. Lehetőséget adhat például felhasználóknak vagy egy csoportnak, hogy egy adott erőforráscsoport kulcstartóit kezeljék.
 
@@ -89,7 +89,7 @@ A kulcstartó adatsíkja olyan műveletekből épül fel, melyek a kulcstartó o
 Az adatsík-hozzáférés a kulcstartó hozzáférési házirendjeinek beállításán keresztül biztosítható. Ahhoz, hogy egy felhasználó, csoport vagy alkalmazás hozzáférési házirendet tudjon beállítani egy adott kulcstartóhoz, rendelkeznie kell a kulcstartó felügyeleti síkjának közreműködői engedélyeivel (RBAC). A felhasználók, csoportok és alkalmazások számára hozzáférés engedélyezhető egy adott kulcstartó kulcsaihoz vagy titkos kulcsaihoz kapcsolódó, meghatározott műveletek elvégzéséhez. akár 16 kulcstartó-hozzáférési házirendbejegyzés támogatása. Azure Active Directory biztonsági csoport létrehozásával és felhasználók felvételével a csoportba több felhasználó számára biztosíthat adatsíkszintű kulcstartó-hozzáférést.
 
 ### <a name="key-vault-access-policies"></a>kulcstartó-hozzáférési házirendek
-a kulcstartó-hozzáférési házirendekkel külön-külön engedélyezheti a kulcsok, titkos kulcsok és tanúsítványok elérését. Egy adott felhasználó számára hozzáférést engedélyezhet például kizárólag a kulcsokhoz, de a titkos kulcsokhoz nem. A kulcsok, titkos kulcsok és tanúsítványok hozzáférése ugyanakkor tárolószinten engedélyezett. Másként megfogalmazva, a kulcstartó-hozzáférési házirend nem támogatja az objektumszintű engedélyeket. Kulcstartó-hozzáférési házirendeket az [Azure portal](https://portal.azure.com/), az [Azure parancssorifelület-eszközök](../xplat-cli-install.md), a [PowerShell](../powershell-install-configure.md) vagy a [Kulcstartókezelési REST API-k](https://msdn.microsoft.com/library/azure/mt620024.aspx) használatával állíthat be.
+a kulcstartó-hozzáférési házirendekkel külön-külön engedélyezheti a kulcsok, titkos kulcsok és tanúsítványok elérését. Egy adott felhasználó számára hozzáférést engedélyezhet például kizárólag a kulcsokhoz, de a titkos kulcsokhoz nem. A kulcsok, titkos kulcsok és tanúsítványok hozzáférése ugyanakkor tárolószinten engedélyezett. Másként megfogalmazva, a kulcstartó-hozzáférési házirend nem támogatja az objektumszintű engedélyeket. Kulcstartó-hozzáférési házirendeket az [Azure portal](https://portal.azure.com/), az [Azure parancssorifelület-eszközök](../xplat-cli-install.md), a [PowerShell](/powershell/azureps-cmdlets-docs) vagy a [Kulcstartókezelési REST API-k](https://msdn.microsoft.com/library/azure/mt620024.aspx) használatával állíthat be.
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a kulcstartó-hozzáférési házirendek tárolószinten érvényesek. Például, ha egy felhasználó engedélyt kap kulcsok létrehozására és törlésére, az adott kulcstartó összes kulcsa esetén végrehajthatja ezeket a műveleteket.
@@ -233,7 +233,7 @@ Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a való
   A kulcstartó REST API referenciadokumentációjára mutató hivatkozás.
 * [Kulcshozzáférés-vezérlés](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-  A kulcshozzáférés-vezérlés referenciadokumentációjára mutató hivatkozás.
+  A titkoskulcshozzáférés-vezérlés referenciadokumentációjára mutató hivatkozás.
 * [Titkoskulcs-hozzáférés vezérlése](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   A kulcshozzáférés-vezérlés referenciadokumentációjára mutató hivatkozás.
@@ -253,6 +253,6 @@ Amennyiben a kulcstartóval kapcsolatban kérdése merülne fel, tekintse meg az
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

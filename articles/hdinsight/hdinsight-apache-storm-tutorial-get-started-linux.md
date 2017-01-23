@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 09f5ba954dd712d71f41397b2243b6d3f3f0ca42
-ms.openlocfilehash: a70fe33047bc47096f7964d93dce411da9e0da9c
+ms.sourcegitcommit: b9fda8b5f4ffa6679cc8ca9696a4c51084c80645
+ms.openlocfilehash: 7c3d73ca6f4f567247ec9796199e68f764a52808
 
 
 ---
@@ -52,7 +52,7 @@ Ebben a szakaszban egy 3.5-ös verziójú (1.0.1-es Storm-verziójú) HDInsight-
 
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon.         
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="./media/hdinsight-apache-storm-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     A sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*. 
 
@@ -80,7 +80,7 @@ Ebben a szakaszban egy 3.5-ös verziójú (1.0.1-es Storm-verziójú) HDInsight-
      > * [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal](hdinsight-hadoop-linux-use-ssh-unix.md)
      > * [Az SSH (PuTTY) használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-3. Válassza az __I agree to the terms and conditions stated above__ (Elfogadom a fenti feltételeket) **OK** elemet, majd kattintson a __Pin to dashboard__ (Rögzítés az irányítópulton) elemre.
+3. Válassza az __I agree to the terms and conditions stated above__ (Elfogadom a fenti feltételeket) lehetőséget, kattintson az **OK** gombra, majd válassza a __Pin to dashboard__ (Rögzítés az irányítópulton) lehetőséget.
 
 6. Kattintson a **Purchase** (Vásárlás) gombra. Ekkor egy új csempe jelenik meg Submitting deployment for Template deployment (Üzemelő példány elküldése sablon üzemelő példányhoz) A fürt létrehozása nagyjából 20 percet vesz igénybe.
 
@@ -216,6 +216,6 @@ A HDInsight alatt futó Stormmal használható példatopológiákat az alábbiak
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

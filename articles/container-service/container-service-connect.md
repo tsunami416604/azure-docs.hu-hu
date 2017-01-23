@@ -17,13 +17,17 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: a4882b6fcd75ecaa826cdda3e25ee690b85a0670
-ms.openlocfilehash: 34450e25941e0be97b72c1ba30ee348d73f4bc67
+ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
+ms.openlocfilehash: 5296586b9266f432042f847f4dff9e6ff62ebc8b
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Csatlakozás Azure tárolószolgáltatási fürthöz
 Az Azure Container Service által üzembe helyezett DC/OS-, Kubernetes- és Docker Swarm-fürtök mind REST-végpontokat tesznek közzé.  A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről közvetlenül elérhető. A DC/OS és a Docker Swarm esetében létre kell hoznia egy SSH-alagutat, hogy biztonságosan csatlakozhasson a REST-végponthoz. Az egyes kapcsolatokat az alábbiakban ismertetjük.
+
+> [!NOTE]
+> A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
+>
 
 ## <a name="connecting-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz.
 Ha csatlakozni szeretne egy Kubernetes-fürthöz, telepítenie kell a `kubectl` parancssori eszközt.  Az eszköz telepítésének legegyszerűbb módja az Azure 2.0 `az` parancssori eszköz használata.
@@ -51,13 +55,19 @@ scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 
 Windows rendszeren a Windowson futó Ubuntu Bash-környezetet vagy a Putty „pscp” eszközét kell használnia.
 
-A `kubectl` konfigurálását követően letesztelheti a használatát a következővel:
+A `kubectl` konfigurálását követően a fürt csomópontjainak listázásával tesztelheti a használatát:
 
 ```console
 kubectl get nodes
 ```
 
-Ennek a parancsnak meg kell jelenítenie a fürtben lévő csomópontokat.
+Végül megtekintheti a Kubernetes irányítópultot. Először futtassa a következőt:
+
+```console
+kubectl proxy
+```
+
+A Kubernetes felhasználói felülete a következő címen érhető el: http://localhost:8001/ui
 
 További utasításokat a [Kubernetes első lépéseit](http://kubernetes.io/docs/user-guide/quick-start/) ismertető útmutatóban talál
 
@@ -166,6 +176,6 @@ Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

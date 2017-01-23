@@ -52,6 +52,10 @@
 ### [Azure-beli virtuális gép mentése sikertelen: nem sikerült kommunikálni a virtuálisgép-ügynökkel a pillanatkép-állapot lekérése érdekében – a virtuális gép részfeladat időtúllépést okozott](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Az Azure Backup-fájlok és -mappák lassú biztonsági mentése](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# Referencia
+## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)
+## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
+
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
@@ -59,6 +63,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

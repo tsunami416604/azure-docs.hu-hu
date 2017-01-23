@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 10c350247593c806d2c4e66248dedf5f42734628
-ms.openlocfilehash: 2227ab467aca534c5a8783dfdfa3084cb1c3a126
+ms.sourcegitcommit: b2d7ba14c7cbc5c082a5f962559936e1a60827f2
+ms.openlocfilehash: fd018ed25e5c309a85bb2078d00f2bb0b504e5d2
 
 
 ---
@@ -28,7 +28,7 @@ Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következ
 
 ![Helyek térképe][0]
 
-Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. 
+Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz.
 
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek.
 A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
@@ -58,8 +58,8 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 > [!div class="op_single_selector"]
 > * [Helyek szolgáltató alapján](expressroute-locations.md#locations)
 > * [Szolgáltatók hely alapján](expressroute-locations-providers.md#locations)
-> 
-> 
+>
+>
 
 ### <a name="production-azure"></a>Termelési Azure
 | **Szolgáltató** | **Microsoft Azure** | **Office 365 és CRM Online** | **Helyek** |
@@ -67,12 +67,14 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |Támogatott |Támogatott |Melbourne, Sydney |
 | **[Aryaka Networks](http://www.aryaka.com/)** |Támogatott |Támogatott |Amszterdam, Dallas, Szilícium-völgy, Szingapúr, Tokió, Washington DC |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, London, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
+| **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Támogatott |Támogatott |Toronto |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Támogatott |Támogatott |Amszterdam, Hongkong, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington, D.C. |
 | **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |Hamarosan elérhető |Hamarosan elérhető |Szilícium-völgy |
 | **China Telecom Global** |Támogatott |Nem támogatott |Hongkong |
-| **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Támogatott |Hamarosan elérhető |Dallas, Montréal+, Toronto |
+| **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Támogatott |Támogatott |Dallas, Montréal+, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Támogatott |Amszterdam, Dublin, London, Tokió |
 | **Comcast** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
+| **Console**| Támogatott | Támogatott |Szilícium-völgy |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Támogatott |Támogatott |Los Angeles |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Chicago, Dallas, Hongkong, London, Los Angeles, Melbourne, New York, Oszaka, Párizs+, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **euNetworks** |Támogatott |Támogatott |Amszterdam |
@@ -148,12 +150,20 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **Kapcsolatszolgáltató** | **Exchange** | **Helyek** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Szingapúr |
+| **[Arteria-Net](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |Tokió |
 | **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |Seattle |
 | **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | London |
+| **[HSO](http://www.hso.co.uk/products/cloud-direct)** |Equinix | London, Slough |
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |New York, Washington, D.C. |
-| **[Macquarie](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
+| **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Washington DC |
+| **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Telecity | Amsterdam, Frankfurt |  
+| **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  
+| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
+| **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix |Chicago, Szilícium-völgy, Washington, D.C. |
 | **[XO Communications](http://www.xo.com/)** |Equinix |Szilícium-völgy |
+| **[Zertia](http://www.zertia.es/index.php/novedades)**| 3-as szint | Madrid |
+
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.
@@ -163,6 +173,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Avanade Inc.](http://www.avanade.com/)** |Ázsia, Európa, Egyesült Államok |
 | **[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)** |Európa |
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** |USA |
+| **[Nelite](http://nelite.com/)** |Európa |
 | **[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** |Ázsia |
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** |USA |
 | **[Project Leadership](http://www.projectleadership.net/azure)** |USA |

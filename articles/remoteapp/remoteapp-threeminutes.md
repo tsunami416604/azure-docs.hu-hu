@@ -1,22 +1,25 @@
-
 ---
-title: Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt | Microsoft Docs
-description: A szolgáltatás telepítése nélkül tesztelheti az Azure RemoteApp funkcióit.
+title: "Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt | Microsoft Docs"
+description: "A szolgáltatás telepítése nélkül tesztelheti az Azure RemoteApp funkcióit."
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-
+ms.assetid: 95e9fb49-78bb-4797-8d66-aeb42d00f208
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
+ms.openlocfilehash: ccbae83898ec8ea3bd7bca0beae7f78b2b535562
+
 
 ---
-# Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt
+# <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt
 > [!IMPORTANT]
 > Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
@@ -40,6 +43,9 @@ Számít a véleménye. Minden munkamenet végén egy párbeszédablak jelenik m
 > 
 > 
 
-<!--HONumber=Sep16_HO4-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 473ca94a4b081aee69fa06718790acd61a8b51b3
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 70071f8d1b70d062aec1ea4fd35b8acb3512bab6
 
 
 ---
@@ -80,9 +80,9 @@ A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fi�
     ![Media Services, kulcsok](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
 ## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges).
+Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
 
-A Media Services dinamikus becsomagolást biztosít, amelynek köszönhetően adaptív sávszélességű MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming, HDS) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolnia kéne.
+A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
 
 A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
 
@@ -128,9 +128,9 @@ Ha az Azure Media Services használatával kíván videókat streamelni, fel kel
 A feltöltés befejezését követően az új objektum bekerül az **Objektumok** ablakban található listába. 
 
 ## <a name="encode-assets"></a>Objektumok kódolása
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH és HDS (amelyhez Adobe PrimeTime-/Access-licenc szükséges). A videók adaptív sávszélességű streameléséhez többszörös sávszélességű fájlokká kell kódolnia a forrásvideókat. Javasoljuk, hogy a videók kódolásához használja a **Media Encoder Standard** kódolót.  
+Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. A videók adaptív sávszélességű streameléséhez többszörös sávszélességű fájlokká kell kódolnia a forrásvideókat. Javasoljuk, hogy a videók kódolásához használja a **Media Encoder Standard** kódolót.  
 
-A Media Services dinamikus becsomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS, Smooth Streaming illetve HDS formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
+A Media Services dinamikus csomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS és Smooth Streaming formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
 
 A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
 
@@ -221,6 +221,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

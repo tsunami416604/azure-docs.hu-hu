@@ -1,3 +1,4 @@
+
 ---
 title: "Azure Backup – gyakori kérdések | Microsoft Docs"
 description: "Ez a cikk megválaszolja a biztonsági mentési szolgáltatásra és ügynökre, a biztonsági mentésre és azok megtartására, helyreállításra, biztonságára és egyéb, a biztonsági mentéssel és a vészhelyreállítással kapcsolatos általános gyakori kérdéseket."
@@ -16,8 +17,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: be06f1eca1848ff6d00661cfc1166797649a98a4
-ms.openlocfilehash: cb45e7113073d19c1dc3e305d7b69373bd38d84f
+ms.sourcegitcommit: 1b2eeab756309148db5890ccc0d93853f3e69372
+ms.openlocfilehash: 4b7a8a88d21b11deb377c2fef4e2d8f9fbcf9036
 
 
 ---
@@ -33,6 +34,7 @@ Az Azure Backup a következő operációs rendszerek biztonsági mentését tám
 | Windows 7 és a legújabb szervizcsomagok |64 bit |Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
 | Windows 8.1 és a legújabb szervizcsomagok |64 bit |Enterprise, Pro |
 | Windows 10 |64 bit |Enterprise, Pro, Home |
+| Windows Server 2016 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
@@ -172,7 +174,7 @@ Igen. A DPM használatával megadhat napi, heti, havi és évi ütemterveket. A 
 ## <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-ie-on-windows-server-without-dpmbr"></a>Van különbség a DPM és a Windows Server vagy Windows-ügyfél (pl. Windows Server kiszolgálón DPM nélkül) esetén a megtartási házirendben?<br/>
 Nem, a DPM és a Windows Server vagy Windows-ügyfél is rendelkezik napi, heti, havi és évi megtartási házirendekkel.
 
-## <a name="can-i-configure-my-retention-policies-selectively-ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Beállíthatom a megtartási házirendeket szelektíven – pl. konfigurálom hetente és naponta, de nem évente és havonta?<br/>
+## <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Beállíthatom a megtartási házirendeket szelektíven – pl. konfigurálom hetente és naponta, de nem évente és havonta?<br/>
 Igen, az Azure Backup megtartási struktúrája az igényeihez igazodva teljes rugalmasságot tesz lehetővé a megtartási házirend meghatározásában.
 
 ## <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>„Ütemezhetek egy biztonsági mentést” este 6 órára, és megadhatok „megtartási házirendeket” egy másik időpontra?<br/>
@@ -275,6 +277,6 @@ A klasszikus virtuális gépek a biztonsági mentési tárolókban lévő helyre
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

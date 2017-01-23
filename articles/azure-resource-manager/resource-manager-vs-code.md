@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: chmatsk;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f839784aaef511c60ec1c3eea0b64bfdd5f67a4f
+ms.sourcegitcommit: 10c7051c9b1218081d95cb10403006bfd95126ba
+ms.openlocfilehash: 2ac1c2cce7a9e045990894b0bbaa045df3d48954
 
 
 ---
 # <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>Az Azure Resource Manager-sablonok használata a Visual Studio Code kódszerkesztőben
-Az Azure Resource Manager-sablonok az erőforrásokat és a kapcsolódó függőségeket leíró JSON-fájlok. Ezek a fájlok néha nagyméretűek és összetettek lehetnek, ezért fontos a megfelelő eszközök biztosítása a kezelésükhöz. A Visual Studio Code egy új, könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. Egy [új bővítményével](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lehetővé teszi a Resource Manager-sablonok létrehozását és szerkesztését. A VS Code mindenhol fut, és nem igényel internet-hozzáférést, kivéve ha üzembe is szeretné helyezni a Resource Manager-sablonokat.
+Az Azure Resource Manager-sablonok az erőforrásokat és a kapcsolódó függőségeket leíró JSON-fájlok. Ezek a fájlok néha nagyméretűek és összetettek lehetnek, ezért fontos a megfelelő eszközök biztosítása a kezelésükhöz. A Visual Studio Code egy új, könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. Egy [új bővítményével](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lehetővé teszi a Resource Manager-sablonok létrehozását és szerkesztését. A VS Code mindenhol fut, és csak internet-hozzáférésre van szüksége, ha üzembe szeretné helyezni a Resource Manager-sablonokat az Azure-előfizetésén.
 
 Ha még nem telepítette a VS Code szerkesztőt, a [https://code.visualstudio.com/](https://code.visualstudio.com/) webhelyről telepítheti.
 
@@ -42,7 +42,7 @@ Az előző lépésekkel már telepítette az eszközös támogatást, most pedig
 
 1. Másolja a vágólapra az [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) tárházban található fájl tartalmát.
 2. Indítsa el a VS Code szerkesztőt. 
-3. A VS Code szerkesztőben úgy nyithatja meg a JSON-kódrészletfájlt, hogy a **File** -> **Preferences** -> **User Snippets** -> **JSON** (Fájl, Beállítások, Felhasználói kódrészletek JSON) parancsot választja, vagy megnyomja az **F1** billentyűt, és elkezdni beírni a **preferences** szót, amíg ki nem lehet választani a **Preferences: Snippets** (Beállítások: Kódrészletek) lehetőséget.
+3. VS Code-ban megnyithatja a JSON-kódrészletfájlt a **Fájl** -> **Beállítások** -> **Felhasználói kódrészletek** -> **JSON** helyről. Másik lehetőségként nyomja le az **F1** billentyűt, és kezdje el begépelni a **beállítások** kifejezést, amíg a rendszer nem kínálja fel a **Beállítások: Kódrészletek** elemet.
    
     ![Beállítások, kódrészletek](./media/resource-manager-vs-code/preferences-snippets.png)
    
@@ -53,7 +53,7 @@ Az előző lépésekkel már telepítette az eszközös támogatást, most pedig
 5. Ellenőrizze, hogy a JSON rendben van-e, és nincsenek-e valahol hibák benne. 
 6. Mentse és zárja be a felhasználói kódrészletek fájlját.
 
-Ez minden, ami szükséges a Resource Manager-kódrészletek használatának elkezdéséhez. Ezután tesztelni fogjuk ezt a beállítást.
+Ez minden, ami szükséges a Resource Manager-kódrészletek használatának elkezdéséhez. Ezután teszteljük ezt a beállítást.
 
 ## <a name="work-with-template-in-vs-code"></a>A sablon használata a VS Code szerkesztőben
 A sablonok használatát legegyszerűbben úgy kezdheti el, hogy választ egy gyorsan üzembe helyezhető sablont a [Github](https://github.com/Azure/azure-quickstart-templates) kínálatából, vagy a sajátját használja. A portálon keresztül könnyen [exportálhat sablonokat](resource-manager-export-template.md) bármelyik erőforráscsoportja esetében. 
@@ -61,22 +61,22 @@ A sablonok használatát legegyszerűbben úgy kezdheti el, hogy választ egy gy
 1. Ha exportált egy sablont egy erőforráscsoportból, nyissa meg a kibontott fájlokat VS Code szerkesztőben.
    
     ![Fájlok megjelenítése](./media/resource-manager-vs-code/show-files.png)
-2. Nyissa meg a template.json fájlt, hogy szerkeszthesse, és további erőforrásokat adhasson hozzá. A **"resources": [** sor végére lépve új sor kezdéséhez nyomja meg az Enter billentyűt. Írja be az **arm** kifejezést, és megjelenik az ezekkel a karakterekkel kezdődő nevű elemek listája. Ezek az elemek a telepített sablonkódrészletek. A listának így kell kinéznie: 
+2. Nyissa meg a template.json fájlt, hogy szerkeszthesse, és további erőforrásokat adhasson hozzá. A(z) `"resources": [` után nyomja le az Enter billentyűt új sor kezdéséhez. Ha beírja az **arm** kifejezést, megjelenik a lehetőségek listája. Ezek az elemek a telepített sablonkódrészletek. 
    
     ![A kódrészletek megjelenítése](./media/resource-manager-vs-code/type-snippets.png)
-3. Válassza ki a kívánt kódrészletet. Ebben a cikkben az **arm-ip** kódrészletet választjuk egy új nyilvános IP-cím hozzáadásához. Tegyen vesszőt az újonnan létrehozott erőforrás záró „}” zárójele után, hogy a sablon szintaxisa érvényes legyen.
+3. Válassza ki a kívánt kódrészletet. Ebben a cikkben az **arm-ip** kódrészletet választjuk egy új nyilvános IP-cím hozzáadásához. Tegyen egy vesszőt az újonnan létrehozott erőforrás záró szögletes zárójele `}` után, hogy a sablon szintaxisa érvényes legyen.
    
      ![A vessző hozzáadása](./media/resource-manager-vs-code/add-comma.png)
-4. A VS Code beépítetten tartalmazza az IntelliSense funkciót. A sablonok szerkesztésekor a VS Code felkínálja az elérhető értékeket. Ha például változókat tartalmazó szakaszt szeretne hozzáadni a sablonhoz, írjon be két dupla idézőjelet (**""**), és a két idézőjel között nyomja meg a **Ctrl+szóköz** billentyűt. Megjelennek a különböző lehetőségek, így például a **változók** is.
+4. A VS Code beépítetten tartalmazza az IntelliSense funkciót. A sablonok szerkesztésekor a VS Code felkínálja az elérhető értékeket. Ha például hozzá szeretne adni egy változószakaszt a sablonhoz, adja hozzá a `""` (két idézőjel) karaktereket, és nyomja le a **Ctrl+Szóköz** billentyűkombinációt az idézőjelek között. Megjelennek lehetőségek, például a **változók**.
    
     ![Változók hozzáadása](./media/resource-manager-vs-code/add-variables.png)
-5. Az IntelliSense a rendelkezésre álló értékek és a függvények közül is tud javaslatot tenni. Ha egy tulajdonságot egy paraméterértékre szeretne beállítani, hozzon létre egy kifejezést a **"[]"** megadásával és a **Ctrl+szóköz** megnyomásával. Kezdje el beírni a függvény nevét. Amikor megtalálta a megfelelő függvényt, nyomja meg a **Tab** billentyűt.
+5. Az IntelliSense a rendelkezésre álló értékek és a függvények közül is tud javaslatot tenni. Ha egy tulajdonságot be szeretne állítani egy paraméterértékre, hozzon létre egy kifejezést a következő segítségével: `"[]"` és **Ctrl+Szóköz**. Kezdje el beírni a függvény nevét. Amikor megtalálta a megfelelő függvényt, nyomja meg a **Tab** billentyűt.
    
     ![Paraméter hozzáadása](./media/resource-manager-vs-code/select-parameters.png)
-6. A megjelenített függvénynél nyomja meg ismét a **Ctrl+szóköz** billentyűt a sablonban elérhető paraméterek listájának megtekintéséhez.
+6. Ha meg szeretné tekinteni az elérhető paraméterek listáját a sablonon belül, nyomja le újra a **Ctrl+Szóköz** billentyűkombinációt a függvényen belül.
    
     ![Paraméter hozzáadása](./media/resource-manager-vs-code/select-avail-parameters.png)
-7. Ha sémaérvényesítési problémák fordulnak elő a sablonban, a szerkesztőben megjelenik az ismerős hibajelzés. A hibák és a figyelmeztetések listájának megtekintéséhez nyomja meg a **Ctrl+Shift+M** billentyűt, vagy kattintson az állapotsor bal oldalán található ikonokra.
+7. Ha sémaellenőrzési problémái adódnak a sablonban, megjelennek az ismerős hibák a szerkesztőben. A hibák és a figyelmeztetések listájának megtekintéséhez nyomja meg a **Ctrl+Shift+M** billentyűt, vagy kattintson az állapotsor bal oldalán található ikonokra.
    
     ![Hibák](./media/resource-manager-vs-code/errors.png)
    
@@ -85,35 +85,51 @@ A sablonok használatát legegyszerűbben úgy kezdheti el, hogy választ egy gy
     ![Hibaüzenet](./media/resource-manager-vs-code/unrecognized-function.png)
 
 ## <a name="deploy-your-new-resources"></a>Az új erőforrások üzembe helyezése
-Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe az új erőforrásokat: 
+Ha kész van a sablon, üzembe helyezheti az új erőforrásokat az alábbi utasításokkal: 
 
 ### <a name="windows"></a>Windows
 1. Nyissa meg a PowerShell-parancssort. 
-2. A bejelentkezéshez írja be a következő parancsot: 
+2. A bejelentkezéshez írja be a következőt: 
    
-        Login-AzureRmAccount 
+  ```powershell
+  Login-AzureRmAccount
+  ```
+
 3. Ha több előfizetéssel rendelkezik, jelenítse meg az előfizetések listáját a következő paranccsal:
-   
-        Get-AzureRmSubscription
+
+  ```powershell 
+  Get-AzureRmSubscription
+  ```
    
     Válassza ki a használandó előfizetést.
-   
-        Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+  ```
+
 4. Frissítse a paramétereket a parameters.json fájlban.
 5. Futtassa a Deploy.ps1 fájlt a sablon Azure-beli üzembe helyezéséhez.
 
 ### <a name="osxlinux"></a>OSX/Linux
 1. Nyisson meg egy terminálablakot. 
-2. A bejelentkezéshez írja be a következő parancsot:
-   
-        azure login 
+2. A bejelentkezéshez írja be a következőt:
+
+  ```azurecli
+  azure login
+  ```
+
 3. Ha több előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést a következő paranccsal:
-   
-        azure account set <subscriptionNameOrId> 
+
+  ```azurecli
+  azure account set <subscriptionNameOrId> 
+  ```
+
 4. Frissítse a paramétereket a parameters.json fájlban.
 5. A sablon üzembe helyezéséhez futtassa a következő parancsot:
-   
-        azure group deployment create -f <PathToTemplate> 
+
+  ```azurecli 
+  azure group deployment create -f <PathToTemplate>
+  ``` 
 
 ## <a name="next-steps"></a>Következő lépések
 * A sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
@@ -123,6 +139,6 @@ Amikor a sablon elkészült, az alábbi utasítások szerint helyezheti üzembe 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
