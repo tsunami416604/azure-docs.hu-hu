@@ -1,7 +1,7 @@
 ---
 title: "Mi az az Azure rugalmas készlet? | Microsoft Docs"
 description: "A készletek segítségével több száz vagy több ezer adatbázist kezelhet egyszerre. Azonos árért több teljesítményegységet kap, amelyek szétoszthatók a készleten belül. Az adatbázisok szabadon hozzáadhatók vagy eltávolíthatók."
-keywords: "rugalmas adatbázis,sql-adatbázis"
+keywords: "rugalmas készlet,sql-adatbázisok"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -11,14 +11,14 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 12/14/2016
+ms.date: 01/04/2017
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 2c0ee201e719c542cf801372e6a270a7b88598fb
+ms.sourcegitcommit: ce30d47075636d3b64215d50b81acc09e7ed72f1
+ms.openlocfilehash: d74be42963206c82218bc82ea1bf12e5c0cdb0f3
 
 
 ---
@@ -35,13 +35,12 @@ Gyakori SaaS-alkalmazási minta az egybérlős adatbázismodell: minden ügyfél
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
->
 
 Az SQL Database-ben az adatbázisok erőforrásigény-kezelési képességének relatív mértékét az önálló adatbázisok esetében adatbázis-tranzakciós egységekkel (DTU), a rugalmas készletben található rugalmas adatbázisok esetében pedig rugalmas DTU-kkal (eDTU) fejezzük ki. További információk a DTU-król és eDTU-król: [Az SQL Database bemutatása](sql-database-technical-overview.md).
 
-Egy készlethez egy adott számú eDTU tartozik, amelyek egy adott áron vehetők igénybe. A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt az adatbázisok több eDTU-t használhatnak fel, hogy megfeleljenek az igényeknek. A kisebb terhelésű adatbázisok kevesebbet, a terhelés alatt nem álló adatbázisok pedig egyáltalán nem használnak fel eDTU-kat. Az erőforrásoknak az önálló adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet költségei is kiszámíthatóak lesznek.
+Egy készlethez egy adott számú eDTU tartozik, amelyek egy adott áron vehetők igénybe. A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt az adatbázisok több eDTU-t használhatnak fel, hogy megfeleljenek az igényeknek. A kisebb terhelésű adatbázisok kevesebbet, a terhelés alatt nem álló adatbázisok pedig egyáltalán nem használnak fel eDTU-kat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet költségei is kiszámíthatóak lesznek.
 
-A létező készletekhez további eDTU-k is hozzáadhatók anélkül, hogy a rugalmas készlet adatbázisai leállnának, vagy bármilyen hatás érné őket. Ugyanígy ha az eDTU-kra már nincs szükség, bármikor el is távolíthatók a létező készletből.
+A létező készletekhez további eDTU-k is hozzáadhatók anélkül, hogy az adatbázisok leállnának, kivéve, ha az adatbázisokat át kell helyezni ahhoz, hogy további számítási erőforrásokat biztosítsanak az új eDTU-foglalás számára. Ugyanígy ha az eDTU-kra már nincs szükség, bármikor el is távolíthatók a létező készletből.
 
 Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
@@ -52,43 +51,43 @@ A rugalmas készletekhez azokat az adatbázisokat a leginkább érdemes hozzáad
 
 [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md).
 
-## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>Rugalmas készletek és rugalmas adatbázisok eDTU- és tárterületi korlátozásai
+## <a name="edtu-and-storage-limits-for-elastic-pools"></a>Rugalmas készletek eDTU- és tárterület-korlátozásai
 
 Az alábbi táblázat ismerteti az Alapszintű, a Standard és a Prémium rugalmas készletek jellemzőit.
 
-[!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához.  Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
 
-## <a name="elastic-pool-and-elastic-database-properties"></a>Rugalmas készletek és rugalmas adatbázisok tulajdonságai
+## <a name="elastic-pool-properties"></a>Rugalmas készlet tulajdonságai
 
-A következő táblázatok leírják a rugalmas készletekre és rugalmas adatbázisokra vonatkozó korlátokat.
+A következő táblázatok a rugalmas készletekre és a készletezett adatbázisokra vonatkozó korlátokat ismertetik.
 
 ### <a name="limits-for-elastic-pools"></a>Rugalmas készletek korlátai
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Szolgáltatásszint |Alapszintű, Standard vagy Prémium. A szolgáltatásszint határozza meg a konfigurálható teljesítmény- és tárhelykorlát-tartományokat, valamint az üzletmenet-folytonossági lehetőségeket. Egy adott készleten belül minden adatbázis ugyanahhoz a szolgáltatásszinthez tartozik, mint a készlet. A szolgáltatásszinteket más néven kiadásoknak is hívjuk. |
 | eDTU-k száma készletenként |A készletben található adatbázisok között megosztható eDTU-k maximális száma. A készletben található adatbázisok által egy időpontban használt eDTU-k teljes száma nem haladhatja meg ezt a korlátot. |
-| Maximális tárterület készletenként (GB) |A készletben található adatbázisok között megosztható tárterület maximális mennyisége (GB-ban). A készletben található adatbázisok által használt tárterület teljes mennyisége nem haladhatja meg ezt a korlátot. Ezt a korlátot az eDTU-k készletenkénti száma határozza meg. Ha a felhasznált tárterület-mennyiség túllépi ez a korlátot, minden adatbázis csak olvashatóvá válik. |
+| Maximális tárterület készletenként (GB) |A készletben található adatbázisok között megosztható tárterület maximális mennyisége (GB-ban). A készletben található adatbázisok által használt tárterület teljes mennyisége nem haladhatja meg ezt a korlátot. Ezt a korlátot az eDTU-k készletenkénti száma határozza meg. Ha a felhasznált tárterület-mennyiség túllépi ez a korlátot, minden adatbázis csak olvashatóvá válik. A készletenkénti maximális tárolókapacitás a készletben lévő adatfájlok maximális tárolókapacitását jelenti, amelybe nem tartozik bele a naplófájlok által felhasznált tárhely. |
 | Adatbázisok maximális száma készletenként |A készletenként engedélyezett adatbázisok maximális száma. |
 | Egyidejű feldolgozók maximális száma készletenként |Az egy készletben található adatbázisok számára egyidejűleg összesen elérhető feldolgozók (kérések) maximális száma. |
 | Egyidejű bejelentkezések maximális száma készletenként |Az egy készletben található adatbázisok számára egyidejűleg összesen elérhető bejelentkezések maximális száma. |
 | Egyidejű munkamenetek maximális száma készletenként |Az egy készletben található adatbázisok számára összesen elérhető munkamenetek maximális száma. |
 
-### <a name="limits-for-elastic-databases"></a>Rugalmas adatbázisok korlátai
+### <a name="limits-for-pooled-databases"></a>Készletezett adatbázisok korlátai
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | eDTU-k maximális száma adatbázisonként |A készletben található adatbázisok bármelyike által használható eDTU-k maximális száma (az elérhetőség a készletben található további adatbázisok kihasználtságától függ).  Az eDTU adatbázisonkénti maximális száma nem garantálja az erőforrásokat az adatbázisok számára.  Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU-k adatbázisonkénti maximális számát állítsa elég magasra ahhoz, hogy az adatbázis-kihasználtsági csúcsokkal is elbírjon. Elvárható, hogy a szükségesnél valamivel nagyobb értéket adjon meg, mivel a készlet általában hullámzó használati mintákat feltételez az adatbázisokkal kapcsolatban, amelyekben az adatbázisok kihasználtsága nem egyszerre éri el a csúcsértéket. Például tegyük fel, hogy az adatbázisonkénti felhasználási csúcs 20 eDTU, és a készletben található 100 adatbázisnak egyszerre csak a 20%-a éri el a csúcsot.  Ha az eDTU-k adatbázisonkénti maximális száma 20-ra van állítva, akkor észszerű a készletet ötszörösen túlméretezni, és az eDTU-k készletenkénti számát 400-ra állítani. |
 | eDTU-k minimális száma adatbázisonként |A készletben található adatbázisok mindegyike számára garantált eDTU-k minimális száma.  Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU adatbázisonkénti minimális száma lehet 0, ami egyben az alapértelmezett érték is. Ezen tulajdonság értékeként egy 0 és az adatbázisonkénti átlagosan használt eDTU-k száma közötti mennyiséget adjon meg. A készletben található adatbázisok számának és az eDTU-k adatbázisonkénti minimális számának szorzata nem lehet magasabb az eDTU-k készletenkénti számánál.  Például ha egy készletben 20 adatbázis van, és az eDTU-k adatbázisonkénti minimális száma 10-re van állítva, akkor az eDTU-k készletenkénti száma legalább 200 kell, hogy legyen. |
-| Maximális tárterület adatbázisonként (GB) |A készletben található adatbázisok maximális tárterülete. A rugalmas adatbázisok osztoznak a készlet tárterületein, így az adatbázisok számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut. |
+| Maximális tárterület adatbázisonként (GB) |A készletben található adatbázisok maximális tárterülete. A készletezett adatbázisok osztoznak a készlet tárterületein, így az adatbázisok számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut. Az adatbázisonkénti maximális tárkapacitás az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 
-## <a name="elastic-database-jobs"></a>Rugalmas adatbázis-feladatok
-A készletek használata leegyszerűsíti a felügyeleti feladatokat, mivel a szkriptek **[rugalmas feladatokban](sql-database-elastic-jobs-overview.md)** futtathatók. A rugalmas adatbázis-feladatok használatával kiküszöbölhető a nagy számú adatbázis kezelésével járó monotonitás. Az első lépésekért lásd: [Ismerkedés a rugalmas adatbázis-feladatokkal](sql-database-elastic-jobs-getting-started.md).
+## <a name="elastic-jobs"></a>Rugalmas feladatok
+A készletek használata leegyszerűsíti a felügyeleti feladatokat, mivel a szkriptek **[rugalmas feladatokban](sql-database-elastic-jobs-overview.md)** futtathatók. A rugalmas feladatok használatával kiküszöbölhető a nagy számú adatbázis kezelésével járó monotonitás. Kezdetnek tekintse át [a rugalmas feladatokkal kapcsolatos első lépéseket ismertető](sql-database-elastic-jobs-getting-started.md) témakört.
 
-További információk a rugalmas adatbázisok további eszközeiről:[Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md).
+További információk a több adatbázissal dolgozó további adatbázis-eszközökről: [Horizontális felskálázás az Azure SQL Database-ben](sql-database-elastic-scale-introduction.md).
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>A készletben található adatbázisok üzletmenet-folytonossági funkciói
-A rugalmas adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
+A készletezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
 Az időponthoz kötött visszaállítás az automatikus adatbázis-biztonságimentések használatával állít vissza egy készlethez tartozó adatbázist egy megadott időpontra. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
@@ -100,13 +99,13 @@ A georedundáns helyreállítás biztosítja az alapértelmezett helyreállítá
 A georedundáns helyreállítás által kínált lehetőségeknél agresszívabb helyreállítási követelményekkel bíró alkalmazásokhoz konfigurálja az aktív georeplikációt az [Azure Portal](sql-database-geo-replication-portal.md), a [PowerShell](sql-database-geo-replication-powershell.md) vagy a [Transact-SQL](sql-database-geo-replication-transact-sql.md) használatával.
 
 ## <a name="additional-resources"></a>További források
-* [Microsoft Virtual Academy videotanfolyam a rugalmas adatbázisok képességeiről](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
+* [Microsoft Virtual Academy videótanfolyam az Azure SQL Database rugalmas funkcióiról](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

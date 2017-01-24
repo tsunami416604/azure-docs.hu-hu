@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 230a203cca2eaab197236557482cd4cedcfb9c53
+ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
+ms.openlocfilehash: 4be8e4f81965fa4d872e29fdb9aaa45909d18c37
 
 
 ---
@@ -89,7 +89,7 @@ A tarifacsomag beállítását követően kattintson a Készlet beállítása el
 
     Ha a felvenni kívánt adatbázisokhoz elegendő korábbi használati telemetriai adat áll rendelkezésre, a rendszer frissíti az **Estimated eDTU and GB usage** (Becsült eDTU- és GB-használat) diagramot és az **Actual eDTU usage** (Tényleges eDTU-használat) sávdiagramot, amelyek segítenek Önnek meghozni a konfigurációval kapcsolatos döntéseket. Ezenfelül egyes esetekben a szolgáltatás javaslatot tartalmazó üzenetet is megjelenít, amely segít a készlet megfelelő méretének kiválasztásában. Lásd: [Dinamikus javaslatok](#dynamic-recommendations).
 
-3. A **Készlet beállítása** lapon elérhető vezérlők segítségével áttekintheti a beállításokat, és konfigurálhatja a készletet. Az egyes szolgáltatásszintek korlátaival kapcsolatban [a rugalmas készlet korlátait](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases) ismertető cikk nyújt tájékoztatást, a készlet megfelelő méretének kiválasztását pedig [a rugalmas készletek árát és teljesítményét](sql-database-elastic-pool-guidance.md) ismertető cikk mutatja be. A készlet beállításaival kapcsolatos további információkért lásd [a rugalmas készlet tulajdonságaival](sql-database-elastic-pool.md#elastic-pool-and-elastic-database-properties) foglalkozó témakört.
+3. A **Készlet beállítása** lapon elérhető vezérlők segítségével áttekintheti a beállításokat, és konfigurálhatja a készletet. Az egyes szolgáltatásszintek korlátaival kapcsolatban [a rugalmas készlet korlátait](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) ismertető cikk nyújt tájékoztatást, a készlet megfelelő méretének kiválasztását pedig [a rugalmas készletek árát és teljesítményét](sql-database-elastic-pool-guidance.md) ismertető cikk mutatja be. A készlet beállításaival kapcsolatos további információkért lásd [a rugalmas készlet tulajdonságaival](sql-database-elastic-pool.md#elastic-pool-properties) foglalkozó témakört.
 
     ![A rugalmas készlet konfigurálása](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -99,7 +99,7 @@ A tarifacsomag beállítását követően kattintson a Készlet beállítása el
 
 ## <a name="understand-pool-recommendations"></a>A készlettel kapcsolatos javaslatok megértése
 
-Az SQL Database szolgáltatás a használati előzmények kiértékelésével megállapítja, hogy megéri-e önálló adatbázisok helyett készleteket használni, és ha igen, javasol egy vagy több készletet. A javaslatokat a rendszer a kiszolgáló adatbázisainak a készlethez leginkább illő egyedi részhalmazával konfigurálja.
+Az SQL Database szolgáltatás a használati előzmények elemzésével megállapítja, hogy megéri-e önálló adatbázisok helyett készleteket használni, és ha igen, javasol egy vagy több készletet. A javaslatokat a rendszer a kiszolgáló adatbázisainak a készlethez leginkább illő egyedi részhalmazával konfigurálja.
 
 ![javasolt készlet](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
 
@@ -112,7 +112,7 @@ A készletjavaslat a következőkből áll:
 
 A szolgáltatás az elmúlt 30 nap telemetriai adatai alapján javasol készleteket. A rendszer csak a legalább már 7 napja létező adatbázisokat vonja be a rugalmas készlet létrehozására irányuló javaslatokba. Azokat az adatbázisokat, amelyeket korábban már elhelyezett egy másik rugalmas készletben, a rendszer nem javasolja újabb rugalmas készletbe való bevonásra.
 
-A szolgáltatás kiértékeli az erőforrásigényeket, illetve azt, hogy megéri-e a különböző szolgáltatásszinteken lévő önálló adatbázisokat azonos szolgáltatásszinten lévő készletekbe vonni. A rendszer például megvizsgálja, hogy érdemes-e a kiszolgálón található Standard adatbázisokat Standard rugalmas készletté alakítani. Ez azt is jelenti, hogy a szolgáltatás különböző csomagokat tartalmazó javaslatokat nem tesz, azaz soha nem javasolja például, hogy Prémium készletbe helyezzen egy Standard adatbázist.
+A szolgáltatás értékeli az erőforrásigényeket, illetve azt, hogy megéri-e a különböző csomagokhoz tartozó önálló adatbázisokat ugyanahhoz a csomaghoz tartozó készletekbe vonni. A rendszer például megvizsgálja, hogy érdemes-e a kiszolgálón található Standard adatbázisokat Standard rugalmas készletté alakítani. Ez azt is jelenti, hogy a szolgáltatás különböző csomagokat tartalmazó javaslatokat nem tesz, azaz soha nem javasolja például, hogy Prémium készletbe helyezzen egy Standard adatbázist.
 
 ### <a name="dynamic-recommendations"></a>Dinamikus javaslatok
 
@@ -129,6 +129,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

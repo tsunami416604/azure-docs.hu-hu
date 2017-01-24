@@ -3,8 +3,8 @@ title: "Az Azure Table Storage használatának első lépései a .NET-keretrends
 description: "Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
 services: storage
 documentationcenter: .net
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: fe46d883-7bed-49dd-980e-5c71df36adb3
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: fe4b9c356e5f7d56cb7e1fa62344095353d0b699
-ms.openlocfilehash: c4a8e4eee864dab592baf1797d69778160ab456e
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: 98307e924927655c8a7de0e8fc6a7c0c2b57af00
 
 
 ---
@@ -347,7 +347,7 @@ else
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. További információk a leképezésről: [A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés][A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés]. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
+Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. A kivetítésről az [Introducing Upsert and Query Projection (Az upsert (frissítés/beszúrás) és a lekérdezésleképezés bemutatása) blogbejegyzés][Introducing Upsert and Query Projection blog post] című blogbejegyzésből tudhat meg többet. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -467,8 +467,8 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
   * [Get started with Azure Blob storage using .NET](storage-dotnet-how-to-use-blobs.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
   * [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../sql-database/sql-database-develop-dotnet-simple.md) a relációs adatok tárolásához.
 
-[Az Azure SDK for .NET letöltése és telepítése]: /develop/net/
-[Azure-projekt létrehozása a Visual Studióban]: http://msdn.microsoft.com/library/azure/ee405487.aspx
+[Download and install the Azure SDK for .NET]: /develop/net/
+[Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
 
 [Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
 [Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
@@ -476,17 +476,17 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 [Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
 [Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
 
-[A frissítés/beszúrás és a lekérdezésleképezés bemutatása blogbejegyzés]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-[.NET ügyféloldali kódtár – referencia]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Az Azure Storage csapat blogja]: http://blogs.msdn.com/b/windowsazurestorage/
-[Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+[Introducing Upsert and Query Projection blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+[.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+[Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
 [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
 [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Térbeli]: http://nuget.org/packages/System.Spatial/5.0.2
-[How to: Programmatically access Table storage]: #tablestorage (Útmutató: A Table Storage elérése programozott módon)
+[Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
+[How to: Programmatically access Table storage]: #tablestorage
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

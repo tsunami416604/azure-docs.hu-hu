@@ -3,7 +3,7 @@ title: "Az Azure Batch parancssori felület használatának első lépései | Mi
 description: "Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 09/30/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: cb1f049597d53263f0f92fe1192b285c09d78eeb
 
 
 ---
@@ -129,7 +129,7 @@ Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok
 
 Míg számos erőforrás-létrehozási műveletet végre lehet hajtani mindössze parancssori kapcsolókkal, néhány szolgáltatáshoz JSON-formátumú fájl szükséges, amely tartalmazza az erőforrás részleteit. Például JSON-fájlt kell használnia, ha erőforrásfájlokat szeretne meghatározni egy indítási tevékenységhez.
 
-Az erőforrás létrehozásához szükséges JSON-fájl megkereséséhez tekintse meg az MSDN webhelyén található [A Batch REST API-jainak leírása][rest_api] című dokumentációt. Minden „*Erőforrástípus* hozzáadása” témakör tartalmaz egy példa JSON-t az erőforrás létrehozásához, amelyet sablonként használhat a JSON-fájlokhoz. A készlet létrehozásához tartozó JSON például a [Készlet hozzáadása fiókhoz][rest_add_pool] című témakörben található meg.
+Az erőforrás létrehozásához szükséges JSON-fájl megkereséséhez tekintse meg az MSDN webhelyén található, [Batch – REST API-referencia][rest_api] című dokumentációt. Minden „*Erőforrástípus* hozzáadása” témakör tartalmaz egy példa JSON-t az erőforrás létrehozásához, amelyet sablonként használhat a JSON-fájlokhoz. A készlet létrehozásához tartozó JSON például a [Készlet hozzáadása fiókhoz][rest_add_pool] című témakörben található meg.
 
 > [!NOTE]
 > Ha az erőforrás létrehozásakor megad egy JSON-fájlt, a rendszer figyelmen kívül hagyja a parancssoron meghatározott többi paramétert.
@@ -273,6 +273,6 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,14 +1,13 @@
 ---
 layout: LandingPage
-description: "Ismerje meg, hogy az App Service Web Apps hogyan használható webalkalmazások és webhelyek tárolására és létrehozására. Oktatóanyagok, videók, API-referenciák és egyéb anyagok."
 translationtype: Human Translation
-ms.sourcegitcommit: c25534b4e5cda07ffe124ad151a3093a40137a6f
-ms.openlocfilehash: 4fda1c1635159a0bf6a502c4197b8523cd77a5f8
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web Apps-dokumentáció
 
-Ismerje meg, hogy az App Service Web Apps hogyan használható webalkalmazások és webhelyek tárolására és létrehozására. Oktatóanyagok, videók, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan fejleszthet ezen a teljes mértékben felügyelt számítási platformon.
+Az App Service Web Apps egy teljes körűen felügyelt számítógépes platform, amely webhelyek és webalkalmazások üzemeltetéséhez van optimalizálva. Ez a szolgáltatásként kínált platform (PaaS) a Microsoft Azure ajánlata, melynek segítségével az üzleti logikára koncentrálhat, miközben az Azure intézkedik az alkalmazások futtatásához és méretezéséhez szükséges infrastruktúráról.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -230,6 +229,6 @@ Web Apps-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

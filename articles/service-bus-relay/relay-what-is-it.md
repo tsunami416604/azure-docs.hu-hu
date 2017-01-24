@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: babanisa,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
-ms.openlocfilehash: 4329e0f99828f5a0651e6b03be0813d9e68debaa
+ms.sourcegitcommit: 14a5c029eef714134079b960109e58d821d0a609
+ms.openlocfilehash: 34b54d54b20d9aec69486c5ef98c97beee21bd94
 
 
 ---
@@ -40,7 +40,7 @@ A Hibrid kapcsolatok és a WCF-továbbítók egyaránt lehetővé teszik a váll
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
-| **.NET-keretrendszer** |x |
+| **.NET-keretrendszer** |x |x |
 | **JavaScript/NodeJS*** | |x |
 | **Java*** | |x |
 | **Szabvány-alapú nyílt protokoll** | |x |
@@ -55,7 +55,7 @@ Az [Azure Relay Hibrid kapcsolatok képesség](relay-hybrid-connections-protocol
 A WCF-továbbító a teljes .NET-keretrendszer (NETFEX) és a WCF esetén működik. A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le.
 
 ## <a name="service-history"></a>Szolgáltatási előzmények
-A Hibrid kapcsolatok pótolja a korábbi „BizTalk Services” elnevezésű funkciót, amely az Azure Service Bus WCF-továbbítóra épült. Az új Hibrid kapcsolatok képesség kiegészíti a már meglévő WCF-továbbítót, és a belátható jövőben a két szolgáltatási képesség egymás mellett fog működni a Relay szolgáltatásban; közös átjáróval rendelkeznek, de ettől eltekintve különböző megvalósításról van szó.
+A Hibrid kapcsolatok pótolja a korábbi, hasonló nevű „BizTalk Services” funkciót, amely az Azure Service Bus WCF-továbbítóra épült. Az új Hibrid kapcsolatok képesség kiegészíti a már meglévő WCF-továbbítót, és a belátható jövőben a két szolgáltatási képesség egymás mellett fog működni a Relay szolgáltatásban. E szolgáltatások közös átjáróval rendelkeznek, de ettől eltekintve különböző megvalósításról van szó.
 
 ## <a name="next-steps"></a>Következő lépések:
 * [Relay – gyakori kérdések](relay-faq.md)
@@ -66,6 +66,6 @@ A Hibrid kapcsolatok pótolja a korábbi „BizTalk Services” elnevezésű fun
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

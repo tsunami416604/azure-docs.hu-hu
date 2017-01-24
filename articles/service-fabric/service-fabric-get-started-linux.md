@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
-ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
+ms.sourcegitcommit: 206b958b4c266b9977a9beb8ffb6a0576f068a9a
+ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 
 
 ---
@@ -31,10 +31,11 @@ ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
  Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-hoz készült opcionális SDK-kat is telepítheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
-* Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 16.04 („Xenial Xerus”)
 
 ## <a name="update-your-apt-sources"></a>Frissítse az apt-forrásait
 Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get használatával történő telepítéséhez először frissítenie kell az apt-forrásait.
@@ -59,7 +60,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get használatával tör
 ## <a name="install-and-set-up-the-sdk"></a>Az SDK telepítése és beállítása
 A források frissítése után telepítheti az SDK-t.
 
-1. Telepítse a Service Fabric SDK-csomagot. A rendszer fel fogja kérni, hogy erősítse meg a telepítést, és fogadjon el egy licencszerződést.
+1. Telepítse a Service Fabric SDK-csomagot. A rendszer felkéri, hogy erősítse meg a telepítést, és fogadjon el egy licencszerződést.
    
     ```bash
     sudo apt-get install servicefabricsdkcommon
@@ -70,8 +71,9 @@ A források frissítése után telepítheti az SDK-t.
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
+
 ## <a name="set-up-the-azure-cross-platform-cli"></a>A platformfüggetlen Azure parancssori felület beállítása
-A [platformfüggetlen Azure parancssori felület][azure-xplat-cli-github] a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. Node.js-alapú, ezért az alábbi utasítások végrehajtása előtt [ellenőrizze, hogy telepítve van-e a Node][install-node].
+A [platformfüggetlen Azure parancssori felület][azure-xplat-cli-github] a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. Node.js-alapú, ezért az alábbi utasítások végrehajtása előtt [ellenőrizze, hogy telepítve van-e a Node][install-node]:
 
 1. Klónozza a github-adattárat a fejlesztői gépére.
    
@@ -109,7 +111,13 @@ Ha mindent sikeresen telepített, elindíthatja a helyi fürtöt.
    
     ![Service Fabric Explorer Linuxon][sfx-linux]
 
-Ezen a ponton előzetesen összeállított Service Fabric-alkalmazáscsomagokat, vagy vendégtárolókon és vendég futtatható fájlokon alapuló új alkalmazáscsomagokat helyezhet üzembe. Ha új szolgáltatásokat kíván létrehozni a Java vagy .NET Core SDK-k használatával, kövesse az alábbi opcionális lépéseket.
+Ezen a ponton előzetesen összeállított Service Fabric-alkalmazáscsomagokat, vagy vendégtárolókon és vendég futtatható fájlokon alapuló új alkalmazáscsomagokat helyezhet üzembe. Ha új szolgáltatásokat szeretne létrehozni a Java vagy a .NET Core SDK-k használatával, kövesse az ezt követő szakaszokban megadott opcionális beállítási lépéseket.
+
+
+> [!NOTE]
+> Az önálló fürtök Linux rendszeren nem támogatottak – az előzetes verzióban kizárólag beépített és Azure Linux többgépes fürtök támogatottak.
+> 
+> 
 
 ## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>A Java SDK és az Eclipse Neon beépülő modul telepítése (nem kötelező)
 A Java SDK biztosítja a Java-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat.
@@ -141,18 +149,32 @@ A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service 
 
 1. Telepítse a .NET Core SDK-csomagot.
    
-    ```bash
-    sudo apt-get install servicefabricsdkcsharp
-    ```
+   ```bash
+   sudo apt-get install servicefabricsdkcsharp
+   ```
+
 2. Futtassa az SDK telepítőszkriptjét.
    
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
-    ```
+   ```bash
+   sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
+   ```
+
+## <a name="updating-the-sdk-and-runtime"></a>Az SDK és a futtatókörnyezet frissítése
+
+Az SDK és a futtatókörnyezet legújabb verziójára történő frissítéséhez hajtsa végre a következő lépéseket (távolítsa el az SDK-kat azokból a listákból, amelyeket nem szeretne frissíteni vagy telepíteni):
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+   ```
+
+A parancssori felület frissítéséhez lépjen abba a könyvtárba, amelybe klónozta a parancssori felületet, és futtassa a `git pull` parancsot a frissítéshez. 
 
 ## <a name="next-steps"></a>Következő lépések
 * [Az első Java-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
+* [Az első CSharp-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
+* [Az Azure CLI használata a Service Fabric-alkalmazások kezeléséhez](service-fabric-azure-cli.md)
 
 <!-- Links -->
 
@@ -167,6 +189,6 @@ A .NET Core SDK biztosítja a platformfüggetlen .NET Core-t használó Service 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

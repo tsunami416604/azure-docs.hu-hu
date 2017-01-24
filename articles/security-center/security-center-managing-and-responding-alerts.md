@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 
 ---
@@ -42,20 +42,19 @@ A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat.
 1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
    
     ![A Biztonsági riasztások csempe a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
+
 2. A csempére kattintva nyissa meg a **Biztonsági riasztások** panelt, amely a lentiek szerint további információkat tartalmaz a riasztásról.
    
    ![A Biztonsági riasztások panel a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
 
 A panel alsó részén találhatók az egyes riasztások részletei. Rendezésükhöz kattintson arra az oszlopra, amely szerint rendezni szeretné a riasztásokat. Az oszlopok meghatározása:
 
-* **Riasztás:** a riasztás rövid leírása.
+* **Leírás**: a riasztás rövid magyarázata.
 * **Szám:** az adott típusú riasztások listája egy adott napra vonatkozóan.
 * **Észlelte:** a riasztás kiváltásáért felelős szolgáltatás.
 * **Dátum:** Az a dátum, amelyen az esemény történt.
 * **Állapot:** A riasztás aktuális állapota. Kétféle állapot létezik:
-  
   * **Aktív:** A biztonsági riasztást észlelték.
-  * **Elvetve:** A felhasználó elvetette a biztonsági riasztást. Általában azoknak a riasztásoknak ez az állapota, amelyeket megvizsgáltak, és vagy megoldottak, vagy azok nem bizonyultak tényleges támadásnak.
 * **Súlyosság:** A súlyosság szintje lehet magas, közepes vagy alacsony.
 
 ### <a name="filtering-alerts"></a>A riasztások szűrése
@@ -63,10 +62,7 @@ A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztás
 
 1. Kattintson a **Szűrő** lehetőségre a **Biztonsági riasztások** panelen. A **Szűrő** panel megnyílása után válassza ki azokat a dátumra, állapotra és súlyosságra vonatkozó értékeket, amelyeket meg kíván tekinteni.
    
-    ![A riasztások szűrése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-ga.png)
-2. A biztonsági figyelmeztetés vizsgálatát követően kiderülhet, hogy az adott környezetre nézve a riasztás vakriasztás volt, vagy hogy egy bizonyos erőforrás esetén az észlelt viselkedés megegyezik a várt viselkedéssel. Ha úgy dönt, hogy egy biztonsági riasztás nem alkalmazandó, elvetheti és szűréssel eltüntetheti a riasztást a megjelenített riasztások közül. Egy biztonsági riasztást két módon lehet elvetni. Kattintson jobb gombbal a riasztásra, és válassza az **Elvetés** lehetőséget, vagy mozgassa az egérmutatót egy elemre, kattintson a jobb oldalon megjelenő három pontra, és válassza az **Elvetés** lehetőséget. A **Szűrő** lehetőségre kattintva és az **Elvetve** lehetőséget választva megtekintheti az elvetett biztonsági riasztásokat.
-   
-   ![A riasztások elvetése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig4-ga.png)
+    ![A riasztások szűrése a Security Centerben](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
 
 ### <a name="respond-to-security-alerts"></a>Válaszadás a biztonsági riasztásokra
 Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riasztást kiváltó esemény(ek)ről, és arról, hogy milyen lépéseket kell tennie a támadás elhárítása érdekében. A biztonsági riasztások típus és dátum szerint vannak csoportosítva. Ha valamelyik biztonsági riasztásra kattint, megnyílik egy panel, amely a csoportosított riasztások listáját tartalmazza.
@@ -98,6 +94,6 @@ Ebből a dokumentumból megismerte a Security Center biztonsági szabályzataina
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
