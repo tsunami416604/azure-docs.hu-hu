@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/25/2016
+ms.date: 01/19/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 3cbfe3c0ad08990d5c41630ebacc47432b2c6307
-ms.openlocfilehash: 31b4635c1350428f589b708543ffb64f2a456b0b
+ms.sourcegitcommit: d98bf3a76459ed1e87f25a93a8246e2a2110a488
+ms.openlocfilehash: a41f45d277732d38b17db1fe9684cfde0027bd84
 
 
 ---
@@ -72,10 +72,10 @@ Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet haszná
 1. Nyissa meg a **Visual Studio 2015-öt** a számítógépén.
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
 3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **.NET Core**/**Konzolalkalmazás (.NET Core)** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
-   ![Képernyőfelvétel az Új projekt ablakról](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+   ![Képernyőfelvétel az Új projekt ablakról](./media/documentdb-dotnetcore-get-started/nosql-tutorial-new-project-2.png)
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található.
 5. Ezután maradjon a menüben, és kattintson a következőre: **NuGet-csomagok kezelése...**
-   ![Képernyőfelvétel a projekt helyi menüjéről](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+   ![Képernyőfelvétel a projekt helyi menüjéről](./media/documentdb-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
 7. A találatok között keresse meg a **Microsoft.Azure.DocumentDB.Core** elemet, majd kattintson a **Telepítés** lehetőségre.
    A DocumentDB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core)
@@ -369,7 +369,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen létrehozott két DocumentDB-dokumentumot.  
 
-![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
+![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-dotnetcore-get-started/nosql-tutorial-account-database.png)
 
 ## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes [lekérdezéseket](documentdb-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – a DocumentDB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
@@ -423,7 +423,7 @@ Gratulálunk! Sikeres lekérdezést végzett egy DocumentDB-gyűjteményen.
 
 Az alábbi diagram bemutatja, hogyan indít hívást a DocumentDB SQL-lekérdezési szintaxisa a létrehozott gyűjteményre. Ugyanez a logika vonatkozik a LINQ-lekérdezésekre is.
 
-![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
+![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/documentdb-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
 
 A [FROM](documentdb-sql-query.md#from-clause) kulcsszó kihagyható a lekérdezésből, mivel a DocumentDB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. A DocumentDB úgy veszi, hogy a Families, a root vagy a tetszőleges változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
@@ -558,10 +558,10 @@ Ahhoz, hogy visszaállítsa a DocumentDB .NET Core SDK-ra mutató hivatkozásoka
 * A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
-[keys]: media/documentdb-get-started/nosql-tutorial-keys.png
+[keys]: media/documentdb-dotnetcore-get-started/nosql-tutorial-keys.png
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
 
 
 ---
@@ -56,12 +56,12 @@ A sorozat következő oktatóanyagában azt tanulhatja meg, hogyan lehet az SPA-
 
 ## <a name="prerequisites"></a>Előfeltételek
 * ASP.NET Web API – Az oktatóanyagban szereplő utasítások feltételezik, hogy Ön legalább alapvető gyakorlattal rendelkezik a Visual Studio program ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) funkciójával való munkavégzés terén.
-* Azure-fiók – [Nyisson ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [használja ki a Visual Studio-előfizetők számára elérhető előnyöket](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+* Azure-fiók – [Nyisson ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) vagy [használja ki a Visual Studio-előfizetők számára elérhető előnyöket](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
   
-    Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű alkalmazást az App Service szolgáltatásban – kötelezettségek vállalása, és **bankkártyaadatok megadása nélkül**.
+    Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű alkalmazást az App Service szolgáltatásban – kötelezettségek vállalása, és **bankkártyaadatok megadása nélkül**.
 * Visual Studio 2015 a következővel: [Azure SDK for .NET](https://azure.microsoft.com/downloads/archive-net-downloads/) – Az SDK automatikusan telepíti a Visual Studio 2015-öt, ha nincs telepítve a számítógépen.
   
-  * A Visual Studióban kattintson a Súgó -> A Microsoft Visual Studio névjegye elemre, és győződjön meg arról, hogy az Azure App Service Tools 2.9.1-es vagy újabb verziója van telepítve.
+  * A Visual Studióban kattintson a Súgó -> A Microsoft Visual Studio névjegye elemre, és győződjön meg arról, hogy az Azure App Service Tools&2;.9.1-es vagy újabb verziója van telepítve.
     
     ![Azure App Tools-verzió](./media/app-service-api-dotnet-get-started/apiversion.png)
     
@@ -442,6 +442,6 @@ Az **Azure API App** projektsablon használatával azt az eredményt éri el, mi
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

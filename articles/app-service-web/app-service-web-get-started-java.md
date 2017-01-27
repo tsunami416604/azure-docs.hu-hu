@@ -1,5 +1,5 @@
 ---
-title: "Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban | Microsoft Docs"
+title: "Helyezze üzembe első Java-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió) | Microsoft Docs"
 description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
 services: app-service\web
 documentationcenter: 
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c59def4fd3fbc9d94d922bc2e7a7c077a465b21
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: af27369b0ae8de0ece6da38a78b434e595fbfc4e
 
 
 ---
-# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes"></a>Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban
+# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első Java-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
+
+> [!div class="op_single_selector"]
+> * [Első HTML-webhely](app-service-web-get-started-html-cli-nodejs.md)
+> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [Első PHP-alkalmazás](app-service-web-get-started-php-cli-nodejs.md)
+> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [Első Python-alkalmazás](app-service-web-get-started-python-cli-nodejs.md)
+> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
+> 
+> 
+
 Ez az oktatóanyag segítséget nyújt egy egyszerű Java-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
 
@@ -32,10 +43,10 @@ Az alábbiakat fogja elvégezni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Szerezzen be egy FTP-/FTPS-ügyfelet, például a [FileZillát](https://filezilla-project.org/).
-* Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+* Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -73,7 +84,7 @@ Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
 2. A **Java-verzió** alatt válassza a **Java 8** lehetőséget, majd kattintson a **Mentés** parancsra.
    
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
+    ![](./media/app-service-web-get-started-languages/set-java.png)
    
     Amikor a **Sikeresen frissítette a webalkalmazás beállításait** értesítést kapja, keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa az alapértelmezett JSP-kiszolgálóprogramot.
 3. Térjen vissza a webalkalmazás panelére, görgessen le, vagy keressen rá az **Üzembehelyezési hitelesítő adatok** elemre, majd kattintson rá.
@@ -120,6 +131,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

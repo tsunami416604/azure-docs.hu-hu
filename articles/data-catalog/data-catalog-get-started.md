@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/20/2016
+ms.date: 01/19/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7a401cb0cd9c13f2ab1779fbc18bee2a61ba5e77
+ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
+ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
 
 
 ---
@@ -83,7 +83,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 1. A böngésző egy másik lapján, illetve egy másik böngésző ablakában nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be ugyanazzal a fiókkal, amelyet az előző lépésnél az adatkatalógus létrehozásához használt.
 2. Válassza a **Tallózás** lehetőséget, majd kattintson a **Data Catalog** elemre.
    
-    ![Azure Data Catalog – Tallózás az Azure rendszerben](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) Látni fogja a korábban létrehozott adatkatalógust.
+    ![Azure Data Catalog--Tallózás az Azure rendszerben](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) Látni fogja a korábban létrehozott adatkatalógust.
    
     ![Azure Data Catalog – katalóguslista megtekintése](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Kattintson a korábban létrehozott katalógusra. Megjelenik a portál **Data Catalog** panele.
@@ -117,7 +117,7 @@ Mostantól regisztrálhatja az Adventure Works példaadatbázisból származó a
 Ebben a gyakorlatban a regisztrációs eszközt használva regisztrálja az Adventure Works adatbázisból származó adategységeket a katalógusban. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
 
 ### <a name="register-a-data-source"></a>Adatforrás regisztrálása
-1. Nyissa meg az [Azure Data Catalog kezdőlapját](https://azuredatacatalog.com), és kattintson az **Adatok közzététele** elemre.
+1. Nyissa meg az [Azure Data Catalog kezdőlapját](http://azuredatacatalog.com), és kattintson az **Adatok közzététele** elemre.
    
    ![Azure Data Catalog – Adatok közzététele gomb](media/data-catalog-get-started/data-catalog-publish-data.png)
 2. A regisztrációs eszköz letöltéséhez, telepítéséhez, majd a számítógépen való futtatásához kattintson az **Alkalmazás indítása** gombra.
@@ -366,6 +366,6 @@ Ebben az oktatóanyagban bemutattuk az Azure Data Catalog alapvető funkcióit, 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

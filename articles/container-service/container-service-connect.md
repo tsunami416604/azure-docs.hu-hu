@@ -1,107 +1,138 @@
 ---
 title: "Csatlakozás Azure tárolószolgáltatási fürthöz | Microsoft Docs"
-description: "Csatlakozás Azure tárolószolgáltatási fürthöz SSH-alagút segítségével"
+description: "Csatlakozás egy Kubernetes-, DC/OS- vagy Docker Swarm-fürthöz az Azure Container Service-ben egy távoli számítógépről"
 services: container-service
 documentationcenter: 
-author: rgardler
+author: dlepow
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, DC/OS, Azure"
+keywords: "Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure"
 ms.assetid: ff8d9e32-20d2-4658-829f-590dec89603d
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
-ms.openlocfilehash: 5296586b9266f432042f847f4dff9e6ff62ebc8b
+ms.sourcegitcommit: 2549ca9cd05f44f644687bbdf588f7af01bae3f4
+ms.openlocfilehash: 79162e5d31346370e596f39fa4827d49625897b3
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Csatlakozás Azure tárolószolgáltatási fürthöz
-Az Azure Container Service által üzembe helyezett DC/OS-, Kubernetes- és Docker Swarm-fürtök mind REST-végpontokat tesznek közzé.  A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről közvetlenül elérhető. A DC/OS és a Docker Swarm esetében létre kell hoznia egy SSH-alagutat, hogy biztonságosan csatlakozhasson a REST-végponthoz. Az egyes kapcsolatokat az alábbiakban ismertetjük.
+Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hozzá a számítási feladatok üzembe helyezéséhez és felügyeletéhez. Ez a cikk leírja, hogyan csatlakozhat a fürt fő virtuális gépéhez egy távoli számítógépről. A Kubernetes-, DC/OS- és Docker Swarm-fürtök mind REST-végpontokat tesznek közzé. A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről elérhető a `kubectl` parancssori eszköz futtatásával. A DC/OS és a Docker Swarm esetében létre kell hoznia egy Secure Shell- (SSH-) alagutat, hogy biztonságosan csatlakozhasson a REST-végponthoz. 
 
 > [!NOTE]
 > A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
 >
 
-## <a name="connecting-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz.
-Ha csatlakozni szeretne egy Kubernetes-fürthöz, telepítenie kell a `kubectl` parancssori eszközt.  Az eszköz telepítésének legegyszerűbb módja az Azure 2.0 `az` parancssori eszköz használata.
+## <a name="prerequisites"></a>Előfeltételek
 
-```console
-az acs kubernetes install cli [--install-location=/some/directory]
+* Az [Azure Container Service](container-service-deployment.md)-ben üzembe helyezett Kubernetes-, DC/OS- vagy Docker Swarm-fürt.
+* Titkos SSH-kulcsfájl, amely a fürthöz az üzembe helyezéskor hozzáadott nyilvános kulcshoz tartozik. Ezek a parancsok feltételezik, hogy a titkos SSH-kulcs a következő helyen található a számítógépen: `$HOME/.ssh/id_rsa`. További információkat az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) rendszerekre vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerre vonatkozó útmutatókban találhat. Ha az SSH-kapcsolat nem működik, lehetséges, hogy [új SSH-kulcsot kell létrehoznia](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
+
+## <a name="connect-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz
+
+Kövesse a következő lépéseket a `kubectl` telepítéséhez és konfigurálásához.
+
+> [!NOTE] 
+> Előfordulhat, hogy Linux vagy OS X rendszereken a jelen szakaszban leírt parancsokat a `sudo` használatával kell futtatni.
+> 
+
+### <a name="install-kubectl"></a>A kubectl telepítése
+Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 (előzetes verzió) parancs használata. A parancs futtatása előtt győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0 (előzetes verzió), és hogy bejelentkezett egy Azure-fiókba (`az login`).
+
+```azurecli
+# Linux or OS X
+az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
+
+# Windows
+az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-Vagy letöltheti az ügyfelet közvetlenül a [kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146).
+Másik lehetőségként letöltheti az ügyfelet közvetlenül a [kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146).
 
-A `kubectl` telepítését követően át kell másolnia a fürt hitelesítő adatait a gépre.  Ennek legegyszerűbb módját ismét az `az` parancssori eszköz használata nyújtja:
+### <a name="download-cluster-credentials"></a>A fürt hitelesítő adatainak letöltése
+A `kubectl` telepítését követően át kell másolnia a fürt hitelesítő adatait a gépre. A hitelesítő adatok beszerzésének egyik módja az `az acs kubernetes get-credentials` parancs használata. Továbbítsa az erőforráscsoport nevét és a tárolószolgáltatás erőforrásának nevét:
 
-```console
-az acs kubernetes get-credentials --dns-prefix=<some-prefix> --location=<some-location>
+
+```azurecli
+az acs kubernetes get-credentials --resource-group=<cluster-resource-group> --name=<cluster-name>
 ```
 
-Ezzel letölti a fürt hitelesítő adatait a `$HOME/.kube/config` helyre, ahol a `kubectl` megtalálja majd.
+Ez a parancs letölti a fürt hitelesítő adatait a `$HOME/.kube/config` helyre, ahol a `kubectl` megtalálja majd.
 
-Vagy az `scp` használatával is biztonságosan átmásolhatja a fájlt a fő virtuális gép `$HOME/.kube/config` helyéről a helyi gépre.
+Másik lehetőségként az `scp` használatával is biztonságosan átmásolhatja a fájlt a fő virtuális gép `$HOME/.kube/config` mappájából a helyi gépre. Példa:
 
 ```console
 mkdir $HOME/.kube/config
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
-Windows rendszeren a Windowson futó Ubuntu Bash-környezetet vagy a Putty „pscp” eszközét kell használnia.
+Windows rendszeren a Windowson futó Ubuntu Bash-környezetet, a PuTTy biztonságos fájlmásoló ügyfelét vagy egy hasonló eszközt kell használnia.
 
-A `kubectl` konfigurálását követően a fürt csomópontjainak listázásával tesztelheti a használatát:
+
+
+### <a name="use-kubectl"></a>Kubectl használata
+
+A `kubectl` konfigurálását követően a fürt csomópontjainak listázásával tesztelheti a kapcsolatot:
 
 ```console
 kubectl get nodes
 ```
 
-Végül megtekintheti a Kubernetes irányítópultot. Először futtassa a következőt:
+Egyéb `kubectl` parancsokat is kipróbálhat. Például megtekintheti a Kubernetes irányítópultot. Először futtasson egy proxyt a Kubernetes API-kiszolgálóhoz:
 
 ```console
 kubectl proxy
 ```
 
-A Kubernetes felhasználói felülete a következő címen érhető el: http://localhost:8001/ui
+A Kubernetes felhasználói felülete a következő címen érhető el: `http://localhost:8001/ui`.
 
-További utasításokat a [Kubernetes első lépéseit](http://kubernetes.io/docs/user-guide/quick-start/) ismertető útmutatóban talál
+További információ: [A Kubernetes gyors üzembe helyezése](http://kubernetes.io/docs/user-guide/quick-start/).
 
-## <a name="connecting-to-a-dcos-or-swarm-cluster"></a>Csatlakozás DC/OS- vagy Swarm-fürthöz
+## <a name="connect-to-a-dcos-or-swarm-cluster"></a>Csatlakozás DC/OS- vagy Swarm-fürthöz
 
-Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök REST-végpontokat tesznek közzé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. Ezeknek a végpontoknak a kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Miután az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. Ez a dokumentum végigvezeti azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszerben.
+Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök REST-végpontokat tesznek közzé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. A végpontok kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Miután az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. A következő szakaszok végigvezetik azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszereket futtató számítógépeken.
 
 > [!NOTE]
-> Fürtkezelő rendszerrel is létrehozhat SSH-munkamenetet. Ez azonban nem ajánlott. A magán a felügyeleti rendszeren végzett munka növeli a konfiguráció véletlen megváltoztatásának kockázatát.   
-> 
-> 
-
-## <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>SSH-alagút létrehozása Linux vagy OS X rendszeren
-Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell keresnie az elosztott terhelésű főkiszolgálók nyilvános DNS-nevét. Ehhez ki kell bontania az erőforráscsoportot, hogy az egyes erőforrások megjelenjenek. Keresse meg és jelölje ki a főkiszolgáló nyilvános IP-címét. Ekkor megnyílik a nyilvános IP-címre vonatkozó információkat, köztük a DNS-nevet is tartalmazó panel. Mentse ezt a nevet a későbbi felhasználásra. <br />
-
-![Nyilvános DNS-név](media/pubdns.png)
-
-Most nyisson meg egy kezelőfelületet, és futtassa a következő parancsot, ahol:
-
-a **PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén ez 2375. DC/OS esetén használja a 80-as portot.  
-a **USERNAME** a fürt telepítésekor megadott felhasználónév.  
-a **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.  
-a **REGION** az a régió, ahol az erőforráscsoport megtalálható.  
-a **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a Container Service-fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást az -i jelzővel együtt kell használni.
-
-```bash
-ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
-```
-> Az SSH-kapcsolat portja nem a szabványos 22-es, hanem a 2200-as port.
-> 
+> Fürtkezelő rendszerrel is létrehozhat SSH-munkamenetet. Ez azonban nem ajánlott. A magán a felügyeleti rendszeren végzett munka növeli a konfiguráció véletlen megváltoztatásának kockázatát.
 > 
 
-## <a name="dcos-tunnel"></a>DC/OS-alagút
-A DC/OS-hez kapcsolódó végpontokhoz vezető alagút megnyitásához adjon ki egy a következőhöz hasonló parancsot:
+### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>SSH-alagút létrehozása Linux vagy OS X rendszeren
+Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell keresnie az elosztott terhelésű főkiszolgálók nyilvános DNS-nevét. Kövesse az alábbi lépéseket:
+
+
+1. Az [Azure portálon](https://portal.azure.com) lépjen a tárolószolgáltatási fürtjét tartalmazó erőforráscsoporthoz. Bontsa ki az erőforráscsoportot, hogy az egyes erőforrások megjelenjenek. 
+
+2. Keresse meg és jelölje ki a főkiszolgáló virtuális gépét. A DC/OS-fürtökön ennek az erőforrásnak a neve a **dcos-master-** előtaggal kezdődik. 
+
+    A **Virtuális gép** panel tartalmazza a nyilvános IP-címre vonatkozó információkat, köztük a DNS-nevet is. Mentse ezt a nevet a későbbi felhasználásra. 
+
+    ![Nyilvános DNS-név](media/pubdns.png)
+
+3. Most nyisson meg egy kezelőfelületet, és futtassa az `ssh` parancsot a következő értékek megadásával: 
+
+    a **PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén használja a 2375-ös portot. DC/OS esetén használja a 80-as portot.  
+   a  **USERNAME** a fürt telepítésekor megadott felhasználónév.  
+   a  **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.  
+   a  **REGION** az a régió, ahol az erőforráscsoport megtalálható.  
+   a  **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást a `-i` jelzővel együtt kell használni.
+
+    ```bash
+    ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+    ```
+    > [!NOTE]
+    > Az SSH-kapcsolat portja nem a szabványos 22-es, hanem a 2200-as port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
+    > 
+
+A DC/OS-re és a Swarmra vonatkozó példák a következő szakaszokban találhatók.    
+
+### <a name="dcos-tunnel"></a>DC/OS-alagút
+A DC/OS-hez kapcsolódó végpontokhoz vezető alagút megnyitásához futtasson egy olyan parancsot, amely a következőhöz hasonló:
 
 ```bash
 sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
@@ -115,8 +146,8 @@ A DC/OS-hez kapcsolódó végpontok az alábbi helyeken érhetők el:
 
 Ehhez hasonlóan az egyes alkalmazások REST API-jait is ezen az alagúton keresztül érheti el.
 
-## <a name="swarm-tunnel"></a>Swarm-alagút
-A Swarm végponthoz vezető alagút megnyitásához adjon ki egy a következőhöz hasonló parancsot:
+### <a name="swarm-tunnel"></a>Swarm-alagút
+A Swarm-végponthoz vezető alagút megnyitásához futtasson egy olyan parancsot, amely a következőhöz hasonló:
 
 ```bash
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
@@ -128,54 +159,58 @@ Most beállíthatja a DOCKER_HOST környezeti változót az alábbi módon. A Do
 export DOCKER_HOST=:2375
 ```
 
-## <a name="create-an-ssh-tunnel-on-windows"></a>SSH-alagút létrehozása Windows rendszeren
-Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ez a dokumentum azt ismerteti, hogyan tudja ezt a PuTTY segítségével végrehajtani.
+### <a name="create-an-ssh-tunnel-on-windows"></a>SSH-alagút létrehozása Windows rendszeren
+Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ez a témakör ismerteti, hogyan hozható létre az alagút a PuTTY használatával.
 
-Töltse le a PuTTY alkalmazást Windows rendszerére, majd indítsa el az alkalmazást.
+1. [Töltse le a PuTTY alkalmazást](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) Windows rendszerére.
 
-Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. Az **Állomásnév** a következőképpen fog kinézni: `adminuser@PublicDNS`. A **Port** mezőben adja meg a 2200-as értéket.
+2. Futtassa az alkalmazást.
 
-![A PuTTY-konfigurálásának 1. lépése](media/putty1.png)
+3. Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. A **Host Name** (Gazdagép neve) a következőhöz hasonló: `adminuser@PublicDNSName`. A **Port** mezőben adja meg a 2200-as értéket.
 
-Válassza az **SSH** és a **Hitelesítés** elemet. Adja meg a hitelesítéshez használandó titkos kulcs fájlját a Private key file for authentication mezőben.
+    ![A PuTTY-konfigurálásának 1. lépése](media/putty1.png)
 
-![A PuTTY-konfigurálásának 2. lépése](media/putty2.png)
+4. Válassza az **SSH > Auth** (SSH > Hitelesítés) parancsot. Adja meg a hitelesítéshez használandó titkos kulcsfájl (.ppk) elérési útját. Ez a fájl a [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) vagy egy hasonló eszköz segítségével hozható létre a fürt létrehozásakor használt SSH-kulcsból.
 
-Válassza az **Alagutak** elemet, és konfigurálja az alábbi továbbított portokat:
+    ![A PuTTY-konfigurálásának 2. lépése](media/putty2.png)
 
-* **Source port** (Forrásport): Igény szerint – DC/OS esetén használja a 80-as, Swarm estén a 2375-ös portot.
-* **Destination** (Cél): DC/OS esetén használja a localhost:80, Swarm esetén a localhost:2375 portot.
+5. Válassza az **SSH > Tunnels** (SSH > Alagutak) elemet, és konfigurálja az alábbi továbbított portokat:
 
-Az alábbi példa DC/OS-re van konfigurálva, de Docker Swarm esetén is hasonló.
+    * **Source port** (Forrásport): DC/OS esetén használja a 80-as, Swarm estén a 2375-ös portot.
+    * **Destination** (Cél): DC/OS esetén használja a localhost:80, Swarm esetén a localhost:2375 portot.
 
-> [!NOTE]
-> Amikor ezt az alagutat létrehozza, a 80-as port nem lehet használatban.
-> 
-> 
+    Az alábbi példa DC/OS-re van konfigurálva, de Docker Swarm esetén is hasonló.
 
-![A PuTTY-konfigurálásának 3. lépése](media/putty3.png)
+    > [!NOTE]
+    > Amikor ezt az alagutat létrehozza, a 80-as port nem lehet használatban.
+    > 
 
-Amikor elkészült, mentse a kapcsolat konfigurációját, és csatlakozzon a PuTTY-munkamenethez. A csatlakozás után a port konfigurációját a PuTTY eseménynaplójában tekintheti meg.
+    ![A PuTTY-konfigurálásának 3. lépése](media/putty3.png)
 
-![A PuTTY eseménynaplója](media/putty4.png)
+6. Amikor elkészült, a **Session > Save** (Munkamenet > Mentés) paranccsal mentse a kapcsolat konfigurációját.
 
-Ha az alagutat DC/OS-re konfigurálta, a kapcsolódó végpont a következő helyeken érhető el:
+7. A PuTTY-munkamenethez az **Open** (Megnyitás) gombra kattintva csatlakozhat. A csatlakozás után a port konfigurációját a PuTTY eseménynaplójában tekintheti meg.
+
+    ![A PuTTY eseménynaplója](media/putty4.png)
+
+Miután az alagutat DC/OS-re konfigurálta, a kapcsolódó végpont a következő helyeken érhető el:
 
 * DC/OS:`http://localhost/`
 * Marathon:`http://localhost/marathon`
 * Mesos:`http://localhost/mesos`
 
-Ha az alagutat a Docker Swarmra konfigurálta, a Swarm fürtöt a Docker parancssori felületén keresztül érheti el. Először a `DOCKER_HOST` elnevezésű Windows környezeti változót kell konfigurálnia a ` :2375` értékkel.
+Miután az alagutat Swarmra konfigurálta, nyissa meg a Windows beállításait, és konfiguráljon egy `DOCKER_HOST` elnevezésű rendszerkörnyezeti változót a `:2375` értékkel. Ezután a Swarm-fürtöt a Docker parancssori felületén keresztül érheti el.
 
 ## <a name="next-steps"></a>Következő lépések
-Tárolók telepítése és felügyelete DC/OS és Swarm rendszer esetén:
+Tárolók telepítése és felügyelete a fürtben:
 
+* [Az Azure Container Service és a Kubernetes használata](container-service-kubernetes-ui.md)
 * [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
 * [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

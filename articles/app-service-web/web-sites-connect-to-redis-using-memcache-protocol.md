@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 02/29/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f0321c71655f1b023862aeeef4615544135adb5a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c478b8ba6817dd110bb7bfe3a33b728e5f85cc11
 
 
 ---
@@ -111,7 +111,7 @@ Keresse meg a **Memcached Object Cache** elemet a listában, majd kattintson a**
 
 ### <a name="enable-the-memcache-wordpress-plugin"></a>A Memcache WordPress beépülő modul engedélyezése
 > [!NOTE]
-> A Visual Studio Team Services telepítéséhez kövesse a blog útmutatását: [Webhelybővítmény engedélyezése a Webalkalmazásokban][8].
+> A Visual Studio Team Services telepítéséhez kövesse a blog útmutatását: [Webhelybővítmény engedélyezése a Web Apps szolgáltatásban][8].
 > 
 > 
 
@@ -136,7 +136,7 @@ Most, hogy az **object-cache.php** fájl a **wp-content** mappában van, a Memca
 ## <a name="verify-the-memcache-object-cache-plugin-is-functioning"></a>A Memcache Object Cache beépülő modul működésének ellenőrzése
 A webalkalmazások Memcache-segédkódjának engedélyezéséhez szükséges összes lépést elvégezte. Egy dolog maradt: ellenőrizni kell, hogy az adatok bekerülnek-e a Redis Cache példányába.
 
-### <a name="enable-the-nonssl-port-support-in-azure-redis-cache"></a>Nem SSL portok támogatása az Azure Redis Cache-ben
+### <a name="enable-the-non-ssl-port-support-in-azure-redis-cache"></a>Nem SSL portok támogatása az Azure Redis Cache-ben
 > [!NOTE]
 > A cikk írásának pillanatában a Redis CLI nem támogatja az SSL-kapcsolatot, így végre kell hajtani a következő lépéseket.
 > 
@@ -158,9 +158,9 @@ Látni fogja, hogy most a NEM SSL port van beállítva. Kattintson a **Save** (M
 
 ![Azure Redis Cache Redis hozzáférési portál nem SSL](./media/web-sites-connect-to-redis-using-memcache-protocol/18-azure-redis-cache-access-port-non-ssl.png)
 
-### <a name="connect-to-azure-redis-cache-from-rediscli"></a>Az Azure Redis Cache elérése a Redis CLI-ről
+### <a name="connect-to-azure-redis-cache-from-redis-cli"></a>Az Azure Redis Cache elérése a Redis CLI-ről
 > [!NOTE]
-> A lépés feltételezi, hogy a Redis helyben telepítve van a fejlesztési számítógépén. [A Redis telepítése helyben ezen utasításokat követve][9].
+> A lépés feltételezi, hogy a Redis helyben telepítve van a fejlesztési számítógépén. [A Redist ezen utasításokat követve telepítheti helyben][9].
 > 
 > 
 
@@ -177,10 +177,10 @@ Cserélje ki a **&lt;hostname-for-redis-cache&gt;** elemet a tényleges xxxxx.re
 A kulcsok listázását kérő hívásnak értéket kell visszaadnia. Ha nem, lépjen ismét a webalkalmazáshoz, és próbálja meg újra.
 
 ## <a name="conclusion"></a>Összegzés
-Gratulálunk! A WordPress alkalmazás mostantól központosított memórián belüli gyorsítótárral segít a teljesítmény növelésében. Ne feledje, a webalkalmazások Memcache-segédkódja bármilyen Memcache-ügyféllel használható, függetlenül a programnyelvtől vagy az alkalmazás keretrendszerétől. Ha visszajelzést szeretne küldeni, vagy kérdése van a webalkalmazások Memcache-segédkódjáról, küldje el azt az [MSDN Forums][10] vagy a [Stackoverflow][11] fórumra.
+Gratulálunk! A WordPress alkalmazás mostantól központosított memórián belüli gyorsítótárral segít a teljesítmény növelésében. Ne feledje, a webalkalmazások Memcache-segédkódja bármilyen Memcache-ügyféllel használható, függetlenül a programnyelvtől vagy az alkalmazás keretrendszerétől. Ha visszajelzést szeretne küldeni, vagy kérdése van a Web Apps Memcache-segédkódjáról, küldje el azt az [MSDN Forums][10] vagy a [Stackoverflow][11] fórumra.
 
 > [!NOTE]
-> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -191,7 +191,7 @@ Gratulálunk! A WordPress alkalmazás mostantól központosított memórián bel
 [1]: http://bit.ly/1t0KxBQ
 [2]: http://manage.windowsazure.com
 [3]: http://portal.azure.com
-[4]: ../powershell-install-configure.md
+[4]: /powershell/azureps-cmdlets-docs
 [5]: /downloads
 [6]: http://pecl.php.net
 [7]: http://pecl.php.net/package/memcache
@@ -204,6 +204,6 @@ Gratulálunk! A WordPress alkalmazás mostantól központosított memórián bel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
