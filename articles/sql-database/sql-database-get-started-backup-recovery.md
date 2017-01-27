@@ -17,75 +17,12 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 7f26cd0f6c5f9c7a2fe692bfcdc6ef60d1b2200f
-ms.openlocfilehash: d4ea089ed4b5d29c261b25e95f4d304611f9a857
+ms.sourcegitcommit: a9adc82faab977ad5da1c9dc281d45db3101d8c8
+ms.openlocfilehash: 3fb97f80d5012e993f92eb592d877faabc94c43e
 
 
 ---
-<!------------------
-This topic is annotated with TEMPLATE guidelines for TUTORIAL TOPICS.
-
-
-Metadata guidelines
-
-title
-    60 characters or less. Tells users clearly what they will do (deploy an ASP.NET web app to App Service). Not the same as H1. It's 60 characters or fewer including all characters between the quotes and the Microsoft Docs site identifier.
-
-description
-    115-145 characters. Duplicate of the first sentence in the introduction. This is the abstract of the article that displays under the title when searching in Bing or Google. 
-
-    Example: "This tutorial shows how to deploy an ASP.NET web application to a web app in Azure App Service by using Visual Studio 2015."
------------------->
-
-<!----------------
-
-TEMPLATE GUIDELINES for tutorial topics
-
-The tutorial topic shows users how to solve a problem using a product or service. It includes the prerequisites and steps users need to be successful.  
-
-It is a "solve a problem" topic, not a "learn concepts" topic.
-
-DO include this:
-    • What users will do
-    • What they will create or accomplish by the end of the tutorial
-    • Time estimate
-    • Optional but useful: Include a diagram or video. Diagrams help users see the big picture of what they are doing. A video of the steps can be used by customers as an alternative to following the steps in the topic.
-    • Prerequisites: Technical expertise and software requirements
-    • End-to-end steps. At the end, include next steps to deeper or related tutorials so users can learn more about the service
-
-DON'T include this:
-    • Conceptual info about the service. This info is in overview topics that you can link to in the prerequisites section if necessary
-
-------------------->
-
-<!------------------
-GUIDELINES for the H1 
-    
-    The H1 should answer the question "What will I do in this topic?" Write the H1 heading in conversational language and use search keywords as much as possible. Since this is a "solve a problem" topic, make sure the title indicates that. Use a strong, specific verb like "Deploy."  
-        
-    Heading must use an industry standard term. If your feature is a proprietary name like "elastic pools", use a synonym. For example: "Learn about elastic pools for multi-tenant databases." In this case multi-tenant database is the industry-standard term that will be an anchor for finding the topic.
-
--------------------->
-
 # <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery"></a>Ismerkedés a biztonsági mentéssel és a visszaállítással az adatok védelme és helyreállítása érdekében
-
-<!------------------
-    GUIDELINES for introduction
-    
-    The introduction is 1-2 sentences.  It is optimized for search and sets proper expectations about what to expect in the article. It should contain the top keywords that you are using throughout the article.The introduction should be brief and to the point of what users will do and what they will accomplish. 
-
-    In this example:
-     
-
-Sentence #1 Explains what the user will do. This is also the metadata description. 
-    This tutorial shows how to deploy an ASP.NET web application to a web app in Azure App Service by using Visual Studio 2015. 
-
-Sentence #2 Explains what users will learn and the benefit.  
-    When you’re finished, you’ll have a simple web application up and running in the cloud.
-
--------------------->
-
-
 Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja végre a következő műveleteket az Azure Portalon:
 
 - Adatbázisok meglévő biztonsági másolatainak megtekintése
@@ -95,6 +32,9 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 
 **Becsült időtartam**: Az oktatóanyag teljesítése körülbelül 30 percet vesz igénybe (feltéve, hogy megfelel a szükséges előfeltételeknek).
 
+> [!TIP]
+> Ugyanezen feladatokat a [PowerShell](sql-database-get-started-backup-recovery-powershell.md) használatával is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,11 +45,11 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 * Ön elvégezte [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started.md) oktatóanyagot vagy az azzal egyenértékű [PowerShell-verziót](sql-database-get-started-powershell.md). Ha még nem tette, végezze el ezt az előfeltételként szolgáló oktatóanyagot, vagy hajtsa végre az oktatóanyag [PowerShell-verziójának](sql-database-get-started-powershell.md) végén található PowerShell-szkriptet a továbblépés előtt.
 
 
-> [!TIP]
-> Ugyanezen feladatokat a [PowerShell](sql-database-get-started-backup-recovery-powershell.md) használatával is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
+> [!NOTE]
+> Ez az oktatóanyag a következő témakörök tartalmát segít elsajátítani: [SQL Database biztonsági mentések](sql-database-automated-backups.md), [Biztonsági másolat hosszú távú megőrzése](sql-database-long-term-retention.md) és [Azure SQL-adatbázis helyreállítása az automatikus biztonsági adatbázismentés használatával](sql-database-recovery-using-backups.md).
+>  
 
-
-## <a name="sign-in-by-using-your-existing-account"></a>Bejelentkezés meglévő fiókkal
+## <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Jelentkezzen be az Azure Portalra az Azure-fiókkal.
 [Meglévő előfizetés](https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure Portalhoz való csatlakozáshoz.
 
 1. Nyisson meg egy tetszőleges böngészőt, és csatlakozzon az [Azure Portalhoz](https://portal.azure.com/).
@@ -117,7 +57,6 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 3. A **Bejelentkezés** oldalon adja meg az előfizetése hitelesítő adatait.
    
    ![Bejelentkezés](./media/sql-database-get-started/login.png)
-
 
 <a name="create-logical-server-bk"></a>
 
@@ -127,15 +66,15 @@ Az oktatóanyag ezen szakaszában az adatbázis [szolgáltatás által létrehoz
 
 1. Kattintson az adatbázis (**sqldbtutorialdb**) **SQL Database** paneljére.
 
-    ![új mintaadatbázis panel](./media/sql-database-get-started/new-sample-db-blade.png)
+   ![új mintaadatbázis panel](./media/sql-database-get-started/new-sample-db-blade.png)
 
 2. Az eszköztáron kattintson a **Visszaállítás** elemre.
 
-    ![visszaállítási eszköztár](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
+   ![visszaállítási eszköztár](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
 3. A Visszaállítás panelen tekintse át a legrégebbi visszaállítási pontot.
 
-    ![legrégebbi visszaállítási pont](./media/sql-database-get-started-backup-recovery/oldest-restore-point.png)
+   ![legrégebbi visszaállítási pont](./media/sql-database-get-started-backup-recovery/oldest-restore-point.png)
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
 
@@ -143,37 +82,37 @@ Az oktatóanyag ezen szakaszában az adatbázist egy új adatbázisba állítja 
 
 1. Az adatbázis **Visszaállítás** paneljén tekintse át az új adatbázis alapértelmezett nevét, amelyik adatbázisba vissza szeretné állítani az adatbázist egy korábbi időpontra (a név a meglévő adatbázis neve egy időbélyeggel kiegészítve). A név a következő lépésekben megadott időpont alapján módosul.
 
-    ![visszaállított adatbázis neve](./media/sql-database-get-started-backup-recovery/restored-database-name.png)
+   ![visszaállított adatbázis neve](./media/sql-database-get-started-backup-recovery/restored-database-name.png)
 
 2. Kattintson a **naptár** ikonra a **Visszaállítási pont (UTC)** beviteli mezőben.
 
-    ![visszaállítási pont](./media/sql-database-get-started-backup-recovery/restore-point.png)
+   ![visszaállítási pont](./media/sql-database-get-started-backup-recovery/restore-point.png)
 
 2. A naptárban válasszon ki egy olyan dátumot, amely a megőrzési időtartamba esik.
 
-    ![visszaállítási pont dátuma](./media/sql-database-get-started-backup-recovery/restore-point-date.png)
+   ![visszaállítási pont dátuma](./media/sql-database-get-started-backup-recovery/restore-point-date.png)
 
 3. A **Visszaállítási pont (UTC)** beviteli mezőben adja meg az adott dátumon azt az időpontot, amelyikre vissza szeretné állítani az adatbázis adatait az adatbázis automatikus biztonsági másolatai közül.
 
-    ![visszaállítási pont időpontja](./media/sql-database-get-started-backup-recovery/restore-point-time.png)
+   ![visszaállítási pont időpontja](./media/sql-database-get-started-backup-recovery/restore-point-time.png)
 
-    >[!NOTE]
-    >Az adatbázis neve módosult, és a kiválasztott dátumot és időpontot tükrözi. Nem módosíthatja a kiszolgálót, amelyikre az adott időpontra való visszaállítást végzi. Eltérő kiszolgálóra való visszaállításhoz használja a [georedundáns visszaállítást](sql-database-disaster-recovery.md#recover-using-geo-restore). Végezetül vegye figyelembe, hogy egy [rugalmas készletet](sql-database-elastic-jobs-overview.md) vagy másik tarifacsomagot is választhat a visszaállításhoz. 
-    >
+   >[!NOTE]
+   >Az adatbázis neve módosult, és a kiválasztott dátumot és időpontot tükrözi. Nem módosíthatja a kiszolgálót, amelyikre az adott időpontra való visszaállítást végzi. Eltérő kiszolgálóra való visszaállításhoz használja a [georedundáns visszaállítást](sql-database-disaster-recovery.md#recover-using-geo-restore). Végezetül vegye figyelembe, hogy egy [rugalmas készletet](sql-database-elastic-jobs-overview.md) vagy másik tarifacsomagot is választhat a visszaállításhoz. 
+   >
 
 4. Kattintson az **OK** gombra az adatbázis korábbi időpontra, az új adatbázisba való visszaállításához.
 
 5. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
 
-    ![visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress.png)
+   ![visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress.png)
 
 6. Miután a visszaállítási feladat befejeződött, nyissa meg az **SQL-adatbázisok** panelt az újonnan visszaállított adatbázis megtekintéséhez.
 
-    ![visszaállított adatbázis](./media/sql-database-get-started-backup-recovery/restored-database.png)
+   ![visszaállított adatbázis](./media/sql-database-get-started-backup-recovery/restored-database.png)
 
-   > [!NOTE]
-   > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
-   >
+> [!NOTE]
+> Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
+>
 
 ## <a name="configure-long-term-retention-of-automated-backups-in-an-azure-recovery-services-vault"></a>Automatikus biztonsági mentések hosszú távú megőrzésének konfigurálása Azure helyreállítási tárban 
 
@@ -182,11 +121,11 @@ Az oktatóanyag ezen szakaszában [konfigurál egy Azure helyreállítási tára
 
 > [!TIP]
 > A biztonsági másolatok törléséről lásd a [hosszú távú megőrzési időtartamú biztonsági mentések törlésével](sql-database-long-term-retention-delete.md) foglalkozó témakört.
-
+>
 
 1. Nyissa meg a kiszolgáló (**sqldbtutorialserver**) **SQL Server** paneljét.
 
-    ![sql server panel](./media/sql-database-get-started/sql-server-blade.png)
+   ![sql server panel](./media/sql-database-get-started/sql-server-blade.png)
 
 2. Kattintson a **Biztonsági másolat hosszú távú megőrzése** elemre.
 
@@ -246,9 +185,9 @@ Az oktatóanyag ezen szakaszában [konfigurál egy Azure helyreállítási tára
 
    ![helyreállítási tár megtekintése](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault.png)
 
-   > [!IMPORTANT]
-   > A konfigurálást követően a biztonsági másolatok hét napon belül megjelennek a tárolóban. Ne folytassa az oktatóanyagot, amíg a biztonsági másolatok meg nem jelentek a tárolóban.
-   >
+> [!IMPORTANT]
+> A konfigurálást követően a biztonsági másolatok hét napon belül megjelennek a tárolóban. Ne folytassa az oktatóanyagot, amíg a biztonsági másolatok meg nem jelentek a tárolóban.
+>
 
 ## <a name="view-backups-in-long-term-retention"></a>Biztonsági másolatok megtekintése hosszú távú megőrzés alatt
 
@@ -260,17 +199,17 @@ Az oktatóanyag ezen szakaszában az adatbázisok biztonsági másolataival kapc
 
 2. Kattintson az adatbázis (**sqldbtutorialdb**) **SQL Database** paneljére.
 
-    ![új mintaadatbázis panel](./media/sql-database-get-started/new-sample-db-blade.png)
+   ![új mintaadatbázis panel](./media/sql-database-get-started/new-sample-db-blade.png)
 
 3. Az eszköztáron kattintson a **Visszaállítás** elemre.
 
-    ![visszaállítási eszköztár](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
+   ![visszaállítási eszköztár](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
 4. A Visszaállítás panelen kattintson a **Hosszú távú** gombra.
 
 5. Az Azure-tárolók biztonsági másolatai alatt kattintson a **Biztonsági másolat kiválasztása** gombra az adatbázisok a biztonsági másolatok hosszú távú megőrzése alatt álló biztonsági másolatainak megtekintéséhez.
 
-    ![biztonsági másolatok a tárolóban](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
+   ![biztonsági másolatok a tárolóban](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
 
 ## <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Adatbázis visszaállítása hosszú távú megőrzés alatt álló biztonsági másolatból
 
@@ -278,28 +217,25 @@ Az oktatóanyag ezen szakaszában az adatbázist egy új adatbázisba állítja 
 
 1. Az **Azure-tárolók biztonsági másolatai** panelen kattintson a visszaállítani kívánt biztonsági másolatra, majd a **Kiválasztás** elemre.
 
-    ![tárolóban lévő biztonsági másolat kiválasztása](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
+   ![tárolóban lévő biztonsági másolat kiválasztása](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
 2. Az **Adatbázis neve** szövegmezőben adjon meg egy nevet a visszaállított adatbázis számára.
 
-    ![új adatbázis neve](./media/sql-database-get-started-backup-recovery/new-database-name.png)
+   ![új adatbázis neve](./media/sql-database-get-started-backup-recovery/new-database-name.png)
 
 3. Kattintson az **OK** gombra az adatbázis visszaállításához a tárolóban lévő biztonsági másolatból az új adatbázisba.
 
 4. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
 
-    ![tárolóból való visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
+   ![tárolóból való visszaállítási feladat állapota](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
 5. Miután a visszaállítási feladat befejeződött, nyissa meg az **SQL-adatbázisok** panelt az újonnan visszaállított adatbázis megtekintéséhez.
 
-    ![tárolóból visszaállított adatbázis](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
+   ![tárolóból visszaállított adatbázis](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
 
-   > [!NOTE]
-   > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
-   >
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
+> [!NOTE]
+> Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például [egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére](sql-database-recovery-using-backups.md#point-in-time-restore).
+>
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -309,6 +245,6 @@ Az oktatóanyag ezen szakaszában az adatbázist egy új adatbázisba állítja 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

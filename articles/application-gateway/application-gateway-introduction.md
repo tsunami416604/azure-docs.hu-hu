@@ -4,7 +4,7 @@ description: "Ez az oldal a 7. réteg terheléselosztását segítő Application
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 93dab7804e03ba55ed17c3160420f2aec029c9ef
-ms.openlocfilehash: e3d36b50ed1253e40dc7a40f0611b840bb5498be
+ms.sourcegitcommit: 3c1fda0661d577e3042f1ad7103017eed74704ad
+ms.openlocfilehash: bb979cde449a7e6d8038f6ea392c3529ced29853
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: e3d36b50ed1253e40dc7a40f0611b840bb5498be
 
 A Microsoft Azure Application Gateway egy alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások Application Gateway felé történő kiszervezésével. Ezen túlmenően egyéb 7. rétegbeli útválasztási lehetőségeket is kínál, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint egyetlen Application Gateway mögött több webhelyet is üzemeltethet. Az Application Gateway rendelkezik egy webalkalmazási tűzfallal (WAF), amely védelmet nyújt alkalmazásának az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben. Az Application Gateway szolgáltatást internetes átjáróként, csak belső használatú átjáróként vagy a kettő kombinációjaként lehet konfigurálni. Az Application Gateway egy teljes körűen felügyelt Azure-szolgáltatás, amely skálázható és magas rendelkezésre állást kínál. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében. Az Application Gateway használható virtuális gépekkel, felhőalapú szolgáltatásokkal, valamint belső vagy külső webalkalmazásokkal.
 
-Az Application Gateway az alkalmazása dedikált virtuális berendezése, amely a méretezhetőség és a magas rendelkezésre állás céljából több feldolgozói példányból áll. Amikor alkalmazásátjárót hoz létre, a rendszer egy végpontot (nyilvános virtuális IP-cím vagy belső ILB IP) rendel hozzá, amely a bejövő hálózati forgalom kezelésére szolgál. A virtuális IP-cím vagy ILB IP biztosításáért az Azure Load Balancer felel az átviteli szinten (TCP/UDP), és a teljes bejövő hálózati forgalom terheléselosztását az Application Gateway feldolgozópéldányai végzik el. Az Application Gateway az alapján irányítja a HTTP/HTTPS-forgalmat, hogy az átjáró virtuális gépként, felhőszolgáltatásként, illetve belső vagy külső IP-címként lett-e megadva. A szolgáltatási szerződést és az árakat az [SLA](https://azure.microsoft.com/support/legal/sla/) és az [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/) oldalon találja.
+Az Application Gateway az alkalmazásához dedikált virtuális berendezés, amely a méretezhetőség és a magas rendelkezésre állás céljából több feldolgozói példányból áll. Amikor alkalmazásátjárót hoz létre, a rendszer egy végpontot (nyilvános virtuális IP-cím vagy belső ILB IP) rendel hozzá, amely a bejövő hálózati forgalom kezelésére szolgál. A virtuális IP-cím vagy ILB IP biztosításáért az Azure Load Balancer felel az átviteli szinten (TCP/UDP), és a teljes bejövő hálózati forgalom terheléselosztását az Application Gateway feldolgozópéldányai végzik el. Az Application Gateway az alapján irányítja a HTTP/HTTPS-forgalmat, hogy az átjáró virtuális gépként, felhőszolgáltatásként, illetve belső vagy külső IP-címként lett-e megadva. A szolgáltatási szerződést és az árakat az [SLA](https://azure.microsoft.com/support/legal/sla/) és az [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/) oldalon találja.
 
 ## <a name="features"></a>Szolgáltatások
 
@@ -75,9 +75,7 @@ Az alábbi táblázatban az egyes alkalmazásátjárókhoz tartozó átlagos át
 | 100K |35 Mbps |100 Mbps |200 Mbps |
 
 > [!NOTE]
-> Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A teljesítményre vonatkozó pontos adatokat úgy kaphatja meg, ha saját teszteket futtat le, hiszen az itt szereplő adatok csak a kapacitástervezést segítik.
->
->
+> Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
 
 ## <a name="health-monitoring"></a>Állapotfigyelés
 
@@ -97,6 +95,6 @@ Ha szeretné megtudni, hogyan hozhat létre egy URL-alapú tartalom-útválaszt�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

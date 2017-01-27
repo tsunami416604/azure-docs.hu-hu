@@ -1,12 +1,11 @@
 ---
 title: "NoSQL-oktatóanyag: DocumentDB .NET Core SDK | Microsoft Docs"
 description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB .NET SDK Core használatával. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
-keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
 services: documentdb
 documentationcenter: .net
 author: arramac
 manager: jhubbard
-editor: monicar
+editor: 
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: documentdb
 ms.workload: data-services
@@ -16,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
-ms.openlocfilehash: 60d4fec828d620d067b7eb9d0e3cb7e57d1be506
+ms.sourcegitcommit: 3cbfe3c0ad08990d5c41630ebacc47432b2c6307
+ms.openlocfilehash: 31b4635c1350428f589b708543ffb64f2a456b0b
 
 
 ---
@@ -48,6 +47,9 @@ Az oktatóanyag a következőket ismerteti:
 Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). A gyors utasításokért ugorjon [A teljes megoldás beszerzése szakaszra](#GetSolution).
 
 Utána a lap tetején és alján található szavazógomb használatával küldjön visszajelzést felénk. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
+
+> [!NOTE]
+> Az ebben az oktatóanyagban használt DocumentDB .NET Core SDK-k egyelőre nem kompatibilisek az Univerzális Windows-platformra (UWP) épülő alkalmazásokkal. A .NET Core SDK UWP-alkalmazásokat is támogató előzetes verziójáért küldjön e-mailt a következő címre: [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com).
 
 Most pedig lássunk neki!
 
@@ -556,11 +558,10 @@ Ahhoz, hogy visszaállítsa a DocumentDB .NET Core SDK-ra mutató hivatkozásoka
 * A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

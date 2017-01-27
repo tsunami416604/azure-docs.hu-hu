@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben | Microsoft Docs"
+title: "Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben | Microsoft Docs"
 description: "Megtudhatja, hogyan telepíthet egy Node.js alkalmazást az Azure App Service-ben."
 services: app-service\web
 documentationcenter: nodejs
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
+ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
+ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
 
 
 ---
@@ -86,7 +86,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
    
     > [!NOTE] 
     > Alapértelmezés szerint az Azure App Service Node.js-alkalmazásokat futtat a `production` környezeti változókkal (`process.env.NODE_ENV="production"`.
-    > A konfigurációnak köszönhetően az Azure-beli Node.js-alkalmazás válaszolhat a webkérelmekre az alapértelmezett porton, amelyet az is figyel.
+    > A konfigurációnak köszönhetően az Azure-beli Node.js-alkalmazás válaszolhat a webkérelmekre az alapértelmezett porton, amelyet az iisnode figyel.
     >
     >
 
@@ -114,13 +114,13 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). A PHP-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
+3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Ehhez a node.js-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
 
         az group create --location "<location>" --name my-nodejs-app-group
 
     A `<location>` paraméterhez használható lehetséges értékek megtekintéséhez, használja az `az appservice list-locations` CLI-parancsot.
 
-3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). A PHP-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
+3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). Ezzel a node.js-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
 
         az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
 
@@ -194,7 +194,7 @@ A Kudu telepítési motor az alábbi lépések szerint határozza meg, melyik No
 * Ezután nézze meg a package.js fájlt, hogy a `"node": "..."` meg van-e határozva az `engines` objektumban. Ha igen, akkor használja azt.
 * Válasszon egy alapértelmezett Node.js verziót.
 
-Az Azure App Service összes támogatott Node.js/NPM-verziójának frissített listája a következő URL-címen férhető hozzá az alkalmazás számára:
+Az Azure App Service összes támogatott Node.js/NPM-verziójának frissített listája a következő URL-címen érhető el az alkalmazás számára:
 
     https://<app_name>.scm.azurewebsites.net/api/diagnostics/runtime
 
@@ -303,6 +303,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

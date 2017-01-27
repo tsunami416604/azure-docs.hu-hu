@@ -1,6 +1,6 @@
 ---
 title: "Igény szerinti tartalomtovábbítás Java használatával | Microsoft Docs"
-description: "Leírja, hogyan végezhet el az Azure Media Services használatával olyan gyakori műveleteket, mint az erőforrások kódolása, titkosítása és továbbítása."
+description: "Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre a Java segítségével, az Azure Media Services (AMS) alkalmazással."
 services: media-services
 documentationcenter: java
 author: juliako
@@ -12,28 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 12/20/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
-ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Igény szerinti tartalomtovábbítás Java használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## <a name="setting-up-an-azure-account-for-media-services"></a>Egy Azure-fiók létrehozása a Media Services szolgáltatásokhoz
-Media Services-fiók létrehozásához használja az Azure Portalt. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md) Miután az Azure Portalon létrehozta a saját Media Services-fiókját, készen áll arra, hogy előkészítse a számítógépét a Media Services-fejlesztés használatára.
+Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre a Java segítségével, az Azure Media Services (AMS) alkalmazással.
 
-## <a name="setting-up-for-media-services-development"></a>A Media Services-fejlesztés előkészítése
-Ez a szakasz a Javához készült Media Services SDK használatával végzett Media Services-fejlesztés általános előfeltételeit tartalmazza.
+## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="prerequisites"></a>Előfeltételek
-* Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. További információ: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
+Az ismertetett eljárás végrehajtásához a következők szükségesek:
+
+* Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][Azure Java Developer Center] lehet telepíteni.
 
 ## <a name="how-to-use-media-services-with-java"></a>Útmutató: A Media Services használata Javával
+
+>[!NOTE]
+>Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
 
 A kód használatához először létre kell hoznia egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
@@ -270,6 +274,6 @@ A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvt
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
