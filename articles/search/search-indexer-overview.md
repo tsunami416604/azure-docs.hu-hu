@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2cddd262f912efff029bb05f0f3f3551409167ed
-ms.openlocfilehash: 4c969499f562d8cef9c09ebd909508b1c0542c57
+ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
+ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
 
 ---
 
@@ -27,7 +27,7 @@ ms.openlocfilehash: 4c969499f562d8cef9c09ebd909508b1c0542c57
 > * [Áttekintés](search-indexer-overview.md)
 > * [Portál](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [DocumentDB](../documentdb/documentdb-search-indexer.md)
+> * [DocumentDB](search-howto-index-documentdb.md)
 > * [Blob Storage (előzetes verzió)](search-howto-indexing-azure-blob-storage.md)
 > * [Table Storage (előzetes verzió)](search-howto-indexing-azure-tables.md)
 >
@@ -56,7 +56,7 @@ Az indexelők képesek egyes, az adatfeldolgozással kapcsolatos feladat automat
 Az indexelők olyan **adatforrásokból** kérnek le adatokat, amelyek például kapcsolati karakterláncokat tartalmaznak. Jelenleg a következő adatforrások támogatottak:
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](../documentdb/documentdb-search-indexer.md)
+* [DocumentDB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML- vagy XML formátumokból
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
@@ -69,7 +69,7 @@ Az indexelődefiníció egy olyan konstrukció, amely megadja az indexet, az ada
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](../documentdb/documentdb-search-indexer.md)
+* [DocumentDB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML- vagy XML formátumokból
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-blobok indexelése az Azure Search Blob indexelőjével (előzetes verzió)](search-howto-index-csv-blobs.md)
@@ -77,6 +77,6 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 
