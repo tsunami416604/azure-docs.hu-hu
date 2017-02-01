@@ -116,12 +116,12 @@ Az SQL Database fenyegetések észlelése a naplózáson túl egy további bizto
 ## <a name="compliance"></a>Megfelelőség
 A fent említett szolgáltatások és funkciók mellett, amelyek alkalmazásával megfelelhet a különféle biztonsági megfelelőségi követelményeknek, az Azure SQL Database rendszeres vizsgálatokon esik át, és több megfelelőségi szabvány szempontjából is hitelesítve van. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://azure.microsoft.com/support/trust-center/services/) aktuális listájával együtt.
 
+
 ## <a name="next-steps"></a>Következő lépések
 
 - Az SQL Database összes biztonsági szolgáltatásairól [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít további információkat.
 - Az SQL Database említett hozzáférés-vezérlési funkcióinak használatával kapcsolatban lásd a [hozzáférés-vezérléssel](sql-database-control-access.md) foglalkozó témakört.
 - Információk a proaktív figyelésről: [az SQL Database naplózási szolgáltatását](sql-database-auditing-get-started.md) és [az SQL Database fenyegetésészlelési szolgáltatását](sql-database-threat-detection-get-started.md) bemutató cikkek.
-
 
 
 
