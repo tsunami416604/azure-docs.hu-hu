@@ -18,8 +18,8 @@ ms.workload: data-management
 ms.date: 11/23/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: ae1cacf0ff003e69a16d6beac48abc36a7f18896
+ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
+ms.openlocfilehash: a0c4cfb127934f86a7ce272c1aec2fd01331e17c
 
 
 ---
@@ -39,6 +39,10 @@ A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghat
 
 * **Kiszolgálószintű tűzfalszabályok:** Ezek a szabályok hozzáférést biztosítanak az ügyfelek számára a teljes Azure SQL Serverhez, azaz az egyazon logikai kiszolgálón található összes adatbázishoz. Ezek a szabályok a **fő** adatbázisban vannak tárolva. A kiszolgálószintű tűzfalszabályok a portálon vagy Transact-SQL utasításokkal konfigurálhatók. Az Azure Portal vagy a PowerShell használatával csak az előfizetés tulajdonosa vagy az előfizetés közreműködői hozhatnak létre kiszolgálószintű tűzfalszabályokat. Ha kiszolgálószintű tűzfalszabályt kíván létrehozni a Transact-SQL használatával, akkor kiszolgálószintű fő bejelentkezőként vagy az Azure Active Directory rendszergazdájaként kell csatlakoznia az SQL Database-példányhoz (ez egyben azt is jelenti, hogy először kiszolgálószintű tűzfalszabályt kell létrehoznia egy Azure-szintű engedélyekkel rendelkező felhasználóval).
 * **Adatbázisszintű tűzfalszabályok:** Ezek a szabályok hozzáférést biztosítanak ügyfelek számára az Azure SQL Serveren belül található egyes adatbázisokhoz. Ezek a szabályok külön létrehozhatók minden adatbázishoz, és az egyes adatbázisokban vannak tárolva. (Létrehozhatók adatbázisszintű tűzfalszabályok a **fő** adatbázishoz is.) Ezek a szabályok akkor hasznosak, ha az egyazon logikai kiszolgálón található adatbázisok közül bizonyos (biztonságos) adatbázisokhoz való hozzáférést szeretné korlátozni. Az adatbázisszintű tűzfalszabályok kizárólag Transact-SQL utasításokkal konfigurálhatók.
+
+   > [!NOTE]
+   > Az adatbázisszintű tűzfalszabályok használatát bemutató oktatóanyag: [SQL Database oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md).
+   >
 
 **Javaslat:** A Microsoft a biztonság és az adatbázis hordozhatóságának fokozása érdekében adatbázisszintű tűzfalszabályok használatát javasolja, amikor erre lehetőség van. Kiszolgálószintű tűzfalszabályokat használhat a rendszergazdákra vonatkozóan, vagy ha több, azonos hozzáférési követelményt támasztó adatbázissal rendelkezik, és nem szeretne időt tölteni az egyes adatbázisok egyenként való konfigurálásával.
 
@@ -150,6 +154,6 @@ Az adatbázisok megnyitásával kapcsolatban az [adatbázis-hozzáférés és a 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

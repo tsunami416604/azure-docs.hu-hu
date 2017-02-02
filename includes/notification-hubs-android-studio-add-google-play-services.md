@@ -3,7 +3,7 @@
    
     Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben. 
    
-       ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 3. Nyissa meg a **build.gradle** fájlt az alkalmazáskönyvtárban.
    
     ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)

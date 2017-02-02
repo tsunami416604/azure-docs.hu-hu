@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;mausher;kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff2d30fcf53028754fc5e1a4b6b52323855a48b4
+ms.sourcegitcommit: 6241eb0e7ea091dffcb0ae770f8d89f24a19eb67
+ms.openlocfilehash: ff2f688d42924edb1596cb2db474a58748f2b44c
 
 
 ---
@@ -25,7 +25,7 @@ Az Azure SQL Data Warehouse egy felhőalapú, horizontálisan felskálázható a
 
 SQL Data Warehouse:
 
-* Egyesíti az SQL Server relációs adatbázist és az Azure-felhő horizontális felskálázhatóságát. Másodpercek alatt növelheti, csökkentheti, szüneteltetheti vagy folytathatja a számítást. A processzor szükség szerinti felskálázásával és a használat csúcsidőn kívüli csökkentésével költségeket takaríthat meg.
+* Egyesíti az SQL Server relációs adatbázist és az Azure-felhő horizontális felskálázhatóságát. Percek, vagy akár másodpercek alatt növelheti, csökkentheti, szüneteltetheti vagy folytathatja a számítást. A processzor szükség szerinti felskálázásával és a használat csúcsidőn kívüli csökkentésével költségeket takaríthat meg.
 * Kihasználja az Azure platformot. Egyszerűen üzembe helyezhető, zökkenőmentesen karbantartható, és teljes mértékben hibatűrő az automatikus biztonsági mentésnek köszönhetően.
 * Kiegészíti az SQL Server ökoszisztémáját. Az ismerős SQL Server Transact-SQL (T-SQL) nyelven, a megszokott eszközökkel fejleszthet.
 
@@ -96,21 +96,21 @@ Az SQL Data Warehouse az SQL Server relációs adatbázismotorján alapul, és s
 
 * Az SQL Data Warehouse számos művelethez a T-SQL szintaxisát használja. Ezenkívül a hagyományos SQL-szerkezetek széles körét támogatja, például a tárolt eljárásokat, a felhasználó által definiált függvényeket, a táblaparticionálást, az indexeket és a rendezéseket.
 * Az SQL Data Warehouse emellett számos újabb SQL Server szolgáltatást is tartalmaz, beleérve a fürtözött **oszlopcentrikus** indexeket, a PolyBase-integrációt és az adatok naplózását (fenyegetésértékeléssel).
-* Előfordulhat, hogy jelenleg nem érhetők el a T-SQL egyes nyelvi elemei, amelyeket ritkán használnak az adatraktározási feladatoknál, vagy amelyek újdonságnak számítanak az SQL Serverben. További információt tartalmaz az [Áttelepítési dokumentáció][Áttelepítési dokumentáció].
+* Előfordulhat, hogy jelenleg nem érhetők el a T-SQL egyes nyelvi elemei, amelyeket ritkán használnak az adatraktározási feladatoknál, vagy amelyek újdonságnak számítanak az SQL Serverben. További információt az [áttelepítési dokumentációban][Migration documentation] talál.
 
 A Transact-SQL nyelv és az SQL Server, az SQL Data Warehouse, az SQL Database és az Analytics Platform System egyező szolgáltatásai segítségével olyan megoldást fejleszthet, amely megfelel az adattárolási igényeinek. A teljesítmény, a biztonság és a méretezési követelmények alapján eldöntheti, hol szeretné tárolni az adatait, majd szükség szerint továbbíthatja az adatokat a különböző rendszerek között.
 
 ## <a name="data-protection"></a>Adatvédelem
-Az SQL Data Warehouse minden adatot az Azure Premium helyileg redundáns tárolóban tárol. A rendszer több szinkron másolatot tart az adatokról a helyi adatközpontban, így transzparens adatvédelmet garantál helyi hibák esetén. Emellett az SQL Data Warehouse rendszeres időközönként automatikusan végrehajtja az aktív (nem felfüggesztett) adatbázisok biztonsági mentését az Azure Storage Snapshots használatával. A biztonsági mentés és a visszaállítás működésének részletes ismertetését [A biztonsági mentés és a visszaállítás áttekintése][A biztonsági mentés és a visszaállítás áttekintése] című cikkben olvashatja el.
+Az SQL Data Warehouse minden adatot az Azure Premium helyileg redundáns tárolóban tárol. A rendszer több szinkron másolatot tart az adatokról a helyi adatközpontban, így transzparens adatvédelmet garantál helyi hibák esetén. Emellett az SQL Data Warehouse rendszeres időközönként automatikusan végrehajtja az aktív (nem felfüggesztett) adatbázisok biztonsági mentését az Azure Storage Snapshots használatával. A biztonsági mentés és a visszaállítás működésének részletes ismertetését [A biztonsági mentés és a visszaállítás áttekintése][Backup and restore overview] című cikkben olvashatja el.
 
 ## <a name="integrated-with-microsoft-tools"></a>Integráció a Microsoft eszközeivel
 Az SQL Data Warehouse együttműködik számos olyan eszközzel, amelyet az SQL Server felhasználói jól ismernek. Ezek a következők:
 
 **Hagyományos SQL Server-eszközök:** az SQL Data Warehouse szolgáltatás teljesen integrálható az SQL Server Analysis Services, az Integration Services és a Reporting Services szolgáltatással.
 
-**Felhőalapú eszközök:** az SQL Data Warehouse szolgáltatást számos új eszközzel együtt lehet használni az Azure-ban, beleértve az Azure Data Factory, a Stream Analytics, a Machine Learning és a Power BI szolgáltatást. A teljes listát [Az integrált eszközök áttekintése][Az integrált eszközök áttekintése] tartalmazza.
+**Felhőalapú eszközök:** az SQL Data Warehouse szolgáltatást számos új eszközzel együtt lehet használni az Azure-ban, beleértve az Azure Data Factory, a Stream Analytics, a Machine Learning és a Power BI szolgáltatást. A teljes listát lásd: [Az integrált eszközök áttekintése][Integrated tools overview].
 
-**Harmadik felektől származó eszközök:** sok külső eszközszolgáltató tanúsított módon integrálta az eszközeit az SQL Data Warehouse szolgáltatással. A teljes listát lásd: [Az SQL Data Warehouse megoldási partnerei][Az SQL Data Warehouse megoldási partnerei].
+**Harmadik felektől származó eszközök:** sok külső eszközszolgáltató tanúsított módon integrálta az eszközeit az SQL Data Warehouse szolgáltatással. A teljes listát lásd: [Az SQL Data Warehouse megoldáspartnerei][SQL Data Warehouse solution partners].
 
 ## <a name="hybrid-data-sources-scenarios"></a>Hibrid adatforrások forgatókönyvei
 Az SQL Data Warehouse a PolyBase technológiával való használata egyedülálló képességet biztosít a felhasználók számára az adatok ökoszisztémán belüli mozgatására, és ezzel lehetővé teszi a speciális hibrid forgatókönyvek kialakítását nem relációs és helyszíni adatforrásokkal.
@@ -122,10 +122,10 @@ A PolyBase lehetővé teszi a különböző forrásokból származó adatok hasz
 * A PolyBase technológiával hozzá lehet férni azokhoz a blobtárolókhoz, amelyet egy HD Insight-fürt tárolóként használ. Így ugyanazokat az adatokat relációs és nem relációs eszközökkel is elérheti.
 
 ## <a name="sla"></a>SLA
-Az SQL Data Warehouse a Microsoft Online Services SLA részeként termékszintű szolgáltatói szerződést biztosít. További információkért látogasson el az [SQL Data Warehouse SLA][SQL Data Warehouse SLA] oldalra. Az egyéb termékekre vonatkozó szolgáltatói szerződésekkel kapcsolatos információkat a [Szolgáltatói szerződések] Azure-oldalon olvashatja, vagy letöltheti a [Mennyiségi licencelés][Mennyiségi licencelés] oldalról. 
+Az SQL Data Warehouse a Microsoft Online Services SLA részeként termékszintű szolgáltatói szerződést biztosít. További információ: [SQL Data Warehouse SLA][SLA for SQL Data Warehouse]. Minden más termék szolgáltatói szerződése a [Szolgáltatói szerződések] Azure-oldalon található, vagy letölthető a [Mennyiségi licencelés][Volume Licensing] oldalról. 
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][SQL Data Warehouse létrehozása] és a [mintaadatok betöltéséről][mintaadatok betöltése]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure szószedet], amikor az új fogalmakkal ismerkedik. Esetleg tekintsen meg néhányat a többi SQL Data Warehouse erőforrás közül.  
+Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Esetleg tekintsen meg néhányat a többi SQL Data Warehouse erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]
 * [Blogok]
@@ -142,13 +142,13 @@ Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg t
 
 <!--Article references-->
 [Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[mintaadatok betöltése]: ./sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse létrehozása]: ./sql-data-warehouse-get-started-provision.md
-[Áttelepítési dokumentáció]: ./sql-data-warehouse-overview-migrate.md
-[Az SQL Data Warehouse megoldási partnerei]: ./sql-data-warehouse-partner-business-intelligence.md
-[Az integrált eszközök áttekintése]: ./sql-data-warehouse-overview-integrate.md
-[A biztonsági mentés és a visszaállítás áttekintése]: ./sql-data-warehouse-restore-database-overview.md
-[Azure szószedet]: ../azure-glossary-cloud-terminology.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
+[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
@@ -161,12 +161,12 @@ Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg t
 [Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SQL Data Warehouse SLA]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
-[Mennyiségi licencelés]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[SLA for SQL Data Warehouse]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
+[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Szolgáltatói szerződések]: https://azure.microsoft.com/en-us/support/legal/sla/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

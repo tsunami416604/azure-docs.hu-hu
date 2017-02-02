@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
-ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 55c349f19055e4e4d17f5c7290a2ee82d2d3d19d
 
 
 ---
@@ -41,19 +41,18 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 * [Bower]
 * [Yeoman]
 * [Git]
-* [Azure CLI 2.0 előzetes verzió](/cli/azure/install-az-cli2)
+* [Azure CLI]
 * Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra], vagy [aktiválhatja a Visual Studio előfizetői előnyeit].
 
 > [!NOTE]
-> Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
-## <a name="create-and-configure-a-simple-nodejs-app-for-azure"></a>Egyszerű Node.js alkalmazás létrehozása és konfigurálása az Azure-ban
+## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>Egyszerű Node.js webalkalmazás létrehozása és telepítése
 1. Nyissa meg a kívánt parancssori terminált, és telepítse a [Express generator for Yeoman]
    
         npm install -g generator-express
-
 2. `CD` egy működő könyvtárba, és hozzon létre egy Express alkalmazást az alábbi szintaxissal:
    
         yo express
@@ -67,13 +66,28 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
     `? Select a css preprocessor to use (Sass Requires Ruby):` **Nincs**  
     `? Select a database to use:` **Nincs**  
     `? Select a build tool to use:` **Grunt**
-
 3. `CD` az új alkalmazás gyökérkönyvtárára mutatva, majd indítsa el, hogy meggyőződjön arról, hogy fut a fejlesztési környezetben:
    
         npm start
    
     A böngészőben navigáljon a <http://localhost:3000> helyre, hogy meggyőződjön arról, hogy látja az Express kezdőlapot. Ha ellenőrizte, hogy az alkalmazás megfelelően fut-e, állítsa le a `Ctrl-C` segítségével.
+4. Váltson ASM módra, és jelentkezzen be az Azure-ba (ehhez az [Azure CLI szükséges](#prereq)):
+   
+        azure config mode asm
+        azure login
+   
+    A felszólítást követve folytassa a böngészőbe való bejelentkezést egy Azure-előfizetéssel rendelkező Microsoft-fiókkal.
 
+
+3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni a hitelesítő adatok használatával.
+   
+        azure site deployment user set --username <username> --pass <password>
+
+5. Győződjön meg arról, hogy még az alkalmazás gyökérkönyvtárában van, majd hozza létre az App Service alkalmazás-erőforrást az Azure-ban egy egyedi alkalmazásnévvel a következő parancsot használva. Például: http://{appname}.azurewebsites.net
+   
+        azure site create --git {appname}
+   
+    A felszólítást követve válasszon egy Azure-régiót, ahová telepíteni szeretné. 
 6. Nyissa meg a ./config/config fájlt az alkalmazás gyökeréből, és módosítsa az éles portot a `process.env.port` értékre; a `config` objektum `production` tulajdonságának pedig az alábbi példához hasonlóan kell kinéznie:
    
         production: {
@@ -95,62 +109,17 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
         "engines": {
             "node": "6.9.1"
         }, 
-
-8. Mentse a módosításokat, indítson Git-tárházat az alkalmazás gyökerében, majd véglegesítse a kódját:
+8. Mentse el a módosításokat, majd a git segítségével telepítse az alkalmazást az Azure-ban. Amikor a rendszer kéri, adja meg a korábban létrehozott felhasználói hitelesítő adatokat.
    
         git add .
         git add -f config
         git commit -m "{your commit message}"
-
-## <a name="deploy-your-nodejs-app-to-azure"></a>Node.js-alkalmazás telepítése az Azure-ban
-
-1. Jelentkezzen be az Azure-ba ([Azure CLI 2.0 előzetes verzió](#prereq) szükséges):
-   
-        az login
-   
-    A felszólítást követve folytassa a böngészőbe való bejelentkezést egy Azure-előfizetéssel rendelkező Microsoft-fiókkal.
-
-3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni ezen hitelesítő adatok használatával.
-   
-        az appservice web deployment user set --user-name <username> --password <password>
-
-3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Ehhez a node.js-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
-
-        az group create --location "<location>" --name my-nodejs-app-group
-
-    A `<location>` paraméterhez használható lehetséges értékek megtekintéséhez, használja az `az appservice list-locations` CLI-parancsot.
-
-3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). Ezzel a node.js-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
-
-        az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
-
-4. Hozzon létre egy új, egyéni névvel rendelkező webappot az `<app_name>` paraméterben.
-
-        az appservice web create --name <app_name> --resource-group my-nodejs-app-group --plan my-nodejs-appservice-plan
-
-5. Konfigurálja az új webapphoz tartozó helyi Git üzemelő példányt a következő paranccsal:
-
-        az appservice web source-control config-local-git --name <app_name> --resource-group my-nodejs-app-group
-
-    Egy ehhez hasonló JSON-kimenet jön létre, ami azt jelenti, hogy a távoli Git-tárház be lett állítva:
-
-        {
-        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-        }
-
-6. Adja hozzá a JSON-ban található URL-címet a helyi tárházhoz távoli Git-elemként (az egyszerűség kedvéért nevezzük a következőnek: `azure`).
-
-        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
-   
-7. Helyezze üzembe a mintakódot az `azure` távoli Githez. Ha a rendszer kéri, használja a korábban beállított üzembe helyezési hitelesítő adatokat.
-
         git push azure master
    
     Az Express generátor már biztosít egy .gitignore fájlt, így a `git push` nem használja a sávszélességet a node_modules/ könyvtár feltöltésekor.
-
 9. Végezetül indítsa el az élő Azure alkalmazást a böngészőben:
    
-        az appservice web browse --name <app_name> --resource-group my-nodejs-app-group
+        azure site browse
    
     Ekkor elméletben a Node.js alkalmazásának élőben futnia kell az Azure App Service-ben.
    
@@ -160,9 +129,9 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 Az App Service-ben futó Node.js webalkalmazás frissítéséhez csak futtassa a `git add`, `git commit` és `git push` parancsokat, mint ahogyan azt a webalkalmazás első telepítésekor tette.
 
 ## <a name="how-app-service-deploys-your-nodejs-app"></a>Hogyan telepíti az App Service a Node.js alkalmazást
-Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazásokat. Az Azure CLI 2.0 előzetes verzió és a Kudu motor (Git-telepítés) egymással együttműködve biztosítanak zökkenőmentes élményt a Node.js-alkalmazások parancssori felületről való fejlesztésekor és telepítésekor. 
+Az Azure App Service az [iisnode] segítségével futtatja a Node.js alkalmazásokat. Az Azure CLI és a Kudu motor (Git telepítés) egymással együttműködve biztosítanak egy zökkenőmentes élményt a Node.js alkalmazások parancssori felületről való fejlesztésekor és telepítésekor. 
 
-* Létrehozhat egy iisnode.yml fájlt a gyökérkönyvtárban, amely segítségével testre szabhatja az iisnode-tulajdonságokat. Az összes konfigurálható beállítás dokumentációját [itt](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml) találhatja.
+* `azure site create --git` felismeri a server.js vagy az app.js fájl közös Node.js mintázatát, és létrehoz egy iisnode.yml fájlt a gyökérkönyvtárban. Ezt a fájlt használhatja az iisnode testreszabásához.
 * A `git push azure master` esetében a Kudu automatizálja az alábbi telepítési feladatokat:
   
   * Ha a package.json az adattár gyökérkönyvtárában van, futtassa az `npm install --production` parancsot.
@@ -213,7 +182,7 @@ Az iisnode naplók olvasásához kövesse az alábbi lépéseket.
 > 
 > 
 
-1. Nyissa meg az Azure CLI 2.0 előzetes verzió által biztosított iisnode.yml fájlt.
+1. Nyissa meg az Azure CLI által biztosított iisnode.yml fájlt.
 2. Adja még a következő két paramétert: 
    
         loggingEnabled: true
@@ -277,6 +246,7 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 <!-- URL List -->
 
+[Azure CLI]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [aktiválhatja a Visual Studio előfizetői előnyeit]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/

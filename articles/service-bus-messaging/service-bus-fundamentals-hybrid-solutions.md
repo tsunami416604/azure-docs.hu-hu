@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/31/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
+ms.sourcegitcommit: 8f82ce3494822b13943ad000c24582668bb55fe8
+ms.openlocfilehash: 74d032b37a856b141350fb6a1f73b7067624f926
 
 
 ---
@@ -53,17 +53,17 @@ Tegyük fel, hogy két alkalmazás egy Service Bus-üzenetsorral való csatlakoz
 
 A folyamat egyszerű: A küldő egy üzenetet küld a Service Bus-üzenetsorba, a fogadó pedig egy későbbi időpontban fogadja az üzenetet. Az egyes üzenetsorok rendelkezhetnek egyetlen fogadóval, amint az a 2. ábrán látható. Esetleg több alkalmazás is olvashat ugyanabból az üzenetsorból. Az utóbbi esetben az egyes üzeneteket csak egyetlen fogadó olvassa. A csoportos küldési szolgáltatáshoz inkább témakört használjon.
 
-Mindegyik üzenet két részből áll: egy sor tulajdonságból, amelyek mindegyike egy kulcs/érték pár, valamint egy bináris üzenettörzsből. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az *Értékesítő="Ava"* és az *Összeg=10000* tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét vagy, ha nincs ilyen, maradhat üresen.
+Mindegyik üzenet két részből áll: egy sor tulajdonságból, amelyek mindegyike egy kulcs/érték pár, valamint az üzenet hasznos adattartalmából. A hasznos adattartalom lehet bináris, szöveges vagy akár XML formátumú is. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az *Értékesítő="Ava"* és az *Összeg=10000* tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét vagy, ha nincs ilyen, maradhat üresen.
 
-A fogadó kétféleképpen olvashatja az üzeneteket a Service Bus-üzenetsorból. Az első lehetőség, a *ReceiveAndDelete*, eltávolítja az üzenetet a sorból, és azonnal törli. Ez egyszerű, ha azonban a fogadó összeomlik, mielőtt végzett az üzenet feldolgozásával, az üzenet elveszik. Mivel már el lett távolítva az üzenetsorból, más fogadó nem férhet hozzá. 
+A fogadó kétféleképpen olvashatja az üzeneteket a Service Bus-üzenetsorból. Az első lehetőség, a *[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)*, eltávolítja az üzenetet a sorból, és azonnal törli. Ez egyszerű, ha azonban a fogadó összeomlik, mielőtt végzett az üzenet feldolgozásával, az üzenet elveszik. Mivel már el lett távolítva az üzenetsorból, más fogadó nem férhet hozzá. 
 
-A második lehetőség, a *PeekLock*, ezt a problémát hivatott kiküszöbölni. A **ReceiveAndDelete** lehetőséghez hasonlóan a **PeekLock** olvasás is eltávolítja az üzenetet a sorból. Nem törli azonban az üzenetet. Helyette zárolja, és a többi fogadó számára láthatatlanná teszi, majd vár az alábbi három esemény valamelyikének a bekövetkezésére:
+A második lehetőség, a *[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)*, ezt a problémát hivatott kiküszöbölni. A **ReceiveAndDelete** lehetőséghez hasonlóan a **PeekLock** olvasás is eltávolítja az üzenetet a sorból. Nem törli azonban az üzenetet. Helyette zárolja, és a többi fogadó számára láthatatlanná teszi, majd vár az alábbi három esemény valamelyikének a bekövetkezésére:
 
-* Ha a fogadó sikeresen feldolgozza az üzenetet, meghívja a **Complete** metódust, és az üzenetsor törli az üzenetet. 
-* Ha a fogadó úgy dönt, hogy nem tudja sikeresen feldolgozni az üzenetet, meghívja az **Abandon** metódust. Az üzenetsor ekkor eltávolítja a zárolást az üzenetről, és elérhetővé teszi a többi fogadó számára.
+* Ha a fogadó sikeresen feldolgozza az üzenetet, meghívja a **[Complete()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)** metódust, és az üzenetsor törli az üzenetet. 
+* Ha a fogadó úgy dönt, hogy nem tudja sikeresen feldolgozni az üzenetet, meghívja az **[Abandon()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)** metódust. Az üzenetsor ekkor eltávolítja a zárolást az üzenetről, és elérhetővé teszi a többi fogadó számára.
 * Ha a fogadó egyik metódust sem hívja meg a konfigurált időtartamon belül (alapértelmezés szerint 60 másodperc), az üzenetsor feltételezi, hogy a fogadó meghibásodott. Ebben az esetben úgy viselkedik, mintha a fogadó meghívta volna az **Abandon** metódust, és elérhetővé teszi az üzenetet a többi fogadó számára.
 
-Figyelje meg, mi történhet ebben az esetben: ugyanazon üzenet kézbesítésére kétszer is sor kerülhet, akár két különböző fogadónak is. A Service Bus-üzenetsorokat használó alkalmazásokat fel kell készíteni erre az esetre. A duplikált üzenetek észlelésének megkönnyítésére mindegyik üzenet rendelkezik egy egyedi **MessageID** tulajdonsággal, amely alapértelmezés szerint változatlan marad, függetlenül attól, hogy hányszor történt meg az adott üzenet olvasása az üzenetsorból. 
+Figyelje meg, mi történhet ebben az esetben: ugyanazon üzenet kézbesítésére kétszer is sor kerülhet, akár két különböző fogadónak is. A Service Bus-üzenetsorokat használó alkalmazásokat fel kell készíteni erre az esetre. A duplikált üzenetek észlelésének megkönnyítésére mindegyik üzenet rendelkezik egy egyedi **[MessageID](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)** tulajdonsággal, amely alapértelmezés szerint változatlan marad, függetlenül attól, hogy hányszor történt meg az adott üzenet olvasása az üzenetsorból. 
 
 Az üzenetsorok számos helyzetben lehetnek hasznosak. A használatukkal az alkalmazások akkor is kommunikálhatnak, ha nem egy időben futnak, ami különösen a kötegelt és a mobilalkalmazások esetén praktikus. A több fogadóval rendelkező üzenetsorok emellett automatikus terheléselosztást is biztosítanak, mivel a küldött üzenetek megoszlanak a fogadók között.
 
@@ -80,7 +80,7 @@ A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugya
 * Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
 * A 3. előfizető a szűrőt *Igaz* értékűre állította, ami azt jelenti, hogy minden üzenetet megkap. Ez az alkalmazás például a naplózásért lehet felelős, és ezért minden üzenetet meg kell kapnia.
 
-Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a **ReceiveAndDelete** és a **PeekLock** mód között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
+Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a [**ReceiveAndDelete** és a **PeekLock**](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) mód között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
 
 ## <a name="relays"></a>Továbbítók
 Az üzenetsorok és a témakörök egyaránt egyirányú aszinkron kommunikációt tesznek lehetővé egy közvetítőn keresztül. A forgalom csak egy irányban folyik, és nincs közvetlen kapcsolat a küldők és a fogadók közt. De mi van, ha nem ezt szeretné? Tegyük fel, hogy az alkalmazásainak küldenie és fogadnia is kell üzeneteket, vagy talán közvetlen kapcsolatot szeretne közöttük, és nincs szüksége közvetítőre az üzenetek tárolásához. Az ilyen forgatókönyvek kezeléséhez a Service Bus *továbbítókat* biztosít, amint az a 4. ábrán látható.
@@ -119,6 +119,6 @@ Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

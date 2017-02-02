@@ -11,14 +11,14 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 01/04/2017
+ms.date: 01/11/2017
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: ce30d47075636d3b64215d50b81acc09e7ed72f1
-ms.openlocfilehash: d74be42963206c82218bc82ea1bf12e5c0cdb0f3
+ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
+ms.openlocfilehash: 412c3f9c34e399ecdffd939b5b72e687a847b8e1
 
 
 ---
@@ -33,7 +33,7 @@ Az SQL DB rugalmas készletek egyszerű, költséghatékony megoldást kínálna
 ## <a name="how-it-works"></a>Működés
 Gyakori SaaS-alkalmazási minta az egybérlős adatbázismodell: minden ügyfél saját adatbázist kap. Minden ügyfél (adatbázis) kiszámíthatatlan erőforrásigényekkel rendelkezik a memóriát, adatátvitelt és processzorteljesítményt illetően. Hogyan lehet hatékonyan és költséghatékonyan erőforrásokat lefoglalni az igényekben mutatkozó csúcsokhoz és völgyekhez igazodva? Ennek hagyományosan két módja volt: (1) a szükségesnél több erőforrás biztosítása a kihasználtsági csúcs alapján, valamint túlfizetés; vagy (2) a szükségesnél kevesebb erőforrás biztosítása a költségek megtakarítása céljából, a csúcsidőszakokban nyújtott teljesítmény és az ügyfélelégedettség rovására. A rugalmas készletek úgy oldják meg ezt a problémát, hogy akkor biztosítják az adatbázisok számára a szükséges nagy teljesítményű erőforrásokat, amikor azokra szükség van. Egy egyszerű erőforrás-lefoglalási mechanizmust biztosítanak, kiszámítható költségekkel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
 Az SQL Database-ben az adatbázisok erőforrásigény-kezelési képességének relatív mértékét az önálló adatbázisok esetében adatbázis-tranzakciós egységekkel (DTU), a rugalmas készletben található rugalmas adatbázisok esetében pedig rugalmas DTU-kkal (eDTU) fejezzük ki. További információk a DTU-król és eDTU-król: [Az SQL Database bemutatása](sql-database-technical-overview.md).
@@ -106,6 +106,6 @@ A georedundáns helyreállítás által kínált lehetőségeknél agresszívabb
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

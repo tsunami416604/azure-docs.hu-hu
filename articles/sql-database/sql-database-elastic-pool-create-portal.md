@@ -31,7 +31,7 @@ ms.openlocfilehash: 4be8e4f81965fa4d872e29fdb9aaa45909d18c37
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre méretezhető [rugalmas készleteket](sql-database-elastic-pool.md) az [Azure Portalon](https://portal.azure.com/). Készlet két különböző módon hozható létre. Létrehozhatja a készletet a nulláról is, ha tisztában van a használni kívánt beállításokkal, de alapul veheti a szolgáltatás javaslatait is. Az SQL Database beépített funkciói képesek készletbeállítást javasolni, ha a rendszer úgy ítéli meg, hogy a múltbeli használat telemetriai adatai alapján ez az adatbázisok esetében használható legköltséghatékonyabb megoldás.
 
-Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább 12-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. Lásd: [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md).
+Egy kiszolgálóhoz több készlet adható, de egy készlethez nem adhatók különböző kiszolgálókról származó adatbázisok. Készlet létrehozásához egy legalább&12;-es verziójú kiszolgálón üzemelő adatbázis szükséges. Ha még nem rendelkezik Azure SQL-adatbázissal, olvassa el a [Create your first Azure SQL database](sql-database-get-started.md) (Az első Azure SQL-adatbázis létrehozása) című cikket. Egyetlen adatbázissal is létrehozhatja a készletet, de a készletek több adatbázis használata esetén biztosítanak költséghatékony működést. Lásd: [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md).
 
 > [!NOTE]
 > A rugalmas készletek minden Azure-régióban általánosan elérhetők, kivéve Nyugat-Indiát, ahol a szolgáltatás jelenleg előzetes verzióként érhető el.  A rugalmas készletek a lehető leghamarabb általánosan elérhetők lesznek ebben a régióban.
@@ -54,7 +54,7 @@ A cikk bemutatja, hogy miként lehet új készletet létrehozni a portál egy me
 
     **-VAGY-**
 
-    Elképzelhető, hogy egy üzenet jelenik meg, amely tájékoztatja, hogy a kiszolgálón javasolt rugalmas készletek érhetők el (csak 12-es verzió használatakor). Kattintson az üzenetre a korábbi adatbázis-használat telemetriai adatai alapján javasolt készletek megtekintéséhez, majd kattintson a csomagra a további részletek megjelenítéséhez és a készlet testre szabásához. A javaslatokkal kapcsolatos további információkért olvassa el a témakör későbbi részében található [A készlettel kapcsolatos javaslatok megértése](#understand-pool-recommendations) című részt.
+    Elképzelhető, hogy egy üzenet jelenik meg, amely tájékoztatja, hogy a kiszolgálón javasolt rugalmas készletek érhetők el (csak&12;-es verzió használatakor). Kattintson az üzenetre a korábbi adatbázis-használat telemetriai adatai alapján javasolt készletek megtekintéséhez, majd kattintson a csomagra a további részletek megjelenítéséhez és a készlet testre szabásához. A javaslatokkal kapcsolatos további információkért olvassa el a témakör későbbi részében található [A készlettel kapcsolatos javaslatok megértése](#understand-pool-recommendations) című részt.
 
     ![javasolt készlet](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
@@ -129,6 +129,6 @@ Miután hozzáadta az adatbázisokat a készlethez, a rendszer a kiválasztott a
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

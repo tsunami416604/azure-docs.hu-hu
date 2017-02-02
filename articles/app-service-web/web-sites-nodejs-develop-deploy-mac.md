@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 4b8eb863a1fcb65c307870619ea9d8942c57a906
 
 
 ---
@@ -47,7 +47,7 @@ Az összetettebb Node.js-alkalmazások oktatóanyagait és mintakódját, valami
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez Microsoft Azure-fiókra lesz szüksége. Ha nincs fiókja, [aktiválhatja a Visual Studio előfizetői előnyeit](/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), vagy [regisztráljon egy ingyenes próbaverzióra](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
-> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -186,7 +186,7 @@ A Node.js a modulok széles választékát kínálja, amelyeket az alkalmazásai
 
 Ha az Azure-on történő üzembe helyezést követően problémája adódik az alkalmazás használatával, a probléma diagnosztizálásával kapcsolatban információkat a [How to debug a Node.js application in Azure App Service](web-sites-nodejs-debug.md) (Node.js-alkalmazás hibakeresése az Azure App Service szolgáltatásban) című részben talál.
 
-Ebben a cikkben webalkalmazás létrehozását mutatjuk be az Azure portál használatával. Ugyanezen műveletek végrehajtásához használhatja az [Azure parancssori felületét](../xplat-cli-install.md) vagy az [Azure PowerShellt](../powershell-install-configure.md) is.
+Ebben a cikkben webalkalmazás létrehozását mutatjuk be az Azure portál használatával. Ugyanezen műveletek végrehajtásához használhatja az [Azure parancssori felületét](../xplat-cli-install.md) vagy az [Azure PowerShellt](/powershell/azureps-cmdlets-docs) is.
 
 A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további információkat a következő témakörben talál: [Node.js fejlesztői központ](/develop/nodejs/).
 
@@ -202,6 +202,6 @@ A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további inf
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
