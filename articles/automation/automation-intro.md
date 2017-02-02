@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 16f6285577294ff49f11a27f48daea090655a2b1
+ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
+ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
 
 
 ---
@@ -36,7 +36,7 @@ Az Azure Automation forgatókönyvek Windows PowerShellen vagy Windows PowerShel
 A [Forgatókönyv galéria](automation-runbook-gallery.md#runbooks-in-runbook-gallery) a Microsoft és a közösség forgatókönyveit tartalmazza. Ezeket felhasználhatja módosítás nélkül a környezetében, vagy testreszabhatja őket, hogy megfeleljenek a céljainak. Referenciaként is hasznosak annak megtanulásához, hogy miként hozhatja létre a saját forgatókönyveit. A saját forgatókönyveit is hozzáadhatja a galériához, ha más felhasználók számára is hasznosnak gondolja. 
 
 ## <a name="creating-runbooks-with-azure-automation"></a>Forgatókönyvek létrehozása Azure Automationnel
-[Létrehozhatja a saját forgatókönyveit](automation-creating-importing-runbook.md) az alapoktól felépítve, vagy módosíthat a [Forgatókönyv galériából](http://msdn.microsoft.com/library/azure/dn781422.aspx) szerzett forgatókönyveket a saját igényeinek megfelelően. Három különböző [forgatókönyvtípus](automation-runbook-types.md) közül választhat az igényei és a PowerShell-tapasztalata alapján. Ha közvetlenül a PowerShell-kóddal szeretne dolgozni, offline vagy az Azure portál [szöveges szerkesztőjével](http://msdn.microsoft.com/library/azure/dn879137.aspx) szerkesztheti a [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks) vagy a [PowerShell-alapú munkafolyamat-forgatókönyvet](automation-runbook-types.md#powershell-workflow-runbooks). Ha inkább a kód közvetlen manipulálása nélkül szeretne szerkeszteni egy forgatókönyvet, létrehozhat egy [grafikus forgatókönyvet](automation-runbook-types.md#graphical-runbooks) az Azure portál [grafikus szerkesztőjével](automation-graphical-authoring-intro.md). 
+[Létrehozhatja a saját forgatókönyveit](automation-creating-importing-runbook.md) az alapoktól felépítve, vagy módosíthat a [Forgatókönyv galériából](http://msdn.microsoft.com/library/azure/dn781422.aspx) szerzett forgatókönyveket a saját igényeinek megfelelően. Négy különböző [forgatókönyvtípus](automation-runbook-types.md) közül választhat az igényei és a PowerShell-tapasztalata alapján. Ha közvetlenül a PowerShell-kóddal szeretne dolgozni, offline vagy az Azure portál [szöveges szerkesztőjével](http://msdn.microsoft.com/library/azure/dn879137.aspx) szerkesztheti a [PowerShell-forgatókönyvet](automation-runbook-types.md#powershell-runbooks) vagy a [PowerShell-alapú munkafolyamat-forgatókönyvet](automation-runbook-types.md#powershell-workflow-runbooks). Ha inkább a kód közvetlen manipulálása nélkül szeretne szerkeszteni egy forgatókönyvet, létrehozhat egy [grafikus forgatókönyvet](automation-runbook-types.md#graphical-runbooks) az Azure portál [grafikus szerkesztőjével](automation-graphical-authoring-intro.md). 
 
 Inkább néz videót olvasás helyett? Tekintse meg az alábbi videót a Microsoft Ignite 2015. májusi üléséről. Megjegyzés: Noha a videóban tárgyalt koncepciók és szolgáltatások helyesek, az Azure Automation sokat fejlődött a videó rögzítése óta. Mostanra kiterjedtebb a felhasználói felülete az Azure portálon, és további képességeket is biztosít.
 
@@ -87,6 +87,6 @@ Számos erőforrás áll rendelkezésére, hogy további információkat kapjon 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

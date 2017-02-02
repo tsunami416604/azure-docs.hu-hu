@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/13/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
 > 
 > 
 
-Jelen cikk bemutatja, hogyan lehet adatokat importálni az Azure Search-indexbe az [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) használatával.
+Jelen cikk bemutatja, hogyan lehet adatokat importálni az Azure Search-indexbe az [Azure Search .NET SDK](https://aka.ms/search-sdk) használatával.
 
 A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](search-what-is-an-index.md). A jelen cikk azt feltételezi, hogy már létrehozott egy `SearchServiceClient` objektumot, az [Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md#CreateSearchServiceClient) részben megadott módon.
 
@@ -41,21 +41,21 @@ A dokumentumok .NET SDK használatával az indexbe történő küldéséhez a k�
 2. Hozzon létre egy olyan `IndexBatch` objektumot, amely tartalmazza a hozzáadni, módosítani vagy törölni kívánt dokumentumokat.
 3. Hívja meg a `SearchIndexClient` `Documents.Index` módszerét az `IndexBatch` Search-indexbe történő elküldéséhez.
 
-## <a name="i-create-an-instance-of-the-searchindexclient-class"></a>I. A SearchIndexClient osztály egy példányának létrehozása
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>A SearchIndexClient osztály egy példányának létrehozása
 Az adatok Azure Search .NET SDK használatával az indexbe történő importálásához létre kell hoznia a `SearchIndexClient` osztály egy példányát. A példány létrehozását saját maga is elvégezheti, ha azonban már rendelkezik egy `SearchServiceClient`-példánnyal, egyszerűbb, ha meghívja annak `Indexes.GetClient` módszerét. Itt például azt láthatja, hogyan történik egy `SearchIndexClient` beszerzése a „hotels” nevű indexhez egy `serviceClient` nevű `SearchServiceClient` osztályból:
 
 ```csharp
-SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 > [!NOTE]
-> A keresőalkalmazásokban az indexkezelést és -feltöltést általában a keresési lekérdezésektől eltérő elem végzi. A `Indexes.GetClient` kényelmes megoldás az index feltöltésére, mivel így nem szükséges újabb `SearchCredentials` objektumot biztosítania. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a `SearchIndexClient` közvetlen létrehozása, így az egy rendszergazdai kulcs helyett lekérdezési kulcs formájában adható át. Ez megfelel a [legalacsonyabb jogosultsági szint elvének](https://en.wikipedia.org/wiki/Principle_of_least_privilege), és segítségével alkalmazása biztonságosabbá tehető. További információk a rendszergazdai és a lekérdezési kulcsokról: [Az Azure Search REST API leírása az MSDN-en](https://msdn.microsoft.com/library/azure/dn798935.aspx).
+> A keresőalkalmazásokban az indexkezelést és -feltöltést általában a keresési lekérdezésektől eltérő elem végzi. A `Indexes.GetClient` kényelmes megoldás az index feltöltésére, mivel így nem szükséges újabb `SearchCredentials` objektumot biztosítania. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a `SearchIndexClient` közvetlen létrehozása, így az egy rendszergazdai kulcs helyett lekérdezési kulcs formájában adható át. Ez megfelel a [legalacsonyabb jogosultsági szint elvének](https://en.wikipedia.org/wiki/Principle_of_least_privilege), és segítségével alkalmazása biztonságosabbá tehető. További információk az adminisztrációs és a lekérdezési kulcsokról: [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
 > 
 > 
 
 A `SearchIndexClient` rendelkezik egy `Documents` tulajdonsággal. Ez a tulajdonság biztosítja mindazokat a módszereket, amelyek a dokumentumok indexben történő hozzáadásához, módosításához, törléséhez vagy lekérdezéséhez szükségesek.
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. A használni kívánt indexelési művelet megadása
+## <a name="decide-which-indexing-action-to-use"></a>A használni kívánt indexelési művelet megadása
 Az adatok .NET SDK használatával történő importálásához azokat egy `IndexBatch` objektumba kell csomagolnia. Az `IndexBatch` olyan `IndexAction` objektumok gyűjteményét foglalja magában, amelyek mindegyike tartalmaz egy olyan dokumentumot vagy tulajdonságot, amely az Azure Search által az adott dokumentumon végrehajtandó műveletet (például a feltöltést, egyesítést vagy törlést) adja meg. Attól függően, hogy az alábbi műveletek közül melyiket választja ki, az egyes dokumentumok esetében csak bizonyos mezők lesznek kötelezően megjelenítendők:
 
 | Műveletek | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |
@@ -67,7 +67,7 @@ Az adatok .NET SDK használatával történő importálásához azokat egy `Inde
 
 Megadhatja, hogy milyen műveletet kíván az `IndexBatch` és `IndexAction` osztály különböző statikus módszereivel használni, a következő szakaszban látható módon.
 
-## <a name="iii-construct-your-indexbatch"></a>III. Az IndexBatch létrehozása
+## <a name="construct-your-indexbatch"></a>Az IndexBatch létrehozása
 A dokumentumon végrehajtani kívánt műveletek tudatában most már készen áll az `IndexBatch` létrehozására. Jelen példa egy köteg különböző műveletekkel történő létrehozását mutatja be. Vegye figyelembe, hogy ez a példa egy `Hotel` nevű egyedi osztályt használ a „hotels” indexben található dokumentum leképezésére.
 
 ```csharp
@@ -130,7 +130,7 @@ Vegye figyelembe azt is, hogy egyetlen indexelési kérésbe legfeljebb 1000 dok
 > 
 > 
 
-## <a name="iv-import-data-to-the-index"></a>IV. Adatok importálása az indexre
+## <a name="import-data-to-the-index"></a>Adatok importálása az indexre
 Most, hogy már rendelkezik egy inicializált `IndexBatch` objektummal, a `SearchIndexClient` objektum `Documents.Index` műveletének meghívásával elküldheti azt az indexbe. A következő példában az `Index` meghívásának módja, valamint a végrehajtandó további lépések láthatók:
 
 ```csharp
@@ -165,29 +165,43 @@ Megfordulhat a fejében, hogy miként képes az Azure Search .NET SDK felhaszná
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
+    [Key]
+    [IsFilterable]
     public string HotelId { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 
+    [IsSearchable]
     public string Description { get; set; }
 
+    [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.FrLucene)]
     [JsonProperty("description_fr")]
     public string DescriptionFr { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable]
     public string HotelName { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
     public string Category { get; set; }
 
+    [IsSearchable, IsFilterable, IsFacetable]
     public string[] Tags { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? ParkingIncluded { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? SmokingAllowed { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public DateTimeOffset? LastRenovationDate { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public int? Rating { get; set; }
 
+    [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
 
     // ToString() method omitted for brevity...
@@ -197,20 +211,20 @@ public partial class Hotel
 Az első szembetűnő dolog, hogy a `Hotel` minden egyes nyilvános tulajdonsága az indexdefiníció egy-egy mezőjének felel meg, egy lényeges különbséggel: a mezők neve minden esetben kisbetűvel, míg a `Hotel` nyilvános tulajdonságainak neve nagybetűvel kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
-> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információk: [Frissítés az Azure Search .NET SDK 1.1-es verziójára](search-dotnet-sdk-migration.md#WhatsNew). Erre mutat példát a fenti mintakódban a `[JsonProperty]` attribútum használata a `DescriptionFr` tulajdonság esetében.
+> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információk: [Egyéni szerializálás a JSON.NET használatával](search-howto-dotnet-sdk.md#JsonDotNet). Erre mutat példát a fenti mintakódban a `[JsonProperty]` attribútum használata a `DescriptionFr` tulajdonság esetében.
 > 
 > 
 
-A `Hotel` osztállyal kapcsolatos másik fontos tényező a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `DataType.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `DataType.Boolean`, illetve a `DateTimeOffset?` és `DataType.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentálása az [MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) `Documents.Get` módszerével történik.
+A `Hotel` osztállyal kapcsolatos másik fontos tényező a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `DataType.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `DataType.Boolean`, illetve a `DateTimeOffset?` és `DataType.DateTimeOffset` stb. között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_), a `Documents.Get` metódusnál található.
 
 A saját osztályok dokumentumokként történő használatának képessége mindkét irányban működik; lekérdezheti a keresési eredményeket is, majd az SDK-val automatikusan deszerializáltathatja azokat a választott típusra, ahogy az a [következő cikkben](search-query-dotnet.md) látható.
 
 > [!NOTE]
-> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. A jelen cikkben szereplő mintakódban kizárólag az utóbbiakat használjuk. A `Document` osztályról további információkat az [MSDN-en](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.document.aspx) talál.
+> Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. A jelen cikkben szereplő mintakódban kizárólag az utóbbiakat használjuk.
 > 
 > 
 
-**Fontos megjegyzés az adattípusokról**
+**Miért használjon nullázható adattípusokat?**
 
 Az Azure Search-indexre leképezést végző, saját modellosztályok létrehozásakor javasoljuk, hogy például a `bool` és `int` értéktípusok tulajdonságainak megadása nullázhatóként történjen (például `bool` helyett `bool?`). Nem nullázható tulajdonság használatakor **garantálnia** kell, hogy az index egyetlen dokumentuma sem tartalmaz az adott mezőben null értéket. Ennek kényszerítéséhez sem az SDK, sem az Azure Search szolgáltatás nem nyújt segítséget.
 
@@ -220,12 +234,12 @@ Ennek nem csupán elméleti jelentősége van: képzeljünk el például egy oly
 
 Ezért javasoljuk, hogy a modellosztályokban nullázható értéktípusokat használjon.
 
-## <a name="next"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 Az Azure Search-index feltöltését követően készen áll a dokumentumkeresési lekérdezések kiadásának elindítására. Részletes információk: [Az Azure Search-index lekérdezése](search-query-overview.md).
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

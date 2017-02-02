@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag az SQL Database használatához: Kiszolgáló, kiszolgálószintű tűzfalszabály, mintaadatbázis és adatbázisszintű tűzfalszabály létrehozása, és csatlakozás az SQL Server Management Studióhoz | Microsoft Docs"
-description: "Megtudhatja, hogyan kell SQL Database-alapú logikai kiszolgálót és a hozzá tartozó tűzfalszabályt beállítani, valamint SQL Database-adatbázist létrehozni és mintaadatokat betölteni. Megtanulhatja az ügyféleszközökhöz való kapcsolódás, továbbá a felhasználók és az adatbázishoz tartozó tűzfalszabály konfigurálásának módját is."
+title: "Azure Portal: Ismerkedés az Azure SQL Database szolgáltatással | Microsoft Docs"
+description: "Ismerje meg, hogyan hozhat létre SQL Database logikai kiszolgálót, kiszolgálószintű tűzfalszabályokat és adatbázisokat az Azure Portal használatával. Megtanulhatja azt is, hogyan kérdezhet le adatbázisokat az SQL Server Management Studio használatával."
 keywords: "oktatóanyag az SQL Database használatához, SQL-adatbázis létrehozása"
 services: sql-database
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: c2252fc81f97019391ca2ba957f8402c4e97a9c2
-ms.openlocfilehash: f9b17c1cc77918fb1989b94b5bb359a697ceea7c
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
 
 ---
-# <a name="get-started-with-azure-sql-database-servers-databases-and-firewall-rules-by-using-the-azure-portal-and-sql-server-management-studio"></a>Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései
+# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-the-azure-portal-and-sql-server-management-studio"></a>SQL Database oktatóanyag: Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései
 
 Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja végre a következő műveleteket az Azure Portalon:
 
@@ -44,17 +44,22 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
 
 **Becsült időtartam**: Az oktatóanyag teljesítése körülbelül 30 percet vesz igénybe (feltéve, hogy megfelel a szükséges előfeltételeknek).
 
+> [!TIP]
+> Ugyanezen feladatokat [C#](sql-database-get-started-csharp.md) nyelven vagy a [PowerShell](sql-database-get-started-powershell.md) segítségével is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
+>
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
 
 * Az előfizetés-tulajdonosi vagy közreműködői szerepkörhöz tartozó fiókok képesek csatlakozni az Azure Portalhoz. A szerepköralapú hozzáférés-vezérlésről (RBAC) többet is megtudhat az [Azure Portalon végzett hozzáférés-vezérlés alapvető tudnivalóit ismertető](../active-directory/role-based-access-control-what-is.md) témakörben.
 
-> [!TIP]
-> Ugyanezen feladatokat [C#](sql-database-get-started-csharp.md) nyelven vagy a [PowerShell](sql-database-get-started-powershell.md) segítségével is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
->
+> [!NOTE]
+> Ez az oktatóanyag a következő témakörök tartalmát segít elsajátítani: [SQL Database-kiszolgáló áttekintése](sql-database-server-overview.md), [SQL Database – áttekintés](sql-database-overview.md) és [Az Azure SQL Database-tűzfalszabályok áttekintése](sql-database-firewall-configure.md).
+>  
 
-### <a name="sign-in-by-using-your-existing-account"></a>Bejelentkezés meglévő fiókkal
+
+### <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Jelentkezzen be az Azure Portalra az Azure-fiókkal.
 [Meglévő előfizetés](https://account.windowsazure.com/Home/Index) használata esetén kövesse az alábbi lépéseket az Azure Portalhoz való csatlakozáshoz.
 
 1. Nyisson meg egy tetszőleges böngészőt, és csatlakozzon az [Azure Portalhoz](https://portal.azure.com/).
@@ -103,7 +108,7 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
     ![kiszolgáló helye](./media/sql-database-get-started/server-location.png)
     
     > [!TIP]
-    > Az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzet állapota ezen a panelen nem módosítható. Ezt a beállítást a kiszolgálói tűzfal paneljén módosíthatja. További információkért lásd a [biztonságos használat első lépéseit](sql-database-get-started-security.md) ismertető témakört.
+    > Az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzet állapota ezen a panelen nem módosítható. Ezt a beállítást a kiszolgálói tűzfal paneljén módosíthatja. További információkért lásd a [biztonságos használat első lépéseit](sql-database-control-access-sql-authentication-get-started.md) ismertető témakört.
     >
     
 9. Kattintson a **Létrehozás** gombra.
@@ -183,7 +188,7 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
     ![master adatbázis rendszerobjektumainak lekérdezése](./media/sql-database-get-started/query-master-database-system-objects.png)
 
     > [!NOTE]
-    > Az SQL-biztonsággal kapcsolatos további információkért tekintse meg az [SQL-biztonságra vonatkozó első lépéseket](sql-database-get-started-security.md) ismertető leírást.
+    > Az SQL-biztonsággal kapcsolatos további információkért tekintse meg az [SQL-biztonságra vonatkozó első lépéseket](sql-database-control-access-sql-authentication-get-started.md) ismertető leírást.
     >
 
 ## <a name="create-new-database-in-the-azure-portal-using-adventure-works-lt-sample"></a>Új adatbázis létrehozása az Azure Portalon Adventure Works LT-sablon használatával
@@ -291,7 +296,7 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy az oktatóanyag végére ért, más oktatóanyagokat is szeretnénk a figyelmébe ajánlani, amelyekkel tovább bővítheti már meglévő tudását. 
 
-* Ha további információkat szeretne szerezni az Azure SQL Database biztonságával kapcsolatban, tekintse át az [adatbázis-biztonságot ismertető](sql-database-get-started-security.md) témakört.
+* Ha további információkat szeretne szerezni az Azure SQL Database biztonságával kapcsolatban, tekintse át az [adatbázis-biztonságot ismertető](sql-database-control-access-sql-authentication-get-started.md) témakört.
 * Ha munkája során az Excelt használja, olvassa el a [Connect to a SQL database in Azure with Excel](sql-database-connect-excel.md) (SQL-adatbázishoz való kapcsolódás az Azure-ban az Excellel) című cikket.
 * Ha készen áll a kódolás elkezdésére, válasszon programozási nyelvet a [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md) (Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez) című cikk alapján.
 * Ha át szeretné helyezni helyszíni SQL Server-adatbázisait az Azure-ba, olvassa el az [adatbázisok SQL Database-be történő áttelepítésével](sql-database-cloud-migrate.md) foglalkozó témakört.
@@ -306,6 +311,6 @@ Most, hogy az oktatóanyag végére ért, más oktatóanyagokat is szeretnénk a
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

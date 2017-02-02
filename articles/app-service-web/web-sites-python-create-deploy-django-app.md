@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 02/19/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c6679cf7a6b059ee7c28e1754c54afa6414d633a
 
 
 ---
@@ -29,7 +29,7 @@ A Django webes keretrendszer használatával fog létrehozni egy alkalmazást (l
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -38,7 +38,7 @@ A Django webes keretrendszer használatával fog létrehozni egy alkalmazást (l
 * Python 2.7 vagy 3.4
 * setuptools, pip, virtualenv (csak Python 2.7)
 * Git
-* [Python Tools for Visual Studio][(Python Tools for Visual Studio alkalmazás)] (PTVS) – Megjegyzés: szabadon választható
+* [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) – Megjegyzés: szabadon választható
 
 **Megjegyzés:** A TFS-közzététel a Python-projektek esetében jelenleg nem támogatott.
 
@@ -112,10 +112,10 @@ Az alkalmazás számára szükséges külső csomagok. A telepítési parancsfá
 
 IIS-konfigurációs fájlok. A telepítési parancsfájl a megfelelő web.x.y.config fájlt fogja használni, és web.config fájlként fogja azt másolni.
 
-### <a name="optional-files-customizing-deployment"></a>Opcionális fájlok – A telepítés testre szabása
+### <a name="optional-files---customizing-deployment"></a>Opcionális fájlok – A telepítés testre szabása
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
-### <a name="optional-files-python-runtime"></a>Opcionális fájlok – Python-futtatókörnyezet
+### <a name="optional-files---python-runtime"></a>Opcionális fájlok – Python-futtatókörnyezet
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>További fájlok a kiszolgálón
@@ -135,7 +135,7 @@ A következő három szakaszban a webalkalmazások fejlesztéséről talál info
 * Windows, parancssorral
 * Mac/Linux, parancssorral
 
-## <a name="web-app-development-windows-python-tools-for-visual-studio"></a>Webalkalmazás-fejlesztés – Windows – Python Tools for Visual Studio
+## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Webalkalmazás-fejlesztés – Windows – Python Tools for Visual Studio
 ### <a name="clone-the-repository"></a>A tárház klónozása
 Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
@@ -201,7 +201,7 @@ A Visual Studio nem jeleníti meg az üzembe helyezés állapotát. A kimenet á
 
 A módosítások megtekintéséhez lépjen az Azure URL-címére.
 
-## <a name="web-app-development-windows-command-line"></a>Webalkalmazás-fejlesztés – Windows – parancssor
+## <a name="web-app-development---windows---command-line"></a>Webalkalmazás-fejlesztés – Windows – parancssor
 ### <a name="clone-the-repository"></a>A tárház klónozása
 Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
@@ -281,7 +281,7 @@ Itt megtekinthető a telepítési parancsfájl kimenete, amely tartalmazza a vir
 
 A módosítások megtekintéséhez lépjen az Azure URL-címére.
 
-## <a name="web-app-development-maclinux-command-line"></a>Webalkalmazás-fejlesztés – Mac/Linux – parancssor
+## <a name="web-app-development---maclinux---command-line"></a>Webalkalmazás-fejlesztés – Mac/Linux – parancssor
 ### <a name="clone-the-repository"></a>A tárház klónozása
 Első lépésben klónozza a tárházat az Azure Portalon található URL-cím használatával, majd távoli tárházként vegye fel az Azure-tárházat. További információ: [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 
@@ -365,13 +365,13 @@ Itt megtekinthető a telepítési parancsfájl kimenete, amely tartalmazza a vir
 
 A módosítások megtekintéséhez lépjen az Azure URL-címére.
 
-## <a name="troubleshooting-package-installation"></a>Hibaelhárítás – Csomagok telepítése
+## <a name="troubleshooting---package-installation"></a>Hibaelhárítás – Csomagok telepítése
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
-## <a name="troubleshooting-virtual-environment"></a>Hibaelhárítás – Virtuális környezet
+## <a name="troubleshooting---virtual-environment"></a>Hibaelhárítás – Virtuális környezet
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="troubleshooting-static-files"></a>Hibaelhárítás – Statikus fájlok
+## <a name="troubleshooting---static-files"></a>Hibaelhárítás – Statikus fájlok
 A Django statikus fájlokat gyűjt. Ez azt jelenti, hogy az összes statikus fájlt eredeti helyükről egyetlen mappába másolja. A jelen alkalmazás esetében a másolás helye: `/static`.
 
 Ez azért történik, mert a statikus fájlok különböző Django-alkalmazásokból származhatnak. A Django felügyeleti felületeiről származó statikus fájlok például a virtuális környezetben, egy Django-könyvtár almappájában találhatóak. A jelen alkalmazásban megadott statikus fájlok itt találhatóak: `/app/static`. Ahogy egyre több Django-alkalmazást használ, egyre több helyen lesznek statikus fájlok.
@@ -392,7 +392,7 @@ Ezt követően manuálisan kell elvégeznie a gyűjtést a helyi gépen:
 
 Ezután távolítsa el a `\static` mappát a `.gitignore` elemből, és vegye fel azt a Git-tárházba.
 
-## <a name="troubleshooting-settings"></a>Hibaelhárítás – Beállítások
+## <a name="troubleshooting---settings"></a>Hibaelhárítás – Beállítások
 Az alkalmazás számos beállítása módosítható a következő helyen: `DjangoWebProject/settings.py`.
 
 A hibakeresési mód a fejlesztők kényelme érdekében engedélyezve van. Ez szerencsés módon azzal is jár, hogy helyi futtatáskor anélkül tekintheti meg a képeket és az egyéb statikus tartalmakat, hogy a statikus fájlokat össze kellene gyűjtenie.
@@ -435,7 +435,7 @@ Miután engedélyezte, szinkronizálja az adatbázist, futtassa az alkalmazást,
 Az alábbi hivatkozásokat követve tudhat meg többet a Django és a Python Tools for Visual Studio alkalmazásokról:
 
 * [A Django dokumentációja]
-* [Python Tools for Visual Studio – dokumentáció]
+* [a Python Tools for Visual Studio dokumentációjában]
 
 Információk az SQL Database és a MySQL használatáról:
 
@@ -454,19 +454,19 @@ További információ: [Python fejlesztői központban](/develop/python/).
 [MySQL]: web-sites-python-ptvs-django-mysql.md
 
 <!--External Link references-->
-[Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
-[Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?linkid=516990
+[Python 2.7-hez készült Azure SDK]: http://go.microsoft.com/fwlink/?linkid=254281
+[Python 3.4-hez készült Azure SDK]: http://go.microsoft.com/fwlink/?linkid=516990
 [python.org]: http://www.python.org/
 [Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[Python Tools for Visual Studio – dokumentáció]: http://aka.ms/ptvsdocs
+[a Python Tools for Visual Studio dokumentációjában]: http://aka.ms/ptvsdocs
 [A Django dokumentációja]: https://www.djangoproject.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

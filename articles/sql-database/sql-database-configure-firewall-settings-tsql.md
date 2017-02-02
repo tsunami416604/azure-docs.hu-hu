@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgáló- és adatbázisszintű Azure SQL-tűzfalszabályok a T-SQL használatával | Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan konfigurálhatja a tűzfalat az Azure SQL-adatbázisokhoz hozzáférő IP-címekhez."
+title: "T-SQL: Az Azure SQL Database-tűzfalszabályok áttekintése | Microsoft Docs"
+description: "A cikk azt ismerteti, hogyan konfigurálhatja a kiszolgáló- és adatbázisszintű tűzszabályokat azon IP-címek esetében, amelyek a Transact-SQL használatával férnek hozzá az Azure SQL-adatbázisokhoz."
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: a49bc9cd8fb50dcc753fbb04bf7f2d96cf79f3ab
+ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
+ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
 
 
 ---
@@ -76,6 +76,11 @@ Kizárólag az adatbázis **CONTROL** (Felügyelet) engedéllyel rendelkező ada
 
 További információ a tárolt eljárásokkal kapcsolatban: [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) és [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx).
 
+> [!NOTE]
+> Az adatbázisszintű tűzfalszabályok használatát bemutató oktatóanyag: [SQL Database oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md).
+>
+
+
 ## <a name="next-steps"></a>Következő lépések
 A kiszolgálószintű tűzfalszabályok más módszerekkel történő létrehozásával kapcsolatban tekintse meg az alábbi cikkeket: 
 
@@ -94,6 +99,6 @@ Az adatbázisok megnyitásával kapcsolatban az [adatbázis-hozzáférés és a 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

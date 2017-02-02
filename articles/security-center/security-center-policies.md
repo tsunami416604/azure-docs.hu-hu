@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/12/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
+ms.sourcegitcommit: fc82aaf3300a8d40fe00a2ae4dc008ccee6e2a66
+ms.openlocfilehash: 66cdc1fbe5afea4790e5c8ef34b4fcf2d7e89d84
 
 
 ---
@@ -50,7 +50,7 @@ Az egyes előfizetésekhez vagy erőforráscsoportokhoz külön-külön biztons�
    > Azt javasoljuk, hogy minden egyes előfizetés esetében kapcsolja be az adatgyűjtést annak biztosítására, hogy a biztonságfigyelés minden meglévő és új virtuális gép esetében elérhető legyen. Az adatgyűjtés engedélyezését követően a rendszer telepíti a figyelőügynököt. Ha jelenleg még nem szeretné bekapcsolni az adatgyűjtést ezen a helyen, ezt később is megteheti a **Health** (Állapot) és a **Recommendations** (Javaslatok) nézetben. Megadhatja azt is, hogy csak az előfizetésre, vagy az Ön által kiválasztott virtuális gépekre vonatkozóan engedélyezi az adatgyűjtést. A támogatott virtuális gépekkel kapcsolatban további információkat talál az [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: GYIK) című cikkben.
    > 
    > 
-5. Ha még nem konfigurálta a tárfiókot, a **Security Policy** (Biztonsági szabályzat) panel megnyitásakor egy, az alábbi képernyőn láthatóhoz hasonló figyelmeztetést kaphat:
+5. Ha még nem konfigurálta a tárfiókot, a **Security Policy** (Biztonsági szabályzat) panel megnyitásakor egy, az alábbi képernyőn láthatóhoz hasonló figyelmeztetést kaphat. Ha nem választ tárfiókot az egyes régiókhoz, a rendszer automatikusan létrehoz egy-egy tárfiókot minden régióhoz.
    
     ![Tároló kiválasztása](./media/security-center-policies/security-center-policies-fig2.png)
 6. Ha ezt a figyelmeztetést látja, kattintson erre a lehetőségre, majd válassza ki a régiót az alábbi képernyőképen látható módon:
@@ -111,6 +111,6 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

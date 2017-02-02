@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1a9e01c161b0c81d4a2fd079824a427f7f135476
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1a031c4858bcbc75ee807ba520e1b22c89471498
 
 
 ---
@@ -41,7 +41,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * [Visual Studio Community 2015] vagy újabb verzió.
 
 > [!NOTE]
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://tryappservice.azure.com/?appServiceName=mobile) oldalra. Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban – kötelezettségek és a bankkártyaadatok megadása nélkül.
+> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra. Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban – kötelezettségek és a bankkártyaadatok megadása nélkül.
 > 
 > 
 
@@ -85,12 +85,12 @@ Miután konfigurálta a Mobile Apps-háttéralkalmazást, létrehozhat új ügyf
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
-[Mobilalkalmazás-SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure Portal]: https://portal.azure.com/
+[Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

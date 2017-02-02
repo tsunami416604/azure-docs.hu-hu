@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d366fc36e2731be34d70fd4e4fa082370c452d63
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 18959934c53e2e1c719cc627ffa286acbdcaa967
 
 
 ---
@@ -46,7 +46,7 @@ Példák általános alkalmazás-forgatókönyvekre, amelyekhez használhatók a
 Az App Service néhány kulcsszolgáltatása, amely a Webalkalmazások szolgáltatásra is vonatkozik:
 
 * **Több nyelv és keretrendszer** – Az App Service első osztályú támogatást kínál az ASP.NET, Node.js, Java, PHP és Python nyelvekhez. Futtathat [PowerShell és egyéb parancsfájlokat vagy futtatható fájlokat](web-sites-create-web-jobs.md) is az App Service virtuális gépeken.
-* **DevOps optimalizálás** – Beállíthat [folyamatos integrációt és üzembe helyezést](app-service-continuous-deployment.md) a Visual Studio Team Services, GitHub vagy BitBucket szolgáltatásokhoz. [Teszt- és átmeneti környezetek](web-sites-staged-publishing.md) segítségével küldheti ki a frissítéseket. [A/B tesztelést](app-service-web-test-in-production-get-start.md) végezhet. Alkalmazásait az App Service-ben az [Azure PowerShell](../powershell-install-configure.md) vagy a [többplatformos parancssori felület (CLI)](../xplat-cli-install.md) segítségével felügyelheti.
+* **DevOps optimalizálás** – Beállíthat [folyamatos integrációt és üzembe helyezést](app-service-continuous-deployment.md) a Visual Studio Team Services, GitHub vagy BitBucket szolgáltatásokhoz. [Teszt- és átmeneti környezetek](web-sites-staged-publishing.md) segítségével küldheti ki a frissítéseket. [A/B tesztelést](app-service-web-test-in-production-get-start.md) végezhet. Alkalmazásait az App Service-ben az [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy a [többplatformos parancssori felület (CLI)](../xplat-cli-install.md) segítségével felügyelheti.
 * **Globális méret magas rendelkezésre állással** – Manuálisan vagy automatikusan is végezhet [vertikális skálázást](web-sites-scale.md) és [horizontális skálázást](../monitoring-and-diagnostics/insights-how-to-scale.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
 * **Csatlakozás SaaS platformokhoz és helyszíni adatokhoz** - Több mint 50 [összekötő](../connectors/apis-list.md) közül választhat nagyvállalati rendszerekhez (például SAP, Siebel vagy Oracle), SaaS-szolgáltatásokhoz (például Salesforce vagy Office 365), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz és a Twitterhez). Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](../biztalk-services/integration-hybrid-connection-overview.md) és az [Azure virtuális hálózatok](web-sites-integrate-with-vnet.md) segítségével.
 * **Biztonság és megfelelőség** - Az App Service megfelel az [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/).
@@ -58,13 +58,25 @@ Ráadásul egy webalkalmazás kihasználhatja az [API Apps](../app-service-api/a
 Az App Service-webalkalmazásokon kívül az Azure más szolgáltatásokat is kínál, amelyek használhatók webhelyek és webalkalmazások üzemeltetésére. A legtöbb forgatókönyvhöz a Webalkalmazások a legjobb választás.  Mikroszolgáltatási architektúra esetében érdemes megfontolni a [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) használatát, ha pedig nagyobb felügyeletre van szüksége a kódot futtató virtuális gépek fölött, akkor érdemes megfontolni az [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) használatát. További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](choose-web-site-cloud-service-vm.md).
 
 ## <a name="getting-started"></a>Bevezetés
-Ha kezdésként telepíteni szeretné egy új webalkalmazás mintakódját az App Service-ben, kövesse [Az első webalkalmazás telepítése az Azure-ba 5 perc alatt](app-service-web-get-started.md) című oktatóanyagot. Szüksége lesz egy ingyenes Azure-fiókra.
+Ha kezdésként telepíteni szeretné egy új webapp mintakódját az App Service-ben, kövesse az egyik oktatóanyagot az alábbi legördülő listából. Szüksége lesz egy ingyenes Azure-fiókra.
 
-Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> [!div class="op_single_selector"]
+> * [Helyezze üzembe első HTML-webhelyét 5 perc alatt az Azure-ban](app-service-web-get-started-html-cli-nodejs.md)
+> * [Helyezze üzembe első ASP.NET-webalkalmazását 5 perc alatt az Azure-ban](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [Helyezze üzembe első PHP-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-php-cli-nodejs.md)
+> * [Helyezze üzembe első Node.js-webalkalmazását 5 perc alatt az Azure-ban](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [Helyezze üzembe első Python-webalkalmazását 5 perc alatt az Azure-ban](app-service-web-get-started-python-cli-nodejs.md)
+> * [Helyezze üzembe első Java-webalkalmazását 5 perc alatt az Azure-ban](app-service-web-get-started-java.md)
+> 
+> 
+
+> [!NOTE]
+> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> 
+> 
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

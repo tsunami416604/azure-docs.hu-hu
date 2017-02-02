@@ -1,6 +1,6 @@
 ---
-title: "SSH-kulcsok használata a Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben | Microsoft Docs"
-description: " A Linux-alapú HDInsight a Secure Shell (SSH) segítségével érhető el. Ez a dokumentum információt nyújt az SSH és a HDInsight együttes használatáról Linux-, Unix- vagy OS X-ügyfeleken."
+title: "SSH használata a HDInsight (Hadoop) eszközzel Windows, Linux, Unix vagy OS X rendszerben | Microsoft Docs"
+description: " A HDInsight a Secure Shell (SSH) segítségével érhető el. Ez a dokumentum információt nyújt az SSH és a HDInsight együttes használatáról Windows-, Linux-, Unix- vagy OS X-ügyfeleken.."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,27 +13,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 3c3944118ca986009711aee032b45c302b63e63b
-ms.openlocfilehash: 93bf35edd2173c147f48512d92bc8e4734cd1dbd
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
 
 
 ---
-# <a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-linux-unix-or-os-x"></a>Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben
+# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>SSH használata a HDInsight (Hadoop) eszközzel Windows, Linux, Unix vagy OS X rendszerben
 
 > [!div class="op_single_selector"]
-> * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-> * [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-> 
-> 
+> * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
+> * [SSH (Windows, Linux, Unix, OS X)](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 A [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) lehetővé teszi, hogy bejelentkezzen egy Linux-alapú HDInsight-fürtre, és parancsokat futtasson egy parancssori felületről. Ez a dokumentum alapvető információkat biztosít az SSH-ról, illetve konkrét információkat az SSH HDInsighttal történő használatáról.
 
 ## <a name="what-is-ssh"></a>Mi az az SSH?
 
-Az SSH egy hálózati titkosítási protokoll, amely lehetővé teszi, hogy egy nem védett hálózaton keresztül biztonságosan kommunikáljon egy távoli kiszolgálóval. Az SSH-val biztonságos parancssori bejelentkezés biztosítható egy távoli kiszolgálóra, ebben az esetben egy HDInsight-fürt átjárócsomópontjaira vagy élcsomópontjára. 
+Az SSH egy hálózati titkosítási protokoll, amely lehetővé teszi, hogy egy nem védett hálózaton keresztül biztonságosan kommunikáljon egy távoli kiszolgálóval. Az SSH-val biztonságos parancssori bejelentkezés biztosítható egy távoli kiszolgálóra, ebben az esetben egy HDInsight-fürt átjárócsomópontjaira vagy élcsomópontjára.
 
 Az SSH emellett az ügyfél és a HDInsight-fürt közötti hálózati forgalom bújtatására is használható. Az alagút használata lehetővé teszi, hogy hozzáférjen olyan szolgáltatásokhoz a HDInsight-fürtön, amelyek nem csatlakoznak közvetlenül az internetre. Az SSH-bújtatás HDInsighttal való használatával kapcsolatos további információkat [az SSH-bújtatás a HDInsighttal való használatáról szóló cikkben](hdinsight-linux-ambari-ssh-tunnel.md) találhat.
 
@@ -76,7 +74,7 @@ Az `ssh-keygen` segédprogram a legegyszerűbb módszer a HDInsighthoz használn
 > Amennyiben grafikus SSH-ügyfelet használ, például a MobaXTermöt vagy a puTTYt, tekintse át az ügyfél dokumentációját a kulcsok létrehozásával kapcsolatos útmutatásért.
 
     ssh-keygen -t rsa -b 2048
-   
+
 A rendszer a következő információk megadását kéri:
 
 * A fájl helye: Az alapértelmezett hely a `~/.ssh/id_rsa`.
@@ -91,7 +89,7 @@ A rendszer a következő információk megadását kéri:
 A parancs futtatásának befejeződésekor két új fájl jön létre:
 
 * __id\_rsa__: Ez a fájl tartalmazza a titkos kulcsot.
-    
+
     > [!WARNING]
     > Korlátoznia kell a hozzáférést ehhez a fájlhoz, hogy megakadályozza a nyilvános kulcs által védett szolgáltatásokhoz való jogosulatlan hozzáférést.
 
@@ -171,29 +169,30 @@ Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön 
 1. Egy szövegszerkesztővel nyissa meg a `~/.ssh/config` fájlt. Ha a fájl nem létezik, létrehozhatja a parancssoron az `touch ~/.ssh/config` karakterlánc beírásával.
 
 2. Adja a következőket a fájlhoz. Cserélje le a *CLUSTERNAME* kifejezést a HDInsight-fürt nevére.
-   
+
         Host CLUSTERNAME-ssh.azurehdinsight.net
           ForwardAgent yes
-   
+
     Ez a bejegyzés konfigurálja az SSH-ügynöktovábbítást a HDInsight-fürt számára.
 
 3. Tesztelje az SSH-ügynöktovábbítást a terminálból a következő parancs segítségével:
-   
+
         echo "$SSH_AUTH_SOCK"
-   
+
     Ez a parancs az alábbi szöveghez hasonló információt ad vissza:
-   
+
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
-   
+
     Ha a parancs nem ad vissza semmit, az azt jelenti, hogy az `ssh-agent` nem fut. Az ügynök indítási parancsfájljaival kapcsolatos információkért tekintse meg a [Using ssh-agent with ssh (Az ssh-agent és az ssh együttes használata – http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) című cikket, vagy olvassa el az SSH-ügynök dokumentációját az `ssh-agent` telepítésének és konfigurálásának részletes lépéseiért.
 
 4. Ha meggyőződött róla, hogy az **ssh-agent** fut, a következő segítségével adja hozzá a titkos SSH-kulcsot az ügynökhöz:
-   
+
         ssh-add ~/.ssh/id_rsa
-   
+
     Ha a titkos kulcsot egy másik fájl tárolja, a `~/.ssh/id_rsa` részt cserélje ki a fájl elérési útjára.
 
-###<a name="a-iddomainjoineda-domain-joined-hdinsight"></a><a id="domainjoined"></a> Tartományhoz csatlakoztatott HDInsight
+<a id="domainjoined"></a>
+### <a name="domain-joined-hdinsight"></a>Tartományhoz csatlakoztatott HDInsight
 
 [A tartományhoz csatlakozó HDInsight](hdinsight-domain-joined-introduction.md) a Kerberost és a Hadoopot integrálja a HDInsightban. Mivel az SSH-felhasználó nem Active Directory tartományi felhasználó, nem futtathat Hadoop-parancsokat, amíg nem végez hitelesítést az Active Directoryval. Kövesse az alábbi lépéseket az SSH-munkamenet Active Directoryval történő hitelesítéséhez:
 
@@ -218,7 +217,7 @@ Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezh
 > [!IMPORTANT]
 > Az SSH-alagút előfeltétele annak, hogy el tudja érni néhány Hadoop-szolgáltatás webes felhasználói felületét. Például a Feladatelőzmények felhasználói felület és az Erőforrás-kezelő felhasználói felület is csak SSH-alagúton keresztül érhető el.
 
-Az SSH-alagutak létrehozásával és használatával kapcsolatos további információkat [az Ambari webes felhasználói felület, a JobHistory, a NameNode, az Oozie és egyéb webes felhasználói felületek SSH-bújtatással való eléréséről szóló cikkben](hdinsight-linux-ambari-ssh-tunnel.md) találhat.
+Az SSH-alagutak létrehozásával és használatával kapcsolatos további információkat [Az Ambari webes felhasználói felület, a JobHistory, a NameNode, az Oozie és egyéb webes felhasználói felületek SSH-bújtatással való eléréséről szóló cikkben](hdinsight-linux-ambari-ssh-tunnel.md) találhat.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -232,6 +231,6 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: bd85b9eae0e1cb281116748edcad6643b1ec537f
-ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
+ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
+ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
 
 
 ---
@@ -60,7 +60,7 @@ Ha bármilyen probléma merül fel az SQL Data Warehouses-szal kapcsolatban, hoz
      Premier szintű támogatás megléte esetén az SQL Data Warehouse-szal kapcsolatos problémákat is jelentheti a [Microsoft Premier online portálon][Microsoft Premier online portal].  Az [Azure-támogatás ügyfeleknek][Azure support plan] című témakör részletesen bemutatja a támogatási csomagokat, beleértve azok hatókörét, a válaszidőt, a díjszabást és egyéb információkat.  Az Azure-támogatással kapcsolatos gyakori kérdéseket az [Azure-támogatás – gyakori kérdések][Azure support FAQs] című témakör tekinti át.  
      
      ![Támogatási csomag](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. Válassza ki a **Problem Type** (Probléma típusa) és a **Category** (Kategória) mezőt.
+8. Válassza ki a **Problem Type** (Probléma típusa) és a **Category** (Kategória) mezőt. Ebben a példában a választott problématípus az „Eszközök”, a kategória pedig az „Ügyféleszközök”. 
    
     ![Probléma típusa és kategóriája](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 9. Írja le a problémát, és hogy az milyen mértékben hat az üzleti működésre.
@@ -101,6 +101,6 @@ Azt is megteheti, hogy kapcsolatba lép az SQL Data Warehouse-közösséggel a [
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

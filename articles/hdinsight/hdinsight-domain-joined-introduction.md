@@ -1,5 +1,5 @@
 ---
-title: "Secure HDInsight: áttekintés| Microsoft Docs"
+title: "Hadoop-biztonság – tartományhoz csatlakoztatott HDInsight-fürtök – Azure | Microsoft Docs"
 description: "Információk ...."
 services: hdinsight
 documentationcenter: 
@@ -16,18 +16,19 @@ ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 40b0d0660f4693d5ebedf847734ffe037c4ec7ca
+ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
+ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
 
 
 ---
-# <a name="an-introduction-to-domainjoined-hdinsight-clusters-preview"></a>Bevezetés: tartományhoz csatlakoztatott HDInsight-fürtök (Előnézet)
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>Bevezetés a Hadoop-biztonság használatába a tartományhoz csatlakoztatott HDInsight-fürtök esetében (Előnézet)
+
 Az Azure HDInsight eddig csak egyetlen felhasználói helyi rendszergazdát támogatott. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Amikor a Hadoop-alapú számítási feladatok nagyobb népszerűségre tettek szert a vállalati szektorban, egyre inkább fontosabbá váltak a vállalati szintű képességek, például az Active Directory-alapú hitelesítés, a több felhasználó támogatása és a szerepköralapú hozzáférés-vezérlés. A tartományhoz csatlakoztatott HDInsight-fürtök használatával létrehozhat egy Active Directory-tartományhoz csatlakoztatott HDInsight-fürtöt, és konfigurálhatja azon vállalati alkalmazottak listáját, akik hitelesíthetnek az Active Directoryn át a bejelentkezéshez a HDInsight-fürtbe. A vállalaton kívülről senki sem tud bejelentkezni a HDInsight-fürtbe, illetve senki sem érheti el azt onnan. A vállalati rendszergazda konfigurálhatja a szerepköralapú hozzáférés-vezérlést a Hive-biztonsághoz az [Apache Ranger](http://hortonworks.com/apache/ranger/) használatával, és így kizárólag a szükségesekre korlátozhatja a hozzáférést az adatokhoz. Végül, a rendszergazda naplózhatja az alkalmazottak adathozzáférését, és bármely változtatást a hozzáférés-vezérlés házirendjeiben, és így a vállalati erőforrások magas szintű irányítását éri el.
 
 > [!NOTE]
-> Az előnézetben leírt új funkciók kizárólag a Linux-alapú HDInsight-fürtöknél érhetők el a Hive számítási feladatokhoz. Az egyéb számítási feladatokat, például a HBase-t, a Sparkot, a Stormot és a Kafkát a jövőbeli kiadások teszi elérhetővé. 
-> 
-> 
+> Az előnézetben leírt új funkciók kizárólag a Linux-alapú HDInsight-fürtöknél érhetők el a Hive számítási feladatokhoz. Az egyéb számítási feladatokat, például a HBase-t, a Sparkot, a Stormot és a Kafkát a jövőbeli kiadások teszi elérhetővé.
+>
+>
 
 ## <a name="benefits"></a>Előnyök
 A vállalati biztonság négy pillérre támaszkodik – szegélyhálózat-alapú biztonság, hitelesítés, engedélyezés és titkosítás.
@@ -53,11 +54,10 @@ Az adatok védelme fontos a szervezeti biztonság és a megfelelési követelmé
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](hdinsight-domain-joined-configure.md).
 * A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md).
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](hdinsight-domain-joined-run-hive.md).
-* A Hive-lekérdezések futtatásához az SSH használatával a tartományhoz csatlakoztatott HDInsight-fürtökben lásd: [Az SSH használata a HDInsightra épülő Linuxalapú Hadooppal Linux, Unix vagy OS X rendszerben](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster).
+* A Hive-lekérdezések futtatásához az SSH használatával a tartományhoz csatlakoztatott HDInsight-fürtökben lásd: [Az SSH használata a HDInsightra épülő Linuxalapú Hadooppal Linux, Unix vagy OS X rendszerben](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

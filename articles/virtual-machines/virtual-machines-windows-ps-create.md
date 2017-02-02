@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 819b40302f158d1d6224878c164cf7ff71947887
+ms.sourcegitcommit: 94c18aa0c4fe38fb74931d5ed61fece207c8b5ce
+ms.openlocfilehash: 701a5515cd1d52f7ca8d3562dabcdf0e4d31183d
 
 
 ---
@@ -152,13 +152,13 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
     ```
 
 ## <a name="next-steps"></a>Következő lépések
-* Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
+* Ha problémák merültek fel az üzembe helyezés során, a következő lépésről az [Azure-telepítések gyakori hibáinak elhárítása az Azure Resource Manager használatával](../azure-resource-manager/resource-manager-common-deployment-errors.md) eljárásokat ismertető cikkben talál információt
 * A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
 * A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

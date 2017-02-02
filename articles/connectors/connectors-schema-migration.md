@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ab22e0369781f9f9afb9b3df9e7fdd54660a959d
+ms.sourcegitcommit: 30abc823a72431dfd12f1051434191ea904533f6
+ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
 
 
 ---
-# <a name="how-to-migrate-logic-apps-to-schema-version-20150801preview"></a>Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra
+# <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra
 A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhez tegye az alábbiakat:  
 
 1. Nyissa meg a Logic Apps alkalmazást az Azure Portalon  
@@ -38,14 +38,14 @@ A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhe
 ## <a name="best-practices-when-migrating-your-logic-apps-to-the-latest-schema-version"></a>Ajánlott eljárások a Logic Apps alkalmazások áttelepítéséhez a legújabb sémaverzióra:
 * Az áttelepített parancsfájlt új Logic Apps alkalmazásba másolja – ne írja felül a régit, amíg el nem végezte a tesztelést, és meg nem győződött róla, hogy az áttelepített alkalmazás a vártnak megfelelően működik.
 * Tesztelje a Logic Apps alkalmazást, **mielőtt** éles környezetben használná.
-* Az áttelepítés befejezését követően kezdje el frissíteni a Logic Apps alkalmazásokat a [felügyelt API-k](apis-list.md) használatára, ha lehetséges. Megkezdheti például a Dropbox 2-es verziójának használatát azon alkalmazások esetén, amelyek a DropBox 1-es verzióját használják.
+* Az áttelepítés befejezését követően kezdje el frissíteni a Logic Apps alkalmazásokat a [felügyelt API-k](apis-list.md) használatára, ha lehetséges. Megkezdheti például a Dropbox&2;-es verziójának használatát azon alkalmazások esetén, amelyek a DropBox&1;-es verzióját használják.
 
 ## <a name="whats-next"></a>A következő lépések
-* [Információk a Logic Apps alkalmazások manuális áttelepítésével kapcsolatban](../app-service-logic/app-service-logic-schema-2015-08-01.md)
+* [Információk a Logic Apps alkalmazások manuális áttelepítésével kapcsolatban](../logic-apps/logic-apps-schema-2015-08-01.md)
 
 <!--Icon references-->
-[1. lépés]: ./media/connectors-schema-migration/migrateschema1.png
-[2. lépés]: ./media/connectors-schema-migration/migrateschema2.png
+[step1]: ./media/connectors-schema-migration/migrateschema1.png
+[step2]: ./media/connectors-schema-migration/migrateschema2.png
 
 
 
@@ -55,6 +55,6 @@ A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhe
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
