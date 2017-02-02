@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 1/31/2017
 ms.author: arluca
 translationtype: Human Translation
 ms.sourcegitcommit: 9d7640577eedcc9221f6346b650aed85f1d31a65
@@ -61,7 +61,6 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 * [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 * [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
-
 
 
 
