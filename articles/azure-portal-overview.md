@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7383380ee07f9ee52858038bd4d623be4689a31a
+ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
+ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
 
 
 ---
@@ -60,16 +60,6 @@ Ezen a panelen csatlakozhat a virtuális géphez távoli asztali kapcsolattal, e
 
 ![Erőforrás kezelése][ManageResource]
 
-## <a name="how-to-customize-a-resource-blade"></a>Az erőforráspanelek testreszabása
-Az Azure előre konfigurálja a paneleket az Ön erőforrásaihoz, azonban a paneleken lévő csempéket szabadon módosíthatja.  A testreszabási módban egyszerűen hozzáadhatja, eltávolíthatja, átméretezheti vagy átrendezheti a csempéket. A panel testreszabásához hajtsa végre a következő műveleteket:
-
-1. Keresse meg az erőforrást.
-2. Kattintson a „…” gombra a testreszabni kívánt panel tetején.
-3. Kattintson a „Rész hozzáadása” lehetőségre.
-4. Megkezdheti a részek áthúzását a panelre.  
-
-![Panelek testreszabása][CustomizeBlades]
-
 ## <a name="how-to-get-help"></a>Segítségkérés
 Ha problémába ütközik, mi szívesen segítünk Önnek.  A portál rendelkezik egy súgó és támogatási oldallal, amely segít a probléma megoldásában.  A [támogatási csomagjától](https://azure.microsoft.com/support/plans/) függően közvetlenül a portálon is létrehozhat támogatási jegyeket.  A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon. A súgó és támogatás oldalt a Tallózás -> Súgó + támogatás paranccsal is elérheti.  
 
@@ -97,6 +87,6 @@ A Microsoft Azure Portal jelentősen leegyszerűsíti az alkalmazások felépít
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 
