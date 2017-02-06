@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/14/2016
+ms.date: 11/21/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: de2c52f8db5445e3e2eee62f673109f6d38cffa0
-ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 
 ---
@@ -95,9 +95,7 @@ A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
 1. Új kísérlet létrehozásához kattintson a Machine Learning Studio ablakának alsó részén található **+NEW** (Új létrehozása) gombra, és válassza az **EXPERIMENT** (Kísérlet), majd a **Blank Experiment** (Üres kísérlet) lehetőséget.
 
-2. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
-
-    ![A kísérlet átnevezése][rename-experiment]
+2. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**.
 
 2. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. A paletta tetején található keresőmezőbe gépelje be, hogy **automobile**. A rendszer megjeleníti az **Automobile price data (Raw)** (Nyers autóáradatok) nevű adathalmazt. Húzza rá az adathalmazt a kísérletvászonra.
 
@@ -113,7 +111,7 @@ Ha szeretné megtekinteni az adatokat, kattintson az autókat tartalmazó adatha
 
 > [!TIP]
 > Az adathalmazok és modulok kis körökkel jelölt bemeneti és kimeneti portokkal rendelkeznek – a bemeneti portok felül, a kimeneti portok alul találhatók.
-Az adatfolyam létrehozásához a kísérlet során össze fogja kötni az egyik modul kimeneti portját egy másik modul bemeneti portjával.
+Az adatfolyam létrehozásához a kísérlet során össze fogja kötni ezeket a portokat.
 Ha meg szeretné tekinteni, hogyan jelennek meg az adatok az adatfolyam egy adott pontján, kattintson az adathalmaz vagy modul kimeneti portjára.
 
 Ebben a minta adatkészletben minden autópéldány külön sorban szerepel, az egyes autókhoz tartozó változók pedig oszlopokban jelennek meg. Az egy adott autóhoz tartozó változók alapján megpróbáljuk előrejelezni az árát a jobb szélső oszlopban (26. oszlop, a neve „price” (ár)).
@@ -171,7 +169,7 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** (n
     <br/>
     ***Törlés módjának beállítása „Remove entire row” (Teljes sor eltávolítása) lehetőségre a „Clean Missing Data” (Hiányzó adatok törlése) modulnál***
 
-4. A kísérlet futtatásához kattintson a lap alján található **RUN** (Futtatás) parancsra.
+4. A kísérlet futtatásához kattintson a kísérletvászon alatt található **RUN** (Futtatás) gombra.
 
     A kísérlet befejezését követően az összes modulnál megjelenik egy zöld pipa, amely jelzi, hogy az adott modul sikeresen lefutott. A jobb felső sarokban pedig megjelenik a **Finished running** (Futtatás befejeződött) állapot.
 
@@ -328,7 +326,7 @@ Most, hogy az első Machine Learning oktatóanyag végére ért, és beállítot
 Több modell összehasonlítására egyetlen kísérletben a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) (Regresszorok összehasonlítása) részében találhat példát.
 
     > [!TIP]
-    > Az ismétlések egy példányának másolásához használja az oldal alján található **SAVE AS** (Mentés másként) gombot. A kísérlet összes ismétlésének megtekintéséhez kattintson az oldal alján található **VIEW RUN HISTORY** (Futtatási előzmények megtekintése) parancsra. További információ: [Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban][runhistory].
+    > Az ismétlések egy példányának másolásához használja a kísérletvászon alatt található **SAVE AS** (Mentés másként) gombot. A kísérlet összes ismétlésének megtekintéséhez kattintson a vászon alatti **VIEW RUN HISTORY** (Futtatási előzmények megtekintése) elemre. További információ: [Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban][runhistory].
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
@@ -342,7 +340,6 @@ Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek l�
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/machine-learning-create-experiment/sign-in-to-studio.png
-[rename-experiment]: ./media/machine-learning-create-experiment/rename-experiment.png
 [visualize-auto-data]:./media/machine-learning-create-experiment/visualize-auto-data.png
 [select-visualize]: ./media/machine-learning-create-experiment/select-visualize.png
 [showing-excluded-column]:./media/machine-learning-create-experiment/showing-excluded-column.png
@@ -380,6 +377,6 @@ Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek l�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO1-->
 
 

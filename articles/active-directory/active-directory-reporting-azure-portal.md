@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e082470c8ad3ee02c528a4ca6e3326e5be4752a3
 
 
 ---
-# <a name="azure-active-directory-reporting-preview"></a>Jelentéskészítés az Azure Active Directory előzetes kiadásában
+# <a name="azure-active-directory-reporting---preview"></a>Jelentéskészítés az Azure Active Directory előzetes kiadásában
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-reporting-azure-portal.md)
 > * [klasszikus Azure portál](active-directory-reporting-guide.md)
@@ -38,8 +38,8 @@ A jelentéskészítés két fő területe:
 
 A keresett adatok hatókörétől függően a jelentésekhez úgy férhet hozzá, ha a **Felhasználók és csoportok** vagy a **Vállalati alkalmazások** elemre kattint az [Azure Portal](https://portal.azure.com) szolgáltatáslistájában.
 
-## <a name="signin-activities"></a>Bejelentkezési tevékenységek
-### <a name="user-signin-activities"></a>Felhasználók bejelentkezési tevékenységei
+## <a name="sign-in-activities"></a>Bejelentkezési tevékenységek
+### <a name="user-sign-in-activities"></a>Felhasználók bejelentkezési tevékenységei
 A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
 
 * Milyen egy adott felhasználó bejelentkezési mintázata?
@@ -97,7 +97,7 @@ Az oszlopválasztóval kiválaszthatja a megjelenítendő adatmezőket.
 
 ![Jelentéskészítés](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
 
-### <a name="filtering-signins"></a>Bejelentkezések szűrése
+### <a name="filtering-sign-ins"></a>Bejelentkezések szűrése
 A következő mezőkkel szűrheti a bejelentkezéseket a megjelenített adatok korlátozása érdekében:
 
 * Dátum és idő 
@@ -203,6 +203,6 @@ Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporti
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
