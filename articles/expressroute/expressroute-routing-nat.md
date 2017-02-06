@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
-ms.author: osamazia
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bd7537a81661bc175a770fdbd6388ba07ea912ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5e3c65d9ada5c75e0ddef3b3778a79ca77aa07d8
 
 
 ---
@@ -101,7 +101,7 @@ Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azu
 
 A BGP-munkamenetek el lesznek dobva, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
 
-## <a name="transit-routing-and-crossregion-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
+## <a name="transit-routing-and-cross-region-routing"></a>Tranzit útválasztás és régiók közötti útválasztás
 Az ExpressRoute nem konfigurálható tranzit útválasztóként. A tranzit útválasztási szolgáltatások tekintetében a kapcsolatszolgáltatójára kell támaszkodnia.
 
 ## <a name="advertising-default-routes"></a>Alapértelmezett útvonalak meghirdetése
@@ -194,6 +194,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

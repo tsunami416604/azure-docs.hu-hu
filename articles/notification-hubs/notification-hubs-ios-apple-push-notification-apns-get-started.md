@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
+ms.sourcegitcommit: e17f0e050530a64fdf569176abc5cf3ae88da516
+ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 
 
 ---
@@ -42,7 +42,7 @@ Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azu
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-* [A Mobile Services iOS SDK 1.2.4-es verziója]
+* [Mobile Services iOS SDK 1.2.4-es verzióját]
 * Az [Xcode] legújabb verziója
 * Az iOS 8-cal (vagy újabb verzióval) kompatibilis eszköz
 * Tagság az [Apple fejlesztői programjában](https://developer.apple.com/programs/).
@@ -70,24 +70,26 @@ Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és a
 <p>Válassza a <b>Védőfal</b> módot, mivel ez használható fejlesztéshez. Az <b>Éles</b> beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.</p>
 </li>
 </ol>
-&emsp;&emsp;![APNS konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![APNS konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
-&emsp;&emsp;![APNS-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+&emsp;&emsp;&emsp;&emsp;![APNS-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
 Az értesítési központ konfigurálva lett az APNS-sel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>iOS-alkalmazás összekapcsolása a Notification Hubs szogáltatással
 1. Az Xcode-ban hozzon létre egy új iOS-projektet, és válassza az **Single View Application** (Egynézetes alkalmazás) sablont.
    
-       ![Xcode - Single View Application][8]
+    ![Xcode – Egynézetes alkalmazás][8]
+    
 2. Amikor megadja az új projekt beállításait, győződjön meg róla, hogy a **Product Name** (Terméknév) és az **Organization Identifier** (Szervezetazonosító) ugyanaz, mint amit az Apple fejlesztői portálján a csomagazonosító beállításakor használt.
    
     ![Xcode – projektbeállítások][11]
+    
 3. A **Targets** (Célok) alatt kattintson a projektnévre, majd a **Build Settings** (Létrehozási beállítások) lapra, és bontsa ki a **Code Signing Identity** (Kódaláíró identitás) lehetőséget, majd a **Debug** (Hibakeresés) alatt állítsa be a kódaláíró identitását. A **Levels** (Szintek) esetében a **Basic** (Alapszintű) beállítást módosítsa **All** (Összes) értékre, és a **Provisioning Profile** (Létesítési profil) értékeként állítsa be a korábban létrehozott létesítési profilt.
    
     Ha nem jelenik meg az Xcode-ban létrehozott új létesítési profil, frissítse az aláíró identitása profiljait. A menüsoron kattintson az **Xcode** elemre, majd a **Preferences** (Beállítások) lehetőségre, az **Account** (Fiók) lapra és a **View Details** (Részletek megtekintése) gombra. Ezután kattintson az aláírási identitására, majd kattintson a frissítési gombra a jobb alsó sarokban.
    
-       ![Xcode - provisioning profile][9]
+    ![Xcode – Létesítési profil][9]
 4. Töltse le a [Mobile Services iOS SDK 1.2.4-es verzióját], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Copy items if needed** (Elemek másolása, ha szükséges) lehetőséget, majd kattintson az **Add** (Hozzáadás) gombra.
    
    > [!NOTE]
@@ -95,7 +97,7 @@ Az értesítési központ konfigurálva lett az APNS-sel való együttműködés
    > 
    > 
    
-       ![Unzip Azure SDK][10]
+    ![Az Azure SDK kicsomagolása][10]
 5. Adjon hozzá egy `HubInfo.h` nevű új fejlécfájlt a projektjéhez. Ez a fájl tárolja majd az állandókat az értesítési központjához.  Adja hozzá a következő definíciókat, és cserélje le a szövegkonstans helyőrzőit a *központnévre* és a *DefaultListenSharedAccessSignature* változóra, amelyet korábban feljegyzett.
    
         #ifndef HubInfo_h
@@ -462,27 +464,27 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 
 <!-- URLs. -->
-[A Mobile Services iOS SDK 1.2.4-es verziója]: http://aka.ms/kymw2g
+[Mobile Services iOS SDK 1.2.4-es verzióját]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[Alkalmazáslap elküldése]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Saját alkalmazások]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[A Mobile Services használatának első lépései]: /develop/mobile/tutorials/get-started-ios
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
-[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
-[XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
+[Azure Classic Portal]: https://manage.windowsazure.com/
+[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
+[Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[Bevezetés a leküldéses értesítések használatába a Mobile Servicesben]: ../mobile-services-javascript-backend-ios-get-started-push.md
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure Notification Hubs – felhasználók értesítése iOS rendszerhez .NET-háttérrendszerrel]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
-[A helyi és leküldéses értesítések programozásával foglalkozó útmutató]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[helyi és leküldéses értesítések programozásával foglalkozó útmutatójában]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
