@@ -62,6 +62,6 @@ Az API-alkalmazásokkal kapcsolatos kérdéseit az [API Apps fórumán](https://
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

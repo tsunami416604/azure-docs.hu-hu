@@ -159,6 +159,6 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet.
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

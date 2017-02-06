@@ -31,6 +31,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 
