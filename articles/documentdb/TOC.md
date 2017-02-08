@@ -18,6 +18,7 @@
 ### [Java webalkalmazások](documentdb-java-application.md)
 ### [Python Flask-webalkalmazás](documentdb-python-application.md)
 ## [Helyi fejlesztés](documentdb-nosql-local-emulator.md)
+### [Emulátortanúsítványok exportálása](documentdb-nosql-local-emulator-export-ssl-certificates.md)
 ## [Gyakori kérdések](documentdb-faq.md)
 
 # Útmutató
@@ -41,13 +42,17 @@
 ### [Erőforráskvóták](documentdb-limits.md)
 ### [Kvóták növelése](documentdb-increase-limits.md)
 ### [Kérelemegységek](documentdb-request-units.md)
-### [Azure parancssori felület és Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
+### Azure CLI
+#### [Fiók létrehozása](documentdb-automation-resource-manager-cli.md)
+#### [Régiók hozzáadása vagy eltávolítása](documentdb-automation-region-management.md)
+### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [Tűzfaltámogatás](documentdb-firewall-support.md)
 ### [A fiók felbővítése](documentdb-supercharge-your-account.md)
 
 ## Fejlesztés
 ### [SQL-lekérdezés](documentdb-sql-query.md)
 ### [Tárolt eljárások, eseményindítók és felhasználói függvények](documentdb-programming.md)
+### [Változások követése a Módosítás adatcsatornával](documentdb-change-feed.md)
 ### [Teljesítménytesztelés](documentdb-performance-testing.md)
 ### [Teljesítménnyel kapcsolatos tippek](documentdb-performance-tips.md)
 ### DocumentDB a MongoDB-fejlesztők számára
@@ -83,18 +88,20 @@
 
 
 # Referencia
-## [Java SDK](documentdb-sdk-java.md)
-## [.NET SDK](documentdb-sdk-dotnet.md)
-## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
-## [.NET-minták](documentdb-dotnet-samples.md)
-## [Node.js SDK](documentdb-sdk-node.md)
-## [Node.js-minták](documentdb-nodejs-samples.md)
-## [Python SDK](documentdb-sdk-python.md)
-## [Python-minták](documentdb-python-samples.md)
-## [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-## [SQL-szintaxis – adatlap](documentdb-sql-query-cheat-sheet.md)
+## [Java](documentdb-sdk-java.md)
+## [.NET](documentdb-sdk-dotnet.md)
+## [.NET Core](documentdb-sdk-dotnet-core.md)
+## [Node.js](documentdb-sdk-node.md)
+## [Python](documentdb-sdk-python.md)
 ## [REST](/rest/api/documentdb/)
 ## [REST erőforrás-szolgáltató](/rest/api/documentdbresourceprovider/)
+
+# Kapcsolódó
+## [.NET-minták](documentdb-dotnet-samples.md)
+## [Node.js-minták](documentdb-nodejs-samples.md)
+## [Python-minták](documentdb-python-samples.md)
+## [SQL-szintaxis](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+## [SQL-szintaxis – adatlap](documentdb-sql-query-cheat-sheet.md)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/documentdb/)
@@ -110,6 +117,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

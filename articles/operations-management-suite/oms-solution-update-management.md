@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 12/06/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: 705bbd78970c6e3c20ef7214704194f722da09a6
+ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![Frissítéskezelési megoldás az OMS-ben](./media/oms-solution-update-management/update-management-solution-icon.png) Frissítéskezelési megoldás az OMS-ben
+# <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű számítógépek frissítéseit kezelheti.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és elindítható a kiszolgálók szükséges frissítéseinek telepítése is. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,7 +33,10 @@ Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű szám
 * A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.  A Linuxhoz készült OMS-ügynök letölthető a [GitHubról](https://github.com/microsoft/oms-agent-for-linux). 
 
 ## <a name="configuration"></a>Konfiguráció
-A Frissítéskezelési megoldás OMS-munkaterülethez való hozzáadásához és Linux-ügynökök felvételéhez hajtsa végre az alábbi lépéseket.  Windows-ügynökök hozzáadása automatikusan történik, esetükben nincs szükség további konfigurációs beállításokra.
+A Frissítéskezelési megoldás OMS-munkaterülethez való hozzáadásához és Linux-ügynökök felvételéhez hajtsa végre az alábbi lépéseket. Windows-ügynökök hozzáadása automatikusan történik, esetükben nincs szükség további konfigurációs beállításokra.
+
+> [!NOTE]
+> Ha engedélyezi ezt a megoldást, az OMS-munkaterülethez kapcsolódó Windows-számítógépeket a rendszer automatikusan hibrid forgatókönyv-feldolgozóként konfigurálja a megoldás részét képező forgatókönyvek támogatása érdekében.  A számítógépeket azonban a rendszer nem regisztrálja az Automation-fiókban létrehozott hibridfeldolgozó-csoportok egyikében sem, és a számítógépek nem adhatók hozzá hibridfeldolgozó-csoporthoz saját forgatókönyvek futtatásához.  Ha egy Windows-számítógépet korábban már megjelölte hibrid forgatókönyv-feldolgozóként, és csatlakoztatta az OMS-munkaterülethez, a megoldás hozzáadása előtt el kell távolítani az OMS-munkaterületről a forgatókönyvek hibás működésének elkerülése érdekében.  
 
 1. Az OMS-munkaterülethez adja hozzá a Frissítéskezelési megoldást. Ehhez kövesse a megoldástárban található [OMS-megoldás hozzáadása](../log-analytics/log-analytics-add-solutions.md) című témakörben leírt eljárást.  
 2. Az OMS-portálon válassza a **Beállítások**, majd az **Összekapcsolt források** elemet.  Jegyezze fel a **munkaterület azonosítóját** és vagy az **elsődleges kulcsot**, vagy a **másodlagos kulcsot**.
@@ -41,11 +44,13 @@ A Frissítéskezelési megoldás OMS-munkaterülethez való hozzáadásához és
    
    a.    A linuxos OMS-ügynök legújabb verziójának telepítéséhez futtassa az alábbi parancsot.  A <Workspace ID> helyére írja be a munkaterület azonosítóját, a <Key> helyére pedig vagy az elsődleges kulcsot, vagy a másodlagos kulcsot.
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
-   
+        cd ~
+        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+
    b. Az ügynök eltávolításához futtassa az alábbi parancsot.
    
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolva az OMS-munkaterülettel, ennek a megoldásnak a hozzáadásakor az alábbi felügyeleti csomagok is telepítve lesznek az Operations Managerben. Ezek a felügyeleti csomagok nem igényelnek további konfigurációs vagy karbantartási feladatokat. 
@@ -242,6 +247,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

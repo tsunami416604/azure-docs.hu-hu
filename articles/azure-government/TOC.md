@@ -27,12 +27,13 @@
 ### [Hálózat](documentation-government-networking.md)
 ### [Biztonság és identitás](documentation-government-services-securityandidentity.md)
 ### [Felügyelet és kezelés](documentation-government-services-monitoringandmanagement.md)
+### [Web + mobil](documentation-government-services-webandmobile.md)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/)
 ## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

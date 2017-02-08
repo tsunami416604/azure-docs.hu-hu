@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
-ms.openlocfilehash: d00b7b543f105fd944e91f6ed27e6613366c6716
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: b557c6d3591b1d56144651e876fa4bb1b0646935
 
 
 ---
@@ -577,6 +577,6 @@ Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létre
 [Mi az SQL Database?](sql-database-technical-overview.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

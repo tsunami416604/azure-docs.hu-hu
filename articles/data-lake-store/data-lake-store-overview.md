@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c90fe9e9f088e8af80b5d9dcf7ab5b970034122f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
 
 
 ---
@@ -42,10 +42,10 @@ A Data Lake Store-ban tárolt adatok könnyen elemezhetők a Hadoop elemzési ke
 ### <a name="unlimited-storage-petabyte-files"></a>Korlátlan tárterület, petabájtnyi fájlok
 Az Azure Data Lake Store korlátlan tárterületet biztosít, és különböző, elemzési célú adatok tárolására alkalmas. Nincsenek megkötések a fiókok méretének, a fájlméret, vagy a data lake-ben tárolt adatok mennyiségének tekintetében. Az egyéni fájlok mérete a kilobájtoktól a petabájtokig terjedhet, így bármilyen típusú adat tárolásához kiváló választás. A számos másolatnak köszönhetően az adatok megbízhatóan, valamint korlátlan ideig tárolhatók a data lake-ben.
 
-### <a name="performancetuned-for-big-data-analytics"></a>A teljesítmény a big data koncepción alapuló adatelemzéshez lett igazítva
+### <a name="performance-tuned-for-big-data-analytics"></a>A teljesítmény a big data koncepción alapuló adatelemzéshez lett igazítva
 Az Azure Data Lake Store nagy méretű elemzési rendszerek futtatására lett tervezve, amelyek jelentős átviteli sebességet igényelnek nagy mennyiségű adatok lekérdezéséhez és elemzéséhez. A data lake több egyéni tárolókiszolgáló között osztja el egy fájl részeit. Ez javítja az olvasás átviteli sebességét a fájl adatelemzés céljából történő párhuzamos beolvasásakor.
 
-### <a name="enterpriseready-highlyavailable-and-secure"></a>Felkészült a nagyvállalatok igényeire: Magas rendelkezésre állású és biztonságos
+### <a name="enterprise-ready-highly-available-and-secure"></a>Felkészült a nagyvállalatok igényeire: Magas rendelkezésre állású és biztonságos
 Az Azure Data Lake Store az iparági szabványnak megfelelő rendelkezésre állást és megbízhatóságot biztosít. Adatvagyonának tartós tárolását a redundáns másolatok teszik lehetővé, amelyek védelmet biztosítanak a váratlan meghibásodások esetén. A vállalatok meglévő adatplatformjuk fontos részeként alkalmazhatják az Azure Data Lake-et megoldásaikban.
 
 A Data Lake Store továbbá nagyvállalati szintű védelmet biztosít a tárolt adatok számára. További információ: [Az adatok védelme az Azure Data Lake Store-ban](#DataLakeStoreSecurity).
@@ -105,6 +105,6 @@ Ha könnyebben tanul videók megtekintésével, a Data Lake Store számos szolg�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

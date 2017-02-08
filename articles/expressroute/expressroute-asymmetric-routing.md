@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: osamazia
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 10166e6b8b9144f0a5dde4f2fc10b492120e85d7
 
 
 ---
@@ -64,7 +64,7 @@ Gondoskodjon róla, hogy a nyilvános IP-címeit a megfelelő távoli hálózati
 
 Ha az ExpressRoute-ot szeretné használni a hitelesítéshez, ügyeljen rá, hogy az AD FS nyilvános IP-címeit az ExpressRoute-on keresztül, NAT nélkül hirdesse meg. Ezzel a módszerrel a Microsofttól érkező, és egy helyszíni AD FS-kiszolgálóra irányuló forgalom az ExpressRoute-on halad keresztül. Az ügyféltől a Microsoft felé irányuló forgalom az ExpressRoute-ot használja, mivel az az előnyben részesített elérési út.
 
-### <a name="sourcebased-nat"></a>Forrásalapú NAT
+### <a name="source-based-nat"></a>Forrásalapú NAT
 Az aszimmetrikus útválasztás által okozott problémák megoldásának másik módját az SNAT használata jelenti. Tegyük fel, hogy nem hirdette meg egy helyszíni SMTP-kiszolgáló nyilvános IP-címét az ExpressRoute-on keresztül, mert az ilyen típusú kommunikációhoz az internetet szeretné használni. A Microsoft felől érkező, a helyszíni SMTP-kiszolgáló irányába tartó kérés az interneten halad keresztül. A beérkező kérelmet az SNAT használatával egy belső IP-címre irányítja át. Az SMTP-kiszolgálótól származó, fordított irányú forgalom az ExpressRoute helyett a peremhálózati tűzfalra érkezik (mivel ezt használja az SNAT megvalósításához). A visszafelé irányuló forgalom az interneten halad keresztül.
 
 ![A forrásalapú NAT hálózati konfigurációja](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
@@ -75,6 +75,6 @@ A Traceroute a legjobb módszer annak vizsgálatához, hogy a forgalom a várt �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
