@@ -8,15 +8,16 @@ manager: swadhwa
 editor: 
 ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 12/05/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
+ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
 
 
 ---
@@ -75,7 +76,7 @@ Ez a naplóeredmény tartalmazza a nem teljesített alapkonfigurációs szabály
 > 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>Az alapkonfiguráció értékeléséből kimaradt számítógépek elérése
-Az OMS a tartományi tag alapkonfigurációjának profilját a Windows Server 2008 R2 verziótól a Windows Server 2012 R2 verzióig támogatja. A Windows Server 2016 alapkonfigurációja még nem végleges, és közzététele után azonnal megtörténik a hozzáadása. Minden más operációs rendszer, amelyet az OMS biztonság és audit alapkonfiguráció értékelése megvizsgált **Az alapkonfiguráció értékeléséből kimaradt számítógépek** szakaszban fognak megjelenni.
+Az OMS a tartományi tag és a tartományvezérlő alapkonfigurációjának profilját a Windows Server 2008 R2 verziótól a Windows Server 2012 R2 verzióig támogatja. A Windows Server 2016 alapkonfigurációja még nem végleges, és közzététele után azonnal megtörténik a hozzáadása. Minden más operációs rendszer, amelyet az OMS biztonság és audit alapkonfiguráció értékelése megvizsgált **Az alapkonfiguráció értékeléséből kimaradt számítógépek** szakaszban fognak megjelenni.
 
 ## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban az OMS biztonság és audit alapkonfigurációs értékeléséről olvashatott. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
@@ -87,6 +88,6 @@ Ebben a dokumentumban az OMS biztonság és audit alapkonfigurációs értékel�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

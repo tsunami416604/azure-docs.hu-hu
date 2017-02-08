@@ -59,7 +59,7 @@ A védelem alá vonni kívánt virtuális gépek számától függően különf�
 
   ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-5. Recovery Services-tárolóként kiválaszthat egy meglévő tárolót, vagy létrehozhat egy újat. Ha új tárolót hoz létre, az ugyanabban az erőforráscsoportban, ugyanazokkal a virtuálisgép- és helybeállításokkal jön létre, mint a virtuális gép. Ha más értékekkel szeretne Recovery Services-tárolót létrehozni, végezze el a [Recovery Services tároló létrehozását](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), mielőtt a 3. lépésben a Backup beállításra kattintana, és ott kiválasztaná azt a panelen.
+5. Recovery Services-tárolóként kiválaszthat egy meglévő tárolót, vagy létrehozhat egy újat. Ha új tárolót hoz létre, az ugyanabban az erőforráscsoportban, ugyanazokkal a virtuálisgép- és helybeállításokkal jön létre, mint a virtuális gép. Ha más értékekkel szeretne Recovery Services-tárolót létrehozni, végezze el a [Recovery Services tároló létrehozását](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), mielőtt a&3;. lépésben a Backup beállításra kattintana, és ott kiválasztaná azt a panelen.
 
 6. A Biztonsági mentési házirend panelen válassza ki a tároló esetén alkalmazni kívánt biztonsági mentési házirendet, és kattintson az **OK** gombra.
     ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)

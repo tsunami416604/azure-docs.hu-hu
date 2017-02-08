@@ -123,7 +123,7 @@ Miután előkészítette a forrásadatokat, nekiláthat a U-SQL-parancsfájl elk
     További információk a U-SQL nyelvről: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével). és [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (U-SQL nyelvi referencia).
 
 1. Kattintson felül a **Feladat elküldése** lehetőségre.   
-2. Várjon, amíg a feladat állapota **Sikeres** nem lesz. Amint látja, a feladat befejezéséhez körülbelül 1 percre volt szükség.
+2. Várjon, amíg a feladat állapota **Sikeres** nem lesz. Amint látja, a feladat befejezéséhez körülbelül&1; percre volt szükség.
 
     Amennyiben a feladat nem sikerült, tekintse meg a [Data Lake Analytics-feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) című szakaszt.
 3. A panel alján kattintson a **Kimenet** lapra, majd kattintson a **SearchLog-from-Data-Lake.csv** fájlra. Megtekintheti a kimeneti fájl előnézetét, illetve letöltheti, átnevezheti és törölheti azt.

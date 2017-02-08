@@ -123,6 +123,6 @@ Miután létrehozta a DNS-zónát, [hozzon létre benne DNS-rekordhalmazokat és
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

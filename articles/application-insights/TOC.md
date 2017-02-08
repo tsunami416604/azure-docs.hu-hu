@@ -30,18 +30,20 @@
 
 # Útmutató
 ## Tervezés és kialakítás
-
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
 ### [Developer Analytics, az Application Insights és a HockeyApp szolgáltatással](app-insights-developer-analytics.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
 ### [Használatelemzés az Application Insights szolgáltatással](app-insights-overview-usage.md)
 ### [Application Insights-erőforrások elválasztása](app-insights-separate-resources.md)
 ### [Hogyan tegyem... az Application Insights szolgáltatásban?](app-insights-how-do-i.md)
+## Migrate (Áttelepítés)
+### [Migráció az Azure Endpoint Monitoringról a rendelkezésre állási tesztekre](app-insights-migrate-azure-endpoint-tests.md)
 
 ## Konfigurálás
-
+### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ### Azure
 #### [Diagnosztika](app-insights-azure-diagnostics.md)
+## [IP-címek](app-insights-ip-addresses.md)
 
 ### ASP.NET
 #### [További telemetriai funkciók](app-insights-asp-net-more.md)
@@ -102,7 +104,6 @@
 ### [Folyamatos exportálás](app-insights-export-telemetry.md)
 ### [Power BI-exportálás](app-insights-export-power-bi.md)
 
-
 ## Fejlesztés
 
 ### [API egyéni eseményekhez és a mérőszámokhoz](app-insights-api-custom-events-metrics.md)
@@ -111,33 +112,30 @@
 
 
 ## Kezelés
-
 ### [Árak és kvóták kezelése](app-insights-pricing.md)
 ### [Alkalmazásteljesítmény-figyelés az Application Insights az SCOM-hoz használatával](app-insights-scom.md)
 
+##Exportálás
+## [Adatmodell exportálása](app-insights-export-data-model.md)
 
 ## Biztonságos
-
 ### [Adatgyűjtés, -megőrzés és -tárolás](app-insights-data-retention-privacy.md)
 ### [Erőforrások, szerepkörök és hozzáférés-vezérlés](app-insights-resources-roles-access-control.md)
-
-
 ## Hibaelhárítás
 ### [Nincs adat a .NET-hez](app-insights-asp-net-troubleshoot-no-data.md)
 ### [Elemzés](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referencia
-## [Java API](http://dl.windowsazure.com/applicationinsights/javadoc/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
+## [Java](/java/api/com.microsoft.applicationinsights)
+## [REST](https://dev.applicationinsights.io/)
+
+# Erőforrások
 ## [Elemzési referencia](app-insights-analytics-reference.md)
-## [Mintavételezés](app-insights-sampling.md)
-## [IP-címek](app-insights-ip-addresses.md)
-## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-## [Adatmodell exportálása](app-insights-export-data-model.md)
-## [Migráció az Azure Endpoint Monitoringról a rendelkezésre állási tesztekre](app-insights-migrate-azure-endpoint-tests.md)
+## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [Fejlesztői elemzések: nyelvek, platformok és integrációk](app-insights-platforms.md)
+### [Mintavételezés](app-insights-sampling.md)
 ### [Kódminták és útmutatók](app-insights-code-samples.md)
 #### [Útmutatás: Telemetria engedélyezése a Microsoft Dynamics CRM Online-hoz](app-insights-sample-mscrm.md)
 #### [Útmutatás: SQL-exportálás a Stream Analytics használatával](app-insights-code-sample-export-sql-stream-analytics.md)
@@ -145,9 +143,6 @@
 ## [Kibocsátási megjegyzések a következőhöz: Application Insights SDK Windows Phone-hoz és Store-hoz](app-insights-release-notes-windows.md)
 ## [Developer Analytics Tools kibocsátási megjegyzései](app-insights-release-notes-vsix.md)
 ## [SDK kibocsátási megjegyzések – Application Insights](app-insights-release-notes.md)
-## [Adatelérési REST API](https://dev.applicationinsights.io/)
-
-# Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-insights/)  
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
@@ -157,6 +152,7 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO2-->
 
 

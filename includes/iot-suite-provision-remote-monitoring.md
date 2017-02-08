@@ -1,9 +1,9 @@
 ## <a name="provision-the-solution"></a>A megoldás megvalósítása
-1. Jelentkezzen be az [azureiotsuite.com][lnk-azureiotsuite] címre az Azure-fiókja hitelesítő adataival, majd kattintson a **+** elemre egy új megoldás létrehozásához.
+1. Jelentkezzen be az [azureiotsuite.com][lnk-azureiotsuite] címre az Azure-fiókja hitelesítő adataival, majd kattintson a **+** elemre egy megoldás létrehozásához.
 2. Kattintson a **Kiválasztás** elemre a **Távoli figyelés** csempén.
 3. Adja meg a **Megoldásnevet** az előre konfigurált távoli figyelési megoldáshoz.
 4. Válassza ki a megoldás kiépítéséhez használni kívánt **Régiót** és **Előfizetést**.
-5. Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ennek futtatása általában több percig tart.
+5. Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ez a folyamat általában több percig tart.
 
 ### <a name="wait-for-the-provisioning-process-to-complete"></a>Várjon, amíg a kiépítési folyamat befejeződik
 1. Kattintson a megoldás **Kiépítési** állapotát jelző csempére.
@@ -23,6 +23,6 @@ Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói 
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -84,6 +84,6 @@ Ez a parancsfájl egy új Azure-erőforráscsoportot és egy új kiszolgálót h
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
