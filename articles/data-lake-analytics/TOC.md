@@ -10,12 +10,15 @@
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Azure CLI](data-lake-analytics-get-started-cli.md)
 ## [REST API](data-lake-analytics-get-started-rest-api.md)
+## [Python](data-lake-analytics-get-started-python.md)
 
 # Útmutató
 ## Fejlesztés
 ### [U-SQL](data-lake-analytics-u-sql-get-started.md)
 ### [Ablakfüggvények az U-SQL-ben](data-lake-analytics-use-window-functions.md)
 ### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
+### [A U-SQL kognitív képességei](data-lake-analytics-u-sql-cognitive.md)
 
 ## Megoldások létrehozása
 ### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
@@ -36,11 +39,11 @@
 ### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
 # Referencia
-
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
-## [U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
+## [PowerShell](/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics)
+## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
+## [U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
 ## [REST](/rest/api/datalakeanalytics/)
 
 # Erőforrások
@@ -52,6 +55,6 @@
 ## [Azure Data Lake blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

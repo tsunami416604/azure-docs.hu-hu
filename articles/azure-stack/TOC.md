@@ -16,6 +16,7 @@
 ## [Tárfiók létrehozása](azure-stack-provision-storage-account.md)
 ## [Kapcsolódás parancssori felülettel](azure-stack-connect-cli.md)
 ## [Kapcsolódás a PowerShell-lel](azure-stack-connect-powershell.md)
+## [A Visual Studio telepítése](azure-stack-install-visual-studio.md)
 ## [Gyakori kérdések](azure-stack-faq.md)
 
 # Szolgáltatások ajánlása a bérlőknek
@@ -28,6 +29,7 @@
 # Sablonok használata
 ## [Sablonok áttekintése](azure-stack-arm-templates.md)
 ## [Sablonok fejlesztése](azure-stack-develop-templates.md)
+## [Sablonok ellenőrzése](azure-stack-validate-templates.md)
 ## [Sablonok üzembe helyezése a portállal](azure-stack-deploy-template-portal.md)
 ## [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)
 ## [Sablonok üzembe helyezése a Visual Studióval](azure-stack-deploy-template-visual-studio.md)
@@ -72,10 +74,10 @@
 ### [Az SQL Server erőforrás-szolgáltató adapter üzembe helyezése az Azure Stackben](azure-stack-sql-resource-provider-deploy.md)
 
 ## Az App Service tervezése és üzembe helyezése
-### [Az Azure Stack Web Apps áttekintése](azure-stack-app-service-overview.md)
-### [Az Azure Stack Web Apps megismerése előtt](azure-stack-app-service-before-you-get-started.md)
-### [Web Apps: További webes feldolgozói szerepkörök hozzáadása](azure-stack-webapps-add-worker-roles.md)
-### [Web Apps erőforrás-szolgáltató hozzáadása az Azure Stackhez](azure-stack-app-service-deploy.md)
+### [Az Azure Stack App Service áttekintése](azure-stack-app-service-overview.md)
+### [A kezdés előtt](azure-stack-app-service-before-you-get-started.md)
+### [További webes feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md)
+### [App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez](azure-stack-app-service-deploy.md)
 
 # Hibaelhárítás
 ## [Az Azure Stack hibaelhárítása](azure-stack-troubleshooting.md)
@@ -86,6 +88,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

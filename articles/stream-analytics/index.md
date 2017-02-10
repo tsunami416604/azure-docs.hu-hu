@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Ismerje meg, hogyan futtathat IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet például alkalmazásokból, érzékelőkből, eszközökből származó adatokat."
 translationtype: Human Translation
-ms.sourcegitcommit: 5fbbb4ad21bbc4c4206d051e9585cd5d9888a545
-ms.openlocfilehash: 7d19b3b972bf5fdd9545f87f48eb924da8333ff7
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
 
 ---
 
@@ -162,16 +162,10 @@ Ismerje meg, hogyan futtathat eszközök internetes hálózata-elemzést (IoT) a
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Stream Analytics-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

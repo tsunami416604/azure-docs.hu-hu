@@ -1,9 +1,20 @@
 ---
 layout: LandingPage
 description: "Ismerje meg, hogyan használhatja a virtuálisgép-méretezési csoportokat automatikus skálázási, nagy számítási igényű, „big data” típusú, és tárolóalapú megoldásokkal rendelkező Windows vagy Linux rendszerű virtuális gépek létrehozására."
+title: "Az Azure Virtual Machines méretezési csoportok dokumentációja, oktatóanyagok és API-referencia | Microsoft Docs"
+services: virtual-machine-scale-sets
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machine-scale-sets
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7fefef291643ba0c640ba3520e7e40d50391220a
-ms.openlocfilehash: a35dcbfa56c03ca264d4c7a7f779672dc6ae7526
+ms.sourcegitcommit: 7b2af8e58e050100b1778d977dabe25538b84cfe
+ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets – dokumentáció
@@ -99,16 +110,10 @@ Ismerje meg, hogyan használhatja a virtuálisgép-méretezési csoportokat auto
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Virtual Machine Scale Sets dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: 7c2709d472d7512eda927f4f70f82e7f74adca0c
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 3309db6a926c3c2a0ff6340f0ade3d73093f6d6b
 
 
 ---
@@ -41,10 +41,8 @@ A dinamikus titkosítás által nyújtott előnyök kihasználásához többszö
 
 Ez a témakör azon fejlesztők számára lehet hasznos, akik többféle DRM-mel (például PlayReady és Widevine) védett médiafájlok továbbításával foglalkoznak. A témakör leírja, hogyan konfigurálhatja a PlayReady-licenctovábbítási szolgáltatásra vonatkozó szabályzatokat úgy, hogy csak az arra jogosult ügyfelek kaphassák meg a PlayReady- és Widevine-licenceket. Ezenfelül azt is bemutatja, hogyan használja a dinamikus titkosítás funkciót a PlayReady vagy a Widevine DRM-mel a DASH-en keresztül.
 
-> [!NOTE]
-> A dinamikus titkosítás használatának megkezdéséhez be kell szereznie legalább egy skálázási egységet (avagy streamelési egységet). További információk: [How to Scale a Media Service](media-services-portal-manage-streaming-endpoints.md) (Médiaszolgáltatás skálázása).
->
->
+>[!NOTE]
+>Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 ## <a name="download-sample"></a>Minta letöltése
 A cikkben leírt mintát [innen](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) töltheti le.
@@ -106,7 +104,7 @@ Konfigurálja az objektum továbbítási szabályzatát. Az objektumtovábbítá
 * Az adategység-továbbítási protokoll (pl. MPEG DASH, HLS, Smooth Streaming vagy ezek mindegyike).
 * A dinamikus titkosítás típusa (ebben az esetben Common Encrpytion).
 
-További információk: [Objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
+További információk: [Objektumtovábbítási szabályzat konfigurálása ](media-services-rest-configure-asset-delivery-policy.md).
 
 ## <a name="a-idcreatelocatoracreate-an-ondemand-streaming-locator-in-order-to-get-a-streaming-url"></a><a id="create_locator"></a>OnDemand-lokátor létrehozása a streamelési URL-cím lekérése érdekében
 A felhasználók rendelkezésére kell bocsátania a Smooth, DASH vagy HLS streamelési URL-címét.
@@ -160,8 +158,7 @@ Az alábbi mintában azokat a funkciókat mutatjuk be, amelyeket az Azure Media 
                 <add key="Audience" value="urn:test"/>
               </appSettings>
         </configuration>
-5. Szerezzen be legalább egy streamelési egységet a tartalom továbbításához használni kívánt streamvégpontra. További információkért lásd a [streamvégpontok konfigurálását bemutató részt](media-services-dotnet-get-started.md#configure-streaming-endpoints-using-the-azure-portal).
-6. Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
+7. Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
 
     Módosítsa úgy a változókat, hogy a bemeneti fájlok tárolásához Ön által használt mappákra mutassanak.
 
@@ -623,6 +620,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

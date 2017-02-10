@@ -139,12 +139,15 @@
 
 ### [Távoli hozzáférés biztosítása az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
 #### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-#### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
+#### Alkalmazások közzététele
+##### [Azure Portal](application-proxy-publish-azure-portal.md)
+##### [Klasszikus portál](active-directory-application-proxy-publish.md)
 #### Közzététel külön hálózatokon
 ##### [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [Klasszikus portál](active-directory-application-proxy-connectors.md)
 #### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
 #### [Egyszeri bejelentkezés](active-directory-application-proxy-sso-using-kcd.md)
+##### [Azure Portal](application-proxy-sso-azure-portal.md)
 #### [Jogcímbarát alkalmazások](active-directory-application-proxy-claims-aware-apps.md)
 #### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
 #### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
@@ -202,6 +205,7 @@
 #### [Csoportházirend-beállítások](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 #### [Windows 10-beállítások](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [Gyakori kérdések](active-directory-windows-enterprise-state-roaming-faqs.md)
+#### [Hibaelhárítás](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [Partnerek integrálása az Azure AD B2B-vel](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [Áttekintés](active-directory-b2b-collaboration-overview.md)
 #### [Működési elv](active-directory-b2b-how-it-works.md)
@@ -211,7 +215,7 @@
 #### [CSV fájlformátum](active-directory-b2b-references-csv-file-format.md)
 #### [Felhasználói objektumok](active-directory-b2b-references-external-user-object-attribute-changes.md)
 #### [Felhasználói jogkivonatok](active-directory-b2b-references-external-user-token-format.md)
-### [Helyszíni identitások integrálása az Azure AD Connecttel](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
 
 
 ## Erőforrások hozzáférésének delegálása
@@ -236,12 +240,12 @@
 ## Identitások védelme
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Bekapcsolás](active-directory-identityprotection-enable.md)
-#### [Bejelentkezési felület](active-directory-identityprotection-flows.md)
-#### [Felhasználók tiltásának feloldása](active-directory-identityprotection-unblock-howto.md)
 #### [Biztonsági rések keresése](active-directory-identityprotection-vulnerabilities.md)
-#### [Kockázati események típusai](active-directory-identityprotection-risk-events-types.md)
-#### [Kockázati események szimulálása](active-directory-identityprotection-playbook.md)
+#### [Kockázati események](active-directory-identity-protection-risk-events.md)
 #### [Értesítések](active-directory-identityprotection-notifications.md)
+#### [Bejelentkezési felület](active-directory-identityprotection-flows.md)
+#### [Kockázati események szimulálása](active-directory-identityprotection-playbook.md)
+#### [Felhasználók tiltásának feloldása](active-directory-identityprotection-unblock-howto.md)
 #### [Szószedet](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
@@ -283,7 +287,8 @@
 
 # Kapcsolódó
 ## [Többtényezős hitelesítés](/azure/multi-factor-authentication/)
-## [Azure AD Connect](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect](./connect/active-directory-aadconnect.md)
+## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [Azure AD fejlesztőknek](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
@@ -296,6 +301,6 @@
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

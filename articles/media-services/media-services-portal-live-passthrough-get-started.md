@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-onpremise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -34,7 +34,7 @@ Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folya
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
-* Egy Media Services-fiók.    A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * Egy webkamera. Például a [Telestream Wirecast kódoló](http://www.telestream.net/wirecast/overview.htm).
 
 Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
@@ -46,7 +46,10 @@ Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 ## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
-1. Csatlakoztasson a számítógéphez egy videokamerát. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
+>[!NOTE]
+>Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
+    
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](http://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
    
     Ezt a lépést a csatorna létrehozása után is el lehet végezni.
 2. Hozzon létre és indítson el egy átmenő csatornát.
@@ -59,11 +62,7 @@ A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streame
 5. Hozzon létre egy élő eseményt/programot. 
    
     Az Azure portál használata esetén az élő esemény létrehozása egy objektumot is létrehoz. 
-   
-   > [!NOTE]
-   > Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
-   > 
-   > 
+
 6. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
 7. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
 8. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
@@ -79,29 +78,7 @@ Ha meg szeretné tekinteni az Azure portál által előállított értesítések
 
 ![Értesítések](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
-## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
-A Media Services dinamikus becsomagolást biztosít, így anélkül lehet MPEG DASH-, HLS-, Smooth Streaming, illetve HDS-formátumban továbbítani a többszörös átviteli sebességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus becsomagolás használatával csak egyféle formátumban kell tárolni a fájlokat és fizetni utánuk, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
-
-A dinamikus becsomagolás előnyének kihasználásához léteznie kell legalább egy streamelési egységnek annál a streamvégpontnál, amely a tervek szerint közvetíteni fogja a tartalmat.  
-
-Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
-3. Kattintson az alapértelmezett streamvégpontra. 
-   
-    Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
-4. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
-   
-    ![Streamelési egységek](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
-5. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
-   
-   > [!NOTE]
-   > Az új egységek allokációja akár 20 percig is eltarthat.
-   > 
-   > 
-
-## <a name="create-and-start-passthrough-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
+## <a name="create-and-start-pass-through-channels-and-events"></a>Átmenő csatornák és események létrehozása és elindítása.
 A csatornákhoz események/programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. Az eseményeket a csatornák kezelik. 
 
 Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam határozza meg azt is, hogy mennyi idővel ugorhatnak vissza az ügyfelek az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan eldobja azt a tartalmat, amely korábbi a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
@@ -180,6 +157,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

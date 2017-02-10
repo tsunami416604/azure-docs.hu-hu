@@ -3,6 +3,8 @@
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
 ## [Alkalmazáshasználati helyzetek](service-fabric-application-scenarios.md)
 ## [Architektúra](service-fabric-architecture.md)
+## [Terminológia](service-fabric-technical-overview.md)
+## [A tartalom ütemterve](service-fabric-content-roadmap.md)
 
 # Első lépések
 ## A fejlesztési környezet beállítása
@@ -17,17 +19,23 @@
 
 # Útmutató
 ## Alkalmazás készítése
+### [Minták és forgatókönyvek](service-fabric-patterns-and-scenarios.md)
 ### Alapvető beállítások
 #### [A programozási modell](service-fabric-choose-framework.md)
 #### [Az alkalmazásmodell](service-fabric-application-model.md)
 #### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
+#### [Szolgáltatásjegyzéki erőforrások](service-fabric-service-manifest-resources.md)
 #### [Eszközök](service-fabric-manage-application-in-visual-studio.md)
-#### [Hibakeresés](service-fabric-debugging-your-application.md)
+#### Hibakeresés
+##### [C# szolgáltatás hibakeresése a VS-ben](service-fabric-debugging-your-application.md)
+##### [Java szolgáltatás hibakeresése az Eclipse-ben](service-fabric-debugging-your-application-java.md)
 #### Megfigyelés és diagnosztika
 ##### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 ##### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-#### [Biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md)
-#### [Az alkalmazás konfigurálása több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)
+#### [Titkos alkalmazáskulcsok kezelése](service-fabric-application-secret-management.md)  
+#### [Biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md)  
+#### [Az alkalmazás konfigurálása több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)  
+#### [Gyakori hibák és kivételek](service-fabric-errors-and-exceptions.md) 
 
 ### Reliable Services-alkalmazás
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
@@ -35,12 +43,14 @@
 ##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
 ##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
 #### [Architektúra](service-fabric-reliable-services-platform-architecture.md)
+#### [A Reliable Services életciklusa](service-fabric-reliable-services-lifecycle.md)
 #### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 #### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 #### [Konfigurálás](service-fabric-reliable-services-configuration.md)
 #### [Értesítések](service-fabric-reliable-services-notifications.md)
 #### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
 #### [Kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-communication.md)
+#### [Biztonságos kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-secure-communication.md)
 ##### [ASP.NET](service-fabric-reliable-services-communication-webapi.md)
 ##### [Szolgáltatás távelérésének lehetővé tétele](service-fabric-reliable-services-communication-remoting.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
@@ -61,6 +71,7 @@
 #### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
 #### [Állapotszolgáltató konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+#### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
 ### Futtatható vendégalkalmazás
 #### [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
@@ -83,6 +94,7 @@
 #### [Kapacitástervezés](service-fabric-cluster-capacity.md)
 #### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 #### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
+#### [Fürt kezelése az Azure CLI-vel](service-fabric-azure-cli.md) 
 #### [Biztonság](service-fabric-cluster-security.md)
 #### [Vészhelyreállítás](service-fabric-disaster-recovery.md)
 
@@ -96,15 +108,19 @@
 #### [Fürt törlése](service-fabric-cluster-delete.md)
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-fabric-settings.md)
+#### [Fürttanúsítványok hozzáadása vagy váltása](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Nyilvános fürt ingyenes kipróbálása](http://aka.ms/tryservicefabric)
 
 ### Önálló fürtök
 #### [Önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
+#### [Önálló fürt létrehozása az Azure Virtual Machinesben](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [Fürt skálázása](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
 #### [Fürt biztonságossá tétele](service-fabric-windows-cluster-x509-security.md)
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-manifest.md)
+#### [Fürt biztonságossá tétele tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)  
+#### [Fürt biztonságossá tétele a Windows rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md) 
 
 ## Fürterőforrások kezelése és összehangolása
 ### [A fürterőforrás-kezelő áttekintése](service-fabric-cluster-resource-manager-introduction.md)
@@ -136,7 +152,6 @@
 ### [Alkalmazásfrissítési hibák elhárítása](service-fabric-application-upgrade-troubleshooting.md)
 ### [Adatok szerializálása az alkalmazásfrissítésekben](service-fabric-application-upgrade-data-serialization.md)
 ### [Alkalmazásfrissítések – haladó témakörök](service-fabric-application-upgrade-advanced.md)
-### [Példa REST-alapú alkalmazás életciklusára](service-fabric-rest-based-application-lifecycle-sample.md)
 
 ## Az alkalmazás és a fürt állapotának vizsgálata
 ### [A Service Fabric állapotának figyelése](service-fabric-health-introduction.md)
@@ -152,7 +167,7 @@
 ### Azure Diagnostics-naplók
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-### [Service Fabric-alkalmazáskövetés](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+### [Naplók lekérdezése egy szolgáltatási folyamatból](service-fabric-diagnostic-collect-logs-without-an-agent.md)
 ### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
 ### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
@@ -173,24 +188,19 @@
 #### [Számítási feladatok során](service-fabric-testability-workload-tests.md)
 #### [Adatvesztés meghívásával](service-fabric-use-data-loss-api.md)
 #### [Tesztelési helyzetek használata](service-fabric-testability-scenarios.md)
+#### [A csomópontváltó API-k használata](service-fabric-node-transition-apis.md)
 ### [Az alkalmazás terheléses tesztelése](service-fabric-vso-load-test.md)
 
 # Referencia
-## [Terminológia](service-fabric-technical-overview.md)
-## [Reliable Actors](https://go.microsoft.com/fwlink/p/?linkid=833398)
-## [Reliable Actors WCF](https://go.microsoft.com/fwlink/p/?linkid=833401)
-## [Reliable Services](https://go.microsoft.com/fwlink/p/?linkid=833402)
-## [Reliable Services WCF](https://go.microsoft.com/fwlink/p/?linkid=833403)
-## [Adatok](https://go.microsoft.com/fwlink/p/?linkid=833404)
-## [Adatfelületek](https://go.microsoft.com/fwlink/p/?linkid=833406)
-## [Rendszer](https://go.microsoft.com/fwlink/p/?linkid=833407)
-## [Mintakód](http://aka.ms/servicefabricsamples)
-## [PowerShell](/powershell/servicefabric/vlatest/servicefabric)
-## [Java API](https://go.microsoft.com/fwlink/p/?linkid=833410)
-## [.NET](/dotnet/api)
-## [REST](/rest/api/servicefabric/)
+## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
+## [Java API](/java/api/microsoft.servicefabric.services)
+## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [REST](/rest/api/servicefabric)
 
 # Erőforrások
+## [Gyakori kérdések a Service Fabrickel kapcsolatban](service-fabric-common-questions.md)
+## [A Service Fabric támogatási lehetőségei](service-fabric-support.md)
+## [Mintakód](http://aka.ms/servicefabricsamples)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-fabric/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
@@ -198,6 +208,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

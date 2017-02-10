@@ -5,9 +5,7 @@
 ## [Üzembe helyezés az ACS-en az Azure CLI 2.0 előzetes verziójával](container-service-create-acs-cluster-cli.md)
 ## [Kapcsolódás ACS-fürthöz](container-service-connect.md)
 ## [ACS-fürt méretezése](container-service-scale.md)
-
 # Útmutató
-
 ## Kezelés a DC/OS-sel
 ### [Tárolókezelés – DC/OS webes felhasználói felület](container-service-mesos-marathon-ui.md)
 ### [Tárolókezelés – DC/OS REST API](container-service-mesos-marathon-rest.md)
@@ -16,21 +14,30 @@
 ### [DC/OS nyilvános hozzáférésének engedélyezése](container-service-enable-public-access.md)
 ### [Terheléselosztási tárolók a DC/OS-ben](container-service-load-balancing.md)
 ### [Alkalmazás-/felhasználóspecifikus Orchestrator a DC/OS-ben](container-service-application-specific-marathon.md)
-### [Figyelés az OMS-szel(DC/OS)](container-service-monitoring-oms.md)
-### [Figyelés a Datadoggal (DC/OS)](container-service-monitoring.md)
-### [Figyelés a Sysdiggel (DC/OS)](container-service-monitoring-sysdig.md)
-## [Kezelés a Kubernetes használatával](container-service-kubernetes-walkthrough.md)
-## [Kezelés a Docker Swarmmal](container-service-docker-swarm.md)
-
+### [Figyelés az OMS-szel](container-service-monitoring-oms.md)
+### [Figyelés a Datadoggal](container-service-monitoring.md)
+### [Figyelés az Sysdiggel](container-service-monitoring-sysdig.md)
+### [Figyelés a Dynatrace-szel](container-service-monitoring-dynatrace.md)
+## Kezelés a Kubernetes használatával
+### [Bevezetés a Kubernetes használatába](container-service-kubernetes-walkthrough.md)
+### [Egyszerű szolgáltatás konfigurálása](container-service-kubernetes-service-principal.md)
+### [A Kubernetes webes felhasználói felületének kezelése](container-service-kubernetes-ui.md)
+### [Figyelés az OMS-szel](container-service-kubernetes-oms.md)
+### [Figyelés a Datadoggal](container-service-kubernetes-datadog.md)
+### [Figyelés az Sysdiggel](container-service-kubernetes-sysdig.md)
+## Kezelés a Docker Swarmmal
+### [A Docker és a Docker Compose](container-service-docker-swarm.md)
+### [Docker Swarm folyamatos integráció](container-service-docker-swarm-setup-ci-cd.md)
 # Referencia
-## [REST API](/rest/api/compute/containerservices)
-
+## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
+## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
+## [REST](/rest/api/compute/containerservices)
 # Erőforrások
 ## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/container-service/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 01/10/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
-ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
+ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
+ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 
 ---
@@ -33,7 +33,7 @@ A javaslatok alkalmazásával kapcsolatban további információkat talál a kö
 
 A **Resources security health** (Erőforrások biztonsági állapota) csempén is nyomon követheti erőforrásainak biztonsági állapotát. A következő példában több olyan magas és közepes súlyosságú probléma látható, amely intézkedést igényel. A bekapcsolt biztonsági szabályzatok hatással vannak a megfigyelt vezérlőtípusokra.
 
-![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
+![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
 
 Ha a Security Center intézkedést igénylő biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](/virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
 
@@ -169,7 +169,8 @@ A topológia e nézetében az első szinten vannak a [virtuális hálózatok](..
 A panel alsó részén a virtuális gépre vonatkozó javaslatok láthatók, a fentiekben leírtakhoz hasonlóan. A javaslatra kattintva további információkat tekinthet meg, illetve alkalmazhatók a szükséges biztonsági rendszabályok/konfigurációk.
 
 ### <a name="monitor-data"></a>Adatok figyelése
-A **Resources security health** (Erőforrások biztonsági állapota) csempe **Data** (Adatok) csempéjére kattintva megnyithatja a **Data Resources** (Adatforrások) panelt, amelyen megtekintheti az SQL és a Storage használatával kapcsolatos javaslatokat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan. A tárolás titkosításáról további információkat az Azure-tárfiókok titkosításának Azure Security Centerben történő engedélyezésével foglalkozó cikkben talál.
+
+A **Resources security health** (Erőforrások biztonsági állapota) csempe **SQL & Data** (SQL és adatok) elemére kattintva megnyithatja a **Data Resources** (Adatforrások) panelt, amelyen az SQL és a Storage használatával kapcsolatos javaslatokat olvashat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan. A tárolás titkosításáról további információkat az [Azure-tárfiókok titkosításának engedélyezése az Azure Security Centerben](security-center-enable-encryption-for-storage-account.md) című cikkben találhat.
 
 ![Adatforrások](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
@@ -217,6 +218,6 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

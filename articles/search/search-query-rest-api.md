@@ -71,7 +71,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Egy olyan szűrőt alkalmaz az indexen, amely az éjszakánkénti 150 dollárnál olcsóbb szállodákra keres rá, majd visszaadja a `hotelId` és `description` mezőket:
+Egy olyan szűrőt alkalmaz az indexen, amely az éjszakánkénti&150; dollárnál olcsóbb szállodákra keres rá, majd visszaadja a `hotelId` és `description` mezőket:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01

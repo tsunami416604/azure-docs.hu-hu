@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: d532cb3774e7d98d6c52ffdc40d6ba124d8d3ea3
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 1cee92f59f5883b031ccc547a2f67f7dcd4fa3c3
 
 
 ---
@@ -46,31 +46,32 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és állítson be egy helyszíni valós idejű kódolót, amely képes egy egyféle sávszélességű kimeneti adatfolyam továbbítására a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](http://go.microsoft.com/fwlink/?LinkId=532824)
 
-Ezt a lépést a csatorna létrehozása után is elvégezheti.
+    Ezt a lépést a csatorna létrehozása után is elvégezheti.
 
-1. Hozzon létre és indítson el egy csatornát.
-2. Kérje le a csatorna feldolgozó URL-címét.
+2. Hozzon létre és indítson el egy csatornát.
+3. Kérje le a csatorna feldolgozó URL-címét.
 
-Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
+    Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 
-1. Kérje le a csatorna előnézeti URL-címét.
+4. Kérje le a csatorna előnézeti URL-címét.
 
-Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
+    Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 
-1. Hozzon létre egy adategységet.
-2. Ha azt szeretné, hogy az adategység a lejátszás során dinamikusan legyen titkosítva, tegye a következőket:
-3. Hozzon létre egy tartalomkulcsot.
-4. Konfigurálja a tartalomkulcs engedélyezési házirendjét.
-5. Konfigurálja az adategység továbbítási házirendjét (amelyet a dinamikus csomagolás és a dinamikus titkosítás használ).
-6. Hozzon létre egy programot, és állítsa be, hogy az az imént létrehozott adategységet használja.
-7. Tegye közzé a programhoz társított adategységet egy OnDemand-kereső létrehozásával.
+5. Hozzon létre egy adategységet.
+6. Ha azt szeretné, hogy az adategység a lejátszás során dinamikusan legyen titkosítva, tegye a következőket:
+7. Hozzon létre egy tartalomkulcsot.
+8. Konfigurálja a tartalomkulcs engedélyezési házirendjét.
+9. Konfigurálja az adategység továbbítási házirendjét (amelyet a dinamikus csomagolás és a dinamikus titkosítás használ).
+10. Hozzon létre egy programot, és állítsa be, hogy az az imént létrehozott adategységet használja.
+11. Tegye közzé a programhoz társított adategységet egy OnDemand-kereső létrehozásával.
 
-Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
+    >[!NOTE]
+    >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
 
-1. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
-2. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
-3. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
-4. Törölje a programot (esetlegesen törölje az adategységet is).
+12. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
+13. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
+14. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
+15. Törölje a programot (esetlegesen törölje az adategységet is).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 Ez a témakör bemutatja, hogyan hajthat végre különböző műveleteket csatornákon és programokon a Media Services .NET SDK használatával. A műveletek között számos hosszú futású művelet található, így hosszú futású műveleteket felügyelő .NET API-kat használunk.
@@ -100,7 +101,6 @@ Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. T
 
 ## <a name="considerations"></a>Megfontolások
 * Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
-* Biztosítsa, hogy legyen legalább egy, a folyamatos adatátvitelhez fenntartott egység a streamvégpontján, amelyről a tartalmat továbbítani kívánja.
 
 ## <a name="download-sample"></a>Minta letöltése
 Töltsön le és futtasson egy mintát [innen](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
@@ -524,12 +524,10 @@ Tekintse át a Media Services képzési terveket.
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>Valami mást keres?
-Amennyiben ebben a témakörben nem találta meg azt, amire számított; ha a témakörből hiányzik valami; vagy bármilyen egyéb módon nem felelt meg az elvárásainak, kérjük, küldjön nekünk visszajelzést alább, egy Disqus-hozzászóláson keresztül.
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

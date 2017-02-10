@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg a Service Fabric közbensőszoftver-platformot a mikroszolgáltatások csomagolására és üzembe helyezésére a felhőléptékű alkalmazásokhoz. Oktatóanyagok, API-referenciák és kódminták."
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 0598e5ea3dc95853a21a56326241a82854477cbe
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: d9b4e3b3df6760b15e151c5eab37c9f534784de8
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric-dokumentáció
 
-Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a felhőalapú alkalmazások fejlesztésének és kezelésének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. 
+Ismerje meg, hogy a Service Fabric hogyan használható a skálázható és megbízható mikroszolgáltatások csomagolására, üzembe helyezésére és kezelésére. Oktatóanyagok, API-referenciák és kódminták mutatják meg, hogy hogyan használja ezt az elosztott rendszerplatformot a felhőléptékű alkalmazások felépítésére és kezelésére.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +149,10 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 </ul>   
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Service Fabric-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

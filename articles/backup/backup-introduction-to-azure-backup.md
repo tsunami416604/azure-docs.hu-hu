@@ -1,10 +1,10 @@
 ---
 title: Mi az az Azure Backup? | Microsoft Docs
-description: "Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről, Windows-ügyfélgépekről, System Center DPM-kiszolgálókról és Azure virtuális gépekről."
+description: "Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről, Windows rendszerű számítógépekről, System Center DPM-kiszolgálókról és Azure virtuális gépekről."
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
+ms.date: 1/4/2017
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
-ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
+ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
+ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
 
 
 ---
@@ -53,8 +53,8 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 | Összetevő | Előnyök | Korlátok | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
 | --- | --- | --- | --- | --- |
 | Azure Backup (MARS) ügynöke |<li>Elkészíti a fizikai vagy virtuális Windows operációs rendszereken lévő fájlok és mappák biztonsági másolatát (a virtuális gépek lehetnek helyszíniek, vagy lehetnek az Azure-ban is)<li>Nincs szükség különálló biztonsági mentési kiszolgálóra. |<li>Biztonsági mentés naponta 3-szor. <li>Nem alkalmazásfüggő; csak fájl-/mappa-/kötetszintű visszaállítás. <li>  Nincs Linux-támogatás. |<li>Fájlok <li>Mappák |Azure Backup-tároló |
-| System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás Hyper-V és VMware virtuális gépeken <li>VMware virtuális gépek védelme a DPM 2012 R2 segítségével |Nem készíthető biztonsági mentés az Oracle számítási feladatról.|<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |
-| Azure Backup Server |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás (ha Hyper-V-n fut)<li>VMware virtuális gépek védelme a DPM 2012 R2 segítségével<li>Nincs szükség System Center-licencre |<li>Nem készíthető biztonsági mentés az Oracle számítási feladatról.<li>Mindig élő Azure-előfizetést igényel<li>A szalagos biztonsági mentés nem támogatott |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez |
+| System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás Hyper-V és VMware virtuális gépeken <li>VMware virtuális gépek biztonsági mentése és visszaállítása a DPM 2012 R2-es verziójával |Nem készíthető biztonsági mentés az Oracle számítási feladatról.|<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |
+| Azure Backup Server |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Képes használni az Azure Backup-tárolót<li>Linux-támogatás Hyper-V és VMware virtuális gépeken<li>VMware virtuális gépek biztonsági mentése és visszaállítása <li>Nincs szükség System Center-licencre |<li>Nem készíthető biztonsági mentés az Oracle számítási feladatról.<li>Mindig élő Azure-előfizetést igényel<li>A szalagos biztonsági mentés nem támogatott |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Azure Backup-tároló,<li> Helyileg csatlakoztatott lemez |
 | Azure IaaS virtuális gép biztonsági mentése |<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Azure Backup-tároló</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Mik az egyes összetevők üzembe helyezési lehetőségei?
@@ -234,6 +234,6 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

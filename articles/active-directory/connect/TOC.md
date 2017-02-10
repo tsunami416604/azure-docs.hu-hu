@@ -80,6 +80,7 @@
 
 
 # Kapcsolódó
+## [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](../connect-health/active-directory-aadconnect-health.md)
 ## [Hibrid identitáskezelés – kialakítási útmutató](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 
@@ -88,6 +89,6 @@
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

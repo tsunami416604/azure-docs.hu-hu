@@ -1,6 +1,6 @@
 ---
-title: "Az Azure IoT Hub használata a Javával – első lépések | Microsoft Docs"
-description: "Az Azure IoT Hub használata a Javával – első lépések oktatóanyag. Az Azure IoT Hubot és a Javát az Azure IoT SDK-kkal együtt használva az eszközök internetes hálózatán alapuló megoldást valósíthat meg."
+title: "Ismerkedés az Azure IoT Hub (Java) szolgáltatással | Microsoft Docs"
+description: "Eszközről a felhőbe irányuló üzenetek küldésének módja egy eszközről az Azure IoT Hubba a Javához készült Azure IoT SDK-k használatával. Létre kell hozni egy szimulált eszközalkalmazást üzenetek küldéséhez, egy szolgáltatásalkalmazást az eszközének az identitásjegyzékben történő regisztrálásához, továbbá egy szolgáltatásalkalmazást, amely beolvassa az eszközről a felhőbe irányuló üzeneteket az IoT Hubról."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -12,22 +12,22 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 01/05/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
+ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
+ms.openlocfilehash: 5bfbe4cfac202592ddd745c5f959cb791fe17ba8
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-java"></a>Ismerkedés az Azure IoT Hub for Java szolgáltatással
+# <a name="get-started-with-azure-iot-hub-java"></a>Ismerkedés az Azure IoT Hub (Java) szolgáltatással
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag elvégzése után három Java-konzolalkalmazással fog rendelkezni:
 
 * A **create-device-identity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat a szimulált eszközalkalmazáshoz.
 * A **read-d2c-messages** megjeleníti a szimulált eszközalkalmazás által küldött telemetriát.
-* a **simulated-device** a korábban létrehozott eszközidentitással csatlakozik az IoT Hubhoz, és másodpercenként telemetriai üzenetet küld az AMPQ protokoll használatával.
+* A **simulated-device** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és az MQTT protokoll használatával másodpercenként telemetriai üzenetet küld.
 
 > [!NOTE]
 > Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához egyaránt. Ezekről az [Azure IoT SDK-k][lnk-hub-sdks] című témakörben talál további információt.
@@ -42,16 +42,16 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Az utolsó lépésben jegyezze fel az **Elsődleges kulcs** értékét, majd kattintson az **Üzenetküldés** lehetőségre. Az **Üzenetküldés** panelen jegyezze fel az **Event Hub-kompatibilis nevet** és az **Event Hub-kompatibilis végpontot**. Erre a három értékre szüksége lesz a **read-d2c-messages** alkalmazás létrehozásakor.
+Az utolsó lépésben jegyezze fel az **Elsődleges kulcs** értékét. Ezután kattintson a **Végpontok**, majd az **Események** beépített végpontra. A **Tulajdonságok** panelen jegyezze fel az **Event Hub-kompatibilis nevet** és az **Event Hub-kompatibilis végpont** címét. Erre a három értékre szüksége lesz a **read-d2c-messages** alkalmazás létrehozásakor.
 
 ![Az Azure Portal IoT Hub Üzenetküldés panelje][6]
 
-Létrehozott egy IoT Hubot, és rendelkezik az oktatóanyag teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, IoT Hub elsődleges kulccsal, valamint Event Hubs-kompatibilis névvel és végponttal.
+Ezzel létrehozta az IoT Hubot. Rendelkezik az oktatóanyag teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, IoT Hub elsődleges kulccsal, valamint Event Hubs-kompatibilis névvel és végponttal.
 
 ## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] **Identitásjegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
-1. Hozzon létre egy iot-java-get-started nevű üres mappát. Az iot-java-get-started mappában hozzon létre egy **create-device-identity** nevű Maven-projektet a következő parancs a parancssorba való beírásával. Látható, hogy ez egyetlen hosszú parancs:
+1. Hozzon létre egy iot-java-get-started nevű üres mappát. Az iot-java-get-started mappában hozzon létre egy **create-device-identity** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -105,7 +105,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
         iotf.printStackTrace();
       }
     }
-    System.out.println("Device id: " + device.getDeviceId());
+    System.out.println("Device ID: " + device.getDeviceId());
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 10. Mentse és zárja be az App.java fájlt.
@@ -122,7 +122,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
 13. Jegyezze fel az **eszköz azonosítóját** és az **eszköz kulcsát**. Ezekre az értékekre később szüksége lesz, amikor az IoT Hubhoz eszközként csatlakozó alkalmazást hoz létre.
 
 > [!NOTE]
-> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszközidentitásokat. Az eszközazonosítókat és kulcsokat biztonsági hitelesítő adatokként tárolja, valamint tartalmaz egy engedélyezve/letiltva jelzőt, amellyel letilthatja egy adott eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. További információkért lásd az [IoT Hub fejlesztői útmutatót][lnk-devguide-identity].
+> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszközidentitásokat. Az eszközazonosítókat és kulcsokat biztonsági hitelesítő adatokként tárolja, valamint tartalmaz egy engedélyezve/letiltva jelzőt, amellyel letilthatja egy adott eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. További információ: [IoT Hub fejlesztői útmutató][lnk-devguide-identity].
 > 
 > 
 
@@ -134,7 +134,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről 
 > 
 > 
 
-1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy **read-d2c-messages** nevű Maven-projektet a következő parancs a parancssorba való beírásával. Látható, hogy ez egyetlen hosszú parancs:
+1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy **read-d2c-messages** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -205,7 +205,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről 
                       receivedEvent.getSystemProperties().getOffset(), 
                       receivedEvent.getSystemProperties().getSequenceNumber(), 
                       receivedEvent.getSystemProperties().getEnqueuedTime()));
-                    System.out.println(String.format("| Device ID: %s", receivedEvent.getProperties().get("iothub-connection-device-id")));
+                    System.out.println(String.format("| Device ID: %s", receivedEvent.getSystemProperties().get("iothub-connection-device-id")));
                     System.out.println(String.format("| Message Payload: %s", new String(receivedEvent.getBody(),
                       Charset.defaultCharset())));
                     batchSize++;
@@ -271,7 +271,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
-1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy **simulated-device** nevű Maven-projektet a következő parancs a parancssorba való beírásával. Látható, hogy ez egyetlen hosszú parancs:
+1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy **simulated-device** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -313,12 +313,12 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszköz
    
     ```
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
-    private static IotHubClientProtocol protocol = IotHubClientProtocol.AMQPS;
+    private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static String deviceId = "myFirstJavaDevice";
     private static DeviceClient client;
     ```
    
-    Ez a mintaalkalmazás a **protocol** változót használja egy **DeviceClient** objektum példányának létrehozásakor. Az IoT Hubbal való kommunikációhoz HTTPS vagy AMQP protokollt használhat.
+    Ez a mintaalkalmazás a **protocol** változót használja egy **DeviceClient** objektum példányának létrehozásakor. Az IoT Hubbal való kommunikációhoz MQTT, AMQP vagy HTTP protokollt használhat.
 8. Adja hozzá a következő beágyazott **TelemetryDataPoint** osztályt az **App** osztályon belül az eszköz által az IoT hubnak küldött telemetriai adatok meghatározásához:
    
     ```
@@ -425,14 +425,14 @@ Most már készen áll az alkalmazások futtatására.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
    
-    ![A Java IoT Hub szolgáltatásoldali ügyfélalkalmazás az eszközről a felhőbe irányuló üzenetek figyeléséhez][7]
+    ![Java IoT Hub-szolgáltatásalkalmazás az eszközről a felhőbe irányuló üzenetek figyeléséhez][7]
 2. A simulated-device mappában egy parancssorban futtassa a következő parancsot, amellyel megkezdheti a telemetriai adatok küldését az IoT Hubnak:
    
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
    
-    ![A Java IoT Hub eszközoldali ügyfélalkalmazás az eszközről a felhőbe irányuló üzenetek küldéséhez][8]
+    ![Java IoT Hub-eszközalkalmazás az eszközről a felhőbe irányuló üzenetek küldéséhez][8]
 3. Az [Azure Portal][lnk-portal] **Használat** csempéje az IoT Hubnak küldött üzenetek számát jeleníti meg:
    
     ![Az Azure Portalon az IoT Hubnak küldött üzenetek számát megjelenítő Használat csempe][43]
@@ -461,7 +461,7 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
@@ -474,6 +474,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

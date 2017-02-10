@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 42f5ac0bae68b967378b5e1a090f3b17e4efad20
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c3523cfef54f6084326b913d548449f4a9b646a9
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple-dokumentáció
 
-A StorSimple és a Microsoft Azure egyedi és integrált elsődleges tárolási archiválási és vészhelyreállítási megoldást biztosít a helyszíni tárolók kibővítésével az Azure-ban. Megtudhatja, hogyan helyezheti üzembe és felügyelheti a használt StorSimple-megoldást.
+Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál. Az oktatóanyagok és egyéb dokumentációk bemutatják a tárhelykezelés beállítását, a helyszínfüggetlen biztonsági mentést és a vészhelyreállítást.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -137,16 +138,10 @@ A StorSimple és a Microsoft Azure egyedi és integrált elsődleges tárolási 
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storsimple.pdf">
-        <div class="img"></div>
-        <div class="text">
-StorSimple-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

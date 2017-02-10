@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan ütemezhet és hívhat meg feladatokat a Scheduler használatával, például az alkalmazásműveleteket és a rutinkarbantartási feladatokat. Oktatóanyagok, API-referenciák és egyebek."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ee469905e6b1f55def062c1d7291bde47a5518ea
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 008c96351a252737178c9e45e92de3f0106a2a2b
 
 ---
 # <a name="scheduler-documentation"></a>A Scheduler dokumentációja
 
-Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek deklaratív leírására.  A rendszer ezt követően a műveletek ütemezését és futtatását automatikusan végzi el.  A Scheduler ezután áttekinthető formában rögzíti a feladatvégrehajtási előzményeket.
+Ismerje meg, hogyan ütemezheti és hívhatja meg automatikusan a felhőbeli ismétlődő feladatokat a Scheduler használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan ütemezheti és figyelheti a feladatokat, például az alkalmazásműveleteket és a rutinkarbantartási feladatokat.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,15 +97,10 @@ Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek de
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Scheduler dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

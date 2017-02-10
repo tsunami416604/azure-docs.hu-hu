@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 1b0f5d61753df5860c4cc934ea2aad5175a41e16
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés az Azure Media Services segítségével, többszörös átviteli sebességű streamek Azure Portallal való létrehozásához
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -54,9 +54,7 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
    
     Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 5. Hozzon létre egy eseményt/programot (ezzel egy objektumot is létrehoz). 
-6. Tegye közzé az eseményt (ezzel létrehozza a kapcsolódó objektumhoz tartozó OnDemand-lokátort is).  
-   
-    Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
+6. Tegye közzé az eseményt (ezzel létrehozza a kapcsolódó objektumhoz tartozó OnDemand-lokátort is).    
 7. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt.
 8. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés bekerül a kimenő streambe.
 9. Amikor le szeretné állítani az esemény streamelését és archiválását, állítsa le az eseményt.
@@ -65,13 +63,12 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 Ebben az oktatóanyagban az Azure Portallal a következő feladatokat végezzük el: 
 
-1. Streamvégpontok konfigurálása
-2. Élő kódolásra alkalmas csatorna létrehozása
-3. Betöltési URL-cím lekérése, majd átadása az élő kódolónak Az élő kódoló erre az URL-címre tölti be a streamet a csatornának. .
-4. Egy esemény/program (és egy objektum) létrehozása
-5. Az objektum közzététele és a streamelési URL-címek lekérése  
-6. Tartalom lejátszása 
-7. Takarítás
+1. Élő kódolásra alkalmas csatorna létrehozása
+2. Betöltési URL-cím lekérése, majd átadása az élő kódolónak Az élő kódoló erre az URL-címre tölti be a streamet a csatornának.
+3. Egy esemény/program (és egy objektum) létrehozása.
+4. Az objektum közzététele és a streamelési URL-címek lekérése.  
+5. Tartalom lejátszása
+6. Tisztítás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzésének a következők a feltételei.
@@ -81,29 +78,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 * Egy Media Services-fiók szükséges. A Media Services-fiók létrehozásával kapcsolatban lásd: [Create Account](media-services-portal-create-account.md) (Fiók létrehozása).
 * Egy webkamera és egy egyszeres sávszélességű élő stream továbbítására alkalmas kódoló.
 
-## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
-A Media Services dinamikus becsomagolást biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS, Smooth Streaming illetve HDS formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus becsomagolás révén elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
-
-A dinamikus becsomagolás előnyének kihasználásához léteznie kell legalább egy streamelési egységnek annál a streamvégpontnál, amely a tervek szerint közvetíteni fogja a tartalmat.  
-
-Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
-
-1. Jelentkezzen be az [Azure-portálon](https://portal.azure.com/) és válassza ki AMS-fiókját.
-2. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
-3. Kattintson az alapértelmezett streamvégpontra. 
-   
-    Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
-4. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
-   
-    ![Streamelési egységek](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-streaming-units.png)
-5. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
-   
-   > [!NOTE]
-   > Az új egységek allokációja akár 20 percig is eltarthat.
-   > 
-   > 
-
-## <a name="create-a-channel"></a>CSATORNA létrehozása
+## <a name="create-a-channel"></a>Csatorna létrehozása
 1. Az [Azure-portálon](https://portal.azure.com/) kattintson a Media Services elemre, majd Media Services-fiókja nevére.
 2. Válassza a **Live Streaming** (Élő adatfolyam) lehetőséget.
 3. Válassza a **Custom create** (Egyéni létrehozás) lehetőséget. Ez a beállítás lehetővé teszi egy olyan csatorna létrehozását, amellyel használható a Live Encoding.
@@ -172,6 +147,9 @@ Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetőv�
 ### <a name="createstartstop-events"></a>Események létrehozása/indítása/leállítása
 Ha elvégezte a stream és a csatorna összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy objektumot, egy programot és egy streamelési lokátort. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára. 
 
+>[!NOTE]
+>Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+
 Az esemény két különböző módon indítható el: 
 
 1. Új esemény hozzáadásához kattintson a **Channel** (Csatorna) oldal **Live Event** (Élő esemény) elemére.
@@ -216,7 +194,7 @@ Az objektumok kezeléséhez válassza a **Setting** (Beállítás) elemet, majd 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha egy ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@Microsoft.com e-mail címen.
-* Azon a streamvégponton, amelyről a tartalmakat streamelni kívánja, legalább egy streameléshez fenntartott egységnek rendelkezésre kell állnia.
+* Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban van.
 
 ## <a name="next-step"></a>Következő lépés
 Tekintse át a Media Services képzési terveket.
@@ -229,6 +207,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

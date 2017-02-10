@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgálószintű Azure SQL Database-tűzfalszabályok a REST API használatával | Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan konfigurálhatja a tűzfalat az Azure SQL-adatbázisokhoz hozzáférő IP-címekhez."
+title: "REST API: Az Azure SQL Database kiszolgálószintű tűzfalszabályai | Microsoft Docs"
+description: "A cikk azt ismerteti, hogyan konfigurálhatja a kiszolgálószintű tűzfalszabályokat azon IP-címek esetében, amelyek a REST API használatával férnek hozzá az Azure SQL-adatbázisokhoz."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
-ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 6ac9bdf34e8cf0a8ca8e06ae3ed6cd2dd1cf408b
 
 
 ---

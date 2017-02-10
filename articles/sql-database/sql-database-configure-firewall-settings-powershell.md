@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgálószintű Azure SQL Database-tűzfalszabályok konfigurálása a PowerShell-lel | Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan konfigurálhatja a tűzfalat az Azure SQL-adatbázisokhoz hozzáférő IP-címekhez."
+title: "PowerShell: Az Azure SQL Database-tűzfalszabályok konfigurálása | Microsoft Docs"
+description: "Ismerje meg, hogyan konfigurálhatja a kiszolgálói szintű tűzfalszabályokat azon IP-címek esetében, amelyek PowerShell használatával férnek hozzá az Azure SQL-adatbázisokhoz."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 1f7a1f6f4cc970cf12851e48d0f1b3c6ae46279c
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: d80bd1fbb5cdb0492e521a4d600f657fac0e3325
 
 
 ---
@@ -49,11 +49,11 @@ A kiszolgálószintű tűzfalszabályok az Azure PowerShell-lel is létrehozhat�
 
 Meglévő kiszolgálószintű tűzfalszabály módosításához futtassa a [Set-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603789\(v=azure.300\).aspx) parancsmagot. Az alábbi példa módosítja a ContosoFirewallRule nevű szabály elfogadható IP-címeinek tartományát.
 
-    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' –StartIPAddress 192.168.1.4 –EndIPAddress 192.168.1.10 –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' -StartIPAddress 192.168.1.4 -EndIPAddress 192.168.1.10 -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 Meglévő kiszolgálószintű tűzfalszabály törléséhez futtassa a [Remove-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603588\(v=azure.300\).aspx) parancsmagot. Az alábbi példa a ContosoFirewallRule nevű szabályt törli.
 
-    Remove-AzureRmSqlServerFirewallRule –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Remove-AzureRmSqlServerFirewallRule -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 
 ## <a name="manage-firewall-rules-by-using-powershell"></a>Tűzfalszabályok kezelése a PowerShell-lel
@@ -87,6 +87,6 @@ Az adatbázisok megnyitásával kapcsolatban az [adatbázis-hozzáférés és a 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

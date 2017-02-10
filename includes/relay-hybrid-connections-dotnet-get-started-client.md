@@ -3,17 +3,21 @@
 
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft Azure Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft.Azure.Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
 ### <a name="write-some-code-to-send-messages"></a>Írjon egy kódrészletet üzenetek küldéséhez
-1. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
+1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez.
    
-    ```cs
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
 2. Adjon állandókat a `Program` osztályhoz a Hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre.
    
-    ```cs
+    ```csharp
     private const string RelayNamespace = "{RelayNamespace}";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
@@ -21,7 +25,7 @@
     ```
 3. Adjon hozzá egy új metódust a `Program` osztályhoz, például a következőképpen:
    
-    ```cs
+    ```csharp
     private static async Task RunAsync()
     {
         Console.WriteLine("Enter lines of text to send to the server with ENTER");
@@ -82,13 +86,13 @@
     ```
 4. Adja hozzá a következő kódsort a `Main` metódushoz a `Program` osztályban.
    
-    ```cs
+    ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
     A Program.cs fájlnak így kell kinéznie.
    
-    ```cs
+    ```csharp
     using System;
     using System.IO;
     using System.Threading;
@@ -172,6 +176,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
