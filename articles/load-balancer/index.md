@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Megtudhatja, hogy hogyan használja a Load Balancer szolgáltatást az appok hálózati teljesítményének biztosítására. Kezelheti a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8b95ce7f93293a25db4df5858209902ba6347591
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 53a3e534f9c93c73ef6d28696c5a9d6430a7a258
 
 ---
 #<a name="load-balancer-documentation"></a>Load Balancer – dokumentáció
 
-Az Azure Load Balancer magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára.  A Load Balancer konfigurálható a virtuális gépekre beérkező internetes forgalom, a felhőerőforrások közti forgalom, a létesítmények közötti virtuális hálózati forgalom, és adott virtuális gépek külső forgalmának terheléselosztására.
+Itt megtanulhatja, hogy hogyan konfigurálhatja a Load Balancert az alkalmazások magas rendelkezésre állásának és hálózati teljesítményének biztosítására. A dokumentáció bemutatja, hogy hogyan egyenlítheti ki a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,16 +132,10 @@ Az Azure Load Balancer magas rendelkezésre állást és hálózati teljesítmé
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-Load Balancer – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

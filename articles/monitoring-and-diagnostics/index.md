@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan használhatja a felügyeleti és diagnosztikai szolgáltatásokat a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. API-referenciák, ajánlott eljárások és egyebek."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
 
 ---
 
 # <a name="monitoring-and-diagnostics-documentation"></a>Monitoring and Diagnostics – dokumentáció
 
-A Monitoring and Diagnostics egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését, valamint választ ad a felhőalapú alkalmazások fejlesztésének és kezelésének jelentős kihívásaira.  A Monitoring and Diagnostics egy következő generációs közbensőszoftver-platform ezeknek a nagyvállalati szintű, első rétegbeli, felhőméretű alkalmazások felépítésére és kezelésére.
+Ismerje meg, hogyan használhatja az Azure felügyeleti és diagnosztikai szolgáltatásokat a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Oktatóanyagok, API-referenciák, ajánlott eljárások és egyéb dokumentáció, amelyek segítségével megismerheti a felügyelet és diagnosztika használatát, valamint méretezhető és megbízható megoldások tervezésének és üzembe helyezésének módját.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -145,15 +146,10 @@ A Monitoring and Diagnostics egy elosztott rendszerplatform, amely megkönnyíti
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Monitoring and Diagnostics dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

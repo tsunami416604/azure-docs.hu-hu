@@ -12,10 +12,14 @@
 # Útmutató
 ## Magas rendelkezésre állás konfigurálása
 ### [Magas rendelkezésre állású lehetőségek](virtual-machines-windows-sql-high-availability-dr.md) 
-### [AlwaysOn rendelkezésre állási csoport automatikus konfigurálása](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-### [AlwaysOn rendelkezésre állási csoport manuális konfigurálása](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
-### [Belső terheléselosztó konfigurálása rendelkezésre állási csoporthoz](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-### [Egy vagy több figyelő konfigurálása AlwaysOn rendelkezésre állási csoporthoz](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+### [Always On rendelkezésre állási csoport konfigurálása](virtual-machines-windows-portal-sql-availability-group-overview.md)
+#### [Automatikus – sablonnal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Manuális – előfeltételek](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+#### [Manuális – oktatóanyag](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+#### [Load Balancer – portál](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [Load Balancer – PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Több régió](virtual-machines-windows-portal-sql-availability-group-dr.md)
+
 ## Kezelés
 ### [Microsoft SQL Server IaaS-ügynök bővítmény használata](virtual-machines-windows-sql-server-agent-extension.md)
 ### [Automatikus javítás](virtual-machines-windows-sql-automated-patching.md)
@@ -45,6 +49,6 @@
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

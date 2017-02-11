@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan konfigurálhat és kezelhet egy, a Microsoft felhőszolgáltatáshoz a helyszíni infrastruktúráról vagy közös elhelyezési létesítményből csatlakozó privát ExpressRoute-kapcsolatot."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 551759d87b6c697aa1f28810fe32815aec66f269
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ecb42e7a0abc5a0438bff39bddddac25d005eb77
 
 ---
 #<a name="expressroute-documentation"></a>Az ExpressRoute dokumentációja
 
-Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
-
+Ismerje meg, hogyan használhatja az ExpressRoute-ot egy gyors privát kapcsolat beállításához a Microsoft felhőszolgáltatáshoz a helyszíni infrastruktúráról vagy közös elhelyezési létesítményből. Oktatóanyagok, REST API-k és egyéb dokumentáció, amelyek segítségével konfigurálhat és kezelhet egy ExpressRoute-kapcsolatcsoportot.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,16 +98,10 @@ Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a M
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-Az ExpressRoute dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

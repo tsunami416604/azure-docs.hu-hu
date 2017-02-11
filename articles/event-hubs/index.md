@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy az Event Hubs hogyan használható másodpercenként több milliónyi esemény feldolgozására, amelyek a csatlakoztatott IoT-eszközökből és alkalmazásokból érkeznek, számos különböző platformról."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8244f410fa3337ae161657fe11ae5db2a2f378cd
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 29d6165596d3e98264285b6471c8f54b66aa2c3a
 
 ---
 #<a name="event-hubs-documentation"></a>Event Hubs – dokumentáció
 
-Az Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
+Ismerje meg, hogy az Event Hubs hogyan használható másodpercenként több milliónyi esemény begyűjtésére és kezelésére, amelyek a csatlakoztatott IoT-eszközökből és alkalmazásokból érkeznek. Az oktatóanyagok, API-referenciák, és egyéb dokumentációk bemutatják, hogy a számos platformon hogyan állíthat be méretezhető eseményfeldolgozást.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -115,16 +116,10 @@ Az Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/event-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-Event Hubs – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

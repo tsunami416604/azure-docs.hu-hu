@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan vezethet be olyan üzenetküldési megoldásokat, amelyek alkalmazásokat és szolgáltatásokat kötnek össze helyszíni és felhőalapú környezetekben.  Oktatóanyagok, videók, API-referenciák és egyéb anyagok."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: fe4c303bb0e944e5abb26f8baa394d0df71240a5
 
 ---
 #<a name="service-bus-documentation"></a>Service Bus-dokumentáció
 
-A Service Bus felhőalapú kommunikációt biztosít vállalati üzenetkezeléssel és továbbított kommunikációval, amelyekkel a helyszíni megoldások csatlakoztathatók a felhőhöz. 
+Ismerje meg, hogyan használható a Service Bus a helyszíni és a felhőalapú környezetek közti kapcsolat kiépítésére. Az oktatóanyagok, videók, API-referenciák és az egyéb dokumentáció bemutatják, hogyan építhet ki felhőalapú üzenetküldési megoldásokat alkalmazások és szolgáltatások közt.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -234,16 +235,10 @@ A Service Bus felhőalapú kommunikációt biztosít vállalati üzenetkezeléss
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
-        <div class="img"></div>
-        <div class="text">
-Service Bus-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

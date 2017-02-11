@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok biztonságos áttelepítésére az Azure-ba a lekérdezések vagy alkalmazások módosítása nélkül. Oktatóanyagok és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: abbb8f04239f633fad5c90cfec8b0037a8e6ae3d
-ms.openlocfilehash: 5febfd07ef0a976b8213e5c71e8e88db2bc108e2
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3dad35a38c753988615a4c1f2b439de9f95baf0e
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Az SQL Server Stretch Database dokumentációja
@@ -88,16 +88,10 @@ Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán ha
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-server-stretch-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-Az SQL Server Stretch Database dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

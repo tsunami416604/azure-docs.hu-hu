@@ -35,6 +35,7 @@
 ### [Adatmodellezés](documentdb-modeling-data.md)
 ### [Térinformatikai adatok használata](documentdb-geospatial.md)
 ### [Fejlesztés több régióra](documentdb-developing-with-multiple-regions.md)
+### [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ### [Adatok automatikus elévülése](documentdb-time-to-live.md)
 ### [Az indexek testreszabása](documentdb-indexing-policies.md)
 ### [Biztonságos hozzáférés az adatokhoz](documentdb-secure-access-to-data.md)
@@ -54,6 +55,9 @@
 ### [Változások követése a Módosítás adatcsatornával](documentdb-change-feed.md)
 ### [Teljesítménytesztelés](documentdb-performance-testing.md)
 ### [Teljesítménnyel kapcsolatos tippek](documentdb-performance-tips.md)
+### Ajánlott eljárások
+#### [Több főkiszolgálós telepítés](documentdb-multi-region-writers.md)
+#### [Dátum/idő](documentdb-working-with-dates.md)
 
 ## DocumentDB-támogatás használata a MongoDB-hez
 ### [Protokolltámogatás MongoDB-hez](documentdb-protocol-mongodb.md)
@@ -78,10 +82,10 @@
 
 ## Integrálás
 ### [Webhely üzembe helyezése az Azure App Service-szel](documentdb-create-documentdb-website.md)
-### [Alkalmazásnaplózás a Logic Apps használatával](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md)
+### [Alkalmazásnaplózás a Logic Apps használatával](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [Kötés az Azure Functionshöz](../azure-functions/functions-bindings-documentdb.md)
 ### [Adatelemzés a Hadooppal](documentdb-run-hadoop-with-hdinsight.md)
-### [Integrálás az Azure Search szolgáltatással](documentdb-search-indexer.md)
+### [Integrálás az Azure Search szolgáltatással](../search/search-howto-index-documentdb.md)
 ### [Adatok betöltése az Azure Data Factoryvel](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [Valós idejű adatok elemzése az Azure Stream Analyticsszel](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
 ### [Értesítések fogadása a Logic Apps használatával](documentdb-change-notification.md)
@@ -119,6 +123,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

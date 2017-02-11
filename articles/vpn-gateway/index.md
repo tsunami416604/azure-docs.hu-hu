@@ -1,13 +1,26 @@
 ---
+title: "A VPN Gateway dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg a virtuális magánhálózat (VPN) átjáróinak konfigurálását, hogy irányítani tudja a forgalmat a felhőben működő virtuális hálózat, helyszíni hálózat vagy a felhőben futó VNetek között."
+services: vpn-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: vpn-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ff8e5a68ada52f93c1f50e73a1a7857273d7f9c3
+ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
+ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
+
 
 ---
-#<a name="vpn-gateway-documentation"></a>A VPN Gateway dokumentációja
+# <a name="vpn-gateway-documentation"></a>A VPN Gateway dokumentációja
 
-Az Azure VPN Gateway egy virtuális magánhálózati (VPN) átjáró, amely az Azure virtuális hálózatok és a helyszínek közötti, valamint az Azure-alapú virtuális hálózatok közötti hálózati adatforgalom továbbítására használatos.  
+Ismerje meg a VPN Gateway virtuális magánhálózati átjáró konfigurálásának módszereit. A dokumentációból megtudhatja, hogyan irányíthatja a hálózati forgalmat az Azure virtuális hálózatok és a helyszíni vagy más Azure virtuális hálózatok (VNetek) között.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -152,16 +165,10 @@ Az Azure VPN Gateway egy virtuális magánhálózati (VPN) átjáró, amely az A
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/vpn-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-Az Azure VPN Gateway-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -61,9 +61,10 @@
 ### [HVAC-teljesítmény előrejelzése](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [Élelmiszer-vizsgálati eredmények előrejelzése](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Webhelynaplók elemzése](hdinsight-apache-spark-custom-library-website-log-analysis.md)
-### [Zeppelin notebookok használata](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [Zeppelin notebookok használata](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter notebookkernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [Csomagok Jupyter notebookokhoz](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Külső csomagok használata Jupyterrel, cellafunkciók használatával](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Külső csomagok használata Jupyterrel, szkriptműveletek használatával](hdinsight-apache-spark-python-package-installation.md)
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
 ### [Alkalmazások fejlesztése az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
@@ -227,6 +228,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 
