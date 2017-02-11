@@ -101,6 +101,6 @@ Azt is megteheti, hogy kapcsolatba lép az SQL Data Warehouse-közösséggel a [
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

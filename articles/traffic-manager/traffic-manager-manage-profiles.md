@@ -87,6 +87,6 @@ A Traffic Manager-profil módosítási előzményeit a klasszikus Azure portál 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 
