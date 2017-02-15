@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 597043b17993ebddc9cf730ddce849e1d6ff3bc9
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: 25be292144e31c6f34ff1e015362aee31e242619
 
 
 ---
@@ -80,7 +80,7 @@ Az IoT Hub a szolgáltatásoldali telemetriaolvasási végponton keresztül tesz
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Az előre konfigurált megoldás három [Azure Stream Analytics-][lnk-asa] (ASA-) feladattal szűri az eszközök telemetriastreamjét:
 
-* *DeviceInfo munka* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja (amikor az eszközök először csatlakoznak vagy az **Eszközállapot módosítása** parancsra válaszul) a megoldás eszközjegyzékébe (DocumentDB-adatbázisba). 
+* *DeviceInfo feladat* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja (amikor az eszközök először csatlakoznak vagy az **Eszközállapot módosítása** parancsra válaszul) a megoldás eszközjegyzékébe (DocumentDB-adatbázisba). 
 * *Telemetriafeladat* – csak nyers telemetriát küld az Azure Blob Storage-ba offline tárolásra, és kiszámítja a megoldás irányítópultján megjelenő telemetriaösszesítéseket.
 * *Szabályfeladat* – olyan értékeket szűr a telemetriastreamből, amelyek meghaladják valamelyik szabály küszöbértékét, és az adatokat egy eseményközpontba küldi. Amikor egy szabály riasztást vált ki, a megoldásportál irányítópult-nézete új sorban jeleníti meg az eseményt a riasztáselőzmények táblájában, és kivált egy műveletet a megoldásportál Szabályok és Művelet nézeteiben megadott beállítások alapján.
 
@@ -130,6 +130,6 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

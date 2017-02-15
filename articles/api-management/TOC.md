@@ -39,16 +39,32 @@
 ### [Felhasználói fiókok kezelése](api-management-howto-create-or-invite-developers.md)
 ### [Kezelés automatizálással](automation-manage-api-management.md)
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
-
 # Referencia
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST](/rest/api/apimanagement/)
-## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
-
-
+## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
+## [Házirendek](api-management-policies.md)
+### Házirend-referencia
+#### [Hozzáférés-korlátozási házirendek](api-management-access-restriction-policies.md)
+#### [Speciális házirendek](api-management-advanced-policies.md)
+#### [Hitelesítési házirendek](api-management-authentication-policies.md)
+#### [Gyorsítótárazási házirendek](api-management-caching-policies.md)
+#### [Tartományközi házirendek](api-management-cross-domain-policies.md)
+#### [Átalakítási házirendek](api-management-transformation-policies.md)
+### [Hibakezelés](api-management-error-handling-policies.md)
+### [Házirend-kifejezések](api-management-policy-expressions.md)
+## [Sablonok](api-management-developer-portal-templates-reference.md)
+### Sablonreferencia
+#### [API-k](api-management-api-templates.md)
+#### [Termékek](api-management-product-templates.md)
+#### [Alkalmazások](api-management-application-templates.md)
+#### [Hibák](api-management-issue-templates.md)
+#### [Felhasználói profil](api-management-user-profile-templates.md)
+#### [Oldalak](api-management-page-templates.md)
+### [Adatmodell-referencia](api-management-template-data-model-reference.md)
+### [Oldalvezérlők](api-management-page-controls.md)
+### [Sablonerőforrások](api-management-template-resources.md)
 # Erőforrások
-## [Házirendek](https://msdn.microsoft.com/library/azure/dn894081)
-## [Sablonok](https://msdn.microsoft.com/library/azure/mt697540)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
@@ -66,6 +82,6 @@
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

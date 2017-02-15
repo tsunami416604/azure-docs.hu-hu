@@ -18,7 +18,8 @@
 ### [Tárolóleképezés előkészítése helyszíni helyek között](site-recovery-storage-mapping.md)
 ## Replikálás
 ### [VMWare virtuális gépek és kiszolgálók Azure-ba](site-recovery-vmware-to-azure.md)
-### [VMWare virtuális gépek és kiszolgálók másodlagos helyre](site-recovery-vmware-to-vmware.md)
+### [VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre](site-recovery-vmware-to-vmware.md)
+### [Több bérlős támogatással rendelkező VMware virtuális gépek Azure-ba a CSP program használatával](site-recovery-multi-tenant-support-vmware-using-csp.md)
 ### [Hyper-V virtuális gépek az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
 ### [Hyper-V virtuális gépek az Azure-ba (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
 ### [Hyper-V virtuális gépek másodlagos helyre](site-recovery-vmm-to-vmm.md)
@@ -49,8 +50,9 @@
 ## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Klasszikus PowerShell](/powershell/servicemanagement/)
+## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)
+## [Klasszikus PowerShell](/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery)
+## [REST](https://msdn.microsoft.com/en-us/library/mt750497)
 
 # Kapcsolódó
 ## [Azure Automation](/azure/automation/)
@@ -63,6 +65,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

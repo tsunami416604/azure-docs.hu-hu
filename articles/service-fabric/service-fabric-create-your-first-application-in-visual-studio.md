@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 76b6934950354f94f4f68e7cfef00e890d9391a6
+ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
+ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
 
 
 ---
@@ -131,6 +131,7 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibak
 ## <a name="next-steps"></a>Következő lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
+* Próbáljon meg egy [Windows-tárolót](service-fabric-deploy-container.md) vagy egy már létező alkalmazást [futtatható vendégalkalmazásként](service-fabric-deploy-existing-app.md) telepíteni.
 * Megtudhatja, hogyan tölthet fel szolgáltatásokat az internetre egy [webszolgáltatási előtér](service-fabric-add-a-web-frontend.md) használatával.
 * Hajtsa végre a [laborgyakorlat](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) lépéseit, majd hozzon létre állapotmentes szolgáltatást, konfigurálja a figyelési és az állapotjelentéseket, és hajtson végre alkalmazásfrissítést.
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
@@ -152,6 +153,6 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibak
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 # [Áttekintés](media-services-overview.md)
-## [Alapelvek](media-services-concepts.md)
+## [Alapelvek ](media-services-concepts.md)
 
 # Bevezetés
 ## [Fiók létrehozása és felügyelete](media-services-portal-create-account.md)
@@ -24,7 +24,9 @@
 ### Programozott módon való kapcsolódás
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
-### [Streamvégpontok kezelése a portálon](media-services-portal-manage-streaming-endpoints.md)
+### [Streamvégpontok kezelése](media-services-streaming-endpoints-overview.md)
+#### [Portál](media-services-portal-manage-streaming-endpoints.md)
+#### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### [Útmutató: A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
 ### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 
@@ -92,13 +94,16 @@
 
 ## [Élő stream](media-services-manage-channels-overview.md)
 ### [Helyszíni kódolók](media-services-live-streaming-with-onprem-encoders.md)
+#### [Portál](media-services-portal-live-passthrough-get-started.md)
+#### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [Élő stream a felhőalapú kódolóval](media-services-manage-live-encoder-enabled-channels.md)
 ### Oktatóanyagok a felhőalapú kódolókhoz
 #### [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra](media-services-live-encoders-overview.md)
 #### [Elemental Live kódoló](media-services-configure-elemental-live-encoder.md)
-#### [FMLE kódoló](media-services-configure-fmle-live-encoder.md)
+#### [FMLE kódoló ](media-services-configure-fmle-live-encoder.md)
 #### [NewTek TriCaster kódoló](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast kódoló](media-services-configure-wirecast-live-encoder.md)
 ### [A hosszú ideig futó műveletek kezelése](media-services-dotnet-long-operations.md)
@@ -112,7 +117,7 @@
 ### [DRM-licenckézbesítés](media-services-deliver-keys-and-licenses.md)
 ### [Partnerek használata a Widevine licencek kézbesítéséhez az Azure Media Services szolgáltatásba](media-services-licenses-partner-integration.md)
 ### [A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata](media-services-protect-with-drm.md)
-### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak streameléséhez](media-services-protect-hls-with-fairplay.md)
+### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak streameléséhez ](media-services-protect-hls-with-fairplay.md)
 ### [CENC többplatformos DRM és hozzáférés-vezérlés használatával: Egy referenciaterv és megvalósítás az Azure-on és az Azure Media Services szolgáltatásban](media-services-cenc-with-multidrm-access-control.md)
 
 ### Adategység-kézbesítés
@@ -177,7 +182,7 @@
 ### [CDN gyorsítótárazási házirend a Media Services bővítményben](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### [A Microsoft†" Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
 ### [Adategységek felügyelete több Storage fiókban](meda-services-managing-multiple-storage-accounts.md)
-### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe](media-services-axinom-integration.md)
+### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe ](media-services-axinom-integration.md)
 ### [A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe](media-services-castlabs-integration.md)
 ### [A Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md)
 
@@ -207,6 +212,6 @@
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "SQL Server-adatbázis áttelepítése az SQL Database-be | Microsoft Docs"
+title: "SQL Server-adatbázis áttelepítése az Azure SQL Database-be | Microsoft Docs"
 description: "Útmutató a helyszíni SQL Server-adatbázisok a felhőbeli Azure SQL Database-be történő áttelepítéséhez. Az adatbázis-áttelepítési eszközökkel tesztelheti a kompatibilitást az adatbázis áttelepítése előtt."
 keywords: "adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése"
 services: sql-database
@@ -17,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: d9052bd10693c0b7942c0d90fdf89be37b44842d
-ms.openlocfilehash: b0093e48266aedda2b6c88b862c0056ebe3b3114
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 61fb027dfdd5830d87fe4fcfff57f685db71475e
 
 
 ---

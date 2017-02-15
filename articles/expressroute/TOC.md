@@ -45,13 +45,13 @@
 ### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
 
 ## Hibaelhárítás
+### [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
 ### [ARP-táblák lekérése](expressroute-troubleshooting-arp-resource-manager.md)
 ### [ARP-táblák lekérése (klasszikus)](expressroute-troubleshooting-arp-classic.md)
 
-
 # Referencia
 ## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
-## [REST (Resource Manager)](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/dn606310)
 
 # Kapcsolódó
@@ -80,6 +80,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

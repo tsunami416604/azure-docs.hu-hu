@@ -1,86 +1,88 @@
 # Áttekintés
-## [Logic App – áttekintés](../app-service-logic/app-service-logic-what-are-logic-apps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Összekötők listája](../connectors/apis-list.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [Logic App – áttekintés](logic-apps-what-are-logic-apps.md)
+## [Összekötők listája](../connectors/apis-list.md)
+## [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
 
 # Bevezetés
-## [Logikai alkalmazás létrehozása](../app-service-logic/app-service-logic-create-a-logic-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Logikaialkalmazás-funkciók használata](../app-service-logic/app-service-logic-use-logic-app-features.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Sablonok – Áttekintés](../app-service-logic/app-service-logic-use-logic-app-templates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Alkalmazás létrehozása sablon használatával](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Példák és forgatókönyvek](../app-service-logic/app-service-logic-examples-and-scenarios.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Service Bus-forgatókönyv](../app-service-logic/app-service-logic-scenario-function-sb-trigger.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [B2B feldolgozás](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [XML-feldolgozás](../app-service-logic/app-service-logic-enterprise-integration-xml.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [Logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md)
+## [Logikaialkalmazás-funkciók használata](logic-apps-use-logic-app-features.md)
+## [Sablonok – Áttekintés](logic-apps-use-logic-app-templates.md)
+## [Alkalmazás létrehozása sablon használatával](logic-apps-arm-provision.md)
+## [Példák és forgatókönyvek](logic-apps-examples-and-scenarios.md)
+## [Service Bus-forgatókönyv](logic-apps-scenario-function-sb-trigger.md)
+## [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md)
+## [XML-feldolgozás](logic-apps-enterprise-integration-xml.md)
 
 # Útmutató
 ## Felépítés
-### [Összekötő létrehozása](../app-service-logic/app-service-logic-create-api-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [A fájlrendszer-összekötő használata](../app-service-logic/app-service-logic-use-file-connector.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [A Visual Studio eszközei](../app-service-logic/app-service-logic-deploy-from-vs.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Az Azure Functions használata](../app-service-logic/app-service-logic-azure-functions.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Logikai alkalmazások használata hívható végpontként](../app-service-logic/app-service-logic-http-endpoint.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Egyéni API használata](../app-service-logic/app-service-logic-custom-hosted-api.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Kivételkezelés](../app-service-logic/app-service-logic-exception-handling.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Kivételkezelési forgatókönyv](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Tartalomtípusok kezelése](../app-service-logic/app-service-logic-content-type.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Munkafolyamat-definíció](../app-service-logic/app-service-logic-author-definitions.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Hibaelhárítási tippek](../app-service-logic/app-service-logic-diagnosing-failures.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Határértékek és konfiguráció](../app-service-logic/app-service-logic-limits-and-config.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Összekötő létrehozása](logic-apps-create-api-app.md)
+### [A fájlrendszer-összekötő használata](logic-apps-using-file-connector.md)
+### [Az SAP-összekötő használata](logic-apps-using-sap-connector.md)
+### [A Visual Studio eszközei](logic-apps-deploy-from-vs.md)
+### [Az Azure Functions használata](logic-apps-azure-functions.md)
+### [Logikai alkalmazások használata hívható végpontként](logic-apps-http-endpoint.md)
+### [Hurkok, hatókörök és kibontás](logic-apps-loops-and-scopes.md)
+### [Egyéni API használata](logic-apps-custom-hosted-api.md)
+### [Kivételkezelés](logic-apps-exception-handling.md)
+### [Kivételkezelési forgatókönyv](logic-apps-scenario-error-and-exception-handling.md)
+### [Tartalomtípusok kezelése](logic-apps-content-type.md)
+### [Munkafolyamat-definíció](logic-apps-author-definitions.md)
+### [Hibaelhárítási tippek](logic-apps-diagnosing-failures.md)
+### [Határértékek és konfiguráció](logic-apps-limits-and-config.md)
 
 
 ## Az Enterprise Integration Pack (EIP) használata
-### [Az integrációs fiókok áttekintése](../app-service-logic/app-service-logic-enterprise-integration-create-integration-account.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Egyezmények](../app-service-logic/app-service-logic-enterprise-integration-agreements.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [B2B feldolgozás](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML-feldolgozás](../app-service-logic/app-service-logic-enterprise-integration-xml.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Egybesimított fájlok feldolgozása](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XSLT-leképezések hozzáadása](../app-service-logic/app-service-logic-enterprise-integration-maps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML-átalakítás](../app-service-logic/app-service-logic-enterprise-integration-transform.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [XML érvényességének ellenőrzése](../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Tanúsítványok használata](../app-service-logic/app-service-logic-enterprise-integration-certificates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Partnerek felvétele](../app-service-logic/app-service-logic-enterprise-integration-partners.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Sémák felvétele](../app-service-logic/app-service-logic-enterprise-integration-schemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2-integráció](../app-service-logic/app-service-logic-enterprise-integration-as2.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2-kódolás](../app-service-logic/app-service-logic-enterprise-integration-as2-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [AS2-dekódolás](../app-service-logic/app-service-logic-enterprise-integration-as2-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT-integráció](../app-service-logic/app-service-logic-enterprise-integration-edifact.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT-kódolás](../app-service-logic/app-service-logic-enterprise-integration-edifact-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [EDIFACT-dekódolás](../app-service-logic/app-service-logic-enterprise-integration-edifact-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12-integráció](../app-service-logic/app-service-logic-enterprise-integration-x12.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12-kódolás](../app-service-logic/app-service-logic-enterprise-integration-x12-encode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [X12-dekódolás](../app-service-logic/app-service-logic-enterprise-integration-x12-decode.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Az integrációs fiókok áttekintése](logic-apps-enterprise-integration-create-integration-account.md)
+### [Egyezmények](logic-apps-enterprise-integration-agreements.md)
+### [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md)
+### [XML-feldolgozás](logic-apps-enterprise-integration-xml.md)
+### [Egybesimított fájlok feldolgozása](logic-apps-enterprise-integration-flatfile.md)
+### [XSLT-leképezések hozzáadása](logic-apps-enterprise-integration-maps.md)
+### [XML-átalakítás](logic-apps-enterprise-integration-transform.md)
+### [XML érvényességének ellenőrzése](logic-apps-enterprise-integration-xml-validation.md)
+### [Tanúsítványok használata](logic-apps-enterprise-integration-certificates.md)
+### [Partnerek felvétele](logic-apps-enterprise-integration-partners.md)
+### [Sémák felvétele](logic-apps-enterprise-integration-schemas.md)
+### [Metaadatok tárolása](logic-apps-enterprise-integration-metadata.md)
+### [AS2-integráció](logic-apps-enterprise-integration-as2.md)
+### [AS2-kódolás](logic-apps-enterprise-integration-as2-encode.md)
+### [AS2-dekódolás](logic-apps-enterprise-integration-as2-decode.md)
+### [EDIFACT-integráció](logic-apps-enterprise-integration-edifact.md)
+### [EDIFACT-kódolás](logic-apps-enterprise-integration-edifact-encode.md)
+### [EDIFACT-dekódolás](logic-apps-enterprise-integration-edifact-decode.md)
+### [X12-integráció](logic-apps-enterprise-integration-x12.md)
+### [X12-kódolás](logic-apps-enterprise-integration-x12-encode.md)
+### [X12-dekódolás](logic-apps-enterprise-integration-x12-decode.md)
 
 
 ## Átjáró használata
-### [Helyszíni kapcsolódás](../app-service-logic/app-service-logic-gateway-connection.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Telepítés](../app-service-logic/app-service-logic-gateway-install.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Helyszíni kapcsolódás](logic-apps-gateway-connection.md)
+### [Telepítés](logic-apps-gateway-install.md)
 
 ## Automatizálás
-### [Automation-sablon](../app-service-logic/app-service-logic-create-deploy-template.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Közzététel a VS-ből](../app-service-logic/app-service-logic-deploy-from-vs.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Automation-sablon](logic-apps-create-deploy-template.md)
+### [Közzététel a VS-ből](logic-apps-deploy-from-vs.md)
 
 ## Kezelés
-### [Logikai alkalmazások figyelése](../app-service-logic/app-service-logic-monitor-your-logic-apps.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [B2B üzenetek megfigyelése](../app-service-logic/app-service-logic-monitor-b2b-message.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-#### [AS2-követési séma](../app-service-logic/app-service-logic-track-integration-account-as2-tracking-shemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-#### [X12-követési séma](../app-service-logic/app-service-logic-track-integration-account-x12-tracking-shemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-#### [Egyéni követési séma](../app-service-logic/app-service-logic-track-integration-account-custom-tracking-shema.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-#### [B2B üzenetek nyomon követése](../app-service-logic/app-service-logic-track-b2b-messages-omsportal.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [A Visual Studio Cloud Explorer használata](logic-apps-manage-from-vs.md)
+### [A logikai alkalmazás védelme](logic-apps-securing-a-logic-app.md)
+### [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)
+### [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md)
+#### [AS2-követési séma](logic-apps-track-integration-account-as2-tracking-schemas.md)
+#### [X12-követési séma](logic-apps-track-integration-account-x12-tracking-schema.md)
+#### [Egyéni követési séma](logic-apps-track-integration-account-custom-tracking-schema.md)
+#### [B2B üzenetek nyomon követése](logic-apps-track-b2b-messages-omsportal.md)
+#### [Az OMS-portál lekérdezése](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 
-### [Integrációs fiókok](../app-service-logic/app-service-logic-enterprise-integration-accounts.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Díjszabás](../app-service-logic/app-service-logic-pricing.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [Integrációs fiókok](logic-apps-enterprise-integration-accounts.md)
+### [Díjszabás](logic-apps-pricing.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
 ## Sémaelőzmények
-### [FE](../app-service-logic/app-service-logic-schema-2016-04-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Előzetes verzió](../app-service-logic/app-service-logic-schema-2015-08-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+### [FE](logic-apps-schema-2016-04-01.md)
+### [Előzetes verzió](logic-apps-schema-2015-08-01.md)
 ## [REST](/rest/api/logic/)
-
-## 2014 séma (FE)
-### [Azure Resource-összekötő](../app-service-logic/app-service-logic-connector-azure-resource.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Fájlösszekötő](../app-service-logic/app-service-logic-connector-file.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)  
@@ -89,6 +91,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

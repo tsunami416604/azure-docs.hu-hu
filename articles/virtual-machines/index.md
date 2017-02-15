@@ -2,9 +2,20 @@
 layout: LandingPage
 toc_rel: breadcrumb.json
 description: "Ismerje meg a Windows és Linux virtuális gépek létrehozását, üzembe helyezését és kezelését. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
+title: "Az Azure Virtual Machines dokumentációja | Microsoft Docs"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-windows
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
-ms.openlocfilehash: fc2fb1a52416e5743476a2fc4e57956b602a1689
+ms.sourcegitcommit: 0b803da9d1cfefababd18b48fd39efc9895331bf
+ms.openlocfilehash: 2cbeaebcd79944511bbd2532b533acf1b98bef06
 
 ---
 # <a name="virtual-machines-documentation"></a>Virtual Machines-dokumentáció
@@ -50,16 +61,10 @@ Ismerje meg az Azure virtuális gépek létrehozásának eljárást. Az oktatóa
     </li>    
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
-        <div class="img"></div>
-        <div class="text">
-Virtuális gépek dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Jan17_HO4-->
 
 

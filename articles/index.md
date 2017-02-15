@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure-dokumentáció | Microsoft Dokumentumok"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 translationtype: Human Translation
-ms.sourcegitcommit: cee95b80d3e4360d68e6f37ad3c61e15d7d2a42e
-ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
+ms.sourcegitcommit: 87041c127fb3381480b162c3a3648bfd46dbaaf7
+ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
 
 ---
 <div id="main" class="v2">
@@ -277,7 +277,7 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Intelligencia és analitika</h3>
+                                    <h3>Intelligencia és elemzés</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/hdinsight/">
@@ -631,6 +631,21 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
                                                 <p>Data Factory</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h3>Egyéb felhők</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="/azure/azure-government/">
+                                                <img src="media/index/azure-government.svg" alt="" />
+                                                <p>Amerikai Egyesült Államok kormánya által használt Azure</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-stack/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2326,7 +2341,50 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                 </a>
                             </li>
                         </ul>
-                    </li>                    
+                    </li>
+                    <li>
+                        <a href="#other">Egyéb felhők</a>
+                        <ul id="other" class="cardsA">
+                            <li>
+                                <a href="/azure/azure-government/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-government.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Amerikai Egyesült Államok kormánya által használt Microsoft Azure</h3>
+                                                    <p>Alkalmazásokat hozhat létre és szolgáltathat az Egyesült Államok kormányzati feladataihoz az Azure egy dedikált példányában</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-stack/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Microsoft Azure Stack</h3>
+                                                    <p>Ezzel az új hibrid felhőplatformmal saját adatközpontjából biztosíthat Azure-szolgáltatásokat</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -2529,7 +2587,7 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI 2.0 – előzetes </h3>
+                                                <h3>Azure CLI 2.0 előzetes verzió </h3>
                                                 <p>
                                                     <a href="/cli/azure/get-started/">Első lépések</a>
                                                 </p>
@@ -2777,7 +2835,7 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Referenciaarchitektúrák</h3>
-                                                    <p>A felhőahöz ajánlott architektúra-készletek. Minden architektúra ajánlott eljárásokat, előírásokat és egy üzembe helyezhető megoldást tartalmaz.</p>
+                                                    <p>A felhőhöz ajánlott architektúra-készletek. Minden architektúra ajánlott eljárásokat, előírásokat és egy üzembe helyezhető megoldást tartalmaz.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2851,6 +2909,6 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

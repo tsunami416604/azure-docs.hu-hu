@@ -1,5 +1,5 @@
 ---
-title: "Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban | Microsoft Docs"
+title: "Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió) | Microsoft Docs"
 description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
 services: app-service\web
 documentationcenter: 
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c10763c0e57295c6fc75ffc22f8127e5e943844
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: 42f3f17366a37e10d746fe177a93a2432dbdcca2
 
 
 ---
-# <a name="deploy-your-first-web-app-to-azure-in-five-minutes"></a>Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban
+# <a name="deploy-your-first-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe az első webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
+
+> [!div class="op_single_selector"]
+> * [Első HTML-webhely](app-service-web-get-started-html.md)
+> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet.md)
+> * [Első PHP-alkalmazás](app-service-web-get-started-php.md)
+> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs.md)
+> * [Első Python-alkalmazás](app-service-web-get-started-python.md)
+> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
+> 
+> 
+
 Ez az oktatóanyag segítséget nyújt egy egyszerű HTML+CSS-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
 
@@ -31,10 +42,19 @@ Az alábbiakat fogja elvégezni:
 * Az oldalak üzemi környezetben való futtatása.
 * Ugyanúgy frissítheti a tartalmat, mint ahogy azt a [Git-véglegesítéseknél is tenné](https://git-scm.com/docs/git-push).
 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
+
+## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
+
+A következő CLI-verziók egyikével elvégezheti a feladatot:
+
+- [Azure CLI 1.0](app-service-web-get-started-html-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
+- [Azure CLI 2.0 (előzetes verzió)](app-service-web-get-started-html.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
+
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
-* [Azure parancssori felület (CLI)](../xplat-cli-install.md).
-* Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+* [Azure CLI 2.0 előzetes verzió](/cli/azure/install-az-cli2).
+* Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
@@ -44,34 +64,57 @@ Az alábbiakat fogja elvégezni:
 ## <a name="deploy-a-simple-html-site"></a>Egyszerű HTML-webhely üzembe helyezése
 1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `azure --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
    
-    ![Parancssori felület tesztelési célú telepítése az első Azure-webalkalmazáshoz](./media/app-service-web-get-started/1-test-tools.png)
+    ![Parancssori felület tesztelési célú telepítése az első Azure-webalkalmazáshoz](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
    
     Ha még nem telepítette az eszközöket, akkor telepítse őket. A letöltési hivatkozásokat az [Előfeltételek](#Prerequisites) szakaszban találja.
 2. Jelentkezzen be az Azure-ba a következő módon:
    
-        azure login
+        az login
    
     A bejelentkezési folyamat folytatásához kövesse a súgóüzenetet.
    
-    ![Bejelentkezés az Azure-ba az első webalkalmazás létrehozásához](./media/app-service-web-get-started/3-azure-login.png)
-3. Váltsa az Azure parancssori felületét ASM üzemmódba, majd állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni a hitelesítő adatok használatával.
+    ![Bejelentkezés az Azure-ba az első webalkalmazás létrehozásához](./media/app-service-web-get-started-languages/3-azure-login-2.0.png)
+
+3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni ezen hitelesítő adatok használatával.
    
-        azure config mode asm
-        azure site deployment user set --username <username> --pass <password>
-4. Váltson egy munkakönyvtárra (a `CD` paranccsal), és klónozza a példaalkalmazást az alábbi lépések szerint:
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Az első App Service-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
+
+        az group create --location "<location>" --name my-first-app-group
+
+    A `<location>` paraméterhez használható lehetséges értékek megtekintéséhez, használja az `az appservice list-locations` CLI-parancsot.
+
+3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). Az első App Service-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
+
+        az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
+
+4. Hozzon létre egy új, egyéni névvel rendelkező webappot az `<app_name>` paraméterben.
+
+        az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
+
+4. Ezután kapja meg az üzembe helyezni kívánt HTML-mintawebhelyet. Váltson egy munkakönyvtárra (a `CD` paranccsal), és klónozza a példaalkalmazást az alábbi lépések szerint:
    
+        cd <working_directory>
         git clone https://github.com/Azure-Samples/app-service-web-html-get-started.git
+
 5. Váltson a mintaalkalmazás adattárára. 
    
         cd app-service-web-html-get-started
-6. Hozzon létre egy egyedi alkalmazásnévvel rendelkező App Service alkalmazás-erőforrást az Azure-ban a korábban beállított üzembe helyező felhasználóval. Amikor a rendszer kéri, adja meg a kívánt régió számát.
+5. Konfigurálja az App Service webapphoz tartozó helyi Git üzemelő példányt a következő paranccsal:
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
+
+    Egy ehhez hasonló JSON-kimenet jön létre, ami azt jelenti, hogy a távoli Git-tárház be lett állítva:
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. Adja hozzá a JSON-ban található URL-címet a helyi tárházhoz távoli Git-elemként (az egyszerűség kedvéért nevezzük a következőnek: `azure`).
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
    
-        azure site create <app_name> --git --gitusername <username>
-   
-    ![Azure-erőforrás létrehozása az első Azure webalkalmazáshoz](./media/app-service-web-get-started/4-create-site.png)
-   
-    Az alkalmazás elkészült az Azure-ban. Emellett inicializálódott az aktuális könyvtár a Git-hez, és távoli Git-mappaként csatlakoztatva lett az új App Service-alkalmazáshoz.
-    Az alkalmazás URL-címén (http://&lt;alkalmazás_neve>.azurewebsites.net) böngészőben meg is tekintheti az alkalmazást az alapértelmezett HTML-oldallal. Most pedig a saját kód írása következik.
 7. Helyezze üzembe a mintakódot az Azure-alkalmazásban ugyanúgy, ahogy Git-kódok esetében is tenné. Ha a rendszer kéri, használja a korábban beállított jelszót.
    
         git push azure master
@@ -97,14 +140,11 @@ A Git segítségével mostantól bármikor leküldhet a projekt (adattár) gyök
 ## <a name="next-steps"></a>Következő lépések
 Keresse meg az előnyben részesített fejlesztési és üzembehelyezési lépéseket a nyelvi keretrendszeréhez:
 
-> [!div class="op_single_selector"]
-> * [.NET](web-sites-dotnet-get-started.md)
-> * [PHP](app-service-web-php-get-started.md)
-> * [Node.js](app-service-web-nodejs-get-started.md)
-> * [Python](web-sites-python-ptvs-django-mysql.md)
-> * [Java](web-sites-java-get-started.md)
-> 
-> 
+* [.NET](web-sites-dotnet-get-started.md)
+* [PHP](app-service-web-php-get-started.md)
+* [Node.js](app-service-web-nodejs-get-started.md)
+* [Python](web-sites-python-ptvs-django-mysql.md)
+* [Java](web-sites-java-get-started.md)
 
 Vagy tegyen még többet az első webalkalmazásával. Példa:
 
@@ -114,6 +154,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

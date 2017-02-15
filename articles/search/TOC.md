@@ -25,6 +25,8 @@
 ### [Szolgáltatási korlátozások](search-limits-quotas-capacity.md)
 ### [A szolgáltatás méretezhetősége](search-capacity-planning.md)
 ### [Kialakítási minták a több-bérlős módhoz](search-modeling-multitenant-saas-applications.md)
+
+
 ## Fejlesztés
 ### [Az SDK frissítése](search-dotnet-sdk-migration.md)
 ### [A REST API frissítése](search-api-migration.md)
@@ -42,7 +44,7 @@
 ### [Azure Blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage-indexelő](search-howto-indexing-azure-tables.md)
 ### [Azure SQL-indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure DocumentDB-indexelő](../documentdb/documentdb-search-indexer.md?toc=%2fazure%2fsearch%2ftoc.json)
+### [Azure DocumentDB-indexelő](search-howto-index-documentdb.md)
 ### [CSV-blobok indexelése](search-howto-index-csv-blobs.md)
 ### [JSON-blobok indexelése](search-howto-index-json-blobs.md)
 ### [Az indexelő az Azure virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
@@ -58,17 +60,16 @@
 ### [Többnyelvű keresés](search-language-support.md)
 
 # Referencia
-## [API-verziók](search-api-versions.md)
-## [Szolgáltatás .NET](/dotnet/api/microsoft.azure.search)
-## [Felügyelet .NET](/dotnet/api/microsoft.azure.management.search)
-## [Szolgáltatási REST](/rest/api/searchservice/)
-## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
-## [Felügyeleti REST](/rest/api/searchmanagement/)
-## [Lucene lekérdezési szintaxis](https://msdn.microsoft.com/library/azure/mt589323)
-## [Egyszerű lekérdezési szintaxis](https://msdn.microsoft.com/library/azure/dn798920)
+## [.NET](/dotnet/api/microsoft.azure.search)
+## [.NET (Felügyelet)](/dotnet/api/microsoft.azure.management.search)
+## [Python (Felügyelet)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
+## [REST](/rest/api/searchservice)
+## [.REST (Felügyelet)](/rest/api/searchmanagement)
 
 # Erőforrások
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
+## [API-verziók](search-api-versions.md)
+## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
 ## Bemutató webhelyek
 ### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
@@ -85,6 +86,6 @@
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

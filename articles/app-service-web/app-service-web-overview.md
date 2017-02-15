@@ -77,6 +77,6 @@ Ha kezdésként telepíteni szeretné egy új webapp mintakódját az App Servic
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

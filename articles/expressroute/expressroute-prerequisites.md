@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 1/6/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a582941b06fa7f81d7db188f2a9feba837b9bfd8
+ms.sourcegitcommit: f408e65abcb92308a19a37816c206d822e932f24
+ms.openlocfilehash: 18fccf1ce6b4d2a6fa46e6db9e1a38eb998b9d64
 
 
 ---
-# <a name="expressroute-prerequisites-checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
+# <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, ellenőriznie kell az alábbi szakaszokban felsorolt követelmények teljesülését.
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure-fiók
-* Egy érvényes és aktív Microsoft Azure-fiók. Ez az ExpressRoute-kapcsolatcsoport beállításához szükséges. Az ExpressRoute-kapcsolatcsoportok az Azure-előfizetéseken belüli erőforrások. Egy Azure-előfizetés akkor is szükséges, ha a kapcsolat csak nem Azure Microsoft-felhőszolgáltatásokra korlátozódik, például az Office 365 szolgáltatásokra és a CRM online-ra.
-* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért lást a cikk [Office 365-specifikus követelmények](#office-365-specific-requirements) című szakaszát.
+* Egy érvényes és aktív Microsoft Azure-fiók. Erre a fiókra az ExpressRoute-kapcsolatcsoport beállításához van szükség. Az ExpressRoute-kapcsolatcsoportok az Azure-előfizetéseken belüli erőforrások. Egy Azure-előfizetés akkor is szükséges, ha a kapcsolat csak nem Azure Microsoft-felhőszolgáltatásokra korlátozódik, például az Office 365 szolgáltatásokra és a CRM online-ra.
+* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért lásd a cikk [Office 365-specifikus követelmények](#office-365-specific-requirements) című szakaszát.
 
 ## <a name="connectivity-provider"></a>Kapcsolatszolgáltató
 * Egy [ExpressRoute kapcsolati partnerrel](expressroute-locations.md#partners) együttműködve csatlakozhat a Microsoft Cloudhoz. A helyszíni hálózata és a Microsoft között [háromféleképpen](expressroute-introduction.md#howtoconnect) állíthat be kapcsolatot. 
@@ -38,7 +38,7 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 * **Útválasztás**: attól függően, hogy hogyan csatlakozik a Microsoft Cloudhoz, Önnek vagy a szolgáltatójának BGP-munkameneteket kell beállítania és kezelnie az [útválasztási tartományokhoz](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatcsere-szolgáltatók a BGP-felügyeletet értéknövelt szolgáltatásként kínálhatják.
 * **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha privát IP-címeket használ a helyszíni hálózatban, Önnek vagy a szolgáltatónak [a NAT használatával](expressroute-nat.md) le kell fordítania a privát IP-címeket nyilvános IP-címekre.
 * **QoS**: A Skype Vállalati verzió különböző szolgáltatásokat tartalmaz (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
-* **Hálózati biztonság**: érdemes megfontolnia a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-körökön keresztül csatlakozik a Microsoft Cloudhoz.
+* **Hálózati biztonság**: fontolja meg a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
 
 ## <a name="office-365"></a>Office 365
 Ha azt tervezi, hogy engedélyezi az Office 365-öt az ExpressRoute-on, tekintse át a következő dokumentumokat az Office 365 követelményeivel kapcsolatos további információkért.
@@ -49,6 +49,7 @@ Ha azt tervezi, hogy engedélyezi az Office 365-öt az ExpressRoute-on, tekintse
 * [Hálózattervezés és teljesítményhangolás az Office 365-höz](https://support.office.com/en-us/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
 * [Hálózatisávszélesség-kalkulátorok és eszközök](https://support.office.com/en-us/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
 * [Az Office 365 integrációja helyszíni környezetekkel](https://support.office.com/en-us/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
+* [ExpressRoute az Office 365-ön haladó szintű oktatóvideók](https://channel9.msdn.com/series/aer/)
 
 ## <a name="crm-online"></a>CRM Online
 Ha azt tervezi, hogy engedélyezi a CRM Online szolgáltatást az ExpressRoute-on, tekintse át a következő dokumentumokat a CRM Online követelményeivel kapcsolatos további információkért.
@@ -67,6 +68,6 @@ Ha azt tervezi, hogy engedélyezi a CRM Online szolgáltatást az ExpressRoute-o
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

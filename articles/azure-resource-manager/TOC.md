@@ -28,6 +28,7 @@
 ### [Portál](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Fejlesztési és tesztkörnyezetek](solution-dev-test-environments.md)
+### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Kezelés
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -41,7 +42,7 @@
 ### [Egyszerű szolgáltatás létrehozása a PowerShell-lel](resource-group-authenticate-service-principal.md)
 ### [Egyszerű szolgáltatás létrehozása az Azure parancssori felületével](resource-group-authenticate-service-principal-cli.md)
 ### [Egyszerű szolgáltatás létrehozása a portálon](resource-group-create-service-principal-portal.md)
-### [Alkalmazások hozzáférése az előfizetésekhez](resource-manager-api-authentication.md)
+### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Felügyeleti házirendek megadása](resource-manager-policy.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
 ### [Biztonsági szempontok](best-practices-resource-manager-security.md)
@@ -55,19 +56,20 @@
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Azure CLI](/cli/azure)
-## [Java](/java/api)
+## [Azure 2.0 CLI (előzetes verzió)](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
+## [Java](/java/api/com.microsoft.azure.management.resources)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
 ## [Sablonsémák](https://github.com/Azure/azure-resource-manager-schemas)
-## [Kérelmek szabályozása](resource-manager-request-limits.md)
 ## [REST](/rest/api/resources/)
 
 # Erőforrások
+## [Kérelmek szabályozása](resource-manager-request-limits.md)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

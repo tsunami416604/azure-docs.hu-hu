@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg az Azure erőforrások biztonsági figyelésének beállítását és a házirendek kezelését. Oktatóanyagok, egy REST API-referencia és egyéb dokumentáció."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8091c1c7cbf6617725bf7620fe0c2232e4e47cec
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 5600b20d3c04547e2002a779fde70769bb6a5e59
 
 ---
 # <a name="security-center-documentation"></a>A Security Center dokumentációja
 
-A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
+Ismerje meg a Security Center használatát az Azure-erőforrások biztonságának átláthatóvá és szabályozhatóvá tételéhez.  Oktatóanyagok, egy REST API-referencia és egyéb dokumentációk mutatják be az olyan biztonsági figyelés és házirendkezelés beállítását, amely a biztonsági megoldások széles ökoszisztémájával képes együttműködni.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -84,15 +85,10 @@ A Security Center az Azure-erőforrások biztonsági felügyeletének átláthat
     </li>
 </ul>   
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security-center.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Security Center dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

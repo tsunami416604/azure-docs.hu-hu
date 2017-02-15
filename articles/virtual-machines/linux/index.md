@@ -1,13 +1,25 @@
 ---
 layout: LandingPage
+description: "Ismerje meg a kívánt Linux-disztribúciót futtató virtuális gépek létrehozási lehetőségeit. A dokumentáció különböző módszereket mutat be a VM-sablonok létrehozására."
+title: "A Linuxhoz készült Azure Virtual Machines dokumentációja, oktatóanyagok és API-referencia | Microsoft Docs"
+services: virtual-machines-linux
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-linux
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c5ed66f3a060dcd1bac9c04c70c493dcebcf9df8
-ms.openlocfilehash: 7b5078165e008819baed1c1e38d1c1a677648955
+ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
+ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Linux rendszerű virtuális gép dokumentációja
+# <a name="linux-virtual-machine-documentation"></a>Linux rendszerű virtuális gép dokumentációja
 
-Az Azure Virtual Machines szolgáltatással linux rendszerű virtuális gépeket hozhat létre és futtathat az Azure számítási, hálózati és tárolási infrastruktúrájában.  Akár több ezer gépet üzemeltet egy internetes léptékű telepítéshez, akár mindössze egyet futtat egy néhány perces számítási feladathoz, a sebesség és a konzisztencia garantált.
+Ismerje meg a kívánt Linux-disztribúciót futtató virtuális gépek futtatását az Azure környezetben. A dokumentáció, az API-referenciák és a minták bemutatják a VM-sablonok létrehozásának és üzembe helyezésének különböző módszereit.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -85,121 +97,55 @@ Az Azure Virtual Machines szolgáltatással linux rendszerű virtuális gépeket
 </ul>
 
 ---
-
-##<a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>PowerShell-parancsmagok</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/install-az-cli2">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Telepítse az Azure CLI-t</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET-felügyelet referencia API</p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/compute">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java SDK</h3>
-                        <p>Java API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/compute">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Compute)</h3>
-                        <p>Compute – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/mt163658">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Network)</h3>
-                        <p>Network – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/storage">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Storage)</h3>
-                        <p>Storage – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
 </ul>
-    
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
-        <div class="img"></div>
-        <div class="text">
-Linuxos virtuális gép dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

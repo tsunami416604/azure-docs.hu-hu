@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
+description: "Ismerje meg a Azure Storage – felhőbeli blob-, tábla-, üzenetsor-, fájl- és virtuálisgéplemez-tárolók használatát. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: 965b96507d66f3880bdf3b38362d1eb026afdb51
-ms.openlocfilehash: e72557a87088ba66a669d37ba0033da951e7fdb8
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
 
 ---
-#<a name="storage-documentation"></a>Storage-dokumentáció
 
-Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás.  Kiválóan méretezhető, rugalmas, globálisan elérhető, és adatforgalmon alapuló automatikus terheléselosztással is bír.  Az Azure Storage a következő öt szolgáltatást biztosítja az alkalmazások szükségleteihez: Blob Storage, Table Storage, Queue Storage, Disk Storage és File Storage.
+# <a name="storage-documentation"></a>Storage-dokumentáció
+
+Ismerje meg a tartós, elérhető és méretezhető Azure Storage felhőalapú tárolóeszköz használatát. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják a blob-, tábla-, üzenetsor-, fájl- és virtuálisgéplemez-tárolók telepítésének és felügyeletének módjait.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -85,103 +87,63 @@ Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra
 </ul>
 
 ---
-
-## <a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/storage">PowerShell</a></p>
+                        <p><a href="/cli/azure/storage">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/storage">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>A Storage használata az Azure parancssori felületével – referencia</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.storage">.NET: Erőforrás-kezelő</a></p>
+                        <p><a href="https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx">.NET: Adatáthelyezés</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt347887.aspx">.NET: Blobok, üzenetsorok, táblák és fájlok</a></p>
+                        <p><a href="/java/api/">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p>
+                        <p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p>
+                        <p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p>
+                        <p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Storage a Javában – referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt347887">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Storage – felügyelt referencia API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/storageservices">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Storage – REST API-referencia</p>
-                    </div>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blobok, üzenetsorok, táblák és fájlok</a></p>
+                        <p><a href="/rest/api/storagerp">Erőforrás-szolgáltató</a></p>
+                        <p><a href="/rest/api/storageimportexport">Importálás és exportálás</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
-        <a href="/rest/api/storagerp">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <p>A Storage erőforrás-szolgáltató REST API-ja – referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>   
+    </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-Storage-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

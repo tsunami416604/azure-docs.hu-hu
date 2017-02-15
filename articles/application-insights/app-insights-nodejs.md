@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fb80168b38be88ab18952569e6b6f9bcb53d473a
+ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
+ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
 
 
 ---
 # <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére
-*Az Application Insights jelenleg még előzetes verziójú kiadásban érhető el.*
 
-A [Visual Studio Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md). Egyrészt olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy Azure VM-eken futtat, másrészt Azure webalkalmazásokkal.
+
+Az [Azure Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md). Egyrészt olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy Azure VM-eken futtat, másrészt Azure webalkalmazásokkal.
 
 Az SDK biztosítja a bejövő HTTP-kérelemarányok és válaszok, a teljesítményszámlálók (CPU, memória, RPS) és a nem kezelt kivételek automatikus gyűjtését. Emellett hozzá lehet adni egyéni hívásokat a függőségek, mérőszámok vagy egyéb események nyomon követéséhez.
 
@@ -95,7 +95,7 @@ Nyissa meg ezeket a portokat a kimenő forgalom számára a kiszolgáló tűzfal
 Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
 ## <a name="customized-usage"></a>Testreszabott használat
-### <a name="disabling-autocollection"></a>Az automatikus gyűjtés letiltása
+### <a name="disabling-auto-collection"></a>Az automatikus gyűjtés letiltása
 ```javascript
 import appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
@@ -200,6 +200,6 @@ server.on("listening", () => {
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

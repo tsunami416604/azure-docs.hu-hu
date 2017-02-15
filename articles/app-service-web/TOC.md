@@ -1,5 +1,5 @@
 # [Áttekintés](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [A webalkalmazások áttekintése](app-service-web-overview.md)
+## [A Web Apps áttekintése](app-service-web-overview.md)
 ## [Mi az App Service?](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [App Service-csomagok](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [App Service Linuxon](app-service-linux-intro.md)
@@ -7,12 +7,13 @@
 # Bevezetés
 
 ## Web Apps
-### [.NET](web-sites-dotnet-get-started.md)
-### [Node.js](app-service-web-nodejs-get-started.md)
-### [Python](web-sites-python-ptvs-django-mysql.md)
-### [Java](web-sites-java-get-started.md)
+### [HTML](app-service-web-get-started-html.md)
+### [.NET](app-service-web-get-started-dotnet.md)
+### [Node.js](app-service-web-get-started-nodejs.md)
+### [Python](app-service-web-get-started-python.md)
+### [Java](app-service-web-get-started-java.md)
 ### [Marketplace-alkalmazás](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)   
+### [PHP](app-service-web-get-started-php.md)   
 
 ## API Apps
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -60,11 +61,12 @@
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
 ### ASP.NET-alkalmazások
-#### [Helyezze üzembe az első .NET-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-dotnet.md)
+#### [ASP.NET-alapú alkalmazás létrehozása az Azure-ban Visual Studio használatával](web-sites-dotnet-get-started.md)
 #### [REST-szolgáltatás létrehozása az ASP.NET Web API használatával](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [ASP.NET 5-alapú webalkalmazás létrehozása Visual Studio Code-ban](web-sites-create-web-app-using-vscode.md)
 
 ### Node.js-alkalmazások
+#### [Node.js-alkalmazások fejlesztése az App Service számára](app-service-web-nodejs-get-started.md)
 #### [Node.js-alapú webalkalmazás létrehozása](web-sites-nodejs-develop-deploy-mac.md)
 #### [Node.js-alapú csevegőalkalmazás létrehozása a Socket.IO összetevővel](web-sites-nodejs-chat-app-socketio.md)
 #### [Web Apps és io.js használata](web-sites-nodejs-iojs.md)
@@ -72,14 +74,13 @@
 #### [Építés és üzembe helyezés a WebMatrix eszközzel](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP-alkalmazások
-#### [Helyezze üzembe az első PHP-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-php.md)
+#### [PHP-alkalmazások fejlesztése az App Service számára](app-service-web-php-get-started.md) 
 #### [PHP-SQL webalkalmazás létrehozása és üzembe helyezése a Git segítségével](web-sites-php-sql-database-deploy-use-git.md)
 #### [WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban](web-sites-php-web-site-gallery.md)
 #### [MySQL-adatbázis létrehozása és kapcsolódás hozzá az Azure-ban](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Nagyvállalati szintű WordPress-üzemeltetés az Azure App Service szolgáltatásban](web-sites-php-enterprise-wordpress.md)
 
 ### Java-alkalmazások
-#### [Helyezze üzembe az első Java-webalkalmazását öt perc alatt az Azure-ban](web-sites-java-get-started.md)
 #### Hozzon létre egy Hello World alkalmazást
 ##### [Eclipse](app-service-web-eclipse-create-hello-world-web-app.md)
 ##### [IntelliJ](app-service-web-intellij-create-hello-world-web-app.md)
@@ -247,9 +248,9 @@
 ### [Webalkalmazások teljesítménnyel kapcsolatos problémáinak elhárítása](app-service-web-troubleshoot-performance-degradation.md)
 
 # Referencia
-## [Azure CLI](/cli/azure/)
-## [Java](/java/api/)
+## [Azure CLI 2.0 előzetes verzió](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
+## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
 
 # Kapcsolódó
@@ -266,6 +267,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -52,7 +52,7 @@ Miután kiválasztotta a kezdő teljesítményszintet, az [önálló adatbázist
 ## <a name="standalone-database-service-tiers-and-performance-levels"></a>Önálló adatbázis-szolgáltatásszintek és -teljesítményszintek
 Az önálló adatbázisokhoz minden szolgáltatásszinten több teljesítményszint áll rendelkezésre. Így rugalmasan kiválaszthatja a számítási feladatnak leginkább megfelelő teljesítményszintet. Ha felfelé vagy lefelé kell méreteznie, könnyedén módosíthatja az adatbázis szintjeit. További részleteket az [Adatbázis szolgáltatásszintjeinek és teljesítményszintjeinek módosítása](sql-database-scale-up.md) című részben talál.
 
-Az itt felsorolt teljesítményjellemzők az [SQL Database 12 verzió](sql-database-v12-whats-new.md) használatával létrehozott adatbázisokra érvényesek. Az üzemeltetett adatbázisok számától függetlenül az adatbázis számára garantálva van az erőforrások készlete, és az adatbázis elvárt teljesítményjellemzői nem változnak.
+Az itt felsorolt teljesítményjellemzők az [SQL Database&12; verzió](sql-database-v12-whats-new.md) használatával létrehozott adatbázisokra érvényesek. Az üzemeltetett adatbázisok számától függetlenül az adatbázis számára garantálva van az erőforrások készlete, és az adatbázis elvárt teljesítményjellemzői nem változnak.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 

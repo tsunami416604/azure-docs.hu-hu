@@ -1,15 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan streamelhet biztonságosan igény szerinti vagy élő, médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Oktatóanyagok, API-referenciák és egyebek."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 78433e8f6d66d55f7917e4abbbbe1c24e662a400
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3e029a72b1918636ede33db1445ce0550d40ede6
 
 ---
 # <a name="media-services-documentation"></a>Media Services – dokumentáció
 
-Az Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
-
-A Media Services használatával létrehozhat végpontok közötti munkafolyamatokat. A munkafolyamatok bizonyos részeihez harmadik féltől származó összetevőket is szabadon felhasználhat. Például harmadik féltől származó kódolóval is kódolhat, majd a Media Services segítségével feltöltheti, védelem alá helyezheti, becsomagolhatja és elküldheti a fájlokat.
+Ismerje meg, hogyan streamelhet médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -200,16 +199,9 @@ A Media Services használatával létrehozhat végpontok közötti munkafolyamat
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Media Services – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -109,15 +109,15 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | Hitelesítési módszer |Előre megosztott kulcs |Előre megosztott kulcs |
 | Titkosítási algoritmusok |AES256 AES128 3DES |AES256 3DES |
 | Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| 1. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |10 800 másodperc |
+| 1. fázisú biztonsági társítás (SA) Élettartam (idő) |28&800; másodperc |10&800; másodperc |
 
 ### <a name="ike-phase-2-setup"></a>IKE – a 2. fázis beállítása
 | **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
 | --- | --- | --- |
 | IKE verziószám |IKEv1 |IKEv2 |
 | Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128) |
-| 2. fázisú biztonsági társítás (SA) Élettartam (idő) |3 600 másodperc |3 600 másodperc |
-| 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény) |102 400 000 kB |- |
+| 2. fázisú biztonsági társítás (SA) Élettartam (idő) |3&600; másodperc |3&600; másodperc |
+| 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény) |102&400;&000; kB |- |
 | IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A |Lásd: *Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok* (alább) |
 | Sérülés utáni titkosságvédelem (PFS) |Nem |Nem (*) |
 | Kapcsolat megszakadásának észlelése |Nem támogatott |Támogatott |

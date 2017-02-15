@@ -41,7 +41,7 @@ Ennek köszönhetően az alkalmazásfejlesztők hatékonyan, de nem tolakodó m�
 ## <a name="open-apis-and-ease-of-integration"></a>Nyílt API-k és egyszerű integráció
 Az integrálást megkönnyítő nyílt API-k és SDK-k segítségével kihasználhatóvá válnak a meglévő ügyfélkapcsolat-kezelési, tartalomkezelési vagy egyéb háttérrendszerről származó adatok. Ezáltal tovább finomíthatja a célközönség kiválasztását, és jobban védheti befektetéseit.
 
-## <a name="data-protection-privacy-across-the-globe"></a>Világ körüli adatvédelem
+## <a name="data-protection--privacy-across-the-globe"></a>Világ körüli adatvédelem
 A Microsoft régóta elkötelezett az adatvédelem mellett, ami termékeink és szolgáltatásaink szerves részét képezi. Célunk, hogy minél könnyebben átlátható adatvédelmi gyakorlatokat alkalmazzunk, és emellett ügyfeleink számára releváns adatvédelmi lehetőségeket kínáljunk, a tárolt adatokat pedig felelősségteljesen kezeljük. Az összes többi Azure-szolgáltatáshoz hasonlóan a Mobile Engagement sem oszt meg vagy értékesít az ügyfelek tulajdonából kinyert információkat. A Mobile Engagement világszerte elérhető, így lehetővé teszi a regionális vagy az egyes országokban érvényes adatvédelmi jogszabályoknak való megfelelést.
 
 ### <a name="next-steps"></a>További lépések:

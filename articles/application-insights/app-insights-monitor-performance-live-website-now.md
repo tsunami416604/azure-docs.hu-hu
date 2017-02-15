@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 79819619ff7f25ba1097fe12f2da7453a1fcb4f1
+ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
+ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
 
 
 ---
@@ -39,7 +39,7 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 | Kérések és kivételek |Igen |Igen |
 | [Részletes kivételek](app-insights-asp-net-exceptions.md) | |Igen |
 | [Függőségek diagnosztikája](app-insights-asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) | |IIS vagy Azure-felhőszolgáltatás, de nem Azure-webalkalmazás |
+| [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) |Igen |Igen |
 | [API egyéni telemetriához][api] |Igen | |
 | [Nyomkövetési napló integrációja](app-insights-asp-net-trace-logs.md) |Igen | |
 | [Lapmegtekintések és felhasználói adatok](app-insights-javascript.md) |Igen | |
@@ -55,29 +55,23 @@ Ehhez [Microsoft Azure](http://azure.com)-előfizetésre van szükség.
 
 ### <a name="if-your-app-is-hosted-on-your-iis-server"></a>Ha az alkalmazás az IIS-kiszolgálóján fut.
 1. Az IIS-webkiszolgálón jelentkezzen be rendszergazdai hitelesítő adatokkal.
-2. Töltse le és futtassa az [Állapotfigyelő telepítőjét](http://go.microsoft.com/fwlink/?LinkId=506648).
-3. A telepítővarázslóban jelentkezzen be a Microsoft Azure-ba.
-
-    ![Bejelentkezés az Azure-ba a Microsoft-fiókja hitelesítő adataival](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-
-    *Csatlakozási hibák? Lásd: [Hibaelhárítás](#troubleshooting).*
-4. Válassza ki a megfigyelni kívánt telepített webalkalmazást vagy webhelyet, majd konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon.
+2. Töltse le és futtassa az [Állapotfigyelő telepítőjét](http://go.microsoft.com/fwlink/?LinkId=506648).  
+3. Válassza ki a megfigyelni kívánt telepített webalkalmazást vagy webhelyet, majd konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon. Be kell jelentkeznie a Microsoft Azure-ba.
 
     ![Válasszon egy alkalmazást és egy erőforrást.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    Általában új erőforrás és [erőforráscsoport][szerepkörök] konfigurálását választja.
+    Általában új erőforrás és [erőforráscsoport][roles] konfigurálását választja.
 
-    Ellenkező esetben használjon meglévő erőforrást, ha már beállított [webes teszteket][rendelkezésre állás] a helyéhez, vagy [webes ügyfélfigyelést][ügyfél].
-5. Indítsa újra az IIS-t.
+    Ellenkező esetben használjon egy meglévő erőforrást, ha már állított be [webes teszteket][availability] a helyhez, vagy [webes ügyfélfigyelést][client].
+4. Indítsa újra az IIS-t.
 
     ![Válassza az Újraindítás gombot a párbeszédpanel tetején.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     A webszolgáltatása rövid időre megszakad.
-6. Az ApplicationInsights.config be lett illesztve a megfigyelni kívánt webalkalmazásokba.
+5. Az ApplicationInsights.config be lett illesztve a megfigyelni kívánt webalkalmazásokba.
 
     ![Keresse meg a .config fájlt a webalkalmazás kódfájljai között.](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-
-   A web.config is változott.
+   
 
 #### <a name="want-to-reconfigure-later"></a>Később (újra) szeretné konfigurálni?
 A varázsló befejezése után bármikor újrakonfigurálhatja az ügynököt. Ezt akkor is használhatja, ha telepítette az ügynököt, de probléma volt a kezdeti beállítással.
@@ -105,7 +99,7 @@ A diagram különböző függőségek felé irányuló hívások szerinti szegme
 ![Függőség](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-(Nem Azure-webalkalmazásokhoz.) Kattintson az áttekintési panelen a Kiszolgálók gombra, hogy megtekintse a kiszolgálóteljesítmény-számlálók diagramjait (például a CPU elfoglaltsága és a memóriahasználat diagramjait).
+Kattintson az áttekintési panelen a Kiszolgálók gombra, hogy megtekintse a kiszolgálóteljesítmény-számlálók diagramjait (például a CPU elfoglaltsága és a memóriahasználat diagramjait).
 
 Ha több kiszolgálópéldánnyal rendelkezik, szerkesztheti a csoportosítandó diagramokat Szerepkörpéldány szerint.
 
@@ -146,10 +140,11 @@ Operációs rendszeri támogatás az Application Insights Állapotfigyelőhöz a
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
+* Windows Server 2016
 
-a legújabb szervizcsomaggal és a .NET-keretrendszer 4.0-s és 4.5-ös verziójával
+a legújabb szervizcsomaggal és a .NET-keretrendszer 4.5-ös verziójával
 
-Az ügyféloldalon Windows 7, 8 és 8.1, szintén a .NET-keretrendszer 4.0-s és 4.5-ös verziójával
+Az ügyféloldalon Windows 7, 8, 8.1 és 10, szintén a .NET-keretrendszer 4.5-ös verziójával
 
 IIS-támogatás: IIS 7, 7.5, 8, 8.5 (az IIS kötelező)
 
@@ -197,7 +192,7 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
 * `-Name` Az alkalmazás neve az IIS-ben
-* `-All`Leállítja minden alkalmazás megfigyelését ezen az IIS-kiszolgálón, amely esetében az `SdkState==EnabledAfterDeployment`
+* `-All` Leállítja minden alkalmazás megfigyelését ezen az IIS-kiszolgálón, amely esetében az `SdkState==EnabledAfterDeployment`
 * Leállítja a megadott alkalmazások megfigyelését, és eltávolítja a kialakítást. Csak olyan alkalmazásokhoz működik, amelyek futásidőben lettek kialakítva az Állapotfigyelés eszközzel vagy a Start-ApplicationInsightsApplication paranccsal. (`SdkState==EnabledAfterDeployment`)
 * Az ApplicationInsightsApplication elemet adja vissza.
 
@@ -214,24 +209,24 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 * letölti a legújabb Application Insights SDK-t a kiszolgálóra.
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
-* [Létrehozhat webes teszteket][rendelkezésre állás] annak biztosításához, hogy a hely elérhető maradjon.
-* [Eseményeket és naplókat kereshet][diagnosztika], amelyek segítenek a problémák diagnosztizálásában.
-* [Webesügyfél-telemetriát adhat hozzá][használat], hogy lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
+* [Létrehozhat webes teszteket][availability] annak biztosításához, hogy a hely elérhető maradjon.
+* [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
+* [Webesügyfél-telemetriát adhat hozzá][usage], hogy lássa a weblapkód kivételeit, és nyomkövetési hívásokat szúrhasson be.
 * [Application Insights SDK-t adhat a webszolgáltatás kódjához][greenbrown], hogy nyomkövetési és naplóhíváskat szúrhasson be a kiszolgálókódba.
 
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[rendelkezésre állás]: app-insights-monitor-web-app-availability.md
-[ügyfél]: app-insights-javascript.md
-[diagnosztika]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[szerepkörök]: app-insights-resources-roles-access-control.md
-[használat]: app-insights-web-track-usage.md
+[roles]: app-insights-resources-roles-access-control.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan ágyazhat be Power BI-adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokba. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: d5a00a2035660bfd5c9d1fbf79d630d2a0231f41
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c18bbb0b1e40d03be35c7d6375bb7520f0e0d4e4
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded – dokumentáció
 
-Az Azure-szolgáltatások körébe tartozó Power BI Embedded segítségével az alkalmazásfejlesztők interaktív Power BI-jelentéseket vehetnek fel saját alkalmazásaikba. A Power BI Embedded úgy működik együtt a meglévő alkalmazásokkal, hogy nem kell újratervezni vagy módosítani a felhasználók bejelentkezésének módját.
+Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokhoz a Power BI Embedded használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan ágyazhat be zökkenőmentesen Power BI-jelentéseket és -irányítópultokat az alkalmazásokba.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az Azure-szolgáltatások körébe tartozó Power BI Embedded segítségével az
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=power-bi-embedded">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=power-bi-embedded">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -86,64 +87,51 @@ Az Azure-szolgáltatások körébe tartozó Power BI Embedded segítségével az
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>A Power BI Embedded PowerShell-parancsmagjai</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Power BI Embedded – felügyelt referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/powerbiembedded/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
+                        <p><a href="https://www.nuget.org/profiles/powerbi">.NET SDK letöltése</a></p>
+                        <p><a href="https://github.com/Microsoft/PowerBI-JavaScript">JavaScript</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Power BI Embedded – REST API-referencia</p>
+                        <p><a href="/rest/api/powerbiembedded/">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
+</ul>
 
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/power-bi-embedded.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Power BI Embedded dokumentációjának letöltése </div>
-    </a>
-</div>
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

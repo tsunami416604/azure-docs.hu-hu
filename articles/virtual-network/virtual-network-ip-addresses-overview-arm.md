@@ -124,7 +124,7 @@ Amikor létrehoz egy virtuális gépet, az állomásnév a magánhálózati IP-c
 
 Az Azure által felügyelt DNS-kiszolgálókkal konfigurált virtuális gépek képesek lesznek a VNet hálózatukban az összes virtuális gép állomásnevét feloldani azok magánhálózati IP-címeire.
 
-### <a name="internal-load-balancers-ilb-application-gateways"></a>Belső terheléselosztók (ILB) és alkalmazásátjárók
+### <a name="internal-load-balancers-ilb--application-gateways"></a>Belső terheléselosztók (ILB) és alkalmazásátjárók
 Hozzárendelhet egy magánhálózati IP-címet az [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) terheléselosztók vagy [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) alkalmazásátjárók **előtér**-konfigurációjához. Ez a magánhálózati IP-cím belső végpontként szolgál, amelyet csak a virtuális hálózatán (VNet) és a VNethez csatlakozó távoli hálózatokon lévő erőforrások érnek el. Hozzárendelhet egy dinamikus vagy egy statikus méretű magánhálózati IP-címet az előtér-konfigurációhoz.
 
 ### <a name="at-a-glance"></a>Egy pillantásra

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
+ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
 
 
 ---
@@ -41,7 +41,7 @@ Habár az App Service számos módon lehetővé teszi a kód API-alkalmazásba v
    
     A minta API két végpontot nyújt: a `/contacts` Get kérése nevek és e-mail címek listáját adja vissza JSON formátumban, míg a `/contacts/{id}` csak a kiválasztott névjegyet.
 
-## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>Node.js kód automatikus generálása Swagger-metaadatok alapján
+## <a name="scaffold-auto-generate-nodejs-code-based-on-swagger-metadata"></a>Node.js kód automatikus generálása Swagger-metaadatok alapján
 A [Swagger](http://swagger.io/) egy olyan fájlformátum, amely RESTful API leírására szolgáló metaadatokat tárol. Az Azure App Service [beépített támogatást nyújt a Swagger-metaadatokhoz](app-service-api-metadata.md). Az oktatóanyagnak ez a fejezete az API-fejlesztésnek azt a folyamatát modellezi, amelynek során először létrehozzuk a Swagger-metaadatokat, majd ezek segítségével automatikusan generáljuk az API kiszolgálói kódját. 
 
 > [!NOTE]
@@ -131,7 +131,7 @@ A [Swagger](http://swagger.io/) egy olyan fájlformátum, amely RESTful API leí
         app.use(bodyParser.json());
    
         app.use(swaggerize({
-            api: path.resolve('./config/api.json'), // third change
+            api: path.resolve('./config/swagger.json'), // third change
             handlers: path.resolve('./handlers'),
             docspath: '/swagger' // fourth change
         }));
@@ -275,6 +275,6 @@ Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -10,7 +10,7 @@
 ## [Log Analytics – gyakori kérdések](log-analytics-faq.md)
 
 # Útmutató
-## Integrálás
+## Adatok gyűjtése
 ### Összekapcsolt források
 #### [Windows-ügynökök](log-analytics-windows-agents.md)
 #### [Linux-ügynökök](log-analytics-linux-agents.md)
@@ -27,11 +27,15 @@
 #### [IIS-naplók](log-analytics-data-sources-iis-logs.md)
 #### [Egyéni naplók](log-analytics-data-sources-custom-logs.md)
 #### [Egyéni mezők](log-analytics-custom-fields.md)
-## Fejlesztés
+## Adatok lekérdezése
 ### [Naplókeresés – Áttekintés](log-analytics-log-searches.md)
 ### [A Search leírása](log-analytics-search-reference.md)
 ### [Számítógépcsoportok](log-analytics-computer-groups.md)
 ### [Riasztások](log-analytics-alerts.md)
+## Adatok elemzése
+### [Irányítópultok](log-analytics-dashboards.md)
+### [Nézettervező](log-analytics-view-designer.md)
+### [Power BI](log-analytics-powerbi.md)
 ### Megoldások
 #### [Megoldások áttekintése](log-analytics-add-solutions.md)
 #### [AD-elemzés](log-analytics-ad-assessment.md)
@@ -52,11 +56,7 @@
 #### [VMware](log-analytics-vmware.md)
 #### [Átviteli adatok](log-analytics-wire-data.md)
 #### [SCOM-elemzés](log-analytics-scom-assessment.md)
-## Elemzés
-### [Irányítópultok](log-analytics-dashboards.md)
-### [Nézettervező](log-analytics-view-designer.md)
-### [Power BI](log-analytics-powerbi.md)
-## Automatizálás
+## Fejlesztés
 ### [Adatgyűjtő API](log-analytics-data-collector-api.md)
 ### [PowerShell-parancsmagok](log-analytics-powershell-workspace-configuration.md)
 ### [Naplókeresési API](log-analytics-log-search-api.md)
@@ -71,6 +71,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

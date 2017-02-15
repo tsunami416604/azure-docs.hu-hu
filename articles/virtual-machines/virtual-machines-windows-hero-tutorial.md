@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 01/03/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 22156a9f3c5a57e10cad96661f50531b309c3a04
-ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
+ms.sourcegitcommit: 425637599df40ac3be23984785e4f3292d72978d
+ms.openlocfilehash: 7c7a300b620b1e7bd0cd1b816e575f2d57fee80a
 
 
 ---
@@ -28,28 +28,32 @@ Ez az oktatóanyag bemutatja, milyen könnyű akár néhány perc alatt létreho
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="choose-the-vm-image-from-the-marketplace"></a>A virtuális gép rendszerképének kiválasztása a piactérről
-Példaként egy Windows Server 2012 R2 Datacenter rendszerképet használunk, de ez csak egyike az Azure által kínált számos rendszerképnek. Az elérhető rendszerképek az előfizetéstől függenek. Egyes asztali rendszerképek például az [MSDN-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) számára állnak rendelkezésre.
+Példaként egy Windows Server 2016 Datacenter rendszerképet használunk, de ez csak egyike az Azure által kínált számos rendszerképnek. Az elérhető rendszerképek az előfizetéstől függenek. Egyes asztali rendszerképek például az [MSDN-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) számára állnak rendelkezésre.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A központi menüben kattintson az **Új** > **Számítás** > **Windows Server 2012 R2 Datacenter** elemre.
+2. A bal felső sarokban kattintson az **Új** > **Számítás** > **Windows Server 2016 Datacenter** elemre.
    
     ![Képernyőkép a portálon elérhető Azure virtuálisgép-rendszerképekről](./media/virtual-machines-windows-hero-tutorial/marketplace-new.png)
-3. Ellenőrizze, hogy a **Windows Server 2012 R2 Datacenter** panelen az **Üzembe helyezési modell kiválasztása** alatt az **Erőforrás-kezelő** van-e kiválasztva. Kattintson a **Létrehozás** gombra.
+3. Ellenőrizze, hogy a **Windows Server 2016 Datacenter** panelen az **Üzembe helyezési modell kiválasztása** alatt az **Erőforrás-kezelő** van-e kiválasztva. Kattintson a **Létrehozás** gombra.
    
     ![Képernyőkép a virtuális géphez kiválasztandó üzembe helyezési modellről](./media/virtual-machines-windows-hero-tutorial/deployment-model.png)
 
 ## <a name="create-the-windows-virtual-machine"></a>A Windows rendszerű virtuális gép létrehozása
 A rendszerkép kiválasztása után használhatja az alapértelmezett beállításokat, és gyorsan létrehozhatja a virtuális gépet.
 
-1. Az **Alapvető beállítások** panelen adjon meg egy **nevet** a virtuális gép számára. A névnek 1–15 karakter hosszúnak kell lennie, és nem tartalmazhat különleges karaktereket.
-2. Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelyeket a helyi fióknak a virtuális gépen való létrehozásához használ a szolgáltatás. A helyi fiókkal jelentkezhet be a virtuális gépre és kezelheti azt. 
+1. Az **Alapvető beállítások** panelen adjon meg egy **nevet** a virtuális gép számára. Ebben a példában a virtuális gép neve: *HeroVM*. A névnek 1–15 karakter hosszúnak kell lennie, és nem tartalmazhat különleges karaktereket.
+2. Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelyeket a helyi fióknak a virtuális gépen való létrehozásához használ a szolgáltatás. A helyi fiókkal jelentkezhet be a virtuális gépre és kezelheti azt. Ebben a példában a felhasználónév: *azureuser*.
    
     A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
-3. Válasszon ki egy létező [Erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. Adja meg egy Azure-adatközpont **helyét**, például az **USA nyugati régiója**. 
+
+3. Válasszon ki egy létező [Erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. Ebben a példában az erőforráscsoport neve: *HeroVMRG*.
+
+4. Válassza ki egy Azure-adatközpont **helyét**. Ebben a példában a választott hely az *USA keleti régiója**. 
+
 4. Ha végzett, kattintson az **OK** gombra a következő szakaszra való továbblépéshez. 
    
     ![Képernyőkép az **Alapvető beállítások** panel beállításairól az Azure virtuális gép konfigurálásához](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. Válassza ki a virtuális gép [méretét](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), majd kattintson a **Kijelölés** elemre a folytatáshoz. 
+5. Válassza ki a virtuális gép [méretét](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), majd kattintson a **Kijelölés** elemre a folytatáshoz. Ebben a példában a virtuális gép mérete *DS1_V2 Standard*.
    
     ![Képernyőkép a Méret panelen kiválasztható Azure virtuálisgép-méretekről](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. A **Beállítások** panelen módosíthatja a tárolási és hálózati beállításokat. A jelen oktatóanyag esetében fogadja el az alapértelmezett értékeket. Ha megfelelő méretet választott a virtuális gépnek, kipróbálhatja az Azure Premium Storage-ot – ehhez válassza a **Prémium (SSD)** elemet a **Lemez típusa** részen. A módosítások végrehajtása után kattintson az **OK** gombra.
@@ -58,10 +62,10 @@ A rendszerkép kiválasztása után használhatja az alapértelmezett beállít�
 7. A választott beállítások áttekintéséhez kattintson az **Összefoglalás** elemre. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, kattintson az **OK** gombra.
    
     ![Képernyőkép az Összefoglalás panelről, amely az Azure virtuális gép számára választott beállításokat mutatja](./media/virtual-machines-windows-hero-tutorial/summary-blade.png)
-8. Amíg az Azure létrehozza a virtuális gépet, a központi menü **Virtuális gépek** részén nyomon követheti a folyamat állapotát. 
+8. Amíg az Azure létrehozza a virtuális gépet, a bal oldali **Virtuális gépek** gombra kattintva nyomon követheti a folyamat állapotát. A virtuális gép létrehozása után az állapot **Fut** értékre módosul.
 
 ## <a name="connect-to-the-virtual-machine-and-sign-on"></a>Csatlakozás a virtuális géphez és bejelentkezés
-1. A központi menüben kattintson a **Virtuális gépek** elemre.
+1. A bal oldalon kattintson a **Virtuális gépek** lehetőségre.
 2. Válassza ki a virtuális gépet a listából.
 3. A virtuális gép paneljén kattintson a **Csatlakozás** elemre. Ez létrehoz és letölt egy RDP-fájlt, amely mintegy parancsikonként használható a géphez való csatlakozáshoz. Az egyszerű elérés érdekében érdemes ezt a fájlt az asztalra menteni. **Nyissa meg** ezt a fájlt a virtuális géphez való csatlakozáshoz.
    
@@ -95,6 +99,6 @@ Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra katti
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -51,8 +51,6 @@
 ### [Virtuálisgép-bővítmények kezelése](../../virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [Egyéni parancsfájl-bővítmény virtuális gépek számára](../../virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [Egyéni adatok betöltése Azure virtuális gépbe](../../virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [Automatikus biztonsági mentés az SQL Serverhez](../../virtual-machines-windows-classic-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [Automatikus javítás az SQL Serverhez](../../virtual-machines-windows-classic-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## Felkészülés
 ### [További információk a rendszerképekről](../../virtual-machines-windows-classic-about-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -78,20 +76,7 @@
 ####[A rendszerképek megfontolandó szempontjai](../../virtual-machines-windows-classic-oracle-considerations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ####[Oracle virtuálisgép-rendszerképek listája](../../virtual-machines-windows-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [SAP](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-### [SQL Server](../../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server-alapú üzleti intelligencia](../../virtual-machines-windows-classic-ps-sql-bi.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server rendszerű virtuális gép üzembe helyezése az Azure PowerShell-lel (klasszikus)](../../virtual-machines-windows-classic-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[AlwaysOn rendelkezésre állási csoport konfigurálása a klasszikus portálon](../../virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[AlwaysOn rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépen a PowerShell-lel](../../virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Külső figyelő beállítása AlwaysOn rendelkezésre állási csoportok számára az Azure-ban](../../virtual-machines-windows-classic-ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[ILB-figyelő konfigurálása AlwaysOn rendelkezésre állási csoportok számára az Azure-ban](../../virtual-machines-windows-classic-ps-sql-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Azure Key Vault-integráció konfigurálása az Azure-alapú virtuális gépeken futó SQL Serverhez (klasszikus)](../../virtual-machines-windows-classic-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel](../../virtual-machines-windows-classic-ps-sql-report.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (klasszikus üzembe helyezési modell)](../../virtual-machines-windows-classic-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Helyi AlwaysOn rendelkezésre állási csoportok kiterjesztése az Azure-ra](../../virtual-machines-windows-classic-sql-onprem-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[SQL Server Agent bővítmény SQL Server virtuális gépekhez (klasszikus)](../../virtual-machines-windows-classic-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken](../../virtual-machines-windows-classic-sql-server-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-####[A ReportViewer használata Azure-ban üzemeltetett webhelyen](../../virtual-machines-windows-classic-sql-server-reportviewer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+### [SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [Tomcat](../../virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## Hibaelhárítás
@@ -119,6 +104,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

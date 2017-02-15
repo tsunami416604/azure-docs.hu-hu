@@ -1,13 +1,26 @@
 ---
 layout: LandingPage
+description: "Megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépet. A dokumentáció segít a virtuális gépekre épülő felhőalapú számítástechnikai környezet tervezésében, üzembe helyezésében és kezelésében."
+title: "A Windowshoz készült Azure Virtual Machines dokumentációja, oktatóanyagok és API-referencia | Microsoft Docs"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c5ed66f3a060dcd1bac9c04c70c493dcebcf9df8
-ms.openlocfilehash: f8d6ab10622ac6daacaf66551f18eaecd1448dee
+ms.sourcegitcommit: c3b5f79fe9ee312b5f45eff460b43224b9c254fe
+ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
+
 
 ---
-#<a name="windows-virtual-machines-documentation"></a>Windows rendszerű virtuális gépek – dokumentáció
+# <a name="windows-virtual-machines-documentation"></a>Windows rendszerű virtuális gépek – dokumentáció
 
-Az Azure Virtual Machines (VM) az Azure által kínált számos különböző típusú, igény szerinti, méretezhető számítási erőforrás közé tartozik. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Az Azure VM a virtualizálás rugalmasságát biztosítja anélkül, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. Emellett az Ön kezében marad a döntés konfigurációról, a javításokról, és a virtuális gépeken futó szoftverekről.
+Megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépet. Az oktatóanyagok, API-referenciák és egyéb dokumentációk segítik a virtuális gépekre épülő felhőalapú számítástechnikai környezet tervezését, üzembe helyezését és kezelését.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -103,120 +116,55 @@ Az Azure Virtual Machines (VM) az Azure által kínált számos különböző t�
 </ul>
 
 ---
-
-##<a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>PowerShell-parancsmagok</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/install-az-cli2">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Telepítse az Azure CLI-t</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET-felügyelet referencia API</p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/compute">Compute – REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java SDK</h3>
-                        <p>Java API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/compute">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Compute)</h3>
-                        <p>Compute – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/mt163658">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Network)</h3>
-                        <p>Network – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/storage">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST (Storage)</h3>
-                        <p>Storage – REST API-referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
-        <div class="img"></div>
-        <div class="text">
-Windowsos virtuális gép dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO4-->
 
 

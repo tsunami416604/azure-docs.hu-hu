@@ -59,7 +59,7 @@
 ### [Útmutató a táblatervezéshez](storage-table-design-guide.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## Fájlok használata
-### [Áttekintés](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
+### [Áttekintés](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [Azure-fájlok hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## Virtuális gépek lemezeinek használata
@@ -75,13 +75,17 @@
 ### [Teljesítmény és méretezhetőség – ellenőrzőlista](storage-performance-checklist.md)
 ### [Párhuzamosság](storage-concurrency.md)
 ## Fejlesztés
-### [Példák](storage-samples.md)
+### Példák
+#### [.NET](storage-samples-dotnet.md)
+#### [Java](storage-samples-java.md)
+### [HA-alkalmazások tervezése RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
 ### [Kapcsolati karakterláncok konfigurálása](storage-configure-connection-string.md)
 ### [A Storage Emulator használata](storage-use-emulator.md)
 ### [Tulajdonságok és metaadatok beállítása és lekérése](storage-properties-metadata.md)
 ## Kezelés
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI](storage-azure-cli.md)
+### [Azure CLI 2.0 (előzetes verzió)](storage-azure-cli.md)
+### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure Automation](automation-manage-storage.md)
 ## Biztonságos
 ### [Biztonsági útmutató](storage-security-guide.md)
@@ -149,7 +153,7 @@
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
-### [Adatáthelyezés](https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx)
+### [Adatáthelyezés](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [Blobok, üzenetsorok, táblák és fájlok](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](/java/api/)
 ## [Node.js](http://azure.github.io/azure-storage-node)
@@ -159,7 +163,7 @@
 ## [iOS](https://github.com/Azure/azure-storage-ios)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
+### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
 ### [Erőforrás-szolgáltató](/rest/api/storagerp)
 ### [Importálás és exportálás](/rest/api/storageimportexport)
 
@@ -201,6 +205,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

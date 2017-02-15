@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Data Lake Analytics használatának első lépései a .NET SDK-val | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t Data Lake Store-fiókok létrehozásához, Data Lake Analytics-feladatok létrehozásához, valamint a U-SQL nyelven írt feladatok elküldéséhez. "
+description: "Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t Data Lake Analytics-fiókok létrehozásához, valamint a U-SQL nyelven írt feladatok elküldéséhez. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
+ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 
 ---
@@ -196,7 +196,6 @@ A társított Storage-fiókokban lévő fájlok eléréséhez abszolút elérés
                     Console.WriteLine(nextAction);
             }
 
-
             // List all Data Lake Analytics accounts within the subscription
             public static List<DataLakeAnalyticsAccount> ListADLAAccounts()
             {
@@ -217,6 +216,7 @@ A társított Storage-fiókokban lévő fájlok eléréséhez abszolút elérés
 
                 return accounts;
             }
+
             public static Guid SubmitJobByPath(string scriptPath, string jobName)
             {
                 var script = File.ReadAllText(scriptPath);
@@ -241,10 +241,10 @@ A társított Storage-fiókokban lévő fájlok eléréséhez abszolút elérés
           }
         }
 
-1. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A kimenet a következőképpen fog kinézni:
+5. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A kimenet a következőképpen fog kinézni:
    
     ![Azure Data Lake Analytics-feladat U-SQL .NET SDK-kimenete](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. Ellenőrizze a kimeneti fájlt.  Az alapértelmezett útvonal és a fájlnév a c:\Temp\SearchLog-from-Data-Lake.csv.
+6. Ellenőrizze a kimeneti fájlt.  Az alapértelmezett útvonal és a fájlnév a c:\Temp\SearchLog-from-Data-Lake.csv.
 
 ## <a name="see-also"></a>Lásd még:
 * Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
@@ -257,6 +257,6 @@ A társított Storage-fiókokban lévő fájlok eléréséhez abszolút elérés
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

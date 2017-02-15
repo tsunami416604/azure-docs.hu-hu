@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan konfigurálhat és kezelhet egy, a Microsoft felhőszolgáltatáshoz a helyszíni infrastruktúráról vagy közös elhelyezési létesítményből csatlakozó privát ExpressRoute-kapcsolatot."
 translationtype: Human Translation
-ms.sourcegitcommit: 448cccdf35510db9bac9cdb5648739b18302c90b
-ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ecb42e7a0abc5a0438bff39bddddac25d005eb77
 
 ---
 #<a name="expressroute-documentation"></a>Az ExpressRoute dokumentációja
 
-Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
-
+Ismerje meg, hogyan használhatja az ExpressRoute-ot egy gyors privát kapcsolat beállításához a Microsoft felhőszolgáltatáshoz a helyszíni infrastruktúráról vagy közös elhelyezési létesítményből. Oktatóanyagok, REST API-k és egyéb dokumentáció, amelyek segítségével konfigurálhat és kezelhet egy ExpressRoute-kapcsolatcsoportot.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -69,50 +69,39 @@ Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a M
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-re vonatkozó referenciák</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
-<li>
-        <a href="https://msdn.microsoft.com/library/mt586720">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>ExpressRoute – REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API-referencia</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn606310">Klasszikus REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-Az ExpressRoute dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

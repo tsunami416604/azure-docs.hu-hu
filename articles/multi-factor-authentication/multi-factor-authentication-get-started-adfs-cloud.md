@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: 4a2d271be7fbd0d27163ead8f8eb2c05a43f7fbc
 
 
 ---
-# <a name="securing-cloud-resources-with-azure-multifactor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
+# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 Ha a szervezete Azure Active Directory-összevonást használ, és az Azure AD által elért erőforrásokkal rendelkezik, az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal védheti meg ezeket az erőforrásokat. Az alábbi eljárásokkal védheti meg az Azure Active Directory-erőforrásokat az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>Az Azure AD-erőforrások AD FS-sel való védelme
 A felhőerőforrások védelméhez először engedélyezzen a felhasználók számára egy fiókot, majd állítson be jogcímszabályt. Az alábbi eljárás bemutatja ennek lépéseit:
 
-1. A [Turn-on multi-factor authentication for users](multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users) (A Multi-Factor Authentication bekapcsolása felhasználók számára) szakaszban szereplő lépésekkel engedélyezhet fiókokat.
+1. A [Turn-on multi-factor authentication for users](multi-factor-authentication-get-started-cloud.md#turn-on-two-step-verification-for-users) (A Multi-Factor Authentication bekapcsolása felhasználók számára) szakaszban szereplő lépésekkel engedélyezhet fiókokat.
 2. Indítsa el az AD FS felügyeleti konzolt.
    ![Felhő](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 3. Lépjen a **Függő entitás megbízhatóságai** területre, és kattintson a jobb gombbal a függőentitás-megbízhatóságra. Válassza a **Jogcímszabályok szerkesztése...** lehetőséget.
@@ -34,13 +34,13 @@ A felhőerőforrások védelméhez először engedélyezzen a felhasználók sz�
 5. A legördülő listából válassza a **Jogcímek küldése egyéni szabállyal** elemet, és kattintson a **Tovább** gombra.
 6. Adjon egy nevet a jogcímszabálynak.
 7. Az Egyéni szabály: területen adja hozzá a következő szöveget:
-   
+
     ```
     => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
     ```
-   
+
     Megfelelő jogcím:
-   
+
     ```
     <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
     <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
@@ -74,7 +74,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozun
 10. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Jogcímek küldése egyéni szabállyal** elemet a legördülő menüből, és kattintson a **Tovább** gombra.
 11. A Jogcímszabály neve: alatti mezőbe írja be a következőt: *Keep Users Signed In* (A felhasználók maradjanak bejelentkezve).
 12. Az Egyéni szabály mezőbe írja be a következőt:
-    
+
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Felhő](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -83,7 +83,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozun
 15. Kattintson az **OK** gombra.
 16. Zárja be az AD FS felügyeleti konzolt.
 
-### <a name="configure-azure-multifactor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication megbízható IP-címeinek konfigurálása összevont felhasználókkal
+### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication megbízható IP-címeinek konfigurálása összevont felhasználókkal
 Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
@@ -97,7 +97,6 @@ Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 8. A frissítések alkalmazása után kattintson a **bezárás** gombra.
 
 Készen is van. Ekkor az összevont Office 365-felhasználóknak csak az MFA-t kell használniuk, amikor egy jogcím a vállalati intraneten kívülről származik.
-
 
 
 

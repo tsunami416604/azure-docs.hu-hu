@@ -1,5 +1,5 @@
 ---
-title: " Igény szerinti tartalomtovábbítás az Azure Portal használatával | Microsoft Docs"
+title: " Igény szerinti tartalomtovábbítás az Azure Portal használatával | Microsoft Docss"
 description: "Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 70071f8d1b70d062aec1ea4fd35b8acb3512bab6
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
 
 
 ---
@@ -33,7 +33,7 @@ Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszint
 Az oktatóanyag a következő feladatokat tartalmazza:
 
 1. Azure Media Services-fiók létrehozása
-2. Streamvégpont konfigurálása
+2. Indítsa el a streamvégpontot.
 3. Videofájl feltöltése
 4. Forrásfájl kódolása adaptív sávszélességű MP4-fájlokká
 5. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
@@ -60,7 +60,7 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
    6. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
 4. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
    
-    A fiók sikeres létrehozását követően státusza **Fut** értékre változik. 
+    A fiók sikeres létrehozása után betöltődik az áttekintési oldal. A streamvégpont-táblázatban a fiók alapértelmezett streamvégpontja **Leállítva** állapotban lesz. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
    
     ![Media Services, beállítások](./media/media-services-portal-vod-get-started/media-services-settings.png)
    
@@ -79,33 +79,22 @@ A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fi�
    
     ![Media Services, kulcsok](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
-## <a name="configure-streaming-endpoints"></a>Streamvégpontok konfigurálása
-Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
+## <a name="start-streaming-endpoints"></a>Streamvégpontok elindítása 
 
-A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
+Az Azure Media Services egyik leggyakrabban használt funkciója a videók továbbítása az adaptív sávszélességű streamelés használatával. A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
 
-A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
+>[!NOTE]
+>Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
-* Kódolja adaptív sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit az oktatóanyag egy későbbi részében találja meg).  
-* Hozzon létre legalább egy streamelési egységet a tartalom továbbításához használni kívánt *streamvégpontra*. Az alábbi lépésekből megtudhatja, hogyan módosíthatja a streamelési egységek számát.
+A streamvégpont elindításához tegye a következőket:
 
-A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
-
-Streameléshez fenntartott egységek létrehozásához és számának megváltoztatásához tegye a következőket:
-
-1. Kattintson a **Settings** (Beállítások) ablak **Streaming endpoints** (Streamvégpontok) elemére. 
+1. Kattintson a Settings (Beállítások) ablak Streaming endpoints (Streamvégpontok) elemére. 
 2. Kattintson az alapértelmezett streamvégpontra. 
-   
-    Megjelenik a **DEFAULT STREAMING ENDPOINT DETAILS** (Alapértelmezett streamvégpont adatai) ablak.
-3. Adja meg a streamelési egységek számát a **Streaming units** (Streamelési egységek) csúszka mozgatásával.
-   
-    ![Streamelési egységek](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
-4. Mentse a módosításokat a **Save** (Mentés) gombra kattintva.
-   
-   > [!NOTE]
-   > Az új egységek allokációja akár 20 percig is eltarthat.
-   > 
-   > 
+
+    Megjelenik a DEFAULT STREAMING ENDPOINT DETAILS (Alapértelmezett streamvégpont adatai) ablak.
+
+3. Kattintson a Start ikonra.
+4. Mentse a módosításokat a Save (Mentés) gombra kattintva.
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 Ha az Azure Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
@@ -132,10 +121,7 @@ Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál haszn
 
 A Media Services dinamikus csomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS és Smooth Streaming formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
 
-A dinamikus csomagolás előnyeinek kihasználásához a következőket kell tennie:
-
-* Kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit egy későbbi részben találja meg).
-* Szerezzen be legalább egy streamelési egységet a tartalom továbbításához használni kívánt streamvégpontra. További információkért lásd a [streamvégpontok konfigurálását bemutató részt](media-services-portal-vod-get-started.md#configure-streaming-endpoints). 
+Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit egy későbbi részben találja meg).
 
 ### <a name="to-use-the-portal-to-encode"></a>Kódolás a portál használatával
 Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a Media Encoder Standard segítségével történő kódolásához.
@@ -221,6 +207,6 @@ Tekintse át a Media Services képzési terveket.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

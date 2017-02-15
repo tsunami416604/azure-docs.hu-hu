@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy az Event Hubs hogyan használható másodpercenként több milliónyi esemény feldolgozására, amelyek a csatlakoztatott IoT-eszközökből és alkalmazásokból érkeznek, számos különböző platformról."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f0ec0a2dff2e9bcea133dd1de0a92979d937580a
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 29d6165596d3e98264285b6471c8f54b66aa2c3a
 
 ---
 #<a name="event-hubs-documentation"></a>Event Hubs – dokumentáció
 
-Az Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs a „bejárati ajtó” funkcióját látja el egy eseményfolyamat számára, az adatoknak egy eseményközpontba való összegyűjtését követően az adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
+Ismerje meg, hogy az Event Hubs hogyan használható másodpercenként több milliónyi esemény begyűjtésére és kezelésére, amelyek a csatlakoztatott IoT-eszközökből és alkalmazásokból érkeznek. Az oktatóanyagok, API-referenciák, és egyéb dokumentációk bemutatják, hogy a számos platformon hogyan állíthat be méretezhető eseményfeldolgozást.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -86,65 +87,39 @@ Az Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET-felügyelet – referencia</p>
-                    </div>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.eventhubs">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.eventhubs">Java</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
-<li>
-        <a href="/azure/service-bus-messaging/service-bus-amqp-protocol-guide">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>AMQP</h3>
-                        <p>AMQP 1.0 protokoll – útmutató</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="/rest/api/eventhub">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Event Hubs – REST API-referencia</p>
+                        <p><a href="/rest/api/eventhub">REST API-referencia</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/event-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-Event Hubs – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: " Azure Media Services-fiók létrehozása az Azure Portal használatával | Microsoft Docs"
+title: " Azure Media Services-fiók létrehozása az Azure Portal használatával | Microsoft Docss"
 description: "Ez az oktatóanyag végigvezeti azokon a lépéseken, amelyek segítségével Azure Media Services-fiókot hozhat létre az Azure Portal használatával."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 312231f395f19fde98431c24b71ce7cec3061eaf
-ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 01c1297a6b107f91d8e6e73f17d76499d67849de
 
 
 ---
@@ -54,10 +54,10 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **+New** > **Web + Mobile** > **Media Services** elemre.
    
-    ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services, létrehozás](./media/media-services-create-account/media-services-new1.png)
 3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
    
-    ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    ![Media Services, létrehozás](./media/media-services-create-account/media-services-new3.png)
    
    1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
    2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
@@ -69,9 +69,12 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
    6. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
 4. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
    
-    A fiók sikeres létrehozását követően státusza **Fut** értékre változik. 
+    A fiók sikeres létrehozása után betöltődik az áttekintési oldal. A streamvégpont-táblázatban a fiók alapértelmezett streamvégpontja **Leállítva** állapotban lesz. 
+
+    >[!NOTE]
+    >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
    
-    ![Media Services, beállítások](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services, beállítások](./media/media-services-create-account/media-services-settings.png)
    
     Az AMS-fiók kezeléséhez (például videók feltöltéséhez, objektumok kódolásához, a feladatok előrehaladásának figyeléséhez) használja a **Settings** (Beállítások) ablakot.
 
@@ -86,7 +89,7 @@ A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fi�
     A **Kulcsok kezelése** ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. 
 3. Az értékek másolásához nyomja le a Másolás gombot.
    
-    ![Media Services, kulcsok](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    ![Media Services, kulcsok](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>Következő lépések
 Most már feltölthet fájlokat AMS-fiókjába. További információk: [Fájlok feltöltése](media-services-portal-upload-files.md).
@@ -100,6 +103,6 @@ Most már feltölthet fájlokat AMS-fiókjába. További információk: [Fájlok
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

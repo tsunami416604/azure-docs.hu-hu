@@ -7,8 +7,8 @@
 # Útmutató
 ## Integrálás
 ### [Web Apps](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
-### [Felhőszolgáltatások](cdn-cloud-service-with-cdn.md)
-### [Tárolás](cdn-create-a-storage-account-with-cdn.md)
+### [Cloud Services](cdn-cloud-service-with-cdn.md)
+### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
 
 ## Kezelés
@@ -44,12 +44,17 @@
 ### [Fájltömörítés](cdn-troubleshoot-compression.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
-## [Azure CDN POP-helyek](cdn-pop-locations.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn)
+## [.NET](/dotnet/api/microsoft.azure.management.cdn)
+## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)
 
 # Erőforrások
+##  [Szabálymotor referencia](cdn-rules-engine-reference.md)
+### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
+### [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
+### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
+## [Azure CDN POP-helyek](cdn-pop-locations.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cdn)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
@@ -57,6 +62,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

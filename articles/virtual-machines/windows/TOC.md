@@ -138,27 +138,7 @@
 ### [Nagy teljesítményű feldolgozás (HPC)](../virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MATLAB](../virtual-machines-windows-matlab-mdcs-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MongoDB](../virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [SQL](../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Virtuális gép létrehozása az Azure Portalon](../virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Virtuális gép létrehozása az Azure PowerShell használatával](../virtual-machines-windows-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Kapcsolódás virtuális géphez](../virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Microsoft SQL Server-adatbázis áttelepítése](../virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [AlwaysOn rendelkezésre állási csoport manuális konfigurálása](../virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [AlwaysOn rendelkezésre állási csoport automatikus konfigurálása](../virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Belső terheléselosztó konfigurálása AlwaysOn rendelkezésre állási csoporthoz](../virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Egy vagy több figyelő konfigurálása AlwaysOn rendelkezésre állási csoporthoz](../virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure Key Vault-integráció konfigurálása](../virtual-machines-windows-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Magas rendelkezésre állás és vészhelyreállítás](../virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Automatikus biztonsági mentés](../virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Biztonsági mentés és visszaállítás](../virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Az Azure Storage használata biztonsági mentéséhez és helyreállításhoz](../virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Automatikus javítás](../virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [A teljesítménnyel kapcsolatos ajánlott eljárások](../virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Biztonsági szempontok](../virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [SQL Server-ügynök bővítmény](../virtual-machines-windows-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Alkalmazásmintázatok és stratégiák](../virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Az SQL Server használata az Azure Virtual Machinesben – gyakori kérdések](../virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Storage konfiguráció SQL Server rendszerű virtuális gépekhez](../virtual-machines-windows-sql-server-storage-configuration.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [SQL Server](./sql/virtual-machines-windows-sql-server-iaas-overview.md)
 ### [A SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0-s változatához a Microsoft Azure-ban](../virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Tervezési és megvalósítási útmutató](../virtual-machines-windows-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Magas rendelkezésre állási útmutató](../virtual-machines-windows-sap-high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -202,6 +182,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 
