@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy a Log Analytics hogyan gyűjti össze és elemzi a felhőben és a helyszíni környezetekben található erőforrások által létrehozott adatokat."
 translationtype: Human Translation
-ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
-ms.openlocfilehash: bd819da72cbfdd58323321eb41ab28441e043c84
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ffb5ebc79807a81e53c2bca3fa5672a11e777663
 
 ---
 
 # <a name="log-analytics-documentation"></a>Log Analytics – dokumentáció
 
-A Log Analytics az Operations Management Suite (OMS) egy szolgáltatása, amely segít összegyűjteni és elemezni a felhőben és a helyszíni környezetekben található erőforrások által létrehozott adatokat. A szolgáltatás valós idejű elemzéseket biztosít. Integrált keresést és egyéni irányítópultokat használ az adatok millióinak könnyű elemzéséhez az összes számítási feladat és kiszolgáló esetében, azok fizikai helyétől függetlenül.
+Ismerje meg, hogy az Operations Management Suite részeként a Log Analytics hogyan gyűjti össze és elemzi a felhőben és a helyszíni környezetekben található erőforrások által létrehozott adatokat, függetlenül azok fizikai helyétől. Az oktatóanyagok és egyéb dokumentációk bemutatják, hogy fizikai helytől függetlenül hogyan kaphat valós idejű betekintést a számítási feladatok és kiszolgálók működésébe.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -85,16 +86,10 @@ A Log Analytics az Operations Management Suite (OMS) egy szolgáltatása, amely 
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/log-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Log Analytics – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

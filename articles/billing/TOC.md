@@ -1,7 +1,5 @@
-# Bevezetés
-## [Ingyenes fiók létrehozása](https://azure.microsoft.com/free/)
+# [Első lépések](billing-getting-started.md)
 ## [Regisztrálás Office 365-fiókkal](../billing-use-existing-office-365-account-azure-subscription.md)
-## [Előfizetési díjszabás](https://azure.microsoft.com/pricing/)
 ## [Támogatott országok és pénznemek](../billing-countries-and-currencies.md)
 ## [Korlátozások és kvóták](../azure-subscription-service-limits.md)
 ## [Gyakori kérdések](../billing-subscription-faq.md)
@@ -17,7 +15,7 @@
 ### [Előfizetés tulajdonosi jogainak átruházása](../billing-subscription-transfer.md)
 ### [Letiltott előfizetés újbóli aktiválása](../billing-subscription-become-disable.md)
 ### [Frissítés ingyenes előfizetésről](../billing-upgrade-azure-subscription.md)
-### [Váltás másik előfizetésre](../billing-how-to-switch-azure-offer.md)
+### [Váltás előfizetési ajánlatok között](../billing-how-to-switch-azure-offer.md)
 ### [Előfizetés lemondása](../billing-how-to-cancel-azure-subscription.md)
 ## Fiók kezelése
 ### [Profil szerkesztése](../billing-how-to-change-azure-account-profile.md)
@@ -37,6 +35,6 @@
 # Erőforrások
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../billing-how-to-create-billing-support-ticket.md)
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan helyezhet üzembe olyan, ellenőrzési módszerek sorát felvonultató többtényezős hitelesítést (Multi-Factor Authentication), amely mégis egyszerű bejelentkezést biztosít. Oktatóanyagok, SDK és további anyagok."
 translationtype: Human Translation
-ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
-ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 6ff0e1c42ad151c56500596d99f63bae200368ed
 
 ---
 # <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication – dokumentáció
 
-Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. Az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáférésekkel szemben, miközben a felhasználói igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát teszi lehetővé. Számos (például telefonos megerősítést, szöveges üzenetet vagy mobilalkalmazást használó) ellenőrzési módszerének köszönhetően erős hitelesítést biztosít.
+Ismerje meg, hogyan helyezheti üzembe és felügyelheti az Azure Multi-Factor Authentication kétlépéses identitás-ellenőrzési rendszert. Az oktatóanyagok, az SDK és az egyéb dokumentáció bemutatják, hogyan vezethet be olyan, ellenőrzési módszerek sorát felvonultató erős hitelesítést, amely mégis egyszerű bejelentkezést biztosít.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,15 +105,10 @@ Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesít�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Multi-Factor Authentication-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszközök internetes hálózatához (IoT) csatlakozó eszközök millióit az IoT Hub használatával. Oktatóanyagok, API-referenciák, videók és egyéb dokumentáció."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: b452e767bb6c2e181f56ab84e92e9225408baf9b
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
 
 ---
 #<a name="iot-hub-documentation"></a>IoT Hub – dokumentáció
 
-Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához.  Emellett az eszközkapcsolat széleskörű megfigyelésére is képes, és a népszerű nyelveken és platformokon eszköztárakat is nyújt. 
+Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszközök internetes hálózatához (IoT) csatlakozó eszközök millióit az IoT Hub használatával. Oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítik az IoT-eszközök és -megoldások közötti megbízható és kétirányú kommunikáció kialakítását. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -103,81 +104,59 @@ Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és 
 </ul>
 
 ---
-
-## <a name="reference"></a>Referencia
-
+ 
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/cli/azure/iot">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>Az IoT Hub és az Azure parancssori felülete</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/cli/azure/iot">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
-<li>
-        <a href="/dotnet/api/">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET-felügyelet referencia API</p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.devices">.NET (Szolgáltatás)</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Eszközök)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.iot.service.auth">Java (Szolgáltatás)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.iothub">Java (Eszközök)</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK-k</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-gateway-sdk">Átjáró SDK</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
-<li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java SDK – referencia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-<li>
-        <a href="/rest/api/iothub">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>IoT HUB – REST API-referencia</p>
+                        <p><a href="/rest/api/iothub/iothubresource">REST (Erőforrás-szolgáltató)</a></p>
+                        <p><a href="/rest/api/iothub/deviceapi">REST (Eszközidentitások)</a></p>
+                        <p><a href="/rest/api/iothub/httpruntime">REST (Eszközök üzenetküldése)</a></p>
+                        <p><a href="/rest/api/iothub/jobapi">REST (Feladatok)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
-        <div class="img"></div>
-        <div class="text">
-IoT Hub – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

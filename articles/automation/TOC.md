@@ -1,14 +1,11 @@
 # Áttekintés
 ## [Mi az Azure Automation?](automation-intro.md)
 ## [Biztonság az Azure Automationben](automation-security-overview.md)
-
 # Bevezetés
 ## [Runbook létrehozása](automation-first-runbook-graphical.md)
 ## [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
 ## [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
 ## [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
-
-
 # Útmutató
 ## Runbookok létrehozása
 ### [Runbook-típusok](automation-runbook-types.md)
@@ -22,10 +19,10 @@
 ### [Forráskezelés integrálása](automation-source-control-integration.md)
 ## Runbookok automatizálása
 ### [Runbook indítása](automation-starting-a-runbook.md)
-### [Runbook indítása webes hívásból](automation-webhooks.md)
-### [Runbook ütemezése](automation-scheduling-a-runbook.md)
+### [Runbook indítása webhookból](automation-webhooks.md)
 ### [Runbookok futtatása a saját adatközpontjában](automation-hybrid-runbook-worker.md)
 ### [Runbook bemeneti paramétereinek konfigurálása](automation-runbook-input-parameters.md)
+### [Hibakezelés grafikus runbookokban](automation-runbook-graphical-error-handling.md)
 ### [Runbook-feladat nyomon követése](automation-runbook-execution.md)
 ### [Runbook beállításainak módosítása](automation-runbook-settings.md)
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
@@ -55,26 +52,22 @@
 ### [Virtuális gép indítása és leállítása JSON-címkékkel](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [Erőforráscsoport eltávolítása](automation-scenario-remove-resourcegroup.md)
 ### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
-
+### [Forráskezelés integrálása a GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md)
 ## [Figyelés](automation-manage-send-joblogs-log-analytics.md)
-
 ## Migrate (Áttelepítés)
 ### [Áttelepítés az Orchestratorból](automation-orchestrator-migration.md)
 ### [Automation-fiók áthelyezése](automation-migrate-account-subscription.md)
-
 ## Hibaelhárítás
 ### [Gyakori hibák elhárítása](automation-troubleshooting-automation-errors.md)
-### [Runbook-feladat felfüggesztve](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
+### [A hibrid runbook-feldolgozó hibaelhárítása](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Klasszikus PowerShell](/powershell/servicemanagement)
-## [.NET](/dotnet/api)
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [Klasszikus REST](https://msdn.microsoft.com/library/azure/mt163781)
-## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)
-
+## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt163781)
 # Erőforrások
+## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
@@ -85,6 +78,6 @@
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

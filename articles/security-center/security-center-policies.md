@@ -111,6 +111,6 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

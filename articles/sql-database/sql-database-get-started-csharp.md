@@ -1,5 +1,5 @@
 ---
-title: "Az SQL Database kipróbálása: SQL-adatbázis létrehozása a C# segítségével | Microsoft Docs"
+title: "C#: Ismerkedés az Azure SQL Database szolgáltatással | Microsoft Docs"
 description: "Próbálja ki az SQL Database-t az SQL- és C#-alkalmazások fejlesztésére, és hozzon létre egy Azure SQL Database adatbázist a C# segítségével és az SQL Database .NET-es kódtárával."
 keywords: "sql kipróbálása, sql c#"
 services: sql-database
@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
-ms.openlocfilehash: 32c18821ac9cf5516fba9762ca5bb834194dcdc9
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 7ffc593ee262f55a3fff6a2cd9cf62c691722478
 
 
 ---
@@ -287,6 +287,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

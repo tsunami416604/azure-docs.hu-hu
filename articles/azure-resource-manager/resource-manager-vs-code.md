@@ -32,7 +32,7 @@ Ha JSON-sablonokkal szeretne dolgozni a VS Code szerkesztőben, telepítenie kel
 2. Jelenítse meg a gyorsmegnyitási listát (Ctrl+P). 
 3. Futtassa az alábbi parancsot: 
    
-        ext install azurerm-vscode-tools
+        ext install msazurermtools.azurerm-vscode-tools
 4. A bővítmény engedélyezéséhez indítsa újra a VS Code alkalmazást, amikor a rendszer kéri. 
    
    Ezzel el is készült.

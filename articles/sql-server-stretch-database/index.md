@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
+description: "Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok biztonságos áttelepítésére az Azure-ba a lekérdezések vagy alkalmazások módosítása nélkül. Oktatóanyagok és egyéb dokumentációk."
 translationtype: Human Translation
-ms.sourcegitcommit: d237f5116f81d0977a96a325ee66f2e7c3ee5c41
-ms.openlocfilehash: bf45461eafbb010d99b61f2f67a763e25f374b30
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3dad35a38c753988615a4c1f2b439de9f95baf0e
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Az SQL Server Stretch Database dokumentációja
 
-Az SQL Server Stretch Database átlátható módon és biztonságosan áttelepíti a ritkán használt adatokat a Microsoft Azure felhőbe. Az SQL Server Stretch Database biztosítja a nem rendszeresen használt adatok költséghatékony rendelkezésre állását a lekérdezések és az alkalmazások módosítása nélkül, és az áttelepítés során is biztonságban tartja az adatokat. A Stretch Database olyan tranzakciós adatbázisokhoz készült, amelyek nagy mennyiségű, ritkán használt adatot tartalmaznak általában kis számú táblában tárolva.
+Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok átlátható és biztonságos áttelepítésére az Azure-felhőbe. Az oktatóanyagok és egyéb dokumentációk segítenek a ritkábban használt adatokat tartalmazó adatbázisok költséghatékony rendelkezésre állásának beállításában anélkül, hogy a meglévő lekérdezéseket vagy alkalmazásokat módosítani kellene.
+
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,16 +88,10 @@ Az SQL Server Stretch Database átlátható módon és biztonságosan áttelepí
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-server-stretch-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-Az SQL Server Stretch Database dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

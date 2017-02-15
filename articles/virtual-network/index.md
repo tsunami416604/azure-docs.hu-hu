@@ -3,8 +3,8 @@ layout: LandingPage
 +toc_rel: breadcrumb.json
 description: "Ismerkedjen meg a felhőben működő virtuális hálózatok használatával. A dokumentáció bemutatja, hogyan helyezhet üzembe VNeteket, hogyan indíthat a használatukkal erőforrásokat, és hogyan integrálhatja azokat a helyszíni hálózattal."
 translationtype: Human Translation
-ms.sourcegitcommit: 9a76fe5c0b518cdd95be71e0c3cf928f0ff93668
-ms.openlocfilehash: 7e2c2db7000b2ea0a4fe698e47e775cc2a7db4dd
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 2c3ce9081d456dcedd61ba85f2d023526aa5fa49
 
 ---
 # <a name="virtual-network-documentation"></a>Virtual Network dokumentációja
@@ -149,16 +149,10 @@ Ismerkedjen meg a Virtual Network (VNet) használatával, amely saját hálózat
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-network.pdf">
-        <div class="img"></div>
-        <div class="text">
-Virtual Network-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

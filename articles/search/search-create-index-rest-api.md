@@ -13,11 +13,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 107186c6d77550948169caa6f0f89589dd3bddd9
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 7e28fdde31c735b5de99aa7031ceb1b2abf72576
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Azure Search-index létrehozása REST API használatával
@@ -30,16 +30,16 @@ ms.openlocfilehash: 107186c6d77550948169caa6f0f89589dd3bddd9
 >
 >
 
-Ez a cikk végigvezeti az Azure Search-[index](https://msdn.microsoft.com/library/azure/dn798941.aspx) Azure Search REST API használatával történő létrehozásának folyamatán.
+Ez a cikk végigvezeti az Azure Search-[index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) Azure Search REST API használatával történő létrehozásának folyamatán.
 
 Már az útmutató követése és az index létrehozása előtt [létre kell hoznia egy Azure Search szolgáltatást](search-create-service-portal.md).
 
 Az Azure Search-index REST API használatával történő létrehozásához egyetlen HTTP POST-kérelmet fog küldeni az Azure Search szolgáltatás URL-végpontjának. Az index definícióját a kérés törzse fogja tartalmazni megfelelően formázott JSON-tartalomként.
 
 ## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Az Azure Search szolgáltatás adminisztrációs API-kulcsának azonosítása
-Most, hogy létrehozta az Azure Search szolgáltatást, HTTP-kérelmeket küldhet a szolgáltatás URL-végpontjának a REST API használatával. Azonban az *összes* API-kérelemnek tartalmaznia kell a létesített Search szolgáltatás számára előállított API-kulcsot. Érvényes kulcs birtokában kérelmenként bizalom hozható létre a kérelmet küldő alkalmazás és a kérelmet kezelő szolgáltatás között.
+Most, hogy létrehozta az Azure Search szolgáltatást, HTTP-kérelmeket küldhet a szolgáltatás URL-végpontjának a REST API használatával. *Minden* API-kérésnek tartalmaznia kell az Ön által üzembe helyezett Search-szolgáltatáshoz létrehozott API-kulcsot. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure portálra](https://portal.azure.com/)
+1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
@@ -56,7 +56,7 @@ A szolgáltatásnak küldött egyetlen HTTP POST-kérelem létrehozza az indexet
 1. A JSON-objektum első tulajdonsága az index neve.
 2. A JSON-objektum második tulajdonsága egy `fields` nevű JSON-tömb, amely külön JSON-objektumokat tartalmaz az index egyes mezőihez. A JSON-objektumok mindegyike több név-érték párt tartalmaz a mezők minden attribútumához (például a „name”, „type” stb. attribútumokhoz).
 
-Az index tervezésekor nagyon fontos figyelembe venni a keresés során tapasztalt felhasználói élményt és az üzleti igényeket, mivel minden egyes mezőt a [megfelelő attribútumokhoz](https://msdn.microsoft.com/library/azure/dn798941.aspx) kell hozzárendelni. Ezek az attribútumok határozzák meg, hogy melyik mezőkre melyik keresési funkciók (szűrés, értékkorlátozás, rendezés, teljes szöveges keresés stb.) vonatkoznak. A meg nem adott attribútumok esetén az alapértelmezett beállítás a vonatkozó keresési funkció engedélyezése, hacsak kifejezetten le nem tiltja a funkciót.
+Az index tervezésekor nagyon fontos figyelembe venni a keresés során tapasztalt felhasználói élményt és az üzleti igényeket, mivel minden egyes mezőt a [megfelelő attribútumokhoz](https://docs.microsoft.com/rest/api/searchservice/Create-Index) kell hozzárendelni. Ezek az attribútumok határozzák meg, hogy melyik mezőkre melyik keresési funkciók (szűrés, értékkorlátozás, rendezés, teljes szöveges keresés stb.) vonatkoznak. A meg nem adott attribútumok esetén az alapértelmezett beállítás a vonatkozó keresési funkció engedélyezése, hacsak kifejezetten le nem tiltja a funkciót.
 
 A fenti példában az indexnek a „hotels” nevet adtuk, és a mezőket az alábbiak szerint definiáltuk:
 
@@ -84,7 +84,7 @@ Minden mező esetében annak alapján választottuk ki az indexattribútumokat, 
 
 Vegye figyelembe, hogy az indexben csakis egy `Edm.String` típusú mező lehet kijelölve „kulcsmezőként”.
 
-A fenti indexdefiníció egyéni nyelvi elemzőt használ a `description_fr` mezőhöz, mert a mező francia szöveg tárolására szolgál. A nyelvi elemzőkkel kapcsolatos további információkért tekintse meg [az MSDN Nyelvi támogatás című témakörét](https://msdn.microsoft.com/library/azure/dn879793.aspx), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
+A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező esetében, mivel annak francia nyelvű szöveget kell tartalmaznia. A nyelvi elemzőkkel kapcsolatos további információkért lásd a [Nyelvi támogatás című témakört](https://docs.microsoft.com/rest/api/searchservice/Language-support), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 ## <a name="iii-issue-the-http-request"></a>III. A HTTP-kérelem küldése
 1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési karakterlánc paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2016-09-01`).
@@ -97,7 +97,7 @@ Az alábbi kérelem küldéséhez meg kell adnia a saját szolgáltatásnevét �
     api-key: [api-key]
 
 
-Ha a kérelem sikeres, a 201-es állapotkód (Létrehozva) jelenik meg. Az indexek REST API-n keresztüli létrehozásával kapcsolatos további információkért tekintse meg az API-referenciát az [MSDN webhelyén](https://msdn.microsoft.com/library/azure/dn798941.aspx). A hiba esetén megjelenő egyéb HTTP-állapotkódokkal kapcsolatos további információkért tekintse meg a [HTTP-állapotkódok (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx) című cikket.
+Ha a kérelem sikeres, a 201-es állapotkód (Létrehozva) jelenik meg. További információt a REST API-n keresztül végzett indexlétrehozásról az [API-referenciában találhat](https://docs.microsoft.com/rest/api/searchservice/Create-Index). További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
 Miután végzett az index használatával, és törölni szeretné, csak küldjön egy HTTP DELETE kérelmet. A „hotels” nevű index például a következőképpen törölhető:
 
@@ -110,6 +110,6 @@ Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

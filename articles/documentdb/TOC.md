@@ -2,6 +2,7 @@
 ## [Mi a DocumentDB?](documentdb-introduction.md)
 ## [Alapfogalmak](documentdb-resources.md)
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
+## [A NoSQL teljes birtoklási költségének elemzése](https://aka.ms/documentdb-tco-paper)
 ## Forgatókönyvek
 ### [Gyakori alkalmazási helyzetek](documentdb-use-cases.md)
 ### [Közösségi tartalom a DocumentDB-vel](documentdb-social-media-apps.md)
@@ -10,6 +11,7 @@
 ## Az első alkalmazás megírása
 ### [.NET-Konzolalkalmazás](documentdb-get-started.md)
 ### [.NET Core-Konzolalkalmazás](documentdb-dotnetcore-get-started.md)
+### [Java-konzolalkalmazás](documentdb-java-get-started.md)
 ### [Node.js-konzolalkalmazás](documentdb-nodejs-get-started.md)
 ### [C++-Konzolalkalmazás](documentdb-cpp-get-started.md)
 ## Webalkalmazás készítése
@@ -24,7 +26,6 @@
 # Útmutató
 
 ## Felkészülés
-### [Tárolás és teljesítmény](documentdb-manage.md)
 ### [Particionálás és méretezés](documentdb-partition-data.md)
 ### [Konzisztencia](documentdb-consistency-levels.md)
 ### [A NoSQL és az SQL összevetése](documentdb-nosql-vs-sql.md)
@@ -34,13 +35,12 @@
 ### [Adatmodellezés](documentdb-modeling-data.md)
 ### [Térinformatikai adatok használata](documentdb-geospatial.md)
 ### [Fejlesztés több régióra](documentdb-developing-with-multiple-regions.md)
+### [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ### [Adatok automatikus elévülése](documentdb-time-to-live.md)
 ### [Az indexek testreszabása](documentdb-indexing-policies.md)
 ### [Biztonságos hozzáférés az adatokhoz](documentdb-secure-access-to-data.md)
 ### [Biztonsági mentés és visszaállítás](documentdb-online-backup-and-restore.md)
 ### [Teljesítményszintek](documentdb-performance-levels.md)
-### [Erőforráskvóták](documentdb-limits.md)
-### [Kvóták növelése](documentdb-increase-limits.md)
 ### [Kérelemegységek](documentdb-request-units.md)
 ### Azure CLI
 #### [Fiók létrehozása](documentdb-automation-resource-manager-cli.md)
@@ -55,12 +55,18 @@
 ### [Változások követése a Módosítás adatcsatornával](documentdb-change-feed.md)
 ### [Teljesítménytesztelés](documentdb-performance-testing.md)
 ### [Teljesítménnyel kapcsolatos tippek](documentdb-performance-tips.md)
-### DocumentDB a MongoDB-fejlesztők számára
-#### [Protokolltámogatás MongoDB-hez](documentdb-protocol-mongodb.md)
-#### [Fiók létrehozása](documentdb-create-mongodb-account.md)
-#### [Csatlakozás a fiókhoz](documentdb-connect-mongodb-account.md)
-#### [A MongoChef használata](documentdb-mongodb-mongochef.md)
-#### [Protokolltámogatási minták](documentdb-mongodb-samples.md)
+### Ajánlott eljárások
+#### [Több főkiszolgálós telepítés](documentdb-multi-region-writers.md)
+#### [Dátum/idő](documentdb-working-with-dates.md)
+
+## DocumentDB-támogatás használata a MongoDB-hez
+### [Protokolltámogatás MongoDB-hez](documentdb-protocol-mongodb.md)
+### [Fiók létrehozása](documentdb-create-mongodb-account.md)
+### [Csatlakozás a fiókhoz](documentdb-connect-mongodb-account.md)
+### [Adatok áttelepítése](documentdb-mongodb-migrate.md)
+### [A Robomongo használata](documentdb-mongodb-robomongo.md)
+### [A MongoChef használata](documentdb-mongodb-mongochef.md)
+### [Protokolltámogatási minták](documentdb-mongodb-samples.md)
 
 ## A portál használata
 ### [Adatbázisfiók létrehozása](documentdb-create-account.md)
@@ -76,10 +82,10 @@
 
 ## Integrálás
 ### [Webhely üzembe helyezése az Azure App Service-szel](documentdb-create-documentdb-website.md)
-### [Alkalmazásnaplózás a Logic Apps használatával](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md)
+### [Alkalmazásnaplózás a Logic Apps használatával](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [Kötés az Azure Functionshöz](../azure-functions/functions-bindings-documentdb.md)
 ### [Adatelemzés a Hadooppal](documentdb-run-hadoop-with-hdinsight.md)
-### [Integrálás az Azure Search szolgáltatással](documentdb-search-indexer.md)
+### [Integrálás az Azure Search szolgáltatással](../search/search-howto-index-documentdb.md)
 ### [Adatok betöltése az Azure Data Factoryvel](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [Valós idejű adatok elemzése az Azure Stream Analyticsszel](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
 ### [Értesítések fogadása a Logic Apps használatával](documentdb-change-notification.md)
@@ -117,6 +123,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

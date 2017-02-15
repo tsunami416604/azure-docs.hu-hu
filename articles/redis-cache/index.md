@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Ismerje meg, hogy az Azure Redis Cache biztonságos adatgyorsítótár és üzenetközvetítő hogyan használható az alkalmazások gyors adathozzáférésének biztosítására. Oktatóanyagok, API-referenciák és egyebek."
 translationtype: Human Translation
-ms.sourcegitcommit: 4e66f89a5a63cafc8cc9e6af957f27172957c934
-ms.openlocfilehash: cd838fe6027f2c097850c29308630d2086243985
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 328084918199e162ad0cfa9ac67737a66fa4d021
 
 ---
 #<a name="redis-cache-documentation"></a>Redis Cache – dokumentáció
@@ -184,16 +184,10 @@ Ismerje meg, hogy az Azure Redis Cache biztonságos adatgyorsítótár és üzen
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-Redis Cache-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

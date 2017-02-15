@@ -1,6 +1,6 @@
 ---
 title: "Azure AD felhasználói fiók konfigurálása | Microsoft Docs"
-description: "Ez a cikk leírja, hogyan kell az Azure AD felhasználói fiók hitelesítését konfigurálni az Azure Automation forgatókönyveihez, hogy ARM- és ASM-hitelesítést is végezzen."
+description: "Ez a cikk leírja, hogyan kell az Azure AD felhasználói fiók hitelesítését konfigurálni az Azure Automationben a hitelesítés elvégzéséhez."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 11/14/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: db4eb96b3354d83864a7869c1fd08e9bb2884a1f
+ms.sourcegitcommit: 0078d544d5c30e31874d75fece62ca560d2aa2d6
+ms.openlocfilehash: 0544d4df8f50db2182375aec8ec2a0a9d47ed644
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-service-management-and-resource-manager"></a>Forgatókönyvek hitelesítése Azure szolgáltatásfelügyelet és Resource Manager használatával
-Ez a cikk ismerteti a lépéseket, amelyeket végre kell hajtani egy Azure AD felhasználói fiók Azure szolgáltatásfelügyelet (ASM) vagy Azure Resource Manager (ARM) erőforrásokkal szemben futó Azure Automation forgatókönyvek számára történő konfigurálásához.  Miközben ez továbbra is egy támogatott hitelesítési identitás az ARM-alapú forgatókönyvek számára, a javasolt módszer az új Azure-beli futtató fiók használata.       
+Ez a cikk ismerteti a lépéseket, amelyeket végre kell hajtani egy Azure AD felhasználói fiók Azure szolgáltatásfelügyelet vagy Azure Resource Manager-erőforrásokkal szemben futó Azure Automation-forgatókönyvek számára történő konfigurálásához.  Miközben ez továbbra is egy támogatott hitelesítési identitás az Azure Resource Manager-alapú forgatókönyvek számára, a javasolt módszer az új Azure-beli futtató fiók használata.       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Egy új Azure Active Directory-felhasználó létrehozása
 1. Jelentkezzen be a klasszikus Azure portálra azon Azure-előfizetés szolgáltatás-rendszergazdájaként, amelyet kezelni szeretne.
@@ -39,12 +39,12 @@ Ez a cikk ismerteti a lépéseket, amelyeket végre kell hajtani egy Azure AD fe
 12. Lépjen ki az Azure-ból, majd lépjen vissza a fiókkal, amelyet az imént létrehozott. A rendszer meg fogja kérni a felhasználó jelszavának módosítására.
 
 ## <a name="create-an-automation-account-in-azure-classic-portal"></a>Egy Automation-fiók létrehozása a klasszikus Azure portálon
-Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure Automation-fiók létrehozásához az Azure portálon, amely a forgatókönyvekkel együtt erőforrások kezelésére használható ASM- és ARM-módban.  
+Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure Automation-fiók létrehozásához az Azure portálon, amely a forgatókönyvekkel együtt erőforrások kezelésére használható az Azure Service Manager és az Azure Resource Manager módban.  
 
 > [!NOTE]
 > A klasszikus Azure portálon létrehozott Automation-fiókokat a klasszikus portálon és az Azure portálon, valamint mindkét parancsmagkészlettel is lehet kezelni. A fiók létrehozása után mindegy, hogyan hoz létre és kezel erőforrásokat a fiókon belül. Ha továbbra is a klasszikus Azure portál használatát tervezi, inkább azon hozzon létre Automation-fiókokat az Azure portál helyett.
->
->
+> 
+> 
 
 1. Jelentkezzen be a klasszikus Azure portálra azon Azure-előfizetés szolgáltatás-rendszergazdájaként, amelyet kezelni szeretne.
 2. Válassza az **Automation** elemet.
@@ -60,7 +60,7 @@ Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure 
 12. A következő **Hitelesítő adatok meghatározása** oldalon írja be a korábban létrehozott AD felhasználói fiók felhasználónevét a **Felhasználónév** mezőbe, jelszavát pedig a **Jelszó** és a **Jelszó megerősítése** mezőkbe. Kattintson az **OK** gombra a módosítások mentéséhez.
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>Egy Automation-fiók létrehozása az Azure portálon
-Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure Automation-fiók létrehozásához az Azure portálon, amely a forgatókönyvekkel együtt erőforrások kezelésére használható ARM-módban.  
+Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure Automation-fiók létrehozásához az Azure portálon, amely a forgatókönyvekkel együtt erőforrások kezelésére használható az Azure Resource Manager módban.  
 
 1. Jelentkezzen be az Azure portálra azon Azure-előfizetés szolgáltatás-rendszergazdájaként, amelyet kezelni szeretne.
 2. Válassza az **Automation-fiókok** elemet.
@@ -68,12 +68,12 @@ Ebben a szakaszban végre fogja hajtani a következő lépéseket egy új Azure 
 4. Az **Automation-fiók hozzáadása** panel **Név** mezőjébe adjon meg egy nevet az új Automation-fióknak.
 5. Ha egynél több előfizetéssel rendelkezik, adja meg az új fiókhoz használni kívántat, valamint egy új vagy meglévő **Erőforráscsoport** és egy Azure adatközpont **Hely** elemet.
 6. Válassza a **Nem** értéket az **Azure-beli futtató fiók létrehozása** beállításnál, és kattintson a **Létrehozás** gombra.  
-
+   
    > [!NOTE]
-   > Ha a **Nem** beállítás kiválasztásával úgy dönt, hogy nem hozza létre a futtató fiókot, egy figyelmeztető üzenet jelenik meg az **Automation-fiók hozzáadása** panelen.  Miközben a fiók létrejön, és csatolva lesz az előfizetés **Közreműködő** szerepköréhez, nem fog hozzá tartozó hitelesítési identitással rendelkezni az előfizetések könyvtáron belül, és így nem fog hozzáférni erőforrásokhoz az előfizetésben.  Ez megakadályozza a fiókra hivatkozó forgatókönyveket abban, hogy hitelesítsenek és feladatokat végezzenek el az ARM-erőforrásokon.
-   >
-   >
-
+   > Ha a **Nem** beállítás kiválasztásával úgy dönt, hogy nem hozza létre a futtató fiókot, egy figyelmeztető üzenet jelenik meg az **Automation-fiók hozzáadása** panelen.  Miközben a fiók létrejön, és csatolva lesz az előfizetés **Közreműködő** szerepköréhez, nem fog hozzá tartozó hitelesítési identitással rendelkezni az előfizetések könyvtáron belül, és így nem fog hozzáférni erőforrásokhoz az előfizetésben.  Ez megakadályozza a fiókra hivatkozó forgatókönyveket abban, hogy hitelesítsenek és feladatokat végezzenek el az Azure Resource Manager-erőforrásokon.
+   > 
+   > 
+   
     ![Az Automation-fiókhoz kapcsolódó figyelmeztetés hozzáadása](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
 7. Amíg az Azure létrehozza az Automation-fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
 
@@ -93,6 +93,7 @@ A forgatókönyv minden [ellenőrzőpontja](http://technet.microsoft.com/library
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

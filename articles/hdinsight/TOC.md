@@ -10,7 +10,6 @@
 
 # Első lépések
 ## [Első lépések a Hadoopban](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Első lépések a Hive interaktív előzetes verziójában](hdinsight-hadoop-use-interactive-hive.md)
 ## [Első lépések az R Serverben](hdinsight-hadoop-r-server-get-started.md)
 ## [Első lépések a Sparkban](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [Első lépések a HBase-ben és a NoSQL-ben](hdinsight-hbase-tutorial-get-started-linux.md)
@@ -62,10 +61,13 @@
 ### [HVAC-teljesítmény előrejelzése](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [Élelmiszer-vizsgálati eredmények előrejelzése](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Webhelynaplók elemzése](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [Zeppelin notebookok használata](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter notebookkernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [Csomagok Jupyter notebookokhoz](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Külső csomagok használata Jupyterrel, cellafunkciók használatával](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Külső csomagok használata Jupyterrel, szkriptműveletek használatával](hdinsight-apache-spark-python-package-installation.md)
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
+### [Alkalmazások fejlesztése az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [Alkalmazások fejlesztése az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [Távoli hibakeresés az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [Erőforrások kezelése](hdinsight-apache-spark-resource-manager.md)
@@ -157,6 +159,7 @@
 #### [Az Azure parancssori felületének használata](hdinsight-administer-use-command-line.md)
 ### [Fürtök kezelése az Ambari webes felülettel](hdinsight-hadoop-manage-ambari.md)
 #### [Az Ambari REST API használata](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [Tárfiókok hozzáadása](hdinsight-hadoop-add-storage.md)
 ### [Adatok feltöltése Hadoop-feladatokhoz](hdinsight-upload-data.md)
 ### [Adatok importálása és exportálása a Sqoop használatával](hdinsight-use-sqoop.md)
 #### [Kapcsolódás az SSH-val](hdinsight-use-sqoop-mac-linux.md)
@@ -225,6 +228,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

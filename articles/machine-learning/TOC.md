@@ -128,7 +128,6 @@
 #### [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
 #### [Külső adatok használata](machine-learning-web-services-that-use-import-export-modules.md)
 #### [Üzembe helyezés több régióban](machine-learning-how-to-deploy-to-multiple-regions.md)
-#### [Közzététel a Piactéren](machine-learning-publish-web-service-to-azure-marketplace.md)
 #### [Webszolgáltatás-paraméterek használata](machine-learning-web-service-parameters.md)
 #### [Naplózás engedélyezése](machine-learning-web-services-logging.md)
 ### Webszolgáltatások kezelése
@@ -157,23 +156,10 @@
 #### [1 TB-os Hadoop használata](machine-learning-data-science-process-hive-criteo-walkthrough.md)
 #### [SQL Server használata](machine-learning-data-science-process-sql-walkthrough.md)
 #### [SQL Data Warehouse használata](machine-learning-data-science-process-sqldw-walkthrough.md)
-### Webszolgáltatási példák
-#### [R példák](machine-learning-r-csharp-web-service-examples.md)
-#### [Bináris osztályozó](machine-learning-r-csharp-binary-classifier.md)
-#### [Fürtmodell](machine-learning-r-csharp-cluster-model.md)
-#### [Többváltozós lineáris regresszió](machine-learning-r-csharp-multivariate-linear-regression.md)
-#### [Előrejelzés – exponenciális simítás](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-#### [Előrejelzés – ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-#### [Előrejelzés – ARIMA](machine-learning-r-csharp-arima.md)
-#### [Túléléselemzés](machine-learning-r-csharp-survival-analysis.md)
-#### [Lexikális alapú hangulatelemzés](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-#### [Aránykülönbségek tesztelése](machine-learning-r-csharp-difference-in-two-proportions.md)
-#### [Normál eloszlási csomag](machine-learning-r-csharp-normal-distribution.md)
-#### [Binomiális eloszlási csomag](machine-learning-r-csharp-binomial-distribution.md)
-#### [Piactér – gyakori kérdések](machine-learning-marketplace-faq.md)
 
 # Referencia
-## [PowerShell](machine-learning-powershell-module.md)
+## [PowerShell modul (Új)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell modul (Klasszikus)](machine-learning-powershell-module.md)
 ## [Algoritmusokra és modulokra vonatkozó referenciák](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST](/rest/api/machinelearning)
 
@@ -192,7 +178,7 @@
 ### [Egyéni modulok](machine-learning-gallery-custom-modules.md)
 ## Cortana Analytics
 ### API-k
-#### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection.md)
+#### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection-api.md)
 #### [Szövegelemzés](machine-learning-apps-text-analytics.md)
 #### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 #### Javaslatok
@@ -222,6 +208,6 @@
 ## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

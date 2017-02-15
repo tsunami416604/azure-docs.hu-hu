@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
+ms.sourcegitcommit: f6fa6511c8d54e191de27fda73aad9feb734191f
+ms.openlocfilehash: 1065ad38f5c3627e4afd441fcd4540db01632373
 
 
 ---
-# <a name="configure-a-pointtosite-connection-to-a-vnet-using-the-classic-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózat számára a klasszikus portálon
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-classic-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózat számára a klasszikus portálon
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -55,9 +55,9 @@ A pont–hely kapcsolatok konfigurálása négy szakaszból áll. Fontos, hogy a
 * **3. szakasz** – Az ügyféltanúsítványok exportálása és telepítése.
 * **4. szakasz** – A VPN-ügyfél konfigurálása.
 
-## <a name="a-namevnetvpnasection-1-create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>1. szakasz: Virtuális hálózat és VPN Gateway létrehozása
+## <a name="a-namevnetvpnasection-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>1. szakasz: Virtuális hálózat és VPN Gateway létrehozása
 ### <a name="part-1-create-a-virtual-network"></a>1. rész: Virtuális hálózat létrehozása
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com/). Ezek a lépések a klasszikus portált használják, nem az Azure Portalt. Jelenleg nem hozható létre pont–hely kapcsolat az Azure Portal használatával.
+1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com). Ezek a lépések a klasszikus portált használják, nem az Azure Portalt. Jelenleg nem hozható létre pont–hely kapcsolat az Azure Portal használatával.
 2. Kattintson a képernyő bal alsó sarkában található **Új** gombra. A navigációs ablakban kattintson a **Hálózati szolgáltatások**, majd a **Virtuális hálózat** lehetőségre. Kattintson az **Egyéni létrehozás** lehetőségre a konfigurációs varázsló elindításához.
 3. A **Virtuális hálózat részletei** lapon adja meg az alábbi információkat, majd a továbblépéshez kattintson a jobb alsó Tovább nyílra.
    
@@ -86,7 +86,7 @@ Az átjáró típusát dinamikusként kell beállítani. A statikus útválaszt�
 1. A klasszikus Azure-portál **Hálózatok** lapján kattintson a létrehozott virtuális hálózatra, és navigáljon az **Irányítópult** lapra.
 2. Kattintson az **Irányítópult** lap alján lévő **Átjáró létrehozása** elemre. Ekkor megjelenik egy üzenet, amely rákérdez, hogy **létrehoz-e átjárót a „VNet1” virtuális hálózathoz**. Az **Igen** gombra kattintva hozzákezdhet az átjáró létrehozásához. Az átjáró létrehozása hozzávetőlegesen 15 percet vesz igénybe.
 
-## <a name="a-namegenerateasection-2-generate-and-upload-certificates"></a><a name="generate"></a>2. szakasz – Tanúsítványok létrehozása és feltöltése
+## <a name="a-namegenerateasection-2---generate-and-upload-certificates"></a><a name="generate"></a>2. szakasz – Tanúsítványok létrehozása és feltöltése
 A tanúsítványok a VPN-ügyfelek hitelesítésére használatosak a pont–hely VPN-kapcsolatokban. Használhat vállalati tanúsítványmegoldás által létrehozott főtanúsítványt, vagy pedig egy önaláírt tanúsítványt. Az Azure-ra legfeljebb 20 főtanúsítványt tölthet fel. Miután feltöltötte a .cer fájlt, az Azure felhasználhatja az abban tárolt információkat azon ügyfelek hitelesítéséhez, amelyeken telepítve lett egy ügyféltanúsítvány. Az ügyféltanúsítványt ugyanabból a tanúsítványból kell létrehozni, mint amelyiket a .cer fájl képvisel.
 
 Ebben a szakaszban az alábbi lépéseket fogja végrehajtani:
@@ -112,14 +112,14 @@ Ezután állítsa elő az ügyféltanúsítványokat. Létrehozhat egy egyedi ta
 * Ha vállalati tanúsítványmegoldást használ, az általános 'name@yourdomain.com', formátumban hozza létre az ügyféltanúsítványokat a NetBIOS „TARTOMÁNY\felhasználónév” formátuma helyett. 
 * Ha önaláírt tanúsítványt használ, az ügyféltanúsítvány létrehozásával kapcsolatban tekintse meg a [Working with self-signed root certificates for Point-to-Site configurations](vpn-gateway-certificates-point-to-site.md) (Önaláírt főtanúsítványok használata pont–hely konfigurációk esetében).
 
-## <a name="a-nameinstallclientcertasection-3-export-and-install-the-client-certificate"></a><a name="installclientcert"></a>3. szakasz – Az ügyféltanúsítvány exportálása és telepítése
+## <a name="a-nameinstallclientcertasection-3---export-and-install-the-client-certificate"></a><a name="installclientcert"></a>3. szakasz – Az ügyféltanúsítvány exportálása és telepítése
 Telepítsen egy ügyféltanúsítványt minden olyan számítógépen, amelyet csatlakoztatni szeretne a virtuális hálózathoz. A hitelesítéshez ügyféltanúsítványra van szükség. Az ügyféltanúsítványt telepítheti automatikusan vagy manuálisan. A következő lépések végigvezetik az ügyféltanúsítvány manuális exportálásán és telepítésén.
 
 1. Az ügyféltanúsítványok exportálásához a *certmgr.msc* fájlt használhatja. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítványra, majd a **minden feladat** és az **exportálás** elemre.
 2. Exportálja az ügyféltanúsítványt a titkos kulccsal. Ez egy *.pfx* fájl. Jegyezze fel vagy jegyezze meg a jelszót (kulcsot), amelyet beállított a tanúsítványhoz.
 3. Másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Amikor a rendszer kéri, adja meg a jelszót. Ne módosítsa a telepítés helyét.
 
-## <a name="a-namevpnclientconfigasection-4-configure-your-vpn-client"></a><a name="vpnclientconfig"></a>4. szakasz – A VPN-ügyfél konfigurálása
+## <a name="a-namevpnclientconfigasection-4---configure-your-vpn-client"></a><a name="vpnclientconfig"></a>4. szakasz – A VPN-ügyfél konfigurálása
 A virtuális hálózathoz való csatlakozáshoz emellett konfigurálnia kell a VPN-ügyfelet is. Az ügyfél csatlakozásához szükséges egy ügyféltanúsítvány és a megfelelő VPN-ügyfélkonfiguráció. A VPN-ügyfél konfigurálásához végezze el a következő lépéseket az itt leírt sorrendben.
 
 ### <a name="part-1-create-the-vpn-client-configuration-package"></a>1. rész: A VPN-ügyfél konfigurációs csomagjának létrehozása
@@ -164,13 +164,14 @@ Példa:
         NetBIOS over Tcpip..............: Enabled
 
 ## <a name="next-steps"></a>Következő lépések
-A virtuális hálózatához hozzáadhat virtuális gépeket. Lásd: [How to create a custom virtual machine](../virtual-machines/virtual-machines-windows-classic-createportal.md) (Egyéni virtuális gép létrehozása).
 
-További információ a virtuális hálózatokról a [Virtual Network-dokumentáció](https://azure.microsoft.com/documentation/services/virtual-network/) lapon található.
+Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+
+További információ a virtuális hálózatokról a [Virtual Network-dokumentáció](/azure/virtual-network) lapon található.
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

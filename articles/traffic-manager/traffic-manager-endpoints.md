@@ -80,6 +80,6 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

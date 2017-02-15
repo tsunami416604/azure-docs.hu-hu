@@ -18,6 +18,9 @@
 ### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
 ### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [Előfizetés](documentation-government-manage-subscriptions.md)
+## Üzembe helyezés
+### Web + mobil
+#### [App Services](documentation-government-howto-deploy-webandmobile.md)
 
 # Referencia
 ## [Szolgáltatások](documentation-government-services.md)
@@ -32,8 +35,10 @@
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/)
 ## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
+## [Blog](https://blogs.msdn.microsoft.com/azuregov/)
+## [Azure Government-webhely](https://azure.microsoft.com/overview/clouds/government/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

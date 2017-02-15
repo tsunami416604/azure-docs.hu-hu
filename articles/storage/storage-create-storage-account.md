@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
-ms.openlocfilehash: fd5ca2dfb12b7527f49d32d9642a91df9e590b14
+ms.sourcegitcommit: a762a0e4753b73b11b2c903fa97c67176199b8d9
+ms.openlocfilehash: 5a1845ac32d2e7454a94d6678521b5e74561933a
 
 
 ---
@@ -59,7 +59,7 @@ Emellett konfigurálhat egy egyéni tartománynevet a tárfiókkal való haszná
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A Központ menüben válassza az **Új** -> **Adatok + tárolás** -> **Tárfiók** elemet.
+2. A Központ menüben válassza az **Új** -> **Tárolás** -> **Tárfiók** elemet.
 3. Adja meg a tárfiók nevét. Lásd a [Tárfiókvégpontok](#storage-account-endpoints) című részt azzal kapcsolatban, hogy a rendszer hogyan használja a tárfiók nevét az objektumok címzéséhez az Azure Storage-ban.
    
    > [!NOTE]
@@ -162,6 +162,6 @@ További információ: [Azure Virtual Machines – dokumentáció](http://azure.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

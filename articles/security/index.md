@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg az Azure-szolgáltatások biztonsági beállításainak testre szabását, hogy azok megfeleljenek a felhőben található szolgáltatások és adatok követelményeinek."
 translationtype: Human Translation
-ms.sourcegitcommit: d06c292b36ef6dd6bd4f858603debfe93d498cb6
-ms.openlocfilehash: 622e8ccb62538110991c4f882ada9014ea03ffb4
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 349a83224dd154cf81f641cac33baa020adc0b77
 
 ---
 # <a name="security-documentation"></a>A Security dokumentációja
 
-Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki.
+Ismerje meg, hogy az Azure Security hogyan használható a felhőben található szolgáltatások és adatok védelmére. Az oktatóanyagok és egyéb dokumentációk segítenek testre szabni az Azure szolgáltatások biztonsági beállításait, hogy azok megfeleljenek a környezet követelményeinek.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,16 +105,10 @@ Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek mill
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security.pdf">
-        <div class="img"></div>
-        <div class="text">
-A Security dokumentációjának letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 
