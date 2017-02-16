@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: a97e20b208d92e03bd4458605aaa48ef7c389e32
+ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
+ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
 
 
 ---
@@ -59,7 +59,9 @@ Nyissa meg az Application Insights ablakot a Visual Studióban: Kattintson az Ap
 
 ![A Visual Studióban megjelenik az Application Insights gomb a hibakeresés alatt.](./media/app-insights-asp-net/55.png)
 
-Ez a nézet az alkalmazás kiszolgálói oldalán létrehozott telemetriát jeleníti meg. Kísérletezzen a szűrőkkel, és kattintson valamely eseményre további részletek megtekintéséhez.
+Ez a nézet („Hibakeresési munkamenetből származó adatok”) az alkalmazás kiszolgálói oldalán létrehozott telemetriát jeleníti meg. Kísérletezzen a szűrőkkel, és kattintson valamely eseményre további részletek megtekintéséhez.
+
+* *Nincs adat? Ellenőrizze, hogy megfelelő-e az időtartomány, majd kattintson a Keresés ikonra.*
 
 [További tudnivalók az Application Insights-eszközökről a Visual Studióban](app-insights-visual-studio.md).
 
@@ -70,15 +72,34 @@ Ha nem a *Csak SDK telepítése* lehetőséget választja, az Application Insigh
 
 A portálon a Visual Studiónál több diagram, elemzőeszköz és irányítópult található. 
 
-Nyissa meg az Application Insights-erőforrást az [Azure Portalon](https://portal.azure.com/).
+Nyissa meg az Application Insights-erőforrást – bejelentkezhet az [Azure Portalra](https://portal.azure.com/), és itt keres, vagy a jobb gombbal kattinthat a projektre a Visual Studióban, amely aztán odavezeti.
 
 ![Kattintson a jobb gombbal a projektre, és nyissa meg az Azure portált](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
-A portál az alkalmazásából származó telemetriai adatok nézetével nyílik meg: ![](./media/app-insights-asp-net/66.png)
+* *Hozzáférési hiba? Ha több microsoftos hitelesítőadat-készlettel rendelkezik, előfordulhat, hogy nem a megfelelővel jelentkezik be. Jelentkezzen ki majd be a portálon.*
 
-* Az első telemetria az [Élő mérőszámok streame](app-insights-metrics-explorer.md#live-metrics-stream) alatt jelenik meg.
-* Az egyes események a **Keresés** mezőben jelennek meg (1). Az adatok megjelenítése eltarthat néhány percig. Kattintson egy eseményre a tulajdonságai megtekintéséhez. 
-* Az összesített mérőszámok a diagramokban jelennek meg (2). Egy-két percet igénybe vehet, hogy az adatok itt megjelenjenek. Kattintson valamely diagramra egy további részleteket tartalmazó panel megnyitásához.
+A portál az alkalmazásából származó telemetriai adatok nézetével nyílik meg: ![Az Application Insights áttekintő oldala](./media/app-insights-asp-net/66.png)
+
+Az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
+
+### <a name="more-detail-in-the-portal"></a>További részletek a portálon
+
+* Az [**Élő metrikastream** ](app-insights-metrics-explorer.md#live-metrics-stream) szinte azonnal megjeleníti a telemetriát.
+
+    ![Az Áttekintés panelen kattintson az élő streamre.](./media/app-insights-asp-net/livestream.png)
+
+    Az élő streamet az alkalmazás futásával egy időben megnyitva engedélyezheti a csatlakozást.
+
+    Az élő stream a küldés után csupán egy percig jeleníti meg a telemetriát. További előzményvizsgálatokhoz használja a Keresést, a Metrikaböngészőt és az Analitikát. Az adatok megjelenítése e helyeken eltarthat néhány percig.
+
+* A [**Keresés**](app-insights-diagnostic-search.md) egyes eseményeket, például kérelmeket, kivételeket és lapmegtekintéseket jeleníthet meg. A szűrés elvégezhető az eseménytípusok, a kifejezési egyezések és a tulajdonságok értékei alapján. Kattintson valamely eseményre a tulajdonságai és a kapcsolódó eseményei megtekintéséhez. 
+
+    ![Az Áttekintés panelen kattintson a Keresés elemre.](./media/app-insights-asp-net/search.png)
+
+ * A fejlesztői módban számos függő (AJAX) esemény megtekintésére van lehetőség. Ezek a böngésző és a kiszolgálóemulátor közötti szinkronizálások. Az elrejtésükhöz kattintson a Függőségi szűrőre.
+* A diagramokban az [**összesített mérőszámok**](app-insights-metrics-explorer.md) (például a kérelmi és hibaarány) jelennek meg. Kattintson valamely diagramra egy további részleteket tartalmazó panel megnyitásához. Kattintson valamely diagram **Szerkesztés** címkéjére a szűrők, méret stb. beállításához.
+    
+    ![Az Áttekintés panelen kattintson valamelyik diagramra.](./media/app-insights-asp-net/metrics.png)
 
 [További tudnivalók az Application Insights használatáról az Azure Portalon](app-insights-dashboards.md).
 
@@ -175,6 +196,6 @@ Ha a Visual Studio Team Servicest használja, egy új verzió kibocsátásakor d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

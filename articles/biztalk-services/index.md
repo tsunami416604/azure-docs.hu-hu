@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja."
 translationtype: Human Translation
-ms.sourcegitcommit: 329bf8f57270c901d54f27a2159287e08e4c355a
-ms.openlocfilehash: dfde406339068f9261fccb87039d18a0dfdedeff
+ms.sourcegitcommit: 74eb1a0a0f532ffe23fdfac0d8b25ee9434175a1
+ms.openlocfilehash: 754a932b8d98bbae8f7e24daab073cbec1d4d16e
 
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services – dokumentáció
 
-A BizTalk Services modullal megvalósítható az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó üzletági alkalmazások felhő és helyi környezetek közötti integrációja. Lehetőség nyílik HTTP-, FTP-, SFTP- vagy REST-alapú adatforrásokkal való csatlakozásra, Az üzenetirányítási funkciókat pedig különféle Azure-összetevők, például az SQL Database, a Blob Storage, valamint Service Bus-üzenetsorok és témák biztosítják.   
+Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja. Az oktatóanyagok és egyéb dokumentációk bemutatják a zökkenőmentes integrációt a vállalat és a felhő között.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -77,6 +78,7 @@ BizTalk Services – dokumentáció letöltése </div>
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO3-->
 
 

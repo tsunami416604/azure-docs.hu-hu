@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 
 
 ---
-# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
+# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon
 A félreértések elkerülése végett számos vállalat igyekszik egységes megjelenést adni az általa kezelt összes webhelynek és szolgáltatásnak. Az Azure Active Directory ennek érdekében testre szabhatóvá teszi az alábbi webhelyek megjelenését a vállalat emblémájának elhelyezésével és egyéni színsémák alkalmazásával:
 
 * **Bejelentkezési oldal** – Ez az oldal jelenik meg az olyan Office 365- vagy más webes alkalmazásokra történő bejelentkezéskor, amelyek identitásszolgáltatóként az Azure AD-t használják. Ezzel az oldallal a kezdőtartomány-felderítés vagy hitelesítő adatainak megadása során találkozik. A kezdőtartomány-felderítés lehetővé teszi, hogy a rendszer átirányítsa az összevont felhasználókat a helyszíni STS-eikre (például az AD FS-re).
@@ -34,7 +34,7 @@ Ez a témakör a bejelentkezési oldal és a hozzáférési panel testreszabás�
 > 
 > 
 
-## <a name="customizing-the-signin-page"></a>A bejelentkezési oldal testreszabása
+## <a name="customizing-the-sign-in-page"></a>A bejelentkezési oldal testreszabása
 A felhasználók jellemzően akkor használják a bejelentkezési oldalt, ha böngészőalapú hozzáférésre van szükségük a szervezetük által előfizetett felhőalkalmazásaikhoz és szolgáltatásaikhoz.
 
 A bejelentkezési oldalon alkalmazott módosítások megjelenése akár egy órát is igénybe vehet.
@@ -224,6 +224,6 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

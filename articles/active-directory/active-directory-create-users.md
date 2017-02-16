@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/22/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 09293d71b99e325a417edf59172550ef6e5f5b71
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
+# <a name="add-new-users--or-users-with-microsoft-accounts-to-azure-active-directory"></a>Új felhasználók vagy Microsoft-fiókkal rendelkező felhasználók hozzáadása az Azure Active Directoryhoz
 Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk azt ismerteti, hogyan vehet fel új felhasználókat a szervezetben, és hogyan vehet fel Microsoft-fiókkal rendelkező felhasználókat. Az Azure Active Directoryban a más címtárakban lévő felhasználók felvételéről vagy a partnervállalatokban lévő felhasználók felvételéről további információért lásd: [Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba](active-directory-create-users-external.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
 
 ## <a name="add-a-user"></a>Felhasználó hozzáadása
@@ -87,6 +87,6 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

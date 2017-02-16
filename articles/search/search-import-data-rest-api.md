@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 ---
 
@@ -36,10 +36,10 @@ A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](se
 
 A dokumentumok REST API használatával az indexbe történő küldéséhez egy HTTP POST kérést fog kiadni az index URL-címének végpontján. A HTTP-kérés törzse egy olyan JSON-objektum, amely tartalmazza a hozzáadni, módosítani vagy törölni kívánt dokumentumokat.
 
-## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Azonosítsa az Azure Search szolgáltatás rendszergazdai API-kulcsát
+## <a name="identify-your-azure-search-services-admin-api-key"></a>Azonosítsa az Azure Search szolgáltatás rendszergazdai API-kulcsát
 Ha a REST API használatával HTTP-kérések kiadását végzi a szolgáltatáson, *mindegyik* API-kérésnek tartalmaznia kell az Ön által üzembe helyezett Search szolgáltatáshoz létrehozott API-kulcsot. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure Portalra](https://portal.azure.com/).
+1. A szolgáltatás API-kulcsainak megkereséséhez bejelentkezhet az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
@@ -50,7 +50,7 @@ A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog 
 
 Egy indexbe történő adatimportáláshoz az elsődleges vagy a másodlagos rendszergazdai kulcsok bármelyikét használhatja.
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. A használni kívánt indexelési művelet megadása
+## <a name="decide-which-indexing-action-to-use"></a>A használni kívánt indexelési művelet megadása
 A REST API használatakor JSON-kéréstörzsekkel ellátott HTTP POST kéréseket fog kiadni az Azure Search-index végponti URL-címére. A HTTP-kéréstörzsben lévő JSON-objektum egyetlen „value” nevű egyedi JSON-tömböt fog tartalmazni. A tömbben lévő JSON-objektumok az indexhez hozzáadni, abban frissíteni vagy abból törölni kívánt dokumentumokat képviselik.
 
 A „value” tömbben található minden JSON-objektum egy-egy indexelendő dokumentumot képvisel. Ezen objektumok mindegyike tartalmazza a dokumentum kulcsát, valamint megadja a végrehajtani kívánt indexelési műveletet (például feltöltés, egyesítés vagy törlés). Attól függően, hogy az alábbi műveletek közül melyiket választja ki, az egyes dokumentumok esetében csak bizonyos mezők lesznek kötelezően megjelenítendők:
@@ -62,7 +62,7 @@ A „value” tömbben található minden JSON-objektum egy-egy indexelendő dok
 | `mergeOrUpload` |Ha az indexben már létezik az adott kulccsal ellátott dokumentum, ezen művelet viselkedése hasonló lesz a `merge` műveletéhez. Ha nem létezik ilyen dokumentum, a művelet viselkedése az `upload` új dokumentum esetében mutatott viselkedésének fog megfelelni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |- |
 | `delete` |Eltávolítja a megadott dokumentumot az indexből. |csak billentyű |A rendszer figyelmen kívül hagyja a kulcsmezőn kívül megadott mezőket. Ha egyetlen mezőt kíván eltávolítani a dokumentumból, e helyett használja a `merge` műveletet, és a mező számára explicit módon adja meg a null értéket. |
 
-## <a name="iii-construct-your-http-request-and-request-body"></a>III. A HTTP-kérés és a kérés törzsének létrehozása
+## <a name="construct-your-http-request-and-request-body"></a>A HTTP-kérés és a kérés törzsének létrehozása
 Most, hogy összegyűjtötte az indexelési műveletekhez szükséges mezők értékeit, készen áll a tulajdonképpeni HTTP-kérés és a JSON-kérés törzsének létrehozására az adatok importálásához.
 
 #### <a name="request-and-request-headers"></a>Kérés és kérésfejlécek
@@ -126,7 +126,7 @@ Jelen példában feltételezzük, hogy a „hotels” index már fel van töltve
 
 Vegye figyelembe azt is, hogy egyetlen indexelési kérésbe legfeljebb 1000 dokumentumot (vagy 16 MB adatmennyiséget) foglalhat.
 
-## <a name="iv-understand-your-http-response-code"></a>IV. A HTTP válaszkód ismertetése
+## <a name="understand-your-http-response-code"></a>A HTTP válaszkód ismertetése
 #### <a name="200"></a>200
 Az indexelési kérés sikeres elküldését követően HTTP-választ fog kapni a következő állapotkóddal: `200 OK`. A HTTP-válasz JSON-törzse a következő lesz:
 
@@ -177,11 +177,11 @@ Ha az indexelés a kérésben szereplő összes elem esetében meghiúsult, a re
 
 További információk a dokumentumokkal végzett műveletekről, illetve a sikeres/meghiúsult műveletekre adott rendszerválaszokról: [Dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). További információk a meghiúsult műveletek esetében visszaadható HTTP-állapotkódokról: [HTTP-állapotkódok (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-## <a name="next"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 Az Azure Search-index feltöltését követően készen áll a dokumentumkeresési lekérdezések kiadásának elindítására. Részletes információk: [Az Azure Search-index lekérdezése](search-query-overview.md).
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

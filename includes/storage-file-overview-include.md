@@ -7,6 +7,6 @@ Azure fájlmegosztásokat létrehozhat az [Azure Portalon](https://portal.azure.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

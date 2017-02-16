@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba48381f2c16a56e2e3f187017fbdbae09544e77
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6d80f266730701dc4e678f4365a2166be72c9143
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>A prediktív karbantartási előre konfigurált megoldás bemutatója
 ## <a name="introduction"></a>Bevezetés
-Az IoT Suite prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, beleértve egy [Azure Machine Learning][lnk_machine_learning] munkaterületet. Ezen a munkaterületen kísérletek találhatók a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
+Az IoT Suite prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, beleértve egy [Azure Machine Learning][lnk_machine_learning]-munkaterületet. Ezen a munkaterületen kísérletek találhatók a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
@@ -127,6 +127,6 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

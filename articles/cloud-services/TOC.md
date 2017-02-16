@@ -64,6 +64,13 @@
 #### [Klasszikus portál](cloud-services-how-to-scale.md)
 ### [Azure-erőforrások felügyelete a Pythonnal](cloud-services-python-how-to-use-service-management.md)
 
+### [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
+### Vendég operációs rendszer kivezetése
+#### [Kivezetési szabályzat](cloud-services-guestos-retirement-policy.md)
+#### [1. család kivezetéséről szóló értesítés](cloud-services-guestos-family1-retirement.md)
+### [A vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)
+### [Cloud Services-szerepkör konfigurálása, XPath-adatlap](cloud-services-role-config-xpath.md)
+
 ## Tanúsítványok kezelése
 ### [Cloud Services és felügyeleti tanúsítványok](cloud-services-certs-create.md)
 ### Az SSL konfigurálása 
@@ -101,12 +108,6 @@
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
-## [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
-## Vendég operációs rendszer kivezetése
-### [Kivezetési szabályzat](cloud-services-guestos-retirement-policy.md)
-### [1. család kivezetéséről szóló értesítés](cloud-services-guestos-family1-retirement.md)
-## [A vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)
-## [Cloud Services-szerepkör konfigurálása, XPath-adatlap](cloud-services-role-config-xpath.md)
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -116,6 +117,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

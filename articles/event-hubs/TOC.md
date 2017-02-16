@@ -2,7 +2,7 @@
 
 ## [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md)
 ## [Event Hubs – áttekintés](event-hubs-overview.md)
-## [Event Hubs API overview](event-hubs-api-overview.md) (Event Hubs API – áttekintés)
+## [Event Hubs API – áttekintés](event-hubs-api-overview.md)
 ## [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
 
 
@@ -24,14 +24,14 @@
 ### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
 
 # Referencia
-## [Kvóták és korlátozások](event-hubs-quotas.md)
-## [Üzenetkezelési kivételek](event-hubs-messaging-exceptions.md)
-## [Java](/java/api)
-## [.NET](/dotnet/api)
-## [AMQP1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
+## [.NET](/dotnet/api/microsoft.azure.eventhubs)
+## [Java](/java/api/com.microsoft.azure.eventhubs)
 ## [REST](/rest/api/eventhub)
 
 # Erőforrások
+## [Kvóták és korlátozások](event-hubs-quotas.md)
+## [Üzenetkezelési kivételek](event-hubs-messaging-exceptions.md)
+## [AMQP1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/event-hubs/)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
 ## [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
@@ -40,6 +40,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

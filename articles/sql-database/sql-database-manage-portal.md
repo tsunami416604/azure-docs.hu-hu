@@ -1,121 +1,135 @@
 ---
-title: Manage Azure SQL Database using the Azure Portal | Microsoft Docs
-description: Learn how to use the Azure Portal to manage a relational database in the cloud using the Azure Portal.
+title: "Az Azure SQL Database felügyelete az Azure Portallal | Microsoft Docs"
+description: "Rövid összefoglalás a relációs adatbázisok az Azure Portallal történő felhőalapú kezeléséről."
 services: sql-database
-documentationcenter: ''
-author: stevestein
+documentationcenter: 
+author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 3a56e9de-c21a-40ba-9a35-958172cb4e5b
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
-ms.date: 09/19/2016
-ms.author: sstein
+ms.date: 01/10/2017
+ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
+ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
+
 
 ---
-# Managing Azure SQL Databases using the Azure portal
+# <a name="manage-azure-sql-databases-using-the-azure-portal"></a>Azure SQL Database-adatbázisok kezelése az Azure Portallal
 > [!div class="op_single_selector"]
-> * [Azure portal](sql-database-manage-portal.md)
+> * [Azure Portal](sql-database-manage-portal.md)
 > * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-command-line-tools.md)
+> * [PowerShell](sql-database-manage-powershell.md)
 > 
 > 
 
-The [Azure portal](https://portal.azure.com/) allows you to create, monitor, and manage Azure SQL databases and servers. This article provides a quick description and links to the details of the more common tasks.
+Az [Azure Portalon](https://portal.azure.com/) létrehozhatja, monitorozhatja és kezelheti az Azure SQL Database-adatbázisokat és -kiszolgálókat. Ez a cikk a leggyakoribb feladatok rövid leírását és a részletes információkra mutató hivatkozásokat tartalmazza.
 
-## View your Azure SQL databases, servers, and pools
-To view the available SQL Database services, click **More services**, and type **SQL** in the search box:
+> [!TIP]
+> A kiszolgálók és a kiszolgálóalapú tűzfalak létrehozásáról, a kiszolgáló tulajdonságainak megtekintéséről, az SQL Server Management Studióval való csatlakozásról, a master adatbázis lekérdezéséről, a mintaadatbázis, illetve üres adatbázis létrehozásáról, az adatbázis tulajdonságainak lekérdezéséről, valamint az SQL Server Management Studióval való kapcsolódásról és a mintaadatbázis lekérdezéséről szóló oktatóanyagok az [Első lépéseket ismertető oktatóanyagban](sql-database-get-started.md) találhatók.
+
+## <a name="view-your-azure-sql-databases-servers-and-pools"></a>Az Azure SQL Database-adatbázisok, -kiszolgálók és -készletek megtekintése
+Az elérhető SQL Database-szolgáltatások listájának megtekintéséhez kattintson a **További szolgáltatások** elemre, és a keresőmezőbe írja be az **SQL** kifejezést:
 
 ![SQL Database](./media/sql-database-manage-portal/sql-services.png)
 
-## How do I create or view Azure SQL databases?
-To open the **SQL databases** blade, click **SQL databases**, and then click the database you want to work with, or click **+Add** to create a SQL database. For details, see [Create a SQL database in minutes by using the Azure portal](sql-database-get-started.md).
+## <a name="how-do-i-create-or-view-azure-sql-databases"></a>Hogyan hozhatók létre vagy tekinthetők meg az Azure SQL Database-adatbázisok?
+Az **SQL Database-adatbázisok** panel megnyitásához kattintson az **SQL Database-adatbázisok** elemre, majd kattintson a használni kívánt adatbázisra, vagy kattintson a **+Hozzáadás** elemre, és hozzon létre egy SQL Database-adatbázist. További részletek: [SQL Database-adatbázis létrehozása pillanatok alatt az Azure Portalon](sql-database-get-started.md).
 
-![SQL databases](./media/sql-database-manage-portal/sql-databases.png)
+![SQL Database-adatbázisok](./media/sql-database-manage-portal/sql-databases.png)
 
-## How do I create or view Azure SQL servers?
-To open the **SQL servers** blade, click **SQL servers**, and then click the server you want to work with, or click **+Add** to create a SQL server. For details, see [Create a SQL database in minutes by using the Azure portal](sql-database-get-started.md).
+## <a name="how-do-i-create-or-view-azure-sql-servers"></a>Hogyan hozhatók létre vagy tekinthetők meg az Azure SQL Server-kiszolgálók?
+Az **SQL Server-kiszolgálók** panel megnyitásához kattintson az **SQL Server-kiszolgálók** elemre, majd kattintson a használni kívánt kiszolgálóra, vagy kattintson a **+Hozzáadás** elemre, és hozzon létre egy SQL Server-kiszolgálót. További részletek: [SQL Database-adatbázis létrehozása pillanatok alatt az Azure Portalon](sql-database-get-started.md).
 
-![SQL servers](./media/sql-database-manage-portal/sql-servers.png)
+![SQL Server-kiszolgálók](./media/sql-database-manage-portal/sql-servers.png)
 
-## How do I create or view SQL elastic pools?
-To open the **SQL elastic pools** blade, click **SQL elastic pools**, and then click the pool you want to work with, or click **+Add** to create a pool. For details, see [Create an elastic database pool with the Azure portal](sql-database-elastic-pool-create-portal.md).
+## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>Hogyan hozhatók létre vagy tekinthetők meg a rugalmas SQL-készletek?
+A **Rugalmas SQL-készletek** panel megnyitásához kattintson a **Rugalmas SQL-készletek** elemre, majd kattintson a használni kívánt készletre, vagy kattintson a **+Hozzáadás** elemre, és hozzon létre egy készletet. További részletek a [Rugalmas készlet létrehozása az Azure Portalon](sql-database-elastic-pool-create-portal.md) című részben találhatók.
 
-![SQL elastic pools](./media/sql-database-manage-portal/elastic-pools.png)
+![Rugalmas SQL-készletek](./media/sql-database-manage-portal/elastic-pools.png)
 
-## How do I update or view SQL database settings?
-To view or update your database settings, click the desired setting on the SQL database blade:
+## <a name="how-do-i-update-or-view-sql-database-settings"></a>Hogyan frissíthetők vagy tekinthetők meg az SQL Database-adatbázisok beállításai?
+Az adatbázis-beállítások megtekintéséhez vagy frissítéséhez kattintson a kívánt beállításra az SQL Database-adatbázis panelen:
 
-![SQL database settings](./media/sql-database-manage-portal/settings.png)
+![SQL Database-adatbázis beállításai](./media/sql-database-manage-portal/settings.png)
 
-## How do I find a SQL databases fully qualified server name?
-To view your databases server name, click **Overview** on the **SQL database** blade and note the server name:
+## <a name="how-do-i-find-a-sql-databases-fully-qualified-server-name"></a>Hogyan kérdezhető le az SQL Database-adatbázisok teljes kiszolgálóneve?
+Az adatbázisok kiszolgálónevének megtekintéséhez kattintson az **Áttekintés** elemre az **SQL Database-adatbázis** panelen, és jegyezze fel a kiszolgáló nevét:
 
-![SQL database settings](./media/sql-database-manage-portal/server-name.png)
+![SQL Database-adatbázis beállításai](./media/sql-database-manage-portal/server-name.png)
 
-## How do I manage firewall rules to control access to my SQL server and database?
-To view, create, or update firewall rules, click **Set server firewall** on the **SQL database** blade. For details, see [Configure an Azure SQL Database server-level firewall rule using the Azure portal](sql-database-configure-firewall-settings.md).
+## <a name="how-do-i-manage-firewall-rules-to-control-access-to-my-sql-server-and-database"></a>Hogyan kezelhetők a tűzfalszabályok az SQL-kiszolgálóhoz és -adatbázishoz való hozzáférés vezérléséhez?
+A tűzfalszabályok megtekintéséhez, létrehozásához és frissítéséhez kattintson a **Kiszolgálótűzfal beállítása** elemre az **SQL Database-adatbázis** panelen. Részletes információ: [Azure SQL Database kiszolgálószintű tűzfalszabály létrehozása az Azure Portal használatával](sql-database-configure-firewall-settings.md).
 
-![firewall rules](./media/sql-database-manage-portal/sql-database-firewall.png)
+![tűzfalszabályok](./media/sql-database-manage-portal/sql-database-firewall.png)
 
-## How do I change my SQL database service tier or performance level?
-To update the service tier or performance level of a SQL database, click **Pricing tier (scale DTUs)** on the **SQL database** blade. For details, see [Change the service tier and performance level (pricing tier) of a SQL database](sql-database-scale-up.md).
+## <a name="how-do-i-change-my-sql-database-service-tier-or-performance-level"></a>Hogyan módosítható az SQL Database-adatbázis szolgáltatásszintje és teljesítményszintje?
+Az SQL Database-adatbázis szolgáltatásszintjének és teljesítményszintjének frissítéséhez kattintson az **Tarifacsomag (DTU-k méretének beállítása)** elemre az **SQL Database-adatbázis** panelen. Bővebb információ: [SQL Database-adatbázisok szolgáltatás- és teljesítményszintjének (tarifacsomag) módosítása](sql-database-scale-up.md).
 
-![pricing tiers](./media/sql-database-manage-portal/pricing-tier.png)
+![tarifacsomagok](./media/sql-database-manage-portal/pricing-tier.png)
 
-## How do I configure auditing and threat detection for a SQL database?
-To configure auditing and threat detection for a SQL database, click **Auditing and Threat detection** on the **SQL database** blade. For details, see [Get started with SQL database auditing](sql-database-auditing-get-started.md), and [Get started with SQL Database Threat Detection](sql-database-threat-detection-get-started.md).
+## <a name="how-do-i-configure-auditing-and-threat-detection-for-a-sql-database"></a>Hogyan konfigurálható a naplózás és a fenyegetésészlelés az SQL Database-adatbázisokhoz?
+Ha konfigurálni szeretné a naplózást és a fenyegetésészlelést az SQL Database-adatbázishoz, kattintson a **Naplózás és fenyegetésészlelés** elemre az **SQL Database-adatbázis** panelen. Részletes információk: [Ismerkedés az Ismerkedés az SQL Database naplózási szolgáltatásával](sql-database-auditing-get-started.md) és [Ismerkedés az SQL Database fenyegetésészlelési szolgáltatásával](sql-database-threat-detection-get-started.md).
 
-## How do I configure dynamic data masking for a SQL database?
-To configure dynamic data masking for a SQL database, click **Dynamic data masking** on the **SQL database** blade. For details, see [Get started with SQL Database Dynamic Data Masking](sql-database-dynamic-data-masking-get-started.md).
+## <a name="how-do-i-configure-dynamic-data-masking-for-a-sql-database"></a>Hogyan konfigurálható a dinamikus adatmaszkolás az SQL Database-adatbázisokban?
+Az SQL Database dinamikus adatmaszkolásának konfigurálásához kattintson a **Dinamikus adatmaszkolás** elemre az **SQL Database-adatbázis** panelen. További információ: [Az SQL Database dinamikus adatmaszkolásának első lépései](sql-database-dynamic-data-masking-get-started.md).
 
-## How do I configure transparent data encryption (TDE) for a SQL database?
-To configure transparent data encryption for a SQL database, click **Transparent data encryption** on the **SQL database** blade. For details, see [Enable TDE on a database using the portal](https://msdn.microsoft.com/library/dn948096#Anchor_1).
+## <a name="how-do-i-configure-transparent-data-encryption-tde-for-a-sql-database"></a>Hogyan konfigurálható transzparens adattitkosítás (TDE) az SQL Database-adatbázisokban?
+Az SQL Database transzparens adattitkosításának konfigurálásához kattintson a **Transzparens adattitkosítás** elemre az **SQL Database-adatbázis** panelen. További információ: [Transzparens adattitkosítás engedélyezése a portálon](https://msdn.microsoft.com/library/dn948096#Anchor_1).
 
-## How do I view or change the max size of a SQL database?
-To view or change the size a SQL database, click **Database size** on the **SQL database** blade. Update the max size of a database by changing the service tier or performance level. For details, see [Change the service tier and performance level (pricing tier) of a SQL database](sql-database-scale-up.md).
+## <a name="how-do-i-view-or-change-the-max-size-of-a-sql-database"></a>Hogyan módosítható az SQL Database-adatbázis maximális mérete?
+Az SQL Database-adatbázisok méretének megtekintéséhez vagy módosításához kattintson az **Adatbázis mérete** elemre az **SQL Database-adatbázis** panelen. Az adatbázis maximális méretét a szolgáltatásszint és a teljesítményszint módosításával frissítheti. Bővebb információ: [SQL Database-adatbázisok szolgáltatás- és teljesítményszintjének (tarifacsomag) módosítása](sql-database-scale-up.md).
 
-## How do I monitor and improve the performance of a SQL database?
-To monitor and improve performance characteristics of a SQL database, click **Performance overview** on the **SQL database** blade. For details, see [SQL Database Performance Insight](sql-database-performance.md).
+## <a name="how-do-i-monitor-and-improve-the-performance-of-a-sql-database"></a>Hogyan monitorozható és javítható az SQL Database-adatbázisok teljesítménye?
+Az SQL Database-adatbázisok teljesítményjellemzőinek monitorozásához és javításához kattintson a **Teljesítmény áttekintése** elemre az **SQL Database-adatbázis** panelen. További információ: [SQL Database-teljesítményelemzés](sql-database-performance.md).
 
-## How do I configure Geo-Replication?
-To set up Geo-Replication for a SQL database, click **Geo-Replication** on the **SQL database** blade. For details, see [Configure Geo-Replication for Azure SQL Database with the Azure portal](sql-database-geo-replication-portal.md).
+## <a name="how-do-i-configure-geo-replication"></a>Hogyan konfigurálható a georeplikáció?
+Ha georeplikációt kíván beállítani az SQL Database-adatbázishoz, kattintson a **Georeplikáció** elemre az **SQL Database-adatbázis** panelen. További információ: [Georeplikáció konfigurálása az Azure SQL Database-adatbázishoz az Azure Portalon](sql-database-geo-replication-portal.md).
 
-## How do I failover to a geo-replicated SQL database?
-To failover to a geo-replicated secondary, click **Geo-Replication** on the **SQL database** blade, then click **Failover**. For details, see [Initiate a planned or unplanned failover for Azure SQL Database with the Azure portal](sql-database-geo-replication-failover-portal.md).
+## <a name="how-do-i-fail-over-to-a-geo-replicated-sql-database"></a>Hogyan lehet feladatátvételt beállítani egy georeplikált SQL Database-adatbázishoz?
+Ha feladatátvételt szeretne beállítani egy georeplikált másodlagos adatbázishoz, kattintson a **Georeplikáció** elemre az **SQL Database-adatbázis** panelen, majd kattintson a **Feladatátvétel** elemre. További információ: [Tervezett vagy nem tervezett feladatátvétel inicializálása az Azure SQL Database-hez az Azure Portal használatával](sql-database-geo-replication-failover-portal.md).
 
-## How do I copy a SQL database?
-To copy a SQL database, click **Copy** on the **SQL database** blade. For details, see [Copy an Azure SQL database using the Azure portal](sql-database-copy-portal.md).
+## <a name="how-do-i-copy-a-sql-database"></a>Hogyan másolható egy SQL Database-adatbázis?
+Az SQL Database-adatbázisok másolásához kattintson a **Másolás** elemre az **SQL Database-adatbázis** panelen. További információ: [Azure SQL Database-adatbázisok másolása az Azure Portal használatával](sql-database-copy-portal.md).
 
-![SQL database settings](./media/sql-database-manage-portal/sql-database-copy.png)
+![SQL Database-adatbázis beállításai](./media/sql-database-manage-portal/sql-database-copy.png)
 
-## How do I archive an Azure SQL database to a BACPAC file?
-To create a BACPAC of a SQL database, click **Export** on the **SQL database** blade. For details, see [Archive an Azure SQL database to a BACPAC file using the Azure portal](sql-database-export.md).
+## <a name="how-do-i-archive-an-azure-sql-database-to-a-bacpac-file"></a>Hogyan archiválhatók az Azure SQL Database-adatbázisok BACPAC-fájlba?
+Ha BACPAC-fájlt szeretne létrehozni egy SQL Database-adatbázisból, kattintson az **Exportálás** elemre az **SQL Database-adatbázis** panelen. További információ: [Azure SQL Database-adatbázisok archiválása BACPAC-fájlba az Azure Portal használatával](sql-database-export.md).
 
-![SQL database export](./media/sql-database-manage-portal/sql-database-export.png)
+![SQL Database-adatbázis exportálása](./media/sql-database-manage-portal/sql-database-export.png)
 
-## How do I restore a SQL database to a previous point in time?
-To restore a SQL database, click **Restore** on the **SQL database** blade. For details, see [Restore an Azure SQL Database to a previous point in time with the Azure portal](sql-database-point-in-time-restore-portal.md).
+## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>Hogyan állítható vissza egy SQL Database-adatbázis egy korábbi időpontra?
+Az SQL Database-adatbázis visszaállításához kattintson a **Visszaállítás** elemre az **SQL Database-adatbázis** panelen. További információ: [Azure SQL Database-adatbázis visszaállítása egy korábbi időpontra az Azure Portal használatával](sql-database-point-in-time-restore.md).
 
-![SQL database settings](./media/sql-database-manage-portal/sql-database-restore.png)
+![SQL Database-adatbázis beállításai](./media/sql-database-manage-portal/sql-database-restore.png)
 
-## How do I create an Azure SQL database from a BACPAC file?
-To create a SQL database from a BACPAC file, click **Import database** on the **SQL server** blade. For details, see [Import a BACPAC file to create an Azure SQL database](sql-database-import.md).
+## <a name="how-do-i-create-an-azure-sql-database-from-a-bacpac-file"></a>Hogyan hozható létre Azure SQL Database-adatbázis egy BACPAC-fájlból?
+Ha SQL Database-adatbázist kíván létrehozni egy BACPAC-fájlból, kattintson az **Adatbázis importálása** elemre az **SQL Database-adatbázis** panelen. További információ: [BACPAC-fájl importálása Azure SQL Database-adatbázis létrehozásához](sql-database-import.md).
 
-![SQL server](./media/sql-database-manage-portal/server-commands.png)
+![SQL Server](./media/sql-database-manage-portal/server-commands.png)
 
-## How do I restore a deleted SQL database?
-To restore a deleted SQL database, click **Deleted databases** on the **SQL server** blade (the SQL server that contained the database that was deleted). For details, see [Restore a deleted Azure SQL database using the Azure portal](sql-database-restore-deleted-database-portal.md).
+## <a name="how-do-i-restore-a-deleted-sql-database"></a>Hogyan állíthatók vissza a törölt SQL Database-adatbázisok?
+Törölt SQL Database-adatbázis visszaállításához kattintson a **Törölt adatbázisok** elemre az **SQL Server-kiszolgáló** panelen (a törölt adatbázist tartalmazó SQL Server-kiszolgálón). További információ: [Törölt Azure SQL Database-adatbázis visszaállítása az Azure Portal használatával](sql-database-restore-deleted-database-portal.md).
 
-## How do I delete a SQL database?
-To delete a SQL database, click **Delete** on the **SQL database** blade. 
+## <a name="how-do-i-delete-a-sql-database"></a>Hogyan törölhető egy SQL Database-adatbázis?
+SQL Database-adatbázis törléséhez kattintson a **Törlés** elemre a **SQL Database-adatbázis** panelen. 
 
-![SQL database settings](./media/sql-database-manage-portal/sql-database-delete.png)
+![SQL Database-adatbázis beállításai](./media/sql-database-manage-portal/sql-database-delete.png)
 
-## Additional resources
+## <a name="additional-resources"></a>További források
 * [SQL Database](sql-database-technical-overview.md)
-* [Monitor and manage an elastic database pool with the Azure portal](sql-database-elastic-pool-manage-portal.md)
+* [Rugalmas készlet monitorozása és kezelése az Azure Portalon](sql-database-elastic-pool-manage-portal.md)
+
+
+
+
+<!--HONumber=Dec16_HO3-->
+
 

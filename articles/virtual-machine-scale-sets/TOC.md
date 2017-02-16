@@ -2,15 +2,17 @@
 ## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
 
 # Első lépések
-## [Windows rendszerű méretezési csoport létrehozása](virtual-machine-scale-sets-windows-create.md)
-## [Linux rendszerű méretezési csoport létrehozása](virtual-machine-scale-sets-linux-create-cli.md)
+## [Méretezési csoport létrehozása a portálon](virtual-machine-scale-sets-portal-create.md)
 
 # Útmutató
 ## Tervezés és kialakítás
 ### [Kialakítási szempontok](virtual-machine-scale-sets-design-overview.md)
+
 ## Üzembe helyezés
 ### [Méretezési csoport a portállal](virtual-machine-scale-sets-portal-create.md)
 ### [Méretezési csoport a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
+### [Méretezési csoport PowerShell-lel](virtual-machine-scale-sets-windows-create.md)
+### [Méretezési csoport Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
 ### [Linux rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-windows-autoscale.md)
 ### [Méretezésicsoport-alkalmazások](virtual-machine-scale-sets-deploy-app.md)
@@ -38,6 +40,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan fejleszthet és helyezhet üzembe Functions-rutinokat a kívánt nyelven annak érdekében, hogy a feladatok speciális infrastruktúra nélkül, a háttérben vagy ütemezve fussanak."
 translationtype: Human Translation
-ms.sourcegitcommit: 87316969b7849396c6542decde3257774c35c454
-ms.openlocfilehash: dc15cd4e497135ea9ce07d671020af6df49ad3f6
+ms.sourcegitcommit: 76fed1f753b910007be4d9bb16630483aa225760
+ms.openlocfilehash: 91deffe385997c3e658a7fbfe194c9c2b762df58
 
 ---
 #<a name="azure-functions-documentation"></a>Azure Functions – dokumentáció
 
-Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven függvények, a felhőben. Írja meg az adott problémára vonatkozó kódot anélkül, hogy a futtató infrastruktúra teljes alkalmazásával kellene bajlódnia. A kódot tetszés szerinti nyelvben írhatja, például C#, F#, Node.js, Python, vagy PHP segítségével.
+Ismerje meg, hogy a Functions használatával hogyan fejleszthet és helyezhet üzembe kódokat a kívánt nyelven a felhőben anélkül, hogy infrastruktúrát állítana be. Az oktatóanyagok, a sablonok és egyéb dokumentációk bemutatják az olyan Functions-rutinok elkészítését, amelyek a háttérben vagy ütemezve futnak.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -115,6 +116,6 @@ Azure Functions – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

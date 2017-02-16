@@ -66,7 +66,7 @@ sql-database-service-tiers.md
 | Készlet mérete (eDTU)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
 | Maximális tárterület készletenként* | 750 GB | 750 GB | 750 GB | 750 GB | 750 GB |
-| Maximális tárterület készletenként* | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
+| Memóriában tárolt OLTP-k maximális tárterülete készletenként* | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
 | Adatbázisok maximális száma készletenként | 100 | 100 | 100 | 100 | 100 | 
 | Egyidejű feldolgozók maximális száma készletenként |  3200 | 4000 | 4800 | 5600 | 6400 |
 | Egyidejű bejelentkezések maximális száma készletenként |  3200 | 4000 | 4800 | 5600 | 6400 |
@@ -79,6 +79,6 @@ sql-database-service-tiers.md
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

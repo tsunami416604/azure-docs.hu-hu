@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
 
 
 ---
@@ -59,11 +59,11 @@ A rendszer az alábbi összetevőkből áll:
 
 ## <a name="create-service-instance"> </a>API Management-példány létrehozása
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][Ingyenes Azure-fiók létrehozása].
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információ: [Ingyenes Azure-fiók létrehozása][Azure Free Trial].
 > 
 > 
 
-Az API Management használatának első lépése egy szolgáltatáspéldány létrehozása. Jelentkezzen be az [Azure Portalra][Azure Portalra], és kattintson az **Új**, **Web + mobil**, **API Management** elemre.
+Az API Management használatának első lépése egy szolgáltatáspéldány létrehozása. Jelentkezzen be az [Azure Portalra][Azure Portal], és kattintson az **Új**, **Web + mobil**, **API Management** elemre.
 
 ![Új API Management-példány][api-management-create-instance-menu]
 
@@ -74,7 +74,7 @@ Válassza ki a kívánt **Előfizetést**, **Erőforráscsoportot** és **Helyet
 Adja meg a **Contoso Ltd.** nevet a **Szervezet neve** mezőben, majd írja be az e-mail-címét a **Rendszergazda e-mail címe** mezőbe.
 
 > [!NOTE]
-> Erre az e-mail-címre fognak érkezni az API Management rendszer értesítései. További információkért lásd: [Az értesítések és e-mail-sablonok konfigurálása az Azure API Management szolgáltatásban][Az értesítések és e-mail-sablonok konfigurálása az Azure API Management szolgáltatásban].
+> Erre az e-mail-címre fognak érkezni az API Management rendszer értesítései. További információkat a [How to configure notifications and email templates in Azure API Management][How to configure notifications and email templates in Azure API Management] (Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban) című témakörben talál.
 > 
 > 
 
@@ -83,7 +83,7 @@ Adja meg a **Contoso Ltd.** nevet a **Szervezet neve** mezőben, majd írja be a
 Az API Management szolgáltatáspéldányok három csomagban érhetők el: Fejlesztői, Standard és Prémium.
 
 > [!NOTE]
-> A Fejlesztői csomag olyan API-programok fejlesztésére, tesztelésére, és próbaüzemére szolgál, amelyeknél nem fontos a magas rendelkezésre állás. A Standard és Prémium csomagokban a fenntartott egységet lehet úgy méretezni, hogy nagyobb forgalmat legyen képes kezelni. A Standard és a Prémium csomagok biztosítják a legnagyobb feldolgozási kapacitást és teljesítményt az API Management szolgáltatása számára. Jelen oktatóanyagot bármely csomaggal elvégezheti. További információ az API Management csomagjairól: [Az API Management díjszabása][Az API Management díjszabása].
+> A Fejlesztői csomag olyan API-programok fejlesztésére, tesztelésére, és próbaüzemére szolgál, amelyeknél nem fontos a magas rendelkezésre állás. A Standard és Prémium csomagokban a fenntartott egységet lehet úgy méretezni, hogy nagyobb forgalmat legyen képes kezelni. A Standard és a Prémium csomagok biztosítják a legnagyobb feldolgozási kapacitást és teljesítményt az API Management szolgáltatása számára. Jelen oktatóanyagot bármely csomaggal elvégezheti. További információt az API Management csomagjairól az [API Management Díjszabás][API Management pricing] oldalon talál.
 > 
 > 
 
@@ -199,24 +199,24 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 ## <a name="next-steps"> </a>Következő lépések
 * Megtudhatja, hogyan [védheti meg az API-kat sebességkorlátozással](api-management-howto-product-with-rules.md).
 
-[Ingyenes Azure-fiók létrehozása]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
-[API Management-példány létrehozása]: #create-service-instance
-[API létrehozása]: #create-api
-[Művelet hozzáadása]: #add-operation
-[Az új API hozzáadása egy termékhez]: #add-api-to-product
-[Előfizetés az API-t tartalmazó termékre]: #subscribe
-[Művelet meghívása a fejlesztői portálról]: #call-operation
-[Elemzés megtekintése]: #view-analytics
-[Következő lépések]: #next-steps
+[Create an API Management instance]: #create-service-instance
+[Create an API]: #create-api
+[Add an operation]: #add-operation
+[Add the new API to a product]: #add-api-to-product
+[Subscribe to the product that contains the API]: #subscribe
+[Call an operation from the Developer Portal]: #call-operation
+[View analytics]: #view-analytics
+[Next steps]: #next-steps
 
 
-[A fejlesztői fiókok kezelése az Azure API Management szolgáltatásban]: api-management-howto-create-or-invite-developers.md
-[API-beállítások konfigurálása]: api-management-howto-create-apis.md#configure-api-settings
-[Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban]: api-management-howto-configure-notifications.md
-[Válaszok]: api-management-howto-add-operations.md#responses
-[Termék létrehozása és közzététele]: api-management-howto-add-products.md
-[Az API Management díjszabása]: http://azure.microsoft.com/pricing/details/api-management/
+[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
+[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
+[Responses]: api-management-howto-add-operations.md#responses
+[How create and publish a product]: api-management-howto-add-products.md
+[API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/
 
 [Azure Portal]: https://portal.azure.com/
 
@@ -257,6 +257,6 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

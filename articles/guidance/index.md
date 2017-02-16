@@ -1,14 +1,12 @@
-
 ---
-title: Azure Guidance | Microsoft Docs
-description: Best practices and guidance for Azure
-services: ''
+title: "Azure útmutató | Microsoft Docs"
+description: "Ajánlott eljárások és útmutató az Azure-hoz"
+services: 
 documentationcenter: na
 author: bennage
 manager: marksou
-editor: ''
-tags: ''
-
+editor: 
+tags: 
 ms.assetid: de94c74a-fea7-4815-8484-553e421a7490
 ms.service: guidance
 ms.devlang: na
@@ -17,100 +15,104 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: christb
+translationtype: Human Translation
+ms.sourcegitcommit: 5f3ced657cf3d6587a63789b3dd3ca41cd2856f0
+ms.openlocfilehash: 0061e1ff2ae2d6b8ed7b7c3bb60405e76d4cc91b
+
 
 ---
-# Azure Guidance
+# <a name="azure-guidance"></a>Azure útmutató
 [!INCLUDE [pnp-header](../../includes/guidance-pnp-header-include.md)]
 
-The Microsoft patterns & practices team is part of the Azure Customer Advisory Team. Our purpose is to help developers, architects, and IT professionals be successful on the Microsoft Azure platform. We develop guidance that shows best practices for building cloud solutions on Azure.
+A Microsoft mintákkal és gyakorlatokkal foglalkozó csoportja az Azure ügyféltanácsadói csapatának része. Célunk annak elősegítése, hogy a fejlesztők, tervezők és informatikusok sikerrel használják a Microsoft Azure platformot. Kidolgoztunk egy útmutatót, amely bemutatja az Azure felhőalapú megoldások kiépítéséhez ajánlott eljárásait.
 
-## Checklists
-These lists are a quick reference for reviewing the fundamental aspects of availability and scalability. 
+## <a name="checklists"></a>Ellenőrzőlisták
+Ezek a listák rövid összefoglalásul szolgálnak a rendelkezésre állás és méretezhetőség alapvető szempontjainak áttekintéséhez. 
 
-* [Availability Checklist][AvailabilityChecklist] 
+* [Rendelkezésre állási ellenőrzőlisták][AvailabilityChecklist] 
   
-    A summary of recommended practices for ensuring availability.
-* [Scalability Checklist][ScalabilityChecklist]
+    Összegzi azokat az ajánlott eljárásokat, amelyek a rendelkezésre állás biztosításához szükségesek.
+* [Méretezhetőségi ellenőrzőlisták][ScalabilityChecklist]
   
-    A summary of recommended practices for designing and implementing scalable services and handling data management.
+    Összegzi azokat az ajánlott eljárásokat, amelyek a méretezhető szolgáltatások és adatkezelési módszerek tervezéséhez és üzembe helyezéséhez szükségesek.
 
-## Best practices articles
-These articles provide an in-depth discussion of important concepts commonly associated with cloud computing. 
+## <a name="best-practices-articles"></a>Az ajánlott eljárásokra vonatkozó cikkek
+Ezek a cikkek részletesen ismertetik a felhőalapú informatikához kapcsolódó fontosabb fogalmakat. 
 
-* [API Design][APIDesign] 
+* [API-tervezés][APIDesign] 
   
-    A discussion of design issues to consider when designing a web API.
-* [API Implementation][APIImplementation] 
+    Ismerteti azokat a tervezési problémákat, amelyeket érdemes figyelembe venni a webes API-k tervezésekor.
+* [API-implementáció][APIImplementation] 
   
-    A set of recommended practices for implementing and publishing a web API.
-* [API security guidance](https://github.com/mspnp/azure-guidance/blob/master/API-security.md) 
+    Ismerteti azokat az ajánlott eljárásokat, amelyek a webes API-k implementálásához és közzétételéhez szükségesek.
+* [API biztonsági útmutató](https://github.com/mspnp/azure-guidance/blob/master/API-security.md) 
   
-    A discussion of authentication and authorization concerns (for example, token types, authorization protocols, authorization flows, and threat mitigation).
-* [Autoscaling guidance][AutoscalingGuidance] 
+    A hitelesítéssel és az engedélyezéssel kapcsolatos problémákat ismerteti (például jogkivonattípusok, engedélyezési protokollok, engedélyezési folyamatok és fenyegetéselhárítás).
+* [Útmutató az automatikus méretezéshez][AutoscalingGuidance] 
   
-    A summary of considerations for scaling solutions without the need for manual intervention.
-* [Background Jobs guidance][BackgroundJobsGuidance] 
+    A manuális beavatkozás nélküli méretezési megoldásokra vonatkozó szempontok összegzése.
+* [Útmutató a háttérfeladatokhoz][BackgroundJobsGuidance] 
   
-    A description of available options and recommended practices for implementing tasks that should be performed in the background, independently from any foreground or interactive operations.
-* [Content Delivery Network (CDN) guidance][CDNGuidance] 
+    A rendelkezésre álló lehetőségek és az ajánlott eljárások ismertetése a háttérben, az előtérbeli vagy interaktív műveletektől függetlenül elvégzendő feladatok végrehajtásához.
+* [Content Delivery Network (CDN) útmutató][CDNGuidance] 
   
-    General guidance and recommended practice for using the CDN to minimize the load on your applications, and maximize availability and performance.
-* [Caching guidance][CachingGuidance] 
+    Általános útmutatás és ajánlott eljárások a CDN használatához az alkalmazások terhelésének minimalizálása, valamint a lehető legmagasabb szintű rendelkezésre állás és teljesítmény elérése érdekében.
+* [Gyorsítótárazási útmutató][CachingGuidance] 
   
-    A summary of how to use caching to improve the performance and scalability of a system.
-* [Data Partitioning guidance][DataPartitioningGuidance]
+    Annak összefoglalása, hogyan használhatja a gyorsítótárat a rendszer teljesítményének és méretezhetőségének növeléséhez.
+* [Adatparticionálási útmutató][DataPartitioningGuidance]
   
-    Strategies that you can use to partition data to improve scalability, reduce contention, and optimize performance.
-* [Monitoring and Diagnostics guidance][MonitoringandDiagnosticsGuidance] 
+    Stratégiák az adatok particionálására a méretezhetőség növeléséhez, az erőforrásokért folytatott versengés kiküszöböléséhez és a teljesítmény optimalizálásához.
+* [Figyelési és diagnosztikai útmutató][MonitoringandDiagnosticsGuidance] 
   
-    Guidance on tracking how your users utilize your system, trace resource utilization, and generally monitor the health and performance of your system.
-* [Recommended naming conventions][naming-conventions] 
+    Útmutató annak nyomon követéséhez, hogyan használják a rendszert a felhasználók és milyen mértékű kihasználtság jellemzi az erőforrásokat, illetve a rendszer általános állapotának és teljesítményének megfigyeléséhez.
+* [Ajánlott elnevezési konvenciók][naming-conventions] 
   
-    Recommended naming conventions for Azure resources.
-* [Retry General guidance][RetryGeneralGuidance] 
+    Az Azure-erőforrások ajánlott elnevezési konvenciói.
+* [Újrapróbálkozásokra vonatkozó általános útmutató][RetryGeneralGuidance] 
   
-    Discussion of the general concepts for handling transient faults.
-* [Retry Service-specific guidance][RetryServiceSpecificGuidance]
+    Az átmeneti hibák kezelésével kapcsolatos általános fogalmak ismertetése.
+* [Újrapróbálkozásokra vonatkozó szolgáltatásspecifikus útmutató][RetryServiceSpecificGuidance]
   
-    A summary of retry features for many of Azure services, including information to help you use, adapt, or extend the retry mechanism for that service.
+    Több Azure-szolgáltatás újrapróbálkozási funkcióinak összegzése, köztük olyan információkkal, amelyek segítséget nyújtanak a szolgáltatás újrapróbálkozási mechanizmusának használatához, módosításához vagy kibővítéséhez.
 
-## Scenario guides
-* [Running Elasticsearch on Azure][elasticsearch] 
+## <a name="scenario-guides"></a>Forgatókönyvekre vonatkozó útmutatók
+* [Elasticsearch futtatása az Azure-on][elasticsearch] 
   
-    Elasticsearch is a highly scalable open-source search engine and database. It is suitable for situations that require fast analysis and discovery of information held in large datasets. This guidance looks at some key aspects to consider when designing an Elasticsearch cluster.
-* [Identity management for multitenant applications][identity-multitenant] 
+    Az Elasticsearch egy rugalmasan méretezhető, nyílt forráskódú keresőmotor és adatbázis. A használata olyan helyzetekben jelenthet ideális megoldást, amelyek gyors elemzést igényelnek, és az információkat nagy adatkészletekből kell kikeresni. Ez az útmutató olyan fontos szempontokkal foglalkozik, amelyeket érdemes figyelembe venni egy Elasticsearch-fürt megtervezésekor.
+* [Identitáskezelés a több-bérlős alkalmazásokban][identity-multitenant] 
   
-    Multitenancy is an architecture where multiple tenants share an application but are isolated from one another. This guidance shows you how to manage user identities in a multitenant application, using [Azure Active Directory][AzureAD] to handle sign-in and authentication.
-* [Developing big data solutions](https://msdn.microsoft.com/library/dn749874.aspx)
+    A több-bérlős egy olyan architektúra, ahol egy alkalmazáson több bérlő osztozik, de ezek el vannak különítve egymástól. Ez az útmutató bemutatja, hogyan kezelheti a felhasználói identitásokat egy több-bérlős alkalmazásban, ha az [Azure Active Directoryt][AzureAD] használja a bejelentkezés és hitelesítés kezeléséhez.
+* [Big data-megoldások fejlesztése](https://msdn.microsoft.com/library/dn749874.aspx)
   
-    This guide explores the use of HDInsight for scenarios such as iterative exploration, as a data warehouse, for ETL processes, and integration into existing BI systems. It also includes guidance on understanding the concepts of big data, planning and designing big data solutions, and implementing these solutions.
+    Ez az útmutató a HDInsight használatát mutatja be olyan forgatókönyvekben, mint például az iteratív feltárás, az adattárházak, ETL-folyamatok, illetve a meglévő BI rendszerekbe végzett integrálás. Emellett a big data-fogalmak értelmezéséhez, a big data-megoldások tervezéséhez és kialakításához, valamint ezen megoldások megvalósításához is útmutatást nyújt.
 
-## Patterns
-* [Cloud Design Patterns: Prescriptive Architecture Guidance for Cloud Applications](https://msdn.microsoft.com/library/dn568099.aspx)
+## <a name="patterns"></a>Minták
+* [Felhőkialakítási minták: Előírásszerű útmutató a felhőalapú alkalmazások architektúrájához](https://msdn.microsoft.com/library/dn568099.aspx)
   
-    Cloud Design Patterns is a library of design patterns and related guidance topics. It articulates the benefit of applying patterns by showing how each piece can fit into cloud application architectures.
-* [Optimizing Performance for Cloud Applications](https://github.com/mspnp/performance-optimization)
+    A felhőkialakítási minták gyűjteménye a kialakítási minták és a hozzájuk kapcsolódó, útmutató témakörök könyvtára. Annak bemutatásával hangsúlyozza ki a minták alkalmazásának előnyeit, hogy az egyes részek hogyan illeszkednek a felhőalapú alkalmazások architektúrájába.
+* [A felhőalapú alkalmazások teljesítményének optimalizálása](https://github.com/mspnp/performance-optimization)
   
-    This guidance is an exploration of common anti-patterns that impede apps from scaling under load. It includes samples demonstrating eight anti-patterns and a [performance analysis primer](https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md) and a guide for [assessing performance against key metrics](https://github.com/mspnp/performance-optimization/blob/master/Assessing-System-Performance-Against-KPI.md).
+    Ez az útmutató olyan gyakran használt, nem megfelelően kialakított mintákat mutat be, amelyek akadályozzák az alkalmazások a terhelés szerinti méretezését. Nyolc ilyen nem megfelelően kialakított mintát tartalmaz, valamint egy [teljesítményelemzési ismertetőt](https://github.com/mspnp/performance-optimization/blob/master/Performance-Analysis-Primer.md) és egy útmutatót a [teljesítmény fő mérőszámok alapján történő felméréséhez](https://github.com/mspnp/performance-optimization/blob/master/Assessing-System-Performance-Against-KPI.md).
 
-## Reference architectures
-Our reference architectures are arranged by scenario.
-Each individual architecture offers recommended practices and prescriptive steps, and an executable component that embodies the recommendations.
+## <a name="reference-architectures"></a>Referenciaarchitektúrák
+A referenciaarchitektúrák forgatókönyv szerint vannak elrendezve.
+Minden architektúrához talál ajánlott eljárásokat és részletesen ismertetett lépéseket, valamint egy futtatható összetevőt, amely az ajánlásokat foglalja magában.
 
-The current library of reference architectures is available at [http://aka.ms/architecture](http://aka.ms/architecture).
+A referenciaarchitektúrák aktuális könyvtára a következő címen érhető el: [http://aka.ms/architecture](http://aka.ms/architecture).
 
-## Resiliency guidance
-These topics describe how to design applications that are resilient to failure in a distributed cloud environment.   
+## <a name="resiliency-guidance"></a>A rugalmasságra vonatkozó útmutatás
+Ezek a témakörök olyan alkalmazások tervezésének módját ismertetik, amelyekre nincs hatással, ha egy elosztott felhőkörnyezet meghibásodik.   
 
-* [Resiliency overview][ResiliencyOvervew]
+* [A rugalmasság szempontjainak áttekintése][ResiliencyOvervew]
   
-     How to build applications on the Azure platform that can recover from failures and continue to function. Describes a structured approach to achieve resiliency,from design to implementation, deployment, and operations.
-* [Resiliency checklist][resiliency-checklist]
+     Megtudhatja, hogyan hozhat létre olyan alkalmazásokat az Azure platformon, amelyek a hibák után helyre tudnak állni, és továbbra is működőképesek maradnak. A megfelelő szintű rugalmasság elérésének strukturált, a tervezéstől a megvalósításig, az üzembe helyezésig és a működtetésig minden szakaszt magában foglaló megközelítését írja le.
+* [Rugalmasságra vonatkozó ellenőrzőlista][resiliency-checklist]
   
-    A checklist of recommendations that will help you plan for a variety of failure modes that could occur.
-* [Failure mode analysis][resiliency-fma] 
+    Ajánlások ellenőrzőlistája, amely számos lehetséges hibaállapotra segít felkészülni.
+* [A hibaállapot elemzése][resiliency-fma] 
   
-    Failure mode analysis (FMA) is a process for building resiliency into a system, by identifying possible failure points. As a starting point for your FMA process,this article contains a catalog of potential failure modes and their mitigations. 
+    A hibaállapot-elemzés (failure mode analysis, FMA) olyan folyamat, amely a lehetséges meghibásodási pontok azonosításával épít be kellő rugalmasságot a rendszerbe. Az FMA-folyamat kiindulópontjaként a cikk tartalmaz egy lehetséges hibaállapotokat és azok kezelését ismertető katalógust. 
 
 <!-- links -->
 
@@ -151,4 +153,10 @@ These topics describe how to design applications that are resilient to failure i
 [resiliency-fma]: guidance-resiliency-failure-mode-analysis.md
 [resiliency-checklist]: guidance-resiliency-checklist.md
 [ResiliencyOvervew]: guidance-resiliency-overview.md
+
+
+
+
+<!--HONumber=Dec16_HO1-->
+
 

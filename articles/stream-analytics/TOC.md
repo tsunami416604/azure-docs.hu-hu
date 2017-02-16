@@ -40,13 +40,14 @@
 ### [Egykattintásos PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [.NET](/dotnet/api/streamanalytics.tests.operationtests)
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST](/rest/api/streamanalytics/)
-## [Kiadási megjegyzések](stream-analytics-release-notes.md)
+## [REST](/rest/api/streamanalytics)
+
 
 # Erőforrások
+## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
@@ -57,6 +58,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

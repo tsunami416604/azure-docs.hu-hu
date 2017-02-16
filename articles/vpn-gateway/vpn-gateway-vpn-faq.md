@@ -1,10 +1,10 @@
 ---
 title: "Virtuális hálózati VPN Gateway – gyakori kérdések | Microsoft Docs"
-description: "A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network létesítmények közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról"
+description: "A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network létesítmények közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról."
 services: vpn-gateway
 documentationcenter: na
-author: yushwang
-manager: rossort
+author: cherylmc
+manager: timlt
 editor: 
 ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2016
-ms.author: yushwang
+ms.date: 01/10/2017
+ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: d653865993d75cf926151a14cc4f059e4eaba035
-ms.openlocfilehash: f0e7c08a0783452665028ea3479c14b02a27258f
+ms.sourcegitcommit: 2dda1cd384cf365504811a260872703f2c5c484e
+ms.openlocfilehash: ccb0dc6172b234412558b9175f3872d690d4ea3a
 
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 ## <a name="connecting-to-virtual-networks"></a>Csatlakozás virtuális hálózatokhoz
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Összekapcsolhatok eltérő Azure-régiókban található virtuális hálózatokat?
-Igen. Nincs régiókorlátozás. A virtuális hálózatok összekapcsolhatók az azonos régióban vagy más Azure-régiókban található virtuális hálózatokkal is.
+Igen. Nincs régiókorlátozás. A virtuális hálózatok összekapcsolhatók az azonos régióban vagy más Azure-régiókban található virtuális hálózatokkal is. 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>Összekapcsolhatok egymással különböző előfizetésekben található virtuális hálózatokat?
 Igen.
@@ -102,7 +102,7 @@ Alapértelmezés szerint az ügyfélszámítógép nem létesíti újra a VPN-ka
 Az automatikus újrakapcsolódás és a DDNS jelenleg nem támogatott a pont–hely VPN-kapcsolatokhoz.
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>Lehetnek-e helyek közötti és pont–hely konfigurációk egyidejűleg egy virtuális hálózaton?
-Igen. Mindkét megoldás működhet, ha az átjárójához RouteBased (útvonalapú) VPN-típust használ. A klasszikus üzemi modellhez dinamikus átjáróra van szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású VPN-átjárókhoz vagy a PolicyBased értékű -VpnType paraméterrel rendelkező átjárókhoz.
+Igen. Mindkét megoldás működhet, ha az átjárójához RouteBased (útvonalapú) VPN-típust használ. A klasszikus üzemi modellhez dinamikus átjáróra van szükség. A pont–hely kapcsolat nem támogatott a statikus útválasztású VPN-átjárókhoz vagy a `-VpnType PolicyBased` parancsmagot alkalmazó átjárókhoz.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Konfigurálhatok úgy egy pont–hely ügyfelet, hogy több virtuális hálózathoz csatlakozzon egyszerre?
 Igen, ez lehetséges. Azonban ezen virtuális hálózatok IP-előtagjai nem lehetnek egymással átfedésben, és a pont–hely kapcsolatok címterei nem lehetnek egymással átfedésben a virtuális hálózatok között.
@@ -129,7 +129,7 @@ Igen, az Előmegosztott kulcs beállítása API és PowerShell-parancsmag haszn�
 ### <a name="can-i-use-other-authentication-options"></a>Használhatok más hitelesítési módszert?
 Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 
-### <a name="what-is-the-gateway-subnet-and-why-is-it-needed"></a>Mi az az „átjáróalhálózat,” és miért szükséges?
+### <a name="what-is-the-gatewaysubnet-and-why-is-it-needed"></a>Mi az az „átjáróalhálózat”, és miért szükséges?
 A létesítmények közötti kapcsolatok az átjárószolgáltatásunkkal engedélyezhetők.
 
 A VPN-átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáró-alhálózatnak a GatewaySubnet névvel kell rendelkeznie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
@@ -140,7 +140,14 @@ Az átjáró-alhálózat minimális mérete teljes mértékben a létrehozni kí
 Nem.
 
 ### <a name="how-do-i-specify-which-traffic-goes-through-the-vpn-gateway"></a>Hogyan határozhatom meg, milyen adatforgalom haladjon át a VPN-átjárón?
-Ha a klasszikus Azure portált használja, a Hálózatok lap Helyi hálózatok részében adja hozzá az összes tartományt, amelyet átküldene az átjárón a virtuális hálózathoz.
+
+####<a name="resource-manager-deployment-model"></a>Resource Manager-alapú üzemi modell
+* PowerShell esetén: Használja az „AddressPrefix” parancsot a helyi hálózati átjáró forgalmának meghatározásához.
+* Azure Portal esetén: Lépjen a Helyi hálózati átjáró > Konfiguráció > Címtér felületre.
+
+####<a name="classic-deployment-model"></a>Klasszikus üzemi modell
+* Azure Portal esetén: Lépjen a klasszikus virtuális hálózat > VPN connections (VPN-kapcsolatok) > Site-to-site VPN connections (Helyek közötti VPN-kapcsolatok) > Helyi hely neve > Helyi hely > Client address space (Ügyfélcímtér) felületre. 
+* Klasszikus portál esetén: A Networks (Hálózatok) lap Local Networks (Helyi hálózatok) részében adja hozzá az összes tartományt, amelyet átküldene az átjárón a virtuális hálózathoz. 
 
 ### <a name="can-i-configure-forced-tunneling"></a>Konfigurálhatok kényszerített bújtatást?
 Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md).
@@ -167,7 +174,7 @@ Nem, mindkét virtuális hálózatnak útvonalalapú (dinamikus útválasztású
 Igen, az adatforgalmat IPsec/IKE-titkosítás védi.
 
 ### <a name="does-vnet-to-vnet-traffic-travel-over-the-azure-backbone"></a>A virtuális hálózatok közötti adatforgalom az Azure gerinchálózatát használja?
-Igen.
+Igen, ez a forgalom az Azure gerinchálózatán keresztül halad. Nem az interneten keresztül halad.
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>Hány helyszíni helyhez és virtuális hálózathoz kapcsolódhat egyetlen virtuális hálózat?
 Legfeljebb egyszerre 10-hez alapszintű és standard dinamikus útválasztású átjárók esetén, illetve 30-hoz nagy teljesítményű VPN-átjárók esetében.
@@ -176,7 +183,7 @@ Legfeljebb egyszerre 10-hez alapszintű és standard dinamikus útválasztású 
 Igen, a pont–hely (P2S) VPN-ek több helyszíni helyhez és egyéb virtuális hálózatokhoz csatlakozó VPN-átjárókkal is használhatók.
 
 ### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn"></a>Konfigurálhatok több alagutat a virtuális hálózatom és a helyszíni helyem között többhelyes VPN használatával?
-Nem, a redundáns alagutak az Azure Virtual Network hálózatok és a helyszíni helyek között nem támogatottak.
+Igen, de mindkét alagúton ugyanarra a helyre kell konfigurálnia a BGP-t.
 
 ### <a name="can-there-be-overlapping-address-spaces-among-the-connected-virtual-networks-and-on-premises-local-sites"></a>Lehetnek-e egymással átfedésben lévő címterek a csatlakoztatott virtuális hálózatok és helyszíni helyek között?
 Nem. Ha a címterek átfedésben vannak egymással, a hálózati konfigurációs fájl feltöltése vagy a virtuális hálózat létrehozása meghiúsul.
@@ -185,10 +192,12 @@ Nem. Ha a címterek átfedésben vannak egymással, a hálózati konfigurációs
 Nem, az összes VPN-alagút, így a pont–hely VPN-ek is ugyanazt az Azure VPN Gateway átjárót és elérhető sávszélességet használják.
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Használhatok Azure VPN Gateway átjárót az adatforgalomhoz a helyszíni helyeim között vagy egy másik virtuális hálózatba?
-**Klasszikus üzemi modell**<br>
+
+####<a name="resource-manager-deployment-model"></a>Resource Manager-alapú üzemi modell
+Igen. További információért lásd a [BGP](#bgp) szakaszt.
+
+####<a name="classic-deployment-model"></a>Klasszikus üzemi modell
 Az Azure VPN Gateway-átjárókon keresztüli adatátvitel a klasszikus üzemi modellel lehetséges, de ez a hálózati konfigurációs fájlban statikusan meghatározott címterekre hagyatkozik. A BGP jelenleg nem támogatott az Azure Virtual Networkökhöz és VPN Gateway-átjárókhoz a klasszikus üzemi modell használatával. BGP nélkül az átviteli címterek manuális meghatározása sok hibalehetőséggel jár, ezért nem ajánlott.<br>
-**Resource Manager-alapú üzemi modell**<br>
-Ha a Resource Manager-alapú üzemi modellt használja, további információért tekintse meg a [BGP](#bgp) szakaszt.
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Egy adott virtuális hálózaton az Azure ugyanazt az IPsec/IKE előmegosztott kulcsot hozza létre az összes VPN-kapcsolathoz?
 Nem, az Azure alapértelmezés szerint különböző előmegosztott kulcsokat hoz létre a különböző VPN-kapcsolatokhoz. Azonban a VPN-átjáró kulcsának megadása REST API-val vagy PowerShell-parancsmaggal tetszőlegesen megadhatja a kulcs értékét. A kulcsnak 1–128 karakter közötti hosszúságú alfanumerikus karakterláncnak KELL lennie.
@@ -216,6 +225,6 @@ A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 804b0ba72ca73da1a076bd4dbca8bbca33cb76b1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dd77457bfa7ebfc701750e090778f2976d82b141
 
 
 ---
@@ -120,8 +120,8 @@ Amint befejeződik az importálás, a DPS megjelenít egy összegzést az adatok
 ## <a name="next-steps"></a>Következő lépések
 Ha át szeretné tekinteni az adatait az SQL Data Warehouse-ban, először olvassa el a következőket:
 
-* [Az Azure SQL Data Warehouse lekérdezése (Visual Studio)][Az Azure SQL Data Warehouse lekérdezése (Visual Studio)]
-* [Adatok megjelenítése a Power BI-ban][Adatok megjelenítése a Power BI-ban]
+* [Az Azure SQL Data Warehouse lekérdezése (Visual Studio)][Query Azure SQL Data Warehouse (Visual Studio)]
+* [Adatok megjelenítése Power BI használatával][Visualize data with Power BI]
 
 További információk a Redgate Data Platform Studióról:
 
@@ -130,7 +130,7 @@ További információk a Redgate Data Platform Studióról:
 
 Az adatok áttelepítésének és SQL Data Warehouse-ba való betöltésének egyéb módjaival kapcsolatban lásd:
 
-* [Megoldás áttelepítése SQL Data Warehouse-ba][Megoldás áttelepítése SQL Data Warehouse-ba]
+* [Megoldás áttelepítése az SQL Data Warehouse-ba][Migrate your solution to SQL Data Warehouse]
 * [Adatok betöltése az Azure SQL Data Warehouse-ba](sql-data-warehouse-overview-load.md)
 
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
@@ -146,14 +146,14 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-
 [8]: media/sql-data-warehouse-redgate/2016-10-05_12-57-10.png
 
 <!--Article references-->
-[Az Azure SQL Data Warehouse lekérdezése (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
-[Adatok megjelenítése Power BI használatával]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
-[Megoldás áttelepítése az SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-migrate.md
-[Adatok betöltése az Azure SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
+[Query Azure SQL Data Warehouse (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
+[Visualize data with Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
+[Migrate your solution to SQL Data Warehouse]: ./sql-data-warehouse-overview-migrate.md
+[Load data into Azure SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

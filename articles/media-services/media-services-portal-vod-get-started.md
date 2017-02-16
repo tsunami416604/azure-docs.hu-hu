@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 6b5ba034325ef1cbb7b085890c63302d06d0d927
 
 
 ---
@@ -25,59 +25,19 @@ ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással.
 
-> [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
-> 
-> 
+## <a name="prerequisites"></a>Előfeltételek
+Az ismertetett eljárás végrehajtásához a következők szükségesek:
+
+* Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 
 Az oktatóanyag a következő feladatokat tartalmazza:
 
-1. Azure Media Services-fiók létrehozása
-2. Indítsa el a streamvégpontot.
-3. Videofájl feltöltése
-4. Forrásfájl kódolása adaptív sávszélességű MP4-fájlokká
-5. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
-6. Tartalom lejátszása
-
-## <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
-A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **+New** > **Web + Mobile** > **Media Services** elemre.
-   
-    ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new1.png)
-3. A **CREATE MEDIA SERVICES ACCOUNT** (Media Services-fiók létrehozása) részben adja meg a kívánt értékeket.
-   
-    ![Media Services, létrehozás](./media/media-services-portal-vod-get-started/media-services-new3.png)
-   
-   1. Az **Account Name** (Fiók neve) mezőben adja meg az új AMS-fiók nevét. A Media Services-fiók neve csak kisbetűket és számokat tartalmazhat, nem tartalmazhat szóközöket, és 3–24 karakterből állhat.
-   2. A Subscription (Előfizetés) résznél válasszon az elérhető Azure-előfizetések közül.
-   3. A **Resource Group** (Erőforráscsoport) résznél válasszon egy új vagy meglévő erőforrást.  Az erőforráscsoport közös életciklussal, engedélyekkel és házirendekkel rendelkező erőforrások gyűjteménye. További információkat [itt](../azure-resource-manager/resource-group-overview.md#resource-groups) talál.
-   4. A **Hely** részben válassza ki azt a földrajzi régiót, amelyben tárolni kívánja a Media Services-fiókhoz tartozó adathordozó- és metaadatrekordokat. A rendszer ezen régió alapján fogja feldolgozni, illetve streamelni az adathordozót. A legördülő listában csak a Media Services szolgáltatásban elérhető régiók jelennek meg. 
-   5. A **Storage Account** (Tárfiók) résznél válasszon egy tárfiókot, amely Blob Storage tárolót fog biztosítani a Media Services-fiókhoz tartozó médiatartalmak számára. Választhat, hogy egy meglévő, a Media Services-fiókkal azonos földrajzi régióban található tárfiókot használ, vagy létrehoz egy másik tárfiókot. Az újonnan létrehozott tárfiókok ugyanabban a régióban jönnek létre. A tárfiók nevére ugyanazok a szabályok vonatkoznak, mint a Media Services-fiókok nevére.
-      
-       További információkat a tárhelyről [itt](../storage/storage-introduction.md) talál.
-   6. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
-4. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
-   
-    A fiók sikeres létrehozása után betöltődik az áttekintési oldal. A streamvégpont-táblázatban a fiók alapértelmezett streamvégpontja **Leállítva** állapotban lesz. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
-   
-    ![Media Services, beállítások](./media/media-services-portal-vod-get-started/media-services-settings.png)
-   
-    Az AMS-fiók kezeléséhez (például videók feltöltéséhez, objektumok kódolásához, a feladatok előrehaladásának figyeléséhez) használja a **Settings** (Beállítások) ablakot.
-
-## <a name="manage-keys"></a>Kulcsok kezelése
-A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fiók nevére és az elsődleges kulcs adataira.
-
-1. Válassza ki a fiókját az Azure Portalon. 
-   
-    Jobb oldalt megjelenik a **Beállítások** ablak. 
-2. A **Beállítások** ablakban válassza a **Kulcsok** lehetőséget. 
-   
-    A **Kulcsok kezelése** ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. 
-3. Az értékek másolásához nyomja le a Másolás gombot.
-   
-    ![Media Services, kulcsok](./media/media-services-portal-vod-get-started/media-services-keys.png)
+1. Indítsa el a streamvégpontot.
+2. Videofájl feltöltése
+3. Forrásfájl kódolása adaptív sávszélességű MP4-fájlokká
+4. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
+5. Tartalom lejátszása
 
 ## <a name="start-streaming-endpoints"></a>Streamvégpontok elindítása 
 
@@ -88,13 +48,14 @@ Az Azure Media Services egyik leggyakrabban használt funkciója a videók tová
 
 A streamvégpont elindításához tegye a következőket:
 
-1. Kattintson a Settings (Beállítások) ablak Streaming endpoints (Streamvégpontok) elemére. 
-2. Kattintson az alapértelmezett streamvégpontra. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Kattintson a Settings (Beállítások) ablak Streaming endpoints (Streamvégpontok) elemére. 
+3. Kattintson az alapértelmezett streamvégpontra. 
 
     Megjelenik a DEFAULT STREAMING ENDPOINT DETAILS (Alapértelmezett streamvégpont adatai) ablak.
 
-3. Kattintson a Start ikonra.
-4. Mentse a módosításokat a Save (Mentés) gombra kattintva.
+4. Kattintson a Start ikonra.
+5. Mentse a módosításokat a Save (Mentés) gombra kattintva.
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 Ha az Azure Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
@@ -129,7 +90,7 @@ Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a 
 1. A **Settings** (Beállítások) ablakban válassza az **Assets** (Objektumok) lehetőséget.  
 2. Az **Assets** (Objektumok) ablakban válassza ki a kódolni kívánt objektumot.
 3. Nyomja meg az **Encode** (Kódolás) gombot.
-4. Az **Encode an asset** (Objektum kódolása) ablakban válassza a „Media Encoder Standard” feldolgozóeszközt, és egy beállításkészletet. Ha például tudja, hogy a bemeneti videó felbontása 1920 x 1080 képpont, akkor használja a „H264 Multiple Bitrate 1080p” beállításkészletet. A beállításkészletekkel kapcsolatban [ebben](https://msdn.microsoft.com/library/azure/mt269960.aspx) a cikkben talál további információkat – rendkívül fontos, hogy a bemeneti videóhoz leginkább megfelelő készletet válassza. Ha például alacsony felbontású (640 x 360) videót szeretne kódolni, ne válassza az alapértelmezett „H264 Multiple Bitrate 1080p” beállításkészletet.
+4. Az **Encode an asset** (Objektum kódolása) ablakban válassza a „Media Encoder Standard” feldolgozóeszközt, és egy beállításkészletet. Ha például tudja, hogy a bemeneti videó felbontása 1920 x 1080 képpont, akkor használja a „H264 Multiple Bitrate 1080p” beállításkészletet. A beállításkészletekkel kapcsolatban [ebben](media-services-mes-presets-overview.md) a cikkben talál további információkat – rendkívül fontos, hogy a bemeneti videóhoz leginkább megfelelő készletet válassza. Ha például alacsony felbontású (640 x 360) videót szeretne kódolni, ne válassza az alapértelmezett „H264 Multiple Bitrate 1080p” beállításkészletet.
    
    Az egyszerűbb kezelés érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
@@ -169,7 +130,7 @@ Az SAS URL-cím formátuma a következő:
 > 
 > 
 
-A lokátor lejárati idejének módosításához használjon [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Az SAS-keresők lejárati dátumának frissítésekor az URL-cím is módosul.
+A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Az SAS-keresők lejárati dátumának frissítésekor az URL-cím is módosul.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 Az objektumnak a portál segítségével történő közzétételéhez tegye a következőket:

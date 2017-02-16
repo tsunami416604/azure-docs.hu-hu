@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan kezelheti DNS-rekordjait az Azure Domain Name System segítségével. A dokumentáció bemutatja, hogyan állíthatja be és felügyelheti a tartománynevek DNS-zónáit és -rekordjait."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: 1e30c21b967e9862ae24907ac5db56a341c11cf5
+ms.openlocfilehash: a0110b01879360e4558dffed6343da1ef72cfe86
 
 ---
 # <a name="dns-documentation"></a>DNS – dokumentáció
 
-Az Azure DNS (tartománynévrendszer) egy olyan szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához.  Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
+Ismerje meg, hogyan kezelheti DNS-rekordjait az Azure Domain Name System üzemeltetési szolgáltatás segítségével. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthatja be és felügyelheti a tartománynevek DNS-zónáit és -rekordjait.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ DNS – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

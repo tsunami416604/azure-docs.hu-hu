@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d44af03b8e16a2bd936fc805ed4f0c4e6c5fbfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32da7abc3263e1d76f3f08ccae7ce159ead58bee
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>A prediktív karbantartási előre konfigurált megoldás áttekintése
-A *prediktív karbantartás* előre konfigurált megoldás a [Microsoft Azure IoT Suite][lnk_iot_suite] részeként kiadott [előre konfigurált megoldások][lnk_preconfigured_solutions] egyike. Ez a megoldás a valós idejű eszköztelemetria-gyűjtést az [Azure Machine Learning][lnk_machine_learning] használatával létrehozott prediktív modellel integrálja.
+A *prediktív karbantartás* előre konfigurált megoldás a [Microsoft Azure IoT Suite][lnk_iot_suite] részeként kiadott [előre konfigurált megoldások][lnk_preconfigured_solutions]egyike. Ez a megoldás a valós idejű eszköztelemetria-gyűjtést az [Azure Machine Learning][lnk_machine_learning] használatával létrehozott prediktív modellel integrálja.
 
 Az Azure IoT Suite segítségével a vállalatok gyorsan és könnyedén figyelhetik az objektumokat és csatlakozhatnak hozzájuk, valamint valós időben elemezhetik az adatokat. A prediktív karbantartási előre konfigurált megoldás részletes irányítópultokkal és látványtervekkel használja fel ezeket az adatokat, így a hatékonyságot és a bevételeket növelő új elemzéseket biztosít a vállalkozásoknak.
 
@@ -41,7 +41,7 @@ A karbantartás várható idejének előrejelzésével a Fabrikam optimalizálha
 Annak megértéséhez, hogy az [Azure IoT Suite][lnk_iot_suite] hogyan nyújt az ügyfeleknek olyan képességeket, amelyekre a prediktív karbantartás lehetőségeinek kiaknázásához szükségük van, tekintse át ezt az [információs grafikát][lnk_infographic].
 
 ## <a name="how-the-predictive-maintenance-solution-is-built"></a>A prediktív karbantartási megoldás felépítése
-A megoldás egy sablonként elérhető meglévő Azure Machine Learning-modellel mutatja be ezeket a képességeket, amely az IoT Suite szolgáltatásokon keresztül gyűjtött eszköztelemetriából dolgozik. A Microsoft felépítette egy repülőgépmotor [regressziós modelljét][lnk_regression_model], és közzétette a modell használatának teljes sablonját, adatait<sup>\[1\]</sup> és lépésenkénti útmutatóját.
+A megoldás egy sablonként elérhető meglévő Azure Machine Learning-modellel mutatja be ezeket a képességeket, amely az IoT Suite szolgáltatásokon keresztül gyűjtött eszköztelemetriából dolgozik. A Microsoft felépítette egy repülőmotor [regressziós modelljét][lnk_regression_model], és közzétette a modell használatának teljes sablonját, adatait<sup>\[1\]</sup> és lépésenkénti útmutatóját.
 
 Az Azure IoT prediktív karbantartási előre konfigurált megoldás az ebből a sablonból létrehozott regressziós modellt használja. A rendszer az Azure-előfizetésben helyezi üzembe, és egy automatikusan létrehozott API-n keresztül teszi közzé. A megoldásban a tesztadatok alkészlete szerepel, amely (összesen 100-ból) 4 motort és (összesen 21-ből) 4 érzékelőstreamet ábrázol, és a Trained Model pontos eredményét biztosítja.
 
@@ -70,6 +70,6 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

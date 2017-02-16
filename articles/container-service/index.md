@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan használhatja a Container Service-t alkalmazástárolók üzembe helyezésére és kezelésére a DC/OS, Docker Swarm és Kubernetes segítségével. Oktatóanyagok, API-referenciák és egyebek."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 9bb2c847b6e7b87b58fee04a6fe33edb801f9558
+ms.sourcegitcommit: aaed834dd697bece735fa9297f0228b75346ffc7
+ms.openlocfilehash: 219dfe4950339d7a68d0a5f06135acb4b247b1fd
 
 ---
 
-#<a name="azure-container-service-documentation"></a>Azure Container Service-dokumentáció
+# <a name="azure-container-service-documentation"></a>Azure Container Service-dokumentáció
 
-Az Azure Container Service elősegíti a virtuális gépek egy olyan fürtjének egyszerűbb létrehozását, konfigurálását és kezelését , amely tárolóalapú alkalmazások futtatására lett konfigurálva. Ezt nyílt forráskódú ütemezési és vezénylési eszközök optimalizált konfigurációját igénybe véve teszi lehetővé. Így meglévő ismereteit használhatja, vagy egy nagy és egyre növekvő közösségi szakértelmet vehet igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
+Ismerje meg, hogyan használhatja a Container Service-t alkalmazástárolók üzembe helyezésére és kezelésére. Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan méretezhet és hangolhat össze tárolókat a DC/OS, Docker Swarm vagy Kubernetes használatával.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -51,55 +52,45 @@ Az Azure Container Service elősegíti a virtuális gépek egy olyan fürtjének
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/dotnet/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET Szolgáltatáskezelési referencia-API</p>
-                    </div>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute.models">.NET</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/rest/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST (Compute)</h3>
-                        <p>Compute – REST API-referencia</p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/compute/containerservices">REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
-
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/container-service.pdf">
@@ -110,6 +101,7 @@ Az Azure Container Service-dokumentáció letöltése </div>
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO3-->
 
 

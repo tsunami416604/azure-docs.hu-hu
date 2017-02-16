@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a0f4c9c5942ee75b9ca4f3924198e8a8ad8ccc7
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 2d4898694c69b5eb0194747982fa8bfbfea1f6f8
 
 
 ---
@@ -93,7 +93,13 @@ Az Azure Search szolgáltatásban az index strukturális frissítéséhez az ind
 
 Az újjáépítést nem igénylő szerkesztési műveletek közé tartozik az új mezők hozzáadása, illetve a pontozási profilok, a javaslatok vagy a nyelvelemzők módosítása. További információ: [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Index frissítése).
 
-## <a name="next-step"></a>Következő lépés
+## <a name="query-an-index-using-search-explorer"></a>Index lekérdezése a Keresési ablak használatával
+
+A portál tartalmaz egy **Keresési ablakot**, amelynek segítségével kód írása nélkül kérdezheti le az indexeket. A Keresési ablak bármely indexen használható.
+
+A keresési funkció alapértelmezett beállításokon alapul, [egyszerű szintaxist](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) használ és az alapértelmezett [searchMode lekérdezési paramétert(https://docs.microsoft.com/rest/api/searchservice/search-documents) követi. A rendszer az eredményeket JSON-formátumban adja vissza, így a teljes dokumentum vizsgálható.
+
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat nyújtanak az indexelőkről:
 
 * [Az Azure SQL Database indexelése](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -107,6 +113,6 @@ Az alábbi hivatkozások további információkat nyújtanak az indexelőkről:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

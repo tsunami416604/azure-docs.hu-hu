@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása."
 translationtype: Human Translation
-ms.sourcegitcommit: cc7cf80b26a0bdc79448fc87d2d8b6fff1931d49
-ms.openlocfilehash: eb675cc7a401583cf0f2dc0605a16d5dda8b306f
+ms.sourcegitcommit: c93027a575b2f9d6507448f9f68011723b165bf3
+ms.openlocfilehash: c964ed3b3fe8b3af31c50f0aacb2ef1c0a8aad74
 
 ---
 #<a name="azure-stack-documentation"></a>Azure Stack – dokumentáció
 
-A Microsoft Azure Stack egy új hibrid felhőplatform-termék, amely segítségével Azure-szolgáltatásokat biztosíthat a szervezete adatközpontjából. A Microsoft Azure Stack Technical Preview 2 egy megvalósíthatósági példa (Proof of Concept (POC)) keretében érhető el. A POC egy, az Azure Stack-szolgáltatások megismerését és bemutatását szolgáló környezet. A segítségével egyetlen fizikai gépen telepítheti az összes szükséges összetevőt egy olyan környezet létrehozásához, amely révén kiértékelheti az alapfogalmakat és képességeket, és ellenőrizheti az API-k bővíthetőségi modelljét.
+Ismerje meg, hogyan használhatja az Azure Stack műszaki előzetes verzióját Azure-szolgáltatások továbbítására a szervezet adatközpontjából. Oktatóanyagok és egyéb dokumentációk bemutatják, hogyan használhatja a megvalósíthatósági példakörnyezetet Azure Stack-szolgáltatások megismerésére és bemutatására.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,6 +97,6 @@ Azure Stack-dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

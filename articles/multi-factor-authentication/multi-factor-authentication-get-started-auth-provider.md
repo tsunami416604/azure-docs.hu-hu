@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 
 ---
-# <a name="getting-started-with-an-azure-multifactor-auth-provider"></a>Első lépések az Azure Multi-Factor Auth szolgáltatóval
+# <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Első lépések az Azure Multi-Factor Auth szolgáltatóval
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](multi-factor-authentication-whats-next.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Az SDK letöltéséhez egy Azure Multi-Factor Auth szolgáltató szükséges.
 > 
 > 
 
-## <a name="to-create-a-multifactor-auth-provider"></a>Multi-Factor Auth szolgáltató létrehozása
+## <a name="to-create-a-multi-factor-auth-provider"></a>Multi-Factor Auth szolgáltató létrehozása
 A következő lépésekkel hozhat létre Azure Multi-Factor Auth szolgáltatót.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) rendszergazdaként.
@@ -64,6 +64,6 @@ A következő lépésekkel hozhat létre Azure Multi-Factor Auth szolgáltatót.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

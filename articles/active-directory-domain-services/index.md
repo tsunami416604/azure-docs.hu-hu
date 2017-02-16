@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy az Active Directory Domain Services hogyan használható az Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül, és hogyan kezelhetők csoportházirendekkel."
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: 5c25e7f81a4f2219c244044ea70416d1e0c63b4e
+ms.openlocfilehash: b05e7bfbc89de74937daa7daf578aa8a9bb39d64
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services – dokumentáció
 
-Az Azure AD Domain Services (tartományi szolgáltatások, DS) olyan felügyelt tartományi szolgáltatásokat biztosítanak, mint a tartományok csatlakoztatása, a csoportos házirend vagy az LDAP és a Kerberos/NTLM-hitelesítés. Ezek teljes mértékben kompatibilisek a Windows Server Active Directoryval.  Ezekkel a szolgáltatásokkal a felhasználók sokféle számítástechnikai megoldást helyezhetnek gyorsan üzembe.
+Ismerje meg, hogy az Active Directory Domain Services hogyan használható az Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül. Az oktatóanyagok és egyéb dokumentációk bemutatják a virtuális gépek csoportházirendekkel végzett kezelését.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -168,6 +169,6 @@ Active Directory Domain Services – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

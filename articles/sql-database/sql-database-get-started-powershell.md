@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
-ms.openlocfilehash: 62f29382a2b29c7e5b06126b0ab60c7136186103
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
 
 
 ---
@@ -566,7 +566,7 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létrehozott egy mintaadatokat tartalmazó adatbázist, további oktatóanyagokat szeretnénk a figyelmébe ajánlani, amelyekkel bővítheti meglévő tudását. 
 
-* Ha további információkat szeretne szerezni az Azure SQL Database biztonságával kapcsolatban, tekintse át az [adatbázis-biztonságot ismertető](sql-database-get-started-security.md) témakört.
+* Ha további információkat szeretne szerezni az Azure SQL Database biztonságával kapcsolatban, tekintse át az [adatbázis-biztonságot ismertető](sql-database-control-access-sql-authentication-get-started.md) témakört.
 * Ha munkája során az Excelt használja, olvassa el a [Connect to a SQL database in Azure with Excel](sql-database-connect-excel.md) (SQL-adatbázishoz való kapcsolódás az Azure-ban az Excellel) című cikket.
 * Ha készen áll a kódolás elkezdésére, válasszon programozási nyelvet a [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md) (Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez) című cikk alapján.
 * Ha át szeretné helyezni helyszíni SQL Server-adatbázisait az Azure-ba, olvassa el az [adatbázisok SQL Database-be történő áttelepítésével](sql-database-cloud-migrate.md) foglalkozó témakört.
@@ -577,6 +577,7 @@ Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létre
 [Mi az SQL Database?](sql-database-technical-overview.md)
 
 
-<!--HONumber=Jan17_HO1-->
+
+<!--HONumber=Jan17_HO3-->
 
 

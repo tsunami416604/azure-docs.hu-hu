@@ -2,7 +2,7 @@
 ## [Mi az a Load Balancer?](load-balancer-overview.md)
 ## [Internetes Load Balancer](load-balancer-internet-overview.md)
 ## [Belső terheléselosztó](load-balancer-internal-overview.md)
-## [A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
+## [A terheléselosztó vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
 ## [Azure Resource Manager-támogatás](load-balancer-arm.md)
 ## [IPv6-támogatás](load-balancer-ipv6-overview.md)
 ## [Több virtuális IP-cím](load-balancer-multivip-overview.md)
@@ -15,9 +15,9 @@
 ### [Belső Load balancer konfigurálása (parancssori felület)](load-balancer-get-started-ilb-arm-cli.md)
 ### [Belső Load Balancer konfigurálása (sablon)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Belső Load Balancer konfigurálása a felhőszolgáltatásokhoz](load-balancer-get-started-ilb-classic-cloud.md)
-### [Belső Load Balancer konfigurálása a felhőszolgáltatásokhoz (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
-### [Belső Load Balancer konfigurálása a felhőszolgáltatásokhoz (parancssori felület)](load-balancer-get-started-ilb-classic-cli.md)
+## [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz](load-balancer-get-started-ilb-classic-cloud.md)
+### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (parancssori felület)](load-balancer-get-started-ilb-classic-cli.md)
 
 ## [Internetkapcsolattal rendelkező Load Balancer konfigurálása](load-balancer-get-started-internet-portal.md)
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
@@ -29,9 +29,9 @@
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus PS)](load-balancer-get-started-internet-classic-ps.md)
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus parancssori felület)](load-balancer-get-started-internet-classic-cli.md)
 
-## [Internetkapcsolattal rendelkező Load Balancer konfigurálása IPv6-tal](load-balancer-ipv6-internet-ps.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
+## [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal](load-balancer-ipv6-internet-ps.md)
+### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
+### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
 
 # Útmutató
 ## [TCP üresjárati időkorlát konfigurálása Load Balancer](load-balancer-tcp-idle-timeout.md)
@@ -44,10 +44,13 @@
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure CLI](/cli/azure/network/lb)
-## [Java](/java/api)
-## [.NET](/dotnet/api)
+## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)
+## [Azure CLI 2.0 (előzetes verzió)](/cli/azure/network/lb)
+## [.NET](/dotnet/api/microsoft.azure.management.network.models)
+## [Java](/java/api/com.microsoft.azure.management.network)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations)
 ## [REST](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 # Kapcsolódó
@@ -64,6 +67,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=load-balancer)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

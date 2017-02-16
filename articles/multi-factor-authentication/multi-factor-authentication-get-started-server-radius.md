@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e031f196e2f86b887c24ba300eac7ab8a8902036
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b8ec2b5df0ae4656630364c5930029e46ee62dbd
 
 
 ---
-# <a name="radius-authentication-and-azure-multifactor-authentication-server"></a>RADIUS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
+# <a name="radius-authentication-and-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
 A RADIUS-hitelesítés szakaszban engedélyezheti és konfigurálhatja a RADIUS-hitelesítést az Azure Multi-Factor Authentication-kiszolgálón. A RADIUS egy szabványos protokoll hitelesítési kérések fogadására és feldolgozására. Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-kiszolgálóként működik az Azure Multi-Factor Authentication biztosítása érdekében a RADIUS-ügyfél (például VPN-készülék) és a hitelesítési cél között, amely Active Directory (AD), LDAP-címtár vagy egy másik RADIUS-kiszolgáló lehet. Az Azure Multi-Factor Authentication működéséhez az Azure Multi-Factor Authentication-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és a hitelesítési céllal is tudjon kommunikálni. Az Azure Multi-Factor Authentication-kiszolgáló fogadja a RADIUS-ügyfél kéréseit, ellenőrzi a hitelesítő adatokat a hitelesítési célon, Azure Multi-Factor Authenticationt biztosít és választ küld a RADIUS-ügyfélnek. A teljes hitelesítés csak akkor lesz sikeres, ha az elsődleges hitelesítés és az Azure Multi-Factor Authentication is sikeres.
 
 > [!NOTE]
@@ -48,7 +48,7 @@ A RADIUS-hitelesítés konfigurálásához telepítse az Azure Multi-Factor Auth
 11. Ha az Azure Multi-Factor Authentication-kiszolgáló tartományhoz csatlakoztatott kiszolgálón van telepítve Active Directory-környezetben, válasszon egy Windows-tartományt.
 12. Ha a felhasználókat egy LDAP-címtár alapján kell hitelesíteni, válassza az LDAP-kötést. LDAP-kötés használatakor kattintson a Címtár-integráció ikonra, és szerkessze úgy az LDAP-konfigurációt a Beállítások lapon, hogy a kiszolgáló kötést hozhasson létre a címtárával. Az LDAP konfigurálásával kapcsolatos utasításokat az LDAP-proxy konfigurációs útmutatójában talál.
 13. Ha a felhasználókat egy másik RADIUS-kiszolgálón kell hitelesíteni, válassza a RADIUS-kiszolgáló(k) lehetőséget.
-14. A Hozzáadás... gombra.
+14. A Hozzáadás gombra kattintva konfigurálja azt a kiszolgálót, amelynek a kiszolgáló proxykapcsolaton keresztül átadja a RADIUS-kéréseket.
 15. A RADIUS-kiszolgáló hozzáadása párbeszédpanelen adja meg a RADIUS-kiszolgáló IP-címét és egy közös titkos kulcsot. A közös titkos kulcsnak azonosnak kell lennie az Azure Multi-Factor Authentication-kiszolgálón és a RADIUS-kiszolgálón. Módosítsa a hitelesítési portot és a nyilvántartási portot, ha a RADIUS-kiszolgáló eltérő portokat használ.
 16. Kattintson az OK gombra.
 17. Az Azure Multi-Factor Authentication-kiszolgálót RADIUS-ügyfélként kell hozzáadnia a másik RADIUS-kiszolgálón, hogy feldolgozza az Azure Multi-Factor Authentication-kiszolgálóról érkező hozzáférési kéréseket. Ugyanazt a közös titkos kulcsot kell használnia, amelyet az Azure Multi-Factor Authentication-kiszolgálón konfigurált.
@@ -64,6 +64,6 @@ A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

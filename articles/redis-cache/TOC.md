@@ -45,21 +45,21 @@
 ###[Módosítás más méretre és szintre](cache-how-to-scale.md)
 ###[Vertikális és horizontális leskálázás Redis-fürttel](cache-how-to-premium-clustering.md)
 
-#Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/)
-## [Java](https://docs.microsoft.com/java/api/)
-## [.NET](https://docs.microsoft.com/dotnet/api/)
+# Referencia
+## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [Azure CLI 2.0 előzetes verzió](/cli/azure/redis)
+## [.NET](/dotnet/api/microsoft.azure.management.redis)
+## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis ügyfelek](http://redis.io/clients)
 ## [Redis parancsok](http://redis.io/commands#)
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
+
+# Erőforrások
 ## [Redis Cache-minták](cache-redis-samples.md)
-
-#Erőforrások
-##[Díjszabás](https://azure.microsoft.com/pricing/details/cache/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cache/)
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

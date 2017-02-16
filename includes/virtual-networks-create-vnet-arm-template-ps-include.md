@@ -1,7 +1,7 @@
 ## <a name="deploy-the-arm-template-by-using-powershell"></a>Az ARM-sablon üzembe helyezése a PowerShell használatával
 A letöltött ARM-sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Szükség esetén a **`New-AzureRmResourceGroup`** parancsmag futtatásával hozzon létre egy új erőforráscsoportot. Az alábbi parancs egy *TestRG* nevű erőforráscsoportot hoz létre az *USA középső régiója* Azure-régióban. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
    
         New-AzureRmResourceGroup -Name TestRG -Location centralus
@@ -87,6 +87,6 @@ A letöltött ARM-sablon PowerShell használatával történő üzembe helyezés
                               }
                             ]
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

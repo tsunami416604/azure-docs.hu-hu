@@ -16,6 +16,7 @@
 #### [Node.js](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
 ### [Eseményindítók és kötések használata](functions-triggers-bindings.md)
+#### [DocumentDB-kötések](functions-bindings-documentdb.md)
 #### [Event Hub-kötések](functions-bindings-event-hubs.md)
 #### [HTTP- és webhookkötések](functions-bindings-http-webhook.md)
 #### [Mobile Apps-kötések](functions-bindings-mobile-apps.md)
@@ -49,6 +50,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

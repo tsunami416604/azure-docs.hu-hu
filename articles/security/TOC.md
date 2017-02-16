@@ -33,12 +33,10 @@
 ### [Bevált biztonsági gyakorlatok és minták](security-best-practices-and-patterns.md)
 ### [Rugalmas alkalmazások kiépítése](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# Referencia
+# Kapcsolódó
 ## [Adatvédelmi központ](security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](azure-security-response-center.md)
 ## [Toll tesztelése](azure-security-pen-testing.md)
-
-# Kapcsolódó
 ## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
@@ -52,6 +50,7 @@
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ## <a name="additional-resources"></a>További források
-* [Az Azure AD fejlesztői útmutatója](../articles/active-directory/active-directory-developers-guide.md)
+* [Az Azure AD fejlesztői útmutatója](../articles/active-directory/develop/active-directory-developers-guide.md)
 * [Azure AD-példák a GitHubon](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
 * [CloudIdentity.com](http://cloudidentity.com)
 
@@ -8,6 +8,6 @@ Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekrő
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/06/2017
+ms.date: 01/17/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 6949e07622f229616f950a9aed07c7b58a5b63fc
-ms.openlocfilehash: 9de26e09cb41ef415d0535db35d7d5d0cd8784a5
+ms.sourcegitcommit: 8ff9c07fbc6e3d2a44414b485bd0f32b68b5d494
+ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
 
 
 ---
@@ -132,7 +132,6 @@ Ha további felhasználóknak szeretne teljes elérést biztosítani az adatbáz
 
 > [!NOTE]
 > A bejelentkezéseken alapuló adatbázis-felhasználók létrehozásának leggyakoribb oka az, ha olyan SQL Server-hitelesítési felhasználókkal rendelkezik, akiknek több adatbázishoz kell hozzáférniük. A bejelentkezésen alapuló felhasználók a bejelentkezéshez vannak kötve, és egyetlen jelszó használható a bejelentkezéshez. Az egyes adatbázisokban lévő tartalmazottadatbázis-felhasználók önálló entitások, és mindegyiknek saját jelszava van. Ez félreértésekhez vezethet a tartalmazott adatbázisok felhasználói esetében, ha nem ugyanazokat a jelszavakat használják.
- 
 
 ### <a name="configuring-the-database-level-firewall"></a>Adatbázisszintű tűzfal konfigurálása
 Ajánlott eljárásként a nem rendszergazdai felhasználóknak csak az általuk használt adatbázisokhoz kell hozzáféréssel rendelkezniük a tűzfalon keresztül. Ahelyett, hogy a kiszolgálószintű tűzfalon keresztül hitelesítené az IP-címüket, és hozzáférést adna nekik az összes adatbázishoz, az [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) utasítással konfigurálja az adatbázisszintű tűzfalat. Az adatbázisszintű tűzfal nem konfigurálható a portálon keresztül.
@@ -158,9 +157,10 @@ Az SQL Database-ben több mint 100 engedély adható vagy tagadható meg külön
 ### <a name="considerations-and-restrictions"></a>Megfontolandó szempontok és korlátozások
 Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye figyelembe a következőket:
 
-* A ** utasítások futtatásához csatlakoznia kell a **master adatbázishoz`CREATE/ALTER/DROP DATABASE`. A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó master adatbázis felhasználója nem módosítható és nem vethető el. 
+* A ** utasítások futtatásához csatlakoznia kell a **master adatbázishoz`CREATE/ALTER/DROP DATABASE`.   
+* A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó felhasználó nem módosítható és nem vethető el. 
 * A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
-* Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master adatbázis** **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
+* Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
 * A `CREATE/ALTER/DROP LOGIN` utasítások futtatásához csatlakoznia kell a master adatbázishoz. A bejelentkezési adatok használata azonban nem javasolt. Helyette használja a tartalmazott adatbázis felhasználóit.
 * A felhasználói adatbázishoz történő csatlakozáshoz adja meg a kapcsolati karakterláncban szereplő adatbázis nevét.
 * Csak a kiszolgálószintű fő bejelentkező és a **master adatbázis** **loginmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE LOGIN`, `ALTER LOGIN` és `DROP LOGIN` utasítások futtatásához szükséges engedéllyel.
@@ -185,13 +185,14 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 
 - A tűzfalszabályokkal kapcsolatos további információk: [Azure SQL Database-tűzfal](sql-database-firewall-configure.md).
 - Az SQL Database összes biztonsági szolgáltatásáról [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít áttekintést.
-- Útmutatásért tekintse meg az [SQL-biztonságra vonatkozó első lépéseket](sql-database-get-started-security.md) ismertető leírást.
+- Útmutatásért tekintse meg az [SQL-biztonságra vonatkozó első lépéseket](sql-database-control-access-sql-authentication-get-started.md) ismertető leírást.
 - Információk a nézetekről és a tárolt eljárásokról: [Nézetek és tárolt eljárások létrehozása](https://msdn.microsoft.com/library/ms365311.aspx)
 - Információk adatbázis-objektumhoz való hozzáférés biztosításáról: [Adatbázis-objektumhoz való hozzáférés biztosítása](https://msdn.microsoft.com/library/ms365327.aspx)
+- Az SQL Server-hitelesítés használatával foglalkozó oktatóanyagért lásd: [SQL Database-oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md).
+- Az Azure Active Directory-hitelesítés használatával foglalkozó oktatóanyagért lásd: [SQL Database-oktatóanyag: AAD-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-aad-authentication-get-started.md).
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

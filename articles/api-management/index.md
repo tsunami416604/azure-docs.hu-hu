@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Ismerje meg, hogy az API Management hogyan használható az API-k biztonságos és skálázott közzétételére. A dokumentáció bemutatja, hogy a modern API-átjárók hogyan hozhatók létre a meglévő háttérrendszerekhez."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 43f480acb3e49a1b6a081a8338bb66daa571be55
+ms.sourcegitcommit: bc1895fc3b10c9fab96a120359e25324a1132a51
+ms.openlocfilehash: cd5342474c551bfb9eb1496ffd67f3b36933f1d8
 
 ---
 # <a name="api-management-documentation"></a>API Management – dokumentáció
 
-Az API Management segít a szervezeteknek közzétenni az API-kat külső, partneri és belső fejlesztők számára, hogy ki tudják bontakoztatni az adataikban és szolgáltatásaikban rejlő lehetőségeket.  Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez.
+Ismerje meg, hogy az API Management hogyan használható az API-k külső rendszerek, partnerek és belső fejlesztők felé történő biztonságos és skálázott közzétételére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre és kezelhet modern API-átjárókat meglévő háttérrendszerekhez, függetlenül azok üzemeltetési helyétől.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Az API Management segít a szervezeteknek közzétenni az API-kat külső, partn
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=api-management">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=api-management">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -86,36 +87,46 @@ Az API Management segít a szervezeteknek közzétenni az API-kat külső, partn
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>API Management Resource Managerhez kapcsolódó PowerShell-parancsmagok</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt613507">Klasszikus PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/apimanagement/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>API Management – REST API-referencia</p>
+                        <p><a href="/rest/api/apimanagement/">REST API</a></p>
+                        <p><a href="/rest/api/apimanagement/ApiManagementREST/API-Management-REST">REST API (eredeti)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Egyéb</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn894081">Házirendek</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt697540">Sablonok</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 
@@ -131,6 +142,6 @@ API Management – dokumentáció letöltése </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 
