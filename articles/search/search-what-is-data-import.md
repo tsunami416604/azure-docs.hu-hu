@@ -59,6 +59,6 @@ A dokumentumfeltöltés előzetes gyors ellenőrzésére használhatja a portál
 > Számos [Azure Search kódminta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy használatra kész adatkészleteket, így segítséget nyújt az első lépésekhez. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Amikor futtatja az előre konfigurált indexelőt a mintaadatforráson, a rendszer egy indexet hoz létre, és feltölti dokumentumokkal, amelyek a Keresési ablakban vagy egy erre írt kóddal lekérdezhetők.
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

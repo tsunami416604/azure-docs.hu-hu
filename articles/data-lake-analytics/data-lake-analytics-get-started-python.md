@@ -209,6 +209,6 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -99,6 +99,6 @@ Ha újra használni kívánja a virtuális gépet, az **Indítás** gombra katti
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

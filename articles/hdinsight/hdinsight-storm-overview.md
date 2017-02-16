@@ -236,6 +236,6 @@ További információk a HDInsight alatt futó Apache Storm valós idejű elemz�
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

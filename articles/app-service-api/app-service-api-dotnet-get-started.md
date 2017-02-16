@@ -442,6 +442,6 @@ Az **Azure API App** projektsablon használatával azt az eredményt éri el, mi
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
