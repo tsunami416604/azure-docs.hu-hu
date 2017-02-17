@@ -1,5 +1,5 @@
 ---
-title: "Java webalkalmazás elemzése az Application Insights használatával | Microsoft Docs"
+title: "Java webalkalmazás elemzése az Azure Application Insights használatával | Microsoft Docs"
 description: "Alkalmazásteljesítmény-figyelés Java-webalkalmazásokhoz az Application Insights használatával. "
 services: application-insights
 documentationcenter: java
@@ -11,18 +11,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 2c3c0c79e62631a42249ea6dc3865e59f26cad53
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
 
-Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [észlelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket](app-insights-detect-triage-diagnose.md), és [kód][api] írhat annak követéséhez, hogy a felhasználók hogyan használják az alkalmazást.
+Az [Application Insights](https://azure.microsoft.com/services/application-insights/) egy bővíthető elemzési szolgáltatás a webfejlesztők számára, amely segít megérteni az élő alkalmazása teljesítményét és használatát. Ezzel [észlelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos hibákat és kivételeket](app-insights-detect-triage-diagnose.md), és [kódot][api] írhat annak követéséhez, hogy a felhasználók hogyan használják az alkalmazást.
 
 ![mintaadatok](./media/app-insights-java-get-started/5-results.png)
 
@@ -31,7 +31,7 @@ Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalma
 A következők szükségesek:
 
 * Oracle JRE 1.6 vagy újabb, vagy Zulu JRE 1.6 vagy újabb
-* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés. (Kezdhet az [ingyenes próba](https://azure.microsoft.com/pricing/free-trial/).)
+* Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
 
 *Ha már élő webalkalmazása van, az alternatív eljárást követve [hozzáadhatja az SDK-t a futásidőben a webkiszolgálón](app-insights-java-live.md). Ezzel az alternatívával nem kell újraépítenie a kódot, de nem tud kódot írni a felhasználói tevékenységek követése érdekében.*
 
@@ -148,7 +148,7 @@ Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
-* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnosztika].
+* Az eseménykorreláció a HTTP-kérelemösszetevő további eleme. Azonosítót rendel a kiszolgáló által fogadott összes kérelemhez, és az azonosítót „Operation.Id” tulajdonságként hozzáadja a telemetria minden eleméhez. Lehetővé teszi az egyes kérelmekkel társított telemetria korrelációját, ha beállít egy szűrőt a [diagnosztikai keresésben][diagnostic].
 * Az Application Insights-kulcs dinamikusan továbbadható az Azure Portalról rendszertulajdonságként (-DAPPLICATION_INSIGHTS_IKEY=saját_kialakítási_kulcs). Ha nincs tulajdonság meghatározva, környezeti változót (APPLICATION_INSIGHTS_IKEY) keres az Azure App-beállításokban. Ha egyik tulajdonság sincs meghatározva, az alapértelmezett InstrumentationKey lesz használva az ApplicationInsights.xml-ből. Ez a sorozat segít a különböző környezetekhez tartozó InstrumentationKey-ek dinamikus kezelésében.
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>A kialakítási kulcs beállításának egyéb módjai
@@ -323,20 +323,20 @@ A teljesítményszámlálói egyéni mérőszámokként láthatók a [Metrikabö
 ## <a name="get-user-and-session-data"></a>Felhasználói és munkamenetadatok lekérése
 Telemetriát küld a webkiszolgálóról. Az alkalmazás teljes körű megfigyelése érdekében további megfigyelést adhat hozzá:
 
-* [Adjon telemetriát a weblapokhoz][használat] a lapmegtekintések és a felhasználói mérőszámok megfigyelése érdekében.
-* [Beállíthat webes teszteket][rendelkezésre állás]annak biztosításához, hogy az alkalmazás mindig elérhető és válaszkész legyen.
+* [Adjon telemetriát a weblapokhoz][usage] a lapmegtekintések és a felhasználói mérőszámok megfigyelése érdekében.
+* [Beállíthat webes teszteket][availability] annak biztosításához, hogy az alkalmazás mindig elérhető és válaszkész legyen.
 
 ## <a name="capture-log-traces"></a>Naplónyomkövetések rögzítése
-Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback vagy más naplózási keretrendszerekből. HTTP-kérelmekkel és más telemetriával kapcsolhatja össze a naplókat. [További tudnivalók][javalogs].
+Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback vagy más naplózási keretrendszerekből. HTTP-kérelmekkel és más telemetriával kapcsolhatja össze a naplókat. [Itt megismerkedhet az erre vonatkozó részletekkel][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Saját telemetria küldése
 Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 
 * [Nyomon követheti az egyéni eseményeket és mérőszámokat][api], hogy megtudja, hogyan használják a felhasználók az alkalmazását.
-* [Eseményeket és naplókat kereshet][diagnosztika], amelyek segítenek a problémák diagnosztizálásában.
+* [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
 
 ## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
-Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [A ][rendelkezésre állás]beállításához kattintson a Webes tesztek elemre.
+Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [A ][availability]beállításához kattintson a Webes tesztek elemre.
 
 ![Kattintson a Webes tesztek elemre, majd a Webes teszt hozzáadása elemre.](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -344,7 +344,7 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 
 ![Példa webes tesztre](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-[További információk a rendelkezésre állási webes tesztekről.][rendelkezésre állás] 
+[További információk a rendelkezésre állási webes tesztekről.][availability] 
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
 [A Java hibaelhárítása](app-insights-java-troubleshoot.md)
@@ -362,15 +362,15 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[rendelkezésre állás]: app-insights-monitor-web-app-availability.md
-[diagnosztika]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-[használat]: app-insights-web-track-usage.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
