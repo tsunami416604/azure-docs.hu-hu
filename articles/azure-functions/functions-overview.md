@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/20/2016
+ms.date: 01/17/2017
 ms.author: cfowler;mahender;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 31d7a8d1abb59e096a657c4a74743adfc0d137b6
-ms.openlocfilehash: 01c1e7b58a7dce3c640ac151b3ac708ce2b7d913
+ms.sourcegitcommit: 30cc3b8749d5b36b89b242e2691003cc6f67f7d2
+ms.openlocfilehash: 00359057d702c556cd8beb91cf17ccf41c96f601
 
 
 ---
@@ -70,10 +70,10 @@ Az Azure Functions számos Azure-szolgáltatással és harmadik féltől szárma
 ## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Mennyibe kerül a Functions szolgáltatás használata?
 Az Azure Functions kétféle díjszabási csomaggal érhető el – válassza azt, amelyik leginkább megfelel az igényeinek: 
 
-* **Használatalapú csomag** – A függvény futásakor az Azure biztosít minden szükséges számítási erőforrást. Önnek nem kell foglalkoznia az erőforrás-kezeléssel, és csak annyi időért kell fizetnie, amennyit a kódja fut. Az árképzés további részleteiért lásd [a Functions díjszabási oldalát](/pricing/details/functions). 
-* **App Service-csomag** – Függvényeit ugyanúgy futtathatja, ahogy a webes, mobilos és API-alkalmazásait. Ha már más alkalmazásokhoz is használja az App Service szolgáltatást, ugyanabban a csomagban további költségek nélkül futtathatja a függvényeit. További részletekért lásd [az App Service díjszabási oldalát](/pricing/details/app-service/).
+* **Használatalapú csomag** – A függvény futásakor az Azure biztosít minden szükséges számítási erőforrást. Önnek nem kell foglalkoznia az erőforrás-kezeléssel, és csak annyi időért kell fizetnie, amennyit a kódja fut. 
+* **App Service-csomag** – Függvényeit ugyanúgy futtathatja, ahogy a webes, mobilos és API-alkalmazásait. Ha már más alkalmazásokhoz is használja az App Service szolgáltatást, ugyanabban a csomagban további költségek nélkül futtathatja a függvényeit. 
 
-A függvények méretezésével kapcsolatos további információkért lásd: [Az Azure Functions méretezése](functions-scale.md).
+Az árképzés további részleteiért lásd [a Functions díjszabási oldalát](https://azure.microsoft.com/pricing/details/functions/). A függvények méretezésével kapcsolatos további információkért lásd: [Az Azure Functions méretezése](functions-scale.md).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)  
@@ -90,6 +90,6 @@ A függvények méretezésével kapcsolatos további információkért lásd: [A
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

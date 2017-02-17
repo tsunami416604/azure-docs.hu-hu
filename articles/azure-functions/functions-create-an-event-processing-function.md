@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: ae5837b4fce52aad4c8b39434c27c450aafc1310
-ms.openlocfilehash: 466f2e03407a1633c40e96a366f782bf877c0c26
+ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
+ms.openlocfilehash: df3d303ee10fcc982552ea9756eb59198c87b650
 
 
 ---
@@ -27,7 +27,7 @@ Az Azure Functions egy eseményvezérelt, számítási igények szerint működt
 Ez a témakor egy olyan új függvény létrehozását mutatja be a C# használatával, amely egy eseményidőzitő alapján fut, és üzeneteket ad hozzá a tárolási sorhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
+A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ha még nem rendelkezik Azure-fiókkal, keresse fel a [Functions kipróbálását](https://functions.azure.com/try) lehetővé tévő webhelyet, vagy [hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/). 
 
 ## <a name="create-a-timer-triggered-function-from-the-template"></a>Időzítő által aktivált függvény létrehozása sablonból
 A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban egy függvényalkalmazás biztosítja. Ahhoz, hogy létrehozhassa a függvényt, aktív Azure-fiókkal kell rendelkeznie. Ha még nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/). 
@@ -79,6 +79,6 @@ A következő témakörökben további, az Azure Functions szolgáltatásra vona
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

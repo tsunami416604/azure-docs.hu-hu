@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 25be292144e31c6f34ff1e015362aee31e242619
+ms.sourcegitcommit: 7c289437beca78dacc7d3136680c54dde01f3798
+ms.openlocfilehash: fb4b12543ac4910ea9c4789f4ebe5ef0ca5997ae
 
 
 ---
@@ -40,7 +40,7 @@ A következő táblázatban láthatja, hogyan képezhetők le a megoldások adot
 
 | Megoldás | Adatfeldolgozás | Eszközidentitás | Parancs és vezérlés | Szabályok és műveletek | Prediktív elemzés |
 | --- | --- | --- | --- | --- | --- |
-| [Távoli megfigyelés][lnk-getstarted-preconfigured] |Igen |Igen |Igen |Igen |- |
+| [Távoli figyelés][lnk-getstarted-preconfigured] |Igen |Igen |Igen |Igen |- |
 | [Prediktív karbantartás][lnk-predictive-maintenance] |Igen |Igen |Igen |Igen |Igen |
 
 * *Adatfeldolgozás*: A felhőbe érkező nagy mennyiségű adatforgalom.
@@ -89,7 +89,7 @@ Ebben az előre konfigurált megoldásban az ASA-feladatok az **IoT-megoldás h�
 ## <a name="event-processor"></a>Eseményfeldolgozó
 Ebben az előre konfigurált megoldásban az eseményfeldolgozó az **IoT-megoldás hátterének** része a tipikus [IoT-megoldásarchitektúrában][lnk-what-is-azure-iot].
 
-A **DeviceInfo** és **Rules** ASA-feladatok a kimenetüket egy eseményközpontokba küldik, amely más háttérszolgáltatásoknak továbbítja őket. A megoldás [WebJob][lnk-web-job] feladatban futó [EventPocessorHost][lnk-event-processor] példányt használ az eseményközpontokból érkező üzenetek olvasásához. Az **EventProcessorHost** a **DeviceInfo** adatokkal frissíti az eszközadatokat a DocumentDB-adatbázisban, és a **Rules** adatokkal indítja el a logikai alkalmazást, és frissíti a megoldásportálon megjelenő riasztásokat.
+A **DeviceInfo** és **Rules** ASA-feladatok a kimenetüket egy eseményközpontokba küldik, amely más háttérszolgáltatásoknak továbbítja őket. A megoldás [WebJob][lnk-web-job] feladatban futó [EventProcessorHost][lnk-event-processor] példányt használ az eseményközpontokból érkező üzenetek olvasásához. Az **EventProcessorHost** a **DeviceInfo** adatokkal frissíti az eszközadatokat a DocumentDB-adatbázisban, és a **Rules** adatokkal indítja el a logikai alkalmazást, és frissíti a megoldásportálon megjelenő riasztásokat.
 
 ## <a name="device-identity-registry-and-documentdb"></a>Eszközidentitás-jegyzék és DocumentDB
 Minden IoT Hub tartalmaz eszközkulcsokat tároló [eszközidentitás-jegyzéket][lnk-identity-registry]. Az IoT Hub ezekkel az információkkal hitelesíti az eszközöket – az eszközöknek regisztrálva kell lenniük és érvényes kulccsal kell rendelkezniük, hogy csatlakozhassanak a hubhoz.
@@ -109,10 +109,10 @@ A megoldásportál egy webalapú felhasználói felület, amely az előre konfig
 * Parancsok küldése adott eszközökre.
 * Szabályok és műveletek kezelése.
 
-Ebben az előre konfigurált megoldásban a megoldásportál az **IoT-megoldás hátterének** és a **feldolgozási és üzleti kapcsolatoknak** a része a tipikus [IoT megoldásarchitektúrákban][lnk-what-is-azure-iot].
+Ebben az előre konfigurált megoldásban a megoldásportál az **IoT-megoldás hátterének** és a **feldolgozási és üzleti kapcsolatoknak** a része a tipikus [IoT-megoldásarchitektúrákban][lnk-what-is-azure-iot].
 
 ## <a name="next-steps"></a>Következő lépések
-További információ az IoT-megoldások architektúrájáról: [Microsoft Azure IoT-szolgáltatások: referenciaarchitektúra][lnk-refarch].
+További információ az IoT-megoldásarchitektúrákról: [Microsoft Azure IoT-szolgáltatások: referenciaarchitektúra][lnk-refarch].
 
 Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe helyezheti az előre konfigurált *távoli megfigyelési* megoldást: [Az előre konfigurált megoldások bemutatása][lnk-getstarted-preconfigured].
 
@@ -130,6 +130,6 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

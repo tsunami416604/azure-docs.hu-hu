@@ -215,6 +215,6 @@ Bár az integrációs modulok lényegében PowerShell modulok, számos dolog van
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

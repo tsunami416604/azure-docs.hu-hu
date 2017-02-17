@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 79c9f2d8c683be493160fffe40992006b039f60f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f86a70a5207f19063e9992325c8f8d696ca7823e
 
 
 ---
@@ -32,7 +32,7 @@ Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált táv
 Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 > [!NOTE]
-> Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása][lnk_free_trial].
+> Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk_free_trial].
 > 
 > 
 
@@ -86,7 +86,7 @@ Az eszköz részletei panel megjeleníti az adott eszköz által támogatott ös
 A megoldás nyomon követi az általa küldött összes parancs állapotát. Az eredmény kezdetben **Függőben** állapotú. Amikor az eszköz jelenti, hogy végrehajtotta a parancsot, az eredmény **Sikeres** állapotra vált.
 
 ## <a name="add-a-new-simulated-device"></a>Új szimulált eszköz hozzáadása
-Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható négy mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközök a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
+Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható négy mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközöknek a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
 
 Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldáshoz:
 
@@ -98,7 +98,7 @@ Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldásho
    
    ![Az új eszköz adatainak megadása az irányítópulton][img-addnew]
    
-   Új szimulált eszköz létrehozása mellett fizikai eszközt is hozzáadhat egy **Egyéni eszköz** létrehozásával. További információk fizikai eszközök a megoldáshoz csatlakoztatásáról: [Az eszköz csatlakoztatása az IoT Suite előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
+   Új szimulált eszköz létrehozása mellett fizikai eszközt is hozzáadhat egy **Egyéni eszköz** létrehozásával. További információ fizikai eszközöknek a megoldáshoz csatlakoztatásáról: [Az eszköz csatlakoztatása az IoT Suite előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
 4. Válassza a **Meghatározom a saját eszközazonosítómat** elemet, és írjon be egy egyéni eszközazonosító nevet, például a **mydevice_01** nevet.
 5. Kattintson a **Létrehozás** gombra.
    
@@ -112,7 +112,7 @@ Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldásho
     ![Az új eszköz telemetriájának megtekintése][img-runningnew-2]
 
 ## <a name="edit-the-device-metadata"></a>Az eszköz metaadatainak szerkesztése
-Amikor az eszköz első alkalommal csatlakozik a megoldáshoz, elküldi metaadatait a megoldás számára. Ha az eszköz metaadatait a megoldás irányítópultján szerkeszti, az elküldi az új metaadatértékeket az eszköznek, és a megoldás DocumentDB-adatbázisában tárolja azokat. További információk: [Eszközidentitás-jegyzék és DocumentDB][lnk-devicemetadata].
+Amikor az eszköz első alkalommal csatlakozik a megoldáshoz, elküldi metaadatait a megoldás számára. Ha az eszköz metaadatait a megoldás irányítópultján szerkeszti, az elküldi az új metaadatértékeket az eszköznek, és a megoldás DocumentDB-adatbázisában tárolja azokat. További információ: [Eszközidentitás-jegyzék és DocumentDB][lnk-devicemetadata].
 
 1. Lépjen vissza az eszközlistára.
 2. Válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szerkesztés** gombra az **Eszköztulajdonságok** szerkesztéséhez:
@@ -151,7 +151,7 @@ A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban 
     ![Eszközműveletek listázása][img-actions]
 
 > [!NOTE]
-> Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül. További információk: [Logikai alkalmazás csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásához][lnk-logicapptutorial].
+> Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül. További információ: [Logikai alkalmazás csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásához][lnk-logicapptutorial].
 > 
 > 
 
@@ -180,14 +180,14 @@ Megtekintheti az előre konfigurált megoldás forráskódját is. Az előre kon
 Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előfizetésből az [azureiotsuite.com][lnk-azureiotsuite] webhelyen. Így könnyedén törölheti az előre konfigurált megoldás létrehozásakor megkapott összes erőforrást.
 
 > [!NOTE]
-> Ahhoz, hogy biztosan törölje az előre konfigurált megoldáshoz kapcsolódó összes elemet, törölje azt az [azureiotsuite.com][lnk-azureiotsuite] webhelyről, és ne törölje az erőforráscsoportot a portálon.
+> Ahhoz, hogy biztosan törölje az előre konfigurált megoldáshoz kapcsolódó összes elemet, törölje a megoldást az [azureiotsuite.com][lnk-azureiotsuite] webhelyről, és ne törölje az erőforráscsoportot a portálon.
 > 
 > 
 
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT Suite használatával:
 
-* [Az előre konfigurált távoli figyelési megoldás bemutatója][lnk-rm-walkthrough]
+* [A távoli figyelési előre konfigurált megoldás bemutatója][lnk-rm-walkthrough]
 * [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm]
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 
@@ -229,6 +229,6 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
