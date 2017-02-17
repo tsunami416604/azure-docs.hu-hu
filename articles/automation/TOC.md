@@ -26,6 +26,7 @@
 ### [Runbook-feladat nyomon követése](automation-runbook-execution.md)
 ### [Runbook beállításainak módosítása](automation-runbook-settings.md)
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
+### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
 ## Konfigurációkezelés (DSC) üzembe helyezése
 ### [Célállapot-konfiguráló (DSC)](automation-dsc-overview.md)
 ### [Bevezetés](automation-dsc-getting-started.md)
@@ -53,7 +54,9 @@
 ### [Erőforráscsoport eltávolítása](automation-scenario-remove-resourcegroup.md)
 ### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 ### [Forráskezelés integrálása a GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md)
-## [Figyelés](automation-manage-send-joblogs-log-analytics.md)
+## Figyelés
+### [Azure Automation-feladat adatainak továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md)
+### [Azure Automation-fiók leválasztása a Log Analyticsről](automation-unlink-from-log-analytics.md)
 ## Migrate (Áttelepítés)
 ### [Áttelepítés az Orchestratorból](automation-orchestrator-migration.md)
 ### [Automation-fiók áthelyezése](automation-migrate-account-subscription.md)
@@ -78,6 +81,6 @@
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

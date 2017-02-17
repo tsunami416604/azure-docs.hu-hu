@@ -161,6 +161,7 @@
 ### [Állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 ## Megfigyelés és diagnosztika
+### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
 ### A szolgáltatások helyi figyelése és diagnosztikája
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
@@ -208,6 +209,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

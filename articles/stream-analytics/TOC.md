@@ -17,19 +17,22 @@
 
 ## Fejlesztés
 ### [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
+### [Visual Studio-eszközök](stream-analytics-tools-for-visual-studio.md)
 ### [Bemenetek létrehozása](stream-analytics-define-inputs.md)
 ### [Kimenetek létrehozása](stream-analytics-define-outputs.md)
 ### [Referenciaadatok használata](stream-analytics-use-reference-data.md)
-### [Kimenet az Azure Redis Cache gyorsítótárba](stream-analytics-functions-redis.md)
+### [Kimenet az Azure Functionshöz](stream-analytics-functions-redis.md)
 ### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)
 ### [Kimenet a DocumentDB-be](stream-analytics-documentdb-output.md)
 ### [Adatelemzés a Power BI segítségével](stream-analytics-power-bi-dashboard.md)
+### [Javascript UDF-integráció](stream-analytics-javascript-user-defined-functions.md)
 ### [REST API és Machine Learning-integráció](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [A Management .NET SDK használata](stream-analytics-dotnet-management-sdk.md)
 ### [Ablakfüggvények](stream-analytics-window-functions.md)
 
 ## Kezelés
 ### [Feladatok figyelése](stream-analytics-monitoring.md)
+### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
 ### [Feladatok programozott figyelése](stream-analytics-monitor-jobs.md)
 ### [Feladatok figyelése a PowerShell-lel](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Teljesítménynövelés skálázással](stream-analytics-scale-jobs.md)
@@ -58,6 +61,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

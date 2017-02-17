@@ -1,45 +1,64 @@
 # Áttekintés
-
 ## [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md)
-## [Event Hubs – áttekintés](event-hubs-overview.md)
-## [Event Hubs API – áttekintés](event-hubs-api-overview.md)
-## [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
-
+## [Gyakori kérdések](event-hubs-faq.md)
 
 # Első lépések
-## [Bevezetés az Event Hubs használatába](event-hubs-csharp-ephcs-getstarted.md)
-## [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
-## [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+## [Event Hub létrehozása](event-hubs-create.md)
+## Események küldése
+### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
+### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
+### [Java](event-hubs-java-get-started-send.md)
+### [C](event-hubs-c-getstarted-send.md)
+## Események fogadása
+### [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md)
+### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md)
+### [Java](event-hubs-java-get-started-receive-eph.md)
+### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## [Programozási útmutató](event-hubs-programming-guide.md)
 
 # Útmutató
-## A minták futtatása
-### [Felhasználók értesítése az érzékelők által küldött adatokról](event-hubs-sensors-notify-users.md)
-### [Event Hubs-példaalkalmazás](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097)
-### [Példa az eseményfeldolgozás horizontális skálázására Event Hubs-alkalmazással](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)
+## Tervezés és kialakítás
+### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
+### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
+## Fejlesztés
+### [Elérhető API-k](event-hubs-api-overview.md)
+#### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
+#### [.NET-keretrendszer](event-hubs-dotnet-framework-api-overview.md)
+#### [Diagnosztikai naplók](event-hubs-diagnostic-logs.md)
+### [Hitelesítés és engedélyezés](../service-bus-messaging/service-bus-sas.md)
+### [AMQP 1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Kezelés
-### [Az Event Hubs archívum](event-hubs-archive-overview.md)
-### [Az Event Hubs Archívum engedélyezése sablonnal](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
+### [Event Hubs felügyeleti könyvtárak](event-hubs-management-libraries.md)
+### Archívum
+#### [Az Event Hubs archívum](event-hubs-archive-overview.md)
+#### [Az Event Hubs Archívum engedélyezése sablonnal](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
+#### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
 ### [Azure Diagnostics-adatok streamelése az Event Hubs használatával](event-hubs-streaming-azure-diags-data.md)
 ### [Event Hub-eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
-### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
 
 # Referencia
-## [.NET](/dotnet/api/microsoft.azure.eventhubs)
-## [Java](/java/api/com.microsoft.azure.eventhubs)
+## .NET
+### [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
+### [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
+### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
+### [Microsoft.Azure.ServiceBus.EventProcessorHost](/dotnet/api/microsoft.azure.servicebus.eventprocessorhost)
+### [Microsoft.Azure.Management.EventHub](/dotnet/api/microsoft.azure.management.eventhub)
+## Java
+### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
+### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
 ## [REST](/rest/api/eventhub)
+## [Kivételek](event-hubs-messaging-exceptions.md)
+## [Kvóták](event-hubs-quotas.md)
 
 # Erőforrások
-## [Kvóták és korlátozások](event-hubs-quotas.md)
-## [Üzenetkezelési kivételek](event-hubs-messaging-exceptions.md)
-## [AMQP1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
-## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/event-hubs/)
+## [Kódminták](event-hubs-samples.md)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
-## [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

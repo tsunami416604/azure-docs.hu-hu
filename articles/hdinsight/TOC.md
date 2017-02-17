@@ -77,9 +77,7 @@
 ### [A Phoenix és az SQLLine használata](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [Valós idejű tweetek elemzése](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [Fürtök létrehozása virtuális hálózaton](hdinsight-hbase-provision-vnet.md)
-### [VPN-kapcsolat konfigurálása](hdinsight-hbase-geo-replication-configure-vnets.md)
-### [DNS-kiszolgálók konfigurálása](hdinsight-hbase-geo-replication-configure-dns.md)
-### [HBase-georeplikáció konfigurálása](hdinsight-hbase-geo-replication.md)
+### [HBase-replikáció konfigurálása](hdinsight-hbase-replication.md)
 ### [Alkalmazás fejlesztése Javával](hdinsight-hbase-build-java-maven-linux.md)
 ## A Storm használata
 ### [Topológiák üzembe helyezése és kezelése](hdinsight-storm-deploy-monitor-topology-linux.md)
@@ -198,7 +196,6 @@
 ### [Első lépések a Hadoopban](hdinsight-hadoop-tutorial-get-started-windows.md)
 ### [Első lépések a Stormban](hdinsight-apache-storm-tutorial-get-started.md)
 ### [Első lépések a HBase-ben](hdinsight-hbase-tutorial-get-started.md)
-### [HDInsight-mintakatalógus](hdinsight-learn-hadoop-use-sample-gallery.md)
 ### [Hadoop MapReduce-minták futtatása](hdinsight-run-samples.md)
 ### [Hadoop-fürtök létrehozása](hdinsight-provision-clusters.md)
 #### [Az Azure Portal használata](hdinsight-hadoop-create-windows-clusters-portal.md)
@@ -228,6 +225,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

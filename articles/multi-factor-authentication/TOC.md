@@ -14,6 +14,7 @@
 ### [Hitelesítési szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md)
 ### [Beállítások konfigurálása](multi-factor-authentication-whats-next.md)
 ### [Jelentések az MFA-ban](multi-factor-authentication-manage-reports.md)
+### [Meglévő hálózatiházirend-kiszolgálók használata](multi-factor-authentication-nps-extension.md)
 ### Helyszíni Azure MFA
 #### [A felhasználói portál telepítése](multi-factor-authentication-get-started-portal.md)
 #### [Speciális VPN-konfigurációk](multi-factor-authentication-advanced-vpn-configurations.md)
@@ -38,7 +39,7 @@
 ### [IIS-webalkalmazások](multi-factor-authentication-get-started-server-iis.md)
 ### [Távoli asztali átjáró](multi-factor-authentication-get-started-server-rdg.md)
 
-## Fejlesztés 
+## Fejlesztés
 ### [Beépítés egyéni alkalmazásokba (SDK)](multi-factor-authentication-sdk.md)
 
 ## Hibaelhárítás
@@ -46,6 +47,6 @@
 ### [Kérdezzen](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

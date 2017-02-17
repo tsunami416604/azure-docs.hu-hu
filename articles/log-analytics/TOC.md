@@ -8,6 +8,7 @@
 ## [Proxy és tűzfal](log-analytics-proxy-firewall.md)
 ## [Használati adatok](log-analytics-usage.md)
 ## [Log Analytics – gyakori kérdések](log-analytics-faq.md)
+## [Szolgáltatók](log-analytics-service-providers.md)
 
 # Útmutató
 ## Adatok gyűjtése
@@ -15,7 +16,7 @@
 #### [Windows-ügynökök](log-analytics-windows-agents.md)
 #### [Linux-ügynökök](log-analytics-linux-agents.md)
 #### [Azure-alapú virtuális gépek](log-analytics-azure-vm-extension.md)
-#### [Azure Storage](log-analytics-azure-storage.md)
+#### [Azure-erőforrások](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
 #### [OMS Gateway](log-analytics-oms-gateway.md)
@@ -45,6 +46,9 @@
 #### [Változáskövetés](log-analytics-change-tracking.md)
 #### [Tárolók](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
+#### Logic Apps B2B-üzenetek
+##### [Logic Apps B2B-üzeneteken alapuló megoldás](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
+##### [Logic Apps B2B egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [Kártevőfelmérés](log-analytics-malware.md)
 #### [Hálózatelemzés](log-analytics-azure-networking-analytics.md)
 #### [Hálózati teljesítményfigyelő](log-analytics-network-performance-monitor.md)
@@ -59,6 +63,7 @@
 ## Fejlesztés
 ### [Adatgyűjtő API](log-analytics-data-collector-api.md)
 ### [PowerShell-parancsmagok](log-analytics-powershell-workspace-configuration.md)
+### [Resource Manager-sablonok](log-analytics-template-workspace-configuration.md)
 ### [Naplókeresési API](log-analytics-log-search-api.md)
 ### [Riasztási API](log-analytics-api-alerts.md)
 
@@ -71,6 +76,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -23,8 +23,11 @@
 ## [Identitáskezelés](security-identity-management-overview.md)
 ### [Ajánlott identitáskezelési biztonsági eljárások](azure-security-identity-management-best-practices.md)
 ## PaaS szolgáltatások
-### [Ajánlott biztonsági eljárások az IoT-hez](azure-security-iot-best-practices.md)
+### [PaaS-környezetek védelme](security-paas-deployments.md)
+#### [PaaS-alkalmazások védelme SQL használatával](security-paas-applications-using-sql.md)
+#### [PaaS-alkalmazások védelme App Services használatával](security-paas-applications-using-app-services.md)
 ### [Az IoT biztonsági áttekintése](security-internet-of-things-overview.md)
+### [Ajánlott biztonsági eljárások az IoT-hez](azure-security-iot-best-practices.md)
 ## Vertikális iparágak
 ### [Biztonságos állapotmegoldások tervezése](security-health-care-solution.md)
 ## [Biztonsági architektúra](azure-security-architecture-overview.md)
@@ -51,6 +54,6 @@
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

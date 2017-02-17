@@ -12,13 +12,15 @@
 # Útmutató
 ## Magas rendelkezésre állás konfigurálása
 ### [Magas rendelkezésre állású lehetőségek](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Always On rendelkezésre állási csoport konfigurálása](virtual-machines-windows-portal-sql-availability-group-overview.md)
+### [Always On rendelkezésre állási csoport](virtual-machines-windows-portal-sql-availability-group-overview.md)
 #### [Automatikus – sablonnal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [Manuális – előfeltételek](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [Manuális – oktatóanyag](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 #### [Load Balancer – portál](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
 #### [Load Balancer – PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [Több régió](virtual-machines-windows-portal-sql-availability-group-dr.md)
+### Feladatátvevőfürt-példány
+#### [Konfigurálás](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
 ## Kezelés
 ### [Microsoft SQL Server IaaS-ügynök bővítmény használata](virtual-machines-windows-sql-server-agent-extension.md)
@@ -49,6 +51,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

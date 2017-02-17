@@ -97,6 +97,28 @@
 #### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
 ### [Hibaelhárítás](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
+## Az Arduino (Node) használatának első lépései
+### [Az Arduino áramköri lap használatának első lépései: Adafruit Feather M0 WiFi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+### 1. lecke: Az eszköz konfigurálása
+#### [Az eszköz konfigurálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
+#### [Eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
+#### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-ubuntu.md)
+#### [Eszközök beszerzése (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-mac.md)
+#### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md)
+### 2. lecke: Az IoT hub létrehozása
+#### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
+#### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
+#### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
+#### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
+#### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+#### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
+#### [A tárban őrzött üzenetek olvasása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
+### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
+#### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+#### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
+### [Hibaelhárítás](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
+
 ## [Átjáró SDK (Linux) – első lépések](iot-hub-linux-gateway-sdk-get-started.md)
 ## [Átjáró SDK (Windows) – első lépések](iot-hub-windows-gateway-sdk-get-started.md)
 
@@ -219,9 +241,11 @@
 ## [Java (Eszközök)](/java/api/com.microsoft.azure.iothub)
 ## [Azure IoT SDK-k](http://azure.github.io/azure-iot-sdks/)
 ## [Átjáró SDK](http://azure.github.io/azure-iot-gateway-sdk)
-## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
-## [REST (Eszközidentitások)](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
-## [REST (Eszközök üzenetküldése) – REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
+## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
+## [REST (Eszközidentitások)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
+## [REST (Ikereszközök)](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
+## [REST (Eszközök üzenetküldése)](https://docs.microsoft.com/rest/api/iothub/httpruntime)
+## [REST (Feladatok)](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # Kapcsolódó
 ## [Az Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -240,6 +264,6 @@
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

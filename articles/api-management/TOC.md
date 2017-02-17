@@ -14,6 +14,7 @@
 ## A háttérmodul védelme
 ### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
 ### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)
+### [Csatlakozás belső virtuális hálózathoz](api-management-using-with-internal-vnet.md)
 ### [Kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md)
 ## Szabályzatok konfigurálása
 ### [Egyedi gyorsítótárazás](api-management-sample-cache-by-key.md)
@@ -82,6 +83,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

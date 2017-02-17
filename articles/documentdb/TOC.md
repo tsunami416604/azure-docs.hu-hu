@@ -1,3 +1,4 @@
+
 # Áttekintés
 ## [Mi a DocumentDB?](documentdb-introduction.md)
 ## [Alapfogalmak](documentdb-resources.md)
@@ -29,6 +30,7 @@
 ### [Particionálás és méretezés](documentdb-partition-data.md)
 ### [Konzisztencia](documentdb-consistency-levels.md)
 ### [A NoSQL és az SQL összevetése](documentdb-nosql-vs-sql.md)
+### [Költséghatékony írások és olvasások](documentdb-key-value-store-cost.md)
 
 ## Kezelés
 ### [Adatok importálása](documentdb-import-data.md)
@@ -40,14 +42,13 @@
 ### [Az indexek testreszabása](documentdb-indexing-policies.md)
 ### [Biztonságos hozzáférés az adatokhoz](documentdb-secure-access-to-data.md)
 ### [Biztonsági mentés és visszaállítás](documentdb-online-backup-and-restore.md)
-### [Teljesítményszintek](documentdb-performance-levels.md)
+### [S1, S2, S3 kivonása](documentdb-performance-levels.md)
 ### [Kérelemegységek](documentdb-request-units.md)
 ### Azure CLI
 #### [Fiók létrehozása](documentdb-automation-resource-manager-cli.md)
 #### [Régiók hozzáadása vagy eltávolítása](documentdb-automation-region-management.md)
 ### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [Tűzfaltámogatás](documentdb-firewall-support.md)
-### [A fiók felbővítése](documentdb-supercharge-your-account.md)
 
 ## Fejlesztés
 ### [SQL-lekérdezés](documentdb-sql-query.md)
@@ -71,6 +72,7 @@
 ## A portál használata
 ### [Adatbázisfiók létrehozása](documentdb-create-account.md)
 ### [Gyűjtemény létrehozása](documentdb-create-collection.md)
+### [Teljesítmény beállítása](documentdb-set-throughput.md)
 ### [Globális replikálás hozzáadása](documentdb-portal-global-replication.md)
 ### [Dokumentumok hozzáadása és szerkesztése](documentdb-view-json-document-explorer.md)
 ### [Dokumentumok lekérdezése](documentdb-query-collections-query-explorer.md)
@@ -91,6 +93,7 @@
 ### [Értesítések fogadása a Logic Apps használatával](documentdb-change-notification.md)
 ### [Érzékelőktől kapott adatok valós idejű feldolgozása](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [Adatok megjelenítése Power BI használatával](documentdb-powerbi-visualize.md)
+### [Az ODBC-illesztő felhasználása az adatmegjelenítéshez](documentdb-nosql-odbc-driver.md)
 
 
 # Referencia
@@ -123,6 +126,6 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
