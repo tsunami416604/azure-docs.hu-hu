@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben | Microsoft Docs"
+title: "Node.js-webappok fejlesztése az Azure App Service-ben | Microsoft Docs"
 description: "Megtudhatja, hogyan telepíthet egy Node.js alkalmazást az Azure App Service-ben."
 services: app-service\web
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
-ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
+ms.sourcegitcommit: 763e956004f460f2f6d0fa7325a6f6b5fca3fd5a
+ms.openlocfilehash: ab16eb45f86f81af719fcd0a4b65f19576f01f01
 
 
 ---
-# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben
+# <a name="develop-nodejs-web-apps-for-azure-app-service"></a>Node.js-webappok fejlesztése az Azure App Service-ben
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 Az oktatóanyag bemutatja, hogy hogyan hozhat létre egy egyszerű [Node.js] alkalmazást, és hogyan telepítheti azt az [Azure App Service] olyan parancssori környezetben, mint a cmd.exe vagy a bash. Az oktatóanyag utasításai követhetők bármelyik olyan operációs rendszeren, amely képes a Node.js futtatására.
@@ -45,7 +45,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 * Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra], vagy [aktiválhatja a Visual Studio előfizetői előnyeit].
 
 > [!NOTE]
-> Az [App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -303,6 +303,6 @@ A Node-Inspector engedélyezéséhez hajtsa végre a következő lépéseket:
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

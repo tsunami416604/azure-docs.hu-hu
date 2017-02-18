@@ -1,5 +1,5 @@
 ---
-title: "Spark-fürt létrehozása Azure HDInsight rendszerben, valamint Jupyterről származó Spark SQL használata interaktív elemzések elvégzéséhez | Microsoft Docs"
+title: "Az Apache Spark-fürt használatának első lépései az Azure HDInsightban | Microsoft Docs"
 description: "Részletes útmutatók Apache Spark-fürt gyors létrehozásához a HDInsightban, majd a Jupyter notebookokból származó Spark SQL használata interaktív lekérdezések futtatására."
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/01/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 791b6a5a07bb87302cb382290a355c9a14c63ff0
-ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
+ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
+ms.openlocfilehash: d8d9c5111a19bb165c25d2796d6b6e933d75042a
 
 
 ---
 # <a name="get-started-create-apache-spark-cluster-in-azure-hdinsight-and-run-interactive-queries-using-spark-sql"></a>Első lépések: Apache Spark-fürt létrehozása Azure HDInsight rendszeren és interaktív lekérdezések futtatása Spark SQL használatával
+
 Útmutató [Apache Spark](hdinsight-apache-spark-overview.md)-fürt gyors létrehozásához a HDInsightban, majd [Jupyter](https://jupyter.org) notebook használatához Spark SQL interaktív lekérdezések futtatására a Spark-fürtön.
 
    ![Ismerkedés az Apache Spark in HDInsight használatával](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "Ismerkedés az Apache Spark in HDInsight használatával oktatóanyag. Szemléltetett lépések: tárfiók létrehozása; fürt létrehozása; Spark SQL-utasítások futtatása")
@@ -30,7 +31,8 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
-* **Secure Shell- (SSH-) ügyfél**: A Linux, a Unix és az OS X rendszerek SSH-ügyfelet biztosítanak az `ssh` paranccsal. Windows-rendszerek esetén lásd: [Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal a Windowsról PuTTY használatával](hdinsight-hadoop-linux-use-ssh-windows.md); Linux, Unix vagy OS X használata esetén lásd: [Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszeren](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+* **Secure Shell- (SSH-) ügyfél**: A Linux, a Unix és az OS X rendszerek SSH-ügyfelet biztosítanak az `ssh` paranccsal. Windows-ügyfelek esetén lásd: [Az SSH használata a HDInsightra épülő Hadooppal a Windowsról PuTTY használatával](hdinsight-hadoop-linux-use-ssh-windows.md); Linux, Unix vagy OS X használata esetén lásd: [Az SSH használata a HDInsightra épülő Hadooppal Linux, Unix vagy OS X rendszeren](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 > [!NOTE]
 > Ez a cikk egy Azure Resource Manager-sablon segítségével hoz létre egy Spark-fürtöt, amely [Azure Storage-blobokat használ fürttárolóként](hdinsight-hadoop-use-blob-storage.md). Olyan Spark-fürt is létrehozható, amely az alapértelmezett tárolóként használt Azure Storage-blobok mellett az [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) szolgáltatást is használja további tárolóként. Útmutatás: [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) (HDInsight-fürt létrehozása a Data Lake Store-ral).
@@ -68,19 +70,19 @@ Ebben a szakaszban Jupyter notebookot fog használni Spark SQL-lekérdezések fu
 * **PySpark** (Pythonban írt alkalmazások esetén)
 * **Spark** (Scalában írt alkalmazások esetén)
 
-Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használatának előnyeiről részletesen [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels) című cikkben olvashat. Az alábbiakban a PySpark kernel használatának néhány fontosabb előnye van kiemelve:
+Ebben a cikkben a PySpark kernelt fogja használni. A két kernellel kapcsolatos további információkért lásd: [Jupyter-notebookkernelek használata Apache Spark-fürtökkel a HDInsightban](hdinsight-apache-spark-jupyter-notebook-kernels.md). A PySpark kernel használatának néhány fontosabb előnye:
 
-* Nem szükséges beállítani a Spark- és Hive-környezeteket. Ezek automatikusan be vannak állítva az Ön számára.
-* Az SQL- vagy Hive-lekérdezések közvetlen, megelőző kódrészletek nélkül történő futtatásához olyan cellafunkciókat használhat mint például a `%%sql`.
+* A Spark- és Hive-környezetek automatikusan be vannak állítva.
+* Az SQL- vagy Hive-lekérdezések közvetlen, megelőző kódrészletek nélkül történő futtatásához olyan cellafunkciókat használhat, mint például a `%%sql`.
 * Az SQL- vagy Hive-lekérdezések kimenetének megjelenítése automatikusan történik.
 
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>Jupyter notebook létrehozása PySpark kernellel
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com/).
-2. A bal oldali menüben kattintson az **Erőforrácsoportok** elemre.
+2. A bal oldali menüben kattintson az **Erőforráscsoportok** elemre.
 3. Kattintson az előző szakaszban létrehozott erőforráscsoportra. Ha túl sok erőforráscsoportja van, használhatja a keresés funkciót. Megjelenik a csoportban található két erőforrás: a HDInsight-fürt és az alapértelmezett tárfiók.
 4. Kattintson a fürtre annak megnyitásához.
- 
+
 2. A **Gyorshivatkozások** menüben kattintson a **Fürt irányítópultjai** lehetőségre, majd a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
    ![A HDInsight-fürt irányítópultjai](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "A HDInsight-fürt irányítópultjai")
@@ -95,7 +97,7 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
 
    ![Új Jupyter notebook létrehozása](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "Új Jupyter notebook létrehozása")
 
-   Az új notebook létrejött, és Untitled(Untitled.pynb) néven nyílt meg. 
+   Az új notebook létrejött, és Untitled(Untitled.pynb) néven nyílt meg.
 
 4. Ha a felső részen a notebook nevére kattint, megadhat egy könnyen megjegyezhető nevet.
 
@@ -128,13 +130,13 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
         hvacdf.registerTempTable("hvac")
 
     A Spark-fürtök a HDInsightban tartalmaznak egy mintaadat-fájlt (**hvac.csv**) a **\HdiSamples\HdiSamples\SensorSampleData\hvac** mappában.
-    
+
 7. Futtassa a következő kódot az adatok lekérdezéséhez:
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   Mivel PySpark kernelt használ, most közvetlenül futtathat SQL-lekérdezést az imént létrehozott **hvac** ideiglenes táblán, a `%%sql` funkció használatával. A `%%sql` funkcióval, illetve a PySpark kernellel elérhető egyéb funkciókkal kapcsolatos további információkat [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels) című részben talál.
+   Mivel PySpark kernelt használ, most közvetlenül futtathat SQL-lekérdezést az imént létrehozott **hvac** ideiglenes táblán, a `%%sql` funkció használatával. A `%%sql` funkcióval, illetve a PySpark kernellel elérhető egyéb funkciókkal kapcsolatos további információkat [A Spark HDInsight-fürtökkel használt Jupyter notebookokban elérhető kernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels) című részben talál.
 
    Alapértelmezés szerint az alábbi táblázatos kimenet jelenik meg.
 
@@ -188,6 +190,6 @@ Ebben a cikkben a PySpark kernelt fogja használni. A PySpark kernel használat�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

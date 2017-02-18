@@ -6,7 +6,7 @@
 2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft.Azure.Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
 ### <a name="write-some-code-to-receive-messages"></a>Írjon egy kódrészletet az üzenetek fogadásához
-1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez.
+1. A Program.cs fájl elején cserélje le a meglévő `using` utasításokat az alábbi utasításokra:
    
     ```csharp
     using System;
@@ -23,7 +23,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Adjon hozzá egy `ProcessMessagesOnConnection` nevű új metódust a `Program` osztályhoz, például a következőképpen:
+3. Adja hozzá a következő új, `ProcessMessagesOnConnection` nevű metódust a `Program` osztályhoz:
    
     ```csharp
     // Method is used to initiate connection
@@ -74,7 +74,7 @@
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Adjon hozzá egy `RunAsync` nevű másik új metódust a `Program` osztályhoz, például a következőképpen:
+4. Adjon hozzá egy `RunAsync` nevű másik új metódust a `Program` osztályhoz, a következőképpen:
    
     ```csharp
     private static async Task RunAsync()
@@ -242,6 +242,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

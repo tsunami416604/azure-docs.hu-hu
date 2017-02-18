@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e41300ac8f6829ba93ebe7cba6063d82db1119f7
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 4eee1b3f30c9e47983af5c1dfa60fe0deb8c2cc8
 
 
 ---
@@ -39,8 +39,8 @@ Itt például egy Microsoft-fiókkal rendelkező felhasználó bejelentkezik a k
 
 > [!NOTE]
 > A klasszikus Azure portálra történő bejelentkezéshez a msmith@hotmail.com fióknak Azure-előfizetésre van szüksége. A fióknak a szolgáltatás rendszergazdájának vagy az előfizetés társadminisztrátorának kell lennie.
-> 
-> 
+>
+>
 
 ![][1]
 
@@ -104,8 +104,8 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 
 > [!NOTE]
 > Ezek a lépések csak akkor végezhetők el, ha egy felhasználó Microsoft-fiókkal van bejelentkezve. Ha a felhasználó munkahelyi vagy iskolai fiókkal van bejelentkezve, akkor a **Meglévő címtár használata** lehetőség nem érhető el, mert a munkahelyi vagy iskolai fiókok csak a saját címtárukkal hitelesíthetők (vagyis azzal a címtárral, ahol a munkahelyi vagy iskolai fiók tárolva van, és amelynek a munkahely vagy az iskola a tulajdonosa).
-> 
-> 
+>
+>
 
 1. Jelentkezzen be a klasszikus Azure portálra a Microsoft-fiókjával.
 2. Kattintson az **Új** > **Alkalmazásszolgáltatások** > **Active Directory** > **Címtár** > **Egyéni létrehozása** lehetőségre.
@@ -116,7 +116,7 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 7. Jelentkezzen be ismét a klasszikus Azure portálra a Microsoft-fiókjával. Mindkét címtár megjelenik az Active Directory-bővítményben.
 
 ## <a name="next-steps"></a>Következő lépések
-* Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md)
+* Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing/billing-add-change-azure-subscription-administrator.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](active-directory-understanding-resource-access.md)
 * A szerepkörök Azure AD-ben történő hozzárendeléséről további információért lásd: [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles.md).
 * [Regisztráció az Azure-ba szervezetként](sign-up-organization.md)
@@ -128,6 +128,6 @@ Ha mindkét címtárat a klasszikus Azure portálon szeretné kezelni, végezze 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

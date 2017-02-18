@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/07/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1c29cfc0a5b6361a7f526c37d5421ee4be3fe2c1
 
 
 ---
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban a [Python Tools for Visual Studio](https://www.visualst
 > [!NOTE]
 > Az ebben az oktatóanyagban szereplő információk az alábbi videóban is megtekinthetők:
 > 
-> [PTVS 2.1: Django app with MySQL] (PTVS 2.1: Django-alkalmazás és MySQL) [videó]
+> [PTVS 2.1: Django-alkalmazás és MySQL][video]
 > 
 > 
 
@@ -47,7 +47,7 @@ A [Python fejlesztői központban] találhat további, az Azure App Service Web 
 <!-- This note should not render as part of the the previous include. -->
 
 > [!NOTE]
-> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -157,7 +157,7 @@ További információ: [Python fejlesztői központban](/develop/python/).
 
 <!--Link references-->
 
-[Python fejlesztői központ]: /develop/python/
+[Python fejlesztői központban]: /develop/python/
 [Azure Cloud Services]: ../cloud-services/cloud-services-python-ptvs.md
 
 <!--External Link references-->
@@ -167,18 +167,18 @@ További információ: [Python fejlesztői központban](/develop/python/).
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Python Tools 2.2 for Visual Studio Samples VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7, 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517190
-[Python 3.4, 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517191
+[Python 2.7 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517190
+[Python 3.4 32 bites]: http://go.microsoft.com/fwlink/?LinkId=517191
 [Python Tools for Visual Studio – dokumentáció]: http://aka.ms/ptvsdocs
 [Remote Debugging on Microsoft Azure]: http://go.microsoft.com/fwlink/?LinkId=624026 (Távoli hibakeresés a Microsoft Azure-ban)
 [Webes projektek]: http://go.microsoft.com/fwlink/?LinkId=624027
 [Cloud Service-projektek]: http://go.microsoft.com/fwlink/?LinkId=624028
 [A Django dokumentációja]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
-[videó]: http://youtu.be/oKCApIrS0Lo
+[video]: http://youtu.be/oKCApIrS0Lo
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

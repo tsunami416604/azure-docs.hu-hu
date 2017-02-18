@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Security Center használata incidensmegoldásra | Microsoft Docs"
+title: "Válaszadás a biztonsági incidensekre az Azure Security Center használatával | Microsoft Docs"
 description: "Ez a dokumentum az Azure Security Center incidensmegoldási forgatókönyvekben történő használatát mutatja be."
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 01/23/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 31311194c051a1fd7c889a956e06e88ca83a74db
+ms.sourcegitcommit: f40f64906bf87d8505fa1a209222163256326d14
+ms.openlocfilehash: a2cc4729ca5cb1dcc10630158ec3d94315fb01a5
 
 
 ---
@@ -78,13 +78,13 @@ Judit bejelentkezett az Azure Portalra, és a Security Center konzolján dolgozi
 
 1. A **Biztonsági riasztások** csempén a **Biztonsági riasztások** panelre lép.
     ![Biztonsági riasztások panel](./media/security-center-incident-response/security-center-incident-response-fig4.png)
-   
+
    > [!NOTE]
    > Ebben a forgatókönyvben Judit elvégez egy vizsgálatot a rosszindulatú SQL-tevékenységi riasztás alapján, ahogy az az előző ábrán is látható.
-   > 
-   > 
+   >
+   >
 2. A **rosszindulatú SQL-tevékenységhez** kapcsolódó riasztásra kattint, és áttekinti a megtámadott erőforrásokat a **rosszindulatú SQL-tevékenység** panelén:  ![Incidens adatai](./media/security-center-incident-response/security-center-incident-response-fig5.png)
-   
+
     Ezen a panelen Judit jegyzeteket készít a megtámadott erőforrásokkal, a támadások számával és az észlelés időpontjával kapcsolatban.
 3. Kattintson a **megtámadott erőforrásra**, hogy további információkat szerezzen a támadásról.
 
@@ -103,7 +103,6 @@ A csapat összeállítása még az incidens előtt fontos lépés a szervezet sz
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

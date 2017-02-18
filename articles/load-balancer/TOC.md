@@ -40,6 +40,7 @@
 ## [Több virtuális IP-cím konfigurálása felhőszolgáltatáshoz](load-balancer-multivip.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [Több IP-konfiguráció használata](load-balancer-multiple-ip.md)
+### [Több IP-konfiguráció használata (parancssori felület)](load-balancer-multiple-ip-cli.md)
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
 
@@ -67,6 +68,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=load-balancer)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

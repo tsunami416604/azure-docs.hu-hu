@@ -1,5 +1,5 @@
 ---
-title: "ASP.NET alkalmazás üzembe helyezése az Azure App Service-be a Visual Studio használatával | Microsoft Docs"
+title: "ASP.NET-alkalmazás üzembe helyezése az Azure-ba a Visual Studio használatával | Microsoft Docs"
 description: "ASP.NET webes projekt telepítése új webalkalmazásba az Azure App Service szolgáltatásban a Visual Studio használatával."
 services: app-service\web
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 4a0d72f46fada5112563d10d22f61abc439730a7
+ms.sourcegitcommit: 9b7e0b429575d080819f25e04d492a2b09d4d63a
+ms.openlocfilehash: 946552d1b268c6e70a9e8fcd4c40bd6e2ab76178
 
 
 ---
@@ -47,7 +47,7 @@ Az Azure SDK for .NET telepítéséhez szükséges időn kívül az oktatóanyag
 * Az oktatóanyag azt feltételezi, hogy Ön már használta az ASP.NET MVC-t és a Visual Studiót. A bevezetésért lásd: [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started) (ASP.NET MVC 5 – Első lépések).
 * Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
   
-    Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](http://go.microsoft.com/fwlink/?LinkId=523751) oldalra. ahol létrehozhat egy rövid élettartamú alapszintű alkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár semmilyen kötelezettséggel.
+    Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. ahol létrehozhat egy rövid élettartamú alapszintű alkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár semmilyen kötelezettséggel.
 
 ## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>A fejlesztési környezet kialakítása
 Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../dotnet-sdk.md) 2.9-es vagy újabb verziójához készült. 
@@ -222,6 +222,6 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet létrehozni egy egyszerű web
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

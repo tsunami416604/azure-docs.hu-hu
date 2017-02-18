@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
+ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
 
 
 ---
@@ -170,7 +170,7 @@ Kattintson valamelyik sorra a részletekért.
 Kattintson a `...` gombra az Ajax hívások teljes telemetriájáért.
 
 ### <a name="no-ajax-calls-reported"></a>Nincsenek Ajax hívások jelentve?
-Az Ajax hívásokba tartoznak a weblapja szkriptjéről végzett HTTP-hívások. Ha nem látja őket a jelentésben, ellenőrizze, hogy a kódrészlet nem adja-e meg a `disableAjaxTracking` vagy a `maxAjaxCallsPerView` [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
+Az Ajax-hívások közé tartoznak a weblapja szkriptjéről végzett HTTP/HTTPS-hívások. Ha nem látja őket a jelentésben, ellenőrizze, hogy a kódrészlet nem adja-e meg a `disableAjaxTracking` vagy a `maxAjaxCallsPerView` [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
 
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A Böngészők panelen található egy kivételek összegző diagram, valamint a panelen lejjebb a kivételtípusok rácsa.
@@ -193,7 +193,7 @@ Válassza ki valamelyik eseményt további részletek megtekintéséhez. A rész
 > 
 > 
 
-Használhatja a nagy teljesítményű [Analytics lekérdezési nyelvet](app-insights-analytics-tour.md) a lapmegtekintések kereséséhez.
+Használhatja a nagy teljesítményű [Analytics lekérdezési nyelvet](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) a lapmegtekintések kereséséhez.
 
 ### <a name="page-view-properties"></a>Lapmegtekintési tulajdonságok
 * **Lapmegtekintés időtartama** 
@@ -230,6 +230,6 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

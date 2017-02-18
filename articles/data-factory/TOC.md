@@ -25,7 +25,7 @@
 
 # Útmutató
 ## Adatok áthelyezése
-### [A Data Factory másolási varázslója](data-factory-copy-wizard.md)
+### [A Data Factory másolási varázslója](data-factory-azure-copy-wizard.md)
 #### [1 TB adat betöltése 15 perc alatt](data-factory-load-sql-data-warehouse.md)
 ### [Másolási tevékenység](data-factory-data-movement-activities.md)
 #### [Teljesítmény és finomhangolás – útmutató](data-factory-copy-activity-performance.md)
@@ -84,7 +84,6 @@
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
-## [Azure Data Factory – fejlesztői referencia](data-factory-sdks.md)
 ## [REST](/rest/api/datafactory/)
 
 # Erőforrások
@@ -102,6 +101,6 @@
 ## [Funkció kérése](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

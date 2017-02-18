@@ -1,9 +1,9 @@
 ---
-title: "Az Azure CDN szolgáltatás használata | Microsoft Docs"
-description: "Ez a témakör azt mutatja be, hogyan engedélyezhető a CDN (Content Delivery Network – tartalomkézbesítési hálózat) az Azure számára. Az oktatóanyag végigvezeti Önt egy új CDN-profil és -végpont létrehozásán."
+title: "Az Azure CDN használatának első lépései | Microsoft Docs"
+description: "Ez a témakör azt mutatja be, hogyan engedélyezhető az Azure Content Delivery Network (CDN). Az oktatóanyag végigvezeti Önt egy új CDN-profil és -végpont létrehozásán."
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
+ms.sourcegitcommit: bdf6e27463fcc6186a3b15a55653fa468da91bdc
+ms.openlocfilehash: d263e911d0d0b3cdc1e48e300a3c8a0994b38c39
 
 
 ---
-# <a name="using-azure-cdn"></a>Az Azure CDN szolgáltatás használata
+# <a name="getting-started-with-azure-cdn"></a>Az Azure CDN használatának első lépései
 Ez a témakör egy új CDN-profil és -végpont létrehozásán keresztül vezeti Önt végig az Azure CDN aktiválásán.
 
 > [!IMPORTANT]
@@ -106,6 +106,6 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

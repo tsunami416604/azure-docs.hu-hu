@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
 
 
 ---
@@ -28,7 +28,7 @@ Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk a
 2. Válassza az **Active Directory** lehetőséget, majd válassza ki a szervezete címtárának nevét.
 3. Válassza a **Felhasználók** lapot, majd a parancssávon válassza a **Felhasználó hozzáadása** parancsot.
 4. A **Felhasználó bemutatása** lap **Felhasználó típusa** területén válassza a következők egyikét:
-   
+
    * **Új felhasználó a szervezetben** – egy új felhasználói fiókot ad a címtárhoz.
    * **Felhasználó meglévő Microsoft-fiókkal** – egy meglévő végfelhasználói Microsoft-fiókot ad a címtárhoz (például egy Outlook-fiókot)
 5. A **Felhasználó típusától** függően írjon be egy felhasználónevet (új felhasználóhoz) vagy e-mail-címet (Microsoft-fiókkal rendelkező felhasználóhoz).
@@ -37,11 +37,11 @@ Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk a
 
 > [!IMPORTANT]
 > Ha a szervezete több tartományt használ, a következő problémákról kell tudnia a felhasználói fiók hozzáadásakor:
-> 
-> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, ** címet, majd a ** geoffgrisso@contoso.com. címet
-> * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com. előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a módosításokat.
-> 
-> 
+>
+> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, ** címet, majd a ** geoffgrisso@contoso.com címet.
+> * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com hozzáadása előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a változásokat.
+>
+>
 
 ## <a name="change-user-information"></a>Felhasználói adatok módosítása
 Bármely felhasználói attribútumot módosíthat, kivéve az objektumazonosítót.
@@ -87,6 +87,6 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

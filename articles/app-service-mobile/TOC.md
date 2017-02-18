@@ -207,11 +207,15 @@
 ### [Hibaelhárítás a Visual Studióval](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Referencia
-## [.NET](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [.NET háttérrendszeri SDK](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [Node.js háttérrendszeri SDK](https://azure.github.io/azure-mobile-apps-node/)
+## [Android ügyfél-SDK](https://azure.github.io/azure-mobile-apps-android-client/)
+## [iOS ügyfél-SDK](https://azure.github.io/azure-mobile-apps-ios-client/)
+## [JavaScript/Cordova ügyfél-SDK](https://azure.github.io/azure-mobile-apps-js-client/)
+## [Windows/Xamarin ügyfél-SDK](https://msdn.microsoft.com/library/azure/mt419521.aspx)
 
 # Kapcsolódó
-## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [Az App Service dokumentációja](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [GitHub adattárak](https://github.com/Azure/azure-mobile-apps)
 ## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Erőforrások
@@ -219,6 +223,14 @@
 ## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## Példák
+### [Kihelyezett mérnök](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
+### [Strukturált adatszinkronizálás](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
+### A gyorsindítás befejeződött
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
+#### [.NET-háttérrendszer](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
+#### [Node.js háttérrendszer](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [App Service – ajánlott eljárások](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [A WebJobs-erőforrások listája](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -227,6 +239,6 @@
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,22 +1,22 @@
 ---
-title: "Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló"
+title: "RDG és Azure MFA-kiszolgáló a RADIUS használatával | Microsoft Docs"
 description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a távoli asztali (RD) átjáró és a RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
+editor: yossib
 ms.assetid: f2354ac4-a3a7-48e5-a86d-84a9e5682b42
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3b14925f41138904aa10a172f83dffa3c6662700
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: 4b117f03a8f769cbd2ecf1fca2653e8c343b6aa0
 
 
 ---
@@ -37,7 +37,7 @@ A távoli asztali átjáró NPS használatával küldi a RADIUS-kérést az Azur
 4. A házirend másolásával hozzon létre egy újat. Az új házirendben adjon hozzá egy feltételt, amely egyezteti az ügyfél rövid nevét az Azure Multi-Factor Authentication-kiszolgáló RADIUS-ügyfelének a fenti, 2. lépésben beállított rövid nevével. Módosítsa a hitelesítésszolgáltatót a helyi számítógépre. Ez a házirend biztosítja, hogy amikor RADIUS-kérés érkezik az Azure Multi-Factor Authentication-kiszolgálóról, a hitelesítés helyben történik, ahelyett hogy a rendszer visszaküldené a RADIUS-kérést az Azure Multi-Factor Authentication-kiszolgálónak, ami hurokállapothoz vezetne. A hurokállapot megakadályozása érdekében ezt az új házirendet a Multi-Factor Authentication-kiszolgálónak továbbító eredeti házirend FÖLÉ kell elhelyezni.
 
 ## <a name="configure-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication konfigurálása
-- - -
+
 Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-proxyként van konfigurálva a távoli asztali átjáró és az NPS között.  A távoli asztali átjárókiszolgálótól eltérő tartományhoz csatlakoztatott kiszolgálóra kell telepíteni. Az Azure Multi-Factor Authentication-kiszolgáló konfigurálásához kövesse az alábbi eljárást.
 
 1. Nyissa meg az Azure Multi-Factor Authentication-kiszolgálót, és kattintson a RADIUS-hitelesítés ikonra. Jelölje be a RADIUS-hitelesítés engedélyezése jelölőnégyzetet.
@@ -47,9 +47,14 @@ Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-proxyként van konfigur
 
 ![Radius-hitelesítés](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
+## <a name="next-steps"></a>Következő lépések
+
+- Az Azure MFA és az [IIS-webalkalmazások](multi-factor-authentication-get-started-server-iis.md) integrálása
+
+- Válaszokért lásd az [Azure Multi-Factor Authenticationre vonatkozó gyakori kérdéseket](multi-factor-authentication-faq.md)
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

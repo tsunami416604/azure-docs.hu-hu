@@ -1,5 +1,5 @@
 ---
-title: "Adatok betöltése az SQL Data Warehouse-ba a Redgate Data Platform Studio használatával | Microsoft Docs"
+title: "Adatok betöltése az Azure-adattárházba a Redgate használatával | Microsoft Docs"
 description: "Az alábbiakból megismerheti, hogyan használható a Redgate Data Platform Studio az adattárház-forgatókönyvek esetén."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dd77457bfa7ebfc701750e090778f2976d82b141
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
 
 
 ---
@@ -154,6 +154,6 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

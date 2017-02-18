@@ -7,16 +7,16 @@ author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e133d92-baaa-44c9-890c-ab2d85c91122
-ms.service: data-lake-store
+ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 02/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
+ms.sourcegitcommit: 2fea3686b1484406d31c5447c7d3d7e2451b827e
+ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 Az Azure Active Directoryval kétféle módon lehet hitelesíteni.
 
-### <a name="enduser-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
+### <a name="end-user-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
 Ezzel a módszerrel az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. 
 
 Az interaktív hitelesítéshez kövesse az alábbi lépéseket:
@@ -76,7 +76,7 @@ Az interaktív hitelesítéshez kövesse az alábbi lépéseket:
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-### <a name="servicetoservice-authentication-noninteractive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
+### <a name="service-to-service-authentication-non-interactive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
 Ezzel a módszerrel az alkalmazás maga biztosítja saját hitelesítő adatait a műveletek végrehajtásához. Ehhez egy alábbihoz hasonló POST-kérelmet kell kiadnia: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -209,7 +209,7 @@ Cserélje le a \<`REDACTED`\> változót az engedélyezési jogkivonatra, az \<`
         ]
     }
 
-## <a name="submit-usql-jobs"></a>U-SQL-feladatok küldése
+## <a name="submit-u-sql-jobs"></a>U-SQL-feladatok küldése
 A következő Curl-parancs egy U-SQL-feladat küldését mutatja be:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
@@ -266,7 +266,7 @@ Az eredmény az alábbihoz hasonlóan fog kinézni:
     }
 
 
-## <a name="list-usql-jobs"></a>U-SQL-feladatok felsorolása
+## <a name="list-u-sql-jobs"></a>U-SQL-feladatok felsorolása
 A következő Curl-parancs az U-SQL-feladatok felsorolását mutatja be:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
@@ -350,6 +350,6 @@ Az eredmény az alábbihoz hasonlóan fog kinézni:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

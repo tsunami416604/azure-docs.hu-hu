@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
 
 
 ---
@@ -31,8 +31,8 @@ Ez a témakör a bejelentkezési oldal és a hozzáférési panel testreszabás�
 > [!NOTE]
 > * A vállalati arculatot hozzáadó szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására, vagy Office 365-felhasználó. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
 > * Az Azure Active Directory Prémium és Alapszintű kiadásai az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure Active Directory Prémium és Alapszintű kiadásai jelenleg nem támogatottak Kínában a 21Vianet által működtetett Microsoft Azure szolgáltatásban. További információkért lépjen velünk kapcsolatba az [Azure Active Directory fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/).
-> 
-> 
+>
+>
 
 ## <a name="customizing-the-sign-in-page"></a>A bejelentkezési oldal testreszabása
 A felhasználók jellemzően akkor használják a bejelentkezési oldalt, ha böngészőalapú hozzáférésre van szükségük a szervezetük által előfizetett felhőalkalmazásaikhoz és szolgáltatásaikhoz.
@@ -46,8 +46,8 @@ Nem bérlőspecifikus URL-címmel (például https://mail.office365.com) elláto
 > [!NOTE]
 > * A tartománynévnek aktív állapottal kell szerepelnie a klasszikus Azure portál **Active Directory** > **Címtár** > **Tartományok** szakaszában, ahol a vállalati arculatot konfigurálta.
 > * A bejelentkezési oldal vállalati arculata a Microsoft ügyfél-bejelentkezési oldalán nem jelenik meg. Ha személyes Microsoft-fiókkal jelentkezik be, láthatja a felhasználói csempék vállalati arculattal ellátott és Azure AD által renderelt listáját, vállalatának arculata azonban a Microsoft-fiók bejelentkezési oldalán nem jelenik meg.
-> 
-> 
+>
+>
 
 Ha meg kívánja jeleníteni vállalatának arculatát, színeit és egyéb testreszabható elemeit ezen az oldalon, az alábbi ábrákon megfigyelheti a különbséget a két megközelítés között.
 
@@ -91,8 +91,8 @@ A bejelentkezési oldal alábbi elemei szabhatók testre:
 
 > [!NOTE]
 > Ezen elemek egyike sem kötelező. Ha például megad szalagcímemblémát, de nagy méretű ábrát nem, a bejelentkezési oldalon az embléma és a célhelyhez tartozó ábra jelenik meg (ez esetben az Office 365 kaliforniai főutat ábrázoló képe).
-> 
-> 
+>
+>
 
 A bejelentkezési oldalon a **Bejelentkezve szeretnék maradni** jelölőnégyzet lehetővé teszi a felhasználó számára, hogy a böngészője bezárása és újbóli megnyitása után is bejelentkezve maradjon. Ez nincs hatással a munkamenet élettartamára. Az Azure Active Directory bejelentkezési oldalán elrejtheti a jelölőnégyzetet.
 
@@ -100,12 +100,12 @@ A jelölőnégyzet megjelenése a **KMSI elrejtése** beállításától függ.
 
 ![][9]
 
-A jelölőnégyzet elrejtéséhez konfigurálja a beállítást **Rejtett** értékre. 
+A jelölőnégyzet elrejtéséhez konfigurálja a beállítást **Rejtett** értékre.
 
 > [!NOTE]
 > A SharePoint Online és az Office 2010 egyes funkciói attól függenek, hogy a felhasználók be tudják-e jelölni ezt a jelölőnégyzetet. Ha ezt a beállítást rejtett értékre konfigurálja, a felhasználóinak további és váratlan bejelentkezési felszólítások jelenhetnek meg.
-> 
-> 
+>
+>
 
 Az oldalon szereplő összes elem honosítható. A testreszabási összetevők „alapértelmezett” készletének összeállítását követően a különböző területi beállításokhoz további verziókat is konfigurálhat. A különböző elemek szabadon kombinálhatók. Megteheti például a következőt:
 
@@ -163,15 +163,15 @@ A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjele
 4. Kattintson a **Customize Branding** (Márkajelzés testreszabása) lehetőségre.
 5. A márkajelzés testreszabásával foglalkozó oldalon válassza a **Edit Existing Branding Settings** (Meglévő márkajelzési beállítások szerkesztése) lehetőséget, majd lépjen a következő oldalra.
 6. Attól függően, hogy melyik elemet kívánja eltávolítani, végezze el a megfelelő műveleteket az alábbiak közül:
-   
+
     a. A **Banner Logo** (Szalagcímembléma) területen válassza a **Remove uploaded logo** (Feltöltött embléma eltávolítása) lehetőséget.
-   
+
     b. A **Tile Logo** (Csempe emblémája) területen válassza a **Remove uploaded logo** (Feltöltött embléma eltávolítása) lehetőséget.
-   
+
     c. Távolítsa el a szöveget az összes szövegmezőből.
-   
+
     d. Kattintson a **Tovább** gombra.
-   
+
     e. Távolítsa el a szöveget az összes szövegmezőből.
 7. Az elemek eltávolításához kattintson a **Mentés** gombra.
 8. Amennyiben szükséges, kattintson újra a **Customize Branding** (Márkajelzés testreszabása) gombra, majd ismételje meg ezeket a lépéseket az összes eltávolítandó nyelvspecifikus márkajelzés esetében.
@@ -199,12 +199,12 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 
 | Név | Leírás | Korlátozások | Javaslatok |
 | --- | --- | --- | --- |
-| Szalagcímembléma |A szalagcím emblémája a bejelentkezési és a hozzáférési panel oldalakon jelenik meg. |<p>JPG vagy PNG</p><p>60 x 280 képpont</p><p>10 kB</p> |<p>Használja szervezete teljes emblémáját (a piktogramot és az emblémát is beleértve).</p><p>A magassága ne legyen több 30 képpontnál, hogy a mobileszközökön ne legyen szükség görgetősáv használatára.</p><p>A mérete maradjon 4 kB alatt.</p><p>Átlátszó PNG formátumot használjon (nem érdemes feltételezni, hogy a bejelentkezési oldalak háttérszíne minden esetben fehér).</p> |
-| Csempeembléma |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” piktogramot. |<p>JPG vagy PNG</p><p>120 x 120 képpont</p><p>10 kB</p> |<p>Legyen egyszerű (kisméretű szöveg nélkül), mivel a rendszer ezt a képet a felére kicsinyítheti. |
+| Szalagcímembléma |A szalagcím emblémája a bejelentkezési és a hozzáférési panel oldalakon jelenik meg. |<p>JPG vagy PNG</p><p>60 x&280; képpont</p><p>10 kB</p> |<p>Használja szervezete teljes emblémáját (a piktogramot és az emblémát is beleértve).</p><p>A magassága ne legyen több 30 képpontnál, hogy a mobileszközökön ne legyen szükség görgetősáv használatára.</p><p>A mérete maradjon 4 kB alatt.</p><p>Átlátszó PNG formátumot használjon (nem érdemes feltételezni, hogy a bejelentkezési oldalak háttérszíne minden esetben fehér).</p> |
+| Csempeembléma |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” piktogramot. |<p>JPG vagy PNG</p><p>120 x&120; képpont</p><p>10 kB</p> |<p>Legyen egyszerű (kisméretű szöveg nélkül), mivel a rendszer ezt a képet a felére kicsinyítheti. |
 | </p> | | | |
 | A felhasználónév címkéje a bejelentkezési oldalon |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” karaktersort. Olyasmire állíthatja be, mint például „Contoso-fiók” vagy „Contoso-azonosító”. |<p>Unicode szöveg, legfeljebb 50 karakter</p><p>Csak egyszerű szöveg (hivatkozások és HTML-címkék nélkül)</p> |<p>Legyen rövid és egyszerű.</p><p>Kérdezze meg felhasználóit, hogy általában hogyan hívják a nekik biztosított munkahelyi vagy iskolai fiókot.</p> |
 | A bejelentkezési oldal szövege |Ez a sablonszöveg jelenik meg a bejelentkezési oldal űrlapja alatt, és a használatával további utasítások is megjeleníthetők a segítségkérés és a támogatás igénylésének módjáról. |<p>Unicode szöveg, legfeljebb 256 karakter</p><p>Csak egyszerű szöveg (hivatkozások és HTML-címkék nélkül)</p> |Legyen 250 karakternél kevesebb (nagyjából 3 soros szöveg). |
-| A bejelentkezési oldal ábrája |Az ábra a bejelentkezési oldalon a bejelentkezési űrlaptól balra látható nagy méretű kép. |<p>JPG vagy PNG</p><p>1420 x 1200</p><p>500 kB</p> |<p>1420 x 1200 képpont.</p><p>Fontos: a mérete legyen a lehető legkisebb, ideálisan 200 kB alatti. Ha a kép túlságosan nagy, az kihatással van a bejelentkezési oldal teljesítményére, amikor a kép nincs gyorsítótárazva.</p><p>A különböző képarányoknak való megfelelés érdekében a rendszer a képet gyakran levágja. Az elsődleges látványelemeket a bal felső sarokban (jobbról balra író nyelvek esetén a jobb felső sarokban) helyezze el, mivel a böngészőablak átméretezése keskenyebb formára az alsó résztől/jobb saroktól a felső rész/bal sarok felé történik.</p> |
+| A bejelentkezési oldal ábrája |Az ábra a bejelentkezési oldalon a bejelentkezési űrlaptól balra látható nagy méretű kép. |<p>JPG vagy PNG</p><p>1420 x&1200;</p><p>500 kB</p> |<p>1420 x&1200; képpont.</p><p>Fontos: a mérete legyen a lehető legkisebb, ideálisan 200 kB alatti. Ha a kép túlságosan nagy, az kihatással van a bejelentkezési oldal teljesítményére, amikor a kép nincs gyorsítótárazva.</p><p>A különböző képarányoknak való megfelelés érdekében a rendszer a képet gyakran levágja. Az elsődleges látványelemeket a bal felső sarokban (jobbról balra író nyelvek esetén a jobb felső sarokban) helyezze el, mivel a böngészőablak átméretezése keskenyebb formára az alsó résztől/jobb saroktól a felső rész/bal sarok felé történik.</p> |
 | A bejelentkezési oldal háttérszíne |A bejelentkezési oldal háttérszíne a bejelentkezési űrlaptól balra található területen érvényesül. |Hexadecimális formátumú RGB-színnek kell lennie (például: #FFFFFF) |<p>Alacsony sávszélességű kapcsolat használatakor a nagy méretű ábrák helyén a háttérszín jelenhet meg.</p><p>Javasoljuk, hogy a szalagcím emblémájának elsődleges színét válassza háttérszínnek.</p> |
 
 ## <a name="next-steps"></a>Következő lépések
@@ -224,6 +224,6 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

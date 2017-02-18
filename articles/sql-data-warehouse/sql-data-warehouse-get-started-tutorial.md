@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Data Warehouse – Első lépéseket ismertető oktatóanyag | Microsoft Docs"
-description: "Az Azure SQL Data Warehouse első lépéseit ismertető oktatóanyaga."
+description: "Ez az oktatóanyag az Azure SQL Data Warehouse üzembe helyezését és adatokkal való feltöltését mutatja be. Emellett megismerkedhet a méretezés, a felfüggesztetés és a finomhangolás alapjaival is."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -12,22 +12,23 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 12/21/2016
-ms.author: elbutter
+ms.date: 01/26/2017
+ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5bb75bf36892c737568b8129b30bb30b02d01bf2
-ms.openlocfilehash: 1227903652a944d9d144917922fe36a4f149f820
+ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
+ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
 
 
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>Bevezetés az SQL Data Warehouse használatába
 
-Az Azure SQL Data Warehouse első lépéseit ismertető oktatóanyaga. Ez az oktatóanyag egy SQL Data Warehouse üzembe helyezésének és az adatok betöltésének alapjait mutatja be, valamint ismertet néhány alapvető fogalmat a méretezéssel, a felfüggesztetéssel és a finomhangolással kapcsolatban. 
+Ez az oktatóanyag az Azure SQL Data Warehouse üzembe helyezését és adatokkal való feltöltését mutatja be. Emellett megismerkedhet a méretezés, a felfüggesztetés és a finomhangolás alapjaival is. Az oktatóanyag elvégzése után készen áll majd az adattárház lekérdezésére és vizsgálatára.
 
-**Az oktatóanyag áttekintésének várható időtartama:** 75 perc
+**Az oktatóanyag áttekintésének becsült ideje:** Ez egy példakódot is tartalmazó átfogó oktatóanyag, amelynek az elvégzése kb. 30 percet vesz igénybe, ha az előfeltételeket már teljesítette. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Ez az oktatóanyag azt feltételezi, hogy már ismeri az SQL Data Warehouse-zal kapcsolatos alapvető fogalmakat. A bevezetésért lásd: [Mi az az SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
 
 ### <a name="sign-up-for-microsoft-azure"></a>Regisztráció a Microsoft Azure-ban
 Ha még nem rendelkezik Microsoft Azure-fiókkal, először regisztrálnia kell egyet a szolgáltatás használatához. Ha már rendelkezik fiókkal, ezt a lépést kihagyhatja. 
@@ -36,25 +37,26 @@ Ha még nem rendelkezik Microsoft Azure-fiókkal, először regisztrálnia kell 
 2. Hozzon létre egy ingyenes Azure-fiókot, vagy vásároljon egy fiókot.
 3. Kövesse az utasításokat
 
-### <a name="install-appropriate-sql-client-driver-and-tools"></a>Telepítse a megfelelő SQL-ügyfélillesztőt és -ügyféleszközöket
+### <a name="install-appropriate-sql-client-drivers-and-tools"></a>A megfelelő SQL-ügyfélillesztők és -ügyféleszközök telepítése
 
-A legtöbb SQL-ügyféleszköz képes csatlakozni az Azure SQL Data Warehouse-hoz a JDBC, az ODBC vagy az ADO.net használatával. Az SQL Data Warehouse termék összetettsége és a támogatott T-SQL-szolgáltatások széles köre miatt lehetséges, hogy nem minden ügyfélalkalmazás kompatibilis teljes mértékben az SQL Data Warehouse szolgáltatással.
+A legtöbb SQL-ügyféleszköz képes csatlakozni az SQL Data Warehouse-hoz a JDBC, az ODBC vagy az ADO.NET használatával. Az SQL Data Warehouse által támogatott T-SQL-szolgáltatások széles köre miatt lehetséges, hogy egyes ügyfélalkalmazások nem teljes mértékben kompatibilisek az SQL Data Warehouse-zal.
 
 Ha Windows operációs rendszert használ, javasoljuk a [Visual Studio] vagy az [SQL Server Management Studio] használatát.
-
 
 [!INCLUDE [Create a new logical server](../../includes/sql-data-warehouse-create-logical-server.md)] 
 
 [!INCLUDE [SQL Database create server](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
-## <a name="create-an-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse létrehozása
+## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse létrehozása
+
+Az SQL Data Warehouse egy nagymértékben párhuzamos feldolgozáshoz kialakított speciális típusú adatbázis. Az adatbázis több csomópontra van elosztva, és párhuzamosan dolgozza fel a lekérdezéseket. Az összes csomópont tevékenységét az SQL Data Warehouse vezérlő csomópontja vezényli. Maguk a csomópontok SQL Database használatával kezelik az adatokat.  
 
 > [!NOTE]
 > Egy SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti.  További információ: [SQL Data Warehouse díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 
+### <a name="create-a-data-warehouse"></a>Adattárház létrehozása
 
-### <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **New** > **Databases** > **SQL Data Warehouse** (Új > Adatbázisok > SQL Data Warehouse) elemre.
 
@@ -63,14 +65,13 @@ Ha Windows operációs rendszert használ, javasoljuk a [Visual Studio] vagy az 
 
 3. Adja meg az üzembe helyezés részleteit
 
-    **Database name** (Adatbázis neve): Tetszés szerint bármit megadhat. Ha több SQL DW-példánnyal is rendelkezik, akkor javasoljuk, hogy a nevek tartalmazzák a régiót, környezetet, vagy hasonló részleteket (pl. *mydw-westus-1-test*)
+    **Database name** (Adatbázis neve): Tetszés szerint bármit megadhat. Ha több adattárházzal is rendelkezik, akkor javasoljuk, hogy a nevek tartalmazzák a régiót, a környezetet vagy hasonló részleteket (például: *mydw-westus-1-test*).
 
     **Subscription** (Előfizetés): Az Ön Azure-előfizetése
 
-    **Resource Group** (Erőforráscsoport): Új létrehozása (vagy egy meglévő használata, ha az Azure SQL Data Warehouse-t egyéb szolgáltatásokkal együtt tervezi használni)
+    **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévőt.
     > [!NOTE]
-    > Az azonos erőforráscsoportban lévő erőforrásoknak azonos életciklussal kell rendelkeznie. Az erőforráscsoportok hasznosak az erőforrások adminisztrációja, például a hozzáférés-vezérlés körének meghatározása és a sablonalapú üzembe helyezés során. Tudjon meg többet az Azure erőforráscsoportjairól és az ajánlott eljárásokról [itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups).
-    >
+    > Az erőforráscsoportok hasznosak az erőforrások adminisztrációja, például a hozzáférés-vezérlés körének meghatározása és a sablonalapú üzembe helyezés során. Tudjon meg többet az Azure erőforráscsoportjairól és az ajánlott eljárásokról [itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups).
 
     **Forrás**: Üres adatbázis
 
@@ -78,67 +79,80 @@ Ha Windows operációs rendszert használ, javasoljuk a [Visual Studio] vagy az 
 
     **Rendezés**: Hagyja meg az alapértelmezett SQL_Latin1_General_CP1_CI_AS beállítást.
 
-    **Teljesítmény kiválasztása**: Azt javasoljuk, hogy maradjon a standard 400DWU beállítás használatánál.
+    **Teljesítmény kiválasztása**: Azt javasoljuk, hogy kezdje a standard 400DWU beállítással.
 
 4. Válassza a **Rögzítés az irányítópulton**
     ![Rögzítés az irányítópulton](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png) lehetőséget.
 
-5. Dőljön hátra, és várjon, amíg az Azure SQL Data Warehouse üzembe helyezése megtörténik. Ez a folyamat szokványos esetben több percig is eltarthat. A portál értesíti, amint a példány üzembe helyezése véget ért. 
+5. Dőljön hátra, és várjon, amíg az adattárház üzembe helyezése megtörténik! Ez a folyamat szokványos esetben több percig is eltarthat. A portál értesíti, amint az adattárház használatra kész. 
 
-## <a name="connect-to-azure-sql-data-warehouse-through-sql-server-logical-server"></a>Csatlakozás az Azure SQL Data Warehouse-hoz SQL Serveren (logikai kiszolgáló) keresztül
+## <a name="connect-to-sql-data-warehouse"></a>Connect to SQL Data Warehouse
 
-Az oktatóanyagban az SQL Server Management Studio segítségével csatlakozunk az SQL Data Warehouse-hoz. Egyéb eszközökkel is csatlakozhat az SQL Data Warehouse-hoz a támogatott összekötőkön, például az ADO.NET, a JDBC, az ODBC és a PHP összekötőkön keresztül. Ne feledje, hogy a Microsoft által nem támogatott eszközök esetében a funkcionalitás korlátozott lehet.
+Az oktatóanyagban az SQL Server Management Studio (SSMS) segítségével csatlakozunk az adattárházhoz. A következő támogatott összekötőkön keresztül is csatlakozhat az SQL Data Warehouse-hoz: ADO.NET, JDBC, ODBC és PHP. Ne feledje, hogy a Microsoft által nem támogatott eszközök esetében a funkcionalitás korlátozott lehet.
 
 
 ### <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Az SQL Data Warehouse-hoz való kapcsolódáshoz az [Előfeltételek] szakaszban létrehozott SQL Serveren (logikai kiszolgáló) keresztül kell csatlakoznia.
+Az adattárházhoz való kapcsolódáshoz az [Előfeltételek] szakaszban létrehozott logikai SQL-kiszolgálón keresztül kell csatlakoznia.
 
-1. Válassza ki az SQL Data Warehouse-t az irányítópulton vagy keresse meg az erőforrások között.
+1. Válassza ki az adattárházat az irányítópulton vagy keresse meg az erőforrások között.
 
     ![SQL Data Warehouse irányítópult](./media/sql-data-warehouse-get-started-tutorial/sql-dw-dashboard.png)
 
-2. Keresse meg a logikai kiszolgáló teljes nevét.
+2. Keresse meg a logikai SQL-kiszolgáló teljes nevét.
 
     ![Kiszolgálónév kiválasztása](./media/sql-data-warehouse-get-started-tutorial/select-server.png)
 
-3. Nyissa meg az SSMS-t, és az Object Explorer használatával csatlakozzon ehhez a kiszolgálóhoz az [Előfeltételek] szakaszban létrehozott hitelesítő adatok használatával
+3. Nyissa meg az SSMS-t, és az Object Explorer használatával csatlakozzon ehhez a kiszolgálóhoz az [Előfeltételek] szakaszban létrehozott kiszolgálói rendszergazdai hitelesítő adatok használatával.
 
     ![Csatlakozás SSMS segítségével](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
-Ha minden jól megy, mostanra kapcsolódnia kell az SQL Server-példányhoz (logikai kiszolgálóhoz). Ezekkel a kiszolgálói hitelesítő adatokkal a kiszolgáló minden adatbázisában hitelesítheti magát az adatbázis tulajdonosaként. Azonban ajánlott eljárásként érdemes külön bejelentkezési adatokat és felhasználókat létrehoznia minden egyes adatbázishoz. A felhasználók létrehozását a [Felhasználó létrehozása az SQL Data Warehouse-hoz](./sql-data-warehouse-get-started-tutorial.md#create-a-user-for-sql-data-warehouse) című szakaszban ismertetjük. 
+Ha minden jól megy, mostanra kapcsolódnia kell a logikai SQL-kiszolgálóhoz. Miután kiszolgálói rendszergazdaként jelentkezett be, a kiszolgáló által futtatott bármelyik adatbázishoz kapcsolódhat, beleértve a master adatbázist. 
 
-## <a name="create-a-user-for-sql-data-warehouse"></a>Felhasználó létrehozása az SQL Data Warehouse-hoz
+Csak egyetlen kiszolgálói rendszergazdai fiók létezik, és az összes felhasználó közül ez rendelkezik a legtöbb jogosultsággal. Legyen óvatos, és csak kevesekkel tudassa a rendszergazdai jelszót a szervezetben. 
 
-### <a name="why-create-a-separate-user"></a>Miért érdemes külön felhasználót létrehozni?
+Emellett rendelkezhet egy Azure Active Directory-rendszergazdai fiókkal is. Ennek részleteit itt nem ismertetjük. Ha többet szeretne megtudni az Azure Active Directory-alapú hitelesítéssel kapcsolatban, lásd: [Azure AD-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
 
-Az SQL Server (logikai kiszolgáló) és az előző lépésben létrehozott kiszolgálói hitelesítő adatok használatával egy új felhasználót hozunk létre az SQL Data Warehouse-hoz. Két fő oka van, amiért érdemes külön felhasználót/bejelentkezést létrehozni az SQL DW-hez.
+Ezután a további bejelentkezések és felhasználók létrehozásával ismerkedünk meg.
 
-1.  A szervezet felhasználóinak külön fiókokat kell használnia a hitelesítéshez. Ezzel korlátozhatja az alkalmazáshoz rendelt engedélyeket, és csökkentheti a kártékony tevékenységek kockázatát.
 
-2. Alapértelmezés szerint a kiszolgáló-rendszergazdai felhasználó, amellyel épp be van jelentkezve, kisebb erőforrásosztályt használ. Az erőforrásosztályok segítségével szabályozhatja a lekérdezésekhez rendelt memóriakiosztást és CPU-ciklusokat. A **smallrc** felhasználói kisebb mennyiségű memóriát kapnak, és kihasználhatják a nagyobb párhuzamosság előnyeit. Ezzel szemben az **xlargerc** alá rendelt felhasználók nagy mennyiségű memóriát kapnak, és ezért kevesebb lekérdezésük futhat egy időben. Az adatok olyan betöltéséhez, amely a legjobban optimalizálja a tömörítést, érdemes arra törekedni, hogy az adatokat betöltő felhasználó egy nagyobb erőforrásosztály része legyen. További információkat az erőforrásosztályokról [itt](./sql-data-warehouse-develop-concurrency.md#resource-classes) talál.
+## <a name="create-a-database-user"></a>Adatbázis-felhasználó létrehozása
 
-### <a name="creating-a-user-of-a-larger-resource-class"></a>Nagyobb erőforrásosztályba tartozó felhasználó létrehozása
+Ebben a lépésben egy felhasználói fiókot hozhat létre az adattárház eléréséhez. Megmutatjuk azt is, hogyan engedélyezheti a felhasználó számára a nagy mennyiségű memória- és processzor-erőforrást igénylő lekérdezések futtatását.
 
-1. Hozzon létre egy új lekérdezést a kiszolgáló **master** adatbázisán.
+### <a name="notes-about-resource-classes-for-allocating-resources-to-queries"></a>Az erőforrásosztályokkal kapcsolatos megjegyzések az erőforrások lekérdezésekhez való kiosztásához
+
+- Az adatok biztonsága érdekében a kiszolgálói rendszergazdát ne használja a lekérdezések éles adatbázisokon való futtatásához. Az összes közül ez a felhasználó rendelkezik a legtöbb jogosultsággal, így ha ezzel hajt végre műveleteket a felhasználói adatokon, veszélyeztetheti az adatokat. Továbbá, mivel a kiszolgálói rendszergazda felügyeleti tevékenységeket hivatott végezni, a működéséhez kis mennyiségű memória- és processzor-erőforrást használ csak. 
+
+- Az SQL Data Warehouse előre meghatározott adatbázis-szerepköröket, úgynevezett erőforrásosztályokat alkalmaz a különböző mennyiségű memória, processzor-erőforrás és egyidejű hely lefoglalásához az egyes felhasználók számára. Az egyes felhasználók kicsi, közepes, nagy vagy extra nagy erőforrásosztályokba tartozhatnak. Az adott falhasználó erőforrásosztálya határozza meg, hogy a felhasználó milyen erőforrásokkal rendelkezik a lekérdezések és betöltési műveletek futtatásához.
+
+- Az adattömörítés optimalizálásához általában nagy vagy extra nagy erőforrást szükséges lefoglalni a felhasználó számára. További információkat az erőforrásosztályokról [itt](./sql-data-warehouse-develop-concurrency.md#resource-classes) talál.
+
+### <a name="create-an-account-that-can-control-a-database"></a>Az adatbázisok vezérlésére alkalmas fiók létrehozása
+
+Mivel jelenleg kiszolgálói rendszergazdaként van bejelentkezve, rendelkezik megfelelő jogosultsággal a bejelentkezések és a felhasználók létrehozásához.
+
+1. Az SSMS vagy más lekérdezésügyfél használatával nyisson egy új lekérdezést a **masteren**.
 
     ![Új lekérdezés a Master adatbázison](./media/sql-data-warehouse-get-started-tutorial/query-on-server.png)
 
     ![Új lekérdezés a Master1 adatbázison](./media/sql-data-warehouse-get-started-tutorial/query-on-master.png)
 
-2. Hozzon létre egy kiszolgálói bejelentkezést és felhasználót.
+2. Futtassa a következő T-SQL parancsot a lekérdezésablakban, és hozzon létre egy bejelentkezést MedRCLogin és egy felhasználót LoadingUser néven. Ez a bejelentkezés képes kapcsolódni a logikai SQL-kiszolgálóhoz.
 
     ```sql
-    CREATE LOGIN XLRCLOGIN WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
+    CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
+    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-3. Hozzon létre egy, a kiszolgálói bejelentkezésen alapuló új adatbázis-felhasználót.
+3. Most az *SQL Data Warehouse-adatbázis* lekérdezéséhez hozzon létre egy adatbázis-felhasználót azon bejelentkezés alapján, amelyet az adatbázishoz való hozzáféréshez és az azon való tevékenységek elvégzéséhez hozott létre.
+
     ```sql
-    CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
+    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
-4. Adjon adatbázis-felügyeleti jogokat a felhasználónak.
+4. Adjon az adatbázis-felhasználónak felügyeleti jogosultságot az NYT nevű adatbázishoz. 
+
     ```sql
     GRANT CONTROL ON DATABASE::[NYT] to LoadingUser;
     ```
@@ -146,432 +160,464 @@ Az SQL Server (logikai kiszolgáló) és az előző lépésben létrehozott kisz
     > Ha az adatbázis nevében található kötőjel, mindenképp foglalja a nevet szögletes zárójelek közé. 
     >
 
-5. Adja hozzá az adatbázis-felhasználót az **xlargerc** erőforrásosztály-szerepkörhöz.
-    ```sql
-    EXEC sp_addrolememeber 'xlargerc', 'LoadingUser';
-    ```
+### <a name="give-the-user-medium-resource-allocations"></a>Közepes erőforrás-mennyiség lefoglalása a felhasználó számára
 
-6. Jelentkezzen be az adatbázisba az új hitelesítő adatokkal.
+1. A következő T-SQL parancs futtatásával tegye a felhasználót a mediumrc nevű közepes erőforrásosztály tagjává. 
+
+    ```sql
+    EXEC sp_addrolemember 'mediumrc', 'LoadingUser';
+    ```
+    > [!NOTE]
+    > Az egyidejűségre és az erőforrásosztályokra vonatkozó további információkért kattintson [ide](sql-data-warehouse-develop-concurrency.md#resource-classes). 
+    >
+
+2. Csatlakozás a logikai kiszolgálóhoz az új hitelesítő adatokkal
 
     ![Bejelentkezés az új bejelentkezési adatokkal](./media/sql-data-warehouse-get-started-tutorial/new-login.png)
 
 
-## <a name="loading-data"></a>Adatok betöltése
+## <a name="load-data-from-azure-blob-storage"></a>Adatok betöltése az Azure Blob Storage-ből
 
-### <a name="defining-external-data"></a>Külső adatok meghatározása
-1. Határozzon meg egy külső adatforrást.
+Most már készen áll az adatok betöltésére az adattárházba. Ez a lépés bemutatja, hogyan töltheti be a New York-i taxik adatait egy nyilvános Azure tárolóblobból. 
+
+- Az adatok az SQL Data Warehouse-ba való betöltésének gyakori módja, ha először áthelyezi az adatokat az Azure Blob Storage-be, majd eztán tölti be azokat az adattárházba. Hogy könnyebben átlássa a betöltés folyamatát, a New York-i taxik adatait már eleve egy nyilvános Azure tárolóblobban tároljuk. 
+
+- Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
+
+
+### <a name="define-external-data"></a>Külső adatok meghatározása
+
+1. Hozzon létre egy főkulcsot. Adatbázisonként csak egyszer kell főkulcsot létrehoznia. 
+
+    ```sql
+    CREATE MASTER KEY;
+    ```
+
+2. Határozza meg a helyet az Azure blobban, ahol a taxik adatai találhatók.  
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
     WITH
     (
-    TYPE = Hadoop
-    , LOCATION = 'wasbs://2013@nytpublic.blob.core.windows.net/'
+        TYPE = Hadoop,
+        LOCATION = 'wasbs://2013@nytpublic.blob.core.windows.net/'
     );
     ```
 
+3. Határozza meg a külső fájlformátumokat.
 
-2. Határozza meg a külső fájlformátumokat.
+    A ```CREATE EXTERNAL FILE FORMAT``` parancs használatával adhatja meg a külső adatokat tartalmazó fájlok formátumát. Ezek egy vagy több karakter, az úgynevezett elválasztó karakterek használatával vannak elválasztva. Bemutatási célokból a taxik adatait itt tömörítetlen adatokként és GZIP formátumban tömörített adatokként is tároljuk.
 
-    A ```CREATE EXTERNAL FILE FORMAT``` parancs használatával adhatja meg a betöltés forrásaként szolgáló külső adatok formátumát. A New York-i taxiadatok esetében két formátumot alkalmaztunk az adatok tárolásához az Azure Blob Storage tárolóban.
+    A következő T-SQL parancsok futtatásával határozhatja meg a két különböző, a tömörítetlen és a tömörített formátumot.
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
-    WITH
-    ( FORMAT_TYPE = DELIMITEDTEXT
-    , FORMAT_OPTIONS ( FIELD_TERMINATOR = ','
-    , STRING_DELIMITER = ''
-    , DATE_FORMAT = ''
-    , USE_TYPE_DEFAULT = False
-    )
+    WITH (
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( 
+            FIELD_TERMINATOR = ',',
+            STRING_DELIMITER = '',
+            DATE_FORMAT = '',
+            USE_TYPE_DEFAULT = False
+        )
     );
 
     CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH
-    ( FORMAT_TYPE = DELIMITEDTEXT
-    , FORMAT_OPTIONS ( FIELD_TERMINATOR = '|'
-    , STRING_DELIMITER = ''
-    , DATE_FORMAT = ''
-    , USE_TYPE_DEFAULT = False
-    )
-    , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+    WITH ( 
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
+            STRING_DELIMITER = '',
+        DATE_FORMAT = '',
+            USE_TYPE_DEFAULT = False
+        ),
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
     );
     ```
 
-3.  Hozzon létre egy sémát a külső fájlformátum számára.
+4.  Hozzon létre egy sémát a külső fájlformátum számára. 
 
     ```sql
     CREATE SCHEMA ext;
-    GO
     ```
+5. Hozza létre a külső táblákat. Ezek a táblák az Azure Blob Storage-ben tárolt adatokra hivatkoznak. A következő T-SQL parancsok futtatásával hozzon létre több külső táblát, amelyek mind a külső adatforrásban korábban meghatározott Azure-blobra mutatnak.
 
-4. Hozza létre a külső táblákat. Ezek a táblák a HDFS-ben vagy az Azure Blob Storage-ben tárolt adatokra hivatkoznak. 
-
-    ```sql
+```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
     (
-    [DateID] int NOT NULL,
-    [Date] datetime NULL,
-    [DateBKey] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DaySuffix] varchar(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfWeek] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfWeekInMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfWeekInYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfQuarter] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DayOfYear] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [WeekOfMonth] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [WeekOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [WeekOfYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [Month] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [MonthName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [MonthOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [Quarter] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [QuarterName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [Year] char(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [YearName] char(7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [MonthYear] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [MMYYYY] char(6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [FirstDayOfMonth] date NULL,
-    [LastDayOfMonth] date NULL,
-    [FirstDayOfQuarter] date NULL,
-    [LastDayOfQuarter] date NULL,
-    [FirstDayOfYear] date NULL,
-    [LastDayOfYear] date NULL,
-    [IsHolidayUSA] bit NULL,
-    [IsWeekday] bit NULL,
-    [HolidayUSA] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+        [DateID] int NOT NULL,
+        [Date] datetime NULL,
+        [DateBKey] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DaySuffix] varchar(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeek] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeekInMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeekInYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfQuarter] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfYear] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfMonth] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Month] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Quarter] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [QuarterName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Year] char(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [YearName] char(7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthYear] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MMYYYY] char(6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FirstDayOfMonth] date NULL,
+        [LastDayOfMonth] date NULL,
+        [FirstDayOfQuarter] date NULL,
+        [LastDayOfQuarter] date NULL,
+        [FirstDayOfYear] date NULL,
+        [LastDayOfYear] date NULL,
+        [IsHolidayUSA] bit NULL,
+        [IsWeekday] bit NULL,
+        [HolidayUSA] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
     )
     WITH
     (
-    LOCATION = 'Date'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
-    )
+        LOCATION = 'Date',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    );
+    
     CREATE EXTERNAL TABLE [ext].[Geography]
     (
-    [GeographyID] int NOT NULL,
-    [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [County] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [City] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [State] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [Country] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [ZipCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+        [GeographyID] int NOT NULL,
+        [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [County] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [City] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [State] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Country] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [ZipCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
     )
     WITH
     (
-    LOCATION = 'Geography'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0 
-    )
-    ;
+        LOCATION = 'Geography',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0 
+    );
+        
+    
     CREATE EXTERNAL TABLE [ext].[HackneyLicense]
     (
-    [HackneyLicenseID] int NOT NULL,
-    [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [HackneyLicenseCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+        [HackneyLicenseID] int NOT NULL,
+        [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [HackneyLicenseCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
     )
     WITH
     (
-    LOCATION = 'HackneyLicense'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
+        LOCATION = 'HackneyLicense',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
     )
     ;
+        
+    
     CREATE EXTERNAL TABLE [ext].[Medallion]
     (
-    [MedallionID] int NOT NULL,
-    [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [MedallionCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+        [MedallionID] int NOT NULL,
+        [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [MedallionCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
     )
     WITH
     (
-    LOCATION = 'Medallion'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
+        LOCATION = 'Medallion',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
     )
     ;
+        
     CREATE EXTERNAL TABLE [ext].[Time]
     (
-    [TimeID] int NOT NULL,
-    [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [HourNumber] tinyint NOT NULL,
-    [MinuteNumber] tinyint NOT NULL,
-    [SecondNumber] tinyint NOT NULL,
-    [TimeInSecond] int NOT NULL,
-    [HourlyBucket] varchar(15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [DayTimeBucketGroupKey] int NOT NULL,
-    [DayTimeBucket] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+        [TimeID] int NOT NULL,
+        [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [HourNumber] tinyint NOT NULL,
+        [MinuteNumber] tinyint NOT NULL,
+        [SecondNumber] tinyint NOT NULL,
+        [TimeInSecond] int NOT NULL,
+        [HourlyBucket] varchar(15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [DayTimeBucketGroupKey] int NOT NULL,
+        [DayTimeBucket] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
     )
     WITH
     (
-    LOCATION = 'Time'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
+        LOCATION = 'Time',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
     )
     ;
+    
+    
     CREATE EXTERNAL TABLE [ext].[Trip]
     (
-    [DateID] int NOT NULL,
-    [MedallionID] int NOT NULL,
-    [HackneyLicenseID] int NOT NULL,
-    [PickupTimeID] int NOT NULL,
-    [DropoffTimeID] int NOT NULL,
-    [PickupGeographyID] int NULL,
-    [DropoffGeographyID] int NULL,
-    [PickupLatitude] float NULL,
-    [PickupLongitude] float NULL,
-    [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [DropoffLatitude] float NULL,
-    [DropoffLongitude] float NULL,
-    [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [PassengerCount] int NULL,
-    [TripDurationSeconds] int NULL,
-    [TripDistanceMiles] float NULL,
-    [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [FareAmount] money NULL,
-    [SurchargeAmount] money NULL,
-    [TaxAmount] money NULL,
-    [TipAmount] money NULL,
-    [TollsAmount] money NULL,
-    [TotalAmount] money NULL
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
     )
     WITH
     (
-    LOCATION = 'Trip2013'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = compressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
+        LOCATION = 'Trip2013',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = compressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
     )
     ;
+    
     CREATE EXTERNAL TABLE [ext].[Weather]
     (
-    [DateID] int NOT NULL,
-    [GeographyID] int NOT NULL,
-    [PrecipitationInches] float NOT NULL,
-    [AvgTemperatureFahrenheit] float NOT NULL
+        [DateID] int NOT NULL,
+        [GeographyID] int NOT NULL,
+        [PrecipitationInches] float NOT NULL,
+        [AvgTemperatureFahrenheit] float NOT NULL
     )
     WITH
     (
-    LOCATION = 'Weather2013'
-    , DATA_SOURCE = NYTPublic
-    , FILE_FORMAT = uncompressedcsv
-    , REJECT_TYPE = value
-    , REJECT_VALUE = 0
+        LOCATION = 'Weather2013',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
     )
     ;
     ```
 
-### <a name="create-table-as-select-ctas"></a>Tábla létrehozása a Select utasítással (CTAS)
+### Import the data from Azure blob storage.
 
-5. Töltse be az adatokat a külső táblákból az SQL Data Warehouse-példányba. 
+SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS). This statement creates a new table based on the results of a select statement. The new table has the same columns and data types as the results of the select statement.  This is an elegant way to import data from Azure blob storage into SQL Data Warehouse.
+
+1. Run this script to import your data.
+
     ```sql
     CREATE TABLE [dbo].[Date]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[Date]
+    AS SELECT * FROM [ext].[Date]
     OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
     ;
+    
     CREATE TABLE [dbo].[Geography]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
     AS
-    SELECT *
-    FROM [ext].[Geography]
+    SELECT * FROM [ext].[Geography]
     OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
     ;
+    
     CREATE TABLE [dbo].[HackneyLicense]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[HackneyLicense]
+    AS SELECT * FROM [ext].[HackneyLicense]
     OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
     ;
+    
     CREATE TABLE [dbo].[Medallion]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[Medallion]
+    AS SELECT * FROM [ext].[Medallion]
     OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
     ;
+    
     CREATE TABLE [dbo].[Time]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[Time]
+    AS SELECT * FROM [ext].[Time]
     OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
     ;
+    
     CREATE TABLE [dbo].[Weather]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[Weather]
+    AS SELECT * FROM [ext].[Weather]
     OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
     ;
+    
     CREATE TABLE [dbo].[Trip]
     WITH
-    ( DISTRIBUTION = ROUND_ROBIN
-    , CLUSTERED COLUMNSTORE INDEX
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     )
-    AS
-    SELECT *
-    FROM [ext].[Trip]
+    AS SELECT * FROM [ext].[Trip]
     OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
     ;
     ```
 
-    > [!NOTE]
-    > Több GB-nyi adatot tölt be és tömörít nagy teljesítményű fürtözött oszlopcentrikus indexekbe. Futtassa a következő DMV-lekérdezést, majd igyon egy kávét vagy szerezzen valami rágcsálnivalót, amíg az Azure SQL Data Warehouse keményen dolgozik.
-    >
+2. View your data as it loads.
 
-6. Hozzon létre egy új lekérdezést, és láthatja, ahogy adatai a dinamikusan felügyelt nézetben (DMV) megjelennek.
-
+   You’re loading several GBs of data and compressing it into highly performant clustered columnstore indexes. Run the following query that uses a dynamic management views (DMVs) to show the status of the load. After starting the query, grab a coffee and a snack while SQL Data Warehouse does some heavy lifting.
+    
     ```sql
     SELECT
-    r.command,
-    s.request_id,
-    r.status,
-    count(distinct input_name) as nbr_files,
-    sum(s.bytes_processed)/1024/1024 as gb_processed
-    FROM
-    sys.dm_pdw_exec_requests r
-    inner join sys.dm_pdw_dms_external_work s
-    on r.request_id = s.request_id
+        r.command,
+        s.request_id,
+        r.status,
+        count(distinct input_name) as nbr_files,
+        sum(s.bytes_processed)/1024/1024 as gb_processed
+    FROM 
+        sys.dm_pdw_exec_requests r
+        INNER JOIN sys.dm_pdw_dms_external_work s
+        ON r.request_id = s.request_id
     WHERE
-    r.[label] = 'CTAS : Load [dbo].[Date]' OR
-    r.[label] = 'CTAS : Load [dbo].[Geography]' OR
-    r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
-    r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
-    r.[label] = 'CTAS : Load [dbo].[Time]' OR
-    r.[label] = 'CTAS : Load [dbo].[Weather]' OR
-    r.[label] = 'CTAS : Load [dbo].[Trip]'
+        r.[label] = 'CTAS : Load [dbo].[Date]' OR
+        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
+        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
+        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
+        r.[label] = 'CTAS : Load [dbo].[Time]' OR
+        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
+        r.[label] = 'CTAS : Load [dbo].[Trip]'
     GROUP BY
-    r.command,
-    s.request_id,
-    r.status
+        r.command,
+        s.request_id,
+        r.status
     ORDER BY
-    nbr_files desc, gb_processed desc;
+        nbr_files desc, 
+        gb_processed desc;
     ```
 
-7. Tekintse meg az összes rendszerlekérdezést.
+3. View all system queries.
 
     ```sql
     SELECT * FROM sys.dm_pdw_exec_requests;
     ```
 
-8. Láthatja, ahogy adatai szépen betöltődnek az Azure SQL Data Warehouse-ba.
+4. Enjoy seeing your data nicely loaded into your Azure SQL Data Warehouse.
 
-    ![Betöltött adatok megjelenítése](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
+    ![See Data Loaded](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
 
 
+## Improve query performance
 
-## <a name="querying-data"></a>Adatok lekérdezése 
+There are several ways to improve query performance and to achieve the high-speed performance that SQL Data Warehouse is designed to provide.  
 
-### <a name="scan-query-with-scaling"></a>Lekérdezés vizsgálata méretezéssel
+### See the effect of scaling on query performance 
 
-Tekintsük meg, milyen hatással van a méretezés a lekérdezések sebességére.
+One way to improve query performance is to scale resources by changing the DWU service level for your data warehouse. Each service level costs more, but you can scale back or pause resources at any time. 
 
-Mielőtt nekilátnánk, csökkentse a DWU-k számát 100-ra, hogy láthassuk, hogyan teljesít egyetlen számítási csomópont önállóan.
+In this step, you compare performance at two different DWU settings.
 
-1. Lépjen a portálra, és válassza ki az SQL Data Warehouse-példányt.
+First, let's scale the sizing down to 100 DWU so we can get an idea of how one compute node might perform on its own.
 
-2. Válassza ki a méretet az SQL Data Warehouse panelen. 
+1. Go to the portal and select your SQL Data Warehouse.
 
-    ![DW méretezése a portálról](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
+2. Select scale in the SQL Data Warehouse blade. 
 
-3. Csökkentse a teljesítményt a sávon 100 DWU-ra, és nyomja le a Mentés gombot.
+    ![Scale DW From portal](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-    ![Méretezés és mentés](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
+3. Scale down the performance bar to 100 DWU and hit save.
 
-4. Várjon, amíg a méretezési művelet befejeződik.
+    ![Scale and save](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
+
+4. Wait for your scale operation to finish.
 
     > [!NOTE]
-    > Vegye figyelembe, hogy a méretezési műveletek **leállítják** az aktuálisan folyamatban lévő lekérdezéseket, és nem engedik újak indítását.
+    > Queries cannot run while changing the scale. Scaling **kills** your currently running queries. You can restart them when the operation is finished.
     >
     
-5. Végezzen egy vizsgálati műveletet az utazási adatokon, és válassza az első egymillió bejegyzést minden oszlopban. Ha szeretne gyorsabban továbblépni, választhat kevesebb sort is.
+5. Do a scan operation on the trip data, selecting the top million entries for all the columns. If you're eager to move on quickly, feel free to select fewer rows. Take note of the time it takes to run this operation.
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
+6. Scale your data warehouse back to 400 DWU. Remember, each 100 DWU is adding another compute node to your Azure SQL Data Warehouse.
 
-Jegyezze fel, hogy mennyi időbe telt ennek a műveletnek az elvégzése.
-
-6. Skálázza fel a példányt 400 DWU-ra. Ne feledje, hogy minden 100 DWU egy újabb számítási csomópontot ad az Azure SQL Data Warehouse-hoz.
-
-7. Futtassa újra a lekérdezést. Jelentős eltérést kell tapasztalnia. 
+7. Run the query again! You should notice a significant difference. 
 
 > [!NOTE]
-> Az Azure SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) platform. Azok a lekérdezések és műveletek esetében tapasztalható meg az Azure SQL Data Warehouse igazi ereje, amelyeknél párhuzamosítható a munka a különféle csomópontok közt.
+> Since SQL Data Warehouse uses massively parallel processing. Queries that scan or perform analytic functions on millions of rows experience the true power of
+> Azure SQL Data Warehouse.
 >
 
-### <a name="join-query-with-statistics"></a>Összekapcsolási lekérdezés statisztikákkal
+### See the effect of statistics on query performance
 
-1. Futtasson egy lekérdezést, amely összekapcsolja a Date (Dátum) táblát a Trip (Utazás) táblával.
+1. Run a query that joins the Date table with the Trip table
 
     ```sql
-    SELECT TOP (1000000) dt.[DayOfWeek]
-    ,tr.[MedallionID]
-    ,tr.[HackneyLicenseID]
-    ,tr.[PickupTimeID]
-    ,tr.[DropoffTimeID]
-    ,tr.[PickupGeographyID]
-    ,tr.[DropoffGeographyID]
-    ,tr.[PickupLatitude]
-    ,tr.[PickupLongitude]
-    ,tr.[PickupLatLong]
-    ,tr.[DropoffLatitude]
-    ,tr.[DropoffLongitude]
-    ,tr.[DropoffLatLong]
-    ,tr.[PassengerCount]
-    ,tr.[TripDurationSeconds]
-    ,tr.[TripDistanceMiles]
-    ,tr.[PaymentType]
-    ,tr.[FareAmount]
-    ,tr.[SurchargeAmount]
-    ,tr.[TaxAmount]
-    ,tr.[TipAmount]
-    ,tr.[TollsAmount]
-    ,tr.[TotalAmount]
+    SELECT TOP (1000000) 
+        dt.[DayOfWeek],
+        tr.[MedallionID],
+        tr.[HackneyLicenseID],
+        tr.[PickupTimeID],
+        tr.[DropoffTimeID],
+        tr.[PickupGeographyID],
+        tr.[DropoffGeographyID],
+        tr.[PickupLatitude],
+        tr.[PickupLongitude],
+        tr.[PickupLatLong],
+        tr.[DropoffLatitude],
+        tr.[DropoffLongitude],
+        tr.[DropoffLatLong],
+        tr.[PassengerCount],
+        tr.[TripDurationSeconds],
+        tr.[TripDistanceMiles],
+        tr.[PaymentType],
+        tr.[FareAmount],
+        tr.[SurchargeAmount],
+        tr.[TaxAmount],
+        tr.[TipAmount],
+        tr.[TollsAmount],
+        tr.[TotalAmount],
     FROM [dbo].[Trip] as tr
-    join
-    dbo.[Date] as dt
-    on tr.DateID = dt.DateID
+        JOIN dbo.[Date] as dt
+        ON  tr.DateID = dt.DateID
     ```
 
-    Ahogy sejthető, a lekérdezés sokkal több időt vesz igénybe, ha az adatokat ide-oda mozgatja a csomópontok közt, különösen egy ehhez hasonló összekapcsolási forgatókönyvben.
+    This query takes a while because SQL Data Warehouse has to shuffle data before it can perform the join. Joins do not have to shuffle data if they are designed to join data in the same way it is distributed. That's a deeper subject. 
 
-2. Lássuk, mi a különbség, ha statisztikákat hozunk létre a csatlakoztatott oszlopon a következő futtatásával:
+2. Statistics make a difference. 
+3. Run this statement to create statistics on the join columns.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -579,46 +625,48 @@ Jegyezze fel, hogy mennyi időbe telt ennek a műveletnek az elvégzése.
     ```
 
     > [!NOTE]
-    > Az SQL DW nem kezeli automatikusan a statisztikákat Ön helyett. A statisztikák fontosak a lekérdezések teljesítménye szempontjából, ezért határozottan javasoljuk, hogy hozzon létre statisztikákat, és frissítse azokat.
+    > SQL DW does not automatically manage statistics for you. Statistics are important for query
+    > performance and it is highly recommended you create and update statistics.
     > 
-    > **A legnagyobb előnnyel az jár, ha az összekapcsolások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit készíti el.**
+    > **You gain the most benefit by having statistics on columns involved in joins, columns
+    > used in the WHERE clause and columns found in GROUP BY.**
     >
 
-3. Futtassa újra az Előfeltételek szakaszban szereplő lekérdezést, és figyelje meg a teljesítménybeli különbséget. Bár a lekérdezésteljesítmény változása nem olyan drámai, mint a felskálázás esetében, észrevehető gyorsulás figyelhető meg. 
+3. Run the query from Prerequisites again and observe any performance differences. While the differences in query performance will not be as drastic as scaling up, you should notice a  speed-up. 
 
-## <a name="next-steps"></a>Következő lépések
+## Next steps
 
-Készen áll a lekérdezésre és vizsgálódásra. Tekintse meg gyakorlati tanácsainkat és tippjeinket.
+You're now ready to query and explore. Check out our best practices or tips.
 
-Ha a mai napra befejezte a vizsgálódást, szüneteltesse a példány működését. Üzemi környezetben hatalmas megtakarításokat érhet el, ha üzleti igényei szerint szünetelteti és méretezi a működést.
+If you're done exploring for the day, make sure to pause your instance! In production, you can experience enormous 
+savings by pausing and scaling to meet your business needs.
 
-![Szünet](./media/sql-data-warehouse-get-started-tutorial/pause.png)
+![Pause](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
-## <a name="useful-readings"></a>Hasznos olvasmányok
+## Useful readings
 
-[Egyidejűség és a számítási feladatok kezelése]
+[Concurrency and Workload Management][]
 
-[Ajánlott eljárások az Azure SQL Data Warehouse-hoz]
+[Best practices for Azure SQL Data Warehouse][]
 
-[Lekérdezések figyelése]
+[Query Monitoring][]
 
-[A 10 leghasznosabb ajánlott eljárás nagyméretű relációs adattárházak létrehozásához]
+[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse][]
 
-[Adatok áttelepítése az Azure SQL Data Warehouse-ba]
+[Migrating Data to Azure SQL Data Warehouse][]
 
-
-[Egyidejűség és a számítási feladatok kezelése]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
-[Ajánlott eljárások az Azure SQL Data Warehouse-hoz]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
-[Lekérdezések figyelése]: sql-data-warehouse-manage-monitor.md
-[A 10 leghasznosabb ajánlott eljárás nagyméretű relációs adattárházak létrehozásához]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
-[Adatok áttelepítése az Azure SQL Data Warehouse-ba]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Concurrency and Workload Management]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[Best practices for Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
+[Query Monitoring]: sql-data-warehouse-manage-monitor.md
+[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
+[Migrating Data to Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[Előfeltételek]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[Prerequisites]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/
@@ -626,6 +674,6 @@ Ha a mai napra befejezte a vizsgálódást, szüneteltesse a példány működé
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

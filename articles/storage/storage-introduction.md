@@ -1,5 +1,5 @@
 ---
-title: "A Storage bemutatása | Microsoft Docs"
+title: "Bevezetés az Azure Storage használatába | Microsoft Docs"
 description: "Áttekintés az Azure Storage-ról, a Microsoft online, felhőalapú adattároló szolgáltatásáról. Ismerje meg, hogyan használhatja fel alkalmazásaihoz az elérhető legjobb felhőalapú tárolómegoldást."
 services: storage
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/02/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
+ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
+ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
 
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
+
 ## <a name="overview"></a>Áttekintés
 Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás. A cikket olvasó fejlesztők, informatikai szakemberek és üzleti döntéshozók megtudhatják:
 
@@ -185,7 +186,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [A Storage ügyféloldali kódtára a Pythonhoz](/develop/python/)
 * [Storage-parancsmagok a PowerShell 1.0-hoz](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
-### <a name="azure-storage-management-services"></a>Azure Storage kezelési szolgáltatás
+### <a name="azure-storage-management-services"></a>Azure Storage kezelési szolgáltatások
 * [A Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 * [Storage erőforrás-szolgáltató ügyfél a .NET-hez](https://msdn.microsoft.com/library/azure/mt131037.aspx)
 * [A Storage erőforrás-szolgáltató parancsmagjai a PowerShell 1.0-hoz](https://msdn.microsoft.com/library/azure/mt607151.aspx)
@@ -208,6 +209,8 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 ### <a name="documentation"></a>Dokumentáció
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
+* [Tárfiók létrehozása](storage-create-storage-account.md)
+* [Az Azure Storage első lépéseinek rövid összefoglalása](storage-getting-started-guide.md)
 
 ### <a name="for-administrators"></a>Rendszergazdáknak
 * [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](storage-powershell-guide-full.md)
@@ -246,12 +249,8 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [How to use Queue storage from Python (A Queue Storage használata Pythonnal)](storage-python-how-to-use-queue-storage.md)
 * [How to use File Storage from Python (A File Storage használata Pythonnal)](storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>Következő lépések
-
-* [Tárfiók létrehozása](storage-create-storage-account.md)
-* [Az Azure Storage első lépéseinek rövid összefoglalása](storage-getting-started-guide.md)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

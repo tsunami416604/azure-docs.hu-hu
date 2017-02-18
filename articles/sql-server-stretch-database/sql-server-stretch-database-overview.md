@@ -1,5 +1,5 @@
 ---
-title: "A Stretch Database áttekintése | Microsoft Docs"
+title: "Ritkán használt adatok archiválása az Azure-ba – Stretch Database | Microsoft Docs"
 description: "Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe."
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f63900b0a4f32e1bc5a88c068091916bd96aafb8
+ms.sourcegitcommit: cfa45dbb2d6e7579ed151c0213d394581cb73c4d
+ms.openlocfilehash: 0c4355eb424f169238f274241747acff4532d589
 
 
 ---
-# <a name="stretch-database-overview"></a>A Stretch Database áttekintése
+# <a name="introduction-to-stretch-database"></a>A Stretch Database bemutatása
 A Stretch Database a ritkán használt adatokat átlátható módon és biztonságosan telepíti át a Microsoft Azure felhőbe.
 
 Ha szeretné azonnal megkezdeni a Stretch Database használatát, olvassa el a [Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása](sql-server-stretch-database-wizard.md) című cikket.
@@ -84,6 +84,6 @@ Használja az SQL Server 2016 Upgrade Advisor eszközének Stretch Database Advi
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 
