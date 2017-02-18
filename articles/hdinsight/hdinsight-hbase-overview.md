@@ -14,11 +14,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/14/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0ca7a73d0d7db3651bec26deb4557fae5fc3451f
+ms.sourcegitcommit: ec9e3c6c6919bb5ce50553a29536f821fe79f577
+ms.openlocfilehash: 3d8ee1d23fab0b410bce711afc27f8bbbad4c7e4
 
 
 ---
@@ -30,7 +30,7 @@ Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopc
 ## <a name="how-is-hbase-implemented-in-azure-hdinsight"></a>Hogyan van megvalósítva a HBase az Azure HDInsight eszközben?
 A HDInsight HBase az Azure környezetbe integrált felügyelt fürtként érhető el. A fürtök úgy vannak konfigurálva, hogy közvetlenül az Azure Blob Storage tárolóban tárolják az adatokat, amely kis késést és nagyobb rugalmasságot biztosít a teljesítménnyel és költségekkel kapcsolatos választások során. Ez lehetővé teszi, hogy az ügyfelek olyan interaktív webhelyeket építsenek, amelyek nagy adatkészletekkel működnek, hogy a több millió végpontból származó érzékelői és telemetriai adatokat tároló szolgáltatásokat építhessenek, és hogy ezeket az adatokat Hadoop-feladatokkal elemezzék. A HBase és a Hadoop jó kezdőpont a big data-projektekhez az Azure rendszerben; különösképpen azt teszik lehetővé, hogy a valós idejű alkalmazások nagy adatkészletekkel dolgozhassanak.
 
-A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HDInsight HBase eszközhöz a virtuális hálózat üzembe helyezése is elérhető. További információ: [HDInsight-fürtök üzembe helyezése az Azure-beli virtuális hálózaton][hbase-provision-vnet].
+A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HBase-fürt a virtuális hálózaton belül hozható létre. További információ: [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet].
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Hogyan történik az adatok kezelése a HDInsight HBase-ben?
 Az adatok a HBase-ben a(z) `create`, `get`, `put` és `scan` parancsokkal kezelhetők a HBase rendszerhéjból. Az adatok a(z) `put` paranccsal írhatók, és a(z) `get` paranccsal olvashatók az adatbázisban. A(z) `scan` paranccsal szerezhetők be adatok a táblák több sorából. Az adatok a HBase C# API-val is kezelhetők, amely egy ügyfélkönyvtárat biztosít a HBase REST API-n felül. A HBase adatbázisok a Hive használatával is lekérdezhetők. Ezen programozási modellek bevezetését lásd: [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]. Társprocesszorok is elérhetők, amelyek lehetővé teszik az adatfeldolgozást az adatbázist szolgáltató csomópontokban.
@@ -53,8 +53,8 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 
 ## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>Következő lépések
 * [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]
-* [HDInsight-fürtök üzembe helyezése az Azure virtuális hálózaton][hbase-provision-vnet]
-* [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-geo-replication.md)
+* [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet]
+* [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-replication.md)
 * [Twitter-vélemények elemzése a HBase-szel a HDInsightban][hbase-twitter-sentiment]
 * [A Maven használata a HDInsight (Hadoop) eszközzel HBase-t használó Java-alkalmazások építéséhez][hbase-build-java-maven]
 
@@ -84,6 +84,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

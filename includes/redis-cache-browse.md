@@ -14,6 +14,6 @@ A **Redis Cache** panelen megtekintheti és konfigurálhatja a gyorsítótárat.
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 
