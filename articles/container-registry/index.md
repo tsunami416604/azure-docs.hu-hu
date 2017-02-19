@@ -1,14 +1,26 @@
 ---
+title: "Az Azure Container Registry dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogy hogyan hozhat létre és tarthat karban tárolójegyzékeket az üzembe helyezési lemezképek tárolására a felügyelt Docker jegyzékszolgáltatással. Oktatóanyagok, API-referencia és egyéb anyagok."
+services: container-registry
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: container-registry
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2e77ba043efd03ecffd3e5e786046dedbed58877
+ms.sourcegitcommit: 97a09226c0f784c4834e96e47ac9052844ff7a36
+ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
 
 ---
 
 # <a name="azure-container-registry-documentation"></a>Azure Container Registry-dokumentáció
 
-Az Azure Container Registry (előzetes verzió) egy privát beállításjegyzék a rendszerképek tárolásához. Az Azure Container Registry segítségével Docker-formátumú rendszerképeket tárolhat bármely típusú tárolópéldányhoz. Az Azure Container Registry jól integrálható az Azure Container Service által üzemeltetett orkesztrátorokkal, beleértve a Docker Swarm, a DC/OS és a Kubernetes szolgáltatást. 
+Ismerje meg, hogy a Container Registry hogyan használható a rendszerképek tárolására és kezelésére az összes típusú tároló-üzembehelyezéshez. Az oktatóanyagok, a REST API-referencia és az egyéb dokumentációk bemutatják, hogyan hozhatja létre és tarthatja karban tárolójegyzékeket ezzel a felügyelt Docker jegyzékszolgáltatással.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,6 +110,7 @@ Az Azure Container Registry (előzetes verzió) egy privát beállításjegyzék
 </ul>
 
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

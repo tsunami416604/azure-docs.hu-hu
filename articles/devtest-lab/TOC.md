@@ -21,16 +21,18 @@
 ### [Összetevőtár hozzáadása](devtest-lab-add-artifact-repo.md)
 ### [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)
 
-## Virtuálisgép-adatbázisok kezelése
+## Virtuálisgép-adatbázisok és -sablonok kezelése
+### [Több virtuális gépes környezet létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
+### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
 ### [Képek és képletek összehasonlítása](devtest-lab-comparing-vm-base-image-types.md)
+### [Képletek kezelése](devtest-lab-manage-formulas.md)
+### [Egyéni lemezkép készítése egy virtuális gépről](devtest-lab-create-custom-image-from-vm-using-portal.md)
+### [Egyéni lemezkép készítése VHD-fájlból, az Azure Portal használatával](devtest-lab-create-template.md)
+### [Egyéni lemezkép készítése VHD-fájlból, a PowerShell használatával](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 ### [VHD-fájl feltöltése AzCopy használatával](devtest-lab-upload-vhd-using-azcopy.md)
 ### [VHD-fájl feltöltése PowerShell használatával](devtest-lab-upload-vhd-using-powershell.md)
 ### [VHD-fájl feltöltése Storage Explorer használatával](devtest-lab-upload-vhd-using-storage-explorer.md)
-### [Egyéni lemezkép készítése VHD-fájlból, az Azure Portal használatával](devtest-lab-create-template.md)
-### [Egyéni lemezkép készítése VHD-fájlból, a PowerShell használatával](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-### [Egyéni lemezkép készítése egy virtuális gépről](devtest-lab-create-custom-image-from-vm-using-portal.md)
-### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
-### [Képletek kezelése](devtest-lab-manage-formulas.md)
+
 
 
 # Erőforrások
@@ -41,6 +43,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

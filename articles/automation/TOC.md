@@ -44,6 +44,7 @@
 ### [Integrációs modulok](automation-integration-modules.md)
 ### [Ütemezések](automation-schedules.md)
 ### [Változók](automation-variables.md)
+### [Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
 ## Forgatókönyvek automatizálása
 ### [Runbook-katalógus](automation-runbook-gallery.md)
 ### [Virtuális gépek indítása és leállítása](automation-solution-startstopvm-graphical.md)
@@ -81,6 +82,6 @@
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

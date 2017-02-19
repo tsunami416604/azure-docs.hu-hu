@@ -7,27 +7,30 @@
 ## [Bevezetés megtekintése](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
 # Első lépések
-## [Felkészülés az üzembe helyezésre](site-recovery-best-practices.md)
+## [VMWare-alapú virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
+## [VMWare-alapú virtuális gépek replikálása az Azure-ba több-bérlős központi telepítésben (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [Hyper-V-alapú virtuális gépek replikálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
+## [Hyper-V virtuális gépek replikálása az Azure-ba](site-recovery-hyper-v-site-to-azure.md)
+## [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](site-recovery-vmware-to-vmware.md)
+## [Hyper-V-alapú virtuális gépek replikálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm.md)
 
 # Útmutató
 ## Felkészülés
-### [Kapacitástervezés](site-recovery-capacity-planner.md)
-### [A teljesítmény- és mérettesztelés eredményei](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md)
+### [Üzembe helyezési előfeltételek](site-recovery-prereq.md)
 ### [A hálózati infrastruktúrával kapcsolatos szempontok](site-recovery-network-design.md)
-### [Hálózatleképezés (VMM)](site-recovery-network-mapping.md)
-### [Tárolóleképezés előkészítése helyszíni helyek között](site-recovery-storage-mapping.md)
-## Replikálás
-### [VMWare virtuális gépek és kiszolgálók Azure-ba](site-recovery-vmware-to-azure.md)
-### [VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre](site-recovery-vmware-to-vmware.md)
-### [Több bérlős támogatással rendelkező VMware virtuális gépek Azure-ba a CSP program használatával](site-recovery-multi-tenant-support-vmware-using-csp.md)
-### [Hyper-V virtuális gépek az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
-### [Hyper-V virtuális gépek az Azure-ba (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
-### [Hyper-V virtuális gépek másodlagos helyre](site-recovery-vmm-to-vmm.md)
-### [Hyper-V virtuális gépek másodlagos helyre SAN-nal](site-recovery-vmm-san.md)
-### [Hyper-V virtuális gépek (egy VMM-kiszolgálóval)](site-recovery-single-vmm.md)
+### [A Site Recovery Capacity Planner használata](site-recovery-capacity-planner.md)
+### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
+## Konfigurálás
+### [A forrásreplikálási környezet beállítása](site-recovery-set-up-vmware-to-azure.md)
+### [Replikációs beállítások konfigurálása](site-recovery-setup-replication-settings-vmware.md)
+### [Mobilitási szolgáltatás üzembe helyezése VMware-replikálásához](site-recovery-vmware-to-azure-install-mob-svc.md)
+#### [Mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel](site-recovery-install-mobility-service-using-sccm.md)
+#### [Mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel](site-recovery-automate-mobility-service-install.md)
+### [Kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md)
 ## Migrate (Áttelepítés)
+### [Áttérés az Azure-ra](site-recovery-migrate-to-azure.md)
 ### [Áttelepítés Azure-régiók között](site-recovery-migrate-azure-to-azure.md)
-### [AWS Windows-példányok az Azure szolgáltatásba](site-recovery-migrate-aws-to-azure.md)
+### [AWS Windows-példányok áttelepítése az Azure-ba](site-recovery-migrate-aws-to-azure.md)
 ## Számítási feladatok
 ### [Active Directory és DNS](site-recovery-active-directory.md)
 ### [SQL Server](site-recovery-sql.md)
@@ -38,14 +41,15 @@
 ### [SAP](site-recovery-workload.md#protect-sap)
 ### [Egyéb számítási feladatok](site-recovery-workload.md#workload-summary)
 ## Replikálás automatizálása
-### [Hyper-V virtuális gépek (VMM-mel)](site-recovery-deploy-with-powershell.md)
-### [Hyper-V virtuális gépek (VMM nélkül)](site-recovery-deploy-with-powershell-resource-manager.md)
-### [Automatizálás hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
-### [A mobilitási szolgáltatás üzembe helyezésének automatizálása](site-recovery-automate-mobility-service-install.md)
-## Kezelés
-### [Kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md)
-### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
+### [Hyper-V-replikáció automatizálása az Azure-ba (VMM nélkül)](site-recovery-deploy-with-powershell-resource-manager.md)
+### [Hyper-V-replikáció automatizálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+### [Hyper-V-replikáció automatizálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
+## Feladatátvétel és feladat-visszavétel
 ### [Feladatátvétel a Site Recoveryben](site-recovery-failover.md)
+### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
+#### [Azure Runbookok hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
+### [A VMware-ből az Azure-ba irányuló feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md)
+### [Két VMM-hely közötti feladatátvételi teszt futtatása](site-recovery-test-failover-vmm-to-vmm.md)
 ### [Feladat-visszavétel VMware virtuális gépek és fizikai kiszolgálók esetében](site-recovery-failback-azure-to-vmware.md)
 ## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
@@ -65,6 +69,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

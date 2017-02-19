@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg a Azure Storage – felhőbeli blob-, tábla-, üzenetsor-, fájl- és virtuálisgéplemez-tárolók használatát. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
+services: storage
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
+ms.sourcegitcommit: f7bd1007aeff86faf7a1d744602e5184f0ce1d6f
+ms.openlocfilehash: cdb001f960ea5d505bc757195abf14b505f77103
 
 ---
 
@@ -133,6 +144,7 @@ Ismerje meg a tartós, elérhető és méretezhető Azure Storage felhőalapú t
                         <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blobok, üzenetsorok, táblák és fájlok</a></p>
                         <p><a href="/rest/api/storagerp">Erőforrás-szolgáltató</a></p>
                         <p><a href="/rest/api/storageimportexport">Importálás és exportálás</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Storage-adatok REST API-ja</a></p>
                    </div>
                 </div>
             </div>
@@ -144,6 +156,6 @@ Ismerje meg a tartós, elérhető és méretezhető Azure Storage felhőalapú t
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

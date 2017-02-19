@@ -43,6 +43,14 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
+## Lemezes tárolás 
+### [Virtuális gép létrehozása a Resource Manager és a PowerShell használatával](../virtual-machines/virtual-machines-windows-ps-create.md)
+### [Linux virtuális gép létrehozása az Azure CLI 2.0 (előzetes) verziójával](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [Felügyelt lemez csatolása Windows rendszerű virtuális géphez PowerShell használatával](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+### [Felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../virtual-machines/virtual-machines-linux-add-disk.md)
+### [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
+### [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+
 # Útmutató
 ## [Tárfiók létrehozása](storage-create-storage-account.md)
 ## Blobok használata
@@ -62,13 +70,21 @@
 ### [Áttekintés](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [Azure-fájlok hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-## Virtuális gépek lemezeinek használata
+## Lemezek használata
+### [Lemezek és virtuális merevlemezek Windows rendszerű virtuális gépekhez](storage-about-disks-and-vhds-windows.md)
+### [Lemezek és virtuális merevlemezek Linux rendszerű virtuális gépekhez](storage-about-disks-and-vhds-linux.md)
+### [Azure Managed Disks – áttekintés](storage-managed-disks-overview.md)
+### [Azure-beli virtuális gépek áttelepítése az Azure Managed Disksbe](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
+### [Áttelepítés AWS-ről és egyéb platformokról a Managed Disksbe](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről](storage-faq-for-disks.md)
 ### Prémium szintű Storage
-#### [Nagy teljesítményű Storage szolgáltatás virtuális gépek számítási feladataihoz](storage-premium-storage.md)
-#### [Áttelepítés a Premium Storage-ba](storage-migration-to-premium-storage.md)
+#### [Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez](storage-premium-storage.md)
 #### [Nagy teljesítményű rendszer tervezése](storage-premium-storage-performance.md)
 ### Standard szintű Storage
-#### [Virtuálisgép-lemezek biztonsági mentése növekményes pillanatképekkel](storage-incremental-snapshots.md)
+#### [Költséghatékony Standard Storage, valamint nem felügyelt és felügyelt virtuálisgép-lemezek](storage-standard-storage.md)
+### Nem felügyelt lemezek használata
+#### [Áttelepítés a Premium Storage-ba](storage-migration-to-premium-storage.md)
+#### [Nem felügyelt virtuálisgép-lemezek biztonsági mentése növekményes pillanatképekkel](storage-incremental-snapshots.md)
 ## Tervezés és kialakítás
 ### [Replikáció](storage-redundancy.md)
 ### [Méretezhetőségi és teljesítménycélok](storage-scalability-targets.md)
@@ -205,6 +221,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

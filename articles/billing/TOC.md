@@ -1,9 +1,10 @@
-# [Első lépések](billing-getting-started.md)
+# Bevezetés
+## [Váratlan költségek megelőzése](billing-getting-started.md)
 ## [Regisztrálás Office 365-fiókkal](billing-use-existing-office-365-account-azure-subscription.md)
-## [Korlátozások és kvóták](../azure-subscription-service-limits.md)
+## [Korlátozások és kvóták](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 # Útmutató
 ## Használat és költségek figyelése
-### [Számlák és használati adatok letöltése](billing-download-azure-invoice-daily-usage-date.md)
+### [Számla és használat beszerzése](billing-download-azure-invoice-daily-usage-date.md)
 ### [Számlázással kapcsolatos tudnivalók](billing-understand-your-bill.md)
 ### [Külső szolgáltatási díjakkal kapcsolatos tudnivalók](billing-understand-your-azure-marketplace-charges.md)
 ### [Elszámolási értesítések beállítása](billing-set-up-alerts.md)
@@ -32,6 +33,7 @@
 
 # Erőforrások
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../azure-supportability/how-to-create-azure-support-request.md)
+
 
 <!--HONumber=Feb17_HO2-->
 

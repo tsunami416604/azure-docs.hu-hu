@@ -90,7 +90,7 @@
 ### [Integrálás az Azure Search szolgáltatással](../search/search-howto-index-documentdb.md)
 ### [Adatok betöltése az Azure Data Factoryvel](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [Valós idejű adatok elemzése az Azure Stream Analyticsszel](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
-### [Értesítések fogadása a Logic Apps használatával](documentdb-change-notification.md)
+### [Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával](documentdb-change-feed-hl7-fhir-logic-apps.md)
 ### [Érzékelőktől kapott adatok valós idejű feldolgozása](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [Adatok megjelenítése Power BI használatával](documentdb-powerbi-visualize.md)
 ### [Az ODBC-illesztő felhasználása az adatmegjelenítéshez](documentdb-nosql-odbc-driver.md)

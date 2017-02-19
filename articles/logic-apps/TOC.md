@@ -23,6 +23,7 @@
 ### [Logikai alkalmazások használata hívható végpontként](logic-apps-http-endpoint.md)
 ### [Hurkok, hatókörök és kibontás](logic-apps-loops-and-scopes.md)
 ### [Egyéni API használata](logic-apps-custom-hosted-api.md)
+### [Switch utasítás használata](logic-apps-switch-case.md)
 ### [Kivételkezelés](logic-apps-exception-handling.md)
 ### [Kivételkezelési forgatókönyv](logic-apps-scenario-error-and-exception-handling.md)
 ### [Tartalomtípusok kezelése](logic-apps-content-type.md)
@@ -91,6 +92,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

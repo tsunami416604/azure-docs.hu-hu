@@ -50,10 +50,10 @@
 
 # Erőforrások
 ## [PowerShell-minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI 2.0 (előzetes verzió) mintái](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [Azure CLI 1.0-minták](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,6 @@
 # Áttekintés
-## [Mi az Azure Container Service?](container-service-intro.md)
+## [Mi az az Azure Container Service?](container-service-intro.md)
+## [Gyakori kérdések](container-service-faq.md)
 # Első lépések
 ## [ACS-fürt üzembe helyezése](container-service-deployment.md)
 ## [Üzembe helyezés az ACS-en az Azure CLI 2.0 előzetes verziójával](container-service-create-acs-cluster-cli.md)
@@ -43,6 +44,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

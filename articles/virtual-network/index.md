@@ -1,10 +1,20 @@
 ---
-layout: LandingPage
-+toc_rel: breadcrumb.json
+title: "Az Azure Virtual Network dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerkedjen meg a felhőben működő virtuális hálózatok használatával. A dokumentáció bemutatja, hogyan helyezhet üzembe VNeteket, hogyan indíthat a használatukkal erőforrásokat, és hogyan integrálhatja azokat a helyszíni hálózattal."
+services: virtual-network
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: virtual-network
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 2c3ce9081d456dcedd61ba85f2d023526aa5fa49
+ms.sourcegitcommit: c69489141c704965b2406210b3e2c20842c34a6c
+ms.openlocfilehash: 2b130d8b29270e08d432af9a117592c8ce7bac57
 
 ---
 # <a name="virtual-network-documentation"></a>Virtual Network dokumentációja
@@ -153,6 +163,6 @@ Ismerkedjen meg a Virtual Network (VNet) használatával, amely saját hálózat
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

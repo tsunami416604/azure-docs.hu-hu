@@ -1,3 +1,4 @@
+
 # Áttekintés
 ## [Mi az az Azure Backup?](backup-introduction-to-azure-backup.md)
 # Bevezetés
@@ -13,7 +14,7 @@
 ### [DPM a klasszikus Azure Portalon](backup-dpm-automation-classic.md)
 ### [Windows Server az Azure Portalon](backup-client-automation.md)
 ### [Windows Server a klasszikus portálon](backup-client-automation-classic.md)
-## Alkalmazás számítási feladatainak biztonsági mentése
+## Alkalmazás számítási feladatainak biztonsági mentése és visszaállítása
 ### [A DPM számítási feladatainak előkészítése az Azure Portalon](backup-azure-dpm-introduction.md)
 ### [A DPM számítási feladatainak előkészítése a klasszikus portálon](backup-azure-dpm-introduction-classic.md)
 ### [Azure Backup Server számítási feladatainak előkészítése az Azure Portalon](backup-azure-microsoft-azure-backup.md)
@@ -22,8 +23,7 @@
 ### [A Backup-tárolóban lévő adatok helyreállítása egy másik DPM-kiszolgálóra](backup-azure-alternate-dpm-server.md)
 ### [A DPM használata az SQL Server számítási feladatainak biztonsági mentéséhez](backup-azure-backup-sql.md)
 ### [A DPM használata SharePoint-farmok biztonsági mentéséhez](backup-azure-backup-sharepoint.md)
-### [Recovery Services-tároló – gyakori kérdések](backup-azure-backup-ibiza-faq.md)
-## Azure-beli virtuális gépek biztonsági mentése
+## Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 ### [Az Azure-beli virtuális gépek előkészítése](backup-azure-vms-prepare.md)
 ### [A Resource Managerrel üzembe helyezett virtuális gépek előkészítése](backup-azure-arm-vms-prepare.md)
 ### [Virtuális gépek biztonsági mentési infrastruktúrájának tervezése](backup-azure-vms-introduction.md)
@@ -33,9 +33,17 @@
 ### [Azure-beli virtuális gépek biztonsági másolatainak kezelése és figyelése a klasszikus portálon](backup-azure-manage-vms-classic.md)
 ### [Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon](backup-azure-manage-vms.md)
 ### [Azure-beli virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése az Azure Portalon](backup-azure-monitor-vms.md)
+### [Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból](backup-azure-restore-files-from-vm.md)
 ### [Virtuális gépek visszaállítása az Azure-ban](backup-azure-restore-vms.md)
 ### [A Resource Managerrel üzembe helyezett virtuális gépek visszaállítása az Azure Portalon](backup-azure-arm-restore-vms.md)
-## Windowsos gépek biztonsági mentése
+### [A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md)
+## Azure SQL Database biztonsági mentése és visszaállítása
+### [A biztonsági mentések hosszú távú megőrzésének konfigurációja](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [Biztonsági mentések megtekintése a Recovery Services-tárolóban](../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [Visszaállítás a biztonsági másolat hosszú távú megőrzéséből](../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [Az Azure SQL hosszú távú biztonsági másolatainak törlése](../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json)
+
+## Windows rendszerű gépek biztonsági mentése és visszaállítása
 ### [Klasszikus üzemi modellt használó Windows Server](backup-configure-vault-classic.md)
 ### [A Resource Manager-alapú üzemi modellt használó Windows Server](backup-configure-vault.md)
 ### [Backup-tárolók kezelése a klasszikus üzemi modellel](backup-azure-manage-windows-server-classic.md)
@@ -43,6 +51,8 @@
 ### [Fájlok helyreállítása a Windows-kiszolgálóra a Resource Manager-alapú üzemi modell használatával](backup-azure-restore-windows-server.md)
 ### [Fájlok helyreállítása a Windows-kiszolgálóra a klasszikus üzemi modell használatával](backup-azure-restore-windows-server-classic.md)
 
+## [Szerepköralapú hozzáférés-vezérlés használata a biztonsági mentés felügyeletéhez](backup-rbac-rs-vault.md)
+## [Biztonsági szolgáltatások engedélyezése hibrid biztonsági mentésekhez](backup-azure-security-feature.md)
 ## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
 ## [Offline biztonsági mentés konfigurálása](backup-azure-backup-import-export.md)
 ## [Az Azure Backup használata a szalagos infrastruktúra lecseréléséhez](backup-azure-backup-cloud-as-tape.md)
@@ -58,11 +68,11 @@
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup) 
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
