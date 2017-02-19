@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 8790bacecac0fa824189b5c212c2d803092ff4ed
 
 
 ---
@@ -32,19 +32,19 @@ ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
 
 Ez az oktatóanyag az SQL-adatraktárhoz Power BI-on keresztül történő kapcsolódást
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][SQL Data Warehouse létrehozása] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adattárházzal, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][mintaadatok manuális betöltése].
+* Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW adatbázisával. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][load sample data manually].
 
 ## <a name="1-connect-to-your-database"></a>1. Csatlakozás az adatbázishoz
 A Power BI megnyitása és csatlakozás az AdventureWorksDW adatbázishoz:
 
-1. Jelentkezzen be az [Azure Portalra][Azure Portal].
+1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. Kattintson az **SQL adatbázisok** elemre, és válassza ki az AdventureWorks nevű SQL Data Warehouse-adatbázist.
    
     ![Adatbázis keresése][1]
@@ -89,7 +89,7 @@ Most már készen áll az AdventureWorksDW-mintaadatok elemzésére a Power BI h
 A folyamatot bármikor mentheti a **Fájl** gombra kattintva, majd a **Mentés** lehetőséget választva.
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fejlesztés][fejlesztés], a [betöltés][betöltés] és az [áttelepítés][áttelepítés] folyamatával, vagy körülnézhet a [Power BI webhelyén][a Power BI webhelye].
+Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fejlesztés][develop], a [betöltés][load] és az [áttelepítés][migrate] folyamatával, vagy körülnézhet a [Power BI webhelyén][Power BI website].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -106,19 +106,19 @@ Most, hogy ízelítőt kapott a mintaadatok kezeléséből, megismerkedhet a [fe
 [12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[áttelepítés]: sql-data-warehouse-overview-migrate.md
-[fejlesztés]: sql-data-warehouse-overview-develop.md
-[betöltés]: sql-data-warehouse-overview-load.md
-[mintaadatok manuális betöltése]: sql-data-warehouse-load-sample-databases.md
-[kapcsolódás SQL Data Warehouse-hoz]: sql-data-warehouse-integrate-power-bi.md
-[SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
+[migrate]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
+[load]: sql-data-warehouse-overview-load.md
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
-[Azure Portal]: https://portal.azure.com/
-[a Power BI webhelye]: http://www.powerbi.com/
+[Azure portal]: https://portal.azure.com/
+[Power BI website]: http://www.powerbi.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

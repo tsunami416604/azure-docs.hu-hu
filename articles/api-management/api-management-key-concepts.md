@@ -1,5 +1,5 @@
 ---
-title: Az API Management alapfogalmai
+title: "Az Azure API Management áttekintése és főbb fogalmai | Microsoft Docs"
 description: "Ismerje meg az API-kat, a termékeket, a szerepköröket, a csoportokat és az API Management többi alapfogalmát."
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: b0ead7ecbf9327e9df6846d6e046ed69f25832cf
-ms.openlocfilehash: 872fbd44a9bccf0d6e9f7f3f3bd839e384874ae5
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 47358c6c209488d7a12e8afbf7a2d9b3f872f0de
 
 ---
 # <a name="what-is-api-management"></a>Mi az API Management?
@@ -25,7 +24,7 @@ Az API Management segít a szervezeteknek közzétenni az API-kat külső, partn
 
 Az alábbi videó segítségével áttekintheti az Azure API Management szolgáltatást, és megtudhatja, hogyan adhat hozzá funkciókat az API-jához az API Management használatával, például hozzáférés-vezérlést, sebességkorlátozást, figyelést, eseménynaplózást és a válaszok gyorsítótárazását, minimális befektetett munkával.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-API-Management-Overview/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-API-Management-Overview/player]
 > 
 > 
 
@@ -132,6 +131,6 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

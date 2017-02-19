@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: f01a5e7ec081b1c989fc8784c845d6e639b1d73b
-ms.openlocfilehash: 92c5e8c50b281fe1dc7e296dcdf8a6822b187ce3
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 249f2dcd852c771d0c48aa223a4596992e5ce3d7
 
 
 ---
@@ -59,7 +59,7 @@ Amellett, hogy az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2
 
 * **Ikereszközök**. Az [ikereszközök][lnk-twins] használatával tárolhatja, szinkronizálhatja és lekérdezheti az eszközök metaadatait és állapotinformációit. Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT Hub a rácsatlakoztatott minden egyes eszközhöz fenntart egy ikereszközt. 
 * **Eszközönkénti hitelesítés és biztonságos kapcsolat**. Mindegyik eszközhöz saját [biztonsági kulcsot][lnk-devguide-security] építhet ki az IoT Hub-kapcsolat biztosításához. Az [IoT Hub-identitásjegyzék][lnk-devguide-identityregistry] egy megoldásban tárolja az eszközidentitásokat és a kulcsokat. A megoldáshátterek engedélyezési vagy letiltási listákhoz adhatják az egyes eszközöket, ami biztosítja az eszközhozzáférés teljes vezérlését.
-* **Megadja az Azure-szolgáltatások felé irányuló eszköz–felhő üzenetek útválasztását a deklaratív szabályok alapján**. Az IoT Hub lehetővé teszi az üzenetek útvonalának üzenetszabályokkal történő definiálását, amelyekkel meghatározható, hogy a Hub hová küldi az eszköz–felhő üzeneteket. Az üzenetszabályok nem igénylik bármilyen kód megírását, és helyettesíthetik a feldolgozás utáni egyéni üzenetkezelőket.
+* **Megadja az Azure-szolgáltatások felé irányuló eszköz–felhő üzenetek útválasztását a deklaratív szabályok alapján**. Az IoT Hub lehetővé teszi az üzenetek útvonalának szabályokkal történő definiálását, amelyekkel meghatározható, hogy a Hub hová küldi az eszköz–felhő üzeneteket. A szabályok nem igénylik bármilyen kód megírását, és helyettesíthetik a feldolgozás utáni egyéni üzenetkezelőket.
 * **Eszközkapcsolatok műveleteinek megfigyelése**. Részletes műveleti naplókat fogadhat az eszközidentitás-kezelési műveletekről és az eszközök kapcsolati eseményeiről. Ezzel a megfigyelési képességgel az IoT-megoldás azonosíthatja a kapcsolati hibákat, például a helytelen hitelesítő adatokkal kapcsolódni próbáló, túl gyakran üzenő vagy a felhőből az eszközre irányuló összes üzenetet elutasító eszközöket.
 * **Széles körű eszközkönyvtár-készlet**. Az [Azure IoT eszközoldali SDK-k][lnk-device-sdks] többféle nyelven és platformon elérhetők és támogatottak, például C nyelven sok Linux-disztribúcióhoz, Windowshoz és valós idejű operációs rendszerekhez. Az Azure IoT eszközoldali SDK-k a felügyelt nyelveket is támogatják, például a C#, Java és JavaScript nyelveket.
 * **IoT-protokollok és bővíthetőség**. Ha a megoldása nem tudja használni az eszközkódtárakat, az IoT Hub olyan nyilvános protokollt tesz közzé, amellyel az eszközök natív módon használhatják az MQTT v3.1.1, HTTP 1.1 vagy AMQP 1.0 protokollokat. A következőképpen ki is bővítheti az IoT Hubot, hogy támogassa az egyéni protokollokat:
@@ -91,7 +91,7 @@ A mobilágazat nagy mennyiségben használta a szolgáltatással támogatott kom
 Az IoT Hub használata az ExpressRoute nyilvános társhálózati útvonalain is támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
-További információk arról, hogyan küldhetők üzenetek egy eszközről és fogadhatók az IoT Hub felől, valamint hogyan konfigurálhatók az IoT Hub üzenetútvonalai: [Üzenetek küldése és fogadása az IoT Hub használatával][lnk-send-messages].
+További információk arról, hogyan küldhetők üzenetek egy eszközről és fogadhatók az IoT Hub felől, valamint hogyan konfigurálhatók az üzenetútvonalak: [Üzenetek küldése és fogadása az IoT Hub használatával][lnk-send-messages].
 
 További információk arról, hogyan felügyelheti, konfigurálhatja és frissítheti az eszközeit távolról, az IoT Hub által biztosított szabványalapú eszközfelügyelet segítségével: [Az IoT Hub eszközkezelésének áttekintése][lnk-device-management].
 
@@ -127,6 +127,6 @@ Bevezetés a kódírásba és a példák futtatásába: [Bevezetés az IoT Hub h
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

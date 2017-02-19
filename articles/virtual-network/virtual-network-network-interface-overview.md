@@ -1,10 +1,10 @@
 ---
-title: "Hálózati adapterek | Microsoft Docs"
-description: "Az Azure hálózati adapterek ismertetése az Azure Resource Manager eszközben."
+title: "Hálózati adapterek az Azure-ban | Microsoft Docs"
+description: "Az Azure hálózati adaptereinek ismertetése az Azure Resource Manager-alapú üzemi modellben."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f58b503f-18bf-4377-aa63-22fc8a96e4be
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 6e96471c4f61e1ebe15c23f87ac646001d8e30ee
-ms.openlocfilehash: 586877781f4b74c49936a8129db49a67018bab65
+ms.sourcegitcommit: 3244d5b52785d820698bf26f9bf189de93ef64e4
+ms.openlocfilehash: 691b79d7739246dad7191195fa049fd58340c8ff
 
 
 ---
-# <a name="network-interfaces"></a>Hálózati illesztők
+# <a name="network-interfaces-in-azure"></a>Hálózati adapterek az Azure-ban
 A hálózati adapter (NIC) a virtuális gép (VM) és a mögöttes szoftverhálózat közötti kapcsolat. Ez a cikk ismerteti a hálózati adaptereket és azok használatát az Azure Resource Manager-alapú üzemi modellben.
 
 A Microsoft a Resource Manager-alapú üzemi modellt javasolja az új erőforrások üzembe helyezéséhez, de a hálózati kapcsolattal rendelkező virtuális gépek üzembe helyezését a [klasszikus](virtual-network-ip-addresses-overview-classic.md) üzemi modellel is elvégezheti. Ha a klasszikus modellt ismeri, akkor fontos különbségeket fedezhet fel a virtuális gépek hálózati használatával kapcsolatban a Resource Manager-alapú üzemi modell esetében. További részletek a különbségekkel kapcsolatban: [Virtuális gépek hálózati használata – Klasszikus](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
@@ -30,7 +30,7 @@ A hálózati adapter az Azure-ban:
 
 1. Létrehozható, törölhető és saját konfigurálható beállításokkal rendelkező erőforrás.
 2. Létrehozásakor csatlakoztatni kell egy Azure virtuális hálózat (VNet) egyik alhálózatához. Ha még nem ismeri a virtuális hálózatokat, a [Virtuális hálózatok áttekintése](virtual-networks-overview.md) című cikkben további információkat olvashat. A hálózati adaptert csatlakoztatni kell egy virtuális hálózathoz, amely a hálózati adapterrel megegyező Azure [helyen](https://azure.microsoft.com/regions) és [előfizetésen](../azure-glossary-cloud-terminology.md#subscription) belül szerepel. A hálózati adapter létrehozása után módosíthatja, hogy az melyik alhálózathoz csatlakozzon, a meglévő virtuális hálózathoz való csatlakozás módosítása azonban nem lehetséges.
-3. Hozzárendelt névvel rendelkezik, amely a hálózati adapter létrehozását követően nem módosítható. A névnek egyedinek kell lennie az adott Azure [erőforráscsoporton](../azure-resource-manager/resource-group-overview.md#resource-groups) belül, de nem kell egyedinek lennie az előfizetésben, a Azure-helyen, ahol létrehozták, illetve a virtuális hálózaton belül, amelyhez csatlakozik. Egy Azure-előfizetésen belül általában számos hálózati adaptert hoznak létre. Ezért ajánlott valamilyen elnevezési konvenció használata, amely lényegesen megkönnyíti több hálózati adapter egyidejű kezelését az alapértelmezett nevek használatához képest. Az [Ajánlott elnevezési konvenciók Azure-erőforrásokhoz](../guidance/guidance-naming-conventions.md) című cikkben javaslatokat találhat.
+3. Hozzárendelt névvel rendelkezik, amely a hálózati adapter létrehozását követően nem módosítható. A névnek egyedinek kell lennie az adott Azure-[erőforráscsoporton](../azure-resource-manager/resource-group-overview.md#resource-groups) belül, de nem kell egyedinek lennie az előfizetésben, az Azure-helyen, ahol létrehozták, illetve a virtuális hálózaton belül, amelyhez csatlakozik. Egy Azure-előfizetésen belül általában számos hálózati adaptert hoznak létre. Ezért ajánlott valamilyen elnevezési konvenció használata, amely lényegesen megkönnyíti több hálózati adapter egyidejű kezelését az alapértelmezett nevek használatához képest. Az [Ajánlott elnevezési konvenciók Azure-erőforrásokhoz](../guidance/guidance-naming-conventions.md) című cikkben javaslatokat találhat.
 4. Csatlakoztatható egy virtuális géphez, de csak egyetlen, az adapterrel megegyező helyen lévő virtuális géphez.
 5. MAC-címmel rendelkezik, amely mindaddig a hálózati adapterhez tartozik, amíg az a virtuális géphez csatlakozik. A MAC-cím akkor is megmarad, ha a virtuális gépet újraindítja (az operációs rendszerből), vagy ha leállítja (megszünteti a hozzárendelést), majd megint elindítja az Azure Portal, az Azure PowerShell vagy az Azure parancssori felület segítségével. Ha a hálózati adaptert leválasztja egy virtuális gépről és csatlakoztatja egy másikhoz, akkor másik MAC-címet kap. Ha törli a hálózati adaptert, a rendszer más hálózati adapterekhez rendeli a MAC-címet.
 6. Legalább egy elsődleges **magánhálózati** *Ipv4* statikus vagy dinamikus IP-címet hozzá kell rendelni.
@@ -56,6 +56,6 @@ Egy virtuális géphez több hálózati adapter is csatlakoztatható, viszont il
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 
