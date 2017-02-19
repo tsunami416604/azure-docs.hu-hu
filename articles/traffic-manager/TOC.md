@@ -16,9 +16,10 @@
 # Útmutató
 ## [Útválasztási módszer konfigurálása](traffic-manager-configure-routing-method.md)
 ## [Beállítások ellenőrzése](traffic-manager-testing-settings.md)
-## [Csökkentett teljesítményű végpont hibaelhárítása](traffic-manager-troubleshooting-degraded.md)
 ## [Többféle terheléselosztási szolgáltatás használata](traffic-manager-load-balancing-azure.md)
 ## [Hálózati erőforrások használata](../virtual-network/resource-groups-networking.md?toc=%2fazure%2ftraffic-manager%2ftoc.json)
+## Hibaelhárítás
+### [Csökkentett teljesítményű végpont hibaelhárítása](traffic-manager-troubleshooting-degraded.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.3.0/azurerm.trafficmanager)
@@ -45,6 +46,6 @@
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 
