@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
-ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
+ms.sourcegitcommit: 919f67a422faad2ba4c19e1f11f8e873098e8bd1
+ms.openlocfilehash: 9c27cfb674a7743c7cfe47b35b263da48c9c564e
 
 
 ---
@@ -55,7 +55,7 @@ A Visual Studióban láthatja a naplózott események számát.
 
 ## <a name="3-see-your-telemetry"></a>3. A telemetria megtekintése...
 ### <a name="-in-visual-studio"></a>... a Visual Studióban
-Nyissa meg az Application Insights ablakot a Visual Studióban: Kattintson az Application Insights gombra, vagy kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) felületén:
+Nyissa meg az Application Insights ablakot a Visual Studióban: Kattintson az Application Insights gombra, vagy kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) felületén, válassza a(z) `Application Insights` lehetőséget, majd kattinson a(z) `Search Live Telemetry` gombra:
 
 ![A Visual Studióban megjelenik az Application Insights gomb a hibakeresés alatt.](./media/app-insights-asp-net/55.png)
 
@@ -84,7 +84,7 @@ Az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
 ### <a name="more-detail-in-the-portal"></a>További részletek a portálon
 
-* Az [**Élő metrikastream** ](app-insights-metrics-explorer.md#live-metrics-stream) szinte azonnal megjeleníti a telemetriát.
+* Az [**Élő metrikastream** ](app-insights-live-stream.md) szinte azonnal megjeleníti a telemetriát.
 
     ![Az Áttekintés panelen kattintson az élő streamre.](./media/app-insights-asp-net/livestream.png)
 
@@ -134,17 +134,25 @@ Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/App
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
 
 ## <a name="add-more-telemetry"></a>További telemetriai funkciók hozzáadása
-### <a name="web-pages-and-single-page-apps"></a>Weboldalak és egylapos alkalmazások
-1. [Adja hozzá a JavaScript-kódrészletet](app-insights-javascript.md) weboldalaihoz, és a Böngésző és a Felhasználás panelen megjelennek az oldalmegtekintésekkel, betöltési időkkel, böngészőbeli kivételekkel, az AJAX-hívások teljesítményével, valamint a felhasználók és munkamenetek számával kapcsolatos adatok.
-2. [Kódoljon egyéni eseményeket](app-insights-api-custom-events-metrics.md) a felhasználói műveletek számlálásához, időzítéséhez és méréséhez.
-
 ### <a name="dependencies-exceptions-and-performance-counters"></a>Függőségek, kivételek és teljesítményszámlálók
-[Telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md) az összes kiszolgálón, hogy további telemetriai adatokat gyűjtsön alkalmazásáról. Az alábbiakhoz jut hozzá:
+
+[Telepítse az Állapotfigyelőt](http://go.microsoft.com/fwlink/?LinkId=506648) az összes IIS-kiszolgálón, hogy további telemetriai adatokat gyűjthessen webalkalmazásáról.
+
+Ha már telepítve van, semmit sem kell tennie. 
+
+Előfordulhat, hogy már használta az állapotfigyelőt egy alkalmazás futásidőben történő megfigyeléséhez. 
+
+Azzal, hogy a felépítés során alkalmazott SDK mellett állapotfigyelőt is használ, jóval összetettebb telemetriai adatokat gyűjthet, amelyek a következőket tartalmazzák:
 
 * [Teljesítményszámlálók](app-insights-performance-counters.md)  - 
    az alkalmazással kapcsolatos CPU-, memória-, lemez- és más teljesítményszámlálók. 
 * [Kivételek](app-insights-asp-net-exceptions.md) – részletesebb telemetria bizonyos kivételekről.
-* [Függőségek](app-insights-asp-net-dependencies.md) – REST API- vagy SQL-szolgáltatáshívások. Megállapíthatja, hogy a külső összetevők lassú válaszai teljesítményproblémákat okoznak-e alkalmazásában. (Ha az alkalmazás a .NET 4.6-os verzióját használja, ezekhez a telemetriai adatokhoz az Állapotfigyelő nélkül is hozzájuthat.)
+* [Függőségek](app-insights-asp-net-dependencies.md) – például a visszatérítési értékek.
+
+### <a name="web-pages-and-single-page-apps"></a>Weboldalak és egylapos alkalmazások
+1. [Adja hozzá a JavaScript-kódrészletet](app-insights-javascript.md) weboldalaihoz, és a Böngésző és a Felhasználás panelen megjelennek az oldalmegtekintésekkel, betöltési időkkel, böngészőbeli kivételekkel, az AJAX-hívások teljesítményével, valamint a felhasználók és munkamenetek számával kapcsolatos adatok.
+2. [Kódoljon egyéni eseményeket](app-insights-api-custom-events-metrics.md) a felhasználói műveletek számlálásához, időzítéséhez és méréséhez.
+
 
 ### <a name="diagnostic-code"></a>Diagnosztikai kód
 Problémát tapasztalt? Ha a könnyebb diagnosztizálás érdekében kódot helyezne alkalmazásába, több lehetősége van:
@@ -191,11 +199,10 @@ Ha a Visual Studio Team Servicest használja, egy új verzió kibocsátásakor d
 | --- | --- |
 | **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>Hibakeresés telemetriával, diagnosztikai keresés, részletezés lefúrás a kódig. |
 | **[Az Application Insights-portál használata](app-insights-dashboards.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |
-| **[További adatok hozzáadása](app-insights-asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

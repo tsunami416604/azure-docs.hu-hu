@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
+ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
+ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
 
 
 ---
@@ -279,7 +279,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 `policyName`: A kiszolgálóra érkező jogkivonatok érvényesítésére használni kívánt szabályzat. Ez ugyanaz a szabályzat legyen, mint amelyet az ügyfélalkalmazásban használ a bejelentkezéshez.
 
 > [!NOTE]
-> A B2C előzetes verziójában az ügyfél és a kiszolgáló beállítása során is ugyanazokat a szabályzatokat használjuk. Ha már más oktatóanyagok keretében létrehozta ezeket a szabályzatokat, nem szükséges ismét létrehoznia őket. Mivel korábban már elvégezte az előírt lépéseket, nem szükséges új szabályzatokat létrehozni a webhelyen az ügyfelekre vonatkozó útmutatás részeként.
+> Egyelőre az ügyfél és a kiszolgáló beállítása során használja ugyanazokat a házirendeket. Ha már más oktatóanyagok keretében létrehozta ezeket a szabályzatokat, nem szükséges ismét létrehoznia őket. Mivel korábban már elvégezte az előírt lépéseket, nem szükséges új szabályzatokat létrehozni a webhelyen az ügyfelekre vonatkozó útmutatás részeként.
 >
 >
 
@@ -763,6 +763,6 @@ Most már továbbléphet az összetettebb témákra, például:
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

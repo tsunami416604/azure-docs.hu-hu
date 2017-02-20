@@ -1,5 +1,5 @@
 ---
-title: "Proxy- és tűzfalbeállítások konfigurálása a Log Analytics rendszereben | Microsoft Docs"
+title: "Proxy- és tűzfalbeállítások konfigurálása az Azure Log Analyticsben | Microsoft Docs"
 description: "A proxy- és tűzfalbeállítások konfigurálása abban az esetben, ha az OMS-szolgáltatásoknak megadott portokat kell használniuk."
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: d5d86a0f7177b9a1e96e50a3e3e7d1f5800974bf
-ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
+ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
+ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
 
 
 ---
 # <a name="configure-proxy-and-firewall-settings-in-log-analytics"></a>Proxy- és tűzfalbeállítások konfigurálása a Log Analytics rendszereben
-A proxy- és tűzfalbeállítások OMS-beli Log Analytics számára végzett konfigurálása eltér abban az esetben, ha az Operations Managert és ügynökeit használja, illetve abban az esetben amikor a kiszolgálókhoz közvetlenül kapcsolódó Microsoft Monitoring Agent terméket használja. Az alábbi részek közül tekintse át az Ön által használt ügynököknek megfelelőt.
+A proxy- és tűzfalbeállítások a Log Analytics számára végzett konfigurálása a használt ügynöktípusoktól függően eltérő. Az alábbi részek közül tekintse át az Ön által használt ügynököknek megfelelőt.
 
-## <a name="configure-proxy-and-firewall-settings-with-the-microsoft-monitoring-agent"></a>Proxy- és tűzfalbeállítások konfigurálása Microsoft Monitoring Agent használata esetén
+## <a name="settings-for-the-oms-gateway"></a>Az OMS-átjáró beállításai
+
+Ha az ügynökök nem rendelkeznek interneteléréssel, az adatokat beküldhetik az Ön saját hálózati erőforrásai használatával az OMS-átjáróra. Az átjáró begyűjti az adataikat, és elküldi azokat a nevükben az OMS szolgáltatásnak.
+
+Az OMS-átjáróval kommunikáló ügynökök konfigurálásakor az átjáró teljes tartománynevét és egyéni portszámát állítsa be.
+
+Az OMS-átjárónak interneteléréssel kell rendelkeznie. Az OMS-átjáróhoz használja ugyanazokat a proxyszolgáló- vagy tűzfalbeállításokat, amelyeket az ügynöktípusokhoz is használna. Az OMS-átjáróval kapcsolatos további információkért lásd a [számítógépek és eszközök az OMS-hez az OMS-átjáró használatával történő csatlakoztatását](log-analytics-oms-gateway.md) ismertető témakört.
+
+## <a name="configure-settings-with-the-microsoft-monitoring-agent"></a>Beállítások konfigurálása Microsoft Monitoring Agent használata esetén
 Ahhoz, hogy a Microsoft Monitoring Agent kapcsolódni és regisztrálni tudjon az OMS szolgáltatással, hozzáféréssel kell rendelkeznie az Ön tartományainak és URL-címeinek portszámához. Amennyiben az ügynök és az OMS szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokon. Ha tűzfal használatával korlátozza az internethez való hozzáférést, akkor a tűzfalat úgy kell beállítani, hogy engedélyezze a hozzáférést az OMS számára. Az alábbi táblázatok sorolják fel az OMS számára szükséges portokat.
 
 | **Ügynök erőforrása** | **Portok** | **HTTPS-ellenőrzés kihagyása** |
@@ -71,7 +79,7 @@ Másolja ki az alábbi mintát, frissítse az Ön környezetére jellemző adato
     $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetNetworkCredential().password)
 
 
-## <a name="configure-proxy-and-firewall-settings-with-operations-manager"></a>A proxy- és tűzfalbeállítások konfigurálása az Operations Manager használatával
+## <a name="configure-settings-with-operations-manager"></a>Beállítások konfigurálása az Operations Managerrel
 Ahhoz, hogy egy Operations Manager felügyeleti csoport csatlakozni és regisztrálni tudjon az OMS szolgáltatásban, a csoportnak hozzá kell férnie az Ön tartományainak és URL-címeinek portszámaihoz. Ha az Operations Manager felügyeleti kiszolgáló és az OMS szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, meg kell győződnie arról, hogy elérhetők-e a megfelelő erőforrások. Ha tűzfal használatával korlátozza az internethez való hozzáférést, akkor a tűzfalat úgy kell beállítani, hogy engedélyezze a hozzáférést az OMS számára. Ha az Operations Manager felügyeleti kiszolgáló nincs is proxykiszolgáló mögött, az ügynökök még ott lehetnek. Ebben az esetben a proxykiszolgálót az ügynökökkel azonos módon kell konfigurálni annak érdekében, hogy a biztonsági és naplókezelési szolgáltatás adatait a rendszer elküldhesse az OMS-webszolgáltatás számára.
 
 Ahhoz, hogy az Operations Manager-ügynökök kommunikálni tudjanak az OMS-szolgáltatással, az Operations Manager-infrastruktúrának (beleértve az ügynököket is) a megfelelő proxybeállításokkal és verzióval kell rendelkezniük. Az ügynökök proxybeállításai az Operations Manager konzolon vannak megadva. A használt verziónak a következők valamelyikének kell lennie:
@@ -180,6 +188,6 @@ Vagy a következő Windows PowerShell-parancsnak az Operations Manager felügyel
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

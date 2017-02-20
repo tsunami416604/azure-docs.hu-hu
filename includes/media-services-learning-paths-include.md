@@ -1,10 +1,9 @@
-Az AMS képzési terveket itt tekintheti meg:
+Az Azure Media Services képzési terveket itt tekintheti meg:
 
-* [AMS élő adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [AMS igény szerinti adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+* [Media Services élő közvetítési munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+* [Media Services igény szerinti közvetítési munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

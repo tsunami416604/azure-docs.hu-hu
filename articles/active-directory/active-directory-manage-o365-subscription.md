@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: f0d882509abde7f5dd3d380087e38557ed0163a6
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 2fda7dc07d01bcd0629d1fa80ec9262e80af4c5f
 
 
 ---
@@ -25,9 +25,9 @@ Ez a cikk ismerteti, hogyan kezelheti az Office 365-előfizetéshez létrehozott
 
 Az Azure-előfizetés elvégzése után bejelentkezhet a klasszikus Azure portálra, és elérheti az Azure-szolgáltatásokat. Kattintson az Active Directory-bővítményre az Office 365-felhasználókat hitelesítő címtár kezeléséhez.
 
-Ha már van Azure-előfizetése, a további címtárak kezelésének folyamata is egyszerű. Michael Smith például rendelkezhet egy Office 365-előfizetéssel a Contoso.com tartományhoz. Azure-előfizetése is lehet, amelyre az msmith@hotmail.com. Microsoft-fiókjával regisztrált. Ebben az esetben két címtárat kezel.
+Ha már van Azure-előfizetése, a további címtárak kezelésének folyamata is egyszerű. Michael Smith például rendelkezhet egy Office 365-előfizetéssel a Contoso.com tartományhoz. Azure-előfizetése is lehet, amelyre msmith@hotmail.com Microsoft-fiókjával regisztrált. Ebben az esetben két címtárat kezel.
 
-| Előfizetést | Office 365 | Azure |
+| Előfizetés | Office 365 | Azure |
 | --- | --- | --- |
 |   Megjelenített név |Contoso |Alapértelmezett Azure Active Directory (Azure AD) címtár |
 |   Tartománynév |contoso.com |msmithhotmail.onmicrosoft.com |
@@ -49,17 +49,17 @@ Ahhoz, hogy Michael Smith mindkét címtárat kezelhesse, mialatt az msmith@hotm
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) a következőként: msmith@hotmail.com.
 2. Kattintson az **Új** > **Alkalmazásszolgáltatások** > **Active Directory** > **Címtár** > **Egyéni létrehozása** lehetőségre.
 3. Kattintson a Meglévő címtár használata elemre, és jelölje be a **Készen állok a kijelentkezésre** jelölőnégyzetet.
-4. Jelentkezzen be a klasszikus Azure portálra a Contoso.onmicrosoft.com globális rendszergazdájaként (például az msmith@contoso.com fiókkal).
+4. Jelentkezzen be a klasszikus Azure portálra a Contoso.onmicrosoft.com globális rendszergazdájaként (például az msmith@contoso.com) fiókkal).
 5. A **Használhatom a Contoso címtárát az Azure-ral?** kérdésnél kattintson a **Folytatás** gombra.
 6. Kattintson az **Azonnali kijelentkezés** parancsra.
-7. Jelentkezzen be a klasszikus Azure portálra az msmith@hotmail.com. fiókkal. A Contoso-címtár és az alapértelmezett címtár megjelenik az Active Directory-bővítményben.
+7. Jelentkezzen be a klasszikus Azure portálra a következőként: msmith@hotmail.com. A Contoso címtár és az alapértelmezett címtár megjelenik az Active Directory-bővítményben.
 
 Ezen lépések elvégzése után az msmith@hotmail.com a Contoso címtár globális rendszergazdája lesz.
 
 ## <a name="to-administer-resources-as-the-global-admin"></a>Erőforrások felügyelete globális rendszergazdaként
-Most tegyük fel, hogy Jane Doe-nak az msmith@hotmail.com. fiók Azure-előfizetésével társított webhelyeket és adatbázis-erőforrásokat kell felügyelnie. Mielőtt ezt megtehetné, Michael Smith-nek el kell végeznie ezeket a további lépéseket:
+Most tegyük fel, hogy Jane Doe-nak az msmith@hotmail.com fiók Azure-előfizetésével társított webhelyeket és adatbázis-erőforrásokat kell felügyelnie. Mielőtt ezt megtehetné, Michael Smith-nek el kell végeznie ezeket a további lépéseket:
 
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) az Azure-előfizetés Szolgáltatás-rendszergazdai fiókjával (ebben a példában az msmith@hotmail.com). fiókkal)
+1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) az Azure-előfizetés Szolgáltatás-rendszergazdai fiókjával (ebben a példában az msmith@hotmail.com) fiókkal).
 2. Vigye át az előfizetést a Contoso címtárra: kattintson a **Beállítások** > **Előfizetések** elemre > válassza ki az előfizetést > **Címtár szerkesztése** > válassza a **Contoso (Contoso.com)** elemet. Az átvitel részeként eltávolít minden olyan munkahelyi vagy iskolai fiókot, amely az előfizetés társadminisztrátora.
 3. Adja hozzá Jane Doe-t az előfizetés társadminisztrátoraként: kattintson a **Beállítások** > **Rendszergazdák** elemre > válassza ki az előfizetést > **Hozzáadás** > írja be a **JohnDoe@Contoso.com** értéket.
 
@@ -68,6 +68,6 @@ Az előfizetések és a címtárak közötti kapcsolatról további információ
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

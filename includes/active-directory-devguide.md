@@ -1,9 +1,9 @@
-> Ez a cikk [Az Azure Active Directory fejlesztői útmutatója](../articles/active-directory/develop/active-directory-developers-guide.md) része.
-> 
-> 
+> [!NOTE]
+> Ez a cikk az [Azure Active Directory fejlesztői útmutató](../articles/active-directory/develop/active-directory-developers-guide.md) része.
+>
+>
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
+ms.openlocfilehash: 50a465f314909c10bc3c3f95be2d9dc377d433a7
 
 
 ---
@@ -39,15 +39,15 @@ További információk az Azure SQL Database-adatbázisokkal kapcsolatban: [SQL 
 
 ## <a name="what-features-are-supported"></a>Milyen funkciók támogatottak?
 
-Az alábbi táblák az Azure SQL Database és az SQL Server legfontosabb funkcióit, azok támogatási lehetőségeit, illetve a funkciók egyes platformokra vonatkozó bővebb információira mutató hivatkozásokat tartalmazzák. A Transact-SQL funkcióival kapcsolatban kövesse a táblázatban szereplő hivatkozást, amely a funkció kategóriájához tartozik. További háttérinformációkért az adott típusú funkciók támogatása hiányának okairól lásd még az [Azure SQL Database és a Transact-SQL nyelv eltéréseit](sql-database-transact-sql-information.md) ismertető cikket.
+Az alábbi táblázatok az Azure SQL Database és az SQL Server legfontosabb funkcióit, azok támogatási lehetőségeit, illetve a funkciók egyes platformokra vonatkozó bővebb információira mutató hivatkozásokat tartalmazzák. A Transact-SQL funkcióival kapcsolatban kövesse a táblázatban szereplő hivatkozást, amely a funkció kategóriájához tartozik. További háttérinformációkért az adott típusú funkciók támogatása hiányának okairól lásd még az [Azure SQL Database és a Transact-SQL nyelv eltéréseit](sql-database-transact-sql-information.md) ismertető cikket.
 
-A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
+A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
 
 * Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
 * Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
 
 > [!TIP]
-> Ha tesztelni szeretné, hogy egy meglévő adatbázis kompatibilis-e az Azure SQL Database szolgáltatással, tekintse meg a [Azure SQL Database kompatibilitásának ellenőrzése](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) részt.
+> Ha tesztelni szeretné, hogy egy meglévő adatbázis kompatibilis-e az Azure SQL Database-szel, tekintse meg az [SQL Server-adatbázis migrálása az Azure-ba](sql-database-cloud-migrate.md) című témakört.
 >
 
 | **Funkció** | **SQL Server** | **Azure SQL Database** | 
@@ -161,6 +161,6 @@ A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javaso
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
