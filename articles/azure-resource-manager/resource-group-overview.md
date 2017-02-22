@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/12/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: dabe7d9796ab24a257ea904bc5d978cb71d7e149
-ms.openlocfilehash: 1733edf961c2ce1297fc148d3a844ce141f5d7c2
+ms.sourcegitcommit: 1460a3e6b3d225a507e5da51dcc66810862ee2de
+ms.openlocfilehash: 4001c2d9bf2a635d7189ae46a855e347b93185c8
 
 
 ---
@@ -88,21 +88,29 @@ A portálon keresztül az összes erőforrás-szolgáltató látható. Az előfi
 
 A következő PowerShell-parancsmaggal az összes erőforrás-szolgáltatót lekérheti:
 
-    Get-AzureRmResourceProvider -ListAvailable
+```powershell
+Get-AzureRmResourceProvider -ListAvailable
+```
 
 Az Azure parancssori felületén a következő paranccsal kérheti le az összes erőforrás-szolgáltatót:
 
-    azure provider list
+```azurecli
+azure provider list
+```
 
 Áttekintheti a szükséges erőforrás-szolgáltatókat tartalmazó visszaadott listát.
 
 Egy erőforrás-szolgáltató részleteinek megtekintéséhez adja hozzá a szolgáltató névterét a parancshoz. A parancs visszaadja az erőforrás-szolgáltató támogatott erőforrástípusait, valamint az egyes erőforrástípusok támogatott helyeit és API-verzióit. A következő PowerShell-parancsmag a Microsoft.Compute részleteit kéri le:
 
-    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+```powershell
+(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+```
 
 Az Azure parancssori felületén is lekérheti a Microsoft.Compute támogatott erőforrástípusait, helyeit és API-verzióit a következő paranccsal:
 
-    azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+```azurecli
+azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+```
 
 További információ: [Resource Manager-szolgáltatók, -régiók, API-verziók és -sémák](resource-manager-supported-services.md).
 
@@ -113,35 +121,39 @@ A sablon formázásával és létrehozásával kapcsolatos információkért lá
 
 A Resource Manager épp úgy feldolgozza a sablont, mint bármilyen más kérelmet (lásd a [Konzisztens felügyeleti réteg](#consistent-management-layer) képét). Elemzi a sablont, és a szintaxisát átalakítja a megfelelő erőforrás-szolgáltatók számára szükséges REST API-műveletekké. Például amikor a Resource Manager megkap egy sablont, amely a következő erőforrás-definíciót tartalmazza:
 
-    "resources": [
-      {
-        "apiVersion": "2016-01-01",
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "mystorageaccount",
-        "location": "westus",
-        "sku": {
-          "name": "Standard_LRS"
-        },
-        "kind": "Storage",
-        "properties": {
-        }
-      }
-      ]
+```json
+"resources": [
+  {
+    "apiVersion": "2016-01-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "mystorageaccount",
+    "location": "westus",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {
+    }
+  }
+]
+```
 
 Átalakítja a definíciót a következő REST API-műveletté, amelyet a rendszer elküld a Microsoft.Storage erőforrás-szolgáltatónak:
 
-    PUT
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
-    REQUEST BODY
-    {
-      "location": "westus",
-      "properties": {
-      }
-      "sku": {
-        "name": "Standard_LRS"
-      },   
-      "kind": "Storage"
-    }
+```HTTP
+PUT
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+REQUEST BODY
+{
+  "location": "westus",
+  "properties": {
+  }
+  "sku": {
+    "name": "Standard_LRS"
+  },   
+  "kind": "Storage"
+}
+```
 
 A sablonok és erőforráscsoportok meghatározási módja teljes mértékben Öntől függ, illetve attól, hogyan szeretné kezelni a megoldást. Például egyetlen sablon segítségével üzembe helyezheti a háromszintű alkalmazását egyetlen erőforráscsoportra.
 
@@ -181,26 +193,32 @@ Az erőforrásoknak nem kell megegyező erőforráscsoportban lenniük, hogy azo
 
 A következő példa egy virtuális gép címkével való ellátását mutatja be.
 
-    "resources": [    
-      {
-        "type": "Microsoft.Compute/virtualMachines",
-        "apiVersion": "2015-06-15",
-        "name": "SimpleWindowsVM",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "costCenter": "Finance"
-        },
-        ...
-      }
-    ]
+```json
+"resources": [    
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2015-06-15",
+    "name": "SimpleWindowsVM",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "costCenter": "Finance"
+    },
+    ...
+  }
+]
+```
 
 A következő PowerShell-parancsmaggal lekérdezheti az összes olyan erőforrást, amely címkeértékkel rendelkezik:
 
-    Find-AzureRmResource -TagName costCenter -TagValue Finance
+```powershell
+Find-AzureRmResource -TagName costCenter -TagValue Finance
+```
 
 A következő Azure CLI-parancsot is használhatja:
 
-    azure resource list -t costCenter=Finance --json
+```azurecli
+azure resource list -t costCenter=Finance --json
+```
 
 A címkézett erőforrásokat az Azure Portalon is megtekintheti.
 
@@ -242,7 +260,7 @@ Egyes esetekben előfordulhat, hogy olyan kódot vagy szkriptet kíván futtatni
 Kifejezetten zárolhatja a kritikus erőforrásokat is, megakadályozva, hogy a felhasználók törölhessék vagy módosíthassák azokat. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](resource-group-lock-resources.md).
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
-A Resource Manager naplózza az erőforrásokat létrehozó, módosító és törlő műveleteket. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A naplók megtekintéséhez válassza a **Tevékenységnaplók** elemet az erőforráscsoport **Beállítások** paneljén. A naplókat számos érték alapján szűrheti, például aszerint, hogy melyik felhasználó kezdeményezte a műveletet. További információ a vizsgálati naplók használatáról: [Műveletek naplózása a Resource Managerrel](resource-group-audit.md).
+A Resource Manager naplózza az erőforrásokat létrehozó, módosító és törlő műveleteket. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A naplók megtekintéséhez válassza a **Tevékenységnaplók** elemet az erőforráscsoport **Beállítások** paneljén. A naplókat számos érték alapján szűrheti, például aszerint, hogy melyik felhasználó kezdeményezte a műveletet. További információ a vizsgálati naplók használatáról: [Vizsgálati naplók megtekintése az Azure erőforrások kezeléséhez](resource-group-audit.md).
 
 ## <a name="customized-policies"></a>Testreszabott házirendek
 A Resource Manager lehetővé teszi, hogy létrehozzon testreszabott házirendeket az erőforrások kezeléséhez. Az Ön által létrehozott házirendek különböző forgatókönyveket tartalmazhatnak. Kényszerítheti egy adott elnevezési konvenció használatát az erőforrásokon, korlátozhatja a telepíthető példányok és erőforrások típusát, illetve korlátozhatja azokat az adott típusú erőforrás tárolásához használható régiókat. A számlázás részlegek szerinti rendszerzéséhez megkövetelheti egy adott címkeérték meglétét az erőforrásokon. A házirendek segítségével csökkentheti a költségeket és biztosíthatja az egységességet az előfizetésében. 
@@ -251,17 +269,19 @@ A házirendeket a JSON használatával határozhatja meg, majd alkalmazhatja ők
 
 A következő példa egy olyan házirendet mutat be, amely annak meghatározásával biztosítja a címkék egységességét, hogy minden erőforrásnak tartalmaznia kell egy costCenter címkét.
 
-    {
-      "if": {
-        "not" : {
-          "field" : "tags",
-          "containsKey" : "costCenter"
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
+```json
+{
+  "if": {
+    "not" : {
+      "field" : "tags",
+      "containsKey" : "costCenter"
     }
+  },
+  "then" : {
+    "effect" : "deny"
+  }
+}
+```
 
 Rengeteg típusú házirendet hozhat létre. További információ: [Erőforrások kezelése és hozzáférés szabályozása házirendekkel](resource-manager-policy.md).
 
@@ -326,6 +346,6 @@ Ismertető videó az áttekintésről:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

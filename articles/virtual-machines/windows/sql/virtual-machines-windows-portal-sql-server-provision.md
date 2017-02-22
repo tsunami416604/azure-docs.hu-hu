@@ -12,12 +12,12 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: iaas-sql-server
-ms.date: 09/21/2016
+ms.workload: infrastructure-services
+ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 171566e8b1eccfafc78bd8b422189c977421592d
+ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
+ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
 
 
 ---
@@ -46,14 +46,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
    > Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
    > 
    > 
-2. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** panelt. Az SQL Server virtuálisgép-erőforrások a Piactér **Virtuális gépek** csoportjában találhatók.
-3. Az **Új** panelen kattintson a **Virtuális gépek** elemre.
-4. Az összes elérhető rendszerkép megtekintéséhez kattintson az **Összes megjelenítése** lehetőségre a **Virtuális gépek** panelen.
-   
-    ![Az Azure Virtuális gépek panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
-5. Az **Adatbázis-kiszolgálók** részen kattintson az **SQL Server** elemre. Lehetséges, hogy le kell görgetnie az **Adatbázis-kiszolgálók** megtalálásához. Tekintse át az elérhető SQL Server-sablonokat.
-   
-    ![SQL-rendszerképek a virtuálisgép-katalógusban](./media/virtual-machines-windows-portal-sql-server-provision/virtual-machine-gallery-sql-server.png)
+2. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** panelt. Az SQL Server virtuálisgép-erőforrásai a Marketplace **Számítás** csoportjában találhatók.
+3. Az **Új** panelen kattintson a **Számítás**, majd az **Összes megjelenítése** elemre.
+4. A **Szűrő** szövegmezőbe írja be az SQL Server kifejezést, majd nyomja le az ENTER billentyűt.
+
+   ![Az Azure Virtuális gépek panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
+
+5. Tekintse át az elérhető SQL Server-sablonokat.
 6. Minden sablon egy SQL Server-verziót és egy operációs rendszert azonosít. Válasszon egyet a lista rendszerképei közül. Ezután tekintse át a részleteket tartalmazó panelt, amelyen a virtuálisgép-rendszerkép leírása található.
    
    > [!NOTE]
@@ -82,7 +81,7 @@ Az **Alapvető beállítások** panelen adja meg a következő információkat:
 * Adjon meg egy **felhasználónevet** a virtuális gép helyi rendszergazdai fiókja számára. Ezt a fiókot a szolgáltatás hozzáadja az SQL Server **sysadmin** rögzített kiszolgálói szerepköréhez.
 * Adjon meg egy erős **jelszót**.
 * Ha több előfizetéssel is rendelkezik, ellenőrizze, hogy az új virtuális géphez a helyes előfizetést adta-e meg.
-* Az **Erőforráscsoport** szövegmezőjében adja meg egy új erőforráscsoport nevét. Használhat meglévő erőforráscsoportot is, ehhez jelölje be a **Meglévő használata** választógombot. Az erőforráscsoportok az Azure-ban egymáshoz kapcsolódó erőforrásokból (virtuális gépekből, tárfiókokból, virtuális hálózatokból stb.) álló gyűjtemények.
+* Az **Erőforráscsoport** szövegmezőjében adja meg egy új erőforráscsoport nevét. Meglévő erőforráscsoport használatához kattintson a **Meglévő használata** lehetőségre. Az erőforráscsoportok az Azure-ban egymáshoz kapcsolódó erőforrásokból (virtuális gépekből, tárfiókokból, virtuális hálózatokból stb.) álló gyűjtemények.
   
   > [!NOTE]
   > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../../../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
@@ -216,10 +215,12 @@ Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja 
 * Biztonsági mentések megőrzési ideje (napokban)
 * A biztonsági mentésekhez használt tárfiók
 * Titkosítási beállítás és a biztonsági mentések jelszavas védelme
+* Rendszeradatbázisok biztonsági mentése
+* Biztonsági mentések ütemezésének konfigurálása
 
 A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd.
 
-![SQL automatikus biztonsági mentés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
+![SQL automatikus biztonsági mentés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup2.png)
 
  További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
 
@@ -302,6 +303,6 @@ Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése]
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

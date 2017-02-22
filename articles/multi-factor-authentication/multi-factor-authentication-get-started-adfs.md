@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA és AD FS | Microsoft Docs"
+title: "Kétlépcsős ellenőrzés és az AD FS – Azure MFA | Microsoft Docs"
 description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS használatát."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dcf67cfd5f4d44188f119ca40b227b32c684e1f7
+ms.sourcegitcommit: 00ee90b6d264c1aee4b488cd1c2a5447809a1e3c
+ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
 
 
 ---
-# <a name="getting-started-with-azure-multifactor-authentication-and-active-directory-federation-services"></a>Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
+# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
 <center>![Felhő](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Ha a szervezete az AD FS használatával vonta össze a helyszíni Active Directoryt az Azure Active Directoryval, az Azure Multi-Factor Authentication két módon használható .
@@ -40,7 +40,7 @@ A következő táblázat foglalja össze az ellenőrzésbeli különbségeket az
 * Az alkalmazásjelszavak ellenőrzése felhőalapú hitelesítéssel történik, így mellőzik az összevonásokat. Az összevonás csak alkalmazásjelszó beállításakor van aktív használatban.
 * Az alkalmazásjelszavak nem tartják be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
 * Az alkalmazásjelszavak használata esetén nem érhető el a helyszíni hitelesítésnaplózás.
-* A fiókok letiltása/törlése akár 3 óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
+* A fiókok letiltása/törlése akár&3; óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
 
 ## <a name="next-steps"></a>Következő lépések
 Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló az AD FS-sel való beállításával kapcsolatos információt a következő cikkekben talál:
@@ -51,7 +51,6 @@ Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-k
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

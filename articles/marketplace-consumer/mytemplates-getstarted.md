@@ -136,6 +136,6 @@ Kattintson a **Kijelölés**, majd az **OK** gombra. A megjelenő képernyőn l�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

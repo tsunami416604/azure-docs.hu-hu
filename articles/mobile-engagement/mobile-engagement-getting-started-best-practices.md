@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7be266a6f8b3e18f2f6a27908ad75b5c19d3d862
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
 
 
 ---
-# <a name="azure-mobile-engagement-getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
+# <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Első lépések útmutató ajánlott eljárásokkal
 ## <a name="overview"></a>Áttekintés
 **A mobileszközök képernyője nagyon zsúfolt terület:** Egy tanulmány szerint 2013-ban 27 alkalmazást telepítettek egy átlagos mobileszközre. A felhasználók átlagosan havonta 30 órát foglalkoztak az alkalmazásaikkal. Ezen idő nagy részét a közösségi hálózatok és a játékok vitték el (mintegy 20 órát). 2014-re az Android piacterén a felhasználók körülbelül 1,5 millió alkalmazás közül választhattak. Az Apple áruházában hozzávetőlegesen 1,2 millió alkalmazás volt elérhető. A növekvő piacon versengő fejlesztőknek köszönhetően a mobilalkalmazások használata továbbra is növekvő tendenciát mutat. 
 
@@ -105,7 +105,7 @@ Hozzon létre olyan KPI-irányítópultot, amely az alábbi információkat tart
 3. Hol találhatók ezen adatok az alkalmazásban (például képernyő, beállítások, rendszer stb.)?
 4. Képes vagy szimulálni egy bevonási folyamatot ezen KPI vonatkozásában?
 
-További példákat és útmutatást az [alkalmazástervezési útmutató][alkalmazástervezési útmutatóra mutató hivatkozás] **KPI Builder** (KPI-tervező) munkalapján talál.
+További példákat és útmutatást az [alkalmazástervezési sablon][Media Playbook link] **KPI Builder** (KPI-tervező) munkalapján talál.
 
 ## <a name="step-2-your-engagement-program"></a>2. lépés: Bevonási program
 Az alkalmazás egyik legfontosabb összetevőjeként kell tekinteni a kiváló bevonási programra. Ennek mindenképpen tartalmaznia kell egy nagyszerű üdvözlőprogramot, amelyet az alkalmazás használatának első napjaiban használhatnak a felhasználók. Ennek általában nagyon pozitív hatása van az alkalmazás felhasználók bevonására és megtartására. A tanulmányok kimutatták, hogy a telepítést követően a felhasználók többsége néhány napon belül abbahagyja egy adott alkalmazás használatát. Ezért törekedni kell a felhasználók elvárásainak a teljesítésére vagy felülmúlására, ami idejekorán növeli az érdeklődést, amikor a felhasználó még az alkalmazásra koncentrál. Mindenképpen mutassa be az alkalmazás legfontosabb értékeit és előnyeit a felhasználóknak. 
@@ -209,13 +209,13 @@ Az Azure Mobile Engagement két módot biztosít arra, hogy elkerülje a kommuni
 #### <a name="playbook-exercise-2-create-your-engagement-program"></a>Az útmutató 2. feladata: A bevonási program létrehozása
 Szánjon némi időt a célkitűzések összegzésére, és azon kampányok meghatározására, amelyeket az adott folyamatok használatával le szeretne folytatni. Mindenképpen alkalmazza a 3W megközelítést a kampány értesítéseire vonatkozóan. 
 
-További példákat és útmutatást az [alkalmazástervezési útmutató][alkalmazástervezési útmutatóra mutató hivatkozás] **Engagement Program** (Bevonási program) munkalapján talál.
+További példákat és útmutatást az [alkalmazástervezési sablon][Media Playbook link] **Engagement Program** (Bevonási program) munkalapján talál.
 
 ## <a name="step-3-app-integration"></a>3. lépés: Alkalmazásintegráció
 #### <a name="create-a-tag-plan"></a>Címkézési terv létrehozása
 Az Azure Mobile Engagement szolgáltatásnak az alkalmazásba történő integrálásához létre kell hozni egy címkézési tervet. A címkézési terv a projekt sarokköve. Meghatározza a marketingspecifikációk, az alkalmazás munkafolyamata és a KPI-k méréséhez az alkalmazásban gyűjtött valós címkeadatok közötti kapcsolatot. Megmutatja, hogy a portálon milyen elemzési adatokat fog látni. Emellett segítséget nyújt a felhasználói szegmensek meghatározásában, és a koncentrált leküldéses értesítések küldésében a végfelhasználók bevonásához. Miután meghatározta a címkézési tervet, az alkalmazásba történő integrációhoz szükséges kód hozzáadása egyszerűen végrehajtható az Azure Mobile Engagement SDK használatával.
 
-A címkézési tervnek nem szabad mindent címkéznie az alkalmazásban. Csak olyan címkeadatokat szabad tartalmaznia, amelyek a mobilmarketing-stratégiájának a részét képezik. Az adatok valószínűleg eltérőek lesz alkalmazásonként. Az Azure Mobile Engagement [alkalmazástervezési sablonja][alkalmazástervezési útmutatóra mutató hivatkozás] segítséget nyújt a címkézési terv létrehozásához egy adott módszerrel. Használja a **Tag Plan** (Címkézési terv) munkalapot a címkézési terv létrehozásának útmutatójaként.
+A címkézési tervnek nem szabad mindent címkéznie az alkalmazásban. Csak olyan címkeadatokat szabad tartalmaznia, amelyek a mobilmarketing-stratégiájának a részét képezik. Az adatok valószínűleg eltérőek lesz alkalmazásonként. Az Azure Mobile Engagement [alkalmazástervezési sablonja][Media Playbook link] segítséget nyújt a címkézési terv létrehozásához egy adott módszerrel. Használja a **Tag Plan** (Címkézési terv) munkalapot a címkézési terv létrehozásának útmutatójaként.
 
 A munkalapon minden címkeszakaszt konkrétan meg kell határozni. Ez nagyon fontos a bizonytalanság elkerüléséhez. Részletezzen minden olyan várható forgatókönyvet, amelyben az egyes címkék elküldése megtörténik. Adja meg azon tevékenység nevét, amelybe az egyes címkék be lesznek ágyazva. Mindezt a munkalap **Informative** (Tájékoztató) részén kell megadni. A címkézési terv létrehozására szolgáló munkalapnak kell a teszteléssel történő ellenőrzés fő referenciájának lennie. 
 
@@ -322,10 +322,10 @@ Miután szert tett némi tapasztalatra, vegye fontolóra a bevonási programok b
 
 
 <!--Link references-->
-[Alkalmazástervezési útmutatóra mutató hivatkozás]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

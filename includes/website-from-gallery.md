@@ -1,60 +1,60 @@
-The Azure Marketplace makes available a wide range of popular web apps developed by Microsoft, third party companies, and open source software initiatives. Web apps created from the Azure Marketplace do not require installation of any software other than the browser used to connect to the [Azure Preview Portal](http://go.microsoft.com/fwlink/?LinkId=529715). 
+Az Azure Piactér a Microsoft, külső vállalatok és nyílt forrású szoftver-kezdeményezések által fejlesztett népszerű webalkalmazások széles skáláját teszi elérhetővé. Az Azure Marketplace-ről létrehozott webalkalmazások használatához nincs szükség semmilyen szoftver telepítésére az [Azure Betekintő portálhoz](http://go.microsoft.com/fwlink/?LinkId=529715) való csatlakozáshoz használt böngészőn kívül. 
 
-In this tutorial, you'll learn:
+Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
-* How to create a new web app through the Azure Marketplace.
-* How to deploy the web app through the Azure Preview Portal.
+* Új webalkalmazás létrehozása az Azure Marketplace segítségével.
+* A webalkalmazás telepítése az Azure Betekintő portálon.
 
-You'll build a WordPress blog that uses a default template. The following illustration shows the completed application:
+Létrehoz egy WordPress blogot, amely egy alapértelmezett sablont használ. Az alábbi ábrán a kész alkalmazás látható:
 
-![Wordpress blog][13]
+![WordPress blog][13]
 
 > [!NOTE]
-> If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+> Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra, ahol azonnal létrehozhat egy rövid élettartamú alapszintű webalkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
-## Create a web app in the portal
-1. Log in to the Azure Preview Portal.
-2. Open the Azure Marketplace either by clicking the **Marketplace** icon:
+## <a name="create-a-web-app-in-the-portal"></a>Webalkalmazás létrehozása a portálon
+1. Jelentkezzen be az Azure Betekintő portálra.
+2. Nyissa meg az Azure Marketplace-t a **Marketplace** ikonjára kattintva:
    
-    ![Marketplace icon][marketplace]
+    ![Marketplace ikon][marketplace]
    
-    Or by clicking the **New** icon on the upper right of the dashboard, and selecting **Marketplace** at the bottow of the list.
+    Vagy kattintson az irányítópult jobb felső részén található **Új** ikonra, és válassza a **Marketplace** lehetőséget a lista alján.
    
-    ![Create New][5]
-3. Select **Web + Mobile**. Search for **WordPress** and click the **WordPress** icon.
+    ![Új létrehozása][5]
+3. Kattintson a **Web + mobil** elemre. Keresse meg a **WordPress** alkalmazást, majd kattintson a **WordPress** ikonra.
    
-    ![WordPress from list][7]
-4. After reading the description of the WordPress app, select **Create**.
-5. Click on **Web app**, and provide the required values for configuring your web app.
+    ![A listában szereplő WordPress][7]
+4. A WordPress alkalmazás leírásának elolvasása után kattintson a **Létrehozás** gombra.
+5. Kattintson a **Webalkalmazás** elemre, és adja meg a webalkalmazás konfigurálásához szükséges értékeket.
    
-    ![configure your app][8]
-6. Click on **Database**, and provide the required values for configuring your MySQL database. 
+    ![az alkalmazás konfigurálása][8]
+6. Kattintson az **Adatbázis** elemre, és adja meg a MySQL-adatbázis konfigurálásához szükséges értékeket. 
    
-    ![configure database][database]
-7. Provide a name for a new resource group.
+    ![adatbázis konfigurálása][database]
+7. Adja meg egy új erőforráscsoport nevét.
    
-    ![Set resource group][groupname]
-8. If necessary, click **SUBSCRIPTION**, and specify the subscription to use. 
-9. When you have finished defining the web app, click **Create**, and wait while the new web app is created.
+    ![Erőforráscsoport beállítása][groupname]
+8. Ha szükséges, kattintson az **ELŐFIZETÉS** elemre, és válassza ki a használni kívánt előfizetést. 
+9. Miután végzett a webalkalmazás meghatározásával, kattintson a **Létrehozás** elemre, és várjon, amíg a rendszer létrehozza az új webalkalmazást.
    
-   When the app has been created, you will see the resource group containing web app and database.
+   Miután létrejött az alkalmazás, látni fogja a webalkalmazást és az adatbázist tartalmazó erőforráscsoportot.
    
-   ![show group][resourcegroup]
+   ![csoport megjelenítése][resourcegroup]
 
-## Launch and manage your WordPress web app
-1. Click on your new web app to see details about your app.
+## <a name="launch-and-manage-your-wordpress-web-app"></a>A WordPress-webalkalmazás elindítása és kezelése
+1. Kattintson az új webalkalmazásra az alkalmazás részleteinek megtekintéséhez.
    
-    ![launch dashboard][10]
-2. On the **Essentials** page, click either **Browse** or the link under **Url** to open the web app's welcome page.
+    ![irányítópult indítása][10]
+2. Az **Alapvető szolgáltatások** oldalon kattintson a **Tallózás** lehetőségre vagy az **URL** alatt található hivatkozásra a webalkalmazás kezdőlapjának megnyitásához.
    
-    ![site URL][browse]
-3. If you have not installed WordPress, enter the appropriate configuration information required by WordPress and click **Install WordPress** to finalize configuration and open the web app's login page.
-4. Click **Login** and enter your credentials.  
-5. You'll have a new WordPress web app that looks similar to the web app below.    
+    ![webhely URL-címe][browse]
+3. Ha nem telepítette a WordPresst, adja meg a WordPresshez szükséges konfigurációs információkat, majd kattintson a **WordPress telepítése** lehetőségre a konfiguráció véglegesítéséhez és a webalkalmazás bejelentkezési oldalának megnyitásához.
+4. Kattintson a **Bejelentkezés** lehetőségre, majd adja meg a hitelesítő adatait.  
+5. Az új WordPress webalkalmazása az alábbi webalkalmazásra hasonlít.    
    
-    ![your WordPress site][13]
+    ![az Ön WordPress-webhelye][13]
 
 [5]: ./media/website-from-gallery/start-marketplace.png
 [6]: ./media/website-from-gallery/wordpressgallery-02.png
@@ -69,3 +69,8 @@ You'll build a WordPress blog that uses a default template. The following illust
 [browse]: ./media/website-from-gallery/browse-web.png
 [marketplace]: ./media/website-from-gallery/marketplace-icon.png
 [groupname]: ./media/website-from-gallery/set-rg.png
+
+
+<!--HONumber=Jan17_HO3-->
+
+

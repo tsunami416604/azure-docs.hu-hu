@@ -1,203 +1,203 @@
-# How to use the Azure Command-Line Tools for Mac and Linux
-This guide describes how to use the Azure Command-Line Tools for Mac and Linux to create and manage services in Azure. The scenarios covered include **installing the tools**, **importing your publishing settings**, **creating and managing Azure Websites**, and **creating and managing Azure Virtual Machines**. For comprehensive reference documentation, see [Azure command-line tool for Mac and Linux Documentation][reference-docs]. 
+# <a name="how-to-use-the-azure-command-line-tools-for-mac-and-linux"></a>A Macre és Linuxra készült Azure parancssori eszközök használata
+Ez az útmutató leírja, hogyan kell használni a Macre és Linuxra készült Azure parancssori eszközöket az Azure szolgáltatásainak létrehozásához és kezeléséhez. A forgatókönyvek a következőket tartalmazzák: **az eszközök telepítése**, **a közzétételi beállítások importálása**, **az Azure Websites létrehozása és kezelése** és **az Azure Virtual Machines létrehozása és kezelése**. Az átfogó referenciadokumentációhoz tekintse meg [A Macre és Linuxra készült Azure parancssori eszközök használata][reference-docs] című témakört. 
 
-## Table of contents
-* [What are the Azure Command-Line Tools for Mac and Linux](#Overview)
-* [How to install the Azure Command-Line Tools for Mac and Linux](#Download)
-* [How to create an Azure account](#CreateAccount)
-* [How to download and import publish settings](#Account)
-* [How to create and manage an Azure Web Site](#WebSites)
-* [How to create and manage an Azure Virtual Machine](#VMs)
+## <a name="table-of-contents"></a>Tartalomjegyzék
+* [A Macre és Linuxra készült Azure parancssori eszközök bemutatása](#Overview)
+* [A Macre és Linuxra készült Azure parancssori eszközök telepítése](#Download)
+* [Azure-fiók létrehozása](#CreateAccount)
+* [Közzétételi beállítások letöltése és importálása](#Account)
+* [Azure-webhely létrehozása és kezelése](#WebSites)
+* [Azure-beli virtuális gép létrehozása és kezelése](#VMs)
 
-<h2><a id="Overview"></a>What are the Azure Command-Line Tools for Mac and Linux</h2>
+<h2><a id="Overview"></a>A Macre és Linuxra készült Azure parancssori eszközök bemutatása</h2>
 
-The Azure Command-Line Tools for Mac and Linux are a set of command-line tools for deploying and managing Azure services.
+Az Azure Macre és Linuxra készült parancssori eszközeinek gyűjteménye Azure-szolgáltatások üzembe helyezésére és kezelésére szolgál.
 
-The supported tasks include the following:
+A támogatott feladatok a következők:
 
-* Import publishing settings.
-* Create and manage Azure Websites.
-* Create and manage Azure Virtual Machines.
+* Közzétételi beállítások importálása
+* Azure Websites létrehozása és kezelése
+* Azure Virtual Machines létrehozása és kezelése
 
-For a complete list of supported commands, type `azure -help` at the command line after installing the tools, or see the [reference documentation][reference-docs].
+A támogatott parancsok teljes listájának megjelenítéséhez az eszközök telepítése után írja be a parancssorba a következőt: `azure -help`, vagy tekintse meg a [referenciadokumentációt][reference-docs].
 
-<h2><a id="Download">How to install the Azure Command-Line Tools for Mac and Linux</a></h2>
+<h2><a id="Download">A Macre és Linuxra készült Azure parancssori eszközök telepítése</a></h2>
 
-The following list contains information for installing the command-line tools, depending on your operating system:
+Az alábbi lista a parancssori eszközök az operációs rendszertől függő telepítési információit tartalmazza:
 
-* **Mac**: Download the [Azure SDK Installer][mac-installer]. Open the downloaded .pkg file and complete the installation steps as you are prompted.
-* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
+* **Mac**: Töltse le az [Azure SDK Installert][mac-installer]. Nyissa meg a letöltött .pkg fájlt, és végezze el a telepítési lépéseket.
+* **Linux**: Telepítse a [Node.js][nodejs-org] legfrissebb verzióját (lásd még: [A Node.js telepítése a csomagkezelő segítségével][install-node-linux]), majd futtassa a következő parancsot:
   
         npm install azure-cli -g
   
-    **Note**: You may need to run this command with elevated privileges:
+    **Megjegyzés**: A parancs futtatásához szükség lehet emelt szintű jogosultságokra:
   
         sudo npm install azure-cli -g
-* **Windows**: Run the Winows installer (.msi file), which is available here: [Azure Command Line Tools][windows-installer].
+* **Windows**: Futtassa a Windows Installert (.msi fájl), amely innen érhető el: [Azure parancssori eszközök][windows-installer].
 
-To test the installation, type `azure` at the command prompt. If the installation was successful, you will see a list of all the available `azure` commands.
+A telepítés teszteléséhez írja be az `azure` parancsot a parancssorba. Ha a telepítés sikeres, megjelenik az elérhető `azure`-parancsok listája.
 
-<h2><a id="CreateAccount"></a>How to create an Azure account</h2>
+<h2><a id="CreateAccount"></a>Azure-fiók létrehozása</h2>
 
-To use the Azure Command-Line Tools for Mac and Linux, you will need an Azure account.
+A Macre és Linuxra készült Azure parancssori eszközök használatához Azure-fiókra van szükség.
 
-Open a web browser and browse to [http://www.windowsazure.com][windowsazuredotcom] and click **free trial** in the upper right corner.
+Nyisson meg egy böngészőt, majd keresse fel a következő helyet: [http://www.windowsazure.com][windowsazuredotcom]. Kattintson az **ingyenes fiók** elemre a jobb felső sarokban.
 
-![Azure Web Site][Azure Web Site]
+![Azure-webhely][Azure Web Site]
 
-Follow the instructions for creating an account.
+Kövesse a fiók létrehozására vonatkozó utasításokat.
 
-<h2><a id="Account"></a>How to download and import publish settings</h2>
+<h2><a id="Account"></a>Közzétételi beállítások letöltése és importálása</h2>
 
-To get started, you need to first download and import your publish settings. This will allow you to use the tools to create and manage Azure Services. To download your publish settings, use the `account download` command:
+Első lépésként a közzétételi beállításait kell letöltenie, majd importálnia. Ez lehetővé teszi az Azure-szolgáltatások létrehozásához és kezeléséhez szükséges eszközök használatát. A közzétételi beállítások letöltéséhez használja az `account download` parancsot:
 
     azure account download
 
-This will open your default browser and prompt you to sign in to the Management Portal. After signing in, your `.publishsettings` file will be downloaded. Make note of where this file is saved.
+Ekkor megnyílik az alapértelmezett böngésző, amellyel be kell jelentkeznie a felügyeleti portálra. Bejelentkezés után letöltődik a `.publishsettings` fájl. Jegyezze fel a letöltött fájl elérési útját.
 
-Next, import the `.publishsettings` file by running the following command, replacing `{path to .publishsettings file}` with the path to your `.publishsettings` file:
+Következő lépésként importálja a `.publishsettings` fájlt a következő parancs futtatásával. A `{path to .publishsettings file}` helyett adja meg a `.publishsettings` fájl elérési útját:
 
     azure account import {path to .publishsettings file}
 
-You can remove all of the information stored by the <code>import</code> command by using the <code>account clear</code> command:
+Az <code>import</code> parancs által tárolt összes információt eltávolíthatja az <code>account clear</code> parancs használatával:
 
     azure account clear
 
-To see a list of options for `account` commands, use the `-help` option:
+Az `account`-parancsok beállításainak megtekintéséhez használja a `-help` paramétert:
 
     azure account -help
 
-After importing your publish settings, you should delete the `.publishsettings` file for security reasons.
+A közzétételi beállítások importálása után biztonsági okokból javasolt a `.publishsettings` fájl törlése.
 
 > [!NOTE]
-> When you import publish settings, credentials for accessing your Azure subscription are stored inside your `user` folder. Your `user` folder is protected by your operating system. However, it is recommended that you take additional steps to encrypt your `user` folder. You can do so in the following ways:    
+> A közzétételi beállítások importálásakor az Azure-előfizetéshez való hozzáféréshez szükséges hitelesítő adatok a `user` mappába kerülnek. A `user` mappát az operációs rendszer védi. Javasoljuk azonban, hogy további lépéseket tegyen a `user` mappa titkosítására. Ezt a következő módokon teheti meg:    
 > 
-> * On Windows, modify the folder properties or use BitLocker.
-> * On Mac, turn on FileVault for the folder.
-> * On Ubuntu, use the Encrypted Home directory feature. Other Linux distributions offer equivalent features.
+> * Windows: Módosítsa a mappatulajdonságokat, vagy használjon BitLocker meghajtótitkosítást.
+> * Mac: Kapcsolja be a FileVault szolgáltatást a mappához.
+> * Ubuntu: Használjon titkosított kezdőmappát. Más Linux-disztribúciók is nyújtanak hasonló szolgáltatásokat.
 > 
 > 
 
-You are now ready to being creating and managing Azure Websites and Azure Virtual Machines.  
+Most már készen áll arra, hogy megkezdje az Azure Websites és az Azure Virtual Machines létrehozását és kezelését.  
 
-<h2><a id="WebSites"></a>How to create and manage an Azure Website</h2>
+<h2><a id="WebSites"></a>Azure-webhely létrehozása és kezelése</h2>
 
-### Create a Website
-To create an Azure website, first create an empty directory called `MySite` and browse into that directory.
+### <a name="create-a-website"></a>Webhely létrehozása
+Azure-webhely létrehozásához először hozzon létre egy üres mappát `MySite` névvel, majd nyissa meg.
 
-Then, run the following command:
+Ezután futtassa a következő parancsot:
 
     azure site create MySite --git
 
-The output from this command will contain the default URL for the newly created website. The `--git` option allows you to use git to publish to your website by creating git repositories in both your local application directory and in your website's data center. Note that if your local folder is already a git repository, the command will add a new remote to the existing repository, pointing to the repository in your website's data center.
+A parancs kimenete tartalmazza az újonnan létrehozott webhely alapértelmezett URL-címét. A `--git` paraméter lehetővé teszi a git használatát a webhely közzétételéhez oly módon, hogy git-adattárakat hoz létre mind a helyi alkalmazáskönyvtárban, mind a webhely adatközpontjában. Vegye figyelembe, hogy ha a helyi mappa már git-adattárként működik, a parancs új távelérést ad hozzá a meglévő adattárhoz, amely a webhely adatközpontjában található adattárra mutat.
 
-Note that you can execute the `azure site create` command with any of the following options:
+Az `azure site create` parancsot a következő paraméterek bármelyikével futtathatja:
 
-* `--location [location name]`. This option allows you to specify the location of the data center in which your website is created (e.g. "West US"). If you omit this option, you will be promted to choose a location.
-* `--hostname [custom host name]`. This option allows you to specify a custom hostname for your website.
+* `--location [location name]`. Ezzel a paraméterrel megadhatja a helyét annak az adatközpontnak, amelyben a webhelyét létrehozza (pl.: „USA nyugati régiója”). Ha kihagyja ezt a beállítást, a hely kiválasztásához promted fogja.
+* `--hostname [custom host name]`. Ezzel a paraméterrel a webhelyének egyéni állomásnevet adhat.
 
-You can then add content to your website directory. Use the regular git flow (`git add`, `git commit`) to commit your content. Use the following git command to push your website content to Azure: 
+Ezután a webhely könyvtárához hozzáadhatja a tartalmat. Használja a normál git-folyamatot (`git add`, `git commit`) a tartalom véglegesítéséhez. Használja a következő git-parancsot a webhely tartalmának az Azure-ba történő küldéséhez: 
 
     git push azure master
 
-### Set up publishing from GitHub
-To set up continuous publishing from a GitHub repository, use the `--GitHub` option when creating a site:
+### <a name="set-up-publishing-from-github"></a>GitHubról történő közzététel beállítása
+GitHub-adattárról történő folyamatos közzététel beállításához használja a `--GitHub` paramétert a webhely létrehozásakor:
 
     auzre site create MySite --github --githubusername username --githubpassword password --githubrepository githubuser/reponame
 
-If you have a local clone of a GitHub repository or if you have a repository with a single remote reference to a GitHub repository, this command will automatically publish code in the GitHub repository to your site. From then on, any changes pushed to the GitHub repository will automatically be published to your site.
+Ha rendelkezik a GitHub-adattár helyi klónjával vagy egy GitHub-adattárra mutató távoli hivatkozással, ez a parancs automatikusan közzéteszi a GitHub-adattárban lévő kódot a webhelyen. Onnantól kezdve a GitHubra leküldött bármilyen módosítás a webhelyen is megjelenik.
 
-When you set up publishing from GitHub, the default branch used is the master branch. To specify a different branch, execute the following command from your local repository:
+Amikor beállítja a GitHubról történő közzétételt, az alapértelmezett ág a „master” ág. Ha másik ágat szeretne megadni, a helyi adattárból futtassa a következő parancsot:
 
     azure site repository <branch name>
 
-### Configure app settings
-App settings are key-value pairs that are available to your application at runtime. When set for an Azure Website, app setting values will override settings with the same key that are defined in your site's Web.config file. For Node.js and PHP applications, app settings are available as environment variables. The following example shows you how to set a key-value pair:
+### <a name="configure-app-settings"></a>Alkalmazásbeállítások konfigurálása
+Az alkalmazásbeállítások kulcs-érték párok, amelyeket az alkalmazás a futásideje alatt tud elérni. Az Azure-webhelyhez történő beállításkor az alkalmazásbeállítások felülbírálják az ugyanazon kulcshoz tartozó beállításokat, amelyek a webhely Web.config fájljában találhatók. Node.js- és PHP-alkalmazások esetén az alkalmazásbeállítások környezeti változókként érhetők el. A következő példa egy kulcs-érték pár beállítását mutatja be:
 
     azure site config add <key>=<value> 
 
-To see a list of all key/value pairs, use the following:
+Az összes kulcs-érték pár megjelenítéséhez használja a következőt:
 
     azure site config list 
 
-Or if you know the key and want to see the value, you can use:
+Vagy, ha ismeri a kulcsot, és látni szeretné az értékét, használhatja a következőt:
 
     azure site config get <key> 
 
-If you want to change the value of an existing key you must first clear the existing key and then re-add it. The clear command is:
+Ha módosítani szeretné egy meglévő kulcs értékét, akkor törölnie kell a meglévő kulcsot, majd újra hozzá kell adnia. A törlési parancs a következő:
 
     azure site config clear <key> 
 
-### List and show sites
-To list your websites, use the following command:
+### <a name="list-and-show-sites"></a>Webhelyek listázása és megjelenítése
+A webhelyek kilistázásához használja az alábbi parancsot:
 
     azure site list
 
-To get detailed information about a site, use the `site show` command. The following example shows details for `MySite`:
+Ha részletes információt szeretne kapni egy webhelyről, használja a `site show` parancsot. Az alábbi példában a `MySite` részletei láthatók:
 
     azure site show MySite
 
-### Stop, start, or restart a site
-You can stop, start, or restart a site with the `site stop`, `site start`, or `site restart` commands:
+### <a name="stop-start-or-restart-a-site"></a>Hely leállítása, indítása vagy újraindítása
+Leállíthat, elindíthat vagy újraindíthat egy webhelyet a `site stop`, `site start` vagy `site restart` paranccsal:
 
     azure site stop MySite
     azure site start MySite
     azure site restart MySite
 
-### Delete a site
-Finally, you can delete a site with the `site delete` command:
+### <a name="delete-a-site"></a>Hely törlése
+Végezetül le is törölhet egy webhelyet a `site delete` paranccsal:
 
     azure site delete MySite
 
-Note that if you are running any of above commands from inside the folder where you ran `site create`, you do not need to specify the site name `MySite` as the last parameter.
+Vegye figyelembe, hogy ha a fenti parancsok bármelyikét abból a mappából futtatja, ahol a `site create` parancsot futtatta, akkor nem szükséges megadnia a webhely nevét (`MySite`) utolsó paraméterként.
 
-To see a complete list of `site` commands, use the `-help` option:
+A `site`-parancsok teljes listájának megtekintéséhez használja a `-help` paramétert:
 
     azure site -help 
 
-<h2><a id="VMs"></a>How to create and manage an Azure Virtual Machine</h2>
+<h2><a id="VMs"></a>Azure-beli virtuális gép létrehozása és kezelése</h2>
 
-an Azure Virtual Machine is created from a virtual machine image (a .vhd file) that you provide or that is available in the Image Gallery. To see images that are available, use the `vm image list` command:
+Egy Ön által megadott vagy a rendszerkép-katalógusban elérhető virtuális gép rendszerképéből (.vhd fájl) létrejön egy Azure-beli virtuális gép. Az elérhető rendszerképek megtekintéséhez használja a `vm image list` parancsot:
 
     azure vm image list
 
-You can provision and start a virtual machine from one of the available images with the `vm create` command. The following example shows how to create a Linux virtual machine (called `myVM`) from an image in the Image Gallery (CentOS 6.2). The root user name and password for the virtual machine are `myusername` and `Mypassw0rd` respectively. (Note that the `--location` parameter specifies the data center in which the virtual machine is created. If you omit the `--location` parameter, you will be prompted to choose a location.)
+Az elérhető rendszerképekből a `vm create` paranccsal létesíthet és indíthat el virtuális gépet. Az alábbi példa szemlélteti, hogyan lehet Linux alatt virtuális gépet létrehozni (melynek neve: `myVM`) a rendszerkép-katalógusban található egyik rendszerképből (CentOS 6.2). A virtuális géphez tartozó gyökérszintű felhasználónév és jelszó: `myusername`, illetve `Mypassw0rd`. (Vegye figyelembe, hogy a `--location` paraméter határozza meg azt az adatközpontot, amelyben létrejön a virtuális gép. Ha kihagyja a `--location` paramétert, a rendszer felkéri a hely kiválasztására.)
 
     azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
 
-You may consider passing the `--ssh` flag (Linux) or `--rdp` flag (Windows) to `vm create` to enable remote connections to the newly-created virtual machine.
+Érdemes lehet megadni a `--ssh` jelölőt (Linux) vagy az `--rdp` jelölőt (Windows) a `vm create` esetén az újonnan létrehozott virtuális géppel való távoli kapcsolatok engedélyezéséhez.
 
-If you would rather provision a virtual machine from a custom image, you can create an image from a .vhd file with the `vm image create` command, then use the `vm create` command to provision the virtual machine. The following example shows how to create a Linux image (called `myImage`) from a local .vhd file. (The `--location` parameter specifies the data in which the image is stored.)
+Ha inkább egyéni rendszerképből szeretne virtuális gépet kiépíteni, létrehozhat rendszerképet egy .vhd fájlból a `vm image create` parancs használatával, majd a `vm create` paranccsal kiépítheti a virtuális gépet. Az alábbi példa bemutatja, hogyan hozhat létre egy linuxos rendszerképet (melynek neve: `myImage`) egy helyi .vhd fájlból. (A `--location` paraméter határozza meg azt az adatközpontot, amelyben a rendszerkép megtalálható.)
 
     azure vm image create myImage /path/to/myImage.vhd --os linux --location "West US"
 
-Instead of creating an image from a local .vhd, you can create an image from a .vhd stored in Azure Blob Storage. You can do this with the `blob-url` parameter:
+Helyi .vhd fájl helyett az Azure Blob Storage-ban tárolt .vhd fájlból is létrehozhat rendszerképet. Ezt a `blob-url` paraméterrel teheti meg:
 
     azure vm image create myImage --blob-url <url to .vhd in Blob Storage> --os linux
 
-After creating an image, you can provision a virtual machine from the image by using `vm create`. The command below creates a virtual machine called `myVM` from the image created above (`myImage`).
+Miután létrehozta a rendszerképet, kiépíthet belőle virtuális gépet a `vm create` használatával. Az alábbi parancs létrehoz egy `myVM` elnevezésű virtuális gépet a fent létrehozott rendszerképből (`myImage`).
 
     azure vm create myVM myImage myusername --location "West US"
 
-After you have provisioned a virtual machine, you may want to create endpoints to allow remote access to your virtual machine (for example). The following example uses the `vm create endpoint` command to open external port 22 and local port 22 on `myVM`:
+Miután kiépítette a virtuális gépet, érdemes lehet végpontokat létrehozni, például hogy távolról is hozzáférhessen a virtuális géphez. Az alábbi példa a `vm create endpoint` parancsot használja a 22-es külső port és a 22-es helyi port megnyitására a `myVM` esetén:
 
     azure vm endpoint create myVM 22 22
 
-You can get detailed information about a virtual machine (including IP address, DNS name, and endpoint information) with the `vm show` command:
+A `vm show` paranccsal részletes információkat jeleníthet meg a virtuális gépről (beleértve az IP-címet, a DNS-nevet és a végpont-információkat):
 
     azure vm show myVM
 
-To shutdown, start, or restart the virtual machine, use one of the following commands:
+A virtuális gép kikapcsolásához, elindításához vagy újraindításához használja az alábbi parancsok egyikét:
 
     azure vm shutdown myVM
     azure vm start myVM
     azure vm restart myVM
 
-And finally, to delete the VM, use the `vm delete` command:
+Végezetül a virtuális gép törléséhez használja a `vm delete` parancsot:
 
     azure vm delete myVM
 
-For a complete list of commands for creating and managing virtual machines, use the `-h` option:
+A virtuális gépek létrehozásához és kezeléséhez használt parancsok teljes listájának megtekintéséhez használja a `-h` paramétert:
 
     azure vm -h
 
@@ -211,4 +211,9 @@ For a complete list of commands for creating and managing virtual machines, use 
 [windows-installer]: http://go.microsoft.com/fwlink/?LinkID=275464
 [reference-docs]: http://go.microsoft.com/fwlink/?LinkId=252246
 [windowsazuredotcom]: http://www.windowsazure.com
+
+
+
+<!--HONumber=Jan17_HO5-->
+
 

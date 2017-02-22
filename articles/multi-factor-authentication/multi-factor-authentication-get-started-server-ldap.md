@@ -78,6 +78,6 @@ Az LDAP-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

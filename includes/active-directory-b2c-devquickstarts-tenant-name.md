@@ -1,10 +1,10 @@
 > [!NOTE]
-> A B2C bérlő neve az a tartomány, amelyet a bérlő létrehozásakor megadott, és az Azure Betekintő portál címtárpaneljén látható.  Általában az `.onmicrosoft.com` utótaggal végződik, pl.: `contosob2c.onmicrosoft.com`.
+> A B2C bérlő neve az a tartomány, amelyet a bérlő létrehozásakor megadott, és az Azure Portál címtárpaneljén látható.  Általában az `.onmicrosoft.com` utótaggal végződik, pl.: `contosob2c.onmicrosoft.com`.
 > 
 > 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

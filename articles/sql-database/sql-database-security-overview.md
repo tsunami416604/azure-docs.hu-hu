@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 06/09/2016
 ms.author: thmullan;jackr
 translationtype: Human Translation
-ms.sourcegitcommit: f4712d70c0323e607ddcc021809f8097a621730d
-ms.openlocfilehash: 9ebf3cd290151449c05c89307500fa5679de3b09
+ms.sourcegitcommit: 69faa86ddbc43793146653fc8d8dc2bf35c40aa1
+ms.openlocfilehash: f3a7bcbc80580232f2704087eb529ee9ec8ead46
 
 
 ---
@@ -71,9 +71,14 @@ Az SQL Database naplózási és fenyegetésészlelési képességek biztosítás
 ### <a name="auditing"></a>Naplózás
 Az SQL Database naplózási szolgáltatása nyomon követi az adatbázisok eseményeit, és felvezeti ezeket egy naplófájlba, amely a felhasználó Azure Storage-fiókjában található, ezáltal segíti az előírásoknak való megfelelőség fenntartását. A naplózás révén könnyebben átláthatja az adatbázisban folyamatban lévő tevékenységeket, illetve a lehetséges fenyegetések, esetleges visszaélések és biztonságmegsértések azonosítása céljából elemezheti és kivizsgálhatja a tevékenységelőzményeket. További információk: [Ismerkedés az SQL Database naplózási szolgáltatásával](sql-database-auditing-get-started.md).  
 
-### <a name="threat-detection"></a>Fenyegetések észlelése
+### <a name="auditing--threat-detection"></a>Naplózás és fenyegetésészlelés 
+Az SQL Database naplózási szolgáltatása nyomon követi az adatbázisok eseményeit, és felvezeti ezeket egy naplófájlba, amely a felhasználó Azure Storage-fiókjában található, ezáltal segíti az előírásoknak való megfelelőség fenntartását. A naplózás révén könnyebben átláthatja az adatbázisban folyamatban lévő tevékenységeket, illetve a lehetséges fenyegetések, esetleges visszaélések és biztonságmegsértések azonosítása céljából elemezheti és kivizsgálhatja a tevékenységelőzményeket. További információk: [Ismerkedés az SQL Database naplózási szolgáltatásával](sql-database-auditing-get-started.md).  
+ 
 A fenyegetések észlelése a biztonsági intelligencia egy további, az Azure SQL Database szolgáltatásba beépített rétegével egészíti ki a naplózást. A szolgáltatás folyamatosan dolgozik az adatbázist érintő rendellenes tevékenységek észlelésén, elemzésén és a profilkészítésen. A szolgáltatás értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A riasztásokra az informatív és hasznos utasításokat követve reagálhat. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection-get-started.md).  
-
+ 
+### <a name="data-masking"></a>Adatmaszkolás 
+Az SQL Database dinamikus adatmaszkolása úgy korlátozza a bizalmas adatok közzétételét, hogy maszkolja azokat a nem kiemelt jogosultságú felhasználók számára. A dinamikus adatmaszkolás automatikusan észleli a potenciálisan bizalmas adatokat az Azure SQL Database-ben, és végrehajtható javaslatokat tesz ezen mezők maszkolására úgy, hogy az a lehető legkisebb hatással legyen az alkalmazásrétegre. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információk: Ismerkedés az [SQL Database dinamikus adatmaszkolás szolgáltatásával](sql-database-dynamic-data-masking-get-started.md).
+ 
 ## <a name="compliance"></a>Megfelelőség
 A fent említett szolgáltatások és funkciók mellett, amelyek alkalmazásával megfelelhet a különféle biztonsági megfelelőségi követelményeknek, az Azure SQL Database rendszeres vizsgálatokon esik át, és több megfelelőségi szabvány szempontjából is hitelesítve van. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://azure.microsoft.com/support/trust-center/services/) aktuális listájával együtt.
 
@@ -84,6 +89,7 @@ A fent említett szolgáltatások és funkciók mellett, amelyek alkalmazásáva
 - Információk a proaktív figyelésről: [az SQL Database naplózási szolgáltatását](sql-database-auditing-get-started.md) és [az SQL Database fenyegetésészlelési szolgáltatását](sql-database-threat-detection-get-started.md) bemutató cikkek.
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Jan17_HO2-->
 
 

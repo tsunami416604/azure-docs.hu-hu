@@ -1,5 +1,5 @@
 ---
-title: "Biztonsági állapotfigyelés az Azure Security Centerben | Microsoft Docs"
+title: "Biztonságfigyelés az Azure Security Centerben | Microsoft Docs"
 description: "Ez a cikk az Azure Security Center figyelési funkcióinak használatába nyújt bevezetést."
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
-ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -60,8 +60,8 @@ Ebben a szakaszban az Azure Security Center által megfigyelt [virtuális gépek
 
 > [!NOTE]
 > A **Networking Health** (Hálózatkezelés állapota) panel **Network topology** (Hálózati topológia) listájában kizárólag a legalább egy nyilvános végponttal rendelkező virtuális gépek jelennek meg.
-> 
-> 
+>
+>
 
 Az egyes javaslatokra kattintva különböző műveleteket végezhet el. Ha például a **Missing system updates** (Hiányzó rendszerfrissítések) elemre kattint, megnyílik a **Missing system updates** (Hiányzó rendszerfrissítések) panel. Ahogy az alábbi képernyőfelvételen látható, ezen a panelen megtekintheti azoknak a virtuális gépeknek a listáját, amelyekről frissítések hiányoznak, valamint a hiányzó frissítés súlyosságát.
 
@@ -87,8 +87,8 @@ A javaslat részleteinek megtekintéséhez kattintson a virtuális gép nevére.
 
 > [!NOTE]
 > Itt ugyanazok a biztonsági javaslatok láthatók, mint a **Recommendations** (Javaslatok) panelen. A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [A biztonsági javaslatok alkalmazása az Azure Security Centerben](security-center-recommendations.md). Ez nem csupán a virtuális gépekre vonatkozik, hanem az összes olyan erőforrásra, amely szerepel a **Resource Health** (Erőforrás állapota) csempén.
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>A Virtual machines (Virtuális gépek) szakasz
 A virtuális gépekre vonatkozó szakaszban áttekintheti az összes virtuális gépet, valamint a rájuk vonatkozó javaslatokat. Ahogy az alábbi képernyőfelvételen is látható, minden oszlop egy javaslatcsoportot képvisel:
@@ -217,7 +217,6 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

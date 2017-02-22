@@ -27,29 +27,27 @@
 ### [Létrehozás és kezelés a parancssori felület használatával](key-vault-manage-with-cli.md)
 
 # Referencia
-## [Kulcsok és titkok](https://msdn.microsoft.com/en-us/library/azure/dn903623)
-## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
-
-## [Key Vault Resource Manager PowerShell-parancsmagok](/powershell/resourcemanager/)
-## [Key Vault klasszikus PowerShell-parancsmagok](/powershell/servicemanagement/)
-## [Key Vault az Azure CLI használatával](/cli/azure/)
-## [Key Vault a Javában – referencia](/java/api/)
-## [Key Vault – felügyelt referencia API](/dotnet/api/) 
-## [Key Vault – REST API-referencia](/rest/api/keyvault) 
-## [Node.js a Key Vaulthoz](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
+## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)
+## [Azure 2.0 CLI (előzetes verzió)](/cli/azure/keyvault)
+## [.NET](/dotnet/api/microsoft.azure.keyvault)
+## [Java](/java/api/com.microsoft.azure.keyvault)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+## [REST](/rest/api/keyvault)
 
 # Kapcsolódó
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 ## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
 ## [Bővíthető kulcskezelés a Key Vaulttal](https://msdn.microsoft.com/en-us/library/azure/dn198405)
-## [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # Erőforrások
+## [Kulcsok és titkok](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Blog](http://blogs.technet.com/b/kv/)
 ## [Fórumok](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 68f3736069a153e6de9a7ba5f11708a4eb648dbf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8a3f389250920dcdb49a5f88812d2e3b88bfd6c6
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-1"></a>A helyszíni StorSimple eszköz (1. frissítés) üzembe helyezése
+# <a name="deploy-your-on-premises-storsimple-device-update-1"></a>A helyszíni StorSimple eszköz (1. frissítés) üzembe helyezése
 > [!div class="op_single_selector"]
 > * [2. frissítés](storsimple-deployment-walkthrough-u2.md)
 > * [1. frissítés](storsimple-deployment-walkthrough-u1.md)
@@ -131,7 +131,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Az adatközpont tűzfalának portjai nyitva vannak az iSCSI és a felhőalapú forgalom számára, [A StorSimple eszköz hálózatkezelési követelményei](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device) című szakaszban leírtaknak megfelelően.
 
-## <a name="stepbystep-deployment"></a>Részletes üzembe helyezés
+## <a name="step-by-step-deployment"></a>Részletes üzembe helyezés
 Az alábbi részletes útmutatás segítségével helyezze üzembe a StorSimple eszközt az adatközpontban.
 
 ## <a name="step-1-create-a-new-service"></a>1. lépés: Új szolgáltatás létrehozása
@@ -270,6 +270,6 @@ Az MPIO Linux-állomáshoz csatlakoztatott StorSimple eszközre való telepíté
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

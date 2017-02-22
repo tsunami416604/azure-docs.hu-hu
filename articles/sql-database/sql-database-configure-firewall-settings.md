@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/28/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: a866b757c9c6946cdff4fe636e81bedbdfa29322
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
 
 
 ---
@@ -51,7 +51,7 @@ Kattintson a **Mentés** gombra a módosítások mentéséhez.
 ## <a name="next-steps"></a>Következő lépések
 
 - Az első lépéseket bemutató útmutatót lásd az [Oktatóanyag az SQL Database használatához: Kiszolgáló, kiszolgálószintű tűzfalszabály, mintaadatbázis és adatbázisszintű tűzfalszabály létrehozása, és csatlakozás az SQL Server Management Studióhoz](sql-database-get-started.md) című témakörben.
-- A biztonsággal foglalkozó bevezető oktatóanyagért lásd a [biztonságos használat első lépéseit](sql-database-get-started-security.md) ismertető témakört.
+- A biztonsággal foglalkozó bevezető oktatóanyagért lásd a [biztonságos használat első lépéseit](sql-database-control-access-sql-authentication-get-started.md) ismertető témakört.
 - Ha nyílt forráskódú vagy külső alkalmazásokból szeretne kapcsolódni az Azure SQL Database-hez, lásd az [SQL Database gyors üzembe helyezési ügyfélkódmintáival](https://msdn.microsoft.com/library/azure/ee336282.aspx) foglalkozó cikket.
 - Ha további, adatbázis-kapcsolattal rendelkező felhasználókat szeretne létrehozni, lásd az [SQL Database hitelesítési és engedélyezési szempontjai közül a hozzáférés megadásával](https://msdn.microsoft.com/library/azure/ee336235.aspx) foglalkozó cikket.
 
@@ -64,6 +64,6 @@ Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

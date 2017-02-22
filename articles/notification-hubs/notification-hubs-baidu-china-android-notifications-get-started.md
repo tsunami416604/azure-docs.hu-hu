@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9e6af9016318f9e31a143c6cf1329a7ab2c8acd6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
 
 
 ---
@@ -43,16 +43,16 @@ A Baidu használatához Baidu-fiókkal kell rendelkeznie. Ha már rendelkezik il
 
 1. Lépjen a [Baidu portálra], és kattintson a **登录** (**Bejelentkezés**) hivatkozásra. A fiókregisztrálás megkezdéséhez kattintson a **立即注册** gombra.
    
-       ![][1]
+   ![][1]
 2. A kért adatok – telefonszám/e-mail-cím, jelszó és ellenőrzőkód – megadása után kattintson a **Signup** (Regisztráció) elemre.
    
-       ![][2]
+   ![][2]
 3. A rendszer elküld egy e-mailt a megadott címre, amelyben megtalálható a Baidu-fiók aktiválására szolgáló hivatkozás.
    
-       ![][3]
+   ![][3]
 4. Jelentkezzen be az e-mail fiókjába, nyissa meg a Baidu aktiválási levelét, majd kattintson az aktiválási hivatkozásra a Baidu-fiók aktiválásához.
    
-       ![][4]
+   ![][4]
 
 A Baidu-fiók aktiválása után jelentkezzen be a [Baidu portálra].
 
@@ -444,11 +444,11 @@ Tesztértesítést a klasszikus Azure portál hibakeresési lapjáról küldhet.
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
-[Baidu portál]: http://www.baidu.com/
+[klasszikus Azure portálra]: https://manage.windowsazure.com/
+[Baidu portálra]: http://www.baidu.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

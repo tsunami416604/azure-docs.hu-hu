@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a538ceef7d9aeaca0e6f54443f3a5dabd06c22a1
-ms.openlocfilehash: 9914051f5f509a657e91aa66c1efb99ceb9f4817
+ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
+ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
 
 
 ---
 # <a name="getting-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, OS X és Linux rendszereken. Ebben a cikkben megismerheti az Azure-tárfiókok csatlakoztatásának és kezelésének különféle módjait.
+A Microsoft Azure Storage Explorer (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ebben a cikkben megismerheti az Azure Storage-fiókok csatlakoztatásának és kezelésének különféle módjait.
 
 ![Microsoft Azure Tártallózó (előzetes verzió)][15]
 
@@ -30,7 +30,7 @@ A Microsoft Azure Tártallózó (előzetes verzió) egy különálló alkalmazá
 * [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com)
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
-A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Ezek a következők lehetnek: csatlakozás az Azure-előfizetésekkel társított tárfiókokhoz, csatlakozás a más Azure-előfizetésekből megosztott tárfiókokhoz és -szolgáltatásokhoz, vagy akár a helyi tárterület csatlakoztatása és kezelése az Azure Storage Emulator használatával. Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
+A Storage Explorer (előzetes verzió) számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Ezek a következők lehetnek: csatlakozás az Azure-előfizetésekkel társított tárfiókokhoz, csatlakozás a más Azure-előfizetésekből megosztott tárfiókokhoz és -szolgáltatásokhoz, vagy akár a helyi tárterület csatlakoztatása és kezelése az Azure Storage Emulator használatával. Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
 * [Csatlakozás Azure-előfizetéshez](#connect-to-an-azure-subscription) – Az Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
 * [Munkavégzés helyi fejlesztési tárterülettel](#work-with-local-development-storage) – Helyi tárterület kezelése az Azure Storage Emulator használatával.
@@ -51,10 +51,10 @@ A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfi
 > [!NOTE]
 >Egy országos Azure-hoz, például a Black Forest Azure-hoz, a Fairfax Azure-hoz és a Mooncake Azure-hoz való csatlakozás bejelentkezéssel jelenleg nem támogatott. Az országos Azure Storage-fiókokhoz való csatlakozással kapcsolatban lásd a **Külső tárfiók csatolása vagy leválasztása** szakaszt.
 
-3. Amint sikeresen bejelentkezett egy Microsoft-fiókkal, a bal oldali ablaktáblán megjelenik az ezzel a fiókkal társított összes Azure-előfizetés. Válassza ki azt az Azure-előfizetést amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Az **Összes előfizetés** kiválasztásával kijelölheti az összes felsorolt Azure-előfizetést, vagy törölheti mindegyik jelölését.)
+3. Amint sikeresen bejelentkezett egy Microsoft-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure-előfizetés. Válassza ki azt az Azure-előfizetést amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Az **Összes előfizetés** kiválasztásával kijelölheti az összes felsorolt Azure-előfizetést, vagy törölheti mindegyik jelölését.)
 
     ![Azure-előfizetések kiválasztása][3]
-4. A bal oldali ablaktábla megjeleníti a kiválasztott Azure-előfizetéssel társított összes tárfiókot.
+4. A bal oldali ablaktábla megjeleníti a kiválasztott Azure-előfizetésekhez társított összes tárfiókot.
 
     ![Kiválasztott Azure-előfizetések][4]
 
@@ -72,7 +72,7 @@ A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is do
 2. Ha az Azure Storage Emulator még nincs telepítve, a rendszer az információs sávon kéri erre. Ha az információs sáv megjelenik, válassza a **Legújabb verzió letöltése** lehetőséget, és telepítse az emulátort.
 
     ![Azure Storage Emulator letöltése prompt][22]
-3. Miután telepítette az emulátort, létrehozhat majd helyi blobokat, üzenetsorokat és táblákat, és dolgozhat ezekkel. Az egyes tárfióktípusok kezelésével kapcsolatos információkért kattintson alább a megfelelő hivatkozásra:
+3. Miután telepítette az Emulatort, létrehozhat helyi blobokat, üzenetsorokat és táblákat, és kezelheti őket. Az egyes tárfióktípusok kezelésével kapcsolatos információkért kattintson az alábbi hivatkozások egyikére:
 
    * [Azure Blob Storage-erőforrások kezelése](vs-azure-tools-storage-explorer-blobs.md)
    * Azure File Share Storage-erőforrások kezelése – *Hamarosan elérhető*
@@ -83,7 +83,7 @@ A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is do
 A Tártallózó (előzetes verzió) segítségével külső tárfiókokat csatolhat, így azok könnyen megoszthatóak. Ez a szakasz külső tárfiókok csatolását (és leválasztását) írja le.
 
 ### <a name="get-the-storage-account-credentials"></a>Tárfiók hitelesítő adatainak lekérése
-A külső tárfiókok megosztásához először az adott fiók tulajdonosának le kell kérnie a fiók hitelesítő adatait (a fióknevet és a kulcsot), majd meg kell osztania azokat a – külső – fiókot csatlakoztatni kívánó személlyel. A tárfiók hitelesítő adatainak lekérése az Azure portálon keresztül lehetséges az alábbi lépések végrehajtásával:
+A külső tárfiókok megosztásához először az adott fiók tulajdonosának le kell kérnie a fiók hitelesítő adatait (a fióknevet és a kulcsot), majd meg kell osztania azokat a (külső) fiókot csatlakoztatni kívánó személlyel. A tárfiók hitelesítő adatainak lekérése az Azure portálon keresztül lehetséges az alábbi lépések végrehajtásával:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza a **Tallózás** lehetőséget.
@@ -138,7 +138,7 @@ Ennek szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azu
 2. A **Közös hozzáférésű jogosultságkód** párbeszédpanelen adja meg a kívánt időtartamot és engedélyeket a fiókhoz, és kattintson a **Létrehozás** gombra.
 
     ![SAS beszerzése párbeszédpanel][14]
-3. Megjelenik egy második **Közös hozzáférésű jogosultságkód** párbeszédpanel a SAS-kóddal. Kattintson a **Másolás** parancsra a **Kapcsolati karakterlánc** mellett annak a vágólapra másolásához. Válassza a **Bezárás** lehetőséget a párbeszédpanel bezárásához.
+3. Egy második **Közös hozzáférésű jogosultságkód** párbeszédpanel megjeleníti a SAS kódot. Kattintson a **Másolás** parancsra a **Kapcsolati karakterlánc** mellett annak a vágólapra másolásához. Válassza a **Bezárás** lehetőséget a párbeszédpanel bezárásához.
 
 ### <a name="attach-to-the-shared-account-using-the-sas"></a>Közös fiók csatolása a SAS használatával
 1. A Tártallózóban (előzetes verzió) válassza ki a **Csatlakozás Azure Storage-hoz** lehetőséget.
@@ -210,6 +210,6 @@ A keresés törléséhez kattintson az **x** gombra a keresőmezőben.
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

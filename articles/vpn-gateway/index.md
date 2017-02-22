@@ -1,5 +1,5 @@
 ---
-title: "A VPN Gateway dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+title: "Az Azure VPN Gateway dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg a virtuális magánhálózat (VPN) átjáróinak konfigurálását, hogy irányítani tudja a forgalmat a felhőben működő virtuális hálózat, helyszíni hálózat vagy a felhőben futó VNetek között."
 services: vpn-gateway
 author: carolz
@@ -13,9 +13,8 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
-ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
-
+ms.sourcegitcommit: b481f480d44696476497e0eaeeee7150ed8d365b
+ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
 
 ---
 # <a name="vpn-gateway-documentation"></a>A VPN Gateway dokumentációja
@@ -169,6 +168,6 @@ Ismerje meg a VPN Gateway virtuális magánhálózati átjáró konfigurálásá
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

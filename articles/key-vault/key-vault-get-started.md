@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e30f98d541d0e6a79fab0e9b12619a2072e9ec70
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 115a718977906b3e647b628017f7ab46a588d7f2
 
 
 ---
@@ -41,7 +41,7 @@ Ez az oktatóanyag segít megismerni az Azure Key Vault szolgáltatást, amellye
 Az oktatóanyag teljesítéséhez szüksége lesz:
 
 * Egy Microsoft Azure-előfizetésre. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-* Az Azure PowerShell legalább **1.1.0-ás verziójára**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`. Ha az Azure PowerShell 0.9.1-től 0.9.8-ig terjedő verziói közül rendelkezik valamelyikkel, néhány apró eltéréstől függetlenül Önre is vonatkozik az útmutató. Például a `Switch-AzureMode AzureResourceManager` parancsot kell használnia, valamint bizonyos Azure Key Vault parancsok módosultak. A 0.9.1 és 0.9.8 közötti verziók Key Vault parancsmagjainak listája az alábbi témakörben található: [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.98\).aspx) (Az Azure Key Vault parancsmagjai). 
+* Az Azure PowerShell legalább **1.1.0-ás verziójára**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`. Ha az Azure PowerShell 0.9.1-től 0.9.8-ig terjedő verziói közül rendelkezik valamelyikkel, néhány apró eltéréstől függetlenül Önre is vonatkozik az útmutató. Például a `Switch-AzureMode AzureResourceManager` parancsot kell használnia, valamint bizonyos Azure Key Vault parancsok módosultak. A 0.9.1 és 0.9.8 közötti verziók Key Vault parancsmagjainak listája az alábbi témakörben található: [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.98\).aspx) (Az Azure Key Vault parancsmagjai). 
 * Egy, az útmutató során létrehozott kulcs vagy jelszó használatához konfigurált alkalmazásra. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Útmutatásért tekintse meg a kísérő információs fájlt.
 
 Ez az útmutató kezdő Azure PowerShell-felhasználók számára készült, de a követéséhez tisztában kell lennie az olyan alapszintű fogalmakkal, mint a modulok, a parancsmagok és a munkamenetek. További információ: [Getting started with Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx) (Ismerkedés a Windows PowerShellel).
@@ -56,7 +56,7 @@ Például ha a **Login-AzureRmAccount** parancsmaghoz szeretne segítséget kér
 
 Az alábbi útmutatókkal megismerkedhet az Azure Resource Manager az Azure PowerShellel való használatával:
 
-* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](../powershell-install-configure.md)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azureps-cmdlets-docs)
 * [Using Azure PowerShell with Resource Manager (Az Azure PowerShell és a Resource Manager együttes használata)](../powershell-azure-resource-manager.md)
 
 ## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>Csatlakozás az előfizetésekhez
@@ -76,7 +76,7 @@ Ezt követően írja be az alábbi parancsot a kívánt előfizetés kiválaszt�
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a name="a-idresourceacreate-a-new-resource-group"></a><a id="resource"></a>Új erőforráscsoport létrehozása
 Az Azure Resource Manager használatakor minden kapcsolódó erőforrás egy erőforráscsoportban jön létre. Ehhez az útmutatóhoz hozzon létre egy új erőforráscsoportot **ContosoResourceGroup** névvel:
@@ -237,6 +237,6 @@ Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-v
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

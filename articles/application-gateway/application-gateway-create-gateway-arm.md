@@ -1,5 +1,5 @@
 ---
-title: "Application Gateway létrehozása, indítása vagy törlése az Azure Resource Manager használatával | Microsoft Docs"
+title: "Azure Application Gateway létrehozása és kezelése – PowerShell | Microsoft Docs"
 description: "Ez a lap utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager segítségével történő létrehozásához, konfigurálásához, indításához és törléséhez"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
-ms.openlocfilehash: 5da4b087131b0adef49f7019297db834d7bb9416
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: baf389dcdfb38053b9feb976d19b471838f1315e
 
 
 ---
@@ -303,6 +303,6 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Az Azure DNS dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogyan kezelheti DNS-rekordjait az Azure Domain Name System segítségével. A dokumentáció bemutatja, hogyan állíthatja be és felügyelheti a tartománynevek DNS-zónáit és -rekordjait."
+services: dns
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: dns
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
+ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 
 ---
 # <a name="dns-documentation"></a>DNS – dokumentáció
 
-Az Azure DNS (tartománynévrendszer) egy olyan szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához.  Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
+Ismerje meg, hogyan kezelheti DNS-rekordjait az Azure Domain Name System üzemeltetési szolgáltatás segítségével. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthatja be és felügyelheti a tartománynevek DNS-zónáit és -rekordjait.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,16 +143,10 @@ Az Azure DNS (tartománynévrendszer) egy olyan szolgáltatás, amely a Microsof
 </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/dns.pdf">
-        <div class="img"></div>
-        <div class="text">
-DNS – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

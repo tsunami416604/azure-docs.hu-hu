@@ -1,10 +1,10 @@
 ---
-title: "Virtuális hálózatok összekapcsolása a Resource Manager-alapú üzemi modellel és az Azure Portallal| Microsoft Docs"
+title: "Azure virtuális hálózat csatlakoztatása másik virtuális hálózathoz: Portal | Microsoft Docs"
 description: "VPN Gateway-kapcsolatot hozhat létre virtuális hálózatok között a Resource Managerrel és az Azure Portallal."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 28d81fe312195b9a9094e1ed066f5cba57c76933
-ms.openlocfilehash: b85017913316a450fe19f1760abff6a86f933e2e
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 
 
 ---
@@ -51,7 +51,7 @@ Egy virtuális hálózat egy másikkal való összekapcsolása (a virtuális há
 
 A virtuális hálózatok közötti kommunikációt kombinálhatja többhelyes konfigurációkkal is. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal egyesítik, ahogyan azt a következő diagram mutatja:
 
-![Tudnivalók a kapcsolatokról](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "About connections")
+![Tudnivalók a kapcsolatokról](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Tudnivalók a kapcsolatokról")
 
 ### <a name="why-connect-virtual-networks"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
 A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
@@ -64,7 +64,7 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
   
   * Egy régión belül beállíthat többrétegű alkalmazásokat több, elkülönítéssel vagy felügyeleti követelményekkel összekapcsolt virtuális hálózatokkal.
 
-A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál.
+A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, [A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok](#faq) című részben talál.
 
 ### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>Példabeállítások
 Ha gyakorlatként használja ezeket a lépéseket, ezeket a konfigurációs mintaértékeket használhatja. Csupán a példa kedvéért több címteret használunk az egyes virtuális hálózatokhoz. Azonban a virtuális hálózatok közötti kapcsolat konfigurálásához nincs szükség több címtérre.
@@ -155,21 +155,21 @@ Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának
 
 1. A **Minden erőforrás** részben navigáljon a virtuális hálózata virtuális hálózati átjárójához. Például: **TestVNet1GW**. A virtuális hálózati átjáró paneljének megnyitásához kattintson a **TestVNet1GW** elemre.
    
-    ![Kapcsolatpanel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Connections blade")
+    ![Kapcsolatpanel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Kapcsolatpanel")
 2. Kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** panel megnyitásához.
 3. A **Kapcsolat hozzáadása** panelen, a név mezőben adja meg a kapcsolat nevét. Például: **TestVNet1toTestVNet4**.
    
-    ![Kapcsolat neve](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Connection name")
+    ![Kapcsolat neve](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Kapcsolat neve")
 4. A **Kapcsolat típusa** mezőben. válassza a **Virtuális hálózatok közötti** lehetőséget a legördülő listából.
 5. Az **Első virtuális hálózati átjáró**mező értéke automatikusan ki lesz töltve, mert egy megadott virtuális hálózati átjáróból hozza létre a kapcsolatot.
 6. A **Második virtuális hálózati átjáró**mezőben annak a virtuális hálózatnak a virtuális hálózati átjáróját kell megadni, amelyikhez létre szeretné hozni a kapcsolatot. Kattintson a **Másik virtuális hálózati átjáró kiválasztása** elemre a **Virtuális hálózati átjáró kiválasztása** panel megnyitásához.
    
-    ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Add a connection")
+    ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Kapcsolat hozzáadása")
 7. Tekintse át a panelen felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha olyan virtuális hálózati átjáróhoz szeretne kapcsolódni, amely nem szerepel az előfizetésében, olvassa el a [PowerShell-lel kapcsolatos cikket](vpn-gateway-vnet-vnet-rm-ps.md). 
 8. Kattintson arra a virtuális hálózati átjáróra, amelyhez csatlakozni kíván.
 9. A **Megosztott kulcs** mezőben adja meg a kapcsolat megosztott kulcsát. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Egy helyek közötti kapcsolat esetében a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatához használt kulcs ugyanaz lenne. A fogalom itt is hasonló, azonban itt nem egy VPN-eszközhöz, hanem egy másik virtuális hálózati átjáróhoz való csatlakozásról van szó.
    
-    ![Megosztott kulcs](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Shared key")
+    ![Megosztott kulcs](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Megosztott kulcs")
 10. A módosítások mentéséhez kattintson az **OK** gombra a panel alján.
 
 ## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8. A TestVNet4 kapcsolat konfigurálása
@@ -183,13 +183,13 @@ Ellenőrizze a kapcsolatot. Minden egyes virtuális hálózati átjáró esetéb
 
 Tekintse át a kapcsolatokat, és ellenőrizze az állapotot. Amikor a kapcsolat létrejött, állapotértékként a **Sikeres** és a **Csatlakoztatva** szerepel.
 
-![Sikeres](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Succeeded")
+![Sikeres](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Sikeres")
 
 Kattintson duplán az egyes kapcsolatokra az adott kapcsolat információinak megtekintéséhez.
 
-![Alapvető erőforrások](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
+![Alapvető szolgáltatások](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Alapvető szolgáltatások")
 
-## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
+## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok
 A virtuális hálózatok közötti kapcsolatokról további információt a gyakori kérdésekben talál.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
@@ -199,6 +199,6 @@ Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális h�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

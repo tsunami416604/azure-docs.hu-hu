@@ -1,6 +1,6 @@
 ---
 title: "Továbbítónévtér létrehozása az Azure Portal használatával | Microsoft Docs"
-description: "Az Azure-továbbítás használatának megkezdéséhez szükség van egy névtérre. Az alábbiakban leírtak szerint hozhat létre egyet az Azure Portal használatával."
+description: "Relay-névtér létrehozása az Azure Portal használatával."
 services: service-bus-relay
 documentationcenter: .net
 author: jtaubensee
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub
+ms.date: 02/13/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
-ms.openlocfilehash: e51dc77e0a0fc3c0a2cc4050d7b896e177a86cc0
-
+ms.sourcegitcommit: 97c793abc9935707115c166a97f6f7bdfee1a8c5
+ms.openlocfilehash: d6ef2e0c75a27b294ee653bf9a0219c2233d272c
 
 ---
+
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Továbbítónévtér létrehozása az Azure Portal használatával
 A névtér egy közös tároló a továbbító valamennyi összetevője számára. Egyetlen névtér több továbbítót is tartalmazhat, és a névterek gyakran alkalmazástárolóként is szolgálnak. A továbbítónévterek létrehozásának jelenleg két különböző módja van.
 
@@ -39,6 +39,6 @@ Gratulálunk! Ezzel létrehozott egy új továbbítónévteret.
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 0b87ec728891d4f64bb7b2e4b7b4f0f2276b1ffc
-ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
+ms.sourcegitcommit: fd22e9596feecbc12e577a4abfb47552e1b6e520
+ms.openlocfilehash: da8f083cb7bca59501df080036e789a0fb75731e
 
 
 ---
@@ -29,7 +29,7 @@ A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létr
 ## <a name="navigate-to-the-b2c-features-blade"></a>Lépjen a B2C funkciók paneljére
 Ha a B2C funkciók panelje rögzítésre kerül a kezdőpulton, azonnal látni fogja a panelt, amint B2C-bérlő globális rendszergazdájaként bejelentkezik az [Azure Portalra](https://portal.azure.com/).
 
-A panelre úgy is beléphet, hogy a **Browse** (Tallózás), majd az **Azure AD B2C** lehetőségre kattint az [Azure Portal](https://portal.azure.com/) bal oldali navigációs ablaktáblájában.
+A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint, majd megkeresi az **Azure AD B2C** elemet az [Azure Portal](https://portal.azure.com/) bal oldali navigációs ablaktábláján.
 
 > [!IMPORTANT]
 > A B2C bérlő globális rendszergazdájának kell lennie ahhoz, hogy hozzáférhessen a B2C funkciók panelhez. Más bérlők globális rendszergazdái vagy felhasználói nem férhetnek hozzá a panelhez.  A B2C-bérlőre az Azure Portal jobb felső sarkában található bérlőváltó használatával válthat át.
@@ -40,7 +40,7 @@ A panelre úgy is beléphet, hogy a **Browse** (Tallózás), majd az **Azure AD 
 1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
 2. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
 3. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Adja meg például a „Contoso B2C alkalmazás” nevet.
-4. Ha webalapú alkalmazásról van szó, az **Include web app / web API** (Webalkalmazással/webes API-val együtt) váltógombot állítsa a **Yes** (Igen) állásba. A **válasz URL-címek** olyan végpontok, ahol az Azure AD B2C visszalép az alkalmazás által kért jogkivonatokhoz. Adja meg például a következőt: `https://localhost:44321/`. Ha a webalkalmazás az Azure AD B2C által biztonságossá tett webes API-kat is meg fog hívni, ajánlott egy **Aplication Secret** (Alkalmazástitok) létrehozása is a **Generate Key** (Kulcs létrehozása) gombra kattintva.
+4. Ha webalapú alkalmazásról van szó, az **Include web app / web API** (Webalkalmazással/webes API-val együtt) váltógombot állítsa a **Yes** (Igen) állásba. A **válasz URL-címek** olyan végpontok, ahol az Azure AD B2C visszalép az alkalmazás által kért jogkivonatokhoz. Adja meg például a következőt: `https://localhost:44316/`. Ha a webalkalmazás az Azure AD B2C által biztonságossá tett webes API-kat is meg fog hívni, ajánlott egy **Aplication Secret** (Alkalmazástitok) létrehozása is a **Generate Key** (Kulcs létrehozása) gombra kattintva.
    
    > [!NOTE]
    > Az **Application Secret** (Alkalmazástitok) fontos biztonsági hitelesítő adat, amelynek megfelelő biztonságáról gondoskodni kell.
@@ -63,6 +63,6 @@ Miután az Azure AD B2C-vel regisztrált egy alkalmazást, gyors üzembe helyez�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

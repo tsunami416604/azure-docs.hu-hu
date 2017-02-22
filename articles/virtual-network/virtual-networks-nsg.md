@@ -1,10 +1,10 @@
 ---
-title: "Hálózati biztonsági csoportok | Microsoft Docs"
+title: "Hálózati biztonsági csoportok az Azure-ban | Microsoft Docs"
 description: "Ismerje meg, miként különítheti el és irányíthatja a forgalmat virtuális hálózatán belül a hálózati biztonsági csoportokra épülő Azure elosztott tűzfal használatával."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 20e850fc-6456-4b5f-9a3f-a8379b052bc9
 ms.service: virtual-network
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
-ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
+ms.sourcegitcommit: 2165cdc87a505e94fab2fc73c30a5764348c6dc1
+ms.openlocfilehash: b382cf65ae172e0037f2bc668a4f5862b29d1700
 
 
 ---
-# <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+# <a name="control-network-traffic-flow-with-network-security-groups"></a>Hálózati forgalom áramlásának vezérlése hálózati biztonsági csoportokkal
 
 A hálózati biztonsági csoport (NSG) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom érhesse el a virtuális hálózatban futó virtuálisgép-példányokat. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Amikor egy NSG-t hozzárendelnek egy alhálózathoz, az ACL szabályok érvényessé válnak az alhálózat összes virtuálisgép-példányára. Emellett egy adott virtuális gépre irányuló forgalmat tovább is lehet korlátozni azzal hogy egy NSG-t közvetlenül ahhoz a virtuális géphez rendelnek.
 
@@ -261,6 +261,6 @@ Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kel
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

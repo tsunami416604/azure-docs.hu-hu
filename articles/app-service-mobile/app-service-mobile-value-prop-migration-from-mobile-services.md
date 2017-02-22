@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
 
 
 ---
@@ -44,7 +44,7 @@ Az *Azure App Service* szolgáltatásban a *Mobile Apps*-háttéralkalmazás ugy
 * (.NET esetében) az ASP.NET bármely funkciójának használata (például MVC)
 * (Node.js esetében) A Node ökoszisztémához tartozó bármely tiszta JavaScript-függvénytár használata (például közös MVC-függvénytárak)
 
-## <a name="access-onpremises-data-using-vnet"></a>Helyszíni adatok elérése VNet segítségével
+## <a name="access-on-premises-data-using-vnet"></a>Helyszíni adatok elérése VNet segítségével
 A Mobile Services szolgáltatással már jelenleg is elérheti a helyszíni erőforrásokat a hibrid kapcsolatokkal. Bizonyos esetekben azonban érdemesebb lehet VPN-megoldást használni. Az *Azure App Service* szolgáltatásban az Azure VNet is használható a Mobile Apps-háttéralkalmazás kódjához.
 
 ## <a name="use-your-favorite-backend-language"></a>A kívánt háttéralkalmazás-nyelv használata
@@ -67,6 +67,6 @@ Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

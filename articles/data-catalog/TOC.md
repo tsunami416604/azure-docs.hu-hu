@@ -21,17 +21,14 @@
 ## [Keresések mentése és adatobjektumok kitűzése](data-catalog-how-to-save-pin.md)
 ## [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 
-## Fejlesztés
-### [Fejlesztői fogalmak](data-catalog-developer-concepts.md)
-### [Fejlesztői minták](data-catalog-samples.md)
-
 # Referencia
-## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
-## [Terminológia](data-catalog-terminology.md)
-## [Kiadási megjegyzések](data-catalog-release-notes.md)
 ## [REST](/rest/api/datacatalog/)
+## [Fejlesztői fogalmak](data-catalog-developer-concepts.md)
+## [Fejlesztői minták](data-catalog-samples.md)
 
 # Erőforrások
+## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
+## [Terminológia](data-catalog-terminology.md)
 ## [Kibocsátási megjegyzések](data-catalog-whats-new.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
@@ -39,6 +36,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

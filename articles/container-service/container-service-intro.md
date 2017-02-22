@@ -1,103 +1,117 @@
 ---
-title: Azure Container Service Introduction | Microsoft Docs
-description: Azure Container Service provides a way to simplify the creation, configuration, and management of a cluster of virtual machines that are preconfigured to run containerized applications.
+title: "Docker-tárolófürtök az Azure-felhőben | Microsoft Docs"
+description: "Az Azure Container Service lehetőséget biztosít arra, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: Docker, Containers, Micro-services, Mesos, Azure
-
+keywords: "Docker, tárolók, mikroszolgáltatások, Mesos, Azure"
+ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 01/21/2017
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: cc3cc2dce324942f184b6a520dc4db28518a3091
+ms.openlocfilehash: 0521fbd689233c0f2359a10006e24c75c8997732
+
 
 ---
-# Azure Container Service introduction
-Azure Container Service makes it simpler for you to create,
-configure, and manage a cluster of virtual machines that are
-preconfigured to run containerized applications. It uses an optimized configuration of popular open-source scheduling and orchestration tools. This enables you to use your existing skills, or draw upon a large and growing body of community expertise, to deploy and manage container-based applications on Microsoft Azure.
+# <a name="azure-container-service-introduction"></a>Az Azure Container Service bemutatása
+Az Azure Container Service elősegíti azt, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Ezt nyílt forráskódú ütemezési és vezénylési eszközök optimalizált konfigurációját igénybe véve teszi lehetővé. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
 
-![Azure Container Service provides a means to manage containerized applications on multiple hosts on Azure.](./media/acs-intro/acs-cluster.png)
+![Az Azure Container Service lehetővé teszi, hogy az Azure-on több gazdagépen kezelhesse a tárolóalapú alkalmazásokat.](./media/acs-intro/acs-cluster-new.png)
 
-Azure Container Service leverages the Docker container format to ensure that your application containers are fully portable. It also supports your choice of Marathon and DC/OS or Docker Swarm so that you can scale these applications to thousands of containers, or even tens of thousands.
+Az Azure Container Service a Docker tárolóformátumot használja, így biztosítva az alkalmazástárolók hordozhatóságát. Ezenkívül támogatja a Marathon, a DC/OS, a Docker Swarm és a Kubernetes használatát, így tárolók ezreire vagy akár tízezreire is méretezheti ezeket az alkalmazásokat.
 
-By using Azure Container Service, you can take advantage of the
-enterprise-grade features of Azure, while still maintaining application portability--including portability at the orchestration layers.
+>[!NOTE]
+> A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
+>
 
-## Using Azure Container Service
-Our goal with Azure Container Service is to provide a container
-hosting environment by using open-source tools and technologies that are popular among our customers today. To this end, we expose the standard API endpoints for your chosen orchestrator (DC/OS or Docker Swarm). By using these endpoints, you can leverage any software that is capable of talking to those endpoints. For example, in the case of the Docker Swarm endpoint, you might choose to use the Docker command-line interface (CLI). For DC/OS, you might choose to use the DCOS CLI.
+Az Azure Container Service használatával igénybe veheti az Azure nagyvállalati szintű funkcióit, miközben továbbra is fenntartja az alkalmazás-hordozhatóságot, beleértve a vezénylési rétegek hordozhatóságát is.
 
-## Creating a Docker cluster by using Azure Container Service
-To begin using Azure Container Service, you deploy an Azure Container Service cluster via the portal (search for 'Azure Container Service'), by using an Azure Resource Manager template ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm) or [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)) or with the [CLI](/documentation/articles/xplat-cli-install/). The provided quickstart templates can be modified to include additional or advanced Azure configuration. For more information on deploying an Azure Container Service cluster, see [Deploy an Azure Container Service cluster](container-service-deployment.md).
+## <a name="using-azure-container-service"></a>Az Azure Container Service használata
+Célunk az Azure Container Service keretében az, hogy a manapság az ügyfelek körében népszerű nyílt forráskódú eszközök és technológiák használatával nyújtsunk tárolóüzemeltetési környezetet. E célból a választott vezénylő (DC/OS, Docker Swarm vagy Kubernetes) számára elérhetővé tesszük a standard API-végpontokat. E végpontokkal bármely olyan szoftvert használhat, amely képes a végpontokkal folytatott kommunikációra. Például a Docker Swarm-végpont esetében választhatja a Docker parancssori felületének használatát. A DC/OS esetében pedig használhatja a DCOS parancssori felületét. A Kubernetes esetében a pkubectl használatát is választhatja.
 
-## Deploying an application
-Azure Container Service provides a choice of either Docker Swarm or DC/OS for orchestration. How you deploy your application depends on your choice of orchestrator.
+## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Egy Docker-fürt létrehozása az Azure Container Service használatával
+Az Azure Container Service használatához üzembe kell helyeznie egy Azure Container Service-fürtöt a portálon keresztül (keressen az „Azure Container Service” kifejezésre), illetve egy Azure Resource Manager-sablon ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) vagy [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) esetén), vagy a [parancssori felület](/articles/xplat-cli-install.md) segítségével. A megadott gyorsindítási sablonok módosíthatók további vagy speciális Azure-konfigurációk belefoglalásával. Az Azure Container Service-fürt üzembe helyezésével kapcsolatos információkért lásd az [Azure Container Service-fürt üzembe helyezését](container-service-deployment.md) ismertető cikket.
 
-### Using DC/OS
-DC/OS is a distributed operating system based on the Apache Mesos distributed systems kernel. Apache Mesos is housed at the Apache Software
-Foundation and lists some of the [biggest names in
-IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/) as
-users and contributors.
+## <a name="deploying-an-application"></a>Alkalmazás üzembe helyezése
+Az Azure Container Service a vezényléshez lehetővé teszi a választást a Docker Swarm, a DC/OS és a Kubernetes között. A kiválasztott vezénylőtől függ, hogyan helyezi üzembe az alkalmazást.
 
-![Azure Container Service configured for Swarm showing agents and masters.](media/acs-intro/dcos.png)
+### <a name="using-dcos"></a>A DC/OS használata
+A DC/OS egy olyan elosztott operációs rendszer, amely az Apache Mesos elosztott rendszer kernelén alapszik. Az Apache Mesos az Apache Software Foundation részeként érhető el, és felhasználói és közreműködői között megtalálhatók [az informatikai piac legnagyobb nevei](http://mesos.apache.org/documentation/latest/powered-by-mesos/) is.
 
-DC/OS and Apache Mesos include an impressive feature set:
+![Swarmhoz konfigurált Azure Container Service, ügynökökkel és főkiszolgálókkal.](media/acs-intro/dcos.png)
 
-* Proven scalability
-* Fault-tolerant replicated master and slaves using Apache ZooKeeper
-* Support for Docker-formatted containers
-* Native isolation between tasks with Linux containers
-* Multiresource scheduling (memory, CPU, disk, and ports)
-* Java, Python, and C++ APIs for developing new parallel applications
-* A web UI for viewing cluster state
+A DC/OS és az Apache Mesos lenyűgöző szolgáltatáskészletet tesz elérhetővé:
 
-By default, DC/OS running on Azure Container Service includes the Marathon  orchestration platform for scheduling workloads. However, included with the DC/OS deployment of ACS is the Mesosphere Universe of services that can be added to your service, these include Spark, Hadoop, Cassandra and much more.
+* Bizonyított méretezhetőség
+* Apache Zookeepert használó, nagy hibatűrésű replikált főkiszolgáló és alkiszolgálók
+* Docker formátumú tárolók támogatása
+* Feladatok közötti natív elkülönítés Linux-tárolókkal
+* Többforrású ütemezés (memória, processzor, lemez és portok)
+* Java, Python és C++ API-k új párhuzamos alkalmazások fejlesztéséhez
+* Webes felhasználói felület a fürtállapot áttekintésére
 
-![DC/OS Universe in Azure Container Service](media/dcos/universe.png)
+Alapértelmezés szerint az Azure Container Service-en futó DC/OS tartalmazza az ütemezési feladatokhoz szükséges Marathon vezénylési platformot. Azonban az ACS DC/OS rendszerű környezetét részét képező Mesosphere Universe olyan szolgáltatásokat tartalmaz, amelyeket hozzáadhat saját szolgáltatásához. Ilyen többek között például a Spark, a Hadoop és a Cassandra.
 
-#### Using Marathon
-Marathon is a cluster-wide init and control system for services in
-cgroups--or, in the case of Azure Container Service, Docker-formatted containers. Marathon provides a web UI from which you can deploy your applications. You can access this at a URL that looks something like
-`http://DNS_PREFIX.REGION.cloudapp.azure.com`
-where DNS\_PREFIX and REGION are both defined at deployment time. Of course, you can also provide your own DNS name. For more information on running a container using the Marathon web UI, see [Container management through the web UI](container-service-mesos-marathon-ui.md).
+![A DC/OS Universe az Azure Container Service-ben](media/dcos/universe.png)
 
-![Marathon Applications List](media/dcos/marathon-applications-list.png)
+#### <a name="using-marathon"></a>A Marathon használata
+A Marathon egy egész fürtre kiterjedő inicializáló és vezérlő rendszer cgroupokban található szolgáltatások vagy – az Azure Container Service esetében – Docker formátumú tárolók számára. A Marathon egy olyan webes felhasználói felületet biztosít, ahonnan telepítheti az alkalmazásokat. Ezt a felületet egy, a következőhöz hasonló URL-címmel érheti el: `http://DNS_PREFIX.REGION.cloudapp.azure.com`, ahol mind a DNS\_PREFIX, mind a REGION az üzembe helyezéskor van meghatározva. Természetesen megadhatja a saját DNS-nevét is. A Marathon webes felhasználói felülete segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a webes felhasználói felületen](container-service-mesos-marathon-ui.md) című cikket.
 
-You can also use the REST APIs for communicating with Marathon. There are a number of client libraries that are available for each tool. They cover a variety of languages--and, of course, you can use the HTTP protocol in any language. In addition, many popular DevOps tools provide support for Marathon. This provides maximum flexibility for your operations team when you are working with an Azure Container Service cluster. For more information on running a container by using the Marathon REST API, see [Container management with the REST API](container-service-mesos-marathon-rest.md).
+![A Marathon alkalmazáslistája](media/dcos/marathon-applications-list.png)
 
-### Using Docker Swarm
-Docker Swarm provides native clustering for Docker. Because Docker Swarm
-serves the standard Docker API, any tool that already communicates with
-a Docker daemon can use Swarm to transparently scale to multiple hosts
-on Azure Container Service.
+REST API-kat is használhat a Marathonnal folytatott kommunikációhoz. Számos ügyfélkódtár létezik, amelyek elérhetők minden egyes eszköz számára. Számos nyelvet támogatnak, és persze a HTTP protokollt is használhatja bármilyen nyelven. Továbbá sok népszerű DevOps-eszköz is támogatja a Marathont. Ez maximális rugalmasságot biztosít a műveleti csapatnak, amikor egy Azure Container Service-fürttel dolgozik. A Marathon REST API-k segítségével futtatott tárolóhoz kapcsolódó további információért lásd a [Tárolókezelés a REST API-val](container-service-mesos-marathon-rest.md) című cikket.
 
-![Azure Container Service configured to use DC/OS--showing jumpbox, agents, and masters.](media/acs-intro/acs-swarm2.png)
+### <a name="using-docker-swarm"></a>A Docker Swarm használata
+A Docker Swarm natív fürtszolgáltatást biztosít a Docker számára. Mivel a Docker Swarm a standard Docker API-t szolgálja ki, minden más eszköz, amely már kommunikál a Docker-démonnal használhatja a Swarmot ahhoz, hogy több gazdagépre transzparens módon végezzen átméretezést az Azure Container Service-ben.
 
-Supported tools for managing containers on a Swarm cluster include, but are not limited
-to, the following:
+![DC OS használatához konfigurált Azure Container Service, jumpboxszal, ügynökökkel és főkiszolgálókkal.](media/acs-intro/acs-swarm2.png)
+
+A Swarm-fürtön való tárolókezeléseket támogató eszközök közé tartoznak többek között az alábbiak:
 
 * Dokku
-* Docker CLI and Docker Compose
+* Docker parancssori felület (CLI) és Docker Compose
 * Krane
 * Jenkins
 
-## Videos
-Getting started with Azure Container Service (101):  
+### <a name="using-kubernetes"></a>A Kubernetes használata
+A Kubernetes az automatizált tárolókörnyezethez, méretezéshez és tárolóalapú alkalmazások felügyeletéhez készült népszerű, nyílt forráskódú, termelési szintű tárolóvezénylő eszköz. Mivel ez egy nyílt forráskódú megoldás, amelyet a felhasználói közösség fejleszt, problémamentesen fut az Azure Container Service-en, és használható tárolók méretezhető való üzembe helyezésére az Azure Container Service-ben.
+
+![Kubernetes használatához konfigurált Azure Container Service, ügynökökkel és főkiszolgálókkal.](media/acs-intro/kubernetes.png)
+
+Többek között a következő funkciókat tartalmazza:
+* Vízszintes méretezés
+* Szolgáltatásészlelés és terheléselosztás
+* Titkos kódok és konfigurációk kezelése
+* API-alapú automatizált kibocsátások és visszaállítások
+* Önjavítás
+* és még sok más.
+
+
+
+## <a name="videos"></a>Videók
+Bevezetés az Azure Container Service használatába (101):  
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Container-Service-101/player]
-> 
-> 
+>
+>
 
-Building Applications Using the Azure Container Service (Build 2016)
+Alkalmazások létrehozása az Azure Container Service (2016-os build) használatával
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/B822/player]
-> 
-> 
+>
+>
+
+
+
+<!--HONumber=Feb17_HO1-->
+
 

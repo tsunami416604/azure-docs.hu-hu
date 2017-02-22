@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/03/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 02623fc3d663a674e2184380915d651dff5760bc
 
 
 ---
@@ -27,7 +27,7 @@ Ez a kódmentes bevezető közvetlenül a portálba épített funkciók segíts�
 Az oktatóanyag feltételezi, hogy Ön rendelkezik egy [minta Azure DocumentDB-adatbázissal](#apdx-sampledata), amelyet az adataink és utasításaink segítségével egyszerűen létrehozhat, de ugyanezeket a lépéseket alkalmazhatja a DocumentDB vagy SQL-adatbázisban már meglévő saját adataira is.
 
 > [!NOTE]
-> Az első lépéseket bemutató oktatóanyaghoz szükség van egy [Azure-előfizetésre](/pricing/free-trial/?WT.mc_id=A261C142F) és egy [Azure Search szolgáltatásra](search-create-service-portal.md). 
+> Az első lépéseket bemutató oktatóanyaghoz szükség van egy [Azure-előfizetésre](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és egy [Azure Search szolgáltatásra](search-create-service-portal.md). 
 > 
 > 
 
@@ -181,6 +181,6 @@ JSON kimeneti adatokat kell visszakapnia, a 386. számú dokumentummal kezdődő
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 12/01/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 0c946ce6a96f2e3644b9890dad5d60a35ad4bcb7
-ms.openlocfilehash: 10184c52d532eb56e66212fafdea3d059b0c43e3
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
 
 
 ---
@@ -45,23 +45,19 @@ Idővel a Security Center kibővíti a partnerek számát a meglévő kategóri�
 
 ## <a name="how-to-deploy-a-partner-solution"></a>Hogyan helyezhetők üzembe a partnermegoldások?
 
-A Security Centerben már üzembe helyezett partnermegoldások könnyen elérhetőek a Security Center irányítópultjának Partnermegoldás csempéjéről:
+Az Azure-környezet konfigurációja és az Ön által meghatározott biztonsági szabályzat alapján a Security Center javasolhatja egy partnermegoldás üzembe helyezését. A javaslatok végigvezetik a partnermegoldás kiválasztásának és telepítésének folyamatán. Az általános üzembe helyezési folyamat az adott megoldástípusnak és partnernek megfelelően eltérő lehet. További információért kövesse az alábbi hivatkozásokat:
+
+- [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md)
+- [Újgenerációs tűzfal hozzáadása](security-center-add-next-generation-firewall.md)
+- [Endpoint Protection telepítése](security-center-install-endpoint-protection.md)
+- [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md)
+
+## <a name="how-to-manage-partner-solutions"></a>A partnermegoldások kezelése
+
+Miután a partnermegoldást üzembe helyezte, információkat tekinthet meg az állapotáról, és alapszintű felügyeleti feladatokat végezhet a Security Center fő irányítópultjának Partnermegoldás csempéjén. A partnermegoldások Security Centerben végzett kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
 
 ![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
 
-Ha szeretne üzembe helyezni egy új partnermegoldást a Security Center javaslata alapján, hajtsa végre az alábbi lépéseket:
-
-> [!NOTE]
-> A következő példa lépései azt feltételezik, hogy Ön rendelkezik olyan számítási feladattal, amelyet szeretne webalkalmazási tűzfallal megvédeni.
-
-1. A Security Center irányítópultján kattintson a **Javaslatok** csempére.
-2. A **Javaslatok** panelen kattintson a **Webalkalmazási tűzfal hozzáadása** elemre.
-3. Kattintson az alkalmazás nevére a **Webalkalmazási tűzfal hozzáadása** panel alatt.
-4. A **Webalkalmazási tűzfal hozzáadása** panelen kattintson az **Új létrehozása** elemre.
-5. Az **Új webalkalmazási tűzfal létrehozása** panel megjeleníti azon jelenlegi partnerek listáját, amelyek webalkalmazási tűzfal képességet nyújtanak.
-6. Válassza ki a megfelelő partnermegoldást, és kövesse a lépéseket (a lépések partnerenként eltérőek lehetnek).
-
-Az általános üzembe helyezési élmény az adott partnernek megfelelően eltérő lehet. A partnermegoldások a Security Centerben való kezelésével kapcsolatos további információkért lásd a[Partnermegoldások az Azure Security Centerrel való figyeléséről](security-center-partner-solutions.md) szóló cikket.
 
 ## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedett a partnermegoldások az Azure Security Centerrel való integrációjával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -76,6 +72,6 @@ Ebben a dokumentumban megismerkedett a partnermegoldások az Azure Security Cent
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,17 +1,29 @@
 ---
+title: "Az Azure Billing dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg az Azure számlázását, valamint a használat és költségek kezelését és felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció."
+services: billing
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: billing
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
+ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
+ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
 
 ---
 # <a name="azure-billing-documentation"></a>Azure Billing – dokumentáció
 
-Az ügyfeleknek és partnereknek az Azure-költségek pontos előrejelzésére és kezelésére van szükségük. Amennyiben Capex helyett Opex modellre térnek át, a költséghelyi visszacsatolás és visszaterhelés elemzésének képességét, valamint megbízhatóbb becslést és számlázást is igénylik, különösen nagyméretű felhőbeli üzembe helyezéseknél.
+Ismerje meg az Azure számlázását, valamint a használat és költségek felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan kezelheti fiókját.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/billing/billing-understand-your-bill">
+        <a href="/azure/billing/billing-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -88,9 +100,9 @@ Az ügyfeleknek és partnereknek az Azure-költségek pontos előrejelzésére �
                 <div class="card">
                     <div class="cardText">
                         <h3>Egyéb</h3>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">Az API áttekintése</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partnermegoldás: Cloud Cruiser</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">Partnermegoldás: Cloudyn</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">API – Áttekintés</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partneri megoldás: Cloud Cruiser</a></p>
+                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">Partneri megoldás: Cloudyn</a></p>
                     </div>
                 </div>
             </div>
@@ -98,17 +110,10 @@ Az ügyfeleknek és partnereknek az Azure-költségek pontos előrejelzésére �
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/billing.pdf">
-        <div class="img"></div>
-        <div class="text">
-Billing – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

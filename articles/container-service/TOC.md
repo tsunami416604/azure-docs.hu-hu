@@ -1,5 +1,6 @@
 # Áttekintés
-## [Mi az Azure Container Service?](container-service-intro.md)
+## [Mi az az Azure Container Service?](container-service-intro.md)
+## [Gyakori kérdések](container-service-faq.md)
 # Első lépések
 ## [ACS-fürt üzembe helyezése](container-service-deployment.md)
 ## [Üzembe helyezés az ACS-en az Azure CLI 2.0 előzetes verziójával](container-service-create-acs-cluster-cli.md)
@@ -7,28 +8,33 @@
 ## [ACS-fürt méretezése](container-service-scale.md)
 # Útmutató
 ## Kezelés a DC/OS-sel
-### [Tárolókezelés – DC/OS webes felhasználói felület](container-service-mesos-marathon-ui.md)
+### [Tárolókezelés – DC/OS felhasználói felület](container-service-mesos-marathon-ui.md)
 ### [Tárolókezelés – DC/OS REST API](container-service-mesos-marathon-rest.md)
-### [Tárolókezelés – DC/OS folyamatos integráció](container-service-setup-ci-cd.md)
+### [DC/OS folyamatos integráció](container-service-setup-ci-cd.md)
 ### [DC/OS-ügynökkészletek](container-service-dcos-agents.md)
 ### [DC/OS nyilvános hozzáférésének engedélyezése](container-service-enable-public-access.md)
-### [Terheléselosztási tárolók a DC/OS-ben](container-service-load-balancing.md)
+### [Terheléselosztó DC/OS-tárolók](container-service-load-balancing.md)
 ### [Alkalmazás-/felhasználóspecifikus Orchestrator a DC/OS-ben](container-service-application-specific-marathon.md)
-### [Figyelés az OMS-szel](container-service-monitoring-oms.md)
-### [Figyelés a Datadoggal](container-service-monitoring.md)
-### [Figyelés az Sysdiggel](container-service-monitoring-sysdig.md)
-### [Figyelés a Dynatrace-szel](container-service-monitoring-dynatrace.md)
+### DC/OS figyelése
+#### [Figyelés az ELK-val](container-service-monitoring-elk.md)
+#### [Figyelés az OMS-szel](container-service-monitoring-oms.md)
+#### [Figyelés a Datadoggal](container-service-monitoring.md)
+#### [Figyelés az Sysdiggel](container-service-monitoring-sysdig.md)
+#### [Figyelés a Dynatrace-szel](container-service-monitoring-dynatrace.md)
 ## Kezelés a Kubernetes használatával
 ### [Bevezetés a Kubernetes használatába](container-service-kubernetes-walkthrough.md)
 ### [Egyszerű szolgáltatás konfigurálása](container-service-kubernetes-service-principal.md)
-### [A Kubernetes webes felhasználói felületének kezelése](container-service-kubernetes-ui.md)
-### [Figyelés az OMS-szel](container-service-kubernetes-oms.md)
-### [Figyelés a Datadoggal](container-service-kubernetes-datadog.md)
-### [Figyelés az Sysdiggel](container-service-kubernetes-sysdig.md)
+### [Tárolókezelés – Kubernetes felhasználói felület](container-service-kubernetes-ui.md)
+### [Terheléselosztó Kubernetes-tárolók](container-service-kubernetes-load-balancing.md)
+### Kubernetes figyelése
+#### [Figyelés az OMS-szel](container-service-kubernetes-oms.md)
+#### [Figyelés a Datadoggal](container-service-kubernetes-datadog.md)
+#### [Figyelés az Sysdiggel](container-service-kubernetes-sysdig.md)
 ## Kezelés a Docker Swarmmal
 ### [A Docker és a Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm folyamatos integráció](container-service-docker-swarm-setup-ci-cd.md)
 # Referencia
+## [Azure CLI 2.0 (előzetes verzió)](/cli/azure/acs)
 ## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
 ## [REST](/rest/api/compute/containerservices)
@@ -38,6 +44,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

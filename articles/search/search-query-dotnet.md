@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
 
 
 ---
@@ -34,10 +34,10 @@ A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](se
 
 Vegye figyelembe, hogy a cikkben szereplő összes mintakód C# nyelven íródott. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja.
 
-## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
+## <a name="identify-your-azure-search-services-query-api-key"></a>Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
 Az Azure Search-index létrehozását követően most már csaknem készen áll lekérdezések kiadására a .NET SDK használatával. Először is az Ön által üzembe helyezett Search szolgáltatás számára létrehozott lekérdezési API-kulcsok egyikére lesz szüksége. A .NET SDK ezt az API-kulcsot minden szolgáltatáskérés alkalmával elküldi. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez be kell jelentkeznie az [Azure Portalra](https://portal.azure.com/).
+1. A szolgáltatás API-kulcsainak megkereséséhez bejelentkezhet az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Search szolgáltatáspaneljét
 3. Kattintson a „Kulcsok” ikonra
 
@@ -48,7 +48,7 @@ A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog 
 
 Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszergazdai kulcsok szintén használhatók a lekérdezésekhez, az alkalmazáskódban azonban inkább lekérdezési kulcsot használjon, mivel ez a módszer jobban követi a [legalacsonyabb jogosultsági szint elvét](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
-## <a name="ii-create-an-instance-of-the-searchindexclient-class"></a>II. A SearchIndexClient osztály egy példányának létrehozása
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>A SearchIndexClient osztály egy példányának létrehozása
 A lekérdezések Azure Search .NET SDK használatával történő kiadásához létre kell hoznia a `SearchIndexClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Amelyikre Önnek szüksége van, az paraméterként a Search-szolgáltatás nevét, az indexnevet és egy `SearchCredentials` objektumot használ. A `SearchCredentials` becsomagolja az API-kulcsot.
 
 Az alábbi kód új `SearchIndexClient` elemet hoz létre az ([Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md) című részben létrehozott) „hotels” index számára, az alkalmazás konfigurációs fájljában (`app.config` vagy `web.config`) tárolt Search-szolgáltatásnév és API-kulcs értékeinek használatával:
@@ -62,7 +62,7 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 
 A `SearchIndexClient` rendelkezik egy `Documents` tulajdonsággal. Ezen tulajdonság biztosítja mindazokat a módszereket, amelyek az Azure Search-indexek lekérdezéséhez szükségesek.
 
-## <a name="iii-query-your-index"></a>III. Az index lekérdezése
+## <a name="query-your-index"></a>Az index lekérdezése
 A .NET SDK használatával történő keresés ugyanolyan egyszerűen végrehajtható, mint a `Documents.Search` módszer meghívása a következőn: `SearchIndexClient`. Ezen módszer néhány paramétert használ, ide értve a keresett szöveget, a lekérdezés további finomításához használható `SearchParameters` objektummal együtt.
 
 #### <a name="types-of-queries"></a>A lekérdezések típusai
@@ -127,7 +127,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv-handle-search-results"></a>IV. A keresési eredmények kezelése
+## <a name="handle-search-results"></a>A keresési eredmények kezelése
 A `Documents.Search` módszer olyan `DocumentSearchResult` objektumot ad vissza, amely tartalmazza a lekérdezés eredményeit. Az előző szakaszban szereplő példa a `WriteDocuments` módszer használatával jelenítette meg a keresési eredményeket a konzolon:
 
 ```csharp
@@ -169,6 +169,6 @@ A fenti mintakód a keresési eredményeket a konzolon jeleníti meg. A keresés
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

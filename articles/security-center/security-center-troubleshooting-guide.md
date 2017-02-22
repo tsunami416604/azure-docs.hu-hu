@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2016
+ms.date: 02/14/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9ed6eebd8a0c11158f9812edfc15b29a70ccc905
+ms.sourcegitcommit: d8956072460ba8629bb852e7b5d3e5155c3711e3
+ms.openlocfilehash: fe2d32e3c20c3e91954a6d00294ec018e8da0f2b
 
 
 ---
@@ -51,8 +51,16 @@ A telepítési folyamatról további információkat az ügynök naplóinak megt
 
 > [!NOTE]
 > Ha az Azure Security Center-ügynök nem működik megfelelően, újra kell indítania a cél virtuális gépet, mivel az ügynök elindításához és leállításához nem tartozik parancs.
-> 
-> 
+
+
+Ha még mindig problémákat tapasztal az adatgyűjtés során, az ügynököt az alábbi lépésekkel távolíthatja el:
+
+1. Az **Azure Portalon** válassza ki azt a virtuális gépet, amelyen adatgyűjtési hibákat tapasztal, és kattintson a **Bővítmények** gombra.
+2. Kattintson a jobb gombbal a **Microsoft.Azure.Security.Monitoring** elemre, és válassza az **Eltávolítás** parancsot.
+
+![Ügynök eltávolítása](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig4.png)
+
+Az Azure biztonsági figyelőbővítménynek néhány percen belül automatikusan újra kell telepítenie magát.
 
 ## <a name="troubleshooting-monitoring-agent-installation-in-linux"></a>A figyelőügynök telepítésének hibaelhárítása Linuxon
 A virtuálisgép-ügynök telepítésének Linuxon történő hibaelhárításakor győződjön meg arról, hogy a bővítmény a következő könyvtárba lett letöltve: /var/lib/waagent/. A telepítés megtörténtének ellenőrzéséhez az alábbi parancsot futtathatja:
@@ -68,8 +76,12 @@ Működő rendszer esetén kapcsolat jön létre az mdsd folyamattal a 29130-as 
 
 `netstat -plantu | grep 29130`
 
+## <a name="troubleshooting-problems-loading-the-dashboard"></a>Az irányítópult betöltési hibáinak elhárítása
+
+Ha problémákat tapasztal a Security Center irányítópultjának betöltése során, bizonyosodjon meg róla, hogy az előfizetést a Security Centerre regisztráló felhasználó (azaz az első felhasználó, aki megnyitotta a Security Centert az előfizetéssel) és az adatgyűjtést bekapcsolni kívánó felhasználó *Tulajdonos* vagy *Közreműködő* az előfizetésen. Ettől a pillanattól az előfizetés *Olvasó* jogú felhasználói is látják az irányítópultot/riasztásokat/ajánlásokat/házirendeket.
+
 ## <a name="contacting-microsoft-support"></a>Kapcsolatfelvétel a Microsoft támogatási szolgálatával
-Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha esetleg további hibaelhárításra van szükség, az alábbi képen látható módon új támogatási kérelem nyitható meg az Azure Portalon: 
+Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha esetleg további hibaelhárításra van szükség, az alábbi képen látható módon új támogatási kérelem nyitható meg az **Azure Portalon**: 
 
 ![Microsoft támogatási szolgálat](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -86,6 +98,6 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,10 +1,23 @@
 ---
+title: "Az Azure IoT Suite dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: 
+services: iot-suite
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-suite
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: ceade1ccba2d1328faf548f43f51b4fa3a5343b0
+ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
+ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
 
 ---
+
 # <a name="iot-suite-documentation"></a>IoT Suite-dokumentáció
 
 A Microsoft Azure IoT Suite gyorsan használatba vehető. Előre konfigurált megoldásokat használhat, és gyorsabban alakíthat ki IoT-megoldásokat. Az új eszközök hozzáadását és a meglévő eszközök csatlakoztatását eszközspecifikus SDK-k segítségével végezheti, amelyek több platformon, így Linuxon, Windowson és valós idejű operációs rendszereken is használhatók. Rugalmasan méretezést valósíthat meg, akár mindössze néhány érzékelőről, akár több millió egyszerre kapcsolódó eszközről van szó, és kihasználhatja az Azure globális elérhetőségét &mdash; a projekt méretétől függetlenül.
@@ -91,6 +104,6 @@ A Microsoft Azure IoT Suite gyorsan használatba vehető. Előre konfigurált me
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

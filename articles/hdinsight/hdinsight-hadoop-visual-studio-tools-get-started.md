@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bd214c166190248662634d488d8e7b1427b5738
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
 
 
 ---
 # <a name="get-started-using-azure-data-lake-hdinsight-tools-for-visual-studio-to-run-a-hive-query"></a>Ismerkedés az Azure Data Lake (HDInsight) Tools for Visual Studio használatával Hive-lekérdezések futtatásához
-Megtudhatja, hogyan használhat Data Lake (HDInsight) -eszközöket a Visual Studio alkalmazáshoz, hogy HDInsight-fürtökhöz csatlakozzon és Hive-lekérdezéseket adjon le. A HDInsight használatáról további információért lásd: [Introduction to HDInsight][hdinsight.introduction] (A HDInsight bemutatása) és [Get Started with HDInsight][hdinsight.get.started] (HDInsight – első lépések). További információ a Storm fürthöz végzett csatlakozásról: [Develop C# topologies for Apache Storm on HDInsight using Visual Studio][hdinsight.storm.visual.studio.tools] (C#-topológiák fejlesztése HDInsighton futó Apache Stormra a Visual Studio használatával).
+Megtudhatja, hogyan használhat Data Lake (HDInsight) -eszközöket a Visual Studio alkalmazáshoz, hogy HDInsight-fürtökhöz csatlakozzon és Hive-lekérdezéseket adjon le. További információ a HDInsight használatáról: [A HDInsight bemutatása][hdinsight.introduction] és [HDInsight – első lépések][hdinsight.get.started]. További információ a Storm-fürtökhöz való csatlakozásról: [C#-topológiák fejlesztése HDInsighton futó Apache Stormra a Visual Studióval][hdinsight.storm.visual.studio.tools].
 
 A Data Lake Tools for Visual Studio mind a Data Lake Analytics, mind a HDInsight eléréséhez használható.  A Data Lake-eszközökkel kapcsolatos információkért lásd: [Oktatóanyag: U-SQL-parancsfájlok fejlesztése Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
@@ -72,7 +72,7 @@ A Data Lake Tools for Visual Studio lehetővé teszi, hogy csatlakozzon a HDInsi
    > 
    > 
 4. Írja be az Azure-előfizetés hitelesítő adatait, majd kattintson a **Sign In** (Bejelentkezés) gombra. Erre csak akkor van szükség, ha még soha nem csatlakozott az Azure-előfizetéshez a Visual Studio eszközből ezen a munkaállomáson.
-5. A Server Explorer eszközben meglévő HDInsight-fürtök listáját láthatja. Ha nincsenek fürtjei, létrehozhat egyet az Azure Portal, az Azure PowerShell vagy a HDInsight SDK használatával. További információkért lásd: [HDInsight-fürtök létrehozása][hdinsight-create-clusters].
+5. A Server Explorer eszközben meglévő HDInsight-fürtök listáját láthatja. Ha nincsenek fürtjei, létrehozhat egyet az Azure Portal, az Azure PowerShell vagy a HDInsight SDK használatával. További információ: [HDInsight-fürtök létrehozása][hdinsight-create-clusters].
    
    ![Data Lake Tools for Visual Studio Kiszolgálóböngésző-fürtlista][5]
 6. Bontson ki egy HDInsight-fürtöt. Látja a **Hive adatbázisokat**, egy alapértelmezett tárfiókot, a társított tárfiókokat és a **Hadoop szolgáltatásnaplót**. Ennél jobban is kibonthatja az elemeket.
@@ -97,7 +97,7 @@ Egy tároló megnyitása után a következő gombokkal tölthet fel, törölhet 
 ![A Data Lake Tools for Visual Studio kiszolgálóböngésző blobműveletei](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
-Az [Apache Hive][apache.hive] egy, a Hadoop technológiára épülő adatraktár infrastruktúra az adatösszegzések, lekérdezések és elemzések nyújtásához. A Data Lake Tools for Visual Studio támogatja a Hive-lekérdezések Visual Studióból végzett futtatását. A Hive rendszerrel kapcsolatban további információért lásd: [Use Hive with HDInsight][hdinsight.hive] (A Hive használata a HDInsightban).
+Az [Apache Hive][apache.hive] egy Hadoop-alapú adattárház-infrastruktúra, amely adatösszegzéseket, lekérdezéseket és elemzéseket biztosít. A Data Lake Tools for Visual Studio támogatja a Hive-lekérdezések Visual Studióból végzett futtatását. További információ a Hive-ról: [A Hive használata a HDInsightban][hdinsight.hive].
 
 Időigényes a Hive parancsfájlok tesztelése a HDInsight fürtökhöz képest időigényes. Percekbe vagy akár több időbe is telhet. A Data Lake Tools for Visual Studio képes helyben érvényesíteni a Hive-parancsfájlokat anélkül, hogy egy élő fürthöz csatlakozna.
 
@@ -173,7 +173,7 @@ Kétféleképpen hozhat létre és futtathat Hive-lekérdezéseket:
 ### <a name="view-hive-jobs"></a>Hive-feladatok megtekintése
 Megtekintheti a Hive-feladatok feladatlekérdezéseit, feladatkiemenetét, feladatnaplóit és Yarn naplóit. További információért tekintse meg az előző képernyőképet.
 
-Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a YARN-naplókat. A YARN naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN naplókat: [Access HDInsight Application Logs Programmatically][hdinsight.access.application.logs] (HDInsight alkalmazásnaplók szoftveres elérése).
+Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a YARN-naplókat. A YARN naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN-naplókat: [HDInsight alkalmazásnaplók szoftveres elérése][hdinsight.access.application.logs].
 
 **Hive-feladatok megtekintése**
 
@@ -213,7 +213,7 @@ Bár a lekérdezések HiveServer2-n keresztül végzett végrehajtásának szám
 | Ablak bezárása |A HiveServer2-n keresztüli végrehajtás „szinkronos” módot jelent, így nyitva kell hagynia az ablakokat; ha bezárja az ablakokat, akkor megszakítja a lekérdezés végrehajtását. |A WebHCaten keresztül végzett küldés „aszinkronos” mód, így elküldheti a lekérdezést a WebHCaten keresztül, és bezárhatja a Visual Studio eszközt. Bármikor visszatérhet és megtekintheti az eredményeket. |
 
 ### <a name="tez-hive-job-performance-graph"></a>Tez Hive feladat teljesítménye ábra
-A Data Lake-eszközök támogatják a Tez végrehajtómotor által elvégzett Hive-feladatok teljesítményi ábráinak megjelenítését. A Tez engedélyezéséről további információért lásd: [use Hive in HDInsight][hdinsight.hive] (A Hive használata a HDInsightban). Miután elküldött egy Hive-feladatot a Visual Studióban, a Visual Studio megjeleníti az ábrát a feladat elvégzésekor.  Elképzelhető, hogy a **Refresh** (Frissítés) gombra kell kattintania a legfrissebb feladatállapot lekérdezéséhez.
+A Data Lake-eszközök támogatják a Tez végrehajtómotor által elvégzett Hive-feladatok teljesítményi ábráinak megjelenítését. További információ a Tez engedélyezéséről: [A Hive használata a HDInsightban][hdinsight.hive]. Miután elküldött egy Hive-feladatot a Visual Studióban, a Visual Studio megjeleníti az ábrát a feladat elvégzésekor.  Elképzelhető, hogy a **Refresh** (Frissítés) gombra kell kattintania a legfrissebb feladatállapot lekérdezéséhez.
 
 > [!NOTE]
 > Ez a szolgáltatás csak a HDInsight-fürt 3.2.4.593-as vagy újabb verzióihoz érhető el, és csak a befejezett feladatokhoz működik (ha a WebHCaten keresztül küldte el a feladatot; ez az ábra akkor jelenik meg, ha a lekérdezést a HiveServer2-n keresztül futtatja). Ez Windows- és Linux-alapú fürtök esetén is működik.
@@ -232,7 +232,7 @@ A feladatvégrehajtási nézet a Hive on Tez feladatokhoz eszközzel strukturál
 ## <a name="run-pig-scripts"></a>Pig-parancsfájlok futtatása
 A Data Lake Tools for Visual Studio támogatja a Pig-parancsfájlok létrehozását és HDInsight-fürtökbe való elküldését. A felhasználók Pig-projektet hozhatnak létre sablonból, majd elküldhetik a parancsfájlt a HDInsight-fürtökhöz.
 
-## <a name="feedbacks-known-issues"></a>Visszajelzések és ismert problémák
+## <a name="feedbacks--known-issues"></a>Visszajelzések és ismert problémák
 * Jelenleg a HiveServer2 eredmények tiszta szöveggel jelennek meg, ami nem ideális. Dolgozunk ennek megoldásán.
 * Ha az eredmények NULL értékekkel kezdődnek, az eredmények jelenleg nem jelennek meg. Megoldottuk ezt a problémát, és ha elakad ennél a hibánál, nyugodtan küldjön egy e-mailt, vagy lépjen kapcsolatba a Terméktámogatással.
 * A Visual Studio által létrehozott HQL-parancsfájl a felhasználó helyi régióbeállításaitól függően kódolt. Lehet, hogy nem fut megfelelően, ha a felhasználó binárisként tölti fel a parancsfájlt a fürtbe.
@@ -240,17 +240,17 @@ A Data Lake Tools for Visual Studio támogatja a Pig-parancsfájlok létrehozás
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visual Studio-eszközből a Data Lake (HDInsight) -eszközök csomaggal, és hogyan futtathat Hive-lekérdezéseket. További információkért lásd:
 
-* [Use Hadoop Hive in HDInsight][hdinsight.hive] (A Hadoop Hive használata a HDInsightban).
-* [Get started using Hadoop in HDInsight][hdinsight.get.started] (A Hadoop első lépései a HDInsightban)
-* [Submit Hadoop jobs in HDInsight][hdinsight.submit.jobs] (Hadoop-feladatok elküldése a HDInsightban)
-* [Analyze Twitter data with Hadoop in HDInsight][hdinsight.analyze.twitter.data] (Twitter-adatok elemzése a Hadoop programmal a HDInsightban)
+* [A Hadoop Hive használata a HDInsightban][hdinsight.hive]
+* [A Hadoop első lépései a HDInsightban][hdinsight.get.started]
+* [Hadoop-feladatok elküldése a HDInsightban][hdinsight.submit.jobs]
+* [Twitter-adatok elemzése a Hadooppal a HDInsightban][hdinsight.analyze.twitter.data]
 
 <!--Anchors-->
-[Telepítés]: #installation
-[Csatlakozás az Azure-előfizetéshez]: #connect-to-your-azure-subscription
-[Navigálás a kapcsolt erőforrásokban]: #navigate-the-linked-resources
-[Hive-lekérdezések futtatása]: #run-hive-queries
-[Következő lépések]: #next-steps
+[Installation]: #installation
+[Connect to your Azure subscription]: #connect-to-your-azure-subscription
+[Navigate the linked resources]: #navigate-the-linked-resources
+[Run Hive queries]: #run-hive-queries
+[Next steps]: #next-steps
 
 <!--Image references-->
 [1]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png
@@ -281,6 +281,6 @@ Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visua
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

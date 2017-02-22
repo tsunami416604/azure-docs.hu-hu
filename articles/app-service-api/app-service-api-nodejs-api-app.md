@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
-ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
+ms.sourcegitcommit: 633caca05835aa204d4fec5fe216043a50520000
+ms.openlocfilehash: 87d2792d4f7610c62ed96cb522958844d4dc982b
 
 
 ---
@@ -230,23 +230,29 @@ Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az 
         git init
    
      ![Új helyi Git-tárház](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. A következő parancs végrehajtásával adjon hozzá egy távoli Git-tárházat az API-alkalmazás tárházához. 
+3. Ha elvégezte az oktatóanyag első részét, és kimásolta a `ContactList` mappát, az valószínűleg tartalmazta a `node_modules` mappát. A `node_modules` mappát nem érdemes a forráskezelés alá venni, mivel az üzembe helyezési folyamat során jön létre a `package.json` fájl és az `npm install` segítségével. Ezért adjon hozzá egy `.gitignore` fájlt a következő parancs futtatásával a projekt gyökérkönyvtárába.
+
+         touch .gitignore
+      
+   Nyissa meg a .gitignore fájlt, és adja hozzá a `node_modules` mappát a fájl első sorához. A forráskezeléssel ellenőrizheti, hogy a rendszer figyelmen kívül hagyja-e a `node_modules` mappát, ha a `git status` futtatásakor a könyvtár nem jelenik meg a listában. Létezik egy (GitHub projekt) [https://github.com/github/gitignore/blob/master/Node.gitignore] a NodeJS projektekben figyelmen kívül hagyni javasolt fájlokkal, amennyiben további szabályokat szeretne hozzáadni.
+ 
+4. A következő parancs végrehajtásával adjon hozzá egy távoli Git-tárházat az API-alkalmazás tárházához. 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
     **Megjegyzés**: A „YOUR_GIT_CLONE_URL_HERE” karakterlánc helyére a saját, korábban kimásolt Git clone URL-jét írja. 
-4. A következő parancsok futtatásával hozzon létre egy véglegesítést, amely tartalmazza az összes kódot. 
+5. A következő parancsok futtatásával hozzon létre egy véglegesítést, amely tartalmazza az összes kódot. 
    
         git add .
         git commit -m "initial revision"
    
     ![A Git commit parancs kimenete](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. A parancs végrehajtásával küldje be a kódot az Azure-ba. Amikor a rendszer kéri a jelszót, adja meg az Azure portálon korábban létrehozott jelszót.
+6. A parancs végrehajtásával küldje be a kódot az Azure-ba. Amikor a rendszer kéri a jelszót, adja meg az Azure portálon korábban létrehozott jelszót.
    
         git push azure master
    
     Ezzel elindítja az API-alkalmazásban való telepítést.  
-6. A böngészőben lépjen vissza az API-alkalmazás **Példányok** paneljére, ahol láthatja, hogy a telepítés folyamatban van. 
+7. A böngészőben lépjen vissza az API-alkalmazás **Példányok** paneljére, ahol láthatja, hogy a telepítés folyamatban van. 
    
     ![Telepítés folyamatban](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
@@ -275,6 +281,6 @@ Ebben a szakaszban egy helyi Git-tárházat hozunk létre, amely tartalmazza az 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -19,10 +19,6 @@
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Felügyeleti termékek összehasonlítása](operations-management-suite-monitoring-product-comparison.md)
 ### [Riasztások kezelése](operations-management-suite-monitoring-alerts.md)
-## Kezelés
-### [Tervezés és üzembe helyezés](operations-management-suite-solutions-creating.md)
-### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
-### [Nézetek](operations-management-suite-solutions-resources-views.md)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Biztonsági mentés
@@ -35,6 +31,11 @@
 ### [Kártevőfelmérés](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Rendszerfrissítési felmérés](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Biztonsági termékek csatlakoztatása](oms-security-connect-products.md)
+## Megoldások létrehozása
+### [Felügyeleti megoldások](operations-management-suite-solutions-creating.md)
+### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
+### [Naplókeresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md)
+### [Nézetek](operations-management-suite-solutions-resources-views.md)
 ## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 
 
@@ -65,6 +66,6 @@
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

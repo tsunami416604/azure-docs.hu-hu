@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Stack dokumentációja – oktatóanyagok | Microsoft Docs"
+description: "Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása."
+services: azure-stack
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: azure-stack
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cc7cf80b26a0bdc79448fc87d2d8b6fff1931d49
-ms.openlocfilehash: eb675cc7a401583cf0f2dc0605a16d5dda8b306f
+ms.sourcegitcommit: 888d813814862faf23121f0b7ec2645bdcf589c6
+ms.openlocfilehash: 07f3c5dc580a0d8e7e7e2a7aee5f2b9e907c3e80
 
 ---
 #<a name="azure-stack-documentation"></a>Azure Stack – dokumentáció
 
-A Microsoft Azure Stack egy új hibrid felhőplatform-termék, amely segítségével Azure-szolgáltatásokat biztosíthat a szervezete adatközpontjából. A Microsoft Azure Stack Technical Preview 2 egy megvalósíthatósági példa (Proof of Concept (POC)) keretében érhető el. A POC egy, az Azure Stack-szolgáltatások megismerését és bemutatását szolgáló környezet. A segítségével egyetlen fizikai gépen telepítheti az összes szükséges összetevőt egy olyan környezet létrehozásához, amely révén kiértékelheti az alapfogalmakat és képességeket, és ellenőrizheti az API-k bővíthetőségi modelljét.
+Ismerje meg, hogyan használhatja az Azure Stack műszaki előzetes verzióját Azure-szolgáltatások továbbítására a szervezet adatközpontjából. Oktatóanyagok és egyéb dokumentációk bemutatják, hogyan használhatja a megvalósíthatósági példakörnyezetet Azure Stack-szolgáltatások megismerésére és bemutatására.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -84,18 +96,12 @@ A Microsoft Azure Stack egy új hibrid felhőplatform-termék, amely segítség�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-stack.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Stack-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

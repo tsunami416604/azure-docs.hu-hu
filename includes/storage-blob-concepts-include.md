@@ -12,21 +12,20 @@ A Blob Storage gyakori használati módjai többek között:
 ## <a name="blob-service-concepts"></a>A Blob szolgáltatással kapcsolatos fogalmak
 A Blob szolgáltatás az alábbi összetevőkből áll:
 
-![Blob1][Blob1]
+![Blob-architektúra](./media/storage-blob-concepts-include/blob1.png)
 
 * **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. Ez a tárfiók lehet **általános célú tárfiók** vagy **Blob Storage-fiók**, amely kifejezetten objektumok/blobok tárolására szolgál. További információ a tárolási fiókokról: [Azure Storage-fiók](../articles/storage/storage-create-storage-account.md).
 * **Tároló:** A tárolók blobkészletek csoportosítását biztosítják. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható. Vegye figyelembe, hogy a tároló neve csak kisbetűket tartalmazhat.
 * **Blob:** Bármilyen típusú és bármekkora méretű fájl. Az Azure Storage háromféle blobot biztosít: blokkblobokat, lapblobokat és hozzáfűző blobokat.
   
-    A *blokkblobok* ideálisak szövegek és bináris fájlok, például dokumentumok és médiafájlok tárolására. A *hozzáfűző blobok* a blokkblobokhoz hasonlóan blokkokból épülnek fel, de műveletek hozzáfűzésére vannak optimalizálva, ezért hasznosak lehetnek a naplózási forgatókönyvekben. Egyetlen blokkblob vagy hozzáfűző blob akár 50 000, egyenként 4 MB méretű blokkot is tartalmazhat, a maximális méretük ezért valamivel több mint 195 GB (4 MB X 50 000 blokk).
+    A *blokkblobok* ideálisak szövegek és bináris fájlok, például dokumentumok és médiafájlok tárolására. A *hozzáfűző blobok* a blokkblobokhoz hasonlóan blokkokból épülnek fel, de műveletek hozzáfűzésére vannak optimalizálva, ezért hasznosak lehetnek a naplózási forgatókönyvekben. Egyetlen blokkblob akár 50 000, egyenként 100 MB méretű blokkot is tartalmazhat, a maximális méretük ezért valamivel több mint 4,75 TB (100 MB * 50 000 blokk). Egyetlen hozzáfűző blob akár 50 000, egyenként 4 MB méretű blokkot is tartalmazhat, a maximális méretük ezért valamivel több mint 195 GB (4 MB * 50 000 blokk).
   
     A *lapblobok* akár 1 TB méretűek is lehetnek, és hatékonyabbak a gyakori írási/olvasási műveletek esetén. Az Azure virtuális gépek lapblobokat használnak operációs rendszerként és adatlemezként.
   
     A tárolók és blobok elnevezésével kapcsolatos részletekért lásd: [Naming and Referencing Containers, Blobs, and Metadata](https://msdn.microsoft.com/library/azure/dd135715.aspx) (Tárolók, blobok és metaadatok elnevezése és hivatkozása).
 
-[Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
 
 
 ---
@@ -39,15 +39,15 @@ További információk az Azure SQL Database-adatbázisokkal kapcsolatban: [SQL 
 
 ## <a name="what-features-are-supported"></a>Milyen funkciók támogatottak?
 
-Az alábbi táblák az Azure SQL Database és az SQL Server legfontosabb funkcióit, azok támogatási lehetőségeit, illetve a funkciók egyes platformokra vonatkozó bővebb információira mutató hivatkozásokat tartalmazzák. A Transact-SQL funkcióival kapcsolatban kövesse a táblázatban szereplő hivatkozást, amely a funkció kategóriájához tartozik. További háttérinformációkért az adott típusú funkciók támogatása hiányának okairól lásd még az [Azure SQL Database és a Transact-SQL nyelv eltéréseit](sql-database-transact-sql-information.md) ismertető cikket.
+Az alábbi táblázatok az Azure SQL Database és az SQL Server legfontosabb funkcióit, azok támogatási lehetőségeit, illetve a funkciók egyes platformokra vonatkozó bővebb információira mutató hivatkozásokat tartalmazzák. A Transact-SQL funkcióival kapcsolatban kövesse a táblázatban szereplő hivatkozást, amely a funkció kategóriájához tartozik. További háttérinformációkért az adott típusú funkciók támogatása hiányának okairól lásd még az [Azure SQL Database és a Transact-SQL nyelv eltéréseit](sql-database-transact-sql-information.md) ismertető cikket.
 
-A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
+A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
 
 * Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
 * Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
 
 > [!TIP]
-> Ha tesztelni szeretné, hogy egy meglévő adatbázis kompatibilis-e az Azure SQL Database szolgáltatással, tekintse meg a [Azure SQL Database kompatibilitásának ellenőrzése](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) részt.
+> Ha tesztelni szeretné, hogy egy meglévő adatbázis kompatibilis-e az Azure SQL Database-szel, tekintse meg az [SQL Server-adatbázis migrálása az Azure-ba](sql-database-cloud-migrate.md) című témakört.
 >
 
 | **Funkció** | **SQL Server** | **Azure SQL Database** | 
@@ -57,12 +57,12 @@ A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javaso
 | AlwaysOn rendelkezésre állási csoportok | [Támogatott](https://msdn.microsoft.com/library/hh510230.aspx) | Nem támogatott – lásd [Aktív georeplikáció](sql-database-geo-replication-overview.md) |
 | Adatbázis csatolása | [Támogatott](https://msdn.microsoft.com/library/ms190209.aspx) | Nem támogatott |
 | Alkalmazás-szerepkörök | [Támogatott](https://msdn.microsoft.com/library/ms190998.aspx) | [Támogatott](https://msdn.microsoft.com/library/ms190998.aspx) |
-| Automatikus méretezés | Nem támogatott | [Támogatott](sql-database-scale-up.md) |
+| Automatikus méretezés | Nem támogatott | [Támogatott](sql-database-service-tiers.md) |
 | Azure Active Directory | Nem támogatott | [Támogatott](sql-database-aad-authentication.md) |
 | Azure Data Factory | Nem támogatott – lásd [SQL Server Integration Services (SSIS)](https://msdn.microsoft.com/library/ms141026.aspx) | [Támogatott](https://azure.microsoft.com/services/data-factory/) |
-| Naplózás | [Támogatott](https://msdn.microsoft.com/library/cc280386.aspx) | [Támogatott](sql-database-auditing-get-started.md) |
+| Naplózás | [Támogatott](https://msdn.microsoft.com/library/cc280386.aspx) | [Támogatott](sql-database-auditing.md) |
 | BACPAC-fájl (exportálás) | [Támogatott](https://msdn.microsoft.com/library/hh213241.aspx) | [Támogatott](sql-database-export.md) |
-| BACPAC-fájl (importálás) | [Támogatott](https://msdn.microsoft.com/library/hh710052.aspx) | [Támogatott](sql-database-import.md) |
+| BACPAC-fájl (importálás) | [Támogatott](https://msdn.microsoft.com/library/hh710052.aspx) | [Támogatott](sql-database-import-portal.md) |
 | BACKUP és RESTORE utasítások | [Támogatott](https://msdn.microsoft.com/library/ff848768.aspx) | Nem támogatott |
 | Beépített funkciók | [Támogatott](https://msdn.microsoft.com/library/ms174318.aspx) | [A legtöbb esetben](https://msdn.microsoft.com/library/ms174318.aspx) |
 | Adatváltozások rögzítése | [Támogatott](https://msdn.microsoft.com/library/cc645937.aspx) | Nem támogatott |
@@ -132,7 +132,7 @@ A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javaso
 | SQL Server Integration Services (SSIS) | [Támogatott](https://msdn.microsoft.com/library/ms141026.aspx) | Nem támogatott – lásd [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
 | SQL Server PowerShell | [Támogatott](https://msdn.microsoft.com/library/hh245198.aspx) | [Támogatott](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server Profiler | [Támogatott](https://msdn.microsoft.com/library/ms181091.aspx) | Nem támogatott – lásd [Bővített események](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server-replikáció | [Támogatott](https://msdn.microsoft.com/library/ms151198.aspx) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server-replikáció | [Támogatott](https://msdn.microsoft.com/library/ms151198.aspx) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) |
 | SQL Server Reporting Services (SSRS) | [Támogatott](https://msdn.microsoft.com/library/ms159106.aspx) | Nem támogatott |
 | Tárolt eljárások | [Támogatott](https://msdn.microsoft.com/library/ms190782.aspx) | [Támogatott](https://msdn.microsoft.com/library/ms190782.aspx) |
 | A rendszer tárolt függvényei | [Támogatott](https://msdn.microsoft.com/library/ff848780.aspx) | [Néhány](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -161,6 +161,6 @@ A 12-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javaso
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

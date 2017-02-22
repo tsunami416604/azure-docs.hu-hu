@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/03/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 6862723b774951fe4cca0303ee2a39a0d5f2089d
-ms.openlocfilehash: eec688e33ff55334ebe0c1bc6d08e4753aadb85c
+ms.sourcegitcommit: 96a971c31f9088b3aa409a85f0679fd3bd5945d1
+ms.openlocfilehash: 4dc1bfa1e385e945c47bbfc5faa776e577ee84b2
 
 
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
-A Log Analyticshez való hozzáférés kezeléséhez a munkaterületekhez kapcsolódó különféle adminisztratív feladatokat kell végrehajtania. Ez a témakör praktikus tanácsokat és ajánlott eljárásokat tartalmaz arról, hogyan kezelheti a munkaterületeket különféle fióktípusokkal. A munkaterület lényegében egy tároló, amely a fiók adatait és egyszerű konfigurációs adatait tartalmazza. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
+A Log Analyticshez való hozzáférés kezeléséhez a munkaterületekhez kapcsolódó különféle adminisztratív feladatokat kell végrehajtania. Ez a témakör praktikus tanácsokat és ajánlott eljárásokat tartalmaz a munkaterületek kezelésére vonatkozóan. A munkaterület lényegében egy tároló, amely a fiók adatait és egyszerű konfigurációs adatait tartalmazza. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
 
 Munkaterület létrehozásához az alábbiak szükségesek:
 
@@ -41,6 +41,7 @@ A munkaterületek jelenleg a következőket biztosítják:
 * Egy földrajzi helyet az adattárolás számára
 * A számlázáshoz szükséges részletes adatokat
 * Az adatok elkülönítését
+* Konfiguráció hatóköre
 
 A fenti jellemzők alapján a következő esetekben lehet érdemes több munkaterületet létrehozni:
 
@@ -78,8 +79,7 @@ A munkaterülethez való hozzáférést két helyen lehet szabályozni:
 * Az Azure szolgáltatásban szerepköralapú hozzáférés-vezérléssel szabályozható az Azure-előfizetéshez és a kapcsolódó Azure-erőforrásokhoz való hozzáférés. Ezek az engedélyek vonatkoznak a PowerShell és a REST API hozzáféréseire is.
 * Az OMS-portálon csak az OMS-portál érhető el, a társított Azure-előfizetés nem.
 
-A felhasználók nem látnak adatokat a Backup- és a Site Recovery-megoldás csempéiben, ha csak az OMS-portálhoz biztosít nekik hozzáférést, a társított Azure-előfizetéshez viszont nem.
-Ha lehetővé szeretné tenni a felhasználók számára, hogy megtekintsék a megoldások adatait, legalább **olvasói** hozzáférést kell adnia nekik a munkaterülethez társított Backup-tárolóhoz és Site Recovery-tárolóhoz.   
+Ahhoz, hogy meg tudja jeleníteni az adatokat a Backup és a Site Recovery megoldás csempéiben, rendszergazdai vagy társadminisztrátori jogosultság szükséges ahhoz az Azure-előfizetéshez, amelyhez a munkaterület társítva van.   
 
 ### <a name="managing-access-to-log-analytics-using-the-azure-portal"></a>A Log Analytics hozzáférésének szabályozása az Azure Portal használatával
 Amennyiben Azure-engedélyekkel, például az Azure Portal felületén keresztül hozzáférést biztosít a Log Analytics munkaterülethez, az érintett felhasználók a Log Analytics portálhoz is hozzáférhetnek. A felhasználók az Azure Portalról az OMS-portálra ugorhatnak az **OMS-portál** feladatra kattintva a Log Analytics munkaterület erőforrás megtekintésekor.
@@ -199,7 +199,7 @@ Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhe
 8. Kattintson az **OK** gombra. A munkaterület az Azure-fiókhoz van társítva.
 
 > [!NOTE]
-> Amennyiben nem találja a társítani kívánt munkaterületet, akkor az Azure-előfizetése nem rendelkezik hozzáféréssel az OMS webhelyen létrehozott munkaterülethez.  Ekkor az OMS-portálon hozzáférési jogot kell biztosítani ehhez a fiókhoz. A tennivalókat itt találja: [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace).
+> Amennyiben nem találja a társítani kívánt munkaterületet, akkor az Azure-előfizetése nem rendelkezik hozzáféréssel az OMS webhelyen létrehozott munkaterülethez.  További információ a fiók OMS-portálról való eléréséről: [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace).
 >
 >
 
@@ -232,15 +232,20 @@ Ha rendelkezik Azure pénzügyi kerettel a nagyvállalati beléptetés részeké
 
 Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társította, használja az Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) parancsmagját.  
 
-### <a name="change-a-workspace-to-a-paid-data-plan"></a>Munkaterület módosítása fizetős adatforgalmi díjcsomagra
+### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>Munkaterület módosítása fizetős tarifacsomagra
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
 3. Ekkor megjelenik a meglévő munkaterületek listája. Jelöljön ki egy munkaterületet.  
 4. A munkaterület panel **Általános** területén kattintson a **Tarifacsomag** elemre.  
-5. A **Tarifacsomag** lapon válassza ki az adatforgalmi díjcsomagot, majd kattintson a **Kiválasztás** gombra.  
+5. A **Tarifacsomag** lapon kattintással jelölje ki a tarifacsomagot, majd kattintson a **Kiválasztás** gombra.  
     ![díjcsomag kiválasztása](./media/log-analytics-manage-access/manage-access-change-plan03.png)
-6. Amikor frissíti az Azure Portal nézetét, láthatja, hogy a **Tarifacsomag** a választott díjcsomagra módosult.  
+6. Amikor frissíti az Azure Portal nézetét, láthatja, hogy a **Tarifacsomag** a választott csomagra módosult.  
     ![frissített csomag](./media/log-analytics-manage-access/manage-access-change-plan04.png)
+
+> [!NOTE]
+> Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
+>
+>
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>A Log Analytics adattárolási idejének módosítása
 
@@ -293,6 +298,6 @@ Ha Ön rendszergazda, és több felhasználó van társítva a munkaterülethez,
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

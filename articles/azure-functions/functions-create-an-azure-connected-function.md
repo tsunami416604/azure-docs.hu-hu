@@ -1,6 +1,6 @@
 ---
-title: "Egy Azure-szolgáltatáshoz kötődő Azure-függvény létrehozása | Microsoft Docs"
-description: "Létrehozhat egy Azure-függvényt, amely az egyéb Azure-szolgáltatásokkal interakcióba lépő kiszolgáló nélküli alkalmazás."
+title: "Az Azure-szolgáltatásokhoz csatlakozó függvény létrehozása | Microsoft Docs"
+description: "Az Azure Functions segítségével létrehozhat egy kiszolgáló nélküli alkalmazást, amely más Azure-szolgáltatásokhoz kapcsolódik."
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -14,24 +14,21 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2016
+ms.date: 01/23/2017
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: f46a67f2591ef98eeda03f5c3bc556d5b8bcc096
-ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
+ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
+ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 
 ---
-# <a name="create-an-azure-function-connected-to-an-azure-service"></a>Egy Azure-szolgáltatáshoz kapcsolódó Azure-függvény létrehozása
+# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>Az Azure Functions segítségével létrehozhat egy függvényt, amely más Azure-szolgáltatásokhoz kapcsolódik.
 
-Ez témakör olyan Azure-függvény létrehozását mutatja be, amely egy Azure Storage-üzenetsor üzeneteit figyeli, és egy Azure Storage-táblába másolja azokat. Az üzeneteknek az üzenetsorba való betöltése egy időzítő által aktivált függvénnyel történik. Egy másik függvény beolvassa az üzeneteket az üzenetsorból, és a táblába írja azokat. Az üzenetsort és a táblát az Azure Functions hozza létre a kötési meghatározások alapján. 
+Ez a témakör olyan függvény létrehozását mutatja be az Azure Functionsben, amely egy Azure Storage-üzenetsor üzeneteit figyeli, és egy Azure Storage-táblába másolja azokat. Az üzeneteknek az üzenetsorba való betöltése egy időzítő által aktivált függvénnyel történik. Egy másik függvény beolvassa az üzeneteket az üzenetsorból, és a táblába írja azokat. Az üzenetsort és a táblát az Azure Functions hozza létre a kötési meghatározások alapján. 
 
-A dolgokat még érdekesebbé teszi, az egyik függvény JavaScript, a másik pedig C# nyelven lett megírva. Ez bemutatja, hogy egy függvényalkalmazás különféle nyelveken írt függvényekkel is rendelkezhet.
+A dolgokat még érdekesebbé teszi, az egyik függvény JavaScript, a másik pedig C# nyelven lett megírva. Ez bemutatja, hogy egy függvényalkalmazás különféle nyelveken írt függvényekkel is rendelkezhet. 
 
-## <a name="watch-the-video"></a>Videó megtekintése
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+Ezt a forgatókönyvet a [Channel 9 blog egyik videója](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player) mutatja be.
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>Az üzenetsorba író függvény létrehozása
 
@@ -197,6 +194,6 @@ A következő témakörökben további, az Azure Functions szolgáltatásra vona
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

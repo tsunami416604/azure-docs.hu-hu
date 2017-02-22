@@ -99,22 +99,6 @@
 ### [Eszköz regisztrálása](active-directory-azureadjoin-personal-device.md)
 ### [Windows 10-es eszköz regisztrálása](active-directory-azureadjoin-user-upgrade.md)
 
-### [Feltételes hozzáférés](active-directory-conditional-access.md)
-#### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
-#### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
-#### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
-#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
-##### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
-##### [Windows 7](active-directory-conditional-access-automatic-device-registration-windows7.md)
-##### [Windows 8.1](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-#### [Hitelesítő alkalmazás kezelése](active-directory-conditional-access-azure-authenticator-app.md)
-#### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
-#### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
-#### [Helyszíni üzembe helyezés](active-directory-conditional-access-on-premises-setup.md)
-#### [Gyakori kérdések](active-directory-conditional-faqs.md)
-#### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
-#### [Referencia](active-directory-conditional-access-technical-reference.md)
-
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
 #### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
@@ -124,10 +108,10 @@
 #### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
 #### [A Windows 10-es integrációval kapcsolatos tudnivalók](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [Windows 10-eszközök használata](active-directory-azureadjoin-windows10-devices.md)
-
-### Tanúsítványalapú hitelesítés
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
+#### [Gyakori kérdések](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### Hibaelhárítás
+##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
@@ -176,6 +160,7 @@
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
+#### [Bérlőkorlátozások](active-directory-tenant-restrictions.md)
 
 ### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
 ### [Dokumentumtár](active-directory-apps-index.md)
@@ -207,14 +192,24 @@
 #### [Gyakori kérdések](active-directory-windows-enterprise-state-roaming-faqs.md)
 #### [Hibaelhárítás](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [Partnerek integrálása az Azure AD B2B-vel](active-directory-b2b-what-is-azure-ad-b2b.md)
-#### [Áttekintés](active-directory-b2b-collaboration-overview.md)
-#### [Működési elv](active-directory-b2b-how-it-works.md)
-#### [Képességek összehasonlítása](active-directory-b2b-compare-external-identities.md)
-#### [Útmutatás](active-directory-b2b-detailed-walkthrough.md)
-#### [Korlátozások](active-directory-b2b-current-preview-limitations.md)
-#### [CSV fájlformátum](active-directory-b2b-references-csv-file-format.md)
-#### [Felhasználói objektumok](active-directory-b2b-references-external-user-object-attribute-changes.md)
-#### [Felhasználói jogkivonatok](active-directory-b2b-references-external-user-token-format.md)
+#### [B2B-felhasználók rendszergazdák általi hozzáadása](active-directory-b2b-admin-add-users.md)
+#### [B2B-felhasználók infomunkások általi hozzáadása](active-directory-b2b-iw-add-users.md)
+#### [Meghívó e-mail](active-directory-b2b-invitation-email.md)
+#### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
+#### [Licencek](active-directory-b2b-licensing.md)
+#### [B2B-hibaelhárítás](active-directory-b2b-troubleshooting.md)
+#### [Gyakori kérdések](active-directory-b2b-faq.md)
+#### [API és testreszabás](active-directory-b2b-api.md)
+#### [Többtényezős hitelesítés B2B esetén](active-directory-b2b-mfa-instructions.md)
+#### [Vendégfelhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
+#### [Meghívók delegálása](active-directory-b2b-delegate-invitations.md)
+#### [Dinamikus csoportok és B2B](active-directory-b2b-dynamic-groups.md)
+#### [Programkód- és PowerShell-minták](active-directory-b2b-code-samples.md)
+#### [SaaS-appok konfigurálása B2B esetén](active-directory-b2b-configure-saas-apps.md)
+#### [B2B-felhasználói jogkivonatok](active-directory-b2b-user-token.md)
+#### [B2B-felhasználói jogcímek társítása](active-directory-b2b-claims-mapping.md)
+#### [Külső Office 365-megosztás](active-directory-b2b-o365-external-user.md)
+#### [Aktuális korlátozások](active-directory-b2b-current-limitations.md)
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
 
 
@@ -238,6 +233,22 @@
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
 ## Identitások védelme
+### [Feltételes hozzáférés](active-directory-conditional-access.md)
+#### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
+#### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
+#### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
+#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
+##### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
+#### [Hitelesítő alkalmazás kezelése](active-directory-conditional-access-azure-authenticator-app.md)
+#### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
+#### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
+#### [Helyszíni üzembe helyezés](active-directory-conditional-access-on-premises-setup.md)
+#### [Gyakori kérdések](active-directory-conditional-faqs.md)
+#### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
+#### [Referencia](active-directory-conditional-access-technical-reference.md)
+### Tanúsítványalapú hitelesítés
+#### [Android](active-directory-certificate-based-authentication-android.md)
+#### [iOS](active-directory-certificate-based-authentication-ios.md)
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Bekapcsolás](active-directory-identityprotection-enable.md)
 #### [Biztonsági rések keresése](active-directory-identityprotection-vulnerabilities.md)
@@ -301,6 +312,6 @@
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

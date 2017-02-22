@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "A biztonsági mentések felhőben való létrehozásának folyamatát a Backup dokumentációjából ismerheti meg. Tekintse meg az alkalmazások, Windows-kiszolgálók és Azure virtuális gépek biztonsági mentését bemutató oktatóanyagokat és videókat."
+services: backup
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: backup
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 4c3a00fe82ec903bcd756e8cd2ef940fc10e8af2
+ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
+ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
 
 ---
 #<a name="backup-documentation"></a>Backup – dokumentáció
 
-Az Azure Backup felhőszolgáltatással biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből.  Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást.  
+Ismerje meg, hogyan biztosíthatja adatai védelmét a felhőben az Azure Backup segítségével hosszú távú megőrzés és helyreállítás esetén. Az oktatóanyagok, videók és az egyéb dokumentáció bemutatják, hogyan készíthet biztonsági másolatot adatairól, alkalmazásairól, Windows-kiszolgálóiról és Azure virtuális gépeiről.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -132,16 +144,10 @@ Az Azure Backup felhőszolgáltatással biztonsági másolatot készíthet adata
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Backup – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

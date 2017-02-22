@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/09/2016
+ms.date: 01/11/2017
 ms.author: carlrab; janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: ed598cfdaf5bebc1cf92894ba1f6c79f268ef3c3
+ms.sourcegitcommit: 0a00aff343bfd31c956f6cbc831e89cc1cc84b23
+ms.openlocfilehash: 95ae4bd67b7d08755035e7b5559ca9648d45bdaa
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken
 Az [Azure SQL Database](sql-database-technical-overview.md) három, különböző teljesítményszintet képviselő szolgáltatásszinttel rendelkezik a különböző számítási feladatok kezelésére: **Alapszintű**, **Standard** és **Prémium**. A magasabb teljesítményszintek növekvő erőforrásokat nyújtanak az egyre növekvő adatátvitel kiszolgálásához. [A szolgáltatásszintek és a teljesítményszintek dinamikusan](sql-database-scale-up.md) is módosíthatók, állásidő nélkül. Az Alapszintű, Standard és Prémium szolgáltatásszintek egyaránt 99,99 százalékos, szolgáltatói szerződésben (SLA) garantált hasznos üzemidőt, rugalmas üzletmenet-folytonossági funkciókat, biztonsági szolgáltatásokat és óradíj alapú számlázást nyújtanak. 
 
-Létrehozhat önálló adatbázisokat dedikált erőforrásokkal a választott [teljesítményszinten](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels). Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, amelyben az adatbázisok osztoznak az erőforrásokon. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-dtu.md). 
+Létrehozhat önálló adatbázisokat dedikált erőforrásokkal a választott [teljesítményszinten](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels). Több adatbázis együtt is kezelhető egy [rugalmas készleten](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) belül, amelyben az adatbázisok osztoznak az erőforrásokon. Az önálló adatbázisok számára elérhető erőforrásokat Database Transaction Unitokkal (Adatbázisok tranzakciós egységeivel, DTU-kkal) fejezzük ki, a rugalmas készletek számára elérhető erőforrásokat pedig rugalmas DTU-kkal, (eDTU-kkal). További információ a DTU-król és eDTU-król: [Mi az a DTU?](sql-database-what-is-a-dtu.md). 
 
 A lehetséges szolgáltatásszintek mindkét esetben az **Alapszintű**, a **Standard** és a **Prémium**. 
 
@@ -49,10 +49,13 @@ Miután eldöntötte a minimális szolgáltatási szintet, készen áll az adatb
 
 Miután kiválasztotta a kezdő teljesítményszintet, az [önálló adatbázist](sql-database-scale-up.md) vagy [rugalmas készletet](sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool) aztán dinamikusan felfelé vagy lefelé méretezheti a tényleges tapasztalatok alapján. Áttelepítési forgatókönyvek esetén a [DTU-kalkulátor](http://dtucalculator.azurewebsites.net/) segítségével is megbecsülheti a szükséges DTU-k számát. 
 
-## <a name="standalone-database-service-tiers-and-performance-levels"></a>Önálló adatbázis-szolgáltatásszintek és -teljesítményszintek
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
+>
+
+## <a name="single-database-service-tiers-and-performance-levels"></a>Önálló adatbázis szolgáltatásszintjei és teljesítményszintjei
 Az önálló adatbázisokhoz minden szolgáltatásszinten több teljesítményszint áll rendelkezésre. Így rugalmasan kiválaszthatja a számítási feladatnak leginkább megfelelő teljesítményszintet. Ha felfelé vagy lefelé kell méreteznie, könnyedén módosíthatja az adatbázis szintjeit. További részleteket az [Adatbázis szolgáltatásszintjeinek és teljesítményszintjeinek módosítása](sql-database-scale-up.md) című részben talál.
 
-Az itt felsorolt teljesítményjellemzők az [SQL Database&12; verzió](sql-database-v12-whats-new.md) használatával létrehozott adatbázisokra érvényesek. Az üzemeltetett adatbázisok számától függetlenül az adatbázis számára garantálva van az erőforrások készlete, és az adatbázis elvárt teljesítményjellemzői nem változnak.
+Az üzemeltetett adatbázisok számától függetlenül az adatbázis számára garantálva van az erőforrások készlete, és az adatbázis elvárt teljesítményjellemzői nem változnak.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
@@ -62,23 +65,24 @@ Az itt felsorolt teljesítményjellemzők az [SQL Database&12; verzió](sql-data
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>Rugalmas készlet szolgáltatásszintjei és teljesítménye eDTU-kban megadva
 
-A készletek lehetővé teszik az adatbázisok számára az eDTU-erőforrások anélkül történő megosztását és felhasználását, hogy egy adott teljesítményszintet kellene hozzárendelni a készletben lévő minden egyes adatbázishoz. Például egy különálló adatbázis egy Standard adatbáziskészletben használhat 0 eDTU-t, de használhatja akár az adatbáziskészlet konfigurálásakor beállított maximális eDTU-t is. A készletek különböző munkaterhelésű adatbázisok esetén lehetővé teszik az egész adatbáziskészlet számára rendelkezésre álló eDTU-erőforrások hatékony használatát. A részleteket a [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md) részben találja.
+A készletek lehetővé teszik az adatbázisok számára az eDTU-erőforrások anélkül történő megosztását és felhasználását, hogy egy adott teljesítményszintet kellene hozzárendelni a készletben lévő minden egyes adatbázishoz. Például egy önálló adatbázis egy Standard adatbáziskészletben használhat akár 0 eDTU-t, de használhatja akár az adatbáziskészlet konfigurálásakor beállított maximális eDTU-t is. A készletek különböző munkaterhelésű adatbázisok esetén lehetővé teszik az egész adatbáziskészlet számára rendelkezésre álló eDTU-erőforrások hatékony használatát. A részleteket a [Rugalmas készletek ára és teljesítménye](sql-database-elastic-pool-guidance.md) részben találja.
 
 Az alábbi táblázat ismerteti az adatbáziskészlet szolgáltatásszintjeinek jellemzőit.
 
-[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
-A készletben lévő minden adatbázis követi az adott szinthez tartozó önálló adatbázis jellemzőit. Az Alapszintű készlet például egy készletenként maximálisan 4 800–28 800 értékű munkamenet-korláttal rendelkezik, az Alapszintű készletben lévő önálló adatbázis esetén azonban 300 munkamenet az adatbázis korlátja.
+Emellett a készletben lévő összes adatbázis követi az adott szinthez tartozó önálló adatbázisok jellemzőit. Az Alapszintű készlet például egy készletenként maximálisan 4 800–28 800 értékű munkamenet-korláttal rendelkezik, az Alapszintű készletben lévő önálló adatbázis esetén azonban 300 munkamenet az adatbázis korlátja.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [rugalmas készletek](sql-database-elastic-pool-guidance.md) és a [rugalmas készletek árral és teljesítménnyel kapcsolatos megfontolásainak](sql-database-elastic-pool-guidance.md) részleteit.
-* Ismerje meg, hogyan történik a [rugalmas készletek megfigyelése, kezelése és átméretezése](sql-database-elastic-pool-manage-portal.md), valamint az [önálló adatbázisok teljesítményének megfigyelése](sql-database-single-database-monitor.md).
+* Ismerkedjen meg részletesebben a [rugalmas készletek figyelésével, kezelésével és átméretezésével](sql-database-elastic-pool-manage-portal.md) és az [önálló adatbázisok teljesítményének figyelésével](sql-database-single-database-monitor.md).
 * Most, hogy megismerkedett az SQL Database szolgáltatásszintjeivel, próbálja ki őket [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/), és [hozza létre első SQL-adatbázisát](sql-database-get-started.md).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

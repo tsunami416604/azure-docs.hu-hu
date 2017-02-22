@@ -3,7 +3,7 @@ title: "Ismerkedés az Azure AD Privileged Identity Management alkalmazással | 
 description: "Megtudhatja, hogyan kezelhet kiemelt identitásokat az Azure Portal Azure Active Directory Privileged Identity Management alkalmazásával."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e84b361ec2acb062142d15ff9a6e02aca07d0958
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: 7b1510ccfed939e27bad4fc0e5fafd4383db4a35
 
 
 ---
@@ -44,7 +44,6 @@ Az Azure AD Privileged Identity Management beállítása után az alkalmazás mi
 * A **Kiemelt szerepkörök kezelése** az az irányítópult, amelyen a kiemelt szerepkörök rendszergazdái kezelhetik a szerepkör-hozzárendeléseket, módosíthatják a szerepkör-aktiválási beállításokat, elindíthatják a hozzáférési felülvizsgálatokat stb. Az irányítópulton található beállítások kizárólag a kiemelt szerepkörű rendszergazdák számára érhetők el.
 * Az **Emelt szintű hozzáférés felülvizsgálata** lehetőséggel megtekintheti a függőben lévő hozzáférési felülvizsgálatokat, amelyeket be kell fejeznie, legyen szó akár a saját hozzáféréseiről vagy egy másik felhasználóéról. 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Következő lépések
 [Az Azure AD Privileged Identity Management áttekintése](active-directory-privileged-identity-management-configure.md) további részleteket tartalmaz arról, hogyan kezelheti a rendszergazdai hozzáférést a szervezetében.
 
@@ -56,6 +55,6 @@ Az Azure AD Privileged Identity Management beállítása után az alkalmazás mi
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

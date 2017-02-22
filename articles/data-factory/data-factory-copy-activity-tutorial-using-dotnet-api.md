@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/27/2016
+ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d175d3d4d7d7a58f071dab0f32e3fdd3cb3146ce
-ms.openlocfilehash: 8c26d8ef39827cff87b7fc7f17fab78c627a5035
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 
 
 ---
@@ -37,6 +37,9 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 
 > [!NOTE]
 > Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET SDK-val kapcsolatos részletes információkért olvassa el a [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) (Data Factory .NET API referenciája) című cikket.
+> 
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel.
@@ -503,12 +506,18 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 20. Ellenőrizze, hogy a két alkalmazotti rekord a meghatározott Azure SQL-adatbázis „**emp**” táblájában lett létrehozva.
 
 ## <a name="next-steps"></a>Következő lépések
-* Olvassa el az [Adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely részletes információkat tartalmaz az oktatóanyagban használt másolási tevékenységről.
-* A Data Factory .NET SDK-val kapcsolatos részletes információkért olvassa el a [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) (Data Factory .NET API referenciája) című cikket. Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját.
+| Témakör | Leírás |
+|:--- |:--- |
+| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
+| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
+| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+[A Data Factory szolgáltatással kapcsolatos .NET API-referencia](/dotnet/api/) | A Data Factory .NET SDK-val kapcsolatban tartalmaz részleteket (keresse a következőt a fanézetben: Microsoft.Azure.Management.DataFactories.Models). 
 
 
 
 
-<!--HONumber=Jan17_HO1-->
+
+
+<!--HONumber=Feb17_HO1-->
 
 

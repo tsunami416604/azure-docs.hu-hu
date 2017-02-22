@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
 > 
 > 
 
-Ez a cikk ismerteti, hogyan tehet közzé alkalmazásokat egyéni felhasználók számára egy Azure RemoteApp-gyűjteményben. Ez az Azure RemoteApp új funkciója, amely jelenleg „privát előzetes verzióként”, csak egyes korai belépők számára érhető el értékelési célokra.
+Ez a cikk ismerteti, hogyan tehet közzé alkalmazásokat egyéni felhasználók számára egy Azure RemoteApp-gyűjteményben. Ez az Azure RemoteApp egy új funkciója, amely jelenleg „privát előzetes verzióként”, csak egyes korai támogatók számára érhető el, értékelési célokra.
 
 Az Azure RemoteAppban eredetileg csak egy módja volt az alkalmazások „közzétételének”: a rendszergazda alkalmazásokat tehetett közzé a rendszerképről, amelyek a gyűjteményben lévő összes felhasználó számára láthatók voltak.
 
@@ -37,7 +37,7 @@ Ez mostantól lehetséges az Azure RemoteAppban – jelenleg korlátozott előze
 1. Egy gyűjtemény két módba állítható be:
    
    * az eredeti „gyűjtemény módba”, amelyben egy gyűjtemény minden felhasználója láthatja az összes közzétett alkalmazást. Ez az alapértelmezett mód.
-   * az új „alkalmazás módba”, amelyben a felhasználók csak a kifejezetten a hozzájuk rendelt alkalmazásokat láthatják
+   * az új „alkalmazás módba”, amelyben a felhasználók csak a kifejezetten hozzájuk rendelt alkalmazásokat láthatják.
 2. Az alkalmazás mód jelenleg csak Azure RemoteApp PowerShell-parancsmagok használatával engedélyezhető.
    
    * Amikor alkalmazás módba állítja be a gyűjteményt, a gyűjtemény felhasználó-hozzárendelése nem kezelhető az Azure Portalon keresztül. A felhasználó-hozzárendelés kezelését PowerShell-parancsmagokon keresztül kell elvégezni.
@@ -49,7 +49,7 @@ Ez mostantól lehetséges az Azure RemoteAppban – jelenleg korlátozott előze
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Az Azure RemoteApp PowerShell-parancsmagok beszerzése
 Az előzetes verzió új funkcióinak kipróbálásához Azure PowerShell-parancsmagokat kell használnia. Az Azure felügyeleti portáljával jelenleg nincs lehetőség az új alkalmazás-közzétételi mód engedélyezésére.
 
-Először győződjön meg róla, hogy telepítve van az [Azure PowerShell modul](../powershell-install-configure.md).
+Először győződjön meg róla, hogy telepítve van az [Azure PowerShell modul](/powershell/azureps-cmdlets-docs).
 
 Ezután indítsa el a PowerShell-konzolt rendszergazdai módban, és futtassa a következő parancsmagot:
 
@@ -106,6 +106,6 @@ Ha még nem használta az előzetes verziót, töltse ki ezt a [felmérést](htt
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

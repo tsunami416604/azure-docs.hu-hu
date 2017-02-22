@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 4f6feb844774fba00e3c46438f686e61b52d03d3
 
 
 ---
@@ -34,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan lehet adatokat betölteni az SQL Data Wareh
 * Adatbázis-objektumok létrehozása az adatok meghatározásához
 * T-SQL lekérdezés futtatása az adatok betöltéséhez
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
@@ -43,7 +43,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy SQL Data Warehouse-adatbázis.
 * Egy standard helyileg redundáns tárolás (Standard-LRS), standard georedundáns tárolás (Standard-GRS) vagy standard írásvédett georedundáns tárolás (Standard-RAGRS) típusú Azure Storage-fiók.
-* AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][az AzCopy legújabb verziója], amely a Microsoft Azure Storage-eszközökkel együtt települ.
+* AzCopy parancssori segédprogram Töltse le és telepítse [az AzCopy legújabb verzióját][latest version of AzCopy], amely a Microsoft Azure Storage-eszközökkel együtt települ.
   
     ![Azure Storage-eszközök](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
@@ -106,7 +106,7 @@ Adatok másolása az Azure Blob Storage-ba:
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Lásd még: [Bevezetés az AzCopy parancssori segédprogram használatába][az AzCopy legújabb verzióját].
+Lásd még [az AzCopy parancssori segédprogram használatát ismertető][latest version of AzCopy] részt.
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. A Blob Storage-tároló áttekintése
 A Blob Storage-ba feltöltött fájl megtekintése:
@@ -211,7 +211,7 @@ Az SQL Server Object Explorerben a Visual Studióban megtekintheti a külső fá
 Ha létrejött a külső tábla, betöltheti az adatokat egy új táblába, vagy beszúrhatja őket egy meglévő táblába.
 
 * Az adatok új táblába való betöltéséhez futtassa a [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] utasítást. Az új tábla tartalmazza a lekérdezésben szereplő oszlopokat. Az oszlopok adattípusai megfelelnek a külső tábla definíciójában szereplő adattípusoknak.
-* Az adatok meglévő táblába való betöltéséhez használja az [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] utasítást.
+* Az adatok meglévő táblába való betöltéséhez használja az [INSERT ---SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] utasítást.
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -237,25 +237,25 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-További tudnivalók: [Statisztika][Statisztika].  
+További tudnivalók: [Statisztika][Statistics].  
 
 ## <a name="next-steps"></a>Következő lépések
-A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][PolyBase-útmutató] találhat további információt.
+A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban][PolyBase guide] találhat további információt.
 
 <!--Image references-->
 
 
 <!--Article references-->
-[PolyBase az SQL Data Warehouse-ban – oktatóanyag]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[Adatok betöltése a bcp használatával]: ./sql-data-warehouse-load-with-bcp.md
-[Statisztika]: ./sql-data-warehouse-tables-statistics.md
-[PolyBase-útmutató]: ./sql-data-warehouse-load-polybase-guide.md
-[laz AzCopy legújabb verziója]: ../storage/storage-use-azcopy.md
+[PolyBase in SQL Data Warehouse Tutorial]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
+[latest version of AzCopy]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
-[támogatott forrás/fogadó]: https://msdn.microsoft.com/library/dn894007.aspx
-[másolási művelet]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server-céladapter]: https://msdn.microsoft.com/library/ms141095.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
@@ -276,6 +276,6 @@ A PolyBase-t használó megoldások fejlesztéséről a [PolyBase-útmutatóban]
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

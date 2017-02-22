@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Batch szolgáltatás áttekintése fejlesztők számára | Microsoft Docs"
+title: "Az Azure Batch áttekintése fejlesztők számára | Microsoft Docs"
 description: "Megismerheti a Batch szolgáltatás funkcióit és API-jait a fejlesztés szempontjából."
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 4bd60ab3b1be1fa590b20fbe292da69f6a2dac8e
-ms.openlocfilehash: 0b63ea1e6308732f6993357466d7e372ec53a78f
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: 984d1afe93b19ebea7add524091ed64aa276da0c
 
 
 ---
@@ -111,7 +111,7 @@ Készlet létrehozásakor a következő attribútumokat adhatja meg:
     A készlethez csak azonos méretű csomópontok tartozhatnak. Ha eltérő rendszerigényű és/vagy terhelési szintű alkalmazásokat szándékozik futtatni, javasoljuk, hogy használjon különálló készleteket.
 * **Csomópontok célszáma**
 
-    Ez a szám azt határozza meg, hogy hány számítási csomópontot szeretne üzembe helyezni a készletben. Azért használjuk a *cél* szócskát, mivel előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Ez például akkor fordulhat elő, ha a kívánt csomópontok száma eléri a Batch-fiókhoz tartozó [magkvótát](batch-quota-limit.md#batch-account-quotas), vagy ha korábban automatikus méretezési képletet alkalmazott a készletre, amely a kívántnál alacsonyabb értékre korlátozza a csomópontok maximális számát (lásd az alábbi „Skálázási szabályzat” című fejezetet).
+    Ez a szám azt határozza meg, hogy hány számítási csomópontot szeretne üzembe helyezni a készletben. Azért használjuk a *cél* szócskát, mivel előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Ez például akkor fordulhat elő, ha a kívánt csomópontok száma eléri a Batch-fiókhoz tartozó [magkvótát](batch-quota-limit.md), vagy ha korábban automatikus méretezési képletet alkalmazott a készletre, amely a kívántnál alacsonyabb értékre korlátozza a csomópontok maximális számát (lásd az alábbi „Skálázási szabályzat” című fejezetet).
 * **Skálázási szabályzat**
 
     Dinamikus számítási feladatoknál megírhat egy [automatikus skálázási képletet](#scaling-compute-resources), amelyet aztán alkalmazhat a készletre. A Batch szolgáltatás rendszeresen ellenőrzi a készletet a képlet alapján, és az Ön által megadott, a készletre, a feladatokra és a tevékenységekre vonatkozó paraméterek alapján szükség esetén módosítja a készletben lévő csomópontok számát.
@@ -489,6 +489,6 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

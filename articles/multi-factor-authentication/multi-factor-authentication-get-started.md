@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA felhőben és kiszolgálón | Microsoft Docs"
+title: "Az Azure MFA-felhő vagy -kiszolgáló kiválasztása | Microsoft Docs"
 description: "Az Önnek legmegfelelőbb többtényezős hitelesítési biztonsági megoldás kiválasztásához döntse el, mit szeretne biztonságossá tenni, és hol tárolja a rendszer a felhasználóit.  Ezután válassza a felhő, az MFA-kiszolgáló vagy az AD FS lehetőséget."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07e2a62ee63a8f9ef3d660fff8c6269654e2b448
-ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
+ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
+ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
 
 
 ---
@@ -36,7 +36,7 @@ A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először
 | --- |:---:|:---:|
 | Belső Microsoft-alkalmazások |● |● |
 | SaaS-alkalmazások az alkalmazáskatalógusban |● |● |
-| Az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások |● |● |
+| Az Azure AD-alkalmazásproxyn keresztül közzétett webalkalmazások |● |● |
 | Nem az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások | |● |
 | Távelérés, például VPN vagy RDG | |● |
 
@@ -62,8 +62,8 @@ A következő táblázat a felhőbeli elérhető Multi-Factor Authentication és
 | Egyirányú SMS második tényezőként | ● | ● |
 | Kétirányú SMS második tényezőként | | ● |
 | Hardvertokenek második tényezőként | | ● |
-| Alkalmazásjelszavak az MFA-t nem támogató ügyfelekhez | ● | |
-| A hitelesítési módszerek rendszergazdai szabályozása | | ● |
+| Alkalmazásjelszavak az MFA-t nem támogató Office 365-ügyfelekhez | ● | |
+| A hitelesítési módszerek rendszergazdai szabályozása | ● | ● |
 | PIN-mód | | ● |
 | Csalási riasztás |● | ● |
 | MFA-jelentések |● | ● |
@@ -73,7 +73,7 @@ A következő táblázat a felhőbeli elérhető Multi-Factor Authentication és
 | Megbízható IP-címek | ● | ● |
 | MFA megjegyzése megbízható eszközökön | ● | |
 | Feltételes hozzáférés | ● | ● |
-| Gyorsítótár | ● | ● |
+| Gyorsítótár |  | ● |
 
 Most, hogy eldöntöttük, hogy a felhőalapú többtényezős hitelesítést vagy a helyszíni MFA-kiszolgálót érdemes használni, megkezdhetjük az Azure Multi-Factor Authentication beállítását és használatát. **Válassza ki az ikont, amely a forgatókönyvéhez tartozik.**
 
@@ -87,6 +87,6 @@ Most, hogy eldöntöttük, hogy a felhőalapú többtényezős hitelesítést va
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,15 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: ab8e5861dd7214dab41024e7048b739c072d3f64
-ms.openlocfilehash: 52a431c2af8b670fc4e4babb0a0d077051a46f54
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
 
 
 ---
-# <a name="introduction-to-machine-learning-in-the-cloud"></a>Bevezetés a felhőalapú Machine Learning használatába
+# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>Bevezetés a felhőalapú Azure Machine Learning használatába
 ## <a name="what-is-machine-learning"></a>Mit jelent a gépi tanulás funkció?
 A Machine Learning olyan adatelemzési módszer, amelynek segítségével a számítógépek a meglévő adatokból tanulva jövőbeni viselkedéseket, kimeneteket és trendeket jelezhetnek előre.  
 
@@ -37,8 +37,6 @@ A használatra kész algoritmusok tárából dolgozhat, az algoritmusokat modell
 ![Mit jelent a gépi tanulás funkció? A prediktív elemzés működésbe léptetésének alapvető munkafolyamata az Azure Machine Learning szolgáltatásban.](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
 Az Azure Machine Learning nem csupán eszközöket biztosít a modellek prediktív elemzéséhez, de teljes körűen felügyelt szolgáltatást is nyújt, amelynek segítségével felhasználásra kész webszolgáltatásként üzembe helyezheti prediktív modelljeit.
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-predictive-analytics"></a>Mi az a prediktív elemzés?
 A prediktív elemzések különböző matematikai képleteket, úgynevezett algoritmusokat használnak a korábbi és a jelenlegi adatok elemzéséhez, amelyekben a jövőbeni események előrejelzését segítő mintázatokat vagy trendeket azonosítanak.
@@ -60,7 +58,7 @@ Húzással és modulok csatlakoztatásával gyorsan létrehozhat prediktív mode
 Az alábbi oktatóanyagok ismertetik a prediktív elemzési modellek működtetését:
 
  * [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
- * [A modellek betanítása és újratanítása API-k segítségével](machine-learning-retrain-models-programmatically.md)
+ * [A modellek újratanítása API-k segítségével](machine-learning-retrain-models-programmatically.md)
  * [Webszolgáltatás-végpontok kezelése](machine-learning-create-endpoint.md)
  * [Webszolgáltatás méretezése](machine-learning-scaling-webservice.md)
  * [Webszolgáltatások felhasználása](machine-learning-consume-web-services.md)
@@ -69,7 +67,10 @@ Az alábbi oktatóanyagok ismertetik a prediktív elemzési modellek működtet�
 A Machine Learning kifejezéseinek jelentése nem mindig egyértelmű. Segítségül az alábbiakban ismertetjük a legfontosabb kifejezések meghatározását. Az ezek alatt található megjegyzés rovatban kérdezhet rá olyan további kifejezésekre, amelyek meghatározására kíváncsi.
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>Az adatok feltárása, deskriptív elemzés és prediktív elemzés
-Az **adatok feltárásának** azt a folyamatot nevezzük, amikor egy nagy és általában nem strukturált adathalmaz adatait összegyűjtve megkeressük a részletesebb elemzéshez felhasználható általános jellemzőket. Az **adatbányászat** kifejezés az adatfeltárás automatizált formájára utal.
+
+Az **adatok feltárásának** azt a folyamatot nevezzük, amikor egy nagy és általában nem strukturált adathalmaz adatait összegyűjtve megkeressük a részletesebb elemzéshez felhasználható általános jellemzőket.
+
+Az **adatbányászat** kifejezés az adatfeltárás automatizált formájára utal.
 
 **Deskriptív elemzésnek nevezzük**, amikor az adathalmaz elemzésével azt szeretnénk megkapni, hogy pontosan mi történt az adatokkal. Az üzleti elemzések nagy része (például az értékesítési jelentések, webes metrikák és közösségihálózat-elemzések) deskriptív elemzésnek számít.
 
@@ -114,6 +115,6 @@ A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használj
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

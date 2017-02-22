@@ -69,15 +69,18 @@
 ## [Linux rendszerű virtuális gépek üzembe helyezése](azure-stack-linux.md)
 ## [Frissítések felügyelete](azure-stack-updates.md)
 ## [Fejlesztés az Azure Stackhez](azure-stack-developer.md)
-## SQL vagy MySQL típusú erőforrás-szolgáltató üzembe helyezése
-### [MySQL-adatbázisok használata PaaS-ként az Azure Stackben](azure-stack-mysql-resource-provider-deploy.md)
-### [Az SQL Server erőforrás-szolgáltató adapter üzembe helyezése az Azure Stackben](azure-stack-sql-resource-provider-deploy.md)
+## SQL vagy MySQL ajánlása PaaS-ként
+### [MySQL típusú erőforrás-szolgáltató üzembe helyezése](azure-stack-mysql-resource-provider-deploy.md)
+### [SQL típusú erőforrás-szolgáltató üzembe helyezése](azure-stack-sql-resource-provider-deploy.md)
 
-## Az App Service tervezése és üzembe helyezése
+## App Service ajánlása PaaS-ként
 ### [Az Azure Stack App Service áttekintése](azure-stack-app-service-overview.md)
 ### [A kezdés előtt](azure-stack-app-service-before-you-get-started.md)
+### [App Service erőforrás-szolgáltató üzembe helyezése](azure-stack-app-service-deploy.md)
 ### [További webes feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md)
-### [App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez](azure-stack-app-service-deploy.md)
+### [FTP-közzététel engedélyezése](azure-stack-app-service-enable-ftp.md)
+### [Központi telepítés forrásának konfigurálása](azure-stack-app-service-configure-deployment-sources.md)
+
 
 # Hibaelhárítás
 ## [Az Azure Stack hibaelhárítása](azure-stack-troubleshooting.md)
@@ -88,6 +91,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

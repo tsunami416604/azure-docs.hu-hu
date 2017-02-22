@@ -35,7 +35,7 @@ Ez a szakasz a Hello World minta kódjának néhány fő részét tárgyalja.
 ### <a name="gateway-creation"></a>Átjáró létrehozása
 A fejlesztőnek *átjárófolyamatot* kell írnia. Ez a program létrehoz egy belső infrastruktúrát (a közvetítő), betölti a modulokat, és mindent úgy állít be, hogy megfelelően működjön. Az SDK-ban megtalálható a **Gateway_Create_From_JSON** függvényt, amellyel elindíthat egy átjárót a JSON-fájlokból. A **Gateway_Create_From_JSON** függvényt a használata előtt továbbítania kell egy olyan a JSON-fájl elérési útjára, amely meghatározza a betöltendő modulokat. 
 
-Az átjárófolyamat kódját a Hello World mintában találja, a [main.c][lnk-main-c] fájlban. Az olvashatóság érdekében az alábbi részlet az átjáró folyamatkódjának rövidített verzióját mutatja. Ez a program létrehoz egy átjárót, majd megvárja, amíg a felhasználó lenyomja az **ENTER** billentyűt, mielőtt lebontja az átjárót. 
+Az átjárófolyamat kódját a Hello World példában találja, a [main.c][lnk-main-c] fájlban. Az olvashatóság érdekében az alábbi részlet az átjáró folyamatkódjának rövidített verzióját mutatja. Ez a program létrehoz egy átjárót, majd megvárja, amíg a felhasználó lenyomja az **ENTER** billentyűt, mielőtt lebontja az átjárót. 
 
 ```
 int main(int argc, char** argv)
@@ -60,9 +60,9 @@ A JSON-beállításfájl tartalmazza a betöltendő modulok listáját és a mod
 Minden modulnak meg kell határoznia a következőket:
 
 * **name**: a modul egyedi neve.
-* **loader**: olyan betöltő, amely képes a kívánt modul betöltésére.  A betöltők a különböző modultípusok betöltésére szolgáló bővítménypontok. Betöltőket a natív C, Node.js, Java és .Net nyelveken írt modulokhoz biztosítunk. A Hello World minta kizárólag a „natív” betöltőt használja, mivel a minta összes modulja C nyelven írt dinamikus könyvtár. Az egyéb nyelveken írt modulok használatával kapcsolatban bővebb információt a [Node-](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/), [Java-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample) és [.Net-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)mintákban találhat.
+* **loader**: olyan betöltő, amely képes a kívánt modul betöltésére.  A betöltők a különböző modultípusok betöltésére szolgáló bővítménypontok. Betöltőket a natív C, Node.js, Java és .NET nyelven írt modulokhoz biztosítunk. A Hello World példa kizárólag a „natív” betöltőt használja, mivel a példa összes modulja C nyelven írt dinamikus könyvtár. Az egyéb nyelveken írt modulok használatával kapcsolatban bővebb információt a [Node.js-](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/), [Java-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample) és [.NET-](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)példákban találhat.
     * **name**: a modul betöltéséhez használt betöltő neve.  
-    * **entrypoint**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl. Vegye figyelembe, hogy ez a belépési pont a használt betöltőtípustól függ. A Node.js betöltőjének belépési pontja például egy .js fájl, a Java betöltőjének belépési pontja egy osztályútvonal+osztálynév, a .Net betöltőjének belépési pontja pedig egy szerelvénynév+osztálynév.
+    * **entrypoint**: a modult tartalmazó könyvtár elérési útja. Linux esetén ez egy .so fájl, Windows rendszeren pedig .dll fájl. Vegye figyelembe, hogy ez a belépési pont a használt betöltőtípustól függ. A Node.js betöltőjének belépési pontja például egy .js fájl, a Java betöltőjének belépési pontja egy osztályútvonal+osztálynév, a .NET betöltőjének belépési pontja pedig egy szerelvénynév+osztálynév.
 
 * **args**: a modul által igényelt konfigurációs információk.
 
@@ -114,7 +114,7 @@ A következő kód a Linuxon a Hello World minta moduljai közötti hivatkozáso
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>A Hello World modul üzenet-közzététele
-Megkeresheti a „Hello World” modul által használt kódot, hogy közzétegye a [„hello_world.c”][lnk-helloworld-c] fájlban lévő üzeneteket. Az alábbi részletben egy módosított verzió látható, további megjegyzésekkel és az olvashatóság érdekében kevesebb hibakezelési kóddal:
+A „Hello World” modul által használt kódot felhasználhatja ahhoz, hogy közzétegye a [„hello_world.c”][lnk-helloworld-c] fájlban lévő üzeneteket. Az alábbi részletben egy módosított verzió látható, további megjegyzésekkel és az olvashatóság érdekében kevesebb hibakezelési kóddal:
 
 ```
 int helloWorldThread(void *param)
@@ -229,6 +229,6 @@ Az IoT Gateway SDK használatának megismeréséhez tekintse meg a következőke
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

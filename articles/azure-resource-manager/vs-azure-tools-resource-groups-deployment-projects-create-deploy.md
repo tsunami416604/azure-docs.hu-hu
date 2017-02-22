@@ -219,6 +219,6 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

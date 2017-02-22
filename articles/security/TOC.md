@@ -23,8 +23,11 @@
 ## [Identitáskezelés](security-identity-management-overview.md)
 ### [Ajánlott identitáskezelési biztonsági eljárások](azure-security-identity-management-best-practices.md)
 ## PaaS szolgáltatások
-### [Ajánlott biztonsági eljárások az IoT-hez](azure-security-iot-best-practices.md)
+### [PaaS-környezetek védelme](security-paas-deployments.md)
+#### [PaaS-alkalmazások védelme SQL használatával](security-paas-applications-using-sql.md)
+#### [PaaS-alkalmazások védelme App Services használatával](security-paas-applications-using-app-services.md)
 ### [Az IoT biztonsági áttekintése](security-internet-of-things-overview.md)
+### [Ajánlott biztonsági eljárások az IoT-hez](azure-security-iot-best-practices.md)
 ## Vertikális iparágak
 ### [Biztonságos állapotmegoldások tervezése](security-health-care-solution.md)
 ## [Biztonsági architektúra](azure-security-architecture-overview.md)
@@ -33,12 +36,10 @@
 ### [Bevált biztonsági gyakorlatok és minták](security-best-practices-and-patterns.md)
 ### [Rugalmas alkalmazások kiépítése](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# Referencia
+# Kapcsolódó
 ## [Adatvédelmi központ](security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](azure-security-response-center.md)
 ## [Toll tesztelése](azure-security-pen-testing.md)
-
-# Kapcsolódó
 ## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
@@ -52,6 +53,7 @@
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Feb17_HO1-->
 
 

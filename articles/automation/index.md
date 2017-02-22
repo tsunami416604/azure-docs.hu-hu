@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Automation dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogyan automatizálhatja a folyamatokat és a konfigurációkezelést az Automation használatával, hogy időt takarítson meg és növelje a rendszeres adminisztratív feladatok megbízhatóságát."
+services: automation
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: automation
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: a561ca44e25eb1fe229397aca2cdb049e9c0575c
+ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
+ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
 
 ---
 # <a name="automation-documentation"></a>Automation – dokumentáció
 
-Az Azure Automation segítségével a felhasználók automatizálhatják a manuális, hosszan tartó, sok hibalehetőséget rejtő és gyakran ismétlődő feladatokat, amelyeket gyakran hajtanak végre felhőkörnyezetben. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer.
+Ismerje meg, hogyan takaríthat meg időt és növelheti a felhőkörnyezetben végrehajtott rendszeres adminisztratív feladatok megbízhatóságát az Automation használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan automatizálhatja a folyamatokat forgatókönyvek segítségével, és hogyan automatizálhatja a konfigurációkezelést a célállapot-konfigurációkkal (DSC).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +41,7 @@ Az Azure Automation segítségével a felhasználók automatizálhatják a manu�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=automation">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=automation">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -123,64 +135,52 @@ Az Azure Automation segítségével a felhasználók automatizálhatják a manu�
 
 ---
 
-## <a name="reference"></a>Referencia
-
+<h2>Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-re vonatkozó referenciák</p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation">PowerShell</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation">Klasszikus PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="/dotnet/api">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Azure – felügyelt referencia API</p>
-                    </div>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
+                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-     <li>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/mt662285">
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Automation – REST API-referencia</p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt662285.aspx">REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt163781">Klasszikus REST API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    </ul>
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
-        <div class="img"></div>
-        <div class="text">
-Automation-dokumentáció letöltése </div>
-    </a>
-</div>
+</ul>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

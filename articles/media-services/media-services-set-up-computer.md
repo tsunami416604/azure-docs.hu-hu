@@ -1,5 +1,5 @@
 ---
-title: "A környezet kialakítása | Microsoft Docs"
+title: "Az Azure Media Services fejlesztési környezet beállítása | Microsoft Docs"
 description: "Környezet kialakítása az Azure Media Services segítségével történő fejlesztéshez."
 services: media-services
 documentationcenter: 
@@ -12,22 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 88e04780a5255e136de3d18ab946ef2981ecece5
+ms.sourcegitcommit: e16620b457e82260b27fe484abee715bb4b3aa24
+ms.openlocfilehash: fe69fc0ace47967e1ddf083e47dd25beb8d91d84
 
 
 ---
-# <a name="set-up-your-environment"></a>A környezet kialakítása
-> [!div class="op_single_selector"]
-> * [Portal](media-services-portal-create-account.md)
-> * [PowerShell](media-services-manage-with-powershell.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
->   <a id="create_account"></a>
-> 
-> 
+# <a name="set-up-your-media-services-development-environment"></a>Az Azure Media Services fejlesztési környezet beállítása
+
 
 A következő lépésekben az Azure Media Services szolgáltatással történő fejlesztés előfeltételeit ismertetjük.
 
@@ -37,16 +31,19 @@ Azure Media Services-fiókját létrehozhatja az Azure Portalon keresztül, ille
 <a id="setup_dev_env"></a>
 
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
-Válassza ki a .NET-et vagy a REST API-t a fejlesztői környezete számára.
 
-[!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
+A .NET fejlesztési környezet beállításával kapcsolatban tekintse meg [ezt](media-services-dotnet-how-to-use.md) a témakört.  
+
+A REST fejlesztési környezet beállításával kapcsolatban tekintse meg [ezt](media-services-rest-how-to-use.md) a témakört.  
 
 <a id="connect"></a>
 
 ## <a name="connect-programmatically"></a>Programozott módon való kapcsolódás
-Az Azure Media Serviceshez való programozott kapcsolódáshoz válasszon a .NET és a REST API közül.
 
-[!INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
+Az Azure Media Serviceshez .NET segítségével való csatlakozáshoz tekintse meg [ezt](media-services-dotnet-connect-programmatically.md) a témakört.  
+
+Az Azure Media Serviceshez REST segítségével való csatlakozáshoz tekintse meg [ezt](media-services-rest-connect-programmatically.md) a témakört.  
+
 
 ## <a name="next-steps-azure-media-services-learning-paths"></a>További lépések: Az Azure Media Services képzési tervei
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -57,6 +54,6 @@ Az Azure Media Serviceshez való programozott kapcsolódáshoz válasszon a .NET
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

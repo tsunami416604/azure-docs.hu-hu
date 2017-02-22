@@ -70,7 +70,7 @@ sql-database-service-tiers.md
 | eDTU-k maximális száma adatbázisonként | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750,4000} | 
 ||||||||
 
-\* A rugalmas adatbázisok osztoznak a készlettárolón, így az adatbázistár számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut.
+\* A készletezett adatbázisok osztoznak a készlettárolón, így az adatbázistár számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut. A készletenkénti maximális tárterület a készletben lévő adatfájlok maximális tárterületét jelenti, amelybe nem tartozik bele a naplófájlok által felhasznált tárhely.
 
 
 

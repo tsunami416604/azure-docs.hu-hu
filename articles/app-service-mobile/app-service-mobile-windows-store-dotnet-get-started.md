@@ -91,6 +91,6 @@ Miután konfigurálta a Mobile Apps-háttéralkalmazást, létrehozhat új ügyf
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

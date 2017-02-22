@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cfd3da08a8c8674e686ae2933db331809fb0e34d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
 
 
 ---
@@ -44,7 +44,7 @@ Windows-alkalmazásait az Azure RemoteAppban üzemeltetheti. Az alábbiakban egy
 ## <a name="app-and-sql-configuration-considerations"></a>Az alkalmazás és az SQL konfigurálására vonatkozó megfontolások:
 A RemoteApp és az Azure SQL együttes használatakor érdemes figyelembe vennie a következőket:
 
-Ismerje meg, [hogyan konfigurálható egy Azure SQL-adatbázis tűzfala](../sql-database/sql-database-firewall-configure.md). A cikkből szerint „kezdetben az Azure SQL Database-kiszolgáló összes hozzáférését blokkolja a tűzfal. Az Azure SQL Database-kiszolgáló használatának elkezdéséhez be kell lépnie a klasszikus portálra, és meg kell határoznia egy vagy több kiszolgálószintű tűzfalszabályt, amely engedélyezi a hozzáférést az Azure SQL Database-kiszolgálóhoz. A tűzfalszabályok segítségével adja meg, hogy az internet felől melyik IP-címtartományok engedélyezettek, valamint hogy az Azure-alkalmazások megpróbálhatnak-e csatlakozni az Azure SQL Database-kiszolgálóhoz.”
+Ismerje meg, [hogyan konfigurálható egy Azure SQL-adatbázis tűzfala](../sql-database/sql-database-firewall-configure.md). A cikkből származó kivonat szerint „kezdetben az Azure SQL Database-kiszolgáló összes hozzáférését blokkolja a tűzfal. Az Azure SQL Database-kiszolgáló használatának elkezdéséhez be kell lépnie a klasszikus portálra, és meg kell határoznia egy vagy több kiszolgálószintű tűzfalszabályt, amely engedélyezi a hozzáférést az Azure SQL Database-kiszolgálóhoz. A tűzfalszabályok segítségével adja meg, hogy az internet felől melyik IP-címtartományok engedélyezettek, valamint hogy az Azure-alkalmazások megpróbálhatnak-e csatlakozni az Azure SQL Database-kiszolgálóhoz.”
 
 Emellett amikor egy számítógép megpróbál csatlakozni az adatbázis-kiszolgálóhoz az internetről, a tűzfal a kiszolgálószintű és (szükség esetén) az adatbázisszintű tűzfalszabályok teljes készletében ellenőrzi a kérés eredeti IP-címét. „Ha a kérés IP-címe a kiszolgálószinten megadott tűzfalszabályok tartományok egyikébe esik, a rendszer engedélyezi a csatlakozást az Azure SQL Database-kiszolgálóhoz.” Így nemcsak egyes forrás IP-címek, hanem IP-címtartományok is használhatók.
 
@@ -60,6 +60,6 @@ Ha egy Azure RemoteAppban üzemeltetett, egy Azure-ban vagy a helyszínen üzeme
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

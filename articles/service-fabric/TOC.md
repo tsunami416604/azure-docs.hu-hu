@@ -21,11 +21,14 @@
 ## Alkalmazás készítése
 ### [Minták és forgatókönyvek](service-fabric-patterns-and-scenarios.md)
 ### Alapvető beállítások
-#### [A programozási modell](service-fabric-choose-framework.md)
 #### [Az alkalmazásmodell](service-fabric-application-model.md)
+#### [Támogatott programozási modell](service-fabric-choose-framework.md)
+#### [Szolgáltatás állapota](service-fabric-concepts-state.md)
 #### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
+#### [Webes kezelőfelület hozzáadása](service-fabric-add-a-web-frontend.md)
 #### [Szolgáltatásjegyzéki erőforrások](service-fabric-service-manifest-resources.md)
-#### [Eszközök](service-fabric-manage-application-in-visual-studio.md)
+#### [Alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
+#### [Biztonságos kapcsolatok konfigurálása a Visual Studióban](service-fabric-visualstudio-configure-secure-connections.md)
 #### Hibakeresés
 ##### [C# szolgáltatás hibakeresése a VS-ben](service-fabric-debugging-your-application.md)
 ##### [Java szolgáltatás hibakeresése az Eclipse-ben](service-fabric-debugging-your-application-java.md)
@@ -36,6 +39,15 @@
 #### [Biztonsági szabályzatok konfigurálása az alkalmazáshoz](service-fabric-application-runas-security.md)  
 #### [Az alkalmazás konfigurálása több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)  
 #### [Gyakori hibák és kivételek](service-fabric-errors-and-exceptions.md) 
+
+### Futtatható vendégalkalmazás
+#### [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
+#### [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
+
+### Tárolóalkalmazás
+#### [Áttekintés](service-fabric-containers-overview.md)
+#### [Windows-tároló üzembe helyezése](service-fabric-deploy-container.md)
+#### [Docker-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
 
 ### Reliable Services-alkalmazás
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
@@ -73,15 +85,6 @@
 #### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
-### Futtatható vendégalkalmazás
-#### [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
-#### [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
-
-### Tárolóalkalmazás
-#### [Áttekintés](service-fabric-containers-overview.md)
-#### [Windows-tároló üzembe helyezése](service-fabric-deploy-container.md)
-#### [Docker-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
-
 ## Áttelepítés a Cloud Servicesből
 ### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)
 ### [Migráció a Service Fabricre](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -95,7 +98,7 @@
 #### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 #### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 #### [Fürt kezelése az Azure CLI-vel](service-fabric-azure-cli.md) 
-#### [Biztonság](service-fabric-cluster-security.md)
+#### [Fürt biztonságossá tétele](service-fabric-cluster-security.md)
 #### [Vészhelyreállítás](service-fabric-disaster-recovery.md)
 
 ### Fürtök az Azure-on
@@ -108,6 +111,7 @@
 #### [Fürt törlése](service-fabric-cluster-delete.md)
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-fabric-settings.md)
+#### [Fürt biztonságossá tétele tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
 #### [Fürttanúsítványok hozzáadása vagy váltása](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Nyilvános fürt ingyenes kipróbálása](http://aka.ms/tryservicefabric)
 
@@ -116,30 +120,15 @@
 #### [Önálló fürt létrehozása az Azure Virtual Machinesben](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [Fürt skálázása](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
-#### [Fürt biztonságossá tétele](service-fabric-windows-cluster-x509-security.md)
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-manifest.md)
 #### [Fürt biztonságossá tétele tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)  
 #### [Fürt biztonságossá tétele a Windows rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md) 
 
-## Fürterőforrások kezelése és összehangolása
-### [A fürterőforrás-kezelő áttekintése](service-fabric-cluster-resource-manager-introduction.md)
-### [A fürterőforrás-kezelő architektúrája](service-fabric-cluster-resource-manager-architecture.md)
-### [Fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md)
-### [Az alkalmazáscsoportok áttekintése](service-fabric-cluster-resource-manager-application-groups.md)
-### [A fürterőforrás-kezelő beállításainak konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
-### [Erőforrás-felhasználási mérőszámok](service-fabric-cluster-resource-manager-metrics.md)
-### [A szolgáltatási affinitás használata](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-### [Szolgáltatás-elhelyezési házirendek](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-### [Fürt kezelése](service-fabric-cluster-resource-manager-management-integration.md)
-### [Fürt töredezettségmentesítése](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-### [Fürt terhelésének elosztása](service-fabric-cluster-resource-manager-balancing.md)
-### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
-### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
-
 ## Alkalmazások életciklus-kezelése
 ### [Áttekintés](service-fabric-application-lifecycle.md)
 ### [A folyamatos integráció beállítása](service-fabric-set-up-continuous-integration.md)
+### [Az ImageStoreConnectionString beállítás ismertetése](service-fabric-image-store-connection-string.md)
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -161,6 +150,7 @@
 ### [Állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 ## Megfigyelés és diagnosztika
+### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
 ### A szolgáltatások helyi figyelése és diagnosztikája
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
@@ -168,8 +158,8 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [Naplók lekérdezése egy szolgáltatási folyamatból](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
 ### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
+### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
 ### [Gyakori problémák megoldása](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
@@ -191,6 +181,21 @@
 #### [A csomópontváltó API-k használata](service-fabric-node-transition-apis.md)
 ### [Az alkalmazás terheléses tesztelése](service-fabric-vso-load-test.md)
 
+## Fürterőforrások kezelése és összehangolása
+### [A fürterőforrás-kezelő áttekintése](service-fabric-cluster-resource-manager-introduction.md)
+### [A fürterőforrás-kezelő architektúrája](service-fabric-cluster-resource-manager-architecture.md)
+### [Fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md)
+### [Az alkalmazáscsoportok áttekintése](service-fabric-cluster-resource-manager-application-groups.md)
+### [A fürterőforrás-kezelő beállításainak konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
+### [Erőforrás-felhasználási mérőszámok](service-fabric-cluster-resource-manager-metrics.md)
+### [A szolgáltatási affinitás használata](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+### [Szolgáltatás-elhelyezési házirendek](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+### [Fürt kezelése](service-fabric-cluster-resource-manager-management-integration.md)
+### [Fürt töredezettségmentesítése](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+### [Fürt terhelésének elosztása](service-fabric-cluster-resource-manager-balancing.md)
+### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
+### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
+
 # Referencia
 ## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
 ## [Java API](/java/api/microsoft.servicefabric.services)
@@ -208,6 +213,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

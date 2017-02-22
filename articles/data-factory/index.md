@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez."
+services: data-factory
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-factory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
+ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
+ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
 
 ---
 # <a name="azure-data-factory-documentation"></a>Az Azure Data Factory dokumentációja
 
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel automatizálható az adatok továbbítása és átalakítása. A Data Factory olyan adatintegrációs megoldásokat hoz létre, amelyek különféle adattárakból származó adatokkal is képesek dolgozni, és amelyekkel az adatok átalakíthatók és feldolgozhatók, az eredmények pedig újra közzétehetők az adattárakban.
+Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -107,7 +119,6 @@ Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellye
                     <div class="cardText">
                         <h3>Nyelvek</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
-                        <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory – fejlesztői referencia</a></p>
                    </div>
                 </div>
             </div>
@@ -127,18 +138,9 @@ Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellye
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
-        <div class="img"></div>
-        <div class="text">
-Data Factory – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

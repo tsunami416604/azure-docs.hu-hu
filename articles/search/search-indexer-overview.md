@@ -77,6 +77,6 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

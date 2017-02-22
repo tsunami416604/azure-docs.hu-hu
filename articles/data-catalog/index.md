@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Data Catalog dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogyan állíthat be egy adatkatalógust, ahol a szervezete megtalálhat, megismerhet és felhasználhat adatforrásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció."
+services: data-catalog
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-catalog
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 7c2c989ca2119f7a2c14ca55a56a2bce69d94efa
+ms.sourcegitcommit: c5ada5ff9a0ba37cecff9e2d507736457cc11eb5
+ms.openlocfilehash: b04ec1a07bd1d74aa061409823c78ea814d127fc
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog – dokumentáció
 
-Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a felhasználóknak, hogy számukra szükséges adatforrásokat fedezzenek fel, és hogy a talált adatforrásokat értelmezzék, miközben a szervezeteket is segíti minél többet kihozni a meglévő befektetéseikből. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználó számára – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások felderítését, értelmezését és felhasználását. A Data Catalog egy közösségi metaadat- és megjegyzésmegosztási modellt is tartalmaz, amelynek segítségével minden felhasználó közzéteheti a saját ismereteit, és egy adatközösség hozható létre.
+Ismerje meg, hogyan használhatja a Data Catalog szolgáltatást arra, hogy a cég és a csapat könnyebben deríthesse fel, ismerhesse meg és használhassa fel az adatforrásokat. Az oktatóanyagok, REST API-leírás és egyéb dokumentáció bemutatják, hogyan tervezheti meg és állíthatja be az adattárat, ahol az adatfelhasználók hozzájuthatnak az elérhető adatforrásokhoz, és szakértők által közzétett tudást sajátíthatnak el.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -66,15 +78,10 @@ Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-catalog.pdf">
-        <div class="img"></div>
-        <div class="text">
-Data Catalog – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO1-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

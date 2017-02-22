@@ -1,14 +1,25 @@
 ---
+title: "Az Azure Mobile Apps dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogyan használhatja az Azure App Service Mobile Apps szolgáltatását natív iOS-, Android- vagy Windows-alkalmazás, illetve Xamarin és Cordova segítségével platformfüggetlen alkalmazások készítésére és üzemeltetésére."
+services: app-service\mobile
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 9cae18a8206e2828838c8b35733eee5d25d15cb1
-
+ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
+ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
 
 ---
 # <a name="mobile-apps-documentation"></a>A Mobile Apps dokumentációja
 
-Az Azure App Service Mobile Apps szolgáltatása egy vállalati fejlesztők és rendszerintegrátorok számára készült méretezhető mobilalkalmazás-fejlesztő platform, amely számos lehetőséget kínál a mobil rendszerek fejlesztéséhez.
+Ismerje meg, hogyan használhatja az Azure App Service Mobile Apps szolgáltatását natív iOS-, Android- vagy Windows-alkalmazás, illetve Xamarin és Cordova segítségével platformfüggetlen alkalmazások készítésére. Az oktatóanyagok, videók, ügyféloldali SDK-dokumentációk és egyebek bemutatják, hogyan készíthet és üzemeltethet háttérmodult bármilyen mobilalkalmazáshoz.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -185,8 +196,13 @@ Az Azure App Service Mobile Apps szolgáltatása egy vállalati fejlesztők és 
                 <div class="card">
                     <div class="cardText">
                         <h3>Nyelvek</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET</a></p>
-                   </div>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET háttérrendszeri SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js háttérrendszeri SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android ügyfél-SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-ios-client/">iOS ügyfél-SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-js-client/">JavaScript/Cordova ügyfél-SDK</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt419521.aspx">Windows/Xamarin ügyfél-SDK</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,6 +210,7 @@ Az Azure App Service Mobile Apps szolgáltatása egy vállalati fejlesztők és 
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 
