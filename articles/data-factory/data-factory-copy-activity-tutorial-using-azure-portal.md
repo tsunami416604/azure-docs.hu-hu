@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
@@ -236,7 +236,7 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
         }
       }
     }
-    ```     
+    ```       
     Vegye figyelembe a következő szempontokat: 
    
    * Az adatkészlet **type** (típus) tulajdonsága **AzureSQLTable** értékre van állítva.
