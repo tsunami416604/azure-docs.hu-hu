@@ -17,14 +17,14 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: d55c08dbd1d2372e5396f40e74b4f63f3e2f0022
+ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
+ms.openlocfilehash: bc1a78a2891c73df23bc2a57cec67e6b73414165
 
 
 ---
 # <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>SQL Database létrehozása a C# használatával és az SQL Database .NET-es kódtárával
 
-Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas készletek létrehozásával kapcsolatban lásd: [Rugalmas készlet létrehozása](sql-database-elastic-pool-create-csharp.md).
+Cikkünkből megtanulhatja, hogyan hozhat létre Azure SQL-adatbázisokat C# nyelven a [Microsoft Azure SQL Management .NET-es kódtárával](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql). A cikk azt írja le, hogyan hozható létre egy önálló adatbázis az SQL és C# segítségével. A rugalmas készletek létrehozásával kapcsolatban lásd: [Rugalmas készlet létrehozása](sql-database-elastic-pool-manage-csharp.md).
 
 Az Azure SQL Database Management .NET-es kódtára az [Azure Resource Manageren](../azure-resource-manager/resource-group-overview.md) alapuló API-t tartalmaz, amely a [Resource Manager-alapú SQL Database REST API-t](https://msdn.microsoft.com/library/azure/mt163571.aspx) burkolja.
 
@@ -287,6 +287,6 @@ Most, hogy kipróbálta az SQL Database-t, és létrehozott egy adatbázist a C#
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

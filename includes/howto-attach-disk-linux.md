@@ -1,5 +1,5 @@
 
-További információ a lemezekkel kapcsolatban: [A lemezek és virtuális merevlemezek ismertetése](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+További információ a lemezekkel kapcsolatban: [A lemezek és virtuális merevlemezek ismertetése](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 <a id="attachempty"></a>
 
@@ -117,6 +117,6 @@ Meglévő lemez csatlakoztatása esetén rendelkeznie kell egy tárfiókban elé
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

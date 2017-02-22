@@ -17,13 +17,13 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
+ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
+ms.openlocfilehash: cf626be4914168d3ed3caae7f959a79324487b4e
 
 
 ---
 
-# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-powershell"></a>SQL Database oktatóanyag: Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok a PowerShell használatával – első lépések
+# <a name="tutorial-provision-and-access-an-azure-sql-database-using-powershell"></a>Oktatóanyag: Azure SQL-adatbázis létrehozása és elérése a PowerShell használatával
 
 Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja végre a következő műveleteket a PowerShell-lel:
 
@@ -54,7 +54,7 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/). 
 
 * Egy olyan fiókkal kell bejelentkeznie, amely tagja az előfizetés-tulajdonosi vagy a közreműködői szerepkörnek. A szerepköralapú hozzáférés-vezérlésről (RBAC) többet is megtudhat az [Azure Portalon végzett hozzáférés-vezérlés alapvető tudnivalóit ismertető](../active-directory/role-based-access-control-what-is.md) témakörben.
 
@@ -566,7 +566,9 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létrehozott egy mintaadatokat tartalmazó adatbázist, további oktatóanyagokat szeretnénk a figyelmébe ajánlani, amelyekkel bővítheti meglévő tudását. 
 
-* Ha további információkat szeretne szerezni az Azure SQL Database biztonságával kapcsolatban, tekintse át az [adatbázis-biztonságot ismertető](sql-database-control-access-sql-authentication-get-started.md) témakört.
+- Az SQL Server hitelesítési oktatóanyagának kezdeti lépéseihez tekintse meg az [SQL-hitelesítés és -engedélyezés](sql-database-control-access-sql-authentication-get-started.md) című témakört.
+- Az Azure Active Directory hitelesítési oktatóanyagának kezdeti lépéseihez tekintse meg az [Azure AD-hitelesítés és engedélyezés](sql-database-control-access-aad-authentication-get-started.md) című témakört.
+* Ha a mintaadatbázist szeretné lekérdezni az Azure Portalon, tekintse meg a [Nyilvános előzetes verzió: Interaktív lekérdezések használata SQL-adatbázisok esetén](https://azure.microsoft.com/en-us/updates/azure-sql-database-public-preview-t-sql-editor/) című témakört.
 * Ha munkája során az Excelt használja, olvassa el a [Connect to a SQL database in Azure with Excel](sql-database-connect-excel.md) (SQL-adatbázishoz való kapcsolódás az Azure-ban az Excellel) című cikket.
 * Ha készen áll a kódolás elkezdésére, válasszon programozási nyelvet a [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md) (Adatkapcsolattárak az SQL Database-hez és az SQL Serverhez) című cikk alapján.
 * Ha át szeretné helyezni helyszíni SQL Server-adatbázisait az Azure-ba, olvassa el az [adatbázisok SQL Database-be történő áttelepítésével](sql-database-cloud-migrate.md) foglalkozó témakört.
@@ -578,6 +580,6 @@ Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létre
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

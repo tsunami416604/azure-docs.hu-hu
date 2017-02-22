@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
-ms.openlocfilehash: 50a465f314909c10bc3c3f95be2d9dc377d433a7
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
 
 
 ---
@@ -57,12 +57,12 @@ A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javas
 | AlwaysOn rendelkezésre állási csoportok | [Támogatott](https://msdn.microsoft.com/library/hh510230.aspx) | Nem támogatott – lásd [Aktív georeplikáció](sql-database-geo-replication-overview.md) |
 | Adatbázis csatolása | [Támogatott](https://msdn.microsoft.com/library/ms190209.aspx) | Nem támogatott |
 | Alkalmazás-szerepkörök | [Támogatott](https://msdn.microsoft.com/library/ms190998.aspx) | [Támogatott](https://msdn.microsoft.com/library/ms190998.aspx) |
-| Automatikus méretezés | Nem támogatott | [Támogatott](sql-database-scale-up.md) |
+| Automatikus méretezés | Nem támogatott | [Támogatott](sql-database-service-tiers.md) |
 | Azure Active Directory | Nem támogatott | [Támogatott](sql-database-aad-authentication.md) |
 | Azure Data Factory | Nem támogatott – lásd [SQL Server Integration Services (SSIS)](https://msdn.microsoft.com/library/ms141026.aspx) | [Támogatott](https://azure.microsoft.com/services/data-factory/) |
-| Naplózás | [Támogatott](https://msdn.microsoft.com/library/cc280386.aspx) | [Támogatott](sql-database-auditing-get-started.md) |
+| Naplózás | [Támogatott](https://msdn.microsoft.com/library/cc280386.aspx) | [Támogatott](sql-database-auditing.md) |
 | BACPAC-fájl (exportálás) | [Támogatott](https://msdn.microsoft.com/library/hh213241.aspx) | [Támogatott](sql-database-export.md) |
-| BACPAC-fájl (importálás) | [Támogatott](https://msdn.microsoft.com/library/hh710052.aspx) | [Támogatott](sql-database-import.md) |
+| BACPAC-fájl (importálás) | [Támogatott](https://msdn.microsoft.com/library/hh710052.aspx) | [Támogatott](sql-database-import-portal.md) |
 | BACKUP és RESTORE utasítások | [Támogatott](https://msdn.microsoft.com/library/ff848768.aspx) | Nem támogatott |
 | Beépített funkciók | [Támogatott](https://msdn.microsoft.com/library/ms174318.aspx) | [A legtöbb esetben](https://msdn.microsoft.com/library/ms174318.aspx) |
 | Adatváltozások rögzítése | [Támogatott](https://msdn.microsoft.com/library/cc645937.aspx) | Nem támogatott |
@@ -132,7 +132,7 @@ A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javas
 | SQL Server Integration Services (SSIS) | [Támogatott](https://msdn.microsoft.com/library/ms141026.aspx) | Nem támogatott – lásd [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
 | SQL Server PowerShell | [Támogatott](https://msdn.microsoft.com/library/hh245198.aspx) | [Támogatott](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server Profiler | [Támogatott](https://msdn.microsoft.com/library/ms181091.aspx) | Nem támogatott – lásd [Bővített események](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server-replikáció | [Támogatott](https://msdn.microsoft.com/library/ms151198.aspx) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server-replikáció | [Támogatott](https://msdn.microsoft.com/library/ms151198.aspx) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) |
 | SQL Server Reporting Services (SSRS) | [Támogatott](https://msdn.microsoft.com/library/ms159106.aspx) | Nem támogatott |
 | Tárolt eljárások | [Támogatott](https://msdn.microsoft.com/library/ms190782.aspx) | [Támogatott](https://msdn.microsoft.com/library/ms190782.aspx) |
 | A rendszer tárolt függvényei | [Támogatott](https://msdn.microsoft.com/library/ff848780.aspx) | [Néhány](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -161,6 +161,6 @@ A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javas
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 01/05/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
+ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
+ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 
 ---
@@ -54,7 +54,7 @@ Mielőtt azonban továbblépnénk, fontos, hogy néhány dolgot tisztázzunk.
 Az ebben a fejezetben olvasható lépések végrehajtásával létrehozhatja az új Azure Automation-fiókját az Azure Portal webhelyen.  Ezzel mind a futtató fiókot, mind a klasszikus futtató fiókot létrehozza.  
 
 > [!NOTE]
-> Ahhoz, hogy a felhasználó elvégezhesse ezeket a lépéseket, *rendelkeznie kell* az Előfizetés-adminisztrátorok szerepkörrel, valamint annak az előfizetésnek a társadminisztrátori szerepkörével, amely hozzáférést biztosít az előfizetéshez a felhasználónak.  Ezenfelül a felhasználót fel kell venni az előfizetés alapértelmezett Active Directoryjának felhasználói közé. A fiókhoz nem szükséges kiemelt szerepkört rendelni.
+> Ahhoz, hogy a felhasználó elvégezhesse ezeket a lépéseket, a Szolgáltatás-adminisztrátorok szerepkör tagjának kell lennie, vagy azon előfizetés társadminisztrátorának kell lennie, amely hozzáférést biztosít az előfizetéshez a felhasználónak. Ezenfelül a felhasználót fel kell venni az előfizetés alapértelmezett Active Directoryjának felhasználói közé. A fiókhoz nem szükséges kiemelt szerepkört rendelni. Azok a felhasználók, akik nem tagjai az előfizetéshez tartozó Active Directorynak, mielőtt hozzáadják őket az előfizetés társadminisztrátori szerepköréhez, vendégként lesznek hozzáadva az Active Directoryhoz, és megjelenik számukra a „Nincs engedélye létrehozni…” figyelmeztetés az **Automation-fiók hozzáadása** panelen. A társrendszergazdai szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directoryból, és újra hozzáadhatóak, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet ellenőrizhető az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja.  A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).  
 > 
 > 
 
@@ -394,6 +394,6 @@ Ha a klasszikus futtató fiókkal szeretne hitelesítést végezni a klasszikus 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

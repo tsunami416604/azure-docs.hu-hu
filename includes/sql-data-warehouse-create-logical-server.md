@@ -38,7 +38,7 @@
     ![kiszolgáló helye](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > Az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzet állapota ezen a panelen nem módosítható. Ezt a beállítást a kiszolgálói tűzfal paneljén módosíthatja. További információkért lásd a [biztonságos használat első lépéseit](../articles/sql-database/sql-database-get-started-security.md) ismertető témakört.
+    > Az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzet állapota ezen a panelen nem módosítható. Ezt a beállítást a kiszolgálói tűzfal paneljén módosíthatja. További információkért lásd a [biztonságos használat első lépéseit](../articles/sql-database/sql-database-manage-servers-portal.md) ismertető témakört.
     >
     
 9. Kattintson a **Létrehozás** gombra.
@@ -47,6 +47,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
