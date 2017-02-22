@@ -1,15 +1,14 @@
-Ha olyan Azure-előfizetést használ, amelyiknek nem a rendszergazdája vagy tulajdonosa, például a vállalat tulajdonában lévő előfizetést, akkor az ebben a dokumentumban ismertetett lépések végrehajtása előtt ellenőriznie kell az alábbiakat:
+Ha olyan helyen használ Azure-előfizetést, ahol Ön nem rendszergazda vagy tulajdonos, például egy vállalati tulajdonú előfizetés keretein belül, ellenőriznie kell a következőket, mielőtt az ebben a cikkben található lépéseket alkalmazná:
 
-* Ha szeretne bejelentkezni az Azure-ba, legalább **Közreműködői** hozzáféréssel kell rendelkeznie ahhoz az Azure-erőforráscsoporthoz, amelyet a HDInsight (és más Azure-erőforrások) létrehozásakor használ.
-* Valaki, aki legalább **Közreműködői** hozzáféréssel rendelkezik az Azure-előfizetéshez, valószínűleg korábban regisztrálta az Ön által használt erőforrás szolgáltatóját. A szolgáltató regisztrálása akkor történik meg, ha egy olyan felhasználó, aki Közreműködői hozzáféréssel rendelkezik az előfizetéshez, először hoz létre erőforrást az előfizetésben. Az erőforrás létrehozása nélkül is elvégezhető, ha [ a REST segítségével regisztrál egy szolgáltatót](https://msdn.microsoft.com/library/azure/dn790548.aspx).
+* Az Azure-ba történő bejelentkezéshez Önnek legalább Közreműködői hozzáféréssel kell rendelkeznie az Azure-erőforráscsoporthoz. Ezt az erőforráscsoportot Azure HDInsight-fürtök és egyéb Azure-erőforrások létrehozására lehet felhasználni.
+* Egy, az Azure-előfizetéshez legalább Közreműködői hozzáféréssel rendelkező személynek korábban regisztrálnia kellett az Ön által használt erőforrás szolgáltatóját. A szolgáltató regisztrálása akkor történik meg, ha egy olyan felhasználó, aki Közreműködői hozzáféréssel rendelkezik az előfizetéshez, először hoz létre erőforrást az előfizetésben. Ez a lépés egy erőforrás létrehozása nélkül is elvégezhető, [ha a REST-et használva regisztrálnak egy szolgáltatót](https://msdn.microsoft.com/library/azure/dn790548.aspx).
 
-A hozzáférés-kezelés használatával kapcsolatos további információk a következő dokumentumokban találhatók:
+A hozzáférés-kezelés használatával kapcsolatban a következő cikkekben talál további tájékoztatást:
 
 * [Bevezetés a hozzáférés-kezelés Azure Portalon történő használatába](../articles/active-directory/role-based-access-control-what-is.md)
 * [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../articles/active-directory/role-based-access-control-configure.md)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

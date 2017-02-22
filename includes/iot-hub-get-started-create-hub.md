@@ -37,6 +37,6 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszközalkalmaz�
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

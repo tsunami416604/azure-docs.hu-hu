@@ -1,6 +1,6 @@
 ---
-title: "Linux oktatóanyag: Ismerkedés a Hadoop és a Hive használatával | Microsoft Docs"
-description: "Ez az oktatóanyag segítséget nyújt a Hadoop használatának megkezdésében a HDInsight rendszerében. Megtudhatja, hogyan építhet ki Linux-fürtöket, és hogyan kérdezhet le adatokat a Hive segítségével."
+title: "Hadoop oktatóanyag: Ismerkedés a Hadoop és a Hive használatával a HDInsightban | Microsoft Docs"
+description: "Ez az oktatóanyag segítséget nyújt a Hadoop használatának megkezdésében a HDInsight rendszerben. Megtudhatja, hogyan hozhat létre Linux-fürtöket, és hogyan kérdezhet le adatokat a Hive segítségével."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,22 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/16/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 2863bfb48d0fed706fbd3c3f14dfb6a8d77eb9ea
+ms.sourcegitcommit: 86f339b1a8f8c18fd898dc06b87245b265b3adb1
+ms.openlocfilehash: 1cf85c16847aad632d52fe72cd827f0ef8e66e91
 
 
 ---
-# <a name="hadoop-tutorial-get-started-using-linux-based-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Linux-alapú Hadoop használatának első lépései a HDInsightban
-> [!div class="op_single_selector"]
-> * [Linux-alapú](hdinsight-hadoop-linux-tutorial-get-started.md)
-> * [Windows-alapú](hdinsight-hadoop-tutorial-get-started-windows.md)
-> 
-> 
+# <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop oktatóanyag: A Hadoop első lépései a HDInsightban
 
-Megtanulhatja, hogyan hozhat létre Linux-alapú [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. A HDInsight jelenleg hat különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md), [Storm](hdinsight-storm-overview.md), [Interaktív Hive (előzetes verzió)](hdinsight-hadoop-use-interactive-hive.md) és [R Server](hdinsight-hadoop-r-server-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a hat fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
+Megtanulhatja, hogyan hozhat létre [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. A HDInsight jelenleg hat különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md), [Storm](hdinsight-storm-overview.md), [Interaktív Hive (előzetes verzió)](hdinsight-hadoop-use-interactive-hive.md) és [R Server](hdinsight-hadoop-r-server-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a hat fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -42,7 +37,7 @@ Az oktatóanyag elindításának feltétele:
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
-A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a szakaszban egy Linux-alapú Hadoop-fürtöt fog létrehozni a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A Resource Manager-sablon teljes mértékben testreszabható, így könnyen létrehozhatók vele olyan Azure-erőforrások, mint például a HDInsight. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. Az oldal tetején található választóval adja meg a fürtlétrehozási beállításokat.
+A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A Resource Manager-sablon teljes mértékben testreszabható, így könnyen létrehozhatók vele olyan Azure-erőforrások, mint például a HDInsight. Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. Az oldal tetején található választóval adja meg a fürtlétrehozási beállításokat.
 
 Az oktatóanyagban használt Resource Manager-sablon a [Githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) található. 
 
@@ -57,7 +52,7 @@ Az oktatóanyagban használt Resource Manager-sablon a [Githubon](https://azure.
     * **Erőforráscsoport**: Hozzon létre új erőforráscsoportot, vagy válasszon ki egy meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. 
     * **Hely**: Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. 
     * **Fürt típusa**: Válassza a **hadoop** lehetőséget ehhez az oktatóanyaghoz.
-    * **Fürt neve**: Adjon nevet a létrehozandó Hadoop-fürtnek.
+    * **Fürt neve**: Adja meg a Hadoop-fürt nevét.
     * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
     * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni. 
      
@@ -80,7 +75,7 @@ Az oktatóanyagban használt Resource Manager-sablon a [Githubon](https://azure.
 
 
 ## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
-Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevője. Számos módon futtathat Hive-feladatokat a HDInsightban. Ebben az oktatóanyagban a portál Ambari Hive nézete segítségével fog Hive-feladatokat futtatni. A Hive-feladatok egyéb küldési módjaiért lásd: [Use Hive in HDInsight](hdinsight-use-hive.md) (A Hive használata a HDInsightban).
+Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevője. Számos módon futtathat Hive-feladatokat a HDInsightban. Ebben az oktatóanyagban a portál Ambari Hive nézete segítségével futtat Hive-feladatokat. A Hive-feladatok egyéb küldési módjaiért lásd: [Use Hive in HDInsight](hdinsight-use-hive.md) (A Hive használata a HDInsightban).
 
 1. Az előző képernyőkép szerint kattintson a **Fürt irányítópultja**, majd a **HDInsight-fürt irányítópultja** elemre.  Keresse fel a **https://&lt;FürtNeve>.azurehdinsight.net** webhelyet, ahol a &lt;FürtNeve> az a fürt, amelyet az előző szakaszban az Ambari megnyitásához hozott létre.
 2. Adja meg az előző szakaszban létrehozott Hadoop-felhasználónevet és -jelszót. Az alapértelmezett felhasználónév az **admin**.
@@ -175,6 +170,6 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

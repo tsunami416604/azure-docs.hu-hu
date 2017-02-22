@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Batch parancssori felület használatának első lépései | Microsoft Docs"
+title: "A Batch Azure CLI használatának első lépései | Microsoft Docs"
 description: "Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: cb1f049597d53263f0f92fe1192b285c09d78eeb
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: a2efffa5e250e02fec1a1834c9256ffef79b9be3
 
 
 ---
@@ -273,6 +273,6 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

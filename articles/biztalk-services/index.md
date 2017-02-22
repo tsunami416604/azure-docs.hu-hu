@@ -1,13 +1,25 @@
 ---
+title: "Az Azure BizTalk Services dokumentációja – oktatóanyagok | Microsoft Docs"
+description: "Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja."
+services: biztalk-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: biztalk-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 329bf8f57270c901d54f27a2159287e08e4c355a
-ms.openlocfilehash: dfde406339068f9261fccb87039d18a0dfdedeff
+ms.sourcegitcommit: 8c09bee7be24d8ba18fa67f3aef1c951dfde1434
+ms.openlocfilehash: 80b381d59e95297cf8d7616e6a2eb3186ab26a05
 
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services – dokumentáció
 
-A BizTalk Services modullal megvalósítható az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó üzletági alkalmazások felhő és helyi környezetek közötti integrációja. Lehetőség nyílik HTTP-, FTP-, SFTP- vagy REST-alapú adatforrásokkal való csatlakozásra, Az üzenetirányítási funkciókat pedig különféle Azure-összetevők, például az SQL Database, a Blob Storage, valamint Service Bus-üzenetsorok és témák biztosítják.   
+Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja. Az oktatóanyagok és egyéb dokumentációk bemutatják a zökkenőmentes integrációt a vállalat és a felhő között.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -66,17 +78,10 @@ A BizTalk Services modullal megvalósítható az SAP, az Oracle EBS, az SQL Serv
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/biztalk-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-BizTalk Services – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

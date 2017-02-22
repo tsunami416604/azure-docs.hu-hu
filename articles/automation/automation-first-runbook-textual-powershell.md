@@ -168,6 +168,6 @@ A PowerShell-forgatókönyvek életciklusa, képességei és felügyelete megegy
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "A Data Lake Store Java SDK használata alkalmazások fejlesztéséhez | Microsoft Docs"
-description: "Az Azure Data Lake Store Java SDK használata alkalmazások fejlesztéséhez"
+title: "A Java SDK használata Azure Data Lake Store-alkalmazások fejlesztéséhez | Microsoft Docs"
+description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban az Azure Data Lake Store Java SDK használatával"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: a80da95328a6f3c47edf6e9be9e786437a8c316e
+ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
+ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
 
 
 ---
@@ -64,7 +64,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.1.1</version>
+            <version>2.1.4</version>
           </dependency>
           <dependency>
             <groupId>org.slf4j</groupId>
@@ -73,7 +73,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség a Data Lake Store SDK (`azure-datalake-store`) használata a Maven tárházból. A második függőség (`slf4j-nop`) az alkalmazással használandó naplózási keretrendszer meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **Slf4j Nop Binding** nevű eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség a Data Lake Store SDK (`azure-data-lake-store-sdk`) használata a Maven tárházból. A második függőség (`slf4j-nop`) az alkalmazással használandó naplózási keretrendszer meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **Slf4j Nop Binding** nevű eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
 
 ### <a name="add-the-application-code"></a>Az alkalmazáskód hozzáadása
 A kód három fő részből áll.
@@ -83,27 +83,39 @@ A kód három fő részből áll.
 3. Használja a Data Lake Store-ügyfelet a műveletek végrehajtásához.
 
 #### <a name="step-1-obtain-an-azure-active-directory-token"></a>1. lépés: Az Azure Active Directory-jogkivonat beszerzése.
-A Data Lake Store SDK kényelmes megoldásaival beszerezheti a Data Lake Store-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatokat. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
+A Data Lake Store SDK kényelmes megoldásaival kezelheti a Data Lake Store-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatokat. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
 
-A Data Lake Store SDK és az `AzureADAuthenticator`-osztály statikus metódusainak használatával szerezheti be a korábban létrehozott Active Directory-webalkalmazás jogkivonatát. Cserélje ki a **FILL-IN-HERE** értéket az Azure Active Directory-webalkalmazáshoz tartozó tényleges értékkel.
+A Data Lake Store SDK és az `ClientCredsTokenProvider` egyik alosztályának (az alábbi példa a `AccessTokenProvider` osztályt használja) statikus metódusainak használatával szerezheti be a korábban létrehozott Active Directory-webalkalmazás jogkivonatát. A jogkivonat-szolgáltató a memóriában gyorsítótárazza a jogkivonat beszerzéséhez használt hitelesítő adatokat, és automatikusan megújítja azt, ha közeleg a lejárati ideje. Létrehozhatja az `AccessTokenProvider` saját alosztályait is, így a jogkivonatokat beszerezheti az ügyfélkódja segítségével, de egyelőre az SDK-ban biztosított alosztályt használjuk.
+
+Cserélje ki a **FILL-IN-HERE** értéket az Azure Active Directory-webalkalmazáshoz tartozó tényleges értékkel.
 
     private static String clientId = "FILL-IN-HERE";
     private static String authTokenEndpoint = "FILL-IN-HERE";
     private static String clientKey = "FILL-IN-HERE";
 
-    AzureADToken token = AzureADAuthenticator.getTokenUsingClientCreds(authTokenEndpoint, clientId, clientKey);
+    AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);
 
 #### <a name="step-2-create-an-azure-data-lake-store-client-adlstoreclient-object"></a>2. lépés: Az Azure Data Lake Store-ügyfél (ADLStoreClient) objektumának létrehozása
-Az [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásakor meg kell adnia a Data Lake Store-fiók nevét és az előző lépésben létrehozott Azure Active Directory-jogkivonatot. Vegye figyelembe, hogy a Data Lake Store-fióknév csak teljes tartománynév lehet. A **FILL-IN-HERE** értéket például a következő tartománynévre cserélheti ki: **mydatalakestore.azuredatalakestore.net**.
+Az [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásakor meg kell adnia a Data Lake Store-fiók nevét és az előző lépésben létrehozott jogkivonat-szolgáltatót. Vegye figyelembe, hogy a Data Lake Store-fióknév csak teljes tartománynév lehet. A **FILL-IN-HERE** értéket például a következő tartománynévre cserélheti ki: **mydatalakestore.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
-    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, token);
+    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
 ### <a name="step-3-use-the-adlstoreclient-to-perform-file-and-directory-operations"></a>3. lépés: Az ADLStoreClient használata fájl- és könyvtárműveletek végrehajtására
 Az alábbi példakód néhány gyakori művelet kódrészletét tartalmazza. Az egyéb műveleteket az **ADLStoreClient** objektumhoz tartozó [Data Lake Store Java SDK teljes API-dokumentációjában](https://azure.github.io/azure-data-lake-store-java/javadoc/) tekintheti meg.
 
 Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfolyamok használatával történik. Ez azt jelenti, hogy bármilyen Java-adatfolyamot rétegként helyezhet el az Data Lake Store-adatfolyam felett, így kihasználhatja a szabványos Java-funkciókat (például adatfolyamok megjelenítése formázott kimenő adatként, valamint a további funkcionalitás érdekében tömörítési vagy titkosítási adatfolyamok, stb.).
 
+     // create file and write some content
+     String filename = "/a/b/c.txt";
+     OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
+     PrintStream out = new PrintStream(stream);
+     for (int i = 1; i <= 10; i++) {
+         out.println("This is line #" + i);
+         out.format("This is the same line (%d), but using formatted output. %n", i);
+     }
+     out.close();
+    
     // set file permission
     client.setPermission(filename, "744");
 
@@ -142,6 +154,7 @@ Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfol
 2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. A [GitHubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) pom.xml fájlja egy példát tartalmaz a fenti műveletre.
 
 ## <a name="next-steps"></a>Következő lépések
+* [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -149,6 +162,6 @@ Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfol
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

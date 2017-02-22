@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Az Azure HDInsight dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Információk a HDInsight-alapú Hadoopról. A dokumentációból megismerheti a Hadoop, Spark, HBase, R-Server stb. használatát a big data-betekintések feldolgozásához, elemzéséhez és kinyeréséhez."
+services: hdinsight
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: hdinsight
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
+ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
+ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
 
 ---
+
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight – dokumentáció
 
 Ismerje meg, hogyan használhatja a Hadoopot a HDInsight alatt futó felhőben streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentáció, amelyek bemutatják a fürtök létrehozását, big data feldolgozását és elemzését, illetve megoldások fejlesztését Hadoop, Spark, HBase, R-Server, Storm vagy a Hadoop-ökoszisztémában található egyéb technológiák használatával.
@@ -171,6 +183,6 @@ Ismerje meg, hogyan használhatja a Hadoopot a HDInsight alatt futó felhőben s
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

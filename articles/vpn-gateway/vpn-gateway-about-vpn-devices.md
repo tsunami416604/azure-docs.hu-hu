@@ -1,6 +1,6 @@
 ---
-title: "Információk az Azure Virtual Network hálózatokhoz használható, helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről | Microsoft Docs"
-description: "Ez a cikk ismerteti a helyek közötti S2S VPN Gateway-kapcsolatok VPN-eszközeit és IPsec paramétereit, valamint hivatkozásokat tartalmaz a konfigurációs utasításokhoz és mintákhoz."
+title: "Tudnivalók a létesítmények közötti Azure-kapcsolatokhoz használható VPN-eszközökről | Microsoft Docs"
+description: "Ez a cikk a létesítmények közötti S2S VPN Gateway-kapcsolatokhoz használt VPN-eszközöket és IPsec paramétereket ismerteti. A konfigurációs utasítások és minták a megfelelő hivatkozásokra kattintva érhetők el."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bbaf89bca07fd2d4c4a12403d2daa8323f4d7be5
-ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
+ms.sourcegitcommit: bf262073b46daa8b7dcf50fabf5f455d7d5850e7
+ms.openlocfilehash: b8e65f6c314457b76bd062ea09bda53099fb79d9
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
-Helyek közötti (S2S) VPN-kapcsolat konfigurálásához egy VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja.
+Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja.
 
 > [!NOTE]
 > Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
@@ -115,7 +115,7 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
 | --- | --- | --- |
 | IKE verziószám |IKEv1 |IKEv2 |
-| Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128) |
+| Kivonatoló algoritmus |SHA1(SHA128), SHA2(SHA256) |SHA1(SHA128), SHA2(SHA256) |
 | 2. fázisú biztonsági társítás (SA) Élettartam (idő) |3&600; másodperc |3&600; másodperc |
 | 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény) |102&400;&000; kB |- |
 | IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A |Lásd: *Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok* (alább) |
@@ -153,6 +153,6 @@ Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési aj
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

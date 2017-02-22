@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Az Azure DocumentDB dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg a DocumentDB sémamentes NoSQL dokumentum-adatbázis használatát. Az oktatóanyagok bemutatják az appokkal való integrációt és az SQL-lekérdezések JSON dokumentumokon való futtatását."
+services: documentdb
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: documentdb
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 14e5e2f2bdf3708ab339eff7eb58bbf87cb1a10c
-ms.openlocfilehash: 261d2d5410603fe3352c0bcfabcc15058f3f7c94
+ms.sourcegitcommit: be32b9d24db59618b42d0923b0ff4248f3329904
+ms.openlocfilehash: 347b2933a33d7a11505842ea437790d5fabf5b58
 
 ---
+
 #<a name="documentdb-documentation"></a>DocumentDB-dokumentáció
 
 Ismerje meg, hogy a DocumentDB hogyan használható a nagy teljesítményű webes, mobil-, játék- és IoT-alkalmazásokra. Az oktatóanyagok és egyéb dokumentációk bemutatják, hogy a JSON-adatok hogyan tárolhatók, és hogyan futtathatók SQL-lekérdezések a NoSQL adatbázis-szolgáltatás rugalmas sémájában.
@@ -210,18 +222,10 @@ Ismerje meg, hogy a DocumentDB hogyan használható a nagy teljesítményű webe
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/documentdb.pdf">
-        <div class="img"></div>
-        <div class="text">
-DocumentDB-dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

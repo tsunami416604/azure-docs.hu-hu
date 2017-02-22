@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Az Azure Cloud Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan használhatja a felhőszolgáltatásokat nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására."
+services: cloud-services
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: cloud-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 2b32d1a06f7db06ad3f443548b33d3c8e2032a9e
-ms.openlocfilehash: 69bcbae09192ecbb6b375bac522b433f8cd5391f
+ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
+ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
 
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services – dokumentáció
@@ -116,16 +127,10 @@ Megismerheti, hogy a felhőszolgáltatások hogyan használható nagy rendelkez�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Cloud Services – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

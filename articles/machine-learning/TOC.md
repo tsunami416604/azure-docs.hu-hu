@@ -1,17 +1,24 @@
 # Áttekintés
+
 ## [Mi a Machine Learning?](machine-learning-what-is-machine-learning.md)
-## Machine Learning Studio
-### [Mi a Studio?](machine-learning-what-is-ml-studio.md)
-### [A Studio képességei](machine-learning-studio-overview-diagram.md)
-### [Szemléltető ábra: Gépi tanulási alapismeretek](machine-learning-basics-infographic-with-algorithm-examples.md)
+
 ## Csoportos adatelemzési folyamat
 ### [Áttekintés](http://aka.ms/datascienceprocess)
 ### [Életciklus](data-science-process-overview.md)
 ### [Útmutatók](data-science-process-walkthroughs.md)
+
+## Machine Learning Studio
+### [Mi a Studio?](machine-learning-what-is-ml-studio.md)
+### [A Studio képességei](machine-learning-studio-overview-diagram.md)
+### [Szemléltető ábra: Gépi tanulási alapismeretek](machine-learning-basics-infographic-with-algorithm-examples.md)
+
 ## [Gyakori kérdések](machine-learning-faq.md)
 ## [Újdonságok](machine-learning-whats-new.md)
+
 # Első lépések
+
 ## [Az első kísérlet létrehozása](machine-learning-create-experiment.md)
+
 ## Forgatókönyv – példa
 ### [Prediktív megoldás létrehozása](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1: Munkaterület létrehozása](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -20,6 +27,7 @@
 ### [4: Betanítás és kiértékelés](machine-learning-walkthrough-4-train-and-evaluate-models.md)
 ### [5: Webszolgáltatások üzembe helyezése](machine-learning-walkthrough-5-publish-web-service.md)
 ### [6: Hozzáférés a webszolgáltatáshoz](machine-learning-walkthrough-6-access-web-service.md)
+
 ## Adatelemzés kezdőknek
 ### [1: Öt kérdés](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2: Készen állnak az adatok?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
@@ -29,8 +37,8 @@
 
 ## [R – első lépések](machine-learning-r-quickstart.md)
 
-
 # Útmutató
+
 ## Eszközök és segédprogramok telepítése
 ### [Környezetek létrehozása](machine-learning-data-science-environment-setup.md)
 ### [Virtuális gépek telepítése](machine-learning-data-science-virtual-machines.md)
@@ -49,9 +57,11 @@
 #### [Hibaelhárítás](machine-learning-troubleshooting-creating-ml-workspace.md)
 #### [Üzembe helyezés az ARM használatával](machine-learning-deploy-with-resource-manager-template.md)
 #### [Létrehozás egy másik régióban](machine-learning-multi-geo.md)
+
 ## Üzleti igények elemzése
 ### [Technikai igények](machine-learning-data-science-plan-your-environment.md)
 ### [A szituáció azonosítása](machine-learning-data-science-plan-sample-scenarios.md)
+
 ## Adatok beszerzése és megértése
 ### Adatok betöltése a tárba
 #### [Áttekintés](machine-learning-data-science-ingest-data.md)
@@ -95,6 +105,7 @@
 ##### [Relevanciamodellek](machine-learning-data-science-spark-model-consumption.md)
 ##### [Speciális adatfeltárás](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
 ##### [Scala és Spark használata](machine-learning-data-science-process-scala-walkthrough.md)
+
 ## Modellek fejlesztése
 ### Funkciók tervezése és kiválasztása
 #### [Áttekintés](machine-learning-data-science-create-features.md)
@@ -104,6 +115,7 @@
 #### [TDSP-funkciók kiválasztása](machine-learning-data-science-select-features.md)
 ### Modellek létrehozása és betanítása
 #### [Átalakítás relevanciává](machine-learning-convert-training-experiment-to-scoring-experiment.md)
+#### [Életciklus-felügyelet kipróbálása](machine-learning-version-control.md)
 #### [Az ismétlések kezelése](machine-learning-manage-experiment-iterations.md)
 #### [Modellek létrehozása a PowerShell-lel](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### Algoritmusok kiválasztása
@@ -120,11 +132,11 @@
 ##### [R-szkriptek végrehajtása](machine-learning-extend-your-experiment-with-r.md)
 ##### [Egyéni R-modulok készítése](machine-learning-custom-r-modules.md)
 ##### [Python-parancsprogramok futtatása](machine-learning-execute-python-scripts.md)
+
 ## Modellek üzembe helyezése és felhasználása
 ### [Áttekintés](machine-learning-deploy-consume-web-service-guide.md)
 ### Modellek üzembe helyezése
 #### [Működés](machine-learning-model-progression-experiment-to-web-service.md)
-#### [Új webszolgáltatás üzembe helyezése](machine-learning-webservice-deploy-a-web-service.md)
 #### [Webszolgáltatások üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
 #### [Külső adatok használata](machine-learning-web-services-that-use-import-export-modules.md)
 #### [Üzembe helyezés több régióban](machine-learning-how-to-deploy-to-multiple-regions.md)
@@ -147,6 +159,7 @@
 #### [Excel használata](machine-learning-consuming-from-excel.md)
 #### [Excel-bővítmény használata](machine-learning-excel-add-in-for-web-services.md)
 #### [Webalkalmazás-sablon használata](machine-learning-consume-web-service-with-web-app-template.md)
+
 ## Példák
 ### [Kísérleteket szemléltető példák](machine-learning-sample-experiments.md)
 ### [Mintaadatkészletek](machine-learning-use-sample-datasets.md)
@@ -158,10 +171,12 @@
 #### [SQL Data Warehouse használata](machine-learning-data-science-process-sqldw-walkthrough.md)
 
 # Referencia
+
 ## [PowerShell modul (Új)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
 ## [PowerShell modul (Klasszikus)](machine-learning-powershell-module.md)
 ## [Algoritmusokra és modulokra vonatkozó referenciák](https://msdn.microsoft.com/library/azure/dn905974.aspx)
-## [REST](/rest/api/machinelearning)
+## [REST API – referencia](/rest/api/machinelearning)
+## [Webszolgáltatás hibakódjai](machine-learning-web-service-error-codes.md)
 
 # Kapcsolódó
 
@@ -176,6 +191,7 @@
 ### [oktatóanyagokat](machine-learning-gallery-tutorials.md)
 ### [Gyűjtemények](machine-learning-gallery-collections.md)
 ### [Egyéni modulok](machine-learning-gallery-custom-modules.md)
+
 ## Cortana Analytics
 ### API-k
 #### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection-api.md)
@@ -197,7 +213,7 @@
 ##### [Telepítés](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
 # Erőforrások
-## [Machine Learning – REST hibakódok](/machine-learning/machine-learning-web-service-error-codes)
+
 ## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=machine-learning)
@@ -208,6 +224,6 @@
 ## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

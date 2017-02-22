@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 01/30/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2549ca9cd05f44f644687bbdf588f7af01bae3f4
-ms.openlocfilehash: 79162e5d31346370e596f39fa4827d49625897b3
+ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
+ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Csatlakozás Azure tárolószolgáltatási fürthöz
-Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hozzá a számítási feladatok üzembe helyezéséhez és felügyeletéhez. Ez a cikk leírja, hogyan csatlakozhat a fürt fő virtuális gépéhez egy távoli számítógépről. A Kubernetes-, DC/OS- és Docker Swarm-fürtök mind REST-végpontokat tesznek közzé. A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről elérhető a `kubectl` parancssori eszköz futtatásával. A DC/OS és a Docker Swarm esetében létre kell hoznia egy Secure Shell- (SSH-) alagutat, hogy biztonságosan csatlakozhasson a REST-végponthoz. 
+Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hozzá a számítási feladatok üzembe helyezéséhez és felügyeletéhez. Ez a cikk leírja, hogyan csatlakozhat a fürt fő virtuális gépéhez egy távoli számítógépről. 
+
+A Kubernetes-, DC/OS- és Docker Swarm-fürtök helyi HTTP-végpontokat biztosítanak. A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről elérhető a `kubectl` parancssori eszköz futtatásával. 
+
+A DC/OS és a Docker Swarm esetében létre kell hoznia egy belső rendszerbe vezető Secure Shell- (SSH-) alagutat. Az alagút létrehozása után futtathat HTTP-végpontokat használó parancsokat, és megtekintheti a fürt webes felületét a helyi rendszerről. 
 
 > [!NOTE]
 > A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
@@ -68,7 +72,7 @@ Ez a parancs letölti a fürt hitelesítő adatait a `$HOME/.kube/config` helyre
 Másik lehetőségként az `scp` használatával is biztonságosan átmásolhatja a fájlt a fő virtuális gép `$HOME/.kube/config` mappájából a helyi gépre. Példa:
 
 ```console
-mkdir $HOME/.kube/config
+mkdir $HOME/.kube
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
@@ -96,10 +100,10 @@ További információ: [A Kubernetes gyors üzembe helyezése](http://kubernetes
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>Csatlakozás DC/OS- vagy Swarm-fürthöz
 
-Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök REST-végpontokat tesznek közzé. Ezek a végpontok azonban a külvilág számára nem hozzáférhetők. A végpontok kezeléséhez létre kell hoznia egy Secure Shell- (SSH-) alagutat. Miután az SSH-alagút létrejött, kiadhat parancsokat a fürt végpontjaira, és a fürt felhasználói felületét a saját rendszerén belül, egy böngészőablakban tekintheti meg. A következő szakaszok végigvezetik azon a folyamaton, amellyel SSH-alagutat hozhat létre a Linux, a Windows és az OS X rendszereket futtató számítógépeken.
+Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök használatához kövesse a Secure Shell- (SSH-) alagút helyi Linux, OS X vagy Windows rendszerről való létrehozására vonatkozó utasításokat. 
 
 > [!NOTE]
-> Fürtkezelő rendszerrel is létrehozhat SSH-munkamenetet. Ez azonban nem ajánlott. A magán a felügyeleti rendszeren végzett munka növeli a konfiguráció véletlen megváltoztatásának kockázatát.
+> A jelen útmutatások elsősorban a TCP-forgalom SSH-n keresztüli bújtatására vonatkoznak. Interaktív SSH-munkamenetet az egyik belső fürtkezelő rendszerrel is indíthat, ez azonban nem ajánlott. A közvetlenül a belső rendszeren végzett munka növeli a konfiguráció véletlen módosításának kockázatát.  
 > 
 
 ### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>SSH-alagút létrehozása Linux vagy OS X rendszeren
@@ -108,41 +112,47 @@ Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell ke
 
 1. Az [Azure portálon](https://portal.azure.com) lépjen a tárolószolgáltatási fürtjét tartalmazó erőforráscsoporthoz. Bontsa ki az erőforráscsoportot, hogy az egyes erőforrások megjelenjenek. 
 
-2. Keresse meg és jelölje ki a főkiszolgáló virtuális gépét. A DC/OS-fürtökön ennek az erőforrásnak a neve a **dcos-master-** előtaggal kezdődik. 
-
-    A **Virtuális gép** panel tartalmazza a nyilvános IP-címre vonatkozó információkat, köztük a DNS-nevet is. Mentse ezt a nevet a későbbi felhasználásra. 
+2. Kattintson a tárolószolgáltatás erőforrására, majd az **Áttekintés** elemre. Ekkor az **Alapvető erőforrások** területen megjelenik a fürt **teljes fő tartományneve**. Mentse ezt a nevet a későbbi felhasználásra. 
 
     ![Nyilvános DNS-név](media/pubdns.png)
 
+    Másik lehetőségként futtassa az `az acs show` parancsot a tárolószolgáltatáson. Keresse meg a **Master Profile:fqdn** tulajdonságot a parancskimenetben.
+
 3. Most nyisson meg egy kezelőfelületet, és futtassa az `ssh` parancsot a következő értékek megadásával: 
 
-    a **PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén használja a 2375-ös portot. DC/OS esetén használja a 80-as portot.  
+    a **LOCAL_PORT** az alagút szolgáltatásoldali TCP-portja, amelyhez csatlakozni kell. Swarm esetén állítsa ezt 2375 értékre. DC/OS esetén állítsa ezt 80 értékre.  
+   a  **REMOTE_PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén használja a 2375-ös portot. DC/OS esetén használja a 80-as portot.  
    a  **USERNAME** a fürt telepítésekor megadott felhasználónév.  
    a  **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.  
    a  **REGION** az a régió, ahol az erőforráscsoport megtalálható.  
    a  **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást a `-i` jelzővel együtt kell használni.
 
     ```bash
-    ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
-    > Az SSH-kapcsolat portja nem a szabványos 22-es, hanem a 2200-as port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
+    > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
     > 
+
+
 
 A DC/OS-re és a Swarmra vonatkozó példák a következő szakaszokban találhatók.    
 
 ### <a name="dcos-tunnel"></a>DC/OS-alagút
-A DC/OS-hez kapcsolódó végpontokhoz vezető alagút megnyitásához futtasson egy olyan parancsot, amely a következőhöz hasonló:
+A DC/OS-végpontok alagútjának megnyitásához futtasson egy olyan parancsot, amely a következőhöz hasonló:
 
 ```bash
-sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+sudo ssh -fNL 80:localhost:80 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com 
 ```
 
-A DC/OS-hez kapcsolódó végpontok az alábbi helyeken érhetők el:
+> [!NOTE]
+> Beállíthat más, a 80-as porttól eltérő helyi portokat is (például a 8888-as portot). Ha azonban ezt a portot használja, előfordulhat, hogy egyes webes felhasználói felületek hivatkozásai nem működnek.
 
-* DC/OS:`http://localhost/`
-* Marathon:`http://localhost/marathon`
-* Mesos:`http://localhost/mesos`
+Most már elérheti a DC/OS-hez kapcsolódó végpontokat a helyi rendszerről, az alábbi URL-címeken keresztül (ha a 80-as helyi portot használja):
+
+* DC/OS:`http://localhost:80/`
+* Marathon:`http://localhost:80/marathon`
+* Mesos:`http://localhost:80/mesos`
 
 Ehhez hasonlóan az egyes alkalmazások REST API-jait is ezen az alagúton keresztül érheti el.
 
@@ -150,7 +160,7 @@ Ehhez hasonlóan az egyes alkalmazások REST API-jait is ezen az alagúton keres
 A Swarm-végponthoz vezető alagút megnyitásához futtasson egy olyan parancsot, amely a következőhöz hasonló:
 
 ```bash
-ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+ssh -fNL 2375:localhost:2375 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com
 ```
 
 Most beállíthatja a DOCKER_HOST környezeti változót az alábbi módon. A Docker parancssori felületét továbbra is a szokott módon használhatja.
@@ -211,6 +221,6 @@ Tárolók telepítése és felügyelete a fürtben:
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

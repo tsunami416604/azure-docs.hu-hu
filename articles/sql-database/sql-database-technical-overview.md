@@ -1,5 +1,5 @@
 ---
-title: "Mi az SQL Database? Bevezetés az SQL Database-be| Microsoft Docs"
+title: "Mi az Azure SQL Database szolgáltatás? | Microsoft Docs"
 description: 'Get an introduction to SQL Database: technical details and capabilities of Microsoft''s relational database management system (RDBMS) in the cloud.'
 keywords: "bevezetés az sql-be,az sql bemutatása,mi az sql database"
 services: sql-database
@@ -11,27 +11,27 @@ ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 12/20/2016
-ms.author: shkurhek;carlrab
+ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: 399fdbeee479f5598e6ed7f9bd6b6080ec919c98
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: c99f16e7aa6ea6fe82f7a115b4642025a05bb241
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Mi az SQL Database? Bevezetés az SQL Database-be
 Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motorom alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, beépített üzletmenet-folytonosságot és adatvédelmet kínál számos szolgáltatási szinten. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat. Ezáltal megkönnyíti az új megoldások fejlesztését, a meglévő SQL Server-megoldások áthelyezését, valamint a meglévő SQL Server-megoldások kiterjesztését a Microsoft Cloudra anélkül, hogy mindehhez új készségeket kellene elsajátítania.
 
-Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Ha készen áll, hogy elvégezze a gyakorlati oktatóanyagokat, akkor keresse meg [az első SQL Database adatbázis létrehozását](sql-database-get-started.md) vagy a [rugalmas készletek létrehozását](sql-database-elastic-pool-create-portal.md) ismertető szakaszt. Tekintse meg a következő, rövid bemutatót tartalmazó videót.
+Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Ha készen áll, hogy elvégezze a gyakorlati oktatóanyagokat, akkor keresse meg [az első SQL Database adatbázis létrehozását](sql-database-get-started.md) vagy a [rugalmas készletek létrehozását](sql-database-elastic-pool-manage-portal.md) ismertető szakaszt. Tekintse meg a következő, rövid bemutatót tartalmazó videót.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-create-DBs-in-seconds/player]
 > 
 > 
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>Teljesítmény módosítása és skálázása leállási idő nélkül
-Az SQL Database szolgáltatás három, különböző szolgáltatásszinttel rendelkezik: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek [különböző teljesítmény- és képességszinteket](sql-database-service-tiers.md) kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz munkaterhelésig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később az aktuális szükségletek alapján manuálisan vagy programon keresztül bármikor [módosíthatja a szolgáltatásszintet](sql-database-scale-up.md). Mindezt anélkül teheti meg, hogy a leállással járna az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
+Az SQL Database szolgáltatás három, különböző szolgáltatásszinttel rendelkezik: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek [különböző teljesítmény- és képességszinteket](sql-database-service-tiers.md) kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz munkaterhelésig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később az aktuális szükségletek alapján manuálisan vagy programon keresztül bármikor [módosíthatja a szolgáltatásszintet](sql-database-service-tiers.md). Mindezt anélkül teheti meg, hogy a leállással járna az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 ## <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatbázisokat tudnak létrehozni, majd azok teljesítményét szükség szerint felfelé és lefelé tudják skálázni – különösen akkor, ha a használati minták viszonylag jól jelezhetők előre. Azonban előre nem látható használati minták esetén nehézségekbe ütközhet a költségek és az üzleti modell kezelése. A [rugalmas készletek](sql-database-elastic-pool.md) megoldást jelentenek erre a problémára. A koncepció egyszerű. A készletekhez az önálló adatbázis helyett teljesítmény-erőforrásokat foglalhat le, így nem egy önálló adatbázis teljesítményéért, hanem a készlet közös teljesítményéért fizet. A rugalmas készletekkel az erőforrásigények ingadozásakor sem kell a az adatbázis teljesítményének fel- és leskálázására koncentrálnia. A készletezett adatbázisok szükség szerint használják fel a teljesítmény-erőforrásokat. A készletezett adatbázisok használják az adatbáziskészlethez hozzárendelt teljesítményt, de nem lépik túl az adatbáziskészlet teljesítménykorlátait, így költségei előre jelezhetők még akkor is, ha az egyéni adatbázis-használat nem jelezhető előre. Ráadásul [adatbázisokat adhat hozzá a készlethez, és távolíthat el a készletből](sql-database-elastic-pool-manage-portal.md), így előre jelezhető költségek mellett néhány adatbázisról több ezer adatbázisra skálázhatja fel alkalmazását. Végül a készlet adatbázisai számára elérhető erőforrások minimális és maximális mennyiségét is szabályozhatja annak érdekében, hogy a készlet egyetlen adatbázisa se használja fel a készlet összes erőforrását, és hogy minden készletezett adatbázis rendelkezzen egy garantált minimális erőforrás-mennyiséggel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
@@ -62,6 +62,6 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

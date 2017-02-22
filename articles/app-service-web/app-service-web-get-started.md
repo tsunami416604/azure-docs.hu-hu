@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 9f262eb2fa4c0bd8bf1442a7a3d013af6d9ad649
+ms.sourcegitcommit: 9ea90a7e2f69344fa86e20bc869f5b8af629a226
+ms.openlocfilehash: 77de5a58dc792ff2d65855e726dd35d9824276cb
 
 
 ---
@@ -53,7 +53,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 ## <a name="deploy-a-web-app"></a>Webalkalmazás üzembe helyezése
 Az alábbi lépésekkel üzembe fog helyezni egy webalkalmazást az Azure App Service-ben.
 
-1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `azure --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
+1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `az --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
    
     ![Parancssori felület tesztelési célú telepítése az első Azure-webalkalmazáshoz](./media/app-service-web-get-started/1-test-tools-2.0.png)
    
@@ -161,6 +161,6 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

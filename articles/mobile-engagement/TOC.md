@@ -117,20 +117,23 @@
 
 # Referencia
 ## [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
+
+
+
+# Kapcsolódó
 ## SDK-tartalom
 ### [Android SDK](mobile-engagement-android-sdk-content.md)
 ### [iOS SDK](mobile-engagement-ios-sdk-content.md)
 ### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
+
+# Erőforrások
 ## Kibocsátási megjegyzések
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
 ### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
-
-
-# Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
 ## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
 ## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
@@ -146,6 +149,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

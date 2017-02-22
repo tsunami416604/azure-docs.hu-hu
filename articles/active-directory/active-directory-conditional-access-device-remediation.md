@@ -6,18 +6,17 @@ keywords: "eszközalapú feltételes hozzáférés, eszközregisztráció, eszk�
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
-ms.openlocfilehash: 81dcda2e11ff98f7f21495a83043a546786979c7
+ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
+ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
 
 
 ---
@@ -48,7 +47,7 @@ Amennyiben eszköze az alábbi platformok egyikét futtatja, a következő szaka
 ### <a name="device-is-not-registered"></a>Az eszköz nincs regisztrálva
 Ha az eszköze nincs regisztrálva az Azure AD-vel és az alkalmazást eszközalapú házirend védi, az alábbi hibaüzeneteket láthatja:
 
-![„Innen nem érheti el” üzenetek nem regisztrált eszközök esetén](./media/active-directory-conditional-access-device-remediation/01.png "Scenario")
+![„Innen nem érheti el” üzenetek nem regisztrált eszközök esetén](./media/active-directory-conditional-access-device-remediation/01.png "Forgatókönyv")
 
 Ha az eszköze tartomány részeként van csatlakoztatva az Active Directoryhoz a szervezetében, megpróbálhatja a következőt:
 
@@ -122,7 +121,7 @@ A rendszer megtagadhatja a hozzáférést, ha az alábbi böngészők valamelyik
 
 Az alábbihoz hasonló hibaüzenetet megjelenítő lapot fog látni:
 
-![„Innen nem érheti el” üzenetek nem támogatott böngészők esetén](./media/active-directory-conditional-access-device-remediation/02.png "Scenario")
+![„Innen nem érheti el” üzenetek nem támogatott böngészők esetén](./media/active-directory-conditional-access-device-remediation/02.png "Forgatókönyv")
 
 Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon.
 
@@ -132,6 +131,6 @@ Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az a
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

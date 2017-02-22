@@ -4,7 +4,7 @@ description: "A GYIK ezen verziója támogatja az Azure Backup szolgáltatás Ny
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "biztonsági mentési megoldás; biztonsági mentési szolgáltatás"
 ms.assetid: 5f55b500-1ee9-4f64-9306-02d6f7a8eded
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/21/2016
-ms.author: trinadhk; markgal; jimpark;
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fdc596def57968381ea48dfc5df2269a682c9de7
+ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
+ms.openlocfilehash: 271f447a36f42330ed7b8dea78b32c06eebdeda6
 
 
 ---
-# <a name="recovery-services-vault-faq"></a>Recovery Services-tároló – gyakori kérdések
+# <a name="recovery-services-vault---faq"></a>Recovery Services-tároló – gyakori kérdések
 Ez a cikk a Recovery Services-tárolóra vonatkozó információkat tartalmaz, és az [Azure Backup GYIK](backup-azure-backup-faq.md) kiegészítéséül szolgál. Az Azure Backup GYIK tartalmazza az Azure Backup szolgáltatással kapcsolatos kérdéseket és válaszokat.  
 
 Az Azure Backup szolgáltatással kapcsolatban ezen vagy egy kapcsolódó cikk Disqus szakaszában tehet fel kérdéseket. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -35,7 +35,7 @@ Sajnos nem, jelenleg nem telepíthető át egy Backup tároló tartalma egy Reco
 ## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>A Recovery Services-tárolók támogatják a klasszikus vagy a Resource Manager alapú virtuális gépeket? <br/>
 A Recovery Services-tárolók mindkét modellt támogatják.  Mind a klasszikus portálon létrehozott (vagyis klasszikus módú), mind az Azure Portalon létrehozott (vagyis Resource Manager alapú) virtuális gépekről készíthet biztonsági mentést egy Recovery Services-tárolóba.
 
-## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode-how-can-i-backup-them-in-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális gépemről a Backup-tárolóban. Most át szeretném telepíteni a virtuális gépeimet a klasszikus módból Resource Manager módba.  Hogyan készíthetek róluk biztonsági másolatot a Recovery Services-tárolóban?
+## <a name="i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode--how-can-i-backup-them-in-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális gépemről a Backup-tárolóban. Most át szeretném telepíteni a virtuális gépeimet a klasszikus módból Resource Manager módba.  Hogyan készíthetek róluk biztonsági másolatot a Recovery Services-tárolóban?
 A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem telepíthetők át automatikusan a Recovery Services-tárolóba, amikor a virtuális gépeket a klasszikusból Resource Manager módba telepíti át. Kövesse a virtuális gép biztonsági mentéseinek áttelepítésére vonatkozó lépéseket:
 
 1. A Backup-tárolóban lépjen a **Protected Items** (Védett elemek) lapra, és válassza ki a virtuális gépet. Kattintson a [Stop Protection](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) (Védelem leállítása) gombra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
@@ -44,7 +44,6 @@ A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem 
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

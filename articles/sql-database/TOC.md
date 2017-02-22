@@ -6,12 +6,6 @@
 ### [Erőforráskorlátok](sql-database-resource-limits.md)
 ### [Szolgáltatások](sql-database-features.md)
 ### [SQL Database GYIK](sql-database-faq.md)
-## Előnyök
-### [Tanulás és alkalmazkodás](sql-database-learn-and-adapt.md)
-### [Skálázás menet közben](sql-database-scale-on-the-fly.md)
-### [Több-bérlős alkalmazások fejlesztése](sql-database-build-multi-tenant-apps.md)
-### [Biztonság és védelem](sql-database-helps-secures-and-protects.md)
-### [Működés saját környezetben](sql-database-works-in-your-environment.md)
 ## Összehasonlítások
 ### [Az SQL Database és a virtuális gépen futó SQL összehasonlítása](sql-database-paas-vs-sql-server-iaas.md)
 ### [A T-SQL eltérései](sql-database-transact-sql-information.md)
@@ -20,6 +14,7 @@
 ## [Az SQL Database oktatóanyagai](sql-database-explore-tutorials.md)
 ## [A megoldások használatának első lépései](sql-database-solution-quick-starts.md)
 ## Biztonság
+### [Biztonsági áttekintés](sql-database-security-overview.md)
 ### [Azure Security Center az Azure SQL Database-hez](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL Security Center](https://msdn.microsoft.com/library/azure/bb510589)
 # Első lépések
@@ -69,12 +64,12 @@
 #### [SQL-adatbázis másolása](sql-database-copy.md)
 ## Tűzfalszabályok, hitelesítés és engedélyezés
 ### Tanulás
-#### [Áttekintés](sql-database-security.md)
-#### [Biztonsági irányelvek](sql-database-security-guidelines.md)
+#### [Hozzáférés-vezérlés](sql-database-control-access.md)
 #### [Tűzfal](sql-database-firewall-configure.md)
 #### [Bejelentkezések kezelése](sql-database-manage-logins.md)
 ### Ajánlott
-#### [SQL-hitelesítés és engedélyezés](sql-database-get-started-security.md)
+#### [SQL-hitelesítés és engedélyezés](sql-database-control-access-sql-authentication-get-started.md)
+#### [Azure AD-hitelesítés és -engedélyezés](sql-database-control-access-aad-authentication-get-started.md)
 ## Az adatok védelme
 ### Tanulás
 #### Naplózás
@@ -106,7 +101,8 @@
 #### [Vészhelyreállítási próba végrehajtása](sql-database-disaster-recovery-drills.md)
 #### [Aktív georeplikáció áttekintése](sql-database-geo-replication-overview.md)
 ### Ajánlott
-#### [Az SQL Database biztonsági mentésének és helyreállításának első lépései](sql-database-get-started-backup-recovery.md)
+#### [Azure Portal: Biztonsági mentés és visszaállítás](sql-database-get-started-backup-recovery.md)
+#### [PowerShell: Biztonsági mentés és visszaállítás](sql-database-get-started-backup-recovery-powershell.md)
 ## Alkalmazás-fejlesztés
 ### Tanulás
 #### [Adatbázisok alkalmazás-fejlesztésének áttekintése](sql-database-develop-overview.md)
@@ -150,7 +146,7 @@
 #### [Önálló adatbázisok](sql-database-single-database-monitor.md)
 #### [Az SQL Database Advisor áttekintése](sql-database-advisor.md)
 #### [Önálló adatbázisok – útmutató](sql-database-performance-guidance.md)
-#### [Számítási feladatok elemzése az Azure Portalon](sql-database-performance.md)
+#### [Teljesítményelemzés: Azure Portal](sql-database-performance.md)
 #### [Kötegelés használata](sql-database-use-batching-to-improve-performance.md)
 #### [Bővített események](sql-database-xevent-db-diff-from-svr.md)
 ## SQL Database V11
@@ -253,15 +249,14 @@
 #### [A biztonsági mentések hosszú távú megőrzésének konfigurációja](sql-database-configure-long-term-retention.md)
 #### [Biztonsági mentések megtekintése a Recovery Services-tárolóban](sql-database-view-backups-in-vault.md)
 #### [Visszaállítás a biztonsági másolat hosszú távú megőrzéséből](sql-database-restore-from-long-term-retention.md)
+#### [Törlés a biztonsági másolat hosszú távú megőrzéséből](sql-database-long-term-retention-delete.md)
 ### Törölt adatbázis visszaállítása
 #### [Törölt elemek visszaállítása az Azure Portal használatával](sql-database-restore-deleted-database-portal.md)
 #### [Törölt elemek visszaállítása a PowerShell használatával](sql-database-restore-deleted-database-powershell.md)
 ### Időponthoz kötött visszaállítás
 #### [Visszaállítás adott időpont szerinti állapotra](sql-database-point-in-time-restore.md)
 #### [Legrégebbi visszaállítási pont megtekintése](sql-database-view-oldest-restore-point.md)
-### Georedundáns helyreállítás
-#### [Georedundáns helyreállítás az Azure Portal használatával](sql-database-geo-restore-portal.md)
-#### [Georedundáns helyreállítás a PowerShell használatával](sql-database-geo-restore-powershell.md)
+### [Visszaállítás georedundáns biztonsági másolatból](sql-database-geo-restore.md)
 ## Aktív georeplikáció
 ### [Konfigurálás az Azure Portal használatával](sql-database-geo-replication-portal.md)
 ### [Konfigurálás a PowerShell használatával](sql-database-geo-replication-powershell.md)
@@ -309,6 +304,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

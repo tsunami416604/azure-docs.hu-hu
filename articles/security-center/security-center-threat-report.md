@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a80938106a54d9567bd15a8067c4b989b2eeedcc
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 99c5ea06a0970c360eb711a8b10894d416146693
 
 
 ---
@@ -24,9 +24,9 @@ ms.openlocfilehash: a80938106a54d9567bd15a8067c4b989b2eeedcc
 Ez a dokumentum ismerteti, hogy az Azure Security Center fenyegetésfelderítési jelentés segítségével hogyan tudhat meg többet az olyan fenyegetésekről, amelyek biztonsági riasztást hoztak létre.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Mi a fenyegetésfelderítési jelentés?
-A Security Center fenyegetésészlelése úgy működik, hogy figyeli az Azure-erőforrások, a hálózat, és a partnermegoldások biztonsági információit. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket. Ez a folyamat része a Security Center [észlelési képességeinek](security-center-detection-capabilities.md). 
+A Security Center fenyegetésészlelése úgy működik, hogy figyeli az Azure-erőforrások, a hálózat, és a partnermegoldások biztonsági információit. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket. Ez a folyamat része a Security Center [észlelési képességeinek](security-center-detection-capabilities.md).
 
-Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztást](security-center-managing-and-responding-alerts.md) vált ki, amely részletes információkat tartalmaz az adott eseménnyel kapcsolatban, beleértve az elhárítási javaslatokat is. A Security Center úgy segíti az incidensmegoldó csapatokat a vizsgálatban és az elhárításban, hogy tartalmaz egy fenyegetésfelderítési jelentést, amely információkat ad az észlelt fenyegetésről, beleértve ebbe a következőket: 
+Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztást](security-center-managing-and-responding-alerts.md) vált ki, amely részletes információkat tartalmaz az adott eseménnyel kapcsolatban, beleértve az elhárítási javaslatokat is. A Security Center úgy segíti az incidensmegoldó csapatokat a vizsgálatban és az elhárításban, hogy tartalmaz egy fenyegetésfelderítési jelentést, amely információkat ad az észlelt fenyegetésről, beleértve ebbe a következőket:
 
 * A támadó identitása vagy társításai (ha ez az információ elérhető)
 * A támadó céljai
@@ -38,29 +38,29 @@ Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztás
 
 > [!NOTE]
 > Az információ mennyisége minden jelentésben más, a részletesség pedig a kártevő tevékenységén és gyakoriságán alapul.
-> 
-> 
+>
+>
 
 A Security Centerben három típusa van a fenyegetési jelentéseknek, amelyek a támadástól függően változnak. Az elérhető jelentések a következők:
 
 * **Tevékenységi csoport jelentés**: mélyreható információkat biztosít a támadókról, a céljaikról és a taktikáikról.
-* **Kampányjelentés**: adott támadási kampányok részleteire összpontosít. 
+* **Kampányjelentés**: adott támadási kampányok részleteire összpontosít.
 * **Fenyegetésösszegző jelentés**: az előző két jelentés összes elemét tartalmazza.
 
-Az ilyen jellegű információk nagyon hasznosak az [incidensmegoldási](security-center-incident-response.md) folyamatban, ahol folyamatos vizsgálat folyik a támadások forrásának és a támadó indítékainak megismeréséért, illetve azért, hogy mit kell tenni a probléma enyhítése és a továbblépés érdekében. 
+Az ilyen jellegű információk nagyon hasznosak az [incidensmegoldási](security-center-incident-response.md) folyamatban, ahol folyamatos vizsgálat folyik a támadások forrásának és a támadó indítékainak megismeréséért, illetve azért, hogy mit kell tenni a probléma enyhítése és a továbblépés érdekében.
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>Hogyan értheti el a fenyegetésfelderítési jelentést?
 A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat. Nyissa meg az Azure Portalt, és kövesse az alábbi lépéseket az egyes riasztások részleteinek megtekintéséhez:
 
 1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
 2. Kattintson a csempére, hogy megnyissa a **Biztonsági riasztások** panelt, amely további részleteket tartalmaz a riasztásokról, majd kattintson arra a biztonsági riasztásra, amelyről többet szeretne megtudni.
-   
+
     ![Biztonsági riasztások](./media/security-center-threat-report/security-center-threat-report-fig1.png)
 3. Ebben az esetben a **Gyanús végrehajtott folyamat** panel a riasztás részleteit mutatja, ahogy azt az alábbi ábrán is látható:
-   
+
     ![Biztonsági riasztás részletei](./media/security-center-threat-report/security-center-threat-report-fig2.png)
 4. Az egyes biztonsági riasztásokhoz elérthető információ mennyisége a riasztás típusától függően változik. A **JELENTÉSEK** mezőben egy hivatkozás található a fenyegetésfelderítési jelentéshez. Kattintson a hivatkozásra, és egy PDF-fájl jelenik meg egy új böngészőablakban.
-   
+
    ![Tároló kiválasztása](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 
 Innen letöltheti a jelentéshez tartozó PDF-fájlt, ahol további információkat olvashat az észlelt biztonsági problémáról, és a megadott információkat alapul véve intézkedhet.
@@ -78,7 +78,6 @@ Ebben a dokumentumban megismerkedhetett azzal, hogyan segítheti Önt az Azure S
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

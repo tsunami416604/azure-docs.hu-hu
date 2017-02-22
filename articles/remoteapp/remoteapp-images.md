@@ -3,7 +3,7 @@ title: "Mit tartalmaznak az Azure RemoteApp sablon rendszerképei? | Microsoft D
 description: "Az Azure RemoteApphez mellékelt sablon rendszerképek ismertetése."
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 ms.assetid: 7f8442b2-81da-421e-a453-aa53ba2066b7
 ms.service: remoteapp
@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b589fb3b1cdbf1f14ece6adf43e1eb0313ff09df
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: 21ae6458d1d65698c0c8fc7081696cb7406a918c
 
 
 ---
@@ -40,7 +40,7 @@ Az Azure RemoteApp-előfizetés három sablon rendszerképet tartalmaz:
 
 Az egyes rendszerképek tartalmának részleteiért olvasson tovább.
 
-## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2 („az eredeti rendszerkép”)
+## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2 („az eredeti rendszerkép”)
 Ez a rendszerkép a Microsoft Windows Server 2012 R2 Datacenter operációs rendszeren alapul, és a következő szerepkörök és szolgáltatások vannak rajta telepítve, hogy megfeleljen az Azure RemoteApp sablon rendszerképek követelményeinek:
 
 * .NET-keretrendszer 4.5, 3.5.1, 3.5
@@ -115,6 +115,6 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

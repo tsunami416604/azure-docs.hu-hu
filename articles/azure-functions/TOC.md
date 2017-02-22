@@ -13,9 +13,10 @@
 ## Fejlesztés
 ### [Függvényalkalmazások fejlesztése](functions-reference.md)
 #### [C#](functions-reference-csharp.md)
-#### [Node.js](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
+#### [JavaScript](functions-reference-node.md)
 ### [Eseményindítók és kötések használata](functions-triggers-bindings.md)
+#### [DocumentDB-kötések](functions-bindings-documentdb.md)
 #### [Event Hub-kötések](functions-bindings-event-hubs.md)
 #### [HTTP- és webhookkötések](functions-bindings-http-webhook.md)
 #### [Mobile Apps-kötések](functions-bindings-mobile-apps.md)
@@ -27,7 +28,7 @@
 ##### [Táblakötések](functions-bindings-storage-table.md)
 #### [Időzítő eseményindító](functions-bindings-timer.md)
 #### [Twilio kimeneti kötése](functions-bindings-twilio.md)
-### [Függvény létrehozása az Azure Portal használatával](functions-create-first-azure-function-azure-portal.md)
+### [Függvény létrehozása az Azure Portal használatával](functions-create-first-azure-function-azure-portal.md) 
 ### [Az Azure Functions tesztelése](functions-test-a-function.md)
 ### [Helyi fejlesztés és hibakeresés](functions-run-local.md)
 ### [Azure Functions – ajánlott eljárások](functions-best-practices.md)
@@ -38,6 +39,7 @@
 
 ## Üzembe helyezés
 ### [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
+### [Függvények üzembe helyezése az infrastruktúra kódként való használatával](functions-infrastructure-as-code.md)
 
 ## Figyelés
 ### [Az Azure Functions figyelése](functions-monitoring.md)
@@ -46,9 +48,10 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+## [Az Azure Functions GitHub-adattára](https://github.com/Azure/Azure-Functions/) 
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

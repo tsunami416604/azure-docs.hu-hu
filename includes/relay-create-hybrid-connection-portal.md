@@ -2,7 +2,7 @@ Ellenőrizze, hogy már létrehozott-e Relay-névteret, az [itt][namespace-how-t
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A portál bal oldali navigációs ablakban kattintson a **Relay** elemre.
-3. Válassza ki a névteret, amelyben a hibrid kapcsolatot létre kívánja hozni. Ebben az esetben ez a **mynewns1**.
+3. Válassza ki a névteret, amelyben a hibrid kapcsolatot létre kívánja hozni. Ebben az esetben ez a **mynewns**.
    
     ![Hibrid kapcsolat létrehozása](./media/relay-create-hybrid-connection-portal/create-hc-1.png)
 4. A **Relay-névtér ** panelen válassza a **Hibrid kapcsolatok** lehetőséget, majd kattintson a **+ Hibrid kapcsolat** elemre.
@@ -15,6 +15,6 @@ Ellenőrizze, hogy már létrehozott-e Relay-névteret, az [itt][namespace-how-t
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

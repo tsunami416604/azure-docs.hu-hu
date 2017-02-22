@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cab2edc0d065dc8d5ac20ed41ccd0eed7a664895
-ms.openlocfilehash: 8d0730d50330b9093734adb1c503dd975606b7c3
+ms.sourcegitcommit: 9849b15115de5b17a50e0f46781c8aa16a53d297
+ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
 
 
 ---
@@ -57,6 +57,15 @@ Ennek a kommunikációs mechanizmusnak több előnye is van a közvetlen üzenet
   ![][2]
 
 Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
+
+## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
+Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
+
+1. Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése](https://azure.microsoft.com/downloads/) című szakasz alapján.
+2. A **.NET** oszlopban kattintson a használt Visual Studio-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
+3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
+4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
+5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
 A következő lépés egy szolgáltatásnévtér létrehozása, valamint egy közös hozzáférésű jogosultságkód (SAS-) kulcs beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtér és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.

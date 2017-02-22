@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: a652dcd2427d579db42e963ad54ac3078cba6857
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
 
 
 ---
@@ -54,7 +54,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 * [Visual Studio 2013-as](http://www.visualstudio.com/) vagy újabb, illetve az ingyenes [Visual Studio Express]() verzió. Az oktatóanyagban szereplő utasítások kifejezetten a Visual Studio 2015-ös verzióhoz íródtak. 
 * Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja. 
 * Az Azure Python SDK for Visual Studio az [azure.com](https://azure.microsoft.com/downloads/) webhelyről letölthető 2.4-es vagy újabb verziója. Az oktatóanyagban a Python 2.7-hez készült Microsoft Azure SDK-t használtuk.
-* A [Python.org][2] webhelyen elérhető Python 2.7-es verzió. Mi a Python 2.7.11-es verziót használtuk. 
+* A [python.org][2] webhelyen elérhető Python 2.7-es verzió. Mi a Python 2.7.11-es verziót használtuk. 
 
 > [!IMPORTANT]
 > Ha először telepíti a Python 2.7-es verziót, győződjön meg arról, hogy a Customize Python 2.7.11 (A Python 2.7.11 testreszabása) képernyőn kiválasztotta az **Add python.exe to Path** (Python.exe hozzáadása az útvonalhoz) lehetőséget.
@@ -408,11 +408,11 @@ További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, W
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
-[Microsoft Webplatform-telepítő]: http://www.microsoft.com/web/downloads/platform.aspx
-[Azure Portal]: http://portal.azure.com
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[Azure portal]: http://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

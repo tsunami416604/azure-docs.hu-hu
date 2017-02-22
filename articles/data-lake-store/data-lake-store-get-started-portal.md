@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés a Data Lake Store használatába | Microsoft Docs"
-description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban a portál használatával"
+title: "A Data Lake Store használatának első lépései az Azure Portalon | Microsoft Docs"
+description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban az Azure Portallal"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 7d02b9fd741310a39aaadee0358af6c7b5990cf2
-ms.openlocfilehash: dfa7a41c7acd71eca39ac1360b1699bed9309e09
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
 
 
 ---
@@ -51,7 +51,7 @@ Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
 2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
 3. A **New Data Lake Store** (Új Data Lake Store) panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
    
-    ![Új Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Create a new Azure Data Lake account")
+    ![Új Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Új Azure Data Lake Store-fiók létrehozása")
    
    * **Név**. Adja meg a Data Lake Store-fiók egyedi nevét.
    * **Előfizetés**. Válassza ki az előfizetést, amelyhez létre kíván hozni egy új Data Lake Store-fiókot.
@@ -62,10 +62,10 @@ Tekintse meg az alábbi videókat a Data Lake Store megismeréséhez.
      * (Választható) Válassza **A titkosítás letiltása** elemet a legördülő listából, ha nem szeretne titkosítást.
      * (Alapértelmezett) Válassza az **Azure Data Lake által kezelt kulcsok használata** elemet, ha azt szeretné, hogy az Azure Data Lake Store kezelje a titkosítási kulcsokat.
        
-         ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
+         ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store-titkosítás")
      * (Választható) Válassza az **Azure Key Vault-kulcsok kiválasztása** elemet, ha az Azure Key Vaultban lévő saját kulcsokat szeretne használni. Ezzel a lehetőséggel Key Vault-fiókot és -kulcsokat is létrehozhat, ha még nem rendelkezik ezekkel.
        
-         ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store encryption")
+         ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store-titkosítás")
        
        Kattintson az **OK** gombra a **Titkosítási beállítások** panelen.
        
@@ -80,7 +80,7 @@ Ha az Azure Key Vaultban lévő kulcsokkal konfigurálta a titkosítást a Data 
 
 1. Ha az Azure Key Vault kulcsait használta, a Data Lake Store panele felül egy figyelmeztetést jelenít meg. Kattintson a figyelmeztetésre a **Key Vault-engedélyek konfigurálása** panel megnyitásához.
    
-    ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Store encryption")
+    ![Data Lake Store-titkosítás](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Store-titkosítás")
 2. A panelen két lehetőség szerepel a hozzáférés konfigurálásához.
    
    * Az első lehetőségnél kattintson az **Engedélyezés** gombra a hozzáférés konfigurálásához. Az első lehetőség csak akkor engedélyezett, ha a Data Lake Store-t létrehozó felhasználó egyben az Azure Key Vault rendszergazdája is.
@@ -92,30 +92,30 @@ A Data Lake Store-fiókjában mappákat hozhat létre az adatok kezelésére és
 1. Nyissa meg az imént létrehozott Data Lake Store-fiókot. A bal oldali ablaktáblában kattintson a **Browse** (Tallózás), **Data Lake Store** elemre, majd a Data Lake Store panelen kattintson a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
 2. A Data Lake Store-fiók panelén kattintson a **Data Explorer** (Adatkezelő) elemre.
    
-    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Create folders in Data Lake Store account")
+    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappák létrehozása a Data Lake Store-fiókban")
 3. A Data Lake Store-fiók panelén kattintson a **New Folder** (Új mappa) elemre, adjon nevet az új mappának, majd kattintson az **OK** gombra.
    
-    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Create folders in Data Lake Store account")
+    ![Mappák létrehozása a Data Lake Store-fiókban](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Mappák létrehozása a Data Lake Store-fiókban")
    
     Az újonnan létrehozott mappa megjelenik a **Data Explorer** (Adatkezelő) panelen lesz listázva. Bármilyen szinten létrehozhat beágyazott mappákat.
    
-    ![Mappák létrehozása a Data Lake-fiókban](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Create folders in Data Lake account")
+    ![Mappák létrehozása a Data Lake-fiókban](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Mappák létrehozása a Data Lake-fiókban")
 
 ## <a name="a-nameuploaddataaupload-data-to-azure-data-lake-store-account"></a><a name="uploaddata"></a>Adatok feltöltése az Azure Data Lake Store-fiókba
 Adatait közvetlenül, gyökérszinten is feltöltheti az Azure Data Lake Store-fiókba, vagy a fiókon belül létrehozott mappába. Az alábbi képernyőfelvételen látható lépésekkel feltölthet egy fájlt egy almappába a **Data Explorer** (Adatkezelő) panelről. A képernyőfelvételen a fájl az útkövetésben jelölt almappába lesz feltöltve (vörös téglalappal kijelölve).
 
 Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
 
-![Adatok feltöltése](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Upload data")
+![Adatok feltöltése](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Adatok feltöltése")
 
 ## <a name="a-namepropertiesaproperties-and-actions-available-on-the-stored-data"></a><a name="properties"></a>A tárolt adatokra vonatkozó tulajdonságok és műveletek
 Kattintson az újonnan hozzáadott fájlra a **Properties** (Tulajdonságok) panel megnyitásához. Ezen a panelen érhetők el a fájlhoz kapcsolódó tulajdonságok és a rajta a panelben elvégezhető műveletek. Másolhatja az Azure Data Lake Store-fiókban lévő fájl teljes elérési útját is, amely az alábbi képernyőfelvételen vörös téglalappal van kijelölve.
 
-![Az adatok tulajdonságai](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Properties on the data")
+![Az adatok tulajdonságai](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Az adatok tulajdonságai")
 
 * Kattintson a **Preview** (Előnézet) elemre a fájl előnézetének közvetlenül a böngészőből történő megtekintéséhez. Az előnézet formátumát is meghatározhatja. Kattintson a **Preview** (Előnézet), majd a **Format** (Formátum) elemre a **File Preview** (Fájl előnézete) panelen, és a **File Preview Format** (Fájl előnézetének formátuma) panelen adja meg az olyan beállításokat, mint a megjelenítendő sorok száma, a használni kívánt kódolás és elválasztók stb.
   
-  ![A fájl előnézetének formátuma](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "File preview format")
+  ![A fájl előnézetének formátuma](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "A fájl előnézetének formátuma")
 * Kattintson a **Download** (Letöltés) elemre a fájl letöltéséhez a számítógépére.
 * Kattintson a **Rename file** (Fájl átnevezése) elemre a fájl átnevezéséhez.
 * Kattintson a **Delete file** (Fájl törlése) elemre a fájl törléséhez.
@@ -126,7 +126,7 @@ Az Azure Active Directory és a hozzáférés-vezérlés (ACLs) segítségével 
 ## <a name="delete-azure-data-lake-store-account"></a>Az Azure Data Lake Store-fiók törlése
 Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) elemre a Data Lake Store panelen. A művelet megerősítéséhez a rendszer a törölni kívánt fiók nevének megadását kéri. Adja meg a fiók nevét, majd kattintson a **Delete** (Törlés) gombra.
 
-![Data Lake-fiók törlése](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
+![Data Lake-fiók törlése](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake-fiók törlése")
 
 ## <a name="next-steps"></a>Következő lépések
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
@@ -137,6 +137,6 @@ Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

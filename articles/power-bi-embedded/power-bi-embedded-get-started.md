@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
+ms.sourcegitcommit: fd0ddf8275ab58eb3c411123b776654fb46cae5d
+ms.openlocfilehash: 5770bbfcf700b1cefea6d22e0d5f025c1660e744
 
 
 ---
@@ -41,7 +41,7 @@ Az alábbiakban lépésről lépésre bemutatjuk, hogyan hozhat létre egy **mun
    
    ![](media/power-bi-embedded-get-started/create-workspace-1.png)
 3. Az **Adatok + analitika** területen kattintson a **Power BI Embedded** elemre.
-4. A **Létrehozás panelen** adja meg a szükséges információkat. A **Díjszabásról** további információt [A Power BI Embedded díjszabása](http://go.microsoft.com/fwlink/?LinkID=760527) című témakörben talál.
+4. A **Munkaterület-csoport panelen** adja meg a szükséges információkat. A **Díjszabásról** további információt [A Power BI Embedded díjszabása](http://go.microsoft.com/fwlink/?LinkID=760527) című témakörben talál.
    
    ![](media/power-bi-embedded-get-started/create-workspace-2.png)
 5. Kattintson a **Létrehozás** gombra.
@@ -68,6 +68,10 @@ Készítsen másolatot a kulcsokról, és tárolja őket biztonságos helyen az 
 Jóllehet két kulcs van listázva, egyszerre azonban mindig csak az egyikre lesz szüksége. A második kulcsra azért van szükség, hogy a kulcsok rendszeres újragenerálása ne zavarja meg a szolgáltatáshoz való hozzáférést.
 
 Most, hogy rendelkezik **elérési kulcsokkal** és az alkalmazáshoz való Power BI-példánnyal, jelentést importálhat az alkalmazásba. Mielőtt megismertetnénk a jelentések importálásának módjával, a következő szakasz azt mutatja be, hogyan hozhatók létre az alkalmazásba beágyazandó Power BI-adatkészletek és jelentések.
+
+## <a name="working-with-workspaces"></a>A munkaterületek használata
+
+Munkaterület-csoport létrehozása után létre kell hoznia egy olyan munkaterületet, amely helyet biztosít a jelentéseknek és az adatkészleteknek. Munkaterület létrehozásához szüksége lesz a [Munkaterület küldése REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx)-ra.
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>Az alkalmazásba beágyazandó Power BI-adatkészletek és jelentések létrehozása
 Most, hogy rendelkezik **elérési kulcsokkal**, és létrehozta az alkalmazáshoz való Power BI-példányt, el kell készítenie a beágyazni kívánt Power BI-adatkészleteket és jelentéseket. Az adatkészletek és a jelentések a **Power BI Desktop** segítségével hozhatók létre. A [Power BI Desktop ingyenesen](https://go.microsoft.com/fwlink/?LinkId=521662) letölthető. Vagy, a gyorsabb kezdéshez, letöltheti a [Kiskereskedelmi elemzési minta PBIX-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
@@ -109,6 +113,6 @@ További kérdései vannak? [Tegye próbára a Power BI közösségét](http://c
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

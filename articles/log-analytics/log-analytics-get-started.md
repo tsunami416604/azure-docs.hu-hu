@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés a Log Analytics szolgáltatással | Microsoft Docs"
-description: "A Log Analytics percek alatt üzembe helyezhető."
+title: "Ismerkedés az Azure Log Analytics-munkaterülettel | Microsoft Docs"
+description: "A Log Analyticsban a munkaterület percek alatt üzembe helyezhető."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,140 +12,147 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 49e624dd9bfc534fdbae25fd0c8646be36851635
-ms.openlocfilehash: 4ab71b6ee09883abd4d095f2b1788cf69d44a219
+ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
+ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
 
 
 ---
-# <a name="get-started-with-log-analytics"></a>Ismerkedés a Log Analytics szolgáltatással
-A Log Analytics a Microsoft Operations Management Suite-ben (OMS) percek alatt üzembe helyezhető. OMS-munkaterületek létrehozásakor a fiókokhoz hasonlóan két lehetősége van:
+# <a name="get-started-with-a-log-analytics-workspace"></a>Ismerkedés a Log Analytics-munkaterülettel
+Az Azure Log Analytics percek alatt üzembe helyezhető, és segít kiértékelni az informatikai infrastruktúrából gyűjtött operatív adatelemzési információkat. Ennek a cikknek a segítségével könnyedén nekiláthat az *ingyenesen* gyűjtött adatok felfedezésének és elemzésének, valamint reagálhat azokra.
 
-* A Microsoft Operations Management Suite webhelye
-* Microsoft Azure-előfizetés
+Ez a cikk bevezetőként szolgál a Log Analytics használatába, és egy rövid oktatóanyagon keresztül végigvezeti egy minimális Azure-alapú üzemi példány létrehozásán, így rögtön el is kezdheti használni a szolgáltatást. A logikai tárolót, amely az Azure-ban a felügyeleti adatok tárolására szolgál, munkaterületnek nevezzük. Miután áttekintette ezeket az információkat, és elvégezte az értékelésüket, eltávolíthatja a kiértékelési munkaterületet. Lévén ez a cikk egy oktatóanyag, az üzleti követelményekkel, a tervezéssel és az architektúrával kapcsolatos iránymutatásokkal nem foglalkozik.
 
-Az OMS webhelyen ingyenes OMS-munkaterületet hozhat létre. Vagy létrehozhat egy ingyenes Log Analytics-munkaterületet egy Microsoft Azure-előfizetéssel is. A két különböző módszerrel létrehozott munkaterületek funkcionalitásukat tekintve azonosak. Az ingyenes munkaterület naponta csak 500 MB mennyiségű adatot képes továbbítani az OMS szolgáltatásnak. Mindegyik munkaterülethez szükség van egy Azure-előfizetésre, így ugyanazzal az előfizetéssel más Azure-szolgáltatásokhoz is hozzáférhet. A munkaterület létrehozási módszerétől függetlenül a munkaterületet egy Microsoft-fiókkal vagy egy szervezeti fiókkal fogja létrehozni.
+>[!NOTE]
+>A Microsoft Azure Government Cloud használata esetén inkább az [Azure Government felügyeletének és kezelésének dokumentációját](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics) érdemes áttekintenie.
 
-A folyamat itt látható:
+Elsőként is érdemes röviden áttekinteni az Ön előtt álló folyamatot:
 
-![regisztrációs diagram](./media/log-analytics-get-started/oms-onboard-diagram.png)
+![folyamatábra](./media/log-analytics-get-started/onboard-oms.png)
 
-## <a name="log-analytics-prerequisites-and-deployment-considerations"></a>A Log Analytics előfeltételei és üzembe helyezési szempontjai
-* A Log Analytics teljes körű használatához fizetős Microsoft Azure-előfizetés szükséges. Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amely 30 napon keresztül működik, és ezalatt bármely Azure-szolgáltatáshoz hozzáférést biztosít. Létrehozhat egy ingyenes OMS-fiókot is az [Operations Management Suite](http://microsoft.com/oms) webhelyén.
-* Létre kell hoznia egy munkaterületet
-* Minden Windows rendszerű számítógépnek, amelyről adatokat szeretne gyűjteni, a Windows Server 2008 SP1 vagy újabb verzióját kell futtatnia
-* [Tűzfalhozzáférés](log-analytics-proxy-firewall.md) az OMS-webszolgáltatás címeihez
-* Határozza meg, hogy a számítógépek rendelkeznek-e közvetlen internet-hozzáféréssel. Ha nem, szükségük lesz egy átjárókiszolgálóra az OMS webszolgáltatás webhelyeinek eléréséhez. Minden hozzáférés HTTPS-kapcsolaton keresztül történik. Beállíthat egy [OMS-átjárókiszolgálót](log-analytics-oms-gateway.md), amely a forgalmat a kiszolgálókról az OMS-re továbbítja abban az esetben, ha a számítógépekről nem érhető el az internet.
-* Az Operations Manager használata esetén a Log Analytics az Operations Manager 2012 SP1 UR 6-os vagy újabb, illetve az Operations Manager 2012 R2 UR 2-es vagy újabb verzióját támogatja. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg. Határozza meg, hogyan legyen integrálva az OMS-sel.
-* Határozza meg, hogy mely technológiák és kiszolgálók küldjenek adatokat az OMS-nek. Például tartományvezérlők, SQL Server stb.
-* Biztosítson engedélyt a felhasználóknak az OMS-ben és az Azure-ban.
-* Ha aggódik az adathasználat miatt, telepítse egyenként a megoldásokat, és tesztelje a teljesítményre gyakorolt hatásukat, mielőtt további megoldásokat adna hozzá.
-* Figyelje az adathasználatot és a teljesítményt, miközben megoldásokat és szolgáltatásokat ad a Log Analyticshez. Ezek közé tartozik az eseménygyűjtés, a naplógyűjtés, a teljesítményadatok gyűjtése stb. Érdemes csak a minimális mennyiségű adatot gyűjteni az adathasználat vagy a teljesítményre gyakorolt hatás megállapításáig.
-* Ügyeljen rá, hogy a Windows-ügynökök kezelése ne az Operations Managerrel történjen, különben duplikált adatok fognak keletkezni. Ez azokra az Azure-alapú ügynökökre is vonatkozik, amelyek esetében engedélyezve van az Azure Diagnostics.
-* Az ügynökök telepítése után ellenőrizze, hogy azok megfelelően működne-e. Ha nem, ellenőrizze, hogy a csoportházirend nem tiltotta-e le a Kriptográfiai API következő generációja (CNG) kulcsának elkülönítését.
-* Egyes Log Analytics-megoldások további követelményeket támaszthatnak
+## <a name="1-create-an-azure-account-and-sign-in"></a>1 Azure-fiók létrehozása és bejelentkezés
 
-## <a name="sign-up-in-3-steps-using-oms"></a>Regisztráció három lépésben az OMS használatával
-1. Nyissa meg az [Operations Management Suite](http://microsoft.com/oms) webhelyet. Jelentkezzen be a Microsoft-fiókjával, például az Outlook.com szolgáltatással, illetve a vállalata vagy oktatási intézménye által az Office 365 vagy más Microsoft-szolgáltatások használatához biztosított szervezeti fiókkal.
-2. Adjon meg egy egyedi nevet a munkaterület számára. A munkaterület egy logikai tároló, amely a felügyeleti adatok tárolására szolgál. A segítségével feloszthatja az adatokat a szervezet csapatai között, mivel az adatok kizárólag azon a munkaterületen érhetők el, amelyhez tartoznak. Adjon meg egy e-mail-címet, valamint a régiót, ahol tárolni szeretné az adatokat.  
-    ![munkaterület létrehozása és előfizetés társítása](./media/log-analytics-get-started/oms-onboard-create-workspace-link01.png)
-3. Ezután hozzon létre egy új ingyenes Azure-előfizetést, vagy kapcsolódjon egy meglévő Azure-előfizetéshez.  
-   ![munkaterület létrehozása és előfizetés társítása](./media/log-analytics-get-started/oms-onboard-create-workspace-link02.png)
+Ha még nem rendelkezik Azure-fiókkal, először létre kell egyet hoznia a Log Analytics használatához. Létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), amely 30 napon keresztül működik, és ezalatt bármely Azure-szolgáltatáshoz hozzáférést biztosít.
 
-Most már készen áll arra, hogy megkezdje az Operations Management Suite használatát.
+### <a name="to-create-a-free-account-and-sign-in"></a>Ingyenes fiók létrehozása és bejelentkezés
+1. Kövesse az [ingyenes Azure-fiók létrehozását](https://azure.microsoft.com/free/) ismertető utasításokat.
+2. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be.
 
-A munkaterület beállításával és a meglévő Azure-fiókok az Operations Management Suite-tal létrehozott munkaterületekhez való társításával kapcsolatban lásd: [Munkaterületek kezelése](log-analytics-manage-access.md).
+## <a name="2-create-a-workspace"></a>2 Munkaterület létrehozása
 
-## <a name="sign-up-quickly-using-microsoft-azure"></a>Gyors regisztráció a Microsoft Azure-ral
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be, majd a szolgáltatások listájából válassza ki a **Log Analytics** lehetőséget.  
-    ![Azure Portal](./media/log-analytics-get-started/oms-onboard-azure-portal.png)
-2. Kattintson a **Hozzáadás** gombra, majd válassza ki az egyik lehetőséget a következő elemeknél:
-   * **OMS-munkaterület** neve
+A következő lépés egy munkaterület létrehozása.
+
+1. Az Azure Portalon, a Piactéren keressen a *Log Analytics* kifezezésre a szolgáltatások listájában, majd válassza ki a **Log Analytics** elemet.  
+    ![Azure Portal](./media/log-analytics-get-started/log-analytics-portal.png)
+2. Kattintson a **Létrehozás** gombra, majd válassza ki az egyik lehetőséget a következő elemeknél:
+   * **OMS-munkaterület** – Adja meg a munkaterület nevét.
    * **Előfizetés** – Ha több előfizetéssel rendelkezik, válassza ki azt, amelyiket társítani szeretné az új munkaterülethez.
    * **Erőforráscsoport**
    * **Hely**
    * **Tarifacsomag**  
        ![gyors létrehozás](./media/log-analytics-get-started/oms-onboard-quick-create.png)
-3. Kattintson az **OK** gombra, és megjelenik egy lista a munkaterületekről.
+3. Kattintson az **OK** gombra a munkaterületek listájának megtekintéséhez.
 4. Válasszon ki egy munkaterületet, hogy megtekinthesse a részleteit az Azure Portalon.       
     ![munkaterület részletei](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
-5. Kattintson az **OMS portál** hivatkozására az új munkaterületet tartalmazó Operations Management Suite webhely megnyitásához.
 
-Most már készen áll arra, hogy megkezdje az Operations Management Suite portál használatát.
+## <a name="3-add-solutions-and-solution-offerings"></a>3 Megoldások és megoldásajánlatok hozzáadása
 
-A munkaterület beállításával és az Operations Management Suite-tal létrehozott meglévő munkaterületek Azure-előfizetésekhez társításával kapcsolatban lásd: [Manage access to Log Analytics](log-analytics-manage-access.md) (A Log Analyticshez való hozzáférés kezelése).
+A következő lépésben adjon hozzá megoldásokat és megoldásajánlatokat. A felügyeleti megoldások egy adott problématerületet érintő mérőszámokat szolgáltató logikai, adatábrázolási és adatgyűjtési szabályok gyűjteményei. A megoldásajánlat alatt csomagba foglalt felügyeleti megoldásokat értünk.
 
-## <a name="get-started-with-the-operations-management-suite-portal"></a>Ismerkedés az Operations Management Suite portál használatával
-A megoldások kiválasztásához és a felügyelni kívánt kiszolgálók csatlakoztatásához kattintson a **Beállítások** csempére, és kövesse a jelen szakaszban található lépéseket.  
+A megoldások a munkaterülethez való hozzáadásával a Log Analytics különféle adatokat lesz képes gyűjteni az ügynökök révén hozzácsatolt számítógépekről. A felvételi ügynökökről a későbbiekben lesz szó.
 
-![első lépések](./media/log-analytics-get-started/oms-onboard-get-started.png)  
+### <a name="to-add-solutions-and-solution-offerings"></a>Megoldások és megoldásajánlatok hozzáadása
 
-1. **Megoldások hozzáadása** – A telepített megoldások megtekintése.  
-    ![megoldások](./media/log-analytics-get-started/oms-onboard-solutions.png)  
-    További megoldások hozzáadásához kattintson a **Katalógus felkeresése** lehetőségre.  
-    ![megoldások](./media/log-analytics-get-started/oms-onboard-solutions02.png)  
-    Jelöljön ki egy megoldást, és kattintson a **Hozzáadás** gombra.
-2. **Forrás csatlakoztatása** – Válassza ki, hogyan szeretne csatlakozni a kiszolgálói környezethez adatgyűjtés céljából:
+1. Az Azure portálon kattintson az **Új** gombra, majd a **Keresés a piactéren** mezőbe írja be az **Activity Log Analytics** kifejezést, és nyomja le az ENTER billentyűt.
+2. A Minden erőforrás panelen válassza ki az **Activity Log Analytics** lehetőséget, majd kattintson a **Létrehozás** gombra.  
+    ![Activity Log Analytics](./media/log-analytics-get-started/activity-log-analytics.png)  
+3. A *Felügyeleti megoldás neve* panelen válassza ki azt a munkaterületet, amelyet a felügyeleti megoldáshoz társítani kíván.
+4. Kattintson a **Létrehozás** gombra.  
+    ![megoldás munkaterület](./media/log-analytics-get-started/solution-workspace.png)  
+5. Az 1–4. lépés megismétlésével adja hozzá a következőket:
+    - A **Biztonság és megfelelőség** szolgáltatásajánlatot a Kártevőirtók felmérése és a Biztonság és naplózás megoldással.
+    - Az **Automatizálás és vezérlés** szolgáltatásajánlatot az Automation hibrid feldolgozó, a Változáskövetés és a Rendszerfrissítési felmérés (más néven Frissítéskezelés) megoldással. A szolgáltatásajánlat hozzáadásakor létre kell hoznia egy Automation-fiókot.  
+        ![Automation-fiók](./media/log-analytics-get-started/automation-account.png)  
+6. A munkaterülethez hozzáadott felügyeleti megoldások áttekintéséhez lépjen a **Log Analytics** > **Előfizetések** > ***a munkaterület neve*** > **Áttekintés** felületre. Itt láthatóak a hozzáadott felügyeleti megoldások csempéi.  
+    >[!NOTE]
+    >Mivel még nem csatlakoztattunk ügynököket a munkaterülethez, így nem jelennek meg a hozzáadott megoldások adatai.  
 
-   * Windows Server vagy ügyfél közvetlen csatlakoztatása egy ügynök telepítésével.
-   * Linux-kiszolgálók összekötése a linuxos OMS-ügynökkel.
-   * A Windows vagy a Linux Azure diagnosztikai virtuálisgép-bővítményével konfigurált Azure Storage-fiók használata.
-   * A System Center Operations Manager használata a felügyeleti csoportok vagy a teljes Operations Manager-telepítés csatolására.
-   * A Windows telemetria engedélyezése a frissítéselemzés használatára.
-       ![összekapcsolt források](./media/log-analytics-get-started/oms-onboard-data-sources.png)    
-3. **Adatgyűjtés** Konfiguráljon legalább egy adatforrást az adatok feltöltéséhez a munkaterületre. Ha befejezte, kattintson a **Mentés** gombra.    
+    ![megoldások csempéi adatok nélkül](./media/log-analytics-get-started/solutions-no-data.png)
 
-    ![adatgyűjtés](./media/log-analytics-get-started/oms-onboard-logs.png)    
+## <a name="4-create-a-vm-and-onboard-an-agent"></a>4 Virtuális gép létrehozása és ügynök felvétele
 
-## <a name="optionally-connect-windows-computers-by-installing-an-agent"></a>Egy ügynök telepítésével is csatlakoztathatja a Windows rendszerű számítógépeket.
-A következő példa egy Windows-ügynök telepítését mutatja be.
+A következő lépésben hozzon létre egy egyszerű virtuális gépet az Azure-ban. Miután létrehozta a virtuális gépet, vegye fel, és ezáltal engedélyezze az OMS-ügynököt. Az ügynök engedélyezésével megkezdődik az adatok gyűjtése a virtuális gépen, és a továbbításuk a Log Analyticsbe.
 
-1. Kattintson a **Beállítások** csempére, kattintson a **Csatlakoztatott források** lapra, kattintson a hozzáadni kívánt forrástípushoz tartozó fülre, és vagy töltsön le egy ügynököt, vagy olvassa el az ügynök engedélyezésével kapcsolatos további tudnivalókat. Kattintson például a **Windows-ügynök letöltése (64 bites)** lehetőségre. A Windows-ügynökök csak Windows Server 2008 SP 1 vagy újabb, illetve Windows 7 SP1 vagy újabb rendszeren telepíthetők.
-2. Telepítse az ügynököt egy vagy több kiszolgálón. Az ügynököket telepítheti egyenként, vagy egy automatizáltabb módszerrel, [egyéni parancsfájl](log-analytics-windows-agents.md) segítségével, illetve használhat meglévő szoftvermegoldást is.
-3. A licencszerződés feltételeinek elfogadása és a telepítési mappa kiválasztása után jelölje be **Az ügynök csatlakoztatása az Azure Log Analytics (OMS) szolgáltatáshoz** lehetőséget.   
-    ![ügynök telepítése](./media/log-analytics-get-started/oms-onboard-agent.png)
-4. A következő oldalon adja meg a munkaterület-azonosítót és a munkaterületkulcsot. A munkaterület-azonosítót és a -kulcsot azon a képernyőn találja meg, ahonnan letöltötte az ügynökfájlt.  
-    ![ügynökkulcsok](./media/log-analytics-get-started/oms-onboard-mma-keys.png)  
+### <a name="to-create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-    ![kiszolgálók csatlakoztatása](./media/log-analytics-get-started/oms-onboard-key.png)
-5. Telepítés közben az **Advanced** (Speciális) elemre kattintva beállíthatja a proxykiszolgálót, és megadhatja a hitelesítő adatokat. Kattintson a **Next** (Tovább) gombra a munkaterület adatait tartalmazó képernyőre való visszatéréshez.
-6. Kattintson a **Next** (Tovább) gombra a munkaterület-azonosító és -kulcs érvényesítéséhez. Ha a rendszer bármilyen hibát észlel, a **Back** (Vissza) gombra kattintva javíthatja a megadottakat. A munkaterület-azonosító és -kulcs érvényesítése után kattintson az **Install** (Telepítés) gombra az ügynök telepítésének befejezéséhez.
-7. A Vezérlőpulton kattintson a Microsoft Monitoring Agent > Azure Log Analytics (OMS) fülre. Amikor az ügynökök kommunikálnak az Operations Management Suite szolgáltatással, egy zöld pipa ikon jelenik meg. Ez első alkalommal körülbelül 5–10 percet vesz igénybe.
+- Kövesse [az első Windows rendszerű virtuális gép az Azure Portalon történő létrehozását](../virtual-machines/virtual-machines-windows-hero-tutorial.md) ismertető témakör útmutatásait, és indítsa el az új virtuális gépet.
 
-> [!NOTE]
-> Az Operations Management Suite-hez közvetlenül csatlakozó kiszolgálók jelenleg nem támogatják a kapacitáskezelési és a konfigurációértékelési megoldásokat.
+### <a name="connect-the-virtual-machine-to-log-analytics"></a>A virtuális gép csatlakoztatása a Log Analyticshez
 
+- Kövesse az [Azure-beli virtuális gépek a Log Analyticshez történő csatlakoztatását](log-analytics-azure-vm-extension.md) ismertető témakör útmutatásait a virtuális gép és a Log Analytics az Azure Portal segítségével történő csatlakoztatásához.
 
-Az ügynököt a System Center Operations Manager 2012 SP1 vagy újabb verziójához is csatlakoztathatja. Ehhez válassza ki a **Connect the agent to System Center Operations Manager** (Ügynök csatlakoztatása a System Center Operations Managerhez) elemet. Ha ezt a lehetőséget választja, anélkül küld adatokat a szolgáltatásnak, hogy további hardverekre, vagy a felügyeleti csoportok terhelésének növelésére lenne szükség.
+## <a name="5-view-and-act-on-data"></a>5 Adatok megtekintése és reagálás
 
-Az ügynökök az Operations Management Suite-hez való csatlakoztatásával kapcsolatos további információkért lásd: [Connect Windows computers to Log Analytics](log-analytics-windows-agents.md) (Windows rendszerű számítógépek csatlakoztatása a Log Analyticshez).
+Előzőleg már engedélyezte az Activity Log Analytics megoldást, valamint a Biztonság és megfelelőség és az Automatizálás és vezérlés szolgáltatásajánlatot. A következő lépésben elkezdjük áttekinteni a megoldások által gyűjtött adatokat és a naplókeresések során kapott eredményeket.
 
-## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>A System Center Operations Managerrel is csatlakoztathat kiszolgálókat
-1. Az Operations Manager konzolján válassza az **Adminisztráció** lehetőséget.
-2. Bontsa ki az **Operational Insights** csomópontot, és válassza ki az **Operational Insights-kapcsolat** elemet.
+Kezdésképp nézzük meg a megoldásokon belül megjelenített adatokat. Ezután nézzünk meg néhány, a naplókeresésekben elérhető keresési eredményt. A naplókeresések segítségével a környezetben lévő különféle forrásokból származó adatokat ötvözhet, és feltárhatja az összefüggéseket. További információkért lásd a [naplókereséseket a Log Analyticsben](log-analytics-log-searches.md). Végül az Azure Portalon kívül található OMS portál segítségével reagálhatunk a talált adatokra.
 
-   > [!NOTE]
-   > Attól függően, hogy az SCOM melyik kumulatív frissítését használja, megjelenhet egy *System Center Advisor*, *Operational Insights* vagy *Operations Management Suite* nevű csomópont.
-   >
-   >
-3. Kattintson a jobb felső részen található **Regisztráció az Operational Insights szolgáltatásba** hivatkozásra, és kövesse az utasításokat.
-4. A regisztrációs varázsló befejezését követően kattintson a **Számítógép/csoport hozzáadása** hivatkozásra.
-5. A **Számítógép keresése** párbeszédpanelen az Operations Manager által megfigyelt számítógépekre vagy csoportokra kereshet. Válassza ki azokat a számítógépeket vagy csoportokat, amelyeket be szeretne vezetni a Log Analyticsbe, és kattintson a **Hozzáadás**, majd az **OK** gombra. Úgy ellenőrizheti, hogy az OMS szolgáltatás fogad-e adatokat, hogy az Operations Management Suite portálon megnyitja a **Használat** csempét. Az adatok körülbelül 5–10 perc múlva jelennek meg.
+### <a name="to-view-antimalware-data"></a>A kártevőirtó adatainak megtekintése
 
-Az Operations Manager az Operations Management Suite-hez való csatlakoztatásával kapcsolatos információkért lásd: [Connect Operations Manager to Log Analytics](log-analytics-om-agents.md) (Az Operations Manager csatlakoztatása a Log Analyticshez).
+1. Az Azure Portalon lépjen a **Log Analytics** > ***saját munkaterület*** felületre.
+2. A munkaterület panelén, az **Általános** területen kattintson az **Áttekintés** elemre.  
+    ![Áttekintés](./media/log-analytics-get-started/overview.png)
+3. Kattintson a **Kártevőirtók felmérése** csempére. Ebben a példában láthatja, hogy a Windows Defender telepítve van az egyik számítógépen, azonban az aláírása elavult.  
+    ![Kártevőirtó](./media/log-analytics-get-started/solution-antimalware.png)
+4. Példánk esetében a **Védelem állapota** területen kattintson az **Aláírás lejárt** elemre a Naplókeresés megnyitásához, ahol megtekintheti a lejárt aláírású számítógépeket. Példánkban a számítógép neve *getstarted*. Ha több olyan számítógép is van, amelyiknek lejárt az aláírása, mindegyik megjelenik a Naplókeresésben.  
+    ![A kártevőirtó elavult](./media/log-analytics-get-started/antimalware-search.png)
 
-## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>Felhőszolgáltatásokból származó adatokat is elemezhet a Microsoft Azure-ban
-Ha engedélyezi a diagnosztikát az Azure Cloud Services számára, az Operations Management Suite-tel gyorsan kereshet a felhőszolgáltatások és a virtuális gépek esemény- és IIS-naplóiban. A Microsoft Monitoring Agent telepítésével további elemzésekhez juthat az Azure virtuális gépekhez. Az Azure-környezet az Operations Management Suite használatára való konfigurálásával kapcsolatos további információkért lásd: [Connect Azure storage to Log Analytics](log-analytics-azure-storage.md) (Azure Storage csatlakoztatása a Log Analyticshez).
+### <a name="to-view-security-and-audit-data"></a>A biztonsági és naplózási adatok megtekintése
+
+1. A munkaterület panelén, az **Általános** területen kattintson az **Áttekintés** elemre.  
+2. Kattintson a **Biztonság és naplózás** csempére. Példánkban két jelentős problémát láthat: az egyik számítógépről kritikus frissítések hiányoznak, egy másikon pedig nincs elégséges védelem.  
+    ![Biztonság és naplózás](./media/log-analytics-get-started/security-audit.png)
+3. Példánk esetében a **Jelentős problémák** területen kattintson a **Kritikus frissítéseket igénylő számítógépek** elemre a Naplókeresés megnyitásához, ahol megtekintheti a kritikus frissítéseket nem tartalmazó számítógépek részleteit. Példánkban egy kritikus frissítés és 63 egyéb frissítés hiányzik.  
+    ![Biztonság és naplózás naplókeresése](./media/log-analytics-get-started/security-audit-log-search.png)
+
+### <a name="to-view-and-act-on-system-update-data"></a>Rendszerfrissítési adatok megtekintése és reagálás
+
+1. A munkaterület panelén, az **Általános** területen kattintson az **Áttekintés** elemre.  
+2. Kattintson a **Rendszerfrissítési felmérés** csempére. Példánkban azt láthatja, hogy van egy *getstarted* nevű Windows-számítógép, amelyről kritikus frissítések hiányoznak, egy másik számítógép pedig definíciófrissítésekre szorul.  
+    ![Rendszerfrissítések](./media/log-analytics-get-started/system-updates.png)
+3. Példánk esetében a **Hiányzó frissítések** területen kattintson a **Kritikus frissítések** elemre a Naplókeresés megnyitásához, ahol megtekintheti a kritikus frissítéseket nem tartalmazó számítógépek részleteit. Példánkban egy frissítés hiányzik és egy szükséges.  
+    ![Rendszerfrissítések naplókeresése](./media/log-analytics-get-started/system-updates-log-search.png)
+4. Nyissa meg az [Operations Management Suite](http://microsoft.com/oms) webhelyet, és jelentkezzen be Azure-fiókjával. Miután bejelentkezett, láthatja, hogy a megoldás adatai hasonlóak az Azure Portalon látható adatokhoz.  
+    ![OMS-portál](./media/log-analytics-get-started/oms-portal.png)
+5. Kattintson a **Frissítéskezelés** csempére.
+6. A Frissítéskezelés irányítópultján láthatja, hogy a rendszerfrissítési adatok hasonlóak az Azure Portalon látható Rendszerfrissítés adataihoz. A **Frissítéstelepítések kezelése** csempe azonban egy új elem. Kattintson a **Frissítéstelepítések kezelése** csempére.  
+    ![Frissítéskezelés csempe](./media/log-analytics-get-started/update-management.png)
+7. A **Frissítéstelepítések** lapon kattintson a **Hozzáadás** gombra egy *frissítés futtatásának* létrehozásához.  
+    ![Frissítéstelepítések](./media/log-analytics-get-started/update-management-update-deployments.png)
+8.  Az **Új frissítéstelepítés** lapon adja meg a frissítéstelepítés nevét, válassza ki a frissíteni kívánt számítógépeket (példánkban ez a *getstarted*), válassza ki az ütemezést, majd kattintson a **Mentés** gombra.  
+    ![Új telepítés](./media/log-analytics-get-started/new-deployment.png)  
+    A frissítéstelepítés mentése után megjelenik az ütemezett frissítés.  
+    ![ütemezett frissítés](./media/log-analytics-get-started/scheduled-update.png)  
+    A frissítés futtatása után az állapot **Befejeződött** értékre vált.
+    ![befejezett frissítés](./media/log-analytics-get-started/completed-update.png)
+9. A frissítés futtatása után megtekintheti, hogy a futtatás sikeres volt-e vagy sem, és megtekintheti az alkalmazott frissítések részleteit.
+
+## <a name="after-evaluation"></a>A kiértékelést követően
+
+Ebben az oktatóanyagban egy ügynököt telepített egy virtuális gépre, és azonnal munkához is látott. A végrehajtott lépések rövidek és egyszerűek voltak. A legtöbb nagyobb szervezet és vállalat azonban összetett helyszíni informatikai infrastruktúrával rendelkezik. És az adatgyűjtés az ilyen komplex környezetekből több tervezést és erőfeszítést igényel, mint amit az oktatóanyag elvégzése jelentett. Tekintse át az alábbi, Következő lépések elnevezésű szakaszban lévő információkat a további hasznos cikkekre mutató hivatkozásokért.
+
+Az oktatóanyagban létrehozott munkaterületet igény szerint el is távolíthatja.
 
 ## <a name="next-steps"></a>Következő lépések
+* Tudnivalók a [Windows-ügynökök](log-analytics-windows-agents.md) a Log Analyticshez való csatlakoztatásáról.
+* Tudnivalók az [Operations Manager-ügynökök](log-analytics-om-agents.md) a Log Analyticshez való csatlakoztatásáról.
 * A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
-* Ismerkedjen meg a [naplókeresésekkel](log-analytics-log-searches.md), hogy megtekinthesse a megoldások által összegyűjtött részletes információkat.
-* Használjon [irányítópultokat](log-analytics-dashboards.md) a saját egyéni kereséseinek mentéséhez és megjelenítéséhez.
+* A [naplókeresések](log-analytics-log-searches.md) megismerése a megoldások által összegyűjtött részletes információk megtekintéséhez.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Az Azure Key Vault dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan hozhatja létre és tarthatja karban a Key Vault használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek."
+services: key-vault
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: key-vault
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 0c53b569e45569fd7a7c56142d66fbab8d8b0a05
+ms.sourcegitcommit: ea6717f8c5e04883d2feb83537c1c1f96bec2287
+ms.openlocfilehash: 70a89aad208ae71d5c0aab462b6078dafa8efcfc
 
 ---
+
 # <a name="key-vault-documentation"></a>Key Vault – dokumentáció
 
 Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhatja létre és tarthatja karban a kulcsokat, amelyekkel elérheti és titkosíthatja erőforrásait és megoldásait.
@@ -154,6 +166,6 @@ Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a fel
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Data Catalog? | Microsoft Docs
+title: "Bevezetés az Azure Data Catalog használatába | Microsoft Docs"
 description: "Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, valamint a problémákat, amelyek áthidalására a szolgáltatást tervezték. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználónak – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások regisztrálását, felderítését, megértését és felhasználását."
 services: data-catalog
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f047b81511efb0b9852dd343ed995bb153344c39
+ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
+ms.openlocfilehash: 19d4c3990c88f82f60cd253ffdcbd2005d00ad79
 
 
 ---
@@ -75,7 +75,6 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

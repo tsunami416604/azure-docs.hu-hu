@@ -4,7 +4,7 @@ description: "Az Azure IoT prediktív karbantartási előre konfigurált megold�
 services: 
 suite: iot-suite
 documentationcenter: 
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: 3c48a716-b805-4c99-8177-414cc4bec3de
@@ -13,39 +13,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
-ms.author: araguila
+ms.date: 02/01/2017
+ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba48381f2c16a56e2e3f187017fbdbae09544e77
+ms.sourcegitcommit: 719f9810abb12cbe8645651d35cbff936cecd158
+ms.openlocfilehash: 57531b609b095359c8bf0ea3685af40124f46311
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>A prediktív karbantartási előre konfigurált megoldás bemutatója
+
 ## <a name="introduction"></a>Bevezetés
-Az IoT Suite prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, beleértve egy [Azure Machine Learning][lnk_machine_learning] munkaterületet. Ezen a munkaterületen kísérletek találhatók a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
+
+Az IoT Suite prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, mint az IoT Hub, a Stream Analytics, valamint egy [Azure Machine Learning][lnk-machine-learning]-munkaterületet. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
 
 ## <a name="logical-architecture"></a>Logikai architektúra
+
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
 
 ![][img-architecture]
 
-A kék elemek Azure-szolgáltatások, amelyek az előre konfigurált megoldás kiépítésekor kiválasztott helyen vannak kiépítve. Az USA keleti régiójában, Észak-Európában vagy Kelet-Ázsiában építheti ki az előre konfigurált megoldást.
-
-Egyes erőforrások nem érhetők azokban a régiókban, ahol kiépíti az előre konfigurált megoldást. A diagram narancssárga elemei a legközelebbi elérhető régióban (az USA déli középső régiójában, Nyugat-Európában vagy Délkelet-Ázsiában) kiépített Azure-szolgáltatásokat jelzik a kiválasztott régió alapján.
+A kék elemek Azure-szolgáltatások, amelyek az előre konfigurált megoldás kiépítésekor kiválasztott régióban vannak kiépítve. A régiók listája, amelyekben az előre konfigurált megoldás üzembe helyezhető, az [üzembe helyezés oldalon][lnk-azureiotsuite] jelenik meg.
 
 A zöld elem egy repülőmotort jelképező szimulált eszköz. Az alábbi szakaszban tudhat meg többet ezekről a szimulált eszközökről.
 
-A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összetevőket jelölik. A prediktív karbantartási előre konfigurált megoldás jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Az eszközfelügyeletről a [távoli figyelési előre konfigurált megoldás][lnk-remote-monitoring] szakaszban talál további információt.
+A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összetevőket jelölik. A prediktív karbantartási előre konfigurált megoldás jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Az eszközfelügyeletről a [távoli monitorozási előre konfigurált megoldás][lnk-remote-monitoring] szakaszban talál további információt.
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
-Az előre konfigurált megoldásban a szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: a 9. érzékelő, a 11. érzékelő, a 14. érzékelő és a 15. érzékelő telemetriáját, amelyek a motor fennmaradó hasznos élettartama (RUL) kiszámítására szolgáló Machine Learning-modellhez szükséges adatokat nyújtják. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
 
-*Ciklusszám*. A ciklusok különböző hosszúságú (2 és 10 óra közötti) befejezett repülőutakat jeleznek, amelyek során a telemetriai adatokat a rendszer félóránként rögzíti.
+Az előre konfigurált megoldásban a szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: a 9. érzékelő, a 11. érzékelő, a 14. érzékelő és a 15. érzékelő telemetriáját, amelyek a motor fennmaradó hasznos élettartamának (RUL) kiszámítására szolgáló Machine Learning-modellhez szükséges adatokat biztosítják. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
 
-*Telemetria*. Négy érzékelő jelzi a motorattribútumokat. Az érzékelők általában a 9. érzékelő, 11. érzékelő, 14. érzékelő és 15. érzékelő felirattal rendelkeznek. Ez a 4 érzékelő elegendő telemetriát jelez ahhoz, hogy hasznos eredmények érkezzenek a Machine Learning-modellről az RUL számításához. Ez a modell nyilvános adatkészletből jön létre, amely valódi motorérzékelők adatait tartalmazza. További információ a modell eredeti adatkészletből való létrehozásáról: [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics] (A Cortana Intelligence Gallery prediktív karbantartási sablonja).
+*Ciklusszám*. A ciklusok két és tíz óra közti időtartamú befejezett repülőutakat jelölnek. A rendszer félóránként rögzíti a telemetriai adatokat a repülőutak közben.
 
-A szimulált eszközök az IoT Hubról küldött következő parancsokat tudják kezelni:
+*Telemetria*. Négy érzékelő jelzi a motorattribútumokat. Az érzékelők általában a 9. érzékelő, 11. érzékelő, 14. érzékelő és 15. érzékelő felirattal rendelkeznek. Ez a négy érzékelő elegendő telemetriai adatot biztosít ahhoz, hogy hasznos eredmények érkezzenek az RUL-modellről. Az előre konfigurált megoldásban használt modell egy nyilvános adatkészletből jön létre, amely valódi motorérzékelők adatait tartalmazza. További információ a modell eredeti adatkészletből való létrehozásáról: [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics] (A Cortana Intelligence Gallery prediktív karbantartási sablonja).
+
+A szimulált eszközök a megoldás részét képező IoT Hubról küldött következő parancsokat tudják kezelni:
 
 | Parancs | Leírás |
 | --- | --- |
@@ -58,51 +60,14 @@ Az IoT Hub nyugtázza az eszközparancsokat.
 **Feladat: Telemetria** – a bejövő eszköz telemetriastreamjén működik két utasítással. Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi, ahol a webalkalmazásban jelennek meg. A második utasítás kiszámítja az átlagos érzékelőértékeket egy kétperces csúszóablakban és ezeket az adatokat az eseményközponton keresztül egy **eseményfeldolgozóba** küldi.
 
 ## <a name="event-processor"></a>Eseményfeldolgozó
-Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezeket az értékeket olyan API-ra küldi, amely közzéteszi a Machine Learning betanított modellt egy motor RUL értékének kiszámításához.
+Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezeket az értékeket azután egy olyan API-ra küldi, amely közzéteszi a betanított modellt egy motor RUL értékének kiszámításához. Az API-t a megoldás részeként üzembe helyezett Machine Learning-munkaterület teszi közzé.
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
-További információ a modell eredeti adatkészletből való létrehozásáról: [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics] (A Cortana Intelligence Gallery prediktív karbantartási sablonja).
+## <a name="machine-learning"></a>Machine Learning
+A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről érheti el ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor az **Kész** állapotban van.
 
-## <a name="lets-start-walking"></a>Kezdjük a bemutatót
-Ez a szakasz végigvezeti a megoldás összetevőin, leírja a kívánt használati esetet, és példákat is tartalmaz.
-
-### <a name="predictive-maintenance-dashboard"></a>Prediktív karbantartási irányítópult
-A webalkalmazás ezen oldala PowerBI JavaScript-vezérlőket használ (lásd a [PowerBI-vizualizációk tárát][lnk-powerbi]) a következők megjelenítéséhez:
-
-* A Blob Storage-ban lévő Stream Analytics-feladatok kimeneti adatai.
-* Az RUL és a ciklusszám repülőmotoronként.
-
-### <a name="observing-the-behavior-of-the-cloud-solution"></a>A felhőmegoldás viselkedésének megfigyelése
-A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a kiválasztott megoldásnévvel rendelkező erőforráscsoportot.
-
-![][img-resource-group]
-
-Az előre konfigurált megoldás kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon is elérheti ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor az **Kész** állapotban van.
-
-![][img-machine-learning]
-
-A megoldás portálján láthatja, hogy a minta négy szimulált eszközzel van kiépítve, amelyek két repülőt jeleznek, repülőnként két motorral és motoronként négy érzékelővel. Amikor először keresi fel a megoldás portálját, a szimuláció leáll.
-
-![][img-simulation-stopped]
-
-Kattintson a **Start simulation** (Szimuláció indítása) elemre a szimuláció elindításához, amelyben az érzékelő előzményei, az RUL, a ciklusok és az RUL előzményei töltik ki az irányítópultot.
-
-![][img-simulation-running]
-
-Ha az RUL 160-nál kisebb (amely egy bemutatási célra véletlenszerűen kiválasztott küszöbérték), a megoldás portálja egy figyelmeztető szimbólumot jelenít meg az RUL kijelzése mellett, és a repülő motorját sárga színnel emeli ki. Látható, hogy az RUL értékek összesítve jellemzően csökkennek, de felfelé és lefelé is változnak. Ez a viselkedés a változó ciklushosszokból és modellpontosságból következik.
-
-![][img-simulation-warning]
-
-A teljes szimuláció 148 ciklusának elvégzése körülbelül 35 percet vesz igénybe. Először körülbelül 5 perc után éri el a 160 RUL-es küszöbértéket, és körülbelül 8 perc után éri el mindkét motor a küszöbértéket.
-
-A szimuláció 148 cikluson halad végig a teljes adatkészleten, és megállapítja a RUL és a ciklus végső értékeit.
-
-Bármikor leállíthatja a szimulációt, de a **Start Simulation** (Szimuláció indítása) gombra kattintva az adatkészlet elejétől indul újra a szimuláció.
 
 ## <a name="next-steps"></a>Következő lépések
-A prediktív karbantartási előre konfigurált megoldás futtatása után módosíthatja is azt, ezzel kapcsolatban lásd az [útmutatást az előre konfigurált megoldások testreszabásához][lnk-customize].
-
-Az [IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx) (IoT Suite– Technikai részletek – Prediktív karbantartás) TechNet-blogbejegzés további részleteket tartalmaz a prediktív karbantartási előre konfigurált megoldásról.
+A prediktív karbantartási előre konfigurált megoldás fő összetevőinek áttekintése után érdemes lehet testre szabni a megoldást. Lásd: [Útmutatás az előre konfigurált megoldások testreszabásáról][lnk-customize].
 
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 
@@ -110,23 +75,16 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
-[img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png
-[img-machine-learning]: media/iot-suite-predictive-walkthrough/machine-learning.png
-[img-simulation-stopped]: media/iot-suite-predictive-walkthrough/simulation-stopped.png
-[img-simulation-running]: media/iot-suite-predictive-walkthrough/simulation-running.png
-[img-simulation-warning]: media/iot-suite-predictive-walkthrough/simulation-warning.png
 
-[lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
-[lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
 [lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
+[lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

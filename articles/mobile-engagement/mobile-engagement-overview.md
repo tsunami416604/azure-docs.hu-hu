@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
-ms.sourcegitcommit: a3e619d6e130212064093150d22d971a562a6601
-ms.openlocfilehash: 758680cf8ff8a9e2f0a6c241613a2ba254462f4a
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 758680cf8ff8a9e2f0a6c241613a2ba254462f4a
 Az Azure Mobile Engagement egy szolgáltatott szoftverként (SaaS) biztosított felhasználóelérési platform, amely lehetővé teszi az alkalmazáshasználatba való adatvezérelt betekintést és a valós idejű felhasználószegmentálást, valamint a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést.
 
 ### <a name="overview-video"></a>Áttekintő videó
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Mobile-Engagement-Overview/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Mobile-Engagement-Overview/player]
 > 
 > 
 
@@ -54,6 +54,6 @@ A Microsoft régóta elkötelezett az adatvédelem mellett, ami termékeink és 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

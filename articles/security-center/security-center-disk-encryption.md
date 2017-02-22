@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 05/27/2016
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 65d586405bc79ccf0d5e27c09d750818e5f3dd24
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
 
-![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption\\security-center-disk-encryption-fig1.png)
+![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
 > A jelen dokumentumban szereplő információk az Azure Security Center előzetes verziójára vonatkoznak.
-> 
-> 
+>
+>
 
 Az Azure Security Center által azonosított Azure virtuális gépek titkosításához a következő lépéseket javasoljuk:
 
@@ -43,11 +43,11 @@ Az előfeltételek beállítására, valamint az Azure virtuális gépek titkos�
 
 > [!NOTE]
 > Ha további információkra kíváncsi az Azure virtuális gépek beállításának alternatív módszereiről, olvassa el a következő cikket: [Azure Disk Encryption for Windows and Linux Azure Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0) (Azure Disk Encryption windowsos és linuxos Azure virtuális gépekhez).
-> 
-> 
+>
+>
 
 ## <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
-Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy újabb verzióját. A [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása) című cikkben minden lépést megtalál, amelyet el kell végeznie az Azure PowerShell telepítéséhez. A legegyszerűbb, ha a cikkben említett Web PI telepítési módszert használja. Ha a gépen már fut az Azure PowerShell, akkor is telepítse újra a Web PI módszerrel, hogy biztosan a legújabb verziót használja.
+Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy újabb verzióját. A [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben minden lépést megtalál, amelyet el kell végeznie az Azure PowerShell telepítéséhez. A legegyszerűbb, ha a cikkben említett Web PI telepítési módszert használja. Ha a gépen már fut az Azure PowerShell, akkor is telepítse újra a Web PI módszerrel, hogy biztosan a legújabb verziót használja.
 
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Az Azure Disk Encryption titkosítási előfeltétel-konfigurációs parancsprogram beszerzése és futtatása
 Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram beállítja az Azure virtuális gépek titkosításához szükséges összes előfeltételt.
@@ -70,7 +70,7 @@ Most, hogy mentette a parancsprogram tartalmát, nyissa meg azt a PowerShell ISE
 
 Az alábbi képhez hasonlóan kell megjelennie a programnak.
 
-![A PowerShell ISE ablaka](./media/security-center-disk-encryption\\security-center-disk-encryption-fig2.png)
+![A PowerShell ISE ablaka](./media/security-center-disk-encryption/security-center-disk-encryption-fig2.png)
 
 A felső panel a „parancsprogrampanel”, az alsó a „konzol”. A cikk későbbi részeiben mi is használni fogjuk ezeket az elnevezéseket.
 
@@ -84,8 +84,8 @@ Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram a követke
 
 > [!NOTE]
 > Ha szeretné tudni, miért van szükség Azure Active Directory-alkalmazás létrehozására, olvassa el a [Getting Started with Azure Key Vault](../key-vault/key-vault-get-started.md) (Az Azure Key Vault megismerése) című cikk *Register an application with Azure Active Directory* (Alkalmazások regisztrálása az Azure Active Directoryban) című fejezetét.
-> 
-> 
+>
+>
 
 Az Azure virtuális gép titkosításához végezze el az alábbi lépéseket:
 
@@ -94,12 +94,12 @@ Az Azure virtuális gép titkosításához végezze el az alábbi lépéseket:
 3. Állítsa át a gépén úgy a végrehajtási szabályzatot, hogy le tudja futtatni a parancsprogramot. Írja be a konzolba a **Set-ExecutionPolicy Unrestricted** parancsot, majd nyomja le az ENTER billentyűt. Ha megjelenik a végrehajtási szabályzat módosításának hatásaira figyelmeztető párbeszédpanel, kattintson a **Yes to all** (Igen mindegyikre) vagy a **Yes** (Igen) lehetőségre (Ha megjelenik a **Yes to all** lehetőség, válassza ezt, ha nem jelenik meg a **Yes to all** lehetőség, válassza egyszerűen a **Yes** elemet).
 4. Jelentkezzen be Azure-fiókjába. Írja be a konzolba a **Login-AzureRmAccount** parancsot, majd nyomja le az **ENTER** billentyűt. Megjelenik egy párbeszédpanel, ahol megadhatja bejelentkezési adatait. (A virtuális gépeket csak akkor tudja titkosítani, ha rendelkezik a módosításukhoz szükséges jogokkal. Ha nem biztos a dolgában, forduljon az előfizetés tulajdonosához vagy a rendszergazdához). Megjelennek a következő információk: **Environment**, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**. Másolja a Jegyzettömbbe a **SubscriptionId** tartalmát. Erre a 6. lépésnél lesz szükség.
 5. Tudja meg, hogy milyen előfizetéshez tartozik a virtuális gép, illetve tudja meg a virtuális gép helyét. Lépjen a [https://portal.azure.com](ttps://portal.azure.com) lapra, és jelentkezzen be.  Kattintson a lap bal oldalán található **Virtuális gépek** elemre. A listában megtekintheti a virtuális gépeit, és hogy milyen előfizetéshez tartoznak.
-   
-   ![Virtuális gépek](./media/security-center-disk-encryption\\security-center-disk-encryption-fig3.png)
+
+   ![Virtuális gépek](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Térjen vissza a PowerShell ISE-hez. Állítsa be az előfizetési kontextust, amelyben a parancsprogram futni fog. Írja be a konzolba a **Select-AzureRmSubscription –SubscriptionId <Ön_előfizetés-azonosítója>** parancsot (az **<Ön_előfizetés-azonosítója >** helyére írja be tényleges előfizetés-azonosítóját), majd nyomja le az **ENTER** billentyűt. Megjelennek a következő információk: Environment, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**.
 7. Most készen áll a parancsprogram futtatására. Kattintson a **Run Script** (Parancsprogram futtatása) gombra, vagy nyomja le a billentyűzet **F5** billentyűjét.
-   
-   ![A PowerShell-parancsprogram futtatása](./media/security-center-disk-encryption\\security-center-disk-encryption-fig4.png)
+
+   ![A PowerShell-parancsprogram futtatása](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
 8. A parancsprogram kéri a **resourceGroupName:** megadását. Adja meg a használni kívánt *erőforráscsoport* nevét, majd nyomja le az **ENTER** billentyűt. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik az *erőforráscsoport*, amelyet használni kíván (például az, amelyhez a virtuális gép is tartozik), adja meg ennek a meglévő erőforráscsoportnak a nevét.
 9. A parancsprogram kéri a **keyVaultName:** megadását. Adja meg a használni kívánt *kulcstároló* nevét, majd nyomja meg az ENTER billentyűt. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik a kulcstároló, amelyet erre a célra kíván használni, adja meg ennek a *kulcstárolónak* a nevét.
 10. A parancsprogram kéri a **location:** megadását. Adja meg annak a helynek a nevét, ahol a titkosítani kívánt virtuális gép található, majd nyomja le az **ENTER** billentyűt. Ha nem emlékszik a helyre, végezze el ismét az 5. lépést.
@@ -110,7 +110,7 @@ Az Azure virtuális gép titkosításához végezze el az alábbi lépéseket:
 
 A parancsprogram eredményének a következőhöz hasonlóan kell kinéznie:
 
-![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig5.png)
+![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig5.png)
 
 ## <a name="encrypt-the-azure-virtual-machine"></a>Az Azure virtuális gép titkosítása
 Most már készen áll a virtuális gép titkosítására. Ha a virtuális gép ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, továbbléphet a titkosításhoz szükséges lépésekre. Ha azonban a virtuális gép nem ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, írja be a következő parancsot a PowerShell ISE konzoljába:
@@ -124,7 +124,7 @@ Ha szeretné ellenőrizni, hogy a megfelelő erőforráscsoport-nevet adta-e meg
 
 Nyomja le az **ENTER** billentyűt. Meg kell jelennie a virtuális gépeket tartalmazó erőforráscsoport nevének. Példa:
 
-![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig6.png)
+![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
 ### <a name="encryption-steps"></a>A titkosítás lépései
 Először közölnie kell a PowerShell-lel a titkosítani kívánt virtuális gép nevét. Írja be a konzolba a következőt:
@@ -139,7 +139,7 @@ Ha szeretné ellenőrizni, hogy a megfelelő virtuális gép nevét adta-e meg, 
 
 Nyomja le az **ENTER** billentyűt. Meg kell jelennie a titkosítani kívánt virtuális gép nevének. Példa:
 
-![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig7.png)
+![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
 A virtuális gépet titkosító titkosítási parancs futtatására két módszer áll rendelkezésre. Első módszer: írja be az alábbi parancsot a PowerShell ISE konzoljába:
 
@@ -151,25 +151,25 @@ A parancs beírását követően nyomja le az **ENTER** billentyűt.
 
 Második módszer: kattintson a parancssori panelbe (azaz a PowerShell ISE felső paneljébe), majd görgessen le a parancsprogram aljára. Jelölje ki a fenti parancsot, kattintson rá a jobb gombbal, majd kattintson a **Run Selection** (Kijelölés futtatása) elemre, vagy nyomja meg a billentyűzet **F8** gombját.
 
-![PowerShell ISE](./media/security-center-disk-encryption\\security-center-disk-encryption-fig8.png)
+![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
 Akármelyik módszert használja, megjelenik egy párbeszédpanel, amely tájékoztatja, hogy a művelet elvégzéséhez 10–15 perc szükséges. Kattintson a **Yes** (Igen) gombra.
 
 A titkosítási folyamat lefolyása közben visszatérhet az Azure Portalra, és megtekintheti a virtuális gép állapotát. A lap bal oldalán kattintson a **Virtuális gépek** elemre, majd a **Virtuális gépek** panelen kattintson annak a virtuális gépnek a nevére, amelyet épp titkosít. A megjelenő panelen láthatja, hogy az **Állapot** mező értéke **Frissítés**. Ez azt mutatja, hogy a titkosítás folyamatban van.
 
-![A virtuális gép további adatai](./media/security-center-disk-encryption\\security-center-disk-encryption-fig9.png)
+![A virtuális gép további adatai](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
 Térjen vissza a PowerShell ISE-hez. A parancsprogram befejezését követően az alábbi képen látható ablak jelenik meg.
 
-![A PowerShell eredménye](./media/security-center-disk-encryption\\security-center-disk-encryption-fig10.png)
+![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
 A virtuális gép titkosításának ellenőrzéséhez térjen vissza az Azure Portalra, majd kattintson a lap bal oldalán található **Virtual Machines** elemre. Kattintson a korábban titkosított virtuális gép nevére. A **Beállítások** panelen kattintson a **Lemezek** elemre.
 
-![Beállítások](./media/security-center-disk-encryption\\security-center-disk-encryption-fig11.png)
+![Beállítások](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
 A **Lemezek** panelen láthatja, hogy a **Titkosítás** mező értéke **Engedélyezve**.
 
-![Lemeztulajdonságok](./media/security-center-disk-encryption\\security-center-disk-encryption-fig12.png)
+![Lemeztulajdonságok](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titkosítani. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -181,7 +181,6 @@ Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titko
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

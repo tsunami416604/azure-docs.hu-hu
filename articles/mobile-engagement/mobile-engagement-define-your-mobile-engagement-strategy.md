@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e3d6caee50a57648f4f775029a2e381cee0f1e72
 
 
 ---
@@ -49,7 +49,7 @@ Ha definiálta a használati eseteket és a szegmenseket, azok útmutatóként s
 
 Az integráció alapján, az alkalmazások közzétételét követően már forgalmazóként láthatja az elemzéseket valós időben, szegmentálhatja a célközönséget, továbbá elkezdhet intelligensen célzott leküldéses értesítéseket küldeni a végfelhasználók bevonásához az alkalmazáson kívül vagy belül.
 
-### <a name="usecases-to-get-started"></a>Használati esetek az első lépésekhez
+### <a name="use-cases-to-get-started"></a>Használati esetek az első lépésekhez
 1. Üdvözlési stratégia: Hozzon létre több leküldéses értesítési kampányt a végfelhasználók alkalmazásindításkor mutatott viselkedésmintái alapján az első munkamenet utáni ismételt kapcsolatfelvétel céljából D+2/5/10/15 időpontban, és növelje az első futtatáshoz kapcsolódó megtartást.
 2. Népszerűsítsen új tartalmakat (funkció, cikk/videó vagy termék) a végfelhasználók viselkedése alapján úgy, hogy csak azon végfelhasználóknak küld információt, akik nagyobb eséllyel reagálnak arra.
 3. Alkalmazás értékelése: Célozza a felhasználóbázis azon kevesebb mint 1 százalékát, akik a legnagyobb eséllyel adnak 5 csillagos értékelést alkalmazásának az áruházban.
@@ -66,13 +66,13 @@ Ahhoz, hogy a kontextusnak leginkább megfelelő módon vegye fel a kapcsolatot 
 > 
 > 
 
-### <a name="usecases-and-best-practices"></a>Használati esetek és ajánlott eljárások
+### <a name="use-cases-and-best-practices"></a>Használati esetek és ajánlott eljárások
 Az első lépéseket segítendő az alábbi szakaszokban röviden ismertetünk néhány olyan főbb használati esetet, amelyekkel az ügyfeleinkhez kapcsolódóan találkoztunk.
 
 #### <a name="media"></a>Média
 Gyűjtse össze a végfelhasználók által fogyasztott tartalmak típusait, és szegmentálja a célközönséget ezen viselkedésük alapján, így az adott típusú tartalmakat kizárólag olyan célközönségnek juttathatja el, akik nagyobb valószínűséggel fogyasztják azokat. Ezzel elkerülheti a teljes felhasználói bázis elárasztását levélszeméttel, és jobb megtartást biztosíthat.
 
-#### <a name="mcommerce"></a>M-kereskedelem
+#### <a name="m-commerce"></a>M-kereskedelem
 Gyűjtse össze az alkalmazásban a legtöbbet megtekintett termékkategóriákat, és azon célközönség számára népszerűsítse az adott kategóriába tartozó kedvezményt vagy új terméket, amelynek végfelhasználói nagyobb eséllyel fogják azt megvásárolni. Célozza az árbevétel növelését. A cél most is a levélszemét elkerülése!
 
 #### <a name="gaming"></a>Játékok
@@ -134,6 +134,6 @@ Az *alkalmazásadatok* olyan adatok, amelyek lehetővé teszik az alkalmazás va
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

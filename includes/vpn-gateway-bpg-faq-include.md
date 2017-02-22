@@ -26,10 +26,13 @@ Az Azure VPN Gatewayek a helyszíni BGP-eszközök alábbi elérési útjait aj�
 * Az Azure VPN Gatewayhez csatlakozó más BGP társviszony-munkamenetektől tanult elérési utakat, **kivéve a VNet-előtagok által átfedett alapértelmezett elérési uta(ka)t**.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Meghirdethetem az Azure VPN Gateway átjárókhoz vezető alapértelmezett útvonalat (0.0.0.0/0)?
-Jelenleg nem.
+Igen.
 
 ### <a name="can-i-advertise-the-exact-prefixes-as-my-virtual-network-prefixes"></a>Meghirdethetem pontosan ugyanazokat az előtagokat, mint a virtuális hálózataim előtagjai?
-Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja. Olyan előtagot azonban meghirdethet, amelynek a virtuális hálózaton belüli állomások a részhalmazát alkotják. Ha például a virtuális hálózat a 10.10.0.0/16 címteret használja, akkor meghirdetheti a 10.0.0.0/8 előtagot.
+
+Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja. Olyan előtagot azonban meghirdethet, amelynek a virtuális hálózaton belüli állomások a részhalmazát alkotják. 
+
+Ha például a virtuális hálózat a 10.0.0.0/16 címteret használja, akkor meghirdetheti a 10.0.0.0/8 előtagot. A 10.0.0.0/16 vagy 10.0.0.0/24 előtagot azonban nem hirdetheti meg.
 
 ### <a name="can-i-use-bgp-with-my-vnet-to-vnet-connections"></a>Használhatom a BGP-t a VNet–VNet kapcsolatokhoz?
 Igen, a BGP-t létesítmények közötti és VNet–VNet kapcsolatokhoz is használhatja.
@@ -40,17 +43,19 @@ Igen, kombinálhatja a BGP- és nem BGP-kapcsolatokat ugyanazon Azure VPN Gatewa
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Támogatja az Azure VPN Gateway a BGP-tranzit útválasztást?
 Igen, a BGP-tranzit útválasztás támogatott, azzal a kivétellel, hogy az Azure VPN Gatewayek **NEM** ajánlják fel más BGP-társak alapértelmezett elérési útjait. A tranzit útválasztást úgy engedélyezheti több Azure VPN Gatewayen, ha az összes köztes VNet–VNet kapcsolaton engedélyezi a BGP-t.
 
-### <a name="can-i-have-more-than-one-tunnels-between-azure-vpn-gateway-and-my-on-premises-network"></a>Használhatok több alagutat az Azure VPN Gateway és a helyszíni hálózat között?
-Igen, több S2S VPN-alagutat is létrehozhat az Azure VPN Gateway és a helyszíni hálózata között. Vegye figyelembe, hogy ezek az alagutak beleszámítanak az Azure VPN Gatewayek alagútjainak teljes számába. Ha például két redundáns alagútja van az Azure VPN Gateway és az egyik helyszíni hálózat között, akkor ezek 2 alagutat használnak fel az Azure VPN Gateway teljes kvótájából (ez a Standard esetében 10, a HighPerformance esetében pedig 30).
+### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Használhatok több alagutat az Azure VPN Gateway és a helyszíni hálózat között?
+Igen, több S2S VPN-alagutat is létrehozhat az Azure VPN Gateway és a helyszíni hálózata között. Vegye figyelembe, hogy ezek az alagutak beleszámítanak az Azure VPN Gatewayek alagútjainak teljes számába, és mindkét alagúton engedélyeznie kell a BGP-t.
+
+Ha például két redundáns alagútja van az Azure VPN Gateway és az egyik helyszíni hálózat között, akkor ezek 2 alagutat használnak fel az Azure VPN Gateway teljes kvótájából (ez a Standard esetében 10, a HighPerformance esetében pedig 30).
 
 ### <a name="can-i-have-multiple-tunnels-between-two-azure-vnets-with-bgp"></a>Használhatok több alagutat két BGP-vel rendelkező Azure VNet között?
-Nem, a virtuális hálózatok párjai közötti redundáns alagutak nem támogatottak.
+Igen, de a virtuális hálózati átjárók legalább egyikének aktív-aktív konfigurációban kell lennie.
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-co-existence-configuration"></a>Használhatok BGP-t az S2S VPN-hez egy olyan konfigurációban, amelyben az ExpressRoute és az S2S VPN is jelen van?
-Jelenleg nem.
+Igen. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Milyen címet használ az Azure VPN Gateway a BGP-társgép IP-címéhez?
-Az Azure VPN Gateway egyetlen IP-címet foglal le a virtuális hálózathoz definiált GatewaySubnet-tartományból. Alapértelmezés szerint ez a tartomány utolsó előtti címe. Ha például az alhálózati átjárója 10.12.255.0/27, és a tartománya 10.12.255.0-tól 10.12.255.31-ig terjed, akkor a BGP társ IP-címe 10.12.255.30 lesz az Azure VPN Gatewayen. Ezeket az információkat az Azure VPN Gatewayinformációinak listázásakor találhatja meg.
+Az Azure VPN Gateway egyetlen IP-címet foglal le a virtuális hálózathoz definiált GatewaySubnet-tartományból. Alapértelmezés szerint ez a tartomány utolsó előtti címe. Ha például az alhálózati átjárója 10.12.255.0/27, és a tartománya 10.12.255.0-tól 10.12.255.31-ig terjed, a BGP társ IP-címe 10.12.255.30 lesz az Azure VPN Gatewayen. Ezeket az információkat az Azure VPN Gatewayinformációinak listázásakor találhatja meg.
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Mik a BGP-társ IP-címének követelményei a VPN-eszközön?
 A helyszíni BGP-társgép címe **NEM LEHET** ugyanaz, mint a VPN-eszköze nyilvános IP-címe. Használjon egy más IP-címet a BGP-társgép IP-címeként a VPN-eszközön. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Ezt a címet a helyet jelölő megfelelő Helyi hálózati átjáróban kell megadni.
@@ -63,6 +68,6 @@ Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

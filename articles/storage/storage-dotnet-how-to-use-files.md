@@ -3,7 +3,7 @@ title: "Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással 
 description: "A felhőben tárolhatja a fájljait az Azure File Storage használatával, valamint a felhőalapú fájlmegosztását Azure virtuális gépről vagy Windowst futtató helyszíni alkalmazásokból csatlakoztathatja."
 services: storage
 documentationcenter: .net
-author: mine-msft
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/18/2016
-ms.author: minet
+/ms.date: 1/18/2017
+ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: af8f20beb8899ff1df733d1a4c544c75c6889ea6
+ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
+ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>Get started with Azure File storage on Windows (Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással)
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +38,7 @@ További részletekért a File Storage méretezési és teljesítménycéljaival
 ## <a name="video-using-azure-file-storage-with-windows"></a>Videó: Az Azure File storage használata Windows rendszeren
 Ez a videó azt mutatja be, hogyan hozhat létre Azure fájlmegosztásokat Windows rendszeren.
 
-> [!VIDEÓ: https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -118,7 +118,7 @@ Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhaszn�
 Az Azure PowerShell szolgáltatást is használhatja fájlmegosztások létrehozására és kezelésére.
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Az Azure Storage PowerShell-parancsmagjainak telepítése
-A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. A telepítési helyre és a telepítésre vonatkozó utasításokért lásd: [How to install and configure Azure PowerShell](../powershell-install-configure.md) (Az Azure PowerShell telepítése és konfigurálása).
+A PowerShell használatának előkészítéseként töltse le és telepítse az Azure PowerShell-parancsmagokat. A telepítési helyre és a telepítésre vonatkozó utasításokért lásd: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
 
 > [!NOTE]
 > Javasoljuk, hogy frissítsen a legújabb Azure PowerShell modulra, vagy töltse le és telepítse azt.
@@ -602,49 +602,61 @@ Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](stora
    
     Jelenleg nem támogatjuk az AD-alapú hitelesítést vagy az ACL-eket, de a támogatás már szerepel a funkciókra vonatkozó kérések listáján. Egyelőre az Azure Storage-fiókkulcsok segítségével hitelesíthető a fájlmegosztás. Létezik egy megkerülő megoldás is, amely közös hozzáférésű jogosultságkódokat (SAS) használt a REST API vagy a klienskódtárak segítségével. Az SAS segítségével létrehozhat különleges engedélyekkel rendelkező jogkivonatokat, amelyek egy adott időintervallumban érvényesek. Létrehozhat például egy jogkivonatot, amelynek csak olvasási hozzáférése van egy adott fájlhoz. Aki birtokolja ezt a jogkivonatot a megadott érvényességi idő alatt, olvasási hozzáférést kap a fájlhoz.
    
-    Az SAS csak REST API vagy klienskódtárak használatával támogatott. Amikor SMB-protokollal csatlakoztatja a fájlmegosztást, nem használhatja az SAS-t a tartalmához való hozzáférés delegálására.
-2. **Az Azure fájlmegosztások láthatók nyilvánosan az interneten, vagy csak az Azure-ból érhetők el?**
-   
-    Ha a 445-ös port (TCP, kimenő) meg van nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (*például* a Windows 8 vagy a Windows Server 2012), a fájlmegosztás elérhető az interneten keresztül.  
-3. **Külső, az előfizetésen felüli díjfizetéssel járó sávszélességnek számít az Azure virtuális gép és egy fájlmegosztás közötti hálózati forgalom?**
+    Az SAS csak REST API vagy klienskódtárak használatával támogatott. Amikor SMB-protokollal csatlakoztatja a fájlmegosztást, nem használhatja az SAS-t a tartalmához való hozzáférés delegálására. 
+
+2. **Hogyan biztosíthatok hozzáférést egy bizonyos fájlhoz egy webböngészőben?**
+   Az SAS segítségével létrehozhat különleges engedélyekkel rendelkező jogkivonatokat, amelyek egy adott időintervallumban érvényesek. Létrehozhat például egy jogkivonatot, amely csak olvasási hozzáféréssel rendelkezik egy bizonyos fájlhoz egy megadott ideig. Amíg ez érvényes, addig bárki, aki ismeri ezt az URL-címet, közvetlenül letöltheti a fájlt bármilyen webböngészőből. Az SAS-kulcsok egyszerűen létrehozhatóak például olyan felhasználói felületekkel, mint a Storage Explorer.
+
+3.   **Milyen módszerekkel lehet hozzáférni az Azure File Storage-ban tárolt fájlokhoz?**
+    Csatlakoztathatja a fájlmegosztást a helyi gépen az SMB 3.0 protokoll használatával, vagy a [Storage Explorer](http://storageexplorer.com/), a Cloudberry vagy hasonló eszköz használatával is hozzáférhet a fájlmegosztásban található fájlokhoz. Az alkalmazásból használhatja az ügyfélkódtárakat, a REST API-kat vagy a PowerShellt az Azure-fájlmegosztásban található fájlok eléréséhez.
+    
+4.   **Hogyan csatlakoztathatom a helyi gépemen az Azure-fájlmegosztást?** A fájlmegosztást az SMB protokoll segítségével csatlakoztathatja, ha a 445-ös port (TCP, kimenő) meg van nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (*például* a Windows 8 vagy a Windows Server 2012). A port zárolásának feloldásához lépjen kapcsolatba a helyi internetszolgáltatóval. A fájlok ideiglenesen a Storage Explorer, illetve más, külső gyártótól származó platform (például a Cloudberry) használatával tekinthetők meg.
+
+5. **Külső, az előfizetésen felüli díjfizetéssel járó sávszélességnek számít az Azure virtuális gép és egy fájlmegosztás közötti hálózati forgalom?**
    
     Ha a fájlmegosztás és a virtuális gép eltérő régióban van, a köztük jelentkező adatforgalom külső sávszélességnek minősül, és díjkötelesnek számít.
-4. **Az azonos régióban található virtuális gép és fájlmegosztás közötti hálózati forgalom ingyenes?**
+6. **Az azonos régióban található virtuális gép és fájlmegosztás közötti hálózati forgalom ingyenes?**
    
     Igen. Az adatforgalom ingyenes, ha régión belül marad.
-5. **A helyszíni virtuális gépek csatlakozása az Azure File Storage-hoz az Azure ExpressRoute-tól függ?**
+7. **A helyszíni virtuális gépek csatlakozása az Azure File Storage-hoz az Azure ExpressRoute-tól függ?**
    
     Nem. Akkor is hozzáférhet a fájlmegosztáshoz a helyszíni virtuális gépekről, ha nem rendelkezik ExpressRoute-tal, feltéve, hogy tud a 445-ös (TCP, kimenő) porton keresztül csatlakozni az internethez. Ha szeretné, természetesen az ExpressRoute-ot is használhatja a File Storage szolgáltatással.
-6. **Egy feladatátvevő fürt „Tanúsító fájlmegosztása” lehet az Azure File Storage egyik használati esete?**
+8. **Egy feladatátvevő fürt „Tanúsító fájlmegosztása” lehet az Azure File Storage egyik használati esete?**
    
     Nem. Ez a használati mód jelenleg nem támogatott.
-7. **A File Storage jelenleg csak LRS-en vagy GRS-en keresztül replikálódik, igaz?**  
+9. **A File Storage jelenleg csak LRS-en vagy GRS-en keresztül replikálódik, igaz?**  
    
     Az RA-GRS támogatása szerepel a terveink között, de a bevezetés időpontja még nem ismert.
-8. **Mikor használhatok már létező tárfiókokat az Azure File Storage-hoz?**
+10. **Mikor használhatok már létező tárfiókokat az Azure File Storage-hoz?**
    
     Az Azure File Storage mostantól minden tárfiókhoz engedélyezett.
-9. **A REST API kiegészül átnevezési művelettel?**
+11. **A REST API kiegészül átnevezési művelettel?**
    
     Az átnevezés még nem támogatott a REST API-n.
-10. **Létrehozható beágyazott megosztás, azaz megosztás egy megosztásban?**
+12. **Létrehozható beágyazott megosztás, azaz megosztás egy megosztásban?**
     
     Nem. A fájlmegosztás a virtuális meghajtó, amelyet csatlakoztathat, így nem támogatott a beágyazott megosztás.
-11. **Lehetséges csak olvasási vagy csak írási engedélyeket adni a megosztáson belüli mappákhoz?**
+13. **Lehetséges csak olvasási vagy csak írási engedélyeket adni a megosztáson belüli mappákhoz?**
     
     Ha a fájlmegosztást SMB-protokollal csatlakoztatja, nem kezelheti ilyen szinten a fájlmegosztást. Az viszont megoldás lehet, ha létrehoz közös hozzáférésű jogosultságkódokat (SAS) a REST API-n vagy a klienskódtáron keresztül.  
-12. **A teljesítmény nem volt kielégítő, amikor fájlokat próbáltam kicsomagolni a File Storage-ban. Mit tegyek?**
+14. **A teljesítmény nem volt kielégítő, amikor fájlokat próbáltam kicsomagolni a File Storage-ban. Mit tegyek?**
     
     Ha nagyszámú fájlt kell átvinnie a File Storage-ba, javasoljuk, hogy használja az AzCopy, az Azure PowerShell (Windows) vagy az Azure CLI (Linux/Unix) eszközt, mert ezek hálózati adatátvitelre lettek optimalizálva.
-13. **Az Azure Files teljesítményével kapcsolatos problémák megoldásához kiadott javítás**
+15. **Az Azure Files teljesítményével kapcsolatos problémák megoldásához kiadott javítás**
     
     A Windows csapata nemrégiben megjelentetett egy javítást a teljesítménnyel kapcsolatos problémák kezelésére, amelyek akkor jelentkeznek, amikor az ügyfél Windows 8.1 vagy Windows Server 2012 R2 rendszerről fér hozzá az Azure Files Storage-hoz. További információt a következő KB-cikkben talál: [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025) (Lassú teljesítmény az Azure Files Storage használatakor Windows 8.1 vagy Server 2012 R2 rendszerről).
-14. **Az Azure File Storage használata az IBM MQ-val**
+16. **Az Azure File Storage használata az IBM MQ-val**
     
     Az IBM kiadott egy útmutató dokumentumot az IBM MQ ügyfelei számára, amely segítséget nyújt az Azure File Storage konfigurálásához az általuk használt szolgáltatással. További információk: [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service) (Az IBM MQ többpéldányos üzenetsor-kezelőjének beállítása a Microsoft Azure File szolgáltatással).
-15. **Azure-fájlok tárolási hibáinak elhárítása**
+17. **Azure-fájlok tárolási hibáinak elhárítása**
     
     Olvassa el az [Azure fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.               
+
+18. **Hogyan lehet engedélyezni a kiszolgálóoldali titkosítást az Azure Files-hoz?**
+
+    A [kiszolgálóoldali titkosítás](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) jelenleg előzetes verzióban működik. Az előzetes verzióban a szolgáltatást kizárólag az újonnan létrehozott Azure Resource Manager- (ARM-) tárfiókokhoz lehet használni.
+    Azure Resource Manager-tárfiókokon való használatát az Azure Portalon engedélyezheti. A File Storage titkosítása terveink szerint február végétől lesz elérhető az [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx), az [Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) és a [Microsoft Azure Storage erőforrás-szolgáltató API-jának](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) használatával. A szolgáltatás díjmentesen engedélyezhető. Ha engedélyezi az Azure File Storage-hoz a Storage szolgáltatás titkosítását, az adatai automatikusan titkosítva lesznek. 
+    További információk is rendelkezésre állnak a Storage szolgáltatás titkosításáról. Az előzetes verzióval kapcsolatos további kérdéseit itt teheti fel: ssediscussions@microsoft.com.
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
@@ -657,6 +669,7 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 * [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](storage-powershell-guide-full.md)
 * [How to use AzCopy with Microsoft Azure Storage (Az AzCopy használata a Microsoft Azure Storage szolgáltatással)](storage-use-azcopy.md)
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](storage-azure-cli.md#create-and-manage-file-shares)
+* [Azure File Storage-problémák hibaelhárítása](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referencia
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -669,6 +682,7 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 * [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Feb17_HO2-->
 
 

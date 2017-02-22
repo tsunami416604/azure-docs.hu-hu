@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
-ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
+ms.sourcegitcommit: 5ef9e96ae78b02da9dff1456608d73b9e78516a1
+ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
 
 
 ---
@@ -63,10 +63,10 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 ### <a name="create-a-new-android-project"></a>Új Android-projekt létrehozása
 1. Az Android Studióban indítson el egy új Android Studio-projektet.
    
-     ![Android Studio – új projekt][13]
+   ![Android Studio – új projekt][13]
 2. Válassza ki a **Phone and Tablet** (Telefon és táblagép) helyigényt és a támogatni kívánt **Minimum SDK** csomagot. Ezután kattintson a **Next** (Tovább) gombra.
    
-     ![Android Studio – projektlétrehozási munkafolyamat][14]
+   ![Android Studio – projektlétrehozási munkafolyamat][14]
 3. Fő tevékenységként válassza az **Empty Activity** (Üres tevékenység) lehetőséget, és kattintson a **Next** (Tovább), majd a **Finish** (Befejezés) gombokra.
 
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
@@ -619,13 +619,14 @@ A fentieken túl győződjön meg arról is, hogy a **Settings** (Beállítások
 #### <a name="running-the-application"></a>Az alkalmazás futtatása
 1. Futtassa az alkalmazást, és figyelje meg, hogy sikeres regisztráció esetén jelentést kap a regisztrációs azonosítóról.
    
-       ![Testing on Android - Channel registration][18]
+      ![Tesztelés Android rendszeren – Csatornaregisztráció][18]
 2. Adjon meg egy értesítési üzenetet, amelyet a központon regisztrált minden Android-eszközre el kíván küldeni.
    
-       ![Testing on Android - sending a message][19]
+      ![Tesztelés Android rendszeren – Üzenetküldés][19]
+
 3. Nyomja le a **Send Notification** (Értesítés küldése) gombot. Az alkalmazást futtató összes eszközön megjelenik egy `AlertDialog`-példány a leküldéses értesítési üzenettel együtt. Az alkalmazással nem rendelkező, de a leküldéses értesítésekre korábban már regisztrált eszközök az Android értesítéskezelőjén keresztül kapják meg az értesítést. Ezek az értesítések a bal felső sarokból lefelé pöccintve tekinthetők meg.
    
-       ![Testing on Android - notifications][21]
+      ![Tesztelés Android rendszeren – Értesítések][21]
 
 ## <a name="next-steps"></a>Következő lépések
 Következő lépésként javasoljuk [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyag megtekintését. Ebben bemutatjuk, hogy hogyan küldhet értesítéseket ASP.NET-háttérrendszerből adott felhasználók számára címkék használatával.
@@ -671,6 +672,6 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -366,6 +366,6 @@ Ebben az oktatóanyagban bemutattuk az Azure Data Catalog alapvető funkcióit, 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

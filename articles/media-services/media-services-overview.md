@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 946f6e480083a0007a88c85b744ddeafa0385990
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
 
 
 ---
@@ -32,7 +32,7 @@ A tartalmakat továbbíthatja élő adásban, illetve az ügyfelek igénye szeri
 
 A Media Services-megoldások létrehozásához a következőket használhatja:
 
-* [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
+* [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Az elérhető ügyféloldali SDK-k valamelyike:
     * [.NET-keretrendszerhez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services),
     * [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java),
@@ -46,7 +46,7 @@ A következő kép a Media Services OData-modellen alapuló fejlesztések során
 
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
 A teljes modellt [itt](https://media.windows.net/API/$metadata?api-version=2.15) tekintheti meg.  
 
@@ -79,8 +79,8 @@ Ez a szakasz gyakori forgatókönyveket ismertet, és hivatkozásokat tartalmaz 
 ![VoD-munkafolyamat](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 >[!NOTE]
->Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
-    
+>Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
+
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Tartalom védelme a tárolón és folyamatos médiatovábbítás tisztán (titkosítatlanul)
 1. Töltsön fel egy kiváló minőségű mezzanine-fájlt egy adategységbe.
 
@@ -184,7 +184,8 @@ A Media Services támogatja az Azure CDN-integrációt. További információk a
 A **Media Services** méretezése oly módon lehetséges, ha megadja a **folyamatos átvitelhez fenntartott egységek** és a **kódoláshoz fenntartott egységek** számát, amelyekkel a fiókját ki szeretné építeni.
 
 A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz.
-A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Ugyanazokat a szolgáltatásokat tartalmazza, mint a prémium szintű streamelési egységek. A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Ha speciális feladatokat végez, vagy a standard streamvégpontok teljesítménycéljai nem felelnek meg a streamelési kapacitásra vonatkozó követelményeknek, esetleg a növekvő sávszélesség-igény kezelése érdekében a skálázási egységek (más néven prémium streamelési egységek) beállításával szabályozni szeretné a streamvégpontok szolgáltatás kapacitását, akkor érdemes skálázási egységeket kiosztania.
+A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Ugyanazokat a szolgáltatásokat tartalmazza, mint a prémium szintű streamelési egységek.
+A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. Ha speciális feladatokat végez, vagy a standard streamvégpontok teljesítménycéljai nem felelnek meg a streamelési kapacitásra vonatkozó követelményeknek, esetleg a növekvő sávszélesség-igény kezelése érdekében a skálázási egységek (más néven prémium streamelési egységek) beállításával szabályozni szeretné a streamvégpontok szolgáltatás kapacitását, akkor érdemes skálázási egységeket kiosztania.
 
 [Ez a témakör](media-services-portal-scale-streaming-endpoints.md) hivatkozásokat tartalmaz a kapcsolódó témakörökre.
 

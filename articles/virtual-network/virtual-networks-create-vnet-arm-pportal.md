@@ -83,6 +83,6 @@ Ismerje meg, hogyan csatlakoztathat:
 - virtuális hálózatot helyszíni hálózathoz helyek közti virtuális magánhálózat (VPN) vagy ExpressRoute-kapcsolatcsoport használatával. Az elsajátításához olvassa el a [Virtuális hálózat csatlakoztatása helyszíni hálózathoz helyek közti VPN használatával](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) és a [Virtuális hálózat csatlakoztatása ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) eljárásokat ismertető cikkeket.
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

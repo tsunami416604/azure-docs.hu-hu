@@ -1,5 +1,5 @@
 ---
-title: "A Data Lake Store használatának első lépései a platformfüggetlen parancssori felülettel | Microsoft Docs"
+title: "Az Azure Data Lake Store használatának első lépései parancssori felület használatával | Microsoft Docs"
 description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása az Azure platformfüggetlen parancssorával"
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
 
 
 ---
@@ -33,9 +33,14 @@ ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
 >
 >
 
+> [!NOTE]
+> Nagy adatmennyiség (nagyméretű fájlok, sok fájl vagy mindkettő) feltöltése és letöltése esetén a [Python SDK](data-lake-store-get-started-python.md), a [.NET SDK](data-lake-store-get-started-net-sdk.md) vagy az [Azure PowerShell](data-lake-store-get-started-powershell.md) használatát javasoljuk. Ezek a lehetőségek jobb teljesítményt biztosítanak, mivel több szálat használnak, így az adattovábbítás párhuzamosan folyhat.
+> 
+>  
+
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure parancssori felület használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
 
-Az Azure parancssori felület implementálva van a Node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat. Az Azure parancssori felület nyílt forráskódú. A forráskód felügyelete a GitHubon: <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>. Ez a cikk csak az Azure parancssori felület Data Lake Store-ral való használatát tárgyalja. Általános útmutató az Azure CLI használatáról: [Az Azure parancssori felület használata][azure-command-line-tools].
+Az Azure parancssori felület implementálva van a Node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat. Az Azure parancssori felület nyílt forráskódú. A forráskód felügyelete a GitHubon: <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>. Ez a cikk csak az Azure parancssori felület Data Lake Store-ral való használatát tárgyalja. Általános útmutató az Azure CLI használatáról: [Az Azure CLI használata][azure-command-line-tools].
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -177,6 +182,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

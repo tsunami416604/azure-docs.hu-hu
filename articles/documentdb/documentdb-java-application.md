@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: denlee
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 4852d2b59faf01961fc8e39680bb05694dcde8d6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
 
 
 ---
@@ -457,7 +457,7 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
             }
         }
 3. Szükség lesz egy webes felhasználói felületre, amelyet megjeleníthet a felhasználó számára. Írja át a korábban létrehozott index.jsp fájlt az alábbi módon:
-   
+    ```html
         <html>
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -544,6 +544,7 @@ Most, hogy elért a könnyedebb részek végére, már csak fel kell építenie 
           <script src="assets/todo.js"></script>
         </body>
         </html>
+    ```
 4. Majd végezetül írjon egy ügyféloldali Javascript-kódot, amely megteremti a kapcsolatot a webes felhasználói felület és a servlet között:
    
         var todoApp = {
@@ -763,6 +764,6 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

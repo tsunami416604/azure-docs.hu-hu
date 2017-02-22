@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35f58e8664c47c4e7a86c27e90813ad7be3cea04
 
 
 ---
@@ -25,7 +25,7 @@ Az Azure Multi-Factor Authentication-kiszolgáló IIS-hitelesítés szakaszában
 
 ![IIS-hitelesítés](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>Az űrlapalapú IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
+## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>Az űrlapalapú IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
 Űrlapalapú hitelesítést használó IIS-webalkalmazás védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az IIS-webkiszolgálón és konfigurálja a kiszolgálót a következő eljárásnak megfelelően.
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
@@ -43,7 +43,7 @@ Az Azure Multi-Factor Authentication-kiszolgáló IIS-hitelesítés szakaszában
 13. Miután a rendszer észlelte vagy megadta az URL-címet és az oldal változóit, a webhely adatai megjelennek az Űrlapalapú panelen.
 14. Tekintse meg az alábbi IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón című szakaszt az IIS-hitelesítés konfigurációjának befejezéséhez.
 
-## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>Integrált Windows IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
+## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Integrált Windows IIS-hitelesítés használata az Azure Multi-Factor Authentication-kiszolgálóval
 Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhez telepítse az Azure Multi-Factor Authentication-kiszolgálót az IIS-webkiszolgálón, és konfigurálja a kiszolgálót az alábbi eljárásnak megfelelően.
 
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
@@ -56,7 +56,7 @@ Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhe
 8. Kattintson az OK gombra.
 9. Tekintse meg az alábbi [IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) című szakaszt az IIS-hitelesítés konfigurációjának elvégzéséhez.
 
-## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón
+## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>IIS beépülő modulok engedélyezése az Azure Multi-Factor Authentication-kiszolgálón
 Miután konfigurálta az Űrlapalapú hitelesítés vagy a HTTP-hitelesítés URL-címeit és beállításait, ki kell választania a helyeket, ahol az Azure Multi-Factor Authentication IIS beépülő modulokat betölteni és engedélyezni szeretné az IIS-ben. Kövesse az alábbi eljárást:
 
 1. Ha az IIS 6-os verzióját futtatja, kattintson az ISAPI fülre, és válassza ki a webhelyet, amely alatt a webalkalmazás fut (például alapértelmezett webhely) az Azure Multi-Factor Authentication ISAPI-szűrő beépülő modul engedélyezéséhez a webhely esetében.
@@ -74,6 +74,6 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

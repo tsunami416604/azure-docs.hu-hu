@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch-fiók létrehozása | Microsoft Docs"
+title: "Batch-fiók létrehozása az Azure Portalon | Microsoft Docs"
 description: "Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/21/2016
+ms.date: 01/23/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 8875c5e91a2a1ae848ebf725ca00bd43ec667dce
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: fb53c1748d42e605048d1ab4e033460399c75911
 
 
 ---
@@ -38,15 +38,16 @@ Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_
    
     ![Batch-fiók létrehozása][account_portal]
    
-    a. **Fiók neve**: A Batch-fiók egyedi neve. A névnek egyedinek kell lennie azon Azure-régióban, ahol a fiók létrejön (lásd az alábbi *Hely* szakaszt). Csak kisbetűket és számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
+    a. **Fiók neve**: A Batch-fiók neve. A választott névnek egyedinek kell lennie az Azure-régióban, ahol az új fiókot létrehozza (lásd **Hely** alább). A fiók neve csak kisbetűket vagy számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
    
     b. **Előfizetés**: A Batch-fiók létrehozására szolgáló előfizetés. Ha csak egy előfizetéssel rendelkezik, ez alapértelmezés szerint be van jelölve.
    
-    c. **Erőforráscsoport**: Az új Batch-fiók meglévő erőforráscsoportja, vagy újat is létrehozhat.
+    c. **Erőforráscsoport**: Kiválaszthat egy meglévő erőforráscsoportot az új Batch-fiókhoz, vagy újat is létrehozhat.
    
     d. **Hely**: Az az Azure-régió, amelyben a Batch-fiókot létrehozza. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
    
-    e. **Tárfiók** (nem kötelező): Olyan **általános célú** tárfiók, amelyet az új Batch-fiókhoz társít (ahhoz kapcsol). További részletekért tekintse meg az alábbi, [Társított Azure Storage-fiók](#linked-azure-storage-account) című szakaszt.
+    e. **Tárfiók** (nem kötelező): Olyan általános célú Azure Storage-fiók, amelyet az új Batch-fiókhoz társít. További részletekért tekintse meg az alábbi, [Társított Azure Storage-fiók](#linked-azure-storage-account) című szakaszt.
+
 4. A fiók létrehozásához kattintson a **Létrehozás** gombra.
    
    A portál jelzi, hogy **üzembe helyezi** a fiókot, és a befejezéskor egy **Üzembe helyezések sikeresek** értesítés jelenik meg az *Értesítések* területen.
@@ -56,34 +57,37 @@ A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítás
 
 ![A Batch-fiók panel az Azure Portalon][account_blade]
 
-* **Batch-fiók URL-je**: A [Batch fejlesztési API-kkal](batch-technical-overview.md#batch-development-apis) létrehozott alkalmazásoknak szükségük van a fiók URL-címére az erőforrások kezeléséhez és a feladatok futtatásához a fiókban. A Batch-fiók URL-címének formátuma a következő:
+* **Batch-fiók URL-cím**: Amikor egy alkalmazást fejleszt a [Batch API-kkal](batch-technical-overview.md#batch-development-apis), szüksége lesz egy fiók URL-címére a Batch-erőforrások eléréséhez. A Batch-fiók URL-címének formátuma a következő:
   
     `https://<account_name>.<region>.batch.azure.com`
 
 ![A Batch-fiók URL-címe a portálon][account_url]
 
-* **Hozzáférési kulcsok**: Az alkalmazásainak hozzáférési kulcsra is szüksége van, amikor a Batch-fiókban található erőforrásokkal dolgozik. A Batch-fiók hozzáférési kulcsainak megtekintéséhez vagy újbóli létrehozásához írja be a `keys` kifejezést a bal oldali menü **Keresés** mezőjébe a Batch-fiók panelen, majd válassza a **Kulcsok** lehetőséget.
+* **Hozzáférési kulcsok**: Ahhoz, hogy hozzáférjen a Batch-fiókhoz az alkalmazásból, szüksége lesz a fiók hozzáférési kulcsára. A Batch-fiók hozzáférési kulcsainak megtekintéséhez vagy újbóli létrehozásához írja be a `keys` kifejezést a bal oldali menü **Keresés** mezőjébe a Batch-fiók panelen, majd válassza a **Kulcsok** lehetőséget.
   
     ![A Batch-fiók kulcsai az Azure Portalon][account_keys]
 
-## <a name="pricing"></a>Díjszabás
-A Batch-fiókok csak „ingyenes szinten” kaphatók, vagyis magáért a Batch-fiókért nem kell fizetnie. Azokért a mögöttes Azure számítási erőforrásokért számítunk fel díjat, amelyeket a Batch megoldások használnak, valamint a többi szolgáltatás által a számítási feladatok futtatásakor használt erőforrásokért. Fizetnie kell például a készletekben található számítási csomópontokért és az Azure Storage-ban a feladatok bemeneteként vagy kimeneteként tárolt adatokért. Hasonlóan, ha a Batch [alkalmazáscsomagok](batch-application-packages.md) funkcióját használja, fizetnie kell az alkalmazáscsomagok tárolásához használt Azure Storage-erőforrásokért. További információkért lásd: [Batch díjszabás][batch_pricing].
+[!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
 
 ## <a name="linked-azure-storage-account"></a>Társított Azure Storage-fiók
-Ahogy korábban említettük, dönthet úgy, hogy **általános célú** Storage-fiókot csatol a Batch-fiókhoz. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója társított általános célú tárfiókban található Blob-tárolót használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
 
-A Batch jelenleg *csak* az **Általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található. Amikor Azure Storage-fiókot kapcsol a Batch-fiókhoz, *csakis* **általános célú** tárfiókot kapcsoljon hozzá.
+Ahogy korábban említettük, dönthet úgy, hogy általános célú Azure Storage-fiókot csatol a Batch-fiókhoz. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója Azure Blob Storage-ot használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
+
+Érdemes létrehozni egy új Storage-fiókot kifejezetten a Batch-fiók általi használatra.
 
 ![„Általános célú” tárfiók létrehozása][storage_account]
 
-Érdemes létrehozni egy Storage-fiókot kifejezetten a Batch-fiók általi használatra.
+> [!NOTE] 
+> Az Azure Batch jelenleg kizárólag az általános célú Storage-fiók típusát támogatja. Erről a fióktípusról leírást találhat az 5. lépésben [Create a storage account] (../storage/storage-create-storage-account.md#create-a-storage-account) a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) oldalon.
+>
+>
 
 > [!WARNING]
 > Körültekintően járjon el, amikor újból létrehozza a társított Storage-fiók hozzáférési kulcsait. A Storage-fiókhoz csak egy hozzáférési kulcsot hozzon létre ismét, és kattintson a társított tárfiók panelén a **Kulcsok szinkronizálása** gombra. Várjon öt percet, hogy a rendszer propagálja a hozzáférési kulcsokat a készletekben található számítási csomópontokra, majd szükség esetén hozza létre újra és szinkronizálja a másik hozzáférési kulcsot. Ha mindkét hozzáférési kulcsot egyszerre hozza létre újra, a számítási csomópontok nem tudják szinkronizálni egyiket sem, és elveszítik a Storage-fiókhoz való hozzáférést.
 > 
 > 
 
-  ![A tárfiók hozzáférési kulcsainak ismételt létrehozása][4]
+![A tárfiók hozzáférési kulcsainak ismételt létrehozása][4]
 
 ## <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 Vegye figyelembe, hogy az Azure-előfizetéshez és más Azure-szolgáltatásokhoz hasonlóan a Batch-fiókokra is bizonyos [kvóták és korlátozások](batch-quota-limit.md) érvényesek. A Batch-fiókok aktuális kvótái a **Tulajdonságok** fiókban jelennek meg a portálon.
@@ -92,9 +96,9 @@ Vegye figyelembe, hogy az Azure-előfizetéshez és más Azure-szolgáltatásokh
 
 Vegye figyelembe ezeket a kvótákat a Batch számítási feladatok tervezésekor és bővítésekor. Ha például a készlet nem éri el a számítási csomópontok megadott célszámát, lehet, hogy elérte a Batch-fiók magkvótájának határértékét.
 
-Azt is vegye figyelembe, hogy az Azure-előfizetés részeként nem csak egyetlen Batch-fiókot üzemeltethet. Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
+A Batch-fiókok kvótája per régió per előfizetés szerint van megszabva, így alapértelmezés szerint több Batch-fiókkal is rendelkezhet, ha azok különböző régióban vannak. Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
 
-Sok kvóta egyszerűen növelhető az Azure Portalra elküldött ingyenes terméktámogatási kéréssel. A kvótanövelések kéréséről részletekért lásd: [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai).
+Ezenkívül, sok kvóta egyszerűen növelhető az Azure Portalra elküldött ingyenes terméktámogatási kéréssel. A kvótanövelések kéréséről részletekért lásd: [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai).
 
 ## <a name="other-batch-account-management-options"></a>Egyéb Batch-fiókkezelési lehetőségek
 Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelhet Batch-fiókokat:
@@ -124,6 +128,6 @@ Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelh
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

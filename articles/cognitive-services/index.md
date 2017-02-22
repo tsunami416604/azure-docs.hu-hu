@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Cognitive Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+description: "Ismerje meg, hogy a látás, beszéd, nyelvelemzés és hasonló intelligens képességek hogyan adhatók hozzá az alkalmazásokhoz. Gyors üzembe helyezési útmutatókat és API-referenciákat olvashat."
+services: cognitive-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cognitive-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: e4e35a7c13db98770295cbaa19cf33b18c1fb5e7
+ms.sourcegitcommit: 0c5f1ba593952cb6dc6a8200a5666ecb7a32fce7
+ms.openlocfilehash: 3895b02f25b0e27b46a5e5493fe2b7f8f83201c1
 
 ---
 #<a name="cognitive-services-documentation"></a>Cognitive Services – dokumentáció
 
-A Cognitive Services (előzetes verzió) olyan API-k gyűjteménye, amelyek természetes és környezetfüggő interakciót tesznek lehetővé az alkalmazásokban.  A Cognitive Services Language, Speech, Vision, Search, és Knowledge API-kat nyújt.
+Ismerje meg, hogyan alakíthat ki természetes és környezetfüggő interakciókat alkalmazásaiban a Cognitive Services segítségével. Gyors üzembe helyezési oktatóanyagok és API-referenciák segítenek a mesterséges intelligencia szöveg-, beszéd-, látás- és keresési képességek kiépítésére való használatában. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -96,16 +108,10 @@ A Cognitive Services (előzetes verzió) olyan API-k gyűjteménye, amelyek term
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Cognitive Services – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

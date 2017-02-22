@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Az Azure Logic Apps dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat a helyszíni és a felhőben futó üzleti munkafolyamatok automatizálására és egyszerűbbé tételére. Oktatóanyagok, sablonok és API-referenciák."
+services: logic-apps
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: logic-apps
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: abebff15a5385bfc3ef046923927bb74a6ee6ace
-ms.openlocfilehash: c19b7e4ecfa67f54f34fac11dc6d23a843e27232
+ms.sourcegitcommit: 2c45896d603913d21bebb5f5a157bb60ad9e73ac
+ms.openlocfilehash: f85fbd5c9cce81c5934abce25ccd343810bcc4dd
 
 ---
+
 # <a name="logic-apps-documentation"></a>Logic Apps – dokumentáció
 
 Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat, amelyek egyszerűbbé teszik és integrálják a felhőben futó méretezhető munkafolyamatokat. Az oktatóanyagok, sablonok és API-referenciák segítségével automatizált helyszíni és felhőalapú üzleti folyamatokat alakíthat ki és vezethet be.
@@ -150,6 +162,6 @@ Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat, amelyek egyszerűbb�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
+ms.sourcegitcommit: cea81f16ecc6203f487fdf15310638b123312dde
+ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
 
 
 ---
@@ -43,8 +43,8 @@ A kezdéshez a következők szükségesek:
 >
 
 ## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse létrehozása
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Kattintson a **+ Új** > **Adatok + tárolás** > **SQL Data Warehouse** lehetőségre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Kattintson a **+ Új** > **Adatbázisok** > **SQL Data Warehouse** lehetőségre.
 
     ![Létrehozás](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 3. Az **SQL Data Warehouse** panelen adja meg a szükséges információkat, majd kattintson a „Létrehozás” gombra az adatraktár létrehozásához.
@@ -102,6 +102,6 @@ Tűzfalszabályok is a Transact-SQL segítségével konfigurálhatók. További 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

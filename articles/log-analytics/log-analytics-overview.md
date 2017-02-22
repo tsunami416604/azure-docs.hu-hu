@@ -1,5 +1,5 @@
 ---
-title: Mi az a Log Analytics? | Microsoft Docs
+title: "Mi az Operations Management Suite (OMS) részét képező Log Analytics? | Microsoft Docs"
 description: "A Log Analytics az Operations Management Suite (OMS) egy szolgáltatása, amely segít összegyűjteni és elemezni a felhőben és a helyszíni környezetekben található erőforrások által létrehozott működési adatokat.  Ez a cikk tömör áttekintést nyújt a Log Analytics különböző összetevőiről, és részletes tartalmakra mutató hivatkozásokat tartalmaz."
 services: log-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: bf1455cf3975b925d114acc3e1d4cba55f2a17a9
-ms.openlocfilehash: 3e7e42e2ac2deedf936ffc4d246553f72ee4dcd3
+ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
+ms.openlocfilehash: dcf61991fcbf989c905aa7c18e73df19afa89c36
 
 
 ---
@@ -73,6 +73,6 @@ A Log Analytics telepítési követelményei minimálisak, hiszen a központi ö
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

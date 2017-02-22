@@ -1,23 +1,20 @@
 ---
-title: "Az Operations Management Suite (OMS) áttekintése | Microsoft Docs"
-description: "A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.  Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
+title: "Az Azure Operations Management Suite (OMS) dokumentációja – oktatóanyagok | Microsoft Docs"
+description: "A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében. Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
 services: operations-management-suite
-documentationcenter: 
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 9dc437b9-e83c-45da-917c-cb4f4d8d6333
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
 ms.service: operations-management-suite
-ms.devlang: na
-ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: bwren
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f14a461b842649de977d2c4c80edfc197e15657
-ms.openlocfilehash: 14274c7d94213681b3779b97a44296e6eaf90be9
-
+ms.sourcegitcommit: ccfbd45def1ecf036a2464f560aa89817c37b419
+ms.openlocfilehash: 54b3ce2c8c3966ee36350fed71bdc48aa5bffa63
 
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
@@ -32,7 +29,7 @@ A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytic
 
 A Log Analytics egyszerűen kiegészíthető olyan megoldásokkal, amelyek meghatározzák a gyűjtendő adatokat, valamint az elemzés logikáját.  A megoldások tartalmazhatnak olyan kiegészítő funkciókat, amelyek automatikusan, minimális konfigurációval, vagy akár konfiguráció nélkül is üzembe helyezhetők az ügynökökön.  Az egyedi megoldások által biztosított elemzési eszközök mellett egyéni keresést is végezhet a teljes adatkészleten az adatok rendszerekkel és alkalmazásokkal fennálló összefüggéseinek feltárásához.  
 
-## <a name="automation-controlmediaoperations-management-suite-overviewicon-automation-controlpng-automation-control"></a>![Automatizálás és vezérlés](media/operations-management-suite-overview/icon-automation-control.png) Automatizálás és vezérlés
+## <a name="automation--controlmediaoperations-management-suite-overviewicon-automation-controlpng-automation--control"></a>![Automatizálás és vezérlés](media/operations-management-suite-overview/icon-automation-control.png) Automatizálás és vezérlés
 Az Azure Automation az adminisztratív folyamatokat PowerShell-alapú, az Azure-felhőben futó [runbookok](../automation/automation-runbook-types.md) segítségével automatizálja.  A runbookok hozzáférhetnek minden olyan termékhez vagy szolgáltatáshoz, amely PowerShell használatával felügyelhető, így többek között a más felhőkben – például az Amazon Web Servicesben (AWS) – található erőforrásokhoz is.  A runbookok futtathatók a helyi adatközpontban is, és kezelhetők velük a helyi erőforrások.
 
 Az Azure Automation a [PowerShell DSC](../automation/automation-dsc-overview.md) használatával biztosít konfigurációkezelést.  Létrehozhat és kezelhet az Azure szolgáltatásban üzemeltetett DSC-erőforrásokat, és alkalmazhatja őket a felhőbeli és a helyszíni rendszerekre a konfigurációjuk automatikus meghatározásához és kikényszerítéséhez.
@@ -58,6 +55,6 @@ A biztonsági és megfelelőségi funkciók segítenek azonosítani, felmérni �
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

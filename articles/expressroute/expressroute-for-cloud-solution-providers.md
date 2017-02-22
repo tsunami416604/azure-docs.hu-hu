@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f2c2253132d2c0ca8eefd975af2ac23f196afd0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 26c9420c9b8ba1aff6b016c01b8ed51853c91506
 
 
 ---
@@ -38,7 +38,7 @@ A Microsoft a CSP-k számára API-kat biztosít az Azure-ügyfelek előfizetése
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure erőforrás-kezelés
 Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha Microsoft Azure-előfizetése keretein belül az ügyfél maga kezeli az erőforrások létrehozását, ehhez a két következő modell valamelyikét használja majd: a „Szolgáltatón keresztüli csatlakozás” vagy a „Szolgáltatóhoz való csatlakozás” modellt. A modellek leírását a következő szakaszok tartalmazzák.  
 
-### <a name="connectthrough-model"></a>Szolgáltatón keresztüli csatlakozás modell
+### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 A szolgáltatón keresztüli csatlakozás modellben a CSP közvetlen kapcsolatot hoz létre az Ön adatközpontja és az ügyfél Azure-előfizetése között. A közvetlen kapcsolat ExpressRoute használatával jön létre, és hálózatát összekapcsolja az Azure-ral. Az ügyfél ezután az Ön hálózatához csatlakozik. Ebben a forgatókönyvben az ügyfélnek a CSP hálózatán keresztül kell kapcsolódnia az Azure-szolgáltatásokhoz. 
@@ -49,7 +49,7 @@ Azure-szolgáltatásokat CSP-k esetén a rendszer feltételezi, hogy a CSP már 
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
-### <a name="connectto-model"></a>Szolgáltatóhoz való csatlakozás
+### <a name="connect-to-model"></a>Szolgáltatóhoz való csatlakozás
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 A szolgáltatóhoz való csatlakozás modellben a szolgáltató közvetlen kapcsolatot hoz létre az ügyfél adatközpontja és a CSP által létrehozott Azure-előfizetés között az ExpressRoute használatával az ügyfél hálózatán (ügyfélhálózat) keresztül.
@@ -82,10 +82,10 @@ Az ExpressRoute több vNet csatlakoztatását is támogatja egyetlen ExpressRout
 ## <a name="configuring-expressroute"></a>Az ExpressRoute konfigurálása
 Az ExpressRoute három típusú forgalom ([útválasztási tartomány](#ExpressRoute-routing-domains)) támogatására konfigurálható egyetlen ExpressRoute-kapcsolatcsoportban. Ezek a forgalomtípusok a Microsoft társviszony-létesítés, az Azure nyilvános társviszony-létesítés és a privát társviszony-létesítés. Egyetlen ExpressRoute-kapcsolatcsoportban egy vagy több forgalomtípust is továbbíthat, vagy használhat több ExpressRoute-kapcsolatcsoportot is, az ExpressRoute-kapcsolatcsoport méretétől és az ügyfél által igényelt elkülönítéstől függően. Előfordulhat, hogy az ügyfél biztonsági irányelvei, tiltják hogy a nyilvános forgalom és a privát forgalom ugyanazon a körön folyjanak.
 
-### <a name="connectthrough-model"></a>Szolgáltatón keresztüli csatlakozás modell
+### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
 A szolgáltatón keresztüli csatlakozási konfigurációban Ön a felelős az összes hálózati eszközért az ügyfelek adatközponti erőforrásainak az Azure-ban futtatott előfizetésekhez való csatlakoztatásához. Mindegyik ügyfélnek, aki Azure-funkciókat kíván használni, saját ExpressRoute-kapcsolatra van szüksége, amelyet Ön kezel majd. Ön ugyanazon módon igényelhet ExpressRoute-kapcsolatcsoportot, ahogyan az ügyfél. Ezt követően az [ExpressRoute workflows for circuit provisioning and circuit states](expressroute-workflows.md) (Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai) című cikkben ismertetett lépéseket kell követnie. Ezután konfigurálnia kell a Border Gateway Protocol- (BGP-) útvonalakat a helyszíni hálózat és az Azure vNet közötti forgalom vezérléséhez.
 
-### <a name="connectto-model"></a>Szolgáltatóhoz való csatlakozás
+### <a name="connect-to-model"></a>Szolgáltatóhoz való csatlakozás
 Szolgáltatóhoz való csatlakozási konfigurációban az ügyfél már rendelkezik meglévő Azure-kapcsolattal, vagy kezdeményezni fog egy kapcsolatot internetszolgáltatója felé, amely ExpressRoute-összeköttetést biztosít az ügyfél saját adatközpontjából közvetlenül az Azure-ba az Ön adatközpontja helyett. A kiépítési folyamat megkezdéséhez az ügyfélnek ugyanúgy a Szolgáltatón keresztüli csatlakozás modellnél fentebb ismertetett lépéseket kell végrehajtania. A kapcsolatcsoport létrehozását követően az ügyfélnek konfigurálnia kell a helyszíni útválasztókat, hogy elérhesse az Ön hálózatát és az Azure vNet hálózatokat is.
 
 Támogatást nyújthat a kapcsolat beállításában és az útvonalak konfigurálásában, hogy az adatközpont(ok)ban található erőforrások kommunikálhassanak az ügyfél erőforrásaival az Ön adatközpontjában, vagy az Azure-ban futtatott erőforrásokkal.
@@ -116,7 +116,7 @@ Az alapértelmezett útválasztási tábla az alábbi útvonalakat tartalmazza:
 
 ![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
-### <a name="userdefined-routing-udr"></a>Felhasználó által meghatározott útválasztás (UDR)
+### <a name="user-defined-routing-udr"></a>Felhasználó által meghatározott útválasztás (UDR)
 A felhasználó által megadott útvonalak segítségével felügyelhető a hozzárendelt alhálózatról a többi alhálózatra irányuló kimenő forgalom a virtuális hálózatban vagy a többi előre definiált átjáró (ExpressRoute, internet vagy VPN) valamelyikén keresztül. A rendszer alapértelmezett útválasztási táblája lecserélhető a felhasználó által meghatározott útválasztási táblára, amely a benne lévő útvonalakat egyéni útvonalakra cseréli. A felhasználó által meghatározott útválasztás használatával az ügyfelek egyedi útvonalakat hozhatnak létre készülékekhez, például tűzfalakhoz vagy behatolás-észlelő készülékekhez, vagy blokkolhatják a hozzáférést megadott alhálózatokhoz azon alhálózatról, amelyen a felhasználó által megadott útvonal található. A felhasználó által megadott útvonalak áttekintését lásd [itt](../virtual-network/virtual-networks-udr-overview.md). 
 
 ## <a name="security"></a>Biztonság
@@ -141,6 +141,6 @@ További információt az alábbi hivatkozásokat követve tekinthet meg:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "HBase oktatóprogram: Ismerkedés a Linux-alapú HBase-fürtökkel a Hadoop-rendszerben | Microsoft Docs"
+title: "A HBase használatának első lépései az Azure HDInsightban | Microsoft Docs"
 description: "Ez a HBase oktatóanyag segítséget nyújt az Apache HBase Hadoop-eszközzel végzett használatának első lépéseiben a HDInsight eszközben. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel."
 keywords: "apache hbase,hbase,hbase rendszerhéj,hbase-oktatóanyag"
 services: hdinsight
@@ -13,20 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2c7b46521c5da3290af244652b5ac20d4c309d5d
-ms.openlocfilehash: 5ec4b260ce82ec78b614ae442d3f14063ce590b5
+ms.sourcegitcommit: 0a09f1511778623b21a26042a752009ae2208ba6
+ms.openlocfilehash: 415f6f71642726aeb8477f067bd406a57717ff2a
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-with-linux-based-hadoop-in-hdinsight"></a>HBase oktatóanyag: Az Apache HBase Linux-alapú Hadoop-eszközzel végzett használatának első lépései a HDInsight eszközben
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
+# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase oktatóanyag: Az Apache HBase használatának első lépései a HDInsight eszközben
 
-Megtudhatja, hogyan hozhat létre HBase-fürtöket a HDInsight eszközben, illetve hogyan hozhat létre HBase táblákat és lekérdezéstáblákat a Hive eszközzel. Általános HBase információért lásd: [HDInsight HBase overview][hdinsight-hbase-overview] (A HDInsight HBase áttekintése).
-
-A jelen dokumentumban lévő információk a Linux-alapú HDInsight-fürtökre jellemzőek. A Windows-alapú fürtökről információért használja az oldal tetején lévő lapválasztót az átváltáshoz.
+Megtudhatja, hogyan hozhat létre HBase-fürtöket a HDInsight eszközben, illetve hogyan hozhat létre HBase táblákat és lekérdezéstáblákat a Hive eszközzel. A HBase-re vonatkozó általános információért lásd: [HDInsight HBase overview][hdinsight-hbase-overview] (A HDInsight HBase áttekintése).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -45,7 +42,7 @@ Az alábbi eljárás egy Azure Resource Manager-sablont használ egy 3.4 verzió
 
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon egy nyilvános blobtárolóban található. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. A **Custom deployment** (Egyéni üzembe helyezés) panelen adja meg a következőket:
    
    * **Subscription** (Előfizetés): Válassza ki a fürt létrehozásához használni kívánt Azure-előfizetését.
@@ -102,7 +99,7 @@ Több értelme lesz a következő eljárás befejezése után.
    
     Ugyanazokat az eredményeket látja, mint a vizsgálat parancskor, mert csak egy sor van.
    
-    A HBase táblasémáról további információért lásd: [Introduction to HBase Schema Design][hbase-schema] (Bevezetés a HBase sématervezésbe). További HBase parancsokért lásd: [Apache HBase reference guide][hbase-quick-start] (Apache HBase referencia-útmutató).
+    A Hbase-táblasémáról további információért lásd: [Introduction to HBase Schema Design][hbase-schema] (Bevezetés a Hbase-sématervezésbe). További Hbase-parancsokért lásd: [Apache HBase reference guide][hbase-quick-start] (Apache HBase referencia-útmutató).
 5. Kilépés a rendszerhéjból
    
         exit
@@ -207,7 +204,7 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d "{\"Row\":{\"key\":\"MTAwMA==\",\"Cell\":{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}}}" \
+        -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
         -v
    
     A -d kapcsolóban megadott értékeket a base64 használatával kell kódolnia.  A példában:
@@ -286,6 +283,6 @@ További tudnivalókért lásd:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

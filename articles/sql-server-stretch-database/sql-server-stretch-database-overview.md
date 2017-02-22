@@ -1,5 +1,5 @@
 ---
-title: "A Stretch Database áttekintése | Microsoft Docs"
+title: "Ritkán használt adatok archiválása az Azure-ba – Stretch Database | Microsoft Docs"
 description: "Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe."
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2fcea994b3de924f1170dae2d7a0a3b6d4786538
+ms.sourcegitcommit: cfa45dbb2d6e7579ed151c0213d394581cb73c4d
+ms.openlocfilehash: 0c4355eb424f169238f274241747acff4532d589
 
 
 ---
-# <a name="stretch-database-overview"></a>A Stretch Database áttekintése
+# <a name="introduction-to-stretch-database"></a>A Stretch Database bemutatása
 A Stretch Database a ritkán használt adatokat átlátható módon és biztonságosan telepíti át a Microsoft Azure felhőbe.
 
 Ha szeretné azonnal megkezdeni a Stretch Database használatát, olvassa el a [Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása](sql-server-stretch-database-wizard.md) című cikket.
@@ -28,13 +28,13 @@ Ha szeretné azonnal megkezdeni a Stretch Database használatát, olvassa el a [
 ## <a name="what-are-the-benefits-of-stretch-database"></a>Milyen előnyökkel jár a Stretch Database használata?
 A Stretch Database a következő előnyöket nyújtja:
 
-### <a name="provides-costeffective-availability-for-cold-data"></a>Költséghatékony módját \-biztosítja a ritkán használt adatok rendelkezésre állásának
+### <a name="provides-cost-effective-availability-for-cold-data"></a>Költséghatékony módját \-biztosítja a ritkán használt adatok rendelkezésre állásának
 Az SQL Server Stretch Database segítségével dinamikusan kiterjesztheti az Azure-ra a SQL Server ritkán és kevésbé gyakran használt tranzakciós adatait. Az adatai mindig elérhetők és lekérdezhetők lesznek a hálózaton keresztül, a ritkán használt adatok tárolására használt legtöbb megoldástól eltérően. Ezenfelül hosszabb ideig őrizheti meg az adatokat, anélkül, hogy komoly összeget kellene fordítania a nagy méretű táblákra (például az ügyfelek rendelési előzményeit gyűjtő és hasonló táblákra). Az Azure alacsony díjakat kínál, így nem \-szükséges drága helyszíni tárhelyek skálázásával bajlódnia. Ön választja meg a tarifacsomagot, és Ön szabja meg az Azure Portal konfigurációját is, így átfogóan szabályozhatja költségeit. Ezenfelül vertikális le- vagy felskálázást is alkalmazhat, bármikor, amikor csak szüksége van rá. A részletekért látogasson el az [SQL Server Stretch Database díjszabása](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) oldalra.
 
 ### <a name="doesnt-require-changes-to-queries-or-applications"></a>Nem szükséges hozzá a lekérdezések vagy az alkalmazások módosítása
 Zökkenőmentesen elérheti az SQL Server-adatokat függetlenül attól, \-hogy azok a helyszínen vannak vagy ki vannak terjesztve a felhőbe.  Az SQL Server a háttérben gondoskodik az adatok áttelepítéséről – Önnek csupán az adatok tárolási helyét meghatározó szabályzatot kell létrehoznia. A tábla egésze mindig elérhető hálózaton keresztül, így bármikor lekérdezhető. A Stretch Database használatához ráadásul nem kell módosítania a meglévő lekérdezéseket vagy alkalmazásokat sem – az adatok helye tökéletesen átlátható az alkalmazás számára.
 
-### <a name="streamlines-onpremises-data-maintenance"></a>Hatékonnyá teszi a \-helyszíni adatok karbantartását
+### <a name="streamlines-on-premises-data-maintenance"></a>Hatékonnyá teszi a \-helyszíni adatok karbantartását
 Csökkentheti az \-adatok helyszíni karbantartási és tárolási igényeit. A helyszíni \-adatokra vonatkozó biztonsági mentési feladatok is felgyorsulnak, és mindig a karbantartási időszakon belül befejeződnek. Az adatok felhőben tárolt részéhez kapcsolódó biztonsági mentési feladatok automatikusan futnak. Így jóval \-kevesebb helyszíni tárterületre van szükség. Az Azure-tárterület használata akár 80%-kal gazdaságosabb lehet, mint a helyszíni \-SSD bővítése.
 
 ### <a name="keeps-your-data-secure-even-during-migration"></a>Az áttelepítés során is biztonságban tartja az adatokat
@@ -84,6 +84,6 @@ Használja az SQL Server 2016 Upgrade Advisor eszközének Stretch Database Advi
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

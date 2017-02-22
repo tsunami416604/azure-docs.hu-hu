@@ -12,11 +12,11 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
+ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
+ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 
 
 ---
@@ -51,7 +51,8 @@ Ha a Service Bus-üzenetsort már létrehozta, ugorjon az [Üzenetek küldése a
 A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzenetsorba való küldéséhez.
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
-1. Indítsa el a Visual Studiót, majd hozzon létre egy új konzolalkalmazást.
+
+- Indítsa el a Visual Studiót, majd hozzon létre egy új konzolalkalmazást.
 
 ### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
@@ -62,12 +63,12 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzene
 ### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Írjon egy kódrészletet egy üzenet küldéséhez az üzenetsorba
 1. Adja hozzá az alábbi using utasítást a Program.cs fájl elejéhez.
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 2. Vegye fel az alábbi kódot a `Main` metódusba, a **connectionString** változó legyen a névtér létrehozásakor beszerzett kapcsolati karakterlánc, a **queueName** pedig legyen az üzenetsor létrehozásakor használt üzenetsornév.
    
-    ```
+    ```csharp
     var connectionString = "<Your connection string>";
     var queueName = "<Your queue name>";
    
@@ -78,7 +79,7 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzene
    
     A Program.cs fájlnak így kell kinéznie.
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -107,12 +108,12 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzene
 1. Hozzon létre egy új konzolalkalmazást, majd vegyen fel egy hivatkozást a Service Bus NuGet-csomagjára, hasonlóan az előző küldési alkalmazáshoz.
 2. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 3. Vegye fel az alábbi kódot a `Main` metódusba, a **connectionString** változó legyen a névtér létrehozásakor beszerzett kapcsolati karakterlánc, a **queueName** pedig legyen az üzenetsor létrehozásakor használt üzenetsornév.
    
-    ```
+    ```csharp
     var connectionString = "";
     var queueName = "samplequeue";
    
@@ -129,7 +130,7 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzenetek üzene
    
     A Program.cs fájlnak így kell kinéznie:
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -177,6 +178,6 @@ Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://githu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

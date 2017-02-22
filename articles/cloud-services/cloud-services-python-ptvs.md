@@ -28,12 +28,12 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 * Visual Studio 2013 vagy 2015
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015]
-* [Python 2.7 32 bites][Python 2.7 32 bites] vagy [Python 3.5 32 bites][Python 3.5 32 bites]
+* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5 32 bites][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Mik a Python webes és feldolgozói szerepkörök?
-Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service portálon][futtatási modell-webhelyek], [Azure virtuális gépek][végrehajtási modell virtuális gépek] és [Azure Cloud Services][végrehajtási modell felhőszolgáltatások]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service-ben][execution model-web sites], [Azure Virtual Machines][execution model-vms] és [Azure Cloud Services][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 
@@ -329,43 +329,43 @@ A felhőszolgáltatás virtuális gépének elindulása és a Python telepítés
 ## <a name="next-steps"></a>Következő lépések
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:
 
-* [Cloud Service-projektek][Cloud Service-projektek]
+* [Cloud Service-projektek][Cloud Service Projects]
 
 Ha további részletekre kíváncsi az Azure szolgáltatások használatáról webes és feldolgozói szerepkörökből, mint az Azure Storage vagy a Service Bus, olvassa el a következő cikkeket.
 
 * [Blob Service][Blob Service]
 * [Table Service][Table Service]
-* [Queue szolgáltatás][Queue szolgáltatás]
-* [Service Bus-üzenetsorok][Service Bus-üzenetsorok]
-* [Service Bus-témakörök][Service Bus-témakörök]
+* [Queue szolgáltatás][Queue Service]
+* [Service Bus-üzenetsorok][Service Bus Queues]
+* [Service Bus-témakörök][Service Bus Topics]
 
 <!--Link references-->
 
 [Mi az a Cloud Service?]: cloud-services-choose-me.md
-[futtatási modell-webhelyek]: ../app-service-web/app-service-web-overview.md
-[végrehajtási modell virtuális gépek]: ../virtual-machines/virtual-machines-windows-about.md
-[végrehajtási modell felhőszolgáltatások]: cloud-services-choose-me.md
-[Python fejlesztői központ]: /develop/python/
+[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
+[execution model-cloud services]: cloud-services-choose-me.md
+[Python Developer Center]: /develop/python/
 
 [Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue szolgáltatás]: ../storage/storage-python-how-to-use-queue-storage.md
+[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
 [Table Service]: ../storage/storage-python-how-to-use-table-storage.md
-[Service Bus-üzenetsorok]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
-[Service Bus-témakörök]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+[Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
+[Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio – dokumentáció]: http://aka.ms/ptvsdocs
-[Cloud Service-projektek]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
-[Python 2.7 32 bites]: https://www.python.org/downloads/
-[Python 3.5 32 bites]: https://www.python.org/downloads/
+[Python 2.7 32-bit]: https://www.python.org/downloads/
+[Python 3.5 32-bit]: https://www.python.org/downloads/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

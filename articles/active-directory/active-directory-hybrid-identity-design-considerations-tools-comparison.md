@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2016
+ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
+ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
+ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
 
 
 ---
@@ -38,7 +38,7 @@ A következő magyarázatot használhatja mindegyik táblázathoz.
 JK = Jövőbeli kiadás  
 NyE = Nyilvános előzetes verzió  
 
-## <a name="onpremises-to-cloud-synchronization"></a>Helyszínről felhőbe végzett szinkronizálás
+## <a name="on-premises-to-cloud-synchronization"></a>Helyszínről felhőbe végzett szinkronizálás
 | Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services (AAD Sync) | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Csatlakozás egyetlen helyszíni AD-erdőhöz |● |● |● |● |● |
@@ -52,12 +52,12 @@ NyE = Nyilvános előzetes verzió
 | Csatlakozás helyszíni HR-hez (SAP, Oracle eBusiness, PeopleSoft) |JK | | |● |● |
 | Támogatja a FIM-szinkronizálási szabályokat és összekötőket a helyszíni rendszerekre történő üzembe helyezéshez. | | | |● |● |
 
-## <a name="cloud-to-onpremises-synchronization"></a>Felhőről helyszínre végzett szinkronizálás
+## <a name="cloud-to-on-premises-synchronization"></a>Felhőről helyszínre végzett szinkronizálás
 | Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Eszközök visszaírása |● | |● | | |
 | Attribútum visszaírása (hibrid Exchange-környezethez) |● |● |● |● |● |
-| Felhasználók és csoportobjektumok visszaírása |● | | | | |
+| Csoportobjektumok visszaírása |● | | | | |
 | Jelszavak visszaírása (önkiszolgáló jelszó-visszaállításból (SSPR) és jelszómódosításból) |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>Hitelesítési funkciók támogatása
@@ -68,7 +68,7 @@ NyE = Nyilvános előzetes verzió
 | Egyszeri bejelentkezés összevonással |● |● |● |● |● |
 | Jelszavak visszaírása (SSPR-ből és jelszómódosításból) |● |● | | | |
 
-## <a name="setup-and-installation"></a>Beállítás és telepítés
+## <a name="set-up-and-installation"></a>Beállítás és telepítés
 | Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | Támogatja a tartományvezérlőre történő telepítést |● |● |● | |
@@ -95,6 +95,6 @@ További információ: [Helyszíni identitások integrálása az Azure Active Di
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

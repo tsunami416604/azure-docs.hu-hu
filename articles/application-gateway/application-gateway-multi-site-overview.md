@@ -130,6 +130,6 @@ Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an app
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

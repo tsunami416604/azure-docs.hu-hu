@@ -3,7 +3,7 @@ title: "Azure RemoteApp – gyakori kérdések | Microsoft Docs"
 description: "Megtudhatja a válaszokat az Azure RemoteApp szolgáltatással kapcsolatban leggyakrabban feltett kérdésekre."
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: swadhwa
 editor: 
 ms.assetid: bad66603-91f9-437f-8a70-236405d2a27f
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
+ms.sourcegitcommit: 9d80640a58171e94440ca02f44a73866f6412997
+ms.openlocfilehash: 296dfaaa05b89cae265a9926fad08495ea02a647
 
 
 ---
@@ -45,7 +45,7 @@ Ha nem találja a keresett információt, vagy olyan kérdése van, amelyre itt 
 * **Mennyibe kerül a RemoteApp szolgáltatás?** Tekintse meg az [Azure RemoteApp díjszabásának részleteit](https://azure.microsoft.com/pricing/details/remoteapp/).
 * **Van olyan gyűjteménytípus, amely drágább, mint a többi?** Igen, előfordulhat, hogy van. Ez a gyűjteménnyel szemben támasztott követelményektől függ. A hibrid gyűjteményhez az Azure RemoteApp és az Ön helyszíni hálózata közötti kapcsolatra van szükség. Ha meglévő VNET-/Express Route-kapcsolatokat használ, ez nem jelent többletköltséget. De ha egy új Azure VNET-kapcsolatot, és egy átjárót vagy Express Route-kapcsolatot használ, a [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) vagy az [Express Route](https://azure.microsoft.com/pricing/details/expressroute/) használata díjköteles. Ez a költség (amelynek részleteit a hivatkozások között találja) az Azure RemoteApp szolgáltatás havi költségén felül fizetendő.
 
-## <a name="collections-whats-supported-which-should-you-use-and-others"></a>Gyűjtemények – mi támogatott, mit érdemes használni és egyebek
+## <a name="collections---whats-supported-which-should-you-use-and-others"></a>Gyűjtemények – mi támogatott, mit érdemes használni és egyebek
 * **Támogatottak az egyéni üzletági (LOB) alkalmazások?** Igen. Ha egy egyéni alkalmazást szeretne használni az Azure RemoteApp szolgáltatásban, hozzon létre egy [egyéni sablonrendszerképet](remoteapp-create-custom-image.md), és töltse fel azt a RemoteApp-gyűjteménybe.
 * **Működni fog az egyéni üzletági alkalmazásom az Azure RemoteAppben?** Ezt a legkönnyebben úgy tudja kideríteni, ha kipróbálja. Látogasson el a [Távoli asztali szolgáltatások kompatibilitási központjába](http://www.rdcompatibility.com/compatibility/default.aspx).
 * **Melyik üzembe helyezési módszer (felhőalapú vagy hibrid) a legjobb a szervezetem számára?** A hibrid gyűjtemények nyújtják a legteljesebb körű élményt, ha egyszeri bejelentkezést (SSO), teljes integrációt és biztonságos helyszíni hálózati kapcsolódási lehetőséget szeretne használni. A felhőalapú gyűjtemények gyors és egyszerű módot nyújtanak az üzemelő példány elszigetelésére többféle hitelesítési módszer használatával. További információk az [üzembe helyezési lehetőségekről](remoteapp-whatis.md).
@@ -69,7 +69,7 @@ Ha nem találja a keresett információt, vagy olyan kérdése van, amelyre itt 
 
 * **Miért nem tudok hozzáférést biztosítani Azure Active Directory-fiókom számára?** Az Azure Active Directory-felhasználóknak ugyanabból a könyvtárból kell származniuk, amely az Ön előfizetéséhez rendelve van. A könyvtárat a portál Beállítások lapján tekintheti meg és módosíthatja. További információk: [A RemoteApp által használt Azure Active Directory-bérlő módosítása](remoteapp-changetenant.md).
 
-## <a name="clients-what-device-can-i-use-to-access-azure-remoteapp"></a>Ügyfelek – mely eszközökről érhetem el az Azure RemoteAppet?
+## <a name="clients---what-device-can-i-use-to-access-azure-remoteapp"></a>Ügyfelek – mely eszközökről érhetem el az Azure RemoteAppet?
 Az ügyfelekkel kapcsolatos információkat, többek között a különböző ügyfelek telepítési lépéseit itt találhatja meg: [Accessing your apps in Azure RemoteApp](remoteapp-clients.md) (Az alkalmazások elérése az Azure RemoteAppben).
 
 * **Mely eszközöket és operációs rendszereket támogatják az ügyfélalkalmazások?**
@@ -81,7 +81,9 @@ Az ügyfelekkel kapcsolatos információkat, többek között a különböző ü
   * Mac OS X
   * Windows RT
   * Android rendszerű táblagépek
-  * iPadek és telefonok:
+  * iPadek
+
+    Valamint a következő telefonok:
   * iPhone
   * Android rendszerű telefonok
   * Windows Phone
@@ -126,6 +128,6 @@ Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett mag
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: 665e0684328538b61bb3eb05180d8d7d0e65ec49
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: 5145418159aa457be6d1fc9ed5bb1a43a955791c
 
 ---
 
@@ -83,36 +83,49 @@ Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekor
 
 Az Azure PowerShell-lel az alábbi módon kérheti le a mérvadó névkiszolgálói rekordokat. Vegye figyelembe, hogy a "@" nevű rekord a zóna tetején található rekordokra vonatkozik.
 
-    PS> $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName MyResourceGroup
-    PS> Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
+```powershell
+$zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName MyResourceGroup
+Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
+```
 
-    Name              : @
-    ZoneName          : contoso.net
-    ResourceGroupName : MyResourceGroup
-    Ttl               : 3600
-    Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
-    RecordType        : NS
-    Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
-                        ns4-01.azure-dns.info}
-    Tags              : {}
+A következő példa a válasz.
+
+```
+Name              : @
+ZoneName          : contoso.net
+ResourceGroupName : MyResourceGroup
+Ttl               : 3600
+Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
+RecordType        : NS
+Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
+                    ns4-01.azure-dns.info}
+Tags              : {}
+```
 
 Az Azure platformfüggetlen parancssori felületével is lekérheti a mérvadó névkiszolgálói rekordokat, így felfedezheti a zónájához rendelt névkiszolgálókat:
 
-    C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
-    info:    Executing command network dns record-set show
-        + Looking up the DNS Record Set "@" of type "NS"
-    data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
-    data:    Name                            : @
-    data:    Type                            : Microsoft.Network/dnszones/NS
-    data:    Location                        : global
-    data:    TTL                             : 172800
-    data:    NS records
-    data:        Name server domain name     : ns1-01.azure-dns.com.
-    data:        Name server domain name     : ns2-01.azure-dns.net.
-    data:        Name server domain name     : ns3-01.azure-dns.org.
-    data:        Name server domain name     : ns4-01.azure-dns.info.
-    data:
-    info:    network dns record-set show command OK
+```azurecli
+azure network dns record-set show MyResourceGroup contoso.net @ NS
+```
+
+A következő példa a válasz.
+
+```
+info:    Executing command network dns record-set show
+    + Looking up the DNS Record Set "@" of type "NS"
+data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
+data:    Name                            : @
+data:    Type                            : Microsoft.Network/dnszones/NS
+data:    Location                        : global
+data:    TTL                             : 172800
+data:    NS records
+data:        Name server domain name     : ns1-01.azure-dns.com.
+data:        Name server domain name     : ns2-01.azure-dns.net.
+data:        Name server domain name     : ns3-01.azure-dns.org.
+data:        Name server domain name     : ns4-01.azure-dns.info.
+data:
+info:    network dns record-set show command OK
+```
 
 ### <a name="to-set-up-delegation"></a>Delegálás beállítása
 
@@ -128,19 +141,21 @@ A delegálás befejezése után ellenőrizheti, hogy a névfeloldás működik-e
 
 Vegye figyelembe, hogy nem kell megadnia az Azure DNS névkiszolgálóit, mivel a hagyományos DNS-feloldási folyamat automatikusan megtalálja a névkiszolgálókat, ha a delegálást helyesen végezte el.
 
-    nslookup -type=SOA contoso.com
+```
+nslookup -type=SOA contoso.com
 
-    Server: ns1-04.azure-dns.com
-    Address: 208.76.47.4
+Server: ns1-04.azure-dns.com
+Address: 208.76.47.4
 
-    contoso.com
-    primary name server = ns1-04.azure-dns.com
-    responsible mail addr = msnhst.microsoft.com
-    serial = 1
-    refresh = 900 (15 mins)
-    retry = 300 (5 mins)
-    expire = 604800 (7 days)
-    default TTL = 300 (5 mins)
+contoso.com
+primary name server = ns1-04.azure-dns.com
+responsible mail addr = msnhst.microsoft.com
+serial = 1
+refresh = 900 (15 mins)
+retry = 300 (5 mins)
+expire = 604800 (7 days)
+default TTL = 300 (5 mins)
+```
 
 ## <a name="delegating-sub-domains-in-azure-dns"></a>Altartományok delegálása az Azure DNS-ben
 
@@ -186,19 +201,21 @@ Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 
 A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy minden helyesen van-e beállítva.
 
-    nslookup -type=SOA partners.contoso.com
+```
+nslookup -type=SOA partners.contoso.com
 
-    Server: ns1-08.azure-dns.com
-    Address: 208.76.47.8
+Server: ns1-08.azure-dns.com
+Address: 208.76.47.8
 
-    partners.contoso.com
-        primary name server = ns1-08.azure-dns.com
-        responsible mail addr = msnhst.microsoft.com
-        serial = 1
-        refresh = 900 (15 mins)
-        retry = 300 (5 mins)
-        expire = 604800 (7 days)
-        default TTL = 300 (5 mins)
+partners.contoso.com
+    primary name server = ns1-08.azure-dns.com
+    responsible mail addr = msnhst.microsoft.com
+    serial = 1
+    refresh = 900 (15 mins)
+    retry = 300 (5 mins)
+    expire = 604800 (7 days)
+    default TTL = 300 (5 mins)
+```
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -209,6 +226,6 @@ A gyermekzóna SOA típusú rekordjának megkeresésével ellenőrizheti, hogy m
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

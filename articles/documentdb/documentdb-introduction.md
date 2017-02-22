@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
-ms.openlocfilehash: 18f2c1876fab914073c8aea67f67724f281a65aa
+ms.sourcegitcommit: 988c887d2d26ab3ab5b287f803c7d598bd6620e3
+ms.openlocfilehash: 23b1780df8ec01c0692e3afd408ea44fc9773b28
 
 
 ---
@@ -87,13 +87,21 @@ A DocumentDB lehetővé teszi az alkalmazáslogikák teljes mértékben JavaScri
 
 A JavaScript DocumentDB-ben való futtatásának modellezése a relációs adatbázis-rendszerek által támogatott alapelvek alapján történik, ahol a JavaScript a Transact-SQL modern helyettesítője. Minden JavaScript-logika futtatása egy környezeti ACID-tranzakción belül történik pillanatkép-elkülönítéssel. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad.
 
+## <a name="are-there-any-online-courses-on-documentdb"></a>Találhatók online tanfolyamok a DocumentDB-ben?
+
+Igen, az Azure DocumentDB-ben található egy [Microsoft Virtual Academy](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) tanfolyam. 
+
+>[!VIDEO https://mva.microsoft.com/en-US/training-courses-embed/azure-documentdb-planetscale-nosql-16847]
+>
+>
+
 ## <a name="next-steps"></a>Következő lépések
 Már van Azure-fiókja? Egy [DocumentDB-adatbázisfiók létrehozásával](documentdb-create-account.md) megkezdheti a DocumentDB használatát az [Azure Portalon](https://portal.azure.com/#gallery/Microsoft.DocumentDB).
 
 Még nincs Azure-fiókja? A következőket teheti:
 
 * Regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/), amely 30 napot és egy 200 dolláros keretet biztosít az összes Azure-szolgáltatás kipróbálására. 
-* Ha MSDN-előfizetéssel rendelkezik, akkor [havi 150 dollár ingyenes Azure-kreditre](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jogosult, amit bármelyik Azure-szolgáltatáshoz felhasználhat. 
+* Ha MSDN-előfizetéssel rendelkezik, akkor [havi&150; dollár ingyenes Azure-kreditre](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jogosult, amit bármelyik Azure-szolgáltatáshoz felhasználhat. 
 * Töltse le az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md), és fejlessze alkalmazását helyben.
 
 Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket](https://azure.microsoft.com/documentation/learning-paths/documentdb/), és azon belül az összes elérhető képzési erőforrást. 
@@ -103,6 +111,6 @@ Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket]
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

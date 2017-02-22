@@ -1,14 +1,15 @@
 # Áttekintés
 ## [Mi az az ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – Gyakori kérdések](expressroute-faqs.md)
+## [Kapcsolati modellek](expressroute-connectivity-models.md)
 ## [Földrajzi egységek és partnerek](expressroute-locations.md)
 ### [Szolgáltatók hely alapján](expressroute-locations-providers.md)
 ### [Helyek szolgáltató alapján](expressroute-locations.md)
 
 # Első lépések
-## [Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md)
 ## [Munkafolyamatok](expressroute-workflows.md)
 ## [Előfeltételek](expressroute-prerequisites.md)
+## [Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md)
 ## [Útválasztási követelmények](expressroute-routing.md)
 ## [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ## [NAT-követelmények](expressroute-nat.md)
@@ -80,6 +81,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

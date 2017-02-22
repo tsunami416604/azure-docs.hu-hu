@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 37c9d6808b3282d86583f6305672405775a7f306
+ms.sourcegitcommit: f37fa3a212a0dca46c76b3928cf78756722f0340
+ms.openlocfilehash: 2c6765e28f40210730823a9af0b6fb80a5ddc4d1
 
 
 ---
@@ -54,6 +54,7 @@ Ismerje meg, hogyan használhatja az Azure Active Directory B2C egyes szolgálta
 Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgáltatást:
 
 * Tekintse meg az [Azure Active Directory B2C díjszabásával kapcsolatos információkat](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+* Tekintse át az Azure Active Directory B2C-vel kapcsolatos [kódmintákat](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c). 
 * Keressen hasznos információkat a Stack Overflow oldalon az [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) vagy az [adal](http://stackoverflow.com/questions/tagged/adal) címkék segítségével.
 * Ossza meg velünk gondolatait a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/169401-azure-active-directory/) – hallani szeretnénk őket! A poszt címe tartalmazza az „AzureADB2C:” kifejezést, így könnyebben megtaláljuk.
 * Tekintse át az [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
@@ -67,6 +68,6 @@ Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekrő
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

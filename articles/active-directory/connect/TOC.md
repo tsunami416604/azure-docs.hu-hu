@@ -11,7 +11,7 @@
 
 # Bevezetés
 ## [Előfeltételek](active-directory-aadconnect-prerequisites.md)
-## [Az Azure AD Connect telepítése](active-directory-aadconnect-accounts-permissions.md)
+## [Az Azure AD Connect telepítése](active-directory-aadconnect-select-installation.md)
 ### [Gyorsbeállítások](active-directory-aadconnect-get-started-express.md)
 ### [Egyéni beállítások](active-directory-aadconnect-get-started-custom.md)
 ### [Frissítés a DirSync szolgáltatásról](active-directory-aadconnect-dirsync-upgrade-get-started.md)
@@ -33,7 +33,6 @@
 
 
 ## Azure AD Connect-szinkronizálás kezelése
-### [Általános SQL-összekötő – részletes útmutató](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)
 ### [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-szolgáltatásfiók](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -58,14 +57,11 @@
 
 
 # Referencia
-## [Windows PowerShell-összekötő](active-directory-aadconnectsync-connector-powershell.md)
-## [Általános SQL-összekötő](active-directory-aadconnectsync-connector-genericsql.md)
-## [Általános LDAP-összekötő](active-directory-aadconnectsync-connector-genericldap.md)
-## [Lotus Domino-összekötő](active-directory-aadconnectsync-connector-domino.md)
 ## [Identitásszinkronizálás és ismétlődő attribútumok rugalmassága](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Hibrid identitás – szükséges portok és protokollok](active-directory-aadconnect-ports.md)
 ## [Az előzetes verzió szolgáltatásai](active-directory-aadconnect-feature-preview.md)
 ## [Verzióelőzmények](active-directory-aadconnect-version-history.md)
+## [Fiókok és engedélyek](active-directory-aadconnect-accounts-permissions.md)
 
 ## Az Azure AD Connect szinkronizálása
 ### [Az Azure Active Directoryval szinkronizált attribútumok](active-directory-aadconnectsync-attributes-synchronized.md)
@@ -89,6 +85,6 @@
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

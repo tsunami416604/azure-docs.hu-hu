@@ -12,6 +12,7 @@
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
 
 ## Kezelés
+### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
 ### [Kezelés a Powershell-lel](cdn-manage-powershell.md)
 ### Az élettartam konfigurálása
 #### [Web Apps-/Cloud Services-, ASP.NET- vagy IIS-tartalom](cdn-manage-expiration-of-cloud-service-content.md)
@@ -62,6 +63,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

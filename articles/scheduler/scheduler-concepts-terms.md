@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8c0d2b57f7a998ae52a08a5ae0cbc57a0a77f002
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
 
 
 ---
-# <a name="scheduler-concepts-terminology-entity-hierarchy"></a>A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
+# <a name="scheduler-concepts-terminology--entity-hierarchy"></a>A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
 ## <a name="scheduler-entity-hierarchy"></a>A Scheduler entitáshierarchiája
 A következő táblázat ismerteti a feladatütemezési API által közzétett vagy használt fő erőforrásokat:
 
@@ -200,6 +200,6 @@ A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbó
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

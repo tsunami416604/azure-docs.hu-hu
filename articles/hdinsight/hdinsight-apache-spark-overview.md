@@ -1,5 +1,5 @@
 ---
-title: "Az Apache Spark on HDInsight áttekintése | Microsoft Docs"
+title: "Az Apache Spark on Azure HDInsight áttekintése | Microsoft Docs"
 description: "Bevezetés az Apache Spark on HDInsight használatába, valamint az Apache Spark on HDInsight az alkalmazásokban történő használatát bemutató forgatókönyvek."
 services: hdinsight
 documentationcenter: 
@@ -16,22 +16,23 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
-ms.openlocfilehash: fe40bc372a63735b0130bcbb115c312fa2e45fa6
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
 
 
 ---
-# <a name="overview-apache-spark-on-hdinsight-linux"></a>Áttekintés: Apache Spark on HDInsight Linux
+# <a name="overview-apache-spark-on-hdinsight"></a>Áttekintés: Apache Spark on HDInsight
+
 Az <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memóriabeli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési képességek jellemzőek. A Spark memóriában tárolt számítási képességei jól funkcionálnak a Machine Learning és a Graph számítások iteratív algoritmusaival együtt. A Spark az Azure Blob Storage (WASB) szolgáltatással is kompatibilis, így a jelenleg az Azure-ban tárolt adatainak feldolgozását a Sparkon keresztül elvégezheti.
 
 Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Egy Spark-fürt HDInsightban történő létrehozása nagyjából tíz percet vesz igénybe. A feldolgozásra kijelölt adatok az Azure Blob Storage tárolójában találhatóak. Lásd: [Az Azure Blob Storage és a HDInsight együttes használata][hdinsight-storage].
 
 ![Apache Spark on Azure HDInsight](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Apache Spark on Azure HDInsight")
 
-**Meg szeretne ismerkedni az Apache Spark on Azure HDInsight alkalmazással?** Lásd: [Gyorsindítás: Spark-fürt létrehozása HDInsight Linux rendszeren, valamint mintaalkalmazások futtatása a Jupyter használatával](hdinsight-apache-spark-jupyter-spark-sql.md).
+**Meg szeretne ismerkedni az Apache Spark on Azure HDInsight alkalmazással?** Lásd: [Gyorsindítás: Spark-fürt létrehozása HDInsight rendszeren, valamint mintaalkalmazások futtatása a Jupyter használatával](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 > [!NOTE]
-> Az aktuális kiadással kapcsolatos ismert problémák és korlátozások listáját lásd: [Az Apache Spark on Azure HDInsight (Linux) ismert problémái](hdinsight-apache-spark-jupyter-spark-sql.md).
+> Az aktuális kiadással kapcsolatos ismert problémák és korlátozások listáját lásd: [Az Apache Spark ismert problémái az Azure HDInsightban](hdinsight-apache-spark-jupyter-spark-sql.md).
 > 
 > 
 
@@ -52,7 +53,7 @@ Az Azure HDInsight teljes körűen felügyelt Spark szolgáltatást biztosít. A
 | Integráció BI-eszközökkel |Adatelemzési célra a Spark for HDInsight olyan összekötőket biztosít a BI-eszközök számára, mint a [Power BI](http://www.powerbi.com/) és a [Tableau](http://www.tableau.com/products/desktop). |
 | Előre betöltött Anaconda-könyvtárak |A HDInsight Spark-fürtjei előre telepített Anaconda-könyvtárakkal rendelkeznek. Az [Anaconda](http://docs.continuum.io/anaconda/) közel 200 könyvtárat biztosít például a Machine Learning szolgáltatáshoz, az adatok elemzéséhez vagy a megjelenítéshez. |
 | Méretezhetőség |Habár a fürtben található csomópontok számát a létrehozáskor megadhatja, elképzelhető, hogy a munkaterheléshez igazodva később növelni vagy csökkenteni szeretné majd a fürt méretét. A HDInsight-fürtök esetében lehetőség van a fürtben található csomópontok számának megváltoztatására. A Spark-fürtök emellett adatvesztés nélkül törölhetők, mivel az összes adat tárolása az Azure Blob Storage szolgáltatásban történik. |
-| Napi 24 órás támogatás a hét minden napján |A Spark on HDInsight a hét minden napján napi 24 órában teljes körű vállalati szintű támogatást és szolgáltatásiszint-szerződésben garantált 99,9%-os üzemidőt biztosít. |
+| Napi&24; órás támogatás a hét minden napján |A Spark on HDInsight a hét minden napján napi 24 órában teljes körű vállalati szintű támogatást és szolgáltatásiszint-szerződésben garantált 99,9%-os üzemidőt biztosít. |
 
 ## <a name="what-are-the-use-cases-for-spark-on-hdinsight"></a>Melyek a Spark on HDInsight használati esetei?
 Az Apache Spark on HDInsight az alábbi főbb forgatókönyvek megvalósítását teszi lehetővé.
@@ -115,6 +116,6 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

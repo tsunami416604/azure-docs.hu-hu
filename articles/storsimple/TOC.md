@@ -26,7 +26,8 @@
 
 ## Útmutató
 ### [Kezelés az Azure Portalon](storsimple-virtual-array-manager-service-administration.md)
-#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update.md)
+#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update-04.md)
+##### [A 0.3-as frissítés telepítése](storsimple-virtual-array-install-update.md)
 #### [Biztonsági másolatok létrehozása és kezelése](storsimple-virtual-array-backup.md)
 #### [Klónozás biztonsági mentésből](storsimple-virtual-array-clone.md)
 #### [Feladatátvétel és vészhelyreállítás](storsimple-virtual-array-failover-dr.md)
@@ -56,7 +57,8 @@
 ### [Konfigurálás helyi webes felhasználói felületen](storsimple-ova-web-ui-admin.md)
 
 ## Kibocsátási megjegyzések
-### [0.3-as frissítés – aktuális](storsimple-ova-update-03-release-notes.md)
+### [0.4-es frissítés – aktuális](storsimple-virtual-array-update-04-release-notes.md)
+### [0.3-as frissítés](storsimple-ova-update-03-release-notes.md)
 ### [0.2-es és 0.1-es frissítés](storsimple-ova-update-01-release-notes.md)
 
 # StorSimple 8000 sorozat
@@ -78,7 +80,7 @@
 #### [A 8100-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8100-hardware-installation.md)
 
 #### [A 8600-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8600-hardware-installation.md)
-#### [10-GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+#### [10 GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### Üzembe helyezés
 #### [StorSimple Manager szolgáltatás](storsimple-manage-service.md)
@@ -150,6 +152,7 @@
 ### Figyelés
 #### [A szolgáltatások irányítópultjának használata](storsimple-service-dashboard.md)
 #### [Az eszközök irányítópultjának használata](storsimple-device-dashboard.md)
+#### [Figyelési diagramok használata](storsimple-monitor-device.md)
 #### [Szolgáltatásriasztások használata](storsimple-manage-alerts.md)
 #### [Hardverállapot használata](storsimple-monitor-hardware-status.md)
 #### [Figyelési LED-ek használata](storsimple-monitoring-indicators.md)
@@ -220,6 +223,6 @@
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

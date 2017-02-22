@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés a hibrid Relay-kapcsolatokkal | Microsoft Docs"
+title: "Ismerkedés az Azure Relay Hibrid-kapcsolatokkal a .NET-ben | Microsoft Docs"
 description: "C# konzolalkalmazás létrehozása hibrid kapcsolatokhoz"
 services: service-bus-relay
 documentationcenter: .net
@@ -12,24 +12,26 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/03/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 3ab92ba4e5c19d4b713ceb2da30835542f343d68
+ms.sourcegitcommit: 1ee1e7d0c6f239abfda474d51c8d02d5338dabc7
+ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
 
 
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Ismerkedés a hibrid Relay-kapcsolatokkal
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
+Ez az oktatóprogram bevezetést nyújt az [Azure Relay Hibrid-kapcsolatok](relay-what-is-it.md#hybrid-connections) használatába, és bemutatja egy olyan ügyfélalkalmazás létrehozását, amely üzeneteket küld egy kapcsolódó figyelő alkalmazásnak. 
+
 ## <a name="what-will-be-accomplished"></a>Az oktatóanyag célja
-A hibrid kapcsolatokhoz egy ügyfélre és egy kiszolgáló-összetevőre is szükség van, így ebben az oktatóanyagban két konzolalkalmazást hozunk létre. A lépések a következők:
+Mivel a hibrid kapcsolatokhoz szükség van egy ügyfélre és egy kiszolgáló-összetevőre is, ebben az oktatóanyagban két konzolalkalmazást hozunk létre. A lépések a következők:
 
 1. Relay-névtér létrehozása az Azure Portal használatával.
 2. Hibrid kapcsolat létrehozása az Azure Portal használatával.
-3. Kiszolgálói konzolalkalmazás írása üzenetfogadási céllal.
-4. Ügyfél-konzolalkalmazás írása üzenetküldési céllal.
+3. Kiszolgálói (figyelő) konzolalkalmazás írása üzenetfogadási céllal.
+4. Ügyfél-konzolalkalmazás (küldő) írása üzenetküldési céllal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. [Visual Studio 2013 vagy Visual Studio 2015](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2015-öt használják.
@@ -38,12 +40,12 @@ A hibrid kapcsolatokhoz egy ügyfélre és egy kiszolgáló-összetevőre is sz�
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Névtér létrehozása az Azure Portal használatával
-Ha a Relay-névteret már létrehozta, ugorjon a [Hibrid kapcsolat létrehozása az Azure Portal használatával](#2-create-a-hybrid-connection-using-the-azure-portal) szakaszra.
+Ha már létrehozta a Relay-névteret, lépjen a [Hibrid kapcsolat létrehozása az Azure Portal használatával](#2-create-a-hybrid-connection-using-the-azure-portal) szakaszra.
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Hibrid kapcsolat létrehozása az Azure Portal használatával
-Ha már rendelkezik egy létrehozott hibrid kapcsolattal, ugorjon a [Kiszolgálói alkalmazás létrehozása](#3-create-a-server-application-listener) szakaszra.
+Ha már létrehozott egy hibrid kapcsolatot, lépjen a [Kiszolgálói alkalmazás létrehozása](#3-create-a-server-application-listener) szakaszra.
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
@@ -74,6 +76,6 @@ Gratulálunk, végpontok közötti hibrid kapcsolatok alkalmazást hozott létre
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

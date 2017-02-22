@@ -1,13 +1,25 @@
 ---
+title: "Az Azure Functions dokumentációja – oktatóanyagok | Microsoft Docs"
+description: "Ismerje meg, hogyan fejleszthet és helyezhet üzembe Functions-rutinokat a kívánt nyelven annak érdekében, hogy a feladatok speciális infrastruktúra nélkül, a háttérben vagy ütemezve fussanak."
+services: functions
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: functions
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 87316969b7849396c6542decde3257774c35c454
-ms.openlocfilehash: dc15cd4e497135ea9ce07d671020af6df49ad3f6
+ms.sourcegitcommit: b490d47b03cd3c7c57c3630fafb95777fffaa3aa
+ms.openlocfilehash: b2f2e067fd6c6c2c34bee167356756721c8fd0cd
 
 ---
 #<a name="azure-functions-documentation"></a>Azure Functions – dokumentáció
 
-Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven függvények, a felhőben. Írja meg az adott problémára vonatkozó kódot anélkül, hogy a futtató infrastruktúra teljes alkalmazásával kellene bajlódnia. A kódot tetszés szerinti nyelvben írhatja, például C#, F#, Node.js, Python, vagy PHP segítségével.
+Ismerje meg, hogy a Functions használatával hogyan fejleszthet és helyezhet üzembe kódokat a kívánt nyelven a felhőben anélkül, hogy infrastruktúrát állítana be. Az oktatóanyagok, a sablonok és egyéb dokumentációk bemutatják az olyan Functions-rutinok elkészítését, amelyek a háttérben vagy ütemezve futnak.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -103,18 +115,9 @@ Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, 
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-functions.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Functions – dokumentáció letöltése </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

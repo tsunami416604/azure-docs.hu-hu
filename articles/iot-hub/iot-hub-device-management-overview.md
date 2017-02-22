@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/03/2016
 ms.author: briz
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 91dcace2d74d44a5d2ab3b9a1352b2fa052ddc44
+ms.sourcegitcommit: 55d3f08de7f8c7ba68faba1945e8fd960e888853
+ms.openlocfilehash: 5e1b1333212af0b9042e7ed3793c08e305085519
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 91dcace2d74d44a5d2ab3b9a1352b2fa052ddc44
 ## <a name="introduction"></a>Bevezetés
 Az Azure IoT Hub által biztosított szolgáltatások és bővíthetőségi modell segítségével az eszköz- és háttérrendszer-fejlesztők hatékony eszközfelügyeleti megoldásokat építhetnek ki. Az eszközök köre a korlátozott érzékelőktől és az egycélú mikrovezérlőktől az eszközcsoportok kommunikációjának továbbítását végző, nagyteljesítményű átjárókig terjed.  Emellett az IoT-műveletek használati módja és követelményei az egyes iparágak esetében jelentősen eltér.  Ezen eltérések ellenére az Azure IoT Hub-eszközfelügyelet az eszközök és végfelhasználók változatos együttesének igényeihez igazítva biztosítja a szükséges képességeket, mintákat és kódelemtárakat.
 
-A vállalati IoT-megoldások sikeres létrehozásának fontos része annak a stratégiának a megalkotása, amely a kezelők számára a folyamatos eszközfelügyelet módját ismerteti. Az IoT-kezelőknek olyan egyszerű és megbízható eszközökre és alkalmazásokra van szükségük, amelyek segítségével a feladataik stratégiai szempontjaira koncentrálhatnak. Ez a cikk a következő információkat tartalmazza:
+A vállalati IoT-megoldások sikeres létrehozásának fontos része annak a stratégiának a megalkotása, amely meghatározza a kezelők számára a folyamatos eszközfelügyelet módját. Az IoT-kezelőknek olyan egyszerű és megbízható eszközökre és alkalmazásokra van szükségük, amelyek segítségével a feladataik stratégiai szempontjaira koncentrálhatnak. Ez a cikk a következő információkat tartalmazza:
 
 * Az Azure IoT Hub-eszközfelügyelet rövid áttekintése.
 * Az általános eszközfelügyeleti alapelvek leírása.
@@ -112,6 +112,6 @@ Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funk
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
-ms.author: sdanie
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
+ms.sourcegitcommit: 13431648e87d085161ad278dc991d49f7872be34
+ms.openlocfilehash: 60213f885020a5ba36d6ada0812f755e06b3c48b
 
 
 ---
@@ -43,17 +43,17 @@ Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni
 > 
 
 ## <a name="change-headers-styling"> </a>A fejlécek stílusának módosítása
-A portál oldalain megjelenő színeket, betűtípusokat, méreteket, sorközöket és más stíluselemeket a stílusszabályok határozzák meg. A stílusok szerkesztéséhez kattintson a **Megjelenés** elemre a közzétevő portál **Fejlesztői portál** menüjében, majd kattintson a **Testreszabás megkezdése** lehetőségre a stílusszerkesztő engedélyezéséhez.
+A portál oldalain megjelenő színeket, betűtípusokat, méreteket, sorközöket és más stíluselemeket a stílusszabályok határozzák meg. Az egyes stílusok szerkesztéséhez a **fejlesztői portálon** nyissa meg a bal oldali testreszabási eszköztárat úgy, hogy az egérmutatót a testreszabási ikon fölé viszi, majd az eszköztáron kiválasztja a „styles” (stílusok) lehetőséget.
 
-A böngésző átvált a fejlesztő portál egy rejtett oldalára, amely tartalommintákat és példákat tartalmaz a webhelyen alkalmazott összes stílusszabályra. A stílusszerkesztő megnyitásához mozgassa a kurzort az oldal bal szélső részén található vékony, szürke függőleges sávra. Ekkor megjelenik a szerkesztő eszköztár.
+![Testreszabási eszköztár gombja][api-management-customization-toolbar-button]
+
+A stílusszabályokat két fő módon szerkesztheti: áttekintheti az összes használt stílusszabály alapértelmezés szerint megjelenő listáját, és szükség szerint módosíthatja az egyes stílusokat, vagy kiválaszthatja a **Select an element on the page** (Elem kiválasztása az oldalon) beállítást, és ha az oldalon valahová kattint, kizárólag az adott elemhez tartozó stílusok fognak megjelenni.
+
+Ebben a szakaszban csak a fejlécek stílusát szeretnénk módosítani. A stílusszerkesztő eszköztáron kattintson a **Select an element on the page** (Elem kiválasztása az oldalon) lehetőségre. 
 
 ![Testreszabás eszköztár][api-management-customization-toolbar]
 
-A stílusszabályok szerkesztésének két fő módja van – A **Minden szabály szerkesztése** lehetőség felsorolja az összes használatban lévő stílusszabályt, az **Elem kiválasztása** lehetőséggel pedig kiválaszthat egy elemet az oldalról, ahol éppen tartózkodik, és csak a választott elem stílusai jelennek meg.
-
-Ebben a szakaszban csak a fejlécek stílusát szeretnénk módosítani. A stílusszerkesztő eszköztáron kattintson az **Elem kiválasztása** elemre, majd kattintson a **Testreszabni kívánt elem kiválasztása** lehetőségre. Ha ezután rámutat az egérrel az elemekre, ki lesznek emelve, ezzel jelezve, hogy kattintás esetén melyik elem stílusait kezdené el szerkeszteni. A fejlécen mutasson az egérrel a vállalat nevére („Fabrikam fejlesztői portál”, ha követte az előző szakasz utasításait), majd kattintson rá. A stílusszerkesztőben meg fognak jelenni a névvel és kategóriákkal rendelkező stílusszabályok.
-
-Minden szabály a kiválasztott elem egy formázási tulajdonságát jelöli. Például a fent kiválasztott fejléc szövegénél a szövegméret @font-size-h1, míg a betűtípus neve alternatívákkal @headings-font-family.
+Ha ezután rámutat az egérrel az elemekre, ki lesznek emelve, ezzel jelezve, hogy kattintás esetén melyik elem stílusait kezdené el szerkeszteni. A fejlécen mutasson az egérrel a vállalat nevére („Fabrikam fejlesztői portál”, ha követte az előző szakasz utasításait), majd kattintson rá. A stílusszerkesztőben meg fognak jelenni a névvel és kategóriákkal rendelkező stílusszabályok. Minden szabály a kiválasztott elem egy formázási tulajdonságát jelöli. Például a fent kiválasztott fejléc szövegénél a szövegméret @font-size-h1, míg a betűtípus neve alternatívákkal @headings-font-family.
 
 > Ha ismeri a [bootstrap][bootstrap] felépítését, ezek a szabályok valójában [LESS változók][LESS variables] a fejlesztői portál által használt bootstrap témában.
 > 
@@ -63,7 +63,7 @@ Módosítsa a fejléc szövegének színét. Válassza ki a **@headings-color** 
 
 ![Színválasztó][api-management-customization-toolbar-color-picker]
 
-Ha végrehajtotta a választott elem stílusainak módosítását, kattintson a **Változtatások előnézete** lehetőségre az eredmények megjelenítéséhez. Ezen a ponton még csak a rendszergazdák láthatják őket. Ha mindenki számára láthatóvá szeretné tenni a módosításokat, kattintson a **Közzététel** gombra a stílusszerkesztőben, és hagyja jóvá a módosításokat.
+A módosítások előnézete valós időben, végrehajtásukkal egyidejűleg megtekinthető, de kizárólag a rendszergazdáknak jelenik meg. Ha mindenki számára láthatóvá szeretné tenni a módosításokat, kattintson a **Közzététel** gombra a stílusszerkesztőben, és hagyja jóvá a módosításokat.
 
 ![Közzététel menü][api-management-customization-toolbar-publish-form]
 
@@ -96,6 +96,7 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
+[api-management-customization-toolbar-button]: ./media/api-management-customize-portal/api-management-customization-toolbar-button.png
 [api-management-customization-toolbar]: ./media/api-management-customize-portal/api-management-customization-toolbar.png
 [api-management-customization-toolbar-color-picker]: ./media/api-management-customize-portal/api-management-customization-toolbar-color-picker.png
 [api-management-customization-toolbar-publish-form]: ./media/api-management-customize-portal/api-management-customization-toolbar-publish-form.png
@@ -107,6 +108,6 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 
