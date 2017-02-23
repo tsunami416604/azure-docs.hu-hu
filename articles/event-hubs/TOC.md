@@ -20,6 +20,7 @@
 ## Tervezés és kialakítás
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
+### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
 ## Fejlesztés
 ### [Elérhető API-k](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
@@ -59,6 +60,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

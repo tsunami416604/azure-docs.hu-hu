@@ -41,6 +41,8 @@
 #### [Feladatok kezelése](storsimple-virtual-array-manage-jobs.md)
 #### [Az eszköz jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)
 #### [Az MPIO konfigurálása Windows Server-gazdagépen](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [Diagnosztika és hibaelhárítás](storsimple-virtual-array-diagnose-problems.md)
+#### [Naplótámogatási kérelem](storsimple-virtual-array-log-support-ticket.md)
 
 ### [Kezelés a klasszikus Azure portálon keresztül](storsimple-ova-manager-service-administration.md)
 #### [A legújabb frissítés telepítése](storsimple-ova-install-update-01.md)
@@ -175,6 +177,7 @@
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
+#### [A 4-es frissítés telepítése](storsimple-install-update-4.md)
 #### [A 3-as frissítés telepítése](storsimple-install-update-3.md)
 #### [A 2.2-es frissítés telepítése](storsimple-install-update-21.md)
 #### [A 2-es frissítés telepítése](storsimple-install-update-2.md)
@@ -182,7 +185,8 @@
 #### [Az eszköz frissítése](storsimple-update-device.md)
 
 ## Kibocsátási megjegyzések
-### [3-as frissítés – aktuális](storsimple-update3-release-notes.md)
+### [4-es frissítés – aktuális](storsimple-update4-release-notes.md)
+### [3-as frissítés](storsimple-update3-release-notes.md)
 ### [2.2-es frissítés](storsimple-update21-release-notes.md)
 ### [2-es frissítés](storsimple-update2-release-notes.md)
 ### [1-es frissítés](storsimple-update1-release-notes.md)
@@ -206,6 +210,18 @@
 ## Útmutató
 ### [A .NET használata az adatok átalakításához](storsimple-data-manager-dotnet-jobs.md)
 
+# StorSimple partnerek számára
+## Áttekintés
+### [Mi a megoldás?](storsimple-partner-csp-overview.md)
+
+## Bevezetés
+### [Virtuális tömb telepítése CSP-hez](storsimple-partner-csp-deploy.md)
+
+## Kibocsátási megjegyzések
+### [A StorSimple kibocsátási megjegyzései](https://aka.ms/storsimple-virtual-array-latest-relnote)
+### [A CSP kibocsátási megjegyzései](https://partner.microsoft.com/Support/whats-new)
+### [StorSimple CSP-hez: gyakori kérdések](storsimple-partner-csp-faq.md)
+
 # Kapcsolódó
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
 
@@ -223,6 +239,6 @@
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

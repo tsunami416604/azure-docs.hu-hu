@@ -27,7 +27,6 @@
 ### [Azure CLI](resource-group-template-deploy-cli.md)
 ### [Portál](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [Fejlesztési és tesztkörnyezetek](solution-dev-test-environments.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Kezelés
 ### [PowerShell](powershell-azure-resource-manager.md)
@@ -43,20 +42,23 @@
 ### [Egyszerű szolgáltatás létrehozása az Azure parancssori felületével](resource-group-authenticate-service-principal-cli.md)
 ### [Egyszerű szolgáltatás létrehozása a portálon](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
-### [Felügyeleti házirendek megadása](resource-manager-policy.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
 ### [Biztonsági szempontok](best-practices-resource-manager-security.md)
+## Erőforrás-házirendek beállítása
+### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
+### [A házirendek hozzárendelése és kezelése](resource-manager-policy-create-assign.md)
+### [Erőforrás-címkézési házirendek](resource-manager-policy-tags.md)
+### [Tárolási házirendek](resource-manager-policy-storage.md)
+### [Linux rendszerű virtuális gépek házirendjei](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Windows rendszerű virtuális gépek házirendjei](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Naplózás és hibaelhárítás
 ### [Gyakori üzembehelyezési hibák elhárítása](resource-manager-common-deployment-errors.md)
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)
-### [Üzembehelyezési műveletek megtekintése a portálon](resource-manager-troubleshoot-deployments-portal.md)
-### [Üzembehelyezési műveletek megtekintése a PowerShellben](resource-manager-troubleshoot-deployments-powershell.md)
-### [Üzembehelyezési műveletek megtekintése az Azure parancssori felületén](resource-manager-troubleshoot-deployments-cli.md)
-### [Üzembehelyezési műveletek megtekintése a REST API-ban](resource-manager-troubleshoot-deployments-rest.md)
+### [Üzembe helyezési műveletek megtekintése](resource-manager-deployment-operations.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Azure 2.0 CLI (előzetes verzió)](/cli/azure/resource)
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
+## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
@@ -65,11 +67,12 @@
 
 # Erőforrások
 ## [Kérelmek szabályozása](resource-manager-request-limits.md)
+## [Aszinkron műveletek követése](resource-manager-async-operations.md)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

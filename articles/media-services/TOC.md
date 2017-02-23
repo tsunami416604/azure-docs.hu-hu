@@ -4,6 +4,12 @@
 # Bevezetés
 ## [Fiók létrehozása és felügyelete](media-services-portal-create-account.md)
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
+###[.NET](media-services-dotnet-how-to-use.md)
+###[REST](media-services-rest-how-to-use.md)  
+## Programozott módon való kapcsolódás
+### [.NET](media-services-dotnet-connect-programmatically.md)
+### [REST](media-services-rest-connect-programmatically.md)
+
 ## Igény szerinti videó továbbítása
 ### [Portál](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
@@ -15,19 +21,18 @@
 
 # Útmutató
 ## Kezelés
-### Fiókok kezelése
+### Fiókok
 #### [PowerShell](media-services-manage-with-powershell.md)
 #### [REST](/rest/api/media/mediaservice)
-### Entitások kezelése
+### Entitások
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
-### Programozott módon való kapcsolódás
-#### [.NET](media-services-dotnet-connect-programmatically.md)
-#### [REST](media-services-rest-connect-programmatically.md)
-### [Streamvégpontok kezelése](media-services-streaming-endpoints-overview.md)
+### [Streamvégpontok](media-services-streaming-endpoints-overview.md)
 #### [Portál](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
-### [Útmutató: A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
+### Tárolás
+#### [A Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
+#### [Adategységek felügyelete több tárfiókban](meda-services-managing-multiple-storage-accounts.md)
 ### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 
 ## Tartalom feltöltése
@@ -35,6 +40,7 @@
 #### [Portál](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
+### [Nagy fájlok feltöltése az Asperával](media-services-upload-files-with-aspera.md)
 ### [Meglévő blobok másolása](media-services-copying-existing-blob.md)
 
 ## [Tartalom kódolása](media-services-encode-asset.md)
@@ -98,7 +104,6 @@
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 #### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [Élő stream a felhőalapú kódolóval](media-services-manage-live-encoder-enabled-channels.md)
-### Oktatóanyagok a felhőalapú kódolókhoz
 #### [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [Helyszíni kódolók konfigurálása felhőalapú kódolóval való használatra](media-services-live-encoders-overview.md)
@@ -114,11 +119,14 @@
 ### [AES-128 titkosítatlan kulcs konfigurálása a streamhez](media-services-protect-with-aes128.md)
 ### [Tartalom titkosítása tártitkosítással az AMS REST API-val](media-services-rest-storage-encryption.md)
 ### [A Media Services PlayReady licencsablon áttekintése](media-services-playready-license-template-overview.md)
+### [A Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md)
 ### [DRM-licenckézbesítés](media-services-deliver-keys-and-licenses.md)
 ### [Partnerek használata a Widevine licencek kézbesítéséhez az Azure Media Services szolgáltatásba](media-services-licenses-partner-integration.md)
 ### [A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata](media-services-protect-with-drm.md)
 ### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak streameléséhez ](media-services-protect-hls-with-fairplay.md)
 ### [CENC többplatformos DRM és hozzáférés-vezérlés használatával: Egy referenciaterv és megvalósítás az Azure-on és az Azure Media Services szolgáltatásban](media-services-cenc-with-multidrm-access-control.md)
+### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe ](media-services-axinom-integration.md)
+### [A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe](media-services-castlabs-integration.md)
 
 ### Adategység-kézbesítés
 #### Adategység-kézbesítési házirendek konfigurálása
@@ -152,16 +160,16 @@
 ### [Médiafeldolgozás](media-services-scale-media-processing-overview.md)
 #### [Portál](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### Streamvégpontok
 #### [Portál](media-services-portal-scale-streaming-endpoints.md)
 
 ## [Tartalom továbbítása](media-services-deliver-content-overview.md)
 ### [Dinamikus csomagolás](media-services-dynamic-packaging-overview.md)
 ### [Szűrők és dinamikus jegyzékek áttekintése](media-services-dynamic-manifest-overview.md)
-### Szűrők létrehozása
-#### [.NET](media-services-dotnet-dynamic-manifest.md)
-#### [REST](media-services-rest-dynamic-manifest.md)
+#### [Szűrők létrehozása .NET használatával](media-services-dotnet-dynamic-manifest.md)
+#### [Szűrők létrehozása REST használatával](media-services-rest-dynamic-manifest.md)
+### [CDN gyorsítótárazási házirend a Media Services bővítményben](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### Tartalom közzététele
 #### [Portál](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
@@ -177,21 +185,18 @@
 #### [HTML5-alkalmazás DASH.js-sel](media-services-embed-mpeg-dash-in-html5.md)
 #### [Adobe Open Source Media Framework-lejátszók](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [Hirdetések ügyféloldali beillesztése](media-services-inserting-ads-on-client-side.md)
+### [A Microsoft Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
 
 ## Integrálás
-### [CDN gyorsítótárazási házirend a Media Services bővítményben](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
-### [A Microsoft†" Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
-### [Adategységek felügyelete több Storage fiókban](meda-services-managing-multiple-storage-accounts.md)
-### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe ](media-services-axinom-integration.md)
-### [A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe](media-services-castlabs-integration.md)
-### [A Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md)
+### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
 
 ## Figyelés
 ### A feladat előrehaladásának ellenőrzése
 #### [REST](media-services-rest-check-job-progress.md)
 #### [Portál](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
-### [A feladatértesítések figyelésére használt várólista](media-services-dotnet-check-job-progress-with-queues.md)
+### [Feladatértesítések figyelése üzenetsor-tárolóval](media-services-dotnet-check-job-progress-with-queues.md)
+### [Feladatértesítések figyelése webhookokkal](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## Hibaelhárítás
 ### [Gyakori kérdések](media-services-frequently-asked-questions.md)
@@ -212,6 +217,6 @@
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
