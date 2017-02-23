@@ -3,7 +3,7 @@ title: "Egyéni tartománynév hozzáadása és összevont bejelentkezés beáll
 description: "A vállalati tartománynevek hozzáadása az Azure Active Directoryhoz és a összevont bejelentkezés beállítása az Azure Active Directory és a saját helyszíni összevont megoldás között."
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 27126c7e-e6d6-4ef3-a4fb-f5f0706e749d
