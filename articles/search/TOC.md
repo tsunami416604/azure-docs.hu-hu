@@ -8,6 +8,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [Adatok hozzáadása](search-what-is-data-import.md)
+### [Azure Portal](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [Keresés az indexekben](search-query-overview.md)
@@ -25,7 +26,6 @@
 ### [Szolgáltatási korlátozások](search-limits-quotas-capacity.md)
 ### [A szolgáltatás méretezhetősége](search-capacity-planning.md)
 ### [Kialakítási minták a több-bérlős módhoz](search-modeling-multitenant-saas-applications.md)
-
 
 ## Fejlesztés
 ### [Az SDK frissítése](search-dotnet-sdk-migration.md)
@@ -49,15 +49,16 @@
 ### [JSON-blobok indexelése](search-howto-index-json-blobs.md)
 ### [Az indexelő az Azure virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Mezőleképezések az indexelőkben](search-indexer-field-mappings.md)
-##  A keresés működésének megtervezése
+##  Keresési felhasználói élmény
+### [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+### [Lucene lekérdezési szintaxis ](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 ### [Példák Lucene szintaxisú lekérdezésekre](search-query-lucene-examples.md)
-### [Pontozási profilok](search-get-started-scoring-profiles.md)
-### [Javaslattevők](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [Címkekiemelés](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [Kifejezési szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### [Pontozás](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+### [Javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
-### [Nyelvi elemzők](https://msdn.microsoft.com/library/azure/dn879793)
-### [Egyéni elemzők](https://msdn.microsoft.com/library/azure/mt605304)
-### [Többnyelvű keresés](search-language-support.md)
+### [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)
+### [Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # Referencia
 ## [.NET](/dotnet/api/microsoft.azure.search)
@@ -86,6 +87,6 @@
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

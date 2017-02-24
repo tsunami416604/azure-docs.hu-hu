@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 
 
 ---
@@ -39,34 +39,34 @@ Ezen az oldalon megtekintheti a **Recently added** (Újonnan hozzáadott) kísé
 Az összes kísérlet tallózásához:
 
 1. Kattintson az **Összes tallózása** fülre az oldal tetején.
-2. A **Pontosítás** fül alatt válassza ki a **Kísérlet** fület a Katalógusban található összes kísérlet megtekintéséhez.
+2. A **Kategóriák** szakasz **Pontosítás** területén válassza a **Kísérlet** fület a Katalógusban található összes kísérlet megtekintéséhez.
 3. A követelményeknek megfelelő kísérletek keresése különféle módokon történhet:
    * **Válasszon ki szűrőket a bal oldalon.** A PCA-alapú anomáliaészlelő algoritmusokat használó kísérletek böngészéséhez válassza az **Experiment** (Kísérlet) fület a **Categories** (Kategóriák) alatt és a **PCA-Based Anomaly Detection** (PCA alapú anomáliaészlelés) lehetőséget az **Algorithms Used** (Használt algoritmusok) alatt. (Ha nem látja a keresett algoritmust, kattintson a **Show all** (Összes megjelenítése) lehetőségre a lista alján.)<br></br>
      ![Szűrők kiválasztása](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **Használja a keresőmezőt.** Ha például a Microsoft által közzétett, kétosztályos támogató vektorgép-algoritmust használó, számjegyfelismeréssel kapcsolatos kísérleteket szeretne keresni, a keresőmezőbe írja be a „digit recognition” (számjegyfelismerés) kifejezést. Ezután válassza a következő szűrőket: **Kísérlet**, **Kizárólag Microsoft-tartalom** és **Kétosztályos támogató vektorgép**: ![Használja a keresőmezőt](./media/machine-learning-sample-experiments/search-for-experiments.png).
+   * **Használja a keresőmezőt.** Ha például a Microsoft által közzétett, kétosztályos támogató vektorgép-algoritmust használó, számjegyfelismeréssel kapcsolatos kísérleteket szeretne keresni, a keresőmezőbe írja be a „digit recognition” (számjegyfelismerés) kifejezést. Ezt követően válassza ki az **Experiment** (Kísérlet), a **Microsoft content only** (Kizárólag Microsoft tartalom) és a **Two-Class Support Vector Machine** (Kétosztályos támogató vektorgép) szűrőt:<br></br>
+     ![Használja a keresőmezőt.](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. Kattintson a kísérletre, ha többet szeretne megtudni róla.
-5. A kísérlet futtatásához és/vagy módosításához kattintson a **Megnyitás a Studióban** fülre a kísérlet oldalán.
-
-   > [!NOTE]
-   > Egy kísérlet megnyitásához a Machine Learning Studióban be kell jelentkeznie a Microsoft-fiók hitelesítő adatait használva. Ha még nem rendelkezik Machine Learning munkaterülettel, egy ingyenes próba munkaterület jön létre. [Az Azure Machine Learning ingyenes próbaverziójának tartalma](https://azure.microsoft.com/pricing/details/machine-learning/)
-   >
-   >
+5. A kísérlet futtatásához és/vagy módosításához kattintson a **Megnyitás a Studióban** fülre a kísérlet oldalán. <br></br>
 
     ![Példakísérlet](./media/machine-learning-sample-experiments/example-experiment.png)
+
+    > [!NOTE]
+    > Amikor először nyit meg egy kísérletet a Machine Learning Studióban, ingyen kipróbálhatja, vagy Azure-előfizetést vásárolhat. [Információk a Machine Learning Studio ingyenes próbaverziójáról és fizetős szolgáltatásáról](https://azure.microsoft.com/pricing/details/machine-learning/)
+    >
+    >
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>Sablon használata a Machine Learning Studióban
 A Galleryben található egyik sablont mintaként használva új kísérletet hozhat létre a Machine Learning Studióban.
 
-1. Jelentkezzen be a [Studióba](https://studio.azureml.net) a Microsoft-fiók hitelesítő adatait használva, és kattintson az **Új** fülre egy új kísérlet létrehozásához.
+1. Jelentkezzen be a [Studióba](https://studio.azureml.net) a Microsoft-fiók hitelesítő adatait használva, és kattintson az **Új** fülre egy kísérlet létrehozásához.
 2. Tallózzon a sablonok között, és kattintson rá az egyikre.
 
 A mintakísérletet példaként használva új kísérlet jön létre a munkaterületén.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Adatok előkészítése](machine-learning-data-science-import-data.md)
-* [Próbálja meg az R nyelv használatát a kísérlet során](machine-learning-r-quickstart.md)
-* [Tekintse át az R nyelven íródott mintakísérleteket](machine-learning-r-csharp-web-service-examples.md)
-* [Webszolgáltatási API létrehozása](machine-learning-publish-a-machine-learning-web-service.md)
+* [Adatok importálása különböző forrásokból](machine-learning-data-science-import-data.md)
+* [Gyors üzembe helyezési oktatóanyag az R nyelvhez a Machine Learning eszközben](machine-learning-r-quickstart.md)
+* [Machine Learning webszolgáltatás üzembe helyezése](machine-learning-publish-a-machine-learning-web-service.md)
 
 
 

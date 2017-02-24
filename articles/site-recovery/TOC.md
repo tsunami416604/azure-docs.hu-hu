@@ -2,7 +2,7 @@
 ## [Mi a Site Recovery?](site-recovery-overview.md)
 ## [Hogyan működik a Site Recovery?](site-recovery-components.md)
 ## [Milyen számítási feladatokat tud megvédeni?](site-recovery-workload.md)
-## [Site Recovery támogatási mátrix](site-recovery-support-matrix.md)
+## [Site Recovery támogatási mátrix](site-recovery-support-matrix-to-azure.md)
 ## [Gyakori kérdések](site-recovery-faq.md)
 ## [Bevezetés megtekintése](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -26,7 +26,14 @@
 ### [Mobilitási szolgáltatás üzembe helyezése VMware-replikálásához](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [Mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel](site-recovery-install-mobility-service-using-sccm.md)
 #### [Mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel](site-recovery-automate-mobility-service-install.md)
-### [Kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md)
+## Feladatátvétel és feladat-visszavétel
+### [Feladatátvétel a Site Recoveryben](site-recovery-failover.md)
+### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
+#### [Azure Runbookok hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
+### [Azure-ba irányuló feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md)
+### [Két VMM-hely közötti feladatátvételi teszt futtatása](site-recovery-test-failover-vmm-to-vmm.md)
+### [Feladat-visszavétel VMware virtuális gépek és fizikai kiszolgálók esetében](site-recovery-failback-azure-to-vmware.md)
+
 ## Migrate (Áttelepítés)
 ### [Áttérés az Azure-ra](site-recovery-migrate-to-azure.md)
 ### [Áttelepítés Azure-régiók között](site-recovery-migrate-azure-to-azure.md)
@@ -44,13 +51,9 @@
 ### [Hyper-V-replikáció automatizálása az Azure-ba (VMM nélkül)](site-recovery-deploy-with-powershell-resource-manager.md)
 ### [Hyper-V-replikáció automatizálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 ### [Hyper-V-replikáció automatizálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
-## Feladatátvétel és feladat-visszavétel
-### [Feladatátvétel a Site Recoveryben](site-recovery-failover.md)
-### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
-#### [Azure Runbookok hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
-### [A VMware-ből az Azure-ba irányuló feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md)
-### [Két VMM-hely közötti feladatátvételi teszt futtatása](site-recovery-test-failover-vmm-to-vmm.md)
-### [Feladat-visszavétel VMware virtuális gépek és fizikai kiszolgálók esetében](site-recovery-failback-azure-to-vmware.md)
+## Kezelés
+### [Kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md)
+### [Replikációs beállítások szerkesztése](site-recovery-setup-replication-settings-vmware.md#edit-replication-policy)
 ## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referencia
@@ -69,6 +72,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

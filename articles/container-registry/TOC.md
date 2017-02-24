@@ -4,7 +4,7 @@
 
 # Első lépések
 ## [Beállításjegyzék létrehozása a Portalon](container-registry-get-started-portal.md)
-## [Beállításjegyzék létrehozása a parancssori felülettel](container-registry-get-started-azure-cli.md)
+## [Beállításjegyzék létrehozása az Azure CLI 2.0-s verziójával](container-registry-get-started-azure-cli.md)
 ## [Képek küldése és lekérése](container-registry-get-started-docker-cli.md)
 
 # Útmutató
@@ -14,7 +14,7 @@
 
 # Referencia
 
-## [Azure CLI 2.0 előzetes verzió](/cli/azure/acr)
+## [Azure CLI 2.0](/cli/azure/acr)
 ## [REST](/rest/api/containerregistry)
 
 # Kapcsolódó
@@ -27,6 +27,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -16,7 +16,8 @@
 
 # Erőforrások
 ##[Adatforrás-kapcsolatok](analysis-services-datasource.md)
-##[Adatszolgáltatók](analysis-services-data-providers.md) 
+##[Adatszolgáltatók](analysis-services-data-providers.md)
+##[.odc fájl létrehozása](analysis-services-odc.md)
 
 
 <!--HONumber=Feb17_HO3-->

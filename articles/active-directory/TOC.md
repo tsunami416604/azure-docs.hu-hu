@@ -2,7 +2,7 @@
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Kiadás kiválasztása](active-directory-editions.md)
 ## [Tudnivalók az Azure-identitáskezelésről](fundamentals-identity.md)
-## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
+## [Az Azure AD-portál felületének előzetese](active-directory-preview-explainer.md)
 
 
 # Bevezetés
@@ -50,8 +50,11 @@
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
 ### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 
-## [Hozzáférési és használati jelentések megtekintése](active-directory-view-access-usage-reports.md)
+## [Tevékenység- és biztonsági jelentések megtekintése](active-directory-view-access-usage-reports.md)
 ### [Azure AD Reporting](active-directory-reporting-getting-started.md)
+### [Gyakori kérdések](active-directory-reporting-faq.md)
+### [Jelentések migrálása](active-directory-reporting-migration.md)
+
 ### [Ismert hálózatok](active-directory-known-networks.md)
 
 ### [Jelentéskészítési útmutató](active-directory-reporting-guide.md)
@@ -106,6 +109,7 @@
 #### [Üzembe helyezés](active-directory-azureadjoin-devices-group-policy.md)
 #### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
 #### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
+
 #### [A Windows 10-es integrációval kapcsolatos tudnivalók](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [Windows 10-eszközök használata](active-directory-azureadjoin-windows10-devices.md)
 #### [Gyakori kérdések](active-directory-conditional-access-automatic-device-registration-faq.md)
@@ -123,25 +127,31 @@
 
 ### [Távoli hozzáférés biztosítása az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
 #### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
+#### [Az összekötők ismertetése](application-proxy-understand-connectors.md)
+
 #### Alkalmazások közzététele
 ##### [Azure Portal](application-proxy-publish-azure-portal.md)
 ##### [Klasszikus portál](active-directory-application-proxy-publish.md)
+#### [Biztonság](application-proxy-security-considerations.md)
+#### [Hálózatok](application-proxy-network-topology-considerations.md)
+#### [Távoli asztal](application-proxy-publish-remote-desktop.md)
+#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+
 #### Közzététel külön hálózatokon
 ##### [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [Klasszikus portál](active-directory-application-proxy-connectors.md)
+#### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
 #### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
-#### [Egyszeri bejelentkezés](active-directory-application-proxy-sso-using-kcd.md)
+#### [Hozzáférés az alkalmazásokhoz](active-directory-appssoaccess-whatis.md)
 ##### [Azure Portal](application-proxy-sso-azure-portal.md)
+#### [Egyszeri bejelentkezés](active-directory-application-proxy-sso-using-kcd.md)
 #### [Jogcímbarát alkalmazások](active-directory-application-proxy-claims-aware-apps.md)
 #### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
+#### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
 #### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
 #### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
+#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
-### [Az alkalmazásokba való egyszeri bejelentkezéssel kapcsolatos tudnivalók](active-directory-appssoaccess-whatis.md)
-
-### SaaS-alkalmazások integrálása
-#### [Azure Portal](active-directory-enterprise-apps-manage-sso.md)
-#### [Klasszikus portál](active-directory-sso-integrate-saas-apps.md)
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)
@@ -164,7 +174,6 @@
 
 ### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
 ### [Dokumentumtár](active-directory-apps-index.md)
-
 
 ## Címtár kezelése
 ### Egyéni tartománynevek
@@ -191,25 +200,29 @@
 #### [Windows 10-beállítások](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [Gyakori kérdések](active-directory-windows-enterprise-state-roaming-faqs.md)
 #### [Hibaelhárítás](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
+
 ### [Partnerek integrálása az Azure AD B2B-vel](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](active-directory-b2b-admin-add-users.md)
 #### [B2B-felhasználók infomunkások általi hozzáadása](active-directory-b2b-iw-add-users.md)
 #### [Meghívó e-mail](active-directory-b2b-invitation-email.md)
 #### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
-#### [Licencek](active-directory-b2b-licensing.md)
-#### [B2B-hibaelhárítás](active-directory-b2b-troubleshooting.md)
-#### [Gyakori kérdések](active-directory-b2b-faq.md)
-#### [API és testreszabás](active-directory-b2b-api.md)
-#### [Többtényezős hitelesítés B2B esetén](active-directory-b2b-mfa-instructions.md)
+#### [B2B-felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
 #### [Vendégfelhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
+#### [API és testreszabás](active-directory-b2b-api.md)
 #### [Meghívók delegálása](active-directory-b2b-delegate-invitations.md)
 #### [Dinamikus csoportok és B2B](active-directory-b2b-dynamic-groups.md)
-#### [Programkód- és PowerShell-minták](active-directory-b2b-code-samples.md)
-#### [SaaS-appok konfigurálása B2B esetén](active-directory-b2b-configure-saas-apps.md)
+#### [Többtényezős hitelesítés B2B esetén](active-directory-b2b-mfa-instructions.md)
 #### [B2B-felhasználói jogkivonatok](active-directory-b2b-user-token.md)
 #### [B2B-felhasználói jogcímek társítása](active-directory-b2b-claims-mapping.md)
 #### [Külső Office 365-megosztás](active-directory-b2b-o365-external-user.md)
+#### [SaaS-appok konfigurálása B2B esetén](active-directory-b2b-configure-saas-apps.md)
+#### [Programkód- és PowerShell-minták](active-directory-b2b-code-samples.md)
 #### [Aktuális korlátozások](active-directory-b2b-current-limitations.md)
+#### [Licencek](active-directory-b2b-licensing.md)
+#### [B2B-hibaelhárítás](active-directory-b2b-troubleshooting.md)
+#### [B2B-együttműködés összehasonlítása B2C-vel](active-directory-b2b-compare-b2c.md)
+#### [Támogatás igénybevétele B2B-hez](active-directory-b2b-support.md)
+#### [Gyakori kérdések](active-directory-b2b-faq.md)
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
 
 
@@ -219,9 +232,9 @@
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [Erőforrás-hozzáférés az Azure-ban](active-directory-understanding-resource-access.md)
 ### [Szerepköralapú hozzáférés-vezérlés](role-based-access-control-what-is.md)
-#### Hozzáférés kezelése
-##### [Azure Portal](role-based-access-control-manage-assignments.md)
-##### [Klasszikus portál](role-based-access-control-configure.md)
+#### Hozzáférés-hozzárendelések kezelése
+##### [Felhasználó szerint](role-based-access-control-manage-assignments.md)
+##### [Erőforrás szerint](role-based-access-control-configure.md)
 #### [Beépített szerepkörök](role-based-access-built-in-roles.md)
 #### [Egyéni szerepkörök](role-based-access-control-custom-roles.md)
 #### [Jelentéskészítés](role-based-access-control-access-change-history-report.md)
@@ -312,6 +325,6 @@
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -1,36 +1,41 @@
 # Áttekintés
-## [Mi az az Azure Government?](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
+## [Mi az az Azure Government?](documentation-government-welcome.md)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [Igazságügy és közbiztonság](documentation-government-overview-jps.md)
 ## [Védelmi Minisztérium](documentation-government-overview-dod.md)
 
 # Első lépések
-## [Fejlesztői útmutató](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
+## [Fejlesztői útmutató](documentation-government-developer-guide.md)
+## [Bejelentkezés az Azure Government portálra](documentation-government-get-started-connect-with-portal.md)
+## [Webapp üzembe helyezése](documentation-government-howto-deploy-webandmobile.md)
+## [Kapcsolódás a PowerShell-lel](documentation-government-get-started-connect-with-ps.md)
+## [Kapcsolódás parancssori felülettel](documentation-government-get-started-connect-with-cli.md)
+## [Visual Studio beállítása az Azure Governmenthez](documentation-government-get-started-connect-with-vs.md)
+## [Elérhető szolgáltatások](documentation-government-services.md)
 
 # Útmutató
 ## Felkészülés
 ### [Biztonság](documentation-government-plan-security.md)
 ### [Megfelelőség](documentation-government-plan-compliance.md)
 ## Kezelés
-### [Képek](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
-### [Piactér](documentation-government-manage-marketplace.md)
-### [Piactér partnerek számára](documentation-government-manage-marketplace-partners.md)
-### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
 ### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [Előfizetés](documentation-government-manage-subscriptions.md)
-## Üzembe helyezés
-### Web + mobil
-#### [App Services](documentation-government-howto-deploy-webandmobile.md)
+
 
 # Referencia
-## [Szolgáltatások](documentation-government-services.md)
+## [Képek](documentation-government-image-gallery.md)
+## [Piactér](documentation-government-manage-marketplace.md)
+## [Piactér partnerek számára](documentation-government-manage-marketplace-partners.md)
+
+## Szolgáltatások
 ### [Számítás](documentation-government-compute.md)
 ### [Tárolás](documentation-government-services-storage.md)
 ### [Adatbázis](documentation-government-services-database.md)
 ### [Hálózat](documentation-government-networking.md)
-### [Biztonság és identitás](documentation-government-services-securityandidentity.md)
+### [Biztonság + identitás](documentation-government-services-securityandidentity.md)
 ### [Felügyelet és kezelés](documentation-government-services-monitoringandmanagement.md)
 ### [Web + mobil](documentation-government-services-webandmobile.md)
+
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/)
