@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
-ms.author: billmath
+ms.date: 02/12/2017
+ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 99cd66d0fc4fc96c0b49e1ce3e3e2095fbe62395
+ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
+ms.openlocfilehash: 9569a850c6fadd86c408f9e9d4ec6d7d519744e8
 
 
 ---
@@ -30,8 +30,10 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | --- | --- |
 | Azure AD Premium |Az Azure AD Connect Health egy Azure AD Premium szolgáltatás, amelyhez Azure AD Premium szükséges. </br></br>További információkért lásd: [Ismerkedés az Azure AD Premium szolgáltatással](../active-directory-get-started-premium.md) </br>Egy 30 napos ingyenes próbaverzió indításához lásd: [Próbaverzió indítása.](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Az Azure AD Connect Health szolgáltatás indításához az Azure AD szolgáltatásban globális rendszergazdának kell lennie |Alapértelmezés szerint kizárólag a globális rendszergazdák telepíthetik és konfigurálhatják az állapotügynököket, hogy azok elinduljanak, a portálhoz hozzáférjenek, és műveleteket hajtsanak végre az Azure AD Connect Health szolgáltatásban. További információkért lásd: [Az Azure AD-címtár felügyelete](../active-directory-administer.md). <br><br> A szerepköralapú hozzáférés-vezérlés használatával hozzáférést engedhet az Azure AD Connect Health szolgáltatáshoz más felhasználók számára is a szervezetben. További információkért lásd: [Role Based Access Control for Azure AD Connect Health](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) (Szerepköralapú hozzáférés-vezérlés az Azure AD Connect Health-hez) </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie. Nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](../sign-up-organization.md) |
-| Az Azure AD Connect Health-ügynököt az összes célkiszolgálóra telepíteni kell |Az Azure AD Connect Health használatához egy ügynököt kell telepíteni mindegyik célkiszolgálón, amely a portálon megtekintett adatokat szolgáltatja. </br></br>Ha például az AD FS helyszíni infrastruktúrájával kapcsolatos adatokat kíván gyűjteni, az ügynököt telepíteni kell az AD FS-, az AD FS proxy- és a webalkalmazás-proxy kiszolgálókra. Szintén telepíteni kell az ügynököt a tartományvezérlőkre, ha a helyszíni AD DS-infrastruktúrával kapcsolatos adatokat kíván gyűjteni. </br></br>**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie. Nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](../sign-up-organization.md) |
-| Kimenő kapcsolódás az Azure szolgáltatásvégpontokra |A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Amennyiben blokkolta a kimenő kapcsolatot, bizonyosodjon meg róla, hogy az alábbi végpontok fel vannak véve az engedélyezett listára: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.queue.core.windows.net</li><li>adhsprodwus.servicebus.windows.net – port: 5671 </li><li>https://management.azure.com </li><li>https://s1.adhybridhealth.azure.com/</li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
+| Az Azure AD Connect Health-ügynököt az összes célkiszolgálóra telepíteni kell | Az Azure AD Connect Health használatához Health-ügynököket kell telepítenie és konfigurálnia a célkiszolgálókon az adatok fogadásához, valamint a monitorozási és elemzési funkciók biztosításához. </br></br>Ha például az AD FS-infrastruktúrájával kapcsolatos adatokat kíván gyűjteni, az ügynököt telepíteni kell az AD FS- és a webalkalmazásproxy-kiszolgálókra. Szintén telepíteni kell az ügynököt a tartományvezérlőkre, ha a helyszíni AD DS-infrastruktúrával kapcsolatos adatokat kíván gyűjteni. </br></br> |
+| Kimenő kapcsolódás az Azure szolgáltatásvégpontokra | A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha tűzfalakkal blokkolta a kimenő kapcsolatot, győződjön meg róla, hogy az alábbi végpontok fel vannak véve az engedélyezett listára: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.servicebus.windows.net – port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https://management.azure.com </li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
+|IP-címeken alapuló kimenő kapcsolatok | További információ az IP-cím-alapú tűzfalas szűrésről: [Azure-beli IP-tartományok](https://www.microsoft.com/en-us/download/details.aspx?id=41653).|
+| A kimenő forgalom SSL-vizsgálata le van tiltva, illetve a rendszer szűri | Az ügynök regisztrációja vagy adatfeltöltési műveletei meghiúsulhatnak, ha a hálózati rétegen SSL-ellenőrzés vagy megszakítás van érvényben a kimenő forgalomra. |
 | Az ügynököt futtató kiszolgáló tűzfalportjai. |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.</br></br><li>TCP/UDP port: 443</li><li>TCP/UDP port: 5671</li> |
 | Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva |Amennyiben az Internet Explorer – Fokozott biztonsági beállítások be van kapcsolva, az alábbi webhelyeket engedélyezni kell azon a kiszolgálón, amelyiken az ügynök telepítve lesz.</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https://sts.contoso.com</li> |
 
@@ -44,13 +46,15 @@ Amint a telepítés befejeződött, kattintson a Configure Now (Konfigurálás m
 
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health-requirements/install2.png)
 
-Ekkor megnyílik egy parancssor, utána egy PowerShell parancsmag, amely végrehajtja a Register-AzureADConnectHealthADFSAgent parancsot. Ha a rendszer arra kéri, hogy jelentkezzen be az Azure-ba, lépjen tovább, és jelentkezzen be.
+Ez elindít egy PowerShell-ablakot, amely az ügynök regisztrációs folyamatának elindítására szolgál. Ha a rendszer kéri, jelentkezzen be egy Azure AD-fiókkal, amely jogosultsággal rendelkezik az ügynökök regisztrációjához. Alapértelmezés szerint a globális rendszergazdai fiók jogosult erre.
 
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health-requirements/install3.png)
 
 A bejelentkezést követően a PowerShell továbblép. Amint befejeződött, bezárhatja a PowerShellt, és a konfiguráció véget ér.
 
-Ezen a ponton a szolgáltatásoknak automatikusan el kell indulniuk, lehetővé téve az ügynök számára az adatok figyelését és gyűjtését. Amennyiben nem teljesítette az előző szakaszokban vázolt összes előfeltételt, figyelmeztetések jelennek meg a PowerShell-ablakban. Az ügynök telepítése előtt mindenképp teljesítenie kell a [követelményeket](active-directory-aadconnect-health-agent-install.md#requirements). A következő képernyőfelvétel egy példa az ilyen hibákra.
+Ezen a ponton az ügynökszolgáltatások automatikusan elindulnak, így az ügynök biztonságosan feltöltheti az adatokat a felhőszolgáltatásba.
+
+Amennyiben nem teljesítette az előző szakaszokban vázolt összes előfeltételt, figyelmeztetések jelennek meg a PowerShell-ablakban. Az ügynök telepítése előtt mindenképp teljesítenie kell a [követelményeket](active-directory-aadconnect-health-agent-install.md#requirements). A következő képernyőfelvétel egy példa az ilyen hibákra.
 
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health-requirements/install4.png)
 
@@ -76,13 +80,12 @@ Windows Server 2008 R2 kiszolgálók esetén végezze el a következő lépések
 
 ### <a name="enable-auditing-for-ad-fs"></a>AD FS-naplózás engedélyezése
 > [!NOTE]
-> Ez a szakasz csak az AD FS összevonási kiszolgálókra vonatkozik.
-> 
-> 
+> Ez a szakasz csak az AD FS-kiszolgálókra vonatkozik. Ezeket a lépéseket a webalkalmazásproxy-kiszolgálók esetében nem kell követnie.
+>
 
 Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthessen és elemezhessen, az Azure AD Connect Health-ügynöknek szüksége van az AD FS-naplókra. Ezek a naplók alapértelmezés szerint nincsenek bekapcsolva. Az AD FS-naplózás engedélyezéséhez és az AD FS-naplók helyének meghatározásához az AD FS-kiszolgálókon, kövesse az alábbi lépéseket.
 
-#### <a name="to-enable-auditing-for-ad-fs-20"></a>Az AD FS 2.0 naplózásának engedélyezése
+#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Az AD FS naplózásának engedélyezése Windows Server 2008 R2 rendszeren
 1. Kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson a **Helyi biztonsági házirend** parancsra.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kezelése** mappára, majd kattintson duplán a Biztonsági naplózás létrehozása elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS 2.0 szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
@@ -97,11 +100,25 @@ Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthesse
 1. A **Helyi biztonsági házirend** megnyitásához kattintson a **Kiszolgálókezelő** elemre a Kezdőképernyőn, vagy a Kiszolgálókezelő elemre az asztali tálcán, majd kattintson az **Eszközök/Helyi biztonsági házirend** elemre.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
-4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot:<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: ```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```.
 5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
 6. A Műveletek panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
 7. Az Összevonási szolgáltatás tulajdonságai párbeszédpanelen kattintson az **Események** lapra.
 8. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra.
+
+#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Az AD FS naplózásának engedélyezése Windows Server 2016 rendszeren
+1. A **Helyi biztonsági házirend** megnyitásához kattintson a **Kiszolgálókezelő** elemre a Kezdőképernyőn, vagy a Kiszolgálókezelő elemre az asztali tálcán, majd kattintson az **Eszközök/Helyi biztonsági házirend** elemre.
+2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
+3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** elemre kattintva adja hozzá az AD FS-szolgáltatásfiókot, majd kattintson az **OK** gombra.
+4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot:<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
+6. A Műveletek panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
+7. Az Összevonási szolgáltatás tulajdonságai párbeszédpanelen kattintson az **Események** lapra.
+8. Jelölje be a **Sikernaplók és a Hibanaplók** jelölőnégyzeteket, majd kattintson az **OK** gombra. Ez alapértelmezés szerint ennek engedélyezett.
+9. Nyisson meg egy PowerShell-ablakot, és futtassa a következő parancsot: ```Set-AdfsProperties -AuditLevel Verbose```.
+
+Vegye figyelembe, hogy alapértelmezés szerint az „alapszintű” naplózási szint van engedélyezve. További információ a [Windows Server 2016 AD FS naplózási fejlesztéseiről](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)
+
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>Az AD FS-naplók helyének meghatározása
 1. Nyissa meg az **Eseménynaplót**.
@@ -112,11 +129,9 @@ Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthesse
 ![AD FS-naplók](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [!WARNING]
-> Amennyiben létezik egy olyan csoportházirend, amelyik letiltja az AD FS-naplózást, akkor az Azure AD Connect Health-ügynök nem tudja gyűjteni az adatokat. Győződjön meg róla, hogy nem rendelkezik olyan csoportházirenddel, amely letiltaná a naplózást.
-> 
-> 
+> Csoportházirenddel letiltható az AD FS-naplózás. Ha az AD FS-naplózás le van tiltva, a bejelentkezési tevékenységek használatelemzései nem érhetők el. Győződjön meg róla, hogy nem rendelkezik olyan csoportházirenddel, amely letiltja az AD FS-naplózást.>
+>
 
-[//]: # (Start of Agent Proxy Configuration Section)
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Az Azure AD Connect Health-ügynök telepítése szinkronizáláshoz
 Az Azure AD Connect Health szinkronizálási ügynöke automatikusan települ az Azure AD Connect legújabb buildjével. Az Azure AD Connect szinkronizáláshoz való használatához le kell töltenie és telepítenie kell annak legújabb verzióját. A legújabb verziót [innen](http://www.microsoft.com/download/details.aspx?id=47594) töltheti le.
@@ -130,16 +145,16 @@ Az ügynök telepítésének ellenőrzéséhez keresse meg a következő szolgá
 
 > [!NOTE]
 > Ne feledje, hogy az Azure AD Connect Health használatához az Azure AD Premium megléte szükséges. Ha nem rendelkezik az Azure AD Premiummal, nem tudja elvégezni a konfigurálást az Azure Portalon. További információkért lásd a [követelményeket tartalmazó oldalt](active-directory-aadconnect-health-agent-install.md#requirements).
-> 
-> 
+>
+>
 
 ## <a name="manual-azure-ad-connect-health-for-sync-registration"></a>Az Azure AD Connect Health for Sync manuális regisztrációja
 Ha az Azure AD Connect sikeres telepítését követően az Azure AD Connect Health for Sync-ügynök regisztrációja meghiúsul, a következő PowerShell-parancs használatával manuálisan regisztrálhatja az ügynököt.
 
 > [!IMPORTANT]
 > A PowerShell-parancs használata csak akkor szükséges, ha az ügynök regisztrálása meghiúsul az Azure AD Connect telepítése után.
-> 
-> 
+>
+>
 
 A következő PowerShell-parancs CSAK akkor szükséges, ha az állapotügynök regisztrálása meghiúsul az Azure AD Connect sikeres telepítése és konfigurációja után. Az Azure AD Connect Health szolgáltatások csak az ügynök sikeres telepítése után indulnak el.
 
@@ -182,10 +197,27 @@ Ha a konfigurációt elvégezte, ezeknek a szolgáltatásoknak már futniuk kell
 
 ![Az Azure AD Connect Health ellenőrzése](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
 
-## <a name="installing-the-azure-ad-connect-health-agent-for-ad-ds-on-server-core"></a>Az Azure AD Connect Health Agent for AD DS telepítése Server Core telepítésen.
-A .exe fájl telepítése után a regisztrációs folyamatot a következő PowerShell-parancs használatával hajthatja végre:
 
-`Register-AzureADConnectHealthADDSAgent -Credential $cred`
+### <a name="agent-registration-using-powershell"></a>Ügynök regisztrációja a PowerShell használatával
+A megfelelő ügynökhöz tartozó setup.exe telepítése után a szerepkörtől függően a következő PowerShell-parancsokkal végezheti el az ügynök regisztrációját. Nyisson meg egy PowerShell-ablakot, és hajtsa végre a megfelelő parancsot:
+
+```
+    Register-AzureADConnectHealthADFSAgent
+    Register-AzureADConnectHealthADDSAgent
+    Register-AzureADConnectHealthSyncAgent
+
+```
+
+Ezek a parancsok elfogadják a „Credential” paramétert a regisztráció nem interaktív, illetve Server-Core gépen való végrehajtásához.
+* A hitelesítő adat rögzíthető egy PowerShell-változóban, amelyet a rendszer paraméterként ad tovább.
+* Bármilyen Azure AD-identitást megadhat, amely jogosultsággal rendelkezik az ügynökök regisztrációjához, és amelyen NINCS engedélyezve az MFA.
+* Alapértelmezés szerint a globális rendszergazdák rendelkeznek jogosultsággal az ügynökök regisztrációjához. Más, kevesebb jogosultságokkal rendelkező identitásokkal is végrehajtathatja ezt a lépést. További tudnivalók a [szerepköralapú hozzáférés-vezérlésről](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control).
+
+```
+    $cred = Get-Credential
+    Register-AzureADConnectHealthADFSAgent -Credential $cred
+
+```
 
 ## <a name="configure-azure-ad-connect-health-agents-to-use-http-proxy"></a>Azure AD Connect Health-ügynökök konfigurálása HTTP proxyk használatára
 Az Azure AD Connect Health-ügynököket konfigurálhatja úgy, hogy HTTP proxyval működjenek.
@@ -194,8 +226,8 @@ Az Azure AD Connect Health-ügynököket konfigurálhatja úgy, hogy HTTP proxyv
 > * A „Netsh WinHttp set ProxyServerAddress” használata nem támogatott, mivel az ügynök a System.Net használatával adja le a webes kérelmeket, és nem a Microsoft Windows HTTP szolgáltatásokkal.
 > * A rendszer a konfigurált Http proxy címét használja a titkosított Https üzenetek átengedésére.
 > * A hitelesített proxyk (HTTPBasic használatával) nem támogatottak.
-> 
-> 
+>
+>
 
 ### <a name="change-health-agent-proxy-configuration"></a>Állapotügynök proxykonfigurációjának módosítása
 Az alábbi beállítások használhatóak az Azure AD Connect Health-ügynökök konfigurálásához a HTTP proxyk használatára.
@@ -203,8 +235,8 @@ Az alábbi beállítások használhatóak az Azure AD Connect Health-ügynökök
 > [!NOTE]
 > A proxybeállítások frissítéséhez újra kell indítania az összes Azure AD Connect Health-ügynök szolgáltatást. Futtassa az alábbi parancsot:<br>
 > Restart-Service AdHealth*
-> 
-> 
+>
+>
 
 #### <a name="import-existing-proxy-settings"></a>Meglévő proxybeállítások importálása
 ##### <a name="import-from-internet-explorer"></a>Importálás Internet Explorerből
@@ -258,8 +290,8 @@ A parancs -ShowResults jelzőjével megtekintheti a részletes naplókat. Haszn�
 
 > [!NOTE]
 > A kapcsolódási eszköz használatához először el kell végeznie az ügynök regisztrációját. Amennyiben nem tudja elvégezni az ügynök regisztrációját, bizonyosodjon meg róla, hogy az Azure AD Connect Health összes [követelményének](active-directory-aadconnect-health-agent-install.md#requirements) megfelel. A kapcsolódási teszt végrehajtása alapértelmezés szerint megtörténik az ügynök regisztrációja során.
-> 
-> 
+>
+>
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
@@ -271,8 +303,6 @@ A parancs -ShowResults jelzőjével megtekintheti a részletes naplókat. Haszn�
 * [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
 
 
-
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

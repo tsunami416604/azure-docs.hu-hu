@@ -1,4 +1,4 @@
-Ha Azure Redis Cache gyorsítótárhoz szeretne csatlakozni, a gyorsítótárügyfeleknek szüksége lesz az állomásnévre, a portokra és a gyorsítótár kulcsaira. Egyes ügyfelek különböző neveken hivatkozhatnak ezekre az elemekre. Az elemek lekéréséhez [tallózzon](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) a saját gyorsítótárához az [Azure Portalon](https://portal.azure.com), és kattintson a **Beállítások** vagy az **Összes beállítás** elemre. 
+Ha Azure Redis Cache gyorsítótárhoz szeretne csatlakozni, a gyorsítótárügyfeleknek szüksége lesz az állomásnévre, a portokra és a gyorsítótár kulcsaira. Egyes ügyfelek különböző neveken hivatkozhatnak ezekre az elemekre. Az elemek lekéréséhez [tallózzon](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) a saját gyorsítótárához az [Azure Portalon](https://portal.azure.com), és kattintson a kívánt elemre az **Erőforrás menüben**. 
 
 ![A Redis Cache-gyorsítótár beállításai](media/redis-cache-access-keys/redis-cache-settings.png)
 
@@ -14,6 +14,6 @@ A elérési kulcsok lekéréséhez kattintson az **Access keys** (Elérési kulc
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

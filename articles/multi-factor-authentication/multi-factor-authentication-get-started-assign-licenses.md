@@ -1,5 +1,5 @@
 ---
-title: "Licencek hozzárendelése az Azure MFA-hoz |Microsoft Azure"
+title: "Azure MFA-licencek kiosztása | Microsoft Docs"
 description: "Megtudhatja, hogyan rendelhet felhasználói licenceket a Microsoft Azure Multi-Factor Authentication hitelesítéshez."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c93db18866478556e91da8acbc9f0c749b65dc62
+ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
+ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
 
 
 ---
@@ -38,9 +38,11 @@ Ha Azure MFA, Azure AD Prémium vagy Nagyvállalati mobilitási csomag licenceke
 9. Ekkor egy üzenet jelenik meg amely tartalmazza, hány licenc lett hozzárendelve, és hány hozzárendelése sikertelen.  Kattintson az **OK** gombra.
    ![Licencek hozzárendelése](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
+## <a name="next-steps"></a>Következő lépések
+
+- További információkért lásd [a Microsoft Azure Active Directory-licencelést](../active-directory/active-directory-licensing-what-is.md) ismertető témakört.
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
