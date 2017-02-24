@@ -39,9 +39,10 @@
 ## Integráció az Azure-szolgáltatásokkal
 ### [Hozzáférés virtuális gépekről az Azure VNET-ben](data-lake-store-connectivity-from-vnets.md)
 ### [Használat a Data Lake Analytics-szel](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [HDInsight-fürt létrehozása a Data Lake Store-ral a Portalon](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [HDInsight-fürt létrehozása a Data Lake Store-ral a PowerShell használatával](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [HDInsight-fürt létrehozása a Data Lake Store-ral Resource Manager-sablon használatával](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [HDInsight Data Lake Store-ral – portál](data-lake-store-hdinsight-hadoop-use-portal.md)
+### [HDInsight Data Lake Store-ral alapértelmezett tárolóként – PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+### [HDInsight Data Lake Store-ral kiegészítő tárolóként– PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+### [HDInsight Data Lake Store-ral – Azure-sablon](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Használat a Data Factory-val](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Használat a Stream Analytics-szel](data-lake-store-stream-analytics.md)
 ### [Használat a Power BI-jal](data-lake-store-power-bi.md)
@@ -71,6 +72,6 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

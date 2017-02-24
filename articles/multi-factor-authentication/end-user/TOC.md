@@ -10,10 +10,12 @@
 ## [Hibaelhárítás](multi-factor-authentication-end-user-troubleshoot.md)
 ## [Alkalmazásjelszavak beállítása](multi-factor-authentication-end-user-app-passwords.md)
 ## A Microsoft Authenticator használata
-### [Első lépések](microsoft-authenticator-app-how-to.md)
+### [Bevezetés az alkalmazás használatába](microsoft-authenticator-app-how-to.md)
+### [Bejelentkezés telefonnal](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 

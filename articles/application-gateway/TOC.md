@@ -1,5 +1,6 @@
 # Áttekintés
 ## [Mi az Application Gateway?](application-gateway-introduction.md)
+## [Application Gateway – gyakori kérdések](application-gateway-faq.md)
 ## [Web application firewall (Webalkalmazási tűzfal)](application-gateway-webapplicationfirewall-overview.md)
 ## [Állapotfigyelés](application-gateway-probe-overview.md)
 ## [URL-útválasztás](application-gateway-url-route-overview.md)
@@ -38,10 +39,9 @@
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
-## Kezelés
-### [Diagnosztika](application-gateway-diagnostics.md)
-### [Hibaelhárítás](application-gateway-troubleshooting-502.md)
-
+## Hibaelhárítás
+### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)
+### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)
 # Referencia
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
 ## [Azure CLI 2.0 előzetes verzió](/cli/azure/network/application-gateway)
@@ -50,7 +50,7 @@
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
-## [REST](https://msdn.microsoft.com/library/mt684941)
+## [REST](https://docs.microsoft.com/rest/api/applicationgateway)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt299393)
 # Kapcsolódó
 ## [ExpressRoute](/azure/expressroute/)
@@ -67,6 +67,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -52,8 +52,19 @@
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
+## [Fenyegetésmodellezési eszköz](azure-security-threat-modeling-tool.md)
+###[Audit és naplózás](azure-security-threat-modeling-tool-auditing-and-logging.md)
+###[Hitelesítés](azure-security-threat-modeling-tool-authentication.md)
+###[Engedélyezés](azure-security-threat-modeling-tool-authorization.md)
+###[Kommunikációs biztonság](azure-security-threat-modeling-tool-communication-security.md)
+###[Konfigurációkezelés](azure-security-threat-modeling-tool-configuration-management.md)
+###[Titkosítás](azure-security-threat-modeling-tool-cryptography.md)
+###[Kivételek kezelése](azure-security-threat-modeling-tool-exception-management.md)
+###[Bemenet-ellenőrzés](azure-security-threat-modeling-tool-input-validation.md)
+###[Bizalmas adatok](azure-security-threat-modeling-tool-sensitive-data.md)
+###[Munkamenet-kezelés](azure-security-threat-modeling-tool-session-management.md)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

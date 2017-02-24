@@ -3,6 +3,7 @@
 ## [Mi az App Service?](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [App Service-csomagok](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [App Service Linuxon](app-service-linux-intro.md)
+## [App Service Linuxon – gyakori kérdések](app-service-linux-faq.md)
 
 # Bevezetés
 
@@ -13,7 +14,7 @@
 ### [Python](app-service-web-get-started-python.md)
 ### [Java](app-service-web-get-started-java.md)
 ### [Marketplace-alkalmazás](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-get-started-php.md)   
+### [PHP](app-service-web-get-started-php.md)    
 
 ## API Apps
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -60,10 +61,13 @@
 ### [Azure Portal](app-service-web-app-azure-portal.md)
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
+
 ### ASP.NET-alkalmazások
 #### [ASP.NET-alapú alkalmazás létrehozása az Azure-ban Visual Studio használatával](web-sites-dotnet-get-started.md)
 #### [REST-szolgáltatás létrehozása az ASP.NET Web API használatával](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [ASP.NET 5-alapú webalkalmazás létrehozása Visual Studio Code-ban](web-sites-create-web-app-using-vscode.md)
+#### [A .NET Core használata a Web Appsban Linuxon](app-service-linux-using-dotnetcore.md)
+
 
 ### Node.js-alkalmazások
 #### [Node.js-alkalmazások fejlesztése az App Service számára](app-service-web-nodejs-get-started.md)
@@ -74,7 +78,7 @@
 #### [Építés és üzembe helyezés a WebMatrix eszközzel](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP-alkalmazások
-#### [PHP-alkalmazások fejlesztése az App Service számára](app-service-web-php-get-started.md) 
+#### [PHP-alkalmazások fejlesztése az App Service számára](app-service-web-php-get-started.md)    
 #### [PHP-SQL webalkalmazás létrehozása és üzembe helyezése a Git segítségével](web-sites-php-sql-database-deploy-use-git.md)
 #### [WordPress-webalkalmazás létrehozása az Azure App Service szolgáltatásban](web-sites-php-web-site-gallery.md)
 #### [MySQL-adatbázis létrehozása és kapcsolódás hozzá az Azure-ban](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
@@ -98,6 +102,9 @@
 #### [Flask- és Table Storage-alapú alkalmazások készítése a Python Tools 2.2 for Visual Studio eszközzel](web-sites-python-ptvs-flask-table-storage.md)
 #### [Django és MySQL az Azure-ban, Python Tools 2.2 for Visual Studio alkalmazással](web-sites-python-ptvs-django-mysql.md)
 #### [Django és SQL Database az Azure-ban, Python Tools 2.2 for Visual Studio alkalmazással](web-sites-python-ptvs-django-sql.md)
+
+### Ruby-appok
+#### [A Ruby használata a linuxos Web Appsban](app-service-linux-using-ruby.md)
 
 ### [Helyezze üzembe az első alapszintű webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-html.md)
 ### [Ismerkedés az éles környezetben végzett teszteléssel a Web Apps használatával](app-service-web-test-in-production-get-start.md)
@@ -144,9 +151,11 @@
 #### [A Python konfigurálása](web-sites-python-configure.md)
 #### [A Node.js indításának konfigurálása Linuxon](app-service-linux-using-nodejs-pm2.md)
 
+
 ### Egyéni tartományok
 #### [Egyéni tartományok vásárlása és konfigurálása](custom-dns-web-site-buydomains-web-app.md)
 #### [Saját egyéni tartomány leképezése](web-sites-custom-domain-name.md)
+#### [Aktív egyéni tartomány migrálása](app-service-custom-domain-name-migrate.md)
 #### [GoDaddy-tartományok konfigurálása](web-sites-godaddy-custom-domain-name.md)
 #### [Egyéni tartományok létrehozása a Traffic Managerrel](web-sites-traffic-manager-custom-domain-name.md)
 
@@ -267,6 +276,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

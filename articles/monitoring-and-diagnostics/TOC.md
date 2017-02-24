@@ -45,7 +45,7 @@
 ## [Azure Diagnostics-séma](../monitoring-and-diagnostics/azure-diagnostics-schema.md)
 ### [Diagnostics-séma 1.0](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md)
 ### [Diagnostics-séma 1.2](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md)
-### [Diagnostics-séma 1.3-tól 1.5-ig](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5.md)
+### [Diagnostics-séma 1.3-tól 1.7-ig](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
 
 
 # Erőforrások
@@ -54,6 +54,6 @@
 ## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

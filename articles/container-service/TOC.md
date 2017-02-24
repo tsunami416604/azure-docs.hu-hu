@@ -3,7 +3,7 @@
 ## [Gyakori kérdések](container-service-faq.md)
 # Első lépések
 ## [ACS-fürt üzembe helyezése](container-service-deployment.md)
-## [Üzembe helyezés az ACS-en az Azure CLI 2.0 előzetes verziójával](container-service-create-acs-cluster-cli.md)
+## [Üzembe helyezés az ACS-en az Azure CLI 2.0-s verziójával](container-service-create-acs-cluster-cli.md)
 ## [Kapcsolódás ACS-fürthöz](container-service-connect.md)
 ## [ACS-fürt méretezése](container-service-scale.md)
 # Útmutató
@@ -23,6 +23,7 @@
 #### [Figyelés a Dynatrace-szel](container-service-monitoring-dynatrace.md)
 ## Kezelés a Kubernetes használatával
 ### [Bevezetés a Kubernetes használatába](container-service-kubernetes-walkthrough.md)
+### [Bevezetés a Kubernetes és a Windows használatába](container-service-kubernetes-windows-walkthrough.md)
 ### [Egyszerű szolgáltatás konfigurálása](container-service-kubernetes-service-principal.md)
 ### [Tárolókezelés – Kubernetes felhasználói felület](container-service-kubernetes-ui.md)
 ### [Terheléselosztó Kubernetes-tárolók](container-service-kubernetes-load-balancing.md)
@@ -34,7 +35,7 @@
 ### [A Docker és a Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm folyamatos integráció](container-service-docker-swarm-setup-ci-cd.md)
 # Referencia
-## [Azure CLI 2.0 (előzetes verzió)](/cli/azure/acs)
+## [Azure CLI 2.0](/cli/azure/acs)
 ## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
 ## [REST](/rest/api/compute/containerservices)
@@ -44,6 +45,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 
