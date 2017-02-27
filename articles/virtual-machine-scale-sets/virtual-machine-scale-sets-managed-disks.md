@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/14/2017
+ms.date: 2/21/2017
 ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: db84d2b03ad1542a898c2c452e62a3f7ef7e6af8
@@ -35,7 +35,7 @@ Az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-sca
 
 A felügyelt lemezes méretezési csoportok használatát úgy kezdheti el a legegyszerűbben, ha az Azure Portalon üzembe helyez egyet. További információkért tekintse meg [ezt a cikket](./virtual-machine-scale-sets-portal-create.md). Az első lépések másik egyszerű módja, ha az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)-s verziójával üzembe helyez egy méretezési csoportot. A következő példa bemutatja, hogyan hozhat létre Ubuntu-alapú méretezési csoportot 10 virtuális géppel, amelyek mindegyike 50 GB-os és 100 GB-os adatlemezzel rendelkezik:
 
-```bash
+```azurecli
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
