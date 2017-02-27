@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: d3047cd4cddb23c4daeb9265afc4d7b3fe30d46c
-ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 97bbb72e044d86375afd1dc2ba40c90681e5d9a1
 
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Tároló-beállításjegyzék létrehozása az Azure Portalon
-Az Azure Portalon létrehozhat egy tároló-beállításjegyzéket, és kezelheti a beállításait. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure CLI 2.0 előzetes verziója parancsaival](container-registry-get-started-azure-cli.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
+Az Azure Portalon létrehozhat egy tároló-beállításjegyzéket, és kezelheti a beállításait. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure CLI 2.0 parancsaival](container-registry-get-started-azure-cli.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
 
 Háttérinformációkért és a fogalmakkal kapcsolatban lásd: [Mi az az Azure Container Registry?](container-registry-intro.md)
 
@@ -77,6 +77,6 @@ A beállításjegyzék létrehozását követően a beállításjegyzék-beáll�
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

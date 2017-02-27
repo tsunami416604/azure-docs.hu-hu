@@ -1,6 +1,6 @@
 ---
 title: "Munkaterületek kezelése | Microsoft Docs"
-description: "A Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat használhat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon."
+description: "Az Azure Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat használhat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/03/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 96a971c31f9088b3aa409a85f0679fd3bd5945d1
-ms.openlocfilehash: 4dc1bfa1e385e945c47bbfc5faa776e577ee84b2
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
 
 
 ---
@@ -97,10 +97,13 @@ Néhány dolog, amit érdemes észben tartani az Azure Portal kapcsán:
 
   Az URL-cím az alábbihoz hasonló: `https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12`
 
+Például felügyeleti megoldások hozzáadásához vagy eltávolításához a felhasználónak az Azure Portal használatakor egy Azure-előfizetés rendszergazdájának vagy közreműködőjének kell lennie. Emellett a felhasználó az OMS-munkaterület közreműködői csoportjának tagja vagy az OMS-portál rendszergazdája kell, hogy legyen.
+
 ### <a name="managing-users-in-the-oms-portal"></a>Az OMS-portál felhasználóinak kezelése
 A felhasználók és csoportok kezelése a Beállítások oldal **Fiókok** lapjának **Felhasználók kezelése** fülére kattintva történik.   
 
 ![felhasználók kezelése](./media/log-analytics-manage-access/setup-workspace-manage-users.png)
+
 
 #### <a name="add-a-user-to-an-existing-workspace"></a>Felhasználó hozzáadása meglévő munkaterülethez
 A következő lépésekkel adhat hozzá egy felhasználót vagy csoportot egy munkaterülethez.
@@ -298,6 +301,6 @@ Ha Ön rendszergazda, és több felhasználó van társítva a munkaterülethez,
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: f82634af931a1e9a9646c5631ebd0e5923a0adcc
-ms.openlocfilehash: cbb6de4587871c40c9d4e97c9fb2a88eab4945a6
+ms.sourcegitcommit: 3396818cd177330b7123f3a346b1591a4bcb1e4e
+ms.openlocfilehash: f0edea9c1509b0eb4b2590019610ccc9eb9d5f55
 
 
 ---
@@ -24,9 +24,7 @@ ms.openlocfilehash: cbb6de4587871c40c9d4e97c9fb2a88eab4945a6
 
 A cikkből megtudhatja, hogyan használható az Azure Site Recovery szolgáltatás virtuális gépek és fizikai kiszolgálók áttelepítésére.
 
-A legtöbb vállalatnál szükség van üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak az alkalmazások, a számítási feladatok és az adatok üzemben maradni a tervezett és nem tervezett leállások során, illetve, hogy hogyan lehet minél gyorsabban visszaállni a normál működésre. Fontos, hogy a BCDR stratégia gondoskodjon a vállalati adatok biztonságáról és helyreállíthatóságáról, és lehetővé tegye, hogy a számítási feladatok még vészhelyzet esetén se álljanak le.
-
-Az Azure Site Recovery szolgáltatása a helyszíni fizikai kiszolgálóknak és virtuális gépeknek az Azure-felhőbe vagy egy másodlagos adatközpontba történő replikálásával segít a stratégia kidolgozásában. Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat. További információ: [Mi a Site Recovery?](site-recovery-overview.md)
+Az Azure Site Recovery szolgáltatása a helyszíni fizikai kiszolgálóknak és virtuális gépeknek az Azure-felhőbe vagy egy másodlagos adatközpontba történő replikálásával segít a stratégia kidolgozásában. Ha az elsődleges helyen valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak le. Ha az elsődleges helyen helyreáll a normál működés, a rendszer visszaadja a feladatokat. További információ: [Mi a Site Recovery?](site-recovery-overview.md) A Site Recoveryvel áttelepítheti a meglévő helyszíni számítási feladatokat az Azure-ba a felhőre való átállás elősegítése és az Azure-szolgáltatások kihasználása érdekében.
 
 A jelen cikk az [Azure Portalon](https://portal.azure.com) végzett üzembe helyezést ismerteti. A [klasszikus Azure portál](https://manage.windowsazure.com/) használható a meglévő Site Recovery-tárolók fenntartására, de új tárolókat nem hozhat létre.
 
@@ -35,7 +33,7 @@ Felmerülő megjegyzéseit a cikk alján teheti közzé. Műszaki jellegű kérd
 
 ## <a name="what-do-we-mean-by-migration"></a>Mit értünk áttelepítés alatt?
 
-Üzembe helyezheti a Site Recovery szolgáltatást helyszíni virtuális gépek és fizikai kiszolgálók Azure-ra vagy egy másodlagos helyre történő teljes replikálásához. Replikálhat gépeket, kimaradások esetén átadhatja a feladataikat az elsődleges helyről, és amikor az elsődleges helyen helyreáll a rendes működés, visszaadhatja a feladatokat. A Site Recoveryt a teljes replikáció mellett virtuális gépek és fizikai kiszolgálók Azure-ra történő áttelepítéséhez is használhatja, hogy a felhasználók hozzáférhessenek a gépeken futó számítási feladatokhoz az Azure virtuális gépekről. Az áttelepítés magában foglalja a replikálást és az elsődleges helyről az Azure-ra irányuló feladatátvételt. A teljes replikációval ellentétben feladat-visszavételi mechanizmust nem tartalmaz.
+A Site Recovery üzembe helyezésével a helyszíni virtuális gépeket és fizikai kiszolgálókat az Azure-ba vagy egy másodlagos helyre replikálhatja. Replikálhat gépeket, kimaradások esetén átadhatja a feladataikat az elsődleges helyről, és amikor az elsődleges helyen helyreáll a rendes működés, visszaadhatja a feladatokat. A Site Recoveryt emellett virtuális gépek és fizikai kiszolgálók Azure-ra történő áttelepítéséhez is használhatja, hogy a felhasználók hozzáférhessenek ezekhez Azure-beli virtuális gépekként. Az áttelepítés magában foglalja a replikálást és az elsődleges helyről az Azure-ra irányuló feladatátvételt, valamint egy teljes áttelepítési parancsot.
 
 ## <a name="what-can-site-recovery-migrate"></a>Melyen típusú áttelepítéseket lehet elvégezni a Site Recoveryvel?
 
@@ -49,7 +47,9 @@ A következőket teheti:
 
 Helyszíni Hyper-V- és VMWare-alapú virtuális gépek, illetve fizikai kiszolgálók áttelepítéséhez szinte ugyanazokat a lépéseket kell követnie, amelyeket egy szokványos replikációnál használ. Állítsa be a Recovery Services-tárolót, konfigurálja a szükséges felügyeleti kiszolgálót (attól függően, hogy mit szeretne áttelepíteni), adja hozzá a tárolóhoz, majd adja meg a replikációs beállításokat. Engedélyezze a replikációt azoknál a gépeknél, amelyeket szeretné áttelepíteni, majd futtasson le egy gyors feladatátvételi tesztet annak ellenőrzéséhez, hogy minden megfelelően működik-e.
 
-A replikációs környezet működésének ellenőrzése után, attól függően, hogy a forgatókönyv [mit támogat](site-recovery-failover.md#failover-and-failback), indítson el egy tervezett vagy nem tervezett feladatátvételt. Az áttelepítéséhez nem véglegesíteni a feladatátvételt, és nem kell törölnie semmit. Ehelyett válassza az **Áttelepítés befejezése** lehetőséget az összes áttelepíteni kívánt gépnél. Az **Áttelepítés befejezése** művelet befejezi az áttelepítési folyamatot, eltávolítja a gép replikációját, és leállítja a gép Site Recovery-számlázását.
+A replikációs környezet működésének ellenőrzése után, attól függően, hogy a forgatókönyv [mit támogat](site-recovery-failover.md#failover-and-failback), indítson el egy tervezett vagy nem tervezett feladatátvételt. Az áttelepítéséhez nem kell véglegesíteni a feladatátvételt. Ehelyett válassza az **Áttelepítés befejezése** lehetőséget az összes áttelepíteni kívánt gépnél. Az **Áttelepítés befejezése** művelet befejezi az áttelepítési folyamatot, eltávolítja a gép replikációját, és leállítja a gép Site Recovery-számlázását.
+
+![teljesáttelepítés](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 
 ## <a name="migrate-between-azure-regions"></a>Áttelepítés Azure-régiók között
 
@@ -65,7 +65,6 @@ AWS-példányokat is áttelepíthet Azure virtuális gépekre. Ebben a forgatók
 ## <a name="next-steps"></a>Következő lépések
 
 - [VMware virtuális gépek áttelepítése az Azure-ba](site-recovery-vmware-to-azure.md)
-- [Fizikai kiszolgálók áttelepítése az Azure-ba](site-recovery-vmware-to-azure.md)
 - [VMM-felhőben lévő Hyper-V virtuális gépek áttelepítése az Azure-ba](site-recovery-vmm-to-azure.md)
 - [VMM nélküli Hyper-V virtuális gépek áttelepítése az Azure-ba](site-recovery-hyper-v-site-to-azure.md)
 - [Azure virtuális gépek áttelepítése Azure-régiók között](site-recovery-migrate-azure-to-azure.md)
@@ -73,6 +72,6 @@ AWS-példányokat is áttelepíthet Azure virtuális gépekre. Ebben a forgatók
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

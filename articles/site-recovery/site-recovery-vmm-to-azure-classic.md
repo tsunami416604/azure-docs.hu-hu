@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: 28c41f08bf8eaf7e6679040bb8fbab2e134d08fb
+ms.sourcegitcommit: e34b10aec5ee4316c8e2ffc03e1714dc6753e4d1
+ms.openlocfilehash: 96504042c4fb6a83c4ab2c35c20a8264d7db85bb
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 28c41f08bf8eaf7e6679040bb8fbab2e134d08fb
 >
 >
 
-Az Azure Site Recovery szolgáltatás a virtuális gépek és a fizikai kiszolgálók replikálásával, feladatátvételével és helyreállításával segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A gépeket az Azure-ba, vagy egy másodlagos helyszíni adatközpontba replikálhatja. A szolgáltatás gyors áttekintéséhez olvassa el a [What is Azure Site Recovery?](site-recovery-overview.md) (Mire használható az Azure Site Recovery szolgáltatás?) című cikket.
+Az Azure Site Recovery szolgáltatás a virtuális gépek és a fizikai kiszolgálók replikálásával, feladatátvételével és helyreállításával segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A gépeket az Azure-ba, vagy egy másodlagos helyszíni adatközpontba replikálhatja. A szolgáltatás gyors áttekintéséhez olvassa el az [Azure Site Recovery szolgáltatás mibenlétével foglalkozó](site-recovery-overview.md) cikket.
 
 ## <a name="overview"></a>Áttekintés
 A cikkből megtudhatja, hogyan helyezze üzembe a Site Recovery szolgáltatást a VMM-magánfelhőkben működő Hyper-V gazdakiszolgálókon futó Hyper-V virtuális gépeknek az Azure-ba történő replikálása érdekében.
@@ -74,13 +74,6 @@ Hálózatleképezés üzembe helyezéséhez a következőkre lesz szüksége:
 * A forrás VMM-kiszolgálón futó, védelemmel ellátni kívánt virtuális gépeknek csatlakozniuk kell egy virtuálisgép-hálózathoz. Ezt a hálózatot kösse össze egy, a felhőhöz társított logikai hálózattal.
 * Egy Azure-hálózatra, amelyhez a replikált virtuális gépek a feladatátvételt követően csatlakozni tudnak. Ezt a hálózatot a feladatátvétel idején kell kiválasztani. A hálózatnak és az Azure Site Recovery-előfizetésnek ugyanahhoz a régióhoz kell tartoznia.
 
-A hálózatleképezés előkészítéséhez tegye a következőket:
-
-1. [Olvassa el](site-recovery-network-mapping.md) a hálózatleképezés követelményeit.
-2. Virtuálisgép-hálózat előkészítése a VMM-ben:
-
-   * [Állítson be logikai hálózatokat](https://technet.microsoft.com/library/jj721568.aspx).
-   * [Állítson be virtuálisgép-hálózatokat](https://technet.microsoft.com/library/jj721575.aspx).
 
 ## <a name="step-1-create-a-site-recovery-vault"></a>1. lépés: Site Recovery-tároló létrehozása
 1. Jelentkezzen be a regisztrálni kívánt VMM-kiszolgálón a [felügyeleti portálra](https://portal.azure.com).
@@ -274,7 +267,7 @@ A kiszolgálók, felhők és hálózatok megfelelő konfigurálását követően
     ![Virtuális gépek ellenőrzése](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
 2. A virtuális gép **Configure** (Konfiguráció) lapján a következő hálózati tulajdonságok módosíthatók.
 
-* **Hálózati adapterek száma a cél virtuális gépen** – A hálózati adapterek számát a cél virtuális gépek mérete határozza meg. A különböző méretű virtuális gépek által támogatott adapterek számát a [virtuális gépek méreteit leíró cikkből](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) ismerheti meg. Amikor módosítja a virtuális gép méretét, és menti a beállításokat, a **Configure** (Konfiguráció) lap következő megnyitásakor látni fogja, hogy a hálózati adapterek száma megváltozott. A cél virtuális gépeken működő hálózati adapterek száma a forrás virtuális gépeken minimálisan használandó adapterszám és a kiválasztott virtuális gép mérete által támogatott maximális hálózatiadapter-szám lesz, azaz:
+* **Hálózati adapterek száma a cél virtuális gépen** – A hálózati adapterek számát a cél virtuális gépek mérete határozza meg. A különböző méretű virtuális gépek által támogatott adapterek számát a [virtuális gépek méreteit leíró cikkből](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) ismerheti meg. Amikor módosítja a virtuális gép méretét, és menti a beállításokat, a **Konfiguráció** lap következő megnyitásakor látni fogja, hogy a hálózati adapterek száma megváltozott. A cél virtuális gépeken működő hálózati adapterek száma a forrás virtuális gépeken minimálisan használandó adapterszám és a kiválasztott virtuális gép mérete által támogatott maximális hálózatiadapter-szám lesz, azaz:
 
   * Ha a forrásgépen működő hálózati adapterek száma kisebb vagy egyenlő a célgép méretéhez engedélyezett adapterek számával, a célon ugyanannyi adapter fog működni, mint a forráson.
   * Ha a forrás virtuális gépek adaptereinek száma meghaladja a célmérethez engedélyezett maximumot, a rendszer a célmérethez engedélyezett maximális számot fogja használni.
@@ -299,7 +292,7 @@ A feladatátvételi teszt segítségével elkülönített hálózatban próbálh
 * A feladatátvételt követően nyilvános IP-cím és a távoli asztal funkció segítségével tud csatlakozni az Azure-ban futó virtuális géphez. Ha ezt szeretné tenni, ellenőrizze, hogy nincsenek-e érvényben tartományi szabályzatok, amelyek meggátolják, hogy nyilvános cím segítségével csatlakozzon a virtuális gépekhez.
 
 > [!NOTE]
-> Ahhoz, hogy a lehető legjobb teljesítményt érhesse el az Azure-ba irányuló feladatátvétel során, ellenőrizze, hogy telepítette-e az Azure Agent ügynököt a védett gépen. Az ügynök segít a rendszerindítás felgyorsításában és az esetlegesen felmerülő problémák diagnosztizálásában. A linuxos ügynök [itt](https://github.com/Azure/WALinuxAgent) található, a windowsos ügynök pedig [itt](http://go.microsoft.com/fwlink/?LinkID=394789).
+> Annak érdekében, hogy az Azure-ba irányuló feladatátvétel során a lehető legjobb eredményt érhesse el, győződjön meg arról, hogy a virtuális gépre telepítette az Azure Agent ügynököt. Ez felgyorsítja a rendszerindítást, és segít a hibák elhárításában. Töltse le a [Linux-ügynököt](https://github.com/Azure/WALinuxAgent) vagy a [Windows-ügynököt](http://go.microsoft.com/fwlink/?LinkID=394789).
 >
 >
 
@@ -334,7 +327,7 @@ A feladatátvételi teszt futtatásához tegye a következőket:
     ![Nincs hálózat](./media/site-recovery-vmm-to-azure-classic/test-no-network.png)
 3. Ha a felhőben bekapcsolták az adatok titkosítását, a **Titkosítási kulcs** résznél válassza ki azt a tanúsítványt, amelyet a Providernek a VMM-kiszolgálóra való telepítése során, a felhő adattitkosításának bekapcsolásakor kapott.
 4. A **Feladatok** lapon nyomon követheti a feladatátvétel előrehaladását. A virtuális gép tesztelési replikájának meg kell jelennie az Azure portálon. Ha beállította a virtuális gépek helyszíni hálózatról való elérését, távoli asztali kapcsolatot is kezdeményezhet a virtuális géppel.
-5. Ha a feladatátvételi művelet elér a **Teszt befejezése** fázisba, a feladatátvételi teszt befejezéséhez kattintson a **Teszt végrehajtása** lehetőségre. A feladatátvételi folyamat előrehaladásának és állapotának megtekintéséhez, illetve a szükséges műveletek elvégzéséhez nyissa meg a **Feladatok** lapot.
+5. Ha a feladatátvételi művelet elér a **Teszt befejezése** fázisba, a befejezéshez kattintson a **Teszt végrehajtása** lehetőségre. A feladatátvételi folyamat előrehaladásának és állapotának megtekintéséhez, illetve a szükséges műveletek elvégzéséhez nyissa meg a **Feladatok** lapot.
 6. A feladatátvételt követően a virtuális gép tesztelési replikájának meg kell jelennie az Azure portálon. Ha beállította a virtuális gépek helyszíni hálózatról való elérését, távoli asztali kapcsolatot is kezdeményezhet a virtuális géppel. Tegye a következőket:
 
    1. Ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.
@@ -351,6 +344,6 @@ Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-cr
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

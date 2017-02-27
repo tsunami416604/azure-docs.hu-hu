@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
-ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
+ms.sourcegitcommit: 5adacea6033070e808f9bf5e76bae0f45f7f1199
+ms.openlocfilehash: e922590c500517c93f7682b5cca5ef6a2c89de53
 
 
 ---
@@ -49,6 +49,9 @@ A Site Recovery a következőkkel segítheti a vállalatát:
 * **Többszörös VM-feladatátvétel** – Beállíthat szkripteket és Azure Automation-runbookokat tartalmazó helyreállítási terveket. A helyreállítási tervekkel modellezheti és testre szabhatja a több virtuális gépen futó többszintű alkalmazások feladatátvételét és helyreállítását.
 * **Integrálás a meglévő BCDR-technológiákkal** – A Site Recovery integrálható más BCDR-technológiákkal. A Site Recovery segítségével megvédheti például a vállalati számítási feladatok SQL Server-háttérrendszerét, ideértve az SQL Server AlwaysOn natív támogatását is a rendelkezésre állási csoportok feladatátvételének kezelésében.
 
+## <a name="which-regions-are-supported"></a>Mely régiók támogatottak?
+Ha többet szeretne megtudni azokról a régiókról, amelyekben az Azure Site Recovery elérhető, látogasson el [ide](https://azure.microsoft.com/en-us/regions/services/). 
+
 ## <a name="what-can-i-replicate"></a>Miket replikálhatok?
 Itt található egy összefoglaló arról, hogy mit replikálhat a Site Recovery használatával.
 
@@ -78,7 +81,6 @@ A Site Recovery alkalmazásbarát replikációt biztosít, így a számítási f
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
-ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 45d399b72f8d037fb828d9ad22bbd3543847feb3
 
 
 ---
@@ -29,14 +29,11 @@ A Kubernetes-, DC/OS- és Docker Swarm-fürtök helyi HTTP-végpontokat biztosí
 
 A DC/OS és a Docker Swarm esetében létre kell hoznia egy belső rendszerbe vezető Secure Shell- (SSH-) alagutat. Az alagút létrehozása után futtathat HTTP-végpontokat használó parancsokat, és megtekintheti a fürt webes felületét a helyi rendszerről. 
 
-> [!NOTE]
-> A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
->
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az [Azure Container Service](container-service-deployment.md)-ben üzembe helyezett Kubernetes-, DC/OS- vagy Docker Swarm-fürt.
-* Titkos SSH-kulcsfájl, amely a fürthöz az üzembe helyezéskor hozzáadott nyilvános kulcshoz tartozik. Ezek a parancsok feltételezik, hogy a titkos SSH-kulcs a következő helyen található a számítógépen: `$HOME/.ssh/id_rsa`. További információkat az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) rendszerekre vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerre vonatkozó útmutatókban találhat. Ha az SSH-kapcsolat nem működik, lehetséges, hogy [új SSH-kulcsot kell létrehoznia](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
+* Titkos SSH RSA-kulcsfájl, amely a fürthöz az üzembe helyezéskor hozzáadott nyilvános kulcshoz tartozik. Ezek a parancsok feltételezik, hogy a titkos SSH-kulcs a következő helyen található a számítógépen: `$HOME/.ssh/id_rsa`. További információkat az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) rendszerekre vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerre vonatkozó útmutatókban találhat. Ha az SSH-kapcsolat nem működik, lehetséges, hogy [új SSH-kulcsot kell létrehoznia](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz
 
@@ -47,7 +44,7 @@ Kövesse a következő lépéseket a `kubectl` telepítéséhez és konfigurál�
 > 
 
 ### <a name="install-kubectl"></a>A kubectl telepítése
-Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 (előzetes verzió) parancs használata. A parancs futtatása előtt győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0 (előzetes verzió), és hogy bejelentkezett egy Azure-fiókba (`az login`).
+Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 parancs használata. A parancs futtatása előtt győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókba (`az login`).
 
 ```azurecli
 # Linux or OS X
@@ -57,7 +54,7 @@ az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
 az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-Másik lehetőségként letöltheti az ügyfelet közvetlenül a [kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146).
+Másik lehetőségként letöltheti a legújabb ügyfelet közvetlenül a [Kubernetes-kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md). További információ: [A kubectl telepítése és beállítása](https://kubernetes.io/docs/user-guide/prereqs/).
 
 ### <a name="download-cluster-credentials"></a>A fürt hitelesítő adatainak letöltése
 A `kubectl` telepítését követően át kell másolnia a fürt hitelesítő adatait a gépre. A hitelesítő adatok beszerzésének egyik módja az `az acs kubernetes get-credentials` parancs használata. Továbbítsa az erőforráscsoport nevét és a tárolószolgáltatás erőforrásának nevét:
@@ -221,6 +218,6 @@ Tárolók telepítése és felügyelete a fürtben:
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -15,79 +15,80 @@ ms.topic: hero-article
 ms.date: 01/19/2017
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: 74d51269cdd55e39eaa2963fec2b409decb47d0a
-ms.openlocfilehash: a279fdc35c62c76e6f0858d52c64240032669f15
+ms.sourcegitcommit: 28e905a20d878eab1428a4b88113544aa742124a
+ms.openlocfilehash: 9c34ea792aa561b8155a915845ffb857dfef7a90
 
 
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>VMware–Azure replikációs házirend kezelése
 
 
-## <a name="create-a-new-replication-policy"></a>Új replikációs házirend létrehozása
+## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-1. Kattintson a bal oldali menü Kezelés -> Site Recovery-infrastruktúra elemére. 
-2. Válassza a Replikációs házirendek lehetőséget a VMware- és fizikai gépek számára területen.
-3. Kattintson felül a +Replikációs házirend gombra.
+1. Válassza a **Kezelés** > **Site Recovery-infrastruktúra** lehetőséget.
+2. Válassza a **Replikációs házirendek** lehetőséget a **VMware- és fizikai gépek számára** területen.
+3. Válassza a **+Replikációs házirend** lehetőséget.
 
-    ![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/createpolicy.png)
+      ![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/createpolicy.png)
 
 4. Adja meg a házirend nevét.
 
-5. Az RPO küszöbértéke beállításnál adja meg az RPO-korlátot. A rendszer riasztásokat küld, ha a folyamatos replikáció meghaladja ezt a korlátot.
-6. A Helyreállítási pont megőrzése beállításnál azt adhatja meg, hogy hány órás legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A védelemmel ellátott gépeket az időtartamon belüli bármelyik pontra visszaállíthatja. 
+5. Az **RPO küszöbértéke** beállításnál adja meg az RPO-korlátot. A rendszer riasztásokat küld, ha a folyamatos replikáció meghaladja ezt a korlátot.
+6. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú legyen az egyes helyreállítási pontok adatmegőrzési időtartama (a beállítás értéke órákban adható meg). A védelemmel ellátott gépeket az adatmegőrzési időtartamon belüli bármelyik pontra visszaállíthatja.
 
-    > [!NOTE] 
-    > A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
-    
-    > [!NOTE] 
-    > A rendszer automatikusan létrehoz egy feladat-visszavételi replikációs házirendet.
+    > [!NOTE]
+    > A rendszer a prémium tárolóra replikált gépek esetében 24 órás megőrzést támogat. A rendszer a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 
-7. Az Alkalmazáskonzisztens pillanatkép gyakorisága beállítás azt határozza meg, hogy milyen gyakran hozzon létre a rendszer alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat (a beállítás értéke percekben adható meg).
+    > [!NOTE]
+    > A rendszer automatikusan hoz létre replikációs házirendet a feladat-visszavételhez.
 
-8. Kattintson az OK gombra. A házirend létrehozása átlagosan 0,5–1 percet vesz igénybe.
+7. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállítás azt határozza meg, hogy milyen gyakran hozzon létre a rendszer alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat (a beállítás értéke percekben adható meg).
+
+8. Kattintson az **OK** gombra. A házirend létrehozása 30–60 másodpercet vesz igénybe.
 
 ![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
 
-## <a name="associate-configuration-server-with-replication-policy"></a>Konfigurációs kiszolgáló társítása replikációs házirenddel
-1. Kattintson arra a replikációs házirendre, amelyikhez a konfigurációs kiszolgálót társítani szeretné.
-2. Kattintson felül a Társítás gombra.
-![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
+## <a name="associate-a-configuration-server-with-a-replication-policy"></a>Konfigurációs kiszolgáló társítása egy replikációs házirenddel
+1. Válassza azt a replikációs házirendet, amelyikhez a konfigurációs kiszolgálót társítani szeretné.
+2. Kattintson a **Társítás** gombra.
+![Konfigurációs kiszolgáló társítása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
-3. Válassza ki a Konfigurációs kiszolgáló elemet a kiszolgálók listájában.
-4. Kattintson az OK gombra. A konfigurációs kiszolgáló társítása átlagosan 1–2 percet vesz igénybe.
+3. Válassza ki a konfigurációs kiszolgálót a kiszolgálók listájában.
+4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának végrehajtása átlagosan&1;–2 percet vesz igénybe.
 
-![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
+![A konfigurációs kiszolgáló társítása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
-## <a name="edit-replication-policy"></a>Replikációs házirend szerkesztése
-1. Kattintson arra a replikációs házirendre, amelyiknek a replikációs beállításait módosítani szeretné.
-![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Select-Policy.png)
+## <a name="edit-a-replication-policy"></a>Replikációs házirend szerkesztése
+1. Válassza ki azt a replikációs házirendet, amelyiknek a replikációs beállításait módosítani szeretné.
+![Replikációs házirend szerkesztése](./media/site-recovery-setup-replication-settings-vmware/Select-Policy.png)
 
-2. Kattintson felül a Beállítások szerkesztése gombra.
-![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
+2. Kattintson a **Beállítások szerkesztése** lehetőségre.
+![Replikációs házirend beállításainak szerkesztése](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. Igény szerint módosítsa a beállításokat.
-4. Kattintson felül a Mentés gombra. A replikációs házirend mentése átlagosan 2–5 percet vesz igénybe attól függően, hogy hány virtuális gép használja azt.
+4. Kattintson a **Save** (Mentés) gombra. A replikációs házirend mentése&2;–5 percet vesz igénybe attól függően, hogy hány virtuális gép használja azt.
 
-![Replikációs házirend létrehozása](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
+![Replikációs házirend mentése](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
-## <a name="dissociate-configuration-server-from-replication-policy"></a>A konfigurációs kiszolgáló és a replikációs házirend társításának megszüntetése
-1. Kattintson arra a replikációs házirendre, amelyikhez a konfigurációs kiszolgálót társítani szeretné.
-2. Kattintson felül a Társítás megszüntetése gombra.
-3. Válassza ki a Konfigurációs kiszolgáló elemet a kiszolgálók listájában.
-4. Kattintson az OK gombra. A konfigurációs kiszolgáló társításának megszüntetése átlagosan 1–2 percet vesz igénybe.
-    
-    > [!NOTE] 
+## <a name="dissociate-a-configuration-server-from-a-replication-policy"></a>A konfigurációs kiszolgáló és a replikációs házirend társításának megszüntetése
+1. Válassza azt a replikációs házirendet, amelyikhez a konfigurációs kiszolgálót társítani szeretné.
+2. Kattintson a **Társítás megszüntetése** gombra.
+3. Válassza ki a konfigurációs kiszolgálót a kiszolgálók listájában.
+4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának megszüntetése&1;–2 percet vesz igénybe.
+
+    > [!NOTE]
     > Nem szüntetheti meg a konfigurációs kiszolgáló társítását, ha van legalább egy olyan replikált elem, amelyik az adott házirendet használja. A konfigurációs kiszolgáló társításának megszüntetése előtt győződjön meg arról, hogy nincsenek olyan replikált elemek, amelyek a házirendet használják.
 
-## <a name="delete-replication-policy"></a>Replikációs házirend törlése 
+## <a name="delete-a-replication-policy"></a>Replikációs házirend törlése
 
-1. Kattintson a törölni kívánt replikációs házirendre.
-2. Kattintson a Törlés gombra. A házirend törlése átlagosan 0,5–1 percet vesz igénybe.
+1. Válassza ki a törölni kívánt replikációs házirendet.
+2. Kattintson a **Törlés** gombra. A házirend törlése 30–60 másodpercet vesz igénybe.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Nem törölheti a replikációs házirendet, ha legalább egy konfigurációs kiszolgáló társítva van hozzá. A házirend törlése előtt győződjön meg arról, hogy egy replikált elem sem használja azt, továbbá törölje az összes társított konfigurációs kiszolgálót is.
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 

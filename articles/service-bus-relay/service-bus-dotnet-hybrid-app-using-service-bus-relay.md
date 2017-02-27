@@ -1,5 +1,5 @@
 ---
-title: "Hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Docs"
+title: "Azure WCF Relay hibrid helyszíni/felhőbeli alkalmazás (.NET) | Microsoft Docs"
 description: "Ebből a cikkből megtudhatja, hogyan hozhat létre helyszíni/felhőbeli .NET-hibridalkalmazást az Azure WCF Relay használatával."
 services: service-bus-relay
 documentationcenter: .net
@@ -12,17 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/16/2016
+ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
-ms.openlocfilehash: 0288b0dda9139c28da28fedfe39c4e9156c6c938
+ms.sourcegitcommit: 94f4d852aeaed1eec20f178e2721650660ebec49
+ms.openlocfilehash: ae5e08e7a5c483fd89390580647722b2c9da0ecb
 
 
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
-## <a name="introduction"></a>Bevezetés
-Ez a cikk azt ismerteti, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
+## <a name="introduction"></a>Introduction (Bevezetés)
+Ez a cikk azt mutatja be, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
 Az oktatóanyagban érintett témák köre:
 
@@ -36,7 +36,7 @@ Az üzleti megoldások általában egyéni kódok kombinációjából állnak, a
 
 A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
-Az Azure Relay azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Relay-szolgáltatásnak. Az Azure Relay ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód-](../service-bus-messaging/service-bus-sas-overview.md) (SAS-) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
+Az [Azure Relay](https://azure.microsoft.com/services/service-bus/) azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Relay-szolgáltatásnak. Az Azure Relay ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód- (SAS-)](../service-bus-messaging/service-bus-sas.md) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
 ## <a name="solution-scenario"></a>A megoldás forgatókönyve
 Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
@@ -50,18 +50,16 @@ A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja
 ![][1]
 
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
-Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
+Az Azure-alkalmazások fejlesztésének megkezdése előtt töltse le az eszközöket és állítsa be a fejlesztési környezetet:
 
-1. Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése][Get Tools and SDK] oldalról.
-2. Kattintson a használt Visual Studio-verzió **Az SDK telepítése** lehetőségére. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
+1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
+2. A **.NET** oszlopban kattintson a használt Visual Studio-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
 5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
-A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül.
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
 ## <a name="create-an-on-premises-server"></a>Helyszíni kiszolgáló létrehozása
 Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
@@ -69,7 +67,7 @@ Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalóg
 Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
-1. Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
+1. Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. Ehhez kattintson a jobb gombbal a Visual Studio programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 2. A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 3. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Console Application** (Konzolalkalmazás) elemre. A **Name** (Név) mezőbe írja be a **ProductsServer** nevet:
 
@@ -86,7 +84,7 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
 9. A **Name** (Név) mezőbe írja be a **ProductsContract.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 10. A **ProductsContract.cs** fájlban cserélje le a névtér definícióját a következő kódra, amely meghatározza a szolgáltatás szerződését.
 
-    ```
+    ```csharp
     namespace ProductsServer
     {
         using System.Collections.Generic;
@@ -122,7 +120,7 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
     ```
 11. A ProductsContract.cs fájlban cserélje le a névtér definícióját a következő kódra, amely hozzáadja a profilszolgáltatást és annak állomását.
 
-    ```
+    ```csharp
     namespace ProductsServer
     {
         using System;
@@ -174,9 +172,9 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
         }
     }
     ```
-12. A Megoldáskezelőben kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához. A **&lt;system.ServiceModel&gt;** elem alján (de még mindig a &lt;system.ServiceModel&gt; elemen belül) írja be a következő XML-kódot. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját névterét adja meg, és a *yourKey* helyett pedig a portálról korábban lekért SAS-kulcsot.
+12. A Megoldáskezelőben kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához. A `<system.ServiceModel>` elem alján (de még mindig a `<system.ServiceModel>` elemen belül) írja be a következő XML-kódot. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját névterét adja meg, és a *yourKey* helyett pedig a portálról korábban lekért SAS-kulcsot.
 
-    ```
+    ```xml
     <system.serviceModel>
     ...
       <services>
@@ -197,9 +195,9 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
       </behaviors>
     </system.serviceModel>
     ```
-13. Még mindig az App.config fájlban, az **&lt;appSettings&gt;** elemben cserélje le a kapcsolati karakterlánc értékét a korábban a portálról beszerzett kapcsolati karakterláncére.
+13. Még mindig az App.config fájlban, az `<appSettings>` elemben cserélje le a kapcsolati karakterlánc értékét a korábban a portálról beszerzett kapcsolati karakterláncéra.
 
-    ```
+    ```xml
     <appSettings>
        <!-- Service Bus specific app settings for messaging connections -->
        <add key="Microsoft.ServiceBus.ConnectionString"
@@ -236,22 +234,22 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 ### <a name="modify-the-web-application"></a>A webalkalmazás módosítása
 1. A Visual Studióban a Product.cs fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
-   ```
-   // Declare properties for the products inventory.
+   ```csharp
+    // Declare properties for the products inventory.
     namespace ProductsWeb.Models
-   {
+    {
        public class Product
        {
            public string Id { get; set; }
            public string Name { get; set; }
            public string Quantity { get; set; }
        }
-   }
-   ```
+    }
+    ```
 2. A Megoldáskezelőben bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **HomeController.cs** fájlra, hogy megnyissa a Visual Studióban.
 3. A **HomeController.cs** fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
-    ```
+    ```csharp
     namespace ProductsWeb.Controllers
     {
         using System.Collections.Generic;
@@ -278,7 +276,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 7. A Megoldáskezelőben bontsa ki a Views\Home (Nézetek\Kezdőlap) mappát, majd kattintson duplán az **Index.cshtml** fájlra, hogy megnyissa a Visual Studio szerkesztőjében.
    Cserélje le a fájl teljes tartalmát a következő kódra.
 
-   ```
+   ```html
    @model IEnumerable<ProductsWeb.Models.Product>
 
    @{
@@ -334,7 +332,7 @@ A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalma
    ![][24]
 6. Ezután nyissa meg a **HomeController.cs** fájlt a Visual Studio szerkesztőjében, és a névtér definícióját cserélje az alábbi kódra. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját szolgáltatásnévterét adja meg, és a *yourKey* helyett pedig a saját SAS-kulcsát. Így teheti lehetővé, hogy az ügyfél helyszíni szolgáltatásokat hívjon meg, és vissza tudja adni a hívás eredményeit.
 
-   ```
+   ```csharp
    namespace ProductsWeb.Controllers
    {
        using System.Linq;
@@ -441,7 +439,6 @@ A Azure Relay szolgáltatásól a következő forrásanyagokban találhat továb
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-[Get Tools and SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
 [NuGet]: http://nuget.org
 
 [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
@@ -468,6 +465,6 @@ A Azure Relay szolgáltatásól a következő forrásanyagokban találhat továb
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

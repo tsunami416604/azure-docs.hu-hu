@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
-ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
+ms.sourcegitcommit: 6c26fdd11031ab482d12611ca338df5c90a14193
+ms.openlocfilehash: a482e20bdbf60889f93f4532ed042b41ec51b81e
 
 
 ---
@@ -95,7 +95,10 @@ Tekintse át az összes **Not Added** (Hozzá nem adott) és **Not Verified** (N
 
 ### <a name="domain-and-ou-filtering"></a>Tartományok és szervezeti egységek szűrése
 Alapértelmezés szerint minden tartomány és szervezeti egység szinkronizálva van. Amennyiben vannak olyan tartományok és szervezeti egységek, amelyeket nem kíván szinkronizálni az Azure AD szolgáltatásba, törölheti ezek kijelölését.  
-![Domain/OU-szűrés](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) A varázslónak ezen az oldalán a tartományalapú és szervezeti egység szerinti szűrés konfigurálható. További információk: [tartományalapú szűrés](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) és [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Szervezeti egység szerinti szűrés használata esetén a rendszer alapértelmezés szerint szinkronizálja a később hozzáadott új szervezeti egységeket. Ha azt szeretné, hogy a rendszer ne szinkronizálja az új szervezeti egységeket, akkor azt azután állíthatja be, hogy a varázsló a [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) beállítással befejeződött
+![Domain/OU-szűrés](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
+A varázslónak ezen az oldalán a tartományalapú és szervezeti egység szerinti szűrés konfigurálható. Ha módosításokat tervez, tekintse meg a [tartományalapú szűréssel](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) és a [szervezeti egység szerinti szűréssel](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) kapcsolatos témaköröket a módosítások végrehajtása előtt. Egyes szervezeti egységek létfontosságúak a működéshez, és ezek kijelölését nem szabad törölni.
+
+Szervezeti egység szerinti szűrés használata esetén a rendszer alapértelmezés szerint szinkronizálja a később hozzáadott új szervezeti egységeket. Ha azt szeretné, hogy a rendszer ne szinkronizálja az új szervezeti egységeket, akkor azt azután állíthatja be, hogy a varázsló a [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) beállítással befejeződött
 
 Ha [csoportalapú szűrés](#sync-filtering-based-on-groups) használatát tervezi, győződjön meg arról, hogy a csoport szervezeti egysége szerepel, és nincs kiszűrve a szervezeti egység szerinti szűrésben. A rendszer a szervezeti egység szerinti szűrést a csoportalapú szűrés előtt végzi el.
 
@@ -174,8 +177,8 @@ További információkért lásd: [Címtárbővítmények](active-directory-aadc
 ### <a name="enabling-single-sign-on-sso"></a>Egyszeri bejelentkezés (SSO) engedélyezése
 Az egyszeri bejelentkezés jelszó-szinkronizálással vagy átmenő hitelesítéssel történő használatának konfigurálása egyszerű folyamat, amelyet minden, az Azure AD-vel szinkronizált erdő esetében csak egyszer kell elvégezni. A konfiguráció az alábbi két lépésből áll:
 
-1.  A szükséges számítógépfiók létrehozása a helyszíni Active Directoryban.
-2.  Az ügyfélgépek intranetes zónájának konfigurálása az egyszeri bejelentkezés támogatására.
+1.    A szükséges számítógépfiók létrehozása a helyszíni Active Directoryban.
+2.    Az ügyfélgépek intranetes zónájának konfigurálása az egyszeri bejelentkezés támogatására.
 
 #### <a name="create-the-computer-account-in-active-directory"></a>A számítógépfiók létrehozása a helyszíni Active Directoryban
 Minden, az Azure AD Connecttel hozzáadott erdőhöz tartományi rendszergazdai hitelesítő adatokat kell megadni, hogy létre lehessen hozni bennük a számítógépfiókot. A hitelesítő adatokat a rendszer csak a fiók létrehozásához használja, azokat nem tárolja, és nem használja fel más műveletekhez. Egyszerűen adja meg a hitelesítő adatokat az Azure AD Connect varázsló **Enable Single sign on** (Egyszeri bejelentkezés engedélyezése) lapján, ahogy az alább is látható:
@@ -189,20 +192,20 @@ Minden, az Azure AD Connecttel hozzáadott erdőhöz tartományi rendszergazdai 
 Annak biztosítása érdekében, hogy az ügyfél automatikusan az intranet zónába jelentkezzen be, gondoskodni kell arról, hogy a két URL-cím az intranet zóna része legyen. Ezzel biztosítható, hogy a tartományhoz csatlakozó számítógép automatikusan Kerberos-jegyet küldjön Azure AD-hez, amikor a vállalati hálózathoz csatlakozik.
 Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési eszközök:
 
-1.  Nyissa meg a csoportházirend-kezelési eszközöket.
-2.  Módosítsa azt a csoportházirendet, amelyik minden felhasználóra vonatkozni fog. Ilyen lehet például az alapértelmezett tartományi házirend.
-3.  Lépjen a **Felhasználói konfiguráció\Felügyeleti sablonok\Windows-összetevők\Internet Explorer\Internet vezérlőpult\Biztonság lapra**, és válassza ki a **Helyek zónákhoz való társításának listáját** az alábbi ábra szerint.
-4.  Engedélyezze a házirendet, és adja meg a következő két elemet a párbeszédpanelen.
+1.    Nyissa meg a csoportházirend-kezelési eszközöket.
+2.    Módosítsa azt a csoportházirendet, amelyik minden felhasználóra vonatkozni fog. Ilyen lehet például az alapértelmezett tartományi házirend.
+3.    Lépjen a **Felhasználói konfiguráció\Felügyeleti sablonok\Windows-összetevők\Internet Explorer\Internet vezérlőpult\Biztonság lapra**, és válassza ki a **Helyek zónákhoz való társításának listáját** az alábbi ábra szerint.
+4.    Engedélyezze a házirendet, és adja meg a következő két elemet a párbeszédpanelen.
 
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+        Érték: `https://autologon.microsoftazuread-sso.com`  
+        Adatok: 1  
+        Érték: `https://aadg.windows.net.nsatc.net`  
+        Adatok: 1
 
-5.  Ennek a következőképpen kell kinéznie:  
+5.    Ennek a következőképpen kell kinéznie:  
 ![Intranet zónák](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.  Kattintson kétszer az **OK** gombra.
+6.    Kattintson kétszer az **OK** gombra.
 
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS-összevonás konfigurálása
 Az AD FS konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.
@@ -316,6 +319,6 @@ További információ: [Helyszíni identitások integrálása az Azure Active Di
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

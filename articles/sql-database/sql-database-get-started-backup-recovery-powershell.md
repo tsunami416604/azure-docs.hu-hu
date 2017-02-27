@@ -1,5 +1,5 @@
 ---
-title: "Ismerkedés az Azure SQL Database-adatbázisok biztonsági mentésével és visszaállításával az adatok védelme és helyreállítása érdekében az Azure PowerShell használatával | Microsoft Docs"
+title: "PowerShell: Az Azure SQL Database biztonsági mentése és visszaállítása | Microsoft Docs"
 description: "Az oktatóanyag bemutatja, hogyan állíthatja vissza az adatokat automatikus biztonsági mentésekből egy adott időpontra, hogyan tárolhatja az automatikus biztonsági másolatokat az Azure helyreállítási tárban, és hogyan állíthatja vissza az Azure helyreállítási tárból azokat a PowerShell használatával"
 keywords: "sql database-oktatóanyag"
 services: sql-database
@@ -17,16 +17,16 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 68a4ed7aad946dda644a0f085c48fd33f453e018
-ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
+ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
+ms.openlocfilehash: 8a3ede8af471e656e830e38e0cf2f3a909fdaadb
 
 
 ---
 
 
-# <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery-using-powershell"></a>Ismerkedés a biztonsági mentéssel és a visszaállítással az adatok védelme és helyreállítása érdekében a PowerShell használatával
+# <a name="tutorial-back-up-and-restore-an-azure-sql-database-using-powershell"></a>Oktatóanyag: Az Azure SQL Database biztonsági mentése és visszaállítása a PowerShell segítségével
 
-Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja végre a következő műveleteket az Azure PowerShell-lel:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure PowerShell használatával:
 
 - Adatbázisok meglévő biztonsági másolatainak megtekintése
 - Adatbázis visszaállítása egy korábbi időpontra
@@ -38,7 +38,7 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/). 
 
 * Egy olyan fiókkal kell az Azure-hoz kapcsolódnia, amely tagja az előfizetés-tulajdonosi vagy a közreműködői szerepkörnek. A szerepköralapú hozzáférés-vezérlésről (RBAC) többet is megtudhat az [Azure Portalon végzett hozzáférés-vezérlés alapvető tudnivalóit ismertető](../active-directory/role-based-access-control-what-is.md) témakörben.
 
@@ -47,7 +47,7 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan hajthatja vé
 * Ön elvégezte [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started.md) oktatóanyagot vagy az azzal egyenértékű [PowerShell-verziót](sql-database-get-started-powershell.md). Ha még nem tette, végezze el ezt az előfeltételként szolgáló oktatóanyagot, vagy hajtsa végre a [PowerShell-verzió](sql-database-get-started-powershell.md) végén található PowerShell-szkriptet a továbblépés előtt.
 
 > [!TIP]
-> Ugyanezen feladatokat az [Azure Portalon](sql-database-get-started-backup-recovery.md) is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
+> Ugyanezen feladatokat az [Azure Portalon](sql-database-get-started-backup-recovery-portal.md) is végrehajthatja egy, a kezdeti lépéseket ismertető oktatóanyagban.
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -114,7 +114,7 @@ Az oktatóanyag ezen szakaszában [konfigurál egy Azure helyreállítási tára
 
 
 > [!TIP]
-> A hosszú távú megőrzési időtartamú biztonsági másolatok törléséről lásd a [hosszú távú megőrzési időtartamú biztonsági mentések törlésével](sql-database-long-term-retention-delete.md) foglalkozó témakört.
+> A hosszú távú megőrzési időtartamú biztonsági másolatok törléséről lásd a [hosszú távú megőrzési időtartamú biztonsági mentések PowerShell-lel végzett kezelésével](sql-database-manage-long-term-backup-retention-powershell.md) foglalkozó témakört.
 
 
 ### <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
@@ -380,6 +380,7 @@ $restoredDbFromLtr
 - A biztonsági másolatokból való visszaállítással kapcsolatos további információkért lásd: [visszaállítás biztonsági másolatból](sql-database-recovery-using-backups.md)
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 
