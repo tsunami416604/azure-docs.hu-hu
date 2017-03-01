@@ -83,7 +83,6 @@
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AzCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [BCP SQL Serverről](sql-data-warehouse-load-from-sql-server-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase-útmutatás](sql-data-warehouse-load-polybase-guide.md)
@@ -146,8 +145,3 @@
 ### [Üzleti intelligencia](sql-data-warehouse-partner-business-intelligence.md)
 ### [Adatintegráció](sql-data-warehouse-partner-data-integration.md)
 ### [Adatkezelés](sql-data-warehouse-partner-data-management.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -257,7 +257,7 @@
 ### [Webalkalmazások teljesítménnyel kapcsolatos problémáinak elhárítása](app-service-web-troubleshoot-performance-degradation.md)
 
 # Referencia
-## [Azure CLI 2.0 előzetes verzió](/cli/azure/appservice)
+## [Azure CLI 2.0](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
@@ -273,9 +273,3 @@
 # Erőforrások
 ## [Ajánlott eljárások](app-service-best-practices.md)
 ## [A WebJobs-erőforrások listája](websites-webjobs-resources.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

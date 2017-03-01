@@ -14,7 +14,7 @@
 #### [Portál](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-#### [Parancssori felület](application-gateway-create-gateway-cli.md)
+#### [Azure CLI](application-gateway-create-gateway-cli.md)
 #### [PowerShell (klasszikus)](application-gateway-create-gateway.md)
 ### Belső hálózatra irányuló
 #### [PowerShell](application-gateway-ilb-arm.md)
@@ -44,7 +44,7 @@
 ### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)
 # Referencia
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
-## [Azure CLI 2.0 előzetes verzió](/cli/azure/network/application-gateway)
+## [Azure CLI 2.0](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
@@ -65,8 +65,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
