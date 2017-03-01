@@ -4,7 +4,7 @@ description: "Néhány perc alatt menő funkciókat adhat hozzá az első webalk
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 542671c2-22f0-4f20-8b4b-fa477264c492
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 9916000ddf38fdda1dcbdcf8818c5833a445efc8
 ms.openlocfilehash: 3f099db9f75466b5571aa732bb60343af7bd86da
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -153,10 +154,5 @@ Tudjon meg többet arról, hogyan tehet még többet az üzembe helyezett alkalm
   (Sebezhetőségek keresése az alkalmazásban) – Ellenőrizheti a webalkalmazás modern fenyegetésekkel szembeni sebezhetőségét a [Tinfoil Security](https://www.tinfoilsecurity.com/) által biztosított szolgáltatás segítségével.
 * [Run background jobs](../azure-functions/functions-overview.md) (Háttérfeladatok futtatása) – Futtathat például adatfeldolgozási vagy jelentéskészítési feladatokat.
 * [Ismerje meg az App Service működését](../app-service/app-service-how-works-readme.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

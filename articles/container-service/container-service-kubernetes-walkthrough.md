@@ -19,6 +19,7 @@ ms.author: anhowe
 translationtype: Human Translation
 ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
 ms.openlocfilehash: 1742a6d4d99b81509564696e6faaf9e6fbf8f604
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -81,7 +82,7 @@ az acs kubernetes install-cli
 A `kubectl` telepítése után az alábbi parancs futtatásával töltheti le a fő Kubernetes-fürt konfigurációját a ~/.kube/config fájlba:
 
 ```console
-az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$SERVICE_NAME
+az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
 Most már készen áll arra, hogy hozzáférjen a fürthöz a gépéről. Próbálja meg futtatni a következőt:
@@ -176,9 +177,4 @@ A Kubernetes-fürt használatának további módjaiért tekintse meg a következ
 * [Kubernetes Bootcamp](https://katacoda.com/embed/kubernetes-bootcamp/1/) – bemutatja, hogyan lehet üzembe helyezni, méretezni és frissíteni a tárolóalapú alkalmazásokat, illetve hibakeresést végezni rajtuk.
 * [Kubernetes felhasználói útmutató](http://kubernetes.io/docs/user-guide/) – információkat tartalmaz a programok meglévő Kubernetes-fürtökben való futtatásáról.
 * [Kubernetes-példák](https://github.com/kubernetes/kubernetes/tree/master/examples) – példákkal szolgál a valódi alkalmazások Kubernetes használatával való futtatására.
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

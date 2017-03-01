@@ -19,6 +19,7 @@ ms.author: rogardle
 translationtype: Human Translation
 ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
 ms.openlocfilehash: 45d399b72f8d037fb828d9ad22bbd3543847feb3
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -125,7 +126,7 @@ Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell ke
    a  **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást a `-i` jelzővel együtt kell használni.
 
     ```bash
-    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
+    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
     > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
@@ -214,10 +215,5 @@ Tárolók telepítése és felügyelete a fürtben:
 * [Az Azure Container Service és a Kubernetes használata](container-service-kubernetes-ui.md)
 * [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
 * [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

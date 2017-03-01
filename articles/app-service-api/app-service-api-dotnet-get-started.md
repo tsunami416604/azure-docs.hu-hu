@@ -4,7 +4,7 @@ description: "Cikkünkből megtanulhatja, hogyan hozhat létre, telepíthet és 
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -438,10 +439,5 @@ Ha a nulláról szeretne API-alkalmazásprojektet létrehozni, használja az **A
 ![API App sablon a Visual Studióban](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
 
 Az **Azure API App** projektsablon használatával azt az eredményt éri el, mintha az **Üres** ASP.NET 4.5.2 sablont választaná, majd a jelölőnégyzet bejelölésével hozzáadná a Web API támogatását, és telepítené a Swashbuckle NuGet csomagot. A sablon ezenfelül tartalmaz némi Swashbuckle konfigurációs kódot is, amely megakadályozza a duplikált Swagger műveleti azonosítók létrehozását. Ha létrehozta az API App projektet, azt szintén az oktatóanyagban leírt lépésekkel telepítheti az API-alkalmazásra.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
