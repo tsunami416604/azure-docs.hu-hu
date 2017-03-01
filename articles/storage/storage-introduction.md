@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
-ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -179,21 +180,21 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [A Storage szolgáltatások REST API-ja](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [A Storage ügyféloldali kódtára a .NET-keretrendszerhez, a Windows Phone-hoz és a Windows-futtatókörnyezethez](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [A Storage ügyféloldali kódtára a C++ programnyelvhez](https://github.com/Azure/azure-storage-cpp)
-* [A Storage ügyféloldali kódtára a Javához/Androidhoz](/develop/java/)
+* [A Storage ügyféloldali kódtára a Javához/Androidhoz](https://azure.microsoft.com/develop/java/)
 * [A Storage ügyféloldali kódtára a Node.js-hez](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [A Storage ügyféloldali kódtára a PHP-hez](/develop/php/)
-* [A Storage ügyféloldali kódtára a Rubyhoz](/develop/ruby/)
-* [A Storage ügyféloldali kódtára a Pythonhoz](/develop/python/)
+* [A Storage ügyféloldali kódtára a PHP-hez](https://azure.microsoft.com/develop/php/)
+* [A Storage ügyféloldali kódtára a Rubyhoz](https://azure.microsoft.com/develop/ruby/)
+* [A Storage ügyféloldali kódtára a Pythonhoz](https://azure.microsoft.com/develop/python/)
 * [Storage-parancsmagok a PowerShell 1.0-hoz](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage kezelési szolgáltatások
-* [A Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [Storage erőforrás-szolgáltató ügyfél a .NET-hez](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [A Storage erőforrás-szolgáltató parancsmagjai a PowerShell 1.0-hoz](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+* [A Storage erőforrás-szolgáltató REST API-ja – referencia](/rest/api/storagerp/)
+* [Storage erőforrás-szolgáltató ügyfél a .NET-hez](/dotnet/api/microsoft.azure.management.storage)
+* [A Storage erőforrás-szolgáltató parancsmagjai a PowerShell 1.0-hoz](/powershell/storage/)
 * [A Storage szolgáltatásfelügyelet REST API-ja](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage adatátviteli szolgáltatások
-* [A Storage Import/Export szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+* [A Storage Import/Export szolgáltatás REST API-ja](storage-import-export-service.md)
 * [A Storage adatátviteli ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>Eszközök és segédprogramok
@@ -248,9 +249,4 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [How to use Table storage from Python (A Table Storage használata Pythonnal)](storage-python-how-to-use-table-storage.md)
 * [How to use Queue storage from Python (A Queue Storage használata Pythonnal)](storage-python-how-to-use-queue-storage.md)
 * [How to use File Storage from Python (A File Storage használata Pythonnal)](storage-python-how-to-use-file-storage.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

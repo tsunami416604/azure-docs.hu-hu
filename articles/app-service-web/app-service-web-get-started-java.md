@@ -4,7 +4,7 @@ description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire 
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: af27369b0ae8de0ece6da38a78b434e595fbfc4e
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 82accfbfa92dfe77d17da05425c2e05af33e5a31
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első Java-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
-
-> [!div class="op_single_selector"]
-> * [Első HTML-webhely](app-service-web-get-started-html-cli-nodejs.md)
-> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [Első PHP-alkalmazás](app-service-web-get-started-php-cli-nodejs.md)
-> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [Első Python-alkalmazás](app-service-web-get-started-python-cli-nodejs.md)
-> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
 Ez az oktatóanyag segítséget nyújt egy egyszerű Java-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
@@ -127,10 +119,5 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 * Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). 
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

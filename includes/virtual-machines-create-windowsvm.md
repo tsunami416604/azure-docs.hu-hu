@@ -16,7 +16,7 @@ Az Alapvető beállítások panelen felügyeleti információkat kell megadni a 
 
 2. Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelyeket a helyi fióknak a virtuális gépen való létrehozásához használ a szolgáltatás. A helyi fiókkal jelentkezhet be a virtuális gépre és kezelheti azt. A példában a felhasználónév az _azureuser_.
 
- A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](../articles/virtual-machines.md/virtual-machines-windows-faq).
+ A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](../articles/virtual-machines/virtual-machines-windows-faq.md).
 
 3. Az **Előfizetés** nem kötelező. Gyakori beállítás a „használatalapú fizetés”.
 
@@ -51,15 +51,6 @@ Az Összefoglalás panel felsorolja az előző paneleken megadott beállítások
 
  ![Az Összefoglalás panel jelentése, amely megadja a virtuális gép beállításait](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
 
-<!--  deleted 2/16/2017 - RABixby
-  * A virtual machine's size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For more information, see [Sizes for virtual machines](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-  -->
-
 A virtuális gép létrejötte után a portál megjeleníti az új virtuális gépet a **Minden erőforrás** részben, és megjeleníti a virtuális gép csempéjét az irányítópulton. A rendszer emellett létrehozza és felsorolja a megfelelő felhőszolgáltatást és tárfiókot is. Mind a virtuális gép, mind a felhőszolgáltatás automatikusan elindul, és **Fut** állapotúként jelenik meg.
 
  ![A virtuálisgép-ügynök és a virtuális gép végpontjainak konfigurálása](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
