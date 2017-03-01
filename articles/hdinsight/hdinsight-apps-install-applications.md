@@ -1,6 +1,6 @@
 ---
-title: "Hadoop-alkalmazások telepítése HDInsight platformon | Microsoft Docs"
-description: "A HDInsight-alkalmazások HDInsight-alkalmazásokra való telepítésének ismertetése."
+title: "Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton | Microsoft Docs"
+description: "Megismerheti, hogyan telepíthet külső gyártótól származó Hadoop-alkalmazásokat az Azure HDInsighton."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/23/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 71aef298af187cd4c370edf9fedc42e75ec10c41
-ms.openlocfilehash: 57fbf532c64621ef7d171fc5092708737cd36c33
+ms.sourcegitcommit: 8e7911a3a8080ef8fa125779aa1f6778b9655cde
+ms.openlocfilehash: 8780c193c6aa4b6b183723f88d67ac0990347d1e
 
 
 ---
-# <a name="install-hdinsight-applications"></a>HDInsight-alkalmazások telepítése
-A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek. Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései. Ebből a cikkből megismerheti a közzétett alkalmazások telepítésének módját. A saját alkalmazások telepítéséről [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz további tájékoztatást. 
+# <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton
 
-Jelenleg három közzétett alkalmazás érhető el:
+Ebből a cikkből megtudhatja, hogyan telepíthet már közzétett, külső gyártótól származó Hadoop-alkalmazásokat az Azure HDInsighton. A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
+A HDInsight-alkalmazások olyan alkalmazások, amelyeket a felhasználók egy Linux-alapú HDInsight-fürtre telepíthetnek. Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
+
+Jelenleg négy közzétett alkalmazás érhető el:
+
+* **DATAIKU DDS on HDInsight**: A Dataiku DSS (Data Science Studio) egy olyan szoftver, amely lehetővé teszi az adatokat professzionálisan célra használók (adatszakértők, üzleti elemzők, fejlesztők…) számára a nyers adatokat hatékony üzleti előrejelzésekké alakító rendkívül specifikus szolgáltatások prototípusként való használatát, létrehozását és központi telepítését.
 * **Datameer**: a [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) interaktív módot kínál az elemzőknek a Big Data-eredmények felfedezésére, elemzésére és vizuális megjelenítésére. Vonjon be további adatforrásokat, fedezzen fel új kapcsolatokat, és kapjon még gyorsabban választ kérdéseire.
 * A **Streamsets Data Collector for HDInsight** olyan, átfogó funkciókat kínáló integrált fejlesztőkörnyezetet (IDE) biztosít, amelyben bármely irányú, stream- és batch-adatokat összefűző feldolgozási folyamatok tervezése, tesztelése, üzembe helyezése és felügyelete lehetséges, továbbá különféle streamen belüli transzformációkat is tartalmaz, és mindehhez nincs szükség egyedi kód írására. 
 * A **Cask CDAP 3.5 for HDInsight** az első olyan egységes integrációs big data-platform, amely az adatalkalmazások és adattárak létrehozási idejét 80%-kal csökkenti. Ez az alkalmazás kizárólag a Standard HBase 3.4-fürtöket támogatja.
@@ -42,9 +46,9 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 **HDInsight-alkalmazások telepítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.  Ha nem látja, kattintson a **Browse** (Tallózás), majd a **HDInsight Clusters** (HDInsight-fürtök) elemre.
+2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.  Ha nem jelenik meg, kattintson a **További szolgáltatások**, majd a **HDInsight-fürtök** elemre.
 3. Kattintson a kívánt HDInsight-fürtre.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. Kattintson az **Applications** (Alkalmazások) elemre a **Configurations** (Konfigurációk) kategóriában. Megjelenik a telepített alkalmazások listája, ha vannak ilyenek.
+4. Kattintson az **Applications** (Alkalmazások) elemre a **Configurations** (Konfigurációk) kategóriában. Megjelenik a telepített alkalmazások listája, ha vannak ilyenek. Ha nem látja az Alkalmazások elemet, az azt jelenti, hogy a HDInsight-fürt jelen verziójához nem érhetők el alkalmazások.
    
     ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Kattintson a panel menüjének **Hozzáadás** elemére. 
@@ -118,6 +122,6 @@ Lásd: [A telepítési folyamat hibaelhárítása](hdinsight-apps-install-custom
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

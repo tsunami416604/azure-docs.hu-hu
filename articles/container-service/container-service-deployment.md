@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 02/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 01fe5302e1c596017755c4669103bac910e3452c
-ms.openlocfilehash: 470bf39bf0e61325f36a2f45316f57545c69e3de
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: b9be92498f9daf1d2f964cc689bacb2358b237be
 
 
 ---
@@ -28,10 +28,7 @@ ms.openlocfilehash: 470bf39bf0e61325f36a2f45316f57545c69e3de
 
 Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt forráskódú tárolófürtözési és vezénylési megoldásokat. Ez a dokumentum részletesen ismerteti, hogyan helyezhető üzembe egy Azure Container Service-fürt az Azure Portal vagy egy Azure Resource Manager gyorsindítási sablon használatával. 
 
-> [!NOTE]
-> A Kubernetes támogatása az Azure Container Service-ben jelenleg előzetes verzióban van.
-
-Az Azure Container Service-fürtöket az [Azure CLI 2.0 (előzetes verzió)](container-service-create-acs-cluster-cli.md) vagy az Azure Container Service API-k használatával is üzembe helyezheti.
+Az Azure Container Service-fürtöket az [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) vagy az Azure Container Service API-k használatával is üzembe helyezheti.
 
 
 
@@ -39,7 +36,7 @@ Az Azure Container Service-fürtöket az [Azure CLI 2.0 (előzetes verzió)](con
 
 * **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
 
-* **Nyilvános SSH-kulcs**: Ha a portálon vagy valamelyik Azure gyorsindítási sablonnal végzi az üzembe helyezést, meg kell adnia az Azure Container Service virtuális gépeivel történő hitelesítésre szolgáló nyilvános kulcsot. A Secure Shell- (SSH-) kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerhez készült útmutatót. 
+* **Nyilvános SSH RSA-kulcs**: Ha a portálon vagy valamelyik Azure gyorsindítási sablonnal végzi az üzembe helyezést, meg kell adnia az Azure Container Service virtuális gépeivel történő hitelesítésre szolgáló nyilvános kulcsot. A Secure Shell (SSH) RSA-kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerhez készült útmutatót. 
 
 * **Egyszerű szolgáltatás ügyfél-azonosítója és kulcsa** (csak Kubernetes esetében): Az egyszerű szolgáltatások létrehozásával kapcsolatos további információkért és útmutatóért lásd: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
 
@@ -58,36 +55,36 @@ Az Azure Container Service-fürtöket az [Azure CLI 2.0 (előzetes verzió)](con
 
     * **Felhasználónév**: Az Azure Container Service-fürt összes virtuális gépén és a virtuálisgép-méretezési csoportokban használt fiókhoz tartozó felhasználónév.
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az ajánlott eljárás egy új erőforráscsoport használata minden egyes üzemelő példányhoz.
     * **Hely**: válassza ki azt az Azure-régiót, amelyben az Azure Container Service-t üzembe kívánja helyezni.
-    * **Nyilvános SSH-kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az `ssh-rsa` előtag. Az `username@domain` utótag nem kötelező. A kulcsnak a következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
+    * **Nyilvános SSH RSA-kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az `ssh-rsa` előtag. Az `username@domain` utótag nem kötelező. A kulcsnak a következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
 
 4. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
     ![Alapbeállítások](media/container-service-deployment/acs-portal3.png)  <br />
 
-5. Válassza ki a vezénylés típusát. A következő lehetőségek közül választhat:
+5. A **Keretrendszer konfigurációja** panelen válasszon egy **vezénylőkonfigurációt**. A lehetőségek a következők:
 
   * **DC/OS**: DC/OS fürt üzembe helyezése.
   * **Swarm**: Docker Swarm-fürt üzembe helyezése.
-  * **Kubernetes**: Kubernetes-fürt üzembe helyezése
+  * **Kubernetes**: Kubernetes-fürt üzembe helyezése.
 
 
 6. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
     ![Vezénylő kiválasztása](media/container-service-deployment/acs-portal4-new.png)  <br />
 
-7. Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját és az egyszerű szolgáltatás titkos ügyfélkulcsát. További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
+7. Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját (más néven az appId-t) és az egyszerű szolgáltatás titkos ügyfélkódját (azaz a jelszót). További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
 
     ![A Kubernetes egyszerű szolgáltatásának megadása](media/container-service-deployment/acs-portal10.png)  <br />
 
-7. Az **Azure Container Service** beállításpanelén adja meg a következő információkat:
+7. Az **Azure Container Service beállításainak** paneljén adja meg a következő információkat:
 
-    * **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben. Ha a Kubernetes lehetőséget választotta, a főkiszolgálók száma alapértelmezés szerint 1.
+    * **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben.
     * **Ügynökök száma**: a Docker Swarm és a Kubernetes esetében ez az érték az ügynökök kezdeti száma az ügynökök méretezési csoportjában. A DC/OS esetében ez az ügynökök kezdeti száma a privát méretezési csoportokban. Ezenkívül létrejön egy nyilvános méretezési csoport a DC/OS számára, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát az határozza meg, hogy hány főkiszolgáló jött létre a fürtön: egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
     * **Ügynök-virtuálisgép mérete**: az ügynök-virtuálisgépek mérete.
     * **DNS-előtag**: globálisan egyedi név, amely a szolgáltatás teljes tartományneveiben a főrész előtagja lesz.
-    * **Virtuálisgép-diagnosztika**: Egyes választott vezénylők számára engedélyezheti a virtuálisgép-diagnosztikát.
+    * **Virtuálisgép-diagnosztika**: Egyes vezénylők számára engedélyezheti a virtuálisgép-diagnosztikát.
 
 8. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
@@ -112,12 +109,12 @@ Az üzembe helyezés több percet is igénybe vehet. Ezután az Azure Container 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Fürt létrehozása gyorsindítási sablon használatával
 Az Azure gyorsindítási sablonok használatával fürtök helyezhetők üzembe az Azure Container Service-ben. A megadott gyorsindítási sablonok módosíthatók további vagy speciális Azure-konfigurációk belefoglalásával. Az Azure Container Service-fürtök Azure gyorsindítási sablonokkal való létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
 
-Az alábbi lépésekkel egy sablon és az Azure CLI 2.0-s (előzetes) verziójával helyezhet üzembe egy fürtöt (lásd a [telepítési és beállítási utasításokat](/cli/azure/install-az-cli2.md)).
+Az alábbi lépésekkel egy sablon és az Azure CLI 2.0-s verziójával helyezhet üzembe egy fürtöt (lásd a [telepítési és beállítási utasításokat](/cli/azure/install-az-cli2.md)).
 
 > [!NOTE] 
 > Windows rendszer használata esetén hasonló lépésekkel helyezhet üzembe sablont az Azure PowerShell használatával. A lépéseket lásd a szakasz későbbi részében. Emellett a [portálon](../azure-resource-manager/resource-group-template-deploy-portal.md) keresztül vagy egyéb módszerekkel is üzembe helyezhet sablonokat.
 
-1. DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az alábbi GitHub-sablonok egyikét. A DC/OS- és a Swarm-sablonok az alapértelmezett vezénylési típus kivételével azonosak.
+1. DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az elérhető GitHub gyorsindítási sablonok egyikét. Az alábbiakban egy részleges lista látható. A DC/OS- és a Swarm-sablonok az alapértelmezett vezénylési típus kivételével azonosak.
 
     * [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
@@ -165,7 +162,7 @@ Az alábbi lépésekkel egy sablon és az Azure CLI 2.0-s (előzetes) verziójá
 ### <a name="equivalent-powershell-commands"></a>Egyenértékű PowerShell-parancsok
 A PowerShell használatával is üzembe helyezhet Azure Container Service-fürtöket. Ez a dokumentum az [Azure PowerShell modul](https://azure.microsoft.com/blog/azps-1-0/) 1.0-s verziója alapján készült.
 
-1. DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az alábbi sablonok egyikét. A DC/OS- és a Swarm-sablonok az alapértelmezett vezénylési típus kivételével azonosak.
+1. DC/OS-, Docker Swarm- vagy Kubernetes-fürt üzembe helyezéséhez válassza az elérhető GitHub gyorsindítási sablonok egyikét. Az alábbiakban egy részleges lista látható. A DC/OS- és a Swarm-sablonok az alapértelmezett vezénylési típus kivételével azonosak.
 
     * [DC/OS-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
@@ -214,6 +211,6 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

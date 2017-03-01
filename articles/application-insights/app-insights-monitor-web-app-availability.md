@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
 
 
 ---
@@ -29,7 +29,7 @@ Webes teszteket állíthat be bármely olyan HTTP- vagy HTTPS- végponthoz, amel
 A webes teszteknek két típusa létezik:
 
 * [URL-ping teszt](#create): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
-* [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Ultimate vagy a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
+* [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
 
 Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 
@@ -78,37 +78,20 @@ Ezek a diagramok az alkalmazás összes webes tesztjének eredményeit egyesíti
 ## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>Ha hibákat lát
 Kattintson egy piros pontra.
 
-![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/open-instance.png)
 
-Vagy görgessen le, és kattintson egy tesztre, amelynél 100% alatti a sikeresség mértéke.
 
-![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+Egy webes teszt eredményéből a következőket teheti:
 
-Megnyílnak a teszt eredményei.
+* Megvizsgálhatja a kiszolgálótól érkezett választ.
+* Megnyithatja a kiszolgálóalkalmazás által a sikertelen kéréspéldány feldolgozása közben küldött telemetriát.
+* Naplózhat egy problémát vagy munkaelemet a Git vagy a VSTS segítségével a probléma nyomon követéséhez. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
+* Megnyithatja a webes teszt eredményét a Visual Studióban.
 
-![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/16-1test.png)
-
-A teszt több helyről fut&#151;válasszon ki egyet, ahol 100% alattiak az eredmények.
-
-![Kattintson egy adott webes tesztre](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
-
-Görgessen le a **Sikertelen tesztek** részhez, és válasszon ki egy eredményt.
-
-Kattintson az eredményre a portálon való kiértékeléséhez, és tekintse meg a sikertelenség okát.
-
-![A webes teszt futtatásának eredménye](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
-
-Másik lehetőségként letöltheti az eredményfájlt, és megvizsgálhatja a Visual Studióban.
 
 *Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
 
-### <a name="open-the-server-request-and-exceptions"></a>Kiszolgálókérések és kivételek megnyitása
-
-Egy adott teszt részletes tulajdonságaiból megnyithatja a kéréseket és egyéb eseményeket, például a kivételeket tartalmazó kiszolgálóoldali jelentést.
-
-![A webes teszt futtatásának eredménye](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
-
-Ha nem lát kapcsolódó elemeket, elképzelhető, hogy [mintavételezés](app-insights-sampling.md) van folyamatban.
+*Nem találhatók kapcsolódó elemek?* Ennek az lehet az oka, hogy [mintavételezés](app-insights-sampling.md) van folyamatban.
 
 ## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
@@ -122,7 +105,7 @@ Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Vis
 Vegye figyelembe, hogy a tesztekben nem használhat kódolt függvényeket: a forgatókönyv lépéseinek szkriptekként kell szerepelniük a .webtest fájlban.
 
 #### <a name="1-record-a-scenario"></a>1. Forgatókönyv rögzítése
-A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise vagy Ultimate verzióját.
+A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 1. Hozzon létre egy webes teljesítményt tesztelő projektet.
 
@@ -239,7 +222,7 @@ Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítményteszt
 A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
 ## <a name="automation"></a>Automatizálás
-* [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/).
+* [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
 * Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
@@ -294,6 +277,6 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

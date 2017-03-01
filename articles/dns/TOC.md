@@ -6,11 +6,11 @@
 
 ## [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
 ### [PowerShell](dns-getstarted-create-dnszone.md)
-### [Parancssori felület](dns-getstarted-create-dnszone-cli.md)
+### [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 
 ## [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md)
 ### [PowerShell](dns-getstarted-create-recordset.md)
-### [Parancssori felület](dns-getstarted-create-recordset-cli.md)
+### [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
 ## [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
 ## [Webalkalmazások egyéni DNS-rekordjainak létrehozása](dns-web-sites-custom-domain.md)
@@ -19,14 +19,15 @@
 
 ## DNS-zónák kezelése
 ### [PowerShell](dns-operations-dnszones.md)
-### [Parancssori felület](dns-operations-dnszones-cli.md)
+### [Azure CLI](dns-operations-dnszones-cli.md)
+
 
 ## [DNS-rekordok kezelése](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
-### [Parancssori felület](dns-operations-recordsets-cli.md)
+### [Azure CLI](dns-operations-recordsets-cli.md)
 
 ## [Fordított DNS-rekordok kezelése](dns-reverse-dns-record-operations-ps.md)
-### [Parancssori felület](dns-reverse-dns-record-operations-cli.md)
+### [Azure CLI](dns-reverse-dns-record-operations-cli.md)
 ### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
 ## [DNS-zónafájl importálása és exportálása](dns-import-export.md)
@@ -39,7 +40,7 @@
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)
-## [Azure CLI 2.0 (előzetes verzió)](/cli/azure/network/dns)
+## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
@@ -60,8 +61,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

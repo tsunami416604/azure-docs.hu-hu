@@ -1,5 +1,5 @@
 ---
-title: "Fájlok és mappák biztonsági mentése Windowsról Azure-ba az Azure Backuppal a Resource Manager-alapú üzemi modell segítségével | Microsoft Docs"
+title: "Fájlok és mappák biztonsági mentése Windowsról Azure-ba a Resource Manager-alapú üzemi modell segítségével | Microsoft Docs"
 description: "Windows-fájlok és -mappák biztonsági mentése az Azure-ba egy Resource Manager-alapú üzemelő példányon."
 services: backup
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 2/10/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: cdccfe1215bb8f62381c73becdc9d90f45800966
-ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
+ms.sourcegitcommit: 1a87af9efeb6c00f3c67f2c2d8d8f2e0491d248d
+ms.openlocfilehash: cb464ad823b9123ad0bfa66e0df64a616e3fb5d0
 
 
 ---
@@ -232,6 +232,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

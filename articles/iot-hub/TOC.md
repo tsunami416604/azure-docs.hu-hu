@@ -3,7 +3,7 @@
 ## [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Az eszközfelügyelet áttekintése](iot-hub-device-management-overview.md)
 
-# Első lépések
+# [Első lépések](iot-hub-get-started.md)
 ## Szimulált eszköz használata
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
@@ -23,7 +23,7 @@
 ##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása]#(iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
 ##### [A tárban őrzött üzenetek olvasása](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
 #### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
@@ -66,7 +66,7 @@
 ##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása]#(iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
 ##### [A tárban őrzött üzenetek olvasása](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
 #### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
@@ -107,13 +107,13 @@
 ##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
 ##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
 ##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
 #### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
 ##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
 ##### [A tárban őrzött üzenetek olvasása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
 #### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [Hibaelhárítás](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
 
@@ -172,7 +172,7 @@
 ### [A megoldás skálázása](iot-hub-scaling.md)
 ### [Magas rendelkezésre állás és vészhelyreállítás](iot-hub-ha-dr.md)
 ### [További protokollok támogatása](iot-hub-protocol-gateway.md)
-## Fejlesztés
+## [Fejlesztés](iot-hub-how-to.md)
 ### [Fejlesztői útmutató](iot-hub-devguide.md)
 #### [Üzenetek küldése és fogadása](iot-hub-devguide-messaging.md)
 #### [Eszközről a felhőbe – funkcióismertető](iot-hub-devguide-d2c-guidance.md)
@@ -269,8 +269,3 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

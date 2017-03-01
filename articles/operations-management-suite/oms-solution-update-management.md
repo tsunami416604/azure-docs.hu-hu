@@ -4,7 +4,7 @@ description: "Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldá
 services: operations-management-suite
 documentationcenter: 
 author: MGoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/21/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 705bbd78970c6e3c20ef7214704194f722da09a6
-ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
+ms.sourcegitcommit: ca1e8b9ef8c7543c2b21441c761b0c309d22f202
+ms.openlocfilehash: e148fbe6e27eef747ad757fea4be038d3b662f87
 
 
 ---
@@ -24,6 +24,8 @@ ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
 Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű számítógépek frissítéseit kezelheti.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és elindítható a kiszolgálók szükséges frissítéseinek telepítése is. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+* A megoldás a frissítések állapotának felmérését csak Windows Server 2008 vagy újabb, a környezetek frissítését pedig csak Windows Server 2012 vagy újabb rendszerek esetében támogatja.  A Server Core és a Nano Server telepítési lehetőségek nem támogatottak.
+* Az ügyféloldali Windows operációs rendszerek nem támogatottak.  
 * A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük.  
   
   > [!NOTE]
@@ -104,7 +106,9 @@ A **Frissítéskezelés** irányítópultjának megnyitásához kattintson a **F
 ## <a name="installing-updates"></a>Frissítések telepítése
 A környezetben szereplő összes Windows-számítógép frissítési felmérését követően a szükséges frissítések telepítését *frissítéstelepítés* létrehozásával végezheti el.  A frissítéstelepítés egy vagy több Windows-számítógép szükséges frissítéseinek ütemezett telepítése.  Ehhez meg kell adnia a központi telepítés dátumát és idejét, valamint meg kell határoznia a telepítésben érintett számítógépet vagy számítógépcsoportot.  
 
-A telepítést az Azure Automation runbookjai végzik.  A runbookok jelenleg nem tekinthetők meg, és nem kívánnak semmilyen konfigurálást.  Frissítéstelepítés létrehozásakor egy ütemezés jön létre, amely a megadott időben a megadott számítógépekre irányuló frissítési mester runbookot indít el.  A mester runbook minden Windows-ügynökön egy gyermek runbookot indít, amely elvégzi a szükséges frissítések telepítését.  
+A telepítést az Azure Automation runbookjai végzik.  A runbookok nem tekinthetők meg, és nem kívánnak semmilyen konfigurálást.  Frissítéstelepítés létrehozásakor egy ütemezés jön létre, amely a megadott időben a megadott számítógépekre irányuló frissítési mester runbookot indít el.  A mester runbook minden Windows-ügynökön egy gyermek runbookot indít, amely elvégzi a szükséges frissítések telepítését.  
+
+Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) eléréséhez.  Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.  
 
 ### <a name="viewing-update-deployments"></a>Frissítéstelepítések megtekintése
 Az elérhető frissítéstelepítések listáját a **Frissítéstelepítés** csempére kattintva tekintheti meg.  A lista a frissítések állapota szerinti csoportosításban jelenik meg: **Ütemezett**, **Futó** és **Befejezett**.<br><br> ![Frissítéstelepítési ütemezési lap](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
@@ -247,6 +251,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

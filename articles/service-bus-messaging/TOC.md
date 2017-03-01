@@ -39,6 +39,7 @@
 ### [Particionált üzenetsorok és témakörök](service-bus-partitioning.md)
 ### [Kézbesíthetetlen levelek sorai](service-bus-dead-letter-queues.md)
 ### [Tranzakciófeldolgozás](service-bus-transactions.md)
+### [Diagnosztikai naplók](service-bus-diagnostic-logs.md)
 ### AMQP
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
@@ -71,10 +72,5 @@
 ## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-bus)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

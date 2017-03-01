@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: df15eebf0052aa4713263a810df605fa1016c306
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 1e70f41dd15b0243fb8edd137710ac555821434e
 
 ---
 # <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy tároló-beállításjegyzékbe a Docker parancssori felületével
@@ -33,7 +33,7 @@ Részletes háttérinformációkért és a fogalmakkal kapcsolatban lásd: [Mi a
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Ehhez például használhatja az [Azure Portalt](container-registry-get-started-portal.md) vagy az [Azure CLI 2.0 előzetes verzióját](container-registry-get-started-azure-cli.md).
+* **Azure Container Registry** – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Ehhez például használhatja az [Azure Portalt](container-registry-get-started-portal.md) vagy az [Azure CLI 2.0-t](container-registry-get-started-azure-cli.md).
 * **A Docker parancssori felülete** – Ha szeretné helyi számítógépét Docker-gazdagépként beállítani és elérni a Docker parancssori felületének parancsait, telepítse a [Docker Engine-t](https://docs.docker.com/engine/installation/).
 
 ## <a name="log-in-to-a-registry"></a>Bejelentkezés beállításjegyzékbe
@@ -118,6 +118,6 @@ Most, hogy elsajátította az alapokat, készen áll a beállításjegyzéke has
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -3,7 +3,7 @@
     ![Előkészületek](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 3. A **Külső szoftver licence** területen kattintson az **Elfogadom** elemre a MySQL letöltéséhez és telepítéséhez.
 
-    ![Külső szoftverek](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)
+    ![Külső gyártótól származó szoftverek](./media/site-recovery-add-configuration-server/combined-wiz2.png)
 4. A **Regisztráció** területen válassza ki a kulcstartóból letöltött regisztrációs kulcsot.
 
     ![Regisztráció](./media/site-recovery-add-configuration-server/combined-wiz3.png)
@@ -14,7 +14,7 @@
    * Ha a meglévő proxy hitelesítést igényel, illetve ha egyéni proxyt szeretne használni a Provider csatlakoztatásához, válassza a **Csatlakozás egyéni proxybeállításokkal** lehetőséget.
 
      * Ha az egyéni proxy használatát választja, meg kell adnia a címet, a portot és a hitelesítő adatokat.
-     * Ha proxyt használt, ellenőrizze, hogy engedélyezte-e az [előfeltételekben](#configuration-server-prerequisites) leírt URL-címek elérését.
+     * Ha proxyt használt, ellenőrizze, hogy engedélyezte-e az [előfeltételekben](#prerequisites) leírt URL-címek elérését.
 
      ![Tűzfal](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről**, ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
@@ -42,6 +42,6 @@
 A regisztráció befejezését követően a kiszolgáló megjelenik a tároló **Beállítások** > **Kiszolgálók** paneljén.
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

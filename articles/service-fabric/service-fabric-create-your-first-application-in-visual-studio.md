@@ -1,5 +1,5 @@
 ---
-title: "Az első Service Fabric-alkalmazás létrehozása a Visual Studióban | Microsoft Docs"
+title: "Az első Azure mikroszolgáltatás-alkalmazás létrehozása | Microsoft Docs"
 description: "Service Fabric-alkalmazás létrehozása, üzembe helyezése és hibakeresése a Visual Studio használatával"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
-ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
+ms.sourcegitcommit: 45411dcfd2dc221de9566b382a1b1c62da914208
+ms.openlocfilehash: 21f2e6e9b422d497882a2414fd24974d60ea685e
 
 
 ---
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztők�
 ## <a name="video-walkthrough"></a>Bemutató videó
 A következő videó végigkalauzolja az ebben az oktatóanyagban található lépéseken.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
 > 
 > 
 
@@ -122,6 +122,19 @@ Alapértelmezés szerint a helyi fejlesztési fürt ötcsomópontos fürtként v
 
 A fürtüzemmód váltásakor a fejlesztési fürt alaphelyzetbe áll, és a fürtön kiépített vagy futó összes alkalmazás törlődik.
 
+Azt is megteheti, hogy módosítja a fürt üzemmódját a PowerShell-lel:
+
+1. Nyisson meg egy új PowerShell-ablakot rendszergazdaként.
+2. Futtassa a fürtbeállítási parancsfájlt az SDK-mappából:
+   
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+    ```
+   
+    A fürt beállítása hosszabb időt vehet igénybe. A beállítást követően a következőhöz hasonló kimenetnek kell megjelennie:
+   
+    ![A fürtbeállítás kimenete][cluster-setup-success-1-node]
+
 ## <a name="cleaning-up"></a>Takarítás
 A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
 
@@ -150,9 +163,10 @@ A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibak
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 
