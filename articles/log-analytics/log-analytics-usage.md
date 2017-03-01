@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 668cde23cb717fcad52fd7823561d10735e6df1b
+ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
+ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
 
 
 ---
@@ -47,6 +47,12 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
     - Az adatok gyűjtésével és indexelésével eltelt idő
 - Lekérdezések listája
 
+## <a name="understanding-nodes-for-oms-offers"></a>OMS-ajánlatok csomópontjainak ismertetése
+
+Amennyiben a *csomópontonkénti (OMS)* tarifacsomagban van, akkor a díjszabás az engedélyezett csomópontok és megoldások számán alapul. A használat adatait megjelenítő irányítópult *Ajánlatok* szakaszában tekintheti meg, hogy az egyes ajánlatok csomópontjaiból mennyi van használatban.
+
+![A Használat irányítópult](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+
 ## <a name="to-work-with-usage-data"></a>A használati adatok használata
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
 2. A **központi** menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájába írja be a következőt: **Log Analytics**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
@@ -66,6 +72,6 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

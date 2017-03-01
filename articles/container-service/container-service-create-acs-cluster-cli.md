@@ -1,6 +1,6 @@
 ---
 title: "Docker-tárolófürt üzembe helyezése – Azure CLI | Microsoft Docs"
-description: "Azure Container Service-fürt üzembe helyezése az Azure CLI 2.0 előzetes kiadásával"
+description: "Azure Container Service-fürt üzembe helyezése az Azure CLI 2.0 segítségével"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -17,23 +17,23 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: df916670743158d6a22b3f17343630114584fa08
-ms.openlocfilehash: 65f1c812472f4a3b6d4a4e6fb7666a2c022af102
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 792150afa1c4f91c4bf6175037c7708d8f7bfabe
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-to-create-an-azure-container-service-cluster"></a>Az Azure CLI 2.0 (Előzetes verzió) használata Azure Container Service-fürtök létrehozására
+# <a name="use-the-azure-cli-20-to-create-an-azure-container-service-cluster"></a>Az Azure CLI 2.0 használata Azure Container Service-fürtök létrehozására
 
-Az Azure CLI 2.0 (Előzetes verzió) `az acs` parancsaival fürtöket hozhat létre és felügyelhet az Azure Container Service-ben. Az Azure Container Service-fürtöket az [Azure Portal](container-service-deployment.md) vagy az Azure Container Service API-k használatával is üzembe helyezheti.
+Az Azure CLI 2.0 `az acs` parancsaival fürtöket hozhat létre és felügyelhet az Azure Container Service-ben. Az Azure Container Service-fürtöket az [Azure Portal](container-service-deployment.md) vagy az Azure Container Service API-k használatával is üzembe helyezheti.
 
 A `az acs` parancsaival kapcsolatos segítségért adja át a `-h` paramétert bármelyik parancsnak. Például: `az acs create -h`.
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure Container Service-fürtök létrehozásának feltételei az Azure CLI 2.0-s (előzetes) verziójával:
+Az Azure Container Service-fürtök az Azure CLI 2.0-s verziójával való létrehozásának feltételei:
 * szükség van egy Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/));
-* az [Azure CLI 2.0-s (előzetes) verziójának](/cli/azure/install-az-cli2) telepítve és konfigurálva kell lennie.
+* az [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítésére és beállítására
 
 ## <a name="get-started"></a>Bevezetés 
 ### <a name="log-in-to-your-account"></a>Bejelentkezés a fiókjába
@@ -41,7 +41,7 @@ Az Azure Container Service-fürtök létrehozásának feltételei az Azure CLI 2
 az login 
 ```
 
-Kövesse az utasításokat az interaktív bejelentkezéshez. A bejelentkezés egyéb módjaival kapcsolatban lásd: [Bevezetés az Azure CLI 2.0-s (előzetes) verziójának használatába](/cli/azure/get-started-with-az-cli2).
+Kövesse az utasításokat az interaktív bejelentkezéshez. A bejelentkezés egyéb módjaival kapcsolatban lásd: [Bevezetés az Azure CLI 2.0-s verziójának használatába](/cli/azure/get-started-with-az-cli2).
 
 ### <a name="set-your-azure-subscription"></a>Azure-előfizetés beállítása
 
@@ -74,7 +74,7 @@ A többi bemenet alapértelmezett értékre van állítva (lásd a következő k
 
 
 ### <a name="quick-acs-create-using-defaults"></a>Gyors `acs create` alapértelmezett beállítások használatával
-Ha az alapértelmezett helyen egy nyilvános SSH-kulcsfájl `id_rsa.pub` található (vagy létrehozott egyet az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerekhez), használjon a következőkhöz hasonló parancsot:
+Ha az alapértelmezett helyen egy nyilvános SSH RSA-kulcsfájl `id_rsa.pub` található (vagy létrehozott egyet az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerekhez), használjon a következőkhöz hasonló parancsot:
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
@@ -145,6 +145,6 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 * [Az Azure Container Service és a Kubernetes használata](container-service-kubernetes-walkthrough.md)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

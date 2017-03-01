@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 02/21/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 3bb83f231d16819e5f5da7edbc9fc3f38baff011
-ms.openlocfilehash: b0c5efa595b0377d7ae2d936d0394667356d18c9
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: c28391b752c071161796421aee63402899d2a0a4
 
 
 ---
@@ -29,15 +29,15 @@ ms.openlocfilehash: b0c5efa595b0377d7ae2d936d0394667356d18c9
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Mely tárolóvezénylőket támogatja az Azure Container Service? 
 
-A következők élveznek támogatást: nyílt forráskódú DC/OS, Docker Swarm és Kubernetes. A DC/OS és Docker Swarm esetén a támogatás általánosan elérhető, a Kubernetes esetén azonban a támogatás egyelőre előzetes verzióban érhető el. További információ: [Áttekintés](container-service-intro.md).
+A következők élveznek támogatást: nyílt forráskódú DC/OS, Docker Swarm és Kubernetes. További információ: [Áttekintés](container-service-intro.md).
  
-### <a name="do-you-support-swarm-mode"></a>Támogatják a Swarm módot? 
+### <a name="do-you-support-docker-swarm-mode"></a>Támogatja a Docker Swarm módot? 
 
 A Swarm mód jelenleg még nem élvez támogatást, de már a szolgáltatáshoz kapcsolódó ütemterv részét képezi. 
 
 ### <a name="does-azure-container-service-support-windows-containers"></a>Az Azure Container Service támogatja a Windows-tárolókat?  
 
-Jelenleg a Linux-tárolók élveznek támogatást. A Windows-tárolók DC/OS-, Docker Swarm- és Kubernetes-vezénylőkkel történő támogatása a szolgáltatáshoz kapcsolódó ütemterv részét képezi. 
+Jelenleg a Linux-tárolók az összes vezénylővel támogatást élveznek. A Windows-tárolók Kubernetesszel való használatának támogatása előzetes verzióban érhető el.
 
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Ajánlanak egy adott vezénylőt az Azure Container Service-ben? 
 Nem ajánlunk általánosan egy adott vezénylőt. Ha már rendelkezik tapasztalattal a támogatott vezénylők egyikéhez kapcsolódóan, tapasztalataira építhet az Azure Container Service-ben is. Az adattrendek azonban azt jelzik, hogy a DC/OS kiválóan használható éles környezetben a Big Data és IoT számítási feladatokhoz, a Kubernetes a felhők natív számítási feladataihoz megfelelő, a Docker Swarm pedig közismerten integrálható Docker-eszközökkel, illetve egyszerűen elsajátítható a használata.
@@ -55,29 +55,23 @@ Az [ACS Engine](http://github.com/Azure/acs-engine) egy nyílt forráskódú pro
 
 A fürt Linux rendszerű virtuális gépei felé történő hitelesítéshez szükséges nyilvános és titkos SSH RSA-kulcspár létrehozásához az operációs rendszer megszokott eszközeit használhatja. A lépéseket az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerhez készült útmutatóban tekintheti meg. 
 
-Ha az [Azure CLI 2.0 (előzetes verzió) parancsait](container-service-create-acs-cluster-cli.md) használja egy Container Service-fürt központi telepítéséhez, az SSH-kulcsok automatikusan létrehozhatók a fürt számára.
+Ha az [Azure CLI 2.0 parancsait](container-service-create-acs-cluster-cli.md) használja egy Container Service-fürt központi telepítéséhez, az SSH-kulcsok automatikusan létrehozhatóak a fürt számára.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Hogyan hozhatok létre egyszerű szolgáltatást a Kubernetes-fürtöm számára?
 
-Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szüksége lesz egy egyszerű Azure Active Directory-szolgáltatás azonosítójára és jelszavára. További információ: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md)
+Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szüksége lesz egy egyszerű Azure Active Directory-szolgáltatás azonosítójára és jelszavára. További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
 
 
-Ha az [Azure CLI 2.0 (előzetes verzió) parancsait](container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt központi telepítéséhez, az egyszerű szolgáltatás hitelesítő adatai automatikusan létrehozhatók a fürt számára.
+Ha az [Azure CLI 2.0 parancsait](container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt központi telepítéséhez, az egyszerű szolgáltatás hitelesítő adatai automatikusan létrehozhatók a fürt számára.
 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Hogyan növelhetem a főkiszolgálók számát a fürt létrehozása után? 
-A fürt létrehozása után a főkiszolgálók száma állandó lesz, és nem módosítható. A fürt létrehozása során érdemes három vagy öt főkiszolgáló kijelölni magas rendelkezésre állásra.
+A fürt létrehozása után a főkiszolgálók száma állandó lesz, és nem módosítható. A fürt létrehozása során érdemes több főkiszolgálót kijelölni magas rendelkezésre állásra.
 
-> [!NOTE]
-> Az előzetes verzióban az Azure Container Service-ben található Kubernetes-fürt csak egy főkiszolgálóval rendelkezhet.
->
 
 ### <a name="how-do-i-increase-the-number-of-agents-after-a-cluster-is-created"></a>Hogyan növelhetem az ügynökök számát a fürt létrehozása után? 
 Az Azure Portal vagy a parancssori eszközök használatával módosíthatja a fürtben található ügynökök számát. Lásd: [Azure Container Service-fürt méretezése](container-service-scale.md).
 
-> [!NOTE]
-> Az előzetes verzióban az Azure Container Service-ben található Kubernetes-fürt állandó számú ügynökkel rendelkezik. 
->
 
 ### <a name="what-are-the-urls-of-my-masters-and-agents"></a>Mik a főkiszolgálóim és ügynökeim URL-címei? 
 Az Azure Container Service-ben található fürterőforrások URL-címei a megadott DNS-név előtagján és a központi telepítéshez választott Azure-régió nevén alapulnak. A főcsomópont teljes tartományneve (FQDN) például az alábbi formátumú:
@@ -114,9 +108,9 @@ Több információ: [Csatlakozás Azure Container Service-fürthöz](container-s
 ## <a name="next-steps"></a>Következő lépések
 
 * [További információ](container-service-intro.md) az Azure Container Service-ről.
-* Container Service-fürt központi telepítése a [portál](container-service-deployment.md) vagy az [Azure CLI 2.0-s (előzetes) verziójával](container-service-create-acs-cluster-cli.md).
+* Container Service-fürt központi telepítése a [portál](container-service-deployment.md) vagy az [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) segítségével.
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával | Microsoft Docs"
+title: "Többrétegű .NET-alkalmazás az Azure Service Bus használatával | Microsoft Docs"
 description: "Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között."
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9849b15115de5b17a50e0f46781c8aa16a53d297
-ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
+ms.sourcegitcommit: 94f4d852aeaed1eec20f178e2721650660ebec49
+ms.openlocfilehash: 0f2caeed40b59a65ec08e7d94701c93b862199fc
 
 
 ---
@@ -61,7 +61,7 @@ Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
-1. Telepítse az Azure SDK for .NET-et az [Eszközök és az SDK beszerzése](https://azure.microsoft.com/downloads/) című szakasz alapján.
+1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
 2. A **.NET** oszlopban kattintson a használt Visual Studio-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
@@ -397,6 +397,6 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

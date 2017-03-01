@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2017
+ms.date: 02/16/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0fec7a18e098891374b3b0d7313a72918b630918
-ms.openlocfilehash: 7fb107922af9d2316fb7490670002f4255572458
+ms.sourcegitcommit: eccd394a29376a20371732023bfbf9b53435f0ae
+ms.openlocfilehash: 51c994a37ebaca472c360e0c5f7b4a7fab5f55fc
 
 ---
 
@@ -30,7 +30,7 @@ Most, hogy a helyszíni Multi-Factor Authentication-kiszolgáló használata mel
 Az Azure Multi-Factor Authentication-kiszolgálót kétféle módszerrel töltheti le. Mindkettő az Azure portálról végezhető el. Az első a Multi-Factor Auth-szolgáltató közvetlen kezelése. A második a szolgáltatásbeállításokon keresztül érhető el. A második lehetőség használatához egy Multi-Factor Authentication-szolgáltatóra vagy egy Azure MFA, Azure AD Prémium vagy Nagyvállalati mobilitási csomag licencre van szükség.
 
 > [!Important]
-> A két lehetőség hasonlónak tűnik, de fontos tudni, hogy mikor melyiket érdemes használni. Ha a felhasználók az MFA-n keresztül elérhető licencekkel rendelkeznek, a kiszolgáló letöltéséhez ne hozzon létre Multi-Factor Authentication-szolgáltatót. Inkább használja a 2. lehetőséget, és töltse le a kiszolgálót a szolgáltatásbeállítások oldaláról. 
+> A két lehetőség hasonlónak tűnik, de fontos tudni, hogy mikor melyiket érdemes használni. Ha a felhasználók az MFA-n keresztül elérhető licencekkel rendelkeznek (Azure MFA, Azure AD Premium vagy Enterprise Mobility + Security), a kiszolgáló letöltéséhez ne hozzon létre Multi-Factor Authentication-szolgáltatót. Inkább használja a 2. lehetőséget, és töltse le a kiszolgálót a szolgáltatásbeállítások oldaláról. 
 
 ### <a name="option-1-download-azure-multi-factor-authentication-server-from-the-azure-classic-portal"></a>1. lehetőség: Az Azure Multi-Factor Authentication-kiszolgáló letöltése a klasszikus Azure portálról
 
@@ -67,7 +67,7 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt.  Győ
 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
-| Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
+| Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább&1; GB RAM</li> |
 | Szoftver |<li>Windows Server 2008 vagy újabb, ha a gazdagép egy kiszolgálói operációs rendszer</li><li>Windows 7 vagy újabb, ha a gazdagép egy ügyfél operációs rendszer</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 
 ### <a name="azure-multi-factor-authentication-server-firewall-requirements"></a>Az Azure Multi-Factor Authentication-kiszolgáló tűzfalkövetelményei

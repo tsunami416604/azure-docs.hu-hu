@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan használhatja a CORS-támogatást az Azure App
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 4f980a97-b9f5-4d1d-87ab-82b60bb96e1c
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
 ms.openlocfilehash: b0b701b7ea7a608f114d3a82f0403c2ae506854f
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -248,10 +249,5 @@ A Visual Studio hibaelhárítást egyszerűsítő szolgáltatásairól a [Troubl
 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan engedélyezheti az App Service CORS-támogatását úgy, hogy az ügyfélbeli JavaScript-kód meghívhasson egy másik tartományban lévő API-t. Az API-alkalmazások részletesebb megismeréséhez olvassa el az [App Service-hitelesítésbe való bevezetést](../app-service/app-service-authentication-overview.md), majd nyissa meg az [API-alkalmazásokban való felhasználóhitelesítést](app-service-api-dotnet-user-principal-auth.md) bemutató oktatóanyagot.
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

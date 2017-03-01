@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/06/2017
-ms.author: markgal; jimpark
+ms.date: 02/15/2017
+ms.author: markgal;jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: b73d5bb1f4f9e7adc65bf38a3c98db846a341cb3
-ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 7aa9305bf8a32bb7e911dfda3d331adcf1c70383
 
 
 ---
@@ -33,11 +33,11 @@ Ez az oktatóprogram végigkíséri egy Recovery Services-tároló létrehozás�
 * Az Azure Resource Manager által telepített virtuális gépeket
 * A klasszikus virtuális gépeket
 * A Standard szintű tárolós virtuális gépeket
-* A Prémium szintű tárolós virtuális gépeket 
+* A Prémium szintű tárolós virtuális gépeket
 * A Managed Disksen futó virtuális gépek
 * Az Azure Disk Encryption használatával titkosított virtuális gépeket, amelyek rendelkeznek BEK-kel és KEK-kel
 
-A Prémium szintű tárolós virtuális gépek védelméről további információ: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)
+A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 > [!NOTE]
 > Ez az oktatóprogram feltételezi, hogy Ön már rendelkezik egy virtuális géppel az Azure-előfizetésében, és hogy lépéseket tett azért, hogy a biztonsági mentési szolgáltatás hozzáférjen a virtuális géphez.
@@ -46,37 +46,74 @@ A Prémium szintű tárolós virtuális gépek védelméről további informáci
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-A védelem alá vonni kívánt virtuális gépek számától függően különféle kezdőpontokról indulhat – ha több virtuális gépről szeretne egyetlen műveletben biztonsági mentést készíteni, lépjen a Recovery Services tárolóba, és indítsa el a biztonsági mentést a tár irányítópultjáról. Ha egyetlen virtuális géppel rendelkezik, amelyről biztonsági mentést készítene, azt közvetlenül a virtuális gép felügyeleti paneljéről is megteheti.
+A védeni kívánt virtuális gépek számától függően különböző kiindulási pontokból kezdhet. Ha több virtuális gépről szeretne biztonsági mentést készíteni egy művelettel, lépjen a Recovery Services-tárolóhoz, és [indítsa el a biztonsági mentési feladatot a tároló irányítópultjáról](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Ha egyetlen virtuális gépről szeretne biztonsági mentést készíteni, a biztonsági mentési feladatot a Virtuális gép kezelése panelről indíthatja el.
 
-## <a name="configure-backup-from-vm-management-blade"></a>Biztonsági mentés konfigurálása a Virtuális gép kezelése panelről
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. A központi menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájába írja be a következőt: **Virtuális gépek**.  Megjelenik a virtuális gépek listája. A virtuális gépek listájából válasszon ki egyet, amelyről biztonsági mentést szeretne készíteni. Ezzel megnyílik a virtuális gépek kezelőpanelje.
+## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>A biztonsági mentési feladat konfigurálása a virtuális gép kezelése panelről
+
+A következő lépések végigvezetnek a biztonsági mentési feladat konfigurálásán az Azure Portal Virtuális gép kezelése paneljéről. Ezek a lépések nem vonatkoznak a klasszikus portálon található virtuális gépekre.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. A központi menüben kattintson a **További szolgáltatások** elemre, majd a Szűrés párbeszédpanelen írja be a következőt: **Virtuális gépek**. A gépelés során a rendszer szűri az erőforrások listáját. Amikor meglátja a Virtuális gépet, kattintson rá.
+
+  ![A központi menüben kattintson a További szolgáltatások elemre a párbeszédpanel megnyitásához, és írja be a következőt: Virtuális gépek.](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+
+  Megjelenik az előfizetésben található virtuális gépek listája.
+
+  ![Megjelenik az előfizetésben található virtuális gépek listája.](./media/backup-azure-vms-first-look-arm/list-of-vms.png)
+
+3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
+
+  ![Megjelenik az előfizetésben található virtuális gépek listája.](./media/backup-azure-vms-first-look-arm/list-of-vms-selected.png)
+
+  Amikor kiválasztja a virtuális gépet, a virtuális gépek listája a bal oldalra kerül, és megnyílik a Virtuális gép kezelése panel, illetve a virtuális gép irányítópultja.
  ![Virtuális gép kezelése panel](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
 
-3. A Virtuális gép kezelése panelen kattintson a „Backup” lehetőségre a bal oldalon a Beállítások területen.
+4. A Virtuális gép kezelése panel **Beállítások** szakaszában kattintson a **Backup** elemre.
 ![Backup beállítás a Virtuális gép kezelése panelen](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+    A Biztonsági mentés engedélyezése panel megnyílik.
 
-4. Ezzel megnyílik a Biztonsági mentés engedélyezése panel. Ez a panel két bemenetet vár: a Recovery Services-tárolót (ez egy Azure Backup-erőforrás, amely a virtuális gép biztonsági másolatát tárolja); valamint a biztonsági mentési házirendet, amely a mentések ütemezését és a másolatok megőrzésének időtartamát határozza meg. A panel alapértelmezett beállításokat tartalmaz. A beállításokat a biztonsági mentési igényeknek megfelelően testre szabhatja.
+  ![Backup beállítás a Virtuális gép kezelése panelen](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-  ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+5. A Recovery Services-tároló kiválasztásához kattintson a **Meglévő kiválasztása** elemre, és válassza ki a tárolót a legördülő menüből.
 
-5. Recovery Services-tárolóként kiválaszthat egy meglévő tárolót, vagy létrehozhat egy újat. Ha új tárolót hoz létre, az ugyanabban az erőforráscsoportban, ugyanazokkal a virtuálisgép- és helybeállításokkal jön létre, mint a virtuális gép. Ha más értékekkel szeretne Recovery Services-tárolót létrehozni, végezze el a [Recovery Services tároló létrehozását](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), mielőtt a&3;. lépésben a Backup beállításra kattintana, és ott kiválasztaná azt a panelen.
+    ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-6. A Biztonsági mentési házirend panelen válassza ki a tároló esetén alkalmazni kívánt biztonsági mentési házirendet, és kattintson az **OK** gombra.
-    ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+    Ha nincsenek Recovery Services-tárolók, vagy ha új tárolót szeretne használni, kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló létrejön ugyanabban az Erőforráscsoportban és ugyanazon a helyen, ahol a virtuális gép is van. Ha más értékekkel szeretne Recovery Services-tárolót létrehozni, tekintse meg a [Recovery Services-tároló létrehozását](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm) bemutató szakaszt.
 
-    Az alapértelmezett házirend részletei megtalálhatók a részletek listában. Ha házirendet hozna létre, válassza az **Új létrehozása** elemet a legördülő menüből. A legördülő menü arra is lehetőséget biztosít, hogy a pillanatkép elkészítésének időpontját is beállítsa. A biztonsági mentési házirendek meghatározását segítő utasításokat itt találja: [Biztonsági mentési házirend meghatározása](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Miután az **OK** gombra kattint, a biztonsági mentési házirend hozzá lesz rendelve a virtuális géphez.
+6. A Biztonsági mentési házirend részleteinek megtekintéséhez kattintson a **Biztonsági mentési házirend** elemre.
 
-7. Kattintson a „Biztonsági mentés engedélyezése” gombra a biztonsági mentés konfigurálásához a virtuális gépen. Ezzel megkezdődik az üzembe helyezés.
-![Biztonsági mentés engedélyezése gomb](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+    Megnyílik a **Biztonsági mentési házirend** panel, és megjeleníti a kiválasztott házirend részleteit. Ha egyéb házirendek is léteznek, használja a legördülő menüt egy másik biztonsági mentési házirend kiválasztásához. Ha új házirendet hozna létre, válassza az **Új létrehozása** elemet a legördülő menüből. A biztonsági mentési házirendek meghatározását segítő utasításokat itt találja: [Biztonsági mentési házirend meghatározása](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). A biztonsági mentési házirend módosításainak mentéséhez és a Biztonsági mentés engedélyezése panelre való visszatéréshez kattintson az **OK** gombra.
 
-8. A konfiguráció folyamata az értesítések alapján követhető.
+    ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new-2.png)
+
+7. A Biztonsági mentés engedélyezése panelen kattintson a **Biztonsági mentés engedélyezése** elemre azon házirend-telepítés elindításához, amely a házirendet társítja a tárolóval és a virtuális géppel.
+
+  ![Biztonsági mentés engedélyezése gomb](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. Nyomon követheti a konfigurációs folyamatot a portálon megjelenő értesítések segítségével. Az alábbi példában az látható, hogy a Telepítés megkezdődött.
 ![Biztonsági mentési értesítések engedélyezése](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
 
-9. Miután befejeződött a Biztonsági mentés konfigurálásának üzembe helyezése, ha a Virtuális gép kezelése panelen a „Backup” beállításra kattint, a rendszer a biztonsági mentés alá vont virtuális gépnek megfelelő Biztonsági mentési elemek panelre lépteti.
-![Virtuális gép biztonsági mentési elemei nézet](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+9. A konfigurációs folyamat befejezése után a Virtuális gép kezelése panelen kattintson a **Biztonsági mentés** elemre a Biztonsági mentési elemek panel megnyitásához és a részletek megtekintéséhez.
 
-## <a name="configure-backup-from-recovery-services-vault-view"></a>Biztonsági mentés konfigurálása a Recovery Services-tároló nézetből
+  ![Virtuális gép biztonsági mentési elemei nézet](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+  A kezdeti biztonsági mentés befejezéséig az **Utolsó biztonsági mentés állapota** **Figyelmeztetés (kezdeti biztonsági mentés folyamatban)** állapotú. A következő ütemezett biztonsági mentési feladat időpontjának megtekintéséhez kattintson a házirend nevére a **Biztonsági mentési házirend** területen. Megnyílik a Biztonsági mentési házirend panel, és megjeleníti a ütemezett biztonsági mentés időpontját.
+
+10. Biztonsági mentési feladat futtatásához és az első helyreállítási pont létrehozásához kattintson a **Biztonsági mentés** elemre a Backup-tároló panelen.
+
+  ![a kezdeti biztonsági mentés futtatásához kattintson a Biztonsági mentés elemre](./media/backup-azure-vms-first-look-arm/backup-now.png)
+
+  Megnyílik a Biztonsági mentés panel.
+
+  ![a Biztonsági mentés panel képe](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+11. A Biztonsági mentés panelen kattintson a naptár ikonra, használja a naptárvezérlőt annak kiválasztására, hogy meddig kívánja megőrizni a helyreállítási pontot, majd kattintson a **Biztonsági mentés** elemre.
+
+  ![adja meg az utolsó napot, ameddig Biztonsági mentés helyreállítási pontját meg kívánja őrizni](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  Az üzembehelyezési értesítések értesítik, hogy a biztonsági mentési feladat elindult, és hogy a feladat állapotát a Biztonsági mentési feladatok oldalon figyelheti.
+
+## <a name="configure-the-backup-job-from-the-recovery-services-vault"></a>A biztonsági mentési feladat konfigurálása a Recovery Services-tárolóból
 Lényegében a következő lépéseket fogja végrehajtani.  
 
 1. Létrehoz egy Recovery Services-tárolót egy virtuális géphez.
@@ -93,31 +130,47 @@ A Recovery Services-tároló egy olyan entitás, amely eltárolja az idők sorá
 
 Egy Recovery Services-tároló létrehozásához:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A központi menüben kattintson a **Tallózás** elemre, majd az erőforrások listájába írja be a következőt: **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tároló** elemre.
+1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) Azure-előfizetésével.
+2. A központi menüben kattintson a **További szolgáltatások** elemre, majd a Szűrés párbeszédpanelen írja be a következőt: **Recovery Services**. A gépelés során a rendszer szűri az erőforrások listáját. Amikor meglátja a Recovery Services-tárolót a listában, kattintson rá.
 
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    A Recovery Services-tárolók listája megjelenik.
+    Ha az előfizetés Recovery Services-tárolókat tartalmaz, a tárolók fel vannak sorolva.
+
+    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-vms-first-look-arm/list-of-rs-vault.png)
 3. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
 
-    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
+    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
     Megnyílik a Recovery Services-tároló panelje, a rendszer pedig egy **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** megadását kéri.
 
-    ![Recovery Services-tároló létrehozása – 5. lépés](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
+    ![Recovery Services-tároló létrehozása – 3. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
+
 4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez. Írjon be egy 2–50 karakter hosszúságú nevet. Ennek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-5. Kattintson az **Előfizetés** elemre az elérhető előfizetések listájának megtekintéséhez. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a szervezetéhez tartozó fiók több Azure-előfizetéssel van összekötve.
-6. Kattintson az **Erőforráscsoport** elemre az elérhető erőforráscsoportok listájának megtekintéséhez, vagy kattintson az **Új** elemre egy új erőforráscsoport létrehozásához. Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
-7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. A tárolónak ugyanabban a régióban **kell** lennie, mint a megvédeni kívánt virtuális gépeknek.
 
-   > [!IMPORTANT]
-   > Ha nem biztos a virtuális gép helyében, lépjen ki a tároló-létrehozási párbeszédpanelből, és lépjen a virtuális gépek listájához a portálon. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, majd lépjen a következő helyre. Az adatok biztonsági másolatának tárolásához nincs szükség tárfiókok megadására – a Recovery Services-tároló és az Azure Backup szolgáltatás ezt automatikusan kezeli.
-   >
-   >
-8. Kattintson a **Létrehozás** gombra. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában.
+5. Az **Előfizetés** szakaszban, az Azure-előfizetés kiválasztásához használja a legördülő menüt. Ha csak egy előfizetést használ, az az előfizetés jelenik meg, és továbbléphet a következő lépésre. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a szervezetéhez tartozó fiók több Azure-előfizetéssel van összekötve.
 
-    ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+6. Az **Erőforráscsoport** szakaszban:
+
+    * válassza az **Új létrehozása** lehetőséget, ha új erőforráscsoportot szeretne létrehozni.
+    Vagy
+    * válassza a **Meglévő használata** lehetőséget, és kattintson a legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
+
+  Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
+
+7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. Ez a választás határozza meg a földrajzi régiót, ahová az adatok biztonsági másolata el lesz küldve.
+
+  > [!IMPORTANT]
+  > Ha nem biztos a virtuális gép helyében, lépjen ki a tároló-létrehozási párbeszédpanelből, és lépjen a virtuális gépek listájához a portálon. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, majd lépjen a következő helyre. Az adatok biztonsági másolatának tárolásához nincs szükség tárfiókok megadására – a Recovery Services-tároló és az Azure Backup szolgáltatás ezt automatikusan kezeli.
+  >
+
+8. Kattintson a Recovery Services-tároló panel alján a **Létrehozás** gombra.
+
+    A Recovery Services-tároló létrehozása több percet is igénybe vehet. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha több perc után sem látja a tárolót, kattintson a **Frissítés** gombra.
+
+    ![Kattintson a Frissítés gombra](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
+
+    Ha látja a tárolót a Recovery Services-tárolók listájában, készen áll tárhely-redundancia beállítására.
 
 Most, hogy létrehozta a tárolóját, megismerkedhet a tárreplikáció beállításának módjával.
 
@@ -126,59 +179,72 @@ A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás �
 
 A tárreplikációs beállítás szerkesztése:
 
-1. Válassza ki a tárolót, amelyhez megnyitja a tároló irányítópultját és a Beállítások panelt. Ha a **Beállítások** panel nem nyílik meg, kattintson az **Összes beállítás** elemre a tároló irányítópultján.
-2. A **Beállítások** panelen kattintson a **Biztonsági mentési infrastruktúra** > **Biztonsági mentés konfigurációja** elemre a **Biztonsági mentés konfigurációja** panel megnyitásához. A **Biztonsági mentés konfigurációja** panelen válassza ki a tárreplikációs beállítást a tároló számára.
+1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra.
 
-    ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+  ![A Recovery Services-tárolók listájából válassza ki az új tárolót](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Miután kiválasztotta a tárolási beállítást a tároló számára, készen áll, hogy hozzárendelje a virtuális gépet a tárolóhoz. A hozzárendelés megkezdéséhez fel kell fedezni és regisztrálni kell az Azure virtuális gépeket.
+  Ha kiválasztja a tárolót, a **Recovery Services-tároló** panel leszűkül, és a Beállítások panel (*amelynek tetején a tároló neve látható*), valamint a tároló részleteit tartalmazó panel nyílik meg.
+
+    ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+2. Használja a függőleges csúszkát az új tároló Beállítások paneljén a legörgetéshez a Kezelés szakaszhoz, és kattintson a **Biztonsági mentési infrastruktúra** lehetőségre.
+    Megnyílik a Biztonsági mentési infrastruktúra panel.
+3. A Biztonsági mentési infrastruktúra panelen kattintson a **Biztonsági mentés konfigurációja** elemre a **Biztonsági mentés konfigurációja** panel megnyitásához.
+
+    ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+4. Válassza ki a megfelelő tárolóreplikációs beállítást a tárolóhoz.
+
+    ![a tároló konfigurálásának lehetőségei](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+
+    Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit. A [georedundáns](../storage/storage-redundancy.md#geo-redundant-storage) és a [helyileg redundáns](../storage/storage-redundancy.md#locally-redundant-storage) tárolási lehetőségekről többet olvashat ebben a [Tárhely-redundancia áttekintésben](../storage/storage-redundancy.md).
+
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Válassza ki a biztonsági mentés célját, állítsa be a házirendet, és határozza meg a megvédeni kívánt elemeket
 Mielőtt regisztrálna egy virtuális gépet a tárolóval, futtassa a felfedezési folyamatot, hogy meggyőződjön arról, hogy az előfizetéshez hozzáadott minden új virtuális gép azonosítva lett. A folyamat lekéri az Azure-ból az előfizetésben található virtuális gépek listáját, olyan kiegészítő információkkal, mint a felhőszolgáltatás neve és a régió. Az Azure portálon a forgatókönyv arra utal, amit bele fog tenni a Recovery Services-tárolóba. A házirend adja meg a helyreállítási pontok gyakoriságának és elhelyezési idejének a menetrendjét. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát.
 
-1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha nincs megnyitva egy Recovery Services-tároló, de az Azure Portal igen, a központi menüben kattintson a **Tallózás** elemre.
+1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha még nincs, a központi menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
 
-   * Az erőforrások listájába írja be a következőt: **Recovery Services**.
-   * Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor meglátja a **Recovery Services-tárolót**, kattintson rá.
+    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-     ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    A Recovery Services-tárolók listája megjelenik.
 
-     A Recovery Services-tárolók listája megjelenik.
-   * A Recovery Services-tárolók listájából válasszon ki egy tárolót.
+    ![A Recovery Services-tároló listájának nézete](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-     Megnyílik a kiválasztott tároló irányítópultja.
+    A Recovery Services-tárolók listájából válasszon ki egy tárolót az irányítópult megnyitásához.
 
-     ![Tároló panelének megnyitása](./media/backup-azure-vms-first-look-arm/vault-settings.png)
+     ![Tároló panelének megnyitása](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
+
 2. A tároló irányítópultos menüjében kattintson a **Biztonsági mentés** elemre a Biztonsági mentés panel megnyitásához.
 
-    ![Biztonsági mentés panel megnyitása](./media/backup-azure-vms-first-look-arm/backup-button.png)
+    ![Biztonsági mentés panel megnyitása](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-    Amikor a panel megnyílik, a Backup szolgáltatás új virtuális gépeket keres az előfizetésben.
+    Megnyílik a Biztonsági mentés és a Biztonsági mentés célja panel.
 
-    ![Virtuális gépek felderítése](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
-3. A Biztonsági mentés panelen kattintson a **Biztonsági mentés célja** elemre a Biztonsági mentés célja panel megnyitásához.
+    ![Forgatókönyv panel megnyitása](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+3. A Biztonsági mentés célja panelen a **Hol futnak az alkalmazások és szolgáltatások?** legördülő menüből válassza az Azure lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** legördülő menüből válassza a Virtuális gép lehetőséget, és kattintson az **OK** gombra.
 
-    ![Forgatókönyv panel megnyitása](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
-4. A Biztonsági mentés célja panelen állítsa a **Számítási feladat futásának helye** beállítást az Azure-ra, és a **Miről készüljön biztonsági mentés** beállítást virtuális gépre, majd kattintson az **OK** gombra.
+    Ez regisztrálja a virtuálisgép-bővítményt a tárolóban. A Biztonsági mentés célja panel bezárul, a **Biztonsági mentési házirend** panel pedig megnyílik.
 
-    A Biztonsági mentés célja panel bezárul, a Biztonsági mentési házirend panel pedig megnyílik.
+    ![Forgatókönyv panel megnyitása](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
-    ![Forgatókönyv panel megnyitása](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
-5. A Biztonsági mentési házirend panelen válassza ki a tároló esetén alkalmazni kívánt biztonsági mentési házirendet, és kattintson az **OK** gombra.
+4. A Biztonsági mentési házirend panelen válassza ki a tároló esetén alkalmazni kívánt biztonsági mentési házirendet.
 
-    ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+    ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
-    Az alapértelmezett házirend részletei megtalálhatók a részletek listában. Ha házirendet hozna létre, válassza az **Új létrehozása** elemet a legördülő menüből. A legördülő menü arra is lehetőséget biztosít, hogy a pillanatkép elkészítésének idejét 19 órára váltsa. A biztonsági mentési házirendek meghatározását segítő utasításokat itt találja: [Biztonsági mentési házirend meghatározása](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Miután az **OK** gombra kattint, a biztonsági mentési házirend hozzá lesz rendelve a tárolóhoz.
+    Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben. Ha új házirendet hozna létre, válassza az **Új létrehozása** elemet a legördülő menüből. A biztonsági mentési házirendek meghatározását segítő utasításokat itt találja: [Biztonsági mentési házirend meghatározása](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
+    Kattintson az **OK** gombra a biztonsági mentési házirend a tárolóhoz való hozzárendeléséhez.
 
-    Ezután válassza ki azon virtuális gépeket, amelyeket a tárolóhoz szeretne rendelni.
-6. Válassza ki a megadott házirendhez hozzárendelni kívánt virtuális gépeket, majd kattintson a **Kiválasztás** gombra.
+    A Biztonsági mentés házirend panel bezárul, a **Virtuális gépek kijelölése** panel pedig megnyílik.
+5. A **Virtuális gépek kijelölése** panelen válassza ki a megadott házirendhez hozzárendelni kívánt virtuális gépeket, majd kattintson az **OK** gombra.
 
-    ![Számítási feladat kiválasztása](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
+    ![Számítási feladat kiválasztása](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    Ha nem látja a kívánt virtuális gépet, ellenőrizze, hogy ugyanazon az Azure-helyen található-e, mint a Recovery Services-tároló.
-7. Most, hogy minden beállítást megadott a tárolóhoz, a Backup panelen kattintson a **Biztonsági mentés engedélyezése** elemre az oldal alján. Ez üzembe helyezi a tároló és a virtuális gépek házirendjét.
+    Megtörténik a kiválasztott virtuális gép ellenőrzése. Ha nem látja a várt virtuális gépeket, ellenőrizze, hogy ugyanazon az Azure-helyen találhatók-e, mint a Recovery Services-tároló. A Recovery Services-tároló helye a tároló irányítópultján jelenik meg.
 
-    ![Biztonsági mentés engedélyezése](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
+6. Most, hogy minden beállítást megadott a tárolóhoz, a Biztonsági mentés panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez üzembe helyezi a tároló és a virtuális gépek házirendjét. Ez nem hozza létre a virtuális géphez tartozó első helyreállítási pontot.
+
+    ![Biztonsági mentés engedélyezése](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+
+A biztonsági mentés sikeres engedélyezése után a biztonsági mentési házirend az ütemezés szerint fog futni. Ennek ellenére lépjen tovább az első biztonsági mentési feladat elindításához.
 
 ## <a name="initial-backup"></a>Kezdeti biztonsági mentés
 Az, hogy egy biztonsági mentési házirend lett bevezetve a virtuális gépeken, nem jelenti azt, hogy az adatokról biztonsági mentés készült. Alapértelmezés szerint az első ütemezett biztonsági mentés (a biztonsági mentési házirendben meghatározottak szerint) a kezdeti biztonsági mentés. A kezdeti biztonsági mentés végrehajtásáig a **Biztonsági mentési feladatok** panelen az Utolsó biztonsági mentés állapota **Figyelmeztetés (kezdeti biztonsági mentés folyamatban)** állapotú.
@@ -187,34 +253,60 @@ Az, hogy egy biztonsági mentési házirend lett bevezetve a virtuális gépeken
 
 Hacsak a kezdeti biztonsági mentés kezdete nem a nagyon közeli jövőben van, érdemes futtatni a **Biztonsági másolat készítése** lehetőséget.
 
-A **Biztonsági másolat készítése** futtatásához:
+A kezdeti biztonsági mentési feladat futtatása:
 
-1. A tároló irányítópultjának **Biztonsági mentés** csempéjén kattintson az **Azure virtuális gépek** elemre <br/>
-    ![Beállítások ikon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. A tároló irányítópultján kattintson a **Biztonsági mentési elemek** szakaszban található számra, vagy kattintson a **Biztonsági mentési elemek** csempére. <br/>
+  ![Beállítások ikon](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    Megnyílik a **Biztonsági mentési elemek** panel.
-2. A **Biztonsági mentési elemek** panelen kattintson jobb gombbal a tárolóra, amelyről biztonsági másolatot szeretne készíteni, és kattintson a **Biztonsági másolat készítése** elemre.
+  Megnyílik a **Biztonsági mentési elemek** panel.
 
-    ![Beállítások ikon](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![Elemek biztonsági mentése](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    A biztonsági mentési feladat elindul. <br/>
+2. A **Biztonsági mentési elemek** panelen válassza ki az elemet.
 
-    ![Biztonsági mentési feladat elindul](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. A kezdeti biztonsági mentés befejezettségének megtekintéséhez a tároló irányítópultjának **Biztonsági mentési feladatok** csempéjén kattintson az **Azure virtuális gépek** elemre.
+  ![Beállítások ikon](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![Biztonsági mentési feladatok csempe](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  Megnyílik a **Biztonsági mentési elemek** listája. <br/>
 
-    Megnyílik a Biztonsági mentési feladatok panel.
-4. A Biztonsági mentési feladatok panelen megtekintheti az összes feladat állapotát.
+  ![Biztonsági mentési feladat elindul](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![Biztonsági mentési feladatok csempe](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. A **Biztonsági mentési elemek** listában kattintson a három pontra **...** a helyi menü megnyitásához.
 
-   > [!NOTE]
-   > A biztonsági mentési művelet részeként az Azure Backup szolgáltatás egy parancsot ad minden virtuális gépre a biztonsági mentési bővítménynek, hogy ürítsen ki minden írást, és készítsen egy egységes pillanatképet.
-   >
-   >
+  ![Helyi menü](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    Amikor a biztonsági mentési feladat befejeződött, az állapota *Befejezve* lesz.
+  Megjelenik a Helyi menü.
+
+  ![Helyi menü](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. A Helyi menüben kattintson a **Biztonsági mentés** elemre.
+
+  ![Helyi menü](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  Megnyílik a Biztonsági mentés panel.
+
+  ![a Biztonsági mentés panel képe](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. A Biztonsági mentés panelen kattintson a naptár ikonra, használja a naptárvezérlőt annak kiválasztására, hogy meddig kívánja megőrizni a helyreállítási pontot, majd kattintson a **Biztonsági mentés** elemre.
+
+  ![adja meg az utolsó napot, ameddig Biztonsági mentés helyreállítási pontját meg kívánja őrizni](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  Az üzembehelyezési értesítések értesítik, hogy a biztonsági mentési feladat elindult, és hogy a feladat állapotát a Biztonsági mentési feladatok oldalon figyelheti. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+
+6. A kezdeti biztonsági mentés állapotának megtekintéséhez vagy nyomon követéséhez a tároló irányítópultjának **Biztonsági mentési feladatok** csempéjén kattintson a **Folyamatban** elemre.
+
+  ![Biztonsági mentési feladatok csempe](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  Megnyílik a Biztonsági mentési feladatok panel.
+
+  ![Biztonsági mentési feladatok csempe](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  A **Biztonsági mentési feladatok** panelen megtekintheti az összes feladat állapotát. Ellenőrizze, hogy a virtuális gép biztonsági mentése folyamatban van-e, vagy már befejeződött. Amikor a biztonsági mentési feladat befejeződött, az állapota *Befejezve* lesz.
+
+  > [!NOTE]
+  > A biztonsági mentési művelet részeként az Azure Backup szolgáltatás egy parancsot ad minden virtuális gépre a biztonsági mentési bővítménynek, hogy ürítsen ki minden írást, és készítsen egy egységes pillanatképet.
+  >
+  >
+
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
@@ -247,6 +339,6 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

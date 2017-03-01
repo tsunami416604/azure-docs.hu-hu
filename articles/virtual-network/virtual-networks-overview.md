@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 83f9a2716086730f22527a9321b6b111f6e69907
-ms.openlocfilehash: 9e794e89e5ecf4633c2e6312c69487bfa0c7795c
+ms.sourcegitcommit: 75c5b8d3d8c8f389b8cee7d5d304b6e9704252fc
+ms.openlocfilehash: a57805510d5e84fcdc6c4521ae9443ec72de59e1
 
 
 ---
@@ -52,7 +52,7 @@ Figyelje meg, hogy az Azure infrastruktúra felveszi az útválasztó szerepkör
   >
 
 ## <a name="subnets"></a>Alhálózatok
-Az alhálózat egy IP-címtartomány a VNeten belül. A VNetet a szervezés és a biztonság érdekében több alhálózatra lehet osztani. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Egy alhálózathoz útválasztási táblázatokat és NSG-ket is lehet konfigurálni.
+Az alhálózatok IP-címtartományok a VNeten belül. A VNetet a szervezés és a biztonság érdekében több alhálózatra lehet osztani. Egy VNeten belül az alhálózatokra üzembe helyezett virtuális gépek és a PaaS szerepkörpéldányok (ugyanaz vagy különböző) további konfigurálás nélkül is tudnak egymással kommunikálni. Egy alhálózathoz útválasztási táblázatokat és NSG-ket is lehet konfigurálni.
 
 ## <a name="ip-addresses"></a>IP-címek
 Az Azure-ban az erőforrásokhoz rendelt IP-címeknek két típusa van: *nyilvános* és *privát*. A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache/) és az [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) szolgáltatásokkal. A privát IP-címek lehetővé teszik az erőforrások közti kommunikációt egy virtuális hálózatban, az egymáshoz VPN-en keresztül csatlakozó erőforrásokkal együtt, internetről elérhető IP-címek használata nélkül.
@@ -91,6 +91,6 @@ A Virtual Networks az Azure-ban ingyenesen használható. A VNetben belül indí
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

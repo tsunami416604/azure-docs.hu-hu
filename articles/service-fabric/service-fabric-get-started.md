@@ -1,5 +1,5 @@
 ---
-title: "A fejlesztési környezet beállítása | Microsoft Docs"
+title: "Az Azure mikroszolgáltatások fejlesztési környezetének kialakítása | Microsoft Docs"
 description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2016
-ms.author: ryanwi
+ms.date: 02/14/2017
+ms.author: ryanwi, mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 04092b735fa77c72ffe6c492a3fc975eac2e99fd
-ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
+ms.sourcegitcommit: a3367bc4eb66a97263abc2e057eda41770e3face
+ms.openlocfilehash: c461706167728361576f42f8ac7f9b4a2d120609
 
 
 ---
@@ -37,6 +37,7 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 * Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
+* Windows Server 2016
 * Windows 10
 
 > [!NOTE]
@@ -44,29 +45,33 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 > 
 > 
 
-## <a name="install-the-runtime-sdk-and-tools"></a>A futtatókörnyezet, az SDK és az eszközök telepítése
-A webplatform-telepítő kétféle konfigurációt kínál a Service Fabric fejlesztéséhez.
+## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
+### <a name="to-use-visual-studio-2017-rc"></a>A Visual Studio 2017 RC használata
+A Service Fabric-eszközök a Visual Studio 2017 RC Azure Development and Management Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
+Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t is a webplatform-telepítővel.
 
-Visual Studio 2017 (az Azure Development and Management Workload telepítése szükséges):
+* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
-* [A Service Fabric-futtatókörnyezet és az SDK telepítése (Visual Studio-eszközök nélkül)][core-sdk]
+### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>A Visual Studio 2015 használata (Visual Studio 2015 2. frissítés vagy újabb szükséges)
+A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val együtt települnek a webplatform-telepítő használatával:
 
-Visual Studio 2015 (Visual Studio 2015 2. frissítés vagy újabb szükséges):
+* [A Microsoft Azure Service Fabric SDK és eszközök telepítése)][full-bundle-vs2015]
 
-* [A Service Fabric-futtatókörnyezet, az SDK és az eszközök telepítése][full-bundle-vs2015]
-* [Csak a Service Fabric-futtatókörnyezet és az SDK telepítése (Visual Studio-eszközök nélkül)][core-sdk]
+### <a name="sdk-installation-only"></a>Csak az SDK telepítése
+Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
+* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 > [!WARNING]
-> Néhány ügyfél hibákat jelzett, amikor a telepítés során ezeket az indítási hivatkozásokat használták, vagy amikor a hivatkozásokat Chrome böngészőben használták. Ezek a webplatform-telepítő ismert hibái, amelyek javítása folyamatban van.  Áthidaló megoldásként próbálja meg a következőket:
->- Indítsa a hivatkozásokat Internet Explorer vagy Edge böngészővel, vagy
+> Néhány ügyfél hibákat jelzett, amikor a telepítés során ezeket az indítási hivatkozásokat használták, vagy amikor a hivatkozásokat Chrome böngészőben használták. Ezek a webplatform-telepítő ismert hibái, amelyek javítása folyamatban van.  Próbálkozzon a következő áthidaló megoldásokkal:
+>- Indítsa a fenti hivatkozásokat Internet Explorer vagy Edge böngészővel, vagy
 >- Indítsa el a webplatform-telepítőt a Start menüből, keressen rá a „Service Fabric” kifejezésre, majd telepítse az SDK-t
 > 
 > Elnézést kérünk az okozott kellemetlenségekért. 
 
 Az aktuális verziók a következők:
-* Service Fabric SDK 2.4.145
-* Service Fabric-futtatókörnyezet 5.4.145
-* Visual Studio 2015-eszközök 1.4.41209
+* Service Fabric SDK 2.4.164
+* Service Fabric-futtatókörnyezet 5.4.164
+* Visual Studio 2015-eszközök 1.4.50124
 
 A támogatott verziók listáját lásd: [Service Fabric-támogatás](service-fabric-support.md).
 
@@ -97,6 +102,6 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

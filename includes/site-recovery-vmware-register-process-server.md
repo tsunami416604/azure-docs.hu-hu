@@ -1,5 +1,5 @@
 1. A Távoli asztali kapcsolat funkcióval létesítsen kapcsolatot a folyamatkiszolgáló virtuális géppel.
-2. A bejelentkezést követően azt láthatja, hogy a folyamatkiszolgáló Konfiguráció eszköze automatikusan elindul, és a következők megadását kéri:
+2. A cspsconfigtool.exe fájlt az asztalon található parancsikonra kattintva futtathatja. (Ha első alkalommal jelentkezik be a folyamatkiszolgálóra, az eszköz automatikusan elindul).
   * A konfigurációs kiszolgáló teljes neve (FQDN) vagy IP-címe.
   * Az a port, amelyen a konfigurációs kiszolgáló figyel. Az értéknek 443-nak kell lennie.
   * A kapcsolat hozzáférési kódja, hogy kapcsolódni lehessen a konfigurációs kiszolgálóhoz.
@@ -13,6 +13,6 @@
 > A folyamatkiszolgáló konfigurációs segédprogramjának az elindításához kattintson duplán a virtuális gép asztalán található **cspsconfigtool** parancsikonra.
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

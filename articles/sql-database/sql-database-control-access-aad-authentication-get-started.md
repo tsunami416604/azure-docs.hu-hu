@@ -17,13 +17,13 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4ef415b7c0e7079da9930ecc6d8375dfc5a3c0a9
-ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
+ms.sourcegitcommit: 7d061c083b23de823d373c30f93cccfe1c856ba3
+ms.openlocfilehash: 8a6dc7d3dca80782a55e13b53180b1542b61544b
 
 
 ---
-# <a name="sql-database-tutorial-aad-authentication-logins-and-user-accounts-database-roles-permissions-server-level-firewall-rules-and-database-level-firewall-rules"></a>SQL Database oktatóanyag: AAD-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok
-Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan használható az SQL Management Studio Azure Active Directory-hitelesítéssel, -bejelentkezésekkel, -felhasználókkal és adatbázis-szerepkörökkel, amelyek hozzáférést és jogosultságokat biztosítanak az Azure SQL Database-kiszolgálókra és adatbázisokra vonatkozóan. Az alábbiakat sajátítja majd el:
+# <a name="azure-ad-authentication-access-and-database-level-firewall-rules"></a>Azure AD-hitelesítés, hozzáférés és adatbázisszintű tűzfalszabályok
+Ez az oktatóanyag bemutatja, hogyan használható az SQL Management Studio Azure Active Directory-hitelesítéssel, -bejelentkezésekkel, -felhasználókkal és adatbázis-szerepkörökkel, amelyek hozzáférést és jogosultságokat biztosítanak az Azure SQL Database-kiszolgálókra és adatbázisokra vonatkozóan. Az alábbiakat sajátítja majd el:
 
 - Felhasználói engedélyek megtekintése a master és a felhasználói adatbázisokban
 - Bejelentkezések és felhasználók létrehozása Azure Active Directory-hitelesítés alapján
@@ -36,14 +36,14 @@ Ez a kezdeti lépéseket ismertető oktatóanyag bemutatja, hogyan használható
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Rendelkeznie kell Azure-fiókkal. [Nyithat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/). 
 
 * Az előfizetés-tulajdonosi vagy közreműködői szerepkörhöz tartozó fiókok képesek csatlakozni az Azure Portalhoz. A szerepköralapú hozzáférés-vezérlésről (RBAC) többet is megtudhat az [Azure Portalon végzett hozzáférés-vezérlés alapvető tudnivalóit ismertető](../active-directory/role-based-access-control-what-is.md) témakörben.
 
 * Ön elvégezte [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started.md) oktatóanyagot vagy az azzal egyenértékű [PowerShell-verziót](sql-database-get-started-powershell.md). Ha még nem tette, végezze el ezt az előfeltételként szolgáló oktatóanyagot, vagy hajtsa végre az oktatóanyag [PowerShell-verziójának](sql-database-get-started-powershell.md) végén található PowerShell-szkriptet a továbblépés előtt.
 
    > [!NOTE]
-   > Az SQL Server-hitelesítéssel kapcsolatos oktatóanyag ([SQL Database oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md)) teljesítése nem kötelező, azonban az oktatóanyag olyan fogalmakat is ismertet, amelyeket itt nem ismétlünk meg. Az oktatóanyagban tárgyalt, a kiszolgáló- és adatbázisszintű tűzfalakra vonatkozó eljárások nem szükségesek, ha a kapcsolódó oktatóanyagot ugyanazokon a számítógépeken (ugyanazokról az IP-címekről) végezte el. Emiatt ezek a részek választhatóként vannak megjelölve. A jelen oktatóanyagban található képernyőképek feltételezik, hogy elvégezte a kapcsolódó oktatóanyagot. 
+   > Az SQL Server-hitelesítéssel kapcsolatos oktatóanyag ([SQL-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md)) teljesítése nem kötelező, azonban az oktatóanyag olyan fogalmakat is ismertet, amelyeket itt nem ismétlünk meg. Az oktatóanyagban tárgyalt, a kiszolgáló- és adatbázisszintű tűzfalakra vonatkozó eljárások nem szükségesek, ha a kapcsolódó oktatóanyagot ugyanazokon a számítógépeken (ugyanazokról az IP-címekről) végezte el. Emiatt ezek a részek választhatóként vannak megjelölve. A jelen oktatóanyagban található képernyőképek feltételezik, hogy elvégezte a kapcsolódó oktatóanyagot. 
    >
 
 * Létrehozott és feltöltött egy Azure Active Directory-könyvtárat. További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/active-directory-aadconnect.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-add-domain.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](https://msdn.microsoft.com/library/azure/hh967611.aspx), [Az Azure AD kezelése Windows PowerShell használatával](https://msdn.microsoft.com/library/azure/jj151815.aspx) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/active-directory-aadconnect-ports.md).
@@ -85,7 +85,7 @@ Az oktatóanyag ezen szakaszában a logikai kiszolgáló biztonsági konfigurác
    ![Kiválasztott AAD-rendszergazdai fiók mentése](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_save.png)
 
 > [!NOTE]
-> A kiszolgáló kapcsolódási információinak áttekintéséhez lépjen a [Kiszolgálóbeállítások megtekintése és frissítése](sql-database-view-update-server-settings.md) szakaszra. A jelen oktatóanyag-sorozat esetében a teljes kiszolgálónév „sqldbtutorialserver.database.windows.net”.
+> A kiszolgáló kapcsolódási információit a [kiszolgálók kezelésével](sql-database-manage-servers-portal.md) foglalkozó témakör tekinti át. A jelen oktatóanyag-sorozat esetében a teljes kiszolgálónév „sqldbtutorialserver.database.windows.net”.
 >
 
 ## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>Csatlakozás az SQL Serverhez az SQL Server Management Studio (SSMS) használatával
@@ -256,7 +256,7 @@ Az oktatóanyag jelen szakaszában egy felhasználói fiókot hoz létre az Adve
 ## <a name="create-a-database-level-firewall-rule-for-adventureworkslt-database-users"></a>Adatbázisszintű tűzfalszabály létrehozása az AdventureWorksLT adatbázis felhasználói számára
 
 > [!NOTE]
-> Ezt az eljárást nem kell végrehajtania, ha végrehajtotta az ezzel egyenértékű eljárást a kapcsolódó SQL Server-hitelesítési oktatóanyagban ([SQL Database oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md)), és ugyanazon a számítógépen, ugyanarról az IP-címről folytatja a tanulást.
+> Ezt az eljárást nem kell végrehajtania, ha végrehajtotta a vele egyenértékű eljárást a kapcsolódó SQL Server-hitelesítési oktatóanyagban ([SQL-hitelesítés és -engedélyek](sql-database-control-access-sql-authentication-get-started.md)), és ugyanazon a számítógépen, ugyanarról az IP-címről folytatja a tanulást.
 >
 
 Az oktatóanyag jelen szakaszában megkísérel majd bejelentkezni az új felhasználói fiókkal egy másik IP-címmel rendelkező számítógépről, létrehoz egy adatbázisszintű tűzfalszabályt Kiszolgálói rendszergazdaként, majd sikeresen bejelentkezik az új adatbázisszintű tűzfalszabály használatával. 
@@ -317,6 +317,6 @@ Az oktatóanyag jelen szakaszában megkísérel majd bejelentkezni az új felhas
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

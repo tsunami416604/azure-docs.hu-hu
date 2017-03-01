@@ -51,7 +51,7 @@
 ### [ARP-táblák lekérése (klasszikus)](expressroute-troubleshooting-arp-classic.md)
 
 # Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/dn606310)
 
@@ -79,8 +79,3 @@
 ### [A hálózati infrastruktúra fejlesztése a csatlakoztathatóság érdekében](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [Hibrid partneri viszonyok: Helyszíni forgatókönyvek engedélyezése](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

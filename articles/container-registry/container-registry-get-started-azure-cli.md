@@ -1,6 +1,6 @@
 ---
 title: "Azure-tároló beállításjegyzékének létrehozása – CLI | Microsoft Docs"
-description: "Bevezetés az Azure Container Registryk létrehozásába és kezelésébe az Azure CLI 2.0 előzetes verziójával"
+description: "Bevezetés az Azure Container Registryk létrehozásába és kezelésébe az Azure CLI 2.0 segítségével"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: bd2f3f5331eb83f09f5d187699a39c74be6282d5
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 1d5e16952cbc56a381ead23843515cf6ed1d74a9
 
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Tároló-beállításjegyzék létrehozása az Azure CLI-vel
-Az [Azure CLI 2.0 előzetes verzió](https://github.com/Azure/azure-cli) parancsaival létrehozhat egy tároló-beállításjegyzéket, és kezelheti annak beállításait Linux, Mac vagy Windows rendszerű számítógépéről. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure Portalon](container-registry-get-started-portal.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
+Az [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsaival létrehozhat egy tároló-beállításjegyzéket, és kezelheti annak beállításait Linux, Mac vagy Windows rendszerű számítógépéről. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure Portalon](container-registry-get-started-portal.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
 
 
 * Háttérinformációkért és a fogalmakkal kapcsolatban lásd: [Mi az az Azure Container Registry?](container-registry-intro.md)
@@ -34,9 +34,9 @@ Az [Azure CLI 2.0 előzetes verzió](https://github.com/Azure/azure-cli) parancs
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure CLI 2.0 előzetes verzió** – A CLI 2.0 előzetes verziójának telepítéshez és megismeréséhez tekintse meg a [telepítési utasításokat](https://github.com/Azure/azure-cli/blob/master/README.rst). Jelentkezzen be Azure-előfizetésébe az `az login` futtatásával.
-* **Erőforráscsoport** – A tároló-beállításjegyzék létrehozása előtt hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy használjon egy meglévő erőforráscsoportot. Győződjön meg arról, hogy az erőforráscsoport olyan helyen található, ahol a Container Registry szolgáltatás [elérhető](https://azure.microsoft.com/regions/services/). Ha a CLI 2.0 előzetes verziójával szeretne erőforráscsoportot létrehozni, tekintse meg [a CLI 2.0 előzetes verziójának mintáit](https://github.com/Azure/azure-cli-samples/tree/master/arm). 
-* **Storage-fiók** (nem kötelező) – Hozzon létre egy standard Azure [Storage-fiókot](../storage/storage-introduction.md) a tároló-beállításjegyzékhez azzal megegyező helyen. Ha nem ad meg Storage-fiókot, amikor létrehozza a beállításjegyzéket az `az acr create` paranccsal, a parancs létrehoz egyet. Ha a CLI 2.0 előzetes verziójával szeretne Storage-fiókot létrehozni, tekintse meg [a CLI 2.0 előzetes verziójának mintáit](https://github.com/Azure/azure-cli-samples/tree/master/storage).
+* **Azure CLI 2.0** – A CLI 2.0 telepítéshez és megismeréséhez tekintse meg a [telepítési utasításokat](https://github.com/Azure/azure-cli/blob/master/README.rst). Jelentkezzen be Azure-előfizetésébe az `az login` futtatásával.
+* **Erőforráscsoport** – A tároló-beállításjegyzék létrehozása előtt hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy használjon egy meglévő erőforráscsoportot. Győződjön meg arról, hogy az erőforráscsoport olyan helyen található, ahol a Container Registry szolgáltatás [elérhető](https://azure.microsoft.com/regions/services/). Ha a CLI 2.0-val szeretne erőforráscsoportot létrehozni, tekintse meg [a CLI 2.0 mintáit](https://github.com/Azure/azure-cli-samples/tree/master/arm). 
+* **Storage-fiók** (nem kötelező) – Hozzon létre egy standard Azure [Storage-fiókot](../storage/storage-introduction.md) a tároló-beállításjegyzékhez azzal megegyező helyen. Ha nem ad meg Storage-fiókot, amikor létrehozza a beállításjegyzéket az `az acr create` paranccsal, a parancs létrehoz egyet. Ha a CLI 2.0-val szeretne tárfiókot létrehozni, tekintse meg [a CLI 2.0 mintáit](https://github.com/Azure/azure-cli-samples/tree/master/storage).
 * **Egyszerű szolgáltatás** (nem kötelező) – Ha a parancssori felülettel hoz létre beállításjegyzéket, az alapértelmezés szerint nem lesz elérhető. Igény szerint a beállításjegyzékhez hozzárendelhet egy meglévő Azure Active Directory egyszerű szolgáltatást (vagy létrehozhat és hozzárendelhet egy újat), vagy engedélyezheti a beállításjegyzék rendszergazdai felhasználói fiókját. Ezzel kapcsolatban lásd a cikk későbbi részeit. A beállításjegyzék elérésével kapcsolatos további információkat a [tároló-beállításjegyzékkel való hitelesítéssel kapcsolatos cikkben](container-registry-authentication.md) találhat. 
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
@@ -66,7 +66,7 @@ Különösen ügyeljen a következőre:
 * `loginServer` – A teljes név, amelyet a [beállításjegyzékbe való bejelentkezéshez](container-registry-authentication.md) ad meg. Ebben a példában a név `myregistry-contoso.exp.azurecr.io` (csak kisbetűkkel).
 
 ## <a name="assign-a-service-principal"></a>Egyszerű szolgáltatás hozzárendelése
-Azure Active Directory egyszerű szolgáltatások beállításjegyzékhez való hozzárendeléséhez a CLI 2.0 előzetes verziójának parancsait használhatja. A példákban szereplő egyszerű szolgáltatáshoz a tulajdonosi szerepkör van hozzárendelve, de [más szerepköröket](../active-directory/role-based-access-control-configure.md) is hozzárendelhet, ha szeretne.
+Azure Active Directory egyszerű szolgáltatások beállításjegyzékhez való hozzárendeléséhez a CLI 2.0 parancsait használhatja. A példákban szereplő egyszerű szolgáltatáshoz a tulajdonosi szerepkör van hozzárendelve, de [más szerepköröket](../active-directory/role-based-access-control-configure.md) is hozzárendelhet, ha szeretne.
 
 ### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>Egyszerű szolgáltatás létrehozása és hozzáférés biztosítása a beállításjegyzékhez
 Az alábbi parancs tulajdonosi szerepkör szintű hozzáférést biztosít az új egyszerű szolgáltatás számára a `--scopes` paraméterrel átadott beállításjegyzék-azonosítóhoz. Adjon meg egy erős jelszót a `--password` paraméterrel.
@@ -131,6 +131,6 @@ az acr repository show-tags -n myRegistry --repository samples/nginx -o json
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

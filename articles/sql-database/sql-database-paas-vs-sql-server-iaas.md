@@ -17,8 +17,8 @@ ms.topic: get-started-article
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: a2e65de2ec77da9005cea18876fd86fd2928b9da
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: bdcf28703f007d32144278c7f0956fe4c27c3b27
 
 
 ---
@@ -121,7 +121,7 @@ Számos számítástechnikai osztály számára elsődleges prioritást jelent a
 
 Az **SQL Database** Alapszintű, Standard és Prémium szolgáltatáscsomagja esetében a Microsoft 99,99%-os SLA-elérhetőséget garantál. További információk: [SLA a következőhöz: SQL-adatbázis](https://azure.microsoft.com/support/legal/sla/sql-database/). Az SQL Database szolgáltatáscsomagjaival és az általuk támogatott üzletmenet-folytonossági csomagokkal kapcsolatban lásd: [Service Tiers](sql-database-service-tiers.md) (Szolgáltatáscsomagok).
 
-Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-os SLA-elérhetőséget garantál, amely kizárólag a virtuális gépre vonatkozik. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). A virtuális gépeken üzemeltetett adatbázisok magas rendelkezésre állása érdekében használja az SQL Server által biztosított magas rendelkezésre állási funkciók egyikét, például az [AlwaysOn rendelkezésre állási csoportokat](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis 99,99% fölötti rendelkezésre állásának elérését.
+Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-os SLA-elérhetőséget garantál, amely kizárólag a virtuális gépre vonatkozik. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). A virtuális gépeken üzemeltetett adatbázisok magas rendelkezésre állása érdekében használja az SQL Server által biztosított magas rendelkezésre állási funkciók egyikét, például az [AlwaysOn rendelkezésre állási csoportokat](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis&99;,99% fölötti rendelkezésre állásának elérését.
 
 ### <a name="a-namemarketatime-to-market"></a><a name="market"></a>Piacra jutás
 Az **SQL Database** ideális megoldás az olyan felhőalapú alkalmazásokhoz, amelyek esetében rendkívül fontos szempont a gyors fejlesztés és a rövid piacra jutási idő. A DBA-hoz hasonló programozási funkciói révén tökéletes választás a felhőben dolgozó tervezők és fejlesztők számára, mivel csökkenti az alkalmazás mögötti operációs rendszer és adatbázis felügyeletére fordítandó időt. A [REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) és a [PowerShell-parancsmagok](http://msdn.microsoft.com/library/mt740629.aspx) segítségével például akár több ezer adatbázis felügyeleti műveleteit automatizálhatja és felügyelheti. A [rugalmas készletnek](sql-database-elastic-pool.md) és más hasonló funkcióknak köszönhetően Ön az alkalmazásrétegre összpontosíthat, így gyorsabb lehet a megoldások piaci bevezetése.
@@ -142,14 +142,13 @@ Válassza az **Azure virtuális gépeken futó SQL Servert**, ha:
 * Meglévő számítógépes erőforrások használatával Ön irányíthatja a frissítéseket, a biztonsági mentéseket és az adatbázisok magas rendelkezésre állását. Megjegyzendő, hogy egyes automatizált funkciók jelentősen leegyszerűsítik ezeket a műveleteket. 
 
 ## <a name="next-steps"></a>Következő lépések
-* Az SQL Database használatának megkezdésével kapcsolatban lásd: [SQL Database tutorial: Create a SQL database in minutes using the Azure portal](sql-database-get-started.md) (SQL Database oktatóanyag: SQL-adatbázis létrehozása néhány perc alatt az Azure Portalon).
+* Tekintse meg [az első Azure SQL Database-adatbázissal](sql-database-get-started.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 * [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 * Az Azure virtuális gépeken futó SQL Server használatának megkezdésével kapcsolatban lásd: [Provision a SQL Server virtual machine in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) (SQL Servert futtató virtuális gép létrehozása az Azure-ban).
-* Lásd: [SQL Server Azure virtuális gépen: Képzési terv](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

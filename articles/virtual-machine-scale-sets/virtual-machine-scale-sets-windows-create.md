@@ -1,6 +1,6 @@
 ---
-title: "Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel | Microsoft Docs"
-description: "Virtuálisgép-méretezési csoport létrehozása a PowerShell-lel"
+title: "Azure virtuálisgép-méretezési csoport létrehozása a PowerShell használatával | Microsoft Docs"
+description: "Azure virtuálisgép-méretezési csoport létrehozása a PowerShell használatával"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 02/21/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
+ms.sourcegitcommit: 1f8e66fac5b82698525794f0486dd0432c7421a7
+ms.openlocfilehash: 7286fed39839675eb960b749f3235f83e36c5e9a
 
 
 ---
@@ -55,46 +55,6 @@ A virtuálisgép-méretezési csoportoknak egy erőforráscsoporton belül kell 
         ProvisioningState : Succeeded
         Tags              :
         ResourceId        : /subscriptions/########-####-####-####-############/resourceGroups/myrg1
-
-### <a name="storage-account"></a>Tárfiók
-A virtuális gép által a tárfiókban tárolja az operációsrendszer-lemezt és a méretezéshez használt diagnosztikai adatokat. Az ajánlott eljárás az, hogy ha lehetséges, a méretezési csoportban létrehozott minden egyes virtuális géphez tartozzon egy tárfiók. Ha nem lehetséges, akkor tárfiókonként legfeljebb 20 virtuális géppel tervezzen. A cikkben szereplő példa három virtuális gép számára létrehozott három tárfiókot tartalmaz.
-
-1. Cserélje le a **$stName** értéket a tárfiók nevére. Ellenőrizze, hogy a név egyedi-e. 
-   
-        $saName = "storage account name"
-        Get-AzureRmStorageAccountNameAvailability $saName
-   
-    Ha a válasz **Igaz** eredményt ad, a választott név egyedi.
-2. Cserélje le a **$saType** értéket a tárfiók típusára, majd hozza létre a változót:  
-   
-        $saType = "storage account type"
-   
-    Lehetséges értékek: Standard_LRS, Standard_GRS, Standard_RAGRS vagy Premium_LRS.
-3. Felhasználói fiók létrehozása:
-   
-        New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
-   
-    Ennek nagyjából a következő példához hasonlóan kell kinéznie:
-   
-        ResourceGroupName   : myrg1
-        StorageAccountName  : myst1
-        Id                  : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft
-                              .Storage/storageAccounts/myst1
-        Location            : centralus
-        AccountType         : StandardLRS
-        CreationTime        : 3/15/2016 4:51:52 PM
-        CustomDomain        :
-        LastGeoFailoverTime :
-        PrimaryEndpoints    : Microsoft.Azure.Management.Storage.Models.Endpoints
-        PrimaryLocation     : centralus
-        ProvisioningState   : Succeeded
-        SecondaryEndpoints  :
-        SecondaryLocation   :
-        StatusOfPrimary     : Available
-        StatusOfSecondary   :
-        Tags                : {}
-        Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
-4. Ismételje meg az 1-4. lépést három tárfiók létrehozásához (például myst1, myst2 és myst3).
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 A méretezési csoportban található virtuális gépekhez szükséges egy virtuális hálózat.
@@ -173,12 +133,10 @@ Minden erőforrás rendelkezésre áll a méretezési csoport konfigurálásáho
         $imageSku = "2012-R2-Datacenter"
    
     További információ a használható egyéb rendszerképekről:[Azure virtuális gépek rendszerképeinek keresése és kiválasztása a Windows PowerShell és az Azure CLI használatával](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-3. Cserélje le a **$vhdContainers** értéket egy olyan listára, amely a virtuális merevlemezek tárolási helyére mutató elérési utakat tartalmazza (például „https://mystorage.blob.core.windows.net/vhds”), majd hozza létre a következő változót:
+
+3. A tárolóprofil létrehozása:
    
-        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
-4. A tárolóprofil létrehozása:
-   
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### <a name="virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport
 Végül létrehozhatja a méretezési csoportot.
@@ -225,6 +183,6 @@ Ezekkel az erőforrásokkal megvizsgálhatja a létrehozott virtuálisgép-mére
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

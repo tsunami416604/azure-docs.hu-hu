@@ -13,10 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ce0e0ce9004e1b331328fca5830f01b6ce6af6c
+ms.sourcegitcommit: eec9b73cbaccfa50eec6f237e4d1d810c6efa1d9
+ms.openlocfilehash: e5b8ac91914203156bd395d7f462385e9f6dbcb4
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -113,7 +114,7 @@ Engedélyezze vagy tiltsa le az „Email Notifications of Anomalous sign-ins” 
 ### <a name="integrate-with-the-azure-ad-reporting-api"></a>Integráció az Azure AD Reporting API-val
 Lásd: [Bevezetés a Reporting API használatába](active-directory-reporting-api-getting-started.md).
 
-### <a name="engage-multifactor-authentication-on-users"></a>Multi-Factor Authentication engedélyezése a felhasználók számára
+### <a name="engage-multi-factor-authentication-on-users"></a>Multi-Factor Authentication engedélyezése a felhasználók számára
 Válasszon ki egy felhasználót egy jelentésben.
 
 Kattintson a képernyő alján található „MFA engedélyezése” gombra.
@@ -139,10 +140,5 @@ Az [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) e-mai
 > Az Azure AD Reporting további dokumentációiért lásd: [View your access and usage reports](active-directory-view-access-usage-reports.md) (A hozzáférési és használati jelentések megtekintése).
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 
