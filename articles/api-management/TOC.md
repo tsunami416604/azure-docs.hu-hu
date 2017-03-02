@@ -15,6 +15,7 @@
 ### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
 ### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)
 ### [Csatlakozás belső virtuális hálózathoz](api-management-using-with-internal-vnet.md)
+### [Az Application Gateway integrálása belső VNET-en](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [Kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md)
 ## Szabályzatok konfigurálása
 ### [Egyedi gyorsítótárazás](api-management-sample-cache-by-key.md)
@@ -24,13 +25,16 @@
 ### [Szabályzati segédlet indexe](api-management-policy-reference.md)
 ### [A szabályzatok áttekintése](api-management-howto-policies.md)
 ### [Titkok kezelése tulajdonságokkal](api-management-howto-properties.md)
+### [API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](api-management-howto-mutual-certificates-for-clients.md)
 ## A fejlesztői élmény testreszabása
-### [A fejlesztői portál testreszabása](api-management-customize-portal.md)
+### [Lap tartalmának és elrendezésének módosítása](api-management-modify-content-layout.md)
+### [Lapelemek stílusának testreszabása](api-management-customize-styles.md)
+### [Rendszerlapok testreszabása sablonok használatával](api-management-developer-portal-templates.md)
 ### [Hitelesítés az AAD-vel](api-management-howto-aad.md)
+### [Hitelesítés az AAD B2C-vel](api-management-howto-aad-b2c.md)
 ### [Delegált hitelesítés](api-management-howto-setup-delegation.md)
 ### [E-mail-értesítések és sablonok](api-management-howto-configure-notifications.md)
 ### [OAuth-támogatás engedélyezése a konzolon](api-management-howto-oauth2.md)
-### [Testreszabás sablonokkal](api-management-developer-portal-templates.md)
 ## Kezelés éles környezetben
 ### [Csoportok kezelése](api-management-howto-create-groups.md)
 ### [Üzembe helyezés több Azure-régióban](api-management-howto-deploy-multi-region.md)
@@ -80,9 +84,4 @@
 ## [RBAC-hoz hasonló hozzáférés biztosítása REST API használatával](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [A PostMan beállítása az API Management API-jainak hívására](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [API Management-bővítmény a SmartBear Ready! API-hoz](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

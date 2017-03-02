@@ -16,7 +16,7 @@
 #### [Windows-ügynökök](log-analytics-windows-agents.md)
 #### [Linux-ügynökök](log-analytics-linux-agents.md)
 #### [Azure-alapú virtuális gépek](log-analytics-azure-vm-extension.md)
-#### [Azure-erőforrások](log-analytics-azure-storage.md)
+#### [Azure Storage](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
 #### [OMS Gateway](log-analytics-oms-gateway.md)
@@ -31,8 +31,8 @@
 ## Adatok lekérdezése
 ### [Naplókeresés – Áttekintés](log-analytics-log-searches.md)
 ### [A Search leírása](log-analytics-search-reference.md)
+#### [Reguláris kifejezések](log-analytics-log-searches-regex.md)
 ### [Számítógépcsoportok](log-analytics-computer-groups.md)
-### [Riasztások](log-analytics-alerts.md)
 ## Adatok elemzése
 ### [Irányítópultok](log-analytics-dashboards.md)
 ### [Nézettervező](log-analytics-view-designer.md)
@@ -42,6 +42,7 @@
 #### [AD-elemzés](log-analytics-ad-assessment.md)
 #### [AD-replikáció állapota](log-analytics-ad-replication-status.md)
 #### [Riasztáskezelés](log-analytics-solution-alert-management.md)
+#### [Azure SQL Analytics](log-analytics-azure-sql.md)
 #### [Kapacitáskezelés](log-analytics-capacity.md)
 #### [Változáskövetés](log-analytics-change-tracking.md)
 #### [Tárolók](log-analytics-containers.md)
@@ -60,6 +61,15 @@
 #### [VMware](log-analytics-vmware.md)
 #### [Átviteli adatok](log-analytics-wire-data.md)
 #### [SCOM-elemzés](log-analytics-scom-assessment.md)
+## Riasztások létrehozása
+### [A riasztások ismertetése](log-analytics-alerts.md)
+### [Riasztási műveletek](log-analytics-alerts-actions.md)
+### Riasztási szabályok létrehozása
+#### [OMS-portál](log-analytics-alerts-creating.md)
+#### [REST API](log-analytics-api-alerts.md)
+#### [Resource Manager-sablon](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
+### [Példa webhook-műveletre](log-analytics-alerts-webhooks.md)
+### [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md)
 ## Fejlesztés
 ### [Adatgyűjtő API](log-analytics-data-collector-api.md)
 ### [PowerShell-parancsmagok](log-analytics-powershell-workspace-configuration.md)
@@ -75,8 +85,3 @@
 ## [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -17,6 +17,7 @@
 ### [Sablonok készítése](resource-group-authoring-templates.md)
 ### [Sablonfüggvények](resource-group-template-functions.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
+### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
 ### [Erőforrástípusok több példányának létrehozása](resource-group-create-multiple.md)
 ### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
@@ -71,8 +72,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

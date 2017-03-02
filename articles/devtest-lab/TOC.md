@@ -4,8 +4,8 @@
 ## [DevTest Labs-fogalmak](devtest-lab-concepts.md)
 
 # Első lépések
-## [Labor létrehozása](devtest-lab-create-lab.md)
-## [VM-összetevők létrehozása](devtest-lab-add-vm-with-artifacts.md)
+## [Tesztkörnyezet létrehozása](devtest-lab-create-lab.md)
+## [Virtuális gép létrehozása](devtest-lab-add-vm.md)
 ## [Tesztkörnyezet létrehozása képzéshez](devtest-lab-training-lab.md)
 ## [Gyakori kérdések](devtest-lab-faq.md)
 
@@ -20,6 +20,7 @@
 ## Az összetevők kezelése
 ### [Összetevőtár hozzáadása](devtest-lab-add-artifact-repo.md)
 ### [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)
+### [Az összetevők kezelése](devtest-lab-add-vm-with-artifacts.md)
 
 ## Virtuálisgép-adatbázisok és -sablonok kezelése
 ### [Több virtuális gépes környezet létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
@@ -41,8 +42,3 @@
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

@@ -45,7 +45,7 @@
 
 ## Lemezes tárolás 
 ### [Virtuális gép létrehozása a Resource Manager és a PowerShell használatával](../virtual-machines/virtual-machines-windows-ps-create.md)
-### [Linux virtuális gép létrehozása az Azure CLI 2.0 (előzetes) verziójával](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [Linux-alapú virtuális gép létrehozása az Azure CLI 2.0-s verziójával](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 ### [Felügyelt lemez csatolása Windows rendszerű virtuális géphez PowerShell használatával](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 ### [Felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../virtual-machines/virtual-machines-linux-add-disk.md)
 ### [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
@@ -100,7 +100,7 @@
 ### [Tulajdonságok és metaadatok beállítása és lekérése](storage-properties-metadata.md)
 ## Kezelés
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI 2.0 (előzetes verzió)](storage-azure-cli.md)
+### [Azure CLI 2.0](storage-azure-cli.md)
 ### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure Automation](automation-manage-storage.md)
 ## Biztonságos
@@ -219,8 +219,3 @@
 ### [Ruby](https://github.com/Azure/azure-storage-ruby)
 ### [Python](https://github.com/Azure/azure-storage-python)
 ### [iOS](https://github.com/Azure/azure-storage-ios)
-
-
-<!--HONumber=Feb17_HO2-->
-
-
