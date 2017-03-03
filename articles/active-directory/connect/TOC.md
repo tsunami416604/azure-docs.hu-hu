@@ -22,8 +22,10 @@
 ## Tervezés és kialakítás
 ### [Tervezési alapelvek](active-directory-aadconnect-design-concepts.md)
 ### [Azure AD Connect-topológiák](active-directory-aadconnect-topologies.md)
+### [Egyszeri bejelentkezés](active-directory-aadconnect-sso.md)
+### [Az Active Directory összevonási szolgáltatások az Azure-ban](active-directory-aadconnect-azure-adfs.md)
 ### [Példányokra vonatkozó különleges szempontok](active-directory-aadconnect-instances.md)
-
+### [Ha már rendelkezik az Azure AD-vel](active-directory-aadconnect-existing-tenant.md)
 ## [Az Azure AD Connect kezelése](active-directory-aadconnect-whats-next.md)
 ### [O365- és Azure AD-tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md)
 ### [Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md)
@@ -32,20 +34,24 @@
 ### [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md)
 
 
+
 ## Azure AD Connect-szinkronizálás kezelése
 ### [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [Átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md)
 ### [Azure AD-szolgáltatásfiók](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Telepítő varázsló](active-directory-aadconnectsync-installation-wizard.md)
 ### [Az alapértelmezett konfiguráció módosítása](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [A szűrés konfigurálása](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [Címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md)
+
 ### [Szinkronizálási szolgáltatáskezelő](active-directory-aadconnectsync-service-manager-ui.md)
-#### [Műveletek](active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fazure%2factive-directory%2faad-connect%2ftoc.json)
+#### [Műveletek](active-directory-aadconnectsync-service-manager-ui-operations.md)
 #### [Összekötők](active-directory-aadconnectsync-service-manager-ui-connectors.md)
 #### [Metaverzumtervező](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)
 #### [Keresés a metaverzumban](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+
 
 ## Összevonási szolgáltatások kezelése
 ### [Kezelés és testreszabás](active-directory-aadconnect-federation-management.md)
@@ -83,8 +89,3 @@
 # Erőforrások
 ##[Azure AD Connect – gyakori kérdések](active-directory-aadconnect-faq.md)
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

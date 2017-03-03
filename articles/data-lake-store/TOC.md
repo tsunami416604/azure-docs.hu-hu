@@ -21,6 +21,7 @@
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Adatok feltöltése offline forrásokból](data-lake-store-offline-bulk-data-upload.md)
+### [Az Azure Data Lake Store régiók közötti migrálása](data-lake-store-migration-cross-region.md)
 
 ## Adatok védelme
 ### [Biztonsági áttekintés](data-lake-store-security-overview.md)
@@ -70,8 +71,3 @@
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
 ## [Data Lake Store blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

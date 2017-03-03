@@ -54,6 +54,7 @@
 ### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
 ## A Spark használata memórián belüli feldolgozáshoz
+### [Mély tanulás a Caffe használatával](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)
 ### [Önálló alkalmazás](hdinsight-apache-spark-create-standalone-application.md)
@@ -223,8 +224,3 @@
 # Erőforrások
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

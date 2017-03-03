@@ -105,6 +105,7 @@
 #### Fürt létrehozása az Azure-ban
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+##### [Visual Studio és Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
 #### [Csomóponttípusok és virtuálisgép-méretezési csoportok](service-fabric-cluster-nodetypes.md)
 #### [Fürt skálázása](service-fabric-cluster-scale-up-down.md)
 #### [Fürt frissítése](service-fabric-cluster-upgrade.md)
@@ -116,6 +117,8 @@
 #### [Nyilvános fürt ingyenes kipróbálása](http://aka.ms/tryservicefabric)
 
 ### Önálló fürtök
+#### [Tervezés és felkészülés az üzembe helyezésre](service-fabric-cluster-standalone-deployment-preparation.md)
+#### [A különálló Service Fabric-csomag tartalma](service-fabric-cluster-standalone-package-contents.md)
 #### [Önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 #### [Önálló fürt létrehozása az Azure Virtual Machinesben](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [Fürt skálázása](service-fabric-cluster-windows-server-add-remove-nodes.md)
@@ -211,8 +214,3 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-
-
-<!--HONumber=Feb17_HO2-->
-
-
