@@ -63,6 +63,7 @@
 ### [HDInsight MapReduce-tevékenység](data-factory-map-reduce.md)
 ### [HDInsight Streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 ### [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
+### [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
 ### [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 ### [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -99,8 +100,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [Funkció kérése](https://feedback.azure.com/forums/270578-azure-data-factory)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

@@ -45,9 +45,17 @@
 
 ## [Tartalom kódolása](media-services-encode-asset.md)
 ### [Kódolók összehasonlítása](media-services-compare-encoders.md)
-### [Hibakódok](media-services-encoding-error-codes.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard-formátumok és -kodekek](media-services-media-encoder-standard-formats.md)
+#### [Sávszélességi skála automatikus létrehozása a MES használatával](media-services-autogen-bitrate-ladder-with-mes.md)
+#### Kódolás a Media Encoder Standard használatával
+##### [Portál](media-services-portal-encode.md)
+##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
+##### [REST](media-services-rest-encode-asset.md)
+#### [Speciális kódolás a MES használatával](media-services-advanced-encoding-with-mes.md)
+##### [Media Encoder Standard-beállításkészletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
+##### [Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával](media-services-dotnet-generate-thumbnail-with-mes.md)
+##### [Videók körülvágása a Media Encoder Standarddel](media-services-crop-video.md)
 #### MES-sémák
 ##### [Media Encoder Standard-séma](media-services-mes-schema.md)
 ##### [Bemeneti metaadatok](media-services-input-metadata-schema.md)
@@ -78,13 +86,6 @@
 ##### [H264 Single Bitrate 720p for Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md)
 ##### [H264 Single Bitrate High Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md)
 ##### [H264 Single Bitrate Low Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md)
-#### Kódolás a Media Encoder Standard használatával
-##### [Portál](media-services-portal-encode.md)
-##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-##### [REST](media-services-rest-encode-asset.md)
-#### [Speciális kódolás a MES használatával](media-services-advanced-encoding-with-mes.md)
-##### [Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával](media-services-dotnet-generate-thumbnail-with-mes.md)
-##### [Videók körülvágása a Media Encoder Standarddel](media-services-crop-video.md)
 ### Media Encoder Premium-munkafolyamat
 #### [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
 #### Kódolás a Media Encoder Premium munkafolyamat használatával
@@ -92,9 +93,11 @@
 ##### [Oktatóanyagok a Media Encoder Premium-munkafolyamathoz](media-services-media-encoder-premium-workflow-tutorials.md)
 ##### [Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel](media-services-workflow-designer.md)
 ##### [Prémium munkafolyamat több bemenettel](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
+### [fMP4-adattömböket előállító feladat létrehozása](media-services-generate-fmp4-chunks.md)
 ### Médiafeldolgozók
 #### [.NET](media-services-get-media-processor.md)
 #### [REST](media-services-rest-get-media-processor.md)
+### [Hibakódok](media-services-encoding-error-codes.md)
 ### Elavult
 #### [Statikus csomagolás és titkosítás](media-services-static-packaging.md)
 
@@ -215,8 +218,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services-közösség](media-services-community.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

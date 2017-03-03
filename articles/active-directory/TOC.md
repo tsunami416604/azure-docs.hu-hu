@@ -9,12 +9,31 @@
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
-## [Az AD-licencelés kezelése](active-directory-licensing-what-is.md)
+## Az Azure AD-licencek kezelése
+### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
+### [Klasszikus portál](active-directory-licensing-what-is.md)
 ## [Azure beszerzése a szervezet számára](sign-up-organization.md)
 ## [Gyakori kérdések](active-directory-faq.md)
 ## [A SaaS-alkalmazás oktatóanyagai](active-directory-saas-tutorial-list.md)
 
 # Útmutató
+## Tervezés és kialakítás
+### [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
+#### Követelmények meghatározása
+##### [Identitáskezelés](active-directory-hybrid-identity-design-considerations-business-needs.md)
+##### [Címtár-szinkronizálás](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [Többtényezős hitelesítés](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [Az identitás-életciklus stratégiája](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [Az adatbiztonság tervezése](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [Adatvédelem](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [Tartalomkezelés](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [Hozzáférés-vezérlés](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [Incidensmegoldás](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+#### Az identitás-életciklus megtervezése
+##### [Feladatok](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [Bevezetési stratégia](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [Következő lépések](active-directory-hybrid-identity-design-considerations-nextsteps.md)
+#### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 ## Felhasználók kezelése
 ### Felhasználók hozzáadása
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
@@ -47,17 +66,26 @@
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 #### [Klasszikus portál](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [Csoportalapú licencelés](active-directory-licensing-whatis-azure-portal.md)
+#### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
+#### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
+#### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
 ### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 
-## [Tevékenység- és biztonsági jelentések megtekintése](active-directory-view-access-usage-reports.md)
-### [Azure AD Reporting](active-directory-reporting-getting-started.md)
+## [Tevékenységjelentések megtekintése](active-directory-view-access-usage-reports.md)
+### [Bejelentkezések](active-directory-reporting-activity-sign-ins.md)
+### [Naplók](active-directory-reporting-activity-audit-logs.md)
+### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
+### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Gyakori kérdések](active-directory-reporting-faq.md)
 ### [Jelentések migrálása](active-directory-reporting-migration.md)
-
 ### [Ismert hálózatok](active-directory-known-networks.md)
 
-### [Jelentéskészítési útmutató](active-directory-reporting-guide.md)
+### klasszikus portál
+#### [Azure AD Reporting](active-directory-reporting-getting-started.md)
+#### [Jelentéskészítési útmutató](active-directory-reporting-guide.md)
 #### [Előzetes verzió](active-directory-reporting-azure-portal.md)
 #### [API](active-directory-reporting-api-getting-started.md)
 ##### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
@@ -65,20 +93,18 @@
 ##### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
 ##### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
 ##### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
-
-
 #### [Események naplózása](active-directory-reporting-audit-events.md)
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
-### A jelentések értelmezése
-#### [Szabálytalan bejelentkezés](active-directory-reporting-irregular-sign-in-activity.md)
-#### [Több hiba](active-directory-reporting-sign-ins-after-multiple-failures.md)
-#### [Gyanús IP-címek](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
-#### [Különböző földrajzi régiók](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-#### [Potenciálisan fertőzött eszközök](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
-#### [Ismeretlen források](active-directory-reporting-sign-ins-from-unknown-sources.md)
-#### [Rendellenes bejelentkezések](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
+#### A jelentések értelmezése
+##### [Szabálytalan bejelentkezés](active-directory-reporting-irregular-sign-in-activity.md)
+##### [Több hiba](active-directory-reporting-sign-ins-after-multiple-failures.md)
+##### [Gyanús IP-címek](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
+##### [Különböző földrajzi régiók](active-directory-reporting-sign-ins-from-multiple-geographies.md)
+##### [Potenciálisan fertőzött eszközök](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
+##### [Ismeretlen források](active-directory-reporting-sign-ins-from-unknown-sources.md)
+##### [Rendellenes bejelentkezések](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [Jelszavak kezelése](active-directory-manage-passwords.md)
 ### [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
@@ -99,9 +125,11 @@
 #### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
 
 ## Eszközök kezelése
+### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
+#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
+#### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
 ### [Eszköz regisztrálása](active-directory-azureadjoin-personal-device.md)
 ### [Windows 10-es eszköz regisztrálása](active-directory-azureadjoin-user-upgrade.md)
-
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
 #### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
@@ -176,6 +204,7 @@
 ### [Dokumentumtár](active-directory-apps-index.md)
 
 ## Címtár kezelése
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Egyéni tartománynevek
 #### [Áttekintés](active-directory-add-domain-concepts.md)
 #### Tartománynév hozzáadása
@@ -249,10 +278,6 @@
 ### [Feltételes hozzáférés](active-directory-conditional-access.md)
 #### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
 #### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
-#### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
-#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
-##### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [Hitelesítő alkalmazás kezelése](active-directory-conditional-access-azure-authenticator-app.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
 #### [Helyszíni üzembe helyezés](active-directory-conditional-access-on-premises-setup.md)
@@ -274,27 +299,12 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Üzembe helyezés Azure-beli virtuális gépeken](virtual-networks-windows-server-active-directory-virtual-machines.md)
+## [AD DS üzembe helyezése Azure-beli virtuális gépeken](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Windows Server Active Directory Azure-beli virtuális gépeken](active-directory-deploying-ws-ad-guidelines.md)
 ### [Replika tartományvezérlő egy Azure-beli virtuális gépen](active-directory-install-replica-active-directory-domain-controller.md)
 ### [Új erdő egy Azure-beli virtuális hálózaton](active-directory-new-forest-virtual-machine.md)
 
-## [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
-### Követelmények meghatározása
-#### [Identitáskezelés](active-directory-hybrid-identity-design-considerations-business-needs.md)
-#### [Címtár-szinkronizálás](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-#### [Többtényezős hitelesítés](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-#### [Az identitás-életciklus stratégiája](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-### [Az adatbiztonság tervezése](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-#### [Adatvédelem](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-#### [Tartalomkezelés](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-#### [Hozzáférés-vezérlés](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-#### [Incidensmegoldás](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
-### Az identitás-életciklus megtervezése
-#### [Feladatok](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-#### [Bevezetési stratégia](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-### [Következő lépések](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 
 ## [Az AD FS üzembe helyezése az Azure-ban](active-directory-aadconnect-azure-adfs.md)
 ### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
@@ -323,8 +333,3 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
