@@ -17,6 +17,7 @@ ms.author: banders;magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
 ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -185,9 +186,4 @@ Vagy a következő Windows PowerShell-parancsnak az Operations Manager felügyel
 ## <a name="next-steps"></a>Következő lépések
 * A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 * A [naplókeresések](log-analytics-log-searches.md) megismerése a megoldások által összegyűjtött részletes információk megtekintéséhez.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

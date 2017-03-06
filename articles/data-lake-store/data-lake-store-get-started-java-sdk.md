@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
 ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -158,10 +159,5 @@ Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfol
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
