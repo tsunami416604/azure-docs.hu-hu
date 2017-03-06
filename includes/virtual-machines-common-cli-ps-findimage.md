@@ -1,8 +1,8 @@
 
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (előzetes verzió)
+## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Miután [telepítette az Azure CLI 2.0 előzetes verzióját](https://docs.microsoft.com/cli/azure/install-az-cli2), az `az vm image list` paranccsal megjelenítheti a népszerű VM-rendszerképek gyorsítótárazott listáját. Például az `az vm image list -o table` parancs következő példája az alábbit jeleníti meg:
+Miután [telepítette az Azure CLI 2.0 szoftvert](https://docs.microsoft.com/cli/azure/install-az-cli2), az `az vm image list` paranccsal megjelenítheti a népszerű VM-rendszerképek gyorsítótárazott listáját. Például az `az vm image list -o table` parancs következő példája az alábbit jeleníti meg:
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -294,7 +294,3 @@ Ha a listából kimásolja a kiválasztott termékváltozat nevét, akkor rendel
 [gog]: http://google.com/
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/
-
-<!--HONumber=Feb17_HO3-->
-
-
