@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: 749267a5bb6e45714daa1fc06cd3aabcac326e76
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: e696b95c9db86b062440f0c4fd788bf97223317a
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="radius-authentication-and-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
+# <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 Az Azure MFA-kiszolgáló RADIUS-hitelesítés szakaszában engedélyezheti és konfigurálhatja a RADIUS-hitelesítést. A RADIUS egy szabványos protokoll hitelesítési kérések fogadására és feldolgozására. Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-kiszolgálóként működik. Az Azure Multi-Factor Authentication hozzáadásához szúrja be a kiszolgálót a RADIUS-ügyfél (VPN-készülék) és a hitelesítési cél közé, amely Active Directory (AD), LDAP-címtár vagy egy másik RADIUS-kiszolgáló is lehet. Az Azure Multi-Factor Authentication (MFA) működéséhez az Azure MFA-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és a hitelesítési céllal is tudjon kommunikálni. Az Azure MFA-kiszolgáló fogadja a RADIUS-ügyfél kéréseit, ellenőrzi a hitelesítő adatokat a hitelesítési célon, Azure Multi-Factor Authenticationt biztosít és választ küld a RADIUS-ügyfélnek. A hitelesítés csak akkor sikeres, ha az elsődleges hitelesítés és az Azure Multi-Factor Authentication is sikeres.
 
 > [!NOTE]
@@ -76,10 +77,5 @@ A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 * Konfigurálja a RADIUS-on keresztül hitelesítendő készüléket/kiszolgálót azon Azure Multi-Factor Authentication-kiszolgáló IP-címével, amely a RADIUS-kiszolgálóként fog működni.
 * Használja a korábban konfigurált közös titkos kulcsot.
 * A RADIUS-időtúllépést állítsa 30–60 másodpercre, hogy elegendő idő álljon rendelkezésre a felhasználó hitelesítő adatainak ellenőrzésére, a kétlépéses hitelesítés végrehajtására, a válasz fogadására és a RADIUS hozzáférési kérés megválaszolására.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

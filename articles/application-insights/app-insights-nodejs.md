@@ -1,21 +1,22 @@
 ---
-title: "Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére | Microsoft Docs"
-description: "Az Application Insights segítségével elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure webalkalmazásán."
+title: "A Node.js alkalmazás figyelése az Azure Application Insights SDK segítségével | Microsoft Docs"
+description: "Az Application Insights használatával elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure-webappon."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
+ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
+ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -31,15 +32,14 @@ Az SDK biztosítja a bejövő HTTP-kérelemarányok és válaszok, a teljesítm�
 #### <a name="before-you-start"></a>Előkészületek
 A következők szükségesek:
 
-* Visual Studio 2013 vagy újabb. Az újabb jobb.
 * Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével.
 
 ## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights-erőforrás létrehozása
-Jelentkezzen be az [Azure portálra][portal], és hozzon létre egy új Application Insights-erőforrást. Az Azure-ban egy [erőforrás][roles] lényegében egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
+Jelentkezzen be az [Azure portálra][portal], és hozzon létre egy új Application Insights-erőforrást. Az Azure-ban az [erőforrás][roles] egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-nodejs/01-new-asp.png)
 
-Az alkalmazás típusaként válassza az Egyéb lehetőséget. A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát, valamint a [Metrikaböngészőben][metrics] látható tulajdonságokat.
+Az alkalmazás típusaként válassza az Általános lehetőséget. A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát, valamint a [Metrikaböngészőben][metrics] látható tulajdonságokat.
 
 #### <a name="copy-the-instrumentation-key"></a>A kialakítási kulcs másolása
 A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-ba, hogy az adatokat az erőforrásba irányíthassa.
@@ -197,9 +197,4 @@ server.on("listening", () => {
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -3,7 +3,7 @@ title: "Egyéni tartománynév hozzáadása az Azure Active Directoryhoz | Micro
 description: "A vállalati tartománynevek hozzáadása az Azure Active Directoryhoz és a nevek ellenőrzése."
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 35a6e20a-9907-432b-9d36-16b916a5c249
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand;jeffsta
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7bd889847f07ebbadc5e427f2b1ff3f9f869e69a
+ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
+ms.openlocfilehash: 9803b4e41223bc979e4c0b0a4f22586a441c28df
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 7bd889847f07ebbadc5e427f2b1ff3f9f869e69a
 > 
 > 
 
-Üzleti tevékenysége során a vállalatok egy vagy több tartománynevet használnak, a felhasználók pedig vállalati tartománynév használatával jelentkeznek be a vállalati hálózatra. Mivel most már Azure Active Directoryt (Azure AD-t) használ, vállalata tartománynevét is felveheti az Azure AD-ba. Ezzel lehetővé válik, hogy olyan felhasználóneveket rendeljen a címtárhoz, amelyek a felhasználók számára is felismerhetők, például ‘alice@contoso.com.’ A művelet egyszerűen elvégezhető:
+Üzleti tevékenysége során a vállalatok egy vagy több tartománynevet használnak, a felhasználók pedig vállalati tartománynév használatával jelentkeznek be a vállalati hálózatra. Mivel most már Azure Active Directoryt (Azure AD-t) használ, vállalata tartománynevét is felveheti az Azure AD-ba. Így olyan felhasználóneveket rendelhet a címtárhoz, amelyek a felhasználók számára is felismerhetők (például „alice@contoso.com”). A folyamat egyszerűen végrehajtható:
 
 1. Az egyéni tartománynév hozzáadása a címtárhoz
 2. Vegye fel a DNS-bejegyzést a tartománynévhez a tartománynév-regisztrálónál
@@ -85,10 +86,5 @@ Ha a szervezete több tartománynevet használ (például: „contoso.com” és
 * [Ismerkedés az Azure AD tartománykezelési fogalmaival](active-directory-add-domain-concepts.md)
 * [Vállalati arculat megjelenítése a felhasználói bejelentkezés során](active-directory-add-company-branding.md)
 * [Tartománynevek kezelése a PowerShell segítségével az Azure AD-ban](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

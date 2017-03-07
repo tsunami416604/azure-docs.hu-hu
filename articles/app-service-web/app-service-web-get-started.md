@@ -4,7 +4,7 @@ description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire 
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 65c9bdd9-8763-4c56-8e15-f790992e951e
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 9ea90a7e2f69344fa86e20bc869f5b8af629a226
-ms.openlocfilehash: 77de5a58dc792ff2d65855e726dd35d9824276cb
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 7cf4f7c5e0d3e4b51c98fb7a98bbf9de95c9fd7b
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -38,7 +39,7 @@ Az alábbiakat fogja elvégezni:
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 - [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Azure CLI 2.0 (előzetes verzió)](app-service-web-get-started.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
+- [Azure CLI 2.0](app-service-web-get-started.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
@@ -157,10 +158,5 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 * Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

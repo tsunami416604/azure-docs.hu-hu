@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 02/28/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed200529f8f21f15d9b77a403f9ef07582d449
-ms.openlocfilehash: 975c8fbc9afdc7b01da85f56a075aa44dade9dde
+ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
+ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -35,7 +36,7 @@ A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok kö
 * Dinamikus útválasztás a hálózata és a Microsoft közt iparági szabványnak megfelelő protokollokon (BGP) keresztül.
 * Beépített redundancia minden társviszony-létesítési helyszínen a nagyobb megbízhatóság érdekében.
 * Kapcsolat-üzemidőre vonatkozó [SLA](https://azure.microsoft.com/support/legal/sla/).
-* QoS és támogatás speciális alkalmazások (például Skype Vállalati verzió) több szolgáltatási osztályához.
+* QoS-támogatás a Skype Vállalati verziójához.
 
 További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
@@ -108,8 +109,4 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi sz
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-portal-resource-manager.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
 

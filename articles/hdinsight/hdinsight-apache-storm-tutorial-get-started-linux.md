@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4950dbe528290c7d839c97cc8770db4ae0ec08c6
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="apache-storm-tutorial-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm-oktatóanyag: Megismerkedés a big data elemzés HDInsight platformon történő elvégzésére szolgáló Storm Starter-mintákkal
+#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Ismerkedés a Storm Starter-mintákkal Linux-alapú HDInsight platformon történő big data-elemzéshez
 
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
@@ -32,15 +33,13 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Ennek az Apache Storm-oktatóanyagnak a sikeres befejezéséhez az alábbiakra van szükség:
-
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **SSH- és SCP-ismeretek**. Az SSH és az SCP a HDInsighttal történő használatáról további információk:
+* **SSH- és SCP-ismeretek**. Az SSH és az SCP a HDInsighttal történő használatáról további információkat az alábbi dokumentumokban talál:
   
-    * **Linux-, Unix- vagy OS X-ügyfelek esetén**: Lásd: [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal](hdinsight-hadoop-linux-use-ssh-unix.md) című cikket.
+    * [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Bash on Windows 10, Linux, Unix vagy OS X rendszeren](hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * **Windows-ügyfelek esetén**: Lásd: [Az SSH (PuTTY) használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md) című cikket.
+    * [Az SSH (PuTTY) használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
 
@@ -48,45 +47,51 @@ Ennek az Apache Storm-oktatóanyagnak a sikeres befejezéséhez az alábbiakra v
 
 ## <a name="create-a-storm-cluster"></a>Storm-fürt létrehozása
 
-Ebben a szakaszban egy 3.5-ös verziójú (1.0.1-es Storm-verziójú) HDInsight-fürtöt hoz létre egy Azure Resource Manager-sablon használatával. Információk a HDInsight-verziókról és azok SLA-iról: [HDInsight-összetevők verziószámozása](hdinsight-component-versioning.md). Egyéb fürtlétrehozási módszerek: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépéseket:
 
-1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon.         
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **+ ÚJ**, **Intelligencia és analitika**, majd a **HDInsight** elemet.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="./media/hdinsight-apache-storm-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    ![HDInsight-fürt létrehozása](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
+
+2. Az **Alapvető beállítások** panelen adja meg a következőket:
+
+    * **Fürt neve**: A HDInsight-fürt neve.
+    * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
+    * **Fürt bejelentkezési felhasználóneve** és **Fürt bejelentkezési jelszava**: A fürt HTTPS-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Ezekkel a hitelesítő adatokkal érheti el az olyan szolgáltatásokat, mint az Ambari webes felület vagy a REST API.
+    * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
+    * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
+    * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
    
-    A sablon a következő nyilvános blobtárolóban található: *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*. 
+    ![Előfizetés kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-2. A __Custom deployment__ (Egyéni üzembe helyezés) panelen adja meg a következőket:
+3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
    
-    * __Erőforráscsoport__: Az az erőforráscsoport, amelyben a fürt létrejön.
+    * **Fürt típusa**: Storm
 
-    * **Fürt neve**: A Hadoop-fürt neve.
+    * **Operációs rendszer**: Linux
 
-    * __A fürt bejelentkezési neve__ és __jelszava__: Az alapértelmezett bejelentkezési név az „admin”.
-    
-    * __SSH-felhasználónév__ és __-jelszó__: Az a felhasználónév és jelszó, amellyel csatlakozik a fürthöz az SSH-n keresztül.
+    * **Verzió**: Storm 1.0.1 (HDI 3.5)
 
-    * __Hely__: A fürt földrajzi helye.
+    * **Fürt szintje**: Standard
      
-     Jegyezze fel ezeket az értékeket.  Ezekre az oktatóanyag későbbi részében szüksége lesz.
+    Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
      
-     > [!NOTE]
-     > Az SSH segítségével – parancssorból – távolról is hozzáférhet a HDInsight-fürthöz. Az itt használt felhasználónévvel és jelszóval csatlakozhat a fürthöz az SSH-n keresztül. Emellett az SSH-felhasználónévnek egyedinek kell lennie, mivel az hozza létre a felhasználói fiókokat az összes HDInsight-fürtcsomóponton. A következő felhasználóneveket a rendszer a fürt szolgáltatásai számára tartja fent, ezért SSH-felhasználónévként nem használhatók:
-     > 
-     > root, hdiuser, storm, hbase, ubuntu, zookeeper, hdfs, yarn, mapred, hbase, hive, oozie, falcon, sqoop, admin, tez, hcat, hdinsight-zookeeper.
-     > 
-     > Az SSH a HDInsighttal történő használatáról további információkat a következő cikkekben talál:
-     > 
-     > * [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal](hdinsight-hadoop-linux-use-ssh-unix.md)
-     > * [Az SSH (PuTTY) használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md)
+    ![Fürttípus kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
-3. Válassza az __I agree to the terms and conditions stated above__ (Elfogadom a fenti feltételeket) lehetőséget, kattintson az **OK** gombra, majd válassza a __Pin to dashboard__ (Rögzítés az irányítópulton) lehetőséget.
+4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-6. Kattintson a **Purchase** (Vásárlás) gombra. Ekkor egy új csempe jelenik meg Submitting deployment for Template deployment (Üzemelő példány elküldése sablon üzemelő példányhoz) A fürt létrehozása nagyjából 20 percet vesz igénybe.
+5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépések esetében a panel többi mezőjét hagyja az alapértelmezett értékeken. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+
+    ![A tárfiók HDInsight-beállításainak konfigurálása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
+
+6. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
+   
+    ![A fürtkonfiguráció összegzése](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
+   
+    > [!NOTE]
+    > A fürt létrehozása 20 percig is eltarthat.
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Storm Starter-minta futtatása HDInsight platformon
-
-A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-starter)-minták a HDInsight-fürt részét képezik. A következő lépésekben a WordCount-példát fogja futtatni.
 
 1. Csatlakozzon SSH-val a HDInsight-fürthöz:
    
@@ -96,7 +101,7 @@ A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-sta
    
     Az SSH Linux-alapú HDInsighttal történő használatáról további információkat a következő cikkekben talál:
    
-    * [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [Az SSH használata a HDInsightra épülő Linux-alapú Hadooppal Bash on Windows 10, Linux, Unix vagy OS X rendszeren](hdinsight-hadoop-linux-use-ssh-unix.md)
 
     * [Az SSH (PuTTY) használata a HDInsightra épülő Linux-alapú Hadooppal Windows rendszerben](hdinsight-hadoop-linux-use-ssh-windows.md)
 
@@ -107,10 +112,10 @@ A [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-sta
     > [!NOTE]
     > A HDInsight előző verzióiban a topológia osztályneve `org.apache.storm.starter.WordCountTopology` helyett `storm.starter.WordCountTopology`.
    
-    Ekkor a fürtön a már ismert „wordcount” néven elindul a WordCount-példatopológia. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
+    Ez a parancs a „wordcount” rövid néven elindítja a fürtön a WordCount-példatopológiát. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
    
     > [!NOTE]
-    > A saját topológiák a fürtre történő elküldésekor a fürtöket tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. Ezt úgy hajthatja végre, hogy a `scp` parancsot futtatja a fájlt tartalmazó ügyfélről. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+    > A saját topológiák a fürtre történő elküldésekor a fürtöket tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. A fájl másolásához használja az `scp` parancsot. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     > 
     > A WordCount-példa és egyéb Storm Starter-példák megtalálhatóak a fürtön a következő helyen: `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
@@ -122,12 +127,12 @@ A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít 
 
 Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületével történő figyeléséhez:
 
-1. Egy webböngészőben nyissa meg a https://CLUSTERNAME.azurehdinsight.net/stormui címet, ahol a **CLUSTERNAME** kifejezés helyére a saját fürtjének nevét írja. Ekkor megnyílik a Storm felhasználói felülete.
+1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a következőt: https://CLUSTERNAME.azurehdinsight.net/stormui. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
     
     > [!NOTE]
     > Ha a rendszer felkéri a felhasználónév és a jelszó megadására, a fürt létrehozásakor használt fürtrendszergazda (rendszergazda) nevét és jelszavát adja meg.
 
-2. A **Topology summary** (Topológia összegzése) területen válassza ki a **wordcount** bejegyzést a **Name** (Név) oszlopban. Ekkor további információk jelennek meg a topológiával kapcsolatban.
+2. A **Topology summary** (Topológia összegzése) területen válassza ki a **wordcount** bejegyzést a **Name** (Név) oszlopban. Megjelennek a topológiával kapcsolatos információk.
     
     ![A Storm irányítópultja a Storm Starter WordCount-topológiával kapcsolatos információkkal.](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
     
@@ -150,7 +155,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
     
     * **Inaktiválás** – Megszakítja a futó topológiát.
     
-    * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Ez lehetővé teszi a topológia párhuzamosságának beállítását a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információ: [Understanding the parallelism of a Storm topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (A Storm-topológia párhuzamosságának ismertetése).
+    * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információ: [Understanding the parallelism of a Storm topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (A Storm-topológia párhuzamosságának ismertetése).
     
     * **Törlés** – A Storm-topológia leállítása bizonyos időtúllépést követően.
 
@@ -184,11 +189,11 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
    
-    Ebből láthatja, hogy a szövegben a **hét** szó 1 493 957 alkalommal fordul elő. Az előfordulások számlálása a topológia indításától kezdve történik.
+    Ebben a példában a **seven** szó 1 493 957 alkalommal fordul elő. A szó előfordulásainak számlálása a topológia indításától kezdve történik.
 
 ## <a name="stop-the-topology"></a>A topológia leállítása
 
-Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-count topológiához, majd válassza a **Kill** (Törlés) gombot a **Topology actions** (Topológiaműveletek) szakaszban. Amikor a rendszer kéri, adjon meg 10 másodperces értéket a topológia leállítása előtti várakozási időként. Az időtúllépés lejáratát követően az adott topológia már nem jelenik meg az irányítópult **Storm UI** (Storm felhasználói felülete) szakaszában.
+Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-count topológiához, majd válassza a **Kill** (Törlés) gombot a **Topology actions** (Topológiaműveletek) szakaszban. Amikor a rendszer kéri, adjon meg 10 másodperces értéket a topológia leállítása előtti várakozási időként. Az időtúllépés lejáratát követően az adott topológia már nem jelenik meg az irányítópult **Storm felhasználói felülete** szakaszában.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
@@ -196,7 +201,7 @@ Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-cou
 
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>Következő lépések
 
-Ebben az Apache Storm-oktatóanyagban a Storm Starter használatával sajátította el Storm on HDInsight-fürt létrehozását, valamint a Storm irányítópultjának kezelését a Storm-topológiák üzembe helyezéséhez, figyeléséhez és felügyeletéhez. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](hdinsight-storm-develop-java-topology.md).
+Ebből az Apache Storm-oktatóanyagból megismerhette a Storm HDInsightban való használatának alapjait. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](hdinsight-storm-develop-java-topology.md).
 
 Ha már ismeri a Java-alapú topológiák fejlesztését, és egy meglévő topológiát kíván üzembe helyezni a HDInsighton, tekintse meg a következő cikket: [HDInsighton futó Apache Storm-topológiák üzembe helyezése és kezelése](hdinsight-storm-deploy-monitor-topology-linux.md).
 
@@ -213,9 +218,4 @@ A HDInsight alatt futó Stormmal használható példatopológiákat az alábbiak
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

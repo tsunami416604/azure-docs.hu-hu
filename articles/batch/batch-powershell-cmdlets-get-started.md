@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Batch PowerShell használatának első lépései | Microsoft Docs"
-description: "Gyors bevezetést olvashat az Azure Batch szolgáltatáshoz használható Azure PowerShell-parancsmagokról"
+description: "Gyors bevezetés a Batch-erőforrások kezeléséhez használható Azure PowerShell-parancsmagok használatába."
 services: batch
 documentationcenter: 
 author: tamram
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 9bd1c2a1f273d2487e4ce9063c286896cc414e42
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: cc8942dacee60d6243e91a3b4360c0c07956fa66
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-powershell-cmdlets"></a>Az Azure Batch PowerShell-parancsmagok használatának első lépései
+# <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
+
 Az Azure Batch PowerShell-parancsmagokkal a Batch API-k, az Azure Portal és az Azure parancssori felület (CLI) használatával végrehajtott műveletek közül sokat elvégezhet. Ez a cikk gyors ismertetést nyújt a Batch-fiókok felügyeletéhez és a Batch-erőforrásokkal, például készletekkel, feladatokkal és tevékenységekkel használható parancsmagokról.
 
 A Batch-parancsmagok teljes listájáért és a parancsmagok részletes szintaxisáért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx).
@@ -236,10 +239,5 @@ A készlet tulajdonságainak frissítése megtörtént a Batch-szolgáltatásban
 ## <a name="next-steps"></a>Következő lépések
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx).
 * Az alkalmazások és alkalmazáscsomagok Batch-ben történő használatával kapcsolatban további információt az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazások üzembe helyezése az Azure Batch-alkalmazáscsomagokkal) című cikkben talál.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
