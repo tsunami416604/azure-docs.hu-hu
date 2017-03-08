@@ -16,6 +16,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 5618650671badfc54860c3ad8af5d1e727d3d8c9
 ms.openlocfilehash: 40ccfc59cccd86a7634ec89656571b3cd23566b4
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -65,8 +66,8 @@ Az azure-mgmt-datalake-store modul az Azure Data Lake Store fiókkezelési-műve
         from azure.mgmt.resource.resources.models import ResourceGroup
 
         ## Required for Azure Data Lake Store account management
-        from azure.mgmt.datalake.store.account import DataLakeStoreAccountManagementClient
-        from azure.mgmt.datalake.store.account.models import DataLakeStoreAccount
+        from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+        from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
         ## Required for Azure Data Lake Store filesystem management
         from azure.datalake.store import core, lib, multithread
@@ -205,10 +206,5 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
 - Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).
 - A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

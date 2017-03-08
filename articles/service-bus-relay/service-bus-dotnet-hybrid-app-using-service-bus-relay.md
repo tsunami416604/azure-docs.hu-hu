@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 94f4d852aeaed1eec20f178e2721650660ebec49
-ms.openlocfilehash: ae5e08e7a5c483fd89390580647722b2c9da0ecb
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 6c59c98a400da0616762b2bd0c4217d97e22ab86
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -53,10 +54,10 @@ A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja
 Az Azure-alkalmazások fejlesztésének megkezdése előtt töltse le az eszközöket és állítsa be a fejlesztési környezetet:
 
 1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
-2. A **.NET** oszlopban kattintson a használt Visual Studio-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
+2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
-5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban. Ha nincs telepítve a Visual Studio, az SDK az ingyenes Visual Studio Expresst is telepíti.
+5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
 A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
@@ -462,9 +463,4 @@ A Azure Relay szolgáltatásól a következő forrásanyagokban találhat továb
 [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
 [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

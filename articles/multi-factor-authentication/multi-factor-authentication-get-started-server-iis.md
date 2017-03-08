@@ -1,5 +1,5 @@
 ---
-title: "IIS-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló"
+title: "IIS-hitelesítés és Azure MFA-kiszolgáló | Microsoft Docs"
 description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az IIS-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: 6f1e4d5f8e86b621d2bfc446583324163424dc60
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 71ba44c00036b3ed45518f58fa534a1767ab8c34
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="iis-authentication"></a>IIS-hitelesítés
+# <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása IIS-webalkalmazásokhoz
+
 Az Azure MFA-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és konfigurálhatja az IIS-hitelesítést a Microsoft IIS-webalkalmazásokkal való integrációra. Az Azure MFA-kiszolgáló egy beépülő modult telepít, amely képes szűrni az IIS-webkiszolgálónak küldött kéréseket az Azure Multi-Factor Authentication hozzáadása érdekében. Az IIS beépülő modul támogatja az űrlapalapú hitelesítést és az integrált Windows HTTP-hitelesítést. Ezenkívül a megbízható IP-címek konfigurálhatók úgy, hogy a belső IP-címek mentesüljenek kéttényezős hitelesítés alól.
 
 ![IIS-hitelesítés](./media/multi-factor-authentication-get-started-server-iis/iis.png)
@@ -74,10 +76,5 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 2. Kattintson az **Add** (Hozzáadás) parancsra.
 3. A Megbízható IP-címek hozzáadása párbeszédpanel megjelenésekor válassza az **Egyetlen IP-cím**, az **IP-címtartomány** vagy az **Alhálózat** választógombot.
 4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra. Ezzel az engedélyezési lista hozzáadása megtörtént.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

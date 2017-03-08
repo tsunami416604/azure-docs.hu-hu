@@ -3,6 +3,7 @@
 ## [Mi az az SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md)
 ## [Adatraktár-számítási feladat](sql-data-warehouse-overview-workload.md)
 ## [Elosztott adatok](sql-data-warehouse-distributed-data.md)
+## [Gyakori kérdések](sql-data-warehouse-overview-faq.md)
 
 # Első lépések
 
@@ -10,6 +11,7 @@
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)
 ## [Támogatás kérése](sql-data-warehouse-get-started-create-support-ticket.md)
+## [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
 
 # Útmutató
 
@@ -114,7 +116,6 @@
 ### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [Lekérdezések](sql-data-warehouse-manage-monitor.md)
 ### [Számítási feladat](sql-data-warehouse-develop-concurrency.md)
-### [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
 
 ## Biztonság
 

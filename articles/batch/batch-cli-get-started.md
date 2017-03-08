@@ -14,13 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 01/23/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: a2efffa5e250e02fec1a1834c9256ffef79b9be3
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: e4a3f3f3bca06e66f39f5acd8b4571b4a498ed83
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-cli"></a>Az Azure Batch CLI használatának első lépései
+# <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
+
 A platformfüggetlen Azure parancssori felület (Azure CLI) segítségével kezelheti a Batch-fiókokat és -erőforrásokat, például a készleteket, a feladatokat és a tevékenységeket a Linux, Mac és Windows parancsrendszerhéjakban. Az Azure CLI-vel a Batch API-k, az Azure Portal és a Batch PowerShell-parancsmagok használatával végrehajtott műveletek közül sokat elvégezhet.
 
 Ez a cikk az Azure CLI 0.10.5-ös verzióján alapul.
@@ -270,9 +273,4 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

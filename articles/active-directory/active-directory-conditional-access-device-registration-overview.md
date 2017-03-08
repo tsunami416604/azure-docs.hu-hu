@@ -5,7 +5,7 @@ services: active-directory
 keywords: "eszközregisztráció, eszközregisztráció engedélyezése, eszközregisztráció és MDM"
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 ms.assetid: 1e92c1a2-01b8-4225-950b-373cd601b035
 ms.service: active-directory
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 02/22/2017
 ms.author: Markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98f1b1856a6c457349decefeb277208a3b483bad
+ms.sourcegitcommit: 8df5889bfe2757ef68d0895d140dd44a765a89d0
+ms.openlocfilehash: 06fb59f627ea6aff3916787e321069c6b58c3e10
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -65,7 +66,7 @@ A Windows 7- és a Windows 8.1-eszközök az Eszközregisztrációs szolgáltat�
 
 Létre kell hoznia egy DNS CNAME-rekordot, amely az Azure Active Directory eszközregisztrációs szolgáltatással társított A-rekordra mutat. A CNAME-rekordnak a jól ismert enterpriseregistration előtagot kell használnia, amelyet a szervezetben a felhasználói fiókok által használt UPN-utótag követ. Ha a szervezet több UPN-utótagot használ, több CNAME-rekordot kell létrehozni a DNS-ben.
 
-Ha például két UPN-utótagot használ a szervezetben (például a @contoso.com és a @region.contoso.com, utótagot), a következő DNS-rekordokat kell létrehoznia.
+Ha például két UPN-utótagot használ a szervezetben (például a @contoso.com és a @region.contoso.com utótagot), a következő DNS-rekordokat kell létrehoznia.
 
 | Bejegyzés | Típus | Cím |
 | --- | --- | --- |
@@ -89,10 +90,5 @@ Regisztrálhatja a Windows 7- és a Windows 8.1-tartományhoz csatlakozott eszk�
 * [Automatikus eszközregisztráció konfigurálása Windows 7-tartományhoz csatlakozott eszközökkel](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [Automatikus eszközregisztráció konfigurálása Windows 8.1-tartományhoz csatlakozott eszközökkel](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [Automatikus eszközregisztráció az Azure Active Directoryval Windows 10-tartományhoz csatlakozott eszközökkel](active-directory-azureadjoin-devices-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

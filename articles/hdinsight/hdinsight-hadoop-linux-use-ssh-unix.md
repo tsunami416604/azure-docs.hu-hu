@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 02/27/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4cde035f75bfa3c448f12e9ebf2896b9a54a6873
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>SSH használata a HDInsight (Hadoop) eszközzel Windows, Linux, Unix vagy OS X rendszerben
+# <a name="use-ssh-with-hdinsight-hadoop-from-bash-on-windows-10-linux-unix-or-os-x"></a>SSH használata a Bashből a HDInsight (Hadoop) eszközzel Windows 10, Linux, Unix vagy OS X rendszerben
 
 > [!div class="op_single_selector"]
 > * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -42,13 +43,11 @@ Számos operációs rendszer biztosít SSH-ügyfél funkciót az `ssh` és az `s
 * __ssh__: Általános SSH-ügyfél, amely távoli parancssori munkamenet létesítésére és alagutak létrehozására használható.
 * __scp__: Olyan segédprogram, amely fájlokat másol a helyi és a távoli rendszerek között az SSH protokoll használatával.
 
-A Windows a Windows 10 évfordulós kiadása előtt nem biztosított SSH-ügyfelet. A Windows ezen verziója tartalmazza a fejlesztőknek készült Bash on Windows 10 szolgáltatást, amely biztosítja az `ssh`, az `scp` és más Linux-parancsokat. A Bash on Windows 10 használatával kapcsolatos további információkért lásd: [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about).
+A Windows 10 évfordulós kiadása fejlesztőeszközként tartalmazza a Basht. Biztosítja a(z) `ssh`, `scp` és egyéb Linux parancsokat. A Bash on Windows 10 használatával kapcsolatos további információkért lásd: [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about).
 
 Ha Windows rendszert használ, és nem fér hozzá a Bash on Windows 10 szolgáltatáshoz, a következő SSH-ügyfeleket javasoljuk:
 
 * [Git for Windows](https://git-for-windows.github.io/): Biztosítja az `ssh` és az `scp` parancssori segédprogramot.
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/): Grafikus SSH-ügyfelet biztosít.
-* [MobaXterm](http://mobaxterm.mobatek.net/): Grafikus SSH-ügyfelet biztosít.
 * [Cygwin](https://cygwin.com/): Biztosítja az `ssh` és az `scp` parancssori segédprogramot.
 
 > [!NOTE]
@@ -64,7 +63,7 @@ A nyilvános kulcsú titkosítás használatának része egy _nyilvános_ és eg
 
 * A **titkos kulccsal** igazolja a személyazonosságát a HDInsight-fürt felé, amikor bejelentkezik egy SSH-ügyféllel. Védje a titkos kulcsot. Ne ossza meg senkivel.
 
-    További biztonsági intézkedésként létrehozhat egy jelszót a titkos kulcshoz. Ekkor a kulcs használatához először meg kell adnia ezt a jelszót.
+    További biztonsági intézkedésként létrehozhat egy jelszót a titkos kulcshoz. Ha hozzáférési kódot használ, meg kell adnia az SSH-val való hitelesítéskor.
 
 ### <a name="create-a-public-and-private-key"></a>Nyilvános és titkos kulcs létrehozása
 
@@ -91,7 +90,7 @@ A parancs futtatásának befejeződésekor két új fájl jön létre:
 * __id\_rsa__: Ez a fájl tartalmazza a titkos kulcsot.
 
     > [!WARNING]
-    > Korlátoznia kell a hozzáférést ehhez a fájlhoz, hogy megakadályozza a nyilvános kulcs által védett szolgáltatásokhoz való jogosulatlan hozzáférést.
+    > Korlátozza a hozzáférést ehhez a fájlhoz, hogy megakadályozza a nyilvános kulcs által védett szolgáltatásokhoz való jogosulatlan hozzáférést.
 
 * __id\_rsa.pub__: Ez a fájl tartalmazza a nyilvános kulcsot. Ezt a fájlt HDInsight-fürtök létrehozásakor használja.
 
@@ -115,7 +114,7 @@ Az SSH a fürt létrehozása során történő konfigurálásával kapcsolatos t
 
 Bár a fürt létrehozása után lehetőség van további SSH-felhasználók hozzáadására, ez nem ajánlott.
 
-* Az új SSH-felhasználókat manuálisan kell hozzáadni a fürt egyes csomópontjaihoz.
+* Új SSH-felhasználókat kell hozzáadni a fürt egyes csomópontjaihoz.
 
 * Az új SSH-felhasználók ugyanolyan hozzáféréssel rendelkeznek a HDInsighthoz, mint az alapértelmezett felhasználó. A HDInsightban nem lehet korlátozni az adatokhoz vagy feladatokhoz való hozzáférést az SSH-felhasználói fiókok alapján.
 
@@ -123,7 +122,7 @@ A hozzáférés felhasználónkénti korlátozása csak tartományhoz csatlakozt
 
 Tartományhoz csatlakoztatott HDInsight-fürt használata lehetővé teszi az Active Directoryval való hitelesítést az SSH-val való csatlakozás után. Több felhasználó csatlakozhat SSH-val, majd a csatlakozás után hitelesítést végezhet az Active Directory-fiókjával. További információért lásd a [Tartományhoz csatlakoztatott HDInsight](#domainjoined) című szakaszt.
 
-##<a name="a-idconnecta-connect-to-hdinsight"></a><a id="connect"></a> Csatlakozás a HDInsight-hoz
+##<a id="connect"></a> Csatlakozás a HDInsight-hoz
 
 Bár a HDInsight-fürt összes csomópontja futtatja az SSH-kiszolgálót, nyilvános interneten keresztül csak az átjárócsomópontokhoz vagy az élcsomópontokhoz lehet csatlakozni.
 
@@ -147,7 +146,7 @@ Ha nyilvános kulccsal védi az SSH-fiókot, előfordulhat, hogy meg kell adnia 
 
 ### <a name="connect-to-other-nodes"></a>Csatlakozás más csomópontokhoz
 
-A munkavégző csomópontok és a Zookeeper-csomópontok nem érhetők el közvetlenül a fürtön kívülről, de a fürt átjárócsomópontjaiból vagy élcsomópontjaiból el lehet őket érni. Ez a következő általános lépésekkel valósítható meg:
+A munkavégző csomópontok és a Zookeeper-csomópontok nem érhetők el közvetlenül a fürtön kívülről, de a fürt átjárócsomópontjaiból vagy élcsomópontjaiból el lehet őket érni. A következő általános lépésekkel csatlakozhat más csomópontokhoz:
 
 1. Az SSH-val csatlakozzon egy átjáró- vagy élcsomóponthoz:
 
@@ -183,7 +182,7 @@ Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön 
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    Ha a parancs nem ad vissza semmit, az azt jelenti, hogy az `ssh-agent` nem fut. Az ügynök indítási parancsfájljaival kapcsolatos információkért tekintse meg a [Using ssh-agent with ssh (Az ssh-agent és az ssh együttes használata – http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) című cikket, vagy olvassa el az SSH-ügynök dokumentációját az `ssh-agent` telepítésének és konfigurálásának részletes lépéseiért.
+    Ha a parancs nem ad vissza semmit, a(z) `ssh-agent` nem fut. Az ügynök indítási parancsfájljaival kapcsolatos információkért tekintse meg a [Using ssh-agent with ssh (Az ssh-agent és az ssh együttes használata – http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) című cikket, vagy olvassa el az SSH-ügynök dokumentációját az `ssh-agent` telepítésének és konfigurálásának részletes lépéseiért.
 
 4. Ha meggyőződött róla, hogy az **ssh-agent** fut, a következő segítségével adja hozzá a titkos SSH-kulcsot az ügynökhöz:
 
@@ -196,7 +195,7 @@ Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön 
 
 [A tartományhoz csatlakozó HDInsight](hdinsight-domain-joined-introduction.md) a Kerberost és a Hadoopot integrálja a HDInsightban. Mivel az SSH-felhasználó nem Active Directory tartományi felhasználó, nem futtathat Hadoop-parancsokat, amíg nem végez hitelesítést az Active Directoryval. Kövesse az alábbi lépéseket az SSH-munkamenet Active Directoryval történő hitelesítéséhez:
 
-1. Csatlakozzon egy tartományhoz csatlakoztatott HDInisight-fürthöz az SSH-val a [Csatlakozás a HDInsight-hoz](#connect) című szakaszban leírtak szerint. Például az alábbi parancs egy __myhdi__ nevű HDInsight-fürthöz csatlakozik egy __sshuser__ nevű SSH-fiókkal.
+1. Csatlakozás SSH-val egy tartományhoz csatlakozó HDInsight-fürthöz. Például az alábbi parancs egy __myhdi__ nevű HDInsight-fürthöz csatlakozik egy __sshuser__ nevű SSH-fiókkal.
 
         ssh sshuser@myhdi-ssh.azurehdinsight.net
 
@@ -210,9 +209,9 @@ Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön 
 
 A `kinit` paranccsal végzett hitelesítés után már használhatja az olyan Hadoop-parancsokat, mint a `hdfs dfs -ls /` vagy a `hive`.
 
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-bújtatás
+## <a id="tunnel"></a>SSH-bújtatás
 
-Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A rendszer ilyenkor úgy irányítja a kérést a kért erőforráshoz, mintha a HDInsight-fürt átjárócsomópontból származna.
+Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A kérést a rendszer továbbítja a fürt felé, majd feloldja a fürtön belül.
 
 > [!IMPORTANT]
 > Az SSH-alagút előfeltétele annak, hogy el tudja érni néhány Hadoop-szolgáltatás webes felhasználói felületét. Például a Feladatelőzmények felhasználói felület és az Erőforrás-kezelő felhasználói felület is csak SSH-alagúton keresztül érhető el.
@@ -228,9 +227,4 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 * [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

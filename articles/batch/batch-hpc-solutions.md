@@ -1,5 +1,5 @@
 ---
-title: "Batch- és HPC-megoldások a felhőben | Microsoft Docs"
+title: "Batch- és HPC-megoldások a felhőben – Azure | Microsoft Docs"
 description: "Megismerheti a Batch- és nagy teljesítményű feldolgozási (HPC- és Big Compute-) forgatókönyveket és megoldási lehetőségeket az Azure rendszerben"
 services: batch, virtual-machines, cloud-services
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: c3e80bc18e4d1007146d9d3c80c2618400480046
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 288bd4dc0bde4cb610efc4a6d015e5b9499eb0ee
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="batch-and-hpc-solutions-in-the-azure-cloud"></a>Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure
+# <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>Batch- és HPC-megoldások nagyméretű számítási feladatokhoz
+
 Az Azure hatékony, méretezhető felhőbeli megoldásokat nyújt a Batch- és nagy teljesítményű feldolgozási (HPC), más néven *Big Compute-forgatókönyvekhez*. Ebben a részben többet tudhat meg a Big Compute számítási feladatokról és az azokat támogató Azure-szolgáltatásokról, a cikk későbbi részében pedig [megoldás-forgatókönyveket](#scenarios) találhat. Ez a cikk elsősorban a technikai döntéshozóknak, informatikai vezetőknek és független szoftverkereskedőknek szól, de más informatikai szakemberek és fejlesztők is használhatják a megoldások megismeréséhez.
 
 A szervezeteknek nagy méretű számítási feladatokat kell megoldaniuk: műszaki tervezés és elemzés, képrenderelés, összetett modellezés, Monte Carlo-szimulációk, pénzügyi kockázatszámítások és egyebek. Az Azure a szükséges erőforrásokkal, méretezéssel és ütemezéssel segít a szervezeteknek megoldani ezeket a problémákat. Az Azure-ral a szervezetek a következőket tehetik:
@@ -134,9 +137,4 @@ A Big Compute-megoldása más Azure-szolgáltatásokat is igényelhet ahhoz, hog
 [iaas_cluster]: ./media/batch-hpc-solutions/iaas_cluster.png
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

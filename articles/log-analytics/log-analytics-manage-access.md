@@ -17,6 +17,7 @@ ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
 ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -298,9 +299,4 @@ Ha Ön rendszergazda, és több felhasználó van társítva a munkaterülethez,
 * Az ügynökök hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Connect Windows computers to Log Analytics](log-analytics-windows-agents.md) (Windows rendszerű számítógépek csatlakoztatása a Log Analyticshez).
 * A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 * Ha a szervezete proxykiszolgálót vagy tűzfalat használ annak érdekében, hogy az ügynökök kommunikálni tudjanak a Log Analytics szolgáltatással: [Configure proxy and firewall settings in Log Analytics](log-analytics-proxy-firewall.md) (Proxy- és tűzfalbeállítások konfigurálása a Log Analyticsben).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
