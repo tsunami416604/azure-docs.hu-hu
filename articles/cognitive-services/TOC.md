@@ -2,6 +2,7 @@
 # Áttekintés
 ## [Mi a Cognitive Services?](https://azure.microsoft.com/services/cognitive-services/)
 # Első lépések
+## [Fiók létrehozása](cognitive-services-apis-create-account.md)
 ## [Szövegelemzés – bevezetés](cognitive-services-text-analytics-quick-start.md)
 ## [Javaslatok – bevezetés](cognitive-services-recommendations-quick-start.md)
 
@@ -52,8 +53,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cognitive-services)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cognitive-services)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

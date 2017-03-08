@@ -1,26 +1,17 @@
 
 
-## Oracle virtual machine images
-See [List of Oracle virtual machine images](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md) for the latest set of Windows-based and Linux-based virtual machine images.
+## <a name="oracle-virtual-machine-images"></a>Oracle virtuálisgép-rendszerképek
+A Windows- és Linux-alapú virtuálisgép-rendszerképek legfrissebb gyűjteményét az [Oracle virtuálisgép-rendszerképek listájában](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) találja.
 
-## Considerations for Windows-based virtual machines
-See [Miscellaneous considerations for Oracle virtual machine images](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md) to understand limitations for Oracle software on Windows Server-based Azure virtual machines.
+## <a name="considerations-for-windows-based-virtual-machines"></a>Megfontolandó szempontok a Windows-alapú virtuális gépek tekintetében
+A Oracle szoftvereinek Windows Server-alapú Azure virtuális gépekre vonatkozó korlátozásait az [Egyéb megfontolandó szempontok az Oracle virtuálisgép-rendszerképeivel kapcsolatban](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) című cikk részletezi.
 
-## Oracle database virtual machine
-[Creating an Oracle database virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-classic-create-oracle-database.md) steps you through virtual machine creation, database creation, and configuration of popular options.
+## <a name="prepare-an-oracle-linux-virtual-machine"></a>Oracle Linux-alapú virtuális gép előkészítése
+Az [Oracle Linux-alapú virtuális gép előkészítése Azure-beli használatra](../articles/virtual-machines/virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című rész végigvezeti Önt az Oracle Linux 6.4+ és Oracle Linux 7.0+ előfeltételein és virtuálisgép-létrehozási lépésein.
 
-## Oracle WebLogic Server 12c
-[Creating an Oracle WebLogic Server 12c virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c.md) steps you through the creation of an Azure virtual machine based on the Oracle WebLogic Server 12c image running on Windows Server 2012.
+## <a name="oracle-data-guard"></a>Oracle Data Guard
+Az [Oracle Data Guard konfigurálása Azure-beli használatra](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) című rész végigvezeti Önt a készenléti környezet és a figyelő konfigurálásának lépésein.
 
-## Oracle WebLogic Server 12c and Oracle Database 12c
-[Creating an Oracle WebLogic Server 12c and Oracle Database 12c virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c-database.md) steps you through virtual machine and database creation and configuration.
-
-## Prepare an Oracle Linux virtual machine
-[Prepare an Oracle Linux virtual machine for Azure](../articles/virtual-machines/virtual-machines-linux-prepare-oracle.md) steps you through the prerequisites and virtual machine creation for Oracle Linux 6.4+ and Oracle Linux 7.0+.
-
-## Oracle Data Guard
-[Configuring Oracle Data Guard for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md) steps you through configuration of the standby environment and the listener.
-
-## Oracle GoldenGate
-[Configuring Oracle GoldenGate for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md) steps you through database and replication setup.
+## <a name="oracle-goldengate"></a>Oracle GoldenGate
+Az [Oracle GoldenGate konfigurálása Azure-beli használatra](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) című rész végigvezeti Önt az adatbázis és a replikáció beállításának lépésein.
 

@@ -1,10 +1,10 @@
 ---
-title: "Mi a felhasználó által megadott útvonal és az IP-továbbítás?"
-description: "Ismerje meg, hogyan kell használni a felhasználó által megadott útvonalakat (UDR) és az IP-továbbítást a forgalom virtuális készülékekre történő irányításához az Azure-ban."
+title: "Felhasználói útvonalak és IP-továbbítás az Azure-ban | Microsoft Docs"
+description: "Megtudhatja, hogyan konfigurálhat a felhasználói útvonalakat (UDR) és az IP-továbbítást a forgalom hálózati virtuális készülékekre történő irányításához az Azure-ban."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: c39076c4-11b7-4b46-a904-817503c4b486
 ms.service: virtual-network
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
-ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
+ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
+ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="what-are-user-defined-routes-and-ip-forwarding"></a>Mi a felhasználó által megadott útvonal és az IP-továbbítás?
+# <a name="user-defined-routes-and-ip-forwarding"></a>Felhasználó által megadott útvonalak és IP-továbbítás
+
 Amikor az Azure-ban virtuális gépeket (VM-ek) ad hozzá egy virtuális hálózathoz (VNet), észre fogja venni, hogy a virtuális gépek automatikusan tudnak egymással kommunikálni a hálózaton keresztül. Nem kell megadni átjárót, akkor sem, ha a virtuális gépek külön alhálózatokon vannak. Ugyanez vonatkozik a virtuális gépek és a nyilvános internet közötti kommunikációra, és akár a helyszíni hálózatra is, ha jelen van egy hibrid kapcsolat az Azure és a saját adatközpont között.
 
 A kommunikáció ilyen típusú áramlása azért lehetséges, mert az Azure rendszerútvonalak sorát használja az IP-cím adatforgalmának meghatározására. A rendszerútvonalak az alábbi helyzetekben irányítják a kommunikáció áramlását:
@@ -53,8 +56,8 @@ A csomagok útválasztása a TCP/IP-hálózatban egy útválasztási táblázato
 | Tulajdonság | Leírás | Korlátozások | Megfontolások |
 | --- | --- | --- | --- |
 | Címelőtag |A cél CIDR, amelyre az útvonal vonatkozik, például 10.1.0.0/16. |Érvényes CIDR tartománynak kell lennie, ami a nyilvános interneten, az Azure virtuális hálózatban vagy a helyszíni adatközpontban található címeket jelöli. |Győződjön meg arról, hogy a **címelőtag** nem **a következő ugrás címét** tartalmazza, különben a csomagok bekerülnek egy hurokba, és a forrásuktól a következő ugráshoz kerülnek anélkül, hogy valaha is elérnék a céljukat. |
-| A következő ugrás típusa |Az Azure ugrás típusa, amellyel a csomagot küldeni kell. |A következő értékek egyikének kell lennie: <br/> **Virtuális hálózat**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Virtuális hálózat* lesz. <br/> **Virtuális hálózati átjáró**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **Nincs**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva. |Érdemes a **Nincs** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. |
-| A következő ugrás címe |A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*. |Egy olyan IP-címnek kell lennie, ami elérhető azon virtuális hálózaton belül, ahol a felhasználó által megadott útvonal van alkalmazva. |Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. |
+| A következő ugrás típusa |Az Azure ugrás típusa, amellyel a csomagot küldeni kell. |A következő értékek egyikének kell lennie: <br/> **Virtuális hálózat**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Virtuális hálózat* lesz. <br/> **Virtuális hálózati átjáró**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **Nincs**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva. |Fontolja meg **Virtuális készülék** használatát az adatforgalom átirányításához egy virtuális gépre vagy az Azure Load Balancer belső IP-címére.  Ezzel a típussal megadható egy IP-cím, az alábbiakban ismertetettek szerint. Érdemes a **Nincs** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. |
+| A következő ugrás címe |A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*. |Egy olyan IP-címnek kell lennie, ami elérhető azon virtuális hálózaton belül, ahol a felhasználó által megadott útvonal van alkalmazva. |Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. Ha az IP-cím az Azure Load Balancer belső IP-címét jelöli, győződjön meg arról, hogy minden egyes porthoz, amelyen terheléselosztást kíván végrehajtani, hozzá van rendelve egy terheléselosztási szabály.|
 
 Az Azure PowerShellben néhány „NextHopType” értéknek különböző neve van:
 
@@ -108,10 +111,5 @@ A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett be
 ## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [hozhat létre útvonalakat a Resource Manager üzembe helyezési modellben](virtual-network-create-udr-arm-template.md), és hogyan rendelheti őket hozzá az alhálózatokhoz. 
 * Ismerje meg, hogyan [hozhat létre útvonalakat a klasszikus üzembe helyezési modellben](virtual-network-create-udr-classic-ps.md), és hogyan rendelheti őket hozzá az alhálózatokhoz.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 12/09/2016
+ms.date: 02/23/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
-ms.openlocfilehash: cf626be4914168d3ed3caae7f959a79324487b4e
+ms.sourcegitcommit: 78d9194f50bcdc4b0db7871f2480f59b26cfa8f6
+ms.openlocfilehash: 7b7273edfa33f297cb5dc30ef380b6a737787b33
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -58,27 +59,14 @@ Mire végez az oktatóanyaggal, rendelkezésére fog állni egy Azure-erőforrá
 
 * Egy olyan fiókkal kell bejelentkeznie, amely tagja az előfizetés-tulajdonosi vagy a közreműködői szerepkörnek. A szerepköralapú hozzáférés-vezérlésről (RBAC) többet is megtudhat az [Azure Portalon végzett hozzáférés-vezérlés alapvető tudnivalóit ismertető](../active-directory/role-based-access-control-what-is.md) témakörben.
 
-* Szüksége lesz az AdventureWorksLT mintaadatbázis .bacpac fájljára az Azure Blob Storage-ban.
-
-### <a name="download-the-adventureworkslt-sample-database-bacpac-file-and-save-it-in-azure-blob-storage"></a>Az AdventureWorksLT mintaadatbázis .bacpac fájljának letöltése és mentése az Azure Blob Storage-ban
-
-Ez az oktatóanyag egy új AdventureWorksLT adatbázis létrehozását mutatja be egy .bacpac fájl az Azure Storage-ból való importálása révén. Az első lépés az AdventureWorksLT.bacpac fájl egy másolatának beszerzése és feltöltése a Blob Storage-ba.
-A következő lépések előkészítik a mintaadatbázis importálását:
-
-1. [Töltse le az AdventureWorksLT.bacpac fájlt](https://sqldbbacpacs.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac), és mentse .bacpac fájlkiterjesztéssel.
-2. [Hozzon létre egy tárfiókot](../storage/storage-create-storage-account.md#create-a-storage-account) – a tárfiókot létrehozhatja az alapértelmezett beállításokkal.
-3. Hozzon létre egy új **tárolót**. Ehhez a tárfiókba lépve válassza a **Blobok** lehetőséget, majd kattintson a **+Tároló** elemre.
-4. Töltse fel a .bacpac fájlt a tárfiókban lévő blobtárolóba. Ehhez használhatja a tároló oldalának tetején található **Feltöltés** gombot, vagy az [AzCopy](../storage/storage-use-azcopy.md#blob-upload) eszközt. 
-5. Az AdventureWorksLT.bacpac mentését követően az oktatóanyag későbbi részeiben az importálási kódrészlethez szüksége lesz az URL-címre és a tárfiók kulcsára. 
-   * Jelölje ki a bacpac-fájlt és másolja az URL-címét. Ez a következőhöz hasonló lesz: https://{tárfiók-neve}.blob.core.windows.net/{tároló-neve}/AdventureWorksLT.bacpac. A tárfiók oldalán kattintson az **Elérési kulcsok** elemre, és másolja a **key1** értékét.
-
-
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
 
 ## <a name="create-a-new-logical-sql-server-using-azure-powershell"></a>Új logikai SQL Server létrehozása az Azure PowerShell-lel
 
 Egy erőforráscsoport szükséges, amely tartalmazza a kiszolgálót, ezért az első lépés egy új erőforráscsoport és kiszolgáló létrehozása ([New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup), [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserver)), vagy egy meglévőre való hivatkozás ([Get-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/get-azurermresourcegroup), [Get-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqlserver)).
+
+
 A következő kódrészletek egy erőforráscsoportot és egy Azure SQL Servert hoznak létre, ha azok még nem léteznek:
 
 Az érvényes Azure-helyekkel és karakterlánc-formátumokkal kapcsolatban lásd a lentebbi [Segítséget nyújtó kódrészletek](#helper-snippets) szakaszt.
@@ -178,6 +166,25 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allow Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
+
 ```
 
 
@@ -217,8 +224,8 @@ $connection.Close()
 
 ## <a name="create-new-adventureworkslt-sample-database-using-azure-powershell"></a>Új AdventureWorksLT mintaadatbázis létrehozása az Azure PowerShell-lel
 
-A következő kódrészlet az AdventureWorksLT mintaadatbázis .bacpac fájlját importálja a [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) parancsmag használatával. A .bacpac fájl az Azure Blob Storage-ban található. Az importálási parancsmag futtatása után az importálási folyamat állapotát a [Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) parancsmaggal figyelheti.
-A $storageUri a portálra korábban feltöltött .bacpac fájl URL-cím tulajdonsága, amely a következőhöz hasonló: https://{tárfiók}.blob.core.windows.net/{tároló}/AdventureWorksLT.bacpac
+A következő kódrészlet az AdventureWorksLT mintaadatbázis .bacpac fájlját importálja a [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) parancsmag használatával. A .bacpac fájl egy nyilvános, írásvédett Azure Blob Storage-fiókban található. Az importálási parancsmag futtatása után az importálási folyamat állapotát a [Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) parancsmaggal figyelheti.
+
 
 ```
 #$resourceGroupName = "{resource-group-name}"
@@ -228,9 +235,9 @@ $databaseName = "AdventureWorksLT"
 $databaseEdition = "Basic"
 $databaseServiceLevel = "Basic"
 
-$storageKeyType = "StorageAccessKey"
-$storageUri = "{storage-uri}" # URL of bacpac file you uploaded to your storage account
-$storageKey = "{storage-key}" # key1 in the Access keys setting of your storage account
+$storageKeyType = "SharedAccessKey"
+$storageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$storageKey = "?"
 
 $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -StorageKeytype $storageKeyType -StorageKey $storageKey -StorageUri $storageUri -AdministratorLogin $serverAdmin -AdministratorLoginPassword $securePassword -Edition $databaseEdition -ServiceObjectiveName $databaseServiceLevel -DatabaseMaxSizeBytes 5000000
 
@@ -348,10 +355,14 @@ $myDatabaseName = "AdventureWorksLT"
 $myDatabaseEdition = "Basic"
 $myDatabaseServiceLevel = "Basic"
 
-$myStorageKeyType = "StorageAccessKey"
-# Get these values from your Azure storage account:
-$myStorageUri = "{http://your-storage-account.blob.core.windows.net/your-container/AdventureWorksLT.bacpac}"
-$myStorageKey = "{your-storage-key}"
+
+# Storage account details for locating
+# and accessing the sample .bacpac 
+# Do Not Edit for this tutorial
+$myStorageKeyType = "SharedAccessKey"
+$myStorageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$myStorageKey = "?"
+
 
 
 # Create new, or get existing resource group
@@ -415,9 +426,8 @@ Write-Host "Server location: " $myServer.Location
 Write-Host "Server version: " $myServer.ServerVersion
 Write-Host "Server administrator login: " $myServer.SqlAdministratorLogin
 
-
-# Create or update server firewall rule
-#######################################
+# Create or update server firewall rules
+########################################
 
 $serverFirewallRuleName = $myServerFirewallRuleName
 $serverFirewallStartIp = $myServerFirewallStartIp
@@ -435,6 +445,24 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allows Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
 
 
 # Connect to the server and master database
@@ -577,9 +605,4 @@ Most, hogy az első lépéseket ismertető oktatóanyag végére ért és létre
 
 ## <a name="additional-resources"></a>További források
 [Mi az SQL Database?](sql-database-technical-overview.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

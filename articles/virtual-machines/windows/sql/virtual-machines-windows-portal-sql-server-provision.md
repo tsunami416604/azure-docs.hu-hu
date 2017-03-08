@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/02/2017
+ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
-ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
+ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
+ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -52,11 +53,14 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    ![Az Azure Virtuális gépek panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. Tekintse át az elérhető SQL Server-sablonokat.
-6. Minden sablon egy SQL Server-verziót és egy operációs rendszert azonosít. Válasszon egyet a lista rendszerképei közül. Ezután tekintse át a részleteket tartalmazó panelt, amelyen a virtuálisgép-rendszerkép leírása található.
+5. Tekintse át az elérhető SQL Server-sablonokat. Minden sablon egy SQL Server-verziót és egy operációs rendszert azonosít. 
+6. Válassza ki a Windows Server 2016-on futó SQL Server 2016 SP1 Developer sablonját.
+
+   > [!TIP]
+   > Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni.
    
    > [!NOTE]
-   > Az SQL virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit. Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. További információk erről a lehetőségről: [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban](virtual-machines-windows-sql-server-iaas-overview.md).
+   > Az SQL-alapú virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit (kivéve a Developer és az Express kiadások esetén). Az SQL Server Developer ingyenesen használható fejlesztési/tesztelési célokra (üzemi környezetben nem), az SQL Express pedig ingyenesen használható kisebb számítási feladatokhoz (1 GB-nál kisebb memória, 10 GB-nál kevesebb tárhely). Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. További információk erről a lehetőségről: [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban](virtual-machines-windows-sql-server-iaas-overview.md).
    > 
    > 
 7. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt a **Resource Manager** van-e kiválasztva. Az új virtuális gépek esetén az ajánlott üzemi modell a Resource Manager. Kattintson a **Létrehozás** gombra.
@@ -243,14 +247,10 @@ További információkért lásd: [Configure Azure Key Vault Integration for SQL
 Amikor végzett az SQL Server beállításainak konfigurálásával, kattintson az **OK** gombra.
 
 ### <a name="r-services"></a>R-szolgáltatások
-Az SQL Server 2016 Enterprise kiadása lehetőséget biztosít az [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) engedélyezésére. Ez lehetőséget nyújt az SQL Server 2016 továbbfejlesztett elemzéseinek használatára. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** panelen.
+Lehetősége van az [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) engedélyezésére. Ez lehetőséget nyújt az SQL Server 2016 továbbfejlesztett elemzéseinek használatára. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** panelen.
 
 ![Az SQL Server R Services engedélyezése](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
-> [!NOTE]
-> A nem 2016 Enterprise kiadású SQL Server-rendszerképek esetében az R Services engedélyezésének lehetősége le van tiltva.
-> 
-> 
 
 ## <a name="5-review-the-summary"></a>5. Összegzés áttekintése
 Az **Összefoglalás** panelen tekintse át az összefoglalást, majd kattintson az **OK** gombra a virtuális géphez megadott SQL Server, erőforráscsoport és erőforrások létrehozásához.
@@ -299,10 +299,5 @@ További információ az SQL Server használatáról az Azure-ban: [SQL Server o
 Áttekintő videó az SQL Server Azure virtuális gépeken való használatáról: [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Az Azure VM a legjobb platform az SQL Server 2016-kiszolgálókhoz).
 
 Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

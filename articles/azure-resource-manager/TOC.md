@@ -36,8 +36,6 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
-### [Hivatkozás kapcsolódó erőforrásokra](resource-group-link-resources.md)
-### [Azure Resource Explorer](resource-manager-resource-explorer.md)
 ## Vezérlési hozzáférés
 ### [Egyszerű szolgáltatás létrehozása a PowerShell-lel](resource-group-authenticate-service-principal.md)
 ### [Egyszerű szolgáltatás létrehozása az Azure parancssori felületével](resource-group-authenticate-service-principal-cli.md)

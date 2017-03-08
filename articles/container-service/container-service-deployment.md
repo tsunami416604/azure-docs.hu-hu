@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 02/22/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: b9be92498f9daf1d2f964cc689bacb2358b237be
+ms.sourcegitcommit: 716a6f4507b05b8a8548cd34f8227e8366a91645
+ms.openlocfilehash: 17a4ab1920e020ddf453e9b42319ba260e9700a5
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -30,15 +31,16 @@ Az Azure tárolószolgáltatással gyorsan üzembe helyezhet népszerű nyílt f
 
 Az Azure Container Service-fürtöket az [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) vagy az Azure Container Service API-k használatával is üzembe helyezheti.
 
+Háttér-információk: [Az Azure Container Service bemutatása](container-service-intro.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
+* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
 
 * **Nyilvános SSH RSA-kulcs**: Ha a portálon vagy valamelyik Azure gyorsindítási sablonnal végzi az üzembe helyezést, meg kell adnia az Azure Container Service virtuális gépeivel történő hitelesítésre szolgáló nyilvános kulcsot. A Secure Shell (SSH) RSA-kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerhez készült útmutatót. 
 
-* **Egyszerű szolgáltatás ügyfél-azonosítója és kulcsa** (csak Kubernetes esetében): Az egyszerű szolgáltatások létrehozásával kapcsolatos további információkért és útmutatóért lásd: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
+* **Egyszerű szolgáltatás ügyfél-azonosítója és kulcsa** (csak Kubernetes esetében): Az Azure Active Directory egyszerű szolgáltatásainak létrehozásával kapcsolatos további információkért és útmutatóért lásd: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
 
 
 
@@ -47,63 +49,61 @@ Az Azure Container Service-fürtöket az [Azure CLI 2.0](container-service-creat
 
     ![Az Azure Container Service a Marketplace-en](media/container-service-deployment/acs-portal1.png)  <br />
 
-2. Válassza ki az **Azure Container Service** elemet, és kattintson a **Létrehozás** gombra.
+2. Kattintson az **Azure Container Service** elemre, majd kattintson a **Létrehozás** gombra.
 
-    ![Tárolószolgáltatás létrehozása](media/container-service-deployment/acs-portal2.png)  <br />
+3. Az **Alapvető beállítások** panelen adja meg a következőket:
 
-3. Adja meg a következő információkat:
-
-    * **Felhasználónév**: Az Azure Container Service-fürt összes virtuális gépén és a virtuálisgép-méretezési csoportokban használt fiókhoz tartozó felhasználónév.
+    * **Vezénylő**: Válasszon egy tárolóvezénylőt, amelyet üzembe helyez a fürtön.
+        * **DC/OS**: DC/OS fürt üzembe helyezése.
+        * **Swarm**: Docker Swarm-fürt üzembe helyezése.
+        * **Kubernetes**: Kubernetes-fürt üzembe helyezése.
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az ajánlott eljárás egy új erőforráscsoport használata minden egyes üzemelő példányhoz.
-    * **Hely**: válassza ki azt az Azure-régiót, amelyben az Azure Container Service-t üzembe kívánja helyezni.
-    * **Nyilvános SSH RSA-kulcs**: adja meg az Azure Container Service virtuális gépeinek hitelesítésére szolgáló nyilvános kulcsot. Fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az `ssh-rsa` előtag. Az `username@domain` utótag nem kötelező. A kulcsnak a következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
-
-4. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
-
+    * **Erőforráscsoport**: Adjon nevet az üzemelő példány új erőforráscsoportjának.
+    * **Hely**: válassza ki azt az Azure-régiót, amelyben az Azure Container Service-t üzembe kívánja helyezni. Az elérhetőségért tekintse meg a [Régiónként elérhető termékek](https://azure.microsoft.com/regions/services/) listáját.
+    
     ![Alapbeállítások](media/container-service-deployment/acs-portal3.png)  <br />
+    
+    Kattintson az **OK** gombra, amikor készen áll a folytatásra.
 
-5. A **Keretrendszer konfigurációja** panelen válasszon egy **vezénylőkonfigurációt**. A lehetőségek a következők:
+4. A **Fő konfiguráció** panelen adja meg az alábbi beállításokat a Linux fő csomóponthoz vagy csomópontokhoz a fürtön (bizonyos beállítások az egyes vezénylőkre jellemzők):
 
-  * **DC/OS**: DC/OS fürt üzembe helyezése.
-  * **Swarm**: Docker Swarm-fürt üzembe helyezése.
-  * **Kubernetes**: Kubernetes-fürt üzembe helyezése.
-
-
-6. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
-
-    ![Vezénylő kiválasztása](media/container-service-deployment/acs-portal4-new.png)  <br />
-
-7. Ha a **Kubernetes** lehetőséget választja a legördülő menüben, akkor meg kell adnia az egyszerű szolgáltatás ügyfél-azonosítóját (más néven az appId-t) és az egyszerű szolgáltatás titkos ügyfélkódját (azaz a jelszót). További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
-
-    ![A Kubernetes egyszerű szolgáltatásának megadása](media/container-service-deployment/acs-portal10.png)  <br />
-
-7. Az **Azure Container Service beállításainak** paneljén adja meg a következő információkat:
-
+    * **A Fő DNS neve**: Egy egyedi teljes tartománynév (FQDN) főkiszolgálóhoz való létrehozásához használt előtag. A fő FQDN az *előtag*mgmt.*hely*.cloudapp.azure.com formát követi.
+    * **Felhasználónév**: Az Azure Container Service-fürt összes Linux virtuális gépén használt fiókokhoz tartozó felhasználónév.
+    * **Nyilvános SSH RSA-kulcs**: adja meg a Linux virtuális gépek hitelesítésére szolgáló nyilvános kulcsot. Fontos, hogy a kulcs ne tartalmazzon sortörést, és hogy szerepeljen benne az `ssh-rsa` előtag. Az `username@domain` utótag nem kötelező. A kulcsnak a következőhöz hasonlóan kell kinéznie: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
+    * **Egyszerű szolgáltatás**: Ha a Kubernetes lehetőséget választja a vezénylőben, adja meg az Azure Active Directory **egyszerű szolgáltatás ügyfél-azonosítóját** (más néven az appId-t) és az **egyszerű szolgáltatás titkos ügyfélkódját** (azaz a jelszót). További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
     * **Főkiszolgálók száma**: a főkiszolgálók száma a fürtben.
-    * **Ügynökök száma**: a Docker Swarm és a Kubernetes esetében ez az érték az ügynökök kezdeti száma az ügynökök méretezési csoportjában. A DC/OS esetében ez az ügynökök kezdeti száma a privát méretezési csoportokban. Ezenkívül létrejön egy nyilvános méretezési csoport a DC/OS számára, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát az határozza meg, hogy hány főkiszolgáló jött létre a fürtön: egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
+    * **Virtuálisgép-diagnosztika**: Egyes vezénylők számára engedélyezheti a virtuálisgép-diagnosztikát a főkiszolgálókon.
+
+    ![Fő konfiguráció](media/container-service-deployment/acs-portal4.png)  <br />
+
+    Kattintson az **OK** gombra, amikor készen áll a folytatásra.
+
+5. Az **Ügynökkonfiguráció** panelen adja meg a következőket:
+
+    * **Ügynökök száma**: a Docker Swarm és a Kubernetes esetében ez az érték az ügynökök kezdeti száma az ügynökök méretezési csoportjában. A DC/OS esetében ez az ügynökök kezdeti száma a privát méretezési csoportokban. Ezenkívül létrejön egy nyilvános méretezési csoport a DC/OS számára, amely az ügynökök előre meghatározott számát tartalmazza. Az ebben a nyilvános méretkészletben található ügynökök számát a fürtön lévő főkiszolgálók száma határozza meg: egy nyilvános ügynök tartozik egy főkiszolgálóhoz, és két nyilvános ügynök három vagy öt főkiszolgálóhoz.
     * **Ügynök-virtuálisgép mérete**: az ügynök-virtuálisgépek mérete.
-    * **DNS-előtag**: globálisan egyedi név, amely a szolgáltatás teljes tartományneveiben a főrész előtagja lesz.
-    * **Virtuálisgép-diagnosztika**: Egyes vezénylők számára engedélyezheti a virtuálisgép-diagnosztikát.
+    * **Operációs rendszer**: Ez a beállítás jelenleg csak a Kubernetes vezénylő kiválasztása esetén érhető el. Válasszon egy Linux-disztribúciót vagy egy Windows Server operációs rendszert, hogy az fusson az ügynökökön. A beállítás meghatározza, hogy a fürt Linux vagy Windows tárolóalkalmazásokat futtathat. 
 
-8. Kattintson az **OK** gombra, amikor készen áll a folytatásra.
+        > [!NOTE]
+        > A Windows tároló támogatása előzetes verziójú kiadásban érhető el Kubernetes fürtökön. A DC/OS- és Swarm-fürtökön jelenleg csak a Linux-ügynökök támogatottak az Azure Container Service-ben.
 
-    ![Container Service-beállítások](media/container-service-deployment/acs-portal5.png)  <br />
+    * **Ügynök hitelesítési adatai**: Ha a Windows operációs rendszert választotta, adjon meg egy rendszergazda **Felhasználónevet** és **Jelszót** az ügynök virtuális gépekhez. 
 
-9. Kattintson az **OK** gombra az érvényesítés befejezése után.
+    ![Ügynökkonfiguráció](media/container-service-deployment/acs-portal5.png)  <br />
+
+    Kattintson az **OK** gombra, amikor készen áll a folytatásra.
+
+6. A szolgáltatás érvényesítésének befejeződése után kattintson az **OK** gombra.
 
     ![Ellenőrzés](media/container-service-deployment/acs-portal6.png)  <br />
 
-10. Tekintse át a feltételeket. Az üzembe helyezés elindításához kattintson a **Vásárlás** gombra.
-
-    ![Vásárlás](media/container-service-deployment/acs-portal7.png)  <br />
+7. Tekintse át a feltételeket. Az üzembe helyezés elindításához kattintson a **Létrehozás** gombra.
 
     Ha úgy döntött, hogy rögzíti az üzembe helyezést az Azure Portalon, megtekintheti annak állapotát.
 
     ![Üzembe helyezés állapota](media/container-service-deployment/acs-portal8.png)  <br />
 
 Az üzembe helyezés több percet is igénybe vehet. Ezután az Azure Container Service-fürt készen áll a használatra.
-
 
 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Fürt létrehozása gyorsindítási sablon használatával
@@ -186,16 +186,16 @@ A PowerShell használatával is üzembe helyezhet Azure Container Service-fürt�
     New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
     ```
 
-5. Miután létrehozott egy erőforráscsoport, a fürtöt az alábbi paranccsal hozhatja létre. A kívánt sablonhoz tartozó URI-t a `-TemplateUri` paraméterben kell megadni. A parancs futtatásakor a rendszerhéj kéri az üzembehelyezési paramétereket.
+5. Miután létrehozott egy erőforráscsoport, a fürtöt az alábbi paranccsal hozhatja létre. A kívánt sablonhoz tartozó URI a(z) `-TemplateUri` paraméterben van megadva. A parancs futtatásakor a rendszerhéj kéri az üzembehelyezési paramétereket.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
     ```
 
 #### <a name="provide-template-parameters"></a>A sablon paramétereinek megadása
-Ha már használta a PowerShellt, biztosan tudja, hogy a parancsmag elérhető paraméterei között a mínuszjel (-) beírásával, majd a TAB billentyű lenyomásával válthat. Ez a funkció a sablonban megadott saját paraméterekkel is működik. Amint beírja a sablon nevét, a parancsmag beolvassa a sablont, elemzi a paramétereket, és dinamikusan hozzáadja a parancshoz a sablon paramétereit. Ez jelentősen megkönnyíti a sablon-paraméterértékek megadását. Ha megfeledkezik egy kötelező paraméterértékről, a PowerShell kérni fogja azt.
+Ha már használta a PowerShellt, biztosan tudja, hogy a parancsmag elérhető paraméterei között a mínuszjel (-) beírásával, majd a TAB billentyű lenyomásával válthat. Ez a funkció a sablonban megadott saját paraméterekkel is működik. Amint beírja a sablon nevét, a parancsmag beolvassa a sablont, elemzi a paramétereket, és dinamikusan hozzáadja a parancshoz a sablon paramétereit. Ez megkönnyíti a sablon-paraméterértékek megadását. Ha megfeledkezik egy kötelező paraméterértékről, a PowerShell kérni fogja azt.
 
-Az alábbiakban a teljes parancs látható paraméterekkel együtt. Az erőforrások neveinél saját értékeket is megadhat.
+Itt látható a teljes parancs paraméterekkel együtt. Az erőforrások neveinél saját értékeket adhat meg.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
@@ -208,9 +208,4 @@ Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsol
 * [Az Azure Container Service és a DC/OS használata](container-service-mesos-marathon-rest.md)
 * [Az Azure Container Service és a Docker Swarm használata](container-service-docker-swarm.md)
 * [Az Azure Container Service és a Kubernetes használata](container-service-kubernetes-walkthrough.md)
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

@@ -12,17 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2016
+ms.date: 02/27/2017
 ms.author: mihauss
 translationtype: Human Translation
-ms.sourcegitcommit: c75658d173bcb3438d6f2725ec9ef2c4127013d7
-ms.openlocfilehash: 0d0ca29a4733c681e044884697030ccd2916b6cb
+ms.sourcegitcommit: c004285f3b3052ed9361fc7165702aff8f5e835d
+ms.openlocfilehash: e0df34dbb4278d759ee412000d6dafd64276d926
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="azure-blob-storage-hot-and-cool-storage-tiers"></a>Azure Blob Storage: a gyakran és a ritkán használt adatok tárolási rétegei
 ## <a name="overview"></a>Áttekintés
-Az Azure Storage most két tárolási réteget kínál a Blob-objektumtároláshoz, hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **tárolási rétege gyakran használt adatokhoz** a gyakran használt adatok tárolására van optimalizálva. Az Azure **tárolási rétege ritkán használt adatokhoz** a ritkábban használt, hosszú élettartamú adatok tárolására van optimalizálva. A ritkán használt adatok tárolási rétegében lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében.
+Az Azure Storage két tárolási réteget kínál a Blob-objektumtároláshoz, hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **tárolási rétege gyakran használt adatokhoz** a gyakran használt adatok tárolására van optimalizálva. Az Azure **tárolási rétege ritkán használt adatokhoz** a ritkábban használt, hosszú élettartamú adatok tárolására van optimalizálva. A ritkán használt adatok tárolási rétegében lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében.
 
 Napjainkban a felhőben tárolt adatok mennyisége exponenciálisan nő. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam. A felhőben tárolt adatok az előállítás, a feldolgozás és a hozzáférés tekintetében különbözőek lehetnek az élettartamuk során. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően csak nagyon ritkán használják őket, ha használják őket egyáltalán.
 
@@ -341,10 +342,5 @@ További részletekért lásd: [Ismerkedés az Azure Blob Storage szolgáltatás
 [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
 
 [A tárfiókok tallózása és felfedezése](http://storageexplorer.com/)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

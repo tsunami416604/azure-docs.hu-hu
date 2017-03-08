@@ -92,44 +92,45 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 
 ## <a name="av2-series"></a>Av2-sorozat
 
-| Méret        | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
-|-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
-| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2x500              | 1/közepes              |
-| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4x500              | 2/közepes              |
-| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8x500              | 4/magas                  |
-| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16x500             | 8/magas                  |
-| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4x500              | 2/közepes              |
-| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8x500              | 4/magas                  |
-| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16x500             | 8/magas                  |
-
+| Méret            | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
+|-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2x500                         | 1/közepes                 |
+| Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4x500                         | 2/közepes                 |
+| Standard_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8x500                         | 4/magas                     |
+| Standard_A8_v2  | 8         | 16          | 80             | 8000 / 160 / 80                                          | 16 / 16x500                       | 8/magas                     |
+| Standard_A2m_v2 | 2         | 16          | 20             | 2000 / 40 / 20                                           | 4 / 4x500                         | 2/közepes                 |
+| Standard_A4m_v2 | 4         | 32          | 40             | 4000 / 80 / 40                                           | 8 / 8x500                         | 4/magas                     |
+| Standard_A8m_v2 | 8         | 64          | 80             | 8000 / 160 / 80                                          | 16 / 16x500                       | 8/magas                     |
 
 ## <a name="d-series"></a>D-sorozat
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1 |1 |3.5 |50 |2 |2x500 |1/közepes |
-| Standard_D2 |2 |7 |100 |4 |4x500 |2/magas |
-| Standard_D3 |4 |14 |200 |8 |8x500 |4/magas |
-| Standard_D4 |8 |28 |400 |16 |16x500 |8/magas |
-| Standard_D11 |2 |14 |100 |4 |4x500 |2/magas |
-| Standard_D12 |4 |28 |200 |8 |8x500 |4/magas |
-| Standard_D13 |8 |56 |400 |16 |16x500 |8/magas |
-| Standard_D14 |16 |112 |800 |32 |32x500 |8/nagyon magas |
 
+| Méret         | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D1  | 1         | 3.5         | 50             | 3000 / 46 / 23                                           | 2 / 2x500                         | 1/közepes                 |
+| Standard_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2/magas                     |
+| Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4/magas                     |
+| Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 16 / 16x500                       | 8/magas                     |
+| Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2/magas                     |
+| Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4/magas                     |
+| Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 16 / 16x500                       | 8/magas                     |
+| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 32 / 32x500                       | 8/nagyon magas                |
 <br>
 
 ## <a name="dv2-series"></a>Dv2-sorozat
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3.5 |50 |2 |2x500 |1/közepes |
-| Standard_D2_v2 |2 |7 |100 |4 |4x500 |2/magas |
-| Standard_D3_v2 |4 |14 |200 |8 |8x500 |4/magas |
-| Standard_D4_v2 |8 |28 |400 |16 |16x500 |8/magas |
-| Standard_D5_v2 |16 |56 |800 |32 |32x500 |8/rendkívül magas |
-| Standard_D11_v2 |2 |14 |100 |4 |4x500 |2/magas |
-| Standard_D12_v2 |4 |28 |200 |8 |8x500 |4/magas |
-| Standard_D13_v2 |8 |56 |400 |16 |16x500 |8/magas |
-| Standard_D14_v2 |16 |112 |800 |32 |32x500 |8/rendkívül magas |
-| Standard_D15_v2** |20 |140 |1,000 |40 |40x500 |8/rendkívül magas* |
+
+
+| Méret              | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
+|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D1_v2    | 1         | 3.5         | 50             | 3000 / 46 / 23                                           | 2 / 2x500                         | 1/közepes                 |
+| Standard_D2_v2    | 2         | 7           | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2/magas                     |
+| Standard_D3_v2    | 4         | 14          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4/magas                     |
+| Standard_D4_v2    | 8         | 28          | 400            | 24000 / 375 / 187                                        | 16 / 16x500                       | 8/magas                     |
+| Standard_D5_v2    | 16        | 56          | 800            | 48000 / 750 / 375                                        | 32 / 32x500                       | 8/rendkívül magas           |
+| Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2/magas                     |
+| Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4/magas                     |
+| Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 16 / 16x500                       | 8/magas                     |
+| Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 32 / 32x500                       | 8/rendkívül magas           |
+| Standard_D15_v2** | 20        | 140         | 1,000          | 60000 / 937 / 468                                        | 40 / 40x500                       | 8/rendkívül magas*          |
 
 *Egyes régiókban a Standard_D15_v2 méret elérhető gyorsított hálózatkezeléssel is. Ennek használatával és rendelkezésre állásával kapcsolatos információkért lásd [a gyorsított hálózatkezelés az előzetes verzióban történő elérhetővé válását](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) és a [virtuális gép gyorsított hálózatkezelését](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md) ismertető cikket.
 
@@ -138,7 +139,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 <br>
 
 ## <a name="ds-series"></a>DS-sorozat*
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Max. gyorsítótárazott lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3.5 |7 |2 |4,000 / 32 (43) |3,200 / 32 |1/közepes |
 | Standard_DS2 |2 |7 |14 |4 |8,000 / 64 (86) |6,400 / 64 |2/magas |
@@ -179,18 +180,18 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 <br>
 
 ## <a name="f-series"></a>F-sorozat
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1 |1 |2 |16 |2 |2x500 |1/közepes |
-| Standard_F2 |2 |4 |32 |4 |4x500 |2/magas |
-| Standard_F4 |4 |8 |64 |8 |8x500 |4/magas |
-| Standard_F8 |8 |16 |128 |16 |16x500 |8/magas |
-| Standard_F16 |16 |32 |256 |32 |32x500 |8/rendkívül magas |
 
+| Méret         | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 2 / 2x500                         | 1/közepes                 |
+| Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 4 / 4x500                         | 2/magas                     |
+| Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 8 / 8x500                         | 4/magas                     |
+| Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 16 / 16x500                       | 8/magas                     |
+| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 32 / 32x500                       | 8/rendkívül magas           |
 <br>
 
 ## <a name="fs-series"></a>Fs-sorozat*
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Max. gyorsítótárazott lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4,000 / 32 (12) |3,200 / 48 |1/közepes |
 | Standard_F2s |2 |4 |8 |4 |8,000 / 64 (24) |6,400 / 96 |2/magas |
@@ -205,19 +206,20 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 <br>
 
 ## <a name="g-series"></a>G-sorozat
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_G1 |2 |28 |384 |4 |4x500 |1/magas |
-| Standard_G2 |4 |56 |768 |8 |8x500 |2/magas |
-| Standard_G3 |8 |112 |1,536 |16 |16x500 |4/nagyon magas |
-| Standard_G4 |16 |224 |3,072 |32 |32x500 |8/rendkívül magas |
-| Standard_G5* |32 |448 |6,144 |64 |64x500 |8/rendkívül magas |
+
+| Méret         | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma/hálózati sávszélesség |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 4 / 4 x 500                       | 1/magas                     |
+| Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 8 / 8x500                       | 2/magas                     |
+| Standard_G3  | 8         | 112         | 1,536          | 24000 / 375 / 187                                        | 16 / 16 x 500                     | 4/nagyon magas                |
+| Standard_G4  | 16        | 224         | 3,072          | 48000 / 750 / 375                                        | 32 / 32 x 500                     | 8/rendkívül magas           |
+| Standard_G5* | 32        | 448         | 6,144          | 96000 / 1500 / 750                                       | 64 / 64 x 500                     | 8/rendkívül magas           |
 
 *A példány ügyfelenként külön dedikált hardveren üzemel.
 <br>
 
 ## <a name="gs-series"></a>GS-sorozat*
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Max. gyorsítótárazott lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |28 |56 |4 |10,000 / 100 (264) |5,000 / 125 |1/magas |
 | Standard_GS2 |4 |56 |112 |8 |20,000 / 200 (528) |10,000 / 250 |2/magas |
@@ -227,7 +229,7 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
-*A GS-sorozatba tartozó virtuális gépek lehetséges maximális lemezteljesítményét (IOPS vagy MBps) a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja. 
+*A GS-sorozatba tartozó virtuális gépek lehetséges maximális lemezteljesítményét (IOPS vagy MBps) a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/storage/storage-premium-storage.md) című cikket. 
 
 **A példány ügyfelenként külön dedikált hardveren üzemel.
 <br>
@@ -253,7 +255,7 @@ A méretek használatával kapcsolatos információkért és szempontokért lás
 <br>
 
 
-## <a name="ls-series"></a>Ls-sorozat 
+## <a name="ls-series"></a>Ls-sorozat* 
 
 Az Ls-sorozat kis késleltetésű, helyi tárolást igénylő számítási feladatokhoz van optimalizálva. Ilyenek például az NoSQL-adatbázisok (pl. a Cassandra, a MongoDB, a Cloudera és a Redis). Az Ls-sorozat akár 32, az [Intel® Xeon® E5 v3 processzorcsaládba](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) tartozó processzormagot is biztosíthat. Ez ugyanakkora teljesítményt jelent, mint a G/GS-sorozat esetében, és processzormagonként 8 GiB memóriát biztosít.  
 
@@ -263,9 +265,13 @@ Az Ls-sorozat kis késleltetésű, helyi tárolást igénylő számítási felad
 | Standard_L4s  | 4    | 32   | 678   | 8              | NA / NA (0)          | 5,000 / 125                               | 2/magas       | 
 | Standard_L8s  | 8    | 64   | 1,388 | 16             | NA / NA (0)          | 10,000 / 250                              | 4/nagyon magas  | 
 | Standard_L16s | 16   | 128  | 2,807 | 32             | NA / NA (0)          | 20,000 / 500                              | 8/rendkívül magas | 
-| Standard_L32s | 32   | 256  | 5,630 | 64             | NA / NA (0)          | 40,000 / 1,000                            | 8/rendkívül magas | 
+| Standard_L32s** | 32   | 256  | 5,630 | 64             | NA / NA (0)          | 40,000 / 1,000                            | 8/rendkívül magas | 
  
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt. 
+
+*Az LS-sorozatba tartozó virtuális gépek lehetséges maximális lemezteljesítményét (IOPS vagy MBps) a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/storage/storage-premium-storage.md) című cikket. 
+
+**A példány ügyfelenként külön dedikált hardveren üzemel.
 
 
 
@@ -322,9 +328,4 @@ A klasszikus üzemi modellben egyes virtuálisgép-méretek neve eltérő a CLI-
 ## <a name="next-steps"></a>Következő lépések
 * Ismerje meg [az Azure-előfizetések és -szolgáltatások korlátozásait, kvótáit és megkötéseit](../articles/azure-subscription-service-limits.md).
 * További [tudnivalók a H-sorozatú és a nagy számítási igényű A-sorozatú virtuális gépekről](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a nagy teljesítményű feldolgozási (HPC) alkalmazásokhoz.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

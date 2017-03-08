@@ -13,18 +13,26 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c1262b7708918cbdc8ce35f3e65a47a04797f195
-ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
+ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
+ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
+ms.lasthandoff: 02/23/2017
 
 ---
 
 # <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../azure-resource-manager/resource-group-overview.md) és a PowerShell használatával. Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe. A parancsokban szereplő minta paraméterértékeket cserélje le olyan nevekkel, amelyek az Ön saját környezetében értelmesek.
+Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../azure-resource-manager/resource-group-overview.md) és az Azure PowerShell használatával.  
+
+Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe. A parancsokban szereplő minta paraméterértékeket cserélje le olyan nevekkel, amelyek az Ön saját környezetében értelmesek.
 
 ## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
 
 Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
+
+> [!NOTE]
+> Lehet, hogy újra kell telepíteni az Azure PowerShellt annak érdekében, hogy használhassa a funkciót ebben a cikkben. A Managed Disks-képességek a 3.5 és annál újabb verziókban találhatók meg.
+> 
+> 
 
 ## <a name="step-2-create-a-resource-group"></a>2. lépés: Erőforráscsoport létrehozása
 
@@ -175,10 +183,5 @@ Most, hogy minden a helyére került, ideje létrehozni a virtuális gépet. Vir
 * Ha problémák merültek fel az üzembe helyezés során, a következő lépésről az [Azure-telepítések gyakori hibáinak elhárítása az Azure Resource Manager használatával](../azure-resource-manager/resource-manager-common-deployment-errors.md) eljárásokat ismertető cikkben talál információt
 * A létrehozott virtuális gép felügyeletét a következő cikk ismerteti: [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek felügyelete az Azure Resource Manager és a PowerShell használatával).
 * A virtuális gépek sablonokkal történő létrehozásáról a következő cikkben találhat hasznos információkat: [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows rendszerű virtuális gép létrehozása egy Resource Manager-sablonnal)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Fájlok és mappák biztonsági mentése Windowsról Azure-ba a Resource Manager-alapú üzemi modell segítségével | Microsoft Docs"
+title: "Windows-fájlok és -mappák biztonsági mentése az Azure-ba (Resource Manager) | Microsoft Docs"
 description: "Windows-fájlok és -mappák biztonsági mentése az Azure-ba egy Resource Manager-alapú üzemelő példányon."
 services: backup
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/10/2017
+ms.date: 2/23/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 1a87af9efeb6c00f3c67f2c2d8d8f2e0491d248d
-ms.openlocfilehash: cb464ad823b9123ad0bfa66e0df64a616e3fb5d0
+ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
+ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -26,17 +27,6 @@ Ez a cikk leírja, hogyan készíthet biztonsági másolatot a Windows Server (v
 
 Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekintést](backup-introduction-to-azure-backup.md).
 
-A fájlok és mappák az Azure-ba való biztonsági mentéséhez ezeket a tevékenységeket kell elvégezni:
-
-![1. lépés](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure-előfizetés beszerzése (ha még nem rendelkezik ilyennel).<br>
-![2. lépés](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services-tároló létrehozása.<br>
-![3. lépés](./media/backup-try-azure-backup-in-10-mins/step-3.png) A szükséges fájlok letöltése.<br>
-![4. lépés](./media/backup-try-azure-backup-in-10-mins/step-4.png) A Recovery Services-ügynök telepítése és regisztrálása.<br>
-![5. lépés](./media/backup-try-azure-backup-in-10-mins/step-5.png) Biztonsági másolat készítése a fájlokról és mappákról.
-
-![Windows rendszerű gép biztonsági mentése az Azure Backuppal](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
-
-## <a name="get-an-azure-subscription"></a>Azure-előfizetés beszerzése
 Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amellyel bármely Azure-szolgáltatást elérhet.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
@@ -70,6 +60,7 @@ A fájlok és mappák biztonsági mentéséhez létre kell hoznia egy Recovery S
   Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
 7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. Ez a választás határozza meg a földrajzi régiót, ahová az adatok biztonsági másolata el lesz küldve.
+
 8. Kattintson a Recovery Services-tároló panel alján a **Létrehozás** gombra.
 
     A Recovery Services-tároló létrehozása több percet is igénybe vehet. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha több perc után sem látja a tárolót, kattintson a **Frissítés** gombra.
@@ -229,9 +220,4 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 * További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-configure-vault.md).
 * Most, hogy biztonsági másolatot készített a fájlokról és mappákról, [kezelheti a tárlókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
 * Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

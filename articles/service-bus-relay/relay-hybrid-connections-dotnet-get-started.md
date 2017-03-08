@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 1ee1e7d0c6f239abfda474d51c8d02d5338dabc7
-ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -34,7 +35,7 @@ Mivel a hibrid kapcsolatokhoz szükség van egy ügyfélre és egy kiszolgáló-
 4. Ügyfél-konzolalkalmazás (küldő) írása üzenetküldési céllal.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. [Visual Studio 2013 vagy Visual Studio 2015](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2015-öt használják.
+1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2015-öt használják.
 2. Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -72,10 +73,5 @@ Gratulálunk, végpontok közötti hibrid kapcsolatok alkalmazást hozott létre
 * [Relay – gyakori kérdések](relay-faq.md)
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

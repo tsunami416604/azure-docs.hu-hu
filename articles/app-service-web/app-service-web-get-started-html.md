@@ -4,7 +4,7 @@ description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire 
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: fccbab2baafed3b0347f2c35b7926200ec69a450
-ms.openlocfilehash: 640f04ca9a8351543d44899946464ed7cd4db437
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 7bc52251f2d0a6aca271bd3d013690bdd0d6b752
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="deploy-your-first-html-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első HTML-webappját öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
-
-> [!div class="op_single_selector"]
-> * [Első HTML-webhely](app-service-web-get-started-html.md)
-> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet.md)
-> * [Első PHP-alkalmazás](app-service-web-get-started-php.md)
-> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs.md)
-> * [Első Python-alkalmazás](app-service-web-get-started-python.md)
-> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
 Ez az oktatóanyag segítséget nyújt egy egyszerű HTML+CSS-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
@@ -49,7 +41,7 @@ Az alábbiakat fogja elvégezni:
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 - [Azure CLI 1.0](app-service-web-get-started-html-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Azure CLI 2.0 (előzetes verzió)](app-service-web-get-started-html.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
+- [Azure CLI 2.0](app-service-web-get-started-html.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
@@ -150,10 +142,5 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 * Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
 ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -69,9 +70,4 @@ Amennyiben a *csomópontonkénti (OMS)* tarifacsomagban van, akkor a díjszabás
 
 ## <a name="next-steps"></a>Következő lépések
 * A szolgáltatások és megoldások által összegyűjtött, és az OMS-nek elküldött részletes információkért tekintse meg [a Log Analyticsben végzett naplókereséssel kapcsolatos](log-analytics-log-searches.md) cikket.
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

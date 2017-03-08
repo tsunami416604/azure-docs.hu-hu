@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/15/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: db1cd76d4a99b2b25cc9589f131f3d8da3c2d84a
+ms.sourcegitcommit: dc8ee6a0f17c20c5255d95c7b6f636d89ffe3aee
+ms.openlocfilehash: 9bd4232670256ec7889dd367ea2ea01a2845e789
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>A távoli figyelési előre konfigurált megoldás bemutatója
 ## <a name="introduction"></a>Bevezetés
-Az IoT Suite távoli figyelési [előre konfigurált megoldás][lnk-preconfigured-solutions] végpontok közötti figyelési megoldást kínál, amely egyszerre akár több, távoli helyeken futó géphez is használható. A megoldás alapvető Azure-szolgáltatások együttes használatával biztosítja az üzleti forgatókönyv általános megvalósítását, amelyet Ön kiindulópontként használhat saját egyedi megoldásának kialakításához. A megoldást [testre szabhatja][lnk-customize], hogy az minél pontosabban illeszkedjen az Ön konkrét üzleti igényeihez.
+Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] távoli figyelési megoldással egy teljes körű figyelési megoldást implementálhat, ha több gépet működtetnek távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. A megoldást kiindulási pontként használhatja a saját implementációjához, és a saját üzleti igényeinek megfelelően [testreszabhatja][lnk-customize] azt.
 
 Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
 
@@ -37,37 +38,67 @@ A következő diagram az előre konfigurált megoldás logikai összetevőit vá
 ![Logikai architektúra](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
-Az előre konfigurált megoldásban a szimulált eszköz egy hűtőeszközt (például egy épület légkondicionálóját vagy létesítmény légkezelő egységét) jelöl. Amikor üzembe helyezi az előre konfigurált megoldást, egyben négy szimulált eszközt is létrehoz, amelyek egy [Azure WebJob-feladat][lnk-webjobs] részeként működnek. A szimulált eszközök segítségével könnyebben megismerheti a megoldás működését, anélkül, hogy fizikai eszközöket kellene üzembe helyeznie. Tényleges fizikai eszközök üzembe helyezésével kapcsolatban olvassa el a [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm] (Eszközök csatlakoztatása a távoli figyelési előre konfigurált megoldáshoz) című oktatóanyagot.
+Az előre konfigurált megoldásban a szimulált eszköz egy hűtőeszközt (például egy épület légkondicionálóját vagy létesítmény légkezelő egységét) jelöl. Amikor üzembe helyezi az előre konfigurált megoldást, egyben négy szimulált eszközt is létrehoz, amelyek egy [Azure WebJob-feladat][lnk-webjobs] részeként működnek. A szimulált eszközök segítségével könnyebben megismerheti a megoldás működését, anélkül, hogy fizikai eszközöket kellene üzembe helyeznie. Valós fizikai eszköz üzembe helyezéséhez lásd [az eszköz az előre konfigurált távoli figyelési megoldáshoz történő csatlakoztatását][lnk-connect-rm] ismertető oktatóanyagot.
 
+### <a name="device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek
 A szimulált eszközök az alábbi típusú üzeneteket küldhetik az IoT Hubnak:
 
 | Üzenet | Leírás |
 | --- | --- |
-| Indítás |Amikor egy eszköz elindul, a magára az eszközre vonatkozó információkat tartalmazó **device-info** (eszközinformációs) üzenetet küld a háttérnek. Ide tartozik az eszköz azonosítója, az eszköz metaadatai, az eszköz által támogatott parancsok listája, és az eszköz aktuális konfigurációja. |
+| Indítás |Amikor egy eszköz elindul, a magára az eszközre vonatkozó információkat tartalmazó **device-info** (eszközinformációs) üzenetet küld a háttérnek. Ezekbe az adatokba beletartozik az eszköz azonosítója, valamint az eszköz által támogatott parancsok és metódusok listája. |
 | Jelenlét |Az eszközök rendszeres időközönként **presence** (jelenlét) típusú üzenetet küldenek, amely azt jelzi, hogy az eszköz érzékeli az érzékelő jelenlétét. |
 | Telemetria |Az eszközök rendszeres időközönként küldenek **telemetry** (telemetria) típusú üzenetet is, amelyek az eszköz szimulált érzékelői által jelentett szimulált hőmérsékleti és páratartalom-értékeket jelentenek a rendszernek. |
 
-A szimulált eszközök a következő eszköztulajdonságokat küldik el a **device-info** üzenet részeként:
+> [!NOTE]
+> A megoldás az eszköz által támogatott parancsok listáját egy DocumentDB-adatbázisban tárolja, és nem az ikereszközben.
+> 
+> 
+
+### <a name="properties-and-device-twins"></a>Tulajdonságok és ikereszközök
+A szimulált eszközök a következő eszköztulajdonságokat küldik el az IoT Hubon lévő [ikernek][lnk-device-twins] *jelentett tulajdonságokként*. Az eszköz az indításakor és **Eszközállapot módosítása** parancsra vagy metódusra válaszul küldi el a jelentett tulajdonságokat.
 
 | Tulajdonság | Cél |
 | --- | --- |
-| Eszközazonosító |A megadott vagy a megoldásban az eszköz létrehozásakor hozzárendelt azonosító. |
-| Gyártó |Eszközgyártó |
-| Modellszám |Az eszköz modellszáma |
-| Sorozatszám |Az eszköz sorozatszáma |
-| Belső vezérlőprogram |Az eszközön lévő belső vezérlőprogram aktuális verziója |
-| Platform |Az eszköz platformarchitektúrája |
-| Processzor |Az eszközt futtató processzor |
-| Telepített RAM |Az eszközre telepített RAM mennyisége |
-| Hub engedélyezett állapota |Az eszköz IoT Hub állapotának tulajdonsága |
-| Létrehozás ideje |Az eszköz létrehozásának ideje a megoldásban |
-| Frissítés ideje |Az eszközhöz tulajdonságainak legutóbbi frissítése |
-| Szélesség |Az eszköz szélességi helye |
-| Hosszúság |Az eszköz hosszúsági helye |
+| Config.TelemetryInterval | Az eszköz által végzett telemetriaküldés gyakorisága (s) |
+| Config.TemperatureMeanValue | Meghatározza a szimulált hőmérsékleti telemetria középértékét |
+| Device.DeviceID |A megadott vagy a megoldásban az eszköz létrehozásakor hozzárendelt azonosító |
+| Device.DeviceState | Az eszköz által jelentett állapot |
+| Device.CreatedTime |Az eszköz létrehozásának ideje a megoldásban |
+| Device.StartupTime |Az eszköz elindításának ideje |
+| Device.LastDesiredPropertyChange |Az utolsó kívánt tulajdonságmódosítás verziószáma |
+| Device.Location.Latitude |Az eszköz szélességi helye |
+| Device.Location.Longitude |Az eszköz hosszúsági helye |
+| System.Manufacturer |Eszközgyártó |
+| System.ModelNumber |Az eszköz modellszáma |
+| System.SerialNumber |Az eszköz sorozatszáma |
+| System.FirmwareVersion |Az eszközön lévő belső vezérlőprogram aktuális verziója |
+| System.Platform |Az eszköz platformarchitektúrája |
+| System.Processor |Az eszközt futtató processzor |
+| System.InstalledRAM |Az eszközre telepített RAM mennyisége |
 
-A szimulált értékekben a szimulátor mintaértékekkel tölti fel ezeket a tulajdonságokat.  Amikor a szimulátor elindít egy szimulált eszközt, az eszköz mindig közzéteszi az előre definiált metaadatokat az IoT Hubra. Vegye figyelembe, hogy ez felülírja az eszközportálon végzett összes metaadat-frissítést.
+A szimulált értékekben a szimulátor mintaértékekkel tölti fel ezeket a tulajdonságokat. Amikor a szimulátor elindít egy szimulált eszközt, az eszköz jelentett tulajdonságokként mindig jelenti az előre definiált metaadatokat az IoT Hubnak. A jelentett tulajdonságokat csak az eszköz frissítheti. A jelentett tulajdonságok módosításához be kell állítania egy kívánt tulajdonságot a megoldásportálon. A következők az eszköz feladatai:
+1. A kívánt tulajdonságok rendszeres időközönkénti lekérése az IoT Hubról.
+2. A konfiguráció frissítése a kívánt tulajdonságértékkel.
+3. Az új érték visszaküldése a IoT Hubra jelentett tulajdonságként.
 
-A szimulált eszközök a következő parancsokat képesek fogadni a megoldás irányítópultjáról az IoT Hubon keresztül:
+A megoldás irányítópultján a *kívánt tulajdonságokkal* állíthatja be egy eszköz tulajdonságait az [ikereszközzel][lnk-device-twins]. Általában az eszközök beolvasnak egy kívánt tulajdonságértéket az IoT Hubról a belső állapotuk frissítéséhez, és jelentett tulajdonságként jelentik a módosítást.
+
+> [!NOTE]
+> A szimulált eszközkód csak a **Desired.Config.TemperatureMeanValue** és a **Desired.Config.TelemetryInterval** kívánt tulajdonságot használja az IoT Hubra visszaküldött jelentett tulajdonságok frissítéséhez. A rendszer figyelmen kívül hagyja az összes többi kívánt tulajdonságmódosítási kérelmet.
+
+### <a name="methods"></a>Metódusok
+A szimulált eszközök a következő, az IoT Hubon keresztül a megoldásportálról indított metódusokat ([közvetlen metódusokat][lnk-direct-methods]) tudják kezelni:
+
+| Módszer | Leírás |
+| --- | --- |
+| InitiateFirmwareUpdate |A belső vezérlőprogram frissítésére utasítja az eszközt |
+| Újraindítás |Újraindításra utasítja az eszközt |
+| FactoryReset |A gyári beállítások visszaállítására utasítja az eszközt |
+
+Néhány metódus jelentett tulajdonságokkal jelenti az állapotot. Az **InitiateFirmwareUpdate** metódus például az eszközön a frissítés aszinkron futtatását szimulálja. A metódus azonnal visszatér az eszközön, míg az aszinkron feladat jelentett tulajdonságokkal folyamatosan állapotfrissítéseket küld vissza a megoldás irányítópultjának.
+
+### <a name="commands"></a>Parancsok 
+A szimulált eszközök a következő, az IoT Hubon keresztül a megoldásportálról küldött parancsokat (felhőből egy eszközre irányuló üzeneteket) tudják kezelni:
 
 | Parancs | Leírás |
 | --- | --- |
@@ -78,10 +109,21 @@ A szimulált eszközök a következő parancsokat képesek fogadni a megoldás i
 | DiagnosticTelemetry |Aktiválja az eszközszimulátort, hogy egy további telemetriaértéket küldjön (externalTemp) |
 | ChangeDeviceState |Módosítja az eszköz kiterjesztett állapot tulajdonságát, és elküldi az eszközinformációs üzenetet az eszközről |
 
-Az eszközparancs a megoldás hátterének címzett nyugtázását az IoT Hub küldi.
+> [!NOTE]
+> Ezen parancsok (felhőből egy eszközre irányuló üzenetek) összehasonlításáért lásd a [felhőből egy eszközre irányuló kommunikáció útmutatóját][lnk-c2d-guidance].
+> 
+> 
 
 ## <a name="iot-hub"></a>IoT Hub
-Az [IoT hub][lnk-iothub] feltölti a felhőbe az eszközök által küldött adatokat, és elérhetővé teszi azokat Azure Stream Analytics (ASA) feladatokban való felhasználásra. Az IoT Hub ezenfelül parancsokat küld az eszköznek az eszközportálról. Minden Stream ASA-feladat saját IoT Hub-fogyasztói csoportot használ, amelynek segítségével beolvassa az eszközök által küldött üzenetek streamjét.
+Az [IoT hub][lnk-iothub] feltölti a felhőbe az eszközök által küldött adatokat, és elérhetővé teszi azokat Azure Stream Analytics (ASA) feladatokban való felhasználásra. Minden Stream ASA-feladat saját IoT Hub-fogyasztói csoportot használ, amelynek segítségével beolvassa az eszközök által küldött üzenetek streamjét.
+
+A megoldásban az IoT Hub ezenkívül a következőket teszi:
+
+- Biztosít egy, a portálhoz csatlakoztatható összes eszköz azonosítóját és hitelesítési kulcsát tároló identitásjegyzéket. Az identitásjegyzéken keresztül a felhasználó engedélyezheti és letilthatja az eszközöket.
+- Parancsokat küld az eszközöknek a megoldásportál nevében.
+- Metódusokat indít az eszközökön a megoldásportál nevében.
+- Az összes regisztrált eszközhöz biztosítja a megfelelő ikereszközt. Az ikereszközök tárolják az eszközök által jelentett tulajdonságértékeket. Az ikereszközök a megoldásportálon beállított kívánt tulajdonságokat is tárolják, amelyeket az eszköz a következő csatlakozáskor kérhet le.
+- Feladatokat ütemez, hogy több eszközön is beállíthasson tulajdonságokat vagy meghívhasson metódusokat.
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 A távoli figyelési megoldásban az [Azure Stream Analytics][lnk-asa] (ASA) továbbítja az IoT Hub által fogadott eszközüzeneteket feldolgozás vagy tárolás céljából a többi háttérkomponensnek. Az üzenet tartalmától függően a különféle ASA-feladatok más-más funkciókat végeznek el.
@@ -94,7 +136,7 @@ SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'Dev
 
 Ez a feladat egy eseményközpontba továbbítja kimenetét további feldolgozás céljából.
 
-A **2. feladat: szabályok** kiértékeli a bejövő hőmérséklettel és páratartalommal kapcsolatos telemetriaértékeket az eszközönkénti küszöbértékekhez képest. A küszöbértékeket a megoldás irányítópultján elérhető szabályszerkesztőben lehet beállítani. A Blob-tárhelyek időbélyegző szerint rendezve tárolják az eszköz/érték párokat, amelyeket a rendszer **referenciaadatokként** olvas be a Stream Analyticsbe. A feladat összehasonlítja az összes nem nulla értéket az eszköz beállított küszöbértékével. Ha meghaladja a „>” feltételt, a feladat **riasztási** eseményt küld, amely jelzi a küszöbérték túllépését, és megadja az eszközt, az értéket és az időbélyegző értékét. Ez a feladat az alábbi lekérdezésdefiníció segítségével azonosítja azokat a telemetriai üzeneteket, amelyeknek riasztást kell atktiválniuk:
+A **2. feladat: szabályok** kiértékeli a bejövő hőmérséklettel és páratartalommal kapcsolatos telemetriaértékeket az eszközönkénti küszöbértékekhez képest. A küszöbértékek a megoldásportálon elérhető szabályszerkesztőben vannak beállítva. A Blob-tárhelyek időbélyegző szerint rendezve tárolják az eszköz/érték párokat, amelyeket a rendszer **referenciaadatokként** olvas be a Stream Analyticsbe. A feladat összehasonlítja az összes nem nulla értéket az eszköz beállított küszöbértékével. Ha meghaladja a „>” feltételt, a feladat **riasztási** eseményt küld, amely jelzi a küszöbérték túllépését, és megadja az eszközt, az értéket és az időbélyegző értékét. Ez a feladat az alábbi lekérdezésdefiníció segítségével azonosítja azokat a telemetriai üzeneteket, amelyeknek riasztást kell atktiválniuk:
 
 ```
 WITH AlarmsData AS 
@@ -135,9 +177,9 @@ INTO DeviceRulesHub
 FROM AlarmsData
 ```
 
-A feladat egy eseményközpontba továbbítja kimenetét további feldolgozás céljából, majd a blobtárolóba menti a riasztásokat, ahonnan a megoldás irányítópultja be tudja olvasni azok adatait.
+A feladat egy eseményközpontba továbbítja kimenetét további feldolgozás céljából, majd a blobtárolóba menti a riasztásokat, ahonnan a megoldás portálja be tudja olvasni azok adatait.
 
-A **3. feladat: telemetria** kétféleképpen működik a bejövő eszköz telemetriastreamjén. Az első az eszköz által küldött összes telemetriai üzenetet a perzisztens blobtárolóba küldi hosszú távú tárolás céljából. A második kiszámítja az átlagos, minimális és maximális páratartalom-értékeket egy ötperces csúszóablakban, majd elküldi ezeket az adatokat a blobtárolóba. A megoldás irányítópultja beolvassa a telemetriai adatokat a blobtárolóból, és ezek alapján létrehozza a diagramokat. Ez a feladat a következő lekérdezésdefiníciót használja:
+A **3. feladat: telemetria** kétféleképpen működik a bejövő eszköz telemetriastreamjén. Az első az eszköz által küldött összes telemetriai üzenetet a perzisztens blobtárolóba küldi hosszú távú tárolás céljából. A második kiszámítja az átlagos, minimális és maximális páratartalom-értékeket egy ötperces csúszóablakban, majd elküldi ezeket az adatokat a blobtárolóba. A megoldásportál beolvassa a Blob Storage-ból a telemetriaadatokat a diagramok adatokkal történő feltöltéséhez. Ez a feladat a következő lekérdezésdefiníciót használja:
 
 ```
 WITH 
@@ -184,23 +226,23 @@ GROUP BY
 A **device info** és a **rules** ASA-feladatok az eseményközpontoknak adják át az adataikat, amelyek megbízhatóan továbbítják azokat a WebJob-feladatban futó **eseményfeldolgozónak**.
 
 ## <a name="azure-storage"></a>Azure Storage
-A megoldás az Azure Blob Storage segítségével őrzi meg a megoldásba bevont eszközök által küldött nyers és összegzett telemetriai adatokat. Az irányítópult beolvassa a telemetriai adatokat a blobtárolóból, és ezek alapján létrehozza a diagramokat. A riasztások megjelenítéséhez az irányítópult a blobtárolóból olvassa be az adatokat, amely a küszöböt meghaladó telemetriai értékeket rögzíti. A megoldás az irányítópultban beállított küszöbértékek rögzítésére is a blobtárolót használja.
+A megoldás az Azure Blob Storage segítségével őrzi meg a megoldásba bevont eszközök által küldött nyers és összegzett telemetriai adatokat. A portál beolvassa a Blob Storage-ból a telemetriaadatokat a diagramok adatokkal történő feltöltéséhez. Riasztások megjelenítéséhez a megoldásportál beolvassa a Blob Storage-ból azon adatokat, amelyek akkor lettek rögzítve, amikor a telemetriaértékek túllépték a konfigurált küszöbértékeket. A megoldás a Blob Storage használatával rögzíti a megoldásportálon beállított küszöbértékeket is.
 
 ## <a name="webjobs"></a>WebJobs
-Az eszközszimulátorok futtatása mellett egy WebJob-feladat működteti az eszközinformációs üzeneteket és a parancsválaszokat kezelő **eseményfeldolgozót** is. A következőket használja:
-
-* Eszközinformációs üzenetek a (DocumentDB-adatbázisban tárolt) eszközjegyzék frissítéséhez az aktuális eszközinformációkkal.
-* Parancsválasz-üzenetek a (DocumentDB-adatbázisban tárolt) eszközparancs-előzmények frissítéséhez.
+Az eszközszimulátorok elérhetővé tételén kívül a megoldásban a WebJobs szolgáltatja a parancsválaszokat kezelő Azure WebJobban futó **Eseményfeldolgozót** is. Parancsválasz-üzeneteket használ a (DocumentDB-adatbázisban tárolt) eszközparancs-előzmények frissítéséhez.
 
 ## <a name="documentdb"></a>DocumentDB
-A megoldás egy DocumentDB-adatbázisban tárolja a megoldáshoz csatlakoztatott eszközökre vonatkozó adatokat. Az adatok közé tartoznak az eszköz metaadatai, valamint az eszköznek az irányítópultról küldött parancsok előzményei.
+A megoldás egy DocumentDB-adatbázisban tárolja a megoldáshoz csatlakoztatott eszközökre vonatkozó adatokat. Ezen adatok közé tartoznak a megoldásportálról az eszközökre küldött parancsok és a megoldásportálról indított metódusok előzményei.
 
-## <a name="web-apps"></a>Webalkalmazások
-### <a name="remote-monitoring-dashboard"></a>Távoli figyelési irányítópult
+## <a name="solution-portal"></a>Megoldásportál
+
+A megoldásportál egy webalkalmazás, amely az előre konfigurált megoldás részeként van üzembe helyezve. A megoldásportál kiemelt oldala az irányítópult és az eszközlista.
+
+### <a name="dashboard"></a>Irányítópult
 A webalkalmazás ezen oldala PowerBI javascript-vezérlőket használ (lásd a [PowerBI-vizualizációk tárát](https://www.github.com/Microsoft/PowerBI-visuals)) az eszközök által küldött telemetriai adatok vizualizálásához. A megoldás az ASA telemetriai feladat használatával írja a blobtárolóba a telemetriai adatokat.
 
-### <a name="device-administration-portal"></a>Eszközfelügyeleti portál
-Ezzel a webalkalmazással a következőket teheti:
+### <a name="device-list"></a>Eszközlista
+A megoldásportál ezen oldaláról a következőket teheti:
 
 * Új eszközöket építhet ki. Ezzel a művelettel állíthatja be az egyedi eszközazonosítót, valamint hozhatja létre a hitelesítési kulcsot. A művelet mind az IoT Hub-identitásjegyzékébe, mind a megoldásspecifikus DocumentDB-adatbázisba beírja az eszközadatokat.
 * Felügyelheti az eszköztulajdonságokat. A művelet segítségével megtekintheti a meglévő tulajdonságokat, és új tulajdonságokat hozhat létre.
@@ -216,7 +258,7 @@ A következő TechNet-blogbejegyzés további részleteket tartalmaz a távoli f
 
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 
-* [Eszközök csatlakoztatása a távoli figyelési előre konfigurált megoldáshoz][lnk-connect-rm]
+* [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm]
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -226,9 +268,6 @@ Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 [lnk-webjobs]: https://azure.microsoft.com/documentation/articles/websites-webjobs-resources/
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
+[lnk-device-twins]:  ../iot-hub/iot-hub-devguide-device-twins.md
+[lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

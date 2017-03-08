@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2017
+ms.date: 02/25/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: d3a122d7d26635e13281b1cba450937519ed4be6
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: 4014bf0217e25ea9bc8473ef2383279e5eb79b87
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="getting-started-with-the-mfa-server-mobile-app-web-service"></a>Első lépések az MFA-kiszolgáló Mobile App Web Service szolgáltatásával
+# <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>A mobilalkalmazásos hitelesítés engedélyezése az Azure Multi-Factor Authentication-kiszolgálóval
+
 A Microsoft Authenticator alkalmazás egy további sávon kívüli ellenőrzési lehetőséget kínál. Automatikus telefonhívás vagy SMS küldése helyett a felhasználó bejelentkezésekor az Azure Multi-Factor Authentication értesítést küld le a Microsoft Authenticator alkalmazásba a felhasználó okostelefonján vagy táblagépén. A felhasználó egyszerűen az **Ellenőrzés** (vagy a PIN-kód megadása után a „Hitelesítés”) elemre koppint a bejelentkezés befejezéséhez. 
 
 Ha a telefonon a vétel nem megbízható, kétlépéses ellenőrzést biztosító mobilalkalmazás használata ajánlott. Ha az alkalmazást OATH token előállítására használja, nincs szükség hálózatra vagy internetkapcsolatra. 
@@ -99,9 +101,4 @@ Most, hogy telepítette a Mobile App Web Service-t, konfigurálnia kell az Azure
 5. Adja meg az Azure Multi-Factor AuthenticationMobileAppWebServiceSetup telepítésekor létrehozott virtuális címtárhoz használt URL-címet. A rendelkezésre álló helyen megadhat egy fióknevet. Ez a vállalati név jelenik meg a mobilalkalmazásban. Ha a mezőt üresen hagyja, a klasszikus Azure portálon létrehozott Multi-Factor Authentication-szolgáltató neve jelenik meg.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
