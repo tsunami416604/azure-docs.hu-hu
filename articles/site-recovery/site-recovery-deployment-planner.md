@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: f438db1d0129dfb0e2eaa00146147084cd8c11b6
-ms.openlocfilehash: 179e8cf928d83a3a66ed3489173e4c28a2bc9d4f
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -309,7 +309,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 **To meet RPO 90% of the time** (Az RPO betartása az idő 90%-ában) Ha a szélessávú kapcsolat díjszabása miatt vagy egyéb okból kifolyólag nincs lehetősége arra, hogy akkora sávszélességet osszon ki, amellyel a kívánt helyreállítási időkorlát mindig betartható, akkor kioszthat egy alacsonyabb sávszélesség-értéket, amellyel az idő 90%-ában betarthatja a kívánt RPO-t. Az alacsonyabb sávszélesség-kiosztás következményeinek áttekintéséhez a jelentés lehetőségelemzést biztosít elemzést a helyreállítási időkorlát várható megszegéseinek számáról és időtartamáról.
 
-**Achieved Throughput:** (Elért átviteli sebesség): Az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és az Azure Storage-fióknak helyet adó Microsoft Azure-régió között. Hozzávetőleges átviteli sebességet jelöl, amely akkor érhető el, ha a kompatibilis virtuális gépeket az Azure Site Recoveryvel védi, feltéve, hogy a konfigurációs kiszolgáló vagy folyamatkiszolgáló tárolója és hálózati jellemzői megegyeznek azon kiszolgálóéval, ahol az eszközt futtatta. Az elért átviteli sebesség az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és az Azure Storage-fióknak helyet adó Microsoft Azure-régió között. Hozzávetőleges átviteli sebességet jelöl, amely akkor érhető el, ha a kompatibilis virtuális gépeket az Azure Site Recoveryvel védi, feltéve, hogy a konfigurációs kiszolgáló vagy folyamatkiszolgáló tárolója és hálózati jellemzői megegyeznek azon kiszolgálóéval, ahol az eszközt futtatta.
+**Achieved Throughput:** (Elért átviteli sebesség): Az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és az Azure Storage-fióknak helyet adó Microsoft Azure-régió között. Hozzávetőleges átviteli sebességet jelöl, amely akkor érhető el, ha a kompatibilis virtuális gépeket az Azure Site Recoveryvel védi, feltéve, hogy a konfigurációs kiszolgáló vagy folyamatkiszolgáló tárolója és hálózati jellemzői megegyeznek azon kiszolgálóéval, ahol az eszközt futtatta.    
 
 A replikációhoz a helyreállítási időkorlát 100%-os eléréséhez javasolt sávszélességet ossza ki. Ha a megfelelő sávszélesség kiosztása után sem nő az eszköz által jelentett elért átviteli sebesség, ellenőrizze a következőket:
 
