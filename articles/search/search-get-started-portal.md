@@ -57,7 +57,7 @@ Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, h
 > ![Indexelők és adatforrások csempéje][1]
 >
 
-## <a name="a-namecreate-indexa-create-an-index-and-load-data"></a><a name="create-index"></a> Index létrehozása és az adatok betöltése
+## <a name="create-index"></a> Index létrehozása és az adatok betöltése
 A keresési lekérdezések egy *index* segítségével ismétlődnek, amely kereshető adatokat, metaadatokat és bizonyos keresési viselkedések optimalizálásához használt szerkezeteket tartalmaz.
 
 Annak érdekében, hogy a feladat portálalapú maradjon, egy beépített minta adatkészletet fogunk használni, amely könnyedén bejárható egy indexelő segítségével az **Adatok importálása** varázslón keresztül. 
@@ -100,7 +100,7 @@ Az adatimportálás felügyeletéhez térjen vissza a szolgáltatás irányító
 
    ![Indexelő állapotüzenete][4]
 
-## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a> Az index lekérdezése
+## <a name="query-index"></a> Az index lekérdezése
 Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezésre. A **Keresési ablak** a portálba épített lekérdezési eszköz. Biztosít egy keresőmezőt, amellyel ellenőrizheti, hogy a keresési eredmények megfelelnek-e a vártaknak. 
 
 > [!TIP]

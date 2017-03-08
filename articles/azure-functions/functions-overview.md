@@ -57,7 +57,7 @@ A Functions sablonokkal segít megtenni az első lépéseket a legfontosabb forg
 
 Az Azure Functions támogatja az *eseményindítókat*, amelyek egy kód végrehajtásának elindítását szolgáló módszerek, és a *kötéseket*, amelyek a be- és kimeneti adatok kódolásának leegyszerűsítését szolgáló módszerek. Az Azure Functions által biztosított eseményindítók és kötések részletes leírásáért lásd: [Azure Functions triggers and bindings developer reference](functions-triggers-bindings.md) (Az Azure Functions eseményindítóinak és kötéseinek fejlesztői segédanyagai).
 
-## <a name="a-nameintegrationsaintegrations"></a><a name="integrations"></a>Integráció
+## <a name="integrations"></a>Integráció
 Az Azure Functions számos Azure-szolgáltatással és harmadik féltől származó szolgáltatással integrálható. Ezek a szolgáltatások a függvény aktiválására és végrehajtásának megkezdésére, vagy a kódhoz tartozó be- és kimenetként is használhatók. Az Azure Functions a következő szolgáltatásokkal való integrációt támogatja. 
 
 * Azure DocumentDB
@@ -70,7 +70,7 @@ Az Azure Functions számos Azure-szolgáltatással és harmadik féltől szárma
 * Helyszíni szolgáltatások (a Service Bus használatával)
 * Twilio (SMS-üzenetek)
 
-## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Mennyibe kerül a Functions szolgáltatás használata?
+## <a name="pricing"></a>Mennyibe kerül a Functions szolgáltatás használata?
 Az Azure Functions kétféle díjszabási csomaggal érhető el – válassza azt, amelyik leginkább megfelel az igényeinek: 
 
 * **Használatalapú csomag** – A függvény futásakor az Azure biztosít minden szükséges számítási erőforrást. Önnek nem kell foglalkoznia az erőforrás-kezeléssel, és csak annyi időért kell fizetnie, amennyit a kódja fut. 

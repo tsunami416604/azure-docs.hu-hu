@@ -71,7 +71,7 @@ Több WebHCat-feladat (beleértve a Hive, MapReduce, Hadoop-stream és Pig-felad
 
 A Blob Storage tárolók a strukturált és strukturálatlan adatokhoz használhatók. A Blob Storage tárolók kulcs/érték párokként tárolnak adatokat, és nincs könyvtár-hierarchia. A perjel karakter ( / ) azonban használható a kulcsnévben, hogy úgy tűnjön, mintha a fájl könyvtárszerkezetben lenne tárolva. Egy blob kulcsa lehet például az *input/log1.txt*. Nem létezik tényleges *input* könyvtár, de mivel jelen van a perjel karakter a kulcsnévben, úgy néz ki, mint egy fájlútvonal.
 
-### <a name="a-idbenefitsabenefits-of-blob-storage"></a><a id="benefits"></a>A Blob Storage előnyei
+### <a id="benefits"></a>A Blob Storage előnyei
 A számítási fürtök és tárolási erőforrások nem egy helyre helyezésével járó teljesítményi költségeket csökkenti a számítási fürtöknek a tárfiók erőforrásainak közelében való létrehozása az Azure-régión belül, ahol a nagysebességű hálózat nagyon hatékonnyá teszi, ahogyan a számítási csomópontok elérik az Azure Blob Storage tárlóban lévő adatokat.
 
 Több előnye is van annak, ha az adatokat a HDFS helyett az Azure Blob Storage tárolóban tárolja:

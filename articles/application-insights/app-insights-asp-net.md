@@ -34,7 +34,7 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 * [Webalkalmazás beállítása futási időben](app-insights-monitor-performance-live-website-now.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
-## <a name="a-nameidea-step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
+## <a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
 
 Kattintson a jobb gombbal a webalkalmazás-projektre a Solution Explorer (Megoldáskezelő) területén, és válassza az **Add** (Hozzáadás), **Application Insights Telemetry** (Application Insights-telemetria) vagy a **Configure Application Insights** (Application Insights konfigurálása) elemet.
 
@@ -53,7 +53,7 @@ Lépjen tovább az Application Insights konfigurációs oldalára:
 5. Másik megoldásként egyszerűen hozzáadhatja az Application Insights SDK-t az alkalmazáshoz. Ebben az esetben a telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](app-insights-monitor-performance-live-website-now.md).
 
 
-## <a name="a-nameruna-step-2-run-your-app"></a><a name="run"></a> 2. lépés: Az alkalmazás futtatása
+## <a name="run"></a> 2. lépés: Az alkalmazás futtatása
 Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
 
 A Visual Studióban láthatja a naplózott események számát.
@@ -124,7 +124,7 @@ Folytathatja a telemetria elemzését a [Visual Studióban](app-insights-visual-
 >
 >
 
-## <a name="a-namelanda-what-does-the-add-application-insights-command-do"></a><a name="land"></a> Mire használható az Application Insights hozzáadása parancs?
+## <a name="land"></a> Mire használható az Application Insights hozzáadása parancs?
 Az Application Insights telemetriát küld az alkalmazástól az Application Insights portálra (amely az Azure-ban található).
 
 ![A telemetria mozgásának ábrája](./media/app-insights-asp-net/01-scheme.png)

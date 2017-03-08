@@ -199,7 +199,7 @@ Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-cou
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>Következő lépések
+## <a id="next"></a>Következő lépések
 
 Ebből az Apache Storm-oktatóanyagból megismerhette a Storm HDInsightban való használatának alapjait. A következő szakaszban a [Java-alapú topológiák fejlesztését ismertetjük Maven használatával](hdinsight-storm-develop-java-topology.md).
 

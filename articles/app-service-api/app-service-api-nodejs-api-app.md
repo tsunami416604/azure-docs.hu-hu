@@ -162,7 +162,7 @@ A [Swagger](http://swagger.io/) egy olyan fájlformátum, amely RESTful API leí
    
     ![Swagger Ui](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
-## <a name="a-idcreateapiappa-create-a-new-api-app"></a><a id="createapiapp"></a> Új API-alkalmazás létrehozása
+## <a id="createapiapp"></a> Új API-alkalmazás létrehozása
 Ebben a szakaszban használhatja az Azure portál segítségével új API-alkalmazást hozhat létre az Azure-ban. Ez az API-alkalmazás azokat a számítási erőforrásokat reprezentálja, amelyeket az Azure az Ön kódjának futtatásához biztosít. A későbbi szakaszokban a kódot az új API-alkalmazásba fogja telepíteni.
 
 1. Keresse fel az [Azure portált](https://portal.azure.com/). 

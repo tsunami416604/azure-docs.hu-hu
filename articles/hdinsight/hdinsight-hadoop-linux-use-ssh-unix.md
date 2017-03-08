@@ -122,7 +122,7 @@ A hozzáférés felhasználónkénti korlátozása csak tartományhoz csatlakozt
 
 Tartományhoz csatlakoztatott HDInsight-fürt használata lehetővé teszi az Active Directoryval való hitelesítést az SSH-val való csatlakozás után. Több felhasználó csatlakozhat SSH-val, majd a csatlakozás után hitelesítést végezhet az Active Directory-fiókjával. További információért lásd a [Tartományhoz csatlakoztatott HDInsight](#domainjoined) című szakaszt.
 
-##<a name="a-idconnecta-connect-to-hdinsight"></a><a id="connect"></a> Csatlakozás a HDInsight-hoz
+##<a id="connect"></a> Csatlakozás a HDInsight-hoz
 
 Bár a HDInsight-fürt összes csomópontja futtatja az SSH-kiszolgálót, nyilvános interneten keresztül csak az átjárócsomópontokhoz vagy az élcsomópontokhoz lehet csatlakozni.
 
@@ -209,7 +209,7 @@ Ha a felhasználói fiók hitelesítéséhez SSH-kulcsot használ, győződjön 
 
 A `kinit` paranccsal végzett hitelesítés után már használhatja az olyan Hadoop-parancsokat, mint a `hdfs dfs -ls /` vagy a `hive`.
 
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-bújtatás
+## <a id="tunnel"></a>SSH-bújtatás
 
 Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A kérést a rendszer továbbítja a fürt felé, majd feloldja a fürtön belül.
 

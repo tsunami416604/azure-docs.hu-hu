@@ -34,7 +34,7 @@ A következők szükségesek:
 
 * Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével.
 
-## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights-erőforrás létrehozása
+## <a name="add"></a>Application Insights-erőforrás létrehozása
 Jelentkezzen be az [Azure portálra][portal], és hozzon létre egy új Application Insights-erőforrást. Az Azure-ban az [erőforrás][roles] egy szolgáltatáspéldány. Az alkalmazás telemetriájának elemzése és bemutatása az erőforrásban történik.
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-nodejs/01-new-asp.png)
@@ -46,7 +46,7 @@ A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-
 
 ![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> Az SDK telepítése az alkalmazásban
+## <a name="sdk"></a> Az SDK telepítése az alkalmazásban
 ```
 npm install applicationinsights --save
 ```
@@ -64,10 +64,10 @@ A kialakítási kulcsot is be lehet állítani az APPINSIGHTS_INSTRUMENTATIONKEY
 
 Kipróbálhatja az SDK-t telemetria küldése nélkül: állítsa át a kialakítási kulcsot olyan karakterláncra, amely nem üres.
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> A projekt futtatása
+## <a name="run"></a> A projekt futtatása
 Futtassa az alkalmazást, és próbálja ki: nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> A telemetriai adatok megtekintése
+## <a name="monitor"></a> A telemetriai adatok megtekintése
 Térjen vissza az [Azure Portalra](https://portal.azure.com), és keresse meg az Application Insights-erőforrást.
 
 Tekintse meg az adatokat az Áttekintés lapon. Először csak egy vagy két pontot lát. Példa:
