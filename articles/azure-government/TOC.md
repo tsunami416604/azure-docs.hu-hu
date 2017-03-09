@@ -1,3 +1,4 @@
+
 # Áttekintés
 ## [Mi az az Azure Government?](documentation-government-welcome.md)
 ## [ITAR](documentation-government-overview-itar.md)
@@ -31,6 +32,7 @@
 ### [Számítás](documentation-government-compute.md)
 ### [Tárolás](documentation-government-services-storage.md)
 ### [Adatbázis](documentation-government-services-database.md)
+### [Intelligencia és elemzés](documentation-government-services-intelligenceandanalytics.md)
 ### [Hálózat](documentation-government-networking.md)
 ### [Biztonság + identitás](documentation-government-services-securityandidentity.md)
 ### [Felügyelet és kezelés](documentation-government-services-monitoringandmanagement.md)
@@ -42,8 +44,3 @@
 ## [Próbaverzió](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [Blog](https://blogs.msdn.microsoft.com/azuregov/)
 ## [Azure Government-webhely](https://azure.microsoft.com/overview/clouds/government/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

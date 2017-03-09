@@ -58,33 +58,37 @@
 ## Adatok migrálása és áthelyezése
 ### Tanulás
 #### [Adatbázisok migrálása](sql-database-cloud-migrate.md)
-#### [Tranzakciós replikáció](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+#### [Adatbázisok exportálása](sql-database-export.md)
 #### [Adatszinkronizálás](sql-database-get-started-sql-data-sync.md)
 #### [SQL-adatbázis másolása](sql-database-copy.md)
 ## Tűzfalszabályok, hitelesítés és engedélyezés
 ### Tanulás
 #### [Hozzáférés-vezérlés](sql-database-control-access.md)
-#### [Tűzfal](sql-database-firewall-configure.md)
+#### [Tűzfalszabályok](sql-database-firewall-configure.md)
 #### [Bejelentkezések kezelése](sql-database-manage-logins.md)
+#### [Azure AD-hitelesítés](sql-database-aad-authentication.md)
+#### [Többtényezős hitelesítés](sql-database-ssms-mfa-authentication.md)
 ### Ajánlott
 #### [SQL-hitelesítés és engedélyezés](sql-database-control-access-sql-authentication-get-started.md)
 #### [Azure AD-hitelesítés és -engedélyezés](sql-database-control-access-aad-authentication-get-started.md)
 ## Az adatok védelme
 ### Tanulás
 #### Naplózás
-##### [Naplózás](sql-database-auditing-get-started.md)
+##### [Naplózás](sql-database-auditing.md)
 ##### [Alacsonyabb szintű ügyfelek támogatása és a naplózás IP-végpontjainak módosítása](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)
-#### [Fenyegetések észlelése](sql-database-threat-detection-get-started.md)
+#### [Fenyegetések észlelése](sql-database-threat-detection.md)
 #### Adatok titkosítása
-##### [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
 ##### [Transzparens adattitkosítás](https://msdn.microsoft.com/library/azure/dn948096)
 ##### [Oszloptitkosítás](https://msdn.microsoft.com/library/azure/ms179331)
 #### Adatok maszkolása
-##### Dinamikus adatmaszkolás
-###### [Azure Portal](sql-database-dynamic-data-masking-get-started.md)
+##### [Dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md)
 ### Ajánlott
-#### [Dinamikus adatmaszkolás az Azure Portal használatával](sql-database-dynamic-data-masking-get-started.md)
-##### [Always Encrypted a Windows-tanúsítványtároló használatával](sql-database-always-encrypted.md)
+#### [Dinamikus adatmaszkolás az Azure Portal használatával](sql-database-dynamic-data-masking-get-started-portal.md)
+#### [Naplózás konfigurálása az Azure Portal használatával](sql-database-auditing-portal.md)
+#### [Naplózás konfigurálása a PowerShell használatával](sql-database-auditing-powershell.md)
+#### [Naplózás konfigurálása a REST API használatával](sql-database-auditing-rest.md)
+#### [Always Encrypted Windows-tanúsítvány használatával](sql-database-always-encrypted.md)
+#### [Always Encrypted az Azure Key Vault használatával](sql-database-always-encrypted-azure-key-vault.md)
 ## Az üzletmenet folytonossága
 ### Tanulás
 #### [Áttekintés](sql-database-business-continuity.md)
@@ -100,7 +104,7 @@
 #### [Vészhelyreállítási próba végrehajtása](sql-database-disaster-recovery-drills.md)
 #### [Aktív georeplikáció áttekintése](sql-database-geo-replication-overview.md)
 ### Ajánlott
-#### [Azure Portal: Biztonsági mentés és visszaállítás](sql-database-get-started-backup-recovery.md)
+#### [Azure Portal: Biztonsági mentés és visszaállítás](sql-database-get-started-backup-recovery-portal.md)
 #### [PowerShell: Biztonsági mentés és visszaállítás](sql-database-get-started-backup-recovery-powershell.md)
 ## Alkalmazás-fejlesztés
 ### Tanulás
@@ -140,7 +144,7 @@
 ### Ajánlott
 #### [SQL Server-fejlesztés](https://msdn.microsoft.com/library/ms179422.aspx)
 #### [Memóriabeli OLTP beállítása](sql-database-in-memory-oltp-migration.md)
-## Megfigyelés és finomhangolás
+## Figyelés és hangolás
 ### Tanulás
 #### [Önálló adatbázisok](sql-database-single-database-monitor.md)
 #### [Az SQL Database Advisor áttekintése](sql-database-advisor.md)
@@ -157,67 +161,55 @@
 #### [Magasabb szintű verzióra váltás a PowerShell használatával](sql-database-upgrade-server-powershell.md)
 # Útmutató
 ## Létrehozás és kezelés
-### [SQL Database felügyelete az Azure Portal használatával](sql-database-manage-portal.md)
-### [SQL Database felügyelete PowerShell használatával](sql-database-manage-powershell.md)
-### [SQL Database felügyelete SSMS használatával](sql-database-manage-azure-ssms.md)
+### [Kezelés az Azure Portal használatával](sql-database-manage-portal.md)
+### [Kezelés a PowerShell használatával](sql-database-manage-powershell.md)
+### [Kezelés az SSMS használatával](sql-database-manage-azure-ssms.md)
 ### Kiszolgálók
-#### [Kiszolgálók létrehozása](sql-database-create-servers.md)
-#### [Kiszolgálóbeállítások megtekintése és frissítése](sql-database-view-update-server-settings.md)
+#### [Kezelés az Azure Portal használatával](sql-database-manage-servers-portal.md)
+#### [Kezelés a PowerShell használatával](sql-database-manage-servers-powershell.md)
 ### Önálló adatbázisok
-#### [Önálló adatbázis létrehozása](sql-database-create-databases.md)
-#### [Adatbázis-beállítások megtekintése és frissítése](sql-database-view-update-database-settings.md)
+#### [Kezelés az Azure Portal használatával](sql-database-manage-single-databases-portal.md)
+#### [Kezelés a PowerShell használatával](sql-database-manage-single-databases-powershell.md)
+#### [Kezelés a Transact-SQL használatával](sql-database-manage-single-databases-tsql.md)
 ### Tűzfalszabályok
-#### [Tűzfalszabályok létrehozása az Azure Portal használatával](sql-database-configure-firewall-settings.md)
-#### [Tűzfalszabályok létrehozása a PowerShell használatával](sql-database-configure-firewall-settings-powershell.md)
-#### [Tűzfalszabályok létrehozása a REST API használatával](sql-database-configure-firewall-settings-rest.md)
-#### [Tűzfalszabályok létrehozása a T-SQL használatával](sql-database-configure-firewall-settings-tsql.md)
+#### [Létrehozás az Azure Portal használatával](sql-database-configure-firewall-settings.md)
+#### [Létrehozás a PowerShell használatával](sql-database-configure-firewall-settings-powershell.md)
+#### [Létrehozás a REST API használatával](sql-database-configure-firewall-settings-rest.md)
+#### [Létrehozás a T-SQL használatával](sql-database-configure-firewall-settings-tsql.md)
 ### Több adatbázis
 #### [Az ügyfélkönyvtár frissítése ügyfélalkalmazásokban](sql-database-elastic-scale-upgrade-client-library.md)
 #### Szilánkokra osztott adatbázisok
 ##### [Biztonsági konfiguráció](sql-database-elastic-scale-split-merge-security-configuration.md)
 ##### [Szilánk hozzáadása](sql-database-elastic-scale-add-a-shard.md)
 ##### [Szilánkleképezési problémák javítása](sql-database-elastic-database-recovery-manager.md)
-##### [Meglévő, horizontálisan felskálázott adatbázisok migrálása szilánkos adatbázisba](sql-database-elastic-convert-to-use-elastic-tools.md)
+##### [Migrálás szilánkokra osztott adatbázisokra](sql-database-elastic-convert-to-use-elastic-tools.md)
 ##### [Teljesítményszámlálók létrehozása a szilánkleképezés-kezelőhöz](sql-database-elastic-database-perf-counters.md)
 #### Rugalmas feladatok
-##### [Hogyan kell telepíteni a rugalmas feladatokat végző szolgáltatást?](sql-database-elastic-jobs-service-installation.md)
-##### [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](sql-database-elastic-jobs-powershell.md) 
-##### [Rugalmas feladatok létrehozása és kezelése az Azure Portal használatával](sql-database-elastic-jobs-create-and-manage.md)
-##### [Hogyan távolíthatók el a rugalmas feladatok?](sql-database-elastic-jobs-uninstall.md)
+##### [Telepítési lépések](sql-database-elastic-jobs-service-installation.md)
+##### [Kezelés a PowerShell használatával](sql-database-elastic-jobs-powershell.md) 
+##### [Kezelés az Azure Portal használatával](sql-database-elastic-jobs-create-and-manage.md)
+##### [Eltávolítási lépések](sql-database-elastic-jobs-uninstall.md)
 #### Rugalmas készletek
-##### [Létrehozás az Azure Portal használatával](sql-database-elastic-pool-create-portal.md)
-##### [Létrehozás a PowerShell használatával](sql-database-elastic-pool-create-powershell.md)
-##### [Létrehozás C# használatával](sql-database-elastic-pool-create-csharp.md)
 ##### [Kezelés az Azure Portal használatával](sql-database-elastic-pool-manage-portal.md)
 ##### [Kezelés a PowerShell használatával](sql-database-elastic-pool-manage-powershell.md)
 ##### [Kezelés a C# használatával](sql-database-elastic-pool-manage-csharp.md)
 ##### [Kezelés a T-SQL használatával](sql-database-elastic-pool-manage-tsql.md)
-##  Hitelesítés és engedélyezés
-### [Azure AD-hitelesítés](sql-database-aad-authentication.md)
-### [Többtényezős hitelesítés](sql-database-ssms-mfa-authentication.md)
+## Hitelesítés és engedélyezés
+### [Azure AD-hitelesítés konfigurálása](sql-database-aad-authentication-configure.md)
+### [Többtényezős hitelesítés konfigurálása](sql-database-ssms-mfa-authentication-configure.md)
+## Fenyegetésészlelés konfigurálása
+### [Fenyegetésészlelés konfigurálása az Azure Portal használatával](sql-database-threat-detection-portal.md)
 ## Adatok titkosítása
 ### [Transzparens adattitkosítás](https://msdn.microsoft.com/library/azure/dn948096)
 ### [Oszloptitkosítás](https://msdn.microsoft.com/library/azure/ms179331)
-## Adatbázisok migrálása
-### Kompatibilitás meghatározása
-#### [Kompatibilitás meghatározása az SQL Package segédprogrammal](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md)
-#### [Kompatibilitás meghatározása az SSMS használatával](sql-database-cloud-migrate-determine-compatibility-ssms.md)
-### Kompatibilitási problémák megoldása
-#### [Kompatibilitási problémák megoldása SSDT-vel](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
-#### [Kompatibilitási problémák megoldása SSMS-el](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
-#### [Kompatibilitási problémák megoldása SMW-vel](sql-database-cloud-migrate-fix-compatibility-issues.md)
-### [Áttelepítés az SSMS migrálási varázslójával](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
 ## Figyelés és hangolás
 ### [Lekérdezési terheléselemző](sql-database-query-performance.md)
 ### [SQL Database Advisor](sql-database-advisor-portal.md)
 ### [DMV-k](sql-database-monitoring-with-dmvs.md)
 ### [Kompatibilitási szintek](sql-database-compatibility-level-query-performance-130.md)
 ### [Teljesítmény-finomhangolási tippek](sql-database-troubleshoot-performance.md)
-### Szolgáltatásszintek és teljesítményszintek váltása
-#### [Szolgáltatásszintek módosítása az Azure Portal használatával](sql-database-scale-up.md)
-#### [Szolgáltatásszintek módosítása a PowerShell használatával](sql-database-scale-up-powershell.md)
 ### [Riasztások létrehozása](sql-database-insights-alerts-portal.md)
-#### [Memóriabeli OLTP Storage figyelése](sql-database-in-memory-oltp-monitoring.md)
+### [Memóriabeli OLTP Storage figyelése](sql-database-in-memory-oltp-monitoring.md)
 ### Lekérdezéstár
 #### [Teljesítmény figyelése a Lekérdezéstár használatával](https://msdn.microsoft.com/library/dn817826.aspx)
 #### [Lekérdezéstár – használati forgatókönyvek](https://msdn.microsoft.com/library/mt614796.aspx)
@@ -231,31 +223,30 @@
 #### [Másolás a PowerShell használatával](sql-database-copy-powershell.md)
 #### [Másolás a T-SQL használatával](sql-database-copy-transact-sql.md)
 ### Adatbázis exportálása BACPAC-fájlba
-#### [Exportálás az Azure Portal használatával](sql-database-export.md)
-#### [Exportálás az SSMS használatával](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-#### [Exportálás az SQL Package segédprogrammal](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
+#### [Exportálás az Azure Portal használatával](sql-database-export-portal.md)
+#### [Exportálás az SQL Package segédprogrammal](sql-database-export-sqlpackage.md)
 #### [Exportálás a PowerShell használatával](sql-database-export-powershell.md)
-### Adatbázis importálása BACPAC-fájlból
-#### [Importálás az Azure Portal használatával](sql-database-import.md)
-#### [Importálás a PowerShell használatával](sql-database-import-powershell.md)
-#### [Importálás az SSMS használatával](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-#### [Importálás SQL Package segédprogrammal](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
+#### [Exportálás az SSMS használatával](sql-database-export-ssms.md)
+## Adatok importálása
+### [Importálás az Azure Portal használatával](sql-database-import-portal.md)
+### [Importálás a PowerShell használatával](sql-database-import-powershell.md)
+### [Importálás az SQLPackage használatával](sql-database-import-sqlpackage.md)
 ### [Betöltés CSV-fájlból BCP használatával](sql-database-load-from-csv-with-bcp.md)
 ## Lekérdezés
 ### [Lekérdezés az SSMS használatával](sql-database-connect-query-ssms.md)
 ## Biztonsági mentés és visszaállítás
 ### Biztonsági mentés hosszú távú megőrzése
-#### [A biztonsági mentések hosszú távú megőrzésének konfigurációja](sql-database-configure-long-term-retention.md)
-#### [Biztonsági mentések megtekintése a Recovery Services-tárolóban](sql-database-view-backups-in-vault.md)
-#### [Visszaállítás a biztonsági másolat hosszú távú megőrzéséből](sql-database-restore-from-long-term-retention.md)
-#### [Törlés a biztonsági másolat hosszú távú megőrzéséből](sql-database-long-term-retention-delete.md)
+#### [A biztonsági mentések hosszú távú megőrzésének kezelése az Azure Portal használatával](sql-database-manage-long-term-backup-retention-portal.md)
+#### [A biztonsági mentések hosszú távú megőrzésének kezelése a PowerShell használatával](sql-database-manage-long-term-backup-retention-powershell.md)
 ### Törölt adatbázis visszaállítása
 #### [Törölt elemek visszaállítása az Azure Portal használatával](sql-database-restore-deleted-database-portal.md)
 #### [Törölt elemek visszaállítása a PowerShell használatával](sql-database-restore-deleted-database-powershell.md)
-### Időponthoz kötött visszaállítás
-#### [Visszaállítás adott időpont szerinti állapotra](sql-database-point-in-time-restore.md)
-#### [Legrégebbi visszaállítási pont megtekintése](sql-database-view-oldest-restore-point.md)
-### [Visszaállítás georedundáns biztonsági másolatból](sql-database-geo-restore.md)
+### Időponthoz kötött adatbázis-visszaállítás
+#### [Időponthoz kötött visszaállítás az Azure Portal használatával](sql-database-point-in-time-restore-portal.md)
+#### [Időponthoz kötött adatbázis-visszaállítás a PowerShell használatával](sql-database-point-in-time-restore-powershell.md)
+### Visszaállítás georedundáns biztonsági másolatból
+### [Georedundáns helyreállítás az Azure Portal használatával](sql-database-geo-restore-portal.md)
+### [Georedundáns helyreállítás a PowerShell használatával](sql-database-geo-restore-powershell.md)
 ## Aktív georeplikáció
 ### [Konfigurálás az Azure Portal használatával](sql-database-geo-replication-portal.md)
 ### [Konfigurálás a PowerShell használatával](sql-database-geo-replication-powershell.md)

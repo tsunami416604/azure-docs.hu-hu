@@ -4,6 +4,7 @@
 # Első lépések
 ## [Méretezési csoport létrehozása a portálon](virtual-machine-scale-sets-portal-create.md)
 ## [Méretezési csoport létrehozása az Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
+## [Méretezési csoport létrehozása Resource Manager-sablonnal](virtual-machine-scale-sets-mvss-start.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -46,8 +47,3 @@
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

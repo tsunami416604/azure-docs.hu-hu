@@ -1,12 +1,16 @@
 # Áttekintés
 ## [Mi az Azure Automation?](automation-intro.md)
-## [Biztonság az Azure Automationben](automation-security-overview.md)
 # Bevezetés
 ## [Runbook létrehozása](automation-first-runbook-graphical.md)
 ## [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
 ## [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
 ## [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
 # Útmutató
+## Hitelesítés beállítása
+### [Hitelesítés az Azure Automationben](automation-security-overview.md)
+### [Azure-beli futtató fiók](automation-sec-configure-azure-runas-account.md)
+### [Azure Service Management és Resource Manager](automation-sec-configure-aduser-account.md)
+### [Amazon webszolgáltatások](automation-sec-configure-aws-account.md)
 ## Runbookok létrehozása
 ### [Runbook-típusok](automation-runbook-types.md)
 ### [Runbookok létrehozása és importálása](automation-creating-importing-runbook.md)
@@ -28,15 +32,11 @@
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
 ## Konfigurációkezelés (DSC) üzembe helyezése
-### [Célállapot-konfiguráló (DSC)](automation-dsc-overview.md)
-### [Bevezetés](automation-dsc-getting-started.md)
+### [A célállapot-konfiguráló (DSC) áttekintése](automation-dsc-overview.md)
+### [Első lépések](automation-dsc-getting-started.md)
 ### [Gépek előkészítése kezelésre](automation-dsc-onboarding.md)
 ### [Célállapot-konfigurálók fordítása](automation-dsc-compile.md)
 ### [Folyamatos üzembe helyezés a Chocolatey használatával](automation-dsc-cd-chocolatey.md)
-## Hitelesítés beállítása
-### [Azure Service Management és Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon webszolgáltatások](automation-sec-configure-aws-account.md)
-### [Azure futtató fiók](automation-sec-configure-azure-runas-account.md)
 ## Automatizálási objektumok kezelése
 ### [Tanúsítványok](automation-certificates.md)
 ### [Kapcsolatok](automation-connections.md)
@@ -47,8 +47,6 @@
 ### [Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
 ## Forgatókönyvek automatizálása
 ### [Runbook-katalógus](automation-runbook-gallery.md)
-### [Virtuális gépek indítása és leállítása](automation-solution-startstopvm-graphical.md)
-### [Virtuális gépek indítása és leállítása a PowerShell-lel](automation-solution-startstopvm-psworkflow.md)
 ### [Amazon-webszolgáltatásbeli virtuális gép létrehozása](automation-scenario-aws-deployment.md)
 ### [Azure VM-riasztás szervizelése](automation-azure-vm-alert-integration.md)
 ### [Virtuális gép indítása és leállítása JSON-címkékkel](automation-scenario-start-stop-vm-wjson-tags.md)
@@ -81,8 +79,3 @@
 ## [Azure Automation-képzés](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
