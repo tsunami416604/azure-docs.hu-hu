@@ -4,7 +4,7 @@ description: "Az útmutató bevezeti Önt az Azure-alapú mobil-háttéralkalmaz
 services: app-service\mobile
 documentationcenter: javascript
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 tags: 
 keywords: "cordova,javascript,mobil,ügyfél"
@@ -19,6 +19,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
 ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -81,9 +82,4 @@ További információk az Azure App Service alapjairól.
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -264,6 +264,7 @@
 
 # Kapcsolódó
 ## [A .NET-hez készült Azure SDK kibocsátási megjegyzései](azure-sdk-dotnet-release-notes.md)
+### [3.0 kiadás](azure-sdk-dotnet-release-notes-3-0.md)
 ### [2.9 kiadás](azure-sdk-dotnet-release-notes-2-9.md)
 ### [2.8.x kiadás](azure-sdk-dotnet-release-notes-2-8.md)
 ### [2.7.x kiadás](azure-sdk-dotnet-release-notes-2-7.md)

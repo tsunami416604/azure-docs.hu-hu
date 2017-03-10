@@ -9,13 +9,13 @@
 ### [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](azure-security-data-encryption-best-practices.md)
 ### [Biztonsági útmutató a tároláshoz](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [Számítási biztonság](security-virtual-machines-overview.md)
+### [Ajánlott eljárások Azure-beli virtuális gépekhez](azure-security-best-practices-vms.md)
 ### [Ajánlott eljárások IaaS számítási feladatokhoz ](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [Disk encryption (Lemeztitkosítás)](azure-security-disk-encryption.md)
 ### [Azure virtuális gép titkosítása](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
 ### [Biztonság kezelése](azure-security-management.md)
-### [Ajánlott eljárások az IaaS szoftverfrissítéseihez](azure-security-best-practices-software-updates-iaas.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure-naplók integrációja](security-azure-log-integration-overview.md)
 #### [Első lépések](security-azure-log-integration-get-started.md)
@@ -63,8 +63,3 @@
 ###[Bemenet-ellenőrzés](azure-security-threat-modeling-tool-input-validation.md)
 ###[Bizalmas adatok](azure-security-threat-modeling-tool-sensitive-data.md)
 ###[Munkamenet-kezelés](azure-security-threat-modeling-tool-session-management.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
