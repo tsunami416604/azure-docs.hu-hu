@@ -34,15 +34,13 @@
 ##### [Bevezetési stratégia](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 #### [Következő lépések](active-directory-hybrid-identity-design-considerations-nextsteps.md)
 #### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 ## Felhasználók kezelése
 ### Felhasználók hozzáadása
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
 #### [Klasszikus portál](active-directory-create-users.md)
 
-### Más címtárakban szereplő felhasználók felvétele
-#### [Azure Portal](active-directory-users-create-external-azure-portal.md)
-#### [Klasszikus portál](active-directory-create-users-external.md)
-
+### [Más címtárakban szereplő felhasználók felvétele (klasszikus portál)](active-directory-create-users-external.md)
 ### [Felhasználók törlése](active-directory-users-delete-user-azure-portal.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
@@ -74,27 +72,28 @@
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
 ### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 
-## [Tevékenységjelentések megtekintése](active-directory-view-access-usage-reports.md)
-### [Bejelentkezések](active-directory-reporting-activity-sign-ins.md)
-### [Naplók](active-directory-reporting-activity-audit-logs.md)
+## [Jelentések kezelése](active-directory-reporting-azure-portal.md)
+### [Bejelentkezési tevékenység](active-directory-reporting-activity-sign-ins.md)
+### [Naplózási tevékenység](active-directory-reporting-activity-audit-logs.md)
 ### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
+### [Kockázati események](active-directory-reporting-risk-events.md)
+### [Nevesített hálózatok](active-directory-known-networks-azure-portal.md)
 ### [Gyakori kérdések](active-directory-reporting-faq.md)
 ### [Jelentések migrálása](active-directory-reporting-migration.md)
-### [Ismert hálózatok](active-directory-known-networks.md)
-
-### klasszikus portál
+### [Megőrzés](active-directory-reporting-retention.md)
+###    Szoftveres hozzáférés
+#### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
+#### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
+#### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
+#### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
+### [Klasszikus portál](active-directory-view-access-usage-reports.md)
 #### [Azure AD Reporting](active-directory-reporting-getting-started.md)
 #### [Jelentéskészítési útmutató](active-directory-reporting-guide.md)
-#### [Előzetes verzió](active-directory-reporting-azure-portal.md)
+#### [Ismert hálózatok](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
-##### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
-##### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
-##### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
-##### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
-##### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Események naplózása](active-directory-reporting-audit-events.md)
-#### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
 #### A jelentések értelmezése
@@ -108,6 +107,7 @@
 
 ## [Jelszavak kezelése](active-directory-manage-passwords.md)
 ### [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
+### [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-passwords.md)
 ### [A jelszókezeléssel kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
 ### [A szabályzatokkal és a korlátozásokkal kapcsolatos tudnivalók](active-directory-passwords-policy.md)
 ### Új jelszavak létrehozása
@@ -117,7 +117,6 @@
 ### Jelszókezelés engedélyezése
 #### [Első lépések](active-directory-passwords-getting-started.md)
 #### [Üzembe helyezés](active-directory-passwords-best-practices.md)
-#### [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-passwords.md)
 #### [Testreszabás](active-directory-passwords-customize.md)
 #### [Jelentések megtekintése](active-directory-passwords-get-insights.md)
 #### [További információ](active-directory-passwords-learn-more.md)
@@ -128,22 +127,19 @@
 ### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
 #### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
 #### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
-### [Eszköz regisztrálása](active-directory-azureadjoin-personal-device.md)
-### [Windows 10-es eszköz regisztrálása](active-directory-azureadjoin-user-upgrade.md)
+#### [Gyakori kérdések](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### Hibaelhárítás
+##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
 #### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
 #### [Új eszközök regisztrálása](active-directory-azureadjoin-user-frx.md)
 #### [Üzembe helyezés](active-directory-azureadjoin-devices-group-policy.md)
-#### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
-#### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
-
 #### [A Windows 10-es integrációval kapcsolatos tudnivalók](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [Windows 10-eszközök használata](active-directory-azureadjoin-windows10-devices.md)
-#### [Gyakori kérdések](active-directory-conditional-access-automatic-device-registration-faq.md)
-#### Hibaelhárítás
-##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+#### [Eszköz csatlakoztatása](active-directory-azureadjoin-personal-device.md)
+#### [Windows 10-es eszköz csatlakoztatása](active-directory-azureadjoin-user-upgrade.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
@@ -237,6 +233,7 @@
 #### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
 #### [B2B-felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
 #### [Vendégfelhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
+#### [Naplózás és jelentéskészítés](active-directory-b2b-auditing-and-reporting.md)
 #### [API és testreszabás](active-directory-b2b-api.md)
 #### [Meghívók delegálása](active-directory-b2b-delegate-invitations.md)
 #### [Dinamikus csoportok és B2B](active-directory-b2b-dynamic-groups.md)
@@ -284,6 +281,9 @@
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
 #### [Referencia](active-directory-conditional-access-technical-reference.md)
+### Windows Hello
+#### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
+#### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

@@ -1,6 +1,7 @@
 
 # Áttekintés
 ## [Mi a DocumentDB?](documentdb-introduction.md)
+## [Mi a DocumentDB: API a MongoDB-hez?](documentdb-protocol-mongodb.md)
 ## [Alapfogalmak](documentdb-resources.md)
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
 ## [A NoSQL teljes birtoklási költségének elemzése](https://aka.ms/documentdb-tco-paper)
@@ -14,9 +15,11 @@
 ### [.NET Core-Konzolalkalmazás](documentdb-dotnetcore-get-started.md)
 ### [Java-konzolalkalmazás](documentdb-java-get-started.md)
 ### [Node.js-konzolalkalmazás](documentdb-nodejs-get-started.md)
+### [Node.js-konzolalkalmazás a MongoDB API-khoz](documentdb-mongodb-samples.md)
 ### [C++-Konzolalkalmazás](documentdb-cpp-get-started.md)
 ## Webalkalmazás készítése
 ### [.NET-webalkalmazás](documentdb-dotnet-application.md)
+### [.NET-webalkalmazás a MongoDB API-khoz](documentdb-mongodb-application.md)
 ### [Node.Js-webalkalmazás](documentdb-nodejs-application.md)
 ### [Java webalkalmazások](documentdb-java-application.md)
 ### [Python Flask-webalkalmazás](documentdb-python-application.md)
@@ -34,6 +37,10 @@
 
 ## Kezelés
 ### [Adatok importálása](documentdb-import-data.md)
+### [Importálás API-ba a MongoDB-hez](documentdb-mongodb-migrate.md)
+### [Csatlakozás a MongoDB-fiókhoz](documentdb-connect-mongodb-account.md)
+### [A MongoChef használata](documentdb-mongodb-mongochef.md)
+### [A Robomongo használata](documentdb-mongodb-robomongo.md)
 ### [Adatmodellezés](documentdb-modeling-data.md)
 ### [Térinformatikai adatok használata](documentdb-geospatial.md)
 ### [Fejlesztés több régióra](documentdb-developing-with-multiple-regions.md)
@@ -60,15 +67,6 @@
 ### Ajánlott eljárások
 #### [Több főkiszolgálós telepítés](documentdb-multi-region-writers.md)
 #### [Dátum/idő](documentdb-working-with-dates.md)
-
-## DocumentDB-támogatás használata a MongoDB-hez
-### [Protokolltámogatás MongoDB-hez](documentdb-protocol-mongodb.md)
-### [Fiók létrehozása](documentdb-create-mongodb-account.md)
-### [Csatlakozás a fiókhoz](documentdb-connect-mongodb-account.md)
-### [Adatok áttelepítése](documentdb-mongodb-migrate.md)
-### [A Robomongo használata](documentdb-mongodb-robomongo.md)
-### [A MongoChef használata](documentdb-mongodb-mongochef.md)
-### [Protokolltámogatási minták](documentdb-mongodb-samples.md)
 
 ## A portál használata
 ### [Adatbázisfiók létrehozása](documentdb-create-account.md)
