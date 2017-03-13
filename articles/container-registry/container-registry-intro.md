@@ -1,5 +1,5 @@
 ---
-title: "Privát Docker-tárolójegyzék az Azure-ban | Microsoft Docs"
+title: "Privát Docker-tárolójegyzékek az Azure-ban | Microsoft Docs"
 description: "Bevezetés az Azure Container Registry szolgáltatásba, amely felhőalapú, felügyelt és magán Docker-beállításjegyzékeket biztosít."
 services: container-registry
 documentationcenter: 
@@ -16,12 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: 44bfd57feecc45e037717a35b64dd8e4bfb6a1b3
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: 69d1750f13b5507268229b29a392c38662c0f5f0
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="what-is-azure-container-registry"></a>Mi az az Azure Container Registry?
+# <a name="introduction-to-private-docker-container-registries"></a>A privát Docker-tárolójegyzékek bemutatása
 > [!NOTE]
 > A Container Registry jelenleg előzetes verzióban érhető el.
 
@@ -68,9 +70,4 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 * [Az első rendszerkép leküldése a Docker parancssori felületével](container-registry-get-started-docker-cli.md)
 * Egy folyamatos integrációt és üzembe helyezést megvalósító munkafolyamat a Visual Studio Team Services, az Azure Container Service és az Azure Container Registry használatával történő kiépítéséhez lásd [ezt az oktatóanyagot](../container-service/container-service-setup-ci-cd.md).
 * Ha privát Docker-beállításjegyzéket szeretne beállítani az Azure-ban (nyilvános végpont nélkül), tekintse meg [a saját privát Docker-beállításjegyzék Azure-beli üzembe helyezésével kapcsolatos](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md) cikket.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

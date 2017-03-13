@@ -1,6 +1,6 @@
 ---
-title: "Docker-rendszerképek az Azure tároló-beállításjegyzékben | Microsoft Docs"
-description: "Docker-rendszerképek leküldése és lekérése egy Azure-beli tároló beállításjegyzékbe a Docker parancssori felületével"
+title: "Docker-rendszerképek leküldése a privát Azure-beállításjegyzékbe | Microsoft Docs"
+description: "Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -16,15 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 1e70f41dd15b0243fb8edd137710ac555821434e
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: e778c09991da73cd5064532119d92bff36f0a00e
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy tároló-beállításjegyzékbe a Docker parancssori felületével
+# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 Az Azure-beli tároló-beállításjegyzékek privát [Docker](http://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. A[Docker parancssori felületével](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) végezheti a [bejelentkezést](https://docs.docker.com/engine/reference/commandline/login/), a [leküldést](https://docs.docker.com/engine/reference/commandline/push/), a [lekérést](https://docs.docker.com/engine/reference/commandline/pull/) és a tároló-beállításjegyzék további műveleteit. 
 
-Részletes háttérinformációkért és a fogalmakkal kapcsolatban lásd: [Mi az az Azure Container Registry?](container-registry-intro.md)
+Részletes háttér-információkért és a fogalmakkal kapcsolatban lásd [az áttekintést](container-registry-intro.md).
 
 
 > [!NOTE]
@@ -114,10 +116,5 @@ docker rmi myregistry-contoso.azurecr.io/samples/nginx
 Most, hogy elsajátította az alapokat, készen áll a beállításjegyzéke használatára. Például üzembe helyezhet tárolórendszerképeket egy [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)-fürtön.
 
 
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

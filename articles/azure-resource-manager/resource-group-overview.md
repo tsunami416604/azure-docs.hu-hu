@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 03/06/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1460a3e6b3d225a507e5da51dcc66810862ee2de
-ms.openlocfilehash: 4001c2d9bf2a635d7189ae46a855e347b93185c8
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: eed360b6c996d1901b40f3d1fcf4b8ff859da573
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -92,10 +93,10 @@ A következő PowerShell-parancsmaggal az összes erőforrás-szolgáltatót lek
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Az Azure parancssori felületén a következő paranccsal kérheti le az összes erőforrás-szolgáltatót:
+Vagy az Azure CLI 2.0-s verziójában a következő paranccsal kérheti le az összes erőforrás-szolgáltatót:
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 Áttekintheti a szükséges erőforrás-szolgáltatókat tartalmazó visszaadott listát.
@@ -106,10 +107,10 @@ Egy erőforrás-szolgáltató részleteinek megtekintéséhez adja hozzá a szol
 (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 ```
 
-Az Azure parancssori felületén is lekérheti a Microsoft.Compute támogatott erőforrástípusait, helyeit és API-verzióit a következő paranccsal:
+Vagy az Azure CLI 2.0-s verziójában is lekérheti a Microsoft.Compute támogatott erőforrástípusait, helyeit és API-verzióit a következő paranccsal:
 
 ```azurecli
-azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+az provider show --namespace Microsoft.Compute
 ```
 
 További információ: [Resource Manager-szolgáltatók, -régiók, API-verziók és -sémák](resource-manager-supported-services.md).
@@ -214,10 +215,10 @@ A következő PowerShell-parancsmaggal lekérdezheti az összes olyan erőforrá
 Find-AzureRmResource -TagName costCenter -TagValue Finance
 ```
 
-A következő Azure CLI-parancsot is használhatja:
+A következő Azure CLI 2.0-parancsot is használhatja:
 
 ```azurecli
-azure resource list -t costCenter=Finance --json
+az resource list --tag costCenter=Finance
 ```
 
 A címkézett erőforrásokat az Azure Portalon is megtekintheti.
@@ -343,9 +344,4 @@ Ismertető videó az áttekintésről:
 
 
 [powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

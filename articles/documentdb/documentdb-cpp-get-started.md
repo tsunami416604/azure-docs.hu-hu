@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
-ms.openlocfilehash: f622b9a35c370148a3472fa6924a50933d59601e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 78c3da6fd83a6fca0351a90846d10acd82924be3
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -24,8 +25,9 @@ ms.openlocfilehash: f622b9a35c370148a3472fa6924a50933d59601e
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [Node.js MongoDB-hez](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -64,7 +66,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupcastep-2-set-up-your-c-application"></a><a id="SetupC++"></a>2. lépés: A C++ alkalmazás beállítása
+## <a id="SetupC++"></a>2. lépés: A C++ alkalmazás beállítása
 1. Nyissa meg a Visual Studiót, majd a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre. 
 2. A **New Project** (Új projekt) ablakban, az **Installed** (Telepítve) panelen bontsa ki a **Visual C++** elemet, kattintson a **Win32** elemre, majd kattintson a **Win32 Console Application** (Win32 konzolalkalmazás) lehetőségre. Adja a hellodocumentdb nevet a projektnek, majd kattintson az **OK** gombra. 
    
@@ -79,12 +81,12 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
    
     Miután a csomagokat a projekthez adta, készen állunk a kódírásra.   
 
-## <a name="a-idconfigastep-3-copy-connection-details-from-azure-portal-for-your-documentdb-database"></a><a id="Config"></a>3. lépés: Kapcsolat részleteinek másolása az Azure Portalról a DocumentDB adatbázisba
+## <a id="Config"></a>3. lépés: Kapcsolat részleteinek másolása az Azure Portalról a DocumentDB adatbázisba
 Nyissa meg az [Azure Portalt](https://portal.azure.com), és lépjen a létrehozott NoSQL (DocumentDB) adatbázisfiókra. A következő lépésben szükségünk lesz az URI-re és az elsődleges kulcsra az Azure Portalról, hogy kapcsolatot hozzunk létre a C++ kódrészletből. 
 
 ![DocumentDB URI és kulcsok az Azure Portalon](media/documentdb-cpp-get-started/nosql-tutorial-keys.png)
 
-## <a name="a-idconnectastep-4-connect-to-a-documentdb-account"></a><a id="Connect"></a>4. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a>4. lépés: Csatlakozás DocumentDB-fiókhoz
 1. Adja a következő fejléceket és névtereket a forráskódhoz, az `#include "stdafx.h"` elem után.
    
         #include <cpprest/json.h>
@@ -102,7 +104,7 @@ Nyissa meg az [Azure Portalt](https://portal.azure.com), és lépjen a létrehoz
    
     Most, hogy rendelkezik a documentdb-ügyfél elindításához szükséges kóddal, vessünk egy pillantást a DocumentDB-erőforrások használatára.
 
-## <a name="a-idcreatedbcollastep-5-create-a-c-database-and-collection"></a><a id="CreateDBColl"></a>5. lépés: C++ adatbázis és gyűjtemény létrehozása
+## <a id="CreateDBColl"></a>5. lépés: C++ adatbázis és gyűjtemény létrehozása
 A lépés elvégzése előtt a DocumentDB-t nem ismerő felhasználók érdekében vegyük át az adatbázis, a gyűjtemény és a dokumentumok kapcsolatát. Az [adatbázisok](documentdb-resources.md#databases) a dokumentumtároló gyűjtemények között particionált logikai tárolói. A [gyűjtemények](documentdb-resources.md#collections) JSON-dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát tartalmazó tárolók. A DocumentDB hierarchikus erőforrásmodellről és fogalmakról további információt a [DocumentDB hierarchikus erőforrásmodell és fogalmak](documentdb-resources.md) című cikkben talál.
 
 Egy adatbázis és egy megfelelő gyűjtemény létrehozása érdekében adja a következő kódot a fő függvény végére. Ez létrehozza a „FamilyRegistry” nevű adatbázist és a „FamilyCollection” nevű gyűjteményt az előző lépésben megadott ügyfél-konfigurációval.
@@ -115,7 +117,7 @@ Egy adatbázis és egy megfelelő gyűjtemény létrehozása érdekében adja a 
     }
 
 
-## <a name="a-idcreatedocastep-6-create-a-document"></a><a id="CreateDoc"></a>6. lépés: Dokumentum létrehozása
+## <a id="CreateDoc"></a>6. lépés: Dokumentum létrehozása
 A [dokumentumok](documentdb-resources.md#documents) a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beszúrhat egy dokumentumot a DocumentDB-be. Egy dokumentum létrehozásához másolja a következő kódot a fő függvény végére. 
 
     try {
@@ -137,7 +139,7 @@ A [dokumentumok](documentdb-resources.md#documents) a felhasználó által megad
 
 ![C++ oktatóanyag – A fiók, az adatbázis, a gyűjtemény és a dokumentumok hierarchikus kapcsolatát ábrázoló diagram](media/documentdb-cpp-get-started/documentdbdocs.png)
 
-## <a name="a-idquerydbastep-7-query-documentdb-resources"></a><a id="QueryDB"></a>7. lépés: DocumentDB-erőforrások lekérdezése
+## <a id="QueryDB"></a>7. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md). Az alábbi mintakód egy DocumentDB SQL szintaxissal készített lekérdezést mutat be, amelyet az előző lépésben létrehozott dokumentumokra vonatkozóan futtathat le.
 
 A függvény az adatbázis és a gyűjtemény egyedi azonosítóját vagy erőforrás-azonosítóját veszi fel argumentumokként a dokumentum ügyfelével együtt. Adja ezt a kódot a fő függvény elé.
@@ -168,7 +170,7 @@ A függvény az adatbázis és a gyűjtemény egyedi azonosítóját vagy erőfo
       }
     }
 
-## <a name="a-idreplaceastep-8-replace-a-document"></a><a id="Replace"></a>8. lépés: Dokumentum cseréje
+## <a id="Replace"></a>8. lépés: Dokumentum cseréje
 A DocumentDB támogatja a JSON-dokumentumok cseréjét, ahogyan az a következő kódban is látható. Adja ezt a kódot az executesimplequery függvény után.
 
     void replacedocument(const DocumentClient &client, const wstring dbresourceid,
@@ -188,7 +190,7 @@ A DocumentDB támogatja a JSON-dokumentumok cseréjét, ahogyan az a következő
       }
     }
 
-## <a name="a-iddeleteastep-9-delete-a-document"></a><a id="Delete"></a>9. lépés: Dokumentum törlése
+## <a id="Delete"></a>9. lépés: Dokumentum törlése
 A DocumentDB támogatja a JSON-dokumentumok törlését. Ehhez másolja és illessze be a következő kódot a replacedocument függvény után. 
 
     void deletedocument(const DocumentClient &client, const wstring dbresourceid,
@@ -203,7 +205,7 @@ A DocumentDB támogatja a JSON-dokumentumok törlését. Ehhez másolja és ille
       }
     }
 
-## <a name="a-iddeletedbastep-10-delete-a-database"></a><a id="DeleteDB"></a>10. lépés: Adatbázis törlése
+## <a id="DeleteDB"></a>10. lépés: Adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
 Másolja és illessze be a következő kódrészletet (cleanup (tisztítás) függvény) a deletedocument függvény után az adatbázis, valamint minden gyermekerőforrásának törléséhez.
@@ -216,7 +218,7 @@ Másolja és illessze be a következő kódrészletet (cleanup (tisztítás) fü
       }
     }
 
-## <a name="a-idrunastep-11-run-your-c-application-all-together"></a><a id="Run"></a>11. lépés: A teljes C++ alkalmazás futtatása!
+## <a id="Run"></a>11. lépés: A teljes C++ alkalmazás futtatása!
 Ezzel hozzáadtuk a különböző DocumentDB-erőforrások létrehozására, lekérdezésére, módosítására és törlésére szolgáló kódot.  Mindezek összegzéséhez adjunk hívásokat a különböző függvényekhez a hellodocumentdb.cpp fájlban lévő fő függvényből néhány diagnosztikai üzenettel együtt.
 
 Ehhez cserélje le az alkalmazás fő függvényét a következő kóddal. Ez felülírja a 3. lépésben a kódba másolt account_configuration_uri és primary_key elemet, ezért mentse a sort, vagy másolja le az értékeket ismét a portálból. 
@@ -276,7 +278,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 
 Gratulálunk! Ezzel befejezte a C++ oktatóanyagot, és létrehozta első saját DocumentDB-konzolalkalmazását!
 
-## <a name="a-idgetsolutionaget-the-complete-c-tutorial-solution"></a><a id="GetSolution"></a>A C++ oktatóanyagban szereplő teljes megoldás beszerzése
+## <a id="GetSolution"></a>A C++ oktatóanyagban szereplő teljes megoldás beszerzése
 A cikkben szereplő összes példát tartalmazó GetStarted-megoldás lefordításához az alábbiakra lesz szüksége:
 
 * [DocumentDB-fiók][documentdb-create-account].
@@ -289,10 +291,5 @@ A cikkben szereplő összes példát tartalmazó GetStarted-megoldás lefordít�
 
 [documentdb-create-account]: documentdb-create-account.md
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

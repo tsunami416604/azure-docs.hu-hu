@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 31157645006b24e9ed6ee9187c355310356615a7
-ms.openlocfilehash: 7d9dbf3af8e7d84d470bf6f42e2d2be01c5cb27d
+ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
+ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -83,7 +84,7 @@ A Machine Learning Studióval való kísérletezéshez háromféleképpen tölth
 
 További információ a támogatott fájlformátumokról: [Import training data into Machine Learning Studio](machine-learning-data-science-import-data.md) (Betanítási adatok betöltése a Machine Learning Studióba).
 
-#### <a name="a-idmodulelimitahow-large-can-the-data-set-be-for-my-modules"></a><a id="ModuleLimit"></a>Mekkora adatkészleteket kezelhetek a moduljaimmal?
+#### <a id="ModuleLimit"></a>Mekkora adatkészleteket kezelhetek a moduljaimmal?
 A Machine Learning Studióban található modulok 10 GB-nyi számadatot tartalmazó adatkészletet támogatnak a gyakori alkalmazási esetekben. Ha egy modul egynél több bemenetből fogad adatokat, a bemenet összesített mérete nem haladhatja meg a 10 GB-ot. A nagyobb adatkészletekből Hive- vagy Azure SQL Database-lekérdezések, illetve az adatfeldolgozást megelőzően a Learning by Counts előzetes feldolgozás segítségével lehet mintát venni.  
 
 A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott adattípusok bővíthetők nagyobb adatkészletekké:
@@ -101,7 +102,7 @@ A következő modulok 10 GB-nál kisebb adatkészletekre vannak korlátozva:
 * Olyan modulok, amelyeknél a kimeneti adatok mérete meghaladhatja a bemeneti adatok méretét; például az egyesítés vagy a szolgáltatáskivonatolás
 * Kereszt-ellenőrzés, modell-hiperparaméterek beállítása, sorszámregresszió és multi-osztályú osztályozás nagyszámú ismétlés esetében
 
-#### <a name="a-iduploadlimitawhat-are-the-limits-for-data-upload"></a><a id="UploadLimit"></a>Mik az adatfeltöltés korlátai?
+#### <a id="UploadLimit"></a>Mik az adatfeltöltés korlátai?
 A néhány GB-nál nagyobb adatkészletek esetében a helyi fájlokból való közvetlen feltöltés helyett tanácsos az adatokat az Azure Storage-ba, illetve az Azure SQL Database-be feltöltenie, vagy az Azure HDInsightot használnia erre a célra.
 
 **Az Amazon S3-ból is lehetséges az adatbeolvasás?**
@@ -429,7 +430,11 @@ Javasoljuk, hogy először válassza a Standard S1 csomagot, és kövesse figyel
 
 **Mely régiókban érhetők el az új csomagok?**
 
-A régiónkénti rendelkezésre állással kapcsolatban lásd a [régiónként elérhető termékeket](https://azure.microsoft.com/regions/services/).
+Az új számlázási csomagok abban a három éles régióban érhetők el, amelyekben támogatjuk az új webszolgáltatásokat:
+
+* USA déli középső régiója
+* Nyugat-Európa
+* Délkelet-Ázsia
 
 **Több régióban is működnek webszolgáltatásaim. Minden régióhoz külön csomagot kell létrehoznom?**
 
@@ -464,7 +469,13 @@ Igen, az Azure Machine Learning továbbra is használható a klasszikus webszolg
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Az Azure Machine Learning Ingyenes és Standard szintje
 **Mit tartalmaz az Azure Machine Learning Ingyenes szintje?**
 
-Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. Ez a szint 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. Az Ingyenes szinthez tartozó számítási feladatok nem tudják elérni az adatokat az SQL Servert futtató helyszíni kiszolgálókhoz való csatlakozással.
+Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. Ez a szint 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. 
+
+Az ingyenes szinthez tartozó munkaterületekre az alábbi korlátozások érvényesek:
+
+* A számítási feladatok nem tudják elérni az adatokat az SQL Servert futtató helyszíni kiszolgálóhoz való csatlakozással.
+* Nem helyezhet üzembe új Resource Manager-alapú webszolgáltatást.
+
 
 **Mit tartalmaznak az Azure Machine Learning Standard szintjei és csomagjai?**
 
@@ -546,9 +557,4 @@ A vendéghozzáférés a szolgáltatás korlátozott kipróbálására nyújt le
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

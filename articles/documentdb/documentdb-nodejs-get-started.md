@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 49b765010be87bacdb486391c28bf58aad1a9d24
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: e955366aa6fb8481fc8a76158b298dd927e855a2
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -26,8 +26,9 @@ ms.lasthandoff: 02/23/2017
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [Node.js MongoDB-hez](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -64,7 +65,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupnodeastep-2-setup-your-nodejs-application"></a><a id="SetupNode"></a>2. lépés: A Node.js-alkalmazás beállítása
+## <a id="SetupNode"></a>2. lépés: A Node.js-alkalmazás beállítása
 1. Nyissa meg kedvenc terminálját.
 2. Keresse meg azt a mappát vagy könyvtárat, ahova a Node.js-alkalmazást menteni szeretné.
 3. Hozzon létre két üres JavaScript-fájlt az alábbi parancsokkal:
@@ -79,7 +80,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 Remek! A beállítás befejeztével nekiláthat a kód írásának.
 
-## <a name="a-idconfigastep-3-set-your-apps-configurations"></a><a id="Config"></a>3. lépés: Az alkalmazás konfigurációnak megadása
+## <a id="Config"></a>3. lépés: Az alkalmazás konfigurációnak megadása
 Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
 Ezután másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját DocumentDB-végpontjának URI és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure portálon](https://portal.azure.com).
@@ -176,7 +177,7 @@ Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app
     // ADD THIS PART TO YOUR CODE
     module.exports = config;
 
-## <a name="a-idconnecta-step-4-connect-to-a-documentdb-account"></a><a id="Connect"></a>4. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a>4. lépés: Csatlakozás DocumentDB-fiókhoz
 Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```documentdb```, valamint az újonnan létrehozott ```config``` modul importálásához.
 
     // ADD THIS PART TO YOUR CODE
@@ -260,7 +261,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 
 Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.
 
-## <a name="a-idcreatecollastep-6-create-a-collection"></a><a id="CreateColl"></a>6. lépés: Gyűjtemény létrehozása
+## <a id="CreateColl"></a>6. lépés: Gyűjtemény létrehozása
 > [!WARNING]
 > A **CreateDocumentCollectionAsync** létrehoz egy új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/documentdb/).
 > 
@@ -314,7 +315,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 
 Gratulálunk! Sikeresen létrehozott egy DocumentDB-gyűjteményt.
 
-## <a name="a-idcreatedocastep-7-create-a-document"></a><a id="CreateDoc"></a>7. lépés: Dokumentum létrehozása
+## <a id="CreateDoc"></a>7. lépés: Dokumentum létrehozása
 [Dokumentumot](documentdb-resources.md#documents) a **DocumentClient** osztály [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html) függvényével hozhat létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beszúrhat egy dokumentumot a DocumentDB-be.
 
 Másolja és illessze be a **getFamilyDocument** függvényt a **getCollection** függvény alá a ```config``` objektumban mentett JSON-adatokat tartalmazó dokumentumok létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már dokumentum ugyanazzal az azonosítóval.
@@ -368,7 +369,7 @@ Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumot.
 
 ![Node.js-oktatóanyag – A fiók, az adatbázis, a gyűjtemény és a dokumentumok hierarchikus kapcsolatát ábrázoló diagram – Node-adatbázis](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-8-query-documentdb-resources"></a><a id="Query"></a>8. lépés: DocumentDB-erőforrások lekérdezése
+## <a id="Query"></a>8. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a gyűjteményben található dokumentumokra vonatkozóan futtathat le.
 
 Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá az app.js fájlban. A DocumentDB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](documentdb-sql-query.md).
@@ -425,7 +426,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 
 Gratulálunk! Sikeresen lekérdezett egy DocumentDB-dokumentumot.
 
-## <a name="a-idreplacedocumentastep-9-replace-a-document"></a><a id="ReplaceDocument"></a>9. lépés: Dokumentum cseréje
+## <a id="ReplaceDocument"></a>9. lépés: Dokumentum cseréje
 A DocumentDB támogatja a JSON-dokumentumok cseréjét.
 
 Másolja és illessze be a **replaceFamilyDocument** függvényt a **queryCollection** függvény alá az app.js fájlban.
@@ -472,7 +473,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 
 Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
 
-## <a name="a-iddeletedocumentastep-10-delete-a-document"></a><a id="DeleteDocument"></a>10. lépés: Dokumentum törlése
+## <a id="DeleteDocument"></a>10. lépés: Dokumentum törlése
 A DocumentDB támogatja a JSON-dokumentumok törlését.
 
 Másolja és illessze be a **deleteFamilyDocument** függvényt a **replaceFamilyDocument** függvény alá.
@@ -516,7 +517,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 
 Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
 
-## <a name="a-iddeletedatabaseastep-11-delete-the-node-database"></a><a id="DeleteDatabase"></a>11. lépés: A Node-adatbázis törlése
+## <a id="DeleteDatabase"></a>11. lépés: A Node-adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
 Másolja és illessze be a **cleanup** függvényt a **deleteFamilyDocument** függvény alá az adatbázis, valamint minden gyermekerőforrásának törléséhez.
@@ -551,7 +552,7 @@ Másolja és illessze be az alábbi kódot a **deleteFamilyDocument** függvény
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-## <a name="a-idrunastep-12-run-your-nodejs-application-all-together"></a><a id="Run"></a>12. lépés: A teljes Node.js-alkalmazás futtatása
+## <a id="Run"></a>12. lépés: A teljes Node.js-alkalmazás futtatása
 A függvényeket meghívó teljes sorozatnak így kell kinéznie:
 
     getDatabase()
@@ -602,7 +603,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 
 Gratulálunk! Ezennel befejezte a Node.js-oktatóanyagot, és létrehozta első saját DocumentDB-konzolalkalmazását.
 
-## <a name="a-idgetsolutionaget-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
+## <a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a kódot, a [Githubon](https://github.com/Azure-Samples/documentdb-node-getting-started) beszerezheti azt.
 
 A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás futtatásához az alábbiakra lesz szüksége:

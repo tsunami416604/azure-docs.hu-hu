@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/21/2017
+ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: dcd7836f1ef84bbf7f45f1a70da1e177d9913a36
-ms.openlocfilehash: 345e5516be0c4de56c0cb104b1a598cd964b41d2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: b1bbe3a43d071b452b7b60e1c56571958b444237
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -129,7 +129,7 @@ A Bevezetés folyamat első lépéseként válassza ki a Site Recovery üzembe h
 ## <a name="step-1-choose-your-protection-goals"></a>1. lépés: Védelmi célok megválasztása
 Válassza ki, hogy mit szeretne replikálni, és hova.
 
-1. Válassza ki a tárolót a **Recovery Services-tárolók** panelen, majd kattintson a **Beállítások** elemre.
+1. Válassza ki a tárolót a **Recovery Services-tárolók** panelen.
 2. A **Bevezetés** ablakban kattintson a **Site Recovery** > **1. lépés: Az infrastruktúra előkészítése** > **Védelmi cél** elemre.
 
     ![Célok megválasztása](./media/site-recovery-vmm-to-azure/choose-goals.png)
@@ -143,17 +143,17 @@ Telepítse a VMM-kiszolgálóra az Azure Site Recovery Providert, és regisztrá
 1. Kattintson a következő elemre: **2. lépés: Az infrastruktúra előkészítése** > **Forrás**.
 
     ![A forrás beállítása](./media/site-recovery-vmm-to-azure/set-source1.png)
-    
+
 2. A **Forrás előkészítése** ablakban kattintson a **+ VMM** gombra a VMM-kiszolgálók felvételéhez.
 
     ![A forrás beállítása](./media/site-recovery-vmm-to-azure/set-source2.png)
-    
+
 3. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **System Center VMM-kiszolgáló** érték látható-e, illetve, hogy a VMM-kiszolgáló megfelel-e [az előfeltételeknek és az URL-követelményeknek](#on-premises-prerequisites).
 4. Töltse le az Azure Site Recovery Provider telepítőfájlját.
 5. Töltse le a regisztrációs kulcsot. Erre a telepítő futtatása során lesz szükség. A kulcs a generálásától számított öt napig érvényes.
 
     ![A forrás beállítása](./media/site-recovery-vmm-to-azure/set-source3.png)
-    
+
 6. Telepítse az Azure Site Recovery Providert a VMM-kiszolgálóra.
 
 ### <a name="set-up-the-azure-site-recovery-provider"></a>Az Azure Site Recovery Provider beállítása
@@ -180,7 +180,7 @@ Telepítse a VMM-kiszolgálóra az Azure Site Recovery Providert, és regisztrá
 9. Jelölje be a **Felhőmetaadatok szinkronizálása** jelölőnégyzetet, ha szeretné a VMM-kiszolgálón futó összes felhő metaadatait szinkronizálni a tárolóval. Ezt a műveletet kiszolgálónként csak egyszer szükséges elvégezni. Ha nem szeretné az összes felhőt szinkronizálni, ne jelölje be a jelölőnégyzetet, és szinkronizálja egyenként a felhőket a VMM-konzolban, a felhők tulajdonságainál. A folyamat befejezéséhez kattintson a **Regisztráció** elemre.
 
     ![Kiszolgáló regisztrációja](./media/site-recovery-vmm-to-azure/provider16.PNG)
-10. Elindul a regisztráció. A regisztráció befejezését követően a kiszolgáló megjelenik a tároló **Beállítások** > **Kiszolgálók** paneljén.
+10. Elindul a regisztráció. A regisztráció befejezését követően a kiszolgáló megjelenik a **Site Recovery-infrastruktúra** >  **VMM-kiszolgálók** panelen.
 
 #### <a name="command-line-installation-for-the-azure-site-recovery-provider"></a>Az Azure Site Recovery Provider telepítése a parancssorból
 Az Azure Site Recovery Provider a parancssorból is telepíthető. A Provider ezzel a módszerrel a Server Core for Windows Server 2012 R2 kiadáson is telepíthető.
@@ -266,7 +266,7 @@ Adja meg a replikációhoz használni kívánt Azure-tárfiókot, valamint az Az
 
 Konfigurálja az alábbiak szerint a leképezéseket:
 
-1. A **Beállítások** > **Site Recovery-infrastruktúra** > **Hálózatleképezések** > **Hálózatleképezés** menüpontban kattintson a **+Hálózatleképezés** ikonra.
+1. A **Site Recovery-infrastruktúra** > **Hálózatleképezések** > **Hálózatleképezés** menüpontban kattintson a **+Hálózatleképezés** ikonra.
 
     ![Hálózatleképezés](./media/site-recovery-vmm-to-azure/network-mapping1.png)
 2. A **Hálózatleképezés hozzáadása** részben válassza ki a forrás VMM-kiszolgálót, célként pedig az **Azure-t**.
@@ -295,7 +295,7 @@ Ez történik a hálózatleképezés megkezdésekor:
 7. **Az Azure-on tárolt adatok titkosítása** beállításnál adhatja meg, hogy szeretné-e titkosítani az Azure-tárfiókban elhelyezett inaktív adatokat. Végül kattintson az **OK** gombra.
 
     ![Replikációs szabályzat](./media/site-recovery-vmm-to-azure/gs-replication2.png)
-8. Az újonnan létrehozott szabályzatokat a rendszer automatikusan társítja a VMM-felhővel. Kattintson az **OK** gombra. A további VMM-felhőket (és a rajtuk futó virtuális gépeket) a **Beállítások** > **Replikáció** > szabályzat neve > **VMM-felhő társítása** menüpontban társíthatja az adott replikációs szabályzathoz.
+8. Az újonnan létrehozott szabályzatokat a rendszer automatikusan társítja a VMM-felhővel. Kattintson az **OK** gombra. A további VMM-felhőket (és a rajtuk futó virtuális gépeket) a **Replikáció** > szabályzat neve > **VMM-felhő társítása** menüpontban társíthatja az adott replikációs szabályzathoz.
 
     ![Replikációs szabályzat](./media/site-recovery-vmm-to-azure/policy-associate.png)
 
@@ -375,16 +375,16 @@ Most már engedélyezheti a replikációt a következők szerint:
     >
 
 
-8. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** menüben válassza ki a védett virtuális gépekre alkalmazni kívánt replikációs beállításokat. Végül kattintson az **OK** gombra. A replikációs szabályzatot a **Beállítások** > **Replikációs házirendek** > szabályzat neve > **Beállítások szerkesztése** menüpontban módosíthatja. Az itt megadott módosítások a már replikálás alatt álló, illetve az újonnan hozzáadott gépekre egyaránt érvényesek.
+8. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** menüben válassza ki a védett virtuális gépekre alkalmazni kívánt replikációs beállításokat. Ezután kattintson az **OK** gombra. A replikációs szabályzatot a **Replikációs házirendek** > szabályzat neve > **Beállítások szerkesztése** menüpontban módosíthatja. Az itt megadott módosítások a már replikálás alatt álló, illetve az újonnan hozzáadott gépekre egyaránt érvényesek.
 
    ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication7.png)
 
-A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
+A **Védelem engedélyezése** feladat előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 ### <a name="view-and-manage-vm-properties"></a>A virtuális gépek tulajdonságainak megtekintése és kezelése
 Javasoljuk, hogy ellenőrizze a forrásgépek tulajdonságait. Ne feledje, hogy az Azure virtuális gép nevének meg kell felelnie az [Azure virtuális gépekre vonatkozó követelményeknek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
 
-1. Kattintson a **Beállítások** > **Védett elemek** > **Replikált elemek** elemre, majd a részletek megtekintéséhez válassza ki a kívánt gépet.
+1. A **Védett elemek** résznél kattintson a **Replikált elemek** elemre, majd a részletek megtekintéséhez válassza ki a kívánt gépet.
 
     ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/vm-essentials.png)
 2. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.
@@ -438,10 +438,10 @@ Ha a feladatátvételt követően a Secure Shell-ügyfél (SSH) segítségével 
 ## <a name="step-7-test-your-deployment"></a>7. lépés: Az üzemelő példány tesztelése
 Az üzemelő példány kipróbálásához futtasson feladatátvételi tesztet egy virtuális gépen, vagy alkalmazzon egy vagy több virtuális gépet tartalmazó helyreállítási tervet.
 
-1. A **Beállítások** > **Replikált elemek** listáján szereplő egyik virtuális gép feladatainak átadásához kattintson a virtuális gépre, majd a **+Feladatátvételi teszt** elemre.
-1. Helyreállítási terv feladatátadásához a **Beállítások** > **Helyreállítási tervek** menüben kattintson jobb gombbal a kívánt tervre, majd válassza a **Feladatátvételi teszt** lehetőséget. Helyreállítási terv létrehozásához [kövesse ezeket az utasításokat](site-recovery-create-recovery-plans.md).
+1. A **Replikált elemek** listáján szereplő egyik virtuális gép feladatainak átadásához kattintson a virtuális gépre, majd a **+Feladatátvételi teszt** elemre.
+1. Helyreállítási terv feladatátadásához a **Helyreállítási tervek** menüben kattintson a jobb gombbal a kívánt tervre, majd válassza a **Feladatátvételi teszt** lehetőséget. Helyreállítási terv létrehozásához [kövesse ezeket az utasításokat](site-recovery-create-recovery-plans.md).
 1. A **Feladatátvételi teszt** résznél válassza ki, hogy az Azure virtuális gépek melyik Azure-hálózathoz csatlakozzanak a feladatátvételt követően.
-1. A feladatátvételi művelet elindításához kattintson az **OK** gombra. A folyamat előrehaladásának megtekintéséhez kattintson a virtuális gépre, és nyissa meg a tulajdonságait, vagy a **Beállítások** > **Site Recovery-feladatok** menüben figyelje a **Feladatátvételi teszt** feladat állapotát.
+1. A feladatátvételi művelet elindításához kattintson az **OK** gombra. A folyamat előrehaladásának megtekintéséhez kattintson a virtuális gépre és nyissa meg a tulajdonságait, vagy a **Site Recovery-feladatok** menüben kísérje figyelemmel a **Feladatátvételi teszt** feladat állapotát.
 1. A feladatátvétel befejezését követően a replika Azure-gépnek meg kell jelennie az Azure Portal > **Virtuális gépek** részében. Ellenőrizze, hogy a virtuális gép mérete megfelelő-e, hogy a gép a megfelelő hálózathoz csatlakozik-e, és fut-e.
 1. Ha [elvégezte a feladatátvételt követő csatlakozáshoz szükséges előkészületeket](#prepare-to-connect-to-Azure-VMs-after-failover), most tudnia kell csatlakozni az Azure virtuális géphez.
 1. Miután elkészült, a helyreállítási terven kattintson a **Feladatátvételi teszt eltávolítása** elemre. A **Jegyzetek** területen jegyezheti fel és mentheti a feladatátvételi teszttel kapcsolatos megfigyeléseket. Ezzel törli a feladatátvételi teszt során létrehozott virtuális gépeket.
@@ -454,9 +454,9 @@ A Site Recoveryben üzemelő példány konfigurációjának és állapotának fi
 1. Kattintson a tároló nevére az **Alapvető erőforrások** irányítópult megnyitásához. Itt megtalálja a Site Recovery-feladatokat, a replikációs állapotot, a replikálási terveket, a kiszolgáló állapotát, valamint az eseményeket.  Az **Alapvető erőforrások** irányítópultot testre szabva beállíthatja, hogy az Önnek legfontosabb csempék és elrendezések jelenjenek meg, így akár más Site Recovery- és Backup-tárolók állapotát is gyorsan megtekintheti.
 
     ![Alapvető erőforrások](./media/site-recovery-vmm-to-azure/essentials.png)
-2. Az *Állapot** csempén nyomon követheti a helyszíni kiszolgálók (VMM- vagy konfigurációs kiszolgálók) problémáit, illetve megtekintheti a Site Recovery által az elmúlt 24 órában rögzített eseményeket.
-3. A replikációt a **Replikált elemek**, a **Helyreállítási tervek** és a **Site Recovery-feladatok** csempéken felügyelheti és figyelheti. A feladatokat részletesen is megtekintheti a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban.
+2. Az **Állapot** csempén nyomon követheti a helyszíni kiszolgálók (VMM- vagy konfigurációs kiszolgálók) problémáit, illetve megtekintheti a Site Recovery által az elmúlt 24 órában rögzített eseményeket.
+3. A replikációt a **Replikált elemek**, a **Helyreállítási tervek** és a **Site Recovery-feladatok** csempéken felügyelheti és figyelheti. A feladatokat részletesen is megtekintheti a **Feladatok** > **Site Recovery-feladatok** menüpontban.
 
 ## <a name="next-steps"></a>Következő lépések
-Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](site-recovery-failover.md) a feladatátvételi különféle típusaival.
+Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](site-recovery-failover.md) a feladatátvételi folyamattal.
 

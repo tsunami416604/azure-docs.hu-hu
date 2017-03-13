@@ -13,35 +13,39 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: ba659fe42fa2264708833f5674711334845defcc
-ms.openlocfilehash: 283e71f03f3907fd1e72283059ba7acbdac054d4
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
 Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja.
 
-> [!NOTE]
-> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
->
->
-
-Ha az adott eszköz nem szerepel az [Ellenőrzött VPN-eszközök](#devicetable) táblában, tekintse meg a jelen cikk [Nem ellenőrzött VPN-eszközök](#additionaldevices) című szakaszát. Lehetséges, hogy az eszköz mégis kompatibilis az Azure-ral. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
 > [!IMPORTANT]
-> Ha problémákat tapasztal a helyszíni VPN-eszközök és az Azure VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos](#known) szakaszt.
+> Ha problémákat tapasztal a helyszíni VPN-eszközök és az Azure VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known).
+> 
+> 
 
-**A táblák megtekintésekor figyelembe veendő elemek:**
+
+###<a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
 
 * A statikus és a dinamikus útválasztás esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
 * A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
 
-## <a name="a-namedevicetableavalidated-vpn-devices"></a><a name="devicetable"></a>Ellenőrzött VPN-eszközök
+> [!NOTE]
+> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
+>
+>
+
+
+## <a name="devicetable"></a>Ellenőrzött VPN-eszközök
 Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti.
 
 A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
@@ -73,13 +77,13 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 
 (*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
 
-## <a name="a-nameadditionaldevicesanon-validated-vpn-devices"></a><a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
-Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblában, az ennek ellenére képes lehet helyek közötti kapcsolat létesítésére. Ellenőrizze, hogy a VPN-eszköz teljesíti-e az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk Az átjáróra vonatkozó követelmények szakaszában megadott minimális követelményeket. A minimális rendszerkövetelményeknek megfelelő eszközök is működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
+## <a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
+Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblázatban, attól még az eszköz képes lehet helyek közötti kapcsolat létesítésére. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
 
-## <a name="editing-device-configuration-samples"></a>Az eszköz konfigurációs mintáinak szerkesztése
+## <a name="editing"></a>Az eszköz konfigurációs mintáinak szerkesztése
 A megadott VPN-eszközkonfigurációs minta letöltését követően egyes értékeket a környezeti beállításoknak megfelelően le kell cserélni.
 
-**A minta szerkesztéséhez tegye a következőket:**
+###<a name="to-edit-a-sample"></a>A minta szerkesztéséhez tegye a következőket:
 
 1. Nyissa meg a mintát a Jegyzettömb alkalmazásban.
 2. Keresse meg és cserélje le az összes <*szöveges*> karakterláncot a környezeti beállításokhoz tartozó értékekre. Győződjön meg arról, hogy szerepelnek benne < és > karakterek. A név megadásakor a kiválasztott névnek egyedinek kell lennie. Ha egy parancs nem működik, tekintse meg az eszköz gyártói dokumentációját.
@@ -98,7 +102,7 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | &lt;SP_AzureGatewayIpAddress&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon az **átjáró IP-címe** név alatt található meg. |
 | &lt;SP_PresharedKey&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon a Kulcskezelés cím alatt található meg. |
 
-## <a name="ipsec-parameters"></a>IPsec paraméterek
+## <a name="IPSec"></a>IPsec-paraméterek
 > [!NOTE]
 > Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, adott kombinációk megadására és kiválasztására jelenleg nincs lehetőség az Azure VPN Gateway átjárón. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az MSS korlátozását 1350-re kell állítani.
 >
@@ -121,7 +125,7 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | Kivonatoló algoritmus |SHA1(SHA128), SHA2(SHA256) |SHA1(SHA128), SHA2(SHA256) |
 | 2. fázisú biztonsági társítás (SA) Élettartam (idő) |3&600; másodperc |3&600; másodperc |
 | 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény) |102&400;&000; kB |- |
-| IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A |Lásd: *Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok* (alább) |
+| IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A |Lásd az útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatokat (alább) |
 | Sérülés utáni titkosságvédelem (PFS) |Nem |Nem (*) |
 | Kapcsolat megszakadásának észlelése |Nem támogatott |Támogatott |
 
@@ -154,21 +158,16 @@ Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési aj
 * Az IPsec ESP NULL titkosítás útvonalalapú és Nagy teljesítményű VPN-átjárók segítségével adható meg. A nullalapú titkosítás nem biztosít védelmet az adatok számára az átvitel során, ezért használata csak abban az esetben indokolt, ha maximális átviteli sebességre és minimális késleltetésre van szükség.  Az ügyfelek virtuális hálózatok közötti kapcsolatoknál dönthetnek ennek használata mellett, vagy ha más helyen a rendszer titkosítást alkalmaz.
 * A létesítmények közötti internetes kapcsolat esetében az alapértelmezett Azure VPN-átjáróbeállításokat a fenti táblákban található titkosítási és kivonatolási algoritmusokkal használja a kritikus fontosságú kommunikáció biztonságának megteremtéséhez.
 
-## <a name="a-nameknownaknown-device-compatibility-issues"></a><a name="known"></a>Ismert eszközkompatibilitási problémák
+## <a name="known"></a>Ismert eszközkompatibilitási problémák
 
 > [!IMPORTANT]
-> Ezek az ismert kompatibilitási problémák a külső gyártótól származó VPN-eszközök és az Azure VPN-átjárók között. Az Azure csapata folyamatosan együttműködik a szállítókkal az itt felsorolt problémák megoldása érdekében. A hibák kijavítása után ez az oldal frissül a legfrissebb információkkal. Kérjük, időnként látogasson vissza ide.
+> Ezek az ismert kompatibilitási problémák a külső gyártótól származó VPN-eszközök és az Azure VPN-átjárók között merülhetnek fel. Az Azure csapata folyamatosan együttműködik a szállítókkal az itt felsorolt problémák megoldása érdekében. A hibák kijavítása után ez az oldal frissül a legfrissebb információkkal. Kérjük, időnként látogasson vissza ide.
 
 ###<a name="feb-16-2017"></a>2017. február 16.
 
 **A 7.1.4-esnél korábbi verziójú rendszert futtató Palo Alto Networks-eszközök** Azure útvonalalapú VPN-hez: Ha a Palo Alto Networkstől származó VPN-eszközöket használ a 7.1.4-esnél korábbi PAN-OS verzióval, és problémákat tapasztal, amikor az Azure útvonalalapú VPN-átjárókhoz csatlakozik, hajtsa végre a következő lépéseket:
 
 1. Ellenőrizze a Palo Alto Networks-eszköz belső vezérlőprogramjának verzióját. Ha a PAN-OS verziója a 7.1.4-esnél régebbi, frissítsen a 7.1.4-es verzióra.
-2. A Palo Alto Networks-eszközön módosítsa a 2. fázisú biztonsági társítás (Gyorsmódú biztonsági társítás) élettartamát 28 800 másodpercre (8 órára) az Azure VPN-átjáróhoz való csatlakozáskor.
-3. Ha továbbra is kapcsolódási problémákat tapasztal, nyisson egy támogatási kérést az Azure Portalon. 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+2. A Palo Alto Networks-eszközön módosítsa a 2. fázisú biztonsági társítás (Gyorsmódú biztonsági társítás) élettartamát 28 800 másodpercre (8 órára) az Azure-beli VPN-átjáróhoz való csatlakozáskor.
+3. Ha továbbra is csatlakozási problémákat tapasztal, hozzon létre egy támogatási kérést az Azure Portalon.
 

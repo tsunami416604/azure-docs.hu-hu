@@ -10,20 +10,20 @@ tags: azure-resource-manager
 ms.assetid: 14fe9ca9-e228-4d3b-a5d8-3101e9478f6e
 ms.service: virtual-machines-windows
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
-ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 3de1e04c3ce1d6d465c5a54bc9db676639709371
+ms.lasthandoff: 03/08/2017
 
 ---
 
-# <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Windowsos virtuális gép létrehozása a Resource Manager és a PowerShell használatával
+# <a name="create-a-windows-vm-using-azure-resource-manager-and-powershell"></a>Windowsos virtuális gép létrehozása az Azure Resource Manager és a PowerShell használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure virtuális gépet és az ehhez szükséges erőforrásokat a [Resource Manager](../azure-resource-manager/resource-group-overview.md) és az Azure PowerShell használatával.  
+Ez a cikk bemutatja, hogyan hozhat létre gyorsan egy Windows Server rendszert futtató Azure-beli virtuális gépet és az ehhez szükséges erőforrásokat az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) és az Azure PowerShell használatával.  
 
-Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, amelyek összesen nagyjából 30 percet vesznek igénybe. A parancsokban szereplő minta paraméterértékeket cserélje le olyan nevekkel, amelyek az Ön saját környezetében értelmesek.
+Egy virtuális gép létrehozásához a cikkben található összes lépést el kell végeznie, és a parancsok másolása, beillesztése és futtatása összesen nagyjából 10 percet vesz igénybe.
 
 ## <a name="step-1-install-azure-powershell"></a>1. lépés: Az Azure PowerShell telepítése
 
@@ -79,7 +79,7 @@ Jelenleg eldöntheti, hogy a virtuális gépet az [Azure Managed Disks](../stora
 
 ## <a name="step-4-create-a-virtual-network"></a>4. lépés: Virtuális hálózat létrehozása
 
-Minden virtuális gép egy [virtuális hálózat](../virtual-network/virtual-networks-overview.md) része.
+Minden virtuális gép egy [virtuális hálózat](virtual-machines-windows-network-overview.md) része.
 
 1. Hozzon létre egy alhálózatot a virtuális hálózat számára. Ez a parancs létrehoz egy **mySubnet** elnevezésű alhálózatot 10.0.0.0/24 címelőtaggal.
    

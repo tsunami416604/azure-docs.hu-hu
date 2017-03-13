@@ -16,9 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
-ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/24/2017
 
 Egy előre meghatározott minta adatkészlettel, valamint az **Adatok importálása** varázslóval gyorsan létrehozhat egy indexet az Azure Portalon. A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
 
-Így kódolás nélkül juthat előre meghatározott adatokhoz, és azonnal lehetősége van Önt érdeklő lekérdezések írására. A portál eszközei nem helyettesítik a kódolást, de a következő feladatokhoz hasznosak lehetnek:
+Így kódolás nélkül juthat előre meghatározott adatokhoz, és azonnal lehetősége van Önt érdeklő lekérdezések írására. A portál eszközei nem helyettesítik a kódolást, de az eszközök a következő feladatokhoz hasznosak lehetnek:
 
 + Gyakorlati tanulás minimális bevezetés után
 + Index prototípusának elkészítése kód írása előtt az **Adatok importálása** területen
@@ -35,11 +35,13 @@ Egy előre meghatározott minta adatkészlettel, valamint az **Adatok importál�
 
 **Becsült időtartam:** Körülbelül 15 perc, de tovább is tarthat, ha szükség van a fiók vagy szolgáltatás regisztrálására. 
 
-Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
+Vagy az első lépésekhez tekintse meg [az Azure Search .NET-ben való programozásának kódalapú bevezetését](search-howto-dotnet-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag azt feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) és az [Azure Search szolgáltatással](search-create-service-portal.md). 
+
+Ha nem szeretne azonnal szolgáltatást létesíteni, megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről, amely nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
 ## <a name="find-your-service"></a>A szolgáltatása megkeresése
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
