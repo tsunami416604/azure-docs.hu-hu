@@ -4,7 +4,7 @@ description: "Egy Node.js-mintaalkalmazás üzembe helyezésével megtudhatja, m
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 412cc786-5bf3-4e1b-b696-6a08cf46501e
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 06a8dfbac31024cb44fd38bcf9c4a4ea79dbc968
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 0d5015182ba6e63528b03b20450e00c88e436be8
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="deploy-your-first-nodejs-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első Node.js-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
-
-> [!div class="op_single_selector"]
-> * [Első HTML-webhely](app-service-web-get-started-html.md)
-> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet.md)
-> * [Első PHP-alkalmazás](app-service-web-get-started-php.md)
-> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs.md)
-> * [Első Python-alkalmazás](app-service-web-get-started-python.md)
-> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
 Ez az oktatóanyag segítséget nyújt az első Node.js-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
@@ -49,7 +41,7 @@ Az alábbiakat fogja elvégezni:
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 - [Azure CLI 1.0](app-service-web-get-started-nodejs-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Azure CLI 2.0 (előzetes verzió)](app-service-web-get-started-nodejs.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
+- [Azure CLI 2.0](app-service-web-get-started-nodejs.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
@@ -151,10 +143,5 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 * Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

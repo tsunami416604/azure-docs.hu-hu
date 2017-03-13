@@ -1,10 +1,11 @@
 # Áttekintés
 ## [Mi a Site Recovery?](site-recovery-overview.md)
 ## [Hogyan működik a Site Recovery?](site-recovery-components.md)
+## [Hogyan működik a Hyper-V-replikáció az Azure-ba?](site-recovery-hyper-v-azure-architecture.md)
 ## [Milyen számítási feladatokat tud megvédeni?](site-recovery-workload.md)
 ## [Site Recovery támogatási mátrix](site-recovery-support-matrix-to-azure.md)
 ## [Gyakori kérdések](site-recovery-faq.md)
-## [Bevezetés megtekintése](https://www.youtube.com/watch?v=eOOwMQPBKfM)
+## [Bevezetés megtekintése](https://azure.microsoft.com/resources/videos/index/?services=recovery-manager)
 
 # Első lépések
 ## [VMWare-alapú virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
@@ -18,7 +19,7 @@
 ## Felkészülés
 ### [Üzembe helyezési előfeltételek](site-recovery-prereq.md)
 ### [A hálózati infrastruktúrával kapcsolatos szempontok](site-recovery-network-design.md)
-### [A Site Recovery Capacity Planner használata](site-recovery-capacity-planner.md)
+### [A Site Recovery Capacity Planner futtatása Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
 ### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
 ### [A Deployment Planner futtatása Azure-ba történő VMware-replikáláshoz](site-recovery-deployment-planner.md)
 ## Konfigurálás

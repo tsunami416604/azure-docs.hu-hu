@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/15/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 7c289437beca78dacc7d3136680c54dde01f3798
-ms.openlocfilehash: fb4b12543ac4910ea9c4789f4ebe5ef0ca5997ae
+ms.sourcegitcommit: a3657f8bb60cd1181740b0700f503b5bd1bd559f
+ms.openlocfilehash: a3847f83af1f28e40572af95ff31f44d2f3d6dc4
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -38,13 +39,14 @@ A megoldások Azure-ban való üzembe helyezése és futtatása mellett letölth
 
 A következő táblázatban láthatja, hogyan képezhetők le a megoldások adott IoT-funkciókra:
 
-| Megoldás | Adatfeldolgozás | Eszközidentitás | Parancs és vezérlés | Szabályok és műveletek | Prediktív elemzés |
-| --- | --- | --- | --- | --- | --- |
-| [Távoli figyelés][lnk-getstarted-preconfigured] |Igen |Igen |Igen |Igen |- |
-| [Prediktív karbantartás][lnk-predictive-maintenance] |Igen |Igen |Igen |Igen |Igen |
+| Megoldás | Adatfeldolgozás | Eszközidentitás | Eszközfelügyelet | Parancs és vezérlés | Szabályok és műveletek | Prediktív elemzés |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Távoli figyelés][lnk-getstarted-preconfigured] |Igen |Igen |Igen |Igen |Igen |- |
+| [Prediktív karbantartás][lnk-predictive-maintenance] |Igen |Igen |- |Igen |Igen |Igen |
 
 * *Adatfeldolgozás*: A felhőbe érkező nagy mennyiségű adatforgalom.
-* *Eszközidentitás*: Minden csatlakoztatott eszköz egyedi identitásának kezelése.
+* *Eszközidentitás*: Egyedi eszközidentitások kezelése és eszközhozzáférés biztosítása a megoldáshoz.
+* *Eszközfelügyelet*: Eszköz metaadatainak kezelése és olyan műveletek elvégzése, mint az eszközök újraindítása és a belső vezérlőprogramok frissítése.
 * *Parancs és vezérlés*: Üzenetküldés egy eszközre a felhőből, hogy az eszköz végrehajtson egy műveletet.
 * *Szabályok és műveletek*: A megoldás háttérrendszere felhasználói szabályokkal reagálnak adott, eszközről a felhőbe küldött adatokra.
 * *Prediktív elemzés*: A megoldás háttérrendszere az eszközről a felhőbe küldött adatok elemzésével jelzi előre bizonyos műveletek időpontját. A repülőmotor telemetriájának elemzésével például meghatározható, mikor kell karbantartást végezni a motoron.
@@ -52,23 +54,41 @@ A következő táblázatban láthatja, hogyan képezhetők le a megoldások adot
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>A távoli figyelési előre konfigurált megoldás áttekintése
 Ebben a cikkben a távoli figyelési előre konfigurált megoldást tárgyaljuk, mert ez sok általános, más megoldásokban is szereplő tervezési elemet bemutat.
 
-A következő diagram a távoli figyelési megoldás fő elemeit ábrázolja. Az alábbi szakaszok további információt nyújtanak ezekről az elemekről.
+A következő diagram a távoli figyelési megoldás fő elemeit ábrázolja. A következő szakaszok további információt nyújtanak ezekről az elemekről.
 
 ![Távoli figyelési előre konfigurált megoldás architektúrája][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>Eszközök
-A távoli figyelési előre konfigurált megoldás üzembe helyezésekor négy szimulált eszköz van előre kiépítve a megoldásban, amelyek egy hűtőeszközt szimulálnak. Ezek a szimulált eszközök beépített hőmérséklet- és páratartalom-modellel rendelkeznek, amelyek telemetriai adatokat küldenek. Ezek a szimulált eszközök az adatok végpontok közötti folyamát mutatják be a megoldáson keresztül, valamint a telemetriák kényelmes forrását és a parancsok célját nyújtják a megoldást egyéni megvalósítás kezdőpontjaként használni kívánó háttérrendszer-fejlesztőknek.
+A távoli figyelési előre konfigurált megoldás üzembe helyezésekor négy szimulált eszköz van előre kiépítve a megoldásban, amelyek egy hűtőeszközt szimulálnak. Ezek a szimulált eszközök beépített hőmérséklet- és páratartalom-modellel rendelkeznek, amelyek telemetriai adatokat küldenek. Ezek a szimulált eszközök a következők érdekében vannak megadva:
+- Bemutatják az adatok végpontok közötti folyamát a megoldáson keresztül.
+- A telemetriák kényelmesen használható forrását nyújtják.
+- A metódusok vagy parancsok célját biztosítják a megoldást egyéni implementálás kezdőpontjaként használni kívánó háttérrendszer-fejlesztőknek.
 
-Amikor egy eszköz először csatlakozik az IoT Hubhoz a távoli figyelési előre konfigurált megoldásban, az IoT Hubnak küldött eszközinformációs üzenet enumerálja azokat a parancsokat, amelyekre az eszköz válaszolhat. A távoli figyelési előre konfigurált megoldásban a következő parancsok használhatók: 
+A megoldásban a szimulált eszközök a következő, az eszközök és a felhő közötti kommunikációra tudnak válaszolni:
 
-* *Eszköz pingelése*: Az eszköz nyugtázással válaszol erre a parancsra. Ez hasznos annak ellenőrzéséhez, hogy az eszköz továbbra is aktív és figyel-e.
+- *Metódusok ([közvetlen metódusok][lnk-direct-methods])*: Kétirányú kommunikációs metódus, ahol egy csatlakoztatott eszköznek azonnal kell válaszolnia.
+- *Parancsok (felhőből egy eszközre irányuló üzenetek)*: Egyirányú kommunikációs metódus, ahol egy eszköz tartós várólistáról kéri le a parancsot.
+
+Ezen különböző megközelítések összehasonlításáért lásd a [felhőből egy eszközre irányuló kommunikáció útmutatóját][lnk-c2d-guidance].
+
+Amikor egy eszköz először csatlakozik az IoT Hubhoz az előre konfigurált megoldásban, eszközinformációs üzenetet küld az IoT Hubnak, amely számba veszi azokat a metódusokat, amelyekre az eszköz válaszolhat. Az előre konfigurált távoli figyelési megoldásban a szimulált eszközök ezeket a metódusokat támogatják:
+
+* *Belső vezérlőprogram frissítésének indítása*: ez a metódus egy aszinkron feladatot indít az eszközön a belső vezérlőprogram frissítésének elvégzése érdekében. Az aszinkron feladat jelentett tulajdonságokkal küld állapotfrissítéseket a megoldás irányítópultjának.
+* *Újraindítás*: ez a metódus a szimulált eszköz újraindítását okozza.
+* *FactoryReset*: ez a metódus a gyári beállítások visszaállítását okozza a szimulált eszközön.
+
+Amikor egy eszköz először csatlakozik az IoT Hubhoz az előre konfigurált megoldásban, eszközinformációs üzenetet küld az IoT Hubnak, amely számba veszi azokat a parancsokat, amelyekre az eszköz válaszolhat. Az előre konfigurált távoli figyelési megoldásban a szimulált eszközök ezeket a parancsokat támogatják:
+
+* *Eszköz pingelése*: Az eszköz nyugtázással válaszol erre a parancsra. Ez a parancs hasznos annak ellenőrzéséhez, hogy az eszköz továbbra is aktív és figyel-e.
 * *Telemetria indítása*: A telemetria küldésének elkezdésére utasítja az eszközt.
 * *Telemetria leállítása*: A telemetria küldésének leállítására utasítja az eszközt.
-* *Megadott porthőmérséklet módosítása*: Az eszköz által küldött szimulált hőmérsékleti telemetriaértékeket vezérli. Ez a háttérlogika teszteléséhez hasznos.
+* *Megadott porthőmérséklet módosítása*: Az eszköz által küldött szimulált hőmérsékleti telemetriaértékeket vezérli. Ez a parancs a háttérlogika teszteléséhez hasznos.
 * *Telemetria diagnosztikája*: Vezérli, hogy az eszköz telemetriaként küldje-e el a külső hőmérsékletet.
-* *Eszközállapot módosítása*: Megadja az eszköz által jelentett eszközállapot metaadat-tulajdonságot. Ez a háttérlogika teszteléséhez hasznos.
+* *Eszközállapot módosítása*: Megadja az eszköz által jelentett eszközállapot metaadat-tulajdonságot. Ez a parancs a háttérlogika teszteléséhez hasznos.
 
-További szimulált eszközöket adhat a megoldáshoz, amelyek ugyanazon telemetriát küldik, és ugyanazon parancsokra válaszolnak. 
+További szimulált eszközöket adhat a megoldáshoz, amelyek ugyanazon telemetriát küldik, és ugyanazon metódusokra és parancsokra válaszolnak.
+
+A parancsokra és metódusokra adott válaszon kívül a megoldás [ikereszközöket][lnk-device-twin] használ. Az eszközök ikereszközökkel jelentenek tulajdonságértékeket a metódus háttérrendszerének. A megoldás irányítópultja ikereszközökkel állítja be az új kívánt tulajdonságértékeket az eszközökön. Egy belső vezérlőprogram frissítési folyamata során például a szimulált eszköz a jelentett tulajdonságokkal jelenti a frissítés állapotát.
 
 ## <a name="iot-hub"></a>IoT Hub
 Ebben az előre konfigurált megoldásban az IoT Hub-példány egy jellemző [IoT-megoldásarchitektúra][lnk-what-is-azure-iot] *felhőátjárójának* felel meg.
@@ -77,29 +97,43 @@ Az IoT Hubok egyetlen végpontban fogadnak telemetriát az eszközökről. Az Io
 
 Az IoT Hub a szolgáltatásoldali telemetriaolvasási végponton keresztül teszi elérhetővé a fogadott telemetriát.
 
+Az IoT Hub eszközfelügyeleti lehetőségeivel felügyelheti az eszköz tulajdonságait a megoldásportálról, valamint beütemezhet a következőkhöz hasonló műveleteket végző feladatokat:
+
+- Eszközök újraindítása
+- Eszközállapotok módosítása
+- Belső vezérlőprogram frissítése
+
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Az előre konfigurált megoldás három [Azure Stream Analytics-][lnk-asa] (ASA-) feladattal szűri az eszközök telemetriastreamjét:
 
-* *DeviceInfo feladat* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja (amikor az eszközök először csatlakoznak vagy az **Eszközállapot módosítása** parancsra válaszul) a megoldás eszközjegyzékébe (DocumentDB-adatbázisba). 
+* *DeviceInfo feladat* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja a megoldás eszközjegyzékébe (DocumentDB-adatbázisba). Ezt az üzenetet akkor küldi a rendszer, amikor az eszközök először csatlakoznak, vagy az **Eszközállapot módosítása** parancsra válaszul.
 * *Telemetriafeladat* – csak nyers telemetriát küld az Azure Blob Storage-ba offline tárolásra, és kiszámítja a megoldás irányítópultján megjelenő telemetriaösszesítéseket.
-* *Szabályfeladat* – olyan értékeket szűr a telemetriastreamből, amelyek meghaladják valamelyik szabály küszöbértékét, és az adatokat egy eseményközpontba küldi. Amikor egy szabály riasztást vált ki, a megoldásportál irányítópult-nézete új sorban jeleníti meg az eseményt a riasztáselőzmények táblájában, és kivált egy műveletet a megoldásportál Szabályok és Művelet nézeteiben megadott beállítások alapján.
+* *Szabályfeladat* – olyan értékeket szűr a telemetriastreamből, amelyek meghaladják valamelyik szabály küszöbértékét, és az adatokat egy eseményközpontba küldi. Amikor egy szabály riasztást vált ki, a megoldásportál irányítópult-nézete egy új sorban jeleníti meg az eseményt a riasztáselőzmények táblázatában. Ezek a szabályok kiváltanak egy műveletet is a megoldásportál **Szabályok** és **Művelet** nézetében megadott beállítások alapján.
 
 Ebben az előre konfigurált megoldásban az ASA-feladatok az **IoT-megoldás hátterének** részei a tipikus [IoT-megoldásarchitektúrában][lnk-what-is-azure-iot].
 
 ## <a name="event-processor"></a>Eseményfeldolgozó
 Ebben az előre konfigurált megoldásban az eseményfeldolgozó az **IoT-megoldás hátterének** része a tipikus [IoT-megoldásarchitektúrában][lnk-what-is-azure-iot].
 
-A **DeviceInfo** és **Rules** ASA-feladatok a kimenetüket egy eseményközpontokba küldik, amely más háttérszolgáltatásoknak továbbítja őket. A megoldás [WebJob][lnk-web-job] feladatban futó [EventProcessorHost][lnk-event-processor] példányt használ az eseményközpontokból érkező üzenetek olvasásához. Az **EventProcessorHost** a **DeviceInfo** adatokkal frissíti az eszközadatokat a DocumentDB-adatbázisban, és a **Rules** adatokkal indítja el a logikai alkalmazást, és frissíti a megoldásportálon megjelenő riasztásokat.
+A **DeviceInfo** és **Rules** ASA-feladatok a kimenetüket egy eseményközpontokba küldik, amely más háttérszolgáltatásoknak továbbítja őket. A megoldás [WebJob][lnk-web-job] feladatban futó [EventProcessorHost][lnk-event-processor] példányt használ az eseményközpontokból érkező üzenetek olvasásához. Az **EventProcessorHost** a következőket használja:
+- A **DeviceInfo**-adatokkal frissíti az eszközadatokat a DocumentDB-adatbázisban.
+- A **Rules**-adatokkal indítja el a logikai alkalmazást, és frissíti a megoldásportálon megjelenő riasztásokat.
 
-## <a name="device-identity-registry-and-documentdb"></a>Eszközidentitás-jegyzék és DocumentDB
+## <a name="device-identity-registry-device-twin-and-documentdb"></a>Eszközidentitás-jegyzék, ikereszköz és DocumentDB
 Minden IoT Hub tartalmaz eszközkulcsokat tároló [eszközidentitás-jegyzéket][lnk-identity-registry]. Az IoT Hub ezekkel az információkkal hitelesíti az eszközöket – az eszközöknek regisztrálva kell lenniük és érvényes kulccsal kell rendelkezniük, hogy csatlakozhassanak a hubhoz.
 
-Ez a megoldás további információt tárol az eszközökről, például az állapotukat, az általuk támogatott parancsokat és más metaadatokat. A megoldás DocumentDB-adatbázisban tárolja ezeket a megoldásspecifikus eszközadatokat, és a megoldásportál adatokat kér le ebből a DocumentDB-adatbázisból megjelenítés és szerkesztés céljából.
+Az [ikereszközök][lnk-device-twin] az IoT Hub által felügyelt JSON-dokumentumok. Az eszközök ikereszköze a következőket tartalmazza:
+
+- Az eszköz által az IoT Hubra küldött jelentett tulajdonságok. Ezeket a tulajdonságokat a megoldásportálon tekintheti meg.
+- Az eszközre küldendő kívánt tulajdonságok. Ezeket a tulajdonságokat a megoldásportálon állíthatja be.
+- Csak az ikereszközön (nem az eszközön) létező címkék. Ezekkel a címkékkel szűrheti a megoldásportálon az eszközök listáját.
+
+Ez a megoldás ikereszközökkel kezeli az eszköz metaadatait. A megoldás DocumentDB-adatbázist is használ a megoldással kapcsolatos további eszközadatok, például az egyes eszközök által támogatott parancsok és a parancselőzmények tárolásához.
 
 A megoldásnak az eszközidentitás-jegyzékben lévő információkat szinkronban is kell tartania a DocumentDB-adatbázis tartalmával. Az **EventProcessorHost** a **DeviceInfo** streamelemzési feladattal kezeli a szinkronizációt.
 
 ## <a name="solution-portal"></a>Megoldásportál
-![A megoldás irányítópultja][img-dashboard]
+![megoldásportál][img-dashboard]
 
 A megoldásportál egy webalapú felhasználói felület, amely az előre konfigurált megoldás részeként van üzembe helyezve a felhőben. Ezzel a következőket teheti:
 
@@ -107,7 +141,9 @@ A megoldásportál egy webalapú felhasználói felület, amely az előre konfig
 * Új eszközök kiépítése.
 * Eszközök kezelése és figyelése.
 * Parancsok küldése adott eszközökre.
+* Metódusok meghívása adott eszközökön.
 * Szabályok és műveletek kezelése.
+* Feladatok ütemezése az egy vagy több eszközön történő futtatáshoz.
 
 Ebben az előre konfigurált megoldásban a megoldásportál az **IoT-megoldás hátterének** és a **feldolgozási és üzleti kapcsolatoknak** a része a tipikus [IoT-megoldásarchitektúrákban][lnk-what-is-azure-iot].
 
@@ -127,9 +163,7 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
+[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
+[lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 

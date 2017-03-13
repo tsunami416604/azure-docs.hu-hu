@@ -38,8 +38,4 @@ sql-database-service-tiers.md
 | Egyidejű munkamenetek maximális száma | 30000| 30000| 30000| 30000| 30000| 30000 |
 |||||||
 
-\*Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet.
-
-<!--HONumber=Feb17_HO2-->
-
-
+\* Az adatbázisok maximális mérete az adatbázisban lévő adatok maximális méretére vonatkozik.

@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 12ce6b6bccf3ea2aa2945ddd775716f29cf01e1f
-ms.openlocfilehash: 47b2623eb3b83220ef8e3cfafde06dab3ac3d22e
+ms.sourcegitcommit: a8e5d36d31aabc9226206f52d8543566c5218494
+ms.openlocfilehash: 6c833cd40439fef1fe9cca2591d36a6c49630579
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -29,7 +30,7 @@ Ha többet szeretne megtudni az Azure Storage-ról a kód áttekintése előtt, 
 ## <a name="prerequisites"></a>Előfeltételek
 A kezdéshez a következő előfeltételeknek kell teljesülniük:
 
-1. Az alkalmazás fordításához és felépítéséhez a számítógépen telepítve kell lennie a [Visual Studio](https://www.visualstudio.com/) valamelyik verziójának.
+1. Az alkalmazás fordításához és felépítéséhez telepítenie kell a [Visual Studio 2015-ös](https://www.visualstudio.com/) vagy újabb verzióját a számítógépre.
 2. Telepítse az [Azure SDK for .NET](https://azure.microsoft.com/downloads/) legfrissebb verzióját. Az SDK tartalmazza az Azure gyors üzembe helyezés mintaprojektjeit, az Azure Storage Emulatort, valamint a [.NET-hez készült Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 3. Győződjön meg arról, hogy számítógépén telepítve van a [.NET-keretrendszer 4.5](http://www.microsoft.com/download/details.aspx?id=30653), mivel az oktatóanyagban használt Azure gyors üzembe helyezési mintaprojektekhez szükség lesz rá.
 
@@ -45,9 +46,12 @@ Ha már van fiókja, létrehozhat egy egyszerű Azure Storage-alkalmazást az eg
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **Fájl** az **Új projekt** elemre.
 3. Az **Új projekt** párbeszédpanelen kattintson a **Telepített** > **sablonok** > **Visual C#** > **Felhő** > **QuickStarts** (Gyors üzembe helyezések) > **Data Services** (Adatszolgáltatások) elemre.
-    a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
-    b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
-    c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
+   
+   a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
+   
+   b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
+   
+   c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
 
     ![Azure gyors üzembe helyezések][Image1]
 
@@ -55,11 +59,11 @@ Az alkalmazás futtatása előtt ajánlott felülvizsgálni a forráskódot. A k
 
 A következő lépésben futtassa a mintaalkalmazást:
 
-1. Válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Nyissa meg az App.config fájlt, és tegye megjegyzésbe az Azure Storage Emulator kapcsolati karakterláncát:
+1. Válassza a **Nézet** menü **Megoldáskezelő** elemét a Visual Studióban. Nyissa meg az **App.config** fájlt, és tegye megjegyzésbe az Azure Storage Emulator kapcsolati karakterláncát:
 
    `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
 
-2. Állítsa vissza az Azure Storage szolgáltatás kapcsolati karakterláncát, és adja meg az App.config fájlban a tárfiók nevét és hozzáférési kulcsát:
+2. Állítsa vissza az Azure Storage kapcsolati karakterláncát az App.config fájlban, és cserélje le az `[AccountName]` és `[AccountKey]` paramétereket saját fiókhitelesítő adataira:
 
    `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
 
@@ -76,8 +80,11 @@ A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egy
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **Fájl** az **Új projekt** elemre.
 3. Az **Új projekt** párbeszédpanelen kattintson a **Telepített** > **sablonok** > **Visual C#** > **Felhő** > **QuickStarts** (Gyors üzembe helyezések) > **Data Services** (Adatszolgáltatások) elemre.
+    
     a. Válasszon egyet a következő sablonok közül: **Azure Storage: Blobs** (Azure Storage: Blobok), **Azure Storage: Files** (Azure Storage: Fájlok), **Azure Storage: Queues** (Azure Storage: Üzenetsorok) és **Azure Storage: Tables** (Azure Storage: Táblák).
+    
     b. Győződjön meg arról, hogy a **.NET-keretrendszer 4.5** van kiválasztva célkeretrendszerként.
+    
     c. Adjon nevet a projektnek, majd az alábbiak szerint hozza létre az új Visual Studio-megoldást:
 
     ![Azure gyors üzembe helyezések][Image1]
@@ -109,9 +116,4 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

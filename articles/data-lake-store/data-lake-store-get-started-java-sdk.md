@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
-ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban az Azure AD-alkalmazás titkos ügyfélkulcsát haszná
 2. Szerezze be az Azure AD-webalkalmazáshoz tartozó ügyfélazonosítót, a titkos ügyfélkulcsot és a jogkivonat végpontját.
 3. Végezze el az Azure AD-webalkalmazás hozzáférésének konfigurálását abban a Data Lake Store-fájlban vagy mappában, amelyet a létrehozandó Java-alkalmazásból szeretne elérni.
 
-A lépések végrehajtásával kapcsolatos útmutatóért tekintse meg az [Active Directory-alkalmazás létrehozása](data-lake-store-authenticate-using-active-directory.md#create-an-active-directory-application) című témakört.
+A lépések végrehajtásával kapcsolatos útmutatóért tekintse meg az [Active Directory-alkalmazás létrehozása](data-lake-store-authenticate-using-active-directory.md) című témakört.
 
 Az Azure Active Directory egyéb lehetőségeket is kínál a jogkivonat beszerzésére. Számos különböző hitelesítési mechanizmus közül választhat az adott forgatókönyvnek megfelelően, például böngészőben futó alkalmazás, asztali alkalmazásként terjesztett alkalmazás, illetve helyszínen vagy Azure-beli virtuális gépen futó kiszolgálói alkalmazás. Továbbá különböző típusú hitelesítő adatok közül választhat, például jelszavak, tanúsítványok, kétfaktoros hitelesítés, stb. Ezen túlmenően az Azure Active Directory lehetővé teszi a helyszíni Active Directory-felhasználók felhővel való szinkronizálását is. További információt a [Hitelesítési eljárások az Azure Active Directoryhoz](../active-directory/active-directory-authentication-scenarios.md) című témakörben talál. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Hálózati adapterek az Azure-ban | Microsoft Docs"
-description: "Az Azure hálózati adaptereinek ismertetése az Azure Resource Manager-alapú üzemi modellben."
+description: "Az Azure-beli hálózati adapterek, valamint a virtuális gépekkel való használatuk ismertetése."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2016
+ms.date: 02/24/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3244d5b52785d820698bf26f9bf189de93ef64e4
-ms.openlocfilehash: 691b79d7739246dad7191195fa049fd58340c8ff
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 395cff80b3f97b6340e15f370c13f783e2f5dde3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="network-interfaces-in-azure"></a>Hálózati adapterek az Azure-ban
+# <a name="what-are-network-interfaces"></a>Mi a hálózati adapter?
+
 A hálózati adapter (NIC) a virtuális gép (VM) és a mögöttes szoftverhálózat közötti kapcsolat. Ez a cikk ismerteti a hálózati adaptereket és azok használatát az Azure Resource Manager-alapú üzemi modellben.
 
 A Microsoft a Resource Manager-alapú üzemi modellt javasolja az új erőforrások üzembe helyezéséhez, de a hálózati kapcsolattal rendelkező virtuális gépek üzembe helyezését a [klasszikus](virtual-network-ip-addresses-overview-classic.md) üzemi modellel is elvégezheti. Ha a klasszikus modellt ismeri, akkor fontos különbségeket fedezhet fel a virtuális gépek hálózati használatával kapcsolatban a Resource Manager-alapú üzemi modell esetében. További részletek a különbségekkel kapcsolatban: [Virtuális gépek hálózati használata – Klasszikus](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
@@ -34,7 +37,7 @@ A hálózati adapter az Azure-ban:
 4. Csatlakoztatható egy virtuális géphez, de csak egyetlen, az adapterrel megegyező helyen lévő virtuális géphez.
 5. MAC-címmel rendelkezik, amely mindaddig a hálózati adapterhez tartozik, amíg az a virtuális géphez csatlakozik. A MAC-cím akkor is megmarad, ha a virtuális gépet újraindítja (az operációs rendszerből), vagy ha leállítja (megszünteti a hozzárendelést), majd megint elindítja az Azure Portal, az Azure PowerShell vagy az Azure parancssori felület segítségével. Ha a hálózati adaptert leválasztja egy virtuális gépről és csatlakoztatja egy másikhoz, akkor másik MAC-címet kap. Ha törli a hálózati adaptert, a rendszer más hálózati adapterekhez rendeli a MAC-címet.
 6. Legalább egy elsődleges **magánhálózati** *Ipv4* statikus vagy dinamikus IP-címet hozzá kell rendelni.
-7. Egy nyilvános IP-cím erőforrás rendelhető hozzá.
+7. Egy vagy több nyilvános IP-cím erőforrás lehet hozzá társítva. További információ a [Több IP-cím hálózati adapterenként](virtual-network-multiple-ip-addresses-portal.md) dokumentációban olvasható.
 8. Támogatja az egygyökerű I/O-virtualizálással (SR-IOV) gyorsított hálózatkezelést a Microsoft Windows Server operációs rendszer adott verzióját futtató adott virtuálisgép-méretek esetében. Ha többet szeretne megtudni erről az ELŐZETES VERZIÓJÚ szolgáltatásról, olvassa el a [Virtuális gép gyorsított hálózatkezelése](virtual-network-accelerated-networking-powershell.md) című cikket.
 9. Képes nem a hozzá rendelt magánhálózati IP-címekre irányuló forgalom fogadására, ha a hálózati adapter IP-továbbítása engedélyezve van. Ha egy virtuális gép tűzfalszoftvert futtat, akkor a saját IP-címétől eltérő címekre irányuló csomagokat átirányítja. A virtuális gépen továbbra is futtatnia kell a forgalom átirányítására vagy továbbítására képes szoftvert, de ehhez előbb engedélyeznie kell az IP-továbbítást egy hálózati adapteren.
 10. Gyakran ugyanabban az erőforráscsoportban hozzák létre, amelyben a csatlakoztatott virtuális gép is van, vagy ugyanabban a virtuális hálózatban, amelyhez kapcsolódik, de ez nem feltétlenül szükséges.
@@ -52,10 +55,5 @@ Egy virtuális géphez több hálózati adapter is csatlakoztatható, viszont il
 * A [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikkből megtudhatja, hogyan hozhat létre virtuális gépet egyetlen hálózati adapterrel.
 * A [Virtuális gép létrehozása több hálózati adapterrel](virtual-network-deploy-multinic-arm-ps.md) című cikkből megtudhatja, hogyan hozhat létre virtuális gépet több hálózati adapterrel.
 * Ha több IP-konfigurációval szeretne hálózati adaptert létrehozni, olvassa el a [Több IP-cím használata Azure virtuális gépekhez](virtual-network-multiple-ip-addresses-powershell.md) című cikket.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

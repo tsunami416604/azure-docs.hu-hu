@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-/ms.date: 1/18/2017
+/ms.date: 3/8/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
-ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
+ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
+ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -215,10 +216,10 @@ Az Azure fájlmegosztások csatlakoztatásának bemutatásához létrehozunk egy
 3. Nyisson meg egy PowerShell-ablakot a virtuális gépen.
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>A tárfiók hitelesítő adatainak megőrzése a virtuális gépen
-A fájlmegosztáshoz való csatlakozás előtt gondoskodjon róla, hogy a virtuális gép megőrizze a tárfiók hitelesítő adatait. Ez a lépés lehetővé teszi, hogy a Windows automatikusan újracsatlakozzon a fájlmegosztáshoz, amikor a virtuális gép újraindul. A fiók hitelesítő adatainak megőrzéséhez futtassa a `cmdkey` parancsot a virtuális gép PowerShell-ablakából. A `<storage-account-name>` kifejezést cserélje a tárfiókja nevére, a `<storage-account-key>` kifejezést pedig a tárfiók kulcsára.
+A fájlmegosztáshoz való csatlakozás előtt gondoskodjon róla, hogy a virtuális gép megőrizze a tárfiók hitelesítő adatait. Ez a lépés lehetővé teszi, hogy a Windows automatikusan újracsatlakozzon a fájlmegosztáshoz, amikor a virtuális gép újraindul. A fiók hitelesítő adatainak megőrzéséhez futtassa a `cmdkey` parancsot a virtuális gép PowerShell-ablakából. A `<storage-account-name>` kifejezést cserélje a tárfiókja nevére, a `<storage-account-key>` kifejezést pedig a tárfiók kulcsára. Az „AZURE” tartományt explicit módon kell megadni, ahogy az alábbi mintában is látható. 
 
 ```
-cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 ```
 
 A Windows így újból csatlakozik a fájlmegosztáshoz, amikor a virtuális gép újraindul. A megosztás újracsatlakozásának ellenőrzéséhez futtassa a `net use` parancsot a PowerShell-ablakból.
@@ -238,10 +239,10 @@ net use z: \\samples.file.core.windows.net\logs
 Mivel az előző lépésben megőrizte a tárfiók hitelesítő adatait, nem kell megadnia őket a `net use` paranccsal. Ha még nem őrizte meg a hitelesítő adatait, szerepeltesse őket `net use` parancsnak átadott paraméterként, az alábbi példában látható módon.
 
 ```
-net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:<storage-account-name> <storage-account-key>
+net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:AZURE\<storage-account-name> <storage-account-key>
 
 example :
-net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
+net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-account-key>
 ```
 
 Mostantól ugyanúgy használhatja a File Storage-megosztást a virtuális gépről, mint bármilyen más meghajtóról. A parancssorból kiadhat szabványos fájlparancsokat, vagy megtekintheti a csatlakoztatott megosztást és tartalmát a Fájlkezelőből. Olyan kódot is futtathat a virtuális gépen, amely a fájlmegosztáshoz szabványos (például a .NET-keretrendszerben a [System.IO névterek](http://msdn.microsoft.com/library/gg145019.aspx) által biztosított) Windows fájl I/O API-kkal fér hozzá.
@@ -680,9 +681,4 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 * [Inside Azure File Storage (Az Azure File Storage ismertetése)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

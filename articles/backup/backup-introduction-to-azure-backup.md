@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Backup? | Microsoft Docs
-description: "Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről, Windows rendszerű számítógépekről, System Center DPM-kiszolgálókról és Azure virtuális gépekről."
+description: "Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről és -munkaállomásokról, System Center DPM-kiszolgálókról és számítási feladatokról, valamint az Azure virtuális gépekről."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 2/23/2017
 ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
-ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
+ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
+ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,7 +46,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 **Alkalmazáskonzisztens biztonsági mentés** – Akár egy fájlkiszolgáló, akár egy virtuális gép vagy SQL Database-adatbázis biztonsági mentéséről van szó, tudnia kell, hogy a helyreállítási pont rendelkezik-e az összes szükséges adattal a biztonsági másolat visszaállításához. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentést nyújt, amely garantálja, hogy az adatok visszaállításakor ne legyen szükség további javításokra. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
 
-**Hosszú távú megőrzés** – Ahelyett, hogy biztonsági másolatait lemezről szalagra mentené, majd a szalagot egy külső helyre szállítaná hosszú távú tárolás céljából, az Azure szolgáltatást rövid és hosszú távú megőrzésre is használhatja. Az Azure nem korlátozza az adatok megőrzési idejét Backup- vagy Recovery Services-tárolókban. Tetszőleges ideig őrizheti meg az adatokat a tárolókban. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. A cikk [Biztonsági mentés és megőrzés](backup-introduction-to-azure-backup.md#backup-and-retention) című részéből megtudhatja, milyen hatással lehet ez a korlát a biztonsági mentési igényeire.  
+**Hosszú távú megőrzés** – Ahelyett, hogy biztonsági másolatait lemezről szalagra mentené, majd a szalagot egy külső helyre szállítaná, az Azure-t használhatja rövid és hosszú távú megőrzésre. Az Azure nem korlátozza az adatok megőrzési idejét a Backup- vagy Recovery Services-tárolókban. Tetszőleges ideig őrizheti meg az adatokat a tárolókban. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. A cikk [Biztonsági mentés és megőrzés](backup-introduction-to-azure-backup.md#backup-and-retention) című részéből megtudhatja, milyen hatással lehet ez a korlát a biztonsági mentési igényeire.  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Melyik Azure Backup-összetevőt használjam?
 Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igényeinek, az alábbi táblázatból megtudhatja, hogy az egyes összetevők minek a védelmét tudják biztosítani. Az Azure Portal tartalmaz egy beépített varázslót, amely végigvezeti az összetevő kiválasztásának, letöltésének és telepítésének folyamatán. A varázsló, amely részét képezi a helyreállítási tár létrehozási folyamatának, végigvezeti Önt a biztonsági mentési cél kiválasztásának, illetve a védendő adatok vagy alkalmazások kiválasztásának lépésein.
@@ -112,10 +113,10 @@ A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tár
 Az Azure Backup védelmet biztosít a felügyelt lemezes virtuális gépek számára. A felügyelt lemezek használatával mentesül a virtuális gépek tárfiókjainak kezelése alól, és lényegesen leegyszerűsödik a virtuális gépek üzembe helyezése.
 
 ### <a name="back-up-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek biztonsági mentése
-A felügyelt lemezeken található virtuális gépek biztonsági mentése megegyezik a Resource Manager-alapú virtuális gépek biztonsági mentésével. A biztonsági mentés elvégezhető közvetlenül a virtuálisgép-nézetből vagy a Recovery Services-tároló nézetből. A felügyelt lemezeken található virtuális gépek biztonsági mentését a felügyelt lemezeken kiépített RestorePoint-gyűjtemények támogatják. Az Azure Backup jelenleg nem támogatja az Azure Disk Encryption (ADE) használatával titkosított, felügyelt lemezes virtuális gépek biztonsági mentését.
+A felügyelt lemezeken található virtuális gépek biztonsági mentése megegyezik a Resource Manager-alapú virtuális gépek biztonsági mentésével. Az Azure Portalon közvetlenül a virtuálisgép-nézetből vagy a Recovery Services-tároló nézetéből konfigurálhatja a biztonsági mentési feladatot. A felügyelt lemezeken található virtuális gépek biztonsági mentését a felügyelt lemezeken kiépített visszaállításipont-gyűjteményekkel végezheti el. Az Azure Backup jelenleg nem támogatja az Azure Disk Encryption (ADE) használatával titkosított, felügyelt lemezes virtuális gépek biztonsági mentését.
 
 ### <a name="restore-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek visszaállítása
-Az Azure Backup lehetővé teszi teljes felügyelt lemezes virtuális gépek visszaállítását, illetve a felügyelt lemezek visszaállítását egy Resource Manager-tárfiókba. A visszaállítási folyamat során létrehozott lemezek kezelését az Azure végzi, a visszaállítási folyamat részeként létrehozott tárfiók azonban a többi Resource Manager-tárfiókhoz hasonló, és a kezeléséről az ügyfélnek kell gondoskodnia.
+Az Azure Backup lehetővé teszi teljes felügyelt lemezes virtuális gépek visszaállítását, illetve a felügyelt lemezek visszaállítását egy Resource Manager-tárfiókba. A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Az ügyfél (tehát Ön) kezeli a visszaállítási folyamat részeként létrehozott tárfiókot.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Milyen funkciókat nyújtanak az egyes Backup-összetevők?
 A következő szakaszok táblázatai az egyes Azure Backup-összetevők különböző funkcióinak elérhetőségét vagy támogatottságát foglalják össze. A további támogatásra vagy részletekre vonatkozó információkat a táblázatok alatt találja.
@@ -137,8 +138,6 @@ A Backup-tároló az előnyben részesített tárolási cél minden összetevőb
 #### <a name="compression"></a>Tömörítés
 A biztonsági másolatok a szükséges tárterület csökkentése érdekében tömörítve vannak. Csak a virtuálisgép-bővítmény összetevő nem használ tömörítést. A virtuálisgép-bővítmény minden biztonsági mentési adatot az Ön tárfiókjából az ugyanazon régióban lévő Backup-tárolóba másol. Az adatátvitel során nem használ tömörítést. A tömörítés nélküli adatátvitel némileg megnöveli a felhasznált tárterületet. Az adatok tömörítés nélküli tárolása azonban gyorsabb helyreállítást tesz lehetővé, ha szüksége van a visszaállítási pontra.
 
-#### <a name="incremental-backup"></a>Növekményes biztonsági mentés
-Minden összetevő támogatja a növekményes biztonsági mentést a céltárolótól függetlenül (lemez, szalag, Backup-tároló). A növekményes biztonsági mentés biztosítja, hogy a biztonsági mentések hatékonyan használják a tárhelyet és az időt, mert csak az utolsó biztonsági mentés óta végzett módosításokat viszi át.
 
 #### <a name="disk-deduplication"></a>Lemezdeduplikáció
 A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup Server [Hyper-V virtuális gépeken](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) való üzembe helyezése esetén használhatja ki. A Windows Server az adatok deduplikációját (a gazdagép szintjén) a virtuális géphez Backup-tárolóként csatlakoztatott virtuális merevlemezeken (VHD-ken) végzi el.
@@ -147,6 +146,21 @@ A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup
 > A deduplikáció az Azure-ban egyik Backup-összetevőhöz sem érhető el. Amikor System Center DPM és Backup Server van üzembe helyezve az Azure-ban, a virtuális géphez csatolt tárolólemezek nem deduplikálhatók.
 >
 >
+
+### <a name="incremental-backup-explained"></a>A növekményes biztonsági mentés bemutatása
+Minden Azure Backup-összetevő támogatja a növekményes biztonsági mentést a céltárolótól függetlenül (lemez, szalag, Backup-tároló). A növekményes biztonsági mentés biztosítja, hogy a biztonsági mentések hatékonyan használják a tárhelyet és az időt, mert csak az utolsó biztonsági mentés óta végzett módosításokat viszi át.
+
+#### <a name="comparing-full-differential-and-incremental-backup"></a>A teljes, a különbségi és a növekményes biztonsági mentés összehasonlítása
+
+A tárhelyhasználat, a helyreállítási időre vonatkozó célkitűzés (RTO), és a hálózatleterheltség eltér az egyes biztonsági mentési módszerek esetében. A biztonsági mentés teljes birtoklási költségének alacsonyan tartásához fontos tudnia, hogyan válassza ki a legjobb biztonsági mentési megoldást. A következő képen a teljes, a különbségi és a növekményes biztonsági mentés összehasonlítása látható. A képen látható A adatforrás 10 tárolási blokkból áll (A1–A10), amelyekről havonta készül biztonsági mentés. Az A2, az A3, az A4 és az A9 módosul az első hónapban, az A5 pedig a következő hónapban.
+
+![a biztonsági mentési módszerek összehasonlítását mutató kép](./media/backup-introduction-to-azure-backup/backup-method-comparison.png)
+
+**Teljes biztonsági mentés** esetén minden biztonsági másolat tartalmazza a teljes adatforrást. A teljes biztonsági mentés minden egyes alkalommal nagy hálózati sávszélességet és tárterületet igényel a biztonsági másolat továbbításakor.
+
+A **különbségi biztonsági mentés** kizárólag a kezdeti biztonsági mentés óta módosított blokkokat tárolja, így kisebb a sávszélesség- és a tárhelyhasználata. A különbségi biztonsági mentések nem őrzik meg a változatlan adatok redundáns másolatait. De mivel az egymást követő biztonsági mentések között változatlanul maradó adatblokkok átvitele és tárolása is megtörténik, a különbségi biztonsági mentés nem hatékony. A második hónapban a módosított A2, A3, A4 és A9 blokkokról készül biztonsági másolat. A harmadik hónapban a módosított A5 blokkal együtt biztonsági másolat készül ugyanezekről a blokkokról. A következő teljes biztonsági mentésig minden alkalommal készül biztonsági másolat a módosított blokkokról.
+
+A **növekményes biztonsági mentés** tárterület- és sávszélesség-kihasználása nagyon hatékony, mivel kizárólag azokat az adatblokkokat tárolja, amelyek az előző biztonsági mentés óta módosultak. A növekményes biztonsági mentés használata esetén nincs szükség rendszeres teljes biztonsági mentésekre. A példában teljes biztonsági mentés készül az első hónapban, a módosított A2, A3, A4 és A9 blokkok meg lesznek jelölve módosítottként, és továbbítva lesznek a következő hónapra. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva. A kevesebb adat mozgatásával tárterület és hálózati erőforrások takaríthatóak meg, és így csökken a teljes birtoklási költség.   
 
 ### <a name="security"></a>Biztonság
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
@@ -179,7 +193,7 @@ Az Azure virtuális gépek biztonsági mentéséhez titkosítást kell beállít
 
 A virtuálisgép-bővítmény (az IaaS virtuális gépen) közvetlenül az Azure Storage-fiókból olvassa be az adatokat a tárolóhálózaton keresztül, ezért ezt a forgalmat nem kell tömöríteni.
 
-Ha a System Center DPM vagy az Azure Backup Server szolgáltatásban készít biztonsági másolatot az adatairól, tömörítse az elsődleges kiszolgálóról a biztonsági mentési kiszolgálóra mentett adatokat. A DPM vagy az Azure Backup Server szolgáltatásban való biztonsági mentés előtti adattömörítéssel kímélheti a sávszélességet.
+Ha a System Center DPM vagy az Azure Backup Server szolgáltatásban készít biztonsági másolatot az adatokról, tömörítse az elsődleges kiszolgálóról a biztonsági mentési kiszolgálóra mentett adatokat. A DPM-ben vagy az Azure Backup Serverben való biztonsági mentés előtti adattömörítéssel kímélheti a sávszélességet.
 
 #### <a name="network-throttling"></a>A hálózati sávszélesség szabályozása
 Az Azure Backup ügynökével szabályozhatja a hálózati sávszélességet, így az adatátvitel alatt vezérelheti a hálózati sávszélesség használatát. A szabályozás akkor lehet hasznos, ha adatokról kell biztonsági másolatot készítenie a munkaidő alatt, de nem szeretné, hogy a biztonsági mentési folyamat zavarja a többi internetes forgalmat. Az adatátvitel szabályozása a biztonsági mentési és a visszaállítást tevékenységekre vonatkozik.
@@ -203,8 +217,8 @@ A védett példány egy általános elnevezés az olyan Windows-számítógépek
 Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Példa:
 
 * Egy Hyper-V vagy Azure IaaS hipervizorhálót futtató virtuális gép. A virtuális gép vendég operációs rendszerei lehetnek Windows Server vagy Linux rendszerek.
-* Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy virtuális gép, amely a Windows Servert futtatja, valamint olyan számítási feladatokat, amelyekről biztonsági másolatot kell készíteni. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange-kiszolgáló, a Microsoft SharePoint-kiszolgáló, a Microsoft Dynamics, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.
-* Egy személyi számítógép vagy laptop, amelyen a Windows operációs rendszer fut.
+* Alkalmazáskiszolgáló: Az alkalmazáskiszolgáló lehet egy fizikai vagy virtuális gép, amely a Windows Servert futtatja, valamint olyan számítási feladatokat, amelyekről biztonsági másolatot kell készíteni. Gyakori számítási feladat a Microsoft SQL Server, a Microsoft Exchange Server, a Microsoft SharePoint Server, valamint a Windows Server Fájlkiszolgáló szerepköre. A számítási feladatok biztonsági mentéséhez a System Center Data Protection Manager (DPM) vagy az Azure Backup Server szükséges.
+* Egy személyi számítógép, munkaállomás vagy laptop, amelyen a Windows operációs rendszer fut.
 
 
 ## <a name="what-is-the-vault-credential-file"></a>Mi a tároló hitelesítőadat-fájlja?
@@ -213,7 +227,7 @@ A tároló hitelesítőadat-fájlja a portál által az egyes Backup-tárolókho
 A tároló hitelesítő adatait csak a kiszolgálók vagy számítógépek regisztrálásához kell használnia. Azonban a tároló hitelesítő adatait kezelje nagy körültekintéssel, mert ha elveszti őket, vagy más is hozzáfér ezekhez az adatokhoz, más gépek is regisztrálhatók velük ugyanahhoz a tárolóhoz. Mivel a biztonsági mentési adatok olyan jelszóval vannak titkosítva, amelyhez csak Ön férhet hozzá, a meglévő biztonsági mentési adatok biztonsága nem sérülhet. A tároló hitelesítő adatai 48 óra után lejárnak. Míg a Backup-tároló hitelesítő adatait annyiszor töltheti le, ahányszor csak szeretné, a regisztrációhoz csak a legújabb hitelesítő adatok használhatók.
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Miben különbözik az Azure Backup az Azure Site Recoverytől?
-Az Azure Backup és az Azure Site Recovery közös jellemzője, hogy mindkét szolgáltatás használható az adatok biztonsági mentésére és visszaállítására, de alapvetően más célokra szolgálnak.
+Az Azure Backup és az Azure Site Recovery közös jellemzője, hogy mindkét szolgáltatás használható az adatok biztonsági mentésére és visszaállítására. Azonban a szolgáltatások értékajánlatai eltérőek.
 
 Az Azure Backup biztosítja a helyszíni és a felhőben tárolt adatok védelmét. Az Azure Site Recovery koordinálja a virtuális gépek és a fizikai kiszolgálók replikálását, feladatátvételét és feladat-visszavételét. Mindkét szolgáltatás fontos, mert a vészhelyreállítási megoldásnak biztosítania kell az adatok védelmét és helyreállíthatóságát (Backup), *valamint* a számítási feladatok rendelkezésre állását (Site Recovery) leállások esetén.
 
@@ -240,9 +254,4 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

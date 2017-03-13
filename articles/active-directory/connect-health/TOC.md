@@ -22,8 +22,3 @@
 # Erőforrások
 ##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 
-
-
-<!--HONumber=Dec16_HO4-->
-
-

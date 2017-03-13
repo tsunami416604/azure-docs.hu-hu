@@ -1,6 +1,6 @@
 ---
-title: "Linux virtuális gép létrehozása az Azure parancssori felület 2.0 (előzetes) verziójával | Microsoft Azure"
-description: "Linux virtuális gép létrehozása az Azure parancssori felület 2.0 (előzetes) verziójával."
+title: "Linux-alapú virtuális gép létrehozása az Azure CLI 2.0-s verziójával | Microsoft Azure"
+description: "Linux virtuális gép létrehozása az Azure CLI 2.0-val"
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -12,27 +12,23 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/13/2016
+ms.date: 01/13/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 1081eb18bd63b1ad580f568201e03258901e4eaf
-ms.openlocfilehash: e926f22b94da30e1d3b790432ffdc229d9f4e609
+ms.sourcegitcommit: 892e3c62a2ad4dc4fd0691874d46bb296e379524
+ms.openlocfilehash: cc51b04c31c02aabf25c9efb1e9cd975077811a4
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Linux virtuális gép létrehozása az Azure parancssori felület 2.0 (előzetes) verziójával (az.py)
-Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux-alapú virtuális gépet az Azure-ban az Azure CLI 2.0-s (előzetes) verziójának [az vm create](/cli/azure/vm#create) parancsával, akár felügyelt lemezek, akár natív tárfiókban lévő lemezek használatával.
-
-> [!NOTE] 
-> Az Azure parancssori felület 2.0 előzetes verzió a többplatformos parancssori felületek következő generációját képviseli. [Próbálja ki!](https://docs.microsoft.com/cli/azure/install-az-cli2)
->
-> Ha az Azure parancssori felület 2.0-s (előzetes) verziója helyett a meglévő 1.0-s verziójú Azure parancssori felülettel szeretne Linux virtuális gépet létrehozni, tekintse meg a [Virtuális gép létrehozása az Azure parancssori felülettel](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című cikket.
+# <a name="create-a-linux-vm-using-the-azure-cli-20"></a>Linux virtuális gép létrehozása az Azure CLI 2.0-val
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux-alapú virtuális gépet az Azure-ban az Azure CLI 2.0-s verziójának [az vm create](/cli/azure/vm#create) parancsával, akár felügyelt lemezek, akár natív tárfiókban lévő lemezek használatával. Az [Azure CLI 1.0-s](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
 
 Virtuális gép létrehozásához: 
 
 * Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/)) van szükség
-* telepítenie kell az [Azure parancssori felület 2.0 (előzetes)](/cli/azure/install-az-cli2) verzióját
+* telepítenie kell az [Azure CLI 2.0-s](/cli/azure/install-az-cli2) verzióját
 * be kell jelentkeznie az Azure-fiókjába (írja be a következőt: [az login](/cli/azure/#login))
 
 (A Linux-alapú virtuális gépeket az [Azure Portallal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is üzembe helyezheti.)
@@ -202,10 +198,5 @@ Az `az vm create` parancs a virtuális gépek gyors üzembe helyezésére szolg�
 * [SSH-védelemmel rendelkező Linux virtuális gép létrehozása az Azure-ban sablonok használatával](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Használhatja a `docker-machine` Azure-illesztőt is különféle parancsokkal egy Linux virtuális gép Docker-gazdagépként való gyors létrehozásához](virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), ha pedig Javát használ, próbálkozzon a [create()](/java/api/com.microsoft.azure.management.compute._virtual_machine) metódussal.
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

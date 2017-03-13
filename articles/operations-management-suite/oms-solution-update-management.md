@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 02/28/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: ca1e8b9ef8c7543c2b21441c761b0c309d22f202
-ms.openlocfilehash: e148fbe6e27eef747ad757fea4be038d3b662f87
+ms.sourcegitcommit: fa9b427afff2c12babde30aa354e59d31c8f5b2c
+ms.openlocfilehash: 219fe64481df2c5c5cbfe622afdab11dcc1b7100
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -38,7 +39,7 @@ Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű szám
 A Frissítéskezelési megoldás OMS-munkaterülethez való hozzáadásához és Linux-ügynökök felvételéhez hajtsa végre az alábbi lépéseket. Windows-ügynökök hozzáadása automatikusan történik, esetükben nincs szükség további konfigurációs beállításokra.
 
 > [!NOTE]
-> Ha engedélyezi ezt a megoldást, az OMS-munkaterülethez kapcsolódó Windows-számítógépeket a rendszer automatikusan hibrid forgatókönyv-feldolgozóként konfigurálja a megoldás részét képező forgatókönyvek támogatása érdekében.  A számítógépeket azonban a rendszer nem regisztrálja az Automation-fiókban létrehozott hibridfeldolgozó-csoportok egyikében sem, és a számítógépek nem adhatók hozzá hibridfeldolgozó-csoporthoz saját forgatókönyvek futtatásához.  Ha egy Windows-számítógépet korábban már megjelölte hibrid forgatókönyv-feldolgozóként, és csatlakoztatta az OMS-munkaterülethez, a megoldás hozzáadása előtt el kell távolítani az OMS-munkaterületről a forgatókönyvek hibás működésének elkerülése érdekében.  
+> Ha engedélyezi ezt a megoldást, az OMS-munkaterülethez kapcsolódó Windows-számítógépeket a rendszer automatikusan hibrid runbook-feldolgozóként konfigurálja a megoldásban lévő runbookok támogatása érdekében.  A számítógépeket azonban a rendszer nem regisztrálja az Automation-fiókban esetleg már létrehozott hibridfeldolgozó-csoportok egyikében sem.  Viszont hozzáadhatók hibrid runbook-feldolgozó csoporthoz az Automation-fiókban az Automation-runbookok támogatása érdekében, ha ugyanazon fiókot használja a megoldáshoz és a hibrid runbook-feldolgozó csoporttagsághoz is.  Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.   
 
 1. Az OMS-munkaterülethez adja hozzá a Frissítéskezelési megoldást. Ehhez kövesse a megoldástárban található [OMS-megoldás hozzáadása](../log-analytics/log-analytics-add-solutions.md) című témakörben leírt eljárást.  
 2. Az OMS-portálon válassza a **Beállítások**, majd az **Összekapcsolt források** elemet.  Jegyezze fel a **munkaterület azonosítóját** és vagy az **elsődleges kulcsot**, vagy a **másodlagos kulcsot**.
@@ -247,10 +248,5 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) megjelenítheti a felügyelt számítógépek frissítési megfelelőségét.
 * [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.  
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

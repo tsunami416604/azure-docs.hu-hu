@@ -12,8 +12,7 @@
 ### [Névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # Első lépések
-## [Virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-pportal.md)
-## [Virtuális gép üzembe helyezése virtuális hálózaton](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+## [Az első virtuális hálózat létrehozása](virtual-network-get-started-vnet-subnet.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -146,8 +145,3 @@
 ## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

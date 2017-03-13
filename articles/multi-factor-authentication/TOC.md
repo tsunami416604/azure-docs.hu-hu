@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Mi az az Azure Multi-Factor Authentication?](multi-factor-authentication.md)
 ## [Működés](multi-factor-authentication-how-it-works.md)
+## [Az Azure MFA beszerzése](multi-factor-authentication-versions-plans.md)
 
 # Bevezetés
 ## [Az üzembe helyezés helyének kiválasztása](multi-factor-authentication-get-started.md)
@@ -20,6 +21,7 @@
 #### [Speciális VPN-konfigurációk](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Mobile App Web Service](multi-factor-authentication-get-started-server-webservice.md)
 #### [Windows-hitelesítés](multi-factor-authentication-get-started-server-windows.md)
+#### [MFA-kiszolgáló frissítése](multi-factor-authentication-server-upgrade.md)
 #### [Frissítés a PhoneFactor szolgáltatásról](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## Felhasználók kezelése
@@ -45,8 +47,3 @@
 ## Hibaelhárítás
 ### [Gyakori kérdések](multi-factor-authentication-faq.md)
 ### [Kérdezzen](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

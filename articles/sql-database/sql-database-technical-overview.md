@@ -17,8 +17,9 @@ ms.workload: data-management
 ms.date: 12/20/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: c99f16e7aa6ea6fe82f7a115b4642025a05bb241
+ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
+ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Mi az SQL Database? Bevezetés az SQL Database-be
@@ -43,7 +44,7 @@ Akár önálló adatbázisokat, akár rugalmas készleteket választ, a később
 Hogyan hasonlítható össze az önálló adatbázisok és a rugalmas készletek relatív teljesítménye? Hogyan lehet megállapítani a fel- és leskálázás megfelelő mértékét? Használja [az önálló adatbázisok esetében a DTU-kon, rugalmas adatbázisok és adatbáziskészletek esetében pedig az eDTU-kon](sql-database-what-is-a-dtu.md) alapuló, teljesítmény-értékeléssel kombinált, [beépített teljesítményfigyelő](sql-database-performance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. A részletekért olvassa el [Az SQL Database beállításai és teljesítménye: mi érhető el az egyes szolgáltatásszinteken](sql-database-service-tiers.md) című részt.
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az SQL-adatbázisok használatakor élvezheti a beépített biztonság, hibatűrés és [adatvédelem](sql-database-automated-backups.md) előnyeit, amelyeket egyébként külön kellene megvásárolnia vagy megterveznie, kiépítenie és kezelnie. Az SQL Database minden egyes szolgáltatásszintje az üzletmenet folytonosságát biztosító szolgáltatások és lehetőségek átfogó készletét kínálja, amelyeket tetszés szerint futtathat és helyezhet üzembe. Az [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md) segítségével az adatbázist visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba. A [biztonsági mentések hosszú távú megőrzésének](sql-database-long-term-retention.md) konfigurálásával biztonsági mentéseit biztonságos tárolóban tarthatja akár 10 évig. Ezenkívül, ha az adatbázisokat üzemeltető adatközpontban szolgáltatáskimaradás következik be, visszaállíthatja az adatbázisokat [a legújabb biztonsági mentések georedundáns példányaiból]((sql-database-recovery-using-backups.md). Szükség esetén a gyors feladatátvétel érdekében egy vagy több régióban [georedundáns olvasható replikákat](sql-database-geo-replication-overview.md) is konfigurálhat az adatközpont-leállások esetére. Ezeket a replikákat a különböző földrajzi régiók olvasási teljesítményének gyorsítására, illetve [leállás nélküli alkalmazásfrissítéshez](sql-database-manage-application-rolling-upgrade.md) is felhasználhatja. 
+Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az SQL-adatbázisok használatakor élvezheti a beépített biztonság, hibatűrés és [adatvédelem](sql-database-automated-backups.md) előnyeit, amelyeket egyébként külön kellene megvásárolnia vagy megterveznie, kiépítenie és kezelnie. Az SQL Database minden egyes szolgáltatásszintje az üzletmenet folytonosságát biztosító szolgáltatások és lehetőségek átfogó készletét kínálja, amelyeket tetszés szerint futtathat és helyezhet üzembe. Az [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md) segítségével az adatbázist visszaállíthatja egy legfeljebb 35 nappal korábbi állapotba. A [biztonsági mentések hosszú távú megőrzésének](sql-database-long-term-retention.md) konfigurálásával biztonsági mentéseit biztonságos tárolóban tarthatja akár 10 évig. Továbbá, ha az adatbázisokat üzemeltető adatközpontban szolgáltatáskimaradás következik be, visszaállíthatja az adatbázisokat a [legújabb biztonsági mentések georedundáns példányaiból](sql-database-recovery-using-backups.md). Szükség esetén a gyors feladatátvétel érdekében egy vagy több régióban [georedundáns olvasható replikákat](sql-database-geo-replication-overview.md) is konfigurálhat az adatközpont-leállások esetére. Ezeket a replikákat a különböző földrajzi régiók olvasási teljesítményének gyorsítására, illetve [leállás nélküli alkalmazásfrissítéshez](sql-database-manage-application-rolling-upgrade.md) is felhasználhatja. 
 
 ![Az SQL Database georeplikációja](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
@@ -59,9 +60,4 @@ Most, hogy elolvasta az SQL Database-be történő bevezetést, és választ kap
 * Tudjon meg többet a [rugalmas készletekről](sql-database-elastic-pool.md).
 * Első lépésként [Hozza létre első adatbázisát](sql-database-get-started.md).
 * Hozza létre első alkalmazását C#, Java, Node.js, PHP, Python vagy Ruby programozási nyelven: [Adatkapcsolattárak SQL Database és SQL Server használatához](sql-database-libraries.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

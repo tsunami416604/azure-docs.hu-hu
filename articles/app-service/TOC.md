@@ -28,20 +28,6 @@
 ### [Marketplace-alkalmazás](../app-service-web/web-sites-php-web-site-gallery.md)
 ### [PHP](../app-service-web/app-service-web-php-get-started.md)    
 
-# Gyakori példák
-## CLI-példák
-### [Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról](./scripts/app-service-cli-deploy-github.md)
-### [Webalkalmazás létrehozása folyamatos üzembe helyezéssel a GitHubról](./scripts/app-service-cli-continuous-deployment-github.md)
-### [Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-tárházból](./scripts/app-service-cli-deploy-local-git.md)
-### [Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetbe](./scripts/app-service-cli-deploy-staging-environment.md)
-### [ASP.NET-magalapú webalkalmazás létrehozása Docker-tárolóban](./scripts/app-service-cli-linux-docker-aspnetcore.md)
-### [Egyéni tartomány leképezése egy webalkalmazásra](./scripts/app-service-cli-configure-custom-domain.md)
-### [Webalkalmazások manuális méretezése](./scripts/app-service-cli-scale-manual.md)
-### [Webalkalmazások globális méretezése magas rendelkezésre állású architektúrával](./scripts/app-service-cli-scale-high-availability.md)
-### [Webalkalmazás csatlakoztatása SQL-adatbázishoz](./scripts/app-service-cli-app-service-sql.md)
-### [Webalkalmazás csatlakoztatása tárfiókhoz](./scripts/app-service-cli-app-service-storage.md)
-### [Webalkalmazás figyelése a webkiszolgáló-naplókkal](./scripts/app-service-cli-monitor.md)
-
 # Útmutató
 
 ## Tervezés és kialakítás

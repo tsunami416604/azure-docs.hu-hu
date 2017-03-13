@@ -81,9 +81,10 @@
 #### [Időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 #### [Események](service-fabric-reliable-actors-events.md)
 #### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
-#### [Állapotszolgáltató konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
+#### [KvsActorStateProvider konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [ReliableDictionaryActorStateProvider konfigurálása](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ## Áttelepítés a Cloud Servicesből
 ### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)
@@ -106,6 +107,7 @@
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 ##### [Visual Studio és Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
+#### [Fürthálózatminták](service-fabric-patterns-networking.md)
 #### [Csomóponttípusok és virtuálisgép-méretezési csoportok](service-fabric-cluster-nodetypes.md)
 #### [Fürt skálázása](service-fabric-cluster-scale-up-down.md)
 #### [Fürt frissítése](service-fabric-cluster-upgrade.md)

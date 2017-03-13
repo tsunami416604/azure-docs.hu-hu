@@ -18,6 +18,7 @@ ms.author: denlee
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -761,9 +762,4 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 22. Projekt telepítése egy Azure-webhelyre: [6. lépés : Az alkalmazás telepítése az Azure Websitesra](#Deploy).
 
 [1]: media/documentdb-java-application/keys.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

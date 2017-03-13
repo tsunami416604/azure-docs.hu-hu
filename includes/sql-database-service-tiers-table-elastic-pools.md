@@ -4,12 +4,12 @@ sql-database-elastic-pool.md
 sql-database-resource-limits.md
 sql-database-service-tiers.md  
 -->
-
+ 
 ### <a name="basic-elastic-pool-limits"></a>Alapszintű rugalmas készletek korlátai
 
 | Készlet mérete (eDTU)  | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
-| Maximális tárterület készletenként* | 5 GB | 10 GB | 20 GB | 29 GB | 39 GB | 78 GB | 117 GB | 156 GB |
+| Maximális adattárterület készletenként* | 5 GB | 10 GB | 20 GB | 29 GB | 39 GB | 78 GB | 117 GB | 156 GB |
 | Memóriában tárolt OLTP-k maximális tárterülete készletenként* | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
@@ -23,7 +23,7 @@ sql-database-service-tiers.md
 
 | Készlet mérete (eDTU)  | **50** | **100** | **200** | **300** | **400** | **800** | 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
-| Maximális tárterület készletenként* | 50 GB| 100 GB| 200 GB | 300 GB| 400 GB | 800 GB | 
+| Maximális adattárterület készletenként* | 50 GB| 100 GB| 200 GB | 300 GB| 400 GB | 800 GB | 
 | Memóriában tárolt OLTP-k maximális tárterülete készletenként* | N/A | N/A | N/A | N/A | N/A | N/A | 
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Egyidejű feldolgozók maximális száma készletenként | 100 | 200 | 400 | 600 |  800 | 1600 |
@@ -37,7 +37,7 @@ sql-database-service-tiers.md
 
 | Készlet mérete (eDTU)  |  **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
-| Maximális tárterület készletenként* | 1,2 TB | 1,6 TB | 2 TB | 2,4 TB | 2,9 TB | 
+| Maximális adattárterület készletenként* | 1,2 TB | 1,6 TB | 2 TB | 2,4 TB | 2,9 TB | 
 | Memóriában tárolt OLTP-k maximális tárterülete készletenként* | N/A | N/A | N/A | N/A | N/A | 
 | Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók maximális száma készletenként |  2400 | 3200 | 4000 | 5000 | 6000 |
@@ -51,7 +51,7 @@ sql-database-service-tiers.md
 
 | Készlet mérete (eDTU)  | **125** | **250** | **500** | **1000** | **1500** | 
 |:---|---:|---:|---:| ---: | ---: | 
-| Maximális tárterület készletenként* | 250 GB| 500 GB| 750 GB| 750 GB| 750 GB| 
+| Maximális adattárterület készletenként* | 250 GB| 500 GB| 750 GB| 750 GB| 750 GB| 
 | Memóriában tárolt OLTP-k maximális tárterülete készletenként* | 1 GB| 2 GB| 4 GB| 10 GB| 12 GB| 
 | Adatbázisok maximális száma készletenként | 50 | 100 | 100 | 100 | 100 |  
 | Egyidejű feldolgozók maximális száma készletenként | 200 | 400 | 800 | 1600 |  2400 | 
@@ -65,7 +65,7 @@ sql-database-service-tiers.md
 
 | Készlet mérete (eDTU)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
-| Maximális tárterület készletenként* | 750 GB | 750 GB | 750 GB | 750 GB | 750 GB |
+| Maximális adattárterület készletenként* | 750 GB | 750 GB | 750 GB | 750 GB | 750 GB |
 | Memóriában tárolt OLTP-k maximális tárterülete készletenként* | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
 | Adatbázisok maximális száma készletenként | 100 | 100 | 100 | 100 | 100 | 
 | Egyidejű feldolgozók maximális száma készletenként |  3200 | 4000 | 4800 | 5600 | 6400 |
@@ -75,10 +75,6 @@ sql-database-service-tiers.md
 | eDTU-k maximális száma adatbázisonként | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750} | {25,50,75,<br>125,250,500,<br>1000,1750,4000} | 
 ||||||||
 
-\* A készletezett adatbázisok osztoznak a készlettárolón, így az adatbázistár számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut. A készletenkénti maximális tárterület a készletben lévő adatfájlok maximális tárterületét jelenti, amelybe nem tartozik bele a naplófájlok által felhasznált tárhely.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+> [!IMPORTANT]
+>\* A készletezett adatbázisok osztoznak a készlettárolón, így a rugalmas készletben lévő adattár számára a készletek fennmaradó tárolókapacitása vagy az adatbázisonkénti engedélyezett tárterület közül a kisebbiknek megfelelő tárterület jut.
+>

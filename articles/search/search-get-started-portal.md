@@ -13,11 +13,12 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/15/2017
+ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: cb0843ec739d11e997794a8217c95696c4e78d23
-ms.openlocfilehash: 70999d615038e7a5a11a623a9eef3e08c09f5eb9
+ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
+ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -56,7 +57,7 @@ Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, h
 > ![Indexelők és adatforrások csempéje][1]
 >
 
-## <a name="a-namecreate-indexa-create-an-index-and-load-data"></a><a name="create-index"></a> Index létrehozása és az adatok betöltése
+## <a name="create-index"></a> Index létrehozása és az adatok betöltése
 A keresési lekérdezések egy *index* segítségével ismétlődnek, amely kereshető adatokat, metaadatokat és bizonyos keresési viselkedések optimalizálásához használt szerkezeteket tartalmaz.
 
 Annak érdekében, hogy a feladat portálalapú maradjon, egy beépített minta adatkészletet fogunk használni, amely könnyedén bejárható egy indexelő segítségével az **Adatok importálása** varázslón keresztül. 
@@ -99,10 +100,8 @@ Az adatimportálás felügyeletéhez térjen vissza a szolgáltatás irányító
 
    ![Indexelő állapotüzenete][4]
 
-## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a> Az index lekérdezése
+## <a name="query-index"></a> Az index lekérdezése
 Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezésre. A **Keresési ablak** a portálba épített lekérdezési eszköz. Biztosít egy keresőmezőt, amellyel ellenőrizheti, hogy a keresési eredmények megfelelnek-e a vártaknak. 
-
-   ![Keresési ablak parancs][5]
 
 > [!TIP]
 > Az [Azure Search szolgáltatás áttekintő videója](https://channel9.msdn.com/Events/Connect/2016/138) a következő lépéseket mutatja be 6 perc 8 másodperctől kezdve.
@@ -110,42 +109,87 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
 
+   ![Keresési ablak parancs][5]
+
 2. Kattintson a parancssáv **Index módosítása** elemére a *realestate-us-sample* indexre való váltáshoz.
 
    ![Index és API-parancsok][6]
 
-3. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az előzetes verziójú API-k új, általánosan még ki nem adott szolgáltatásokhoz biztosítanak hozzáférést. További utasításig használja az általánosan elérhető verziót (2016-09-01). 
+3. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az előzetes verziójú API-k új, általánosan még ki nem adott szolgáltatásokhoz biztosítanak hozzáférést. Az alábbi lekérdezésekhez további utasításig használja az általánosan elérhető verziót (2016-09-01). 
 
     > [!NOTE]
     > Az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) és a [.NET-kódtár](search-howto-dotnet-sdk.md#core-scenarios) teljesen egyenértékűek, de a **Keresési ablak** csak REST-hívások kezelésre alkalmas. Elfogadja az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) szintaxisát is, továbbá a [Dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) műveletekben elérhető összes keresési paramétert.
     > 
-    > A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. A dokumentumoktól függően előfordulhat, hogy a fontos elemek kinyeréséhez olyan kódot kell írnia, amely képes kezelni a keresési eredményeket.
 
 4. A keresősávba írja be az alábbi lekérdezési karakterláncokat, majd kattintson a **Keresés** gombra.
 
   ![Példa keresési lekérdezésre][7]
 
-**`search=seattle`** A `search` paraméter kulcsszavas keresés bevitelére használható. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a Seattle kifejezést a dokumentum bármely kereshető mezőjében.
+**`search=seattle`**
 
-**`search=seattle&facet=beds`** A `facet` paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a hálószobák száma jelenti, az egyes kategóriákhoz tartozó dokumentumok vagy egyezések számával együtt. A `"beds"` megadható aspektusként, mert szűrhető és kategorizálható mezőként van megjelölve az indexben, és a tartalmazott értékei (numerikus, 1–5) alkalmasak a hirdetések csoportokba való rendezésére (3 hálószobás, 4 hálószobás ingatlanok hirdetései).  A `&` szimbólum a keresési paraméterek összefűzésére használható.
++ A `search` paraméter kulcsszavas keresés bevitelére használható teljes szöveges kereséshez. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a *Seattle* kifejezést a dokumentum bármely kereshető mezőjében. 
 
-**`search=seattle&filter=bed gt 3`** A `filter` paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben: 3-nál több hálószoba. A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
++ A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. A dokumentumoktól függően előfordulhat, hogy a fontos elemek kinyeréséhez olyan kódot kell írnia, amely képes kezelni a keresési eredményeket. 
 
-**`search=granite countertops&highlight=description`** A találatok kiemelése funkció formázással látja el a kulcsszóval megegyező szöveget, feltéve, hogy vannak egyezések a megadott mezőben. Ha a keresett kifejezés egy leírás mélyén rejlik, a találatok kiemelése funkcióval könnyebben észrevehetővé teheti. Ebben az esetben a `"granite countertops"` formázott kifejezés könnyebben észrevehető a leírás mezőben.
++ A dokumentumokban minden mező lekérdezhetőként van jelölve az indexben. A portálon az indexattribútumok megtekintéséhez kattintson a *realestate-us-sample* elemre az **Indexek** csempén.
 
-**`search=mice&highlight=description`** A teljes szöveges keresés hasonló szemantikával rendelkező szóalakok keresésére használható. Jelen esetben a keresési eredmények tartalmazzák a „mouse” (egér) kiemelt szöveget az egérlakta házak esetében, pedig a keresési kulcsszó „mice” (egerek) volt. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. Az Azure Search szolgáltatás összesen 56, a Lucene-től és Microsoft-tól származó elemzőt támogat. A szolgáltatás alapértelmezés szerint a standard Lucene-elemzőt használja. 
+**`search=seattle&$count=true&$top=100`**
 
-**`search=samamish`** A helytelenül leírt szavak (például a Seattle környékén található Sammamish-fennsíkra utaló „samamish” kifejezés) nem adnak vissza találatokat az átlagos keresések során. A helytelenül leírt szavak kezelésére használhat intelligens keresést. Ennek leírását a következő példában olvashatja.
++ Az `&` szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók. 
 
-**`search=samamish~&queryType=full`** Az intelligens keresés a `~` szimbólum megadásával, valamint a teljes lekérdezéselemző használatával engedélyezhető, amely értelmezi és megfelelően elemzi a `~` szintaxist. Alapértelmezés szerint a rendszer az egyszerű lekérdezéselemzőt használja, mivel az gyorsabb, de kérheti a teljes lekérdezéselemző használatát, ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezési típusokra van szüksége. A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyvekkel kapcsolatos további információk: [Lucene lekérdezési szintaxis az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
++  A `$count=true` paraméter visszaadja az összes visszaadott dokumentum összegét. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a `$count=true` által jelentett módosításokat. 
 
-**`search=*`** Az üres keresések mindent visszaadnak. Az üres lekérdezés használatával lekérdezheti az indexben található dokumentumok teljes számát, vagy igény szerint használhatja a teljes dokumentumkészletet szűrésére vagy kategorizálására is. Erről a következő szakaszban olvashat.
++ A `$top=100` az összes közül az első 100 dokumentumot adja vissza. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A `$top` használatával növelheti vagy csökkentheti a mennyiséget.
 
-**`search=*&filter=geo.distance(location,geography'POINT(-122.13+47.64)')+le+10`** A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) keresztül támogatott a koordinátákat tartalmazó mezők esetében. Ez a lekérdezés minden eredményt szűr a helyzeti adatok alapján, és olyan eredményeket a vissza, amelyek kevesebb, mint 10 kilométerre találhatók a (szélességi és hosszúsági koordinátákként) megadott ponttól. A geosearch egy szűrőtípus, amelynek meghatározása a [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) című témakörben olvasható. 
+**`search=*&facet=city&$top=2`**
 
-A szűrőkifejezéseket általában $filter paraméterként vannak megadva a `$` karakter használatával. A Keresési ablakban hagyja el a `$` karaktert.
++ A `search=*` egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
 
-A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik „keresés a közelben” funkcióval vagy térképes navigációt használ. Ez azonban nem teljes szöveges keresés. Ha a városok vagy országok nevére való keresés felhasználói követelmény, akkor a koordináták mellett adjon meg városok vagy országok nevét tartalmazó mezőket.
++  A `facet` olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a városok száma jelenti. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+
++ A `$top=2` két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
+
+**`search=seattle&facet=beds`**
+
++ Ez a lekérdezés az ágyak értékkorlátozását jelenti a *Seattle* szöveges kereséséhez. A `"beds"` megadható értékkorlátozásként, mert a mező lekérdezhetőként, szűrhetőként és kategorizálhatóként van megjelölve az indexben, és a tartalmazott értékei (numerikus, 1–5) alkalmasak a hirdetések csoportokba való rendezésére (3 hálószobás, 4 hálószobás ingatlanok hirdetései). 
+
++ Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
+
+**`search=seattle&$filter=beds gt 3`**
+
++ A `filter` paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben: 3-nál több hálószoba. 
+
++ A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+
+**`search=granite countertops&highlight=description`**
+
++ A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti, feltéve, hogy vannak egyezések a megadott mezőben. Ha a keresett kifejezés egy leírás mélyén rejlik, a találatok kiemelése funkcióval könnyebben észrevehetővé teheti. Ebben az esetben a `"granite countertops"` formázott kifejezés könnyebben észrevehető a leírás mezőben.
+
+**`search=mice&highlight=description`**
+
++ A teljes szöveges keresés hasonló szemantikával rendelkező szóalakok keresésére használható. Jelen esetben a keresési eredmények tartalmazzák a „mouse” (egér) kiemelt szöveget az egérlakta házak esetében, pedig a keresési kulcsszó „mice” (egerek) volt. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. 
+
++ Az Azure Search szolgáltatás összesen 56, a Lucene-től és Microsoft-tól származó elemzőt támogat. A szolgáltatás alapértelmezés szerint a standard Lucene-elemzőt használja. 
+
+**`search=samamish`**
+
++ A helytelenül leírt szavak (például a Seattle környékén található Sammamish-fennsíkra utaló „samamish” kifejezés) nem adnak vissza találatokat az átlagos keresések során. A helytelenül leírt szavak kezelésére használhat intelligens keresést. Ennek leírását a következő példában olvashatja.
+
+**`search=samamish~&queryType=full`**
+
++ Az intelligens keresés a `~` szimbólum megadásával, valamint a teljes lekérdezéselemző használatával engedélyezhető, amely értelmezi és megfelelően elemzi a `~` szintaxist. 
+
++ Az intelligens keresés akkor érhető el, amikor a teljes lekérdezéselemzőt választja, ami a `queryType=full` beállításakor történik. A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyvekkel kapcsolatos további információk: [Lucene lekérdezési szintaxis az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+
++ Amikor a `queryType` nincs meghatározva, a rendszer az alapértelmezett egyszerű lekérdezéselemzőt használja. Ez az egyszerű lekérdezéselemző gyorsabb, de ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezéstípusokra van szüksége, a teljes szintaxisra szüksége lesz. 
+
+**`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
+
++ A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) keresztül támogatott a koordinátákat tartalmazó mezők esetében. A geosearch egy szűrőtípus, amelynek meghatározása a [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) című témakörben olvasható. 
+
++ A példa lekérdezés minden eredményt szűr a helyzeti adatok alapján, és olyan eredményeket a vissza, amelyek kevesebb, mint 5 kilométerre találhatók a (szélességi és hosszúsági koordinátákként) megadott ponttól. A `$count` hozzáadásával láthatja, hány eredményt ad vissza a rendszer, amikor módosítja a távolságot vagy a koordinátákat. 
+
++ A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik „keresés a közelben” funkcióval vagy térképes navigációt használ. Ez azonban nem teljes szöveges keresés. Ha a városok vagy országok nevére való keresés felhasználói követelmény, akkor a koordináták mellett adjon meg városok vagy országok nevét tartalmazó mezőket.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -153,9 +197,9 @@ A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik �
 
   Az egyes összetevők megtekintéséhez kattintson az **Index**, **Indexelő** vagy **Adatforrások** csempére az irányítópulton a meglévő objektumok listájának megjelenítéséhez. Az újjáépítést nem igénylő indexszerkesztési műveletekkel kapcsolatos további információk: [Index frissítése (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
-+ Próbálja ki az eszközöket és lépéseket más adatforrásokkal is. A `realestate-us-sample` minta-adatkészlet olyan Azure SQL Database-adatbázisból származik, amelyet az Azure Search szolgáltatás be tud járni. Az Azure SQL Database szolgáltatáson kívül az Azure Search az alábbiakat tudja bejárni: Azure Table Storage, Blob Storage, Azure virtuális gépen futtatott SQL Server, illetve DocumentDB. A varázsló az összes fent említett adatforrást támogatja. *Indexelő* használatával könnyedén hozhat létre és tölthet fel indexeket a kódban.
++ Próbálja ki az eszközöket és lépéseket más adatforrásokkal is. A `realestate-us-sample` minta-adatkészlet olyan Azure SQL Database-adatbázisból származik, amelyet az Azure Search szolgáltatás be tud járni. Az Azure SQL Database-en kívül az Azure Search be tudja járni és indexre tud következtetni sima adatszerkezetekből az alábbiakban: Azure Table Storage, Blob Storage, Azure-beli virtuális gépen futtatott SQL Server, illetve DocumentDB. A varázsló az összes fent említett adatforrást támogatja. *Indexelő* használatával könnyedén tölthet fel indexeket a kódban.
 
-+ Minden más adatforrás leküldéses modellen keresztül támogatott, amely során a kód az új és módosított sorhalmazokat JSON-formátumban küldi le az index számára. További információk: [Dokumentumok hozzáadása, frissítése vagy törlése az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
++ Minden más nem indexelő adatforrás leküldéses modellen keresztül támogatott, amely során a kód az új és módosított sorhalmazokat JSON formátumban küldi le az index számára. További információk: [Dokumentumok hozzáadása, frissítése vagy törlése az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 A jelen cikkben említett egyéb szolgáltatásokról az alábbi hivatkozások követésével tudhat meg többet:
 
@@ -175,8 +219,3 @@ A jelen cikkben említett egyéb szolgáltatásokról az alábbi hivatkozások k
 [7]: ./media/search-get-started-portal/search-explorer-query2.png
 [8]: ./media/search-get-started-portal/realestate-indexer2.png
 [9]: ./media/search-get-started-portal/import-datasource-sample2.png
-
-
-<!--HONumber=Feb17_HO3-->
-
-

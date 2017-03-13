@@ -25,8 +25,3 @@
 # Kapcsolódó
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control-what-is.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
-

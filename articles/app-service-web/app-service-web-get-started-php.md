@@ -4,7 +4,7 @@ description: "Egy PHP-mintaalkalmazás üzembe helyezésével megtudhatja, menny
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
@@ -12,25 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
+ms.date: 02/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: f739bf6101936ff6bb25738e4888476e3b33a38f
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 68298208d2e2cc1fe7ab4050afecb25ca7d619cd
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="deploy-your-first-php-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első PHP-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
-
-> [!div class="op_single_selector"]
-> * [Első HTML-webhely](app-service-web-get-started-html.md)
-> * [Első .NET-alkalmazás](app-service-web-get-started-dotnet.md)
-> * [Első PHP-alkalmazás](app-service-web-get-started-php.md)
-> * [Első Node.js-alkalmazás](app-service-web-get-started-nodejs.md)
-> * [Első Python-alkalmazás](app-service-web-get-started-python.md)
-> * [Első Java-alkalmazás](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
 Ez az oktatóanyag segítséget nyújt az első PHP-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
@@ -49,7 +41,7 @@ Az alábbiakat fogja elvégezni:
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 - [Azure CLI 1.0](app-service-web-get-started-php-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Azure CLI 2.0 (előzetes verzió)](app-service-web-get-started-php.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli
+- [Azure CLI 2.0](app-service-web-get-started-php.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
@@ -62,7 +54,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 > 
 
 ## <a name="deploy-a-php-web-app"></a>PHP-alapú webalkalmazás üzembe helyezése
-1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `azure --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
+1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `az --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
    
     ![Parancssori felület tesztelési célú telepítése az első Azure-webalkalmazáshoz](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
    
@@ -77,7 +69,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni ezen hitelesítő adatok használatával.
    
-        az appservice web deployment user set --user-name <username> --password <password>
+        az appservice web deployment user set --user-name <unique-username> --password <8-char-or-longer-password-letters-and-numbers>
 
 3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Az első App Service-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
 
@@ -128,7 +120,7 @@ Sikeresen üzembe helyezte az alkalmazást az Azure App Service-ben!
 ## <a name="see-your-app-running-live"></a>Az alkalmazás megtekintése működés közben
 Az Azure-alkalmazást az adattár valamelyik könyvtárában kiadott alábbi paranccsal tekintheti meg működés közben:
 
-    azure site browse
+    az appservice web browse --name <app_name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>Az alkalmazás módosítása (frissítése)
 A Git segítségével mostantól bármikor leküldhet a projekt (adattár) gyökérkönyvtárából, ha frissítenie kell az élő webhelyet. Ezt ugyanolyan módon teheti meg, mint amikor az első alkalommal helyezte üzembe a kódot. Például minden alkalommal, amikor egy új, helyileg tesztelt módosítást kíván leküldeni, akkor egyszerűen csak futtatnia kell az alábbi parancsokat a projekt (adattár) gyökérkönyvtárából:
@@ -151,10 +143,5 @@ Vagy tegyen még többet az első webalkalmazásával. Példa:
 
 * Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
 * Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

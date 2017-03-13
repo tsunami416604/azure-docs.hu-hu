@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: dlepow
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 010a9a4a9ad0f6f7584b1c9a54e665557078d25b
+ms.sourcegitcommit: 31aaa122bfca5140dcd22d2a2233c46cd28f27b9
+ms.openlocfilehash: c139fc34d15545ce6a7a91842a3ebdff7c029a01
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -55,9 +56,13 @@ Minden virtuális gép ugyanazon a privát virtuális hálózaton található, �
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Az Azure Portallal [létrehozhat egy Kubernetes-fürtöt](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) Windows-ügyfélcsomópontokkal. 
+Az Azure Portallal [létrehozhat egy Kubernetes-fürtöt](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) Windows-ügyfélcsomópontokkal. A fürt létrehozásakor ügyeljen a következő beállításokra:
 
-A **Keretrendszer konfigurációja** ablaktábla **Vezénylő konfigurációja** területén válassza a **Kubernetes - Windows** elemet. 
+* Az **Alapvető beállítások** panelen a **Vezénylő** részben válassza a **Kubernetes** lehetőséget. 
+* A **Fő konfiguráció** panelen adja meg a felhasználói hitelesítő adatokat és az egyszerű szolgáltatás hitelesítő adatait a fő Linux-csomópontokhoz.
+* Az **Ügynökkonfiguráció** panel **Operációs rendszer** területén válassza a **Windows (előnézet)** lehetőséget. Adja meg a rendszergazdai hitelesítő adatokat a Windows-ügyfélcsomópontokhoz.
+
+Részletes információ: [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md).
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
@@ -67,7 +72,7 @@ A `kubectl` parancssori eszközzel csatlakozzon a helyi számítógépről a Kub
 
 A fürt létrehozása és a `kubectl` használatával való kapcsolódás után megpróbálhat elindítani és közzétenni az interneten egy alapszintű Windows-webappot. Ebben a példában egy YAML-fájllal határozza meg a tároló erőforrásait, majd létrehozza a `kubctl apply` paranccsal.
 
-1. A csomópontok listájának megtekintéséhez írja be a következőt: `kubectl get nodes`.  A csomópontok összes részletének megtekintéséhez írja be a következőt:  
+1. A csomópontok listájának megtekintéséhez írja be a következőt: `kubectl get nodes`. A csomópontok összes részletének megtekintéséhez írja be a következőt:  
 
   ```
   kubectl get nodes -o yaml
@@ -198,8 +203,3 @@ Az alábbi javasolt hivatkozások további információkat nyújtanak a Kubernet
 * [Kubernetes Bootcamp](https://kubernetesbootcamp.github.io/kubernetes-bootcamp/index.html) – bemutatja, hogyan lehet üzembe helyezni, méretezni és frissíteni a tárolóalapú alkalmazásokat, illetve hibakeresést végezni rajtuk.
 * [Kubernetes felhasználói útmutató](http://kubernetes.io/docs/user-guide/) – információkat tartalmaz a programok meglévő Kubernetes-fürtökben való futtatásáról.
 * [Kubernetes-példák](https://github.com/kubernetes/kubernetes/tree/master/examples) – példákkal szolgál a valódi alkalmazások Kubernetes használatával való futtatására.
-
-
-<!--HONumber=Feb17_HO4-->
-
-
