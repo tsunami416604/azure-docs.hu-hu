@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 34b166d63e539883a110dc96f7333a2379bc4963
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 124eff2edccb6b4ad56ee39a2b37e892ef8c6cb4
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -34,7 +34,7 @@ Az ismertetett eljárás végrehajtásához a következők szükségesek:
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * A .NET-keretrendszer 4.0-s vagy újabb verziója.
-* Visual Studio 2010 SP1 (Professional, Premium, Ultimate vagy Express) vagy későbbi verzió.
+* Visual Studio.
 
 Az oktatóanyag a következő feladatokat tartalmazza:
 
@@ -81,7 +81,7 @@ A streamvégpont elindításához tegye a következőket:
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-1. Hozzon létre egy új C#-konzolalkalmazást a Visual Studio 2013, Visual Studio 2012 vagy Visual Studio 2010 SP1 használatával. Adja meg a **nevét**, a **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
+1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Adja meg a **nevét**, a **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 2. A [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions) NuGet-csomag használatával telepítse az **Azure Media Services .NET SDK-bővítményeket**.  A Media Services .NET SDK-bővítmények között olyan kiegészítő módszerek és segédfüggvények találhatók, amelyek egyszerűbbé teszik a kódolást és megkönnyítik a Media Services használatával történő fejlesztést. Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
 
     A hivatkozások NuGet használatával való hozzáadásához tegye a következőket: a Megoldáskezelőben kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése** lehetőséget. Ezután keressen a **windowsazure.mediaservices.extensions** elemre, és kattintson a **Telepítés** gombra.
@@ -184,7 +184,7 @@ A **CreateFromFile** módszer számára az **AssetCreationOptions** alapján hat
 
 * **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
   Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
-* **StorageEncrypted** – Ezen lehetőség használatakor a tiszta tartalom helyileg, 256 bites Advanced Encryption Standard (AES) titkosítással lesz titkosítva, és így kerül feltöltésre az Azure Storage tárolóba, ahol titkosítva lesz tárolva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
+* **StorageEncrypted** – Ezen lehetőség használatakor a tiszta tartalom helyileg,&256; bites Advanced Encryption Standard (AES) titkosítással lesz titkosítva, és így kerül feltöltésre az Azure Storage tárolóba, ahol titkosítva lesz tárolva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
 * **CommonEncryptionProtected** – Használja ezt a lehetőséget, ha olyan tartalmat tölt fel, amely már korábban titkosítva és védve lett általános titkosítás vagy a PlayReady DRM által (például egy PlayReady DRM titkosítással védett Smooth Streaming-fájlt).
 * **EnvelopeEncryptionProtected** – Használja ezt a lehetőséget, ha AES által titkosított HLS tartalmakat tölt fel. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
 

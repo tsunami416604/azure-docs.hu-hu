@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 02/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 2ab4e2be8509bb264f496e7ebc6b4b50187c0151
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -37,8 +38,11 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013 vagy 2015**. Az alábbi utasítások a Visual Studio 2015-öt használják.
+
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
 * **Azure Data Lake Store-fiók**. A fióklétrehozás módjáról [Az Azure Data Lake Store használatának első lépései](data-lake-store-get-started-portal.md) című cikk nyújt tájékoztatást.
+
 * **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
@@ -58,9 +62,9 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
    2. Győződjön meg arról, hogy a **Nuget Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
    3. Keresse meg és telepítse az alábbi NuGet-csomagokat:
       
-      * `Microsoft.Azure.Management.DataLake.Store` – Ez az oktatóanyag a v0.12.5-preview jelű verziót használja.
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` – Ez az oktatóanyag a v0.10.6-preview jelű verziót használja.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a v2.2.8-preview jelű verziót használja.
+      * `Microsoft.Azure.Management.DataLake.Store` – Ez az oktatóanyag az&1;.0.4-es verziót használja.
+      * `Microsoft.Azure.Management.DataLake.StoreUploader` – Ez az oktatóanyag az&1;.0.1-preview verziót használja.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a&2;.2.11-es verziót használja.
         
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
@@ -71,7 +75,11 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
    
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
+        using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.Azure.Management.DataLake.StoreUploader;
+        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+        using System.Security.Cryptography.X509Certificates; //Required only if you are using an Azure AD application created with certificates
+
 7. Deklarálja a változókat az alább látható módon, és adja meg a meglévő Data Lake Store és erőforráscsoport nevének értékét. Továbbá győződjön meg arról, hogy a megadott helyi elérési út és fájlnév létezik a számítógépen. Vegye fel a következő kódrészletet a névtér-deklarációk után.
    
         namespace SdkSample
@@ -104,32 +112,31 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
 ## <a name="authentication"></a>Authentication
+
 ### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
-Meglévő „natív” Azure AD ügyfélalkalmazással használja, amelyre lent találhat egy példát. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk.
+
+Ezt egy meglévő Azure AD natív alkalmazással használva **interaktív** módon hitelesítheti az alkalmazást, vagyis a rendszer az Azure-beli hitelesítő adatok megadását kéri. 
+
+Az egyszerű használat érdekében az alábbi kódrészletben alapértelmezett értékek vannak megadva az ügyfél-azonosítóhoz és az átirányítási URI-hez, amelyek bármely Azure-előfizetéssel működnek. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk. Az alábbi kódrészletben csak adja meg a bérlőazonosító értékét. Ezt az [Active Directory-alkalmazás létrehozásával kapcsolatos](data-lake-store-end-user-authenticate-using-active-directory.md) szakaszban megadott útmutatás szerint kérheti le.
 
     // User login via interactive popup
-    // Use the client ID of an existing AAD "Native Client" application.
+    // Use the client ID of an existing AAD Web application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-    var domain = "common"; // Replace this string with the user's Azure Active Directory tenant ID or domain name, if needed.
+    var tenant_id = "<AAD_tenant_id>"; // Replace this string with the user's Azure Active Directory tenant ID
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-    var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
+    var creds = UserTokenProvider.LoginWithPromptAsync(tenant_id, activeDirectoryClientSettings).Result;
 
 Néhány tudnivaló a fenti kódrészlettel kapcsolatban.
 
 * Az oktatóanyag gyorsabb teljesítése érdekében ez a kódrészlet olyan Azure AD-tartományt és ügyfél-azonosítót használ, amely minden Azure-előfizetés számára alapértelmezés szerint elérhető. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
-* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-tartományt, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatás: [Egy Active Directory-alkalmazás létrehozása](data-lake-store-end-user-authenticate-using-active-directory.md).
-
-> [!NOTE]
-> A fenti hivatkozások követésével elérhető utasítások egy Azure AD-webalkalmazásra vonatkoznak. A lépések azonban pontosan ugyanazok akkor is, ha úgy döntött, hogy inkább egy natív ügyfélalkalmazást hoz létre. 
-> 
-> 
+* Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-bérlőazonosítót, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatásért tekintse meg az [Active Directory-alkalmazás a Data Lake Store-ral, végfelhasználói hitelesítéshez való létrehozásával](data-lake-store-end-user-authenticate-using-active-directory.md) kapcsolatos témakört.
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
-A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez az alkalmazás/szolgáltatás titkos ügyfélkódjával/kulcsával történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../azure-resource-manager/resource-group-create-service-principal-portal.md) használhatja.
+A következő kódrészlet használható az alkalmazás **nem interaktív hitelesítéséhez** az alkalmazás/egyszerű szolgáltatás titkos ügyfélkódja/kulcsa segítségével. Ez a megoldás meglévő „webes” Azure AD-alkalmazásokhoz használható. Az Azure AD-webalkalmazás létrehozásával és az alábbi kódrészlethez szükséges ügyfél-azonosító és titkos ügyfélkód lekérésével kapcsolatos útmutatásért lásd az [Active Directory-alkalmazás szolgáltatások közötti hitelesítéshez, a Data Lake Store-ral való létrehozásáról](data-lake-store-authenticate-using-active-directory.md) szóló témakört.
 
     // Service principal / appplication authentication with client secret / key
-    // Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
@@ -138,7 +145,7 @@ A következő kódrészlet használható az alkalmazás nem interaktív hiteles�
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
-Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás nem interaktív, az alkalmazás tanúsítványával/szolgáltatásnévvel történő hitelesítésére. Meglévő [„webes” Azure AD-alkalmazással](../azure-resource-manager/resource-group-create-service-principal-portal.md) használhatja.
+Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás **nem interaktív**, az Azure Active Directory-alkalmazás/egyszerű szolgáltatás tanúsítványával történő hitelesítésére. Ez [tanúsítványokkal rendelkező meglévő Azure AD-alkalmazásokhoz](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate) használható.
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -257,10 +264,5 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [A Data Lake Store .NET SDK dokumentációja](https://msdn.microsoft.com/library/mt581387.aspx)
 * [A Data Lake Store REST dokumentációja](https://msdn.microsoft.com/library/mt693424.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

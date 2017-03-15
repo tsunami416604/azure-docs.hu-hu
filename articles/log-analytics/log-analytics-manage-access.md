@@ -1,6 +1,6 @@
 ---
-title: "Munkaterületek kezelése | Microsoft Docs"
-description: "Az Azure Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat használhat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon."
+title: "Munkaterületek kezelése az Azure Log Analyticsben és az OMS-portálon | Microsoft Docs"
+description: "Az Azure Log Analytics és az OMS-portál munkaterületeinek kezeléséhez különféle adminisztratív feladatokat végezhet el a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: dd09c109594e0ba86fe2f40625e765494bfc06eb
+ms.openlocfilehash: 1221de9ae16022f7300510b2db67ed0849b61397
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -163,25 +163,16 @@ A következő lépésekkel távolíthat el egy felhasználót egy munkaterületr
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Meglévő munkaterület csatolása Azure-előfizetéshez
 Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az e dátum előtt létrehozott munkaterületeket a legközelebbi bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
 
-![Azure-előfizetés társítása](./media/log-analytics-manage-access/required-link.png)
-
-> [!IMPORTANT]
-> Munkaterület társításához az Azure-fióknak már hozzáféréssel kell rendelkeznie a társítani kívánt munkaterülethez.  Az Azure Portal eléréséhez tehát **ugyanazt** a fiókot kell használnia, mint a munkaterület eléréséhez. Ha ez nem igaz, kövesse a [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace) szakasz lépéseit.
->
->
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az OMS-portálon
-Ahhoz, hogy egy munkaterületet egy Azure-előfizetéshez társítson az OMS-portálon, a bejelentkezett felhasználónak már rendelkeznie kell egy fizetős Azure-fiókkal.
 
-1. Az OMS-portálon kattintson a **Beállítások** csempére.
-2. Kattintson a **Fiókok** fülre, majd az **Azure-előfizetés és adatforgalmi díjcsomag** fülre.
-3. Kattintson a használni kívánt adatforgalmi díjcsomagra.
-4. Kattintson a **Save** (Mentés) gombra.  
-   ![előfizetés és adatforgalmi díjcsomagok](./media/log-analytics-manage-access/subscription-tab.png)
+- Amikor bejelentkezik az OMS-portálra, a rendszer felkéri egy Azure-előfizetés kiválasztására. Jelölje ki a munkaterülethez kapcsolni kívánt előfizetést, majd kattintson az **Összekapcsolás** gombra.  
+    ![Azure-előfizetés társítása](./media/log-analytics-manage-access/required-link.png)
 
-Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhely felső részén.
+    > [!IMPORTANT]
+    > Munkaterület társításához az Azure-fióknak már hozzáféréssel kell rendelkeznie a társítani kívánt munkaterülethez.  Az Azure Portal eléréséhez tehát **ugyanazt** a fiókot kell használnia, mint a munkaterület eléréséhez. Ha ez nem igaz, kövesse a [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace) szakasz lépéseit.
 
-![OMS menüszalag](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az Azure Portalon
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
@@ -236,7 +227,7 @@ Ha rendelkezik Azure pénzügyi kerettel a nagyvállalati beléptetés részeké
 
 Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társította, használja az Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) parancsmagját.  
 
-### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>Munkaterület módosítása fizetős tarifacsomagra
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Munkaterület módosítása fizetős tarifacsomagra az Azure Portalon
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
 3. Ekkor megjelenik a meglévő munkaterületek listája. Jelöljön ki egy munkaterületet.  
@@ -250,6 +241,21 @@ Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társí
 > Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
 >
 >
+
+## <a name="change-your-data-plan-in-the-oms-portal"></a>Az adatforgalmi díjcsomag módosítása az OMS-portálon
+
+Ahhoz, hogy egy adatforgalmi díjcsomagot módosítani tudjon az OMS-portálon, a bejelentkezett felhasználónak már rendelkeznie kell Azure-fiókkal.
+
+1. Az OMS-portálon kattintson a **Beállítások** csempére.
+2. Kattintson a **Fiókok** fülre, majd az **Azure-előfizetés és adatforgalmi díjcsomag** fülre.
+3. Kattintson a használni kívánt adatforgalmi díjcsomagra.
+4. Kattintson a **Save** (Mentés) gombra.  
+   ![előfizetés és adatforgalmi díjcsomagok](./media/log-analytics-manage-access/subscription-tab.png)
+
+Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhely felső részén.
+
+![OMS menüszalag](./media/log-analytics-manage-access/data-plan-changed.png)
+
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>A Log Analytics adattárolási idejének módosítása
 
@@ -266,8 +272,8 @@ Az adatmegőrzés hosszának módosítása:
 2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
 3. Ekkor megjelenik a meglévő munkaterületek listája. Jelöljön ki egy munkaterületet.  
 4. A munkaterület panel **Általános** területén kattintson a **Megőrzés** elemre.  
-5. A csúszka segítségével növelheti vagy csökkentheti a megtartás napjainak számát, majd kattintson a **Mentés**
-![megtartás módosítása](./media/log-analytics-manage-access/manage-access-change-retention01.png) lehetőségre
+5. A csúszka segítségével növelje vagy csökkentse a megőrzési napok számát, majd kattintson a **Mentés** gombra.  
+    ![adatmegőrzés módosítása](./media/log-analytics-manage-access/manage-access-change-retention01.png)
 
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>Munkaterülethez tartozó Azure Active Directory-szervezet módosítása
 

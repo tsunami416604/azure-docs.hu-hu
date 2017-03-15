@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/15/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 9e1bcba086a9f70c689a5d7d7713a8ecdc764492
-ms.openlocfilehash: 8248e0a02cb0775a87f0c8130e53b98f8bcfe581
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e68815c2dafc596c3560ad3fcb2a7bf96d29182b
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/27/2017
 ## <a name="introduction"></a>Bevezetés
 Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *távoli figyelő* megoldás csatlakozik az eszközökhöz, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére használható, valamint az ezen streamre automatikusan válaszoló folyamatok létrehozásával az üzleti eredmények is javíthatók.
 
-Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált távoli figyelő megoldást. Valamint az előre konfigurált megoldás alapvető funkcióin is végigvezeti. Ezek közül számos funkcióhoz a megoldás irányítópultján keresztül férhet hozzá, amelyet a rendszer az előre konfigurált megoldás részeként telepít:
+Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált távoli figyelő megoldást. Valamint az előre konfigurált megoldás alapvető funkcióin is végigvezeti. Ezek közül számos funkcióhoz a megoldás *irányítópultján* keresztül férhet hozzá, amelyet a rendszer az előre konfigurált megoldás részeként telepít:
 
 ![Az előre konfigurált távoli figyelési megoldás irányítópultja][img-dashboard]
 
@@ -39,36 +39,58 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
+## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+
+Amikor üzembe helyezi az előre konfigurált távoli figyelési megoldást, az előre fel van töltve olyan erőforrásokkal, amelyekkel elvégezhető egy általános távoli figyelési forgatókönyv. Ebben a forgatókönyvben a megoldáshoz csatlakoztatott több eszköz váratlan hőmérsékletértékeket jelent. A következő forgatókönyvek bemutatják, hogyan végezheti el a következőket:
+
+* A váratlan hőmérsékletértékeket küldő eszközök azonosítása.
+* Ezen eszközök konfigurálása, hogy részletesebb telemetriát küldjenek.
+* A probléma megoldása ezen eszközök belső vezérlőprogramjának frissítésével.
+* Annak ellenőrzése, hogy a művelet megoldotta-e a problémát.
+
+A forgatókönyv fő előnye, hogy az összes műveletet távolról végezheti el, a megoldás irányítópultjáról. Nincs szüksége hozzá az eszközök fizikai címére.
+
 ## <a name="view-the-solution-dashboard"></a>A megoldás irányítópultjának megtekintése
+
 A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Megtekintheti például a telemetriát, eszközöket adhat hozzá és szabályokat konfigurálhat.
 
-1. Amikor a kiépítés befejeződött, és az előre konfigurált megoldás csempéje **Kész** állapotot jelez, kattintson az **Indítás** gombra a távoli figyelési megoldás új lapon való megnyitásához.
-   
-   ![Az előre konfigurált megoldás indítása][img-launch-solution]
-2. Alapértelmezés szerint a megoldás portálja a *megoldás irányítópultját* jeleníti meg. A bal oldali menüből választhat más nézeteket.
-   
-   ![Az előre konfigurált távoli figyelési megoldás irányítópultja][img-dashboard]
+1. Amikor a kiépítés befejeződött, és az előre konfigurált megoldás csempéje **Kész** állapotot jelez, válassza az **Indítás** gombot a távoli figyelési portál új lapon való megnyitásához.
+
+    ![Az előre konfigurált megoldás indítása][img-launch-solution]
+
+1. Alapértelmezés szerint a megoldás portálja az *irányítópultot* jeleníti meg. Az oldal bal oldali menüjével a megoldásportál más területeire navigálhat.
+
+    ![Az előre konfigurált távoli figyelési megoldás irányítópultja][img-menu]
 
 Az irányítópult az alábbi információkat jeleníti meg:
 
-* A térkép a megoldáshoz csatlakoztatott egyes eszközök helyét jeleníti meg. A megoldás első futtatásakor négy szimulált eszköz van. A szimulált eszközök Azure WebJobs feladatokként vannak megvalósítva, és a megoldás a Bing Térképek API-val jeleníti meg az információkat a térképen.
-* A **Telemetria előzményei** panel a páratartalommal és hőmérséklettel kapcsolatos telemetriát jelenít meg a kiválasztott eszközről közel valós időben, és összesített adatokat tartalmaz, például a maximális, minimális és átlagos páratartalmat.
-* A **Riasztások előzményei** panel közelmúltbeli riasztási eseményeket jelenít meg, amikor egy telemetriaérték túllépett egy küszöbértéken. Saját riasztásokat is meghatározhat az előre konfigurált megoldás által létrehozott példák mellett.
-* A **Feladatok** panel az ütemezett feladatok információit jeleníti meg. A **Felügyeleti feladatok** lapon ütemezheti a saját feladatait.
+* A megoldáshoz csatlakoztatott egyes eszközök helyét megjelenítő térképet. A megoldás első futtatásakor 25 szimulált eszköz található. A szimulált eszközök Azure WebJobs feladatokként vannak megvalósítva, és a megoldás a Bing Térképek API-val jeleníti meg az információkat a térképen. A [gyakori kérdésekből][lnk-faq] megtudhatja, hogyan teheti dinamikussá a térképet.
+* A **Telemetria előzményei** panelt, amely a páratartalommal és hőmérséklettel kapcsolatos telemetriát jelenít meg a kiválasztott eszközről közel valós időben, és összesített adatokat tartalmaz, például a maximális, minimális és átlagos páratartalmat.
+* A **Riasztások előzményei** panelt, amely közelmúltbeli riasztási eseményeket jelenít meg, amikor egy telemetriaérték túllépett egy küszöbértéket. Saját riasztásokat is meghatározhat az előre konfigurált megoldás által létrehozott példák mellett.
+* A **Feladatok** panelt, amely az ütemezett feladatok információit jeleníti meg. A **Felügyeleti feladatok** lapon ütemezheti a saját feladatait.
 
-## <a name="view-the-device-list"></a>Az eszközlista megtekintése
-Az *eszközlista* a megoldásban regisztrált összes eszközt megjeleníti. Az eszközlistában megtekintheti és szerkesztheti az eszközök metaadatait, eszközöket adhat hozzá vagy távolíthat el, és metódusokat hívhat meg az eszközökön.
+## <a name="view-alarms"></a>Riasztások megtekintése
 
-1. Kattintson a bal oldali menü **Eszközök** elemére a megoldás eszközlistájának megjelenítéséhez.
-   
-   ![Az eszközök listája az irányítópulton][img-devicelist]
-2. Az eszközlistán először a kiépítési folyamat által létrehozott négy szimulált eszköz látható. Hozzáadhat további szimulált eszközöket és fizikai eszközöket is a megoldáshoz.
-3. Az eszközlistán látható információk testreszabásához kattintson az **Oszlopszerkesztőre**. Hozzáadhat és eltávolíthat jelentett tulajdonságot és címkeértékeket megjelenítő oszlopokat. Átrendezheti és át is nevezheti az oszlopokat:
-   
-   ![Oszlopszerkesztő az irányítópulton][img-columneditor]
-4. Az eszközrészletek megtekintéséhez kattintson egy eszközre az eszközlistában.
-   
-   ![Eszközadatok az irányítópulton][img-devicedetails]
+A Riasztások előzményei panel azt jelzi, hogy öt eszköz jelent a vártnál magasabb telemetriaértékeket.
+
+![TEENDŐ Riasztások előzményei a megoldás irányítópultján][img-alarms]
+
+> [!NOTE]
+> Ezeket a riasztásokat egy olyan szabály hozza létre, amely az előre konfigurált megoldás része. Ez a szabály riasztást hoz létre, amikor egy eszköz által küldött hőmérsékletérték 60-nál magasabb. Meghatározhat saját szabályokat és műveleteket a bal oldali menüben a [Szabályok](#add-a-rule) és a [Műveletek](#add-an-action) lehetőség kiválasztásával.
+
+## <a name="view-devices"></a>Eszközök megtekintése
+
+Az *eszközök* lista a megoldásban regisztrált összes eszközt megjeleníti. Az eszközlistában megtekintheti és szerkesztheti az eszközök metaadatait, eszközöket adhat hozzá vagy távolíthat el, és metódusokat hívhat meg az eszközökön. Az eszközlistában szűrheti és rendezheti is az eszközök listáját. Az eszközlistán látható oszlopokat szintén testre szabhatja.
+
+1. Válassza az **Eszközök** elemet a megoldás eszközlistájának megjelenítéséhez.
+
+   ![Az eszközlista megtekintése a megoldásportálon][img-devicelist]
+
+1. Az eszközlistán először a kiépítési folyamat által létrehozott 25 szimulált eszköz látható. Hozzáadhat további szimulált eszközöket és fizikai eszközöket is a megoldáshoz.
+
+1. Az eszközrészletek megtekintéséhez válasszon egy eszközt az eszközlistából.
+
+   ![Az eszközrészletek megtekintése a megoldásportálon][img-devicedetails]
 
 Az **Eszköz részletei** panel hat szakaszból áll:
 
@@ -79,215 +101,242 @@ Az **Eszköz részletei** panel hat szakaszból áll:
 * Az **Eszköztulajdonságok** szakaszban az identitásjegyzékben lévő információk láthatók, például az eszközazonosító és a hitelesítési kulcsok.
 * A **Legutóbbi feladatok** szakaszban az eszköz által legutóbb megcélzott feladatok információi láthatók.
 
-## <a name="customize-the-device-icon"></a>Az eszközikon testreszabása
+## <a name="filter-the-device-list"></a>Az eszközlista szűrése
+
+Szűrő használatával megjelenítheti csak azokat az eszközöket, amelyek váratlan hőmérsékletértékeket küldenek. A távoli megfigyelés előre konfigurált megoldása tartalmazza a **Nem kifogástalan eszközök** szűrőt, amellyel a 60 feletti hőmérsékleti középértékkel rendelkező eszközöket lehet megjeleníteni. Emellett [saját szűrőket is létrehozhat](#add-a-filter).
+
+1. Az elérhető szűrők listájának megjelenítéséhez válassza a **Mentett szűrő megnyitása** lehetőséget. Ezután válassza a **Nem kifogástalan eszközök** elemet a szűrő alkalmazásához:
+
+    ![A szűrők listájának megjelenítése][img-unhealthy-filter]
+
+1. Az eszközlista most csak a 60 feletti hőmérsékleti középértékkel rendelkező eszközöket jeleníti meg.
+
+    ![A nem kifogástalan eszközöket megjelenítő szűrt eszközlista megtekintése][img-filtered-unhealthy-list]
+
+## <a name="update-desired-properties"></a>Eszköz kívánt tulajdonságainak frissítése
+
+Sikerült tehát azonosítani néhány eszközt, amelyek javításra szorulhatnak. Tegyük fel, Ön úgy dönt, hogy a 15 másodperc nem elegendő a probléma egyértelmű diagnosztizálásához. A telemetriai gyakoriság öt másodpercre történő módosításával több adatpont nyerhető a hiba jobb felderítéséhez. Ez a beállításmódosítás a távoli eszközökre is elküldhető a megoldásportálról. Ha elvégezte a módosítást, elemezheti a hatását, majd az eredmény szerint cselekedhet.
+
+Az alábbi lépésekkel futtathatja azt a feladatot, amellyel a megfelelő értékre módosíthatja a **TelemetryInterval** kívánt tulajdonságot az érintett eszközökön. Amikor az eszközök fogadják a **TelemetryInterval** új tulajdonságértékét, a beállításuk úgy változik meg, hogy 15 másodperc helyett öt másodpercenként küldjék a telemetriai adatokat:
+
+1. Amikor a nem kifogástalan eszközök láthatók az eszközlistában, válassza a **Feladatütemező**, majd az **Ikereszköz szerkesztése** elemet.
+
+1. Hívja meg a **Telemetriai időköz módosítása** feladatot.
+
+1. Módosítsa a **Kívánt tulajdonság** (**desired.Config.TelemetryInterval**) értékét öt másodpercre.
+
+1. Válassza az **Ütemezés** elemet.
+
+    ![A TelemetryInterval tulajdonság módosítása öt másodperc értékre][img-change-interval]
+
+1. A feladat végrehajtását a portál **Felügyeleti feladatok** lapján kísérheti figyelemmel.
+
+> [!NOTE]
+> Ha egy különálló eszközhöz szeretne módosítani egy kívánt tulajdonságot, feladat futtatása helyett használja az **Eszköz részletei** panel **Kívánt tulajdonságok** szakaszát.
+
+Ez a feladat beállítja a **TelemetryInterval** kívánt tulajdonság értékét az ikereszközön a szűrővel választott összes eszközön. Az eszközök lekérdezik ezt az értéket az ikereszközről, és ennek megfelelően frissítik a működésüket. Amikor egy eszköz lekérdezi és feldolgozza az ikereszközről érkező kívánt tulajdonságot, beállítja a megfelelő jelentett értéktulajdonságot.
+
+## <a name="invoke-methods"></a>Metódusok meghívása
+
+Amíg a feladat fut, a nem kifogástalan eszközök listájában észreveszi, hogy az összes ilyen eszköz belső vezérlőprogramjának verziója elavult (az 1.6-os verziónál régebbi).
+
+![A nem kifogástalan eszközök belső vezérlőprogramjának jelentett verziója – megtekintés][img-old-firmware]
+
+Lehetséges, hogy a belső vezérlőprogram verziója a váratlan hőmérsékleti értékek forrása, mivel a kifogástalan eszközöket nemrég frissítette a 2.0-s verzióra. A **Régi belső vezérlőprogrammal rendelkező eszközök** beépített szűrővel azonosíthatók az elavult belsővezérlőprogram-verziót használó eszközök. A portálról ezután távolról frissítheti az összes olyan eszközt, amelyen még a belső vezérlőprogram régi verziói futnak:
+
+1. Az elérhető szűrők listájának megjelenítéséhez válassza a **Mentett szűrő megnyitása** lehetőséget. Ezután válassza a **Régi belső vezérlőprogrammal rendelkező eszközök** elemet a szűrő alkalmazásához:
+
+    ![A szűrők listájának megjelenítése][img-old-filter]
+
+1. Az eszközlista most csak a régi verziójú belső vezérlőprogrammal rendelkező eszközöket jeleníti meg. Ez a lista a **Nem kifogástalan eszközök** szűrővel azonosított öt eszköz mellett három további eszközt tartalmaz:
+
+    ![A régi eszközöket megjelenítő szűrt eszközlista megtekintése][img-filtered-old-list]
+
+1. Válassza a **Feladatütemező**, majd a **Metódus meghívása** elemet.
+
+1. A **Feladat neve** értéket állítsa a következőre: **Belső vezérlőprogram frissítése a 2.0-s verzióra**.
+
+1. A **Metódus** beállításhoz válassza az **InitiateFirmwareUpdate** értéket.
+
+1. Az **FwPackageUri** paramétert állítsa a következőre: **https://iotrmassets.blob.core.windows.net/firmwares/FW20.bin**.
+
+1. Válassza az **Ütemezés** elemet. Az alapértelmezett beállítás a feladat azonnali futtatása.
+
+    ![Feladat létrehozása a kijelölt eszközök belső vezérlőprogramjának frissítéséhez][img-method-update]
+
+> [!NOTE]
+> Ha egy különálló eszközhöz szeretne meghívni egy metódust, feladat futtatása helyett használja az **Eszköz részletei** panel **Metódusok** elemét.
+
+Ez a feladat meghívja az **InitiateFirmwareUpdate** közvetlen metódust a szűrővel választott összes eszköz esetében. Az eszközök azonnal választ küldenek az IoT Hubnak, majd aszinkron módon elindítják a belső vezérlőprogram frissítésének folyamatát. Az eszköz a jelentett tulajdonságértékeken keresztül biztosít állapotinformációt a belső vezérlőprogram frissítésének folyamatáról, ahogy a következő képernyőképeken is látható. A **Frissítés** ikonnal frissítheti az információkat az eszköz- és feladatlistákon:
+
+![A belső vezérlőprogram épp futó frissítésének listáját megjelenítő feladatlista][img-update-1]
+![A belső vezérlőprogram frissítésének állapotát megjelenítő eszközlista][img-update-2]
+![A belső vezérlőprogram frissítésének befejezett listáját megjelenítő feladatlista][img-update-3]
+
+> [!NOTE]
+> Éles környezetben a feladatokat lehet úgy ütemezni, hogy a tervezett karbantartási időszakban fussanak.
+
+## <a name="scenario-review"></a>Forgatókönyv áttekintése
+
+Ebben a forgatókönyvben azonosított egy lehetséges hibát néhány távoli eszközével kapcsolatban, amihez az irányítópult riasztáselőzményei mellett egy szűrőt használt. Ezután a szűrő és egy feladat alkalmazásával távolról beállította az eszközöket úgy, hogy több információt biztosítsanak a probléma azonosításához. Végül egy szűrő és egy feladat segítségével karbantartást ütemezett az érintett eszközökön. Ha visszatér az irányítópulthoz, ellenőrizheti, hogy érkezett-e további riasztás az érintett eszközökről. Egy szűrővel ellenőrizheti, hogy a belső vezérlőprogram naprakész-e a megoldás összes eszközén, és meggyőződhet arról, hogy nincsenek további nem kifogástalan állapotú eszközök:
+
+![Szűrő, amely kimutatja, hogy az összes eszköz belső vezérlőprogramja naprakész][img-updated]
+
+![Szűrő, amely kimutatja, hogy az összes eszköz kifogástalan állapotú][img-healthy]
+
+## <a name="other-features"></a>Egyéb jellemzők
+
+A következő szakaszokban az előre konfigurált távoli figyelési megoldás néhány egyéb jellemzőjéről lesz szó, amelyek nem szerepeltek az előző forgatókönyvben.
+
+### <a name="customize-columns"></a>Oszlopok testreszabása
+
+Az eszközlistán látható információk testreszabásához válassza ki az **Oszlopszerkesztőt**. Hozzáadhat és eltávolíthat jelentett tulajdonságot és címkeértékeket megjelenítő oszlopokat. Átrendezheti és át is nevezheti az oszlopokat:
+
+   ![Az Oszlopszerkesztő az eszközlistában][img-columneditor]
+
+### <a name="customize-the-device-icon"></a>Az eszközikon testreszabása
 
 Az **Eszköz részletei** panelen szabhatja testre az eszközlistában megjelenő eszközikont, a következő módon:
 
-1. Kattintson a ceruza ikonra az eszköz **Kép szerkesztése** panelének megnyitásához:
-   
+1. Válassza a ceruza ikont az eszköz **Rendszerkép szerkesztése** panelének megnyitásához:
+
    ![Eszközkép szerkesztőjének megnyitása][img-startimageedit]
-2. Töltsön fel egy új képet, vagy használja az egyik meglévő képet, majd kattintson a **Mentés** parancsra:
-   
+
+1. Töltsön fel egy új rendszerképet vagy használja az egyik meglévő rendszerképet, majd válassza a **Mentés** parancsot:
+
    ![Eszközkép szerkesztőjének szerkesztési folyamata][img-imageedit]
-3. A kiválasztott kép most megjelenik az eszköz **Ikon** oszlopában.
+
+1. A kiválasztott kép most megjelenik az eszköz **Ikon** oszlopában.
 
 > [!NOTE]
 > A rendszer a képet a Blob Storage-ban tárolja. Az ikereszközben lévő címke tartalmazza a Blob Storage-ban lévő kép hivatkozását.
-> 
-> 
 
-## <a name="invoke-a-method-on-a-device"></a>Metódus meghívása az eszközön
-Az **Eszköz részletei** panelen metódusokat hívhat meg az eszközön. Amikor egy eszköz először elindul, információkat küld a megoldásnak az általa támogatott metódusokról.
+### <a name="add-a-device"></a>Eszköz hozzáadása
 
-1. Kattintson a kiválasztott eszköz **Eszköz részletei** panelének **Metódusok** elemére:
-   
-   ![Eszközmetódusok az irányítópulton][img-devicemethods]
-2. Válassza a metódusok listájában az **Újraindítás** elemet.
-3. Kattintson a **Metódus meghívása** parancsra.
-4. A metódus előzményeiben láthatja a metódus meghívásának állapotát.
-   
-   ![Metódusállapot az irányítópulton][img-pingmethod]
-
-A megoldás nyomon követi az általa indított összes metódus állapotát. Amikor az eszköz befejezi a metódus futtatását, egy új bejegyzést lát a metóduselőzmények táblázatában.
-
-Egyes metódusok aszinkron feladatokat indítanak az eszközön. Az **InitiateFirmwareUpdate** metódus például egy aszinkron feladatot indít a frissítés elvégzéséhez. Az eszköz jelentett tulajdonságokkal jelenti a belső vezérlőprogram frissítésének állapotát annak futtatása során.
-
-## <a name="send-a-command-to-a-device"></a>Parancs elküldése egy eszközre
-Az **Eszköz részletei** panelen parancsokat küldhet az eszközre. Amikor egy eszköz először elindul, információkat küld a megoldásnak az általa támogatott parancsokról.
-
-1. A kiválasztott eszköz **Eszköz részletei** panelén kattintson a **Parancsok** elemre:
-   
-   ![Eszközparancsok az irányítópulton][img-devicecommands]
-2. Válassza a **PingDevice** parancsot a parancslistából.
-3. Kattintson a **Parancs küldése** parancsra.
-4. A parancs előzményeiben láthatja a parancs állapotát.
-   
-   ![Parancsállapot az irányítópulton][img-pingcommand]
-
-A megoldás nyomon követi az általa küldött összes parancs állapotát. Az eredmény kezdetben **Függőben** állapotú. Amikor az eszköz jelenti, hogy végrehajtotta a parancsot, az eredmény **Sikeres** állapotra vált.
-
-## <a name="add-a-new-simulated-device"></a>Új szimulált eszköz hozzáadása
-Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható négy mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközöknek a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
+Az előre konfigurált megoldás üzembe helyezésekor az eszközlistában látható 25 mintaeszköz kiosztása automatikusan megtörténik. Ezek az eszközök Azure WebJobs-feladatban futó, *szimulált eszközök*. A szimulált eszközök megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség. Valós eszközöknek a megoldáshoz történő csatlakoztatásáról a következő oktatóanyagban olvashat: [Az eszköz csatlakoztatása az előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
 
 Az alábbi lépések bemutatják, hogyan adhat szimulált eszközt a megoldáshoz:
 
 1. Lépjen vissza az eszközlistára.
-2. Egy eszköz hozzáadásához kattintson a bal alsó sarokban lévő **+ Eszköz hozzáadása** gombra.
-   
+
+1. Egy eszköz hozzáadásához válassza a bal alsó sarokban lévő **+ Eszköz hozzáadása** gombot.
+
    ![Eszköz hozzáadása az előre konfigurált megoldáshoz][img-adddevice]
-3. Kattintson a **Szimulált eszköz** csempe **Új hozzáadása** elemére.
-   
+
+1. Válassza a **Szimulált eszköz** csempe **Új hozzáadása** elemét.
+
    ![Az új eszköz adatainak megadása az irányítópulton][img-addnew]
-   
+
    Új szimulált eszköz létrehozása mellett fizikai eszközt is hozzáadhat egy **Egyéni eszköz** létrehozásával. További információ fizikai eszközöknek a megoldáshoz csatlakoztatásáról: [Az eszköz csatlakoztatása az IoT Suite előre konfigurált távoli figyelési megoldáshoz][lnk-connect-rm].
-4. Válassza a **Meghatározom a saját eszközazonosítómat** elemet, és írjon be egy egyéni eszközazonosító nevet, például a **mydevice_01** nevet.
-5. Kattintson a **Létrehozás** gombra.
-   
+
+1. Válassza a **Meghatározom a saját eszközazonosítómat** elemet, és írjon be egy egyéni eszközazonosító nevet, például a **mydevice_01** nevet.
+
+1. Válassza a **Létrehozás** elemet.
+
    ![Új eszköz mentése][img-definedevice]
-6. A **Szimulált eszköz hozzáadása** folyamat 3. lépésében kattintson a **Kész** gombra az eszközlistához való visszatéréshez.
-7. Az eszközlistában láthatja a **futó** eszközét.
-   
+
+1. A **Szimulált eszköz hozzáadása** folyamat 3. lépésében válassza a **Kész** gombot az eszközlistához való visszatéréshez.
+
+1. Az eszközlistában láthatja a **futó** eszközét.
+
     ![Új eszköz megtekintése az eszközlistában][img-runningnew]
-8. Az új eszköz szimulált telemetriáját is megtekintheti az irányítópulton:
-   
+
+1. Az új eszköz szimulált telemetriáját is megtekintheti az irányítópulton:
+
     ![Az új eszköz telemetriájának megtekintése][img-runningnew-2]
 
-## <a name="device-properties"></a>Eszköztulajdonságok
-A előre konfigurált távoli figyelési megoldás [ikereszközökkel][lnk-device-twin] szinkronizálja az eszköz metaadatait az eszközök és a megoldás háttérrendszere között. Az ikereszközök egyéni eszközök tulajdonságértékeit tároló, az IoT Hubon tárolt JSON-dokumentumok. Az eszközök rendszeres időközönként, *jelentett tulajdonságokként* küldenek metaadatokat a megoldás háttérrendszerének, hogy azokat az ikereszköz tárolja. A megoldás háttérrendszere beállíthatja a *kívánt tulajdonságokat* az ikereszközön, hogy a metaadatok frissítését elküldje az eszközöknek. A jelentett tulajdonságok az eszköz által legutóbb küldött metaadatértékeket jelenítik meg. További információ: [Eszközidentitás-jegyzék, ikereszköz és DocumentDB][lnk-devicemetadata].
+### <a name="disable-and-delete-a-device"></a>Eszköz letiltása és törlése
 
-> [!NOTE]
-> Az eszköz DocumentDB-adatbázissal is tárolja a parancsokhoz és metódusokhoz kapcsolódó eszközadatokat.
-> 
-> 
-
-1. Lépjen vissza az eszközlistára.
-2. Válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szerkesztés** elemre az **Ikereszköz – kívánt tulajdonságok** szerkesztéséhez:
-   
-   ![Eszköz kívánt tulajdonságainak szerkesztése][img-editdevice]
-3. Állítsa a **Kívánt tulajdonság nevét** **Szélesség** névre, az értékét pedig **47.639521** értékre. Ezután kattintson az **Eszközjegyzék módosításainak mentése** elemre.
-   
-    ![Az eszköz kívánt tulajdonságának szerkesztése][img-editdevice2]
-4. Az **Eszköz részletei** panelen az új szélességérték először egy kívánt tulajdonságként jelenik meg, a régi szélességérték pedig jelentett tulajdonságként jelenik meg:
-   
-    ![Jelentett tulajdonság megtekintése][img-editdevice3]
-5. Jelenleg az előre konfigurált megoldásban a szimulált eszközök csak a **Desired.Config.TemperatureMeanValue** és a **Desired.Config.TelemetryInterval** kívánt tulajdonságot dolgozzák fel. A valós eszközöknek az összes kívánt tulajdonságot be kell olvasniuk az IoT Hubról, módosítaniuk kell annak konfigurációját, és jelentett tulajdonságokként jelenteniük kell az új értékeket az IoT Hubnak.
-
-Az **Eszköz részletei** panelen az **Ikereszköz – címkék** szakaszt ugyanúgy szerkesztheti, ahogyan az **Ikereszköz – kívánt tulajdonságok** szakaszt. De a kívánt tulajdonságokkal ellentétben a címkék nincsenek szinkronizálva az eszközzel. A címkék csak az ikereszközön léteznek az IoT Hubon. A címkék az eszközlistában egyéni szűrők építéséhez hasznosak.
-
-## <a name="sort-the-device-list"></a>Az eszközlista rendezése
-
-Az eszközlista rendezéséhez kattintson egy oszlopfejléc mellé. Az első kattintás növekvő sorrendű, a második kattintás csökkenő sorrendű rendezést eredményez:
-
-![Eszközlista rendezése][img-sortdevices]
-
-## <a name="filter-the-device-list"></a>Az eszközlista szűrése
-
-Az eszközlistában létrehozhat, menthet és újratölthet szűrőket az IoT Hubhoz csatlakoztatott eszközök testreszabott listájának megjelenítéséhez. Szűrő létrehozása:
-
-1. Kattintson az eszközlista feletti szűrő szerkesztése ikonra:
-   
-   ![A szűrőszerkesztő megnyitása][img-editfiltericon]
-2. A **Szűrőszerkesztő** szakaszban adjon hozzá mezőket, operátorokat és értékeket az eszközlista szűréséhez. Több záradékot is hozzáadhat a szűrő pontosítása érdekében. Kattintson a **Szűrés** parancsra a szűrő alkalmazásához:
-   
-   ![Szűrő létrehozása][img-filtereditor]
-3. Ebben a példában a listát gyártó és modellszám alapján szűrjük:
-   
-   ![Szűrt lista][img-filterelist]
-4. Ha egyéni névvel szeretné menteni a szűrőt, kattintson a **Mentés másként** ikonra:
-   
-   ![Szűrő mentése][img-savefilter]
-5. Ha egy korábban mentett szűrőt szeretne újból alkalmazni, kattintson a **Mentett szűrő megnyitása** ikonra:
-   
-   ![Szűrő megnyitása][img-openfilter]
-
-Eszközazonosító, eszközállapot, kívánt tulajdonságok, jelentett tulajdonságok és címkék alapján hozhat létre szűrőket.
-
-> [!NOTE]
-> A **Szűrőszerkesztő** **Speciális nézetében** szerkesztheti közvetlenül a lekérdezés szövegét.
-> 
-> 
-
-## <a name="add-a-rule-for-the-new-device"></a>Szabály hozzáadása az új eszközhöz
-A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban olyan szabályt ad hozzá, amely riasztást küld, amikor az új eszköz által jelentett hőmérséklet meghaladja a 47 fokot. Mielőtt elkezdené, figyelje meg, hogy az irányítópulton az új eszköz telemetriaelőzményei szerint az eszköz hőmérséklete soha nem lép túl 45 fokon.
-
-1. Lépjen vissza az eszközlistára.
-2. Egy szabály hozzáadásához válassza ki az új eszközt az **Eszközlistában**, majd kattintson a **Szabály hozzáadása** gombra.
-3. Hozzon létre egy szabályt, amely a **Hőmérsékletet** használja adatmezőként és az **AlarmTemp** elemet használja kimenetként, amikor a hőmérséklet meghaladja a 47 fokot:
-   
-    ![Eszközszabály hozzáadása][img-adddevicerule]
-4. A módosítások mentéséhez kattintson a **Mentés és szabályok megtekintése** parancsra.
-5. Az új eszköz részleteit tartalmazó panelen kattintson a **Parancsok** elemre.
-   
-   ![Eszközszabály hozzáadása][img-adddevicerule2]
-6. Válassza a **ChangeSetPointTemp** parancsot a parancslistából, és a **SetPointTemp** értékét állítsa 45-re. Ezután kattintson a **Parancs küldése** parancsra:
-   
-   ![Eszközszabály hozzáadása][img-adddevicerule3]
-7. Lépjen vissza a megoldás irányítópultjára. Rövid idő után új bejegyzést fog látni a **Riasztások előzményei** panelen, amikor az új eszköz hőmérséklete meghaladja a 47 fokos küszöbértéket:
-   
-   ![Eszközszabály hozzáadása][img-adddevicerule4]
-8. Az irányítópult **Szabályok** oldalán tekintheti át és szerkesztheti az összes szabályt:
-   
-    ![Eszközszabályok listázása][img-rules]
-9. Az irányítópult **Műveletek** oldalán tekintheti át és szerkesztheti a szabályra adott válaszként elvégezhető összes műveletet:
-   
-    ![Eszközműveletek listázása][img-actions]
-
-> [!NOTE]
-> Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül. További információ: [Logikai alkalmazás csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásához][lnk-logicapptutorial].
-> 
-> 
-
-## <a name="disable-and-remove-devices"></a>Eszközök letiltása és eltávolítása
 Letilthatja az eszközöket, és a letiltásuk után eltávolíthatja őket:
 
 ![Eszköz letiltása és eltávolítása][img-disable]
 
-## <a name="run-jobs"></a>Feladatok futtatása
-Feladatokat ütemezhet több művelet az eszközökön történő elvégzéséhez. Létrehoz egy feladatot az eszközök listájához. Ez a lista tartalmazhatja az összes eszközt, vagy lehet egy, az eszközlistában lévő [szűrőeszközökkel](#filter-the-device-list) létrehozott szűrt lista. Egy feladat metódust hívhat meg a lista összes eszközén, vagy frissítheti az eszközlistában lévő összes eszköz ikereszközét.
+### <a name="add-a-rule"></a>Szabály hozzáadása
 
-### <a name="create-a-job-to-invoke-a-method"></a>Feladat létrehozása metódus meghívásához
+A most hozzáadott új eszköznek még nincsenek szabályai. Ebben a szakaszban olyan szabályt ad hozzá, amely riasztást küld, amikor az új eszköz által jelentett hőmérséklet meghaladja a 47 fokot. Mielőtt elkezdené, figyelje meg, hogy az irányítópulton az új eszköz telemetriaelőzményei szerint az eszköz hőmérséklete soha nem lép túl 45 fokon.
 
-A következő lépések bemutatják, hogyan hozhat létre egy, a lista összes eszközén a belső vezérlőprogram frissítési metódusát elindító feladatot. A metódus csak a metódust támogató eszközökön lesz meghívva:
+1. Lépjen vissza az eszközlistára.
 
-1. Az eszközlistában lévő szűrőeszközökkel hozhatja létre azon eszközök listáját, amelyek a belső vezérlőprogram frissítését fogadják:
-   
-   ![A szűrőszerkesztő megnyitása][img-editfiltericon]
-2. A szűrt listában kattintson a **Feladatütemezőre**:
-   
-   ![A feladatütemező megnyitása][img-clickjobscheduler]
-3. A **Feladat ütemezése** panelen kattintson a **Metódus meghívása** parancsra.
-4. A **Metódus meghívása** lapon írja be a meghívni kívánt metódus részleteit, majd kattintson az **Ütemezés** parancsra:
-   
-   ![Metódusfeladat konfigurálása][img-invokemethodjob]
+1. Egy szabály hozzáadásához válassza ki az új eszközt az **Eszközlistában**, majd válassza a **Szabály hozzáadása** gombot.
 
-Az **InitiateFirmwareUpdate** metódus aszinkron módon indít el egy feladatot az eszközön, és azonnal visszatér. Ezután a belső vezérlőprogram frissítési folyamata jelentett tulajdonságokkal jelenti a frissítési folyamatot annak futtatása során.
+1. Hozzon létre egy szabályt, amely a **Hőmérsékletet** használja adatmezőként és az **AlarmTemp** elemet használja kimenetként, amikor a hőmérséklet meghaladja a 47 fokot:
 
-### <a name="create-a-job-to-edit-the-device-twin"></a>Feladat létrehozása az ikereszköz szerkesztéséhez
+    ![Eszközszabály hozzáadása][img-adddevicerule]
 
-A következő lépések bemutatják, hogyan hozhat létre egy, a lista összes eszközének ikereszközét szerkesztő feladatot:
+1. A módosítások mentéséhez válassza a **Mentés és szabályok megtekintése** parancsot.
 
-1. Az eszközlistában lévő szűrőeszközökkel hozhatja létre azon eszközök listáját, amelyek az ikereszközök szerkesztéseit fogadják:
-   
-   ![A szűrőszerkesztő megnyitása][img-editfiltericon]
-2. A szűrt listában kattintson a **Feladatütemezőre**:
-   
-   ![A feladatütemező megnyitása][img-clickjobscheduler]
-3. A **Feladat ütemezése** panelen kattintson az **Ikereszköz szerkesztése** elemre.
-4. Az **Ikereszköz szerkesztése** lapon írja be a szerkesztendő **Kívánt tulajdonságok** és **Címkék** részleteit, majd kattintson az **Ütemezés** parancsra:
-   
-   ![Metódusfeladat konfigurálása][img-edittwinjob]
+1. Az új eszköz részleteit tartalmazó panelen válassza a **Parancsok** elemet.
 
-### <a name="monitor-the-job"></a>A feladat figyelése
-Figyelheti a **Felügyeleti feladatok** lapon ütemezett feladatok állapotát. A **Feladat részletei** panelen jelennek meg a kiválasztott feladattal kapcsolatos információk:
-   
-   ![Feladat állapotának megtekintése][img-jobstatus]
+    ![Eszközszabály hozzáadása][img-adddevicerule2]
 
-A feladatokkal kapcsolatos információkat az **irányítópulton** is megtekintheti:
-   
-   ![Feladatok megtekintése az irányítópulton][img-jobdashboard]
+1. Válassza a **ChangeSetPointTemp** parancsot a parancslistából, és a **SetPointTemp** értékét állítsa 45-re. Ezután válassza a **Parancs küldése** elemet:
 
+    ![Eszközszabály hozzáadása][img-adddevicerule3]
+
+1. Lépjen vissza az irányítópultra. Rövid idő után új bejegyzést fog látni a **Riasztások előzményei** panelen, amikor az új eszköz hőmérséklete meghaladja a 47 fokos küszöbértéket:
+
+    ![Eszközszabály hozzáadása][img-adddevicerule4]
+
+1. Az irányítópult **Szabályok** oldalán tekintheti át és szerkesztheti az összes szabályt:
+
+    ![Eszközszabályok listázása][img-rules]
+
+1. Az irányítópult **Műveletek** oldalán tekintheti át és szerkesztheti a szabályra adott válaszként elvégezhető összes műveletet:
+
+    ![Eszközműveletek listázása][img-actions]
+
+> [!NOTE]
+> Olyan műveletek határozhatók meg, amelyek e-mail-üzenetet vagy SMS-t küldenek egy szabályra válaszul, vagy üzletági rendszerrel integrálhatók egy [logikai alkalmazáson][lnk-logic-apps] keresztül. További információ: [Logikai alkalmazás csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldásához][lnk-logicapptutorial].
+
+### <a name="manage-filters"></a>Szűrők kezelése
+
+Az eszközlistában létrehozhat, menthet és újratölthet szűrőket az IoT Hubhoz csatlakoztatott eszközök testreszabott listájának megjelenítéséhez. Szűrő létrehozása:
+
+1. Válassza az eszközlista feletti szűrő szerkesztése ikont:
+
+    ![A szűrőszerkesztő megnyitása][img-editfiltericon]
+
+1. A **Szűrőszerkesztő** szakaszban adjon hozzá mezőket, operátorokat és értékeket az eszközlista szűréséhez. Több záradékot is hozzáadhat a szűrő pontosítása érdekében. Válassza a **Szűrés** parancsot a szűrő alkalmazásához:
+
+    ![Szűrő létrehozása][img-filtereditor]
+
+1. Ebben a példában a listát gyártó és modellszám alapján szűrjük:
+
+    ![Szűrt lista][img-filterelist]
+
+1. Ha egyéni névvel szeretné menteni a szűrőt, válassza a **Mentés másként** ikont:
+
+    ![Szűrő mentése][img-savefilter]
+
+1. Ha egy korábban mentett szűrőt szeretne újból alkalmazni, válassza a **Mentett szűrő megnyitása** ikont:
+
+    ![Szűrő megnyitása][img-openfilter]
+
+Eszközazonosító, eszközállapot, kívánt tulajdonságok, jelentett tulajdonságok és címkék alapján hozhat létre szűrőket. Az **Eszköz részletei** panel **Címkék** szakaszában egyéni címkéket adhat az eszközhöz, egy feladat futtatásával pedig egyszerre több eszközön frissítheti a címkéket.
+
+> [!NOTE]
+> A **Szűrőszerkesztő** **Speciális nézetében** szerkesztheti közvetlenül a lekérdezés szövegét.
+
+### <a name="commands"></a>Parancsok
+
+Az **Eszköz részletei** panelen parancsokat küldhet az eszközre. Amikor egy eszköz először elindul, információkat küld a megoldásnak az általa támogatott parancsokról. A parancsok és metódusok közötti különbségekről [az Azure IoT Hub felhő és eszköz közötti kommunikációs lehetőségeiről][lnk-c2d-guidance] szóló cikkben talál további információt.
+
+1. A kiválasztott eszköz **Eszköz részletei** panelén válassza a **Parancsok** elemet:
+
+   ![Eszközparancsok az irányítópulton][img-devicecommands]
+
+1. Válassza a **PingDevice** parancsot a parancslistából.
+
+1. Válassza a **Parancs küldése** elemet.
+
+1. A parancs előzményeiben láthatja a parancs állapotát.
+
+   ![Parancsállapot az irányítópulton][img-pingcommand]
+
+A megoldás nyomon követi az általa küldött összes parancs állapotát. Az eredmény kezdetben **Függőben** állapotú. Amikor az eszköz jelenti, hogy végrehajtotta a parancsot, az eredmény **Sikeres** állapotra vált.
 
 ## <a name="behind-the-scenes"></a>A színfalak mögött
+
 Előre konfigurált megoldás üzembe helyezésekor az üzembehelyezési folyamat több erőforrást hoz létre a kiválasztott Azure-előfizetésben. Ezeket az erőforrásokat az Azure [Portalon][lnk-portal] tekintheti meg. Az üzembe helyezési folyamat létrehoz egy **erőforráscsoportot** az előre konfigurált megoldáshoz kiválasztott néven alapuló névvel:
 
 ![Előre konfigurált megoldás az Azure Portalon][img-portal]
@@ -304,10 +353,9 @@ Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előf
 
 > [!NOTE]
 > Ahhoz, hogy biztosan törölje az előre konfigurált megoldáshoz kapcsolódó összes elemet, törölje a megoldást az [azureiotsuite.com][lnk-azureiotsuite] webhelyről, és ne törölje az erőforráscsoportot a portálon.
-> 
-> 
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT Suite használatával:
 
 * [A távoli figyelési előre konfigurált megoldás bemutatója][lnk-rm-walkthrough]
@@ -316,21 +364,18 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
 [img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
+[img-menu]: media/iot-suite-getstarted-preconfigured-solutions/menu.png
 [img-devicelist]: media/iot-suite-getstarted-preconfigured-solutions/devicelist.png
+[img-alarms]: media/iot-suite-getstarted-preconfigured-solutions/alarms.png
 [img-devicedetails]: media/iot-suite-getstarted-preconfigured-solutions/devicedetails.png
 [img-devicecommands]: media/iot-suite-getstarted-preconfigured-solutions/devicecommands.png
-[img-devicemethods]: media/iot-suite-getstarted-preconfigured-solutions/devicemethods.png
 [img-pingcommand]: media/iot-suite-getstarted-preconfigured-solutions/pingcommand.png
-[img-pingmethod]: media/iot-suite-getstarted-preconfigured-solutions/pingmethod.png
 [img-adddevice]: media/iot-suite-getstarted-preconfigured-solutions/adddevice.png
 [img-addnew]: media/iot-suite-getstarted-preconfigured-solutions/addnew.png
 [img-definedevice]: media/iot-suite-getstarted-preconfigured-solutions/definedevice.png
 [img-runningnew]: media/iot-suite-getstarted-preconfigured-solutions/runningnew.png
 [img-runningnew-2]: media/iot-suite-getstarted-preconfigured-solutions/runningnew2.png
 [img-rules]: media/iot-suite-getstarted-preconfigured-solutions/rules.png
-[img-editdevice]: media/iot-suite-getstarted-preconfigured-solutions/editdevice.png
-[img-editdevice2]: media/iot-suite-getstarted-preconfigured-solutions/editdevice2.png
-[img-editdevice3]: media/iot-suite-getstarted-preconfigured-solutions/editdevice3.png
 [img-adddevicerule]: media/iot-suite-getstarted-preconfigured-solutions/addrule.png
 [img-adddevicerule2]: media/iot-suite-getstarted-preconfigured-solutions/addrule2.png
 [img-adddevicerule3]: media/iot-suite-getstarted-preconfigured-solutions/addrule3.png
@@ -341,17 +386,23 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 [img-columneditor]: media/iot-suite-getstarted-preconfigured-solutions/columneditor.png
 [img-startimageedit]: media/iot-suite-getstarted-preconfigured-solutions/imagedit1.png
 [img-imageedit]: media/iot-suite-getstarted-preconfigured-solutions/imagedit2.png
-[img-sortdevices]: media/iot-suite-getstarted-preconfigured-solutions/sortdevices.png
 [img-editfiltericon]: media/iot-suite-getstarted-preconfigured-solutions/editfiltericon.png
 [img-filtereditor]: media/iot-suite-getstarted-preconfigured-solutions/filtereditor.png
 [img-filterelist]: media/iot-suite-getstarted-preconfigured-solutions/filteredlist.png
 [img-savefilter]: media/iot-suite-getstarted-preconfigured-solutions/savefilter.png
 [img-openfilter]:  media/iot-suite-getstarted-preconfigured-solutions/openfilter.png
-[img-clickjobscheduler]: media/iot-suite-getstarted-preconfigured-solutions/clickscheduler.png
-[img-invokemethodjob]: media/iot-suite-getstarted-preconfigured-solutions/invokemethodjob.png
-[img-edittwinjob]: media/iot-suite-getstarted-preconfigured-solutions/edittwinjob.png
-[img-jobstatus]: media/iot-suite-getstarted-preconfigured-solutions/jobstatus.png
-[img-jobdashboard]: media/iot-suite-getstarted-preconfigured-solutions/jobdashboard.png
+[img-unhealthy-filter]: media/iot-suite-getstarted-preconfigured-solutions/unhealthyfilter.png
+[img-filtered-unhealthy-list]: media/iot-suite-getstarted-preconfigured-solutions/unhealthylist.png
+[img-change-interval]: media/iot-suite-getstarted-preconfigured-solutions/changeinterval.png
+[img-old-firmware]: media/iot-suite-getstarted-preconfigured-solutions/noticeold.png
+[img-old-filter]: media/iot-suite-getstarted-preconfigured-solutions/oldfilter.png
+[img-filtered-old-list]: media/iot-suite-getstarted-preconfigured-solutions/oldlist.png
+[img-method-update]: media/iot-suite-getstarted-preconfigured-solutions/methodupdate.png
+[img-update-1]: media/iot-suite-getstarted-preconfigured-solutions/jobupdate1.png
+[img-update-2]: media/iot-suite-getstarted-preconfigured-solutions/jobupdate2.png
+[img-update-3]: media/iot-suite-getstarted-preconfigured-solutions/jobupdate3.png
+[img-updated]: media/iot-suite-getstarted-preconfigured-solutions/updated.png
+[img-healthy]: media/iot-suite-getstarted-preconfigured-solutions/healthy.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -359,10 +410,9 @@ Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a kö
 [lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
 [lnk-portal]: http://portal.azure.com/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
-[lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-device-twin-and-documentdb
 [lnk-logicapptutorial]: iot-suite-logic-apps-tutorial.md
 [lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
+[lnk-faq]: iot-suite-faq.md

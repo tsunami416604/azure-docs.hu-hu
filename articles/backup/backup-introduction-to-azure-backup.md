@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Backup? | Microsoft Docs
-description: "Az Azure Backup és a Recovery Services használatával biztonsági mentést végezhet és visszaállíthatja az adatokat és alkalmazásokat Windows Serverekről és -munkaállomásokról, System Center DPM-kiszolgálókról és számítási feladatokról, valamint az Azure virtuális gépekről."
+description: "Az Azure Backup használatával biztonsági mentést végezhet, és visszaállíthatja az adatokat Windows Serverekről, Windows-munkaállomásokról, System Center DPM-kiszolgálókról, valamint az Azure-beli virtuális gépekről."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,16 +13,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/23/2017
+ms.date: 2/27/2017
 ms.author: markgal;trinadhk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
-ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
+ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
+# <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure mentési tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
 
 [Áttekintő videó megtekintése az Azure Backupról](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
@@ -97,14 +98,12 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/storage-premium-storage.md) ismertető cikkben.
 
 ### <a name="back-up-premium-storage-vms"></a>A Premium Storage virtuális gépek biztonsági mentése
-Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti előkészítési helyet hoz létre a Premium Storage-fiókbn. Az „AzureBackup-” nevű előkészítési hely megegyezik a virtuális géphez csatolt prémium szintű lemezek teljes adatméretével. Ellenőrizze, hogy van-e ideiglenes előkészítési helynek elegendő szabad tárhely a tárfiókon. További információért tekintse meg a [Premium Storage korlátozásaival](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) foglalkozó témakört.
+Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg róla, hogy elég szabad hely áll rendelkezésre a tárfiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../storage/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ne módosítsa vagy szerkessze az előkészítési helyet.
 >
 >
-
-A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../storage/storage-premium-storage.md#pricing-and-billing).
 
 ### <a name="restore-premium-storage-vms"></a>A Premium Storage virtuális gépek visszaállítása
 A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tárolóba állíthatók vissza. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Azonban költséghatékony lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.

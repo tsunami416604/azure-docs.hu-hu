@@ -4,20 +4,20 @@
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
 | Egy előfizetéshez tartozó Azure Media Services- (AMS-) fiókok | 25 (rögzített) |
-| Media szolgáltatás számára fenntartott egységek AMS-fiókonként |25 (S1, S2)<br/>10 (S3) <sup>1</sup> | 
-| Feladatok AMS-fiókonként | 50,000<sup>2</sup> |
+| Media szolgáltatás számára fenntartott egységek AMS-fiókonként |25 (S1, S2)<br/>10 (S3) <sup>(1)</sup> | 
+| Feladatok AMS-fiókonként | 50,000<sup>(2)</sup> |
 | Kapcsolt műveletek feladatonként | 30 (rögzített) |
 | Objektumok AMS-fiókonként | 1,000,000|
 | Objektumok műveletenként | 50 |
 | Objektumok feladatonként | 100 |
-| Egy objektumhoz egyszerre társított egyedi keresők | 5<sup>4</sup> |
+| Egy objektumhoz egyszerre társított egyedi keresők | 5<sup>(4)</sup> |
 | Élő csatornák AMS-fiókonként |5|
 | Leállított állapotú programok csatornánként |50|
 | Futó állapotú programok csatornánként |3|
 | Futó állapotú streamvégpontok AMS-fiókonként|2|
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
-| Házirendek | 1,000,000<sup>6</sup> |
+| Házirendek | 1,000,000<sup>(6)</sup> |
 | Fájlméret| Bizonyos esetekben a Media Services által feldolgozható maximális támogatott fájlméret korlátozva van. <sup>7</sup> |
   
 <sup>1</sup> Az S3 fenntartott egységek Nyugat-Indiában nem érhetők el.
@@ -44,8 +44,3 @@
 |S1    | 325|
 |S2    | 640|
 |S3    | 260|
-
-
-<!--HONumber=Feb17_HO2-->
-
-

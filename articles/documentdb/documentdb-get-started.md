@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 1622566c34c1ff9c8e83f0356e04743f8a890e96
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2ca704e3ef14589b5a0c44c9b6857445e3e62dd7
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -26,7 +26,9 @@ ms.lasthandoff: 02/23/2017
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [Node.js MongoDB-hez](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -64,7 +66,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet haszná
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupvsastep-2-setup-your-visual-studio-solution"></a><a id="SetupVS"></a>2. lépés: A Visual Studio megoldás beállítása
+## <a id="SetupVS"></a>2. lépés: A Visual Studio megoldás beállítása
 1. Nyissa meg a **Visual Studio 2015-öt** a számítógépén.
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
 3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **Konzolalkalmazás** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
@@ -81,7 +83,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet haszná
 
 Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
-## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
 Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Program.cs fájlban:
 
     using System;
@@ -214,7 +216,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.  
 
-## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
+## <a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
 > [!WARNING]
 > A **CreateDocumentCollectionAsync** létrehoz egy fenntartott adattovábbítási kapacitással rendelkező új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/documentdb/).
 > 
@@ -271,7 +273,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumgyűjteményt.  
 
-## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
+## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
 A [dokumentumok](documentdb-resources.md#documents) a **DocumentClient** osztály [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metódusának használatával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, a DocumentDB [adatáttelepítési eszközének](documentdb-import-data.md) használatával importálhat adatokat az adatbázisba.
 
 Először létre kell hozni egy **Család** osztályt, amely ebben a mintában a DocumentDB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. Az osztályok létrehozásához adja hozzá az alábbi belső alosztályokat a **GetStartedDemo** metódus után.
@@ -432,7 +434,7 @@ Gratulálunk! Sikeresen létrehozott két DocumentDB-dokumentumot.
 
 ![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
+## <a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes [lekérdezéseket](documentdb-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – a DocumentDB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
 
 Másolja, majd illessze be a **ExecuteSimpleQuery** metódust a **CreateFamilyDocumentIfNotExists** metódus után.
@@ -490,7 +492,7 @@ Az alábbi diagram bemutatja, hogyan indít hívást a DocumentDB SQL-lekérdez�
 
 A [FROM](documentdb-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel a DocumentDB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. A DocumentDB úgy veszi, hogy a Families, a root vagy a tetszőleges változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
-## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
+## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
 A DocumentDB támogatja a JSON-dokumentumok cseréjét.  
 
 Másolja, majd illessze be a **ReplaceFamilyDocument** metódust az **ExecuteSimpleQuery** metódus után.
@@ -527,7 +529,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
 
-## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
+## <a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
 A DocumentDB támogatja a JSON-dokumentumok törlését.  
 
 Másolja, majd illessze be a **DeleteFamilyDocument** metódust a **ReplaceFamilyDocument** metódus után.
@@ -559,7 +561,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
 
-## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
+## <a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
 Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a dokumentum törlése után az adatbázis és az összes gyermek-erőforrás törléséhez.
@@ -576,7 +578,7 @@ Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 Gratulálunk! Sikeresen törölt egy DocumentDB-adatbázist.
 
-## <a name="a-idrunastep-11-run-your-c-console-application-all-together"></a><a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
+## <a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
 Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához.
 
 Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenet megjeleníti a hozzáadott lekérdezések eredményeit, amelynek meg kell egyeznie az alábbi mintaszöveggel.
@@ -604,7 +606,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenet megjele
 
 Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes C# konzolalkalmazással rendelkezik!
 
-## <a name="a-idgetsolutiona-get-the-complete-nosql-tutorial-solution"></a><a id="GetSolution"></a>A NoSQL-oktatóanyagban szereplő teljes megoldás beszerzése
+## <a id="GetSolution"></a>A NoSQL-oktatóanyagban szereplő teljes megoldás beszerzése
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a mintakódokat, a [Githubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) beszerezhetők. 
 
 A GetStarted-megoldás létrehozásához a következőkre lesz szüksége:

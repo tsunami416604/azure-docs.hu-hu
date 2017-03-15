@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 03/07/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 8bea5c13b8657be737cdc135b2d46bd0068b6b88
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,17 +32,11 @@ A Data Lake Tools for Visual Studio mind a Data Lake Analytics, mind a HDInsight
 
 Ezen oktatóprogram elvégzéséhez és a Data Lake-eszközök Visual Studio programban történő használatához a következőkre van szüksége:
 
-* Egy Azure HDInsight fürt: A Linux-alapú vagy a Windows-alapú fürtök is működnek ezen dokumentum lépéseivel. A következők egyikében talál információt a fürtök létrehozásáról:
-  
-  * [Bevezetés a Linux-alapú HDInsight használatába](hdinsight-hadoop-linux-tutorial-get-started.md)
-  * [Bevezetés a Windows-alapú HDInsight használatába](hdinsight-hadoop-tutorial-get-started-windows.md)
+* Egy Azure HDInsight-fürt. Ennek létrehozását lásd [a Linux-alapú HDInsight használatának első lépéseivel](hdinsight-hadoop-linux-tutorial-get-started.md) foglalkozó témakörben.
 * Egy munkaállomás a következő szoftverrel:
   
-  * Windows 8.1, Windows 8 vagy Windows 7
-  * Visual Studio (a következő verziók egyike):
-    
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate [Update 4](https://www.microsoft.com/download/details.aspx?id=44921) frissítéssel
-    * Visual Studio 2015 (Community/Enterprise)
+  * Windows 10, Windows 8.1, Windows 8 vagy Windows 7.
+  * Visual Studio 2013/2015/2017.
     
     > [!NOTE]
     > Jelenleg a Data Lake Tools for Visual Studio csak angol nyelvű verzióban kapható.
@@ -49,7 +44,8 @@ Ezen oktatóprogram elvégzéséhez és a Data Lake-eszközök Visual Studio pro
     > 
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
-A Data Lake Tools a [Webplatform-telepítő](https://www.microsoft.com/web/downloads/) használatával telepíthető. Ki kell választania azt, amely megfelel a Visual Studio verziójának. Ha nincs telepítve a Visual Studio, a legújabb Visual Studio Community- és Azure SDK-eszközöket a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/) telepítheti:
+
+A Data Lake Tools alapértelmezés szerint a Visual Studio 2017-tel együtt települ. A régebbi verziókat a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/) telepítheti. Ki kell választania azt, amely megfelel a Visual Studio verziójának. Ha nincs telepítve a Visual Studio, a legújabb Visual Studio Community- és Azure SDK-eszközöket a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/) telepítheti:
 
 ![A Data Lake Tools for Visual Studio – Webplatform-telepítő.][1]
 
@@ -128,7 +124,7 @@ A grafikus felhasználói felülettel Hive táblákat hozhat létre, vagy Hive-l
    
     ![Data Lake-eszközök: HDInsight Visual Studio-eszközök hive-tábla létrehozásához][7]
 
-### <a name="a-namerunqueriesavalidate-and-run-hive-queries"></a><a name="run.queries"></a>Hive-lekérdezések érvényesítése és futtatása
+### <a name="run.queries"></a>Hive-lekérdezések érvényesítése és futtatása
 Kétféleképpen hozhat létre és futtathat Hive-lekérdezéseket:
 
 * Alkalmi lekérdezések létrehozása
@@ -278,9 +274,4 @@ Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visua
 [hdinsight.access.application.logs]: hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

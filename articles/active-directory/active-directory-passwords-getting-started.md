@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d391aeacd5a755c3d344a359cae130788d1a5402
-ms.openlocfilehash: 02c7cd73951b7af83760ee10be4bb8f2da142283
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -80,13 +80,10 @@ Felhasználói jelszó-visszaállítási házirend konfigurálásához végezze 
 
    ![][003]
 
-5. A **Konfigurálás** lapon görgessen le a **felhasználói jelszó-visszaállítási házirend** szakaszhoz.  Itt konfigurálhatja az adott címtárak jelszó-visszaállítási házirendjének minden szempontját. *Ha nem látja a Konfigurálás lapot, ellenőrizze, hogy regisztrált-e a Prémium szintű vagy Alapszintű Azure Active Directoryra, és hogy **hozzárendelt-e egy licencet** a funkciót konfiguráló rendszergazdai fiókhoz.*  
+5. A **Konfigurálás** lapon görgessen le a **felhasználói jelszó-visszaállítási házirend** szakaszhoz.  Itt konfigurálhatja az adott címtárak jelszó-visszaállítási házirendjének minden szempontját. *Ha nem látja a Konfigurálás lapot, ellenőrizze, hogy regisztrált-e a Prémium szintű vagy Alapszintű Azure Active Directoryra, és hogy __hozzárendelt-e egy licencet__ a funkciót konfiguráló rendszergazdai fiókhoz.*  
 
    > [!NOTE]
    > **A beállított szabályzat csak a szervezet végfelhasználóira érvényes, a rendszergazdákra nem**. Biztonsági okokból a Microsoft kezeli a rendszergazdák jelszó-visszaállítási házirendjét. A rendszergazdák aktuális szabályzatához két lépés szükséges: mobiltelefon és e-mail-cím.
-
-   >
-   >
 
    ![][004]
 6. A felhasználói jelszó-visszaállítási házirend konfigurálásához állítsa a **jelszó-visszaállításhoz engedélyezett felhasználók** kapcsolót az **igen** beállításra.  Ez több más vezérlőt is megjelenít, amelyekkel konfigurálhatja a funkció működésének módját a címtárban.  Nyugodtan szabja testre a jelszó-visszaállítást, ahogyan szeretné.  Ha további információt szeretne megtudni arról, hogy mire szolgálnak az egyes jelszó-visszaállítási házirendek, lásd: [Testreszabás: Azure AD-jelszókezelés](active-directory-passwords-customize.md).
@@ -264,13 +261,19 @@ A szolgáltatás megfelelő telepítését úgy is ellenőrizheti, ha megnyitja 
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>3. lépés: A tűzfal konfigurálása
-Miután engedélyezte a jelszóvisszaírást, ellenőriznie kell, hogy az Azure AD Connectet futtató gép tud-e csatlakozni a Microsoft felhőszolgáltatásaihoz a jelszóvisszaírási kérelmek fogadásához. Ennek a lépésnek része a hálózati berendezések csatlakozási szabályainak frissítése (proxy-kiszolgálók, tűzfalak stb.), hogy engedélyezve legyenek a kimenő kapcsolatok bizonyos Microsoft tulajdonú URL-ekhez és IP-címekhez, megadott hálózati portokon keresztül. Ezek a módosítások eltérhetnek az Azure AD Connect eszköz verziójának függvényében. További információkat olvashat a [jelszóvisszaírás működéséről](active-directory-passwords-learn-more.md#how-password-writeback-works) és a [jelszóvisszaírás biztonsági modelljéről](active-directory-passwords-learn-more.md#password-writeback-security-model).
+Miután engedélyezte a jelszóvisszaírást, ellenőriznie kell, hogy az Azure AD Connectet futtató gép tud-e csatlakozni a Microsoft felhőszolgáltatásaihoz a jelszóvisszaírási kérelmek fogadásához. Ennek a lépésnek része a hálózati berendezések csatlakozási szabályainak frissítése (proxy-kiszolgálók, tűzfalak stb.), hogy engedélyezve legyenek a kimenő kapcsolatok bizonyos [Microsoft tulajdonú URL-ekhez és IP-címekhez](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US), megadott hálózati portokon keresztül. Ezek a módosítások eltérhetnek az Azure AD Connect eszköz verziójának függvényében. További információkat olvashat a [jelszóvisszaírás működéséről](active-directory-passwords-learn-more.md#how-password-writeback-works) és a [jelszóvisszaírás biztonsági modelljéről](active-directory-passwords-learn-more.md#password-writeback-security-model).
 
 #### <a name="why-do-i-need-to-do-this"></a>Miért van erre szükség?
 
 Annak érdekében, hogy a Jelszóvisszaíró megfelelően működjön, az Azure AD Connectet futtató gépnek képesnek kell lennie kimenő HTTPS-kapcsolatok létesítésére a **.servicebus.windows.net*, valamint adott, az Azure által használt IP-címek felé, amint azt a [Microsoft Azure Adatközpont IP-tartományainak listája](https://www.microsoft.com/download/details.aspx?id=41653) meghatározza.
 
-Azure AD Connect eszközök 1.0.8667.0-s és újabb verziói:
+Az Azure AD Connect eszközök **1.1.439.0-s** (legújabb) és újabb verziói esetében:
+
+- Az Azure AD Connect eszközök legújabb verziójának **kimenő HTTPS**-kapcsolatra van szüksége a következők eléréséhez:
+    - *passwordreset.microsoftonline.com*
+    - *servicbus.windows.net*
+
+Az Azure AD Connect eszközök **1.0.8667.0**–**1.1.380.0** verziói esetében:
 
 - **1. lehetőség:** Engedélyezze az összes kimenő HTTPS-kapcsolatot a 443-as porton keresztül (URL- vagy IP-cím segítségével).
     - Mikor érdemes ezt használni?
@@ -298,6 +301,9 @@ Azure AD Connect eszközök 1.0.8667.0-s és újabb verziói:
 > Ha az 1.0.8667.0-s Azure AD Connect verziónál korábbi verziót használ, a Microsoft erősen ajánlja, hogy frissítsen a [legújabb Azure AD Connect-verzióra](https://www.microsoft.com/download/details.aspx?id=47594), amely számos visszaírási hálózati fejlesztéssel teszi egyszerűbbé a konfigurálást.
 
 Amint kész a hálózati berendezések konfigurálása, indítsa újra az Azure AD Connect eszközt futtató gépet.
+
+#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Tétlen kapcsolatok az Azure AD Connectben (1.1.439.0 és újabb)
+Az Azure AD Connect eszköz rendszeren ping/életben tartási üzenetet küld a szolgáltatásbusz végpontjai számára, hogy biztosítsa a kapcsolat fenntartását. Ha az eszköz túl sok kapcsolat leállítását észleli, automatikusan növeli a végpont pingelésének gyakoriságát. A legalacsonyabb „pingelési időköz” 60 másodpercenként 1-re csökken, azonban **határozottan javasoljuk, hogy a proxyk/tűzfalak legalább 2-3 percig engedélyezzék a tétlen kapcsolatok fenntartását.** \*A korábbi verziók esetében 4 vagy több percet javasolunk.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>4. lépés: A megfelelő Active Directory-engedélyek beállítása
 Minden erdő esetén, amely olyan felhasználókat tartalmaz, akiknek a jelszavait vissza fogja állítani, ha X a konfigurációs varázslóban (a kezdeti konfiguráció során) az erdőhöz meghatározott fiók, az X-hez meg kell adnia a **Jelszó alaphelyzetbe állítása**, **Jelszó módosítása**, **Írási engedélyek** kibővített jogot a `lockoutTime` alatt és az **Írási engedélyek** kibővített jogot a `pwdLastSet` alatt az erdőben lévő minden tartomány gyökérobjektumán. A jognak minden felhasználói objektum által örököltként kell megjelölve lennie.  

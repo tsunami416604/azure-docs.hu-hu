@@ -16,8 +16,9 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: ddd676df429c20d1c07cfe64abc9ab69ef11bd8c
-ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 74af5fda495adc726bfa85ad48a407fd61d4dd88
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -25,8 +26,9 @@ ms.openlocfilehash: 845858c3df6456293a2552f55ffb35254024931b
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [Node.js MongoDB-hez](documentdb-mongodb-samples.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -62,7 +64,7 @@ Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kíván
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idgitcloneastep-2-clone-the-github-project"></a><a id="GitClone"></a>2. lépés: A GitHub-projekt klónozása
+## <a id="GitClone"></a>2. lépés: A GitHub-projekt klónozása
 A GitHub-adattár klónozásával kezdheti meg [a DocumentDB és a Java használatának első lépéseit](https://github.com/Azure-Samples/documentdb-java-getting-started). Futtassa például egy helyi könyvtárból az alábbi parancsot a mintaprojekt helyi lekéréséhez.
 
     git clone git@github.com:Azure-Samples/documentdb-java-getting-started.git
@@ -77,7 +79,7 @@ A könyvtár tartalmazza a projekt `pom.xml` fájlját és egy `src` mappát, am
         <version>LATEST</version>
     </dependency>
 
-## <a name="a-idconnectastep-3-connect-to-a-documentdb-account"></a><a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
 Térjen vissza az [Azure Portalra](https://portal.azure.com) a végpont és az elsődleges főkulcs beszerzéséért. A DocumentDB végpont és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, a DocumentDB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
 Az Azure portálon lépjen a DocumentDB-fiókra, majd kattintson a **Kulcsok** elemre. Másolja ki az URI-t a portálról, és illessze be a Program.java fájl `<your endpoint URI>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your key>` elembe.
@@ -97,7 +99,7 @@ A DocumentDB [adatbázis](documentdb-resources.md#databases) a **DocumentClient*
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a name="a-idcreatecollastep-5-create-a-collection"></a><a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
+## <a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
 > [!WARNING]
 > A **createCollection** létrehoz egy fenntartott adattovábbítási kapacitással rendelkező új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/documentdb/).
 > 
@@ -116,7 +118,7 @@ Egy [gyűjtemény](documentdb-resources.md#collections) a **DocumentClient** osz
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a name="a-idcreatedocastep-6-create-json-documents"></a><a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
+## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
 A [dokumentumok](documentdb-resources.md#documents) a **DocumentClient** osztály [createDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDocument-java.lang.String-java.lang.Object-com.microsoft.azure.documentdb.RequestOptions-boolean-) metódusával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, a DocumentDB [adatáttelepítési eszközének](documentdb-import-data.md) használatával importálhat adatokat az adatbázisba.
 
     // Insert your Java objects as documents 
@@ -139,7 +141,7 @@ A [dokumentumok](documentdb-resources.md#documents) a **DocumentClient** osztál
 
 ![A diagram a NoSQL-oktatóanyagban a Java konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-7-query-documentdb-resources"></a><a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
+## <a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
 A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes [lekérdezéseket](documentdb-sql-query.md).  Az alábbi mintakód bemutatja, hogyan kérdezheti le a dokumentumokat a DocumentDB-ben az SQL-szintaxis és a [queryDocuments](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#queryDocuments-java.lang.String-com.microsoft.azure.documentdb.SqlQuerySpec-com.microsoft.azure.documentdb.FeedOptions-) metódus együttes használatával.
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -152,7 +154,7 @@ A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon v
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
+## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
 A DocumentDB támogatja a JSON-dokumentumok [replaceDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#replaceDocument-com.microsoft.azure.documentdb.Document-com.microsoft.azure.documentdb.RequestOptions-) metódussal végrehajtott frissítését.
 
     // Update a property
@@ -163,17 +165,17 @@ A DocumentDB támogatja a JSON-dokumentumok [replaceDocument](http://azure.githu
         andersenFamily,
         null);
 
-## <a name="a-iddeletedocumentastep-9-delete-json-document"></a><a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
+## <a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
 A DocumentDB a JSON-dokumentumok törlését is támogatja a [deleteDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#deleteDocument-java.lang.String-com.microsoft.azure.documentdb.RequestOptions-) metódus használatával.  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a name="a-iddeletedatabaseastep-10-delete-the-database"></a><a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
+## <a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a name="a-idrunastep-11-run-your-java-console-application-all-together"></a><a id="Run"></a>11. lépés: Futtassa a teljes Java konzolalkalmazást!
+## <a id="Run"></a>11. lépés: Futtassa a teljes Java konzolalkalmazást!
 A konzolról futtatandó alkalmazást először fordítsa le a Mavennel:
     
     mvn package
@@ -192,9 +194,4 @@ Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes Java ko
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 
