@@ -1,18 +1,6 @@
 ---
-title: ''
-description: ''
-documentationcenter: ''
-services: ''
-solutions: ''
-writer: kathydav
-editor: tysonn
-manager: jeffreyg
-
-{}
-
----
 > [!NOTE]
-> To complete this tutorial, you need an Azure account. You can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 > 
 > 
 

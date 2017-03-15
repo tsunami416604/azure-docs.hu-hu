@@ -16,14 +16,16 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: a5abaa698de2978e676153832d252cf2bc43e72b
-ms.openlocfilehash: cfd2f49a3452e4ad5132f55d269452e436bcecc5
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 284bf43ceae0c42b88d6ea3fe8a2e68e7530e5fe
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="a-nametoc395783175abuild-a-nodejs-web-application-using-documentdb"></a><a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
+# <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása a DocumentDB használatával
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
+> * [.NET MongoDB-hez](documentdb-mongodb-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md)
@@ -36,7 +38,7 @@ Ez a Node.js-oktatóanyag bemutatja, hogy miként tárolhatja és érheti el az 
 
 Nincs ideje elvégezni az oktatóanyagot, és csak hozzá szeretne jutni a teljes megoldáshoz? Semmi gond, a teljes mintamegoldást beszerezheti a [GitHubról][GitHub]. Az alkalmazás futtatásához szükséges útmutatást az [Olvass el](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md) fájlban találja.
 
-## <a name="a-nametoc395783176aprerequisites"></a><a name="_Toc395783176"></a>Előfeltételek
+## <a name="_Toc395783176"></a>Előfeltételek
 > [!TIP]
 > Ez a Node.js-oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Node.js és az Azure Websites használatát illetően.
 > 
@@ -49,18 +51,18 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
    VAGY
 
    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
-* [Node.js][Node.js]-verzió: 0.10.29-es vagy újabb.
+* [Node.js][Node.js]-verzió:&0;.10.29-es vagy újabb.
 * [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 * [Git][Git].
 
-## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
+## <a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
 Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 [!INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="a-nametoc395783178astep-2-learn-to-create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
+## <a name="_Toc395783178"></a>2. lépés: Új Node.js-alkalmazás létrehozása
 Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-projektet az [Express](http://expressjs.com/)-keretrendszer használatával.
 
 1. Nyissa meg kedvenc terminálját, például a Node.js parancssort.
@@ -81,7 +83,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 
     Ezt követően az alkalmazás leállításához nyomja le a CTRL+C billentyűkombinációt a terminálablakban, majd a kötegelt feladat leállításához kattintson az **y** elemre.
 
-## <a name="a-nametoc395783179astep-3-install-additional-modules"></a><a name="_Toc395783179"></a>3. lépés: További modulok telepítése
+## <a name="_Toc395783179"></a>3. lépés: További modulok telepítése
 A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később, amikor egy Azure Websitesra telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
 
 1. A terminálban telepítse az **async** modult az npm segítségével.
@@ -114,7 +116,7 @@ A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmapp�
    
     Ez értesíti a Node-ot (majd később az Azure-t) arról, hogy az alkalmazás ezektől a további moduloktól függ.
 
-## <a name="a-nametoc395783180astep-4-using-the-documentdb-service-in-a-node-application"></a><a name="_Toc395783180"></a>4. lépés: A DocumentDB szolgáltatás használata Node.js-alkalmazásokban
+## <a name="_Toc395783180"></a>4. lépés: A DocumentDB szolgáltatás használata Node.js-alkalmazásokban
 Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni a kódírást az Azure DocumentDB használatával.
 
 ### <a name="create-the-model"></a>A modell létrehozása
@@ -428,7 +430,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 5. Ezek a sorok meghatározzák a **TaskDao** objektum egy új példányát, amely egy új (a **config.js** fájlból kiolvasott értékek felhasználásával létesített) kapcsolattal csatlakozik a DocumentDB-adatbázishoz. Továbbá ezek inicializálják a feladatobjektumot, majd társítanak űrlapműveleteket a metódusokhoz a **TaskList**-vezérlőn. 
 6. Végül mentse és zárja be az **app.js** fájlt. És már majdnem készen is van.
 
-## <a name="a-nametoc395783181astep-5-build-a-user-interface"></a><a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
+## <a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
 Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. A Jade motorral kapcsolatos további információkért lásd: [http://jade-lang.com/](http://jade-lang.com/).
 
 1. A rendszer a **views** (nézetek) könyvtárban található **layout.jade** fájlt használja a többi **.jade** fájl globális sablonjaként. Ebben a lépésben ezt a sablont a [Twitter Bootstrap](https://github.com/twbs/bootstrap) eszközkészletre módosítja majd, amellyel könnyen tervezhet tetszetős webhelyeket. 
@@ -519,7 +521,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
    
     Mentse és zárja be a **style.css** fájlt.
 
-## <a name="a-nametoc395783181astep-6-run-your-application-locally"></a><a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
+## <a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
 1. Ha a helyi gépén szeretné tesztelni az alkalmazást, futtassa az `npm start` parancsot a terminálon az alkalmazás elindításához, majd frissítse a [http://localhost:3000](http://localhost:3000) böngészőoldalt. Az oldalnak most úgy kell kinéznie, ahogy az alábbi képen látható:
    
     ![Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban](./media/documentdb-nodejs-application/image18.png)
@@ -535,7 +537,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
 5. Az alkalmazás leállításához nyomja le a CTRL+C billentyűkombinációt a terminálablakban, majd a kötegelt feladat leállításához kattintson az **Y** elemre.
 
-## <a name="a-nametoc395783182astep-7-deploy-your-application-development-project-to-azure-websites"></a><a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt üzembe helyezése az Azure Websites-ban
+## <a name="_Toc395783182"></a>7. lépés: Az alkalmazásfejlesztési projekt üzembe helyezése az Azure Websites-ban
 1. Ha még nem tette meg, engedélyezzen egy Git-tárházat az Azure Websites számára. Ehhez a következő témakörben találhat útmutatót: [Local Git Deployment to Azure App Service](../app-service-web/app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben).
 2. Adja hozzá Azure-webhelyét távoli Git-elemként.
    
@@ -549,7 +551,7 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 
     Az oktatóanyaghoz a teljes referenciaalkalmazás letölthető a [GitHubról][GitHub].
 
-## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>Következő lépések
+## <a name="_Toc395637775"></a>Következő lépések
 
 * Méret- és teljesítménytesztelést szeretne elvégezni a DocumentDB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure DocumentDB használatával](documentdb-performance-testing.md)
 * Ismerje meg, hogyan [felügyelhet egy DocumentDB-fiókot](documentdb-monitor-accounts.md).
@@ -559,10 +561,5 @@ Most térjünk át a felhasználói felület létrehozására, hogy a felhaszná
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

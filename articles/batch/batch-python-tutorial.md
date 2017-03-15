@@ -215,7 +215,7 @@ A fájl feltöltése műveletben a *python_tutorial_client.py* először az **al
 
 A rendszer listaértelmezéssel hívja meg az `upload_file_to_container` függvényt a gyűjtemények egyes fájljaihoz, és két [ResourceFile][py_resource_file] gyűjteményt tölt fel. Az `upload_file_to_container` függvényt alul láthatja:
 
-```
+```python
 def upload_file_to_container(block_blob_client, container_name, file_path):
     """
     Uploads a local file to an Azure Blob storage container.
@@ -572,7 +572,7 @@ def download_blobs_from_container(block_blob_client,
 ## <a name="step-8-delete-containers"></a>8. lépés: Tárolók törlése
 Mivel az Azure Storage-ban lévő adatok díjkötelesek, mindig célszerű eltávolítani azokat a blobokat, amelyekre már nincs szükség a Batch-feladatokhoz. A *python_tutorial_client.py* fájlban ez a [BlockBlobService.delete_container][py_delete_container] három meghívásával végezhető el:
 
-```
+```python
 # Clean up storage resources
 print('Deleting containers...')
 blob_client.delete_container(app_container_name)

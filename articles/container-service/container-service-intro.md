@@ -1,5 +1,5 @@
 ---
-title: "Docker-tárolófürtök az Azure-felhőben | Microsoft Docs"
+title: "Docker-tárolók üzemeltetése az Azure-felhőben | Microsoft Docs"
 description: "Az Azure Container Service lehetőséget biztosít arra, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva."
 services: container-service
 documentationcenter: 
@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/01/2017
 ms.author: rogardle
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: a11b133794f7aedfa6740757fd8c1e89da665744
+ms.sourcegitcommit: 31897e11abfe70ed08381f0d13c6bdabe56c28ed
+ms.openlocfilehash: 04fabadb1c713deb007b740369496b61bb5f424f
+ms.lasthandoff: 03/02/2017
+
 
 
 ---
-# <a name="azure-container-service-introduction"></a>Az Azure Container Service bemutatása
+# <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Bevezetés a Docker Azure Container Service-t használó tárolóüzemeltetési megoldásaiba 
 Az Azure Container Service elősegíti azt, hogy egyszerűbben lehessen létrehozni, konfigurálni és kezelni a virtuális gépeknek egy olyan fürtjét, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Ezt nyílt forráskódú ütemezési és vezénylési eszközök optimalizált konfigurációját igénybe véve teszi lehetővé. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
 
 ![Az Azure Container Service lehetővé teszi, hogy az Azure-on több gazdagépen kezelhesse a tárolóalapú alkalmazásokat.](./media/acs-intro/acs-cluster-new.png)
@@ -109,8 +112,3 @@ Alkalmazások létrehozása az Azure Container Service (2016-os build) használa
 ## <a name="next-steps"></a>Következő lépések
 
 Container Service-fürt központi telepítése a [portál](container-service-deployment.md) vagy az [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) segítségével.
-
-
-<!--HONumber=Feb17_HO4-->
-
-

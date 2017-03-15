@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
-ms.author: dlepow
+ms.date: 03/03/2017
+ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 31aaa122bfca5140dcd22d2a2233c46cd28f27b9
-ms.openlocfilehash: c139fc34d15545ce6a7a91842a3ebdff7c029a01
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
+ms.lasthandoff: 03/06/2017
 
 
 ---
 
-# <a name="get-started-with-windows-containers-in-a-kubernetes-cluster"></a>Első lépések a Windows-tárolókkal Kubernetes-fürtben
+# <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>Bevezetés a Kubernetes és a Windows-tárolók használatába a Container Service-ben
 
 
 Ez a cikk bemutatja, hogyan hozhat létre olyan Kubernetes-fürtöt az Azure Container Service-ben, amely Windows-csomópontokat tartalmaz Windows-tárolók futtatásához. 
@@ -59,10 +60,16 @@ Minden virtuális gép ugyanazon a privát virtuális hálózaton található, �
 Az Azure Portallal [létrehozhat egy Kubernetes-fürtöt](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) Windows-ügyfélcsomópontokkal. A fürt létrehozásakor ügyeljen a következő beállításokra:
 
 * Az **Alapvető beállítások** panelen a **Vezénylő** részben válassza a **Kubernetes** lehetőséget. 
-* A **Fő konfiguráció** panelen adja meg a felhasználói hitelesítő adatokat és az egyszerű szolgáltatás hitelesítő adatait a fő Linux-csomópontokhoz.
+
+  ![Kubernetes vezénylő kiválasztása](media/container-service-kubernetes-windows-walkthrough/portal-select-kubernetes.png)
+
+* A **Fő konfiguráció** panelen adja meg a felhasználói hitelesítő adatokat és az egyszerű szolgáltatás hitelesítő adatait a fő Linux-csomópontokhoz. 1, 3 vagy 5 fő csomópontot válasszon.
+
 * Az **Ügynökkonfiguráció** panel **Operációs rendszer** területén válassza a **Windows (előnézet)** lehetőséget. Adja meg a rendszergazdai hitelesítő adatokat a Windows-ügyfélcsomópontokhoz.
 
-Részletes információ: [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md).
+  ![Windows-ügynökök kiválasztása](media/container-service-kubernetes-windows-walkthrough/portal-select-windows.png)
+
+További részletekért lásd: [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md).
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 

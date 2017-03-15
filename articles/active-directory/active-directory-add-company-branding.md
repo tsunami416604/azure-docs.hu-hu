@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/03/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -133,6 +134,10 @@ Ha az Ön választott nyelve a német, az oldal az alapértelmezett szalagcímem
 
 Bár technikailag az Azure AD által támogatott valamennyi nyelvhez beállíthat különböző nyelvi készleteket, karbantartási és teljesítmény-felhasználási okokból nem javasoljuk túl sok változat fenntartását.
 
+> [!IMPORTANT]
+> A Yammer nem jeleníti meg az Azure AD vállalati arculattal ellátott bejelentkezési oldalt, amíg a felhasználó be nem jelentkezik. A felhasználó számára először az általános Office 365 bejelentkezési oldal jelenik meg, majd azután a vállalati arculattal ellátott oldal.   
+ 
+ 
 **Ha a címtárnak vállalti arculatot szeretne adni, hajtsa végre a következő lépéseket:**
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) annak a címtárnak a rendszergazdájaként, amelyet testre szeretne szabni.
@@ -148,7 +153,7 @@ A bejelentkezési oldal vállalati arculatán alkalmazott módosítások megjele
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) annak a címtárnak a rendszergazdájaként, amelyet testre szeretne szabni.
 2. Jelölje ki a testre szabni kívánt címtárat.
-3. A felső eszköztáron kattintson a **Konfigurálás** lehetőségre.
+fs3. A felső eszköztáron kattintson a **Konfigurálás** lehetőségre.
 4. Kattintson a **Customize Branding** (Márkajelzés testreszabása) lehetőségre.
 5. Kattintson az **Add branding for a specific language** (Márkajelzés hozzáadása adott nyelven) lehetőségre.
 6. Válassza ki az embléma testreszabásánál használni kívánt nyelvet, majd kattintson a **Tovább** gombra.
@@ -221,9 +226,4 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
