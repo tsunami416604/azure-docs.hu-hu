@@ -45,6 +45,7 @@
 
 ## [Tartalom kódolása](media-services-encode-asset.md)
 ### [Kódolók összehasonlítása](media-services-compare-encoders.md)
+### [A kódolás sebességének és egyidejűségének kezelése](media-services-manage-encoding-speed.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard-formátumok és -kodekek](media-services-media-encoder-standard-formats.md)
 #### [Sávszélességi skála automatikus létrehozása a MES használatával](media-services-autogen-bitrate-ladder-with-mes.md)
@@ -120,16 +121,16 @@
 ## [Védelem](media-services-content-protection-overview.md)
 ### [A tartalomvédelem konfigurálása a portálon](media-services-portal-protect-content.md)
 ### [AES-128 titkosítatlan kulcs konfigurálása a streamhez](media-services-protect-with-aes128.md)
-### [Tartalom titkosítása tártitkosítással az AMS REST API-val](media-services-rest-storage-encryption.md)
+### [A REST használata a tartalmak tárolási titkosításához](media-services-rest-storage-encryption.md)
 ### [A Media Services PlayReady licencsablon áttekintése](media-services-playready-license-template-overview.md)
 ### [A Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md)
 ### [DRM-licenckézbesítés](media-services-deliver-keys-and-licenses.md)
-### [Partnerek használata a Widevine licencek kézbesítéséhez az Azure Media Services szolgáltatásba](media-services-licenses-partner-integration.md)
+### [Partnerek használata a Widevine-licencek Media Servicesbe való kézbesítéséhez](media-services-licenses-partner-integration.md)
 ### [A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata](media-services-protect-with-drm.md)
-### [Az Azure Media Services használata az Apple FairPlay által védett HLS-tartalmak streameléséhez ](media-services-protect-hls-with-fairplay.md)
-### [CENC többplatformos DRM és hozzáférés-vezérlés használatával: Egy referenciaterv és megvalósítás az Azure-on és az Azure Media Services szolgáltatásban](media-services-cenc-with-multidrm-access-control.md)
-### [Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe ](media-services-axinom-integration.md)
-### [A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe](media-services-castlabs-integration.md)
+### [Az Apple FairPlay által védett HLS-tartalmak streamelése ](media-services-protect-hls-with-fairplay.md)
+### [CENC with Multi-DRM and Access Control](media-services-cenc-with-multidrm-access-control.md) (CENC többszörös DRM-mel és hozzáférés-vezérléssel)
+### [Az Axinom használata a Widevine-licencek Media Servicesbe való kézbesítéséhez  ](media-services-axinom-integration.md)
+### [A castLabs használata a Widevine-licencek Media Servicesbe való kézbesítéséhez](media-services-castlabs-integration.md)
 
 ### Adategység-kézbesítés
 #### Adategység-kézbesítési házirendek konfigurálása
@@ -191,7 +192,8 @@
 ### [A Microsoft Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
 
 ## Integrálás
-### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
+### [Az Azure Functions használata a Media Services szolgáltatással](media-services-dotnet-how-to-use-azure-functions.md)
+### [Példák az Azure Functions használatára a Media Services szolgáltatásban](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
 ## Figyelés
 ### A feladat előrehaladásának ellenőrzése

@@ -38,7 +38,8 @@
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
 ## Vezérlési hozzáférés
 ### [Egyszerű szolgáltatás létrehozása a PowerShell-lel](resource-group-authenticate-service-principal.md)
-### [Egyszerű szolgáltatás létrehozása az Azure parancssori felületével](resource-group-authenticate-service-principal-cli.md)
+### [Egyszerű szolgáltatás létrehozása az Azure CLI 2.0-s verziójával](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Egyszerű szolgáltatás létrehozása az Azure CLI 1.0-s verziójával](resource-group-authenticate-service-principal-cli.md)
 ### [Egyszerű szolgáltatás létrehozása a portálon](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)

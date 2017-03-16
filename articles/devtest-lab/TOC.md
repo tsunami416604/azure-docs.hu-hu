@@ -5,17 +5,20 @@
 
 # Első lépések
 ## [Tesztkörnyezet létrehozása](devtest-lab-create-lab.md)
+## [Képletek létrehozása](devtest-lab-create-formulas.md)
 ## [Virtuális gép létrehozása](devtest-lab-add-vm.md)
+## [Alapszintű laborszabályzatok kezelése](devtest-lab-get-started-with-lab-policies.md)
 ## [Tesztkörnyezet létrehozása képzéshez](devtest-lab-training-lab.md)
 ## [Gyakori kérdések](devtest-lab-faq.md)
 
 # Útmutató
 ## Laborok kezelése
 ### [Labortulajdonosok és -felhasználók hozzáadása](devtest-lab-add-devtest-user.md)
-### [Laborszabályzatok definiálása](devtest-lab-set-lab-policy.md)
+### [Az összes laborszabályzat kezelése](devtest-lab-set-lab-policy.md)
 ### [Engedélyek megadása szabályzatoknak](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 ### [Költségkezelés konfigurálása](devtest-lab-configure-cost-management.md)
 ### [Virtuális hálózatok konfigurálása](devtest-lab-configure-vnet.md)
+### [A közös IP-címek megismerése](devtest-lab-shared-ip.md)
 
 ## Az összetevők kezelése
 ### [Összetevőtár hozzáadása](devtest-lab-add-artifact-repo.md)
@@ -33,8 +36,6 @@
 ### [VHD-fájl feltöltése AzCopy használatával](devtest-lab-upload-vhd-using-azcopy.md)
 ### [VHD-fájl feltöltése PowerShell használatával](devtest-lab-upload-vhd-using-powershell.md)
 ### [VHD-fájl feltöltése Storage Explorer használatával](devtest-lab-upload-vhd-using-storage-explorer.md)
-
-
 
 # Erőforrások
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=devtest-lab)

@@ -62,12 +62,12 @@
 ### [HDInsight Pig-tevékenység](data-factory-pig-activity.md)
 ### [HDInsight MapReduce-tevékenység](data-factory-map-reduce.md)
 ### [HDInsight Streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
+### [HDInsight Spark-tevékenység](data-factory-spark.md)
 ### [Machine Learning kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
 ### [Machine Learning Update-erőforrástevékenység](data-factory-azure-ml-update-resource-activity.md)
 ### [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 ### [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
-### [Spark-programok meghívása](data-factory-spark.md)
 ### [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ## Fejlesztés
 ### [Azure Resource Manager-sablon](data-factory-how-to-use-resource-manager-templates.md)

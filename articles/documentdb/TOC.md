@@ -4,6 +4,7 @@
 ## [Mi a DocumentDB: API a MongoDB-hez?](documentdb-protocol-mongodb.md)
 ## [Alapfogalmak](documentdb-resources.md)
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
+## [Biztonság](documentdb-nosql-database-security.md)
 ## [A NoSQL teljes birtoklási költségének elemzése](https://aka.ms/documentdb-tco-paper)
 ## Forgatókönyvek
 ### [Gyakori alkalmazási helyzetek](documentdb-use-cases.md)
@@ -15,11 +16,11 @@
 ### [.NET Core-Konzolalkalmazás](documentdb-dotnetcore-get-started.md)
 ### [Java-konzolalkalmazás](documentdb-java-get-started.md)
 ### [Node.js-konzolalkalmazás](documentdb-nodejs-get-started.md)
-### [Node.js-konzolalkalmazás a MongoDB API-khoz](documentdb-mongodb-samples.md)
+### [Node.js-konzolalkalmazás MongoDB API-hoz](documentdb-mongodb-samples.md)
 ### [C++-Konzolalkalmazás](documentdb-cpp-get-started.md)
 ## Webalkalmazás készítése
 ### [.NET-webalkalmazás](documentdb-dotnet-application.md)
-### [.NET-webalkalmazás a MongoDB API-khoz](documentdb-mongodb-application.md)
+### [.NET-webalkalmazás MongoDB API-hoz](documentdb-mongodb-application.md)
 ### [Node.Js-webalkalmazás](documentdb-nodejs-application.md)
 ### [Java webalkalmazások](documentdb-java-application.md)
 ### [Python Flask-webalkalmazás](documentdb-python-application.md)
@@ -36,32 +37,33 @@
 ### [Költséghatékony írások és olvasások](documentdb-key-value-store-cost.md)
 
 ## Kezelés
+### [Kérelemegységek](documentdb-request-units.md)
 ### [Adatok importálása](documentdb-import-data.md)
 ### [Importálás API-ba a MongoDB-hez](documentdb-mongodb-migrate.md)
 ### [Csatlakozás a MongoDB-fiókhoz](documentdb-connect-mongodb-account.md)
 ### [A MongoChef használata](documentdb-mongodb-mongochef.md)
 ### [A Robomongo használata](documentdb-mongodb-robomongo.md)
 ### [Adatmodellezés](documentdb-modeling-data.md)
-### [Térinformatikai adatok használata](documentdb-geospatial.md)
-### [Fejlesztés több régióra](documentdb-developing-with-multiple-regions.md)
-### [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ### [Adatok automatikus elévülése](documentdb-time-to-live.md)
-### [Az indexek testreszabása](documentdb-indexing-policies.md)
-### [Biztonságos hozzáférés az adatokhoz](documentdb-secure-access-to-data.md)
 ### [Biztonsági mentés és visszaállítás](documentdb-online-backup-and-restore.md)
+### [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
+### Automatizálás
+#### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+#### [Azure CLI 1.0: Fiók létrehozása](documentdb-automation-resource-manager-cli-nodejs.md)
+#### [Azure CLI 1.0: Régiók hozzáadása vagy eltávolítása](documentdb-automation-region-management.md)
+#### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
+### Biztonság
+#### [Biztonságos hozzáférés az adatokhoz](documentdb-secure-access-to-data.md)
+#### [Tűzfaltámogatás](documentdb-firewall-support.md)
 ### [S1, S2, S3 kivonása](documentdb-performance-levels.md)
-### [Kérelemegységek](documentdb-request-units.md)
-### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
-### Azure CLI 1.0
-#### [Fiók létrehozása](documentdb-automation-resource-manager-cli-nodejs.md)
-#### [Régiók hozzáadása vagy eltávolítása](documentdb-automation-region-management.md)
-### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
-### [Tűzfaltámogatás](documentdb-firewall-support.md)
 
 ## Fejlesztés
 ### [SQL-lekérdezés](documentdb-sql-query.md)
 ### [Tárolt eljárások, eseményindítók és felhasználói függvények](documentdb-programming.md)
+### [Az indexek testreszabása](documentdb-indexing-policies.md)
+### [Többrégiós fejlesztés](documentdb-developing-with-multiple-regions.md)
 ### [Változások követése a Módosítás adatcsatornával](documentdb-change-feed.md)
+### [Térinformatikai adatok használata](documentdb-geospatial.md)
 ### [Teljesítménytesztelés](documentdb-performance-testing.md)
 ### [Teljesítménnyel kapcsolatos tippek](documentdb-performance-tips.md)
 ### Ajánlott eljárások
