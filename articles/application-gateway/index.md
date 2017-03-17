@@ -13,11 +13,12 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 50b30a64fab9a7c996040c5a0380975b11b5966f
-ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 535364a9da46b137c4d32e1c3049a5be3496e5d2
+ms.lasthandoff: 03/15/2017
 
 ---
-#<a name="application-gateway-documentation"></a>Application Gateway – dokumentáció
+# <a name="application-gateway-documentation"></a>Application Gateway – dokumentáció
 
 Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gateway alkalmazáskézbesítési vezérlőt (ADC). Oktatóanyagok, API-referenciák, és egyéb dokumentációk, amelyek bemutatják, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztási szolgáltatásokat, amelyek lehetővé teszik méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozását.
 
@@ -125,7 +126,7 @@ Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gatewa
                     <div class="cardText">
                         <h3>Parancssor</h3>
                         <p><a href="/powershell/resourcemanager">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 előzetes verzió</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>
@@ -162,10 +163,5 @@ Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gatewa
     </li>
 </ul>    
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

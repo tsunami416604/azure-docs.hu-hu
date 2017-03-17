@@ -96,7 +96,10 @@
 #### [Hibaelhárítás](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## Arduino használata
-### [Node.js](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+
+### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+
+### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### 1. lecke: Az eszköz konfigurálása
 ##### [Az eszköz konfigurálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [Eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -116,6 +119,7 @@
 ##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [Hibaelhárítás](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
+
 
 ## Gateway SDK használata
 ### [Szimuláció Linux rendszeren](iot-hub-linux-gateway-sdk-get-started.md)
@@ -140,6 +144,8 @@
 ##### [Azure-függvényalkalmazás és Azure Storage-fiók létrehozása](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 ##### [Az Azure Table Storage szolgáltatásban őrzött üzenetek olvasása](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
 
+#### [5. lecke: Az első Azure IoT-átjárómodul létrehozása](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
+
 #### [hibaelhárítással](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
 ### [SensorTag-eszköz](iot-hub-gateway-kit-c-get-started.md)
@@ -159,6 +165,8 @@
 #### 4. lecke: Üzenetek mentése az Azure Table Storage szolgáltatásba
 ##### [Azure-függvényalkalmazás és Azure Storage-fiók létrehozása](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 ##### [Az Azure Table Storage szolgáltatásban őrzött üzenetek olvasása](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
+
+#### [5. lecke: Az első Azure IoT-átjárómodul létrehozása](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
 
 ##### [hibaelhárítással](iot-hub-gateway-kit-c-troubleshooting.md)
 
@@ -219,8 +227,8 @@
 ## Kezelés
 ### IoT Hub létrehozása 
 #### [A portál használata](iot-hub-create-through-portal.md)
-#### [A CLI 2.0 előzetes verziójának használata](iot-hub-create-using-cli.md)
-#### [A parancssori felület (CLI) használata](iot-hub-create-using-cli-nodejs.md)
+#### [A CLI 2.0 használata](iot-hub-create-using-cli.md)
+#### [A CLI használata](iot-hub-create-using-cli-nodejs.md)
 #### [A REST API használata](iot-hub-rm-rest.md)
 #### [A PowerShell használata](iot-hub-rm-template-powershell.md)
 #### [A .NET-keretrendszer sablonjának használata](iot-hub-rm-template.md)

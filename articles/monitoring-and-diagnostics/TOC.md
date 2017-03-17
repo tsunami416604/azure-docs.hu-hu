@@ -28,8 +28,8 @@
 ## A tevékenységnapló használata
 ### [Események megtekintése a tevékenységnaplóban](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [Webhook beállítása a tevékenységnapló egy riasztásához](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
-### [A tevékenységnapló archiválása](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
-### [A tevékenységnapló streamelése az Event Hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+### [Tevékenységnapló archiválása](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
+### [Tevékenységnapló streamelése az Event Hubs szolgáltatásba](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
 ### [Auditálási műveletek a Resource Managerben](../azure-resource-manager/resource-group-audit.md)
 ## Diagnosztikai naplók kezelése
 ### [Archívum](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
@@ -37,6 +37,8 @@
 ### [Diagnosztikai beállítások engedélyezése Resource Manager-sablonok használatával](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)
 ## A REST API használata
 ### [A REST API használatának bemutatója](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+## A Microsoft Azure Diagnostics használata
+### [Küldés az Application Insights-ba](../monitoring-and-diagnostics/azure-diagnostics-configure-applicationinsights.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
@@ -52,8 +54,3 @@
 ## [PowerShell-minták](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure CLI 1.0-minták](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [A támogatott mérőszámok listája](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

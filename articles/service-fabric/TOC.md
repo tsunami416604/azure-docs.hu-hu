@@ -54,7 +54,6 @@
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
 ##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
-#### [Architektúra](service-fabric-reliable-services-platform-architecture.md)
 #### [A Reliable Services életciklusa](service-fabric-reliable-services-lifecycle.md)
 #### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 #### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
@@ -78,8 +77,8 @@
 #### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
 #### [Polimorfizmus](service-fabric-reliable-actors-polymorphism.md)
 #### [Újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+#### [Események](service-fabric-reliable-actors-events.md) 
 #### [Időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
-#### [Események](service-fabric-reliable-actors-events.md)
 #### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
 #### [KvsActorStateProvider konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
@@ -166,7 +165,6 @@
 ### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
-### [Gyakori problémák megoldása](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
 ## Alkalmazások skálázása
 ### [A Reliable Services particionálása](service-fabric-concepts-partitioning.md)
@@ -181,7 +179,6 @@
 #### [Szabályozott káosz használata](service-fabric-controlled-chaos.md)
 #### [Tesztműveletek használata](service-fabric-testability-actions.md)
 #### [Számítási feladatok során](service-fabric-testability-workload-tests.md)
-#### [Adatvesztés meghívásával](service-fabric-use-data-loss-api.md)
 #### [Tesztelési helyzetek használata](service-fabric-testability-scenarios.md)
 #### [A csomópontváltó API-k használata](service-fabric-node-transition-apis.md)
 ### [Az alkalmazás terheléses tesztelése](service-fabric-vso-load-test.md)

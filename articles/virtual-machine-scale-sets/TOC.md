@@ -2,13 +2,16 @@
 ## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
 
 # Első lépések
-## [Méretezési csoport létrehozása a portálon](virtual-machine-scale-sets-portal-create.md)
-## [Méretezési csoport létrehozása az Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
-## [Méretezési csoport létrehozása Resource Manager-sablonnal](virtual-machine-scale-sets-mvss-start.md)
+## [Méretezési csoport üzembe helyezése a portálon](virtual-machine-scale-sets-portal-create.md)
+## [Méretezési csoport üzembe helyezése az Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
+## [Egyszerű méretezési csoport üzembe helyezése a Resource Manager-sablonnal](virtual-machine-scale-sets-mvss-start.md)
 
 # Útmutató
 ## Tervezés és kialakítás
 ### [Kialakítási szempontok](virtual-machine-scale-sets-design-overview.md)
+## Méretezési csoportok sablonjainak írása a következő célból:
+### [Egyszerű méretezési csoport üzembe helyezése](virtual-machine-scale-sets-mvss-start.md)
+### [Méretezési csoport üzembe helyezése meglévő virtuális hálózaton](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## Üzembe helyezés
 ### [Méretezési csoport a portállal](virtual-machine-scale-sets-portal-create.md)
@@ -36,6 +39,9 @@
 
 ## Hibaelhárítás
 ### [Automatikus méretezés](virtual-machine-scale-sets-troubleshoot.md)
+
+## GYIK
+### [Méretezési csoport – gyakran ismételt kérdések](virtual-machine-scale-sets-faq.md)
 
 # Referencia
 ## [PowerShell](/powershell/azureps-cmdlets-docs)

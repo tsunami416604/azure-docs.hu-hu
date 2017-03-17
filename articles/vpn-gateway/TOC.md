@@ -39,9 +39,10 @@
 ## [A BGP konfigurálása az Azure VPN Gateway-átjáróhoz a PowerShell-lel](vpn-gateway-bgp-resource-manager-ps.md)
 ## [Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása](vpn-gateway-activeactive-rm-powershell.md)
 ## [Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel](vpn-gateway-modify-local-network-gateway.md)
-## [Átjárókapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
-## [Azure VPN Gateway-átjárók alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
-## [Önaláírt tanúsítványok használata pont–hely kapcsolatok esetén](vpn-gateway-certificates-point-to-site.md)
+## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
+## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
+## [VPN Gateway törlése](vpn-gateway-delete-vnet-gateway-powershell.md)
+## [Önaláírt főtanúsítványok létrehozása pont–hely (P2S) kapcsolatok esetén](vpn-gateway-certificates-point-to-site.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # Referencia
@@ -64,8 +65,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)
-
-
-<!--HONumber=Jan17_HO5-->
-
-

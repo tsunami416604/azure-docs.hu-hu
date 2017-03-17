@@ -55,6 +55,8 @@
 #### [A kezdés előtt](azure-stack-app-service-before-you-get-started.md)
 #### [App Service erőforrás-szolgáltató üzembe helyezése](azure-stack-app-service-deploy.md)
 #### [További webes feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md)
+#### [Központi telepítés forrásának konfigurálása](azure-stack-app-service-configure-deployment-sources.md)
+#### [FTP engedélyezése az Azure Stack App Service szolgáltatásában](azure-stack-app-service-enable-ftp.md)
 ### A Piactér feltöltése
 #### [Piactér áttekintése](azure-stack-marketplace.md)
 #### [Piactéri termékek letöltése](azure-stack-download-azure-marketplace-item.md)
@@ -110,6 +112,7 @@
 
 # Hibaelhárítás
 ## [Ismert problémák](azure-stack-troubleshooting.md)
+## [Diagnosztika az Azure Stackben](azure-stack-diagnostics.md)
 
 # Erőforrások
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

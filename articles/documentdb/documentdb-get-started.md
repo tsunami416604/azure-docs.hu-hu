@@ -480,7 +480,7 @@ A második dokumentum létrehozása után másolja, majd illessze be az alábbi 
     // ADD THIS PART TO YOUR CODE
     this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
-Az alkalmazás futtatása előtt kattintson a **Projekt** menüben a *Projekt neve* **Tulajdonságok... **, majd a **Létrehozás** lehetőségre. Törölje a **Prefer 32-bit** mezőt, mivel a partíciós útválasztási információk nem nyerhetők ki a lekérdezésből, ha 32 bites folyamatban futnak.
+Az alkalmazás futtatása előtt kattintson a **Projekt** menüben a *Projekt neve* **Tulajdonságok...**, majd a **Létrehozás** lehetőségre. Törölje a **Prefer 32-bit** mezőt, mivel a partíciós útválasztási információk nem nyerhetők ki a lekérdezésből, ha 32 bites folyamatban futnak.
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
@@ -617,7 +617,7 @@ A GetStarted-megoldás létrehozásához a következőkre lesz szüksége:
 
 Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután az App.config fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás DocumentDB-fiókhoz](#Connect) című részben leírtak szerint.
 
-Az alkalmazás futtatása előtt kattintson a **Projekt** menüben a *Projekt neve* **Tulajdonságok... **, majd a **Létrehozás** lehetőségre. Törölje a **Prefer 32-bit** mezőt.
+Az alkalmazás futtatása előtt kattintson a **Projekt** menüben a *Projekt neve* **Tulajdonságok...**, majd a **Létrehozás** lehetőségre. Törölje a **Prefer 32-bit** mezőt.
 
 Ennyi az egész! Építse ki, és máris jó úton jár!
 

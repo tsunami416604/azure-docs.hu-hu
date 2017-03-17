@@ -36,8 +36,8 @@
 #### [A .NET telepítése egy Cloud Service szerepkörre feladat használatával](cloud-services-dotnet-install-dotnet.md)
 
 ### A Távoli asztal konfigurálása
-#### [Visual Studio](cloud-services-role-enable-remote-desktop.md)
-#### [Node.js](cloud-services-nodejs-enable-remote-desktop.md)
+#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Klasszikus portál](cloud-services-role-enable-remote-desktop.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Üzembe helyezés
@@ -115,8 +115,3 @@
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
