@@ -53,6 +53,7 @@
 ### [Tárolási lehetőségek](hdinsight-hadoop-r-server-storage.md)
 ### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## A Spark használata memórián belüli feldolgozáshoz
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)

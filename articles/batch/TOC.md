@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Mi az Azure Batch?](batch-technical-overview.md)
 ## [A funkciók áttekintése](batch-api-basics.md)
+## [API-k és eszközök](batch-apis-tools.md)
 ## [Kvóták és korlátozások](batch-quota-limit.md)
 # Első lépések
 ## [Batch-fiók létrehozása](batch-account-create-portal.md)
@@ -25,7 +26,8 @@
 ### [Diagnosztikai naplók a Batchben](batch-diagnostics.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
@@ -45,9 +47,4 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

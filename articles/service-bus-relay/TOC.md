@@ -31,8 +31,3 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-bus)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-<!--HONumber=Nov16_HO5-->
-
-

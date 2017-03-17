@@ -19,9 +19,10 @@
 ## Felkészülés
 ### [Üzembe helyezési előfeltételek](site-recovery-prereq.md)
 ### [A hálózati infrastruktúrával kapcsolatos szempontok](site-recovery-network-design.md)
-### [A Site Recovery Capacity Planner futtatása Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
 ### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
-### [A Deployment Planner futtatása Azure-ba történő VMware-replikáláshoz](site-recovery-deployment-planner.md)
+### [Deployment Planner a VMware Azure-ba történő replikálásához](site-recovery-deployment-planner.md)
+### [Site Recovery Capacity Planner Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
+
 ## Konfigurálás
 ### [A forráskörnyezet beállítása](site-recovery-set-up-vmware-to-azure.md)
 ### [A célkörnyezet beállítása](site-recovery-prepare-target-vmware-to-azure.md)
@@ -29,14 +30,14 @@
 ### [Mobilitási szolgáltatás üzembe helyezése VMware-replikálásához](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [Mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel](site-recovery-install-mobility-service-using-sccm.md)
 #### [Mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel](site-recovery-automate-mobility-service-install.md)
+### [A replikáció engedélyezése](site-recovery-replicate-vmware-to-azure.md)
 ## Feladatátvétel és feladat-visszavétel
-### [Feladatátvétel a Site Recoveryben](site-recovery-failover.md)
+### [Védett gépek feladatátvétele](site-recovery-failover.md)
 ### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
 #### [Azure Runbookok hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
-### [Azure-ba irányuló feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md)
-### [Két VMM-hely közötti feladatátvételi teszt futtatása](site-recovery-test-failover-vmm-to-vmm.md)
-### [Feladat-visszavétel az Azure-ból VMware-alapú virtuális gépek és fizikai kiszolgálók esetében](site-recovery-how-to-failback-azure-to-vmware.md)
-### [Feladat-visszavétel az Azure-ból Hyper-V-alapú virtuális gépek esetében](site-recovery-failback-from-azure-to-hyper-v.md)
+### [Feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md)
+### [Gépek ismételt védelme feladatátvétel után](site-recovery-how-to-reprotect.md)
+### [Feladat-visszavétel az Azure-ból](site-recovery-failback-azure-to-vmware.md)
 
 ## Migrate (Áttelepítés)
 ### [Áttérés az Azure-ra](site-recovery-migrate-to-azure.md)
@@ -56,9 +57,13 @@
 ### [Hyper-V-replikáció automatizálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 ### [Hyper-V-replikáció automatizálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 ## Kezelés
+### [Replikációs beállítások szerkesztése](site-recovery-setup-replication-settings-vmware.md#edit-replication-policy.md)
+### [Folyamatkiszolgálók kezelése az Azure-ban](site-recovery-vmware-setup-azure-ps-resource-manager.md)
+### [A konfigurációs kiszolgáló kezelése](site-recovery-vmware-to-azure-manage-configuration-server.md)
+### [Horizontálisan felskálázott folyamatkiszolgálók kezelése](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
+### [vCenter-kiszolgálók kezelése](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [Kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md)
-### [Folyamatkiszolgálók horizontális felskálázása](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
-### [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
+## [Figyelés és hibaelhárítás](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)

@@ -31,9 +31,4 @@ A fájlokat az [Azure parancssori felületén][Azure parancssori felületén] ho
 
 Ha ezek a fájlok nem léteznek, az Azure létrehoz, majd futtat egy ideiglenes üzembe helyezési parancsfájlt.  Ez megegyezik azzal, amelyet a fenti paranccsal hozhat létre.
 
-[Azure parancssori felület]: http://azure.microsoft.com/downloads/
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+[Azure parancssori felületén]: http://azure.microsoft.com/downloads/

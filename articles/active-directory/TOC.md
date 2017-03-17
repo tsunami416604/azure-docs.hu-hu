@@ -79,9 +79,12 @@
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Kockázati események](active-directory-reporting-risk-events.md)
 ### [Nevesített hálózatok](active-directory-known-networks-azure-portal.md)
-### [Gyakori kérdések](active-directory-reporting-faq.md)
 ### [Jelentések migrálása](active-directory-reporting-migration.md)
 ### [Megőrzés](active-directory-reporting-retention.md)
+### [Gyakori kérdések](active-directory-reporting-faq.md)
+### Hibaelhárítás
+#### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
+#### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
 ###    Szoftveres hozzáférés
 #### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
 #### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
@@ -124,13 +127,14 @@
 #### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
 
 ## Eszközök kezelése
-### [Eszközök regisztrálása](active-directory-conditional-access-device-registration-overview.md)
-#### [Automatikus regisztráció kezelése](active-directory-conditional-access-automatic-device-registration.md)
+### [Eszközök regisztrálása](active-directory-device-registration-overview.md)
+#### [Automatikus regisztráció kezelése](active-directory-device-registration.md)
 #### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [Gyakori kérdések](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
+#### [Gyakori kérdések](active-directory-device-registration-faq.md)
 #### Hibaelhárítás
-##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-device-registration-troubleshoot-windows.md)
+##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
 #### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
@@ -277,7 +281,6 @@
 #### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
-#### [Helyszíni üzembe helyezés](active-directory-conditional-access-on-premises-setup.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
 #### [Referencia](active-directory-conditional-access-technical-reference.md)

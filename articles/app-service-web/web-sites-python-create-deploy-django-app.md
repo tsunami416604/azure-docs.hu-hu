@@ -153,7 +153,7 @@ Most helyi telepítéshez tartozó virtuális környezetet hozunk létre. Kattin
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-add-virtual-env-27.png)
 
-Kattintson a ** Create** (Létrehozás) gombra. Ezzel létrejön a virtuális környezet, valamint települnek a requirements.txt fájlban található függőségek.
+Kattintson a **Create** (Létrehozás) gombra. Ezzel létrejön a virtuális környezet, valamint települnek a requirements.txt fájlban található függőségek.
 
 ### <a name="create-a-superuser"></a>Felügyelő létrehozása
 Az alkalmazáshoz tartozó adatbázishoz nincs megadva felügyelő. Az alkalmazás bejelentkezési funkciójának vagy a Django felügyeleti felületének használatához (ha úgy dönt, hogy engedélyezi) felügyelőt kell létrehozni.
