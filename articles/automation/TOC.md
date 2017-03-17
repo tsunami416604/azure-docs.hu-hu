@@ -54,6 +54,9 @@
 ### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 ### [Forráskezelés integrálása a GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Forráskezelés integrálása a VSTS-sel](automation-scenario-source-control-integration-with-VSTS.md)
+## Megoldások
+### [Változáskövetés](../log-analytics/log-analytics-change-tracking.md)
+### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
 ## Figyelés
 ### [Azure Automation-feladat adatainak továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md)
 ### [Azure Automation-fiók leválasztása a Log Analyticsről](automation-unlink-from-log-analytics.md)

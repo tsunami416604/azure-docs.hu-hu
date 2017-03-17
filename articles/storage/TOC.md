@@ -169,7 +169,7 @@
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
-### [Adatáthelyezés](https://msdn.microsoft.com/library/azure/mt684990.aspx)
+### [Adatáthelyezés](/dotnet/api/microsoft.windowsazure.storage.datamovement)
 ### [Blobok, üzenetsorok, táblák és fájlok](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.js](http://azure.github.io/azure-storage-node)
