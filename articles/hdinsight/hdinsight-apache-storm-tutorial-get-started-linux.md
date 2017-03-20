@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -107,7 +107,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
 2. Használja az alábbi parancsot példatopológia indításához:
    
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm jar org.apache.storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
    
     > [!NOTE]
     > A HDInsight előző verzióiban a topológia osztályneve `org.apache.storm.starter.WordCountTopology` helyett `storm.starter.WordCountTopology`.
