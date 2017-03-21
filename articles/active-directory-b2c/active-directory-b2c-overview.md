@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: f37fa3a212a0dca46c76b3928cf78756722f0340
-ms.openlocfilehash: 2c6765e28f40210730823a9af0b6fb80a5ddc4d1
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 851319639f1443c062b87305bbde351f41846433
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -55,8 +56,8 @@ Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgálta
 
 * Tekintse meg az [Azure Active Directory B2C díjszabásával kapcsolatos információkat](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 * Tekintse át az Azure Active Directory B2C-vel kapcsolatos [kódmintákat](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c). 
-* Keressen hasznos információkat a Stack Overflow oldalon az [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) vagy az [adal](http://stackoverflow.com/questions/tagged/adal) címkék segítségével.
-* Ossza meg velünk gondolatait a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/169401-azure-active-directory/) – hallani szeretnénk őket! A poszt címe tartalmazza az „AzureADB2C:” kifejezést, így könnyebben megtaláljuk.
+* Keressen hasznos információkat a Stack Overflow oldalon az [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) címke segítségével.
+* Ossza meg velünk gondolatait a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) – hallani szeretnénk őket!
 * Tekintse át az [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
 * Tekintse át az [Azure AD B2C jogkivonat-referenciáját](active-directory-b2c-reference-tokens.md).
 * Olvassa el az [Azure Active Directory B2C-vel kapcsolatos gyakori kérdéseket](active-directory-b2c-faqs.md).
@@ -64,10 +65,5 @@ Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgálta
 
 ## <a name="get-security-updates-for-our-products"></a>Biztonsági frissítések termékeinkhez
 Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekről. Látogasson el [erre a lapra](https://technet.microsoft.com/security/dd252948), és fizessen elő a biztonsági tanácsadói riasztásokra.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

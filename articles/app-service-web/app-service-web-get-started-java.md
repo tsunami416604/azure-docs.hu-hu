@@ -1,10 +1,10 @@
 ---
-title: "Helyezze üzembe első Java-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió) | Microsoft Docs"
-description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
+title: "Hozza létre az első Java-webappját öt perc alatt az Azure-ban | Microsoft Docs"
+description: "Egy mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: erikre
+manager: wpickett
 editor: 
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,112 +12,68 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
+ms.date: 03/08/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 82accfbfa92dfe77d17da05425c2e05af33e5a31
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: e48e03e86a325b8f39809a49cdd19820dfa78bdc
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első Java-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
+# <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>Hozza létre az első Java-webappját öt perc alatt az Azure-ban
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
-Ez az oktatóanyag segítséget nyújt egy egyszerű Java-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
-Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
+Ez a rövid útmutató segítséget nyújt az első Java-webapp mindössze néhány perc alatt történő üzembe helyezéséhez az [Azure App Service](../app-service/app-service-value-prop-what-is.md) használatával.
 
-Az alábbiakat fogja elvégezni: 
+A rövid útmutató elindítása előtt győződjön meg róla, hogy [az Azure CLI telepítve van](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) a gépen.
 
-* Webalkalmazás létrehozása az Azure App Service használatával.
-* Java-mintaalkalmazás üzembe helyezése.
-* A kód élőben, üzemi környezetben való futtatása.
+## <a name="create-a-java-web-app-in-azure"></a>Java-webapp létrehozása az Azure-ban
+2. Jelentkezzen be az Azure-ba az `az login` parancs futtatásával, és kövesse a képernyőn látható utasításokat.
+   
+    ```azurecli
+    az login
+    ```
+   
+3. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Ide kell helyeznie az összes olyan Azure-erőforrást, amelyet közösen szeretne kezelni, mint például a webappot és a hozzá tartozó SQL Database-háttérrendszert.
 
-## <a name="prerequisites"></a>Előfeltételek
-* Szerezzen be egy FTP-/FTPS-ügyfelet, például a [FileZillát](https://filezilla-project.org/).
-* Szerezzen be egy Microsoft Azure-fiókot. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+    ```azurecli
+    az group create --location "West Europe" --name myResourceGroup
+    ```
 
-> [!NOTE]
-> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
+    A `---location` paraméterhez használható lehetséges értékek megtekintéséhez használja az `az appservice list-locations` Azure CLI-parancsot.
 
-<a name="create"></a>
+3. Hozzon létre egy „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
-2. Kattintson az **Új** > **Web + mobil** > **Webalkalmazás** elemre.
-   
-    ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
-3. Az alkalmazás-létrehozási panelen használja az alábbi beállításokat az új alkalmazásához:
-   
-   * **Alkalmazás neve**: Írjon be egy egyedi nevet.
-   * **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
-   * **App Service-csomag/Hely**: Kattintson rá a konfiguráláshoz, majd kattintson az **Új létrehozása** lehetőségre az App Service-csomag nevének, helyének és tarifacsomagjának beállításához. Nyugodtan használhatja az **Ingyenes** tarifacsomagot.
-     
-     Amikor elkészült, az alkalmazás-létrehozási panelnek az alábbihoz hasonlóan kell kinéznie:
-     
-     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
-4. Kattintson az alul lévő **Létrehozás** lehetőségre. A felül lévő **Értesítés** ikonra kattintva megtekintheti a folyamat állapotát.
-   
-    ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
-5. Az üzembe helyezés befejezése után ennek az értesítési üzenetnek kell megjelennie. Kattintson az üzenetre az üzemelő példány panelének megnyitásához.
-   
-    ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
-6. **Az üzembe helyezés sikeres** panelen kattintson az **Erőforrás** hivatkozásra az új webalkalmazás panelének megnyitásához.
-   
-    ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
+    ```azurecli
+    az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku FREE
+    ```
 
-## <a name="deploy-a-java-app-to-your-web-app"></a>Java-alkalmazás üzembe helyezése a webalkalmazásban
-Ideje egy Java-alkalmazást üzembe helyezni az Azure-ban az FTPS-sel.
+4. Hozzon létre egy új, egyéni névvel rendelkező webappot az `<app_name>` paraméterben.
 
-1. A webalkalmazás panelén görgessen le, vagy keressen rá az **Alkalmazásbeállítások** elemre, majd kattintson rá. 
-   
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
-2. A **Java-verzió** alatt válassza a **Java 8** lehetőséget, majd kattintson a **Mentés** parancsra.
-   
-    ![](./media/app-service-web-get-started-languages/set-java.png)
-   
-    Amikor a **Sikeresen frissítette a webalkalmazás beállításait** értesítést kapja, keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa az alapértelmezett JSP-kiszolgálóprogramot.
-3. Térjen vissza a webalkalmazás panelére, görgessen le, vagy keressen rá az **Üzembehelyezési hitelesítő adatok** elemre, majd kattintson rá.
-4. Adja meg az üzembehelyezési hitelesítő adatokat, majd kattintson a **Mentés** gombra.
-5. A webalkalmazás panelére visszatérve kattintson az **Áttekintés** elemre. Az **FTP-/üzembehelyezési felhasználónév** és az **FTPS-állomásnév** elem mellett kattintson a **Másolás** gombra az értékek másolásához.
-   
-    ![](./media/app-service-web-get-started-languages/get-ftp-url.png)
-   
-    Készen áll a Java-alkalmazás FTPS használatával történő üzembe helyezésére.
-6. Az FTP-/FTPS-ügyfélben jelentkezzen be az Azure-webalkalmazás FTP-kiszolgálójára az előző lépésben kimásolt értékekkel. Használja az előzőleg létrehozott üzembehelyezési jelszót.
-   
-    Az alábbi képernyőképen a FileZillával történő bejelentkezés látható.
-   
-    ![](./media/app-service-web-get-started-languages/filezilla-login.png)
-   
-    Az Azure ismeretlen SSL-tanúsítványával kapcsolatos biztonsági figyelmeztetés jelenhet meg. Lépjen tovább, és folytassa a műveletet.
-7. Kattintson [erre a hivatkozásra](https://github.com/Azure-Samples/app-service-web-java-get-started/raw/master/webapps/ROOT.war) a WAR-fájl a helyi számítógépére történő letöltéséhez.
-8. Az FTP-/FTPS-ügyfélben lépjen a távoli hely **/site/wwwroot/webapps** helyére, és húzza a helyi számítógépére letöltött WAR-fájlt abba a távoli könyvtárba.
-   
-    ![](./media/app-service-web-get-started-languages/transfer-war-file.png)
-   
-    A fájl Azure-ban való felülírásához kattintson az **OK** gombra.
-   
-   > [!NOTE]
-   > A Tomcat alapértelmezett viselkedésének megfelelően a /site/wwwroot/webapps **ROOT.war** fájlneve megadja a gyökér webalkalmazást (http://*&lt;alkalmazásnév>*.azurewebsites.net), a ***&lt;bármely_név>*.war** fájlnév pedig egy elnevezett webalkalamzást (http://*&lt;alkalmazásnév>*.azurewebsites.net/*&lt;bármely_név>*) ad meg.
-   > 
-   > 
+    ```azurecli
+    az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
+    ```
 
-Ennyi az egész! A Java-alkalmazás mostantól élesben fut az Azure-ban. A böngészőjéből keresse fel a http://*&lt;alkalmazásnév>*.azurewebsites.net webhelyet, hogy működés közben láthassa. 
+4. Java-mintaapp üzembe helyezése a GitHubról.
 
-## <a name="make-updates-to-your-app"></a>Frissítések készítése az alkalmazáshoz
-Amikor csak frissítésre van szüksége, csak töltse fel az új WAR-fájlt ugyanabba a távoli könyvtárba az FTP-/FTPS-ügyféllel.
+    ```azurecli
+    az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
+    --repo-url "https://github.com/azure-appservice-samples/JavaCoffeeShopTemplate.git" --branch master --manual-integration 
+    ```
+
+
+5. Az Azure-alkalmazást az alábbi paranccsal tekintheti meg működés közben:
+
+    ```azurecli
+    az appservice web browse --name <app_name> --resource-group myResourceGroup
+    ```
+
+Gratulálunk, első Java-webappja élőben fut az Azure App Service-ben.
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-[Java-webalkalmazás létrehozása egy Azure Marketplace-ről beszerzett sablonnal](web-sites-java-get-started.md#marketplace). Beszerezheti a saját teljesen testreszabható Tomcat-tárolóját, és használhatja az ismerős kezelő felhasználói felületét. 
 
-Az Azure-webalkalmazáson elvégezheti a hibakeresést közvetlenül az [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) vagy az [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md) használatával.
-
-Vagy tegyen még többet az első webalkalmazásával. Példa:
-
-* Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). 
-* Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
+Az előre létrehozott, [webappokhoz készült CLI-szkriptek vizsgálata](app-service-cli-samples.md).
 

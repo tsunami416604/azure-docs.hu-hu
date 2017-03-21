@@ -8,39 +8,36 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## Új Azure SQL Database létrehozása
-Kövesse a következő lépéseket az Azure Portalon, hogy létrehozzon egy új Azure SQL Database adatbázist egy új vagy egy létező Azure SQL Database logikai kiszolgálón.
+## <a name="create-a-new-azure-sql-database"></a>Create a new Azure SQL database
+Use the following steps in the Azure portal to create a new Azure SQL database on a new or existing Azure SQL Database logical server.
 
-1. Ha jelenleg nincs csatlakozva, jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-2. Kattintson az **Új** gombra, írja be az **SQL Database** (SQL-adatbázis) kifejezést, majd kattintson az **SQL Database (new database)** (SQL-adatbázis (új adatbázis)) elemre
+1. If you're not currently connected, connect to the [Azure portal](http://portal.azure.com).
+2. Click **New**, type **SQL Database**, and then click **SQL Database (new database)**.
    
-     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
-3. Kattintson az SQL Database (new database) (SQL-adatbázis (új adatbázis)) elemre.
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
+3. Click **SQL Database (new database)**.
    
-     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
-4. Kattintson a **Létrehozás** gombra az új adatbázis létrehozásához az SQL Database szolgáltatásban.
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
+4. Click **Create** to create a new database in the SQL Database service.
    
-     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
-5. Adja meg az alábbi kiszolgálótulajdonságok értékeit:
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
+5. Provide the values for the following server properties:
    
-   * Adatbázis neve
-   * Előfizetés (csak akkor, ha több előfizetéssel rendelkezik)
-   * Erőforráscsoport (ha ezek az első lépései, használja a logikai kiszolgáló erőforráscsoportját)
-   * Forrás kiválasztása (választhat üres adatbázist, mintaadatokat vagy egy Azure-adatbázis biztonsági mentését – egy helyszíni SQL Server-adatbázis áttelepítéséhez vagy adatok a BCP használatával történő betöltéséhez tekintse meg a cikk végén található hivatkozásokat)
-   * Kiszolgáló (egy új vagy meglévő logikai kiszolgáló)
-   * Kiszolgáló-rendszergazdai jelszava
-   * Jelszó
-   * Tarifacsomag (ha ezek az első lépései, használja az alapértelmezett értéket – S0)
-   * Rendezés (csak akkor, ha üres adatbázist választott)
+   * Database name
+   * Subscription: This applies only if you have multiple subscriptions.
+   * Resource group: If you're just getting started, use the resource group of the logical server.
+   * Select source: You can choose a blank database, sample data, or an Azure database backup. To migrate an on-premises SQL Server database or load data by using the BCP command-line tool, see the links at the end of this article.
+   * Server: A new or existing logical server.
+   * Server admin login
+   * Password
+   * Pricing tier: If you're just getting started, use the default value S0.
+   * Collation: This applies only if a blank database was chosen.
      
-        ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
-6. Kattintson a **Létrehozás** gombra – ekkor az értesítési területen látható, hogy az üzembe helyezés megkezdődött.
+        ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
+6. Click **Create**. In the notification area, you can see that deployment has started.
    
-    ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
-7. Mielőtt folytatja a következő lépéssel, várja meg, míg az üzembe helyezés befejeződik.
+    ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
+7. Wait for deployment to finish before continuing to the next step.
    
-     ![új adatbázis](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
-
-<!--HONumber=sep16_HO1-->
-
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/08/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 3c8406efd9d716df56ed3ca10fc596684945c2f2
-ms.openlocfilehash: 3281b001aeab42aace951b5bdd5d4ec901de396f
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 2fa2d26b996435c18c2f88396991bf7210350553
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -28,7 +29,7 @@ Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, �
 A U-SQL egy rendkívüli mértékben méretezhető, széles körben bővíthető nyelv, amellyel bármilyen, a Data Lake adattárban vagy azon kívül tárolt adat előkészíthető, átalakítható és elemezhető. További információért lásd az [U-SQL-segédanyagot](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio 2017 jelenleg nem támogatott.**
+* **Visual Studio 2015 3. frissítéssel, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio 2017 jelenleg nem támogatott.**
 * **Microsoft Azure SDK for .NET 2.7.1-es vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**.
 
@@ -349,9 +350,4 @@ A következő PowerShell-parancsfájl előkészít egy Azure Data Lake Analytics
     Write-Host "List the source data ..."  -ForegroundColor Green
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

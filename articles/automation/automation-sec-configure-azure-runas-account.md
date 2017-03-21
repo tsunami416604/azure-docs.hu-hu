@@ -4,7 +4,7 @@ description: "Az oktatóprogram végigvezeti az egyszerű biztonsági hitelesít
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "egyszerű szolgáltatásnév, setspn, azure-hitelesítés"
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -13,22 +13,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 03/10/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 7230fb1a8d27708c40040950e3ec8950c6c04780
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 15cbf897f3f67b9d1bee0845b4d287fdabe63ba8
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>Forgatókönyvek hitelesítése Azure-beli futtató fiókkal
 Ez a témakör bemutatja, hogyan lehet Automation-fiókot konfigurálni az Azure Portal webhelyről az új futtató fiók funkció használatával, amely az Azure Resource Managerben vagy az Azure Service Managerben erőforrásokat kezelő forgatókönyvek hitelesítésére szolgál.
 
-Amikor létrehoz egy új Automation-fiókot az Azure Portal webhelyen, a rendszer a következőket is létrehozza:
+Amikor létrehoz egy Automation-fiókot az Azure Portalon, a következők is létrejönnek:
 
-* Egy futtató fiókot, amely létrehoz egy új szolgáltatásnevet az Azure Active Directoryban, illetve egy tanúsítványt, illetve hozzárendeli a Közreműködő szerepkörön alapuló hozzáférés-vezérlést (RBAC). Ezzel a szerepkörrel felügyelhetők a Resource Manager-erőforrások forgatókönyvek segítségével.   
-* Egy klasszikus futtató fiókot, úgy, hogy feltölt egy felügyeleti tanúsítványt. Ezzel felügyelhetők az Azure Service Management- és klasszikus erőforrások forgatókönyvek segítségével.  
+* Egy futtatófiókot, amely létrehoz egy új egyszerű szolgáltatást az Azure Active Directoryban, létrehoz egy tanúsítványt, valamint kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amelynek használatával a Resource Manager-erőforrások kezelhetők runbookokkal.   
+* Egy klasszikus futtatófiókot egy felügyeleti tanúsítvány feltöltésével, amelynek használatával az Azure szolgáltatásfelügyelet erőforrásai vagy a klasszikus erőforrások kezelhetők runbookokkal.  
 
 Ez leegyszerűsíti a folyamatot, és segít a tervezés gyors megkezdésében, és forgatókönyvek üzembe helyezésében az automatizálási szükségletek támogatására.      
 
@@ -48,7 +48,10 @@ Mielőtt azonban továbblépnénk, fontos, hogy néhány dolgot tisztázzunk.
 1. Az itt leírtak nincsenek hatással a korábban a klasszikus vagy a Resource Manager üzemi modell keretében már létrehozott Automation-fiókokra.  
 2. Ezek a lépések kizárólag az Azure Portal webhelyen létrehozott Automation-fiókokon végezhetők el.  Ha a klasszikus portálról hoz létre fiókot, a rendszer nem fogja replikálni a futtató fiók konfigurációját.
 3. Ha jelenleg rendelkezik olyan runbookokkal és objektumokkal (azaz ütemezésekkel, változókkal stb.), amelyeket előzőleg a klasszikus erőforrások felügyeletére hozott létre, és szeretné, hogy ezek a runbookok hitelesítést végezhessenek az új klasszikus futtató fiókkal, létre kell hoznia egy klasszikus futtató fiókot a futtató fiókok kezelési funkciójával, vagy frissítenie kell a meglévő fiókot az alábbi PowerShell-szkripttel.  
-4. Ha az új futtató fiókkal és a klasszikus futtató Automation-fiókkal szeretne hitelesítést végezni, az alább található példakód segítségével módosítania kell meglévő forgatókönyveit.  **Vegye figyelembe**, hogy a futtató fiók Resource Manager-erőforrásokon, tanúsítványalapú szolgáltatásnévvel történő hitelesítésre, míg a klasszikus futtató fiók Service Manager-erőforrásokon, felügyeleti tanúsítvánnyal történő hitelesítésére szolgál.     
+4. Ha az új futtató fiókkal és a klasszikus futtató Automation-fiókkal szeretne hitelesítést végezni, a [Hitelesítésikód-példák](#authentication-code-examples) szakaszban található példakód segítségével módosítania kell meglévő forgatókönyveit.  
+   
+    >[!NOTE] 
+    >Vegye figyelembe, hogy a futtató fiók Resource Manager-erőforrásokon, tanúsítványalapú szolgáltatásnévvel történő hitelesítésre, míg a klasszikus futtató fiók Service Manager-erőforrásokon, felügyeleti tanúsítvánnyal történő hitelesítésére szolgál.     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Egy új Automation-fiók létrehozása az Azure Portalról
 Az ebben a fejezetben olvasható lépések végrehajtásával létrehozhatja az új Azure Automation-fiókját az Azure Portal webhelyen.  Ezzel mind a futtató fiókot, mind a klasszikus futtató fiókot létrehozza.  
@@ -185,20 +188,20 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
 A szkript a következőket hozza létre a kiválasztott konfigurációtól függően:
 
 * Egy Azure AD alkalmazást, amelyet az önaláírt vagy vállalati tanúsítvány hitelesít. Hozzon létre egy egyszerű szolgáltatásfiókot ehhez az alkalmazáshoz az Azure AD-ben, és rendelje hozzá a Közreműködő szerepkört (ezt módosíthatja Tulajdonosra vagy bármelyik másik szerepkörre) ehhez a fiókhoz a jelenlegi előfizetésében.  További információkért tekintse át [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.
-* Egy **AzureRunAsCertificate** nevű Automation-tanúsítványobjektum a megadott Automation-fiókban. Ez tartalmazza a szolgáltatásnév által használt tanúsítványt.
+* Egy **AzureRunAsCertificate** nevű Automation-tanúsítványobjektum a megadott Automation-fiókban. Ez tartalmazza az Azure AD-alkalmazás által használt titkos tanúsítványkulcsot.
 * Egy **AzureRunAsConnection** nevű, a megadott Automation-fiókban található Automation kapcsolati eszközt, amely magában foglalja az alkalmazásazonosítót, a bérlőazonosítót, az előfizetés-azonosítót és a tanúsítvány ujjlenyomatát.    
 
 Klasszikus futtatófiók esetében:
 
-* Egy **AzureClassicRunAsCertificate** nevű Automation-tanúsítványobjektum a megadott Automation-fiókban, amely tartalmazza a forgatókönyvek hitelesítéséhez szükséges önaláírt vagy vállalati hitelesítésszolgáltató által kibocsátott tanúsítványt.
+* Egy **AzureClassicRunAsCertificate** nevű Automation-tanúsítványobjektum a megadott Automation-fiókban. Ez tartalmazza a felügyeleti tanúsítvány által használt titkos tanúsítványkulcsot.  
 * Egy **AzureClassicRunAsConnection** nevű Automation-kapcsolatobjektum a megadott Automation-fiókban. Ez tartalmazza az előfizetés nevét, a subscriptionId paramétert, valamint a tanúsítványobjektum nevét.
 
-Ha azt a lehetőséget választja, hogy az önaláírt tanúsítványt használja a klasszikus futtató fiókhoz, a szkript létrehoz egy önaláírt felügyeleti tanúsítványt, majd menti azt a PowerShell-munkamenet végrehajtásához használt felhasználói profilhoz tartozó ideiglenes mappába: *%USERPROFILE%\AppData\Local\Temp*.  A parancsprogram végrehajtását követően fel kell töltenie az Azure felügyeleti tanúsítványt annak az előfizetésnek a felügyeleti tárába, amelyben az Automation-fiókot létrehozták.  Az alábbi lépésekből megtudhatja, hogyan hajtsa végre a parancsprogramot, és hogyan töltse fel a tanúsítványt.  
+Ha klasszikus futtató fiók létrehozását választja, a szkript végrehajtása után fel kell töltenie a nyilvános tanúsítványt (.cer formátumban) annak az előfizetésnek a felügyeleti tárába, amelyben az Automation-fiókot létrehozták. Az alábbi lépésekből megtudhatja, hogyan hajtsa végre a parancsprogramot, és hogyan töltse fel a tanúsítványt.    
 
 1. Mentse el a következő parancsprogramot a számítógépén.  Ebben a példában mentse a következő fájlnéven: **New-RunAsAccount.ps1**.  
    
-        #Requires -RunAsAdministrator
-        Param (
+         #Requires -RunAsAdministrator
+         Param (
         [Parameter(Mandatory=$true)]
         [String] $ResourceGroup,
 
@@ -234,11 +237,14 @@ Ha azt a lehetőséget választja, hogy az önaláírt tanúsítványt használj
         [string]$EnvironmentName="AzureCloud",
 
         [Parameter(Mandatory=$false)]
-        [int] $NoOfMonthsUntilExpired = 12
+        [int] $SelfSignedCertNoOfMonthsUntilExpired = 12
         )
 
-        function CreateSelfSignedCertificate([string] $keyVaultName, [string] $certificateName, [string] $selfSignedCertPlainPassword,[string] $certPath, [string] $certPathCer, [string] $noOfMonthsUntilExpired ) {
-        $Cert = New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation cert:\LocalMachine\My -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"
+        function CreateSelfSignedCertificate([string] $keyVaultName, [string] $certificateName, [string] $selfSignedCertPlainPassword, 
+                                      [string] $certPath, [string] $certPathCer, [string] $selfSignedCertNoOfMonthsUntilExpired ) {
+        $Cert = New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation cert:\LocalMachine\My `
+           -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+           -NotAfter (Get-Date).AddMonths($selfSignedCertNoOfMonthsUntilExpired)
 
         $CertPassword = ConvertTo-SecureString $selfSignedCertPlainPassword -AsPlainText -Force
         Export-PfxCertificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPath -Password $CertPassword -Force | Write-Verbose
@@ -292,8 +298,8 @@ Ha azt a lehetőséget választja, hogy az önaláírt tanúsítványt használj
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 2 -and $AzureRMProfileVersion.Minor -ge 1) -or ($AzureRMProfileVersion.Major -gt 2)))
         {
-          Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
-          return
+           Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+           return
         }
  
         Login-AzureRmAccount -EnvironmentName $EnvironmentName
@@ -305,72 +311,72 @@ Ha azt a lehetőséget választja, hogy az önaláírt tanúsítványt használj
         $ConnectionTypeName = "AzureServicePrincipal"
  
         if ($EnterpriseCertPathForRunAsAccount -and $EnterpriseCertPlainPasswordForRunAsAccount) {
-           $PfxCertPathForRunAsAccount = $EnterpriseCertPathForRunAsAccount
-           $PfxCertPlainPasswordForRunAsAccount = $EnterpriseCertPlainPasswordForRunAsAccount
+        $PfxCertPathForRunAsAccount = $EnterpriseCertPathForRunAsAccount
+        $PfxCertPlainPasswordForRunAsAccount = $EnterpriseCertPlainPasswordForRunAsAccount
         } else {
-           $CertificateName = $AutomationAccountName+$CertifcateAssetName
-           $PfxCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".pfx")
-           $PfxCertPlainPasswordForRunAsAccount = $SelfSignedCertPlainPassword
-           $CerCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".cer")
-           CreateSelfSignedCertificate $KeyVaultName $CertificateName $PfxCertPlainPasswordForRunAsAccount $PfxCertPathForRunAsAccount $CerCertPathForRunAsAccount $NoOfMonthsUntilExpired
+          $CertificateName = $AutomationAccountName+$CertifcateAssetName
+          $PfxCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".pfx")
+          $PfxCertPlainPasswordForRunAsAccount = $SelfSignedCertPlainPassword
+          $CerCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".cer")
+          CreateSelfSignedCertificate $KeyVaultName $CertificateName $PfxCertPlainPasswordForRunAsAccount $PfxCertPathForRunAsAccount $CerCertPathForRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired 
         }
 
         # Create Service Principal
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-         # Create the automation certificate asset
-         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
+        # Create the automation certificate asset
+        CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-         # Populate the ConnectionFieldValues
-         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
-         $TenantID = $SubscriptionInfo | Select TenantId -First 1
-         $Thumbprint = $PfxCert.Thumbprint
-         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId} 
+        # Populate the ConnectionFieldValues
+        $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
+        $TenantID = $SubscriptionInfo | Select TenantId -First 1
+        $Thumbprint = $PfxCert.Thumbprint
+        $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId} 
 
-         # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
-         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
+        # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
-           # Create Run As Account using Service Principal
-           $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
-           $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
-           $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-           $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
+            # Create Run As Account using Service Principal
+            $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
+            $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
+            $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
+            $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
                     "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
                     "Then click Upload and upload the .cer format of #CERT#" 
  
-            if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
-            $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
-            $PfxCertPlainPasswordForClassicRunAsAccount = $EnterpriseCertPlainPasswordForClassicRunAsAccount
-            $UploadMessage = $UploadMessage.Replace("#CERT#", $PfxCertPathForClassicRunAsAccount)
-         } else {
-            $ClassicRunAsAccountCertificateName = $AutomationAccountName+$ClassicRunAsAccountCertifcateAssetName
-            $PfxCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".pfx")
-            $PfxCertPlainPasswordForClassicRunAsAccount = $SelfSignedCertPlainPassword
-            $CerCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".cer")
-            $UploadMessage = $UploadMessage.Replace("#CERT#", $CerCertPathForClassicRunAsAccount)
-            CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $NoOfMonthsUntilExpired
-         }
+             if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
+             $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
+             $PfxCertPlainPasswordForClassicRunAsAccount = $EnterpriseCertPlainPasswordForClassicRunAsAccount
+             $UploadMessage = $UploadMessage.Replace("#CERT#", $PfxCertPathForClassicRunAsAccount)
+        } else {
+             $ClassicRunAsAccountCertificateName = $AutomationAccountName+$ClassicRunAsAccountCertifcateAssetName
+             $PfxCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".pfx")
+             $PfxCertPlainPasswordForClassicRunAsAccount = $SelfSignedCertPlainPassword
+             $CerCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".cer")
+             $UploadMessage = $UploadMessage.Replace("#CERT#", $CerCertPathForClassicRunAsAccount)
+             CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired 
+        }
 
-         # Create the automation certificate asset
-         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
+        # Create the automation certificate asset
+        CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-         # Populate the ConnectionFieldValues
-         $SubscriptionName = $subscription.Subscription.SubscriptionName
-         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
+        # Populate the ConnectionFieldValues
+        $SubscriptionName = $subscription.Subscription.SubscriptionName
+        $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-         # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
-         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
+        # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
-         Write-Host -ForegroundColor red $UploadMessage
-         }
+        Write-Host -ForegroundColor red $UploadMessage
+        }
 
 2. A számítógépén indítsa el a **Windows PowerShell** alkalmazást a **Kezdőlap** képernyőről emelt szintű felhasználói jogokkal.
 3. Az emelt szintű PowerShell parancssori rendszerhéjból lépjen a mappába, amely az 1. lépésben létrehozott szkriptet tartalmazza, majd futtassa azt a kívánt konfigurációhoz szükséges paraméterértékek beállításával.  
 
     **Azure-beli futtató fiók létrehozása önaláírt tanúsítvány használatával**  
-    `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword>` 
+    `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false` 
 
     **Azure-beli futtató fiók és klasszikus Azure-beli futtató fiók létrehozása önaláírt tanúsítvány használatával**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true`
@@ -386,9 +392,15 @@ Ha azt a lehetőséget választja, hogy az önaláírt tanúsítványt használj
     > 
     > 
 
-Miután a szkript sikeresen lefutott, ha klasszikus futtató fiókot hozott létre, szüksége lesz a tanúsítvány másolatára, amely a felhasználói profilhoz tartozó **Temp** mappában jött létre.  Kövesse a lépéseket, amelyek bemutatják, hogy hogyan [tölthet fel egy felügyeleti API-tanúsítványt](../azure-api-management-certs.md) a klasszikus Azure-portálra, majd a [mintakód](#sample-code-to-authenticate-with-service-management-resources) segítségével ellenőrizze a hitelesítő adatok konfigurációját a Service Management-erőforrásokkal.  Ha nem klasszikus futtató fiókot hozott létre, az alább látható [kódminta](#sample-code-to-authenticate-with-resource-manager-resources) segítségével állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját, vagy a [kódminta](#sample-code-to-authenticate-with-service-management-resources) segítségével ellenőrizze a hitelesítő adatok konfigurációját a Service Management-erőforrásokkal.
+A szkript sikeres futtatása után, ha Klasszikus futtató fiókot hozott létre, kövese [a felügyeleti API-tanúsítvány feltöltésének](../azure-api-management-certs.md) lépéseit a klasszikus Azure portálra.  Ha (.cer formátumú) önaláírt nyilvános tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, a tanúsítvány másolatát a PowerShell-munkamenet végrehajtásához használt felhasználói profil ideiglenes mappájában találja: *%USERPROFILE%\AppData\Local\Temp*.  Ha a klasszikus futtató fiókot úgy konfigurálta, hogy a vállalati hitelesítésszolgáltatója által létrehozott (.cer formátumú) tanúsítványt használja, akkor ezt a tanúsítványt kell használnia.  Miután feltöltötte a tanúsítványt, a [mintakód](#sample-code-to-authenticate-with-service-management-resources) segítségével ellenőrizze a hitelesítő adatok konfigurációját a Service Management-erőforrásokkal.  
 
-## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>Mintakód a Resource Manager-erőforrásokkal történő hitelesítéshez
+Ha nem klasszikus futtató fiókot hozott létre, az alább látható [kódminta](#sample-code-to-authenticate-with-resource-manager-resources) segítségével állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját.   
+
+##  <a name="authentication-code-examples"></a>Hitelesítésikód-példák
+
+A következő példák bemutatják, hogyan hitelesíthetők a runbookok a Resource Managerrel vagy klasszikus erőforrásokkal futtató fiók használatával.
+
+### <a name="authenticate-with-resource-manager-resources"></a>Hitelesítés Resource Manager-erőforrásokkal
 A Resource Manager-erőforrások forgatókönyvekkel való kezeléséhez használhatja az alábbi, az **AzureAutomationTutorialScript** mintaforgatókönyvből származó frissített mintakódot a futtató fiók használatával történő hitelesítéshez.   
 
     $connectionName = "AzureRunAsConnection"
@@ -423,7 +435,7 @@ A parancsprogram tartalmaz két további kódsort az előfizetési környezet hi
 
 Figyelje meg, hogy a forgatókönyvben való hitelesítést biztosító parancsmag, (**Add-AzureRmAccount**) a *ServicePrincipalCertificate* paraméterkészletet használja.  Ez a szolgáltatásnév segítségével, és nem hitelesítő adatokkal végzi el a hitelesítést.  
 
-## <a name="sample-code-to-authenticate-with-service-management-resources"></a>Mintakód a Service Manager-erőforrásokkal történő hitelesítéshez
+### <a name="authenticate-with-service-management-resources"></a>Hitelesítés Service Manager-erőforrásokkal
 Ha a klasszikus futtató fiókkal szeretne hitelesítést végezni a klasszikus erőforrások forgatókönyvekkel való felügyeletéhez, használhatja az alábbi, az **AzureClassicAutomationTutorialScript** mintaforgatókönyvből származó mintakódot is.
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"

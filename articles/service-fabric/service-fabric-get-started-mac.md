@@ -2,21 +2,22 @@
 title: "A fejlesztési környezet beállítása Mac OS X-en | Microsoft Docs"
 description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására."
 services: service-fabric
-documentationcenter: .net
-author: seanmck
-manager: timlt
+documentationcenter: java
+author: saysa
+manager: raunakp
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/27/2016
-ms.author: seanmck
+ms.author: saysa
 translationtype: Human Translation
-ms.sourcegitcommit: d5a04e34a3f46097b3ad1b04ac6b2b845fc946af
-ms.openlocfilehash: beb869fd5c1fcc19101b16149244187c37a6d6a3
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: fc73eedae7ec9664da714567f47a543e625cd023
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -36,11 +37,15 @@ A Service Fabric nem fut natív módon az OS X-en. A helyi Service Fabric-fürt 
 * [Vagrant (1.8.4-es vagy újabb verzió)](http://www.vagrantup.com/downloads.html)
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
+>[!NOTE]
+>  A Vagrant és a VirtualBox kölcsönösen támogatott verzióját kell használnia. A Vagrant kiszámíthatatlan módon viselkedhet egy nem támogatott VirtualBox-verzión.
+>
+
 ## <a name="create-the-local-vm"></a>A helyi virtuális gép létrehozása
 Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehozásához hajtsa végre a következő lépéseket:
 
 1. Klónozza a **Vagrantfile**-adattárat
-   
+
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
@@ -62,31 +67,29 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
     ```bash
     vagrant up
     ```
-  
+
    Ebben a lépésben megtörténik az előre konfigurált virtuálisgép-rendszerkép letöltése, helyi indítása, és végül egy helyi Service Fabric-fürt beállítása. Ez eltarthat néhány percig. Ha a beállítás sikeres, a kimenetben megjelenik egy üzenet, amely jelzi, hogy a fürt indítása folyamatban van.
-   
+
     ![A fürt beállításának megkezdése a virtuális gép kiépítése után][cluster-setup-script]
-    
+
 5. Keresse fel a Service Fabric Explorert a http://192.168.50.50:19080/Explorer címen (feltéve, hogy megtartotta az alapértelmezett magánhálózati IP-címet) a fürt megfelelő beállításának teszteléséhez.
 
     ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
 
-## <a name="install-the-service-fabric-plugin-for-eclipse-neon-optional"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése (nem kötelező)
-A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely leegyszerűsítheti a Java-szolgáltatások létrehozásának és üzembe helyezésének folyamatát.
+## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Help > Installation Details** (Súgó > Telepítés részletei) lehetőség kiválasztásával ellenőrizheti. Az [itt][buildship-update] található utasítások alapján frissítheti a Buildshipet.
-2. A Service Fabric beépülő modul telepítéséhez válassza a **Help > Install New Software...** (Súgó > Új szoftver telepítése) lehetőséget.
-3. A Work with (Használat) szövegbeviteli mezőbe írja be a következőt: http://dl.windowsazure.com/eclipse/servicefabric.
-4. Kattintson az Add (Hozzáadás) parancsra.
+A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**, amely leegyszerűsítheti a Java-szolgáltatások összeállításának, létrehozásának és üzembe helyezésének folyamatát. A Service Fabric Eclipse beépülő modul telepítéséhez és frissítéséhez érdemes az ebben az általános [dokumentációban](service-fabric-get-started-eclipse.md#install-or-update-service-fabric-plugin-on-eclipse-neon) szereplő telepítési lépéseket követnie.
 
-    ![Eclipse Neon beépülő modul a Service Fabrichez][sf-eclipse-plugin-install]
-5. Válassza ki a Service Fabric beépülő modult, majd kattintson a Next (Tovább) gombra.
-6. Folytassa a telepítést, és fogadja el a végfelhasználói licencszerződést.
+## <a name="using-service-fabric-eclipse-plugin-on-mac"></a>A Service Fabric Eclipse beépülő modul használata Mac gépen
+
+Győződjön meg arról, hogy elvégezte a [Service Fabric Eclipse beépülő modul dokumentációjában](service-fabric-get-started-eclipse.md) szereplő lépéseket. A Service Fabric Java-alkalmazás Mac-gazdagépen vagrant-guest tároló használatával történő összeállításának, létrehozásának és üzembe helyezésének lépései nagyrészt megegyeznek az általános dokumentációban szereplőkkel. Egyes pontokban azonban eltérnek attól, és ezekre az alábbiakban külön felhívjuk a figyelmét.
+* Mivel a Service Fabric Java-alkalmazás összeépítéshez szüksége lesz a Service Fabric-kódtárakra, az Eclipse-projektet egy megosztott elérési úton kell létrehozni. Alapméretezés szerint a ``Vagrantfile``-t tartalmazó gazdagép elérési útján található tartalmak a ``/vagrant`` elérési úton vannak megosztva a vendéggépen.
+* Éppen ezért, ha a ``Vagrantfile`` a ``~/home/john/allprojects/`` elérési úton található, akkor a ``MyActor`` Service Fabric-projektet a ``~/home/john/allprojects/MyActor`` helyen kell létrehoznia, és az Eclipse-munkaterületének elérési útja a ``~/home/john/allprojects`` lesz.
 
 ## <a name="next-steps"></a>Következő lépések
 <!-- Links -->
-
-* [Az első Service Fabric-alkalmazás létrehozása Linuxra](service-fabric-create-your-first-linux-application-with-java.md)
+* [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
+* [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)
 * [Service Fabric-fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)
 * [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md)
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
@@ -96,9 +99,4 @@ A Service Fabric egy beépülő modult biztosít az Eclipse Neon IDE-hez, amely 
 [sfx-mac]: ./media/service-fabric-get-started-mac/sfx-mac.png
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

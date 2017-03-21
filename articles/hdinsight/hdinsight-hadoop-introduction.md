@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 12/14/2016
 ms.author: cgronlun
 translationtype: Human Translation
-ms.sourcegitcommit: 10d684bd6c9408f2fbd48a0a8804b011f098d71c
-ms.openlocfilehash: 8f38b9eaf8bcb498a7983756cbf57f3e372d7fe0
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: e0ebb2224c1f3290df2a89cfaeb9797a7dbcc051
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -34,7 +35,7 @@ A big data kifejezés bármilyen nagyobb digitális információhalmazra utalhat
 
 Ahhoz, hogy a big data modell használható tudásbázist és betekintést nyújtson, a megfelelő adatokat kell kigyűjtenie és a megfelelő kérdéseket kell feltennie. Gondoskodnia kell az adatok elérhetőségéről, tisztításáról, elemzéséről majd a használható módon történő megjelenítéséről. Ebben segíthet a HDInsight rendszerében a Hadoop big data elemzése.
 
-## <a name="a-nameoverviewaoverview-of-the-hadoop-ecosystem-in-hdinsight"></a><a name="overview"></a>A Hadoop ökoszisztémájának áttekintése a HDInsightban
+## <a name="overview"></a>A Hadoop ökoszisztémájának áttekintése a HDInsightban
 A HDInsight a big data típusú adatok elemzésére szolgáló, gyorsan fejlődő Apache Hadoop technológiák felhőalapú terjesztése a Microsoft Azure felületén. Tartalmazza többek között az Apache Spark, a HBase, a Kafka, a Storm, a Pig, a Hive, az Interaktív Hive, a Sqoop, az Oozie és az Ambari implementációit. A HDInsight emellett olyan üzletiintelligencia- (BI-) eszközökkel is integrálható, mint a Power BI, az Excel, az SQL Server Analysis Services és az SQL Server Reporting Services.
 
 ### <a name="hadoop-hbase-spark-kafka-interactive-hive-storm-customized-and-other-clusters"></a>Hadoop, HBase, Spark, Kafka, Interaktív Hive, Storm, egyéni és egyéb fürtök.
@@ -83,54 +84,54 @@ A HDInsight-fürtök az alábbi összetevőket és segédprogramokat tartalmazz�
 >
 >
 
-### <a name="a-nameambariaambari"></a><a name="ambari"></a>Ambari
+### <a name="ambari"></a>Ambari
 Az Apache Ambari az Apache Hadoop-fürtök kiépítésére, kezelésére és megfigyelésére szolgál. Operátori eszközök intuitív gyűjteményét és egy robusztus API-készletet foglal magában, amelyek elfedik a Hadoop összetettségét, és leegyszerűsítik a fürtök működését. A Linux-alapú HDInsight-fürtök az Ambari webes felhasználói felületet és az Ambari REST API-t, a Windows-alapú fürtök pedig a REST API egy adott részét biztosítják. Az Ambari Views on HDInsight fürtök beépülő felhasználói felületi képességeket kínálnak.
 
 Lásd: [Manage HDInsight clusters using Ambari](hdinsight-hadoop-manage-ambari.md) (HDInsight-fürtök kezelése az Ambari segítségével) (csak Linux esetén), [Monitor Hadoop clusters in HDInsight using the Ambari API](hdinsight-monitor-use-ambari-api.md) (Hadoop-fürtök megfigyelése a HDInsightban az Ambari API segítségével) és <a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">referenciák az Apache Ambari API-hoz</a>.
 
-### <a name="a-nameavroaavro-microsoft-net-library-for-avro"></a><a name="avro"></a>Avro (Microsoft .NET könyvtár az Avro-hoz)
+### <a name="avro"></a>Avro (Microsoft .NET könyvtár az Avro-hoz)
 Az Avro Microsoft .NET könyvtára Apache Avro kompakt bináris adatcsere-formátumot alkalmaz a Microsoft .NET környezetben végrehajtott szerializációkhoz. A <a target="_blank" href="http://www.json.org/">JavaScript Object Notation (JSON)</a> segítségével meghatároz egy nyelvtől független sémát, amely lehetővé teszi a nyelvi együttműködést, azaz az egyik nyelvben szerializált adatok olvashatók lesznek egy másik nyelvben is. Erről a formátumról az <a target=_"blank" href="http://avro.apache.org/docs/current/spec.html">Apache Avro specifikációjában</a> találhat további információt.
 Az Avro-fájlok formátuma támogatja az elosztott MapReduce programozási modellt. A fájlok „feloszthatók”, azaz bármely pontot kikereshet egy fájlban, és egy adott blokktól kezdheti a beolvasást. További információk: [Serialize data with the Microsoft .NET Library for Avro](hdinsight-dotnet-avro-serialization.md) (Adatszerializálás az Avro Microsoft .NET könyvtára segítségével).
 
-### <a name="a-namehdfsahdfs"></a><a name="hdfs"></a>HDFS
+### <a name="hdfs"></a>HDFS
 A Hadoop elosztott fájlrendszer (HDFS) egy olyan elosztott fájlrendszer, amely a MapReduce és a YARN mellett a Hadoop-rendszer magját képezi. A HDFS a HDInsight Hadoop-fürtjeinek szabványos fájlrendszere.
 
-### <a name="a-namehiveahive--hcatalog"></a><a name="hive"></a>Hive és HCatalog
+### <a name="hive"></a>Hive és HCatalog
 Az <a target="_blank" href="http://hive.apache.org/">Apache Hive</a> egy Hadoopra épülő adattárház-szoftver, amely a HiveQL nevű SQL-szerű nyelv használatával teszi lehetővé az elosztott tárolókban található nagy méretű adatkészletek lekérdezését és kezelését. A Hive, akárcsak a Pig, egy MapReduce-ra épülő absztrakció. Futtatása során a Hive a lekérdezéseket MapReduce-feladatok sorozatává alakítja. A Hive elméleti szinten közelebb áll egy relációs adatbázis-kezelési rendszerhez, mint a Pig, ezért jobban használható strukturáltabb adatokhoz. Strukturálatlan adatok esetén a Pig a megfelelőbb választás. Lásd: [Use Hive with Hadoop in HDInsight](hdinsight-use-hive.md) (A Hive és a Hadoop együttes használata a HDInsightban).
 
 Az <a target="_blank" href="https://cwiki.apache.org/confluence/display/Hive/HCatalog/">Apache HCatalog</a> a Hadoop táblázat- és tárolókezelési rétege, amely relációs nézetben mutatja be az adatokat. A HCatalogban bármely olyan formátumban olvashat és írhat fájlokat, amelyhez Hive SerDe (szerializáló-deszerializáló) írható.
 
-### <a name="a-namemahoutamahout"></a><a name="mahout"></a>Mahout
+### <a name="mahout"></a>Mahout
 Az <a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> a Hadoopon futó Machine Learning algoritmusok méretezhető könyvtára. A gépi tanulást segítő alkalmazások statisztikai alapelvek segítségével tanítják meg a rendszereket arra, hogy tanuljanak az adatokból, és hogyan alapozzák a korábbi eredményekre a későbbi viselkedési formákat. Lásd: [Generate movie recommendations using Mahout on Hadoop](hdinsight-mahout.md) (Filmajánlók létrehozása a Hadoop-alapú Mahout segítségével).
 
-### <a name="a-namemapreduceamapreduce"></a><a name="mapreduce"></a>MapReduce
+### <a name="mapreduce"></a>MapReduce
 A MapReduce a Hadoop örökölt szoftver-keretrendszere, amely big data készletek kötegelt párhuzamos feldolgozását biztosító alkalmazások írására szolgál. A MapReduce felosztja a nagy adatkészleteket, és kulcs-érték párokba rendezi az adatokat a feldolgozáshoz.
 
 A [YARN](#yarn) a Hadoop következő generációs erőforrás-kezelője és alkalmazás-keretrendszere, amely MapReduce 2.0 néven is ismert. A MapReduce-feladatok a YARN rendszerén futnak.
 
 A MapReduce rendszerről a Hadoop Wiki <a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a> című részében talál további információkat.
 
-### <a name="a-nameoozieaoozie"></a><a name="oozie"></a>Oozie
+### <a name="oozie"></a>Oozie
 Az <a target="_blank" href="http://oozie.apache.org/">Apache Oozie</a> egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. Integrálva van a Hadoop-veremmel, és támogatja a Hadoop-feladatokat a MapReduce, a Pig, a Hive és a Sqoop számára. Ezen felül használható rendszerspecifikus feladatok, például Java programok vagy héjparancsfájlok ütemezésére. Lásd: [Use Oozie with Hadoop](hdinsight-use-oozie.md) (Az Oozie és a Hadoop együttes használata).
 
-### <a name="a-namephoenixaphoenix"></a><a name="phoenix"></a>Phoenix
+### <a name="phoenix"></a>Phoenix
 Az <a  target="_blank" href="http://phoenix.apache.org/">Apache Phoenix</a> egy relációs adatbázisréteg, amely a HBase-re épül. A Phoenix egy olyan JDBC-illesztőt tartalmaz, amely lehetővé teszi az SQL-táblák közvetlen lekérdezését és kezelését. A Phoenix a MapReduce használata helyett natív NoSQL API-hívásokká alakítja a lekérdezéseket és egyéb kifejezéseket, ezáltal gyorsabb alkalmazásokat tesz lehetővé a NoSQL-tárolókon. Lásd: [Use Apache Phoenix and SQuirreL with HBase clusters](hdinsight-hbase-phoenix-squirrel.md) (Az Apache Phoenix és az SQuirreL használata HBase-fürtökkel).
 
-### <a name="a-namepigapig"></a><a name="pig"></a>Pig
+### <a name="pig"></a>Pig
 Az <a  target="_blank" href="http://pig.apache.org/">Apache Pig</a> egy magas szintű platform, amely a Pig Latin nevezetű egyszerű parancsnyelv használata révén összetett MapReduce-átalakításokat tesz lehetővé nagy méretű adatkészleteken. A Pig lefordítja a Pig Latin parancsfájlokat, így azok a Hadoop rendszerben is futtathatók. A Pig Latin kiterjesztésére felhasználó által megadott funkciókat (UDF) is létrehozhat. Lásd: [Use Pig with Hadoop](hdinsight-use-pig.md) (A Pig és a Hadoop együttes használata).
 
-### <a name="a-namesqoopasqoop"></a><a name="sqoop"></a>Sqoop
+### <a name="sqoop"></a>Sqoop
 Az <a  target="_blank" href="http://sqoop.apache.org/">Apache Sqoop</a> egy olyan eszköz, amely a lehető leghatékonyabb módon biztosít tömeges adatátvitelt a Hadoop és relációs (például SQL) adatbázisok vagy más strukturált adattárolók között. Lásd: [Use Sqoop with Hadoop](hdinsight-use-sqoop.md) (A Sqoop és a Hadoop együttes használata).
 
-### <a name="a-nametezatez"></a><a name="tez"></a>Tez
+### <a name="tez"></a>Tez
 Az <a  target="_blank" href="http://tez.apache.org/">Apache Tez</a> a Hadoop YARN rendszerre épülő alkalmazás-keretrendszer, amely végrehajtja az általános adatfeldolgozás összetett, aciklikus gráfjait. Rugalmasabb és hatékonyabb, mint elődje, a MapReduce keretrendszer, és lehetővé teszi az adatigényes folyamatok, például a Hive méretezhető, hatékony futtatását. Lásd a [Use Apache Tez for improved performance](hdinsight-use-hive.md#usetez) (Teljesítménynövelés az Apache Tez használatával) című szakaszt a Hive és a HiveQL használatával foglalkozó témakörben.
 
-### <a name="a-nameyarnayarn"></a><a name="yarn"></a>YARN
+### <a name="yarn"></a>YARN
 Az Apache YARN a MapReduce következő generációja (MapReduce 2.0 vagy MRv2), amely a MapReduce kötegelt feldolgozáson túl nagyobb méretezhetőséggel és valós idejű feldolgozással támogatja az adatfeldolgozási forgatókönyveket. A YARN erőforrás-kezelést és egy elosztott alkalmazás-keretrendszert biztosít. A MapReduce-feladatok a YARN rendszerén futnak.
 
 A YARN rendszerről az <a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN)</a> (Következő generációs Apache Hadoop MapReduce (YARN)) témakörben talál további információkat.
 
-### <a name="a-namezookeeperazookeeper"></a><a name="zookeeper"></a>ZooKeeper
+### <a name="zookeeper"></a>ZooKeeper
 Az <a  target="_blank" href="http://zookeeper.apache.org/">Apache ZooKeeper</a> adatregiszterek (znode-ok) közös hierarchikus névterével koordinálja a nagy méretű elosztott rendszerek folyamatait. A znode-ok kis mennyiségű metaadatot (állapot, hely, konfiguráció stb.) tartalmaznak, amelyek a folyamatok koordinálásához szükségesek.
 
 ## <a name="programming-languages-on-hdinsight"></a>Programozási nyelvek a HDInsight rendszerében
@@ -159,7 +160,7 @@ A HDInsight-fürtök az alábbi, a Hadoop-rendszerre jellemző nyelveket támoga
 * Pig Latin a Pig-feladatokhoz
 * HiveQL a Hive-feladatokhoz és a SparkSQL-hez
 
-## <a name="a-nameadvantageaadvantages-of-hadoop-in-the-cloud"></a><a name="advantage"></a>A felhőalapú Hadoop előnyei
+## <a name="advantage"></a>A felhőalapú Hadoop előnyei
 Az Azure felhőalapú ökoszisztémájának részeként a HDInsight Hadoop eszköze számos előnyt kínál, többek között a következőket:
 
 * A Hadoop-fürtök automatikus kiépítése. A HDInsight-fürtök létrehozása sokkal egyszerűbb, mint a Hadoop-fürtök manuális konfigurálása. További részletek: [Provision Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Hadoop-fürtök kiépítése a HDInsightban).
@@ -177,7 +178,7 @@ A HDInsightban használt Hadoop előnyeiről az [Azure-szolgáltatások HDInsigh
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard és HDInsight Prémium
 A HDInsight a big data felhőajánlatokat kétféle – Standard és Prémium – kategóriában biztosítja. A HDInsight Standard egy vállalati szintű fürtöt biztosít, amelyet a vállalkozások a big data számítási feladatokat futtatásához használhatnak. A HDInsight Prémium ezen felül fejlett elemzési és biztonsági képességeket biztosít a HDInsight-fürtök számára. További információért lásd: [Azure HDInsight Prémium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
-## <a name="a-idresourcesaresources-for-learning-more-about-big-data-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>A big data elemzésről, a Hadoopról és a HDInsight-ról további információkkal szolgáló források
+## <a id="resources"></a>A big data elemzésről, a Hadoopról és a HDInsight-ról további információkkal szolgáló források
 A felhőalapú Hadoopról és a big data elemzésekről az alábbi forrásanyagok szolgáltatnak további információkat.
 
 ### <a name="hadoop-documentation-for-hdinsight"></a>Hadoop-dokumentáció a HDInsight-hoz
@@ -206,9 +207,4 @@ Ezek az üzletiintelligencia-eszközök segíthetnek a big data elemzések elvé
 [marketing-page]: https://azure.microsoft.com/services/hdinsight/
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

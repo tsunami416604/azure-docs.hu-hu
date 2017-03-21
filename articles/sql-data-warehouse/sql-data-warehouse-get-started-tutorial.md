@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
-ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -415,13 +415,13 @@ Most már készen áll az adatok betöltésére az adattárházba. Ez a lépés 
         REJECT_VALUE = 0
     )
     ;
-    ```
+```
 
-### Import the data from Azure blob storage.
+### <a name="import-the-data-from-azure-blob-storage"></a>Importálja az adatokat az Azure Blob Storage-ből.
 
-SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS). This statement creates a new table based on the results of a select statement. The new table has the same columns and data types as the results of the select statement.  This is an elegant way to import data from Azure blob storage into SQL Data Warehouse.
+Az SQL Data Warehouse támogat egy CREATE TABLE AS SELECT (CTAS) nevű kulcsutasítást. Ez az utasítás létrehoz egy új táblát egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel.  Ez egy elegáns módja az adatok betöltésének az Azure Blob Storage-ből az SQL Data Warehouse-ba.
 
-1. Run this script to import your data.
+1. Az adatok importálásához futtassa ezt a szkriptet.
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -496,9 +496,9 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
     ;
     ```
 
-2. View your data as it loads.
+2. A betöltés közben megtekintheti az adatokat.
 
-   You’re loading several GBs of data and compressing it into highly performant clustered columnstore indexes. Run the following query that uses a dynamic management views (DMVs) to show the status of the load. After starting the query, grab a coffee and a snack while SQL Data Warehouse does some heavy lifting.
+   Több GB-nyi adatot tölt be és tömörít nagy teljesítményű fürtözött oszlopcentrikus indexekbe. Futtassa az alábbi lekérdezést, amely dinamikus felügyeleti nézetekkel (DMV-k) jeleníti meg a töltés állapotát. A lekérdezés elindítása után igyon egy kávét, vagy szerezzen valami rágcsálnivalót, amíg az SQL Data Warehouse keményen dolgozik.
     
     ```sql
     SELECT
@@ -528,62 +528,61 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
         gb_processed desc;
     ```
 
-3. View all system queries.
+3. Tekintse meg az összes rendszerlekérdezést.
 
     ```sql
     SELECT * FROM sys.dm_pdw_exec_requests;
     ```
 
-4. Enjoy seeing your data nicely loaded into your Azure SQL Data Warehouse.
+4. Láthatja, ahogy adatai szépen betöltődnek az Azure SQL Data Warehouse-ba.
 
-    ![See Data Loaded](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
+    ![Betöltött adatok megjelenítése](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
 
 
-## Improve query performance
+## <a name="improve-query-performance"></a>Jobb lekérdezési teljesítmény
 
-There are several ways to improve query performance and to achieve the high-speed performance that SQL Data Warehouse is designed to provide.  
+Számos mód létezik a lekérdezési teljesítmény javítására és a kiemelkedően gyors teljesítmény elérésére, amelyre az SQL Data Warehouse-t tervezték.  
 
-### See the effect of scaling on query performance 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>A lekérdezésiteljesítmény-méretezés hatásának megtekintése 
 
-One way to improve query performance is to scale resources by changing the DWU service level for your data warehouse. Each service level costs more, but you can scale back or pause resources at any time. 
+Az egyik módja a lekérdezési teljesítmény javításának az, ha méretezi az erőforrásokat az adattárház DWU szolgáltatási szintjének módosításával. Minden szolgáltatási szintnek nagyobb a költsége, de bármikor visszaválthat vagy szüneteltetheti az erőforrásokat. 
 
-In this step, you compare performance at two different DWU settings.
+Ebben a lépésben összehasonlítja a teljesítményt két különböző DWU-beállításnál.
 
-First, let's scale the sizing down to 100 DWU so we can get an idea of how one compute node might perform on its own.
+Először csökkentse le a DWU-k számát 100-ra, hogy láthassuk, hogyan teljesít egyetlen számítási csomópont önállóan.
 
-1. Go to the portal and select your SQL Data Warehouse.
+1. Lépjen a portálra, és válassza ki az SQL Data Warehouse-t.
 
-2. Select scale in the SQL Data Warehouse blade. 
+2. Válassza ki a méretet az SQL Data Warehouse panelen. 
 
-    ![Scale DW From portal](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
+    ![DW méretezése a portálról](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-3. Scale down the performance bar to 100 DWU and hit save.
+3. Csökkentse a teljesítményt a sávon 100 DWU-ra, és nyomja le a Mentés gombot.
 
-    ![Scale and save](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
+    ![Méretezés és mentés](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
 
-4. Wait for your scale operation to finish.
+4. Várjon, amíg a méretezési művelet befejeződik.
 
     > [!NOTE]
-    > Queries cannot run while changing the scale. Scaling **kills** your currently running queries. You can restart them when the operation is finished.
+    > A méretezés módosítása közben nem futhatnak lekérdezések. A méretezés az épp futó lekérdezéseket **megszakítja**. A művelet befejezése után újraindíthatja őket.
     >
     
-5. Do a scan operation on the trip data, selecting the top million entries for all the columns. If you're eager to move on quickly, feel free to select fewer rows. Take note of the time it takes to run this operation.
+5. Végezzen egy vizsgálati műveletet az utazási adatokon, és válassza az első egymillió bejegyzést minden oszlopban. Ha szeretne gyorsabban továbblépni, választhat kevesebb sort is. Jegyezze fel, hogy mennyi időbe telik ennek a műveletnek az elvégzése.
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
-6. Scale your data warehouse back to 400 DWU. Remember, each 100 DWU is adding another compute node to your Azure SQL Data Warehouse.
+6. Méretezze az adattárházat vissza 400 DWU-ra. Ne feledje, hogy minden 100 DWU egy újabb számítási csomópontot ad az Azure SQL Data Warehouse-hoz.
 
-7. Run the query again! You should notice a significant difference. 
+7. Futtassa újra a lekérdezést. Jelentős eltérést kell tapasztalnia. 
 
 > [!NOTE]
-> Since SQL Data Warehouse uses massively parallel processing. Queries that scan or perform analytic functions on millions of rows experience the true power of
-> Azure SQL Data Warehouse.
+> Ennek az az oka, hogy az SQL Data Warehouse nagymértékben párhuzamos feldolgozást használ. Olyan lekérdezésekkel tapasztalható meg az Azure SQL Data Warehouse igazi ereje, amelyek több millió soron hajtanak végre elemzési funkciókat.
 >
 
-### See the effect of statistics on query performance
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>A statisztika hatásának lekérdezések teljesítményére gyakorolt hatása
 
-1. Run a query that joins the Date table with the Trip table
+1. Futtasson egy lekérdezést, amely összekapcsolja a Date (Dátum) táblát a Trip (Utazás) táblával.
 
     ```sql
     SELECT TOP (1000000) 
@@ -615,10 +614,10 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
         ON  tr.DateID = dt.DateID
     ```
 
-    This query takes a while because SQL Data Warehouse has to shuffle data before it can perform the join. Joins do not have to shuffle data if they are designed to join data in the same way it is distributed. That's a deeper subject. 
+    Ez a lekérdezés eltart egy darabig, mert az SQL Data Warehouse-nak mozgatnia kell az adatokat az összekapcsolás végrehajtása előtt. Nem kell mozgatni az adatokat az összekapcsolásokhoz, ha úgy lettek megtervezve, hogy az elosztással megegyező módon kapcsolják össze az adatokat. Ez egy mélyebb téma. 
 
-2. Statistics make a difference. 
-3. Run this statement to create statistics on the join columns.
+2. A statisztika sokat számít. 
+3. Ezt az utasítást futtatva létrehozhat statisztikát az összekapcsolási oszlopokhoz.
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -626,48 +625,45 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
     ```
 
     > [!NOTE]
-    > SQL DW does not automatically manage statistics for you. Statistics are important for query
-    > performance and it is highly recommended you create and update statistics.
+    > Az SQL DW nem kezeli automatikusan a statisztikákat Ön helyett. A statisztikák fontosak a lekérdezések teljesítménye szempontjából, ezért határozottan javasoljuk, hogy hozzon létre statisztikákat, és frissítse azokat.
     > 
-    > **You gain the most benefit by having statistics on columns involved in joins, columns
-    > used in the WHERE clause and columns found in GROUP BY.**
+    > **A legnagyobb előnnyel az jár, ha az összekapcsolások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit készíti el.**
     >
 
-3. Run the query from Prerequisites again and observe any performance differences. While the differences in query performance will not be as drastic as scaling up, you should notice a  speed-up. 
+3. Futtassa újra az Előfeltételek szakaszban szereplő lekérdezést, és figyelje meg a teljesítménybeli különbséget. Bár a lekérdezési teljesítmény változása nem olyan drámai, mint a felskálázás esetében, gyorsulás figyelhető meg. 
 
-## Next steps
+## <a name="next-steps"></a>Következő lépések
 
-You're now ready to query and explore. Check out our best practices or tips.
+Készen áll a lekérdezésre és vizsgálódásra. Tekintse meg gyakorlati tanácsainkat és tippjeinket.
 
-If you're done exploring for the day, make sure to pause your instance! In production, you can experience enormous 
-savings by pausing and scaling to meet your business needs.
+Ha a mai napra befejezte a vizsgálódást, szüneteltesse a példány működését. Üzemi környezetben hatalmas megtakarításokat érhet el, ha üzleti igényei szerint szünetelteti és méretezi a működést.
 
-![Pause](./media/sql-data-warehouse-get-started-tutorial/pause.png)
+![Szünet](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
-## Useful readings
+## <a name="useful-readings"></a>Hasznos olvasmányok
 
-[Concurrency and Workload Management][]
+[Egyidejűség és a számítási feladatok kezelése][]
 
-[Best practices for Azure SQL Data Warehouse][]
+[Ajánlott eljárások az Azure SQL Data Warehouse-hoz][]
 
-[Query Monitoring][]
+[Lekérdezések figyelése][]
 
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse][]
+[A 10 leghasznosabb ajánlott eljárás nagyméretű relációs adattárházak létrehozásához][]
 
-[Migrating Data to Azure SQL Data Warehouse][]
+[Adatok áttelepítése az Azure SQL Data Warehouse-ba][]
 
-[Concurrency and Workload Management]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
-[Best practices for Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
-[Query Monitoring]: sql-data-warehouse-manage-monitor.md
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
-[Migrating Data to Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Egyidejűség és a számítási feladatok kezelése]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[Ajánlott eljárások az Azure SQL Data Warehouse-hoz]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
+[Lekérdezések figyelése]: sql-data-warehouse-manage-monitor.md
+[A 10 leghasznosabb ajánlott eljárás nagyméretű relációs adattárházak létrehozásához]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
+[Adatok áttelepítése az Azure SQL Data Warehouse-ba]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[Prerequisites]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[Előfeltételek]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/

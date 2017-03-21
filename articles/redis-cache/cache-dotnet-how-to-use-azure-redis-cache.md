@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 02/14/2017
+ms.date: 03/08/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: a3fc1a6bf552ed8c6511c432c0d74b76247ce877
-ms.openlocfilehash: c08d863ef8913b9bad766c6232faaaa0a6cfa950
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 1d208f931af4704528309780b45e170627f1753c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -139,6 +140,8 @@ A kapcsolat létrejötte után küldjön vissza egy hivatkozást a redis cache-a
     // Simple get of data types from the cache
     string key1 = cache.StringGet("key1");
     int key2 = (int)cache.StringGet("key2");
+
+Az Azure Redis Cache-ek adatbázisainak száma konfigurálható (alapértelmezés szerint 16). Ezek az adatbázisok a Redis Cache-ben található adatok logikai szétválasztására használhatóak. További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration).
 
 Most, hogy megismerte, hogyan csatlakozhat egy Azure Redis Cache-példányhoz és küldhet vissza egy hivatkozást a gyorsítótár-adatbázisnak, ismerkedjen meg közelebbről a gyorsítótár használatával.
 
@@ -295,10 +298,5 @@ Most, hogy megismerte az alapokat, az alábbi hivatkozásokra kattintva tudhat m
 
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

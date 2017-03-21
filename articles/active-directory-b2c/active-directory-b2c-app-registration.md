@@ -3,8 +3,8 @@ title: "Azure Active Directory B2C: Alkalmazás regisztrációja | Microsoft Doc
 description: "Hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-vel?"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
+author: parakhj
+manager: krassk
 editor: bryanla
 ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
 ms.service: active-directory-b2c
@@ -12,15 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
-ms.author: swkrish
+ms.date: 3/13/2017
+ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: fd22e9596feecbc12e577a4abfb47552e1b6e520
-ms.openlocfilehash: da8f083cb7bca59501df080036e789a0fb75731e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 541849501335fb25d96cffa81b8119adc158cdd7
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
+
+> [!IMPORTANT]
+> Az Azure Portal Azure AD B2C paneljén létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha a B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és valószínűleg nem fognak működni az Azure AD B2C-vel.
+> 
+> 
+
 ## <a name="prerequisite"></a>Előfeltétel
 A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létrehozásához először regisztrálnia kell az alkalmazást egy Azure Active Directory B2C-bérlővel. Hozzon létre egy saját bérlőt az [Azure AD B2C bérlő létrehozása](active-directory-b2c-get-started.md) részben ismertetett lépések segítségével. Miután elvégezte ezeket a lépéseket, a B2C funkciók panelje rögzítésre kerül a kezdőpulton.
 
@@ -36,33 +43,41 @@ A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint
 > 
 > 
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-a-web-application"></a>Webalkalmazás regisztrációja
 1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
 2. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
 3. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Adja meg például a „Contoso B2C alkalmazás” nevet.
-4. Ha webalapú alkalmazásról van szó, az **Include web app / web API** (Webalkalmazással/webes API-val együtt) váltógombot állítsa a **Yes** (Igen) állásba. A **válasz URL-címek** olyan végpontok, ahol az Azure AD B2C visszalép az alkalmazás által kért jogkivonatokhoz. Adja meg például a következőt: `https://localhost:44316/`. Ha a webalkalmazás az Azure AD B2C által biztonságossá tett webes API-kat is meg fog hívni, ajánlott egy **Aplication Secret** (Alkalmazástitok) létrehozása is a **Generate Key** (Kulcs létrehozása) gombra kattintva.
-   
-   > [!NOTE]
-   > Az **Application Secret** (Alkalmazástitok) fontos biztonsági hitelesítő adat, amelynek megfelelő biztonságáról gondoskodni kell.
-   > 
-   > 
-5. Ha mobilalkalmazásról van szó, az **Include native client** (Natív ügyféllel együtt) váltógombot állítsa a **Yes** (Igen) állásba. Másolja le az automatikusan létrehozott, alapértelmezett **átirányítási URI**-t.
-6. Kattintson a **Create** (Létrehozás) gombra az alkalmazás regisztrálásához.
+4. Állítsa az **Include web app / web API** (Webappal/webes API-val együtt) kapcsolót **Yes** (Igen) állásba. A **válasz URL-címek** olyan végpontok, ahol az Azure AD B2C visszalép az alkalmazás által kért jogkivonatokhoz. Adja meg például a következőt: `https://localhost:44316/`.
+5. Kattintson a **Save** (Mentés) gombra az alkalmazás regisztrálásához.
+6. Kattintson az imént létrehozott alkalmazásra, és másolja le az alkalmazás globálisan egyedi **ügyfél-azonosítóját**, amelyet később a kódjában fog használni.
+
+
+## <a name="register-a-web-api"></a>Webes API regisztrálása
+1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
+2. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
+3. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Adja meg például a „Contoso B2C alkalmazás” nevet.
+4. Állítsa az **Include web app / web API** (Webappal/webes API-val együtt) kapcsolót **Yes** (Igen) állásba. A **válasz URL-címek** olyan végpontok, ahol az Azure AD B2C visszalép az alkalmazás által kért jogkivonatokhoz. Adja meg például a következőt: `https://localhost:44316/`.
+5. Kattintson a **Save** (Mentés) gombra az alkalmazás regisztrálásához.
+6. Kattintson az imént létrehozott alkalmazásra, és másolja le az alkalmazás globálisan egyedi **ügyfél-azonosítóját**, amelyet később a kódjában fog használni.
+
+
+## <a name="register-a-mobilenative-application"></a>Mobil-/natív alkalmazás regisztrálása
+1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
+2. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
+3. Adjon meg az alkalmazáshoz egy olyan **nevet**, amely a felhasználók számára ismerteti az alkalmazást. Adja meg például a „Contoso B2C alkalmazás” nevet.
+4. Állítsa az **Include native client** (Natív ügyféllel együtt) kapcsolót **Yes** (Igen) állásba.
+5. Adjon meg egy **Átirányítási URI-t** egy egyéni sémával. Például: com.onmicrosoft.contoso.appnév://átirányítási/útvonal. Ellenőrizze, hogy [megfelelő átirányítási URI-t](#choosing-a-redirect-uri) választott-e.
+6. Kattintson a **Save** (Mentés) gombra az alkalmazás regisztrálásához.
 7. Kattintson az imént létrehozott alkalmazásra, és másolja le az alkalmazás globálisan egyedi **ügyfél-azonosítóját**, amelyet később a kódjában fog használni.
 
-> [!IMPORTANT]
-> A B2C-funkciók paneljén létrehozott alkalmazásokat ugyanazon a helyen kell kezelni. Ha a B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és valószínűleg nem fognak működni az Azure AD B2C-vel.
-> 
-> 
+### <a name="choosing-a-redirect-uri"></a>Átirányítási URI kiválasztása
+A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két fontos szempontot kell megfontolnia: 
+* **Egyedi**: Az átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példánkban (com.onmicrosoft.contoso.appname://redirect/path) a com.onmicrosoft.contoso.appnév a séma. Javasoljuk, hogy ezt a mintát kövesse. Ha két alkalmazás ugyanazt a sémát használja, akkor a felhasználó egy „Alkalmazás kiválasztása” párbeszédpanelt fog látni. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul. 
+* **Teljes**: Az átirányítási URI-nak sémával és elérési útvonallal kell rendelkeznie. Az útvonalnak a tartomány után legalább egy perjelet kell tartalmaznia (például a //contoso/ helyes, de a //contoso nem). 
 
 ## <a name="build-a-quick-start-application"></a>Első lépések alkalmazás készítése
 Miután az Azure AD B2C-vel regisztrált egy alkalmazást, gyors üzembe helyezési oktatóanyagunk segítségével elsajátíthatja a használatát. Az alábbiakban néhány javaslatot olvashat:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

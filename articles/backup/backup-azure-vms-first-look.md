@@ -1,6 +1,6 @@
 ---
-title: "Áttekintés: Azure virtuális gépek védelme Backup-tárolóval | Microsoft Docs"
-description: "Megvédheti Azure virtuális gépeit egy Backup-tárolóval. Ez az oktatóanyag azt írja le, hogyan regisztrálhat virtuális gépeket, hozhat létre egy házirendet és védheti meg virtuális gépeit az Azure-ban."
+title: "Áttekintés: Azure virtuális gépek biztonsági mentése Backup-tárolóval | Microsoft Docs"
+description: "A klasszikus portállal biztonsági másolatot készíthet az Azure virtuális gépekről egy Backup-tárolóba. Ez az oktatóanyag leírja a munkafolyamat összes fázisát, beleértve a Backup-tároló létrehozását, a virtuális gépek regisztrálását, a biztonsági mentési szabályzat létrehozását és a kezdeti biztonsági mentési feladat futtatását."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -12,11 +12,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 1/10/2017
+ms.date: 3/10/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8883ff1601c521d05068452b1b58cadaee1a941f
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -27,66 +28,30 @@ ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 >
 >
 
-Ez az oktatóanyag végigvezeti egy Azure virtuális gép (VM) egy Azure-beli Backup-tárolóba való biztonsági mentésének lépésein. Ez a cikk a virtuális gépek biztonsági mentésének klasszikus modelljét vagy Service Managerrel üzemi modelljét ismerteti. Ha többet szeretne tudni a virtuális gépek egy erőforráscsoporthoz tartozó Recovery Services-tárolóba való biztonsági mentéséről, olvassa el az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikket. Az oktatóanyag sikeres elvégzéséhez a következő előfeltételek szükségesek:
+Ez az oktatóanyag végigvezeti egy Azure virtuális gép (VM) egy Azure-beli Backup-tárolóba való biztonsági mentésének lépésein. Ez a cikk a virtuális gépek biztonsági mentésének klasszikus modelljét vagy Service Managerrel üzemi modelljét ismerteti. A következő lépések csak a klasszikus portálon létrehozott Backup-tárolókra érvényesek. A Microsoft azt javasolja, hogy az új üzemelő példányokhoz a Resource Manager modellt használja.
+
+Ha többet szeretne tudni a virtuális gépek egy erőforráscsoporthoz tartozó Recovery Services-tárolóba való biztonsági mentéséről, olvassa el az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikket.
+
+A következő oktatóanyag sikeres elvégzéséhez a következő előfeltételek szükségesek:
 
 * Létrehozott egy virtuális gépet az Azure-előfizetésben.
 * A virtuális gép csatlakozik Azure nyilvános IP-címekhez. További információkért lásd: [Hálózati kapcsolatok](backup-azure-vms-prepare.md#network-connectivity).
 
-A virtuális gépek biztonsági mentésének öt fő lépése van:  
-
-![első lépés](./media/backup-azure-vms-first-look/step-one.png) Backup-tároló létrehozása vagy meglévő Backup-tároló azonosítása. <br/>
-![második lépés](./media/backup-azure-vms-first-look/step-two.png) A virtuális gépek felderítése és regisztrálása a klasszikus Azure portállal. <br/>
-![harmadik lépés](./media/backup-azure-vms-first-look/step-three.png) A virtuálisgép-ügynök telepítése. <br/>
-![negyedik lépés](./media/backup-azure-vms-first-look/step-four.png) A virtuális gépeket védő házirend létrehozása. <br/>
-![ötödik lépés](./media/backup-azure-vms-first-look/step-five.png) A biztonsági mentés futtatása.
-
-![A virtuális gépek biztonsági mentési folyamatának áttekintése](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus Azure portálon lehet létrehozni. Az Azure Backup szolgáltatás támogatja a Resource Manager-alapú virtuális gépeket. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésének részleteit az [Áttekintés: Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md) című cikkben tekintheti meg.
+> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez az oktatóanyag olyan virtuális gépekhez készült, amelyeket a klasszikus portálon hoztak létre.
 >
 >
 
-## <a name="step-1---create-a-backup-vault-for-a-vm"></a>1. lépés – Backup-tároló létrehozása egy virtuális géphez
+## <a name="create-a-backup-vault"></a>Backup-tároló létrehozása
 A Backup-tároló egy olyan entitás, amely tárolja az idők során létrehozott biztonsági mentéseket és helyreállítási pontokat. A Backup-tároló azokat a biztonsági mentési házirendeket is tartalmazza, amelyek a biztonsági mentés alatt álló virtuális gépekre érvényesek.
 
-1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com/).
-2. Kattintson az Azure Portal bal alsó sarkában található **Új** gombra.
+> [!IMPORTANT]
+> 2017 márciusától már nem hozhat létre Backup-tárolókat a klasszikus portálon. A már meglévő Backup-tárolók továbbra is támogatottak, és az [Azure PowerShell használatával létrehozhat Backup-tárolókat](./backup-client-automation-classic.md#create-a-backup-vault). A Microsoft azonban azt javasolja, hogy Recovery Services-tárolókat hozzon létre az összes üzemelő példányhoz, mivel a jövőbeli fejlesztések csak a Recovery Services-tárolókra vonatkoznak majd.
 
-    ![Kattintson az Új menüre](./media/backup-azure-vms-first-look/new-button.png)
-3. A Gyorslétrehozás varázslóban kattintson az **Adatszolgáltatások** > **Recovery Services** > **Backup-tároló** > **Gyorslétrehozás** elemre.
 
-    ![Backup-tároló létrehozása](./media/backup-azure-vms-first-look/new-vault-wizard-one-subscription.png)
 
-    A varázsló a **Név** és a **Régió** megadását kéri. Ha több előfizetést felügyel, megjelenik az előfizetés kiválasztására szolgáló párbeszédpanel.
-4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez.
-5. A **Régió** területen válassza ki a tároló földrajzi régióját. A tárolónak ugyanabban a régióban **kell** lennie, mint az általa védett virtuális gépeknek.
-
-    Ha nem tudja, hogy melyik régióban található a virtuális gép, zárja be ezt a varázslót, és kattintson az Azure-szolgáltatások listájában a **Virtual Machines** elemre. A Hely oszlopban látható a régió neve. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Backup-tárolót.
-6. Ha nincs **Előfizetés** párbeszédpanel a varázslóban, ugorjon a következő lépésre. Ha több előfizetést használ, válassza ki az új Backup-tárolóval társítani kívánt előfizetést.
-
-    ![Bejelentési értesítés létrehozása a tárolóhoz](./media/backup-azure-vms-first-look/backup-vaultcreate.png)
-7. Kattintson a **Tároló létrehozása** gombra. A Backup-tároló létrehozása eltarthat egy ideig. Figyelje az állapottal kapcsolatos értesítéseket a portál alján.
-
-    ![Bejelentési értesítés létrehozása a tárolóhoz](./media/backup-azure-vms-first-look/create-vault-demo.png)
-
-    Egy üzenet megerősíti, hogy a tároló sikeresen létrejött. Megtalálható a **Recovery Services** lapon, és **Aktív** állapotú.
-
-    ![Bejelentési értesítés létrehozása a tárolóhoz](./media/backup-azure-vms-first-look/create-vault-demo-success.png)
-8. A **Recovery Services** lapon a tárolók listájából válassza ki a létrehozott tárolót a **Gyors üzembe helyezés** lap elindításához.
-
-    ![A Backup-tárolók listája](./media/backup-azure-vms-first-look/active-vault-demo.png)
-9. A **Gyors üzembe helyezés** lapon kattintson a **Konfigurálás** gombra a tárreplikációs beállítás megnyitásához.
-    ![A Backup-tárolók listája](./media/backup-azure-vms-first-look/configure-storage.png)
-10. A **tárreplikációs** beállítások között válassza ki a kívánt replikációs beállítást a tárolóhoz.
-
-    ![A Backup-tárolók listája](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
-
-    Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha ez az elsődleges biztonsági mentési tároló, válassza a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A georedundáns és a helyileg redundáns tárolási lehetőségekről többet olvashat az [Azure Storage replication overview](../storage/storage-redundancy.md) (Azure tárreplikáció áttekintése) című cikkben.
-
-Miután kiválasztotta a tárolási beállítást a tároló számára, készen áll, hogy hozzárendelje a virtuális gépet a tárolóhoz. A hozzárendelés megkezdéséhez fel kell deríteni és regisztrálni kell az Azure virtuális gépeket.
-
-## <a name="step-2---discover-and-register-azure-virtual-machines"></a>2. lépés – Az Azure virtuális gépek felderítése és regisztrálása
+## <a name="discover-and-register-azure-virtual-machines"></a>Az Azure virtuális gépek felderítése és regisztrálása
 Mielőtt regisztrálná a virtuális gépet egy tárolóval, futtassa a felderítési folyamatot az új virtuális gépek azonosítása érdekében. Ez visszaadja az előfizetésben található virtuális gépek listáját, olyan kiegészítő információkkal, mint a felhőszolgáltatás neve és a régió.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com/).
@@ -133,12 +98,12 @@ Mielőtt regisztrálná a virtuális gépet egy tárolóval, futtassa a felderí
 
     ![2. regisztrációs állapot](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>3. lépés – A virtuálisgép-ügynök telepítése a virtuális gépre
-Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már megtalálható a virtuális gépen. Ekkor [a virtuális gépek védelmével](backup-azure-vms-first-look.md#step-4---create-the-backup-policy) folytathatja.
+## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Telepítse a virtuális gép ügynökét a virtuális gépre.
+Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már megtalálható a virtuális gépen, így továbbléphet [a virtuális gépek védelmére](backup-azure-vms-first-look.md#create-the-backup-policy).
 
 Ha a virtuális gépe helyszíni adatközpontból lett áttelepítve, a virtuális gépre valószínűleg nincs telepítve a virtuálisgép-ügynök. Telepítenie kell a virtuálisgép-ügynököt a virtuális gépen a virtuális gép védelme előtt. A virtuálisgép-ügynök telepítésének részletes lépéseiért lásd [a virtuális gépek biztonsági mentéséről szóló cikk virtuálisgép-ügynökökre vonatkozó szakaszát](backup-azure-vms-prepare.md#vm-agent).
 
-## <a name="step-4---create-the-backup-policy"></a>4. lépés – A biztonsági mentési házirend létrehozása
+## <a name="create-the-backup-policy"></a>A biztonsági mentési házirend létrehozása
 A kezdeti biztonsági mentési feladat elindítása előtt készítse el a biztonsági mentési pillanatképek rögzítésének ütemezését. A biztonsági mentési házirend azt az ütemtervet jelenti, amely alapján biztonsági mentési pillanatképek készülnek, valamint ezen pillanatképek megőrzésének hosszát. A megőrzési információk a nagyapa-apa-fiú típusú biztonságimentés-rotációs sémán alapulnak.
 
 1. Keresse meg a klasszikus Azure portál **Recovery Services** területén a Backup-tárolót, és kattintson a **Regisztrált elemek** lehetőségre.
@@ -175,7 +140,7 @@ A kezdeti biztonsági mentési feladat elindítása előtt készítse el a bizto
 
     Most, hogy létrehozta a házirendet, folytassa a következő lépéssel és futtassa a kezdeti biztonsági mentést.
 
-## <a name="step-5---initial-backup"></a>5. lépés – Kezdeti biztonsági mentés
+## <a name="initial-backup"></a>Kezdeti biztonsági mentés
 Miután egy virtuális gépet házirenddel védett, megtekintheti a kapcsolatot a **Védett elemek** lapon. Amíg a kezdeti biztonsági mentés be nem fejeződik, a **Védelem állapota** **Védett – (kezdeti biztonsági mentés függőben)** értékű. Alapértelmezés szerint az első ütemezett biztonsági mentés a *kezdeti biztonsági mentés*.
 
 ![Biztonsági mentés függőben](./media/backup-azure-vms-first-look/protection-pending-border.png)
@@ -208,9 +173,4 @@ Most, hogy sikeresen készített biztonsági mentést egy virtuális gépről, s
 
 ## <a name="questions"></a>Kérdései vannak?
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 
