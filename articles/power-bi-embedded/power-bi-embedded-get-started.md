@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: bd7925f3fa9a717cbe0649bf899cdd00511d5ca6
-ms.openlocfilehash: b9dff45d1bb60d50c882c6daf363fca86a7f8f4c
-ms.lasthandoff: 02/22/2017
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4afa8d2c7f8ec1942521ba5fa131967dfd581c91
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>A Mcirosoft Power BI Embedded bemutatása
+
 Az Azure-szolgáltatások körébe tartozó **Power BI Embedded** segítségével az alkalmazásfejlesztők interaktív Power BI-jelentéseket vehetnek fel saját alkalmazásaikba. A **Power BI Embedded** úgy működik együtt a meglévő alkalmazásokkal, hogy nem kell újratervezni vagy módosítani a felhasználók bejelentkezésének módját.
 
 A **Microsoft Power BI Embedded** erőforrásai az [Azure ARM API-k](https://msdn.microsoft.com/library/mt712306.aspx) használatával hozhatók létre. Ebben az esetben a létrehozott erőforrás egy **Power BI munkaterület-csoport**.
@@ -30,6 +30,7 @@ A **Microsoft Power BI Embedded** erőforrásai az [Azure ARM API-k](https://msd
 ![](media/power-bi-embedded-get-started/introduction.png)
 
 ## <a name="create-a-workspace-collection"></a>Munkaterület-csoport létrehozása
+
 A **munkaterület-csoportok** a legfelsőbb szintű Azure-erőforrások, melyek az alkalmazásba beágyazandó tartalmat tárolják. A **munkaterület-csoportok** kétféleképpen hozhatók létre:
 
 * Manuálisan, az Azure Portal segítségével
@@ -56,6 +57,7 @@ A **Létrehozás panelen** találhatók a munkaterületek létrehozásáért és
 <a name="view-access-keys"/>
 
 ## <a name="view-power-bi-api-access-keys"></a>A Power BI API elérési kulcsainak megtekintése
+
 A Power BI REST API-k meghívásához szükséges legfontosabb információt az **elérési kulcsok** jelentik. Segítségükkel lehetséges ugyanis az API-kérelmek hitelesítéséhez szükséges **alkalmazási jogkivonatok** létrehozása. Az **elérési kulcsok** megtekintéséhez a **Beállítások panelen** kattintson az **Elérési kulcsok** lehetőségre. További információk az **alkalmazás-jogkivonatokról**: [Authenticating and authorizing with Power BI Embedded](power-bi-embedded-app-token-flow.md) (Hitelesítés és engedélyezés a Power BI Embedded használatával).
 
    ![](media/power-bi-embedded-get-started/access-keys.png)
@@ -74,7 +76,8 @@ Most, hogy rendelkezik **elérési kulcsokkal** és az alkalmazáshoz való Powe
 
 Munkaterület-csoport létrehozása után létre kell hoznia egy olyan munkaterületet, amely helyet biztosít a jelentéseknek és az adatkészleteknek. Munkaterület létrehozásához szüksége lesz a [Munkaterület küldése REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx)-ra.
 
-## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>Az alkalmazásba beágyazandó Power BI-adatkészletek és jelentések létrehozása
+## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Power BI-adatkészletek és -jelentések létrehozása és beágyazása egy Power BI Desktopot használó alkalmazásba
+
 Most, hogy rendelkezik **elérési kulcsokkal**, és létrehozta az alkalmazáshoz való Power BI-példányt, el kell készítenie a beágyazni kívánt Power BI-adatkészleteket és jelentéseket. Az adatkészletek és a jelentések a **Power BI Desktop** segítségével hozhatók létre. A [Power BI Desktop ingyenesen](https://go.microsoft.com/fwlink/?LinkId=521662) letölthető. Vagy, a gyorsabb kezdéshez, letöltheti a [Kiskereskedelmi elemzési minta PBIX-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
 
 > [!NOTE]
@@ -95,20 +98,25 @@ A **Power BI Desktopban** végzett munka mentésekor létrejön egy PBIX-fájl. 
 > [!NOTE]
 > A **Power BI Embedded** által kínált további API-k segítségével módosíthatja, hogy az adatkészlet mely kiszolgálóra vagy adatbázisra mutasson, illetve beállíthatja a szolgáltatásfiók hitelesítő adatait, melyek segítségével az adatkészlet majd csatlakozhat az adatbázishoz. További információ: [Post SetAllConnections](https://msdn.microsoft.com/library/mt711505.aspx) és [Patch Gateway Datasource](https://msdn.microsoft.com/library/mt711498.aspx).
 
-## <a name="next-steps"></a>Következő lépések
-Az előző lépések során létrehozott egy munkaterület-csoportot, valamint egy jelentést és egy adatkészletet. Most azt is megismerheti, hogyan írhat kódot a **Power BI Embedded** szolgáltatáshoz. Segítségképpen létrehoztunk egy webalkalmazás-mintát: [Bevezetés a minta használatába](power-bi-embedded-get-started-sample.md). A minta segítségével az alábbi műveleteket sajátíthatja el:
+## <a name="create-power-bi-datasets-and-reports-using-apis"></a>Power BI-adatkészletek és -jelentések létrehozása API-k használatával
 
-* Tartalom kiépítése
-  * Munkaterület létrehozása
-  * PBIX-fájl importálása
-  * A kapcsolati karakterláncok frissítése, és hitelesítő adatok beállítása az adatkészletekhez.
-* Jelentés biztonságos beágyazása
+### <a name="datsets"></a>Adatkészletek
+
+A REST API segítségével létrehozhat adatkészleteket a Power BI Embeddedben. Ezután elküldheti adatait saját adatkészletébe. Ez lehetővé teszi, hogy dolgozhasson az adattal a Power BI Desktop használata nélkül is. További információkat az [adatkészletek közzétételét](https://msdn.microsoft.com/library/azure/mt778875.aspx) ismertető részben talál.
+
+### <a name="reports"></a>Jelentések
+
+A JavaScript API használatával saját alkalmazásában készíthet jelentést egy adatkészletből. További információkért lásd az [Új jelentés létrehozása adatkészletből a Power BI Embedded használatával](power-bi-embedded-create-report-from-dataset.md) részt.
 
 ## <a name="see-also"></a>Lásd még:
-* [Bevezetés a minta használatába](power-bi-embedded-get-started-sample.md)
-* [Authenticating and authorizing with Power BI Embedded (Hitelesítés és engedélyezés a Power BI Embedded használatával)](power-bi-embedded-app-token-flow.md)
-* [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
+[Bevezetés a minta használatába](power-bi-embedded-get-started-sample.md)  
+[Hitelesítés és engedélyezés a Power BI Embedded használatával](power-bi-embedded-app-token-flow.md)  
+[Jelentés beágyazása](power-bi-embedded-embed-report.md)  
+[Új jelentés létrehozása adatkészletből a Power BI Embedded használatával](power-bi-embedded-create-report-from-dataset.md)
+[Jelentések mentése](power-bi-embedded-save-reports.md)  
+[Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)
 
 
