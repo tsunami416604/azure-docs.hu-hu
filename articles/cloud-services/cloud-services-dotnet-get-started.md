@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 02474f8ab77763be1b40da95f5d7cd935ba7f121
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f72a3650de5b1d43c992a801ffce1384774594f2
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -54,8 +55,9 @@ Az oktatóanyag utasításai az alábbi termékek bármelyikére alkalmazhatók:
 
 * Visual Studio 2013
 * Visual Studio 2015
+* Visual Studio 2017
 
-Ha egyikkel sem rendelkezik, az Azure SDK telepítésekor a Visual Studio 2015 is automatikusan telepítve lesz.
+Ha egyikkel sem rendelkezik, lehet, hogy az Azure SDK telepítésekor a Visual Studio automatikusan telepítve lesz.
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 Az alkalmazás SQL-adatbázisban tárolja a hirdetéseket, amihez az Entity Framework Code First megoldást használja a táblák létrehozásához és az adatok eléréséhez. Az egyes hirdetések esetében az adatbázis két URL-címet tárol, egyet a teljes méretű képhez, egyet pedig a miniatűrhöz.
@@ -364,7 +366,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati karakterláncokat fog konfi
     </connectionStrings>
     ```
 
-    A Visual Studio 2015 használata esetén helyettesítse a „v11.0” elemet az „MSSQLLocalDB” elemmel.
+    A Visual Studio 2015 vagy újabb használata esetén cserélje le a „v11.0” elemet az „MSSQLLocalDB” elemre.
 2. Mentse a módosításokat.
 3. A ContosoAdsCloudService projektben a **Szerepkörök** területen kattintson a jobb gombbal a ContosoAdsWeb elemre, majd kattintson a **Tulajdonságok** elemre.
 
@@ -769,9 +771,4 @@ További információkért lásd a következőket:
 * [A Cloud Services kezelése](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
 * [Felhőszolgáltató kiválasztása](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

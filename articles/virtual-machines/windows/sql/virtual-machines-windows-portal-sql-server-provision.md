@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
-ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -53,8 +53,8 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    ![Az Azure Virtuális gépek panelje](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. Tekintse át az elérhető SQL Server-sablonokat. Minden sablon egy SQL Server-verziót és egy operációs rendszert azonosít. 
-6. Válassza ki a Windows Server 2016-on futó SQL Server 2016 SP1 Developer sablonját.
+5. Tekintse át az elérhető SQL Server-rendszerképeket. Minden rendszerkép egy SQL Server-verziót és egy operációs rendszert azonosít. 
+6. Válassza ki a Windows Server 2016-on futó SQL Server 2016 SP1 Developer rendszerképét.
 
    > [!TIP]
    > Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni.
@@ -97,7 +97,7 @@ Az **Alapvető beállítások** panelen adja meg a következő információkat:
     ![Alapvető SQL-beállítások panel](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2. A virtuális gép méretének kiválasztása
-A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** panelen. A panel kezdetben a választott sablon alapján jeleníti meg az ajánlott méreteket. Emellett megbecsüli a virtuális gép futtatásának havi költségét is.
+A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** panelen. A panel kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket. Emellett megbecsüli a virtuális gép futtatásának havi költségét is.
 
 ![SQL virtuális gépek méretbeállításai](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 

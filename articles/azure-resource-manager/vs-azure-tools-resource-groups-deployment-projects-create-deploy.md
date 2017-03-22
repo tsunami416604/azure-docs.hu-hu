@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2016
+ms.date: 03/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e3df10acf4a6c123186c72687a56ccb4856c46fe
-ms.openlocfilehash: 07499f9b1c9668d8cb4037405478210e0738e03d
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 14fbfbc5abd6d95744832d9b39e377bbffe652ac
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -25,9 +26,9 @@ A Visual Studio és az [Azure SDK](https://azure.microsoft.com/downloads/) alkal
 
 Az Azure-erőforráscsoport-projektek az Azure Resource Managerből származó JSON-sablonokat tartalmaznak, amelyek az Azure-ba telepítendő erőforrásokat határozzák meg. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md). A Visual Studio lehetővé teszi a sablonok szerkesztését, valamint eszközeivel egyszerűbbé teszi a sablonokkal való munkát.
 
-Ebben a témakörben egy webalkalmazás és egy SQL Database telepítésének módját ismerheti meg. A lépések azonban majdnem teljesen azonosak az eltérő típusú erőforrások esetében is. Ugyanilyen könnyen telepíthet virtuális gépeket és azok kapcsolódó erőforrásait. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez.
+Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg. A lépések azonban majdnem teljesen azonosak az eltérő típusú erőforrások esetében is. Ugyanilyen könnyen telepíthet virtuális gépeket és azok kapcsolódó erőforrásait. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez.
 
-Ez a cikk a Visual Studio 2015 Update 2 és a Microsoft Azure SDK for .NET 2.9 használatát mutatja be. Amennyiben a Visual Studio 2013-as verzióját használja Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz. Használhatja az Azure SDK 2.6-os vagy újabb verzióját is, azonban ebben az esetben a felhasználói felület eltérhet a cikkben leírtaktól. Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziójának telepítése erősen ajánlott a lépések megkezdése előtt. 
+Ez a cikk a Visual Studio 2017 szoftvert mutatja be. Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz. Használhatja az Azure SDK 2.6-os vagy újabb verzióját is, azonban ebben az esetben a felhasználói felület eltérhet a cikkben leírtaktól. Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziójának telepítése erősen ajánlott a lépések megkezdése előtt. 
 
 ## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
 Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **Webes alkalmazás + SQL** sablonból.
@@ -35,7 +36,7 @@ Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **We
 1. A Visual Studio programban válassza a **Fájl**, **Új projekt**, majd a **C#** vagy a **Visual Basic** lehetőséget. Ezután válassza a **Felhő** lehetőséget, majd az **Azure erőforráscsoport** projektet.
    
     ![Felhőtelepítési projekt](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
-2. Válassza ki az Azure Resource Managerbe telepíteni kívánt sablont. Figyelje meg, hogy a telepíteni kívánt projekt típusától függően számos különböző lehetőség áll rendelkezésre. Ehhez a témakörhöz válassza a **Webes alkalmazás + SQL** sablont.
+2. Válassza ki az Azure Resource Managerbe telepíteni kívánt sablont. Figyelje meg, hogy a telepíteni kívánt projekt típusától függően számos különböző lehetőség áll rendelkezésre. Ehhez a cikkhez válassza a **Webapp + SQL** sablont.
    
     ![Sablon kiválasztása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
@@ -47,7 +48,7 @@ Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **We
    > 
    
     A Visual Studio létrehoz egy erőforráscsoport-telepítési projektet a webalkalmazás és az SQL-adatbázis számára.
-3. A létrehozott elemek megtekintéséhez bontsa ki a telepítési projektben található csomópontokat.
+3. A létrehozott elemek megtekintéséhez tekintse meg az üzembe helyezési projektben található csomópontot.
    
     ![csomópontok megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
    
@@ -113,7 +114,7 @@ A Visual Studio intellisense szolgáltatása segítségével megtudhatja, milyen
 ## <a name="deploy-the-resource-group-project-to-azure"></a>Az Erőforráscsoport-projekt telepítése az Azure szolgáltatásban
 Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt telepítésekor egy Azure-erőforráscsoporton helyezi üzembe azt. Az erőforráscsoport közös életciklussal rendelkező erőforrások logikai csoportja.
 
-1. A telepítési projekt csomópontjának helyi menüjén válassza a **Telepítés** > **Új üzemelő példány** lehetőséget.
+1. Az üzembe helyezési projekt csomópontjának helyi menüjén válassza a **Telepítés** > **Új** lehetőséget.
    
     ![Telepítés, Új üzemelő példány menüelem](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
    
@@ -150,7 +151,7 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
 6. Az üzembe helyezés eltarthat néhány percig. A **Kimenet** ablakban követhető az üzembe helyezés állapota. Az üzembe helyezés befejeztével az utolsó üzenet jelzi az üzembe helyezés sikerességét, a következőhöz hasonló módon:
    
         ... 
-        18:00:58 - Successfully deployed template 'c:\users\user\documents\visual studio 2015\projects\azureresourcegroup1\azureresourcegroup1\templates\websitesqldatabase.json' to resource group 'DemoSiteGroup'.
+        18:00:58 - Successfully deployed template 'websitesqldatabase.json' to resource group 'DemoSiteGroup'.
 7. Egy böngészőben nyissa meg az [Azure Portalt](https://portal.azure.com/), és jelentkezzen be a fiókjával. Az erőforráscsoport megtekintéséhez válassza az **Erőforráscsoportok** lehetőséget, valamint az erőforráscsoportot, amelyiken a telepítést végezte.
    
     ![csoport kijelölése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-group.png)
@@ -162,7 +163,7 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
     ![Azure erőforráscsoport üzembe helyezve](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
 ## <a name="deploy-code-with-your-infrastructure"></a>Kód telepítése az infrastruktúrával
-Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel. Ez a témakör a webalkalmazások és az SQL adatbázisok telepítésének módját ismerteti az telepítés során. Amennyibe webalkalmazás helyett virtuális gépet telepít, a telepítés keretében valamennyi kódot is érdemes futtatni a gépen. A kód telepítésének folyamata a webalkalmazások és a virtuális gépek telepítésénél szinte teljesen megegyezik.
+Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel. Ez a cikk a webappok és az SQL Database-táblák üzembe helyezésének módját ismerteti az üzembe helyezés során. Amennyibe webalkalmazás helyett virtuális gépet telepít, a telepítés keretében valamennyi kódot is érdemes futtatni a gépen. A kód telepítésének folyamata a webalkalmazások és a virtuális gépek telepítésénél szinte teljesen megegyezik.
 
 1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, és válassza az **Add** > **New Project** (Hozzáadás – Új projekt) parancsot.
    
@@ -170,7 +171,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 2. Adjon hozzá egy **ASP.NET webalkalmazást**. 
    
     ![webalkalmazás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
-3. Válassza az **MVC** lehetőséget, és törölje az **Üzemeltetés a felhőben** mező jelölését, mivel ezt a feladatot az erőforráscsoport-projekt végzi el.
+3. **MVC** kiválasztása
    
     ![MVC kiválasztása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
 4. Miután a Visual Studio létrehozta a webalkalmazást, a megoldásban mindkét projekt megjelenik.
@@ -194,7 +195,7 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
    * Az alapértelmezett **Build;Csomag** érték egy webes telepítési csomag (package.zip) felépítését és létrehozását teszi lehetővé.  
      
      Közzétételi profil nem szükséges, mivel a telepítési folyamat a szükséges információkat a csomag létrehozásához használt tulajdonságokból meríti.
-7. Adjon hozzá egy erőforrást a sablonhoz.
+7. Lépjen vissza a WebSiteSQLDatabase.json fájlhoz, és adjon hozzá egy erőforrást a sablonhoz.
    
     ![erőforrás hozzáadása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 8. Ez alkalommal válassza a **Web Deploy for Web Apps** (Webalkalmazások webes üzembe helyezése) lehetőséget. 
@@ -215,10 +216,5 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 ## <a name="next-steps"></a>Következő lépések
 * Az erőforrásoknak a portálon keresztül történő kezelésével kapcsolatos információkért lásd: [Az Azure Portal használata az Azure erőforrások kezeléséhez](resource-group-portal.md).
 * A sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

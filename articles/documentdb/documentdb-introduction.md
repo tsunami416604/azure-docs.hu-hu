@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 988c887d2d26ab3ab5b287f803c7d598bd6620e3
-ms.openlocfilehash: 23b1780df8ec01c0692e3afd408ea44fc9773b28
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4f6ae0c3c40a10f75b46c6e44b0aa9e8ce440b4d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -45,8 +46,9 @@ Az Azure DocumentDB az alábbi főbb képességeket és előnyöket kínálja:
 * **Teljes körűen felügyelt:** Nincs szükség az adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként nincs szükség virtuális gépek kezelésére, szoftverek telepítésére és konfigurálására, a méretezés kezelésére vagy az összetett adatrétegek frissítésére. Minden adatbázisról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Könnyedén elvégezheti egy DocumentDB-fiók hozzáadását és a kapacitás szükség szerinti kiosztását, ami lehetővé teszi, hogy az adatbázis üzemeltetése és kezelése helyett az alkalmazásra összpontosítson. 
 * **Nyílt kialakítás:** Hamar munkához láthat a meglévő ismeretei és eszközei használatával. A DocumentDB programozása könnyű, elérhető és nem igényli új eszközök megismerését vagy egyéni kiterjesztések használatát a JSON és a JavaScript formátumhoz. Egy egyszerű RESTful HTTP-felületen keresztül érheti el az adatbázis összes funkcióját, mint a CRUD, a lekérdezés és a JavaScript-feldolgozás. A DocumentDB támogatja a meglévő formátumokat, nyelveket és standardokat, miközben értékes adatbázis-képességeket is kínál.
 * **Automatikus indexelés:** Alapértelmezés szerint a DocumentDB automatikusan indexeli az adatbázisban szereplő összes dokumentumot, nem vár vagy igényel semmilyen sémát, és nem szükséges másodlagos indexek létrehozása sem. Szeretne mindent indexelni? Ne aggódjon, [a JSON-fájlok elérési útjainak indexelését](documentdb-indexing-policies.md) is ki lehet kapcsolni.
+* **Kompatibilitás MongoDB-appokkal:** A MondoDB DocumentDB: API-jának segítségével a DocumentDB-adatbázisokat használhatja a MongoDB-hez írt appok adattáraként. Ez azt jelenti, hogy MongoDB adatbázisok meglévő illesztői segítségével a MongoDB-hez írt alkalmazása mostantól képes kommunikálni a DocumentDB-vel, és használhat DocumentDB adatbázisokat MongoDB adatbázisok helyett. Sok esetben egy kapcsolati karakterlánc egyszerű módosításával válthat a MongoDB használatáról a DocumentDB-re. További információk: [Mi a MongoDB DocumentDB: API-ja?](documentdb-protocol-mongodb.md)
 
-## <a name="a-namedata-managementahow-does-documentdb-manage-data"></a><a name="data-management"></a>Hogyan kezeli a DocumentDB az adatokat?
+## <a name="data-management"></a>Hogyan kezeli a DocumentDB az adatokat?
 Az Azure DocumentDB jól meghatározott adatbázis-erőforrások használatával kezeli a JSON-adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB egy egyszerű HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 
 
 A DocumentDB-adatbázis fiók egy egyedi névtér, amely hozzáférést biztosít az Azure DocumentDB-hez. Ahhoz, hogy létrehozhasson egy adatbázis-fiókot, Azure-előfizetéssel kell rendelkeznie, amely számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. 
@@ -59,8 +61,8 @@ Az alábbi képen láthatók a DocumentDB erőforrásainak kapcsolatai:
 
 Egy adatbázis-fiók adatbázis-készletekből áll, amelyek mindegyike több gyűjteményt tartalmaz. A gyűjtemények tárolt eljárásokat, eseményindítókat, felhasználó által megadott függvényeket, dokumentumokat és kapcsolódó mellékleteket tartalmazhatnak. Egy adatbázisnak továbbá felhasználói is vannak, amelyek mindegyike rendelkezik egy engedélykészlettel a különféle egyéb gyűjtemények, tárolt eljárások, eseményindítók, felhasználó által megadott függvények, dokumentumok és mellékletek eléréséhez. Amíg az adatbázisok, felhasználók és gyűjtemények rendszer által meghatározott, jól ismert sémákkal rendelkező erőforrások, addig a dokumentumok, tárolt eljárások, eseményindítók, felhasználó által megadott függvények és mellékletek tetszőleges, felhasználó által megadott JSON-tartalmak lehetnek.  
 
-## <a name="a-namedevelopa-how-can-i-develop-apps-with-documentdb"></a><a name="develop"></a> Hogyan lehet alkalmazásokat fejleszteni a DocumentDB használatával?
-Az Azure DocumentDB egy REST API-n keresztül tesz elérhetővé erőforrásokat, amelyet bármilyen, HTTP/HTTPS-kérelem indítására képes nyelv meghívhat. Ezenfelül a DocumentDB számos népszerű nyelvhez biztosít programozási könyvtárakat. Ezek a könyvtárak sok szempontból leegyszerűsítik az Azure DocumentDB használatát, mivel számos alfolyamatot kezelnek (például címek gyorsítótárazása, kivételek kezelése, automatikus újrapróbálkozások stb.). Jelenleg a következő nyelvekhez és platformokhoz érhetők el könyvtárak:  
+## <a name="develop"></a> Hogyan lehet alkalmazásokat fejleszteni a DocumentDB használatával?
+Az Azure DocumentDB egy REST API-n keresztül tesz elérhetővé erőforrásokat, amelyet bármilyen, HTTP/HTTPS-kérelem indítására képes nyelv meghívhat. Ezenfelül a DocumentDB számos népszerű nyelvhez biztosít programozási könyvtárakat, és kompatibilis a MongoDB API-kkal. Ezek a könyvtárak sok szempontból leegyszerűsítik az Azure DocumentDB használatát, mivel számos alfolyamatot kezelnek (például címek gyorsítótárazása, kivételek kezelése, automatikus újrapróbálkozások stb.). Jelenleg a következő nyelvekhez és platformokhoz érhetők el könyvtárak:  
 
 | Letöltés | Dokumentáció |
 | --- | --- |
@@ -70,6 +72,7 @@ Az Azure DocumentDB egy REST API-n keresztül tesz elérhetővé erőforrásokat
 | [JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) |[JavaScript-kódtár](http://azure.github.io/azure-documentdb-js/) |
 | n/a |[Kiszolgálóoldali JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python-kódtár](http://azure.github.io/azure-documentdb-python/) |
+| n/a | [API a MongoDB-hez](documentdb-protocol-mongodb.md)
 
 Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével a DocumentDB Emulatorban, átválthat az Azure DocumentDB-fiók használatára a felhőben.
 
@@ -107,10 +110,5 @@ Még nincs Azure-fiókja? A következőket teheti:
 Ezután, amikor készen áll a tanulásra, tekintse meg a [képzési tervünket](https://azure.microsoft.com/documentation/learning-paths/documentdb/), és azon belül az összes elérhető képzési erőforrást. 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

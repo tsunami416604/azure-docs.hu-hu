@@ -17,8 +17,9 @@ ms.topic: get-started-article
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: ec9e3c6c6919bb5ce50553a29536f821fe79f577
-ms.openlocfilehash: 3d8ee1d23fab0b410bce711afc27f8bbbad4c7e4
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 8b1d057ab533e5665513b5b5969b48e18a3ae40c
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -51,14 +52,14 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
   
     Az alkalmazások a HBase felett futhatnak adattárolóként. Erre példa a Phoenix, az OpenTSDB, a Kiji és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Erre példa a Hive, Pig, Solr, Storm, Flume, Impala, Spark, Ganglia és Drill.
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]
 * [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet]
 * [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-replication.md)
 * [Twitter-vélemények elemzése a HBase-szel a HDInsightban][hbase-twitter-sentiment]
 * [A Maven használata a HDInsight (Hadoop) eszközzel HBase-t használó Java-alkalmazások építéséhez][hbase-build-java-maven]
 
-## <a name="a-namesee-alsoasee-also"></a><a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [Apache HBase](https://hbase.apache.org/)
 * [Bigtable: Elosztott tárolórendszer strukturált adatokhoz](http://research.google.com/archive/bigtable.html)
 
@@ -81,9 +82,4 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

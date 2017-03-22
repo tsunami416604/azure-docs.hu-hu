@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2575621d72b7db2b090ba923324697b7fa7b8308
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -82,9 +82,9 @@ Másolja a zip-fájlt a Windows Serveren belül oda, ahonnan futtatni kívánja 
 Csomagolja ki a tömörített mappát. Több fájlt és almappát láthat. Az ASRDeploymentPlanner.exe futtatható a szülőmappában.
 
 Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-E:\ASR Deployment Planner-Preview_v1.0.zip
+E:\ASR Deployment Planner-Preview_v1.1.zip
 
-E:\ASR Deployment Planner-Preview_v1.0\ ASR Deployment Planner-Preview_v1.0\ ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
 
 ##<a name="capabilities"></a>Funkciók
 A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
@@ -199,7 +199,7 @@ ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.cont
 
 
 ##### <a name="example-2-to-generate-report-when-profiled-data-is-on-a-remote-server-user-should-have-readwrite-access-on-the-remote-directory"></a>2. példa: Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón vannak. A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 
 ##### <a name="example-3-generate-report-with-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3. példa: Jelentés készítése megadott sávszélességgel és a kezdeti replikáció adott határidejű befejezésére vonatkozó céllal
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-Bandwidth** 100 **-GoalToCompleteIR** 24
@@ -407,10 +407,10 @@ Total number of disks across all compatible virtual machines (Lemezek teljes sz�
 
 **Virtual Machines to Place** (Elhelyezendő virtuális gépek) – Felsorolja az összes virtuális gépet, amelyet az optimális teljesítmény és kihasználtság érdekében az adott Azure Storage-fiókon ajánlott elhelyezni.
 
-##<a name="compatible-vms"></a>Kompatibilis virtuális gépek
+## <a name="compatible-vms"></a>Kompatibilis virtuális gépek
 ![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti.
+**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. A vCenteren lévő azon virtuális gépek, amelyek neve vagy IP-címe többször is előfordul, az ESXi-gazdagép nevével együtt szerepelnek, hogy megkülönböztethetők legyenek az egyes virtuális gépek. A feltüntetett ESXi-gazdagép az a gazdagép, ahol a virtuális gépek megtalálhatók voltak, amikor az eszköz először felderítette azokat a profilkészítés során.
 
 **VM Compatibility** (Virtuális gép kompatibilitása) – Két értéke van: Yes (Igen)/ Yes (Igen)*. A Yes* (Igen) azokra az esetekre vonatkozik, amikor a virtuális gép megfelel egy [prémium szintű Azure Storage-hoz](https://aka.ms/premium-storage-workload), és a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. Az Azure Storage a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 128 GB alatt P10, 128 és 512 GB között P20, illetve 512 és 1023 GB között P30. Tehát ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz Yes* (Igen*) megjelöléssel látja el ezeket a virtuális gépeket. Emellett az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen a megfelelő ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 A tároló típusa Standard vagy Premium.
@@ -439,7 +439,7 @@ A tároló típusa Standard vagy Premium.
 
 ![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti.
+**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. A vCenteren lévő azon virtuális gépek, amelyek neve vagy IP-címe többször is előfordul, az ESXi-gazdagép nevével együtt szerepelnek, hogy megkülönböztethetők legyenek az egyes virtuális gépek. A feltüntetett ESXi-gazdagép az a gazdagép, ahol a virtuális gépek megtalálhatók voltak, amikor az eszköz először felderítette azokat a profilkészítés során.
 
 **VM Compatibility** (Virtuális gép kompatibilitása) – Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép az Azure Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél meg vannak adva, és a következők lehetnek a közzétett Azure Storage-[korlátok](https://aka.ms/azure-storage-scalbility-performance) alapján.
 
@@ -483,7 +483,24 @@ Ezek átlagos értékek, amelyek 30%-os IO-átfedést feltételeznek. Az Azure S
 
 A fent közzétett korlátok saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat a teljesítményről.
 
-##<a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="how-to-update-the-deployment-planner"></a>Hogyan frissíthető a Deployment Planner?
+[Töltse le](site-recovery-deployment-planner.md#download) az Azure Site Recovery Deployment Planner legújabb verzióját. Másolja a zip-fájlt arra a kiszolgálóra, ahonnan futtatni szeretné. Csomagolja ki a tömörített fájlt.
+Ha már rendelkezik a Deployment Planner egy korábbi verziójával, és a profilkészítés fut, akkor csak abban az esetben kell leállítania a profilkészítést, ha az új verzióban a profilkészítést érintő javítás található. Ha a kiadás javításokat tartalmaz a profilkészítési összetevőhöz, akkor javasoljuk, hogy a profilkészítést a régi verzióval állítsa le, majd az új verzióval indítsa újra. Ügyeljen arra, hogy ha az új verzióval indítja el a profilkészítést, akkor ugyanazt a kimeneti elérési utat kell megadnia ahhoz, hogy az eszköz a már létező fájlokhoz fűzze hozzá a profiladatokat, valamint a profiladatok teljes körét felhasználja a jelentés létrehozásakor. Ha eltérő kimeneti elérési utat ad meg, akkor új fájlok jönnek létre, és a régi profiladatokat nem lehet majd felhasználni a jelentés létrehozásához.<br> Minden frissítés egy összegző frissítést tartalmaz a zip-fájlban. Ahhoz, hogy használatba vegye, nem kell átmásolnia az új verzió fájljait az előző verzió mappájába. Egy új mappába is másolhatja az új verziót.
+
+
+##<a name="version-history"></a>Verzióelőzmények
+### <a name="11"></a>1.1
+Frissítve: 2017. március 9. <br>
+
+Az alábbi hibák lettek kijavítva<br>
+
+* Az eszköz nem képes profilt készíteni a virtuális gépekről, ha a vCenter-kiszolgáló különböző ESXi-gazdagépein több azonos nevű vagy IP-című virtuális gép található.<br>
+* A Kompatibilis virtuális gépek és a Nem kompatibilis virtuális gépek lapján a másolás és a keresés le volt tiltva.
+
+
+### <a name="10"></a>1.0 
+Frissítve: 2017. február 23. 
+
 Az Azure Site Recovery Deployment Planner 1.0-s nyilvános előzetes verziója az alábbi ismert hibákat tartalmazza, amelyeket az elkövetkező frissítések fognak elhárítani.
 
 * Az eszköz csak a VMware – Azure forgatókönyvek esetén működik, Hyper-V – Azure irányú üzembe helyezések esetében nem. A Hyper-V – Azure forgatókönyvekhez használja a [Hyper-V Capacity Planner eszközt](./site-recovery-capacity-planning-for-hyper-v-replication.md).

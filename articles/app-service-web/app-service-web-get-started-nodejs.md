@@ -1,10 +1,10 @@
 ---
-title: "Helyezze üzembe Node.js-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió) | Microsoft Docs"
-description: "Egy Node.js-mintaalkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben. Gyorsan hozzáfoghat a valós fejlesztéshez, az eredményeket pedig azonnal meg is tekintheti."
+title: "Hozza létre az első Node.js-webappját öt perc alatt az Azure-ban | Microsoft Docs"
+description: "Egy Node.js-mintaalkalmazás üzembe helyezésével megismerheti, mennyire egyszerű a webalkalmazások futtatása az App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: erikre
+manager: wpickett
 editor: 
 ms.assetid: 412cc786-5bf3-4e1b-b696-6a08cf46501e
 ms.service: app-service-web
@@ -12,136 +12,73 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
+ms.date: 03/08/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 0d5015182ba6e63528b03b20450e00c88e436be8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 746f697076566ce3edd970336b005e53dc4d2d39
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="deploy-your-first-nodejs-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Helyezze üzembe első Node.js-webalkalmazását öt perc alatt az Azure-ban (CLI 2.0 – előzetes verzió)
+# <a name="create-your-first-nodejs-web-app-in-azure-in-five-minutes"></a>Hozza létre az első Node.js-webappját öt perc alatt az Azure-ban
 [!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
 
-Ez az oktatóanyag segítséget nyújt az első Node.js-webalkalmazás üzembe helyezéséhez az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
-Az App Service használatával webalkalmazásokat, [mobilalkalmazások háttérkomponenseit](/documentation/learning-paths/appservice-mobileapps/) és [API-alkalmazásokat](../app-service-api/app-service-api-apps-why-best-platform.md) hozhat létre.
+A rövid útmutató segítségével csupán pár perc alatt üzembe helyezheti az első Node.js-webappját az [Azure App Service-ben](../app-service/app-service-value-prop-what-is.md).
 
-Az alábbiakat fogja elvégezni: 
+A rövid útmutató elindítása előtt győződjön meg róla, hogy [az Azure CLI telepítve van](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) a gépen.
 
-* Webalkalmazás létrehozása az Azure App Service használatával.
-* Node.js-mintakód üzembe helyezése.
-* A kód élőben, üzemi környezetben való futtatása.
-* Ugyanúgy frissítheti a webalkalmazását, mint ahogy azt a [Git-véglegesítéseknél is tenné](https://git-scm.com/docs/git-push).
-
-[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-
-## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
-
-A következő CLI-verziók egyikével elvégezheti a feladatot:
-
-- [Azure CLI 1.0](app-service-web-get-started-nodejs-cli-nodejs.md) – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez
-- [Azure CLI 2.0](app-service-web-get-started-nodejs.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
-
-## <a name="prerequisites"></a>Előfeltételek
-* [Git](http://www.git-scm.com/downloads).
-* [Azure CLI 2.0 előzetes verzió](/cli/azure/install-az-cli2).
-* Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-
-> [!NOTE]
-> Az [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) Azure-fiók nélkül is lehetséges. Hozzon létre egy kezdő szintű alkalmazást, amellyel legfeljebb egy óráig foglalkozhat – ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
-
-## <a name="deploy-a-nodejs-web-app"></a>Node.js-alapú webalkalmazás üzembe helyezése
-1. Nyisson meg egy új Windows-parancssort, PowerShell-ablakot, Linux shellt vagy egy OS X terminált. A `git --version` és az `azure --version` paranccsal ellenőrizheti, hogy a Git és az Azure parancssori felülete telepítve van-e a számítógépen.
+# <a name="create-a-nodejs-web-app"></a>Node.js-alapú webes alkalmazás létrehozása
+2. Jelentkezzen be az Azure-ba az `az login` parancs futtatásával, és kövesse a képernyőn látható utasításokat.
    
-    ![Parancssori felület tesztelési célú telepítése az első Azure-webalkalmazáshoz](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
+    ```azurecli
+    az login
+    ```
    
-    Ha még nem telepítette az eszközöket, akkor telepítse őket. A letöltési hivatkozásokat az [Előfeltételek](#Prerequisites) szakaszban találja.
-2. Jelentkezzen be az Azure-ba a következő módon:
-   
-        az login
-   
-    A bejelentkezési folyamat folytatásához kövesse a súgóüzenetet.
-   
-    ![Bejelentkezés az Azure-ba az első webalkalmazás létrehozásához](./media/app-service-web-get-started-languages/3-azure-login-2.0.png)
+3. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Ide kell helyeznie az összes olyan Azure-erőforrást, amelyet közösen szeretne kezelni, mint például a webappot és a hozzá tartozó SQL Database-háttérrendszert.
 
-3. Állítsa be az üzembe helyező felhasználót az App Service számára. A kód üzembe helyezését később fogja elvégezni ezen hitelesítő adatok használatával.
-   
-        az appservice web deployment user set --user-name <username> --password <password>
+    ```azurecli
+    az group create --location "West Europe" --name myResourceGroup
+    ```
 
-3. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Az első App Service-oktatóanyaghoz nem feltétlenül szükséges tudnia, mi ez.
+    A `---location` paraméterhez használható lehetséges értékek megtekintéséhez használja az `az appservice list-locations` Azure CLI-parancsot.
 
-        az group create --location "<location>" --name my-first-app-group
+3. Hozzon létre egy „Standard” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). A Linux-tárolók futtatásához Standard csomag szükséges.
 
-    A `<location>` paraméterhez használható lehetséges értékek megtekintéséhez, használja az `az appservice list-locations` CLI-parancsot.
+    ```azurecli
+    az appservice plan create --name my-free-appservice-plan --resource-group myResourceGroup --sku S1 --is-linux 
+    ```
 
-3. Hozzon létre egy új, „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). Az első App Service-oktatóanyaggal kapcsolatban tudnia kell, hogy nem kell fizetnie az ebben a csomagban szereplő webappokért.
+4. Hozzon létre egy webappot, amelyhez az `<app_name>` helyén megad egy egyedi nevet.
 
-        az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
+    ```azurecli
+    az appservice web create --name <app_name> --resource-group myResourceGroup --plan my-free-appservice-plan
+    ```
 
-4. Hozzon létre egy új, egyéni névvel rendelkező webappot az `<app_name>` paraméterben.
+4. Konfigurálja a Linux-tárolót az alapértelmezett Node.js 6.9.3-rendszerkép használatára.
 
-        az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
+    ```azurecli
+    az appservice web config update --node-version 6.9.3 --name <app_name> --resource-group myResourceGroup
+    ```
 
-4. Ezután kapja meg az üzembe helyezni kívánt Node.js-mintakódot. Váltson egy munkakönyvtárra (a `CD` paranccsal), és klónozza a példaalkalmazást az alábbi lépések szerint:
-   
-        cd <working_directory>
-        git clone https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git
+4. Helyezzen üzembe egy Node.js-mintaappot a GitHubból.
 
-5. Váltson a mintaalkalmazás adattárára.
-   
-        cd app-service-web-nodejs-get-started
-5. Konfigurálja az App Service webapphoz tartozó helyi Git üzemelő példányt a következő paranccsal:
+    ```azurecli
+    az appservice web source-control config --name <app_name> --resource-group myResourceGroup \
+    --repo-url "https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git" --branch master --manual-integration 
+    ```
 
-        az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
+5. Az Azure-alkalmazást az alábbi paranccsal tekintheti meg működés közben:
 
-    Egy ehhez hasonló JSON-kimenet jön létre, ami azt jelenti, hogy a távoli Git-tárház be lett állítva:
+    ```azurecli
+    az appservice web browse --name <app_name> --resource-group myResourceGroup
+    ```
 
-        {
-        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-        }
+Gratulálunk, az első Node.js-webappja immáron elérhető az Azure App Service-ben.
 
-6. Adja hozzá a JSON-ban található URL-címet a helyi tárházhoz távoli Git-elemként (az egyszerűség kedvéért nevezzük a következőnek: `azure`).
-
-        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
-   
-7. Helyezze üzembe a mintakódot az Azure-alkalmazásban ugyanúgy, ahogy Git-kódok esetében is tenné. Ha a rendszer kéri, használja a korábban beállított jelszót.
-   
-        git push azure master
-   
-    ![Kód beillesztése az első Azure webalkalmazásba](./media/app-service-web-get-started-languages/node-git-push.png)
-   
-    A `git push` nem csak az Azure-be illeszti be a kódot, hanem üzembe helyezési feladatokat is aktivál az üzembe helyezési motorban. 
-    Ha package.json fájl található a projekt (adattár) gyökérkönyvtárában, akkor az üzembehelyezési parancsfájl visszaállítja Önnek a szükséges csomagokat. 
-
-Sikeresen üzembe helyezte az alkalmazást az Azure App Service-ben!
-
-## <a name="see-your-app-running-live"></a>Az alkalmazás megtekintése működés közben
-Az Azure-alkalmazást az adattár valamelyik könyvtárában kiadott alábbi paranccsal tekintheti meg működés közben:
-
-    az appservice web browse -n <app-name> --resource-group my-first-app-group
-
-## <a name="make-updates-to-your-app"></a>Az alkalmazás módosítása (frissítése)
-A Git segítségével mostantól bármikor leküldhet a projekt (adattár) gyökérkönyvtárából, ha frissítenie kell az élő webhelyet. Ezt ugyanolyan módon teheti meg, mint amikor az első alkalommal helyezte üzembe a kódot. Például minden alkalommal, amikor egy új, helyileg tesztelt módosítást kíván leküldeni, akkor egyszerűen csak futtatnia kell az alábbi parancsokat a projekt (adattár) gyökérkönyvtárából:
-
-    git add .
-    git commit -m "<your_message>"
-    git push azure master
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-[Node.js Express-webalkalmazás létrehozása, konfigurálása és üzembe helyezése az Azure-on](app-service-web-nodejs-get-started.md). Az oktatóanyag utasításait követve szert tehet a bármely Node.js-webalkalmazás Azure-ban való futtatásához szükséges alapszintű készségekre, többek között az alábbiakra:
 
-* Alkalmazások létrehozása és konfigurálása az Azure-ban Powershellből/Bashből.
-* A Node.js-verzió beállítása.
-* Egy nem a gyökér-alkalmazáskönyvtárban található indítófájl használata.
-* Automatizálás NPM-mel.
-* Hiba és kimeneti naplók lekérése.
-
-Vagy tegyen még többet az első webalkalmazásával. Példa:
-
-* Próbálja meg [egyéb módokon üzembe helyezni a kódot az Azure-ban](web-sites-deploy.md). Ha például az egyik GitHub-adattárból szeretné elvégezni a telepítést, egyszerűen válassza a **GitHub** lehetőséget a **Helyi git-tárház** helyett az **Üzembehelyezési lehetőségek** területen.
-* Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással. Lásd: [Funkciók hozzáadása az első webalkalmazásához](app-service-web-get-started-2.md).
-
+Az előre létrehozott, [webappokhoz készült CLI-szkriptek vizsgálata](app-service-cli-samples.md).
 

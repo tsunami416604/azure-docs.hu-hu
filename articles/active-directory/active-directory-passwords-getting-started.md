@@ -13,35 +13,168 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>A jelszókezelés első lépései
 > [!IMPORTANT]
-> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
+> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 >
 >
 
 Csupán néhány egyszerű lépéssel lehetővé teheti, hogy a felhasználók kezelhessék a saját felhőalapú Azure Active Directory- vagy helyszíni Active Directory-jelszavaikat. Miután ellenőrizte, hogy megfelel-e néhány egyszerű előfeltételnek, a jelszómódosítás és -visszaállítás hamar engedélyezhetővé tehető a teljes szervezet számára. Ez a cikk a következő fogalmakat ismerteti:
 
+* [**Kezdés előtt: az ügyfeleinktől származó legjobb tippek**](#top-tips-from-our-customers-to-read-before-you-begin)
+ * [**LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN** – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+ * [**1. tipp: LICENCEK** – Győződjön meg arról, hogy megértette a licencelési követelményeket](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+ * [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**3. tipp: ÜZEMBE HELYEZÉS** – Töltse ki előre az adatokat a felhasználók számára, hogy ne kelljen regisztrálniuk](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+ * [**4. tipp: ÜZEMBE HELYEZÉS** – A jelszavak visszaállításával kerülje el az ideiglenes jelszavakkal kapcsolatos kommunikáció bonyodalmait](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+ * [**5. tipp: VISSZAÍRÁS** – Tekintse meg az alkalmazás eseménynaplóját az AAD Connect gépen a jelszóvisszaírás hibáinak elhárítása érdekében](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+ * [**6. tipp: VISSZAÍRÁS** – Győződjön meg arról, hogy a megfelelő engedélyeket, tűzfalszabályokat és kapcsolati beállításokat engedélyezte a jelszóvisszaíráshoz](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+ * [**7. tipp: JELENTÉSKÉSZÍTÉS** – Tekintse meg az Azure AD SSPR auditnaplókkal, hogy ki regisztrál vagy állít vissza jelszavakat](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+ * [**8. tipp: HIBAELHÁRÍTÁS** – A hibaelhárítással kapcsolatos útmutató és a gyakori kérdések sok hiba elhárításához nyújthatnak segítséget](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+ * [**9. tipp: HIBAELHÁRÍTÁS** – Ha további segítségre van szüksége, adjon meg elég információt ahhoz, hogy valóban segíthessünk](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 * [**Új Azure Active Directory-jelszavak létrehozásának engedélyezése a felhasználók számára**](#enable-users-to-reset-their-azure-ad-passwords)
-  * [Az önkiszolgáló jelszó-visszaállítás előfeltételei](#prerequisites)
-  * [1. lépés: Jelszó-visszaállítási házirend konfigurálása](#step-1-configure-password-reset-policy)
-  * [2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál](#step-2-add-contact-data-for-your-test-user)
-  * [3. lépés: Jelszó visszaállítása felhasználóként](#step-3-reset-your-azure-ad-password-as-a-user)
+ * [Az önkiszolgáló jelszó-visszaállítás előfeltételei](#prerequisites)
+ * [1. lépés: Jelszó-visszaállítási házirend konfigurálása](#step-1-configure-password-reset-policy)
+ * [2. lépés: Kapcsolati adatok megadása a tesztfelhasználónál](#step-2-add-contact-data-for-your-test-user)
+ * [3. lépés: Jelszó visszaállítása felhasználóként](#step-3-reset-your-azure-ad-password-as-a-user)
 * [**Annak engedélyezése, hogy a felhasználók visszaállíthassák vagy módosíthassák a helyszíni Azure Active Directory-jelszavaikat**](#enable-users-to-reset-or-change-their-ad-passwords)
-  * [Jelszóvisszaírás előfeltételei](#writeback-prerequisites)
-  * [1. lépés: Az Azure AD Connect legújabb verziójának letöltése](#step-1-download-the-latest-version-of-azure-ad-connect)
-  * [2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben a felhasználói felületen vagy a PowerShellen keresztül, és ellenőrzés](#step-2-enable-password-writeback-in-azure-ad-connect)
-  * [3. lépés: A tűzfal konfigurálása](#step-3-configure-your-firewall)
-  * [4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
-  * [5. lépés: Az AD-jelszó visszaállítása felhasználóként, és ellenőrzés](#step-5-reset-your-ad-password-as-a-user)
+ * [Jelszóvisszaírás előfeltételei](#writeback-prerequisites)
+ * [1. lépés: Az Azure AD Connect legújabb verziójának letöltése](#step-1-download-the-latest-version-of-azure-ad-connect)
+ * [2. lépés: A jelszóvisszaírás engedélyezése az Azure AD Connectben a felhasználói felületen vagy a PowerShellen keresztül, és ellenőrzés](#step-2-enable-password-writeback-in-azure-ad-connect)
+ * [3. lépés: A tűzfal konfigurálása](#step-3-configure-your-firewall)
+ * [4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
+ * [5. lépés: Az AD-jelszó visszaállítása felhasználóként, és ellenőrzés](#step-5-reset-your-ad-password-as-a-user)
+
+## <a name="top-tips-from-our-customers-to-read-before-you-begin"></a>Kezdés előtt: az ügyfeleinktől származó legjobb tippek
+Az alábbiakban olyan tippeket sorolunk fel, amelyek hasznosak lehetnek azon ügyfelek számára, akik egy cégen vagy más jellegű szervezeten belül helyeznek üzembe jelszókezelési megoldásokat.
+
+* [**LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN** – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+* [**1. tipp: LICENCEK** – Győződjön meg arról, hogy megértette a licencelési követelményeket](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+* [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**3. tipp: ÜZEMBE HELYEZÉS** – Töltse ki előre az adatokat a felhasználók számára, hogy ne kelljen regisztrálniuk](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+* [**4. tipp: ÜZEMBE HELYEZÉS** – A jelszavak visszaállításával kerülje el az ideiglenes jelszavakkal kapcsolatos kommunikáció bonyodalmait](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+* [**5. tipp: VISSZAÍRÁS** – Tekintse meg az alkalmazás eseménynaplóját az AAD Connect gépen a jelszóvisszaírás hibáinak elhárítása érdekében](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+* [**6. tipp: VISSZAÍRÁS** – Győződjön meg arról, hogy a megfelelő engedélyeket, tűzfalszabályokat és kapcsolati beállításokat engedélyezte a jelszóvisszaíráshoz](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+* [**7. tipp: JELENTÉSKÉSZÍTÉS** – Tekintse meg az Azure AD SSPR auditnaplókkal, hogy ki regisztrál vagy állít vissza jelszavakat](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+* [**8. tipp: HIBAELHÁRÍTÁS** – A hibaelhárítással kapcsolatos útmutató és a gyakori kérdések sok hiba elhárításához nyújthatnak segítséget](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+* [**9. tipp: HIBAELHÁRÍTÁS** – Ha további segítségre van szüksége, adjon meg elég információt ahhoz, hogy valóban segíthessünk](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
+
+### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával
+Ha valamelyik dokumentációnkat használja, érdemes áttekinteni a tartalomjegyzéket, mert igyekeztünk megadni benne a rendszergazdák érdeklődésére számot tartó összes témakör gyorshivatkozását. 
+
+Tekintse meg az alábbi tartalomjegyzéket: 
+* [Azure AD jelszó-visszaállítás: A dokumentáció tartalomjegyzéke](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
+
+### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>1. tipp: LICENCEK – Győződjön meg arról, hogy megértette a licencelési követelményeket
+Az Azure AD jelszó-visszaállítás működéséhez legalább egy licencnek a céghez vagy szervezethez rendelve kell lennie. Magához a jelszóvisszaállítási művelethez nem tesszük kötelezővé a felhasználónkénti licencelést, de ha úgy használja a funkciót, hogy nincs licenc rendelve egy felhasználóhoz, nem fog megfelelni a Microsoft licencszerződésének, és licenceket kell rendelnie a felhasználókhoz.
+
+Az alábbi dokumentumok segíthetnek megérteni, milyen licencekre van szükség a jelszó-visszaállításhoz.
+* [Általános jelszó-visszaállítási licencelési információk]()
+* [Funkciónkénti jelszó-visszaállítási licencelési információk]()
+* [A jelszóvisszaíráshoz támogatott alkalmazási helyzetek]()
+
+### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>2. tipp: TESZTELÉS – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen
+Ha rendszergazdával tesztel, a rendszergazdai jelszóvisszaállítási szabályzat lesz érvényben, amelynek a lényegét az alábbiakban foglaljuk össze.  Ez azt jelenti, hogy NEM a végfelhasználókhoz konfigurált szabályzat várt eredményei fognak megjelenni.
+
+A rendszergazdai felületen konfigurált szabályzatok CSAK a végfelhasználókra érvényesek, a rendszergazdákra nem. A Microsoft alapértelmezés szerint szigorú jelszóvisszaállítási szabályzatot ír elő a rendszergazdáknak – amely különbözhet a végfelhasználókhoz beállított szabályzatoktól –, hogy a cég vagy szervezet biztonsága ne sérüljön.
+
+#### <a name="administrator-password-reset-policy"></a>Rendszergazdai jelszóvisszaállítási szabályzat
+* **Érvényességi kör** – bármely rendszergazdai szerepkör (globális rendszergazda, ügyfélszolgálati rendszergazda, jelszórendszergazda stb.)
+* **Egy kezdő szabályzat érvényes...**
+ * ...a próbaverzió elindítása/létrehozása utáni első 30 napban **VAGY**
+ * ...amikor nincs jelen személyes tartomány, **ÉS** az Azure AD Connect nem szinkronizál identitásokat.
+ * **_A használatához szükséges_**: **egy** olyan hitelesítő e-mail-cím, másodlagos e-mail-cím, hitelesítő telefonszám, mobiltelefonszám vagy irodai telefonszám, amelynek van értéke.
+* **Két kezdő szabályzat érvényesül...** 
+ * ...a próbaverzió első 30 napjának eltelte után **VAGY**
+ * ...amikor jelen van egy személyes tartomány **VAGY** 
+ * ...ha engedélyezte, hogy az Azure AD Connect szinkronizálja az identitásokat a helyszíni környezetből.
+ * _**A használatához szükséges**_: az értékkel rendelkező hitelesítő e-mail-cím, másodlagos e-mail-cím, hitelesítő telefonszám, mobiltelefonszám vagy irodai telefonszám közül kiválasztott **két** elem.
+
+### <a name="tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register"></a>3. tipp: ÜZEMBE HELYEZÉS – Töltse ki előre az adatokat a felhasználók számára, hogy ne kelljen regisztrálniuk
+Sokan nem tudják, hogy a felhasználóknak nem kell regisztrálniuk a jelszó-visszaállításra a funkció használatához.  Ha előre beállítja a felhasználók számára a telefonra és e-mailre vonatkozó tulajdonságokat, azonnal elérhetővé teheti a jelszó-visszaállítást a teljes cégben vagy szervezetben **anélkül, hogy a felhasználóknak bármit is tenniük kellene.**
+
+Az alábbi dokumentáció azt ismerteti, hogyan teheti meg ezt API-k, a PowerShell vagy az Azure AD Connect használatával:
+* [Jelszó-visszaállítás üzembe helyezése anélkül, hogy a felhasználóknak regisztrálniuk kellene](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [A jelszó-visszaállítás által használt adatok](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords"></a>4. tipp: ÜZEMBE HELYEZÉS – A jelszavak visszaállításával kerülje el az ideiglenes jelszavakkal kapcsolatos kommunikáció bonyodalmait
+Ez a 3. tipphez kapcsolódik. Miután előre konfigurálta a felhasználókat a jelszó-visszaállításhoz, képzeljen el egy olyan esetet, ahol egy alkalmazott először csatlakozik a vállalatához. Ahelyett, hogy adna neki egy ideiglenes jelszót, átirányíthatja az [Azure AD jelszóvisszaállítási portálra](https://passwordreset.microsoftonline.com), hogy visszaállítsa a jelszavát.
+
+Ha a felhasználó [Windows 10 Azure AD tartományhoz csatlakozó eszközt](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy) használ, a visszaállítást közvetlenül a Windows 10 kezdő bejelentkezési képernyőjén is végrehajthatja, így egy teljesen új számítógépet érhet el anélkül, hogy Önnek bármit is tennie kellene.
+
+Az alábbi dokumentáció azt ismerteti, hogyan teheti meg ezt API-k, a PowerShell vagy az Azure AD Connect használatával. Miután előre kitölti az adatokat, csak irányítsa át a felhasználókat a jelszavuk visszaállításához, és azonnal hozzáférhetnek a fiókjukhoz:
+* [Jelszó-visszaállítás üzembe helyezése anélkül, hogy a felhasználóknak regisztrálniuk kellene](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [A jelszó-visszaállítás által használt adatok](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback"></a>5. tipp: VISSZAÍRÁS – Tekintse meg az alkalmazás eseménynaplóját az AAD Connect gépen a jelszóvisszaírás hibáinak elhárítása érdekében
+Az Azure AD Connect alkalmazás eseménynaplója sokféle naplózott információt tartalmaz, amelyek a jelszóvisszaíró szolgáltatás működését valós időben részletezik. A napló eléréséhez kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az **Azure AD Connect** gépre.
+2. A **Windows eseménynapló** megnyitásához kattintson a **Start** gombra, és írja be az **„Eseménynapló”** kifejezést.
+3. Nyissa meg az **Alkalmazás** eseménynaplót.
+4. Az esetlegesen előforduló problémákra vonatkozó további információért keressen a következő forrásokból származó eseményeket: **PasswordResetService** vagy **ADSync**.
+
+Azon események teljes listájáért, amelyek szerepelhetnek a naplóban, valamint a jelszóvisszaíróval kapcsolatos további hibaelhárítási útmutatásért lásd:
+* [A jelszóvisszaíró hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [A visszaíró eseménynaplójának hibakódjai](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [A jelszóvisszaíró csatlakoztatási problémáinak hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [A visszaíró üzembe helyezése – 3. lépés: A tűzfal konfigurálása](#step-3-configure-your-firewall)
+* [A visszaíró üzembe helyezése – 4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback"></a>6. tipp: VISSZAÍRÁS – Győződjön meg arról, hogy a megfelelő engedélyeket, tűzfalszabályokat és kapcsolati beállításokat engedélyezte a jelszóvisszaíráshoz
+A visszaírás megfelelő működéséhez biztosítania kell a következőket:
+
+1. A megfelelő **Active Directory-engedélyeket** kell beállítani a jelszóvisszaírót használó felhasználókhoz, hogy jogosultak legyenek a saját jelszavuk és a fiókjuk zárolásfeloldó jelzőinek módosítására az AD-ben.
+2. A megfelelő **tűzfalportoknak** kell nyitva lenniük, hogy a jelszóvisszaíró szolgáltatás biztonságosan kommunikálhasson a külvilággal egy kimenő kapcsolaton keresztül.
+3. A megfelelő **tűzfalkivételeket** kell beállítani a jelszóvisszaállítási szolgáltatás főbb URL-címeihez, például a Service Bushoz.
+4. A **proxy és a tűzfal nem törölheti a tétlen kimenő kapcsolatokat**: legalább 10 perces beállítást javasolunk.
+
+A hibaelhárítási útmutatók teljes listájáért és a jelszóvisszaíró engedélyei és tűzfalszabályai konfigurálásával kapcsolatos útmutatásért lásd:
+* [A jelszóvisszaíró hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [A visszaíró eseménynaplójának hibakódjai](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [A jelszóvisszaíró csatlakoztatási problémáinak hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [A visszaíró üzembe helyezése – 3. lépés: A tűzfal konfigurálása](#step-3-configure-your-firewall)
+* [A visszaíró üzembe helyezése – 4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>7. tipp: JELENTÉSKÉSZÍTÉS – Tekintse meg az Azure AD SSPR auditnaplókkal, hogy ki regisztrál vagy állít vissza jelszavakat 
+Ha a jelszó-visszaállítás üzembe van helyezve és működik, a következő logikus lépés működésének áttekintése és annak elemzése, hogy kinek kell még regisztrálnia, melyek a visszaállítás során a felhasználók által tapasztalt általános problémák, és a befektetés milyen mértékű megtérülésével lehet számolni.
+
+Az Azure AD jelszó-visszaállítási auditnaplókkal ezeket és sok más műveletet is végrehajthat az Azure Portalon, a PowerBI-ban, az Azure AD Reporting Events API-val vagy a PowerShell segítségével.  A jelentéskészítési funkciók használatára vonatkozó további információért lásd:
+* [Jelszókezelési jelentések áttekintése](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#overview-of-password-management-reports)
+* [A jelszókezelési jelentések megtekintése az Azure Portalon](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-view-password-management-reports)
+* [Önkiszolgáló jelszókezelési tevékenységtípusok az Azure Portalon](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#self-service-password-management-activity-types-in-the-new-azure-portal)
+* [Jelszókezelési események lekérése az Azure AD-jelentések és -események API-jából](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api)
+* [Jelszóvisszaállítási regisztrációs események gyors letöltése a PowerShell használatával](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-download-password-reset-registration-events-quickly-with-powershell)
+
+### <a name="tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues"></a>8. tipp: HIBAELHÁRÍTÁS – A hibaelhárítással kapcsolatos útmutató és a gyakori kérdések sok hiba elhárításához nyújthatnak segítséget
+Tudta, hogy a jelszó-visszaállításra rengeteg hibaelhárítási útmutató és egy gyakori kérdéseket tartalmazó szakasz is vonatkozik? Ha kérdése van, akkor nagy a valószínűsége, hogy a következő hivatkozásokon megtalálja rá a választ.
+
+Ezenkívül az [Azure Portal](https://portal.azure.com) **„Támogatás és hibaelhárítás”** panelén is megtalálja a hibaelhárítási tartalmak gazdag választékát, amely a bal oldali navigációs ablaktáblán lévő **Azure Active Directory** -> **Felhasználók és csoportok** -> **Jelszó-visszaállítás** -> **Támogatás és hibaelhárítás** területen található jelszókezelési rendszergazdai felhasználói felületen érhető el.
+
+A jelszóvisszaállítási útmutatókra és gyakori kérdésekre mutató hivatkozások:
+* [A jelszókezelés hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot)
+* [Jelszókezelés GYIK](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-faq)
+
+### <a name="tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you"></a>9. tipp: HIBAELHÁRÍTÁS – Ha további segítségre van szüksége, adjon meg elég információt ahhoz, hogy valóban segíthessünk
+Ha további segítségre van szüksége a hibaelhárításhoz, rendelkezésére állunk. Megnyithat egy támogatási esetet, vagy közvetlenül a fiókkezelő csapattal is kapcsolatba léphet. Forduljon hozzánk bizalommal.
+
+Mielőtt azonban kapcsolatba lépne velünk, **győződjön meg arról, hogy beszerezte az alább kért összes információt**, hogy minél gyorsabban a segítségére lehessünk!
+* [A segítségkéréshez mellékelendő információk](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#information-to-include-when-you-need-help)
+
+#### <a name="ways-to-provide-password-reset-feedback"></a>A jelszó-visszaállítással kapcsolatos visszajelzések
+* [Szolgáltatással kapcsolatos kérések vagy hibaelhárítás – Közzététel az Azure AD MSDN fórumokon](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
+* [Szolgáltatással kapcsolatos kérések vagy hibaelhárítás – Közzététel a StackOverflow-n](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Szolgáltatással kapcsolatos kérések vagy hibaelhárítás – Twitter-üzenet küldése @azuread-nek](https://twitter.com/azuread)
+* [Csak a szolgáltatással kapcsolatos kérések – Megjegyezés írása a UserVoice-on](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 ## <a name="enable-users-to-reset-their-azure-ad-passwords"></a>Annak engedélyezése, hogy a felhasználók visszaállíthassák az Azure AD-jelszavaikat
 Ez a szakasz végigvezeti az önkiszolgáló jelszó-visszaállítás az AAD a felhőalapú címtárához történő engedélyezésén, a felhasználók önkiszolgáló jelszó-visszaállításhoz történő regisztrálásán, majd végül tesztelési célból egy önkiszolgáló jelszó-visszaállítás felhasználóként történő elvégzésén.
@@ -267,11 +400,11 @@ Miután engedélyezte a jelszóvisszaírást, ellenőriznie kell, hogy az Azure 
 
 Annak érdekében, hogy a Jelszóvisszaíró megfelelően működjön, az Azure AD Connectet futtató gépnek képesnek kell lennie kimenő HTTPS-kapcsolatok létesítésére a **.servicebus.windows.net*, valamint adott, az Azure által használt IP-címek felé, amint azt a [Microsoft Azure Adatközpont IP-tartományainak listája](https://www.microsoft.com/download/details.aspx?id=41653) meghatározza.
 
-Az Azure AD Connect eszközök **1.1.439.0-s** (legújabb) és újabb verziói esetében:
+Az Azure AD Connect eszközök **1.1.443.0-s** (legújabb) és újabb verziói esetében:
 
 - Az Azure AD Connect eszközök legújabb verziójának **kimenő HTTPS**-kapcsolatra van szüksége a következők eléréséhez:
     - *passwordreset.microsoftonline.com*
-    - *servicbus.windows.net*
+    - *servicebus.windows.net*
 
 Az Azure AD Connect eszközök **1.0.8667.0**–**1.1.380.0** verziói esetében:
 
@@ -302,11 +435,11 @@ Az Azure AD Connect eszközök **1.0.8667.0**–**1.1.380.0** verziói esetében
 
 Amint kész a hálózati berendezések konfigurálása, indítsa újra az Azure AD Connect eszközt futtató gépet.
 
-#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Tétlen kapcsolatok az Azure AD Connectben (1.1.439.0 és újabb)
+#### <a name="idle-connections-on-azure-ad-connect-114430-and-up"></a>Tétlen kapcsolatok az Azure AD Connectben (1.1.443.0 és újabb)
 Az Azure AD Connect eszköz rendszeren ping/életben tartási üzenetet küld a szolgáltatásbusz végpontjai számára, hogy biztosítsa a kapcsolat fenntartását. Ha az eszköz túl sok kapcsolat leállítását észleli, automatikusan növeli a végpont pingelésének gyakoriságát. A legalacsonyabb „pingelési időköz” 60 másodpercenként 1-re csökken, azonban **határozottan javasoljuk, hogy a proxyk/tűzfalak legalább 2-3 percig engedélyezzék a tétlen kapcsolatok fenntartását.** \*A korábbi verziók esetében 4 vagy több percet javasolunk.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>4. lépés: A megfelelő Active Directory-engedélyek beállítása
-Minden erdő esetén, amely olyan felhasználókat tartalmaz, akiknek a jelszavait vissza fogja állítani, ha X a konfigurációs varázslóban (a kezdeti konfiguráció során) az erdőhöz meghatározott fiók, az X-hez meg kell adnia a **Jelszó alaphelyzetbe állítása**, **Jelszó módosítása**, **Írási engedélyek** kibővített jogot a `lockoutTime` alatt és az **Írási engedélyek** kibővített jogot a `pwdLastSet` alatt az erdőben lévő minden tartomány gyökérobjektumán. A jognak minden felhasználói objektum által örököltként kell megjelölve lennie.  
+Minden erdő esetén, amely olyan felhasználókat tartalmaz, akiknek a jelszavait vissza fogja állítani, ha X a konfigurációs varázslóban (a kezdeti konfiguráció során) az erdőhöz meghatározott fiók, az X-hez meg kell adnia a **Jelszó alaphelyzetbe állítása**, **Jelszó módosítása**, **Írási engedélyek** kibővített jogot a `lockoutTime` alatt és az **Írási engedélyek** kibővített jogot a `pwdLastSet` alatt az erdőben lévő minden tartomány gyökérobjektumán VAGY az SSPR hatókörébe felvenni kívánt felhasználói szervezeti egység(ek)en.  Az utóbbi lehetőséget akkor használhatja, ha a visszaállítási engedélyeket csak a felhasználói objektumok adott készletére szeretné alkalmazni, nem pedig a tartomány gyökerén. A jognak minden felhasználói objektum által örököltként kell megjelölve lennie.  
 
 Ha nem biztos abban, melyik fiókra utalnak a fentiek, nyissa meg az Azure Active Directory Connect konfigurációs felhasználói felületet, és kattintson **A megoldás áttekintése** elemre.  A fiók, amelyhez engedélyeket kell hozzáadnia, vörös színnel van aláhúzva az alábbi képernyőképen.
 
@@ -361,7 +494,7 @@ Most, hogy engedélyezett a jelszóvisszaírás, tesztelheti a működését, ha
 ## <a name="next-steps"></a>Következő lépések
 Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokumentációs oldal hivatkozását:
 
-* **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
+* **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password).
 * [**Működés**](active-directory-passwords-how-it-works.md) – megismerheti a szolgáltatás hat különböző összetevőjét és azt, hogy ezek mire valók
 * [**Testreszabás**](active-directory-passwords-customize.md) – megtudhatja, hogyan szabhatja testre a szervezet által igényelt szolgáltatás kezelőfelületét és működését
 * [**Ajánlott eljárások**](active-directory-passwords-best-practices.md) – megtudhatja, hogyan helyezhet gyorsan üzembe és hogyan kezelhet hatékonyan jelszavakat a szervezetben
