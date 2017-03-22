@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 858d6115ed3a96e3b6a3362ff8f5c1fc4c279bd2
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
 
 Az <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memóriabeli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési képességek jellemzőek. A Spark memóriában tárolt számítási képességei jól funkcionálnak a Machine Learning és a Graph számítások iteratív algoritmusaival együtt. A Spark az Azure Blob Storage (WASB) szolgáltatással is kompatibilis, így a jelenleg az Azure-ban tárolt adatainak feldolgozását a Sparkon keresztül elvégezheti.
 
-Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Egy Spark-fürt HDInsightban történő létrehozása nagyjából tíz percet vesz igénybe. A feldolgozásra kijelölt adatok az Azure Blob Storage tárolójában találhatóak. Lásd: [Az Azure Blob Storage és a HDInsight együttes használata][hdinsight-storage].
+Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Egy Spark-fürt HDInsightban történő létrehozása nagyjából tíz percet vesz igénybe. A feldolgozásra kijelölt adatok az Azure Storage-ban vannak tárolva. Lásd [az Azure Storage és a HDInsight együttes használatát][hdinsight-storage] ismertető cikket.
 
 ![Apache Spark on Azure HDInsight](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Apache Spark on Azure HDInsight")
 
@@ -75,7 +76,7 @@ Az Apache Spark rendelkezik a Sparkra épülő [MLlib](http://spark.apache.org/m
 
 A valós idejű adatelemzés a forgatókönyvek egész skáláját kiszolgálja, kezdve az azonnali adatfeldolgozás műveleti időt csökkentő képességétől a valódi streamelési megoldások kiépítéséig. A Spark on HDInsight széles körű támogatást biztosít a valós idejű elemzési megoldások kiépítéséhez. Amíg a Spark számos adatforrást (például Kafka, Flume, Twitter, ZeroMQ vagy TCP-szoftvercsatornák) támogató összekötőkkel rendelkezik, a Spark on HDInsight az Azure Event Hubs eseményközpontokból származó adatok magas szintű feldolgozását is támogatja. Az Event Hubs az Azure legnépszerűbb várólista-szolgáltatása. Az azonnal használható Event Hubs-támogatás a Spark on HDInsightot ideális platformmá teszi a valós idejű elemzési folyamatok kiépítéséhez.
 
-## <a name="a-namenext-stepsawhat-components-are-included-as-part-of-a-spark-cluster"></a><a name="next-steps"></a>Milyen összetevők találhatóak egy Spark-fürtben?
+## <a name="next-steps"></a>Milyen összetevők találhatóak egy Spark-fürtben?
 A Spark on HDInsight az alábbi, a fürtökön alapértelmezés szerint elérhető összetevőkből áll.
 
 * [Spark mag](https://spark.apache.org/docs/1.5.1/). A következőket tartalmazza: Spark mag, Spark SQL, Spark streamelési API-k, GraphX és MLlib.
@@ -113,9 +114,4 @@ Kezdjük Spark-fürt létrehozásával HDInsight Linux platformon. Lásd: [Gyors
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](hdinsight-apache-spark-job-debugging.md)
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

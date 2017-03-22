@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: c08b568642e88da1aeddd36cb25a9f5c94b083e2
-ms.openlocfilehash: f283f103804d8e6d4a3c2037c8d38daafcb3f3e8
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -62,7 +63,7 @@ Az oktatóanyagban használt Resource Manager-sablon a [Githubon](https://azure.
     * **Operációs rendszer típusa**: Linux
     * **Munkavégző csomópontok száma**: 2
 
-     Minden egyes fürt az Azure Blob Storage-fióktól függ. Általában ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett tárfióknak ugyanabban az Azure-régióban kell lennie. A fürtök törlésével a tárfiók nem törlődik. 
+     Minden egyes fürt az Azure Storage-fióktól függ. Általában ez az alapértelmezett tárfiók. A HDInsight-fürtnek és az alapértelmezett tárfióknak ugyanabban az Azure-régióban kell lennie. A fürtök törlésével a tárfiók nem törlődik. 
      
      További magyarázat ezekről a tulajdonságokról: [Hadoop-fürtök létrehozása a HDInsightban](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -134,7 +135,7 @@ A HDInsighttal végzett adatelemzéssel kapcsolatos további információkért t
 
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következőket:
 
-* További információ az Azure Blob Storage HDInsight-általi használatáról: [Use Azure Blob storage with HDInsight](hdinsight-hadoop-use-blob-storage.md) (Az Azure Blob Storage használata a HDInsightban).
+* További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
 * További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].
 
 A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd:
@@ -155,10 +156,5 @@ A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

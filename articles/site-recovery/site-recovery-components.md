@@ -12,30 +12,33 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 22b50dd6242e8c10241b0626b48f8ef842b6b0fd
-ms.openlocfilehash: c33ca9e5292096a0fd96d98da3e89d721463e903
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="how-does-azure-site-recovery-work"></a>Hogy működik az Azure Site Recovery?
 
-Ebből a cikkből megismerheti az [Azure Site Recovery](site-recovery-overview.md) mögöttes architektúráját, illetve az azt működtető összetevőket.
+Ez a cikk ismerteti az [Azure Site Recovery](site-recovery-overview.md) mögöttes architektúráját, illetve az azt működtető összetevőket.
 
 Megjegyzéseit a cikk alján, vagy az [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti közzé.
 
 
-## <a name="replication-to-azure"></a>Replikálás az Azure-ba
+## <a name="replicate-to-azure"></a>Replikálás az Azure-ba
 
 A következőket replikálhatja az Azure-ba:
+
 - **VMware**: [Támogatott gazdagépen](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) futó helyszíni VMware virtuális gépek. A [támogatott operációs rendszereket](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) futtató VMware virtuális gépeket replikálhatja.
 - **Hyper-V**: [Támogatott gazdagépeken](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) futó helyszíni Hyper-V virtuális gépek.
 - **Fizikai gépek**: [Támogatott operációs rendszereken](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) Windowst vagy Linuxot futtató helyszíni fizikai kiszolgálók. A [Hyper-V és az Azure által támogatott](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bármilyen vendég operációs rendszert futtató Hyper-V-alapú virtuális gépet replikálhat.
 
-## <a name="vmware-replication-to-azure"></a>VMware–Azure replikálás
+## <a name="vmware-to-azure"></a>VMware – Azure
+
+A következőkre lesz szüksége VMware virtuális gépek az Azure-ba történő replikálásához.
 
 Terület | Összetevő | Részletek
 --- | --- | ---
@@ -85,14 +88,16 @@ A feladat-visszavételre vonatkozó követelmények:
 
 ![Feladat-visszavétel](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-server-replication-to-azure"></a>Fizikai kiszolgáló replikálása az Azure-ba
+## <a name="physical-to-azure"></a>Fizikai az Azure-ba
 
-Ez a replikációs forgatókönyv ugyanazokat az összetevőket és folyamatot használja, mint a [VMware–Azure replikálás](#vmware-replication-to-azure), a következő eltérésekkel:
+Amikor fizikai helyszíni kiszolgálókat replikál az Azure-ba, a replikációs forgatókönyv ugyanazokat az összetevőket és folyamatokat használja, mint a [VMware–Azure replikálás](#vmware-replication-to-azure), a következő eltérésekkel:
 
 - VMware virtuális gép helyett fizikai kiszolgálót használhat konfigurációs kiszolgálóként
 - A feladat-visszavételhez helyszíni VMware-infrastruktúrára van szükség. Fizikai gép nem használható a feladat-visszavételhez.
 
-## <a name="hyper-v-replication-to-azure"></a>Hyper-V–Azure replikálás
+## <a name="hyper-v-to-azure"></a>Hyper-V – Azure
+
+A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek az Azure-ba történő replikálásához.
 
 **Terület** | **Összetevő** | **Részletek**
 --- | --- | ---
@@ -130,7 +135,7 @@ Ez a replikációs forgatókönyv ugyanazokat az összetevőket és folyamatot h
 ![Összetevők](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replication-to-a-secondary-site"></a>Replikálás másodlagos helyre
+## <a name="replicate-to-a-secondary-site"></a>Replikálás másodlagos helyre
 
 A következőket replikálhatja másodlagos helyre:
 
@@ -139,13 +144,15 @@ A következőket replikálhatja másodlagos helyre:
 - **Hyper-V**: VMM-felhőkben felügyelt [támogatott Hyper-V-gazdagépeken](site-recovery-support-matrix-to-sec-site.md#on-premises-servers) futó helyszíni Hyper-V virtuális gépek. [támogatott gazdagépek](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers). A [Hyper-V és az Azure által támogatott](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bármilyen vendég operációs rendszert futtató Hyper-V-alapú virtuális gépet replikálhat.
 
 
-## <a name="vmware-vmphysical-server-replication-to-a-secondary-site"></a>VMware virtuális gép/fizikai kiszolgáló replikálása másodlagos helyre
+## <a name="vmwarephysical-to-a-secondary-site"></a>VMware/fizikai egy másodlagos helyre
+
+A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scout használatával replikálhatja egy másodlagos helyre.
 
 ### <a name="components"></a>Összetevők
 
 **Terület** | **Összetevő** | **Részletek**
 --- | --- | ---
-**Azure** | A forgatókönyv üzembe helyezéséhez használja az InMage Scout segédprogramot. | Az InMage Scout beszerzéséhez Azure-előfizetésre van szüksége.<br/><br/> Miután létrehozott egy Site Recovery-tárolót, töltse le az InMage Scoutot, és telepítse a legújabb frissítéseket az üzembe helyezés előkészítéséhez.
+**Azure** | InMage Scout. | Az InMage Scout beszerzéséhez Azure-előfizetésre van szüksége.<br/><br/> Miután létrehozott egy Site Recovery-tárolót, töltse le az InMage Scoutot, és telepítse a legújabb frissítéseket az üzembe helyezés előkészítéséhez.
 **Folyamatkiszolgáló** | Az elsődleges helyen található | Helyezze üzembe a folyamatkiszolgálót, amely kezeli az adatok gyorsítótárazását, tömörítését és optimalizálását.<br/><br/> Ezenfelül ez az összetevő kezeli a Unified Agent ügynöknek a védeni kívánt gépekre történő leküldéses telepítését.
 **Konfigurációs kiszolgáló** | A másodlagos helyen található | A konfigurációs kiszolgáló végzi az üzemelő példány felügyeleti webhelyen vagy a vContinuum-konzolban végzett felügyeletét, konfigurálását és megfigyelését.
 **vContinuum-kiszolgáló** | Választható. Ugyanoda kell telepíteni, mint a konfigurációs kiszolgálót. | Ez az összetevő elérhetővé tesz egy konzolt, amelyről felügyelheti és figyelheti a védett környezetet.
@@ -166,7 +173,9 @@ A következőket replikálhatja másodlagos helyre:
 
 
 
-## <a name="hyper-v-vm-replication-to-a-secondary-site"></a>Hyper-V virtuális gép replikációja másodlagos helyre
+## <a name="hyper-v-to-a-secondary-site"></a>Hyper-V egy másodlagos helyre
+
+A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodlagos helyre való replikálásához.
 
 
 **Terület** | **Összetevő** | **Részletek**
@@ -202,25 +211,8 @@ A következőket replikálhatja másodlagos helyre:
 7. Ha azt szeretné, hogy újra az elsődleges hely legyen az aktív hely, kezdeményezzen egy tervezett feladatátvételt a másodlagos helyről az elsődleges helyre, majd hajtson végre ismét fordított replikálást.
 
 
-## <a name="hyper-v-replication-workflow"></a>A Hyper-V replikálás munkafolyamata
-
-**Munkafolyamat fázisa** | **Művelet**
---- | ---
-1. **Védelem engedélyezése** | Miután engedélyezte a védelmet egy Hyper-V virtuális gép esetében, elindul a **Védelem engedélyezése** feladat, amely ellenőrzi, hogy a gép megfelel-e az előfeltételeknek. A feladat két metódust hív meg:<br/><br/> A [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) beállítja a replikációt a konfigurált beállításokkal.<br/><br/> A [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) inicializál egy teljes virtuálisgép-replikációt.
-2. **Kezdeti replikálás** |  Egy pillanatkép készül a virtuális gépről, majd a rendszer egyenként replikálja a virtuális merevlemezeket, amíg az összes át nem lesz másolva a másodlagos helyre.<br/><br/> Az ehhez a művelethez szükséges időtartam a virtuális gép méretétől, a hálózati sávszélességtől, illetve a kezdeti replikáció módjától függ.<br/><br/> Ha módosítják a lemezt, miközben a kezdeti replikáció folyamatban van, a Hyper-V-replikációkövető nyomon követi a módosításokat replikálási naplók (.hrl) formájában, amelyek ugyanabban a mappában találhatók, mint a lemezek.<br/><br/> Minden lemezhez tartozik egy .hrl-fájl, amelyet a rendszer továbbít a másodlagos tárterületre.<br/><br/> A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét, valamint szinkronizálja és egyesíti a naplózott lemezmódosításokat.
-3. **Védelem véglegesítése** | A kezdeti replikálás befejezése után a **Védelem véglegesítése** feladat konfigurálja a hálózatot és más replikáció utáni beállításokat a virtuális gép védelméhez.<br/><br/> Azure-ba történő replikálás esetén előfordulhat, hogy módosítania kell a virtuális gép beállításait, hogy az készen álljon a feladatátvételre.<br/><br/> Ezen a ponton érdemes lehet feladatátvételi tesztet futtatni, amellyel ellenőrizheti, hogy minden megfelelően működik-e.
-4. **Replikáció** | A kezdeti replikálást követően a replikációs beállításoknak megfelelően elindul a változások szinkronizálása.<br/><br/> **Sikertelen replikáció**: ha nem sikerül a változások replikálása, és a teljes replikáció túl sok sávszélességet vagy időt venne igénybe, a rendszer újraszinkronizálást végez. Ha például a .hrl-fájlok mérete eléri a lemezkapacitás 50%-át, a rendszer kijelöli a virtuális gépet újraszinkronizálásra. Az újraszinkronizálás kiszámítja a forrás és a cél virtuális gépek ellenőrzőösszegeit, és ezek alapján csak a változásokat továbbítja, így segít csökkenti az adatmennyiséget. Az újraszinkronizálás befejezését követően folytatódik a változásreplikálás. Alapértelmezés szerint a rendszer automatikusan munkaidőn kívüli időpontra ütemezi az újraszinkronizálást, de manuálisan is elvégezhető a virtuális gép újraszinkronizálása.<br/><br/> **Replikációs hiba**: ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálkozik. Ha nem helyrehozható hiba, például hitelesítési vagy engedélyezési hiba történik, vagy egy replikagép érvénytelen állapotban van, a rendszer nem próbálkozik újra. Ha helyrehozható hiba, például hálózati hiba vagy alacsony lemezterülettel/memóriával kapcsolatos hiba lép fel, a rendszer újrapróbálkozik, és folyamatosan növeli a próbálkozások közötti időintervallumot (1, 2, 4, 8, 10, majd 30 perc).
-5. **Tervezett/nem tervezett feladatátvétel** | Igény szerint futtathat tervezett/nem tervezett feladatátvételeket.<br/><br/> Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.<br/><br/> A replikaként létrehozott virtuális gépeket a rendszer függőben lévő állapotba helyezi. A feladatátvétel befejezéséhez véglegesíteni kell ezeket.<br/><br/> Ha az elsődleges hely újból működik, visszaadhatja a feladatokat az elsődleges helynek, amikor elérhetővé válik.
-
-
-**8. ábra: Hyper-V-munkafolyamat**
-
-![munkafolyamat](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
-
-
-
-
 ## <a name="next-steps"></a>Következő lépések
 
-[Előfeltételek ellenőrzése](site-recovery-prereq.md)
+- [További információk](site-recovery-hyper-v-azure-architecture.md) a Hyper-V-replikálás munkafolyamatáról.
+- [Előfeltételek ellenőrzése](site-recovery-prereq.md)
 

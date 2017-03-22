@@ -16,33 +16,30 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 13ef48ebe79571c7139e46f9510a5f8d2f504cb7
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeiről
-Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja.
+# <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
+
+Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságos kapcsolatot tesz lehetővé a helyszíni és a virtuális hálózat között. Jelen cikk a kompatibilis VPN-eszközöket és azok konfigurációs paramétereit tárgyalja. Ez a dokumentum felsorolja az Azure VPN Gatewayek IPsec/IKE-paramétereinek listáját, és az Azure VPN Gatewayhez kapcsolódó ellenőrzött VPN-eszközök listáját.
 
 
 > [!IMPORTANT]
-> Ha problémákat tapasztal a helyszíni VPN-eszközök és az Azure VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known).
-> 
-> 
+> Ha problémákat tapasztal a helyszíni VPN-eszközök és az Azure VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known). 
 
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
 
-* A statikus és a dinamikus útválasztás esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
+* Az Azure VPN Gateway esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
 * A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
 
 > [!NOTE]
 > Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
->
->
 
 
 ## <a name="devicetable"></a>Ellenőrzött VPN-eszközök
@@ -102,58 +99,80 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | &lt;SP_AzureGatewayIpAddress&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon az **átjáró IP-címe** név alatt található meg. |
 | &lt;SP_PresharedKey&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon a Kulcskezelés cím alatt található meg. |
 
-## <a name="IPSec"></a>IPsec-paraméterek
+## <a name="IPSec"></a>IPsec/IKE-paraméterek
 > [!NOTE]
-> Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, adott kombinációk megadására és kiválasztására jelenleg nincs lehetőség az Azure VPN Gateway átjárón. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az MSS korlátozását 1350-re kell állítani.
->
->
+> Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására az Azure VPN Gateway felületén. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni.
+> 
+> Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
 
-### <a name="ike-phase-1-setup"></a>IKE – az 1. fázis beállítása
-| **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
-| --- | --- | --- |
-| IKE verziószám |IKEv1 |IKEv2 |
-| Diffie-Hellman Group |2. csoport (1024 bites) |2. csoport (1024 bites) |
-| Hitelesítési módszer |Előre megosztott kulcs |Előre megosztott kulcs |
-| Titkosítási algoritmusok |AES256 AES128 3DES |AES256 3DES |
-| Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| 1. fázisú biztonsági társítás (SA) Élettartam (idő) |28&800; másodperc |10&800; másodperc |
+Az alábbi táblázatokban:
 
-### <a name="ike-phase-2-setup"></a>IKE – a 2. fázis beállítása
-| **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és standard vagy nagy teljesítményű VPN Gateway** |
-| --- | --- | --- |
-| IKE verziószám |IKEv1 |IKEv2 |
-| Kivonatoló algoritmus |SHA1(SHA128), SHA2(SHA256) |SHA1(SHA128), SHA2(SHA256) |
-| 2. fázisú biztonsági társítás (SA) Élettartam (idő) |3&600; másodperc |3&600; másodperc |
-| 2. fázisú biztonsági társítás (SA) Élettartam (teljesítmény) |102&400;&000; kB |- |
-| IPsec SA titkosítási és hitelesítési ajánlatok (sorrendben) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/A |Lásd az útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatokat (alább) |
-| Sérülés utáni titkosságvédelem (PFS) |Nem |Nem (*) |
-| Kapcsolat megszakadásának észlelése |Nem támogatott |Támogatott |
+* SA = Biztonsági társítás
+* Az IKE 1. fázis másik elnevezése: „Main Mode” (Elsődleges mód)
+* Az IKE 2. fázis másik elnevezése: „Quick Mode” (Gyors mód)
 
-(*) az IKE-válaszadóként szolgáló Azure-átjáró az 1., 2., 5., 14., 24. PFS DH-csoportokat fogadja el.
+### <a name="ike-phase-1-main-mode-parameters"></a>Az IKE 1. fázis (Elsődleges mód) paraméterei
+| **Tulajdonság**          |**Házirendalapú**    | **Útvonalalapú**    |
+| ---                   | ---               | ---               |
+| IKE verziószám           |IKEv1              |IKEv2              |
+| Diffie-Hellman Group  |2. csoport (1024 bites) |2. csoport (1024 bites) |
+| Hitelesítési módszer |Előre megosztott kulcs     |Előre megosztott kulcs     |
+| Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
+| SA élettartama           |28&800; másodperc     |10&800; másodperc     |
 
-### <a name="routebased-gateway-ipsec-security-association-sa-offers"></a>Útvonalalapú átjárókra vonatkozó IPsec-biztonsági társítási (SA) ajánlatok
-Az alábbi táblázat felsorolja az IPsec SA titkosítási és hitelesítési ajánlatait. Az ajánlatok prioritási sorrendben vannak felsorolva a választáshoz.
+### <a name="ike-phase-2-quick-mode-parameters"></a>Az IKE 2. fázis (Gyors mód) paraméterei
+| **Tulajdonság**                  |**Házirendalapú**| **Útvonalalapú**                              |
+| ---                           | ---           | ---                                         |
+| IKE verziószám                   |IKEv1          |IKEv2                                        |
+| Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
+| SA élettartama (Idő)            |3&600; másodperc  |3&600; másodperc                                |
+| SA élettartama (bájt)           |102&400;&000; kB | -                                           |
+| Sérülés utáni titkosságvédelem (PFS) |Nem             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
+| Kapcsolat megszakadásának észlelése (DPD)     |Nem támogatott  |Támogatott                                    |
 
-| **IPsec SA titkosítási és hitelesítési ajánlatok** | **Azure-átjáró, mint kezdeményező** | **Azure-átjáró, mint válaszadó** |
-| --- | --- | --- |
-| 1 |ESP AES_256 SHA |ESP AES_128 SHA |
-| 2 |ESP AES_128 SHA |ESP 3_DES MD5 |
-| 3 |ESP 3_DES MD5 |ESP 3_DES SHA |
-| 4 |ESP 3_DES SHA |AH SHA1, ESP AES_128-cal, null értékű HMAC-val |
-| 5 |AH SHA1, ESP AES_256-tal, null értékű HMAC-val |AH SHA1, ESP 3_DES-sel, null értékű HMAC-val |
-| 6 |AH SHA1, ESP AES_128-cal, null értékű HMAC-val |AH MD5, ESP 3_DES-sel, null értékű HMAC-val, nincs javasolt élettartam |
-| 7 |AH SHA1, ESP 3_DES-sel, null értékű HMAC-val |AH SHA1, ESP 3_DES SHA1-gyel, nincs élettartam |
-| 8 |AH MD5, ESP 3_DES-sel, null értékű HMAC-val, nincs javasolt élettartam |AH MD5, ESP 3_DES MD5-tel, nincs élettartam |
-| 9 |AH SHA1, ESP 3_DES SHA1-gyel, nincs élettartam |ESP DES MD5 |
-| 10 |AH MD5, ESP 3_DES MD5-tel, nincs élettartam |ESP DES SHA1, nincs élettartam |
-| 11 |ESP DES MD5 |AH SHA1, ESP DES-sel, null értékű HMAC-val, nincs javasolt élettartam |
-| 12 |ESP DES SHA1, nincs élettartam |AH MD5, ESP DES-sel, null értékű HMAC-val, nincs javasolt élettartam |
-| 13 |AH SHA1, ESP DES-sel, null értékű HMAC-val, nincs javasolt élettartam |AH SHA1, ESP DES SHA1-gyel, nincs élettartam |
-| 14 |AH MD5, ESP DES-sel, null értékű HMAC-val, nincs javasolt élettartam |AH MD5, ESP DES MD5-tel, nincs élettartam |
-| 15 |AH SHA1, ESP DES SHA1-gyel, nincs élettartam |ESP SHA, nincs élettartam |
-| 16 |AH MD5, ESP DES MD5-tel, nincs élettartam |ESP MD5, nincs élettartam |
-| 17 |- |AH SHA, nincs élettartam |
-| 18 |- |AH MD5, nincs élettartam |
+
+### <a name ="RouteBasedOffers"></a>Útvonalalapú VPN IPsec biztonsági társítás (IKE – gyors mód SA) ajánlatai
+Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. Az ajánlatok prioritási sorrendben vannak felsorolva a választáshoz.
+
+#### <a name="azure-gateway-as-initiator"></a>Azure-átjáró, mint kezdeményező
+|-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
+|---| ---          |---               |---          |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 2 |AES256        |SHA1              |None         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
+| 6 |3DES          |SHA256            |None         |
+
+#### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
+|-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
+|---| ---          | ---              |---          |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 2 |AES256        |SHA1              |None         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
+| 6 |3DES          |SHA256            |None         |
+| 7 |DES           |SHA1              |None         |
+| 8 |AES256        |SHA1              |1            |
+| 9 |AES256        |SHA1              |2            |
+| 10|AES256        |SHA1              |14           |
+| 11|AES128        |SHA1              |1            |
+| 12|AES128        |SHA1              |2            |
+| 13|AES128        |SHA1              |14           |
+| 14|3DES          |SHA1              |1            |
+| 15|3DES          |SHA1              |2            |
+| 16|3DES          |SHA256            |2            |
+| 17|AES256        |SHA256            |1            |
+| 18|AES256        |SHA256            |2            |
+| 19|AES256        |SHA256            |14           |
+| 20|AES256        |SHA1              |24           |
+| 21|AES256        |SHA256            |24           |
+| 22|AES128        |SHA256            |None         |
+| 23|AES128        |SHA256            |1            |
+| 24|AES128        |SHA256            |2            |
+| 25|AES128        |SHA256            |14           |
+| 26|3DES          |SHA1              |14           |
 
 * Az IPsec ESP NULL titkosítás útvonalalapú és Nagy teljesítményű VPN-átjárók segítségével adható meg. A nullalapú titkosítás nem biztosít védelmet az adatok számára az átvitel során, ezért használata csak abban az esetben indokolt, ha maximális átviteli sebességre és minimális késleltetésre van szükség.  Az ügyfelek virtuális hálózatok közötti kapcsolatoknál dönthetnek ennek használata mellett, vagy ha más helyen a rendszer titkosítást alkalmaz.
 * A létesítmények közötti internetes kapcsolat esetében az alapértelmezett Azure VPN-átjáróbeállításokat a fenti táblákban található titkosítási és kivonatolási algoritmusokkal használja a kritikus fontosságú kommunikáció biztonságának megteremtéséhez.

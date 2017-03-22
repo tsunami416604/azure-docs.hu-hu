@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 88b16b0b7c951ab0350649de05c00263ec76e630
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -101,40 +102,22 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 3. Kattintson az előző lépésben megtalált csomópontra, majd válassza a **Inaktiválás (újraindítás)** elemet a Műveletek menüből. Ezzel a művelettel újraindítja a helyi fürt öt csomópontjának egyikét, és feladatátvételt kényszerít ki egy másik csomóponton futó másodlagos replikára. A művelet végrehajtása közben figyelje meg a tesztügyfél kimenetét, amelyből láthatja, hogy a számláló a feladatátvétel ellenére továbbra is növekszik.
 
-## <a name="build-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Alkalmazás létrehozása és központi telepítése az Eclipse Neon beépülő modul használatával
+## <a name="create-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Alkalmazás létrehozása és központi telepítése az Eclipse Neon beépülő modul használatával
 
-Amennyiben telepítette az Eclipse Neon [Service Fabric beépülő modulját](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-linux#install-the-java-sdk-and-eclipse-neon-plugin-optional), a segítségével létrehozhat, felépíthet és telepíthet Java használatával készült Service Fabric-alkalmazásokat.  Az Eclipse telepítésekor válassza az **Eclipse IDE JAVA-fejlesztőknek** lehetőséget.
-
-### <a name="create-the-application"></a>Az alkalmazás létrehozása
-
-A Service Fabric beépülő modul az Eclipse bővítményeként érhető el.
-
-1. Az Eclipse-ben válassza a **File > Other > Service Fabric** (Fájl > Egyéb > Service Fabric) elemet. Több beállítás jelenik meg, köztük az Actors (Aktorok) és a Containers (Tárolók).
-
-    ![Service Fabric-sablonok az Eclipse-ben][sf-eclipse-templates]
-
-2. Ebben az esetben válassza a Stateless Service (Állapotmentes szolgáltatás) elemet.
-
-3. Meg kell erősítenie a Service Fabric-perspektíva használatát, amely a Service Fabric-projektekkel való használatra optimalizálja az Eclipse-t. Válassza a Yes (Igen) lehetőséget.
-
-### <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
-A Service Fabric-sablonok tartalmaznak egy Gradle-feladatkészletet az alkalmazások létrehozásához és telepítéséhez, amelyeket az Eclipse-en keresztül aktiválhat.
-
-1. Válassza a **Run > Run Configurations** (Futtatás > Konfigurációk futtatása) elemet.
-2. Adja a **local** (helyi) vagy **cloud** (felhő) beállítást. Az alapértelmezett beállítás a **local** (helyi). Távoli fürtre történő telepítéshez válassza a **cloud** (felhő) beállítást.
-3. Töltse be a megfelelő információkat a közzétételi profilokba a `local.json` vagy a `cloud.json` megfelelő módon történő szerkesztésével.
-4. Kattintson a **Run** (Futtatás) parancsra.
-
-Néhány másodpercen belül megtörténik az alkalmazás létrehozása és telepítése. Az állapotát megfigyelheti a Service Fabric Explorerből.
+A Service Fabric a Service Fabric Java-alkalmazások Eclipse-szel végzett létrehozásához, kiépítéséhez és üzembe helyezéséhez is lehetőséget nyújt. Az Eclipse telepítésekor válassza az **Eclipse IDE JAVA-fejlesztőknek** lehetőséget. A Service Fabric az Eclipse **Neon** beépülő modulját is támogatja. Tekintse meg a részletes dokumentációt: [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése a Service Fabric Eclipse beépülő moduljával Linux rendszeren](service-fabric-get-started-eclipse.md)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>További szolgáltatások hozzáadása meglévő alkalmazáshoz
 
+### <a name="using-command-line-utility"></a>Parancssori segédprogram használata
 Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtassa a `yo azuresfjava:AddService` parancsot.
 
+### <a name="using-service-fabric-eclipse-plugin-for-java-on-linux"></a>Service Fabric Eclipse beépülő modul használata Javához Linux rendszeren
+Ha szolgáltatást szeretne adni a Service Fabric Eclipse beépülő moduljával létrehozott meglévő alkalmazáshoz, tekintse meg [ezt](service-fabric-get-started-eclipse.md#add-new-service-fabric-service-to-your-service-fabric-application) a dokumentációt.
 
 ## <a name="next-steps"></a>Következő lépések
+* [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése a Service Fabric Eclipse beépülő moduljával Linux rendszeren](service-fabric-get-started-eclipse.md)
 * [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)
 * [Service Fabric-fürtökkel folytatott interakció az Azure parancssori felületének használatával](service-fabric-azure-cli.md)
 * [Üzembe helyezés hibaelhárítása](service-fabric-azure-cli.md#troubleshooting)
@@ -144,9 +127,4 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
