@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 9841096da2d16e35878a1c0013a33e9f051e5932
-ms.openlocfilehash: 71b75afc7a31c875672b53c2b2b106220b8c36dd
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6a31b039825acf3033fa58820bb800f53a355ffb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -46,7 +46,7 @@ Ezen alapvető erőforrások mellett az alábbi választható erőforrások hasz
 
 ## <a name="network-interfaces"></a>Hálózati illesztők
 
-A [hálózati adapter](../virtual-network/virtual-network-network-interface-overview.md) a virtuális gép és a virtuális hálózat (VNet) közötti kapcsolatot biztosítja. Egy virtuális gépnek legalább egy hálózati adapterrel kell rendelkeznie, de a létrehozott virtuális gép méretétől függően több ilyennel is rendelkezhet. Az [Azure-ban található virtuális gépek méreteivel](virtual-machines-windows-sizes.md) foglalkozó szakaszból megtudhatja, hogy az egyes virtuálisgép-méretek esetében hány hálózati adapter támogatott. 
+A [hálózati adapter](../virtual-network/virtual-network-network-interface.md) a virtuális gép és a virtuális hálózat (VNet) közötti kapcsolatot biztosítja. Egy virtuális gépnek legalább egy hálózati adapterrel kell rendelkeznie, de a létrehozott virtuális gép méretétől függően több ilyennel is rendelkezhet. Az [Azure-ban található virtuális gépek méreteivel](virtual-machines-windows-sizes.md) foglalkozó szakaszból megtudhatja, hogy az egyes virtuálisgép-méretek esetében hány hálózati adapter támogatott. 
 
 Ha egynél több hálózati adapterrel rendelkező virtuális gépet kíván létrehozni, akkor legalább két hálózati adapterrel kell létrehoznia azt.  A létrehozás után további hálózati adaptereket adhat hozzá a virtuálisgép-méret által támogatott mennyiségig, viszont a mindössze egy hálózati adapterrel létrehozott virtuális gépekhez már nem adhat hozzá továbbiakat, függetlenül a méret által támogatott mennyiségtől. 
 
@@ -180,3 +180,4 @@ Ez a táblázat virtuális gépek VNetben való létrehozásának lehetséges m�
 - Ismerje meg a [felhasználó által megadott útvonalak és az IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md) konfigurálásának módját. 
 - Ismerje meg a [virtuális hálózatok közötti kapcsolatok](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) konfigurálásának módját.
 - Ismerje meg az [útvonalak hibaelhárításának](../virtual-network/virtual-network-routes-troubleshoot-portal.md) módját.
+

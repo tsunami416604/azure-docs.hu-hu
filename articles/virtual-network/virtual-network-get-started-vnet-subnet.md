@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 071ef9c0784bdb24c7d29f49c36aee2271f4b524
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 214913cb63e38c5df0ab32ad19629507e5fdb35c
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -160,7 +160,7 @@ Bár Ön egy VNetet és két virtuális gépet hozott létre, az Azure Portal t�
 
     ![Erőforráscsoport tartalma](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-A virtuális gépekkel, lemezekkel és tárfiókokkal kapcsolatos további információkért olvassa el a [Virtuális gép](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [Lemez](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Tárfiók](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című áttekintő cikkeket. A listában látható a portál által létrehozott két alapértelmezett NSG. Láthatja továbbá, hogy a portál létrehozott két hálózati adapter (NIC) típusú erőforrást is. A virtuális gépek a hálózati adapterek segítségével tudnak más erőforrásokhoz kapcsolódni a VNeten. Ha többet szeretne megtudni a NIC-ekkről, olvassa el a [NIC](virtual-network-network-interface-overview.md) című cikket. A portál létrehozott egy nyilvános IP-cím típusú erőforrást is. A Nyilvános IP-címek az egyik beállítás a nyilvános IP-cím típusú erőforrásokhoz. Ha többet szeretne megtudni a nyilvános IP-címekről, olvassa el az [IP-címek](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) című cikket.
+A virtuális gépekkel, lemezekkel és tárfiókokkal kapcsolatos további információkért olvassa el a [Virtuális gép](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [Lemez](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Tárfiók](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című áttekintő cikkeket. A listában látható a portál által létrehozott két alapértelmezett NSG. Láthatja továbbá, hogy a portál létrehozott két hálózati adapter (NIC) típusú erőforrást is. A virtuális gépek a hálózati adapterek segítségével tudnak más erőforrásokhoz kapcsolódni a VNeten. Ha többet szeretne megtudni a NIC-ekkről, olvassa el a [NIC](virtual-network-network-interface.md) című cikket. A portál létrehozott egy nyilvános IP-cím típusú erőforrást is. A Nyilvános IP-címek az egyik beállítás a nyilvános IP-cím típusú erőforrásokhoz. Ha többet szeretne megtudni a nyilvános IP-címekről, olvassa el az [IP-címek](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) című cikket.
 
 ## <a name="connect-to-from-vms"></a>Kapcsolódás a virtuális gépekhez
 
@@ -250,7 +250,7 @@ Ebben a példában egy VNetet és két virtuális gépet hozott létre. A virtu�
 
 - [Virtuális hálózatok](virtual-networks-overview.md)
 - [Nyilvános IP-címek](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Hálózati illesztők](virtual-network-network-interface-overview.md)
+- [Hálózati illesztők](virtual-network-network-interface.md)
 - [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 - [Virtuális gépek](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

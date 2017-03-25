@@ -1,7 +1,7 @@
 ## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>Az ARM-sablon üzembe helyezése az Azure CLI-vel
 A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../articles/cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Az **`azure config mode`** parancs futtatásával váltson Resource Manager módra a lent látható módon.
    
         azure config mode arm
@@ -84,9 +84,4 @@ A letöltött ARM-sablon Azure CLI-vel történő üzembe helyezéséhez kövess
         data:      Address prefix                : 192.168.2.0/24
         data:
         info:    network vnet show command OK
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

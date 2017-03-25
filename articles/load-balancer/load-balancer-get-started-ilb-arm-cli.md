@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -51,7 +52,7 @@ A további információkat az [Azure Resource Manager support for Load Balancer]
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>A parancssori felület beállítása a Resource Manager használatához
 
-1. Ha még soha nem használta az Azure parancssori felületét, lásd: [Install and configure the Azure CLI](../xplat-cli-install.md) (Azure parancssori felület (CLI) telepítése és konfigurálása). Kövesse az utasításokat az Azure-fiók és -előfizetés kiválasztásáig.
+1. Ha még soha nem használta az Azure parancssori felületét, lásd: [Install and configure the Azure CLI](../cli-install-nodejs.md) (Azure parancssori felület (CLI) telepítése és konfigurálása). Kövesse az utasításokat az Azure-fiók és -előfizetés kiválasztásáig.
 2. Az **azure config mode** parancs futtatásával váltson Resource Manager módra, a következők szerint:
 
     ```azurecli
@@ -214,10 +215,5 @@ azure network lb delete --resource-group nrprg --name ilbset
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

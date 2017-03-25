@@ -12,7 +12,7 @@
 * [Adatlemez csatolása](#attach-a-data-disk)
 
 ## <a name="getting-ready"></a>Előkészületek
-Az Azure CLI Azure-erőforráscsoportokkal való használatához rendelkeznie kell az Azure CLI megfelelő verziójával és egy Azure-fiókkal. Ha nincs telepítve az Azure CLI, [telepítse](../articles/xplat-cli-install.md).
+Az Azure CLI Azure-erőforráscsoportokkal való használatához rendelkeznie kell az Azure CLI megfelelő verziójával és egy Azure-fiókkal. Ha nincs telepítve az Azure CLI, [telepítse](../articles/cli-install-nodejs.md).
 
 ### <a name="update-your-azure-cli-version-to-090-or-later"></a>Az Azure CLI frissítése 0.9.0-s vagy újabb verzióra
 Ha szeretné megtudni, telepítve van-e a 0.9.0-s vagy újabb verzió, írja be a következőt: `azure --version`.
@@ -80,7 +80,7 @@ Ezután az Azure CLI erőforrás-felügyeleti parancsaival kezelheti a csoport e
 
 [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md) című témakörből további információkat tudhat meg az Azure-erőforráscsoportokról és azok felhasználásáról. A sablonok készítésével kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](../articles/resource-group-authoring-templates.md).
 
-## <a name="a-idquick-create-a-vm-in-azureatask-quick-create-a-vm-in-azure"></a><a id="quick-create-a-vm-in-azure"></a>Feladat: Virtuális gép gyors létrehozása az Azure-ban
+## <a id="quick-create-a-vm-in-azure"></a>Feladat: Virtuális gép gyors létrehozása az Azure-ban
 Előfordulnak olyan esetek, hogy tudja, milyen rendszerképre van szüksége, és azonnal szüksége van a rendszerképből egy virtuális gépre, az infrastruktúra pedig nem olyan fontos – például egy üres virtuális gépen szeretne tesztelni valamit. Ilyenkor az `azure vm quick-create` paranccsal átadhatja a virtuális gép és az ahhoz tartozó infrastruktúra létrehozásához szükséges argumentumokat.
 
 Először is hozzon létre egy erőforráscsoportot.
@@ -214,7 +214,7 @@ info:    vm quick-create command OK
 
 És már kész is az új virtuális gép.
 
-## <a name="a-iddeploy-a-vm-in-azure-from-a-templateatask-deploy-a-vm-in-azure-from-a-template"></a><a id="deploy-a-vm-in-azure-from-a-template"></a>Feladat: Virtuális gép központi telepítése sablonból az Azure-ban
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>Feladat: Virtuális gép központi telepítése sablonból az Azure-ban
 Az ezen szakaszokban található útmutatást követve telepíthet egy új Azure virtuális gépet sablonból az Azure CLI-vel. Ez a sablon létrehoz egy virtuális gépet egy új, egyetlen alhálózattal rendelkező virtuális hálózatban, és az `azure vm quick-create` parancstól eltérően lehetővé teszi, hogy leírhassa, pontosan mit szeretne, majd hibák nélkül megismételhesse a műveletet. Itt látható, amit a sablon létrehoz:
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
@@ -483,7 +483,7 @@ info:    group deployment create command OK
 ```
 
 
-## <a name="a-idcreate-a-custom-vm-imageatask-create-a-custom-vm-image"></a><a id="create-a-custom-vm-image"></a>Feladat: Egyéni virtuális gép rendszerképének létrehozása
+## <a id="create-a-custom-vm-image"></a>Feladat: Egyéni virtuális gép rendszerképének létrehozása
 A fentiekben már áttekintettük a sablonok alapszintű használatát. Most hasonló utasításokkal hozunk létre egy egyéni virtuális gépet egy adott .vhd fájlból az Azure-ban egy sablon segítségével az Azure CLI-n keresztül. A különbség az, hogy ez a sablon egy megadott virtuális merevlemezből hoz létre egy virtuális gépet.
 
 ### <a name="step-1-examine-the-json-file-for-the-template"></a>1. lépés: A sablon JSON-fájljának vizsgálata
@@ -751,7 +751,7 @@ data:    nicName                        String        myNIC
 info:    group deployment create command OK
 ```
 
-## <a name="a-iddeploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balanceratask-deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a><a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Feladat: Virtuális hálózatot és külső terheléselosztót használó több virtuális gépes alkalmazás üzembe helyezése
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Feladat: Virtuális hálózatot és külső terheléselosztót használó több virtuális gépes alkalmazás üzembe helyezése
 Ez a sablon lehetővé teszi, hogy két virtuális gépet hozzon létre egy terheléselosztó alatt, és konfiguráljon egy terheléselosztási szabályt a 80-as porton. Emellett ez a sablon üzembe helyez egy tárfiókot, egy virtuális hálózatot, és nyilvános IP-címet, egy rendelkezésre állási csoportot és hálózati adaptereket is.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
@@ -1163,7 +1163,7 @@ info:    group deployment create command OK
 
 Ez a sablon egy Windows Server rendszerképet telepít, de könnyen helyettesíthető lenne bármilyen Linux rendszerképpel is. Szeretne létrehozni egy Docker-fürtöt több Swarm-kezelővel? [Megteheti](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
 
-## <a name="a-idremove-a-resource-groupatask-remove-a-resource-group"></a><a id="remove-a-resource-group"></a>Feladat: Erőforráscsoport eltávolítása
+## <a id="remove-a-resource-group"></a>Feladat: Erőforráscsoport eltávolítása
 Ne feledje, hogy újból is végezhet telepítést egy erőforráscsoportba, de ha valamelyikre már nincs szüksége, az `azure group delete <group name>` paranccsal törölheti.
 
 ```azurecli
@@ -1174,7 +1174,7 @@ Delete resource group myResourceGroup? [y/n] y
 info:    group delete command OK
 ```
 
-## <a name="a-idshow-the-log-for-a-resource-group-deploymentatask-show-the-log-for-a-resource-group-deployment"></a><a id="show-the-log-for-a-resource-group-deployment"></a>Feladat: Erőforráscsoport központi telepítési naplójának megjelenítése
+## <a id="show-the-log-for-a-resource-group-deployment"></a>Feladat: Erőforráscsoport központi telepítési naplójának megjelenítése
 Ez azonos a sablonok létrehozásakor és használatakor. Egy csoport központi telepítési naplója az `azure group log show <groupname>` paranccsal jeleníthető meg. Ez a parancs viszonylag sok információt jelenít meg, ami hasznos lehet annak megértéséhez, hogy miért – vagy miért nem – történt meg egy adott művelet. (Az üzemelő példányok hibaelhárításával, illetve általánosságban a hibákkal kapcsolatban az [Azure-telepítések gyakori hibáinak elhárítása az Azure Resource Managerrel](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md) témájú cikkben talál további információt.)
 
 Konkrét problémák megoldásához hasznosak lehetnek az olyan eszközök, mint például a **jq**, amellyel pontosabban lekérdezhetők különböző adatok, például az egyes javítandó hibák. Az alábbi példában a **jq** segítségével elemezzük az **lbgroup** telepítési naplóját az esetleges hibák kimutatásához.
@@ -1191,7 +1191,7 @@ A problémát gyorsan felismerheti, elháríthatja, majd megpróbálkozhat a ké
 }
 ```
 
-## <a name="a-iddisplay-information-about-a-virtual-machineatask-display-information-about-a-virtual-machine"></a><a id="display-information-about-a-virtual-machine"></a>Feladat: Virtuális gépre vonatkozó információk megjelenítése
+## <a id="display-information-about-a-virtual-machine"></a>Feladat: Virtuális gépre vonatkozó információk megjelenítése
 Az adott erőforráscsoportba tartozó egyes virtuális gépek információit az `azure vm show <groupname> <vmname>` paranccsal lehet megtekinteni. Ha a csoportban több virtuális gép is található, előfordulhat, hogy először ki kell őket listázni az `azure vm list <groupname>` segítségével.
 
 ```azurecli
@@ -1263,10 +1263,10 @@ info:    vm show command OK
 >
 >
 
-## <a name="a-idlog-on-to-a-linux-based-virtual-machineatask-log-on-to-a-linux-based-virtual-machine"></a><a id="log-on-to-a-linux-based-virtual-machine"></a>Feladat: Bejelentkezés egy Linux-alapú virtuális gépre
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>Feladat: Bejelentkezés egy Linux-alapú virtuális gépre
 A Linux-alapú gépek csatlakoztatása általában SSH-n keresztül történik. További információ: [SSH használata Linuxon az Azure-on](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="a-idstop-a-virtual-machineatask-stop-a-vm"></a><a id="stop-a-virtual-machine"></a>Feladat: Virtuális gép leállítása
+## <a id="stop-a-virtual-machine"></a>Feladat: Virtuális gép leállítása
 Futtassa ezt a parancsot:
 
 ```azurecli
@@ -1278,14 +1278,14 @@ azure vm stop <group name> <virtual machine name>
 >
 >
 
-## <a name="a-idstart-a-virtual-machineatask-start-a-vm"></a><a id="start-a-virtual-machine"></a>Feladat: Virtuális gép indítása
+## <a id="start-a-virtual-machine"></a>Feladat: Virtuális gép indítása
 Futtassa ezt a parancsot:
 
 ```azurecli
 azure vm start <group name> <virtual machine name>
 ```
 
-## <a name="a-idattach-a-data-diskatask-attach-a-data-disk"></a><a id="attach-a-data-disk"></a>Feladat: Adatlemez csatolása
+## <a id="attach-a-data-disk"></a>Feladat: Adatlemez csatolása
 El kell döntenie, hogy új vagy adatokat már tartalmazó lemezt szeretne-e csatolni. Új lemez esetén a parancs létrehozza és egyben csatolja is a .vhd fájlt.
 
 Új lemez csatolásához futtassa ezt a parancsot:
@@ -1306,8 +1306,3 @@ Ezt követően a lemezt a Linux esetében megszokott módon csatlakoztatni kell.
 Számos további, az Azure CLI és az **arm** mód együttes használatával kapcsolatos példát találhat [a Mac, Linux és Windows eszközökhöz készült Azure CLI Azure Resource Managerrel történő használatával](../articles/xplat-cli-azure-resource-manager.md) foglalkozó cikkben. További információk az Azure-erőforrásokról és a kapcsolódó fogalmakról: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md).
 
 További felhasználható sablonokat az [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/) és a [Sablonokat használó alkalmazás-keretrendszerek](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) között talál.
-
-
-<!--HONumber=Jan17_HO4-->
-
-
