@@ -41,6 +41,7 @@
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [Több IP-konfiguráció használata](load-balancer-multiple-ip.md)
 ### [Több IP-konfiguráció használata (parancssori felület)](load-balancer-multiple-ip-cli.md)
+### [Több IP-konfiguráció használata (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
 

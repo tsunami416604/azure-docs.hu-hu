@@ -25,9 +25,9 @@
 #### [Frissítés a PhoneFactor szolgáltatásról](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## Felhasználók kezelése
-### [Licencek hozzárendelése](multi-factor-authentication-get-started-assign-licenses.md)
 ### [Az MFA engedélyezése vagy letiltása](multi-factor-authentication-get-started-user-states.md)
 ### [Felhasználói és eszközbeállítások](multi-factor-authentication-manage-users-and-devices.md)
+### [MFA – felhasználói útmutató](./end-user/multi-factor-authentication-end-user.md)
 
 ## Integrálás
 ### [Federation Services](multi-factor-authentication-get-started-adfs.md)

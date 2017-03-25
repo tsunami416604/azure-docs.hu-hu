@@ -102,7 +102,7 @@
 ### [Adatok áttelepítése](sql-data-warehouse-migrate-data.md)
 ### [Áttelepítés a Premium Storage-ba](sql-data-warehouse-migrate-to-premium-storage.md)
 
-## Felfüggesztés és méretezés
+## Számítások kezelése
 
 ### [Áttekintés](sql-data-warehouse-manage-compute-overview.md)
 ### [Azure Portal](sql-data-warehouse-manage-compute-portal.md)

@@ -11,6 +11,7 @@
 ## Fejlesztés
 ### [Alkalmazáscsomagok](batch-application-packages.md)
 ### [Számítási csomópontok automatikus méretezése](batch-automatic-scaling.md)
+### [Azure AD-hitelesítés](batch-aad-auth.md)
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
@@ -47,4 +48,5 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
 
