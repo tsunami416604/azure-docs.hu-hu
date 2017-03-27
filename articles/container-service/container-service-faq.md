@@ -18,9 +18,9 @@ ms.date: 03/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -105,7 +105,7 @@ A kapcsolati karakterláncot az Azure Portalon vagy az Azure parancssori eszköz
 
 3. A **Deployment history** (Telepítési előzmények) panelen kattintson arra az üzemelő példányra, amelynek neve a **microsoft-acs** karakterlánccal kezdődik, és a központi telepítés dátumával folytatódik. Például: microsoft-acs-201701310000.  
 
-4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részen számos fürthivatkozás található <provided></provided>. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati karakterláncot. 
+4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati karakterláncot. 
 
 A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Példa:
 
@@ -122,3 +122,4 @@ Több információ: [Csatlakozás Azure Container Service-fürthöz](container-s
 
 * [További információ](container-service-intro.md) az Azure Container Service-ről.
 * Container Service-fürt központi telepítése a [portál](container-service-deployment.md) vagy az [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) segítségével.
+

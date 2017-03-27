@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/27/2017
-ms.author: markgal;trinadhk
+ms.date: 3/13/2017
+ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
-ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 0be8f1f9fb96bce445c4a91520b9a847b205a519
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -92,7 +92,7 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 | Azure Backup (MARS) ügynöke |Nem (csak Windows-alapú ügynök) |
 | System Center DPM |Fájlkonzisztens biztonsági mentés, csak Hyper-V megoldásban<br/> (Azure-beli virtuális gépek esetén nem érhető el) |
 | Azure Backup Server |Fájlkonzisztens biztonsági mentés, csak Hyper-V megoldásban<br/> (Azure-beli virtuális gépek esetén nem érhető el) |
-| Azure IaaS virtuális gép biztonsági mentése |Igen |
+| Azure IaaS virtuális gép biztonsági mentése |Igen (alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
 Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/storage-premium-storage.md) ismertető cikkben.

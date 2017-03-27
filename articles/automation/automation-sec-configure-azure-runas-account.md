@@ -13,22 +13,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/10/2017
+ms.date: 03/15/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 15cbf897f3f67b9d1bee0845b4d287fdabe63ba8
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 6f2a3880c6cd307282020a689ddd4e22a95c17b0
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>Forgatókönyvek hitelesítése Azure-beli futtató fiókkal
 Ez a témakör bemutatja, hogyan lehet Automation-fiókot konfigurálni az Azure Portal webhelyről az új futtató fiók funkció használatával, amely az Azure Resource Managerben vagy az Azure Service Managerben erőforrásokat kezelő forgatókönyvek hitelesítésére szolgál.
 
-Amikor létrehoz egy Automation-fiókot az Azure Portalon, a következők is létrejönnek:
+Amikor létrehoz egy új Automation-fiókot az Azure Portal webhelyen, a rendszer a következőket is létrehozza:
 
-* Egy futtatófiókot, amely létrehoz egy új egyszerű szolgáltatást az Azure Active Directoryban, létrehoz egy tanúsítványt, valamint kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amelynek használatával a Resource Manager-erőforrások kezelhetők runbookokkal.   
-* Egy klasszikus futtatófiókot egy felügyeleti tanúsítvány feltöltésével, amelynek használatával az Azure szolgáltatásfelügyelet erőforrásai vagy a klasszikus erőforrások kezelhetők runbookokkal.  
+* Egy futtató fiókot, amely létrehoz egy új szolgáltatásnevet az Azure Active Directoryban, illetve egy tanúsítványt, illetve hozzárendeli a Közreműködő szerepkörön alapuló hozzáférés-vezérlést (RBAC). Ezzel a szerepkörrel felügyelhetők a Resource Manager-erőforrások forgatókönyvek segítségével.   
+* Egy klasszikus futtató fiókot, úgy, hogy feltölt egy felügyeleti tanúsítványt. Ezzel felügyelhetők az Azure Service Management- és klasszikus erőforrások forgatókönyvek segítségével.  
 
 Ez leegyszerűsíti a folyamatot, és segít a tervezés gyors megkezdésében, és forgatókönyvek üzembe helyezésében az automatizálási szükségletek támogatására.      
 
@@ -48,10 +48,7 @@ Mielőtt azonban továbblépnénk, fontos, hogy néhány dolgot tisztázzunk.
 1. Az itt leírtak nincsenek hatással a korábban a klasszikus vagy a Resource Manager üzemi modell keretében már létrehozott Automation-fiókokra.  
 2. Ezek a lépések kizárólag az Azure Portal webhelyen létrehozott Automation-fiókokon végezhetők el.  Ha a klasszikus portálról hoz létre fiókot, a rendszer nem fogja replikálni a futtató fiók konfigurációját.
 3. Ha jelenleg rendelkezik olyan runbookokkal és objektumokkal (azaz ütemezésekkel, változókkal stb.), amelyeket előzőleg a klasszikus erőforrások felügyeletére hozott létre, és szeretné, hogy ezek a runbookok hitelesítést végezhessenek az új klasszikus futtató fiókkal, létre kell hoznia egy klasszikus futtató fiókot a futtató fiókok kezelési funkciójával, vagy frissítenie kell a meglévő fiókot az alábbi PowerShell-szkripttel.  
-4. Ha az új futtató fiókkal és a klasszikus futtató Automation-fiókkal szeretne hitelesítést végezni, a [Hitelesítésikód-példák](#authentication-code-examples) szakaszban található példakód segítségével módosítania kell meglévő forgatókönyveit.  
-   
-    >[!NOTE] 
-    >Vegye figyelembe, hogy a futtató fiók Resource Manager-erőforrásokon, tanúsítványalapú szolgáltatásnévvel történő hitelesítésre, míg a klasszikus futtató fiók Service Manager-erőforrásokon, felügyeleti tanúsítvánnyal történő hitelesítésére szolgál.     
+4. Ha az új futtató fiókkal és a klasszikus futtató Automation-fiókkal szeretne hitelesítést végezni, az alább található példakód segítségével módosítania kell meglévő forgatókönyveit.  **Vegye figyelembe**, hogy a futtató fiók Resource Manager-erőforrásokon, tanúsítványalapú szolgáltatásnévvel történő hitelesítésre, míg a klasszikus futtató fiók Service Manager-erőforrásokon, felügyeleti tanúsítvánnyal történő hitelesítésére szolgál.     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Egy új Automation-fiók létrehozása az Azure Portalról
 Az ebben a fejezetben olvasható lépések végrehajtásával létrehozhatja az új Azure Automation-fiókját az Azure Portal webhelyen.  Ezzel mind a futtató fiókot, mind a klasszikus futtató fiókot létrehozza.  
@@ -392,15 +389,9 @@ Ha klasszikus futtató fiók létrehozását választja, a szkript végrehajtás
     > 
     > 
 
-A szkript sikeres futtatása után, ha Klasszikus futtató fiókot hozott létre, kövese [a felügyeleti API-tanúsítvány feltöltésének](../azure-api-management-certs.md) lépéseit a klasszikus Azure portálra.  Ha (.cer formátumú) önaláírt nyilvános tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, a tanúsítvány másolatát a PowerShell-munkamenet végrehajtásához használt felhasználói profil ideiglenes mappájában találja: *%USERPROFILE%\AppData\Local\Temp*.  Ha a klasszikus futtató fiókot úgy konfigurálta, hogy a vállalati hitelesítésszolgáltatója által létrehozott (.cer formátumú) tanúsítványt használja, akkor ezt a tanúsítványt kell használnia.  Miután feltöltötte a tanúsítványt, a [mintakód](#sample-code-to-authenticate-with-service-management-resources) segítségével ellenőrizze a hitelesítő adatok konfigurációját a Service Management-erőforrásokkal.  
+Miután a szkript sikeresen lefutott, a (.cer formátumú) önaláírt nyilvános tanúsítvánnyal rendelkező klasszikus futtató fiók létrehozása esetén a szkript a PowerShell-munkamenet végrehajtásához használt felhasználói profil ideiglenes mappájába hozza létre és menti a tanúsítványt: *%USERPROFILE%\AppData\Local\Temp*. Ha (.cer formátumú) vállalati nyilvános tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, akkor ezt a tanúsítványt kell használnia.  Kövesse a lépéseket, amelyek bemutatják, hogy hogyan [tölthet fel egy felügyeleti API-tanúsítványt](../azure-api-management-certs.md) a klasszikus Azure-portálra, majd a [mintakód](#sample-code-to-authenticate-with-service-management-resources) segítségével ellenőrizze a hitelesítő adatok konfigurációját a Service Management-erőforrásokkal.  Ha nem klasszikus futtató fiókot hozott létre, az alább látható [kódminta](#sample-code-to-authenticate-with-resource-manager-resources) segítségével állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját.
 
-Ha nem klasszikus futtató fiókot hozott létre, az alább látható [kódminta](#sample-code-to-authenticate-with-resource-manager-resources) segítségével állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját.   
-
-##  <a name="authentication-code-examples"></a>Hitelesítésikód-példák
-
-A következő példák bemutatják, hogyan hitelesíthetők a runbookok a Resource Managerrel vagy klasszikus erőforrásokkal futtató fiók használatával.
-
-### <a name="authenticate-with-resource-manager-resources"></a>Hitelesítés Resource Manager-erőforrásokkal
+## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>Mintakód a Resource Manager-erőforrásokkal történő hitelesítéshez
 A Resource Manager-erőforrások forgatókönyvekkel való kezeléséhez használhatja az alábbi, az **AzureAutomationTutorialScript** mintaforgatókönyvből származó frissített mintakódot a futtató fiók használatával történő hitelesítéshez.   
 
     $connectionName = "AzureRunAsConnection"
@@ -435,7 +426,7 @@ A parancsprogram tartalmaz két további kódsort az előfizetési környezet hi
 
 Figyelje meg, hogy a forgatókönyvben való hitelesítést biztosító parancsmag, (**Add-AzureRmAccount**) a *ServicePrincipalCertificate* paraméterkészletet használja.  Ez a szolgáltatásnév segítségével, és nem hitelesítő adatokkal végzi el a hitelesítést.  
 
-### <a name="authenticate-with-service-management-resources"></a>Hitelesítés Service Manager-erőforrásokkal
+## <a name="sample-code-to-authenticate-with-service-management-resources"></a>Mintakód a Service Manager-erőforrásokkal történő hitelesítéshez
 Ha a klasszikus futtató fiókkal szeretne hitelesítést végezni a klasszikus erőforrások forgatókönyvekkel való felügyeletéhez, használhatja az alábbi, az **AzureClassicAutomationTutorialScript** mintaforgatókönyvből származó mintakódot is.
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"

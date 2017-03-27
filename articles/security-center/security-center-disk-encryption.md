@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2016
+ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -26,7 +27,7 @@ Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes vi
 ![Lemeztitkosításra vonatkozó javaslat](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> A jelen dokumentumban szereplő információk az Azure Security Center előzetes verziójára vonatkoznak.
+> A jelen dokumentumban lévő információk a virtuális gépek Kulcstitkosítási kulcs nélküli titkosítására érvényesek (ez szükséges a virtuális gépek Azure Backuppal történő biztonsági mentéséhez). Tekintse meg az [Azure Disk Encryption Windows és Linux Azure virtuális gépekhez való használatát](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) ismertető cikket, ha további információkra kíváncsi a Kulcstitkosítási kulcs használatáról az Azure Backup támogatáshoz titkosított Azure virtuális gépeknél.
 >
 >
 
@@ -178,9 +179,4 @@ Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titko
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben) – Ebből az írásból megtanulhatja a biztonsági riasztások kezelésének és megoldásának módját.
 * [Azure Security Center: GYIK](security-center-faq.md) – Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

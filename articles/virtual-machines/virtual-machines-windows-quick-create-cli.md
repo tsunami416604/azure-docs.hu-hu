@@ -1,30 +1,30 @@
 ---
-title: "Azure gyors üzembe helyezés – Windows virtuális gép létrehozása a parancssori felületen | Microsoft Docs"
-description: "Gyorsan megismerheti a virtuális gépek Azure CLI-vel való létrehozásának módját."
-services: virtual-machines-linux
+title: "Azure gyors üzembe helyezés – Windows VM CLI létrehozása | Microsoft Docs"
+description: "Gyorsan megismerheti a Windows rendszerű virtuális gép Azure parancssori felülettel való létrehozásának módját."
+services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/10/2017
+ms.date: 03/20/2017
 ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: c1d7cfe614ab4e677e7fff989e79eb09acb3feed
+ms.openlocfilehash: 0f9ff487e289eadb857508134b7e08b00360fdd3
 ms.lasthandoff: 03/21/2017
 
 ---
 
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Linux virtuális gép létrehozása az Azure CLI-vel
+# <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Windowsos virtuális gép létrehozása az Azure parancssori felülettel
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen bemutatja, hogyan lehet egy Ubuntu 16.04 LTS-t futtató virtuális gépet üzembe helyezni az Azure CLI-vel.
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen bemutatja, hogyan lehet egy Windows Server 2016-ot futtató virtuális gépet az Azure CLI-vel üzembe helyezni.
 
 A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
@@ -50,10 +50,10 @@ az group create --name myResourceGroup --location westeurope
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
 
-Az alábbi példa egy `myVM` nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
+Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. Ez a példa az `azureuser` rendszergazdanevet és a ` myPassword12` jelszót használja. Az értékeket módosítsa a környezetének megfelelően. Ezekre az értékekre akkor van szükség, amikor kapcsolódik a virtuális géphez.
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
+az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
 ```
 
 A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a nyilvános IP-címet. Ez a cím használható a virtuális gép eléréséhez.
@@ -73,10 +73,10 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
-Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére.
+Használja az alábbi parancsot egy távoli asztali kapcsolat létrehozásához a virtuális géppel. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
 
 ```bash 
-ssh <Public IP Address>
+mstsc /v:<Public IP Address>
 ```
 
 ## <a name="delete-virtual-machine"></a>Virtuális gép törlése
@@ -89,7 +89,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Magas rendelkezésre állású virtuális gép létrehozása oktatóanyag](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Szerepkörök telepítését és a tűzfal konfigurálását ismertető oktatóanyag](./virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[A virtuális gépek parancssori felületen való üzembe helyezését ismertető minták megismerése](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[A virtuális gépek parancssori felületen való üzembe helyezését ismertető minták megismerése](./virtual-machines-windows-cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

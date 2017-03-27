@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,6 +32,7 @@ Ez a cikk bemutatja, hogyan hozhat létre olyan Kubernetes-fürtöt az Azure Con
 
 > [!NOTE]
 > Az Azure Container Service-ben a Windows-tárolók Kubernetes-szel való használatának támogatása előzetes verzióban érhető el. Az Azure Portallal vagy egy Resource Manager-sablonnal hozzon létre egy Kubernetes-fürtöt Windows-csomópontokkal. Ez a funkció jelenleg nem támogatott az Azure CLI 2.0-s verziójával.
+>
 
 
 
@@ -81,13 +82,13 @@ A fürt létrehozása és a `kubectl` használatával való kapcsolódás után 
 
 1. A csomópontok listájának megtekintéséhez írja be a következőt: `kubectl get nodes`. A csomópontok összes részletének megtekintéséhez írja be a következőt:  
 
-  ```
-  kubectl get nodes -o yaml
-  ```
+    ```
+    kubectl get nodes -o yaml
+    ```
 
 2. Hozzon létre egy `simpleweb.yaml` nevű fájlt, és másolja a következőket. Ez a fájl beállít egy webappot a Windows Server 2016 Server Core alap operációsrendszer-képpel a [Docker Hubból](https://hub.docker.com/r/microsoft/windowsservercore/).  
 
-  ```yaml
+```yaml
   apiVersion: v1
   kind: Service
   metadata:
@@ -123,40 +124,44 @@ A fürt létrehozása és a `kubectl` használatával való kapcsolódás után 
           command:
           - powershell.exe
           - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$ip = (Get-NetIPAddress | where {$$_.IPAddress -Like '*.*.*.*'})[0].IPAddress ; $$url = 'http://'+$$ip+':80/' ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add($$url) ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at {0}...' -f $$url) ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
+          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
         nodeSelector:
           beta.kubernetes.io/os: windows
   ```
 
-3. A alkalmazás elindításához írja be a következőt:
+      
+> [!NOTE] 
+> A konfiguráció tartalmazza a következőt: `type: LoadBalancer`. Ez a beállítás azt eredményezi, hogy az Azure Load Balanceren közzéteszi a szolgáltatást az interneten. További információ: [Tárolók terheléselosztása Kubernetes-fürtön az Azure Container Service-ben](container-service-kubernetes-load-balancing.md).
+>
 
-  ```
-  kubectl apply -f simpleweb.yaml
-  ```
+## <a name="start-the-application"></a>Az alkalmazás elindítása
+
+1. A alkalmazás elindításához írja be a következőt:  
+
+    ```
+    kubectl apply -f simpleweb.yaml
+    ```  
   
-  > [!NOTE] 
-  > A konfiguráció tartalmazza a következőt: `type: LoadBalancer`. Ez a beállítás azt eredményezi, hogy az Azure Load Balanceren közzéteszi a szolgáltatást az interneten. További információ: [Tárolók terheléselosztása Kubernetes-fürtön az Azure Container Service-ben](container-service-kubernetes-load-balancing.md).
   
-4. A szolgáltatás üzembe helyezésének ellenőrzéséhez (ez körülbelül 30 másodpercet vesz igénybe) írja be a következőt:
+2. A szolgáltatás üzembe helyezésének ellenőrzéséhez (ez körülbelül 30 másodpercet vesz igénybe) írja be a következőt:  
 
-  ```
-  kubectl get pods
-  ```
+    ```
+    kubectl get pods
+    ```
 
-5. A szolgáltatás elindítása után a szolgáltatás belső és külső IP-címeinek megtekintéséhez írja be a következőt:
+3. A szolgáltatás elindítása után a szolgáltatás belső és külső IP-címeinek megtekintéséhez írja be a következőt:
 
-  ```
-  kubectl get svc
-  ``` 
+    ```
+    kubectl get svc
+    ``` 
+  
+    ![Windows -szolgáltatás IP-címei](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
 
-  ![Windows -szolgáltatás IP-címei](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
+    A külső IP-cím hozzáadása több percet igényel. Mielőtt a terheléselosztó konfigurálja a külső címet, a következőképpen jelenik meg: `<pending>`.
 
-  A külső IP-cím hozzáadása több percet igényel. Mielőtt a terheléselosztó konfigurálja a külső címet, a következőképpen jelenik meg: `<pending>`.
+4. Miután elérhetővé válik a külső IP-cím, elérheti a szolgáltatást a webböngészőjében.
 
-
-6. Miután elérhetővé válik a külső IP-cím, elérheti a szolgáltatást a webböngészőjében.
-
-  ![Windows Server-app böngészőben](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+    ![Windows Server-app böngészőben](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
 
 
 ## <a name="access-the-windows-nodes"></a>A Windows-csomópontok elérése
@@ -170,37 +175,31 @@ Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ez a t�
 
 3. Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. A **Host Name** (Gazdagép neve) a következőhöz hasonló: `adminuser@PublicDNSName`. A **Port** mezőben adja meg a 22-es értéket.
 
-    ![A PuTTY-konfigurálásának 1. lépése](media/container-service-kubernetes-windows-walkthrough/putty1.png)
+  ![A PuTTY-konfigurálásának 1. lépése](media/container-service-kubernetes-windows-walkthrough/putty1.png)
 
 4. Válassza az **SSH > Auth** (SSH > Hitelesítés) parancsot. Adja meg a hitelesítéshez használandó titkos kulcsfájl (.ppk) elérési útját. Ez a fájl a [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) vagy egy hasonló eszköz segítségével hozható létre a fürt létrehozásakor használt SSH-kulcsból.
 
-    ![A PuTTY-konfigurálásának 2. lépése](media/container-service-kubernetes-windows-walkthrough/putty2.png)
+  ![A PuTTY-konfigurálásának 2. lépése](media/container-service-kubernetes-windows-walkthrough/putty2.png)
 
 5. Válassza az **SSH > Tunnels** (SSH > Alagutak) elemet, és konfigurálja a továbbított portokat. Mivel a helyi Windows-gép már használja a 3389-es portot, ajánlott a következő beállításokat használni a 0. Windows-csomópont és az 1. Windows-csomópont eléréséhez. (A további Windows-csomópontok hasonló minta szerint használhatók.)
 
-  **0. Windows csomópont**
+    **0. Windows csomópont**
 
-  * **Forrásport:** 3390
-  * **Cél:** 10.240.245.5:3389
+    * **Forrásport:** 3390
+    * **Cél:** 10.240.245.5:3389
 
-  **1. Windows-csomópont**
+    **1. Windows-csomópont**
 
-  * **Forrásport:** 3391
-  * **Cél:** 10.240.245.6:3389
+    * **Forrásport:** 3391
+    * **Cél:** 10.240.245.6:3389
 
-  ![Windows RDP-alagutak képe](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
+    ![Windows RDP-alagutak képe](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
 
 6. Amikor elkészült, a **Session > Save** (Munkamenet > Mentés) paranccsal mentse a kapcsolat konfigurációját.
 
 7. A PuTTY-munkamenethez az **Open** (Megnyitás) gombra kattintva csatlakozhat. Létesítsen kapcsolatot a fő csomóponttal.
 
 8. Indítsa el a távoli asztali kapcsolatot. Ha az első Windows-csomóponthoz szeretne csatlakozni, a **Számítógép** területen adja meg a `localhost:3390` értéket, majd kattintson a **Csatlakozás** elemre. (Ha a másodikhoz szeretne csatlakozni, adja meg a `localhost:3390` értéket és így tovább.) A kapcsolat létesítéséhez adja meg az üzembe helyezéskor konfigurált helyi Windows rendszergazdai jelszavát.
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>Következő lépések

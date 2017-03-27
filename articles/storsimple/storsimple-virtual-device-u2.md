@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 03/20/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,34 +33,13 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
-| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium szintű Storage-ot támogató Azure-régiók<br></br>A régiók listáját lásd: [A 8020-as modellt támogató régiók](#supported-regions-for-8020) |
+| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató összes Azure-régió<br></br>A prémium szintű Storage-régiók listáját az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/en-us/regions/services) lapon találhatja. Azonosítsa a régiókat, ahol támogatottak a DS, DSV2, Fs és GS virtuálisgép-sorozatok. |
 | **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/storage-premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup> *Korábbi nevén az 1100-as*.
 
 <sup>2</sup> *A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
-
-#### <a name="supported-regions-for-8020"></a>A 8020-as modellt támogató régiók
-A 8020-as modellt támogató, Premium szintű Storage-régiók listáját az alábbi táblázatban találja. A lista folyamatosan frissül majd, ahogy a Premium szintű Storage egyre több régióban elérhetővé válik.
-
-| S. sz. | Jelenleg a következő régiókban támogatott: |
-| --- | --- |
-| 1 |USA középső régiója |
-| 2 |USA keleti régiója |
-| 3 |USA 2. keleti régiója |
-| 4 |USA nyugati régiója |
-| 5 |Észak-Európa |
-| 6 |Nyugat-Európa |
-| 7 |Délkelet-Ázsia |
-| 8 |Kelet-Japán |
-| 9 |Nyugat-Japán |
-| 10 |Kelet-Ausztrália |
-| 11 |Délkelet-Ausztrália* |
-| 12 |Kelet-Ázsia* |
-| 13 |USA déli középső régiója* |
-
-*A Prémium szintű Storage a közelmúltban vált elérhetővé ezekben a térségekben.
 
 Ez a cikk lépésenként mutatja be a StorSimple virtuális eszköz telepítésének folyamatát az Azure-ban. A cikk elolvasása után:
 
@@ -89,7 +69,7 @@ Az alábbi szakaszok ismertetik a StorSimple virtuális eszköz előfeltételeit
 #### <a name="azure-requirements"></a>Azure-követelmények
 A virtuális eszköz kiépítése előtt a következő előkészületekre lesz szükség az Azure-környezetben:
 
-* A virtuális eszközhöz [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. További információ [a 8020-as modellt jelenleg támogató régiókról](#supported-regions-for-8020).
+* A virtuális eszközhöz [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. A prémium szintű Storage-régiók listáját az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/en-us/regions/services) lapon találhatja. Azonosítsa a régiókat, ahol támogatottak a DS, DSV2, Fs és GS virtuálisgép-sorozatok.
 * Saját DNS-kiszolgálónév megadása helyett az Azure által megadott alapértelmezett DNS-kiszolgáló használata javasolt. Ha megadott DNS-kiszolgálónév nem érvényes, vagy ha a DNS-kiszolgáló nem tudja megfelelően feloldani az IP-címeket, akkor a virtuális eszköz létrehozása sikertelen lesz.
 * A végpont és telephely közötti, valamint a telephely és telephely közötti lehetőségek választhatóak, de nem kötelezőek. Igény szerint ezeket a lehetőségeket speciális forgatókönyvekhez is konfigurálhatja.
 * Az [Azure virtuális gépeket](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (gazdakiszolgálókat) létrehozhatja abban a virtuális hálózatban, amely a virtuális eszközön elérhető köteteket használja. Ezeknek a kiszolgálóknak az alábbi követelményeknek kell megfelelniük:                             
@@ -256,9 +236,4 @@ Ha nincs internetkapcsolat a virtuális eszköz létrehozása közben, a létreh
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse át, hogyan végezhető el [a virtuális eszköz felügyelete a StorSimple Manager szolgáltatással](storsimple-manager-service-administration.md).
 * Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-restore-from-backup-set.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

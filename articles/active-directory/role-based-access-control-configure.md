@@ -1,5 +1,5 @@
 ---
-title: "Szerepköralapú hozzáférés-vezérlés a klasszikus Azure portálon | Microsoft Docs"
+title: "Szerepköralapú hozzáférés-vezérlés az Azure Portalon | Microsoft Docs"
 description: "Megismerheti a hozzáférés kezelését az Azure Portal szerepköralapú hozzáférés-vezérlése segítségével. Szerepkör-hozzárendelésekkel rendelhet engedélyeket az erőforrásokhoz."
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: bb894c38de63d0eac4066eeabaed7ba791021cc4
-ms.openlocfilehash: 05da6cd034a387b54eff0790996662223e4b8bab
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c3e3e407eb6a05b208863443bb8ccf3cba701b23
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -76,10 +77,5 @@ A szerepkörök hozzárendelését és a hozzáférések kezelését más eszkö
 * [Jelentés létrehozása a hozzáférés-módosítások előzményeiről](role-based-access-control-access-change-history-report.md)
 * Lásd: [Beépített RBAC-szerepkörök](role-based-access-built-in-roles.md)
 * Saját [egyéni szerepkörök az Azure RBAC-ben](role-based-access-control-custom-roles.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

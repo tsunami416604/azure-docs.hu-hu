@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,7 +33,7 @@ Csupán néhány egyszerű lépéssel lehetővé teheti, hogy a felhasználók k
 * [**Kezdés előtt: az ügyfeleinktől származó legjobb tippek**](#top-tips-from-our-customers-to-read-before-you-begin)
  * [**LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN** – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
  * [**1. tipp: LICENCEK** – Győződjön meg arról, hogy megértette a licencelési követelményeket](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
- * [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
  * [**3. tipp: ÜZEMBE HELYEZÉS** – Töltse ki előre az adatokat a felhasználók számára, hogy ne kelljen regisztrálniuk](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
  * [**4. tipp: ÜZEMBE HELYEZÉS** – A jelszavak visszaállításával kerülje el az ideiglenes jelszavakkal kapcsolatos kommunikáció bonyodalmait](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
  * [**5. tipp: VISSZAÍRÁS** – Tekintse meg az alkalmazás eseménynaplóját az AAD Connect gépen a jelszóvisszaírás hibáinak elhárítása érdekében](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -59,7 +59,7 @@ Az alábbiakban olyan tippeket sorolunk fel, amelyek hasznosak lehetnek azon üg
 
 * [**LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN** – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
 * [**1. tipp: LICENCEK** – Győződjön meg arról, hogy megértette a licencelési követelményeket](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
-* [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**2. tipp: TESZTELÉS** – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
 * [**3. tipp: ÜZEMBE HELYEZÉS** – Töltse ki előre az adatokat a felhasználók számára, hogy ne kelljen regisztrálniuk](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
 * [**4. tipp: ÜZEMBE HELYEZÉS** – A jelszavak visszaállításával kerülje el az ideiglenes jelszavakkal kapcsolatos kommunikáció bonyodalmait](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
 * [**5. tipp: VISSZAÍRÁS** – Tekintse meg az alkalmazás eseménynaplóját az AAD Connect gépen a jelszóvisszaírás hibáinak elhárítása érdekében](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -78,9 +78,9 @@ Tekintse meg az alábbi tartalomjegyzéket:
 Az Azure AD jelszó-visszaállítás működéséhez legalább egy licencnek a céghez vagy szervezethez rendelve kell lennie. Magához a jelszóvisszaállítási művelethez nem tesszük kötelezővé a felhasználónkénti licencelést, de ha úgy használja a funkciót, hogy nincs licenc rendelve egy felhasználóhoz, nem fog megfelelni a Microsoft licencszerződésének, és licenceket kell rendelnie a felhasználókhoz.
 
 Az alábbi dokumentumok segíthetnek megérteni, milyen licencekre van szükség a jelszó-visszaállításhoz.
-* [Általános jelszó-visszaállítási licencelési információk]()
-* [Funkciónkénti jelszó-visszaállítási licencelési információk]()
-* [A jelszóvisszaíráshoz támogatott alkalmazási helyzetek]()
+* [Általános jelszó-visszaállítási licencelési információk](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-customize#what-customization-options-are-available)
+* [Funkciónkénti jelszó-visszaállítási licencelési információk](https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability)
+* [A jelszóvisszaíráshoz támogatott alkalmazási helyzetek](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#scenarios-supported-for-password-writeback)
 
 ### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>2. tipp: TESZTELÉS – Végfelhasználóval teszteljen, ne rendszergazdával, és kis felhasználócsoporttal kísérletezzen
 Ha rendszergazdával tesztel, a rendszergazdai jelszóvisszaállítási szabályzat lesz érvényben, amelynek a lényegét az alábbiakban foglaljuk össze.  Ez azt jelenti, hogy NEM a végfelhasználókhoz konfigurált szabályzat várt eredményei fognak megjelenni.
@@ -310,6 +310,7 @@ Ez a szakasz a jelszó-visszaállítás konfigurálásán vezeti végig annak é
 Mielőtt engedélyezhetné és használhatná a Jelszóvisszaírót, eleget kell tennie a következő előfeltételeknek:
 
 * Rendelkezik egy Azure AD-bérlővel, és engedélyezve van az Azure AD Prémium.  További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
+* Ahhoz, hogy a jelszóvisszaíró működjön, az Azure AD Connectet csatlakoztatnia kell az elsődleges tartományvezérlő-emulátorhoz.  Ha szükséges, konfigurálhatja az Azure AD Connectet egy elsődleges tartományvezérlő használatára. Ehhez kattintson a jobb gombbal az Active Directory szinkronizálási összekötőjének **tulajdonságaira**, majd válassza a **könyvtárpartíciók konfigurálásának** lehetőségét. Ezután keresse meg a **tartományvezérlő kapcsolati beállításainak** szakaszát, és jelölje be a **csak az előnyben részesített tartományvezérlők használatának** jelölőnégyzetét.  Megjegyzés: ha az előnyben részesített tartományvezérlő nem egy PDC-emulátor, az Azure AD Connect akkor is a PDC-hez fordul jelszóvisszaírás céljából.
 * A jelszó-visszaállítás konfigurálva van és engedélyezve van a bérlőn.  További információkért lásd: [Annak engedélyezése, hogy a felhasználók visszaállíthassák az Azure AD-jelszavaikat](#enable-users-to-reset-their-azure-ad-passwords)
 * Van legalább egy rendszergazdai fiókja és egy tesztfelhasználói fiókja Azure AD Prémium licenccel, amellyel tesztelheti ezt a funkciót.  További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
 
