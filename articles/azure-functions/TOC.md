@@ -22,13 +22,15 @@
 #### [Mobile Apps-kötések](functions-bindings-mobile-apps.md)
 #### [Értesítési központ kimeneti kötése](functions-bindings-notification-hubs.md)
 #### [Service Bus-eseményindítók és -kötések a várólistákhoz és a témakörökhöz](functions-bindings-service-bus.md)
+#### [SendGrid-kötések](functions-bindings-sendgrid.md)
 #### Tárkötések
 ##### [Blobkötések](functions-bindings-storage-blob.md)
 ##### [Üzenetsorkötések](functions-bindings-storage-queue.md)
 ##### [Táblakötések](functions-bindings-storage-table.md)
+##### [SendGrid-kötések](functions-bindings-sendgrid.md)
 #### [Időzítő eseményindító](functions-bindings-timer.md)
 #### [Twilio kimeneti kötése](functions-bindings-twilio.md)
-### [Függvény létrehozása az Azure Portal használatával](functions-create-first-azure-function-azure-portal.md) 
+### [Függvényalkalmazás létrehozása az Azure Portal használatával](functions-create-function-app-portal.md) 
 ### [Az Azure Functions tesztelése](functions-test-a-function.md)
 ### [Helyi fejlesztés és hibakeresés](functions-run-local.md)
 ### [Azure Functions – ajánlott eljárások](functions-best-practices.md)
@@ -50,8 +52,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
 ## [Az Azure Functions GitHub-adattára](https://github.com/Azure/Azure-Functions/) 
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

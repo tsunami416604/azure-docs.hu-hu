@@ -227,10 +227,11 @@
 ## Kezelés
 ### IoT Hub létrehozása 
 #### [A portál használata](iot-hub-create-through-portal.md)
+#### [A PowerShell használata](iot-hub-create-using-powershell.md)
 #### [A CLI 2.0 használata](iot-hub-create-using-cli.md)
 #### [A CLI használata](iot-hub-create-using-cli-nodejs.md)
 #### [A REST API használata](iot-hub-rm-rest.md)
-#### [A PowerShell használata](iot-hub-rm-template-powershell.md)
+#### [A PowerShell sablonjának használata](iot-hub-rm-template-powershell.md)
 #### [A .NET-keretrendszer sablonjának használata](iot-hub-rm-template.md)
 ### [Fájlfeltöltés konfigurálása](iot-hub-configure-file-upload.md)
 ### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)

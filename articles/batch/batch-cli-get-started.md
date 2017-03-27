@@ -16,9 +16,9 @@ ms.date: 01/23/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: e4a3f3f3bca06e66f39f5acd8b4571b4a498ed83
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 698c481e2eff5e0a3b893a0377d9f4cd2f052eb4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ A platformfüggetlen Azure parancssori felület (Azure CLI) segítségével keze
 Ez a cikk az Azure CLI 0.10.5-ös verzióján alapul.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Telepítse az Azure CLI-t](../xplat-cli-install.md)
+* [Telepítse az Azure CLI-t](../cli-install-nodejs.md)
 * [Csatlakoztassa az Azure CLI-t az Azure-előfizetéshez](../xplat-cli-connect.md)
 * Váltson **Resource Manager módra**: `azure config mode arm`
 
@@ -261,7 +261,7 @@ Ebben a szakaszban az Azure CLI-vel kapcsolatos problémák elhárításához ha
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes**, a `-vv` segítségével pedig még részletesebb parancskimenetet jeleníthet meg, emellett megjeleníti a tényleges REST-kérelmeket és -válaszokat. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
-* A ** kapcsolóval megtekintheti a **parancskimenetet JSON-fájlként`--json`. Például az `azure batch pool show "pool001" --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
+* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `azure batch pool show "pool001" --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
 * A [Batch fórum az MSDN-en][batch_forum] egy nagyszerű forrás, amelyet a Batch csapatának tagjai folyamatosan figyelnek. Mindenképp ott tegye fel a kérdéseit, ha problémákba ütközne, vagy segítségre lenne szüksége egy adott művelethez.
 * Az Azure CLI jelenleg nem támogatja az összes Batch-erőforrásműveletet. Például jelenleg nem határozhatja meg egy készletnél az alkalmazáscsomag *verzióját*, csak a csomagazonosítót. Ilyen esetekben előfordulhat, hogy a parancssori kapcsolók használata helyett meg kell adnia egy `--json-file` kapcsolót a parancshoz. Ügyeljen rá, hogy a CLI legújabb verzióját használja a jövőbeli fejlesztések használatba vétele érdekében.
 

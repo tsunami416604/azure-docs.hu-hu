@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 002fa917e0cc17c34e0e617a28f2e21ba9b7e35f
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
+ms.lasthandoff: 03/21/2017
 
 ---
 # <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Internetes terheléselosztó létrehozása az Azure parancssori felületével
@@ -53,7 +53,7 @@ A további információkat [Az Azure Resource Manager támogatása a terhelésel
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>A parancssori felület beállítása a Resource Manager használatához
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
 
     ```azurecli

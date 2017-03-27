@@ -3,7 +3,7 @@ title: "CORS támogatás az App Service-ben | Microsoft Docs"
 description: "Megtudhatja, hogyan használhatja a CORS-támogatást az Azure App Service platformon."
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: 4f980a97-b9f5-4d1d-87ab-82b60bb96e1c
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/27/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
-ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
-ms.openlocfilehash: b0b701b7ea7a608f114d3a82f0403c2ae506854f
-ms.lasthandoff: 12/21/2016
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 79fe018bb6721c431a935dda14b36968688d34e3
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Ez a cikk két részből áll:
 * [A CORS konfigurálásának módja](#corsconfig) című rész általánosságban ismerteti, hogyan kell a CORS szolgáltatást konfigurálni tetszőleges API-alkalmazáshoz, webalkalmazáshoz vagy mobilalkalmazáshoz. Ez a rész minden, az App Service által támogatott keretrendszerre alkalmazható, beleértve a .NET, a Node.js és a Java keretrendszert. 
 * A [.NET-bevezető oktatóanyagok folytatása](#tutorialstart) résztől kezdve a cikk oktató funkciót tölt be, és [az első API-alkalmazásokba való bevezető oktatóanyag](app-service-api-dotnet-get-started.md) tartalmára építve mutatja be a CORS-támogatást. 
 
-## <a name="a-idcorsconfiga-how-to-configure-cors-in-azure-app-service"></a><a id="corsconfig"></a> A CORS konfigurálása az Azure App Service platformon
+## <a id="corsconfig"></a> A CORS konfigurálása az Azure App Service platformon
 A CORS szolgáltatást konfigurálhatja az Azure Portalon vagy az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) eszközeinek használatával.
 
 #### <a name="configure-cors-in-the-azure-portal"></a>A CORS konfigurálása az Azure portálon
@@ -52,7 +52,7 @@ A CORS szolgáltatást konfigurálhatja az Azure Portalon vagy az [Azure Resourc
    A **Save** (Mentés) gombra való kattintás után az API-alkalmazás fogadni fogja a megadott URL-címekről jövő hívásokat.
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>A CORS konfigurálása az Azure Resource Manager eszközeinek használatával
-A CORS szolgáltatást úgy is beállíthatja egy API-alkalmazáshoz, hogy [Azure Resource Manager-sablonokat](../azure-resource-manager/resource-group-authoring-templates.md) használ a parancssori eszközökben, például az  [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy az [Azure CLI](../xplat-cli-install.md) felületen. 
+A CORS szolgáltatást úgy is beállíthatja egy API-alkalmazáshoz, hogy [Azure Resource Manager-sablonokat](../azure-resource-manager/resource-group-authoring-templates.md) használ a parancssori eszközökben, például az  [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy az [Azure CLI](../cli-install-nodejs.md) felületen. 
 
 Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely beállítja a CORS tulajdonságot, nyissa meg az oktatóanyag példaalkalmazását, amely a tárházban az [azuredeploy.json fájl](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json). Keresse meg a sablonban az a részt, amely az alábbi példára hasonlít:
 
@@ -62,7 +62,7 @@ Ha szeretne példát látni egy olyan Azure Resource Manager-sablonra, amely be�
             ]
         }
 
-## <a name="a-idtutorialstarta-continuing-the-net-getting-started-tutorial"></a><a id="tutorialstart"></a> A .NET-bevezető oktatóanyag folytatása
+## <a id="tutorialstart"></a> A .NET-bevezető oktatóanyag folytatása
 Ha az API-alkalmazásokhoz készült Node.js vagy Java-bevezető sorozatot követi, akkor elvégezte a bevezetősorozatot. Ugorjon a [További lépések](#next-steps) című részre, ahol tanácsokat találhat az API-alkalmazások bővebb megismeréséhez.
 
 A cikk hátralévő része a .NET-bevezető sorozat folytatása, és feltételezi, hogy Ön sikeresen elvégezte [az első oktatóanyagot](app-service-api-dotnet-get-started.md).

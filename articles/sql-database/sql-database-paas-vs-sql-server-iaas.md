@@ -17,8 +17,9 @@ ms.topic: get-started-article
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: bdcf28703f007d32144278c7f0956fe4c27c3b27
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: ed725a12c04646a62cb0737266e24b6035522f20
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,7 +33,7 @@ Az Azure két lehetőséget biztosít SQL Server számítási feladatok a Micros
 Ebből a cikkből megtudhatja, hogyan illeszkednek ezek a verziók a Microsoft adatplatformjának rendszerébe, és rátalálhat az üzleti igényeinek leginkább megfelelő lehetőségre. Akár az adminisztrációs terhek csökkentését, akár a költségek csökkentését helyezi előtérbe, ez a cikk segít eldönteni, hogy melyik megközelítés képes teljesíteni az Ön számára legfontosabb üzleti igényekhez kötődő elvárásokat.
 
 ## <a name="microsofts-data-platform"></a>A Microsoft adatplatformja
-Az Azure-platformon futó és a helyszíni SQL Server-adatbázisok közötti összehasonlítás első lépése, hogy leszögezzük: semmiről nem kell lemondania. A Microsoft adatplatformja különböző fizikai, helyszíni gépeken, magánfelhőt alkalmazó környezetekben, külső fejlesztőtől származó magánfelhő-környezetekben és nyilvános felhőkben egyaránt lehetővé teszi az SQL Server-technológia felhasználását. Az Azure virtuális gépeke futó SQL Server helyszíni és felhőben futó üzemelő példányok együttes használatával segít megfelelni az egyedi és sokszínű üzleti igényeiknek, ráadásul Ön az összes környezetben ugyanazokat a kiszolgálótermékeket, fejlesztői eszközöket és ismereteket alkalmazhatja.
+Az Azure-platformon futó és a helyszíni SQL Server-adatbázisok közötti összehasonlítás első lépése, hogy leszögezzük: semmiről nem kell lemondania. A Microsoft adatplatformja különböző fizikai, helyszíni gépeken, magánfelhőt alkalmazó környezetekben, külső fejlesztőtől származó magánfelhő-környezetekben és nyilvános felhőkben egyaránt lehetővé teszi az SQL Server-technológia felhasználását. Az Azure-beli virtuális gépeken futó SQL Server helyszíni és felhőben futó üzemelő példányok együttes használatával segít megfelelni az egyedi és sokszínű üzleti igényeiknek, ráadásul Ön az összes környezetben ugyanazokat a kiszolgálótermékeket, fejlesztői eszközöket és ismereteket alkalmazhatja.
 
    ![Felhőalapú SQL Server-verziók: SQL Server infrastruktúra-szolgáltatásban vagy SaaS SQL-adatbázis a felhőben.](./media/sql-database-paas-vs-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png)
 
@@ -123,7 +124,7 @@ Az **SQL Database** Alapszintű, Standard és Prémium szolgáltatáscsomagja es
 
 Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-os SLA-elérhetőséget garantál, amely kizárólag a virtuális gépre vonatkozik. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). A virtuális gépeken üzemeltetett adatbázisok magas rendelkezésre állása érdekében használja az SQL Server által biztosított magas rendelkezésre állási funkciók egyikét, például az [AlwaysOn rendelkezésre állási csoportokat](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis&99;,99% fölötti rendelkezésre állásának elérését.
 
-### <a name="a-namemarketatime-to-market"></a><a name="market"></a>Piacra jutás
+### <a name="market"></a>Piacra jutás
 Az **SQL Database** ideális megoldás az olyan felhőalapú alkalmazásokhoz, amelyek esetében rendkívül fontos szempont a gyors fejlesztés és a rövid piacra jutási idő. A DBA-hoz hasonló programozási funkciói révén tökéletes választás a felhőben dolgozó tervezők és fejlesztők számára, mivel csökkenti az alkalmazás mögötti operációs rendszer és adatbázis felügyeletére fordítandó időt. A [REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) és a [PowerShell-parancsmagok](http://msdn.microsoft.com/library/mt740629.aspx) segítségével például akár több ezer adatbázis felügyeleti műveleteit automatizálhatja és felügyelheti. A [rugalmas készletnek](sql-database-elastic-pool.md) és más hasonló funkcióknak köszönhetően Ön az alkalmazásrétegre összpontosíthat, így gyorsabb lehet a megoldások piaci bevezetése.
 
 Az **Azure virtuális gépeken futó SQL Server** tökéletes megoldás, ha meglévő vagy új alkalmazásainak nagy méretű vagy egymáshoz kapcsolódó adatbázisokra van szüksége, vagy a Windows vagy az SQL Server összes funkciójához hozzá kell férnie. Akkor is érdemes ezt a verziót választani, ha meglévő helyszíni alkalmazásokat és adatbázisokat szeretne változtatás nélkül az Azure-ra áttelepíteni. Mivel így nincs szükség a prezentációs, alkalmazási és adatréteg módosítására, időt és pénzt takarít meg, amit nem kell meglévő termékeinek egy új architektúrára való áthelyezésére fordítania. Ehelyett termékeinek az Azure-ra történő áttelepítésére, illetve az Azure-platformon való működéshez esetleg szükséges teljesítményoptimalizálásra összpontosíthat. További információk: [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Teljesítményre vonatkozó ajánlott eljárások az Azure Virtual Machines szolgáltatásban futtatott SQL Server esetében).
@@ -145,10 +146,5 @@ Válassza az **Azure virtuális gépeken futó SQL Servert**, ha:
 * Tekintse meg [az első Azure SQL Database-adatbázissal](sql-database-get-started.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 * [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 * Az Azure virtuális gépeken futó SQL Server használatának megkezdésével kapcsolatban lásd: [Provision a SQL Server virtual machine in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) (SQL Servert futtató virtuális gép létrehozása az Azure-ban).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

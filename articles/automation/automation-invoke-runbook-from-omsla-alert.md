@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 4ce5ad30d79e92a11231313fe13dd42b94fc2aa4
-ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -35,7 +36,7 @@ A riasztás konfigurálásakor a runbookok meghívásának két alternatívája 
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>Runbook meghívása webhook használatával
 
-A webhookok használatával egyetlen HTTP-kérés kiadásával indíthat adott runbookokat az Azure Automationben.  Mielőtt beállíthatná, hogy a [Log Analytics-riasztás](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule) a runbookot egy webhook használatával hívja meg a riasztási művelet keretében, előbb létre kell hoznia egy webhookot az ezzel a módszerrel meghívni kívánt runbookhoz.  Tekintse át és kövesse a [webhookok létrehozását](automation-webhooks.md#creating-a-webhook) tárgyaló cikk lépéseit, és jegyezze fel a webhook URL-címét, hogy a riasztási szabály konfigurálása során hivatkozhasson rá.   
+A webhookok használatával egyetlen HTTP-kérés kiadásával indíthat adott runbookokat az Azure Automationben.  Mielőtt beállíthatná, hogy a [Log Analytics-riasztás](../log-analytics/log-analytics-alerts.md#creating-alert-rules) a runbookot egy webhook használatával hívja meg a riasztási művelet keretében, előbb létre kell hoznia egy webhookot az ezzel a módszerrel meghívni kívánt runbookhoz.  Tekintse át és kövesse a [webhookok létrehozását](automation-webhooks.md#creating-a-webhook) tárgyaló cikk lépéseit, és jegyezze fel a webhook URL-címét, hogy a riasztási szabály konfigurálása során hivatkozhasson rá.   
 
 ## <a name="calling-a-runbook-directly"></a>Runbookok közvetlen meghívása
 
@@ -52,14 +53,14 @@ A runbookoknak a Log Analytics-riasztásokból való meghívására szolgáló k
           [Parameter (Mandatory=$true)]  
           [object] $WebhookData  
          )
-  
+
 *  A WebhookData PowerShell-objektummá való átalakításához kód szükséges.
 
     `$SearchResults = (ConvertFrom-Json $WebhookData.RequestBody).SearchResults.value`
 
     A *$SearchResults* egy objektumtömb, amelyben mindegyik objektum egy keresési eredmény értékeit tároló mezőket tartalmaz
 
-### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>A WebhookData eltérései a webhookot használó és a runbookot használó alternatívák közt 
+### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>A WebhookData eltérései a webhookot használó és a runbookot használó alternatívák közt
 
 * Amikor egy riasztást úgy állít be, hogy egy webhookot hívjon meg, adja meg a runbookhoz létrehozott webhook URL-címét, majd kattintson a **Webhook tesztelése** gombra.  Az így létrejövő és a runbooknak küldött WebhookData nem tartalmazza a *.SearchResult* vagy a *.SearchResults* tömböt.
 
@@ -68,7 +69,7 @@ A runbookoknak a Log Analytics-riasztásokból való meghívására szolgáló k
 
 Így a fenti példa kódban a *.SearchResult* tömböt kell szerepeltetni, ha a riasztás egy webhookot hív meg, és a *.SearchResults* tömböt, ha a riasztás közvetlenül a runbookot hívja meg.
 
-## <a name="example-walkthrough"></a>Forgatókönyv – példa 
+## <a name="example-walkthrough"></a>Forgatókönyv – példa
 
 Most a következő, valamilyen Windows-szolgáltatást indító grafikus runbook segítségével bemutatjuk, hogyan is működik mindez.<br><br> ![Windows-szolgáltatás grafikus runbookjának indítása](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice.png)<br>
 
@@ -90,9 +91,4 @@ Ha az Automation-fiók nincs az OMS-munkaterülethez társítva, alternatív meg
 * A Log Analytics-riasztásokkal és létrehozásukkal kapcsolatos további információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).
 
 * A runbookok webhookkal való aktiválásával kapcsolatos további információkért lásd: [Azure Automation-webhookok](automation-webhooks.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

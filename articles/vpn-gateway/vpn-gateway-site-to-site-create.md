@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -25,9 +26,10 @@ ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-átjárókapcsolat a helyszíni hálózathoz a klasszikus üzemi modell és a klasszikus portál használatával. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
 
@@ -50,25 +52,25 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 * Egy kifelé irányuló, nyilvános IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
-## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>A virtuális hálózat létrehozása
+## <a name="CreateVNet"></a>A virtuális hálózat létrehozása
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com/).
 2. Kattintson a képernyő bal alsó sarkában található **Új** gombra. A navigációs ablakban kattintson a **Hálózati szolgáltatások**, majd a **Virtuális hálózat** lehetőségre. Kattintson az **Egyéni létrehozás** lehetőségre a konfigurációs varázsló elindításához.
 3. A virtuális hálózat létrehozásához adja meg a konfigurációs beállításokat a következő lapokon:
 
-## <a name="a-namedetailsavirtual-network-details-page"></a><a name="Details"></a>Virtuális hálózat részletei lap
+## <a name="Details"></a>Virtuális hálózat részletei lap
 Adja meg a következő információkat:
 
 * **Név**: Nevezze el a virtuális hálózatát. Például *EastUSVNet*. Ezt a virtuálishálózat-nevet fogja használni a virtuálisgép- és PaaS-példányok üzembe helyezésekor, ezért nem ajánlott túl bonyolult nevet választani.
 * **Hely**: A hely közvetlenül kapcsolódik ahhoz a fizikai helyhez (régiót), ahol az erőforrásokat (virtuális gépeket) el szeretné helyezni. Ha például azt szeretné, hogy a virtuális hálózaton üzembe helyezni kívánt virtuális gépek az *USA keleti régiójában* helyezkedjenek el, válassza ki azt helyként. A virtuális hálózat létrehozása után az ahhoz tartozó régiót nem lehet módosítani.
 
-## <a name="a-namednsadns-servers-and-vpn-connectivity-page"></a><a name="DNS"></a>DNS-kiszolgálók és VPN-kapcsolatok lap
+## <a name="DNS"></a>DNS-kiszolgálók és VPN-kapcsolatok lap
 Adja meg a következő információkat, és a továbblépéshez kattintson a jobb alsó Tovább nyílra.
 
 * **DNS-kiszolgálók**: Adja meg a DNS-kiszolgáló nevét és IP-címét, vagy válasszon egy korábban regisztrált DNS-kiszolgálót a helyi menüből. A beállítás nem hoz létre DNS-kiszolgálót. Lehetővé teszi, hogy megadja azokat a DNS-kiszolgálókat, amelyeket névfeloldásra kíván használni ennél a virtuális hálózatnál.
 * **Helyek közötti VPN konfigurálása**: Jelölje be a **Helyek közötti VPN konfigurálása** jelölőnégyzetet.
 * **Helyi hálózat**: A helyi hálózat a helyszíni fizikai helyet jelenti. Választhat egy korábban létrehozott helyi hálózatot, vagy létrehozhat egy új helyi hálózatot. Ha azonban egy korábban létrehozott helyi hálózat használata mellett dönt, lépjen a **Helyi hálózatok** konfigurációs lapra, és ellenőrizze, hogy a VPN-eszköz IP-címe (nyilvános IPv4-cím) helyes-e.
 
-## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>Helyek közötti kapcsolat lap
+## <a name="Connectivity"></a>Helyek közötti kapcsolat lap
 Ha egy új helyi hálózatot hoz létre, megjelenik a **Helyek közötti kapcsolat** lap. Ha egy korábban létrehozott helyi hálózatot kíván használni, ez a lap nem jelenik meg a varázslóban, így továbbléphet a következő szakaszra.
 
 Adja meg az alábbi információkat, és kattintson a Tovább nyílra.
@@ -78,7 +80,7 @@ Adja meg az alábbi információkat, és kattintson a Tovább nyílra.
 * **Címtér**: Adja meg a kezdő IP-címet és a CIDR-t (a címek számát). Meg kell adni a virtuális hálózati átjárón keresztül a helyszíni helyre átküldeni kívánt címteret/címtereket. Ha egy cél-IP-cím az itt megadott tartományokon belülre esik, a rendszer a virtuális hálózati átjárón keresztül irányítja át.
 * **Címtér hozzáadása**: Ha több címteret kíván átküldeni a virtuális hálózati átjárón, adja meg a további címtereket. A **Helyi hálózat** lapon később is hozzáadhat vagy eltávolíthat tartományokat.
 
-## <a name="a-nameaddressavirtual-network-address-spaces-page"></a><a name="Address"></a>Virtuális hálózat címtartományai lap
+## <a name="Address"></a>Virtuális hálózat címtartományai lap
 Adja meg a virtuális hálózatához használni kívánt címteret. Ezek a dinamikus IP-címek (DIP-k) lesznek a virtuális gépekhez és az egyéb ezen a virtuális hálózaton üzembe helyezett szerepkörpéldányokhoz rendelve.
 
 Rendkívül fontos, hogy olyan tartományt válasszon, amely nincs átfedésben a helyszíni hálózatához használt egyéb tartományokkal. Egyeztessen a hálózati rendszergazdával. A hálózati rendszergazdának esetlegesen ki kell jelölnie egy IP-címtartományt a helyszíni hálózati címtérből a virtuális hálózaton való használatra.
@@ -93,15 +95,10 @@ Kattintson a lap alján található pipára. Ekkor megkezdődik a virtuális há
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="a-namevnetgatewayaconfigure-your-virtual-network-gateway"></a><a name="VNetGateway"></a>A virtuális hálózati átjáró konfigurálása
+## <a name="VNetGateway"></a>A virtuális hálózati átjáró konfigurálása
 Konfigurálja a virtuális hálózati átjárót a biztonságos helyek közötti kapcsolat létrehozásához. Lásd: [Virtuális hálózati átjáró konfigurálása a klasszikus Azure portálon](vpn-gateway-configure-vpn-gateway-mp.md).
 
 ## <a name="next-steps"></a>Következő lépések
  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

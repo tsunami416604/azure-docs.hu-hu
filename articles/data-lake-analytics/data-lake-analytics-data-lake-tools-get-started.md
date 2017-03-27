@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/08/2016
-ms.author: edmaca
+ms.date: 03/17/2017
+ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2fa2d26b996435c18c2f88396991bf7210350553
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -128,9 +128,9 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
        A neveket automatikusan befejezi a rendszer, és megjelennek a sorhalmaz, az osztályok, az adatbázisok, a sémák és a felhasználó által meghatározott objektumok (UDO-k) tagjai.
 
        A katalógusokhoz (pl. adatbázisokhoz, sémákhoz, táblákhoz, UDO-khoz) tartozó IntelliSense a számítási fiókhoz kapcsolódik. A felső eszköztárban látható a jelenleg aktív számítási fiók, adatbázis és séma, amelyek a legördülő menükben módosíthatók.
-   * ** * oszlop kibontása**
+   * *** oszlop kibontása**
 
-       Kattintson a * karaktertől jobbra, és egy kék aláhúzást fog látni a * alatt. Mozgassa a mutatót a kék aláhúzásra, majd kattintson a lefelé mutató nyílra.
+       Kattintson a *karaktertől jobbra, és egy kék aláhúzást fog látni a* alatt. Mozgassa a mutatót a kék aláhúzásra, majd kattintson a lefelé mutató nyílra.
        ![Kibontás a Data Lake Visual Studio Tools szolgáltatásban *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        Kattintson az **Expand Columns** (Oszlopok kibontása) lehetőségre, és az eszköz a * jel helyére behelyettesíti az oszlopok neveit.
@@ -197,71 +197,11 @@ A feladat visszajátszásával végignézheti egy feladat végrehajtásának men
 A Data Lake Tools for Visual Studio szolgáltatás feladatnézetében a felhasználó által választható színsémákkal jelezhető a feladatok előrehaladása, adatbemenete és -kimenete, végrehajtási ideje és az egyes szintek átviteli be- és kimenete. Ennek segítségével a felhasználók közvetlenül és intuitív módon ismerhetik fel a lehetséges problémákat és a feladatok tulajdonságainak eloszlását. A megjelenítendő adatforrás a legördülő listából választható ki.  
 
 ## <a name="run-u-sql-locally"></a>U-SQL helyi futtatása
-A Visual Studio szolgáltatásban a U-SQL helyi futtatásával a következőket teheti meg:
 
-* Helyileg futtathat U-SQL-parancsfájlokat, valamint C#-szerelvényeket.
-* Helyileg végezhet hibakeresést C#-szerelvényeken.
-* Helyi adatbázisokat, szerelvényeket, sémákat és táblákat hozhat létre/törölhet/tekinthet meg a Server Explorer eszközben, ugyanúgy, ahogy az Azure Data Lake Analytics szolgáltatásban is.
+Használhatja az Azure Data Lake Tools for Visual Studio és az Azure Data Lake U-SQL SDK szolgáltatásokat a U-SQL-feladatok munkaállomáson való futtatására, pontosan úgy, ahogyan azt az Azure Data Lake szolgáltatásban is megteheti. Ez a két, helyi futtatású szolgáltatás időt takarít meg a U-SQL feladatok tesztelése és hibakeresése során. 
 
-A Visual Studio szolgáltatásban egy *Local* (Helyi) fiókot talál, és a telepítő létrehoz egy *DataRoot* mappát a *C:\LocalRunRoot* mappán belül. A DataRoot mappa a következőkre használható:
+* [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)
 
-* Metaadatok, többek között táblák, adatbázisok, táblaértékű függvények (TVF-ek) tárolása.
-* Egy adott parancsfájl esetében, ha a hivatkozott bemeneti/kimeneti elérési utak relatív utak, a rendszer a DataRoot mappában fog keresni (valamint a parancsfájl elérési útján, ha az meg van adva)
-* A rendszer NEM keres a DataRoot mappában akkor, amikor egy szerelvény regisztrálási kísérletekor egy relatív utat használ (további részletekért lásd a „Use assemblies when doing local run” (Szerelvények használata helyi futtatáskor) részt)
-
-A következő videó bemutatja a U-SQL helyi futtatási funkcióját:
-
-> [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/USQL-LocalRun/player]
->
->
-
-### <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
-* Nem lehet táblákat, adatbázisokat, egyebeket létrehozni a Server Explorer eszközben a helyi fiókhoz.
-* Egy relatív útra történő hivatkozáskor:
-
-  * A parancsfájl bemenetében (EXTRACT * FROM “/path/abc”) a rendszer a DataRoot elérési úton és a parancsfájl elérési útján is keres.
-  * A parancsfájl kimenetében (OUTPUT TO “path/abc”) a DataRoot elérési út lesz a kimeneti mappa.
-  * A szerelvények regisztrálásakor (CREATE ASSEMBLY xyz FROM “/path/abc”) a rendszer a parancsfájl elérési útján keres, de a DataRoot mappában nem.
-  * A regisztrált TVF-ek, nézetek és egyéb metaadat-entitások esetében a rendszer a DataRoot elérési úton keres, de a parancsfájl elérési útján nem.
-
-    A Data Lake szolgáltatásban futtatott parancsfájlok esetében a rendszer az alapértelmezett tárfiókot használja gyökérmappaként, és aszerint végzi el a keresést.
-
-### <a name="test-u-sql-scripts-locally"></a>U-SQL-parancsfájlok helyi tesztelése
-A U-SQL-parancsfájlok fejlesztésére vonatkozó útmutatásért lásd: [U-SQL-parancsfájlok fejlesztése](#develop-and-test-u-sql-scripts). A U-SQL-parancsfájlok helyi létrehozásához és teszteléséhez válassza a **(Local)** (Helyi) lehetőséget a fürtök legördülő listájából, majd kattintson a **Submit** (Elküldés) gombra. Ellenőrizze, hogy a helyes adatokra hivatkozik-e – vagy hivatkozzon egy abszolút elérési útra, vagy helyezze az adatokat a DataRoot mappába.
-
-![U-SQL Visual Studio-projekt helyi küldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
-
-Kattintson a jobb gombbal egy parancsfájlra, majd kattintson a **Run Local Plan** (Helyi terv futtatása) elemre a helyi menüben, vagy nyomja le a **CTRL+F5** billentyűkombinációt a helyi futtatás aktiválásához.
-
-### <a name="use-assemblies-in-local-run"></a>Szerelvények használata helyi futtatáskor
-A testreszabott C#-fájlok futtatásának két módja létezik:
-
-* Írjon szerelvényeket a fájl mögötti kódba, és a szerelvények automatikusan regisztrálva lesznek, majd a parancsfájl befejezése után el lesznek dobva.
-* Hozzon létre egy C#-szerelvényprojektet, és regisztrálja a kimeneti dll-fájlt a helyi fiókba egy, az alábbihoz hasonló parancsfájllal. Vegye figyelembe, hogy az elérési út a parancsfájl helyéhez képest relatív, nem a DataRoot mappához képest.
-
-![Szerelvények használata U-SQL helyi futtatásakor](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
-
-### <a name="debug-scripts-and-c-assemblies-locally"></a>Parancsfájlok és C#-szerelvények helyi hibakeresése
-A C#-szerelvények hibakeresését anélkül is elvégezheti, hogy elküldené és regisztrálná őket az Azure Data Lake Analytics szolgáltatásba. Töréspontokat állíthat be a fájl mögötti kódban és a hivatkozott C#-projektben is.
-
-**Helyi kódok hibakeresése fájl mögötti kódban**
-
-1. Állítson be töréspontokat a fájl mögötti kódban.
-2. Nyomja le az **F5** billentyűt a parancsfájl helyi hibakereséséhez.
-
-A következő eljárás csak a Visual Studio 2015 esetében működik. A régebbi kiadásokban lehetséges, hogy kézzel kell megadnia a pdb-fájlokat.
-
-**Helyi kódok hibakeresése egy hivatkozott C#-projektben**
-
-1. Hozzon létre egy C#-szerelvényprojektet, és állítsa be úgy, hogy hozza létre a kimeneti dll-fájlt.
-2. Regisztrálja a dll-fájlt egy U-SQL-kivonat használatával:
-
-    ```
-    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-    ```
-    
-3. Állítson be töréspontokat a C#-kódban.
-4. Nyomja le az **F5** billentyűt a C#-dll-fájlra hivatkozó parancsfájl helyi hibakereséséhez.  
 
 ## <a name="see-also"></a>Lásd még:
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:

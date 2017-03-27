@@ -1,7 +1,6 @@
 # Áttekintés
 ## [Az Operations Management Suite ismertetése](operations-management-suite-overview.md)
 ## [OMS-architektúra](operations-management-suite-architecture.md)
-## [Felügyeleti megoldások](operations-management-suite-solutions.md)
 
 # Bevezetés
 ## Betekintés és elemzés
@@ -15,15 +14,18 @@
 ### [Adatbiztonság](oms-security-data-security.md)
 
 # Útmutató
+
 ## Elemzés
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Felügyeleti termékek összehasonlítása](operations-management-suite-monitoring-product-comparison.md)
 ### [Riasztások kezelése](operations-management-suite-monitoring-alerts.md)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+
 ## Biztonsági mentés
 ### [A biztonsági mentés áttekintése](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [A Site Recovery áttekintése](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+
 ## Biztonságos
 ### [Erőforrások figyelése](oms-security-monitoring-resources.md)
 ### [Válasz a biztonsági riasztásokra](oms-security-responding-alerts.md)
@@ -31,17 +33,9 @@
 ### [Kártevőfelmérés](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Rendszerfrissítési felmérés](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Biztonsági termékek csatlakoztatása](oms-security-connect-products.md)
-## Megoldások létrehozása
-### [Felügyeleti megoldások](operations-management-suite-solutions-creating.md)
-### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
-### [Naplókeresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md)
-### [Nézetek](operations-management-suite-solutions-resources-views.md)
-## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 
-
-# Referencia
-## [SDK](operations-management-suite-sdk.md)
-## Megoldások
+## Megoldások használata
+### [Felügyeleti megoldások](operations-management-suite-solutions.md)
 ### Betekintés és elemzés
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -64,8 +58,15 @@
 ### Biztonság és megfelelőség
 #### [Kártevőirtók felmérése](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
+## Megoldások létrehozása
+### [Tervezés és felépítés](operations-management-suite-solutions-creating.md)
+### [Megoldásfájl](operations-management-suite-solutions-solution-file.md)
+### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
+### [Naplókeresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md)
+### [Nézetek](operations-management-suite-solutions-resources-views.md)
 
+## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 
-<!--HONumber=Feb17_HO1-->
-
+# Referencia
+## [SDK](operations-management-suite-sdk.md)
 

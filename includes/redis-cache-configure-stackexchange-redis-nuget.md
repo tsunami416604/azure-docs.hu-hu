@@ -25,8 +25,8 @@ A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szüksé
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+Úgy is telepítheti a StackExchange.Redis NuGet csomagot, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) > **Package Manager Console** (Csomagkezelő konzol) elemre kattint a **Tools** (Eszközök) menüben, és a következő parancsot futtatja a `Package Manager Console` ablakból.
+    
+```
+Install-Package StackExchange.Redis
+```

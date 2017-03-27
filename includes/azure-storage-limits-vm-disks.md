@@ -1,16 +1,11 @@
-Az Azure virtuális gépek több adatlemez csatolását támogatták. Az optimális teljesítmény érdekében érdemes korlátozni a virtuális géphez csatlakoztatott nagy kihasználtságú lemezek számát a lehetséges szabályozás elkerülése érdekében. Ha nincs az összes nagy kihasználtságú lemez egyszerre használatban, a tárfiók több lemezt tud támogatni.
+An Azure virtual machine supports attaching a number of data disks. For optimal performance, you will want to limit the number of highly utilized disks attached to the virtual machine to avoid possible throttling. If all disks are not being highly utilized at the same time, the storage account can support a larger number disks.
 
-* **Azure Managed Disks esetén:** A felügyelt lemezek számának korlátja az előfizetés régiójától függ. Az alapértelmezett enyhe korlát 2000. A korlát növelésével kapcsolatban vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+* **For Azure Managed Disks:** Managed Disks count limit is regional for the subscription. The default soft limit is 2,000 per region per subscription. To increase your limit, contact Azure support.
 
-    A felügyelt pillanatképeket és rendszerképeket a felügyelt lemezek korlátjához képest számítja a rendszer.
+    Managed Snapshots and Images are counted against the Managed Disks limit.
 
-* **Standard szintű tárfiókok esetén:** A Standard szintű tárfiókok összesen legfeljebb 20 000 IOPS kérelemaránnyal rendelkeznek. A Standard szintű tárfiókokon az összes virtuálisgép-lemezen lévő teljes IOPS nem léphet túl ezen a korláton.
+* **For standard storage accounts:** A standard storage account has a maximum total request rate of 20,000 IOPS. The total IOPS across all of your virtual machine disks in a standard storage account should not exceed this limit.
   
-    Nagyjából kiszámíthatja az egyetlen Standard szintű tárfiók által támogatott nagy kihasználtságú lemezek számát a kérelemarány korlátja alapján. Az alapszintű csomagba tartozó virtuális gépek esetén például a nagy kihasználtságú lemezek maximális száma körülbelül 66 (20 000/300 IOPS lemezenként), a standard csomagba tartozó virtuális gépek esetén pedig körülbelül 40 (20 000/500 IOPS lemezenként) az alábbi táblázatban láthatók szerint. 
-* **Prémium szintű tárfiókok esetén:** A prémium szintű tárfiókok összesen legfeljebb 50 Gbps átviteli sebességgel rendelkeznek. Az összes virtuálisgép-lemezen lévő teljes átvitel nem lépheti túl ezt a korlátot.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+    You can roughly calculate the number of highly utilized disks supported by a single standard storage account based on the request rate limit. For example, for a Basic Tier VM, the maximum number of highly utilized disks is about 66 (20,000/300 IOPS per disk), and for a Standard Tier VM, it is about 40 (20,000/500 IOPS per disk), as shown in the table below. 
+* **For premium storage accounts:** A premium storage account has a maximum total throughput rate of 50 Gbps. The total throughput across all of your VM disks should not exceed this limit.
 

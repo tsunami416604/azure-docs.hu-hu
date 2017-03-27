@@ -7,14 +7,13 @@
 
 # Bevezetés
 ## [Sablon exportálása](resource-manager-export-template.md)
-## [Útmutató a sablonok használatához](resource-manager-template-walkthrough.md)
+## [Az első saját sablon létrehozása](resource-manager-create-first-template.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-## [A VS Code és a Resource Manager](resource-manager-vs-code.md)
 
 # Útmutató
 ## Sablonok létrehozása
 ### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
-### [Sablonok készítése](resource-group-authoring-templates.md)
+### [Sablon szakaszai](resource-group-authoring-templates.md)
 ### [Sablonfüggvények](resource-group-template-functions.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
@@ -62,7 +61,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
-## [Sablonsémák](https://github.com/Azure/azure-resource-manager-schemas)
+## [Sablon formátuma](/azure/templates/)
 ## [REST](/rest/api/resources/)
 
 # Erőforrások

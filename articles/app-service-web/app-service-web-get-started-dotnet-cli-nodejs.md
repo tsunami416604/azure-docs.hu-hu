@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: d24e78a826de9fb72e0eedc48877c83e867f70ca
-ms.openlocfilehash: 58683e50ab57e0d162dde92c2f9558d5c2379d5b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0698cb2cdac9363750c1e225e331fe976dfb3234
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +45,7 @@ A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Git](http://www.git-scm.com/downloads).
-* [Azure parancssori felület (CLI)](../xplat-cli-install.md).
+* [Azure parancssori felület (CLI)](../cli-install-nodejs.md).
 * Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]

@@ -4,13 +4,11 @@
 
 # Első lépések
 
-## [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
-### [PowerShell](dns-getstarted-create-dnszone.md)
-### [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-
-## [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md)
-### [PowerShell](dns-getstarted-create-recordset.md)
-### [Azure CLI](dns-getstarted-create-recordset-cli.md)
+## DNS-zóna és -rekord létrehozása
+### [Portal](dns-getstarted-portal.md)
+### [PowerShell](dns-getstarted-powershell.md)
+### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
+### [Azure CLI 2.0](dns-getstarted-cli.md)
 
 ## [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
 ## [Webalkalmazások egyéni DNS-rekordjainak létrehozása](dns-web-sites-custom-domain.md)

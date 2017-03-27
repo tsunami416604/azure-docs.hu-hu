@@ -82,7 +82,6 @@
 
 ### [Áttelepítés IIS-ből](web-sites-migration-from-iis-server.md)
 ### [Tesztelés éles környezetben](app-service-web-test-in-production-get-start.md)
-### [Teljesítménytesztek futtatása](app-service-web-app-performance-test.md) 
 
 ## Csatlakozás adatbázishoz/erőforrásokhoz        
 

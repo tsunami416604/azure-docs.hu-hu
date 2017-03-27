@@ -1,29 +1,30 @@
 # Áttekintés
 ## [A Traffic Manager ismertetése](traffic-manager-overview.md)
-## [A Traffic Manager működése](traffic-manager-how-traffic-manager-works.md)
-## [Traffic Manager-végpontok](traffic-manager-endpoint-types.md)
-## [Traffic Manager végpont figyelése és feladatátvétele](traffic-manager-monitoring.md)
-## [Forgalom-útválasztási módszerek](traffic-manager-routing-methods.md)
-## [Beágyazott profilok](traffic-manager-nested-profiles.md)
-## [Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében](traffic-manager-performance-considerations.md)
-## [Azure Resource Manager-támogatás](traffic-manager-powershell-arm.md)
+## [Útválasztási módszerek](traffic-manager-routing-methods.md)
+### [A Traffic Manager által használt ország/régió-hierarchia](traffic-manager-geographic-regions.md)
+## [Végponttípusok](traffic-manager-endpoint-types.md)
+## [Végpontmonitoring](traffic-manager-monitoring.md)
+## [Gyakori kérdések](traffic-manager-FAQs.md)
 
 # Első lépések
-## [Végpontkezelés](traffic-manager-manage-endpoints.md)
-## [Profilok kezelése](traffic-manager-manage-profiles.md)
-## [Az internetes tartomány átirányítása a Traffic Managerhez](traffic-manager-point-internet-domain.md)
+## [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
 
 # Útmutató
-## [Útválasztási módszer konfigurálása](traffic-manager-configure-routing-method.md)
-## [Beállítások ellenőrzése](traffic-manager-testing-settings.md)
+
+## [Földrajzi útválasztási mód konfigurálása](traffic-manager-configure-geographic-routing-method.md)
+## [Prioritásos útválasztási mód konfigurálása](traffic-manager-configure-priority-routing-method.md)
+## [Súlyozott útválasztási mód konfigurálása](traffic-manager-configure-weighted-routing-method.md)
+## [Teljesítménycentrikus útválasztási mód beállítása](traffic-manager-configure-performance-routing-method.md)
+## [Végpontkezelés](traffic-manager-manage-endpoints.md)
+## [Profilok kezelése](traffic-manager-manage-profiles.md)
+## [Traffic Manager-beállítások ellenőrzése](traffic-manager-testing-settings.md)
 ## [Többféle terheléselosztási szolgáltatás használata](traffic-manager-load-balancing-azure.md)
-## [Hálózati erőforrások használata](../virtual-network/resource-groups-networking.md?toc=%2fazure%2ftraffic-manager%2ftoc.json)
-## Hibaelhárítás
-### [Csökkentett teljesítményű végpont hibaelhárítása](traffic-manager-troubleshooting-degraded.md)
+## [A Traffic Manager teljesítményének mérése](traffic-manager-performance-considerations.md)
+## [A Traffic Manager kezelése a PowerShell használatával](traffic-manager-powershell-arm.md)
+## [Az internetes tartomány átirányítása a Traffic Managerhez](traffic-manager-point-internet-domain.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.3.0/azurerm.trafficmanager)
-## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.trafficmanager/v3.1.0/azure.trafficmanager)
+## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)

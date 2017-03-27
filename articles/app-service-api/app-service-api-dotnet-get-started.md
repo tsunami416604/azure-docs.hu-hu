@@ -3,7 +3,7 @@ title: "Az App Service-ben elérhető API Apps és az ASP.NET megismerése | Mic
 description: "Cikkünkből megtanulhatja, hogyan hozhat létre, telepíthet és használhat fel ASP.NET API-alkalmazásokat az Azure App Service szolgáltatásban a Visual Studio 2015 segítségével."
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
@@ -199,7 +199,7 @@ A Swashbuckle bármelyik ASP.NET Web API-projekttel működik. Ha egy meglévő 
 > 
 > 
 
-## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> API-alkalmazás létrehozása az Azure-ban, majd kód üzembe helyezése az alkalmazáshoz
+## <a id="createapiapp"></a> API-alkalmazás létrehozása az Azure-ban, majd kód üzembe helyezése az alkalmazáshoz
 Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) varázslójában elérhető integrált Azure-eszközök segítségével hozunk létre egy új API-alkalmazást az Azure-ban. Ezt követően telepítjük a ToDoListDataAPI projektet az új API-alkalmazásra, majd a Swagger felhasználói felület futtatásával meghívjuk az API-t.
 
 1. A **Solution Explorer** (Megoldáskezelő) területén kattintson jobb gombbal a ToDoListDataAPI projektre, majd kattintson a **Publish** (Közzététel) elemre.
@@ -303,7 +303,7 @@ Ebben a részben a Visual Studio **Publish Web** (Weboldal közzététele) vará
     
     Amikor kiválaszt egy API-alkalmazást, amelyhez ügyfélkódot szeretne generálni, a Visual Studio erről az URL-címről kéri le a metaadatokat.
 
-## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> Ügyfélkód generálása az adatréteg számára
+## <a id="codegen"></a> Ügyfélkód generálása az adatréteg számára
 A Swaggernek az Azure API Appsbe való integrálásának egyik legnagyobb előnye az automatikus kódgenerálás. A generált ügyfélosztályok leegyszerűsítik az API-alkalmazásokat behívó kód megírását.
 
 A ToDoListAPI projekt már tartalmazza a generált ügyfélkódot, de a következő lépésekben törölni fogjuk azt, majd ismét generáljuk, hogy megismerkedjen a kódgenerálás módjával.

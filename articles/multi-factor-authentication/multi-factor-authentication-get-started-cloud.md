@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2017
+ms.date: 03/14/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 79c6ef627d20be52b6067d1f6dfea2a53505c590
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -28,14 +29,16 @@ A cikk végigkalauzolja az Azure Multi-Factor Authentication a felhőben való h
 
 ![MFA a felhőben](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
-## <a name="prerequisites"></a>Előfeltételek
-A következő előfeltételek teljesülésére van szükség, hogy engedélyezhesse az Azure Multi-Factor Authenticationt a felhasználók számára.
+## <a name="prerequisite"></a>Előfeltétel
+[Regisztráció Azure-előfizetésre](https://azure.microsoft.com/pricing/free-trial/) – Ha még nincs Azure-előfizetése, regisztrálnia kell rá. Ha csak most kezdi és az Azure MFA-t használja, használhat próbaelőfizetést
 
-1. [Regisztráció Azure-előfizetésre](https://azure.microsoft.com/pricing/free-trial/) – Ha még nincs Azure-előfizetése, regisztrálnia kell rá. Ha csak most kezdi és az Azure MFA-t használja, használhat próbaelőfizetést
-2. [Multi-Factor Auth szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md) és hozzárendelése a címtárhoz vagy [licencek hozzárendelése felhasználókhoz](multi-factor-authentication-get-started-assign-licenses.md)
+## <a name="enable-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication engedélyezése
+Ha a felhasználói rendelkeznek az Azure Multi-Factor Authenticationt magában foglaló licenccel, semmit nem kell tennie az Azure MFA bekapcsolásához. Felhasználói alapon, egyenként kezdeményezheti a kétlépéses ellenőrzés igénylését. Az Azure MFA használatát lehetővé tévő licencek:
+- Azure Multi-Factor Authentication
+- Prémium szintű Azure Active Directory
+- Enterprise Mobility + Security
 
-> [!NOTE]
-> A licencek az Azure MFA, az Azure AD Prémium vagy a Nagyvállalati mobilitási csomag (EMS) felhasználói számára érhetők el.  Az MFA megtalálható az Azure AD Prémium és az EMS csomagban. Ha elegendő licenccel rendelkezik, nem kell létrehoznia hitelesítésszolgáltatót.
+Ha nem rendelkezik ilyen licencekkel, vagy nincs elég licence az összes felhasználó lefedéséhez, az sem gond. Csak egy plusz lépésre van szüksége, hogy [létrehozzon egy többtényezős hitelesítési szolgáltatót](multi-factor-authentication-get-started-auth-provider.md) a könyvtárában.
 
 ## <a name="turn-on-two-step-verification-for-users"></a>A kétlépéses ellenőrzés bekapcsolása a felhasználók számára
 A két kezdeti ellenőrzés a felhasználóktól való megköveteléséhez változtassa meg a felhasználó állapotát letiltottról engedélyezettre.  A felhasználói állapotokkal kapcsolatos további információ: [Felhasználói állapotok az Azure Multi-Factor Authenticationben](multi-factor-authentication-get-started-user-states.md)
@@ -97,10 +100,5 @@ További információ: [Felhasználói állapotok az Azure Multi-Factor Authenti
 
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy beállította az Azure Multi-Factor Authenticationt a felhőben, konfigurálhatja és beállíthatja az üzemelő példányt. A részletekről lásd: [Az Azure Multi-Factor Authentication konfigurálása](multi-factor-authentication-whats-next.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

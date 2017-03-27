@@ -78,8 +78,8 @@
 ### [Használatmérés](logic-apps-pricing.md)
 
 # Referencia
-## [Munkafolyamat-definíciós nyelv](https://docs.microsoft.com/rest/api/logic/definition-language)
-## [Munkafolyamat-műveletek és eseményindítók](https://docs.microsoft.com/rest/api/logic/actions-and-triggers)
+## [Munkafolyamat-definíciós nyelv](logic-apps-workflow-definition-language.md)
+## [Munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
 ## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
 ## Sémaelőzmények

@@ -1,6 +1,6 @@
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem tette meg, beszerezheti az Ön [Azure-fiókjához kapcsolt](../articles/xplat-cli-connect.md) [Azure-előfizetés ingyenes próbaverzióját](https://azure.microsoft.com/pricing/free-trial/) és [az Azure CLI 1.0-t](../articles/xplat-cli-install.md). Az alábbiak szerint győződjön meg róla, hogy az Azure CLI Resource Manager-módban van:
+Ha még nem tette meg, beszerezheti az Ön [Azure-fiókjához kapcsolt](../articles/xplat-cli-connect.md) [Azure-előfizetés ingyenes próbaverzióját](https://azure.microsoft.com/pricing/free-trial/) és [az Azure CLI 1.0-t](../articles/cli-install-nodejs.md). Az alábbiak szerint győződjön meg róla, hogy az Azure CLI Resource Manager-módban van:
 
 ```azurecli
 azure config mode arm

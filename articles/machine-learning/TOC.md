@@ -159,6 +159,7 @@
 #### [Excel használata](machine-learning-consuming-from-excel.md)
 #### [Excel-bővítmény használata](machine-learning-excel-add-in-for-web-services.md)
 #### [Webalkalmazás-sablon használata](machine-learning-consume-web-service-with-web-app-template.md)
+#### [Batch-készlet használata](machine-learning-dedicated-capacity-for-bes-jobs.md)
 
 ## Példák
 ### [Kísérleteket szemléltető példák](machine-learning-sample-experiments.md)
@@ -222,8 +223,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-machine-learning)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [Segítség kérése élő csevegéssel](machine-learning-live-chat.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
