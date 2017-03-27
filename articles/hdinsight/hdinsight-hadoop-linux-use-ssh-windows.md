@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 639328ca-d800-4fa9-97ed-5664477b88cd
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 744d41a85d39cb468a17ac5a60cd2517f3e60147
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b1806950581e0adbeec52839f12c70599d28100d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -110,7 +112,7 @@ Bejelentkezési adatokat hoz létre az adott felhasználó számára, és enged�
 
 ### <a name="azure-command-line-interface-for-mac-linux-and-windows"></a>Azure parancssori felület Mac, Linux és Windows rendszerekhez
 
-Az [Azure parancssori felület (CLI) Mac, Linux és Windows rendszerekhez](../xplat-cli-install.md) lehetővé teszi, hogy az `azure hdinsight cluster create` paranccsal egy új fürtöt hozzon létre.
+Az [Azure parancssori felület (CLI) Mac, Linux és Windows rendszerekhez](../cli-install-nodejs.md) lehetővé teszi, hogy az `azure hdinsight cluster create` paranccsal egy új fürtöt hozzon létre.
 
 További információk a parancs használatáról: [Provision Hadoop Linux clusters in HDInsight using custom options](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök kiépítése a HDInsightban egyéni beállításokkal).
 
@@ -221,7 +223,7 @@ Ha további fiókokat kell a fürthöz adnia, végezze el a következő lépése
 
 6. Mostantól az új felhasználói fiókkal és titkos kulccsal is tud hitelesítést végezni a kiszolgálón.
 
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-bújtatás
+## <a id="tunnel"></a>SSH-bújtatás
 
 Az SSH-val helyi kérések, például webes kérések bújtatását is elvégezheti a HDInsight-fürthöz. A rendszer ilyenkor úgy irányítja a kérést a kért erőforráshoz, mintha a HDInsight-fürt átjárócsomópontból származna.
 
@@ -239,9 +241,4 @@ Most, hogy megismerkedett az SSH-kulccsal végzett hitelesítésről, arról is 
 * [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -7,9 +7,6 @@
 ## IP-címzés
 ### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [Klasszikus](virtual-network-ip-addresses-overview-classic.md)
-## Virtuális gépek
-### [Hálózati illesztők](virtual-network-network-interface-overview.md)
-### [Névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # Első lépések
 ## [Az első virtuális hálózat létrehozása](virtual-network-get-started-vnet-subnet.md)
@@ -107,6 +104,7 @@
 ### Hozzáférés-vezérlési listák
 #### [Klasszikus portál](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [A virtuális gépek és felhőszolgáltatások névfeloldása](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ## Kezelés
 ### Network security groups (Hálózati biztonsági csoportok)

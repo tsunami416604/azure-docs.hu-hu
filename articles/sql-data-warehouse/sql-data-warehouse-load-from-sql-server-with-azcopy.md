@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a4ad30d1aa0ec273b6b875b0d2d037005ac159
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 21b4cc704e271ac220fd606305f8f97c9b2593bb
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -31,7 +33,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Telepített SQLCMD parancssori segédprogram
 
 > [!NOTE]
-> A bcp és sqlcmd parancssori segédeszközöket letöltheti a [Microsoft letöltőközpontból][Microsoft letöltőközpont].
+> A bcp és az sqlcmd parancssori segédprogramot a [Microsoft letöltőközpontból][Microsoft Download Center] töltheti le.
 > 
 > 
 
@@ -58,7 +60,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> További információk a táblák létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Táblák áttekintése] vagy [CREATE TABLE szintaxis][CREATE TABLE szintaxis].
+> További információk a táblázatok létrehozásáról az SQL Data Warehouse-ban, illetve a WITH záradékkal használható lehetőségekről: [Táblák áttekintése][Table Overview] vagy [CREATE TABLE szintaxis][CREATE TABLE syntax].
 > 
 > 
 
@@ -116,7 +118,7 @@ Az alábbi eredményeket fogja kapni:
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>4. lépés: Statisztikák létrehozása az újonnan betöltött adatokról
-Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][Statisztika] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
+Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését. A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően. A statisztika részletes ismertetését a Fejlesztés témakörcsoport [Statisztika][Statistics] témakörében találja. Alább egy gyors példát láthat a példában betöltött táblák statisztikáinak létrehozására
 
 Hajtsa végre az alábbi CREATE STATISTICS utasításokat egy sqlcmd parancssorból:
 
@@ -160,27 +162,22 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 > 
 
 ## <a name="next-steps"></a>Következő lépések
-A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Adatok betöltése az SQL Data Warehouse-ba].
-További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse fejlesztői áttekintés].
+A betöltés áttekintése: [Adatok betöltése az SQL Data Warehouse-ba][Load data into SQL Data Warehouse].
+További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Adatok betöltése az SQL Data Warehouse-ba]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse fejlesztői áttekintés]: ./sql-data-warehouse-overview-develop.md
-[Táblák áttekintése]: ./sql-data-warehouse-tables-overview.md
-[Statisztika]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE szintaxis]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft letöltőközpont]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 

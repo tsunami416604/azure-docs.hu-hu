@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/11/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 354292f51d07bff00e7a6811e4d1d7beb7844920
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0cf2d7f4cbbed730d690693fd006665355155c22
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -68,7 +68,7 @@ A Storm használatának kezdő lépéseit itt találja: [A HDInsighton futó Sto
 Egy HDInsight alatt futó új Storm-fürtöt percek alatt kiépíthet. Adja meg a fürt nevét, méretét, rendszergazdai fiókját és a tárfiókot. Az Azure létrehozza a fürtöt, vele együtt pedig példatopológiákat és egy webes felügyeleti irányítópultot is.
 
 > [!NOTE]
-> A Storm-fürtök az [Azure parancssori felület](../xplat-cli-install.md) vagy az [Azure PowerShell](/powershell/azureps-cmdlets-docs) használatával is kiépíthetők.
+> A Storm-fürtök az [Azure parancssori felület](../cli-install-nodejs.md) vagy az [Azure PowerShell](/powershell/azureps-cmdlets-docs) használatával is kiépíthetők.
 
 Egy új Storm-fürt a kérelem benyújtásától számított 15 percen belül elkészül, készén a valós idejű elemzési folyamatok elvégzésére.
 
@@ -177,7 +177,7 @@ További információ a Tridentről: [Trident-oktatóanyag](https://storm.apache
 
 Példák a Java- és Trident-topológiákra: [Storm-topológiapéldák listája](hdinsight-storm-example-topology.md) vagy HDInsight-fürtön található Storm-kezdőpéldák.
 
-A Storm-kezdőpéldák a HDInsight-fürtön a ** /usr/hdp/current/storm-client/contrib/storm-starter** könyvtárban találhatók.
+A Storm-kezdőpéldák a HDInsight-fürtön a **/usr/hdp/current/storm-client/contrib/storm-starter** könyvtárban találhatók.
 
 ### <a name="python"></a>Python
 

@@ -4,18 +4,19 @@ description: "Webes teszteket állíthat be az Application Insightsban. Riasztá
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +34,7 @@ A webes teszteknek két típusa létezik:
 
 Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 
-## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1. Erőforrás létrehozása tesztjelentésekhez
+## <a name="create"></a>1. Erőforrás létrehozása tesztjelentésekhez
 Hagyja ki ezt a lépést, ha már [beállított egy Application Insights-erőforrást][start] ehhez az alkalmazáshoz, és ha ugyanezen a helyen szeretné megtekinteni a rendelkezésre állási jelentéseket.
 
 Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
@@ -42,7 +43,7 @@ Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Porta
 
 Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Összes erőforrás** lehetőségre.
 
-## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2. URL-ping teszt létrehozása
+## <a name="setup"></a>2. URL-ping teszt létrehozása
 Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csempét. Kattintson rá az alkalmazás Webes tesztek paneljének megnyitásához, és adjon hozzá egy webes tesztet.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -66,7 +67,7 @@ Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csem
 ### <a name="test-more-urls"></a>További URL-címek tesztelése
 Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
-## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3. A webes teszt eredményeinek megtekintése
+## <a name="monitor"></a>3. A webes teszt eredményeinek megtekintése
 Néhány perc elteltével az eredmények a Webes teszt panelben láthatóak.
 
 ![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
@@ -75,7 +76,7 @@ Kattintson az összegző diagram bármely sávjára az időszak részletesebb me
 
 Ezek a diagramok az alkalmazás összes webes tesztjének eredményeit egyesítik.
 
-## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>Ha hibákat lát
+## <a name="failures"></a>Ha hibákat lát
 Kattintson egy piros pontra.
 
 ![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/open-instance.png)
@@ -100,7 +101,7 @@ Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából áll
 > A többlépéses webes tesztek díjkötelesek. [Díjszabási séma](http://azure.microsoft.com/pricing/details/application-insights/)
 > 
 
-Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studióval, majd fel kell tölteni a felvételt az Application Insightsba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
+Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
 
 Vegye figyelembe, hogy a tesztekben nem használhat kódolt függvényeket: a forgatókönyv lépéseinek szkriptekként kell szerepelniük a .webtest fájlban.
 
@@ -109,7 +110,10 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 1. Hozzon létre egy webes teljesítményt tesztelő projektet.
 
-    ![A Visual Studióban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![A Visual Studio Enterprise kiadásban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+
+ * *Nem jelenik meg a webes teljesítmény- és terheléstesztelés sablonja?* – Zárja be a Visual Studio Enterprise-t. Nyissa meg a **Visual Studio telepítőjét** a Visual Studio Enterprise-telepítés módosításához. Az **Individual Components** (Egyedi összetevők) területen válassza a **Web Performance and load testing tools** (Webes teljesítmény- és terheléstesztelési eszközök) lehetőséget.
+
 2. Nyissa meg a .webtest fájlt, és kezdje meg a rögzítést.
 
     ![Nyissa meg a .webtest fájlt, és kattintson a Record (Rögzítés) gombra.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
@@ -207,7 +211,7 @@ Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközel
 * Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitelesítő visszaküldi a tokent, és használja a webhely felé indított lekérdezésben.
   (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
 
-## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> Teszt szerkesztése vagy letiltása
+## <a name="edit"></a> Teszt szerkesztése vagy letiltása
 Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
 
 ![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
@@ -256,12 +260,12 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
     Sajnos azt nem támogatjuk.
 
-## <a name="a-namevideoavideo"></a><a name="video"></a>Videó
+## <a name="video"></a>Videó
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
 >
 >
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Következő lépések
+## <a name="next"></a>Következő lépések
 [Diagnosztikai naplók keresése][diagnostic]
 
 [Hibaelhárítás][qna]
@@ -274,9 +278,4 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

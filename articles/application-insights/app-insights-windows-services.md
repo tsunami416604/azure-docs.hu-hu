@@ -1,5 +1,5 @@
 ---
-title: "Application Insights Windows-szolgáltatásokhoz és feldolgozói szerepkörökhöz | Microsoft Docs"
+title: "Azure Application Insights Windows-szolgáltatásokhoz és feldolgozói szerepkörökhöz | Microsoft Docs"
 description: "Adja hozzá manuálisan az Application Insights SDK-t az ASP.NET-alkalmazáshoz a használat, a rendelkezésre állás és a teljesítmény elemzése érdekében."
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,9 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 926f77b6674a0dba92e160435e4cce7bb0de160d
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -30,7 +31,7 @@ A következők szükségesek:
 * Egy [Microsoft Azure](http://azure.com)-előfizetés. Ha a csapata vagy a szervezete rendelkezik Azure-előfizetéssel, a tulajdonosa Önt is hozzáadhatja a [Microsoft-fiókja](http://live.com) segítségével.
 * Visual Studio 2013 vagy újabb.
 
-## <a name="a-nameadda1-create-an-application-insights-resource"></a><a name="add"></a>1. Application Insights-erőforrás létrehozása
+## <a name="add"></a>1. Application Insights-erőforrás létrehozása
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/), és hozzon létre egy új Application Insights-erőforrást. Az alkalmazás típusának válassza az ASP.NET lehetőséget.
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/app-insights-windows-services/01-new-asp.png)
@@ -46,7 +47,7 @@ A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-
 
 Az új erőforrás létrehozásához az imént elvégzett lépések jól használhatók bármely alkalmazás figyelésének megkezdéséhez. Most már küldhet ide adatokat.
 
-## <a name="a-namesdka2-install-the-sdk-in-your-application"></a><a name="sdk"></a>2. Az SDK telepítése az alkalmazásban
+## <a name="sdk"></a>2. Az SDK telepítése az alkalmazásban
 Az Application Insights SDK telepítése és konfigurálása a használt platformtól függően eltérő lehet. ASP.NET alkalmazásoknál ez nagyon egyszerű.
 
 1. Visual Studióban szerkessze a webalkalmazási projekt NuGet-csomagjait.
@@ -84,14 +85,14 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 Hasznos lehet a kialakítási kulcsot kódból megadni, ha [a különböző felépítéskonfigurációkban váltogatni szeretné a kulcsot](app-insights-separate-resources.md). Ha a kulcsot kódból adja meg, nem kell azt beállítania a `.config` fájlban.
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> A projekt futtatása
+## <a name="run"></a> A projekt futtatása
 Futtassa az **F5** billentyűvel az alkalmazást, és próbálja ki: nyisson meg több oldalt, hogy létrejöjjön valamennyi telemetria.
 
 A Visual Studióban láthatja az elküldött események számát.
 
 ![Események száma a Visual Studióban](./media/app-insights-windows-services/appinsights-09eventcount.png)
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> A telemetriai adatok megtekintése
+## <a name="monitor"></a> A telemetriai adatok megtekintése
 Térjen vissza az [Azure Portalra](https://portal.azure.com/), és keresse meg az Application Insights-erőforrást.
 
 Az Áttekintés diagramokon keresse meg az adatot. Először csak egy vagy két pontot lát. Példa:
@@ -128,12 +129,11 @@ Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-
 > 
 > 
 
+## <a name="video"></a>Videó
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
 ## <a name="next-steps"></a>Következő lépések
 * [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -16,10 +16,5 @@ Ez az oktatóanyag a következőket mutatja be:
 
 * Egy IoT Hub létrehozása az Azure Portallal.
 * Eszközidentitás létrehozása az IoT Hubban.
-* Egy szimulált eszközalkalmazás létrehozása, amely telemetriai adatokat küld a megoldás háttérrendszerének, és parancsokat fogad a megoldás háttérrendszeréből.
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+* Egy szimulált eszközalkalmazás létrehozása, amely telemetriai adatokat küld a megoldás háttérrendszerének.
 

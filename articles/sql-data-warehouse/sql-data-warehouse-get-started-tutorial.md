@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -127,7 +127,7 @@ Ebben a lépésben egy felhasználói fiókot hozhat létre az adattárház elé
 
 - Az SQL Data Warehouse előre meghatározott adatbázis-szerepköröket, úgynevezett erőforrásosztályokat alkalmaz a különböző mennyiségű memória, processzor-erőforrás és egyidejű hely lefoglalásához az egyes felhasználók számára. Az egyes felhasználók kicsi, közepes, nagy vagy extra nagy erőforrásosztályokba tartozhatnak. Az adott falhasználó erőforrásosztálya határozza meg, hogy a felhasználó milyen erőforrásokkal rendelkezik a lekérdezések és betöltési műveletek futtatásához.
 
-- Az adattömörítés optimalizálásához általában nagy vagy extra nagy erőforrást szükséges lefoglalni a felhasználó számára. További információkat az erőforrásosztályokról [itt](./sql-data-warehouse-develop-concurrency.md#resource-classes) talál.
+- Az optimális adattömörítéshez szükség lehet arra, hogy nagy vagy nagyon nagy erőforrást foglaljon le a felhasználó számára. További információkat az erőforrásosztályokról [itt](./sql-data-warehouse-develop-concurrency.md#resource-classes) talál.
 
 ### <a name="create-an-account-that-can-control-a-database"></a>Az adatbázisok vezérlésére alkalmas fiók létrehozása
 

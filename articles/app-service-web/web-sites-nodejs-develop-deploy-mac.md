@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 4b8eb863a1fcb65c307870619ea9d8942c57a906
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 335c6fc1bab097367f2d380466d19ea70c7660c2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -187,7 +187,7 @@ A Node.js a modulok széles választékát kínálja, amelyeket az alkalmazásai
 
 Ha az Azure-on történő üzembe helyezést követően problémája adódik az alkalmazás használatával, a probléma diagnosztizálásával kapcsolatban információkat a [How to debug a Node.js application in Azure App Service](web-sites-nodejs-debug.md) (Node.js-alkalmazás hibakeresése az Azure App Service szolgáltatásban) című részben talál.
 
-Ebben a cikkben webalkalmazás létrehozását mutatjuk be az Azure portál használatával. Ugyanezen műveletek végrehajtásához használhatja az [Azure parancssori felületét](../xplat-cli-install.md) vagy az [Azure PowerShellt](/powershell/azureps-cmdlets-docs) is.
+Ebben a cikkben webalkalmazás létrehozását mutatjuk be az Azure portál használatával. Ugyanezen műveletek végrehajtásához használhatja az [Azure parancssori felületét](../cli-install-nodejs.md) vagy az [Azure PowerShellt](/powershell/azureps-cmdlets-docs) is.
 
 A Node.js-alkalmazásoknak az Azure-on történő fejlesztéséről további információkat a következő témakörben talál: [Node.js fejlesztői központ](/develop/nodejs/).
 

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: c99788aded849933289555dd133b8146d6b2bdf2
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 37311ea17004d8c5cfe9bfc9360c3972e39fb7f5
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -25,9 +26,10 @@ ms.openlocfilehash: c99788aded849933289555dd133b8146d6b2bdf2
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-átjárókapcsolat a helyszíni hálózathoz az Azure Resource Manager-alapú üzemi modell és az Azure Portal használatával. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
 
@@ -50,7 +52,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 * Egy kifelé irányuló, nyilvános IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial).
 
-### <a name="a-namevaluesasample-configuration-values-for-this-exercise"></a><a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
+### <a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
 Ha gyakorlatként használja ezeket a lépéseket, ezeket a konfigurációs mintaértékeket használhatja:
 
 * **Virtuális hálózat neve:** TestVNet1
@@ -70,22 +72,22 @@ Ha gyakorlatként használja ezeket a lépéseket, ezeket a konfigurációs mint
 * **Helyi hálózati átjáró neve:** Site2
 * **Kapcsolat neve:** VNet1toSite2
 
-## <a name="a-namecreatvneta1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
+## <a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
 Ha már rendelkezik egy virtuális hálózattal, győződjön meg arról, hogy a beállításai kompatibilisek a VPN-átjáró kialakításával. Különösen ügyeljen az esetleges olyan alhálózatokra, amelyek átfedésbe kerülhetnek más hálózatokkal. Egymást átfedő alhálózatok esetén a kapcsolat nem fog megfelelően működni. Ha a virtuális hálózat a megfelelő beállításokkal lett konfigurálva, folytassa a [DNS-kiszolgáló megadása](#dns) szakaszban leírt lépésekkel.
 
 ### <a name="to-create-a-virtual-network"></a>Virtuális hálózat létrehozása
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="a-namesubnetsa2-add-additional-address-space-and-subnets"></a><a name="subnets"></a>2. További címterek és alhálózatok felvétele
+## <a name="subnets"></a>2. További címterek és alhálózatok felvétele
 Miután létrehozta a virtuális hálózatot, további címtereket és alhálózatokat adhat hozzá.
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="a-namednsa3-specify-a-dns-server"></a><a name="dns"></a>3. DNS-kiszolgáló megadása
+## <a name="dns"></a>3. DNS-kiszolgáló megadása
 ### <a name="to-specify-a-dns-server"></a>DNS-kiszolgáló megadása
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## <a name="a-namegatewaysubneta4-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>4. Átjáróalhálózat létrehozása
+## <a name="gatewaysubnet"></a>4. Átjáróalhálózat létrehozása
 Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, létre kell hoznia az átjáróalhálózatot ahhoz a virtuális hálózathoz, amelyhez csatlakozni szeretne. Ha lehetséges, a legjobb megoldás egy átjáróalhálózat létrehozása /28 vagy /27 CIDR-blokk használatával annak érdekében, hogy a jövőbeli további konfigurációs követelmények számára elegendő IP-címet biztosíthasson.
 
 Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) az átjáróalhálózat létrehozásakor.
@@ -93,13 +95,13 @@ Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [ért
 ### <a name="to-create-a-gateway-subnet"></a>Átjáróalhálózat létrehozása
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="a-namevnetgatewaya5-create-a-virtual-network-gateway"></a><a name="VNetGateway"></a>5. Virtuális hálózati átjáró létrehozása
+## <a name="VNetGateway"></a>5. Virtuális hálózati átjáró létrehozása
 Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [mintakonfiguráció-értékeket](#values).
 
 ### <a name="to-create-a-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## <a name="a-namelocalnetworkgatewaya6-create-a-local-network-gateway"></a><a name="LocalNetworkGateway"></a>6. Helyi hálózati átjáró létrehozása
+## <a name="LocalNetworkGateway"></a>6. Helyi hálózati átjáró létrehozása
 A „helyi hálózati átjáró” a helyszíni helyet jelenti. A helyi hálózati átjárónak meg kell adni egy nevet, amellyel az Azure hivatkozhat rá. 
 
 Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [mintakonfiguráció-értékeket](#values).
@@ -107,10 +109,10 @@ Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [minta
 ### <a name="to-create-a-local-network-gateway"></a>Helyi hálózati átjáró létrehozása
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
-## <a name="a-namevpndevicea7-configure-your-vpn-device"></a><a name="VPNDevice"></a>7. VPN-eszköz konfigurálása
+## <a name="VPNDevice"></a>7. VPN-eszköz konfigurálása
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-## <a name="a-namecreateconnectiona8-create-a-site-to-site-vpn-connection"></a><a name="CreateConnection"></a>8. Helyek közötti VPN-kapcsolat létrehozása
+## <a name="CreateConnection"></a>8. Helyek közötti VPN-kapcsolat létrehozása
 Hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a VPN-eszköz között. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. A megosztott kulcsnak meg kell egyeznie a VPN-eszköze konfigurálásakor használt értékkel. 
 
 A szakasz lépéseinek megkezdése előtt győződjön meg arról, hogy a virtuális hálózati átjáró és a helyi hálózati átjárók sikeresen létrejöttek. Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket az [értékeket](#values) a kapcsolat létrehozásakor.
@@ -118,7 +120,7 @@ A szakasz lépéseinek megkezdése előtt győződjön meg arról, hogy a virtu�
 ### <a name="to-create-the-vpn-connection"></a>VPN-kapcsolat létrehozása
 [!INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-rm-portal-include.md)]
 
-## <a name="a-nameverifyconnectiona9-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>9. A VPN-kapcsolat ellenőrzése
+## <a name="VerifyConnection"></a>9. A VPN-kapcsolat ellenőrzése
 A VPN-kapcsolatot ellenőrizheti a portálon, vagy a PowerShell használatával is.
 
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
@@ -126,10 +128,5 @@ A VPN-kapcsolatot ellenőrizheti a portálon, vagy a PowerShell használatával 
 ## <a name="next-steps"></a>Következő lépések
 *  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 *  Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

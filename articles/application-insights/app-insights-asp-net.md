@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 05b642949205d7698fbcf791a5d2f06528ff239e
-ms.openlocfilehash: e827bddfa0bcc1c1e46d06c6856033e77859c7fb
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -197,6 +197,10 @@ Ne feledje azonban, hogy a buildverzió számát csak a Microsoft Build Engine h
 Ha a Visual Studio Team Servicest használja, egy új verzió kibocsátásakor diagramjaihoz [kiadási jelölőt](app-insights-annotations.md) adhat hozzá. Az alábbi képen látható, hogy jelenik meg a jelölő.
 
 ![Diagramon található példa kiadási jegyzet képernyőképe](./media/app-insights-asp-net/release-annotation.png)
+
+## <a name="video"></a>Videó
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Következő lépések
 **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.

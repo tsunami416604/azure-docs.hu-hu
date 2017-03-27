@@ -109,11 +109,11 @@
 #### [Fürthálózatminták](service-fabric-patterns-networking.md)
 #### [Csomóponttípusok és virtuálisgép-méretezési csoportok](service-fabric-cluster-nodetypes.md)
 #### [Fürt skálázása](service-fabric-cluster-scale-up-down.md)
+#### [Fürt programozott skálázása](service-fabric-cluster-programmatic-scaling.md)
 #### [Fürt frissítése](service-fabric-cluster-upgrade.md)
 #### [Fürt törlése](service-fabric-cluster-delete.md)
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-fabric-settings.md)
-#### [Fürt biztonságossá tétele tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
 #### [Fürttanúsítványok hozzáadása vagy váltása](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Nyilvános fürt ingyenes kipróbálása](http://aka.ms/tryservicefabric)
 
@@ -131,7 +131,8 @@
 
 ## Alkalmazások életciklus-kezelése
 ### [Áttekintés](service-fabric-application-lifecycle.md)
-### [A folyamatos integráció beállítása](service-fabric-set-up-continuous-integration.md)
+### [A folyamatos integráció beállítása a VSTS-sel](service-fabric-set-up-continuous-integration.md)
+### [Linuxos Java-alkalmazás üzembe helyezése a Jenkins használatával](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 ### [Az ImageStoreConnectionString beállítás ismertetése](service-fabric-image-store-connection-string.md)
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [PowerShell](service-fabric-deploy-remove-applications.md)

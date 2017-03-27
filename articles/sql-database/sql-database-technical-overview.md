@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/20/2016
+ms.date: 03/17/2017
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
-ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c505844cc2b7c745a1106b3c446833fb206ca98a
+ms.lasthandoff: 03/17/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Mi az SQL Database? Bevezetés az SQL Database-be
 Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motorom alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, beépített üzletmenet-folytonosságot és adatvédelmet kínál számos szolgáltatási szinten. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat. Ezáltal megkönnyíti az új megoldások fejlesztését, a meglévő SQL Server-megoldások áthelyezését, valamint a meglévő SQL Server-megoldások kiterjesztését a Microsoft Cloudra anélkül, hogy mindehhez új készségeket kellene elsajátítania.
 
-Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Ha készen áll, hogy elvégezze a gyakorlati oktatóanyagokat, akkor keresse meg [az első SQL Database adatbázis létrehozását](sql-database-get-started.md) vagy a [rugalmas készletek létrehozását](sql-database-elastic-pool-manage-portal.md) ismertető szakaszt. Tekintse meg a következő, rövid bemutatót tartalmazó videót.
+Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
+ - [SQL Database létrehozása az Azure Portalon](sql-database-get-started-portal.md)  
+ - [SQL Database létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
+ - [SQL Database létrehozása PowerShell használatával](sql-database-get-started-powershell.md)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-create-DBs-in-seconds/player]
-> 
-> 
+Több Azure CLI és PowerShell-mintát talál itt:
+ - [Azure CLI-minták az Azure SQL Database-hez](sql-database-cli-samples.md)
+ - [Azure PowerShell-minták az Azure SQL Database-hez](sql-database-powershell-samples.md)
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>Teljesítmény módosítása és skálázása leállási idő nélkül
 Az SQL Database szolgáltatás három, különböző szolgáltatásszinttel rendelkezik: Alapszintű, Standard és Prémium. Az egyes szolgáltatásszintek [különböző teljesítmény- és képességszinteket](sql-database-service-tiers.md) kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz munkaterhelésig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később az aktuális szükségletek alapján manuálisan vagy programon keresztül bármikor [módosíthatja a szolgáltatásszintet](sql-database-service-tiers.md). Mindezt anélkül teheti meg, hogy a leállással járna az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.

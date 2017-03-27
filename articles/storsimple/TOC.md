@@ -161,6 +161,7 @@
 
 ### Hibaelhárítás
 #### [Üzembe helyezési problémák](storsimple-troubleshoot-deployment.md)
+#### [Diagnosztikai eszköz használata](storsimple-8000-diagnostics.md)
 #### [Működési problémák](storsimple-troubleshoot-operational-device.md)
 #### [Hardver cseréje](storsimple-hardware-component-replacement.md)
 ##### [Az eszközvezérlő cseréje](storsimple-controller-replacement.md)
@@ -208,7 +209,9 @@
 ### [A StorSimple Data Manager használata](storsimple-data-manager-ui.md)
 
 ## Útmutató
-### [A .NET használata az adatok átalakításához](storsimple-data-manager-dotnet-jobs.md)
+### [A .NET használata feladatok indításához](storsimple-data-manager-dotnet-jobs.md)
+### [Az Automation használata feladatok indításához](storsimple-data-manager-job-using-automation.md)
+### [Blob alapértelmezett elérési útjának módosítása](storsimple-data-manager-change-default-blob-path.md)
 
 # StorSimple partnerek számára
 ## Áttekintés
@@ -235,10 +238,5 @@
 ## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
 ## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

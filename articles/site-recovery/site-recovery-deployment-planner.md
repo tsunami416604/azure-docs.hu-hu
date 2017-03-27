@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery Deployment Planner VMware Azure-hoz| Microsoft Docs
+title: "Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs"
 description: "Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója"
 services: site-recovery
 documentationcenter: 
@@ -15,493 +15,552 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 2575621d72b7db2b090ba923324697b7fa7b8308
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 33f1be6911178315752ce9c39aa1428b70db835c
 ms.lasthandoff: 03/15/2017
 
 
 ---
-#<a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
+# <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
+Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
+## <a name="overview"></a>Áttekintés
 
-##<a name="overview"></a>Áttekintés
+A VMware virtuális gépek Site Recovery-vel történő védelmének megkezdése előtt elegendő sávszélességet kell kiosztania a napi szintű adatváltozások alapján, hogy elérje a kívánt helyreállítási időkorlátot (RPO). Ügyeljen arra, hogy üzembe helyezze a megfelelő számú helyszíni konfigurációs és folyamatkiszolgálót.
 
-A VMware virtuális gépek Azure Site Recovery-vel történő védelmének megkezdése előtt elegendő sávszélességet kell kiosztania a napi szintű adatváltozások alapján, hogy elérje a kívánt RPO-t. Üzembe kell helyeznie a megfelelő számú helyszíni konfigurációs és folyamatkiszolgálót. Létre kell hoznia a megfelelő típusú és számú standard vagy prémium szintű cél Azure Storage-tárfiókot is, a fokozatosan növekvő használat során megnövekedett éles kiszolgálók miatt. A tároló típusa virtuális gépenként dönthető el a munkaterhelés jellemzői (R/W IOPS, adatváltozás) és az Azure Site Recovery korlátai alapján.  
+Létre kell hoznia a megfelelő típusú és számú cél Azure-tárfiókot is. Hozzon létre standard vagy prémium szintű tárfiókokat a fokozatosan növekvő használat során megnövekedett éles kiszolgálók miatt. A tárolási típust virtuális gépenként válassza ki, a számítási feladatok jellemzői (például olvasási és írási, bemeneti és kimeneti műveletek másodpercenként [IOPS], vagy adatváltozás) és Site Recovery-korlátok alapján.
 
-Az Azure Site Recovery Deployment Planner nyilvános előzetes verziója egy parancssori eszköz, amely jelenleg csak a VMware–Azure esetében érhető el. Ennek az eszköznek a használatával (termelési hatás nélkül) távolról készítheti el Vmware virtuális gépeit, hogy megismerhesse a sávszélességet és az Azure tárolási követelményeit a sikeres replikálás és feladatátvételi teszt érdekében.  Bármely helyszíni Azure Site Recovery-összetevő telepítése nélkül futtathatja az eszközt, habár a pontos elért átvitelisebesség-eredmény érdekében ajánlott a Planner futtatása egy olyan Windows Serveren, amely teljesíti annak az Azure Site Recovery Configuration Servernek a minimális követelményeit, amelyet végül telepítenie kell az éles környezetben való üzembe helyezés egyik első lépéseként.
+A Site Recovery Deployment Planner nyilvános előzetes verziója egy parancssori eszköz, amely jelenleg csak a VMware–Azure forgatókönyvhöz érhető el. Az eszközzel (termelési hatás nélkül) távolról készítheti el Vmware virtuális gépeit, hogy megismerhesse a sávszélességet és az Azure Storage követelményeit a sikeres replikálás és feladatátvételi teszt érdekében. Az eszközt helyszíni Site Recovery összetevők telepítése nélkül is futtathatja. Az elért átviteli sebesség pontos meghatározása érdekében azonban ajánlott a tervező futtatása egy olyan Windows Serveren, amely teljesíti annak a Site Recovery konfigurációs kiszolgálónak a minimális követelményeit, amelyet végül telepítenie kell az éles környezetben való üzembe helyezés egyik első lépéseként.
 
 Az eszköz a következő részleteket biztosítja:
 
-**Kompatibilitási felmérés**<br>
-* A virtuális gép jogosultságfelmérése a lemezek, a lemezméretek, az IOPS és a forgalom alapján
+**Kompatibilitási felmérés**
 
-**A hálózatisávszélesség-igény és az RPO-elemzés**<br>
-* Becsült hálózati sávszélesség a változásreplikáláshoz<br>
-* Az az átviteli sebesség, amelyet az Azure Site Recovery szolgáltatás a helyszínekről érhet el az Azure számára<br>
-* A kötegelt virtuális gépek száma a becsült sávszélesség alapján, a kezdeti replikálás adott időn belüli végrehajtásához<br>
+* A virtuális gép jogosultságfelmérése a lemezszám, a lemezméretek, az IOPS és a forgalom alapján
+* A változásreplikáláshoz szükséges becsült hálózati sávszélesség
 
-**A Microsoft Azure infrastruktúrakövetelményei**<br>
-* A tárolótípus (standard vagy prémium szintű tároló) követelménye az egyes virtuális gépekhez<br>
-* A replikáláshoz kiosztandó standard és prémium szintű tárfiókok száma<br>
-* Tárfiókok elnevezési javaslatai az Azure Storage útmutatója alapján<br>
-* Az összes virtuális gép tárfiókjának elhelyezése<br>
-* A feladatátvételi teszt/feladatátvételi előfizetés előtt kiosztandó Microsoft Azure magok száma<br>
-* A Microsoft Azure-alapú virtuális gépek ajánlott mérete az egyes helyszíni virtuális gépek számára<br>
+**A hálózatisávszélesség-igény és RPO-elemzés**
 
-**Helyszíni infrastruktúra-követelmények**<br>
-* A helyszínen üzembe helyezendő konfigurációs és folyamatkiszolgálók szükséges számú<br>
+* A változásreplikáláshoz szükséges becsült hálózati sávszélesség
+* Átviteli sebesség a Site Recovery számára a helyszíni rendszerek és az Azure között
+* A kötegelendő virtuális gépek száma a becsült sávszélesség alapján a kezdeti replikálás adott időn belüli végrehajtásához
+
+**Azure infrastruktúra-követelmények**
+
+* A tárolótípus (standard vagy prémium szintű tárfiók) követelménye az egyes virtuális gépekhez
+* A replikáláshoz beállítandó standard és prémium szintű tárfiókok teljes száma
+* Tárfiókok elnevezési javaslatai az Azure Storage útmutatója alapján
+* Az összes virtuális gép tárfiókjának elhelyezése
+* A feladatátvételi teszt vagy feladatátvétel előtt beállítandó Azure magok száma az előfizetésen
+* Az Azure virtuális gépek javasolt mérete az egyes helyszíni virtuális gépeknél
+
+**Helyszíni infrastruktúra-követelmények**
+* A megfelelő számú helyszíni konfigurációs és folyamatkiszolgáló üzembe helyezése
 
 >[!IMPORTANT]
 >
->Az eszközben minden számítás a munkaterhelési jellemzők 30%-os növekedési tényezőjével történik a folyamatosan növekedő használat lehetősége miatt, illetve a profilkészítési mérőszámok 95%-át alapul véve (R/W IOPS, adatforgalom stb.) Mindkét paraméter – a növekedési tényező és a százalékérték is – konfigurálható. További információ a [növekedési tényezőről](site-recovery-deployment-planner.md#growth-factor) és a [számításhoz használt százalékértékről](site-recovery-deployment-planner.md#percentile-value-used-for-the-calculation).
+>Mivel a használat idővel megnövekszik, az eszközben minden számítás a munkaterhelési jellemzők 30%-os növekedési tényezőjével történik, illetve a profilkészítési mérőszámok 95%-át veszi alapul (írási/olvasási IOPS, adatforgalom stb.). Mindkét elem (a növekedési tényező és a százalékérték is) konfigurálható. További információkat a növekedési tényezőről „A növekedési tényezővel kapcsolatos szempontok” szakaszban találhat. További információkat a százalékértékről „A számításhoz használt százalékérték” szakaszban találhat.
 >
 
-
 ## <a name="requirements"></a>Követelmények
-Az eszköz két fő fázisból áll – a profil- és jelentéskészítésből. Van egy harmadik lehetőség csak az átviteli sebesség kiszámítására. Az alábbiakban találhatók a kiszolgáló követelményei, ahol a profilkészítés/átviteli sebesség mérése készül.
+Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van egy harmadik lehetőség, amely csak az átviteli sebességet számítja ki. Az alábbi táblázatban láthatók annak a kiszolgálónak a követelményei, ahonnan a profilkészítés/átviteli sebesség mérését kezdeményezi:
 
-| Követelmény | Leírás|
+| Kiszolgálókövetelmények | Leírás|
 |---|---|
-|Profilkészítés és az átviteli sebesség mérése| <br>Operációs rendszer: Microsoft Windows Server 2012 R2 <br>Ideális esetben legalább a következő konfigurációs kiszolgáló [méretével](https://aka.ms/asr-v2a-on-prem-components) egyezik<br>Gépkonfiguráció . 8 vCPU, 16 GB RAM, 300 GB HDD<br [Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)<br>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)<br>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)<br> Internet-hozzáférés a Microsoft Azure szolgáltatáshoz erről a kiszolgálóról<br> Microsoft Azure Storage-fiók<Br>Rendszergazdai hozzáférés a kiszolgálón<br>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gép átlagosan 3 lemezzel 30 napig készít profilokat)|
-| Jelentéskészítés| Bármely 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC/Windows Server |
-| Felhasználói engedélyek | Csak olvasási jogosultság a felhasználói fióknak a VMware vCenter/vSphere kiszolgáló profilkészítés közben való hozzáféréséhez|
-
+|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Microsoft Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li></ul> |
+| Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
+| Felhasználói engedélyek | Csak olvasási jogosultság a felhasználói fióknak a VMware vCenter/VMware vSphere ESXi kiszolgáló profilkészítés közben való hozzáféréséhez |
 
 > [!NOTE]
 >
-> Az eszköz csak a VMDK- és RDM-lemezzel rendelkező virtuális gépeknek tud profilt készíteni. Nem képes az iSCSI-vagy NFS-lemezzel rendelkező virtuális gépek profilkészítésére. Bár az Azure Site Recovery támogatja az iSCSI- és NFS-lemezeket a VMware-kiszolgálókkal, az üzembe helyezési tervező nincs a vendéggépben, és csak a vCenter teljesítményszámlálók használatával készít profilokat, így az eszköz nem lát ezekben a lemeztípusokban.
+> Az eszköz csak a VMDK- és RDM-lemezzel rendelkező virtuális gépeknek tud profilt készíteni. Nem képes az iSCSI- vagy NFS-lemezzel rendelkező virtuális gépek profilkészítésére. A Site Recovery támogatja az iSCSI- és NFS-lemezeket a VMware-kiszolgálókon, azonban az üzembe helyezési tervező nem a vendéggépen belül fut, és csak a vCenter teljesítményszámlálók használatával készít profilokat, így az eszköz számára nem láthatók ezek a lemeztípusok.
 >
 
+## <a name="download-and-extract-the-public-preview"></a>Nyilvános előzetes verzió letöltése és kibontása
+1. Töltse le a [Site Recovery Deployment Planner legújabb nyilvános előzetes verzióját](https://aka.ms/asr-deployment-planner).  
+Az eszköz .zip-mappába van csomagolva. Az eszköz jelenlegi verziója csak a VMware–Azure forgatókönyvet támogatja.
 
-##<a name="download"></a>Letöltés
-[Töltse le](https://aka.ms/asr-deployment-planner) az Azure Site Recovery Deployment Planner legújabb nyilvános előzetes verzióját.  Az eszköz zip formátumba van csomagolva.  Az eszköz jelenlegi verziója csak a VMware–Azure forgatókönyvet támogatja.
+2. Másolja a zip-fájlt a Windows Serveren belül oda, ahonnan futtatni kívánja az eszközt.  
+Az eszközt futtathatja Windows Server 2012 R2-ről, ha a kiszolgáló hálózati hozzáférésével képes csatlakozni a ahhoz a vCenter kiszolgálóhoz/vSphere ESXi-gazdagéphez, amely a profilkészítéshez használt virtuális gépeket üzemelteti. Ajánlott azonban egy olyan kiszolgálón futtatni az eszközt, amelynek a hardverkonfigurációja megfelel a [konfigurációs kiszolgáló méretezési útmutatójának](https://aka.ms/asr-v2a-on-prem-components). Ha már üzembe helyezte a Site Recovery helyszíni összetevőit, futtassa az eszközt a konfigurációs kiszolgálóról.
 
-Másolja a zip-fájlt a Windows Serveren belül oda, ahonnan futtatni kívánja az eszközt. Habár a profillal ellátandó virtuális gépeket tartalmazó VMware vCenter-kiszolgálóhoz vagy a VMware vSphere-gazdagéphez való csatlakozáshoz futtathatja az eszközt bármely hálózati hozzáféréssel rendelkező Windows Server 2012 R2 operációs rendszerről, ajánlott egy olyan kiszolgálón futtatni az eszközt, amelynek a hardverkonfigurációja a [konfigurációs kiszolgáló méretezési útmutatója](https://aka.ms/asr-v2a-on-prem-components) alapján készült.  Ha már üzembe helyezte az Azure Site Recovery helyszíni összetevőit, futtassa az eszközt a konfigurációs kiszolgálóról. A konfigurációs kiszolgálóval megegyező (beépített folyamatkiszolgálóval rendelkező) hardverkonfiguráció ajánlott azon a kiszolgálón, ahol futtatja az eszközt, így az eszköz által jelentett elért átviteli sebesség meg fog egyezni az Azure Site Recovery replikálás során elérhető tényleges átviteli sebességgel – az átviteli sebesség számítása a kiszolgálón és a kiszolgáló hardverkonfigurációján (CPU, tárterület stb.) elérhető hálózati sávszélességtől függ. Ha az eszközt bármely másik kiszolgálóról futtatja, arról a kiszolgálóról történik a átviteli sebesség kiszámolása a Microsoft Azure-ba, és a kiszolgáló hardverkonfigurációja eltérhet a konfigurációs kiszolgálóétól, így az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
+ A konfigurációs kiszolgálóval megegyező (beépített folyamatkiszolgálóval rendelkező) hardverkonfiguráció ajánlott azon a kiszolgálón, ahol futtatja az eszközt. Az ilyen konfiguráció biztosítja, hogy az eszköz által jelentett elért átviteli sebesség megegyezik a Site Recovery által replikáció közben elért tényleges átviteli sebességgel. Az átviteli sebesség kiszámítása a kiszolgálón elérhető hálózati sávszélességtől és a kiszolgáló hardverkonfigurációjától (processzor, tárterület stb.) függ. Ha az eszközt bármely másik kiszolgálóról futtatja, az arról a kiszolgálóról a Microsoft Azure irányába elérhető átviteli sebesség lesz kiszámítva. Mivel a kiszolgáló hardverkonfigurációja eltérhet a konfigurációs kiszolgálóétól, lehetséges, hogy az eszköz által jelentett elért átviteli sebesség nem lesz pontos.
 
-Csomagolja ki a tömörített mappát. Több fájlt és almappát láthat. Az ASRDeploymentPlanner.exe futtatható a szülőmappában.
+3. Csomagolja ki a .zip mappát.  
+A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-E:\ASR Deployment Planner-Preview_v1.1.zip
+    Példa:  
+    Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki.
+   E:\ASR Deployment Planner-Preview_v1.1.zip
 
-E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
 
-##<a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Funkciók
 A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
 
-1.    Profilkészítés  
-2.    Jelentéskészítés
-3.    Átviteli sebesség lekérdezése
+1. Profilkészítés  
+2. Jelentéskészítés
+3. Átviteli sebesség lekérdezése
 
-Először futtassa profilkészítés-módban az eszközt, hogy összegyűjtse a virtuális gép adatforgalmát és IOPS-értékét.  Ezután futtassa az eszközt a jelentés létrehozásához, hogy megtudhassa a hálózati sávszélességet és a tárolási követelményeket.
+Először futtassa profilkészítési módban az eszközt a virtuális gép adatváltozásának és IOPS-értékének összegyűjtéséhez. Ezután futtassa az eszközt a jelentés létrehozásához, hogy megtudhassa a hálózati sávszélességet és a tárolási követelményeket.
 
-##<a name="profiling"></a>Profilkészítés
-A profilkészítési módban a Deployment Planner eszköz a vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez csatlakozik, hogy összegyűjtse a virtuális gép teljesítményadatait.
+## <a name="profiling"></a>Profilkészítés
+Profilkészítési módban a Deployment Planner eszköz a vCenter-kiszolgálóhoz vagy a vSphere ESXi-gazdagéphez csatlakozik, hogy összegyűjtse a virtuális gép teljesítményadatait.
 
-* A pofilkészítés nincs hatással a virtuális gépek teljesítményére, mivel nem jön létre közvetlen kapcsolat az éles virtuális géppel. A rendszer minden teljesítményadatot összegyűjt a vCenter-kiszolgálóról / vSphere ESXi-gazdagépről.
-* A rendszer 15 percenként kérdezi le a vCenter-kiszolgálót / vSphere ESXi-gazdagépet, hogy biztosítani tudja, hogy a profilkészítés elhanyagolható hatással van a kiszolgálóra. Ez azonban nem veszélyezteti a profilkészítés pontosságát, mivel az eszköz minden percben tárolja a teljesítményszámláló adatait.
+* A profilkészítés nincs hatással az éles virtuális gépek teljesítményére, mivel nem jön létre közvetlen kapcsolat az éles virtuális gépekkel. A rendszer minden teljesítményadatot összegyűjt a vCenter-kiszolgálóról / vSphere ESXi-gazdagépről.
+* Az eszköz 15 percenként lekérdezi a vCenter-kiszolgálót vagy a vSphere ESXi-gazdagépet, hogy a profilkészítés biztosan csak elhanyagolható hatással legyen a kiszolgálóra. A lekérdezési időköz azonban nem veszélyezteti a profilkészítés pontosságát, mivel az eszköz minden percben tárolja a teljesítményszámláló adatait.
 
-####<a name="create-a-list-of-virtual-machines-to-profile"></a>A profillal ellátni kívánt virtuális gépek listájának létrehozása
-Először is szükség van a virtuális gépek listájára, amelyekhez profilt szeretne készíteni. A következő VMware vSphere PowerCLI-parancsok használatával a VMware vCenteren vagy a VMware vSphere ESXi-gazdagépen található összes virtuális gép nevét elérheti. Másik lehetőségként listázhatja azon virtuális gépek rövid nevét / IP-címét, amelyeket manuálisan szeretne a profilba helyezni.
+### <a name="create-a-list-of-vms-to-profile"></a>A profillal ellátni kívánt virtuális gépek listájának létrehozása
+Először létre kell hoznia a profillal ellátni kívánt virtuális gépek listáját. A következő eljárás VMware vSphere PowerCLI-parancsai használatával a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen található összes virtuális gép nevét elérheti. Másik lehetőségként egy fájlba listázhatja azon virtuális gépek rövid nevét vagy IP-címét, amelyeket manuálisan szeretne profillal ellátni.
 
-1.    Jelentkezzen be a virtuális gépbe, ahol a VMware vSphere PowerCLI telepítve van
-2.    A VMware vSphere PowerCLI konzol megnyitása
-3.    Győződjön meg arról, hogy a végrehajtási szabályzat nincs letiltva a szkript esetében. Ha a szabályzat le van tiltva, indítsa el a VMware vSphere PowerCLI-konzolt rendszergazdai módban, és futtassa a következő parancsot az engedélyezéséhez:
+1. Jelentkezzen be arra a virtuális gépre, amelyen a VMware vSphere PowerCLI telepítve van.
+2. Nyissa meg a VMware vSphere PowerCLI-konzolt.
+3. Ellenőrizze, hogy a végrehajtási szabályzat engedélyezve van-e a szkript esetében. Ha a szabályzat le van tiltva, indítsa el a VMware vSphere PowerCLI-konzolt rendszergazdai módban, és futtassa a következő parancsot az engedélyezéséhez:
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4.    Futtassa az alábbi két parancsot a VMware vCenteren vagy a VMware vSphere ESXi-n található virtuális gépek nevének lekéréséhez, és mentse őket egy szöveges dokumentumban (.txt).
+4. Futtassa az alábbi két parancsot a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen található összes virtuális gép nevének lekéréséhez és a nevek egy szöveges dokumentumba (.txt) mentéséhez.
 Cserélje le a &lsaquo;server name&rsaquo; (kiszolgáló neve), a &lsaquo;user name&rsaquo; (felhasználónév), a &lsaquo;password&rsaquo; (jelszó), az &lsaquo;outputfile.txt&rsaquo; (kimenetifájl.txt) paramétereket saját értékeire.
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
+5. Nyissa meg a kimeneti fájlt a Jegyzettömbben, és másolja egy másik fájlba (pl. ProfileVMList.txt) minden olyan virtuális gép nevét, amelyről profilt kíván készíteni. Minden virtuális gép nevét külön sorba írja. A rendszer ezt a fájlt használja majd bemenetként a parancssori eszköz *-VMListFile* paraméteréhez.
 
-5.    Nyissa meg a kimeneti fájlt a Jegyzettömbben. Másolja egy másik fájlba (pl. ProfileVMList.txt) minden olyan virtuális gép nevét, amelyről profilt kíván készíteni. Minden virtuális gép nevét külön sorba írja. A rendszer ezt a fájlt használja majd bemenetként a parancssori eszköz -VMListFile paraméteréhez
+    ![Virtuálisgép-nevek listája a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
-    ![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/profile-vm-list.png)
-
-
-####<a name="start-profiling"></a>Profilkészítés indítása
-Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készíteni, futtathatja az eszközt profilkészítési módban. Az alábbi lista az eszköz profilkészítési módjában használható kötelező és választható paramétereket sorolja fel. A szögletes zárójelek ([]) közé írt paraméterek nem kötelezők.
+### <a name="start-profiling"></a>Profilkészítés indítása
+Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készíteni, futtathatja az eszközt profilkészítési módban. Az alábbi lista az eszköz profilkészítési módjában használható kötelező és választható paramétereket sorolja fel.
 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 | Paraméter neve | Leírás |
 |---|---|
-| -Művelet |      StartProfiling |
-| -Kiszolgáló | Azon vCenter-kiszolgáló/ESXi-gazdagép teljes tartományneve vagy IP-címe, amelynek virtuális gépeiről profilt szeretne készíteni.|
-| -Felhasználó | A vCenter-kiszolgálóhoz/ESXi-gazdagéphez való csatlakozáshoz használt felhasználónév. A felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie.|
-| -VMListFile |    Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő nevekkel. <br> Például: A „VMList.txt” fájl az alábbi virtuális gépeket tartalmazza:<br>virtual_machine_A <br>10.150.29.110<br>virtual_machine_B |
+| -Művelet | StartProfiling |
+| -Kiszolgáló | Azon vCenter-kiszolgáló vagy vSphere ESXi-gazdagép teljes tartományneve vagy IP-címe, amelynek virtuális gépeiről profilt szeretne készíteni.|
+| -Felhasználó | A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt felhasználónév. A felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie.|
+| -VMListFile |    Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő nevekkel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
 | -NoOfDaysToProfile | A napok száma, ameddig a profilkészítést futtatni szeretné. Javasoljuk, hogy legalább 15 napig futtassa a profilkészítést. Ez biztosítja számítási feladatok mintájának megfigyelését a környezetben a meghatározott időtartamon belül, amely alapján pontos javaslat adható |
-| [-Címtár] |    Az UNC elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nem adja meg, a rendszer az aktuális elérés úton található „ProfiledData” könyvtárat használja alapértelmezett könyvtárként. |
-| [-Password ] | A vCenter-kiszolgálóhoz/ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg most, a rendszer a parancs végrehajtásakor rákérdez.|
-|  [-StorageAccountName]  | A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges Azure Storage-fióknév. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához.|
-| [-StorageAccountKey] | A tárfiók eléréséhez használt Azure Storage-fiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > [Tárfiók neve] > Beállítások > Hozzáférési kulcsok >&1;. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) lehetőségre. |
+| -Directory | (Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nem adja meg könyvtár nevét, a rendszer az aktuális elérési úton található „ProfiledData” könyvtárat használja alapértelmezett könyvtárként. |
+| -Password | (Nem kötelező) A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg most, a rendszer a parancs végrehajtásakor rákérdez.|
+| -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához.|
+| -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok >&1;. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 
-Javasoljuk, hogy legalább 15–30 napig folytassa a virtuális gépek profiljának készítését. A profilkészítés időtartama alatt az ASRDeploymentPlanner.exe alkalmazás folyamatosan fut. A profilkészítés időtartama napokban adható meg az eszközben. Ha csak gyorsan tesztelni kívánja az eszközt, és néhány óráig vagy percig szeretné futtatni a profilkészítést, akkor a nyilvános előzetes verzióban napban kell megadnia az időtartamot.  Ha például 30 percig szeretné futtatni a profilkészítést, a bemenet 30 / (60*24), azaz 0,021 nap.  A minimális profilkészítési idő 30 perc.
+Javasoljuk, hogy legalább 15–30 napig folytassa a virtuális gépek profiljának készítését. A profilkészítés időtartama alatt az ASRDeploymentPlanner.exe alkalmazás folyamatosan fut. A profilkészítés időtartama napokban adható meg az eszközben. Ha csak gyorsan tesztelni kívánja az eszközt, és néhány óráig vagy percig szeretné futtatni a profilkészítést, akkor a nyilvános előzetes verzióban napban kell megadnia az időtartamot. Ha például 30 percig szeretné futtatni a profilkészítést, a bemenet legyen 30/(60*24), azaz 0,021 nap. A minimális profilkészítési idő 30 perc.
 
-A profilkészítés során lehetősége átadhat Azure Storage-fióknév és -kulcsot, amivel megtudhatja, hogy az Azure Site Recovery mekkora átviteli sebességet érhet el a konfigurációs kiszolgálóról vagy a folyamatkiszolgálóról az Azure-ba történő replikáció során. Ha nem ad át Azure Storage-fióknevet és -kulcsot a profilkészítés során, az eszköz nem számítja ki az elérhető átviteli sebességet.
+A profilkészítés során lehetősége van átadni egy tárfióknevet és -kulcsot, amivel megtudhatja, hogy a Site Recovery mekkora átviteli sebességet érhet el a konfigurációs kiszolgálóról vagy a folyamatkiszolgálóról az Azure-ba történő replikáció során. Ha nem ad át tárfióknevet és -kulcsot a profilkészítés során, az eszköz nem számítja ki az elérhető átviteli sebességet.
 
+#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>1. példa: Profilkészítés virtuális gépről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
+```
+ASRDeploymentPlanner.exe **-Operation** StartProfiling -Directory “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  30  **-User** vCenterUser1 **-StorageAccountName**  asrspfarm1 **-StorageAccountKey** Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+```
 
-Az eszköz több példánya is futtatható egyszerre különböző virtuálisgép-készleteken. Győződjön meg arról, hogy a virtuális gépek neve nem ismétlődik egyik profilkészítési készletben sem. Ha például profilt készített tíz virtuális gépről (VM1–VM10), és néhány nap elteltével további öt virtuális gépről szeretne profilt készíteni (VM11–VM15), akkor futtathatja az eszközt egy másik parancssori konzolból a második készleten (VM11–VM15). Arról azonban meg kell győződnie, hogy a második virtuálisgép-készlet nem tartalmaz olyan virtuálisgép-nevet, amely szerepel az első profilkészítési példányban, és hogy a második futtatás esetében eltérő kimeneti könyvtárat használ. Ha az eszköz két példánya ugyanazokról a virtuális gépekről készít profilt, és ugyanazt a kimeneti könyvtárat is használják, a létrehozott jelentés helytelen lesz.
+#### <a name="example-2-profile-vms-for-15-days"></a>2. példa: Profilkészítés virtuális gépről 15 napon keresztül
+Az eszköz több példánya is futtatható egyszerre különböző virtuálisgép-csoportokon. Győződjön meg arról, hogy a virtuális gépek neve nem ismétlődik egyik profilkészítési csoportban sem. Ha például profilt készített tíz virtuális gépről (VM1–VM10), és néhány nap elteltével további öt virtuális gépről szeretne profilt készíteni (VM11–VM15), akkor a második csoporton (VM11–VM15) egy másik parancssori konzolról futtathatja az eszközt. Győződjön meg arról, hogy a második virtuálisgép-csoport nem tartalmaz olyan virtuálisgép-nevet, amely szerepel az első profilkészítési példányban, vagy a második futtatás esetében használjon eltérő kimeneti könyvtárat. Ha az eszköz két példánya ugyanazokról a virtuális gépekről készít profilt, és ugyanazt a kimeneti könyvtárat is használják, a létrehozott jelentés helytelen lesz.
 
-A rendszer egyszer, a profilkészítési művelet elején rögzíti virtuálisgép-konfigurációkat, és egy VMDetailList.xml nevű fájlban tárolja őket. A rendszer ezt az információt használja fel a jelentés létrehozásakor. A virtuális gép konfigurációjában, a profilkészítés elindítása és leállása közötti időszakban végzett módosításokat (pl. magok, lemezek, hálózati adapterek stb. számának növelése) nem rögzíti a rendszer. Ha a profilkészítés közben az egyik virtuális gép konfigurációja megváltozik, akkor a nyilvános előzetes verzióban az alábbi megkerülő megoldással kérheti le a virtuális gép legújabb adatait a jelentés készítésekor.   
+A rendszer egyszer, a profilkészítési művelet elején rögzíti virtuálisgép-konfigurációkat, és egy VMDetailList.xml nevű fájlban tárolja őket. Ezeket az adatokat azután a jelentés létrehozásakor használja. Ha a profilkészítés során a virtuális gépek konfigurációjának bármely része módosul (például nő a magok, a lemezek vagy a hálózati adapterek száma), azt a rendszer nem rögzíti. Ha a profilkészítés során módosul az egyik virtuális gép konfigurációja, amelyről profilt készített, akkor a nyilvános előzetes verzióban a következő megkerülő megoldással kérheti le a virtuális gép legfrissebb adatait a jelentés készítésekor:
 
-* Készítsen biztonsági másolatot a „VMdetailList.xml” fájlról, és törölje a fájlt a jelenlegi helyéről.
+* Készítsen biztonsági másolatot a VMdetailList.xml fájlról, és törölje a fájlt a jelenlegi helyéről.
 * Adja meg a -User és -Password argumentumokat a jelentés létrehozásakor.
 
 A profilkészítési parancs számos fájlt létrehoz a profilkészítési könyvtárban. Ezeket ne törölje, mert az hatással lenne a jelentésre.
 
-#####<a name="example-1-to-profile-virtual-machines-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>1. példa: Profilkészítés virtuális gépről 30 napon keresztül, és a helyszínről az Azure-ba történő átvitel sebességének meghatározása
-ASRDeploymentPlanner.exe **-Operation** StartProfiling -Directory “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  30  **-User** vCenterUser1 **-StorageAccountName**  asrspfarm1 **-StorageAccountKey** Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
-
-#####<a name="example-2-to-profile-virtual-machines-for-15-days"></a>2. példa: Profilkészítés virtuális gépről 15 napon keresztül
+```
 ASRDeploymentPlanner.exe **-Operation** StartProfiling **-Directory** “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  15  -User vCenterUser1
+```
 
-#####<a name="example-3-to-profile-virtual-machines-for-1-hour-for-a-quick-test-of-the-tool"></a>3. példa: Profilkészítés virtuális gépről 1 órán keresztül az eszköz gyors teszteléséhez
+#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>3. példa: Profilkészítés virtuális gépekről 1 órán keresztül az eszköz gyors teszteléséhez
+```
 ASRDeploymentPlanner.exe **-Operation** StartProfiling **-Directory** “E:\vCenter1_ProfiledData” **-Server** vCenter1.contoso.com **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-NoOfDaysToProfile**  0.04  **-User** vCenterUser1
-
+```
 
 >[!NOTE]
 >
-> * Ha a kiszolgáló, amelyen az eszköz fut, újraindul vagy összeomlik, vagy ha bezárja az eszközt a Ctrl + C billentyűkombinációval, a rendszer megőrzi azokat az adatokat, amelyekről profil készült. Előfordulhat, hogy az utolsó 15 percnyi profilkészítés adatai emiatt elvesznek. A kiszolgáló újraindítása után ismét futtatnia kell az eszközt profilkészítési módban.
->
-> * Ha megadja az Azure Storage-fióknevet és -kulcsot, az eszköz a profilkészítés utolsó lépéseként megméri az átviteli sebességet. Ha bezárja az eszközt, mielőtt a profilkészítés teljesen befejeződött volna, a rendszer nem számítja ki az átviteli sebességet. Bármikor lekérdezheti az átviteli sebességet a jelentés létrehozása előtt, ha futtatja a GetThroughput műveletet a parancssori konzolból. Ellenkező esetben a létrehozott jelentés nem tartalmazza majd az elért átviteli sebességről szóló információt.
->
+>* Ha a kiszolgáló, amelyen az eszköz fut, újraindul vagy összeomlik, vagy ha bezárja az eszközt a Ctrl + C billentyűkombinációval, a rendszer megőrzi a profilkészítés során létrehozott adatokat. Előfordulhat azonban, hogy az utolsó 15 percnyi profilkészítés adatai elvesznek. Ebben az esetben a kiszolgáló újraindítása után ismét futtassa az eszközt profilkészítési módban.
+>* Ha megadja a tárfióknevet és -kulcsot, az eszköz a profilkészítés utolsó lépéseként megméri az átviteli sebességet. Ha bezárja az eszközt, mielőtt a profilkészítés befejeződött volna, a rendszer nem számítja ki az átviteli sebességet. Az átviteli sebesség a jelentés létrehozása előtti lekérdezéséhez futtassa a GetThroughput műveletet a parancssori konzolból. Ellenkező esetben a létrehozott jelentés nem tartalmazza majd az átviteli sebességgel kapcsolatos információkat.
+>* Az eszköz több példánya is futtatható egyszerre különböző virtuálisgép-csoportokon. Győződjön meg arról, hogy a virtuális gépek neve nem ismétlődik egyik profilkészítési csoportban sem. Ha például profilt készített tíz virtuális gépről (VM1–VM10), és néhány nap elteltével további öt virtuális gépről szeretne profilt készíteni (VM11–VM15), akkor a második csoporton (VM11–VM15) egy másik parancssori konzolról futtathatja az eszközt. Azonban győződjön meg arról, hogy a második virtuálisgép-csoport nem tartalmaz olyan virtuálisgép-nevet, amely szerepel az első profilkészítési példányban, vagy a második futtatás esetében használjon eltérő kimeneti könyvtárat. Ha az eszköz két példánya ugyanazokról a virtuális gépekről készít profilt, és ugyanazt a kimeneti könyvtárat is használják, a létrehozott jelentés helytelen lesz.
+>* A rendszer egyszer, a profilkészítési művelet elején rögzíti virtuálisgép-konfigurációt, és egy VMDetailList.xml nevű fájlban tárolja azt. Ezeket az adatokat azután a jelentés létrehozásakor használja. Ha a profilkészítés során a virtuális gépek konfigurációjának bármely része módosul (például nő a magok, a lemezek vagy a hálózati adapterek száma), azt a rendszer nem rögzíti. Ha bármely olyan virtuális gép konfigurációja módosul az előzetes verzióban, amelyről profilt készített, a következő megkerülő megoldással kérheti le a virtuális gép legfrissebb adatait:  
+>  * Készítsen biztonsági másolatot a VMdetailList.xml fájlról, és törölje a fájlt a jelenlegi helyéről.  
+>  * Adja meg a -User és -Password argumentumokat a jelentés létrehozásakor.  
+>  
+>* A profilkészítési parancs számos fájlt létrehoz a profilkészítési könyvtárban. Ezeket ne törölje, mert az hatással lenne a jelentésre.
 
-##<a name="generate-report"></a>Jelentés létrehozása
-Az eszköz egy XLSM-fájlt (makróbarát Microsoft Excel-fájl) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve DeploymentPlannerReport_<Unique Numeric Identifier>.xlsm, és a megadott könyvtárban lesz elérhető.
+## <a name="generate-a-report"></a>Jelentés létrehozása
+Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve DeploymentPlannerReport_<*egyéni numerikus azonosító*>.xlsm, és a megadott könyvtárban lesz elérhető.
 
-A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. Az alábbi lista az eszköz jelentéskészítési módjában használható kötelező és választható paramétereket sorolja fel. A szögletes zárójelek ([]) közé írt paraméterek nem kötelezők.
+A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. A következő táblázat a jelentéskészítési módban futtatandó kötelező és nem kötelező eszközparaméterek listáját tartalmazza.
 
-ASRDeploymentPlanner.exe -Operation GenerateReport /?
+`ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
 |Paraméter neve | Leírás |
 |-|-|
 | -Művelet | Jelentés készítése |
-| -Kiszolgáló |  Annak a vCenter- vagy vSphere-kiszolgálónak a teljes tartományneve vagy IP-címe, ahol azon virtuális gépek találhatók, amelyekről profilt készített, és amelyekről most jelentést szeretne készíteni. Ügyeljen arra, hogy ha vCenter-kiszolgálót használt a profilkészítés során, akkor nem használhat vSphere-kiszolgálót a jelentéskészítéshez, és fordítva.|
-| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt készített, és amelyekről most jelentést szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő, valamint a profilkészítéskor használt nevekkel.|
-| [-Címtár] | A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
-| [-GoalToCompleteIR] |    Ennyi óra alatt kell befejeződnie azoknak a virtuális gépeknek a kezdeti replikációja, amelyekről profilt kíván készíteni. Az elkészített jelentés tartalmazza azon virtuális gépek számát, amelyeknek a kezdeti replikációja befejezhető a megadott időtartam alatt. Az alapértelmezett érték 72 óra. |
-| [-Felhasználó] | A vCenter- vagy vSphere-kiszolgálóhoz való csatlakozáshoz használt felhasználónév. A rendszer ezzel kéri le a virtuális gépek legutóbbi konfigurációs adatait a jelentéshez (pl. lemezek, magok, hálózati adapterek száma stb.). Ha nincs megadva, a rendszer a profilkészítés indításakor összegyűjtött konfigurációs adatokat használja fel. |
-| [-Jelszó] | A vCenter-kiszolgálóhoz/ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor rákérdez. |
-| [-DesiredRPO] | A kívánt helyreállítási időkorlát (RPO) percekben megadva. Az alapértelmezett érték 15 perc.|
-| [-Sávszélesség] | Sávszélesség (Mbps). A rendszer ez alapján számítja ki a helyreállítási időkorlátot a megadott sávszélességhez. |
-| [-StartDate]  | Kezdő dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. A „StartDate” és „EndDate” paraméterek megadása kötelező. Ha ezek meg vannak adva, a rendszer a StartDate és EndDate paraméterek közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
-| [-EndDate] | Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az „EndDate” és „StartDate” paraméterek megadása kötelező. Ha ezek meg vannak adva, a rendszer a StartDate és EndDate paraméterek közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
-| [-GrowthFactor] |Növekedési tényező százalékos értéke. Az alapértelmezett érték 30%.  |
+| -Kiszolgáló |  Annak a vCenter- vagy vSphere-kiszolgálónak a teljes tartományneve vagy IP-címe, ahol azon virtuális gépek találhatók, amelyekről profilt készített, és amelyekről most jelentést szeretne készíteni. (Használja a profilkészítéskor használt nevet vagy IP-címet.) Ügyeljen arra, hogy ha vCenter-kiszolgálót használt a profilkészítés során, akkor nem használhat vSphere-kiszolgálót a jelentéskészítéshez, és fordítva.|
+| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt készített, és amelyekről jelentést szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő nevekkel, és egyezniük kell a profilkészítés során használt nevekkel.|
+| -Directory | (Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha a név nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
+| -GoalToCompleteIR | (Nem kötelező) Ennyi óra alatt kell befejeződnie azon virtuális gépek kezdeti replikációjának, amelyekről profilt kíván készíteni. Az elkészített jelentés tartalmazza azon virtuális gépek számát, amelyeknek a kezdeti replikációja befejezhető a megadott időtartam alatt. Az alapértelmezett érték 72 óra. |
+| -Felhasználó | (Nem kötelező) A vCenter- vagy vSphere-kiszolgálóhoz való csatlakozáshoz használni kívánt felhasználónév. A rendszer a név használatával kéri le a virtuális gépek legutóbbi konfigurációs adatait a jelentéshez (pl. a lemezek, magok, hálózati adapterek száma stb.). Ha a név nincs megadva, a rendszer a profilkészítés indításakor összegyűjtött konfigurációs adatokat használja fel. |
+| -Password | (Nem kötelező) A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg a jelszót paraméterként, a rendszer később, a parancs végrehajtásakor rákérdez. |
+| -DesiredRPO | (Nem kötelező) A kívánt helyreállítási időkorlát, percben megadva. Az alapértelmezett beállítás 15 perc.|
+| -Bandwidth | Sávszélesség (Mbps). A rendszer ezen paraméter alapján számítja ki az elérhető helyreállítási időkorlátot a megadott sávszélességhez. |
+| -StartDate | (Nem kötelező) Kezdő dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. A *StartDate* és az *EndDate* paraméter megadása kötelező. Ha a StartDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
+| -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az *EndDate* és a *StartDate* paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
+| -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
 
+### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>1. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
+```
+ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+```
 
-##### <a name="example-1-to-generate-report-with-default-values-when-profiled-data-is-on-the-local-drive"></a>1. példa: Jelentés készítése alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón vannak
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”
+### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>2. példa: Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
+A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
+```
+ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+```
 
-
-##### <a name="example-2-to-generate-report-when-profiled-data-is-on-a-remote-server-user-should-have-readwrite-access-on-the-remote-directory"></a>2. példa: Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón vannak. A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
-
-##### <a name="example-3-generate-report-with-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3. példa: Jelentés készítése megadott sávszélességgel és a kezdeti replikáció adott határidejű befejezésére vonatkozó céllal
+### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3. példa: Jelentés készítése megadott sávszélességgel és a kezdeti replikáció adott határidejű befejezésére vonatkozó céllal
+```
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-Bandwidth** 100 **-GoalToCompleteIR** 24
+```
 
-##### <a name="example-4-generate-report-with-5-growth-factor-instead-of-the-default-30"></a>4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
+### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
+```
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-GrowthFactor** 5
+```
 
-##### <a name="example-5-generate-report-with-a-subset-of-profiled-data-say-you-have-30-days-of-profiled-data-and-want-to-generate-the-report-for-only-20-days"></a>5. példa: Jelentés létrehozása a profilkészítés során használt adatok részhalmazával. Tegyük fel, hogy van 30 napnyi adata, amelyet a profilkészítés során hozott létre, de csak 20 napról szeretne jelentést készíteni.
+### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>5. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
+Tegyük fel, hogy van 30 napnyi adata, amelyet a profilkészítés során hozott létre, de csak 20 napról szeretne jelentést készíteni.
+```
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-StartDate**  01-10-2017:12:30 -**EndDate** 01-19-2017:12:30
+```
 
-##### <a name="example-6-generate-report-for-5-minutes-rpo"></a>6. példa: Jelentés készítése 5 perces helyreállítási időkorláttal.
+### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>6. példa: Jelentés készítése 5 perces helyreállítási időkorláttal
+```
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  **-DesiredRPO** 5
+```
 
-### <a name="percentile-value-used-for-the-calculation"></a>A számításhoz használt százalékérték
-**Alapértelmezés szerint a profilkészítés során összegyűjtött teljesítménymetrikák milyen százalékos arányát használja a rendszer a jelentés elkészítésekor?**
+## <a name="percentile-value-used-for-the-calculation"></a>A számításhoz használt százalékérték
+**Alapértelmezés szerint a profilkészítés során összegyűjtött teljesítménymetrikák milyen százalékos arányát használja az eszköz jelentések készítésekor?**
 
-Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez biztosítja, hogy a rendszer nem használja fel a virtuális gépeken tapasztalt átmeneti események (pl. naponta egyszer futtatott biztonsági mentési feladat, időszakos adatbázis-indexelés, elemzési jelentés készítése vagy bármely más, a profilkészítés ideje alatt történő, rövid ideig tartó esemény) által kiváltott 100%-os kiugrásokat a céloldali Azure Storage-re és a forrásoldali sávszélességre vonatkozó követelmények megállapításakor. A 95. százalékérték használata valós képet ad a számítási feladatok valódi jellemzőiről, és a lehető legjobb teljesítményt biztosítja, miközben ezek a számítási feladatok futnak a Microsoft Azure-on. Ezt az értéket valószínűleg nem kell gyakran módosítania, de ha úgy dönt, hogy tovább csökkenti (például 90%-ra), akkor az alapértelmezett mappában található „ASRDeploymentPlanner.exe.config” konfigurációs fájl frissítésével és mentésével létrehozhat egy új jelentést a már létező, a profilkészítés során létrehozott adatokról.
+Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez a metrika biztosítja, hogy a virtuális gépek által az ideiglenes események miatt esetlegesen észlelt 100. százalékértékes kiugrást a rendszer nem használja fel a cél tárfiók és a forrássávszélesség követelményeinek meghatározásakor. Az ideiglenes esemény lehet például egy naponta egyszer futtatott biztonsági mentési feladat, rendszeres időközönként végzett adatbázis-indexelés, elemzésijelentés-készítési tevékenység vagy bármely hasonló, rövid ideig tartó, időpontalapú esemény.
 
-        &lsaquo;add key="WriteIOPSPercentile" value="95" /&rsaquo;>      
-        &lsaquo;add key="ReadWriteIOPSPercentile" value="95" /&rsaquo;>      
-        &lsaquo;add key="DataChurnPercentile" value="95" /&rsaquo;
+A 95. százalékérték használata valós képet ad a számítási feladatok valódi jellemzőiről, és a lehető legjobb teljesítményt biztosítja, miközben a számítási feladatok futnak az Azure-on. Ezt az értéket valószínűleg nem kell módosítania. Ha úgy dönt, hogy módosítja (például a 90. százalékértékre), akkor az alapértelmezett mappában található *ASRDeploymentPlanner.exe.config* konfigurációs fájl frissítésével és mentésével létrehozhat egy új jelentést a meglévő, profilkészítés során létrehozott adatokról.
+```
+&lsaquo;add key="WriteIOPSPercentile" value="95" /&rsaquo;>      
+&lsaquo;add key="ReadWriteIOPSPercentile" value="95" /&rsaquo;>      
+&lsaquo;add key="DataChurnPercentile" value="95" /&rsaquo;
+```
 
-### <a name="growth-factor"></a>Növekedési tényező
-**Miért érdemes figyelembe venni a növekedési tényezőt az üzembe helyezés megtervezésénél?**
+## <a name="growth-factor-considerations"></a>A növekedési tényezővel kapcsolatos szempontok
+**Miért kell figyelembe vennem a növekedési tényezővel kapcsolatos szempontokat a környezetek megtervezésekor?**
 
-Rendkívül fontos figyelembe venni a növekedést a számítási feladatok jellemzőiben, feltételezve a használat lehetséges növekedését. Erre azért van szükség, mert ha beállítja a védelmet, és módosulnak a számítási feladatok jellemzői, jelenleg nincs lehetőség arra, hogy egy másik védett Azure Storage-fiókra váltson a védelem letiltása és ismételt engedélyezése nélkül. Például ha egy virtuális gép jelenleg megfelel egy standard szintű tárreplikációs fiókhoz, de például három hónap elteltével a virtuális gépen futó alkalmazás felhasználószámának növekedése miatt az adatforgalom megnő a virtuális gépen, és prémium szintű tárolóra van szükség. Ebben ez esetben le kell tiltania a védelmet, majd ismét engedélyeznie kell egy prémium szintű tárfiókon, hogy az Azure Site Recovery replikációja tartani tudja a lépést a nagyobb forgalommal. Emiatt erősen ajánlott, hogy az üzembe helyezés tervezése során számoljon a növekedéssel, amelynek alapértelmezett értéke 30%. Az alkalmazása használati mintáját és növekedési előrejelzéseit Ön ismeri a legjobban, és a jelentés elkészítése közben igény szerint módosíthatja ezt a számot. Azt is megteheti, hogy több jelentést készít különböző növekedési tényezőkkel, de ugyanazokról az adatokról. Így eldöntheti, hogy melyik, a céloldali Azure Storage-ra, valamint a forrásoldali sávszélességre vonatkozó javaslatok felelnek meg leginkább Önnek.
+Rendkívül fontos figyelembe venni a növekedést a számítási feladatok jellemzőiben, feltételezve a használat lehetséges növekedését. Ha beállítja a védelmet, és módosulnak a számítási feladatok jellemzői, nincs lehetőség arra, hogy egy másik védett tárfiókra váltson a védelem letiltása és ismételt engedélyezése nélkül.
 
-Az elkészített Microsoft Excel-jelentés a következő munkalapokat tartalmazza
+Tegyük fel például, hogy a virtuális gép jelenleg megfelel egy standard szintű tárreplikációs fiókhoz. A következő néhány hónapban számos változás következhet be:
+
+* Nő azoknak a felhasználóknak a száma, akik az alkalmazást a virtuális gépen futtatják.
+* Az így létrejövő megnövekedett adatforgalom miatt a virtuális gépnek prémium szintű tárolóra van szüksége, hogy a Site Recovery replikációja tartani tudja a lépést.
+* Ennek következtében le kell tiltania, majd újra engedélyeznie kell a védelmet egy prémium szintű tárfiókon.
+
+Erősen ajánlott, hogy az üzembe helyezés tervezése során számoljon a növekedéssel, amelynek az alapértelmezett értéke 30 százalék. Az alkalmazása használati mintáját és növekedési előrejelzéseit Ön ismeri a legjobban, és a jelentés elkészítése közben igény szerint módosíthatja ezt a számot. Továbbá több jelentést is készíthet különböző növekedési tényezőkkel, de ugyanazokról az adatokról. Így eldöntheti, hogy melyik, a céloldali tárolóra, valamint a forrásoldali sávszélességre vonatkozó javaslatok felelnek meg leginkább Önnek.
+
+Az elkészített Microsoft Excel-jelentés a következő információkat tartalmazza:
 
 * [Input](site-recovery-deployment-planner.md#input) (Bemenet)
-* [Recommedations](site-recovery-deployment-planner.md#recommendations-with-desired-rpo-as-input) (Javaslatok)
-* [Recommedations-Bandwidth Input](site-recovery-deployment-planner.md#recommendations-with-available-bandwidth-as-input) (Javaslatok – Bemeneti sávszélesség)
+* [Javaslatok](site-recovery-deployment-planner.md#recommendations-with-desired-rpo-as-input)
+* [Recommendations-Bandwidth Input](site-recovery-deployment-planner.md#recommendations-with-available-bandwidth-as-input) (Javaslatok – Bemeneti sávszélesség)
 * [VM<->Storage Placement](site-recovery-deployment-planner.md#vm-storage-placement) (Virtuálisgép<->tároló elhelyezése)
 * [Compatible VMs](site-recovery-deployment-planner.md#compatible-vms) (Kompatibilis virtuális gépek)
 * [Incompatible VMs](site-recovery-deployment-planner.md#incompatible-vms) (Nem kompatibilis virtuális gépek)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/dp-report.png)
+![Deployment Planner](./media/site-recovery-deployment-planner/dp-report.png)
 
+## <a name="get-throughput"></a>Átviteli sebesség lekérdezése
 
-##<a name="get-throughput"></a>Átviteli sebesség lekérdezése
-Ha meg szeretné becsülni az átviteli sebességet, amelyet az Azure Site Recovery el tud érni helyszínről az Azure-ba történő replikáció során, futtassa az eszközt GetThroughput módban. Az eszköz arról a kiszolgálóról számítja ki az átviteli sebességet, amelyen fut (ez a kiszolgáló optimális esetben a konfigurációs kiszolgálók méretezési útmutatóján alapul).  Ha már üzembe helyezte az Azure Site Recovery infrastruktúra-összetevőit a helyszínen, futtassa az eszközt a konfigurációs kiszolgálón.
+Ha meg szeretné becsülni az átviteli sebességet, amelyet a Site Recovery el tud érni helyszínről az Azure-ba történő replikáció során, futtassa az eszközt GetThroughput módban. Az eszköz arról a kiszolgálóról számítja ki az átviteli sebességet, amelyen fut. Ez a kiszolgáló optimális esetben a konfigurációs kiszolgálók méretezési útmutatóján alapul. Ha már üzembe helyezte a Site Recovery infrastruktúra-összetevőit a helyszínen, futtassa az eszközt a konfigurációs kiszolgálón.
 
-Nyisson meg egy parancssori konzolt, és keresse meg az ASR üzembehelyezés-tervező eszköz mappáját.  Futtassa az ASRDeploymentPlanner.exe fájlt az alábbi paraméterekkel. A szögletes zárójelek ([]) közé írt paraméterek nem kötelezők.
+Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehelyezés-tervező eszköz mappáját. Futtassa az ASRDeploymentPlanner.exe fájlt az alábbi paraméterekkel.
 
-ASRDeploymentPlanner.exe -Operation GetThroughput /?
+`ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
 |Paraméter neve | Leírás |
 |-|-|
 | -művelet | Átviteli sebesség lekérdezése |
-| [-Címtár] | A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha nincs megadva, a rendszer a „ProfiledData” könyvtárat használja.  |
-| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges Azure Storage-fióknév. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. |
-| -StorageAccountKey | A tárfiók eléréséhez használt Azure Storage-fiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > [Tárfiók neve] > Beállítások > Hozzáférési kulcsok >&1;. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) lehetőségre. |
-| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő nevekkel.<br>Például A „VMList.txt” fájl az alábbi virtuális gépeket tartalmazza:<br>virtual machine_A <br>10.150.29.110<br>virtual machine_B|
+| -Directory | (Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha a könyvtár neve nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
+| -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. |
+| -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok >&1;. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
+| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 
-Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a # a virtuális merevlemez számát jelöli) is létrehoz a megadott könyvtárban.  Az eszköz ezeket a fájlokat tölti fel az Azure Storage-fiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után törli ezeket a fájlokat az Azure Storage-fiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat az Azure Storage-ból és a helyi kiszolgálóról. Ebben az esetben manuálisan kell törölnie a fájlokat.
+Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a „#” a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárolóból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
 
-Az eszköz egy adott időpontban méri az átviteli sebességet, és a kapott érték az Azure Site Recovery által a replikáció során elérhető maximális átviteli sebesség, feltéve, hogy a többi tényező sem változik. Ha például valamelyik alkalmazás több sávszélességet kezd el felhasználni ugyanazon a hálózaton belül, a tényleges átviteli sebesség változhat a replikáció során. Ha a GetThroughput parancsot egy konfigurációs kiszolgálóról futtatja, az eszköz nem veszi figyelembe a védett virtuális gépeket és a folyamatban lévő replikációkat. Az átviteli sebesség mérésének eredménye eltérő lesz attól függően, hogy a védett virtuális gépek adatváltozása magas vagy alacsony a GetThroughput művelet végrehajtásakor.  Ajánlott az eszközt különböző időpontokban futtatni a profilkészítés során, hogy átláthassa, milyen átviteli sebességek érhetők el a különféle időpontokban. Az eszköz a legutóbb mért átviteli sebességet jeleníti meg a jelentésben.
+Az eszköz egy meghatározott időpontban méri az átviteli sebességet, és a kapott érték a Site Recovery által a replikáció során elérhető maximális átviteli sebesség, feltéve, hogy a többi tényező sem változik. Ha például valamelyik alkalmazás több sávszélességet kezd el felhasználni ugyanazon a hálózaton belül, a tényleges átviteli sebesség változhat a replikáció során. Ha a GetThroughput parancsot egy konfigurációs kiszolgálóról futtatja, az eszköz nem veszi figyelembe a védett virtuális gépeket és a folyamatban lévő replikációkat. Az átviteli sebesség mérésének eredménye eltérő lesz, ha a védett virtuális gépek adatváltozása magas a GetThroughput művelet végrehajtásakor. Ajánlott az eszközt különböző időpontokban futtatni a profilkészítés során, hogy átláthassa, milyen átviteli sebességi szintek érhetők el a különféle időpontokban. Az eszköz a legutóbb mért átviteli sebességet jeleníti meg a jelentésben.
 
-
-##### <a name="example"></a>Példa
+### <a name="example"></a>Példa
+```
 ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter1_ProfiledData **-VMListFile** E:\vCenter1_ProfiledData\ProfileVMList1.txt  **-StorageAccountName**  asrspfarm1 **-StorageAccountKey** by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+```
 
 >[!NOTE]
 >
-> * Olyan kiszolgálón futtassa az eszközt, amelynek a tároló- és processzorjellemzői megegyeznek a konfigurációs kiszolgálóéval
+> Olyan kiszolgálón futtassa az eszközt, amelynek a tároló- és processzorjellemzői megegyeznek a konfigurációs kiszolgálóéval
 >
-> * A replikációhoz a helyreállítási időkorlát 100%-os eléréséhez javasolt sávszélességet ossza ki. Ha a megfelelő sávszélesség kiosztása után sem nő az eszköz által jelentett elért átviteli sebesség, ellenőrizze a következőket:
+> A replikációhoz a helyreállítási időkorlát 100 százalékos eléréséhez javasolt sávszélességet állítsa be. Ha a megfelelő sávszélesség beállítása után nem nő az eszköz által jelentett elért átviteli sebesség, tegye a következőket:
 >
-> a. Ellenőrizze, hogy van-e olyan hálózati szolgáltatásminőség (QoS), amely korlátozná az Azure Site Recovery átviteli sebességét
+>  1. Ellenőrizze, hogy van-e olyan hálózati szolgáltatásminőség (QoS), amely korlátozná a Site Recovery átviteli sebességét.
 >
-> b. Ellenőrizze, hogy a hálózati késés minimalizálása érdekében az Azure Site Recovery-tároló a legközelebbi fizikai támogatott Microsoft Azure-régióban található-e
+>  2. Ellenőrizze, hogy a hálózati késés minimalizálása érdekében a Site Recovery-tároló a legközelebbi fizikai támogatott Microsoft Azure-régióban található-e.
 >
-> c. Ellenőrizze a helyi tároló jellemzőit, és próbálja meg fejleszteni a hardvert (pl. váltás HDD-ről SSD-re stb.)
+>  3. Ellenőrizze a helyi tároló jellemzőit, és állapítsa meg, hogy fejleszthető-e a hardver (pl. váltás HDD-ről SSD-re).
 >
-> d. Módosítsa az Azure Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
->
+>  4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-##<a name="recommendations-with-desired-rpo-as-input"></a>Javaslatok a kívánt helyreállítási időkorlát (RPO) bemenetként való megadásával
+## <a name="recommendations-with-desired-rpo-as-input"></a>Javaslatok a kívánt helyreállítási időkorlát (RPO) bemenetként való megadásával
 
-###<a name="profiled-data"></a>Profilkészítés során létrehozott adatok
+### <a name="profiled-data"></a>Profilkészítés során létrehozott adatok
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/profiled-data-period.png)
+![A profilkészítés során létrehozott adatok nézete a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
-**Profiled data period** (Profilkészítési adatok létrehozásának időtartama) – A profilkészítés futtatásának időtartama. Az eszköz alapértelmezés szerint a profilkészítés során létrehozott minden adatot számításba vesz, kivéve, ha megadja a StartDate és EndDate beállításokat a jelentéskészítés során, és egy adott időszakról készít jelentést.
+**Profiled data period** (Profilkészítési adatok létrehozásának időtartama): A profilkészítés futtatásának időtartama. Az eszköz alapértelmezés szerint a profilkészítés során létrehozott minden adatot számításba vesz, kivéve, ha egy adott időszakról készít jelentést, és megadja a StartDate és EndDate beállításokat a jelentéskészítés során.
 
-**Server Name** (Kiszolgáló neve) – Azon VMware vCenter vagy ESXi-gazdagép neve vagy IP-címe, amelynek a virtuális gépeiről a jelentés készül.
+**Server Name** (Kiszolgáló neve): Azon VMware vCenter vagy ESXi-gazdagép neve vagy IP-címe, amelynek a virtuális gépeiről a jelentés készül.
 
-**Desired RPO** (Kívánt RPO) – Az üzembe helyezés kívánt helyreállítási időkorlátja. Alapértelmezés szerint a szükséges hálózati sávszélesség kiszámítása 15, 30 és 60 perces RPO értékkel történik. A kiválasztástól függően az eszköz frissíti az érintett értékeket a munkalapon. Ha használta a DesiredRPOinMin paramétert a jelentés elkészítése közben, akkor az az érték jelenik meg a Kívánt helyreállítási időkorlát legördülő listában.
+**Desired RPO** (Kívánt RPO): Az üzembe helyezés kívánt helyreállítási időkorlátja. Alapértelmezés szerint a szükséges hálózati sávszélesség kiszámítása 15, 30 és 60 perces RPO értékkel történik. A kiválasztástól függően az eszköz frissíti az érintett értékeket a munkalapon. Ha használta a *DesiredRPOinMin* paramétert a jelentés elkészítése közben, akkor az az érték jelenik meg a Kívánt helyreállítási időkorlát eredményei között.
 
-###<a name="profiling-overview"></a>Profilkészítés áttekintése
+### <a name="profiling-overview"></a>Profilkészítés áttekintése
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/profiling-overview.png)
+![A profilkészítés eredményei a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profiling-overview.png)
 
-**Total Profiled Virtual Machines** (Minden virtuális gép, amelyről profil készült) – Azon virtuális gépek teljes száma, amelyekről profil készült. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer ezeket figyelmen kívül hagyja a jelentéskészítés során, és nem számítja bele őket a profilkészítésben részt vevő virtuális gépek teljes számába.
+**Total Profiled Virtual Machines** (Minden virtuális gép, amelyről profil készült): Azon virtuális gépek teljes száma, amelyekről profil készült. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer ezeket figyelmen kívül hagyja a jelentéskészítés során, és nem számítja bele őket a profilkészítésben részt vevő virtuális gépek teljes számába.
 
-**Compatible Virtual Machines** (Kompatibilis virtuális gépek) – Azon virtuális gépek száma, amelyek az Azure-ban védhetők az Azure Site Recovery használatával. Ez azon kompatibilis virtuális gépek teljes számát jelöli, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, az Azure Storage-fiókok, a Microsoft Azure-magok, valamint a konfigurációs és további folyamatkiszolgálók számát. Az egyes kompatibilis virtuális gépek részletei elérhetők a jelentés Compatible VMs (Kompatibilis virtuális gépek) munkalapján.
+**Compatible Virtual Machines** (Kompatibilis virtuális gépek): Azon virtuális gépek száma, amelyek az Azure-ban védhetők a Site Recovery használatával. Ez azon kompatibilis virtuális gépek teljes számát jelöli, amelyekhez a rendszer kiszámolta a szükséges hálózati sávszélességet, a tárfiókok, az Azure-magok, valamint a konfigurációs és további folyamatkiszolgálók számát. Az egyes kompatibilis virtuális gépek részletei elérhetők a „Compatible VMs” (Kompatibilis virtuális gépek) szakaszban.
 
-**Incompatible Virtual Machines** (Nem kompatibilis virtuális gépek) – Azon virtuális gépek száma, amelyekről profil készült, és amelyek nem védhetők Azure Site Recoveryvel. Az inkompatibilitás okait az alábbi, Nem kompatibilis virtuális gépek című szakaszban olvashatja. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer nem számítja bele őket a nem kompatibilis virtuális gépek számába. Az ilyen virtuális gépek az Incompatible VMs (Nem kompatibilis virtuális gépek) munkalap végén, „Data not found” (Nem található adat) megjelöléssel láthatók.
+**Incompatible Virtual Machines** (Nem kompatibilis virtuális gépek): Azon virtuális gépek száma, amelyekről profil készült, és amelyek nem védhetők Site Recoveryvel. Az inkompatibilitás okait a „Nem kompatibilis virtuális gépek” című szakaszban olvashatja. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer nem számítja bele őket a nem kompatibilis virtuális gépek számába. Az ilyen virtuális gépek az „Incompatible VMs” (Nem kompatibilis virtuális gépek) szakasz végén, „Data not found” (Nem található adat) megjelöléssel láthatók.
 
-**Desired RPO** (Kívánt RPO) – A kívánt helyreállítási időkorlát percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15, 30 és 60 perc. Az alapértelmezett érték 15 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található Desired RPO (Kívánt RPO) legördülő listából. Ha egyéni értékű „-DesiredRPO” paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a Kívánt helyreállítási időkorlát legördülő listában.
+**Desired RPO**(Kívánt RPO): A kívánt helyreállítási időkorlát, percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15 (alapértelmezett érték), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található Desired RPO (Kívánt RPO) legördülő listából. Ha egyéni értékű *-DesiredRPO* paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a Kívánt helyreállítási időkorlát legördülő listában.
 
-###<a name="required-network-bandwidth-mbps"></a>Szükséges hálózati sávszélesség (Mbps)
+### <a name="required-network-bandwidth-mbps"></a>Szükséges hálózati sávszélesség (Mbps)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
+![Szükséges hálózati sávszélesség a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
 
-**To meet RPO 100% of the time:** (Az RPO betartása az idő 100%-ában): Ez az ajánlott sávszélesség (Mbps), amelyet ki kell osztania, ha mindig garantáltan el kívánja érni a kívánt helyreállítási időkorlátot. Ekkora sávszélességet kell kijelölnie az összes kompatibilis virtuális gép stabil állapotú változásreplikációjához, ha biztosan ki kívánja zárni a helyreállítási időkorlát megszegését.
+**To meet RPO 100 percent of the time:** (Az RPO betartása az idő 100 százalékában): Az ajánlott sávszélesség (Mbps), amelyet ki kell osztania, ha mindig garantáltan el kívánja érni a kívánt helyreállítási időkorlátot. Ekkora sávszélességet kell kijelölnie az összes kompatibilis virtuális gép stabil állapotú változásreplikációjához, ha biztosan ki kívánja zárni a helyreállítási időkorlát megszegését.
 
-**To meet RPO 90% of the time** (Az RPO betartása az idő 90%-ában) Ha a szélessávú kapcsolat díjszabása miatt vagy egyéb okból kifolyólag nincs lehetősége arra, hogy akkora sávszélességet osszon ki, amellyel a kívánt helyreállítási időkorlát mindig betartható, akkor kioszthat egy alacsonyabb sávszélesség-értéket, amellyel az idő 90%-ában betarthatja a kívánt RPO-t. Az alacsonyabb sávszélesség-kiosztás következményeinek áttekintéséhez a jelentés lehetőségelemzést biztosít elemzést a helyreállítási időkorlát várható megszegéseinek számáról és időtartamáról.
+**To meet RPO 90 percent of the time** (Az RPO betartása az idő 90 százalékában): Ha a szélessávú kapcsolat díjszabása miatt vagy egyéb okból kifolyólag nincs lehetősége arra, hogy akkora sávszélességet állítson be, amellyel a kívánt helyreállítási időkorlát mindig betartható, akkor választhat egy alacsonyabb sávszélesség-beállítást, amellyel az idő 90 százalékában betarthatja a kívánt RPO-t. Az alacsonyabb sávszélesség-beállítás következményeinek áttekintéséhez a jelentés lehetőségelemzést biztosít elemzést a helyreállítási időkorlát várható megszegéseinek számáról és időtartamáról.
 
-**Achieved Throughput:** (Elért átviteli sebesség): Az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és az Azure Storage-fióknak helyet adó Microsoft Azure-régió között. Hozzávetőleges átviteli sebességet jelöl, amely akkor érhető el, ha a kompatibilis virtuális gépeket az Azure Site Recoveryvel védi, feltéve, hogy a konfigurációs kiszolgáló vagy folyamatkiszolgáló tárolója és hálózati jellemzői megegyeznek azon kiszolgálóéval, ahol az eszközt futtatta.    
+**Achieved Throughput:** (Elért átviteli sebesség): Az átviteli sebesség a GetThroughput parancs futtatásához használt kiszolgáló és a tárfióknak helyet adó Microsoft Azure-régió között. Ez az átvitelisebesség-érték azt a becsült szintet jelöli, amely akkor érhető el, ha a kompatibilis virtuális gépeket a Site Recoveryvel védi, feltéve, hogy a konfigurációs kiszolgáló vagy folyamatkiszolgáló tárolója és hálózati jellemzői megegyeznek azon kiszolgálóéval, amelyen az eszközt futtatta.
 
-A replikációhoz a helyreállítási időkorlát 100%-os eléréséhez javasolt sávszélességet ossza ki. Ha a megfelelő sávszélesség kiosztása után sem nő az eszköz által jelentett elért átviteli sebesség, ellenőrizze a következőket:
+A replikációhoz a helyreállítási időkorlát 100 százalékos eléréséhez javasolt sávszélességet kell beállítania. Ha a sávszélesség beállítása után nem nő az eszköz által jelentett elért átviteli sebesség, tegye a következőket:
 
-a.    Ellenőrizze, hogy van-e olyan hálózati szolgáltatásminőség (QoS), amely korlátozná az Azure Site Recovery átviteli sebességét
+1. Ellenőrizze, hogy van-e olyan hálózati szolgáltatásminőség (QoS), amely korlátozná a Site Recovery átviteli sebességét.
 
-b.    Ellenőrizze, hogy a hálózati késés minimalizálása érdekében az Azure Site Recovery-tároló a legközelebbi fizikai támogatott Microsoft Azure-régióban található-e
+2. Ellenőrizze, hogy a hálózati késés minimalizálása érdekében a Site Recovery-tároló a legközelebbi fizikai támogatott Microsoft Azure-régióban található-e.
 
-c.    Ellenőrizze a helyi tároló jellemzőit, és próbálja meg fejleszteni a hardvert (pl. váltás HDD-ről SSD-re stb.)
+3. Ellenőrizze a helyi tároló jellemzőit, és állapítsa meg, hogy fejleszthető-e a hardver (pl. váltás HDD-ről SSD-re).
 
-d. Módosítsa az Azure Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
+4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-Ha az eszközt olyan konfigurációs kiszolgálón vagy folyamatkiszolgálón futtatja, amely már rendelkezik védett virtuális gépekkel, futtassa az eszközt többször is, mert az elért átviteli sebesség eltérő lesz az aktuális adatforgalomtól függően.
+Ha az eszközt olyan konfigurációs kiszolgálón vagy folyamatkiszolgálón futtatja, amely már rendelkezik védett virtuális gépekkel, futtassa többször azt eszközt. Az elért átviteli sebesség eltérő lesz az aktuális adatforgalomtól függően.
 
-Az Azure Site Recovery minden vállalati üzemelő példánya esetében javasoljuk az [ExpressRoute](https://aka.ms/expressroute) használatát.
+A Site Recovery minden vállalati üzemelő példánya esetében az [ExpressRoute](https://aka.ms/expressroute) használata javasolt.
 
-###<a name="required-azure-storage-accounts"></a>Szükséges Azure Storage-fiókok
-Ez a diagram az összes kompatibilis virtuális gép védelméhez szükséges (standard és prémium szintű) Azure Storage-fiókok teljes számát mutatja.  A [Recommended VM placement plan](site-recovery-deployment-planner.md#vm-storage-placement) (Ajánlott virtuálisgép-elhelyezési terv) elemre kattintva megtudhatja, melyik tárfiókot érdemes használni a különféle virtuális gépekhez.  
+### <a name="required-storage-accounts"></a>Szükséges tárfiókok
+A következő diagram az összes kompatibilis virtuális gép védelméhez szükséges (standard és prémium szintű) tárfiókok teljes számát mutatja. A „VM-storage placement” (Virtuálisgép-tároló elhelyezése) szakaszból megtudhatja, hogy melyik tárfiókot melyik virtuális géphez használhatja.
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
+![Szükséges tárfiókok a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
 
-###<a name="required-number-of-azure-cores"></a>Szükséges Azure-magok száma
-Ez az összes kompatibilis virtuális gép feladatátvétele vagy feladatátvételi tesztje előtt kiosztandó magok teljes száma. Ha az előfizetés nem rendelkezik a megfelelő számú maggal, az Azure Site Recovery nem tudja létrehozni a virtuális gép(ek)et a feladatátvételi teszt vagy a tényleges feladatátvétel alatt.
+### <a name="required-number-of-azure-cores"></a>Szükséges Azure-magok száma
+Ez az eredmény az összes kompatibilis virtuális gép feladatátvétele vagy feladatátvételi tesztje előtt beállítandó magok teljes száma. Ha az előfizetés túl kevés maggal rendelkezik, a Site Recovery nem tudja létrehozni a virtuális gépeket a feladatátvételi teszt vagy a tényleges feladatátvétel alatt.
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
+![Szükséges Azure-magok száma a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
 
-###<a name="required-on-premises-infrastructure"></a>Szükséges helyszíni infrastruktúra
-Ez az összes virtuális gép védelméhez konfigurálandó konfigurációs kiszolgálók és további folyamatkiszolgálók teljes száma. Ez a szám a legnagyobb konfiguráció támogatott [korlátain](https://aka.ms/asr-v2a-on-prem-components) alapul. Ez a korlát lehet a napi adatforgalom vagy a védett virtuális gépek maximális száma (virtuális gépenként átlagosan három lemezt feltételezve). Ha eléri valamelyik korlátot a konfigurációs kiszolgálón vagy a további folyamatkiszolgálón, az eszköz további kiszolgálókat javasol. A napi összes adatforgalom és a védett lemezek teljes számának részletei az [Input](site-recovery-deployment-planner.md#input) (Bemenet) munkalapon találhatók.
+### <a name="required-on-premises-infrastructure"></a>Szükséges helyszíni infrastruktúra
+Ez az adat az összes virtuális gép védelméhez szükséges konfigurálandó konfigurációs kiszolgálók és további folyamatkiszolgálók teljes száma. A [konfigurációs kiszolgáló támogatott méretére vonatkozó javaslatoktól](https://aka.ms/asr-v2a-on-prem-components) függően az eszköz további kiszolgálókat javasolhat. A javaslat a napi adatforgalmon vagy a védett virtuális gépek maximális számán alapul (virtuális gépenként átlagosan három lemezt feltételezve), ha eléri valamelyik korlátot a konfigurációs kiszolgálón vagy a további folyamatkiszolgálón. A napi összes adatforgalom és a védett lemezek teljes számának részletei az „Input” (Bemenet) szakaszban találhatók.
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
+![Szükséges helyszíni infrastruktúra a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
 
-###<a name="what-if-analysis"></a>Lehetőségelemzés
-Ez az elemzés kiemeli, hogy hányszor szegné meg a helyreállítási időkorlátot a profilkészítés időtartama alatt, ha alacsonyabb sávszélességet állít be, amely az idő 90%-ában biztosítaná a kívánt RPO betartását. A helyreállítási időkorlát túllépése bármelyik nap egy vagy több alkalommal is előfordulhat – az ábra csak a napi RPO-csúcsértéket mutatja.
-Az elemzés alapján eldöntheti, hogy az RPO-túllépések teljes száma az összes nap alatt, valamint a napi RPO-csúcsérték elfogadható-e a megadott alacsonyabb sávszélesség esetén. Ha elfogadható, akkor lefoglalhatja az alacsonyabb sávszélességet a replikációhoz. Ha nem, akkor foglalja le a javasolt magasabb sávszélességet ahhoz, hogy az idő 100%-ában betarthassa az RPO-t.
+### <a name="what-if-analysis"></a>Lehetőségelemzés
+Ez az elemzés kiemeli, hogy hányszor szegné meg a helyreállítási időkorlátot a profilkészítés időtartama alatt, ha alacsonyabb sávszélességet állít be, amely az idő 90 százalékában biztosítaná a kívánt RPO betartását. A helyreállítási időkorlát túllépése bármelyik nap egy vagy több alkalommal is előfordulhat. Az ábra a napi RPO-csúcsértéket mutatja.
+Az elemzés alapján eldöntheti, hogy az RPO-túllépések teljes száma az összes nap alatt, valamint a napi RPO-csúcsérték elfogadható-e a megadott alacsonyabb sávszélesség esetén. Ha elfogadható, akkor lefoglalhatja az alacsonyabb sávszélességet a replikációhoz. Ha nem, akkor foglalja le a javasolt magasabb sávszélességet ahhoz, hogy az idő 100 százalékában betarthassa az RPO-t.
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/what-if-analysis.png)
+![Lehetőségelemzés a Deployment Planner eszközben](./media/site-recovery-deployment-planner/what-if-analysis.png)
 
-###<a name="recommended-vm-batch-size-for-initial-replication"></a>A virtuálisgép-köteg ajánlott mérete a kezdeti replikációhoz
-A szakasz arra tesz javaslatot, hogy hány virtuális gép védhető meg egyszerre úgy, hogy a kezdeti replikáció 72 órán belül befejeződjön (ez az érték konfigurálható: a jelentés létrehozásakor használja a GoalToCompleteIR paramétert a módosításához) a javasolt sávszélesség és a kívánt RPO 100%-os betartása mellett az üzembe helyezés során.  A diagram egy sávszélesség-tartományt és azt a virtuálisgép-köteg méretet mutatja, amellyel a kezdeti replikáció 72 órán belüli befejezhető. Ez a szám az összes kompatibilis virtuális gépen és a virtuális gépek átlagos észlelt méretén alapul.  
+### <a name="recommended-vm-batch-size-for-initial-replication"></a>A virtuálisgép-köteg ajánlott mérete a kezdeti replikációhoz
+A szakaszban arra teszünk javaslatot, hogy hány virtuális gép védhető meg egyszerre úgy, hogy a kezdeti replikáció 72 órán belül befejeződjön a javasolt sávszélesség és a kívánt RPO 100 százalékos betartása mellett a beállítás során. Ezen érték konfigurálható. Módosításához használja a *GoalToCompleteIR* paramétert a jelentéskészítés során.
 
-A nyilvános előzetes verzióban a jelentés nem határozza meg, hogy melyik virtuális gépeket foglalja bele egy kötegbe. A Compatible VMs (Kompatibilis virtuális gépek) munkalapon látható lemezméretek alapján kikeresheti az egyes virtuális gépek méretét, és kiválaszthatja az egyes kötegekhez tartozó virtuális gépeket, vagy választhat a számítási feladatok ismert jellemzői alapján is.  A kezdeti replikáció befejezési ideje a virtuális gépek lemezeinek tényleges méretével, a felhasznált lemezterülettel és az elérhető hálózati átviteli sebességgel arányosan változik.
+A diagram egy sávszélesség-tartományt és azt a virtuálisgép-köteg méretet mutatja, amellyel a kezdeti replikáció 72 órán belüli befejezhető. Ez a szám az összes kompatibilis virtuális gép és a virtuális gépek átlagos észlelt méretén alapul.
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
+A nyilvános előzetes verzióban a jelentés nem határozza meg, hogy melyik virtuális gépeket foglalja bele egy kötegbe. A „Compatible VMs” (Kompatibilis virtuális gépek) szakaszban látható lemezméretek alapján kikeresheti az egyes virtuális gépek méretét, és kiválaszthatja az egyes kötegekhez tartozó virtuális gépeket, vagy választhat a számítási feladatok ismert jellemzői alapján is. A kezdeti replikáció befejezési ideje a virtuális gépek lemezeinek tényleges méretével, a felhasznált lemezterülettel és az elérhető hálózati átviteli sebességgel arányosan változik.
 
-###<a name="growth-factor-and-percentile-values-used"></a>A használt növekedési tényező és százalékértékek
-A munkalap alján található szakasz a profilkészítésben részt vevő virtuális gépek összes teljesítményszámlálójához használt százalékértéket (az alapértelmezett érték 95%), valamint az összes számításban használt növekedési tényező százalékértékét (az alapértelmezett érték 30%) mutatja.
+![A virtuálisgép-köteg ajánlott mérete](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
+### <a name="growth-factor-and-percentile-values-used"></a>A használt növekedési tényező és százalékértékek
+A munkalap alján található szakasz a profilkészítésben részt vevő virtuális gépek összes teljesítményszámlálójához használt százalékértéket (az alapértelmezett érték 95 százalék), valamint az összes számításban használt növekedési tényezőt (az alapértelmezett érték 30 százalék) mutatja.
 
-##<a name="recommendations-with-available-bandwidth-as-input"></a>Javaslatok az elérhető sávszélesség bemenetként való megadásával
+![A használt növekedési tényező és százalékértékek](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
+## <a name="recommendations-with-available-bandwidth-as-input"></a>Javaslatok az elérhető sávszélesség bemenetként való megadásával
 
-Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud kiosztani az Azure Site Recovery replikációjára. Az eszközzel megadhatja a rendelkezésre álló sávszélességet (a jelentéskészítés közben, a -Bandwidth paraméterrel), és megkapja az elérhető RPO-t percben megadva. Az elérhető RPO-értéknek ismeretében eldöntheti, hogy további sávszélességet kell kiosztania, vagy elfogadja a vészhelyreállítási megoldást ezzel az RPO-val.
+![Javaslatok az elérhető sávszélesség bemenetként való megadásával](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/achievable-rpos.png)
+Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beállítani a Site Recovery replikációjára. Az eszközzel megadhatja a rendelkezésre álló sávszélességet (a jelentéskészítés közben, a -Bandwidth paraméterrel), és megkapja az elérhető RPO-t percben megadva. Az elérhető RPO-értéknek ismeretében eldöntheti, hogy további sávszélességet kell beállítania, vagy elfogadja a vészhelyreállítási megoldást ezzel az RPO-val.
 
-##<a name="input"></a>Input (Bemenet)
-Az Input (Bemenet) oldal áttekintést nyújt arról a VMware-környezetről, amelyről profilt készített.
+![Elérhető RPO 500 Mbps sávszélességhez](./media/site-recovery-deployment-planner/achievable-rpos.png)
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/Input.png)
+## <a name="input"></a>Input (Bemenet)
+Az Input (Bemenet) munkalap áttekintést nyújt arról a VMware-környezetről, amelyről profilt készített.
 
-**Start Date and End Date** (Kezdő és záró dátum) – Azon profilkészítési adatok kezdő és záró dátuma, amelyekről jelentést kíván készíteni. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődött, a záró dátum pedig az a dátum, amikor a profilkészítés leáll.  Ezek lehetnek a StartDate és EndDate értékek, ha a jelentést ezekkel a paraméterekkel hozza létre. Kezdő és záró dátum: azon profilkészítési adatok kezdő és záró dátuma, amelyekről jelentést kíván készíteni. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődött, a záró dátum pedig az a dátum, amikor a profilkészítés leáll.  Ezek lehetnek a StartDate és EndDate értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
+![Áttekintés arról a VMware-környezetről, amelyről profilt készített](./media/site-recovery-deployment-planner/Input.png)
 
-**Total number of profiling days** (Profilkészítés napjainak teljes száma) – A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma. A profilkészítés napjainak teljes száma a jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
+**Start Date** és **End Date** (Kezdő dátum és záró dátum): Azon profilkészítési adatok kezdő és záró dátuma, amelyekről jelentést kíván készíteni. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek lehetnek a StartDate és EndDate értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
 
-**Number of compatible virtual machines** (Kompatibilis virtuális gépek száma) – Ez azon kompatibilis virtuális gépek teljes számát jelöli, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges Azure Storage-fiókok, Microsoft Azure-magok, illetve konfigurációs és további folyamatkiszolgálók számát.
-Total number of disks across all compatible virtual machines (Lemezek teljes száma az összes kompatibilis virtuális gépen) – Az összes kompatibilis virtuális gépen található összes lemez. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
+**Total number of profiling days** (Profilkészítés napjainak teljes száma): A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
 
-**Average number of disks per compatible virtual machine** (Lemezek átlagos száma kompatibilis virtuális gépenként) – Az összes kompatibilis virtuális gép alapján számított átlagos lemezszám.
+**Number of compatible virtual machines** (Kompatibilis virtuális gépek száma): Ez azon kompatibilis virtuális gépek teljes számát jelöli, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges tárfiókok, Microsoft Azure-magok, illetve konfigurációs és további folyamatkiszolgálók számát.
 
-**Average disk size (GB)** (Átlagos lemezméret (GB)) – Az összes kompatibilis virtuális gép alapján számított átlagos lemezméret.
+**Total number of disks across all compatible virtual machines**(Lemezek teljes száma az összes kompatibilis virtuális gépen): Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
-**Desired RPO (minutes)** (Kívánt RPO (perc)) – Az RPO alapértelmezett értéke vagy a jelentéskészítéskor a DesiredRPO paraméterhez szükséges sávszélesség becslése érdekében megadott érték.
+**Average number of disks per compatible virtual machine** (Lemezek átlagos száma kompatibilis virtuális gépenként): Az összes kompatibilis virtuális gép alapján számított átlagos lemezszám.
 
-**Desired bandwidth (Mbps)** (Kívánt sávszélesség (Mbps)) – A jelentéskészítéskor az elérhető RPO becslése érdekében a „Bandwidth” paraméterhez megadott érték.
+**Average disk size (GB)** (Átlagos lemezméret (GB)): Az összes kompatibilis virtuális gép alapján számított átlagos lemezméret.
 
-**Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)) – Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
+**Desired RPO (minutes)** (Kívánt RPO (perc)): A helyreállításipont-célkitűzés alapértelmezett értéke vagy a jelentéskészítéskor a „DesiredRPO” paraméterhez szükséges sávszélesség becslése érdekében megadott érték.
+
+**Desired bandwidth (Mbps)** (Kívánt sávszélesség (Mbps)): A jelentéskészítéskor az elérhető RPO becslése érdekében a „Bandwidth” paraméterhez megadott érték.
+
+**Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
 
-##<a name="vm-storage-placement"></a>Virtuálisgép-tároló elhelyezése
+## <a name="vm-storage-placement"></a>Virtuálisgép-tároló elhelyezése
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/vm-storage-placement.png)
+![Virtuálisgép-tároló elhelyezése](./media/site-recovery-deployment-planner/vm-storage-placement.png)
 
-**Disk Storage Type** (Lemezes tárolás típusa) – Az Elhelyezendő virtuális gépek oszlopban említett összes virtuális gép replikációjához használt Standard vagy Premium szintű Azure Storage-fiók.
+**Disk Storage Type** (Lemezes tárolás típusa): A **VMs to Place**(Elhelyezendő virtuális gépek) oszlopban említett összes virtuális gép replikációjához használt standard vagy prémium szintű tárfiók.
 
-**Suggested Prefix** (Javasolt előtag) – Az Azure Storage-fiók elnevezéséhez javasolt háromkarakteres előtag. Saját előtagot is használhat, de az eszköz által javasolt nevek követik az [Azure Storage-fiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
+**Suggested Prefix** (Javasolt előtag): A tárfiók elnevezéséhez javasolt háromkarakteres előtag. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](https://aka.ms/storage-performance-checklist).
 
-**Suggested Account Name** (Javasolt fióknév) – Azt jelzi, hogy kell kinéznie az Azure Storage-fiók nevének a javasolt előtag használata után. Cserélje le a < > szimbólumok közötti nevet a kívánt bemenetre.
+**Suggested Account Name** (Javasolt fióknév): A Storage-fiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Log Storage Account:** (Naplótárolási fiók) – Minden replikációs naplót egy standard szintű Azure Storage-fiók tárol. A prémium szintű Azure Storage-fiókokba replikált virtuális gépek esetében üzembe kell helyeznie egy további standard szintű Azure Storage-fiókot a naplók tárolására. Egyetlen standard szintű naplótárolási fiókot több prémium szintű replikációs tárfiók is használhat. A standard szintű tárfiókokba replikált virtuális gépek ugyanazt a tárfiókot használják a naplókhoz is.
+**Log Storage Account**(Naplótárolási fiók): Minden replikációs naplót egy standard szintű tárfiók tárol. A prémium szintű tárfiókokba replikált virtuális gépek esetében be kell állítani egy további standard szintű tárfiókot a naplók tárolására. Egyetlen standard szintű naplótárolási fiókot több prémium szintű replikációs tárfiók is használhat. A standard szintű tárfiókokba replikált virtuális gépek ugyanazt a tárfiókot használják a naplókhoz is.
 
-**Suggested Log Account Name** (Javasolt naplótárolási fióknév) – Azt jelzi, hogy kell kinéznie a naplókat tároló Azure Storage-fiók nevének a javasolt előtag használata után. Cserélje le a < > szimbólumok közötti nevet a kívánt bemenetre.
+**Suggested Log Account Name** (Javasolt naplótárolási fióknév): A naplókat tároló tárfiók neve, a javasolt előtag használata után. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Placement Summary** (Elhelyezés összegzése) – Az Azure Storage-fiókon található virtuális gépeknek a replikáció és feladatátvételi teszt vagy tényleges feladatátvétel során mért teljes terhelését összegzését biztosítja. Tartalmazza az Azure Storage-fiókhoz rendelt virtuális gépek teljes számát, az Azure Storage-fiókba elhelyezni kívánt összes virtuális gép összesített olvasási/írási IOPS-értékét, az összesített írási (replikációs) IOPS-értéket, az összes lemez teljes kiosztott méretét, valamint a lemezek teljes számát.
+**Placement Summary** (Elhelyezés összegzése): A tárfiókon található virtuális gépeknek a replikáció és feladatátvételi teszt vagy tényleges feladatátvétel során mért teljes terhelésének összegzése. Tartalmazza a tárfiókhoz rendelt virtuális gépek teljes számát, az Azure Storage-fiókba elhelyezni kívánt összes virtuális gép összesített olvasási/írási IOPS-értékét, az összesített írási (replikációs) IOPS-értéket, az összes lemez teljes beállítási méretét, valamint a lemezek teljes számát.
 
-**Virtual Machines to Place** (Elhelyezendő virtuális gépek) – Felsorolja az összes virtuális gépet, amelyet az optimális teljesítmény és kihasználtság érdekében az adott Azure Storage-fiókon ajánlott elhelyezni.
+**Virtual Machines to Place** (Elhelyezendő virtuális gépek): Az összes olyan virtuális gép listája, amelyet az optimális teljesítmény és használat érdekében az adott tárfiókon ajánlott elhelyezni.
 
 ## <a name="compatible-vms"></a>Kompatibilis virtuális gépek
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/compatible-vms.png)
+![A kompatibilis virtuális gépek Excel-táblázata](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. A vCenteren lévő azon virtuális gépek, amelyek neve vagy IP-címe többször is előfordul, az ESXi-gazdagép nevével együtt szerepelnek, hogy megkülönböztethetők legyenek az egyes virtuális gépek. A feltüntetett ESXi-gazdagép az a gazdagép, ahol a virtuális gépek megtalálhatók voltak, amikor az eszköz először felderítette azokat a profilkészítés során.
+**VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility** (Virtuális gép kompatibilitása) – Két értéke van: Yes (Igen)/ Yes (Igen)*. A Yes* (Igen) azokra az esetekre vonatkozik, amikor a virtuális gép megfelel egy [prémium szintű Azure Storage-hoz](https://aka.ms/premium-storage-workload), és a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. Az Azure Storage a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 128 GB alatt P10, 128 és 512 GB között P20, illetve 512 és 1023 GB között P30. Tehát ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz Yes* (Igen*) megjelöléssel látja el ezeket a virtuális gépeket. Emellett az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen a megfelelő ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
-A tároló típusa Standard vagy Premium.
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen*) lehet. A **Yes**\* (Igen*) azon példányokra vonatkozik, ahol a virtuális gép megfelel az [Azure Premium Storage-nak](https://aka.ms/premium-storage-workload). Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
+* 128 GB alatt P10.
+* 128 GB és 512 GB között P20.
+* 512 GB és 1023 GB között P30.
 
-**Suggested Prefix** (Javasolt előtag) – Az Azure Storage-fiók három karakterből álló előtagja
+Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy P30-as kategóriába tartozik, de a mérete alapján egy alacsonyabb prémium szintű tárolólemez-típusba kerül, az eszköz **Yes**\* (Igen*) megjelöléssel látja el ezeket a virtuális gépeket. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
-**Storage Account** (Storage-fiók) – A fiók neve a javasolt előtaggal
+**Storage Type** (Tároló típusa): Standard vagy Premium.
 
-**R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS (növekedési tényezővel)) – A lemez IOPS-csúcsértéke (alapértelmezés szerint a 95. százalékos érték), beleértve a későbbi növekedési faktort is (az alapértelmezett érték 30%). Vegye figyelembe, hogy a virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
+**Suggested Prefix** (Javasolt előtag): A tárfiók három karakterből álló előtagja.
 
-**Data Churn in Mbps (with Growth Factor)** (Adatváltozás (Mbps) (növekedési tényezővel)) – A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. százalékérték), beleértve a későbbi növekedési faktort is (alapértelmezés szerint 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
+**Storage Account** (Tárfiók): A javasolt tárfiókelőtagot használó név.
 
-**Azure VM Size** (Azure-beli virtuális gép mérete) – Az Azure Compute-beli hozzárendelt virtuális gép ideális mérete az adott helyszíni virtuális gép esetén. Ez a hozzárendelés a helyszíni virtuális gép memóriája, a lemezek/magok/hálózati adapterek száma és az írási/olvasási IOPS-érték alapján történik. A javaslat mindig az Azure-beli virtuális gép legkisebb mérete, amely megfelel a helyszíni virtuális gép összes jellemzőjének.
+**R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (alapértelmezés szerint a 95. százalékos érték), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Number of Disks** (Lemezek száma) – A virtuális gép lemezeinek (VMDK-inak) teljes száma
+**Data Churn in Mbps (with Growth Factor)** (Adatváltozás (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. százalékérték), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
 
-**Disk size (GB)** (Lemez mérete (GB)) – A virtuális gép összes lemeze számára kiosztott teljes méret. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**Azure VM Size** (Azure-beli virtuális gép mérete): Az Azure Cloud Services-beli hozzárendelt virtuális gép ideális mérete az adott helyszíni virtuális gép esetén. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
 
-**Cores** (Magok) – A virtuális gép processzormagjainak száma.
+**Number of Disks** (Lemezek száma): A virtuális gép lemezeinek (VMDK-inak) teljes száma.
 
-**Memory (MB)** (Memória (MB)) – A virtuális gép fizikai memóriája (RAM).
+**Disk size (GB)** (Lemez mérete (GB)): A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
 
-**NICs** (Hálózati adapterek) – A virtuális gép hálózati adaptereinek száma.
+**Cores** (Magok): A virtuális gép processzormagjainak száma.
 
-##<a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
+**Memory (MB)** (Memória (MB)): A virtuális gép fizikai memóriája (RAM).
 
-![Üzembehelyezés-tervező](./media/site-recovery-deployment-planner/incompatible-vms.png)
+**NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
 
-**VM Name** (Virtuális gép neve) – A virtuális gép neve vagy IP-címe, a jelentés elkészítésekor a VMListFile fájlban használt formában. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. A vCenteren lévő azon virtuális gépek, amelyek neve vagy IP-címe többször is előfordul, az ESXi-gazdagép nevével együtt szerepelnek, hogy megkülönböztethetők legyenek az egyes virtuális gépek. A feltüntetett ESXi-gazdagép az a gazdagép, ahol a virtuális gépek megtalálhatók voltak, amikor az eszköz először felderítette azokat a profilkészítés során.
+## <a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
 
-**VM Compatibility** (Virtuális gép kompatibilitása) – Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép az Azure Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél meg vannak adva, és a következők lehetnek a közzétett Azure Storage-[korlátok](https://aka.ms/azure-storage-scalbility-performance) alapján.
+![A nem kompatibilis virtuális gépek Excel-táblázata](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-* Disk size > 1023 GB – Azure Storage currently does not support > 1 TB disk sizes (Lemezméret > 1023 GB – Az Azure Storage jelenleg nem támogatja az 1 TB-nál kisebb lemezméretet)
-* Total VM size (replication + TFO) exceeds supported Azure Storage account size limit (35 TB) (A virtuális gép teljes mérete (replikáció + feladatátvételi teszt) meghaladja az Azure Storage-fiók támogatott méretkorlátját (35 TB)) – Ez általában akkor fordul el, ha a virtuális gép egyetlen lemezzel rendelkezik, amelynek bizonyos teljesítményjellemzői meghaladják a Microsoft Azure / Azure Site Recovery standard tárolókra vonatkozó támogatott korlátait. Ennek eredményeképp a virtuális gép átkerül a prémium szintű tárolózónába. A prémium szintű Azure Storage-fiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ez azt jelenti, hogy a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
-* Source IOPS exceeds supported Azure Storage IOPS limit of 5000 per disk (A forrás IOPS meghaladja az Azure Storage lemezenkénti 5000-es IOPS-korlátját)
-* Source IOPS exceeds supported Azure Storage IOPS limit of 80,000 per VM (A forrás IOPS meghaladja az Azure Storage lemezenkénti 80 000-es IOPS-korlátját)
-* Average data churn exceeds supported Azure Site Recovery data churn limit of 10 MBps for average IO size for disk (Az átlagos adatváltozás meghaladja az Azure Site Recovery lemezenkénti átlagos IO-mérethez megadott 10 MBps értékű adatváltozási korlátját)
-* Total data churn across all disks on the VM exceeds the maximum supported Azure Site Recovery data churn limit of 54 MBps per VM (Az összes virtuális gépre vonatkozó teljes adatváltozás meghaladja az Azure Site Recovery virtuális gépenkénti 54 Mbps-os támogatott adatváltozási korlátját)
-* Average effective write IOPS exceeds supported Azure Site Recovery IOPS limit of 840 for disk (Az átlagos tényleges írási IOPS-érték meghaladja az Azure Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját)
-* Calculated snapshot storage exceeding the supported snapshot storage limit of 10 TB (A kiszámított pillanatkép-tároló mérete meghaladja a 10 TB-os támogatott méretet)
+**VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt VMDK-k listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS (növekedési tényezővel)) – A lemez IOPS-csúcsértéke (alapértelmezés szerint a 95. százalékos érték), beleértve a későbbi növekedési faktort is (az alapértelmezett érték 30%). Vegye figyelembe, hogy a virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
+**VM Compatibility** (Virtuális gép kompatibilitása): Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép a Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
 
-**Data Churn in Mbps (with Growth Factor)** (Adatváltozás (Mbps) (növekedési tényezővel)) – A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. százalékérték), beleértve a későbbi növekedési faktort is (alapértelmezés szerint 30%). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
+* A lemez mérete nagyobb&1023; GB-nál. Az Azure Storage jelenleg nem támogatja az 1 TB-nál nagyobb lemezméretet.
 
-**Number of Disks** (Lemezek száma) – A virtuális gép lemezeinek (VMDK-inak) teljes száma
+* A virtuális gép teljes mérete (replikáció + TFO) meghaladja a támogatott tárfiók méretkorlátozását (35 TB). Ez a fajta inkompatibilitás általában akkor fordul elő, ha a virtuális gép egy lemezének egyik teljesítményjellemzője meghaladja a támogatott standard szintű tárolóra vonatkozó Azure- vagy Site Recovery-korlátozásokat. Egy ilyen példány a prémium szintű tárolózónába kényszeríti a virtuális gépet. A prémium szintű tárfiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ezen a példányon a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
+* A forrás IOPS-érték meghaladja a tároló lemezenkénti 5000-es IOPS-korlátját.
+* A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
+* Az átlagos adatváltozás meghaladja a Site Recovery lemezenkénti átlagos I/O-mérethez megadott 10 MBps értékű adatváltozási korlátját.
+* Total data churn across all disks on the VM exceeds the maximum supported Site Recovery data churn limit of 54 MBps per VM (Az összes virtuális gépre vonatkozó teljes adatváltozás meghaladja a Site Recovery virtuális gépenkénti 54 Mbps-os támogatott adatváltozási korlátját)
+* Az átlagos tényleges írási IOPS-érték meghaladja a Site Recovery lemezenkénti 840-es támogatott IOPS-korlátját.
+* A kiszámított pillanatkép-tároló mérete meghaladja a 10 TB-os támogatott méretet.
 
-**Disk size (GB)** (Lemez mérete (GB)) – A virtuális gép összes lemeze számára kiosztott teljes méret. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+**R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS (növekedési tényezővel)): A lemez IOPS-csúcsértéke (alapértelmezés szerint a 95. százalékos érték), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy a virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Cores** (Magok) – A virtuális gép processzormagjainak száma.
+**Data Churn in Mbps (with Growth Factor)** (Adatváltozás (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. százalékérték), beleértve a későbbi növekedési faktort is (alapértelmezés szerint 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
 
-**Memory (MB)** (Memória (MB)) – A virtuális gép fizikai memóriája (RAM).
+**Number of Disks** (Lemezek száma): A virtuális gép VMDK-inak teljes száma.
 
-**NICs** (Hálózati adapterek) – A virtuális gép hálózati adaptereinek száma.
+**Disk size (GB)** (Lemez mérete (GB)): A virtuális gép összes lemezének teljes beállítási mérete. Az eszköz a virtuális gép egyes lemezeinek méretét is megjeleníti.
+
+**Cores** (Magok): A virtuális gép processzormagjainak száma.
+
+**Memory (MB)** (Memória (MB)): A virtuális gép fizikai memóriájának (RAM) mennyisége.
+
+**NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
 
 
-##<a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
+## <a name="site-recovery-limits"></a>A Site Recovery korlátai
 
 **Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
-Standard szintű Storage | 8 KB    | 2 MB/s | Lemezenként&168; GB
-Prémium szintű P10 lemez | 8 KB    | 2 MB/s | Lemezenként&168; GB
-Prémium szintű P10 lemez | 16 KB | 4 MB/s |    Lemezenként&336; GB
-Prémium szintű P10 lemez | 32 KB vagy több | 8 MB/s | Lemezenként&672; GB
-Prémium szintű P20/P30 lemez | 8 KB    | 5 MB/s | Lemezenként&421; GB
-Prémium szintű P20/P30 lemez | 16 KB vagy több |10 MB/s    | Lemezenként&842; GB
+Standard szintű Storage | 8 KB    | 2 MBps | Lemezenként&168; GB
+Prémium szintű P10 lemez | 8 KB    | 2 MBps | Lemezenként&168; GB
+Prémium szintű P10 lemez | 16 KB | 4 MBps |    Lemezenként&336; GB
+Prémium szintű P10 lemez | 32 KB vagy több | 8 MBps | Lemezenként&672; GB
+Prémium szintű P20 vagy P30 lemez | 8 KB    | 5 MBps | Lemezenként&421; GB
+Prémium szintű P20 vagy P30 lemez | 16 KB vagy több |10 MBps | Lemezenként&842; GB
+
+Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. A Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. Az előbbi számok egy általános, körülbelül ötperces várólistát feltételeznek. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
+
+Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat a teljesítményről.
+
+## <a name="updating-the-deployment-planner"></a>A Deployment Planner frissítése
+A Deployment Planner frissítéséhez tegye a következőt:
+
+1. Töltse le az [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) legújabb verzióját.
+
+2. Másolja a .zip mappát arra a kiszolgálóra, amelyen futtatni szeretné.
+
+3. Csomagolja ki a .zip mappát.
+
+4. A következő lehetőségek közül választhat:
+ * Ha a legújabb verzió nem tartalmaz profilkészítést érintő javítást, és a profilkészítés már folyamatban van a Planner aktuális verzióján, folytassa a profilkészítést.
+ * Ha a legújabb verzió tartalmaz profilkészítést érintő javítást, javasoljuk, hogy állítsa le az aktuális verzión a profilkészítést, és indítsa újra a profilkészítést az új verzióval.
+
+  >[!NOTE]
+  >Ha az új verzióval indítja el a profilkészítést, akkor ugyanazt a kimeneti elérési utat kell megadnia ahhoz, hogy az eszköz a már létező fájlokhoz fűzze hozzá a profiladatokat. Ekkor a profiladatok teljes körét felhasználja majd a jelentés létrehozásához. Ha eltérő kimeneti könyvtárat ad meg, akkor új fájlok jönnek létre, és a régi profiladatokat nem lehet majd felhasználni a jelentés létrehozásához.
+  >
+  >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 
-Ezek átlagos értékek, amelyek 30%-os IO-átfedést feltételeznek. Az Azure Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. A fenti számok körülbelül 5 perces átlagos hátralékot feltételeznek. Ez azt jelenti, hogy a rendszer 5 percen belül feldolgozza a feltöltött adatokat, és létrehoz egy helyreállítási pontot.
-
-A fent közzétett korlátok saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat a teljesítményről.
-
-## <a name="how-to-update-the-deployment-planner"></a>Hogyan frissíthető a Deployment Planner?
-[Töltse le](site-recovery-deployment-planner.md#download) az Azure Site Recovery Deployment Planner legújabb verzióját. Másolja a zip-fájlt arra a kiszolgálóra, ahonnan futtatni szeretné. Csomagolja ki a tömörített fájlt.
-Ha már rendelkezik a Deployment Planner egy korábbi verziójával, és a profilkészítés fut, akkor csak abban az esetben kell leállítania a profilkészítést, ha az új verzióban a profilkészítést érintő javítás található. Ha a kiadás javításokat tartalmaz a profilkészítési összetevőhöz, akkor javasoljuk, hogy a profilkészítést a régi verzióval állítsa le, majd az új verzióval indítsa újra. Ügyeljen arra, hogy ha az új verzióval indítja el a profilkészítést, akkor ugyanazt a kimeneti elérési utat kell megadnia ahhoz, hogy az eszköz a már létező fájlokhoz fűzze hozzá a profiladatokat, valamint a profiladatok teljes körét felhasználja a jelentés létrehozásakor. Ha eltérő kimeneti elérési utat ad meg, akkor új fájlok jönnek létre, és a régi profiladatokat nem lehet majd felhasználni a jelentés létrehozásához.<br> Minden frissítés egy összegző frissítést tartalmaz a zip-fájlban. Ahhoz, hogy használatba vegye, nem kell átmásolnia az új verzió fájljait az előző verzió mappájába. Egy új mappába is másolhatja az új verziót.
-
-
-##<a name="version-history"></a>Verzióelőzmények
+## <a name="version-history"></a>Verzióelőzmények
 ### <a name="11"></a>1.1
-Frissítve: 2017. március 9. <br>
+Frissítve: 2017. március 9.
 
-Az alábbi hibák lettek kijavítva<br>
+Az alábbi problémákat javítja:
 
-* Az eszköz nem képes profilt készíteni a virtuális gépekről, ha a vCenter-kiszolgáló különböző ESXi-gazdagépein több azonos nevű vagy IP-című virtuális gép található.<br>
-* A Kompatibilis virtuális gépek és a Nem kompatibilis virtuális gépek lapján a másolás és a keresés le volt tiltva.
+* Az eszköz nem képes profilt készíteni a virtuális gépekről, ha a vCenter-kiszolgáló különböző ESXi-gazdagépein több azonos nevű vagy IP-című virtuális gép található.
+* A Kompatibilis virtuális gépek és a Nem kompatibilis virtuális gépek munkalapján a másolás és a keresés le van tiltva.
 
+### <a name="10"></a>1.0
+Frissítve: 2017. február 23.
 
-### <a name="10"></a>1.0 
-Frissítve: 2017. február 23. 
-
-Az Azure Site Recovery Deployment Planner 1.0-s nyilvános előzetes verziója az alábbi ismert hibákat tartalmazza, amelyeket az elkövetkező frissítések fognak elhárítani.
+Az Azure Site Recovery Deployment Planner 1.0-s nyilvános előzetes verziója az alábbi ismert hibákat tartalmazza (ezeket az elkövetkező frissítések fogják elhárítani):
 
 * Az eszköz csak a VMware – Azure forgatókönyvek esetén működik, Hyper-V – Azure irányú üzembe helyezések esetében nem. A Hyper-V – Azure forgatókönyvekhez használja a [Hyper-V Capacity Planner eszközt](./site-recovery-capacity-planning-for-hyper-v-replication.md).
 * A GetThroughput művelet nem támogatott az US Government és kínai Microsoft Azure-régiókban.

@@ -25,8 +25,4 @@
 ## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/container-registry/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-registry)

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2017
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: b652c0f817e5e56d4ff50701345b03db634f616c
 ms.openlocfilehash: 043c54094f53ae539c833eb8f167201781c677a6
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -58,9 +59,4 @@ A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseke
 > Az ebben az útmutatóban kifejlesztett kísérlet működő példányát megtalálja a [Cortana Intelligence Galleryben](https://gallery.cortanaintelligence.com). Lépjen **[a hitelkockázat előrejelzésével kapcsolatos útmutatóra](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet egy példányának a Machine Learning Studio-munkaterületre való letöltéséhez.
 > 
 > Ez az útmutató [a hitelkockázat bináris osztályozás útján való előrejelzésével](http://go.microsoft.com/fwlink/?LinkID=525270) kapcsolatos mintakísérlet egyszerűsített verzióján alapul, amely szintén a [Galleryben](http://gallery.cortanaintelligence.com/) érhető el.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

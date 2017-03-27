@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/27/2017
+ms.date: 03/21/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
-ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 5e7520f8a023cd5feb8401483161e7296a413b02
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,7 +46,7 @@ Az oktatóanyagból a következőket sajátíthatja el:
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie.
 
 * [Azure-fiók](#azure-account)
-* [Visual Studio 2015, Azure SDK for .NET csomaggal](#visual-studio-2015-with-the-azure-sdk-for-net)
+* [Visual Studio 2017 Azure SDK for .NET csomaggal](#visual-studio-2017-with-the-azure-sdk-for-net)
 
 ### <a name="azure-account"></a>Azure-fiók
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-fiókra. A következőket teheti:
@@ -53,22 +54,23 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-fiókra. A következő
 * [Nyisson egy ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Jóváírásokat kap, amelyeket fizetős Azure-szolgáltatások kipróbálására használhat fel. Még ha a keretét el is használta, továbbra is megtarthatja a fiókot, és használhatja az ingyenes szolgáltatásokat és lehetőségeket.
 * [Aktiválja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Az MSDN-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
-### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015, Azure SDK for .NET csomaggal
-Az oktatóanyag a Visual Studio 2015-höz, valamint az [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2-es vagy újabb verziójához készült. [Innen letöltheti a legfrissebb Azure SDK-t a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a Visual Studio még nincs telepítve, a rendszer automatikusan telepíti azt, az SDK-val együtt.
+### <a name="visual-studio-2017-with-the-azure-sdk-for-net"></a>Visual Studio 2017 Azure SDK for .NET csomaggal
+Az oktatóanyag a Visual Studio 2017-hez, valamint az [Azure SDK for .NET-hez](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#azuretools) készült. Az Azure SDK 2.9.5 a Visual Studio telepítőjének részét képezi.
+
+Ha a gépén a Visual Studio 2015 van telepítve, kövesse az [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2 vagy újabb verzió oktatóanyagát. [Innen letöltheti a legfrissebb Azure SDK-t a Visual Studio 2015-höz](http://go.microsoft.com/fwlink/?linkid=518003). Ha a Visual Studio még nincs telepítve, a rendszer automatikusan telepíti azt, az SDK-val együtt. Egyes képernyők eltérhetnek a jelen oktatóanyag ábráin láthatóaktól.
 
 Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfrissebb Azure SDK for Visual Studio 2013 alkalmazást](http://go.microsoft.com/fwlink/?LinkID=324322). Egyes képernyők eltérhetnek a jelen oktatóanyag ábráin láthatóaktól.
-
-> [!NOTE]
-> Attól függően, hogy mennyi SDK-függőség van telepítve a számítógépen, az SDK telepítése hosszú időt is igénybe vehet – néhány perctől akár több mint fél óráig is tarthat.
-> 
-> 
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 1. Nyissa meg a Visual Studio alkalmazást, majd kattintson a **File** (File), **New** (Új), **Project** (Projekt) lehetőségre.
 2. Bontsa ki a **Visual C#** csomópontot a **Templates** (Sablonok) listában, válassza a **Cloud** (Felhő) lehetőséget, majd kattintson az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre. Győződjön meg arról, hogy a **.NET Framework 4.5.2** vagy újabb keretrendszer van kiválasztva.  Írja be a **ContosoTeamStats** szöveget a **Name** (Név) szövegmezőbe, majd kattintson az **OK** gombra.
    
     ![Projekt létrehozása][cache-create-project]
-3. A projekt típusaként válassza az **MVC** lehetőséget. Törölje a **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet jelölését. Az oktatóanyag következő lépéseiben megismerkedhet az [Azure-erőforrások kiépítésével](#provision-the-azure-resources) és az [alkalmazások közzétételével az Azure-ban](#publish-the-application-to-azure). A **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet bejelölésével a Visual Studio felületéről egy App Service-webalkalmazás létrehozására itt láthat példát: [Ismerkedés a webalkalmazásokkal az Azure App Service-ben, az ASP.NET és a Visual Studio használatával](../app-service-web/web-sites-dotnet-get-started.md).
+3. A projekt típusaként válassza az **MVC** lehetőséget. 
+
+    Ellenőrizze, hogy az **Authentication** (Hitelesítés) beállításai között a **No Authentication** (Nincs hitelesítés) van megadva. A Visual Studio verziójától függően az alapértelmezett beállítás más lehet. A beállítás módosításához kattintson a **Change Authentication** (Hitelesítés módosítása) gombra, és válassza a **No Authentication** (Nincs hitelesítés) értéket.
+
+    Ha a Visual Studio 2015-öt használja, törölje a **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet jelölését. Az oktatóanyag következő lépéseiben megismerkedhet az [Azure-erőforrások kiépítésével](#provision-the-azure-resources) és az [alkalmazások közzétételével az Azure-ban](#publish-the-application-to-azure). A **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet bejelölésével a Visual Studio felületéről egy App Service-webalkalmazás létrehozására itt láthat példát: [Ismerkedés a webalkalmazásokkal az Azure App Service-ben, az ASP.NET és a Visual Studio használatával](../app-service-web/web-sites-dotnet-get-started.md).
    
     ![Projektsablon kiválasztása][cache-select-template]
 4. A projekt létrehozásához kattintson az **OK** gombra.
@@ -76,9 +78,21 @@ Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfri
 ## <a name="create-the-aspnet-mvc-application"></a>Az ASP.NET MVC alkalmazás létrehozása
 Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létrehozni, amely adatbázisból olvas be és jelenít meg csoportstatisztikákat.
 
+* [Az Entity Framework NuGet-csomag hozzáadása](#add-the-entity-framework-nuget-package)
 * [Modell hozzáadása](#add-the-model)
 * [Vezérlő hozzáadása](#add-the-controller)
 * [A nézetek konfigurálása](#configure-the-views)
+
+### <a name="add-the-entity-framework-nuget-package"></a>Az Entity Framework NuGet-csomag hozzáadása
+
+1. Kattintson a **Tools** (Eszközök) menü **NuGet Package Manager** (NuGet-csomagkezelő), **Package Manager Console** (Csomagkezelő konzol) elemére.
+2. Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
+    
+    ```
+    Install-Package EntityFramework
+    ```
+
+A csomaggal kapcsolatos további információt az [EntityFramework](https://www.nuget.org/packages/EntityFramework/) NuGet-oldalon talál.
 
 ### <a name="add-the-model"></a>Modell hozzáadása
 1. Kattintson a jobb gombbal a **Models** (Modellek) elemre a **Solution Explorer** (Megoldáskezelő) területén, és válassza az **Add** (Hozzáadás), **Class** (Osztály) lehetőségeket. 
@@ -172,21 +186,27 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
 1. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **web.config** fájlra annak megnyitásához.
    
     ![Web.config][cache-web-config]
-2. Adja hozzá az alábbi kapcsolati karakterláncot a `connectionStrings` szakaszhoz. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
-
-    ```xml   
-    <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
-    ```
-
-    Ennek hozzáadását követően a `connectionStrings` szakasznak az alábbi példához hasonlóan kell kinéznie.
+2. Adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati karakterlánc nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
 
     ```xml
     <connectionStrings>
-        <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
-            providerName="System.Data.SqlClient" />
         <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
+
+    Hozzáadhatja az új `connectionStrings` szakaszt a `configSections` után, ahogyan az az alábbi példában látható.
+
+    ```xml
+    <configuration>
+      <configSections>
+        <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+        <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+      </configSections>
+      <connectionStrings>
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+      </connectionStrings>
+      ...
+      ```
 
 ### <a name="add-the-controller"></a>Vezérlő hozzáadása
 1. A projekt létrehozásához nyomja le az **F6** billentyűt. 
@@ -261,14 +281,14 @@ Az oktatóanyag jelen szakaszában el fogja végezni a mintaalkalmazás konfigur
 * [A Teams Index nézet frissítése a gyorsítótárral való együttműködéshez](#update-the-teams-index-view-to-work-with-the-cache)
 
 ### <a name="configure-the-application-to-use-stackexchangeredis"></a>Az alkalmazás konfigurálása a StackExchange.Redis használatára
-1. Egy ügyfélalkalmazás a Visual Studióban a StackExchange.Redis NuGet-csomag használatával történő konfigurálásához kattintson a jobb gombbal a projektre a **Solution Explorer** (Megoldáskezelő) felületén, majd válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. 
+1. Ha egy ügyfélalkalmazást a StackExchange.Redis NuGet-csomaggal szeretne konfigurálni a Visual Studióban, kattintson a **Tools** (Eszközök) menü **NuGet Package Manager** (NuGet-csomagkezelő), **Package Manager Console** (Csomagkezelő konzol) elemére.
+2. Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
+    
+    ```
+    Install-Package StackExchange.Redis
+    ```
    
-    ![NuGet-csomagok kezelése][redis-cache-manage-nuget-menu]
-2. Írja be a **StackExchange.Redis** kifejezést a keresőmezőbe, az eredmények közül válassza ki a kívánt verziót, majd kattintson a **Install** (Telepítés) gombra.
-   
-    ![StackExchange.Redis NuGet-csomag][redis-cache-stack-exchange-nuget]
-   
-    A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szükséges szerelvényhivatkozásokat az Azure Redis Cache a StackExchange.Redis gyorsítótárügyféllel történő eléréséhez. Ha inkább a **StackExchange.Redis** ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, válassza a **StackExchange.Redis.StrongName**, ellenkező esetben pedig a **StackExchange.Redis** lehetőséget.
+    A NuGet-csomag letölti és hozzáadja az ügyfélalkalmazás számára szükséges szerelvényhivatkozásokat az Azure Redis Cache a StackExchange.Redis gyorsítótárügyféllel történő eléréséhez. Ha inkább a `StackExchange.Redis` ügyfélkönyvtár erős elnevezésű verzióját kívánja használni, telepítse a `StackExchange.Redis.StrongName` csomagot.
 3. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **TeamsController.cs** fájlra annak megnyitásához.
    
     ![Csoportvezérlő][cache-teamscontroller]
@@ -670,7 +690,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
     ```
    
-    Ez a sor a `ViewBag.Msg` értékét jeleníti meg, amely az aktuális művelet állapotjelentését tartalmazza. Ennek beállítása az előző lépés egyik műveleti hivatkozására kattintva történik.   
+    Ez a sor a `ViewBag.Msg` értékét jeleníti meg, amely az aktuális művelet állapotjelentését tartalmazza. A `ViewBag.Msg` beállítása az előző lépés egyik műveleti hivatkozására kattintva történhet.   
    
     ![Állapotüzenet][cache-status-message]
 2. A projekt létrehozásához nyomja le az **F6** billentyűt.
@@ -698,7 +718,7 @@ Az **Üzembe helyezés az Azure-ban** gombra kattintva megnyílik az Azure port�
 ![Üzembe helyezés az Azure-ban][cache-deploy-to-azure-step-1]
 
 1. Az **Alapok** szekcióban válassza ki a használni kívánt Azure-előfizetést, jelöljön ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat, majd adja meg az erőforráscsoport helyét.
-2. A **Beállítások** szekcióban adjon meg egy rendszergazdai fióknevet (**ADMINISTRATORLOGIN** – ne használja az **admin** kifejezést), ne használjon rendszergazdai bejelentkezési jelszót (**ADMINISTRATORLOGINPASSWORD**) vagy adatbázisnevet (**DATABASENAME**). A többi paraméter egy ingyenes App Service-futtatási csomagra van konfigurálva, valamint alacsonyabb költségszint elérése válik lehetővé az SQL Database és az Azure Redis Cache esetében, amelyek nem részei az ingyenes szintnek.
+2. A **Beállítások** részben adja meg az **rendszergazdai bejelentkezési nevet** (ne használja az **admin** kifejezést), a **rendszergazdai bejelentkezési jelszót** és az **adatbázisnevet**. A többi paraméter egy ingyenes App Service futtatási csomaghoz van konfigurálva, valamint alacsonyabb költségszint érhető el az SQL Database és az Azure Redis Cache esetében, amelyek nem részei az ingyenes szintnek.
 
     ![Üzembe helyezés az Azure-ban][cache-deploy-to-azure-step-2]
 
@@ -726,17 +746,13 @@ Az oktatóanyag ezen lépésben közzéteszi alkalmazását az Azure-ban, majd f
 1. Kattintson a jobb gombbal a Visual Studio **ContosoTeamStats** projektjére, majd válassza a **Publish** (Közzététel) lehetőséget
    
     ![Közzététel][cache-publish-app]
-2. Kattintson a **Microsoft Azure App Service** lehetőségre.
+2. Kattintson a **Microsoft Azure App Service** lehetőségre, válassza a **Meglévő kiválasztása** elemet, majd kattintson a **Közzététel** gombra.
    
     ![Közzététel][cache-publish-to-app-service]
-3. Válassza ki az Azure-erőforrások létrehozásakor használt előfizetést, bontsa ki az erőforrásokat tartalmazó erőforráscsoportot, válassza ki a kívánt webalkalmazást, majd kattintson az **OK** gombra. Ha az **Üzembe helyezés az Azure-ban** gombot használta, a webalkalmazás neve a **webSite** kifejezéssel kezdődik, amit néhány további karakter követ.
+3. Válassza ki az Azure-erőforrások létrehozásakor használt előfizetést, bontsa ki az erőforrásokat tartalmazó erőforráscsoportot, és válassza ki a kívánt webappot. Ha az **Üzembe helyezés az Azure-ban** gombot használta, a webalkalmazás neve a **webSite** kifejezéssel kezdődik, amit néhány további karakter követ.
    
     ![Webalkalmazás kiválasztása][cache-select-web-app]
-4. A beállítások ellenőrzéséhez kattintson a **Validate Connection** (Kapcsolat érvényesítése) lehetőségre, majd kattintson a **Publish** (Közzététel) gombra.
-   
-    ![Közzététel][cache-publish]
-   
-    A közzétételi folyamat néhány pillanat múlva befejeződik, és a böngésző a futó mintaalkalmazással együtt indul majd el. Ha érvényesítés vagy közzététel közben a rendszer DNS-hibát ad vissza, az alkalmazáshoz tartozó Azure-erőforrások kiépítési folyamata pedig csak az imént fejeződött be, várjon egy kicsit, és próbálkozzon újra.
+4. A közzétételi folyamat elindításához kattintson az **OK** gombra. A közzétételi folyamat néhány pillanat múlva befejeződik, és a elindul böngésző a futó mintaalkalmazással együtt. Ha érvényesítés vagy közzététel közben a rendszer DNS-hibát ad vissza, az alkalmazáshoz tartozó Azure-erőforrások kiépítési folyamata pedig csak az imént fejeződött be, várjon egy kicsit, és próbálkozzon újra.
    
     ![Gyorsítótár hozzáadva][cache-added-to-application]
 
@@ -848,10 +864,5 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 [cache-publish]: ./media/cache-web-app-howto/cache-publish.png
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

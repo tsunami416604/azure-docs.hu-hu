@@ -1,7 +1,7 @@
 ## <a name="how-to-create-a-vnet-using-the-azure-cli"></a>VNet létrehozása az Azure CLI használatával
 Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat bármilyen Windows, Linux vagy OSX rendszert futtató számítógépről. Az alábbi lépésekkel hozhat létre egy VNetet az Azure CLI segítségével.
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg az [Install and Configure the Azure CLI](../articles/xplat-cli-install.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg az [Install and Configure the Azure CLI](../articles/cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
    
         azure config mode arm
@@ -99,9 +99,4 @@ Az Azure CLI segítségével a parancssorból felügyelheti az erőforrásokat b
         data:      Address prefix                : 192.168.2.0/24
         data:
         info:    network vnet show command OK
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

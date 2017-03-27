@@ -55,7 +55,6 @@
 ### [Virtuális gép létrehozása C# használatával sablon alapján](../virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Virtuális gép létrehozása Chef használatával](../virtual-machines-windows-chef-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Népszerű alkalmazás-keretrendszereket futtató virtuális gép létrehozása](../virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép másolása](../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Virtuális gép áthelyezése előfizetések között](../virtual-machines-windows-move-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 
@@ -80,22 +79,18 @@
 ### [Azure hibrid használati előnyhöz tartozó licencek](../virtual-machines-windows-hybrid-use-benefit-licensing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Windows-ügyfélrendszerképek használata](../virtual-machines-windows-client-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Virtuális merevlemez előkészítése feltöltéshez](../virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép általánossá tétele a Syspreppel](../virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [VHD feltöltése](../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép feltöltése és létrehozása általános virtuális merevlemezből](../virtual-machines-windows-upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép feltöltése és létrehozása speciális virtuális merevlemezből](../virtual-machines-windows-upload-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Felügyelt lemez rendszerképének létrehozása](../virtual-machines-windows-capture-image-resource.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Virtuális gép létrehozása általános felügyelt lemez rendszerképéből](../virtual-machines-windows-create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Nem felügyelt virtuális gép létrehozása általános virtuális merevlemezből](../virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép létrehozása egyéni virtuális merevlemezből](../virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Nem felügyelt virtuális gép rögzítése Blob Storage-hoz](../virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+
+
 
 ## Virtuális gép tárolójának kezelése
 ### [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Gyakori kérdések](../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Felügyelt lemezek létrehozása](../virtual-machines-windows-create-managed-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Virtuális gép konvertálása a felügyelt lemezekké](../virtual-machines-windows-migrate-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure PowerShell](../virtual-machines-windows-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Virtuális gépek migrálása felügyelt lemezekre](../virtual-machines-windows-migrate-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Konvertálás nem felügyeltről felügyelt lemezzé](../virtual-machines-windows-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Klasszikus virtuális gép migrálása felügyelt lemezekre](../virtual-machines-windows-migrate-single-classic-to-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Felügyelt lemez pillanatfelvételének elkészítése](../virtual-machines-windows-snapshot-copy-managed-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### Adatlemez csatolása
 #### [Azure PowerShell](../virtual-machines-windows-attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -104,6 +99,12 @@
 ### [Operációsrendszer-lemez kibontása](../virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Adatlemez kibontása](../virtual-machines-windows-expand-data-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [A D: meghajtó használata adatlemezként](../virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### Virtuális gépek létrehozása nem felügyelt lemezek használatával
+#### [VHD feltöltése](../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Nem felügyelt rendszerkép létrehozása](../virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Nem felügyelt virtuális gép létrehozása általános virtuális merevlemezből](../virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Virtuális gép másolása](../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Virtuális gép létrehozása egyéni virtuális merevlemezből](../virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## [Virtuális gépek hálózatkezelése](../virtual-machines-windows-ps-common-network-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Virtuális hálózatok létrehozása](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -169,10 +170,11 @@
 ## Virtuális gépek áttelepítése
 ### [AWS és helyszíni virtuális gépek áttelepítése az Azure-ba – áttekintés](../virtual-machines-windows-on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Áttelepítés Amazon Web Servicesből (AWS) Azure-ba](../virtual-machines-windows-aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Virtuális gép feltöltése és létrehozása általánosított virtuális merevlemezből](../virtual-machines-windows-upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Virtuális gép feltöltése és létrehozása speciális virtuális merevlemezből](../virtual-machines-windows-upload-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe](../virtual-machines-windows-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Az áttelepítés megtervezése](../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [A virtuális hálózaton belüli összes virtuális gép áttelepítése PowerShell használatával](../virtual-machines-windows-ps-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Egyetlen virtuális gép áttelepítése PowerShell használatával](../virtual-machines-windows-migrate-single-classic-to-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Gyakori áttelepítési hibák](../virtual-machines-migration-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Közösségi eszközök áttelepítéshez](../virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

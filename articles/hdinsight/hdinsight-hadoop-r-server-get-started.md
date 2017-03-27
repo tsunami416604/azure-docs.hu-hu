@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: b5e111f3-c029-436c-ba22-c54a4a3016e3
 ms.service: HDInsight
+ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 0d15b6967b48f6d53cc169a87c25a2d9ee3936fe
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 383a325bfd2620f6c4fd25ce2f3a66522131efef
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,11 +41,11 @@ A HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtb
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 > [!NOTE]
-> A jelen dokumentumban lévő lépések végigvezetik azon, hogyan tud létrehozni R Servert egy HDInsight-fürtön az alapvető konfigurációs információkkal. Az egyéb fürtkonfigurációs beállításokról (például további tárfiókok hozzáadásáról, az Azure virtuális hálózat használatáról vagy a Hive metaadattárának létrehozásáról) lásd: [Linux-alapú HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+> A jelen dokumentumban lévő lépések végigvezetik azon, hogyan tud létrehozni R Servert egy HDInsight-fürtön az alapvető konfigurációs információkkal. Az egyéb fürtkonfigurációs beállításokról (például további tárfiókok hozzáadásáról, az Azure virtuális hálózat használatáról vagy a Hive metaadattárának létrehozásáról) lásd: [Linux-alapú HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az R Server Azure Resource Management-sablon használatával való létrehozásáról az [R-server HDInsight-fürt üzembe helyezésének leírásában](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/) talál további információt.
 >
 > 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza az **ÚJ**, **Intelligence+ Analytics** elemet, majd a **HDInsight** lehetőséget.
 
@@ -84,7 +85,7 @@ A HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtb
    
    ![SSH dir](./media/hdinsight-getting-started-with-r/dir.png)
 
-   * Ezután adja meg a nyilvános kulcsfájlt (*.pub), amikor a HDI-fürt hitelesítő adatait rendeli hozzá, és végül erősítse meg az erőforráscsoportot és a régiót, és válassza a **Tovább** lehetőséget.
+   * Ezután adja meg a nyilvános kulcsfájlt (*.pub), amikor a HDI-fürt hitelesítő adatait rendeli hozzá, és végül erősítse meg az erőforráscsoportot és a régiót, és válassza a**Tovább** lehetőséget.
    
    ![Hitelesítő adatok panel](./media/hdinsight-getting-started-with-r/publickeyfile.png)  
    

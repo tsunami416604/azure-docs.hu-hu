@@ -32,6 +32,7 @@
 ### [Állapotfelügyelet és riasztások](azure-stack-monitor-health.md)
 ### [Hálózati erőforrások kezelése](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
 ### [Tárolási erőforrások kezelése](azure-stack-manage-storage-accounts.md)
+### [Windows Azure Pack virtuális gépeinek kezelése](azure-stack-manage-windows-azure-pack.md)
 
 # Biztonság és megfelelőség
 ## Útmutató
@@ -86,7 +87,6 @@
 #### [Kezelés a portállal](azure-stack-kv-manage-portal.md)
 #### [Kezelés a Powershell-lel](azure-stack-kv-manage-powershell.md)
 ### Útmutató
-#### [Virtuális gép üzembe helyezése jelszóval](azure-stack-kv-deploy-vm-with-secret.md)
 #### [Virtuális gép létrehozása tanúsítvánnyal](azure-stack-kv-push-secret-into-vm.md)
 #### [Key Vault-mintaalkalmazás](azure-stack-kv-sample-app.md)
 

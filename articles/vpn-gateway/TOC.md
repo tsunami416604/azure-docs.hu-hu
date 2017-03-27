@@ -14,12 +14,12 @@
 ## Hely-hely közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 ## Pont–hely közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-### [Klasszikus portál (klasszikus)](vpn-gateway-point-to-site-create.md)
 ## Virtuális hálózatok közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
@@ -41,7 +41,9 @@
 ## [Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel](vpn-gateway-modify-local-network-gateway.md)
 ## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
 ## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
-## [VPN Gateway törlése](vpn-gateway-delete-vnet-gateway-powershell.md)
+## VPN Gateway törlése
+### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Önaláírt főtanúsítványok létrehozása pont–hely (P2S) kapcsolatok esetén](vpn-gateway-certificates-point-to-site.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 

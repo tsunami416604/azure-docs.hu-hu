@@ -1,21 +1,22 @@
 ---
-title: "Application Insights JavaScript webalkalmazásokhoz | Microsoft Docs"
+title: Application Insights JavaScript-webappokhoz | Microsoft Docs
 description: "Lekérheti a lapmegtekintések és a munkamenetek számát, a webes ügyfél adatait, és nyomon követheti a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
-ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -97,7 +98,7 @@ Az [elérhető paraméterek](https://github.com/Microsoft/ApplicationInsights-JS
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>Az alkalmazás futtatása
+## <a name="run"></a>Az alkalmazás futtatása
 Futtassa a webalkalmazást, használja egy ideig telemetria létrehozásához, és várjon néhány másodpercig. Ezt futtathatja a fejlesztési számítógépén az **F5** billentyűvel, vagy közzéteheti, és hagyhatja, hogy a felhasználók játsszanak vele.
 
 Ha ellenőrizni szeretné a webalkalmazás által az Application Insightsnak küldött telemetriát, használja a böngésző hibakereső eszközeit (számos böngészőben az **F12** billentyű). Az adatokat a dc.services.visualstudio.com címre küldi a rendszer.
@@ -107,7 +108,7 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/app-insights-javascript/03.png)
 
-*Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).*
+*Még nincsenek adatok? Kattintson a**Frissítés**gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).*
 
 A Böngésző panel [Metrikaböngésző panel](app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
@@ -167,6 +168,7 @@ Kattintson valamelyik sorra a részletekért.
 
 ![](./media/app-insights-javascript/37.png)
 
+
 Kattintson a `...` gombra az Ajax hívások teljes telemetriájáért.
 
 ### <a name="no-ajax-calls-reported"></a>Nincsenek Ajax hívások jelentve?
@@ -180,6 +182,7 @@ A Böngészők panelen található egy kivételek összegző diagram, valamint a
 Ha nem látja a böngészőkivételeket a jelentésben, ellenőrizze, hogy a kódrészlet nem adja-e meg a `disableExceptionTracking` [paramétert](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
 
 ## <a name="inspect-individual-page-view-events"></a>Egyéni lapmegtekintési események vizsgálata
+
 Általában az Application Insights elemzi a lapmegtekintési telemetriát, és Ön csak összegző jelentéseket tekinthet meg, amelyek az összes felhasználó átlagát tartalmazzák. De a hibakereséshez az egyes lapmegtekintési eseményeket is megtekintheti.
 
 A Diagnosztikai keresés panelen állítsa a Szűrők elemet Lapmegtekintés értékre.
@@ -217,19 +220,16 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 * [Információk a használatkövetésről](app-insights-web-track-usage.md)
 * [Információk az egyéni eseményekről és a mérőszám API-ról](app-insights-api-custom-events-metrics.md).
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> Videó: Használat nyomon követése
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a>Videó
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a> Következő lépések
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
+
+## <a name="next"></a> Következő lépések
 * [Használat követése](app-insights-web-track-usage.md)
 * [Egyéni események és a mérőszámok](app-insights-api-custom-events-metrics.md)
 * [Összeállítás, mérés, tanulás](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -10,7 +10,7 @@
 ## [Virtuális gép létrehozása a portálról](../../virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Bejelentkezés virtuális gépre](../../virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Az Azure PowerShell telepítése](/powershell/azureps-cmdlets-docs)
-## [Az Azure parancssori felület telepítése](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 # Útmutató
 
@@ -85,6 +85,7 @@
 ### [Hozzáférés alkalmazáshoz](../../virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [Klasszikus üzembe helyezési hibák új virtuális gép létrehozásakor](../../virtual-machines-windows-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [Klasszikus üzembe helyezési hibák meglévő virtuális gép újraindításakor vagy átméretezésekor](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [RDP-jelszó visszaállítása](../../virtual-machines-windows-classic-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # Referencia
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
@@ -102,8 +103,3 @@
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

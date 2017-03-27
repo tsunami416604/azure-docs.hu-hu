@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: bdd7f1410906a46c66c1fd33949b30cc669e5a6b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 09be891b5385871554f45bc1f824b4351ffd3bc2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -60,7 +60,7 @@ A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítás
 
 ![A Batch-fiók panel az Azure Portalon][account_blade]
 
-* **Batch-fiók URL-cím**: Amikor egy alkalmazást fejleszt a [Batch API-kkal](batch-technical-overview.md#batch-development-apis), szüksége lesz egy fiók URL-címére a Batch-erőforrások eléréséhez. A Batch-fiók URL-címének formátuma a következő:
+* **Batch-fiók URL-cím**: Amikor egy alkalmazást fejleszt a [Batch API-kkal](batch-apis-tools.md#batch-development-apis), szüksége lesz egy fiók URL-címére a Batch-erőforrások eléréséhez. A Batch-fiók URL-címének formátuma a következő:
   
     `https://<account_name>.<region>.batch.azure.com`
 
@@ -107,7 +107,7 @@ Ezenkívül, sok kvóta egyszerűen növelhető az Azure Portalra elküldött in
 Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelhet Batch-fiókokat:
 
 * [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
-* [Azure CLI](../xplat-cli-install.md)
+* [Azure CLI](../cli-install-nodejs.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>Következő lépések

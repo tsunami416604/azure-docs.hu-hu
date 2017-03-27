@@ -15,6 +15,7 @@
 ### [DC/OS nyilvános hozzáférésének engedélyezése](container-service-enable-public-access.md)
 ### [Terheléselosztó DC/OS-tárolók](container-service-load-balancing.md)
 ### [Alkalmazás-/felhasználóspecifikus Orchestrator a DC/OS-ben](container-service-application-specific-marathon.md)
+### [Fájlmegosztás hozzáadása](container-service-dcos-fileshare.md)
 ### DC/OS figyelése
 #### [Figyelés az ELK-val](container-service-monitoring-elk.md)
 #### [Figyelés az OMS-szel](container-service-monitoring-oms.md)
