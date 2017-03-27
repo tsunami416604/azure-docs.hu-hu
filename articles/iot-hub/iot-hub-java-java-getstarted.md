@@ -65,7 +65,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
     </dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.1.15</version>
+      <version>1.2.16</version>
     </dependency>
     ```
     
@@ -289,7 +289,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszköz
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.0.21</version>
+      <version>1.1.22</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
