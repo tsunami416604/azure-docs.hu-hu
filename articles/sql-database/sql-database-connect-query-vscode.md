@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9192ed7b69e52c59efe33981e1e557b634679196
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 86471fe29bbc9076624d96b83f7001d8755363bc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -32,7 +32,6 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 
 - [DB létrehozása – portál](sql-database-get-started-portal.md)
 - [DB létrehozása – CLI](sql-database-get-started-cli.md)
-- [DB létrehozása – PowerShell](sql-database-get-started-powershell.md) 
 
 A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://code.visualstudio.com/Download) legújabb verziója van telepítve, és be van töltve az [mssql bővítmény](https://aka.ms/mssql-marketplace). Az mssql bővítmény telepítési lépéseinek megismeréséhez olvassa el[a VS Code telepítését](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) ismertető cikket. 
 
@@ -164,3 +163,4 @@ Használja az [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transac
 
 - A Visual Studio Code-ról további információt a [Visual Studio Code-ot](https://code.visualstudio.com/docs) ismertető témakörben olvashat
 - Az SQL Server Management Studióval végzett lekérdezésről és adatszerkesztésről az [SSMS](https://msdn.microsoft.com/library/ms174173.aspx) témakörében olvashat bővebben.
+
