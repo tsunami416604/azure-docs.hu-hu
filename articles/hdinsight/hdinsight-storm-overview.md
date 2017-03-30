@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 72d54080-1e48-4a5e-aa50-cce4ffc85077
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/11/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 0cf2d7f4cbbed730d690693fd006665355155c22
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 0aa2a7075f64b353f6b052ab6b973a06622a9339
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -42,7 +43,7 @@ A HDInsight alatt futó Apache Storm fő előnyei a következők:
 * Könnyen testre szabható a szkriptek fürtön történő futtatásával a létrehozás során vagy után. További információ: [HDInsight-fürtök testre szabása szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 
 * Tetszőleges nyelv használata: a Storm-összetevők számos nyelven írhatók, például **Java**, **C#** és **Python** nyelven.
-  
+
   * A Visual Studio integrálható a HDInsighttal C#-topológiák fejlesztéséhez, felügyeletéhez és figyeléséhez. További információ: [C# Storm-topológiák fejlesztése a HDInsight Tools for Visual Studio szolgáltatással](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
   * Támogatja a **Trident** Java-kezelőfelületet. Ez a kezelőfelület lehetővé teszi Storm-topológiák létrehozását, amelyek támogatják az üzenetek „pontosan egyszeri” feldolgozását, a „tranzakciós” adattároló-megőrzést és számos gyakori stream analytics-műveletet.
@@ -50,13 +51,13 @@ A HDInsight alatt futó Apache Storm fő előnyei a következők:
 * A fürt könnyen méretezhető felfelé és lefelé: a futó Storm-topológiák befolyásolása nélkül adhat hozzá vagy távolíthat el feldolgozó csomópontokat.
 
 * Integráció a következő Azure-szolgáltatásokkal:
-  
+
     * Event Hubs
     * Virtual Network
     * SQL Database
     * Azure Storage
     * DocumentDB
-  
+
   * Több HDInsight-fürt képességeit is biztonságosan kihasználhatja az Azure Virtual Network használatával: létrehozhat HDInsight-, HBase- vagy Hadoop-fürtöket használó elemzőfolyamatokat.
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/documentation/Powered-By.html)
@@ -80,7 +81,7 @@ Egy új Storm-fürt a kérelem benyújtásától számított 15 percen belül el
 
 * __Webes kapcsolatok__: A HDInsight-fürtökön elérhető az Ambari webes felület. Az Ambari webes felület lehetővé teszi a fürtön futó szolgáltatások egyszerű figyelését, konfigurálását és kezelését. A HDInsight alatt futó Stormon emellett a Storm felhasználói felület is elérhető, amellyel böngészőből figyelhetők és kezelhetők a futó Storm-topológiák.
 
-  További információk: [A HDInsight kezelése az Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md) és [Figyelés és kezelés a Storm kezelői felülettel](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-using-the-storm-ui).
+  További információk: [A HDInsight kezelése az Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md) és [Figyelés és kezelés a Storm kezelői felülettel](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui).
 
 * __Azure PowerShell és CLI__: Az Azure PowerShell és az Azure parancssori felület (CLI) egyaránt biztosítanak olyan parancssori eszközöket, amelyek segítségével az ügyfélrendszerről használható a HDInsight és az egyéb Azure-szolgáltatások.
 
@@ -152,7 +153,7 @@ Az Apache Storm a HDInsightból vagy a Hadoopból ismerős MapReduce-feladatok h
 * **Adatfolyam**: **Rekordok** kötetlen gyűjteménye. Az adatfolyamokat **spoutok** és **boltok** hozzák létre, és **boltok** használják fel.
 * **Rekord**: Dinamikusan gépelt értékek elnevezett listája.
 * **Spout**: Egy adatforrástól érkező adatok felhasználásával bocsát ki egy vagy több **adatfolyamot**.
-  
+
   > [!NOTE]
   > Az adatok gyakran egy üzenetsorból, például a Kafkából vagy Azure-eseményközpontokból lesznek beolvasva. Az üzenetsor garantálja, hogy az adatok kimaradás esetén is megőrződjenek.
 

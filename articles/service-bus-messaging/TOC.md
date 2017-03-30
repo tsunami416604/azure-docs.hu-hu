@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Mi az a Service Bus üzenetkezelés?](service-bus-messaging-overview.md)
 ## [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
+## [Service Bus-architektúra](service-bus-architecture.md)
 ## [Gyakori kérdések](service-bus-faq.md)
 
 # Első lépések
