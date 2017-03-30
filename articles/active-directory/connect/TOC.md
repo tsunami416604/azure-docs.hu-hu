@@ -62,6 +62,7 @@
 ### [Hibák a szinkronizálás során](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [Az objektum nincs szinkronizálva](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Jelszó-szinkronizálás](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [Helyreállítás 10 GB-ra korlátozott LocalDB adatbázisból](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referencia
 ## [Identitásszinkronizálás és ismétlődő attribútumok rugalmassága](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
