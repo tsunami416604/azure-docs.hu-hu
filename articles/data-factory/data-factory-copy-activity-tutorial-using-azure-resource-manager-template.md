@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 977fcf74c86e2ab312d99b3f1821cfb7efbe9745
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -313,7 +314,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
 1. Indítsa el az **Azure PowerShellt**, és futtassa az alábbi parancsot:
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     ```PowerShell
-    Login-AzureRmAccount    
+    Login-AzureRmAccount       
     ```  
    * Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
     ```PowerShell
@@ -408,7 +409,7 @@ Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure S
 A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedServiceName és dataFactoryName, amelyek a sablonban vannak definiálva. 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
-Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) című szakaszt.  
+Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
 
 ```json
 {
@@ -431,7 +432,7 @@ Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis ne
 A connectionString az sqlServerName, databaseName, sqlServerUserName és sqlServerPassword paramétereket használja, amelyeknek az értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablon következő változóit is használja: azureSqlLinkedServiceName, dataFactoryName.
 
 #### <a name="azure-blob-dataset"></a>Azure Blob-adatkészlet
-Megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) című szakaszt. 
+Megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](data-factory-azure-blob-connector.md#dataset-properties) című szakaszt. 
 
 ```json
 {
@@ -473,7 +474,7 @@ Megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét.
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL-adatkészlet
-Megadhatja az Azure SQL Database-ben található tábla nevét, amely az Azure Blob Storage-tárból másolt adatokat tartalmazza. Az Azure SQL-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL-adatkészlet tulajdonságai](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) című szakaszt. 
+Megadhatja az Azure SQL Database-ben található tábla nevét, amely az Azure Blob Storage-tárból másolt adatokat tartalmazza. Az Azure SQL-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL-adatkészlet tulajdonságai](data-factory-azure-sql-connector.md#dataset-properties) című szakaszt. 
 
 ```json
 {
@@ -591,8 +592,3 @@ Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sa
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
-
-
-<!--HONumber=Feb17_HO1-->
-
-

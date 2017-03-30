@@ -17,10 +17,11 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 5abd8365ed883831d4c85ebd14de31dbe45d815d
+ms.lasthandoff: 01/24/2017
 
 ---
 
-# <a name="a-nameget-startedacreating-an-internet-facing-load-balancer-in-resource-manager-by-using-powershell"></a><a name="get-started"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Resource Managerben a PowerShell használatával
+# <a name="get-started"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Resource Managerben a PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -254,7 +255,7 @@ A virtuális gép létrehozásával és egy hálózati adapter hozzárendelésé
 2. Töltse be a háttér-konfigurációt egy változóba.
 
     ```powershell
-    $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+    $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
     ```
 
 3. Töltse be a már létrehozott hálózati adaptert egy változóba. A változó neve **$nic**. A hálózati adapter neve ugyanaz, mint a korábbi példában.
@@ -282,7 +283,7 @@ A virtuális gép létrehozásával és egy hálózati adapter hozzárendelésé
 1. A korábbi példából származó terheléselosztó felhasználásával a `Get-AzureLoadBalancer` paranccsal rendeljen hozzá egy terheléselosztó objektumot az **$slb** változóhoz.
 
     ```powershell
-    $slb = get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+    $slb = get-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
     ```
 
 2. A következő példában egy bejövő NAT-szabályt ad hozzá – az előtérkészlet 81-es portját és a háttérkészlet 8181-es portját használva – egy meglévő a terheléselosztóhoz.
@@ -302,7 +303,7 @@ A virtuális gép létrehozásával és egy hálózati adapter hozzárendelésé
 A `Remove-AzureLoadBalancer` paranccsal törölje a korábban létrehozott **NRP-LB** nevű terheléselosztót az **NRP-RG** nevű erőforráscsoportból.
 
 ```powershell
-Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]
@@ -315,9 +316,4 @@ Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

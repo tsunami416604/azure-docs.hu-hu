@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: a4658f1eee3cdd24b3da47b4c7319c61ea39cb34
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -125,7 +126,7 @@ Ebben a lépésben létrehozza a következő két társított szolgáltatást: *
 4. Győződjön meg arról, hogy az **AzureSqlLinkedService** szolgáltatás megjelenik a fanézetben. 
 
 > [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties).
+> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#linked-service-properties).
 > 
 > 
 
@@ -201,7 +202,7 @@ Ebben a lépésben létrehozza az **InputDataset** nevű adatkészletet, amely e
 3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **InputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **InputDataset** adatkészlet megjelenik a fanézetben.
 
 > [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése Azure Blobból vagy Azure Blobba](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties).
+> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése Azure Blobból vagy Azure Blobba](data-factory-azure-blob-connector.md#dataset-properties).
 > 
 > 
 
@@ -247,7 +248,7 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
 3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **OutputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **OutputDataset** adatkészlet megjelenik a fanézetben. 
 
 > [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties).
+> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#linked-service-properties).
 > 
 > 
 
@@ -412,9 +413,4 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

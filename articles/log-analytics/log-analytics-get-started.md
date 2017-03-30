@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
-ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ Az Azure Log Analytics percek alatt üzembe helyezhető, és segít kiértékeln
 Ez a cikk bevezetőként szolgál a Log Analytics használatába, és egy rövid oktatóanyagon keresztül végigvezeti egy minimális Azure-alapú üzemi példány létrehozásán, így rögtön el is kezdheti használni a szolgáltatást. A logikai tárolót, amely az Azure-ban a felügyeleti adatok tárolására szolgál, munkaterületnek nevezzük. Miután áttekintette ezeket az információkat, és elvégezte az értékelésüket, eltávolíthatja a kiértékelési munkaterületet. Lévén ez a cikk egy oktatóanyag, az üzleti követelményekkel, a tervezéssel és az architektúrával kapcsolatos iránymutatásokkal nem foglalkozik.
 
 >[!NOTE]
->A Microsoft Azure Government Cloud használata esetén inkább az [Azure Government felügyeletének és kezelésének dokumentációját](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics) érdemes áttekintenie.
+>A Microsoft Azure Government Cloud használata esetén inkább az [Azure Government felügyeletének és kezelésének dokumentációját](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics) érdemes áttekintenie.
 
 Elsőként is érdemes röviden áttekinteni az Ön előtt álló folyamatot:
 

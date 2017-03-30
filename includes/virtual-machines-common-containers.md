@@ -146,8 +146,8 @@ A Docker a Microsoft Azure-on:
 
 * [Docker VM-bővítmény Linuxhoz az Azure-on](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Docker VM-bővítmény – Használati útmutató](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
-* [A Docker VM-bővítmény használata az Azure parancssori felületével (Azure CLI)](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Az Azure Portal Docker VM-bővítményének használata](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [A Docker VM-bővítmény használata az Azure parancssori felületével (Azure CLI)](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Az Azure Portal Docker VM-bővítményének használata](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [A docker-machine használata az Azure-on](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Swarm szolgáltatással kiegészülő Docker használata az Azure-on](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Bevezetés a Docker és a Docker Compose használatába az Azure-on](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -193,8 +193,3 @@ Tekintse meg a [Docker](https://www.docker.com) webhelyét és a [Windows-tárol
 [microservices]: http://martinfowler.com/articles/microservices.html
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
-
-
-<!--HONumber=Feb17_HO3-->
-
-
