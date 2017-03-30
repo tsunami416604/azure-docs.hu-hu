@@ -26,11 +26,11 @@
 ## Kapcsolódás
 
 ### [Áttekintés](sql-data-warehouse-connect-overview.md)
-### [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md)
-### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [A Visual Studio telepítése](sql-data-warehouse-install-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md)
 
 ## Létrehozás
 ### [Azure Portal](sql-data-warehouse-get-started-provision.md)

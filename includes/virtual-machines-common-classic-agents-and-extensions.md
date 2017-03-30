@@ -41,4 +41,4 @@ A virtuálisgép-ügynök a következő helyzetekben van engedélyezve:
 >
 
 ## <a name="find-add-update-and-remove-vm-extensions"></a>Virtuálisgép-bővítmények keresése, hozzáadása, frissítése és eltávolítása
-Az ezekkel a feladatokkal kapcsolatos részletekért lásd: [Azure virtuálisgép-bővítmények hozzáadása, keresése, frissítése és eltávolítása](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Az ezekkel a feladatokkal kapcsolatos részletekért lásd: [Azure virtuálisgép-bővítmények hozzáadása, keresése, frissítése és eltávolítása](../articles/virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
