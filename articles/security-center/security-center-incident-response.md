@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: f40f64906bf87d8505fa1a209222163256326d14
 ms.openlocfilehash: a2cc4729ca5cb1dcc10630158ec3d94315fb01a5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -100,9 +101,4 @@ Az incidensmegoldási csapat is hasznát veheti a [Security Center Power BI](sec
 
 ## <a name="conclusion"></a>Összegzés
 A csapat összeállítása még az incidens előtt fontos lépés a szervezet számára, és pozitívan tudja befolyásolni az incidensek kezelését. Ha a szervezet rendelkezik a megfelelő eszközökkel az erőforrások figyeléséhez, ez segítheti a csapatot abban, hogy megfelelő lépéseket tegyen a biztonsági incidensek elhárítása érdekében. A Security Center [észlelési funkciói](security-center-detection-capabilities.md) segíthetnek az informatikai részlegnek a biztonsági incidensekre való gyors válaszadásban és a biztonsági problémák elhárításában.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

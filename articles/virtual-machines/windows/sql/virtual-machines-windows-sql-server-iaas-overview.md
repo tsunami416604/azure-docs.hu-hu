@@ -18,6 +18,7 @@ ms.author: jroth
 translationtype: Human Translation
 ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
 ms.openlocfilehash: 1bd099ee9154e920fef5b99e27d2a9711c1d75d1
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -32,7 +33,7 @@ Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatás
 ## <a name="overview"></a>Áttekintés
 Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe. A következő videó az SQL Server Azure virtuális gépek műszaki áttekintését tartalmazza.
 
-> [!VIDEÓ: https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
+> [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
 > 
 > 
 
@@ -80,7 +81,7 @@ A következő táblázat a virtuálisgép-katalógus legújabb SQL Server-rendsz
 
 E listán kívül az SQL Server-verziók valamint az operációs rendszerek egyéb kombinációi is elérhetők. További rendszerképeket az Azure Portal piacterén találhat. 
 
-## <a name="a-idbyola-option-2-create-a-sql-vm-with-an-existing-license"></a><a id="BYOL"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
+## <a id="BYOL"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálon ezek a rendszerképnevek **{BYOL}** előtagot kapnak.
 
 | Verzió | Operációs rendszer | Kiadás |
@@ -129,10 +130,5 @@ Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése]
 A díjszabással kapcsolatos kérdésekről bővebben a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) oldalon olvashat. Az SQL Server célkiadását az **OS/Software** (Operációs rendszer/Szoftver) listájából választhatja ki. Ezt követően megtekintheti a különböző méretű virtuális gépekre vonatkozó díjakat. 
 
 További kérdései vannak? Először tekintse át [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban GYIK részét](virtual-machines-windows-sql-server-iaas-faq.md). Emellett a kérdéseit vagy megjegyzéseit az SQL virtuális gépekre vonatkozó bármelyik témakör alján megírhatja, így kapcsolatba léphet a Microsofttal és a közösséggel.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
