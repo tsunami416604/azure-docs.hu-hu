@@ -13,11 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -183,10 +184,5 @@ E dokumentumban az OMS biztonsági és auditálási megoldást mutattuk be. Az O
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

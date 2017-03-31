@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -56,7 +57,7 @@ Az Azure-környezet konfigurációja és az Ön által meghatározott biztonság
 
 Miután a partnermegoldást üzembe helyezte, információkat tekinthet meg az állapotáról, és alapszintű felügyeleti feladatokat végezhet a Security Center fő irányítópultjának Partnermegoldás csempéjén. A partnermegoldások Security Centerben végzett kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
 
-![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
+![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1-new.png)
 
 
 ## <a name="see-also"></a>Lásd még:
@@ -69,9 +70,4 @@ Ebben a dokumentumban megismerkedett a partnermegoldások az Azure Security Cent
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

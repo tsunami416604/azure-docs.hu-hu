@@ -5,20 +5,17 @@
 ## [DB létrehozása – portál](sql-database-get-started-portal.md)
 ## [DB létrehozása – Azure CLI](sql-database-get-started-cli.md)
 ## [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
-## Kapcsolódás
+## Kezelés
 ### [SSMS](sql-database-connect-query-ssms.md)
 ### [VS Code](sql-database-connect-query-vscode.md)
+## Kapcsolódás
 ### [C#](sql-database-connect-query-dotnet.md)
 # Példák
 ## [Azure CLI](sql-database-cli-samples.md)
 ## [PowerShell](sql-database-powershell-samples.md)
 # oktatóanyagokat
-## Hozzáférés
-### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
-### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
-## Helyreállítás
-### [Portal](sql-database-get-started-backup-recovery-portal.md)
-### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+## [Adatbázis tervezése](sql-database-design-first-database.md)
+
 # Alapelvek
 ## Adatbázisok és kiszolgálók
 ### [Adatbázisok](sql-database-overview.md)
@@ -110,6 +107,9 @@
 ### [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 ### [Transact-SQL](sql-database-elastic-pool-manage-tsql.md)
 ### [C#](sql-database-elastic-pool-manage-csharp.md)
+## Adatbázis-hozzáférés 
+### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
+### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
 ## Adatok védelme
 ### [Azure AD-hitelesítés](sql-database-aad-authentication-configure.md)
 ### [Naplózás](sql-database-auditing-portal.md)
@@ -117,11 +117,13 @@
 ### [Titkosítás – tanúsítványtár](sql-database-always-encrypted.md)
 ### [Titkosítás – Key Vault](sql-database-always-encrypted-azure-key-vault.md)
 ### [Maszkolás konfigurálása](sql-database-dynamic-data-masking-get-started-portal.md)
-## Biztonsági mentés és visszaállítás
-### [Visszaállítás – portál](sql-database-restore-database-portal.md)
+## Helyreállítás
+### [Portal](sql-database-get-started-backup-recovery-portal.md)
+### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+### [Egy táblázat](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
+## Megőrzés
 ### [Megőrzés – portál](sql-database-manage-long-term-backup-retention-portal.md)
 ### [Megőrzés – PowerShell](sql-database-manage-long-term-backup-retention-powershell.md)
-### [Egyetlen tábla helyreállítása](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
 ## Adatok georeplikálása
 ### [Portál](sql-database-geo-replication-portal.md)
 ### [T-SQL – konfigurálás](sql-database-geo-replication-transact-sql.md)

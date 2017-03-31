@@ -2,27 +2,25 @@
 ## [Mi az az ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – Gyakori kérdések](expressroute-faqs.md)
 ## [Kapcsolati modellek](expressroute-connectivity-models.md)
+## [Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md)
 ## [Földrajzi egységek és partnerek](expressroute-locations.md)
 ### [Szolgáltatók hely alapján](expressroute-locations-providers.md)
 ### [Helyek szolgáltató alapján](expressroute-locations.md)
+## [Az ExpressRoute virtuális hálózati átjárói](expressroute-about-virtual-network-gateways.md)
 
 # Első lépések
-## [Munkafolyamatok](expressroute-workflows.md)
 ## [Előfeltételek](expressroute-prerequisites.md)
-## [Kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md)
+## [Munkafolyamatok](expressroute-workflows.md)
 ## [Útválasztási követelmények](expressroute-routing.md)
-## [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ## [NAT-követelmények](expressroute-nat.md)
 ## [QoS-követelmények](expressroute-qos.md)
 ## [A kapcsolatcsoportok áthelyezése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
-## [Az ExpressRoute virtuális hálózati átjárói](expressroute-about-virtual-network-gateways.md)
 
 # Útmutató
 ## Kapcsolatcsoport létrehozása és módosítása
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
-### [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
-## Útválasztási konfiguráció létrehozása és módosítása
+## Társhálózati konfiguráció létrehozása és módosítása
 ### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
@@ -38,11 +36,12 @@
 ### [PowerShell (klasszikus)](expressroute-howto-coexist-classic.md)
 ## [Kapcsolatcsoportok áttelepítése klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
 ## Útválasztó konfigurálása ExpressRoute-hoz
-### [Útválasztó-konfigurációk telepítési mintái](expressroute-config-samples-routing.md)
+### [Útválasztó konfigurálása](expressroute-config-samples-routing.md)
 ### [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
 
 ## Ajánlott eljárások
 ### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)
+## [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
 
 ## Hibaelhárítás

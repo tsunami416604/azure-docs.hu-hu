@@ -3,22 +3,21 @@
 
 # Első lépések
 ## [Méretezési csoport üzembe helyezése a portálon](virtual-machine-scale-sets-portal-create.md)
-## [Méretezési csoport üzembe helyezése az Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
-## [Egyszerű méretezési csoport üzembe helyezése a Resource Manager-sablonnal](virtual-machine-scale-sets-mvss-start.md)
+## [Méretezési csoport üzembe helyezése a PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 
 # Útmutató
 ## Tervezés és kialakítás
 ### [Kialakítási szempontok](virtual-machine-scale-sets-design-overview.md)
-## Méretezési csoportok sablonjainak írása a következő célból:
-### [Egyszerű méretezési csoport üzembe helyezése](virtual-machine-scale-sets-mvss-start.md)
-### [Méretezési csoport üzembe helyezése meglévő virtuális hálózaton](virtual-machine-scale-sets-mvss-existing-vnet.md)
+
+## Sablon létrehozása
+### [Információk a méretezési csoportok sablonjairól](virtual-machine-scale-sets-mvss-start.md)
+### [Virtuális hálózat hozzáadása](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## Üzembe helyezés
-### [Méretezési csoport a portállal](virtual-machine-scale-sets-portal-create.md)
+### [Létrehozás a portálon](virtual-machine-scale-sets-portal-create.md)
+### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
+### [Létrehozás a PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 ### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
-### [Méretezési csoport a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
-### [Méretezési csoport PowerShell-lel](virtual-machine-scale-sets-windows-create.md)
-### [Méretezési csoport Azure CLI-vel](virtual-machine-scale-sets-linux-create-cli.md)
 ### [Linux rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-windows-autoscale.md)
 ### [Méretezésicsoport-alkalmazások](virtual-machine-scale-sets-deploy-app.md)

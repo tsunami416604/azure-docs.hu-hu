@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -84,10 +85,5 @@ Ebben a dokumentumban az OMS biztonság és audit alapkonfigurációs értékel�
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

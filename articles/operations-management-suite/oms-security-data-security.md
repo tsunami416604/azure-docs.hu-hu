@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 6af6c10cef317453131197db74a9380518afadf0
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -58,10 +59,5 @@ Ebből a dokumentumból megtudta, hogyan kezeli az OMS az adatokat, és hogyan g
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

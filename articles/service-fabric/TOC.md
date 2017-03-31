@@ -1,3 +1,4 @@
+
 # Áttekintés
 ## [Mi a Service Fabric?](service-fabric-overview.md)
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
@@ -22,11 +23,13 @@
 ### [Minták és forgatókönyvek](service-fabric-patterns-and-scenarios.md)
 ### Alapvető beállítások
 #### [Az alkalmazásmodell](service-fabric-application-model.md)
+#### [Alkalmazás becsomagolása](service-fabric-package-apps.md)
 #### [Támogatott programozási modell](service-fabric-choose-framework.md)
 #### [Szolgáltatás állapota](service-fabric-concepts-state.md)
 #### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
 #### [Webes kezelőfelület hozzáadása](service-fabric-add-a-web-frontend.md)
 #### [Szolgáltatásjegyzéki erőforrások](service-fabric-service-manifest-resources.md)
+#### [Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez](service-fabric-get-started-eclipse.md)
 #### [Alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 #### [Biztonságos kapcsolatok konfigurálása a Visual Studióban](service-fabric-visualstudio-configure-secure-connections.md)
 #### Hibakeresés
@@ -62,7 +65,7 @@
 #### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
 #### [Kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-communication.md)
 #### [Biztonságos kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-secure-communication.md)
-##### [ASP.NET](service-fabric-reliable-services-communication-webapi.md)
+##### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 ##### [Szolgáltatás távelérésének lehetővé tétele](service-fabric-reliable-services-communication-remoting.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
 ##### [Fordított proxy](service-fabric-reverseproxy.md)
@@ -88,6 +91,7 @@
 ## Áttelepítés a Cloud Servicesből
 ### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)
 ### [Migráció a Service Fabricre](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+### [Ajánlott eljárások](/azure/architecture/service-fabric/migrate-from-cloud-services)
 
 ## Fürtök létrehozása és felügyelete
 

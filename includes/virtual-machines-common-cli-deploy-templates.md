@@ -1,46 +1,46 @@
 
-* [Virtuális gép gyors létrehozása az Azure-ban](#quick-create-a-vm-in-azure)
-* [Virtuális gép központi telepítése sablonból az Azure-ban](#deploy-a-vm-in-azure-from-a-template)
-* [Virtuális gép létrehozása egyéni rendszerképből](#create-a-custom-vm-image)
-* [Virtuális hálózatot és terheléselosztót használó virtuális gép központi telepítése](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
-* [Erőforráscsoport eltávolítása](#remove-a-resource-group)
-* [Egy erőforráscsoport üzemelő példányához tartozó napló megjelenítése](#show-the-log-for-a-resource-group-deployment)
-* [Virtuális gépre vonatkozó információk megjelenítése](#display-information-about-a-virtual-machine)
-* [Csatlakozás Linux-alapú virtuális géphez](#log-on-to-a-linux-based-virtual-machine)
-* [Virtuális gép leállítása](#stop-a-virtual-machine)
-* [Virtuális gép elindítása](#start-a-virtual-machine)
-* [Adatlemez csatolása](#attach-a-data-disk)
+* [Quick-create a virtual machine in Azure](#quick-create-a-vm-in-azure)
+* [Deploy a virtual machine in Azure from a template](#deploy-a-vm-in-azure-from-a-template)
+* [Create a virtual machine from a custom image](#create-a-custom-vm-image)
+* [Deploy a virtual machine that uses a virtual network and a load balancer](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
+* [Remove a resource group](#remove-a-resource-group)
+* [Show the log for a resource group deployment](#show-the-log-for-a-resource-group-deployment)
+* [Display information about a virtual machine](#display-information-about-a-virtual-machine)
+* [Connect to a Linux-based virtual machine](#log-on-to-a-linux-based-virtual-machine)
+* [Stop a virtual machine](#stop-a-virtual-machine)
+* [Start a virtual machine](#start-a-virtual-machine)
+* [Attach a data disk](#attach-a-data-disk)
 
-## <a name="getting-ready"></a>Előkészületek
-Az Azure CLI Azure-erőforráscsoportokkal való használatához rendelkeznie kell az Azure CLI megfelelő verziójával és egy Azure-fiókkal. Ha nincs telepítve az Azure CLI, [telepítse](../articles/cli-install-nodejs.md).
+## <a name="getting-ready"></a>Getting ready
+Before you can use the Azure CLI with Azure resource groups, you need to have the right Azure CLI version and an Azure account. If you don't have the Azure CLI, [install it](../articles/cli-install-nodejs.md).
 
-### <a name="update-your-azure-cli-version-to-090-or-later"></a>Az Azure CLI frissítése 0.9.0-s vagy újabb verzióra
-Ha szeretné megtudni, telepítve van-e a 0.9.0-s vagy újabb verzió, írja be a következőt: `azure --version`.
+### <a name="update-your-azure-cli-version-to-090-or-later"></a>Update your Azure CLI version to 0.9.0 or later
+Type `azure --version` to see whether you have already installed version 0.9.0 or later.
 
 ```azurecli
 azure --version
 0.9.0 (node: 0.10.25)
 ```
 
-Ha a verzió nem a 0.9.0-s vagy újabb, frissítenie kell az egyik natív telepítővel vagy az **npm** segítségével. Ehhez írja be a következőt: `npm update -g azure-cli`.
+If your version is not 0.9.0 or later, you need to update it by using one of the native installers or through **npm** by typing `npm update -g azure-cli`.
 
-Vagy az alábbi [Docker rendszerkép](https://registry.hub.docker.com/u/microsoft/azure-cli/) segítségével futtassa az Azure CLI-t Docker-tárolóként. Futtassa a következő parancsot egy Docker-gazdagépről:
+You can also run Azure CLI as a Docker container by using the following [Docker image](https://registry.hub.docker.com/u/microsoft/azure-cli/). From a Docker host, run the following command:
 
 ```bash
 docker run -it microsoft/azure-cli
 ```
 
-### <a name="set-your-azure-account-and-subscription"></a>Az Azure-fiók és -előfizetés beállítása
-Ha még nincs Azure-előfizetése, de van MSDN-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Regisztrálhat [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) is.
+### <a name="set-your-azure-account-and-subscription"></a>Set your Azure account and subscription
+If you don't already have an Azure subscription but you do have an MSDN subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Or you can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-Ezután [jelentkezzen be interaktívan Azure-fiókjába](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login). Ehhez írja be az `azure login` karakterláncot, majd kövesse az utasításokat az Azure-fiókjába való interaktív bejelentkezéshez. 
+Now [log in to your Azure account interactively](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login) by typing `azure login` and following the prompts for an interactive login experience to your Azure account. 
 
 > [!NOTE]
-> Ha rendelkezik munkahelyi vagy iskolai azonosítóval, és tudja, hogy még nem engedélyezte a kéttényezős hitelesítést, használhatja az `azure login -u` parancsot **is** a munkahelyi vagy iskolai azonosítójával együtt, így bejelentkezhet az interaktív munkamenet *nélkül*. Ha nem rendelkezik munkahelyi vagy iskolai azonosítóval, [létrehozhat egy munkahelyi vagy iskolai azonosítót a személyes Microsoft-fiókjából](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), és bejelentkezhet ugyanígy.
+> If you have a work or school ID and you know you do not have two-factor authentication enabled, you can **also** use `azure login -u` along with the work or school ID to log in *without* an interactive session. If you don't have a work or school ID, you can [create a work or school id from your personal Microsoft account](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) to log in the same way.
 >
 >
 
-A fiókjához tartozhat több előfizetés is. Az előfizetések listájának megjelenítéséhez írja be az `azure account list` karakterláncot. Az eredmény a következőhöz hasonló lesz:
+Your account may have more than one subscription. You can list your subscriptions by typing `azure account list`, which might look something like this:
 
 ```azurecli
 azure account list
@@ -53,37 +53,37 @@ data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
 data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 ```
 
-Az aktuális Azure-előfizetés beállításhoz írja be a következőket. Azt az előfizetésnevet vagy azonosítót használja, amelyhez a kezelni kívánt erőforrások tartoznak.
+You can set the current Azure subscription by typing the following. Use the subscription name or the ID that has the resources you want to manage.
 
 ```azurecli
 azure account set <subscription name or ID> true
 ```
 
-### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Váltás az Azure CLI erőforráscsoport módjára
-Alapértelmezés szerint az Azure CLI szolgáltatás-felügyeleti módban indul el (**asm** mód). Az erőforráscsoport módra váltáshoz írja be a következőt.
+### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Switch to the Azure CLI resource group mode
+By default, the Azure CLI starts in the service management mode (**asm** mode). Type the following to switch to resource group mode.
 
 ```azurecli
 azure config mode arm
 ```
 
-## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Az Azure-erőforrássablonok és -erőforráscsoportok ismertetése
-A legtöbb alkalmazás különböző erőforrástípusokból épül fel (például egy vagy több virtuális gép és tárfiók, egy SQL-adatbázis, egy virtuális hálózat vagy egy tartalomkézbesítési hálózat). Az alapértelmezett Azure szolgáltatásfelügyeleti API és a klasszikus Azure portál ezeket az elemeket szolgáltatásonkénti módszerrel jelenítette meg. Ehhez a módszerhez egyesével kell üzembe helyezni és kezelni az egyes szolgáltatásokat (vagy más eszközök segítségével kell ezt végezni), és nem lehet őket logikailag egy telepítési egységként kezelni.
+## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Understanding Azure resource templates and resource groups
+Most applications are built from a combination of different resource types (such as one or more VMs and storage accounts, a SQL database, a virtual network, or a content delivery network). The default Azure service management API and the Azure classic portal represented these items by using a service-by-service approach. This approach requires you to deploy and manage the individual services individually (or find other tools that do so), and not as a single logical unit of deployment.
 
-Az *Azure Resource Manager sablonjai* azonban lehetővé teszik, hogy logikailag egy telepítési egységként helyezze üzembe és kezelje ezeket a különböző erőforrásokat. Ahelyett hogy parancsonként adná meg az Azure számára, hogy mit helyezzen üzembe, az egész üzembe helyezést leírhatja egy JSON-fájlban (az összes erőforrást és az azokhoz tartozó konfigurációs és telepítési paramétereket), és utasítja az Azure-t, hogy az erőforrásokat egy csoportként helyezze üzembe.
+*Azure Resource Manager templates*, however, make it possible for you to deploy and manage these different resources as one logical deployment unit in a declarative fashion. Instead of imperatively telling Azure what to deploy one command after another, you describe your entire deployment in a JSON file -- all of the resources and associated configuration and deployment parameters -- and tell Azure to deploy those resources as one group.
 
-Ezután az Azure CLI erőforrás-felügyeleti parancsaival kezelheti a csoport erőforrásait azok teljes életciklusában a következő műveletek végrehajtásához:
+You can then manage the overall life cycle of the group's resources by using Azure CLI resource management commands to:
 
-* A csoporton belüli összes erőforrás leállítása, indítása vagy törlése egyszerre.
-* Szerepköralapú hozzáférés-vezérlési (RBAC) szabályok alkalmazása a biztonsági engedélyek zárolására.
-* Auditálási műveletek.
-* Erőforrások címkézése további metaadatokkal a jobb nyomon követés érdekében.
+* Stop, start, or delete all of the resources within the group at once.
+* Apply Role-Based Access Control (RBAC) rules to lock down security permissions on them.
+* Audit operations.
+* Tag resources with additional metadata for better tracking.
 
-[Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md) című témakörből további információkat tudhat meg az Azure-erőforráscsoportokról és azok felhasználásáról. A sablonok készítésével kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](../articles/resource-group-authoring-templates.md).
+You can learn lots more about Azure resource groups and what they can do for you in the [Azure Resource Manager overview](../articles/azure-resource-manager/resource-group-overview.md). If you're interested in authoring templates, see [Authoring Azure Resource Manager templates](../articles/resource-group-authoring-templates.md).
 
-## <a id="quick-create-a-vm-in-azure"></a>Feladat: Virtuális gép gyors létrehozása az Azure-ban
-Előfordulnak olyan esetek, hogy tudja, milyen rendszerképre van szüksége, és azonnal szüksége van a rendszerképből egy virtuális gépre, az infrastruktúra pedig nem olyan fontos – például egy üres virtuális gépen szeretne tesztelni valamit. Ilyenkor az `azure vm quick-create` paranccsal átadhatja a virtuális gép és az ahhoz tartozó infrastruktúra létrehozásához szükséges argumentumokat.
+## <a id="quick-create-a-vm-in-azure"></a>Task: Quick-create a VM in Azure
+Sometimes you know what image you need, and you need a VM from that image right now and you don't care too much about the infrastructure -- maybe you have to test something on a clean VM. That's when you want to use the `azure vm quick-create` command, and pass the arguments necessary to create a VM and its infrastructure.
 
-Először is hozzon létre egy erőforráscsoportot.
+First, create your resource group.
 
 ```azurecli
 azure group create coreos-quick westus
@@ -100,14 +100,14 @@ data:
 info:    group create command OK
 ```
 
-Ezután szüksége lesz egy rendszerképre. Ha az Azure CLI-vel szeretné megkeresni a rendszerképet, tekintse meg az [Azure virtuális gépek rendszerképének a PowerShell és az Azure CLI segítségével történő megkeresésével és kiválasztásával kapcsolatos](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) részt. Ebben a cikkben azonban az alábbiakban látható egy rövid lista a népszerű rendszerképekről. A gyors létrehozáshoz a CoreOS Stable rendszerképét fogjuk használni.
+Second, you'll need an image. To find an image with the Azure CLI, see [Navigating and selecting Azure virtual machine images with PowerShell and the Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). But for this article, here's a short list of popular images. We'll use CoreOS's Stable image for this quick-create.
 
 > [!NOTE]
-> A ComputeImageVersion esetében használhatja egyszerűen a „latest” paramétert a sablonnyelvben és az Azure CLI-ben is. Ez lehetővé teszi, hogy mindig a rendszerkép legújabb javított verzióját használhassa a parancsfájlok vagy sablonok módosítása nélkül. Ez az alábbiakban látható.
+> For ComputeImageVersion, you can also simply supply 'latest' as the parameter in both the template language and in the Azure CLI. This will allow you to always use the latest and patched version of the image without having to modify your scripts or templates. This is shown below.
 >
 >
 
-| Közzétevő neve | Ajánlat | SKU | Verzió |
+| PublisherName | Offer | Sku | Version |
 |:--- |:--- |:--- |:--- |
 | OpenLogic |CentOS |7 |7.0.201503 |
 | OpenLogic |CentOS |7.1 |7.1.201504 |
@@ -127,7 +127,7 @@ Ezután szüksége lesz egy rendszerképre. Ha az Azure CLI-vel szeretné megker
 | MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |1.0.141204 |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |4.3.4665 |
 
-A virtuális gép létrehozásához egyszerűen írja be az `azure vm quick-create` parancsot, és kövesse az utasításokat. A következőhöz hasonló eredményt kell kapnia:
+Just create your VM by entering the `azure vm quick-create` command and being ready for the prompts. It should look something like this:
 
 ```azurecli
 azure vm quick-create
@@ -212,29 +212,29 @@ data:            FQDN                    :coreo-westu-1430261891570-pip.westus.c
 info:    vm quick-create command OK
 ```
 
-És már kész is az új virtuális gép.
+And away you go with your new VM.
 
-## <a id="deploy-a-vm-in-azure-from-a-template"></a>Feladat: Virtuális gép központi telepítése sablonból az Azure-ban
-Az ezen szakaszokban található útmutatást követve telepíthet egy új Azure virtuális gépet sablonból az Azure CLI-vel. Ez a sablon létrehoz egy virtuális gépet egy új, egyetlen alhálózattal rendelkező virtuális hálózatban, és az `azure vm quick-create` parancstól eltérően lehetővé teszi, hogy leírhassa, pontosan mit szeretne, majd hibák nélkül megismételhesse a műveletet. Itt látható, amit a sablon létrehoz:
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>Task: Deploy a VM in Azure from a template
+Use the instructions in these sections to deploy a new Azure VM by using a template with the Azure CLI. This template creates a single virtual machine in a new virtual network with a single subnet, and unlike `azure vm quick-create`, enables you to describe what you want precisely and repeat it without errors. Here's what this template creates:
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
 
-### <a name="step-1-examine-the-json-file-for-the-template-parameters"></a>1. lépés: A sablonparaméterek vizsgálata a JSON-fájlban
-Az alábbiakban látható a sablon JSON-fájljának tartalma. (A sablon a [GitHubon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json) is megtalálható.)
+### <a name="step-1-examine-the-json-file-for-the-template-parameters"></a>Step 1: Examine the JSON file for the template parameters
+Here are the contents of the JSON file for the template. (The template is also located in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
 
-A sablonok rugalmasak, tehát lehet, hogy a tervező, úgy döntött, hogy, sok paraméter közül lehet választani, de az is lehet, hogy egy kevésbé rugalmas sablont hozott létre, ahol csak néhány paraméter közül választhat. A sablon paraméterekként való átadásához szükséges információk beszerzéséhez nyissa meg a sablonfájlt (ebben a témakörben található alább egy sablon beágyazva), és vizsgálja meg a **paraméterek** értékeit.
+Templates are flexible, so the designer may have chosen to give you lots of parameters or chosen to offer only a few by creating a template that is more fixed. In order to collect the information you need to pass the template as parameters, open the template file (this topic has a template inline, below) and examine the **parameters** values.
 
-Ebben az esetben a sablon a következők megadását kéri:
+In this case, the template below will ask for:
 
-* Egyedi tárfióknév.
-* A virtuális gép rendszergazdai felhasználójának neve.
-* Jelszó.
-* A külvilág által használható tartománynév.
-* Ubuntu Server-verziószám – de a rendszer csak egyet fogad el egy listáról.
+* A unique storage account name.
+* An admin user name for the VM.
+* A password.
+* A domain name for the outside world to use.
+* An Ubuntu Server version number -- but it will accept only one of a list.
 
-További információk a [felhasználónév- és jelszókövetelményekről](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+See more about [username and password requirements](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
 
-Ha kiválasztotta ezeket az értékeket, készen áll arra, hogy létrehozzon egy csoportot az Azure-előfizetéséhez, majd telepítse ezt a sablont az előfizetésben.
+Once you decide on these values, you're ready to create a group for and deploy this template into your Azure subscription.
 
 ```json
 {
@@ -413,10 +413,10 @@ Ha kiválasztotta ezeket az értékeket, készen áll arra, hogy létrehozzon eg
 }
 ```
 
-### <a name="step-2-create-the-virtual-machine-by-using-the-template"></a>2. lépés: A virtuális gép létrehozása a sablonnal
-Ha meghatározta a paraméterértékeket, létre kell hoznia egy erőforráscsoportot a sablon központi telepítéséhez, majd telepítenie kell a sablont.
+### <a name="step-2-create-the-virtual-machine-by-using-the-template"></a>Step 2: Create the virtual machine by using the template
+Once you have your parameter values ready, you must create a resource group for your template deployment and then deploy the template.
 
-Az erőforráscsoport létrehozásához írja be az `azure group create <group name> <location>` parancsot a kívánt csoportnévvel és annak az adatközpontnak a helyével, amelybe a központi telepítést végre szeretné hajtani. Ez gyorsan megtörténik:
+To create the resource group, type `azure group create <group name> <location>` with the name of the group you want and the datacenter location into which you want to deploy. This happens quickly:
 
 ```azurecli
 azure group create myResourceGroup westus
@@ -433,16 +433,16 @@ data:
 info:    group create command OK
 ```
 
-Ekkor a központi telepítés létrehozásához hívja meg az `azure group deployment create` parancsot, és továbbítsa a következőket:
+Now to create the deployment, call `azure group deployment create` and pass:
 
-* A sablonfájlt (ha mentette a fenti JSON-sablont egy helyi fájlba).
-* A sablon URI-jét (ha a GitHubon vagy más webcímen található fájlra kíván mutatni).
-* Azt az erőforráscsoportot, amelybe a központi telepítést végezni kívánja.
-* A központi telepítés nevét (nem kötelező).
+* The template file (if you saved the above JSON template to a local file).
+* A template URI (if you want to point at the file in GitHub or some other web address).
+* The resource group into which you want to deploy.
+* An optional deployment name.
 
-A rendszer kérni fogja a JSON-fájl „parameters” szakaszában szereplő paraméterértékeket. Ha megadta az összes paraméterértéket, megkezdődik a központi telepítés.
+You will be prompted to supply the values of parameters in the "parameters" section of the JSON file. When you have specified all the parameter values, your deployment will begin.
 
-Például:
+Here is an example:
 
 ```azurecli
 azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json myResourceGroup firstDeployment
@@ -454,7 +454,7 @@ adminPassword: password
 dnsNameForPublicIP: newdomainname
 ```
 
-A következő információtípust kapja:
+You will receive the following type of information:
 
 ```azurecli
 + Initializing template configurations and parameters
@@ -483,13 +483,13 @@ info:    group deployment create command OK
 ```
 
 
-## <a id="create-a-custom-vm-image"></a>Feladat: Egyéni virtuális gép rendszerképének létrehozása
-A fentiekben már áttekintettük a sablonok alapszintű használatát. Most hasonló utasításokkal hozunk létre egy egyéni virtuális gépet egy adott .vhd fájlból az Azure-ban egy sablon segítségével az Azure CLI-n keresztül. A különbség az, hogy ez a sablon egy megadott virtuális merevlemezből hoz létre egy virtuális gépet.
+## <a id="create-a-custom-vm-image"></a>Task: Create a custom VM image
+You've seen the basic usage of templates above, so now we can use similar instructions to create a custom VM from a specific .vhd file in Azure by using a template via the Azure CLI. The difference here is that this template creates a single virtual machine from a specified virtual hard disk (VHD).
 
-### <a name="step-1-examine-the-json-file-for-the-template"></a>1. lépés: A sablon JSON-fájljának vizsgálata
-Az alábbiakban látható a jelen szakaszban példaként használt sablon JSON-fájljának tartalma. (A sablon a [GitHubon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json) is megtalálható.)
+### <a name="step-1-examine-the-json-file-for-the-template"></a>Step 1: Examine the JSON file for the template
+Here are the contents of the JSON file for the template that this section uses as an example. (The template is also located in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
 
-Itt is meg kell keresnie az alapértelmezett értékkel nem rendelkező paraméterekhez megadni kívánt értékeket. Az `azure group deployment create` parancs futtatásakor az Azure CLI kéri ezen értékek megadását.
+Again, you will need to find the values you want to enter for the parameters that do not have default values. When you run the `azure group deployment create` command, the Azure CLI will prompt you to enter those values.
 
 ```json
 {
@@ -674,15 +674,15 @@ Itt is meg kell keresnie az alapértelmezett értékkel nem rendelkező paramét
 }
 ```
 
-### <a name="step-2-obtain-the-vhd"></a>2. lépés: A VHD beszerzése
-Ehhez természetesen szükség van egy .vhd fájlra. Ha már rendelkezik eggyel az Azure-ban, használhatja azt, vagy feltölthet egyet.
+### <a name="step-2-obtain-the-vhd"></a>Step 2: Obtain the VHD
+Obviously, you'll need a .vhd for this. You can use one you already have in Azure, or you can upload one.
 
-Windows-alapú virtuális gép esetében tekintse meg a [Windows Server VHD létrehozása és feltöltése az Azure-ba](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) című témakört.
+For a Windows-based virtual machine, see [Create and upload a Windows Server VHD to Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Linux-alapú virtuális gép esetében tekintse meg a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) című témakört.
+For a Linux-based virtual machine, see [Creating and uploading a virtual hard disk that contains the Linux operating system](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
-### <a name="step-3-create-the-virtual-machine-by-using-the-template"></a>3. lépés: A virtuális gép létrehozása a sablon segítségével
-Most már készen áll egy új virtuális gép létrehozására a .vhd alapján. Az `azure group create <location>` segítségével hozzon létre egy csoportot, ahová a központi telepítés történik majd:
+### <a name="step-3-create-the-virtual-machine-by-using-the-template"></a>Step 3: Create the virtual machine by using the template
+Now you're ready to create a new virtual machine based on the .vhd. Create a group to deploy into, by using `azure group create <location>`:
 
 ```azurecli
 azure group create myResourceGroupUser eastus
@@ -699,7 +699,7 @@ data:
 info:    group create command OK
 ```
 
-Ezután hozza létre a központi telepítést. Ehhez a `--template-uri` kapcsolóval hívja meg a sablont közvetlenül (vagy a `--template-file` kapcsolóval használhat helyileg mentett fájlt). Mivel a sablonban meg vannak adva alapértelmezett értékek, a rendszer csak néhány dolog megadását kéri. Ha különböző helyekre telepíti a sablont, előfordulhat, hogy elnevezési ütközések fordulnak elő az alapértelmezett értékek miatt (különösen a létrehozott DNS-név esetében).
+Then create the deployment by using the `--template-uri` option to call in the template directly (or you can use the `--template-file` option to use a file that you have saved locally). Note that because the template has defaults specified, you are prompted for only a few things. If you deploy the template in different places, you may find that some naming collisions occur with the default values (particularly the DNS name you create).
 
 ```azurecli
 azure group deployment create \
@@ -714,7 +714,7 @@ osType: linux
 subscriptionId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-A következőhöz hasonló eredményt fog kapni:
+Output looks something like the following:
 
 ```azurecli
 + Initializing template configurations and parameters
@@ -751,15 +751,15 @@ data:    nicName                        String        myNIC
 info:    group deployment create command OK
 ```
 
-## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Feladat: Virtuális hálózatot és külső terheléselosztót használó több virtuális gépes alkalmazás üzembe helyezése
-Ez a sablon lehetővé teszi, hogy két virtuális gépet hozzon létre egy terheléselosztó alatt, és konfiguráljon egy terheléselosztási szabályt a 80-as porton. Emellett ez a sablon üzembe helyez egy tárfiókot, egy virtuális hálózatot, és nyilvános IP-címet, egy rendelkezésre állási csoportot és hálózati adaptereket is.
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Task: Deploy a multi-VM application that uses a virtual network and an external load balancer
+This template allows you to create two virtual machines under a load balancer and configure a load-balancing rule on Port 80. This template also deploys a storage account, virtual network, public IP address, availability set, and network interfaces.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
 
-Ezeket a lépéseket követve egy, a GitHub sablontárában lévő Resource Manager-sablon és Azure PowerShell-parancsok segítségével üzembe helyezhet egy több virtuális gépes alkalmazást, amely egy virtuális hálózatot és egy terheléselosztót használ.
+Follow these steps to deploy a multi-VM application that uses a virtual network and a load balancer by using a Resource Manager template in the GitHub template repository via Azure PowerShell commands.
 
-### <a name="step-1-examine-the-json-file-for-the-template"></a>1. lépés: A sablon JSON-fájljának vizsgálata
-Az alábbiakban látható a sablon JSON-fájljának tartalma. Ha a legújabb verzióra van szüksége, az [a GitHub sablontárában található](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json). Ez a témakör a `--template-uri` kapcsolóval hívja meg a sablont, de használhatja a `--template-file` kapcsolót is, ha helyi verziót kíván továbbítani.
+### <a name="step-1-examine-the-json-file-for-the-template"></a>Step 1: Examine the JSON file for the template
+Here are the contents of the JSON file for the template. If you want the most recent version, it's located [at the GitHub repository for templates](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json). This topic uses the `--template-uri` switch to call in the template, but you can also use the `--template-file` switch to pass a local version.
 
 ```json
 {
@@ -1094,8 +1094,8 @@ Az alábbiakban látható a sablon JSON-fájljának tartalma. Ha a legújabb ver
 }
 ```
 
-### <a name="step-2-create-the-deployment-by-using-the-template"></a>2. lépés: A központi telepítés létrehozása a sablonnal
-Az `azure group create <location>` paranccsal hozzon létre egy erőforráscsoportot a sablonhoz. Ezután hozzon létre egy központi telepítést ebbe az erőforráscsoportba az `azure group deployment create` paranccsal. Ehhez át kell adnia az erőforráscsoportot, a központi telepítés nevét, valamint meg kell adnia a sablon alapértelmezett értékkel nem rendelkező paramétereinek értékét, amikor a rendszer erre kéri.
+### <a name="step-2-create-the-deployment-by-using-the-template"></a>Step 2: Create the deployment by using the template
+Create a resource group for the template by using `azure group create <location>`. Then, create a deployment into that resource group by using `azure group deployment create` and passing the resource group, passing a deployment name, and answering the prompts for parameters in the template that did not have default values.
 
 ```azurecli
 azure group create lbgroup westus
@@ -1112,7 +1112,7 @@ data:
 info:    group create command OK
 ```
 
-Most az `azure group deployment create` parancs és a `--template-uri` kapcsoló segítségével telepítse a sablont. Készítse elő a paraméterértékeket, hogy megadja őket, amikor a rendszer kéri, ahogyan az az alábbiakban látható.
+Now use the `azure group deployment create` command and the `--template-uri` option to deploy the template. Be ready with your parameter values when it prompts you, as shown below.
 
 ```azurecli
 azure group deployment create \
@@ -1161,10 +1161,10 @@ data:    vmSize                 String        Standard_A1
 info:    group deployment create command OK
 ```
 
-Ez a sablon egy Windows Server rendszerképet telepít, de könnyen helyettesíthető lenne bármilyen Linux rendszerképpel is. Szeretne létrehozni egy Docker-fürtöt több Swarm-kezelővel? [Megteheti](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
+Note that this template deploys a Windows Server image; however, it could easily be replaced by any Linux image. Want to create a Docker cluster with multiple swarm managers? [You can do it](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
 
-## <a id="remove-a-resource-group"></a>Feladat: Erőforráscsoport eltávolítása
-Ne feledje, hogy újból is végezhet telepítést egy erőforráscsoportba, de ha valamelyikre már nincs szüksége, az `azure group delete <group name>` paranccsal törölheti.
+## <a id="remove-a-resource-group"></a>Task: Remove a resource group
+Remember that you can redeploy to a resource group, but if you are done with one, you can delete it by using `azure group delete <group name>`.
 
 ```azurecli
 azure group delete myResourceGroup
@@ -1174,15 +1174,15 @@ Delete resource group myResourceGroup? [y/n] y
 info:    group delete command OK
 ```
 
-## <a id="show-the-log-for-a-resource-group-deployment"></a>Feladat: Erőforráscsoport központi telepítési naplójának megjelenítése
-Ez azonos a sablonok létrehozásakor és használatakor. Egy csoport központi telepítési naplója az `azure group log show <groupname>` paranccsal jeleníthető meg. Ez a parancs viszonylag sok információt jelenít meg, ami hasznos lehet annak megértéséhez, hogy miért – vagy miért nem – történt meg egy adott művelet. (Az üzemelő példányok hibaelhárításával, illetve általánosságban a hibákkal kapcsolatban az [Azure-telepítések gyakori hibáinak elhárítása az Azure Resource Managerrel](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md) témájú cikkben talál további információt.)
+## <a id="show-the-log-for-a-resource-group-deployment"></a>Task: Show the log for a resource group deployment
+This one is common while you're creating or using templates. The call to display the deployment logs for a group is `azure group log show <groupname>`, which displays quite a bit of information that's useful for understanding why something happened -- or didn't. (For more information on troubleshooting your deployments, as well as other information about issues, see [Troubleshoot common Azure deployment errors with Azure Resource Manager](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md).)
 
-Konkrét problémák megoldásához hasznosak lehetnek az olyan eszközök, mint például a **jq**, amellyel pontosabban lekérdezhetők különböző adatok, például az egyes javítandó hibák. Az alábbi példában a **jq** segítségével elemezzük az **lbgroup** telepítési naplóját az esetleges hibák kimutatásához.
+To target specific failures, for example, you might use tools like **jq** to query things a bit more precisely, such as which individual failures you need to correct. The following example uses **jq** to parse a deployment log for **lbgroup**, looking for failures.
 
 ```azurecli
 azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 ```
-A problémát gyorsan felismerheti, elháríthatja, majd megpróbálkozhat a kérdéses művelet újbóli végrehajtásával. A következő esetben a sablon egyszerre két virtuális gépet hozott létre, amely a .vhd fájlnál zárolást eredményezett. (A sablon módosítását követően az üzembe helyezés gyorsan és sikeresen megtörtént.)
+You can discover very quickly what went wrong, fix, and retry. In the following case, the template had been creating two VMs at the same time, which created a lock on the .vhd. (After we modified the template, the deployment succeeded quickly.)
 
 ```json
 {
@@ -1191,8 +1191,8 @@ A problémát gyorsan felismerheti, elháríthatja, majd megpróbálkozhat a ké
 }
 ```
 
-## <a id="display-information-about-a-virtual-machine"></a>Feladat: Virtuális gépre vonatkozó információk megjelenítése
-Az adott erőforráscsoportba tartozó egyes virtuális gépek információit az `azure vm show <groupname> <vmname>` paranccsal lehet megtekinteni. Ha a csoportban több virtuális gép is található, előfordulhat, hogy először ki kell őket listázni az `azure vm list <groupname>` segítségével.
+## <a id="display-information-about-a-virtual-machine"></a>Task: Display information about a virtual machine
+You can see information about specific VMs in your resource group by using the `azure vm show <groupname> <vmname>` command. If you have more than one VM in your group, you might first need to list the VMs in a group by using `azure vm list <groupname>`.
 
 ```azurecli
 azure vm list zoo
@@ -1204,7 +1204,7 @@ data:    myVM0  Succeeded          westus    Standard_A1
 data:    myVM1  Failed             westus    Standard_A1
 ```
 
-Ezután keresheti meg a myVM1-et:
+And then, looking up myVM1:
 
 ```azurecli
 azure vm show zoo myVM1
@@ -1259,50 +1259,50 @@ info:    vm show command OK
 ```
 
 > [!NOTE]
-> Ha szeretné programozottan tárolni és módosítani a konzolparancsok kimenetét, érdemes lehet egy JSON-elemzőeszközt (például **[jq](https://github.com/stedolan/jq)** vagy **[jsawk](https://github.com/micha/jsawk)**) vagy a feladatnak megfelelő nyelvi kódtárakat használni.
+> If you want to programmatically store and manipulate the output of your console commands, you may want to use a JSON parsing tool such as **[jq](https://github.com/stedolan/jq)** or **[jsawk](https://github.com/micha/jsawk)**, or language libraries that are good for the task.
 >
 >
 
-## <a id="log-on-to-a-linux-based-virtual-machine"></a>Feladat: Bejelentkezés egy Linux-alapú virtuális gépre
-A Linux-alapú gépek csatlakoztatása általában SSH-n keresztül történik. További információ: [SSH használata Linuxon az Azure-on](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>Task: Log on to a Linux-based virtual machine
+Typically Linux machines are connected to through SSH. For more information, see [How to use SSH with Linux on Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a id="stop-a-virtual-machine"></a>Feladat: Virtuális gép leállítása
-Futtassa ezt a parancsot:
+## <a id="stop-a-virtual-machine"></a>Task: Stop a VM
+Run this command:
 
 ```azurecli
 azure vm stop <group name> <virtual machine name>
 ```
 
 > [!IMPORTANT]
-> Ennek a paraméternek a használatával megtarthatja a virtuális hálózat virtuális IP-címét, ha a virtuális gép az utolsó az adott virtuális hálózatban. <br><br> A `StayProvisioned` paraméter használata esetén is a virtuális gép után fog díjat fizetni.
+> Use this parameter to keep the virtual IP (VIP) of the vnet in case it's the last VM in that vnet. <br><br> If you use the `StayProvisioned` parameter, you'll still be billed for the VM.
 >
 >
 
-## <a id="start-a-virtual-machine"></a>Feladat: Virtuális gép indítása
-Futtassa ezt a parancsot:
+## <a id="start-a-virtual-machine"></a>Task: Start a VM
+Run this command:
 
 ```azurecli
 azure vm start <group name> <virtual machine name>
 ```
 
-## <a id="attach-a-data-disk"></a>Feladat: Adatlemez csatolása
-El kell döntenie, hogy új vagy adatokat már tartalmazó lemezt szeretne-e csatolni. Új lemez esetén a parancs létrehozza és egyben csatolja is a .vhd fájlt.
+## <a id="attach-a-data-disk"></a>Task: Attach a data disk
+You'll also need to decide whether to attach a new disk or one that contains data. For a new disk, the command creates the .vhd file and attaches it in the same command.
 
-Új lemez csatolásához futtassa ezt a parancsot:
+To attach a new disk, run this command:
 
 ```azurecli
     azure vm disk attach-new <resource-group> <vm-name> <size-in-gb>
 ```
 
-Már meglévő adatlemez csatolásakor futtassa ezt a parancsot:
+To attach an existing data disk, run this command:
 
 ```azurecli
 azure vm disk attach <resource-group> <vm-name> [vhd-url]
 ```
 
-Ezt követően a lemezt a Linux esetében megszokott módon csatlakoztatni kell.
+Then you'll need to mount the disk, as you normally would in Linux.
 
-## <a name="next-steps"></a>Következő lépések
-Számos további, az Azure CLI és az **arm** mód együttes használatával kapcsolatos példát találhat [a Mac, Linux és Windows eszközökhöz készült Azure CLI Azure Resource Managerrel történő használatával](../articles/xplat-cli-azure-resource-manager.md) foglalkozó cikkben. További információk az Azure-erőforrásokról és a kapcsolódó fogalmakról: [Az Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md).
+## <a name="next-steps"></a>Next steps
+For far more examples of Azure CLI usage with the **arm** mode, see [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md). To learn more about Azure resources and their concepts, see [Azure Resource Manager overview](../articles/azure-resource-manager/resource-group-overview.md).
 
-További felhasználható sablonokat az [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/) és a [Sablonokat használó alkalmazás-keretrendszerek](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) között talál.
+For more templates you can use, see [Azure Quickstart templates](https://azure.microsoft.com/documentation/templates/) and [Application frameworks using templates](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
