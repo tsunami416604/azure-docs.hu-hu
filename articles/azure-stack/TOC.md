@@ -36,8 +36,9 @@
 
 # Biztonság és megfelelőség
 ## Útmutató
-### [Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)
+### [Az RBAC kezelése](azure-stack-manage-permissions.md)
 ### [Felhasználók hozzáadása az AD FS-hez](azure-stack-add-users-adfs.md)
+### [Egyszerű szolgáltatások létrehozása](Azure-stack-create-service-principals.md)
 
 # Szolgáltatások ajánlása
 ## Bevezetés
@@ -113,6 +114,9 @@
 # Hibaelhárítás
 ## [Ismert problémák](azure-stack-troubleshooting.md)
 ## [Diagnosztika az Azure Stackben](azure-stack-diagnostics.md)
+
+# Referencia
+## [API-verzióprofilok kezelése](azure-stack-version-profiles.md)
 
 # Erőforrások
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

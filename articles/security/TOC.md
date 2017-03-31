@@ -1,40 +1,55 @@
 # [Áttekintés](security-get-started-overview.md)
-## [Működés](azure-security-getting-started.md)
-## [Biztonsági szolgáltatások és technológiák](azure-security-services-technologies.md)
 ## [Hálózati biztonság](security-network-overview.md)
+## [Tárbiztonság](security-storage-overview.md)
+## [Számítási biztonság](security-virtual-machines-overview.md)
+## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
+## [Identitáskezelés](security-identity-management-overview.md)
+## [IoT-biztonság](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [Biztonsági architektúra](azure-security-architecture-overview.md)
+
+# Első lépések
+## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)
+## [Bevált biztonsági gyakorlatok és minták](security-best-practices-and-patterns.md)
+## [Biztonsági szolgáltatások és technológiák](azure-security-services-technologies.md)
+
+## Hálózati biztonság
 ### [Ajánlott hálózati biztonsági eljárások](azure-security-network-security-best-practices.md)
 ### [Határbiztonság](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Biztonságos hibrid hálózati architektúra](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [Tárbiztonság](security-storage-overview.md)
+
+## Tárbiztonság
 ### [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](azure-security-data-encryption-best-practices.md)
 ### [Biztonsági útmutató a tároláshoz](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [Számítási biztonság](security-virtual-machines-overview.md)
+
+## Számítási biztonság
 ### [Ajánlott eljárások Azure-beli virtuális gépekhez](azure-security-best-practices-vms.md)
 ### [Ajánlott eljárások IaaS számítási feladatokhoz ](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
-### [Disk encryption (Lemeztitkosítás)](azure-security-disk-encryption.md)
-### [Azure virtuális gép titkosítása](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
-## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
+### [Lemeztitkosítás IaaS virtuális gépekhez](azure-security-disk-encryption.md)
+### [Azure-beli virtuális gép titkosítása](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
+
+## Biztonságkezelés és megfigyelés
 ### [Biztonság kezelése](azure-security-management.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
-### [Azure-naplók integrációja](security-azure-log-integration-overview.md)
-#### [Első lépések](security-azure-log-integration-get-started.md)
-#### [GYIK](security-azure-log-integration-faq.md)
-## [Identitáskezelés](security-identity-management-overview.md)
+### [Az Azure-naplók integrációjának bemutatása](security-azure-log-integration-overview.md)
+#### [Ismerkedés az Azure-naplók integrációjával](security-azure-log-integration-get-started.md)
+#### [Gyakori kérdések](security-azure-log-integration-faq.md)
+
+## Identitáskezelés
 ### [Ajánlott identitáskezelési biztonsági eljárások](azure-security-identity-management-best-practices.md)
+
 ## PaaS szolgáltatások
 ### [PaaS-környezetek védelme](security-paas-deployments.md)
-#### [PaaS-alkalmazások védelme SQL használatával](security-paas-applications-using-sql.md)
-#### [PaaS-alkalmazások védelme App Services használatával](security-paas-applications-using-app-services.md)
-### [Az IoT biztonsági áttekintése](security-internet-of-things-overview.md)
-### [Ajánlott biztonsági eljárások az IoT-hez](azure-security-iot-best-practices.md)
-## Vertikális iparágak
-### [Biztonságos állapotmegoldások tervezése](security-health-care-solution.md)
-## [Biztonsági architektúra](azure-security-architecture-overview.md)
-### [Adatbesorolás a felhőre való előkészületként](azure-security-data-classification.md)
-### [Alkalmazásarchitektúra az Azure-on](security-application-architecture-on-azure.md)
-### [Bevált biztonsági gyakorlatok és minták](security-best-practices-and-patterns.md)
-### [Rugalmas alkalmazások kiépítése](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
+#### [PaaS web- és mobilalkalmazások védelme SQL-lel](security-paas-applications-using-sql.md)
+#### [PaaS web- és mobilalkalmazások védelme az App Services segítségével](security-paas-applications-using-app-services.md)
+
+## Eszközök internetes hálózata
+### [Az IoT-környezet biztonságossá tétele](../iot-suite/iot-suite-security-deployment.md)
+### [Ajánlott biztonsági eljárások az IoT-hez](../iot-suite/iot-security-best-practices.md)
+
+## Biztonsági architektúra
+### [Adatok besorolása](azure-security-data-classification.md)
+### [Vészhelyreállítás és magas szintű rendelkezésre állás Azure-alapú alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # Kapcsolódó
 ## [Adatvédelmi központ](security-microsoft-trust-center.md)
@@ -45,6 +60,7 @@
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
 ## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # Erőforrások
 ## [Biztonsági és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)

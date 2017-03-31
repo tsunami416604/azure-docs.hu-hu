@@ -6,6 +6,7 @@
 ## [Beállításjegyzék létrehozása a Portalon](container-registry-get-started-portal.md)
 ## [Beállításjegyzék létrehozása az Azure CLI 2.0-s verziójával](container-registry-get-started-azure-cli.md)
 ## [Képek küldése és lekérése](container-registry-get-started-docker-cli.md)
+## [Az adattárak megtekintése](container-registry-repositories.md)
 
 # Útmutató
 

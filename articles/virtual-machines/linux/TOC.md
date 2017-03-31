@@ -36,7 +36,14 @@
 ### [Ütemezés](../virtual-machines-linux-planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## A virtuális gépek mérete
 ### [Áttekintés a virtuális gépek méreteiről](../virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Számításigényes méretek](../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Általános célú](../virtual-machines-linux-sizes-general.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Számításra optimalizált](../virtual-machines-linux-sizes-compute.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Memóriaoptimalizált](../virtual-machines-linux-sizes-memory.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Tárolásra optimalizált](../virtual-machines-linux-sizes-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [GPU](../virtual-machines-linux-sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Nagy teljesítményű számítás](../virtual-machines-linux-sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+##### [Számításigényes méretek](../virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Azure számítási egységek (Azure Compute Units, ACU-k)](../virtual-machines-linux-acu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Számításiteljesítmény-mérési pontszámok](../virtual-machines-linux-compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## Telepítési szempontok
 ### [Infrastruktúrával kapcsolatos irányelvek](../virtual-machines-linux-infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -148,7 +155,7 @@
 ### [Jupyter notebook](../virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Alkalmazás-keretrendszerek üzembe helyezése sablonból](../virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Nagy teljesítményű számítástechnika (HPC)](../virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-#### [NAMD futtatása a Microsoft HPC Packkel](../virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [NAMD futtatása a Microsoft HPC Packkel](classic/hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### Az SAP az Azure-on
 #### [Bevezetés az SAP használatába](../virtual-machines-linux-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Az SAP használatának tervezése](../virtual-machines-linux-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
