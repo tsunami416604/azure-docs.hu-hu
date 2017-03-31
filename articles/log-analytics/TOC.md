@@ -70,6 +70,9 @@
 ### [Surface Hub](log-analytics-surface-hubs.md)
 ### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
 ### [VMware](log-analytics-vmware.md)
+### Windows Analytics
+#### [A frissítések megfelelősége](https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started)
+#### [Frissítési készültség](https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started)
 ### [Átviteli adatok](log-analytics-wire-data.md)
 ## Fejlesztés
 ### [Adatgyűjtő API](log-analytics-data-collector-api.md)
@@ -83,6 +86,6 @@
 ## [REST](/rest/api/loganalytics)
 
 # Erőforrások
-## [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)

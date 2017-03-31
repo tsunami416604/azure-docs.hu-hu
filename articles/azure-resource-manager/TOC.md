@@ -14,11 +14,11 @@
 ## Sablonok létrehozása
 ### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
-### [Sablonfüggvények](resource-group-template-functions.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
+### [Hely beállítása](resource-manager-template-location.md)
+### [Címkék hozzárendelése](resource-manager-template-tags.md)
 ### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
 ### [Erőforrástípusok több példányának létrehozása](resource-group-create-multiple.md)
-### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
@@ -28,6 +28,7 @@
 ### [Portál](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 ## Kezelés
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -56,6 +57,7 @@
 ### [Üzembe helyezési műveletek megtekintése](resource-manager-deployment-operations.md)
 
 # Referencia
+## [Sablonfüggvények](resource-group-template-functions.md)
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

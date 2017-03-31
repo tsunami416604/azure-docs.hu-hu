@@ -160,6 +160,8 @@
 #### Alkalmazások közzététele
 ##### [Azure Portal](application-proxy-publish-azure-portal.md)
 ##### [Klasszikus portál](active-directory-application-proxy-publish.md)
+
+#### [PingAccess Azure AD-hez](application-proxy-ping-access.md)
 #### [Biztonság](application-proxy-security-considerations.md)
 #### [Hálózatok](application-proxy-network-topology-considerations.md)
 #### [Távoli asztal](application-proxy-publish-remote-desktop.md)
