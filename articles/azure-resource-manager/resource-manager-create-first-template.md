@@ -31,9 +31,9 @@ A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges
 
 2. Telepítse az [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) bővítményt. Ehhez jelenítse meg a gyorsmegnyitási listát (Ctrl+P), majd futtassa a következőt: 
 
-  ```
-  ext install msazurermtools.azurerm-vscode-tools
-  ```
+   ```
+   ext install msazurermtools.azurerm-vscode-tools
+   ```
 
 3. A bővítmény engedélyezéséhez indítsa újra a VS Code alkalmazást, amikor a rendszer kéri.
 
@@ -45,15 +45,15 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
 
 2. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  },
-    "variables": {  },
-    "resources": [  ],
-    "outputs": {  }
-  }
+   ```json
+   {
+     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {  },
+     "variables": {  },
+     "resources": [  ],
+     "outputs": {  }
+   }
    ```
 
 3. Mentse ezt a fájlt **azuredeploy.json** néven. 
@@ -63,43 +63,43 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
 
 3. Másolja ezt a JSON-t a sablonja **resources** (erőforrások) szakaszába az alábbi példában látható módon: 
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  },
-    "variables": {  },
-    "resources": [
-      {
-        "name": "string",
-        "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2016-05-01",
-        "sku": {
-          "name": "string"
-        },
-        "kind": "string",
-        "location": "string",
-        "tags": {},
-        "properties": {
-          "customDomain": {
-            "name": "string",
-            "useSubDomain": boolean
-          },
-          "encryption": {
-            "services": {
-              "blob": {
-                "enabled": boolean
-              }
-            },
-            "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "string"
-        }
-      }
-    ],
-    "outputs": {  }
-  }
-  ```
+   ```json
+   {
+     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {  },
+     "variables": {  },
+     "resources": [
+       {
+         "name": "string",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2016-05-01",
+         "sku": {
+           "name": "string"
+         },
+         "kind": "string",
+         "location": "string",
+         "tags": {},
+         "properties": {
+           "customDomain": {
+             "name": "string",
+             "useSubDomain": boolean
+           },
+           "encryption": {
+             "services": {
+               "blob": {
+                 "enabled": boolean
+               }
+             },
+             "keySource": "Microsoft.Storage"
+           },
+           "accessTier": "string"
+         }
+       }
+     ],
+     "outputs": {  }
+   }
+   ```
 
   A megelőző példában sok helyőrző érték és néhány olyan tulajdonság szerepel, amelyek nem feltétlenül szükségesek az Ön tárfiókjához.
 
@@ -111,37 +111,37 @@ Készen áll arra, hogy értékeket állítson be a tárfiókjához.
 
 2. Figyelje meg, hogy a **properties** (tulajdonságok) elemen belüli **customDomain** (egyéni tartomány), **encryption** (titkosítás) és **accessTier** (hozzáférési szint) tulajdonságok nem szükségesként vannak jelölve. Előfordulhat, hogy ezek az értékek az Ön forgatókönyvei esetében fontosak, de ebben a példában az egyszerűség kedvéért távolítsa el őket.
 
-  ```json
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "string",
-      "location": "string",
-      "tags": {},
-      "properties": {
-      }
-    }
-  ],
-  ```
+   ```json
+   "resources": [
+     {
+       "name": "string",
+       "type": "Microsoft.Storage/storageAccounts",
+       "apiVersion": "2016-05-01",
+       "sku": {
+         "name": "string"
+       },
+       "kind": "string",
+       "location": "string",
+       "tags": {},
+       "properties": {
+       }
+     }
+   ],
+   ```
 
 3. A **kind** (altípus) elem jelenleg a „string” (karakterlánc) helyőrző értékre van állítva. A VS Code számos funkciót tartalmaz, amelyek segítségével értelmezheti a sablonban használandó értékeket. Megfigyelheti, hogy a VS Code érvénytelennek jelöli ezt az értéket. Ha a kurzort a „string” fölé helyezi, megjelenik a VS Code javaslata, amely szerint a **kind** érvényes értékei a következők lehetnek: `Storage` vagy `BlobStorage`. 
 
-  ![a VS Code javasolt értékeinek megjelenítése](./media/resource-manager-create-first-template/vs-code-show-values.png)
+   ![a VS Code javasolt értékeinek megjelenítése](./media/resource-manager-create-first-template/vs-code-show-values.png)
 
-  Az elérhető értékek megjelenítéséhez törölje az idézőjelek közötti karaktereket és nyomja le a **Ctrl+Szóköz** billentyűkombinációt. Válassza a **Storage** (Tároló) lehetőséget az elérhető lehetőségek közül.
+   Az elérhető értékek megjelenítéséhez törölje az idézőjelek közötti karaktereket és nyomja le a **Ctrl+Szóköz** billentyűkombinációt. Válassza a **Storage** (Tároló) lehetőséget az elérhető lehetőségek közül.
   
-  ![intellisense megjelenítése](./media/resource-manager-create-first-template/intellisense.png)
+   ![intellisense megjelenítése](./media/resource-manager-create-first-template/intellisense.png)
 
-  Ha nem a VS Code-ot használja, tekintse meg a tárfióksablonok referenciájának oldalát. Figyelje meg, hogy a leírás ugyanezeket az érvényes értékeket sorolja fel. Állítsa az elemet **Storage** (Tároló) értékre.
+   Ha nem a VS Code-ot használja, tekintse meg a tárfióksablonok referenciájának oldalát. Figyelje meg, hogy a leírás ugyanezeket az érvényes értékeket sorolja fel. Állítsa az elemet **Storage** (Tároló) értékre.
 
-  ```json
-  "kind": "Storage",
-  ```
+   ```json
+   "kind": "Storage",
+   ```
 
 A sablon most a következőképpen néz ki:
 
@@ -186,8 +186,6 @@ A VS Code ebben az esetben is javasol elérhető függvényeket.
 
 Figyelje meg, hogy a függvény szögletes zárójelek közt jelenik meg. A [resourceGroup](resource-group-template-functions.md#resourcegroup) függvény a következő tulajdonsággal rendelkező objektumot adja vissza: `location`. Az erőforráscsoport tartalmazza a megoldás összes kapcsolódó erőforrását. A hely tulajdonságot szoftveresen kötött módon is megadhatná, például az „USA középső régiója” érték használatával, de ez azt jelentené, hogy a más régiókban való üzembe helyezéshez manuálisan módosítania kellene a sablont. A `resourceGroup` függvény használatával a sablon egyszerűen üzembe helyezhető egy másik régióban lévő erőforráscsoportban.
 
-
-
 A sablon most a következőképpen néz ki:
 
 ```json
@@ -222,71 +220,71 @@ A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik
 
 1. Az Ön elnevezési konvencióinak megfelelő előtag megadásához lépjen a sablon **parameters** (paraméterek) szakaszára. Adjon egy olyan paramétert a sablonhoz, amely elfogadja a tárfiók nevéhez adott előtagot:
 
-  ```json
-  "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageNamePrefix": {
+       "type": "string",
+       "maxLength": 11,
+       "defaultValue": "storage",
+       "metadata": {
+         "description": "The value to use for starting the storage account name."
+       }
+     }
+   },
+   ```
 
   Az előtag legfeljebb 11 karakter hosszúságú lehet, mert a `uniqueString` 13 karaktert ad vissza, és a név nem haladhatja meg a 24 karaktert. Ha nem ad meg értéket a paraméterhez az üzembe helyezés során, a rendszer az alapértelmezett értéket használja.
 
 2. Lépjen a sablon **variables** (változók) szakaszára. Adja hozzá a következő változót, hogy az előtagból és az egyedi karakterláncból létrejöjjön a név:
 
-  ```json
-  "variables": {
-    "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
-  },
-  ```
+   ```json
+   "variables": {
+     "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
+   },
+   ```
 
 3. A **resources** (erőforrások) szakaszban állítsa a tárfiók nevét erre a változóra.
 
-  ```json
-  "name": "[variables('storageName')]",
-  ```
+   ```json
+   "name": "[variables('storageName')]",
+   ```
 
 3. A különböző SKU-k megadásának engedélyezéséhez a tárfiókhoz lépjen a **parameters** (paraméterek) szakaszra. A tárfiók nevének előtagjához tartozó paraméter után adjon hozzá egy paramétert, amely meghatározza az engedélyezett SKU-értékeket és egy alapértelmezett értéket. Az engedélyezett értékeket megtalálhatja a sablon referenciaoldalán vagy a VS Code-ban. A következő példában az összes érvényes értéket fel fogja venni az SKU-hoz. Azonban korlátozhatja ezeket az engedélyezett értékeket csak azon SKU-típusokra, amelyeket a sablonnal kíván üzembe helyezni.
 
-  ```json
-  "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    },
-    "storageSKU": {
-      "type": "string",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ],
-      "defaultValue": "Standard_LRS",
-      "metadata": {
-        "description": "The type of replication to use for the storage account."
-      }
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageNamePrefix": {
+       "type": "string",
+       "maxLength": 11,
+       "defaultValue": "storage",
+       "metadata": {
+         "description": "The value to use for starting the storage account name."
+       }
+     },
+     "storageSKU": {
+       "type": "string",
+       "allowedValues": [
+         "Standard_LRS",
+         "Standard_ZRS",
+         "Standard_GRS",
+         "Standard_RAGRS",
+         "Premium_LRS"
+       ],
+       "defaultValue": "Standard_LRS",
+       "metadata": {
+         "description": "The type of replication to use for the storage account."
+       }
+     }
+   },
+   ```
 
 3. Módosítsa az SKU tulajdonságot úgy, hogy az a következő paraméter értékét használja:
 
-  ```json
-  "sku": {
-    "name": "[parameters('storageSKU')]"
-  },
-  ```    
+   ```json
+   "sku": {
+     "name": "[parameters('storageSKU')]"
+   },
+   ```    
 
 4. Mentse a fájlt.
 
