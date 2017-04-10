@@ -3,8 +3,8 @@ title: "A fejlesztési környezet beállítása Mac OS X-en | Microsoft Docs"
 description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására."
 services: service-fabric
 documentationcenter: java
-author: saysa
-manager: raunakp
+author: sayantancs
+manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -12,7 +12,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/27/2016
+ms.date: 04/06/2017
 ms.author: saysa
 translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
@@ -51,7 +51,7 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
     ```
     Ezzel a lépéssel lekéri a virtuálisgép-konfigurációt tartalmazó `Vagrantfile` fájlt valamint azt a helyet, ahonnan a virtuális gép le lett töltve.
 
-   
+
 2. Navigáljon az adattár helyi klónjához
 
     ```bash
