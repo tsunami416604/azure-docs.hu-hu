@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
-ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 025e8c9e575123a3ad9863a35061ebd0af212486
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -137,6 +138,16 @@ Azure AD-felhasználók esetében a rendszergazdák a következő módszerek val
 
 
 - - -
+## <a name="security"></a>Biztonság
+**K: Zárolja a rendszer a fiókokat egy adott számú hibás kísérlet után, vagy ennél kifinomultabb stratégiát alkalmaz?**</br>
+A fiókok zárolásához ennél kifinomultabb stratégiát alkalmazunk.  A zárolás a kérés IP-címe és a megadott jelszavak alapján történik. A zárolás időtartama annál hosszabb, minél inkább valószínűsíthető, hogy támadásról van szó.  
+
+**K: Egyes (gyakori) jelszavakat a rendszer „ezt a jelszót már túl sokszor használták” üzenettel dob vissza. Igaz ez az aktuális Active Directory-környezetben használt jelszavakra is?**</br>
+Ez a visszautasítás a világszerte gyakran használt jelszavakra, például a „Jelszó” (Password) és a „123456” karakterláncok különböző változataira vonatkozik.
+
+**K: Blokkolja a rendszer a kétes forrásokból (botnetek, TOR-végpontok) érkező bejelentkezési kéréseket a B2C-bérlőkön, vagy ehhez alap- vagy prémium szintű bérlőre van szükség?**</br>
+Az átjárónk szűri a kéréseket és bizonyos fokú védelmet biztosít a botnetek ellen. Ez minden B2C-bérlőre vonatkozik. 
+
 ## <a name="application-access"></a>Alkalmazás-hozzáférés
 **K: Hol találom az Azure Ad-vel előre integrált alkalmazások és azok képességeinek listáját?**
 
@@ -202,9 +213,4 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 **K: Állíthatok be biztonságos LDAP-kapcsolatot az Azure AD-vel?**
 
 **V.:** Nem.  Az Azure AD nem támogatja az LDAP protokollt.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

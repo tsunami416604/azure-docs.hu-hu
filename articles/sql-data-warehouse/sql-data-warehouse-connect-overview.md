@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: c3c30e51b81886ebc875df7c815a17dfa633a5f8
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -26,7 +28,7 @@ Ennek a cikknek a segítségével első alkalommal csatlakozhat az SQL Data Ware
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
 Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév lekérdezési módjának ismerete.  A kiszolgáló neve az alábbi példában sample.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portalt][Azure Portal].
+1. Nyissa meg az [Azure Portalt][Azure portal].
 2. Kattintson az **SQL-adatbázisok** elemre 
 3. Kattintson arra az adatbázisra, amelyhez csatlakozni kíván.
 4. Keresse meg a teljes kiszolgálónevet.
@@ -34,7 +36,7 @@ Az SQL Data Warehouse-hoz való kapcsolódás első lépése a kiszolgálónév 
     ![Teljes kiszolgálónév][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati karakterláncok
-Az Azure SQL Data Warehouse a következőket támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP], és [JDBC][JDBC]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
+Az Azure SQL Data Warehouse a következő illesztőprogramokat támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verziók és dokumentációk megkereséséhez kattintson az egyik előző illesztőre. Az Azure Portalból használt illesztőprogram kapcsolati karakterláncának automatikusan létrehozhatja az előző példában szereplő **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre kattintva.  A következő néhány példa bemutatja, hogy néz ki a kapcsolati karakterlánc az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -72,11 +74,11 @@ Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és a
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>Következő lépések
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval][Lekérdezés a Visual Studióval]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Hitelesítés az Azure SQL Warehouse-szal][Hitelesítés az Azure SQL Warehouse-szal].
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval][Query with Visual Studio]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Hitelesítés az Azure SQL Warehouse-szal).
 
 <!--Articles-->
-[Lekérdezés a Visual Studióval]: ./sql-data-warehouse-query-visual-studio.md
-[Hitelesítés az Azure SQL Warehouse-szal]: ./sql-data-warehouse-authentication.md
+[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
@@ -89,15 +91,10 @@ A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Leké
 [DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
 
 <!--Other-->
-[Azure Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

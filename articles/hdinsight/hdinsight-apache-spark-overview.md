@@ -14,12 +14,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2017
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: edfdba3105aba1079d3c707e7320770c4a999a32
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 747b75cf813144fe64c650c4a8d1148ee1d86d9d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ Az Azure HDInsight teljes körűen felügyelt Spark szolgáltatást biztosít. A
 | Integráció BI-eszközökkel |Adatelemzési célra a Spark for HDInsight olyan összekötőket biztosít a BI-eszközök számára, mint a [Power BI](http://www.powerbi.com/) és a [Tableau](http://www.tableau.com/products/desktop). |
 | Előre betöltött Anaconda-könyvtárak |A HDInsight Spark-fürtjei előre telepített Anaconda-könyvtárakkal rendelkeznek. Az [Anaconda](http://docs.continuum.io/anaconda/) közel 200 könyvtárat biztosít például a Machine Learning szolgáltatáshoz, az adatok elemzéséhez vagy a megjelenítéshez. |
 | Méretezhetőség |Habár a fürtben található csomópontok számát a létrehozáskor megadhatja, elképzelhető, hogy a munkaterheléshez igazodva később növelni vagy csökkenteni szeretné majd a fürt méretét. A HDInsight-fürtök esetében lehetőség van a fürtben található csomópontok számának megváltoztatására. A Spark-fürtök emellett adatvesztés nélkül törölhetők, mivel az összes adat tárolása az Azure Blob Storage szolgáltatásban történik. |
-| Napi&24; órás támogatás a hét minden napján |A Spark on HDInsight a hét minden napján napi 24 órában teljes körű vállalati szintű támogatást és szolgáltatásiszint-szerződésben garantált 99,9%-os üzemidőt biztosít. |
+| Napi 24 órás támogatás a hét minden napján |A Spark on HDInsight a hét minden napján napi 24 órában teljes körű vállalati szintű támogatást és szolgáltatásiszint-szerződésben garantált 99,9%-os üzemidőt biztosít. |
 
 ## <a name="what-are-the-use-cases-for-spark-on-hdinsight"></a>Melyek a Spark on HDInsight használati esetei?
 Az Apache Spark on HDInsight az alábbi főbb forgatókönyvek megvalósítását teszi lehetővé.
@@ -83,7 +83,8 @@ A Spark on HDInsight az alábbi, a fürtökön alapértelmezés szerint elérhet
 * [Spark mag](https://spark.apache.org/docs/1.5.1/). A következőket tartalmazza: Spark mag, Spark SQL, Spark streamelési API-k, GraphX és MLlib.
 * [Anaconda](http://docs.continuum.io/anaconda/)
 * [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
-* [Jupyter Notebook](https://jupyter.org)
+* [Jupyter notebook](https://jupyter.org)
+* [Zeppelin notebook](http://zeppelin-project.org/)
 
 A Spark on HDInsight [ODBC-illesztőt](http://go.microsoft.com/fwlink/?LinkId=616229) is biztosít a Spark-fürtökhöz történő kapcsolódáshoz a HDInsight felületén olyan BI-eszközökből, mint a Microsoft Power BI és a Tableau.
 

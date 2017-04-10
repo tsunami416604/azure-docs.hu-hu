@@ -1,12 +1,7 @@
 
 
 > [!WARNING]
-> A HDInsight-fürtök számlázása percenként történik, akár használja őket, akár nem. Kérjük, mindig törölje a fürtöt, ha már nem használja. A fürtök törlésével kapcsolatos további információk: [How to delete an HDInsight cluster](../articles/hdinsight/hdinsight-delete-cluster.md) (HDInsight-fürtök törlése).
+> A HDInsight-fürtök számlázása percenként történik, akár használja őket, akár nem. Mindig törölje a fürtöt, ha már nem használja. A további tudnivalókért lásd [a HDInsight-fürtök törlését](../articles/hdinsight/hdinsight-delete-cluster.md) ismertető cikket.
 > 
 > 
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

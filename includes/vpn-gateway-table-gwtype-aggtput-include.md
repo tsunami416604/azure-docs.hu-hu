@@ -4,7 +4,7 @@ Vegye figyelembe, hogy az UltraPerformance átjáró-termékváltozat nem szerep
 
 |  | **VPN Gateway teljesítménye (1)** | **VPN Gateway IPsec-alagútjainak maximális száma (2)** | **ExpressRoute-átjáró teljesítménye** | **VPN Gateway és ExpressRoute párhuzamos használata** |
 | --- | --- | --- | --- | --- |
-| **Alapszintű termékváltozat (3)(5)** |100 Mbps |10 |500 Mbps |Nem |
+| **Alapszintű termékváltozat (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |Nem |
 | **Standard termékváltozat (4)(5)** |100 Mbps |10 |1000 Mbps |Igen |
 | **Nagy teljesítményű termékváltozat (4)** |200 Mbps |30 |2000 Mbps |Igen |
 
@@ -13,9 +13,4 @@ Vegye figyelembe, hogy az UltraPerformance átjáró-termékváltozat nem szerep
 * (3) a BGP az alapszintű termékváltozathoz nem támogatott.
 * (4) Ez a termékváltozat nem támogatja a házirendalapú VPN-eket. Ezek csak az alapszintű termékváltozat esetén támogatottak.
 * (5) Ez a termékváltozat nem támogatja az aktív/aktív módú S2S VPN Gateway-kapcsolatokat. Az aktív/aktív mód csak a nagy teljesítményű termékváltozat esetén támogatott.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+* (6) Az Alapszintű termékváltozat az Expressroute-tal való használat esetén elavultnak számít.

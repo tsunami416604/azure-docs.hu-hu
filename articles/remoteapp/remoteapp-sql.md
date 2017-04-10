@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52edc23e0f677567beeb33c47b14f6ea66989890
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 24d41c7eb6b5bd34c07d21318740ecf4c6db2d22
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="sql-azure-with-azure-remoteapp"></a>Az SQL Azure és az Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -56,10 +57,5 @@ Ha egy Azure RemoteAppban üzemeltetett, egy Azure-ban vagy a helyszínen üzeme
 * Az eszköz és az Azure közötti hálózati késés magas. A legjobb teljesítmény érdekében váltson át a lehető legjobb és leggyorsabb hálózati kapcsolatra. Általános eszközként az [azurespeed.com](http://azurespeed.com/) webhelyet használhatja az eszköz és az Azure-adatközpont közti késés teszteléséhez.  
 * Az Azure RemoteAppban üzemeltetett ügyfélalkalmazás magas terhelés alatt áll. Egy másik számlázási csomag, például a prémium tarifacsomag javítja a teljesítményt. Egy másik trükk az alkalmazás által felhasznált erőforrások megfigyelése: egy aktív munkamenet közben nyomja le a ctrl-alt-end billentyűkombinációt, amely megnyitja az SAS képernyőt, válassza ki a Feladatkezelőt, és vizsgálja meg az alkalmazás erőforrás-felhasználását.
 * Az SQL Server magas terhelés alatt áll, vagy nincs optimalizálva. A hibaelhárításhoz kövesse az SQL útmutatásait. 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

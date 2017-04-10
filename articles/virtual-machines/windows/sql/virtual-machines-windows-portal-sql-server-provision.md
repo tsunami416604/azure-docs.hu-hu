@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -97,14 +97,17 @@ Az **Alapvető beállítások** panelen adja meg a következő információkat:
     ![Alapvető SQL-beállítások panel](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2. A virtuális gép méretének kiválasztása
-A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** panelen. A panel kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket. Emellett megbecsüli a virtuális gép futtatásának havi költségét is.
+A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** panelen. A panel kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket.
+
+> [!IMPORTANT]
+> A **Méret kiválasztása** panelen megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez egyedül a virtuális gép költsége. Az SQL Server Express és Developer kiadásai esetében ez a teljes becsült költség. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. 
 
 ![SQL virtuális gépek méretbeállításai](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
 A termelési számítási feladatokhoz ajánlott olyan virtuálisgép-méretet választani, amely támogatja a [Premium Storage](../../../storage/storage-premium-storage.md) tárolást. Ha nincs szüksége ekkora szintű teljesítményre, az **Összes megjelenítés** gombbal megjelenítheti az összes lehetséges gépméretet. Fejlesztési vagy tesztelési környezetben például érdemes kisebb méretű gépet használni.
 
 > [!NOTE]
-> További információ a virtuális gépek méretével kapcsolatban: [Virtuális gépek méretei](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az SQL Server rendszerű virtuális gépek méretével kapcsolatos megfontolások: [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md) (Az SQL Server teljesítményéhez kapcsolódó ajánlott eljárások Azure virtuális gépek esetén).
+> További információ a virtuális gépek méretével kapcsolatban: [Virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az SQL Server rendszerű virtuális gépek méretével kapcsolatos megfontolások: [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md) (Az SQL Server teljesítményéhez kapcsolódó ajánlott eljárások Azure virtuális gépek esetén).
 > 
 > 
 
@@ -123,7 +126,7 @@ A **Beállítások** panelen konfigurálhatja az Azure-tárolót, a hálózatot 
 * A **Tárfiók** alatt elfogadhatja az automatikusan megadott tárfióknevet. A **Tárfiók** elemre kattintva választhat egy meglévő fiókot is, és konfigurálhatja a tárfiók típusát. Alapértelmezés szerint az Azure egy új fiókot hoz létre helyileg redundáns tárolással. További információ a tárolási lehetőségekről: [Azure Storage replication](../../../storage/storage-redundancy.md) (Az Azure Storage replikációja).
 * A **Hálózat** alatt elfogadhatja az automatikusan kitöltött értékeket. Az egyes funkciókra kattintva manuálisan is konfigurálhatja a **virtuális hálózatot**, az **alhálózatot**, a **nyilvános IP-címet** és a **hálózati biztonsági csoportot**. A jelen oktatóanyag esetén használja az alapértelmezett értékeket.
 * Alapértelmezés szerint az Azure ugyanazzal a tárfiókkal engedélyezi a **Figyelést**, amely a virtuális géphez ki lett jelölve. Ezeket a beállításokat itt módosíthatja.
-* A **Rendelkezésre állási csoport** alatt adjon meg egy rendelkezésre állási csoportot. A jelen oktatóanyag esetén válassza a **Nincs** lehetőséget. Ha SQL AlwaysOn rendelkezésre állási csoportok beállítását tervezi, konfigurálja a rendelkezésre állást, hogy később ne kelljen újra létrehoznia a virtuális gépet.  További információk: [Manage the Availability of Virtual Machines](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
+* A **Rendelkezésre állási csoport** alatt adjon meg egy rendelkezésre állási csoportot. A jelen oktatóanyag esetén válassza a **Nincs** lehetőséget. Ha SQL AlwaysOn rendelkezésre állási csoportok beállítását tervezi, konfigurálja a rendelkezésre állást, hogy később ne kelljen újra létrehoznia a virtuális gépet.  További információk: [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
 
 Ha végzett a beállítások konfigurálásával, kattintson az **OK** gombra.
 

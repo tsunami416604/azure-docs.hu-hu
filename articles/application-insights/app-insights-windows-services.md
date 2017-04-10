@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights Windows-szolgáltatásokhoz és feldolgozói szerepkörökhöz | Microsoft Docs"
+title: "Azure Application Insights Windows Serverhez és feldolgozói szerepkörökhöz | Microsoft Docs"
 description: "Adja hozzá manuálisan az Application Insights SDK-t az ASP.NET-alkalmazáshoz a használat, a rendelkezésre állás és a teljesítmény elemzése érdekében."
 services: application-insights
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: df23a55197d15946f16868d14c6db08dcba4df19
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 97d750035e79d4780738e660d05e1a41085d51f1
+ms.lasthandoff: 03/31/2017
 
 
 ---
-# <a name="manually-configure-application-insights-for-aspnet-4-applications"></a>Az Application Insights manuális beállítása az ASP.NET 4-alkalmazásokhoz
-Az [Application Insights](app-insights-overview.md) egy bővíthető eszköz a webfejlesztők számára, amellyel megfigyelhető az élő alkalmazásának teljesítménye és használata. Manuálisan konfigurálható a Windows-szolgáltatások, feldolgozói szerepkörök és más ASP.NET-alkalmazások figyelésére. Webalkalmazások esetén a Visual Studio által kínált [automatikus beállítás](app-insights-asp-net.md) mellett manuális konfigurálást is választhat.
+# <a name="manually-configure-application-insights-for-aspnet-applications"></a>Az Application Insights manuális beállítása az ASP.NET-alkalmazásokhoz
+Az [Application Insights](app-insights-overview.md) egy bővíthető eszköz a webfejlesztők számára, amellyel megfigyelhető az élő alkalmazásának teljesítménye és használata. Manuálisan konfigurálható a Windows Server, a feldolgozói szerepkörök és más ASP.NET-alkalmazások figyelésére. Webalkalmazások esetén a Visual Studio által kínált [automatikus beállítás](app-insights-asp-net.md) mellett manuális konfigurálást is választhat.
 
 ![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
 
@@ -47,13 +47,13 @@ A kulcs azonosítja az erőforrást, és hamarosan telepíteni fogja azt az SDK-
 
 Az új erőforrás létrehozásához az imént elvégzett lépések jól használhatók bármely alkalmazás figyelésének megkezdéséhez. Most már küldhet ide adatokat.
 
-## <a name="sdk"></a>2. Az SDK telepítése az alkalmazásban
-Az Application Insights SDK telepítése és konfigurálása a használt platformtól függően eltérő lehet. ASP.NET alkalmazásoknál ez nagyon egyszerű.
+## <a name="sdk"></a>2. Az Application Insights-csomag telepítése az alkalmazásban
+Az Application Insights-csomag telepítése és konfigurálása a használt platformtól függően eltérő lehet. ASP.NET alkalmazásoknál ez nagyon egyszerű.
 
 1. Visual Studióban szerkessze a webalkalmazási projekt NuGet-csomagjait.
    
     ![Kattintson a jobb gombbal a projektre, és válassza a Manage Nuget Packages (NuGet-csomagok kezelése) lehetőséget](./media/app-insights-windows-services/03-nuget.png)
-2. Az Application Insights SDK telepítése a webalkalmazásokhoz
+2. Telepítse a Windows Server-alkalmazásokhoz tartozó Application Insights-csomagot.
    
     ![Az „Application Insights” kifejezés keresése](./media/app-insights-windows-services/04-ai-nuget.png)
    
@@ -61,10 +61,10 @@ Az Application Insights SDK telepítése és konfigurálása a használt platfor
    
     Igen. Válassza a fő API-t (Microsoft.ApplicationInsights), ha csak a saját telemetriája küldésére kívánja használni az API-t. A Windows Server-csomag automatikusan tartalmazza a fő API-t és más csomagokat, például a teljesítményszámlálót és a függőségfigyelést. 
 
-#### <a name="to-upgrade-to-future-sdk-versions"></a>Frissítés a jövőbeli SDK-verziókra
+#### <a name="to-upgrade-to-future-package-versions"></a>Frissítés a jövőbeli csomagverziókra
 Időről-időre kiadunk egy új SDK-verziót.
 
-Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a **Microsoft.ApplicationInsights.Web** lehetőséget, és válassza a **Frissítés** elemet.
+Ha frissíteni szeretne egy [új csomagkiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a **Microsoft.ApplicationInsights.WindowsServer** lehetőséget, és válassza az **Upgrade** (Frissítés) lehetőséget.
 
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
 

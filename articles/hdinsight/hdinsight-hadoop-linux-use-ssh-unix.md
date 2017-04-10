@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/16/2017
+ms.date: 04/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 89d44476e9de8ac32195efaf66535cdd9fb4260e
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 248e820ccd2c68a8500aab3233c5beea3c8cc868
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
@@ -30,16 +30,19 @@ A következő tábla tartalmazza a szükséges cím- és portinformációkat, az
 
 | Cím | Port | A következőhöz csatlakozik: |
 | ----- | ----- | ----- |
-| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | Élcsomópont (ha van) |
+| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | Élcsomópont (R Server a HDInsightban) |
+| `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | Élcsomópont (bármely egyéb fürttípus, ha létezik élcsomópont) |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | Elsődleges átjárócsomópont |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | Másodlagos átjárócsomópont |
 
 > [!NOTE]
-> Cserélje le az `<edgenodename>` elemet az élcsomópont nevére. Az élcsomópontok használatával kapcsolatban további információért lásd: [Élcsomópontok használata a HDInsightban](hdinsight-apps-use-edge-node.md#access-an-edge-node).
+> Cserélje le az `<edgenodename>` elemet az élcsomópont nevére.
 >
 > Cserélje le a `<clustername>` kifejezést a HDInsight-fürt nevére.
 >
 > Ajánlott __mindig az élcsomóponthoz csatlakozni__, ha van. Az átjárócsomópontok olyan szolgáltatásokat futtatnak, amelyek kritikus fontosságúak a fürt állapota szempontjából. Az élcsomópont csak azt futtatja, amit Ön telepít rá.
+>
+> Az élcsomópontok használatával kapcsolatban további információért lásd: [Élcsomópontok használata a HDInsightban](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
 ## <a name="ssh-clients"></a>SSH-ügyfelek
 

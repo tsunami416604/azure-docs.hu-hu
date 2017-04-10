@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 47a60ba7de5ad09f0fc27efd2d041199b71be348
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 43d0dbb905b2f2b9d98fb3bf8c073ba1c4b6f4c4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="how-does-licensing-work-in-azure-remoteapp"></a>Hogyan működik a licenckezelés az Azure RemoteAppban?
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -40,10 +41,5 @@ Más alkalmazások esetében meg kell győződnie arról, hogy rendelkezik az al
 Ez így érthető, ugye? Bármilyen alkalmazást közzétehet, amelynek megosztására jogosultsága van. És meg kell győződnie róla, hogy valóban jogosult a programok megosztására.
 
 Vegye figyelembe, hogy felhőalapú gyűjtemény esetében nem használhat ügyféllicencet vagy mennyiségi licencelési megállapodást. A hibrid gyűjteményekben lévő alkalmazások aktiválására *használhat* mennyiségi licencelési megállapodást (kivéve az Office esetében). Ehhez csak telepítenie kell ezeket a sablon rendszerképre a mennyiségi licencelési adathordozóról. A licencek távoli asztali környezetben való telepítéséhez kövesse az alkalmazás gyártójának információit.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

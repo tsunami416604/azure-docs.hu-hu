@@ -15,24 +15,20 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 98f592ca96d8c332d7cb99679e1ef3834f84a095
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 5fee3d1fed507684b73dc5bb3b6b08014329ace1
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="onedrive-for-business-and-azure-remoteapp"></a>OneDrive Vállalati verzió és Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
 A OneDrive Vállalati verzió szinkronizálási ügynökének használatát az Azure RemoteApp nem támogatja.
 
 A OneDrive Vállalati verzióját hozzáadhatja az Office 365-tel használt gyűjteményhez. 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

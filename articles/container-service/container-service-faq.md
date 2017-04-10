@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: a70b82770a13231ee59ac768deb45b232f95687d
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -44,7 +44,7 @@ Jelenleg a Linux-tárolók az összes vezénylővel támogatást élveznek. A Wi
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Ajánlanak egy adott vezénylőt az Azure Container Service-ben? 
 Nem ajánlunk általánosan egy adott vezénylőt. Ha már rendelkezik tapasztalattal a támogatott vezénylők egyikéhez kapcsolódóan, tapasztalataira építhet az Azure Container Service-ben is. Az adattrendek azonban azt jelzik, hogy a DC/OS kiválóan használható éles környezetben a Big Data és IoT számítási feladatokhoz, a Kubernetes a felhők natív számítási feladataihoz megfelelő, a Docker Swarm pedig közismerten integrálható Docker-eszközökkel, illetve egyszerűen elsajátítható a használata.
 
-A forgatókönyvtől függően más Azure-szolgáltatásokkal is létrehozhat és kezelhet egyéni tárolómegoldásokat. Ilyen szolgáltatás például a [Virtual Machines](../virtual-machines/virtual-machines-linux-azure-overview.md), a [Service Fabric](../service-fabric/service-fabric-overview.md), a [Web Apps](../app-service-web/app-service-web-overview.md) és a [Batch](../batch/batch-technical-overview.md).  
+A forgatókönyvtől függően más Azure-szolgáltatásokkal is létrehozhat és kezelhet egyéni tárolómegoldásokat. Ilyen szolgáltatás például a [Virtual Machines](../virtual-machines/linux/overview.md), a [Service Fabric](../service-fabric/service-fabric-overview.md), a [Web Apps](../app-service-web/app-service-web-overview.md) és a [Batch](../batch/batch-technical-overview.md).  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Mi a különbség az Azure Container Service és ASC Engine között? 
 Az Azure Container Service egy SLA-alapú Azure-szolgáltatás, amely az Azure Portalon elérhető funkciókkal, Azure parancssori eszközökkel és Azure API-kkal rendelkezik. A szolgáltatás lehetővé teszi, hogy viszonylag kevés konfigurációs beállítás megadásával, gyorsan valósíthasson meg és kezelhessen általános, tárolóvezénylési eszközöket futtató fürtöket. 
@@ -55,7 +55,7 @@ Az [ACS Engine](http://github.com/Azure/acs-engine) egy nyílt forráskódú pro
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>Hogyan hozhatok létre SSH-kulcsokat a fürtöm számára?
 
-A fürt Linux rendszerű virtuális gépei felé történő hitelesítéshez szükséges nyilvános és titkos SSH RSA-kulcspár létrehozásához az operációs rendszer megszokott eszközeit használhatja. A lépéseket az [OS X és Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) rendszerhez készült útmutatóban tekintheti meg. 
+A fürt Linux rendszerű virtuális gépei felé történő hitelesítéshez szükséges nyilvános és titkos SSH RSA-kulcspár létrehozásához az operációs rendszer megszokott eszközeit használhatja. A lépéseket az [OS X és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatóban tekintheti meg. 
 
 Ha az [Azure CLI 2.0 parancsait](container-service-create-acs-cluster-cli.md) használja egy Container Service-fürt központi telepítéséhez, az SSH-kulcsok automatikusan létrehozhatóak a fürt számára.
 
@@ -66,6 +66,12 @@ Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szü
 
 Ha az [Azure CLI 2.0 parancsait](container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt központi telepítéséhez, az egyszerű szolgáltatás hitelesítő adatai automatikusan létrehozhatók a fürt számára.
 
+### <a name="how-large-a-cluster-can-i-create"></a>Legfeljebb mekkora fürtöket hozhatok létre?
+1, 3 vagy 5 fő csomóponttal rendelkező fürtöket hozhat létre. Legfeljebb 100 ügynökcsomópontot használhat.
+
+> [!IMPORTANT]
+> Nagyobb fürtök esetén és a virtuális gép a csomópontokhoz választott méretétől függően esetleg növelnie kell előfizetése magkvótáját. Ha kérni szeretné a kvóta növelését, hozzon létre egy ingyenes [támogatási kérést](../azure-supportability/how-to-create-azure-support-request.md) az interneten. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
+> 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Hogyan növelhetem a főkiszolgálók számát a fürt létrehozása után? 
 A fürt létrehozása után a főkiszolgálók száma állandó lesz, és nem módosítható. A fürt létrehozása során érdemes több főkiszolgálót kijelölni magas rendelkezésre állásra.

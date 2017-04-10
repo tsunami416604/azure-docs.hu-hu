@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 300ee477a00cdd463a2abf87dd73550777fd9e05
-ms.openlocfilehash: 941cc40c3c1979609649eda42e4b39aa383c3fd2
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: a6d4fbdf0e552f50673092183e893841ec0c5aa4
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>A Microsoft Outlook használata az Azure RemoteAppban
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -36,10 +37,5 @@ Olvassa el [a gyorsítótáras üzemmód engedélyezésének lépésenkénti út
 
 ## <a name="search"></a>Keresés
 Az Azure RemoteAppban az Outlookon belüli keresésekre korlátozások vonatkoznak. Az Azure RemoteApp készletbe vont virtuális gépekkel teszi lehetővé a felhasználói munkameneteket. A keresések indexelése a gép azonosítójától függ, amely különbözik a különböző virtuális gépek esetében. Lehetséges, hogy minden alkalommal, amikor egy felhasználó bejelentkezik az Azure RemoteAppba, a rendszer egy új virtuális géphez irányítja át. Ez azt jelenti, hogy ha engedélyezzük a helyi keresést, az indexelő minden alkalommal fut, amikor megváltozik a gép azonosítója (amikor a felhasználó eltérő virtuális gépet használ). Az .OST fájl méretétől függően előfordulhat, hogy az indexelő sok időt igényel a befejezéshez, és elhasználja a más alkalmazásokhoz szükséges erőforrásokat. A keresés ilyenkor nemcsak lassú, de előfordulhat, hogy eredményeket sem ad. Erre megoldást jelenthet egy online módú fiókprofil, azonban ettől csökkenne az általános teljesítmény a helyi gyorsítótár hiánya miatt (a gyorsítótárazott és az online mód közötti különbségekkel kapcsolatos további információkat a fenti hivatkozást követve tekintheti meg). Az indexelt/helyi keresés sajnos nem tiltható le, és az online keresés nem engedélyezhető alapértelmezés szerint az Outlook 2013-ban.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

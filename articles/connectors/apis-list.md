@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: e9eae9ea648fc0e657d32f3f91e6641046bfae79
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: a469a6e29e07029b7eab4e80e132b9276c5b18df
+ms.lasthandoff: 04/04/2017
 
 
 ---
@@ -26,30 +26,36 @@ ms.lasthandoff: 03/15/2017
 Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok kiépítésének módjaival.
 
 ## <a name="standard-connectors"></a>Szokványos összekötők
+
 | Összekötők |  |  |  |
 | --- | --- | --- | --- |
-|[![API Icon][API/Web-Appicon]<br/> **API/Web App**][API/Web-Appdoc]|![API-ikon][appFiguresicon]<br/>**Appfigures**|![API-ikon][Asanaicon]<br/>**Asana**|![API-ikon][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|
-|![API-ikon][Azure-MLicon]<br/>**Azure ML**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc]|![API-ikon][Basecamp-3icon]<br/>**Basecamp 3**|
-|![API-ikon][Bitlyicon]<br/>**Bitly**|![API-ikon][BizTalk-Servericon]<br/>**BizTalk Server**|![API-ikon][Bloggericon]<br/>**Blogger**|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|
-|![API-ikon][Campfireicon]<br/>**Campfire**|![API-ikon][Cognitive-Services-Text-Analyticsicon]<br/>**Cognitive Services<br/>Text Analytics**|![API-ikon][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|
-|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|![API-ikon][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|
-|![API-ikon][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API-ikon][Easy-Redmineicon]<br/>**Easy Redmine**|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**File System**][FileSystemdoc]|
-|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API-ikon][GitHubicon]<br/>**GitHub**|![API-ikon][Google-Calendaricon]<br/>**Google Naptár**|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|
-|![API-ikon][Google-Sheetsicon]<br/>**Google Táblázatok**|![API-ikon][Google-Tasksicon]<br/>**Google Teendők**|![API-ikon][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|
-|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>Request**][HTTP-Requestdoc]|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>Response**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|
-|![API-ikon][Insightlyicon]<br/>**Insightly**|![API-ikon][Instagramicon]<br/>**Instagram**|![API-ikon][Instapapericon]<br/>**Instapaper**|![API-ikon][JIRAicon]<br/>**JIRA**|
-|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API-ikon][Mandrillicon]<br/>**Mandrill**|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**Nested<br/>Logic App**][Nested-Logic-Appdoc]|
-|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>felhasználók**|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>Video**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
-|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API Icon][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API-ikon][PagerDutyicon]<br/>**PagerDuty**|
-|![API-ikon][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API Icon][Queryicon]<br/>**Query**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**Recurrence**][Recurrencedoc]|
-|![API-ikon][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
-|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|
-|![API-ikon][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API-ikon][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|
-|![API-ikon][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|
-|![API-ikon][Vimeoicon]<br/>**Vimeo**|![API-ikon][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|![API-ikon][WordPressicon]<br/>**WordPress**|
-|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|![API-ikon][YouTubeicon]<br/>**YouTube**|
+|[![API Icon][API/Web-Appicon]<br/> **API/Web App**][API/Web-Appdoc]|![API-ikon][appFiguresicon]<br/>**appFigures**|![API-ikon][Asanaicon]<br/>**Asana**|![API-ikon][Azure-Automation-icon]<br/>**Azure Automation**|
+|[![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc]|![API-ikon][Azure-Data-Lake-icon]<br/>**Azure Data<br/>Lake**|![API-ikon][Azure-DocumentDBicon]<br/>**Azure DocumentDB**|[![API Icon][Azure-Functionsicon]<br/>**Azure<br/>Functions**][Azure-Functionsdoc]|
+|![API-ikon][Azure-MLicon]<br/>**Azure ML**|![API-ikon][Azure-Resource-Manager-icon]<br/>**Azure Resource<br/>Manager**|![API-ikon][Azure-Queues-icon]<br/>**Azure-üzenetsorok**|![API-ikon][Basecamp-3icon]<br/>**Basecamp 3**|
+|![API-ikon][Bitbucket-icon]<br/>**Bitbucket**|![API-ikon][Bitlyicon]<br/>**Bitly**|![API-ikon][BizTalk-Servericon]<br/>**BizTalk Server**|![API-ikon][Bloggericon]<br/>**Blogger**|
+|[![API Icon][Boxicon]<br/>**Box**][boxDoc]|![API-ikon][Campfireicon]<br/>**Campfire**|![API-ikon][Cognitive-Services-Text-Analyticsicon]<br/>**Cognitive Services<br/>Text Analytics**|![API-ikon][Common-Data-Serviceicon]<br/>**Common Data<br/>Service**|
+|[![API Icon][DB2icon]<br/>**DB2**][db2doc]|[![API Icon][Delayicon]<br/>**Delay**][Delaydoc]|[![API Icon][Dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API Icon][Dynamics-365icon]<br/>**Dynamics 365**][Dynamics-365doc]|
+|![API-ikon][Dynamics-365-for-Financialsicon]<br/>**Dynamics 365<br/>for Financials**|![API-ikon][Dynamics-365-for-Operationsicon]<br/>**Dynamics 365<br/>for Operations**|![API-ikon][Easy-Redmineicon]<br/>**Easy Redmine**|[![API Icon][Event-hubs-icon]<br/>**Event Hubs**][event-hubs-doc]|
+|[![API Icon][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API Icon][FileSystemIcon]<br/>**File System**][FileSystemdoc]|[![API Icon][FTPicon]<br/>**FTP**][FTPdoc]|![API-ikon][GitHubicon]<br/>**GitHub**|
+|![API-ikon][Google-Calendaricon]<br/>**Google Naptár**|[![API Icon][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|![API-ikon][Google-Sheetsicon]<br/>**Google Táblázatok**|![API-ikon][Google-Tasksicon]<br/>**Google Teendők**|
+|![API-ikon][HipChaticon]<br/>**HipChat**|[![API Icon][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API Icon][HTTP-Swaggericon]<br/>**HTTP Swagger**][http-swaggerdoc]|[![API Icon][HTTP-Requesticon]<br/>**HTTP<br/>Request**][HTTP-Requestdoc]|
+|[![API Icon][HTTP-Responseicon]<br/>**HTTP<br/>Response**][HTTP-Responsedoc]|[![API Icon][Informixicon]<br/>**Informix**][Informixdoc]|![API-ikon][Insightlyicon]<br/>**Insightly**|![API-ikon][Instagramicon]<br/>**Instagram**|
+|![API-ikon][Instapapericon]<br/>**Instapaper**|![API-ikon][JIRAicon]<br/>**JIRA**|[![API Icon][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API-ikon][Mandrillicon]<br/>**Mandrill**|
+|[![API Icon][Microsoft-Translatoricon]<br/>**Microsoft<br/>Translator**][Microsoft-Translatordoc]|[![API Icon][Nested-Logic-Appicon]<br/>**Nested<br/>Logic App**][Nested-Logic-Appdoc]|[![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc]|[![API Icon][Office-365-Usersicon]][office365-usersdoc]<br/>**Office 365<br/>felhasználók**|
+|[![API Icon][Office-365-Videoicon]<br/>**Office 365<br/>Video**][office365-videodoc]|[![API Icon][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API Icon][OneDrive-for-Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for-Businessdoc]|[![API Icon][Oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc]|
+|[![API Icon][Outlook.comicon]<br/>**Outlook.com**][Outlook.comdoc]|![API-ikon][PagerDutyicon]<br/>**PagerDuty**|![API-ikon][Pinteresticon]<br/>**Pinterest**|[![API Icon][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|
+|[![API Icon][Queryicon]<br/>**Query**][Querydoc]|[![API Icon][Recurrenceicon]<br/>**Recurrence**][Recurrencedoc]|![API-ikon][Redmineicon]<br/>**Redmine**|[![API Icon][RSSicon]<br/>**RSS**][RSSdoc]|
+|[![API Icon][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API Icon][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API Icon][SFTPicon]<br/>**SFTP**][SFTPdoc]|
+|[![API Icon][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API Icon][Slackicon]<br/>**Slack**][Slackdoc]|![API-ikon][Smartsheeticon]<br/>**Smartsheet**|[![API Icon][SMTPicon]<br/>**SMTP**][SMTPdoc]|
+|![API-ikon][SparkPosticon]<br/>**SparkPost**|[![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc]|![API-ikon][Todoisticon]<br/>**Todoist**|[![API Icon][Trelloicon]<br/>**Trello**][Trellodoc]|
+|[![API Icon][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc]|![API-ikon][Vimeoicon]<br/>**Vimeo**|![API-ikon][Visual-Studio-Team-Servicesicon]<br/>**Visual Studio<br/>Team Services**|
+|[![API Icon][Webhookicon]<br/>**Webhook**][Webhookdoc]|![API-ikon][WordPressicon]<br/>**WordPress**|[![API Icon][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API Icon][Yammericon]<br/>**Yammer**][Yammerdoc]|
+|![API-ikon][YouTubeicon]<br/>**YouTube**|
 
-### <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
+> [!TIP]
+> Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [A Logic Apps kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+
+## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
 
 | Integrációs fiók<br/>összekötők |  |  |  |
 | --- | --- | --- | --- |
@@ -57,29 +63,37 @@ Válasszon egy összekötőt, és ismerkedjen meg a munkafolyamatok kiépítés�
 | [![API Icon][as2icon]<br/>**AS2</br> decoding**][as2decode] |[![API Icon][as2icon]<br/>**AS2</br> encoding**][as2encode] |[![API Icon][x12icon]<br/>**X12</br> decoding**][x12decode] |[![API Icon][x12icon]<br/>**X12</br> encoding**][x12encode] |
 | [![API Icon][x12icon]<br/>**EDIFACT</br> decoding**][EDIFACTdecode] |[![API Icon][x12icon]<br/>**EDIFACT</br> encoding**][EDIFACTencode] | | |
 
-> [!NOTE]
-> Ha az Azure Logic Apps-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, lépjen [A Logic Apps kipróbálása](https://tryappservice.azure.com/?appservice=logic) oldalra. Itt azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-
 ## <a name="enterprise-connectors"></a>Vállalati összekötők
-A vállalati összekötőkkel logikai alkalmazásokat hozhat létre EAI-t és EDI-t tartalmazó B2B-forgatókönyvekhez.  
+
+Ha logikai alkalmazásokat szeretne létrehozni EAI-t és EDI-t tartalmazó B2B-forgatókönyvekhez, használja ezeket a vállalati összekötőket.
 
 | Enterprise<br/>összekötők |  |
 | --- | --- |
 |![API-ikon][MQicon]<br/>**MQ**|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
 
+## <a name="connectors-as-triggers"></a>Eseményindítóként használható összekötők
 
-
-<!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
-### <a name="connectors-can-be-triggers"></a>Az összekötők lehetnek eseményindítók
-Több összekötő is biztosít eseményindítókat, amelyek adott események bekövetkezése esetén értesíthetik az alkalmazást. Az FTP-összekötő például az OnUpdatedFile eseményindítót tartalmazza. Készíthet egy olyan Logic App-, PowerApp- vagy Flow-alkalmazást, amely figyel erre az eseményindítóra, és végrehajt egy műveletet, amint az eseményindító aktiválódik.
+Egyes összekötők eseményindítókat biztosítanak, amelyek adott események bekövetkezése esetén értesíthetik az alkalmazást. Az FTP-összekötő például az OnUpdatedFile eseményindítót tartalmazza, amely egy fájl frissítésekor értesíti az alkalmazást. Készíthet egy olyan Logic App-, PowerApp- vagy Flow-alkalmazást, amely figyel erre az eseményindítóra, és végrehajt egy műveletet, amint az eseményindító aktiválódik.
 
 Két eseményindító-típus létezik:  
 
-* Lekérdezéses eseményindítók: ezek az eseményindítók a beállított időközönként új adatokat kereső lekérdezést küldenek a szolgáltatásnak. Amikor új adatok válnak elérhetővé, az alkalmazás új példánya bemeneti adatokként fogja azokat használni a futása során. Ha meg szeretné akadályozni, hogy ugyanazokat az adatokat többször is feldolgozza a rendszer, elérheti, hogy az eseményindító megtisztítsa azokat az adatokat, amelyeket az alkalmazás már beolvasott.
-* Leküldéses eseményindítók: ezek az eseményindítók azt figyelik, hogy mikor jelennek meg adatok egy végponton, vagy mikor megy végbe egy adott esemény, majd elindítják az alkalmazás egy új példányát. Ilyen például a Twitter-összekötő.
+* *Lekérdezéses eseményindítók*: ezek az eseményindítók a beállított időközönként új adatokat kereső lekérdezést küldenek a szolgáltatásnak. Amikor új adatok válnak elérhetővé, az alkalmazás új példánya bemeneti adatokként fogja azokat használni a futása során. Ha meg szeretné akadályozni, hogy ugyanazokat az adatokat többször is feldolgozza a rendszer, elérheti, hogy az eseményindító megtisztítsa azokat az adatokat, amelyeket az alkalmazás már beolvasott.
 
-### <a name="connectors-can-be-actions"></a>Az összekötők lehetnek műveletek
-Az alkalmazásokban az összekötőket műveletként is használhatja. A műveletek olyan adatok gyűjtéséhez lehetnek hasznosak, amelyek azután felhasználhatók az alkalmazás futtatása során. Előfordulhat például, hogy ügyféladatokat kell keresnie egy SQL-adatbázisban egy megrendelés feldolgozásához. Az is előfordulhat, hogy a céltáblában kell adatokat írnia, frissítenie vagy törölnie. Ezt mind megteheti az összekötők által kínált műveletekkel. Ezek a műveletek leképezhetőek a Swagger-metaadatokban meghatározott műveletekké.
+* *Leküldéses eseményindítók*: ezek az eseményindítók azt figyelik, hogy mikor jelennek meg adatok egy végponton, vagy mikor megy végbe egy adott esemény, majd elindítják az alkalmazás egy új példányát. Ilyen például a Twitter-összekötő.
+
+## <a name="connectors-as-actions"></a>Műveletként használható összekötők
+
+Az összekötők műveleteket is biztosítanak, amelyek felhasználhatók az alkalmazás munkafolyamatában. Például az alkalmazás megkereshet adatokat, amelyek aztán az alkalmazás futtatásakor felhasználhatók. Pontosabban például ügyféladatokat kereshet egy SQL-adatbázisban egy megrendelés feldolgozásához. Az is előfordulhat, hogy a céltáblában kell adatokat írnia, frissítenie vagy törölnie. Ezek a műveletek leképezhetőek a Swagger-metaadatokban meghatározott műveletekké.
+
+## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>Egyéni összekötők és tanúsítványok a Microsoft Azure-hoz
+
+Szeretne saját összekötőket létrehozni, vagy nem találja a kívánt összekötőt? [Kiterjesztheti a Logic Apps platformot](../logic-apps/logic-apps-create-api-app.md), és létrehozhat API Apps-alkalmazásokat, amelyek hívásokat indítanak az olyan API-kba vagy rendszerekbe, amelyek nem érhetők el beépített összekötőkként. Emellett elküldheti az API Apps-alkalmazásait Microsoft Azure-hitelesítésre, majd elérhetővé teheti őket az Azure-on keresztül. Tudjon meg többet a megoldások hitelesítéséről a [Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) programban.
+
+## <a name="get-help"></a>Segítségkérés
+
+Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
+
+Ha szeretne segíteni a Logic Apps és összekötők fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
@@ -95,6 +109,7 @@ Az alkalmazásokban az összekötőket műveletként is használhatja. A művele
 [delaydoc]: ./connectors-native-delay.md "Késleltetett műveletek végrehajtása"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Csatlakozhat a Dropboxhoz. Fájlokat tölthet fel, kérhet le, törölhet, listázhat, és egyéb műveleteket is végrehajthat"
 [Dynamics-365doc]: ./connectors-create-api-crmonline.md "Csatlakozhat a Dynamics CRM Online szolgáltatáshoz, és használhatja a CRM Online adatait"
+[event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Csatlakozhat az Azure Event Hubs szolgáltatáshoz. Eseményeket fogadhat és küldhet a logikai alkalmazások és az Event Hubs között"
 [facebookdoc]: ./connectors-create-api-facebook.md "Csatlakozhat a Facebookhoz. Bejegyzéseket tehet közzé az idővonalon, laptartalmakat kérhet le, és egyéb műveleteket is végrehajthat"
 [filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "Csatlakozhat egy helyszíni fájlrendszerhez"
 [ftpdoc]: ./connectors-create-api-ftp.md "Csatlakozhat egy FTP-/FTPS-kiszolgálóhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlokat törölhet, tölthet fel vagy kérhet le"
@@ -118,7 +133,7 @@ Az alkalmazásokban az összekötőket műveletként is használhatja. A művele
 [office365-videodoc]: ./connectors-create-api-office365-video.md "Videoadatokat, videólistákat és csatornákat kérhet le, valamint Office 365-videók lejátszási URL-címeit"
 [onedrivedoc]: ./connectors-create-api-onedrive.md "Csatlakozhat személyes Microsoft OneDrive-fiókjához. Fájlokat tölthet fel, törölhet, listázhat, és egyéb műveleteket is elvégezhet"
 [onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Csatlakozhat vállalati Microsoft OneDrive-fiókjához. Fájlokat tölthet fel, törölhet, listázhat, és egyéb műveleteket is elvégezhet"
-[oracle-db-doc]: https://powerapps.microsoft.com/blog/connecting-to-oracle-database-from-powerapps-flow-and-logic-apps "Csatlakozhat egy Oracle-adatbázishoz"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Csatlakozhat egy Oracle-adatbázishoz, ahol többek között sorokat adhat hozzá, szúrhat be és törölhet"
 [outlook.comdoc]: ./connectors-create-api-outlook.md "Csatlakozhat Outlook-postaládájához. Kezelheti az e-mailjeit, naptárait, névjegyeit és egyéb tartalmait"
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "Csatlakozhat a Microsoft Project Online-hoz. Kezelheti a projektjeit, feladatait, erőforrásait és egyéb tartalmait"
 [querydoc]: ./connectors-native-query.md "Tömbök kiválasztása és szűrése a Lekérdezés művelettel"
@@ -159,10 +174,15 @@ Az alkalmazásokban az összekötőket műveletként is használhatja. A művele
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
 [Asanaicon]: ./media/apis-list/asana.png
+[Azure-Automation-icon]: ./media/apis-list/azure-automation.png
 [AzureBlobStorageicon]: ./media/apis-list/azureblob.png
-[Azure-DocumentDBicon]: ./media/apis-list/documentdb.png
+[Azure-Data-Lake-icon]: ./media/apis-list/azure-data-lake.png
+[Azure-DocumentDBicon]: ./media/apis-list/azure-documentdb.png
 [Azure-MLicon]: ./media/apis-list/azureml.png
+[Azure-Resource-Manager-icon]: ./media/apis-list/azure-resource-manager.png
+[Azure-Queues-icon]: ./media/apis-list/azure-queues.png
 [Basecamp-3icon]: ./media/apis-list/basecamp.png
+[Bitbucket-icon]: ./media/apis-list/bitbucket.png
 [Bitlyicon]: ./media/apis-list/bitly.png
 [BizTalk-Servericon]: ./media/apis-list/biztalk.png
 [Bloggericon]: ./media/apis-list/blogger.png
@@ -175,6 +195,7 @@ Az alkalmazásokban az összekötőket műveletként is használhatja. A művele
 [Dynamics-365-for-Financialsicon]: ./media/apis-list/madeira.png
 [Dynamics-365-for-Operationsicon]: ./media/apis-list/dynamicsax.png
 [Easy-Redmineicon]: ./media/apis-list/easyredmine.png
+[Event-Hubs-icon]: ./media/apis-list/eventhubs.png
 [Facebookicon]: ./media/apis-list/facebook.png
 [FTPicon]: ./media/apis-list/ftp.png
 [GitHubicon]: ./media/apis-list/github.png

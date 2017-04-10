@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 8da480acc04922a3636821c5303f6380236c5ea3
-ms.openlocfilehash: 1bff76371ea1ca3ee68c9f04ea24a42f95bb7da7
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 45ff2ff08cb36f9a4bf49ff04de149accf157e0e
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -27,7 +28,7 @@ Mivel az Azure Active Directory (AD) egy identitáskezelést szolgáltatásként
 1. [Az Azure AD integrációjának előnyei:](active-directory-how-to-integrate.md) Megtudhatja, miért kínálja a legjobb megoldást az Azure AD integrációja a biztonságos bejelentkezéshez és hitelesítéshez.
 2. [Az Azure AD hitelesítési forgatókönyvei:](active-directory-authentication-scenarios.md) Kihasználhatja az Azure AD egyszerűsített hitelesítésének előnyeit az alkalmazásba történő bejelentkezéshez.
 3. [Alkalmazások integrálása az Azure AD-vel:](active-directory-integrating-applications.md) Megtudhatja, hogyan adhat hozzá, frissíthet és távolíthat el alkalmazásokat az Azure AD-ből, és megismerheti az integrált alkalmazások arculati útmutatóját.
-4. [Azure AD Graph API:](active-directory-graph-api.md) Az Azure AD Graph API-val programozott módon érheti el az Azure AD-t REST API-végpontokon keresztül. Az Azure AD Graph API szintén elérhető a [Microsoft Graph](https://graph.microsoft.io/) használatával. A Microsoft Graph egy egységes API-t biztosít, amely lehetővé teszi több Microsoft-felhőszolgáltatás API-elérését egyetlen REST API-végponton keresztül, illetve egyetlen hozzáférési tokennel.
+4. [Microsoft Graph](https://graph.microsoft.io/) és [Azure AD Graph API](active-directory-graph-api.md): programozott módon érheti el az Azure AD-t REST API-végpontokon keresztül. **Az Azure AD Graph API helyett ajánljuk a Microsoft Graph használatát az Azure Active Directory erőforrásainak eléréséhez.** A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott azon forgatókönyvek száma, amelyeknél az Azure AD Graph API használata még elegendő. További információért tekintse meg a [Microsoft Graph vagy Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.
 5. [Az Azure AD hitelesítési kódtárai:](active-directory-authentication-libraries.md) A .NET, JavaScript, Objective-C, Android és további Azure AD-hitelesítési kódtárakkal könnyedén hitelesítheti a felhasználókat a hozzáférési tokenek beszerzése érdekében.
 
 ## <a name="getting-started"></a>Bevezetés
@@ -56,10 +57,10 @@ Ezek az oktatóanyagok több platformot is lefednek, és segíthetnek, hogy min�
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
 
-### <a name="querying-the-directory-quickstart-guide"></a>A címtárlekérdezés első lépéseinek útmutatója
-| [![.NET](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
-|:---:|
-| [Graph API](active-directory-graph-api-quickstart.md) |
+### <a name="microsoft-graph-and-azure-ad-graph-api-quick-start-guides"></a>A Microsoft Graph és az Azure AD Graph API első lépéseinek útmutatói
+| [![Microsoft Graph](./media/active-directory-developers-guide/msgraph.png)](https://developer.microsoft.com/graph/quick-start) | [![Azure AD Graph API](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md) |
+|:---:|:---:|
+| [Microsoft Graph](https://developer.microsoft.com/graph/quick-start) | [Azure AD Graph API](active-directory-graph-api-quickstart.md) |
 
 ## <a name="how-tos"></a>Használati útmutatók
 Ezek a cikkek ismertetik, hogyan végezhet el bizonyos feladatokat az Azure Active Directoryval:
@@ -90,9 +91,13 @@ Ezek a cikkek a REST és hitelesítési kódtár API-k, protokollok, hibák, kó
 * [Azure Active Directory-példák:](https://github.com/azure-samples?query=active-directory) A példák listájában történő böngészés legegyszerűbb módja a [kódpéldák tárgymutatójának](active-directory-code-samples.md) használata.
 * [Active Directory Authentication Library (ADAL) for .NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) – A [legutóbbi főverzió](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory) és az [előző főverzió](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory) esetében is elérhetők referenciadokumentációk.
 
-### <a name="graph-api"></a>Graph API
-* [Graph API-referencia:](https://msdn.microsoft.com/library/azure/hh974476.aspx) REST-referencia az Azure Active Directory Graph API-hoz. [A Graph API-referencia interaktív felhasználói élményének megismerése](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-* [Graph API-engedélyhatókörök:](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) Olyan OAuth 2.0-engedélyhatókörök, amelyekkel az alkalmazások hozzáférése vezérelhető a bérlőkben lévő címtáradatokhoz.
+### <a name="microsoft-graph-and-azure-ad-graph-api"></a>A Microsoft Graph és az Azure AD Graph API
+> [!IMPORTANT]
+> Az Azure AD Graph API helyett ajánljuk a [Microsoft Graph](https://graph.microsoft.io/) használatát az Azure Active Directory erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott azon forgatókönyvek száma, amelyeknél az Azure AD Graph API használata még elegendő. További információért tekintse meg a [Microsoft Graph vagy Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.
+> 
+* [Microsoft Graph](https://graph.microsoft.io/): Dokumentáció, referencia, minták és SDK-k a Microsoft Graph-hoz. 
+* [Azure AD Graph API-referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog): REST-referencia az Azure Active Directory Graph API-hoz. 
+* [Azure AD Graph API-engedélyhatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): Olyan OAuth 2.0-engedélyhatókörök, amelyekkel az alkalmazások hozzáférése vezérelhető a bérlőkben lévő címtáradatokhoz.
 
 ### <a name="authentication-and-authorization-protocols"></a>Hitelesítési és engedélyezési protokollok
 * [Aláírókulcs-váltás az Azure AD-ben:](active-directory-signing-key-rollover.md) További információ az Azure AD aláírókulcs-váltás gyakoriságáról és a leggyakoribb alkalmazás-forgatókönyvek kulcsának frissítéséről.
@@ -131,9 +136,4 @@ A Windows Server és az Active Directory összevonási szolgáltatás (AD FS) fe
 
 * [AD FS-forgatókönyvek fejlesztőknek](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers): Áttekintést nyújt az AD FS összetevőiről és azok működéséről a támogatott hitelesítési/engedélyezési forgatókönyvek részleteinek ismertetésével együtt.
 * [AD FS-bemutatók](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/ad-fs-development): Bemutató cikkek listája, amelyek lépésenkénti útmutatót kínálnak a kapcsolódó hitelesítési/engedélyezési folyamatok végrehajtásához.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

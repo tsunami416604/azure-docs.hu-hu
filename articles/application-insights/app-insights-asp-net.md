@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: bcd8b3b7fb44a28d7184d14969eb998ce07c8e53
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -83,9 +83,10 @@ Nyissa meg az Application Insights-erőforrást. Bejelentkezhet az [Azure Portal
 ![A Visual Studio képernyőképe, amelyen az Application Insights portál megnyitásának módja látható](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> Ha hibaüzenetet kapott, lehet, hogy több microsoftos hitelesítőadat-készlettel rendelkezik, és nem a megfelelővel jelentkezett be. Jelentkezzen ki, majd be a portálon.
+> Ha hibaüzenetet kapott: lehetséges, hogy több microsoftos hitelesítőadat-készlettel is rendelkezik, és nem a megfelelővel jelentkezett be? Jelentkezzen ki, majd be a portálon.
 
 A portál az alkalmazásából származó telemetriai adatok nézetével nyílik meg.
+
 ![Az Application Insights áttekintési oldalának képernyőképe](./media/app-insights-asp-net/66.png)
 
 Az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.

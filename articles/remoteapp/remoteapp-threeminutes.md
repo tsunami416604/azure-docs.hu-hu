@@ -14,14 +14,15 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: ccbae83898ec8ea3bd7bca0beae7f78b2b535562
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 3373e37b8efb1bd7d9b7e6c4fb8d3db468c1ad02
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>Az Azure RemoteApp kipróbálása az eszközén kevesebb mint 3 perc alatt
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -42,10 +43,5 @@ Számít a véleménye. Minden munkamenet végén egy párbeszédablak jelenik m
 > Mivel ez egy felügyelt, bemutató használatra szánt környezet, nem engedélyeztük a külső internet-hozzáférést a közzétett bemutatóalkalmazásokban. Emiatt az OneDrive és a hasonló szolgáltatások nem érhetők el. Továbbá a vágólap megosztása (másolás és beillesztés), valamint az USB és a nyomtató átirányítása le van tiltva.  
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

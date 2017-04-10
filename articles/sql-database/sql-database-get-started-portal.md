@@ -9,23 +9,25 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/03/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: be5839e04fae457b889db11dffe56f31afe723a5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: c0c6cdf8aa48568b7a4468dd87b2896f94fc1bf6
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
 Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL Database adatbázist az Azure-ban.  Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben.  Ez a rövid útmutató bemutatja, hogyan teheti meg az új SQL Database adatbázisok létrehozásának első lépéseit az Azure Portalon.
+
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
@@ -43,10 +45,10 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
 
     ![adatbázis létrehozása-1](./media/sql-database-get-started/create-database-1.png)
 
-3. Töltse ki az SQL Database űrlapját a következő információkkal az előző képen látható módon: 
-   - Adatbázis neve: használja a **mySampleDatabase** nevet
-   - Erőforráscsoport: használja a **myResourceGroup** nevet
-   - Forrás: Válassza a **Minta (AdventureWorksLT)** lehetőséget
+3. Töltse ki az SQL Database űrlapját a következő információkkal az előző képen látható módon:     
+   - Adatbázisnév: **mySampleDatabase**
+   - Erőforráscsoport: **myResourceGroup**
+   - Forrás: **Minta (AdventureWorksLT)**
 
 4. Kattintson a **Kiszolgáló** lehetőségre új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Töltse ki az **új kiszolgáló űrlapját**: adjon meg egy globálisan egyedi kiszolgálónevet, a kiszolgáló rendszergazdai bejelentkezési nevét, majd adjon meg egy tetszőleges jelszót. 
 
@@ -82,7 +84,7 @@ Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén
 
 4. Kattintson az **OK** gombra, majd az **X**-re a **Tűzfalbeállítások** oldal bezárásához.
 
-Mostantól csatlakozhat az adatbázishoz és annak kiszolgálójához az SQL Server Management Studio vagy más választott eszköz használatával.
+Erről az IP-címről mostantól csatlakozhat az adatbázishoz és annak kiszolgálójához az SQL Server Management Studio vagy más választott eszköz használatával az előzőekben létrehozott kiszolgálói rendszergazdai fiókkal.
 
 ## <a name="query-the-sql-database"></a>Az SQL-adatbázis lekérdezése
 
@@ -103,7 +105,7 @@ Amikor létrehoztuk az SQL-adatbázist, az **AdventureWorksLT** mintaadatbáziss
 5. A hitelesítés után írja be a következő lekérdezést a lekérdezésszerkesztő panelén.
 
    ```
-   SELECT pc.Name as CategoryName, p.name as ProductName
+   SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;

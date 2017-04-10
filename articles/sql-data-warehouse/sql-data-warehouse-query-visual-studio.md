@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: connect
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
-ms.openlocfilehash: 71a56d0e99308d3f7f514283792a2155a05a7172
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 342f32596c91d2af7c0f33138a43d5c8925d5350
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,9 +37,9 @@ A Visual Studio használatával néhány perc alatt lekérdezheti az Azure SQL D
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozása][SQL Data Warehouse létrehozása] című cikkben találja.
-* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése][A Visual Studio és az SSDT telepítése] című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Csatlakozás az SQL Data Warehouse-hoz][Csatlakozás az SQL Data Warehouse-hoz] című cikket.
+* Egy létező SQL Data Warehouse. A létrehozás menetét az [SQL Data Warehouse létrehozását][Create a SQL Data Warehouse] ismertető cikkben találja.
+* SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [a Visual Studio és az SSDT telepítését][Installing Visual Studio and SSDT] ismertető cikkben olvashat bővebben.
+* Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el [az SQL Data Warehouse-hoz történő csatlakozást][Connect to SQL Data Warehouse] ismertető cikket.
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
 1. Nyissa meg a Visual Studio 2013-at vagy 2015-öt.
@@ -79,19 +81,19 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ![Lekérdezés eredményei][7]
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, következhet [az adatok megjelenítése a PowerBI használatával][az adatok megjelenítése a PowerBI használatával].
+Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, próbálja [megjeleníteni az adatokat a PowerBI használatával][visualizing the data with PowerBI].
 
-A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg a [Hitelesítés az SQL Data Warehouse-ban][Hitelesítés az SQL Data Warehouse-ban] című cikket.
+A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg az [SQL Data Warehouse-zal történő hitelesítést][Authenticate to SQL Data Warehouse] ismertető cikket.
 
 <!--Arcticles-->
-[Csatlakozás az SQL Data Warehouse-hoz]: sql-data-warehouse-connect-overview.md
-[SQL Data Warehouse létrehozása]: sql-data-warehouse-get-started-provision.md
-[A Visual Studio és az SSDT telepítése]: sql-data-warehouse-install-visual-studio.md
-[Hitelesítés az SQL Data Warehouse-ban]: sql-data-warehouse-authentication.md
-[az adatok megjelenítése a PowerBI használatával]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
+[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
+[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -102,9 +104,4 @@ A környezet Azure Active Directory-hitelesítésre történő konfigurálásáv
 [5]: media/sql-data-warehouse-query-visual-studio/new-query2.png
 [6]: media/sql-data-warehouse-query-visual-studio/run-query.png
 [7]: media/sql-data-warehouse-query-visual-studio/query-results.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

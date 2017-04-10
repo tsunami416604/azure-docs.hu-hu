@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 34a9d187eecec185e2b8d6977baea267ca9e60e5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 4149c5e06f1a23864ca0f92f1b7b73f4f66949df
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -61,6 +61,7 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 | Dynamics CRM |I |Hamarosan |I |Hamarosan elérhető |
 | Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |
 | Windows fájlkiszolgáló |I |I |I |I |
+| Citrix XenApp és XenDesktop |N/A |I |N/A |I |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.
@@ -143,6 +144,17 @@ Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a kör
 -    Lehetőség a helyreállítási tervek tesztelésére egy DR-részletezések számára elkülönített környezetben.
 
 [Itt részletesen tájékozódhat](https://aka.ms/asr-iis) az IIS webfarm védelméről.
+
+## <a name="protect-citrix-xenapp-and-xendesktop"></a>A Citrix XenApp és a XenDesktop védelme
+A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő Citrix XenApp- és XenDesktop-példány védelmét:
+
+* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL Database-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
+* Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
+* Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
+* Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott. 
+[Itt részletesen tájékozódhat](https://azure.microsoft.com/en-us/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
+
+[Itt részletesen tájékozódhat](https://aka.ms/citrix-xenapp-xendesktop-with-asr) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről.
 
 ## <a name="next-steps"></a>Következő lépések
 [Előfeltételek ellenőrzése](site-recovery-prereq.md) 
