@@ -15,14 +15,15 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 84aaff1f1e8a92583107295643e0ada81376fab0
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Windows-alkalmazások futtatása bármely Azure RemoteAppet használó eszközön
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -121,10 +122,5 @@ Most már bármelyik eszközön használhatja az Accesst, ha telepít hozzá egy
 Most, hogy elsajátította gyűjtemények létrehozását, próbáljon meg létrehozni egy [Office 365-öt használó gyűjteményt](remoteapp-tutorial-o365anywhere.md). Vagy hozzon létre egy [hibrid gyűjteményt](remoteapp-create-hybrid-deployment.md), amely hozzáfér a helyi hálózatához.
 
 <!--Image references-->
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

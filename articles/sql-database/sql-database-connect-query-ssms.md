@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: ba56eaa154116edbe1dd8962049535cfa57551ac
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
+ms.openlocfilehash: 7ae47bcce700336206d532b414b7d0eea41d87c5
+ms.lasthandoff: 04/04/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
 
-Használja az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) szoftvert az SQL Server-erőforrások felhasználói felületről vagy szkriptekkel történő létrehozásához és kezeléséhez. Ez az útmutató ismerteti, hogyan használható az SSMS az Azure SQL Database adatbázishoz való kapcsolódásra, majd lekérdezési, beszúrási, frissítési és törlési utasítások végrehajtására.
+Használja az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) szoftvert az SQL Server-erőforrások felhasználói felületről vagy szkriptekkel történő létrehozásához és kezeléséhez. Ez a gyors üzembe helyezési útmutató ismerteti, hogyan használható az SSMS az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan hajthat végre lekérdezési, beszúrási, frissítési és törlési utasításokat.
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
@@ -45,11 +45,11 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 
     <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
 
-## <a name="connect-to-the-server"></a>Csatlakozás a kiszolgálóhoz
+## <a name="connect-to-the-server-and-your-new-database"></a>Csatlakozás a kiszolgálóhoz és az új adatbázishoz
 
 Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval.
 
-1. Írja be a Windows keresőmezőbe az **SSMS** kifejezést, majd nyomja le az **Enter** billentyűt az SSMS megnyitásához.
+1. Nyissa meg az SQL Server Management Studiót.
 
 2. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanelen adja meg a következő adatokat:
    - **Server type** (Kiszolgáló típusa): Adja meg az adatbázismotort

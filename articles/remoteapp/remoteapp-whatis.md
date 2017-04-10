@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: bf8f7763db5844a0706264d24ad7a035758ebbda
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: bc5de9daeb09339c9488de8699174cd280197525
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-azure-remoteapp"></a>Mi az az Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -83,10 +84,5 @@ Rajta! Próbálja ki! A következő cikkek segítenek az Azure RemoteApp első l
 
 ### <a name="help-us-help-you"></a>Segítsen nekünk, hogy segítsünk
 Tudta, hogy a cikk értékelése és alább hozzászólások írása mellett magát a cikket is módosíthatja? Valami hiányzik? Valami nem működik? Írtam valami olyat, ami nem egyértelmű? Görgessen fel, és kattintson a **Szerkesztés a GitHubon** vagy a **Szerkesztés** elemre a módosítások végrehajtásához. Ezek hozzánk kerülnek jóváhagyásra, és miután jóváhagytuk őket, itt fognak megjelenni.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

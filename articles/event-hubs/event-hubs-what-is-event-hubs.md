@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 03/31/2017
 ms.author: sethm; babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 55cc1559189a37741d866d86241426fb73f72e4f
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 6450651062219c8f2c4757d6f233bd4b710e56ff
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -34,7 +34,7 @@ Az Event Hubs esemény- és telemetriakezelési képességei különösen az al�
 Az Event Hubs segítségével ezenkívül lehetségessé válik a viselkedéskövetés a mobilalkalmazásokban, a forgalmi információk gyűjtése a webfarmokról, a játékbeli események rögzítése a konzolos játékokban, vagy telemetriaadatok gyűjtése az ipari gépekről vagy csatlakoztatott járművekről.
 
 ## <a name="azure-event-hubs-overview"></a>Azure Event Hubs – áttekintés
-Az Event Hubs gyakran tölti be az eseményfolyamatok „bejárati ajtajának” a szerepét a megoldásarchitektúrákban, mely szerepet gyakran nevezik *eseménybetöltőnek*. Az eseménybetöltő egy olyan összetevő vagy szolgáltatás, amely az esemény-közzétevők és az eseményfelhasználók közé ékelődve elkülöníti az eseménystream létrehozását az események felhasználásától.
+Az Event Hubs gyakran tölti be az eseményfolyamatok „bejárati ajtajának” a szerepét a megoldásarchitektúrákban, mely szerepet gyakran nevezik *eseménybetöltőnek*. Az eseménybetöltő egy olyan összetevő vagy szolgáltatás, amely az esemény-közzétevők és az eseményfelhasználók közé ékelődve elkülöníti az eseménystream létrehozását az események felhasználásától. A következő ábra ezt az architektúrát ábrázolja:
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_full_pipeline.png)
 
@@ -104,6 +104,8 @@ Az alábbiakban néhány példa látható felhasználói csoportok URI-szabálya
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
 ```
+
+A következő ábrán az Event Hubs streamfeldolgozási architektúrája látható:
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_architecture.png)
 

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: ac0d2e6891d916febb3eeee736288454c2b92c2d
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -142,10 +142,10 @@ Nyomja le az **ENTER** billentyűt. Meg kell jelennie a titkosítani kívánt vi
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-A virtuális gépet titkosító titkosítási parancs futtatására két módszer áll rendelkezésre. Első módszer: írja be az alábbi parancsot a PowerShell ISE konzoljába:
+A virtuális gép összes meghajtóját titkosító titkosítási parancs futtatására két módszer áll rendelkezésre. Első módszer: írja be az alábbi parancsot a PowerShell ISE konzoljába:
 
 ~~~
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId
+Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType All
 ~~~
 
 A parancs beírását követően nyomja le az **ENTER** billentyűt.

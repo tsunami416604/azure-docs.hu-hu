@@ -1,11 +1,10 @@
 ---
 title: "Az Azure SQL Database dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerkedjen meg az SQL Database felhőbeli adatbázis-szolgáltatással. Az oktatóanyagok, videók és az egyéb dokumentáció bemutatják a relációs adatbázisok telepítésének, csatlakoztatásának és felügyeletének módjait."
+description: "Ismerje meg, hogyan használhat Azure SQL-adatbázisokat."
 services: sql-database
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,122 +12,63 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: e982e07b6279c1338398980aa07d46ce08ede11c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: 1092d5963cd1b9e21796809374be2534df39e437
+ms.lasthandoff: 04/08/2017
 
 ---
-
-# <a name="sql-database-documentation"></a>SQL Database-dokumentáció
-
-<div class="introHolder">
-    <div class="intro">
-Ismerje meg a Microsoft SQL Server motoron alapuló SQL Database felhőalapú relációs adatbázis-szolgáltatás használatát. Az oktatóanyagok, videók és az egyéb dokumentáció bemutatják az SQL-adatbázisok telepítésének, csatlakoztatásának és felügyeletének módjait.
+<div class="content">
+    <h1>SQL Database-dokumentáció</h1>
+    <p style="padding-bottom: 0px; max-width: 1050px;">Az Azure SQL Database a Microsoft SQL Server motoron alapuló, szolgáltatásként nyújtott relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.</p>
+<h2 style="margin-top: 36px; margin-bottom: 0px;">Gyors útmutatók</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">SQL-adatbázis létrehozása a következővel:</p>
+<div class="ico48Case">
+    <div class="ico48Link">
+        <a href="/azure/sql-database/sql-database-get-started-portal">
+            <img src="media/index/portal.svg" alt="">
+            <span>Azure Portal</span>
+        </a>
     </div>
-    <div class="calloutHolder">
-        <div class="callout">
-            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
-                <img src="media/index/pluralsight.svg" /> Ingyenes PluralSight videós képzés – Infrastruktúrakezelés a Microsoft Azure-ral </a>
-        </div>
+    <div class="ico48Link">
+        <a href="/azure/sql-database/sql-database-get-started-cli">
+            <img src="media/index/cli.svg" alt="">
+            <span>Azure CLI</span>
+        </a>
+    </div>
+    <div class="ico48Link">
+        <a href="/azure/sql-database/sql-database-get-started-powershell">
+            <img src="media/index/logo_powershell.svg" alt="">
+            <span>Azure PowerShell</span>
+        </a>
     </div>
 </div>
 
-<ul class="panelContent cardsFTitle">
-     <li>
-        <a href="/azure/sql-database/sql-database-technical-overview">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/sql-database.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Az Azure SQL Database bemutatása</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=sql-database">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure SQL Database videótár</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/sql-database/sql-database-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Ismerkedés az Azure SQL Database szolgáltatással</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/sql-database/sql-database-elastic-scale-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Ismerkedés az Elastic Tools-szal</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/sql-database/sql-database-get-started-security">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>A hozzáférés és az engedélyek kezelésének első lépései</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-</ul>
+<div class="columnHolder">
+    <div class="column50">
+        <h2 style="margin-top: 36px">oktatóanyagokat</h2>
+        <p>SQL Database szolgáltatást használó alkalmazások létrehozása és üzembe helyezése.</p>
+        <ul class="spaced">
+            <li><a href="/azure/sql-database/sql-database-design-first-database">Adatbázis tervezése</a></li>
+            <li><a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Adatbázisok migrálása</a></li>
+        </ul>
+        <h2>Példák</h2>
+        <p>Szkriptek keresése a gyakori feladatok kezeléséhez.</p>
+        <ul class="spaced">
+            <li><a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a></li>
+            <li><a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a></li>
+        </ul>
+    </div>
+    <div class="column50" style="max-width: 400px">
+        <h2 style="margin-top: 36px">Ingyenes videós képzés</h2>
+        <a href="https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
+            <img src="media/index/video-training-dotnet.png" width="400" alt="">
+            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – Fejlesztés a .NET-tel</a></p>
+    </div>
+</div>
 
----
+<hr />
 
-<h2>Referencia</h2>
+<h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -136,8 +76,8 @@ Ismerje meg a Microsoft SQL Server motoron alapuló SQL Database felhőalapú re
                 <div class="card">
                     <div class="cardText">
                         <h3>Parancssor</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
-                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (Elastic DB)</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">Azure PowerShell</a></p>
+                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">Azure PowerShell (Elastic DB)</a></p>
                         <p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>
                     </div>
                 </div>
@@ -206,6 +146,4 @@ Ismerje meg a Microsoft SQL Server motoron alapuló SQL Database felhőalapú re
         </div>
     </li>
 </ul>
-
-
-
+</div>

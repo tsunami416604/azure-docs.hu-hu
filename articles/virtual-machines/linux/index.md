@@ -5,7 +5,6 @@ services: virtual-machines\linux
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
 ms.service: virtual-machines\linux
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,103 +12,68 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: a83884a61475d6bc06e405bc7c72d4ac2435c398
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 5a8813e08d10bc2fa34a49b8b7dd01074da7426e
+ms.lasthandoff: 04/08/2017
 
 ---
-# <a name="linux-virtual-machine-documentation"></a>Linux rendszerű virtuális gép dokumentációja
-
-<div class="introHolder">
-    <div class="intro">
-Ismerje meg a kívánt Linux-disztribúciót futtató virtuális gépek futtatását az Azure környezetben. A dokumentáció, az API-referenciák és a minták bemutatják a VM-sablonok létrehozásának és üzembe helyezésének különböző módszereit.
+<div class="content">
+    <h1>Linux rendszerű virtuális gépek dokumentációja</h1>
+    <p style="padding-bottom: 0px; max-width: 1050px;">Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúció használatával.  Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Linux virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.</p>
+<h2 style="margin-top: 36px; margin-bottom: 0px;">Gyors útmutatók</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">Linux virtuális gép létrehozása a következővel:</p>
+<div class="ico48Case">
+    <div class="ico48Link">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+            <img src="media/index/cli.svg" alt="">
+            <span>Azure CLI</span>
+        </a>
     </div>
-    <div class="calloutHolder">
-        <div class="callout">
-            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
-                <img src="media/index/pluralsight.svg" /> Ingyenes PluralSight videós képzés – Infrastruktúrakezelés a Microsoft Azure-ral </a>
-        </div>
+    <div class="ico48Link">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <img src="media/index/portal.svg" alt="">
+            <span>Azure Portal</span>
+        </a>
+    </div>
+    <div class="ico48Link">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+            <img src="media/index/logo_powershell.svg" alt="">
+            <span>Azure PowerShell</span>
+        </a>
+    </div>
+<div>
+<div class="columnHolder">
+    <div class="column50">
+        <h2 style="margin-top: 36px">oktatóanyagokat</h2>
+        <p>Linux rendszerű virtuális gépek létrehozása és üzembe helyezése</p>
+        <ul class="spaced">
+            <li><a href="/azure/virtual-machines/virtual-machines-linux-tutorial-manage-vm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Linux rendszerű virtuális gépek létrehozása és felügyelete</a></li>
+            <li><a href="/azure/virtual-machines/virtual-machines-linux-tutorial-load-balance-nodejs?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Magas rendelkezésre állású virtuális gépek terheléselosztása</a></li>
+        </ul>
+        <h2>Példák</h2>
+        <p>Az első alkalmazás telepítése az Azure-ban.</p>
+        <ul class="spaced">
+            <li><a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a></li>
+            <li><a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a></li>
+        </ul>
+    </div>
+    <div class="column50" style="max-width: 400px">
+        <h2 style="margin-top: 36px">Ingyenes videós képzés</h2>
+        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
+            <img src="media/index/video-training-infrastructure.png" width="400" alt="" />
+            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – Infrastruktúrakezelés</a></p>
+            <p style="margin-top: 36px"></p>
+                <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
+            <img src="media/index/video-training-vms.png" width="400" alt="" />
+            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – A virtuális gépek használatának első lépései</a></p>
+        <p style="margin-top: 36px"></p>
+        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
+            <img src="media/index/video-training-iaas-monitoring.png" width="400" alt="" />
+            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – Az IaaS megfigyelés első lépései</a></p>
     </div>
 </div>
-
-<ul class="panelContent cardsFTitle">
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Linux-alapú virtuális gép létrehozása az Azure CLI 2.0-s verziójával</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Virtuális gép létrehozása a Portalról</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/virtual-machine.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>További információk a Linux rendszerű virtuális gépekről</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Virtual Machines – videotár</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-</ul>
-
----
- 
-<h2>Referencia</h2>
+<hr />
+<h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -118,7 +82,7 @@ Ismerje meg a kívánt Linux-disztribúciót futtató virtuális gépek futtatá
                     <div class="cardText">
                         <h3>Parancssor</h3>
                         <p><a href="/cli/azure/vm">Azure CLI</a></p>
-                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -152,6 +116,5 @@ Ismerje meg a kívánt Linux-disztribúciót futtató virtuális gépek futtatá
         </div>
     </li>
 </ul>
-
-
+</div>
 

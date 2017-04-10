@@ -14,14 +14,15 @@ ms.topic: get-started-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
-ms.openlocfilehash: 21ae6458d1d65698c0c8fc7081696cb7406a918c
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 348306795fd3c8275b21e4ec6dceae408916bf72
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="what-is-in-the-azure-remoteapp-template-images"></a>Mit tartalmaznak az Azure RemoteApp sablon rendszerképei?
 > [!IMPORTANT]
-> Azure RemoteApp hamarosan megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
+> Az Azure RemoteApp 2017. augusztus 31-ét követően megszűnik. A részletekért olvassa el a [bejelentést](https://go.microsoft.com/fwlink/?linkid=821148).
 > 
 > 
 
@@ -111,10 +112,5 @@ Ez a rendszerkép az eredeti rendszerkép bővített verziója, és a Microsoft 
 > **Jogi információk:** Ez a rendszerkép nem tartalmaz Microsoft Office-licencet, és *nem használható termelési környezetben*. Az Office 2013 Professional Plus-rendszerkép csak próbaverziós felhasználásra szolgál. Ha Office-alkalmazásokat kíván használni az Azure RemoteAppban termelési környezetben, az Office 365 ProPlus-rendszerképet kell használnia. Az Office licenckezelésével kapcsolatos további részletekért tekintse meg a [Using Office 365 with Azure RemoteApp](remoteapp-o365.md) (Az Office és az Azure RemoteApp használata) című témakört
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

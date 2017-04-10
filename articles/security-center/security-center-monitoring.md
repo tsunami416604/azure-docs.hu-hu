@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -31,32 +32,33 @@ Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsá
 
 A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [A biztonsági javaslatok alkalmazása az Azure Security Centerben](security-center-recommendations.md).
 
-A **Resources security health** (Erőforrások biztonsági állapota) csempén is nyomon követheti erőforrásainak biztonsági állapotát. A következő példában több olyan magas és közepes súlyosságú probléma látható, amely intézkedést igényel. A bekapcsolt biztonsági szabályzatok hatással vannak a megfigyelt vezérlőtípusokra.
+A **Resource security health** (Erőforrás biztonsági állapota) csempén is nyomon követheti erőforrásainak biztonsági állapotát. A következő példában több olyan magas és közepes súlyosságú probléma látható, amely intézkedést igényel. A bekapcsolt biztonsági szabályzatok hatással vannak a megfigyelt vezérlőtípusokra.
 
-![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
+![A Resources security health (Erőforrások biztonsági állapota) csempe](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
 
 Ha a Security Center intézkedést igénylő biztonsági rést (például biztonsági frissítésekkel el nem látott virtuális gépet vagy [hálózati biztonsági csoporttal](/virtual-network/virtual-networks-nsg.md) nem rendelkező alhálózatot) észlel, azt a rendszer itt listázza.
 
-### <a name="monitor-virtual-machines"></a>Virtuális gépek figyelése
-A **Resources security health** (Erőforrások biztonsági állapota) csempén található **Virtual machines** (Virtuális gépek) elemre kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen további információkat talál az előkészítési és megelőzési lépésekről, valamint itt tekintheti meg a Security Center által figyelt valamennyi virtuális gép listáját is.
+### <a name="monitor-compute"></a>Számítási tevékenység figyelése
+Ha a **Számítás** elemre kattint az **Erőforrás biztonsági állapota** csempén, az ekkor megnyíló **Számítás** panelen három lap jelenik meg:
 
-![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
+- **Áttekintés**: megfigyelés és a virtuális gépre vonatkozó javaslatok.
+- **Virtuális gépek**: az összes virtuális gép és azok aktuális biztonsági állapotának listája.
+- **Felhőszolgáltatások**: a Security Center által figyelt összes webes és feldolgozói szerepkör listája.
 
-* Onboarding steps (Előkészítési lépések)
-* Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)
-* Virtual machines (Virtuális gépek)
+![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig1-new002-2017.png)
 
-Az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg a probléma megoldásához szükséges lépésekről. A következő szakaszok e területeket tekintik át részletesebben.
+Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről. 
 
 #### <a name="monitoring-recommendations"></a>Figyelési javaslatok
-Ebben a szakaszban tekintheti meg az összes adatgyűjtésre beállított virtuális gépet, és azok aktuális állapotát. Ha az összes virtuális gépen bekapcsolta az adatgyűjtést, azok készen állnak a Security Center biztonsági szabályzatainak fogadására. Ha erre a bejegyzésbe kattint, a **Data collection installation status** (Adatgyűjtés telepítési állapota) panel nyílik meg, amelyen a virtuális gépek nevei, valamint az adatgyűjtés aktuális állapota látható az **INSTALLATION STATUS** (TELEPÍTÉSI ÁLLAPOT) oszlopban, ahogyan az alábbi képen is látható.
+Ebben a szakaszban tekintheti meg az összes adatgyűjtésre beállított virtuális gépet, és azok aktuális állapotát. Ha az összes virtuális gépen bekapcsolta az adatgyűjtést, azok készen állnak a Security Center biztonsági szabályzatainak fogadására. Ha erre a bejegyzésre kattint, megnyílik **A virtuálisgép-ügynök hiányzik vagy nem válaszol** panel. 
 
-![A virtuális gépek inicializálási állapota](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
+![Hiányzó rendszerfrissítések virtuális gépenként](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+
 
 #### <a name="virtual-machine-recommendations"></a>Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)
 Ebben a szakaszban az Azure Security Center által megfigyelt [virtuális gépekre vonatkozó javaslatokat](security-center-virtual-machine-recommendations.md) olvashat. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett virtuális gépek számát tartalmazza. A harmadik oszlop a probléma súlyosságát mutatja, ahogyan az alábbi képernyőfelvételen látható.
 
-![Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
+![Virtual machine recommendations (A virtuális gépre vonatkozó javaslatok)](./media/security-center-monitoring/security-center-monitoring-fig1-new004-2017.png)
 
 > [!NOTE]
 > A **Networking Health** (Hálózatkezelés állapota) panel **Network topology** (Hálózati topológia) listájában kizárólag a legalább egy nyilvános végponttal rendelkező virtuális gépek jelennek meg.
@@ -93,7 +95,7 @@ A javaslat részleteinek megtekintéséhez kattintson a virtuális gép nevére.
 #### <a name="virtual-machines-section"></a>A Virtual machines (Virtuális gépek) szakasz
 A virtuális gépekre vonatkozó szakaszban áttekintheti az összes virtuális gépet, valamint a rájuk vonatkozó javaslatokat. Ahogy az alábbi képernyőfelvételen is látható, minden oszlop egy javaslatcsoportot képvisel:
 
-![Az összes virtuális gép és javaslat áttekintése](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
+![Az összes virtuális gép és javaslat áttekintése](./media/security-center-monitoring/security-center-monitoring-fig1-new005-2017.png)
 
 Az egyes javaslatok alatt megjelenő ikonok segítenek gyorsan azonosítani az intézkedést igénylő virtuális gépeket és a javaslat típusát.
 
@@ -103,12 +105,12 @@ Az előző példában az egyik virtuális gép végpontvédelmével kapcsolatban
 
 Ezen a panelen találhatók a virtuális gép biztonsági információi. A panel alján a javasolt műveleteket, valamint az egyes problémák súlyosságát láthatja.
 
-#### <a name="cloud-services-preview-section"></a>Felhőszolgáltatások (előzetes verzió) szakasz
-A felhőszolgáltatások állapotinformációi a virtuális gép **biztonsági állapot** csempéjén jelennek meg. A rendszer abban az esetben hozza létre a javaslatot, ha az operációs rendszer verziója elavult, ahogyan az alábbi képernyőfelvételen látható:
+#### <a name="cloud-services-section"></a>Cloud Services szakasz
+A Cloud Services-szolgáltatások esetében a rendszer abban az esetben hozza létre a javaslatot, ha az operációs rendszer verziója elavult, ahogyan az alábbi képernyőfelvételen látható:
 
-![Felhőszolgáltatások állapotinformációi](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+![Felhőszolgáltatások állapotinformációi](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
 
-A javaslatban megadott lépéseket követve frissítheti az operációs rendszer verzióját. Ha például a WebrRole1 webes vagy a WorkerRole1 feldolgozói szerepkör vörös színű riasztására kattint (mindkettő az IIS-re automatikusan telepített webalkalmazással együtt futtatja a Windows Servert), akkor egy új panel nyílik meg, amelyen további részletek láthatók az adott javaslatról, ahogyan az alábbi képernyőfelvételen is látható:
+Olyan esetekben, ahol valóban rendelkezik javaslattal (az előző példa nem ilyen esetet mutat be), a javaslatban megadott lépéseket követve frissítheti az operációs rendszer verzióját. Ha egy frissítés elérhetővé válik, a rendszer riasztást jelenít meg (a probléma súlyosságától függően vörös vagy narancssárga riasztást). Ha a WebRole1 webes vagy a WorkerRole1 feldolgozói szerepkör riasztására kattint (mindkettő az IIS-re automatikusan telepített webalkalmazással együtt futtatja a Windows Servert), akkor egy új panel nyílik meg, amelyen további részletek láthatók az adott javaslatról, ahogyan az alábbi képernyőfelvételen is látható:
 
 ![Felhőszolgáltatás adatai](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
@@ -214,9 +216,4 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: 10e58a76644b5e4d50f05a2db03f4af193cc5152
+ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
+ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,12 +29,12 @@ A Security Center javaslatainak és a biztonsági riasztásoknak más adatokkal 
 ## <a name="using-azure-security-center-dashboard-to-access-power-bi"></a>Az Azure Security Center irányítópultjának használata a Power BI eléréséhez
 Az Azure Security Center irányítópultjának használatával is elérheti a Power BI jelentéseket. Kövesse az alábbi lépéseket a feladat végrehajtásához:
 
-1. Az **Azure Security Center** irányítópultján kattintson a **Power BI: böngészés** gombra.
+1. Az **Azure Security Center** irányítópultján kattintson a **Power BI** gombra.
 
-    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
-2. A **Kezelés a Power BI-ban** panel a jobb oldalon nyílik meg, ahogy az alábbi képernyőn látható:
+    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new10-2017.png)
+2. A **Power BI** panel a jobb oldalon nyílik meg, ahogy az alábbi képernyőn látható:
 
-    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
+    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
 3. Ha első alkalommal hoz létre Power BI-irányítópultot, a **Kezelés a Power BI-ban** panelen az alábbi beállítások egyikét választhatja ki:
 
    * **Security insights irányítópult**: akkor válassza ezt a beállítást, ha olyan irányítópultot szeretne létrehozni, amely a biztonsági állapotot, a szálakat és az észleléseket tartalmazza. E beállítás használata a DevOps szerepkör esetében gyakoribb, amely a védelmi állapot és az észlelt riasztások előfizetések közötti elemzését végzi.
@@ -119,9 +120,4 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irány
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

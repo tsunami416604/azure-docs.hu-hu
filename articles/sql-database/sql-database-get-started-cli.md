@@ -9,17 +9,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start
+ms.custom: quick start create
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: hero-article
-ms.date: 03/13/2017
+ms.date: 04/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 3d642447526c5562ae3bfad5e4a4592e33e766aa
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 7933567f6c10262b14ea1656b26d8fac148942ea
+ms.lasthandoff: 04/04/2017
 
 ---
 
@@ -27,7 +27,9 @@ ms.lasthandoff: 03/25/2017
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató azt ismerteti, hogyan helyezhet üzembe Azure SQL-adatbázist az Azure CLI használatával egy [Azure SQL Database logikai kiszolgáló](sql-database-features.md) [Azure-erőforráscsoportjában](../azure-resource-manager/resource-group-overview.md).
 
-A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+A rövid útmutató elvégzéséhez győződjön meg arról, hogy az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verziója van telepítve. 
+
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 

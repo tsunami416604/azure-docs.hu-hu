@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
-ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -57,7 +57,7 @@ A csomagok útválasztása a TCP/IP-hálózatban egy útválasztási táblázato
 | --- | --- | --- | --- |
 | Címelőtag |A cél CIDR, amelyre az útvonal vonatkozik, például 10.1.0.0/16. |Érvényes CIDR tartománynak kell lennie, ami a nyilvános interneten, az Azure virtuális hálózatban vagy a helyszíni adatközpontban található címeket jelöli. |Győződjön meg arról, hogy a **címelőtag** nem **a következő ugrás címét** tartalmazza, különben a csomagok bekerülnek egy hurokba, és a forrásuktól a következő ugráshoz kerülnek anélkül, hogy valaha is elérnék a céljukat. |
 | A következő ugrás típusa |Az Azure ugrás típusa, amellyel a csomagot küldeni kell. |A következő értékek egyikének kell lennie: <br/> **Virtuális hálózat**. A helyi virtuális hálózatot jelöli. Ha például ugyanabban a virtuális hálózatban két alhálózat van, (10.1.0.0/16 és 10.2.0.0/16) az útválasztási táblázatban az alhálózatok útvonalának következő ugrás értéke *Virtuális hálózat* lesz. <br/> **Virtuális hálózati átjáró**. Egy Azure S2S VPN Gateway átjárót jelöl. <br/> **Internet**. Az Azure infrastruktúra által biztosított alapértelmezett internetes átjárót jelöli. <br/> **Virtuális készülék**. Az Azure Virtual Networkhöz hozzáadott virtuális készüléket jelöli. <br/> **Nincs**. Egy fekete lyukat jelöl. A fekete lyukakba továbbított csomagok nem lesznek továbbítva. |Fontolja meg **Virtuális készülék** használatát az adatforgalom átirányításához egy virtuális gépre vagy az Azure Load Balancer belső IP-címére.  Ezzel a típussal megadható egy IP-cím, az alábbiakban ismertetettek szerint. Érdemes a **Nincs** típust használni, ha nem szeretné, hogy a csomagok elérjék a megadott céljukat. |
-| A következő ugrás címe |A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*. |Egy olyan IP-címnek kell lennie, ami elérhető azon virtuális hálózaton belül, ahol a felhasználó által megadott útvonal van alkalmazva. |Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. Ha az IP-cím az Azure Load Balancer belső IP-címét jelöli, győződjön meg arról, hogy minden egyes porthoz, amelyen terheléselosztást kíván végrehajtani, hozzá van rendelve egy terheléselosztási szabály.|
+| A következő ugrás címe |A következő ugrás címe azt az IP-címet tartalmazza, ahová a csomagokat továbbítani kell. A következő ugrás értékei csak az olyan útvonalaknál engedélyezettek, ahol a következő ugrás típusa *Virtuális készülék*. |Egy olyan IP-címnek kell lennie, ami elérhető azon virtuális hálózaton belül, ahol a felhasználó által megadott útvonal van alkalmazva anélkül, hogy áthaladna a **virtuális hálózati átjárón**. Az IP-címnek egy társított virtuális hálózaton, vagy ugyanazon a virtuális hálózaton kell lennie, ahol alkalmazva van. |Ha az IP-cím egy virtuális gépet jelöl, győződjön meg arról, hogy engedélyezi az [IP-továbbítást](#IP-forwarding) a virtuális gép számára az Azure-ban. Ha az IP-cím az Azure Load Balancer belső IP-címét jelöli, győződjön meg arról, hogy minden egyes porthoz, amelyen terheléselosztást kíván végrehajtani, hozzá van rendelve egy terheléselosztási szabály.|
 
 Az Azure PowerShellben néhány „NextHopType” értéknek különböző neve van:
 

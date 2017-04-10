@@ -13,12 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/26/2017
+ms.date: 03/26/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c5a26a17ab50993f8b57c8868b02541251de1cb1
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: b769f785f67c24b99156dcfc21a42f661cc9da27
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -70,7 +70,7 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt.  Győ
 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
-| Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább&1; GB RAM</li> |
+| Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
 | Szoftver |<li>Windows Server 2008 vagy újabb, ha a gazdagép egy kiszolgálói operációs rendszer</li><li>Windows 7 vagy újabb, ha a gazdagép egy ügyfél operációs rendszer</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 
 ### <a name="azure-multi-factor-authentication-server-firewall-requirements"></a>Az Azure Multi-Factor Authentication-kiszolgáló tűzfalkövetelményei
@@ -121,13 +121,13 @@ Most, hogy a kiszolgáló telepítve és konfigurálva van, a felhasználókat g
 ## <a name="send-users-an-email"></a>E-mail küldése a felhasználóknak
 Most, hogy importálta a felhasználóit az MFA-kiszolgálóra, küldjön nekik egy tájékoztató e-mailt arról, hogy regisztrálta őket a kétlépéses ellenőrzési szolgáltatásban.
 
-Az elküldött e-mail tartalmát az határozza meg, hogyan konfigurálta a felhasználókat a kétlépéses ellenőrzéshez. Ha például importált telefonszámokat a vállalat címtárából, az e-mailnek tartalmaznia kell az alapértelmezett telefonszámokat, így a felhasználók tudni fogják, hogy mire számítsanak. Ha nem importált telefonszámokat, vagy ha a felhasználók a mobilalkalmazást fogják használni, olyan e-mailt küldjön a felhasználóknak, amely a fiók regisztrációjának befejezésére szólítja fel őket az Azure Multi-Factor Authentication felhasználói portálra mutató hivatkozás segítségével.
+Az elküldött e-mail tartalmát az határozza meg, hogyan konfigurálta a felhasználókat a kétlépéses ellenőrzéshez. Ha például importált telefonszámokat a vállalat címtárából, az e-mailnek tartalmaznia kell az alapértelmezett telefonszámokat, így a felhasználók tudni fogják, hogy mire számítsanak. Ha nem importált telefonszámokat, vagy ha a felhasználók a mobilalkalmazást fogják használni, olyan e-mailt küldjön a felhasználóknak, amely a fiók regisztrációjának befejezésére szólítja fel őket. Az e-mail tartalmazzon egy hivatkozást az Azure Multi-Factor Authentication felhasználói portáljára.
 
 Az e-mail tartalma a felhasználóhoz beállított ellenőrzési módszertől is függ (telefonhívás, SMS vagy mobilalkalmazás).  Ha például a felhasználónak PIN-kódot kell használnia a hitelesítéskor, az e-mail tartalmazza a kezdeti PIN-kódot.  A felhasználóknak általában az első ellenőrzéskor módosítaniuk kell a PIN-kódot.
 
 
 ### <a name="configure-email-and-email-templates"></a>E-mailek és e-mail-sablonok konfigurálása
-Kattintson a bal oldalon található e-mail ikonra az e-mailek küldésére vonatkozó beállítások megadásához. Itt adhatja meg a levelezési kiszolgáló SMTP-információit, és innen küldhet e-maileket az **E-mailek küldése a felhasználóknak** jelölőnégyzet bejelölésével.
+Kattintson a bal oldalon található e-mail ikonra az e-mailek küldésére vonatkozó beállítások megadásához. Ezen az oldalon adhatja meg a levelezési kiszolgáló SMTP-adatait, és innen küldhet e-maileket az **E-mailek küldése a felhasználóknak** jelölőnégyzet bejelölésével.
 
 ![E-mail-beállítások](./media/multi-factor-authentication-get-started-server/email1.png)
 
@@ -155,11 +155,7 @@ A fenti mezőkön kívül a rendszer az ellenőrzési eredményeket (sikeres/elu
 
 - A [felhasználói portál](multi-factor-authentication-get-started-portal.md) telepítése és konfigurálása a felhasználói önkiszolgáló funkciókhoz.
 
-- Az Azure Multi-Factor Authentication telepítése az [Active Directory összevonási szolgáltatással](multi-factor-authentication-get-started-adfs.md).
-
-- Az Azure MFA-kiszolgáló telepítése és konfigurálása [RADIUS-hitelesítéssel](multi-factor-authentication-get-started-server-radius.md). A RADIUS lehetővé teszi különböző külső rendszerek integrálását az Azure MFA-kiszolgálóval. 
-
-- Az Azure MFA-kiszolgáló telepítése és konfigurálása [Windows-hitelesítéssel](multi-factor-authentication-get-started-server-windows.md).
+- Az Azure MFA-kiszolgáló telepítése és konfigurálása [Active Directory összevonási szolgáltatásokkal](multi-factor-authentication-get-started-adfs.md), [RADIUS-hitelesítéssel](multi-factor-authentication-get-started-server-radius.md) vagy [LDAP-hitelesítéssel](multi-factor-authentication-get-started-server-ldap.md).
 
 - [Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló](multi-factor-authentication-get-started-server-rdg.md) telepítése és konfigurálása. 
 

@@ -12,41 +12,42 @@ ms.devlang: cpp
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 03/28/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
-ms.openlocfilehash: b3cc8e53b0c8bb7ea40b6ebcebe1f97d4a3e1180
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 856ffeeeb8f9d8296ba972a9e070686171f7fde8
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="explore-the-iot-gateway-sdk-architecture-on-linux"></a>Az IoT Gateway SDK architektúrájának áttekintése Linux rendszeren
+
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>A minta létrehozása
+
 Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupdevbox] az SDK Linux rendszeren történő használatához.
 
 1. Nyisson meg egy rendszerhéjat.
-2. Az **azure-iot-gateway-sdk** adattár helyi példányában lépjen a gyökérmappába.
-3. Futtassa a **tools/build.sh** szkriptet. Ez a szkript a **cmake** segédprogramot használja a **build** nevű mappa létrehozásához az **azure-iot-gateway-sdk** adattár helyi példányának gyökérmappájában, valamint a makefile előállításához. Ezt követően a szkript felépíti a megoldást, és kihagyja az egységteszteket és a teljes körű teszteket. Adja hozzá a **--run-unittests** paramétert, ha szeretné létrehozni és futtatni az egységteszteket. Adja hozzá a **--run-e2e-tests** paramétert, ha szeretné létrehozni és futtatni a teljes körű teszteket.
+1. Az **azure-iot-gateway-sdk** adattár helyi példányában lépjen a gyökérmappába.
+1. Futtassa a **tools/build.sh** szkriptet. Ez a szkript a **cmake** segédprogramot használja a **build** nevű mappa létrehozásához az **azure-iot-gateway-sdk** adattár helyi példányának gyökérmappájában, valamint a makefile előállításához. Ezt követően a szkript felépíti a megoldást, és kihagyja az egységteszteket és a teljes körű teszteket. Adja hozzá a **--run-unittests** paramétert, ha szeretné létrehozni és futtatni az egységteszteket. Adja hozzá a **--run-e2e-tests** paramétert, ha szeretné létrehozni és futtatni a teljes körű teszteket.
 
 > [!NOTE]
 > A **build.sh** szkript minden futtatásakor törli, majd újra létrehozza a **build** mappát az **azure-iot-gateway-sdk** adattár helyi példányának gyökérmappájában.
-> 
-> 
 
 ## <a name="how-to-run-the-sample"></a>A minta futtatása
-1. A **build.sh** szkript a kimenetét a **build** mappában hozza létre, az **azure-iot-gateway-sdk** adattár helyi példányában. Ezek közé tartozik a jelen példában használt két modul is.
-   
-    A buildszkript a **liblogger.so** fájlt a **build/modules/logger/** mappába, a **libhello_world.so** fájlt pedig a **build/modules/hello_world/** mappába menti. Ezen elérési utakat a **module path** értékeként adja meg, ahogyan az az alábbi JSON-beállításfájlban szerepel.
-2. A hello_world_sample folyamat egy JSON konfigurációs fájl elérési útját veszi fel argumentumként a parancssorban. Egy példa JSON-fájl is szerepel a tárban az **azure-iot-gateway-sdk/samples/hello_world/src/hello_world_win.json** helyen. A fájl tartalma az alábbiakban látható. A jelenlegi formájában is működik, hacsak nem módosította a buildszkriptet, hogy az a modulokat és a végrehajtható mintafájlokat ne az alapértelmezett helyekre helyezze.
+
+1. A **build.sh** szkript a kimenetét a **build** mappában hozza létre, az **azure-iot-gateway-sdk** adattár helyi példányában. Az ilyen kimenetek közé tartozik a jelen példában használt két modul is.
+
+    A buildszkript a **liblogger.so** fájlt a **build/modules/logger/** mappába, a **libhello\_world.so** fájlt pedig a **build/modules/hello_world/** mappába menti. Ezen elérési utakat a **module path** értékeként adja meg, ahogyan az az alábbi példa JSON-beállításfájljában szerepel.
+1. A hello\_world\_sample folyamat egy JSON-konfigurációs fájl elérési útját veszi fel argumentumként a parancssorban. Az alábbi JSON-példafájl az SDK-tárházban a **samples/hello\_world/src/hello\_world\_lin.json** helyen található. A konfigurációs fájl a jelenlegi formájában is működik, hacsak nem módosítja a buildszkriptet, hogy az a modulokat és a végrehajtható mintafájlokat ne az alapértelmezett helyekre helyezze.
 
    > [!NOTE]
-   > A modul az aktuális munkakönyvtárhoz képest relatív útvonalakat használ. A munkamappa az ahonnan a hello_world_sample végrehajtható fájlt elindította, és nem a végrehajtható fájl könyvtára. A JSON konfigurációs mintafájl a „log.txt” naplófájlokat alapértelmezetten az aktuális munkakönyvtárba írja.
-   
-    ```
+   > A modul az aktuális munkakönyvtárhoz képest relatív útvonalakat használ. A munkamappa az, ahonnan a hello\_world\_sample végrehajtható fájlt elindította, és nem a végrehajtható fájl könyvtára. A JSON konfigurációs mintafájl a „log.txt” naplófájlokat alapértelmezetten az aktuális munkakönyvtárba írja.
+
+    ```json
     {
         "modules" :
         [
@@ -71,7 +72,7 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
                 "args" : null
             }
         ],
-        "links": 
+        "links":
         [
             {
                 "source": "hello_world",
@@ -80,12 +81,10 @@ Mielőtt elkezdené, [be kell állítani a fejlesztési környezetet][lnk-setupd
         ]
     }
     ```
-3. Lépjen az **azure-iot-gateway-sdk/build** mappába.
-4. Futtassa az alábbi parancsot:
-   
-   ```
-   ./samples/hello_world/hello_world_sample ./../samples/hello_world/src/hello_world_lin.json
-   ``` 
+1. Lépjen a **build** mappára.
+1. Futtassa az alábbi parancsot:
+
+   `./samples/hello_world/hello_world_sample ./../samples/hello_world/src/hello_world_lin.json`
 
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-code](../../includes/iot-hub-gateway-sdk-getstarted-code.md)]
 

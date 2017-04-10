@@ -18,9 +18,9 @@ ms.date: 11/14/2016
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: dd504c95e22d322707c55818815b09d8a36c7ca4
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
+ms.openlocfilehash: 0d3b09fb20f748fe70049c505625d813190e94b0
+ms.lasthandoff: 04/04/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>A privát Docker-tárolójegyzékek bemutatása
@@ -48,9 +48,7 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 
 
 ## <a name="key-concepts"></a>Fő fogalmak
-* **Beállításjegyzék** – Létrehozhat egy vagy több tároló-beállításjegyzéket Azure-előfizetésében. Mindegyik beállításjegyzék egy, ugyanazon a helyen található standard Azure [Storage-fiókra](../storage/storage-introduction.md) épül. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit.
-
-  A beállításjegyzékek a gyökértartományban az előfizetés [Azure Active Directory-bérlője](../active-directory/active-directory-howto-tenant.md) alapján vannak elnevezve. Ha például egy szervezeti fiókkal rendelkezik a Contoso tartományban, a teljes tartománynév `myregistry-contoso.azurecr.io` formában lesz.
+* **Beállításjegyzék** – Létrehozhat egy vagy több tároló-beállításjegyzéket Azure-előfizetésében. Mindegyik beállításjegyzék egy, ugyanazon a helyen található standard Azure [Storage-fiókra](../storage/storage-introduction.md) épül. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. A teljes tartománynév `myregistry.azurecr.io` formában van.
 
   A tároló-beállításjegyzékhez való [hozzáférés szabályozása](container-registry-authentication.md) egy, az Azure Active Directory által támogatott [egyszerű szolgáltatással](../active-directory/active-directory-application-objects.md) vagy a rendszergazdai fiókkal lehetséges. A beállításjegyzéken való hitelesítéshez futtassa a szabványos `docker login` parancsokat.
 

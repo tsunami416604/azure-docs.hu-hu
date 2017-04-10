@@ -10,7 +10,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: manage
+ms.custom: quick start manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 86471fe29bbc9076624d96b83f7001d8755363bc
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: fd5cb0d45d0955b7e4c471dc5ccecac65ad7400a
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Csatlakozás, majd adatok lekérdezése a Visual Studio Code használatával
 
-A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus kódszerkesztő a kiterjesztéseket támogató Linux, macOS és Windows rendszerekre. A Visual Studio Code-ot az [mssql bővítménnyel](https://aka.ms/mssql-marketplace) használva csatlakozhat egy Azure SQL Database-adatbázishoz, és lekérdezéseket hajthat végre. Ez az útmutató ismerteti, hogyan használható a Visual Studio Code az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd lekérdezési, beszúrási, frissítési és törlési utasítások végrehajtására.
+A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus kódszerkesztő a kiterjesztéseket támogató Linux, macOS és Windows rendszerekre. A Visual Studio Code-ot az [mssql bővítménnyel](https://aka.ms/mssql-marketplace) használva csatlakozhat egy Azure SQL Database-adatbázishoz, és lekérdezéseket hajthat végre. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a Visual Studio Code az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd lekérdezési, beszúrási, frissítési és törlési utasítások végrehajtására.
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 

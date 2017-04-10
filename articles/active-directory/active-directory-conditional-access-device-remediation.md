@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Active Directory hozzáférési problémáinak elhárítása | Microsoft Docs"
+title: "Hibaelhárítás: innen nem érheti el az Azure Portalon Windows-eszközről| Microsoft Docs"
 description: "Ismerje meg, milyen lépéseket kell megtennie a szervezete online erőforrásaival kapcsolatos hozzáférési problémák megoldásához."
 services: active-directory
 keywords: "eszközalapú feltételes hozzáférés, eszközregisztráció, eszközregisztráció engedélyezése, eszközregisztráció és MDM"
@@ -12,44 +12,63 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2017
+ms.date: 04/04/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
-ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
+ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
+ms.openlocfilehash: 9a648ca8f91529bc5aaa7b8ffbcfddb40864f409
+ms.lasthandoff: 04/04/2017
 
 
 ---
-# <a name="troubleshooting-for-azure-active-directory-access-issues"></a>Az Azure Active Directory hozzáférési problémáinak elhárítása
-Szervezete SharePoint Online intranetjéhez próbál hozzáférni, ám „hozzáférés megtagadva” hibaüzenetet kap. Mi a következő lépés?
+# <a name="troubleshooting-you-cant-get-there-from-here-on-a-windows-device"></a>Hibaelhárítás: Innen nem érheti el Windows-eszközről
+
+Ha például a szervezet SharePoint Online intranetéhez próbál hozzáférni, megjelenhet egy oldal a következő üzenettel: *Innen nem érheti el*. Az oldal azért jelenik meg, mert a rendszergazda olyan hozzáférési szabályzatot állított be, amely bizonyos feltételek szerint megakadályozza a vállalat erőforrásaihoz való hozzáférést. Bár lehetséges, hogy a probléma megoldásához végül az ügyfélszolgálathoz vagy a rendszergazdához kell fordulni, érdemes először megpróbálkozni néhány lépéssel.
+
+Ha **Windows**-eszközt használ, ellenőrizze a következőket:
+
+- Támogatott böngészőt használ?
+
+- A Windows támogatott verzióját futtatja az eszközön?
+
+- Az eszköz megfelelő?
 
 
-Ez a cikk szervezete online erőforrásaival kapcsolatos hozzáférési problémák megoldásához kínál segítséget.
 
-Az Azure Active Directory (Azure AD) hozzáférési problémáinak megoldásához olvassa el a cikk megfelelő eszközplatformra vonatkozó szakaszát:
 
-* Windows-eszköz
-* iOS-eszköz (Térjen vissza később, ha iPhone-okhoz és iPadekhez nyújtott támogatást keres.)
-* Android-eszköz (Térjen vissza később, ha androidos telefonokhoz és táblagépekhez nyújtott támogatást keres.)
 
-## <a name="access-from-a-windows-device"></a>Elérés Windows-eszközről
-Amennyiben eszköze az alábbi platformok egyikét futtatja, a következő szakaszokban keresse meg azt a hibaüzenetet, amely akkor jelenik meg, amikor megpróbál hozzáférni az alkalmazáshoz vagy szolgáltatáshoz:
 
-* Windows 10
-* Windows 8.1
-* Windows 8
-* Windows 7
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
+## <a name="supported-browser"></a>Támogatott böngésző
 
-### <a name="device-is-not-registered"></a>Az eszköz nincs regisztrálva
-Ha az eszköze nincs regisztrálva az Azure AD-vel és az alkalmazást eszközalapú házirend védi, az alábbi hibaüzeneteket láthatja:
+Ha a rendszergazda feltételes hozzáférési szabályzatot állított be, akkor csak támogatott böngészővel férhet hozzá a szervezet erőforrásaihoz. Windows-eszközön csak az **Internet Explorer** és az **Edge** támogatott.
 
+Ha egy erőforráshoz egy nem támogatott böngésző miatt nem férhet hozzá, azt könnyen megállapíthatja a hibaoldal részletek szakaszának megtekintésével:
+
+![„Innen nem érheti el” üzenetek nem támogatott böngészők esetén](./media/active-directory-conditional-access-device-remediation/02.png "Forgatókönyv")
+
+Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon. A támogatott böngészők teljes listáját a [támogatott böngészők](active-directory-conditional-access-supported-apps.md#supported-browsers) című témakörben találja.  
+
+
+## <a name="supported-versions-of-windows"></a>A Windows támogatott verziói
+
+A következő feltételeknek kell teljesülnie az eszközön futó Windows operációs rendszer esetében: 
+
+- Ha eszközén Windows asztali operációs rendszert használ, annak verziója Windows 7 vagy újabb kell, hogy legyen.
+- Ha eszközén Windows kiszolgálói operációs rendszert használ, annak verziója Windows Server 2008 R2 vagy újabb kell, hogy legyen. 
+
+
+## <a name="compliant-device"></a>Megfelelő eszköz
+
+Lehetséges, hogy a rendszergazda olyan feltételes hozzáférési szabályzatot állított be, amely a vállalat erőforrásaihoz való hozzáférést csak megfelelő eszközökről engedélyezi. A megfeleléshez az eszköznek csatlakoznia kell a helyszíni Active Directoryhez vagy az Azure Active Directoryhez.
+
+Ha egy erőforráshoz egy nem megfelelő eszköz miatt nem férhet hozzá, azt könnyedén megállapíthatja a hibaoldal részletek szakaszának megtekintésével:
+ 
 ![„Innen nem érheti el” üzenetek nem regisztrált eszközök esetén](./media/active-directory-conditional-access-device-remediation/01.png "Forgatókönyv")
 
-Ha az eszköze tartomány részeként van csatlakoztatva az Active Directoryhoz a szervezetében, megpróbálhatja a következőt:
+
+### <a name="is-your-device-joined-to-an-on-premises-active-directory"></a>Az eszköz egy helyszíni Active Directoryhez csatlakozik?
+
+**Ha az eszköz egy helyszíni Active Directoryhez csatlakozik a szervezeten belül:**
 
 1. Győződjön meg róla, hogy a munkahelyi fiókot (Active Directory-fiókját) használva lépett be a Windowsba.
 2. Csatlakozzon a vállalati hálózathoz virtuális magánhálózaton (VPN) vagy DirectAccessen keresztül.
@@ -58,16 +77,30 @@ Ha az eszköze tartomány részeként van csatlakoztatva az Active Directoryhoz 
 5. Várjon egy percet, majd próbálja meg újból elérni az alkalmazást vagy a szolgáltatást.
 6. Ha ugyanazt a lapot látja, kattintson a **További részletek** hivatkozásra, és az ott található információt adja át a rendszergazdának.
 
-Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 10 rendszert futtat, két lehetőség áll rendelkezésre:
+
+### <a name="is-your-device-not-joined-to-an-on-premises-active-directory"></a>Az eszköz nem csatlakozik egy helyszíni Active Directoryhez?
+
+Ha az eszköze nem csatlakozik egy helyszíni Active Directoryhez, és Windows 10 rendszert futtat, két lehetőség áll rendelkezésre:
 
 * Futtassa az Azure AD Joint
 * Adja hozzá a munkahelyi vagy iskolai fiókját a Windowshoz
 
-További információt a két megoldás közötti különbségekről itt talál: [Windows 10-es eszközök használata a munkahelyen ](active-directory-azureadjoin-windows10-devices.md).
+További információt a két megoldás közötti különbségekről itt talál: [Windows 10-es eszközök használata a munkahelyen ](active-directory-azureadjoin-windows10-devices.md).  
+Ha az eszköz:
 
-Az Azure AD Join futtatásához hajtsa végre az alábbiakat az eszközén futó platformnak megfelelően. (Az Azure AD Join nem érhető el windowsos telefonon.)
+- A szervezethez tartozik, futtassa az Azure AD Joint.
+- Egy személyes eszköz vagy Windows-telefon, adja hozzá a munkahelyi vagy iskolai fiókját a Windowshoz 
 
-**Windows 10 évfordulós frissítés**
+
+
+#### <a name="azure-ad-join-on-windows-10"></a>Azure AD Join a Windows 10 rendszeren
+
+Az eszköz Azure AD-hez való csatlakoztatásának lépései az eszközön futó Windows 10 verziójához vannak kötve. A Windows 10 operációs rendszer verziójának megállapításához futtassa a **winver** parancsot: 
+
+![Windows-verzió](./media/active-directory-conditional-access-device-remediation/03.png )
+
+
+**Windows 10 évfordulós frissítés (1607-es verzió):**
 
 1. Nyissa meg a **Gépházat**.
 2. Kattintson a **Fiókok** > **Hozzáférés munkahelyi vagy iskolai rendszerhez** elemre.
@@ -77,7 +110,7 @@ Az Azure AD Join futtatásához hajtsa végre az alábbiakat az eszközén futó
 6. Jelentkezzen ki, majd jelentkezzen be a munkahelyi fiókjával.
 7. Próbálja meg újból elérni az alkalmazást.
 
-**Windows 10, 2015 novemberi frissítés**
+**Windows 10, 2015 novemberi frissítés (1511-es verzió):**
 
 1. Nyissa meg a **Gépházat**.
 2. Kattintson a **Rendszer** > **Névjegy** elemre.
@@ -86,23 +119,8 @@ Az Azure AD Join futtatásához hajtsa végre az alábbiakat az eszközén futó
 5. Jelentkezzen ki, majd jelentkezzen be a munkahelyi fiókjával (Azure AD-fiókjával).
 6. Próbálja meg újból elérni az alkalmazást.
 
-Munkahelyi vagy iskolai fiók hozzáadásához tegye a következőket:
 
-**Windows 10 évfordulós frissítés**
-
-1. Nyissa meg a **Gépházat**.
-2. Kattintson a **Fiókok** > **Hozzáférés munkahelyi vagy iskolai rendszerhez** elemre.
-3. Kattintson a **Connect** (Csatlakozás) gombra.
-4. Hitelesítse magát szervezeténél, biztosítson többtényezős hitelesítési adatokat, ha szükséges, majd kövesse a bemutatott lépéseket.
-5. Próbálja meg újból elérni az alkalmazást.
-
-**Windows 10, 2015 novemberi frissítés**
-
-1. Nyissa meg a **Gépházat**.
-2. Kattintson a **Fiókok** > **Saját fiókok** elemre.
-3. Kattintson a **Munkahelyi vagy iskolai fiók beállítása** elemre.
-4. Hitelesítse magát szervezeténél, biztosítson többtényezős hitelesítési adatokat, ha szükséges, majd kövesse a bemutatott lépéseket.
-5. Próbálja meg újból elérni az alkalmazást.
+#### <a name="workplace-join-on-windows-81"></a>Munkahelyi csatlakoztatás Windows 8.1 rendszeren
 
 Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futtat, munkahelyi csatlakoztatást hajthat végre, és regisztrálhat a Microsoft Intune-ba a következők elvégzésével:
 
@@ -113,24 +131,33 @@ Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futt
 5. Kattintson a **Bekapcsolás** elemre.
 6. Próbálja meg újból elérni az alkalmazást.
 
-### <a name="browser-is-not-supported"></a>A böngésző nem támogatott
-A rendszer megtagadhatja a hozzáférést, ha az alábbi böngészők valamelyikével próbál meg hozzáférni egy alkalmazáshoz vagy szolgáltatáshoz:
 
-* Windows 10 vagy Windows Server 2016 rendszer esetén Chrome, Firefox vagy a Microsoft Edge és a Microsoft Internet Explorer kivételével bármely böngésző
-* Firefox Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszer esetén
 
-Az alábbihoz hasonló hibaüzenetet megjelenítő lapot fog látni:
+#### <a name="add-your-work-or-school-account-to-windows"></a>Adja hozzá a munkahelyi vagy iskolai fiókját a Windowshoz 
 
-![„Innen nem érheti el” üzenetek nem támogatott böngészők esetén](./media/active-directory-conditional-access-device-remediation/02.png "Forgatókönyv")
 
-Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon.
+**Windows 10 évfordulós frissítés (1607-es verzió):**
+
+1. Nyissa meg a **Gépházat**.
+2. Kattintson a **Fiókok** > **Hozzáférés munkahelyi vagy iskolai rendszerhez** elemre.
+3. Kattintson a **Connect** (Csatlakozás) gombra.
+4. Hitelesítse magát szervezeténél, biztosítson többtényezős hitelesítési adatokat, ha szükséges, majd kövesse a bemutatott lépéseket.
+5. Próbálja meg újból elérni az alkalmazást.
+
+
+**Windows 10, 2015 novemberi frissítés (1511-es verzió):**
+
+1. Nyissa meg a **Gépházat**.
+2. Kattintson a **Fiókok** > **Saját fiókok** elemre.
+3. Kattintson a **Munkahelyi vagy iskolai fiók beállítása** elemre.
+4. Hitelesítse magát szervezeténél, biztosítson többtényezős hitelesítési adatokat, ha szükséges, majd kövesse a bemutatott lépéseket.
+5. Próbálja meg újból elérni az alkalmazást.
+
+
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 [Azure Active Directory feltételes hozzáférés](active-directory-conditional-access.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

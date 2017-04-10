@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2165cdc87a505e94fab2fc73c30a5764348c6dc1
-ms.openlocfilehash: b382cf65ae172e0037f2bc668a4f5862b29d1700
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 6ea9db6ac7a7ba63652b860c22899a8616ea81bc
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -65,8 +66,8 @@ A fenti ábrán az NSG-szabályok feldolgozásának folyamata látható.
 ### <a name="default-tags"></a>Alapértelmezett címkék
 Az alapértelmezett címkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. Az alapértelmezett címkéket a szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Háromféle alapértelmezett címkét lehet használni.
 
-* **VIRTUAL_NETWORK:** Ez az alapértelmezett címke a hálózati címtereket jelöli. Beletartozik a virtuális hálózat címtere (az Azure által meghatározott CIDR tartományok), illetve az összes csatlakoztatott helyszíni címtér és Azure VNet (helyi hálózatok).
-* **AZURE_LOADBALANCER:** Ez az alapértelmezett címke az Azure infrastruktúra terheléselosztóját jelöli. Ezt a rendszer le fogja fordítani arra az Azure-adatközponti IP-címre, ahonnan az Azure állapot-mintavételi csomagjai származnak.
+* **VIRTUAL_NETWORK** (Azure Resource Manager használata esetén **VirtualNetwork**): Ez az alapértelmezett címke jelöli az összes hálózati címteret. Beletartozik a virtuális hálózat címtere (az Azure által meghatározott CIDR tartományok), illetve az összes csatlakoztatott helyszíni címtér és Azure VNet (helyi hálózatok).
+* **AZURE_LOADBALANCER** (Azure Resource Manager használata esetén **AzureLoadBalancer**): Ez az alapértelmezett címke az Azure infrastruktúra terheléselosztóját jelöli. Ezt a rendszer le fogja fordítani arra az Azure-adatközponti IP-címre, ahonnan az Azure állapot-mintavételi csomagjai származnak.
 * **INTERNET:** Ez az alapértelmezett címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik és a nyilvános interneten keresztül érhető el. A tartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
 
 ### <a name="default-rules"></a>Alapértelmezett szabályok
@@ -258,9 +259,4 @@ Mivel a fenti NSG-k közül néhányat különálló hálózati adapterekhez kel
 * [Deploy NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md) (NSG-k telepítése a klasszikus üzembe helyezési modellel).
 * [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md) (NSG-k üzembe helyezése a Resource Manager eszközzel).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
