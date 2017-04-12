@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2017
+ms.date: 03/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e43a6ea9510c481518becb52cc571ec62e3b151d
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f7748dba30c6e0332c166feda25f4aaa93c06efa
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,19 +29,21 @@ ms.lasthandoff: 03/21/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-> [!NOTE]
-> Nagy adatmennyiség (nagyméretű fájlok, sok fájl vagy mindkettő) feltöltése és letöltése esetén a [Python SDK](data-lake-store-get-started-python.md), a [.NET SDK](data-lake-store-get-started-net-sdk.md) vagy az [Azure PowerShell](data-lake-store-get-started-powershell.md) használatát javasoljuk. Ezek a lehetőségek jobb teljesítményt biztosítanak, mivel több szálat használnak, így az adattovábbítás párhuzamosan folyhat.
-> 
->  
-
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure parancssori felület használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
 
 Az Azure parancssori felület implementálva van a Node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat. Az Azure parancssori felület nyílt forráskódú. A forráskód felügyelete a GitHubon: <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>. Ez a cikk csak az Azure parancssori felület Data Lake Store-ral való használatát tárgyalja. Általános útmutató az Azure CLI használatáról: [Az Azure CLI használata][azure-command-line-tools].
+
+
+> [!NOTE]
+> Nagy adatmennyiség (nagyméretű fájlok, sok fájl vagy mindkettő) feltöltése és letöltése esetén a [Python SDK](data-lake-store-get-started-python.md), a [.NET SDK](data-lake-store-get-started-net-sdk.md) vagy az [Azure PowerShell](data-lake-store-get-started-powershell.md) használatát javasoljuk. Ezek a lehetőségek jobb teljesítményt biztosítanak, mivel több szálat használnak, így az adattovábbítás párhuzamosan folyhat.
+> 
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
@@ -50,10 +52,13 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Azure parancssori felület** – A telepítésre és konfigurálásra vonatkozó információkért lásd: [Install and configure the Azure CLI](../cli-install-nodejs.md) (Az Azure parancssori felület telepítése és konfigurálása). Győződjön meg róla, hogy újraindította a számítógépét a parancssori felület telepítése után.
 
 ## <a name="authentication"></a>Authentication
+
 Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ral, ahol Ön végfelhasználóként jelentkezik be. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
 
 ## <a name="login-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
+
 1. Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületéről (Azure CLI)](../xplat-cli-connect.md) című dokumentumban leírt lépéseket, és csatlakozzon az előfizetéséhez az `azure login` módszerrel.
+
 2. Az `azure account list` paranccsal sorolja fel a fiókjához társított előfizetéseket.
    
         info:    Executing command account list
