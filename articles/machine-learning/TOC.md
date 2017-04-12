@@ -196,7 +196,6 @@
 ## Cortana Analytics
 ### API-k
 #### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection-api.md)
-#### [Szövegelemzés](machine-learning-apps-text-analytics.md)
 #### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 #### Prediktív karbantartás
 ##### [Áttekintés](cortana-analytics-playbook-predictive-maintenance.md)

@@ -9,8 +9,6 @@ Létezik néhány olyan különleges Azure-régió is, amelyet megfelelőségi v
 
 * **USA-beli államigazgatás – Virginia** és **USA-beli államigazgatás – Iowa**
   * Az Azure fizikailag és logikailag elszigetelt példánya az USA-beli államigazgatási szervek és partnereik számára, amelyet biztonsági szempontból átvilágított, USA-beli személyek kezelnek. Olyan további megfelelőségi tanúsítványokat is tartalmaz, mint a [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) vagy a [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Tudjon meg többet az [Azure Governmentről](https://azure.microsoft.com/features/gov/).
-* **Közép-India**, **Dél-India** és **Nyugat-India**
-  * Ezek a régiók egyelőre csak az Indiában helyi regisztrációval rendelkező, mennyiségi licencprogramban részt vevő ügyfelek és partnerek számára érhetők el. 2016-ban azok a felhasználók érhették el, akik közvetlen online előfizetést vásároltak.
 * **Kelet-Kína** és **Észak-Kína**
   * Ezek a régiók a Microsoft és a 21Vianet közötti különleges partnerség révén érhetők el, amelyben az adatközpontok fenntartója nem közvetlenül a Microsoft. Tudjon meg többet a [Microsoft Azure kínai működéséről](http://www.windowsazure.cn/).
 * **Közép-Németország** és **Északkelet-Németország**

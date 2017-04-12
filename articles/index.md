@@ -4,9 +4,9 @@ hide_bc: true
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 355f6d4457668459676aeafb39701e65bb6673df
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 6156ec5732cb9f24d762afe12a678fabe9c93069
+ms.lasthandoff: 04/10/2017
 
 ---
 <div id="main" class="v2">
@@ -2600,10 +2600,10 @@ ms.lasthandoff: 04/08/2017
                                                     <a href="https://pypi.python.org/pypi/azure">A Python SDK beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/index">Első lépések</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">Első lépések</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/index">API-referencia</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API-referencia</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/resources/samples/?platform=python">Példák letöltése</a>
@@ -2809,7 +2809,7 @@ ms.lasthandoff: 04/08/2017
                                                     <a href="http://aka.ms/webpi-azure-cli">A Windowsos Azure CLI 2.0 letöltése</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/articles/azure-cli-arm-commands/index">Referencia</a>
+                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Referencia</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2832,7 +2832,7 @@ ms.lasthandoff: 04/08/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/index">Visual Studio Tools for Azure</a>
+                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio Tools for Azure</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">Letöltés</a>
@@ -2904,10 +2904,10 @@ ms.lasthandoff: 04/08/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com/index">Storage Explorer</a>
+                                                    <a href="http://storageexplorer.com">Storage Explorer</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/index">Első lépések</a>
+                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Első lépések</a>
                                                 </p>
                                                 <p>
                                                      <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Letöltés Linuxra</a>

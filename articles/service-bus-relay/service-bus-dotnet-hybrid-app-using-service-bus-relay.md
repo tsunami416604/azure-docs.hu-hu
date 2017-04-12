@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 6c59c98a400da0616762b2bd0c4217d97e22ab86
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: ed1db5521a17988d7936c53afcfe565cc7ba1a38
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -227,7 +227,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 
    ![][19]
 8. Kattintson az **OK** gombra.
-9. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [webalkalmazás létrehozását](../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application) és az [Azure-erőforrások létrehozását](../app-service-web/web-sites-dotnet-get-started.md#create-the-azure-resources) ismertető szakasz lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+9. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [webalkalmazás létrehozását](../app-service-web/app-service-web-get-started-dotnet.md) és az [Azure-erőforrások létrehozását](../app-service-web/app-service-web-get-started-dotnet.md) ismertető szakasz lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 10. A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be a **Product.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     ![][17]
@@ -395,7 +395,7 @@ A **ProductsPortal** oldalon kattintson a **Frissítés** parancsra. Valahánysz
 Zárja be mindkét alkalmazást, mielőtt a következő lépéssel folytatná.
 
 ## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
-A következő lépés a **ProductsPortal** előtérkiszolgáló Azure-webalkalmazássá történő átalakítása. Először is telepítse a **ProductsPortal** projektet [a webes projekt az Azure-ba történő telepítését](../app-service-web/web-sites-dotnet-get-started.md#deploy-the-web-project-to-azure) ismertető szakaszban leírtak szerint. A telepítés befejezése után térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+A következő lépés a **ProductsPortal** előtérkiszolgáló Azure-webalkalmazássá történő átalakítása. Először is telepítse a **ProductsPortal** projektet [a webes projekt az Azure-ba történő telepítését](../app-service-web/app-service-web-get-started-dotnet.md) ismertető szakaszban leírtak szerint. A telepítés befejezése után térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 
 > [!NOTE]
 > Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.

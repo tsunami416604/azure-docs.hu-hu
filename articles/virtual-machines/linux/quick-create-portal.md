@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 04/03/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 8697ae51b5007cb50ac67accb5dafe48914af8ee
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 25ffd1c5bf289fa98a4b350eb916b386eee7f05c
+ms.lasthandoff: 04/06/2017
 
 ---
 
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Linux virtuális gép létrehozása az Azure Portal használatával
 
-Az Azure virtuális gépek létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Ez a rövid útmutató részletesen bemutatja egy virtuális gép Azure Portalon történő létrehozását. 
+Az Azure virtuális gépek létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Ez a rövid útmutató részletesen bemutatja egy virtuális gép Azure Portalon történő létrehozását.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
 
