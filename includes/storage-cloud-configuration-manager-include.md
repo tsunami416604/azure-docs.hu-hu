@@ -3,7 +3,7 @@ A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuge
 Adja hozzá a következő `using` utasítást, ha a CloudConfigurationManager csomagra kíván hivatkozni:
 
 ```csharp
-using Microsoft.Azure;    //Namespace for CloudConfigurationManager
+using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
 A következő példa bemutatja, hogyan kérhető le egy kapcsolati karakterlánc egy konfigurációs fájlból:
@@ -15,9 +15,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 ```
 
 Az Azure Configuration Manager használata nem kötelező. Használhat egy API-t is, például a .NET-keretrendszer [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) osztályát.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
