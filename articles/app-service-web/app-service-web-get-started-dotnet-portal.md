@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/10/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: fa3f31cdd708729071876ffad707bea70567da83
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 6b1dede903083d1771733330a069b6ab533d9f00
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -78,7 +78,7 @@ Szüksége van egy Microsoft Azure-fiókra. Ha nincs fiókja, [regisztráljon eg
 
     ![A konfiguráció kész – az első Umbraco-alkalmazás az Azure App Service-ben](./media/app-service-web-get-started-dotnet-portal/configure-complete.png)
 
-14. Kattintson a ** Create** (Létrehozás) gombra.
+14. Kattintson a **Create** (Létrehozás) gombra.
     
     Az Azure ekkor létrehozza az Umbraco-alkalmazást a konfiguráció alapján. A **Központi telepítés elindítva...** értesítést kell látnia
 
@@ -103,7 +103,7 @@ Ha az Azure befejezte az alkalmazás üzembe helyezését, megjelenik egy újabb
     ![Az Umbraco konfigurálása – az első Umbraco-alkalmazás az Azure App Service-ben](./media/app-service-web-get-started-dotnet-portal/umbraco-config.png)
     
 ## <a name="next-steps"></a>Következő lépések
-* [ASP.NET webapp telepítése az Azure App Service szolgáltatásba a Visual Studio használatával](web-sites-dotnet-get-started.md) – Megtudhatja, hogyan hozhat létre új Azure-webappot a Visual Studióból a mellékelt alkalmazássablonok használatával.
+* [ASP.NET webapp telepítése az Azure App Service szolgáltatásba a Visual Studio használatával](app-service-web-get-started-dotnet.md) – Megtudhatja, hogyan hozhat létre új Azure-webappot a Visual Studióból a mellékelt alkalmazássablonok használatával.
 * [A kód üzembe helyezése az Azure App Service-ben](web-sites-deploy.md) – Elsajátíthatja az FTP-ről vagy forráskezelő tárházból való üzembe helyezés készségét.
 * [Funkciók hozzáadása az első webapphoz](app-service-web-get-started-2.md) – Új szintre emelheti Azure alkalmazását. Hitelesítheti felhasználóit. Igény szerint méretezheti. Beállíthat a teljesítménnyel kapcsolatos riasztásokat. Mindezt csupán néhány kattintással.
 

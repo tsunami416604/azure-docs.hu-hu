@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/07/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 1fd8fe3847299d98a55a16ab400b43be074a5f33
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 0dbf6a121c07d7d1340898f51a38c3572e57b3a2
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -29,10 +29,11 @@ ms.lasthandoff: 03/21/2017
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
-> 
+>
 
 A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) segítségével, mint például a mappák létrehozása, adatfájlok le- és feltöltése stb. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
 
@@ -49,7 +50,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
 2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
-   
+
    | Tulajdonság | Érték |
    | --- | --- |
    | Kategória |Sablonok/Visual C#/Windows |
@@ -57,35 +58,35 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
    | Név |CreateADLApplication |
 4. A projekt létrehozásához kattintson az **OK** gombra.
 5. Adja hozzá a NuGet-csomagokat a projekthez.
-   
+
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
    2. Győződjön meg arról, hogy a **Nuget Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
    3. Keresse meg és telepítse az alábbi NuGet-csomagokat:
-      
-      * `Microsoft.Azure.Management.DataLake.Store` – Ez az oktatóanyag az&1;.0.4-es verziót használja.
-      * `Microsoft.Azure.Management.DataLake.StoreUploader` – Ez az oktatóanyag az&1;.0.1-preview verziót használja.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a&2;.2.11-es verziót használja.
-        
+
+      * `Microsoft.Azure.Management.DataLake.Store` – Ez az oktatóanyag az 1.0.4-es verziót használja.
+      * `Microsoft.Azure.Management.DataLake.StoreUploader` – Ez az oktatóanyag az 1.0.1-preview verziót használja.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a 2.2.11-es verziót használja.
+
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Új Azure Data Lake-fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
 6. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
-   
+
         using System;
         using System.IO;
     using System.Security.Cryptography.X509Certificates; // Csak akkor kötelező megadni, ha tanúsítványokkal létrehozott Azure AD-alkalmazást használ      using System.Threading;
-   
+
         using Microsoft.Azure.Management.DataLake.Store;
     using Microsoft.Azure.Management.DataLake.Store.Models;  using Microsoft.Azure.Management.DataLake.StoreUploader;  using Microsoft.IdentityModel.Clients.ActiveDirectory;  using Microsoft.Rest.Azure.Authentication;
 
 7. Deklarálja a változókat az alább látható módon, és adja meg a meglévő Data Lake Store és erőforráscsoport nevének értékét. Továbbá győződjön meg arról, hogy a megadott helyi elérési út és fájlnév létezik a számítógépen. Vegye fel a következő kódrészletet a névtér-deklarációk után.
-   
+
         namespace SdkSample
         {
             class Program
             {
                 private static DataLakeStoreAccountManagementClient _adlsClient;
                 private static DataLakeStoreFileSystemManagementClient _adlsFileSystemClient;
-   
+
                 private static string _adlsAccountName;
                 private static string _resourceGroupName;
                 private static string _location;
@@ -112,7 +113,7 @@ A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .
 
 ### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
 
-Ezt egy meglévő Azure AD natív alkalmazással használva **interaktív** módon hitelesítheti az alkalmazást, vagyis a rendszer az Azure-beli hitelesítő adatok megadását kéri. 
+Ezt egy meglévő Azure AD natív alkalmazással használva **interaktív** módon hitelesítheti az alkalmazást, vagyis a rendszer az Azure-beli hitelesítő adatok megadását kéri.
 
 Az egyszerű használat érdekében az alábbi kódrészletben alapértelmezett értékek vannak megadva az ügyfél-azonosítóhoz és az átirányítási URI-hez, amelyek bármely Azure-előfizetéssel működnek. Ha segítségre van szüksége az oktatóanyag gyorsabb teljesítéséhez, ennek a módszernek a használatát javasoljuk. Az alábbi kódrészletben csak adja meg a bérlőazonosító értékét. Ezt az [Active Directory-alkalmazás létrehozásával kapcsolatos](data-lake-store-end-user-authenticate-using-active-directory.md) szakaszban megadott útmutatás szerint kérheti le.
 
@@ -135,7 +136,7 @@ A következő kódrészlet használható az alkalmazás **nem interaktív hitele
     // Service principal / appplication authentication with client secret / key
     // Use the client ID of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-    
+
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
     var clientSecret = "<AAD-application-client-secret>";
@@ -143,12 +144,13 @@ A következő kódrészlet használható az alkalmazás **nem interaktív hitele
     var creds = await ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential);
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
-Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás **nem interaktív**, az Azure Active Directory-alkalmazás/egyszerű szolgáltatás tanúsítványával történő hitelesítésére. Ez [tanúsítványokkal rendelkező meglévő Azure AD-alkalmazásokhoz](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate) használható.
+
+Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás **nem interaktív**, az Azure Active Directory-alkalmazás/egyszerű szolgáltatás tanúsítványával történő hitelesítésére. Ez [tanúsítványokkal rendelkező meglévő Azure AD-alkalmazásokhoz](../azure-resource-manager/resource-group-authenticate-service-principal.md) használható.
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-    
+
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
     var clientCert = <AAD-application-client-certificate>
@@ -204,7 +206,7 @@ Az alábbi részlet egy `UploadFile` metódust mutat be, amely fájlok egy Data 
 A `DataLakeStoreUploader` támogatja a rekurzív fel- és letöltést egy helyi fájlelérési út és egy Data Lake Store-fájl elérési útja között.    
 
 ## <a name="get-file-or-directory-info"></a>Fájl vagy könyvtár adatainak lekérése
-Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Store-ban elérhető fájlok vagy könyvtárak adatainak lekérésére használható. 
+Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Store-ban elérhető fájlok vagy könyvtárak adatainak lekérésére használható.
 
     // Get file or directory info
     public static async Task<FileStatusProperties> GetItemInfo(string path)
@@ -222,7 +224,7 @@ Az alábbi részlet egy `ListItem` metódust mutat be, amely egy Data Lake Store
     }
 
 ## <a name="concatenate-files"></a>Fájlok összefűzése
-Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok összefűzésére használható. 
+Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok összefűzésére használható.
 
     // Concatenate files
     public static Task ConcatenateFiles(string[] srcFilePaths, string destFilePath)
@@ -261,5 +263,4 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [A Data Lake Store .NET SDK dokumentációja](https://msdn.microsoft.com/library/mt581387.aspx)
 * [A Data Lake Store REST dokumentációja](https://msdn.microsoft.com/library/mt693424.aspx)
-
 
