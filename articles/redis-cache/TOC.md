@@ -26,7 +26,7 @@
 ###[A gyorsítótár elosztása klaszterezéssel](cache-how-to-premium-clustering.md)
 ## Automatizálás
 ###[Üzembe helyezés és kezelés a Powershell-lel](cache-howto-manage-redis-cache-powershell.md)
-###[Üzembe helyezés és kezelés az Azure parancssori felület használatával](cache-manage-cli.md)
+###[Üzembe helyezés és kezelés az Azure parancssori felület használatával](cli-samples.md)
 ###[Redis Cache gyorsítótár üzembe helyezése](cache-redis-cache-arm-provision.md)
 ###[Webalkalmazás üzembe helyezése a Redis Cache használatával](cache-web-app-arm-with-redis-cache-provision.md)
 ## Integráció az ASP.NET-tel
@@ -57,9 +57,4 @@
 # Erőforrások
 ## [Redis Cache-minták](cache-redis-samples.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cache/)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

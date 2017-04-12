@@ -50,7 +50,7 @@
 ## Kezelés
 ### [Service Bus felügyeleti könyvtárak](service-bus-management-libraries.md)
 ### [Az Azure Resource Manager-sablonok használata](service-bus-resource-manager-overview.md)
-### [A PowerShell használata entitások üzembe helyezésére](service-bus-powershell-how-to-provision.md)
+### [A PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
 
 # Referencia
 ## .NET

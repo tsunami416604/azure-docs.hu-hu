@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 1/24/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 66832a5d3f10f370ad486269c566fc948fd72234
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6e52a647e817b64e331937c0b0f1d44f9f6c11a0
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -66,7 +66,7 @@ Ha az Azure Site Recovery portálról szeretne virtuális gépet védelemmel ell
 >
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V – Azure
-Ha az Azure Site Recovery portálról szeretne virtuális gépet védelemmel ellátni, kövesse a [Replikálás engedélyezése](site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication) munkafolyamatot. A munkafolyamat negyedik lépésében a **REPLIKÁLNI KÍVÁNT LEMEZ** oszlop használatával zárhat ki lemezeket a replikációból. Alapértelmezés szerint az összes lemez ki van jelölve replikációra. Törölje azoknak a lemezeknek a jelölését, amelyeket ki szeretne zárni a replikációból, majd végezze el a lépéseket a replikáció engedélyezéséhez.
+Ha az Azure Site Recovery portálról szeretne virtuális gépet védelemmel ellátni, kövesse a [Replikálás engedélyezése](site-recovery-hyper-v-site-to-azure.md#enable-replication) munkafolyamatot. A munkafolyamat negyedik lépésében a **REPLIKÁLNI KÍVÁNT LEMEZ** oszlop használatával zárhat ki lemezeket a replikációból. Alapértelmezés szerint az összes lemez ki van jelölve replikációra. Törölje azoknak a lemezeknek a jelölését, amelyeket ki szeretne zárni a replikációból, majd végezze el a lépéseket a replikáció engedélyezéséhez.
 
 ![Lemezek kizárása a replikációból és a Hyper-V replikációjának engedélyezése Azure-beli feladat-visszavételhez](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
@@ -96,7 +96,7 @@ A forrás virtuális gépen lévő lemezek a következők:
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
-DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és&1;. felhasználói adatbázis
+DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (a lemez ki lett zárva a védelemből) | Disk2 | E:\ | Ideiglenes fájlok
 DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) </br /> </br />a feladatátvétel előtt írja le a mappa elérési útját.
 DB-Disk4 | Disk4 |G:\ |2. felhasználói adatbázis
@@ -109,7 +109,7 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 --- | --- | ---
 DISK0 |    C:\ | Operációsrendszer-lemez
 Disk1 |    E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
-Disk2 | D:\ | SQL-rendszeradatbázis és&1;. felhasználói adatbázis
+Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
 Mivel a Disk2 és a Disk3 lemez ki lett zárva a SalesDB virtuális gépből, az E: az első elérhető meghajtóbetűjel a listában. Az Azure hozzárendeli az E: betűjelet az ideiglenes tárolókötethez. A meghajtó betűjelei minden replikált lemez esetében ugyanazok maradnak.
@@ -173,7 +173,7 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
 Disk1 |    E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
-Disk2 |    D:\ | SQL-rendszeradatbázis és&1;. felhasználói adatbázis
+Disk2 |    D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 |    G:\ | 2. felhasználói adatbázis
 
 
@@ -185,7 +185,7 @@ A tervezett, Azure-ból helyszíni VMware-re történő feladatátvétel után a
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 |    D:\ | SQL-rendszeradatbázis és&1;. felhasználói adatbázis
+Disk1 |    D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk2 |    G:\ | 2. felhasználói adatbázis
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V – Azure
@@ -196,7 +196,7 @@ A tervezett, Azure-ból helyszíni Hyper-V-re történő feladatátvétel után 
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |    C:\ | Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | SQL-rendszeradatbázis és&1;. felhasználói adatbázis
+DB-Disk1 | Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (kizárt lemez) | Disk2 | E:\ | Ideiglenes fájlok
 DB-Disk3 (kizárt lemez) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\)
 DB-Disk4 | Disk4 | G:\ | 2. felhasználói adatbázis

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: efb9e68256765873eb2776637d1a9469af6e46d6
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -28,6 +29,7 @@ ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
+> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -86,7 +88,7 @@ Ha az Azure Key Vaultban lévő kulcsokkal konfigurálta a titkosítást a Data 
    * Az első lehetőségnél kattintson az **Engedélyezés** gombra a hozzáférés konfigurálásához. Az első lehetőség csak akkor engedélyezett, ha a Data Lake Store-t létrehozó felhasználó egyben az Azure Key Vault rendszergazdája is.
    * A másik lehetőség a panelen megjelenő PowerShell parancsmag futtatása. Az Azure Key Vault tulajdonosának kell lennie, vagy képesnek kell lennie engedélyeket hozzárendelni az Azure Key Vaulton. A parancsmag futtatása után térjen vissza a panelre, és kattintson az **Engedélyezés** gombra a hozzáférés konfigurálásához.
 
-## <a name="a-namecreatefolderacreate-folders-in-azure-data-lake-store-account"></a><a name="createfolder"></a>Mappák létrehozása az Azure Data Lake Store-fiókban
+## <a name="createfolder"></a>Mappák létrehozása az Azure Data Lake Store-fiókban
 A Data Lake Store-fiókjában mappákat hozhat létre az adatok kezelésére és tárolására.
 
 1. Nyissa meg az imént létrehozott Data Lake Store-fiókot. A bal oldali ablaktáblában kattintson a **Browse** (Tallózás), **Data Lake Store** elemre, majd a Data Lake Store panelen kattintson a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
@@ -101,14 +103,14 @@ A Data Lake Store-fiókjában mappákat hozhat létre az adatok kezelésére és
    
     ![Mappák létrehozása a Data Lake-fiókban](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Mappák létrehozása a Data Lake-fiókban")
 
-## <a name="a-nameuploaddataaupload-data-to-azure-data-lake-store-account"></a><a name="uploaddata"></a>Adatok feltöltése az Azure Data Lake Store-fiókba
+## <a name="uploaddata"></a>Adatok feltöltése az Azure Data Lake Store-fiókba
 Adatait közvetlenül, gyökérszinten is feltöltheti az Azure Data Lake Store-fiókba, vagy a fiókon belül létrehozott mappába. Az alábbi képernyőfelvételen látható lépésekkel feltölthet egy fájlt egy almappába a **Data Explorer** (Adatkezelő) panelről. A képernyőfelvételen a fájl az útkövetésben jelölt almappába lesz feltöltve (vörös téglalappal kijelölve).
 
 Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
 
 ![Adatok feltöltése](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Adatok feltöltése")
 
-## <a name="a-namepropertiesaproperties-and-actions-available-on-the-stored-data"></a><a name="properties"></a>A tárolt adatokra vonatkozó tulajdonságok és műveletek
+## <a name="properties"></a>A tárolt adatokra vonatkozó tulajdonságok és műveletek
 Kattintson az újonnan hozzáadott fájlra a **Properties** (Tulajdonságok) panel megnyitásához. Ezen a panelen érhetők el a fájlhoz kapcsolódó tulajdonságok és a rajta a panelben elvégezhető műveletek. Másolhatja az Azure Data Lake Store-fiókban lévő fájl teljes elérési útját is, amely az alábbi képernyőfelvételen vörös téglalappal van kijelölve.
 
 ![Az adatok tulajdonságai](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Az adatok tulajdonságai")
@@ -133,10 +135,5 @@ Az Azure Data Lake Store-fiók törléséhez kattintson a **Delete** (Törlés) 
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [A Data Lake Store diagnosztikai naplóinak elérése](data-lake-store-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

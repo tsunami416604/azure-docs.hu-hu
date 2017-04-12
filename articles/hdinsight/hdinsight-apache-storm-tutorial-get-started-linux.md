@@ -17,9 +17,9 @@ ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 5d74f2c130eeddb1022acf9673c6a2006af2db58
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
+ms.openlocfilehash: 4787928ed066b9aed51a8512deeda6cd49897d82
+ms.lasthandoff: 04/11/2017
 
 ---
 #<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Ismerkedés a Storm Starter-mintákkal Linux-alapú HDInsight platformon történő big data-elemzéshez
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/25/2017
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
 > [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépéseket:
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **+ ÚJ**, **Intelligencia és analitika**, majd a **HDInsight** elemet.
-   
+
     ![HDInsight-fürt létrehozása](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
 2. Az **Alapvető beállítások** panelen adja meg a következőket:
@@ -57,11 +57,11 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
     * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
-   
+
     ![Előfizetés kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
 3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
-   
+
     * **Fürt típusa**: Storm
 
     * **Operációs rendszer**: Linux
@@ -69,9 +69,9 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     * **Verzió**: Storm 1.0.1 (HDI 3.5)
 
     * **Fürt szintje**: Standard
-     
+
     Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
-     
+
     ![Fürttípus kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
 4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
@@ -81,34 +81,34 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
 6. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
-   
+
     ![A fürtkonfiguráció összegzése](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
-   
+
     > [!NOTE]
     > A fürt létrehozása 20 percig is eltarthat.
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Storm Starter-minta futtatása HDInsight platformon
 
 1. Csatlakozzon SSH-val a HDInsight-fürthöz:
-   
+
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-   
+
     Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Például: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
-   
+
     További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Használja az alábbi parancsot példatopológia indításához:
-   
+
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
-   
+
     > [!NOTE]
     > A HDInsight előző verzióiban a topológia osztályneve `org.apache.storm.starter.WordCountTopology` helyett `storm.starter.WordCountTopology`.
-   
+
     Ez a parancs a „wordcount” rövid néven elindítja a fürtön a WordCount-példatopológiát. Ez véletlenszerűen állít elő mondatokat, majd az egyes szavak előfordulását számolja meg a mondatokban.
-   
+
     > [!NOTE]
     > A saját topológiák a fürtre történő elküldésekor a fürtöket tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. A fájl másolásához használja az `scp` parancsot. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
-    > 
+    >
     > A WordCount-példa és egyéb Storm Starter-példák megtalálhatóak a fürtön a következő helyen: `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
 Ha szeretné megtekinteni a Storm Starter-példák forráskódját, a [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter) helyen találja azokat. A hivatkozás a Storm 1.0.x-es verzió példáira mutat, amely a HDInsight 3.5-ben érhető el. A Storm egyéb verziói esetében használja a __Branch__ (Ág) gombot a lap tetején egy másik Storm-verzió kiválasztásához.
@@ -120,58 +120,58 @@ A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít 
 Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületével történő figyeléséhez:
 
 1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a következőt: https://CLUSTERNAME.azurehdinsight.net/stormui. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
-    
+
     > [!NOTE]
     > Ha a rendszer felkéri a felhasználónév és a jelszó megadására, a fürt létrehozásakor használt fürtrendszergazda (rendszergazda) nevét és jelszavát adja meg.
 
 2. A **Topology summary** (Topológia összegzése) területen válassza ki a **wordcount** bejegyzést a **Name** (Név) oszlopban. Megjelennek a topológiával kapcsolatos információk.
-    
+
     ![A Storm irányítópultja a Storm Starter WordCount-topológiával kapcsolatos információkkal.](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
-    
+
     Ezen a lapon az alábbi információk találhatóak meg:
-    
+
     * **Topológiastatisztikák** – Alapszintű információkat tartalmaz a topológia teljesítményével kapcsolatban, időtartományokba rendezve.
-     
+
         > [!NOTE]
         > Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.
 
     * **Spoutok** – Alapszintű információkat tartalmaz a spoutokkal kapcsolatban, beleértve az egyes spoutok által visszaadott legutóbbi hibaüzenetet is.
-    
+
     * **Boltok** – Alapszintű információkat tartalmaz a boltokkal kapcsolatban.
-    
+
     * **Topológiakonfiguráció** – Részletes információkat tartalmaz a topológia konfigurációjával kapcsolatban.
-     
+
     Ezen a lapon a következő topológiaműveletek szerepelnek:
-   
+
     * **Aktiválás** – Folytatja az inaktivált topológia feldolgozását.
-    
+
     * **Inaktiválás** – Megszakítja a futó topológiát.
-    
+
     * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információ: [Understanding the parallelism of a Storm topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (A Storm-topológia párhuzamosságának ismertetése).
-    
+
     * **Törlés** – A Storm-topológia leállítása bizonyos időtúllépést követően.
 
 3. Válassza ki a jelen lapon található **Spoutok** vagy **Boltok** szakaszok bejegyzéseinek egyikét. Ekkor információk jelennek meg a kiválasztott összetevővel kapcsolatban.
-   
+
     ![A Storm irányítópultja a kiválasztott összetevőkkel kapcsolatos információkkal.](./media/hdinsight-apache-storm-tutorial-get-started-linux/component-summary.png)
-   
+
     Ezen a lapon az alábbi információk találhatóak meg:
-   
+
     * **Spout-/Bolt-statisztikák** – Alapszintű információkat tartalmaz az egyes összetevők teljesítményével kapcsolatban, időtartományokba rendezve.
-     
+
         > [!NOTE]
         > Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.
-     
+
     * **Beviteli statisztikák** (csak boltok esetében) – Információkat tartalmaz a bolt által feldolgozott adatokat előállító összetevőkről.
-    
+
     * **Kimeneti statisztikák** – Információkat tartalmaz a bolt által kibocsátott adatokról.
-    
+
     * **Végrehajtók** – Információkat tartalmaz a jelen összetevő példányairól.
-    
+
     * **Hibák** – A jelen összetevő által visszaadott hibaüzenetek.
 
 4. Egy adott spout vagy bolt részletes adatainak megtekintésekor az összetevők adott példánya részletes adatainak megtekintéséhez jelöljön ki egy bejegyzést a **Port** oszlopból az **Executors** (Végrehajtók) szakaszban.
-   
+
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
@@ -180,7 +180,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
-   
+
     Ebben a példában a **seven** szó 1 493 957 alkalommal fordul elő. A szó előfordulásainak számlálása a topológia indításától kezdve történik.
 
 ## <a name="stop-the-topology"></a>A topológia leállítása
