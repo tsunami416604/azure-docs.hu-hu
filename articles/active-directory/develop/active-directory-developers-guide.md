@@ -95,6 +95,7 @@ Ezek a cikkek a REST és hitelesítési kódtár API-k, protokollok, hibák, kó
 > [!IMPORTANT]
 > Az Azure AD Graph API helyett ajánljuk a [Microsoft Graph](https://graph.microsoft.io/) használatát az Azure Active Directory erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott azon forgatókönyvek száma, amelyeknél az Azure AD Graph API használata még elegendő. További információért tekintse meg a [Microsoft Graph vagy Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.
 > 
+
 * [Microsoft Graph](https://graph.microsoft.io/): Dokumentáció, referencia, minták és SDK-k a Microsoft Graph-hoz. 
 * [Azure AD Graph API-referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog): REST-referencia az Azure Active Directory Graph API-hoz. 
 * [Azure AD Graph API-engedélyhatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): Olyan OAuth 2.0-engedélyhatókörök, amelyekkel az alkalmazások hozzáférése vezérelhető a bérlőkben lévő címtáradatokhoz.
