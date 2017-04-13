@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/09/2017
+ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
@@ -78,7 +78,7 @@ Az alapértelmezett beállítások szerint a munkaterületet létrehozó Microso
 A Log Analytics-munkaterületekhez történő hozzáférés két engedélyezési modellel szabályozható:
 
 1. Örökölt Log Analytics felhasználói szerepkörök
-2. [Azure szerepkör-alapú hozzáférés](../active-directory/role-based-access-control-configure.md) 
+2. [Azure szerepkör-alapú hozzáférés](../active-directory/role-based-access-control-configure.md)
 
 Az alábbi táblázat az egyes engedélyezési modellekkel beállítható hozzáféréseket foglalja össze:
 
@@ -101,13 +101,14 @@ A Log Analytics-portál alábbi tevékenységei szintén Azure-engedélyeket ig�
 | Felügyeleti megoldások hozzáadása és eltávolítása                        | Erőforráscsoport írása <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | Tarifacsomag módosítása                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Adatok megtekintése a *Backup* és a *Site Recovery* megoldások csempéin | Rendszergazda / Társadminisztrátor | A klasszikus üzemi modellel üzembe helyezett erőforrásokhoz fér hozzá |
- 
+
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
 Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
 
 Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg az OMS-portált a Log Analytics-munkaterület megtekintésekor.
 
-A Log Analytics-portál megnyitásával átvált a korábbi Log Analytics felhasználói szerepkörök használatára. Ha nem rendelkezik szerepkör-hozzárendeléssel a Log Analytics-portálon, a szolgáltatás [ellenőrzi a munkaterületre érvényes Azure-engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource). A Log Analytics-portálon érvényes szerepkör-hozzárendelés meghatározása a következők használatával történik:
+A Log Analytics-portál megnyitásával átvált a korábbi Log Analytics felhasználói szerepkörök használatára. Ha nem rendelkezik szerepkör-hozzárendeléssel a Log Analytics-portálon, a szolgáltatás [ellenőrzi a munkaterületre érvényes Azure-engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
+A Log Analytics-portálon érvényes szerepkör-hozzárendelés meghatározása a következők használatával történik:
 
 | Feltételek                                                   | Hozzárendelt Log Analytics-beli felhasználói szerepkör | Megjegyzések |
 |--------------------------------------------------------------|----------------------------------|-------|
@@ -119,7 +120,7 @@ A Log Analytics-portál megnyitásával átvált a korábbi Log Analytics felhas
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Rendszergazda | Jellemzően egy felhőszolgáltató ügyfele |
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Közreműködő | Jellemzően a felhőszolgáltató |
 
-<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../active-directory/role-based-access-control-custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek. 
+<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../active-directory/role-based-access-control-custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek.
 
 Néhány dolog, amit érdemes észben tartani az Azure Portal kapcsán:
 
