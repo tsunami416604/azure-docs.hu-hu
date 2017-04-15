@@ -103,6 +103,7 @@
 #### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
+#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
 
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
@@ -110,6 +111,7 @@
 #### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
+#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
 
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
@@ -138,54 +140,13 @@
 ### [Szimuláció Linux rendszeren](iot-hub-linux-gateway-sdk-get-started.md)
 ### [Szimuláció Windows rendszeren](iot-hub-windows-gateway-sdk-get-started.md)
 
+
 ## Az IoT Gateway Starter Kit használata
-### [Szimulált eszköz](iot-hub-gateway-kit-c-sim-get-started.md)
-#### 1. lecke: A NUC konfigurálása
-##### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
+### Az IoT Gateway Starter Kit konfigurálása
+#### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+#### [Az IoT Hub és az IoT-átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+#### [Az IoT-átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-#### 2. lecke: Az IoT hub létrehozása
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
-##### [IoT Hub létrehozása és az eszköz regisztrálása](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
-
-#### 3. lecke: Üzenet fogadása a szimulált eszközről
-##### [A BLE-mintaalkalmazás konfigurálása és futtatása](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
-##### [Üzenetek olvasása az IoT Hubról](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
-
-#### 4. lecke: Üzenetek mentése az Azure Table Storage szolgáltatásba
-##### [Azure-függvényalkalmazás és Azure Storage-fiók létrehozása](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
-##### [Az Azure Table Storage szolgáltatásban őrzött üzenetek olvasása](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
-
-#### [5. lecke: Az első Azure IoT-átjárómodul létrehozása](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-#### [hibaelhárítással](iot-hub-gateway-kit-c-sim-troubleshooting.md)
-
-### [SensorTag-eszköz](iot-hub-gateway-kit-c-get-started.md)
-#### 1. lecke: A NUC konfigurálása
-##### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-
-#### 2. lecke: Az IoT hub létrehozása
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-gateway-kit-c-lesson2-get-the-tools-mac.md)
-##### [IoT Hub létrehozása és az eszköz regisztrálása](iot-hub-gateway-kit-c-lesson2-register-device.md)
-
-#### 3. lecke: Üzenet fogadása a szimulált eszközről
-##### [A BLE-mintaalkalmazás konfigurálása és futtatása](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
-##### [Üzenetek olvasása az IoT Hubról](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
-
-#### 4. lecke: Üzenetek mentése az Azure Table Storage szolgáltatásba
-##### [Azure-függvényalkalmazás és Azure Storage-fiók létrehozása](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
-##### [Az Azure Table Storage szolgáltatásban őrzött üzenetek olvasása](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
-
-#### [5. lecke: Az első Azure IoT-átjárómodul létrehozása](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
-
-##### [hibaelhárítással](iot-hub-gateway-kit-c-troubleshooting.md)
-
-## [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
-### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
-### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
 
 # Útmutató
 ## Felkészülés
@@ -211,6 +172,9 @@
 #### [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
 #### [MQTT-támogatás](iot-hub-mqtt-support.md)
 #### [Szószedet](iot-hub-devguide-glossary.md)
+### [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
+#### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
+#### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
 ### Eszközről felhőbe irányuló üzenetek feldolgozása
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
@@ -268,8 +232,8 @@
 ## [Azure CLI 2.0 előzetes verzió](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
-## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.iot.service.auth)
-## [Java (Eszközök)](/java/api/com.microsoft.azure.iothub)
+## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.sdk.iot.service)
+## [Java (Eszközök)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Azure IoT SDK-k](http://azure.github.io/azure-iot-sdks/)
 ## [Átjáró SDK](http://azure.github.io/azure-iot-gateway-sdk)
 ## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)

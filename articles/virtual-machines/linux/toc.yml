@@ -39,6 +39,8 @@
     href: azure-vm-network-overview.md
   - name: "Virtuális gépek méretezési csoportjai"
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
+  - name: "Példány-metaadat szolgáltatás" 
+    href: ../virtual-machines-instancemetadataservice-overview.md
   - name: "Tárolók"
     href: containers.md
   - name: "Resource Manager"

@@ -30,6 +30,7 @@
 ### [Tárolókezelés – Kubernetes felhasználói felület](container-service-kubernetes-ui.md)
 ### [Terheléselosztó Kubernetes-tárolók](container-service-kubernetes-load-balancing.md)
 ### [Jenkins-integráció az ACS Kubernetessel](container-service-kubernetes-jenkins.md)
+### [Helm-diagramok központi telepítése](container-service-kubernetes-helm.md)
 ### Kubernetes figyelése
 #### [Figyelés az OMS-szel](container-service-kubernetes-oms.md)
 #### [Figyelés a Datadoggal](container-service-kubernetes-datadog.md)

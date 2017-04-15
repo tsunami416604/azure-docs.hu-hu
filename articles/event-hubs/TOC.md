@@ -18,10 +18,13 @@
 
 # Útmutató
 ## Tervezés és kialakítás
+### [🔧 Gyakori integrációs forgatókönyvek az Azure-szolgáltatások használatával](event-hubs-common-integrations.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
 ## Fejlesztés
+### [🔧 Hibakezelés és újrapróbálkozás](event-hubs-handling-errors-retry.md)
+### [🔧 Teljesítmény- és méretkezelés](event-hubs-performance-scale.md)
 ### [Elérhető API-k](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET-keretrendszer](event-hubs-dotnet-framework-api-overview.md)
@@ -34,6 +37,7 @@
 #### [Az Event Hubs archívum](event-hubs-archive-overview.md)
 #### [Az Event Hubs Archívum engedélyezése sablonnal](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
 #### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
+### [A PowerShell használata entitások üzembe helyezésére](event-hubs-manage-with-ps.md) 
 ### [Azure Diagnostics-adatok streamelése az Event Hubs használatával](event-hubs-streaming-azure-diags-data.md)
 ### [Event Hub-eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
 
@@ -58,8 +62,3 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

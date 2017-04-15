@@ -8,6 +8,7 @@
 ## Bevezetés
 ### [Üzembe helyezési előfeltételek](azure-stack-deploy.md)
 ### [Üzembe helyezés](azure-stack-run-powershell-script.md)
+### [Portálok aktiválása](azure-stack-run-powershell-script.md#activate-the-administrator-and-tenant-portals)
 ### [Regisztrálás](azure-stack-register.md)
 ## Útmutató
 ### [Csatlakozás az Azure Stack POC-hez](azure-stack-connect-azure-stack.md)
@@ -56,6 +57,7 @@
 #### [Az Azure Stack App Service áttekintése](azure-stack-app-service-overview.md)
 #### [A kezdés előtt](azure-stack-app-service-before-you-get-started.md)
 #### [App Service erőforrás-szolgáltató üzembe helyezése](azure-stack-app-service-deploy.md)
+#### [App Service-szolgáltatások kapcsolat nélküli üzembe helyezése](azure-stack-app-service-deploy-offline.md)
 #### [További webes feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md)
 #### [Központi telepítés forrásának konfigurálása](azure-stack-app-service-configure-deployment-sources.md)
 #### [FTP engedélyezése az Azure Stack App Service szolgáltatásában](azure-stack-app-service-enable-ftp.md)
@@ -80,7 +82,7 @@
 ### [Áttekintés](azure-stack-storage-overview.md)
 ### [Különbségek és szempontok](azure-stack-acs-differences-tp2.md)
 ## Network (Hálózat)
-### [iDNS az Azure Stackhez](azure-stack-understanding-dns-in-tp2.md)
+### [iDNS az Azure Stackhez](azure-stack-understanding-dns.md)
 ### [DNS az Azure Stackben](azure-stack-dns.md)
 ### [Helyek közötti VPN-kapcsolatok ismertetése](azure-stack-create-vpn-connection-one-node-tp2.md)
 ## Key Vault

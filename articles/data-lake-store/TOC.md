@@ -11,6 +11,7 @@
 ## [A Java SDK használata](data-lake-store-get-started-java-sdk.md)
 ## [A REST API használata](data-lake-store-get-started-rest-api.md)
 ## [Az Azure parancssori felület használata](data-lake-store-get-started-cli.md)
+## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
 ## [A Node.js használata](data-lake-store-manage-use-nodejs.md)
 ## [A Python használata](data-lake-store-get-started-python.md)
 
@@ -49,6 +50,7 @@
 ### [Használat a Power BI-jal](data-lake-store-power-bi.md)
 ### [Használat a Data Cataloggal](data-lake-store-with-data-catalog.md)
 ### [Használat a PolyBase-zel az SQL Data Warehouse-ban](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)
+### [Használat az SQL Server integrációs szolgáltatásaival](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [További Azure-integrálási lehetőségek](data-lake-store-integrate-with-other-services.md)
 
 ## Kezelés
@@ -63,6 +65,7 @@
 ## [Python (Fiókkezelés)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (Fájlrendszer-kezelés)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # Erőforrások
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-store)
