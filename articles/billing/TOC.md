@@ -1,6 +1,7 @@
 # Bevezetés
 ## [Váratlan költségek megelőzése](billing-getting-started.md)
 ## [Regisztrálás Office 365-fiókkal](billing-use-existing-office-365-account-azure-subscription.md)
+## [Regisztrálás az Office 365-be Azure-fiókkal](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [Korlátozások és kvóták](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 # Útmutató
 ## Használat és költségek figyelése
@@ -33,8 +34,3 @@
 
 # Erőforrások
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../azure-supportability/how-to-create-azure-support-request.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

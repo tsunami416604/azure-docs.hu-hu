@@ -16,6 +16,11 @@
 ### [Hibaelhárítás és figyelés](troubleshooting-monitoring.md)
 ### [Egyetlen példánnyal rendelkező SAP HANA](hana-get-started.md)
 ### [Üzembe helyezési útmutató a következőhöz: S/4 HANA vagy BW/4 HANA](cal-s4h.md)
+### Biztonsági mentés
+#### [Áttekintés](sap-hana-backup-guide.md)
+#### [Fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
+#### [Storage Snapshots](sap-hana-backup-storage-snapshots.md)
+
 ## SAP NetWeaver
 ### [Áttekintés és architektúra](suse-quickstart.md)
 ### [Tervezés és megvalósítás](planning-guide.md)

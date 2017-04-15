@@ -30,7 +30,6 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
-### [Developer Analytics, az Application Insights és a HockeyApp szolgáltatással](app-insights-developer-analytics.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
 ### [Használatelemzés az Application Insights szolgáltatással](app-insights-overview-usage.md)
 ### [Application Insights-erőforrások elválasztása](app-insights-separate-resources.md)
@@ -39,6 +38,7 @@
 
 ## Konfigurálás
 ### Azure
+#### [Profilkészítő](app-insights-profiler.md)
 #### [Diagnosztika](app-insights-azure-diagnostics.md)
 
 ### ASP.NET
@@ -139,11 +139,6 @@
 
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-insights/)  
 
-## [Kódminták és útmutatók](app-insights-code-samples.md)
-### [Útmutatás: Telemetria engedélyezése a Microsoft Dynamics CRM Online-hoz](app-insights-sample-mscrm.md)
-### [Útmutatás: SQL-exportálás a Stream Analytics használatával](app-insights-code-sample-export-sql-stream-analytics.md)
-### [Kódminta: az exportált adatok elemzése](app-insights-code-sample-export-telemetry-sql-database.md)
-
 ## Hírek
 
 ### [Blog](https://azure.microsoft.com/blog/tag/application-insights/)
@@ -156,7 +151,7 @@
 ### [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [User Voice](https://visualstudio.uservoice.com/forums/357324-application-insights)
-### [Támogatás](app-insights-get-dev-support.md)
+### [Támogatás](https://azure.microsoft.com/support/)
 
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
 

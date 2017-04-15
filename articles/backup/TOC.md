@@ -19,6 +19,7 @@
 ## Azure Backup Server
 ### [Azure Backup Server számítási feladatainak előkészítése az Azure Portalon](backup-azure-microsoft-azure-backup.md)
 ### [Azure Backup Server számítási feladatainak előkészítése a klasszikus portálon](backup-azure-microsoft-azure-backup-classic.md)
+### [VMware-kiszolgáló biztonsági mentése az Azure Backup Server használatával](backup-azure-backup-server-vmware.md)
 ### [Az Exchange biztonsági mentése az Azure Backup Server használatával](backup-azure-exchange-mabs.md)
 ### [SharePoint-farm biztonsági mentése az Azure Backup Server használatával](backup-azure-backup-sharepoint-mabs.md)
 ### [Az SQL biztonsági mentése az Azure Backup Server használatával](backup-azure-sql-mabs.md)

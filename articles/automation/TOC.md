@@ -1,16 +1,17 @@
 # Áttekintés
 ## [Mi az Azure Automation?](automation-intro.md)
 # Bevezetés
-## [Runbook létrehozása](automation-first-runbook-graphical.md)
-## [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
-## [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
-## [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
+## Runbook-oktatóanyag
+### [Grafikus runbook létrehozása](automation-first-runbook-graphical.md)
+### [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
+### [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
 # Útmutató
-## Hitelesítés beállítása
+## Hitelesítés és biztonság
 ### [Hitelesítés az Azure Automationben](automation-security-overview.md)
-### [Azure-beli futtató fiók](automation-sec-configure-azure-runas-account.md)
-### [Azure Service Management és Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon webszolgáltatások](automation-sec-configure-aws-account.md)
+### [Azure-beli futtató fiók konfigurálása](automation-sec-configure-azure-runas-account.md)
+### [Azure AD felhasználói fiók konfigurálása](automation-sec-configure-aduser-account.md)
+### [Hitelesítés beállítása az AWS használatával](automation-sec-configure-aws-account.md)
+### [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
 ## Runbookok létrehozása
 ### [Runbook-típusok](automation-runbook-types.md)
 ### [Runbookok létrehozása és importálása](automation-creating-importing-runbook.md)

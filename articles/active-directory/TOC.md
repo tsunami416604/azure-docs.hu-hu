@@ -81,6 +81,7 @@
 ### [Nevesített hálózatok](active-directory-known-networks-azure-portal.md)
 ### [Jelentések migrálása](active-directory-reporting-migration.md)
 ### [Megőrzés](active-directory-reporting-retention.md)
+### [Késések](active-directory-reporting-latencies-azure-portal.md)
 ### [Gyakori kérdések](active-directory-reporting-faq.md)
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
@@ -109,8 +110,9 @@
 ##### [Rendellenes bejelentkezések](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [Jelszavak kezelése](active-directory-manage-passwords.md)
-### [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
-### [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-passwords.md)
+### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
+### [Rendszergazdák által engedélyezett önkiszolgáló jelszó-visszaállítás](active-directory-passwords.md)
 ### [A jelszókezeléssel kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
 ### [A szabályzatokkal és a korlátozásokkal kapcsolatos tudnivalók](active-directory-passwords-policy.md)
 ### Új jelszavak létrehozása
@@ -155,19 +157,12 @@
 ### [Távoli hozzáférés biztosítása az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
 #### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 #### [Az összekötők ismertetése](application-proxy-understand-connectors.md)
-
-#### Alkalmazások közzététele
-##### [Azure Portal](application-proxy-publish-azure-portal.md)
-##### [Klasszikus portál](active-directory-application-proxy-publish.md)
-
+#### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
 #### [Biztonság](application-proxy-security-considerations.md)
 #### [Hálózatok](application-proxy-network-topology-considerations.md)
 #### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 #### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-
-#### Közzététel külön hálózatokon
-##### [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Klasszikus portál](active-directory-application-proxy-connectors.md)
+#### [Közzététel külön hálózatokon](active-directory-application-proxy-connectors-azure-portal.md)
 #### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
 #### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
 #### [Hozzáférés az alkalmazásokhoz](active-directory-appssoaccess-whatis.md)
@@ -181,6 +176,11 @@
 #### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
 #### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
+#### A klasszikus portál használata
+##### [Letöltési összekötők](application-proxy-enable-classic-portal.md)
+##### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
+##### [Összekötők használata](active-directory-application-proxy-connectors.md)
+
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)
@@ -200,8 +200,21 @@
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
 #### [Bérlőkorlátozások](active-directory-tenant-restrictions.md)
+#### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
 
-### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
+### [Hibaelhárítás](active-directory-application-troubleshoot-content-map.md)
+#### Alkalmazásfejlesztés
+##### [Konfigurálás és regisztráció](active-directory-application-dev-config-content-map.md)
+##### [Fejlesztés](active-directory-application-dev-development-content-map.md)
+#### Alkalmazáskezelés
+##### [Konfigurálás](active-directory-application-config-content-map.md)
+##### [Bejelentkezés](active-directory-application-sign-in-content-map.md)
+##### [Kiépítés](active-directory-application-provisioning-content-map.md)
+##### [Hozzáférés-kezelés](active-directory-application-access-content-map.md)
+##### [Hozzáférési panel](active-directory-application-access-panel-content-map.md)
+##### [Alkalmazásproxy](active-directory-application-proxy-content-map.md)
+##### [Feltételes hozzáférés](active-directory-application-conditional-access-content-map.md)
+
 ### [Dokumentumtár](active-directory-apps-index.md)
 
 ## Címtár kezelése
@@ -315,6 +328,12 @@
 ### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
 
 ## [Hibaelhárítás](active-directory-troubleshooting.md)
+
+## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
+### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)
+### [PoC-útmutató: Kellékek](active-directory-playbook-ingredients.md)
+### [PoC-útmutató: Megvalósítás](active-directory-playbook-implementation.md)
+### [PoC-útmutató: Építőelemek](active-directory-playbook-building-blocks.md)
 
 
 # Referencia

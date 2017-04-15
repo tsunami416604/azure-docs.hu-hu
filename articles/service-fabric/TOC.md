@@ -17,6 +17,7 @@
 ### [Java Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
+## [Önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
 
 # Útmutató
 ## Alkalmazás készítése
@@ -145,6 +146,7 @@
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+#### [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 ### [Az alkalmazásfrissítés áttekintése](service-fabric-application-upgrade.md)
 ### [Az alkalmazásfrissítés konfigurálása](service-fabric-visualstudio-configure-upgrade.md)
 ### [Alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md)
@@ -208,9 +210,9 @@
 ### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
 
 # Referencia
-## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
-## [Java API](/java/api/microsoft.servicefabric.services)
-## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [PowerShell](/powershell/module/ServiceFabric/)
+## [Java API](/java/api/)
+## [.NET](/dotnet/api/)
 ## [REST](/rest/api/servicefabric)
 
 # Erőforrások

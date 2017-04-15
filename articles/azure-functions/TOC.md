@@ -29,13 +29,13 @@
 ##### [Táblakötések](functions-bindings-storage-table.md)
 #### [Időzítő eseményindító](functions-bindings-timer.md)
 #### [Twilio kimeneti kötése](functions-bindings-twilio.md)
+### [Functions-proxyk megadása](functions-proxies.md)
 ### [Függvényalkalmazás létrehozása az Azure Portal használatával](functions-create-function-app-portal.md) 
+### [Ütemezett karbantartási feladatok végrehajtása](functions-scenario-database-table-cleanup.md)
 ### [Az Azure Functions tesztelése](functions-test-a-function.md)
 ### [Helyi fejlesztés és hibakeresés](functions-run-local.md)
 ### [Azure Functions – ajánlott eljárások](functions-best-practices.md)
-### [Az Azure Functions használata ütemezett karbantartási feladatok végrehajtásához](functions-scenario-database-table-cleanup.md)
-### [OpenAPI definíció létrehozása (előnézet)](functions-api-definition-getting-started.md)
-#### [OpenAPI 2.0 a Függvényreferenciában](functions-api-definition.md)
+### [OpenAPI definíció létrehozása](functions-api-definition-getting-started.md)
 
 ## Kezelés
 ### [Függvényalkalmazás beállításainak konfigurálása](functions-how-to-use-azure-function-app-settings.md)

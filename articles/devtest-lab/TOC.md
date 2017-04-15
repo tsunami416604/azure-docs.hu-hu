@@ -27,7 +27,7 @@
 
 ## Virtuálisgép-adatbázisok és -sablonok kezelése
 ### [Igényelhető virtuális gép létrehozása](devtest-lab-add-claimable-vm.md)
-### [Több virtuális gépes környezet létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
+### [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
 ### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
 ### [Képek és képletek összehasonlítása](devtest-lab-comparing-vm-base-image-types.md)
 ### [Képletek kezelése](devtest-lab-manage-formulas.md)

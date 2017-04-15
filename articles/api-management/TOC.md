@@ -45,6 +45,7 @@
 ### [Kezelés automatizálással](automation-manage-api-management.md)
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
 ### [Megfigyelés az Azure Monitor használatával](api-management-howto-use-azure-monitor.md)
+### [Szerepköralapú hozzáférés-vezérlés alkalmazása](api-management-role-based-access-control.md)
 # Referencia
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST](/rest/api/apimanagement/)

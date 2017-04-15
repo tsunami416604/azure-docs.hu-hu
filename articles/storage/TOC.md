@@ -79,6 +79,7 @@
 ### [Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről](storage-faq-for-disks.md)
 ### Prémium szintű Storage
 #### [Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez](storage-premium-storage.md)
+#### [Áttelepítés a Premium Storage-ba az Azure Site Recovery használatával](storage-migrate-to-premium-storage-using-azure-site-recovery.md)
 #### [Nagy teljesítményű rendszer tervezése](storage-premium-storage-performance.md)
 ### Standard szintű Storage
 #### [Költséghatékony Standard Storage, valamint nem felügyelt és felügyelt virtuálisgép-lemezek](storage-standard-storage.md)

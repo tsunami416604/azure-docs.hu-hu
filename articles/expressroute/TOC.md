@@ -14,7 +14,7 @@
 ## [Útválasztási követelmények](expressroute-routing.md)
 ## [NAT-követelmények](expressroute-nat.md)
 ## [QoS-követelmények](expressroute-qos.md)
-## [A kapcsolatcsoportok áthelyezése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
+## [Információk a kapcsolatcsoportok módosításáról klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
 
 # Útmutató
 ## Kapcsolatcsoport létrehozása és módosítása
@@ -29,6 +29,7 @@
 ## [Az ExpressRoute virtuális hálózati átjáróinak konfigurálása](expressroute-howto-add-gateway-resource-manager.md)
 ## [Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md)
 ## [Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
+## [Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 ## Útválasztó konfigurálása ExpressRoute-hoz
 ### [Útválasztó konfigurálása](expressroute-config-samples-routing.md)
 ### [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
