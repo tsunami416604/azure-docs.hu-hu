@@ -1,17 +1,12 @@
-1. A portál **Minden erőforrás** területén kattintson a **+Hozzáadás** gombra. A **Mindenben** panel keresőmezőjébe írja be a **Helyi hálózati átjáró** kifejezést, majd kattintson a keresés gombra. Ez visszaad egy listát. Kattintson a **Helyi hálózati átjáró** elemre a panel megnyitásához, majd kattintson a **Létrehozás** elemre a **Helyi hálózati átjáró létrehozása** panel megnyitásához.
+1. In the portal, from **All resources**, click **+Add**. In the **Everything** blade search box, type **Local network gateway**, then click to return a list of resources. Click **Local network gateway** to open the blade, then click **Create** to open the **Create local network gateway** blade.
    
-    ![helyi hálózati átjáró létrehozása](./media/vpn-gateway-add-lng-rm-portal-include/newlng.png)
+    ![create local network gateway](./media/vpn-gateway-add-lng-rm-portal-include/lng.png)
 
-2. A **Helyi hálózati átjáró létrehozása** panelen adjon meg egy **Nevet** a helyi hálózati átjáróobjektumnak.
-3. Adjon meg egy érvényes nyilvános **IP-címet** azon VPN-eszköz vagy virtuális hálózati átjáró számára, amelyhez csatlakozni kíván.<br>Ha a helyi hálózat egy helyszíni helyet képvisel, ez az IP-cím annak a VPN-eszköznek az IP-címe, amelyhez csatlakozni kíván. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára.<br>Ha a helyi hálózat egy másik virtuális hálózatot képvisel, akkor a virtuális hálózat virtuális hálózati átjárójához rendelt nyilvános IP-címet kell megadnia.<br>
-4. A **Címtartomány** annak a hálózatnak a címtartományára utal, amelyet a helyi hálózat képvisel. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott címtartományok ne legyenek átfedésben olyan egyéb hálózatok címtartományaival, amelyekhez csatlakozni kíván.
-5. Az **Előfizetés** résznél ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg.
-6. Az **Erőforráscsoport** beállításnál válassza ki a használni kívánt erőforráscsoportot. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy korábban létrehozottat.
-7. A **Hely** beállításnál válassza ki a helyet, ahol az objektum létrejön. Érdemes ugyanazt a helyet kiválasztani, ahol a virtuális hálózat is található, de ez nem kötelező.
-8. A helyi hálózati átjáró létrehozásához kattintson a **Create** (Létrehozás) gombra.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+2. On the **Create local network gateway blade**, specify a **Name** for your local network gateway object. If possible, use something intuitive, such as **ClassicVNetLocal** or **TestVNet1Local**. This makes it easier for you to identify the local network gateway in the portal.
+3. Specify a valid Public **IP address** for the VPN device or virtual network gateway to which you want to connect.<br>**If this local network represents an on-premises location:** Specify the Public IP address of the VPN device that you want to connect to. It cannot be behind NAT and has to be reachable by Azure.<br>**If this local network represents another VNet:** Specify the Public IP address that was assigned to the virtual network gateway for that VNet.<br>**If you don't yet have the IP address:** You can make up a valid placeholder IP address, and then come back and modify this setting before connecting.
+4. **Address Space** refers to the address ranges for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify here do not overlap with ranges of other networks to which you connect.
+5. For **Subscription**, verify that the correct subscription is showing.
+6. For **Resource Group**, select the resource group that you want to use. You can either create a new resource group, or select one that you have already created.
+7. For **Location**, select the location in which this resource will be created. You may want to select the same location that your VNet resides in, but you are not required to do so.
+8. Click **Create** to create the local network gateway.
 
