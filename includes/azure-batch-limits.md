@@ -1,15 +1,14 @@
-| **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
+| **Resource** | **Default Limit** | **Maximum Limit** |
 | --- | --- | --- |
-| Az előfizető számára régiónként rendelkezésre álló Batch-fiókok |3 |50 |
-| Magos száma Batch-fiókonként |20 |N/A<sup>1</sup> |
-| Feladatok and feladatütemezések száma<sup>2</sup> Batch-fiókonként |20 |10,000 |
-| Készletek száma Batch-fiókonként |20 |5000 |
+| Batch accounts per region per subscription |3 |50 |
+| Cores per Batch account<sup>1</sup> |20 |N/A<sup>2</sup> |
+| Active jobs and job schedules<sup>3</sup> per Batch account |20 |5000<sup>4</sup> |
+| Pools per Batch account |20 |2500 |
 
-<sup>1</sup> A magok Batch-fiókonkénti száma növelhető, a szám maximális értéke azonban nincs meghatározva. A növelési lehetőségek tekintetében vegye fel a kapcsolatot az ügyfélszolgálattal.
+<sup>1</sup> Cores quotas shown are for accounts in Batch service mode. In user subscription mode, cores quotas are based on the regional VM cores quotas in your subscription.
 
-<sup>2</sup> Az egyszer futtatott aktív feladatokat és aktív feladatütemezéseket is magában foglalja. A befejezett feladatok és feladatütemezések száma nincs korlátozva.
+<sup>2</sup> The number of cores per Batch account can be increased, but the maximum number is unspecified. Contact customer support to discuss increase options.
 
+<sup>3</sup> Completed jobs and job schedules are not limited.
 
-<!--HONumber=Feb17_HO2-->
-
-
+<sup>4</sup> Contact customer support if you want to request an increase beyond this limit.
