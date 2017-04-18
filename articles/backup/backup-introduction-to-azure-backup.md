@@ -17,9 +17,9 @@ ms.date: 3/13/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: a2452b95c9355957b10477a6e457000f0eba6a9c
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 | Összetevő | Linux (Azure által támogatott) támogatása |
 | --- | --- |
 | Azure Backup (MARS) ügynöke |Nem (csak Windows-alapú ügynök) |
-| System Center DPM |Fájlkonzisztens biztonsági mentés, csak Hyper-V megoldásban<br/> (Azure-beli virtuális gépek esetén nem érhető el) |
-| Azure Backup Server |Fájlkonzisztens biztonsági mentés, csak Hyper-V megoldásban<br/> (Azure-beli virtuális gépek esetén nem érhető el) |
-| Azure IaaS virtuális gép biztonsági mentése |Igen (alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)) |
+| System Center DPM |Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> (Azure-beli virtuális gépek esetén nem érhető el)<br/> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása |
+| Azure Backup Server |Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> (Azure-beli virtuális gépek esetén nem érhető el)<br/> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása |
+| Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
 Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/storage-premium-storage.md) ismertető cikkben.

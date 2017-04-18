@@ -1,5 +1,8 @@
 A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból egy fogadó adattárba. A Data Factory a következő adattárakat támogatja. Az adatok bármilyen forrásból bármilyen fogadóba másolhatók. Az adattárra kattintva megtudhatja, hogy az adott tárolóba, illetve tárolóból hogyan másolhat adatokat.
 
+> [!NOTE] 
+> Ha olyan adattárból/adattárba szeretne adatokat továbbítani, amely nem támogatja a másolási tevékenységet, használjon egy **egyéni tevékenységet** a Data Factoryban az adatok saját logika szerinti másolásához/áthelyezéséhez. További információ az egyéni tevékenységek létrehozásával és használatával kapcsolatban: [Egyéni tevékenységek használata Azure Data Factory-folyamatban](../articles/data-factory/data-factory-use-custom-activities.md).
+
 | Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/data-factory-azure-blob-connector.md) |✓ |✓ |

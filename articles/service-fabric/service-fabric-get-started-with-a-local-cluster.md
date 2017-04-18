@@ -12,12 +12,12 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 04/07/2017
 ms.author: ryanwi;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: d1320daaf4b0bd8c1a7b7c8e37fa8b81c4a53e64
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: c0c5ab8a9db60ff375b7d823e40f83cbc4d2b4c3
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,7 +90,7 @@ Ebben az oktatóanyag egy meglévő mintaalkalmazást (a neve WordCount) haszná
    
     ![Az üzembe helyezett alkalmazás felhasználói felülete][deployed-app-ui]
    
-    A WordCount alkalmazás egyszerűen használható. Ügyféloldali JavaScript-kódot tartalmaz öt karakterből álló „szavak” véletlenszerű előállításához, amelyek aztán az ASP.NET Web API-n keresztül továbbítódnak az alkalmazásnak. Az állapotalapú szolgáltatások nyomon követik a szavak számának változását. Ezek particionálása a szó első karaktere alapján történik. A WordCount alkalmazás forráskódját az [első lépéseket ismertető minták](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/) könyvtárában érheti el.
+    A WordCount alkalmazás egyszerűen használható. Ügyféloldali JavaScript-kódot tartalmaz öt karakterből álló „szavak” véletlenszerű előállításához, amelyek aztán az ASP.NET Web API-n keresztül továbbítódnak az alkalmazásnak. Az állapotalapú szolgáltatások nyomon követik a szavak számának változását. Ezek particionálása a szó első karaktere alapján történik. A WordCount alkalmazás forráskódját a [klasszikus első lépéseket ismertető minták](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/WordCount) könyvtárában érheti el.
    
     Az üzembe helyezett alkalmazás négy partíciót tartalmaz. Az A–G kezdetű szavak az első partícióban, a H–N kezdetű szavak a második partícióban vannak tárolva és így tovább.
 

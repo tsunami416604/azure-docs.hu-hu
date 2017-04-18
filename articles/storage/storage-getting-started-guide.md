@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: a8e5d36d31aabc9226206f52d8543566c5218494
-ms.openlocfilehash: 6c833cd40439fef1fe9cca2591d36a6c49630579
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 6508b5a5d7d654954c68f9390c62a7871c1f032c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -75,7 +75,7 @@ A következő lépésben futtassa a mintaalkalmazást:
 ## <a name="run-your-first-azure-storage-application-locally-against-the-azure-storage-emulator"></a>Az első Azure Storage-alkalmazás helyi futtatása az Azure Storage Emulatorban
 Az [Azure Storage Emulator](storage-use-emulator.md) helyi környezetet biztosít, amely az Azure Blob, Queue és Table Service szolgáltatásait emulálja a fejlesztéshez. A Storage Emulatorral helyben tesztelheti Storage-alkalmazását Azure-előfizetés vagy tárfiók létrehozása, illetve bármilyen felmerülő költség nélkül.
 
-A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az egyik Azure gyors üzembe helyezési mintaprojekttel a Visual Studióban. Ez az oktatóanyag az **Azure Blob Storage**, **Azure Table Storage** és az **Azure Queue Storage** szolgáltatásokra koncentrál:
+A kipróbáláshoz hozzon létre egy egyszerű Azure Storage-alkalmazást az Azure egyik gyors üzembe helyezési mintaprojektjének használatával a Visual Studióban. Ez az oktatóanyag az **Azure Blob Storage**, **Azure Table Storage** és az **Azure Queue Storage** szolgáltatásokra koncentrál:
 
 1. Indítsa el a Visual Studiót.
 2. Kattintson a **Fájl** az **Új projekt** elemre.

@@ -12,39 +12,39 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/17/2017
+ms.date: 04/06/2017
 ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c26ac89bd7ef494331ba309aacf87de03506ac4c
+ms.lasthandoff: 04/07/2017
 
 
 ---
 # <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>Oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, és hogyan használhatja U-SQL-parancsfájlok fejlesztésére és tesztelésére.
+U-SQL-parancsfájlokat írhat és tesztelhet a Data Lake Tools for Visual Studio használatával.
 
 A U-SQL egy rendkívüli mértékben méretezhető, széles körben bővíthető nyelv, amellyel bármilyen, a Data Lake adattárban vagy azon kívül tárolt adat előkészíthető, átalakítható és elemezhető. További információért lásd az [U-SQL-segédanyagot](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Visual Studio 2015 3. frissítéssel, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Prémium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott. A Visual Studio 2017 jelenleg nem támogatott.**
+* **Visual Studio 2017 (adattárolási és -feldolgozási munkaterhelés alatt), Visual Studio 2015 3. frissítéssel, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012. Az Enterprise (Ultimate/Premium), Professional és Community kiadások mind támogatottak; az Express kiadás nem támogatott.**
 * **Microsoft Azure SDK for .NET 2.7.1-es vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
 * **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**.
 
-    A Data Lake Tools for Visual Studio telepítése után a Server Explorer eszközben az „Azure” csomópont alatt megjelenik egy „Data Lake Analytics” csomópont (a Server Explorer a Ctrl+Alt+S billentyűkombináció lenyomásával nyitható meg).
+    A Data Lake Tools for Visual Studio telepítése után a Server Explorer eszközben az „Azure” csomópont alatt megjelenik egy „Data Lake Analytics” csomópont (nyissa meg a Server Explorert a Ctrl+Alt+S billentyűkombinációval).
 
-* **Data Lake Analytics-fiókok és mintaadatok** A Data Lake Tools nem támogatja a Data Lake Analytics-fiókok létrehozását. Ilyen fiókokat az Azure Portal, az Azure PowerShell, a .NET SDK vagy az Azure parancssori felület (CLI) használatával hozhat létre.
+* **Data Lake Analytics-fiókok és mintaadatok** A Data Lake Tools nem támogatja a Data Lake Analytics-fiókok létrehozását. Hozzon létre egy fiókot az Azure Portal, az Azure PowerShell, a .NET SDK vagy az Azure parancssori felület (CLI) használatával.
 Hogy megkönnyítsük a munkáját, egy Data Lake Analytics-szolgáltatás létrehozásához és a forrásadatfájl feltöltéséhez használható parancsfájlt találhat itt: [„A” melléklet – PowerShell-példa az oktatóanyag előkészítéséhez](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial).
 
-    További lehetőségként [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md) oktatóanyag következő két szakasza alapján létrehozhatja a saját fiókját, és manuálisan feltöltheti az adatokat.
+    További lehetőségként [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md) oktatóanyag következő két szakasza alapján létrehozhatja a saját fiókját, és manuálisan feltöltheti az adatokat:
 
     1. [Azure Data Lake Data Lake Analytics-fiók létrehozása](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
     2. [A SearchLog.tsv fájl feltöltése az alapértelmezett Data Lake-tárfiókba](data-lake-analytics-get-started-portal.md#prepare-source-data).
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
-**A Data Lake Analytics szolgáltatáshoz való kapcsolódás**
+**Kapcsolódás a Data Lake Analytics szolgáltatáshoz**
 
 1. Nyissa meg a Visual Studiót.
 2. A **View** (Nézet) menüben kattintson a **Server Explorer** elemre a Server Explorer eszköz megnyitásához. Ezt a **[CTRL]+[ALT]+S** billentyűkombináció lenyomásával is megnyithatja.
@@ -54,7 +54,7 @@ Hogy megkönnyítsük a munkáját, egy Data Lake Analytics-szolgáltatás létr
 ## <a name="upload-source-data-files"></a>Forrásadatfájlok feltöltése
 Az oktatóanyag korábbi **Előfeltétel** szakaszában már feltöltött adatokat.  
 
-Ha a saját adatait szeretné használni, a Data Lake Tools szolgáltatásból a következő módszerek használatával tölthet fel adatokat.
+Saját adatai használatához a Data Lake Tools szolgáltatásból a következő lépéseket követve tölthet fel adatokat.
 
 **Fájlok feltöltése a függő Azure Data Lake-fiókba**
 
@@ -128,9 +128,9 @@ A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-r
        A neveket automatikusan befejezi a rendszer, és megjelennek a sorhalmaz, az osztályok, az adatbázisok, a sémák és a felhasználó által meghatározott objektumok (UDO-k) tagjai.
 
        A katalógusokhoz (pl. adatbázisokhoz, sémákhoz, táblákhoz, UDO-khoz) tartozó IntelliSense a számítási fiókhoz kapcsolódik. A felső eszköztárban látható a jelenleg aktív számítási fiók, adatbázis és séma, amelyek a legördülő menükben módosíthatók.
-   * *** oszlop kibontása**
+   * **Oszlopok kibontása***
 
-       Kattintson a *karaktertől jobbra, és egy kék aláhúzást fog látni a* alatt. Mozgassa a mutatót a kék aláhúzásra, majd kattintson a lefelé mutató nyílra.
+       Kattintson a * karaktertől jobbra, és egy kék aláhúzást fog látni a * alatt. Mozgassa a mutatót a kék aláhúzásra, majd kattintson a lefelé mutató nyílra.
        ![Kibontás a Data Lake Visual Studio Tools szolgáltatásban *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        Kattintson az **Expand Columns** (Oszlopok kibontása) lehetőségre, és az eszköz a * jel helyére behelyettesíti az oszlopok neveit.

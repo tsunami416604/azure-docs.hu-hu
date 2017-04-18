@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: b835b04d6ef6d06e35add4f503e6800099e97383
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -259,6 +259,16 @@ Ha helyszíni ügyfélről szeretne fájlmegosztást csatlakoztatni, először h
 > Bizonyos internetszolgáltatók blokkolhatják a 445-ös portot. Ez esetben lépjen kapcsolatba a szolgáltatójával.
 > 
 > 
+
+### <a name="unmount-the-file-share"></a>A fájlmegosztás leválasztása
+A fájlmegosztás leválasztásához a `net use` parancsot használhatja a `/delete` lehetőséggel.
+
+```
+net use <drive-letter> /delete
+
+example :
+net use z: /delete
+```
 
 ## <a name="develop-with-file-storage"></a>Fejlesztés a File Storage segítségével
 A File Storage-t meghívó kód megírásához használhatja a Storage .NET-hez és Javához elérhető klienskódtárait, vagy az Azure Storage REST API-ját. A jelen szakaszban ismertetett példa bemutatja, hogy hogyan használható egy fájlmegosztás [az Azure Storage .NET-hez készült ügyféloldali kódtára](https://msdn.microsoft.com/library/mt347887.aspx) segítségével egy egyszerű, az asztalon futó konzolalkalmazással.
@@ -615,7 +625,7 @@ Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](stora
    
     Jelenleg nem támogatjuk az AD-alapú hitelesítést vagy az ACL-eket, de a támogatás már szerepel a funkciókra vonatkozó kérések listáján. Egyelőre az Azure Storage-fiókkulcsok segítségével hitelesíthető a fájlmegosztás. Létezik egy megkerülő megoldás is, amely közös hozzáférésű jogosultságkódokat (SAS) használt a REST API vagy a klienskódtárak segítségével. Az SAS segítségével létrehozhat különleges engedélyekkel rendelkező jogkivonatokat, amelyek egy adott időintervallumban érvényesek. Létrehozhat például egy jogkivonatot, amelynek csak olvasási hozzáférése van egy adott fájlhoz. Aki birtokolja ezt a jogkivonatot a megadott érvényességi idő alatt, olvasási hozzáférést kap a fájlhoz.
    
-    Az SAS csak REST API vagy klienskódtárak használatával támogatott. Amikor SMB-protokollal csatlakoztatja a fájlmegosztást, nem használhatja az SAS-t a tartalmához való hozzáférés delegálására. 
+    Az SAS csak REST API vagy klienskódtárak használatával támogatott. Ha a fájlmegosztást SMB-protokollal csatlakoztatja, nem használhatja az SAS-t a tartalomhoz való hozzáférés delegálására. 
 
 2. **Hogyan biztosíthatok hozzáférést egy bizonyos fájlhoz egy webböngészőben?**
    Az SAS segítségével létrehozhat különleges engedélyekkel rendelkező jogkivonatokat, amelyek egy adott időintervallumban érvényesek. Létrehozhat például egy jogkivonatot, amely csak olvasási hozzáféréssel rendelkezik egy bizonyos fájlhoz egy megadott ideig. Amíg ez érvényes, addig bárki, aki ismeri ezt az URL-címet, közvetlenül letöltheti a fájlt bármilyen webböngészőből. Az SAS-kulcsok egyszerűen létrehozhatóak például olyan felhasználói felületekkel, mint a Storage Explorer.
@@ -666,11 +676,13 @@ Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](stora
     Olvassa el az [Azure fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.               
 
 18. **Hogyan lehet engedélyezni a kiszolgálóoldali titkosítást az Azure Files-hoz?**
+> [!NOTE]
+> Az Azure Files [kiszolgálóoldali titkosítása](storage-service-encryption.md) jelenleg előzetes verzióban működik. Ha kérdése van az előzetes verzió használatakor, írjon az [SSE vitafórumába](mailto:ssediscussions@microsoft.com).
 
-    Az Azure Files [kiszolgálóoldali titkosítása](storage-service-encryption.md) jelenleg előzetes verzióban működik. Az előzetes verzióban csak az [Azure Portalon](https://portal.azure.com) létrehozott Azure Resource Manager-tárfiókokon engedélyezheti ezt a funkciót. A szolgáltatás díjmentesen engedélyezhető. Ha engedélyezi az Azure File Storage-hoz a Storage szolgáltatás titkosítását, az adatai automatikusan titkosítva lesznek. 
+    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
     
-    A jövőben az [Azure PowerShell-lel](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), az [Azure CLI-vel](storage-azure-cli.md) és az [Azure Storage erőforrás-szolgáltató REST API-jával](/rest/api/storagerp/storageaccounts) tervezzük támogatni a fájltárolás titkosításának engedélyezését. 
-    A [Storage szolgáltatás titkosításával](storage-service-encryption.md) kapcsolatos témakörben talál további információt az inaktív állapotban végzett titkosításról az Azure Storage-ban, és ha kérdése van az előzetes verzióról, írjon a következő címre: ssediscussions@microsoft.com.
+    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
+    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.

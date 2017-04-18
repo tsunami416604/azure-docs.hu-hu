@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: e052109ff10f21c3a737f336479fe43fb54e500e
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 7dc5210c073a3130bfc9ffdbc9ce33e19ca5bc1a
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ További információk az Azure SQL Database-adatbázisokkal kapcsolatban: [SQL 
 
 Az alábbi táblázatok az Azure SQL Database és az SQL Server legfontosabb funkcióit, azok támogatási lehetőségeit, illetve a funkciók egyes platformokra vonatkozó bővebb információira mutató hivatkozásokat tartalmazzák. A Transact-SQL funkcióival kapcsolatban kövesse a táblázatban szereplő hivatkozást, amely a funkció kategóriájához tartozik. További háttérinformációkért az adott típusú funkciók támogatása hiányának okairól lásd még az [Azure SQL Database és a Transact-SQL nyelv eltéréseit](sql-database-transact-sql-information.md) ismertető cikket.
 
-A&12;-es verzió funkcióinak hozzáadása folyamatosan történik. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
+Az Azure SQL Database funkcióinak körét folyamatosan bővítjük. Ezért javasoljuk, hogy látogassa meg az Azure Szolgáltatási hírek webhelyét, és használja a szűrőket:
 
 * Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
 * Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.

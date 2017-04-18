@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 02e30f7fcbe0782528460b542a75f1d11c7286a1
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 076a85b7b965f163255e919eb61700aef0d1fc18
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -70,7 +70,7 @@ Ha a számítógépén a Visual Studio 2013 van telepítve, [töltse le a legfri
 
     Ellenőrizze, hogy az **Authentication** (Hitelesítés) beállításai között a **No Authentication** (Nincs hitelesítés) van megadva. A Visual Studio verziójától függően az alapértelmezett beállítás más lehet. A beállítás módosításához kattintson a **Change Authentication** (Hitelesítés módosítása) gombra, és válassza a **No Authentication** (Nincs hitelesítés) értéket.
 
-    Ha a Visual Studio 2015-öt használja, törölje a **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet jelölését. Az oktatóanyag következő lépéseiben megismerkedhet az [Azure-erőforrások kiépítésével](#provision-the-azure-resources) és az [alkalmazások közzétételével az Azure-ban](#publish-the-application-to-azure). A **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet bejelölésével a Visual Studio felületéről egy App Service-webalkalmazás létrehozására itt láthat példát: [Ismerkedés a webalkalmazásokkal az Azure App Service-ben, az ASP.NET és a Visual Studio használatával](../app-service-web/web-sites-dotnet-get-started.md).
+    Ha a Visual Studio 2015-öt használja, törölje a **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet jelölését. Az oktatóanyag következő lépéseiben megismerkedhet az [Azure-erőforrások kiépítésével](#provision-the-azure-resources) és az [alkalmazások közzétételével az Azure-ban](#publish-the-application-to-azure). A **Host in the cloud** (Üzemeltetés a felhőben) jelölőnégyzet bejelölésével a Visual Studio felületéről egy App Service-webalkalmazás létrehozására itt láthat példát: [Ismerkedés a webalkalmazásokkal az Azure App Service-ben, az ASP.NET és a Visual Studio használatával](../app-service-web/app-service-web-get-started-dotnet.md).
    
     ![Projektsablon kiválasztása][cache-select-template]
 4. A projekt létrehozásához kattintson az **OK** gombra.
@@ -86,7 +86,7 @@ Az oktatóanyag ezen szakaszában egy olyan alapszintű alkalmazást fog létreh
 ### <a name="add-the-entity-framework-nuget-package"></a>Az Entity Framework NuGet-csomag hozzáadása
 
 1. Kattintson a **Tools** (Eszközök) menü **NuGet Package Manager** (NuGet-csomagkezelő), **Package Manager Console** (Csomagkezelő konzol) elemére.
-2. Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
+2. Futtassa a következő parancsot a **Csomagkezelő konzol** ablakából.
     
     ```
     Install-Package EntityFramework

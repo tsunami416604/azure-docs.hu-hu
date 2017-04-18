@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/27/2016
+ms.date: 04/10/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 7a9a28ce8be7587c84a1188d643c990cc4fb7355
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: 0764d4cbcd618be54c8b6e71a632d24c5c3bfe67
+ms.lasthandoff: 04/10/2017
 
 
 ---
@@ -26,20 +26,21 @@ ms.lasthandoff: 03/28/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="overview"></a>Áttekintés
-Az Azure Table Storage egy olyan szolgáltatás, amely strukturált NoSQL-adatokat tárol a felhőben. A Table Storage egy séma nélküli kulcs-/attribútumtár. Mivel a Table Storage séma nélküli, az adatokat könnyen az alkalmazás változó igényeihez igazíthatja. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó. Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
+Az Azure Table Storage szolgáltatás strukturált NoSQL-adatokat tárol a felhőben, így séma nélküli kulcs-/attribútumtárat biztosítva. Mivel a Table Storage séma nélküli, az adatokat könnyen az alkalmazás változó igényeihez igazíthatja. A Table Storage adataihoz számos alkalmazástípus gyorsan és költséghatékonyan férhet hozzá, a költségei pedig jellemzően alacsonyabbak, mint a hagyományos SQL hasonló mennyiségű adathoz való használata esetében.
 
-A Table Storage segítségével rugalmas adatkészleteket tárolhat, például webalkalmazások felhasználói adatait, címtárakat, eszközadatokat és bármilyen egyéb metaadatot, amelyre a szolgáltatásnak szüksége van. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
+A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint például webalkalmazások felhasználói adatai, címtárak, eszközadatok és bármilyen egyéb metaadat, amelyre a szolgáltatásnak szüksége van. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
 
 ### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez az oktatóanyag bemutatja, hogyan írhat .NET kódot néhány, az Azure Table Storage szolgáltatást használó általános forgatókönyvhöz, beleértve a táblák létrehozását és törlését, valamint táblaadatok beszúrását, frissítését, törlését és lekérdezését.
+Ez az oktatóanyag [az Azure Storage .NET-hez készült ügyféloldali kódtárának](https://www.nuget.org/packages/WindowsAzure.Storage/) használatát mutatja be néhány gyakori Azure Table Storage-forgatókönyv esetében. A forgatókönyveket a táblák létrehozásának és törlésének, valamint a táblaadatok beillesztésének, frissítésének, törlésének és lekérdezésének a C# programozási nyelvben írt példáin keresztül mutatjuk be.
 
-**Előfeltételek:**
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag sikeres teljesítéséhez a következőkre lesz szüksége:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* Egy [Azure-tárfiók](storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage-fiók](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -65,7 +66,7 @@ using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-table-service-client"></a>A Table szolgáltatásügyfél létrehozása
-A **CloudTableClient** osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. A szolgáltatásügyfél létrehozásának egyik módja:
+A [CloudTableClient][dotnet_CloudTableClient] osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. A Table-szolgáltatásügyfél létrehozásának egyik módja a következő:
 
 ```csharp
 // Create the table client.
@@ -93,8 +94,7 @@ table.CreateIfNotExists();
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Az entitásokat a rendszer C\# objektumokká képezi le egy **TableEntity** osztályból származtatott egyéni osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé. A Table Service szolgáltatásban tárolni kívánt tulajdonságoknak egy, a beállítási és lekérési értéket is elérhetővé tévő támogatott típus nyilvános tulajdonságának kell lenniük.
-Az entitástípusnak emellett elérhetővé *kell* tennie egy paraméter nélküli konstruktort is.
+Az entitásokat a rendszer C#-objektumokra képezi le egy, a [TableEntity][dotnet_TableEntity] osztályból származtatott egyéni osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Az alábbi kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb fokú méretezhetőségét teszi lehetővé. A táblákban tárolni kívánt entitásoknak támogatott típusúnak, például a [TableEntity][dotnet_TableEntity] osztályból származtatottnak kell lenniük. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett elérhetővé *kell* tennie egy paraméter nélküli konstruktort is.
 
 ```csharp
 public class CustomerEntity : TableEntity
@@ -113,7 +113,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Az entitásokat is tartalmazó táblaműveleteket a korábban, a „Tábla létrehozása” szakaszban létrehozott **CloudTable** objektum végzi el. A végrehajtandó műveletet egy **TableOperation** objektum képviseli.  Az alábbi példakód bemutatja a **CloudTable** objektum, majd egy **CustomerEntity** objektum létrehozását.  A művelet előkészítéséhez létrejön egy **TableOperation** objektum, amely beszúrja az ügyfélentitást a táblába.  Maga a művelet a **CloudTable.Execute** meghívásával hajtható végre.
+Az entitásokat is tartalmazó táblaműveleteket a fentebbi, Tábla létrehozása című szakaszban létrehozott [CloudTable][dotnet_CloudTable] objektum végzi el. A végrehajtandó műveletet egy [TableOperation][dotnet_TableOperation] objektum képviseli. Az alábbi példakód bemutatja a [CloudTable][dotnet_CloudTable] objektum, majd egy **CustomerEntity** objektum létrehozását. A művelet előkészítéséhez létrejön egy [TableOperation][dotnet_TableOperation] objektum, amely beszúrja az ügyfélentitást a táblába. Maga a művelet a [CloudTable][dotnet_CloudTable].[Execute][dotnet_CloudTable_Execute] meghívásával hajtható végre.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -143,11 +143,10 @@ Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat egy tábl
 
 * Egyetlen kötegművelettel frissítéseket, törléseket és beszúrásokat hajthat végre.
 * Egy kötegművelet legfeljebb 100 entitást tartalmazhat.
-* Egy kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.
+* Egy adott kötegművelet összes entitásának ugyanazzal a partíciókulccsal kell rendelkeznie.
 * Ugyan lekérdezést is végre lehet hajtani kötegműveletként, de ilyenkor ez lehet a köteg egyetlen művelete.
 
-<!-- -->
-Az alábbi példakód létrehoz két entitásobjektumot, és mindkettőt hozzáadja a **TableBatchOperation** művelethez az **Insert** módszerrel. Ezután meghívja a **CloudTable.Execute** objektumot a művelet végrehajtásához.
+Az alábbi példakód létrehoz két entitásobjektumot, és mindkettőt hozzáadja a [TableBatchOperation][dotnet_TableBatchOperation] művelethez az [Insert][dotnet_TableBatchOperation_Insert] metódussal. Ezután meghívja a [CloudTable][dotnet_CloudTable].[ExecuteBatch][dotnet_CloudTable_ExecuteBatch] objektumot a művelet végrehajtásához.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -182,8 +181,7 @@ table.ExecuteBatch(batchOperation);
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
-Ha egy táblából egy partíció összes entitását le szeretné kérni, használja a **TableQuery** objektumot.
-Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
+Ha egy táblából egy partíció összes entitását le szeretné kérdezni, használjon [TableQuery][dotnet_TableQuery] objektumot. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -208,7 +206,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(query))
 ```
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
-Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat egy tartományt a partíciókulcs és a sorkulcs szűrőjének kombinálásával. Az alábbi példakód két szűrő segítségével kéri le az összes olyan entitást a „Smith” partícióból, ahol a sorkulcs (keresztnév) az ábécében az „E”-t megelőző betűvel kezdődik, majd megjeleníti a lekérdezés eredményeit.
+Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat egy tartományt a partíciókulcs és a sorkulcs szűrőjének kombinálásával. Az alábbi példakód két szűrő segítségével kéri le az összes olyan entitást a „Smith” partícióból, melyeknél a sorkulcs (keresztnév) az ábécében az „E”-t megelőző betűvel kezdődik, majd megjeleníti a lekérdezés eredményeit.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -237,9 +235,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(rangeQuery))
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
-Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kódban a **TableOperation** művelettel adja meg a „Ben Smith” nevű ügyfelet.
-Ezzel a módszerrel a rendszer egy gyűjtemény helyett csak egyetlen entitást ad vissza, és az **ableResult.Result** táblában visszaadott érték egy **CustomerEntity** objektum.
-Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.
+Írhat egy lekérdezést egy adott entitás lekérdezéséhez. A következő kódban a [TableOperation][dotnet_TableOperation] művelettel adja meg a „Ben Smith” nevű ügyfelet. Ezzel a módszerrel a rendszer egy gyűjtemény helyett csak egyetlen entitást ad vissza, a [TableResult][dotnet_TableResult].[Result][dotnet_TableResult_Result] táblában visszaadott érték pedig egy **CustomerEntity** objektum lesz. Ha egyetlen entitást szeretne lekérdezni a Table szolgáltatásból, ennek leggyorsabb módja a partíció- és sorkulcsok megadása a lekérdezésben.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -270,7 +266,7 @@ else
 ```
 
 ## <a name="replace-an-entity"></a>Entitás cseréje
-Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. Az **Insert** parancs hívása helyett a kód a **Replace** parancsot használja. A rendszer így teljesen lecseréli az entitást a kiszolgálón, hacsak az a lekérdezés óta nem módosult, mert ez esetben a művelet sikertelen lesz.  Erre a hibára azért van szükség, hogy az alkalmazás ne írhasson felül véletlenül egy olyan módosítást, amelyet az alkalmazás egy másik összetevője hozott létre a lekérés és a frissítés között.  A hiba megfelelő kezeléséhez kérje le újra az entitást, végezze el a módosításokat (ha még érvényesek), majd hajtson végre egy újabb **Replace** műveletet.  A következő szakaszban megtudhatja, hogyan bírálhatja felül ezt a viselkedést.
+Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. Az [Insert][dotnet_TableOperation_Insert] parancs hívása helyett a kód a [Replace][dotnet_TableOperation_Replace] parancsot használja. A [Replace][dotnet_TableOperation_Replace] teljesen lecseréli az entitást a kiszolgálón, hacsak az a lekérdezés óta nem módosult, mert ez esetben a művelet sikertelen lesz. Erre a hibára azért van szükség, hogy az alkalmazás ne írhasson felül véletlenül egy olyan módosítást, amelyet az alkalmazás egy másik összetevője hozott létre a lekérés és a frissítés között. A hiba megfelelő kezeléséhez kérje le újra az entitást, végezze el a módosításokat (ha még érvényesek), majd hajtson végre egy újabb [Replace][dotnet_TableOperation_Replace] műveletet. A következő szakaszban megtudhatja, hogyan bírálhatja felül ezt a viselkedést.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -312,8 +308,9 @@ else
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy lecserélése
-Ha az entitás a kiszolgálóról való lekérdezés óta módosult, a **Replace** műveletek sikertelenek lesznek.  Ezenkívül a **Replace** művelet sikeres végrehajtásához először le kell kérnie az entitást a kiszolgálóról.
-Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hogy a benne tárolt aktuális értékek irrelevánsak-e. A frissítés mindent felülír.  Ehhez használja az **InsertOrReplace** műveletet.  Ha nem létezik az entitás, ez a művelet beszúrja, ha pedig létezik, akkor a legutóbbi frissítés idejétől függetlenül lecseréli.  Az alábbi kódpéldában a rendszer lekérdezi Ben Smith ügyfélentitását, majd az **InsertOrReplace** művelettel menti a kiszolgálóra.  Az entitáson a lekérési és a frissítési művelet között történt összes módosítást felül lesz írva.
+Ha az entitás a kiszolgálóról való lekérdezés óta módosult, a [Replace][dotnet_TableOperation_Replace] műveletek sikertelenek lesznek. Ezenkívül a [Replace][dotnet_TableOperation_Replace] művelet sikeres végrehajtásához először le kell kérnie az entitást a kiszolgálóról. Néha azonban nem tudható, hogy az entitás létezik-e a kiszolgálón, és hogy a benne tárolt aktuális értékek irrelevánsak-e. A frissítés mindent felülír. Ehhez használja az [InsertOrReplace][dotnet_TableOperation_InsertOrReplace] műveletet. Ha nem létezik az entitás, ez a művelet beszúrja, ha pedig létezik, akkor a legutóbbi frissítés idejétől függetlenül lecseréli.
+
+Az alábbi példakód létrehoz egy ügyfélentitást Fred Joneshoz, és beilleszti azt a people táblába. Ezután az [InsertOrReplace][dotnet_TableOperation_InsertOrReplace] művelettel menti az azonos partíciókulccsal (Jones) és sorkulccsal (Fred) rendelkező entitást a kiszolgálón, ezúttal a PhoneNumber tulajdonság egy eltérő értékével. Mivel az [InsertOrReplace][dotnet_TableOperation_InsertOrReplace] műveletet használjuk, minden tulajdonság értéke lecserélődik. Ha azonban a táblában korábban nem szerepelt volna Fred Jones entitás, a művelet beszúrta volna.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -326,36 +323,37 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 // Create the CloudTable object that represents the "people" table.
 CloudTable table = tableClient.GetTableReference("people");
 
-// Create a retrieve operation that takes a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+// Create a customer entity.
+CustomerEntity customer3 = new CustomerEntity("Jones", "Fred");
+customer3.Email = "Fred@contoso.com";
+customer3.PhoneNumber = "425-555-0106";
+
+// Create the TableOperation object that inserts the customer entity.
+TableOperation insertOperation = TableOperation.Insert(customer3);
 
 // Execute the operation.
-TableResult retrievedResult = table.Execute(retrieveOperation);
+table.Execute(insertOperation);
 
-// Assign the result to a CustomerEntity object.
-CustomerEntity updateEntity = (CustomerEntity)retrievedResult.Result;
+// Create another customer entity with the same partition key and row key.
+// We've already created a 'Fred Jones' entity and saved it to the
+// 'people' table, but here we're specifying a different value for the
+// PhoneNumber property.
+CustomerEntity customer4 = new CustomerEntity("Jones", "Fred");
+customer4.Email = "Fred@contoso.com";
+customer4.PhoneNumber = "425-555-0107";
 
-if (updateEntity != null)
-{
-    // Change the phone number.
-    updateEntity.PhoneNumber = "425-555-1234";
+// Create the InsertOrReplace TableOperation.
+TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(customer4);
 
-    // Create the InsertOrReplace TableOperation.
-    TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
-
-    // Execute the operation.
-    table.Execute(insertOrReplaceOperation);
-
-    Console.WriteLine("Entity was updated.");
-}
-else
-{
-    Console.WriteLine("Entity could not be retrieved.");
-}
+// Execute the operation. Because a 'Fred Jones' entity already exists in the
+// 'people' table, its property values will be overwritten by those in this
+// CustomerEntity. If 'Fred Jones' didn't already exist, the entity would be
+// added to the table.
+table.Execute(insertOrReplaceOperation);
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a **DynamicTableEntity** és az **EntityResolver** lekérdezésekkel hajtható végre. A kivetítésről az [Introducing Upsert and Query Projection (Az upsert (frissítés/beszúrás) és a lekérdezésleképezés bemutatása) blogbejegyzés][Introducing Upsert and Query Projection blog post] című blogbejegyzésből tudhat meg többet. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiók használatával működik.
+Egy táblalekérdezéssel egy entitás bizonyos tulajdonságait is lekérdezheti az összes helyett. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés csak a táblában található entitásokhoz tartozó e-mail-címeket kérdezi le. Ez a [DynamicTableEntity][dotnet_DynamicTableEntity] és az [EntityResolver][dotnet_EntityResolver] lekérdezésekkel hajtható végre. A leképezésről az [Introducing Upsert and Query Projection][blog_post_upsert] (Az upsert művelet és a lekérdezésleképezés bemutatása) című blogbejegyzésből tudhat meg többet. A Storage Emulator nem támogatja a leképezést, így a kód csak a Table szolgáltatásbeli fiókkal működik.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -381,7 +379,7 @@ foreach (string projectedEmail in table.ExecuteQuery(projectionQuery, resolver, 
 ```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
-A lekérdezés után az entitás frissítésénél bemutatott minta alapján egyszerűen törölheti az entitásokat.  Az alábbi kód lekérdez, majd töröl egy ügyfélentitást.
+A lekérdezés után egyszerűen törölheti az entitásokat az entitások frissítésénél bemutatott minta alapján. Az alábbi kód lekérdez, majd töröl egy ügyfélentitást.
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -479,18 +477,23 @@ Most, hogy mér megismerte a Table Storage alapjait, az alábbi hivatkozásokbó
 [Download and install the Azure SDK for .NET]: /develop/net/
 [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
 
-[Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
-[Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
-[Blob7]: ./media/storage-dotnet-how-to-use-table-storage/blob7.png
-[Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
-[Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
+[blog_post_upsert]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
-[Introducing Upsert and Query Projection blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-[.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-[OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
-[Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
-[How to: Programmatically access Table storage]: #tablestorage
+[dotnet_api_ref]: https://msdn.microsoft.com/library/azure/mt347887.aspx
+[dotnet_CloudTableClient]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtableclient.aspx
+[dotnet_CloudTable]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtable.aspx
+[dotnet_CloudTable_Execute]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtable.execute.aspx
+[dotnet_CloudTable_ExecuteBatch]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtable.executebatch.aspx
+[dotnet_DynamicTableEntity]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.dynamictableentity.aspx
+[dotnet_EntityResolver]: https://msdn.microsoft.com/library/jj733144.aspx
+[dotnet_TableBatchOperation]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx
+[dotnet_TableBatchOperation_Insert]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.insert.aspx
+[dotnet_TableEntity]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx
+[dotnet_TableOperation]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableoperation.aspx
+[dotnet_TableOperation_Insert]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableoperation.insert.aspx
+[dotnet_TableOperation_InsertOrReplace]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableoperation.insertorreplace.aspx
+[dotnet_TableOperation_Replace]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableoperation.replace.aspx
+[dotnet_TableQuery]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablequery.aspx
+[dotnet_TableResult]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableresult.aspx
+[dotnet_TableResult_Result]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableresult.result.aspx
 

@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 04/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: 5348cedf369264defc5bb8417397aae046915ca7
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -49,9 +49,16 @@ A következőket teheti:
 
 ## <a name="migrate-on-premises-vms-and-physical-servers"></a>Helyszíni virtuális gépek és fizikai kiszolgálók áttelepítése
 
-Helyszíni Hyper-V- és VMWare-alapú virtuális gépek, illetve fizikai kiszolgálók áttelepítéséhez szinte ugyanazokat a lépéseket kell követnie, amelyeket egy szokványos replikációnál használ. Állítsa be a Recovery Services-tárolót, konfigurálja a szükséges felügyeleti kiszolgálót (attól függően, hogy mit szeretne áttelepíteni), adja hozzá a tárolóhoz, majd adja meg a replikációs beállításokat. Engedélyezze a replikációt azoknál a gépeknél, amelyeket szeretné áttelepíteni, majd futtasson le egy gyors feladatátvételi tesztet annak ellenőrzéséhez, hogy minden megfelelően működik-e.
+Helyszíni Hyper-V- és VMWare-alapú virtuális gépek, illetve fizikai kiszolgálók áttelepítéséhez szinte ugyanazokat a lépéseket kell követnie, amelyeket egy szokványos replikációnál használ.
 
-A replikációs környezet működésének ellenőrzése után, attól függően, hogy a forgatókönyv [mit támogat](site-recovery-failover.md), indítson el egy tervezett vagy nem tervezett feladatátvételt. Az áttelepítéséhez nem kell véglegesíteni a feladatátvételt. Ehelyett válassza az **Áttelepítés befejezése** lehetőséget az összes áttelepíteni kívánt gépnél. Az **Áttelepítés befejezése** művelet befejezi az áttelepítési folyamatot, eltávolítja a gép replikációját, és leállítja a gép Site Recovery-számlázását.
+1. Helyreállítási tár beállítása
+2. Konfigurálja a szükséges felügyeleti kiszolgálót (VMware, VMM, Hyper-V – attól függően, hogy mit szeretne áttelepíteni), adja hozzá a tárolóhoz, majd adja meg a replikációs beállításokat.
+3. A replikáció engedélyezése a migrálni kívánt gépeknél
+4. A kezdeti áttelepítés után gyors feladatátvételi teszt futtatásával ellenőrizze, hogy minden az elvárások szerint működik-e.
+5. A replikációs környezet működésének ellenőrzése után, attól függően, hogy a forgatókönyv [mit támogat](site-recovery-failover.md), indítson el egy tervezett vagy nem tervezett feladatátvételt. Azt javasoljuk, használjon egy tervezett feladatátvételt, ha lehetséges.
+6. A migráláshoz nem kell véglegesítenie a feladatátvételt, vagy törölnie azt. Ehelyett válassza az **Áttelepítés befejezése** lehetőséget az összes áttelepíteni kívánt gépnél.
+     - A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Kattintson az **OK** gombra a befejezéséhez. A folyamatállapotot a virtuális gép tulajdonságaiban követheti nyomon, a Migrálás befejezése feladat figyelésével a **Site Recovery-feladatok** között.
+     - Az **Áttelepítés befejezése** művelet befejezi az áttelepítési folyamatot, eltávolítja a gép replikációját, és leállítja a gép Site Recovery-számlázását.
 
 ![teljesáttelepítés](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 

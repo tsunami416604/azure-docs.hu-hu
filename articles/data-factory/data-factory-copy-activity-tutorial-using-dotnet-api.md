@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 0664888dbb14aaa353d5d126cdf799b62711d71f
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -106,7 +106,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
     ```PowerShell
     $azureAdApplication    
     ```
-    Írja le az alkalmazásazonosítót (a parancs kimenetében szereplő **applicationID** paraméter értéke).
+    Írja le az alkalmazásazonosítót (a parancs kimenetében szereplő applicationID paraméter értéke).
 
 A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 
@@ -124,7 +124,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    5. A Név mezőbe írja be: **DataFactoryAPITestApp**.
    6. A Hely mezőbe írja be: **C:\ADFGetStarted**.
    7. A projekt létrehozásához kattintson az **OK** gombra.
-2. Kattintson az **Eszközök** elemre, mutasson a **Nuget Package Manager** (Nuget-csomagkezelő) lehetőségre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre.
+2. Kattintson az **Eszközök** elemre, mutasson a **NuGet Package Manager** (NuGet-csomagkezelő) lehetőségre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre.
 3. A **Csomagkezelő konzolban** hajtsa végre a következő lépéseket:
    1. A Data Factory-csomag telepítéséhez futtassa az alábbi parancsot: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -184,7 +184,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    > [!IMPORTANT]
    > A **resourceGroupName** érték helyére írja be saját Azure-erőforráscsoportja nevét.
    >
-   > Módosítsa úgy az adat-előállító nevét (**dataFactoryName**), hogy az egyedi legyen. Az adat-előállító nevének globálisan egyedinek kell lennie. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
+   > Módosítsa úgy az adat-előállító nevét (dataFactoryName), hogy az egyedi legyen. Az adat-előállító nevének globálisan egyedinek kell lennie. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
 
 7. Adja hozzá az alábbi kódot, amely létrehozza az **adat-előállítót** a **Main** metódusban.
 
@@ -473,7 +473,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
     }
     ```
 
-15. A Megoldáskezelőben bontsa ki a projektet (**DataFactoryAPITestApp**), kattintson jobb gombbal a **Hivatkozások** lehetőségre, majd kattintson a **Hivatkozás hozzáadása** elemre. Jelölje be a „**System.Configuration**” nevű szerelvényhez tartozó jelölőnégyzetet, majd kattintson az **OK** gombra.
+15. A Megoldáskezelőben bontsa ki a projektet (DataFactoryAPITestApp), kattintson jobb gombbal a **Hivatkozások** lehetőségre, majd kattintson a **Hivatkozás hozzáadása** elemre. Jelölje be a **System.Configuration** szerelvényhez tartozó jelölőnégyzetet. Kattintson **OK** gombra.
 16. Hozza létre a konzolalkalmazást. Kattintson a menü **Fordítás** elemére, majd a **Megoldás fordítása** lehetőségre.
 17. Ellenőrizze, hogy az Azure Blob-fiókban található **adftutorial** nevű tárolóban van-e legalább egy fájl. Ha nincs, a Jegyzettömbben hozzon létre egy, az alábbi sorokat tartalmazó **Emp.txt** nevű fájlt, majd töltse fel azt az adftutorial nevű tárolóba.
 
@@ -486,7 +486,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    * Társított szolgáltatás: **LinkedService_AzureStorage**
    * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
    * Adatcsatorna: **PipelineBlobSample**
-20. Ellenőrizze, hogy a két alkalmazotti rekord a meghatározott Azure SQL-adatbázis „**emp**” táblájában lett létrehozva.
+20. Ellenőrizze, hogy a két alkalmazotti rekord a meghatározott Azure SQL-adatbázis **emp** táblájában lett létrehozva.
 
 ## <a name="next-steps"></a>Következő lépések
 | Témakör | Leírás |

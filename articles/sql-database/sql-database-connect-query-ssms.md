@@ -10,7 +10,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
-ms.custom: development
+ms.custom: quick start manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,15 +18,15 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 7ae47bcce700336206d532b414b7d0eea41d87c5
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: c173f1b6937739f662eb41aa1886e66cb06ed729
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
 
-Használja az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) szoftvert az SQL Server-erőforrások felhasználói felületről vagy szkriptekkel történő létrehozásához és kezeléséhez. Ez a gyors üzembe helyezési útmutató ismerteti, hogyan használható az SSMS az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan hajthat végre lekérdezési, beszúrási, frissítési és törlési utasításokat.
+Az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) egy felügyeleti eszköz, amely az SQL Server-erőforrások felhasználói felületről vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható az SSMS egy Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
@@ -43,11 +43,16 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**.
 
-    <img src="./media/sql-database-connect-query-ssms/connection-information.png" alt="connection information" style="width: 780px;" />
+   ![kapcsolatadatok](./media/sql-database-connect-query-ssms/connection-information.png) 
+
 
 ## <a name="connect-to-the-server-and-your-new-database"></a>Csatlakozás a kiszolgálóhoz és az új adatbázishoz
 
-Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval.
+Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval. 
+
+> [!IMPORTANT]
+> Egy Azure SQL Database logikai kiszolgáló figyel az 1433-as porton. Ha vállalati tűzfalon belülről szeretne csatlakozni egy Azure SQL Database logikai kiszolgálóhoz, ennek a portnak nyitva kell lennie a vállalati tűzfalon a sikeres csatlakozáshoz.
+>
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -57,12 +62,16 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
    - **Authentication** (Hitelesítés): Válassza az SQL Server Authentication (SQL Server-hitelesítés) beállítást
    - **Login** (Bejelentkezés): Adja meg a kiszolgálói rendszergazdai fiókot
    - **Password** (Jelszó): Adja meg a kiszolgálói rendszergazdai fiók jelszavát
- 
-    <img src="./media/sql-database-connect-query-ssms/connect.png" alt="connect to server" style="width: 780px;" />
 
-3. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+   ![kapcsolódás a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connect.png)  
 
-    <img src="./media/sql-database-connect-query-ssms/connected.png" alt="connected to server" style="width: 780px;" />
+3. Kattintson a **Beállítások** gombra. A **Connect to database** (Csatlakozás az adatbázishoz) részben adja meg a következőket: **mySampleDatabase** az előzőleg létrehozott adatbázishoz való csatlakozáshoz.
+
+   ![csatlakozás kiszolgálón található adatbázishoz](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
+
+4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+
+   ![csatlakoztatva a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connected.png)  
 
 4. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
@@ -71,7 +80,7 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak lekérdezéséhez.
 
 1. Az Object Explorerben kattintson a jobb gombbal a **mySampleDatabase** adatbázisra, majd kattintson a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
-2. A lekérdezési ablakban írja be a következő lekérdezést a lekérdezésablakba:
+2. A lekérdezési ablakban írja be a következő lekérdezést:
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -88,8 +97,7 @@ Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact
 
 Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az adatok Azure SQL-adatbázisba történő beszúrására.
 
-1. Kattintson az eszköztáron a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
-2. A lekérdezési ablakban írja be a következő lekérdezést a lekérdezésablakba:
+1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -111,7 +119,7 @@ Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transac
            ,GETDATE() );
    ```
 
-3. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre az új sor Product táblába történő beszúrásához.
+2. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre az új sor Product táblába történő beszúrásához.
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
@@ -119,8 +127,7 @@ Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transac
 
 Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak frissítésére.
 
-1. Kattintson az eszköztáron a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
-2. A lekérdezési ablakban írja be a következő lekérdezést a lekérdezésablakba:
+1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -128,7 +135,7 @@ Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transac
    WHERE Name = 'myNewProduct';
    ```
 
-3. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a Product tábla egy megadott sorának frissítéséhez.
+2. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a Product tábla egy megadott sorának frissítéséhez.
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
@@ -136,20 +143,25 @@ Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transac
 
 Használja az [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak törlésére.
 
-1. Kattintson az eszköztáron a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
-2. A lekérdezési ablakban írja be a következő lekérdezést a lekérdezésablakba:
+1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-3. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a Product tábla egy megadott sorának törléséhez.
+2. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a Product tábla egy megadott sorának törléséhez.
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Az SSMS eszközről további információt [az SQL Server Management Studio használatát ismertető cikkben talál](https://msdn.microsoft.com/library/ms174173.aspx).
-- A Visual Studio Code-ból végzett lekérdezésről és adatszerkesztés a [Visual Studio Code-ot](https://code.visualstudio.com/docs) leíró cikkben olvashat
+- A Visual Studio Code használatával történő csatlakozásról és lekérdezésről lásd a [Visual Studio Code használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-vscode.md) szóló témakört.
+- A .NET használatával történő csatlakozásról és lekérdezésről lásd a [.NET használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-dotnet.md) szóló témakört.
+- A PHP-vel történő csatlakozásról és lekérdezésről lásd a [PHP-vel végzett csatlakozásról és lekérdezésről](sql-database-connect-query-php.md) szóló témakört.
+- A Node.js használatával történő csatlakozásról és lekérdezésről lásd a [Node.js használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-nodejs.md) szóló témakört.
+- A Java használatával történő csatlakozásról és lekérdezésről lásd a [Java használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-java.md) szóló témakört.
+- A Python használatával történő csatlakozásról és lekérdezésről lásd a [Python használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-python.md) szóló témakört.
+- A Ruby használatával történő csatlakozásról és lekérdezésről lásd a [Ruby használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-ruby.md) szóló témakört.
 

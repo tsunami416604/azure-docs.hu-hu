@@ -12,7 +12,7 @@
     ```
 2. Adja hozzá a következő Relay `constants` elemeket a `listener.js` osztályhoz a Hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre.
    
-   1. `const ns` – A Relay-névtér
+   1. `const ns` – A továbbítási névtér (Használjon FQDN-t – példa: `{namespace}.servicebus.windows.net`)
    2. `const path` – A hibrid kapcsolat neve
    3. `const keyrule` – Az SAS-kulcs neve
    4. `const key` – Az SAS-kulcs értéke
@@ -71,9 +71,4 @@
         console.log('error' + err);
     });
     ```
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

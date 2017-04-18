@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 04/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.lasthandoff: 04/12/2017
 
 
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 ## <a name="introduction"></a>Bevezetés
-A Visual Studio és az ingyenes Azure SDK for .NET használatával könnyen fejleszthet a Microsoft Azure platformra. Ez az oktatóanyag végigvezeti egy olyan alkalmazás létrehozásának a lépésein, amely több, a helyi környezetben futó Azure-erőforrást használ. A lépések során feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban.
+A Visual Studio és az ingyenes Azure SDK for .NET használatával könnyen fejleszthet a Microsoft Azure platformra. Ez az oktatóanyag végigvezeti egy olyan alkalmazás létrehozásának a lépésein, amely több, a helyi környezetben futó Azure-erőforrást használ.
 
 Az alábbiakat sajátítja majd el:
 
@@ -34,16 +34,16 @@ Az alábbiakat sajátítja majd el:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-Az oktatóanyagban egy Azure-felhőszolgáltatásban hozza létre és futtatja majd a többrétegű alkalmazást. Az előtér egy ASP.NET MVC webes szerepkör, a háttér pedig egy Service Bus-üzenetsort használó feldolgozói szerepkör. Ugyanezen többrétegű alkalmazást létrehozhatja úgy is, hogy az előtér olyan webes projekt legyen, amely a felhőszolgáltatás helyett egy Azure-webhelyen helyezhető üzembe. Ha Azure-webhelyet szeretne előtérként, tekintse meg a [További lépések](#nextsteps) című szakaszt az eltérő lépésekkel kapcsolatos utasításokért. Elvégezheti a [.NET helyszíni/felhőalapú hibridalkalmazással](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) foglalkozó oktatóanyagot is.
+Az oktatóanyagban egy Azure-felhőszolgáltatásban hozza létre és futtatja majd a többrétegű alkalmazást. Az előtér egy ASP.NET MVC webes szerepkör, a háttér pedig egy Service Bus-üzenetsort használó feldolgozói szerepkör. Ugyanezen többrétegű alkalmazást létrehozhatja úgy is, hogy az előtér olyan webes projekt legyen, amely a felhőszolgáltatás helyett egy Azure-webhelyen helyezhető üzembe. Elvégezheti a [.NET helyszíni/felhőalapú hibridalkalmazással](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) foglalkozó oktatóanyagot is.
 
 Az alábbi képernyőfelvételen a kész alkalmazás látható.
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
-A feldolgozási kérés küldéséhez a webes szerepkörben futó előtér felhasználói felületi összetevőnek együtt kell működnie a feldolgozói szerepkörben futó középső rétegbeli logikával. Ez a példa Service Bus közvetítőalapú üzenettovábbítást használ a rétegek közötti kommunikációhoz.
+A feldolgozási kérés küldéséhez a webes szerepkörben futó előtér felhasználói felületi összetevőnek együtt kell működnie a feldolgozói szerepkörben futó középső rétegbeli logikával. Ez a példa Service Bus-üzenetkezelést használ a rétegek közötti kommunikációhoz.
 
-A webes és a középső réteg között használt közvetítőalapú üzenettovábbítás elválasztja a két összetevőt. A közvetlen (vagyis TCP- vagy HTTP-alapú) üzenettovábbítással szemben a webes réteg nem közvetlenül kapcsolódik a középső réteghez, hanem a munkaegységeket üzenetekként küldi le a Service Busba, amely megbízhatóan megőrzi azokat, amíg a középső réteg kész fogadni és feldolgozni azokat.
+A webes és a középső réteg között használt Service Bus-üzenetkezelés elválasztja a két összetevőt. A közvetlen (vagyis TCP- vagy HTTP-alapú) üzenettovábbítással szemben a webes réteg nem közvetlenül kapcsolódik a középső réteghez, hanem a munkaegységeket üzenetekként küldi le a Service Busba, amely megbízhatóan megőrzi azokat, amíg a középső réteg kész fogadni és feldolgozni azokat.
 
 A Service Bus kétfajta entitást biztosít a közvetítőalapú üzenettovábbítás támogatásához: üzenetsorokat és témaköröket. Az üzenetsorok esetén az egyes üzenetsorokra küldött üzeneteket egyetlen fogadó használja fel. A témakörök a közzététel/előfizetés mintát támogatják, amelyben az egyes közzétett üzenetek az adott témakörre való előfizetéssel érhetők el. Az egyes előfizetések logikai módon tartják fenn a saját üzenetsorukat. Az előfizetések konfigurálhatók szűrési szabályokkal is, amelyek az előfizetés üzenetsorába továbbított üzeneteket az adott szűrővel egyező üzenetekre korlátozzák. Az alábbi példa Service Bus-üzenetsorokat használ.
 
@@ -63,7 +63,7 @@ Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
 
 1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
-2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
+2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015-öt használják, de ezek a Visual Studio 2017-ben is működnek.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
 5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban.
@@ -78,7 +78,7 @@ Ebben a szakaszban az alkalmazás előtérrendszerét hozza létre. Először l�
 Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzenetsorba, és megjeleníti az üzenetsor állapotára vonatkozó információkat.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
-1. Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. A Visual Studio rendszergazdai jogosultságokkal történő elindításához kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
+1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
    
    A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
 2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezután kattintson az **OK** gombra.
@@ -98,7 +98,7 @@ Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzene
     ![][16]
 7. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanelen kattintson az **OK** gombra a projekt létrehozásához.
 8. A **Megoldáskezelőben** a **FrontendWebRole** projektben kattintson a jobb gombbal a **References** (Hivatkozások) elemre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
-9. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
+9. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Válassza ki a **WindowsAzure.ServiceBus** csomagot, kattintson a **Telepítés** elemre, és fogadja el a használati feltételeket.
    
    ![][13]
    
@@ -362,7 +362,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
 ## <a name="next-steps"></a>Következő lépések
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
-* [Azure Service Bus][sbmsdn]  
+* [Az Azure Service Bus dokumentációja][sbdocs]  
 * [Service Bus szolgáltatás oldala][sbacom]  
 * [A Service Bus-üzenetsorok használata][sbacomqhowto]  
 
@@ -370,7 +370,7 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 
 * [Többrétegű .NET-alkalmazások tárolótáblák, üzenetsorok és blobok használatával][mutitierstorage]  
 
-[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+[0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
@@ -381,8 +381,8 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 [14]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-33.png
 [15]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-34.png
 [16]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-14.png
-[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-36.png
-[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-37.png
+[17]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app.png
+[18]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-app2.png
 
 [19]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-38.png
 [20]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-39.png
@@ -391,7 +391,7 @@ További információ a többrétegű forgatókönyvekkel kapcsolatban:
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
+[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

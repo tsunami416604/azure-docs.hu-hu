@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 431f73e1be45dec9aa0fe186cb22078f8d95588d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -90,9 +90,9 @@ A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtat
 
     Példa:  
     Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki.
-   E:\ASR Deployment Planner-Preview_v1.1.zip
+   E:\ASR Deployment Planner-Preview_v1.2.zip
 
-    E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
 ## <a name="capabilities"></a>Funkciók
 A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
@@ -145,6 +145,8 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | (Nem kötelező) A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg most, a rendszer a parancs végrehajtásakor rákérdez.|
 | -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához.|
 | -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként Azure US Government- vagy Azure China-beli felhők vannak megadva. |
+
 
 Javasoljuk, hogy legalább 15–30 napig folytassa a virtuális gépek profiljának készítését. A profilkészítés időtartama alatt az ASRDeploymentPlanner.exe alkalmazás folyamatosan fut. A profilkészítés időtartama napokban adható meg az eszközben. Ha csak gyorsan tesztelni kívánja az eszközt, és néhány óráig vagy percig szeretné futtatni a profilkészítést, akkor a nyilvános előzetes verzióban napban kell megadnia az időtartamot. Ha például 30 percig szeretné futtatni a profilkészítést, a bemenet legyen 30/(60*24), azaz 0,021 nap. A minimális profilkészítési idő 30 perc.
 
@@ -281,11 +283,12 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 
 |Paraméter neve | Leírás |
 |-|-|
-| -művelet | Átviteli sebesség lekérdezése |
+| -Művelet | Átviteli sebesség lekérdezése |
 | -Directory | (Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha a könyvtár neve nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. |
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként Azure US Government- vagy Azure China-beli felhők vannak megadva. |
 
 Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a „#” a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárolóból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
 
@@ -477,6 +480,10 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 
 **NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
 
+**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában. 
+
+**Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
+
 ## <a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
 
 ![A nem kompatibilis virtuális gépek Excel-táblázata](./media/site-recovery-deployment-planner/incompatible-vms.png)
@@ -486,6 +493,7 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 **VM Compatibility** (Virtuális gép kompatibilitása): Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép a Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
 
 * A lemez mérete nagyobb 1023 GB-nál. Az Azure Storage jelenleg nem támogatja az 1 TB-nál nagyobb lemezméretet.
+* A rendszerindítás típusa EFI. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típusú virtuális gépeket támogatja.
 
 * A virtuális gép teljes mérete (replikáció + TFO) meghaladja a támogatott tárfiók méretkorlátozását (35 TB). Ez a fajta inkompatibilitás általában akkor fordul elő, ha a virtuális gép egy lemezének egyik teljesítményjellemzője meghaladja a támogatott standard szintű tárolóra vonatkozó Azure- vagy Site Recovery-korlátozásokat. Egy ilyen példány a prémium szintű tárolózónába kényszeríti a virtuális gépet. A prémium szintű tárfiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ezen a példányon a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
 * A forrás IOPS-érték meghaladja a tároló lemezenkénti 5000-es IOPS-korlátját.
@@ -508,6 +516,10 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 **Memory (MB)** (Memória (MB)): A virtuális gép fizikai memóriájának (RAM) mennyisége.
 
 **NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
+
+**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában. 
+
+**Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
 
 
 ## <a name="site-recovery-limits"></a>A Site Recovery korlátai
@@ -546,6 +558,18 @@ A Deployment Planner frissítéséhez tegye a következőt:
 
 
 ## <a name="version-history"></a>Verzióelőzmények
+### <a name="12"></a>1.2
+Frissítve: 2017. április 7.
+
+A következő javításokat tartalmazza:
+
+* Most már minden virtuális gépen ellenőrizhető a rendszerindítási típus (BIOS vagy EFI) annak megállapítása érdekében, hogy az adott gép kompatibilis-e a védelemmel.
+* Most már minden virtuális gép esetében elérhetőek az operációs rendszer típusára vonatkozó adatok a Kompatibilis virtuális gépek és a Nem kompatibilis virtuális gépek munkalapon.
+* A GetThroughput művelet most már támogatott a US Government és a kínai Microsoft Azure-régióban.
+* A rendszer most már néhány új előfeltételt is ellenőriz a vCenter- és az ESXi-kiszolgálók esetében.
+* Hibás jelentéseket eredményezett, ha nem az angol nyelv lett megadva a helyi beállításokban.
+
+
 ### <a name="11"></a>1.1
 Frissítve: 2017. március 9.
 
