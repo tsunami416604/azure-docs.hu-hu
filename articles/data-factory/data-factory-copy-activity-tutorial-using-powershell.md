@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: a95e65db804f1c6cc2927901216ee7a287a911ee
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 09d8634d8d1b16edb058d0bb259b089a54748279
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -53,7 +54,7 @@ Az alábbi táblázat az oktatóanyag során végrehajtott lépéseket tartalmaz
 | --- | --- |
 | [Azure data factory létrehozása](#create-data-factory) |Ebben a lépésben egy Azure data factoryt hoz létre **ADFTutorialDataFactoryPSH** néven. |
 | [Társított szolgáltatások létrehozása](#create-linked-services) |Ebben a lépésben két társított szolgáltatást hoz létre, a **StorageLinkedService** és az **AzureSqlLinkedService** szolgáltatást. A StorageLinkedService egy Azure társzolgáltatást, míg az AzureSqlLinkedService egy Azure SQL Database-t társít az ADFTutorialDataFactoryPSH adat-előállítóhoz. |
-| [Bemeneti és kimeneti adatkészletek létrehozása](#create-datasets) |Ebben a lépésben két adatkészletet határoz meg (**EmpTableFromBlob** és **EmpSQLTable**). Ezek az adatkészletek bemeneti és kimeneti táblákként szolgálnak a következő lépésben létrehozott ADFTutorialPipeline folyamatban található **másolási tevékenységhez**. |
+| [Bemeneti és kimeneti adatkészletek létrehozása](#create-datasets) |Ebben a lépésben két adatkészletet határoz meg (EmpTableFromBlob és EmpSQLTable). Ezek az adatkészletek bemeneti és kimeneti táblákként szolgálnak a következő lépésben létrehozott ADFTutorialPipeline folyamatban található **másolási tevékenységhez**. |
 | [Folyamat létrehozása és futtatása](#create-pipeline) |Ebben a lépésben egy **ADFTutorialPipeline** nevű folyamatot hoz létre az ADFTutorialDataFactoryPSH data factoryban. A folyamat egy másolási tevékenységet használ, amely egy Azure-blobból másol adatokat egy kimeneti Azure-adatbázistáblába. |
 | [Adatkészletek és folyamatok figyelése](#monitor-pipeline) |Ebben a lépésben az Azure PowerShell használatával figyeli meg az adatkészleteket és a folyamatot. |
 
@@ -62,40 +63,57 @@ Ebben a lépésben az Azure PowerShell használatával létrehoz egy **ADFTutori
 
 1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
 
-   a. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
+    Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
 
-           Login-AzureRmAccount   
-   b. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
+    ```PowerShell
+    Login-AzureRmAccount
+    ```   
+   
+    Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
-           Get-AzureRmSubscription
-   c. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje a **&lt;NameOfAzureSubscription**&gt; kifejezést az Azure-előfizetése nevére.
+    ```PowerShell
+    Get-AzureRmSubscription
+    ```
 
-           Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje a **&lt;NameOfAzureSubscription**&gt; kifejezést az Azure-előfizetése nevére.
+
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```
 2. Hozzon létre egy Azure-erőforráscsoportot **ADFTutorialResourceGroup** néven a következő parancs futtatásával:
 
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
+    
     Az oktatóanyag különböző lépései során feltételezzük, hogy az **ADFTutorialResourceGroup** elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, akkor az oktatóanyagban azt használja az ADFTutorialResourceGroup helyett.
 3. Futtassa a **New-AzureRmDataFactory** parancsmagot, és hozzon létre egy új data factoryt **ADFTutorialDataFactoryPSH** néven.  
 
-        New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
-
+    ```PowerShell
+    New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
+    ```
 Vegye figyelembe a következő szempontokat:
 
 * Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet (például sajátnévADFTutorialDataFactoryPSH-ra). Használja ezt az ADFTutorialFactoryPSH helyett az oktatóanyag lépéseinek végrehajtása során. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](data-factory-naming-rules.md) ismertető témakörben találja.
 
-        Data factory name “ADFTutorialDataFactoryPSH” is not available
+    ```
+    Data factory name “ADFTutorialDataFactoryPSH” is not available
+    ```
 * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének vagy rendszergazdájának kell lennie.
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
 * A következő hibaüzenet jelenhet meg: „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret). Tegye a következők egyikét, és próbálkozzon újra a közzététellel:
 
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához.
 
-          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```PowerShell
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
 
-      Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e.
+    Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e.
 
-          Get-AzureRmResourceProvider
+    ```PowerShell
+    Get-AzureRmResourceProvider
+    ```
   * Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com). Navigáljon egy Data Factory-panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
@@ -106,33 +124,34 @@ Ebben a lépésben két társított szolgáltatást hoz létre, a **StorageLinke
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Társított szolgáltatás létrehozása Azure Storage-fiókhoz
 1. Hozzon létre egy **StorageLinkedService.json** nevű JSON-fájlt a **C:\ADFGetStartedPSH** mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADFGetStartedPSH mappát.)
 
-         {
-               "name": "StorageLinkedService",
-               "properties": {
-                 "type": "AzureStorage",
-                 "typeProperties": {
-                       "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-                 }
-               }
-         }
-
+    ```json
+    {
+        "name": "StorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        }
+     }
+    ```
    Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát.
 2. Az **Azure PowerShellben** váltson az **ADFGetStartedPSH** mappára.
 3. Társított szolgáltatásokat a **New-AzureRmDataFactoryLinkedService** parancsmag használatával hozhat létre. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a **ResourceGroupName** és a **DataFactoryName** paraméterek számára. Vagy a **Get-AzureRmDataFactory** használatával lekérhet egy DataFactory-objektumot, és továbbíthatja azt anélkül, hogy minden egyes alkalommal meg kellene adnia a ResourceGroupName és a DataFactoryName értékeket a parancsmag futtatásakor. Futtassa az alábbi parancsot a **Get-AzureRmDataFactory** parancsmag kimenetének hozzárendeléséhez a **$df** változóhoz.
 
-    ```   
+    ```PowerShell   
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
     ```
 
 4. Most futtassa a **New-AzureRmDataFactoryLinkedService** parancsmagot a **StorageLinkedService** társított szolgáltatás létrehozásához.
 
-    ```
+    ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
 
     Ha nem futtatta volna a **Get-AzureRmDataFactory** parancsmagot és rendelte volna hozzá a kimenetet a **$df** változóhoz, meg kellene adnia ResourceGroupName és a DataFactoryName paraméterek értékeit az alábbiak szerint.   
 
-    ```
+    ```PowerShell
     New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
     ```
 
@@ -141,20 +160,21 @@ Ha az oktatóanyag lépései során bezárta az Azure PowerShellt, a következő
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Társított szolgáltatás létrehozása Azure SQL-adatbázishoz
 1. Hozzon létre egy JSON-fájlt AzureSqlLinkedService.json néven az alábbi tartalommal:
 
-         {
-             "name": "AzureSqlLinkedService",
-             "properties": {
-                 "type": "AzureSqlDatabase",
-                 "typeProperties": {
-                       "connectionString": "Server=tcp:<server>.database.windows.net,1433;Database=<databasename>;User ID=<user>@<server>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                 }
-               }
-         }
-
+    ```json
+    {
+        "name": "AzureSqlLinkedService",
+        "properties": {
+            "type": "AzureSqlDatabase",
+            "typeProperties": {
+                "connectionString": "Server=tcp:<server>.database.windows.net,1433;Database=<databasename>;User ID=<user>@<server>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            }
+        }
+     }
+    ```
    A **servername**, **databasename**, **username@servername** és **password** paraméterek értékét cserélje le az Azure SQL-kiszolgáló, az adatbázis és a felhasználói fiók nevére, valamint a jelszóra.
 2. Futtassa az alábbi parancsot egy társított szolgáltatás létrehozásához.
 
-    ```
+    ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
 
@@ -180,64 +200,70 @@ Hajtsa végre az alábbi lépéseket a Blob Storage és az SQL Database előkés
 2. Hozza létre és töltse fel az **emp.txt** nevű szöveges fájlt blobként az **adftutorial** tárolóba.
 3. Hozzon létre egy táblát **emp** néven abban az SQL Database-ben, amelyre az **AzureSqlLinkedService** mutat.
 
-4. Indítsa el a Jegyzettömböt, majd illessze be az alábbi szöveget, és mentse **emp.txt** néven a **C:\ADFGetStartedPSH** mappába a merevlemezen.
+4. Indítsa el a Jegyzettömböt. Másolja be az alábbi szöveget, és mentse **emp.txt** néven a **C:\ADFGetStartedPSH** mappába a merevlemezen.
 
-        John, Doe
-        Jane, Doe
+    ```
+    John, Doe
+    Jane, Doe
+    ```
 5. Az [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/) vagy egy hasonló eszköz használatával hozza létre az **adftutorial** tárolót, és töltse fel az **emp.txt** fájlt a tárolóba.
 
     ![Azure Storage Explorer](media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png)
 6. A következő SQL-szkript használatával hozza létre az **emp** táblát az SQL Database-ben.  
 
-        CREATE TABLE dbo.emp
-        (
-            ID int IDENTITY(1,1) NOT NULL,
-            FirstName varchar(50),
-            LastName varchar(50),
-        )
-        GO
+    ```sql
+    CREATE TABLE dbo.emp
+    (
+        ID int IDENTITY(1,1) NOT NULL,
+        FirstName varchar(50),
+        LastName varchar(50),
+    )
+    GO
 
-        CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+    ```
 
     Ha az SQL Server 2014 van telepítve a számítógépen, kövesse [Az Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studio használatával című cikk Kapcsolódás az SQL Database-hez című 2. lépésében](../sql-database/sql-database-manage-azure-ssms.md) foglalt utasításokat az SQL Database Server kiszolgálóhoz való csatlakozáshoz, és futtassa az SQL-szkriptet.
 
     Ha az ügyfél számára nem engedélyezett az SQL Database Server elérése, be kell állítania az SQL Database Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az ehhez szükséges lépésekért lásd [ezt a cikket](../sql-database/sql-database-configure-firewall-settings.md).
 
 ### <a name="create-an-input-dataset"></a>Bemeneti adatkészlet létrehozása
-A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lépésben létrehozza az **EmpBlobTable** nevű táblát. Ez a tábla **StorageLinkedService** társított szolgáltatás által jelölt Azure Storage blobtárolójára mutat. Ez a blobtároló (**adftutorial**) tartalmazza a bemeneti adatokat az **emp.txt** fájlban.
+A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lépésben létrehozza az **EmpBlobTable** nevű táblát. Ez a tábla **StorageLinkedService** társított szolgáltatás által jelölt Azure Storage blobtárolójára mutat. Ez a blobtároló (adftutorial) tartalmazza a bemeneti adatokat az **emp.txt** fájlban.
 
 1. Hozzon létre egy JSON-fájlt **EmpBlobTable.json** néven a **C:\ADFGetStartedPSH** mappában az alábbi tartalommal:
 
-         {
-           "name": "EmpTableFromBlob",
-           "properties": {
-             "structure": [
-               {
-                 "name": "FirstName",
-                 "type": "String"
-               },
-               {
-                 "name": "LastName",
-                 "type": "String"
-               }
-             ],
-             "type": "AzureBlob",
-             "linkedServiceName": "StorageLinkedService",
-             "typeProperties": {
-               "fileName": "emp.txt",
-               "folderPath": "adftutorial/",
-               "format": {
-                 "type": "TextFormat",
-                 "columnDelimiter": ","
-               }
-             },
-             "external": true,
-             "availability": {
-               "frequency": "Hour",
-               "interval": 1
-             }
-           }
-         }
+    ```json
+    {
+        "name": "EmpTableFromBlob",
+        "properties": {
+            "structure": [
+                {
+                    "name": "FirstName",
+                    "type": "String"
+                },
+                {
+                    "name": "LastName",
+                    "type": "String"
+                }
+            ],
+            "type": "AzureBlob",
+            "linkedServiceName": "StorageLinkedService",
+            "typeProperties": {
+                "fileName": "emp.txt",
+                "folderPath": "adftutorial/",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "external": true,
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            }
+        }
+     }
+    ```
 
    Vegye figyelembe a következő szempontokat:
 
@@ -246,61 +272,65 @@ A tábla egy sémával rendelkező, téglalap alakú adatkészlet. Ebben a lép�
    * A **folderPath** (mappaútvonal) tulajdonság az **adftutorial** tárolóra van állítva.
    * a **fileName** tulajdonság **emp.txt** értékre van állítva. Ha nem adja meg a blob nevét, a tárolóban lévő összes blob adata bemeneti adatnak minősül.  
    * A formátum **type** (típus) tulajdonsága **TextFormat** (Szövegformátum) értékre van állítva.
-   * A szövegfájlban két mező található, a **FirstName** (Utónév) és a **LastName** (Vezetéknév), amelyeket egy vessző karakter választ el (**columnDelimiter**).    
-   * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre). Így a Data Factory óránként keres bemeneti adatokat a megadott blobtároló (**adftutorial**) gyökérmappájában.
+   * A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (columnDelimiter).    
+   * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a frequency (gyakoriság) hour (óra), az interval (időköz) pedig 1 értékre). Így a Data Factory óránként keres bemeneti adatokat a megadott blobtároló (adftutorial) gyökérmappájában.
 
-   Ha nem adja meg a **fileName** (fájlnév) paramétert a **bemeneti** táblához, a bemeneti mappában (**folderPath**) lévő összes fájl és blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-ban, csak a megadott fájl vagy blob minősül bemenetnek.
+   Ha nem adja meg a **fileName** (fájlnév) paramétert a **bemeneti táblához**, a bemeneti mappában (folderPath) lévő összes fájl és blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-ban, csak a megadott fájl vagy blob minősül bemenetnek.
 
    Ha nem adja meg a **fileName** (fájlnév) paramétert a **kimeneti táblához**, a **folderPath** útvonalon előállított fájlok a következő formátumban lesznek elnevezve: Data.<Guid\>.txt (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a **partitionedBy** tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2016-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2016/10/20, a fileName beállítása pedig 08.csv lesz.
 
-         "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-         "fileName": "{Hour}.csv",
-         "partitionedBy":
-         [
-             { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-             { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
-             { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
-             { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
-         ],
+    ```json
+     "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+     "fileName": "{Hour}.csv",
+     "partitionedBy":
+     [
+         { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+         { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+         { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+         { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
+     ],
+    ```
 
    A JSON-tulajdonságokkal kapcsolatos információkért lásd [a JSON-parancsprogramok referenciáját](data-factory-data-movement-activities.md).
 2. A Data Factory-adatkészlet létrehozásához futtassa az alábbi parancsot.
 
-    ```  
+    ```PowerShell  
     New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
     ```
 
 ### <a name="create-an-output-dataset"></a>Kimeneti adatkészlet létrehozása
-Ebben a lépésben egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven. Ez az adatkészlet egy SQL-táblára (**emp**) mutat az Azure SQL Database-ben, amelyet az **AzureSqlLinkedService** jelöl. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába.
+Ebben a lépésben egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven. Ez az adatkészlet egy SQL-táblára (emp) mutat az Azure SQL Database-ben, amelyet az **AzureSqlLinkedService** jelöl. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába.
 
 1. Hozzon létre egy JSON-fájlt **EmpSQLTable.json** néven a **C:\ADFGetStartedPSH** mappában az alábbi tartalommal.
 
-         {
-           "name": "EmpSQLTable",
-           "properties": {
-             "structure": [
-               {
-                 "name": "FirstName",
-                 "type": "String"
-               },
-               {
-                 "name": "LastName",
-                 "type": "String"
-               }
-             ],
-             "type": "AzureSqlTable",
-             "linkedServiceName": "AzureSqlLinkedService",
-             "typeProperties": {
-               "tableName": "emp"
-             },
-             "availability": {
-               "frequency": "Hour",
-               "interval": 1
-             }
-           }
-         }
+    ```json
+    {
+        "name": "EmpSQLTable",
+        "properties": {
+            "structure": [
+                {
+                    "name": "FirstName",
+                    "type": "String"
+                },
+                {
+                    "name": "LastName",
+                    "type": "String"
+                }
+            ],
+            "type": "AzureSqlTable",
+            "linkedServiceName": "AzureSqlLinkedService",
+            "typeProperties": {
+                "tableName": "emp"
+            },
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            }
+        }
+    }
+    ```
 
    Vegye figyelembe a következő szempontokat:
 
@@ -308,10 +338,10 @@ Ebben a lépésben egy kimeneti adatkészletet hoz létre **EmpSQLTable** néven
    * A **linkedServiceName** tulajdonság **AzureSqlLinkedService** értékre van állítva.
    * A **tablename** tulajdonság **emp** értékre van állítva.
    * Az adatbázis emp táblájában három oszlop van, **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
-   * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre). A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
+   * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a frequency (gyakoriság) hour (óra), az interval (időköz) pedig 1 értékre). A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
 2. A data factory-adatkészlet létrehozásához futtassa az alábbi parancsot.
 
-    ```   
+    ```PowerShell   
     New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
     ```
 
@@ -320,48 +350,41 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező fol
 
 1. Hozzon létre egy JSON-fájlt **ADFTutorialPipeline.json** néven a **C:\ADFGetStartedPSH** mappában az alábbi tartalommal:
 
-          {
-           "name": "ADFTutorialPipeline",
-           "properties": {
-             "description": "Copy data from a blob to Azure SQL table",
-             "activities": [
-               {
-                 "name": "CopyFromBlobToSQL",
-                 "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
-                 "type": "Copy",
-                 "inputs": [
-                   {
-                     "name": "EmpTableFromBlob"
-                   }
-                 ],
-                 "outputs": [
-                   {
-                     "name": "EmpSQLTable"
-                   }
-                 ],
-                 "typeProperties": {
-                   "source": {
-                     "type": "BlobSource"
-                   },
-                   "sink": {
-                     "type": "SqlSink"
-                   }
-                 },
-                 "Policy": {
-                   "concurrency": 1,
-                   "executionPriorityOrder": "NewestFirst",
-                   "style": "StartOfInterval",
-                   "retry": 0,
-                   "timeout": "01:00:00"
-                 }
-               }
-             ],
-             "start": "2016-08-09T00:00:00Z",
-             "end": "2016-08-10T00:00:00Z",
-             "isPaused": false
-           }
-         }
-
+    ```json
+    {
+        "name": "ADFTutorialPipeline",
+        "properties": {
+            "description": "Copy data from a blob to Azure SQL table",
+            "activities": [
+                {
+                    "name": "CopyFromBlobToSQL",
+                    "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+                    "type": "Copy",
+                    "inputs": [{ "name": "EmpTableFromBlob" }],
+                    "outputs": [{ "name": "EmpSQLTable" }],
+                    "typeProperties": {
+                        "source": {
+                            "type": "BlobSource"
+                        },
+                        "sink": {
+                            "type": "SqlSink"
+                        }
+                    },
+                    "Policy": {
+                        "concurrency": 1,
+                        "executionPriorityOrder": "NewestFirst",
+                        "style": "StartOfInterval",
+                        "retry": 0,
+                        "timeout": "01:00:00"
+                    }
+                }
+            ],
+            "start": "2016-08-09T00:00:00Z",
+            "end": "2016-08-10T00:00:00Z",
+            "isPaused": false
+        }
+     }
+    ```
    Vegye figyelembe a következő szempontokat:
 
    * A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
@@ -377,7 +400,7 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező fol
    A JSON-tulajdonságokkal kapcsolatos további információkért lásd [a JSON-parancsprogramok referenciáját](data-factory-data-movement-activities.md).
 2. A data factory-tábla létrehozásához futtassa az alábbi parancsot.
 
-    ```   
+    ```PowerShell   
     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
@@ -388,13 +411,13 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
 
 1. Futtassa a **Get-AzureRmDataFactory** parancsot, és rendelje a kimenetet egy $df változóhoz.
 
-    ```  
+    ```PowerShell  
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
     ```
 
 2. A **Get-AzureRmDataFactorySlice** parancs futtatásával hívja le az összes szelet részleteit a folyamat **EmpSQLTable** nevű kimeneti táblájában.  
 
-    ```   
+    ```PowerShell   
     Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
     ```
 
@@ -404,7 +427,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
 
    **Példa a kimenetre:**
 
-    ```   
+    ``` 
      ResourceGroupName : ADFTutorialResourceGroup
      DataFactoryName   : ADFTutorialDataFactoryPSH
      TableName         : EmpSQLTable
@@ -417,30 +440,30 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     ```
 3. A **Get-AzureRmDataFactoryRun** parancs futtatásával kérje le egy **adott** szelet tevékenységfuttatásainak részleteit. Módosítsa a **StartDateTime** paraméter értékét, hogy megegyezzen a kimenetből származó szelet **Start** (Kezdés) idejével. A **StartDateTime** értékét [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni.
 
-    ```  
+    ```PowerShell  
     Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
     ```
 
    A következő mintához hasonló kimenetnek kell megjelennie:
 
-    ```   
-     Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable
-     ResourceGroupName   : ADFTutorialResourceGroup
-     DataFactoryName     : ADFTutorialDataFactoryPSH
-     TableName           : EmpSQLTable
-     ProcessingStartTime : 8/9/2016 11:03:28 PM
-     ProcessingEndTime   : 8/9/2016 11:04:36 PM
-     PercentComplete     : 100
-     DataSliceStart      : 8/9/2016 10:00:00 PM
-     DataSliceEnd        : 8/9/2016 11:00:00 PM
-     Status              : Succeeded
-     Timestamp           : 8/9/2016 11:03:28 PM
-     RetryAttempt        : 0
-     Properties          : {}
-     ErrorMessage        :
-     ActivityName        : CopyFromBlobToSQL
-     PipelineName        : ADFTutorialPipeline
-     Type                : Copy
+    ```  
+    Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable
+    ResourceGroupName   : ADFTutorialResourceGroup
+    DataFactoryName     : ADFTutorialDataFactoryPSH
+    TableName           : EmpSQLTable
+    ProcessingStartTime : 8/9/2016 11:03:28 PM
+    ProcessingEndTime   : 8/9/2016 11:04:36 PM
+    PercentComplete     : 100
+    DataSliceStart      : 8/9/2016 10:00:00 PM
+    DataSliceEnd        : 8/9/2016 11:00:00 PM
+    Status              : Succeeded
+    Timestamp           : 8/9/2016 11:03:28 PM
+    RetryAttempt        : 0
+    Properties          : {}
+    ErrorMessage        :
+    ActivityName        : CopyFromBlobToSQL
+    PipelineName        : ADFTutorialPipeline
+    Type                : Copy
     ```
 
 A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory-parancsmagok referenciáját][cmdlet-reference].
@@ -479,9 +502,4 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

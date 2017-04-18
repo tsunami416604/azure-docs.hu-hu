@@ -1,5 +1,5 @@
 ---
-title: "Azure AD tartományi szolgáltatások: Virtuális hálózat létrehozása vagy kiválasztása | Microsoft Docs"
+title: "Active Directory Domain Services: Virtuális hálózat létrehozása vagy kiválasztása | Microsoft Docs"
 description: "Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
 services: active-directory-ds
 documentationcenter: 
@@ -15,56 +15,57 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9e933774e3b618b1584b4f24a0491eda49e42077
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: cb372232492e8f98ff1543798b92b4b60fc25021
+ms.lasthandoff: 04/12/2017
 
 
 ---
-# <a name="create-or-select-a-virtual-network-for-azure-ad-domain-services"></a>Virtuális hálózat létrehozása vagy kiválasztása az Azure AD tartományi szolgáltatásokhoz
-## <a name="guidelines-to-select-an-azure-virtual-network"></a>Irányelvek Azure-alapú virtuális hálózat kiválasztásához
-> [!NOTE]
-> **Előkészületek**: Tekintse át a [Hálózati megfontolások az Azure AD tartományi szolgáltatásokhoz](active-directory-ds-networking.md) című dokumentumot.
->
->
+# <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>Virtuális hálózat létrehozása vagy kiválasztása az Azure Active Directory Domain Services-hez
+## <a name="before-you-begin"></a>Előkészületek
+Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](active-directory-ds-networking.md) című dokumentumot.
 
 ## <a name="task-2-create-an-azure-virtual-network"></a>2. feladat: Azure-alapú virtuális hálózat létrehozása
-A következő konfigurálási feladat egy Azure-alapú virtuális hálózat és azon belül egy alhálózat létrehozása. Engedélyezze az Azure AD tartományi szolgáltatásokat a virtuális hálózatának ezen az alhálózatán. Ezt a lépést kihagyhatja, ha egy már létező virtuális hálózatot szeretne használni.
+A következő konfigurálási feladat egy Azure-alapú virtuális hálózat és azon belül egy alhálózat létrehozása. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Ha létező virtuális hálózatot szeretne használni, kihagyhatja ezt a lépést.
 
 > [!NOTE]
-> Győződjön meg arról, hogy az Azure AD tartományi szolgáltatásokkal való használathoz létrehozott vagy kiválasztott Azure-alapú virtuális hálózat az Azure AD tartományi szolgáltatások által támogatott Azure-régióhoz tartozik. [Az Azure régiói](https://azure.microsoft.com/regions/#services/) lapon találja azoknak az Azure-régióknak a felsorolását, amelyekben elérhetők az Azure AD tartományi szolgáltatások.
+> Győződjön meg arról, hogy az Active Directory Domain Services-szel való használathoz létrehozott vagy kiválasztott Azure-alapú virtuális hálózat az Azure Active Directory Domain Services által támogatott Azure-régióhoz tartozik. Annak megállapításához, hogy az Azure Active Directory Domain Services mely régiókban érhető el, lásd: [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/).
 >
->
+>Jegyezze fel a virtuális hálózat nevét annak érdekében, hogy valóban a megfelelő virtuális hálózatot válassza majd ki, amikor egy későbbi konfigurációs lépésben engedélyezi az Azure Active Directory Domain Services-t.
 
-Jegyezze fel a virtuális hálózat nevét, hogy valóban a megfelelő virtuális hálózatot válassza majd ki, amikor egy későbbi konfigurációs lépésben engedélyezi az Azure AD tartományi szolgáltatásokat.
 
-A következő konfigurációs lépések végrehajtásával hozza létre azt az Azure-alapú virtuális hálózatot, amelyben engedélyezni szeretné az Azure AD tartományi szolgáltatásokat.
+Kövesse az alábbi konfigurációs utasításokat egy olyan Azure virtuális hálózat létrehozása érdekében, amelyben engedélyezni kívánja az Azure Active Directory Domain Services-t:
 
-1. Nyissa meg a **klasszikus Azure-portált** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
-2. Válassza a **Networks** (Hálózat) csomópontot a bal oldali panelen.
+1. Nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
+2. A bal oldali panelen válassza ki a **Networks** (Hálózatok) elemet.
 
-    ![Hálózatok csomópont](./media/active-directory-domain-services-getting-started/networks-node.png)
-3. Kattintson a lap alján lévő feladatpanelen található **ÚJ** gombra.
+    ![Networks (Hálózatok) csomópont](./media/active-directory-domain-services-getting-started/networks-node.png)  
+    Ekkor megnyílik a **Virtual Networks** (Virtuális hálózatok) ablak.
+3. Kattintson a lap alján lévő feladatpanelen található **New** (Új) gombra.
 
-    ![Virtuális hálózatok csomópont](./media/active-directory-domain-services-getting-started/virtual-networks.png)
-4. A **Hálózati szolgáltatások** csomópontban kattintson a **Virtuális hálózat** gombra.
-5. Kattintson a **Gyors létrehozás** elemre egy virtuális hálózat létrehozásához.
-
+    ![Virtual Networks (Virtuális hálózatok) ablak](./media/active-directory-domain-services-getting-started/virtual-networks.png)
+4. Kattintson a **Network Services** (Hálózati szolgáltatások), majd a **Virtual Network** (Virtuális hálózat) elemre.
+    
     ![Virtuális hálózat – gyors létrehozás](./media/active-directory-domain-services-getting-started/virtual-network-quickcreate.png)
-6. Adjon **nevet** a virtuális hálózatnak. A **címtartományt** vagy a **virtuális gépek maximális számát** is konfigurálhatja a létrehozandó hálózathoz. A **DNS-kiszolgáló** beállítását a „Nincs” értéken hagyhatja. Az Azure AD tartományi szolgáltatások engedélyezése után frissítheti a DNS-kiszolgáló beállítását.
-7. Ügyeljen arra, hogy támogatott Azure-régiót kell kiválasztania a **Hely** legördülő menüben. [Az Azure régiói](https://azure.microsoft.com/regions/#services/) lapon találja azoknak az Azure-régióknak a felsorolását, amelyekben elérhetők az Azure AD tartományi szolgáltatások.
+5. Kattintson a **Quick Create** (Gyors létrehozás) elemre egy virtuális hálózat létrehozásához.
+    
+6. A **Name** (Név) mezőben adjon nevet a virtuális hálózatnak, és – ha szükségesnek ítéli –, tegye a következőket: 
+    * Választhat, hogy **címtartományt** vagy a **virtuális gépek maximális számát** konfigurálja a létrehozandó hálózathoz. 
+    * A **DNS-kiszolgáló** beállítását a **Nincs** értéken hagyhatja. Az Azure Active Directory Domain Services engedélyezése után frissítheti a beállítást.
+7. A **hely** legördülő listájában válasszon egy támogatott Azure-régiót.  
+    Annak megállapításához, hogy az Azure Active Directory Domain Services mely régiókban érhető el, lásd: [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/).
 8. Kattintson a **Virtuális hálózat létrehozása** gombra a virtuális hálózat létrehozásához.
 
-    ![Hozzon létre virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/create-vnet.png)
-9. A virtuális hálózat létrehozása után jelölje ki a virtuális hálózatot, és kattintson a **KONFIGURÁLÁS** fülre.
+    ![Virtuális hálózat létrehozása az Azure Active Directory Domain Services-hez](./media/active-directory-domain-services-getting-started/create-vnet.png)
+9. A virtuális hálózat létrehozása után jelölje ki a virtuális hálózatot, és kattintson a **Konfigurálás** elemre.
 
     ![Alhálózat létrehozása](./media/active-directory-domain-services-getting-started/create-vnet-properties.png)
-10. Lépjen a **Virtuális hálózat címterei** szakaszra. Kattintson az **Alhálózat hozzáadása** gombra, és adja meg az **AaddsSubnet** nevű alhálózatot. Az alhálózat létrehozásához kattintson a **Mentés** gombra.
+10. A **Virtual Network címterei** alatt kattintson **alhálózat felvétele** elemre, majd adja meg az **AaddsSubnet** nevű alhálózatot. 
 
-    ![Hozzon létre egy alhálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/create-vnet-add-subnet.png)
+    ![Alhálózat létrehozása az Azure Active Directory Domain Services-hez](./media/active-directory-domain-services-getting-started/create-vnet-add-subnet.png)
 
-<br>
+11. Az alhálózat létrehozásához kattintson a **Mentés** gombra.
 
-## <a name="task-3---enable-azure-ad-domain-services"></a>3. feladat – Az Azure AD tartományi szolgáltatások engedélyezése
-A következő konfigurációs feladat [az Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started-enableaadds.md).
+## <a name="next-steps"></a>Következő lépések
+3. feladat: [Az Azure Active Directory Domain Services engedélyezése](active-directory-ds-getting-started-enableaadds.md)
 

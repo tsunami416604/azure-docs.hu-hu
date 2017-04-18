@@ -9,9 +9,9 @@ ms.topic: hero-article
 ms.service: app-service-web
 manager: erikre
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: d616ca49da7a909a1a104409c5845f39c4a5377a
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: a12eab1f7bc4177f659771d58a58f749507c994c
+ms.lasthandoff: 04/12/2017
 
 ---
 # <a name="connect-a-web-app-to-a-content-delivery-network"></a>Webapp csatlakoztatása tartalomkézbesítési hálózathoz
@@ -19,7 +19,7 @@ ms.lasthandoff: 04/04/2017
 Az oktatóanyag során létre fog hozni egy Azure CDN-profilt és egy Azure CDN-végpontot a webappban lévő statikus fájlok kézbesítéséhez az Azure CDN POP-helyeken keresztül.
 
 > [!TIP]
-> Ellenőrizze az [Azure CDN POP-helyek](https://docs.microsoft.com/en-us/azure/cdn/cdn-pop-locations) frissítéseinek aktuális listáját.
+> Ellenőrizze az [Azure CDN POP-helyek](https://docs.microsoft.com/en-us/azure/cdn/cdn-pop-locations) aktuális listáját.
 >
 
 ## <a name="step-1---login-to-azure-portal"></a>1. lépés – Belépés az Azure Portalba

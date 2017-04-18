@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/27/2017
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: a469a6e29e07029b7eab4e80e132b9276c5b18df
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: 53bb5d64e27458b4a88981bd20ea4236b31431ec
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -87,7 +87,7 @@ Az összekötők műveleteket is biztosítanak, amelyek felhasználhatók az alk
 
 ## <a name="custom-connectors-and-certification-for-microsoft-azure"></a>Egyéni összekötők és tanúsítványok a Microsoft Azure-hoz
 
-Szeretne saját összekötőket létrehozni, vagy nem találja a kívánt összekötőt? [Kiterjesztheti a Logic Apps platformot](../logic-apps/logic-apps-create-api-app.md), és létrehozhat API Apps-alkalmazásokat, amelyek hívásokat indítanak az olyan API-kba vagy rendszerekbe, amelyek nem érhetők el beépített összekötőkként. Emellett elküldheti az API Apps-alkalmazásait Microsoft Azure-hitelesítésre, majd elérhetővé teheti őket az Azure-on keresztül. Tudjon meg többet a megoldások hitelesítéséről a [Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) programban.
+Ha egyéni kódot futtató vagy összekötőként nem elérhető API-kba szeretne hívásokat indítani, REST-alapú API-alkalmazások egyéni összekötőként való létrehozásával [kiterjesztheti a Logic Apps platformot](../logic-apps/logic-apps-create-api-app.md). Ha szeretné az Azure-ban nyilvánossá és használhatóvá tenni egyéni API-alkalmazásait, nevezze azokat a [Microsoft Azure Certified programba](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
 
 ## <a name="get-help"></a>Segítségkérés
 

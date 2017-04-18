@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/22/2017
+ms.date: 04/07/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 48d9d8ae97eb763932dd6a59a7df01ae92c92eff
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
+ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -33,7 +33,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
-| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató összes Azure-régió<br></br> A prémium szintű Storage-régiók olyan régiók, amelyek a *Lemezes tárolás* sornak felelnek meg az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/en-us/regions/services) című lapon található listában. |
+| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot és a DS3 csomagú Azure-beli virtuális gépeket támogató összes Azure-régió<br></br> [Ebben a listában](https://azure.microsoft.com/en-us/regions/services) ellenőrizheti, hogy a *Virtuális gépek > DS-sorozat* és a *Storage > Disk Storage* termékek egyaránt elérhetők-e az adott régióban. |
 | **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/storage-premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 

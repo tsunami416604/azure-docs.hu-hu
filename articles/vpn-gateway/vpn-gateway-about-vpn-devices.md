@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2017
+ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: ab0a0ecba9d9e930cbc0ec5d4b83e252d2e50f7b
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -33,7 +33,7 @@ Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigur
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
 
-* Az Azure VPN Gateway esetében terminológiai változás történt. Nagy valószínűséggel mindkét kifejezéssel találkozni fog. A funkció nem, csak a nevek változtak.
+* Az Azure VPN Gateway esetében terminológiai változás történt. A funkció nem, csak a nevek változtak.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
 * A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
@@ -45,7 +45,7 @@ Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigur
 ## <a name="devicetable"></a>Ellenőrzött VPN-eszközök
 Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti.
 
-A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
+A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat.  A konfigurációs utasításokra mutató hivatkozásokat képességeinkhez mérten biztosítjuk. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
 |**Szállító**          |**Eszközcsalád**     |**Operációs rendszer minimális verziója** |**Házirendalapú** |**Útvonalalapú** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -59,7 +59,6 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú*: IOS 15.1 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurációs minták*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
-| Dell SonicWALL |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 |BIG-IP sorozat |12.0 |[Konfigurációs útmutató](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurációs útmutató](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |[Konfigurációs útmutató](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |[Konfigurációs útmutató](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
 | Internet Initiative Japan (IIJ) |SEIL sorozat |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Konfigurációs útmutató](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Nem kompatibilis |
@@ -71,6 +70,7 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Open Systems AG |Mission Control biztonsági átjáró |N/A |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |(Hamarosan elérhető) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
+| SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | WatchGuard |Összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 (*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
@@ -100,11 +100,11 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | &lt;SP_AzureGatewayIpAddress&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon az **átjáró IP-címe** név alatt található meg. |
 | &lt;SP_PresharedKey&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon a Kulcskezelés cím alatt található meg. |
 
-## <a name="IPSec"></a>IPsec/IKE-paraméterek
+## <a name="ipsec"></a>IPsec/IKE-paraméterek
 > [!NOTE]
-> Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására az Azure VPN Gateway felületén. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni.
+> Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására az Azure VPN Gateway felületén. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
 > 
-> Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
+>
 
 Az alábbi táblázatokban:
 
@@ -119,15 +119,15 @@ Az alábbi táblázatokban:
 | Diffie-Hellman Group  |2. csoport (1024 bites) |2. csoport (1024 bites) |
 | Hitelesítési módszer |Előre megosztott kulcs     |Előre megosztott kulcs     |
 | Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
-| SA élettartama           |28&800; másodperc     |28&800; másodperc     |
+| SA élettartama           |28 800 másodperc     |28 800 másodperc     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Az IKE 2. fázis (Gyors mód) paraméterei
 | **Tulajdonság**                  |**Házirendalapú**| **Útvonalalapú**                              |
 | ---                           | ---           | ---                                         |
 | IKE verziószám                   |IKEv1          |IKEv2                                        |
 | Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
-| SA élettartama (Idő)            |3&600; másodperc  |27&000; másodperc                                |
-| SA élettartama (bájt)           |102&400;&000; kB | -                                           |
+| SA élettartama (Idő)            |3 600 másodperc  |27 000 másodperc                                |
+| SA élettartama (bájt)           |102 400 000 kB | -                                           |
 | Sérülés utáni titkosságvédelem (PFS) |Nem             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
 | Kapcsolat megszakadásának észlelése (DPD)     |Nem támogatott  |Támogatott                                    |
 
@@ -182,6 +182,8 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 > [!IMPORTANT]
 > Ezek az ismert kompatibilitási problémák a külső gyártótól származó VPN-eszközök és az Azure VPN-átjárók között merülhetnek fel. Az Azure csapata folyamatosan együttműködik a szállítókkal az itt felsorolt problémák megoldása érdekében. A hibák kijavítása után ez az oldal frissül a legfrissebb információkkal. Kérjük, időnként látogasson vissza ide.
+>
+>
 
 ###<a name="feb-16-2017"></a>2017. február 16.
 

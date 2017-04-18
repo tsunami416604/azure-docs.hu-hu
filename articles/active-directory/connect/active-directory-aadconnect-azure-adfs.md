@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2017
-ms.author: anandy;billmath
+ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: ed3b3b114af2844405779f65fa8c3e89ae6a6c35
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
+ms.openlocfilehash: a6a8300046a0f17061e74b793b254cdca1e1a265
+ms.lasthandoff: 04/10/2017
 
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
@@ -119,8 +119,8 @@ Hozza létre a következő rendelkezésre állási csoportokat:
 | contosodcset |Tartományvezérlő/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
 
-### <a name="4----deploy-virtual-machines"></a>4.    Virtuális gépek üzembe helyezése
-A következő lépés, hogy üzembe helyezzük a virtuális gépeket, amelyek futtatni fogják az infrastruktúra különböző szerepköreit. Mindegyik rendelkezésre állási csoportban használjon legalább két gépet. Az alapszintű üzemelő példányhoz hozzon létre hat virtuális gépet.
+### <a name="4-deploy-virtual-machines"></a>4. Virtuális gépek üzembe helyezése
+A következő lépés, hogy üzembe helyezzük a virtuális gépeket, amelyek futtatni fogják az infrastruktúra különböző szerepköreit. Mindegyik rendelkezésre állási csoportban használjon legalább két gépet. Az alapszintű üzemelő példányhoz hozzon létre négy virtuális gépet.
 
 | Gép | Szerepkör | Alhálózat | Rendelkezésre állási csoport | Tárfiók | IP-cím |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -146,8 +146,8 @@ Az üzembe helyezés befejezését követően a virtuális gépek paneljének az
 * Léptesse elő a két kiszolgálót replika tartományvezérlőnek DNS-sel.
 * Konfigurálja az AD FS-kiszolgálókat: telepítse az AD FS szerepkört a Kiszolgálókezelővel.
 
-### <a name="6----deploying-internal-load-balancer-ilb"></a>6.    A belső terheléselosztó (ILB) üzembe helyezése
-**6.1.    Az ILB létrehozása**
+### <a name="6-deploying-internal-load-balancer-ilb"></a>6. A belső terheléselosztó (ILB) üzembe helyezése
+**6.1. Az ILB létrehozása**
 
 ILB üzembe helyezéséhez válassza a Terheléselosztók lehetőséget az Azure Portal webhelyen, majd kattintson a hozzáadás (+) ikonra.
 
@@ -172,7 +172,7 @@ Miután rákattint a Létrehozás gombra, a rendszer üzembe helyezi az ILB-t. E
 
 A következő lépés a háttérkészlet és a háttérmintavétel beállítása.
 
-**6.2.    Az ILB-háttérkészlet konfigurálása**
+**6.2. Az ILB-háttérkészlet konfigurálása**
 
 Válassza ki az újonnan létrehozott ILB-t a Terheléselosztók panelen. Megnyílik a beállítások panelje. 
 
@@ -183,7 +183,7 @@ Válassza ki az újonnan létrehozott ILB-t a Terheléselosztók panelen. Megny�
 
 ![Az ILB-háttérkészlet konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment3.png)
 
-**6.3.    A mintavétel konfigurálása**
+**6.3. A mintavétel konfigurálása**
 
 Az ILB beállítási paneljén válassza a Mintavételek lehetőséget.
 
@@ -192,7 +192,7 @@ Az ILB beállítási paneljén válassza a Mintavételek lehetőséget.
 
 ![Az ILB-mintavétel konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
-**6.4.    Terheléselosztási szabályok létrehozása**
+**6.4. Terheléselosztási szabályok létrehozása**
 
 A forgalom hatékony elosztása érdekében állítson be terheléselosztási szabályokat az ILB-n. Terheléselosztási szabály létrehozása: 
 
@@ -202,23 +202,23 @@ A forgalom hatékony elosztása érdekében állítson be terheléselosztási sz
 
 ![ILB-terheléselosztási szabályok konfigurálása](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
-**6.5.    A DNS frissítése az ILB-vel**
+**6.5. A DNS frissítése az ILB-vel**
 
 Lépjen be a DNS-kiszolgálóra, és hozzon létre egy CNAME-et az ILB számára. A CNAME az összevonási szolgáltatáshoz tartozzon, az IP-cím pedig mutasson az ILB IP-címére. Ha például az ILB DIP-címe 10.3.0.8, a telepített összevonási szolgáltatás pedig az fs.contoso.com, hozzon létre egy CNAME-et az fs.contoso.com-hoz, és mutasson a 10.3.0.8 címre.
 Ezzel garantálja, hogy az fs.contoso.com-ot érintő kommunikáció eljut az ILB-re, és a megfelelő utat járja be.
 
-### <a name="7----configuring-the-web-application-proxy-server"></a>7.    A webalkalmazásproxy-kiszolgálók konfigurálása
-**7.1.    A webalkalmazásproxy-kiszolgálók konfigurálása az AD FS-kiszolgálók elérésére**
+### <a name="7-configuring-the-web-application-proxy-server"></a>7. A webalkalmazásproxy-kiszolgálók konfigurálása
+**7.1. A webalkalmazásproxy-kiszolgálók konfigurálása az AD FS-kiszolgálók elérésére**
 
-Hogy a webalkalmazásproxy-kiszolgálók el tudják érni az ILB mögötti AD FS-kiszolgálókat, hozzon létre egy rekordot a %systemroot%\system32\drivers\etc\hosts könyvtárban az ILB számára. A megkülönböztető név (DN) legyen az összevonási szolgáltatás neve, például fs.contoso.com. IP-címként pedig az ILB IP-címét (a példában&10;.3.0.8) adja meg.
+Hogy a webalkalmazásproxy-kiszolgálók el tudják érni az ILB mögötti AD FS-kiszolgálókat, hozzon létre egy rekordot a %systemroot%\system32\drivers\etc\hosts könyvtárban az ILB számára. A megkülönböztető név (DN) legyen az összevonási szolgáltatás neve, például fs.contoso.com. IP-címként pedig az ILB IP-címét (a példában 10.3.0.8) adja meg.
 
-**7.2.    A webalkalmazás-proxy szerepkör telepítése**
+**7.2. A webalkalmazás-proxy szerepkör telepítése**
 
 Miután beállította, hogy a webalkalmazásproxy-kiszolgálók képesek legyenek elérni az ILB mögötti AD FS-kiszolgálókat, telepítheti a webalkalmazásproxy-kiszolgálókat. A webalkalmazásproxy-kiszolgálókat nem szükséges csatlakoztatni a tartományhoz. Telepítse a két webalkalmazásproxy-kiszolgálóra a webalkalmazás-proxy szerepköröket. Ehhez válassza a Távelérés szerepkört. A kiszolgálókezelő végigvezeti a WAP telepítésén.
 A WAP üzembe helyezésével kapcsolatos további információkért olvassa el az [Install and Configure the Web Application Proxy Server](https://technet.microsoft.com/library/dn383662.aspx) (A webalkalmazás-proxy kiszolgálók telepítése és konfigurálása) című cikket.
 
-### <a name="8----deploying-the-internet-facing-public-load-balancer"></a>8.    Az internetre irányuló (nyilvános) terheléselosztó üzembe helyezése
-**8.1.    Az internetre irányuló (nyilvános) terheléselosztó létrehozása**
+### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Az internetre irányuló (nyilvános) terheléselosztó üzembe helyezése
+**8.1.  Az internetre irányuló (nyilvános) terheléselosztó létrehozása**
 
 Az Azure Portal webhelyen válassza a Terheléselosztók lehetőséget, majd kattintson a Hozzáadás gombra. A Terheléselosztó létrehozása panelen adja meg az alábbi adatokat:
 
@@ -232,7 +232,7 @@ Az üzembe helyezést követően a terheléselosztó megjelenik a Terheléselosz
 
 ![Terheléselosztók listája](./media/active-directory-aadconnect-azure-adfs/elbdeployment2.png)
 
-**8.2.    DNS-címke hozzárendelése a nyilvános IP-címhez**
+**8.2. DNS-címke hozzárendelése a nyilvános IP-címhez**
 
 A Terheléselosztók panelen kattintson az újonnan létrehozott terheléselosztó bejegyzésére. Megnyílik a konfigurációs panel. A nyilvános IP-cím DNS-címkéjének beállításához kövesse az alábbi lépéseket:
 
@@ -244,26 +244,26 @@ A Terheléselosztók panelen kattintson az újonnan létrehozott terheléseloszt
 
 ![Az internetre irányuló terheléselosztó konfigurálása (DNS)](./media/active-directory-aadconnect-azure-adfs/elbdeployment4.png)
 
-**8.3.    Az internetre irányuló (nyilvános) terheléselosztó háttérkészletének konfigurálása** 
+**8.3. Az internetre irányuló (nyilvános) terheléselosztó háttérkészletének konfigurálása** 
 
 Az internetre irányuló (nyilvános) terheléselosztó háttérkészletének a WAP-kiszolgálóknál használt rendelkezésre állási csoportként való beállításához végezze el ugyanazokat a lépéseket, amelyeket a belső terheléselosztó létrehozásakor bemutattunk. Példa: contosowapset.
 
 ![Az internetre irányuló terheléselosztó háttérkészletének konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment5.png)
 
-**8.4.    Mintavétel konfigurálása**
+**8.4. Mintavétel konfigurálása**
 
 A WAP-kiszolgálók háttérkészletéhez tartozó mintavétel konfigurálásához végezze el a belső terheléselosztó konfigurálására vonatkozó lépéseket.
 
 ![Az internetre irányuló terheléselosztó mintavételének konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment6.png)
 
-**8.5.    Terheléselosztási szabály(ok) létrehozása**
+**8.5. Terheléselosztási szabály(ok) létrehozása**
 
 A 443-as TCP-portra vonatkozó terheléselosztási szabályok konfigurálásához végezze el az ILB esetében ismertetett lépéseket.
 
 ![Az internetre irányuló terheléselosztó terheléselosztási szabályainak konfigurálása](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9----securing-the-network"></a>9.    A hálózat biztonságának beállítása
-**9.1.    A belső alhálózat biztonságának beállítása**
+### <a name="9-securing-the-network"></a>9. A hálózat biztonságának beállítása
+**9.1. A belső alhálózat biztonságának beállítása**
 
 Általánosságban elmondható, hogy a belső alhálózat biztonságának kialakításához a következő szabályok szükségesek (a lenti sorrendben).
 
@@ -276,7 +276,7 @@ A 443-as TCP-portra vonatkozó terheléselosztási szabályok konfigurálásáho
 
 [comment]: <> (![INT-hozzáférési szabályok (bejövő)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [comment]: <> (![INT-hozzáférési szabályok (kimenő)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 
-**9.2.    A DMZ-alhálózat biztonságának beállítása**
+**9.2. A DMZ-alhálózat biztonságának beállítása**
 
 | Szabály | Leírás | Folyamat |
 |:--- |:--- |:---:|
@@ -292,7 +292,7 @@ A 443-as TCP-portra vonatkozó terheléselosztási szabályok konfigurálásáho
 > 
 > 
 
-### <a name="10----test-the-ad-fs-sign-in"></a>10.    Az AD FS-bejelentkezés tesztelése
+### <a name="10-test-the-ad-fs-sign-in"></a>10. Az AD FS-bejelentkezés tesztelése
 Az AD FS legegyszerűbben az IdpInitiatedSignon.aspx oldal segítségével tesztelhető. Ahhoz, hogy ez megvalósítható legyen, engedélyezze az IdpInitiatedSignOn tulajdonságot az AD FS tulajdonságaiban. Az AD FS beállításának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Az engedélyezéshez futtassa az alábbi parancsmagot az AD FS-kiszolgálón a PowerShell segítségével.

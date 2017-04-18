@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2017
+ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
+ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
+ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
+ms.lasthandoff: 04/12/2017
 
 
 ---
@@ -49,7 +50,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
   3. Szerezze be a **bérlőazonosítót**. 
   4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
 * Telepítse az [Azure PowerShellt](/powershell/azureps-cmdlets-docs).  
-* Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
+* Indítsa el a **PowerShellt**, és végezze el az alábbi lépéseket. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
   
   1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     
@@ -66,7 +67,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-  4. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben.  
+  4. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben:  
 
     ```PowerShell     
       New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -172,10 +173,10 @@ A JSON-definíció az **AzureBlobInput** nevű adatkészletet határozza meg, am
 * A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. 
 * A **folderPath** értéke az **adftutorial** tároló lesz, a **fileName** értéke pedig az **emp.txt**.  
 * A formátum **type** (típus) tulajdonsága **TextFormat** (Szövegformátum) értékre van állítva.
-* A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (**columnDelimiter**).    
-* Az **availability** értéke **hourly** lesz (a frequency értéke hour, az interval értéke pedig 1). Ez azt jelenti, hogy a Data Factory óránként keres bemeneti adatokat a megadott Blob-tároló (**adftutorial**) gyökérkönyvtárában. 
+* A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (columnDelimiter)    
+* Az **availability** értéke **hourly** lesz (a frequency értéke hour, az interval értéke pedig 1). Ez azt jelenti, hogy a Data Factory óránként keres bemeneti adatokat a megadott Blob-tároló (adftutorial) gyökérkönyvtárában. 
 
-Ha nem adja meg a **fileName** paramétert a bemeneti adatkészlethez, a bemeneti mappában (**folderPath**) található összes fájl/blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-ban, csak a megadott fájl/blob minősül bemenetnek.
+Ha nem adja meg a **fileName** paramétert a bemeneti adatkészlethez, a bemeneti mappában (folderPath) található összes fájl/blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-ban, csak a megadott fájl/blob minősül bemenetnek.
 
 Ha nem adja meg a **fileName** paramétert a **kimeneti táblához**, a **folderPath** útvonalon előállított fájlok elnevezéséhez a rendszer a következő formátumot használja: Data.&lt;Guid&gt;.txt (példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
@@ -230,7 +231,7 @@ Vegye figyelembe a következő pontokat:
 * A **linkedServiceName** tulajdonság **AzureSqlLinkedService** értékre van állítva.
 * A **tablename** tulajdonság **emp** értékre van állítva.
 * Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
-* Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
+* Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a frequency (gyakoriság) paraméter hour (óra), az interval (időköz) paraméter pedig 1 értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
 
 ### <a name="pipelinejson"></a>pipeline.json
 
@@ -316,7 +317,7 @@ $adf = "ADFCopyTutorialDF"
 ```
 
 ## <a name="authenticate-with-aad"></a>Hitelesítés az AAD segítségével
-Az Azure Active Directory (AAD) segítségével végzett hitelesítéshez futtassa a következő parancsokat. 
+Az Azure Active Directory (AAD) segítségével végzett hitelesítéshez futtassa a következő parancsokat: 
 
 ```PowerShell
 $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
@@ -360,7 +361,7 @@ Vegye figyelembe a következő szempontokat:
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
 * Ha a „**This subscription is not registered to use namespace Microsoft.DataFactory**” (Az előfizetés nem jogosult használni a Microsoft.DataFactory névteret) hibaüzenetet kapja, tegye a következők egyikét, és próbálkozzon újra a közzététellel: 
   
-  * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához. 
+  * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához: 
 
     ```PowerShell    
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -428,7 +429,7 @@ Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adat
 * Hozza létre és töltse fel az **emp.txt** szöveges fájlt blobként az **adftutorial** tárolóba. 
 * Hozzon létre egy táblát **emp** néven az Azure SQL Database-ben abban az Azure SQL Database-ben, amelyre az **AzureSqlLinkedService** mutat.
 
-1. Indítsa el a Jegyzettömböt, majd illessze be az alábbi szöveget, és mentse **emp.txt** néven a **C:\ADFGetStartedPSH** mappába a merevlemezen. 
+1. Nyissa meg a Jegyzettömböt. Illessze be az alábbi szöveget, és mentse **emp.txt** néven a **C:\ADFGetStartedPSH** mappába a merevlemezen. 
 
     ```   
     John, Doe
@@ -456,7 +457,7 @@ Hajtsa végre az alábbi lépéseket az Azure Blob Storage és az Azure SQL-adat
     Ha az ügyfél számára nem engedélyezett az Azure SQL Server elérése, konfigurálnia kell az Azure SQL Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../sql-database/sql-database-configure-firewall-settings.md).
 
 ### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
-Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely egy, az Azure Storage-ben található Blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás képvisel. Ez a blobtároló (**adftutorial**) tartalmazza a bemeneti adatokat az **emp.txt** fájlban. 
+Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely egy, az Azure Storage-ben található Blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás képvisel. Ez a blobtároló (adftutorial) tartalmazza a bemeneti adatokat az **emp.txt** fájlban. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
 
@@ -475,7 +476,7 @@ Ebben a lépésben létrehozza az **AzureBlobInput** nevű adatkészletet, amely
     ```
 
 ### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
-Ebben a lépésben létrehozzuk az **AzureSqlOutput** nevű kimeneti táblát. Ez az adatkészlet az Azure SQL-adatbázis egyik SQL-táblájára mutat (**emp**), amelyet az **AzureSqlLinkedService** képvisel. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába. 
+Ebben a lépésben létrehozzuk az **AzureSqlOutput** nevű kimeneti táblát. Ez az adatkészlet egy SQL-táblára (emp) mutat az Azure SQL Database-ben, amelyet az **AzureSqlLinkedService** jelöl. A folyamat átmásolja az adatokat a bemeneti blobból az **emp** táblába. 
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz.
 
@@ -573,9 +574,4 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
 
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

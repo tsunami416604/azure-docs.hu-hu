@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/24/2017
+ms.date: 04/06/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f03099391600bc3b918eb3a8c866c16a02052b7a
-ms.lasthandoff: 03/25/2017
+ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
+ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
+ms.lasthandoff: 04/07/2017
 
 
 ---
@@ -67,7 +67,7 @@ Az ExpressRoute használatával engedélyezheti a virtuális hálózatról virtu
 ![3. ExpressRoute-eset – az optimálisnál rosszabb útválasztás a virtuális hálózatok között](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
 
 ### <a name="solution-assign-a-high-weight-to-local-connection"></a>Megoldás: nagyobb súly hozzárendelése a helyi kapcsolathoz
-A megoldás egyszerű. Mivel tudja, hogy hol vannak a VNetek és a kapcsolatcsoportok, megmondhatja nekünk, hogy az egyes VNetek mely útvonalat részesítsék előnyben. Ebben a példában nagyobb súlyt rendel a helyi kapcsolathoz, mint a távoli kapcsolathoz. Amikor egy VNet több kapcsolaton fogadja a másik VNet előtagját, a nagyobb súlyú kapcsolatot részesíti előnyben, hogy az előtaghoz küldeni kívánt adatforgalmat elküldje.
+A megoldás egyszerű. Mivel tudja, hogy hol vannak a VNetek és a kapcsolatcsoportok, megmondhatja nekünk, hogy az egyes VNetek mely útvonalat részesítsék előnyben. Ebben a példában nagyobb súlyt rendel a helyi kapcsolathoz, mint a távoli kapcsolathoz (a példakonfigurációt [itt](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection) találja). Amikor egy VNet több kapcsolaton fogadja a másik VNet előtagját, a nagyobb súlyú kapcsolatot részesíti előnyben, hogy az előtaghoz küldeni kívánt adatforgalmat elküldje.
 
 ![3. ExpressRoute-eset megoldása – nagy súly hozzárendelése a helyi kapcsolathoz](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
 
@@ -75,3 +75,4 @@ A megoldás egyszerű. Mivel tudja, hogy hol vannak a VNetek és a kapcsolatcsop
 > A VNetről a helyszíni hálózatra irányuló útválasztást is befolyásolhatja, ha több ExpressRoute-kapcsolatcsoportja van. Ehhez konfigurálja egy kapcsolat súlyát ahelyett, hogy AS PATH előtag-beillesztést használna, amelyet a fenti második eset ismertet. Mindegyik előtag esetében először mindig a kapcsolat súlyát vesszük figyelembe az AS PATH hossza előtt a forgalom elküldési módjának meghatározásához.
 >
 >
+

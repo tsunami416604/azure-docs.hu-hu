@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 04/05/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 5da00d1d64b258773fa485baa804b283fde731c3
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
+ms.lasthandoff: 04/06/2017
 
 
 ---
@@ -148,11 +148,63 @@ Példa az ilyen típusú riasztásra:
 ![Gyanús folyamat miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
 ### <a name="multiple-domain-accounts-queried"></a>Több tartományi fiók lett lekérdezve
-A Security Center számos, a tartományi fiókok lekérdezésére tett kísérletet képes észlelni, amelyeket a támadók általában a hálózat felderítése során hajtanak végre. A támadók ezt a technikát használhatják fel a tartomány lekérdezéséhez: a felhasználók, a tartomány rendszergazdai fiókjainak, a tartományvezérlő számítógépek és a tartomány más tartományokkal való lehetséges megbízhatósági kapcsolatainak az azonosításához.
+A Security Center számos, az Active Directory tartományi fiókok lekérdezésére tett kísérletet képes észlelni, amelyeket a támadók általában a hálózat felderítése során hajtanak végre. A támadók ezt a technikát használhatják fel a tartomány lekérdezéséhez: a felhasználók, a tartomány rendszergazdai fiókjainak, a tartományvezérlő számítógépek és a tartomány más tartományokkal való lehetséges megbízhatósági kapcsolatainak az azonosításához.
 
 Példa az ilyen típusú riasztásra:
 
 ![Több tartományi fiók miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
+
+### <a name="local-administrators-group-members-were-enumerated"></a>A helyi rendszergazdák csoport tagjait enumerálták
+
+A Security Center egy riasztást aktivál, ha a 4798-as biztonsági esemény (Windows Server 2016 és Windows 10 rendszerben) aktiválódik. Ez a helyi rendszergazdák csoportok tagjainak enumerálásakor történik meg, amit általában a hálózat felderítése során hajtanak végre a támadók. Ezzel a technikával a rendszergazdai jogosultságokkal rendelkező felhasználók identitását kérdezik le.
+
+Példa az ilyen típusú riasztásra:
+
+![Helyi rendszergazda](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
+
+### <a name="anomalous-mix-of-upper-and-lower-case-characters"></a>Nagy- és kisbetűs karakterek rendellenes kombinációja
+
+A Security Center riasztást aktivál, ha a parancssorban nagy- és kisbetűs karakterek kombinációját észleli. Egyes támadók ezzel a technikával rejtőznek a kis- és nagybetűket megkülönböztető vagy kivonatalapú gépi szabályok elől.
+
+Példa az ilyen típusú riasztásra:
+
+![Rendellenes kombináció](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
+
+### <a name="suspected-kerberos-golden-ticket-attack"></a>Gyanús Kerberos-aranyjegyes támadás
+
+A feltört [krbtgt](https://technet.microsoft.com/library/dn745899.aspx) kulcsokkal a támadók „Kerberos-aranyjegyeket” hozhatnak létre, így bármely felhasználó nevében eljárhatnak. A Security Center egy riasztást aktivál, ha ilyen típusú tevékenységet észlel.
+
+> [!NOTE] 
+> A „Kerberos-aranyjeggyel” kapcsolatos további információkért olvassa el a [Windows 10-es hitelesítőadatok lopásának megelőzésére vonatkozó útmutatót](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx).
+
+Példa az ilyen típusú riasztásra:
+
+![Aranyjegy](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
+
+### <a name="suspicious-account-created"></a>Gyanús fiók létrehozása
+
+A Security Center egy riasztást aktivál a rendszergazdai jogosultságokkal rendelkező meglévő beépített fiókokhoz nagyon hasonló fiókok létrehozása esetén. Ezzel a technikával a támadók olyan rosszindulatú fiókokat hozhatnak létre, amelyek az emberi ellenőrzések során nem tűnnek fel.
+ 
+Példa az ilyen típusú riasztásra:
+
+![Gyanús fiók](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
+
+### <a name="suspicious-firewall-rule-created"></a>Gyanús tűzfalszabály létrehozása
+
+A támadók megpróbálhatják megkerülni a gazdagép védelmét egyéni tűzfalszabályok létrehozásával, amelyek lehetővé teszik, hogy a kártevő alkalmazások kommunikáljanak a parancs és vezérlés modullal, vagy támadásokat indítsanak a hálózaton a feltört gazdagépen keresztül. A Security Center riasztást aktivál, ha azt észleli, hogy egy gyanús helyen lévő végrehajtható fájl egy új tűzfalszabályt hoz létre.
+ 
+Példa az ilyen típusú riasztásra:
+
+![Tűzfalszabály](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
+
+### <a name="suspicious-combination-of-hta-and-powershell"></a>HTA és PowerShell gyanús kombinációja
+
+A Security Center egy riasztást aktivál, ha azt észleli, hogy egy Microsoft HTML-alkalmazásgazda (HTA) PowerShell-parancsokat indít. Ezzel a technikával a támadók kártevő PowerShell-szkripteket indíthatnak.
+ 
+Példa az ilyen típusú riasztásra:
+
+![HTA és PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
+
 
 ## <a name="network-analysis"></a>Hálózatelemzés
 A Security Center hálózati fenyegetettség-észlelése úgy működik, hogy automatikusan összegyűjti a biztonsági információkat az Azure IPFIX (IP-folyamatadatok exportálása) forgalmából. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket.

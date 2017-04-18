@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2e8ff5304d4ccc63f92567b22c0508e3fc7b9bcf
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
+ms.openlocfilehash: 71903120a77aa4d8fd58ea600488d3464570b0cb
+ms.lasthandoff: 04/06/2017
 
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Docker-alapú tárolóüzemeltetési megoldás üzembe helyezése az Azure Portal használatával
@@ -36,7 +36,11 @@ Háttér-információk: [Az Azure Container Service bemutatása](container-servi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
+* **Azure-előfizetés**: Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). Nagyobb fürt esetében fontolja meg a használatalapú előfizetést vagy az egyéb fizetési lehetőségeket.
+
+    > [!NOTE]
+    > Az Azure-előfizetés használata és [erőforráskvótái](../azure-subscription-service-limits.md), mint például a magkvóták, korlátozhatják az üzembe helyezett fürt méretét. Ha kérni szeretné a kvóta növelését, hozzon létre egy ingyenes [támogatási kérést](../azure-supportability/how-to-create-azure-support-request.md) az interneten.
+    >
 
 * **Nyilvános SSH RSA-kulcs**: Ha a portálon vagy valamelyik Azure gyorsindítási sablonnal végzi az üzembe helyezést, meg kell adnia az Azure Container Service virtuális gépeivel történő hitelesítésre szolgáló nyilvános kulcsot. A Secure Shell (SSH) RSA-kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatót. 
 
@@ -109,7 +113,7 @@ Az üzembe helyezés több percet is igénybe vehet. Ezután az Azure Container 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Fürt létrehozása gyorsindítási sablon használatával
 Az Azure gyorsindítási sablonok használatával fürtök helyezhetők üzembe az Azure Container Service-ben. A megadott gyorsindítási sablonok módosíthatók további vagy speciális Azure-konfigurációk belefoglalásával. Az Azure Container Service-fürtök Azure gyorsindítási sablonokkal való létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik előfizetéssel, regisztrálhat az [ingyenes próbaverzióra](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). 
 
-Az alábbi lépésekkel egy sablon és az Azure CLI 2.0-s verziójával helyezhet üzembe egy fürtöt (lásd a [telepítési és beállítási utasításokat](/cli/azure/install-az-cli2.md)).
+Az alábbi lépésekkel egy sablon és az Azure CLI 2.0-s verziójával helyezhet üzembe egy fürtöt (lásd a [telepítési és beállítási utasításokat](/cli/azure/install-az-cli2)).
 
 > [!NOTE] 
 > Windows rendszer használata esetén hasonló lépésekkel helyezhet üzembe sablont az Azure PowerShell használatával. A lépéseket lásd a szakasz későbbi részében. Emellett a [portálon](../azure-resource-manager/resource-group-template-deploy-portal.md) keresztül vagy egyéb módszerekkel is üzembe helyezhet sablonokat.

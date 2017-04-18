@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 04/04/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: baf389dcdfb38053b9feb976d19b471838f1315e
+ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
+ms.openlocfilehash: 11ecfc993f17c89d4ac4431e9a835000d30afe76
+ms.lasthandoff: 04/05/2017
 
 
 ---
@@ -29,7 +30,10 @@ ms.openlocfilehash: baf389dcdfb38053b9feb976d19b471838f1315e
 > * [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Az Azure Application Gateway egy&7;. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer (SSL) alapú kiszervezést, az egyéni állapotteszteket, a többhelyes támogatást és még sok mást. A támogatott szolgáltatások teljes listájáért látogasson el [Az Application Gateway áttekintése](application-gateway-introduction.md) című oldalra
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak.
+Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer (SSL) alapú kiszervezést, az egyéni állapotteszteket, a többhelyes támogatást és még sok mást.
+
+A támogatott szolgáltatások teljes listájáért látogasson el [Az Application Gateway áttekintése](application-gateway-introduction.md) című oldalra
 
 Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigurálhat, elindíthat és törölhet egy Application Gateway-t.
 
@@ -39,12 +43,12 @@ Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigu
 ## <a name="before-you-begin"></a>Előkészületek
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
-2. Ha rendelkezik meglévő virtuális hálózattal, válasszon ki egy meglévő üres alhálózatot, vagy hozzon létre egyet a meglévő virtuális hálózatban kizárólag az alkalmazásátjáró számára. Nem telepítheti az alkalmazásátjárót egy másik virtuális hálózatra, csak amelyikre az erőforrást szeretné telepíteni az alkalmazásátjáró mögött.
-3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
+1. Ha rendelkezik meglévő virtuális hálózattal, válasszon ki egy meglévő üres alhálózatot, vagy hozzon létre egyet a meglévő virtuális hálózatban kizárólag az alkalmazásátjáró számára. Nem telepítheti az alkalmazásátjárót egy másik virtuális hálózatra, csak amelyikre az erőforrást szeretné telepíteni az alkalmazásátjáró mögött.
+1. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Mire van szükség egy Application Gateway létrehozásához?
 
-* **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek listája. A listán szereplő IP-címeknek a virtuális hálózat alhálózatához kell tartozniuk, vagy nyilvános/virtuális IP-címnek kell lenniük.
+* **Háttér-kiszolgálókészlet:** A háttérkiszolgálók IP-címeinek, teljes tartományneveinek vagy hálózati adaptereinek listája. Ha IP-címeket használ, akkor vagy a virtuális hálózat alhálózatához kell tartozniuk, vagy nyilvános/virtuális IP-címnek kell lenniük.
 * **Háttér-kiszolgálókészlet beállításai:** Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
 * **Előtérbeli port:** Az Application Gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
 * **Figyelő:** A figyelő egy előtérbeli porttal, egy protokollal (Http vagy Https, a kis- és a nagybetűk megkülönböztetésével) és SSL tanúsítványnévvel rendelkezik (SSL-kiszervezés konfigurálásakor).
@@ -105,11 +109,11 @@ A fenti példában létrehoztunk egy **appgw-RG** nevű erőforráscsoportot, am
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
 
-Az alábbi példa bemutatja, hogyan hozhat létre virtuális hálózatot a Resource Manager használatával.
+Az alábbi példa bemutatja, hogyan hozhat létre virtuális hálózatot a Resource Manager használatával. Ebben a példában egy VNetet hozunk létre az Application Gatewayhez. Az Application Gatewayhez külön alhálózat szükséges, és ebből az okból az Application Gateway számára létrehozott alhálózat kisebb, mint a VNet címtere. A kisebb alhálózat használatával más erőforrások, például webkiszolgálók is konfigurálhatók ugyanazon a VNeten.
 
 ### <a name="step-1"></a>1. lépés
 
-Rendelje hozzá a 10.0.0.0/24 címtartományt a virtuális hálózat létrehozásához használni kívánt alhálózati változóhoz.
+Rendelje hozzá a 10.0.0.0/24 címtartományt a virtuális hálózat létrehozásához használni kívánt alhálózati változóhoz. Ebben a lépésben egy alhálózatkonfigurációs objektumot hozunk létre az Application Gatewayhez, amelyet majd a következő példában használunk fel.
 
 ```powershell
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -117,7 +121,7 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10
 
 ### <a name="step-2"></a>2. lépés
 
-Hozzon létre egy **appgwvnet** nevű virtuális hálózatot az **appgw-rg** erőforráscsoportban az USA nyugati régiója számára, amely a 10.0.0.0/16 előtagot használja a 10.0.0.0/24 alhálózattal.
+Hozzon létre egy **appgwvnet** nevű virtuális hálózatot az **appgw-rg** erőforráscsoportban az USA nyugati régiója számára, amely a 10.0.0.0/16 előtagot használja a 10.0.0.0/24 alhálózattal. Ebben a lépésben befejezzük a VNet konfigurálását egyetlen alhálózattal, ahol az Application Gateway fut majd.
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -125,7 +129,7 @@ $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -L
 
 ### <a name="step-3"></a>3. lépés
 
-Rendeljen hozzá egy alhálózati változót a következő lépésekhez, amelyek egy Application Gateway-t hoznak létre.
+Rendelje hozzá az alhálózati változót a következő lépésekhez. A `New-AzureRMApplicationGateway` parancsmag egy későbbi lépésben megörökli a változót.
 
 ```powershell
 $subnet=$vnet.Subnets[0]
@@ -133,19 +137,22 @@ $subnet=$vnet.Subnets[0]
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
-Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában.
+Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Az Application Gateway nyilvános vagy belső IP-címet, vagy akár mindkettőt is használhatja a terheléselosztási kérések fogadására.  Ebben a példában csak nyilvános IP-címet használunk. A következő példában nem konfigurálunk DNS-nevet a nyilvános IP-cím létrehozásához.  Az Application Gateway nem támogatja az egyéni DNS-neveket a nyilvános IP-címeken.  Ha egyéni név szükséges a nyilvános végponthoz, egy CNAME rekordot kell létrehozni, amely a nyilvános IP-cím automatikusan létrehozott DNS-nevére mutat.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 ```
 
+> [!NOTE]
+> Amikor a szolgáltatás elindul, egy IP-cím lesz kiosztva az Application Gatewaynek.
+
 ## <a name="create-the-application-gateway-configuration-objects"></a>Hozza létre az Application Gateway konfigurációs objektumokat
 
-Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítania. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
+Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítani. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
 ### <a name="step-1"></a>1. lépés
 
-Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból vesz fel egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány elfoglal egy IP-címet.
+Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
 ```powershell
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -153,23 +160,25 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Sub
 
 ### <a name="step-2"></a>2. lépés
 
-Konfigurálja a **pool01** nevű háttérbeli IP-címkészletet az alábbi IP-címekkel: **134.170.185.46**, **134.170.188.221** és **134.170.185.50**. Ezek az IP-címek fogadják majd az előtérbeli IP-cím végpontból érkező hálózati forgalmat. Az előző IP-címeket lecseréli a saját alkalmazása IP-címvégpontjaira.
+Konfigurálja a **pool01** nevű háttérbeli IP-cím készletet a **pool1** IP-címeivel. Ezek az IP-címek az Application Gateway használatával védeni kívánt webalkalmazást futtató erőforrások IP-címei. A rendszer mintavételekkel (alapszintű vagy egyéni mintavételekkel) ellenőrzi, hogy a háttérkészlet érintett tagjai megfelelő állapotban vannak-e.  Ezek után a rendszer hozzájuk irányítja a forgalmat, amikor kérések érkeznek az Application Gatewayre. A háttérkészleteket az Application Gateway több szabálya is használhatja, ami azt jelenti, hogy egy háttérkészlet több webalkalmazáshoz is használható ugyanazon a gazdagépen.
 
 ```powershell
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
+$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221, 134.170.185.50
 ```
+
+Ebben a példában két háttérkészlet végzi a hálózati forgalom irányítását az URL-cím alapján. Az egyik készlet a „/video” URL-útvonalról, a másik az „/image” útvonalról fogadja a forgalmat. Az előző IP-címeket lecseréli a saját alkalmazása IP-címvégpontjaira.
 
 ### <a name="step-3"></a>3. lépés
 
-Konfigurálja a **poolsetting01** nevű Application Gateway-beállítást a háttérkészlet elosztott terhelésű hálózati forgalmához.
+Konfigurálja a **poolsetting01** nevű Application Gateway-beállítást a háttérkészlet elosztott terhelésű hálózati forgalmához. Mindegyik háttérkészlet saját háttérkészlet-beállításokkal rendelkezhet.  A szabályok a háttérbeli HTTP-beállítások használatával irányítják a forgalmat a háttérkészlet megfelelő tagjaira. A háttérbeli HTTP-beállítások határozzák meg a forgalom háttérkészlet-tagokra való küldése során használt protokollt és portot. A cookie-alapú munkameneteket szintén a háttérbeli HTTP-beállítások határozzák meg.  Ha engedélyezve van, a cookie-alapú munkamenet-affinitás az egyes csomagokhoz tartozó korábbi kéréseknek megfelelő háttérrendszerekre irányítja a forgalmat.
 
 ```powershell
-$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 ```
 
 ### <a name="step-4"></a>4. lépés
 
-Konfigurálja a **frontendport01** nevű előtérbeli IP-portot a nyilvános IP-címvégponthoz.
+Konfigurálja az előtérbeli portot egy Application Gatewayhez. Az előtérbeli port konfigurációs objektumával egy figyelő meghatározza, melyik porton figyeli a forgalmat az Application Gateway a figyelőn.
 
 ```powershell
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
@@ -177,7 +186,7 @@ $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
 ### <a name="step-5"></a>5. lépés
 
-Hozza létre a **fipconfig01** nevű előtérbeli IP-konfigurációt, és társítsa a nyilvános IP-címet az előtérbeli IP-konfigurációhoz.
+Konfigurálja az előtérbeli IP-portot egy nyilvános IP-címvégponttal. Az előtérbeli IP-konfigurációs objektumot egy figyelő használja arra, hogy a kifelé néző IP-címet a figyelőhöz rendelje.
 
 ```powershell
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
@@ -185,23 +194,23 @@ $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Pu
 
 ### <a name="step-6"></a>6. lépés
 
-Hozza létre a **listener01** nevű figyelőt, és társítsa az előtérbeli portot az előtérbeli IP-konfigurációhoz.
+Konfigurálja a figyelőt. Ebben a lépésben konfiguráljuk a figyelőt a bejövő hálózati forgalmat fogadó nyilvános IP-címhez és porthoz. A következő példában az előzőekben konfigurált előtérbeli IP-konfiguráció, előtérbeli portkonfiguráció, valamint egy protokoll (http vagy https) használatával konfiguráljuk a figyelőt. A példában a figyelő a 80-as porton figyeli a HTTP-forgalmat a korábban létrehozott nyilvános IP-címen.
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
 ### <a name="step-7"></a>7. lépés
 
-Hozza létre a **rule01** nevű terheléselosztási útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja.
+Hozza létre a **rule01** nevű terheléselosztási útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja. A szabályt az előző lépésekben létrehozott háttérkészlet-beállítások, figyelő és háttérkészlet alkotják. A forgalom a meghatározott feltételek alapján a megfelelő háttérrendszerre lesz irányítva.
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting01 -HttpListener $listener -BackendAddressPool $pool
 ```
 
 ### <a name="step-8"></a>8. lépés
 
-Konfigurálja az Application Gateway példányméretét.
+Konfigurálja az Application Gatewayben a példányok számát és a méretet.
 
 ```powershell
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -241,7 +250,7 @@ $getgw = Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 Állítsa le az Application Gatewayt a `Stop-AzureRmApplicationGateway` parancsmaggal.
 
 ```powershell
-Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
+Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```
 
 Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a `Remove-AzureRmApplicationGateway` parancsmaggal.
@@ -261,7 +270,7 @@ Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ## <a name="get-application-gateway-dns-name"></a>Az Application Gateway DNS-nevének beszerzése
 
-Az átjáró létrehozása után a következő lépés a kommunikációra szolgáló előtér konfigurálása. Nyilvános IP-cím esetén az Application Gateway használatához dinamikusan hozzárendelt DNS-névre van szükség, amely nem valódi név. Ha szeretné, hogy a végfelhasználók elérjék az Application Gatewayt, használjon egy Application Gateway nyilvános végpontjára mutató CNAME-rekordot. [Egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). A művelet végrehajtásához az Application Gateway részleteinek beszerzésére és a kapcsolódó IP/DNS-név lekérésére van szükség az Application Gatewayhez csatolt PublicIPAddress használatával. Az Application Gateway DNS-nevének használatával létrehozhat egy CNAME rekordot, amely a két webalkalmazást erre a DNS-névre irányítja. Az A-bejegyzések használata nem javasolt, mivel a virtuális IP-cím változhat az Application Gateway újraindításakor.
+Az átjáró létrehozása után a következő lépés a kommunikációra szolgáló előtér konfigurálása. Nyilvános IP-cím esetén az Application Gateway használatához dinamikusan hozzárendelt DNS-névre van szükség, amely nem valódi név. Ha szeretné, hogy a végfelhasználók elérjék az Application Gatewayt, használjon egy Application Gateway nyilvános végpontjára mutató CNAME-rekordot. [Egyéni tartománynév konfigurálása az Azure-ban](../cloud-services/cloud-services-custom-domain-name-portal.md). A dinamikusan létrehozott DNS-név megtalálásához az Application Gateway részleteinek beszerzése és a kapcsolódó IP/DNS-név lekérése szükséges az Application Gatewayhez csatolt PublicIPAddress használatával. Az Application Gateway DNS-nevének használatával létrehozhat egy CNAME rekordot, amely a két webalkalmazást erre a DNS-névre irányítja. Az A-bejegyzések használata nem javasolt, mivel a virtuális IP-cím változhat az Application Gateway újraindításakor.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -291,7 +300,7 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
+Ha SSL-alapú kiszervezést szeretne konfigurálni, tekintse meg a következőt: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
 
 Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 
@@ -299,10 +308,5 @@ Ha további általános információra van szüksége a terheléselosztás beál
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
