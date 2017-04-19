@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 284bf43ceae0c42b88d6ea3fe8a2e68e7530e5fe
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 6c84c21a0a61ab3e4d043e85d48780fc23f23a08
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -51,7 +51,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
    VAGY
 
    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
-* [Node.js][Node.js]-verzió:&0;.10.29-es vagy újabb.
+* [Node.js][Node.js]-verzió: 0.10.29-es vagy újabb.
 * [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 * [Git][Git].
 
@@ -122,7 +122,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 ### <a name="create-the-model"></a>A modell létrehozása
 1. A projektkönyvtáron belül hozzon létre egy új könyvtárat **models** (modellek) néven, a package.json fájllal egy könyvtárban.
 2. A **models** könyvtárban hozzon létre egy új fájlt **taskDao.js** néven. Ez a fájl tartalmazza majd a modellt az alkalmazás által létrehozott feladatok számára.
-3. Ugyanabban a **models** könyvtárban hozzon létre egy másik új fájlt **docdbUtils.js** néven. Ez a fájl néhány hasznos, újrafelhasználható, az alkalmazás minden területén használt kódot tartalmaz majd.. 
+3. Ugyanabban a **models** könyvtárban hozzon létre egy másik új fájlt **docdbUtils.js** néven. Ez a fájl néhány hasznos, újrafelhasználható, az alkalmazás minden területén használt kódot tartalmaz majd. 
 4. Másolja be az alábbi kódot a **docdbUtils.js** fájlba
    
         var DocumentDBClient = require('documentdb').DocumentClient;

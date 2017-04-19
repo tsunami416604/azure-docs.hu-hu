@@ -18,7 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
 ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
-ms.lasthandoff: 03/02/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -335,7 +335,7 @@ A számlázással és a díjszabással kapcsolatos további információkért ol
 
 **Létezik a Machine Learningnek ingyenes próbaverziója?**
 
- Az Azure Machine Learning ingyenes előfizetési lehetőséget is kínál, amelyről további információkat a [Machine Learning díjszabását](https://azure.microsoft.com/pricing/details/machine-learning/) ismertető cikkben talál. A Machine Learning Studióhoz&8; órás, gyors kipróbálási időszak érhető el, amikor bejelentkezik a [Machine Learning Studióba](https://studio.azureml.net/?selectAccess=true&o=2).
+ Az Azure Machine Learning ingyenes előfizetési lehetőséget is kínál, amelyről további információkat a [Machine Learning díjszabását](https://azure.microsoft.com/pricing/details/machine-learning/) ismertető cikkben talál. A Machine Learning Studióhoz 8 órás, gyors kipróbálási időszak érhető el, amikor bejelentkezik a [Machine Learning Studióba](https://studio.azureml.net/?selectAccess=true&o=2).
 
  Emellett az Azure ingyenes próbaverziójára történő regisztrációt követően bármely Azure-szolgáltatást kipróbálhatja egy hónapig. Ha többet szeretne tudni az Azure ingyenes próbaverziójáról, olvassa el az [Azure Ingyenes próbaverziójára vonatkozó GYIK-et](https://azure.microsoft.com/pricing/free-trial-faq/).
 

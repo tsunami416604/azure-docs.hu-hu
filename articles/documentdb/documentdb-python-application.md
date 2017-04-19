@@ -19,7 +19,7 @@ ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
-ms.lasthandoff: 03/08/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -406,7 +406,7 @@ Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [Documen
 
 Az Azure-ra, a Visual Studióval és a Pythonnal kapcsolatos további információkért lásd: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/). 
 
-További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) (A Flask óriási oktatóanyaga –&1;. rész: Hello, World!) 
+További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) (A Flask óriási oktatóanyaga – 1. rész: Hello, World!) 
 
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/
