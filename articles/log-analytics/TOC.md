@@ -48,6 +48,7 @@
 ### [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md)
 ## Megoldások használata
 ### [Megoldások áttekintése](log-analytics-add-solutions.md)
+### [Activity Log Analytics](log-analytics-activity.md)
 ### [AD-elemzés](log-analytics-ad-assessment.md)
 ### [AD-replikáció állapota](log-analytics-ad-replication-status.md)
 ### [Riasztáskezelés](log-analytics-solution-alert-management.md)

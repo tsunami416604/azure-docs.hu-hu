@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 7224da31e71f3f6c912cd486198135945f90a8a4
-ms.openlocfilehash: aa639886ba3379ef30f9abef8f3dff4acb5b1181
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 1a0258e872449bf2f2f08345cbe86564e28d964e
+ms.lasthandoff: 04/17/2017
 
 
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Bevezetés a hitelesítési folyamatba az Azure Automationben  
-Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal. 
- 
+Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.
+
 Ez a cikk lefedi az Azure Automation által támogatott különböző hitelesítési forgatókönyveket, és megmutatja, hogyan kell megtenni az első lépéseket a kezelendő környezettől vagy környezetektől függően.  
 
 ## <a name="automation-account-overview"></a>Az Automation-fiókok áttekintése
@@ -34,7 +34,7 @@ Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tarto
 
 > [!NOTE]
 > Az Azure portálon létrehozott Automation-fiókok, valamint a rajtuk tárolt erőforrások nem érhetők el a klasszikus Azure portálról. Ha ezeket fiókokat vagy az erőforrásaikat Windows PowerShellel felügyeli, az Azure Resource Manager modulokat kell használnia.
-> 
+>
 
 Az összes feladatot, amelyet az Azure Resource Manager és az Azure Automation parancsmagjainak használatával az erőforrásokon végrehajt, hitelesíteni kell az Azure Active Directory szervezetiidentitás-hitelesítésével.  A tanúsítványalapú hitelesítés volt az eredeti hitelesítési módszer az Azure szolgáltatásfelügyeleti módban, de azt bonyolult volt beállítani.  Az Azure felé egy Azure AD-felhasználóval történő hitelesítés lehetőségét 2014-ben vezettük be, nem csak a hitelesítési fiókok konfigurálási folyamatának leegyszerűsítéséért, hanem hogy az Azure-ba nem interaktívan, egyetlen felhasználói fiókkal történő hitelesítés képességét is támogassa, amely működött az Azure Resource Managerrel és klasszikus erőforrásokkal is.   
 
@@ -52,10 +52,9 @@ A következő táblázat összefoglalja az Azure Automation által támogatott �
 
 | Módszer | Környezet | Cikk |
 | --- | --- | --- |
-| Azure AD felhasználói fiók |Azure Resource Manager és Azure szolgáltatásfelügyelet |[Runbookok hitelesítése Azure AD-felhasználói fiókkal](automation-sec-configure-aduser-account.md) |
+| Azure AD felhasználói fiók |Azure Resource Manager és Azure szolgáltatásfelügyelet |[Runbookok hitelesítése Azure AD-felhasználói fiókkal](automation-create-aduser-account.md) |
 | Azure-futtatófiók |Azure Resource Manager |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
 | Klasszikus Azure-futtatófiók |Azure szolgáltatásfelügyelet |[Runbookok hitelesítése Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) |
 | Windows-hitelesítés |Helyszíni adatközpont |[Runbookok hitelesítése hibrid runbook-feldolgozókhoz](automation-hybrid-runbook-worker.md) |
-| AWS hitelesítő adatok |Amazon webszolgáltatások |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-sec-configure-aws-account.md) |
-
+| AWS hitelesítő adatok |Amazon webszolgáltatások |[Runbookok hitelesítése az Amazon webszolgáltatásokkal (AWS)](automation-config-aws-account.md) |
 

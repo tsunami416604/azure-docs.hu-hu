@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: c2c46637ccccd01c1c3056d6a25ef605cfd68f2d
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: d1094e1b350883c206a9180ff71bd8613156360a
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>A jelszókezelés első lépései
 > [!IMPORTANT]
-> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#reset-your-password).
+> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#reset-my-password).
 >
 >
 
@@ -69,9 +69,9 @@ Az alábbiakban olyan tippeket sorolunk fel, amelyek hasznosak lehetnek azon üg
 * [**9. tipp: HIBAELHÁRÍTÁS** – Ha további segítségre van szüksége, adjon meg elég információt ahhoz, hogy valóban segíthessünk](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 
 ### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>LEGJOBB TIPP: NAVIGÁLÁS A DOKUMENTÁCIÓBAN – Válaszok keresése a tartalomjegyzékkel és a böngésző keresés funkciójával
-Ha valamelyik dokumentációnkat használja, érdemes áttekinteni a tartalomjegyzéket, mert igyekeztünk megadni benne a rendszergazdák érdeklődésére számot tartó összes témakör gyorshivatkozását. 
+Ha valamelyik dokumentációnkat használja, érdemes áttekinteni a tartalomjegyzéket, mert igyekeztünk megadni benne a rendszergazdák érdeklődésére számot tartó összes témakör gyorshivatkozását.
 
-Tekintse meg az alábbi tartalomjegyzéket: 
+Tekintse meg az alábbi tartalomjegyzéket:
 * [Azure AD jelszó-visszaállítás: A dokumentáció tartalomjegyzéke](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
 
 ### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>1. tipp: LICENCEK – Győződjön meg arról, hogy megértette a licencelési követelményeket
@@ -93,9 +93,9 @@ A rendszergazdai felületen konfigurált szabályzatok CSAK a végfelhasználók
  * ...a próbaverzió elindítása/létrehozása utáni első 30 napban **VAGY**
  * ...amikor nincs jelen személyes tartomány, **ÉS** az Azure AD Connect nem szinkronizál identitásokat.
  * **_A használatához szükséges_**: **egy** olyan hitelesítő e-mail-cím, másodlagos e-mail-cím, hitelesítő telefonszám, mobiltelefonszám vagy irodai telefonszám, amelynek van értéke.
-* **Két kezdő szabályzat érvényesül...** 
+* **Két kezdő szabályzat érvényesül...**
  * ...a próbaverzió első 30 napjának eltelte után **VAGY**
- * ...amikor jelen van egy személyes tartomány **VAGY** 
+ * ...amikor jelen van egy személyes tartomány **VAGY**
  * ...ha engedélyezte, hogy az Azure AD Connect szinkronizálja az identitásokat a helyszíni környezetből.
  * _**A használatához szükséges**_: az értékkel rendelkező hitelesítő e-mail-cím, másodlagos e-mail-cím, hitelesítő telefonszám, mobiltelefonszám vagy irodai telefonszám közül kiválasztott **két** elem.
 
@@ -145,7 +145,7 @@ A hibaelhárítási útmutatók teljes listájáért és a jelszóvisszaíró en
 * [A visszaíró üzembe helyezése – 3. lépés: A tűzfal konfigurálása](#step-3-configure-your-firewall)
 * [A visszaíró üzembe helyezése – 4. lépés: A megfelelő engedélyek beállítása](#step-4-set-up-the-appropriate-active-directory-permissions)
 
-### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>7. tipp: JELENTÉSKÉSZÍTÉS – Tekintse meg az Azure AD SSPR auditnaplókkal, hogy ki regisztrál vagy állít vissza jelszavakat 
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>7. tipp: JELENTÉSKÉSZÍTÉS – Tekintse meg az Azure AD SSPR auditnaplókkal, hogy ki regisztrál vagy állít vissza jelszavakat
 Ha a jelszó-visszaállítás üzembe van helyezve és működik, a következő logikus lépés működésének áttekintése és annak elemzése, hogy kinek kell még regisztrálnia, melyek a visszaállítás során a felhasználók által tapasztalt általános problémák, és a befektetés milyen mértékű megtérülésével lehet számolni.
 
 Az Azure AD jelszó-visszaállítási auditnaplókkal ezeket és sok más műveletet is végrehajthat az Azure Portalon, a PowerBI-ban, az Azure AD Reporting Events API-val vagy a PowerShell segítségével.  A jelentéskészítési funkciók használatára vonatkozó további információért lásd:
@@ -495,7 +495,7 @@ Most, hogy engedélyezett a jelszóvisszaírás, tesztelheti a működését, ha
 ## <a name="next-steps"></a>Következő lépések
 Az alábbiakban láthatja az összes Azure AD-jelszóvisszaállítási dokumentációs oldal hivatkozását:
 
-* **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#reset-your-password).
+* **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md#reset-my-password).
 * [**Működés**](active-directory-passwords-how-it-works.md) – megismerheti a szolgáltatás hat különböző összetevőjét és azt, hogy ezek mire valók
 * [**Testreszabás**](active-directory-passwords-customize.md) – megtudhatja, hogyan szabhatja testre a szervezet által igényelt szolgáltatás kezelőfelületét és működését
 * [**Ajánlott eljárások**](active-directory-passwords-best-practices.md) – megtudhatja, hogyan helyezhet gyorsan üzembe és hogyan kezelhet hatékonyan jelszavakat a szervezetben

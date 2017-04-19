@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 03/30/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 8d9d39d63209b8ab6884ddeff569687b55591f95
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -107,7 +107,7 @@ Telemetriája még hatékonyabb kereséséhez használja az [Analytics lekérdez
 * [Engedélyezze az Azure Diagnostics](app-insights-azure-diagnostics.md) Application Insightsba való küldését.
 * [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
 * [Riasztási értesítéseket kaphat](../monitoring-and-diagnostics/insights-receive-alert-notifications.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
-* Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](app-insights-web-track-usage.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
+* Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](app-insights-javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](app-insights-monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.
 
 

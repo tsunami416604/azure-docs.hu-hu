@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6ed35ca1b83f5f7221824d99817800c1e42e68c1
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -55,7 +55,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
    > Ha a hozzáférési panel ablakában nem jelenik meg a **Jelszó módosítása** lehetőség, győződjön meg róla, hogy a szervezethez be van állítva a [jelszókezelés az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md).
    >
    >
-4. A **Jelszó módosítása** oldalon adja meg a meglévő (régi) jelszavát, adja meg az új jelszót, majd erősítse meg. 
+4. A **Jelszó módosítása** oldalon adja meg a meglévő (régi) jelszavát, adja meg az új jelszót, majd erősítse meg.
 
     ![Hozzon létre virtuális hálózatot az Azure AD tartományi szolgáltatásokhoz.](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
@@ -64,7 +64,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
 Néhány perccel azután, hogy módosította a jelszavát, az új jelszó használható lesz az Active Directory Domain Servicesben. Néhány további perc (átlagosan körülbelül 20 perc) múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)
+* [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
 * [A jelszókezelés első lépései az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md)
 * [Jelszó-szinkronizálás engedélyezése Active Directory Domain Servicesre szinkronizált Azure AD bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)

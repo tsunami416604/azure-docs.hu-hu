@@ -26,7 +26,9 @@
 ## Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
-## [Az ExpressRoute virtuális hálózati átjáróinak konfigurálása](expressroute-howto-add-gateway-resource-manager.md)
+## Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
+### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md)
 ## [Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
 ## [Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
