@@ -14,16 +14,16 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: b4e2ca39cf13b25ee02afec3867a57ab4b665cbd
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 310ada88bb4d9b39eeaa10f303b9e1bd3b1f927f
+ms.lasthandoff: 04/13/2017
 
 
 ---
 # <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Az Application Insights SDK hozzáadása a Node.js alkalmazás figyelésére
 
 
-Az [Azure Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-overview-usage.md). Egyrészt olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy Azure VM-eken futtat, másrészt Azure webalkalmazásokkal.
+Az [Azure Application Insights](app-insights-overview.md) élő alkalmazásfigyeléssel segíti a [teljesítménybeli problémák és kivételek észlelését és diagnosztizálását](app-insights-detect-triage-diagnose.md), valamint az [alkalmazáshasználat felderítését](app-insights-web-track-usage.md). Egyrészt olyan alkalmazásokkal működik, amelyeket a saját helyszíni IIS-kiszolgálóin vagy Azure VM-eken futtat, másrészt Azure webalkalmazásokkal.
 
 Az SDK biztosítja a bejövő HTTP-kérelemarányok és válaszok, a teljesítményszámlálók (CPU, memória, RPS) és a nem kezelt kivételek automatikus gyűjtését. Emellett hozzá lehet adni egyéni hívásokat a függőségek, mérőszámok vagy egyéb események nyomon követéséhez.
 
@@ -192,7 +192,7 @@ server.on("listening", () => {
 
 <!--Link references-->
 
-[knowUsers]: app-insights-overview-usage.md
+[knowUsers]: app-insights-web-track-usage.md
 [metrics]: app-insights-metrics-explorer.md
 [perf]: app-insights-web-monitor-performance.md
 [portal]: http://portal.azure.com/

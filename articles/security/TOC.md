@@ -50,7 +50,7 @@
 ### [Ajánlott biztonsági eljárások az IoT-hez](../iot-suite/iot-security-best-practices.md)
 
 ## Biztonsági architektúra
-### [Adatok besorolása](azure-security-data-classification.md)
+### [Adatok besorolása](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
 ### [Vészhelyreállítás és magas szintű rendelkezésre állás Azure-alapú alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # Kapcsolódó

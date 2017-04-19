@@ -31,7 +31,7 @@
 ## Tervezés és kialakítás
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
-### [Használatelemzés az Application Insights szolgáltatással](app-insights-overview-usage.md)
+### [Használatelemzés az Application Insights szolgáltatással](app-insights-web-track-usage.md)
 ### [Application Insights-erőforrások elválasztása](app-insights-separate-resources.md)
 ### [Hogyan tegyem... az Application Insights szolgáltatásban?](app-insights-how-do-i.md)
 
@@ -49,7 +49,6 @@
 #### [Függőségek](app-insights-asp-net-dependencies.md)
 #### [Kiadási jegyzetek](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-#### [Gyakori kérdések](app-insights-troubleshoot-faq.md)
 
 
 ### J2EE
@@ -92,6 +91,7 @@
 #### [Bemutató](app-insights-analytics-tour.md)
 #### [Használat](app-insights-analytics-using.md)
 #### [Importálás](app-insights-analytics-import.md)
+#### [Diagnosztika](app-insights-analytics-diagnostics.md)
 
 ## Automatizálás
 
@@ -146,6 +146,7 @@
 ### [SDK kibocsátási megjegyzései](app-insights-release-notes.md)
 ### [Developer Analytics Tools kibocsátási megjegyzései](app-insights-release-notes-vsix.md)
 
+## [Gyakori kérdések](app-insights-troubleshoot-faq.md)
 
 ## Súgó
 ### [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  

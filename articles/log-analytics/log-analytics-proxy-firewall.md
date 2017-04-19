@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/10/2017
+ms.date: 04/12/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
-ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
+ms.openlocfilehash: cc3ff1ca5e638896df155b55145b300f70f7540a
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -41,7 +41,6 @@ Ahhoz, hogy a Microsoft Monitoring Agent kapcsolódni és regisztrálni tudjon a
 | \*.oms.opinsights.azure.com |443 |Igen |
 | \*.blob.core.windows.net |443 |Igen |
 | \*.azure-automation.net |443 |Igen |
-| ods.systemcenteradvisor.com |443 | |
 
 Az alábbi eljárás segítségével konfigurálhatja a proxybeállításokat a Microsoft Monitoring Agent számára a Vezérlőpult használatával. Az eljárást minden egyes kiszolgáló esetén el kell végezni. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha ez az eset áll fenn, tekintse meg a következő eljárást [A proxybeállítások konfigurálása a Microsoft Monitoring Agent számára parancsfájl használatával](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script) című szakaszban.
 
@@ -102,7 +101,6 @@ Alább látható az ügynökerőforrások és -portok listája:<br>
 | \*.ods.opinsights.azure.com |443 |
 | \*.oms.opinsights.azure.com |443 |
 | \*.blob.core.windows.net\* |443 |
-| ods.systemcenteradvisor.com |443 |
 
 <br>
 Itt látható a felügyeletikiszolgáló-erőforrások és -portok listája:<br>
@@ -112,8 +110,6 @@ Itt látható a felügyeletikiszolgáló-erőforrások és -portok listája:<br>
 | service.systemcenteradvisor.com |443 | |
 | \*.service.opinsights.azure.com |443 | |
 | \*.blob.core.windows.net |443 |Igen |
-| data.systemcenteradvisor.com |443 | |
-| ods.systemcenteradvisor.com |443 | |
 | \*.ods.opinsights.azure.com |443 |Igen |
 | \*.azure-automation.net |443 |Igen |
 
