@@ -1,20 +1,18 @@
-Bizonyos korlátozások érvényesek a mérőszámok számára és az alkalmazásonkénti eseményekre (kialakítási kulcsonként értendő). A korlátozások a választott [díjszabási csomagtól](https://azure.microsoft.com/pricing/details/application-insights/) függően változnak.
+There are some limits on the number of metrics and events per application (that is, per instrumentation key). Limits depend on the [pricing plan](https://azure.microsoft.com/pricing/details/application-insights/) that you choose.
 
-| **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzés**
+| **Resource** | **Default limit** | **Note**
 | --- | --- | --- |
-| Napi teljes adatmennyiség | 500 GB | Egy korlát beállításával csökkenthető az adatmennyiség. Ha többre van szüksége, írjon a következő címre: AIDataCap@microsoft.com
-| Havi ingyenes adatmennyiség<br/> (Alapszintű árképzési csomag) | 1 GB | A további adatok számlázása GB-onként történik.
-| Szabályozás | 32 ezer esemény/másodperc | A korlát megállapítása egy percnyi mérés alapján történik.
-| Adatmegőrzés | 90 nap | Ez az erőforrás a [Keresés](../articles/application-insights/app-insights-diagnostic-search.md), [Elemzés](../articles/application-insights/app-insights-analytics.md) és [Metrikaböngésző](../articles/application-insights/app-insights-metrics-explorer.md) esetén használható.
-| [Többlépéses rendelkezésre állási teszt](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) a részletes eredmények megőrzésével | 90 nap | Ez az erőforrás minden lépésről részletes eredményeket biztosít.
-| Tulajdonság- és metrikanév hossza | 150 |
-| Tulajdonságérték-karakterlánc hossza | 8,192 |
-| Nyomkövetési és kivételüzenet hossza | 10 ezer |
-| [Rendelkezésre állási tesztek](../articles/application-insights/app-insights-monitor-web-app-availability.md) száma alkalmazásonként  | 10 |
+| Total data per day | 500 GB | You can reduce data by setting a cap. If you need more, mail AIDataCap@microsoft.com.
+| Free data per month<br/> (Basic price plan) | 1 GB | Additional data is charged per gigabyte.
+| Throttling | 32 k events/second | The limit is measured over a minute.
+| Data retention | 90 days | This resource is for [Search](../articles/application-insights/app-insights-diagnostic-search.md), [Analytics](../articles/application-insights/app-insights-analytics.md), and [Metrics Explorer](../articles/application-insights/app-insights-metrics-explorer.md).
+| [Availability multi-step test](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) detailed results retention | 90 days | This resource provides detailed results of each step.
+| Maximum event size | 64 K | 
+| Property and metric name length | 150 | see comment below for more informaiton
+| Property value string length | 8,192 | see comment below for more informaiton
+| Trace and exception message length | 10 k | see comment below for more informaiton
+| [Availability tests](../articles/application-insights/app-insights-monitor-web-app-availability.md) count per app  | 10 |
 
-További információt [az Application Insights árait és kvótáit](../articles/application-insights/app-insights-pricing.md) ismertető cikkben talál.
+For more information, see [About pricing and quotas in Application Insights](../articles/application-insights/app-insights-pricing.md).
 
-
-<!--HONumber=Feb17_HO2-->
-
-
+For more informaiton on data fields limits see [per type schemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
