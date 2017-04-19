@@ -2,8 +2,3 @@
 
 ![Képernyőfelvétel az Azure Portalról, amely egy DocumentDB-fiókot jelenít meg, ahol a DocumentDB-fiók panelén lévő Kulcsok gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve.](./media/documentdb-keys/keys.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

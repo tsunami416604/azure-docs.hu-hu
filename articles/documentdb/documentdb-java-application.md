@@ -18,7 +18,7 @@ ms.author: denlee
 translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 6e315ea33fe4a493f1ab349482f9af3a732b3127
-ms.lasthandoff: 03/08/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -756,9 +756,9 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 15. A **Targeted Runtimes** (Tervezett futásidők) képernyőn kattintson a **New** (Új) elemre, válassza ki az **Apache Tomcat v7.0** lehetőséget, majd kattintson az **OK** gombra.
 16. A 12. lépésben leírtak segítségével nyissa meg ismét a **Properties** (Tulajdonságok) ablakot, majd a bal oldali ablaktáblán kattintson a **Project Facets** (A projekt aspektusai) elemre.
 17. A **Project Facets** (A projekt aspektusai) képernyőn válassza a **Dynamic Web Module** (Dinamikus webmodul), majd a **Java** lehetőséget, és kattintson az **OK** gombra.
-18. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat&7;.0-s verziójú kiszolgáló itt: localhost), majd az **Add and Remove** (Hozzáadás és eltávolítás) lehetőségre.
+18. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd az **Add and Remove** (Hozzáadás és eltávolítás) lehetőségre.
 19. Az **Add and Remove** (Hozzáadás és eltávolítás) ablakban helyezze át az **azure-documentdb-java-sample** kiszolgálót a **Configured** (Konfigurált) mezőbe, majd kattintson a **Finish** (Befejezés) gombra.
-20. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat&7;.0-s verziójú kiszolgáló itt: localhost), majd a **Restart** (Újraindítás) lehetőségre.
+20. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd a **Restart** (Újraindítás) lehetőségre.
 21. Egy böngészőből keresse fel a http://localhost:8080/azure-documentdb-java-sample/ címet, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
 22. Projekt telepítése egy Azure-webhelyre: [6. lépés : Az alkalmazás telepítése az Azure Websitesra](#Deploy).
 

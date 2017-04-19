@@ -18,7 +18,7 @@ ms.author: syamk
 translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 44307f258ea05635addf85bf9c59cd78b2ac0f1e
-ms.lasthandoff: 03/08/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -559,7 +559,7 @@ Ha a „Hiba történt a kérelem feldolgozása közben” hibaüzenet jelenik m
     - Régió: válassza az alkalmazás felhasználóihoz legközelebb eső régiót
     - Adatbázis-kiszolgáló: kattintson a Nincs adatbázis elemre, majd a **Létrehozás** gombra. 
 
-4. A „todo-net-app * képernyőn” kattintson a **Kapcsolat ellenőrzése** elemre. A kapcsolat ellenőrzése után kattintson a **Közzététel* gombra*. 
+4. A „todo-net-app * képernyőn” kattintson a **Kapcsolat ellenőrzése** elemre. A kapcsolat ellenőrzése után kattintson a **Közzététel** gombra. 
     
     Az alkalmazás ekkor megjelenik a böngészőjében.
 

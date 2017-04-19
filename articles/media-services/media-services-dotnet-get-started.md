@@ -17,7 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
 ms.openlocfilehash: 124eff2edccb6b4ad56ee39a2b37e892ef8c6cb4
-ms.lasthandoff: 03/03/2017
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -184,7 +184,7 @@ A **CreateFromFile** módszer számára az **AssetCreationOptions** alapján hat
 
 * **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
   Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
-* **StorageEncrypted** – Ezen lehetőség használatakor a tiszta tartalom helyileg,&256; bites Advanced Encryption Standard (AES) titkosítással lesz titkosítva, és így kerül feltöltésre az Azure Storage tárolóba, ahol titkosítva lesz tárolva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
+* **StorageEncrypted** – Ezen lehetőség használatakor a tiszta tartalom helyileg, 256 bites Advanced Encryption Standard (AES) titkosítással lesz titkosítva, és így kerül feltöltésre az Azure Storage tárolóba, ahol titkosítva lesz tárolva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
 * **CommonEncryptionProtected** – Használja ezt a lehetőséget, ha olyan tartalmat tölt fel, amely már korábban titkosítva és védve lett általános titkosítás vagy a PlayReady DRM által (például egy PlayReady DRM titkosítással védett Smooth Streaming-fájlt).
 * **EnvelopeEncryptionProtected** – Használja ezt a lehetőséget, ha AES által titkosított HLS tartalmakat tölt fel. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
 
