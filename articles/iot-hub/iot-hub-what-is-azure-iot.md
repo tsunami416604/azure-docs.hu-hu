@@ -40,7 +40,7 @@ Ha az ügyfélalkalmazásokat az eszközök hardveres platformjainak és operác
 
 Bevezetés a kódírásba és a példák futtatásába: [Bevezetés az IoT Hub használatába][lnk-getstarted] című oktatóanyag.
 
-Az [Azure IoT Suite][lnk-iot-suitelnk-iot-suite] is hasznos lehet, amely egy előre konfigurált megoldásokat tartalmazó gyűjtemény. Az IoT Suite lehetővé teszi, hogy gyorsan tegye meg az első lépéseket, és méretezze az IoT-projekteket a gyakori IoT-forgatókönyvek – például a távoli megfigyelés, az eszközkezelés és a prediktív karbantartás kezeléséhez.
+Az [Azure IoT Suite][lnk-iot-suite] is hasznos lehet, amely egy előre konfigurált megoldásokat tartalmazó gyűjtemény. Az IoT Suite lehetővé teszi, hogy gyorsan tegye meg az első lépéseket, és méretezze az IoT-projekteket a gyakori IoT-forgatókönyvek – például a távoli megfigyelés, az eszközkezelés és a prediktív karbantartás kezeléséhez.
 
 [lnk-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
