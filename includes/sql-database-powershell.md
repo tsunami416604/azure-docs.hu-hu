@@ -9,13 +9,12 @@ Ehhez telepítenie és futtatnia kell az Azure PowerShell legújabb verzióját.
 
 Futtassa az [**Add-AzureRmAccount**](https://msdn.microsoft.com/library/azure/mt619267\(v=azure.300\).aspx) parancsmagot – ekkor megjelenik egy bejelentkezési képernyő, amely a hitelesítő adatainak megadását kéri. Használja a hitelesítő adatokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
 
-    Add-AzureRmAccount
+```PowerShell
+Add-AzureRmAccount
+```
 
 Ha több előfizetéssel rendelkezik, használja a [**Set-AzureRmContext**](https://msdn.microsoft.com/library/azure/mt619263\(v=azure.300\).aspx) parancsmagot, amellyel kiválaszthatja, hogy melyik előfizetéssel használja a PowerShell-munkamenetet. Ahhoz, hogy megtudja, melyik előfizetést használja a jelenlegi PowerShell-munkamenet, futtassa a [**Get-AzureRmContext**](https://msdn.microsoft.com/library/azure/mt619265\(v=azure.300\).aspx) parancsmagot. Az összes előfizetés megtekintéséhez futtassa a [**Get-AzureRmSubscription**](https://msdn.microsoft.com/library/azure/mt619284\(v=azure.300\).aspx) parancsmagot.
 
-    Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+```PowerShell
+Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```
