@@ -3,15 +3,9 @@
 ## [OMS-architektúra](operations-management-suite-architecture.md)
 
 # Bevezetés
-## Betekintés és elemzés
-### [Regisztráció a Log Analytics-re](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Automatizálás és vezérlés
-### [Az első runbookom](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Védelem és helyreállítás
-### [Az Azure Backup bemutatása](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-## Biztonság és megfelelőség
-### [Biztonság és naplózás](oms-security-getting-started.md)
-### [Adatbiztonság](oms-security-data-security.md)
+## Útmutatók
+### [Szolgáltatástérkép](operations-management-suite-walkthrough-servicemap.md)
+
 
 # Útmutató
 

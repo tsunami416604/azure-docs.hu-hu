@@ -18,6 +18,7 @@
 ## [A keresési eredmények kezelése](search-pagination-page-layout.md)
 ## oktatóanyagokat
 ### [.NET](search-howto-dotnet-sdk.md)
+### [.NET-szinonimák előzetes verzió](search-synonyms-tutorial-sdk.md)
 ### [Portál](search-get-started-portal.md)
 ### [NodeJS](search-get-started-nodejs.md)
 ### [Java](search-get-started-java.md)
@@ -48,7 +49,7 @@
 ### [JSON-blobok indexelése](search-howto-index-json-blobs.md)
 ### [Az indexelő az Azure virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Mezőleképezések az indexelőkben](search-indexer-field-mappings.md)
-##  Keresés 
+##  Keresés
 ### [A teljes szöveges keresés működése](search-lucene-query-architecture.md)
 ### Lekérdezési konstrukció
 #### [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
@@ -61,6 +62,7 @@
 ### [Pontozás](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [Javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
+### [Szinonimák előzetes verziója](search-synonyms.md)
 
 # Referencia
 ## [.NET](/dotnet/api/microsoft.azure.search)

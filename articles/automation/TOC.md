@@ -1,17 +1,20 @@
 # Áttekintés
 ## [Mi az Azure Automation?](automation-intro.md)
 # Bevezetés
+## [Ismerkedés az Azure Automation szolgáltatással](automation-offering-get-started.md)
 ## Runbook-oktatóanyag
 ### [Grafikus runbook létrehozása](automation-first-runbook-graphical.md)
 ### [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
 ### [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
 # Útmutató
 ## Hitelesítés és biztonság
-### [Hitelesítés az Azure Automationben](automation-security-overview.md)
-### [Azure-beli futtató fiók konfigurálása](automation-sec-configure-azure-runas-account.md)
-### [Azure AD felhasználói fiók konfigurálása](automation-sec-configure-aduser-account.md)
-### [Hitelesítés beállítása az AWS használatával](automation-sec-configure-aws-account.md)
+### [Önálló Automation-fiók létrehozása](automation-create-standalone-account.md)
+### [Azure AD felhasználói fiók létrehozása](automation-create-aduser-account.md)
+### [Hitelesítés beállítása az AWS használatával](automation-config-aws-account.md)
+### [Azure-beli futtató fiók létrehozása PowerShell használatával](automation-update-account-powershell.md)
+### [Automation-fiók konfigurációjának érvényesítése](automation-verify-runas-authentication.md)
 ### [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
+### [Automation-fiók kezelése](automation-manage-account.md)
 ## Runbookok létrehozása
 ### [Runbook-típusok](automation-runbook-types.md)
 ### [Runbookok létrehozása és importálása](automation-creating-importing-runbook.md)
@@ -71,7 +74,7 @@
 ## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
 ## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
-## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST](/rest/api/automation)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt163781)
 # Erőforrások
 ## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)

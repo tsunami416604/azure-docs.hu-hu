@@ -24,7 +24,7 @@
 ### [Áttelepítés a felhőpartnerportálba](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ## [Azure Marketplace – Eladói útmutató](./cloud-partner-portal-seller-guide.md)
 
-## [Marketing lead felügyelet](./cloud-partner-portal-marketing-lead-management.md)
+## [Ügyfélérdeklődések lekérése](./cloud-partner-portal-get-customer-leads.md)
 ### [Azure-tábla](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 ### [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 ### [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
@@ -32,5 +32,4 @@
 
 ## [Közzétevő profil kezelése](./cloud-partner-portal-manage-publisher-profile.md)
 ## [Felhasználók kezelése](./cloud-partner-portal-manage-users.md)
-## [Visszajelzés küldése](./cloud-partner-portal-give-feedback.md)
 ## [Támogatás kérése](./cloud-partner-portal-support-for-cloud-partner-portal.md)

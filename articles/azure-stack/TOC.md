@@ -15,7 +15,6 @@
 ### [Alapértelmezett kép hozzáadása](azure-stack-add-default-image.md)
 ### [Virtuális gép kiépítése](azure-stack-provision-vm.md)
 ### [Tárfiók létrehozása](azure-stack-provision-storage-account.md)
-### [Azure Stack-bérlő hozzáadása](azure-stack-add-new-user-aad.md)
 ### [Az Azure Stack POC ismételt üzembe helyezése](azure-stack-redeploy.md)
 
 # Kezelés
@@ -31,15 +30,17 @@
 ## Útmutató
 ### [Frissítések felügyelete](azure-stack-updates.md)
 ### [Állapotfelügyelet és riasztások](azure-stack-monitor-health.md)
-### [Hálózati erőforrások kezelése](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
+### [Hálózati erőforrások kezelése](azure-stack-viewing-public-ip-address-consumption.md)
 ### [Tárolási erőforrások kezelése](azure-stack-manage-storage-accounts.md)
 ### [Windows Azure Pack virtuális gépeinek kezelése](azure-stack-manage-windows-azure-pack.md)
 
 # Biztonság és megfelelőség
 ## Útmutató
 ### [Az RBAC kezelése](azure-stack-manage-permissions.md)
+### [Felhasználók hozzáadása az Azure AD-hez](azure-stack-add-new-user-aad.md)
 ### [Felhasználók hozzáadása az AD FS-hez](azure-stack-add-users-adfs.md)
 ### [Egyszerű szolgáltatások létrehozása](Azure-stack-create-service-principals.md)
+### [A több bérlős üzemmód engedélyezése](azure-stack-enable-multitenancy.md)
 
 # Szolgáltatások ajánlása
 ## Bevezetés

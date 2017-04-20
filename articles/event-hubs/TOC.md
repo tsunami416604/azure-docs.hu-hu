@@ -3,7 +3,7 @@
 ## [Gyakori kérdések](event-hubs-faq.md)
 
 # Első lépések
-## [Event Hub létrehozása](event-hubs-create.md)
+## [Eseményközpont létrehozása](event-hubs-create.md)
 ## Események küldése
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 ### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
@@ -39,18 +39,18 @@
 #### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
 ### [A PowerShell használata entitások üzembe helyezésére](event-hubs-manage-with-ps.md) 
 ### [Azure Diagnostics-adatok streamelése az Event Hubs használatával](event-hubs-streaming-azure-diags-data.md)
-### [Event Hub-eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
+### [Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referencia
+## Java
+### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
+### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
 ## .NET
 ### [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 ### [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-### [Microsoft.Azure.ServiceBus.EventProcessorHost](/dotnet/api/microsoft.azure.servicebus.eventprocessorhost)
+### [Microsoft.ServiceBus.Messaging.EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 ### [Microsoft.Azure.Management.EventHub](/dotnet/api/microsoft.azure.management.eventhub)
-## Java
-### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
-### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
 ## [REST](/rest/api/eventhub)
 ## [Kivételek](event-hubs-messaging-exceptions.md)
 ## [Kvóták](event-hubs-quotas.md)

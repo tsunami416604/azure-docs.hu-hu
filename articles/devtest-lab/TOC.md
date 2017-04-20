@@ -19,6 +19,7 @@
 ### [Költségkezelés konfigurálása](devtest-lab-configure-cost-management.md)
 ### [Virtuális hálózatok konfigurálása](devtest-lab-configure-vnet.md)
 ### [A közös IP-címek megismerése](devtest-lab-shared-ip.md)
+### [Tesztkörnyezet módosításának automatizálása sablonok és a PowerShell használatával](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 
 ## Az összetevők kezelése
 ### [Összetevőtár hozzáadása](devtest-lab-add-artifact-repo.md)

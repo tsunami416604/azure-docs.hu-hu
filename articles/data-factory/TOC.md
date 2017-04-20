@@ -74,6 +74,8 @@
 ### [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 ### [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 ### [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+### [Modellek újrafeldolgozása az Azure Analysis Servicesben](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+
 ## Fejlesztés
 ### [Azure Resource Manager-sablon](data-factory-how-to-use-resource-manager-templates.md)
 ### [Példák](data-factory-samples.md)

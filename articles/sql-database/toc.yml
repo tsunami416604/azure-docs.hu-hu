@@ -4,8 +4,6 @@
   items:
   - name: "Az SQL DB névjegye"
     href: sql-database-technical-overview.md
-  - name: "Az SQL DB összehasonlítása"
-    href: sql-database-features.md
 - name: "Első lépések"
   expanded: true
   items:
@@ -69,8 +67,12 @@
       href: sql-database-benchmark-overview.md
     - name: "Korlátok"
       href: sql-database-resource-limits.md
-  - name: "Eszközök"
-    href: sql-database-manage-overview.md
+    - name: "PaaS vagy IaaS"
+      href: sql-database-paas-vs-sql-server-iaas.md  
+    - name: "Szolgáltatások"
+      href: sql-database-features.md
+    - name: "Eszközök"
+      href: sql-database-manage-overview.md
   - name: "Partícióadatok"
     items:
     - name: "Szilánkokra osztott adatbázisok"
@@ -231,10 +233,6 @@
     items:
     - name: "Azure AD-hitelesítés"
       href: sql-database-aad-authentication-configure.md
-    - name: "Naplózás"
-      href: sql-database-auditing-portal.md
-    - name: "Fenyegetések észlelése"
-      href: sql-database-threat-detection-portal.md
     - name: "Titkosítás – tanúsítványtár"
       href: sql-database-always-encrypted.md
     - name: "Titkosítás – Key Vault"
@@ -388,6 +386,8 @@
   items:
   - name: "GYIK"
     href: sql-database-faq.md
+  - name: "Nyilvános adatkészletek"
+    href: sql-database-public-data-sets.md  
   - name: "Kapcsolatok hibaelhárítása"
     href: https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
   - name: "Díjszabás"
@@ -414,3 +414,5 @@
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
     - name: "Egyéni rugalmaskészlet-irányítópult"
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+
+

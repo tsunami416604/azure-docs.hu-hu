@@ -14,12 +14,15 @@
 ## Sablonok létrehozása
 ### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
+### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
+### Másolási ciklus több példány létrehozásához
+#### [Alapszintű szintaxis](resource-group-create-multiple.md)
+#### [Szekvenciális hurok](resource-manager-sequential-loop.md)
+#### [Tulajdonságmásolat](resource-manager-property-copy.md)
 ### [Hely beállítása](resource-manager-template-location.md)
 ### [Címkék hozzárendelése](resource-manager-template-tags.md)
 ### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
-### [Erőforrástípusok több példányának létrehozása](resource-group-create-multiple.md)
-### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
 ## Üzembe helyezés

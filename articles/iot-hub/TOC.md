@@ -4,149 +4,118 @@
 ## [Az eszközfelügyelet áttekintése](iot-hub-device-management-overview.md)
 
 # [Első lépések](iot-hub-get-started.md)
-## Szimulált eszköz használata
-### [.NET](iot-hub-csharp-csharp-getstarted.md)
-### [Java](iot-hub-java-java-getstarted.md)
-### [Node.js](iot-hub-node-node-getstarted.md)
 
-## Raspberry Pi használata
-### [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
-#### 1. lecke: Az eszköz konfigurálása
-##### [Az eszköz konfigurálása](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
-##### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
-#### 2. lecke: Az IoT hub létrehozása
-##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
-##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
-##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
-##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
-##### [A tárban őrzött üzenetek olvasása](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
-#### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
-##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
-#### [Hibaelhárítás](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
+## Az eszköz beállítása
+### Szimulált eszköz használata
+#### [.NET](iot-hub-csharp-csharp-getstarted.md)
+#### [Java](iot-hub-java-java-getstarted.md)
+#### [Node.js](iot-hub-node-node-getstarted.md)
 
-### [C](iot-hub-raspberry-pi-kit-c-get-started.md)
-#### 1. lecke: Az eszköz konfigurálása
-##### [Az eszköz konfigurálása](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
-##### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
-#### 2. lecke: Az IoT hub létrehozása
-##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
-##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
-##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
-#### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
-##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
-##### [A tárban őrzött üzenetek olvasása](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
-#### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
-##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
-#### [Hibaelhárítás](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
+### Szimulált átjáró használata 
+#### [Szimuláció Linux rendszeren](iot-hub-linux-gateway-sdk-get-started.md)
+#### [Szimuláció Windows rendszeren](iot-hub-windows-gateway-sdk-get-started.md)
 
-## Intel Edison használata
-### [Node.js](iot-hub-intel-edison-kit-node-get-started.md)
-#### 1. lecke: Az eszköz konfigurálása
-##### [Az eszköz konfigurálása](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
-##### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
-#### 2. lecke: Az IoT hub létrehozása
-##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
-##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
-##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
-##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
-##### [A tárban őrzött üzenetek olvasása](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
-#### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
-##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
-#### [Hibaelhárítás](iot-hub-intel-edison-kit-node-troubleshooting.md)
+### Fizikai eszköz használata
+#### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
+##### 1. lecke: Az eszköz konfigurálása
+###### [Az eszköz konfigurálása](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
+###### [Eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+###### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
+###### [Eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
+###### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
+##### 2. lecke: Az IoT hub létrehozása
+###### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+###### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
+###### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
+###### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
+##### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
+###### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+###### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
+###### [A tárban őrzött üzenetek olvasása](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
+##### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
+###### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
+###### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
+##### [Hibaelhárítás](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 
-### [C](iot-hub-intel-edison-kit-c-get-started.md)
-#### 1. lecke: Az eszköz konfigurálása
-##### [Az eszköz konfigurálása](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
-##### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
-#### 2. lecke: Az IoT hub létrehozása
-##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
-##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
-##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
-#### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
-##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
-##### [A tárban őrzött üzenetek olvasása](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
-#### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
-##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
-#### [Hibaelhárítás](iot-hub-intel-edison-kit-c-troubleshooting.md)
+#### [Raspberry Pi és C](iot-hub-raspberry-pi-kit-c-get-started.md)
+##### 1. lecke: Az eszköz konfigurálása
+###### [Az eszköz konfigurálása](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
+###### [Eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
+###### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
+###### [Eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
+###### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
+##### 2. lecke: Az IoT hub létrehozása
+###### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
+###### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
+###### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
+###### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
+##### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
+###### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
+###### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
+###### [A tárban őrzött üzenetek olvasása](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
+##### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
+###### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
+###### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
+##### [Hibaelhárítás](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
 
-## Arduino használata
+#### [Intel Edison és Node.js](iot-hub-intel-edison-kit-node-get-started.md)
+##### 1. lecke: Az eszköz konfigurálása
+###### [Az eszköz konfigurálása](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
+###### [Eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
+###### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
+###### [Eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
+###### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
+##### 2. lecke: Az IoT hub létrehozása
+###### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
+###### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
+###### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
+###### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
+##### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
+###### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+###### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
+###### [A tárban őrzött üzenetek olvasása](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
+##### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
+###### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
+###### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
+##### [Hibaelhárítás](iot-hub-intel-edison-kit-node-troubleshooting.md)
 
-### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
-#### [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
-#### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
-#### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
-#### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
-#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+#### [Intel Edison és C](iot-hub-intel-edison-kit-c-get-started.md)
+##### 1. lecke: Az eszköz konfigurálása
+###### [Az eszköz konfigurálása](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
+###### [Eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
+###### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
+###### [Eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
+###### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
+##### 2. lecke: Az IoT hub létrehozása
+###### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
+###### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
+###### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
+###### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
+##### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
+###### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
+###### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
+###### [A tárban őrzött üzenetek olvasása](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
+##### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
+###### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
+###### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
+##### [Hibaelhárítás](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
-### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
-#### [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
-#### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
-#### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
-#### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
-#### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+#### [Adafruit Feather HUZZAH ESP8266 és Arduino IDE](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [Sparkfun ESP8266 Thing Dev és Arduino IDE](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [Adafruit Feather M0 és Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
+#### Az IoT Gateway Starter Kit használata
+##### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+##### [Az IoT Hub és az IoT-átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [Az IoT-átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-#### 1. lecke: Az eszköz konfigurálása
-##### [Az eszköz konfigurálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
-##### [Eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
-##### [Eszközök beszerzése (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-ubuntu.md)
-##### [Eszközök beszerzése (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-mac.md)
-##### [A villogóalkalmazás elkészítése és üzembe helyezése](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md)
-#### 2. lecke: Az IoT hub létrehozása
-##### [Azure-eszközök beszerzése (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
-##### [Azure-eszközök beszerzése (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
-##### [Azure-eszközök beszerzése (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [Az IoT Hub létrehozása és a Raspberry Pi regisztrálása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
-#### 3. lecke: Az eszközről a felhőbe irányuló üzenetek küldése
-##### [Azure-függvényalkalmazás és -tárfiók létrehozása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
-##### [A mintaalkalmazás futtatása üzenetek küldéséhez](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
-##### [A tárban őrzött üzenetek olvasása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
-#### 4. lecke: A felhőből az eszközre irányuló üzenetek küldése
-##### [A mintaalkalmazás futtatása üzenetek fogadásához](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
-##### [Választható lehetőség: A LED viselkedésének módosítása](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
-#### [Hibaelhárítás](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
-
-
-## Gateway SDK használata
-### [Szimuláció Linux rendszeren](iot-hub-linux-gateway-sdk-get-started.md)
-### [Szimuláció Windows rendszeren](iot-hub-windows-gateway-sdk-get-started.md)
-
-
-## Az IoT Gateway Starter Kit használata
-### Az IoT Gateway Starter Kit konfigurálása
-#### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-#### [Az IoT Hub és az IoT-átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-#### [Az IoT-átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-
+## [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
+## [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
+## [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
+## [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
+## [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
+## [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+## [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # Útmutató
 ## Felkészülés
@@ -249,6 +218,9 @@
 ## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
 # Erőforrások
+## [iothub-explorer eszköz](https://github.com/Azure/iothub-explorer)
+## [iothub-diagnostics eszköz](https://github.com/Azure/iothub-diagnostics)
+## [DeviceExplorer eszköz](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)

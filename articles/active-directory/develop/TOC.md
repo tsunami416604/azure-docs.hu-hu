@@ -1,4 +1,5 @@
-# [Áttekintés](active-directory-developers-guide.md)
+# Áttekintés
+## [Fejlesztői útmutató](active-directory-developers-guide.md)
 ## [Az alkalmazások és az Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [Fejlesztői szószedet](active-directory-dev-glossary.md)
 ## [AAD Graph API](active-directory-graph-api.md)
@@ -39,14 +40,12 @@
 ## [Védjegyzési útmutató](active-directory-branding-guidelines.md)
 ## Az SAML használata
 ### [Az Azure AD és az SAML](active-directory-saml-protocol-reference.md)
-### [A Hozzáférés-vezérlés által visszaadott SAML megtekintése](active-directory-java-view-saml-returned-by-access-control.md)
 ### [Jogcímek testreszabása](active-directory-saml-claims-customization.md)
 ### [SAML-alapú SSO hibakeresése](active-directory-saml-debugging.md)
 ### [Egyszeri bejelentkezéses SAML-protokoll](active-directory-single-sign-on-protocol-reference.md)
 ### [Egyszeri kijelentkezéses SAML-protokoll](active-directory-single-sign-out-protocol-reference.md)
 ## A Visual Studio használata
 ### [Bevezetés az Azure Active Directory és a Visual Studio csatlakoztatott szolgáltatásainak használatába (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
-### [Mi történt az MVC-projektemmel](Visual Studio Azure Active Directory connected service.md)?](vs-active-directory-dotnet-what-happened
 ### [Hiba a hitelesítés észlelésekor](vs-active-directory-error.md)
 ### [Bevezetés a WebApi használatába](vs-active-directory-webapi-getting-started.md)
 ### [Mi történt a WebApi-projektemmel?](vs-active-directory-webapi-what-happened.md)
@@ -59,7 +58,8 @@
 ### [Összevonási metaadatok](active-directory-federation-metadata.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
-# [2.0 verziójú végpont](active-directory-appmodel-v2-overview.md)
+### [Szolgáltatások közötti hívások](active-directory-protocols-oauth-service-to-service.md)
+# 2.0 verziójú végpont
 ## [Áttekintés](active-directory-appmodel-v2-overview.md)
 ### [Eltérések](active-directory-v2-compare.md)
 ### [Alkalmazástípusok](active-directory-v2-flows.md)
@@ -82,12 +82,11 @@
 ## Referencia
 ### [Alkalmazásregisztráció-referencia](active-directory-v2-registration-portal.md)
 ### [Hitelesítési tárak](active-directory-v2-libraries.md)
+### [2.0-s hitelesítési protokollok](active-directory-v2-protocols.md)
+#### [Jogkivonat-referencia](active-directory-v2-tokens.md)
+#### [OAuth 2.0 engedélyezési kódfolyam](active-directory-v2-protocols-oauth-code.md)
+#### [OpenID Connect](active-directory-v2-protocols-oidc.md)
+#### [Implicit folyamat](active-directory-v2-protocols-implicit.md)
+#### [OAuth 2.0-ügyfél hitelesítő adatai](active-directory-v2-protocols-oauth-client-creds.md)
 ### [Hatókörök](active-directory-v2-scopes.md)
-### [Jogkivonat-referencia](active-directory-v2-tokens.md)
-### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-### [Implicit folyamat](active-directory-v2-protocols-implicit.md)
-### [OAuth 2.0 engedélyezési kódfolyam](active-directory-v2-protocols-oauth-code.md)
-### [OAuth 2.0-ügyfél hitelesítő adatai](active-directory-v2-protocols-oauth-client-creds.md)
-### [OAuth 2.0 és OpenID](active-directory-v2-protocols.md)
-### [Szolgáltatások közötti hívások](active-directory-protocols-oauth-service-to-service.md)
 # [Példák](active-directory-code-samples.md)

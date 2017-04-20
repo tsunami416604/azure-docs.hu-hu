@@ -5,7 +5,7 @@
 ## [Alkalmazáshasználati helyzetek](service-fabric-application-scenarios.md)
 ## [Architektúra](service-fabric-architecture.md)
 ## [Terminológia](service-fabric-technical-overview.md)
-## [A tartalom ütemterve](service-fabric-content-roadmap.md)
+## [Ismertető](service-fabric-content-roadmap.md)
 
 # Első lépések
 ## A fejlesztési környezet beállítása
@@ -17,7 +17,8 @@
 ### [Java Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
-## [Önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
+## [Az első saját fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md)
+## [Az első saját önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
 
 # Útmutató
 ## Alkalmazás készítése
@@ -124,7 +125,6 @@
 #### [Hozzáférés-vezérlés](service-fabric-cluster-security-roles.md)
 #### [Fürt konfigurálása](service-fabric-cluster-fabric-settings.md)
 #### [Fürttanúsítványok hozzáadása vagy váltása](service-fabric-cluster-security-update-certs-azure.md) 
-#### [Nyilvános fürt ingyenes kipróbálása](http://aka.ms/tryservicefabric)
 
 ### Önálló fürtök
 #### [Tervezés és felkészülés az üzembe helyezésre](service-fabric-cluster-standalone-deployment-preparation.md)

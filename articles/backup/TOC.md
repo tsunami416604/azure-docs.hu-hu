@@ -76,6 +76,7 @@
 ## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
 ## [Offline biztonsági mentés konfigurálása](backup-azure-backup-import-export.md)
 ## [A szalagtár lecserélése](backup-azure-backup-cloud-as-tape.md)
+## [Linux virtuális gépek alkalmazáskonzisztens biztonsági mentései](backup-azure-linux-app-consistent.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/azurerm.recoveryservices.backup)

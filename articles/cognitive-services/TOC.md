@@ -287,10 +287,10 @@
 ### [Nyelvek](Translator/languages.md)
 ### [Hub](Translator/translator-hub-overview.md)
 ### [CTF](Translator/collaborative-translation-framework-reporting-api.md)
-### [Beszédfordítási API – áttekintés](Translator/speech-overview.md)
-### [Beszédfordítási API-referencia](http://docs.microsofttranslator.com/speech-translate.html)
-### [Szövegfordítási API – áttekintés](Translator/text-overview.md)
-### [Szövegfordítási API-referencia](http://docs.microsofttranslator.com/text-translate.html)
+### [Translator Speech API áttekintése](Translator/speech-overview.md)
+### [Translator Speech API-referencia](http://docs.microsofttranslator.com/speech-translate.html)
+### [Translator Text API áttekintése](Translator/text-overview.md)
+### [Translator Text API-referencia](http://docs.microsofttranslator.com/text-translate.html)
 
 ## Videó
 ### [Áttekintés](Video/Home.md)

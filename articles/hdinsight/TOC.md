@@ -28,7 +28,6 @@
 ## Kötegelt lekérdezések a Hadoop használatával
 ### [A Hive és a Hadoop](hdinsight-use-hive.md)
 #### [A Hive-nézet használata](hdinsight-hadoop-use-hive-ambari-view.md)
-#### [Az SSH használata](hdinsight-hadoop-use-hive-ssh.md)
 #### [A Beeline használata](hdinsight-hadoop-use-hive-beeline.md)
 #### [A cURL használata](hdinsight-hadoop-use-hive-curl.md)
 #### [A PowerShell használata](hdinsight-hadoop-use-hive-powershell.md)
@@ -109,6 +108,7 @@
 ### [Használat a Sparkkal](hdinsight-apache-spark-with-kafka.md)
 ### [Használat a Stormmal](hdinsight-apache-storm-with-kafka.md)
 ## Fejlesztés
+### [Streamelő MapReduce programok fejlesztése C# nyelven](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce feladatok fejlesztése](hdinsight-hadoop-mapreduce-scalding.md)
 ### [A HDInsight Tools használata Spark-alkalmazások létrehozásához](hdinsight-apache-spark-eclipse-tool-plugin.md)
@@ -199,6 +199,7 @@
 # Kapcsolódó
 ## Windows-fürtök
 ### [Windows-fürtök áttelepítése Linux-fürtökre](hdinsight-migrate-from-windows-to-linux.md)
+### [.NET–megoldások áttelepítése Linux-fürtökre](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 ### [Hadoop MapReduce-minták futtatása](hdinsight-run-samples.md)
 ### [A Solr használata fürtökön](hdinsight-hadoop-solr-install-linux.md)
 ### [A Giraph használata nagyméretű gráfok feldolgozásához](hdinsight-hadoop-giraph-install.md)

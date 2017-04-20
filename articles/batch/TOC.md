@@ -25,6 +25,16 @@
 ### [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
 ### [Diagnosztikai naplók a Batchben](batch-diagnostics.md)
+### [Batch-elemzés](batch-analytics.md)
+#### [Készlet létrehozása esemény](batch-pool-create-event.md)
+#### [Készlet törlésének indítása esemény](batch-pool-delete-start-event.md)
+#### [Készlet törlése kész esemény](batch-pool-delete-complete-event.md)
+#### [Készlet átméretezésének indítása esemény](batch-pool-resize-start-event.md)
+#### [Készlet átméretezése kész esemény](batch-pool-resize-complete-event.md)
+#### [Tevékenység indítása esemény](batch-task-start-event.md)
+#### [Tevékenység kész esemény](batch-task-complete-event.md)
+#### [Tevékenység meghiúsult esemény](batch-task-fail-event.md)
+### [Azure Batch számítási csomópont környezeti változói](batch-compute-node-environment-variables.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)

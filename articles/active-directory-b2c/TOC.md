@@ -1,7 +1,7 @@
 # Áttekintés
 ## [Áttekintés](active-directory-b2c-overview.md)
 ## [Alkalmazástípusok](active-directory-b2c-apps.md)
-## [Üzemi szintű és előnézeti B2C-bérlők összehasonlítás](active-directory-b2c-reference-tenant-type.md)
+## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
 
 # Első lépések
 ## [Azure AD B2C-címtár létrehozása](active-directory-b2c-get-started.md)

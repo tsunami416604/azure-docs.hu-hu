@@ -34,10 +34,11 @@
 ## Több helyek közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
-## [A BGP konfigurálása az Azure VPN Gateway-átjáróhoz a PowerShell-lel](vpn-gateway-bgp-resource-manager-ps.md)
+## [BGP konfigurálása egy VPN-átjáró számára](vpn-gateway-bgp-resource-manager-ps.md)
 ## [Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása](vpn-gateway-activeactive-rm-powershell.md)
 ## [Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel](vpn-gateway-modify-local-network-gateway.md)
 ## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
+## [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
 ## VPN Gateway törlése
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
