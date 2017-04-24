@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 04/11/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6da8b21014966edd9f4cea0fd27f6973b2b820f0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 5e32f1e534057b5e8e0ed6d5c0a4631f9fefbca5
+ms.lasthandoff: 04/17/2017
 
 
 ---
 
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Az első önálló Service Fabric-fürt létrehozása
-Bármilyen, Windows Server 2012 R2 vagy Windows Server 2016 rendszerű, helyszíni vagy a felhőben futó virtuális gépen vagy számítógépen létrehozhat önálló Service Fabric-fürtöt. A rövid útmutató segítségével csupán pár perc alatt létrehozhat egy önálló fejlesztési fürtöt.  Amikor végzett, egy egyetlen számítógépen futó, három csomópontot tartalmazó fürttel fog majd rendelkezni, amelyre appokat telepíthet.
+Bármilyen, Windows Server 2012 R2 vagy Windows Server 2016 rendszerű, helyszíni vagy a felhőben futó virtuális gépen vagy számítógépen létrehozhat önálló Service Fabric-fürtöt. A rövid útmutató segítségével csupán pár perc alatt létrehozhat egy önálló fejlesztési fürtöt.  Amikor végzett, egy egyetlen számítógépen futó, három csomópontot tartalmazó fürttel fog rendelkezni, amelyre appokat telepíthet.
 
 ## <a name="before-you-begin"></a>Előkészületek
-A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](http://go.microsoft.com/fwlink/?LinkId=730690).  Tömörítse ki egy mappába, például a *C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer* helyre a számítógépen vagy virtuális gépen, ahová a fejlesztési fürtöt telepíteni kívánja.  A telepítőcsomag tartalmának részletes leírását [itt](service-fabric-cluster-standalone-package-contents.md) találja.
+A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](http://go.microsoft.com/fwlink/?LinkId=730690).  Tömörítse ki a telepítőcsomagot annak a számítógépnek vagy virtuális gépnek az egyik mappájába, ahová a fejlesztési fürtöt telepíteni kívánja.  A telepítőcsomag tartalmának részletes leírását [itt](service-fabric-cluster-standalone-package-contents.md) találja.
 
 A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdának rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen. A Service Fabric tartományvezérlőn nem telepíthető.
 
@@ -37,7 +37,9 @@ Az önálló csomagban lévő *TestConfiguration.ps1* szkript az ajánlott eljá
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
 ## <a name="create-the-cluster"></a>A fürt létrehozása
-Több fürtkonfigurációs mintafájl is települ a telepítőcsomaggal. A *ClusterConfig.Unsecure.DevCluster.json* a legegyszerűbb fürtkonfiguráció: egy nem védett, egyetlen számítógépen futó, három csomóponttal rendelkező fürt. Ehhez az oktatóanyaghoz az alapértelmezett konfigurációs beállítások egyikét sem kell módosítania.  A többi konfigurációs fájl X.509 tanúsítványokkal vagy a Windows biztonsági szolgáltatásaival védett egy- vagy többgépes fürtöket ír le.  A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md). 
+Több fürtkonfigurációs mintafájl is települ a telepítőcsomaggal. A *ClusterConfig.Unsecure.DevCluster.json* a legegyszerűbb fürtkonfiguráció: egy nem védett, egyetlen számítógépen futó, három csomóponttal rendelkező fürt.  A többi konfigurációs fájl X.509 tanúsítványokkal vagy a Windows biztonsági szolgáltatásaival védett egy- vagy többgépes fürtöket ír le.  Ehhez az oktatóanyaghoz az alapértelmezett konfigurációs beállítások egyikét sem kell módosítania, csak át kell tekintenie a konfigurációs fájlt, és meg kell ismerkednie a beállításokkal.  A **csomópontok** szakasz ismerteti a fürt három csomópontját: név, IP-cím, [csomóponttípus, tartalék tartomány és frissítési tartomány](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  A **tulajdonságok** szakasz definiálja a fürt [biztonságát, megbízhatósági szintjét, diagnosztikai gyűjteményét és a benne lévő csomópontok típusait](service-fabric-cluster-manifest.md#cluster-properties).
+
+Ez a fürt nem biztonságos.  Bárki csatlakozhat hozzá névtelenül és végrehajthat kezelési műveleteket, ezért az üzemben lévő fürtöket mindig X.509 tanúsítványok vagy a Windows rendszerbiztonság használatával kell védeni.  A biztonság konfigurálására csak a fürt létrehozásakor van lehetőség, a fürt létrehozása után már nem lehet engedélyezni.  A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md).  
 
 A három csomóponttal rendelkező fejlesztési fürt létrehozásához futtassa a *CreateServiceFabricCluster.ps1* szkriptet egy rendszergazdai PowerShell-munkamenetből:
 
@@ -88,7 +90,7 @@ Ha törölni kívánja a Service Fabric-futtatókörnyezetet a számítógéprő
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy telepített egy önálló fejlesztési fürtöt, megpróbálkozhat a következőkkel:
+Most, hogy telepített egy önálló fejlesztési fürtöt, tekintse meg az alábbi cikkeket:
 * [Telepíthet egy többgépes önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md), és engedélyezheti a védelmet.
 * [Appokat helyezhet üzembe a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 

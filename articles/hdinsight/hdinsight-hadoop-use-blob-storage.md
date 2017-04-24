@@ -18,9 +18,9 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: f85f6484db177285e0fd64a15991a7eb227cd29b
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: f5c36624360b4a09819ea70f3ac23f943688c120
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -106,6 +106,9 @@ Az alapértelmezett Blob tároló a fürtre jellemző információkat tárolja, 
 Amikor HDInsight-fürtöt hoz létre a portálról, megadhatja a tárfiók részleteit (az alábbiakban látható módon). Azt is megadhatja, hogy szeretne-e további tárfiókot társítani a fürttel, és ha igen, a Data Lake Store-t vagy más Azure Storage-blobot választhat további tárolóként.
 
 ![HDInsight hadoop létrehozási adatforrás](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
+
+> [!WARNING]
+> A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
 #### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
@@ -285,6 +288,8 @@ $clusterName = "<HDInsightClusterName>"
 
 HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, amelyet a fürthöz társítani kívánja. Ezen a tárfiókon kívül további tárfiókokat vehet fel ugyanabból az Azure-előfizetésből vagy más Azure-előfizetésekből a létrehozási folyamat során vagy a fürt létrehozása után. Útmutatás további tárfiókok hozzáadásához: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
+> [!WARNING]
+> A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.
 
 ## <a name="using-azure-data-lake-store-with-hdinsight-clusters"></a>Az Azure Data Lake Store és a HDInsight-fürtök együttes használata
 
@@ -306,8 +311,8 @@ Ha a HDInsight alapértelmezett tárolójaként az Azure Data Lake Store van be�
 
 ahol `<cluster_root_path>` az Azure Data Lake Store-ban létrehozott mappa neve. Ha mindegyik fürthöz megadja a gyökér elérési útját, ugyanazt az Azure Data Lake Store-fiókot több fürthöz is használhatja. Így olyan beállítással rendelkezhet, ahol:
 
-* Az&1;. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster1storage`
-* A&2;. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster2storage`
+* Az 1. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster1storage`
+* A 2. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster2storage`
 
 Vegye figyelembe, hogy mindét fürt ugyanazt a **mydatalakestore** nevű Data Lake Store-fiókot használja. Mindegyik fürt hozzáféréssel rendelkezik a saját gyökér fájlrendszeréhez a Data Lake Store-ban. Az Azure Portalon végzett üzembe helyezésekor a **/fürtök/\<fürtnév>** mappanevet kell használnia a gyökér elérési úthoz.
 

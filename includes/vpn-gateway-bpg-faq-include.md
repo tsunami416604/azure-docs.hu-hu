@@ -28,6 +28,8 @@ Az Azure VPN Gatewayek a helyszíni BGP-eszközök alábbi elérési útjait aj�
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Meghirdethetem az Azure VPN Gateway átjárókhoz vezető alapértelmezett útvonalat (0.0.0.0/0)?
 Igen.
 
+Vegye figyelembe, hogy ez a VNet teljes kimenő forgalmát a helyszíni hely felé tereli, és a VNeten található virtuális gépek nem lesznek képesek nyilvános kommunikációt fogadni közvetlenül az internetről, például az internetről a virtuális gépekre irányuló RDP- vagy SSH-kommunikációt.
+
 ### <a name="can-i-advertise-the-exact-prefixes-as-my-virtual-network-prefixes"></a>Meghirdethetem pontosan ugyanazokat az előtagokat, mint a virtuális hálózataim előtagjai?
 
 Nem, ha bármelyik virtuális hálózatának a címéhez tartozó előtagot meghirdeti, azokat az Azure platform blokkolni vagy szűrni fogja. Olyan előtagot azonban meghirdethet, amelynek a virtuális hálózaton belüli állomások a részhalmazát alkotják. 
@@ -65,9 +67,4 @@ Az Azure helyi hálózati átjárója adja meg a kezdeti címelőtagokat a helys
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Mit kell felvennem a helyszíni VPN-eszközön a BGP társviszony-munkamenethez?
 Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát, amely az IPsec S2S VPN-alagútra mutat. Ha például az Azure VPN-társgép IP-címe „10.12.255.30”, akkor a VPN-eszköz megfelelő IPsec alagútkapcsolatának a „10.12.255.30” címre mutató gazdaútvonalat kell megadnia egy következő ugrás felülettel.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

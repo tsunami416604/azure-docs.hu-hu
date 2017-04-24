@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: 271f447a36f42330ed7b8dea78b32c06eebdeda6
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: e5ef305d926a57e32cdebd44f3dbe2185c735dd4
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -39,11 +40,7 @@ A Recovery Services-tárolók mindkét modellt támogatják.  Mind a klasszikus 
 A klasszikus virtuális gépek biztonsági másolatai a Backup tárolóból nem telepíthetők át automatikusan a Recovery Services-tárolóba, amikor a virtuális gépeket a klasszikusból Resource Manager módba telepíti át. Kövesse a virtuális gép biztonsági mentéseinek áttelepítésére vonatkozó lépéseket:
 
 1. A Backup-tárolóban lépjen a **Protected Items** (Védett elemek) lapra, és válassza ki a virtuális gépet. Kattintson a [Stop Protection](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) (Védelem leállítása) gombra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
-2. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tárolót és hálózatot is mindenképpen telepítse át Resource Manager módba.
-3. Hozzon létre egy Recovery Services-tárolót, és konfigurálja a biztonsági mentést az áttelepített virtuális gépen a tároló irányítópultjának tetejénél található **Biztonsági mentés** művelettel. További információk a [biztonsági mentés engedélyezéséről a Recovery Services-tárolóban](backup-azure-vms-first-look-arm.md).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+2. Az [Azure Portalon](https://portal.azure.com) lépjen a virtuális gép **Bővítmények** menüjére, és távolítsa el **VMSnapshot/VMSnapshotLinux** bővítményt.
+3. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tárolót és hálózatot is mindenképpen telepítse át Resource Manager módba.
+4. Hozzon létre egy Recovery Services-tárolót, és konfigurálja a biztonsági mentést az áttelepített virtuális gépen a tároló irányítópultjának tetejénél található **Biztonsági mentés** művelettel. További információk a [biztonsági mentés engedélyezéséről a Recovery Services-tárolóban](backup-azure-vms-first-look-arm.md).
 

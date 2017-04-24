@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c173f1b6937739f662eb41aa1886e66cb06ed729
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -41,12 +41,13 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**.
+3. Az adatbázis **Áttekintés** lapján tekintse meg a teljes kiszolgálónevet, amint az alábbi képen is látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.
 
    ![kapcsolatadatok](./media/sql-database-connect-query-ssms/connection-information.png) 
 
+4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót. 
 
-## <a name="connect-to-the-server-and-your-new-database"></a>Csatlakozás a kiszolgálóhoz és az új adatbázishoz
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>Csatlakozás az adatbázishoz az SQL Database logikai kiszolgálóban
 
 Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval. 
 
@@ -65,7 +66,7 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 
    ![kapcsolódás a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. Kattintson a **Beállítások** gombra. A **Connect to database** (Csatlakozás az adatbázishoz) részben adja meg a következőket: **mySampleDatabase** az előzőleg létrehozott adatbázishoz való csatlakozáshoz.
+3. A **Connect to server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanelen kattintson az **Options** (Beállítások) elemre. A **Connect to database** (Csatlakozás az adatbázishoz) szakaszban adja meg a következőt: **mySampleDatabase** az adatbázishoz való csatlakozáshoz.
 
    ![csatlakozás kiszolgálón található adatbázishoz](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
@@ -73,7 +74,7 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 
    ![csatlakoztatva a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connected.png)  
 
-4. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
+5. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
@@ -91,7 +92,7 @@ Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact
 
 3. Az eszköztáron kattintson az **Execute** (Végrehajtás) elemre a Product és ProductCategory táblák adatainak lekérdezéséhez.
 
-    <img src="./media/sql-database-connect-query-ssms/query.png" alt="query" style="width: 780px;" />
+    ![lekérdezés](./media/sql-database-connect-query-ssms/query.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 

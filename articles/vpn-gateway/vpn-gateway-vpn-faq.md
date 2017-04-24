@@ -1,6 +1,6 @@
 ---
 title: "Azure VPN Gateway – gyakori kérdések | Microsoft Docs"
-description: "A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network létesítmények közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról."
+description: "A VPN Gatewayjel kapcsolatos gyakori kérdések. Gyakori kérdések a Microsoft Azure Virtual Network telephelyek közötti kapcsolatairól, a hibrid konfigurációjú kapcsolatokról és a VPN-átjárókról."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2017
+ms.date: 04/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
-ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: 49aeb711de73bf967f330ec54385fb8bb36dd7ca
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -34,18 +35,18 @@ A Windows PowerShell és az Azure REST API-k használatával kapcsolódhat több
 ### <a name="what-are-my-cross-premises-connection-options"></a>Milyen lehetőségeim vannak a létesítmények közötti kapcsolódásra?
 A következő létesítmények közötti kapcsolattípusok támogatottak:
 
-* [Helyek közötti kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md) – VPN-kapcsolat IPsec (IKE v1 és IKE v2) használatával. Ehhez a kapcsolattípushoz VPN-eszköz vagy RRAS szükséges.
-* [Pont–hely kapcsolat](vpn-gateway-howto-point-to-site-resource-manager-portal.md) – VPN-kapcsolat STTP (Secure Socket Tunneling Protocol) használatával. Ehhez a kapcsolattípushoz nem szükséges VPN-eszköz.
-* [Virtuális hálózatok közötti kapcsolat](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) – A helyek közötti kapcsolattal megegyező kapcsolattípus. A virtuális hálózatok közötti kapcsolat egy IPsec-et (IKE v1 és IKE v2) használó VPN-kapcsolat, nem szükséges hozzá VPN-eszköz.
-* [Többhelyes kapcsolat](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) – Ez a helyek közötti kapcsolat egy változata, amely több helyszíni hely csatlakoztatását teszi lehetővé egy virtuális hálózathoz.
-* [ExpressRoute](../expressroute/expressroute-introduction.md) – Az ExpressRoute közvetlen kapcsolatot biztosít az Azure-ral WAN-on (nem a nyilvános interneten) keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
+* Helyek közötti kapcsolat – VPN-kapcsolat IPsec (IKE v1 és IKE v2) használatával. Ehhez a kapcsolattípushoz VPN-eszköz vagy RRAS szükséges. További információ: [Helyek közötti kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+* Pont–hely kapcsolat – VPN-kapcsolat SSTP (Secure Socket Tunneling Protocol) használatával. Ehhez a kapcsolattípushoz nem szükséges VPN-eszköz. További információ: [Pont–hely kapcsolat](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+* Virtuális hálózatok közötti kapcsolat – A helyek közötti kapcsolattal megegyező kapcsolattípus. A virtuális hálózatok közötti kapcsolat egy IPsec-et (IKE v1 és IKE v2) használó VPN-kapcsolat, nem szükséges hozzá VPN-eszköz. További információ: [Virtuális hálózatok közötti kapcsolat](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+* Többhelyes kapcsolat – Ez a helyek közötti kapcsolat egy változata, amely több helyszíni hely csatlakoztatását teszi lehetővé egy virtuális hálózathoz. További információ: [Többhelyes kapcsolat](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
+* ExpressRoute – Az ExpressRoute közvetlen kapcsolatot biztosít az Azure-ral WAN-on (nem egy VPN-kapcsolattal a nyilvános interneten) keresztül. További információk: [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) (Az ExpressRoute műszaki áttekintése) és [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
 
 További információk a VPN Gateway-kapcsolatokról: [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md).
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Mi a különbség a helyek közötti és a pont–hely kapcsolatok között?
-A **helyek közötti** konfigurációk az Ön telephelye és az Azure között vannak. Ez azt jelenti, hogy a helyszínen található számítógépek bármelyikéről csatlakozhat a virtuális hálózaton belüli virtuális gépek vagy szerepkörpéldányok bármelyikéhez az útválasztás konfigurációjától függően. Ez ideális megoldás folyamatosan elérhető létesítmények közötti kapcsolatokhoz, és hibrid konfigurációkhoz is használható. Ez a kapcsolattípus IPsec VPN-készüléket használ (hardver- vagy szoftverkészüléket), amelyet a hálózat szélén kell üzembe helyezni. Az ilyen típusú kapcsolat létrehozásához szükség van a megfelelő VPN-hardverre és egy kifelé irányuló IPv4-címre.
+A **helyek közötti** (IPsec/IKE VPN-alagút) konfigurációk az Ön telephelye és az Azure között vannak. Ez azt jelenti, hogy a helyszínen található számítógépek bármelyikéről csatlakozhat a virtuális hálózaton belüli virtuális gépek vagy szerepkörpéldányok bármelyikéhez az útválasztás és az engedélyek konfigurációjától függően. Ez ideális megoldás folyamatosan elérhető létesítmények közötti kapcsolatokhoz, és hibrid konfigurációkhoz is használható. Ez a kapcsolattípus IPsec VPN-készüléket használ (hardvereszközt vagy szoftverkészüléket), amelyet a hálózat szélén kell üzembe helyezni. Az ilyen típusú kapcsolat létrehozásához szükség van egy kifelé irányuló IPv4-címre, amely nem NAT mögött helyezkedik el.
 
-A **pont–hely** konfigurációkkal csatlakozhat egy tetszőleges helyen található számítógépről a virtuális hálózata összes eleméhez. Ez a típus a Windows beépített VPN-ügyfelét használja. A pont–hely konfiguráció részeként telepíteni kell egy tanúsítványt és egy VPN-ügyfélkonfigurációs csomagot, amelyben azok a beállítások találhatók, amelyeket a számítógépe használ a virtuális hálózatban található virtuális gépekhez vagy szerepkörpéldányokhoz való csatlakozáshoz. Ez ideális megoldás, ha csatlakozni szeretne egy virtuális hálózathoz, de nem a helyszínen tartózkodik, valamint akkor is jól használható, ha nincs hozzáférése VPN-hardverhez vagy kifelé irányuló IPv4-címhez, amelyek a helyek közötti kapcsolatok kialakításához szükségesek.
+A **pont–hely** (SSTP-alapú VPN) konfigurációkkal csatlakozhat egy tetszőleges helyen található számítógépről a virtuális hálózata összes eleméhez. Ez a típus a Windows beépített VPN-ügyfelét használja. A pont–hely konfiguráció részeként telepíteni kell egy tanúsítványt és egy VPN-ügyfélkonfigurációs csomagot, amelyben azok a beállítások találhatók, amelyeket a számítógépe használ a virtuális hálózatban található virtuális gépekhez vagy szerepkörpéldányokhoz való csatlakozáshoz. Ez ideális megoldás, ha csatlakozni szeretne egy virtuális hálózathoz, de nem a helyszínen tartózkodik, valamint akkor is jól használható, ha nincs hozzáférése VPN-hardverhez vagy kifelé irányuló IPv4-címhez, amelyek a helyek közötti kapcsolatok kialakításához szükségesek.
 
 A virtuális hálózatát konfigurálhatja úgy, hogy helyek közötti és pont–hely kapcsolatokat használjon egyidejűleg – ha a helyek közötti kapcsolatot útvonalalapú VPN-típussal hozza létre az átjáróhoz. Az útvonalalapú VPN-típusok korábbi megnevezése dinamikus átjáró volt a klasszikus üzemi modellben.
 
@@ -63,7 +64,7 @@ Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg.
 ### <a name="do-i-need-a-gatewaysubnet"></a>Szükségem van GatewaySubnetre?
 Igen. Az átjáróalhálózat tartalmazza a virtuális hálózati átjáró-szolgáltatások által használt IP-címeket. A virtuális hálózati átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáró-alhálózatnak a „GatewaySubnet” névvel kell rendelkeznie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
 
-Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáróalhálózatban lévő IP-címeket az átjárószolgáltatás számára foglalja le a rendszer. Egyes konfigurációk a többinél nagyobb számú IP-cím kiosztását követelik meg az átjárószolgáltatásokhoz. Győződjön meg arról, hogy az átjáróalhálózat elég IP-címet tartalmaz a későbbi növekedéshez és az esetleges új kapcsolatkonfigurációk kialakításához. Tehát, míg egyes konfigurációkhoz létrehozhat kicsi, akár /29-es méretű átjáróalhálózatot is, ajánlott /28-ast vagy nagyobbat létrehozni (/28, /27, /26 stb.). Vizsgálja meg a létrehozni kívánt konfiguráció követelményeit és ellenőrizze, hogy az átjáró-alhálózat megfelel-e ezeknek a követelményeknek.
+Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáróalhálózatban lévő IP-címeket az átjárószolgáltatás számára foglalja le a rendszer. Egyes konfigurációk a többinél nagyobb számú IP-cím kiosztását követelik meg az átjárószolgáltatásokhoz. Győződjön meg arról, hogy az átjáróalhálózat elég IP-címet tartalmaz a későbbi növekedéshez és az esetleges új kapcsolatkonfigurációk kialakításához. Tehát, míg egyes konfigurációkhoz létrehozhat kicsi, akár /29-es méretű átjáróalhálózatot is, ajánlott /27-est vagy nagyobbat létrehozni (/27, /26, /25 stb.). Vizsgálja meg a létrehozni kívánt konfiguráció követelményeit és ellenőrizze, hogy az átjáró-alhálózat megfelel-e ezeknek a követelményeknek.
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>Telepíthetek virtuális gépeket vagy szerepkörpéldányokat az átjáróalhálózatomra?
 Nem.
@@ -106,11 +107,23 @@ A VPN-átjáró alapvetően egy többhelyű eszköz, amelynek egy hálózati ada
 További információ: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
 
 ## <a name="site-to-site-connections-and-vpn-devices"></a>Helyek közötti kapcsolatok és VPN-eszközök
-### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Mit érdemes figyelembe venni a VPN-eszköz kiválasztásakor?
-Eszközszállítói partnereinkkel különböző standard helyek közötti VPN-eszközöket ellenőriztünk. Az [itt](vpn-gateway-about-vpn-devices.md) elérhető listán szerepelnek a kompatibilis VPN-eszközök és a hozzájuk tartozó konfigurációs útmutatók vagy minták, valamint az eszközökre vonatkozó műszaki adatok. A listán kompatibilisként szereplő eszközcsaládokba tartozó összes eszköz működik a virtuális hálózatokkal. A VPN-eszköz konfigurálásához tekintse meg az eszközkonfigurációs mintát, vagy kövesse a megfelelő eszközcsaládhoz tartozó hivatkozást.
 
-### <a name="what-do-i-do-if-i-have-a-vpn-device-that-isnt-in-the-known-compatible-device-list"></a>Mi a teendő, ha az én VPN-eszközöm nincs az ismert kompatibilis eszközök listájában?
-Ha nem látja az eszközét a kompatibilis VPN-eszközök listájában, de azt szeretné használni a VPN-kapcsolathoz, ellenőriznie kell, hogy megfelel-e az [itt](vpn-gateway-about-vpn-devices.md) felsorolt támogatott IPsec/IKE-konfigurációknak és paramétereknek. A minimális rendszerkövetelményeknek megfelelő eszközök működnek a VPN-átjárókkal. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
+### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Mit érdemes figyelembe venni a VPN-eszköz kiválasztásakor?
+Eszközszállítói partnereinkkel különböző standard helyek közötti VPN-eszközöket ellenőriztünk. A kompatibilis VPN-eszközök, a hozzájuk tartozó konfigurációs útmutatók vagy minták, valamint az eszközökre vonatkozó műszaki adatok listája a [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md) című cikkben található. A listán kompatibilisként szereplő eszközcsaládokba tartozó összes eszköz működik a virtuális hálózatokkal. A VPN-eszköz konfigurálásához tekintse meg az eszközkonfigurációs mintát, vagy kövesse a megfelelő eszközcsaládhoz tartozó hivatkozást.
+
+### <a name="where-can-i-find-configuration-settings-for-vpn-devices"></a>Hol találom a VPN-eszközök konfigurációs beállításait?
+
+Az eszköz konfigurációs beállításaira mutató hivatkozásokért tekintse meg az [ellenőrzött VPN-eszközökkel](vpn-gateway-about-vpn-devices.md#devicetable) kapcsolatos témakört. Az eszközkonfigurációs hivatkozásokat képességeinkhez mérten biztosítjuk. A legfrissebb konfigurációs információkért érdemes az eszköz gyártójához fordulni.
+
+A VPN-eszköz konfigurálása előtt ellenőrizze, hogy a használni kívánt VPN-eszközre nem vonatkoznak-e [ismert eszközkompatibilitási problémák](vpn-gateway-about-vpn-devices.md#known).
+
+### <a name="how-do-i-edit-vpn-device-configuration-samples"></a>Hogyan szerkeszthetem a VPN-eszközök konfigurációs mintáit?
+
+Az eszközök konfigurációs mintáinak szerkesztésével kapcsolatos információkért tekintse meg a [minták szerkesztésével](vpn-gateway-about-vpn-devices.md#editing) kapcsolatos részt.
+
+### <a name="where-do-i-find-ipsec-and-ike-parameters"></a>Hol találom az IPsec/IKE-paramétereket?
+
+Az IPsec/IKE-paraméterekkel kapcsolatos információkért tekintse meg a [paraméterekkel](vpn-gateway-about-vpn-devices.md#ipsec) kapcsolatos részt.
 
 ### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle"></a>Miért áll le a házirendalapú VPN-alagutam, amikor nincs adatforgalom?
 Ez normális működés házirendalapú (más néven statikus útválasztású) VPN-átjárók esetében. Ha az alagúton átmenő adatforgalom több mint 5 percig inaktív, a rendszer megszakítja az alagutat, Amikor az adatforgalom megindul bármelyik irányba, az alagút azonnal újra létrejön.
@@ -120,11 +133,11 @@ A helyek közötti létesítmények közötti konfigurációkhoz támogatottak a
 
 Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az iparági szabványos IPsec-megvalósításoknak. A konfigurációs és támogatási útmutatáshoz vegye fel a kapcsolatot a szoftver szállítójával.
 
-## <a name="a-namep2sapoint-to-site-connections"></a><a name="P2S"></a>Pont–hely kapcsolatok
+## <a name="P2S"></a>Pont–hely kapcsolatok
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="a-namev2vmultiavnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>Virtuális hálózatok közötti kapcsolat és többhelyes kapcsolatok
+## <a name="V2VMulti"></a>Virtuális hálózatok közötti kapcsolat és többhelyes kapcsolatok
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
@@ -151,7 +164,7 @@ Igen, a pont–hely (P2S) VPN-ek több helyszíni helyhez és egyéb virtuális 
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>Csatlakoztathatok IPsec VPN-ekkel rendelkező virtuális hálózatot az ExpressRoute-kapcsolatcsoportomhoz?
 Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="a-namebgpabgp"></a><a name="bgp"></a>BGP
+## <a name="bgp"></a>BGP
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a>Létesítmények közötti kapcsolatok és virtuális gépek
@@ -170,8 +183,3 @@ A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network
 
 * További információk a VPN Gatewayről: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
 * További információk a VPN Gateway konfigurációs beállításairól: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
-
-
-<!--HONumber=Feb17_HO3-->
-
-

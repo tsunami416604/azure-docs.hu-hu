@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 88abdb41a403f9c1dc85e574c655c532ee9b1eb5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -184,6 +184,54 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 
 * letölti a legújabb Application Insights SDK-t a kiszolgálóra.
 
+## <a name="questions"></a>Kérdések az Állapotfigyelővel kapcsolatban
+
+### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
+
+Egy asztali alkalmazás, amelyet az IIS-webkiszolgálón kell telepítenie. Segít a webalkalmazások kialakításában és konfigurálásában. 
+
+### <a name="when-do-i-use-status-monitor"></a>Mire használhatom az Állapotfigyelőt?
+
+* Bármely, az IIS-kiszolgálón futtatott, akár már futó webalkalmazások beállításához.
+* További telemetria engedélyezéséhez olyan webalkalmazások számára, amelyeket [az Application Insights SDK-val állítottak össze](app-insights-asp-net.md) a fordítás során. 
+
+### <a name="can-i-close-it-after-it-runs"></a>A futtatás után bezárhatom?
+
+Igen. Az alkalmazást a kiválasztott webhelyek beállításának befejezése után be lehet zárni.
+
+Az alkalmazás önmagától nem gyűjt telemetriai adatokat, csupán a webalkalmazásokat konfigurálja, és néhány engedélyt állít be.
+
+### <a name="what-does-status-monitor-do"></a>Milyen műveleteket hajt végre az Állapotfigyelő?
+
+Ha kiválaszt egy webalkalmazást, amelyet az Állapotfigyelővel szeretne beállítani:
+
+* Letölti és elhelyezi az Application Insights-szerelvényeket és a .config fájlt a webalkalmazás bináris mappájába.
+* Módosítja a `web.config` fájlt az Application Insights HTTP nyomkövetési moduljának hozzáadásához.
+* A függőségi hívások összegyűjtéséhez engedélyezi a CLR-profilkészítést.
+
+### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Az alkalmazás frissítésekor minden alkalommal futtatnom kell az Állapotfigyelőt?
+
+Nem, ha az ismételt üzembe helyezés növekményesen történik. 
+
+Ha a közzététel során a „Meglévő fájlok törlése” lehetőséget választja, az Application Insights konfigurálásához újból futtatnia kell az Állapotfigyelőt.
+
+### <a name="what-telemetry-is-collected"></a>A rendszer milyen telemetriai adatokat gyűjt?
+
+Olyan alkalmazások esetén, amelyeket az Állapotfigyelővel kizárólag futásidőben állít be:
+
+* HTTP-kérések
+* Függőségi hívások
+* Kivételek
+* Teljesítményszámlálók
+
+A fordítási során már kiépített alkalmazások esetén:
+
+ * Folyamatszámlálók.
+ * Függőségi hívások (.NET 4.5); függőségi hívásokban visszaadott értékek (.NET 4.6).
+ * Kivételhíváslánc-értékek.
+
+[További információ](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
@@ -212,5 +260,5 @@ További telemetriai funkciók hozzáadása:
 [greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-[usage]: app-insights-web-track-usage.md
+[usage]: app-insights-javascript.md
 

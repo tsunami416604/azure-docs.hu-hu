@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
-ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 07b62cd6f6deb0cf3ff1c806204ebc26c773a164
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -57,6 +58,67 @@ A Storage Explorer (előzetes verzió) számos különféle módot kínál a tá
 4. A bal oldali ablaktábla megjeleníti a kiválasztott Azure-előfizetésekhez társított összes tárfiókot.
 
     ![Kiválasztott Azure-előfizetések][4]
+
+## <a name="connect-to-an-azure-stack-subscription"></a>Csatlakozás Azure Stack-előfizetéshez
+
+1. Az Azure Stack-előfizetés távoli kezeléséhez a Tártallózónak VPN-kapcsolatra van szüksége. Információk a VPN-kapcsolat Azure Stackhez való beállításáról: [Csatlakozás az Azure Stackhez VPN segítségével](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn)
+
+2. Az Azure Stack POC esetén exportálni kell az Azure Stack szolgáltató főtanúsítványát. Nyissa meg az `mmc.exe` fájlt a MAS-CON01 virtuális gépen, az Azure Stack gazdagépen vagy egy olyan helyi gépen, amely VPN-kapcsolattal rendelkezik az Azure Stackhez. A **Fájl** menüben válassza ki a **Beépülő modul hozzáadása/eltávolítása** elemet, majd adja hozzá a **Tanúsítványok** beépülő modult a **Helyi számítógép** **Számítógép fiókjának** kezeléséhez.
+
+   ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével][25]   
+
+   Keresse meg az **AzureStackCertificationAuthority** fájlt a **Console Root\Certificated (Helyi számítógép)\Trusted Root Certification Authorities\Certificates** mappában. Kattintson a jobb egérgombbal az elemre, majd válassza a **Minden feladat -> Exportálás** lehetőséget. Ezután kövesse a párbeszédpanelek útmutatásait a tanúsítvány **Base-64 kódolású X.509 (.CER)** fájlként való exportálásához. Az exportált tanúsítványt a következő lépésben fogja használni.   
+
+   ![Az Azure Stack-szolgáltató főtanúsítványának exportálása][26]   
+
+3. A Tártallózóban (előzetes verzió) kattintson a **Szerkesztés** menüre, majd az **SSL-tanúsítványok**, végül a **Tanúsítványok importálása** elemre. A fájlválasztó párbeszédpanellel keresse meg és nyissa meg az előző lépésben exportált tanúsítványt. Az importálás után a rendszer fel fogja kérni a Tártallózó újraindítására.
+
+   ![A tanúsítvány importálása a Tártallózóba (előzetes verzió)][27]
+
+4. A Tártallózó (előzetes verzió) újraindítása után válassza ki a **Szerkesztés** menüt, és győződjön meg arról, hogy be van jelölve a **Cél Azure Stack** jelölőnégyzet. Ha nincs, jelölje be, és indítsa újra a Tártallózót a módosítás érvénybe léptetéséhez. Ez a konfiguráció szükséges az Azure Stack környezettel való kompatibilitáshoz.
+
+   ![Győződjön meg arról, hogy be van jelölve a Cél Azure Stack.][28]
+
+5. A bal oldali sávon válassza a **Fiókok kezelése** lehetőséget. A bal oldali ablaktábla megjeleníti az összes Microsoft-fiókot, amelybe bejelentkezett. Az Azure Stack-fiókhoz való csatlakozáshoz kattintson a **Fiók hozzáadása** elemre.
+
+   ![Azure Stack-fiók hozzáadása][29]
+
+6. Az **Új fiók hozzáadása** párbeszédpanel **Azure-környezet** területén válassza ki az **Egyéni környezet létrehozása** lehetőséget, majd kattintson a **Tovább** gombra.
+
+7. Adja meg az Azure Stack egyéni környezet minden szükséges információját, majd kattintson a **Bejelentkezés** elemre.  Töltse ki a **Bejelentkezés egyéni felhőkörnyezetbe** párbeszédpanel mezőit egy olyan Azure Stack-fiókkal való bejelentkezéshez, amely legalább egy aktív Azure Stack-előfizetéssel társítva van. A párbeszédpanelen az alábbi mezők találhatók:
+
+    * **Környezetnév** – Ezt a mezőt a felhasználó testreszabhatja.
+    * **Szolgáltató** – A következő értéket kell megadni: https://login.windows.net. Az Azure China (Mooncake) esetén a következőt használja: https://login.chinacloudapi.cn.
+    * **Bejelentkezési erőforrás-azonosító** – Kérje le az értéket az alábbi PowerShell-parancs végrehajtásával:
+
+    Ha Ön felhőrendszergazda:
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    Ha Ön bérlő:
+
+    ```powershell
+    PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
+
+    * **Graph-végpont** – A következő értéket kell megadni: https://graph.windows.net. Az Azure China (Mooncake) esetén a következőt használja: https://graph.chinacloudapi.cn.
+    * **ARM erőforrás-azonosító** – Használja a Bejelentkezési erőforrás-azonosítónál megadott értéket.
+    * **ARM erőforrás végpontja** – Az ARM erőforrás végpontjának mintái:
+
+    Felhőrendszergazdák számára: https://adminmanagement.local.azurestack.external   
+    Bérlők számára: https://management.local.azurestack.external
+ 
+    * **Bérlőazonosítók** – Nem kötelező. Ezt az értéket csak akkor kell megadni, ha meg kell határozni a könyvtárat.
+
+8. Amint sikeresen bejelentkezett egy Azure Stack-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure Stack-előfizetés. Válassza ki azt az Azure Stack-előfizetést amellyel dolgozni szeretne, majd kattintson az **Alkalmaz** gombra. (Az **Összes előfizetés** kiválasztásával kijelölheti az összes felsorolt Azure Stack-előfizetést, vagy törölheti mindegyik jelölését.)
+
+   ![Az Egyéni felhőkörnyezet párbeszédpanel mezőinek kitöltése után válassza ki az Azure Stack-előfizetéseket.][30]
+
+9. A bal oldali ablaktábla megjeleníti a kiválasztott Azure Stack-előfizetésekhez társított összes tárfiókot.
+
+   ![A tárfiókok listája, benne az Azure Stack-előfizetéssel rendelkező fiókokkal][31]
 
 ## <a name="work-with-local-development-storage"></a>Munkavégzés helyi fejlesztési tárterülettel
 A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is dolgozhat az Azure Storage Emulator használatával. Így anélkül is írhat kódot a tárterületre és tesztelheti azt, hogy szüksége lenne egy telepített tárfiókra az Azure szolgáltatásban (mivel a tárfiókot az Azure Storage Emulator emulálja).
@@ -207,9 +269,11 @@ A keresés törléséhez kattintson az **x** gombra a keresőmezőben.
 [22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/download-storage-emulator.png
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+[25]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-certificate-azure-stack.png
+[26]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/export-root-cert-azure-stack.png
+[27]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/import-azure-stack-cert-storage-explorer.png
+[28]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-target-azure-stack.png
+[29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
+[30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
+[31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
 

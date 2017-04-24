@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 04/17/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 44fe2f5c0a3f050a93368589d9ea6b8ea3e35d26
-ms.openlocfilehash: 60a35bbda79a45bd0ac24e76b0a20720afe79774
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 86cb6a979d3aa429c0f501a5ebf37db4bff8ba99
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -31,6 +31,7 @@ Az Azure-hoz készült **Aspera Server On Demand** megvásárolható az [Azure M
 
 Ez az oktatóanyag végigvezeti azon lépéseken, amelyek segítségével fájlokat tölthet fel egy Media Services-fiókhoz társított tárfiókba az Azure **Aspera Server On Demand** szolgáltatásával. 
 
+[Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest) találhat egy példát, amely bemutatja az Azure Functions, valamint az Aspera és a Media Services együttes használatát.
 
 >[!NOTE]
 >Az Azure Media Services médiafeldolgozókkal (MP-k) feldolgozható maximális támogatott fájlméret korlátozva van. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a témakörben talál.

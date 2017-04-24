@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: aef5bce6f440f4a0a57763f915d307297f50281b
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -73,8 +73,7 @@ A listanézet egyik elemére kattintva megtekintheti annak elérhető összes r�
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
 - Dátumtartomány
-- Kezdeményező
-- Kategória
+- Kezdeményező (Szereplő)
 - Kategória
 - Tevékenység erőforrástípusa
 - Tevékenység
@@ -92,7 +91,7 @@ Lehetséges értékek:
 
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-A **kezdeményező** szűrő lehetővé teszi egy szereplő nevének vagy egyszerű felhasználónevének (UPN) megadását.
+A **Kezdeményező** szűrő lehetővé teszi egy szereplő nevének vagy UPN-jének megadását.
 
 A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
 
@@ -311,7 +310,7 @@ Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat v
 * Történt változás az alkalmazások nevében?
 * Ki hagyott jóvá egy adott alkalmazást?
 
-Ha csak át szeretné tekinteni az alkalmazásaihoz kapcsolódó naplózási adatokat, megnyithat egy szűrt nézetet az **Auditnaplók** menüpontból, amely a **Vállalati alkalmazások** panel **Tevékenység** szakaszában található. Ennél a lehetőségnél az **Alkalmazás** van előre kiválasztva **tevékenység-erőforrástípusként**.
+Ha csak át szeretné tekinteni az alkalmazásaihoz kapcsolódó naplózási adatokat, megnyithat egy szűrt nézetet az **Auditnaplók** menüpontból, amely a **Vállalati alkalmazások** panel **Tevékenység** szakaszában található. Ennél a lehetőségnél a **Vállalati alkalmazások** van előre kiválasztva **tevékenység-erőforrástípusként**.
 
 ![Naplók](./media/active-directory-reporting-activity-audit-logs/134.png "Naplók")
 

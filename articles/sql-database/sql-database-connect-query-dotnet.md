@@ -13,12 +13,12 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/05/2017
+ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: c36c3a3f651bcee38b953b12e48cab8d93a34207
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -70,16 +70,18 @@ Kérje le a kapcsolati karakterláncot az Azure Portalon. A kapcsolati karakterl
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az adatbázis **Alapvető erőforrások** paneljén tekintse meg a teljes kiszolgálónevet. 
+3. Az adatbázis **Áttekintés** lapján tekintse meg a teljes kiszolgálónevet, amint az alábbi képen is látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség. 
 
-    <img src="./media/sql-database-connect-query-dotnet/connection-strings.png" alt="connection strings" style="width: 780px;" />
+   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Kattintson az: **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre.
+4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót.
 
-5. Tekintse át a teljes **ADO.NET** kapcsolati karakterláncot.
+5. Kattintson az: **Adatbázis-kapcsolati karakterláncok megjelenítése** elemre.
 
-    <img src="./media/sql-database-connect-query-dotnet/adonet-connection-string.png" alt="ADO.NET connection string" style="width: 780px;" />
-    
+6. Tekintse át a teljes **ADO.NET** kapcsolati karakterláncot.
+
+    ![ADO.NET kapcsolati karakterlánc](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+  
 ## <a name="add-systemdatasqlclient"></a>Add System.Data.SqlClient
 A .NET Core használatakor rendelje hozzá a projektje ***csproj*** fájljához a System.Data.SqlClient névteret függőségként.
 
@@ -95,7 +97,6 @@ A .NET Core használatakor rendelje hozzá a projektje ***csproj*** fájljához 
 2. Adja hozzá a ```using System.Data.SqlClient``` sort a kódfájlhoz ([System.Data.SqlClient névtér](https://msdn.microsoft.com/library/system.data.sqlclient.aspx)). 
 
 3. Az [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) metódus és egy [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL utasítás együttes használatával lekérdezheti az adatokat az Azure SQL-adatbázisban. Adja meg a kiszolgálójának megfelelő értékeket.
-
 ```csharp
 using System;
 using System.Data;

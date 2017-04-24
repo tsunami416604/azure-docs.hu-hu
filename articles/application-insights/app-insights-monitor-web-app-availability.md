@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 04/12/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: cfe70aa09b21aa914e3705bf7969583c7a1bbd52
-ms.lasthandoff: 04/07/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -34,23 +34,26 @@ A webes teszteknek két típusa létezik:
 
 Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 
-## <a name="create"></a>1. Erőforrás létrehozása tesztjelentésekhez
-Hagyja ki ezt a lépést, ha már [beállított egy Application Insights-erőforrást][start] ehhez az alkalmazáshoz, és ha ugyanezen a helyen szeretné megtekinteni a rendelkezésre állási jelentéseket.
+## <a name="create"></a>1. Erőforrás megnyitása webes tesztjelentésekhez
 
-Regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
+**Ha már konfigurálta az Application Insights szolgáltatást** a webapphoz, nyissa meg a hozzá tartozó Application Insights-erőforrást [az Azure Portalon](https://portal.azure.com).
+
+**Vagy ha a jelentéseket új erőforrásban szeretné megtekinteni,** regisztráljon a [Microsoft Azure](http://azure.com)-ba, lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
 
 ![Új > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Összes erőforrás** lehetőségre.
 
 ## <a name="setup"></a>2. URL-ping teszt létrehozása
-Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csempét. Kattintson rá az alkalmazás Webes tesztek paneljének megnyitásához, és adjon hozzá egy webes tesztet.
+Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy webes tesztet.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **Az URL-címnek** láthatónak kell lennie a nyilvános internetről. Tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
-* **Függő kérelmek elemzése**: A rendszer lekéri a lap képeit, szkriptjeit, stílusfájljait és más erőforrásait a teszt részeként, és a rögzített válaszidő magába foglalja ezeket az időket. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt.
-* **Újrapróbálkozások engedélyezése**: Amikor a teszt meghiúsul, a rendszer rövid idő után újrapróbálja. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. (Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a eltűnik az újrapróbálkozáskor.)
+* **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
+* **Függő kérelmek elemzése**: Ha a beállítás be van jelölve, a teszt lekéri a tesztelt weblap képeit, szkriptjeit, stílusfájljait és más erőforrásait. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. 
+
+    Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
+* **Újrapróbálkozások engedélyezése**: Ha ez a beállítás be van jelölve, és a teszt meghiúsul, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.
 * **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
 * A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Többet válasszon, hogy megkülönböztethesse webhelye problémáit a hálózati hibáktól. Legfeljebb 16 hely választható ki.
 * **Sikeresség feltétele**:
@@ -67,14 +70,23 @@ Az Application Insights-erőforrásban keresse meg a Rendelkezésre állás csem
 ### <a name="test-more-urls"></a>További URL-címek tesztelése
 Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
+
 ## <a name="monitor"></a>3. A webes teszt eredményeinek megtekintése
-Néhány perc elteltével az eredmények a Webes teszt panelben láthatóak.
+
+5 perc elteltével kattintson a **Frissítés** elemre a teszteredmények megtekintéséhez. 
 
 ![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 Kattintson az összegző diagram bármely sávjára az időszak részletesebb megjelenítéséhez.
 
-Ezek a diagramok az alkalmazás összes webes tesztjének eredményeit egyesítik.
+## <a name="edit"></a> Tesztek megtekintése és szerkesztése
+
+Az összegzés lapon válasszon ki egy tesztet. Itt megtekintheti a teszt eredményeit, és szerkesztheti vagy átmenetileg letilthatja a tesztet.
+
+![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+
+Érdemes letiltani a webes teszteket, miközben karbantartást végez a szolgáltatáson.
+
 
 ## <a name="failures"></a>Ha hibákat lát
 Kattintson egy piros pontra.
@@ -103,7 +115,9 @@ Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából áll
 
 Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.
 
-Vegye figyelembe, hogy a tesztekben nem használhat kódolt függvényeket: a forgatókönyv lépéseinek szkriptekként kell szerepelniük a .webtest fájlban.
+> [!NOTE]
+> A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
+>
 
 #### <a name="1-record-a-scenario"></a>1. Forgatókönyv rögzítése
 A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
@@ -144,13 +158,19 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
     Válassza ki a tesztelési helyeket, a tesztelés gyakoriságát és riasztási paramétereit ugyanúgy, mint a ping teszteknél.
 
+#### <a name="3-see-the-results"></a>3. Az eredmények megtekintése
+
 Tekintse meg a teszt eredményeit és a hibákat ugyanúgy, mint az egyetlen URL-címre kiterjedő teszteknél.
 
-A hibák gyakori oka, hogy a teszt túl hosszú ideig fut. A teszt nem tarthat tovább két percnél.
+Emellett le is töltheti és megtekintheti a teszteredményeket a Visual Studióban.
 
-Ne feledje, hogy az oldal összes erőforrásának megfelelően kell betöltődnie ahhoz, hogy a teszt sikeres legyen, beleértve a szkripteket, stíluslapokat, képeket stb.
+#### <a name="too-many-failures"></a>Túl sok a hiba?
 
-Vegye figyelembe, hogy a .webtest fájlnak a teljes webes tesztet tartalmaznia kell: a tesztben nem használhat kódolt függvényeket.
+* A hibák gyakori oka, hogy a teszt túl hosszú ideig fut. A teszt nem tarthat tovább két percnél.
+
+* Ne feledje, hogy az oldal összes erőforrásának megfelelően kell betöltődnie ahhoz, hogy a teszt sikeres legyen, beleértve a szkripteket, stíluslapokat, képeket stb.
+
+* A .webtest szkriptnek a teljes webes tesztet tartalmaznia kell: a tesztben nem használhat kódolt függvényeket.
 
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
 Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, például részvényeket egy külső adatcsatornától. A webes teszt rögzítésekor meghatározott időpontokat kell használni, de ezeket a teszt StartTime és EndTime paramétereiként kell beállítani.
@@ -211,12 +231,6 @@ Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközel
 * Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitelesítő visszaküldi a tokent, és használja a webhely felé indított lekérdezésben.
   (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
 
-## <a name="edit"></a> Teszt szerkesztése vagy letiltása
-Nyisson meg egy egyéni tesztet annak szerkesztéséhez vagy letiltásához.
-
-![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
-
-Érdemes letiltani a webes teszteket, miközben karbantartást végez a szolgáltatáson.
 
 ## <a name="performance-tests"></a>Teljesítménytesztek
 Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
@@ -229,7 +243,7 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 * [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
 * Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
 
-## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
+## <a name="qna"></a>Kérdése van? Problémákat tapasztal?
 * *Meghívhatok egy kódot a webes tesztből?*
 
     Nem. A .webtest fájlnak tartalmaznia kell a teszt lépéseit. Nem hívhat meg más teszteket, és nem használhat hurkokat. Azonban számos beépülő modul van, amely hasznos lehet.

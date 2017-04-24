@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 5c326a025a4276ae9b1a777439ed6c728d3e7103
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 306c9c5cb06caa186bc0b7f431a5412dfe810722
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/09/2017
 ## <a name="introduction"></a>Introduction (Bevezetés)
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
 
-A jelen oktatóanyag bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azure.com) eseményközpont létrehozásához. Azt is ismerteti, hogyan küldhet eseményeket egy eseményközpontba egy C# nyelven írt konzolalkalmazással a .NET-keretrendszer használatával. Az események a .NET-keretrendszerrel való fogadásáról lásd a [Események fogadása a .NET-keretrendszerrel](event-hubs-dotnet-framework-getstarted-receive-eph.md) című cikket, vagy kattintson a megfelelő fogadónyelvre a bal oldali tartalomjegyzékben.
+A jelen oktatóanyag bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azure.com) egy eseményközpont létrehozásához. Azt is ismerteti, hogyan küldhet eseményeket egy eseményközpontba egy C# nyelven írt konzolalkalmazással a .NET-keretrendszer használatával. Az események a .NET-keretrendszerrel való fogadásáról lásd a [Események fogadása a .NET-keretrendszerrel](event-hubs-dotnet-framework-getstarted-receive-eph.md) című cikket, vagy kattintson a megfelelő fogadónyelvre a bal oldali tartalomjegyzékben.
 
 Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
@@ -87,7 +87,7 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     }
     ```
    
-    Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának 200 ezredmásodperces késleltetéssel.
+    Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának, 200 ezredmásodperces késleltetéssel.
 7. Végül adja a következő sorokat a **Main** metódushoz:
    
     ```csharp
@@ -98,10 +98,10 @@ Ebben a szakaszban egy Windows konzolalkalmazást fog írni, amely elküldi az e
     ```
 8. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
   
-Gratulálunk! Most üzeneteket küldött egy eseményközpontba.
+Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot, valamint adatokat küld, így továbbléphet a következő forgatókönyvekre:
+Most, hogy létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot és adatokat is küld, továbbléphet a következő forgatókönyvekre:
 
 * [Események fogadása az Event Processor Host használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 * [Event Processor Host-referencia](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)

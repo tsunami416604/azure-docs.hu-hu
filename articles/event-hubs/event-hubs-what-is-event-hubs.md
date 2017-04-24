@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 03/31/2017
 ms.author: sethm; babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 6450651062219c8f2c4757d6f233bd4b710e56ff
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 28a14cc68f44a278274e60cf46d5344c85dcc777
+ms.lasthandoff: 04/18/2017
 
 
 ---
-# <a name="what-is-azure-event-hubs"></a>Mi az Azure Event Hubs?
-Az Event Hubs egy kiválóan méretezhető adatstreamelési platform, amely másodpercenként több millió esemény feldolgozására képes. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az alacsony késésű és nagy méretű közzétételi-feliratkozási képességek biztosításával az Event Hubs az „első lépcsőfok” a Big Data kezelése irányában.
+# <a name="what-is-event-hubs"></a>Mi az Event Hubs?
+Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform, amely másodpercenként több millió esemény feldolgozására képes. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az alacsony késésű és nagy méretű közzétételi-feliratkozási képességek biztosításával az Event Hubs az „első lépcsőfok” a Big Data kezelése irányában.
 
 ## <a name="why-use-event-hubs"></a>Miért érdemes az Event Hubs platformot használni?
 Az Event Hubs esemény- és telemetriakezelési képességei különösen az alábbiakhoz hasznosak:
@@ -70,7 +70,7 @@ A partíció események egy rendezett sorozata az eseményközpontban. Ha új es
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/partition.png)
 
-Az Event Hubs az eseményközpont összes partíciójára érvényes megőrzési időtartamig őrzi meg az adatokat. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
+Az Event Hubs az eseményközpont összes partíciójára érvényes konfigurált megőrzési időtartamig őrzi meg az adatokat. Az események időalapon évülnek el – nem törölhetők külön. Mivel a partíciók függetlenek egymástól, és saját adatsorozataikat tartalmazzák, gyakran különböző ütemben nőnek.
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/multiple_partitions.png)
 
@@ -152,7 +152,7 @@ Az átviteli egységek óraalapú díjszabással rendelkeznek, és előre kell m
 
 További átviteli egységek vásárlásához vegye fel a kapcsolatot az Azure támogatási szolgálatával, ahol 20-as csomagokban vásárolhat átviteli egységeket 100 egységig. Efölött 100-as csomagokban vásárolhat átviteli egységeket.
 
-Javasoljuk, hogy az átviteli egységek és partíciók mennyiségét egyensúlyozza ki, hogy optimális mértékben vegye igénybe a szolgáltatást. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontban az átviteli egységek száma nem haladhatja meg a partíciók számát.
+Javasoljuk, hogy az átviteli egységek és partíciók mennyiségét egyensúlyozza ki, hogy optimális mértékben vegye igénybe a szolgáltatást. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
 
 Részletes díjszabási információk: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 

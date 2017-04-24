@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 03ba7f0df69da073fd876fc4c06121952e594a02
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
+ms.openlocfilehash: d7c4c5b118dade39bd47ae2c7836157589fcb45a
+ms.lasthandoff: 04/17/2017
 
 
 ---
@@ -33,21 +33,21 @@ Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigur
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
 
-* Az Azure VPN Gateway esetében terminológiai változás történt. A funkció nem, csak a nevek változtak.
+* Az Azure VPN Gateway esetében terminológiai változás történt. A funkció nem változik. Csak a nevek változnak.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
 * A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
 
 > [!NOTE]
-> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.                                                                                                                                                                               
+> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.
+>                
 
-
-## <a name="devicetable"></a>Ellenőrzött VPN-eszközök
+## <a name="devicetable"></a>Ellenőrzött VPN-eszközök és eszközkonfigurációs útmutatók
 Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti.
 
-A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat.  A konfigurációs utasításokra mutató hivatkozásokat képességeinkhez mérten biztosítjuk. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
+A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A konfigurációs utasításokra mutató hivatkozásokat képességeinkhez mérten biztosítjuk. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
-|**Szállító**          |**Eszközcsalád**     |**Operációs rendszer minimális verziója** |**Házirendalapú** |**Útvonalalapú** |
+|**Szállító**          |**Eszközcsalád**     |**Operációs rendszer minimális verziója** |**Házirendalapú konfigurációs utasítások** |**Útválasztó-alapú konfigurációs utasítások** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Nem kompatibilis  |[Konfigurációs útmutató](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
 | Allied Telesis     |AR sorozatú VPN-útválasztók |2.9.2                  |Hamarosan elérhető     |Nem kompatibilis  |
@@ -81,7 +81,7 @@ Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblázatban, at
 ## <a name="editing"></a>Az eszköz konfigurációs mintáinak szerkesztése
 A megadott VPN-eszközkonfigurációs minta letöltését követően egyes értékeket a környezeti beállításoknak megfelelően le kell cserélni.
 
-###<a name="to-edit-a-sample"></a>A minta szerkesztéséhez tegye a következőket:
+### <a name="to-edit-a-sample"></a>A minta szerkesztéséhez tegye a következőket:
 
 1. Nyissa meg a mintát a Jegyzettömb alkalmazásban.
 2. Keresse meg és cserélje le az összes <*szöveges*> karakterláncot a környezeti beállításokhoz tartozó értékekre. Győződjön meg arról, hogy szerepelnek benne < és > karakterek. A név megadásakor a kiválasztott névnek egyedinek kell lennie. Ha egy parancs nem működik, tekintse meg az eszköz gyártói dokumentációját.
@@ -106,7 +106,7 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 > 
 >
 
-Az alábbi táblázatokban:
+A következő táblázatokban:
 
 * SA = Biztonsági társítás
 * Az IKE 1. fázis másik elnevezése: „Main Mode” (Elsődleges mód)
@@ -185,7 +185,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 >
 >
 
-###<a name="feb-16-2017"></a>2017. február 16.
+### <a name="feb-16-2017"></a>2017. február 16.
 
 **A 7.1.4-esnél korábbi verziójú rendszert futtató Palo Alto Networks-eszközök** Azure útvonalalapú VPN-hez: Ha a Palo Alto Networkstől származó VPN-eszközöket használ a 7.1.4-esnél korábbi PAN-OS verzióval, és problémákat tapasztal, amikor az Azure útvonalalapú VPN-átjárókhoz csatlakozik, hajtsa végre a következő lépéseket:
 

@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 97d750035e79d4780738e660d05e1a41085d51f1
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
+ms.openlocfilehash: 29598f052778759ed362e3aa4b997acb799717ef
+ms.lasthandoff: 04/13/2017
 
 
 ---
@@ -115,10 +115,7 @@ Most telepítse az alkalmazását a kiszolgálóra vagy az Azure-ba, és figyelj
 Ha hibakeresési módban futtatja az alkalmazást, az egész folyamatban szolgáltat telemetriát a rendszer, így másodperceken belül meg kell jelenniük az adatoknak. Ha Kiadás konfigurációban telepíti az alkalmazását, az adatok lassabban gyűlnek.
 
 #### <a name="no-data-after-you-publish-to-your-server"></a>Nem lát adatokat a kiszolgálón való közzététel után?
-Nyissa meg ezeket a portokat a kimenő forgalom számára a kiszolgáló tűzfalán:
-
-* `dc.services.visualstudio.com:443`
-* `f5.services.visualstudio.com:443`
+Nyissa meg a portokat a kimenő forgalom számára a kiszolgáló tűzfalán. A szükséges címek listája [ezen az oldalon](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) tekinthető meg 
 
 #### <a name="trouble-on-your-build-server"></a>Probléma adódott a lemezképfájl-kiszolgálóján?
 Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).

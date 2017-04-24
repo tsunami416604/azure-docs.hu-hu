@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ace5d18cd88d55d167f8447d18d65ca21818ff62
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
+ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
+ms.lasthandoff: 04/15/2017
 
 
 ---
@@ -60,7 +60,7 @@ A System Center Operations Manager használata esetén az Operations Manager egy
 
 A munkaterületek adatait az Azure Portalon tekintheti meg. Az információk az OMS-portálon is elérhetők.
 
-#### <a name="view-workspace-information-the-azure-portal"></a>Munkaterületek adatainak megtekintése az Azure Portalon
+#### <a name="view-workspace-information-in-the-azure-portal"></a>Munkaterületek adatainak megtekintése az Azure Portalon
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
 2. A **központi** menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájába írja be a következőt: **Log Analytics**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
@@ -177,7 +177,7 @@ Az OMS-fiókjával lehetősége van módosítani egy társított felhasználó f
 4. A megerősítési párbeszédpanelen kattintson az **Igen** gombra.
 
 ### <a name="remove-a-user-from-a-workspace"></a>Felhasználó eltávolítása a munkaterületről
-A következő lépésekkel távolíthat el egy felhasználót egy munkaterületről. A felhasználó eltávolításával nem záródik be a munkaterület. Csupán eltávolítja a felhasználó és a munkaterület közötti társítást. Ha egy felhasználóhoz több munkaterület is társítva van, a felhasználó továbbra is bejelentkezhet az OMS-be, hogy megtekintse a többi munkaterületet.
+A következő lépésekkel távolíthat el egy felhasználót egy munkaterületről. A felhasználó eltávolításával nem záródik be a munkaterület. Csupán eltávolítja a felhasználó és a munkaterület közötti társítást. Ha egy felhasználóhoz több munkaterület is társítva van, a felhasználó továbbra is bejelentkezhet az OMS-be, hogy megtekintse a többi munkaterületét.
 
 1. Az OMS-portálon kattintson a **Beállítások** csempére.
 2. Kattintson a **Fiókok** fülre, majd a **Felhasználók kezelése** fülre.
@@ -202,9 +202,6 @@ Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor
     > [!IMPORTANT]
     > Munkaterület társításához az Azure-fióknak már hozzáféréssel kell rendelkeznie a társítani kívánt munkaterülethez.  Az Azure Portal eléréséhez tehát **ugyanazt** a fiókot kell használnia, mint a munkaterület eléréséhez. Ha ez nem igaz, kövesse a [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace) szakasz lépéseit.
 
-
-
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az Azure Portalon
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
@@ -225,7 +222,7 @@ Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor
 8. Kattintson az **OK** gombra. A munkaterület az Azure-fiókhoz van társítva.
 
 > [!NOTE]
-> Amennyiben nem találja a társítani kívánt munkaterületet, akkor az Azure-előfizetése nem rendelkezik hozzáféréssel az OMS webhelyen létrehozott munkaterülethez.  További információ a fiók OMS-portálról való eléréséről: [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace).
+> Ha nem találja a társítani kívánt munkaterületet, akkor az Azure-előfizetése nem rendelkezik hozzáféréssel az OMS portálon létrehozott munkaterülethez.  További információ a fiók OMS-portálról való eléréséről: [Felhasználó hozzáadása meglévő munkaterülethez](#add-a-user-to-an-existing-workspace).
 >
 >
 
@@ -250,7 +247,7 @@ Ha biztosítani kívánja, hogy a munkaterületén érvényesek legyenek az OMS-
 Az OMS-előfizetés jogosultságai nem jelennek meg az Azure- vagy OMS-portálon. A jogosultságokat és használatot az Enterprise Portalon tekintheti meg.  
 
 Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társította, használja az Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) parancsmagját.
-erre:
+
 ### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>Azure kötelezettségvállalás használata egy Nagyvállalati szerződésből
 Amennyiben Ön nem rendelkezik OMS-előfizetéssel, az OMS egyes összetevőiért külön-külön kell fizetnie, és a használat megjelenik az Azure-számláján.
 
@@ -295,7 +292,7 @@ A standard tarifacsomagban a Log Analytics az utolsó 30 nap adatait teszi elér
 A prémium tarifacsomagban a Log Analytics az utolsó 365 nap adatait teszi elérhetővé.
 Az önálló és OMS tarifacsomagban a Log Analytics alapértelmezés szerint az utolsó 31 nap adatait teszi elérhetővé.
 
-Az önálló és OMS tarifacsomag használata esetén akár 2 évig (730 napig) is megőrizheti az adatokat. Az alapértelmezett 31 napnál tovább tárolt adatokért adatmegőrzési díjat számolunk fel. Az árakkal kapcsolatos további információkért lásd a [többletköltségek](https://azure.microsoft.com/pricing/details/log-analytics/) című szakaszt.
+Az önálló és az OMS tarifacsomag használata esetén akár 2 évig (730 napig) is megőrizheti az adatokat. Az alapértelmezett 31 napnál tovább tárolt adatokért adatmegőrzési díjat számolunk fel. Az árakkal kapcsolatos további információkért lásd a [többletköltségek](https://azure.microsoft.com/pricing/details/log-analytics/) című szakaszt.
 
 Az adatmegőrzés hosszának módosítása:
 

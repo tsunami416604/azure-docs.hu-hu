@@ -16,9 +16,9 @@ ms.date: 04/11/2017
 ms.author: joflore
 ms.custom: end-user
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 9b7735bbe8d3b2ffc78eba8f1489d70a02fe7342
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
+ms.openlocfilehash: bb62d6973dff00932e72ddb4b2c344f070537828
+ms.lasthandoff: 04/14/2017
 
 
 ---
@@ -31,7 +31,7 @@ Ha az alábbi forgatókönyvek igazak Önre, segíthetünk.
 * Nem biztos benne, hogyan férhetne hozzá a fiókjához, és nem emlékszik a jelszavára.
 * Nem lett jelszó kiosztva, és a rendszergazda ide irányította.
 
-## <a name="unlock-your-account"></a>A fiók feloldása
+## <a name="unlock-my-account"></a>Saját fiók feloldása
 
 Ha azért van itt, hogy feloldja fiókját, kövesse az alábbi lépéseket. Amikor a 6. lépésben az **Új jelszó megadása** üzenetet látja, feloldhatja és módosíthatja a jelszavát, és feloldhatja a fiókot.
 
@@ -43,6 +43,11 @@ A fiókjába a következő lépéseket követve léphet vissza.
     ![Nem érhető el a fiókja?][Login]
 
 2. Adja meg munkahelyi vagy iskolai **Felhasználói azonosítóját**, és a CAPTCHA-tesztben a megjelenő szöveg beírásával igazolja, hogy Ön nem robot, majd kattintson a **Tovább** gombra.
+
+   > [!NOTE]
+   > Ha a rendszergazda nem engedélyezte ezt a funkciót, egy hivatkozás ekkor a rendszergazdához irányítja, aki e-mailben vagy saját webes portálon nyújt segítséget.
+   >
+
 3. A rendszergazda által konfigurált beállításoktól függően a következők valamelyike jelenik meg.
     * **Másodlagos e-mail-cím** – A rendszer egy 6 jegyű kódot küld e-mail-üzenetben a másodlagos vagy a hitelesítési e-mail-címére (amelyiket választja).
     * **Szöveges üzenet küldése a mobiltelefonomra** – A rendszer egy 6 jegyű kódot küld szöveges üzenetben a mobiltelefonszámára vagy a hitelesítési telefonszámára (amelyiket választja).
@@ -61,10 +66,6 @@ A fiókjába a következő lépéseket követve léphet vissza.
 7. Miután megjelent **A jelszó vissza lett állítva** üzenet, bejelentkezhet új jelszavával.
 
     ![A jelszó vissza lett állítva][Complete]
-
-> [!NOTE]
-> Ha a rendszergazda nem engedélyezte ezt a funkciót, egy hivatkozás a rendszergazdához irányítja, aki e-mailben vagy saját webes portálon nyújt segítséget.
->
 
 Miután ezzel a módszerrel feloldotta vagy visszaállította a jelszót, a rendszer esetleg egy e-mailben erősíti meg a folyamat végrehajtását, amelynek feladója a „Microsoft az [érintett szervezet] nevében” vagy hasonló. Ha egy ilyen e-mailt kap, de nem végezte el az önkiszolgáló jelszó-visszaállítás eljárást a fiókja feloldásához, forduljon a rendszergazdához.
 

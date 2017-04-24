@@ -15,12 +15,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/17/2017
+ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff5d156ab2b701233c4cdbf08e3d6e517c01b9fb
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
+ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
+ms.lasthandoff: 04/18/2017
 
 
 ---
@@ -38,7 +38,7 @@ A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://co
 ## <a name="configure-vs-code-mac-os-only"></a>Konfigurálás vagy kód (csak Mac OS esetén)
 
 ### <a name="mac-os"></a>**Mac OS**
-Mac OS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt DotNet Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL*** telepítéséhez. 
+Mac OS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt DotNet Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -55,9 +55,11 @@ Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**, amelyet majd később használ fel ebben a gyors üzembe helyezésben.
+3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.
 
-    <img src="./media/sql-database-connect-query-vscode/connection-information.png" alt="connection information" style="width: 780px;" />
+   ![kapcsolatadatok](./media/sql-database-connect-query-ssms/connection-information.png) 
+
+4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót. 
 
 ## <a name="set-language-mode-to-sql"></a>A nyelvmód SQL értékre állítása
 
@@ -65,17 +67,22 @@ Az mssql-parancsok és a T-SQL IntelliSense engedélyezéséhez ügyeljen arra, 
 
 1. Nyisson meg egy új Visual Studio Code-ablakot. 
 
-2. A nyelvmód SQL értékre állításához nyomja le a **⌘+K,M** illetve a **CTRL+K,M** (előbbit Mac, utóbbit Windows esetén) billentyűkombinációt, írja be az **SQL** kifejezést, majd nyomja le az **ENTER** billentyűt. 
+2. Kattintson az **Egyszerű szöveg** elemre az állapotsor jobb alsó sarkában.
+3. A megnyíló **Nyelvmód kiválasztása** legördülő menübe írja be az **SQL** kifejezést, majd nyomja le az **ENTER** billentyűt a nyelvmód SQL értékre állításához. 
 
-<img src="./media/sql-database-connect-query-vscode/vscode-language-mode.png" alt="SQL language mode" style="width: 780px;" />
+   ![SQL nyelvmód](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-the-server"></a>Csatlakozás a kiszolgálóhoz
+## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>Csatlakozás az adatbázishoz az SQL Database logikai kiszolgálóban
 
 A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
 
+> [!IMPORTANT]
+> A folytatás előtt győződjön meg arról, hogy rendelkezésére állnak a kiszolgálóval és az adatbázissal kapcsolatos, valamint a bejelentkezési adatok. Ha elkezdi beírni a csatlakozási profil információit, és áthelyezi a fókuszt a Visual Studio Code-ról, újra kell kezdenie a csatlakozási profil létrehozását.
+>
+
 1. A VS Code-ban nyomja le a **CTRL+SHIFT+P** billentyűkombinációt (vagy az **F1** billentyűt) a parancskatalógus megnyitásához.
 
-2. Írja be az **sqlcon** parancsot, nyomja le az **ENTER** billentyűt, és állítsa a nyelvet **SQL** értékre.
+2. Írja be az **sqlcon** parancsot, és nyomja le az **ENTER** billentyűt.
 
 3. A **Kapcsolati profil létrehozása** kiválasztásához nyomja le az **ENTER** billentyűt. Ezzel létrehoz egy kapcsolati profilt az SQL Server-példányhoz.
 
@@ -97,7 +104,7 @@ A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Data
 
 6. Ellenőrizze a kapcsolatot az állapotsávon.
 
-   <img src="./media/sql-database-connect-query-vscode/vscode-connection-status.png" alt="Connection status" style="width: 780px;" />
+   ![A kapcsolat állapota](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
@@ -114,7 +121,7 @@ Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact
 
 2. A **CTRL+SHIFT+E** billentyűkombinációt lenyomva lekérheti az adatokat a Product és ProductCategory táblából.
 
-    <img src="./media/sql-database-connect-query-vscode/query.png" alt="Query" style="width: 780px;" />
+    ![Lekérdezés](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Adat beszúrása
 
